@@ -74,6 +74,10 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
     const { max, min } = this.props;
     currentValue = compareValue(value, max, min);
     const precision = this.getMaxPrecision(value);
+    // 小数当字符串处理，因为1.00在jstoFixed(2)返回的是字符串
+    if (precision > 0) {
+      return Number(currentValue).toFixed(precision);
+    }
     return Number(Number(currentValue).toFixed(precision));
   };
 
@@ -101,17 +105,18 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
     return 10 ** precision;
   };
 
-  onInputChange = (value: string) => {
-    // const _value = Number(value);
+  onInputChange = (value: string | number) => {
+    const _value = Number(value);
     const { onInputChange } = this.props;
-    this.setState({ value });
+    this.setState({ value: _value });
     if (typeof onInputChange === 'function') {
-      onInputChange(value);
+      onInputChange(_value);
     }
   };
 
   onInputBlur = (value: number | string) => {
     const { min, max, onChange } = this.props;
+    value = Number(value);
     if (Number.isNaN(value)) {
       value = this.state.lastValue;
     }

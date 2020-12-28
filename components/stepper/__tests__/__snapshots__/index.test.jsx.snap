@@ -93,7 +93,7 @@ exports[`Stepper renders correctly 1`] = `
     <input
       autocomplete="off"
       type="text"
-      value=""
+      value="0"
     />
     <i
       class="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
