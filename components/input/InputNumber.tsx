@@ -4,7 +4,7 @@ import { InputNumberProps } from './PropsType';
 import Events from '../utils/events';
 import KeyboardPicker from '../keyboard-picker';
 import Icon from '../icon';
-import { getValue } from './util';
+import { getValue } from './utils';
 
 export default class InputNumber extends Component<InputNumberProps, any> {
   static defaultProps: InputNumberProps = {

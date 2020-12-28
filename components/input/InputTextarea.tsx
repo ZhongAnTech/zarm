@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import { InputTextareaProps } from './PropsType';
-import { getValue } from './util';
+import { getValue } from './utils';
 
 const regexAstralSymbols = /[\uD800-\uDBFF][\uDC00-\uDFFF]|\n/g;
 
