@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import { InputBaseProps } from './PropsType';
 import Icon from '../icon';
-import { getValue } from './util';
+import { getValue } from './utils';
 
 export default class InputBase extends PureComponent<InputBaseProps, any> {
   static defaultProps: InputBaseProps = {
