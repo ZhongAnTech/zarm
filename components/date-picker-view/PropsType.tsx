@@ -14,5 +14,5 @@ export default interface BaseDatePickerViewProps {
   valueMember?: string;
   onTransition?: (value: boolean) => void;
   locale?: Locale['DatePickerView'] & Locale['DatePicker'] & Locale['DateSelect'];
-  betterScrollOptions?: any;
+  scrollOptions?: any;
 }
