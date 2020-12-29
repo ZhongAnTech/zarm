@@ -10,4 +10,5 @@ export default interface BasePickerViewProps {
   cols?: number;
   disabled?: boolean;
   onTransition?: (value: boolean) => void;
+  scrollOptions?: any;
 }
