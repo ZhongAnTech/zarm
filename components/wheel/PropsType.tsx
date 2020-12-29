@@ -7,4 +7,5 @@ export interface BaseWheelProps {
   itemRender?: (item?: { [key: string]: any }) => string;
   disabled?: boolean;
   onTransition?: (value: boolean) => void;
+  scrollOptions?: any;
 }
