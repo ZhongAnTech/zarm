@@ -37,7 +37,7 @@ export default class Wheel extends Component<WheelProps, any> {
   };
 
   componentDidMount() {
-    const { prefixCls, dataSource, disabled, onTransition, valueMember } = this.props;
+    const { prefixCls, dataSource, disabled, onTransition, valueMember, scrollOptions } = this.props;
     const value = getValue(this.props);
     const initIndex = this.getSelectedIndex(value, dataSource);
     this.BScroll = new BScroll(this.wrapper, {
@@ -47,6 +47,7 @@ export default class Wheel extends Component<WheelProps, any> {
         wheelItemClass: `${prefixCls}-item`,
       },
       probeType: 3,
+      ...scrollOptions
     });
 
     disabled && this.BScroll.disable();
