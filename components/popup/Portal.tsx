@@ -188,6 +188,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
           className={cls.popup}
           style={popupStyle}
           role="dialog"
+          data-width={this._reflow}
           ref={(ref) => {
             this.popup = ref;
           }}
@@ -204,7 +205,6 @@ export default class Portal extends PureComponent<PortalProps, any> {
           role="dialog"
           className={cls.wrapper}
           style={wrapStyle}
-          data-width={this._reflow}
           onClick={(e) => {
             this.handleMaskClick(e);
           }}
