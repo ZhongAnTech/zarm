@@ -70,6 +70,9 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
   }
 
   getInputValue = (value) => {
+    if (Number.isNaN(value)) {
+      return value.toString();
+    }
     let currentValue = value;
     const { max, min } = this.props;
     currentValue = compareValue(value, max, min);
@@ -195,6 +198,7 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
       type,
       value: this.getInputValue(value),
       disabled: disabled || disableInput,
+      clearable: false,
       onChange: (v) => !disabled && this.onInputChange(v!),
       onBlur: () => !disabled && this.onInputBlur(value),
     };
