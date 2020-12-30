@@ -71,7 +71,7 @@ export default class PickerView extends Component<PickerViewProps, PickerViewSta
   };
 
   renderWheel = () => {
-    const { valueMember, itemRender, disabled, scrollOptions } = this.props;
+    const { valueMember, itemRender, disabled, rollDuration } = this.props;
     const { dataSource, value } = this.state;
 
     return dataSource.map((item, index) => (
@@ -84,7 +84,7 @@ export default class PickerView extends Component<PickerViewProps, PickerViewSta
         disabled={disabled}
         onChange={(selected) => this.onValueChange(selected, index)}
         onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
-        scrollOptions={scrollOptions}
+        rollDuration={rollDuration}
       />
     ));
   };
