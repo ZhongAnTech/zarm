@@ -254,6 +254,32 @@ describe('Input.Number', () => {
     }, 3000);
   });
 
+  it('inputNumber value 0', () => {
+    const wrapper = mount(
+      <Input
+        clearable
+        type="number"
+        value={0}
+      />,
+    );
+
+    const input = wrapper.find('input[type="hidden"]');
+    expect(input.instance().value).toEqual('0');
+  });
+
+  it('inputBase value 0', () => {
+    const wrapper = mount(
+      <Input
+        clearable
+        type="text"
+        value={0}
+      />,
+    );
+
+    const input = wrapper.find('input[type="text"]');
+    expect(input.instance().value).toEqual('0');
+  });
+
   it('enter number', () => {
     const onChange = jest.fn();
     const wrapper = mount(<Input type="number" focused onChange={onChange} />);
