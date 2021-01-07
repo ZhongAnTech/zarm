@@ -3,15 +3,56 @@ import classnames from 'classnames';
 import PropsType from './PropsType';
 import Button from '../button';
 import Icon from '../icon';
+import Input from '../input';
+import { InputNumberProps } from '../input/PropsType';
+
+const compareValue = (value, max, min) => {
+  if (typeof max === 'number') {
+    value = value > max ? max : value;
+  }
+  if (typeof min === 'number') {
+    value = value < min ? min : value;
+  }
+  return value;
+};
+
+const getPrecision = (value) => {
+  const valueStr = value?.toString();
+  if (valueStr && valueStr.indexOf('e-') >= 0) {
+    return parseInt(valueStr.slice(valueStr.indexOf('-e')), 10);
+  }
+  let precision = 0;
+  if (valueStr && valueStr.indexOf('.') >= 0) {
+    precision = valueStr.length - valueStr.indexOf('.') - 1;
+  }
+  return precision;
+};
+
+const getMaxPrecision = (currentValue, step) => {
+  const stepPrecision = getPrecision(step);
+  const currentValuePrecision = getPrecision(currentValue);
+  return Math.max(currentValuePrecision, stepPrecision);
+};
+
+const getPrecisionFactor = (currentValue, step) => {
+  const precision = getMaxPrecision(currentValue, step);
+  return 10 ** precision;
+};
+
+const formatValue = (currentValue, step) => {
+  const precision = getMaxPrecision(currentValue, step);
+  // 小数当字符串处理，因为1.00在jstoFixed(2)返回的是字符串
+  if (precision > 0) {
+    return Number(currentValue).toFixed(precision);
+  }
+  return Number(Number(currentValue).toFixed(precision));
+};
 
 const getValue = (props: StepperProps, defaultValue: number) => {
-  if (typeof props.value !== 'undefined') {
-    return props.value;
-  }
-  if (typeof props.defaultValue !== 'undefined') {
-    return props.defaultValue;
-  }
-  return defaultValue;
+  const { value, max, min, step } = props;
+  let tempValue = props.defaultValue === undefined ? defaultValue : props.defaultValue;
+  tempValue = value === undefined ? tempValue : value;
+  return formatValue(compareValue(tempValue, max, min), step);
 };
 
 export interface StepperProps extends PropsType {
@@ -20,9 +61,9 @@ export interface StepperProps extends PropsType {
 }
 
 export interface StepperStates {
-  value: number;
-  prevPropsValue: number;
-  lastValue: number;
+  value: number | string;
+  prevPropsValue: number | string;
+  lastValue: number | string;
 }
 
 export default class Stepper extends PureComponent<StepperProps, StepperStates> {
@@ -33,6 +74,8 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
     shape: 'radius',
     disabled: false,
     step: 1,
+    type: 'text',
+    disableInput: false,
   };
 
   state: StepperStates = {
@@ -46,7 +89,7 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
       typeof nextProps.value !== 'undefined'
       && nextProps.value !== prevState.prevPropsValue
     ) {
-      const value = Number(getValue(nextProps, 0));
+      const value = getValue(nextProps, 0);
 
       return {
         value,
@@ -58,33 +101,27 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
     return null;
   }
 
-  onInputChange = (value: string) => {
-    const _value = Number(value);
+  onInputChange = (value: string | number) => {
     const { onInputChange } = this.props;
-    this.setState({ value: _value });
+    this.setState({ value });
     if (typeof onInputChange === 'function') {
-      onInputChange(_value);
+      onInputChange(value);
     }
   };
 
   onInputBlur = (value: number | string) => {
-    const { min, max, onChange } = this.props;
-    value = Number(value);
-    if (Number.isNaN(value)) {
-      value = this.state.lastValue;
+    const { onChange, step, max, min } = this.props;
+    let currentValue = value;
+    if (Number.isNaN(Number(value))) {
+      currentValue = this.state.lastValue;
     }
-    if (min !== null && value < min!) {
-      value = min!;
-    }
-    if (max !== null && value > max!) {
-      value = max!;
-    }
+    currentValue = formatValue(compareValue(currentValue, max, min), step);
     this.setState({
-      value,
-      lastValue: value,
+      value: currentValue,
+      lastValue: currentValue,
     });
     if (typeof onChange === 'function') {
-      onChange(value);
+      onChange(currentValue);
     }
   };
 
@@ -94,9 +131,10 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
     if (this.isSubDisabled()) {
       return;
     }
-
-    const newValue = Number(value) - step!;
-    this.onInputBlur(newValue);
+    const precisionFactor = getPrecisionFactor(value, step);
+    const precision = getMaxPrecision(value, step);
+    const newValue = (precisionFactor * Number(value) - precisionFactor * step!) / precisionFactor;
+    this.onInputBlur(newValue.toFixed(precision));
   };
 
   onPlusClick = () => {
@@ -105,9 +143,10 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
     if (this.isPlusDisabled()) {
       return;
     }
-
-    const newValue = Number(value) + step!;
-    this.onInputBlur(newValue);
+    const precisionFactor = getPrecisionFactor(value, step);
+    const precision = getMaxPrecision(value, step);
+    const newValue = (precisionFactor * Number(value) + precisionFactor * step!) / precisionFactor;
+    this.onInputBlur(newValue.toFixed(precision));
   };
 
   isSubDisabled = () => {
@@ -131,7 +170,7 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
   };
 
   render() {
-    const { prefixCls, className, shape, disabled, size } = this.props;
+    const { prefixCls, className, shape, disabled, size, type, disableInput } = this.props;
     const { value } = this.state;
 
     const cls = classnames(prefixCls, className, {
@@ -140,7 +179,21 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
       [`${prefixCls}--disabled`]: disabled,
     });
 
+    const inputCls = classnames(`${prefixCls}__input `, {
+      [`${prefixCls}__input--disabled`]: disableInput,
+    });
+
     const buttonSize = (size === 'lg') ? 'sm' : 'xs';
+
+    const inputProps = {
+      className: inputCls,
+      type,
+      value,
+      disabled: disabled || disableInput,
+      clearable: false,
+      onChange: (v) => !disabled && this.onInputChange(v!),
+      onBlur: () => !disabled && this.onInputBlur(value),
+    };
 
     return (
       <span className={cls}>
@@ -153,13 +206,8 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
         >
           <Icon type="minus" />
         </Button>
-        <input
-          className={`${prefixCls}__input`}
-          type="tel"
-          value={value}
-          disabled={disabled}
-          onChange={(e) => !disabled && this.onInputChange(e.target.value)}
-          onBlur={() => !disabled && this.onInputBlur(value)}
+        <Input
+          {...inputProps as InputNumberProps}
         />
         <Button
           className={`${prefixCls}__plus`}
