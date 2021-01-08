@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import BScroll from 'better-scroll';
-import { BaseWheelProps } from './PropsType';
+import BaseWheelProps from './PropsType';
 import { isArray } from '../utils/validate';
 
 const getValue = (props, defaultValue?: any) => {

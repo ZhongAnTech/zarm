@@ -13,16 +13,6 @@ const SINGLE_DATA = [
   { value: '3', label: '选项三' },
   { value: '4', label: '选项四' },
   { value: '5', label: '选项五' },
-  { value: '6', label: '选项六' },
-  { value: '7', label: '选项七' },
-  { value: '8', label: '选项八' },
-  { value: '9', label: '选项九' },
-  { value: '10', label: '选项十' },
-  { value: '11', label: '选项十一' },
-  { value: '12', label: '选项十二' },
-  { value: '13', label: '选项十三' },
-  { value: '14', label: '选项十四' },
-  { value: '15', label: '选项十五' },
 ];
 
 // 普通多列数据
@@ -225,7 +215,7 @@ const Demo = () => {
           console.log('Picker onOk: ', selected);
           Toast.show(JSON.stringify(selected));
           setValue('single', selected.map(item => item.value));
-          // setVisible('single');
+          setVisible('single');
         }}
         onCancel={() => setVisible('single')}
       />
