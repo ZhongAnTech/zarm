@@ -47,9 +47,22 @@ const Demo = () => {
       />
 
       <Cell
+        title="步长小数"
+        description={
+          <Stepper type="price" step={0.12} defaultValue={0.9} max={2.00} min={1} />
+        }
+      />
+
+      <Cell
         title="禁用状态"
         description={
           <Stepper disabled />
+        }
+      />
+      <Cell
+        title="禁用输入"
+        description={
+          <Stepper disableInput />
         }
       />
     </>
@@ -108,11 +121,13 @@ ReactDOM.render(
 | :--- | :--- | :--- | :--- |
 | shape | string | 'radius' | 形状，可选值 `rect`, `radius`, `circle` |
 | size | string | 'md' | 大小，可选值 `md`、`lg` |
-| value | number | - | 值 |
+| type | string | 'text' | 输入类型，可选值 `text`、`number`、`price`、`tel` |
+| value | number \| string | - | 值 |
 | defaultValue | number | - | 初始值 |
 | min | number | - | 最小值 |
 | max | number | - | 最大值 |
 | step | number | 1 | 步长 |
 | disabled | boolean | false | 是否禁用 |
-| onInputChange | (value?: number) => void | - | 输入值变化时触发的回调函数 |
-| onChange | (value?: number) => void | - | 值变化时触发的回调函数 |
+| disableInput | boolean | false | 是否禁用输入框 |
+| onInputChange | (value?: number ｜ string) => void | - | 输入值变化时触发的回调函数 |
+| onChange | (value?: number ｜ string) => void | - | 值变化时触发的回调函数 |

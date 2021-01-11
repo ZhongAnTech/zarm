@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Locale } from '../locale-provider/PropsType';
+import { Locale } from '../config-provider/PropsType';
 import { ContainerType } from '../utils/dom';
 
 export default interface PropsType {

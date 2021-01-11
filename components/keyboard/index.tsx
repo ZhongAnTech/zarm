@@ -1,4 +1,4 @@
 import Keyboard from './Keyboard';
-import LocaleReceiver from '../locale-receiver';
+import ConfigReceiver from '../config-receiver';
 
-export default LocaleReceiver('Keyboard')(Keyboard);
+export default ConfigReceiver('Keyboard')(Keyboard);

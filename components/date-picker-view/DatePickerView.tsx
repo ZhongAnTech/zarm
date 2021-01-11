@@ -49,6 +49,7 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     defaultValue: '',
     minuteStep: 1,
     valueMember: 'value',
+    stopScroll: false,
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -362,7 +363,7 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
   };
 
   getDefaultMinDate = () => {
-    return getGregorianCalendar(2000, 0, 1, 0, 0, 0);
+    return getGregorianCalendar(1900, 0, 1, 0, 0, 0);
   };
 
   getDefaultMaxDate = () => {
@@ -404,12 +405,6 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     return date;
   };
 
-  onTransition = (isScrolling) => {
-    if (typeof this.props.onTransition === 'function') {
-      this.props.onTransition!(isScrolling);
-    }
-  };
-
   render() {
     const { prefixCls, className, onInit, ...others } = this.props;
     const { dataSource, value } = this.getColsValue();
@@ -421,7 +416,6 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
         dataSource={dataSource}
         value={value}
         onChange={this.onValueChange}
-        onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
       />
     );
   }

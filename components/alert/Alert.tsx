@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import PropsType from './PropsType';
 import Modal from '../modal';
 import alertLocale from './locale/zh_CN';
-// import { getRunTimeLocale } from '../locale-provider/LocaleProvider';
 
 export interface AlertProps extends PropsType {
   prefixCls?: string;

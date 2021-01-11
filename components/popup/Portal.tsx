@@ -4,8 +4,8 @@ import classnames from 'classnames';
 import Events from '../utils/events';
 import { canUseDOM, getMountContainer } from '../utils/dom';
 import Mask from '../mask';
-import Trigger from '../trigger';
 import PropsType from './PropsType';
+import Trigger from '../trigger';
 
 const IS_REACT_16 = !!ReactDOM.createPortal;
 
@@ -21,6 +21,8 @@ export default class Portal extends PureComponent<PortalProps, any> {
   private mountNode?: HTMLElement;
 
   private _container?: HTMLDivElement;
+
+  private _reflow?: number;
 
   private popup: HTMLDivElement | null;
 
@@ -88,6 +90,9 @@ export default class Portal extends PureComponent<PortalProps, any> {
 
       if (typeof afterClose === 'function') {
         afterClose();
+      }
+      if (typeof handlePortalUnmount === 'function') {
+        handlePortalUnmount();
       }
     } else if (typeof afterOpen === 'function') {
       afterOpen();
@@ -199,6 +204,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
           role="dialog"
           className={cls.wrapper}
           style={wrapStyle}
+          data-width={this._reflow}
           onClick={(e) => {
             this.handleMaskClick(e);
           }}
@@ -207,6 +213,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
             ref={(ref) => {
               this.popup = ref;
             }}
+            data-width={this._reflow}
             className={cls.popup}
             style={popupStyle}
             role="document"
@@ -226,7 +233,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
         this.setState({
           isPending: true,
         });
-        this.popup.focus();
+        this._reflow = this.popup.offsetWidth;
         this.popup.classList.add(`${prefixCls}--show`);
       }
     } else {

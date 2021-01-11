@@ -26,12 +26,13 @@ exports[`Stepper defaultValue 1`] = `
       viewBox="0 0 32 32"
     />
   </Button>
-  <input
-    className="za-stepper__input"
+  <Input
+    className="za-stepper__input "
+    clearable={false}
     disabled={false}
     onBlur={[Function]}
     onChange={[Function]}
-    type="tel"
+    type="text"
     value={2}
   />
   <Button
@@ -87,11 +88,15 @@ exports[`Stepper renders correctly 1`] = `
       </i>
     </span>
   </button>
-  <input
-    class="za-stepper__input"
-    type="tel"
-    value="0"
-  />
+  <div
+    class="za-input za-stepper__input "
+  >
+    <input
+      autocomplete="off"
+      type="text"
+      value="0"
+    />
+  </div>
   <button
     aria-disabled="false"
     class="za-button za-stepper__plus za-button--default za-button--xs za-button--radius"

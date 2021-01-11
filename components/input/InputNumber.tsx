@@ -4,8 +4,7 @@ import { InputNumberProps } from './PropsType';
 import Events from '../utils/events';
 import KeyboardPicker from '../keyboard-picker';
 import Icon from '../icon';
-
-declare const document;
+import { getValue } from './utils';
 
 export default class InputNumber extends Component<InputNumberProps, any> {
   static defaultProps: InputNumberProps = {
@@ -23,7 +22,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   constructor(props) {
     super(props);
     this.state = {
-      value: props.value || props.defaultValue || '',
+      value: getValue(props),
       visible: props.focused || false,
       focused: false,
     };
@@ -41,8 +40,8 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   static getDerivedStateFromProps(nextProps, state) {
     if ('value' in nextProps && nextProps.value !== state.prevValue) {
       return {
-        value: nextProps.value || nextProps.defaultValue || '',
-        prevValue: nextProps.value || nextProps.defaultValue || '',
+        value: getValue(nextProps),
+        prevValue: getValue(nextProps),
       };
     }
     return null;
@@ -176,7 +175,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
 
     const renderInput = (
       <div className={`${prefixCls}__content`}>
-        {!value && !readOnly && <div className={`${prefixCls}__placeholder`}>{placeholder}</div>}
+        {(value === undefined || value === '') && !readOnly && <div className={`${prefixCls}__placeholder`}>{placeholder}</div>}
         <div className={`${prefixCls}__virtual-input`} ref={(ele) => { this.content = ele; }}>{value}</div>
         <input
           type="hidden"

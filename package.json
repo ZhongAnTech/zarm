@@ -1,6 +1,6 @@
 {
   "name": "zarm",
-  "version": "2.6.1",
+  "version": "2.7.0-beta.1",
   "description": "基于 React 的移动端UI库",
   "tags": [
     "zarm",
@@ -64,7 +64,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
-    "better-scroll": "1.15.1",
+    "better-scroll": "2.0.7",
     "classnames": "2.2.6",
     "color": "^3.1.0",
     "hoist-non-react-statics": "^3.3.0",

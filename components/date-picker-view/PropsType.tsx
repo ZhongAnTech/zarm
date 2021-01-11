@@ -1,4 +1,4 @@
-import { Locale } from '../locale-provider/PropsType';
+import { Locale } from '../config-provider/PropsType';
 
 export default interface BaseDatePickerViewProps {
   mode?: 'year' | 'month' | 'date' | 'time' | 'datetime';
@@ -12,6 +12,6 @@ export default interface BaseDatePickerViewProps {
   min?: object | string;
   max?: object | string;
   valueMember?: string;
-  onTransition?: (value: boolean) => void;
   locale?: Locale['DatePickerView'] & Locale['DatePicker'] & Locale['DateSelect'];
+  stopScroll: boolean;
 }

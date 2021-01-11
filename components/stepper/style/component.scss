@@ -1,5 +1,37 @@
+@mixin disaleInput {
+  color: var(--color-text);
+  -webkit-text-fill-color: var(--color-text);
+  cursor: auto;
+}
+
 @include b(stepper) {
   display: flex;
+
+  @include b(input) {
+    input {
+      height: 100%;
+      text-align: center;
+    }
+
+    @include m(disabled) {
+      input {
+        @include disaleInput;
+      }
+
+      @include e(virtual-input) {
+        @include disaleInput;
+      }
+    }
+
+    @include e(content) {
+      height: 100%;
+    }
+
+    @include e(virtual-input) {
+      justify-content: center;
+      align-items: center;
+    }
+  }
 
   @include e(sub, plus) {
     width: var(--stepper-height-md);

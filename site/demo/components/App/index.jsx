@@ -53,7 +53,6 @@ const App = () => {
           }
           <Route component={lazy(() => import('@site/demo/pages/NotFoundPage'))} />
         </Switch>
-        <div />
       </Suspense>
     </SentryBoundary>
   );

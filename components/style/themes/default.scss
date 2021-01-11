@@ -227,7 +227,7 @@
   --input-padding-v: var(--cell-padding-v);
   --input-cursor-color: #597cf6;
   --input-cursor-width: 2px;
-  --input-cursor-height: 22px;
+  --input-cursor-height: calc(var(--cell-title-line-height) - 4px);
   --input-length-count-color: var(--color-text-disabled);
   --input-height: 28px;
   --input-line-height: var(--cell-title-line-height);
@@ -237,6 +237,7 @@
 
   // Keyboard
   --keyboard-background: #fff;
+  --keyboard-item-background: #fff;
   --keyboard-item-height: 52px;
   --keyboard-item-font-size: 30px;
 
@@ -258,7 +259,7 @@
   // Modal
   --modal-background: #fff;
   --modal-title-font-size: 18px;
-  --modal-title-color: #333;
+  --modal-title-color: var(--color-text);
   --modal-close-color: #ccc;
   --modal-close-active-color: #999;
 
