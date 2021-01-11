@@ -210,6 +210,7 @@ const Demo = () => {
       <Picker
         visible={state.single.visible}
         value={state.single.value}
+        wheelDefaultValue="3"
         dataSource={state.single.dataSource}
         onOk={(selected) => {
           console.log('Picker onOk: ', selected);
@@ -328,17 +329,18 @@ class Demo extends React.Component {
     setTimeout(() => {
       this.setState({
         dataSource: CASCADE_DATA,
-        value: ['1', '12'],
+        wheelDefaultValue: ['1', '12'],
       });
     }, 0);
   }
 
   render() {
-    const { value, dataSource } = this.state;
+    const { value, wheelDefaultValue, dataSource } = this.state;
     return (
       <Cell title="城市">
         <Select
           value={value}
+          wheelDefaultValue={wheelDefaultValue}
           dataSource={dataSource}
           onOk={(selected) => {
             console.log('Select onOk: ', selected);
@@ -426,6 +428,7 @@ ReactDOM.render(<Demo />, mountNode);
 | dataSource | object[] | [] | 数据源 |
 | value | string \| number \| boolean \| Array<string &#124; number &#124; boolean> | - | 值 |
 | defaultValue | string \| number \| boolean \| Array<string &#124; number &#124; boolean> | - | 初始值 |
+| wheelDefaultValue | string \| number \| boolean \| Array<string &#124; number &#124; boolean> | - | 滚轮初始停留的位置 |
 | valueMember | string | 'value' | 值字段对应的key 
 | itemRender | (data?: object) => data.label | (data?: object) => data.label | 单个选项的展示 |
 | disabled | boolean | false | 是否禁用 |

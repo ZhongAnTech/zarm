@@ -45,8 +45,6 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     prefixCls: 'za-date-picker-view',
     mode: DATE,
     disabled: false,
-    value: '',
-    defaultValue: '',
     minuteStep: 1,
     valueMember: 'value',
     stopScroll: false,
@@ -406,7 +404,7 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
   };
 
   render() {
-    const { prefixCls, className, onInit, ...others } = this.props;
+    const { prefixCls, className, onInit, defaultValue, wheelDefaultValue, ...others } = this.props;
     const { dataSource, value } = this.getColsValue();
     return (
       <PickerView
