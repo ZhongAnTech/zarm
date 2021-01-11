@@ -32,19 +32,13 @@ export default class PickerView extends Component<PickerViewProps, PickerViewSta
   state: PickerViewState = parseProps.getSource(this.props);
 
   static getDerivedStateFromProps(props, state) {
-    if (!isEqual(removeFnFromProps(props, ['onChange', 'onTransition']), removeFnFromProps(state.prevProps, ['onChange', 'onTransition']))) {
+    if (!isEqual(removeFnFromProps(props, ['onChange']), removeFnFromProps(state.prevProps, ['onChange']))) {
       return {
         prevProps: props,
         ...parseProps.getSource(props),
       };
     }
 
-    // if (!_.isEqual(state.value, state.prevValue)) {
-    //   return {
-    //     prevValue: state.value,
-    //     ...parseProps.getSource({ ...props, value: state.value }),
-    //   };
-    // }
     return null;
   }
 
@@ -56,6 +50,7 @@ export default class PickerView extends Component<PickerViewProps, PickerViewSta
       value.length = level + 1;
     }
     value[level] = selected;
+
     const newState = parseProps.getSource({ dataSource, value, valueMember, cols });
     this.setState(newState);
     if (typeof onChange === 'function') {
@@ -63,15 +58,8 @@ export default class PickerView extends Component<PickerViewProps, PickerViewSta
     }
   };
 
-  onTransition = (isScrolling) => {
-    const { onTransition } = this.props;
-    if (typeof onTransition === 'function') {
-      onTransition!(isScrolling);
-    }
-  };
-
   renderWheel = () => {
-    const { valueMember, itemRender, disabled } = this.props;
+    const { valueMember, itemRender, disabled, stopScroll } = this.props;
     const { dataSource, value } = this.state;
 
     return dataSource.map((item, index) => (
@@ -83,7 +71,7 @@ export default class PickerView extends Component<PickerViewProps, PickerViewSta
         itemRender={itemRender}
         disabled={disabled}
         onChange={(selected) => this.onValueChange(selected, index)}
-        onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
+        stopScroll={stopScroll}
       />
     ));
   };

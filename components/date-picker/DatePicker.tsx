@@ -32,11 +32,9 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     return null;
   }
 
-  private isScrolling = false;
-
   constructor(props) {
     super(props);
-    this.state = parseState(props);
+    this.state = { ...parseState(props), stopScroll: false };
   }
 
   onCancel = () => {
@@ -46,28 +44,19 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     }
   };
 
-  onOk = () => {
-    if (this.isScrolling) {
-      return false;
-    }
-
+  onOk = async () => {
     const { onOk } = this.props;
-    const { date } = this.state;
-
     this.setState({
-      date,
+      stopScroll: true,
     });
-    if (typeof onOk === 'function') {
-      onOk(date);
-    }
-  };
 
-  onTransition = (isScrolling) => {
-    const { onTransition } = this.props;
-    this.isScrolling = isScrolling;
-    if (typeof onTransition === 'function') {
-      onTransition(isScrolling);
-    }
+    setTimeout(() => {
+      const { date } = this.state;
+
+      if (typeof onOk === 'function') {
+        onOk(date);
+      }
+    }, 0);
   };
 
   onInit = (selected) => {
@@ -78,9 +67,9 @@ export default class DatePicker extends Component<DatePickerProps, any> {
 
   onValueChange = (newValue) => {
     const { onChange } = this.props;
-    this.setState({
-      date: newValue,
-    });
+    const { stopScroll } = this.state;
+    const stateData = stopScroll ? { date: newValue, stopScroll: false } : { date: newValue };
+    this.setState(stateData);
 
     if (typeof onChange === 'function') {
       onChange(newValue);
@@ -89,7 +78,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
 
   render() {
     const { prefixCls, className, title, okText, cancelText, locale, mountContainer, maskClosable, onOk, onCancel, onInit, visible, ...others } = this.props;
-    const { date } = this.state;
+    const { date, stopScroll } = this.state;
     const noop = () => {};
 
     return (
@@ -117,7 +106,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
             value={date}
             onInit={this.onInit}
             onChange={this.onValueChange}
-            onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
+            stopScroll={stopScroll}
           />
         </div>
       </Popup>

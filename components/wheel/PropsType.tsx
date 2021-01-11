@@ -1,4 +1,4 @@
-export interface BaseWheelProps {
+export default interface BaseWheelProps {
   value?: string | number;
   defaultValue?: string | number;
   valueMember?: string;
@@ -6,5 +6,5 @@ export interface BaseWheelProps {
   onChange?: (value?: string | number) => void;
   itemRender?: (item?: { [key: string]: any }) => string;
   disabled?: boolean;
-  onTransition?: (value: boolean) => void;
+  stopScroll: boolean;
 }
