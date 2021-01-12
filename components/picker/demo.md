@@ -210,7 +210,6 @@ const Demo = () => {
       <Picker
         visible={state.single.visible}
         value={state.single.value}
-        wheelDefaultValue="3"
         dataSource={state.single.dataSource}
         onOk={(selected) => {
           console.log('Picker onOk: ', selected);

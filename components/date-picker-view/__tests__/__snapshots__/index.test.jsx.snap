@@ -31,8 +31,8 @@ exports[`DatePickerView DatePickerView time 1`] = `
       mode="datetime"
       placeholder="请选择时间"
       prefixCls="za-date-picker-view"
+      stopScroll={false}
       title="选择时间"
-      value=""
       valueMember="value"
     >
       <PickerView
@@ -40,6 +40,406 @@ exports[`DatePickerView DatePickerView time 1`] = `
         dataSource={
           Array [
             Array [
+              Object {
+                "label": "1900年",
+                "value": 1900,
+              },
+              Object {
+                "label": "1901年",
+                "value": 1901,
+              },
+              Object {
+                "label": "1902年",
+                "value": 1902,
+              },
+              Object {
+                "label": "1903年",
+                "value": 1903,
+              },
+              Object {
+                "label": "1904年",
+                "value": 1904,
+              },
+              Object {
+                "label": "1905年",
+                "value": 1905,
+              },
+              Object {
+                "label": "1906年",
+                "value": 1906,
+              },
+              Object {
+                "label": "1907年",
+                "value": 1907,
+              },
+              Object {
+                "label": "1908年",
+                "value": 1908,
+              },
+              Object {
+                "label": "1909年",
+                "value": 1909,
+              },
+              Object {
+                "label": "1910年",
+                "value": 1910,
+              },
+              Object {
+                "label": "1911年",
+                "value": 1911,
+              },
+              Object {
+                "label": "1912年",
+                "value": 1912,
+              },
+              Object {
+                "label": "1913年",
+                "value": 1913,
+              },
+              Object {
+                "label": "1914年",
+                "value": 1914,
+              },
+              Object {
+                "label": "1915年",
+                "value": 1915,
+              },
+              Object {
+                "label": "1916年",
+                "value": 1916,
+              },
+              Object {
+                "label": "1917年",
+                "value": 1917,
+              },
+              Object {
+                "label": "1918年",
+                "value": 1918,
+              },
+              Object {
+                "label": "1919年",
+                "value": 1919,
+              },
+              Object {
+                "label": "1920年",
+                "value": 1920,
+              },
+              Object {
+                "label": "1921年",
+                "value": 1921,
+              },
+              Object {
+                "label": "1922年",
+                "value": 1922,
+              },
+              Object {
+                "label": "1923年",
+                "value": 1923,
+              },
+              Object {
+                "label": "1924年",
+                "value": 1924,
+              },
+              Object {
+                "label": "1925年",
+                "value": 1925,
+              },
+              Object {
+                "label": "1926年",
+                "value": 1926,
+              },
+              Object {
+                "label": "1927年",
+                "value": 1927,
+              },
+              Object {
+                "label": "1928年",
+                "value": 1928,
+              },
+              Object {
+                "label": "1929年",
+                "value": 1929,
+              },
+              Object {
+                "label": "1930年",
+                "value": 1930,
+              },
+              Object {
+                "label": "1931年",
+                "value": 1931,
+              },
+              Object {
+                "label": "1932年",
+                "value": 1932,
+              },
+              Object {
+                "label": "1933年",
+                "value": 1933,
+              },
+              Object {
+                "label": "1934年",
+                "value": 1934,
+              },
+              Object {
+                "label": "1935年",
+                "value": 1935,
+              },
+              Object {
+                "label": "1936年",
+                "value": 1936,
+              },
+              Object {
+                "label": "1937年",
+                "value": 1937,
+              },
+              Object {
+                "label": "1938年",
+                "value": 1938,
+              },
+              Object {
+                "label": "1939年",
+                "value": 1939,
+              },
+              Object {
+                "label": "1940年",
+                "value": 1940,
+              },
+              Object {
+                "label": "1941年",
+                "value": 1941,
+              },
+              Object {
+                "label": "1942年",
+                "value": 1942,
+              },
+              Object {
+                "label": "1943年",
+                "value": 1943,
+              },
+              Object {
+                "label": "1944年",
+                "value": 1944,
+              },
+              Object {
+                "label": "1945年",
+                "value": 1945,
+              },
+              Object {
+                "label": "1946年",
+                "value": 1946,
+              },
+              Object {
+                "label": "1947年",
+                "value": 1947,
+              },
+              Object {
+                "label": "1948年",
+                "value": 1948,
+              },
+              Object {
+                "label": "1949年",
+                "value": 1949,
+              },
+              Object {
+                "label": "1950年",
+                "value": 1950,
+              },
+              Object {
+                "label": "1951年",
+                "value": 1951,
+              },
+              Object {
+                "label": "1952年",
+                "value": 1952,
+              },
+              Object {
+                "label": "1953年",
+                "value": 1953,
+              },
+              Object {
+                "label": "1954年",
+                "value": 1954,
+              },
+              Object {
+                "label": "1955年",
+                "value": 1955,
+              },
+              Object {
+                "label": "1956年",
+                "value": 1956,
+              },
+              Object {
+                "label": "1957年",
+                "value": 1957,
+              },
+              Object {
+                "label": "1958年",
+                "value": 1958,
+              },
+              Object {
+                "label": "1959年",
+                "value": 1959,
+              },
+              Object {
+                "label": "1960年",
+                "value": 1960,
+              },
+              Object {
+                "label": "1961年",
+                "value": 1961,
+              },
+              Object {
+                "label": "1962年",
+                "value": 1962,
+              },
+              Object {
+                "label": "1963年",
+                "value": 1963,
+              },
+              Object {
+                "label": "1964年",
+                "value": 1964,
+              },
+              Object {
+                "label": "1965年",
+                "value": 1965,
+              },
+              Object {
+                "label": "1966年",
+                "value": 1966,
+              },
+              Object {
+                "label": "1967年",
+                "value": 1967,
+              },
+              Object {
+                "label": "1968年",
+                "value": 1968,
+              },
+              Object {
+                "label": "1969年",
+                "value": 1969,
+              },
+              Object {
+                "label": "1970年",
+                "value": 1970,
+              },
+              Object {
+                "label": "1971年",
+                "value": 1971,
+              },
+              Object {
+                "label": "1972年",
+                "value": 1972,
+              },
+              Object {
+                "label": "1973年",
+                "value": 1973,
+              },
+              Object {
+                "label": "1974年",
+                "value": 1974,
+              },
+              Object {
+                "label": "1975年",
+                "value": 1975,
+              },
+              Object {
+                "label": "1976年",
+                "value": 1976,
+              },
+              Object {
+                "label": "1977年",
+                "value": 1977,
+              },
+              Object {
+                "label": "1978年",
+                "value": 1978,
+              },
+              Object {
+                "label": "1979年",
+                "value": 1979,
+              },
+              Object {
+                "label": "1980年",
+                "value": 1980,
+              },
+              Object {
+                "label": "1981年",
+                "value": 1981,
+              },
+              Object {
+                "label": "1982年",
+                "value": 1982,
+              },
+              Object {
+                "label": "1983年",
+                "value": 1983,
+              },
+              Object {
+                "label": "1984年",
+                "value": 1984,
+              },
+              Object {
+                "label": "1985年",
+                "value": 1985,
+              },
+              Object {
+                "label": "1986年",
+                "value": 1986,
+              },
+              Object {
+                "label": "1987年",
+                "value": 1987,
+              },
+              Object {
+                "label": "1988年",
+                "value": 1988,
+              },
+              Object {
+                "label": "1989年",
+                "value": 1989,
+              },
+              Object {
+                "label": "1990年",
+                "value": 1990,
+              },
+              Object {
+                "label": "1991年",
+                "value": 1991,
+              },
+              Object {
+                "label": "1992年",
+                "value": 1992,
+              },
+              Object {
+                "label": "1993年",
+                "value": 1993,
+              },
+              Object {
+                "label": "1994年",
+                "value": 1994,
+              },
+              Object {
+                "label": "1995年",
+                "value": 1995,
+              },
+              Object {
+                "label": "1996年",
+                "value": 1996,
+              },
+              Object {
+                "label": "1997年",
+                "value": 1997,
+              },
+              Object {
+                "label": "1998年",
+                "value": 1998,
+              },
+              Object {
+                "label": "1999年",
+                "value": 1999,
+              },
               Object {
                 "label": "2000年",
                 "value": 2000,
@@ -679,7 +1079,6 @@ exports[`DatePickerView DatePickerView time 1`] = `
             ],
           ]
         }
-        defaultValue="2017-9-6 12:00"
         disabled={false}
         itemRender={[Function]}
         locale={
@@ -695,9 +1094,9 @@ exports[`DatePickerView DatePickerView time 1`] = `
         minuteStep={1}
         mode="datetime"
         onChange={[Function]}
-        onTransition={[Function]}
         placeholder="请选择时间"
         prefixCls="za-date-picker-view"
+        stopScroll={false}
         title="选择时间"
         value={
           Array [
@@ -719,6 +1118,406 @@ exports[`DatePickerView DatePickerView time 1`] = `
             <Wheel
               dataSource={
                 Array [
+                  Object {
+                    "label": "1900年",
+                    "value": 1900,
+                  },
+                  Object {
+                    "label": "1901年",
+                    "value": 1901,
+                  },
+                  Object {
+                    "label": "1902年",
+                    "value": 1902,
+                  },
+                  Object {
+                    "label": "1903年",
+                    "value": 1903,
+                  },
+                  Object {
+                    "label": "1904年",
+                    "value": 1904,
+                  },
+                  Object {
+                    "label": "1905年",
+                    "value": 1905,
+                  },
+                  Object {
+                    "label": "1906年",
+                    "value": 1906,
+                  },
+                  Object {
+                    "label": "1907年",
+                    "value": 1907,
+                  },
+                  Object {
+                    "label": "1908年",
+                    "value": 1908,
+                  },
+                  Object {
+                    "label": "1909年",
+                    "value": 1909,
+                  },
+                  Object {
+                    "label": "1910年",
+                    "value": 1910,
+                  },
+                  Object {
+                    "label": "1911年",
+                    "value": 1911,
+                  },
+                  Object {
+                    "label": "1912年",
+                    "value": 1912,
+                  },
+                  Object {
+                    "label": "1913年",
+                    "value": 1913,
+                  },
+                  Object {
+                    "label": "1914年",
+                    "value": 1914,
+                  },
+                  Object {
+                    "label": "1915年",
+                    "value": 1915,
+                  },
+                  Object {
+                    "label": "1916年",
+                    "value": 1916,
+                  },
+                  Object {
+                    "label": "1917年",
+                    "value": 1917,
+                  },
+                  Object {
+                    "label": "1918年",
+                    "value": 1918,
+                  },
+                  Object {
+                    "label": "1919年",
+                    "value": 1919,
+                  },
+                  Object {
+                    "label": "1920年",
+                    "value": 1920,
+                  },
+                  Object {
+                    "label": "1921年",
+                    "value": 1921,
+                  },
+                  Object {
+                    "label": "1922年",
+                    "value": 1922,
+                  },
+                  Object {
+                    "label": "1923年",
+                    "value": 1923,
+                  },
+                  Object {
+                    "label": "1924年",
+                    "value": 1924,
+                  },
+                  Object {
+                    "label": "1925年",
+                    "value": 1925,
+                  },
+                  Object {
+                    "label": "1926年",
+                    "value": 1926,
+                  },
+                  Object {
+                    "label": "1927年",
+                    "value": 1927,
+                  },
+                  Object {
+                    "label": "1928年",
+                    "value": 1928,
+                  },
+                  Object {
+                    "label": "1929年",
+                    "value": 1929,
+                  },
+                  Object {
+                    "label": "1930年",
+                    "value": 1930,
+                  },
+                  Object {
+                    "label": "1931年",
+                    "value": 1931,
+                  },
+                  Object {
+                    "label": "1932年",
+                    "value": 1932,
+                  },
+                  Object {
+                    "label": "1933年",
+                    "value": 1933,
+                  },
+                  Object {
+                    "label": "1934年",
+                    "value": 1934,
+                  },
+                  Object {
+                    "label": "1935年",
+                    "value": 1935,
+                  },
+                  Object {
+                    "label": "1936年",
+                    "value": 1936,
+                  },
+                  Object {
+                    "label": "1937年",
+                    "value": 1937,
+                  },
+                  Object {
+                    "label": "1938年",
+                    "value": 1938,
+                  },
+                  Object {
+                    "label": "1939年",
+                    "value": 1939,
+                  },
+                  Object {
+                    "label": "1940年",
+                    "value": 1940,
+                  },
+                  Object {
+                    "label": "1941年",
+                    "value": 1941,
+                  },
+                  Object {
+                    "label": "1942年",
+                    "value": 1942,
+                  },
+                  Object {
+                    "label": "1943年",
+                    "value": 1943,
+                  },
+                  Object {
+                    "label": "1944年",
+                    "value": 1944,
+                  },
+                  Object {
+                    "label": "1945年",
+                    "value": 1945,
+                  },
+                  Object {
+                    "label": "1946年",
+                    "value": 1946,
+                  },
+                  Object {
+                    "label": "1947年",
+                    "value": 1947,
+                  },
+                  Object {
+                    "label": "1948年",
+                    "value": 1948,
+                  },
+                  Object {
+                    "label": "1949年",
+                    "value": 1949,
+                  },
+                  Object {
+                    "label": "1950年",
+                    "value": 1950,
+                  },
+                  Object {
+                    "label": "1951年",
+                    "value": 1951,
+                  },
+                  Object {
+                    "label": "1952年",
+                    "value": 1952,
+                  },
+                  Object {
+                    "label": "1953年",
+                    "value": 1953,
+                  },
+                  Object {
+                    "label": "1954年",
+                    "value": 1954,
+                  },
+                  Object {
+                    "label": "1955年",
+                    "value": 1955,
+                  },
+                  Object {
+                    "label": "1956年",
+                    "value": 1956,
+                  },
+                  Object {
+                    "label": "1957年",
+                    "value": 1957,
+                  },
+                  Object {
+                    "label": "1958年",
+                    "value": 1958,
+                  },
+                  Object {
+                    "label": "1959年",
+                    "value": 1959,
+                  },
+                  Object {
+                    "label": "1960年",
+                    "value": 1960,
+                  },
+                  Object {
+                    "label": "1961年",
+                    "value": 1961,
+                  },
+                  Object {
+                    "label": "1962年",
+                    "value": 1962,
+                  },
+                  Object {
+                    "label": "1963年",
+                    "value": 1963,
+                  },
+                  Object {
+                    "label": "1964年",
+                    "value": 1964,
+                  },
+                  Object {
+                    "label": "1965年",
+                    "value": 1965,
+                  },
+                  Object {
+                    "label": "1966年",
+                    "value": 1966,
+                  },
+                  Object {
+                    "label": "1967年",
+                    "value": 1967,
+                  },
+                  Object {
+                    "label": "1968年",
+                    "value": 1968,
+                  },
+                  Object {
+                    "label": "1969年",
+                    "value": 1969,
+                  },
+                  Object {
+                    "label": "1970年",
+                    "value": 1970,
+                  },
+                  Object {
+                    "label": "1971年",
+                    "value": 1971,
+                  },
+                  Object {
+                    "label": "1972年",
+                    "value": 1972,
+                  },
+                  Object {
+                    "label": "1973年",
+                    "value": 1973,
+                  },
+                  Object {
+                    "label": "1974年",
+                    "value": 1974,
+                  },
+                  Object {
+                    "label": "1975年",
+                    "value": 1975,
+                  },
+                  Object {
+                    "label": "1976年",
+                    "value": 1976,
+                  },
+                  Object {
+                    "label": "1977年",
+                    "value": 1977,
+                  },
+                  Object {
+                    "label": "1978年",
+                    "value": 1978,
+                  },
+                  Object {
+                    "label": "1979年",
+                    "value": 1979,
+                  },
+                  Object {
+                    "label": "1980年",
+                    "value": 1980,
+                  },
+                  Object {
+                    "label": "1981年",
+                    "value": 1981,
+                  },
+                  Object {
+                    "label": "1982年",
+                    "value": 1982,
+                  },
+                  Object {
+                    "label": "1983年",
+                    "value": 1983,
+                  },
+                  Object {
+                    "label": "1984年",
+                    "value": 1984,
+                  },
+                  Object {
+                    "label": "1985年",
+                    "value": 1985,
+                  },
+                  Object {
+                    "label": "1986年",
+                    "value": 1986,
+                  },
+                  Object {
+                    "label": "1987年",
+                    "value": 1987,
+                  },
+                  Object {
+                    "label": "1988年",
+                    "value": 1988,
+                  },
+                  Object {
+                    "label": "1989年",
+                    "value": 1989,
+                  },
+                  Object {
+                    "label": "1990年",
+                    "value": 1990,
+                  },
+                  Object {
+                    "label": "1991年",
+                    "value": 1991,
+                  },
+                  Object {
+                    "label": "1992年",
+                    "value": 1992,
+                  },
+                  Object {
+                    "label": "1993年",
+                    "value": 1993,
+                  },
+                  Object {
+                    "label": "1994年",
+                    "value": 1994,
+                  },
+                  Object {
+                    "label": "1995年",
+                    "value": 1995,
+                  },
+                  Object {
+                    "label": "1996年",
+                    "value": 1996,
+                  },
+                  Object {
+                    "label": "1997年",
+                    "value": 1997,
+                  },
+                  Object {
+                    "label": "1998年",
+                    "value": 1998,
+                  },
+                  Object {
+                    "label": "1999年",
+                    "value": 1999,
+                  },
                   Object {
                     "label": "2000年",
                     "value": 2000,
@@ -849,8 +1648,8 @@ exports[`DatePickerView DatePickerView time 1`] = `
               itemRender={[Function]}
               key="0"
               onChange={[Function]}
-              onTransition={[Function]}
               prefixCls="za-wheel"
+              stopScroll={false}
               value={2017}
               valueMember="value"
             >
@@ -864,185 +1663,785 @@ exports[`DatePickerView DatePickerView time 1`] = `
                     className="za-wheel__item"
                     key="0"
                   >
-                    2000年
+                    1900年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="1"
                   >
-                    2001年
+                    1901年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="2"
                   >
-                    2002年
+                    1902年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="3"
                   >
-                    2003年
+                    1903年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="4"
                   >
-                    2004年
+                    1904年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="5"
                   >
-                    2005年
+                    1905年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="6"
                   >
-                    2006年
+                    1906年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="7"
                   >
-                    2007年
+                    1907年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="8"
                   >
-                    2008年
+                    1908年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="9"
                   >
-                    2009年
+                    1909年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="10"
                   >
-                    2010年
+                    1910年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="11"
                   >
-                    2011年
+                    1911年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="12"
                   >
-                    2012年
+                    1912年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="13"
                   >
-                    2013年
+                    1913年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="14"
                   >
-                    2014年
+                    1914年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="15"
                   >
-                    2015年
+                    1915年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="16"
                   >
-                    2016年
+                    1916年
                   </div>
                   <div
-                    className="za-wheel__item za-wheel__item--selected"
+                    className="za-wheel__item"
                     key="17"
                   >
-                    2017年
+                    1917年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="18"
                   >
-                    2018年
+                    1918年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="19"
                   >
-                    2019年
+                    1919年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="20"
                   >
-                    2020年
+                    1920年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="21"
                   >
-                    2021年
+                    1921年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="22"
                   >
-                    2022年
+                    1922年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="23"
                   >
-                    2023年
+                    1923年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="24"
                   >
-                    2024年
+                    1924年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="25"
                   >
-                    2025年
+                    1925年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="26"
                   >
-                    2026年
+                    1926年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="27"
                   >
-                    2027年
+                    1927年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="28"
                   >
-                    2028年
+                    1928年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="29"
                   >
-                    2029年
+                    1929年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="30"
+                  >
+                    1930年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="31"
+                  >
+                    1931年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="32"
+                  >
+                    1932年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="33"
+                  >
+                    1933年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="34"
+                  >
+                    1934年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="35"
+                  >
+                    1935年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="36"
+                  >
+                    1936年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="37"
+                  >
+                    1937年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="38"
+                  >
+                    1938年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="39"
+                  >
+                    1939年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="40"
+                  >
+                    1940年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="41"
+                  >
+                    1941年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="42"
+                  >
+                    1942年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="43"
+                  >
+                    1943年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="44"
+                  >
+                    1944年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="45"
+                  >
+                    1945年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="46"
+                  >
+                    1946年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="47"
+                  >
+                    1947年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="48"
+                  >
+                    1948年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="49"
+                  >
+                    1949年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="50"
+                  >
+                    1950年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="51"
+                  >
+                    1951年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="52"
+                  >
+                    1952年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="53"
+                  >
+                    1953年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="54"
+                  >
+                    1954年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="55"
+                  >
+                    1955年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="56"
+                  >
+                    1956年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="57"
+                  >
+                    1957年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="58"
+                  >
+                    1958年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="59"
+                  >
+                    1959年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="60"
+                  >
+                    1960年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="61"
+                  >
+                    1961年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="62"
+                  >
+                    1962年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="63"
+                  >
+                    1963年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="64"
+                  >
+                    1964年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="65"
+                  >
+                    1965年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="66"
+                  >
+                    1966年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="67"
+                  >
+                    1967年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="68"
+                  >
+                    1968年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="69"
+                  >
+                    1969年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="70"
+                  >
+                    1970年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="71"
+                  >
+                    1971年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="72"
+                  >
+                    1972年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="73"
+                  >
+                    1973年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="74"
+                  >
+                    1974年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="75"
+                  >
+                    1975年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="76"
+                  >
+                    1976年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="77"
+                  >
+                    1977年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="78"
+                  >
+                    1978年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="79"
+                  >
+                    1979年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="80"
+                  >
+                    1980年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="81"
+                  >
+                    1981年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="82"
+                  >
+                    1982年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="83"
+                  >
+                    1983年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="84"
+                  >
+                    1984年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="85"
+                  >
+                    1985年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="86"
+                  >
+                    1986年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="87"
+                  >
+                    1987年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="88"
+                  >
+                    1988年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="89"
+                  >
+                    1989年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="90"
+                  >
+                    1990年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="91"
+                  >
+                    1991年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="92"
+                  >
+                    1992年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="93"
+                  >
+                    1993年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="94"
+                  >
+                    1994年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="95"
+                  >
+                    1995年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="96"
+                  >
+                    1996年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="97"
+                  >
+                    1997年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="98"
+                  >
+                    1998年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="99"
+                  >
+                    1999年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="100"
+                  >
+                    2000年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="101"
+                  >
+                    2001年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="102"
+                  >
+                    2002年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="103"
+                  >
+                    2003年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="104"
+                  >
+                    2004年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="105"
+                  >
+                    2005年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="106"
+                  >
+                    2006年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="107"
+                  >
+                    2007年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="108"
+                  >
+                    2008年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="109"
+                  >
+                    2009年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="110"
+                  >
+                    2010年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="111"
+                  >
+                    2011年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="112"
+                  >
+                    2012年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="113"
+                  >
+                    2013年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="114"
+                  >
+                    2014年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="115"
+                  >
+                    2015年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="116"
+                  >
+                    2016年
+                  </div>
+                  <div
+                    className="za-wheel__item za-wheel__item--selected"
+                    key="117"
+                  >
+                    2017年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="118"
+                  >
+                    2018年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="119"
+                  >
+                    2019年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="120"
+                  >
+                    2020年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="121"
+                  >
+                    2021年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="122"
+                  >
+                    2022年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="123"
+                  >
+                    2023年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="124"
+                  >
+                    2024年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="125"
+                  >
+                    2025年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="126"
+                  >
+                    2026年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="127"
+                  >
+                    2027年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="128"
+                  >
+                    2028年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="129"
+                  >
+                    2029年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="130"
                   >
                     2030年
                   </div>
@@ -1106,8 +2505,8 @@ exports[`DatePickerView DatePickerView time 1`] = `
               itemRender={[Function]}
               key="1"
               onChange={[Function]}
-              onTransition={[Function]}
               prefixCls="za-wheel"
+              stopScroll={false}
               value={8}
               valueMember="value"
             >
@@ -1321,8 +2720,8 @@ exports[`DatePickerView DatePickerView time 1`] = `
               itemRender={[Function]}
               key="2"
               onChange={[Function]}
-              onTransition={[Function]}
               prefixCls="za-wheel"
+              stopScroll={false}
               value={6}
               valueMember="value"
             >
@@ -1620,8 +3019,8 @@ exports[`DatePickerView DatePickerView time 1`] = `
               itemRender={[Function]}
               key="3"
               onChange={[Function]}
-              onTransition={[Function]}
               prefixCls="za-wheel"
+              stopScroll={false}
               value={12}
               valueMember="value"
             >
@@ -2027,8 +3426,8 @@ exports[`DatePickerView DatePickerView time 1`] = `
               itemRender={[Function]}
               key="4"
               onChange={[Function]}
-              onTransition={[Function]}
               prefixCls="za-wheel"
+              stopScroll={false}
               value={0}
               valueMember="value"
             >
@@ -2434,7 +3833,6 @@ exports[`DatePickerView DatePickerView time 2`] = `
     value="2017-9-6 12:00"
   >
     <DatePickerView
-      defaultValue=""
       disabled={false}
       locale={
         Object {
@@ -2452,6 +3850,7 @@ exports[`DatePickerView DatePickerView time 2`] = `
       mode="datetime"
       placeholder="请选择日期"
       prefixCls="za-date-picker-view"
+      stopScroll={false}
       title="选择日期"
       value="2017-9-6 12:00"
       valueMember="value"
@@ -3028,7 +4427,6 @@ exports[`DatePickerView DatePickerView time 2`] = `
             ],
           ]
         }
-        defaultValue=""
         disabled={false}
         itemRender={[Function]}
         locale={
@@ -3046,9 +4444,9 @@ exports[`DatePickerView DatePickerView time 2`] = `
         minuteStep={1}
         mode="datetime"
         onChange={[Function]}
-        onTransition={[Function]}
         placeholder="请选择日期"
         prefixCls="za-date-picker-view"
+        stopScroll={false}
         title="选择日期"
         value={
           Array [
@@ -3128,8 +4526,8 @@ exports[`DatePickerView DatePickerView time 2`] = `
               itemRender={[Function]}
               key="0"
               onChange={[Function]}
-              onTransition={[Function]}
               prefixCls="za-wheel"
+              stopScroll={false}
               value={2017}
               valueMember="value"
             >
@@ -3277,8 +4675,8 @@ exports[`DatePickerView DatePickerView time 2`] = `
               itemRender={[Function]}
               key="1"
               onChange={[Function]}
-              onTransition={[Function]}
               prefixCls="za-wheel"
+              stopScroll={false}
               value={8}
               valueMember="value"
             >
@@ -3492,8 +4890,8 @@ exports[`DatePickerView DatePickerView time 2`] = `
               itemRender={[Function]}
               key="2"
               onChange={[Function]}
-              onTransition={[Function]}
               prefixCls="za-wheel"
+              stopScroll={false}
               value={6}
               valueMember="value"
             >
@@ -3791,8 +5189,8 @@ exports[`DatePickerView DatePickerView time 2`] = `
               itemRender={[Function]}
               key="3"
               onChange={[Function]}
-              onTransition={[Function]}
               prefixCls="za-wheel"
+              stopScroll={false}
               value={12}
               valueMember="value"
             >
@@ -4198,8 +5596,8 @@ exports[`DatePickerView DatePickerView time 2`] = `
               itemRender={[Function]}
               key="4"
               onChange={[Function]}
-              onTransition={[Function]}
               prefixCls="za-wheel"
+              stopScroll={false}
               value={0}
               valueMember="value"
             >
