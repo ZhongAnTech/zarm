@@ -429,10 +429,10 @@ ReactDOM.render(<Demo />, mountNode);
 | defaultValue | string \| number \| boolean \| Array<string &#124; number &#124; boolean> | - | 初始值 |
 | wheelDefaultValue | string \| number \| boolean \| Array<string &#124; number &#124; boolean> | - | 滚轮初始停留的位置 |
 | valueMember | string | 'value' | 值字段对应的key 
-| itemRender | (data?: object) => data.label | (data?: object) => data.label | 单个选项的展示 |
+| itemRender | (data?: { [key: string]: string &#124; number &#124; boolean }) => string | (data) => data.label | 单个选项的展示 |
 | disabled | boolean | false | 是否禁用 |
 | cols | number | Infinity | 级联选择器的级数 |
-| onChange | (selected?: object) => void | - | 值变化时触发的回调函数 |
+| onChange | (selected?: Array<{ [key: string]: string &#124; number &#124; boolean }>) => void | - | 值变化时触发的回调函数 |
 
 ### 仅 Picker & Select 支持的属性
 | 属性 | 类型 | 默认值 | 说明 |
@@ -442,7 +442,7 @@ ReactDOM.render(<Demo />, mountNode);
 | cancelText | string | '取消' | 取消栏文字 |
 | maskClosable | boolean | true | 是否点击遮罩层时关闭，需要和onCancel一起使用 |
 | destroy | boolean | false | 弹层关闭后是否移除节点 |
-| onOk | (selected?: object) => void | - | 点击确定时触发的回调函数 |
+| onOk | (selected?: Array<{ [key: string]: string &#124; number &#124; boolean }>) => void | - | 点击确定时触发的回调函数 |
 | onCancel | () => void | - | 点击取消时触发的回调函数 |
 | mountContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 Picker 挂载的 HTML 节点 |
 
@@ -457,4 +457,4 @@ ReactDOM.render(<Demo />, mountNode);
 | :--- | :--- | :--- | :--- |
 | placeholder | string | '请选择' | 输入提示信息 |
 | hasArrow | boolean | true | 是否显示箭头 |
-| displayRender | (selected?: object) => string | selected => selected.map(item => item.label) | 所选值的展示 |
+| displayRender | (selected?: Array<{ [key: string]: string &#124; number &#124; boolean }>) => string | selected => selected.map(item => item.label) | 所选值的展示 |
