@@ -6,7 +6,7 @@ import BasePickerProps from './PropsType';
 import parseProps from '../picker-view/utils/parseProps';
 import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
 import { DataSource } from '../picker-view/PropsType';
-import { WheelValue, IObjValue } from '../wheel/PropsType';
+import { WheelValue, IWheelItem } from '../wheel/PropsType';
 
 export interface PickerProps extends BasePickerProps {
   prefixCls?: string;
@@ -15,9 +15,9 @@ export interface PickerProps extends BasePickerProps {
 
 export interface PickerState {
   value: Array<WheelValue>;
-  objValue: Array<IObjValue>;
+  objValue: Array<IWheelItem>;
   dataSource: DataSource;
-  tempObjValue?: Array<IObjValue>;
+  tempObjValue?: Array<IWheelItem>;
   tempValue?: Array<WheelValue>;
   stopScroll?: boolean;
 }
