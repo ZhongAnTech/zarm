@@ -1,6 +1,6 @@
 import BaseWheelProps, { WheelValue, WheelItem } from '../wheel/PropsType';
 
-export type DataSource = Array<{ [key: string]: WheelValue | DataSource }>;
+export type DataSource<T = { label: string; value: WheelValue }> = Array<T & { children?: DataSource<T> }>;
 
 export default interface BasePickerViewProps extends Pick<BaseWheelProps, 'valueMember' | 'itemRender' | 'disabled' | 'stopScroll'> {
   value?: WheelValue | Array<WheelValue>;
