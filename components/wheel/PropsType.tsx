@@ -1,13 +1,13 @@
 export type WheelValue = string | number | boolean;
 
-export interface IWheelItem { [key: string]: WheelValue }
+export interface WheelItem { [key: string]: WheelValue }
 export default interface BaseWheelProps {
   value?: WheelValue;
   defaultValue?: WheelValue;
   valueMember?: string;
-  dataSource: Array<IWheelItem>;
+  dataSource: Array<WheelItem>;
   onChange?: (value?: WheelValue) => void;
-  itemRender: (item?: IWheelItem) => string;
+  itemRender: (item?: WheelItem) => string;
   disabled?: boolean;
   stopScroll: boolean;
 }

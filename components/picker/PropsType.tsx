@@ -1,7 +1,7 @@
 import BasePickerViewProps from '../picker-view/PropsType';
 import { Locale } from '../config-provider/PropsType';
 import { ContainerType } from '../utils/dom';
-import { IWheelItem } from '../wheel/PropsType';
+import { WheelItem } from '../wheel/PropsType';
 
 export default interface BasePickerProps extends Omit<BasePickerViewProps, 'onChange' | 'stopScroll'> {
   visible?: boolean;
@@ -10,8 +10,8 @@ export default interface BasePickerProps extends Omit<BasePickerViewProps, 'onCh
   cancelText?: string;
   maskClosable?: boolean;
   destroy: boolean;
-  onChange?: (selected: Array<IWheelItem>) => void;
-  onOk?: (selected: Array<IWheelItem>) => void;
+  onChange?: (selected: Array<WheelItem>) => void;
+  onOk?: (selected: Array<WheelItem>) => void;
   onCancel?: () => void;
   mountContainer?: ContainerType;
   locale?: Locale['Picker'] & Locale['Select'];

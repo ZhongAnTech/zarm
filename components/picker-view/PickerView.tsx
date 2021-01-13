@@ -6,7 +6,7 @@ import Wheel from '../wheel';
 import { isCascader } from '../utils/validate';
 import parseProps from './utils/parseProps';
 import removeFnFromProps from './utils/removeFnFromProps';
-import { WheelValue, IWheelItem } from '../wheel/PropsType';
+import { WheelValue, WheelItem } from '../wheel/PropsType';
 
 export interface PickerViewProps extends BasePickerViewProps {
   prefixCls?: string;
@@ -15,7 +15,7 @@ export interface PickerViewProps extends BasePickerViewProps {
 
 export interface PickerViewState {
   value: Array<WheelValue>;
-  dataSource: IWheelItem[][];
+  dataSource: WheelItem[][];
 }
 
 export default class PickerView extends Component<PickerViewProps, PickerViewState> {

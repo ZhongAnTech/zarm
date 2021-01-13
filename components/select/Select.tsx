@@ -5,7 +5,7 @@ import BaseSelectProps from './PropsType';
 import Picker from '../picker';
 import parseProps from '../picker-view/utils/parseProps';
 import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
-import { IWheelItem } from '../wheel/PropsType';
+import { WheelItem } from '../wheel/PropsType';
 
 export interface SelectProps extends BaseSelectProps {
   prefixCls?: string;
@@ -13,7 +13,7 @@ export interface SelectProps extends BaseSelectProps {
 }
 
 export interface SelectState {
-  selectValue: Array<IWheelItem>;
+  selectValue: Array<WheelItem>;
   visible: boolean;
 }
 
