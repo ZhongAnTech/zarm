@@ -424,7 +424,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| dataSource | object[] | [] | 数据源 |
+| dataSource | DataSource<T = { label: string; value: string \| number \| boolean }> = Array<T & { children?: DataSource<T> }> | [] | 数据源 |
 | value | string \| number \| boolean \| Array<string &#124; number &#124; boolean> | - | 值 |
 | defaultValue | string \| number \| boolean \| Array<string &#124; number &#124; boolean> | - | 初始值 |
 | wheelDefaultValue | string \| number \| boolean \| Array<string &#124; number &#124; boolean> | - | 滚轮初始停留的位置 |
