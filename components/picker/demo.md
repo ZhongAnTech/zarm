@@ -30,38 +30,39 @@ const MULTI_DATA = [
 // 级联数据
 const CASCADE_DATA = [
   {
-    code: '1',
+    value: '1',
     label: '北京市',
     children: [
-      { code: '11', label: '海淀区' },
-      { code: '12', label: '西城区' },
-    ],
-  },
-  {
-    code: '2',
-    label: '上海市',
-    children: [
-      { code: '21', label: '杨浦区' },
-      { code: '22', label: '静安区' },
-    ],
-  },
-];
-
-const DIY_DATA = [
-  {
-    value: '1',
-    name: '北京市',
-    children: [
-      { value: '11', name: '海淀区' },
-      { value: '12', name: '西城区' },
+      { value: '11', label: '海淀区' },
+      { value: '12', label: '西城区' },
     ],
   },
   {
     value: '2',
+    label: '上海市',
+    children: [
+      { value: '21', label: '杨浦区' },
+      { value: '22', label: '静安区' },
+    ],
+  },
+];
+
+// 自定义
+const DIY_DATA = [
+  {
+    code: '1',
+    name: '北京市',
+    children: [
+      { code: '11', name: '海淀区' },
+      { code: '12', name: '西城区' },
+    ],
+  },
+  {
+    code: '2',
     name: '上海市',
     children: [
-      { value: '21', name: '黄埔区' },
-      { value: '22', name: '虹口区' },
+      { code: '21', name: '黄埔区' },
+      { code: '22', name: '虹口区' },
     ],
   },
 ];
@@ -80,12 +81,12 @@ const initState = {
   cascade: {
     visible: false,
     value: [],
-    dataSource: [],
+    dataSource: CASCADE_DATA,
   },
   diy: {
     visible: false,
     value: [],
-    dataSource: DIY_DATA,
+    dataSource: [],
   },
   specDOM: {
     visible: false,
@@ -159,9 +160,9 @@ const Demo = () => {
   useEffect(() => {
     // 异步加载数据源测试
     setTimeout(() => {
-      setValue('cascade', ['1', '12']);
-      setValueMember('cascade', 'code');
-      setDataSource('cascade', CASCADE_DATA);
+      setValue('diy', ['1', '12']);
+      setDataSource('diy', DIY_DATA);
+      setValueMember('diy', 'code');
     }, 0);
   }, []);
 
@@ -212,7 +213,7 @@ const Demo = () => {
         value={state.single.value}
         dataSource={state.single.dataSource}
         onOk={(selected) => {
-          console.log('Picker onOk: ', selected);
+          console.log('Single Picker onOk: ', selected);
           Toast.show(JSON.stringify(selected));
           setValue('single', selected.map(item => item.value));
           setVisible('single');
@@ -225,7 +226,7 @@ const Demo = () => {
         value={state.multi.value}
         dataSource={state.multi.dataSource}
         onOk={(selected) => {
-          console.log('Picker onOk: ', selected);
+          console.log('Multi Picker onOk: ', selected);
           Toast.show(JSON.stringify(selected));
           setValue('multi', selected.map(item => item.value));
           setVisible('multi');
@@ -237,11 +238,10 @@ const Demo = () => {
         visible={state.cascade.visible}
         value={state.cascade.value}
         dataSource={state.cascade.dataSource}
-        valueMember={state.cascade.valueMember}
         onOk={(selected) => {
-          console.log('Picker onOk: ', selected);
+          console.log('Cascade Picker onOk: ', selected);
           Toast.show(JSON.stringify(selected));
-          setValue('cascade', selected.map(item => item.code));
+          setValue('cascade', selected.map(item => item.value));
           setVisible('cascade');
         }}
         onCancel={() => setVisible('cascade')}
@@ -254,12 +254,12 @@ const Demo = () => {
         okText="Ok"
         dataSource={state.diy.dataSource}
         value={state.diy.value}
-        valueMember="value"
+        valueMember={state.diy.valueMember}
         itemRender={data => data.name}
         onOk={(selected) => {
-          console.log('Picker onOk: ', selected);
+          console.log('DIY Picker onOk: ', selected);
           Toast.show(JSON.stringify(selected));
-          setValue('diy', selected.map(item => item.value));
+          setValue('diy', selected.map(item => item.code));
           setVisible('diy');
         }}
         onCancel={() => setVisible('diy')}
