@@ -150,17 +150,17 @@ exports[`Picker Picker render visible 1`] = `
                                 >
                                   <div
                                     class="za-wheel__content"
-                                    style="transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; transform: translate(0px,NaNpx) scale(1);"
+                                    style="transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-property: transform; transition-duration: 800ms; transform: translateX(0px) translateY(NaNpx);"
                                   >
                                     <div
                                       class="za-wheel__item za-wheel__item--selected"
-                                      style="pointer-events: none; transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; transform: rotateX(NaNdeg);"
+                                      style="transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none; transform: rotateX(NaNdeg);"
                                     >
                                       选项一
                                     </div>
                                     <div
                                       class="za-wheel__item"
-                                      style="pointer-events: none; transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; transform: rotateX(NaNdeg);"
+                                      style="transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none; transform: rotateX(NaNdeg);"
                                     >
                                       选项二
                                     </div>
@@ -265,8 +265,8 @@ exports[`Picker Picker render visible 1`] = `
                           itemRender={[Function]}
                           localeCode="zh-CN"
                           onChange={[Function]}
-                          onTransition={[Function]}
                           prefixCls="za-picker-view"
+                          stopScroll={false}
                           value={
                             Array [
                               "1",
@@ -297,8 +297,8 @@ exports[`Picker Picker render visible 1`] = `
                                 itemRender={[Function]}
                                 key="0"
                                 onChange={[Function]}
-                                onTransition={[Function]}
                                 prefixCls="za-wheel"
+                                stopScroll={false}
                                 value="1"
                                 valueMember="value"
                               >

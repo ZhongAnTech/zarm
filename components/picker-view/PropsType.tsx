@@ -1,11 +1,12 @@
-import BaseWheelProps from '../wheel/PropsType';
+import BaseWheelProps, { WheelValue, WheelItem } from '../wheel/PropsType';
 
-export type DataSource = Array<{ [key: string]: any; children?: DataSource }>;
+export type DataSource<T = { label: string; value: WheelValue }> = Array<T & { children?: DataSource<T> }>;
 
-export default interface BasePickerViewProps extends Pick<BaseWheelProps, 'valueMember' | 'itemRender' | 'disabled' | 'stopScroll'>{
-  value?: string | string[] | number[];
-  defaultValue?: string | string[] | number[] | object;
+export default interface BasePickerViewProps extends Pick<BaseWheelProps, 'valueMember' | 'itemRender' | 'disabled' | 'stopScroll'> {
+  value?: WheelValue | Array<WheelValue>;
+  defaultValue?: WheelValue | Array<WheelValue>;
+  wheelDefaultValue?: WheelValue | Array<WheelValue>;
   dataSource: DataSource;
-  onChange?: (value?: object[], i?: number) => void;
+  onChange?: (value?: Array<WheelItem>, i?: number) => void;
   cols?: number;
 }

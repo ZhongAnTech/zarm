@@ -5,20 +5,20 @@ import PickerView from '../picker-view';
 import BasePickerProps from './PropsType';
 import parseProps from '../picker-view/utils/parseProps';
 import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
+import { DataSource } from '../picker-view/PropsType';
+import { WheelValue, WheelItem } from '../wheel/PropsType';
 
 export interface PickerProps extends BasePickerProps {
   prefixCls?: string;
   className?: string;
 }
 
-export type DataSource = Array<{ [key: string]: any; children?: DataSource }>;
-
 export interface PickerState {
-  value: string[] | number[];
-  objValue: Array<{ [key: string]: any }>;
+  value: Array<WheelValue>;
+  objValue: Array<WheelItem>;
   dataSource: DataSource;
-  tempObjValue?: Array<{ [key: string]: any }>;
-  tempValue?: string[] | number[];
+  tempObjValue?: Array<WheelItem>;
+  tempValue?: Array<WheelValue>;
   stopScroll?: boolean;
 }
 

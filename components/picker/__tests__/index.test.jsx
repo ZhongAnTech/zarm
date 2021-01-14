@@ -54,6 +54,7 @@ describe('Picker', () => {
   });
 
   it('should trigger onOk when press ok button', () => {
+    jest.useFakeTimers();
     const onOkFn = jest.fn();
 
     const wrapper = mount(
@@ -83,6 +84,7 @@ describe('Picker', () => {
     );
 
     wrapper.find('.za-picker__submit').simulate('click');
+    jest.runAllTimers();
     expect(onOkFn).toBeCalled();
   });
 
@@ -153,47 +155,6 @@ describe('Picker', () => {
   //   wrapper.find('.za-mask').simulate('click');
   //   expect(onMaskClick).toBeCalled();
   // });
-
-  it('should trigger onTransition when scroll', () => {
-    const onChange = jest.fn();
-    const wrapper = mount(
-      <Picker
-        dataSource={[
-          {
-            value: '1',
-            label: '选项一',
-            children: [
-              { value: '11', label: '选项一' },
-              { value: '12', label: '选项二' },
-            ],
-          },
-          {
-            value: '2',
-            label: '选项一',
-            children: [
-              { value: '21', label: '选项一' },
-              { value: '22', label: '选项二' },
-            ],
-          },
-        ]}
-        visible
-        defaultValue={['1', '12']}
-        onChange={onChange}
-      />,
-    ).find('.za-wheel').at(0);
-
-    // wrapper.simulate('touchStart', {
-    //   touches: [0, 10],
-    // });
-    // wrapper.simulate('touchMove', {
-    //   touches: [0, 50],
-    // });
-    // wrapper.simulate('touchEnd', {
-    //   touches: [0, 100],
-    // });
-
-    // expect(onChange).toBeCalled();
-  });
 
   it('receive new dataSource', () => {
     const wrapper = shallow(

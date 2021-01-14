@@ -31,7 +31,7 @@ export default class Wheel extends Component<WheelProps, any> {
     prefixCls: 'za-wheel',
     dataSource: [],
     valueMember: 'value',
-    itemRender: (item) => item!.label,
+    itemRender: (item) => item!.label as string,
     stopScroll: false,
   };
 

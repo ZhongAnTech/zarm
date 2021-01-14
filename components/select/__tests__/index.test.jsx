@@ -217,6 +217,7 @@ describe('Select', () => {
     wrapper.find('.za-select').simulate('click');
     jest.useFakeTimers();
     wrapper.find('.za-picker__submit').simulate('click');
+    jest.runAllTimers();
     expect(onOkFn).toBeCalled();
     expect(onCancelFn).not.toBeCalled();
   });

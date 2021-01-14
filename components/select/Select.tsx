@@ -5,16 +5,15 @@ import BaseSelectProps from './PropsType';
 import Picker from '../picker';
 import parseProps from '../picker-view/utils/parseProps';
 import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
+import { WheelItem } from '../wheel/PropsType';
 
 export interface SelectProps extends BaseSelectProps {
   prefixCls?: string;
   className?: string;
 }
 
-export type DataSource = Array<{ [key: string]: any; children?: DataSource }>;
-
 export interface SelectState {
-  selectValue: string[] | number[];
+  selectValue: Array<WheelItem>;
   visible: boolean;
 }
 
