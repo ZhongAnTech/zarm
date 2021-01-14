@@ -2,7 +2,7 @@ import { isArray, isCascader } from '../../utils/validate';
 
 const isValueValid = (value) => {
   const valueArray = [].concat(value);
-  return valueArray.every((item) => !!item || item === 0 || item === false);
+  return valueArray.some((item) => !!item || item === 0 || item === false);
 };
 
 const getValues = (props, defaultValue?: any) => {
