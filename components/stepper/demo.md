@@ -49,7 +49,7 @@ const Demo = () => {
       <Cell
         title="步长小数"
         description={
-          <Stepper step={0.12} defaultValue={0.9} max={2.00} min={1} type="text" />
+         <Stepper step={1.2} defaultValue={0} max={2.00} min={-1} type="text" />
         }
       />
 
