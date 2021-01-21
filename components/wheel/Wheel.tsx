@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import BScroll from 'better-scroll';
-import { BaseWheelProps } from './PropsType';
+import BaseWheelProps from './PropsType';
 import { isArray } from '../utils/validate';
 
 const getValue = (props, defaultValue?: any) => {
@@ -27,17 +27,16 @@ export default class Wheel extends Component<WheelProps, any> {
 
   private wrapper;
 
-  private isChangedByProps;
-
   static defaultProps: WheelProps = {
     prefixCls: 'za-wheel',
     dataSource: [],
     valueMember: 'value',
-    itemRender: (item) => item!.label,
+    itemRender: (item) => item!.label as string,
+    stopScroll: false,
   };
 
   componentDidMount() {
-    const { prefixCls, dataSource, disabled, onTransition, valueMember } = this.props;
+    const { prefixCls, dataSource, disabled } = this.props;
     const value = getValue(this.props);
     const initIndex = this.getSelectedIndex(value, dataSource);
     this.BScroll = new BScroll(this.wrapper, {
@@ -51,50 +50,39 @@ export default class Wheel extends Component<WheelProps, any> {
 
     disabled && this.BScroll.disable();
 
-    this.BScroll.on('scroll', () => {
-      if (typeof onTransition === 'function') {
-        onTransition!(this.BScroll.isInTransition);
-      }
-    });
     this.BScroll.on('scrollEnd', () => {
-      const { dataSource: curDataSource } = this.props;
-      if (this.isChangedByProps) {
-        this.isChangedByProps = false;
-        return;
-      }
-      const index = this.BScroll.getSelectedIndex();
-      const child = curDataSource[index];
-      onTransition!(this.BScroll.isInTransition);
-      if (child) {
-        this.fireValueChange(child[valueMember!]);
-      }
-      // else if (console.warn) {
-      //   console.warn('child not found', dataSource, index);
-      // }
+      this.handleScrollEnd();
     });
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.disabled) {
-  //     this.BScroll.disable();
-  //   }
-  // }
-
   componentDidUpdate(prevProps) {
-    const { value, dataSource, disabled } = this.props;
+    const { value, dataSource, disabled, stopScroll } = this.props;
     disabled && this.BScroll.disable();
-    this.BScroll.refresh();
     const oldIndex = this.getSelectedIndex(prevProps.value, prevProps.dataSource);
     const newIndex = this.getSelectedIndex(value, dataSource);
     if (newIndex !== oldIndex) {
-      this.isChangedByProps = true;
       this.BScroll.wheelTo(newIndex);
+    }
+
+    if (stopScroll) {
+      this.BScroll.stop();
+      this.handleScrollEnd();
     }
   }
 
   componentWillUnmount() {
     this.BScroll.destroy();
   }
+
+  handleScrollEnd = () => {
+    const { dataSource: curDataSource, valueMember } = this.props;
+    const index = this.BScroll.getSelectedIndex();
+    const child = curDataSource[index];
+
+    if (child) {
+      this.fireValueChange(child[valueMember!]);
+    }
+  };
 
   getSelectedIndex = (value, dataSource) => {
     const { valueMember } = this.props;

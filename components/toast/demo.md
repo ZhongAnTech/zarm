@@ -49,7 +49,9 @@ const Demo = () => (
           size="xs"
           onClick={() => {
             Toast.show({
+              className: 'test',
               content: '不可同时进行其他交互',
+              mountContainer: document.getElementById('test-div'),
               mask: true,
               afterClose: () => {
                 console.log('Toast已关闭');

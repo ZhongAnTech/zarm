@@ -34,7 +34,9 @@ describe('DatePicker', () => {
         onOk={onOkFn}
       />,
     );
+    jest.useFakeTimers();
     wrapper.find('.za-date-picker__submit').simulate('click');
+    jest.runAllTimers();
     expect(onOkFn).toBeCalled();
   });
 

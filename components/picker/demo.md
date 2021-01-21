@@ -10,6 +10,9 @@ import { Cell, Button, Picker, Toast } from 'zarm';
 const SINGLE_DATA = [
   { value: '1', label: '选项一' },
   { value: '2', label: '选项二' },
+  { value: '3', label: '选项三' },
+  { value: '4', label: '选项四' },
+  { value: '5', label: '选项五' },
 ];
 
 // 普通多列数据
@@ -27,38 +30,39 @@ const MULTI_DATA = [
 // 级联数据
 const CASCADE_DATA = [
   {
-    code: '1',
+    value: '1',
     label: '北京市',
     children: [
-      { code: '11', label: '海淀区' },
-      { code: '12', label: '西城区' },
-    ],
-  },
-  {
-    code: '2',
-    label: '上海市',
-    children: [
-      { code: '21', label: '杨浦区' },
-      { code: '22', label: '静安区' },
-    ],
-  },
-];
-
-const DIY_DATA = [
-  {
-    value: '1',
-    name: '北京市',
-    children: [
-      { value: '11', name: '海淀区' },
-      { value: '12', name: '西城区' },
+      { value: '11', label: '海淀区' },
+      { value: '12', label: '西城区' },
     ],
   },
   {
     value: '2',
+    label: '上海市',
+    children: [
+      { value: '21', label: '杨浦区' },
+      { value: '22', label: '静安区' },
+    ],
+  },
+];
+
+// 自定义
+const DIY_DATA = [
+  {
+    code: '1',
+    name: '北京市',
+    children: [
+      { code: '11', name: '海淀区' },
+      { code: '12', name: '西城区' },
+    ],
+  },
+  {
+    code: '2',
     name: '上海市',
     children: [
-      { value: '21', name: '黄埔区' },
-      { value: '22', name: '虹口区' },
+      { code: '21', name: '黄埔区' },
+      { code: '22', name: '虹口区' },
     ],
   },
 ];
@@ -77,12 +81,12 @@ const initState = {
   cascade: {
     visible: false,
     value: [],
-    dataSource: [],
+    dataSource: CASCADE_DATA,
   },
   diy: {
     visible: false,
     value: [],
-    dataSource: DIY_DATA,
+    dataSource: [],
   },
   specDOM: {
     visible: false,
@@ -156,9 +160,9 @@ const Demo = () => {
   useEffect(() => {
     // 异步加载数据源测试
     setTimeout(() => {
-      setValue('cascade', ['1', '12']);
-      setValueMember('cascade', 'code');
-      setDataSource('cascade', CASCADE_DATA);
+      setValue('diy', ['1', '12']);
+      setDataSource('diy', DIY_DATA);
+      setValueMember('diy', 'code');
     }, 0);
   }, []);
 
@@ -209,7 +213,7 @@ const Demo = () => {
         value={state.single.value}
         dataSource={state.single.dataSource}
         onOk={(selected) => {
-          console.log('Picker onOk: ', selected);
+          console.log('Single Picker onOk: ', selected);
           Toast.show(JSON.stringify(selected));
           setValue('single', selected.map(item => item.value));
           setVisible('single');
@@ -222,7 +226,7 @@ const Demo = () => {
         value={state.multi.value}
         dataSource={state.multi.dataSource}
         onOk={(selected) => {
-          console.log('Picker onOk: ', selected);
+          console.log('Multi Picker onOk: ', selected);
           Toast.show(JSON.stringify(selected));
           setValue('multi', selected.map(item => item.value));
           setVisible('multi');
@@ -234,11 +238,10 @@ const Demo = () => {
         visible={state.cascade.visible}
         value={state.cascade.value}
         dataSource={state.cascade.dataSource}
-        valueMember={state.cascade.valueMember}
         onOk={(selected) => {
-          console.log('Picker onOk: ', selected);
+          console.log('Cascade Picker onOk: ', selected);
           Toast.show(JSON.stringify(selected));
-          setValue('cascade', selected.map(item => item.code));
+          setValue('cascade', selected.map(item => item.value));
           setVisible('cascade');
         }}
         onCancel={() => setVisible('cascade')}
@@ -251,12 +254,12 @@ const Demo = () => {
         okText="Ok"
         dataSource={state.diy.dataSource}
         value={state.diy.value}
-        valueMember="value"
+        valueMember={state.diy.valueMember}
         itemRender={data => data.name}
         onOk={(selected) => {
-          console.log('Picker onOk: ', selected);
+          console.log('DIY Picker onOk: ', selected);
           Toast.show(JSON.stringify(selected));
-          setValue('diy', selected.map(item => item.value));
+          setValue('diy', selected.map(item => item.code));
           setVisible('diy');
         }}
         onCancel={() => setVisible('diy')}
@@ -325,17 +328,18 @@ class Demo extends React.Component {
     setTimeout(() => {
       this.setState({
         dataSource: CASCADE_DATA,
-        value: ['1', '12'],
+        wheelDefaultValue: ['1', '12'],
       });
     }, 0);
   }
 
   render() {
-    const { value, dataSource } = this.state;
+    const { value, wheelDefaultValue, dataSource } = this.state;
     return (
       <Cell title="城市">
         <Select
           value={value}
+          wheelDefaultValue={wheelDefaultValue}
           dataSource={dataSource}
           onOk={(selected) => {
             console.log('Select onOk: ', selected);
@@ -420,14 +424,15 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| dataSource | object[] | [] | 数据源 |
+| dataSource | DataSource<T = { label: string; value: string \| number \| boolean }> = Array<T & { children?: DataSource<T> }> | [] | 数据源 |
 | value | string \| number \| boolean \| Array<string &#124; number &#124; boolean> | - | 值 |
 | defaultValue | string \| number \| boolean \| Array<string &#124; number &#124; boolean> | - | 初始值 |
+| wheelDefaultValue | string \| number \| boolean \| Array<string &#124; number &#124; boolean> | - | 滚轮初始停留的位置 |
 | valueMember | string | 'value' | 值字段对应的key 
-| itemRender | (data?: object) => data.label | (data?: object) => data.label | 单个选项的展示 |
+| itemRender | (data?: { [key: string]: string &#124; number &#124; boolean }) => string | (data) => data.label | 单个选项的展示 |
 | disabled | boolean | false | 是否禁用 |
 | cols | number | Infinity | 级联选择器的级数 |
-| onChange | (selected?: object) => void | - | 值变化时触发的回调函数 |
+| onChange | (selected?: Array<{ [key: string]: string &#124; number &#124; boolean }>) => void | - | 值变化时触发的回调函数 |
 
 ### 仅 Picker & Select 支持的属性
 | 属性 | 类型 | 默认值 | 说明 |
@@ -437,7 +442,7 @@ ReactDOM.render(<Demo />, mountNode);
 | cancelText | string | '取消' | 取消栏文字 |
 | maskClosable | boolean | true | 是否点击遮罩层时关闭，需要和onCancel一起使用 |
 | destroy | boolean | false | 弹层关闭后是否移除节点 |
-| onOk | (selected?: object) => void | - | 点击确定时触发的回调函数 |
+| onOk | (selected?: Array<{ [key: string]: string &#124; number &#124; boolean }>) => void | - | 点击确定时触发的回调函数 |
 | onCancel | () => void | - | 点击取消时触发的回调函数 |
 | mountContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 Picker 挂载的 HTML 节点 |
 
@@ -452,4 +457,4 @@ ReactDOM.render(<Demo />, mountNode);
 | :--- | :--- | :--- | :--- |
 | placeholder | string | '请选择' | 输入提示信息 |
 | hasArrow | boolean | true | 是否显示箭头 |
-| displayRender | (selected?: object) => string | selected => selected.map(item => item.label) | 所选值的展示 |
+| displayRender | (selected?: Array<{ [key: string]: string &#124; number &#124; boolean }>) => string | selected => selected.map(item => item.label) | 所选值的展示 |

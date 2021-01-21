@@ -14,6 +14,10 @@ const getValues = (props, defaultValue?: any) => {
     return [].concat(props.defaultValue);
   }
 
+  if ('wheelDefaultValue' in props && isValueValid(props.wheelDefaultValue)) {
+    return [].concat(props.wheelDefaultValue);
+  }
+
   return defaultValue;
 };
 

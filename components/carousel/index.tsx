@@ -190,6 +190,8 @@ export default class Carousel extends Component<CarouselProps, any> {
       return false;
     }
     if (!offsetX && !offsetY) {
+      // 恢复自动轮播
+      this.startAutoPlay();
       return;
     }
 

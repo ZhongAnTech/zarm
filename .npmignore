@@ -6,6 +6,7 @@
 .eslintrc
 .gitignore
 .npmignore
+.vscode
 .stylelintrc
 .travis.yml
 .sentryclirc

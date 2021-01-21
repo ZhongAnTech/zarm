@@ -57,6 +57,8 @@
 
   @include m(focus) {
     @include e(virtual-input) {
+      display: flex;
+      align-items: center;
       transform: translate3d(0, 0, 0);
 
       &:after {

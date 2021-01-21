@@ -233,8 +233,8 @@ ReactDOM.render(<Demo />, mountNode);
 | value | string \| Date | - | 值 |
 | defaultValue | string \| Date | - | 初始值 |
 | mode | string | 'date' | 指定日期选择模式，可选项 `year`, `month`, `date`, `time`, `datetime` |
-| min | string | - | 相应mode的最小时间 |
-| max | string | - | 相应mode的最大时间 |
+| min | string \| Date | - | 相应mode的最小时间 |
+| max | string \| Date | - | 相应mode的最大时间 |
 | minuteStep | number | 1 | 分钟间隔 |
 | disabled | boolean | false | 是否禁用 |
 | onChange | (value?: Date) => void | - | 值变化时触发的回调函数 |

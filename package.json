@@ -1,6 +1,6 @@
 {
   "name": "zarm",
-  "version": "2.7.0-beta.0",
+  "version": "2.7.0",
   "description": "基于 React 的移动端UI库",
   "tags": [
     "zarm",
@@ -64,7 +64,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
-    "better-scroll": "1.15.1",
+    "better-scroll": "2.0.7",
     "classnames": "2.2.6",
     "color": "^3.1.0",
     "hoist-non-react-statics": "^3.3.0",
@@ -127,7 +127,7 @@
     "react-hot-loader": "^4.12.13",
     "react-intl": "^4.6.6",
     "react-loadable": "^5.5.0",
-    "react-native": "^0.60.5",
+    "react-native": "^0.63.4",
     "react-native-mock-render": "0.1.5",
     "react-navigation": "^4.0.3",
     "react-router-dom": "^5.1.2",

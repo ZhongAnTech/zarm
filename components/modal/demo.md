@@ -221,6 +221,7 @@ const Demo = () => {
             size="xs"
             onClick={() => {
               const modal = Modal.alert({
+                className: 'test',
                 title: '静态调用的title',
                 content: '静态调用的body',
                 onCancel: () => {

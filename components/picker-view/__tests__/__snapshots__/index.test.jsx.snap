@@ -44,8 +44,8 @@ exports[`PickerView PickerView disabled 1`] = `
         itemRender={[Function]}
         key="0"
         onChange={[Function]}
-        onTransition={[Function]}
         prefixCls="za-wheel"
+        stopScroll={false}
         value="1"
         valueMember="value"
       >

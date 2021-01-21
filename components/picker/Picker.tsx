@@ -5,20 +5,21 @@ import PickerView from '../picker-view';
 import BasePickerProps from './PropsType';
 import parseProps from '../picker-view/utils/parseProps';
 import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
+import { DataSource } from '../picker-view/PropsType';
+import { WheelValue, WheelItem } from '../wheel/PropsType';
 
 export interface PickerProps extends BasePickerProps {
   prefixCls?: string;
   className?: string;
 }
 
-export type DataSource = Array<{ [key: string]: any; children?: DataSource }>;
-
 export interface PickerState {
-  value: string[] | number[];
-  objValue?: Array<{ [key: string]: any }>;
+  value: Array<WheelValue>;
+  objValue: Array<WheelItem>;
   dataSource: DataSource;
-  tempObjValue?: Array<{ [key: string]: any }>;
-  tempValue?: string[] | number[];
+  tempObjValue?: Array<WheelItem>;
+  tempValue?: Array<WheelValue>;
+  stopScroll?: boolean;
 }
 
 export default class Picker extends Component<PickerProps, PickerState> {
@@ -32,9 +33,7 @@ export default class Picker extends Component<PickerProps, PickerState> {
     destroy: false,
   };
 
-  private isScrolling = false;
-
-  state: PickerState = parseProps.getSource(this.props);
+  state: PickerState = { ...parseProps.getSource(this.props), stopScroll: false };
 
   static getDerivedStateFromProps(props, state) {
     if (!isEqual(removeFnFromProps(props, ['onOk', 'onCancel', 'onChange']), removeFnFromProps(state.prevProps, ['onOk', 'onCancel', 'onChange']))) {
@@ -51,11 +50,10 @@ export default class Picker extends Component<PickerProps, PickerState> {
 
   onChange = (selected) => {
     const { valueMember, onChange } = this.props;
+    const { stopScroll } = this.state;
     const value = selected.map((item) => item[valueMember!]);
-    this.setState({
-      value,
-      objValue: selected,
-    });
+    const stateData = stopScroll ? { value, objValue: selected, stopScroll: false } : { value, objValue: selected };
+    this.setState(stateData);
 
     if (typeof onChange === 'function') {
       onChange(selected);
@@ -74,33 +72,24 @@ export default class Picker extends Component<PickerProps, PickerState> {
     }
   };
 
-  onOk = () => {
-    if (this.isScrolling) {
-      return false;
-    }
-    const { value, objValue = [] } = this.state;
+  onOk = async () => {
     this.setState({
-      value,
-      objValue,
+      stopScroll: true,
     });
 
-    const { onOk } = this.props;
-    if (typeof onOk === 'function') {
-      onOk(objValue);
-    }
-  };
+    setTimeout(() => {
+      const { objValue } = this.state;
 
-  onTransition = (isScrolling) => {
-    const { onTransition } = this.props;
-    this.isScrolling = isScrolling;
-    if (typeof onTransition === 'function') {
-      onTransition(isScrolling);
-    }
+      const { onOk } = this.props;
+      if (typeof onOk === 'function') {
+        onOk(objValue);
+      }
+    }, 0);
   };
 
   render() {
     const { prefixCls, className, cancelText, okText, title, locale, maskClosable, mountContainer, destroy, onOk, onCancel, visible, ...others } = this.props;
-    const { value } = this.state;
+    const { value, stopScroll = false } = this.state;
     const noop = () => {};
     return (
       <Popup
@@ -120,7 +109,7 @@ export default class Picker extends Component<PickerProps, PickerState> {
             {...others}
             value={value}
             onChange={this.onChange}
-            onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
+            stopScroll={stopScroll}
           />
         </div>
       </Popup>

@@ -49,7 +49,7 @@ const Demo = () => {
       <Cell
         title="步长小数"
         description={
-         <Stepper step={1.2} defaultValue={0} max={2.00} min={-1} type="text" />
+          <Stepper type="price" step={0.12} defaultValue={0.9} max={2.00} min={1} />
         }
       />
 
@@ -121,6 +121,7 @@ ReactDOM.render(
 | :--- | :--- | :--- | :--- |
 | shape | string | 'radius' | 形状，可选值 `rect`, `radius`, `circle` |
 | size | string | 'md' | 大小，可选值 `md`、`lg` |
+| type | string | 'text' | 输入类型，可选值 `text`、`number`、`price`、`tel` |
 | value | number \| string | - | 值 |
 | defaultValue | number | - | 初始值 |
 | min | number | - | 最小值 |
