@@ -80,7 +80,7 @@ export default class Marquee extends PureComponent<MarqueeProps, {}> {
       case DIRECTION_UP:
         return this.boundingRect.height;
       case DIRECTION_DOWN:
-        return this.boundingRect.height;
+        return this.containerBoundingRect.height;
       default:
         return this.boundingRect.width;
     }
@@ -122,8 +122,8 @@ export default class Marquee extends PureComponent<MarqueeProps, {}> {
     style!.height = height;
 
     return (
-      <div className={cls} style={style}>
-        <div className={`${prefixCls}__body`} ref={(el) => { this.container = el; }}>
+      <div className={cls}>
+        <div className={`${prefixCls}__body`} ref={(el) => { this.container = el; }} style={style}>
           <div className={`${prefixCls}__content`} ref={(el) => { this.scrollItem = el; }}>
             {children}
           </div>
