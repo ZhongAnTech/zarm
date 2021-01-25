@@ -4,18 +4,18 @@
 - Bug Fix
   - [Button] 修复链接按钮的行高不正确的BUG。[#13370c4](https://github.com/ZhongAnTech/zarm/commit/13370c412b88f5d542e24d113256caf8765d5145)
   - [Tooltip] 修复内容为空时渲染异常的BUG。[#28a16f9](https://github.com/ZhongAnTech/zarm/commit/28a16f9a62c1036cfd1fce64a15e8da068da6d8e)
-  - [Tabs] 修复包含`scrollable`属性在设置异步数据时出错的BUG。[#520](https://github.com/ZhongAnTech/zarm/pull/520)
+  - [Tabs] 修复包含 `scrollable` 属性在设置异步数据时出错的BUG。[#520](https://github.com/ZhongAnTech/zarm/pull/520)
   - [Popup] 修复弹出动画执行异常的情况。[#3473207](https://github.com/ZhongAnTech/zarm/commit/3473207c96ed018284915ded6cb098ed99e87f51)
   - [ImagePreview] 修复在长图情况下无法滚动预览的BUG。[#533](https://github.com/ZhongAnTech/zarm/pull/533)[@pandanxin]
-  - [Input] 修复`placeholder`占位符的颜色不统一的BUG。[#5626247](https://github.com/ZhongAnTech/zarm/commit/562624703a7acc30c071722306e1c8aaaaefab8a)
-  - [Input] 修复数字输入框默认值为0时不显示的BUG。[#536](https://github.com/ZhongAnTech/zarm/pull/536)
-  - [Input] 虚拟键盘光标高度优化。[#4668c47](https://github.com/ZhongAnTech/zarm/commit/4668c4797ef09497fb3d7f3e179f263725be527c)
+  - [Input] 修复 `placeholder` 占位符的颜色不统一的BUG。[#5626247](https://github.com/ZhongAnTech/zarm/commit/562624703a7acc30c071722306e1c8aaaaefab8a)
+  - [Input] 修复数字输入框默认值为 0 时不显示的BUG。[#536](https://github.com/ZhongAnTech/zarm/pull/536)
   - [Carousel] 走马灯自动播放在触碰后会停止，无法恢复的BUG。[#543](https://github.com/ZhongAnTech/zarm/pull/543)
 
 - Perf
   - [Collapse] 重构折叠面板，优化箭头动画。[#838629a](https://github.com/ZhongAnTech/zarm/commit/838629a13a4bb348799d5f171e78a99345f6ed1d)
   - [Carousel] 优化走马灯组件纵向对齐方式，调整为顶部对齐。[#fed4b22](https://github.com/ZhongAnTech/zarm/commit/fed4b2222541db79a9237669f6747da26d41b04e)
   - [Picker, DatePicker] 优化选值机制，当滚轮滚动时，点击确定按钮后动画自动停止并且选择当前值。[#544](https://github.com/ZhongAnTech/zarm/pull/544)
+  - [Input] 虚拟键盘光标高度优化。[#4668c47](https://github.com/ZhongAnTech/zarm/commit/4668c4797ef09497fb3d7f3e179f263725be527c)
 
 - Feature
   - 抽离更多的css变量用于样式配置。[#74de78a](https://github.com/ZhongAnTech/zarm/commit/74de78a299b69b4624746163092cdc218c4913ea)
