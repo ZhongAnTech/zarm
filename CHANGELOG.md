@@ -1,5 +1,16 @@
 # 版本更新日志
 
+
+## v2.7.2
+- Bug Fix
+  - [Input] 修复 `value` 为 `null` 值时，出现错误的bug。[#554](https://github.com/ZhongAnTech/zarm/pull/554)
+
+
+## v2.7.1
+- Bug Fix
+  - [DatePicker, Picker] 修复 `DOM` 结构没有随着 `props` 的改变而更新，导致滑动出现问题的bug。[#552](https://github.com/ZhongAnTech/zarm/pull/552)
+
+
 ## v2.7.0
 - Bug Fix
   - [Button] 修复链接按钮的行高不正确的BUG。[#13370c4](https://github.com/ZhongAnTech/zarm/commit/13370c412b88f5d542e24d113256caf8765d5145)
