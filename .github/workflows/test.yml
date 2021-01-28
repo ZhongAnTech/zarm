@@ -1,5 +1,5 @@
 name: test
-on: [push]
+on: [push, pull_request]
 
 jobs:
   setup:
@@ -9,7 +9,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: cache yarn.lock
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: package-temp-dir
           key: lock-${{ github.sha }}
@@ -23,7 +23,7 @@ jobs:
 
       - name: cache node_modules
         id: node_modules_cache_id
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: node_modules
           key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
@@ -39,13 +39,13 @@ jobs:
         uses: actions/checkout@master
 
       - name: restore cache from yarn.lock
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: package-temp-dir
           key: lock-${{ github.sha }}
 
       - name: restore cache from node_modules
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: node_modules
           key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
@@ -61,13 +61,13 @@ jobs:
         uses: actions/checkout@master
 
       - name: restore cache from yarn.lock
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: package-temp-dir
           key: lock-${{ github.sha }}
 
       - name: restore cache from node_modules
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: node_modules
           key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
