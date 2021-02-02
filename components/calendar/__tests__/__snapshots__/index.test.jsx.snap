@@ -63,17 +63,17 @@ exports[`Calendar calendar render 1`] = `
       className="za-calendar__body"
     >
       <CalendarMonthView
-        dateMonth={2018-05-01T04:00:00.000Z}
+        dateMonth={2018-04-30T16:00:00.000Z}
         dateRender={[Function]}
         disabledDate={[Function]}
         key="2018-4"
-        max={2018-10-02T04:00:00.000Z}
-        min={2018-05-06T04:00:00.000Z}
+        max={2018-10-01T16:00:00.000Z}
+        min={2018-05-05T16:00:00.000Z}
         onDateClick={[Function]}
         prefixCls="za-calendar"
         value={
           Array [
-            2018-08-07T04:00:00.000Z,
+            2018-08-06T16:00:00.000Z,
           ]
         }
       >
@@ -428,17 +428,17 @@ exports[`Calendar calendar render 1`] = `
         </section>
       </CalendarMonthView>
       <CalendarMonthView
-        dateMonth={2018-06-01T04:00:00.000Z}
+        dateMonth={2018-05-31T16:00:00.000Z}
         dateRender={[Function]}
         disabledDate={[Function]}
         key="2018-5"
-        max={2018-10-02T04:00:00.000Z}
-        min={2018-05-06T04:00:00.000Z}
+        max={2018-10-01T16:00:00.000Z}
+        min={2018-05-05T16:00:00.000Z}
         onDateClick={[Function]}
         prefixCls="za-calendar"
         value={
           Array [
-            2018-08-07T04:00:00.000Z,
+            2018-08-06T16:00:00.000Z,
           ]
         }
       >
@@ -782,17 +782,17 @@ exports[`Calendar calendar render 1`] = `
         </section>
       </CalendarMonthView>
       <CalendarMonthView
-        dateMonth={2018-07-01T04:00:00.000Z}
+        dateMonth={2018-06-30T16:00:00.000Z}
         dateRender={[Function]}
         disabledDate={[Function]}
         key="2018-6"
-        max={2018-10-02T04:00:00.000Z}
-        min={2018-05-06T04:00:00.000Z}
+        max={2018-10-01T16:00:00.000Z}
+        min={2018-05-05T16:00:00.000Z}
         onDateClick={[Function]}
         prefixCls="za-calendar"
         value={
           Array [
-            2018-08-07T04:00:00.000Z,
+            2018-08-06T16:00:00.000Z,
           ]
         }
       >
@@ -1147,17 +1147,17 @@ exports[`Calendar calendar render 1`] = `
         </section>
       </CalendarMonthView>
       <CalendarMonthView
-        dateMonth={2018-08-01T04:00:00.000Z}
+        dateMonth={2018-07-31T16:00:00.000Z}
         dateRender={[Function]}
         disabledDate={[Function]}
         key="2018-7"
-        max={2018-10-02T04:00:00.000Z}
-        min={2018-05-06T04:00:00.000Z}
+        max={2018-10-01T16:00:00.000Z}
+        min={2018-05-05T16:00:00.000Z}
         onDateClick={[Function]}
         prefixCls="za-calendar"
         value={
           Array [
-            2018-08-07T04:00:00.000Z,
+            2018-08-06T16:00:00.000Z,
           ]
         }
       >
@@ -1512,17 +1512,17 @@ exports[`Calendar calendar render 1`] = `
         </section>
       </CalendarMonthView>
       <CalendarMonthView
-        dateMonth={2018-09-01T04:00:00.000Z}
+        dateMonth={2018-08-31T16:00:00.000Z}
         dateRender={[Function]}
         disabledDate={[Function]}
         key="2018-8"
-        max={2018-10-02T04:00:00.000Z}
-        min={2018-05-06T04:00:00.000Z}
+        max={2018-10-01T16:00:00.000Z}
+        min={2018-05-05T16:00:00.000Z}
         onDateClick={[Function]}
         prefixCls="za-calendar"
         value={
           Array [
-            2018-08-07T04:00:00.000Z,
+            2018-08-06T16:00:00.000Z,
           ]
         }
       >
@@ -1866,17 +1866,17 @@ exports[`Calendar calendar render 1`] = `
         </section>
       </CalendarMonthView>
       <CalendarMonthView
-        dateMonth={2018-10-01T04:00:00.000Z}
+        dateMonth={2018-09-30T16:00:00.000Z}
         dateRender={[Function]}
         disabledDate={[Function]}
         key="2018-9"
-        max={2018-10-02T04:00:00.000Z}
-        min={2018-05-06T04:00:00.000Z}
+        max={2018-10-01T16:00:00.000Z}
+        min={2018-05-05T16:00:00.000Z}
         onDateClick={[Function]}
         prefixCls="za-calendar"
         value={
           Array [
-            2018-08-07T04:00:00.000Z,
+            2018-08-06T16:00:00.000Z,
           ]
         }
       >

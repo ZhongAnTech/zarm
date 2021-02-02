@@ -154,11 +154,7 @@ describe('file picker disabled', () => {
       onBeforeSelect: jest.fn(() => false),
     };
 
-    const wrapper = mount(
-      <FilePicker
-        {..._props}
-      />,
-    );
+    const wrapper = mount(<FilePicker {..._props} />);
 
     wrapper.find('.za-file-picker__input').simulate('click');
     expect(props.onChange).not.toHaveBeenCalled();
@@ -170,11 +166,7 @@ describe('file picker disabled', () => {
       disabled: true,
     };
 
-    const wrapper = mount(
-      <FilePicker
-        {..._props}
-      />,
-    );
+    const wrapper = mount(<FilePicker {..._props} />);
 
     wrapper.find('.za-file-picker__input').simulate('click');
     expect(props.onChange).not.toHaveBeenCalled();

@@ -18,9 +18,7 @@ export default class Toast extends Component<ToastProps, any> {
 
   private static toastContainer: HTMLElement;
 
-  static show = (
-    content: ReactNode | ToastProps,
-  ) => {
+  static show = (content: ReactNode | ToastProps) => {
     Toast.unmountNode();
     if (!Toast.zarmToast) {
       Toast.zarmToast = document.createElement('div');
@@ -28,25 +26,31 @@ export default class Toast extends Component<ToastProps, any> {
       if (contentIsToastProps(content) && content.className) {
         Toast.zarmToast.classList.add(content.className);
       }
-      Toast.toastContainer = contentIsToastProps(content) && content.mountContainer ? getMountContainer(content.mountContainer) : getMountContainer();
+      Toast.toastContainer = contentIsToastProps(content) && content.mountContainer
+        ? getMountContainer(content.mountContainer)
+        : getMountContainer();
       Toast.toastContainer.appendChild(Toast.zarmToast);
     }
 
     if (Toast.zarmToast) {
       const props: ToastProps = contentIsToastProps(content)
-        ? { ...Toast.defaultProps, ...content, mountContainer: false, visible: true }
-        : { ...Toast.defaultProps, visible: true, mountContainer: false, content };
+        ? {
+          ...Toast.defaultProps,
+          ...content,
+          mountContainer: false,
+          visible: true,
+        }
+        : {
+          ...Toast.defaultProps,
+          visible: true,
+          mountContainer: false,
+          content,
+        };
 
       Toast.hideHelper = () => {
-        ReactDOM.render(
-          <Toast {...props} visible={false} />,
-          Toast.zarmToast,
-        );
+        ReactDOM.render(<Toast {...props} visible={false} />, Toast.zarmToast);
       };
-      ReactDOM.render(
-        <Toast {...props} />,
-        Toast.zarmToast,
-      );
+      ReactDOM.render(<Toast {...props} />, Toast.zarmToast);
     }
   };
 
@@ -132,13 +136,7 @@ export default class Toast extends Component<ToastProps, any> {
   }
 
   render() {
-    const {
-      prefixCls,
-      className,
-      stayTime,
-      content,
-      ...others
-    } = this.props;
+    const { prefixCls, className, stayTime, content, ...others } = this.props;
 
     const { visible } = this.state;
 

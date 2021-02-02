@@ -15,7 +15,8 @@
       "react",
       "react-dom",
       "react-native",
-      "node"
+      "node",
+      "jest"
     ]
   },
   "include": [

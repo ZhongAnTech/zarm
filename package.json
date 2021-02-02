@@ -56,7 +56,8 @@
     "coverage": "cat ./coverage/lcov.info | coveralls",
     "authors": "git log --format='%aN <%aE>' | sort -u | grep -v 'users.noreply.github.com' > AUTHORS",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
-    "release": "bash scripts/release.sh"
+    "release": "bash scripts/release.sh",
+    "test:jest": "jest"
   },
   "peerDependencies": {
     "react": ">=16.3.1",
@@ -79,7 +80,9 @@
     "@commitlint/cli": "^8.0.0",
     "@commitlint/config-conventional": "^8.0.0",
     "@sentry/browser": "^5.6.1",
+    "@testing-library/react": "^11.2.3",
     "@types/classnames": "^2.2.3",
+    "@types/jest": "^26.0.20",
     "@types/lodash": "^4.14.151",
     "@types/node": "^14.0.11",
     "@types/react": "^16.8.6",
@@ -103,6 +106,7 @@
     "enzyme-adapter-react-16": "^1.15.5",
     "enzyme-to-json": "^3.6.1",
     "eslint": "7.10.0",
+    "eslint-config-prettier": "^7.2.0",
     "eslint-config-za": "2.2.2",
     "eslint-plugin-babel": "5.3.1",
     "eslint-plugin-import": "2.22.1",
@@ -116,8 +120,10 @@
     "husky": "^4.2.5",
     "is-wsl": "^2.1.0",
     "istanbul-api": "^3.0.0",
+    "jest": "^26.6.3",
     "lint-staged": "^10.2.2",
     "marked": "^1.0.0",
+    "prettier": "2.2.1",
     "prop-types": "^15.6.2",
     "qrious": "^4.0.2",
     "raw-loader": "^4.0.1",
@@ -136,8 +142,14 @@
     "stylelint-checkstyle-formatter": "0.1.2",
     "stylelint-config-za": "0.3.0",
     "stylelint-scss": "^3.18.0",
+    "ts-jest": "^26.5.0",
     "typescript": "4.0.2",
     "zarm-web": "0.0.1-alpha.10"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "printWidth": 120,
+    "trailingComma": "all"
   },
   "lint-staged": {
     "components/**/*.{ts,tsx}": "eslint",

@@ -13,24 +13,13 @@ fakeTimers();
 describe('DateSelect', () => {
   it('DateSelect year', () => {
     const wrapper = mount(
-      <DateSelect
-        title="选择年份"
-        placeholder="请选择年份"
-        mode="year"
-        value="2017"
-        locale={enLocale}
-      />,
+      <DateSelect title="选择年份" placeholder="请选择年份" mode="year" value="2017" locale={enLocale} />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('DateSelect trigger visible', () => {
-    const wrapper = mount(
-      <DateSelect
-        mode="date"
-        defaultValue="2017-11-03"
-      />,
-    );
+    const wrapper = mount(<DateSelect mode="date" defaultValue="2017-11-03" />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -51,14 +40,7 @@ describe('DateSelect', () => {
   });
 
   it('DateSelect date', () => {
-    const wrapper = mount(
-      <DateSelect
-        title="选择日期"
-        placeholder="请选择日期"
-        mode="date"
-        value="2009-03-04"
-      />,
-    );
+    const wrapper = mount(<DateSelect title="选择日期" placeholder="请选择日期" mode="date" value="2009-03-04" />);
     wrapper.setProps({ value: '2017-09-06' });
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -93,12 +75,7 @@ describe('DateSelect', () => {
 
   it('DateSelect wheelDefaultValue', () => {
     const wrapper = mount(
-      <DateSelect
-        title="选择日期"
-        placeholder="请选择日期"
-        mode="date"
-        wheelDefaultValue="2017-11-03 15:00"
-      />,
+      <DateSelect title="选择日期" placeholder="请选择日期" mode="date" wheelDefaultValue="2017-11-03 15:00" />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
