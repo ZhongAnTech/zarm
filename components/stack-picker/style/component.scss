@@ -159,6 +159,7 @@
       padding-right: var(--stack-picker-padding);
       overflow-y: scroll;
       box-shadow: var(--stack-picker-shadow);
+      background: var(--stack-picker-background);
     }
 
     &-item {
