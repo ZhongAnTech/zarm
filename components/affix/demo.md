@@ -27,7 +27,7 @@ ReactDOM.render(
   <div className="article">
     <header className="article-header">
       <div className="article-title">
-        Zarm Affix 介绍文章
+        Zarm 介绍文章
       </div>
       <div className="article-author">
         <span className="article-author-name">ZARM 团队</span>
