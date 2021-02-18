@@ -6,6 +6,8 @@ import { canUseDOM } from '../utils/dom';
 
 export interface AffixStates {
   affixed: boolean;
+  width: number;
+  height: number;
 }
 
 export interface AffixProps extends BaseAffixProps {
@@ -30,6 +32,8 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
 
   state = {
     affixed: false,
+    width: 0,
+    height: 0,
   };
 
   componentDidMount() {
@@ -65,7 +69,7 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
 
     return container !== window
       ? (container as HTMLElement).getBoundingClientRect()
-      : { top: 0, bottom: container.innerHeight } as any;
+      : { top: 0, bottom: container.innerHeight, width: 0, height: 0 } as any;
   }
 
   get affixed() {
@@ -84,19 +88,25 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
   }
 
   get affixStyle(): React.CSSProperties {
+    const { containerRect } = this;
     const { offsetTop, offsetBottom } = this.props;
+    const { width, height } = this.state;
 
     if (this.affixed && typeof offsetBottom !== 'undefined') {
       return {
         position: 'fixed',
         bottom: offsetBottom,
+        width,
+        height,
       };
     }
 
     if (this.affixed && typeof offsetTop !== 'undefined') {
       return {
         position: 'fixed',
-        top: this.containerRect.top + offsetTop,
+        top: containerRect.top + offsetTop,
+        width,
+        height,
       };
     }
 
@@ -107,13 +117,17 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
     const { onChange } = this.props;
     const { affixed } = this.state;
     const target = this.savePlaceholderNode.current!;
-    const { top } = target.getBoundingClientRect()!;
+    const { top, width, height } = target.getBoundingClientRect()!;
 
     this.saveFixedNodeTop = top;
 
     const currentAffixed = this.affixed;
     if (currentAffixed !== affixed) {
-      this.setState({ affixed: currentAffixed });
+      this.setState({
+        affixed: currentAffixed,
+        width,
+        height,
+      });
       onChange && onChange(currentAffixed);
     }
   };
