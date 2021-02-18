@@ -9,11 +9,10 @@
   }
 
   .article {
-    padding: 16px;
+    padding: r(16);
 
     .article-header {
       .article-title {
-        color: rgba(0, 0, 0, .6);
         font-size: r(22);
         margin-bottom: r(14);
       }
@@ -22,13 +21,11 @@
         margin-bottom: r(10);
 
         .article-author-name {
-          color: rgba(0, 0, 0, .3);
           font-size: r(15);
           margin-right: r(10);
         }
 
         .article-column-name {
-          color: rgb(87, 107, 149);
           font-size: r(15);
         }
       }
@@ -36,7 +33,6 @@
 
     .article-tip {
       background-color: #fff;
-      width: calc(100vw - 32px);
       margin-bottom: r(10);
     }
 
@@ -51,7 +47,6 @@
         margin: 0;
 
         p {
-          color: black;
           font-size: 16px;
           line-height: 26px;
           margin: 0;
@@ -71,5 +66,11 @@
     padding-top: r(60);
     height: r(300);
     background-image: url(https://zos.alipayobjects.com/rmsportal/RmjwQiJorKyobvI.jpg);
+  }
+}
+
+body[data-theme=dark] {
+  .affix-page .article .article-tip {
+    background-color: var(--panel-body-background);
   }
 }
