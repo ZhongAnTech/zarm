@@ -50,7 +50,7 @@
     "lint:js": "eslint --ext .js,.jsx components site rnkit/pages",
     "lint:style": "stylelint \"components/**/*.scss\" \"site/**/*.scss\" --syntax scss",
     "lint": "npm run lint:ts && npm run lint:js && npm run lint:style",
-    "test:h5": "cross-env TZ=America/New_York zarm test -s scripts/jest/setup.js",
+    "test:h5": "zarm test -s scripts/jest/setup.js",
     "test:rn": "zarm test -m native -s scripts/jest/setup.js",
     "test": "rimraf coverage && npm run test:h5 -- -c && cp ./coverage/coverage-final.json ./coverage/coverage-h5-final.json && npm run test:rn -- -c && cp ./coverage/coverage-final.json ./coverage/coverage-rn-final.json && node ./scripts/jest/mapCoverage.js",
     "coverage": "cat ./coverage/lcov.info | coveralls",
