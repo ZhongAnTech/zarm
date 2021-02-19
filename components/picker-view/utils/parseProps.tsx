@@ -1,6 +1,6 @@
 import { isArray, isCascader } from '../../utils/validate';
 
-const isValueValid = (value) => {
+export const isValueValid = (value) => {
   const valueArray = [].concat(value);
   return valueArray.some((item) => !!item || item === 0 || item === false);
 };
@@ -21,9 +21,12 @@ const getValues = (props, defaultValue?: any) => {
   return defaultValue;
 };
 
-const normalState = (props) => {
+export const normalState = (props) => {
   const { valueMember, dataSource } = props;
-  const value = getValues(props, dataSource!.map((item) => item[0] && item[0][valueMember!]));
+  const value = getValues(
+    props,
+    dataSource!.map((item) => item[0] && item[0][valueMember!]),
+  );
   return {
     value,
     objValue: props.dataSource.map((item, index) => item.filter((d) => d[valueMember!] === value[index])[0]),
@@ -41,7 +44,9 @@ const cascaderState = (props) => {
     newDateSource[level] = dataSource.map((item, index) => {
       const { children, ...others } = item;
       if (
-        (isValueValid(newValues[level]) && item[valueMember!] === newValues[level]) || (!isValueValid(newValues[level]) && index === 0)
+        // eslint-disable-next-line operator-linebreak
+        (isValueValid(newValues[level]) && item[valueMember!] === newValues[level]) ||
+        (!isValueValid(newValues[level]) && index === 0)
       ) {
         newValues[level] = item[valueMember!];
         newObjValues[level] = others;
@@ -71,9 +76,7 @@ const cascaderState = (props) => {
 
 export default {
   getSource(props) {
-    return isCascader(props)
-      ? cascaderState(props)
-      : normalState(props);
+    return isCascader(props) ? cascaderState(props) : normalState(props);
   },
   isValueValid,
 };

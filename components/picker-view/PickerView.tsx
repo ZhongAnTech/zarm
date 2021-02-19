@@ -30,6 +30,7 @@ export default class PickerView extends Component<PickerViewProps, PickerViewSta
 
   state: PickerViewState = parseProps.getSource(this.props);
 
+  // TODO: is this method still be used?
   static getDerivedStateFromProps(props, state) {
     if (!isEqual(removeFnFromProps(props, ['onChange']), removeFnFromProps(state.prevProps, ['onChange']))) {
       return {
@@ -41,7 +42,7 @@ export default class PickerView extends Component<PickerViewProps, PickerViewSta
     return null;
   }
 
-  onValueChange = (selected, level) => {
+  onValueChange = (selected: WheelValue, level: number) => {
     const value = this.state.value.slice();
     const { dataSource, onChange, valueMember, cols } = this.props;
 
@@ -49,7 +50,6 @@ export default class PickerView extends Component<PickerViewProps, PickerViewSta
       value.length = level + 1;
     }
     value[level] = selected;
-
     const newState = parseProps.getSource({ dataSource, value, valueMember, cols });
     this.setState(newState);
     if (typeof onChange === 'function') {
@@ -65,11 +65,11 @@ export default class PickerView extends Component<PickerViewProps, PickerViewSta
       <Wheel
         key={+index}
         dataSource={item}
-        value={value![index]}
+        value={value[index]}
         valueMember={valueMember}
         itemRender={itemRender}
         disabled={disabled}
-        onChange={(selected) => this.onValueChange(selected, index)}
+        onChange={(selected: WheelValue) => this.onValueChange(selected, index)}
         stopScroll={stopScroll}
       />
     ));
