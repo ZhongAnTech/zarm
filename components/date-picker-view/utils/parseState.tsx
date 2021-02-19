@@ -1,4 +1,6 @@
-const isExtendDate = (date) => {
+import BaseDatePickerViewProps, { DateValue } from '../PropsType';
+
+const isExtendDate = (date?: DateValue): Date | '' => {
   if (date instanceof Date) {
     return date;
   }
@@ -10,7 +12,7 @@ const isExtendDate = (date) => {
   return new Date(date.toString().replace(/-/g, '/'));
 };
 
-const parseState = (props) => {
+const parseState = (props: BaseDatePickerViewProps) => {
   const date = props.value && isExtendDate(props.value);
   const defaultDate = props.defaultValue && isExtendDate(props.defaultValue);
   const wheelDefault = props.wheelDefaultValue && isExtendDate(props.wheelDefaultValue);
@@ -21,7 +23,4 @@ const parseState = (props) => {
   };
 };
 
-export {
-  isExtendDate,
-  parseState,
-};
+export { isExtendDate, parseState };
