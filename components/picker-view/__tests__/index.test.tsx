@@ -8,6 +8,7 @@ import PickerView from '../index';
 import { DataSource } from '../PropsType';
 import parseProps from '../utils/parseProps';
 
+// TODO: make mock package for better-scroll package
 const bsScrollInstance = {
   on: jest.fn().mockImplementationOnce((event, handler) => {
     if (event === 'scrollEnd') {
@@ -78,7 +79,7 @@ describe('PickerView', () => {
     expect(wrapper.find('.za-picker-view__mask--bottom')).toHaveLength(1);
   });
 
-  it('should handle value change event', () => {
+  it('should handle value change event and re-render wheels with new props', () => {
     const getSourceSpy = jest.spyOn(parseProps, 'getSource');
     bsScrollInstance.getSelectedIndex.mockReturnValueOnce(1);
 
