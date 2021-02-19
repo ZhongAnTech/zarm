@@ -36,14 +36,14 @@ Zarm 的命名，灵感来源于众安保险秉承的理念：做有温度的保
 
 ## 安装
 
-### 使用 npm 或 yarn 安装（推荐）
+npm 或 yarn 安装
 
 ```bash
 # npm
-npm install zarm --save
+$ npm install zarm --save
 
 # yarn
-yarn add zarm
+$ yarn add zarm
 ```
 
 ## 使用
@@ -63,12 +63,11 @@ document.documentElement.style.setProperty('--theme-primary', '#108ee9');
 
 以下是一些最常用的通用变量，所有样式变量可以在 [这里](https://github.com/ZhongAnTech/zarm/blob/master/components/style/themes/default.scss) 找到。
 
-```css
---theme-primary: #00bc70;
---theme-default: #e6e6e6;
---theme-success: #00bc70;
---theme-warning: #ec9231;
---theme-danger: #ff5050;
+```scss
+--theme-primary: #00bc70; // 全局主色
+--theme-success: #00bc70; // 成功色
+--theme-warning: #ec9231; // 警告色
+--theme-danger: #ff5050;  // 危险色
 ```
 
 ## 社区

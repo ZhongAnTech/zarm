@@ -2,7 +2,7 @@
 
 ## 安装
 
-### 使用 npm 或 yarn 安装（推荐）
+npm 或 yarn 安装
 
 ```bash
 # npm
