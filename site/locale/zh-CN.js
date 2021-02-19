@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   'app.title': '众安科技移动端组件库',
   'app.components': '组件',
   'app.components.type.general': '通用',
