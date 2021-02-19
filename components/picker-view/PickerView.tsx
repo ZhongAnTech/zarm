@@ -80,9 +80,7 @@ export default class PickerView extends Component<PickerViewProps, PickerViewSta
     const cls = classnames(prefixCls, className);
     return (
       <div className={cls}>
-        <div className={`${prefixCls}__content`}>
-          {this.renderWheel()}
-        </div>
+        <div className={`${prefixCls}__content`}>{this.renderWheel()}</div>
         <div className={`${prefixCls}__mask ${prefixCls}__mask--top`} />
         <div className={`${prefixCls}__mask ${prefixCls}__mask--bottom`} />
       </div>

@@ -11,8 +11,8 @@ type GetContextInnerType<T extends Context<any>> = T extends Context<infer R> ? 
 type nameType = keyof Omit<GetContextInnerType<typeof LocaleContext>, 'locale'>;
 
 const ConfigReceiverWrapper = (name?: nameType, defaultConfig?: typeof defaultConfigData) => {
-  return function InnerWrapper<T extends ComponentType<{ forwardedRef: React.Ref<any> }>>(WrappedComponent: T) {
-    const ConfigReceiver = (props) => {
+  return function InnerWrapper<T extends {}>(WrappedComponent: ComponentType<T>) {
+    const ConfigReceiver = <P extends { forwardedRef: React.Ref<T> }>(props: P) => {
       return (
         <ConfigContext.Consumer>
           {({ locale }) => {
@@ -21,12 +21,19 @@ const ConfigReceiverWrapper = (name?: nameType, defaultConfig?: typeof defaultCo
             const localeCode = globalLocale.locale;
             const { forwardedRef, ...rest } = props;
 
-            return <WrappedComponent {...rest} ref={forwardedRef} locale={componentLocale} localeCode={localeCode} />;
+            return (
+              <WrappedComponent
+                {...(rest as T & P)}
+                ref={forwardedRef}
+                locale={componentLocale}
+                localeCode={localeCode}
+              />
+            );
           }}
         </ConfigContext.Consumer>
       );
     };
-    const forwardRef = (props: ComponentType<T>, ref: React.Ref<T>) => {
+    const forwardRef = (props: T, ref: React.Ref<T>) => {
       return <ConfigReceiver {...props} forwardedRef={ref} />;
     };
     const ConfigReceiverWithRef = React.forwardRef(forwardRef);
