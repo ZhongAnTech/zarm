@@ -37,6 +37,11 @@ module.exports = {
   `,
   setBabelOptions: (options) => {
     options.plugins.push(['import', { libraryName: 'zarm-web', style: true }, 'zarm-web']);
+    options.plugins.push(['prismjs', {
+      languages: ['javascript', 'css', 'markup', 'jsx', 'tsx', 'bash'],
+      theme: 'default',
+      css: true,
+    }]);
   },
   setRules: (rules) => {
     rules.push({
