@@ -18,7 +18,10 @@ export default (props) => {
 
     // 代码
     renderer.code = (code, language) => {
-      return `<pre><code class="language-${language}">${Prism.highlight(code, Prism.languages[language], language)}</code></pre>`;
+      const highlightCode = Object.keys(Prism.languages).indexOf(language) > -1
+        ? Prism.highlight(code, Prism.languages[language], language)
+        : code;
+      return `<pre><code class="language-${language}">${highlightCode}</code></pre>`;
     };
 
     // 标题
