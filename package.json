@@ -117,7 +117,7 @@
     "is-wsl": "^2.1.0",
     "istanbul-api": "^3.0.0",
     "lint-staged": "^10.2.2",
-    "marked": "^1.0.0",
+    "marked": "^2.0.0",
     "prismjs": "^1.23.0",
     "prop-types": "^15.6.2",
     "qrious": "^4.0.2",
