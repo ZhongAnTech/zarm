@@ -46,61 +46,30 @@ npm install zarm --save
 yarn add zarm
 ```
 
-### 或者通过 link 和 script 标签分别引入样式文件和js脚本文件（不推荐）
-
-```html
-<link rel="stylesheet" href="https://unpkg.com/zarm/dist/zarm.min.css">
-<script type="text/javascript" src="https://unpkg.com/zarm/dist/zarm.min.js"></script>
-```
-
 ## 使用
 
-### 全组件引入
-
 ```js
 import { Button, Cell } from 'zarm';
-import 'zarm/dist/zarm.min.css';
-```
-
-### 按需加载
-
-> 注意：zarm 默认支持基于 ES module 的 tree shaking，不使用以下插件也会有按需加载的效果。
-
-- 使用 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) 自动加载Sass文件（推荐）
-
-```js
-  // .babelrc or babel-loader option
-  {
-    "plugins": [
-      ['import', {
-        libraryName: 'zarm',
-        style: true, // or 'css'
-      }],
-    ]
-  }
-```
-
-```js
-import { Button, Cell } from 'zarm';
-```
-
-- 手动引入
-
-```js
-import Button from 'zarm/lib/button'; // 加载js
-import 'zarm/lib/button/style/css'; // 加载css
-// import 'zarm/lib/button/style'; // 加载scss
+import 'zarm/dist/zarm.css';
 ```
 
 ### 定制主题
 
-通过修改css变量定义达到定制主题的效果
+zarm 的样式使用了 [scss](https://sass-lang.com) 和 [css变量](https://www.w3.org/Style/CSS/) 相结合做为开发语言，并定义了一系列全局/组件的样式变量，你可以根据需求进行相应调整，实现定制主题的能力。
 
 ```js
 document.documentElement.style.setProperty('--theme-primary', '#108ee9');
 ```
 
-变量名可参考 [default.scss](https://github.com/ZhongAnTech/zarm/blob/master/components/style/themes/default.scss)
+以下是一些最常用的通用变量，所有样式变量可以在 [这里](https://github.com/ZhongAnTech/zarm/blob/master/components/style/themes/default.scss) 找到。
+
+```css
+--theme-primary: #00bc70;
+--theme-default: #e6e6e6;
+--theme-success: #00bc70;
+--theme-warning: #ec9231;
+--theme-danger: #ff5050;
+```
 
 ## 社区
 
