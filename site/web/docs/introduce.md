@@ -32,9 +32,9 @@ Zarm 的命名，灵感来源于众安保险秉承的理念：做有温度的保
 
 ## 社区
 
-| issue | gitter | 微信群 |
+| 问题上报 | 讨论交流 | 微信群 |
 | :--- | :--- | :--- |
-| [github issue](https://github.com/ZhongAnTech/zarm/issues) | [ZhonganTech/zarm](https://gitter.im/ZhonganTech/zarm) | <img src="https://cdn-health.zhongan.com/zarm/qr.jpeg" width="60" /> |
+| [github issues](https://github.com/ZhongAnTech/zarm/issues) | [github discussions](https://github.com/ZhongAnTech/zarm/discussions) | <img src="https://cdn-health.zhongan.com/zarm/qrcode.jpg" width="80" /> <br />备注 "zarm" 加好友后邀请进群 |
 
 ## 开源协议
 

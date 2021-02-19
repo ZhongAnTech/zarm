@@ -72,9 +72,9 @@ document.documentElement.style.setProperty('--theme-primary', '#108ee9');
 
 ## 社区
 
-| issue | gitter | 微信群 |
+| 问题上报 | 讨论交流 | 微信群 |
 | :--- | :--- | :--- |
-| [github issue](https://github.com/ZhongAnTech/zarm/issues) | [ZhonganTech/zarm](https://gitter.im/ZhonganTech/zarm) | <img src="https://cdn-health.zhongan.com/zarm/qrcode.jpg" width="80" /> <br />备注 "zarm" 加好友后邀请进群 |
+| [github issues](https://github.com/ZhongAnTech/zarm/issues) | [github discussions](https://github.com/ZhongAnTech/zarm/discussions) | <img src="https://cdn-health.zhongan.com/zarm/qrcode.jpg" width="80" /> <br />备注 "zarm" 加好友后邀请进群 |
 
 ## 开源协议
 
