@@ -1,4 +1,4 @@
-import { mocked } from 'ts-jest';
+import { mocked } from 'ts-jest/utils';
 import getFileDetail from '../../utils/getFileDetail';
 import handleFileInfo from '../../utils/handleFileInfo';
 import createThumbnail from '../../utils/createThumbnail';

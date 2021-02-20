@@ -79,6 +79,9 @@ describe('utils', () => {
       });
     });
     describe('#isFixed', () => {
+      afterEach(() => {
+        jest.restoreAllMocks();
+      });
       it('should return false if the element is document.body', () => {
         const actual = isFixed(window.document.body);
         expect(actual).toBeFalsy();
@@ -90,7 +93,23 @@ describe('utils', () => {
         expect(actual).toBeTruthy();
         expect(getComputedStyleSpy).toBeCalledWith({}, null);
       });
-      it.todo('should check if the element is fixed recursively');
+      it('should return false if parent node is body', () => {
+        const ele = { parentNode: window.document.body };
+        const computedStyle = ({ position: 'absolute' } as unknown) as CSSStyleDeclaration;
+        const getComputedStyleSpy = jest.spyOn(window, 'getComputedStyle').mockReturnValueOnce(computedStyle);
+        const actual = isFixed((ele as unknown) as Element);
+        expect(actual).toBeFalsy();
+        expect(getComputedStyleSpy).toBeCalledTimes(1);
+      });
+
+      it('should return false if ele has no parent node and is not fixed', () => {
+        const computedStyle = ({ position: 'absolute' } as unknown) as CSSStyleDeclaration;
+        const getComputedStyleSpy = jest.spyOn(window, 'getComputedStyle').mockReturnValueOnce(computedStyle);
+        const ele = ({} as unknown) as Element;
+        const actual = isFixed(ele);
+        expect(actual).toBeFalsy();
+        expect(getComputedStyleSpy).toBeCalledTimes(1);
+      });
     });
   });
 });

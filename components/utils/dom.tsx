@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 import raf from 'raf';
 
 export type ContainerType = HTMLElement | (() => HTMLElement) | Window;
@@ -60,14 +61,17 @@ export const getStyleComputedProperty = (ele: Element, property: Property): stri
 };
 
 // 判断元素是否固定定位或者是否在固定定位元素内
-export const isFixed = (ele) => {
+export const isFixed = (ele): boolean => {
   if (ele === window.document.body) {
     return false;
   }
   if (getStyleComputedProperty(ele, 'position') === 'fixed') {
     return true;
   }
-  return ele.parentNode ? isFixed(ele.parentNode) : ele;
+  if (ele.parentNode) {
+    return isFixed(ele.parentNode);
+  }
+  return false;
 };
 
 // 获取元素完整尺寸(offset size + margin)
@@ -113,9 +117,9 @@ export const getScrollParent = (ele): HTMLElement => {
   }
   const overflowValues = ['scroll', 'auto'];
   if (
-    overflowValues.indexOf(getStyleComputedProperty(parent, 'overflow')) !== -1
-    || overflowValues.indexOf(getStyleComputedProperty(parent, 'overflowX')) !== -1
-    || overflowValues.indexOf(getStyleComputedProperty(parent, 'overflowY')) !== -1
+    overflowValues.indexOf(getStyleComputedProperty(parent, 'overflow')) !== -1 ||
+    overflowValues.indexOf(getStyleComputedProperty(parent, 'overflowX')) !== -1 ||
+    overflowValues.indexOf(getStyleComputedProperty(parent, 'overflowY')) !== -1
   ) {
     return parent;
   }
