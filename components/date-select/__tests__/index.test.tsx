@@ -3,12 +3,7 @@ import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import DateSelect from '../index';
 import enLocale from '../../date-picker-view/locale/en_US';
-
-function fakeTimers() {
-  performance.timing = {};
-  performance.timing.navigationStart = 0;
-}
-fakeTimers();
+import { date1, date2, date3, date4, date5, date6 } from '../../utils/test';
 
 describe('DateSelect', () => {
   it('DateSelect year', () => {
@@ -19,7 +14,7 @@ describe('DateSelect', () => {
   });
 
   it('DateSelect trigger visible', () => {
-    const wrapper = mount(<DateSelect mode="date" defaultValue="2017-11-03" />);
+    const wrapper = mount(<DateSelect mode="date" defaultValue={date1} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -31,7 +26,7 @@ describe('DateSelect', () => {
           { value: '1', label: '选项一' },
           { value: '2', label: '选项二' },
         ]}
-        value="2019-04-23"
+        value={date1}
       />,
     );
 
@@ -40,20 +35,14 @@ describe('DateSelect', () => {
   });
 
   it('DateSelect date', () => {
-    const wrapper = mount(<DateSelect title="选择日期" placeholder="请选择日期" mode="date" value="2009-03-04" />);
-    wrapper.setProps({ value: '2017-09-06' });
+    const wrapper = mount(<DateSelect title="选择日期" placeholder="请选择日期" mode="date" value={date1} />);
+    wrapper.setProps({ value: date1 });
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('DateSelect time', () => {
     const wrapper = mount(
-      <DateSelect
-        title="选择时间"
-        placeholder="请选择时间"
-        mode="time"
-        defaultValue="2017-11-03 15:00"
-        minuteStep={15}
-      />,
+      <DateSelect title="选择时间" placeholder="请选择时间" mode="time" defaultValue={date2} minuteStep={15} />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -64,18 +53,18 @@ describe('DateSelect', () => {
         title="选择时间"
         placeholder="请选择时间"
         mode="datetime"
-        min="2017-11-02 11:00"
-        max="2017-11-02 14:00"
-        defaultValue="2017-11-03 15:00"
+        min={date3}
+        max={date4}
+        defaultValue={date5}
       />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
-    wrapper.setProps({ defaultValue: '2017-11-06 12:00', value: '2017-11-06 12:00' });
+    wrapper.setProps({ defaultValue: date6, value: date6 });
   });
 
   it('DateSelect wheelDefaultValue', () => {
     const wrapper = mount(
-      <DateSelect title="选择日期" placeholder="请选择日期" mode="date" wheelDefaultValue="2017-11-03 15:00" />,
+      <DateSelect title="选择日期" placeholder="请选择日期" mode="date" wheelDefaultValue={date5} />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });

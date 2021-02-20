@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import { BaseCalendarProps } from './PropsType';
@@ -36,17 +37,11 @@ const parseState = (props: CalendarProps) => {
   let tmpValue!: Date[];
 
   value = value || defaultValue;
-  value = (
-    Object.prototype.toString.call(value) === '[object Array]'
-      ? value
-      : (value && [value]) || []
-  ) as Date[];
+  value = (Object.prototype.toString.call(value) === '[object Array]' ? value : (value && [value]) || []) as Date[];
 
   // 注掉该逻辑，强制根据 multiple 控制节点个数，后面改进
   // tmpValue = value.map(item => DateTool.parseDay(item));
-  tmpValue = value
-    .slice(0, multiple ? 2 : 1)
-    .map((item: Date) => DateTool.parseDay(item));
+  tmpValue = value.slice(0, multiple ? 2 : 1).map((item: Date) => DateTool.parseDay(item));
   // 排序过滤
   tmpValue = tmpValue!.sort((item1: Date, item2: Date) => +item1 - +item2);
   const min = props.min ? DateTool.parseDay(props.min) : new Date();
@@ -55,9 +50,7 @@ const parseState = (props: CalendarProps) => {
   const endMonth = DateTool.cloneDate(max, 'dd', DateTool.getDaysByDate(max));
 
   // min、max 排序
-  const duration = [min, max].sort(
-    (item1: Date, item2: Date) => +item1 - +item2,
-  );
+  const duration = [min, max].sort((item1: Date, item2: Date) => +item1 - +item2);
 
   const tmp = {
     value: tmpValue,
@@ -114,10 +107,10 @@ export default class CalendarView extends PureComponent<CalendarProps, CalendarS
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (
-      ('value' in nextProps && nextProps.value !== prevState.prevValue)
-      || ('multiple' in nextProps && nextProps.multiple !== prevState.prevMultiple)
-      || ('min' in nextProps && nextProps.min !== prevState.prevMin)
-      || ('max' in nextProps && nextProps.max !== prevState.prevMax)
+      ('value' in nextProps && nextProps.value !== prevState.prevValue) ||
+      ('multiple' in nextProps && nextProps.multiple !== prevState.prevMultiple) ||
+      ('min' in nextProps && nextProps.min !== prevState.prevMin) ||
+      ('max' in nextProps && nextProps.max !== prevState.prevMax)
     ) {
       return {
         ...parseState(nextProps),
@@ -148,13 +141,15 @@ export default class CalendarView extends PureComponent<CalendarProps, CalendarS
     }
     value[step - 1] = date;
     value.sort((item1: Date, item2: Date) => +item1 - +item2);
-
-    this.setState({
-      value,
-      step: step >= steps ? 1 : step + 1,
-    }, () => {
-      step >= steps && typeof onChange === 'function' && onChange(value);
-    });
+    this.setState(
+      {
+        value,
+        step: step >= steps ? 1 : step + 1,
+      },
+      () => {
+        step >= steps && typeof onChange === 'function' && onChange(value);
+      },
+    );
   };
 
   // 月历定位
@@ -194,7 +189,9 @@ export default class CalendarView extends PureComponent<CalendarProps, CalendarS
         dateRender={dateRender}
         disabledDate={disabledDate}
         onDateClick={this.handleDateClick}
-        ref={(n) => { this.nodes![key] = n; }}
+        ref={(n) => {
+          this.nodes![key] = n;
+        }}
       />
     );
   };

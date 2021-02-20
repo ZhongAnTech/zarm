@@ -85,7 +85,9 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
       <div className={cls} onClick={this.handleClick}>
         <input type="hidden" value={formatFn(this, selectValue)} />
         <div className={`${prefixCls}__input`}>
-          <div className={`${prefixCls}__value`}>{formatFn(this, selectValue) || placeholder || locale!.placeholder}</div>
+          <div className={`${prefixCls}__value`}>
+            {formatFn(this, selectValue) || placeholder || locale!.placeholder}
+          </div>
         </div>
         <DatePicker
           {...others}
