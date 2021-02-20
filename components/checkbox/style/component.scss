@@ -39,7 +39,7 @@
     justify-content: center;
     width: var(--checkbox-size);
     height: var(--checkbox-size);
-    border: 1px solid var(--checkbox-border-color);
+    border: 1PX solid var(--checkbox-border-color);
     border-radius: var(--checkbox-radius);
     background: var(--checkbox-background);
     transition: all .2s cubic-bezier(.71, -0.46, .88, .6);
@@ -299,7 +299,7 @@
     @include m(compact) {
       @include b(checkbox) {
         &:not(:last-child) {
-          margin-right: -1px;
+          margin-right: -1PX;
         }
 
         &:first-child {

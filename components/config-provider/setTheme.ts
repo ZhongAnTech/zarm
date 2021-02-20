@@ -45,7 +45,6 @@ const themes = {
   '--picker-header-background': '#1b1c1e',
   '--picker-mask-background-start': 'rgba(0, 0, 0, 0.4)',
   '--picker-mask-background-end': 'rgba(0, 0, 0, 0.8)',
-  '--picker-line': '#303030',
   '--progress-background': 'var(--border-color)',
   '--radio-background': 'transparent',
   '--radio-border-color': '#58595d',

@@ -1,1 +1,3 @@
-export default '../../config-provider/locale/zh_CN';
+import locale from '../../config-provider/locale/zh_CN';
+
+export default locale;

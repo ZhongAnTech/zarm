@@ -87,8 +87,10 @@
     display: flex;
     align-items: center;
 
-    @include b(input) {
-      padding: var(--cell-padding-v) 0;
+    & > {
+      @include b(input) {
+        padding: var(--cell-padding-v) 0;
+      }
     }
   }
 

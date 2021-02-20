@@ -39,7 +39,7 @@
     justify-content: center;
     width: var(--radio-size);
     height: var(--radio-size);
-    border: 1px solid var(--radio-border-color);
+    border: 1PX solid var(--radio-border-color);
     border-radius: var(--radio-radius);
     background: var(--radio-background);
     transition: all .2s cubic-bezier(.71, -0.46, .88, .6);
@@ -275,7 +275,7 @@
     @include m(compact) {
       @include b(radio) {
         &:not(:last-child) {
-          margin-right: -1px;
+          margin-right: -1PX;
         }
 
         &:first-child {

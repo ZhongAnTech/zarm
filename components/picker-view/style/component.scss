@@ -16,34 +16,14 @@
       position: absolute;
       top: 0;
       background: linear-gradient(to top, var(--picker-mask-background-start), var(--picker-mask-background-end));
-
-      &:after {
-        content: '';
-        display: block;
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        border-bottom: 1px solid var(--picker-line);
-        transform-origin: 0 bottom;
-      }
+      @include onepx(bottom);
     }
 
     @include m(bottom) {
       position: absolute;
       bottom: 0;
       background: linear-gradient(to bottom, var(--picker-mask-background-start), var(--picker-mask-background-end));
-
-      &:before {
-        content: '';
-        display: block;
-        position: absolute;
-        border-top: 1px solid var(--picker-line);
-        left: 0;
-        top: 0;
-        width: 100%;
-        transform-origin: 0 top;
-      }
+      @include onepx(top);
     }
   }
 

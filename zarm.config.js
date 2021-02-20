@@ -37,7 +37,11 @@ module.exports = {
   `,
   setBabelOptions: (options) => {
     options.plugins.push(['import', { libraryName: 'zarm-web', style: true }, 'zarm-web']);
-    options.plugins.push(['@babel/plugin-transform-runtime']);
+    options.plugins.push(['prismjs', {
+      languages: ['javascript', 'typescript', 'jsx', 'tsx', 'css', 'scss', 'markup', 'bash'],
+      theme: 'default',
+      css: true,
+    }]);
   },
   setRules: (rules) => {
     rules.push({

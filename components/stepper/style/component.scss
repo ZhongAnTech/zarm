@@ -6,6 +6,7 @@
 
 @include b(stepper) {
   display: flex;
+  align-items: center;
 
   @include b(input) {
     input {

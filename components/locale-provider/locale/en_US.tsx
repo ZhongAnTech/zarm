@@ -1,1 +1,3 @@
-export default '../../config-provider/locale/en_US';
+import locale from '../../config-provider/locale/en_US';
+
+export default locale;

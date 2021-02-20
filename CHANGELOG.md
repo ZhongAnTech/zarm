@@ -1,5 +1,13 @@
 # 版本更新日志
 
+## v2.7.3
+- Bug Fix
+  - [StackPicker] 修复文字长度较大时因丢失层叠背景色导致重叠的bug。[#132d435](https://github.com/ZhongAnTech/zarm/commit/132d4353294d1f78e067c28794a121049c12d201)
+  - [Stepper] 修复在Cell中使用的Stepper组件，因与 `Input` 样式冲突导致无法显示输入框的值的bug。[#055f50f](https://github.com/ZhongAnTech/zarm/commit/055f50fdaf97d56f6d8d5c76f79e7233c6f5b48b)
+
+- Perf
+  - 设置部分样式单位为 `PX`, 使得在rem适配方案下，部分特殊场景的 `px` 将不被转换为 `rem`，如1px分割线、1px边框等。[#8c4f8cb](https://github.com/ZhongAnTech/zarm/commit/8c4f8cbababb4e31c048c704f044158f3a3074c0)
+
 
 ## v2.7.2
 - Bug Fix

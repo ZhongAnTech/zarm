@@ -173,7 +173,7 @@
 
 // 形状
 @mixin button-shape($border-radius: 0) {
-  border-width: 1px;
+  border-width: 1PX;
   border-style: solid;
   border-radius: $border-radius;
 }

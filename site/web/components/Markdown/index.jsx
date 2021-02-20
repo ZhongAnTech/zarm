@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react';
 import { pascalCase } from 'change-case';
 import marked from 'marked';
-import hljs from 'highlight.js/lib/core';
+import Prism from 'prismjs';
 import Meta from '@site/web/components/Meta';
-
-import 'highlight.js/styles/github-gist.css';
 import './style.scss';
 
 export default (props) => {
@@ -19,15 +17,11 @@ export default (props) => {
     };
 
     // 代码
-    // highlightjs对jsx解析还不完善，自闭合标签会破坏高亮显示，暂未解决。
-    // https://github.com/highlightjs/highlight.js/issues/1646
     renderer.code = (code, language) => {
-      // Check whether the given language is valid for highlight.js.
-      const validLang = !!(language && hljs.getLanguage(language));
-      // Highlight only if the language is valid.
-      const highlighted = validLang ? hljs.highlight(language, code).value : code;
-      // Render the highlighted code with `hljs` class.
-      return `<pre><code class="hljs ${language}">${highlighted}</code></pre>`;
+      const highlightCode = Object.keys(Prism.languages).indexOf(language) > -1
+        ? Prism.highlight(code, Prism.languages[language], language)
+        : code;
+      return `<pre><code class="language-${language}">${highlightCode}</code></pre>`;
     };
 
     // 标题
@@ -50,10 +44,6 @@ export default (props) => {
   }, []);
 
   if (typeof document === 'string') {
-    hljs.registerLanguage('javascript', require('highlight.js/lib/languages/javascript'));
-    hljs.registerLanguage('xml', require('highlight.js/lib/languages/xml'));
-    hljs.registerLanguage('bash', require('highlight.js/lib/languages/bash'));
-
     const demoHTML = marked(document.replace(/## API\s?([^]+)/g, ''), { renderer: getRenderer() });
     const api = document.match(/## API\s?([^]+)/g);
     const apiHTML = marked(Object.prototype.toString.call(api) === '[object Array]' ? api[0] : '', { renderer: getRenderer() });

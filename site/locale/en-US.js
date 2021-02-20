@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   'app.title': 'A mobile UI library by Zhongan Technology',
   'app.components': 'Components',
   'app.components.type.general': 'General',
