@@ -5590,6 +5590,22 @@ discontinuous-range@1.0.0:
   resolved "https://registry.yarnpkg.com/discontinuous-range/-/discontinuous-range-1.0.0.tgz#e38331f0844bba49b9a9cb71c771585aab1bc65a"
   integrity sha1-44Mx8IRLukm5qctxx3FYWqsbxlo=
 
+dl-react-native-mock-render@^0.1.10:
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/dl-react-native-mock-render/-/dl-react-native-mock-render-0.1.10.tgz#ca7f740f30cda19ce41442f58af605db14f23165"
+  integrity sha512-rN4vBZA1RpvkWuFbmN7Klvav3Gu3gn2l+r84pTf9NleLHeTrQXxbG7nU3NInblKiE+rM7s8OecxBF5XyRCbotA==
+  dependencies:
+    create-react-class "^15.6.2"
+    cubic-bezier "^0.1.2"
+    invariant "^2.2.1"
+    keymirror "^0.1.1"
+    lodash "^4.15.0"
+    prop-types "^15.6.0"
+    raf "^3.2.0"
+    react-dom "^16.0.0"
+    react-timer-mixin "^0.13.3"
+    warning "^2.1.0"
+
 dns-equal@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/dns-equal/-/dns-equal-1.0.0.tgz#b39e7f1da6eb0a75ba9c17324b34753c47e0654d"
@@ -13294,21 +13310,6 @@ react-native-camera-roll-picker@1.2.3:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/react-native-camera-roll-picker/-/react-native-camera-roll-picker-1.2.3.tgz#b117fd3a2b9012dcccee1261a9bc427226b8d6d2"
   integrity sha1-sRf9OiuQEtzM7hJhqbxCcia41tI=
-
-"react-native-mock-render@git+https://github.com/mrdulin/react-native-mock-render.git#art":
-  version "0.1.9"
-  resolved "git+https://github.com/mrdulin/react-native-mock-render.git#0806b283183bed91f0533bbd80143ef9ee872ba7"
-  dependencies:
-    create-react-class "^15.6.2"
-    cubic-bezier "^0.1.2"
-    invariant "^2.2.1"
-    keymirror "^0.1.1"
-    lodash "^4.15.0"
-    prop-types "^15.6.0"
-    raf "^3.2.0"
-    react-dom "^16.0.0"
-    react-timer-mixin "^0.13.3"
-    warning "^2.1.0"
 
 react-native-safe-area-view@^0.14.9:
   version "0.14.9"
