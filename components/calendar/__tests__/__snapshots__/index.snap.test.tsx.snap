@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Calendar calendar render 1`] = `
+exports[`Calendar snapshot calendar render 1`] = `
 <CalendarView
   dateRender={[Function]}
   defaultValue={2017-11-03T07:00:00.000Z}
@@ -63,29 +63,30 @@ exports[`Calendar calendar render 1`] = `
       className="za-calendar__body"
     >
       <CalendarMonthView
-        dateMonth={2017-10-31T19:00:00.000Z}
+        dateMonth={2018-05-06T00:00:00.000Z}
         dateRender={[Function]}
         disabledDate={[Function]}
-        key="2017-10"
-        max={2017-11-05T19:00:00.000Z}
-        min={2017-11-02T19:00:00.000Z}
+        key="2018-4"
+        max={2017-11-06T07:00:00.000Z}
+        min={2017-11-03T07:00:00.000Z}
         onDateClick={[Function]}
         prefixCls="za-calendar"
         value={
           Array [
-            2017-11-02T19:00:00.000Z,
+            2017-11-03T07:00:00.000Z,
+            2017-11-06T07:00:00.000Z,
           ]
         }
       >
         <section
           className="za-calendar__month"
-          key="2017-10"
-          title="2017年11月"
+          key="2018-4"
+          title="2018年5月"
         >
           <ul>
             <li
-              className="za-calendar__day za-calendar__day--disabled firstday-3"
-              key="2017-10-1"
+              className="za-calendar__day za-calendar__day--selected za-calendar__day--range range-start range-end firstday-2"
+              key="2018-4-1"
               onClick={[Function]}
             >
               <div
@@ -95,8 +96,8 @@ exports[`Calendar calendar render 1`] = `
               </div>
             </li>
             <li
-              className="za-calendar__day za-calendar__day--disabled"
-              key="2017-10-2"
+              className="za-calendar__day za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-2"
               onClick={[Function]}
             >
               <div
@@ -106,8 +107,8 @@ exports[`Calendar calendar render 1`] = `
               </div>
             </li>
             <li
-              className="za-calendar__day za-calendar__day--selected"
-              key="2017-10-3"
+              className="za-calendar__day za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-3"
               onClick={[Function]}
             >
               <div
@@ -117,8 +118,8 @@ exports[`Calendar calendar render 1`] = `
               </div>
             </li>
             <li
-              className="za-calendar__day d6"
-              key="2017-10-4"
+              className="za-calendar__day za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-4"
               onClick={[Function]}
             >
               <div
@@ -128,8 +129,8 @@ exports[`Calendar calendar render 1`] = `
               </div>
             </li>
             <li
-              className="za-calendar__day d7"
-              key="2017-10-5"
+              className="za-calendar__day d6 za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-5"
               onClick={[Function]}
             >
               <div
@@ -139,8 +140,8 @@ exports[`Calendar calendar render 1`] = `
               </div>
             </li>
             <li
-              className="za-calendar__day"
-              key="2017-10-6"
+              className="za-calendar__day d7 za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-6"
               onClick={[Function]}
             >
               <div
@@ -150,8 +151,8 @@ exports[`Calendar calendar render 1`] = `
               </div>
             </li>
             <li
-              className="za-calendar__day za-calendar__day--disabled"
-              key="2017-10-7"
+              className="za-calendar__day za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-7"
               onClick={[Function]}
             >
               <div
@@ -161,8 +162,8 @@ exports[`Calendar calendar render 1`] = `
               </div>
             </li>
             <li
-              className="za-calendar__day za-calendar__day--disabled"
-              key="2017-10-8"
+              className="za-calendar__day za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-8"
               onClick={[Function]}
             >
               <div
@@ -172,8 +173,8 @@ exports[`Calendar calendar render 1`] = `
               </div>
             </li>
             <li
-              className="za-calendar__day za-calendar__day--disabled"
-              key="2017-10-9"
+              className="za-calendar__day za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-9"
               onClick={[Function]}
             >
               <div
@@ -183,8 +184,8 @@ exports[`Calendar calendar render 1`] = `
               </div>
             </li>
             <li
-              className="za-calendar__day za-calendar__day--disabled"
-              key="2017-10-10"
+              className="za-calendar__day za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-10"
               onClick={[Function]}
             >
               <div
@@ -194,8 +195,8 @@ exports[`Calendar calendar render 1`] = `
               </div>
             </li>
             <li
-              className="za-calendar__day d6 za-calendar__day--disabled"
-              key="2017-10-11"
+              className="za-calendar__day za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-11"
               onClick={[Function]}
             >
               <div
@@ -205,8 +206,8 @@ exports[`Calendar calendar render 1`] = `
               </div>
             </li>
             <li
-              className="za-calendar__day d7 za-calendar__day--disabled"
-              key="2017-10-12"
+              className="za-calendar__day d6 za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-12"
               onClick={[Function]}
             >
               <div
@@ -216,8 +217,8 @@ exports[`Calendar calendar render 1`] = `
               </div>
             </li>
             <li
-              className="za-calendar__day za-calendar__day--disabled"
-              key="2017-10-13"
+              className="za-calendar__day d7 za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-13"
               onClick={[Function]}
             >
               <div
@@ -227,8 +228,8 @@ exports[`Calendar calendar render 1`] = `
               </div>
             </li>
             <li
-              className="za-calendar__day za-calendar__day--disabled"
-              key="2017-10-14"
+              className="za-calendar__day za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-14"
               onClick={[Function]}
             >
               <div
@@ -238,8 +239,8 @@ exports[`Calendar calendar render 1`] = `
               </div>
             </li>
             <li
-              className="za-calendar__day za-calendar__day--disabled"
-              key="2017-10-15"
+              className="za-calendar__day za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-15"
               onClick={[Function]}
             >
               <div
@@ -249,8 +250,8 @@ exports[`Calendar calendar render 1`] = `
               </div>
             </li>
             <li
-              className="za-calendar__day za-calendar__day--disabled"
-              key="2017-10-16"
+              className="za-calendar__day za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-16"
               onClick={[Function]}
             >
               <div
@@ -260,8 +261,8 @@ exports[`Calendar calendar render 1`] = `
               </div>
             </li>
             <li
-              className="za-calendar__day za-calendar__day--disabled"
-              key="2017-10-17"
+              className="za-calendar__day za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-17"
               onClick={[Function]}
             >
               <div
@@ -271,8 +272,8 @@ exports[`Calendar calendar render 1`] = `
               </div>
             </li>
             <li
-              className="za-calendar__day d6 za-calendar__day--disabled"
-              key="2017-10-18"
+              className="za-calendar__day za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-18"
               onClick={[Function]}
             >
               <div
@@ -282,8 +283,8 @@ exports[`Calendar calendar render 1`] = `
               </div>
             </li>
             <li
-              className="za-calendar__day d7 za-calendar__day--disabled"
-              key="2017-10-19"
+              className="za-calendar__day d6 za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-19"
               onClick={[Function]}
             >
               <div
@@ -293,8 +294,8 @@ exports[`Calendar calendar render 1`] = `
               </div>
             </li>
             <li
-              className="za-calendar__day za-calendar__day--disabled"
-              key="2017-10-20"
+              className="za-calendar__day d7 za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-20"
               onClick={[Function]}
             >
               <div
@@ -304,8 +305,8 @@ exports[`Calendar calendar render 1`] = `
               </div>
             </li>
             <li
-              className="za-calendar__day za-calendar__day--disabled"
-              key="2017-10-21"
+              className="za-calendar__day za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-21"
               onClick={[Function]}
             >
               <div
@@ -315,8 +316,8 @@ exports[`Calendar calendar render 1`] = `
               </div>
             </li>
             <li
-              className="za-calendar__day za-calendar__day--disabled"
-              key="2017-10-22"
+              className="za-calendar__day za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-22"
               onClick={[Function]}
             >
               <div
@@ -326,8 +327,8 @@ exports[`Calendar calendar render 1`] = `
               </div>
             </li>
             <li
-              className="za-calendar__day za-calendar__day--disabled"
-              key="2017-10-23"
+              className="za-calendar__day za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-23"
               onClick={[Function]}
             >
               <div
@@ -337,8 +338,8 @@ exports[`Calendar calendar render 1`] = `
               </div>
             </li>
             <li
-              className="za-calendar__day za-calendar__day--disabled"
-              key="2017-10-24"
+              className="za-calendar__day za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-24"
               onClick={[Function]}
             >
               <div
@@ -348,8 +349,8 @@ exports[`Calendar calendar render 1`] = `
               </div>
             </li>
             <li
-              className="za-calendar__day d6 za-calendar__day--disabled"
-              key="2017-10-25"
+              className="za-calendar__day za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-25"
               onClick={[Function]}
             >
               <div
@@ -359,8 +360,8 @@ exports[`Calendar calendar render 1`] = `
               </div>
             </li>
             <li
-              className="za-calendar__day d7 za-calendar__day--disabled"
-              key="2017-10-26"
+              className="za-calendar__day d6 za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-26"
               onClick={[Function]}
             >
               <div
@@ -370,8 +371,8 @@ exports[`Calendar calendar render 1`] = `
               </div>
             </li>
             <li
-              className="za-calendar__day za-calendar__day--disabled"
-              key="2017-10-27"
+              className="za-calendar__day d7 za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-27"
               onClick={[Function]}
             >
               <div
@@ -381,8 +382,8 @@ exports[`Calendar calendar render 1`] = `
               </div>
             </li>
             <li
-              className="za-calendar__day za-calendar__day--disabled"
-              key="2017-10-28"
+              className="za-calendar__day za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-28"
               onClick={[Function]}
             >
               <div
@@ -392,8 +393,8 @@ exports[`Calendar calendar render 1`] = `
               </div>
             </li>
             <li
-              className="za-calendar__day za-calendar__day--disabled"
-              key="2017-10-29"
+              className="za-calendar__day za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-29"
               onClick={[Function]}
             >
               <div
@@ -403,14 +404,25 @@ exports[`Calendar calendar render 1`] = `
               </div>
             </li>
             <li
-              className="za-calendar__day za-calendar__day--disabled"
-              key="2017-10-30"
+              className="za-calendar__day za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-30"
               onClick={[Function]}
             >
               <div
                 className="za-calendar__day__content"
               >
                 30
+              </div>
+            </li>
+            <li
+              className="za-calendar__day za-calendar__day--selected za-calendar__day--range range-start range-end"
+              key="2018-4-31"
+              onClick={[Function]}
+            >
+              <div
+                className="za-calendar__day__content"
+              >
+                31
               </div>
             </li>
           </ul>

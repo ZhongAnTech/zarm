@@ -55,6 +55,7 @@ export default class CalendarMonthView extends Component<CalendarMonthProps, Cal
       value: props.value,
       dateMonth: props.dateMonth,
     };
+    this.checkStatus = this.checkStatus.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, state) {
@@ -118,7 +119,7 @@ export default class CalendarMonthView extends Component<CalendarMonthProps, Cal
   };
 
   // 日期状态: 选中，区间
-  checkStatus = (date: Date) => {
+  checkStatus(date: Date) {
     const { min, max, disabledDate } = this.props;
     const { value = [] } = this.state;
     const disabled = date < DateTool.cloneDate(min, 'd', 0) || date > DateTool.cloneDate(max, 'd', 0);
@@ -131,7 +132,7 @@ export default class CalendarMonthView extends Component<CalendarMonthProps, Cal
     };
     this.lastIn = this.lastIn || res.isSelected || res.isRange;
     return res;
-  };
+  }
 
   renderDay = (day: number, year: number, month: number, firstDay: number) => {
     const { prefixCls, dateRender, onDateClick } = this.props;
