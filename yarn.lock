@@ -12980,10 +12980,9 @@ react-native-camera-roll-picker@1.2.3:
   resolved "https://registry.yarnpkg.com/react-native-camera-roll-picker/-/react-native-camera-roll-picker-1.2.3.tgz#b117fd3a2b9012dcccee1261a9bc427226b8d6d2"
   integrity sha1-sRf9OiuQEtzM7hJhqbxCcia41tI=
 
-react-native-mock-render@0.1.5:
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/react-native-mock-render/-/react-native-mock-render-0.1.5.tgz#c6c502a0a5f45755b8c4bc19af2e44be794a6eb6"
-  integrity sha512-LzNZo25Ul2S+43nJuIDizn1Aycr/KrGjLeJMV9BwjKDHlo2vrqega5VXoXIFoHg6Qpm85EabsIuHWaoW8Nh55g==
+"react-native-mock-render@git+https://github.com/mrdulin/react-native-mock-render.git#art":
+  version "0.1.9"
+  resolved "git+https://github.com/mrdulin/react-native-mock-render.git#0806b283183bed91f0533bbd80143ef9ee872ba7"
   dependencies:
     create-react-class "^15.6.2"
     cubic-bezier "^0.1.2"
