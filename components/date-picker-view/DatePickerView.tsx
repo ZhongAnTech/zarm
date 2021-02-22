@@ -53,6 +53,7 @@ export default class DatePickerView extends Component<DatePickerViewProps, DateP
     if (typeof onInit === 'function') {
       onInit(this.getDate());
     }
+    this.getColsValue = this.getColsValue.bind(this);
   }
 
   onValueChange = (selected, index) => {
@@ -106,7 +107,7 @@ export default class DatePickerView extends Component<DatePickerViewProps, DateP
     return this.clipDate(newValue);
   };
 
-  getColsValue = () => {
+  getColsValue() {
     const { mode } = this.props;
     const date = this.getDate();
 
@@ -138,7 +139,7 @@ export default class DatePickerView extends Component<DatePickerViewProps, DateP
       dataSource,
       value,
     };
-  };
+  }
 
   getDateData = () => {
     const { locale, mode } = this.props;

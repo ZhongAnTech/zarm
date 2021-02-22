@@ -14,6 +14,7 @@ const mockedParseState = mocked(parseState);
 describe('Calendar snapshot', () => {
   afterAll(() => {
     jest.resetAllMocks();
+    jest.restoreAllMocks();
   });
   it('calendar render', () => {
     jest.spyOn(CalendarMonthView.prototype, 'checkStatus').mockReturnValue({
