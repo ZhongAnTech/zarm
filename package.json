@@ -57,7 +57,7 @@
     "authors": "git log --format='%aN <%aE>' | sort -u | grep -v 'users.noreply.github.com' > AUTHORS",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "release": "bash scripts/release.sh",
-    "test:jest": "jest"
+    "prettier": "prettier -c --write '**/*'"
   },
   "peerDependencies": {
     "react": ">=16.3.1",
@@ -91,7 +91,7 @@
     "@types/react-native": "^0.60.7",
     "@typescript-eslint/eslint-plugin": "3.10.1",
     "@typescript-eslint/parser": "3.10.1",
-    "@zarm-design/cli": "^0.0.32",
+    "@zarm-design/cli": "^0.0.34",
     "babel-eslint": "10.1.0",
     "babel-plugin-import": "^1.13.0",
     "babel-plugin-prismjs": "^2.0.1",
@@ -149,11 +149,6 @@
     "ts-jest": "^26.5.0",
     "typescript": "4.0.2",
     "zarm-web": "0.0.1-alpha.10"
-  },
-  "prettier": {
-    "singleQuote": true,
-    "printWidth": 120,
-    "trailingComma": "all"
   },
   "lint-staged": {
     "components/**/*.{ts,tsx}": "eslint",

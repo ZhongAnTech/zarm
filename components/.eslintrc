@@ -1,6 +1,6 @@
 {
   "root": true,
-  "extends": ["za/typescript-react"],
+  "extends": ["za/typescript-react", "prettier"],
   "env": {
     "jest": true
   }
