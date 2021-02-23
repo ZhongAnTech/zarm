@@ -14,13 +14,23 @@ const getChecked = (props: RadioProps, defaultChecked: boolean) => {
   return defaultChecked;
 };
 
-type RadioSpanProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'>;
-type RadioCellProps = Omit<HTMLAttributes<HTMLDivElement>, 'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'>;
-type RadioButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'>;
+type RadioSpanProps = Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
+>;
+type RadioCellProps = Omit<
+  HTMLAttributes<HTMLDivElement>,
+  'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
+>;
+type RadioButtonProps = Omit<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
+>;
 
-export type RadioProps = Partial<RadioSpanProps & RadioCellProps & RadioButtonProps> & BaseRadioProps & {
-  prefixCls?: string;
-};
+export type RadioProps = Partial<RadioSpanProps & RadioCellProps & RadioButtonProps> &
+  BaseRadioProps & {
+    prefixCls?: string;
+  };
 
 export interface RadioStates {
   checked: boolean;
@@ -69,7 +79,20 @@ export default class Radio extends PureComponent<RadioProps, RadioStates> {
   };
 
   render() {
-    const { prefixCls, className, type, shape, value, checked, defaultChecked, disabled, id, children, onChange, ...rest } = this.props;
+    const {
+      prefixCls,
+      className,
+      type,
+      shape,
+      value,
+      checked,
+      defaultChecked,
+      disabled,
+      id,
+      children,
+      onChange,
+      ...rest
+    } = this.props;
     const { checked: checkedState } = this.state;
 
     const cls = classnames(prefixCls, className, {
@@ -91,7 +114,7 @@ export default class Radio extends PureComponent<RadioProps, RadioStates> {
     );
 
     const radioRender = (
-      <span className={cls} {...rest as RadioSpanProps}>
+      <span className={cls} {...(rest as RadioSpanProps)}>
         <span className={`${prefixCls}__widget`}>
           <span className={`${prefixCls}__inner`} />
         </span>
@@ -102,7 +125,7 @@ export default class Radio extends PureComponent<RadioProps, RadioStates> {
 
     if (type === 'cell') {
       return (
-        <Cell disabled={disabled} className={className} onClick={() => {}} {...rest as RadioCellProps}>
+        <Cell disabled={disabled} className={className} onClick={() => {}} {...(rest as RadioCellProps)}>
           {radioRender}
         </Cell>
       );
@@ -110,7 +133,7 @@ export default class Radio extends PureComponent<RadioProps, RadioStates> {
 
     if (type === 'button') {
       return (
-        <button type="button" disabled={disabled} className={cls} {...rest as RadioButtonProps}>
+        <button type="button" disabled={disabled} className={cls} {...(rest as RadioButtonProps)}>
           {children}
           {inputRender}
         </button>
