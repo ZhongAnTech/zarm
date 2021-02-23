@@ -1,6 +1,6 @@
 {
   "root": true,
-  "extends": ["za/react"],
+  "extends": ["za/react", "prettier"],
   "env": {
     "jest": true
   }

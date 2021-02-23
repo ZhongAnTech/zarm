@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import BScroll from 'better-scroll';
-import BaseWheelProps from './PropsType';
+import BaseWheelProps, { WheelItem, WheelValue } from './PropsType';
 import { isArray } from '../utils/validate';
 
 const getValue = (props, defaultValue?: any) => {
@@ -85,16 +85,18 @@ export default class Wheel extends Component<WheelProps, any> {
     }
   };
 
-  getSelectedIndex = (value, dataSource) => {
+  getSelectedIndex = (value?: WheelValue, dataSource?: Array<WheelItem>): number => {
     const { valueMember } = this.props;
-    let index;
-    dataSource.some((item, i) => {
-      if (item[valueMember!] === value) {
-        index = i;
-        return true;
-      }
-      return false;
-    });
+    let index = 0;
+    if (dataSource) {
+      dataSource.some((item, i) => {
+        if (item[valueMember!] === value) {
+          index = i;
+          return true;
+        }
+        return false;
+      });
+    }
     return index;
   };
 
@@ -132,7 +134,9 @@ export default class Wheel extends Component<WheelProps, any> {
     return (
       <div
         className={rollerCls}
-        ref={(wrapper) => { this.wrapper = wrapper; }}
+        ref={(wrapper) => {
+          this.wrapper = wrapper;
+        }}
       >
         <div className={`${prefixCls}__content`}>{items}</div>
       </div>

@@ -29,7 +29,11 @@ export default class Alert extends PureComponent<AlertProps, {}> {
       <div className={cls.alert}>
         <Modal
           {...others}
-          footer={<button type="button" className={`${prefixCls}__button`} onClick={onCancel}>{cancelText || locale!.cancelText}</button>}
+          footer={(
+            <button type="button" className={`${prefixCls}__button`} onClick={onCancel}>
+              {cancelText || locale!.cancelText}
+            </button>
+          )}
         >
           {content}
         </Modal>

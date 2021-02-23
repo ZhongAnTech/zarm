@@ -5,14 +5,14 @@ exports[`DateSelect DateSelect date 1`] = `
   mode="date"
   placeholder="请选择日期"
   title="选择日期"
-  value="2017-09-06"
+  value={2019-04-23T00:00:00.000Z}
 >
   <ConfigReceiver
     forwardedRef={null}
     mode="date"
     placeholder="请选择日期"
     title="选择日期"
-    value="2017-09-06"
+    value={2019-04-23T00:00:00.000Z}
   >
     <DateSelect
       disabled={false}
@@ -29,7 +29,7 @@ exports[`DateSelect DateSelect date 1`] = `
       placeholder="请选择日期"
       prefixCls="za-date-select"
       title="选择日期"
-      value="2017-09-06"
+      value={2019-04-23T00:00:00.000Z}
       valueMember="value"
     >
       <div
@@ -38,7 +38,7 @@ exports[`DateSelect DateSelect date 1`] = `
       >
         <input
           type="hidden"
-          value="2017-09-06"
+          value="2019-04-23"
         />
         <div
           className="za-date-select__input"
@@ -46,7 +46,7 @@ exports[`DateSelect DateSelect date 1`] = `
           <div
             className="za-date-select__value"
           >
-            2017-09-06
+            2019-04-23
           </div>
         </div>
         <ForwardRef(forwardRef)
@@ -56,7 +56,7 @@ exports[`DateSelect DateSelect date 1`] = `
           onCancel={[Function]}
           onOk={[Function]}
           title="选择日期"
-          value="2017-09-06"
+          value={2019-04-23T00:00:00.000Z}
           valueMember="value"
           visible={false}
         >
@@ -68,7 +68,7 @@ exports[`DateSelect DateSelect date 1`] = `
             onCancel={[Function]}
             onOk={[Function]}
             title="选择日期"
-            value="2017-09-06"
+            value={2019-04-23T00:00:00.000Z}
             valueMember="value"
             visible={false}
           >
@@ -89,7 +89,7 @@ exports[`DateSelect DateSelect date 1`] = `
               onOk={[Function]}
               prefixCls="za-date-picker"
               title="选择日期"
-              value="2017-09-06"
+              value={2019-04-23T00:00:00.000Z}
               valueMember="value"
               visible={false}
             >
@@ -123,24 +123,24 @@ exports[`DateSelect DateSelect date 1`] = `
 
 exports[`DateSelect DateSelect datetime 1`] = `
 <ForwardRef(forwardRef)
-  defaultValue="2017-11-03 15:00"
-  max="2017-11-02 14:00"
-  min="2017-11-02 11:00"
+  defaultValue={2017-11-03T10:00:00.000Z}
+  max={2017-11-02T09:00:00.000Z}
+  min={2017-11-02T03:00:00.000Z}
   mode="datetime"
   placeholder="请选择时间"
   title="选择时间"
 >
   <ConfigReceiver
-    defaultValue="2017-11-03 15:00"
+    defaultValue={2017-11-03T10:00:00.000Z}
     forwardedRef={null}
-    max="2017-11-02 14:00"
-    min="2017-11-02 11:00"
+    max={2017-11-02T09:00:00.000Z}
+    min={2017-11-02T03:00:00.000Z}
     mode="datetime"
     placeholder="请选择时间"
     title="选择时间"
   >
     <DateSelect
-      defaultValue="2017-11-03 15:00"
+      defaultValue={2017-11-03T10:00:00.000Z}
       disabled={false}
       hasArrow={true}
       locale={
@@ -149,8 +149,8 @@ exports[`DateSelect DateSelect datetime 1`] = `
         }
       }
       localeCode="zh-CN"
-      max="2017-11-02 14:00"
-      min="2017-11-02 11:00"
+      max={2017-11-02T09:00:00.000Z}
+      min={2017-11-02T03:00:00.000Z}
       minuteStep={1}
       mode="datetime"
       onCancel={[Function]}
@@ -177,10 +177,10 @@ exports[`DateSelect DateSelect datetime 1`] = `
           </div>
         </div>
         <ForwardRef(forwardRef)
-          defaultValue="2017-11-03 15:00"
+          defaultValue={2017-11-03T10:00:00.000Z}
           localeCode="zh-CN"
-          max="2017-11-02 14:00"
-          min="2017-11-02 11:00"
+          max={2017-11-02T09:00:00.000Z}
+          min={2017-11-02T03:00:00.000Z}
           minuteStep={1}
           mode="datetime"
           onCancel={[Function]}
@@ -190,11 +190,11 @@ exports[`DateSelect DateSelect datetime 1`] = `
           visible={false}
         >
           <ConfigReceiver
-            defaultValue="2017-11-03 15:00"
+            defaultValue={2017-11-03T10:00:00.000Z}
             forwardedRef={null}
             localeCode="zh-CN"
-            max="2017-11-02 14:00"
-            min="2017-11-02 11:00"
+            max={2017-11-02T09:00:00.000Z}
+            min={2017-11-02T03:00:00.000Z}
             minuteStep={1}
             mode="datetime"
             onCancel={[Function]}
@@ -204,7 +204,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
             visible={false}
           >
             <DatePicker
-              defaultValue="2017-11-03 15:00"
+              defaultValue={2017-11-03T10:00:00.000Z}
               locale={
                 Object {
                   "cancelText": "取消",
@@ -214,8 +214,8 @@ exports[`DateSelect DateSelect datetime 1`] = `
               }
               localeCode="zh-CN"
               maskClosable={true}
-              max="2017-11-02 14:00"
-              min="2017-11-02 11:00"
+              max={2017-11-02T09:00:00.000Z}
+              min={2017-11-02T03:00:00.000Z}
               minuteStep={1}
               mode="datetime"
               onCancel={[Function]}
@@ -269,7 +269,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
     ]
   }
   disabeld={true}
-  value="2019-04-23"
+  value={2019-04-23T00:00:00.000Z}
 >
   <ConfigReceiver
     dataSource={
@@ -286,7 +286,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
     }
     disabeld={true}
     forwardedRef={null}
-    value="2019-04-23"
+    value={2019-04-23T00:00:00.000Z}
   >
     <DateSelect
       dataSource={
@@ -314,7 +314,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
       mode="date"
       onCancel={[Function]}
       prefixCls="za-date-select"
-      value="2019-04-23"
+      value={2019-04-23T00:00:00.000Z}
       valueMember="value"
     >
       <div
@@ -353,7 +353,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
           mode="date"
           onCancel={[Function]}
           onOk={[Function]}
-          value="2019-04-23"
+          value={2019-04-23T00:00:00.000Z}
           valueMember="value"
           visible={true}
         >
@@ -377,7 +377,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
             mode="date"
             onCancel={[Function]}
             onOk={[Function]}
-            value="2019-04-23"
+            value={2019-04-23T00:00:00.000Z}
             valueMember="value"
             visible={true}
           >
@@ -410,7 +410,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
               onInit={[Function]}
               onOk={[Function]}
               prefixCls="za-date-picker"
-              value="2019-04-23"
+              value={2019-04-23T00:00:00.000Z}
               valueMember="value"
               visible={true}
             >
@@ -1662,7 +1662,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                   onChange={[Function]}
                                   onInit={[Function]}
                                   stopScroll={false}
-                                  value={2019-04-23T04:00:00.000Z}
+                                  value={2019-04-23T00:00:00.000Z}
                                   valueMember="value"
                                 >
                                   <ConfigReceiver
@@ -1686,7 +1686,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                     onChange={[Function]}
                                     onInit={[Function]}
                                     stopScroll={false}
-                                    value={2019-04-23T04:00:00.000Z}
+                                    value={2019-04-23T00:00:00.000Z}
                                     valueMember="value"
                                   >
                                     <DatePickerView
@@ -1720,7 +1720,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                       onInit={[Function]}
                                       prefixCls="za-date-picker-view"
                                       stopScroll={false}
-                                      value={2019-04-23T04:00:00.000Z}
+                                      value={2019-04-23T00:00:00.000Z}
                                       valueMember="value"
                                     >
                                       <PickerView
@@ -4291,14 +4291,14 @@ exports[`DateSelect DateSelect disabled 1`] = `
 
 exports[`DateSelect DateSelect time 1`] = `
 <ForwardRef(forwardRef)
-  defaultValue="2017-11-03 15:00"
+  defaultValue={2017-11-03T07:00:00.000Z}
   minuteStep={15}
   mode="time"
   placeholder="请选择时间"
   title="选择时间"
 >
   <ConfigReceiver
-    defaultValue="2017-11-03 15:00"
+    defaultValue={2017-11-03T07:00:00.000Z}
     forwardedRef={null}
     minuteStep={15}
     mode="time"
@@ -4306,7 +4306,7 @@ exports[`DateSelect DateSelect time 1`] = `
     title="选择时间"
   >
     <DateSelect
-      defaultValue="2017-11-03 15:00"
+      defaultValue={2017-11-03T07:00:00.000Z}
       disabled={false}
       hasArrow={true}
       locale={
@@ -4341,7 +4341,7 @@ exports[`DateSelect DateSelect time 1`] = `
           </div>
         </div>
         <ForwardRef(forwardRef)
-          defaultValue="2017-11-03 15:00"
+          defaultValue={2017-11-03T07:00:00.000Z}
           localeCode="zh-CN"
           minuteStep={15}
           mode="time"
@@ -4352,7 +4352,7 @@ exports[`DateSelect DateSelect time 1`] = `
           visible={false}
         >
           <ConfigReceiver
-            defaultValue="2017-11-03 15:00"
+            defaultValue={2017-11-03T07:00:00.000Z}
             forwardedRef={null}
             localeCode="zh-CN"
             minuteStep={15}
@@ -4364,7 +4364,7 @@ exports[`DateSelect DateSelect time 1`] = `
             visible={false}
           >
             <DatePicker
-              defaultValue="2017-11-03 15:00"
+              defaultValue={2017-11-03T07:00:00.000Z}
               locale={
                 Object {
                   "cancelText": "取消",
@@ -4414,16 +4414,16 @@ exports[`DateSelect DateSelect time 1`] = `
 
 exports[`DateSelect DateSelect trigger visible 1`] = `
 <ForwardRef(forwardRef)
-  defaultValue="2017-11-03"
+  defaultValue={2019-04-23T00:00:00.000Z}
   mode="date"
 >
   <ConfigReceiver
-    defaultValue="2017-11-03"
+    defaultValue={2019-04-23T00:00:00.000Z}
     forwardedRef={null}
     mode="date"
   >
     <DateSelect
-      defaultValue="2017-11-03"
+      defaultValue={2019-04-23T00:00:00.000Z}
       disabled={false}
       hasArrow={true}
       locale={
@@ -4456,7 +4456,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
           </div>
         </div>
         <ForwardRef(forwardRef)
-          defaultValue="2017-11-03"
+          defaultValue={2019-04-23T00:00:00.000Z}
           localeCode="zh-CN"
           minuteStep={1}
           mode="date"
@@ -4466,7 +4466,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
           visible={false}
         >
           <ConfigReceiver
-            defaultValue="2017-11-03"
+            defaultValue={2019-04-23T00:00:00.000Z}
             forwardedRef={null}
             localeCode="zh-CN"
             minuteStep={1}
@@ -4477,7 +4477,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
             visible={false}
           >
             <DatePicker
-              defaultValue="2017-11-03"
+              defaultValue={2019-04-23T00:00:00.000Z}
               locale={
                 Object {
                   "cancelText": "取消",
@@ -4529,14 +4529,14 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
   mode="date"
   placeholder="请选择日期"
   title="选择日期"
-  wheelDefaultValue="2017-11-03 15:00"
+  wheelDefaultValue={2017-11-03T10:00:00.000Z}
 >
   <ConfigReceiver
     forwardedRef={null}
     mode="date"
     placeholder="请选择日期"
     title="选择日期"
-    wheelDefaultValue="2017-11-03 15:00"
+    wheelDefaultValue={2017-11-03T10:00:00.000Z}
   >
     <DateSelect
       disabled={false}
@@ -4554,7 +4554,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
       prefixCls="za-date-select"
       title="选择日期"
       valueMember="value"
-      wheelDefaultValue="2017-11-03 15:00"
+      wheelDefaultValue={2017-11-03T10:00:00.000Z}
     >
       <div
         className="za-date-select za-date-select--placeholder za-date-select--arrow"
@@ -4582,7 +4582,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
           title="选择日期"
           valueMember="value"
           visible={false}
-          wheelDefaultValue="2017-11-03 15:00"
+          wheelDefaultValue={2017-11-03T10:00:00.000Z}
         >
           <ConfigReceiver
             forwardedRef={null}
@@ -4594,7 +4594,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
             title="选择日期"
             valueMember="value"
             visible={false}
-            wheelDefaultValue="2017-11-03 15:00"
+            wheelDefaultValue={2017-11-03T10:00:00.000Z}
           >
             <DatePicker
               locale={
@@ -4615,7 +4615,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
               title="选择日期"
               valueMember="value"
               visible={false}
-              wheelDefaultValue="2017-11-03 15:00"
+              wheelDefaultValue={2017-11-03T10:00:00.000Z}
             >
               <ForwardRef(ForwardedRefComp)
                 destroy={true}

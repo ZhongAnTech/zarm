@@ -8,9 +8,7 @@ export interface PopupProps extends PropsType {
   className?: string;
 }
 
-@warnIfDeprecated([
-  { oldProp: 'getContainer', newProp: 'mountContainer' },
-])
+@warnIfDeprecated([{ oldProp: 'getContainer', newProp: 'mountContainer' }])
 export default class Popup extends PureComponent<PopupProps, any> {
   static defaultProps: PopupProps = {
     prefixCls: 'za-popup',
@@ -70,6 +68,17 @@ export default class Popup extends PureComponent<PopupProps, any> {
 
   render() {
     const { renderPortal, portalVisible } = this.state;
-    return renderPortal && <Portal ref={(ref) => { this.portalRef = ref; }} {...this.props} visible={portalVisible} handlePortalUnmount={this.handlePortalUnmount} />;
+    return (
+      renderPortal && (
+        <Portal
+          ref={(ref) => {
+            this.portalRef = ref;
+          }}
+          {...this.props}
+          visible={portalVisible}
+          handlePortalUnmount={this.handlePortalUnmount}
+        />
+      )
+    );
   }
 }
