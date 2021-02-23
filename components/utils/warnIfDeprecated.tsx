@@ -25,21 +25,20 @@ export default function warnIfDeprecated(deprecations: Array<Partial<Deprecation
         super(props);
         if (process.env.NODE_ENV !== 'production' && deprecations.length) {
           let count = 0;
-
           deprecations.forEach((item) => {
             // eslint-disable-next-line react/destructuring-assignment
             if (item.oldProp && item.newProp && this.props[item.oldProp]) {
-              console.warn(`Warning: ${item.oldProp} has been renamed, and is not recommended for use.
-
-* Rename ${item.oldProp} to ${item.newProp} to suppress this warning.`);
+              console.warn(
+                `Warning: ${item.oldProp} has been renamed, and is not recommended for use.\n\n* Rename ${item.oldProp} to ${item.newProp} to suppress this warning.`,
+              );
               count += 1;
             }
 
             // eslint-disable-next-line react/destructuring-assignment
             if (getDisplayName(WrappedComponent) === item.oldComponent) {
-              console.warn(`Warning: ${item.oldComponent} has been renamed, and is not recommended for use.
-
-* Rename ${item.oldComponent} to ${item.newComponent} to suppress this warning.`);
+              console.warn(
+                `Warning: ${item.oldComponent} has been renamed, and is not recommended for use.\n\n* Rename ${item.oldComponent} to ${item.newComponent} to suppress this warning.`,
+              );
               count += 1;
             }
           });
