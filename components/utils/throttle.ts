@@ -1,4 +1,4 @@
-const throttle = (func: () => any, delay: number) => {
+const throttle = (func: Function, delay: number) => {
   let timer: number;
   let startTime = Date.now();
 

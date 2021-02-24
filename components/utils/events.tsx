@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-interface */
 import { noop } from './test';
 
 let supportsPassive = false;
@@ -12,17 +13,21 @@ try {
   // eslint-disable-next-line no-empty
 } catch (e) {}
 
+interface IEEvent {
+  attachEvent(event: string, listener: EventListener): boolean;
+  detachEvent(event: string, listener: EventListener): void;
+}
+
 declare global {
-  interface Element {
-    attachEvent(event: string, listener: EventListener): boolean;
-    detachEvent(event: string, listener: EventListener): void;
-  }
+  interface Element extends IEEvent {}
+  interface Window extends IEEvent {}
+  interface Document extends IEEvent {}
 }
 
 export default {
   supportsPassiveEvents: supportsPassive,
   on(
-    el: Element,
+    el: Element | Window | Document,
     type: string,
     callback: EventListener,
     options: AddEventListenerOptions | boolean = { passive: false },
@@ -37,7 +42,7 @@ export default {
   },
 
   off(
-    el: Element,
+    el: Element | Window | Document,
     type: string,
     callback: EventListener,
     options: AddEventListenerOptions | boolean = { passive: false },

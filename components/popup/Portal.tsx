@@ -47,10 +47,13 @@ export default class Portal extends PureComponent<PortalProps, any> {
   }
 
   componentDidMount() {
-    Events.on(this.popup, 'webkitTransitionEnd', this.animationEnd);
-    Events.on(this.popup, 'transitionend', this.animationEnd);
-    Events.on(this.popup, 'webkitAnimationEnd', this.animationEnd);
-    Events.on(this.popup, 'animationend', this.animationEnd);
+    if (this.popup) {
+      Events.on(this.popup, 'webkitTransitionEnd', this.animationEnd);
+      Events.on(this.popup, 'transitionend', this.animationEnd);
+      Events.on(this.popup, 'webkitAnimationEnd', this.animationEnd);
+      Events.on(this.popup, 'animationend', this.animationEnd);
+    }
+
     this.handleAnimation();
   }
 
@@ -111,16 +114,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
       WebkitAnimationDuration: `${animationDuration}ms`,
       animationDuration: `${animationDuration}ms`,
     };
-    return (
-      mask && (
-        <Mask
-          className={maskCls}
-          style={maskStyle}
-          visible
-          type={maskType}
-        />
-      )
-    );
+    return mask && <Mask className={maskCls} style={maskStyle} visible type={maskType} />;
   };
 
   onEsc = () => {
@@ -137,16 +131,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
   };
 
   getComponent = () => {
-    const {
-      prefixCls,
-      animationType,
-      animationDuration,
-      direction,
-      mask,
-      children,
-      width,
-      visible,
-    } = this.props;
+    const { prefixCls, animationType, animationDuration, direction, mask, children, width, visible } = this.props;
     const { isPending } = this.state;
     const animationState = visible ? 'enter' : 'leave';
 
@@ -157,8 +142,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
       popup: classnames(prefixCls, {
         [`${prefixCls}--${direction}`]: !!direction,
         [`${prefixCls}--nomask`]: direction === 'center' && !mask,
-        [`za-${animationType}-${animationState}`]:
-          direction === 'center' && isPending,
+        [`za-${animationType}-${animationState}`]: direction === 'center' && isPending,
       }),
     };
 
@@ -254,11 +238,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
     }
     if (this._container) {
       if (!IS_REACT_16) {
-        ReactDOM.unstable_renderSubtreeIntoContainer(
-          this,
-          this.getComponent(),
-          this._container,
-        );
+        ReactDOM.unstable_renderSubtreeIntoContainer(this, this.getComponent(), this._container);
         return null;
       }
       return ReactDOM.createPortal(this.getComponent(), this._container);
@@ -284,7 +264,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
     const { visible } = this.props;
     return (
       <Trigger visible={visible} onClose={this.onEsc}>
-        { this.renderPortal() }
+        {this.renderPortal()}
       </Trigger>
     );
   }
