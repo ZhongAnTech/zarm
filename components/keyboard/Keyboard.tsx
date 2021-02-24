@@ -60,23 +60,19 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
     });
 
     return (
-      <div
-        className={keyCls}
-        key={+index}
-        onClick={() => this.onKeyClick(text)}
-      >
-        {(text === 'close') ? <Icon type="keyboard" size="lg" /> : text}
+      <div className={keyCls} key={+index} onClick={() => this.onKeyClick(text)}>
+        {text === 'close' ? <Icon type="keyboard" size="lg" /> : text}
       </div>
     );
   };
 
   render() {
-    const { prefixCls, locale } = this.props;
+    const { prefixCls, className, locale } = this.props;
+    const cls = classnames(prefixCls, className);
+
     return (
-      <div className={prefixCls}>
-        <div className={`${prefixCls}__keys`}>
-          {this.getKeys().map(this.renderKey)}
-        </div>
+      <div className={cls}>
+        <div className={`${prefixCls}__keys`}>{this.getKeys().map(this.renderKey)}</div>
         <div className={`${prefixCls}__handle`}>
           <div
             className={`${prefixCls}__item`}

@@ -14,7 +14,6 @@ type TItemRender = (data: TDataSource) => string;
 type TDisplayRender = (data: TDataSource[]) => string;
 
 export default interface PropsType {
-  prefixCls: string;
   defaultValue: ReactNode[];
   value: ReactNode[];
   displayMember: string;
