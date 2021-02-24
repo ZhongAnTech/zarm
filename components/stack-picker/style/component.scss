@@ -24,7 +24,7 @@
   }
 }
 
-@include b(stackpicker) {
+@include b(stack-picker) {
   width: 100%;
   height: 100%;
   background: var(--stack-picker-background);
@@ -55,7 +55,7 @@
     @include onepx(top);
   }
 
-  @include e(cancel,submit) {
+  @include e(cancel, submit) {
     padding: 0 var(--padding-h-lg);
     cursor: pointer;
   }
@@ -110,7 +110,7 @@
     right: 0;
     bottom: 0;
     transform: translate(0, 0);
-    transition: transform .3s;
+    transition: transform 0.3s;
 
     @include m(hidden) {
       ~ #{$ele} {
@@ -168,7 +168,7 @@
       line-height: var(--stack-picker-stack-item-height);
       font-size: var(--stack-picker-stack-item-font-size);
       color: var(--color-text);
-      transition: padding-left .4s;
+      transition: padding-left 0.4s;
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
