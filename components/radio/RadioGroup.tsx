@@ -1,21 +1,19 @@
-import React, { HTMLAttributes, PureComponent, cloneElement, ReactNode, isValidElement } from 'react';
+import React, { HTMLAttributes, PureComponent, cloneElement, ReactNode, isValidElement, ChangeEvent } from 'react';
 import classnames from 'classnames';
-import { BaseRadioGroupProps } from './PropsType';
+import { BaseRadioGroupProps, RadioValue } from './PropsType';
+import { Nullable } from '../utils/utilityTypes';
 
-const getChildChecked = (children: ReactNode) => {
+const getChildChecked = (children: ReactNode): Nullable<RadioValue> => {
   let checkedValue = null;
   React.Children.forEach(children, (element: ReactNode) => {
-    if (isValidElement(element)
-      && element.props
-      && element.props.checked
-    ) {
+    if (isValidElement(element) && element.props && element.props.checked) {
       checkedValue = element.props.value;
     }
   });
   return checkedValue;
 };
 
-const getValue = (props: RadioGroup['props'], defaultValue: null) => {
+const getValue = (props: RadioGroup['props'], defaultValue: Nullable<RadioValue> = null): Nullable<RadioValue> => {
   if (typeof props.value !== 'undefined') {
     return props.value;
   }
@@ -28,12 +26,14 @@ const getValue = (props: RadioGroup['props'], defaultValue: null) => {
   return defaultValue;
 };
 
-export interface RadioGroupProps extends Omit<HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'value' | 'onChange'>, BaseRadioGroupProps {
+export interface RadioGroupProps
+  extends Omit<HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'value' | 'onChange'>,
+    BaseRadioGroupProps {
   prefixCls?: string;
 }
 
 export interface RadioGroupStates {
-  value?: string | number | null;
+  value?: Nullable<RadioValue>;
 }
 
 export default class RadioGroup extends PureComponent<RadioGroupProps, RadioGroupStates> {
@@ -50,7 +50,7 @@ export default class RadioGroup extends PureComponent<RadioGroupProps, RadioGrou
   };
 
   state: RadioGroupStates = {
-    value: getValue(this.props, null),
+    value: getValue(this.props),
   };
 
   static getDerivedStateFromProps(nextProps: RadioGroup['props']) {
@@ -72,18 +72,33 @@ export default class RadioGroup extends PureComponent<RadioGroupProps, RadioGrou
   };
 
   render() {
-    const { prefixCls, className, size, shape, type, block, disabled, compact, ghost, children, onChange, defaultValue, value, ...rest } = this.props;
+    const {
+      prefixCls,
+      className,
+      size,
+      shape,
+      type,
+      block,
+      disabled,
+      compact,
+      ghost,
+      children,
+      onChange,
+      defaultValue,
+      value,
+      ...rest
+    } = this.props;
     const { value: valueState } = this.state;
 
-    const items = React.Children.map(children, (element: any, index) => {
+    const items = React.Children.map(children, (element: React.ReactElement, index) => {
       return cloneElement(element, {
         key: index,
         type,
         shape,
-        disabled: disabled || element.props.disabled,
+        disabled: disabled || !!element.props.disabled,
         checked: valueState === element.props.value,
-        onChange: (checked: boolean) => {
-          typeof element.props.onChange === 'function' && element.props.onChange(checked);
+        onChange: (e: ChangeEvent<HTMLInputElement>) => {
+          typeof element.props.onChange === 'function' && element.props.onChange(e);
           this.onChildChange(element.props.value);
         },
       });
@@ -99,6 +114,10 @@ export default class RadioGroup extends PureComponent<RadioGroupProps, RadioGrou
       [`${prefixCls}--ghost`]: ghost,
     });
 
-    return <div className={cls} {...rest}><div className={`${prefixCls}__inner`}>{items}</div></div>;
+    return (
+      <div className={cls} {...rest}>
+        <div className={`${prefixCls}__inner`}>{items}</div>
+      </div>
+    );
   }
 }
