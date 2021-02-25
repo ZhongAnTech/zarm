@@ -3,7 +3,7 @@ import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { mocked } from 'ts-jest/utils';
 import FilePicker, { IFileDetail } from '../index';
-import { mockCreateObjectURL } from '../../../tests/utils';
+import { mockCreateObjectURL, mockResetCreateObjectURL } from '../../../tests/utils';
 import handleFileInfo from '../utils/handleFileInfo';
 
 jest.mock('../utils/handleFileInfo');
@@ -40,6 +40,9 @@ describe('file picker event', () => {
 
   beforeAll(() => {
     mockCreateObjectURL(mCreateObjectURL);
+  });
+  afterAll(() => {
+    mockResetCreateObjectURL();
   });
   afterEach(() => {
     jest.clearAllMocks();
