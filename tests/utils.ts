@@ -2,6 +2,10 @@ export function flushMicroTasks() {
   return new Promise((resolve) => setTimeout(resolve, 0));
 }
 
+export function mockCreateObjectURL(mock: jest.Mock) {
+  Object.defineProperty(window.URL, 'createObjectURL', { value: mock });
+}
+
 export function spyElementPrototypes(Element, properties) {
   const propNames = Object.keys(properties);
   const originDescriptors = {};

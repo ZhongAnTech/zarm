@@ -95,7 +95,9 @@ export default class FilePicker extends PureComponent<FilePickerProps, {}> {
         <input
           className={`${prefixCls}__input`}
           type="file"
-          ref={(ele) => { this.file = ele; }}
+          ref={(ele) => {
+            this.file = ele;
+          }}
           accept={accept}
           multiple={multiple}
           capture={capture}

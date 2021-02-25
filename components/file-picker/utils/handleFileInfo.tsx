@@ -15,7 +15,7 @@ export default function handleFileInfo(
 ): void {
   const { fileSize, fileType, isPic, fileName } = getFileDetail(file);
 
-  const fileDetail = {
+  const fileDetail: IFileDetail = {
     file,
     fileType,
     fileSize,
