@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { mocked } from 'ts-jest/utils';
 import Calendar from '../index';
-import { date7, date2, date6 } from '../../utils/test';
+import { date7, date2, date6 } from '../../../tests/testData/date';
 import parseState from '../utils/parseState';
 import DateTool from '../../utils/date';
 import CalendarMonthView from '../Month';

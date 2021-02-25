@@ -2,7 +2,7 @@ import { PureComponent } from 'react';
 import Events from '../utils/events';
 import throttle from '../utils/throttle';
 import { canUseDOM, ContainerType, getScrollContainer, getScrollTop } from '../utils/dom';
-import { noop } from '../utils/test';
+import noop from '../utils/noop';
 
 export interface ScrollerProps {
   prefixCls?: string;

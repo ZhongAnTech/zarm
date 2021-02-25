@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Calendar from '../index';
-import { date7 } from '../../utils/test';
+import { date7 } from '../../../tests/testData/date';
 
 const prefixCls = 'za-calendar';
 

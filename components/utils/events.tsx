@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
-import { noop } from './test';
+import noop from '../utils/noop';
 
 let supportsPassive = false;
 try {
