@@ -54,7 +54,7 @@ jobs:
         run: npm run lint
     needs: setup
 
-  test:
+  test-h5:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -73,5 +73,27 @@ jobs:
           key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
 
       - name: test
-        run: npm test
+        run: npm run test:h5
+    needs: setup
+
+  test-rn:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: restore cache from yarn.lock
+        uses: actions/cache@v2
+        with:
+          path: package-temp-dir
+          key: lock-${{ github.sha }}
+
+      - name: restore cache from node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
+
+      - name: test
+        run: npm run test:rn
     needs: setup

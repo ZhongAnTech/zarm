@@ -57,14 +57,14 @@
     "authors": "git log --format='%aN <%aE>' | sort -u | grep -v 'users.noreply.github.com' > AUTHORS",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "release": "bash scripts/release.sh",
-    "test:jest": "jest"
+    "prettier": "prettier -c --write '**/*'",
+    "pretty-quick": "pretty-quick"
   },
   "peerDependencies": {
     "react": ">=16.3.1",
     "react-dom": ">=16.3.1"
   },
   "dependencies": {
-    "@babel/runtime": "^7.12.5",
     "better-scroll": "2.0.7",
     "classnames": "2.2.6",
     "color": "^3.1.0",
@@ -109,7 +109,7 @@
     "enzyme-adapter-react-16": "^1.15.6",
     "enzyme-to-json": "^3.6.1",
     "eslint": "7.10.0",
-    "eslint-config-prettier": "^7.2.0",
+    "eslint-config-prettier": "^8.0.0",
     "eslint-config-za": "2.2.2",
     "eslint-plugin-babel": "5.3.1",
     "eslint-plugin-import": "2.22.1",
@@ -122,12 +122,9 @@
     "husky": "^4.2.5",
     "is-wsl": "^2.1.0",
     "istanbul-api": "^3.0.0",
-    "jest": "^26.6.3",
-    "jest-environment-enzyme": "^7.1.2",
-    "jest-enzyme": "^7.1.2",
-    "lint-staged": "^10.2.2",
-    "marked": "^1.0.0",
+    "marked": "^2.0.0",
     "prettier": "2.2.1",
+    "pretty-quick": "^3.1.0",
     "prismjs": "^1.23.0",
     "prop-types": "^15.6.2",
     "qrious": "^4.0.2",
@@ -146,20 +143,8 @@
     "stylelint-checkstyle-formatter": "0.1.2",
     "stylelint-config-za": "0.3.0",
     "stylelint-scss": "^3.18.0",
-    "ts-jest": "^26.5.0",
     "typescript": "4.0.2",
     "zarm-web": "0.0.1-alpha.10"
-  },
-  "prettier": {
-    "singleQuote": true,
-    "printWidth": 120,
-    "trailingComma": "all"
-  },
-  "lint-staged": {
-    "components/**/*.{ts,tsx}": "eslint",
-    "{components,site,rnkit}/**/*.{js,jsx}": "eslint",
-    "rnkit/pages/**/*.{js,jsx}": "eslint",
-    "{styles,site}/**/*.scss": "stylelint"
   },
   "browserslist": [
     "last 2 versions",
@@ -180,7 +165,7 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
+      "pre-commit": "pretty-quick --staged"
     }
   }
 }

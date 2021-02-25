@@ -1,7 +1,0 @@
-{
-  "root": true,
-  "extends": ["za/react", "prettier"],
-  "env": {
-    "jest": true
-  }
-}

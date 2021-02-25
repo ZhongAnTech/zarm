@@ -16,39 +16,62 @@ export default ({ location, globalContext, children }) => {
   const renderSource = useCallback(() => {
     const source = document[2].match(/```(.*)\n?([^]+)```/);
 
-    import('@/components').then((Element) => {
-      const locale = {
-        en_US: enUS,
-        zh_CN: zhCN,
-      };
-      const args = ['context', 'React', 'ReactDOM', 'Zarm', 'GlobalContext', 'Locale'];
-      const argv = [this, React, ReactDOM, Element, globalContext, locale];
+    import('@/components')
+      .then((Element) => {
+        const locale = {
+          en_US: enUS,
+          zh_CN: zhCN,
+        };
+        const args = ['context', 'React', 'ReactDOM', 'Zarm', 'GlobalContext', 'Locale'];
+        const argv = [this, React, ReactDOM, Element, globalContext, locale];
 
-      return {
-        args,
-        argv,
-      };
-    }).then(({ args, argv }) => {
-      const value = source[2]
-        .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'react';/, 'const { $1 } = React;')
-        .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'zarm';/, 'const { $1 } = Zarm;')
-        .replace(/import\s+(.*)\s+from\s+'zarm\/config-provider\/locale\/(.*)';/g, 'const $1 = Locale[\'$2\'];')
-        .replace(/ReactDOM.render\(\s?([^]+?)(,\s?mountNode\s?\))/g, `ReactDOM.render($1, document.getElementById('${containerId}'))`);
+        return {
+          args,
+          argv,
+        };
+      })
+      .then(({ args, argv }) => {
+        const value = source[2]
+          .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'react';/, 'const { $1 } = React;')
+          .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'zarm';/, 'const { $1 } = Zarm;')
+          .replace(
+            /import\s+(.*)\s+from\s+'zarm\/config-provider\/locale\/(.*)';/g,
+            "const $1 = Locale['$2'];",
+          )
+          // 替换格式
+          // ReactDOM.render(<Demo />, mountNode);
+          .replace(
+            /ReactDOM.render\(\s?([^]+?)(,\s?mountNode\s?\))/g,
+            `ReactDOM.render($1, document.getElementById('${containerId}'))`,
+          )
+          // 替换格式
+          // ReactDOM.render(
+          //   <>
+          //     <Button>default</Button>
+          //     <Button theme="primary">primary</Button>
+          //   </>,
+          //   mountNode,
+          // );
+          .replace(
+            /ReactDOM.render\(\s?([^]+?)([\r\n]?mountNode,\s?\))/g,
+            `ReactDOM.render($1 document.getElementById('${containerId}'))`,
+          );
 
-      const { code } = transform(value, {
-        presets: ['es2015', 'react'],
-        plugins: ['proposal-class-properties'],
+        const { code } = transform(value, {
+          presets: ['es2015', 'react'],
+          plugins: ['proposal-class-properties'],
+        });
+
+        args.push(code);
+        // eslint-disable-next-line
+        new Function(...args)(...argv);
+        // source[2] = value;
+      })
+      .catch((err) => {
+        if (process.env.NODE_ENV !== 'production') {
+          throw err;
+        }
       });
-
-      args.push(code);
-      // eslint-disable-next-line
-      new Function(...args)(...argv);
-      // source[2] = value;
-    }).catch((err) => {
-      if (process.env.NODE_ENV !== 'production') {
-        throw err;
-      }
-    });
   }, [containerId, document, globalContext]);
 
   useEffect(() => {
@@ -61,11 +84,11 @@ export default ({ location, globalContext, children }) => {
   }, [renderSource]);
 
   // Panel的例子特殊处理
-  return (location.pathname === '/panel')
-    ? <div id={containerId} ref={containerRef} />
-    : (
-      <Panel title={title}>
-        <div id={containerId} ref={containerRef} />
-      </Panel>
-    );
+  return location.pathname === '/panel' ? (
+    <div id={containerId} ref={containerRef} />
+  ) : (
+    <Panel title={title}>
+      <div id={containerId} ref={containerRef} />
+    </Panel>
+  );
 };
