@@ -6,6 +6,7 @@ import { canUseDOM } from '../utils/dom';
 
 export interface AffixStates {
   affixed: boolean;
+  // used to record origin dom rect
   width: number;
   height: number;
 }
@@ -28,7 +29,7 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
 
   private saveFixedNode = createRef<HTMLDivElement>();
 
-  private saveFixedNodeTop = 10000;
+  private saveFixedNodeTop = 'offsetBottom' in this.props ? -10000 : 10000;
 
   state = {
     affixed: false,
@@ -38,10 +39,15 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
 
   componentDidMount() {
     // wait for ref not null
+    const { offsetBottom } = this.props;
+
     setTimeout(() => {
       const { container, onPositionUpdate } = this;
-
       Events.on(container, 'scroll', onPositionUpdate);
+
+      if (typeof offsetBottom !== 'undefined') {
+        this.onPositionUpdate();
+      }
     });
   }
 
@@ -125,8 +131,9 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
     if (currentAffixed !== affixed) {
       this.setState({
         affixed: currentAffixed,
-        width,
-        height,
+        // use 'auto' when get width or height is 0
+        width: width === 0 ? 'auto' as any : width,
+        height: height === 0 ? 'auto' as any : height,
       });
       onChange && onChange(currentAffixed);
     }
