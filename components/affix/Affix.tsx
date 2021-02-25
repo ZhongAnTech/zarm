@@ -55,7 +55,7 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
 
   get container() {
     const { scrollContainer } = this.props;
-    const container = scrollContainer!();
+    const container = typeof scrollContainer === 'function' ? scrollContainer!() : scrollContainer;
 
     return !container ? window : container;
   }
