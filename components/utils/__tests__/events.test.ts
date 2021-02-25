@@ -63,7 +63,7 @@ describe('events', () => {
       expect(button.removeEventListener).toBeCalledWith('click', callback, false);
     });
 
-    it('should call removeEventListener if element supports removeEventListener method', () => {
+    it('should call detachEvent if element does not supports removeEventListener method', () => {
       const button = ({
         detachEvent: jest.fn().mockImplementationOnce((_, callback) => {
           callback();
@@ -88,10 +88,10 @@ describe('events', () => {
       });
       const callback = jest.fn();
       events.once(button, 'click dblclick', callback);
-      expect(onSpy).toBeCalledWith(button, 'click', expect.any(Function));
       expect(onSpy).toBeCalledWith(button, 'dblclick', expect.any(Function));
-      expect(mEvent.target?.removeEventListener).toBeCalledWith('click', expect.any(Function), false);
+      expect(onSpy).toBeCalledWith(button, 'click', expect.any(Function));
       expect(mEvent.target?.removeEventListener).toBeCalledWith('dblclick', expect.any(Function), false);
+      expect(mEvent.target?.removeEventListener).toBeCalledWith('click', expect.any(Function), false);
       expect(callback).toBeCalledWith(mEvent);
     });
 

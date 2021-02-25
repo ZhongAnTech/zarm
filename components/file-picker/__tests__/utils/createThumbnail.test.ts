@@ -1,7 +1,7 @@
 import { mocked } from 'ts-jest/utils';
 import createThumbnail from '../../utils/createThumbnail';
 import changeImageSize from '../../utils/changeImageSize';
-import { mockCreateObjectURL } from '../../../../tests/utils';
+import { mockCreateObjectURL, mockResetCreateObjectURL } from '../../../../tests/utils';
 
 jest.mock('../../utils/changeImageSize');
 
@@ -13,6 +13,7 @@ describe('createThumbnail', () => {
 
   afterAll(() => {
     jest.resetAllMocks();
+    mockResetCreateObjectURL();
   });
   beforeAll(() => {
     Object.defineProperty(Image.prototype, 'onload', {

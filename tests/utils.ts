@@ -2,8 +2,13 @@ export function flushMicroTasks() {
   return new Promise((resolve) => setTimeout(resolve, 0));
 }
 
+let oCreateObjectURL: typeof window.URL.createObjectURL;
 export function mockCreateObjectURL(mock: jest.Mock) {
+  oCreateObjectURL = window.URL.createObjectURL;
   Object.defineProperty(window.URL, 'createObjectURL', { value: mock });
+}
+export function mockResetCreateObjectURL() {
+  window.URL.createObjectURL = oCreateObjectURL;
 }
 
 export function spyElementPrototypes(Element, properties) {
