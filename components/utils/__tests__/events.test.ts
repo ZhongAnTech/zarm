@@ -56,6 +56,11 @@ describe('events', () => {
   });
   describe('#off', () => {
     it('should call removeEventListener if element supports removeEventListener method', () => {
+      jest
+        .spyOn(window, 'addEventListener')
+        .mockImplementationOnce((_, __, useCapture?: AddEventListenerOptions | Boolean) => {
+          Boolean(useCapture);
+        });
       const button = ({ removeEventListener: jest.fn() } as unknown) as Element;
       const callback = jest.fn();
       events = require('../events').default;
@@ -79,6 +84,11 @@ describe('events', () => {
 
   describe('#once', () => {
     it('should remove existed event handler on event target before binding multiple events', () => {
+      jest
+        .spyOn(window, 'addEventListener')
+        .mockImplementationOnce((_, __, useCapture?: AddEventListenerOptions | Boolean) => {
+          Boolean(useCapture);
+        });
       const mEvent = ({ type: '', target: { removeEventListener: jest.fn() } } as unknown) as Event;
       const button = ({} as unknown) as Element;
       events = require('../events').default;
