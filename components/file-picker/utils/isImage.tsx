@@ -2,9 +2,8 @@
  * detect the file is image
  *
  * @param fileType
- * @returns {boolean}
  */
-export default function isImage(fileType: string) {
+export default function isImage(fileType: string): boolean {
   const imageType = /image.*/;
 
   return !!fileType.match(imageType);

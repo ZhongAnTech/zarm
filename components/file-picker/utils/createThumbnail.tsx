@@ -23,7 +23,7 @@ export default function createThumbnail({ file, quality, fileType, maxWidth, max
   return new Promise<string>((resolve) => {
     const img = document.createElement('img');
 
-    window.URL = window.URL || (window as any).webkitURL;
+    window.URL = window.URL || window.webkitURL;
 
     img.onload = () => {
       let imgUrl: string;

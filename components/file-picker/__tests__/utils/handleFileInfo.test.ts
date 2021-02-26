@@ -2,7 +2,7 @@ import { mocked } from 'ts-jest/utils';
 import getFileDetail from '../../utils/getFileDetail';
 import handleFileInfo from '../../utils/handleFileInfo';
 import createThumbnail from '../../utils/createThumbnail';
-import { flushMicroTasks } from '../../../utils/test';
+import { flushMicroTasks } from '../../../../tests/utils';
 
 jest.mock('../../utils/getFileDetail');
 jest.mock('../../utils/createThumbnail');

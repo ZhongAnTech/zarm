@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import DateSelect from '../index';
 import enLocale from '../../date-picker-view/locale/en_US';
-import { date1, date2, date3, date4, date5, date6 } from '../../utils/test';
+import { date1, date2, date3, date4, date5, date6 } from '../../../tests/testData/date';
 
 describe('DateSelect', () => {
   it('DateSelect year', () => {

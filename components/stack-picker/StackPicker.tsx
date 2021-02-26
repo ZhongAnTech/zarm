@@ -17,7 +17,7 @@ const stopPropagation = (e: MouseEvent) => {
 };
 
 export interface StackPickerProps extends PropsType {
-  prefixCls: string;
+  prefixCls?: string;
   className?: string;
 }
 
