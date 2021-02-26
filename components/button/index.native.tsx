@@ -79,9 +79,8 @@ export default class Button extends PureComponent<ButtonProps, any> {
       style,
     ];
 
-    const underlayColor = (StyleSheet.flatten(
-      styles![`${theme}ActiveWrapper`],
-    ) as any).backgroundColor;
+    const underlayColor = (StyleSheet.flatten(styles![`${theme}ActiveWrapper`]) as any)
+      .backgroundColor;
 
     const textStyle = [
       styles!.textStyle,
@@ -94,14 +93,13 @@ export default class Button extends PureComponent<ButtonProps, any> {
       disabled && ghost && styles!.disabledGhostText,
     ];
 
-    const iconStyle = [
-      styles!.iconStyle,
-      styles![`${size}Icon`],
-    ];
+    const iconStyle = [styles!.iconStyle, styles![`${size}Icon`]];
 
-    const iconRender = loading
-      ? <ActivityIndicator animating style={iconStyle} size="small" />
-      : icon;
+    const iconRender = loading ? (
+      <ActivityIndicator animating style={iconStyle} size="small" />
+    ) : (
+      icon
+    );
 
     const contentRender = (
       <View style={styles!.container as ViewStyle}>
@@ -120,8 +118,12 @@ export default class Button extends PureComponent<ButtonProps, any> {
       ...others,
     };
 
-    return ghost
-      ? <TouchableOpacity {...wrapperProps}>{contentRender}</TouchableOpacity>
-      : <TouchableHighlight {...wrapperProps} underlayColor={underlayColor}>{contentRender}</TouchableHighlight>;
+    return ghost ? (
+      <TouchableOpacity {...wrapperProps}>{contentRender}</TouchableOpacity>
+    ) : (
+      <TouchableHighlight {...wrapperProps} underlayColor={underlayColor}>
+        {contentRender}
+      </TouchableHighlight>
+    );
   }
 }

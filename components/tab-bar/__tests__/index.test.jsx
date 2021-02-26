@@ -4,20 +4,23 @@ import toJson from 'enzyme-to-json';
 import TabBar from '../index';
 
 const activeIcon = (
-  <div style={{
-    width: '24px',
-    height: '24px',
-    background: 'url(//cdn-health.zhongan.com/zarm/home-active.svg) top left / 24px 24px no-repeat',
-  }}
+  <div
+    style={{
+      width: '24px',
+      height: '24px',
+      background:
+        'url(//cdn-health.zhongan.com/zarm/home-active.svg) top left / 24px 24px no-repeat',
+    }}
   />
 );
 
 const icon = (
-  <div style={{
-    width: '24px',
-    height: '24px',
-    background: 'url(//cdn-health.zhongan.com/zarm/home.svg) top left / 24px 24px no-repeat',
-  }}
+  <div
+    style={{
+      width: '24px',
+      height: '24px',
+      background: 'url(//cdn-health.zhongan.com/zarm/home.svg) top left / 24px 24px no-repeat',
+    }}
   />
 );
 
@@ -26,12 +29,7 @@ describe('ActivityIndicator', () => {
   it('renders correctly', () => {
     const wrapper = render(
       <TabBar onChange={onChange}>
-        <TabBar.Item
-          itemKey="home"
-          title="主页"
-          icon={icon}
-          activeIcon={activeIcon}
-        />
+        <TabBar.Item itemKey="home" title="主页" icon={icon} activeIcon={activeIcon} />
       </TabBar>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -40,12 +38,7 @@ describe('ActivityIndicator', () => {
   it('with defaultActiveKey', () => {
     const wrapper = render(
       <TabBar defaultActiveKey="home">
-        <TabBar.Item
-          itemKey="home"
-          title="主页"
-          icon={icon}
-          activeIcon={activeIcon}
-        />
+        <TabBar.Item itemKey="home" title="主页" icon={icon} activeIcon={activeIcon} />
       </TabBar>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -54,12 +47,7 @@ describe('ActivityIndicator', () => {
   it('with activeKey', () => {
     const wrapper = render(
       <TabBar activeKey="home">
-        <TabBar.Item
-          itemKey="home"
-          title="主页"
-          icon={icon}
-          activeIcon={activeIcon}
-        />
+        <TabBar.Item itemKey="home" title="主页" icon={icon} activeIcon={activeIcon} />
       </TabBar>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -68,12 +56,7 @@ describe('ActivityIndicator', () => {
   it('onChange', () => {
     const wrapper = mount(
       <TabBar defaultActiveKey="home" onChange={onChange}>
-        <TabBar.Item
-          itemKey="home"
-          title="主页"
-          icon={icon}
-          activeIcon={activeIcon}
-        />
+        <TabBar.Item itemKey="home" title="主页" icon={icon} activeIcon={activeIcon} />
       </TabBar>,
     );
 

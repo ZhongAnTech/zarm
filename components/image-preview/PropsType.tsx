@@ -1,4 +1,7 @@
-export interface ImageSrc { url: string; originUrl: string }
+export interface ImageSrc {
+  url: string;
+  originUrl: string;
+}
 
 export default interface PropsType {
   images: Array<ImageSrc> | Array<string>;

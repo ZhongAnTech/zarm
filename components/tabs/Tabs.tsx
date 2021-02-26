@@ -133,12 +133,7 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
       [`${prefixCls}__tab--active`]: value === index,
     });
     return (
-      <li
-        role="tab"
-        key={+index}
-        className={itemCls}
-        onClick={() => this.onTabClick(tab, index)}
-      >
+      <li role="tab" key={+index} className={itemCls} onClick={() => this.onTabClick(tab, index)}>
         {tab.props.title}
       </li>
     );
@@ -160,7 +155,9 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     }
 
     const size = scrollable ? `${itemWidth}px` : `${100 / ChildCount}%`;
-    const transformValue = scrollable ? getPxStyle(pos, 'px', this.isVertical) : getPxStyle(pos, '%', this.isVertical);
+    const transformValue = scrollable
+      ? getPxStyle(pos, 'px', this.isVertical)
+      : getPxStyle(pos, '%', this.isVertical);
     const styleUl = getTransformPropValue(transformValue);
     const itemSize = this.isVertical ? { height: `${size}` } : { width: `${size}` };
 
@@ -194,7 +191,9 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     }
     const value = this.currentValue;
     const el = this.layout!.children[value];
-    const size = this.isVertical ? this.getComputedStyle(el, 'height') : this.getComputedStyle(el, 'width');
+    const size = this.isVertical
+      ? this.getComputedStyle(el, 'height')
+      : this.getComputedStyle(el, 'width');
 
     this.setState({
       itemWidth: parseInt(size, 10),
@@ -210,7 +209,16 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
   };
 
   render() {
-    const { prefixCls, className, lineWidth, swipeable, children, disabled, scrollable, direction } = this.props;
+    const {
+      prefixCls,
+      className,
+      lineWidth,
+      swipeable,
+      children,
+      disabled,
+      scrollable,
+      direction,
+    } = this.props;
     const value = this.currentValue;
     const classes = classnames(prefixCls, className, `${prefixCls}--${direction}`, {
       [`${prefixCls}--scroll`]: scrollable,
@@ -234,13 +242,18 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
             this.onTabChange(v);
           }}
         >
-          {React.Children.map(children, (item: any, index: number) => <div key={+index}>{item.props.children}</div>)}
+          {React.Children.map(children, (item: any, index: number) => (
+            <div key={+index}>{item.props.children}</div>
+          ))}
         </Carousel>
       );
     } else {
-      contentRender = React.Children.map(children, (item: ReactElement<TabPanel['props'], typeof TabPanel>, index) => {
-        return item.props.children && <TabPanel {...item.props} selected={value === index} />;
-      });
+      contentRender = React.Children.map(
+        children,
+        (item: ReactElement<TabPanel['props'], typeof TabPanel>, index) => {
+          return item.props.children && <TabPanel {...item.props} selected={value === index} />;
+        },
+      );
     }
 
     const lineStyle: CSSProperties = this.caclLineSizePos();
@@ -248,7 +261,9 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     let lineInnerRender;
     if (lineWidth) {
       lineStyle.backgroundColor = 'transparent';
-      lineInnerRender = <span className={`${prefixCls}__line__inner`} style={{ width: lineWidth }} />;
+      lineInnerRender = (
+        <span className={`${prefixCls}__line__inner`} style={{ width: lineWidth }} />
+      );
     }
 
     return (
@@ -256,12 +271,12 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
         <div className={`${prefixCls}__header`}>
           <ul className={`${prefixCls}__tablist`} role="tablist" ref={this.setTablistRef}>
             {tabsRender}
-            <div className={`${prefixCls}__line`} style={lineStyle}>{lineInnerRender}</div>
+            <div className={`${prefixCls}__line`} style={lineStyle}>
+              {lineInnerRender}
+            </div>
           </ul>
         </div>
-        <div className={`${prefixCls}__body`}>
-          {contentRender}
-        </div>
+        <div className={`${prefixCls}__body`}>{contentRender}</div>
       </div>
     );
   }

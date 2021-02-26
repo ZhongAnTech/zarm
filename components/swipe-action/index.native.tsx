@@ -66,8 +66,8 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     const { offset } = this.props;
 
     if (
-      (dx > 0 && (!this.btnsLeftWidth || dx >= this.btnsLeftWidth + offset))
-      || (dx < 0 && (!this.btnsRightWidth || dx <= -this.btnsRightWidth - offset))
+      (dx > 0 && (!this.btnsLeftWidth || dx >= this.btnsLeftWidth + offset)) ||
+      (dx < 0 && (!this.btnsRightWidth || dx <= -this.btnsRightWidth - offset))
     ) {
       return false;
     }
@@ -89,10 +89,13 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     let distanceX = 0;
     let isOpen = false;
 
-    if ((dx / this.btnsLeftWidth > moveDistanceRatio) || (dx > 0 && timeSpan <= moveTimeSpan)) {
+    if (dx / this.btnsLeftWidth > moveDistanceRatio || (dx > 0 && timeSpan <= moveTimeSpan)) {
       distanceX = this.btnsLeftWidth;
       isOpen = true;
-    } else if ((dx / this.btnsRightWidth < -moveDistanceRatio) || (dx < 0 && timeSpan <= moveTimeSpan)) {
+    } else if (
+      dx / this.btnsRightWidth < -moveDistanceRatio ||
+      (dx < 0 && timeSpan <= moveTimeSpan)
+    ) {
       distanceX = -this.btnsRightWidth;
       isOpen = true;
     }
@@ -110,7 +113,9 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
   };
 
   getBtnsWidth = ({ nativeEvent }, direction) => {
-    const { layout: { width } } = nativeEvent;
+    const {
+      layout: { width },
+    } = nativeEvent;
 
     if (direction === 'left') {
       this.btnsLeftWidth = width;
@@ -174,10 +179,7 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     }
     const btnStyle = [styles.btn, styles[`${direction}Btn`]];
     return (
-      <View
-        style={btnStyle}
-        onLayout={(e) => this.getBtnsWidth(e, direction)}
-      >
+      <View style={btnStyle} onLayout={(e) => this.getBtnsWidth(e, direction)}>
         {buttons.map(this.renderButton)}
       </View>
     );
@@ -185,24 +187,23 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
 
   render() {
     const viewStyle = {
-      transform: [{
-        translateX: this.offsetLeft,
-      }],
+      transform: [
+        {
+          translateX: this.offsetLeft,
+        },
+      ],
     };
     const { left, right, children } = this.props;
-    return (left || right)
-      ? (
-        <View style={styles.wrapper}>
-          {this.renderButtons(left, 'left')}
-          {this.renderButtons(right, 'right')}
-          <Animated.View
-            style={[styles.content, viewStyle]}
-            {...this.panResponder.panHandlers}
-          >
-            {children}
-          </Animated.View>
-        </View>
-      )
-      : children;
+    return left || right ? (
+      <View style={styles.wrapper}>
+        {this.renderButtons(left, 'left')}
+        {this.renderButtons(right, 'right')}
+        <Animated.View style={[styles.content, viewStyle]} {...this.panResponder.panHandlers}>
+          {children}
+        </Animated.View>
+      </View>
+    ) : (
+      children
+    );
   }
 }

@@ -26,7 +26,9 @@ export default class Badge extends PureComponent<BadgeProps, {}> {
     return (
       <span className={cls}>
         {children}
-        <sup className={`${prefixCls}__content`} {...others}>{shape !== 'dot' && text}</sup>
+        <sup className={`${prefixCls}__content`} {...others}>
+          {shape !== 'dot' && text}
+        </sup>
       </span>
     );
   }

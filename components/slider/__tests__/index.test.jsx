@@ -137,7 +137,9 @@ describe('Slider', () => {
   it('vertical mouse event', () => {
     const onChange = jest.fn();
 
-    const wrapper = mount(<Slider onChange={onChange} step={5.5} vertical />).find('.za-slider__handle');
+    const wrapper = mount(<Slider onChange={onChange} step={5.5} vertical />).find(
+      '.za-slider__handle',
+    );
     wrapper.simulate('mouseDown', {
       clientX: 0,
       clientY: 0,

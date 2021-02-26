@@ -87,9 +87,8 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     }
 
     const { value } = this.state;
-    const newValue = (key === 'delete')
-      ? String(value).slice(0, String(value).length - 1)
-      : value + key;
+    const newValue =
+      key === 'delete' ? String(value).slice(0, String(value).length - 1) : value + key;
 
     if (!('value' in this.props)) {
       this.setState({ value: newValue });
@@ -134,9 +133,12 @@ export default class InputNumber extends Component<InputNumberProps, any> {
 
   onClear = () => {
     const { onChange, onClear } = this.props;
-    this.setState({
-      value: '',
-    }, this.onFocus);
+    this.setState(
+      {
+        value: '',
+      },
+      this.onFocus,
+    );
     if (onClear) {
       onClear('');
     }
@@ -164,7 +166,8 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   render() {
     const { prefixCls, className, type, clearable, disabled, readOnly, placeholder } = this.props;
     const { visible, value } = this.state;
-    const showClearIcon = clearable && ('value' in this.props) && value.length > 0 && ('onChange' in this.props);
+    const showClearIcon =
+      clearable && 'value' in this.props && value.length > 0 && 'onChange' in this.props;
 
     const cls = classnames(prefixCls, `${prefixCls}--${type}`, className, {
       [`${prefixCls}--disabled`]: disabled,
@@ -175,15 +178,22 @@ export default class InputNumber extends Component<InputNumberProps, any> {
 
     const renderInput = (
       <div className={`${prefixCls}__content`}>
-        {(value === undefined || value === '') && !readOnly && <div className={`${prefixCls}__placeholder`}>{placeholder}</div>}
-        <div className={`${prefixCls}__virtual-input`} ref={(ele) => { this.content = ele; }}>{value}</div>
-        <input
-          type="hidden"
-          value={value}
-          disabled={disabled}
-        />
+        {(value === undefined || value === '') && !readOnly && (
+          <div className={`${prefixCls}__placeholder`}>{placeholder}</div>
+        )}
+        <div
+          className={`${prefixCls}__virtual-input`}
+          ref={(ele) => {
+            this.content = ele;
+          }}
+        >
+          {value}
+        </div>
+        <input type="hidden" value={value} disabled={disabled} />
         <KeyboardPicker
-          ref={(ele) => { this.picker = ele; }}
+          ref={(ele) => {
+            this.picker = ele;
+          }}
           visible={visible}
           type={type}
           onKeyClick={this.onKeyClick}
@@ -205,7 +215,13 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     );
 
     return (
-      <div className={cls} onClick={this.onFocus} ref={(ele) => { this.container = ele; }}>
+      <div
+        className={cls}
+        onClick={this.onFocus}
+        ref={(ele) => {
+          this.container = ele;
+        }}
+      >
         {readOnly ? renderText : renderInput}
         {renderClearIcon}
       </div>

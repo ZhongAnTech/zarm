@@ -125,13 +125,27 @@ export default class Portal extends PureComponent<PortalProps, any> {
   handleMaskClick = (e) => {
     e.stopPropagation();
     const { onMaskClick } = this.props;
-    if (typeof onMaskClick === 'function' && this.popup !== e.target && this.popup && !this.popup.contains(e.target)) {
+    if (
+      typeof onMaskClick === 'function' &&
+      this.popup !== e.target &&
+      this.popup &&
+      !this.popup.contains(e.target)
+    ) {
       onMaskClick();
     }
   };
 
   getComponent = () => {
-    const { prefixCls, animationType, animationDuration, direction, mask, children, width, visible } = this.props;
+    const {
+      prefixCls,
+      animationType,
+      animationDuration,
+      direction,
+      mask,
+      children,
+      width,
+      visible,
+    } = this.props;
     const { isPending } = this.state;
     const animationState = visible ? 'enter' : 'leave';
 
@@ -146,25 +160,27 @@ export default class Portal extends PureComponent<PortalProps, any> {
       }),
     };
 
-    const wrapStyle: CSSProperties = direction === 'center'
-      ? {
-        WebkitAnimationDuration: `${animationDuration}ms`,
-        animationDuration: `${animationDuration}ms`,
-      }
-      : {};
+    const wrapStyle: CSSProperties =
+      direction === 'center'
+        ? {
+            WebkitAnimationDuration: `${animationDuration}ms`,
+            animationDuration: `${animationDuration}ms`,
+          }
+        : {};
 
-    const popupStyle: CSSProperties = direction === 'center'
-      ? {
-        width,
-        WebkitAnimationDuration: `${animationDuration}ms`,
-        animationDuration: `${animationDuration}ms`,
-      }
-      : {
-        WebkitTransitionDuration: `${animationDuration}ms`,
-        transitionDuration: `${animationDuration}ms`,
-        WebkitTransitionProperty: 'transform',
-        transitionProperty: 'transform',
-      };
+    const popupStyle: CSSProperties =
+      direction === 'center'
+        ? {
+            width,
+            WebkitAnimationDuration: `${animationDuration}ms`,
+            animationDuration: `${animationDuration}ms`,
+          }
+        : {
+            WebkitTransitionDuration: `${animationDuration}ms`,
+            transitionDuration: `${animationDuration}ms`,
+            WebkitTransitionProperty: 'transform',
+            transitionProperty: 'transform',
+          };
 
     if (!mask) {
       return (

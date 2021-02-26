@@ -5,11 +5,7 @@ class Header extends Component {
   render() {
     const { title } = this.props;
 
-    return (
-      <header className="header">
-        {title}
-      </header>
-    );
+    return <header className="header">{title}</header>;
   }
 }
 

@@ -6,7 +6,11 @@ import Tooltip from '../index';
 describe('Tooltip', () => {
   it('renders correctly', () => {
     jest.useFakeTimers();
-    const wrapper = mount(<Tooltip direction="top" title="hello"><span>foo</span></Tooltip>);
+    const wrapper = mount(
+      <Tooltip direction="top" title="hello">
+        <span>foo</span>
+      </Tooltip>,
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
     jest.runAllTimers();
     wrapper.unmount();

@@ -8,7 +8,13 @@ import { date1, date2, date3, date4, date5, date6 } from '../../../tests/testDat
 describe('DateSelect', () => {
   it('DateSelect year', () => {
     const wrapper = mount(
-      <DateSelect title="选择年份" placeholder="请选择年份" mode="year" value="2017" locale={enLocale} />,
+      <DateSelect
+        title="选择年份"
+        placeholder="请选择年份"
+        mode="year"
+        value="2017"
+        locale={enLocale}
+      />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -35,14 +41,22 @@ describe('DateSelect', () => {
   });
 
   it('DateSelect date', () => {
-    const wrapper = mount(<DateSelect title="选择日期" placeholder="请选择日期" mode="date" value={date1} />);
+    const wrapper = mount(
+      <DateSelect title="选择日期" placeholder="请选择日期" mode="date" value={date1} />,
+    );
     wrapper.setProps({ value: date1 });
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('DateSelect time', () => {
     const wrapper = mount(
-      <DateSelect title="选择时间" placeholder="请选择时间" mode="time" defaultValue={date2} minuteStep={15} />,
+      <DateSelect
+        title="选择时间"
+        placeholder="请选择时间"
+        mode="time"
+        defaultValue={date2}
+        minuteStep={15}
+      />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -64,7 +78,12 @@ describe('DateSelect', () => {
 
   it('DateSelect wheelDefaultValue', () => {
     const wrapper = mount(
-      <DateSelect title="选择日期" placeholder="请选择日期" mode="date" wheelDefaultValue={date5} />,
+      <DateSelect
+        title="选择日期"
+        placeholder="请选择日期"
+        mode="date"
+        wheelDefaultValue={date5}
+      />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });

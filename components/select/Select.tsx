@@ -34,15 +34,24 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
     super(props);
     this.state = {
       visible: false,
-      selectValue: parseProps.isValueValid(props.defaultValue || props.value) && parseProps.getSource(props).objValue,
+      selectValue:
+        parseProps.isValueValid(props.defaultValue || props.value) &&
+        parseProps.getSource(props).objValue,
     };
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (!isEqual(removeFnFromProps(props, ['onOk', 'onCancel', 'onChange']), removeFnFromProps(state.prevProps, ['onOk', 'onCancel', 'onChange']))) {
+    if (
+      !isEqual(
+        removeFnFromProps(props, ['onOk', 'onCancel', 'onChange']),
+        removeFnFromProps(state.prevProps, ['onOk', 'onCancel', 'onChange']),
+      )
+    ) {
       return {
         prevProps: props,
-        selectValue: parseProps.isValueValid(props.defaultValue || props.value) && parseProps.getSource(props).objValue,
+        selectValue:
+          parseProps.isValueValid(props.defaultValue || props.value) &&
+          parseProps.getSource(props).objValue,
       };
     }
 
@@ -68,14 +77,17 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
 
   onOk = (selected) => {
     const { onOk } = this.props;
-    this.setState({
-      selectValue: selected,
-      visible: false,
-    }, () => {
-      if (typeof onOk === 'function') {
-        onOk(selected);
-      }
-    });
+    this.setState(
+      {
+        selectValue: selected,
+        visible: false,
+      },
+      () => {
+        if (typeof onOk === 'function') {
+          onOk(selected);
+        }
+      },
+    );
   };
 
   // 点击取消
@@ -91,7 +103,17 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
   };
 
   render() {
-    const { prefixCls, placeholder, className, disabled, displayRender, locale, value, hasArrow, ...others } = this.props;
+    const {
+      prefixCls,
+      placeholder,
+      className,
+      disabled,
+      displayRender,
+      locale,
+      value,
+      hasArrow,
+      ...others
+    } = this.props;
     const { visible, selectValue = [] } = this.state;
     const cls = classnames(prefixCls, {
       [`${prefixCls}--placeholder`]: !selectValue.length,
@@ -101,7 +123,11 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
     return (
       <div className={cls} onClick={this.handleClick}>
         <div className={`${prefixCls}__input`}>
-          <div className={`${prefixCls}__value`}>{(selectValue.length && displayRender!(selectValue || [])) || placeholder || locale!.placeholder}</div>
+          <div className={`${prefixCls}__value`}>
+            {(selectValue.length && displayRender!(selectValue || [])) ||
+              placeholder ||
+              locale!.placeholder}
+          </div>
         </div>
         <Picker
           {...others}

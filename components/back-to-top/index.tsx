@@ -61,15 +61,11 @@ export default class BackToTop extends PureComponent<BackToTopProps, BackToTopSt
   }
 
   get container(): HTMLElement | Window {
-    return this.scroller
-      ? this.scroller!.scrollContainer
-      : window;
+    return this.scroller ? this.scroller!.scrollContainer : window;
   }
 
   get scrollTop(): number {
-    return this.scroller
-      ? this.scroller!.scrollTop
-      : 0;
+    return this.scroller ? this.scroller!.scrollTop : 0;
   }
 
   get renderPortal(): ReactPortal | null {
@@ -90,7 +86,9 @@ export default class BackToTop extends PureComponent<BackToTopProps, BackToTopSt
           {children}
         </div>
         <Scroller
-          ref={(ele) => { this.scroller = ele; }}
+          ref={(ele) => {
+            this.scroller = ele;
+          }}
           container={scrollContainer}
           onScroll={this.onScroll}
         />

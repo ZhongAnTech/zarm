@@ -16,7 +16,9 @@ describe('Message', () => {
   });
 
   it('onClick', () => {
-    const wrapper = render(<Message onClick={() => Alert.alert('click this message!')}>Message</Message>);
+    const wrapper = render(
+      <Message onClick={() => Alert.alert('click this message!')}>Message</Message>,
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 

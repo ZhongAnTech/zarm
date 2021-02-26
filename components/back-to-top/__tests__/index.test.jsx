@@ -23,7 +23,14 @@ describe('BackToTop', () => {
     let container;
     const wrapper = mount(
       <>
-        <ul ref={(ele) => { container = ele; }} style={containerStyle}>{list}</ul>
+        <ul
+          ref={(ele) => {
+            container = ele;
+          }}
+          style={containerStyle}
+        >
+          {list}
+        </ul>
         <BackToTop scrollContainer={() => container}>Up</BackToTop>
       </>,
     );
@@ -33,9 +40,7 @@ describe('BackToTop', () => {
 
   it('click event', () => {
     const onClick = jest.fn();
-    const wrapper = shallow(
-      <BackToTop onClick={onClick}>Up</BackToTop>,
-    );
+    const wrapper = shallow(<BackToTop onClick={onClick}>Up</BackToTop>);
     window.scrollTo = jest.fn();
     window.scrollTo(0, 1000);
     jest.useFakeTimers();
@@ -46,9 +51,7 @@ describe('BackToTop', () => {
   });
 
   it('set the value of `speed` to 0 ', () => {
-    const wrapper = shallow(
-      <BackToTop>Up</BackToTop>,
-    );
+    const wrapper = shallow(<BackToTop>Up</BackToTop>);
     window.scrollTo = jest.fn();
     window.scrollTo(0, 1000);
     wrapper.setProps({ speed: 0 });

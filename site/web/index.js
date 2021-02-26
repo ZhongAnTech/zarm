@@ -5,8 +5,9 @@ import ReactDOM from 'react-dom';
 import { HashRouter } from 'react-router-dom';
 import App from './components/App';
 
-ReactDOM.render((
+ReactDOM.render(
   <HashRouter>
     <App />
-  </HashRouter>
-), document.getElementById('app'));
+  </HashRouter>,
+  document.getElementById('app'),
+);

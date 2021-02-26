@@ -46,8 +46,16 @@ const Header = ({ children }) => {
   };
 
   const NAV_ITEMS = [
-    { key: 'components', link: '#/components/quick-start', title: <FormattedMessage id="app.home.nav.components" /> },
-    { key: 'design', link: '#/design/download', title: <FormattedMessage id="app.home.nav.resources" /> },
+    {
+      key: 'components',
+      link: '#/components/quick-start',
+      title: <FormattedMessage id="app.home.nav.components" />,
+    },
+    {
+      key: 'design',
+      link: '#/design/download',
+      title: <FormattedMessage id="app.home.nav.resources" />,
+    },
     { key: 'gitee', link: 'https://zarm.gitee.io', title: '国内镜像' },
   ];
 
@@ -66,23 +74,17 @@ const Header = ({ children }) => {
 
   const menuRender = currentPageKey !== '/' && (
     <div className="header-icon header-icon-menu">
-      {
-        currentPageKey === 'components' && (
-          <>
-            <Icons type="list" onClick={() => toggleMenu(!menu)} />
-            <Popup
-              visible={menu}
-              direction="left"
-              onMaskClick={() => toggleMenu(!menu)}
-            >
-              <div className="header-menu">
-                {/* <div className="header-menu__close"><Icon type="close" /></div> */}
-                <MenuComponent />
-              </div>
-            </Popup>
-          </>
-        )
-      }
+      {currentPageKey === 'components' && (
+        <>
+          <Icons type="list" onClick={() => toggleMenu(!menu)} />
+          <Popup visible={menu} direction="left" onMaskClick={() => toggleMenu(!menu)}>
+            <div className="header-menu">
+              {/* <div className="header-menu__close"><Icon type="close" /></div> */}
+              <MenuComponent />
+            </div>
+          </Popup>
+        </>
+      )}
     </div>
   );
 
@@ -92,18 +94,26 @@ const Header = ({ children }) => {
         visible={dropdown}
         onVisibleChange={setDropdown}
         direction="bottom"
-        content={(
+        content={
           <div className="header-nav">
             <Menu selectedKeys={[currentPageKey]}>
-              {NAV_ITEMS.map((item) => <Menu.Item key={item.key}><a href={item.link}>{item.title}</a></Menu.Item>)}
+              {NAV_ITEMS.map((item) => (
+                <Menu.Item key={item.key}>
+                  <a href={item.link}>{item.title}</a>
+                </Menu.Item>
+              ))}
               <Menu.Item>
-                <a href="https://github.com/ZhongAnTech/zarm" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://github.com/ZhongAnTech/zarm"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Github
                 </a>
               </Menu.Item>
             </Menu>
           </div>
-        )}
+        }
       >
         <Icons type="more" />
       </Dropdown>
@@ -128,13 +138,17 @@ const Header = ({ children }) => {
               <div className="search">
                 <Icon type="search" />
                 <FormattedMessage id="app.home.nav.search">
-                  {(txt) => (
-                    <input placeholder={txt} ref={searchInput} />
-                  )}
+                  {(txt) => <input placeholder={txt} ref={searchInput} />}
                 </FormattedMessage>
               </div>
               <ul>
-                {NAV_ITEMS.map((item) => <li key={item.key}><a href={item.link} className={activeClassName([item.key])}>{item.title}</a></li>)}
+                {NAV_ITEMS.map((item) => (
+                  <li key={item.key}>
+                    <a href={item.link} className={activeClassName([item.key])}>
+                      {item.title}
+                    </a>
+                  </li>
+                ))}
               </ul>
               <div className="lang">
                 <Radio.Group
@@ -150,7 +164,12 @@ const Header = ({ children }) => {
                   <Radio value="enUS">EN</Radio>
                 </Radio.Group>
               </div>
-              <a className="github" href="https://github.com/ZhongAnTech/zarm" target="_blank" rel="noopener noreferrer">
+              <a
+                className="github"
+                href="https://github.com/ZhongAnTech/zarm"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Icons type="github" />
               </a>
             </nav>

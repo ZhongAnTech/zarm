@@ -1,4 +1,10 @@
-import React, { PureComponent, ChangeEvent, InputHTMLAttributes, HTMLAttributes, ButtonHTMLAttributes } from 'react';
+import React, {
+  PureComponent,
+  ChangeEvent,
+  InputHTMLAttributes,
+  HTMLAttributes,
+  ButtonHTMLAttributes,
+} from 'react';
 import classnames from 'classnames';
 import { BaseCheckboxProps } from './PropsType';
 import CheckboxGroup from './CheckboxGroup';
@@ -14,13 +20,23 @@ const getChecked = (props: CheckboxProps, defaultChecked: boolean) => {
   return defaultChecked;
 };
 
-type CheckboxSpanProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'>;
-type CheckboxCellProps = Omit<HTMLAttributes<HTMLDivElement>, 'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'>;
-type CheckboxButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'>;
+type CheckboxSpanProps = Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
+>;
+type CheckboxCellProps = Omit<
+  HTMLAttributes<HTMLDivElement>,
+  'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
+>;
+type CheckboxButtonProps = Omit<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
+>;
 
-export type CheckboxProps = Partial<CheckboxSpanProps & CheckboxCellProps & CheckboxButtonProps> & BaseCheckboxProps & {
-  prefixCls?: string;
-};
+export type CheckboxProps = Partial<CheckboxSpanProps & CheckboxCellProps & CheckboxButtonProps> &
+  BaseCheckboxProps & {
+    prefixCls?: string;
+  };
 
 export interface CheckboxStates {
   checked?: boolean;
@@ -70,7 +86,21 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
   };
 
   render() {
-    const { prefixCls, className, type, shape, value, checked, defaultChecked, disabled, id, indeterminate, children, onChange, ...rest } = this.props;
+    const {
+      prefixCls,
+      className,
+      type,
+      shape,
+      value,
+      checked,
+      defaultChecked,
+      disabled,
+      id,
+      indeterminate,
+      children,
+      onChange,
+      ...rest
+    } = this.props;
     const { checked: checkedState } = this.state;
 
     const cls = classnames(prefixCls, className, {
@@ -93,7 +123,7 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
     );
 
     const checkboxRender = (
-      <span className={cls} {...rest as CheckboxSpanProps}>
+      <span className={cls} {...(rest as CheckboxSpanProps)}>
         <span className={`${prefixCls}__widget`}>
           <span className={`${prefixCls}__inner`} />
         </span>
@@ -104,7 +134,12 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
 
     if (type === 'cell') {
       return (
-        <Cell disabled={disabled} className={className} onClick={() => {}} {...rest as CheckboxCellProps}>
+        <Cell
+          disabled={disabled}
+          className={className}
+          onClick={() => {}}
+          {...(rest as CheckboxCellProps)}
+        >
           {checkboxRender}
         </Cell>
       );
@@ -112,7 +147,12 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
 
     if (type === 'button') {
       return (
-        <button type="button" disabled={disabled} className={cls} {...rest as CheckboxButtonProps}>
+        <button
+          type="button"
+          disabled={disabled}
+          className={cls}
+          {...(rest as CheckboxButtonProps)}
+        >
           {children}
           {inputRender}
         </button>

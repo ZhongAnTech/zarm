@@ -7,13 +7,9 @@ const createCarousel = (props, childrenLen = 3) => {
   const ITEMS = Array.from({ length: childrenLen }).map((v, i) => i);
   return (
     <Carousel {...props}>
-      {
-        ITEMS.map((item, index) => {
-          return (
-            <div key={+index}>{item}</div>
-          );
-        })
-      }
+      {ITEMS.map((item, index) => {
+        return <div key={+index}>{item}</div>;
+      })}
     </Carousel>
   );
 };
@@ -22,10 +18,10 @@ describe('Carousel', () => {
   it('base render correctly', () => {
     const wrapper = render(
       <div>
-        { createCarousel() }
-        { createCarousel({}, 0) }
-        { createCarousel({ activeIndex: 1 }, 0) }
-        { createCarousel({}, 1) }
+        {createCarousel()}
+        {createCarousel({}, 0)}
+        {createCarousel({ activeIndex: 1 }, 0)}
+        {createCarousel({}, 1)}
       </div>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -122,9 +118,7 @@ describe('Carousel', () => {
     const ITEMS = [1, 2];
     const wrapper = mount(createCarousel());
     const children = ITEMS.map((item, index) => {
-      return (
-        <div key={+index}>{item}</div>
-      );
+      return <div key={+index}>{item}</div>;
     });
 
     wrapper.setProps({ children, activeIndex: 1 });
@@ -141,15 +135,13 @@ describe('Carousel', () => {
   it('touchStart', () => {
     const wrapper = mount(createCarousel());
     const wrapperTouchStart = (wrapperTouch) => {
-      wrapperTouch
-        .find('.za-carousel__items')
-        .simulate('touchStart', {
-          touches: [
-            {
-              pageX: 0,
-            },
-          ],
-        });
+      wrapperTouch.find('.za-carousel__items').simulate('touchStart', {
+        touches: [
+          {
+            pageX: 0,
+          },
+        ],
+      });
     };
     wrapperTouchStart(wrapper);
     expect(wrapper.state('activeIndex')).toEqual(0);
@@ -163,7 +155,8 @@ describe('Carousel', () => {
     const wrapperDirectionX = mount(createCarousel());
     const wrapperDirectionY = mount(createCarousel({ direction: 'bottom' }));
     const wrapperTouchMove = (wrapper) => {
-      wrapper.find('.za-carousel__items')
+      wrapper
+        .find('.za-carousel__items')
         .simulate('touchStart', {
           touches: [
             {
@@ -229,11 +222,7 @@ describe('Carousel', () => {
     const moveTimeSpan = 200;
     const props = { moveDistanceRatio, moveTimeSpan };
     const wrapper = mount(createCarousel(props));
-    const wrapperTouchEnd = ({
-      direction = 'left',
-      offset = 100,
-      activeIndex = 0,
-    }) => {
+    const wrapperTouchEnd = ({ direction = 'left', offset = 100, activeIndex = 0 }) => {
       wrapper
         .setProps({ direction, activeIndex })
         .find('.za-carousel__items')
@@ -271,15 +260,13 @@ describe('Carousel', () => {
   it('unswipeable touchStart', () => {
     const wrapper = mount(createCarousel({ swipeable: false }));
     const wrapperTouchStart = (wrapperTouch) => {
-      wrapperTouch
-        .find('.za-carousel__items')
-        .simulate('touchStart', {
-          touches: [
-            {
-              pageX: 0,
-            },
-          ],
-        });
+      wrapperTouch.find('.za-carousel__items').simulate('touchStart', {
+        touches: [
+          {
+            pageX: 0,
+          },
+        ],
+      });
     };
     wrapperTouchStart(wrapper);
     expect(wrapper.state('activeIndex')).toEqual(0);
@@ -293,7 +280,8 @@ describe('Carousel', () => {
     const wrapperDirectionX = mount(createCarousel());
     const wrapperDirectionY = mount(createCarousel({ direction: 'bottom', swipeable: false }));
     const wrapperTouchMove = (wrapper) => {
-      wrapper.find('.za-carousel__items')
+      wrapper
+        .find('.za-carousel__items')
         .simulate('touchStart', {
           touches: [
             {
@@ -359,11 +347,7 @@ describe('Carousel', () => {
     const moveTimeSpan = 200;
     const props = { moveDistanceRatio, moveTimeSpan, swipeable: false };
     const wrapper = mount(createCarousel(props));
-    const wrapperTouchEnd = ({
-      direction = 'left',
-      offset = 100,
-      activeIndex = 0,
-    }) => {
+    const wrapperTouchEnd = ({ direction = 'left', offset = 100, activeIndex = 0 }) => {
       wrapper
         .setProps({ direction, activeIndex })
         .find('.za-carousel__items')

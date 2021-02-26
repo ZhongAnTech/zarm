@@ -32,7 +32,12 @@ export default class PickerView extends Component<PickerViewProps, PickerViewSta
 
   // TODO: is this method still be used?
   static getDerivedStateFromProps(props, state) {
-    if (!isEqual(removeFnFromProps(props, ['onChange']), removeFnFromProps(state.prevProps, ['onChange']))) {
+    if (
+      !isEqual(
+        removeFnFromProps(props, ['onChange']),
+        removeFnFromProps(state.prevProps, ['onChange']),
+      )
+    ) {
       return {
         prevProps: props,
         ...parseProps.getSource(props),

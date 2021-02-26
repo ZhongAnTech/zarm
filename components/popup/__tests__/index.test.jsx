@@ -8,11 +8,7 @@ describe('Popup', () => {
     const onMaskClick = jest.fn();
     const afterClose = jest.fn();
     const wrapper = mount(
-      <Popup
-        direction="bottom"
-        onMaskClick={onMaskClick}
-        afterClose={afterClose}
-      >
+      <Popup direction="bottom" onMaskClick={onMaskClick} afterClose={afterClose}>
         foo
       </Popup>,
     );
@@ -38,9 +34,7 @@ describe('Popup', () => {
 
   it('visible change false', () => {
     jest.useFakeTimers();
-    const wrapper = mount(
-      <Popup visible>foo</Popup>,
-    );
+    const wrapper = mount(<Popup visible>foo</Popup>);
     wrapper.setProps({ visible: false });
     jest.runAllTimers();
     // wrapper.unmount();

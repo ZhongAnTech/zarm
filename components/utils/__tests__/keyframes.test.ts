@@ -12,7 +12,9 @@ describe('keyframes', () => {
       const docFragment = document.createDocumentFragment();
       docFragment.appendChild(head);
       const htmlCollection = docFragment.children;
-      const getElementsByTagNameSpy = jest.spyOn(document, 'getElementsByTagName').mockReturnValue(htmlCollection);
+      const getElementsByTagNameSpy = jest
+        .spyOn(document, 'getElementsByTagName')
+        .mockReturnValue(htmlCollection);
       const removeChildSpy = jest.spyOn(head, 'removeChild').mockImplementation();
       removeKeyframe('test');
       expect(getElementByIdSpy).toBeCalledWith('test');
@@ -38,7 +40,9 @@ describe('keyframes', () => {
 
       const style = ({} as unknown) as HTMLStyleElement;
       const createElementSpy = jest.spyOn(document, 'createElement').mockReturnValueOnce(style);
-      const getElementsByTagNameSpy = jest.spyOn(document, 'getElementsByTagName').mockReturnValueOnce(htmlCollection);
+      const getElementsByTagNameSpy = jest
+        .spyOn(document, 'getElementsByTagName')
+        .mockReturnValueOnce(htmlCollection);
       const appendChildSpy = jest.spyOn(head, 'appendChild').mockImplementation();
       addKeyframe(
         'test',
@@ -83,7 +87,9 @@ describe('keyframes', () => {
               }
           }`,
         } as unknown) as HTMLElement;
-        const getElementByIdSpy = jest.spyOn(document, 'getElementById').mockReturnValueOnce(keyframe);
+        const getElementByIdSpy = jest
+          .spyOn(document, 'getElementById')
+          .mockReturnValueOnce(keyframe);
         const actual = getKeyframe('test');
         expect(actual).toMatchInlineSnapshot(`
           "
@@ -113,7 +119,9 @@ describe('keyframes', () => {
       });
       it('should return true if keyframe exist', () => {
         const keyframe = document.createElement('div');
-        const getElementByIdSpy = jest.spyOn(document, 'getElementById').mockReturnValueOnce(keyframe);
+        const getElementByIdSpy = jest
+          .spyOn(document, 'getElementById')
+          .mockReturnValueOnce(keyframe);
         const actual = existKeyframe('test');
         expect(actual).toBeTruthy();
         expect(getElementByIdSpy).toBeCalledWith('test');

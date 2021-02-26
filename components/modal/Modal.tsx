@@ -55,7 +55,12 @@ export default class Modal extends Component<ModalProps, any> {
     const noop = () => {};
 
     return (
-      <Popup className={cls.modal} direction="center" onMaskClick={maskClosable ? onCancel : noop} {...others}>
+      <Popup
+        className={cls.modal}
+        direction="center"
+        onMaskClick={maskClosable ? onCancel : noop}
+        {...others}
+      >
         <div className={cls.dialog}>
           {showHeader && <ModalHeader title={title} closable={closable} onCancel={onCancel} />}
           <ModalBody>{children}</ModalBody>

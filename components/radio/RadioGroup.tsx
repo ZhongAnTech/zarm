@@ -1,4 +1,11 @@
-import React, { HTMLAttributes, PureComponent, cloneElement, ReactNode, isValidElement, ChangeEvent } from 'react';
+import React, {
+  HTMLAttributes,
+  PureComponent,
+  cloneElement,
+  ReactNode,
+  isValidElement,
+  ChangeEvent,
+} from 'react';
 import classnames from 'classnames';
 import { BaseRadioGroupProps, RadioValue } from './PropsType';
 import { Nullable } from '../utils/utilityTypes';
@@ -13,7 +20,10 @@ const getChildChecked = (children: ReactNode): Nullable<RadioValue> => {
   return checkedValue;
 };
 
-const getValue = (props: RadioGroup['props'], defaultValue: Nullable<RadioValue> = null): Nullable<RadioValue> => {
+const getValue = (
+  props: RadioGroup['props'],
+  defaultValue: Nullable<RadioValue> = null,
+): Nullable<RadioValue> => {
   if (typeof props.value !== 'undefined') {
     return props.value;
   }

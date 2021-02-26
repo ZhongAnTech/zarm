@@ -10,9 +10,7 @@ for (let i = 0; i < 100; i++) {
 
 describe('Scroller', () => {
   it('renders correctly', () => {
-    const wrapper = render(
-      <Scroller />,
-    );
+    const wrapper = render(<Scroller />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

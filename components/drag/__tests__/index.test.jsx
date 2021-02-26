@@ -22,7 +22,11 @@ describe('Drag', () => {
       onDragMove: jest.fn(),
       onDragEnd: jest.fn(),
     };
-    const wrapper = render(<Drag {...props}><div /></Drag>);
+    const wrapper = render(
+      <Drag {...props}>
+        <div />
+      </Drag>,
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -32,7 +36,11 @@ describe('Drag', () => {
       onDragMove: jest.fn(),
       onDragEnd: jest.fn(),
     };
-    const wrapper = mount(<Drag {...props}><div /></Drag>);
+    const wrapper = mount(
+      <Drag {...props}>
+        <div />
+      </Drag>,
+    );
     wrapper.simulate('touchStart', createStartTouchEventObject({ x: 100, y: 0 }));
     expect(props.onDragStart).toBeCalled();
 
@@ -43,7 +51,11 @@ describe('Drag', () => {
   });
 
   it('event props do not exist', () => {
-    const wrapper = shallow(<Drag><div /></Drag>);
+    const wrapper = shallow(
+      <Drag>
+        <div />
+      </Drag>,
+    );
     wrapper.simulate('touchStart', {
       touches: [0, 0],
     });

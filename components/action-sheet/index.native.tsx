@@ -1,11 +1,5 @@
 import React, { PureComponent, CSSProperties } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  ViewStyle,
-} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ViewStyle } from 'react-native';
 import PropsType from './PropsType';
 import actionsheetStyle from './style/index.native';
 import Popup from '../popup/index.native';
@@ -47,10 +41,7 @@ export default class ActionSheet extends PureComponent<ButtonProps, any> {
       styles!.actionItemMask,
       activeIndex === index && isActive && styles!.actionItemActive,
     ];
-    const actionStyle = [
-      styles!.actionItem,
-      !!action.theme && styles![`theme-${action.theme}`],
-    ];
+    const actionStyle = [styles!.actionItem, !!action.theme && styles![`theme-${action.theme}`]];
 
     return (
       <TouchableOpacity
@@ -70,50 +61,39 @@ export default class ActionSheet extends PureComponent<ButtonProps, any> {
   renderCancel = () => {
     const { styles, onCancel, cancelText } = this.props;
     const { isActive, activeIndex } = this.state;
-    const cancelWrapperStyle = [
-      styles!.wrapperCacnel,
-    ];
+    const cancelWrapperStyle = [styles!.wrapperCacnel];
     const cancelMaskStyle = [
       styles!.actionItemMask,
       isActive && activeIndex === 'cancel' && styles!.actionItemActive,
     ];
-    const cancelStyle = [
-      styles!.actionCancelItem,
-    ];
+    const cancelStyle = [styles!.actionCancelItem];
 
-    return (typeof onCancel === 'function') && (
-      <TouchableOpacity
-        style={cancelWrapperStyle}
-        activeOpacity={1}
-        onPress={onCancel}
-        onPressIn={() => this.onPressIn('cancel')}
-        onPressOut={() => this.onPressOut('cancel')}
-      >
-        <View style={cancelMaskStyle as ViewStyle} />
-        <Text style={cancelStyle as ViewStyle}>{cancelText}</Text>
-      </TouchableOpacity>
+    return (
+      typeof onCancel === 'function' && (
+        <TouchableOpacity
+          style={cancelWrapperStyle}
+          activeOpacity={1}
+          onPress={onCancel}
+          onPressIn={() => this.onPressIn('cancel')}
+          onPressOut={() => this.onPressOut('cancel')}
+        >
+          <View style={cancelMaskStyle as ViewStyle} />
+          <Text style={cancelStyle as ViewStyle}>{cancelText}</Text>
+        </TouchableOpacity>
+      )
     );
   };
 
   render() {
     const { style, styles, spacing, visible, onMaskClick, actions } = this.props;
-    const wrapperStyle = [
-      styles!.wrapper,
-      spacing && styles!.wrapperSpacing,
-      style,
-    ];
+    const wrapperStyle = [styles!.wrapper, spacing && styles!.wrapperSpacing, style];
 
-    const actionsStyle = [
-      styles!.wrapperActions,
-      { margin: 0 },
-    ];
+    const actionsStyle = [styles!.wrapperActions, { margin: 0 }];
 
     return (
       <Popup visible={visible} onMaskClick={onMaskClick}>
         <View style={wrapperStyle as ViewStyle}>
-          <View style={actionsStyle}>
-            {actions.map(this.renderActions)}
-          </View>
+          <View style={actionsStyle}>{actions.map(this.renderActions)}</View>
           {this.renderCancel()}
         </View>
       </Popup>

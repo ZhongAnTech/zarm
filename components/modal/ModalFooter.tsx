@@ -14,10 +14,6 @@ export default class ModalFooter extends PureComponent<ModalFooterProps, {}> {
     const { prefixCls, children } = this.props;
     const cls = classnames(`${prefixCls}__footer`);
 
-    return (
-      <div className={cls}>
-        {children}
-      </div>
-    );
+    return <div className={cls}>{children}</div>;
   }
 }

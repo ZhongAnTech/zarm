@@ -26,14 +26,7 @@ describe('DatePicker', () => {
   it('should trigger onOk when press ok button', () => {
     const onOkFn = jest.fn();
 
-    const wrapper = mount(
-      <DatePicker
-        mode="date"
-        value="2009-3-4"
-        visible
-        onOk={onOkFn}
-      />,
-    );
+    const wrapper = mount(<DatePicker mode="date" value="2009-3-4" visible onOk={onOkFn} />);
     jest.useFakeTimers();
     wrapper.find('.za-date-picker__submit').simulate('click');
     jest.runAllTimers();
@@ -44,12 +37,7 @@ describe('DatePicker', () => {
     const onCancelFn = jest.fn();
 
     const wrapper = mount(
-      <DatePicker
-        mode="date"
-        value="2009-3-4"
-        visible
-        onCancel={onCancelFn}
-      />,
+      <DatePicker mode="date" value="2009-3-4" visible onCancel={onCancelFn} />,
     );
 
     wrapper.find('.za-date-picker__cancel').simulate('click');

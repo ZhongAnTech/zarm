@@ -5,13 +5,21 @@ import ClickOutside from '../index';
 
 describe('ClickOutside', () => {
   it('renders correctly', () => {
-    const wrapper = render(<ClickOutside onClickOutside={() => {}}><div>test</div></ClickOutside>);
+    const wrapper = render(
+      <ClickOutside onClickOutside={() => {}}>
+        <div>test</div>
+      </ClickOutside>,
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('should not call action on click inside the component', () => {
     const onClickOutside = jest.fn();
-    const wrapper = mount(<ClickOutside onClickOutside={onClickOutside}><div id="div">test</div></ClickOutside>);
+    const wrapper = mount(
+      <ClickOutside onClickOutside={onClickOutside}>
+        <div id="div">test</div>
+      </ClickOutside>,
+    );
     const innerNode = wrapper.find('div#div');
     innerNode.simulate('click');
     expect(onClickOutside).not.toHaveBeenCalled();
@@ -24,7 +32,11 @@ describe('ClickOutside', () => {
     });
     const event = new MouseEvent('click');
 
-    mount(<ClickOutside disabled onClickOutside={onClickOutside}><div id="test">test disabled</div></ClickOutside>);
+    mount(
+      <ClickOutside disabled onClickOutside={onClickOutside}>
+        <div id="test">test disabled</div>
+      </ClickOutside>,
+    );
     document.dispatchEvent(event);
     expect(onClickOutside).not.toHaveBeenCalled();
   });

@@ -36,9 +36,11 @@ class SentryBoundary extends Component {
     const { children } = this.props;
     const { error, eventId } = this.state;
 
-    return error
-      ? <button onClick={() => Sentry.showReportDialog({ eventId })}>Report feedback</button>
-      : children;
+    return error ? (
+      <button onClick={() => Sentry.showReportDialog({ eventId })}>Report feedback</button>
+    ) : (
+      children
+    );
   }
 }
 

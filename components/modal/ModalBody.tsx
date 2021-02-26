@@ -15,10 +15,6 @@ export default class ModalBody extends PureComponent<ModalBodyProps, {}> {
     const { prefixCls, className, children } = this.props;
     const cls = classnames(`${prefixCls}__body`, className);
 
-    return (
-      <div className={cls}>
-        {children}
-      </div>
-    );
+    return <div className={cls}>{children}</div>;
   }
 }

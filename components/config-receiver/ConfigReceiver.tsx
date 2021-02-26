@@ -16,7 +16,9 @@ const ConfigReceiverWrapper = (name?: nameType, defaultConfig?: typeof defaultCo
       return (
         <ConfigContext.Consumer>
           {({ locale }) => {
-            const globalLocale = locale.locale ? locale : defaultConfig?.locale || defaultConfigData?.locale;
+            const globalLocale = locale.locale
+              ? locale
+              : defaultConfig?.locale || defaultConfigData?.locale;
             const componentLocale = globalLocale[name || (WrappedComponent.name as nameType)];
             const localeCode = globalLocale.locale;
             const { forwardedRef, ...rest } = props;

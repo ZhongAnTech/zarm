@@ -1,8 +1,7 @@
 # Picker 选择器
 
-
-
 ## 基本用法
+
 ```jsx
 import { useEffect, useRef, useReducer } from 'react';
 import { Cell, Button, Picker, Toast } from 'zarm';
@@ -105,16 +104,16 @@ const reducer = (state, action) => {
         [key]: {
           ...state[key],
           visible: !state[key].visible,
-        }
+        },
       };
-    
+
     case 'value':
       return {
         ...state,
         [key]: {
           ...state[key],
           value,
-        }
+        },
       };
 
     case 'valueMember':
@@ -123,16 +122,16 @@ const reducer = (state, action) => {
         [key]: {
           ...state[key],
           valueMember,
-        }
+        },
       };
-    
+
     case 'dataSource':
       return {
         ...state,
         [key]: {
           ...state[key],
           dataSource,
-        }
+        },
       };
   }
 };
@@ -170,7 +169,9 @@ const Demo = () => {
     <>
       <Cell
         description={
-          <Button size="xs" onClick={() => setVisible('single')}>选择</Button>
+          <Button size="xs" onClick={() => setVisible('single')}>
+            选择
+          </Button>
         }
       >
         单列
@@ -178,7 +179,9 @@ const Demo = () => {
 
       <Cell
         description={
-          <Button size="xs" onClick={() => setVisible('multi')}>选择</Button>
+          <Button size="xs" onClick={() => setVisible('multi')}>
+            选择
+          </Button>
         }
       >
         多列
@@ -186,7 +189,9 @@ const Demo = () => {
 
       <Cell
         description={
-          <Button size="xs" onClick={() => setVisible('cascade')}>选择</Button>
+          <Button size="xs" onClick={() => setVisible('cascade')}>
+            选择
+          </Button>
         }
       >
         级联
@@ -194,7 +199,9 @@ const Demo = () => {
 
       <Cell
         description={
-          <Button size="xs" onClick={() => setVisible('diy')}>选择</Button>
+          <Button size="xs" onClick={() => setVisible('diy')}>
+            选择
+          </Button>
         }
       >
         自定义
@@ -202,7 +209,9 @@ const Demo = () => {
 
       <Cell
         description={
-          <Button size="xs" onClick={() => setVisible('specDOM')}>选择</Button>
+          <Button size="xs" onClick={() => setVisible('specDOM')}>
+            选择
+          </Button>
         }
       >
         挂载到指定dom节点
@@ -215,7 +224,10 @@ const Demo = () => {
         onOk={(selected) => {
           console.log('Single Picker onOk: ', selected);
           Toast.show(JSON.stringify(selected));
-          setValue('single', selected.map(item => item.value));
+          setValue(
+            'single',
+            selected.map((item) => item.value),
+          );
           setVisible('single');
         }}
         onCancel={() => setVisible('single')}
@@ -228,7 +240,10 @@ const Demo = () => {
         onOk={(selected) => {
           console.log('Multi Picker onOk: ', selected);
           Toast.show(JSON.stringify(selected));
-          setValue('multi', selected.map(item => item.value));
+          setValue(
+            'multi',
+            selected.map((item) => item.value),
+          );
           setVisible('multi');
         }}
         onCancel={() => setVisible('multi')}
@@ -241,7 +256,10 @@ const Demo = () => {
         onOk={(selected) => {
           console.log('Cascade Picker onOk: ', selected);
           Toast.show(JSON.stringify(selected));
-          setValue('cascade', selected.map(item => item.value));
+          setValue(
+            'cascade',
+            selected.map((item) => item.value),
+          );
           setVisible('cascade');
         }}
         onCancel={() => setVisible('cascade')}
@@ -255,11 +273,14 @@ const Demo = () => {
         dataSource={state.diy.dataSource}
         value={state.diy.value}
         valueMember={state.diy.valueMember}
-        itemRender={data => data.name}
+        itemRender={(data) => data.name}
         onOk={(selected) => {
           console.log('DIY Picker onOk: ', selected);
           Toast.show(JSON.stringify(selected));
-          setValue('diy', selected.map(item => item.code));
+          setValue(
+            'diy',
+            selected.map((item) => item.code),
+          );
           setVisible('diy');
         }}
         onCancel={() => setVisible('diy')}
@@ -272,18 +293,17 @@ const Demo = () => {
         onOk={(selected) => {
           console.log('Picker onOk: ', selected);
           Toast.show(JSON.stringify(selected));
-          setValue('specDOM', selected.map(item => item.value));
+          setValue(
+            'specDOM',
+            selected.map((item) => item.value),
+          );
           setVisible('specDOM');
         }}
         onCancel={() => setVisible('specDOM')}
         mountContainer={() => myRef.current}
       />
 
-      <div
-        id="test-div"
-        style={{ position: 'relative', zIndex: 1 }}
-        ref={myRef} 
-      />
+      <div id="test-div" style={{ position: 'relative', zIndex: 1 }} ref={myRef} />
     </>
   );
 };
@@ -291,9 +311,8 @@ const Demo = () => {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
-
 ## Select 表单选择器
+
 ```jsx
 import { Select, Cell, Icon } from 'zarm';
 
@@ -344,21 +363,20 @@ class Demo extends React.Component {
           onOk={(selected) => {
             console.log('Select onOk: ', selected);
             this.setState({
-              value: selected.map(item => item.value),
+              value: selected.map((item) => item.value),
             });
           }}
         />
       </Cell>
-    )
+    );
   }
 }
 
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
-
 ## PickerView 平铺选择器
+
 ```jsx
 import { PickerView } from 'zarm';
 
@@ -393,9 +411,9 @@ class Demo extends React.Component {
             ],
           },
         ],
-        valueMember: 'code'
-      })
-    }, 0)
+        valueMember: 'code',
+      });
+    }, 0);
   }
 
   render() {
@@ -404,57 +422,57 @@ class Demo extends React.Component {
         value={this.state.value}
         valueMember="code"
         dataSource={this.state.dataSource}
-        onChange={selected => {
+        onChange={(selected) => {
           this.setState({
-            value: selected.map(item => item.code),
+            value: selected.map((item) => item.code),
           });
           console.log('PickerView onChange: ', selected);
         }}
       />
-    )
+    );
   }
 }
 
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
-
 ## API
 
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| dataSource | DataSource<T = { label: string; value: string \| number \| boolean }> = Array<T & { children?: DataSource<T> }> | [] | 数据源 |
-| value | string \| number \| boolean \| Array<string &#124; number &#124; boolean> | - | 值 |
-| defaultValue | string \| number \| boolean \| Array<string &#124; number &#124; boolean> | - | 初始值 |
-| wheelDefaultValue | string \| number \| boolean \| Array<string &#124; number &#124; boolean> | - | 滚轮初始停留的位置 |
-| valueMember | string | 'value' | 值字段对应的key 
-| itemRender | (data?: { [key: string]: string &#124; number &#124; boolean }) => string | (data) => data.label | 单个选项的展示 |
-| disabled | boolean | false | 是否禁用 |
-| cols | number | Infinity | 级联选择器的级数 |
-| onChange | (selected?: Array<{ [key: string]: string &#124; number &#124; boolean }>) => void | - | 值变化时触发的回调函数 |
+| 属性              | 类型                                                                                                            | 默认值               | 说明                   |
+| :---------------- | :-------------------------------------------------------------------------------------------------------------- | :------------------- | :--------------------- |
+| dataSource        | DataSource<T = { label: string; value: string \| number \| boolean }> = Array<T & { children?: DataSource<T> }> | []                   | 数据源                 |
+| value             | string \| number \| boolean \| Array<string &#124; number &#124; boolean>                                       | -                    | 值                     |
+| defaultValue      | string \| number \| boolean \| Array<string &#124; number &#124; boolean>                                       | -                    | 初始值                 |
+| wheelDefaultValue | string \| number \| boolean \| Array<string &#124; number &#124; boolean>                                       | -                    | 滚轮初始停留的位置     |
+| valueMember       | string                                                                                                          | 'value'              | 值字段对应的 key       |
+| itemRender        | (data?: { [key: string]: string &#124; number &#124; boolean }) => string                                       | (data) => data.label | 单个选项的展示         |
+| disabled          | boolean                                                                                                         | false                | 是否禁用               |
+| cols              | number                                                                                                          | Infinity             | 级联选择器的级数       |
+| onChange          | (selected?: Array<{ [key: string]: string &#124; number &#124; boolean }>) => void                              | -                    | 值变化时触发的回调函数 |
 
 ### 仅 Picker & Select 支持的属性
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| title | string | '请选择' | 选择器标题 |
-| okText | string | '确定' | 确定栏文字 |
-| cancelText | string | '取消' | 取消栏文字 |
-| maskClosable | boolean | true | 是否点击遮罩层时关闭，需要和onCancel一起使用 |
-| destroy | boolean | false | 弹层关闭后是否移除节点 |
-| onOk | (selected?: Array<{ [key: string]: string &#124; number &#124; boolean }>) => void | - | 点击确定时触发的回调函数 |
-| onCancel | () => void | - | 点击取消时触发的回调函数 |
-| mountContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 Picker 挂载的 HTML 节点 |
 
+| 属性           | 类型                                                                               | 默认值        | 说明                                           |
+| :------------- | :--------------------------------------------------------------------------------- | :------------ | :--------------------------------------------- |
+| title          | string                                                                             | '请选择'      | 选择器标题                                     |
+| okText         | string                                                                             | '确定'        | 确定栏文字                                     |
+| cancelText     | string                                                                             | '取消'        | 取消栏文字                                     |
+| maskClosable   | boolean                                                                            | true          | 是否点击遮罩层时关闭，需要和 onCancel 一起使用 |
+| destroy        | boolean                                                                            | false         | 弹层关闭后是否移除节点                         |
+| onOk           | (selected?: Array<{ [key: string]: string &#124; number &#124; boolean }>) => void | -             | 点击确定时触发的回调函数                       |
+| onCancel       | () => void                                                                         | -             | 点击取消时触发的回调函数                       |
+| mountContainer | HTMLElement &#124; () => HTMLElement                                               | document.body | 指定 Picker 挂载的 HTML 节点                   |
 
 ### 仅 Picker 支持的属性
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| visible | boolean | false | 是否展示 |
+
+| 属性    | 类型    | 默认值 | 说明     |
+| :------ | :------ | :----- | :------- |
+| visible | boolean | false  | 是否展示 |
 
 ### 仅 Select 支持的属性
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| placeholder | string | '请选择' | 输入提示信息 |
-| hasArrow | boolean | true | 是否显示箭头 |
+
+| 属性          | 类型                                                                                 | 默认值                                       | 说明         |
+| :------------ | :----------------------------------------------------------------------------------- | :------------------------------------------- | :----------- |
+| placeholder   | string                                                                               | '请选择'                                     | 输入提示信息 |
+| hasArrow      | boolean                                                                              | true                                         | 是否显示箭头 |
 | displayRender | (selected?: Array<{ [key: string]: string &#124; number &#124; boolean }>) => string | selected => selected.map(item => item.label) | 所选值的展示 |

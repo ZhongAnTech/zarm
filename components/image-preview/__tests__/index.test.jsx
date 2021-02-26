@@ -17,7 +17,8 @@ const originImages = [
   {
     url: 'https://cdn-health.zhongan.com/zarm/imagePreview/compress_2.png',
     originUrl: 'https://static.zhongan.com/website/health/zarm/images/banners/2.png',
-  }, {
+  },
+  {
     url: 'https://cdn-health.zhongan.com/zarm/imagePreview/compress_3.png',
     originUrl: 'https://static.zhongan.com/website/health/zarm/images/banners/3.png',
   },

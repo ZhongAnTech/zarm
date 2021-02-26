@@ -2,7 +2,9 @@ import React, { HTMLAttributes, PureComponent } from 'react';
 import classnames from 'classnames';
 import { BaseCollapseItemProps } from './PropsType';
 
-export interface CollapseItemProps extends Omit<HTMLAttributes<HTMLDivElement>, 'key' | 'title' | 'onChange'>, BaseCollapseItemProps {
+export interface CollapseItemProps
+  extends Omit<HTMLAttributes<HTMLDivElement>, 'key' | 'title' | 'onChange'>,
+    BaseCollapseItemProps {
   prefixCls?: string;
 }
 
@@ -66,7 +68,17 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, Colla
   };
 
   render() {
-    const { prefixCls, title, className, disabled, animated, isActive, children, onChange, ...rest } = this.props;
+    const {
+      prefixCls,
+      title,
+      className,
+      disabled,
+      animated,
+      isActive,
+      children,
+      onChange,
+      ...rest
+    } = this.props;
     const { active } = this.state;
 
     const cls = classnames(prefixCls, className, {
@@ -75,20 +87,17 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, Colla
     });
     return (
       <div className={cls} {...rest}>
-        <div
-          className={`${prefixCls}__header`}
-          onClick={this.onClickItem}
-        >
+        <div className={`${prefixCls}__header`} onClick={this.onClickItem}>
           <div className={`${prefixCls}__title`}>{title}</div>
           <div className={`${prefixCls}__arrow`} />
         </div>
         <div
           className={`${prefixCls}__content`}
-          ref={(content) => { this.content = content; }}
+          ref={(content) => {
+            this.content = content;
+          }}
         >
-          <div className={`${prefixCls}__content__inner`}>
-            {children}
-          </div>
+          <div className={`${prefixCls}__content__inner`}>{children}</div>
         </div>
       </div>
     );

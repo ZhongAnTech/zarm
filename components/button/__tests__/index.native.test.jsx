@@ -36,12 +36,18 @@ describe('Button', () => {
   });
 
   it('children is valid element', () => {
-    const wrapper = render(<Button><Text>foo</Text></Button>);
+    const wrapper = render(
+      <Button>
+        <Text>foo</Text>
+      </Button>,
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('icon', () => {
-    const wrapper = render(<Button icon={<img alt="" src="https://zarm.design/images/logo.ce68565d.svg" />}>foo</Button>);
+    const wrapper = render(
+      <Button icon={<img alt="" src="https://zarm.design/images/logo.ce68565d.svg" />}>foo</Button>,
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -81,12 +87,20 @@ describe('Button', () => {
   });
 
   it('ghost disabled', () => {
-    const wrapper = shallow(<Button ghost disabled>foo</Button>);
+    const wrapper = shallow(
+      <Button ghost disabled>
+        foo
+      </Button>,
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('circle size', () => {
-    const wrapper = render(<Button shape="circle" size="lg">foo</Button>);
+    const wrapper = render(
+      <Button shape="circle" size="lg">
+        foo
+      </Button>,
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

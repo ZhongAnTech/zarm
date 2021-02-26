@@ -10,22 +10,9 @@
     "target": "es6",
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "types": [
-      "classnames",
-      "react",
-      "react-dom",
-      "react-native",
-      "node",
-      "jest"
-    ]
+    "types": ["classnames", "react", "react-dom", "react-native", "node", "jest"]
   },
-  "include": [
-    "components/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "lib",
-    "es"
-  ],
+  "include": ["components/**/*"],
+  "exclude": ["node_modules", "lib", "es"],
   "compileOnSave": false
 }

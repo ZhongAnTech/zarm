@@ -1,8 +1,7 @@
 # DatePicker 日期选择器
 
-
-
 ## 基本用法
+
 ```jsx
 import { useRef, useReducer } from 'react';
 import { Cell, Button, DatePicker, Toast } from 'zarm';
@@ -24,8 +23,8 @@ const initState = {
   specDOM: {
     visible: false,
     value: '',
-  }
-}
+  },
+};
 
 const reducer = (state, action) => {
   const { type, key, visible, value } = action;
@@ -37,16 +36,16 @@ const reducer = (state, action) => {
         [key]: {
           ...state[key],
           visible: !state[key].visible,
-        }
+        },
       };
-    
+
     case 'value':
       return {
         ...state,
         [key]: {
           ...state[key],
           value,
-        }
+        },
       };
   }
 };
@@ -70,7 +69,9 @@ const Demo = () => {
     <div>
       <Cell
         description={
-          <Button size="xs" onClick={() => toggle('date')}>选择</Button>
+          <Button size="xs" onClick={() => toggle('date')}>
+            选择
+          </Button>
         }
       >
         选择日期
@@ -78,7 +79,9 @@ const Demo = () => {
 
       <Cell
         description={
-          <Button size="xs" onClick={() => toggle('time')}>选择</Button>
+          <Button size="xs" onClick={() => toggle('time')}>
+            选择
+          </Button>
         }
       >
         选择时间
@@ -86,7 +89,9 @@ const Demo = () => {
 
       <Cell
         description={
-          <Button size="xs" onClick={() => toggle('limitDate')}>选择</Button>
+          <Button size="xs" onClick={() => toggle('limitDate')}>
+            选择
+          </Button>
         }
       >
         选择日期(自定义)
@@ -94,7 +99,9 @@ const Demo = () => {
 
       <Cell
         description={
-          <Button size="xs" onClick={() => toggle('specDOM')}>选择</Button>
+          <Button size="xs" onClick={() => toggle('specDOM')}>
+            选择
+          </Button>
         }
       >
         挂载到指定dom节点
@@ -154,21 +161,16 @@ const Demo = () => {
         getContainer={() => myRef.current}
       />
 
-      <div
-        ref={myRef} 
-        id="test-div"
-        style={{ position: 'relative', zIndex: 1 }}
-      />
+      <div ref={myRef} id="test-div" style={{ position: 'relative', zIndex: 1 }} />
     </div>
   );
-}
+};
 
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
-
 ## DateSelect 表单日期选择器
+
 ```jsx
 import { useState } from 'react';
 import { Cell, DateSelect, Icon } from 'zarm';
@@ -193,14 +195,13 @@ const Demo = () => {
       />
     </Cell>
   );
-}
+};
 
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
-
 ## DatePickerView 平铺选择器
+
 ```jsx
 import { useState } from 'react';
 import { DatePickerView } from 'zarm';
@@ -219,42 +220,42 @@ const Demo = () => {
       }}
     />
   );
-}
+};
 
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
-
 ## API
 
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| value | string \| Date | - | 值 |
-| defaultValue | string \| Date | - | 初始值 |
-| mode | string | 'date' | 指定日期选择模式，可选项 `year`, `month`, `date`, `time`, `datetime` |
-| min | string \| Date | - | 相应mode的最小时间 |
-| max | string \| Date | - | 相应mode的最大时间 |
-| minuteStep | number | 1 | 分钟间隔 |
-| disabled | boolean | false | 是否禁用 |
-| onChange | (value?: Date) => void | - | 值变化时触发的回调函数 |
+| 属性         | 类型                   | 默认值 | 说明                                                                 |
+| :----------- | :--------------------- | :----- | :------------------------------------------------------------------- |
+| value        | string \| Date         | -      | 值                                                                   |
+| defaultValue | string \| Date         | -      | 初始值                                                               |
+| mode         | string                 | 'date' | 指定日期选择模式，可选项 `year`, `month`, `date`, `time`, `datetime` |
+| min          | string \| Date         | -      | 相应 mode 的最小时间                                                 |
+| max          | string \| Date         | -      | 相应 mode 的最大时间                                                 |
+| minuteStep   | number                 | 1      | 分钟间隔                                                             |
+| disabled     | boolean                | false  | 是否禁用                                                             |
+| onChange     | (value?: Date) => void | -      | 值变化时触发的回调函数                                               |
 
 ### 仅 DatePicker & DateSelect 支持的属性
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| visible | boolean | false | 是否展示 |
-| title | string | '请选择' | 选择器标题 |
-| cancelText | string | '取消' | 取消栏文字 |
-| okText | string | '确定' | 确定栏文字 |
-| maskClosable | boolean | true | 是否点击遮罩层时关闭，需要和onCancel一起使用 |
-| wheelDefaultValue | string \| Date | - | 滚轮默认停留的日期位置 |
-| onOk | (value?: Date) => void | - | 点击确定时触发的回调函数 | 
-| onCancel | () => void | - | 点击取消时触发的回调函数 |
-| mountContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 DatePicker 挂载的 HTML 节点 |
+
+| 属性              | 类型                                 | 默认值        | 说明                                           |
+| :---------------- | :----------------------------------- | :------------ | :--------------------------------------------- |
+| visible           | boolean                              | false         | 是否展示                                       |
+| title             | string                               | '请选择'      | 选择器标题                                     |
+| cancelText        | string                               | '取消'        | 取消栏文字                                     |
+| okText            | string                               | '确定'        | 确定栏文字                                     |
+| maskClosable      | boolean                              | true          | 是否点击遮罩层时关闭，需要和 onCancel 一起使用 |
+| wheelDefaultValue | string \| Date                       | -             | 滚轮默认停留的日期位置                         |
+| onOk              | (value?: Date) => void               | -             | 点击确定时触发的回调函数                       |
+| onCancel          | () => void                           | -             | 点击取消时触发的回调函数                       |
+| mountContainer    | HTMLElement &#124; () => HTMLElement | document.body | 指定 DatePicker 挂载的 HTML 节点               |
 
 ### 仅 DateSelect 支持的属性
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| placeholder | string | '请选择' | 输入提示信息 |
-| hasArrow | boolean | true | 是否显示箭头 |
-| format | string | - | 格式化显示值。例：format="yyyy年MM月dd日"<br /> 年:`yyyy`, 月:`MM`, 日:`dd`, 时:`hh`, 分:`mm`。 |
+
+| 属性        | 类型    | 默认值   | 说明                                                                                                 |
+| :---------- | :------ | :------- | :--------------------------------------------------------------------------------------------------- |
+| placeholder | string  | '请选择' | 输入提示信息                                                                                         |
+| hasArrow    | boolean | true     | 是否显示箭头                                                                                         |
+| format      | string  | -        | 格式化显示值。例：format="yyyy 年 MM 月 dd 日"<br /> 年:`yyyy`, 月:`MM`, 日:`dd`, 时:`hh`, 分:`mm`。 |

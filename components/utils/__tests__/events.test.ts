@@ -9,10 +9,12 @@ describe('events', () => {
   });
   describe('supportsPassiveEvents', () => {
     it('supportsPassiveEvents: true', () => {
-      jest.spyOn(window, 'addEventListener').mockImplementationOnce((_, __, options: AddEventListenerOptions) => {
-        const { passive } = options;
-        console.info(passive);
-      });
+      jest
+        .spyOn(window, 'addEventListener')
+        .mockImplementationOnce((_, __, options: AddEventListenerOptions) => {
+          const { passive } = options;
+          console.info(passive);
+        });
       events = require('../events').default;
       expect(events.supportsPassiveEvents).toBeTruthy();
     });
@@ -30,10 +32,12 @@ describe('events', () => {
 
   describe('#on', () => {
     it('should call addEventListener if element supports addEventListener method', () => {
-      jest.spyOn(window, 'addEventListener').mockImplementationOnce((_, __, options: AddEventListenerOptions) => {
-        const { passive } = options;
-        console.info(passive);
-      });
+      jest
+        .spyOn(window, 'addEventListener')
+        .mockImplementationOnce((_, __, options: AddEventListenerOptions) => {
+          const { passive } = options;
+          console.info(passive);
+        });
       const button = ({ addEventListener: jest.fn() } as unknown) as Element;
       const callback = jest.fn();
       events = require('../events').default;
@@ -100,8 +104,16 @@ describe('events', () => {
       events.once(button, 'click dblclick', callback);
       expect(onSpy).toBeCalledWith(button, 'dblclick', expect.any(Function));
       expect(onSpy).toBeCalledWith(button, 'click', expect.any(Function));
-      expect(mEvent.target?.removeEventListener).toBeCalledWith('dblclick', expect.any(Function), false);
-      expect(mEvent.target?.removeEventListener).toBeCalledWith('click', expect.any(Function), false);
+      expect(mEvent.target?.removeEventListener).toBeCalledWith(
+        'dblclick',
+        expect.any(Function),
+        false,
+      );
+      expect(mEvent.target?.removeEventListener).toBeCalledWith(
+        'click',
+        expect.any(Function),
+        false,
+      );
       expect(callback).toBeCalledWith(mEvent);
     });
 

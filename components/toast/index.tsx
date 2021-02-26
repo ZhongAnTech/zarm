@@ -4,7 +4,8 @@ import PropsType from './PropsType';
 import Popup from '../popup';
 import { getMountContainer } from '../utils/dom';
 
-const contentIsToastProps = (content: ReactNode | ToastProps): content is ToastProps => !!content && typeof content === 'object' && 'content' in content;
+const contentIsToastProps = (content: ReactNode | ToastProps): content is ToastProps =>
+  !!content && typeof content === 'object' && 'content' in content;
 
 export interface ToastProps extends PropsType {
   prefixCls?: string;
@@ -26,26 +27,27 @@ export default class Toast extends Component<ToastProps, any> {
       if (contentIsToastProps(content) && content.className) {
         Toast.zarmToast.classList.add(content.className);
       }
-      Toast.toastContainer = contentIsToastProps(content) && content.mountContainer
-        ? getMountContainer(content.mountContainer)
-        : getMountContainer();
+      Toast.toastContainer =
+        contentIsToastProps(content) && content.mountContainer
+          ? getMountContainer(content.mountContainer)
+          : getMountContainer();
       Toast.toastContainer.appendChild(Toast.zarmToast);
     }
 
     if (Toast.zarmToast) {
       const props: ToastProps = contentIsToastProps(content)
         ? {
-          ...Toast.defaultProps,
-          ...content,
-          mountContainer: false,
-          visible: true,
-        }
+            ...Toast.defaultProps,
+            ...content,
+            mountContainer: false,
+            visible: true,
+          }
         : {
-          ...Toast.defaultProps,
-          visible: true,
-          mountContainer: false,
-          content,
-        };
+            ...Toast.defaultProps,
+            visible: true,
+            mountContainer: false,
+            content,
+          };
 
       Toast.hideHelper = () => {
         ReactDOM.render(<Toast {...props} visible={false} />, Toast.zarmToast);

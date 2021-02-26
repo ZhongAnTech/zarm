@@ -32,78 +32,81 @@ export default class App extends PureComponent {
           <Cell title="标题文字" />
         </Panel>
         <Panel title="带描述">
-          <Cell
-            title="标题文字"
-            description="描述文字"
-          />
+          <Cell title="标题文字" description="描述文字" />
         </Panel>
         <Panel title="带图标、标题">
           <Cell
-            icon={<Image style={styles.iconStyle} source={{ uri: 'https://static.zhongan.com/website/health/zarm/images/icons/state.png' }} />}
+            icon={
+              <Image
+                style={styles.iconStyle}
+                source={{
+                  uri: 'https://static.zhongan.com/website/health/zarm/images/icons/state.png',
+                }}
+              />
+            }
             title="标题文字"
           />
         </Panel>
         <Panel title="带跳转">
-          <Cell
-            onClick={noop}
-            title="标题文字"
-          />
-          <Cell
-            onClick={noop}
-            title="标题文字"
-          />
+          <Cell onClick={noop} title="标题文字" />
+          <Cell onClick={noop} title="标题文字" />
         </Panel>
         <Panel title="带描述、箭头、跳转">
-          <Cell
-            onClick={noop}
-            title="标题文字"
-            description="描述文字"
-            hasArrow
-          />
-          <Cell
-            onClick={noop}
-            title="标题文字"
-            description="描述文字"
-            hasArrow
-          />
+          <Cell onClick={noop} title="标题文字" description="描述文字" hasArrow />
+          <Cell onClick={noop} title="标题文字" description="描述文字" hasArrow />
         </Panel>
         <Panel title="带图标、描述、箭头、跳转">
           <Cell
-            icon={<Image style={styles.iconStyle} source={{ uri: 'https://static.zhongan.com/website/health/zarm/images/icons/state.png' }} />}
+            icon={
+              <Image
+                style={styles.iconStyle}
+                source={{
+                  uri: 'https://static.zhongan.com/website/health/zarm/images/icons/state.png',
+                }}
+              />
+            }
             onClick={noop}
             title="标题文字"
             description="描述文字"
             hasArrow
           />
           <Cell
-            icon={<Image style={styles.iconStyle} source={{ uri: 'https://static.zhongan.com/website/health/zarm/images/icons/state.png' }} />}
+            icon={
+              <Image
+                style={styles.iconStyle}
+                source={{
+                  uri: 'https://static.zhongan.com/website/health/zarm/images/icons/state.png',
+                }}
+              />
+            }
             onClick={noop}
             title="标题文字"
             description="描述文字"
             hasArrow
           />
           <Cell
-            icon={<Image style={styles.iconBigStyle} source={{ uri: 'https://static.zhongan.com/website/health/zarm/images/icons/state.png' }} />}
+            icon={
+              <Image
+                style={styles.iconBigStyle}
+                source={{
+                  uri: 'https://static.zhongan.com/website/health/zarm/images/icons/state.png',
+                }}
+              />
+            }
             onClick={noop}
-            title={(
+            title={
               <View>
                 <Text style={styles.titleStyle}>标题文字</Text>
                 <Text style={styles.descriptionStyle}>描述文字</Text>
               </View>
-            )}
+            }
             description="附加提示"
             hasArrow
           />
         </Panel>
         <Panel title="提示信息">
-          <Cell
-            title="标题"
-            help={<Message theme="danger">标题不能为空</Message>}
-          >
-            <TextInput
-              underlineColorAndroid="transparent"
-              placeholder="请输入标题"
-            />
+          <Cell title="标题" help={<Message theme="danger">标题不能为空</Message>}>
+            <TextInput underlineColorAndroid="transparent" placeholder="请输入标题" />
           </Cell>
         </Panel>
       </ScrollView>

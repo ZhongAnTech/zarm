@@ -75,8 +75,8 @@ class ImagePreview extends Component<ImagePreviewProps, ImagePreviewState> {
 
   static getDerivedStateFromProps(nextProps, state) {
     if (
-      ('visible' in nextProps && nextProps.visible !== state.prevVisible)
-      || ('activeIndex' in nextProps && nextProps.activeIndex !== state.prevActiveIndex)
+      ('visible' in nextProps && nextProps.visible !== state.prevVisible) ||
+      ('activeIndex' in nextProps && nextProps.activeIndex !== state.prevActiveIndex)
     ) {
       return {
         visible: nextProps.visible,
@@ -97,13 +97,16 @@ class ImagePreview extends Component<ImagePreviewProps, ImagePreviewState> {
 
   onChange = (index) => {
     const { onChange } = this.props;
-    this.setState({
-      currentIndex: index,
-    }, () => {
-      if (typeof onChange === 'function') {
-        onChange(index);
-      }
-    });
+    this.setState(
+      {
+        currentIndex: index,
+      },
+      () => {
+        if (typeof onChange === 'function') {
+          onChange(index);
+        }
+      },
+    );
   };
 
   close = () => {
@@ -140,9 +143,9 @@ class ImagePreview extends Component<ImagePreviewProps, ImagePreviewState> {
 
   showOriginButton = (images: Images, activeIndex): boolean => {
     if (
-      images
-      && images[activeIndex]
-      && images[activeIndex].originUrl
+      images &&
+      images[activeIndex] &&
+      images[activeIndex].originUrl
       // && !images[activeIndex].loaded
     ) {
       return true;
@@ -198,11 +201,7 @@ class ImagePreview extends Component<ImagePreviewProps, ImagePreviewState> {
     return images.map((item, i) => {
       return (
         <div className={`${prefixCls}__item`} key={+i}>
-          <PinchZoom
-            className={`${prefixCls}__item__img`}
-            minScale={minScale}
-            maxScale={maxScale}
-          >
+          <PinchZoom className={`${prefixCls}__item__img`} minScale={minScale} maxScale={maxScale}>
             <img src={item.url} alt="" draggable={false} />
           </PinchZoom>
         </div>
@@ -227,24 +226,28 @@ class ImagePreview extends Component<ImagePreviewProps, ImagePreviewState> {
           onMouseUp={this.onWrapperMouseUp}
           onClick={this.close}
         >
-          <Carousel
-            showPagination={false}
-            onChange={this.onChange}
-            activeIndex={currentIndex}
-          >
+          <Carousel showPagination={false} onChange={this.onChange} activeIndex={currentIndex}>
             {visible ? this.renderImages() : []}
           </Carousel>
         </div>
         <div className={`${prefixCls}__footer`}>
-          {loaded && this.showOriginButton(images, activeIndex) && (loaded !== LOAD_STATUS.after)
-            ? (
-              <button className={`${prefixCls}__origin__button`} onClick={this.loadOrigin}>
-                {loaded === LOAD_STATUS.start ? <ActivityIndicator className={`${prefixCls}__loading`} type="spinner" /> : ''}
-                {locale![loaded]}
-              </button>
-            )
-            : ''}
-          {visible && showPagination && images && images.length > 1 && <div className={`${prefixCls}__index`}>{currentIndex + 1} / {images.length}</div>}
+          {loaded && this.showOriginButton(images, activeIndex) && loaded !== LOAD_STATUS.after ? (
+            <button className={`${prefixCls}__origin__button`} onClick={this.loadOrigin}>
+              {loaded === LOAD_STATUS.start ? (
+                <ActivityIndicator className={`${prefixCls}__loading`} type="spinner" />
+              ) : (
+                ''
+              )}
+              {locale![loaded]}
+            </button>
+          ) : (
+            ''
+          )}
+          {visible && showPagination && images && images.length > 1 && (
+            <div className={`${prefixCls}__index`}>
+              {currentIndex + 1} / {images.length}
+            </div>
+          )}
         </div>
       </Popup>
     );

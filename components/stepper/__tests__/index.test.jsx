@@ -7,29 +7,19 @@ import Input from '../../input';
 describe('Stepper', () => {
   it('renders correctly', () => {
     const onChange = jest.fn();
-    const wrapper = render(
-      <Stepper onChange={onChange} />,
-    );
+    const wrapper = render(<Stepper onChange={onChange} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('defaultValue', () => {
-    const wrapper = shallow(
-      <Stepper defaultValue={2} />,
-    );
+    const wrapper = shallow(<Stepper defaultValue={2} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('disabled sub or plus click', () => {
     const onChange = jest.fn();
 
-    const wrapper = shallow(
-      <Stepper
-        max={2}
-        min={0}
-        onChange={onChange}
-      />,
-    );
+    const wrapper = shallow(<Stepper max={2} min={0} onChange={onChange} />);
 
     wrapper.setProps({ value: 0 });
     wrapper.find('.za-stepper__sub').simulate('click');
@@ -42,9 +32,7 @@ describe('Stepper', () => {
 
   it('receive new value', () => {
     const onChange = jest.fn();
-    const wrapper = shallow(
-      <Stepper onChange={onChange} />,
-    );
+    const wrapper = shallow(<Stepper onChange={onChange} />);
     wrapper.setProps({ value: 10 });
   });
 
@@ -53,15 +41,13 @@ describe('Stepper', () => {
     const onInputChange = jest.fn();
 
     const wrapper = shallow(
-      <Stepper
-        min={null}
-        max={null}
-        onChange={onChange}
-        onInputChange={onInputChange}
-      />,
+      <Stepper min={null} max={null} onChange={onChange} onInputChange={onInputChange} />,
     );
 
-    wrapper.find(Input).at(0).simulate('change', { target: { value: 10 } });
+    wrapper
+      .find(Input)
+      .at(0)
+      .simulate('change', { target: { value: 10 } });
     expect(onInputChange).toBeCalled();
 
     wrapper.setProps({ value: 10 });
@@ -78,16 +64,13 @@ describe('Stepper', () => {
     const onInputChange = jest.fn();
 
     const wrapper = shallow(
-      <Stepper
-        min={0}
-        max={20}
-        value={10}
-        onChange={onChange}
-        onInputChange={onInputChange}
-      />,
+      <Stepper min={0} max={20} value={10} onChange={onChange} onInputChange={onInputChange} />,
     );
 
-    wrapper.find(Input).at(0).simulate('change', { target: { value: '你好' } });
+    wrapper
+      .find(Input)
+      .at(0)
+      .simulate('change', { target: { value: '你好' } });
     wrapper.find(Input).at(0).simulate('blur');
     expect(onChange).toBeCalledWith(10);
   });
@@ -111,9 +94,7 @@ describe('Stepper', () => {
   it('decimal step', () => {
     const onChange = jest.fn();
     const onInputChange = jest.fn();
-    const wrapper = shallow(
-      <Stepper onChange={onChange} onInputChange={onInputChange} />,
-    );
+    const wrapper = shallow(<Stepper onChange={onChange} onInputChange={onInputChange} />);
 
     wrapper.setProps({ value: 1 });
     wrapper.setProps({ step: 0.1 });

@@ -1,6 +1,7 @@
 # Contributing to zarm
 
 ## Set up
+
 Install to fetch its dependencies after git clone the repo.
 
 ```bash
@@ -9,13 +10,14 @@ $ yarn
 ```
 
 Then, you can runs Zarm Design website locally.
+
 ```bash
 # develop for h5
 $ yarn dev
 
 If you want runs Zarm Design demo for react-native, Then
 # develop for react-native
-$ cd rnkit && yarn install && cd ios && pod install && cd ../.. 
+$ cd rnkit && yarn install && cd ios && pod install && cd ../..
 
 # develop for iOS
 $ yarn dev:ios
@@ -24,8 +26,8 @@ $ yarn dev:ios
 $ yarn dev:android
 ```
 
-
 ## Lint
+
 checks the code style.
 
 ```bash
@@ -42,6 +44,7 @@ $ yarn lint:style
 ```
 
 ## Test
+
 runs the complete test suite.
 
 ```bash
@@ -58,6 +61,7 @@ $ yarn test:h5 --coverage
 ```
 
 ## Build
+
 compiles TypeScript code to the lib and es directory, and creates UMD build of zarm in dist directory.
 
 ```bash

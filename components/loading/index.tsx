@@ -30,24 +30,25 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
       if (content && content.className) {
         Loading.zarmLoading.classList.add(content.className);
       }
-      Loading.loadingContainer = content && content.mountContainer ? getMountContainer(content.mountContainer) : getMountContainer();
+      Loading.loadingContainer =
+        content && content.mountContainer
+          ? getMountContainer(content.mountContainer)
+          : getMountContainer();
       Loading.loadingContainer.appendChild(Loading.zarmLoading);
     }
 
     if (Loading.zarmLoading) {
-      const props: LoadingProps = { ...Loading.defaultProps, ...content as LoadingProps, ...{ visible: true, mountContainer: false } };
-
-      Loading.hideHelper = () => {
-        ReactDOM.render(
-          <Loading {...props} visible={false} />,
-          Loading.zarmLoading,
-        );
+      const props: LoadingProps = {
+        ...Loading.defaultProps,
+        ...(content as LoadingProps),
+        ...{ visible: true, mountContainer: false },
       };
 
-      ReactDOM.render(
-        <Loading {...props} />,
-        Loading.zarmLoading,
-      );
+      Loading.hideHelper = () => {
+        ReactDOM.render(<Loading {...props} visible={false} />, Loading.zarmLoading);
+      };
+
+      ReactDOM.render(<Loading {...props} />, Loading.zarmLoading);
     }
   };
 
@@ -138,7 +139,9 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
         afterClose={this.afterClose}
       >
         <div className={prefixCls}>
-          <div className={`${prefixCls}__container`}>{content || <ActivityIndicator type="spinner" size="lg" />}</div>
+          <div className={`${prefixCls}__container`}>
+            {content || <ActivityIndicator type="spinner" size="lg" />}
+          </div>
         </div>
       </Popup>
     );

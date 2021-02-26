@@ -1,4 +1,10 @@
-import React, { PureComponent, ChangeEvent, InputHTMLAttributes, HTMLAttributes, ButtonHTMLAttributes } from 'react';
+import React, {
+  PureComponent,
+  ChangeEvent,
+  InputHTMLAttributes,
+  HTMLAttributes,
+  ButtonHTMLAttributes,
+} from 'react';
 import classnames from 'classnames';
 import { BaseRadioProps } from './PropsType';
 import RadioGroup from './RadioGroup';
@@ -125,7 +131,12 @@ export default class Radio extends PureComponent<RadioProps, RadioStates> {
 
     if (type === 'cell') {
       return (
-        <Cell disabled={disabled} className={className} onClick={() => {}} {...(rest as RadioCellProps)}>
+        <Cell
+          disabled={disabled}
+          className={className}
+          onClick={() => {}}
+          {...(rest as RadioCellProps)}
+        >
           {radioRender}
         </Cell>
       );

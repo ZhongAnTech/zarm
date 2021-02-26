@@ -20,12 +20,7 @@ describe('Modal', () => {
   it('onClose', () => {
     const onCancel = jest.fn();
     const wrapper = mount(
-      <Modal
-        visible
-        title="标题"
-        closable
-        onCancel={onCancel}
-      >
+      <Modal visible title="标题" closable onCancel={onCancel}>
         模态框内容
       </Modal>,
     );

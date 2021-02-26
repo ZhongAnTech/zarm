@@ -15,7 +15,8 @@ const getChecked = (props: SwitchProps, defaultChecked: boolean) => {
 
 export type SwitchProps = {
   prefixCls?: string;
-} & Omit<HTMLAttributes<HTMLSpanElement>, 'onChange'> & PropsType;
+} & Omit<HTMLAttributes<HTMLSpanElement>, 'onChange'> &
+  PropsType;
 
 export interface SwitchStates {
   checked: boolean;

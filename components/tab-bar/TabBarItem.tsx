@@ -20,7 +20,16 @@ class TabBarItem extends PureComponent<TabBarItemProps, {}> {
   };
 
   render() {
-    const { prefixCls, title, icon, badge, style, itemKey, selected, activeIcon = icon } = this.props;
+    const {
+      prefixCls,
+      title,
+      icon,
+      badge,
+      style,
+      itemKey,
+      selected,
+      activeIcon = icon,
+    } = this.props;
 
     const cls = classnames(`${prefixCls}__item`, {
       [`${prefixCls}--active`]: selected,
@@ -34,12 +43,14 @@ class TabBarItem extends PureComponent<TabBarItemProps, {}> {
     );
 
     return (
-      <div className={cls} style={style} onClick={() => { this.change(itemKey); }}>
-        {
-          badge
-            ? <Badge {...badge}>{contentRender}</Badge>
-            : contentRender
-        }
+      <div
+        className={cls}
+        style={style}
+        onClick={() => {
+          this.change(itemKey);
+        }}
+      >
+        {badge ? <Badge {...badge}>{contentRender}</Badge> : contentRender}
       </div>
     );
   }

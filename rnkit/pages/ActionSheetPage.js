@@ -25,9 +25,26 @@ export default class Page extends PureComponent {
     visibleWithCancel: false,
     visibleShapeRadius: false,
     actions: [
-      { text: '操作一', onClick() { alert('choose 操作一'); } },
-      { text: '操作二', onClick() { alert('choose 操作二'); }, theme: 'primary' },
-      { text: '操作三', onClick() { alert('choose 操作三'); }, theme: 'danger' },
+      {
+        text: '操作一',
+        onClick() {
+          alert('choose 操作一');
+        },
+      },
+      {
+        text: '操作二',
+        onClick() {
+          alert('choose 操作二');
+        },
+        theme: 'primary',
+      },
+      {
+        text: '操作三',
+        onClick() {
+          alert('choose 操作三');
+        },
+        theme: 'danger',
+      },
     ],
   };
 
@@ -41,18 +58,19 @@ export default class Page extends PureComponent {
   };
 
   render() {
-    const {
-      visibleSimple,
-      visibleWithCancel,
-      visibleShapeRadius,
-      actions,
-    } = this.state;
+    const { visibleSimple, visibleWithCancel, visibleShapeRadius, actions } = this.state;
 
     return (
       <View style={styles.container}>
-        <Button style={styles.mb} theme="primary" onClick={() => this.onOpen('visibleSimple')}>普通</Button>
-        <Button style={styles.mb} theme="primary" onClick={() => this.onOpen('visibleWithCancel')}>带取消操作</Button>
-        <Button style={styles.mb} theme="primary" onClick={() => this.onOpen('visibleShapeRadius')}>圆角、留边</Button>
+        <Button style={styles.mb} theme="primary" onClick={() => this.onOpen('visibleSimple')}>
+          普通
+        </Button>
+        <Button style={styles.mb} theme="primary" onClick={() => this.onOpen('visibleWithCancel')}>
+          带取消操作
+        </Button>
+        <Button style={styles.mb} theme="primary" onClick={() => this.onOpen('visibleShapeRadius')}>
+          圆角、留边
+        </Button>
 
         <ActionSheet
           visible={visibleSimple}

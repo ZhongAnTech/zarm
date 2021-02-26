@@ -1,7 +1,8 @@
 import BaseDatePickerViewProps from '../date-picker-view/PropsType';
 import { ContainerType } from '../utils/dom';
 
-export default interface BaseDatePickerProps extends Omit<BaseDatePickerViewProps, 'onChange' | 'stopScroll'> {
+export default interface BaseDatePickerProps
+  extends Omit<BaseDatePickerViewProps, 'onChange' | 'stopScroll'> {
   visible?: boolean;
   title?: string;
   okText?: string;

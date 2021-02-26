@@ -23,7 +23,12 @@ describe('file-picker', () => {
         const file = new File(['foo'], 'foo.txt', {
           type: 'text/plain',
         });
-        mockedGetFileDetail.mockReturnValueOnce({ fileSize: 1000, fileType: 'zip', isPic: false, fileName: 'test' });
+        mockedGetFileDetail.mockReturnValueOnce({
+          fileSize: 1000,
+          fileType: 'zip',
+          isPic: false,
+          fileName: 'test',
+        });
         const callback = jest.fn();
         handleFileInfo({ file, quality: 0.8 }, callback);
         expect(callback).toBeCalledWith({
@@ -40,7 +45,12 @@ describe('file-picker', () => {
         const file = new File(['foo'], 'foo.txt', {
           type: 'text/plain',
         });
-        mockedGetFileDetail.mockReturnValueOnce({ fileSize: 1000, fileType: 'jpg', isPic: true, fileName: 'avatar' });
+        mockedGetFileDetail.mockReturnValueOnce({
+          fileSize: 1000,
+          fileType: 'jpg',
+          isPic: true,
+          fileName: 'avatar',
+        });
         mockedCreateThumbnail.mockResolvedValueOnce('http://example.cdn.com');
         const callback = jest.fn();
         handleFileInfo({ file, quality: 0.8 }, callback);
@@ -59,7 +69,12 @@ describe('file-picker', () => {
         const file = new File(['foo'], 'foo.txt', {
           type: 'text/plain',
         });
-        mockedGetFileDetail.mockReturnValueOnce({ fileSize: 1000, fileType: 'jpg', isPic: true, fileName: 'avatar' });
+        mockedGetFileDetail.mockReturnValueOnce({
+          fileSize: 1000,
+          fileType: 'jpg',
+          isPic: true,
+          fileName: 'avatar',
+        });
         const err = new Error('memory leak');
         mockedCreateThumbnail.mockRejectedValueOnce(err);
         const callback = jest.fn();

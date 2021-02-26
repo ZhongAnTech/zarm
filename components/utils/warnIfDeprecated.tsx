@@ -43,7 +43,9 @@ export default function warnIfDeprecated(deprecations: Array<Partial<Deprecation
             }
           });
           if (count) {
-            console.warn(`Please update the following components: ${getDisplayName(WrappedComponent)}`);
+            console.warn(
+              `Please update the following components: ${getDisplayName(WrappedComponent)}`,
+            );
           }
         }
       }

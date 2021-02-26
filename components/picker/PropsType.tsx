@@ -3,7 +3,8 @@ import { Locale } from '../config-provider/PropsType';
 import { ContainerType } from '../utils/dom';
 import { WheelItem } from '../wheel/PropsType';
 
-export default interface BasePickerProps extends Omit<BasePickerViewProps, 'onChange' | 'stopScroll'> {
+export default interface BasePickerProps
+  extends Omit<BasePickerViewProps, 'onChange' | 'stopScroll'> {
   visible?: boolean;
   title?: string;
   okText?: string;

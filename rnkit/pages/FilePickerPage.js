@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-} from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { FilePicker } from '../zarm';
 
 const styles = StyleSheet.create({
@@ -57,9 +52,7 @@ export default class FilePickerPage extends React.Component {
   onSelect = (file) => {
     console.log('file === ', file);
 
-    const {
-      files,
-    } = this.state;
+    const { files } = this.state;
 
     files.push(file);
 
@@ -83,18 +76,8 @@ export default class FilePickerPage extends React.Component {
   renderImgs = (files) => {
     return this.state[files].map(({ thumbnail }, index) => {
       return (
-        <View
-          key={+index}
-          style={[
-            styles.avatar,
-            styles.pickerItem,
-            { marginBottom: 20 },
-          ]}
-        >
-          <Image
-            style={styles.avatar}
-            source={{ uri: thumbnail }}
-          />
+        <View key={+index} style={[styles.avatar, styles.pickerItem, { marginBottom: 20 }]}>
+          <Image style={styles.avatar} source={{ uri: thumbnail }} />
         </View>
       );
     });

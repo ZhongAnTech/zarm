@@ -19,32 +19,30 @@ const Child = () => {
     const list = components[key] || [];
 
     return (
-      <Panel title={(
-        <>
-          <FormattedMessage id={`app.components.type.${key}`} />
-          （{list.length}）
-        </>
-      )}
-      >
-        {
-          list
-            .sort((a, b) => {
-              return a.key.localeCompare(b.key);
-            })
-            .map((component, i) => (
-              <Cell
-                hasArrow
-                key={+i}
-                title={(
-                  <div className="menu-item-content">
-                    <span>{pascalCase(component.key)}</span>
-                    {locale !== 'enUS' && <span className="chinese">{component.name}</span>}
-                  </div>
-                )}
-                onClick={() => history.push(`/${component.key}`)}
-              />
-            ))
+      <Panel
+        title={
+          <>
+            <FormattedMessage id={`app.components.type.${key}`} />（{list.length}）
+          </>
         }
+      >
+        {list
+          .sort((a, b) => {
+            return a.key.localeCompare(b.key);
+          })
+          .map((component, i) => (
+            <Cell
+              hasArrow
+              key={+i}
+              title={
+                <div className="menu-item-content">
+                  <span>{pascalCase(component.key)}</span>
+                  {locale !== 'enUS' && <span className="chinese">{component.name}</span>}
+                </div>
+              }
+              onClick={() => history.push(`/${component.key}`)}
+            />
+          ))}
       </Panel>
     );
   };
@@ -54,7 +52,9 @@ const Child = () => {
       <header>
         <section className="brand">
           <div className="brand-title">Zarm</div>
-          <div className="brand-description"><FormattedMessage id="app.title" /></div>
+          <div className="brand-description">
+            <FormattedMessage id="app.title" />
+          </div>
         </section>
       </header>
       <main>

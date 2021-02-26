@@ -13,11 +13,11 @@ function MyStack() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Zarm UI" component={IndexPage} />
-        {
-          [...form, ...feedback, ...view, ...navigation].map((component, i) => {
-            return <Stack.Screen key={+i} name={component.title} component={component.module.default} />;
-          })
-        }
+        {[...form, ...feedback, ...view, ...navigation].map((component, i) => {
+          return (
+            <Stack.Screen key={+i} name={component.title} component={component.module.default} />
+          );
+        })}
       </Stack.Navigator>
     </NavigationContainer>
   );

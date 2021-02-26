@@ -29,7 +29,9 @@ export const normalState = (props) => {
   );
   return {
     value,
-    objValue: props.dataSource.map((item, index) => item.filter((d) => d[valueMember!] === value[index])[0]),
+    objValue: props.dataSource.map(
+      (item, index) => item.filter((d) => d[valueMember!] === value[index])[0],
+    ),
     dataSource: props.dataSource,
   };
 };

@@ -1,21 +1,40 @@
 # Icon 图标
 
-
-
 ## 基本用法
+
 ```jsx
 import { Icon } from 'zarm';
 
 const ICONS = [
-  'add', 'add-round', 'add-round-fill', 
-  'minus', 'minus-round', 'minus-round-fill',
-  'arrow-top', 'arrow-bottom', 'arrow-left', 'arrow-right',
-  'info-round', 'info-round-fill',
-  'warning-round', 'warning-round-fill',
-  'right', 'right-round', 'right-round-fill',
-  'wrong', 'wrong-round', 'wrong-round-fill',
-  'question-round', 'question-round-fill',
-  'required', 'broadcast', 'deletekey', 'keyboard', 'search', 'date', 'time',
+  'add',
+  'add-round',
+  'add-round-fill',
+  'minus',
+  'minus-round',
+  'minus-round-fill',
+  'arrow-top',
+  'arrow-bottom',
+  'arrow-left',
+  'arrow-right',
+  'info-round',
+  'info-round-fill',
+  'warning-round',
+  'warning-round-fill',
+  'right',
+  'right-round',
+  'right-round-fill',
+  'wrong',
+  'wrong-round',
+  'wrong-round-fill',
+  'question-round',
+  'question-round-fill',
+  'required',
+  'broadcast',
+  'deletekey',
+  'keyboard',
+  'search',
+  'date',
+  'time',
 ];
 
 ReactDOM.render(
@@ -25,15 +44,16 @@ ReactDOM.render(
         <div className="grid-column" key={iconType}>
           <Icon type={iconType} theme="primary" size="lg" />
           <span>{iconType}</span>
-        </div>);
+        </div>
+      );
     })}
-  </div>
-, mountNode);
+  </div>,
+  mountNode,
+);
 ```
 
-
-
 ## 主题
+
 ```jsx
 import { Icon } from 'zarm';
 
@@ -48,35 +68,36 @@ ReactDOM.render(
       <span>danger</span>
     </div>
     <div className="grid-column">
-      <Icon type="info-round" style={{ color: '#1890ff' }}/>
+      <Icon type="info-round" style={{ color: '#1890ff' }} />
       <span>custom color</span>
     </div>
-  </div>
-, mountNode);
+  </div>,
+  mountNode,
+);
 ```
 
-
-
 ## 尺寸
+
 ```jsx
 import { Icon } from 'zarm';
 
 ReactDOM.render(
   <div className="grid">
     <div className="grid-column">
-        <Icon type="search" theme="primary" size="sm" />
-        <span>sm</span>
+      <Icon type="search" theme="primary" size="sm" />
+      <span>sm</span>
     </div>
     <div className="grid-column">
-        <Icon type="search" theme="primary" />
-        <span>md</span>
+      <Icon type="search" theme="primary" />
+      <span>md</span>
     </div>
     <div className="grid-column">
-        <Icon type="search" theme="primary" size="lg" />
-        <span>lg</span>
+      <Icon type="search" theme="primary" size="lg" />
+      <span>lg</span>
     </div>
-  </div>
-, mountNode)
+  </div>,
+  mountNode,
+);
 ```
 
 ## 自定义 Iconfont 图标
@@ -85,7 +106,7 @@ ReactDOM.render(
 
 其本质上是组件在渲染前会自动引入 iconfont.cn 项目中的图标符号集，并且创建了一个 `<use>` 标签来渲染图标的组件。
 
-详见 [iconfont.cn 使用帮助](https://www.iconfont.cn/help/detail?spm=a313x.7781069.1998910419.d8d11a391&helptype=code) 查看如何生成symbol代码的 js 地址。
+详见 [iconfont.cn 使用帮助](https://www.iconfont.cn/help/detail?spm=a313x.7781069.1998910419.d8d11a391&helptype=code) 查看如何生成 symbol 代码的 js 地址。
 
 ```jsx
 import { Icon } from 'zarm';
@@ -95,15 +116,16 @@ const MyIcon = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_lpsswvb7y
 ReactDOM.render(
   <div className="grid">
     <div className="grid-column">
-        <MyIcon type="home" theme="primary" />
-        <span>home</span>
+      <MyIcon type="home" theme="primary" />
+      <span>home</span>
     </div>
     <div className="grid-column">
-        <MyIcon type="user" theme="primary" />
-        <span>user</span>
+      <MyIcon type="user" theme="primary" />
+      <span>user</span>
     </div>
-  </div>
-, mountNode);
+  </div>,
+  mountNode,
+);
 ```
 
 ## 自定义 SVG 图标
@@ -133,6 +155,7 @@ ReactDOM.render(
   ],
 },
 ```
+
 ```jsx
 import { Icon } from 'zarm';
 import { ReactComponent as YourSvg } from 'path/to/yourSvg.svg'; // path to your '*.svg' file.
@@ -140,14 +163,12 @@ import { ReactComponent as YourSvg } from 'path/to/yourSvg.svg'; // path to your
 ReactDOM.render(<Icon component={YourSvg} />, mountNode);
 ```
 
-
-
 ## API
 
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| theme | string | 'default' | 主题，可选值 `default`、`primary`、`success`、`warning`、`danger` |
-| size | string | 'md' | 大小，可选值 `sm`、`md`、`lg` |
-| type | string | - | 图标类型，可选值详见demo的基本用法 |
-| component | React.ComponentType&lt;React.SVGProps&lt;SVGSVGElement&gt;&gt; | - | 本地svg文件，需配合viewBox使用 |
-| viewBox | string | '0 0 32 32' | 自定义 SVG 图标时，用来设置画布的起始坐标及大小 |
+| 属性      | 类型                                                           | 默认值      | 说明                                                              |
+| :-------- | :------------------------------------------------------------- | :---------- | :---------------------------------------------------------------- |
+| theme     | string                                                         | 'default'   | 主题，可选值 `default`、`primary`、`success`、`warning`、`danger` |
+| size      | string                                                         | 'md'        | 大小，可选值 `sm`、`md`、`lg`                                     |
+| type      | string                                                         | -           | 图标类型，可选值详见 demo 的基本用法                              |
+| component | React.ComponentType&lt;React.SVGProps&lt;SVGSVGElement&gt;&gt; | -           | 本地 svg 文件，需配合 viewBox 使用                                |
+| viewBox   | string                                                         | '0 0 32 32' | 自定义 SVG 图标时，用来设置画布的起始坐标及大小                   |

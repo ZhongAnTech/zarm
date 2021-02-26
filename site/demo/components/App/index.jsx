@@ -18,7 +18,7 @@ const LoadableComponent = (component) => {
   if (component.style) {
     // todo: eslint字符串模版变量问题，暂时先屏蔽
     // eslint-disable-next-line
-    loader.style = () => import('@site/demo/styles/'+compName+'Page');
+    loader.style = () => import('@site/demo/styles/' + compName + 'Page');
   }
 
   return Loadable.Map({
@@ -26,11 +26,7 @@ const LoadableComponent = (component) => {
     render: (loaded, props) => {
       return (
         <Container className={`${component.key}-page`}>
-          <Markdown
-            content={loaded.page.default}
-            component={component}
-            {...props}
-          />
+          <Markdown content={loaded.page.default} component={component} {...props} />
           <Footer />
         </Container>
       );
@@ -46,11 +42,11 @@ const App = () => {
       <Suspense fallback={<Loading visible />}>
         <Switch>
           <Route exact path="/" component={lazy(() => import('@site/demo/pages/Index'))} />
-          {
-            [...general, ...form, ...feedback, ...view, ...navigation, ...other].map((component, i) => (
+          {[...general, ...form, ...feedback, ...view, ...navigation, ...other].map(
+            (component, i) => (
               <Route key={+i} path={`/${component.key}`} component={LoadableComponent(component)} />
-            ))
-          }
+            ),
+          )}
           <Route component={lazy(() => import('@site/demo/pages/NotFoundPage'))} />
         </Switch>
       </Suspense>

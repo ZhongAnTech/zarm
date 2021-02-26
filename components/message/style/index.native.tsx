@@ -141,5 +141,4 @@ export default {
     borderTopColor: variables.theme_danger,
     borderRightColor: variables.theme_danger,
   },
-
 };

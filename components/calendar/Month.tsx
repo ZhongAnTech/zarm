@@ -122,7 +122,8 @@ export default class CalendarMonthView extends Component<CalendarMonthProps, Cal
   checkStatus(date: Date) {
     const { min, max, disabledDate } = this.props;
     const { value = [] } = this.state;
-    const disabled = date < DateTool.cloneDate(min, 'd', 0) || date > DateTool.cloneDate(max, 'd', 0);
+    const disabled =
+      date < DateTool.cloneDate(min, 'd', 0) || date > DateTool.cloneDate(max, 'd', 0);
     const res = {
       disabled: disabled || (disabledDate && disabledDate(date)),
       isSelected: value.some((item) => DateTool.isOneDay(date, item)),
@@ -174,7 +175,9 @@ export default class CalendarMonthView extends Component<CalendarMonthProps, Cal
   renderContent = (year: number, month: number) => {
     const data = DateTool.getCurrMonthInfo(year, month);
     const { firstDay, dayCount } = data;
-    return Array.from({ length: dayCount }).map((_item, i) => this.renderDay(i + 1, year, month, firstDay));
+    return Array.from({ length: dayCount }).map((_item, i) =>
+      this.renderDay(i + 1, year, month, firstDay),
+    );
   };
 
   render() {

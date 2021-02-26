@@ -3,7 +3,9 @@ import classnames from 'classnames';
 import { CollapseActiveKey, CollapseItemKey, BaseCollapseProps } from './PropsType';
 import CollapseItem, { CollapseItemProps } from './CollapseItem';
 
-export interface CollapseProps extends Omit<HTMLAttributes<HTMLDivElement>, 'activeKey' | 'defaultActiveKey' | 'onChange'>, BaseCollapseProps {
+export interface CollapseProps
+  extends Omit<HTMLAttributes<HTMLDivElement>, 'activeKey' | 'defaultActiveKey' | 'onChange'>,
+    BaseCollapseProps {
   prefixCls?: string;
 }
 
@@ -58,7 +60,9 @@ export default class Collapse extends Component<CollapseProps, CollapseStates> {
     if ('multiple' in nextProps) {
       newState.multiple = nextProps.multiple;
     }
-    return ('activeKey' in newState || 'animated' in newState || 'multiple' in newState) ? newState : null;
+    return 'activeKey' in newState || 'animated' in newState || 'multiple' in newState
+      ? newState
+      : null;
   }
 
   onItemChange = (onItemChange, key) => {
@@ -73,7 +77,7 @@ export default class Collapse extends Component<CollapseProps, CollapseStates> {
 
     if (multiple) {
       newActiveKey = [];
-      activeKey = activeKey as CollapseItemKey[] || [];
+      activeKey = (activeKey as CollapseItemKey[]) || [];
       if (activeKey.indexOf(key) > -1) {
         newActiveKey = activeKey.filter((i) => i !== key);
       } else {
@@ -102,7 +106,9 @@ export default class Collapse extends Component<CollapseProps, CollapseStates> {
     return Children.map(this.props.children, (ele: ReactElement<CollapseItemProps>) => {
       const { disabled, onChange } = ele.props;
       const { key } = ele;
-      const isActive = multiple ? (activeKey as CollapseItemKey[] || []).indexOf(key!) > -1 : activeKey as CollapseItemKey === key;
+      const isActive = multiple
+        ? ((activeKey as CollapseItemKey[]) || []).indexOf(key!) > -1
+        : (activeKey as CollapseItemKey) === key;
 
       return cloneElement(ele, {
         animated,
@@ -113,7 +119,15 @@ export default class Collapse extends Component<CollapseProps, CollapseStates> {
   };
 
   render() {
-    const { prefixCls, className, onChange, animated, activeKey, defaultActiveKey, ...rest } = this.props;
+    const {
+      prefixCls,
+      className,
+      onChange,
+      animated,
+      activeKey,
+      defaultActiveKey,
+      ...rest
+    } = this.props;
     const { animated: animatedState } = this.state;
 
     const cls = classnames(prefixCls, className, {

@@ -21,7 +21,7 @@ import 'zarm/dist/zarm.css';
 
 ### 定制主题
 
-zarm 的样式使用了 [scss](https://sass-lang.com) 和 [css变量](https://www.w3.org/Style/CSS/) 相结合做为开发语言，并定义了一系列全局/组件的样式变量，你可以根据需求进行相应调整，实现定制主题的能力。
+zarm 的样式使用了 [scss](https://sass-lang.com) 和 [css 变量](https://www.w3.org/Style/CSS/) 相结合做为开发语言，并定义了一系列全局/组件的样式变量，你可以根据需求进行相应调整，实现定制主题的能力。
 
 ```js
 document.documentElement.style.setProperty('--theme-primary', '#108ee9');
@@ -33,5 +33,5 @@ document.documentElement.style.setProperty('--theme-primary', '#108ee9');
 --theme-primary: #00bc70; // 全局主色
 --theme-success: #00bc70; // 成功色
 --theme-warning: #ec9231; // 警告色
---theme-danger: #ff5050;  // 危险色
+--theme-danger: #ff5050; // 危险色
 ```

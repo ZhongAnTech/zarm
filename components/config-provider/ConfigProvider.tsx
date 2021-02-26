@@ -4,7 +4,7 @@ import setTheme from './setTheme';
 import setPrimaryColor from './setPrimaryColor';
 
 const defaultConfig: ConfigProviderProps = {
-  locale: {} as any as Locale,
+  locale: ({} as any) as Locale,
   theme: 'light',
   primaryColor: '#00bc70',
 };

@@ -99,11 +99,7 @@ export default class Page extends PureComponent {
         </Panel>
 
         <Panel title="禁用子项">
-          <Collapse
-            multiple
-            activeKey={['test2']}
-            onChange={(key) => console.log(key)}
-          >
+          <Collapse multiple activeKey={['test2']} onChange={(key) => console.log(key)}>
             <Collapse.Item key="test1" title="50元套餐">
               <Text>我是50元套餐内容</Text>
               <Text>我是50元套餐内容</Text>

@@ -25,21 +25,16 @@ export default class Mask extends PureComponent<MaskProps, any> {
   };
 
   render() {
-    const {
-      visible,
-      styles,
-      type,
-      style,
-      onClick,
-    } = this.props;
+    const { visible, styles, type, style, onClick } = this.props;
 
-    const popupCls = [
-      styles!.wrapperStyle,
-      styles![`${type}Wrapper`],
-      style,
-    ] as ViewStyle;
+    const popupCls = [styles!.wrapperStyle, styles![`${type}Wrapper`], style] as ViewStyle;
 
-    return visible
-      && <TouchableWithoutFeedback onPress={onClick}><View style={[popupCls]} /></TouchableWithoutFeedback>;
+    return (
+      visible && (
+        <TouchableWithoutFeedback onPress={onClick}>
+          <View style={[popupCls]} />
+        </TouchableWithoutFeedback>
+      )
+    );
   }
 }

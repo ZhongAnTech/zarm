@@ -4,16 +4,12 @@ import Loading from '../index';
 
 describe('Loading', () => {
   it('renders correctly', () => {
-    const wrapper = mount(
-      <Loading visible>foo</Loading>,
-    );
+    const wrapper = mount(<Loading visible>foo</Loading>);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('visible change true', () => {
-    const wrapper = mount(
-      <Loading />,
-    );
+    const wrapper = mount(<Loading />);
     wrapper.setProps({ visible: true });
     expect(wrapper).toMatchSnapshot();
   });

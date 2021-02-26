@@ -40,7 +40,9 @@ describe('utils', () => {
     it('should print warning log when use the deprecated component name', () => {
       process.env.NODE_ENV = 'dev';
       const warnLogSpy = jest.spyOn(console, 'warn').mockImplementation(() => 'suppress warn');
-      const wrapper = warnIfDeprecated([{ oldComponent: 'TestComponent', newComponent: 'NewTestComponent' }]);
+      const wrapper = warnIfDeprecated([
+        { oldComponent: 'TestComponent', newComponent: 'NewTestComponent' },
+      ]);
       const WrappedComponent = wrapper(TestComponent);
       // TODO: use strict types rather than any
       mount(<WrappedComponent />);
@@ -54,7 +56,12 @@ describe('utils', () => {
       process.env.NODE_ENV = 'dev';
       const warnLogSpy = jest.spyOn(console, 'warn').mockImplementation(() => 'suppress warn');
       const wrapper = warnIfDeprecated([
-        { oldProp: 'a', newProp: 'b', oldComponent: 'TestComponent', newComponent: 'NewTestComponent' },
+        {
+          oldProp: 'a',
+          newProp: 'b',
+          oldComponent: 'TestComponent',
+          newComponent: 'NewTestComponent',
+        },
       ]);
       const WrappedComponent = wrapper(TestComponent);
       // TODO: use strict types rather than any
@@ -106,7 +113,9 @@ describe('utils', () => {
     it('should not print warning log if the name of the wrappered component is not equal the old name', () => {
       process.env.NODE_ENV = 'dev';
       const warnLogSpy = jest.spyOn(console, 'warn').mockImplementation(() => 'suppress warn');
-      const wrapper = warnIfDeprecated([{ oldComponent: 'WhatEverTestComponent', newComponent: 'NewTestComponent' }]);
+      const wrapper = warnIfDeprecated([
+        { oldComponent: 'WhatEverTestComponent', newComponent: 'NewTestComponent' },
+      ]);
       const WrappedComponent = wrapper(TestComponent);
       // TODO: use strict types rather than any
       mount(<WrappedComponent />);

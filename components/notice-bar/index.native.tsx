@@ -1,11 +1,5 @@
 import React, { PureComponent, CSSProperties } from 'react';
-import {
-  Text,
-  StyleSheet,
-  UIManager,
-  ScrollView,
-  findNodeHandle,
-} from 'react-native';
+import { Text, StyleSheet, UIManager, ScrollView, findNodeHandle } from 'react-native';
 import PropsType from './PropsType';
 import noticeBarStyle from './style/index.native';
 import Message from '../message/index.native';
@@ -63,9 +57,7 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
         return;
       }
       animateDelay = delay!;
-      offset = (offset < distance)
-        ? 0
-        : (offset - 1);
+      offset = offset < distance ? 0 : offset - 1;
 
       this.setState({ offset });
     }, 50);
@@ -101,20 +93,11 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
   };
 
   render() {
-    const {
-      theme,
-      closable,
-      styles,
-      children,
-      ...others
-    } = this.props;
+    const { theme, closable, styles, children, ...others } = this.props;
 
     const { offset } = this.state;
 
-    const textStyle = [
-      styles!.textStyle,
-      styles![`${theme}TextStyle`],
-    ];
+    const textStyle = [styles!.textStyle, styles![`${theme}TextStyle`]];
 
     const wrapperProps = {
       theme,
@@ -126,12 +109,16 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
       <Message {...wrapperProps} {...others} size="lg">
         <ScrollView
           horizontal
-          ref={(view) => { this.wrapper = view; }}
+          ref={(view) => {
+            this.wrapper = view;
+          }}
           scrollEnabled={false}
           showsHorizontalScrollIndicator={false}
         >
           <Text
-            ref={(view) => { this.content = view; }}
+            ref={(view) => {
+              this.content = view;
+            }}
             style={[textStyle, { left: offset }]}
           >
             {children}

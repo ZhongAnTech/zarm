@@ -29,10 +29,14 @@ export default class App extends PureComponent {
         <Panel title="可操作">
           <View style={styles.wrap}>
             <View style={styles.mb}>
-              <Message theme="success" hasArrow onClick={() => Alert.alert('click this message!')}>链接样式</Message>
+              <Message theme="success" hasArrow onClick={() => Alert.alert('click this message!')}>
+                链接样式
+              </Message>
             </View>
             <View>
-              <Message theme="warning" closable>可关闭</Message>
+              <Message theme="warning" closable>
+                可关闭
+              </Message>
             </View>
           </View>
         </Panel>

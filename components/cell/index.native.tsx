@@ -83,22 +83,13 @@ export default class Cell extends PureComponent<CellProps, any> {
                 viewStyle={titleViewStyle}
                 textStyle={styles!.titleTextStyle}
               />
-              <RenderWithText
-                component={children}
-                viewStyle={styles!.childrenViewStyle}
-              />
+              <RenderWithText component={children} viewStyle={styles!.childrenViewStyle} />
             </View>
-            <RenderWithText
-              component={description}
-              textStyle={styles!.descriptionTextStyle}
-            />
+            <RenderWithText component={description} textStyle={styles!.descriptionTextStyle} />
             {arrowRender}
           </View>
         </View>
-        <RenderWithText
-          component={help}
-          viewStyle={cellStyles.helpViewStyle}
-        />
+        <RenderWithText component={help} viewStyle={cellStyles.helpViewStyle} />
       </View>
     );
 
@@ -111,8 +102,10 @@ export default class Cell extends PureComponent<CellProps, any> {
       ...others,
     };
 
-    return onClick
-      ? <TouchableHighlight {...wrapperProps}>{cellRender}</TouchableHighlight>
-      : cellRender;
+    return onClick ? (
+      <TouchableHighlight {...wrapperProps}>{cellRender}</TouchableHighlight>
+    ) : (
+      cellRender
+    );
   }
 }

@@ -10,12 +10,7 @@
  * onBeforeSelect: () => boolean，返回 false 的时候阻止后续的选择事件
  */
 import React, { PureComponent } from 'react';
-import {
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  Modal,
-} from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Modal } from 'react-native';
 
 import CameraRollPicker from 'react-native-camera-roll-picker';
 
@@ -52,7 +47,9 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
     disabled: false,
     multiple: false,
     styles: filePickerStyles,
-    onBeforeSelect() { return true; },
+    onBeforeSelect() {
+      return true;
+    },
     onChange() {},
   };
 
@@ -74,12 +71,11 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
   };
 
   handleShowCameraRoll = () => {
-    const {
-      disabled,
-      onBeforeSelect,
-    } = this.props;
+    const { disabled, onBeforeSelect } = this.props;
 
-    if (onBeforeSelect() === false || disabled) { return; }
+    if (onBeforeSelect() === false || disabled) {
+      return;
+    }
 
     this.setState(({ isShowRoll }) => ({
       isShowRoll: !isShowRoll,
@@ -89,12 +85,11 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
   };
 
   getSelectedImages = (images) => {
-    const {
-      multiple,
-      onChange,
-    } = this.props;
+    const { multiple, onChange } = this.props;
 
-    if (!images.length) { return; }
+    if (!images.length) {
+      return;
+    }
 
     if (multiple) {
       const data = images.map((item) => this.getFileInfo(item));
@@ -133,26 +128,15 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
       maximum,
     } = this.props;
 
-    const {
-      isShowRoll,
-      selectedImages,
-    } = this.state;
+    const { isShowRoll, selectedImages } = this.state;
 
-    const assetType = accept.indexOf('image') > -1
-      ? 'Photos'
-      : accept;
+    const assetType = accept.indexOf('image') > -1 ? 'Photos' : accept;
 
-    const content = disabled
-      ? (
-        <View>
-          {children}
-        </View>
-      )
-      : (
-        <TouchableOpacity onPress={this.handleShowCameraRoll}>
-          {children}
-        </TouchableOpacity>
-      );
+    const content = disabled ? (
+      <View>{children}</View>
+    ) : (
+      <TouchableOpacity onPress={this.handleShowCameraRoll}>{children}</TouchableOpacity>
+    );
 
     const cameraRollPicker = (
       <Modal

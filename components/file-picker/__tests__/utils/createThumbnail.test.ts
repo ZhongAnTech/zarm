@@ -35,7 +35,12 @@ describe('createThumbnail', () => {
     mChangeImageSize.mockReturnValueOnce('data:,');
     const createElementSpy = jest.spyOn(document, 'createElement');
     const mFile = new File(['foo'], 'foo.png', { type: 'image/png' });
-    const createThumbnailPromise = createThumbnail({ file: mFile, quality: 0, fileType: 'image/png', maxWidth: 100 });
+    const createThumbnailPromise = createThumbnail({
+      file: mFile,
+      quality: 0,
+      fileType: 'image/png',
+      maxWidth: 100,
+    });
     imageOnload!();
     const actual = await createThumbnailPromise;
     expect(actual).toEqual('data:,');
@@ -48,7 +53,11 @@ describe('createThumbnail', () => {
     mCreateObjectURL.mockReturnValueOnce('./test.png');
     const createElementSpy = jest.spyOn(document, 'createElement');
     const mFile = new File(['foo'], 'foo.png', { type: 'image/png' });
-    const createThumbnailPromise = createThumbnail({ file: mFile, quality: 0, fileType: 'image/png' });
+    const createThumbnailPromise = createThumbnail({
+      file: mFile,
+      quality: 0,
+      fileType: 'image/png',
+    });
     imageOnload!();
     const actual = await createThumbnailPromise;
     expect(createElementSpy).toBeCalledWith('img');

@@ -23,7 +23,7 @@ const isPropEqual = (cur, next) => {
 const getActiveKey = (props) => {
   const { activeKey, defaultActiveKey, multiple } = props;
 
-  const defaultKey = (activeKey || activeKey === 0) ? activeKey : defaultActiveKey;
+  const defaultKey = activeKey || activeKey === 0 ? activeKey : defaultActiveKey;
 
   if (defaultKey || defaultKey === 0) {
     if (isArray(defaultKey)) {
@@ -41,7 +41,7 @@ export default class Collapse extends Component<CollapseProps, any> {
     multiple: false,
     animated: false,
     styles: collapseStyles,
-    onChange: () => { },
+    onChange: () => {},
   };
 
   static Item: any;
@@ -111,7 +111,7 @@ export default class Collapse extends Component<CollapseProps, any> {
         key: key!,
         isActive,
         animated,
-        onChange: disabled ? () => { } : () => this.onChange(onChange, key),
+        onChange: disabled ? () => {} : () => this.onChange(onChange, key),
       });
     });
   }
@@ -119,15 +119,8 @@ export default class Collapse extends Component<CollapseProps, any> {
   render() {
     const { style, styles } = this.props;
 
-    const wrapperStyle = [
-      styles!.container,
-      style,
-    ] as ViewStyle;
+    const wrapperStyle = [styles!.container, style] as ViewStyle;
 
-    return (
-      <View style={wrapperStyle}>
-        {this.renderItems()}
-      </View>
-    );
+    return <View style={wrapperStyle}>{this.renderItems()}</View>;
   }
 }

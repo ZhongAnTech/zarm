@@ -40,28 +40,34 @@ const Page = () => {
   return (
     <>
       <FormattedMessage id="app.home.resources">
-        {(txt) => (
-          <Meta title={`${txt} - Zarm Design`} />
-        )}
+        {(txt) => <Meta title={`${txt} - Zarm Design`} />}
       </FormattedMessage>
-      <h1><FormattedMessage id="app.home.resources" /></h1>
-      <p><FormattedMessage id="app.home.resources.introduce" /></p>
+      <h1>
+        <FormattedMessage id="app.home.resources" />
+      </h1>
+      <p>
+        <FormattedMessage id="app.home.resources.introduce" />
+      </p>
       <div className="resource-cards">
-        {
-          RESOURCES.map((source, index) => {
-            return (
-              <a key={+index} className="resource-card" target="_blank" rel="noopener noreferrer" href={source.url}>
-                <div className="resource-card-icon">
-                  <img src={source.icon} alt={source.title} />
-                </div>
-                <div className="resource-card-content">
-                  <div className="resource-card-title">{source.title}</div>
-                  <div className="resource-card-description">{source.description}</div>
-                </div>
-              </a>
-            );
-          })
-        }
+        {RESOURCES.map((source, index) => {
+          return (
+            <a
+              key={+index}
+              className="resource-card"
+              target="_blank"
+              rel="noopener noreferrer"
+              href={source.url}
+            >
+              <div className="resource-card-icon">
+                <img src={source.icon} alt={source.title} />
+              </div>
+              <div className="resource-card-content">
+                <div className="resource-card-title">{source.title}</div>
+                <div className="resource-card-description">{source.description}</div>
+              </div>
+            </a>
+          );
+        })}
       </div>
     </>
   );

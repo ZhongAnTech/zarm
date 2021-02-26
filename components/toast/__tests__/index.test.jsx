@@ -4,16 +4,12 @@ import Toast from '../index';
 
 describe('Toast', () => {
   it('renders correctly', () => {
-    const wrapper = mount(
-      <Toast visible>foo</Toast>,
-    );
+    const wrapper = mount(<Toast visible>foo</Toast>);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('visible change true', () => {
-    const wrapper = mount(
-      <Toast />,
-    );
+    const wrapper = mount(<Toast />);
     wrapper.setProps({ visible: true });
     expect(wrapper).toMatchSnapshot();
   });

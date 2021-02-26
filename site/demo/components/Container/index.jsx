@@ -15,9 +15,10 @@ const Container = (props) => {
   const { className, children } = props;
   const cls = classnames('app-container', className);
 
-  const currentLocale = locale === 'enUS'
-    ? require('zarm/config-provider/locale/en_US')
-    : require('zarm/config-provider/locale/zh_CN');
+  const currentLocale =
+    locale === 'enUS'
+      ? require('zarm/config-provider/locale/en_US')
+      : require('zarm/config-provider/locale/zh_CN');
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -35,23 +36,29 @@ const Container = (props) => {
         <nav>
           <Popper
             trigger="click"
-            content={(
+            content={
               <div className="setting-container">
                 <ul className="colors">
-                  {
-                    ['#00bc70', '#1890ff', '#f5222d', '#fa541b', '#13c2c2', '#2f54ec', '#712fd1'].map((color, index) => {
-                      return (
-                        <li
-                          key={+index}
-                          style={{ backgroundColor: color }}
-                          onClick={() => {
-                            setPrimaryColor(color);
-                            window.localStorage.primaryColor = color;
-                          }}
-                        />
-                      );
-                    })
-                  }
+                  {[
+                    '#00bc70',
+                    '#1890ff',
+                    '#f5222d',
+                    '#fa541b',
+                    '#13c2c2',
+                    '#2f54ec',
+                    '#712fd1',
+                  ].map((color, index) => {
+                    return (
+                      <li
+                        key={+index}
+                        style={{ backgroundColor: color }}
+                        onClick={() => {
+                          setPrimaryColor(color);
+                          window.localStorage.primaryColor = color;
+                        }}
+                      />
+                    );
+                  })}
                 </ul>
                 <div className="themes">
                   <Radio.Group
@@ -68,37 +75,33 @@ const Container = (props) => {
                   </Radio.Group>
                 </div>
               </div>
-            )}
+            }
           >
             <span className="setting" />
           </Popper>
-          {
-            window.frames.length === window.parent.frames.length && (
-              <>
-                <div className="lang">
-                  <Radio.Group
-                    compact
-                    type="button"
-                    value={locale}
-                    onChange={(value) => {
-                      setLocale(value);
-                      window.localStorage.locale = value;
-                    }}
-                  >
-                    <Radio value="zhCN">中文</Radio>
-                    <Radio value="enUS">EN</Radio>
-                  </Radio.Group>
-                </div>
-                <a className="github" href="https://github.com/ZhongAnTech/zarm">
-                  <Icons type="github" size="lg" />
-                </a>
-              </>
-            )
-          }
+          {window.frames.length === window.parent.frames.length && (
+            <>
+              <div className="lang">
+                <Radio.Group
+                  compact
+                  type="button"
+                  value={locale}
+                  onChange={(value) => {
+                    setLocale(value);
+                    window.localStorage.locale = value;
+                  }}
+                >
+                  <Radio value="zhCN">中文</Radio>
+                  <Radio value="enUS">EN</Radio>
+                </Radio.Group>
+              </div>
+              <a className="github" href="https://github.com/ZhongAnTech/zarm">
+                <Icons type="github" size="lg" />
+              </a>
+            </>
+          )}
         </nav>
-        <Context.Provider value={{ locale, primaryColor, theme }}>
-          {children}
-        </Context.Provider>
+        <Context.Provider value={{ locale, primaryColor, theme }}>{children}</Context.Provider>
       </div>
     </ConfigProvider>
   );

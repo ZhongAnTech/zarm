@@ -1,7 +1,7 @@
 # Toast 轻提示
 
-
 ## 基本用法
+
 ```jsx
 import { Toast, Cell, Button, Icon } from 'zarm';
 
@@ -32,8 +32,8 @@ const Demo = () => (
               stayTime: 5000,
               afterClose: () => {
                 console.log('Toast已关闭');
-              }
-            })
+              },
+            });
           }}
         >
           开启
@@ -55,8 +55,8 @@ const Demo = () => (
               mask: true,
               afterClose: () => {
                 console.log('Toast已关闭');
-              }
-            })
+              },
+            });
           }}
         >
           开启
@@ -74,10 +74,8 @@ const Demo = () => (
             Toast.show(
               <div className="box">
                 <Icon className="box-icon" type="right-round-fill" />
-                <div className="box-text">
-                  预约成功
-                </div>
-              </div>
+                <div className="box-text">预约成功</div>
+              </div>,
             );
           }}
         >
@@ -88,24 +86,22 @@ const Demo = () => (
       自定义内容
     </Cell>
   </>
-)
+);
 
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
-
 ## API
 
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| visible | boolean | false | 是否展示 |
-| content | ReactNode | - | 显示的内容 |
-| stayTime | number | 3000 | 自动关闭前停留的时间（单位：毫秒） |
-| mask | boolean | false | 是否展示遮罩层 |
-| onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
-| afterClose | () => void | - | Toast隐藏后的回调函数 |
-| mountContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定Toast挂载的HTML节点 |
+| 属性           | 类型                                 | 默认值        | 说明                               |
+| :------------- | :----------------------------------- | :------------ | :--------------------------------- |
+| visible        | boolean                              | false         | 是否展示                           |
+| content        | ReactNode                            | -             | 显示的内容                         |
+| stayTime       | number                               | 3000          | 自动关闭前停留的时间（单位：毫秒） |
+| mask           | boolean                              | false         | 是否展示遮罩层                     |
+| onMaskClick    | () => void                           | -             | 点击遮罩层时触发的回调函数         |
+| afterClose     | () => void                           | -             | Toast 隐藏后的回调函数             |
+| mountContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 Toast 挂载的 HTML 节点        |
 
 ## 静态方法
 
@@ -117,7 +113,7 @@ Toast.show({
   stayTime: 5000,
   afterClose: () => {
     console.log('Toast已关闭');
-  }
+  },
 });
 
 // 隐藏轻提示

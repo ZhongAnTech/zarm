@@ -1,30 +1,51 @@
 # Checkbox 复选框
 
-
-
 ## 基本用法
+
 ```jsx
 import { Cell, Checkbox } from 'zarm';
 
 ReactDOM.render(
   <>
-    <Cell><Checkbox>普通</Checkbox></Cell>
-    <Cell><Checkbox defaultChecked>默认选中</Checkbox></Cell>
-    <Cell><Checkbox disabled>禁用</Checkbox></Cell>
-    <Cell><Checkbox defaultChecked disabled>选中且禁用</Checkbox></Cell>
+    <Cell>
+      <Checkbox>普通</Checkbox>
+    </Cell>
+    <Cell>
+      <Checkbox defaultChecked>默认选中</Checkbox>
+    </Cell>
+    <Cell>
+      <Checkbox disabled>禁用</Checkbox>
+    </Cell>
+    <Cell>
+      <Checkbox defaultChecked disabled>
+        选中且禁用
+      </Checkbox>
+    </Cell>
     <Cell>
       <div className="agreement-box">
         <Checkbox id="agreement" />
-        <label htmlFor="agreement">阅读并同意<a href="/#" onClick={(e) => { e.preventDefault(); alert('agree it'); }}>《XXX条款》</a>中的相关规定</label>
+        <label htmlFor="agreement">
+          阅读并同意
+          <a
+            href="/#"
+            onClick={(e) => {
+              e.preventDefault();
+              alert('agree it');
+            }}
+          >
+            《XXX条款》
+          </a>
+          中的相关规定
+        </label>
       </div>
     </Cell>
-  </>
-, mountNode);
+  </>,
+  mountNode,
+);
 ```
 
-
-
 ## 受控使用
+
 ```jsx
 import { useState } from 'react';
 import { Cell, Checkbox, Modal } from 'zarm';
@@ -43,21 +64,22 @@ const Demo = () => {
       return;
     }
     setChecked(true);
-  }
+  };
 
   return (
     <Cell>
-      <Checkbox checked={checked} onChange={onChange}>取消勾选前确认</Checkbox>
+      <Checkbox checked={checked} onChange={onChange}>
+        取消勾选前确认
+      </Checkbox>
     </Cell>
   );
-}
+};
 
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
-
 ## 组合使用
+
 ```jsx
 import { useState } from 'react';
 import { Cell, Checkbox } from 'zarm';
@@ -66,8 +88,8 @@ const Demo = () => {
   const [value, setValue] = useState([]);
 
   const onCheckedAll = (e) => {
-    setValue(e.target.checked ? ['0', '1', '2'] : [])
-  }
+    setValue(e.target.checked ? ['0', '1', '2'] : []);
+  };
 
   return (
     <>
@@ -89,14 +111,13 @@ const Demo = () => {
       </Cell>
     </>
   );
-}
+};
 
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
-
 ## 按钮样式
+
 ```jsx
 import { useState } from 'react';
 import { Cell, Checkbox } from 'zarm';
@@ -114,7 +135,8 @@ const Demo = () => {
             onChange={(value) => {
               setValue(value);
               console.log(`checked to ${value}`);
-            }}>
+            }}
+          >
             <Checkbox value="0">选项一</Checkbox>
             <Checkbox value="1">选项二</Checkbox>
             <Checkbox value="2">选项三</Checkbox>
@@ -140,8 +162,12 @@ const Demo = () => {
         description={
           <Checkbox.Group type="button">
             <Checkbox value="0">选项一</Checkbox>
-            <Checkbox value="1" disabled>选项二</Checkbox>
-            <Checkbox value="2" disabled checked>选项三</Checkbox>
+            <Checkbox value="1" disabled>
+              选项二
+            </Checkbox>
+            <Checkbox value="2" disabled checked>
+              选项三
+            </Checkbox>
           </Checkbox.Group>
         }
       >
@@ -177,7 +203,9 @@ const Demo = () => {
           <Checkbox.Group ghost type="button" defaultValue={['2']}>
             <Checkbox value="0">选项一</Checkbox>
             <Checkbox value="1">选项二</Checkbox>
-            <Checkbox value="2" disabled>选项三</Checkbox>
+            <Checkbox value="2" disabled>
+              选项三
+            </Checkbox>
           </Checkbox.Group>
         }
       >
@@ -185,14 +213,13 @@ const Demo = () => {
       </Cell>
     </div>
   );
-}
+};
 
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
-
 ## 块级样式
+
 ```jsx
 import { Cell, Checkbox } from 'zarm';
 
@@ -203,13 +230,13 @@ ReactDOM.render(
       <Checkbox value="1">选项二</Checkbox>
       <Checkbox value="2">选项三</Checkbox>
     </Checkbox.Group>
-  </Cell>
-, mountNode);
+  </Cell>,
+  mountNode,
+);
 ```
 
-
-
 ## 列表样式
+
 ```jsx
 import { Checkbox } from 'zarm';
 
@@ -217,14 +244,16 @@ ReactDOM.render(
   <Checkbox.Group type="cell">
     <Checkbox value="0">选项一</Checkbox>
     <Checkbox value="1">选项二</Checkbox>
-    <Checkbox value="2" disabled>选项三（禁止选择）</Checkbox>
-  </Checkbox.Group>
-, mountNode);
+    <Checkbox value="2" disabled>
+      选项三（禁止选择）
+    </Checkbox>
+  </Checkbox.Group>,
+  mountNode,
+);
 ```
 
-
-
 ## 列表样式禁用状态
+
 ```jsx
 import { Checkbox } from 'zarm';
 
@@ -232,36 +261,39 @@ ReactDOM.render(
   <Checkbox.Group disabled type="cell">
     <Checkbox value="0">选项一</Checkbox>
     <Checkbox value="1">选项二</Checkbox>
-    <Checkbox value="2" checked>选项三</Checkbox>
-  </Checkbox.Group>
-, mountNode);
+    <Checkbox value="2" checked>
+      选项三
+    </Checkbox>
+  </Checkbox.Group>,
+  mountNode,
+);
 ```
-
-
 
 ## API
 
 ### Checkbox
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| type | string | - | 显示类型，可选值 `button`, `cell` |
-| disabled | boolean | false | 是否禁用 |
-| value | string &#124; number | - | 值 |
-| checked | boolean | - | 当前是否选中 |
-| defaultChecked | boolean | - | 初始是否选中 |
-| indeterminate | boolean | false | 当前是否为未全选状态 |
-| id | string | - | 方便外部带有for属性的label标签控制当前checkbox |
-| onChange | (event?: ChangeEvent<HTMLInputElement>) => void | - | 值变化时触发的回调函数 |
+
+| 属性           | 类型                                            | 默认值 | 说明                                                |
+| :------------- | :---------------------------------------------- | :----- | :-------------------------------------------------- |
+| type           | string                                          | -      | 显示类型，可选值 `button`, `cell`                   |
+| disabled       | boolean                                         | false  | 是否禁用                                            |
+| value          | string &#124; number                            | -      | 值                                                  |
+| checked        | boolean                                         | -      | 当前是否选中                                        |
+| defaultChecked | boolean                                         | -      | 初始是否选中                                        |
+| indeterminate  | boolean                                         | false  | 当前是否为未全选状态                                |
+| id             | string                                          | -      | 方便外部带有 for 属性的 label 标签控制当前 checkbox |
+| onChange       | (event?: ChangeEvent<HTMLInputElement>) => void | -      | 值变化时触发的回调函数                              |
 
 ### Checkbox.Group
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| type | string | - | 显示类型，可选值 `button`, `cell` |
-| value | number[] \| string[] | [] | 选中值 |
-| defaultValue | number[] \| string[] | [] | 初始选中值 |
-| disabled | boolean | false | 是否禁用 |
-| block | boolean | false | 子项是否为块级元素 |
-| onChange | (values?: number[] \| string[]) => void | - | 值变化时触发的回调函数 |
-| size | string | 'xs' | 按钮类型时的大小，可选值为 `lg`、`md`、`sm`、`xs` |
-| shape | string | 'radius' | 按钮类型时的形状，可选值 `rect`, `radius`, `round` | 
-| ghost | boolean | false | 按钮类型时，选中项样式是否为幽灵按钮 |
+
+| 属性         | 类型                                    | 默认值   | 说明                                               |
+| :----------- | :-------------------------------------- | :------- | :------------------------------------------------- |
+| type         | string                                  | -        | 显示类型，可选值 `button`, `cell`                  |
+| value        | number[] \| string[]                    | []       | 选中值                                             |
+| defaultValue | number[] \| string[]                    | []       | 初始选中值                                         |
+| disabled     | boolean                                 | false    | 是否禁用                                           |
+| block        | boolean                                 | false    | 子项是否为块级元素                                 |
+| onChange     | (values?: number[] \| string[]) => void | -        | 值变化时触发的回调函数                             |
+| size         | string                                  | 'xs'     | 按钮类型时的大小，可选值为 `lg`、`md`、`sm`、`xs`  |
+| shape        | string                                  | 'radius' | 按钮类型时的形状，可选值 `rect`, `radius`, `round` |
+| ghost        | boolean                                 | false    | 按钮类型时，选中项样式是否为幽灵按钮               |

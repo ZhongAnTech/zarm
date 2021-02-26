@@ -4,9 +4,19 @@ export default interface PropsType {
   visible: boolean;
   direction?: 'top' | 'right' | 'bottom' | 'left' | 'center';
   animationType?:
-    'fade' | 'door' | 'flip' | 'rotate' | 'zoom' |
-    'moveUp' | 'moveDown' | 'moveLeft' | 'moveRight' |
-    'slideUp' | 'slideDown' | 'slideLeft' | 'slideRight';
+    | 'fade'
+    | 'door'
+    | 'flip'
+    | 'rotate'
+    | 'zoom'
+    | 'moveUp'
+    | 'moveDown'
+    | 'moveLeft'
+    | 'moveRight'
+    | 'slideUp'
+    | 'slideDown'
+    | 'slideLeft'
+    | 'slideRight';
   animationDuration?: number;
   width?: string | number;
   mask?: boolean;

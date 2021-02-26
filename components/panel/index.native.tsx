@@ -19,18 +19,11 @@ export default class Panel extends PureComponent<PanelProps, {}> {
   render() {
     const { title, more, style, styles, children } = this.props;
 
-    const wrapperStyle = [
-      styles!.container,
-      style,
-    ] as ViewStyle;
+    const wrapperStyle = [styles!.container, style] as ViewStyle;
 
-    const headerStyle = [
-      styles!.panelHeader,
-    ] as ViewStyle;
+    const headerStyle = [styles!.panelHeader] as ViewStyle;
 
-    const bodyStyle = [
-      styles!.panelBody,
-    ] as ViewStyle;
+    const bodyStyle = [styles!.panelBody] as ViewStyle;
 
     return (
       <View style={wrapperStyle}>
@@ -46,9 +39,7 @@ export default class Panel extends PureComponent<PanelProps, {}> {
             textStyle={panelStyles.panelHeaderMoreText}
           />
         </View>
-        <View style={bodyStyle}>
-          {children}
-        </View>
+        <View style={bodyStyle}>{children}</View>
       </View>
     );
   }

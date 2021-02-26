@@ -34,7 +34,8 @@ export default {
   getMonthCount(date1, date2) {
     const tmp1 = this.parseDate(date1);
     const tmp2 = this.parseDate(date2);
-    const dur = (tmp2.getFullYear() - tmp1.getFullYear()) * 12 + (tmp2.getMonth() - tmp1.getMonth());
+    const dur =
+      (tmp2.getFullYear() - tmp1.getFullYear()) * 12 + (tmp2.getMonth() - tmp1.getMonth());
     return Math.abs(dur) + 1;
   },
   // 是否是今天(只判断年月日)

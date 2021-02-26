@@ -19,9 +19,7 @@ export default {
     fontSize: variables.panel_header_font_size,
     color: variables.color_text_caption,
   },
-  panelHeaderMore: {
-
-  },
+  panelHeaderMore: {},
   panelBody: {
     backgroundColor: '#ffffff',
     borderTopWidth: StyleSheet.hairlineWidth,

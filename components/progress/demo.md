@@ -1,8 +1,7 @@
 # Progress 进度条
 
-
-
 ## 基本用法
+
 ```jsx
 import { useState } from 'react';
 import { Progress, Cell, Select, Radio, Stepper } from 'zarm';
@@ -82,11 +81,7 @@ const Demo = () => {
       </Cell>
 
       <Cell title="线条形状">
-        <Radio.Group
-          compact
-          type="button"
-          value={strokeShape}
-          onChange={setStrokeShape}>
+        <Radio.Group compact type="button" value={strokeShape} onChange={setStrokeShape}>
           <Radio value="round">round</Radio>
           <Radio value="rect">rect</Radio>
         </Radio.Group>
@@ -105,21 +100,19 @@ const Demo = () => {
       </Cell>
     </>
   );
-}
+};
 
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
-
 ## API
 
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| theme | string | 'primary' | 主题，可选值 `primary`, `success`, `warning`, `danger` |
-| size | string | 'md' | 大小，可选值 `lg`, `md`, `sm`，number类型的值，或者任何合法的css宽度值 |
-| shape | string | 'line' | 形状，可选值 `line`, `circle`, `semi-circle` |
-| percent | number | 0 | 进度百分比（范围：0～100） |
-| text | (percent?: number) => ReactNode | (percent) => \`${percent}%\` | 进度文本显示 |
-| strokeShape | string | 'round' | 线条形状，可选值 `round`, `rect` |
-| strokeWidth | number | - | 线条粗细，单位: px，不设置则根据大小自动调整 |
+| 属性        | 类型                            | 默认值                       | 说明                                                                      |
+| :---------- | :------------------------------ | :--------------------------- | :------------------------------------------------------------------------ |
+| theme       | string                          | 'primary'                    | 主题，可选值 `primary`, `success`, `warning`, `danger`                    |
+| size        | string                          | 'md'                         | 大小，可选值 `lg`, `md`, `sm`，number 类型的值，或者任何合法的 css 宽度值 |
+| shape       | string                          | 'line'                       | 形状，可选值 `line`, `circle`, `semi-circle`                              |
+| percent     | number                          | 0                            | 进度百分比（范围：0 ～ 100）                                              |
+| text        | (percent?: number) => ReactNode | (percent) => \`${percent}%\` | 进度文本显示                                                              |
+| strokeShape | string                          | 'round'                      | 线条形状，可选值 `round`, `rect`                                          |
+| strokeWidth | number                          | -                            | 线条粗细，单位: px，不设置则根据大小自动调整                              |

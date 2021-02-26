@@ -21,7 +21,9 @@ export const getLeft = (ele: HTMLElement) => {
 };
 
 // 获取元素大小以及相对窗口的位置
-export const getBoundingClientRect = (ele: Element): Omit<DOMRectReadOnly, 'x' | 'y' | 'toJSON'> => {
+export const getBoundingClientRect = (
+  ele: Element,
+): Omit<DOMRectReadOnly, 'x' | 'y' | 'toJSON'> => {
   const rect = ele.getBoundingClientRect();
 
   // 解决ie下的兼容问题
@@ -45,7 +47,10 @@ export const isNumeric = (n: any): boolean => {
 export const setStyle = (ele: HTMLElement, styles: { [prop: string]: string | number }) => {
   Object.keys(styles).forEach((prop) => {
     let unit = '';
-    if (['width', 'height', 'top', 'right', 'bottom', 'left'].indexOf(prop) !== -1 && isNumeric(styles[prop])) {
+    if (
+      ['width', 'height', 'top', 'right', 'bottom', 'left'].indexOf(prop) !== -1 &&
+      isNumeric(styles[prop])
+    ) {
       unit = 'px';
     }
     ele.style[prop] = styles[prop] + unit;
@@ -99,7 +104,9 @@ export const getOuterSizes = (ele) => {
 // 获取元素的offsetParent
 export const getOffsetParent = (ele) => {
   const { offsetParent } = ele;
-  return offsetParent === window.document.body || !offsetParent ? window.document.documentElement : offsetParent;
+  return offsetParent === window.document.body || !offsetParent
+    ? window.document.documentElement
+    : offsetParent;
 };
 
 // 获取指定元素可滚动的父元素
@@ -131,7 +138,9 @@ export const getSupportedPropertyName = (property) => {
   const prefixes = ['', 'ms', 'webkit', 'moz', 'o'];
 
   for (let i = 0; i < prefixes.length; i++) {
-    const toCheck = prefixes[i] ? prefixes[i] + property.charAt(0).toUpperCase() + property.slice(1) : property;
+    const toCheck = prefixes[i]
+      ? prefixes[i] + property.charAt(0).toUpperCase() + property.slice(1)
+      : property;
     if (typeof window.document.body.style[toCheck] !== 'undefined') {
       return toCheck;
     }
@@ -145,7 +154,11 @@ export const getScrollTop = (ele: HTMLElement | Window): number => {
     return (document.scrollingElement || document.documentElement).scrollTop;
   }
   if (ele === window) {
-    return Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
+    return Math.max(
+      window.pageYOffset,
+      document.documentElement.scrollTop,
+      document.body.scrollTop,
+    );
   }
   return (ele as HTMLElement).scrollTop;
 };
@@ -155,7 +168,11 @@ export const getScrollLeft = (ele: HTMLElement | Window): number => {
     return (document.scrollingElement || document.documentElement).scrollLeft;
   }
   if (ele === window) {
-    return Math.max(window.pageYOffset, document.documentElement.scrollLeft, document.body.scrollLeft);
+    return Math.max(
+      window.pageYOffset,
+      document.documentElement.scrollLeft,
+      document.body.scrollLeft,
+    );
   }
   return (ele as HTMLElement).scrollLeft;
 };
@@ -190,7 +207,12 @@ export const getScrollContainer = (mountContainer?: ContainerType): HTMLElement 
 let scrollRafId: number;
 const scrollList: { [key: number]: HTMLElement | Window } = {};
 
-export function scrollTo(scrollContainer: HTMLElement | Window, top: number, left: number, duration: number) {
+export function scrollTo(
+  scrollContainer: HTMLElement | Window,
+  top: number,
+  left: number,
+  duration: number,
+) {
   if (scrollList?.[scrollRafId] === scrollContainer) {
     raf.cancel(scrollRafId);
   }
@@ -227,4 +249,8 @@ export function scrollTo(scrollContainer: HTMLElement | Window, top: number, lef
   animate();
 }
 
-export const canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+export const canUseDOM = !!(
+  typeof window !== 'undefined' &&
+  window.document &&
+  window.document.createElement
+);
