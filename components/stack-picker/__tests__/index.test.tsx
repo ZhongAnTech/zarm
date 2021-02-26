@@ -3,6 +3,8 @@ import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import StackPicker from '../index';
 
+jest.useFakeTimers();
+
 const District = [
   {
     value: '340000',
@@ -70,12 +72,15 @@ describe('StackPicker', () => {
     const onChange = jest.fn();
     const wrapper = mount(
       <StackPicker
+        defaultValue={[]}
+        value={[]}
+        cancelText="取消"
+        okText="确定"
         visible
         valueMember="value"
         itemRender={(data) => data.label}
         dataSource={District}
         onChange={onChange}
-        displayRender={(data) => data.label && data.label.join(' > ')}
       />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -87,6 +92,9 @@ describe('StackPicker', () => {
 
     const wrapper = mount(
       <StackPicker
+        defaultValue={[]}
+        cancelText="取消"
+        okText="确定"
         maskClosable
         value={['340000', '340800', '340803']}
         dataSource={District}
@@ -97,7 +105,6 @@ describe('StackPicker', () => {
 
     wrapper.setProps({ visible: true });
     wrapper.update();
-    jest.useFakeTimers(50000);
 
     wrapper.find('.za-stack-picker__submit').simulate('click');
     expect(onOk).toHaveBeenCalledWith(['340000', '340800', '340803']);
@@ -112,7 +119,17 @@ describe('StackPicker', () => {
   it('handle onChange', () => {
     const onChange = jest.fn();
 
-    const wrapper = mount(<StackPicker visible dataSource={District} onChange={onChange} />);
+    const wrapper = mount(
+      <StackPicker
+        defaultValue={[]}
+        value={[]}
+        cancelText="取消"
+        okText="确定"
+        visible
+        dataSource={District}
+        onChange={onChange}
+      />,
+    );
 
     // popupWrapper = mount(wrapper.instance().getComponent());
 
@@ -148,6 +165,10 @@ describe('StackPicker', () => {
 
     const wrapper = mount(
       <StackPicker
+        defaultValue={[]}
+        value={[]}
+        cancelText="取消"
+        okText="确定"
         visible
         dataSource={District}
         onChange={onChange}
@@ -207,14 +228,18 @@ describe('StackPicker error type', () => {
   });
 
   it('handle props error type', () => {
-    const onCancel = 1;
-    const onOk = 1;
-    const displayRender = 1;
-    const onChangeValidate = 1;
-    const onChange = 1;
+    const onCancel = 1 as any;
+    const onOk = 1 as any;
+    const displayRender = 1 as any;
+    const onChangeValidate = 1 as any;
+    const onChange = 1 as any;
 
     const wrapper = mount(
       <StackPicker
+        defaultValue={[]}
+        value={[]}
+        cancelText="取消"
+        okText="确定"
         dataSource={District}
         onCancel={onCancel}
         onOk={onOk}
@@ -226,7 +251,6 @@ describe('StackPicker error type', () => {
 
     wrapper.setProps({ visible: true });
     wrapper.update();
-    jest.useFakeTimers(50000);
 
     expect(consoleSpy).toHaveBeenCalledWith('displayRender need a function');
 
