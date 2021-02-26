@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { Locale } from '../config-provider/PropsType';
 
 export interface IDataSource {
   [key: string]: any;
@@ -14,7 +15,6 @@ type TItemRender = (data: TDataSource) => string;
 type TDisplayRender = (data: TDataSource[]) => string;
 
 export default interface PropsType {
-  prefixCls: string;
   defaultValue: ReactNode[];
   value: ReactNode[];
   displayMember: string;
@@ -34,4 +34,5 @@ export default interface PropsType {
   onChange?: (selected: string[]) => void;
   onOk?: (value: string[]) => void;
   onCancel?: () => void;
+  locale?: Locale['StackPicker'];
 }

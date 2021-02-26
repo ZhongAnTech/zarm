@@ -167,7 +167,7 @@
   --calendar-day-today-color: var(--theme-primary); // 日期今天选中颜色
   --calendar-day-selected-background: var(--theme-primary); // 日期文字选中背景颜色
   --calendar-day-selected-color: #fff; // 日期文字选中颜色
-  --calendar-day-selected-shadow: rgba(0, 188, 112, 0.3);
+  --calendar-day-selected-shadow: var(--theme-primary-lighter);
   --calendar-day-range-background: var(--theme-primary-lighter); // 日期文字范围内背景颜色
   --calendar-day-range-color: var(--theme-primary); // 日期文字范围内颜色
   --calendar-day-height: 40px; // 日期高度

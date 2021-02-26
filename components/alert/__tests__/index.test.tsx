@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import Modal from '../modal';
-import Alert from './Alert';
+import Modal from '../../modal';
+import Alert from '../Alert';
 
 describe('Alert', () => {
   it('should render correctly', () => {
