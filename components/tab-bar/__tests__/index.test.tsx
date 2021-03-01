@@ -76,36 +76,38 @@ describe('TabBarItem', () => {
   });
 });
 
-describe('ActivityIndicator', () => {
-  const onChange = jest.fn();
-  it('renders correctly', () => {
-    const wrapper = render(
-      <TabBar onChange={onChange}>
-        <TabBar.Item itemKey="home" title="主页" icon={icon} activeIcon={activeIcon} />
-      </TabBar>,
-    );
-    expect(toJson(wrapper)).toMatchSnapshot();
+describe('TabBar', () => {
+  describe('snapshot', () => {
+    it('should render correctly', () => {
+      const wrapper = render(
+        <TabBar>
+          <TabBar.Item itemKey="home" title="主页" icon={icon} activeIcon={activeIcon} />
+        </TabBar>,
+      );
+      expect(toJson(wrapper)).toMatchSnapshot();
+    });
+
+    it('with defaultActiveKey', () => {
+      const wrapper = render(
+        <TabBar defaultActiveKey="home">
+          <TabBar.Item itemKey="home" title="主页" icon={icon} activeIcon={activeIcon} />
+        </TabBar>,
+      );
+      expect(toJson(wrapper)).toMatchSnapshot();
+    });
+
+    it('with activeKey', () => {
+      const wrapper = render(
+        <TabBar activeKey="home">
+          <TabBar.Item itemKey="home" title="主页" icon={icon} activeIcon={activeIcon} />
+        </TabBar>,
+      );
+      expect(toJson(wrapper)).toMatchSnapshot();
+    });
   });
 
-  it('with defaultActiveKey', () => {
-    const wrapper = render(
-      <TabBar defaultActiveKey="home">
-        <TabBar.Item itemKey="home" title="主页" icon={icon} activeIcon={activeIcon} />
-      </TabBar>,
-    );
-    expect(toJson(wrapper)).toMatchSnapshot();
-  });
-
-  it('with activeKey', () => {
-    const wrapper = render(
-      <TabBar activeKey="home">
-        <TabBar.Item itemKey="home" title="主页" icon={icon} activeIcon={activeIcon} />
-      </TabBar>,
-    );
-    expect(toJson(wrapper)).toMatchSnapshot();
-  });
-
-  it('onChange', () => {
+  it('should handle change event', () => {
+    const onChange = jest.fn();
     const wrapper = mount(
       <TabBar defaultActiveKey="home" onChange={onChange}>
         <TabBar.Item itemKey="home" title="主页" icon={icon} activeIcon={activeIcon} />
@@ -116,7 +118,19 @@ describe('ActivityIndicator', () => {
     expect(onChange).toBeCalledWith('home');
   });
 
-  it('with badge onChange', () => {
+  it('should select first tab bar item if activeKey and defaultActivceKey are not existed', () => {
+    const wrapper = shallow(
+      <TabBar visible={false} className="test">
+        <TabBar.Item itemKey="home" title="主页" />
+        <TabBar.Item itemKey="about us" title="关于我们" />
+      </TabBar>,
+    );
+    expect(wrapper.childAt(0).prop('selected')).toBeTruthy();
+    expect(wrapper.childAt(1).prop('selected')).toBeFalsy();
+  });
+
+  it('should render icon if selected is false(defaultActivceKey is not equal with itemKey)', () => {
+    const onChange = jest.fn();
     const wrapper = mount(
       <TabBar defaultActiveKey="home" onChange={onChange}>
         <TabBar.Item
@@ -128,8 +142,55 @@ describe('ActivityIndicator', () => {
         />
       </TabBar>,
     );
-
-    wrapper.find('.za-tab-bar__item').first().simulate('click');
+    wrapper.find(TabBar.Item).first().simulate('click');
     expect(onChange).toBeCalledWith('badge');
+    expect(wrapper.find('.za-tab-bar__icon').contains(icon)).toBeTruthy();
+  });
+
+  it('should selected tab bar item if activeKey is equal with itemKey', () => {
+    const wrapper = shallow(
+      <TabBar defaultActiveKey="home">
+        <TabBar.Item itemKey="home" title="主页" />
+      </TabBar>,
+    );
+    expect(wrapper.find(TabBar.Item).prop('selected')).toBeTruthy();
+  });
+
+  it.todo('should use element index as the fallback itemKey');
+
+  it('should have hidden class name if visible prop is false', () => {
+    const wrapper = shallow(
+      <TabBar visible={false} className="test">
+        <TabBar.Item itemKey="home" title="主页" />
+      </TabBar>,
+    );
+    expect(wrapper.hasClass('test')).toBeTruthy();
+    expect(wrapper.hasClass('za-tab-bar')).toBeTruthy();
+    expect(wrapper.hasClass('za-tab-bar--hidden')).toBeTruthy();
+  });
+
+  it('should render children with extra props', () => {
+    const wrapper = shallow(
+      <TabBar visible={false} className="test">
+        <TabBar.Item itemKey="home" title="主页" />
+        <TabBar.Item itemKey="about us" title="关于我们" />
+      </TabBar>,
+    );
+    expect(wrapper.childAt(0).props()).toEqual(
+      expect.objectContaining({
+        title: '主页',
+        itemKey: 'home',
+        onChange: expect.any(Function),
+        selected: true,
+      }),
+    );
+    expect(wrapper.childAt(1).props()).toEqual(
+      expect.objectContaining({
+        title: '关于我们',
+        itemKey: 'about us',
+        onChange: expect.any(Function),
+        selected: false,
+      }),
+    );
   });
 });
