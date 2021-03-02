@@ -2380,7 +2380,7 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
-"@zarm-design/cli@^0.0.34":
+"@zarm-design/cli@0.0.34":
   version "0.0.34"
   resolved "https://registry.yarnpkg.com/@zarm-design/cli/-/cli-0.0.34.tgz#dabc997cb5bf9550f17e369caf9cb6e957f2ef38"
   integrity sha512-d1eH/m820EC5xl9SyipuhlsaRCGhhOJafSS/ldNHvEPautf2Twzse/arTYSY2bU+XTzwnVk02Q/CBZG7xnjTNg==
@@ -5463,6 +5463,13 @@ define-property@^2.0.2:
   dependencies:
     is-descriptor "^1.0.2"
     isobject "^3.0.1"
+
+dekko@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/dekko/-/dekko-0.2.1.tgz#ba622f66f6b42ab0cab5c6788aebbda26bdf1252"
+  integrity sha1-umIvZva0KrDKtcZ4iuu9omvfElI=
+  dependencies:
+    glob "^7.1.1"
 
 del@^4.1.1:
   version "4.1.1"

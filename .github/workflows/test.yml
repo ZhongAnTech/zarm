@@ -32,6 +32,40 @@ jobs:
         if: steps.node_modules_cache_id.outputs.cache-hit != 'true'
         run: yarn
 
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: restore cache from yarn.json
+        uses: actions/cache@v2
+        with:
+          path: package-temp-dir
+          key: lock-${{ github.sha }}
+
+      - name: restore cache from node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.json') }}
+
+      - name: cache lib
+        uses: actions/cache@v2
+        with:
+          path: lib
+          key: lib-${{ github.sha }}
+
+      - name: cache es
+        uses: actions/cache@v2
+        with:
+          path: es
+          key: es-${{ github.sha }}
+
+      - name: build
+        run: npm run build
+    needs: setup
+
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -73,7 +107,10 @@ jobs:
           key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
 
       - name: test
-        run: npm run test:h5
+        run: npm run test:h5 -- -c
+      
+      - name: coverage
+        run: npm run coverage
     needs: setup
 
   test-rn:
@@ -96,4 +133,37 @@ jobs:
 
       - name: test
         run: npm run test:rn
+    needs: setup
+
+  dist:
+    name: react@16.x / dist
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: restore cache from package-lock.json
+        uses: actions/cache@v2
+        with:
+          path: package-temp-dir
+          key: lock-${{ github.sha }}
+
+      - name: restore cache from node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/package-temp-dir/package-lock.json') }}
+
+      - name: dist
+        run: npm run build:umd
+        env:
+          NODE_OPTIONS: --max_old_space_size=4096
+
+      - name: check
+        run: node ./tests/dekko/dist.test.js
+
+      - name: bundlesize
+        run: npm run bundlesize
+        env:
+          BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}
     needs: setup

@@ -2,13 +2,6 @@
   "name": "zarm",
   "version": "2.7.3",
   "description": "基于 React 的移动端UI库",
-  "tags": [
-    "zarm",
-    "zarm-ui",
-    "react",
-    "react-zarm",
-    "zhongan"
-  ],
   "keywords": [
     "react",
     "react-ui",
@@ -23,13 +16,21 @@
     "frontend",
     "mobile"
   ],
-  "license": "MIT",
-  "repository": "git://github.com/ZhongAnTech/zarm",
   "bugs": {
     "url": "https://github.com/ZhongAnTech/zarm/issues"
   },
-  "module": "es/index.js",
+  "repository": "git://github.com/ZhongAnTech/zarm",
+  "license": "MIT",
+  "sideEffects": [
+    "dist/*",
+    "components/style/*",
+    "components/**/style/*",
+    "es/**/style/*",
+    "lib/**/style/*",
+    "site/**/**.scss"
+  ],
   "main": "lib/index.js",
+  "module": "es/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
     "clean": "rimraf types lib es dist native assets coverage rnkit/zarm rnkit/ios/build rnkit/bundle",
@@ -46,10 +47,11 @@
     "bundle": "rimraf rnkit/zarm && zarm build --mode native --path components --out-dir rnkit/zarm && npm run bundle:ios && npm run bundle:android",
     "deploy:build": "rimraf assets && mkdir assets && touch assets/CNAME && echo 'zarm.design' > assets/CNAME && zarm deploy",
     "deploy": "npm run deploy:build -- -p && gh-pages -d assets",
+    "lint:tsc": "tsc --noEmit",
     "lint:ts": "eslint --ext .ts,.tsx components",
     "lint:js": "eslint --ext .js,.jsx components site rnkit/pages",
     "lint:style": "stylelint \"components/**/*.scss\" \"site/**/*.scss\" --syntax scss",
-    "lint": "npm run lint:ts && npm run lint:js && npm run lint:style",
+    "lint": "npm run lint:tsc && npm run lint:ts && npm run lint:js && npm run lint:style",
     "test:h5": "zarm test -s scripts/jest/setup.js",
     "test:rn": "zarm test -m native -s scripts/jest/setup.js",
     "test": "rimraf coverage && npm run test:h5 -- -c && cp ./coverage/coverage-final.json ./coverage/coverage-h5-final.json && npm run test:rn -- -c && cp ./coverage/coverage-final.json ./coverage/coverage-rn-final.json && node ./scripts/jest/mapCoverage.js",
@@ -59,12 +61,23 @@
     "release": "bash scripts/release.sh",
     "prettier": "prettier -c --write '**/*'",
     "pretty-quick": "pretty-quick",
-    "bundlesize": "bundlesize"
+    "bundlesize": "bundlesize",
+    "sort": "npx sort-package-json"
   },
-  "peerDependencies": {
-    "react": ">=16.3.1",
-    "react-dom": ">=16.3.1"
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged",
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
+    }
   },
+  "browserslist": [
+    "last 2 versions",
+    "Firefox ESR",
+    "> 1%",
+    "ie >= 9",
+    "iOS >= 7",
+    "Android >= 4"
+  ],
   "dependencies": {
     "better-scroll": "2.0.7",
     "classnames": "2.2.6",
@@ -92,19 +105,21 @@
     "@types/react-native": "^0.60.7",
     "@typescript-eslint/eslint-plugin": "3.10.1",
     "@typescript-eslint/parser": "3.10.1",
-    "@zarm-design/cli": "^0.0.34",
+    "@zarm-design/cli": "0.0.34",
     "babel-eslint": "10.1.0",
     "babel-plugin-import": "^1.13.0",
     "babel-plugin-prismjs": "^2.0.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.5",
     "browserslist": "^4.6.6",
     "bundlesize": "^0.18.1",
+    "chalk": "^4.1.0",
     "change-case": "^4.1.1",
     "concurrently": "^5.2.0",
     "conventional-changelog-cli": "^2.0.34",
     "core-js": "^3.0.1",
     "coveralls": "^3.1.0",
     "cross-env": "^7.0.2",
+    "dekko": "^0.2.1",
     "dl-react-native-mock-render": "^0.1.10",
     "docsearch.js": "^2.6.1",
     "enzyme": "^3.11.0",
@@ -148,27 +163,9 @@
     "typescript": "4.0.2",
     "zarm-web": "0.0.1-alpha.10"
   },
-  "browserslist": [
-    "last 2 versions",
-    "Firefox ESR",
-    "> 1%",
-    "ie >= 9",
-    "iOS >= 7",
-    "Android >= 4"
-  ],
-  "sideEffects": [
-    "dist/*",
-    "components/style/*",
-    "components/**/style/*",
-    "es/**/style/*",
-    "lib/**/style/*",
-    "site/**/**.scss"
-  ],
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
-      "pre-commit": "pretty-quick --staged"
-    }
+  "peerDependencies": {
+    "react": ">=16.3.1",
+    "react-dom": ">=16.3.1"
   },
   "bundlesize": [
     {
@@ -179,5 +176,12 @@
       "path": "./dist/zarm.min.css",
       "maxSize": "30 kB"
     }
+  ],
+  "tags": [
+    "zarm",
+    "zarm-ui",
+    "react",
+    "react-zarm",
+    "zhongan"
   ]
 }
