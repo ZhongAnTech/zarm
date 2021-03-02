@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "zarm": ["components/index.tsx"],
+      "zarm/es/*": ["components/*"]
+    },
     "experimentalDecorators": true,
     "strictNullChecks": true,
     "moduleResolution": "node",
@@ -12,7 +17,7 @@
     "esModuleInterop": true,
     "types": ["classnames", "react", "react-dom", "react-native", "node", "jest"]
   },
-  "include": ["components/**/*"],
-  "exclude": ["node_modules", "lib", "es"],
+  "include": ["components"],
+  "exclude": ["node_modules", "lib", "es", "**/__tests__/**", "tests"],
   "compileOnSave": false
 }
