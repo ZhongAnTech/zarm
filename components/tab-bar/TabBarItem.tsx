@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import Badge from '../badge';
-import { BaseTabBarItemProps } from './PropsType';
+import type { BaseTabBarItemProps } from './PropsType';
 
 export interface TabBarItemProps extends BaseTabBarItemProps {
   prefixCls?: string;
@@ -12,7 +12,7 @@ class TabBarItem extends PureComponent<TabBarItemProps, {}> {
     prefixCls: 'za-tab-bar',
   };
 
-  change = (value: string | number) => {
+  change = (value?: string | number) => {
     const { onChange } = this.props;
     if (typeof onChange === 'function') {
       onChange(value);

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ActivityIndicator renders correctly 1`] = `
+exports[`TabBar snapshot should render correctly 1`] = `
 <div
   class="za-tab-bar"
 >
@@ -23,7 +23,7 @@ exports[`ActivityIndicator renders correctly 1`] = `
 </div>
 `;
 
-exports[`ActivityIndicator with activeKey 1`] = `
+exports[`TabBar snapshot with activeKey 1`] = `
 <div
   class="za-tab-bar"
 >
@@ -46,7 +46,7 @@ exports[`ActivityIndicator with activeKey 1`] = `
 </div>
 `;
 
-exports[`ActivityIndicator with defaultActiveKey 1`] = `
+exports[`TabBar snapshot with defaultActiveKey 1`] = `
 <div
   class="za-tab-bar"
 >
