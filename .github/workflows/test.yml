@@ -85,7 +85,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
 
-      - name: restore cache from yarn.json
+      - name: restore cache from yarn.lock
         uses: actions/cache@v2
         with:
           path: package-temp-dir
@@ -95,7 +95,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.json') }}
+          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
 
       - name: cache lib
         uses: actions/cache@v2
@@ -119,7 +119,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
 
-      - name: restore cache from yarn.json
+      - name: restore cache from yarn.lock
         uses: actions/cache@v2
         with:
           path: package-temp-dir
@@ -129,7 +129,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.json') }}
+          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
 
       - name: dist
         run: npm run build:umd
@@ -139,8 +139,8 @@ jobs:
       - name: check
         run: node ./tests/dekko/dist.test.js
 
-      - name: bundlesize
-        run: npm run bundlesize
-        env:
-          BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}
+      # - name: bundlesize
+      #   run: npm run bundlesize
+      #   env:
+      #     BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}
     needs: setup
