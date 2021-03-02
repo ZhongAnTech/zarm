@@ -1,6 +1,7 @@
-import React, { PureComponent, HTMLAttributes } from 'react';
+import React, { PureComponent } from 'react';
+import type { HTMLAttributes } from 'react';
 import classnames from 'classnames';
-import PropsType from './PropsType';
+import type PropsType from './PropsType';
 
 const getChecked = (props: SwitchProps, defaultChecked: boolean) => {
   if (typeof props.checked !== 'undefined') {

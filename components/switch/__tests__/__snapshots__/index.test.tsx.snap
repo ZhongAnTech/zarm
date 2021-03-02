@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Switch defaultChecked 1`] = `
+exports[`Switch snapshot defaultChecked 1`] = `
 <span
   class="za-switch"
 >
@@ -13,7 +13,7 @@ exports[`Switch defaultChecked 1`] = `
 </span>
 `;
 
-exports[`Switch renders correctly 1`] = `
+exports[`Switch snapshot renders correctly 1`] = `
 <span
   class="za-switch"
 >
