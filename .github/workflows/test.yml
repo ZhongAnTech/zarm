@@ -32,6 +32,53 @@ jobs:
         if: steps.node_modules_cache_id.outputs.cache-hit != 'true'
         run: yarn
 
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: restore cache from yarn.lock
+        uses: actions/cache@v2
+        with:
+          path: package-temp-dir
+          key: lock-${{ github.sha }}
+
+      - name: restore cache from node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
+
+      - name: lint
+        run: npm run lint
+    needs: setup
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: restore cache from yarn.lock
+        uses: actions/cache@v2
+        with:
+          path: package-temp-dir
+          key: lock-${{ github.sha }}
+
+      - name: restore cache from node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
+
+      - name: test
+        run: npm run test
+      
+      - name: coverage
+        run: bash <(curl -s https://codecov.io/bash)
+    needs: setup
+
   build:
     runs-on: ubuntu-latest
     steps:
@@ -66,83 +113,13 @@ jobs:
         run: npm run build
     needs: setup
 
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@master
-
-      - name: restore cache from yarn.lock
-        uses: actions/cache@v2
-        with:
-          path: package-temp-dir
-          key: lock-${{ github.sha }}
-
-      - name: restore cache from node_modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
-
-      - name: lint
-        run: npm run lint
-    needs: setup
-
-  test-h5:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@master
-
-      - name: restore cache from yarn.lock
-        uses: actions/cache@v2
-        with:
-          path: package-temp-dir
-          key: lock-${{ github.sha }}
-
-      - name: restore cache from node_modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
-
-      - name: test
-        run: npm run test:h5 -- -c
-      
-      - name: coverage
-        run: bash <(curl -s https://codecov.io/bash)
-    needs: setup
-
-  test-rn:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@master
-
-      - name: restore cache from yarn.lock
-        uses: actions/cache@v2
-        with:
-          path: package-temp-dir
-          key: lock-${{ github.sha }}
-
-      - name: restore cache from node_modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
-
-      - name: test
-        run: npm run test:rn
-    needs: setup
-
   dist:
-    name: react@16.x / dist
     runs-on: ubuntu-latest
     steps:
       - name: checkout
         uses: actions/checkout@master
 
-      - name: restore cache from package-lock.json
+      - name: restore cache from yarn.json
         uses: actions/cache@v2
         with:
           path: package-temp-dir
@@ -152,7 +129,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: node_modules-${{ hashFiles('**/package-temp-dir/package-lock.json') }}
+          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.json') }}
 
       - name: dist
         run: npm run build:umd

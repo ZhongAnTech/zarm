@@ -9,7 +9,7 @@
 <div align="center">
 
 [![Build Status](https://www.travis-ci.org/ZhongAnTech/zarm.svg?branch=master)](https://www.travis-ci.org/ZhongAnTech/zarm)
-[![Coverage Status](https://img.shields.io/coveralls/ZhongAnTech/zarm/master.svg)](https://coveralls.io/github/ZhongAnTech/zarm?branch=master)
+[![codecov](https://codecov.io/gh/ZhongAnTech/zarm/branch/master/graph/badge.svg?token=Qqne6VfWnk)](https://codecov.io/gh/ZhongAnTech/zarm)
 ![JS gzip size](https://img.badgesize.io/https://unpkg.com/zarm@latest/dist/zarm.min.js?compression=gzip&label=gzip%20size:%20JS)
 ![CSS gzip size](https://img.badgesize.io/https://unpkg.com/zarm@latest/dist/zarm.min.css?compression=gzip&label=gzip%20size:%20CSS)
 [![NPM downloads](https://img.shields.io/npm/dm/zarm.svg)](https://npmjs.org/package/zarm)

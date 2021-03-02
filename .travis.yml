@@ -4,13 +4,12 @@ node_js:
   - 10
   - 11
   - 12
-before_install:
-  - export TZ=America/New_York
 cache: yarn
 install:
   - yarn --ignore-engines
 script:
   - npm run lint
   - npm run test
+  - npm run build
 after_script:
-  - npm run coverage
+  - npm run bundlesize
