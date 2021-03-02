@@ -10,8 +10,8 @@
 
 [![test](https://github.com/ZhongAnTech/zarm/actions/workflows/test.yml/badge.svg)](https://github.com/ZhongAnTech/zarm/actions/workflows/test.yml)
 [![codecov](https://codecov.io/gh/ZhongAnTech/zarm/branch/master/graph/badge.svg?token=Qqne6VfWnk)](https://codecov.io/gh/ZhongAnTech/zarm)
-![JS gzip size](https://img.badgesize.io/https://unpkg.com/zarm@latest/dist/zarm.min.js?compression=gzip&label=gzip%20size:%20JS)
-![CSS gzip size](https://img.badgesize.io/https://unpkg.com/zarm@latest/dist/zarm.min.css?compression=gzip&label=gzip%20size:%20CSS)
+![JS gzip size](https://img.badgesize.io/https://unpkg.com/zarm@latest/dist/zarm.min.js?compression=gzip&label=zarm.min.js)
+![CSS gzip size](https://img.badgesize.io/https://unpkg.com/zarm@latest/dist/zarm.min.css?compression=gzip&label=zarm.min.css)
 [![NPM downloads](https://img.shields.io/npm/dm/zarm.svg)](https://npmjs.org/package/zarm)
 [![dependencies Status](https://david-dm.org/ZhongAnTech/zarm/status.svg)](https://david-dm.org/ZhongAnTech/zarm)
 [![peerDependencies Status](https://david-dm.org/ZhongAnTech/zarm/peer-status.svg)](https://david-dm.org/ZhongAnTech/zarm?type=peer)
