@@ -164,7 +164,17 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   };
 
   render() {
-    const { prefixCls, className, type, clearable, disabled, readOnly, placeholder } = this.props;
+    const {
+      prefixCls,
+      className,
+      type,
+      clearable,
+      disabled,
+      readOnly,
+      placeholder,
+      inputRef,
+      name,
+    } = this.props;
     const { visible, value } = this.state;
     const showClearIcon =
       clearable && 'value' in this.props && value.length > 0 && 'onChange' in this.props;
@@ -189,7 +199,13 @@ export default class InputNumber extends Component<InputNumberProps, any> {
         >
           {value}
         </div>
-        <input type="hidden" value={value} disabled={disabled} />
+        <input
+          type="hidden"
+          value={value}
+          disabled={disabled}
+          ref={(ele) => inputRef && inputRef(ele)}
+          name={name}
+        />
         <KeyboardPicker
           ref={(ele) => {
             this.picker = ele;

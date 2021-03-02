@@ -161,6 +161,8 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
       readOnly,
       type,
       onClear,
+      inputRef,
+      name,
       ...rest
     } = this.props;
 
@@ -178,9 +180,11 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
       <input
         {...rest}
         value={'value' in this.props ? value : undefined}
+        name={name}
         autoComplete="off"
         ref={(ele) => {
           this.input = ele;
+          inputRef && inputRef(ele);
         }}
         type={type}
         disabled={disabled}

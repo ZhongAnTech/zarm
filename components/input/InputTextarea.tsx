@@ -152,6 +152,8 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
       autoHeight,
       showLength,
       focused,
+      inputRef,
+      name,
       ...rest
     } = this.props;
 
@@ -171,8 +173,10 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
       <textarea
         {...rest}
         value={'value' in this.props ? value : undefined}
+        name={name}
         ref={(ele) => {
           this.input = ele;
+          inputRef && inputRef(ele);
         }}
         maxLength={maxLength}
         disabled={disabled}
