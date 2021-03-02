@@ -1,4 +1,4 @@
-import localeCN from './locale/zh_CN';
+import type localeCN from './locale/zh_CN';
 
 export type Locale = typeof localeCN;
 export type Theme = 'dark' | 'light';
