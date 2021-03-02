@@ -156,7 +156,16 @@ describe('TabBar', () => {
     expect(wrapper.find(TabBar.Item).prop('selected')).toBeTruthy();
   });
 
-  it.todo('should use element index as the fallback itemKey');
+  it('should use element index as the fallback itemKey', () => {
+    const wrapper = shallow(
+      <TabBar>
+        <TabBar.Item itemKey="" />
+        <TabBar.Item itemKey="" />
+      </TabBar>,
+    );
+    expect(wrapper.childAt(0).prop('itemKey')).toBe(0);
+    expect(wrapper.childAt(1).prop('itemKey')).toBe(1);
+  });
 
   it('should have hidden class name if visible prop is false', () => {
     const wrapper = shallow(
