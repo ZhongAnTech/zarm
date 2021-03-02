@@ -110,7 +110,7 @@ jobs:
         run: npm run test:h5 -- -c
       
       - name: coverage
-        run: npm run coverage
+        run: bash <(curl -s https://codecov.io/bash)
     needs: setup
 
   test-rn:
