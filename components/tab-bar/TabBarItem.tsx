@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import Badge from '../badge';
-import { BaseTabBarItemProps } from './PropsType';
+import type { BaseTabBarItemProps } from './PropsType';
 
 export interface TabBarItemProps extends BaseTabBarItemProps {
   prefixCls?: string;

@@ -1,7 +1,7 @@
 import React, { PureComponent, cloneElement } from 'react';
 import classnames from 'classnames';
-import { BaseTabBarProps } from './PropsType';
-import TabBarItem from './TabBarItem';
+import type { BaseTabBarProps } from './PropsType';
+import type TabBarItem from './TabBarItem';
 
 export interface TabBarProps extends BaseTabBarProps {
   prefixCls?: string;
