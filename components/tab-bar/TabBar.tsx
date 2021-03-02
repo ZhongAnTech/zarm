@@ -41,16 +41,17 @@ class TabBar extends PureComponent<TabBarProps, any> {
     });
     const items = React.Children.map(children, (element, index) => {
       if (!React.isValidElement(element)) return null;
+      const itemKey = element.props.itemKey || index;
       return cloneElement(element, {
         key: index,
         disabled: element.props.disabled,
-        onChange: () => this.onChildChange(element.props.itemKey),
+        onChange: () => this.onChildChange(itemKey),
         badge: element.props.badge,
         title: element.props.title,
         icon: element.props.icon,
-        itemKey: element.props.itemKey || index,
+        itemKey,
         style: element.props.style,
-        selected: this.getSelected(index, element.props.itemKey),
+        selected: this.getSelected(index, itemKey),
       });
     });
     return (

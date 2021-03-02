@@ -64,10 +64,10 @@ ReactDOM.render(<Demo />, mountNode);
 
 ### TabBar.Item
 
-| 属性       | 类型             | 默认值 | 说明                                 |
-| :--------- | :--------------- | :----- | :----------------------------------- |
-| itemKey    | number \| string | -      | 唯一标识，对应`activeKey`            |
-| title      | ReactNode        | -      | 标题文字                             |
-| icon       | ReactNode        | -      | 图标                                 |
-| activeIcon | ReactNode        | -      | 选中时图标，不设置等同 icon 属性的值 |
-| badge      | Object           | -      | 参考`Badge`组件                      |
+| 属性       | 类型             | 默认值 | 说明                                                 |
+| :--------- | :--------------- | :----- | :--------------------------------------------------- |
+| itemKey    | number \| string | -      | 唯一标识，对应`activeKey`，不设置则默认取 index 索引 |
+| title      | ReactNode        | -      | 标题文字                                             |
+| icon       | ReactNode        | -      | 图标                                                 |
+| activeIcon | ReactNode        | -      | 选中时图标，不设置等同 icon 属性的值                 |
+| badge      | Object           | -      | 参考`Badge`组件                                      |

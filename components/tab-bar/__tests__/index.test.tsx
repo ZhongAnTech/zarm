@@ -159,8 +159,8 @@ describe('TabBar', () => {
   it('should use element index as the fallback itemKey', () => {
     const wrapper = shallow(
       <TabBar>
-        <TabBar.Item itemKey="" />
-        <TabBar.Item itemKey="" />
+        <TabBar.Item />
+        <TabBar.Item />
       </TabBar>,
     );
     expect(wrapper.childAt(0).prop('itemKey')).toBe(0);

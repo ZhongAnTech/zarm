@@ -12,7 +12,7 @@ class TabBarItem extends PureComponent<TabBarItemProps, {}> {
     prefixCls: 'za-tab-bar',
   };
 
-  change = (value: string | number) => {
+  change = (value?: string | number) => {
     const { onChange } = this.props;
     if (typeof onChange === 'function') {
       onChange(value);

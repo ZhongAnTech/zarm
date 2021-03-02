@@ -10,7 +10,7 @@ export interface BaseTabBarProps {
 }
 
 export interface BaseTabBarItemProps {
-  itemKey: string | number;
+  itemKey?: string | number;
   title?: ReactNode;
   icon?: ReactNode;
   activeIcon?: ReactNode;
