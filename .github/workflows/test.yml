@@ -146,7 +146,7 @@ jobs:
         run: npm run test:h5
         env:
           LIB_DIR: lib
-    needs: setup
+    needs: compile
 
   react-17-es:
     name: react@17.x / es
@@ -177,7 +177,7 @@ jobs:
         run: npm run test:h5
         env:
           LIB_DIR: es
-    needs: setup
+    needs: compile
 
   react-17-dist:
     name: react@17.x / dist

@@ -8,7 +8,7 @@
 
 <div align="center">
 
-[![Build Status](https://www.travis-ci.org/ZhongAnTech/zarm.svg?branch=master)](https://www.travis-ci.org/ZhongAnTech/zarm)
+[![test](https://github.com/ZhongAnTech/zarm/actions/workflows/test.yml/badge.svg)](https://github.com/ZhongAnTech/zarm/actions/workflows/test.yml)
 [![codecov](https://codecov.io/gh/ZhongAnTech/zarm/branch/master/graph/badge.svg?token=Qqne6VfWnk)](https://codecov.io/gh/ZhongAnTech/zarm)
 ![JS gzip size](https://img.badgesize.io/https://unpkg.com/zarm@latest/dist/zarm.min.js?compression=gzip&label=gzip%20size:%20JS)
 ![CSS gzip size](https://img.badgesize.io/https://unpkg.com/zarm@latest/dist/zarm.min.css?compression=gzip&label=gzip%20size:%20CSS)
