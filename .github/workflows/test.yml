@@ -111,7 +111,7 @@ jobs:
           key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
 
       - name: test
-        run: npm run test:h5 -- -w 1 -c
+        run: npm run test:h5 -- -c
       
       - name: coverage
         run: bash <(curl -s https://codecov.io/bash)
@@ -242,7 +242,7 @@ jobs:
         run: npm run install-react-16
 
       - name: test
-        run: npm run test:h5 -- -w 1
+        run: npm run test:h5
     needs: setup
 
   react-16-lib:
