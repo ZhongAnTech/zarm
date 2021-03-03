@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LocaleProvider renders correctly with en_US 1`] = `
+exports[`ConfigProvider snapshot renders correctly with en_US 1`] = `
 <div
   class="za-alert za-alert--radius"
 />
 `;
 
-exports[`LocaleProvider renders correctly with zh_CN 1`] = `
+exports[`ConfigProvider snapshot renders correctly with zh_CN 1`] = `
 <div
   class="za-alert za-alert--radius"
 />
