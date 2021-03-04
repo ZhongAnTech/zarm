@@ -63,7 +63,7 @@ jobs:
           key: es-${{ github.sha }}
 
       - name: compile
-        run: npm run build
+        run: npm run build:lib && npm run build:es && npm run build:rn
 
       # - name: check
       #   run: node ./tests/dekko/lib.test.js
