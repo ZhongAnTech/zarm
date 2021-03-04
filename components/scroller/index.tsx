@@ -1,7 +1,8 @@
 import { PureComponent } from 'react';
 import Events from '../utils/events';
 import throttle from '../utils/throttle';
-import { canUseDOM, ContainerType, getScrollContainer, getScrollTop } from '../utils/dom';
+import { canUseDOM, getScrollContainer, getScrollTop } from '../utils/dom';
+import type { ContainerType } from '../utils/dom';
 import noop from '../utils/noop';
 
 export interface ScrollerProps {
