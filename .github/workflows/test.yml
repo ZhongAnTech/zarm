@@ -349,6 +349,11 @@ jobs:
       - name: check
         run: node ./tests/dekko/dist.test.js
 
+      - name: bundlesize
+        run: npm run bundlesize
+        env:
+          BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}
+
       - name: test
         run: npm run test:h5
         env:
