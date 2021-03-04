@@ -1,7 +1,7 @@
 import Color from 'color';
 
-const darken = (color, percent) => {
-  const hsl = Color(color).hsl();
+const darken = (color: string, percent) => {
+  const hsl: any = Color(color).hsl();
   const l = hsl.color[2] - percent * 100;
   hsl.color[2] = l;
   return hsl.hex();

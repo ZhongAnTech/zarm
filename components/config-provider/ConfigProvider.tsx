@@ -1,10 +1,11 @@
-import React, { PureComponent, createContext, Context } from 'react';
-import { ConfigProviderProps, Locale } from './PropsType';
+import React, { PureComponent, createContext } from 'react';
+import type { Context } from 'react';
+import type { ConfigProviderProps, Locale } from './PropsType';
 import setTheme from './setTheme';
 import setPrimaryColor from './setPrimaryColor';
 
 const defaultConfig: ConfigProviderProps = {
-  locale: ({} as any) as Locale,
+  locale: ({} as unknown) as Locale,
   theme: 'light',
   primaryColor: '#00bc70',
 };
