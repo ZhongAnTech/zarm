@@ -48,6 +48,7 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
     const { speed, delay } = this.props;
     const wrapWidth = this.wrapper!.getBoundingClientRect().width;
     const offsetWidth = this.content!.getBoundingClientRect().width;
+    console.log(wrapWidth, offsetWidth);
 
     if (offsetWidth > wrapWidth) {
       // 完整的执行时间 = 前后停留时间 + 移动时间
@@ -69,7 +70,7 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
           -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
         }
-      
+
         ${100 - delayPercent}%, 100% {
           -webkit-transform: translate3d(${-(offsetWidth - wrapWidth)}px, 0, 0);
           transform: translate3d(${-(offsetWidth - wrapWidth)}px, 0, 0);
