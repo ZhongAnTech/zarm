@@ -1,11 +1,13 @@
 /* eslint-disable dot-notation */
 import React from 'react';
-import { render, mount } from 'enzyme';
+import { render, mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { mocked } from 'ts-jest/utils';
 import NoticeBar from '../index';
 import { addKeyframe, removeKeyframe, existKeyframe } from '../../utils/keyframes';
 import { mockRefReturnValueOnce } from '../../../tests/utils';
+import Message from '../../message';
+import Icon from '../../icon';
 
 jest.mock('../../utils/keyframes');
 
@@ -48,13 +50,31 @@ describe('NoticeBar', () => {
       jest.clearAllMocks();
     });
 
+    it('should render message component', () => {
+      jest.spyOn(NoticeBar.prototype, 'updateScrolling').mockImplementation();
+      const wrapper = shallow(<NoticeBar />);
+      const messageWrapper = wrapper.find(Message);
+      expect(messageWrapper.exists()).toBeTruthy();
+      expect(messageWrapper.props()).toEqual(
+        expect.objectContaining({
+          size: 'lg',
+          theme: 'warning',
+          icon: <Icon type="broadcast" />,
+          hasArrow: false,
+          closable: false,
+          speed: 50,
+          delay: 2000,
+        }),
+      );
+    });
+
     it('should create ref', () => {
       const wrapper = mount(<NoticeBar />);
       expect(wrapper.instance()['wrapper']).toBeTruthy();
       expect(wrapper.instance()['content']).toBeTruthy();
     });
     it('should add keyframe when component mount', () => {
-      let keyframeContent: string;
+      let keyframeContent!: string;
       mAddKeyframe.mockImplementationOnce((_, content: string) => {
         keyframeContent = content;
       });
@@ -72,7 +92,7 @@ describe('NoticeBar', () => {
     });
 
     it('should remove existed keyframe', () => {
-      let keyframeContent: string;
+      let keyframeContent!: string;
       mExistKeyframe.mockReturnValueOnce(true);
       mAddKeyframe.mockImplementationOnce((_, content: string) => {
         keyframeContent = content;
@@ -99,6 +119,23 @@ describe('NoticeBar', () => {
       expect(mAddKeyframe).not.toBeCalled();
       expect(wrapper.state('animationDuration')).toEqual(0);
       expect(wrapper.find('.za-notice-bar__body').prop('style')).toBeUndefined();
+    });
+
+    it('should update scrolling when component did mount', () => {
+      const updateScrollingSpy = jest
+        .spyOn(NoticeBar.prototype, 'updateScrolling')
+        .mockImplementation();
+      mount(<NoticeBar />);
+      expect(updateScrollingSpy).toBeCalledTimes(1);
+    });
+
+    it('should update scrolling when component did update', () => {
+      const updateScrollingSpy = jest
+        .spyOn(NoticeBar.prototype, 'updateScrolling')
+        .mockImplementation();
+      const wrapper = mount(<NoticeBar />);
+      wrapper.setState({ animationDuration: 100 });
+      expect(updateScrollingSpy).toBeCalledTimes(2);
     });
   });
 });
