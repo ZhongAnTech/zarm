@@ -5,7 +5,7 @@ import Keyboard from '../index';
 import KeyboardRaw from '../Keyboard';
 
 function mockLongPressTimer() {
-  let longPressTimer!: ReturnType<typeof setTimeout>;
+  let longPressTimer!: ReturnType<typeof setTimeout | typeof setInterval>;
   const prop = Symbol('longPressTimer');
   Object.defineProperty(KeyboardRaw.prototype, 'longPressTimer', {
     get() {
@@ -66,13 +66,14 @@ describe('Keyboard', () => {
       expect(onKeyClick).toBeCalledWith('ok');
     });
 
-    it('should not trigger onKeyClick handler any more if the touch event gets interrupted', () => {
+    it("should handle delete operation once if user's touch event gets interrupted", () => {
       jest.useFakeTimers();
       const setTimeoutSpy = jest.spyOn(global, 'setTimeout');
       const clearIntervalSpy = jest.spyOn(global, 'clearInterval');
       const setIntervalSpy = jest.spyOn(global, 'setInterval');
       const lazy = mockLongPressTimer();
-      const wrapper = mount(<Keyboard />);
+      const mOnKeyClick = jest.fn();
+      const wrapper = mount(<Keyboard onKeyClick={mOnKeyClick} />);
       wrapper.find('.za-keyboard__handle').childAt(0).simulate('touchstart');
       expect(lazy.longPressTimer).toBeDefined();
       expect(setTimeoutSpy).toBeCalledWith(expect.any(Function), 800);
@@ -82,9 +83,13 @@ describe('Keyboard', () => {
       expect(clearIntervalSpy).toBeCalledWith(lazy.longPressTimer);
       jest.advanceTimersByTime(800);
       expect(setIntervalSpy).not.toBeCalled();
+      expect(mOnKeyClick).toBeCalledTimes(1);
+      expect(mOnKeyClick.mock.calls).toEqual([['delete']]);
+      jest.advanceTimersByTime(200);
+      expect(mOnKeyClick).toBeCalledTimes(1);
     });
 
-    it('should trigger onKeyClick handler every 100 milliseconds', () => {
+    it('should handle delete operation every 100 milliseconds if the user long presses the delete button ', () => {
       jest.useFakeTimers();
       const setIntervalSpy = jest.spyOn(global, 'setInterval');
       const lazy = mockLongPressTimer();
@@ -103,6 +108,13 @@ describe('Keyboard', () => {
       jest.advanceTimersByTime(200);
       expect(mOnKeyClick).toBeCalledTimes(4);
       expect(mOnKeyClick.mock.calls).toEqual([['delete'], ['delete'], ['delete'], ['delete']]);
+    });
+
+    it('should handle ok', () => {
+      const mOnKeyClick = jest.fn();
+      const wrapper = mount(<Keyboard onKeyClick={mOnKeyClick} />);
+      wrapper.find('.za-keyboard__item--ok').simulate('click');
+      expect(mOnKeyClick).toBeCalledWith('ok');
     });
   });
 });
