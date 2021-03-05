@@ -12,6 +12,36 @@ const mAddKeyframe = mocked(addKeyframe);
 const mRemoveKeyframe = mocked(removeKeyframe);
 const mExistKeyframe = mocked(existKeyframe);
 
+function mockWrapperRef(method: string, value: any) {
+  Object.defineProperty(NoticeBar.prototype, 'wrapper', {
+    get() {
+      return this.wrapperRef;
+    },
+    set(ref) {
+      if (ref) {
+        jest.spyOn(ref, method).mockReturnValueOnce(value);
+      }
+      this.wrapperRef = ref;
+    },
+    configurable: true,
+  });
+}
+
+function mockContentRef(method: string, value: any) {
+  Object.defineProperty(NoticeBar.prototype, 'content', {
+    get() {
+      return this.contentRef;
+    },
+    set(ref) {
+      if (ref) {
+        jest.spyOn(ref, method).mockReturnValueOnce(value);
+      }
+      this.contentRef = ref;
+    },
+    configurable: true,
+  });
+}
+
 describe('NoticeBar', () => {
   describe('snapshot', () => {
     it('renders correctly', () => {
@@ -44,44 +74,60 @@ describe('NoticeBar', () => {
   describe('behaviour', () => {
     afterEach(() => {
       jest.restoreAllMocks();
+      jest.clearAllMocks();
     });
-    it('should add keyframe when component mount', () => {
-      mExistKeyframe.mockReturnValueOnce(false);
-      let wrapperRef: HTMLDivElement;
-      let contentRef: HTMLDivElement;
-      Object.defineProperty(NoticeBar.prototype, 'wrapper', {
-        get() {
-          return this.wrapperRef;
-        },
-        set(ref) {
-          wrapperRef = ref;
-          if (wrapperRef) {
-            jest
-              .spyOn(wrapperRef, 'getBoundingClientRect')
-              .mockReturnValueOnce(({ width: 50 } as unknown) as DOMRect);
-          }
-          this.wrapperRef = ref;
-        },
-      });
-      Object.defineProperty(NoticeBar.prototype, 'content', {
-        get() {
-          return this.contentRef;
-        },
-        set(ref) {
-          contentRef = ref;
-          if (contentRef) {
-            jest
-              .spyOn(contentRef, 'getBoundingClientRect')
-              .mockReturnValueOnce(({ width: 100 } as unknown) as DOMRect);
-          }
-          this.contentRef = ref;
-        },
-      });
 
+    it('should create ref', () => {
       const wrapper = mount(<NoticeBar />);
       expect(wrapper.instance()['wrapper']).toBeTruthy();
       expect(wrapper.instance()['content']).toBeTruthy();
-      expect(mAddKeyframe).toBeCalledWith('za-notice-bar-scrolling', expect.any(String));
+    });
+    it('should add keyframe when component mount', () => {
+      let keyframeContent: string;
+      mAddKeyframe.mockImplementationOnce((_, content: string) => {
+        keyframeContent = content;
+      });
+      mExistKeyframe.mockReturnValueOnce(false);
+      mockWrapperRef('getBoundingClientRect', { width: 50 });
+      mockContentRef('getBoundingClientRect', { width: 100 });
+      const wrapper = mount(<NoticeBar />);
+      expect(mExistKeyframe).toBeCalledWith('za-notice-bar-scrolling');
+      expect(mAddKeyframe).toBeCalledWith('za-notice-bar-scrolling', keyframeContent);
+      expect(wrapper.state('animationDuration')).toEqual(6000);
+      expect(wrapper.find('.za-notice-bar__body').prop('style')).toEqual({
+        WebkitAnimation: 'za-notice-bar-scrolling 6000ms linear infinite',
+        animation: `za-notice-bar-scrolling 6000ms linear infinite`,
+      });
+    });
+
+    it('should remove existed keyframe', () => {
+      let keyframeContent: string;
+      mExistKeyframe.mockReturnValueOnce(true);
+      mAddKeyframe.mockImplementationOnce((_, content: string) => {
+        keyframeContent = content;
+      });
+      mockWrapperRef('getBoundingClientRect', { width: 50 });
+      mockContentRef('getBoundingClientRect', { width: 100 });
+      const wrapper = mount(<NoticeBar />);
+      expect(mExistKeyframe).toBeCalledWith('za-notice-bar-scrolling');
+      expect(mRemoveKeyframe).toBeCalledWith('za-notice-bar-scrolling');
+      expect(mAddKeyframe).toBeCalledWith('za-notice-bar-scrolling', keyframeContent);
+      expect(wrapper.state('animationDuration')).toEqual(6000);
+      expect(wrapper.find('.za-notice-bar__body').prop('style')).toEqual({
+        WebkitAnimation: 'za-notice-bar-scrolling 6000ms linear infinite',
+        animation: `za-notice-bar-scrolling 6000ms linear infinite`,
+      });
+    });
+
+    it('should not update scroll if offset width less than wrap width', () => {
+      mockWrapperRef('getBoundingClientRect', { width: 0 });
+      mockContentRef('getBoundingClientRect', { width: 0 });
+      const wrapper = mount(<NoticeBar />);
+      expect(mExistKeyframe).not.toBeCalled();
+      expect(mRemoveKeyframe).not.toBeCalled();
+      expect(mAddKeyframe).not.toBeCalled();
+      expect(wrapper.state('animationDuration')).toEqual(0);
+      expect(wrapper.find('.za-notice-bar__body').prop('style')).toBeUndefined();
     });
   });
 });
