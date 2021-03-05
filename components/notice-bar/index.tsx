@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import PropsType from './PropsType';
+import type PropsType from './PropsType';
 import Message from '../message';
 import Icon from '../icon';
 import { addKeyframe, removeKeyframe, existKeyframe } from '../utils/keyframes';
