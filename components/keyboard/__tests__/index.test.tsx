@@ -4,6 +4,27 @@ import toJson from 'enzyme-to-json';
 import Keyboard from '../index';
 import KeyboardRaw from '../Keyboard';
 
+function mockLongPressTimer() {
+  let longPressTimer!: ReturnType<typeof setTimeout>;
+  const prop = Symbol('longPressTimer');
+  Object.defineProperty(KeyboardRaw.prototype, 'longPressTimer', {
+    get() {
+      return this[prop];
+    },
+    set(timer) {
+      longPressTimer = timer;
+      this[prop] = timer;
+    },
+    configurable: true,
+  });
+
+  return {
+    get longPressTimer() {
+      return longPressTimer;
+    },
+  };
+}
+
 describe('Keyboard', () => {
   describe('snapshot', () => {
     it('renders correctly', () => {
@@ -25,6 +46,7 @@ describe('Keyboard', () => {
   describe('behaviour', () => {
     afterEach(() => {
       jest.restoreAllMocks();
+      jest.useRealTimers();
     });
     it('should handle touch and mouse click event', () => {
       const onKeyClick = jest.fn();
@@ -49,26 +71,38 @@ describe('Keyboard', () => {
       const setTimeoutSpy = jest.spyOn(global, 'setTimeout');
       const clearIntervalSpy = jest.spyOn(global, 'clearInterval');
       const setIntervalSpy = jest.spyOn(global, 'setInterval');
-      let longPressTimer!: ReturnType<typeof setTimeout>;
-      Object.defineProperty(KeyboardRaw.prototype, 'longPressTimer', {
-        get() {
-          return this._longPressTimer;
-        },
-        set(timer) {
-          longPressTimer = timer;
-          this._longPressTimer = timer;
-        },
-      });
+      const lazy = mockLongPressTimer();
       const wrapper = mount(<Keyboard />);
       wrapper.find('.za-keyboard__handle').childAt(0).simulate('touchstart');
-      expect(longPressTimer).toBeDefined();
+      expect(lazy.longPressTimer).toBeDefined();
       expect(setTimeoutSpy).toBeCalledWith(expect.any(Function), 800);
       const mEvent = { preventDefault: jest.fn() };
       wrapper.find('.za-keyboard__handle').childAt(0).simulate('touchcancel', mEvent);
       expect(mEvent.preventDefault).toBeCalledTimes(1);
-      expect(clearIntervalSpy).toBeCalledWith(longPressTimer);
+      expect(clearIntervalSpy).toBeCalledWith(lazy.longPressTimer);
       jest.advanceTimersByTime(800);
       expect(setIntervalSpy).not.toBeCalled();
+    });
+
+    it('should trigger onKeyClick handler every 100 milliseconds', () => {
+      jest.useFakeTimers();
+      const setIntervalSpy = jest.spyOn(global, 'setInterval');
+      const lazy = mockLongPressTimer();
+      const mOnKeyClick = jest.fn();
+      const wrapper = mount(<Keyboard onKeyClick={mOnKeyClick} />);
+      wrapper.find('.za-keyboard__handle').childAt(0).simulate('touchstart');
+      const longPressTimerOfSetTimeout = lazy.longPressTimer;
+      expect(longPressTimerOfSetTimeout).toBeDefined();
+      jest.advanceTimersByTime(800);
+      expect(setIntervalSpy).toBeCalledWith(expect.any(Function), 100);
+      const longPressTimerOfSetInterval = lazy.longPressTimer;
+      expect(longPressTimerOfSetInterval).toBeDefined();
+      expect(longPressTimerOfSetInterval).not.toEqual(longPressTimerOfSetTimeout);
+      jest.advanceTimersByTime(100);
+      expect(mOnKeyClick).toBeCalledTimes(2);
+      jest.advanceTimersByTime(200);
+      expect(mOnKeyClick).toBeCalledTimes(4);
+      expect(mOnKeyClick.mock.calls).toEqual([['delete'], ['delete'], ['delete'], ['delete']]);
     });
   });
 });

@@ -23,7 +23,7 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
     type: 'number',
   };
 
-  private longPressTimer: ReturnType<typeof setTimeout>;
+  private longPressTimer: ReturnType<typeof setTimeout | typeof setInterval>;
 
   onLongPressIn = (key: string) => {
     this.onKeyClick(key);
