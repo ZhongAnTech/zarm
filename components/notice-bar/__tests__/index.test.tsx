@@ -5,42 +5,13 @@ import toJson from 'enzyme-to-json';
 import { mocked } from 'ts-jest/utils';
 import NoticeBar from '../index';
 import { addKeyframe, removeKeyframe, existKeyframe } from '../../utils/keyframes';
+import { mockRefReturnValueOnce } from '../../../tests/utils';
 
 jest.mock('../../utils/keyframes');
 
 const mAddKeyframe = mocked(addKeyframe);
 const mRemoveKeyframe = mocked(removeKeyframe);
 const mExistKeyframe = mocked(existKeyframe);
-
-function mockWrapperRef(method: string, value: any) {
-  Object.defineProperty(NoticeBar.prototype, 'wrapper', {
-    get() {
-      return this.wrapperRef;
-    },
-    set(ref) {
-      if (ref) {
-        jest.spyOn(ref, method).mockReturnValueOnce(value);
-      }
-      this.wrapperRef = ref;
-    },
-    configurable: true,
-  });
-}
-
-function mockContentRef(method: string, value: any) {
-  Object.defineProperty(NoticeBar.prototype, 'content', {
-    get() {
-      return this.contentRef;
-    },
-    set(ref) {
-      if (ref) {
-        jest.spyOn(ref, method).mockReturnValueOnce(value);
-      }
-      this.contentRef = ref;
-    },
-    configurable: true,
-  });
-}
 
 describe('NoticeBar', () => {
   describe('snapshot', () => {
@@ -88,8 +59,8 @@ describe('NoticeBar', () => {
         keyframeContent = content;
       });
       mExistKeyframe.mockReturnValueOnce(false);
-      mockWrapperRef('getBoundingClientRect', { width: 50 });
-      mockContentRef('getBoundingClientRect', { width: 100 });
+      mockRefReturnValueOnce(NoticeBar, 'wrapper', 'getBoundingClientRect', { width: 50 });
+      mockRefReturnValueOnce(NoticeBar, 'content', 'getBoundingClientRect', { width: 100 });
       const wrapper = mount(<NoticeBar />);
       expect(mExistKeyframe).toBeCalledWith('za-notice-bar-scrolling');
       expect(mAddKeyframe).toBeCalledWith('za-notice-bar-scrolling', keyframeContent);
@@ -106,8 +77,8 @@ describe('NoticeBar', () => {
       mAddKeyframe.mockImplementationOnce((_, content: string) => {
         keyframeContent = content;
       });
-      mockWrapperRef('getBoundingClientRect', { width: 50 });
-      mockContentRef('getBoundingClientRect', { width: 100 });
+      mockRefReturnValueOnce(NoticeBar, 'wrapper', 'getBoundingClientRect', { width: 50 });
+      mockRefReturnValueOnce(NoticeBar, 'content', 'getBoundingClientRect', { width: 100 });
       const wrapper = mount(<NoticeBar />);
       expect(mExistKeyframe).toBeCalledWith('za-notice-bar-scrolling');
       expect(mRemoveKeyframe).toBeCalledWith('za-notice-bar-scrolling');
@@ -120,8 +91,8 @@ describe('NoticeBar', () => {
     });
 
     it('should not update scroll if offset width less than wrap width', () => {
-      mockWrapperRef('getBoundingClientRect', { width: 0 });
-      mockContentRef('getBoundingClientRect', { width: 0 });
+      mockRefReturnValueOnce(NoticeBar, 'wrapper', 'getBoundingClientRect', { width: 0 });
+      mockRefReturnValueOnce(NoticeBar, 'content', 'getBoundingClientRect', { width: 0 });
       const wrapper = mount(<NoticeBar />);
       expect(mExistKeyframe).not.toBeCalled();
       expect(mRemoveKeyframe).not.toBeCalled();
