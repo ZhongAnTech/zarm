@@ -1,9 +1,12 @@
 import React, { PureComponent } from 'react';
+import type { TouchEvent, MouseEvent } from 'react';
 import classnames from 'classnames';
-import PropsType from './PropsType';
+import type PropsType from './PropsType';
 import Icon from '../icon';
 
-const KEYS = {
+type KeyType = Exclude<PropsType['type'], undefined>;
+
+const KEYS: { [type in KeyType]: readonly string[] } = {
   number: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', 'close'],
   price: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '0', 'close'],
   idcard: ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'X', '0', 'close'],
@@ -20,7 +23,7 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
     type: 'number',
   };
 
-  private longPressTimer;
+  private longPressTimer: ReturnType<typeof setTimeout | typeof setInterval>;
 
   onLongPressIn = (key: string) => {
     this.onKeyClick(key);
@@ -31,7 +34,7 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
     }, 800);
   };
 
-  onLongPressOut = (e) => {
+  onLongPressOut = (e: TouchEvent<HTMLDivElement> | MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     clearInterval(this.longPressTimer);
   };
@@ -47,7 +50,7 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
     }
   };
 
-  getKeys = () => {
+  getKeys = (): ReadonlyArray<string> => {
     const { type } = this.props;
     return type ? KEYS[type] : KEYS.number;
   };

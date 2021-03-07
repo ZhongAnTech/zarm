@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Keyboard renders correctly 1`] = `
+exports[`Keyboard snapshot renders correctly 1`] = `
 <div
   class="za-keyboard"
 >
@@ -113,7 +113,7 @@ exports[`Keyboard renders correctly 1`] = `
 </div>
 `;
 
-exports[`Keyboard type is idcard 1`] = `
+exports[`Keyboard snapshot type is idcard 1`] = `
 <div
   class="za-keyboard"
 >
@@ -228,7 +228,7 @@ exports[`Keyboard type is idcard 1`] = `
 </div>
 `;
 
-exports[`Keyboard type is price 1`] = `
+exports[`Keyboard snapshot type is price 1`] = `
 <div
   class="za-keyboard"
 >
