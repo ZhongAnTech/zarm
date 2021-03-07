@@ -97,6 +97,9 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@master
+        with:
+          # codecov.io requires a fetch depth > 1.
+          fetch-depth: 2
 
       - name: restore cache from yarn.lock
         uses: actions/cache@v2
