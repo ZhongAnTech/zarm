@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
+import ReactDOM from 'react-dom';
 import Portal from '../Portal';
 import Popup from '../Popup';
 import Events from '../../utils/events';
@@ -135,5 +136,39 @@ describe('Portal', () => {
     expect(popup.exists()).toBeTruthy();
     expect(popup.prop('className')).toEqual('za-popup za-popup--bottom');
     expect(popup.find('#test').text()).toEqual('test');
+  });
+
+  it('should render portal inside the popup container html div element (react version > 16)', () => {
+    const createPortalSpy = jest.spyOn(ReactDOM, 'createPortal');
+    const wrapper = mount(<Portal mask={false} mountContainer={document.body} />);
+    const popupContainer = document.body.querySelector('.za-popup-container');
+    expect(popupContainer!.querySelector('[role="dialog"]')).toBeTruthy();
+    expect(createPortalSpy).toBeCalled();
+    const portal = wrapper.find(Trigger).childAt(0);
+    expect(portal.exists()).toBeTruthy();
+  });
+
+  it.only('should render portal inside the popup container html div element (react version < 16)', () => {
+    jest.doMock('react-dom', () => {
+      const origin = jest.requireActual('react-dom');
+      return { ...origin, createPortal: undefined };
+    });
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const ReactDOMCJS = require('react-dom');
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    PortalCJS = require('../Portal').default;
+    // eslint-disable-next-line camelcase
+    const unstable_renderSubtreeIntoContainerSpy = jest.spyOn(
+      ReactDOMCJS,
+      'unstable_renderSubtreeIntoContainer',
+    );
+    const wrapper = mount(<PortalCJS mask={false} mountContainer={document.body} />);
+    const popupContainer = document.body.querySelector('.za-popup-container');
+    expect(popupContainer!.querySelector('[role="dialog"]')).toBeTruthy();
+    expect(unstable_renderSubtreeIntoContainerSpy).toBeCalledWith(
+      wrapper.instance(),
+      expect.anything,
+      popupContainer,
+    );
   });
 });
