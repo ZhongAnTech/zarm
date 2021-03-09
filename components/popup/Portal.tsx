@@ -87,6 +87,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
     const animationState = visible ? 'enter' : 'leave';
     if (animationState === 'leave') {
       this._container && this._container.classList.add(`${prefixCls}--hidden`);
+      // handle Portal unmount twice?
       if (typeof handlePortalUnmount === 'function') {
         handlePortalUnmount();
       }
@@ -267,7 +268,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
     }
     if (!this._container) {
       this._container = document.createElement('div');
-      this._container.className += `${prefixCls}-container ${className}`;
+      this._container.className += classnames([`${prefixCls}-container`, className]);
       this.mountNode = getMountContainer(mountContainer);
       this.mountNode.appendChild(this._container);
     }

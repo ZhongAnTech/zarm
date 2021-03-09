@@ -81,14 +81,21 @@ describe('Popup', () => {
 
 describe('Portal', () => {
   let PortalCJS: typeof import('../Portal').default;
-  const events = ['webkitTransitionEnd', 'transitionend', 'webkitAnimationEnd', 'animationend'];
+  const events = [
+    'webkitTransitionEnd',
+    'transitionend',
+    'webkitAnimationEnd',
+    'animationend',
+  ] as const;
   beforeEach(() => {
     jest.resetModules();
+    jest.dontMock('../../utils/dom');
+    jest.dontMock('react-dom');
   });
   afterEach(() => {
     jest.restoreAllMocks();
   });
-  it('should bind transitionend events and animationend events for popup element', () => {
+  it('should bind transitionend and animationend events for popup element', () => {
     expect.assertions(events.length);
     const eventsOnSpy = jest.spyOn(Events, 'on').mockImplementation();
     const wrapper = mount(<Portal />);
@@ -96,6 +103,33 @@ describe('Portal', () => {
       // eslint-disable-next-line dot-notation
       expect(eventsOnSpy).toBeCalledWith(wrapper.instance()['popup'], e, expect.any(Function));
     });
+  });
+
+  it('should unbind transitionend and animationend events for popup element and do cleanup work', () => {
+    expect.assertions(events.length + 2);
+    let popupRef: HTMLDivElement;
+    Object.defineProperty(Portal.prototype, 'popup', {
+      get() {
+        return this._popup;
+      },
+      set(ref) {
+        if (ref) {
+          popupRef = ref;
+        }
+        this._popup = ref;
+      },
+    });
+    const clearTimeoutSpy = jest.spyOn(window, 'clearTimeout').mockImplementation();
+    const eventsOffSpy = jest.spyOn(Events, 'off').mockImplementation();
+    const mountContainer = document.createElement('div');
+    document.body.appendChild(mountContainer);
+    const wrapper = mount(<Portal mountContainer={mountContainer} />);
+    wrapper.unmount();
+    events.forEach((e) => {
+      expect(eventsOffSpy).toBeCalledWith(popupRef, e, expect.any(Function));
+    });
+    expect(clearTimeoutSpy).toBeCalledTimes(1);
+    expect(mountContainer.querySelector('.za-popup-container')).toBeFalsy();
   });
 
   it('should create container inside document.body', () => {
@@ -138,7 +172,7 @@ describe('Portal', () => {
     expect(popup.find('#test').text()).toEqual('test');
   });
 
-  it('should render portal inside the popup container html div element (react version > 16)', () => {
+  it('should render portal inside the popup container html div element (react version >= 16)', () => {
     const createPortalSpy = jest.spyOn(ReactDOM, 'createPortal');
     const wrapper = mount(<Portal mask={false} mountContainer={document.body} />);
     const popupContainer = document.body.querySelector('.za-popup-container');
@@ -146,29 +180,36 @@ describe('Portal', () => {
     expect(createPortalSpy).toBeCalled();
     const portal = wrapper.find(Trigger).childAt(0);
     expect(portal.exists()).toBeTruthy();
+    expect(portal.name()).toBe('Portal');
+    expect(portal.type().toString()).toBe('Symbol(react.portal)');
   });
 
-  it.only('should render portal inside the popup container html div element (react version < 16)', () => {
+  it('should render portal inside the popup container html div element (react version < 16)', () => {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const { createPortal } = require('react-dom');
+    // eslint-disable-next-line camelcase
+    const unstable_renderSubtreeIntoContainerProxy = jest.fn((_, element, container) => {
+      createPortal(element, container);
+    });
     jest.doMock('react-dom', () => {
       const origin = jest.requireActual('react-dom');
-      return { ...origin, createPortal: undefined };
+      return {
+        ...origin,
+        unstable_renderSubtreeIntoContainer: unstable_renderSubtreeIntoContainerProxy,
+        createPortal: undefined,
+      };
     });
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const ReactDOMCJS = require('react-dom');
+
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     PortalCJS = require('../Portal').default;
-    // eslint-disable-next-line camelcase
-    const unstable_renderSubtreeIntoContainerSpy = jest.spyOn(
-      ReactDOMCJS,
-      'unstable_renderSubtreeIntoContainer',
-    );
-    const wrapper = mount(<PortalCJS mask={false} mountContainer={document.body} />);
-    const popupContainer = document.body.querySelector('.za-popup-container');
-    expect(popupContainer!.querySelector('[role="dialog"]')).toBeTruthy();
-    expect(unstable_renderSubtreeIntoContainerSpy).toBeCalledWith(
-      wrapper.instance(),
-      expect.anything,
-      popupContainer,
-    );
+    mount(<PortalCJS mask={false} mountContainer={document.body} />);
+    expect(unstable_renderSubtreeIntoContainerProxy).toBeCalled();
+  });
+
+  it('should handle ESC keyboard input', () => {
+    const mOnEsc = jest.fn();
+    const wrapper = shallow(<Portal onEsc={mOnEsc} />);
+    wrapper.invoke('onClose')();
+    expect(mOnEsc).toBeCalledTimes(1);
   });
 });
