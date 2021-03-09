@@ -118,6 +118,7 @@ describe('Portal', () => {
         }
         this._popup = ref;
       },
+      configurable: true,
     });
     const clearTimeoutSpy = jest.spyOn(window, 'clearTimeout').mockImplementation();
     const eventsOffSpy = jest.spyOn(Events, 'off').mockImplementation();
@@ -211,5 +212,38 @@ describe('Portal', () => {
     const wrapper = shallow(<Portal onEsc={mOnEsc} />);
     wrapper.invoke('onClose')();
     expect(mOnEsc).toBeCalledTimes(1);
+  });
+
+  it('should handle mask click', () => {
+    const mOnMaskClick = jest.fn();
+    const wrapper = mount(<Portal onMaskClick={mOnMaskClick} />);
+    const maskWrapper = wrapper.find('.za-popup__wrapper');
+    const mEvent = { stopPropagation: jest.fn() };
+    maskWrapper.simulate('click', mEvent);
+    expect(mEvent.stopPropagation).toBeCalledTimes(1);
+    expect(mOnMaskClick).toBeCalledTimes(1);
+  });
+
+  it('should not handle mask click if popup ref is event target', () => {
+    let popupRef: HTMLDivElement;
+    Object.defineProperty(Portal.prototype, 'popup', {
+      get() {
+        return this._popup;
+      },
+      set(ref) {
+        if (ref) {
+          popupRef = ref;
+        }
+        this._popup = ref;
+      },
+      configurable: true,
+    });
+    const mOnMaskClick = jest.fn();
+    const wrapper = mount(<Portal onMaskClick={mOnMaskClick} />);
+    const maskWrapper = wrapper.find('.za-popup__wrapper');
+    const mEvent = { stopPropagation: jest.fn(), target: popupRef };
+    maskWrapper.simulate('click', mEvent);
+    expect(mEvent.stopPropagation).toBeCalledTimes(1);
+    expect(mOnMaskClick).not.toBeCalled();
   });
 });

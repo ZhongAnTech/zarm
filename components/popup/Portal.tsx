@@ -1,10 +1,11 @@
-import React, { PureComponent, CSSProperties, ReactPortal } from 'react';
+import React, { PureComponent } from 'react';
+import type { CSSProperties, ReactPortal } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import Events from '../utils/events';
 import { canUseDOM, getMountContainer } from '../utils/dom';
 import Mask from '../mask';
-import PropsType from './PropsType';
+import type PropsType from './PropsType';
 import Trigger from '../trigger';
 
 const IS_REACT_16 = !!ReactDOM.createPortal;
@@ -15,7 +16,11 @@ export interface PortalProps extends PropsType {
   handlePortalUnmount?: () => void;
 }
 
-export default class Portal extends PureComponent<PortalProps, any> {
+export interface PortalState {
+  isPending: boolean;
+}
+
+export default class Portal extends PureComponent<PortalProps, PortalState> {
   private enterTimer: number;
 
   private mountNode?: HTMLElement;
@@ -36,7 +41,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
     maskType: Mask.defaultProps.type,
   };
 
-  constructor(props) {
+  constructor(props: PortalProps) {
     super(props);
     this.state = {
       isPending: false,
@@ -57,7 +62,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
     this.handleAnimation();
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: PortalProps) {
     const { visible } = this.props;
     if (prevProps.visible !== visible) {
       this.handleAnimation();
