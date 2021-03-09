@@ -3,6 +3,8 @@ import { mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Portal from '../Portal';
 import Popup from '../Popup';
+import Events from '../../utils/events';
+import Trigger from '../../trigger';
 
 describe('Popup', () => {
   describe('snapshot', () => {
@@ -73,5 +75,65 @@ describe('Popup', () => {
   it('should pass correct props to Portal', () => {
     const wrapper = shallow(<Popup visible />);
     expect(wrapper.prop('destroy')).toBeUndefined();
+  });
+});
+
+describe('Portal', () => {
+  let PortalCJS: typeof import('../Portal').default;
+  const events = ['webkitTransitionEnd', 'transitionend', 'webkitAnimationEnd', 'animationend'];
+  beforeEach(() => {
+    jest.resetModules();
+  });
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+  it('should bind transitionend events and animationend events for popup element', () => {
+    expect.assertions(events.length);
+    const eventsOnSpy = jest.spyOn(Events, 'on').mockImplementation();
+    const wrapper = mount(<Portal />);
+    events.forEach((e) => {
+      // eslint-disable-next-line dot-notation
+      expect(eventsOnSpy).toBeCalledWith(wrapper.instance()['popup'], e, expect.any(Function));
+    });
+  });
+
+  it('should create container inside document.body', () => {
+    const createElementSpy = jest.spyOn(document, 'createElement');
+    const appendChildSpy = jest.spyOn(document.body, 'appendChild');
+    mount(<Portal mountContainer={document.body} />);
+    expect(createElementSpy).toBeCalledWith('div');
+    const container = document.body.querySelector('.za-popup-container');
+    expect(container).toBeTruthy();
+    expect(container!.className).toEqual('za-popup-container');
+    expect(appendChildSpy).toBeCalledTimes(1);
+  });
+
+  it('should not create container if mount container is falsy', () => {
+    const createElementSpy = jest.spyOn(document, 'createElement');
+    shallow(<Portal mountContainer={false} />);
+    expect(createElementSpy).not.toBeCalled();
+  });
+
+  it('should render null if canUseDOM is false', () => {
+    jest.doMock('../../utils/dom', () => {
+      const origin = jest.requireActual('../../utils/dom');
+      return { ...origin, canUseDOM: false };
+    });
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    PortalCJS = require('../Portal').default;
+    const wrapper = mount(<PortalCJS />);
+    expect(wrapper.find(Trigger).children()).toHaveLength(0);
+  });
+
+  it('should render popup and its children without mask', () => {
+    const wrapper = shallow(
+      <Portal mask={false}>
+        <div id="test">test</div>
+      </Portal>,
+    );
+    const popup = wrapper.find('[role="dialog"]');
+    expect(popup.exists()).toBeTruthy();
+    expect(popup.prop('className')).toEqual('za-popup za-popup--bottom');
+    expect(popup.find('#test').text()).toEqual('test');
   });
 });

@@ -230,17 +230,15 @@ export default class Portal extends PureComponent<PortalProps, any> {
     if (visible) {
       if (this.popup) {
         this._container && this._container.classList.remove(`${prefixCls}--hidden`);
-        this.setState({
-          isPending: true,
-        });
+        this.setState({ isPending: true });
         this._reflow = this.popup.offsetWidth;
         this.popup.classList.add(`${prefixCls}--show`);
       }
     } else {
-      this.setState({
-        isPending: true,
-      });
-      this.popup!.classList.remove(`${prefixCls}--show`);
+      this.setState({ isPending: true });
+      if (this.popup) {
+        this.popup.classList.remove(`${prefixCls}--show`);
+      }
     }
   };
 
