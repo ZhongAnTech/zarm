@@ -1,3 +1,5 @@
+/* eslint-disable dot-notation */
+/* eslint-disable no-unused-expressions */
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
@@ -6,6 +8,7 @@ import Portal from '../Portal';
 import Popup from '../Popup';
 import Events from '../../utils/events';
 import Trigger from '../../trigger';
+import Mask from '../../mask';
 
 describe('Popup', () => {
   describe('snapshot', () => {
@@ -173,6 +176,38 @@ describe('Portal', () => {
     expect(popup.find('#test').text()).toEqual('test');
   });
 
+  it('should render popup with normal mask which will perform a fade in animation', () => {
+    const wrapper = mount(<Portal visible maskType="normal" />);
+    expect(wrapper.find(Mask).exists()).toBeTruthy();
+    expect(wrapper.find(Mask).props()).toEqual(
+      expect.objectContaining({
+        className: 'za-fade-enter',
+        style: {
+          WebkitAnimationDuration: `200ms`,
+          animationDuration: `200ms`,
+        },
+        visible: true,
+        type: 'normal',
+      }),
+    );
+  });
+
+  it('should render a transparent mask which will perform a fade out animation', () => {
+    const wrapper = mount(<Portal maskType="transparent" />);
+    expect(wrapper.find(Mask).exists()).toBeTruthy();
+    expect(wrapper.find(Mask).props()).toEqual(
+      expect.objectContaining({
+        className: 'za-fade-leave',
+        style: {
+          WebkitAnimationDuration: `200ms`,
+          animationDuration: `200ms`,
+        },
+        visible: true,
+        type: 'transparent',
+      }),
+    );
+  });
+
   it('should render portal inside the popup container html div element (react version >= 16)', () => {
     const createPortalSpy = jest.spyOn(ReactDOM, 'createPortal');
     const wrapper = mount(<Portal mask={false} mountContainer={document.body} />);
@@ -225,7 +260,7 @@ describe('Portal', () => {
   });
 
   it('should not handle mask click if popup ref is event target', () => {
-    let popupRef: HTMLDivElement;
+    let popupRef!: HTMLDivElement;
     Object.defineProperty(Portal.prototype, 'popup', {
       get() {
         return this._popup;
@@ -245,5 +280,40 @@ describe('Portal', () => {
     maskWrapper.simulate('click', mEvent);
     expect(mEvent.stopPropagation).toBeCalledTimes(1);
     expect(mOnMaskClick).not.toBeCalled();
+  });
+
+  it('should handle animation end event if animation state is leave', () => {
+    let handlerRef!: (e: TransitionEvent | AnimationEvent) => void;
+    jest.spyOn(Events, 'on').mockImplementationOnce((_, __, handler) => {
+      handlerRef = handler;
+    });
+    const mHandlePortalUnmount = jest.fn();
+    const mAfterClose = jest.fn();
+    const wrapper = mount(
+      <Portal handlePortalUnmount={mHandlePortalUnmount} afterClose={mAfterClose} />,
+    );
+    const popupRef = wrapper.instance()['popup'] as HTMLDivElement;
+    const mEvent = ({ stopPropagation: jest.fn(), target: popupRef } as unknown) as TransitionEvent;
+    handlerRef(mEvent);
+    expect(wrapper.instance()['_container'].className).toEqual(
+      'za-popup-container za-popup--hidden',
+    );
+    expect(mEvent.stopPropagation).toBeCalledTimes(1);
+    expect(mHandlePortalUnmount).toBeCalledTimes(2);
+    expect(mAfterClose).toBeCalledTimes(1);
+  });
+
+  it('should handle animation end event if animation state is enter', () => {
+    let handlerRef!: (e: TransitionEvent | AnimationEvent) => void;
+    jest.spyOn(Events, 'on').mockImplementationOnce((_, __, handler) => {
+      handlerRef = handler;
+    });
+    const mAfterOpen = jest.fn();
+    const wrapper = mount(<Portal visible afterOpen={mAfterOpen} />);
+    const popupRef = wrapper.instance()['popup'] as HTMLDivElement;
+    const mEvent = ({ stopPropagation: jest.fn(), target: popupRef } as unknown) as TransitionEvent;
+    handlerRef(mEvent);
+    expect(mEvent.stopPropagation).toBeCalledTimes(1);
+    expect(mAfterOpen).toBeCalledTimes(1);
   });
 });

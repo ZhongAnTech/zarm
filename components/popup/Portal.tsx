@@ -83,7 +83,7 @@ export default class Portal extends PureComponent<PortalProps, PortalState> {
     }
   }
 
-  animationEnd = (e) => {
+  animationEnd = (e: TransitionEvent | AnimationEvent) => {
     if (e.target !== this.popup) {
       return;
     }
