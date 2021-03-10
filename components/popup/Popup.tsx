@@ -21,32 +21,63 @@ export default class Popup extends PureComponent<PopupProps, PopupState> {
 
   portalRef: Portal | null;
 
-  constructor(props: PopupProps) {
+  static getDerivedStateFromProps(props: PopupProps, state: PopupState) {
+    if (props.visible !== state.portalVisible) {
+      if (props.visible) {
+        return {
+          renderPortal: true,
+          portalVisible: true,
+        };
+      }
+      return {
+        portalVisible: false,
+      };
+    }
+    return null;
+  }
+
+  constructor(props) {
     super(props);
-    const { visible } = props;
-    this.state = { renderPortal: visible, portalVisible: visible };
+    this.state = {
+      renderPortal: false,
+      portalVisible: false,
+    };
     this.handlePortalUnmount = this.handlePortalUnmount.bind(this);
+  }
+
+  componentDidMount() {
+    const { visible } = this.props;
+    if (visible) {
+      this.setState({
+        renderPortal: true,
+        portalVisible: true,
+      });
+    }
   }
 
   handlePortalUnmount() {
     const { destroy } = this.props;
     if (destroy) {
-      this.setState({ renderPortal: false });
+      this.setState({
+        renderPortal: false,
+      });
     } else {
-      this.setState({ renderPortal: true, portalVisible: false });
+      this.setState({
+        renderPortal: true,
+        portalVisible: false,
+      });
     }
   }
 
   render() {
     const { renderPortal, portalVisible } = this.state;
-    const { visible, destroy, ...others } = this.props;
     return (
       renderPortal && (
         <Portal
           ref={(ref) => {
             this.portalRef = ref;
           }}
-          {...others}
+          {...this.props}
           visible={portalVisible}
           handlePortalUnmount={this.handlePortalUnmount}
         />
