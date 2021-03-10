@@ -135,6 +135,14 @@ describe('Portal', () => {
     expect(mountContainer.querySelector('.za-popup-container')).toBeFalsy();
   });
 
+  it('should not handle animation if prevProps visible equal with current props visible', () => {
+    const setStateSpy = jest.spyOn(Portal.prototype, 'setState');
+    const wrapper = mount(<Portal />);
+    expect(wrapper.state('isPending')).toBeTruthy();
+    wrapper.setProps({ visible: false });
+    expect(setStateSpy).toBeCalledTimes(1);
+  });
+
   it('should create container inside document.body', () => {
     const createElementSpy = jest.spyOn(document, 'createElement');
     const appendChildSpy = jest.spyOn(document.body, 'appendChild');
@@ -276,6 +284,18 @@ describe('Portal', () => {
     maskWrapper.simulate('click', mEvent);
     expect(mEvent.stopPropagation).toBeCalledTimes(1);
     expect(mOnMaskClick).not.toBeCalled();
+  });
+
+  it('should not handle animation end event if event target is popup ref', () => {
+    let handlerRef!: (e: TransitionEvent | AnimationEvent) => void;
+    jest.spyOn(Events, 'on').mockImplementationOnce((_, __, handler) => {
+      handlerRef = handler;
+    });
+    const mAfterOpen = jest.fn();
+    mount(<Portal visible afterOpen={mAfterOpen} />);
+    const mEvent = ({ stopPropagation: jest.fn() } as unknown) as TransitionEvent;
+    handlerRef(mEvent);
+    expect(mEvent.stopPropagation).not.toBeCalled();
   });
 
   it('should handle animation end event if animation state is leave', () => {
