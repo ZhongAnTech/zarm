@@ -192,4 +192,24 @@ describe('Drag', () => {
     expect(eventsOffSpy).toBeCalledWith(document.body, 'mousemove', expect.any(Function));
     expect(eventsOffSpy).toBeCalledWith(document.body, 'mouseup', expect.any(Function));
   });
+
+  it('should not call onDragEnd event handler if it does not exist', () => {
+    const DateSpy = jest.spyOn(global, 'Date');
+    const wrapper = mount(
+      <Drag>
+        <div />
+      </Drag>,
+    );
+    const mTouchStartEvent = createStartTouchEventObject({ x: 100, y: 0 });
+    const mTouchEndEvent = ({ touches: [] } as unknown) as TouchEvent;
+    const divWrapper = wrapper.find('div');
+    divWrapper.invoke('onTouchStart')(mTouchStartEvent);
+    expect(wrapper.instance()['dragState']).toEqual({
+      startX: 100,
+      startY: 0,
+      startTime: DateSpy.mock.instances[0],
+    });
+    divWrapper.invoke('onTouchEnd')(mTouchEndEvent);
+    expect(wrapper.instance()['dragState']).toEqual({});
+  });
 });
