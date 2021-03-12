@@ -25,13 +25,15 @@ const originImages = [
 ];
 
 describe('ImagePreview', () => {
-  it('renders correctly', () => {
-    const wrapper = mount(<ImagePreview visible onChange={jest.fn()} images={images} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
-  });
+  describe('snapshot', () => {
+    it('renders correctly', () => {
+      const wrapper = mount(<ImagePreview visible onChange={jest.fn()} images={images} />);
+      expect(toJson(wrapper)).toMatchSnapshot();
+    });
 
-  it('renders correctly with origin', () => {
-    const wrapper = mount(<ImagePreview visible onChange={jest.fn()} images={originImages} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    it('renders correctly with origin', () => {
+      const wrapper = mount(<ImagePreview visible onChange={jest.fn()} images={originImages} />);
+      expect(toJson(wrapper)).toMatchSnapshot();
+    });
   });
 });
