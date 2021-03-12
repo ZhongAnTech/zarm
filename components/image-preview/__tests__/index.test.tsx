@@ -68,4 +68,9 @@ describe('ImagePreview', () => {
     expect(wrapper.state('currentIndex')).toEqual(1);
     expect(mOnChange).toBeCalledWith(1);
   });
+
+  it('should load origin url for first image', () => {
+    mount(<ImagePreview images={originImages} visible />);
+    // wrapper.find('.za-image-preview__origin__button').simulate('click');
+  });
 });
