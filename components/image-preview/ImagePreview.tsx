@@ -10,6 +10,7 @@ import type { Locale } from '../config-provider/PropsType';
 import LOAD_STATUS from './utils/loadStatus';
 import formatImages from './utils/formatImages';
 import showOriginButton from './utils/showOriginButton';
+import localeZHCN from './locale/zh_CN';
 
 export interface ImagePreviewProps extends PropsType {
   prefixCls?: string;
@@ -35,10 +36,13 @@ const parseState = (props: ImagePreviewProps): ImagePreviewState => {
 };
 
 export class ImagePreview extends Component<ImagePreviewProps, ImagePreviewState> {
-  static defaultProps = {
+  static defaultProps: ImagePreviewProps = {
     prefixCls: 'za-image-preview',
     activeIndex: 0,
     showPagination: true,
+    images: [],
+    visible: false,
+    locale: localeZHCN,
   };
 
   doubleClickTimer: ReturnType<typeof setTimeout> | null;
@@ -167,8 +171,22 @@ export class ImagePreview extends Component<ImagePreviewProps, ImagePreviewState
     });
   };
 
+  renderPagination() {
+    const { prefixCls, showPagination } = this.props;
+    const { currentIndex = 0, visible, images } = this.state;
+
+    if (visible && showPagination && images && images.length > 1) {
+      return (
+        <div className={`${prefixCls}__index`}>
+          {currentIndex + 1} / {images.length}
+        </div>
+      );
+    }
+    return null;
+  }
+
   render() {
-    const { prefixCls, locale, activeIndex, showPagination } = this.props;
+    const { prefixCls, locale, activeIndex } = this.props;
     const { currentIndex = 0, visible, images } = this.state;
     const { loaded } = images[currentIndex];
     return (
@@ -201,11 +219,7 @@ export class ImagePreview extends Component<ImagePreviewProps, ImagePreviewState
           ) : (
             ''
           )}
-          {visible && showPagination && images && images.length > 1 && (
-            <div className={`${prefixCls}__index`}>
-              {currentIndex + 1} / {images.length}
-            </div>
-          )}
+          {this.renderPagination()}
         </div>
       </Popup>
     );

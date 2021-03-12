@@ -1,7 +1,7 @@
 import React from 'react';
-import { render } from 'enzyme';
+import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import ImagePreview from '../index';
+import { ImagePreview } from '../ImagePreview';
 
 const images = [
   'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
@@ -26,12 +26,12 @@ const originImages = [
 
 describe('ImagePreview', () => {
   it('renders correctly', () => {
-    const wrapper = render(<ImagePreview checked onChange={jest.fn()} images={images} />);
+    const wrapper = mount(<ImagePreview visible onChange={jest.fn()} images={images} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders correctly with origin', () => {
-    const wrapper = render(<ImagePreview checked onChange={jest.fn()} images={originImages} />);
+    const wrapper = mount(<ImagePreview visible onChange={jest.fn()} images={originImages} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });
