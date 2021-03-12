@@ -15,7 +15,7 @@ import localeZHCN from './locale/zh_CN';
 export interface ImagePreviewProps extends PropsType {
   prefixCls?: string;
   className?: string;
-  locale?: Locale['ImagePreview'];
+  locale: Locale['ImagePreview'];
 }
 
 export interface ImagePreviewState {
@@ -214,7 +214,7 @@ export class ImagePreview extends Component<ImagePreviewProps, ImagePreviewState
               ) : (
                 ''
               )}
-              {locale![loaded]}
+              {locale[loaded]}
             </button>
           ) : (
             ''
