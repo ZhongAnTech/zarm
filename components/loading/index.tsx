@@ -22,7 +22,7 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
 
   static hideHelper: () => void;
 
-  static show = (content: LoadingProps) => {
+  static show = (content?: LoadingProps) => {
     Loading.unmountNode();
     if (!Loading.zarmLoading) {
       Loading.zarmLoading = document.createElement('div');
@@ -67,7 +67,7 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
     }
   };
 
-  private timer = 0;
+  private timer: ReturnType<typeof setTimeout>;
 
   state = {
     visible: this.props.visible,
@@ -79,13 +79,10 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
 
   componentDidUpdate(prevProps: LoadingProps) {
     const { visible } = this.props;
-
     if (prevProps.visible !== visible) {
-      if (visible === true) {
+      if (visible) {
         // eslint-disable-next-line
-        this.setState({
-          visible: true,
-        });
+        this.setState({ visible: true });
         this.autoClose();
       } else {
         this._hide();
@@ -118,7 +115,7 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
   autoClose() {
     const { stayTime } = this.props;
 
-    if ((stayTime as number) > 0) {
+    if (stayTime && stayTime > 0) {
       this.timer = setTimeout(() => {
         this._hide();
         clearTimeout(this.timer);
