@@ -92,16 +92,12 @@ export default class Portal extends PureComponent<PortalProps, PortalState> {
     const animationState = visible ? 'enter' : 'leave';
     if (animationState === 'leave') {
       this._container && this._container.classList.add(`${prefixCls}--hidden`);
-      // handle Portal unmount twice?
       if (typeof handlePortalUnmount === 'function') {
         handlePortalUnmount();
       }
 
       if (typeof afterClose === 'function') {
         afterClose();
-      }
-      if (typeof handlePortalUnmount === 'function') {
-        handlePortalUnmount();
       }
     } else if (typeof afterOpen === 'function') {
       afterOpen();

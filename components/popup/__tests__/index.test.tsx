@@ -315,7 +315,7 @@ describe('Portal', () => {
       'za-popup-container za-popup--hidden',
     );
     expect(mEvent.stopPropagation).toBeCalledTimes(1);
-    expect(mHandlePortalUnmount).toBeCalledTimes(2);
+    expect(mHandlePortalUnmount).toBeCalledTimes(1);
     expect(mAfterClose).toBeCalledTimes(1);
   });
 
