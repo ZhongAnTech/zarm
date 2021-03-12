@@ -4,8 +4,12 @@ import toJson from 'enzyme-to-json';
 import { ImagePreview } from '../ImagePreview';
 import { images, originImages } from '../../../tests/testData/images';
 import Carousel from '../../carousel';
+import { Images } from '../PropsType';
 
 describe('ImagePreview', () => {
+  afterEach(() => {
+    jest.useRealTimers();
+  });
   describe('snapshot', () => {
     it('renders correctly', () => {
       const wrapper = mount(<ImagePreview visible onChange={jest.fn()} images={images} />);
@@ -70,7 +74,50 @@ describe('ImagePreview', () => {
   });
 
   it('should load origin url for first image', () => {
-    mount(<ImagePreview images={originImages} visible />);
-    // wrapper.find('.za-image-preview__origin__button').simulate('click');
+    let onloadRef: typeof Image.prototype.onload;
+    let srcRef: string;
+    const onloadSymbol = Symbol('onload');
+    const srcSymbol = Symbol('src');
+    Object.defineProperty(Image.prototype, 'onload', {
+      get() {
+        return this[onloadSymbol];
+      },
+      set(onload) {
+        onloadRef = onload;
+        this[onloadSymbol] = onload;
+      },
+      configurable: true,
+    });
+    Object.defineProperty(Image.prototype, 'src', {
+      get() {
+        return this[srcSymbol];
+      },
+      set(src) {
+        srcRef = src;
+        this[srcSymbol] = src;
+      },
+      configurable: true,
+    });
+    jest.useFakeTimers();
+    const wrapper = mount(<ImagePreview images={originImages} visible />);
+    wrapper.find('.za-image-preview__origin__button').simulate('click');
+    expect((wrapper.state('images') as Images)[0]).toEqual({
+      url: 'https://cdn-health.zhongan.com/zarm/imagePreview/compress_1.png',
+      originUrl: 'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
+      loaded: 'loadStart',
+    });
+    onloadRef();
+    expect((wrapper.state('images') as Images)[0]).toEqual({
+      url: 'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
+      originUrl: 'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
+      loaded: 'loadEnd',
+    });
+    jest.advanceTimersByTime(1500);
+    expect((wrapper.state('images') as Images)[0]).toEqual({
+      url: 'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
+      originUrl: 'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
+      loaded: 'loadAfter',
+    });
+    expect(srcRef!).toEqual('https://static.zhongan.com/website/health/zarm/images/banners/1.png');
   });
 });

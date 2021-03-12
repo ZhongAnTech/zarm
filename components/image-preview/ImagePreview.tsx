@@ -94,7 +94,6 @@ export class ImagePreview extends Component<ImagePreviewProps, ImagePreviewState
   };
 
   loadOrigin = () => {
-    console.log('97:loadOrigin');
     const { currentIndex = 0, images } = this.state;
     const { originUrl, loaded } = images[currentIndex];
     if (loaded !== LOAD_STATUS.before || !originUrl) {
