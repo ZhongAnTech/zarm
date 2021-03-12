@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import PropsType from './PropsType';
+import type PropsType from './PropsType';
 import Message from '../message';
 import Icon from '../icon';
 import { addKeyframe, removeKeyframe, existKeyframe } from '../utils/keyframes';
@@ -69,7 +69,7 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
           -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
         }
-      
+
         ${100 - delayPercent}%, 100% {
           -webkit-transform: translate3d(${-(offsetWidth - wrapWidth)}px, 0, 0);
           transform: translate3d(${-(offsetWidth - wrapWidth)}px, 0, 0);
