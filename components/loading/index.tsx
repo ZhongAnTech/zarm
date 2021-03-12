@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
-import PropsType from './PropsType';
+import type PropsType from './PropsType';
 import Popup from '../popup';
 import { getMountContainer } from '../utils/dom';
 import ActivityIndicator from '../activity-indicator';
@@ -24,6 +24,7 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
 
   static show = (content?: LoadingProps) => {
     Loading.unmountNode();
+    // TODO: after calling .unmountNode(), Loading.zarmLoading is null. Is this check necessary?
     if (!Loading.zarmLoading) {
       Loading.zarmLoading = document.createElement('div');
       Loading.zarmLoading.classList.add('za-loading-container');
@@ -36,20 +37,16 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
           : getMountContainer();
       Loading.loadingContainer.appendChild(Loading.zarmLoading);
     }
+    const props: LoadingProps = {
+      ...Loading.defaultProps,
+      ...(content as LoadingProps),
+      ...{ visible: true, mountContainer: false },
+    };
 
-    if (Loading.zarmLoading) {
-      const props: LoadingProps = {
-        ...Loading.defaultProps,
-        ...(content as LoadingProps),
-        ...{ visible: true, mountContainer: false },
-      };
-
-      Loading.hideHelper = () => {
-        ReactDOM.render(<Loading {...props} visible={false} />, Loading.zarmLoading);
-      };
-
-      ReactDOM.render(<Loading {...props} />, Loading.zarmLoading);
-    }
+    Loading.hideHelper = () => {
+      ReactDOM.render(<Loading {...props} visible={false} />, Loading.zarmLoading);
+    };
+    ReactDOM.render(<Loading {...props} />, Loading.zarmLoading);
   };
 
   static hide = () => {

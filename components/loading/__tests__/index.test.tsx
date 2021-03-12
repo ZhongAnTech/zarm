@@ -1,13 +1,31 @@
 import React from 'react';
 import type { ReactElement } from 'react';
 import { mount, shallow } from 'enzyme';
-import ReactDOM from 'react-dom';
-import Loading from '../index';
 
 describe('Loading', () => {
+  let Loading: typeof import('../index').default;
+  let ReactDOM: typeof import('react-dom');
+  let renderSpy: jest.SpyInstance;
+  let unmountNodeSpy: jest.SpyInstance;
+  let createElementSpy: jest.SpyInstance;
+  beforeEach(() => {
+    jest.resetModules();
+    ReactDOM = require('react-dom');
+    renderSpy = jest.spyOn(ReactDOM, 'render');
+    createElementSpy = jest.spyOn(document, 'createElement');
+
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    Loading = require('../index').default;
+
+    unmountNodeSpy = jest.spyOn(Loading, 'unmountNode');
+  });
   afterEach(() => {
     jest.useRealTimers();
     jest.restoreAllMocks();
+    const LoadingContainer = document.body.querySelector('.za-loading-container');
+    if (LoadingContainer) {
+      document.body.removeChild(LoadingContainer as Node);
+    }
   });
   describe('snapshot', () => {
     it('renders correctly', () => {
@@ -43,15 +61,12 @@ describe('Loading', () => {
   });
 
   it('should create zarm loading DOM element inside document body and render Loading component inside zarm loading DOM element', () => {
-    const renderSpy = jest.spyOn(ReactDOM, 'render');
-    const unmountNodeSpy = jest.spyOn(Loading, 'unmountNode');
-    const createElementSpy = jest.spyOn(document, 'createElement');
     Loading.show();
     expect(unmountNodeSpy).toBeCalledTimes(1);
     expect(createElementSpy).toBeCalledWith('div');
     const zarmLoading = document.body.querySelector('.za-loading-container');
     expect(zarmLoading).toBeTruthy();
-    const LoadingReactElement = (renderSpy.mock.calls[1][0] as unknown) as ReactElement;
+    const LoadingReactElement = (renderSpy.mock.calls[0][0] as unknown) as ReactElement;
     expect(LoadingReactElement.props).toEqual({
       prefixCls: 'za-loading',
       mask: true,
@@ -62,16 +77,13 @@ describe('Loading', () => {
   });
 
   it('should create zarm loading DOM element inside mount container and render Loading component inside zarm loading DOM element', () => {
-    const renderSpy = jest.spyOn(ReactDOM, 'render');
-    const unmountNodeSpy = jest.spyOn(Loading, 'unmountNode');
-    const createElementSpy = jest.spyOn(document, 'createElement');
     const mountContainer = document.createElement('div');
     Loading.show({ mountContainer, className: 'test-za-loading' });
     expect(unmountNodeSpy).toBeCalledTimes(1);
     expect(createElementSpy).toBeCalledWith('div');
     const zarmLoading = mountContainer.querySelector('.test-za-loading');
     expect(zarmLoading).toBeTruthy();
-    const LoadingReactElement = (renderSpy.mock.calls[1][0] as unknown) as ReactElement;
+    const LoadingReactElement = (renderSpy.mock.calls[0][0] as unknown) as ReactElement;
     expect(LoadingReactElement.props).toEqual({
       prefixCls: 'za-loading',
       mask: true,
@@ -88,15 +100,22 @@ describe('Loading', () => {
   });
 
   it('should hide loading', () => {
-    const renderSpy = jest.spyOn(ReactDOM, 'render');
     Loading.show();
     const hideHelperSpy = jest.spyOn(Loading, 'hideHelper');
-    let loadingReactElement = (renderSpy.mock.calls[1][0] as unknown) as ReactElement;
+    let loadingReactElement = (renderSpy.mock.calls[0][0] as unknown) as ReactElement;
     expect(loadingReactElement.props.visible).toBeTruthy();
     Loading.hide();
     expect(hideHelperSpy).toBeCalledTimes(1);
-    loadingReactElement = (renderSpy.mock.calls[2][0] as unknown) as ReactElement;
+    loadingReactElement = (renderSpy.mock.calls[1][0] as unknown) as ReactElement;
     expect(loadingReactElement.props.visible).toBeFalsy();
+  });
+
+  it('should do nothing if zarm loading has been removed when hide it', () => {
+    Loading.show();
+    const hideHelperSpy = jest.spyOn(Loading, 'hideHelper');
+    Loading.zarmLoading = null;
+    Loading.hide();
+    expect(hideHelperSpy).not.toBeCalled();
   });
 
   it('should unmount zarm loading from the DOM tree', () => {
@@ -127,7 +146,7 @@ describe('Loading', () => {
     expect(clearTimeoutSpy).toBeCalledWith(expect.any(Number));
   });
 
-  it('should call after close handler', () => {
+  it('should call after close handler and remove zarm loading element from the DOM tree', () => {
     const mAfterClose = jest.fn();
     Loading.show();
     const wrapper = shallow(<Loading afterClose={mAfterClose} />);
@@ -138,6 +157,15 @@ describe('Loading', () => {
     expect(zarmLoading).toBeFalsy();
     expect(Loading.zarmLoading).toBeNull();
     expect(mAfterClose).toBeCalledTimes(1);
+  });
+
+  it('should do nothing after close if someone force remove the zarm loading dom', () => {
+    Loading.show();
+    Loading.zarmLoading = null;
+    const removeChildSpy = jest.spyOn(document.body, 'removeChild');
+    const wrapper = shallow(<Loading />);
+    wrapper.invoke('afterClose')();
+    expect(removeChildSpy).not.toBeCalled();
   });
 
   it('should show loading if nextProps.visible is true', () => {
@@ -152,5 +180,15 @@ describe('Loading', () => {
     expect(wrapper.state('visible')).toBeTruthy();
     wrapper.setProps({ visible: false });
     expect(wrapper.state('visible')).toBeFalsy();
+  });
+
+  it('should render again if zarm loading alreay exists', () => {
+    jest.spyOn(Loading, 'unmountNode').mockImplementation(() => 'assume this method broken');
+    renderSpy.mockImplementation();
+    Loading.show();
+    expect(renderSpy).toBeCalledTimes(1);
+    Loading.show();
+    expect(renderSpy).toBeCalledTimes(2);
+    expect(createElementSpy).toBeCalledTimes(1);
   });
 });
