@@ -1,10 +1,11 @@
-import React, { PureComponent, CSSProperties, ReactPortal } from 'react';
+import React, { PureComponent } from 'react';
+import type { CSSProperties, ReactPortal } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import Events from '../utils/events';
 import { canUseDOM, getMountContainer } from '../utils/dom';
 import Mask from '../mask';
-import PropsType from './PropsType';
+import type PropsType from './PropsType';
 import Trigger from '../trigger';
 
 const IS_REACT_16 = !!ReactDOM.createPortal;
@@ -15,7 +16,11 @@ export interface PortalProps extends PropsType {
   handlePortalUnmount?: () => void;
 }
 
-export default class Portal extends PureComponent<PortalProps, any> {
+export interface PortalState {
+  isPending: boolean;
+}
+
+export default class Portal extends PureComponent<PortalProps, PortalState> {
   private enterTimer: number;
 
   private mountNode?: HTMLElement;
@@ -36,7 +41,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
     maskType: Mask.defaultProps.type,
   };
 
-  constructor(props) {
+  constructor(props: PortalProps) {
     super(props);
     this.state = {
       isPending: false,
@@ -57,7 +62,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
     this.handleAnimation();
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: PortalProps) {
     const { visible } = this.props;
     if (prevProps.visible !== visible) {
       this.handleAnimation();
@@ -78,7 +83,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
     }
   }
 
-  animationEnd = (e) => {
+  animationEnd = (e: TransitionEvent | AnimationEvent) => {
     if (e.target !== this.popup) {
       return;
     }
@@ -93,9 +98,6 @@ export default class Portal extends PureComponent<PortalProps, any> {
 
       if (typeof afterClose === 'function') {
         afterClose();
-      }
-      if (typeof handlePortalUnmount === 'function') {
-        handlePortalUnmount();
       }
     } else if (typeof afterOpen === 'function') {
       afterOpen();
@@ -230,17 +232,15 @@ export default class Portal extends PureComponent<PortalProps, any> {
     if (visible) {
       if (this.popup) {
         this._container && this._container.classList.remove(`${prefixCls}--hidden`);
-        this.setState({
-          isPending: true,
-        });
+        this.setState({ isPending: true });
         this._reflow = this.popup.offsetWidth;
         this.popup.classList.add(`${prefixCls}--show`);
       }
     } else {
-      this.setState({
-        isPending: true,
-      });
-      this.popup!.classList.remove(`${prefixCls}--show`);
+      this.setState({ isPending: true });
+      if (this.popup) {
+        this.popup.classList.remove(`${prefixCls}--show`);
+      }
     }
   };
 
@@ -269,7 +269,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
     }
     if (!this._container) {
       this._container = document.createElement('div');
-      this._container.className += `${prefixCls}-container ${className}`;
+      this._container.className += classnames([`${prefixCls}-container`, className]);
       this.mountNode = getMountContainer(mountContainer);
       this.mountNode.appendChild(this._container);
     }

@@ -1,4 +1,4 @@
-import { ContainerType } from '../utils/dom';
+import type { ContainerType } from '../utils/dom';
 
 export default interface PropsType {
   visible: boolean;
