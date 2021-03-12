@@ -15,7 +15,7 @@ import localeZHCN from './locale/zh_CN';
 export interface ImagePreviewProps extends PropsType {
   prefixCls?: string;
   className?: string;
-  locale: Locale['ImagePreview'];
+  locale?: Locale['ImagePreview'];
 }
 
 export interface ImagePreviewState {
@@ -36,11 +36,10 @@ const parseState = (props: ImagePreviewProps): ImagePreviewState => {
 };
 
 export class ImagePreview extends Component<ImagePreviewProps, ImagePreviewState> {
-  static defaultProps: ImagePreviewProps = {
+  static defaultProps = {
     prefixCls: 'za-image-preview',
     activeIndex: 0,
     showPagination: true,
-    images: [],
     visible: false,
     locale: localeZHCN,
   };
@@ -214,7 +213,7 @@ export class ImagePreview extends Component<ImagePreviewProps, ImagePreviewState
               ) : (
                 ''
               )}
-              {locale[loaded]}
+              {locale && locale[loaded]}
             </button>
           ) : (
             ''
