@@ -45,7 +45,7 @@ describe('Drag', () => {
       </Drag>,
     );
     const mEvent = createStartTouchEventObject({ x: 100, y: 0 });
-    wrapper.find('div').invoke('onTouchStart')(mEvent);
+    wrapper.find('div').invoke('onTouchStart')!(mEvent);
     expect(props.onDragStart).toBeCalledWith(mEvent, {
       startX: 100,
       startY: 0,
@@ -65,7 +65,7 @@ describe('Drag', () => {
       </Drag>,
     );
     const mEvent = ({ clientX: 100, clientY: 50 } as unknown) as MouseEvent;
-    wrapper.find('div').invoke('onMouseDown')(mEvent);
+    wrapper.find('div').invoke('onMouseDown')!(mEvent);
     expect(props.onDragStart).toBeCalledWith(mEvent, {
       startX: 100,
       startY: 50,
@@ -86,8 +86,8 @@ describe('Drag', () => {
     const mTouchStartEvent = createStartTouchEventObject({ x: 0, y: 9 });
     const mTouchMoveEvent = ({ touches: [{ pageX: 100, pageY: 99 }] } as unknown) as TouchEvent;
     const divWrapper = wrapper.find('div');
-    divWrapper.invoke('onTouchStart')(mTouchStartEvent);
-    divWrapper.invoke('onTouchMove')(mTouchMoveEvent);
+    divWrapper.invoke('onTouchStart')!(mTouchStartEvent);
+    divWrapper.invoke('onTouchMove')!(mTouchMoveEvent);
     expect(mOnDragMove).toBeCalledWith(mTouchMoveEvent, {
       startX: 0,
       startY: 9,
@@ -108,13 +108,13 @@ describe('Drag', () => {
     const mMouseDownEvent = ({ clientX: 100, clientY: 100 } as unknown) as MouseEvent;
     const mMouseMoveEvent = ({ clientX: 0, clientY: 50 } as unknown) as MouseEvent;
     const divWrapper = wrapper.find('div');
-    divWrapper.invoke('onMouseDown')(mMouseDownEvent);
+    divWrapper.invoke('onMouseDown')!(mMouseDownEvent);
     expect(wrapper.instance()['dragState']).toEqual({
       startX: 100,
       startY: 100,
       startTime: DateSpy.mock.instances[0],
     });
-    divWrapper.invoke('onMouseMove')(mMouseMoveEvent);
+    divWrapper.invoke('onMouseMove')!(mMouseMoveEvent);
     expect(mOnDragMove).toBeCalledWith(mMouseMoveEvent, {
       startX: 100,
       startY: 100,
@@ -140,13 +140,13 @@ describe('Drag', () => {
     const mMouseDownEvent = ({ clientX: 100, clientY: 100 } as unknown) as MouseEvent;
     const mMouseMoveEvent = ({ clientX: 0, clientY: 50 } as unknown) as MouseEvent;
     const divWrapper = wrapper.find('div');
-    divWrapper.invoke('onMouseDown')(mMouseDownEvent);
+    divWrapper.invoke('onMouseDown')!(mMouseDownEvent);
     expect(wrapper.instance()['dragState']).toEqual({
       startX: 100,
       startY: 100,
       startTime: DateSpy.mock.instances[0],
     });
-    divWrapper.invoke('onMouseMove')(mMouseMoveEvent);
+    divWrapper.invoke('onMouseMove')!(mMouseMoveEvent);
     expect(wrapper.instance()['dragState']).toEqual({
       startX: 100,
       startY: 100,
@@ -166,10 +166,10 @@ describe('Drag', () => {
     const mTouchStartEvent = createStartTouchEventObject({ x: 100, y: 0 });
     const mTouchEndEvent = ({ touches: [] } as unknown) as TouchEvent;
     const divWrapper = wrapper.find('div');
-    divWrapper.invoke('onTouchStart')(mTouchStartEvent);
+    divWrapper.invoke('onTouchStart')!(mTouchStartEvent);
     // eslint-disable-next-line prefer-destructuring
     const dragState = wrapper.instance()['dragState'];
-    divWrapper.invoke('onTouchEnd')(mTouchEndEvent);
+    divWrapper.invoke('onTouchEnd')!(mTouchEndEvent);
     expect(mOnDragEnd).toBeCalledWith(mTouchEndEvent, dragState);
   });
 
@@ -184,10 +184,10 @@ describe('Drag', () => {
     const mMouseStartEvent = ({ clientX: 100, clientY: 100 } as unknown) as MouseEvent;
     const mMouseEndEvent = ({ clientX: 0, clientY: 50 } as unknown) as MouseEvent;
     const divWrapper = wrapper.find('div');
-    divWrapper.invoke('onMouseDown')(mMouseStartEvent);
+    divWrapper.invoke('onMouseDown')!(mMouseStartEvent);
     // eslint-disable-next-line prefer-destructuring
     const dragState = wrapper.instance()['dragState'];
-    divWrapper.invoke('onMouseUp')(mMouseEndEvent);
+    divWrapper.invoke('onMouseUp')!(mMouseEndEvent);
     expect(mOnDragEnd).toBeCalledWith(mMouseEndEvent, dragState);
     expect(eventsOffSpy).toBeCalledWith(document.body, 'mousemove', expect.any(Function));
     expect(eventsOffSpy).toBeCalledWith(document.body, 'mouseup', expect.any(Function));
@@ -203,13 +203,13 @@ describe('Drag', () => {
     const mTouchStartEvent = createStartTouchEventObject({ x: 100, y: 0 });
     const mTouchEndEvent = ({ touches: [] } as unknown) as TouchEvent;
     const divWrapper = wrapper.find('div');
-    divWrapper.invoke('onTouchStart')(mTouchStartEvent);
+    divWrapper.invoke('onTouchStart')!(mTouchStartEvent);
     expect(wrapper.instance()['dragState']).toEqual({
       startX: 100,
       startY: 0,
       startTime: DateSpy.mock.instances[0],
     });
-    divWrapper.invoke('onTouchEnd')(mTouchEndEvent);
+    divWrapper.invoke('onTouchEnd')!(mTouchEndEvent);
     expect(wrapper.instance()['dragState']).toEqual({});
   });
 });
