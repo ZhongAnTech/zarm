@@ -9,6 +9,7 @@ import Carousel from '../../carousel';
 import { Images } from '../PropsType';
 import { sleep } from '../../../tests/utils';
 import ActivityIndicator from '../../activity-indicator';
+import ImagePreviewEnhanced from '../index';
 
 describe('ImagePreview', () => {
   afterEach(() => {
@@ -25,6 +26,16 @@ describe('ImagePreview', () => {
       const wrapper = mount(<ImagePreview visible onChange={jest.fn()} images={originImages} />);
       expect(toJson(wrapper)).toMatchSnapshot();
     });
+  });
+
+  it('should pass locale and localeCode props to original component after wrapped by ConfigReceiverWrapper HOC', () => {
+    const wrapper = mount(<ImagePreviewEnhanced visible images={images} />);
+    expect(wrapper.find(ImagePreview).prop('locale')).toEqual({
+      loadBefore: '查看原图',
+      loadStart: '加载中',
+      loadEnd: '加载完成',
+    });
+    expect(wrapper.find(ImagePreview).prop('localeCode')).toEqual('zh-CN');
   });
 
   it('should get initial derived state from props', () => {
@@ -76,6 +87,13 @@ describe('ImagePreview', () => {
     wrapper.find(Carousel).invoke('onChange')!(1);
     expect(wrapper.state('currentIndex')).toEqual(1);
     expect(mOnChange).toBeCalledWith(1);
+  });
+
+  it("should not call onChange event if it's not existed", async () => {
+    const wrapper = mount(<ImagePreview visible images={images} />);
+    expect(wrapper.state('currentIndex')).toEqual(0);
+    wrapper.find(Carousel).invoke('onChange')!(1);
+    expect(wrapper.state('currentIndex')).toEqual(1);
   });
 
   it('should load origin url for first image', () => {
