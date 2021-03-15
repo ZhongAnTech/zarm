@@ -10,13 +10,6 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
       "https://static.zhongan.com/website/health/zarm/images/banners/3.png",
     ]
   }
-  locale={
-    Object {
-      "loadBefore": "查看原图",
-      "loadEnd": "加载完成",
-      "loadStart": "加载中",
-    }
-  }
   onChange={[MockFunction]}
   prefixCls="za-image-preview"
   showPagination={true}
@@ -353,13 +346,6 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
       },
     ]
   }
-  locale={
-    Object {
-      "loadBefore": "查看原图",
-      "loadEnd": "加载完成",
-      "loadStart": "加载中",
-    }
-  }
   onChange={[MockFunction]}
   prefixCls="za-image-preview"
   showPagination={true}
@@ -480,7 +466,6 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
                           class="za-image-preview__origin__button"
                         >
                           
-                          查看原图
                         </button>
                         <div
                           class="za-image-preview__index"
@@ -666,9 +651,7 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
                     <button
                       className="za-image-preview__origin__button"
                       onClick={[Function]}
-                    >
-                      查看原图
-                    </button>
+                    />
                     <div
                       className="za-image-preview__index"
                     >

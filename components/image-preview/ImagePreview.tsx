@@ -10,7 +10,6 @@ import type { Locale } from '../config-provider/PropsType';
 import LOAD_STATUS from './utils/loadStatus';
 import formatImages from './utils/formatImages';
 import showOriginButton from './utils/showOriginButton';
-import localeZHCN from './locale/zh_CN';
 
 export interface ImagePreviewProps extends PropsType {
   prefixCls?: string;
@@ -41,7 +40,6 @@ export class ImagePreview extends Component<ImagePreviewProps, ImagePreviewState
     activeIndex: 0,
     showPagination: true,
     visible: false,
-    locale: localeZHCN,
   };
 
   doubleClickTimer: ReturnType<typeof setTimeout> | null;
