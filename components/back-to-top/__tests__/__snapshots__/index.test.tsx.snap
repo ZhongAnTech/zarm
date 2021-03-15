@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BackToTop renders correctly 1`] = `
+exports[`BackToTop snapshot renders correctly 1`] = `
 <BackToTop
   prefixCls="za-back-to-top"
   scrollContainer={[Window]}
@@ -44,7 +44,7 @@ exports[`BackToTop renders correctly 1`] = `
 </BackToTop>
 `;
 
-exports[`BackToTop scrollContainer 1`] = `
+exports[`BackToTop snapshot scrollContainer 1`] = `
 Array [
   <ul
     style={

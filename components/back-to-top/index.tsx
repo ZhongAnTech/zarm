@@ -1,7 +1,8 @@
-import React, { PureComponent, MouseEvent, CSSProperties, ReactPortal } from 'react';
+import React, { PureComponent } from 'react';
+import type { MouseEvent, CSSProperties, ReactPortal } from 'react';
 import { createPortal } from 'react-dom';
 import classnames from 'classnames';
-import BasePropsType from './PropsType';
+import type BasePropsType from './PropsType';
 import Scroller from '../scroller';
 import { canUseDOM, scrollTo } from '../utils/dom';
 
@@ -29,7 +30,7 @@ export default class BackToTop extends PureComponent<BackToTopProps, BackToTopSt
     visible: false,
   };
 
-  private timer;
+  private timer: ReturnType<typeof setInterval>;
 
   private portalContainer: HTMLDivElement;
 
