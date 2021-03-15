@@ -4,6 +4,10 @@ export function flushMicroTasks() {
   return new Promise((resolve) => setTimeout(resolve, 0));
 }
 
+export function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 let oCreateObjectURL: typeof window.URL.createObjectURL;
 export function mockCreateObjectURL(mock: jest.Mock) {
   oCreateObjectURL = window.URL.createObjectURL;
