@@ -1,7 +1,8 @@
-import React, { PureComponent, MouseEvent, CSSProperties, ReactPortal } from 'react';
+import React, { PureComponent } from 'react';
+import type { MouseEvent, CSSProperties, ReactPortal } from 'react';
 import { createPortal } from 'react-dom';
 import classnames from 'classnames';
-import BasePropsType from './PropsType';
+import type BasePropsType from './PropsType';
 import Scroller from '../scroller';
 import { canUseDOM, scrollTo } from '../utils/dom';
 
@@ -18,7 +19,7 @@ export interface BackToTopStates {
 export default class BackToTop extends PureComponent<BackToTopProps, BackToTopStates> {
   static displayName = 'BackToTop';
 
-  static defaultProps: BackToTopProps = {
+  static defaultProps = {
     prefixCls: 'za-back-to-top',
     speed: 100,
     visibleDistance: 400,
@@ -29,7 +30,7 @@ export default class BackToTop extends PureComponent<BackToTopProps, BackToTopSt
     visible: false,
   };
 
-  private timer;
+  private timer: ReturnType<typeof setInterval>;
 
   private portalContainer: HTMLDivElement;
 
@@ -61,11 +62,11 @@ export default class BackToTop extends PureComponent<BackToTopProps, BackToTopSt
   }
 
   get container(): HTMLElement | Window {
-    return this.scroller ? this.scroller!.scrollContainer : window;
+    return this.scroller ? this.scroller.scrollContainer : window;
   }
 
   get scrollTop(): number {
-    return this.scroller ? this.scroller!.scrollTop : 0;
+    return this.scroller ? this.scroller.scrollTop : 0;
   }
 
   get renderPortal(): ReactPortal | null {
@@ -113,7 +114,7 @@ export default class BackToTop extends PureComponent<BackToTopProps, BackToTopSt
     });
   };
 
-  scrollToTop = (e): void => {
+  scrollToTop = (e: MouseEvent<HTMLDivElement>): void => {
     const { speed, onClick } = this.props;
     const { container } = this;
 
@@ -127,7 +128,7 @@ export default class BackToTop extends PureComponent<BackToTopProps, BackToTopSt
       return;
     }
 
-    const x: number = this.props.speed as number;
+    const x: number = this.props.speed!;
     scrollTo(container, 0, 0, this.scrollTop / ((x / 10) * 1000));
   };
 
