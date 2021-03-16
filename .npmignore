@@ -4,6 +4,7 @@
 .editorconfig
 .eslintignore
 .eslintrc
+.eslintrc.js
 .gitignore
 .npmignore
 .vscode
