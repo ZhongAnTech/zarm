@@ -1,8 +1,3 @@
-import React from 'react';
-import { render } from 'enzyme';
-import toJson from 'enzyme-to-json';
-import ImagePreview from '../index';
-
 const images = [
   'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
   'https://static.zhongan.com/website/health/zarm/images/banners/2.png',
@@ -24,14 +19,4 @@ const originImages = [
   },
 ];
 
-describe('ImagePreview', () => {
-  it('renders correctly', () => {
-    const wrapper = render(<ImagePreview checked onChange={jest.fn()} images={images} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
-  });
-
-  it('renders correctly with origin', () => {
-    const wrapper = render(<ImagePreview checked onChange={jest.fn()} images={originImages} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
-  });
-});
+export { images, originImages };
