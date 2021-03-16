@@ -3,7 +3,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { ImagePreview } from '../ImagePreview';
+import ImagePreview from '../ImagePreview';
 import { images, originImages } from '../../../tests/testData/images';
 import Carousel from '../../carousel';
 import { Images } from '../PropsType';
