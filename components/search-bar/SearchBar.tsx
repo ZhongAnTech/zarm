@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
+import type { FormEvent } from 'react';
 import classnames from 'classnames';
-import BaseSearchBarProps from './PropsType';
+import type BaseSearchBarProps from './PropsType';
 import Icon from '../icon';
 import InputBase from '../input/InputBase';
 
@@ -9,12 +10,19 @@ export interface SearchBarProps extends BaseSearchBarProps {
   className?: string;
 }
 
-export default class SearchBar extends PureComponent<SearchBarProps, any> {
-  private cancelRef;
+export interface SearchBarState {
+  focus: boolean;
+  value?: string;
+  isOnComposition: boolean;
+  preValue?: string;
+}
 
-  private cancelOuterWidth;
+export default class SearchBar extends PureComponent<SearchBarProps, SearchBarState> {
+  private cancelRef: HTMLDivElement | null = null;
 
-  private inputRef;
+  private cancelOuterWidth: number;
+
+  private inputRef: InputBase | null = null;
 
   static defaultProps: SearchBarProps = {
     prefixCls: 'za-search-bar',
@@ -24,7 +32,7 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
     clearable: true,
   };
 
-  constructor(props) {
+  constructor(props: SearchBarProps) {
     super(props);
     this.state = {
       focus: false,
@@ -37,7 +45,7 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
     this.calculatePositon(this.props);
   }
 
-  static getDerivedStateFromProps(nextProps, state) {
+  static getDerivedStateFromProps(nextProps: SearchBarProps, state: SearchBarState) {
     if ('value' in nextProps && nextProps.value !== state.preValue) {
       return {
         value: nextProps.value,
@@ -47,13 +55,13 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
     return null;
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: SearchBarProps) {
     const { cancelText, showCancel, locale } = this.props;
     // 若改变了取消文字的内容或者placeholder的内容需要重新计算位置
     if (
       cancelText !== prevProps.cancelText ||
       showCancel !== prevProps.showCancel ||
-      locale!.cancelText !== prevProps.locale.cancelText
+      locale!.cancelText !== prevProps.locale!.cancelText
     ) {
       this.calculatePositon(this.props);
     }
@@ -66,7 +74,7 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
     onFocus && onFocus();
   }
 
-  onChange(value) {
+  onChange(value?: string) {
     const { onChange } = this.props;
     const { isOnComposition } = this.state;
 
@@ -80,67 +88,46 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
     const { onBlur } = this.props;
     const { value, focus } = this.state;
 
-    this.setState(
-      {
-        focus: false,
-      },
-      () => {
-        !value && this.blurAnim();
-        focus && onBlur && onBlur();
-      },
-    );
+    this.setState({ focus: false }, () => {
+      !value && this.blurAnim();
+      focus && onBlur && onBlur();
+    });
   }
 
   onClear() {
     const { onClear, onChange } = this.props;
-    this.setState(
-      {
-        value: '',
-        isOnComposition: false,
-      },
-      () => {
-        this.focus();
-      },
-    );
+    this.setState({ value: '', isOnComposition: false }, () => {
+      this.focus();
+    });
     onClear && onClear('');
     onChange && onChange('');
   }
 
   onCancel() {
     const { onCancel } = this.props;
-    this.setState(
-      {
-        value: '',
-        isOnComposition: false,
-      },
-      () => {
-        this.onBlur();
-      },
-    );
+    this.setState({ value: '', isOnComposition: false }, () => {
+      this.onBlur();
+    });
     onCancel && onCancel();
   }
 
-  onSubmit(e) {
+  onSubmit(e: FormEvent) {
     const { onSubmit } = this.props;
     const { value } = this.state;
 
     e.preventDefault();
-    this.inputRef.blur();
+    this.inputRef && this.inputRef.blur();
     onSubmit && onSubmit(value);
   }
 
   handleComposition(e) {
     if (e.type === 'compositionstart') {
-      this.setState({
-        isOnComposition: true,
-      });
+      this.setState({ isOnComposition: true });
     }
 
     if (e.type === 'compositionend') {
       // composition is end
-      this.setState({
-        isOnComposition: false,
-      });
+      this.setState({ isOnComposition: false });
 
       const { onChange } = this.props;
       const { value } = e.target;
@@ -150,6 +137,7 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
 
   // 初始化搜索提示文字的位置
   calculatePositon(props) {
+    if (!this.cancelRef) return;
     const { showCancel } = props;
     const { value } = this.state;
 
@@ -171,19 +159,20 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
   }
 
   focusAnim() {
+    if (!this.cancelRef) return;
     this.cancelRef.style.cssText = 'margin-right: 0px;';
     this.cancelRef.className += ' animation-ease';
   }
 
   blurAnim() {
     const { showCancel } = this.props;
-    if (!showCancel) {
+    if (!showCancel && this.cancelRef) {
       this.cancelRef.style.cssText = `margin-right: -${this.cancelOuterWidth}px;`;
     }
   }
 
   focus() {
-    this.inputRef.focus();
+    this.inputRef && this.inputRef.focus();
   }
 
   renderCancel() {
