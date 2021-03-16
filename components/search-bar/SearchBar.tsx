@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, CompositionEvent } from 'react';
 import type { FormEvent } from 'react';
 import classnames from 'classnames';
 import type BaseSearchBarProps from './PropsType';
@@ -120,7 +120,7 @@ export default class SearchBar extends PureComponent<SearchBarProps, SearchBarSt
     onSubmit && onSubmit(value);
   }
 
-  handleComposition(e) {
+  handleComposition(e: CompositionEvent<HTMLInputElement>) {
     if (e.type === 'compositionstart') {
       this.setState({ isOnComposition: true });
     }
@@ -130,13 +130,16 @@ export default class SearchBar extends PureComponent<SearchBarProps, SearchBarSt
       this.setState({ isOnComposition: false });
 
       const { onChange } = this.props;
-      const { value } = e.target;
-      onChange && onChange(value);
+      const { target } = e;
+      if (target) {
+        const { value } = target as HTMLInputElement;
+        onChange && onChange(value);
+      }
     }
   }
 
   // 初始化搜索提示文字的位置
-  calculatePositon(props) {
+  calculatePositon(props: SearchBarProps) {
     if (!this.cancelRef) return;
     const { showCancel } = props;
     const { value } = this.state;

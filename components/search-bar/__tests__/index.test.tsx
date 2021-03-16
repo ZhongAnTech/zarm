@@ -82,4 +82,6 @@ describe('SearchBar', () => {
     //   expect(toJson(wrapper)).toMatchSnapshot();
     // });
   });
+
+  it('should ', () => {});
 });
