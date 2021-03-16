@@ -34,7 +34,7 @@ const parseState = (props: ImagePreviewProps): ImagePreviewState => {
   };
 };
 
-export class ImagePreview extends Component<ImagePreviewProps, ImagePreviewState> {
+export default class ImagePreview extends Component<ImagePreviewProps, ImagePreviewState> {
   static defaultProps = {
     prefixCls: 'za-image-preview',
     activeIndex: 0,
