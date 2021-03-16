@@ -11,6 +11,8 @@
 .stylelintrc
 .travis.yml
 .sentryclirc
+.prettierrc
+.prettierignore
 *.log
 netlify.toml
 yarn.lock
