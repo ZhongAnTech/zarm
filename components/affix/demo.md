@@ -5,33 +5,45 @@
 ## 基本用法
 
 ```jsx
-import { Affix, Button } from 'zarm';
-const { useState } = React;
-
-const repeat = (n) => {
-  return new Array(n).fill('');
-}
+import { Affix, Cell, Button, Switch } from 'zarm';
+const { useState, useCallback } = React;
 
 const Demo = () => {
-  const [top, setTop] = useState(10);
-  const [bottom, setBottom] = useState(10);
+  const [affixed, setAffixed] = useState(true);
 
   return (
     <>
-      <Affix offsetTop={top}>
-        <Button theme="primary" onClick={() => setTop(top + 10)}>
-          Affix top
-        </Button>
-      </Affix>
-      <br />
-      {repeat(50).map((e, i) => (
-        <br key={i} />
-      ))}
-      <Affix offsetBottom={bottom}>
-        <Button theme="primary" onClick={() => setBottom(bottom + 10)}>
-          Affix bottom
-        </Button>
-      </Affix>
+      <Cell
+        title="是否启用 Affix"
+        description={
+          <Switch checked={affixed} onChange={setAffixed} />
+        }
+      />
+      {affixed ? (
+        <>
+          <Affix offsetTop={20}>
+            <Button theme="primary">
+              Top
+            </Button>
+          </Affix>
+          <div className="seperator" />
+          <Affix offsetBottom={20}>
+            <Button theme="primary">
+              Bottom
+            </Button>
+          </Affix>
+        </>
+      ) : (
+        <>
+          <Button theme="primary">
+            Top
+          </Button>
+          <div className="seperator" />
+          <Button theme="primary">
+            Bottom
+          </Button>
+        </>
+      )}
     </>
   );
 };
