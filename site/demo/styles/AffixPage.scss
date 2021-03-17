@@ -1,6 +1,10 @@
 @import "@site/styles/index";
 
 .affix-page {
+  .seperator {
+    height: r(500);
+  }
+
   .carousel__item__pic {
     img {
       width: 100%;
