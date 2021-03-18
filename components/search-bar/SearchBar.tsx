@@ -61,7 +61,7 @@ export default class SearchBar extends PureComponent<SearchBarProps, SearchBarSt
     if (
       cancelText !== prevProps.cancelText ||
       showCancel !== prevProps.showCancel ||
-      locale!.cancelText !== prevProps.locale!.cancelText
+      (locale && prevProps.locale && locale.cancelText !== prevProps.locale.cancelText)
     ) {
       this.calculatePositon(this.props);
     }
@@ -144,13 +144,12 @@ export default class SearchBar extends PureComponent<SearchBarProps, SearchBarSt
     const { showCancel } = props;
     const { value } = this.state;
 
-    const ml = parseInt(
-      window.getComputedStyle(this.cancelRef, '')['margin-left'].split('px')[0],
-      10,
-    );
-    this.cancelOuterWidth = Math.ceil(ml + this.cancelRef.getBoundingClientRect().width);
-
     if (!showCancel) {
+      const ml = parseInt(
+        window.getComputedStyle(this.cancelRef, '')['margin-left'].split('px')[0],
+        10,
+      );
+      this.cancelOuterWidth = Math.ceil(ml + this.cancelRef.getBoundingClientRect().width);
       this.cancelRef.style.cssText = `margin-right: -${this.cancelOuterWidth}px;`;
     } else {
       this.cancelRef.style.cssText = 'margin-right: 0px;';
@@ -191,7 +190,7 @@ export default class SearchBar extends PureComponent<SearchBarProps, SearchBarSt
           this.onCancel();
         }}
       >
-        {cancelText || locale!.cancelText}
+        {cancelText || (locale && locale.cancelText)}
       </div>
     );
   }
@@ -230,7 +229,7 @@ export default class SearchBar extends PureComponent<SearchBarProps, SearchBarSt
               <InputBase
                 className={`${prefixCls}__input`}
                 type="search"
-                placeholder={placeholder || locale!.placeholder}
+                placeholder={placeholder || (locale && locale.placeholder)}
                 value={value}
                 maxLength={maxLength}
                 onFocus={() => {
