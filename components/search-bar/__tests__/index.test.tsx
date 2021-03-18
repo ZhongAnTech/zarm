@@ -180,7 +180,7 @@ describe('SearchBar', () => {
   it('should handle composition end event and call props.onChange()', () => {
     const mOnChange = jest.fn();
     const wrapper = mount(<SearchBarOriginal onChange={mOnChange} />);
-    const mEvent = { target: { value: 'test' } };
+    const mEvent = { target: { value: 'test' }, type: 'compositionend' };
     const inputWrapper = wrapper.find('input');
     inputWrapper.simulate('compositionend', mEvent);
     expect(wrapper.state('value')).toEqual('test');
@@ -290,5 +290,17 @@ describe('SearchBar', () => {
     expect(mEvent.preventDefault).toBeCalledTimes(1);
     expect(blurSpy).toBeCalledTimes(1);
     expect(mOnSubmit).toBeCalledWith('test');
+  });
+
+  it('should handle composition update event', () => {
+    const handleCompositionSpy = jest.spyOn(SearchBarOriginal.prototype, 'handleComposition');
+    const wrapper = mount(<SearchBarOriginal />);
+    wrapper.find('input').simulate('compositionupdate');
+    expect(handleCompositionSpy).toBeCalledTimes(1);
+    expect(handleCompositionSpy).toBeCalledWith(
+      expect.objectContaining({
+        type: 'compositionupdate',
+      }),
+    );
   });
 });

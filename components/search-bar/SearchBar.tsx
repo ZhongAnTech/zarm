@@ -131,10 +131,8 @@ export default class SearchBar extends PureComponent<SearchBarProps, SearchBarSt
 
       const { onChange } = this.props;
       const { target } = e;
-      if (target) {
-        const { value } = target as HTMLInputElement;
-        onChange && onChange(value);
-      }
+      const { value } = target as HTMLInputElement;
+      onChange && onChange(value);
     }
   }
 
