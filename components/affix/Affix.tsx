@@ -62,6 +62,26 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
     });
   }
 
+  onPositionUpdate = throttle(() => {
+    const { onChange } = this.props;
+    const { affixed } = this.state;
+    const target = this.savePlaceholderNode.current!;
+    const { top, width, height } = target.getBoundingClientRect()!;
+
+    this.saveFixedNodeTop = top;
+
+    const currentAffixed = this.affixed;
+    if (currentAffixed !== affixed) {
+      this.setState({
+        affixed: currentAffixed,
+        // use 'auto' when get width or height is 0
+        width: width === 0 ? ('auto' as any) : width,
+        height: height === 0 ? ('auto' as any) : height,
+      });
+      onChange && onChange(currentAffixed);
+    }
+  }, 250);
+
   get container() {
     const { scrollContainer } = this.props;
     const container = typeof scrollContainer === 'function' ? scrollContainer!() : scrollContainer;
@@ -128,26 +148,6 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
 
     return {};
   }
-
-  onPositionUpdate = throttle(() => {
-    const { onChange } = this.props;
-    const { affixed } = this.state;
-    const target = this.savePlaceholderNode.current!;
-    const { top, width, height } = target.getBoundingClientRect()!;
-
-    this.saveFixedNodeTop = top;
-
-    const currentAffixed = this.affixed;
-    if (currentAffixed !== affixed) {
-      this.setState({
-        affixed: currentAffixed,
-        // use 'auto' when get width or height is 0
-        width: width === 0 ? ('auto' as any) : width,
-        height: height === 0 ? ('auto' as any) : height,
-      });
-      onChange && onChange(currentAffixed);
-    }
-  }, 250);
 
   render() {
     const { prefixCls, className, children } = this.props;
