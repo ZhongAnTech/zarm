@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import { AffixProps as BaseAffixProps } from './PropsType';
 import Events from '../utils/events';
 import { canUseDOM } from '../utils/dom';
+import throttle from '../utils/throttle';
 
 export interface AffixStates {
   affixed: boolean;
@@ -16,12 +17,14 @@ export interface AffixProps extends BaseAffixProps {
   className?: string;
 }
 
+const DEFAULT_SCROLL_CONTAINER = canUseDOM ? window : undefined;
+
 export default class Affix extends PureComponent<AffixProps, AffixStates> {
   static displayName = 'Affix';
 
-  static defaultProps = {
+  static defaultProps: AffixProps = {
     prefixCls: 'za-affix',
-    scrollContainer: () => (canUseDOM ? window : undefined),
+    scrollContainer: DEFAULT_SCROLL_CONTAINER,
     offsetTop: 0,
   };
 
@@ -75,18 +78,25 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
 
     return container !== window
       ? (container as HTMLElement).getBoundingClientRect()
-      : { top: 0, bottom: container.innerHeight, width: 0, height: 0 } as any;
+      : ({ top: 0, bottom: container.innerHeight, width: 0, height: 0 } as any);
   }
 
   get affixed() {
     const { containerRect, saveFixedNodeTop } = this;
     const { offsetTop, offsetBottom } = this.props;
 
-    if (typeof offsetBottom !== 'undefined' && saveFixedNodeTop + offsetBottom >= containerRect.bottom) {
+    if (
+      typeof offsetBottom !== 'undefined' &&
+      saveFixedNodeTop + offsetBottom >= containerRect.bottom
+    ) {
       return true;
     }
 
-    if (typeof offsetBottom === 'undefined' && typeof offsetTop !== 'undefined' && saveFixedNodeTop - offsetTop <= containerRect.top) {
+    if (
+      typeof offsetBottom === 'undefined' &&
+      typeof offsetTop !== 'undefined' &&
+      saveFixedNodeTop - offsetTop <= containerRect.top
+    ) {
       return true;
     }
 
@@ -119,7 +129,7 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
     return {};
   }
 
-  onPositionUpdate = () => {
+  onPositionUpdate = throttle(() => {
     const { onChange } = this.props;
     const { affixed } = this.state;
     const target = this.savePlaceholderNode.current!;
@@ -132,37 +142,25 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
       this.setState({
         affixed: currentAffixed,
         // use 'auto' when get width or height is 0
-        width: width === 0 ? 'auto' as any : width,
-        height: height === 0 ? 'auto' as any : height,
+        width: width === 0 ? ('auto' as any) : width,
+        height: height === 0 ? ('auto' as any) : height,
       });
       onChange && onChange(currentAffixed);
     }
-  };
+  }, 250);
 
   render() {
-    const {
-      prefixCls,
-      className,
-      children,
-    } = this.props;
+    const { prefixCls, className, children } = this.props;
 
     const cls = classnames(prefixCls, className);
 
     if (!this.affixed) {
-      return (
-        <div ref={this.savePlaceholderNode}>
-          {children}
-        </div>
-      );
+      return <div ref={this.savePlaceholderNode}>{children}</div>;
     }
 
     return (
       <div ref={this.savePlaceholderNode}>
-        <div
-          className={cls}
-          ref={this.saveFixedNode}
-          style={this.affixStyle}
-        >
+        <div className={cls} ref={this.saveFixedNode} style={this.affixStyle}>
           {children}
         </div>
       </div>
