@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TabBar snapshot should render correctly 1`] = `
+<div
+  class="za-tab-bar"
+>
+  <div
+    class="za-tab-bar__item za-tab-bar--active"
+  >
+    <div
+      class="za-tab-bar__icon"
+    >
+      <div
+        style="width:24px;height:24px;background:url(//cdn-health.zhongan.com/zarm/home-active.svg) top left / 24px 24px no-repeat"
+      />
+    </div>
+    <div
+      class="za-tab-bar__title"
+    >
+      主页
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TabBar snapshot with activeKey 1`] = `
+<div
+  class="za-tab-bar"
+>
+  <div
+    class="za-tab-bar__item za-tab-bar--active"
+  >
+    <div
+      class="za-tab-bar__icon"
+    >
+      <div
+        style="width:24px;height:24px;background:url(//cdn-health.zhongan.com/zarm/home-active.svg) top left / 24px 24px no-repeat"
+      />
+    </div>
+    <div
+      class="za-tab-bar__title"
+    >
+      主页
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TabBar snapshot with defaultActiveKey 1`] = `
+<div
+  class="za-tab-bar"
+>
+  <div
+    class="za-tab-bar__item za-tab-bar--active"
+  >
+    <div
+      class="za-tab-bar__icon"
+    >
+      <div
+        style="width:24px;height:24px;background:url(//cdn-health.zhongan.com/zarm/home-active.svg) top left / 24px 24px no-repeat"
+      />
+    </div>
+    <div
+      class="za-tab-bar__title"
+    >
+      主页
+    </div>
+  </div>
+</div>
+`;

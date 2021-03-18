@@ -18,7 +18,18 @@ export default class Confirm extends PureComponent<ConfirmProps, {}> {
   };
 
   render() {
-    const { prefixCls, className, content, okText, cancelText, shape, onOk, onCancel, locale, ...others } = this.props;
+    const {
+      prefixCls,
+      className,
+      content,
+      okText,
+      cancelText,
+      shape,
+      onOk,
+      onCancel,
+      locale,
+      ...others
+    } = this.props;
     const cls = {
       confirm: classnames(prefixCls, className, {
         [`${prefixCls}--${shape}`]: !!shape,
@@ -28,14 +39,20 @@ export default class Confirm extends PureComponent<ConfirmProps, {}> {
       <div className={cls.confirm}>
         <Modal
           {...others}
-          footer={(
+          footer={
             <>
-              <button type="button" className={`${prefixCls}__button`} onClick={onCancel}>{cancelText || locale!.cancelText}</button>
-              <button type="button" className={`${prefixCls}__button ${prefixCls}__button--ok`} onClick={onOk}>
+              <button type="button" className={`${prefixCls}__button`} onClick={onCancel}>
+                {cancelText || locale!.cancelText}
+              </button>
+              <button
+                type="button"
+                className={`${prefixCls}__button ${prefixCls}__button--ok`}
+                onClick={onOk}
+              >
                 {okText || locale!.okText}
               </button>
             </>
-          )}
+          }
         >
           {content}
         </Modal>

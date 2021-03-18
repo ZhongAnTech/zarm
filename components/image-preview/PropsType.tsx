@@ -1,7 +1,14 @@
-export interface ImageSrc { url: string; originUrl: string }
+import type LOAD_STATUS from './utils/loadStatus';
+
+export interface ImageObject {
+  url: string;
+  originUrl: string;
+}
+
+export type Images = Array<Partial<ImageObject> & { loaded?: LOAD_STATUS }>;
 
 export default interface PropsType {
-  images: Array<ImageSrc> | Array<string>;
+  images: ReadonlyArray<ImageObject | string>;
   visible: boolean;
   activeIndex?: number;
   showPagination?: boolean;

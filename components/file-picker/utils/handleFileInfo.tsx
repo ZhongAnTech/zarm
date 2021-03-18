@@ -9,15 +9,13 @@ import { IFileDetail } from '../index';
  * @param quality
  * @param callback
  */
-export default function handleFileInfo({ file, quality }: { file: File; quality?: number }, callback: (data: IFileDetail) => void) {
-  const {
-    fileSize,
-    fileType,
-    isPic,
-    fileName,
-  } = getFileDetail(file);
+export default function handleFileInfo(
+  { file, quality }: { file: File; quality?: number },
+  callback: (data: IFileDetail) => void,
+): void {
+  const { fileSize, fileType, isPic, fileName } = getFileDetail(file);
 
-  const fileDetail = {
+  const fileDetail: IFileDetail = {
     file,
     fileType,
     fileSize,

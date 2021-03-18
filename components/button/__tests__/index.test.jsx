@@ -35,7 +35,9 @@ describe('Button', () => {
   });
 
   it('icon', () => {
-    const wrapper = render(<Button icon={<img alt="" src="https://zarm.design/images/logo.ce68565d.svg" />}>foo</Button>);
+    const wrapper = render(
+      <Button icon={<img alt="" src="https://zarm.design/images/logo.ce68565d.svg" />}>foo</Button>,
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -63,7 +65,11 @@ describe('Button', () => {
 
   it('onClick when disabled', () => {
     const onClick = jest.fn();
-    const wrapper = shallow(<Button disabled onClick={onClick}>foo</Button>);
+    const wrapper = shallow(
+      <Button disabled onClick={onClick}>
+        foo
+      </Button>,
+    );
     wrapper.simulate('click');
     expect(onClick).not.toBeCalled();
   });
@@ -79,7 +85,11 @@ describe('Button', () => {
   });
 
   it('href and target', () => {
-    const wrapper = render(<Button href="https://zarm.design" target="_blank">foo</Button>);
+    const wrapper = render(
+      <Button href="https://zarm.design" target="_blank">
+        foo
+      </Button>,
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

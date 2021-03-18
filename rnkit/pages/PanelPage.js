@@ -29,7 +29,9 @@ export default class App extends PureComponent {
           <Panel
             title="标题"
             more={
-              <Text style={styles.moreHeaderColor} onPress={clickHandle}>更多</Text>
+              <Text style={styles.moreHeaderColor} onPress={clickHandle}>
+                更多
+              </Text>
             }
           >
             <View style={styles.box}>

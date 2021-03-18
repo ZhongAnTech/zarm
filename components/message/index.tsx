@@ -53,19 +53,19 @@ export default class Message extends PureComponent<MessageProps, MessageState> {
     const renderArrow = hasArrow && <Icon type="arrow-right" />;
     const noFooter = !closable && !hasArrow;
 
-    return visible && (
-      <div className={classes} onClick={this.onClick}>
-        <div className={`${prefixCls}__header`}>{iconRender}</div>
-        <div className={`${prefixCls}__body`}>{children}</div>
-        {
-          !noFooter && (
+    return (
+      visible && (
+        <div className={classes} onClick={this.onClick}>
+          <div className={`${prefixCls}__header`}>{iconRender}</div>
+          <div className={`${prefixCls}__body`}>{children}</div>
+          {!noFooter && (
             <div className={`${prefixCls}__footer`}>
               {renderArrow}
               {renderCloseIcon}
             </div>
-          )
-        }
-      </div>
+          )}
+        </div>
+      )
     );
   }
 }

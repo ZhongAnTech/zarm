@@ -15,13 +15,23 @@ describe('Message', () => {
   });
 
   it('icon', () => {
-    const wrapper = render(<Message icon={<img alt="" src="\\static.zhongan.com/website/health/zarm/images/icons/state.png" />}>foo</Message>);
+    const wrapper = render(
+      <Message
+        icon={<img alt="" src="\\static.zhongan.com/website/health/zarm/images/icons/state.png" />}
+      >
+        foo
+      </Message>,
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('hasArrow', () => {
     const onClick = jest.fn();
-    const wrapper = shallow(<Message hasArrow onClick={onClick}>foo</Message>);
+    const wrapper = shallow(
+      <Message hasArrow onClick={onClick}>
+        foo
+      </Message>,
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.simulate('click');
     expect(onClick).toBeCalled();

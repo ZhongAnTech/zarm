@@ -163,32 +163,41 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
     const { value } = this.state;
     const length = countSymbols(value);
 
-    const textLengthRender = showLength
-      && maxLength
-      && (
-        <div className={`${prefixCls}__length`}>
-          {`${length}/${maxLength}`}
-        </div>
-      );
+    const textLengthRender = showLength && maxLength && (
+      <div className={`${prefixCls}__length`}>{`${length}/${maxLength}`}</div>
+    );
 
     const renderInput = (
       <textarea
         {...rest}
-        value={('value' in this.props) ? value : undefined}
-        ref={(ele) => { this.input = ele; }}
+        value={'value' in this.props ? value : undefined}
+        ref={(ele) => {
+          this.input = ele;
+        }}
         maxLength={maxLength}
         disabled={disabled}
         onChange={this.onChange}
         onFocus={this.onFocus}
         onBlur={this.onBlur}
-        onCompositionStart={(e) => { this.handleComposition(e); }}
-        onCompositionUpdate={(e) => { this.handleComposition(e); }}
-        onCompositionEnd={(e) => { this.handleComposition(e); }}
+        onCompositionStart={(e) => {
+          this.handleComposition(e);
+        }}
+        onCompositionUpdate={(e) => {
+          this.handleComposition(e);
+        }}
+        onCompositionEnd={(e) => {
+          this.handleComposition(e);
+        }}
       />
     );
 
     const renderText = (
-      <div className={`${prefixCls}__content`} ref={(ele) => { this.input = ele; }}>
+      <div
+        className={`${prefixCls}__content`}
+        ref={(ele) => {
+          this.input = ele;
+        }}
+      >
         {value}
       </div>
     );

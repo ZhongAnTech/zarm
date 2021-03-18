@@ -19,11 +19,9 @@ const Page = () => {
       <main>
         <div className="main-container markdown">
           <Switch>
-            {
-              design.map((doc, i) => (
-                <Route key={+i} path={`/design/${doc.key}`} component={LoadableComponent(doc)} />
-              ))
-            }
+            {design.map((doc, i) => (
+              <Route key={+i} path={`/design/${doc.key}`} component={LoadableComponent(doc)} />
+            ))}
             <Redirect to="/" />
           </Switch>
         </div>

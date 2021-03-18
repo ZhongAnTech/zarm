@@ -12,7 +12,10 @@ export interface KeyboardPickerState {
   visible?: boolean;
 }
 
-export default class KeyboardPicker extends PureComponent<KeyboardPickerProps, KeyboardPickerState> {
+export default class KeyboardPicker extends PureComponent<
+  KeyboardPickerProps,
+  KeyboardPickerState
+> {
   static defaultProps: KeyboardPickerProps = {
     prefixCls: 'za-keyboard-picker',
     visible: false,
@@ -57,12 +60,7 @@ export default class KeyboardPicker extends PureComponent<KeyboardPickerProps, K
     const { visible } = this.state;
 
     return (
-      <Popup
-        className={className}
-        visible={visible}
-        mask={false}
-        destroy={destroy}
-      >
+      <Popup className={className} visible={visible} mask={false} destroy={destroy}>
         <div className={prefixCls}>
           <Keyboard {...others} onKeyClick={this.onKeyClick} />
         </div>

@@ -78,7 +78,15 @@ function modalType(props, type) {
         _props = { ...props, className: '', locale: runTimeLocale.Alert };
       }
       ReactDOM.render(
-        <Alert {..._props} mountContainer={false} onCancel={() => { _onCancel(render); }} afterClose={_afterClose} visible={visible} />,
+        <Alert
+          {..._props}
+          mountContainer={false}
+          onCancel={() => {
+            _onCancel(render);
+          }}
+          afterClose={_afterClose}
+          visible={visible}
+        />,
         container,
       );
     } else {
@@ -87,7 +95,18 @@ function modalType(props, type) {
         _props = { ...props, className: '', locale: runTimeLocale.Confirm };
       }
       ReactDOM.render(
-        <Confirm {..._props} mountContainer={false} onCancel={() => { _onCancel(render); }} onOk={() => { _onOk(render); }} afterClose={_afterClose} visible={visible} />,
+        <Confirm
+          {..._props}
+          mountContainer={false}
+          onCancel={() => {
+            _onCancel(render);
+          }}
+          onOk={() => {
+            _onOk(render);
+          }}
+          afterClose={_afterClose}
+          visible={visible}
+        />,
         container,
       );
     }

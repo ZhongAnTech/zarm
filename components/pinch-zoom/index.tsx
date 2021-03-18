@@ -207,6 +207,10 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
         onLoad: this.onload,
       });
     });
-    return (<div ref={this._container} className={`${className} ${prefixCls}`}>{child}</div>);
+    return (
+      <div ref={this._container} className={`${className} ${prefixCls}`}>
+        {child}
+      </div>
+    );
   }
 }

@@ -5,24 +5,12 @@ import SearchBar from '../index';
 
 describe('SearchBar', () => {
   it('renders correctly', () => {
-    const wrapper = render(
-      <SearchBar
-        shape="round"
-        cancelText="取消"
-        placeholder="搜索"
-      />,
-    );
+    const wrapper = render(<SearchBar shape="round" cancelText="取消" placeholder="搜索" />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders defaultValue correctly', () => {
-    const wrapper = mount(
-      <SearchBar
-        shape="round"
-        cancelText="取消取消"
-        placeholder="搜索"
-      />,
-    );
+    const wrapper = mount(<SearchBar shape="round" cancelText="取消取消" placeholder="搜索" />);
     wrapper.setProps({ defaultValue: '搜索关键字' });
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.unmount();
@@ -30,13 +18,7 @@ describe('SearchBar', () => {
 
   it('renders onFocus called correctly', () => {
     const onFocus = jest.fn();
-    const wrapper = mount(
-      <SearchBar
-        shape="round"
-        placeholder="搜索"
-        onFocus={onFocus}
-      />,
-    );
+    const wrapper = mount(<SearchBar shape="round" placeholder="搜索" onFocus={onFocus} />);
     wrapper.find('input[type="search"]').simulate('focus');
     expect(onFocus).toBeCalled();
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -45,13 +27,7 @@ describe('SearchBar', () => {
 
   it('renders onChange called correctly', () => {
     const onChange = jest.fn();
-    const wrapper = mount(
-      <SearchBar
-        shape="round"
-        placeholder="搜索"
-        onChange={onChange}
-      />,
-    );
+    const wrapper = mount(<SearchBar shape="round" placeholder="搜索" onChange={onChange} />);
 
     const input = wrapper.find('input[type="search"]');
     input.simulate('change', { target: { value: '测试值' } });
@@ -78,13 +54,7 @@ describe('SearchBar', () => {
 
   it('renders onCancel called correctly', () => {
     const onCancel = jest.fn();
-    const wrapper = mount(
-      <SearchBar
-        shape="round"
-        placeholder="搜索"
-        onCancel={onCancel}
-      />,
-    );
+    const wrapper = mount(<SearchBar shape="round" placeholder="搜索" onCancel={onCancel} />);
     const input = wrapper.find('input[type="search"]');
     input.simulate('focus');
     wrapper.find('.za-search-bar__cancel').simulate('click');
@@ -94,13 +64,7 @@ describe('SearchBar', () => {
 
   it('renders onSubmit called correctly', () => {
     const onSubmit = jest.fn();
-    const wrapper = mount(
-      <SearchBar
-        shape="round"
-        placeholder="搜索"
-        onSubmit={onSubmit}
-      />,
-    );
+    const wrapper = mount(<SearchBar shape="round" placeholder="搜索" onSubmit={onSubmit} />);
 
     const input = wrapper.find('input[type="search"]');
     input.simulate('change', { target: { value: 'My new value' } });
@@ -111,11 +75,7 @@ describe('SearchBar', () => {
 
   it('renders onClear called correctly', () => {
     const onClear = jest.fn();
-    const wrapper = mount(
-      <SearchBar
-        onClear={onClear}
-      />,
-    );
+    const wrapper = mount(<SearchBar onClear={onClear} />);
 
     const input = wrapper.find('input[type="search"]');
     input.simulate('change', { target: { value: 'My new value' } });

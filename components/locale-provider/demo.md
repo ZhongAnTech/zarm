@@ -1,14 +1,13 @@
 # LocaleProvider 国际化<br />（即将废弃）
 
-
-
 ## 基本用法
+
 ```jsx
 import { useState } from 'react';
 import { Cell, LocaleProvider, Button, SearchBar, Modal, Keyboard, Radio } from 'zarm';
 
 const locales = {
-  'en_US': {
+  en_US: {
     locale: 'en-US',
     SearchBar: {
       placeholder: 'Search',
@@ -33,7 +32,7 @@ const locales = {
       okText: 'OK',
     },
   },
-  'zh_CN': {
+  zh_CN: {
     locale: 'zh-CN',
     SearchBar: {
       placeholder: '搜索',
@@ -68,14 +67,14 @@ const Demo = () => {
       Modal.alert({
         title: '警告',
         content: '这里是警告信息',
-        shape: 'radius'
+        shape: 'radius',
       });
     } else {
       Modal.confirm({
         title: '确认信息',
         content: '你确定要这样做吗？',
-        shape: 'radius'
-      })
+        shape: 'radius',
+      });
     }
   };
 
@@ -85,12 +84,7 @@ const Demo = () => {
         <Cell
           title="切换语言包"
           description={
-            <Radio.Group
-              compact
-              type="button"
-              value={lang}
-              onChange={setLang}
-            >
+            <Radio.Group compact type="button" value={lang} onChange={setLang}>
               <Radio value="zh_CN">中文</Radio>
               <Radio value="en_US">EN</Radio>
             </Radio.Group>
@@ -102,7 +96,9 @@ const Demo = () => {
 
         <Cell
           description={
-            <Button size="xs" onClick={() => show('alert')}>开启</Button>
+            <Button size="xs" onClick={() => show('alert')}>
+              开启
+            </Button>
           }
         >
           警告框 Alert
@@ -110,7 +106,9 @@ const Demo = () => {
 
         <Cell
           description={
-            <Button size="xs" onClick={() => show('confirm')}>开启</Button>
+            <Button size="xs" onClick={() => show('confirm')}>
+              开启
+            </Button>
           }
         >
           确认框 Confirm
@@ -118,15 +116,13 @@ const Demo = () => {
       </>
     </LocaleProvider>
   );
-}
+};
 
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
-
 ## API
 
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| locale | Object | - | 语言包配置，默认为中文，语言包可到 zarm/lib/locale-provider/locale 目录下寻找 |
+| 属性   | 类型   | 默认值 | 说明                                                                          |
+| :----- | :----- | :----- | :---------------------------------------------------------------------------- |
+| locale | Object | -      | 语言包配置，默认为中文，语言包可到 zarm/lib/locale-provider/locale 目录下寻找 |

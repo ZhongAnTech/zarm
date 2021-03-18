@@ -37,7 +37,8 @@ const Simulator = () => {
   });
 
   useEffect(() => {
-    !(/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) && simulatorRef.current.contentWindow.postMessage({ locale });
+    !/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent) &&
+      simulatorRef.current.contentWindow.postMessage({ locale });
   }, [locale]);
 
   return (
@@ -56,7 +57,12 @@ const Simulator = () => {
           </div>
         )}
       </FormattedMessage>
-      <iframe ref={simulatorRef} src={`${window.location.protocol}//${window.location.host}/demo.html#/${params.component}`} title="simulator" frameBorder="0" />
+      <iframe
+        ref={simulatorRef}
+        src={`${window.location.protocol}//${window.location.host}/demo.html#/${params.component}`}
+        title="simulator"
+        frameBorder="0"
+      />
     </div>
   );
 };
@@ -73,23 +79,21 @@ const Page = () => {
     <Container className="components-page">
       <main>
         <SideBar />
-        {
-          isComponentPage(params.component) && (
-            <Simulator />
-          )
-        }
+        {isComponentPage(params.component) && <Simulator />}
         <div className={containerCls}>
           <Switch>
-            {
-              documents.map((doc, i) => (
-                <Route key={+i} path={`/components/${doc.key}`} component={LoadableComponent(doc)} />
-              ))
-            }
-            {
-              [...general, ...form, ...feedback, ...view, ...navigation, ...other].map((component, i) => (
-                <Route key={+i} path={`/components/${component.key}`} component={LoadableComponent(component)} />
-              ))
-            }
+            {documents.map((doc, i) => (
+              <Route key={+i} path={`/components/${doc.key}`} component={LoadableComponent(doc)} />
+            ))}
+            {[...general, ...form, ...feedback, ...view, ...navigation, ...other].map(
+              (component, i) => (
+                <Route
+                  key={+i}
+                  path={`/components/${component.key}`}
+                  component={LoadableComponent(component)}
+                />
+              ),
+            )}
             <Redirect to="/" />
           </Switch>
         </div>

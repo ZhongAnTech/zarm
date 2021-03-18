@@ -1,4 +1,9 @@
-import React, { PureComponent, MouseEventHandler, AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
+import React, {
+  PureComponent,
+  MouseEventHandler,
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+} from 'react';
 import classnames from 'classnames';
 import BasePropsType from './PropsType';
 import ActivityIndicator from '../activity-indicator';
@@ -10,11 +15,13 @@ interface BaseButtonPropsType extends BasePropsType {
 
 export type AnchorButtonProps = {
   mimeType?: string;
-} & BaseButtonPropsType & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'type' | 'onClick'>;
+} & BaseButtonPropsType &
+  Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'type' | 'onClick'>;
 
 export type NativeButtonProps = {
   htmlType?: 'button' | 'submit' | 'reset';
-} & BaseButtonPropsType & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'onClick'>;
+} & BaseButtonPropsType &
+  Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'onClick'>;
 
 export type ButtonProps = Partial<AnchorButtonProps & NativeButtonProps>;
 
@@ -72,20 +79,19 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       [`${prefixCls}--disabled`]: !!disabled,
     });
 
-    const iconRender = loading
-      ? <ActivityIndicator />
-      : icon;
+    const iconRender = loading ? <ActivityIndicator /> : icon;
 
     const childrenRender = children && <span>{children}</span>;
 
-    const contentRender = (!!icon || loading)
-      ? (
+    const contentRender =
+      !!icon || loading ? (
         <div className={`${prefixCls}__content`}>
           {iconRender}
           {childrenRender}
         </div>
-      )
-      : childrenRender;
+      ) : (
+        childrenRender
+      );
 
     if ((rest as AnchorButtonProps).href !== undefined) {
       const { htmlType, ...filteredRest } = rest;

@@ -1,5 +1,5 @@
 import React from 'react';
-import ClickOutsideProps from './PropsType';
+import type ClickOutsideProps from './PropsType';
 import Events from '../utils/events';
 
 export default class ClickOutside extends React.Component<ClickOutsideProps> {
@@ -9,7 +9,7 @@ export default class ClickOutside extends React.Component<ClickOutsideProps> {
 
   private isTouch = false;
 
-  private container: HTMLElement;
+  private container: HTMLElement | null = null;
 
   componentDidMount() {
     const { disabled } = this.props;
@@ -39,11 +39,11 @@ export default class ClickOutside extends React.Component<ClickOutsideProps> {
     }
   }
 
-  mountContainer = (node) => {
+  mountContainer = (node: HTMLDivElement | null) => {
     this.container = node;
   };
 
-  handle = (event) => {
+  handle = (event: MouseEvent | TouchEvent) => {
     if (event.type === 'touchend') {
       this.isTouch = true;
     }
@@ -51,10 +51,11 @@ export default class ClickOutside extends React.Component<ClickOutsideProps> {
     if (event.type === 'click' && this.isTouch) return;
 
     const { onClickOutside, ignoredNode } = this.props;
+    if (!onClickOutside) return;
     const el = this.container;
 
-    if (ignoredNode && ignoredNode.contains(event.target)) return;
-    if (el && !el.contains(event.target)) onClickOutside!(event);
+    if (ignoredNode && ignoredNode.contains(event.target as Node)) return;
+    if (el && !el.contains(event.target as Node)) onClickOutside(event);
   };
 
   bindEvent() {
@@ -70,6 +71,10 @@ export default class ClickOutside extends React.Component<ClickOutsideProps> {
   render() {
     const { onClickOutside, disabled, children, ignoredNode, ...rest } = this.props;
 
-    return <div ref={this.mountContainer} {...rest}>{children}</div>;
+    return (
+      <div ref={this.mountContainer} {...rest}>
+        {children}
+      </div>
+    );
   }
 }

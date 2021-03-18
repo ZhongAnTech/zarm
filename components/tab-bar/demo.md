@@ -1,8 +1,7 @@
 # TabBar 标签栏
 
-
-
 ## 基本用法
+
 ```jsx
 import { useState } from 'react';
 import { Icon, TabBar, Cell, Button } from 'zarm';
@@ -23,22 +22,15 @@ const Demo = () => {
               setVisible(!visible);
             }}
           >
-            { visible ? '隐藏' : '展示'}
+            {visible ? '隐藏' : '展示'}
           </Button>
         }
       >
         隐藏 | 展示
       </Cell>
 
-      <TabBar
-        visible={visible}
-        activeKey={activeKey}
-        onChange={setActiveKey}>
-        <TabBar.Item
-          itemKey="home"
-          title="主页"
-          icon={<TabIcon type="home" />}
-        />
+      <TabBar visible={visible} activeKey={activeKey} onChange={setActiveKey}>
+        <TabBar.Item itemKey="home" title="主页" icon={<TabIcon type="home" />} />
         <TabBar.Item
           itemKey="found"
           title="保险"
@@ -52,33 +44,30 @@ const Demo = () => {
           badge={{ shape: 'dot' }}
         />
       </TabBar>
-    </>  
+    </>
   );
-}
+};
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-
-
 
 ## API
 
 ### TabBar
 
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| activeKey | number \| string | - | 当前选中项 |
-| defaultActiveKey | number \| string | - | 初始选中项, 默认第一个选中 |
-| onChange | (value?: number \| string) => void | - | 值变化时触发的回调函数 |
-| visible | boolean | `true` | 是否显示 |
-
+| 属性             | 类型                               | 默认值 | 说明                       |
+| :--------------- | :--------------------------------- | :----- | :------------------------- |
+| activeKey        | number \| string                   | -      | 当前选中项                 |
+| defaultActiveKey | number \| string                   | -      | 初始选中项, 默认第一个选中 |
+| onChange         | (value?: number \| string) => void | -      | 值变化时触发的回调函数     |
+| visible          | boolean                            | `true` | 是否显示                   |
 
 ### TabBar.Item
 
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| itemKey | number \| string | - | 唯一标识，对应`activeKey` |
-| title | ReactNode | - | 标题文字 |
-| icon | ReactNode | - | 图标 |
-| activeIcon | ReactNode | - | 选中时图标，不设置等同icon属性的值 |
-| badge | Object | - | 参考`Badge`组件 |
+| 属性       | 类型             | 默认值 | 说明                                                 |
+| :--------- | :--------------- | :----- | :--------------------------------------------------- |
+| itemKey    | number \| string | -      | 唯一标识，对应`activeKey`，不设置则默认取 index 索引 |
+| title      | ReactNode        | -      | 标题文字                                             |
+| icon       | ReactNode        | -      | 图标                                                 |
+| activeIcon | ReactNode        | -      | 选中时图标，不设置等同 icon 属性的值                 |
+| badge      | Object           | -      | 参考`Badge`组件                                      |

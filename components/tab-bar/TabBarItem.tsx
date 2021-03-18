@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import Badge from '../badge';
-import { BaseTabBarItemProps } from './PropsType';
+import type { BaseTabBarItemProps } from './PropsType';
 
 export interface TabBarItemProps extends BaseTabBarItemProps {
   prefixCls?: string;
@@ -12,7 +12,7 @@ class TabBarItem extends PureComponent<TabBarItemProps, {}> {
     prefixCls: 'za-tab-bar',
   };
 
-  change = (value: string | number) => {
+  change = (value?: string | number) => {
     const { onChange } = this.props;
     if (typeof onChange === 'function') {
       onChange(value);
@@ -20,7 +20,16 @@ class TabBarItem extends PureComponent<TabBarItemProps, {}> {
   };
 
   render() {
-    const { prefixCls, title, icon, badge, style, itemKey, selected, activeIcon = icon } = this.props;
+    const {
+      prefixCls,
+      title,
+      icon,
+      badge,
+      style,
+      itemKey,
+      selected,
+      activeIcon = icon,
+    } = this.props;
 
     const cls = classnames(`${prefixCls}__item`, {
       [`${prefixCls}--active`]: selected,
@@ -34,12 +43,14 @@ class TabBarItem extends PureComponent<TabBarItemProps, {}> {
     );
 
     return (
-      <div className={cls} style={style} onClick={() => { this.change(itemKey); }}>
-        {
-          badge
-            ? <Badge {...badge}>{contentRender}</Badge>
-            : contentRender
-        }
+      <div
+        className={cls}
+        style={style}
+        onClick={() => {
+          this.change(itemKey);
+        }}
+      >
+        {badge ? <Badge {...badge}>{contentRender}</Badge> : contentRender}
       </div>
     );
   }

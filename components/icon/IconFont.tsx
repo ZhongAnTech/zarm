@@ -11,12 +11,12 @@ export default function createFromIconfont(scriptUrl: string): FunctionComponent
    * that loads SVG symbols and insert the SVG Element into the document body.
    */
   if (
-    typeof document !== 'undefined'
-    && typeof window !== 'undefined'
-    && typeof document.createElement === 'function'
-    && typeof scriptUrl === 'string'
-    && scriptUrl.length
-    && !customCache.has(scriptUrl)
+    typeof document !== 'undefined' &&
+    typeof window !== 'undefined' &&
+    typeof document.createElement === 'function' &&
+    typeof scriptUrl === 'string' &&
+    scriptUrl.length &&
+    !customCache.has(scriptUrl)
   ) {
     const script = document.createElement('script');
     script.setAttribute('src', scriptUrl);
@@ -34,11 +34,7 @@ export default function createFromIconfont(scriptUrl: string): FunctionComponent
     if (type) {
       content = <use xlinkHref={`#${type}`} />;
     }
-    return (
-      <Icon {...props}>
-        {content}
-      </Icon>
-    );
+    return <Icon {...props}>{content}</Icon>;
   };
 
   return Iconfont;

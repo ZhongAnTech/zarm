@@ -28,9 +28,7 @@ const Page = () => {
   return (
     <Container className="index-page">
       <FormattedMessage id="app.title">
-        {(txt) => (
-          <Meta title={`Zarm Design - ${txt}`} />
-        )}
+        {(txt) => <Meta title={`Zarm Design - ${txt}`} />}
       </FormattedMessage>
       <main>
         <div className="banner">
@@ -41,7 +39,9 @@ const Page = () => {
             <span>Zarm</span>
             &nbsp;Design
           </div>
-          <div className="description"><FormattedMessage id="app.home.index.introduce" /></div>
+          <div className="description">
+            <FormattedMessage id="app.home.index.introduce" />
+          </div>
           <div className="navigation">
             <button type="button" onClick={() => history.push('/components/quick-start')}>
               <FormattedMessage id="app.home.index.getting-started" />
@@ -51,11 +51,11 @@ const Page = () => {
               visible={dropdown}
               onVisibleChange={setDropdown}
               direction="bottom"
-              content={(
+              content={
                 <a href={demoURL}>
                   <canvas ref={qrcode} />
                 </a>
-              )}
+              }
               destroy={false}
             >
               <button type="button" className="ghost">

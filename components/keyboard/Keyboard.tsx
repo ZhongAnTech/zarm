@@ -1,9 +1,12 @@
 import React, { PureComponent } from 'react';
+import type { TouchEvent, MouseEvent } from 'react';
 import classnames from 'classnames';
-import PropsType from './PropsType';
+import type PropsType from './PropsType';
 import Icon from '../icon';
 
-const KEYS = {
+type KeyType = Exclude<PropsType['type'], undefined>;
+
+const KEYS: { [type in KeyType]: readonly string[] } = {
   number: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', 'close'],
   price: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '0', 'close'],
   idcard: ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'X', '0', 'close'],
@@ -20,7 +23,7 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
     type: 'number',
   };
 
-  private longPressTimer;
+  private longPressTimer: ReturnType<typeof setTimeout | typeof setInterval>;
 
   onLongPressIn = (key: string) => {
     this.onKeyClick(key);
@@ -31,7 +34,7 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
     }, 800);
   };
 
-  onLongPressOut = (e) => {
+  onLongPressOut = (e: TouchEvent<HTMLDivElement> | MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     clearInterval(this.longPressTimer);
   };
@@ -47,7 +50,7 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
     }
   };
 
-  getKeys = () => {
+  getKeys = (): ReadonlyArray<string> => {
     const { type } = this.props;
     return type ? KEYS[type] : KEYS.number;
   };
@@ -60,23 +63,19 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
     });
 
     return (
-      <div
-        className={keyCls}
-        key={+index}
-        onClick={() => this.onKeyClick(text)}
-      >
-        {(text === 'close') ? <Icon type="keyboard" size="lg" /> : text}
+      <div className={keyCls} key={+index} onClick={() => this.onKeyClick(text)}>
+        {text === 'close' ? <Icon type="keyboard" size="lg" /> : text}
       </div>
     );
   };
 
   render() {
-    const { prefixCls, locale } = this.props;
+    const { prefixCls, className, locale } = this.props;
+    const cls = classnames(prefixCls, className);
+
     return (
-      <div className={prefixCls}>
-        <div className={`${prefixCls}__keys`}>
-          {this.getKeys().map(this.renderKey)}
-        </div>
+      <div className={cls}>
+        <div className={`${prefixCls}__keys`}>{this.getKeys().map(this.renderKey)}</div>
         <div className={`${prefixCls}__handle`}>
           <div
             className={`${prefixCls}__item`}

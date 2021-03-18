@@ -5,10 +5,6 @@ export default class Container extends PureComponent {
   render() {
     const { children } = this.props;
 
-    return (
-      <ScrollView>
-        {children}
-      </ScrollView>
-    );
+    return <ScrollView>{children}</ScrollView>;
   }
 }

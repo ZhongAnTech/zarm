@@ -16,7 +16,7 @@ describe('Input', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('renders correctly if type isn\'t valid', () => {
+  it("renders correctly if type isn't valid", () => {
     const wrapper = render(<Input type="xxx" />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -46,9 +46,7 @@ describe('Input', () => {
 
   it('renders onFocus called correctly', () => {
     const onFocus = jest.fn();
-    const wrapper = mount(
-      <Input onFocus={onFocus} />,
-    );
+    const wrapper = mount(<Input onFocus={onFocus} />);
     wrapper.find('input[type="text"]').simulate('focus');
     expect(onFocus).toBeCalled();
     // expect(toJson(wrapper)).toMatchSnapshot();
@@ -66,14 +64,7 @@ describe('Input', () => {
   it('renders onClear called correctly', () => {
     const onClear = jest.fn();
     const onChange = jest.fn();
-    const wrapper = mount(
-      <Input
-        clearable
-        value=""
-        onClear={onClear}
-        onChange={onChange}
-      />,
-    );
+    const wrapper = mount(<Input clearable value="" onClear={onClear} onChange={onChange} />);
 
     const input = wrapper.find('input[type="text"]');
     input.simulate('change', { target: { value: 'My new value' } });
@@ -168,9 +159,7 @@ describe('Input.Textarea', () => {
 
   it('renders onFocus called correctly', () => {
     const onFocus = jest.fn();
-    const wrapper = mount(
-      <Input type="text" rows={2} onFocus={onFocus} />,
-    );
+    const wrapper = mount(<Input type="text" rows={2} onFocus={onFocus} />);
     wrapper.find('textarea').simulate('focus');
     expect(onFocus).toBeCalled();
     // expect(toJson(wrapper)).toMatchSnapshot();
@@ -222,9 +211,7 @@ describe('Input.Number', () => {
 
   it('renders onFocus called correctly', () => {
     const onFocus = jest.fn();
-    const wrapper = mount(
-      <Input type="number" onFocus={onFocus} />,
-    );
+    const wrapper = mount(<Input type="number" onFocus={onFocus} />);
     wrapper.find('.za-input__content').simulate('click');
     expect(onFocus).toBeCalled();
     // expect(toJson(wrapper)).toMatchSnapshot();
@@ -235,13 +222,7 @@ describe('Input.Number', () => {
     const onClear = jest.fn();
     const onChange = jest.fn();
     const wrapper = mount(
-      <Input
-        clearable
-        type="number"
-        value=""
-        onClear={onClear}
-        onChange={onChange}
-      />,
+      <Input clearable type="number" value="" onClear={onClear} onChange={onChange} />,
     );
 
     const input = wrapper.find('input[type="hidden"]');
@@ -255,26 +236,14 @@ describe('Input.Number', () => {
   });
 
   it('inputNumber value 0', () => {
-    const wrapper = mount(
-      <Input
-        clearable
-        type="number"
-        value={0}
-      />,
-    );
+    const wrapper = mount(<Input clearable type="number" value={0} />);
 
     const input = wrapper.find('input[type="hidden"]');
     expect(input.instance().value).toEqual('0');
   });
 
   it('inputBase value 0', () => {
-    const wrapper = mount(
-      <Input
-        clearable
-        type="text"
-        value={0}
-      />,
-    );
+    const wrapper = mount(<Input clearable type="text" value={0} />);
 
     const input = wrapper.find('input[type="text"]');
     expect(input.instance().value).toEqual('0');

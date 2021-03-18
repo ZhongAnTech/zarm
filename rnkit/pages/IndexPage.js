@@ -38,32 +38,44 @@ export default class Index extends PureComponent {
         </View>
         <View style={styles.main}>
           <Panel title={`数据录入（${form.length}）`}>
-            {
-              form.map((component, i) => (
-                <Cell key={+i} hasArrow title={component.description} onClick={() => navigate(component.title)} />
-              ))
-            }
+            {form.map((component, i) => (
+              <Cell
+                key={+i}
+                hasArrow
+                title={component.description}
+                onClick={() => navigate(component.title)}
+              />
+            ))}
           </Panel>
           <Panel title={`操作反馈（${feedback.length}）`}>
-            {
-              feedback.map((component, i) => (
-                <Cell key={+i} hasArrow title={component.description} onClick={() => navigate(component.title)} />
-              ))
-            }
+            {feedback.map((component, i) => (
+              <Cell
+                key={+i}
+                hasArrow
+                title={component.description}
+                onClick={() => navigate(component.title)}
+              />
+            ))}
           </Panel>
           <Panel title={`数据展示（${view.length}）`}>
-            {
-              view.map((component, i) => (
-                <Cell key={+i} hasArrow title={component.description} onClick={() => navigate(component.title)} />
-              ))
-            }
+            {view.map((component, i) => (
+              <Cell
+                key={+i}
+                hasArrow
+                title={component.description}
+                onClick={() => navigate(component.title)}
+              />
+            ))}
           </Panel>
           <Panel title={`导航（${navigation.length}）`}>
-            {
-              navigation.map((component, i) => (
-                <Cell key={+i} hasArrow title={component.description} onClick={() => navigate(component.title)} />
-              ))
-            }
+            {navigation.map((component, i) => (
+              <Cell
+                key={+i}
+                hasArrow
+                title={component.description}
+                onClick={() => navigate(component.title)}
+              />
+            ))}
           </Panel>
         </View>
         <Footer />

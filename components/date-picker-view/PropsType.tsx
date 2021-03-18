@@ -14,5 +14,5 @@ export default interface BaseDatePickerViewProps {
   max?: DateValue;
   valueMember?: string;
   locale?: Locale['DatePickerView'] & Locale['DatePicker'] & Locale['DateSelect'];
-  stopScroll: boolean;
+  stopScroll?: boolean;
 }

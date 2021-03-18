@@ -1,15 +1,15 @@
 function getFormatter(type) {
   let formatter;
   if (type === 'year') {
-    formatter = ('yyyy年');
+    formatter = 'yyyy年';
   } else if (type === 'month') {
-    formatter = ('yyyy-MM');
+    formatter = 'yyyy-MM';
   } else if (type === 'time') {
-    formatter = ('HH:mm');
+    formatter = 'HH:mm';
   } else if (type === 'datetime') {
-    formatter = ('yyyy-MM-dd HH:mm');
+    formatter = 'yyyy-MM-dd HH:mm';
   } else {
-    formatter = ('yyyy-MM-dd');
+    formatter = 'yyyy-MM-dd';
   }
   return formatter;
 }
@@ -32,12 +32,15 @@ function formatDate(date, fmt) {
   };
 
   if (/(y+)/.test(fmt)) {
-    fmt = fmt.replace(RegExp.$1, (`${date.getFullYear()}`).substr(4 - RegExp.$1.length));
+    fmt = fmt.replace(RegExp.$1, `${date.getFullYear()}`.substr(4 - RegExp.$1.length));
   }
 
   Object.keys(o).forEach((k) => {
     if (new RegExp(`(${k})`).test(fmt)) {
-      fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : ((`00${o[k]}`).substr((`${o[k]}`).length)));
+      fmt = fmt.replace(
+        RegExp.$1,
+        RegExp.$1.length === 1 ? o[k] : `00${o[k]}`.substr(`${o[k]}`.length),
+      );
     }
   });
   return fmt;

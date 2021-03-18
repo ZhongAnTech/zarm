@@ -15,7 +15,13 @@ describe('Cell', () => {
   });
 
   it('icon', () => {
-    const wrapper = render(<Cell title="标题文字" description="描述文字" icon={<img alt="" src="\\static.zhongan.com/website/health/zarm/images/icons/state.png" />} />);
+    const wrapper = render(
+      <Cell
+        title="标题文字"
+        description="描述文字"
+        icon={<img alt="" src="\\static.zhongan.com/website/health/zarm/images/icons/state.png" />}
+      />,
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -25,13 +31,17 @@ describe('Cell', () => {
   });
 
   it('help', () => {
-    const wrapper = render(<Cell title="标题文字" description="描述文字" help={<span>message</span>} />);
+    const wrapper = render(
+      <Cell title="标题文字" description="描述文字" help={<span>message</span>} />,
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('onClick', () => {
     const onClick = jest.fn();
-    const wrapper = shallow(<Cell hasArrow title="标题文字" description="描述文字" onClick={onClick} />);
+    const wrapper = shallow(
+      <Cell hasArrow title="标题文字" description="描述文字" onClick={onClick} />,
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.simulate('click');
     expect(onClick).toBeCalled();

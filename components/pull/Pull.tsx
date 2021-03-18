@@ -93,7 +93,7 @@ export default class Pull extends PureComponent<PullProps, any> {
 
   componentWillUnmount() {
     this.mounted = false;
-    const scroller = (this.wrap === document.documentElement) ? window : this.wrap;
+    const scroller = this.wrap === document.documentElement ? window : this.wrap;
     Events.off(scroller, 'scroll', this.throttledScroll);
     Events.off(this.wrap, 'touchstart', this.wrapTouchstart);
     Events.off(this.wrap, 'touchmove', this.wrapTouchmove);
@@ -101,20 +101,22 @@ export default class Pull extends PureComponent<PullProps, any> {
   }
 
   get scrollContainer(): HTMLElement | Window {
-    const container = ((node) => {
-      while (node && node.parentNode && node.parentNode !== document.body) {
-        const style = window.getComputedStyle(node);
-        if (
-          // overflow 或者 overflowY 值为 scroll/auto
-          (['scroll', 'auto'].indexOf(style.overflowY!) > -1 || ['scroll', 'auto'].indexOf(style.overflow!) > -1)
-          // height 或者 max-height 值大于 0
-          && (parseInt(style.height!, 10) > 0 || parseInt(style.maxHeight!, 10) > 0)
-        ) {
-          return node;
+    const container =
+      ((node) => {
+        while (node && node.parentNode && node.parentNode !== document.body) {
+          const style = window.getComputedStyle(node);
+          if (
+            // overflow 或者 overflowY 值为 scroll/auto
+            (['scroll', 'auto'].indexOf(style.overflowY!) > -1 ||
+              ['scroll', 'auto'].indexOf(style.overflow!) > -1) &&
+            // height 或者 max-height 值大于 0
+            (parseInt(style.height!, 10) > 0 || parseInt(style.maxHeight!, 10) > 0)
+          ) {
+            return node;
+          }
+          node = node.parentNode;
         }
-        node = node.parentNode;
-      }
-    })(this.pull) || document.documentElement;
+      })(this.pull) || document.documentElement;
     return container;
   }
 
@@ -152,7 +154,7 @@ export default class Pull extends PureComponent<PullProps, any> {
 
   addScrollEvent = (): void => {
     this.wrap = this.scrollContainer;
-    const scroller = (this.wrap === document.documentElement) ? window : this.wrap;
+    const scroller = this.wrap === document.documentElement ? window : this.wrap;
     Events.on(scroller, 'scroll', this.throttledScroll);
   };
 
@@ -163,13 +165,12 @@ export default class Pull extends PureComponent<PullProps, any> {
     const { handler, distance } = load;
 
     if (
-      typeof handler !== 'function'
-      || refreshState !== REFRESH_STATE.normal
-      || loadState !== LOAD_STATE.normal
-      || scrollHeight <= clientHeight
-
+      typeof handler !== 'function' ||
+      refreshState !== REFRESH_STATE.normal ||
+      loadState !== LOAD_STATE.normal ||
+      scrollHeight <= clientHeight ||
       // 内容高度 - 偏移值 - 修正距离 <= 容器可见高度
-      || scrollHeight - this.scrollTop - distance! > clientHeight
+      scrollHeight - this.scrollTop - distance! > clientHeight
     ) {
       return;
     }
@@ -180,16 +181,13 @@ export default class Pull extends PureComponent<PullProps, any> {
     const { handler } = this.props.refresh!;
     if (
       // 未设置刷新事件
-      !handler
-
+      !handler ||
       // 上拉
-      || offsetY <= 0
-
+      offsetY <= 0 ||
       // 未滚动到顶部
-      || (offsetY > 0 && this.scrollTop > 0)
-
+      (offsetY > 0 && this.scrollTop > 0) ||
       // 已经触发过加载状态
-      || this.state.refreshState >= REFRESH_STATE.loading
+      this.state.refreshState >= REFRESH_STATE.loading
     ) {
       return false;
     }
@@ -204,9 +202,7 @@ export default class Pull extends PureComponent<PullProps, any> {
     const offset = offsetY / 3;
 
     // 判断是否达到释放立即刷新的条件
-    const action = ((offset - startDistance!) < distance!)
-      ? REFRESH_STATE.pull
-      : REFRESH_STATE.drop;
+    const action = offset - startDistance! < distance! ? REFRESH_STATE.pull : REFRESH_STATE.drop;
 
     this.doRefreshAction(action, offset);
     return true;
@@ -309,13 +305,9 @@ export default class Pull extends PureComponent<PullProps, any> {
 
     let percent = 0;
     if (offsetY >= startDistance!) {
-      percent = (
-        (
-          (offsetY - startDistance!) < distance!
-            ? offsetY - startDistance!
-            : distance
-        )! * 100
-      ) / distance!;
+      percent =
+        ((offsetY - startDistance! < distance! ? offsetY - startDistance! : distance)! * 100) /
+        distance!;
     }
 
     if (typeof render === 'function') {
@@ -433,19 +425,18 @@ export default class Pull extends PureComponent<PullProps, any> {
     }
 
     return (
-      <Drag
-        onDragMove={this.onDragMove}
-        onDragEnd={this.onDragEnd}
-      >
+      <Drag onDragMove={this.onDragMove} onDragEnd={this.onDragEnd}>
         <div className={cls} style={style}>
-          <div className={`${prefixCls}__content`} style={contentStyle} ref={(ele) => { this.pull = ele; }}>
-            <div className={`${prefixCls}__refresh`}>
-              {this.renderRefresh()}
-            </div>
+          <div
+            className={`${prefixCls}__content`}
+            style={contentStyle}
+            ref={(ele) => {
+              this.pull = ele;
+            }}
+          >
+            <div className={`${prefixCls}__refresh`}>{this.renderRefresh()}</div>
             <div className={`${prefixCls}__body`}>{children}</div>
-            <div className={loadCls}>
-              {this.renderLoad()}
-            </div>
+            <div className={loadCls}>{this.renderLoad()}</div>
           </div>
         </div>
       </Drag>

@@ -29,20 +29,10 @@ const Demo = () => {
         </Radio.Group>
       </Cell>
       <Cell title="最小日期">
-        <DateSelect
-          placeholder="Please input start date"
-          mode="date"
-          value={min}
-          onOk={setMin}
-        />
+        <DateSelect placeholder="Please input start date" mode="date" value={min} onOk={setMin} />
       </Cell>
       <Cell title="最大日期">
-        <DateSelect
-          placeholder="Please input end date"
-          mode="date"
-          value={max}
-          onOk={setMax}
-        />
+        <DateSelect placeholder="Please input end date" mode="date" value={max} onOk={setMax} />
       </Cell>
       <Cell title="自定义渲染">
         <Radio.Group
@@ -84,20 +74,20 @@ const Demo = () => {
       />
     </>
   );
-}
+};
 
 ReactDOM.render(<Demo />, mountNode);
 ```
 
 ## API
 
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| value | Date \| Date[] | - | 值 |
-| defaultValue | Date \| Date[] | - | 初始值 |
-| min | Date | new Date() | 最小可选日期 |
-| max | Date | min + 1 年 | 最大可选日期 |
-| multiple | boolean | false | 是否双选 |
-| dateRender | (date?: Date) => void | (date) => date.getDate() | 日期渲染函数 |
-| disabledDate | (date?: Date) => boolean | () => false | 日期是否禁止选择 |
-| onChange | (value?: Date[]) => void | - | 日期选择发生变化时触发的回调函数 |
+| 属性         | 类型                     | 默认值                   | 说明                             |
+| :----------- | :----------------------- | :----------------------- | :------------------------------- |
+| value        | Date \| Date[]           | -                        | 值                               |
+| defaultValue | Date \| Date[]           | -                        | 初始值                           |
+| min          | Date                     | new Date()               | 最小可选日期                     |
+| max          | Date                     | min + 1 年               | 最大可选日期                     |
+| multiple     | boolean                  | false                    | 是否双选                         |
+| dateRender   | (date?: Date) => void    | (date) => date.getDate() | 日期渲染函数                     |
+| disabledDate | (date?: Date) => boolean | () => false              | 日期是否禁止选择                 |
+| onChange     | (value?: Date[]) => void | -                        | 日期选择发生变化时触发的回调函数 |

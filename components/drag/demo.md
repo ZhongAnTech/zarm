@@ -1,7 +1,5 @@
 # Drag 拖拽
 
-
-
 ## 基本用法
 
 ```jsx
@@ -18,7 +16,10 @@ const Demo = () => {
 
   useEffect(() => {
     const { width, height } = boxRef.current.getBoundingClientRect();
-    const { width: containerWidth, height: containerHeight } = containerRef.current.getBoundingClientRect();
+    const {
+      width: containerWidth,
+      height: containerHeight,
+    } = containerRef.current.getBoundingClientRect();
 
     currentPoint[0] = Math.round(Math.random() * (containerWidth - width));
     currentPoint[1] = Math.round(Math.random() * (containerHeight - height));
@@ -40,7 +41,10 @@ const Demo = () => {
     console.log('onDragMove', dragState);
 
     const { width, height } = boxRef.current.getBoundingClientRect();
-    const { width: containerWidth, height: containerHeight } = containerRef.current.getBoundingClientRect();
+    const {
+      width: containerWidth,
+      height: containerHeight,
+    } = containerRef.current.getBoundingClientRect();
 
     let newX = currentPoint[0] + dragState.offsetX;
     let newY = currentPoint[1] + dragState.offsetY;
@@ -75,14 +79,10 @@ const Demo = () => {
       style={{
         height: 300,
         backgroundColor: '#5b5c60',
-        position: 'relative'
+        position: 'relative',
       }}
     >
-      <Drag
-        onDragStart={onDragStart}
-        onDragMove={onDragMove}
-        onDragEnd={onDragEnd}
-      >
+      <Drag onDragStart={onDragStart} onDragMove={onDragMove} onDragEnd={onDragEnd}>
         <div
           ref={boxRef}
           style={{
@@ -90,35 +90,34 @@ const Demo = () => {
             transform: `translate3d(${point[0]}px, ${point[1]}px, 0)`,
           }}
         >
-          {
-            drag
-              ? <Button theme="danger">Let me go!</Button>
-              : <Button theme="primary">Catch me~</Button>
-          }
+          {drag ? (
+            <Button theme="danger">Let me go!</Button>
+          ) : (
+            <Button theme="primary">Catch me~</Button>
+          )}
         </div>
       </Drag>
     </div>
   );
-}
+};
 
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
-
 ## API
 
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| onDragStart | (event?: MouseEvent \| TouchEvent, dragState?: DragState) => void | - | 触摸/点击 起始时触发的事件 |
-| onDragMove | (event?: MouseEvent \| TouchEvent, dragState?: DragState) => boolean | - | 拖拽移动时触发的事件 |
-| onDragEnd | (event?: MouseEvent \| TouchEvent, dragState?: DragState) => void | - | 触摸/点击 结束时触发的事件 |
+| 属性        | 类型                                                                 | 默认值 | 说明                       |
+| :---------- | :------------------------------------------------------------------- | :----- | :------------------------- |
+| onDragStart | (event?: MouseEvent \| TouchEvent, dragState?: DragState) => void    | -      | 触摸/点击 起始时触发的事件 |
+| onDragMove  | (event?: MouseEvent \| TouchEvent, dragState?: DragState) => boolean | -      | 拖拽移动时触发的事件       |
+| onDragEnd   | (event?: MouseEvent \| TouchEvent, dragState?: DragState) => void    | -      | 触摸/点击 结束时触发的事件 |
 
 ### DragState
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| startTime | Date | new Date() | 起始时间 |
-| startX | number | - | 起始点x坐标 |
-| startY | number | - | 起始点y坐标 |
-| offsetX | number | - | 横向偏移量 |
-| offsetY | number | - | 纵向偏移量 |
+
+| 属性      | 类型   | 默认值     | 说明          |
+| :-------- | :----- | :--------- | :------------ |
+| startTime | Date   | new Date() | 起始时间      |
+| startX    | number | -          | 起始点 x 坐标 |
+| startY    | number | -          | 起始点 y 坐标 |
+| offsetX   | number | -          | 横向偏移量    |
+| offsetY   | number | -          | 纵向偏移量    |

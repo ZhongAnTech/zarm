@@ -15,17 +15,29 @@ describe('Progress', () => {
   });
 
   it('renders shape is circle correctly', () => {
-    const wrapper = render(<Progress shape="circle" strokeShape="rect" percent={10}>foo</Progress>);
+    const wrapper = render(
+      <Progress shape="circle" strokeShape="rect" percent={10}>
+        foo
+      </Progress>,
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders shape is semi-circle correctly', () => {
-    const wrapper = render(<Progress shape="semi-circle" percent={10}>foo</Progress>);
+    const wrapper = render(
+      <Progress shape="semi-circle" percent={10}>
+        foo
+      </Progress>,
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders percent correctly', () => {
-    const wrapper = mount(<Progress shape="circle" percent={10}>foo</Progress>);
+    const wrapper = mount(
+      <Progress shape="circle" percent={10}>
+        foo
+      </Progress>,
+    );
     wrapper.setProps({ percent: 50 });
     expect(wrapper.props().percent).toEqual(50);
     expect(toJson(wrapper)).toMatchSnapshot();

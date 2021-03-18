@@ -1,34 +1,34 @@
+/* eslint-disable operator-linebreak */
 import raf from 'raf';
 
 export type ContainerType = HTMLElement | (() => HTMLElement) | Window;
 
 // 获取元素的纵坐标（相对于窗口）
-export const getTop = (ele) => {
+export const getTop = (ele: HTMLElement): number => {
   let offset = ele.offsetTop;
   if (ele.offsetParent != null) {
-    offset += getTop(ele.offsetParent);
+    offset += getTop(ele.offsetParent as HTMLElement);
   }
   return offset;
 };
 
-export const getLeft = (ele) => {
+export const getLeft = (ele: HTMLElement) => {
   let offset = ele.offsetLeft;
   if (ele.offsetParent != null) {
-    offset += getLeft(ele.offsetParent);
+    offset += getLeft(ele.offsetParent as HTMLElement);
   }
   return offset;
 };
 
 // 获取元素大小以及相对窗口的位置
-export const getBoundingClientRect = (ele) => {
+export const getBoundingClientRect = (
+  ele: Element,
+): Omit<DOMRectReadOnly, 'x' | 'y' | 'toJSON'> => {
   const rect = ele.getBoundingClientRect();
 
   // 解决ie下的兼容问题
   const isIE = navigator.userAgent.indexOf('MSIE') !== -1;
-  const rectTop = isIE && ele.tagName === 'HTML'
-    ? -ele.scrollTop
-    : rect.top;
-
+  const rectTop = isIE && ele.tagName === 'HTML' ? -ele.scrollTop : rect.top;
   return {
     left: rect.left,
     top: rectTop,
@@ -39,14 +39,18 @@ export const getBoundingClientRect = (ele) => {
   };
 };
 
+export const isNumeric = (n: any): boolean => {
+  return n !== '' && !Number.isNaN(parseFloat(n)) && Number.isFinite(n);
+};
+
 // 设置元素行内样式
-export const setStyle = (ele, styles) => {
-  const isNumeric = (n) => {
-    return (n !== '' && !Number.isNaN(parseFloat(n)) && Number.isFinite(n));
-  };
+export const setStyle = (ele: HTMLElement, styles: { [prop: string]: string | number }) => {
   Object.keys(styles).forEach((prop) => {
     let unit = '';
-    if (['width', 'height', 'top', 'right', 'bottom', 'left'].indexOf(prop) !== -1 && isNumeric(styles[prop])) {
+    if (
+      ['width', 'height', 'top', 'right', 'bottom', 'left'].indexOf(prop) !== -1 &&
+      isNumeric(styles[prop])
+    ) {
       unit = 'px';
     }
     ele.style[prop] = styles[prop] + unit;
@@ -54,20 +58,25 @@ export const setStyle = (ele, styles) => {
 };
 
 // 获取元素css的某一个计算后属性值
-export const getStyleComputedProperty = (ele, property: string): string => {
+type NonFunctionPropertyNames<T> = { [K in keyof T]: T[K] extends string ? K : never }[keyof T];
+type Property = NonFunctionPropertyNames<CSSStyleDeclaration>;
+export const getStyleComputedProperty = (ele: Element, property: Property): string => {
   const css = window.getComputedStyle(ele, null);
   return css[property];
 };
 
 // 判断元素是否固定定位或者是否在固定定位元素内
-export const isFixed = (ele) => {
+export const isFixed = (ele): boolean => {
   if (ele === window.document.body) {
     return false;
   }
   if (getStyleComputedProperty(ele, 'position') === 'fixed') {
     return true;
   }
-  return ele.parentNode ? isFixed(ele.parentNode) : ele;
+  if (ele.parentNode) {
+    return isFixed(ele.parentNode);
+  }
+  return false;
 };
 
 // 获取元素完整尺寸(offset size + margin)
@@ -95,7 +104,9 @@ export const getOuterSizes = (ele) => {
 // 获取元素的offsetParent
 export const getOffsetParent = (ele) => {
   const { offsetParent } = ele;
-  return offsetParent === window.document.body || !offsetParent ? window.document.documentElement : offsetParent;
+  return offsetParent === window.document.body || !offsetParent
+    ? window.document.documentElement
+    : offsetParent;
 };
 
 // 获取指定元素可滚动的父元素
@@ -111,10 +122,11 @@ export const getScrollParent = (ele): HTMLElement => {
     }
     return window.document.documentElement;
   }
+  const overflowValues = ['scroll', 'auto'];
   if (
-    ['scroll', 'auto'].indexOf(getStyleComputedProperty(parent, 'overflow')) !== -1
-    || ['scroll', 'auto'].indexOf(getStyleComputedProperty(parent, 'overflow-x')) !== -1
-    || ['scroll', 'auto'].indexOf(getStyleComputedProperty(parent, 'overflow-y')) !== -1
+    overflowValues.indexOf(getStyleComputedProperty(parent, 'overflow')) !== -1 ||
+    overflowValues.indexOf(getStyleComputedProperty(parent, 'overflowX')) !== -1 ||
+    overflowValues.indexOf(getStyleComputedProperty(parent, 'overflowY')) !== -1
   ) {
     return parent;
   }
@@ -126,7 +138,9 @@ export const getSupportedPropertyName = (property) => {
   const prefixes = ['', 'ms', 'webkit', 'moz', 'o'];
 
   for (let i = 0; i < prefixes.length; i++) {
-    const toCheck = prefixes[i] ? prefixes[i] + property.charAt(0).toUpperCase() + property.slice(1) : property;
+    const toCheck = prefixes[i]
+      ? prefixes[i] + property.charAt(0).toUpperCase() + property.slice(1)
+      : property;
     if (typeof window.document.body.style[toCheck] !== 'undefined') {
       return toCheck;
     }
@@ -140,7 +154,11 @@ export const getScrollTop = (ele: HTMLElement | Window): number => {
     return (document.scrollingElement || document.documentElement).scrollTop;
   }
   if (ele === window) {
-    return Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
+    return Math.max(
+      window.pageYOffset,
+      document.documentElement.scrollTop,
+      document.body.scrollTop,
+    );
   }
   return (ele as HTMLElement).scrollTop;
 };
@@ -150,7 +168,11 @@ export const getScrollLeft = (ele: HTMLElement | Window): number => {
     return (document.scrollingElement || document.documentElement).scrollLeft;
   }
   if (ele === window) {
-    return Math.max(window.pageYOffset, document.documentElement.scrollLeft, document.body.scrollLeft);
+    return Math.max(
+      window.pageYOffset,
+      document.documentElement.scrollLeft,
+      document.body.scrollLeft,
+    );
   }
   return (ele as HTMLElement).scrollLeft;
 };
@@ -161,10 +183,7 @@ export const getMountContainer = (mountContainer?: ContainerType): HTMLElement =
     if (typeof mountContainer === 'function') {
       return mountContainer();
     }
-    if (
-      typeof mountContainer === 'object'
-      && mountContainer instanceof HTMLElement
-    ) {
+    if (typeof mountContainer === 'object' && mountContainer instanceof HTMLElement) {
       return mountContainer;
     }
   }
@@ -174,9 +193,7 @@ export const getMountContainer = (mountContainer?: ContainerType): HTMLElement =
 // 获取滚动容器
 export const getScrollContainer = (mountContainer?: ContainerType): HTMLElement | Window => {
   const container = getMountContainer(mountContainer);
-  return container === document.body
-    ? window
-    : container;
+  return container === document.body ? window : container;
 };
 
 // export const scrollTo = (scrollContainer: HTMLElement | Window, scrollTop: number): void => {
@@ -232,4 +249,8 @@ export function scrollTo(
   animate();
 }
 
-export const canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+export const canUseDOM = !!(
+  typeof window !== 'undefined' &&
+  window.document &&
+  window.document.createElement
+);

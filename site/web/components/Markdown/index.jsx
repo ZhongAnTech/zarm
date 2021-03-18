@@ -18,7 +18,11 @@ export default (props) => {
 
     // 代码
     renderer.code = (code, language) => {
-      return `<pre><code class="language-${language}">${Prism.highlight(code, Prism.languages[language], language)}</code></pre>`;
+      const highlightCode =
+        Object.keys(Prism.languages).indexOf(language) > -1
+          ? Prism.highlight(code, Prism.languages[language], language)
+          : code;
+      return `<pre><code class="language-${language}">${highlightCode}</code></pre>`;
     };
 
     // 标题
@@ -43,7 +47,9 @@ export default (props) => {
   if (typeof document === 'string') {
     const demoHTML = marked(document.replace(/## API\s?([^]+)/g, ''), { renderer: getRenderer() });
     const api = document.match(/## API\s?([^]+)/g);
-    const apiHTML = marked(Object.prototype.toString.call(api) === '[object Array]' ? api[0] : '', { renderer: getRenderer() });
+    const apiHTML = marked(Object.prototype.toString.call(api) === '[object Array]' ? api[0] : '', {
+      renderer: getRenderer(),
+    });
     const title = `${component.name} ${pascalCase(component.key)} - Zarm Design`;
 
     return (

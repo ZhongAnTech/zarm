@@ -20,13 +20,15 @@ export default {
   'app.home.footer.help.bug-report': 'Bug Report',
   'app.home.footer.help.bug-list': 'Bug List',
   'app.home.footer.help.chat': 'Chat Room',
-  'app.home.index.introduce': 'Pursue the ultimate user experience and build a component library with warmth',
+  'app.home.index.introduce':
+    'Pursue the ultimate user experience and build a component library with warmth',
   'app.home.index.getting-started': 'Getting Started',
   'app.home.index.scanning-code': 'Scan QR Code',
   'app.home.components.simulator.affix': 'set affix',
   'app.home.components.simulator.unaffix': 'set unaffix',
   'app.home.resources': 'Design Resources',
-  'app.home.resources.introduce': 'Please find below some of the design resources and tools about Zarm Design that we consider valuable.',
+  'app.home.resources.introduce':
+    'Please find below some of the design resources and tools about Zarm Design that we consider valuable.',
   'app.home.resources.type.zarm': 'Sketch Symbol for zarm',
   'app.home.resources.type.zarm-web': 'Sketch Symbol for zarm-web',
   'app.home.resources.type.zarm-web-frame': 'Sketch Symbol for zarm-web-frame',

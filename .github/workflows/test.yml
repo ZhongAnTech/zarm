@@ -32,6 +32,43 @@ jobs:
         if: steps.node_modules_cache_id.outputs.cache-hit != 'true'
         run: yarn
 
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: restore cache from yarn.lock
+        uses: actions/cache@v2
+        with:
+          path: package-temp-dir
+          key: lock-${{ github.sha }}
+
+      - name: restore cache from node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
+
+      - name: cache lib
+        uses: actions/cache@v2
+        with:
+          path: lib
+          key: lib-${{ github.sha }}
+
+      - name: cache es
+        uses: actions/cache@v2
+        with:
+          path: es
+          key: es-${{ github.sha }}
+
+      - name: compile
+        run: npm run build:lib && npm run build:es && npm run build:rn
+
+      # - name: check
+      #   run: node ./tests/dekko/lib.test.js
+    needs: setup
+
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -54,7 +91,279 @@ jobs:
         run: npm run lint
     needs: setup
 
-  test:
+  react-17-dom:
+    name: react@17.x / dom
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+        with:
+          # codecov.io requires a fetch depth > 1.
+          fetch-depth: 2
+
+      - name: restore cache from yarn.lock
+        uses: actions/cache@v2
+        with:
+          path: package-temp-dir
+          key: lock-${{ github.sha }}
+
+      - name: restore cache from node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
+
+      - name: test
+        run: npm run test:h5 -- -c
+      
+      - name: coverage
+        run: bash <(curl -s https://codecov.io/bash)
+    needs: setup
+
+  react-17-lib:
+    name: react@17.x / lib
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: restore cache from yarn.lock
+        uses: actions/cache@v2
+        with:
+          path: package-temp-dir
+          key: lock-${{ github.sha }}
+
+      - name: restore cache from node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
+
+      - name: cache lib
+        uses: actions/cache@v2
+        with:
+          path: lib
+          key: lib-${{ github.sha }}
+
+      - name: test
+        run: npm run test:h5
+        env:
+          LIB_DIR: lib
+    needs: compile
+
+  react-17-es:
+    name: react@17.x / es
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: restore cache from yarn.lock
+        uses: actions/cache@v2
+        with:
+          path: package-temp-dir
+          key: lock-${{ github.sha }}
+
+      - name: restore cache from node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
+
+      - name: cache es
+        uses: actions/cache@v2
+        with:
+          path: es
+          key: es-${{ github.sha }}
+
+      - name: test
+        run: npm run test:h5
+        env:
+          LIB_DIR: es
+    needs: compile
+
+  react-17-dist:
+    name: react@17.x / dist
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: restore cache from yarn.lock
+        uses: actions/cache@v2
+        with:
+          path: package-temp-dir
+          key: lock-${{ github.sha }}
+
+      - name: restore cache from node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
+
+      - name: dist
+        run: npm run build:umd
+        env:
+          NODE_OPTIONS: --max_old_space_size=4096
+
+      - name: check
+        run: node ./tests/dekko/dist.test.js
+
+      - name: bundlesize
+        run: npm run bundlesize
+        env:
+          BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}
+
+      - name: test
+        run: npm run test:h5
+        env:
+          LIB_DIR: dist
+    needs: setup
+
+  react-16-dom:
+    name: react@16.x / dom
+    runs-on: ubuntu-latest
+    env:
+      REACT: 16
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: restore cache from yarn.lock
+        uses: actions/cache@v2
+        with:
+          path: package-temp-dir
+          key: lock-${{ github.sha }}
+
+      - name: restore cache from node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
+
+      - name: install react 16
+        run: npm run install-react-16
+
+      - name: test
+        run: npm run test:h5
+    needs: setup
+
+  react-16-lib:
+    name: react@16.x / lib
+    runs-on: ubuntu-latest
+    env:
+      REACT: 16
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: restore cache from yarn.lock
+        uses: actions/cache@v2
+        with:
+          path: package-temp-dir
+          key: lock-${{ github.sha }}
+
+      - name: restore cache from node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
+
+      - name: restore cache from lib
+        uses: actions/cache@v2
+        with:
+          path: lib
+          key: lib-${{ github.sha }}
+
+      - name: install react 16
+        run: npm run install-react-16
+
+      - name: test
+        run: npm run test:h5
+        env:
+          LIB_DIR: lib
+    needs: compile
+
+  react-16-es:
+    name: react@16.x / es
+    runs-on: ubuntu-latest
+    env:
+      REACT: 16
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: restore cache from yarn.lock
+        uses: actions/cache@v2
+        with:
+          path: package-temp-dir
+          key: lock-${{ github.sha }}
+
+      - name: restore cache from node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
+
+      - name: restore cache from es
+        uses: actions/cache@v2
+        with:
+          path: es
+          key: es-${{ github.sha }}
+
+      - name: install react 16
+        run: npm run install-react-16
+
+      - name: test
+        run: npm run test:h5
+        env:
+          LIB_DIR: es
+    needs: compile
+
+  react-16-dist:
+    name: react@16.x / dist
+    runs-on: ubuntu-latest
+    env:
+      REACT: 16
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: restore cache from yarn.lock
+        uses: actions/cache@v2
+        with:
+          path: package-temp-dir
+          key: lock-${{ github.sha }}
+
+      - name: restore cache from node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
+
+      - name: install react 16
+        run: npm run install-react-16
+
+      - name: dist
+        run: npm run build:umd
+        env:
+          NODE_OPTIONS: --max_old_space_size=4096
+
+      - name: check
+        run: node ./tests/dekko/dist.test.js
+
+      - name: bundlesize
+        run: npm run bundlesize
+        env:
+          BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}
+
+      - name: test
+        run: npm run test:h5
+        env:
+          LIB_DIR: dist
+    needs: setup
+
+  react-native:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -73,5 +382,6 @@ jobs:
           key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
 
       - name: test
-        run: npm test
+        run: npm run test:rn
     needs: setup
+

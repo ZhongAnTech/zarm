@@ -1,7 +1,9 @@
 import { PureComponent } from 'react';
 import Events from '../utils/events';
-import Throttle from '../utils/throttle';
-import { canUseDOM, ContainerType, getScrollContainer, getScrollTop } from '../utils/dom';
+import throttle from '../utils/throttle';
+import { canUseDOM, getScrollContainer, getScrollTop } from '../utils/dom';
+import type { ContainerType } from '../utils/dom';
+import noop from '../utils/noop';
 
 export interface ScrollerProps {
   prefixCls?: string;
@@ -18,6 +20,8 @@ export default class Scroller extends PureComponent<ScrollerProps, {}> {
   };
 
   private mounted: boolean;
+
+  private scrollThrottled = this.props.onScroll ? throttle(this.props.onScroll, 250) : noop;
 
   componentDidMount() {
     this.bindEvent();
@@ -48,7 +52,7 @@ export default class Scroller extends PureComponent<ScrollerProps, {}> {
   onScroll = (): void => {
     const { onScroll } = this.props;
     if (!this.mounted) return;
-    typeof onScroll === 'function' && Throttle(onScroll!(this.scrollTop), 250);
+    typeof onScroll === 'function' && this.scrollThrottled(this.scrollTop);
   };
 
   bindEvent = (): void => {

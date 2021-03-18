@@ -4,6 +4,7 @@ import BaseDatePickerViewProps from './PropsType';
 import PickerView from '../picker-view';
 import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
 import { isExtendDate, parseState } from './utils/parseState';
+import { cloneDate, getDaysInMonth, getGregorianCalendar, pad, setMonth } from './utils/date';
 
 const DATETIME = 'datetime';
 const DATE = 'date';
@@ -12,35 +13,14 @@ const MONTH = 'month';
 const YEAR = 'year';
 const ONE_DAY = 24 * 60 * 60 * 1000;
 
-// 获取当月天数
-const getDaysInMonth = (date) => {
-  return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-};
-
-// 补齐格式
-const pad = (n) => {
-  return n < 10 ? `0${n}` : n;
-};
-
-const cloneDate = (date) => {
-  return new Date(+date);
-};
-
-const setMonth = (date, month) => {
-  date.setDate(Math.min(date.getDate(), getDaysInMonth(new Date(date.getFullYear(), month))));
-  date.setMonth(month);
-};
-
-const getGregorianCalendar = (year, month, day, hour, minutes, seconds) => {
-  return new Date(year, month, day, hour, minutes, seconds);
-};
-
 export interface DatePickerViewProps extends BaseDatePickerViewProps {
   prefixCls?: string;
   className?: string;
 }
 
-export default class DatePickerView extends Component<DatePickerViewProps, any> {
+export type DatePickerViewState = ReturnType<typeof parseState>;
+
+export default class DatePickerView extends Component<DatePickerViewProps, DatePickerViewState> {
   static defaultProps: DatePickerViewProps = {
     prefixCls: 'za-date-picker-view',
     mode: DATE,
@@ -51,7 +31,12 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
   };
 
   static getDerivedStateFromProps(props, state) {
-    if (!isEqual(removeFnFromProps(props, ['onChange', 'onInit', 'onTransition']), removeFnFromProps(state.prevProps, ['onChange', 'onInit', 'onTransition']))) {
+    if (
+      !isEqual(
+        removeFnFromProps(props, ['onChange', 'onInit', 'onTransition']),
+        removeFnFromProps(state.prevProps, ['onChange', 'onInit', 'onTransition']),
+      )
+    ) {
       return {
         prevProps: props,
         ...parseState(props),
@@ -61,13 +46,14 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     return null;
   }
 
-  constructor(props) {
+  constructor(props: DatePickerViewProps) {
     super(props);
     this.state = parseState(props);
     const { onInit } = this.props;
     if (typeof onInit === 'function') {
       onInit(this.getDate());
     }
+    this.getColsValue = this.getColsValue.bind(this);
   }
 
   onValueChange = (selected, index) => {
@@ -121,7 +107,7 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     return this.clipDate(newValue);
   };
 
-  getColsValue = () => {
+  getColsValue() {
     const { mode } = this.props;
     const date = this.getDate();
 
@@ -153,7 +139,7 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
       dataSource,
       value,
     };
-  };
+  }
 
   getDateData = () => {
     const { locale, mode } = this.props;
@@ -278,14 +264,14 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
 
     for (let i = minHour; i <= maxHour; i += 1) {
       hourCol.push({
-        label: locale!.hour ? (i + locale!.hour) : pad(i),
+        label: locale!.hour ? i + locale!.hour : pad(i),
         value: i,
       });
     }
 
     for (let i = minMinute; i <= maxMinute; i += minuteStep!) {
       minuteCol.push({
-        label: locale!.minute ? (i + locale!.minute) : pad(i),
+        label: locale!.minute ? i + locale!.minute : pad(i),
         value: i,
       });
     }

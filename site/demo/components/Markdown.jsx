@@ -52,7 +52,10 @@ export default (props) => {
       .replace(/## API\s?([^]+)/g, '') // 排除API显示
       .replace(/##\s?([^]+?)((?=##)|$)/g, (match, p1) => {
         const id = parseInt(Math.random() * 1e9, 10).toString(36);
-        components.set(id, React.createElement(Demo, { ...props, globalContext, location: useLocation() }, p1));
+        components.set(
+          id,
+          React.createElement(Demo, { ...props, globalContext, location: useLocation() }, p1),
+        );
         return `<div id=${id}></div>`;
       }),
     {
@@ -62,10 +65,10 @@ export default (props) => {
 
   return (
     <main dangerouslySetInnerHTML={{ __html: html }} />
-  //     <NavBar
-  //   style={{ position: 'fixed', top: 0 }}
-  //   title={`${data.name} ${data.description}`}
-  //   left={leftControl}
-  // />
+    //     <NavBar
+    //   style={{ position: 'fixed', top: 0 }}
+    //   title={`${data.name} ${data.description}`}
+    //   left={leftControl}
+    // />
   );
 };

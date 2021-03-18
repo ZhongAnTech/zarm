@@ -1,7 +1,7 @@
 import Color from 'color';
 
-const darken = (color, percent) => {
-  const hsl = Color(color).hsl();
+const darken = (color: string, percent) => {
+  const hsl: any = Color(color).hsl();
   const l = hsl.color[2] - percent * 100;
   hsl.color[2] = l;
   return hsl.hex();
@@ -9,11 +9,11 @@ const darken = (color, percent) => {
 
 let base: any = {
   // 主题色
-  theme_default: '#e6e6e6',                 // 默认色
-  theme_primary: '#00bc70',                 // 主色
-  theme_success: '#00bc70',                 // 成功
-  theme_warning: '#ec9131',                 // 警告
-  theme_danger: '#ff5050',                  // 失败
+  theme_default: '#e6e6e6', // 默认色
+  theme_primary: '#00bc70', // 主色
+  theme_success: '#00bc70', // 成功
+  theme_warning: '#ec9131', // 警告
+  theme_danger: '#ff5050', // 失败
 };
 
 // 主题色
@@ -27,13 +27,13 @@ base = {
   theme_danger_press: darken(base.theme_danger, 0.04),
 
   // 文字色
-  color_text: '#464646',                    // 基本
-  color_text_inverse: '#fff',               // 反色
-  color_text_placeholder: '#a9a9a9',        // 文本框提示
-  color_text_disabled: '#bcbcbc',           // 失效
-  color_text_caption: '#909090',            // 辅助描述
-  color_link: '#108ee9',                    // 链接
-  color_shadow: 'rgba(56, 56, 56, .15)',    // 阴影色
+  color_text: '#464646', // 基本
+  color_text_inverse: '#fff', // 反色
+  color_text_placeholder: '#a9a9a9', // 文本框提示
+  color_text_disabled: '#bcbcbc', // 失效
+  color_text_caption: '#909090', // 辅助描述
+  color_link: '#108ee9', // 链接
+  color_shadow: 'rgba(56, 56, 56, .15)', // 阴影色
 
   // 背景色
   background_active: '#e6e6e6',
@@ -157,20 +157,20 @@ const components = {
   button_danger_ghost_active_color: base.theme_danger_press,
 
   // Cell
-  cell_height: 52,                                   // 最小度
-  cell_background: '#fff',                           // 背景色
-  cell_line_padding_left: 16,                        // 分隔线左边距
-  cell_padding_h: 16,                                // 水平边内距
-  cell_padding_v: 15,                                // 纵向边内距
-  cell_title_color: base.color_text,                 // 标题文字颜色
-  cell_title_font_size: 15,                          // 标题文字大小
-  cell_title_line_height: 22,                        // 标题文字行高
-  cell_description_color: base.color_text_caption,   // 标题文字颜色
-  cell_description_font_size: 15,                    // 描述文字大小
-  cell_label_width: 100,                             // 表单label度
-  cell_arrow_color: '#bcbcbc',                       // 箭头颜色
-  cell_arrow_length: 10,                             // 箭头长度
-  cell_arrow_border_width: 2,                        // 箭头粗细
+  cell_height: 52, // 最小度
+  cell_background: '#fff', // 背景色
+  cell_line_padding_left: 16, // 分隔线左边距
+  cell_padding_h: 16, // 水平边内距
+  cell_padding_v: 15, // 纵向边内距
+  cell_title_color: base.color_text, // 标题文字颜色
+  cell_title_font_size: 15, // 标题文字大小
+  cell_title_line_height: 22, // 标题文字行高
+  cell_description_color: base.color_text_caption, // 标题文字颜色
+  cell_description_font_size: 15, // 描述文字大小
+  cell_label_width: 100, // 表单label度
+  cell_arrow_color: '#bcbcbc', // 箭头颜色
+  cell_arrow_length: 10, // 箭头长度
+  cell_arrow_border_width: 2, // 箭头粗细
 
   // Checkbox
   checkbox_size: 20,
@@ -205,8 +205,8 @@ const components = {
   message_close_length_md: 12,
   message_close_length_lg: 14,
   message_arrow_length_md: 8,
-  message_arrow_length_lg: 10,                                  // 箭头颜色
-  message_arrow_border_width: 1,                                     // 箭头粗细
+  message_arrow_length_lg: 10, // 箭头颜色
+  message_arrow_border_width: 1, // 箭头粗细
 
   // Modal
   modal_background: '#fff',

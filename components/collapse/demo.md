@@ -1,8 +1,7 @@
 # Collapse 折叠面板
 
-
-
 ## 基本用法
+
 ```jsx
 import { useState } from 'react';
 import { Cell, Switch, Collapse, Checkbox } from 'zarm';
@@ -57,14 +56,13 @@ const Demo = () => {
       </Collapse>
     </>
   );
-}
+};
 
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
-
 ## 默认展开项
+
 ```jsx
 import { Collapse } from 'zarm';
 
@@ -79,13 +77,13 @@ ReactDOM.render(
     <Collapse.Item key="2" title="Header of Item3">
       This is content of item3. This is content of item3. This is content of item3.
     </Collapse.Item>
-  </Collapse>
-, mountNode);
+  </Collapse>,
+  mountNode,
+);
 ```
 
-
-
 ## 禁用子项
+
 ```jsx
 import { Collapse } from 'zarm';
 
@@ -100,27 +98,28 @@ ReactDOM.render(
     <Collapse.Item key="test3" title="Header of Item3" disabled>
       This is content of item3. This is content of item3. This is content of item3.
     </Collapse.Item>
-  </Collapse>
-, mountNode);
+  </Collapse>,
+  mountNode,
+);
 ```
-
-
 
 ## API
 
 ## Collapse
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| multiple | boolean | false | 是否可以同时展开多项 |
-| animated | boolean | false | 是否添加展开动画 |
-| activeKey | string \| number \| string[] \| number[] | [] | 动态更新展开项的索引数组或字符串或数字 |
-| defaultActiveKey | string \| number \| string[] \| number[] | [] | 初始化默认展开项的索引数组或字符串或数字 |
-| onChange | (activeKey?: string \| number \| string[] \| number[]) => void | - | 点击某一项的回调函数，返回选中的项 |
+
+| 属性             | 类型                                                           | 默认值 | 说明                                     |
+| :--------------- | :------------------------------------------------------------- | :----- | :--------------------------------------- |
+| multiple         | boolean                                                        | false  | 是否可以同时展开多项                     |
+| animated         | boolean                                                        | false  | 是否添加展开动画                         |
+| activeKey        | string \| number \| string[] \| number[]                       | []     | 动态更新展开项的索引数组或字符串或数字   |
+| defaultActiveKey | string \| number \| string[] \| number[]                       | []     | 初始化默认展开项的索引数组或字符串或数字 |
+| onChange         | (activeKey?: string \| number \| string[] \| number[]) => void | -      | 点击某一项的回调函数，返回选中的项       |
 
 ## Collapse.Item
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| title | ReactNode | - | 每一项的名称 |
-| key | string \| number | - | 对应activeKey |
-| disabled | boolean | false | 是否禁用 |
-| onChange | (active?: boolean) => void | - | 点击某一项的回调函数 |
+
+| 属性     | 类型                       | 默认值 | 说明                 |
+| :------- | :------------------------- | :----- | :------------------- |
+| title    | ReactNode                  | -      | 每一项的名称         |
+| key      | string \| number           | -      | 对应 activeKey       |
+| disabled | boolean                    | false  | 是否禁用             |
+| onChange | (active?: boolean) => void | -      | 点击某一项的回调函数 |

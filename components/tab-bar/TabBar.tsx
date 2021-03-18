@@ -1,7 +1,7 @@
 import React, { PureComponent, cloneElement } from 'react';
 import classnames from 'classnames';
-import { BaseTabBarProps } from './PropsType';
-import TabBarItem from './TabBarItem';
+import type { BaseTabBarProps } from './PropsType';
+import type TabBarItem from './TabBarItem';
 
 export interface TabBarProps extends BaseTabBarProps {
   prefixCls?: string;
@@ -35,25 +35,30 @@ class TabBar extends PureComponent<TabBarProps, any> {
   };
 
   render() {
-    const { visible, prefixCls, children, style } = this.props;
-    const cls = classnames(prefixCls, {
+    const { visible, prefixCls, className, children, style } = this.props;
+    const cls = classnames(prefixCls, className, {
       [`${prefixCls}--hidden`]: !visible,
     });
     const items = React.Children.map(children, (element, index) => {
       if (!React.isValidElement(element)) return null;
+      const itemKey = element.props.itemKey || index;
       return cloneElement(element, {
         key: index,
         disabled: element.props.disabled,
-        onChange: () => this.onChildChange(element.props.itemKey),
+        onChange: () => this.onChildChange(itemKey),
         badge: element.props.badge,
         title: element.props.title,
         icon: element.props.icon,
-        itemKey: element.props.itemKey || index,
+        itemKey,
         style: element.props.style,
-        selected: this.getSelected(index, element.props.itemKey),
+        selected: this.getSelected(index, itemKey),
       });
     });
-    return <div className={cls} style={style}>{items}</div>;
+    return (
+      <div className={cls} style={style}>
+        {items}
+      </div>
+    );
   }
 }
 

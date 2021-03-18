@@ -1,10 +1,5 @@
 import React, { PureComponent, CSSProperties } from 'react';
-import {
-  StyleSheet,
-  View,
-  Text,
-  ViewStyle,
-} from 'react-native';
+import { StyleSheet, View, Text, ViewStyle } from 'react-native';
 import PropsType from './PropsType';
 import badgeStyle from './style/index.native';
 
@@ -26,9 +21,10 @@ export default class Badge extends PureComponent<BadgeProps, {}> {
   };
 
   layout = (e) => {
-    const dotWidth = (this.props.shape === 'dot' || this.props.shape === undefined)
-      ? -(parseInt(e.layout.width, 10) - 4)
-      : -(parseInt(e.layout.width, 10) - 8);
+    const dotWidth =
+      this.props.shape === 'dot' || this.props.shape === undefined
+        ? -(parseInt(e.layout.width, 10) - 4)
+        : -(parseInt(e.layout.width, 10) - 8);
 
     this.setState({
       dotWidth,
@@ -36,20 +32,10 @@ export default class Badge extends PureComponent<BadgeProps, {}> {
   };
 
   render() {
-    const {
-      theme,
-      shape,
-      text,
-      style,
-      children,
-      styles,
-    } = this.props;
+    const { theme, shape, text, style, children, styles } = this.props;
     const { dotWidth } = this.state;
 
-    const bagdeWrapper = [
-      styles!.textStyle,
-      style,
-    ] as ViewStyle;
+    const bagdeWrapper = [styles!.textStyle, style] as ViewStyle;
 
     const badgeText = [
       styles!.badgeText,

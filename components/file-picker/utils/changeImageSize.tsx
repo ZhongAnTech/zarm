@@ -4,9 +4,12 @@
  * @param img
  * @param quality
  * @param fileType
- * @returns {string}
  */
-export default function changeImageSize(img: HTMLImageElement, quality: number | undefined, fileType: string) {
+export default function changeImageSize(
+  img: HTMLImageElement,
+  quality: number | undefined,
+  fileType: string,
+) {
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
 

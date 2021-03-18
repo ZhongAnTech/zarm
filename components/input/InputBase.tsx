@@ -165,7 +165,7 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
     } = this.props;
 
     const { value, focused } = this.state;
-    const showClearIcon = clearable && ('value' in this.props) && ('onChange' in this.props);
+    const showClearIcon = clearable && 'value' in this.props && 'onChange' in this.props;
 
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--disabled`]: disabled,
@@ -177,25 +177,40 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
     const renderInput = (
       <input
         {...rest}
-        value={('value' in this.props) ? value : undefined}
+        value={'value' in this.props ? value : undefined}
         autoComplete="off"
-        ref={(ele) => { this.input = ele; }}
+        ref={(ele) => {
+          this.input = ele;
+        }}
         type={type}
         disabled={disabled}
         onChange={this.onChange}
         onBlur={this.onBlur}
         onFocus={this.onFocus}
-        onCompositionStart={(e) => { this.handleComposition(e); }}
-        onCompositionUpdate={(e) => { this.handleComposition(e); }}
-        onCompositionEnd={(e) => { this.handleComposition(e); }}
+        onCompositionStart={(e) => {
+          this.handleComposition(e);
+        }}
+        onCompositionUpdate={(e) => {
+          this.handleComposition(e);
+        }}
+        onCompositionEnd={(e) => {
+          this.handleComposition(e);
+        }}
       />
     );
 
     const renderText = <div className={`${prefixCls}__content`}>{value}</div>;
 
     // clear icon
-    const renderClearIcon = showClearIcon
-      && <Icon type="wrong-round-fill" className={`${prefixCls}__clear`} onClick={() => { this.onClear(); }} />;
+    const renderClearIcon = showClearIcon && (
+      <Icon
+        type="wrong-round-fill"
+        className={`${prefixCls}__clear`}
+        onClick={() => {
+          this.onClear();
+        }}
+      />
+    );
 
     return (
       <div className={cls}>

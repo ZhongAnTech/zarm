@@ -34,7 +34,8 @@ export default {
   getMonthCount(date1, date2) {
     const tmp1 = this.parseDate(date1);
     const tmp2 = this.parseDate(date2);
-    const dur = (tmp2.getFullYear() - tmp1.getFullYear()) * 12 + (tmp2.getMonth() - tmp1.getMonth());
+    const dur =
+      (tmp2.getFullYear() - tmp1.getFullYear()) * 12 + (tmp2.getMonth() - tmp1.getMonth());
     return Math.abs(dur) + 1;
   },
   // 是否是今天(只判断年月日)
@@ -43,14 +44,18 @@ export default {
   },
   // 两个日期是否同一天
   isOneDay(date1, date2) {
-    if (!date1 || !date2) { return false; }
+    if (!date1 || !date2) {
+      return false;
+    }
     const tmp1 = this.parseDate(date1);
     const tmp2 = this.parseDate(date2);
     return tmp1.toDateString() === tmp2.toDateString();
   },
   // 两个日期是否同一个月
   isOneMonth(date1, date2) {
-    if (!date1 || !date2) { return false; }
+    if (!date1 || !date2) {
+      return false;
+    }
     const tmp1 = this.parseDate(date1);
     const tmp2 = this.parseDate(date2);
     return tmp1.getFullYear() === tmp2.getFullYear() && tmp1.getMonth() === tmp2.getMonth();
@@ -70,17 +75,24 @@ export default {
     return new Date(tmp.getFullYear(), tmp.getMonth(), tmp.getDate());
   },
   // 标准化时间
-  parseDate(date) {
-    if (date.constructor === Date) { return date; }
+  parseDate(date: Date | string): Date {
+    if (date.constructor === Date) {
+      return date;
+    }
     if (date.constructor === String) {
-      date = +date ? +date : date.replace(/-/gi, '/');
+      if (+date) {
+        return new Date(+date);
+      }
+      date = date.replace(/-/gi, '/');
     }
     return new Date(date);
   },
   // 克隆日期
   cloneDate(date, type, during) {
     const tmp = new Date(this.parseDate(date));
-    if (!type || !during) { return tmp; }
+    if (!type || !during) {
+      return tmp;
+    }
     switch (type) {
       case 'y':
         tmp.setFullYear(tmp.getFullYear() + during);
@@ -100,7 +112,8 @@ export default {
       case 'dd':
         tmp.setDate(during);
         break;
-      default: break;
+      default:
+        break;
     }
     return tmp;
   },

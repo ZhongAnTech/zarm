@@ -5,9 +5,7 @@ import Marquee from '../index';
 import { getKeyFrameModifier, animationModifier } from '../modifiers';
 
 const createMarquee = (props) => {
-  return (
-    <Marquee {...props}>测试我在滚动</Marquee>
-  );
+  return <Marquee {...props}>测试我在滚动</Marquee>;
 };
 
 const trim = (str) => {
@@ -18,7 +16,15 @@ describe('Marquee', () => {
   it('renders correctly', () => {
     const wrapper = render(
       <div>
-        { createMarquee({ height: 150, direction: 'right', width: '100%', loop: false, animationDuration: 6000, animationDelay: 5000, prefix: 'zarm-marquee' }) }
+        {createMarquee({
+          height: 150,
+          direction: 'right',
+          width: '100%',
+          loop: false,
+          animationDuration: 6000,
+          animationDelay: 5000,
+          prefix: 'zarm-marquee',
+        })}
       </div>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();

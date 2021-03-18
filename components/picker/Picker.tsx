@@ -36,7 +36,12 @@ export default class Picker extends Component<PickerProps, PickerState> {
   state: PickerState = { ...parseProps.getSource(this.props), stopScroll: false };
 
   static getDerivedStateFromProps(props, state) {
-    if (!isEqual(removeFnFromProps(props, ['onOk', 'onCancel', 'onChange']), removeFnFromProps(state.prevProps, ['onOk', 'onCancel', 'onChange']))) {
+    if (
+      !isEqual(
+        removeFnFromProps(props, ['onOk', 'onCancel', 'onChange']),
+        removeFnFromProps(state.prevProps, ['onOk', 'onCancel', 'onChange']),
+      )
+    ) {
       return {
         prevProps: props,
         ...parseProps.getSource(props),
@@ -52,7 +57,9 @@ export default class Picker extends Component<PickerProps, PickerState> {
     const { valueMember, onChange } = this.props;
     const { stopScroll } = this.state;
     const value = selected.map((item) => item[valueMember!]);
-    const stateData = stopScroll ? { value, objValue: selected, stopScroll: false } : { value, objValue: selected };
+    const stateData = stopScroll
+      ? { value, objValue: selected, stopScroll: false }
+      : { value, objValue: selected };
     this.setState(stateData);
 
     if (typeof onChange === 'function') {
@@ -88,7 +95,21 @@ export default class Picker extends Component<PickerProps, PickerState> {
   };
 
   render() {
-    const { prefixCls, className, cancelText, okText, title, locale, maskClosable, mountContainer, destroy, onOk, onCancel, visible, ...others } = this.props;
+    const {
+      prefixCls,
+      className,
+      cancelText,
+      okText,
+      title,
+      locale,
+      maskClosable,
+      mountContainer,
+      destroy,
+      onOk,
+      onCancel,
+      visible,
+      ...others
+    } = this.props;
     const { value, stopScroll = false } = this.state;
     const noop = () => {};
     return (
@@ -99,18 +120,22 @@ export default class Picker extends Component<PickerProps, PickerState> {
         mountContainer={mountContainer}
         destroy={destroy}
       >
-        <div className={prefixCls} onClick={(e) => { e.stopPropagation(); }}>
+        <div
+          className={prefixCls}
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
           <div className={`${prefixCls}__header`}>
-            <div className={`${prefixCls}__cancel`} onClick={this.onCancel}>{cancelText || locale!.cancelText}</div>
+            <div className={`${prefixCls}__cancel`} onClick={this.onCancel}>
+              {cancelText || locale!.cancelText}
+            </div>
             <div className={`${prefixCls}__title`}>{title || locale!.title}</div>
-            <div className={`${prefixCls}__submit`} onClick={this.onOk}>{okText || locale!.okText}</div>
+            <div className={`${prefixCls}__submit`} onClick={this.onOk}>
+              {okText || locale!.okText}
+            </div>
           </div>
-          <PickerView
-            {...others}
-            value={value}
-            onChange={this.onChange}
-            stopScroll={stopScroll}
-          />
+          <PickerView {...others} value={value} onChange={this.onChange} stopScroll={stopScroll} />
         </div>
       </Popup>
     );

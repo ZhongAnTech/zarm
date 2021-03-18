@@ -18,7 +18,16 @@ export default class Alert extends PureComponent<AlertProps, {}> {
   };
 
   render() {
-    const { prefixCls, className, content, cancelText, onCancel, locale, shape, ...others } = this.props;
+    const {
+      prefixCls,
+      className,
+      content,
+      cancelText,
+      onCancel,
+      locale,
+      shape,
+      ...others
+    } = this.props;
     const cls = {
       alert: classnames(prefixCls, className, {
         [`${prefixCls}--${shape}`]: !!shape,
@@ -29,7 +38,11 @@ export default class Alert extends PureComponent<AlertProps, {}> {
       <div className={cls.alert}>
         <Modal
           {...others}
-          footer={<button type="button" className={`${prefixCls}__button`} onClick={onCancel}>{cancelText || locale!.cancelText}</button>}
+          footer={
+            <button type="button" className={`${prefixCls}__button`} onClick={onCancel}>
+              {cancelText || locale!.cancelText}
+            </button>
+          }
         >
           {content}
         </Modal>

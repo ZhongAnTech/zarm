@@ -55,12 +55,14 @@ export default class CalendarMonthView extends Component<CalendarMonthProps, Cal
       value: props.value,
       dateMonth: props.dateMonth,
     };
+    this.checkStatus = this.checkStatus.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, state) {
     if (
-      ('value' in nextProps && nextProps.value !== state.value)
-      || ('dateMonth' in nextProps && nextProps.dateMonth !== state.dateMonth)
+      // eslint-disable-next-line operator-linebreak
+      ('value' in nextProps && nextProps.value !== state.value) ||
+      ('dateMonth' in nextProps && nextProps.dateMonth !== state.dateMonth)
     ) {
       return {
         value: nextProps.value,
@@ -95,11 +97,11 @@ export default class CalendarMonthView extends Component<CalendarMonthProps, Cal
       return true;
     }
 
-    if ((+dateMonth - +dateMonthState) !== 0) {
+    if (+dateMonth - +dateMonthState !== 0) {
       return true;
     }
 
-    if ((+min - +this.min !== 0) || (+max - +this.max !== 0)) {
+    if (+min - +this.min !== 0 || +max - +this.max !== 0) {
       return true;
     }
 
@@ -117,10 +119,11 @@ export default class CalendarMonthView extends Component<CalendarMonthProps, Cal
   };
 
   // 日期状态: 选中，区间
-  checkStatus = (date: Date) => {
+  checkStatus(date: Date) {
     const { min, max, disabledDate } = this.props;
     const { value = [] } = this.state;
-    const disabled = date < DateTool.cloneDate(min, 'd', 0) || date > DateTool.cloneDate(max, 'd', 0);
+    const disabled =
+      date < DateTool.cloneDate(min, 'd', 0) || date > DateTool.cloneDate(max, 'd', 0);
     const res = {
       disabled: disabled || (disabledDate && disabledDate(date)),
       isSelected: value.some((item) => DateTool.isOneDay(date, item)),
@@ -130,7 +133,7 @@ export default class CalendarMonthView extends Component<CalendarMonthProps, Cal
     };
     this.lastIn = this.lastIn || res.isSelected || res.isRange;
     return res;
-  };
+  }
 
   renderDay = (day: number, year: number, month: number, firstDay: number) => {
     const { prefixCls, dateRender, onDateClick } = this.props;
@@ -141,9 +144,7 @@ export default class CalendarMonthView extends Component<CalendarMonthProps, Cal
     let txt = (date && dateRender && dateRender(date)) || '';
     if (typeof txt === 'object') {
       if (!isValidElement(txt)) {
-        console.warn(
-          'dateRender函数返回数据类型错误，请返回基本数据类型或者reactNode',
-        );
+        console.warn('dateRender函数返回数据类型错误，请返回基本数据类型或者reactNode');
         txt = '';
       }
     }
@@ -174,7 +175,9 @@ export default class CalendarMonthView extends Component<CalendarMonthProps, Cal
   renderContent = (year: number, month: number) => {
     const data = DateTool.getCurrMonthInfo(year, month);
     const { firstDay, dayCount } = data;
-    return Array.from({ length: dayCount }).map((_item, i) => this.renderDay(i + 1, year, month, firstDay));
+    return Array.from({ length: dayCount }).map((_item, i) =>
+      this.renderDay(i + 1, year, month, firstDay),
+    );
   };
 
   render() {
@@ -190,7 +193,9 @@ export default class CalendarMonthView extends Component<CalendarMonthProps, Cal
         key={monthKey}
         className={`${prefixCls}__month`}
         title={`${year}年${month + 1}月`}
-        ref={(n) => { this.node = n; }}
+        ref={(n) => {
+          this.node = n;
+        }}
       >
         <ul>{this.renderContent(year, month)}</ul>
       </section>

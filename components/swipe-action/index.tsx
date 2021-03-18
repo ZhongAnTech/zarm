@@ -101,10 +101,13 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     let distanceX = 0;
     let isOpen = false;
 
-    if ((offsetX / btnsLeftWidth > moveDistanceRatio) || (offsetX > 0 && timeSpan <= moveTimeSpan)) {
+    if (offsetX / btnsLeftWidth > moveDistanceRatio || (offsetX > 0 && timeSpan <= moveTimeSpan)) {
       distanceX = btnsLeftWidth;
       isOpen = true;
-    } else if ((offsetX / btnsRightWidth < -moveDistanceRatio) || (offsetX < 0 && timeSpan <= moveTimeSpan)) {
+    } else if (
+      offsetX / btnsRightWidth < -moveDistanceRatio ||
+      (offsetX < 0 && timeSpan <= moveTimeSpan)
+    ) {
       distanceX = -btnsRightWidth;
       isOpen = true;
     }
@@ -188,7 +191,12 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     const cls = classnames(`${prefixCls}__actions`, `${prefixCls}__actions--${direction}`);
 
     return (
-      <div className={cls} ref={(el) => { this[direction] = el; }}>
+      <div
+        className={cls}
+        ref={(el) => {
+          this[direction] = el;
+        }}
+      >
         {buttons.map(this.renderButton)}
       </div>
     );
@@ -205,22 +213,27 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
       transform: `translate3d(${offsetLeft}px, 0, 0)`,
     };
 
-    return (left || right)
-      ? (
-        <div className={cls} ref={(wrap) => { this.wrap = wrap; }}>
-          {this.renderButtons(left, 'left')}
-          {this.renderButtons(right, 'right')}
-          <Drag
-            onDragStart={this.onDragStart}
-            onDragMove={this.onDragMove}
-            onDragEnd={this.onDragEnd}
-          >
-            <div className={`${prefixCls}__content`} style={style}>
-              {children}
-            </div>
-          </Drag>
-        </div>
-      )
-      : children;
+    return left || right ? (
+      <div
+        className={cls}
+        ref={(wrap) => {
+          this.wrap = wrap;
+        }}
+      >
+        {this.renderButtons(left, 'left')}
+        {this.renderButtons(right, 'right')}
+        <Drag
+          onDragStart={this.onDragStart}
+          onDragMove={this.onDragMove}
+          onDragEnd={this.onDragEnd}
+        >
+          <div className={`${prefixCls}__content`} style={style}>
+            {children}
+          </div>
+        </Drag>
+      </div>
+    ) : (
+      children
+    );
   }
 }

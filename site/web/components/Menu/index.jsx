@@ -9,9 +9,7 @@ import './style.scss';
 
 const getDocs = (locale) => {
   return documents.map((doc) => (
-    <Menu.Item
-      key={doc.key}
-    >
+    <Menu.Item key={doc.key}>
       <a href={`#/components/${doc.key}`}>{locale === 'zhCN' ? doc.name : pascalCase(doc.key)}</a>
     </Menu.Item>
   ));
@@ -21,20 +19,18 @@ const getMenus = (locale, key) => {
   const list = components[key] || [];
   return (
     <Menu.ItemGroup title={<FormattedMessage id={`app.components.type.${key}`} />} key={key}>
-      {
-        list
-          .sort((a, b) => {
-            return a.key.localeCompare(b.key);
-          })
-          .map((component) => (
-            <Menu.Item key={component.key}>
-              <a href={`#/components/${component.key}`}>
-                <span>{pascalCase(component.key)}</span>
-                {locale === 'zhCN' && <span className="chinese">{component.name}</span>}
-              </a>
-            </Menu.Item>
-          ))
-      }
+      {list
+        .sort((a, b) => {
+          return a.key.localeCompare(b.key);
+        })
+        .map((component) => (
+          <Menu.Item key={component.key}>
+            <a href={`#/components/${component.key}`}>
+              <span>{pascalCase(component.key)}</span>
+              {locale === 'zhCN' && <span className="chinese">{component.name}</span>}
+            </a>
+          </Menu.Item>
+        ))}
     </Menu.ItemGroup>
   );
 };
@@ -46,7 +42,15 @@ const MenuComponent = () => {
   return (
     <div className="menu">
       <Menu
-        defaultOpenKeys={['components', 'general', 'form', 'feedback', 'view', 'navigation', 'other']}
+        defaultOpenKeys={[
+          'components',
+          'general',
+          'form',
+          'feedback',
+          'view',
+          'navigation',
+          'other',
+        ]}
         selectedKeys={[params.document, params.component]}
       >
         {getDocs(locale)}

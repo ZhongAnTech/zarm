@@ -13,7 +13,11 @@ interface Lock {
   options: BodyScrollOptions;
 }
 
-const isIosDevice = typeof window !== 'undefined' && window.navigator && window.navigator.platform && /iP(ad|hone|od)/.test(window.navigator.platform);
+const isIosDevice =
+  typeof window !== 'undefined' &&
+  window.navigator &&
+  window.navigator.platform &&
+  /iP(ad|hone|od)/.test(window.navigator.platform);
 type HandleScrollEvent = TouchEvent;
 
 let locks: Array<Lock> = [];
@@ -23,13 +27,14 @@ let previousBodyOverflowSetting;
 let previousBodyPaddingRight;
 
 // returns true if `el` should be allowed to receive touchmove events.
-const allowTouchMove = (el: EventTarget): boolean => locks.some((lock) => {
-  if (lock.options.allowTouchMove && lock.options.allowTouchMove(el)) {
-    return true;
-  }
+const allowTouchMove = (el: EventTarget): boolean =>
+  locks.some((lock) => {
+    if (lock.options.allowTouchMove && lock.options.allowTouchMove(el)) {
+      return true;
+    }
 
-  return false;
-});
+    return false;
+  });
 
 const preventDefault = (rawEvent: HandleScrollEvent): boolean => {
   const e = rawEvent || window.event;
@@ -97,7 +102,9 @@ const restoreOverflowSetting = () => {
 
 // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight#Problems_and_solutions
 const isTargetElementTotallyScrolled = (targetElement: any): boolean => {
-  return targetElement ? targetElement.scrollHeight - targetElement.scrollTop <= targetElement.clientHeight : false;
+  return targetElement
+    ? targetElement.scrollHeight - targetElement.scrollTop <= targetElement.clientHeight
+    : false;
 };
 
 const handleScroll = (event: HandleScrollEvent, targetElement: any): boolean => {
@@ -126,7 +133,9 @@ export const lockBodyScroll = (targetElement: any, options?: BodyScrollOptions):
     // targetElement must be provided, and lockBodyScroll must not have been
     // called on this targetElement before.
     if (!targetElement) {
-      console.error('lockBodyScroll unsuccessful - targetElement must be provided when calling lockBodyScroll on IOS devices.');
+      console.error(
+        'lockBodyScroll unsuccessful - targetElement must be provided when calling lockBodyScroll on IOS devices.',
+      );
       return;
     }
 
@@ -195,7 +204,9 @@ export const clearAllBodyScrollLocks = (): void => {
 export const unlockBodyScroll = (targetElement: any): void => {
   if (isIosDevice) {
     if (!targetElement) {
-      console.error('unlockBodyScroll unsuccessful - targetElement must be provided when calling unlockBodyScroll on IOS devices.');
+      console.error(
+        'unlockBodyScroll unsuccessful - targetElement must be provided when calling unlockBodyScroll on IOS devices.',
+      );
       return;
     }
 

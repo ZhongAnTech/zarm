@@ -4,12 +4,15 @@
 .editorconfig
 .eslintignore
 .eslintrc
+.eslintrc.js
 .gitignore
 .npmignore
 .vscode
 .stylelintrc
 .travis.yml
 .sentryclirc
+.prettierrc
+.prettierignore
 *.log
 netlify.toml
 yarn.lock

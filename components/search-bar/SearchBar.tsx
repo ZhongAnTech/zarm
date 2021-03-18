@@ -50,9 +50,10 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
   componentDidUpdate(prevProps) {
     const { cancelText, showCancel, locale } = this.props;
     // 若改变了取消文字的内容或者placeholder的内容需要重新计算位置
-    if (cancelText !== prevProps.cancelText
-      || showCancel !== prevProps.showCancel
-      || locale!.cancelText !== prevProps.locale.cancelText
+    if (
+      cancelText !== prevProps.cancelText ||
+      showCancel !== prevProps.showCancel ||
+      locale!.cancelText !== prevProps.locale.cancelText
     ) {
       this.calculatePositon(this.props);
     }
@@ -79,34 +80,43 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
     const { onBlur } = this.props;
     const { value, focus } = this.state;
 
-    this.setState({
-      focus: false,
-    }, () => {
-      !value && this.blurAnim();
-      focus && onBlur && onBlur();
-    });
+    this.setState(
+      {
+        focus: false,
+      },
+      () => {
+        !value && this.blurAnim();
+        focus && onBlur && onBlur();
+      },
+    );
   }
 
   onClear() {
     const { onClear, onChange } = this.props;
-    this.setState({
-      value: '',
-      isOnComposition: false,
-    }, () => {
-      this.focus();
-    });
+    this.setState(
+      {
+        value: '',
+        isOnComposition: false,
+      },
+      () => {
+        this.focus();
+      },
+    );
     onClear && onClear('');
     onChange && onChange('');
   }
 
   onCancel() {
     const { onCancel } = this.props;
-    this.setState({
-      value: '',
-      isOnComposition: false,
-    }, () => {
-      this.onBlur();
-    });
+    this.setState(
+      {
+        value: '',
+        isOnComposition: false,
+      },
+      () => {
+        this.onBlur();
+      },
+    );
     onCancel && onCancel();
   }
 
@@ -143,7 +153,10 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
     const { showCancel } = props;
     const { value } = this.state;
 
-    const ml = parseInt(window.getComputedStyle(this.cancelRef, '')['margin-left'].split('px')[0], 10);
+    const ml = parseInt(
+      window.getComputedStyle(this.cancelRef, '')['margin-left'].split('px')[0],
+      10,
+    );
     this.cancelOuterWidth = Math.ceil(ml + this.cancelRef.getBoundingClientRect().width);
 
     if (!showCancel) {
@@ -179,8 +192,12 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
     return (
       <div
         className={`${prefixCls}__cancel`}
-        ref={(cancelRef) => { this.cancelRef = cancelRef; }}
-        onClick={() => { this.onCancel(); }}
+        ref={(cancelRef) => {
+          this.cancelRef = cancelRef;
+        }}
+        onClick={() => {
+          this.onCancel();
+        }}
       >
         {cancelText || locale!.cancelText}
       </div>
@@ -188,7 +205,17 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
   }
 
   render() {
-    const { prefixCls, className, shape, placeholder, disabled, clearable, showCancel, maxLength, locale } = this.props;
+    const {
+      prefixCls,
+      className,
+      shape,
+      placeholder,
+      disabled,
+      clearable,
+      showCancel,
+      maxLength,
+      locale,
+    } = this.props;
     const { value, focus } = this.state;
 
     const cls = classnames(prefixCls, className, {
@@ -201,7 +228,9 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
         <form
           action="#"
           className={`${prefixCls}__form`}
-          onSubmit={(e) => { this.onSubmit(e); }}
+          onSubmit={(e) => {
+            this.onSubmit(e);
+          }}
         >
           <div className={`${prefixCls}__content`}>
             <Icon type="search" className={`${prefixCls}__icon`} />
@@ -212,16 +241,32 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
                 placeholder={placeholder || locale!.placeholder}
                 value={value}
                 maxLength={maxLength}
-                onFocus={() => { this.onFocus(); }}
-                onCompositionStart={(e) => { this.handleComposition(e); }}
-                onCompositionUpdate={(e) => { this.handleComposition(e); }}
-                onCompositionEnd={(e) => { this.handleComposition(e); }}
-                onChange={(val) => { this.onChange(val); }}
-                onBlur={() => { this.onBlur(); }}
-                onClear={() => { this.onClear(); }}
+                onFocus={() => {
+                  this.onFocus();
+                }}
+                onCompositionStart={(e) => {
+                  this.handleComposition(e);
+                }}
+                onCompositionUpdate={(e) => {
+                  this.handleComposition(e);
+                }}
+                onCompositionEnd={(e) => {
+                  this.handleComposition(e);
+                }}
+                onChange={(val) => {
+                  this.onChange(val);
+                }}
+                onBlur={() => {
+                  this.onBlur();
+                }}
+                onClear={() => {
+                  this.onClear();
+                }}
                 disabled={disabled}
                 clearable={clearable}
-                ref={(inputRef) => { this.inputRef = inputRef; }}
+                ref={(inputRef) => {
+                  this.inputRef = inputRef;
+                }}
               />
             </div>
           </div>

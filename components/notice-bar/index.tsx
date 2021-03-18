@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import PropsType from './PropsType';
+import type PropsType from './PropsType';
 import Message from '../message';
 import Icon from '../icon';
 import { addKeyframe, removeKeyframe, existKeyframe } from '../utils/keyframes';
@@ -62,17 +62,20 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
       }
 
       // 增加重新计算后的 keyframe
-      addKeyframe(NOTICEBAR_KEYFRAME_NAME, `
+      addKeyframe(
+        NOTICEBAR_KEYFRAME_NAME,
+        `
         0%, ${delayPercent}% {
           -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
         }
-      
+
         ${100 - delayPercent}%, 100% {
           -webkit-transform: translate3d(${-(offsetWidth - wrapWidth)}px, 0, 0);
           transform: translate3d(${-(offsetWidth - wrapWidth)}px, 0, 0);
         }
-      `);
+      `,
+      );
 
       this.setState({ animationDuration });
     }
@@ -84,16 +87,23 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
 
     return (
       <Message {...others} size="lg">
-        <div className={prefixCls} ref={(ele) => { this.wrapper = ele; }}>
+        <div
+          className={prefixCls}
+          ref={(ele) => {
+            this.wrapper = ele;
+          }}
+        >
           <div
             className={`${prefixCls}__body`}
-            ref={(ele) => { this.content = ele; }}
+            ref={(ele) => {
+              this.content = ele;
+            }}
             style={
               animationDuration! > 0
                 ? {
-                  WebkitAnimation: `${NOTICEBAR_KEYFRAME_NAME} ${animationDuration}ms linear infinite`,
-                  animation: `${NOTICEBAR_KEYFRAME_NAME} ${animationDuration}ms linear infinite`,
-                }
+                    WebkitAnimation: `${NOTICEBAR_KEYFRAME_NAME} ${animationDuration}ms linear infinite`,
+                    animation: `${NOTICEBAR_KEYFRAME_NAME} ${animationDuration}ms linear infinite`,
+                  }
                 : undefined
             }
           >

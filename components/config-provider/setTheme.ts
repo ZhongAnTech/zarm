@@ -1,6 +1,6 @@
-import { Theme } from './PropsType';
+import type { Theme } from './PropsType';
 
-const themes = {
+export const themes = {
   '--theme-primary-lighter': '#303030',
   '--color-text': 'rgba(255, 255, 255, 0.85)',
   '--color-text-inverse': 'rgba(255, 255, 255, 0.8)',
@@ -60,7 +60,7 @@ const themes = {
   '--tabbar-background': '#1b1c1e',
   '--toast-background': '#2b2c2d',
   '--tooltip-background': '#5b5c60',
-};
+} as const;
 
 const setTheme = (value: Theme) => {
   document.body.setAttribute('data-theme', value);

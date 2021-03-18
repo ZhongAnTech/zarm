@@ -19,11 +19,17 @@ export interface IFileProps {
  * @param maxHeight
  * @param callback
  */
-export default function createThumbnail({ file, quality, fileType, maxWidth, maxHeight }: IFileProps) {
+export default function createThumbnail({
+  file,
+  quality,
+  fileType,
+  maxWidth,
+  maxHeight,
+}: IFileProps) {
   return new Promise<string>((resolve) => {
     const img = document.createElement('img');
 
-    window.URL = window.URL || (window as any).webkitURL;
+    window.URL = window.URL || window.webkitURL;
 
     img.onload = () => {
       let imgUrl: string;

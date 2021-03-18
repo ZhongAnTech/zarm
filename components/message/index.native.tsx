@@ -43,17 +43,7 @@ export default class Message extends PureComponent<MessageProps, MessageState> {
   };
 
   render() {
-    const {
-      theme,
-      icon,
-      hasArrow,
-      closable,
-      styles,
-      style,
-      onClick,
-      children,
-      size,
-    } = this.props;
+    const { theme, icon, hasArrow, closable, styles, style, onClick, children, size } = this.props;
 
     const { visible } = this.state;
 
@@ -64,10 +54,7 @@ export default class Message extends PureComponent<MessageProps, MessageState> {
       style,
     ] as ViewStyle;
 
-    const textStyle = [
-      styles![`${theme}TextStyle`],
-      styles![`${size}TextStyle`],
-    ];
+    const textStyle = [styles![`${theme}TextStyle`], styles![`${size}TextStyle`]];
 
     const arrowStyle = [
       styles!.arrowStyle,
@@ -82,9 +69,7 @@ export default class Message extends PureComponent<MessageProps, MessageState> {
     ];
 
     const closeRender = closable && (
-      <TouchableWithoutFeedback
-        onPress={this.onPressClose}
-      >
+      <TouchableWithoutFeedback onPress={this.onPressClose}>
         <View style={styles!.closeIconWrapperStyle as ViewStyle}>
           <View style={[closeIconStyle, styles!.closeIconLeft]} />
           <View style={[closeIconStyle, styles!.closeIconRight]} />
@@ -121,10 +106,13 @@ export default class Message extends PureComponent<MessageProps, MessageState> {
       onPress: onClick,
     };
 
-    return visible && (
-      onClick
-        ? <TouchableWithoutFeedback {...wrapperProps}>{messageRender}</TouchableWithoutFeedback>
-        : messageRender
+    return (
+      visible &&
+      (onClick ? (
+        <TouchableWithoutFeedback {...wrapperProps}>{messageRender}</TouchableWithoutFeedback>
+      ) : (
+        messageRender
+      ))
     );
   }
 }

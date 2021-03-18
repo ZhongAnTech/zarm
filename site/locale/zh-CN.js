@@ -26,7 +26,8 @@ export default {
   'app.home.components.simulator.affix': '设置悬浮',
   'app.home.components.simulator.unaffix': '取消悬浮',
   'app.home.resources': '设计资源',
-  'app.home.resources.introduce': '这里提供 Zarm Design 相关设计资源和设计工具的下载，更多设计资源正在整理和完善中。',
+  'app.home.resources.introduce':
+    '这里提供 Zarm Design 相关设计资源和设计工具的下载，更多设计资源正在整理和完善中。',
   'app.home.resources.type.zarm': '移动端组件 Sketch 模板',
   'app.home.resources.type.zarm-web': '桌面端组件 Sketch 模板',
   'app.home.resources.type.zarm-web-frame': '中后台框架 Sketch 模板',

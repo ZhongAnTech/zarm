@@ -106,7 +106,7 @@ export default class Stepper extends PureComponent<StepperProps, any> {
     if (min === null) {
       return false;
     }
-    return (value <= min!) || disabled;
+    return value <= min! || disabled;
   };
 
   isPlusDisabled = () => {
@@ -116,14 +116,12 @@ export default class Stepper extends PureComponent<StepperProps, any> {
     if (max === null) {
       return false;
     }
-    return (value >= max!) || disabled;
+    return value >= max! || disabled;
   };
 
   renderButton = (type) => {
     const { shape, styles } = this.props;
-    const isDisabled = (type === 'minus')
-      ? this.isMinusDisabled()
-      : this.isPlusDisabled();
+    const isDisabled = type === 'minus' ? this.isMinusDisabled() : this.isPlusDisabled();
 
     const buttonStyle = [
       styles!.button,
@@ -131,10 +129,7 @@ export default class Stepper extends PureComponent<StepperProps, any> {
       isDisabled && styles!.disabledButton,
     ] as ViewStyle;
 
-    const buttonTextStyle = [
-      styles!.buttonText,
-      isDisabled && styles!.disabledText,
-    ] as ViewStyle;
+    const buttonTextStyle = [styles!.buttonText, isDisabled && styles!.disabledText] as ViewStyle;
 
     return (
       <TouchableOpacity
@@ -150,10 +145,7 @@ export default class Stepper extends PureComponent<StepperProps, any> {
 
   renderInput = () => {
     const { disabled, styles } = this.props;
-    const inputStyle = [
-      styles!.input,
-      disabled && styles!.disabledText,
-    ] as ViewStyle;
+    const inputStyle = [styles!.input, disabled && styles!.disabledText] as ViewStyle;
 
     return (
       <TextInput
@@ -171,10 +163,7 @@ export default class Stepper extends PureComponent<StepperProps, any> {
 
   render() {
     const { styles, style } = this.props;
-    const wrapperStyle = [
-      styles!.container,
-      style,
-    ] as ViewStyle;
+    const wrapperStyle = [styles!.container, style] as ViewStyle;
 
     return (
       <View style={wrapperStyle}>

@@ -1,12 +1,5 @@
 import React, { PureComponent, CSSProperties } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableHighlight,
-  Animated,
-  ViewStyle,
-} from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight, Animated, ViewStyle } from 'react-native';
 import { BaseCollapseItemProps } from './PropsType';
 import collapaseStyle from './style/index.native';
 import variables from '../style/themes/default.native';
@@ -52,9 +45,13 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
     this.animate();
   }
 
-  getHeight = () => { return this.state.active ? this.titleHeight + this.bodyHeight : this.titleHeight; };
+  getHeight = () => {
+    return this.state.active ? this.titleHeight + this.bodyHeight : this.titleHeight;
+  };
 
-  getRotate = () => { return this.state.active ? 1 : 0; };
+  getRotate = () => {
+    return this.state.active ? 1 : 0;
+  };
 
   onPress = () => {
     const { disabled, onChange } = this.props;
@@ -104,24 +101,13 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
     const disabledColorStyle = disabled ? collapseStyles!.titleTextDisabledStyle : null;
     const disabledBorderColorStyle = disabled ? collapseStyles!.titleArrowDisabledStyle : null;
 
-    const wrapperStyle = [
-      collapseStyles!.itemWrapperStyle,
-      { height },
-      style,
-    ];
+    const wrapperStyle = [collapseStyles!.itemWrapperStyle, { height }, style];
 
-    const titleStyle = [
-      collapseStyles!.titleWrapperStyle,
-    ];
+    const titleStyle = [collapseStyles!.titleWrapperStyle];
 
-    const titleInnerStyle = [
-      collapseStyles!.titleInnerStyle,
-    ] as ViewStyle;
+    const titleInnerStyle = [collapseStyles!.titleInnerStyle] as ViewStyle;
 
-    const titleTextStyle = [
-      collapseStyles!.titleTextStyle,
-      disabledColorStyle,
-    ];
+    const titleTextStyle = [collapseStyles!.titleTextStyle, disabledColorStyle];
 
     const titleArrowStyle = [
       collapseStyles!.titleArrowStyle,
@@ -142,9 +128,7 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
       disabledBorderColorStyle,
     ];
 
-    const bodyStyle = [
-      collapseStyles!.itemBodyStyle,
-    ] as ViewStyle;
+    const bodyStyle = [collapseStyles!.itemBodyStyle] as ViewStyle;
 
     return (
       <Animated.View style={wrapperStyle}>
@@ -161,10 +145,7 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
             </View>
           </View>
         </TouchableHighlight>
-        <View
-          onLayout={this.onLayoutTrimmedText}
-          style={bodyStyle}
-        >
+        <View onLayout={this.onLayoutTrimmedText} style={bodyStyle}>
           {children}
         </View>
       </Animated.View>

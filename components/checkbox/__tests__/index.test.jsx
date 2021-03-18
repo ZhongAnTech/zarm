@@ -5,7 +5,11 @@ import Checkbox from '../index';
 
 describe('Checkbox', () => {
   it('renders correctly', () => {
-    const wrapper = render(<Checkbox checked onChange={jest.fn()}>foo</Checkbox>);
+    const wrapper = render(
+      <Checkbox checked onChange={jest.fn()}>
+        foo
+      </Checkbox>,
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -37,7 +41,9 @@ describe('Checkbox.Group', () => {
     const wrapper = render(
       <Checkbox.Group>
         <Checkbox value="0">选项一</Checkbox>
-        <Checkbox value="1" checked>选项二</Checkbox>
+        <Checkbox value="1" checked>
+          选项二
+        </Checkbox>
         <Checkbox value="2">选项三</Checkbox>
       </Checkbox.Group>,
     );
@@ -105,7 +111,9 @@ describe('Checkbox.Group', () => {
       <Checkbox.Group type="cell" onChange={onChange}>
         <Checkbox value="0">选项一</Checkbox>
         <Checkbox value="1">选项二</Checkbox>
-        <Checkbox value="2" disabled>选项三</Checkbox>
+        <Checkbox value="2" disabled>
+          选项三
+        </Checkbox>
       </Checkbox.Group>,
     );
     const firstCheckbox = wrapper.find(Checkbox).first().dive().find('input[type="checkbox"]');

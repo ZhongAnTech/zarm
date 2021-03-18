@@ -16,12 +16,24 @@ describe('Cell', () => {
   });
 
   it('hasArrow', () => {
-    const wrapper = render(<Cell hasArrow title="标题文字" description="描述文字">我是Cell</Cell>);
+    const wrapper = render(
+      <Cell hasArrow title="标题文字" description="描述文字">
+        我是Cell
+      </Cell>,
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('icon', () => {
-    const wrapper = render(<Cell title="标题文字" description="描述文字" icon={<img alt="" src="\\static.zhongan.com/website/health/zarm/images/icons/state.png" />}>我是Cell</Cell>);
+    const wrapper = render(
+      <Cell
+        title="标题文字"
+        description="描述文字"
+        icon={<img alt="" src="\\static.zhongan.com/website/health/zarm/images/icons/state.png" />}
+      >
+        我是Cell
+      </Cell>,
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -31,13 +43,24 @@ describe('Cell', () => {
   });
 
   it('help', () => {
-    const wrapper = render(<Cell title="标题文字" description="描述文字" help="我是help" icon={<img alt="" src="\\static.zhongan.com/website/health/zarm/images/icons/state.png" />} />);
+    const wrapper = render(
+      <Cell
+        title="标题文字"
+        description="描述文字"
+        help="我是help"
+        icon={<img alt="" src="\\static.zhongan.com/website/health/zarm/images/icons/state.png" />}
+      />,
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('onClick', () => {
     const onClick = jest.fn();
-    const wrapper = shallow(<Cell hasArrow onClick={onClick}>我是Cell</Cell>);
+    const wrapper = shallow(
+      <Cell hasArrow onClick={onClick}>
+        我是Cell
+      </Cell>,
+    );
     wrapper.find(TouchableHighlight).props().onPress();
     expect(onClick).toBeCalled();
   });

@@ -18,7 +18,11 @@ describe('Popper', () => {
   it('renders correctly', () => {
     const onVisibleChange = jest.fn();
 
-    const wrapper = mount(<Popper title="标题" onVisibleChange={onVisibleChange}><p>点我</p></Popper>);
+    const wrapper = mount(
+      <Popper title="标题" onVisibleChange={onVisibleChange}>
+        <p>点我</p>
+      </Popper>,
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.unmount();
   });
@@ -40,7 +44,13 @@ describe('Popper', () => {
 
   it('check hasArrow prop', () => {
     const wrapper = mount(
-      <Popper trigger="click" hasArrow={false} title="fdsfsd" mouseEnterDelay={0} mouseLeaveDelay={0}>
+      <Popper
+        trigger="click"
+        hasArrow={false}
+        title="fdsfsd"
+        mouseEnterDelay={0}
+        mouseLeaveDelay={0}
+      >
         <div id="hello">Hello world!</div>
       </Popper>,
     );
@@ -54,7 +64,13 @@ describe('Popper', () => {
     const onVisibleChange = jest.fn();
 
     const wrapper = mount(
-      <Popper trigger="click" title="fsdfds" mouseEnterDelay={0} mouseLeaveDelay={0} onVisibleChange={onVisibleChange}>
+      <Popper
+        trigger="click"
+        title="fsdfds"
+        mouseEnterDelay={0}
+        mouseLeaveDelay={0}
+        onVisibleChange={onVisibleChange}
+      >
         <div id="hello">Hello world!</div>
       </Popper>,
     );

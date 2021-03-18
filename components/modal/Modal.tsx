@@ -31,7 +31,18 @@ export default class Modal extends Component<ModalProps, any> {
   };
 
   render() {
-    const { prefixCls, className, shape, children, maskClosable, title, closable, footer, onCancel, ...others } = this.props;
+    const {
+      prefixCls,
+      className,
+      shape,
+      children,
+      maskClosable,
+      title,
+      closable,
+      footer,
+      onCancel,
+      ...others
+    } = this.props;
 
     const cls = {
       modal: classnames(prefixCls, className, {

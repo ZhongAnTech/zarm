@@ -123,8 +123,19 @@ export default class Marquee extends PureComponent<MarqueeProps, {}> {
 
     return (
       <div className={cls}>
-        <div className={`${prefixCls}__body`} ref={(el) => { this.container = el; }} style={style}>
-          <div className={`${prefixCls}__content`} ref={(el) => { this.scrollItem = el; }}>
+        <div
+          className={`${prefixCls}__body`}
+          ref={(el) => {
+            this.container = el;
+          }}
+          style={style}
+        >
+          <div
+            className={`${prefixCls}__content`}
+            ref={(el) => {
+              this.scrollItem = el;
+            }}
+          >
             {children}
           </div>
         </div>

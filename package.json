@@ -1,14 +1,7 @@
 {
   "name": "zarm",
-  "version": "2.7.3",
+  "version": "2.7.4",
   "description": "基于 React 的移动端UI库",
-  "tags": [
-    "zarm",
-    "zarm-ui",
-    "react",
-    "react-zarm",
-    "zhongan"
-  ],
   "keywords": [
     "react",
     "react-ui",
@@ -23,13 +16,21 @@
     "frontend",
     "mobile"
   ],
-  "license": "MIT",
-  "repository": "git://github.com/ZhongAnTech/zarm",
   "bugs": {
     "url": "https://github.com/ZhongAnTech/zarm/issues"
   },
-  "module": "es/index.js",
+  "repository": "git://github.com/ZhongAnTech/zarm",
+  "license": "MIT",
+  "sideEffects": [
+    "dist/*",
+    "components/style/*",
+    "components/**/style/*",
+    "es/**/style/*",
+    "lib/**/style/*",
+    "site/**/**.scss"
+  ],
   "main": "lib/index.js",
+  "module": "es/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
     "clean": "rimraf types lib es dist native assets coverage rnkit/zarm rnkit/ios/build rnkit/bundle",
@@ -46,27 +47,42 @@
     "bundle": "rimraf rnkit/zarm && zarm build --mode native --path components --out-dir rnkit/zarm && npm run bundle:ios && npm run bundle:android",
     "deploy:build": "rimraf assets && mkdir assets && touch assets/CNAME && echo 'zarm.design' > assets/CNAME && zarm deploy",
     "deploy": "npm run deploy:build -- -p && gh-pages -d assets",
+    "lint:tsc": "tsc --noEmit",
     "lint:ts": "eslint --ext .ts,.tsx components",
     "lint:js": "eslint --ext .js,.jsx components site rnkit/pages",
     "lint:style": "stylelint \"components/**/*.scss\" \"site/**/*.scss\" --syntax scss",
-    "lint": "npm run lint:ts && npm run lint:js && npm run lint:style",
-    "test:h5": "cross-env TZ=America/New_York zarm test -s scripts/jest/setup.js",
+    "lint": "npm run lint:tsc && npm run lint:ts && npm run lint:js && npm run lint:style",
+    "test:h5": "zarm test -s scripts/jest/setup.js",
     "test:rn": "zarm test -m native -s scripts/jest/setup.js",
     "test": "rimraf coverage && npm run test:h5 -- -c && cp ./coverage/coverage-final.json ./coverage/coverage-h5-final.json && npm run test:rn -- -c && cp ./coverage/coverage-final.json ./coverage/coverage-rn-final.json && node ./scripts/jest/mapCoverage.js",
     "coverage": "cat ./coverage/lcov.info | coveralls",
     "authors": "git log --format='%aN <%aE>' | sort -u | grep -v 'users.noreply.github.com' > AUTHORS",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
-    "release": "bash scripts/release.sh"
+    "release": "bash scripts/release.sh",
+    "prettier": "prettier -c --write '**/*'",
+    "pretty-quick": "pretty-quick",
+    "bundlesize": "bundlesize",
+    "sort": "npx sort-package-json",
+    "install-react-16": "yarn add react@16 react-dom@16 enzyme-adapter-react-16"
   },
-  "peerDependencies": {
-    "react": ">=16.3.1",
-    "react-dom": ">=16.3.1"
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged",
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
+    }
   },
+  "browserslist": [
+    "last 2 versions",
+    "Firefox ESR",
+    "> 1%",
+    "ie >= 9",
+    "iOS >= 7",
+    "Android >= 4"
+  ],
   "dependencies": {
-    "@babel/runtime": "^7.12.5",
     "better-scroll": "2.0.7",
     "classnames": "2.2.6",
-    "color": "^3.1.0",
+    "color": "^3.1.3",
     "hoist-non-react-statics": "^3.3.0",
     "lodash": "^4.17.15",
     "normalize.css": "8.0.1",
@@ -79,7 +95,11 @@
     "@commitlint/cli": "^8.0.0",
     "@commitlint/config-conventional": "^8.0.0",
     "@sentry/browser": "^5.6.1",
+    "@testing-library/react": "^11.2.3",
     "@types/classnames": "^2.2.3",
+    "@types/color": "^3.0.1",
+    "@types/enzyme": "^3.10.8",
+    "@types/jest": "^26.0.20",
     "@types/lodash": "^4.14.151",
     "@types/node": "^14.0.11",
     "@types/react": "^16.8.6",
@@ -87,23 +107,27 @@
     "@types/react-native": "^0.60.7",
     "@typescript-eslint/eslint-plugin": "3.10.1",
     "@typescript-eslint/parser": "3.10.1",
-    "@zarm-design/cli": "^0.0.32",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
+    "@zarm-design/cli": "0.0.34",
     "babel-eslint": "10.1.0",
     "babel-plugin-import": "^1.13.0",
     "babel-plugin-prismjs": "^2.0.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.5",
     "browserslist": "^4.6.6",
+    "bundlesize": "^0.18.1",
+    "chalk": "^4.1.0",
     "change-case": "^4.1.1",
     "concurrently": "^5.2.0",
     "conventional-changelog-cli": "^2.0.34",
     "core-js": "^3.0.1",
-    "coveralls": "^3.1.0",
     "cross-env": "^7.0.2",
+    "dekko": "^0.2.1",
+    "dl-react-native-mock-render": "^0.1.10",
     "docsearch.js": "^2.6.1",
     "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.5",
     "enzyme-to-json": "^3.6.1",
     "eslint": "7.10.0",
+    "eslint-config-prettier": "^8.0.0",
     "eslint-config-za": "2.2.2",
     "eslint-plugin-babel": "5.3.1",
     "eslint-plugin-import": "2.22.1",
@@ -116,20 +140,20 @@
     "husky": "^4.2.5",
     "is-wsl": "^2.1.0",
     "istanbul-api": "^3.0.0",
-    "lint-staged": "^10.2.2",
-    "marked": "^1.0.0",
+    "marked": "^2.0.0",
+    "prettier": "2.2.1",
+    "pretty-quick": "^3.1.0",
     "prismjs": "^1.23.0",
     "prop-types": "^15.6.2",
     "qrious": "^4.0.2",
     "raw-loader": "^4.0.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "react-helmet": "^6.0.0",
-    "react-hot-loader": "^4.12.13",
+    "react-hot-loader": "^4.13.0",
     "react-intl": "^5.12.1",
     "react-loadable": "^5.5.0",
     "react-native": "^0.63.4",
-    "react-native-mock-render": "0.1.5",
     "react-navigation": "^4.0.3",
     "react-router-dom": "^5.1.2",
     "rimraf": "^3.0.2",
@@ -140,32 +164,25 @@
     "typescript": "4.0.2",
     "zarm-web": "0.0.1-alpha.10"
   },
-  "lint-staged": {
-    "components/**/*.{ts,tsx}": "eslint",
-    "{components,site,rnkit}/**/*.{js,jsx}": "eslint",
-    "rnkit/pages/**/*.{js,jsx}": "eslint",
-    "{styles,site}/**/*.scss": "stylelint"
+  "peerDependencies": {
+    "react": ">=16.3.1",
+    "react-dom": ">=16.3.1"
   },
-  "browserslist": [
-    "last 2 versions",
-    "Firefox ESR",
-    "> 1%",
-    "ie >= 9",
-    "iOS >= 7",
-    "Android >= 4"
-  ],
-  "sideEffects": [
-    "dist/*",
-    "components/style/*",
-    "components/**/style/*",
-    "es/**/style/*",
-    "lib/**/style/*",
-    "site/**/**.scss"
-  ],
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
+  "bundlesize": [
+    {
+      "path": "./dist/zarm.min.js",
+      "maxSize": "100 kB"
+    },
+    {
+      "path": "./dist/zarm.min.css",
+      "maxSize": "30 kB"
     }
-  }
+  ],
+  "tags": [
+    "zarm",
+    "zarm-ui",
+    "react",
+    "react-zarm",
+    "zhongan"
+  ]
 }
