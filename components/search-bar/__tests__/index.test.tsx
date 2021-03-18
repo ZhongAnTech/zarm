@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 /* eslint-disable dot-notation */
 import React from 'react';
 import { render, mount, shallow } from 'enzyme';
@@ -169,5 +170,84 @@ describe('SearchBar', () => {
     wrapper.find('input').simulate('focus');
     expect(wrapper.state('focus')).toBeTruthy();
     expect(mOnFocus).toBeCalledTimes(1);
+    expect((wrapper.instance()['cancelRef'] as HTMLDivElement).className).toContain(
+      'animation-ease',
+    );
+  });
+
+  it('should handle input change event and call props.onChange()', () => {
+    const mOnChange = jest.fn();
+    const wrapper = mount(<SearchBarOriginal onChange={mOnChange} />);
+    const mEvent = { target: { value: 'test' } };
+    wrapper.find('input').simulate('change', mEvent);
+    expect(mOnChange).toBeCalledWith('test');
+  });
+
+  it('should handle input change event but not call props.onChange() if composition start event happens', () => {
+    const mOnChange = jest.fn();
+    const wrapper = mount(<SearchBarOriginal onChange={mOnChange} />);
+    const mEvent = { target: { value: 'test' } };
+    const inputWrapper = wrapper.find('input');
+    inputWrapper.simulate('compositionstart').simulate('change', mEvent);
+    expect(wrapper.state('value')).toEqual('test');
+    expect(mOnChange).not.toBeCalled();
+  });
+
+  it('should handle composition end event and call props.onChange()', () => {
+    const mOnChange = jest.fn();
+    const wrapper = mount(<SearchBarOriginal onChange={mOnChange} />);
+    const mEvent = { target: { value: 'test' } };
+    const inputWrapper = wrapper.find('input');
+    inputWrapper.simulate('compositionend', mEvent);
+    expect(wrapper.state('value')).toEqual('test');
+    expect(mOnChange).toBeCalledWith('test');
+    expect(mOnChange).toBeCalledTimes(2);
+  });
+
+  it('should handle cancel action and trigger blur event', () => {
+    const mOnCancel = jest.fn();
+    const mOnBlur = jest.fn();
+    const wrapper = mount(<SearchBarOriginal value="test" onCancel={mOnCancel} onBlur={mOnBlur} />);
+    const inputWrapper = wrapper.find('input');
+    inputWrapper.simulate('focus');
+    expect(wrapper.state('focus')).toBeTruthy();
+    wrapper.find('.za-search-bar__cancel').simulate('click');
+    expect(wrapper.state('value')).toEqual('');
+    expect(wrapper.state('isOnComposition')).toBeFalsy();
+    expect(wrapper.state('focus')).toBeFalsy();
+    expect(mOnCancel).toBeCalledTimes(1);
+    expect(mOnBlur).toBeCalledTimes(1);
+  });
+
+  it('should handle clear action and change action', () => {
+    const mOnClear = jest.fn();
+    const mOnChange = jest.fn();
+    const wrapper = mount(
+      <SearchBarOriginal value="test" onClear={mOnClear} onChange={mOnChange} />,
+    );
+    const inputRef = wrapper.instance()['inputRef'];
+    const focusSpy = jest.spyOn(inputRef, 'focus');
+    wrapper.find('.za-input').childAt(1).invoke('onClick')();
+    expect(wrapper.state('value')).toEqual('');
+    expect(wrapper.state('isOnComposition')).toBeFalsy();
+    expect(mOnClear).toBeCalledWith('');
+    expect(mOnChange).toBeCalledWith('');
+    expect(focusSpy).toBeCalledTimes(2);
+  });
+
+  it('should re-calculate the position of cancel ref if cancel text is changed', () => {
+    const calculatePositonSpy = jest.spyOn(SearchBarOriginal.prototype, 'calculatePositon');
+    const wrapper = mount(<SearchBarOriginal cancelText="取消" />);
+    expect(calculatePositonSpy).toBeCalledWith(
+      expect.objectContaining({
+        cancelText: '取消',
+      }),
+    );
+    wrapper.setProps({ cancelText: 'cancel' });
+    expect(calculatePositonSpy).toBeCalledWith(
+      expect.objectContaining({
+        cancelText: 'cancel',
+      }),
+    );
   });
 });
