@@ -9,6 +9,7 @@ import SearchBarOriginal from '../SearchBar';
 describe('SearchBar', () => {
   afterEach(() => {
     jest.restoreAllMocks();
+    jest.useRealTimers();
   });
   describe('snapshot', () => {
     it('renders correctly', () => {
@@ -69,23 +70,6 @@ describe('SearchBar', () => {
       expect(input.instance()['value']).toEqual('');
       expect(toJson(wrapper)).toMatchSnapshot();
     });
-
-    // it('renders onBlur called correctly', () => {
-    //   const onBlur = jest.fn();
-    //   const wrapper = render(
-    //     <SearchBar
-    //       shape="round"
-    //       placeholder="搜索"
-    //       onBlur={onBlur}
-    //     />
-    //   );
-
-    //   const input = wrapper.find('input[type="search"]');
-    //   // const spyOnBlur = jest.spyOn(wrapper.instance(), 'onBlur');
-    //   input.props('onBlur')();
-    //   expect(onBlur).toHaveBeenCalled();
-    //   expect(toJson(wrapper)).toMatchSnapshot();
-    // });
   });
 
   it('should update derived state if props.value changed', () => {
@@ -249,5 +233,62 @@ describe('SearchBar', () => {
         cancelText: 'cancel',
       }),
     );
+  });
+
+  it('should re-calculate the position of cancel ref if props.showCancel is changed', () => {
+    const calculatePositonSpy = jest.spyOn(SearchBarOriginal.prototype, 'calculatePositon');
+    const wrapper = mount(<SearchBarOriginal />);
+    expect(calculatePositonSpy).toBeCalledWith(
+      expect.objectContaining({
+        showCancel: false,
+      }),
+    );
+    wrapper.setProps({ showCancel: true });
+    expect(calculatePositonSpy).toBeCalledWith(
+      expect.objectContaining({
+        showCancel: true,
+      }),
+    );
+  });
+
+  it('should re-calculate the position of cancel ref if props.locale.cancelText is changed', () => {
+    const calculatePositonSpy = jest.spyOn(SearchBarOriginal.prototype, 'calculatePositon');
+    const wrapper = mount(<SearchBarOriginal locale={{ cancelText: '取消', placeholder: '' }} />);
+    expect(calculatePositonSpy).toBeCalledWith(
+      expect.objectContaining({
+        locale: { cancelText: '取消', placeholder: '' },
+      }),
+    );
+    wrapper.setProps({ locale: { cancelText: 'cancel', placeholder: '' } });
+    expect(calculatePositonSpy).toBeCalledWith(
+      expect.objectContaining({
+        locale: { cancelText: 'cancel', placeholder: '' },
+      }),
+    );
+  });
+
+  it('should handle blur event', () => {
+    jest.useFakeTimers();
+    const mOnBlur = jest.fn();
+    const wrapper = mount(<SearchBarOriginal onBlur={mOnBlur} value="test" />);
+    const inputWrapper = wrapper.find('input');
+    inputWrapper.simulate('focus');
+    expect(wrapper.state('focus')).toBeTruthy();
+    inputWrapper.simulate('blur');
+    jest.advanceTimersByTime(200);
+    expect(wrapper.state('focus')).toBeFalsy();
+    expect(mOnBlur).toBeCalledTimes(1);
+  });
+
+  it('should handle form submit event', () => {
+    const mOnSubmit = jest.fn();
+    const wrapper = mount(<SearchBarOriginal value="test" onSubmit={mOnSubmit} />);
+    const inputRef = wrapper.instance()['inputRef'] as HTMLInputElement;
+    const blurSpy = jest.spyOn(inputRef, 'blur');
+    const mEvent = { preventDefault: jest.fn() };
+    wrapper.find('form').simulate('submit', mEvent);
+    expect(mEvent.preventDefault).toBeCalledTimes(1);
+    expect(blurSpy).toBeCalledTimes(1);
+    expect(mOnSubmit).toBeCalledWith('test');
   });
 });
