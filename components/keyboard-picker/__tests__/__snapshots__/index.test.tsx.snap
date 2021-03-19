@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`KeyboardPicker renders correctly 1`] = `
+exports[`KeyboardPicker snapshot renders correctly 1`] = `
 <KeyboardPicker
   destroy={true}
   prefixCls="za-keyboard-picker"
