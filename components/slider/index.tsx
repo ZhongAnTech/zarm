@@ -1,57 +1,12 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import PropsType from './PropsType';
-
+import type PropsType from './PropsType';
 import Events from '../utils/events';
 import Drag, { DragEvent, DragState } from '../drag';
 import Tooltip from '../tooltip';
-
-const getValue = (props: Slider['props'], defaultValue: number) => {
-  if (typeof props.value !== 'undefined') {
-    return props.value;
-  }
-  if (typeof props.defaultValue !== 'undefined') {
-    return props.defaultValue || defaultValue;
-  }
-  return defaultValue;
-};
-
-function preventDefault(event: MouseEvent) {
-  event.preventDefault();
-}
-
-function getPrecision(step: number) {
-  const stepString = step.toString();
-  let precision = 0;
-  if (stepString.indexOf('.') >= 0) {
-    precision = stepString.length - stepString.indexOf('.') - 1;
-  }
-  return precision;
-}
-
-function getClosestPoint(
-  val: number,
-  { marks, step, min, max }: Pick<SliderProps, 'marks' | 'step' | 'min' | 'max'>,
-) {
-  const points = Object.keys(marks || {}).map(parseFloat);
-  if (step !== null) {
-    const maxSteps = Math.floor((max - min) / step);
-    const steps = Math.min((val - min) / step, maxSteps);
-    const closestStep = Math.round(steps) * step + min;
-    points.push(closestStep);
-  }
-  const diffs = points.map((point) => Math.abs(val - point));
-
-  return points[diffs.indexOf(Math.min(...diffs))];
-}
-
-function ensureValuePrecision(val: number, props: SliderProps) {
-  const { step } = props;
-  const closestPoint = Number.isFinite(getClosestPoint(val, props))
-    ? getClosestPoint(val, props)
-    : 0;
-  return step === null ? closestPoint : parseFloat(closestPoint.toFixed(getPrecision(step)));
-}
+import ensureValuePrecision from './utils/ensureValuePrecision';
+import getValue from './utils/getValue';
+import preventDefault from './utils/preventDefault';
 
 export interface SliderProps extends PropsType {
   prefixCls?: string;
@@ -120,7 +75,7 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
    * @param  {number} offset 偏移量
    * @return {number}        值
    */
-  getValueByOffset = (offset: number) => {
+  getValueByOffset = (offset: number): number => {
     const { min = 0, max, vertical } = this.props;
 
     const percent = offset / this.getMaxOffset();
@@ -147,7 +102,7 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
    * @param  {number} value 值
    * @return {number}       偏移量
    */
-  getOffsetByValue = (value: number) => {
+  getOffsetByValue = (value: number): number => {
     const { vertical, min, max } = this.props;
 
     const maxOffset = this.getMaxOffset();
