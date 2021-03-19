@@ -21,6 +21,12 @@ describe('utils', () => {
         expect(actual).toBeInstanceOf(Date);
         expect(actual).toEqual(new Date(+date));
       });
+      it('should parse date if date is timestamp number', () => {
+        const date = 1612244846140;
+        const actual = dateUtils.parseDate(date);
+        expect(actual).toBeInstanceOf(Date);
+        expect(actual).toEqual(new Date(+date));
+      });
     });
 
     describe('#cloneDate', () => {
@@ -65,6 +71,13 @@ describe('utils', () => {
         const actual = dateUtils.cloneDate(date, 'dd', 20);
         expect(actual).toBeInstanceOf(Date);
         expect(actual).toMatchInlineSnapshot(`2020-02-19T16:00:00.000Z`);
+      });
+
+      it('should clone date with without modifying date if date type is invalid', () => {
+        const date = new Date(2020, 1, 1);
+        const actual = dateUtils.cloneDate(date, 'xx' as any, 20);
+        expect(actual).toBeInstanceOf(Date);
+        expect(actual).toMatchInlineSnapshot(`2020-01-31T16:00:00.000Z`);
       });
     });
 

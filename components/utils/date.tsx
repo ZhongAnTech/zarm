@@ -80,7 +80,7 @@ export default {
     return new Date(tmp.getFullYear(), tmp.getMonth(), tmp.getDate());
   },
   // 标准化时间
-  parseDate(date: DateOrString): Date {
+  parseDate(date: DateOrString | number): Date {
     if (date.constructor === Date) {
       return date;
     }
