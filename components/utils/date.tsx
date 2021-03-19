@@ -1,37 +1,42 @@
+type DateType = 'y' | 'yyyy' | 'm' | 'mm' | 'd' | 'dd';
+type DateOrString = Date | string;
+
 export default {
   // 返回月份中的第一天是星期几
-  firstDayOfMonth(date) {
+  firstDayOfMonth(date: DateOrString) {
     const d = date.constructor === Date ? date : this.cloneDate(date, 'dd', 1);
     return d.getDay();
   },
   // 获取当月天数
-  getDaysInMonth(year, month) {
+  getDaysInMonth(year: number, month: number) {
     return new Date(year, month, 0).getDate();
   },
   // 获取当月天数
-  getDaysByDate(date) {
+  getDaysByDate(date: DateOrString) {
     const tmp = this.parseDate(date);
     return new Date(tmp.getFullYear(), tmp.getMonth() + 1, 0).getDate();
   },
+
   // 获取当月信息
-  getCurrMonthInfo(year, month) {
+  getCurrMonthInfo(year: number, month: number) {
     return {
       dayCount: new Date(year, month + 1, 0).getDate(), // 总天数
       firstDay: new Date(year, month, 1).getDay(), // 第一天是周几
     };
   },
   // 判断闰年还是平年
-  isLeapYear(year) {
-    if (!+year) {
+  isLeapYear(year: number | string) {
+    if (year === '' || !Number.isSafeInteger(+year)) {
       throw new Error('年份格式不正确');
     }
-    if (+year < 1790) {
+    year = +year;
+    if (year < 1790) {
       throw new Error('年份不能低于1790');
     }
     return (+year % 4 === 0 && +year % 100 !== 0) || +year % 400 === 0;
   },
   // 获取时间差的月份数
-  getMonthCount(date1, date2) {
+  getMonthCount(date1: DateOrString, date2: DateOrString) {
     const tmp1 = this.parseDate(date1);
     const tmp2 = this.parseDate(date2);
     const dur =
@@ -39,11 +44,11 @@ export default {
     return Math.abs(dur) + 1;
   },
   // 是否是今天(只判断年月日)
-  isToday(date) {
+  isToday(date: DateOrString) {
     return this.isOneDay(date, new Date());
   },
   // 两个日期是否同一天
-  isOneDay(date1, date2) {
+  isOneDay(date1: DateOrString, date2: DateOrString) {
     if (!date1 || !date2) {
       return false;
     }
@@ -52,7 +57,7 @@ export default {
     return tmp1.toDateString() === tmp2.toDateString();
   },
   // 两个日期是否同一个月
-  isOneMonth(date1, date2) {
+  isOneMonth(date1: DateOrString, date2: DateOrString) {
     if (!date1 || !date2) {
       return false;
     }
@@ -61,7 +66,7 @@ export default {
     return tmp1.getFullYear() === tmp2.getFullYear() && tmp1.getMonth() === tmp2.getMonth();
   },
   // 周几
-  getDay(date, opt) {
+  getDay(date: DateOrString, opt?: ReadonlyArray<string>) {
     const realDate = this.cloneDate(date);
     let array = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
     if (opt && opt instanceof Array) {
@@ -70,12 +75,12 @@ export default {
     return array[realDate.getDay()];
   },
   // 标准化日期, 时间均为00:00:00
-  parseDay(date) {
+  parseDay(date: DateOrString) {
     const tmp = this.parseDate(date);
     return new Date(tmp.getFullYear(), tmp.getMonth(), tmp.getDate());
   },
   // 标准化时间
-  parseDate(date: Date | string): Date {
+  parseDate(date: DateOrString): Date {
     if (date.constructor === Date) {
       return date;
     }
@@ -88,7 +93,7 @@ export default {
     return new Date(date);
   },
   // 克隆日期
-  cloneDate(date, type, during) {
+  cloneDate(date: DateOrString, type?: DateType, during?: number) {
     const tmp = new Date(this.parseDate(date));
     if (!type || !during) {
       return tmp;
