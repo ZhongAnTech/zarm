@@ -87,7 +87,7 @@ export default class FilePicker extends PureComponent<FilePickerProps, {}> {
 
     const content = cloneElement(children, {
       onClick: this.handleClick,
-      className: 'needsclick', // 修复加载fastClick库后引起的合成事件问题
+      className: classNames(children.props.className, 'needsclick'), // 修复加载fastClick库后引起的合成事件问题
     });
 
     return (
