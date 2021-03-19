@@ -1,4 +1,5 @@
 import dateUtils from '../date';
+import { date1 } from '../../../tests/testData/date';
 
 describe('utils', () => {
   describe('date', () => {
@@ -31,61 +32,60 @@ describe('utils', () => {
 
     describe('#cloneDate', () => {
       it('should clone date without modifying', () => {
-        const date = new Date(2020, 1, 1);
-        const actual = dateUtils.cloneDate(date, 'y', 0);
+        const actual = dateUtils.cloneDate(date1, 'y', 0);
         expect(actual).toBeInstanceOf(Date);
-        expect(actual).toMatchInlineSnapshot(`2020-01-31T16:00:00.000Z`);
+        expect(actual).toMatchInlineSnapshot(`2019-04-23T00:00:00.000Z`);
       });
       it('should clone date with incremental year', () => {
-        const date = new Date(2020, 1, 1);
-        const actual = dateUtils.cloneDate(date, 'y', 1);
+        const actual = dateUtils.cloneDate(date1, 'y', 1);
         expect(actual).toBeInstanceOf(Date);
-        expect(actual).toMatchInlineSnapshot(`2021-01-31T16:00:00.000Z`);
+        expect(actual).toMatchInlineSnapshot(`2020-04-23T00:00:00.000Z`);
       });
       it('should clone date with full year', () => {
-        const date = new Date(2020, 1, 1);
-        const actual = dateUtils.cloneDate(date, 'yyyy', 2000);
+        const actual = dateUtils.cloneDate(date1, 'yyyy', 2000);
         expect(actual).toBeInstanceOf(Date);
-        expect(actual).toMatchInlineSnapshot(`2000-01-31T16:00:00.000Z`);
+        expect(actual).toMatchInlineSnapshot(`2000-04-23T00:00:00.000Z`);
       });
       it('should clone date with incremental month', () => {
-        const date = new Date(2020, 1, 1);
-        const actual = dateUtils.cloneDate(date, 'm', 1);
+        const actual = dateUtils.cloneDate(date1, 'm', 1);
         expect(actual).toBeInstanceOf(Date);
-        expect(actual).toMatchInlineSnapshot(`2020-02-29T16:00:00.000Z`);
+        expect(actual).toMatchInlineSnapshot(`2019-05-23T00:00:00.000Z`);
       });
       it('should clone date with full month', () => {
-        const date = new Date(2020, 1, 1);
-        const actual = dateUtils.cloneDate(date, 'mm', 10);
+        const actual = dateUtils.cloneDate(date1, 'mm', 10);
         expect(actual).toBeInstanceOf(Date);
-        expect(actual).toMatchInlineSnapshot(`2020-10-31T16:00:00.000Z`);
+        expect(actual).toMatchInlineSnapshot(`2019-11-23T00:00:00.000Z`);
       });
       it('should clone date with incremental date', () => {
-        const date = new Date(2020, 1, 1);
-        const actual = dateUtils.cloneDate(date, 'd', 1);
+        const actual = dateUtils.cloneDate(date1, 'd', 1);
         expect(actual).toBeInstanceOf(Date);
-        expect(actual).toMatchInlineSnapshot(`2020-02-01T16:00:00.000Z`);
+        expect(actual).toMatchInlineSnapshot(`2019-04-24T00:00:00.000Z`);
       });
       it('should clone date with full date', () => {
-        const date = new Date(2020, 1, 1);
-        const actual = dateUtils.cloneDate(date, 'dd', 20);
+        const actual = dateUtils.cloneDate(date1, 'dd', 20);
         expect(actual).toBeInstanceOf(Date);
-        expect(actual).toMatchInlineSnapshot(`2020-02-19T16:00:00.000Z`);
+        expect(actual).toMatchInlineSnapshot(`2019-04-20T00:00:00.000Z`);
       });
 
       it('should clone date with without modifying date if date type is invalid', () => {
-        const date = new Date(2020, 1, 1);
-        const actual = dateUtils.cloneDate(date, 'xx' as any, 20);
+        const actual = dateUtils.cloneDate(date1, 'xx' as any, 20);
         expect(actual).toBeInstanceOf(Date);
-        expect(actual).toMatchInlineSnapshot(`2020-01-31T16:00:00.000Z`);
+        expect(actual).toMatchInlineSnapshot(`2019-04-23T00:00:00.000Z`);
       });
     });
 
     describe('#parseDay', () => {
       it('should parse day', () => {
-        const date = new Date(2020, 1, 1);
-        const actual = dateUtils.parseDay(date);
-        expect(actual).toMatchInlineSnapshot(`2020-01-31T16:00:00.000Z`);
+        const parseDateSpy = jest.spyOn(dateUtils, 'parseDate').mockReturnValueOnce(date1);
+        const DateSpy = jest
+          .spyOn(global, 'Date')
+          .mockReturnValueOnce((date1 as unknown) as string);
+        const actual = dateUtils.parseDay(date1);
+        expect(actual).toMatchInlineSnapshot(`2019-04-23T00:00:00.000Z`);
+        expect(parseDateSpy).toBeCalledWith(date1);
+        expect(DateSpy).toBeCalledWith(date1.getFullYear(), date1.getMonth(), date1.getDate());
+        DateSpy.mockRestore();
+        parseDateSpy.mockRestore();
       });
     });
     describe('#getDay', () => {
