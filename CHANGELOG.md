@@ -1,5 +1,15 @@
 # 版本更新日志
 
+## v2.7.4
+
+- Bug Fix
+
+  - [LocaleProvider] 修复在使用 `babel-plugin-import` 插件的情况下样式文件缺失的 bug。[#882bd5c](https://github.com/ZhongAnTech/zarm/commit/882bd5c1bc088281fd46ae1008cc25f92c263838)
+  - [StackPicker] 修复选项列表背景缺失的 bug。[#132d435](https://github.com/ZhongAnTech/zarm/commit/132d4353294d1f78e067c28794a121049c12d201)
+  - [StackPicker] 修复缺失国际化语言包功能。[#f528fc5](https://github.com/ZhongAnTech/zarm/commit/f528fc53fe89e18c40e04e778bf0ae7827076dae)
+  - [FilePicker] 修复包含的子组件 `className` 的属性值被修改为 `needsclick`, 改为追加该值。[#592](https://github.com/ZhongAnTech/zarm/pull/592)
+  - 修复部分组件缺少 `className` 属性的 bug。[#be465f0](https://github.com/ZhongAnTech/zarm/commit/be465f03c365d47662695ce8654ab4a6d4533cd3)
+
 ## v2.7.3
 
 - Bug Fix
