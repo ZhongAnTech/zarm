@@ -21,6 +21,7 @@ tsconfig.json
 tslint.json
 components
 assets
+tests
 coverage
 site
 rnkit
