@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SearchBar renders correctly 1`] = `
+exports[`SearchBar snapshot renders correctly 1`] = `
 <div
   class="za-search-bar za-search-bar--round"
 >
@@ -67,22 +67,22 @@ exports[`SearchBar renders correctly 1`] = `
 </div>
 `;
 
-exports[`SearchBar renders defaultValue correctly 1`] = `
+exports[`SearchBar snapshot renders defaultValue correctly 1`] = `
 <ForwardRef(forwardRef)
-  cancelText="取消取消"
+  cancelText="取消"
   defaultValue="搜索关键字"
   placeholder="搜索"
   shape="round"
 >
   <ConfigReceiver
-    cancelText="取消取消"
+    cancelText="取消"
     defaultValue="搜索关键字"
     forwardedRef={null}
     placeholder="搜索"
     shape="round"
   >
     <SearchBar
-      cancelText="取消取消"
+      cancelText="取消"
       clearable={true}
       defaultValue="搜索关键字"
       disabled={false}
@@ -241,7 +241,7 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
             className="za-search-bar__cancel"
             onClick={[Function]}
           >
-            取消取消
+            取消
           </div>
         </form>
       </div>
@@ -250,7 +250,7 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
 </ForwardRef(forwardRef)>
 `;
 
-exports[`SearchBar renders onCancel called correctly 1`] = `
+exports[`SearchBar snapshot renders onCancel called correctly 1`] = `
 <ForwardRef(forwardRef)
   onCancel={
     [MockFunction] {
@@ -466,7 +466,7 @@ exports[`SearchBar renders onCancel called correctly 1`] = `
 </ForwardRef(forwardRef)>
 `;
 
-exports[`SearchBar renders onChange called correctly 1`] = `
+exports[`SearchBar snapshot renders onChange called correctly 1`] = `
 <ForwardRef(forwardRef)
   onChange={
     [MockFunction] {
@@ -688,7 +688,7 @@ exports[`SearchBar renders onChange called correctly 1`] = `
 </ForwardRef(forwardRef)>
 `;
 
-exports[`SearchBar renders onClear called correctly 1`] = `
+exports[`SearchBar snapshot renders onClear called correctly 1`] = `
 <ForwardRef(forwardRef)
   onClear={
     [MockFunction] {
@@ -905,7 +905,7 @@ exports[`SearchBar renders onClear called correctly 1`] = `
 </ForwardRef(forwardRef)>
 `;
 
-exports[`SearchBar renders onFocus called correctly 1`] = `
+exports[`SearchBar snapshot renders onFocus called correctly 1`] = `
 <ForwardRef(forwardRef)
   onFocus={
     [MockFunction] {
@@ -1121,7 +1121,7 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
 </ForwardRef(forwardRef)>
 `;
 
-exports[`SearchBar renders onSubmit called correctly 1`] = `
+exports[`SearchBar snapshot renders onSubmit called correctly 1`] = `
 <ForwardRef(forwardRef)
   onSubmit={
     [MockFunction] {
