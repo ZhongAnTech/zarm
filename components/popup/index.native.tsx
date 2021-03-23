@@ -93,6 +93,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
       toValue: newValue,
       duration: animationDuration,
       easing: Easing.linear,
+      useNativeDriver: true,
     }).start();
     // if (stayTime > 0 && autoClose) {
     //   this.timer = setTimeout(() => {
@@ -113,6 +114,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
       toValue: 0,
       duration: animationDuration,
       easing: Easing.linear,
+      useNativeDriver: true,
     }).start();
   };
 

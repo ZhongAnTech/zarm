@@ -86,10 +86,12 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
       Animated.timing(this.state.height, {
         toValue: height,
         duration,
+        useNativeDriver: true,
       }),
       Animated.timing(this.state.rotate, {
         toValue: rotate,
         duration: 150,
+        useNativeDriver: true,
       }),
     ]).start();
   };
