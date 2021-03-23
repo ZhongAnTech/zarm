@@ -2,37 +2,16 @@
 
 exports[`Affix offsetBottom 1`] = `
 <div>
-  <div
-    class="za-affix"
-    style="position:fixed;bottom:20px"
-  >
-    <div>
-      Affix Node
-    </div>
+  <div>
+    Affix Node
   </div>
 </div>
 `;
 
 exports[`Affix offsetTop 1`] = `
 <div>
-  <div
-    class="za-affix"
-  >
-    <div>
-      Affix Node
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Affix renders correctly 1`] = `
-<div>
-  <div
-    class="za-affix"
-  >
-    <div>
-      Affix Node
-    </div>
+  <div>
+    Affix Node
   </div>
 </div>
 `;

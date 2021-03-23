@@ -9,6 +9,7 @@ describe('index', () => {
           "render": [Function],
         },
         "ActivityIndicator": [Function],
+        "Affix": [Function],
         "BackToTop": [Function],
         "Badge": [Function],
         "Button": [Function],
