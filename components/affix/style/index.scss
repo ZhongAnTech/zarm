@@ -1,5 +1,2 @@
 @import '../../style/core/index';
-
-@include b(affix) {
-  z-index: 10;
-}
+@import 'component';
