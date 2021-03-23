@@ -80,7 +80,7 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
       });
       onChange && onChange(currentAffixed);
     }
-  }, 250);
+  }, 10);
 
   get container() {
     const { scrollContainer } = this.props;
