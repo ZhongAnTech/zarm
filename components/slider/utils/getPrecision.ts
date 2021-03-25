@@ -1,4 +1,4 @@
-export default function getPrecision(step: number) {
+export default function getPrecision(step: number): number {
   const stepString = step.toString();
   let precision = 0;
   if (stepString.indexOf('.') >= 0) {

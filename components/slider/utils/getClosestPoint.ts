@@ -4,6 +4,10 @@ export default function getClosestPoint(
   val: number,
   { marks, step, min, max }: Pick<PropsType, 'marks' | 'step' | 'min' | 'max'>,
 ) {
+  if (max < min) {
+    throw new Error(`"max" should be greater than "min". Got "min" = ${min}, "max" = ${max}`);
+  }
+
   const points = Object.keys(marks || {}).map(parseFloat);
   if (step !== null) {
     const maxSteps = Math.floor((max - min) / step);
