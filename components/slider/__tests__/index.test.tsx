@@ -188,4 +188,32 @@ describe('Slider', () => {
     expect(wrapper.state('value')).toEqual(20);
     expect(wrapper.instance()['offsetStart']).toEqual(0);
   });
+
+  it('should bind touchstart event for root element', () => {
+    const wrapper = shallow(<Slider />);
+    const mRef = {
+      addEventListener: jest.fn(),
+    };
+    wrapper.getElement()['ref'](mRef);
+    expect(mRef.addEventListener).toBeCalledWith('touchstart', expect.any(Function), {
+      passive: false,
+    });
+  });
+
+  it('should remove touchstart event for root element', () => {
+    const wrapper = shallow(<Slider />);
+    const mPrevRef = {
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+    };
+    const mNextRef = {
+      addEventListener: jest.fn(),
+    };
+    wrapper.getElement()['ref'](mPrevRef);
+    wrapper.getElement()['ref'](mNextRef);
+    expect(mPrevRef.removeEventListener).toBeCalledWith('touchstart', expect.any(Function));
+    expect(mNextRef.addEventListener).toBeCalledWith('touchstart', expect.any(Function), {
+      passive: false,
+    });
+  });
 });
