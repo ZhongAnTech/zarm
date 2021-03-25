@@ -89,6 +89,7 @@ ReactDOM.render(<Demo />, mountNode);
 | :---------- | :--------- | :----- | :--------------------------------- |
 | visible     | boolean    | false  | 是否显示                           |
 | spacing     | boolean    | false  | 是否和外部有间距                   |
+| destroy     | boolean    | true   | 弹层关闭后是否移除节点             |
 | actions     | Action[]   | []     | 动作列表                           |
 | onMaskClick | () => void | -      | 点击遮罩层时触发的回调函数         |
 | onCancel    | () => void | -      | 显示取消菜单，点击时触发的回调函数 |
