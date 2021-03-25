@@ -3,7 +3,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { DragEvent } from '../../drag';
 
 describe('Slider', () => {
   const marks = {
@@ -70,8 +69,10 @@ describe('Slider', () => {
     });
 
     it('marks error', () => {
+      const errorLogSpy = jest.spyOn(console, 'error').mockImplementationOnce(() => 'Suppress');
       const wrapper = shallow(<Slider showMark />);
       expect(toJson(wrapper)).toMatchSnapshot();
+      expect(errorLogSpy).toBeCalledWith('请输入有效的 marks');
     });
 
     it('vertical', () => {
@@ -232,5 +233,19 @@ describe('Slider', () => {
     const mEvent = {} as any;
     wrapper.find('.za-slider__handle').invoke('onTouchStart')!(mEvent);
     expect(wrapper.state('tooltip')).toBeFalsy();
+  });
+
+  it('should not render mask info if marks is an empty object and props.showMark is true', () => {
+    const errorLogSpy = jest.spyOn(console, 'error').mockImplementationOnce(() => 'Suppress');
+    const wrapper = mount(<Slider showMark marks={{}} />);
+    expect(wrapper.find('.za-slider__marks').exists()).toBeFalsy();
+    expect(errorLogSpy).toBeCalledWith('请输入有效的 marks');
+  });
+
+  it('should not render mask info if marks is NOT an object and props.showMark is true', () => {
+    const errorLogSpy = jest.spyOn(console, 'error').mockImplementationOnce(() => 'Suppress');
+    const wrapper = mount(<Slider showMark marks={null as any} />);
+    expect(wrapper.find('.za-slider__marks').exists()).toBeFalsy();
+    expect(errorLogSpy).toBeCalledWith('请输入有效的 marks');
   });
 });

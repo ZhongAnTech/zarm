@@ -7,6 +7,7 @@ import Tooltip from '../tooltip';
 import ensureValuePrecision from './utils/ensureValuePrecision';
 import getValue from './utils/getValue';
 import preventDefault from './utils/preventDefault';
+import { isObject } from '../utils/validate';
 
 export interface SliderProps extends PropsType {
   prefixCls?: string;
@@ -218,9 +219,10 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
 
     const { value } = this.state;
 
-    const isEmptyMarks = typeof marks !== 'object' || JSON.stringify(marks) === '{}';
+    const isEmptyMarks = !isObject(marks) || JSON.stringify(marks) === '{}';
 
     if (showMark && isEmptyMarks) {
+      // TODO: i18n
       console.error('请输入有效的 marks');
       return null;
     }
