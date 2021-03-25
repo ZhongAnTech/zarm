@@ -3,6 +3,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
+import { DragEvent } from '../../drag';
 
 describe('Slider', () => {
   const marks = {
@@ -215,5 +216,21 @@ describe('Slider', () => {
     expect(mNextRef.addEventListener).toBeCalledWith('touchstart', expect.any(Function), {
       passive: false,
     });
+  });
+
+  it('should handle drag start event set state.tooltip to true', () => {
+    const wrapper = mount(<Slider disabled={false} />);
+    expect(wrapper.state('tooltip')).toBeFalsy();
+    const mEvent = {} as any;
+    wrapper.find('.za-slider__handle').invoke('onTouchStart')!(mEvent);
+    expect(wrapper.state('tooltip')).toBeTruthy();
+  });
+
+  it('should do nothing if slider is disabled when drag start', () => {
+    const wrapper = mount(<Slider disabled />);
+    expect(wrapper.state('tooltip')).toBeFalsy();
+    const mEvent = {} as any;
+    wrapper.find('.za-slider__handle').invoke('onTouchStart')!(mEvent);
+    expect(wrapper.state('tooltip')).toBeFalsy();
   });
 });
