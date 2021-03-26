@@ -1,5 +1,6 @@
 
-import React, { Component, PropTypes, cloneElement, Children } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component, cloneElement, Children } from 'react';
 import classnames from 'classnames';
 // import addEndEventListener from '../utils/transitionEvents';
 

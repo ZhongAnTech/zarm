@@ -1,4 +1,5 @@
-import React, { Component, PropTypes, cloneElement } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component, cloneElement } from 'react';
 import classNames from 'classnames';
 import ZScroller from 'zscroller';
 import isChildrenEqual from './isChildrenEqual';

@@ -1,5 +1,6 @@
 
-import React, { Component, PropTypes, cloneElement } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component, cloneElement } from 'react';
 import classnames from 'classnames';
 import Radio from './Radio';
 

@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import classnames from 'classnames';
 import moment from 'moment';
 import MultiPicker from './MultiPicker';
@@ -501,11 +502,11 @@ DatePicker.propTypes = {
   title: PropTypes.string,
   cancelText: PropTypes.string,
   okText: PropTypes.string,
-  format: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.func,
+  format: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func,
   ]),
-  mode: React.PropTypes.oneOf([YEAR, MONTH, DATE, TIME, DATETIME]),
+  mode: PropTypes.oneOf([YEAR, MONTH, DATE, TIME, DATETIME]),
   onMaskClick: PropTypes.func,
   minuteStep: PropTypes.number,
   prefixCls: PropTypes.string,
