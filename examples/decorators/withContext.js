@@ -1,5 +1,6 @@
 
-import React, { PropTypes, Component } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
 function withContext(ComposedComponent) {
   return class WithContext extends Component {

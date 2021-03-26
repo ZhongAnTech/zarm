@@ -1,5 +1,6 @@
 
-import React, { Component, PropTypes, Children } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component, Children } from 'react';
 
 class ModalFooter extends Component {
 
