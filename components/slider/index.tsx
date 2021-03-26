@@ -169,23 +169,22 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
       });
       return false;
     }
-
     const value = this.getValueByOffset(offset);
     this.setState({ value });
     return true;
   };
 
-  handleDragEnd = (_event?: DragEvent, dragState?: DragState) => {
+  handleDragEnd = (_event: DragEvent, dragState: DragState) => {
     const { vertical, onChange } = this.props;
-    const { offsetX, offsetY } = dragState!;
+    const { offsetX, offsetY } = dragState;
 
     this.setState({ tooltip: false });
 
     if (vertical) {
-      if (Number.isNaN(offsetY!)) {
+      if (Number.isNaN(offsetY)) {
         return;
       }
-    } else if (Number.isNaN(offsetX!)) {
+    } else if (Number.isNaN(offsetX)) {
       return;
     }
 

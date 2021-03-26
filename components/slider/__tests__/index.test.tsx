@@ -3,6 +3,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
+import type { TouchEvent } from 'react';
 
 describe('Slider', () => {
   const marks = {
@@ -247,5 +248,78 @@ describe('Slider', () => {
     const wrapper = mount(<Slider showMark marks={null as any} />);
     expect(wrapper.find('.za-slider__marks').exists()).toBeFalsy();
     expect(errorLogSpy).toBeCalledWith('请输入有效的 marks');
+  });
+
+  it('should handle drag end event and set new offset start for a horizontal slider', () => {
+    const mOnChange = jest.fn();
+    const lineRefKey = Symbol('line');
+    Object.defineProperty(Slider.prototype, 'line', {
+      get() {
+        return this[lineRefKey];
+      },
+      set(ref) {
+        if (ref) {
+          Object.defineProperty(ref, 'offsetWidth', {
+            value: 200,
+            configurable: true,
+          });
+          this[lineRefKey] = ref;
+        }
+        this[lineRefKey] = ref;
+      },
+      configurable: true,
+    });
+    const wrapper = mount(<Slider value={20} vertical={false} onChange={mOnChange} />);
+    expect(wrapper.state('tooltip')).toBeFalsy();
+    const touchStartEvent = ({ touches: [{ pageX: 100, pageY: 0 }] } as unknown) as TouchEvent;
+    const sliderHandleWrapper = wrapper.find('.za-slider__handle');
+    sliderHandleWrapper.invoke('onTouchStart')!(touchStartEvent);
+    expect(wrapper.state('tooltip')).toBeTruthy();
+    const touchMoveEvent = ({
+      stopPropagation: jest.fn(),
+      preventDefault: jest.fn(),
+      touches: [{ pageX: 200, pageY: 0 }],
+    } as unknown) as TouchEvent;
+    sliderHandleWrapper.invoke('onTouchMove')!(touchMoveEvent);
+    sliderHandleWrapper.invoke('onTouchEnd')!(({} as unknown) as TouchEvent);
+    expect(wrapper.state('tooltip')).toBeFalsy();
+    expect(wrapper.instance()['offsetStart']).toEqual(140);
+    expect(mOnChange).toBeCalledWith(70);
+  });
+
+  it('should handle drag end event and set new offset start for a horizontal slider if offset > maxOffset', () => {
+    const mOnChange = jest.fn();
+    const lineRefKey = Symbol('line');
+    Object.defineProperty(Slider.prototype, 'line', {
+      get() {
+        return this[lineRefKey];
+      },
+      set(ref) {
+        if (ref) {
+          Object.defineProperty(ref, 'offsetWidth', {
+            value: 20,
+            configurable: true,
+          });
+          this[lineRefKey] = ref;
+        }
+        this[lineRefKey] = ref;
+      },
+      configurable: true,
+    });
+    const wrapper = mount(<Slider value={20} vertical={false} onChange={mOnChange} />);
+    expect(wrapper.state('tooltip')).toBeFalsy();
+    const touchStartEvent = ({ touches: [{ pageX: 100, pageY: 0 }] } as unknown) as TouchEvent;
+    const sliderHandleWrapper = wrapper.find('.za-slider__handle');
+    sliderHandleWrapper.invoke('onTouchStart')!(touchStartEvent);
+    expect(wrapper.state('tooltip')).toBeTruthy();
+    const touchMoveEvent = ({
+      stopPropagation: jest.fn(),
+      preventDefault: jest.fn(),
+      touches: [{ pageX: 200, pageY: 0 }],
+    } as unknown) as TouchEvent;
+    sliderHandleWrapper.invoke('onTouchMove')!(touchMoveEvent);
+    sliderHandleWrapper.invoke('onTouchEnd')!(({} as unknown) as TouchEvent);
+    expect(wrapper.state('tooltip')).toBeFalsy();
+    expect(mOnChange).toBeCalledWith(100);
   });
 });
