@@ -151,7 +151,6 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
       ? this.offsetStart + (offsetY || 0)
       : (this.offsetStart || 0) + (offsetX || 0);
 
-    console.log('154,offset:', offset);
     if (offset < 0) {
       offset = 0;
       const newValue = this.getValueByOffset(offset);
@@ -162,7 +161,6 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
     }
 
     const maxOffset = this.getMaxOffset();
-    console.log('165,maxOffset:', maxOffset);
     if (offset > maxOffset) {
       offset = maxOffset;
       const newValue = this.getValueByOffset(offset);
@@ -179,7 +177,6 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
   handleDragEnd = (_event: DragEvent, dragState: DragState) => {
     const { vertical, onChange } = this.props;
     const { offsetX, offsetY } = dragState;
-    console.log('182,dragState:', dragState);
 
     this.setState({ tooltip: false });
 

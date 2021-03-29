@@ -6,11 +6,9 @@ import toJson from 'enzyme-to-json';
 import type { TouchEvent } from 'react';
 import { NonFunctionPropertyNames } from '../../utils/utilityTypes';
 
-// 56,142,185,188
-
 function mockLineRef(
   componentClass: typeof import('../index').default,
-  prop: NonFunctionPropertyNames<HTMLDivElement>,
+  prop: Exclude<NonFunctionPropertyNames<HTMLDivElement>, undefined>,
   value: any,
 ) {
   const lineRefKey = Symbol('line');
@@ -41,10 +39,12 @@ describe('Slider', () => {
   };
   let Slider: typeof import('../index').default;
   let Events: typeof import('../../utils/events').default;
+  let ToolTip: typeof import('../../tooltip').default;
   beforeEach(() => {
     jest.resetModules();
     Slider = require('../index').default;
     Events = require('../../utils/events').default;
+    ToolTip = require('../../tooltip').default;
   });
   afterEach(() => {
     jest.restoreAllMocks();
@@ -151,6 +151,8 @@ describe('Slider', () => {
     expect(onChange).toBeCalled();
   });
 
+  it('should ', () => {});
+
   it('should initialize offset start and bind resize event for a horizontal slider', () => {
     const EventsOnSpy = jest.spyOn(Events, 'on');
     mockLineRef(Slider, 'offsetWidth', 30);
@@ -231,21 +233,53 @@ describe('Slider', () => {
     expect(wrapper.state('tooltip')).toBeFalsy();
   });
 
-  it('should not render mask info if marks is an empty object and props.showMark is true', () => {
+  it('should not render mark info if marks is an empty object and props.showMark is true', () => {
     const errorLogSpy = jest.spyOn(console, 'error').mockImplementationOnce(() => 'Suppress');
     const wrapper = mount(<Slider showMark marks={{}} />);
     expect(wrapper.find('.za-slider__marks').exists()).toBeFalsy();
     expect(errorLogSpy).toBeCalledWith('请输入有效的 marks');
   });
 
-  it('should not render mask info if marks is NOT an object and props.showMark is true', () => {
+  it('should not render mark info if marks is NOT an object and props.showMark is true', () => {
     const errorLogSpy = jest.spyOn(console, 'error').mockImplementationOnce(() => 'Suppress');
     const wrapper = mount(<Slider showMark marks={null as any} />);
     expect(wrapper.find('.za-slider__marks').exists()).toBeFalsy();
     expect(errorLogSpy).toBeCalledWith('请输入有效的 marks');
   });
 
+  it('should render mark info with custom marks', () => {
+    const MARKS = {
+      0: '0°C',
+      26: '26°C',
+      65: '65°C',
+      100: '100°C',
+    };
+    const wrapper = mount(<Slider showMark marks={MARKS} value={55} />);
+    expect(wrapper.find('.za-slider__mark')).toHaveLength(4);
+    expect(wrapper.find('.za-slider__mark').map((mark) => mark.text())).toEqual(
+      expect.arrayContaining(['100°C', '0°C', '26°C', '65°C']),
+    );
+    expect(
+      wrapper.find('.za-slider__mark').map((mark) => {
+        const style = mark.prop('style');
+        return style ? style.left : '';
+      }),
+    ).toEqual(expect.arrayContaining(['0%', '26%', '65%', '100%']));
+    expect(
+      wrapper
+        .find('.za-slider__line__dot')
+        .map((dot) => dot.prop('className'))
+        .filter((className) => {
+          if (className) {
+            return className.includes('za-slider__line__dot--active');
+          }
+          return false;
+        }),
+    ).toHaveLength(2);
+  });
+
   it('should handle drag end event and set new offset start for a horizontal slider if offset > 0 and offset < maxOffset', () => {
+    const updateAllSpy = jest.spyOn(ToolTip, 'updateAll').mockReturnValueOnce(undefined);
     const mOnChange = jest.fn();
     mockLineRef(Slider, 'offsetWidth', 200);
     const wrapper = mount(<Slider value={20} vertical={false} onChange={mOnChange} />);
@@ -264,9 +298,13 @@ describe('Slider', () => {
     expect(wrapper.state('tooltip')).toBeFalsy();
     expect(wrapper.instance()['offsetStart']).toEqual(140);
     expect(mOnChange).toBeCalledWith(70);
+    expect(touchMoveEvent.stopPropagation).toBeCalledTimes(1);
+    expect(touchMoveEvent.preventDefault).toBeCalledTimes(1);
+    expect(updateAllSpy).toBeCalledTimes(1);
   });
 
   it('should handle drag end event and set new offset start for a horizontal slider if offset > maxOffset', () => {
+    const updateAllSpy = jest.spyOn(ToolTip, 'updateAll').mockReturnValueOnce(undefined);
     const mOnChange = jest.fn();
     mockLineRef(Slider, 'offsetWidth', 20);
     const wrapper = mount(<Slider value={20} vertical={false} onChange={mOnChange} />);
@@ -284,6 +322,9 @@ describe('Slider', () => {
     sliderHandleWrapper.invoke('onTouchEnd')!(({} as unknown) as TouchEvent);
     expect(wrapper.state('tooltip')).toBeFalsy();
     expect(mOnChange).toBeCalledWith(100);
+    expect(touchMoveEvent.stopPropagation).toBeCalledTimes(1);
+    expect(touchMoveEvent.preventDefault).toBeCalledTimes(1);
+    expect(updateAllSpy).toBeCalledTimes(1);
   });
 
   it('should handle drag end event and set new offset start for a horizontal slider if offset < 0', () => {
@@ -303,5 +344,31 @@ describe('Slider', () => {
     sliderHandleWrapper.invoke('onTouchEnd')!(({} as unknown) as TouchEvent);
     expect(wrapper.state('tooltip')).toBeFalsy();
     expect(mOnChange).toBeCalledWith(0);
+  });
+
+  it('should do nothing if slider is disabled when handle drag start event', () => {
+    const mOnChange = jest.fn();
+    const wrapper = mount(<Slider value={20} vertical={false} onChange={mOnChange} disabled />);
+    expect(wrapper.state('tooltip')).toBeFalsy();
+    const touchStartEvent = ({ touches: [{ pageX: 100, pageY: 0 }] } as unknown) as TouchEvent;
+    const sliderHandleWrapper = wrapper.find('.za-slider__handle');
+    sliderHandleWrapper.invoke('onTouchStart')!(touchStartEvent);
+    expect(wrapper.state('tooltip')).toBeFalsy();
+  });
+
+  it('should do nothing if slider is disabled when handle drag move event', () => {
+    const mOnChange = jest.fn();
+    const wrapper = mount(<Slider value={20} vertical={false} onChange={mOnChange} disabled />);
+    expect(wrapper.state('tooltip')).toBeFalsy();
+    const touchMoveEvent = ({
+      stopPropagation: jest.fn(),
+      preventDefault: jest.fn(),
+      touches: [{ pageX: 0, pageY: 0 }],
+    } as unknown) as TouchEvent;
+    const sliderHandleWrapper = wrapper.find('.za-slider__handle');
+    sliderHandleWrapper.invoke('onTouchMove')!(touchMoveEvent);
+    expect(wrapper.state('tooltip')).toBeFalsy();
+    expect(touchMoveEvent.stopPropagation).not.toBeCalled();
+    expect(touchMoveEvent.preventDefault).not.toBeCalled();
   });
 });
