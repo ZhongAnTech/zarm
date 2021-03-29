@@ -1,4 +1,3 @@
-import type { MouseEvent } from 'react';
 import preventDefault from '../../utils/preventDefault';
 
 describe('preventDefault', () => {

@@ -4,6 +4,33 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import type { TouchEvent } from 'react';
+import { NonFunctionPropertyNames } from '../../utils/utilityTypes';
+
+// 56,142,185,188
+
+function mockLineRef(
+  componentClass: typeof import('../index').default,
+  prop: NonFunctionPropertyNames<HTMLDivElement>,
+  value: any,
+) {
+  const lineRefKey = Symbol('line');
+  Object.defineProperty(componentClass.prototype, 'line', {
+    get() {
+      return this[lineRefKey];
+    },
+    set(ref) {
+      if (ref) {
+        Object.defineProperty(ref, prop, {
+          value,
+          configurable: true,
+        });
+        this[lineRefKey] = ref;
+      }
+      this[lineRefKey] = ref;
+    },
+    configurable: true,
+  });
+}
 
 describe('Slider', () => {
   const marks = {
@@ -126,23 +153,7 @@ describe('Slider', () => {
 
   it('should initialize offset start and bind resize event for a horizontal slider', () => {
     const EventsOnSpy = jest.spyOn(Events, 'on');
-    const lineRefKey = Symbol('line');
-    Object.defineProperty(Slider.prototype, 'line', {
-      get() {
-        return this[lineRefKey];
-      },
-      set(ref) {
-        if (ref) {
-          Object.defineProperty(ref, 'offsetWidth', {
-            value: 30,
-            configurable: true,
-          });
-          this[lineRefKey] = ref;
-        }
-        this[lineRefKey] = ref;
-      },
-      configurable: true,
-    });
+    mockLineRef(Slider, 'offsetWidth', 30);
     const wrapper = mount(<Slider value={20} vertical={false} />);
     expect(EventsOnSpy).toBeCalledWith(window, 'resize', expect.any(Function));
     expect(wrapper.state('value')).toEqual(20);
@@ -152,23 +163,7 @@ describe('Slider', () => {
 
   it('should initialize offset start and bind resize event for a vertical slider', () => {
     const EventsOnSpy = jest.spyOn(Events, 'on');
-    const lineRefKey = Symbol('line');
-    Object.defineProperty(Slider.prototype, 'line', {
-      get() {
-        return this[lineRefKey];
-      },
-      set(ref) {
-        if (ref) {
-          Object.defineProperty(ref, 'offsetHeight', {
-            value: 30,
-            configurable: true,
-          });
-          this[lineRefKey] = ref;
-        }
-        this[lineRefKey] = ref;
-      },
-      configurable: true,
-    });
+    mockLineRef(Slider, 'offsetHeight', 30);
     const wrapper = mount(<Slider value={20} vertical />);
     expect(EventsOnSpy).toBeCalledWith(window, 'resize', expect.any(Function));
     expect(wrapper.state('value')).toEqual(20);
@@ -250,25 +245,9 @@ describe('Slider', () => {
     expect(errorLogSpy).toBeCalledWith('请输入有效的 marks');
   });
 
-  it('should handle drag end event and set new offset start for a horizontal slider', () => {
+  it('should handle drag end event and set new offset start for a horizontal slider if offset > 0 and offset < maxOffset', () => {
     const mOnChange = jest.fn();
-    const lineRefKey = Symbol('line');
-    Object.defineProperty(Slider.prototype, 'line', {
-      get() {
-        return this[lineRefKey];
-      },
-      set(ref) {
-        if (ref) {
-          Object.defineProperty(ref, 'offsetWidth', {
-            value: 200,
-            configurable: true,
-          });
-          this[lineRefKey] = ref;
-        }
-        this[lineRefKey] = ref;
-      },
-      configurable: true,
-    });
+    mockLineRef(Slider, 'offsetWidth', 200);
     const wrapper = mount(<Slider value={20} vertical={false} onChange={mOnChange} />);
     expect(wrapper.state('tooltip')).toBeFalsy();
     const touchStartEvent = ({ touches: [{ pageX: 100, pageY: 0 }] } as unknown) as TouchEvent;
@@ -289,23 +268,7 @@ describe('Slider', () => {
 
   it('should handle drag end event and set new offset start for a horizontal slider if offset > maxOffset', () => {
     const mOnChange = jest.fn();
-    const lineRefKey = Symbol('line');
-    Object.defineProperty(Slider.prototype, 'line', {
-      get() {
-        return this[lineRefKey];
-      },
-      set(ref) {
-        if (ref) {
-          Object.defineProperty(ref, 'offsetWidth', {
-            value: 20,
-            configurable: true,
-          });
-          this[lineRefKey] = ref;
-        }
-        this[lineRefKey] = ref;
-      },
-      configurable: true,
-    });
+    mockLineRef(Slider, 'offsetWidth', 20);
     const wrapper = mount(<Slider value={20} vertical={false} onChange={mOnChange} />);
     expect(wrapper.state('tooltip')).toBeFalsy();
     const touchStartEvent = ({ touches: [{ pageX: 100, pageY: 0 }] } as unknown) as TouchEvent;
@@ -321,5 +284,24 @@ describe('Slider', () => {
     sliderHandleWrapper.invoke('onTouchEnd')!(({} as unknown) as TouchEvent);
     expect(wrapper.state('tooltip')).toBeFalsy();
     expect(mOnChange).toBeCalledWith(100);
+  });
+
+  it('should handle drag end event and set new offset start for a horizontal slider if offset < 0', () => {
+    const mOnChange = jest.fn();
+    const wrapper = mount(<Slider value={20} vertical={false} onChange={mOnChange} />);
+    expect(wrapper.state('tooltip')).toBeFalsy();
+    const touchStartEvent = ({ touches: [{ pageX: 100, pageY: 0 }] } as unknown) as TouchEvent;
+    const sliderHandleWrapper = wrapper.find('.za-slider__handle');
+    sliderHandleWrapper.invoke('onTouchStart')!(touchStartEvent);
+    expect(wrapper.state('tooltip')).toBeTruthy();
+    const touchMoveEvent = ({
+      stopPropagation: jest.fn(),
+      preventDefault: jest.fn(),
+      touches: [{ pageX: 0, pageY: 0 }],
+    } as unknown) as TouchEvent;
+    sliderHandleWrapper.invoke('onTouchMove')!(touchMoveEvent);
+    sliderHandleWrapper.invoke('onTouchEnd')!(({} as unknown) as TouchEvent);
+    expect(wrapper.state('tooltip')).toBeFalsy();
+    expect(mOnChange).toBeCalledWith(0);
   });
 });
