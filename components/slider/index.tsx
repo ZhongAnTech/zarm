@@ -135,7 +135,7 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
     this.setState({ tooltip: true });
   };
 
-  handleDragMove = (event?: DragEvent, dragState?: DragState) => {
+  handleDragMove = (event: DragEvent, dragState: DragState) => {
     const { disabled, vertical } = this.props;
 
     if (disabled) {

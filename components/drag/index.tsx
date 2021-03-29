@@ -15,9 +15,9 @@ export interface DragState {
 }
 
 export interface DragProps {
-  onDragStart?: (event: DragEvent, dragState: DragState) => void;
-  onDragMove?: (event: DragEvent, dragState: DragState) => boolean;
-  onDragEnd?: (event: DragEvent, dragState: DragState) => void;
+  onDragStart?: (event?: DragEvent, dragState?: DragState) => void;
+  onDragMove?: (event?: DragEvent, dragState?: DragState) => boolean;
+  onDragEnd?: (event?: DragEvent, dragState?: DragState) => void;
 }
 
 function isMouseEvent(e: DragEvent): e is MouseEvent {
