@@ -10,5 +10,5 @@ export default function ensureValuePrecision(
   const closestPoint = Number.isFinite(getClosestPoint(val, props))
     ? getClosestPoint(val, props)
     : 0;
-  return step === 0 ? closestPoint : parseFloat(closestPoint.toFixed(getPrecision(step)));
+  return step === null ? closestPoint : parseFloat(closestPoint.toFixed(getPrecision(step)));
 }
