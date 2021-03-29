@@ -16,7 +16,7 @@ describe('#getClosestPoint', () => {
   );
 
   it('should throw error when min > max', () => {
-    expect(() => getClosestPoint(0, { marks: null, step: 1, min: 6, max: 4 })).toThrowError(
+    expect(() => getClosestPoint(0, { marks: {}, step: 1, min: 6, max: 4 })).toThrowError(
       `"max" should be greater than "min". Got "min" = 6, "max" = 4`,
     );
   });
