@@ -24,13 +24,11 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     this.state = {
       value: getValue(props),
       visible: props.focused || false,
-      focused: false,
     };
   }
 
   componentDidMount() {
     const { autoFocus, focused } = this.props;
-    Events.on(document.body, 'click', this.onMaskClick);
 
     if (autoFocus || focused) {
       this.onFocus();
@@ -57,12 +55,13 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   }
 
   componentWillUnmount() {
-    Events.off(document.body, 'click', this.onMaskClick);
+    this.removeBlurListener();
   }
 
   onMaskClick = (e) => {
+    const { visible } = this.state;
     const clsRegExp = new RegExp(`(^|\\s)${this.picker.props.prefixCls}(\\s|$)`, 'g');
-    if (!this.state.visible || this.state.focused) {
+    if (!visible) {
       return;
     }
 
@@ -100,6 +99,14 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     }
   };
 
+  addBlurListener = () => {
+    Events.on(document.body, 'click', this.onMaskClick);
+  };
+
+  removeBlurListener = () => {
+    Events.off(document.body, 'click', this.onMaskClick);
+  };
+
   onFocus = () => {
     const { disabled, readOnly, onFocus } = this.props;
     const { visible, value } = this.state;
@@ -108,12 +115,18 @@ export default class InputNumber extends Component<InputNumberProps, any> {
       return;
     }
 
+    this.removeBlurListener();
+
     // 定位到文本尾部
     this.setState({ visible: true });
 
     if (typeof onFocus === 'function') {
       onFocus(value);
     }
+
+    setTimeout(() => {
+      this.addBlurListener();
+    }, 50);
   };
 
   onBlur = () => {
@@ -129,6 +142,10 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     if (typeof onBlur === 'function') {
       onBlur(value);
     }
+
+    setTimeout(() => {
+      this.removeBlurListener();
+    }, 50);
   };
 
   onClear = () => {
