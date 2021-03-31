@@ -1,57 +1,13 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import PropsType from './PropsType';
-
+import type PropsType from './PropsType';
 import Events from '../utils/events';
 import Drag, { DragEvent, DragState } from '../drag';
 import Tooltip from '../tooltip';
-
-const getValue = (props: Slider['props'], defaultValue: number) => {
-  if (typeof props.value !== 'undefined') {
-    return props.value;
-  }
-  if (typeof props.defaultValue !== 'undefined') {
-    return props.defaultValue || defaultValue;
-  }
-  return defaultValue;
-};
-
-function preventDefault(event: MouseEvent) {
-  event.preventDefault();
-}
-
-function getPrecision(step: number) {
-  const stepString = step.toString();
-  let precision = 0;
-  if (stepString.indexOf('.') >= 0) {
-    precision = stepString.length - stepString.indexOf('.') - 1;
-  }
-  return precision;
-}
-
-function getClosestPoint(
-  val: number,
-  { marks, step, min, max }: Pick<SliderProps, 'marks' | 'step' | 'min' | 'max'>,
-) {
-  const points = Object.keys(marks || {}).map(parseFloat);
-  if (step !== null) {
-    const maxSteps = Math.floor((max - min) / step);
-    const steps = Math.min((val - min) / step, maxSteps);
-    const closestStep = Math.round(steps) * step + min;
-    points.push(closestStep);
-  }
-  const diffs = points.map((point) => Math.abs(val - point));
-
-  return points[diffs.indexOf(Math.min(...diffs))];
-}
-
-function ensureValuePrecision(val: number, props: SliderProps) {
-  const { step } = props;
-  const closestPoint = Number.isFinite(getClosestPoint(val, props))
-    ? getClosestPoint(val, props)
-    : 0;
-  return step === null ? closestPoint : parseFloat(closestPoint.toFixed(getPrecision(step)));
-}
+import ensureValuePrecision from './utils/ensureValuePrecision';
+import getValue from './utils/getValue';
+import preventDefault from './utils/preventDefault';
+import { isObject } from '../utils/validate';
 
 export interface SliderProps extends PropsType {
   prefixCls?: string;
@@ -120,7 +76,7 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
    * @param  {number} offset 偏移量
    * @return {number}        值
    */
-  getValueByOffset = (offset: number) => {
+  getValueByOffset = (offset: number): number => {
     const { min = 0, max, vertical } = this.props;
 
     const percent = offset / this.getMaxOffset();
@@ -147,7 +103,7 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
    * @param  {number} value 值
    * @return {number}       偏移量
    */
-  getOffsetByValue = (value: number) => {
+  getOffsetByValue = (value: number): number => {
     const { vertical, min, max } = this.props;
 
     const maxOffset = this.getMaxOffset();
@@ -179,7 +135,7 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
     this.setState({ tooltip: true });
   };
 
-  handleDragMove = (event?: DragEvent, dragState?: DragState) => {
+  handleDragMove = (event: DragEvent, dragState: DragState) => {
     const { disabled, vertical } = this.props;
 
     if (disabled) {
@@ -213,23 +169,22 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
       });
       return false;
     }
-
     const value = this.getValueByOffset(offset);
     this.setState({ value });
     return true;
   };
 
-  handleDragEnd = (_event?: DragEvent, dragState?: DragState) => {
+  handleDragEnd = (_event: DragEvent, dragState: DragState) => {
     const { vertical, onChange } = this.props;
-    const { offsetX, offsetY } = dragState!;
+    const { offsetX, offsetY } = dragState;
 
     this.setState({ tooltip: false });
 
     if (vertical) {
-      if (Number.isNaN(offsetY!)) {
+      if (Number.isNaN(offsetY)) {
         return;
       }
-    } else if (Number.isNaN(offsetX!)) {
+    } else if (Number.isNaN(offsetX)) {
       return;
     }
 
@@ -263,9 +218,10 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
 
     const { value } = this.state;
 
-    const isEmptyMarks = typeof marks !== 'object' || JSON.stringify(marks) === '{}';
+    const isEmptyMarks = !isObject(marks) || JSON.stringify(marks) === '{}';
 
     if (showMark && isEmptyMarks) {
+      // TODO: i18n
       console.error('请输入有效的 marks');
       return null;
     }

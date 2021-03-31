@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Slider defaultValue 1`] = `
+exports[`Slider snapshot defaultValue 1`] = `
 <div
   className="za-slider"
 >
@@ -57,7 +57,7 @@ exports[`Slider defaultValue 1`] = `
 </div>
 `;
 
-exports[`Slider disabled 1`] = `
+exports[`Slider snapshot disabled 1`] = `
 <div
   className="za-slider za-slider--disabled"
 >
@@ -114,7 +114,7 @@ exports[`Slider disabled 1`] = `
 </div>
 `;
 
-exports[`Slider marks 1`] = `
+exports[`Slider snapshot marks 1`] = `
 <div
   className="za-slider"
 >
@@ -207,7 +207,7 @@ exports[`Slider marks 1`] = `
 </div>
 `;
 
-exports[`Slider marks error 1`] = `
+exports[`Slider snapshot marks error 1`] = `
 <div
   className="za-slider za-slider--marked"
 >
@@ -264,7 +264,7 @@ exports[`Slider marks error 1`] = `
 </div>
 `;
 
-exports[`Slider max 1`] = `
+exports[`Slider snapshot max 1`] = `
 <div
   className="za-slider"
 >
@@ -321,7 +321,7 @@ exports[`Slider max 1`] = `
 </div>
 `;
 
-exports[`Slider min 1`] = `
+exports[`Slider snapshot min 1`] = `
 <div
   className="za-slider"
 >
@@ -378,7 +378,7 @@ exports[`Slider min 1`] = `
 </div>
 `;
 
-exports[`Slider shallows correctly 1`] = `
+exports[`Slider snapshot shallows correctly 1`] = `
 <div
   className="za-slider"
 >
@@ -435,7 +435,7 @@ exports[`Slider shallows correctly 1`] = `
 </div>
 `;
 
-exports[`Slider showMark 1`] = `
+exports[`Slider snapshot showMark 1`] = `
 <div
   className="za-slider za-slider--marked"
 >
@@ -576,7 +576,7 @@ exports[`Slider showMark 1`] = `
 </div>
 `;
 
-exports[`Slider step 1`] = `
+exports[`Slider snapshot step 1`] = `
 <div
   className="za-slider"
 >
@@ -633,7 +633,7 @@ exports[`Slider step 1`] = `
 </div>
 `;
 
-exports[`Slider value 1`] = `
+exports[`Slider snapshot value 1`] = `
 <div
   className="za-slider"
 >
@@ -690,7 +690,7 @@ exports[`Slider value 1`] = `
 </div>
 `;
 
-exports[`Slider vertical 1`] = `
+exports[`Slider snapshot vertical 1`] = `
 <div
   className="za-slider za-slider--vertical"
 >
