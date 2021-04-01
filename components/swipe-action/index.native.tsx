@@ -146,7 +146,7 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     Animated.timing(this.offsetLeft, {
       toValue: offsetLeft,
       duration: animationDuration,
-      // useNativeDriver: true
+      useNativeDriver: true,
     }).start();
   };
 

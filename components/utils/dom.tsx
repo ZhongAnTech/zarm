@@ -1,5 +1,6 @@
 /* eslint-disable operator-linebreak */
 import raf from 'raf';
+import { StringPropertyNames } from './utilityTypes';
 
 export type ContainerType = HTMLElement | (() => HTMLElement) | Window;
 
@@ -58,8 +59,7 @@ export const setStyle = (ele: HTMLElement, styles: { [prop: string]: string | nu
 };
 
 // 获取元素css的某一个计算后属性值
-type NonFunctionPropertyNames<T> = { [K in keyof T]: T[K] extends string ? K : never }[keyof T];
-type Property = NonFunctionPropertyNames<CSSStyleDeclaration>;
+type Property = StringPropertyNames<CSSStyleDeclaration>;
 export const getStyleComputedProperty = (ele: Element, property: Property): string => {
   const css = window.getComputedStyle(ele, null);
   return css[property];

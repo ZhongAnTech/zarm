@@ -53,8 +53,8 @@ export default ({ location, globalContext, children }) => {
           //   mountNode,
           // );
           .replace(
-            /ReactDOM.render\(\s?([^]+?)([\r\n]?mountNode,\s?\))/g,
-            `ReactDOM.render($1 document.getElementById('${containerId}'))`,
+            /ReactDOM.render\(\s?([^]+?)(,([\r\n])(\s)*mountNode,\s?\))/g,
+            `ReactDOM.render($1, document.getElementById('${containerId}'))`,
           );
 
         const { code } = transform(value, {

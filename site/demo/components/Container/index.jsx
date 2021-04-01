@@ -9,7 +9,7 @@ const Icons = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_uwg522sx17
 
 const Container = (props) => {
   const [locale, setLocale] = useState(window.localStorage.locale || 'zhCN');
-  const [primaryColor, setPrimaryColor] = useState(window.localStorage.primaryColor);
+  const [primaryColor, setPrimaryColor] = useState(window.localStorage.primaryColor || '#00bc70');
   const [theme, setTheme] = useState(window.localStorage.theme || 'light');
 
   const { className, children } = props;

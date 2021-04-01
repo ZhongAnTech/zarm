@@ -14,6 +14,6 @@ export default interface PropsType {
   cancelText?: string;
   onMaskClick?: () => void;
   onCancel?: () => void;
-  destroy: boolean;
+  destroy?: boolean;
   locale?: Locale['ActionSheet'];
 }

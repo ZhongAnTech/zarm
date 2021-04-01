@@ -1,6 +1,5 @@
 import React, { Suspense, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { hot } from 'react-hot-loader/root';
 import Loadable from 'react-loadable';
 import { Loading } from 'zarm';
 import { pascalCase } from 'change-case';
@@ -54,4 +53,4 @@ const App = () => {
   );
 };
 
-export default hot(App);
+export default App;
