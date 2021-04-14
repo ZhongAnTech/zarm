@@ -66,7 +66,10 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
     const { onChange } = this.props;
     const { affixed } = this.state;
     const target = this.savePlaceholderNode.current!;
-    const { top, width, height } = target.getBoundingClientRect()!;
+    if (!target) {
+      return false;
+    }
+    const { top, width, height } = target?.getBoundingClientRect();
 
     this.saveFixedNodeTop = top;
 
