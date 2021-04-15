@@ -166,7 +166,9 @@ export default class Carousel extends Component<CarouselProps, any> {
       }
     }
 
-    event.preventDefault();
+    if (!Events.supportsPassiveEvents) {
+      event.preventDefault();
+    }
 
     this.doTransition({ x: this.translateX + offsetX, y: this.translateY + offsetY }, 0);
     return true;
