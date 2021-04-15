@@ -51,6 +51,7 @@ export default class Wheel extends Component<WheelProps, any> {
     disabled && this.BScroll.disable();
 
     this.BScroll.on('scrollEnd', () => {
+      console.log('[54] Wheel.tsx: ', 'scrollEnd');
       this.handleScrollEnd();
     });
   }
@@ -65,9 +66,10 @@ export default class Wheel extends Component<WheelProps, any> {
       this.BScroll.wheelTo(newIndex);
     }
 
-    if (stopScroll) {
+    if (stopScroll && prevProps.stopScroll !== stopScroll) {
+      // console.log('componentDidUpdate stopScroll');
       this.BScroll.stop();
-      this.handleScrollEnd();
+      // this.handleScrollEnd();
     }
   }
 
