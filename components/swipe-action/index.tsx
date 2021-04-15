@@ -28,6 +28,7 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     moveTimeSpan: 300,
     animationDuration: 300,
     offset: 10,
+    autoClose: true,
   };
 
   constructor(props) {
