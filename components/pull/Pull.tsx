@@ -193,7 +193,9 @@ export default class Pull extends PureComponent<PullProps, any> {
     }
 
     // 解决低端安卓系统只触发一次touchmove事件的bug
-    event.preventDefault();
+    if (!Events.supportsPassiveEvents) {
+      event.preventDefault();
+    }
 
     const refresh: PullAction = { ...Pull.defaultProps.refresh, ...this.props.refresh };
     const { startDistance, distance } = refresh;

@@ -84,7 +84,9 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
       return false;
     }
 
-    event.preventDefault();
+    if (!Events.supportsPassiveEvents) {
+      event.preventDefault();
+    }
     this.doTransition({ offsetLeft: offsetX, animationDuration: 0 });
     return true;
   };

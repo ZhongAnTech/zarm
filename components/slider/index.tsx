@@ -143,8 +143,11 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
     }
 
     Tooltip.updateAll();
-    event!.stopPropagation();
-    event!.preventDefault();
+    event.stopPropagation();
+
+    if (!Events.supportsPassiveEvents) {
+      event.preventDefault();
+    }
 
     const { offsetX, offsetY } = dragState!;
     let offset = vertical
