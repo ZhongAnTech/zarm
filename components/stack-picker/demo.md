@@ -91,12 +91,18 @@ const Demo = () => {
         value={value}
         title="层叠选择器"
         dataSource={District}
-        onOk={(v) => {
-          console.log(v);
-          setValue(v);
+        onChange={(value) => {
+          console.log('onChange', value);
+        }}
+        onOk={(value) => {
+          console.log('onOk', value);
+          setValue(value);
           setVisible(false);
         }}
-        onCancel={() => setVisible(false)}
+        onCancel={() => {
+          console.log('onCancel');
+          setVisible(false);
+        }}
       />
     </>
   );
