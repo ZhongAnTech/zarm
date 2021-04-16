@@ -55,12 +55,8 @@ export default class Picker extends Component<PickerProps, PickerState> {
 
   onChange = (selected) => {
     const { valueMember, onChange } = this.props;
-    const { stopScroll } = this.state;
     const value = selected.map((item) => item[valueMember!]);
-    const stateData = stopScroll
-      ? { value, objValue: selected, stopScroll: false }
-      : { value, objValue: selected };
-    this.setState(stateData);
+    this.setState({ value, objValue: selected });
 
     if (typeof onChange === 'function') {
       onChange(selected);
@@ -80,18 +76,24 @@ export default class Picker extends Component<PickerProps, PickerState> {
   };
 
   onOk = async () => {
-    this.setState({
-      stopScroll: true,
-    });
-
-    setTimeout(() => {
-      const { objValue } = this.state;
-
-      const { onOk } = this.props;
-      if (typeof onOk === 'function') {
-        onOk(objValue);
-      }
-    }, 0);
+    const { onOk } = this.props;
+    this.setState(
+      {
+        stopScroll: true,
+      },
+      () => {
+        this.setState(
+          {
+            stopScroll: false,
+          },
+          () => {
+            if (typeof onOk === 'function') {
+              onOk(this.state.objValue);
+            }
+          },
+        );
+      },
+    );
   };
 
   render() {

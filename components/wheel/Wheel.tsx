@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import BScroll from 'better-scroll';
+import isEqual from 'lodash/isEqual';
 import BaseWheelProps, { WheelItem, WheelValue } from './PropsType';
 import { isArray } from '../utils/validate';
 
@@ -51,7 +52,6 @@ export default class Wheel extends Component<WheelProps, any> {
     disabled && this.BScroll.disable();
 
     this.BScroll.on('scrollEnd', () => {
-      console.log('[54] Wheel.tsx: ', 'scrollEnd');
       this.handleScrollEnd();
     });
   }
@@ -59,7 +59,9 @@ export default class Wheel extends Component<WheelProps, any> {
   componentDidUpdate(prevProps) {
     const { value, dataSource, disabled, stopScroll } = this.props;
     disabled && this.BScroll.disable();
-    this.BScroll.refresh();
+    if (!isEqual(prevProps.dataSource, dataSource)) {
+      this.BScroll.refresh();
+    }
     const oldIndex = this.getSelectedIndex(prevProps.value, prevProps.dataSource);
     const newIndex = this.getSelectedIndex(value, dataSource);
     if (newIndex !== oldIndex) {
@@ -67,9 +69,7 @@ export default class Wheel extends Component<WheelProps, any> {
     }
 
     if (stopScroll && prevProps.stopScroll !== stopScroll) {
-      // console.log('componentDidUpdate stopScroll');
       this.BScroll.stop();
-      // this.handleScrollEnd();
     }
   }
 
