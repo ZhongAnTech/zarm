@@ -32,7 +32,6 @@ export default memo(
     valueMember = 'value',
     title = '请选择',
     visible = false,
-    disabled = false,
     cols = Infinity,
     labelAddon = ' > ',
     displayRender,
@@ -83,14 +82,6 @@ export default memo(
       setCurrentValue(initValue);
     }, [dataSource, handleObtainItem, value, defaultValue]);
 
-    const handleToggle = () => {
-      if (disabled) {
-        return;
-      }
-
-      setCurrentVisible(!currentVisible);
-    };
-
     /**
      * 点击遮罩
      */
@@ -112,8 +103,6 @@ export default memo(
      * 点击取消按钮
      */
     const handleCancel = () => {
-      handleToggle();
-
       if (onCancel) {
         if (typeof onCancel !== 'function') {
           console.error('onCancel need a function');
@@ -191,8 +180,6 @@ export default memo(
      * 点击确认按钮
      */
     const handleOk = () => {
-      handleToggle();
-
       if (onOk) {
         if (typeof onOk !== 'function') {
           console.error('onOk need a function');
