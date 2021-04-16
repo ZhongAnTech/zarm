@@ -75,7 +75,7 @@ export default class Picker extends Component<PickerProps, PickerState> {
     }
   };
 
-  onOk = async () => {
+  onOk = () => {
     const { onOk } = this.props;
     this.setState(
       {
