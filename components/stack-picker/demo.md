@@ -78,7 +78,7 @@ const Demo = () => {
         title="普通"
         description={
           <Button size="xs" onClick={() => setVisible(true)}>
-            展开
+            选择
           </Button>
         }
       >
