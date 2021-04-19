@@ -35,7 +35,7 @@ export default ({ location, globalContext, children }) => {
           .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'react';/, 'const { $1 } = React;')
           .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'zarm';/, 'const { $1 } = Zarm;')
           .replace(
-            /import\s+(.*)\s+from\s+'zarm\/config-provider\/locale\/(.*)';/g,
+            /import\s+(.*)\s+from\s+'zarm\/lib\/config-provider\/locale\/(.*)';/g,
             "const $1 = Locale['$2'];",
           )
           // 替换格式

@@ -5,8 +5,8 @@
 ```jsx
 import { useState } from 'react';
 import { ConfigProvider, Cell, Button, SearchBar, Modal, Keyboard, Radio, Message } from 'zarm';
-import enUS from 'zarm/config-provider/locale/en_US';
-import zhCN from 'zarm/config-provider/locale/zh_CN';
+import enUS from 'zarm/lib/config-provider/locale/en_US';
+import zhCN from 'zarm/lib/config-provider/locale/zh_CN';
 
 const Demo = () => {
   const [locale, setLocale] = useState(GlobalContext.locale);
