@@ -314,6 +314,7 @@ ReactDOM.render(<Demo />, mountNode);
 ## Select 表单选择器
 
 ```jsx
+import { useState, useEffect } from 'react';
 import { Select, Cell, Icon } from 'zarm';
 
 // 级联数据
@@ -336,41 +337,32 @@ const CASCADE_DATA = [
   },
 ];
 
-class Demo extends React.Component {
-  state = {
-    value: [],
-    dataSource: [],
-  };
+const Demo = () => {
+  const [value, setValue] = useState([]);
+  const [dataSource, setDataSource] = useState([]);
+  const [wheelDefaultValue, setWheelDefaultValue] = useState([]);
 
-  componentDidMount() {
-    // 异步加载数据源测试
+  useEffect(() => {
     setTimeout(() => {
-      this.setState({
-        dataSource: CASCADE_DATA,
-        wheelDefaultValue: ['1', '12'],
-      });
+      setDataSource(CASCADE_DATA);
+      setWheelDefaultValue(['1', '12']);
     }, 0);
-  }
+  }, []);
 
-  render() {
-    const { value, wheelDefaultValue, dataSource } = this.state;
-    return (
-      <Cell title="城市">
-        <Select
-          value={value}
-          wheelDefaultValue={wheelDefaultValue}
-          dataSource={dataSource}
-          onOk={(selected) => {
-            console.log('Select onOk: ', selected);
-            this.setState({
-              value: selected.map((item) => item.value),
-            });
-          }}
-        />
-      </Cell>
-    );
-  }
-}
+  return (
+    <Cell title="城市">
+      <Select
+        value={value}
+        wheelDefaultValue={wheelDefaultValue}
+        dataSource={dataSource}
+        onOk={(selected) => {
+          console.log('Select onOk: ', selected);
+          setValue(selected.map((item) => item.value));
+        }}
+      />
+    </Cell>
+  );
+};
 
 ReactDOM.render(<Demo />, mountNode);
 ```
@@ -378,60 +370,54 @@ ReactDOM.render(<Demo />, mountNode);
 ## PickerView 平铺选择器
 
 ```jsx
+import { useState, useEffect } from 'react';
 import { PickerView } from 'zarm';
 
 // 级联数据
-const CASCADE_DATA = [];
+const CASCADE_DATA = [
+  {
+    code: '1',
+    label: '北京市',
+    children: [
+      { code: '11', label: '海淀区' },
+      { code: '12', label: '西城区' },
+    ],
+  },
+  {
+    code: '2',
+    label: '上海市',
+    children: [
+      { code: '21', label: '杨浦区' },
+      { code: '22', label: '静安区' },
+    ],
+  },
+];
 
-class Demo extends React.Component {
-  state = {
-    value: [],
-    dataSource: CASCADE_DATA,
-  };
+const Demo = () => {
+  const [value, setValue] = useState([]);
+  const [dataSource, setDataSource] = useState([]);
+  const [valueMember, setValueMember] = useState([]);
 
-  componentDidMount() {
+  useEffect(() => {
     setTimeout(() => {
-      this.setState({
-        value: ['1', '12'],
-        dataSource: [
-          {
-            code: '1',
-            label: '北京市',
-            children: [
-              { code: '11', label: '海淀区' },
-              { code: '12', label: '西城区' },
-            ],
-          },
-          {
-            code: '2',
-            label: '上海市',
-            children: [
-              { code: '21', label: '杨浦区' },
-              { code: '22', label: '静安区' },
-            ],
-          },
-        ],
-        valueMember: 'code',
-      });
+      setValue(['1', '12']);
+      setValueMember('code');
+      setDataSource(CASCADE_DATA);
     }, 0);
-  }
+  }, []);
 
-  render() {
-    return (
-      <PickerView
-        value={this.state.value}
-        valueMember="code"
-        dataSource={this.state.dataSource}
-        onChange={(selected) => {
-          this.setState({
-            value: selected.map((item) => item.code),
-          });
-          console.log('PickerView onChange: ', selected);
-        }}
-      />
-    );
-  }
-}
+  return (
+    <PickerView
+      value={value}
+      valueMember="code"
+      dataSource={dataSource}
+      onChange={(selected) => {
+        console.log('PickerView onChange: ', selected);
+        setValue(selected.map((item) => item.code));
+      }}
+    />
+  );
+};
 
 ReactDOM.render(<Demo />, mountNode);
 ```

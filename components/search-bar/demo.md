@@ -71,33 +71,30 @@ ReactDOM.render(
 ## 手动获取焦点
 
 ```jsx
+import { useRef } from 'react';
 import { SearchBar, Button } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <>
-        <SearchBar
-          ref={(ref) => {
-            this.manualFocus = ref;
+const Demo = () => {
+  const manualFocus = useRef();
+
+  return (
+    <>
+      <SearchBar ref={manualFocus} />
+      <div className="button-wrap">
+        <Button
+          theme="primary"
+          size="xs"
+          shape="radius"
+          onClick={() => {
+            manualFocus.current.focus();
           }}
-        />
-        <div className="button-wrap">
-          <Button
-            theme="primary"
-            size="xs"
-            shape="radius"
-            onClick={() => {
-              this.manualFocus.focus();
-            }}
-          >
-            点击获取焦点
-          </Button>
-        </div>
-      </>
-    );
-  }
-}
+        >
+          点击获取焦点
+        </Button>
+      </div>
+    </>
+  );
+};
 
 ReactDOM.render(<Demo />, mountNode);
 ```
