@@ -3,7 +3,7 @@
 ## 基本用法
 
 ```jsx
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Cell, Button, ImagePreview, NoticeBar } from 'zarm';
 
 const commonImages = [
@@ -12,22 +12,8 @@ const commonImages = [
   'https://cdn-health.zhongan.com/zarm/imagePreview/3-small.jpg',
 ];
 
-const originImages = [
-  {
-    url: 'https://cdn-health.zhongan.com/zarm/imagePreview/1-small.jpg',
-    originUrl: 'https://cdn-health.zhongan.com/zarm/imagePreview/1.jpg',
-  },
-  {
-    url: 'https://cdn-health.zhongan.com/zarm/imagePreview/2-small.jpg',
-    originUrl: 'https://cdn-health.zhongan.com/zarm/imagePreview/2.jpg',
-  },
-  {
-    url: 'https://cdn-health.zhongan.com/zarm/imagePreview/3-small.jpg',
-    originUrl: 'https://cdn-health.zhongan.com/zarm/imagePreview/3.jpg',
-  },
-];
-
 const Demo = () => {
+  const [originImages, setOriginImages] = useState(null);
   const [visibleState, setVisibleState] = useState({
     origin: false,
     common: false,
@@ -47,6 +33,30 @@ const Demo = () => {
       [key]: false,
     });
   };
+
+  // 模拟异步数据
+  const fetchData = () => {
+    setTimeout(() => {
+      setOriginImages([
+        {
+          url: 'https://cdn-health.zhongan.com/zarm/imagePreview/1-small.jpg',
+          originUrl: 'https://cdn-health.zhongan.com/zarm/imagePreview/1.jpg',
+        },
+        {
+          url: 'https://cdn-health.zhongan.com/zarm/imagePreview/2-small.jpg',
+          originUrl: 'https://cdn-health.zhongan.com/zarm/imagePreview/2.jpg',
+        },
+        {
+          url: 'https://cdn-health.zhongan.com/zarm/imagePreview/3-small.jpg',
+          originUrl: 'https://cdn-health.zhongan.com/zarm/imagePreview/3.jpg',
+        },
+      ]);
+    }, 5000);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -70,16 +80,16 @@ const Demo = () => {
         有查看原始图片功能
       </Cell>
       <ImagePreview
-        visible={visibleState.origin}
-        images={originImages}
-        onClose={() => hide('origin')}
-        maxScale={5}
-      />
-      <ImagePreview
         visible={visibleState.common}
         images={commonImages}
         onClose={() => hide('common')}
         maxScale={10}
+      />
+      <ImagePreview
+        visible={visibleState.origin}
+        images={originImages}
+        onClose={() => hide('origin')}
+        maxScale={5}
       />
     </>
   );
