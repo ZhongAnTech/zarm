@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export type WheelValue = string | number | boolean;
 
 export interface WheelItem {
@@ -9,7 +11,7 @@ export default interface BaseWheelProps {
   valueMember?: string;
   dataSource: Array<WheelItem>;
   onChange?: (value?: WheelValue) => void;
-  itemRender: (item?: WheelItem) => string;
+  itemRender: (item?: WheelItem) => ReactNode;
   disabled?: boolean;
   stopScroll?: boolean;
 }

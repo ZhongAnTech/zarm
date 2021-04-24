@@ -1,5 +1,19 @@
 # 版本更新日志
 
+## v2.8.2
+
+- Bug Fix
+
+  - [Affix] 修复部分浏览器无法获取节点报错的 bug。[#605](https://github.com/ZhongAnTech/zarm/pull/605)
+  - [SwipeAction] 修复点击按钮后没有自动关闭的 bug。[#6133a8c](https://github.com/ZhongAnTech/zarm/commit/6133a8ceb82615b53564cbd3df28eb52f7956d38)
+  - [DateSelect] 修复在 PC 端部分浏览器报错的 bug。[#608](https://github.com/ZhongAnTech/zarm/pull/608)
+  - [StackPicker] 修复受控组件下内部设置了 `visible` 的状态导致的 bug。[#609](https://github.com/ZhongAnTech/zarm/pull/609)
+
+- Perf
+
+  - [Affix] 优化节流参数，让滚动过程更加流畅。[#fa29e5f](https://github.com/ZhongAnTech/zarm/commit/fa29e5f546e5d27f39a32799ea0a3339c390e1fd)
+  - 优化部分组件 `Passive Event Listeners` 引起的浏览器控制台报错。[#606](https://github.com/ZhongAnTech/zarm/pull/606) [#9104d57](https://github.com/ZhongAnTech/zarm/commit/9104d576f81f049c036cef9be67cb019d55293f4) [@leonwgc]
+
 ## v2.8.0
 
 - Bug Fix

@@ -10,7 +10,7 @@ export default interface BasePickerProps
   okText?: string;
   cancelText?: string;
   maskClosable?: boolean;
-  destroy: boolean;
+  destroy?: boolean;
   onChange?: (selected: Array<WheelItem>) => void;
   onOk?: (selected: Array<WheelItem>) => void;
   onCancel?: () => void;

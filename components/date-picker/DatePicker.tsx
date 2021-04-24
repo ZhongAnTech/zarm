@@ -49,19 +49,25 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     }
   };
 
-  onOk = async () => {
+  onOk = () => {
     const { onOk } = this.props;
-    this.setState({
-      stopScroll: true,
-    });
-
-    setTimeout(() => {
-      const { date } = this.state;
-
-      if (typeof onOk === 'function') {
-        onOk(date);
-      }
-    }, 0);
+    this.setState(
+      {
+        stopScroll: true,
+      },
+      () => {
+        this.setState(
+          {
+            stopScroll: false,
+          },
+          () => {
+            if (typeof onOk === 'function') {
+              onOk(this.state.date);
+            }
+          },
+        );
+      },
+    );
   };
 
   onInit = (selected) => {
@@ -72,9 +78,9 @@ export default class DatePicker extends Component<DatePickerProps, any> {
 
   onValueChange = (newValue) => {
     const { onChange } = this.props;
-    const { stopScroll } = this.state;
-    const stateData = stopScroll ? { date: newValue, stopScroll: false } : { date: newValue };
-    this.setState(stateData);
+    this.setState({
+      date: newValue,
+    });
 
     if (typeof onChange === 'function') {
       onChange(newValue);

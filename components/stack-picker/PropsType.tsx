@@ -15,22 +15,21 @@ type TItemRender = (data: TDataSource) => string;
 type TDisplayRender = (data: TDataSource[]) => string;
 
 export default interface PropsType {
-  defaultValue: ReactNode[];
-  value: ReactNode[];
+  defaultValue?: ReactNode[];
+  value?: ReactNode[];
   displayMember?: string;
   valueMember?: string;
   dataSource: IDataSource[];
   title?: string;
   visible?: boolean;
-  disabled?: boolean;
   maskClosable?: boolean;
   cols?: number;
   labelAddon?: string;
   displayRender?: TDisplayRender;
   itemRender?: TItemRender;
   onChangeValidate?: (v: ReactNode) => ReactNode;
-  cancelText: string;
-  okText: string;
+  cancelText?: string;
+  okText?: string;
   onChange?: (selected: string[]) => void;
   onOk?: (value: string[]) => void;
   onCancel?: () => void;

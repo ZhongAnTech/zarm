@@ -78,7 +78,7 @@ const Demo = () => {
         title="普通"
         description={
           <Button size="xs" onClick={() => setVisible(true)}>
-            展开
+            选择
           </Button>
         }
       >
@@ -91,12 +91,18 @@ const Demo = () => {
         value={value}
         title="层叠选择器"
         dataSource={District}
-        onOk={(v) => {
-          console.log(v);
-          setValue(v);
+        onChange={(value) => {
+          console.log('onChange', value);
+        }}
+        onOk={(value) => {
+          console.log('onOk', value);
+          setValue(value);
           setVisible(false);
         }}
-        onCancel={() => setVisible(false)}
+        onCancel={() => {
+          console.log('onCancel');
+          setVisible(false);
+        }}
       />
     </>
   );
@@ -117,7 +123,6 @@ ReactDOM.render(<Demo />, mountNode);
 | valueMember   | string                                                                    | 'value'                                      | 值字段对应的 key                               |
 | displayRender | (selected?: object) => string                                             | selected => selected.map(item => item.label) | 所选值的展示                                   |
 | itemRender    | (data?: object) => data.label                                             | (data?: object) => data.label                | 单个选项的展示                                 |
-| disabled      | boolean                                                                   | false                                        | 是否禁用                                       |
 | title         | string                                                                    | '请选择'                                     | 选择器标题                                     |
 | okText        | string                                                                    | '确定'                                       | 确定栏文字                                     |
 | cancelText    | string                                                                    | '取消'                                       | 取消栏文字                                     |
