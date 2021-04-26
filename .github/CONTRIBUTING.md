@@ -1,4 +1,4 @@
-# Contributing to zarm
+# Contributing to Zarm
 
 ## Set up
 
