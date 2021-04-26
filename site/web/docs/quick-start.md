@@ -40,6 +40,8 @@ render(<App />, document.getElementById('root'));
 
 > 注意：zarm 默认支持基于 ES module 的 tree shaking，不使用以下插件 js 也会有按需加载的效果，以下配置只为了 css/scss 样式实现按需加载。
 
+使用 `babel-plugin-import` 自动加载 `css/scss` 文件
+
 ```js
   // .babelrc or babel-loader option
   {
