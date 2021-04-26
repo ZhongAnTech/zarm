@@ -157,6 +157,7 @@ export default class ImagePreview extends Component<ImagePreviewProps, ImagePrev
   renderImages = () => {
     const { prefixCls, minScale, maxScale } = this.props;
     const { images } = this.state;
+
     return images.map((item, i) => {
       return (
         <div className={`${prefixCls}__item`} key={+i}>
@@ -182,10 +183,31 @@ export default class ImagePreview extends Component<ImagePreviewProps, ImagePrev
     return null;
   }
 
-  render() {
+  renderOriginButton() {
+    const { images, currentIndex = 0 } = this.state;
+    if (images.length === 0) return;
+
     const { prefixCls, locale, activeIndex } = this.props;
-    const { currentIndex = 0, visible, images } = this.state;
     const { loaded } = images[currentIndex];
+
+    if (loaded && showOriginButton(images, activeIndex) && loaded !== LOAD_STATUS.after) {
+      return (
+        <button className={`${prefixCls}__origin__button`} onClick={this.loadOrigin}>
+          {loaded === LOAD_STATUS.start && (
+            <ActivityIndicator className={`${prefixCls}__loading`} type="spinner" />
+          )}
+          {locale && locale[loaded]}
+        </button>
+      );
+    }
+
+    return null;
+  }
+
+  render() {
+    const { prefixCls } = this.props;
+    const { currentIndex = 0, visible } = this.state;
+
     return (
       <Popup direction="center" visible={visible} className={prefixCls}>
         <div
@@ -199,23 +221,14 @@ export default class ImagePreview extends Component<ImagePreviewProps, ImagePrev
           onMouseUp={this.onWrapperMouseUp}
           onClick={this.close}
         >
-          <Carousel showPagination={false} onChange={this.onChange} activeIndex={currentIndex}>
-            {visible ? this.renderImages() : []}
-          </Carousel>
+          {visible && (
+            <Carousel showPagination={false} onChange={this.onChange} activeIndex={currentIndex}>
+              {this.renderImages()}
+            </Carousel>
+          )}
         </div>
         <div className={`${prefixCls}__footer`}>
-          {loaded && showOriginButton(images, activeIndex) && loaded !== LOAD_STATUS.after ? (
-            <button className={`${prefixCls}__origin__button`} onClick={this.loadOrigin}>
-              {loaded === LOAD_STATUS.start ? (
-                <ActivityIndicator className={`${prefixCls}__loading`} type="spinner" />
-              ) : (
-                ''
-              )}
-              {locale && locale[loaded]}
-            </button>
-          ) : (
-            ''
-          )}
+          {this.renderOriginButton()}
           {this.renderPagination()}
         </div>
       </Popup>

@@ -126,7 +126,6 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
                       <div
                         class="za-image-preview__footer"
                       >
-                        
                         <div
                           class="za-image-preview__index"
                         >
@@ -464,9 +463,7 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
                       >
                         <button
                           class="za-image-preview__origin__button"
-                        >
-                          
-                        </button>
+                        />
                         <div
                           class="za-image-preview__index"
                         >

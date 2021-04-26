@@ -11,7 +11,7 @@ function isImageObject(image: ImageObject | string): image is ImageObject {
 
 const formatImages = (images: ReadonlyArray<ImageObject | string>): Images => {
   const previewImages: Images = [];
-  images.forEach((image: ImageObject | string) => {
+  (images || []).forEach((image: ImageObject | string) => {
     if (isImageString(image)) {
       previewImages.push({
         url: image,
