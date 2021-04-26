@@ -79,7 +79,7 @@ import 'zarm/dist/zarm.css';
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/ZhongAnTech/zarm)
 
-或者克隆到本地开发，请阅读我们的 [贡献指南](https://github.com/ZhongAnTech/zarm/blob/master/.github/CONTRIBUTING.md)。
+或者克隆到本地开发，请阅读我们的 [贡献指南](site/web/docs/contributing.md)。
 
 ## 开源协议
 
