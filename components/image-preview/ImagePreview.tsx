@@ -24,6 +24,7 @@ export interface ImagePreviewState {
   currentIndex?: number;
   prevVisible?: boolean;
   prevActiveIndex?: number;
+  prevImages?: Images;
 }
 
 const parseState = (props: ImagePreviewProps): ImagePreviewState => {
@@ -53,7 +54,8 @@ export default class ImagePreview extends Component<ImagePreviewProps, ImagePrev
   static getDerivedStateFromProps(nextProps: ImagePreviewProps, state: ImagePreviewState) {
     if (
       ('visible' in nextProps && nextProps.visible !== state.prevVisible) ||
-      ('activeIndex' in nextProps && nextProps.activeIndex !== state.prevActiveIndex)
+      ('activeIndex' in nextProps && nextProps.activeIndex !== state.prevActiveIndex) ||
+      ('images' in nextProps && nextProps.images !== state.prevImages)
     ) {
       return {
         visible: nextProps.visible,
@@ -62,6 +64,7 @@ export default class ImagePreview extends Component<ImagePreviewProps, ImagePrev
         images: formatImages(nextProps.images),
         prevVisible: nextProps.visible,
         prevActiveIndex: nextProps.activeIndex,
+        prevImages: nextProps.images,
       };
     }
     return null;
@@ -206,7 +209,7 @@ export default class ImagePreview extends Component<ImagePreviewProps, ImagePrev
 
   render() {
     const { prefixCls } = this.props;
-    const { currentIndex = 0, visible } = this.state;
+    const { currentIndex = 0, visible, images } = this.state;
 
     return (
       <Popup direction="center" visible={visible} className={prefixCls}>
@@ -221,11 +224,14 @@ export default class ImagePreview extends Component<ImagePreviewProps, ImagePrev
           onMouseUp={this.onWrapperMouseUp}
           onClick={this.close}
         >
-          {visible && (
-            <Carousel showPagination={false} onChange={this.onChange} activeIndex={currentIndex}>
-              {this.renderImages()}
-            </Carousel>
-          )}
+          {visible &&
+            (images?.length ? (
+              <Carousel showPagination={false} onChange={this.onChange} activeIndex={currentIndex}>
+                {this.renderImages()}
+              </Carousel>
+            ) : (
+              <ActivityIndicator className={`${prefixCls}__loading`} type="spinner" size="lg" />
+            ))}
         </div>
         <div className={`${prefixCls}__footer`}>
           {this.renderOriginButton()}
