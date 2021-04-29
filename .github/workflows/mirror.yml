@@ -1,5 +1,4 @@
 name: mirror
-
 on: [push, delete]
 
 jobs:
