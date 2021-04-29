@@ -294,7 +294,7 @@ class Popper extends React.Component<PopperProps, PopperStates> {
 
     clearTimeout(this.enterTimer);
     clearTimeout(this.leaveTimer);
-    this.enterTimer = setTimeout(() => {
+    this.enterTimer = window.setTimeout(() => {
       this.setState({ mounted: true }, this.handleOpen);
     }, mouseEnterDelay);
   };
@@ -317,7 +317,7 @@ class Popper extends React.Component<PopperProps, PopperStates> {
 
     clearTimeout(this.enterTimer);
     clearTimeout(this.leaveTimer);
-    this.leaveTimer = setTimeout(() => {
+    this.leaveTimer = window.setTimeout(() => {
       this.handleClose();
     }, mouseLeaveDelay);
   };
