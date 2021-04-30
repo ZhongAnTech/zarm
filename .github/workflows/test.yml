@@ -78,7 +78,7 @@ jobs:
 
       - name: compile
         run: lerna exec --scope zarm -- yarn build:es && yarn build:lib
-    needs: setup-react-16, compile-cli
+    needs: [setup-react-16, compile-cli]
 
   lint:
     runs-on: ubuntu-latest
@@ -142,7 +142,7 @@ jobs:
 
       - name: test
         run: lerna exec --scope zarm -- yarn test
-    needs: setup-react-16, compile-cli
+    needs: [setup-react-16, compile-cli]
 
   react-16-dist:
     name: react@16.x / dist
@@ -168,4 +168,4 @@ jobs:
         run: lerna exec --scope zarm -- yarn bundlesize
         env:
           BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}
-    needs: setup-react-16, compile-cli
+    needs: [setup-react-16, compile-cli]
