@@ -15,14 +15,12 @@
     "zarm": "./bin/zarm.js"
   },
   "scripts": {
-    "clean": "rimraf types lib es dist coverage",
+    "clean": "rimraf types lib coverage",
     "test": "jest --config ./jest.config.js",
     "coverage": "rimraf coverage && yarn test --coverage",
-    "types": "rimraf types && tsc --outDir types -d --emitDeclarationOnly",
+    "build:types": "rimraf types && tsc --outDir types -d --emitDeclarationOnly",
     "build": "rimraf lib && babel src --extensions .ts --out-dir lib --copy-files",
-    "dev": "npm run build -- -w",
-    "release": "bash scripts/release.sh",
-    "sort": "npx sort-package-json"
+    "dev": "npm run build -- -w"
   },
   "dependencies": {
     "@babel/cli": "^7.13.10",
