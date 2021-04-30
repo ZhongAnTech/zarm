@@ -8,30 +8,17 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
 
-      - name: cache yarn.lock
-        uses: actions/cache@v2
-        with:
-          path: package-temp-dir
-          key: lock-${{ github.sha }}
-
-      - name: hack for singe file
-        run: |
-          if [ ! -d "package-temp-dir" ]; then
-            mkdir package-temp-dir
-          fi
-          cp yarn.lock package-temp-dir
-
       - name: cache node_modules
-        id: node_modules_cache_id
+        id: cache
         uses: actions/cache@v2
         with:
           path: |
             node_modules
-            packages/*/node_modules
-          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
       - name: install
-        if: steps.node_modules_cache_id.outputs.cache-hit != 'true'
+        if: steps.cache.outputs.cache-hit != 'true'
         run: yarn
 
   setup-react-16:
@@ -52,17 +39,13 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
 
-      - name: restore cache from yarn.lock
+      - name: restore lerna
         uses: actions/cache@v2
         with:
-          path: package-temp-dir
-          key: lock-${{ github.sha }}
-
-      - name: restore cache from node_modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
       - name: cache zarm-cli/lib
         uses: actions/cache@v2
@@ -80,17 +63,13 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
 
-      - name: restore cache from yarn.lock
+      - name: restore lerna
         uses: actions/cache@v2
         with:
-          path: package-temp-dir
-          key: lock-${{ github.sha }}
-
-      - name: restore cache from node_modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
       - name: restore cache from cli
         uses: actions/cache@v2
@@ -156,17 +135,13 @@ jobs:
           # codecov.io requires a fetch depth > 1.
           fetch-depth: 2
 
-      - name: restore cache from yarn.lock
+      - name: restore lerna
         uses: actions/cache@v2
         with:
-          path: package-temp-dir
-          key: lock-${{ github.sha }}
-
-      - name: restore cache from node_modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
       - name: test
         run: lerna exec --scope zarm -- yarn coverage
@@ -182,17 +157,13 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
 
-      - name: restore cache from yarn.lock
+      - name: restore lerna
         uses: actions/cache@v2
         with:
-          path: package-temp-dir
-          key: lock-${{ github.sha }}
-
-      - name: restore cache from node_modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
       - name: dist
         run: lerna exec --scope zarm -- yarn build:umd
@@ -217,17 +188,13 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
 
-      - name: restore cache from yarn.lock
+      - name: restore lerna
         uses: actions/cache@v2
         with:
-          path: package-temp-dir
-          key: lock-${{ github.sha }}
-
-      - name: restore cache from node_modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
       - name: install react 16
         run: lerna exec --scope zarm -- yarn install-react-16
@@ -245,17 +212,13 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
 
-      - name: restore cache from yarn.lock
+      - name: restore lerna
         uses: actions/cache@v2
         with:
-          path: package-temp-dir
-          key: lock-${{ github.sha }}
-
-      - name: restore cache from node_modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
       - name: install react 16
         run: lerna exec --scope zarm -- yarn install-react-16
