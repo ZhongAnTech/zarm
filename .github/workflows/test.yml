@@ -78,6 +78,18 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
 
+      - name: restore cache from yarn.lock
+        uses: actions/cache@v2
+        with:
+          path: package-temp-dir
+          key: lock-${{ github.sha }}
+
+      - name: restore cache from node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
+
       - name: compile zarm
         run: lerna exec --scope zarm -- yarn build:es && yarn build:lib
     needs: compile-cli
@@ -87,6 +99,18 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@master
+
+      - name: restore cache from yarn.lock
+        uses: actions/cache@v2
+        with:
+          path: package-temp-dir
+          key: lock-${{ github.sha }}
+
+      - name: restore cache from node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
 
       - name: compile
         run: lerna exec --scope zarm -- yarn build:es && yarn build:lib
@@ -124,6 +148,18 @@ jobs:
           # codecov.io requires a fetch depth > 1.
           fetch-depth: 2
 
+      - name: restore cache from yarn.lock
+        uses: actions/cache@v2
+        with:
+          path: package-temp-dir
+          key: lock-${{ github.sha }}
+
+      - name: restore cache from node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
+
       - name: test
         run: lerna exec --scope zarm -- yarn coverage
       
@@ -137,6 +173,18 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@master
+
+      - name: restore cache from yarn.lock
+        uses: actions/cache@v2
+        with:
+          path: package-temp-dir
+          key: lock-${{ github.sha }}
+
+      - name: restore cache from node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
 
       - name: dist
         run: lerna exec --scope zarm -- yarn build:umd
@@ -161,6 +209,18 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
 
+      - name: restore cache from yarn.lock
+        uses: actions/cache@v2
+        with:
+          path: package-temp-dir
+          key: lock-${{ github.sha }}
+
+      - name: restore cache from node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
+
       - name: install react 16
         run: lerna exec --scope zarm -- yarn install-react-16
 
@@ -176,6 +236,18 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@master
+
+      - name: restore cache from yarn.lock
+        uses: actions/cache@v2
+        with:
+          path: package-temp-dir
+          key: lock-${{ github.sha }}
+
+      - name: restore cache from node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
 
       - name: install react 16
         run: lerna exec --scope zarm -- yarn install-react-16
