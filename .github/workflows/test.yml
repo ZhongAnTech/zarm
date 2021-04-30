@@ -8,7 +8,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
 
-      - name: cache node_modules
+      - name: cache lerna
         id: cache
         uses: actions/cache@v2
         with:
@@ -47,11 +47,11 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
-      - name: cache zarm-cli/lib
+      - name: cache cli
         uses: actions/cache@v2
         with:
           path: packages/zarm-cli/lib
-          key: cli-lib-${{ github.sha }}
+          key: cli-${{ github.sha }}
 
       - name: compile cli
         run: lerna exec --scope @zarm-design/cli -- yarn build
@@ -71,14 +71,16 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
-      - name: restore cache from cli
+      - name: restore cli
         uses: actions/cache@v2
         with:
           path: packages/zarm-cli/lib
-          key: cli-lib-${{ github.sha }}
+          key: cli-${{ github.sha }}
 
       - name: compile
-        run: lerna exec --scope zarm -- yarn build:es && yarn build:lib
+        run: |
+          lerna exec --scope zarm -- yarn build:es
+          lerna exec --scope zarm -- yarn build:lib
     needs: compile-cli
 
   compile-react-16:
@@ -87,20 +89,24 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
 
-      - name: restore cache from yarn.lock
+      - name: restore lerna
         uses: actions/cache@v2
         with:
-          path: package-temp-dir
-          key: lock-${{ github.sha }}
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
-      - name: restore cache from node_modules
+      - name: restore cli
         uses: actions/cache@v2
         with:
-          path: node_modules
-          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
+          path: packages/zarm-cli/lib
+          key: cli-${{ github.sha }}
 
       - name: compile
-        run: lerna exec --scope zarm -- yarn build:es && yarn build:lib
+        run: |
+          lerna exec --scope zarm -- yarn build:es
+          lerna exec --scope zarm -- yarn build:lib
     needs: [setup-react-16, compile-cli]
 
   lint:
@@ -109,17 +115,13 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
 
-      - name: restore cache from yarn.lock
+      - name: restore lerna
         uses: actions/cache@v2
         with:
-          path: package-temp-dir
-          key: lock-${{ github.sha }}
-
-      - name: restore cache from node_modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
       - name: lint
         run: yarn lint
@@ -143,6 +145,12 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
+      - name: restore cli
+        uses: actions/cache@v2
+        with:
+          path: packages/zarm-cli/lib
+          key: cli-${{ github.sha }}
+
       - name: test
         run: lerna exec --scope zarm -- yarn coverage
       
@@ -164,6 +172,12 @@ jobs:
             node_modules
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+
+      - name: restore cli
+        uses: actions/cache@v2
+        with:
+          path: packages/zarm-cli/lib
+          key: cli-${{ github.sha }}
 
       - name: dist
         run: lerna exec --scope zarm -- yarn build:umd
@@ -196,6 +210,12 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
+      - name: restore cli
+        uses: actions/cache@v2
+        with:
+          path: packages/zarm-cli/lib
+          key: cli-${{ github.sha }}
+
       - name: install react 16
         run: lerna exec --scope zarm -- yarn install-react-16
 
@@ -219,6 +239,12 @@ jobs:
             node_modules
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+
+      - name: restore cli
+        uses: actions/cache@v2
+        with:
+          path: packages/zarm-cli/lib
+          key: cli-${{ github.sha }}
 
       - name: install react 16
         run: lerna exec --scope zarm -- yarn install-react-16
