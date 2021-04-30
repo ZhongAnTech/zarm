@@ -3,12 +3,13 @@ on: [push, pull_request]
 
 jobs:
   setup:
+    name: Setup
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: Checkout code
         uses: actions/checkout@master
 
-      - name: cache lerna
+      - name: Cache lerna
         id: cache
         uses: actions/cache@v2
         with:
@@ -17,29 +18,31 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
-      - name: install
+      - name: Install
         if: steps.cache.outputs.cache-hit != 'true'
         run: yarn
 
   setup-react-16:
+    name: Setup React@16
     runs-on: ubuntu-latest
     env:
       REACT: 16
     steps:
-      - name: checkout
+      - name: Checkout code
         uses: actions/checkout@master
 
-      - name: install react 16
+      - name: Install React@16
         run: lerna exec --scope zarm -- yarn install-react-16
     needs: setup
 
   compile-cli:
+    name: Compile @zarm-design/cli
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: Checkout code
         uses: actions/checkout@master
 
-      - name: restore lerna
+      - name: Restore lerna
         uses: actions/cache@v2
         with:
           path: |
@@ -47,23 +50,24 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
-      - name: cache cli
+      - name: Cache @zarm-design/cli
         uses: actions/cache@v2
         with:
           path: packages/zarm-cli/lib
           key: cli-${{ github.sha }}
 
-      - name: compile cli
+      - name: Compile @zarm-design/cli
         run: lerna exec --scope @zarm-design/cli -- yarn build
     needs: setup
 
   compile:
+    name: Compile zarm on react@17
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: Checkout code
         uses: actions/checkout@master
 
-      - name: restore lerna
+      - name: Restore lerna
         uses: actions/cache@v2
         with:
           path: |
@@ -71,25 +75,26 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
-      - name: restore cli
+      - name: Restore @zarm-design/cli
         uses: actions/cache@v2
         with:
           path: packages/zarm-cli/lib
           key: cli-${{ github.sha }}
 
-      - name: compile
+      - name: Compile
         run: |
           lerna exec --scope zarm -- yarn build:es
           lerna exec --scope zarm -- yarn build:lib
     needs: compile-cli
 
   compile-react-16:
+    name: Compile zarm on react@16
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: Checkout code
         uses: actions/checkout@master
 
-      - name: restore lerna
+      - name: Restore lerna
         uses: actions/cache@v2
         with:
           path: |
@@ -97,25 +102,26 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
-      - name: restore cli
+      - name: Restore @zarm-design/cli
         uses: actions/cache@v2
         with:
           path: packages/zarm-cli/lib
           key: cli-${{ github.sha }}
 
-      - name: compile
+      - name: Compile
         run: |
           lerna exec --scope zarm -- yarn build:es
           lerna exec --scope zarm -- yarn build:lib
     needs: [setup-react-16, compile-cli]
 
   lint:
+    name: Lint
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: Checkout code
         uses: actions/checkout@master
 
-      - name: restore lerna
+      - name: Restore lerna
         uses: actions/cache@v2
         with:
           path: |
@@ -123,21 +129,21 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
-      - name: lint
+      - name: Lint
         run: yarn lint
     needs: setup
 
-  react-17:
-    name: react@17.x
+  test-react-17:
+    name: Test zarm on react@17
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: Checkout code
         uses: actions/checkout@master
         with:
           # codecov.io requires a fetch depth > 1.
           fetch-depth: 2
 
-      - name: restore lerna
+      - name: Restore lerna
         uses: actions/cache@v2
         with:
           path: |
@@ -145,27 +151,27 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
-      - name: restore cli
+      - name: Restore cli
         uses: actions/cache@v2
         with:
           path: packages/zarm-cli/lib
           key: cli-${{ github.sha }}
 
-      - name: test
+      - name: Test
         run: lerna exec --scope zarm -- yarn coverage
       
-      - name: coverage
+      - name: Coverage
         run: bash <(curl -s https://codecov.io/bash)
     needs: compile-cli
 
-  react-17-dist:
-    name: react@17.x / dist
+  test-react-17-dist:
+    name: Test zarm/dist on react@17
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: Checkout code
         uses: actions/checkout@master
 
-      - name: restore lerna
+      - name: Restore lerna
         uses: actions/cache@v2
         with:
           path: |
@@ -173,36 +179,36 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
-      - name: restore cli
+      - name: Restore @zarm-design/cli
         uses: actions/cache@v2
         with:
           path: packages/zarm-cli/lib
           key: cli-${{ github.sha }}
 
-      - name: dist
+      - name: Dist
         run: lerna exec --scope zarm -- yarn build:umd
         env:
           NODE_OPTIONS: --max_old_space_size=4096
 
-      - name: check
+      - name: Check Dist
         run: lerna exec --scope zarm -- node ./tests/dekko/dist.test.js
 
-      - name: bundlesize
+      - name: Bundlesize
         run: lerna exec --scope zarm -- yarn bundlesize
         env:
           BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}
     needs: compile-cli
 
-  react-16:
-    name: react@16.x
+  test-react-16:
+    name: Test zarm on react@16
     runs-on: ubuntu-latest
     env:
       REACT: 16
     steps:
-      - name: checkout
+      - name: Checkout code
         uses: actions/checkout@master
 
-      - name: restore lerna
+      - name: Restore lerna
         uses: actions/cache@v2
         with:
           path: |
@@ -210,29 +216,26 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
-      - name: restore cli
+      - name: Restore @zarm-design/cli
         uses: actions/cache@v2
         with:
           path: packages/zarm-cli/lib
           key: cli-${{ github.sha }}
 
-      - name: install react 16
-        run: lerna exec --scope zarm -- yarn install-react-16
-
-      - name: test
+      - name: Test
         run: lerna exec --scope zarm -- yarn test
     needs: [setup-react-16, compile-cli]
 
-  react-16-dist:
-    name: react@16.x / dist
+  test-react-16-dist:
+    name: Test zarm/dist on react@16
     runs-on: ubuntu-latest
     env:
       REACT: 16
     steps:
-      - name: checkout
+      - name: Checkout code
         uses: actions/checkout@master
 
-      - name: restore lerna
+      - name: Restore lerna
         uses: actions/cache@v2
         with:
           path: |
@@ -240,24 +243,21 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
-      - name: restore cli
+      - name: Restore @zarm-design/cli
         uses: actions/cache@v2
         with:
           path: packages/zarm-cli/lib
           key: cli-${{ github.sha }}
 
-      - name: install react 16
-        run: lerna exec --scope zarm -- yarn install-react-16
-
-      - name: dist
+      - name: Dist
         run: lerna exec --scope zarm -- yarn build:umd
         env:
           NODE_OPTIONS: --max_old_space_size=4096
 
-      - name: check
+      - name: Check Dist
         run: lerna exec --scope zarm -- node ./tests/dekko/dist.test.js
 
-      - name: bundlesize
+      - name: Bundlesize
         run: lerna exec --scope zarm -- yarn bundlesize
         env:
           BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}
