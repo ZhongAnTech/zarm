@@ -90,7 +90,13 @@ jobs:
           path: node_modules
           key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
 
-      - name: compile zarm
+      - name: restore cache from cli
+        uses: actions/cache@v2
+        with:
+          path: packages/zarm-cli/lib
+          key: cli-lib-${{ github.sha }}
+
+      - name: compile
         run: lerna exec --scope zarm -- yarn build:es && yarn build:lib
     needs: compile-cli
 
