@@ -70,7 +70,7 @@ jobs:
     needs: setup
 
   compile:
-    name: Compile zarm (react@17)
+    name: Compile zarm in react@17
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -97,7 +97,7 @@ jobs:
     needs: compile-cli
 
   compile-react-16:
-    name: Compile zarm (react@16)
+    name: Compile zarm in react@16
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -143,7 +143,7 @@ jobs:
     needs: setup
 
   test-react-17:
-    name: Test zarm (react@17)
+    name: Testing zarm in react@17 on Node.js
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -177,7 +177,7 @@ jobs:
     needs: compile-cli
 
   test-react-17-dist:
-    name: Test zarm/dist (react@17)
+    name: Testing zarm/umd in react@17
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -212,7 +212,7 @@ jobs:
     needs: compile-cli
 
   test-react-16:
-    name: Test zarm (react@16)
+    name: Testing zarm in react@16 on Node.js
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -241,8 +241,8 @@ jobs:
         run: lerna exec --scope zarm -- yarn test
     needs: [setup-react-16, compile-cli]
 
-  test-react-16-dist:
-    name: Test zarm/dist (react@16)
+  test-react-16-umd:
+    name: Testing zarm/umd in react@16
     runs-on: ubuntu-latest
     env:
       REACT: 16
