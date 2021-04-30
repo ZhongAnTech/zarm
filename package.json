@@ -19,6 +19,7 @@
     "release": "yarn run build && lerna publish --exact --conventional-commits",
     "prettier": "prettier -c --write '**/*'",
     "pretty-quick": "pretty-quick",
+    "bundlesize": "lerna run bundlesize",
     "sort": "npx sort-package-json \"package.json\" \"packages/*/package.json\""
   },
   "husky": {
