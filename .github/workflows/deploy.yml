@@ -16,7 +16,7 @@ jobs:
       run: yarn
 
     - name: build
-      run: npm run deploy:build
+      run: yarn deploy:build
 
     - name: deploy
       uses: peaceiris/actions-gh-pages@v2
@@ -25,6 +25,6 @@ jobs:
         # PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
         # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: ./assets
+        PUBLISH_DIR: ./packages/site/assets
       with:
         emptyCommits: false
