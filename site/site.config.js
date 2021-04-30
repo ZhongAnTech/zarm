@@ -13,9 +13,27 @@ module.exports = {
       style: false,
     },
     {
+      key: 'customize-theme',
+      name: '定制主题',
+      module: () => import('@site/web/docs/customize-theme.md'),
+      style: false,
+    },
+    {
+      key: 'i18n',
+      name: '国际化',
+      module: () => import('@site/web/docs/i18n.md'),
+      style: false,
+    },
+    {
       key: 'change-log',
       name: '更新日志',
       module: () => import('@/CHANGELOG.md'),
+      style: false,
+    },
+    {
+      key: 'contributing',
+      name: '贡献指南',
+      module: () => import('@site/web/docs/contributing.md'),
       style: false,
     },
   ],

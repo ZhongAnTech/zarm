@@ -61,6 +61,11 @@ describe('ImagePreview', () => {
       ],
       prevVisible: true,
       prevActiveIndex: 0,
+      prevImages: [
+        'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
+        'https://static.zhongan.com/website/health/zarm/images/banners/2.png',
+        'https://static.zhongan.com/website/health/zarm/images/banners/3.png',
+      ],
     });
   });
 
@@ -77,6 +82,11 @@ describe('ImagePreview', () => {
       ],
       prevVisible: true,
       prevActiveIndex: 0,
+      prevImages: [
+        'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
+        'https://static.zhongan.com/website/health/zarm/images/banners/2.png',
+        'https://static.zhongan.com/website/health/zarm/images/banners/3.png',
+      ],
     });
   });
 

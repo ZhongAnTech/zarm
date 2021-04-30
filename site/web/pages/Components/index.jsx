@@ -12,7 +12,7 @@ import Footer from '@site/web/components/Footer';
 import Markdown from '@site/web/components/Markdown';
 import './style.scss';
 
-const isComponentPage = (page) => ['introduce', 'quick-start', 'change-log'].indexOf(page) === -1;
+const isComponentPage = (page) => documents.findIndex((item) => item.key === page) === -1;
 
 const LoadableComponent = (component) => {
   return Loadable({

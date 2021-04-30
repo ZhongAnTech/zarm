@@ -10,6 +10,7 @@
 
 [![test](https://github.com/ZhongAnTech/zarm/actions/workflows/test.yml/badge.svg)](https://github.com/ZhongAnTech/zarm/actions/workflows/test.yml)
 [![codecov](https://codecov.io/gh/ZhongAnTech/zarm/branch/master/graph/badge.svg?token=Qqne6VfWnk)](https://codecov.io/gh/ZhongAnTech/zarm)
+[![npm package](https://img.shields.io/npm/v/zarm/latest.svg)](https://www.npmjs.org/package/zarm)
 ![JS gzip size](https://img.badgesize.io/https://unpkg.com/zarm@latest/dist/zarm.min.js?compression=gzip&label=zarm.min.js)
 ![CSS gzip size](https://img.badgesize.io/https://unpkg.com/zarm@latest/dist/zarm.min.css?compression=gzip&label=zarm.min.css)
 [![NPM downloads](https://img.shields.io/npm/dm/zarm.svg)](https://npmjs.org/package/zarm)
@@ -26,9 +27,11 @@
 
 Zarm 的命名，灵感来源于众安保险秉承的理念：做有温度的保险。Zarm = za + warm，za 代表“众安”，warm 有“温暖”的含义，以重合的 a 字母为中心，各取左右两部分。追求极致的用户体验，致力于做有温度的组件库也是 zarm 项目发起的初衷。
 
-## 版本
+## 预览
 
-- [![npm package](https://img.shields.io/npm/v/zarm/latest.svg)](https://www.npmjs.org/package/zarm)
+<img width="200" src="https://user-images.githubusercontent.com/9812721/116021555-ffa29c80-a67a-11eb-8068-614bd912c894.png" />
+
+[https://zarm.design/demo.html#/](https://zarm.design/demo.html#/)
 
 ## 浏览器支持
 
@@ -54,28 +57,29 @@ import { Button, Cell } from 'zarm';
 import 'zarm/dist/zarm.css';
 ```
 
-### 定制主题
+## 定制主题
 
-zarm 的样式使用了 [scss](https://sass-lang.com) 和 [css 变量](https://www.w3.org/Style/CSS/) 相结合做为开发语言，并定义了一系列全局/组件的样式变量，你可以根据需求进行相应调整，实现定制主题的能力。
+可以参考 [定制主题文档](site/web/docs/customize-theme.md)。
 
-```js
-document.documentElement.style.setProperty('--theme-primary', '#108ee9');
-```
+## 国际化
 
-以下是一些最常用的通用变量，所有样式变量可以在 [这里](https://github.com/ZhongAnTech/zarm/blob/master/components/style/themes/default.scss) 找到。
-
-```scss
---theme-primary: #00bc70; // 全局主色
---theme-success: #00bc70; // 成功色
---theme-warning: #ec9231; // 警告色
---theme-danger: #ff5050; // 危险色
-```
+可以参考 [国际化文档](site/web/docs/i18n.md)。
 
 ## 社区
 
 | 问题上报                                                    | 讨论交流                                                              | 微信群                                                                                                     |
 | :---------------------------------------------------------- | :-------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------- |
 | [github issues](https://github.com/ZhongAnTech/zarm/issues) | [github discussions](https://github.com/ZhongAnTech/zarm/discussions) | <img src="https://cdn-health.zhongan.com/zarm/qrcode.jpg" width="80" /> <br />备注 "zarm" 加好友后邀请进群 |
+
+## 如何贡献
+
+使用过程中发现任何问题都可以提 Issue 给我们，当然，我们也非常欢迎你给我们发 PR。
+
+你可以使用 Gitpod 进行在线开发：
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/ZhongAnTech/zarm)
+
+或者克隆到本地开发，请阅读我们的 [贡献指南](site/web/docs/contributing.md)。
 
 ## 开源协议
 

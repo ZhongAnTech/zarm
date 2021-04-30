@@ -15,10 +15,6 @@ Zarm 的命名，灵感来源于众安保险秉承的理念：做有温度的保
 - 提供国际化解决方案，多语言支持。
 - 使用 TypeScript 开发，支持静态检查，提升开发体验。
 
-## 版本
-
-- [![npm package](https://img.shields.io/npm/v/zarm.svg)](https://www.npmjs.org/package/zarm)
-
 ## 浏览器支持
 
 - IOS
