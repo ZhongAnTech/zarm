@@ -27,7 +27,7 @@ jobs:
         with:
           path: |
             node_modules
-            */*/node_modules
+            packages/*/node_modules
           key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
 
       - name: install
