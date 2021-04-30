@@ -16,7 +16,7 @@ jobs:
           path: |
             node_modules
             */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          key: lerna-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install
         if: steps.cache.outputs.cache-hit != 'true'
@@ -30,6 +30,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@master
+
+      - name: Cache lerna
+        id: cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: lerna-react16-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install React@16
         run: lerna exec --scope zarm -- yarn install-react-16
@@ -48,7 +57,7 @@ jobs:
           path: |
             node_modules
             */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          key: lerna-${{ hashFiles('**/yarn.lock') }}
 
       - name: Cache @zarm-design/cli
         uses: actions/cache@v2
@@ -73,7 +82,7 @@ jobs:
           path: |
             node_modules
             */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          key: lerna-${{ hashFiles('**/yarn.lock') }}
 
       - name: Restore @zarm-design/cli
         uses: actions/cache@v2
@@ -100,7 +109,7 @@ jobs:
           path: |
             node_modules
             */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          key: lerna-${{ hashFiles('**/yarn.lock') }}
 
       - name: Restore @zarm-design/cli
         uses: actions/cache@v2
@@ -127,7 +136,7 @@ jobs:
           path: |
             node_modules
             */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          key: lerna-${{ hashFiles('**/yarn.lock') }}
 
       - name: Lint
         run: yarn lint
@@ -149,7 +158,7 @@ jobs:
           path: |
             node_modules
             */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          key: lerna-${{ hashFiles('**/yarn.lock') }}
 
       - name: Restore cli
         uses: actions/cache@v2
@@ -177,7 +186,7 @@ jobs:
           path: |
             node_modules
             */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          key: lerna-${{ hashFiles('**/yarn.lock') }}
 
       - name: Restore @zarm-design/cli
         uses: actions/cache@v2
@@ -214,7 +223,7 @@ jobs:
           path: |
             node_modules
             */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          key: lerna-react16-${{ hashFiles('**/yarn.lock') }}
 
       - name: Restore @zarm-design/cli
         uses: actions/cache@v2
@@ -241,7 +250,7 @@ jobs:
           path: |
             node_modules
             */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          key: lerna-react16-${{ hashFiles('**/yarn.lock') }}
 
       - name: Restore @zarm-design/cli
         uses: actions/cache@v2
