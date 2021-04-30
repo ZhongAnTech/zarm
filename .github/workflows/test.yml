@@ -25,7 +25,9 @@ jobs:
         id: node_modules_cache_id
         uses: actions/cache@v2
         with:
-          path: node_modules
+          path: |
+            node_modules
+            */*/node_modules
           key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
 
       - name: install
