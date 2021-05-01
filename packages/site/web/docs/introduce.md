@@ -2,7 +2,7 @@
 
 <img width="150" src="https://zarm.design/images/logo.732d9561.svg">
 
-Zarm 是众安科技基于 React、React-Native 研发的一款适用于企业级的移动端 UI 组件库。
+Zarm (读音 /zɑːm/，中文可发音为 **扎姆**) 是众安科技基于 React、React-Native 研发的一款适用于企业级的移动端 UI 组件库。
 
 Zarm 的命名，灵感来源于众安保险秉承的理念：做有温度的保险。Zarm = za + warm，za 代表 “众安”，warm 有 “温暖” 的含义，以重合的 “a” 字母为中心，各取左右两部分。追求极致的用户体验，致力于做有温度的组件库也是 zarm 项目发起的初衷。
 
