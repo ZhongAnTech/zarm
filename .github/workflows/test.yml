@@ -44,6 +44,34 @@ jobs:
         run: lerna exec --scope zarm -- yarn install-react-16
     needs: setup
 
+  test-cli:
+    name: Testing @zarm-design/cli on Node.js
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14, 12, 10]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@master
+        with:
+          # codecov.io requires a fetch depth > 1.
+          fetch-depth: 2
+
+      - name: Restore lerna
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Test
+        run: lerna exec --scope @zarm-design/cli -- yarn coverage
+      
+      - name: Coverage
+        run: bash <(curl -s https://codecov.io/bash)
+    needs: setup
+
   compile-cli:
     name: Compile @zarm-design/cli
     runs-on: ubuntu-latest
