@@ -14,7 +14,7 @@
     "build": "lerna run build",
     "test": "yarn build:cli && lerna exec --no-private -- yarn test",
     "dev": "yarn build:cli && lerna exec --scope site -- yarn start",
-    "deploy:build": "lerna exec --scope site -- yarn build",
+    "deploy:build": "yarn build:cli && lerna exec --scope site -- yarn build",
     "deploy": "yarn build:cli && lerna exec --scope site -- yarn deploy",
     "release": "yarn run build && lerna publish --exact --conventional-commits",
     "prettier": "prettier -c --write '**/*'",
