@@ -53,6 +53,11 @@ const Demo = () => {
   const focusInput = useRef();
   const [value, setValue] = useState('');
 
+  const focus = (e) => {
+    focusInput.current.focus();
+    e.nativeEvent.stopImmediatePropagation();
+  };
+
   return (
     <>
       <Cell title="数字">
@@ -74,7 +79,7 @@ const Demo = () => {
       </Cell>
 
       <Cell>
-        <Button size="xs" theme="primary" onClick={() => focusInput.current.focus()}>
+        <Button size="xs" theme="primary" onClick={focus}>
           click to focus the first input
         </Button>
       </Cell>
