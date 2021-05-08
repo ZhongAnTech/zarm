@@ -16,7 +16,7 @@
     "dev": "yarn build:cli && lerna exec --scope site -- yarn start",
     "deploy:build": "yarn build:cli && lerna exec --scope site -- yarn build",
     "deploy": "yarn build:cli && lerna exec --scope site -- yarn deploy",
-    "release": "yarn run build && lerna publish --exact --conventional-commits",
+    "release": "yarn run build && lerna publish --conventional-commits",
     "prettier": "prettier -c --write '**/*'",
     "pretty-quick": "pretty-quick",
     "bundlesize": "lerna run bundlesize",
