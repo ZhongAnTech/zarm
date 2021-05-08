@@ -1,0 +1,23 @@
+{
+  "name": "@zarm-design/icons",
+  "version": "0.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "clean": "rimraf types lib coverage",
+    "test": "jest --config ./jest.config.js",
+    "coverage": "rimraf coverage && yarn test --coverage",
+    "build:lib": "rimraf lib && babel react --extensions .ts,.tsx --out-dir lib --copy-files",
+    "build:react": "rimraf react && svgr ./svg --out-dir ./react",
+    "build:svg": "rimraf svg && node ./src/exportSVG.js",
+    "build": "yarn build:svg && yarn build:react && yarn build:lib"
+  },
+  "author": "jerome.lin@zhongan.com",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.13.16",
+    "@svgr/cli": "^5.5.0",
+    "fs-extra": "^10.0.0",
+    "shelljs": "^0.8.4"
+  }
+}

@@ -19,11 +19,9 @@ yarn.lock
 node_modules
 tsconfig.json
 tslint.json
-components
-assets
-tests
-coverage
-site
-rnkit
-scripts
 zarm.config.js
+/src
+/assets
+/tests
+/coverage
+/scripts

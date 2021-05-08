@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`templates component should create component template 1`] = `
+"import React, { PureComponent } from 'react';
+import classnames from 'classnames';
+
+export interface MyTestComponentProps {
+  prefixCls?: string;
+  className?: string;
+}
+
+export interface MyTestComponentStates {
+
+}
+
+export default class MyTestComponent extends PureComponent<MyTestComponentProps, MyTestComponentStates> {
+  static displayName = 'MyTestComponent';
+
+  static defaultProps = {
+    prefixCls: 'za-my-test-component',
+  };
+
+  render() {
+    const {
+      prefixCls,
+      className,
+      children,
+    } = this.props;
+
+    const cls = classnames(prefixCls, className);
+
+    return (
+      <div className={cls}>
+        {children}
+      </div>
+    );
+  }
+}
+"
+`;
+
+exports[`templates component should create demo template 1`] = `
+"# MyTestComponent 组件名
+
+
+
+## 基本用法
+\`\`\`jsx
+import { MyTestComponent } from 'zarm';
+
+ReactDOM.render(
+  <>
+    <MyTestComponent />
+  </>
+, mountNode);
+\`\`\`
+
+
+
+## 用法二
+\`\`\`jsx
+import { MyTestComponent } from 'zarm';
+
+class Demo extends React.Component {
+  state = {
+  }
+
+  render() {
+    return <MyTestComponent />;
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+\`\`\`
+
+
+
+## API
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+"
+`;
+
+exports[`templates component should create index template 1`] = `
+"import MyTestComponent from './MyTestComponent';
+
+export default MyTestComponent;
+"
+`;

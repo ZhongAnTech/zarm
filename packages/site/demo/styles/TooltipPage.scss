@@ -1,0 +1,15 @@
+@import "@/styles/index";
+
+.tooltip-page {
+  .direction-demo {
+    display: flex;
+    justify-content: center;
+    padding: r(15) 0;
+  }
+
+  .za-button {
+    width: r(60);
+    margin-right: r(10);
+    margin-bottom: r(10);
+  }
+}

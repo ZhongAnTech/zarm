@@ -8,14 +8,15 @@ _book
 *.iml
 package-lock.json
 /node_modules/
+/packages/*/node_modules/
 
 # bundle files
-/assets/
-/dist/
-/es/
-/lib/
-/native/
-/types/
+/packages/*/assets/
+/packages/*/dist/
+/packages/*/es/
+/packages/*/lib/
+/packages/*/native/
+/packages/*/types/
 
 # test coverage
-/coverage/
+/packages/*/coverage/
