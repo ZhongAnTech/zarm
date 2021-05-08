@@ -7,3 +7,15 @@ export function getValue(props, defaultValue: string | number = ''): string | nu
   }
   return defaultValue;
 }
+
+export function combineRef<T>(...refs: React.Ref<T>[]) {
+  return (node: T) => {
+    refs.forEach((ref) => {
+      if (typeof ref === 'function') {
+        ref(node);
+      } else if (typeof ref === 'object' && ref && 'current' in ref) {
+        (ref as any).current = node;
+      }
+    });
+  };
+}

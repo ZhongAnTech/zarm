@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import { InputTextareaProps } from './PropsType';
-import { getValue } from './utils';
+import { getValue, combineRef } from './utils';
 
 const regexAstralSymbols = /[\uD800-\uDBFF][\uDC00-\uDFFF]|\n/g;
 
@@ -152,6 +152,7 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
       autoHeight,
       showLength,
       focused,
+      inputRef,
       ...rest
     } = this.props;
 
@@ -171,9 +172,9 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
       <textarea
         {...rest}
         value={'value' in this.props ? value : undefined}
-        ref={(ele) => {
+        ref={combineRef((ele) => {
           this.input = ele;
-        }}
+        }, inputRef)}
         maxLength={maxLength}
         disabled={disabled}
         onChange={this.onChange}

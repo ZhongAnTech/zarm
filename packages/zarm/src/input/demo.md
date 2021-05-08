@@ -55,7 +55,7 @@ const Demo = () => {
 
   const focus = (e) => {
     focusInput.current.focus();
-    e.nativeEvent.stopImmediatePropagation();
+    // e.nativeEvent.stopImmediatePropagation();
   };
 
   return (

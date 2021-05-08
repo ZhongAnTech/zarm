@@ -1,6 +1,7 @@
 import React from 'react';
 
 export interface BaseInputProps {
+  name?: string;
   placeholder?: string;
   disabled?: boolean;
   readOnly?: boolean;
@@ -10,6 +11,7 @@ export interface BaseInputProps {
   style?: React.CSSProperties;
   prefixCls?: string;
   className?: string;
+  inputRef?: any;
 }
 
 export interface InputBaseProps extends BaseInputProps {

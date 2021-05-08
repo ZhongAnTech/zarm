@@ -27,10 +27,18 @@ export default class InputNumber extends Component<InputNumberProps, any> {
       focused: false,
     };
   }
+  addBlurListener = () => {
+    Events.on(document.body, 'click', this.onMaskClick);
+  };
+
+  removeBlurListener = () => {
+    Events.off(document.body, 'click', this.onMaskClick);
+  };
 
   componentDidMount() {
     const { autoFocus, focused } = this.props;
-    Events.on(document.body, 'click', this.onMaskClick);
+    this.addBlurListener();
+    // Events.on(document.body, 'click', this.onMaskClick);
 
     if (autoFocus || focused) {
       this.onFocus();
@@ -57,7 +65,8 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   }
 
   componentWillUnmount() {
-    Events.off(document.body, 'click', this.onMaskClick);
+    this.removeBlurListener();
+    // Events.off(document.body, 'click', this.onMaskClick);
   }
 
   onMaskClick = (e) => {
@@ -156,7 +165,11 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   };
 
   focus = () => {
+    this.removeBlurListener();
     this.onFocus();
+    setTimeout(() => {
+      this.addBlurListener();
+    }, 50);
   };
 
   blur = () => {
@@ -164,7 +177,17 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   };
 
   render() {
-    const { prefixCls, className, type, clearable, disabled, readOnly, placeholder } = this.props;
+    const {
+      prefixCls,
+      className,
+      type,
+      clearable,
+      disabled,
+      readOnly,
+      placeholder,
+      name,
+      inputRef,
+    } = this.props;
     const { visible, value } = this.state;
     const showClearIcon =
       clearable && 'value' in this.props && value.length > 0 && 'onChange' in this.props;
@@ -189,7 +212,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
         >
           {value}
         </div>
-        <input type="hidden" value={value} disabled={disabled} />
+        <input type="hidden" value={value} disabled={disabled} name={name} ref={inputRef} />
         <KeyboardPicker
           ref={(ele) => {
             this.picker = ele;

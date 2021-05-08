@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import { InputBaseProps } from './PropsType';
 import Icon from '../icon';
-import { getValue } from './utils';
+import { getValue, combineRef } from './utils';
 
 export default class InputBase extends PureComponent<InputBaseProps, any> {
   static defaultProps: InputBaseProps = {
@@ -161,6 +161,7 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
       readOnly,
       type,
       onClear,
+      inputRef,
       ...rest
     } = this.props;
 
@@ -179,9 +180,9 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
         {...rest}
         value={'value' in this.props ? value : undefined}
         autoComplete="off"
-        ref={(ele) => {
+        ref={combineRef((ele) => {
           this.input = ele;
-        }}
+        }, inputRef)}
         type={type}
         disabled={disabled}
         onChange={this.onChange}
