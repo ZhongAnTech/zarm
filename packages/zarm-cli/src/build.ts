@@ -90,7 +90,7 @@ const umdBuild = async ({ mode, path, outDir, outZip, libraryName, analyzer }, b
     }`,
     );
     list.forEach(({ filePath }) => {
-      jsZip.file(filePath, fs.readFileSync(filePath));
+      jsZip.file(filePath, fs.readFileSync(filePath, 'utf-8'));
     });
 
     jsZip
