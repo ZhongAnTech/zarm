@@ -4,6 +4,6 @@ module.exports = {
   svgProps: {
     fill: 'currentColor',
   },
-  outDir: './assets/react',
   template: require('./templates/compTemplate.js'),
+  // indexTemplate: require('./templates/indexTemplate.js'),
 };
