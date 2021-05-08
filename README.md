@@ -59,11 +59,11 @@ import 'zarm/dist/zarm.css';
 
 ## 定制主题
 
-可以参考 [定制主题文档](site/web/docs/customize-theme.md)。
+可以参考 [定制主题文档](packages/site/web/docs/customize-theme.md)。
 
 ## 国际化
 
-可以参考 [国际化文档](site/web/docs/i18n.md)。
+可以参考 [国际化文档](packages/site/web/docs/i18n.md)。
 
 ## 社区
 
@@ -79,7 +79,7 @@ import 'zarm/dist/zarm.css';
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/ZhongAnTech/zarm)
 
-或者克隆到本地开发，请阅读我们的 [贡献指南](site/web/docs/contributing.md)。
+或者克隆到本地开发，请阅读我们的 [贡献指南](packages/site/web/docs/contributing.md)。
 
 ## 开源协议
 
