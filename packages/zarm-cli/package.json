@@ -53,7 +53,7 @@
     "import-local": "^3.0.2",
     "is-wsl": "^2.1.0",
     "jest": "^26.5.3",
-    "jszip": "^3.2.2",
+    "jszip": "^3.6.0",
     "lodash": "^4.17.15",
     "metro-react-native-babel-preset": "^0.63.0",
     "mini-css-extract-plugin": "^0.8.0",
