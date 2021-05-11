@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import type { TouchEvent, MouseEvent } from 'react';
 import classnames from 'classnames';
+import { Keyboard as KeyboardIcon, DeleteKey as DeleteKeyIcon } from '@zarm-design/icons';
 import type PropsType from './PropsType';
-import Icon from '../icon';
 
 type KeyType = Exclude<PropsType['type'], undefined>;
 
@@ -64,7 +64,7 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
 
     return (
       <div className={keyCls} key={+index} onClick={() => this.onKeyClick(text)}>
-        {text === 'close' ? <Icon type="keyboard" size="lg" /> : text}
+        {text === 'close' ? <KeyboardIcon size="lg" /> : text}
       </div>
     );
   };
@@ -85,7 +85,7 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
             onMouseDown={() => this.onLongPressIn('delete')}
             onMouseUp={this.onLongPressOut}
           >
-            <Icon type="deletekey" size="lg" />
+            <DeleteKeyIcon size="lg" />
           </div>
           <div
             className={`${prefixCls}__item ${prefixCls}__item--ok`}

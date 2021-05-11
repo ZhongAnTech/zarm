@@ -3,11 +3,11 @@ import React from 'react';
 import { render, mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { mocked } from 'ts-jest/utils';
+import { Volume as VolumeIcon } from '@zarm-design/icons';
 import NoticeBar from '../index';
 import { addKeyframe, removeKeyframe, existKeyframe } from '../../utils/keyframes';
 import { mockRefReturnValueOnce } from '../../../tests/utils';
 import Message from '../../message';
-import Icon from '../../icon';
 
 jest.mock('../../utils/keyframes');
 
@@ -59,7 +59,7 @@ describe('NoticeBar', () => {
         expect.objectContaining({
           size: 'lg',
           theme: 'warning',
-          icon: <Icon type="broadcast" />,
+          icon: <VolumeIcon />,
           hasArrow: false,
           closable: false,
           speed: 50,

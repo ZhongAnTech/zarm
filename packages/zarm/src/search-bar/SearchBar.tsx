@@ -1,8 +1,8 @@
 import React, { PureComponent, CompositionEvent } from 'react';
 import type { FormEvent } from 'react';
 import classnames from 'classnames';
+import { Search as SearchIcon } from '@zarm-design/icons';
 import type BaseSearchBarProps from './PropsType';
-import Icon from '../icon';
 import InputBase from '../input/InputBase';
 
 export interface SearchBarProps extends BaseSearchBarProps {
@@ -222,7 +222,7 @@ export default class SearchBar extends PureComponent<SearchBarProps, SearchBarSt
           }}
         >
           <div className={`${prefixCls}__content`}>
-            <Icon type="search" className={`${prefixCls}__icon`} />
+            <SearchIcon size="sm" className={`${prefixCls}__icon`} />
             <div className={`${prefixCls}__mock`}>
               <InputBase
                 className={`${prefixCls}__input`}

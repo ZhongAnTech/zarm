@@ -12,7 +12,7 @@ function defaultTemplate(
 import { Icon } from 'zarm';
 import type { IconProps } from 'zarm';
 
-const ${componentName} = (props: IconProps) => {
+const ${componentName} = (props: IconProps, svgRef?: React.Ref<SVGSVGElement>) => {
   return React.createElement(Icon, { ...props, component: () => ${jsx}});
 }
 

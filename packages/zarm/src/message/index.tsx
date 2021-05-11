@@ -1,7 +1,7 @@
 import React, { PureComponent, MouseEventHandler } from 'react';
 import classnames from 'classnames';
+import { Close as CloseIcon, ArrowRight as ArrowRightIcon } from '@zarm-design/icons';
 import PropsType from './PropsType';
-import Icon from '../icon';
 
 export interface MessageProps extends PropsType {
   prefixCls?: string;
@@ -49,8 +49,8 @@ export default class Message extends PureComponent<MessageProps, MessageState> {
     });
 
     const iconRender = icon && <div className={`${prefixCls}__icon`}>{icon}</div>;
-    const renderCloseIcon = closable && <Icon type="wrong" onClick={this.onClose} />;
-    const renderArrow = hasArrow && <Icon type="arrow-right" />;
+    const renderCloseIcon = closable && <CloseIcon onClick={this.onClose} />;
+    const renderArrow = hasArrow && <ArrowRightIcon />;
     const noFooter = !closable && !hasArrow;
 
     return (
