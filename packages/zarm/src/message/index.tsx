@@ -46,6 +46,7 @@ export default class Message extends PureComponent<MessageProps, MessageState> {
     const classes = classnames(prefixCls, className, {
       [`${prefixCls}--${theme}`]: !!theme,
       [`${prefixCls}--${size}`]: !!size,
+      [`${prefixCls}--link`]: !!hasArrow,
     });
 
     const iconRender = icon && <div className={`${prefixCls}__icon`}>{icon}</div>;

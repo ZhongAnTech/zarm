@@ -69,7 +69,7 @@ exports[`Message closable 1`] = `
 
 exports[`Message hasArrow 1`] = `
 <div
-  className="za-message za-message--primary"
+  className="za-message za-message--primary za-message--link"
   onClick={[Function]}
 >
   <div
