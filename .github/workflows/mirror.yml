@@ -1,4 +1,4 @@
-name: mirror
+name: Sync mirror to Gitee
 on: [push, delete]
 
 jobs:
