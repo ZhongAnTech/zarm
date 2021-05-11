@@ -171,11 +171,8 @@ jobs:
     needs: setup
 
   test-react-17:
-    name: Testing zarm in react@17 on Node.js
+    name: Testing zarm in react@17
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14, 12, 10]
     steps:
       - name: Checkout code
         uses: actions/checkout@master
@@ -240,11 +237,8 @@ jobs:
     needs: compile-cli
 
   test-react-16:
-    name: Testing zarm in react@16 on Node.js
+    name: Testing zarm in react@16
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14, 12, 10]
     env:
       REACT: 16
     steps:
