@@ -1,7 +1,7 @@
 function defaultTemplate(
   { template },
   opts,
-  { imports, interfaces, componentName, props, jsx, exports },
+  { imports, componentName, jsx, exports },
 ) {
   const plugins = ['jsx'];
   if (opts.typescript) {
@@ -9,10 +9,13 @@ function defaultTemplate(
   }
   const typeScriptTpl = template.smart({ plugins });
   return typeScriptTpl.ast`${imports}
-${interfaces}
-function ${componentName}(${props}) {
-  return ${jsx};
+import { Icon } from 'zarm';
+import type { IconProps } from 'zarm';
+
+const ${componentName} = (props: IconProps) => {
+  return React.createElement(Icon, { ...props, component: () => ${jsx}});
 }
+
 ${exports}
   `;
 }

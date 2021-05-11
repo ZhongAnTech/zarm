@@ -18,5 +18,8 @@
     "@babel/cli": "^7.13.16",
     "@svgr/cli": "^5.5.0",
     "shelljs": "^0.8.4"
+  },
+  "dependencies": {
+    "zarm": "^2.8.2"
   }
 }

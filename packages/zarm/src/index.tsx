@@ -13,7 +13,10 @@ export { default as DatePickerView } from './date-picker-view';
 export { default as DateSelect } from './date-select';
 export { default as Drag } from './drag';
 export { default as FilePicker } from './file-picker';
+
+export type { IconProps } from './icon';
 export { default as Icon } from './icon';
+
 export { default as Input } from './input';
 export { default as Keyboard } from './keyboard';
 export { default as KeyboardPicker } from './keyboard-picker';
