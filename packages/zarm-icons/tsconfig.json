@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "target": "ES2019",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "types": ["react", "react-dom", "node", "jest"]
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "lib", "es", "**/__tests__/**", "tests"]
+}

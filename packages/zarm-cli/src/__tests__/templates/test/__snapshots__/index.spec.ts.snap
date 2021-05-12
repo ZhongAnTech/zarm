@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`templates test should create test template 1`] = `
+"import React from 'react';
+import { render } from 'enzyme';
+import toJson from 'enzyme-to-json';
+import MyTestComponent from '../index';
+
+describe('MyTestComponent', () => {
+  it('renders correctly', () => {
+    const wrapper = render(
+      <MyTestComponent />,
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+});
+"
+`;
