@@ -1,6 +1,14 @@
-// const { getProjectPath } = require('../../utils');
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable import/no-dynamic-require */
+import { getProjectPath } from '../../utils';
+
+const pkg = require(getProjectPath('package.json'));
 
 module.exports = {
+  displayName: {
+    name: pkg.name,
+    color: 'blue',
+  },
   rootDir: process.cwd(),
   roots: ['<rootDir>/src'],
   // setupFilesAfterEnv: [

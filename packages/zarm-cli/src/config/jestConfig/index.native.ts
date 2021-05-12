@@ -1,7 +1,15 @@
-// const { getProjectPath } = require('../../utils');
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable import/no-dynamic-require */
+import { getProjectPath } from '../../utils';
+
+const pkg = require(getProjectPath('package.json'));
 const transformPackages = ['react-native', 'react-native-camera-roll-picker'];
 
 module.exports = {
+  displayName: {
+    name: pkg.name,
+    color: 'blue',
+  },
   // preset: 'react-native',
   rootDir: process.cwd(),
   roots: ['<rootDir>/components'],
