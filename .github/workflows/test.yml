@@ -97,6 +97,31 @@ jobs:
         run: lerna exec --scope @zarm-design/cli -- yarn build
     needs: setup
 
+  compile-icons:
+    name: Compile @zarm-design/icons
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@master
+
+      - name: Restore lerna
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Cache @zarm-design/icons
+        uses: actions/cache@v2
+        with:
+          path: packages/zarm-icons/lib
+          key: ${{ runner.os }}-icons-${{ github.sha }}
+
+      - name: Compile @zarm-design/icons
+        run: lerna exec --scope @zarm-design/icons -- yarn build
+    needs: setup
+
   compile:
     name: Compile zarm in react@17
     runs-on: ubuntu-latest
@@ -122,7 +147,7 @@ jobs:
         run: |
           lerna exec --scope zarm -- yarn build:es
           lerna exec --scope zarm -- yarn build:lib
-    needs: compile-cli
+    needs: [compile-cli, compile-icons]
 
   compile-react-16:
     name: Compile zarm in react@16
@@ -149,7 +174,7 @@ jobs:
         run: |
           lerna exec --scope zarm -- yarn build:es
           lerna exec --scope zarm -- yarn build:lib
-    needs: [setup-react-16, compile-cli]
+    needs: [setup-react-16, compile-cli, compile-icons]
 
   lint:
     name: Lint
@@ -199,7 +224,7 @@ jobs:
       
       - name: Coverage
         run: bash <(curl -s https://codecov.io/bash)
-    needs: compile-cli
+    needs: [compile-cli, compile-icons]
 
   test-react-17-dist:
     name: Testing zarm/umd in react@17
@@ -234,7 +259,7 @@ jobs:
         run: lerna exec --scope zarm -- yarn bundlesize
         env:
           BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}
-    needs: compile-cli
+    needs: [compile-cli, compile-icons]
 
   test-react-16:
     name: Testing zarm in react@16
@@ -261,7 +286,7 @@ jobs:
 
       - name: Test
         run: lerna exec --scope zarm -- yarn test
-    needs: [setup-react-16, compile-cli]
+    needs: [setup-react-16, compile-cli, compile-icons]
 
   test-react-16-umd:
     name: Testing zarm/umd in react@16
@@ -298,4 +323,4 @@ jobs:
         run: lerna exec --scope zarm -- yarn bundlesize
         env:
           BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}
-    needs: [setup-react-16, compile-cli]
+    needs: [setup-react-16, compile-cli, compile-icons]
