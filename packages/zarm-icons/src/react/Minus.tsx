@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Icon } from 'zarm';
-import type { IconProps } from 'zarm';
+import Icon from '../icon';
+import type { IconProps } from '../icon';
 
 const SvgMinus = (props: IconProps, svgRef?: React.Ref<SVGSVGElement>) => {
   return React.createElement(Icon, {

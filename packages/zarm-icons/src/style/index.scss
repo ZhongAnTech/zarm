@@ -1,0 +1,17 @@
+@import './core/index';
+@import './themes/default';
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+*[contenteditable] {
+  user-select: auto !important;
+}
+
+*:focus {
+  outline: none;
+}

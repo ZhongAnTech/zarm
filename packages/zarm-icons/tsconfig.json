@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "./react",
+    "baseUrl": "./",
     "target": "ES2019",
     "module": "commonjs",
     "moduleResolution": "node",
@@ -10,6 +10,9 @@
     "resolveJsonModule": true,
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true
-  }
+    "skipLibCheck": true,
+    "types": ["react", "react-dom", "node", "jest"]
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "lib", "es", "**/__tests__/**", "tests"]
 }
