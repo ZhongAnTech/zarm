@@ -120,7 +120,7 @@ jobs:
 
       - name: Compile @zarm-design/icons
         run: lerna exec --scope @zarm-design/icons -- yarn build:lib
-    needs: setup
+    needs: compile-cli
 
   compile:
     name: Compile zarm in react@17
