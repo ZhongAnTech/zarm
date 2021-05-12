@@ -10,6 +10,9 @@
     "bundle:android": "rimraf bundle/android/* && node createBundleFolder.js && react-native bundle --platform android --dev false --entry-file index.js --bundle-output ./bundle/android/index.bundle --assets-dest ./bundle/android",
     "test": "jest"
   },
+  "jest": {
+    "preset": "react-native"
+  },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/native": "^5.7.3",
@@ -28,8 +31,5 @@
     "babel-plugin-module-resolver": "^4.0.0",
     "metro-react-native-babel-preset": "^0.59.0",
     "react-test-renderer": "16.13.1"
-  },
-  "jest": {
-    "preset": "react-native"
   }
 }
