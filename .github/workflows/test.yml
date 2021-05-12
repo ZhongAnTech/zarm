@@ -149,6 +149,12 @@ jobs:
           path: packages/zarm-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
+      - name: Restore @zarm-design/icons
+        uses: actions/cache@v2
+        with:
+          path: packages/zarm-icons/lib
+          key: ${{ runner.os }}-icons-${{ github.sha }}
+
       - name: Compile
         run: |
           lerna exec --scope zarm -- yarn build:es
@@ -175,6 +181,12 @@ jobs:
         with:
           path: packages/zarm-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
+
+      - name: Restore @zarm-design/icons
+        uses: actions/cache@v2
+        with:
+          path: packages/zarm-icons/lib
+          key: ${{ runner.os }}-icons-${{ github.sha }}
 
       - name: Compile
         run: |
@@ -253,6 +265,12 @@ jobs:
           path: packages/zarm-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
+      - name: Restore @zarm-design/icons
+        uses: actions/cache@v2
+        with:
+          path: packages/zarm-icons/lib
+          key: ${{ runner.os }}-icons-${{ github.sha }}
+
       - name: Dist
         run: lerna exec --scope zarm -- yarn build:umd
         env:
@@ -316,6 +334,12 @@ jobs:
         with:
           path: packages/zarm-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
+
+      - name: Restore @zarm-design/icons
+        uses: actions/cache@v2
+        with:
+          path: packages/zarm-icons/lib
+          key: ${{ runner.os }}-icons-${{ github.sha }}
 
       - name: Dist
         run: lerna exec --scope zarm -- yarn build:umd
