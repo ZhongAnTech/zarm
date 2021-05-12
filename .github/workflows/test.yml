@@ -237,6 +237,12 @@ jobs:
           path: packages/zarm-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
+      - name: Restore @zarm-design/icons
+        uses: actions/cache@v2
+        with:
+          path: packages/zarm-icons/lib
+          key: ${{ runner.os }}-icons-${{ github.sha }}
+
       - name: Test
         run: lerna exec --scope zarm -- yarn coverage
       
@@ -307,6 +313,12 @@ jobs:
         with:
           path: packages/zarm-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
+
+      - name: Restore @zarm-design/icons
+        uses: actions/cache@v2
+        with:
+          path: packages/zarm-icons/lib
+          key: ${{ runner.os }}-icons-${{ github.sha }}
 
       - name: Test
         run: lerna exec --scope zarm -- yarn test
