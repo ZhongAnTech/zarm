@@ -118,6 +118,9 @@ jobs:
           path: packages/zarm-icons/lib
           key: ${{ runner.os }}-icons-${{ github.sha }}
 
+      - name: Compile zarm icon types
+        run: lerna exec --scope zarm -- tsc --outDir lib -d --emitDeclarationOnly
+
       - name: Compile @zarm-design/icons
         run: lerna exec --scope @zarm-design/icons -- yarn build:lib
     needs: setup
