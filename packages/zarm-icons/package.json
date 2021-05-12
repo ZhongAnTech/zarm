@@ -6,8 +6,8 @@
   "typings": "types/index.d.ts",
   "scripts": {
     "clean": "rimraf types lib coverage svg",
-    "test": "exit 0",
-    "coverage": "rimraf coverage && yarn test --coverage",
+    "test": "zarm test -s scripts/jest/setup.js",
+    "coverage": "rimraf coverage && yarn test -c",
     "build:lib": "rimraf types lib && tsc --outDir types -d --emitDeclarationOnly && zarm build --mode lib --path src --out-dir lib --copy-files --build-css",
     "build:react": "rimraf src/react && svgr ./svg --out-dir ./src/react",
     "build:svg": "rimraf svg && node ./scripts/exportSVG.js",
