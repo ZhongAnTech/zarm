@@ -8,10 +8,11 @@
     "clean": "rimraf types lib coverage svg",
     "test": "zarm test -s scripts/jest/setup.js",
     "coverage": "rimraf coverage && yarn test -c",
-    "build:lib": "rimraf types lib && tsc --outDir types -d --emitDeclarationOnly && zarm build --mode lib --path src --out-dir lib --copy-files --build-css",
+    "build:types": "rimraf types && tsc --outDir types -d --emitDeclarationOnly",
+    "build:lib": "rimraf lib && zarm build --mode lib --path src --out-dir lib --copy-files --build-css",
     "build:react": "rimraf src/react && svgr ./svg --out-dir ./src/react",
     "build:svg": "rimraf svg && node ./scripts/exportSVG.js",
-    "build": "yarn build:svg && yarn build:react && yarn build:lib"
+    "build": "yarn build:types && yarn build:lib"
   },
   "author": "jerome.lin@zhongan.com",
   "license": "MIT",

@@ -125,7 +125,7 @@ jobs:
           key: ${{ runner.os }}-icons-${{ github.sha }}
 
       - name: Compile @zarm-design/icons
-        run: lerna exec --scope @zarm-design/icons -- yarn build:lib
+        run: lerna exec --scope @zarm-design/icons -- yarn build
     needs: compile-cli
 
   compile:

@@ -10,7 +10,7 @@
     "lint:script": "eslint --ext .ts,.tsx,.js,.jsx packages",
     "lint:style": "stylelint \"packages/**/*.scss\" --syntax scss",
     "lint": "yarn lint:script && yarn lint:style",
-    "build:icons": "lerna exec --scope @zarm-design/icons -- yarn build:lib",
+    "build:icons": "lerna exec --scope @zarm-design/icons -- yarn build",
     "build:cli": "lerna exec --scope @zarm-design/cli -- yarn build",
     "prebuild": "yarn build:cli && yarn build:icons",
     "build": "lerna run build",
