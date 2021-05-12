@@ -5,13 +5,14 @@
   "main": "lib/index.js",
   "typings": "types/index.d.ts",
   "scripts": {
-    "clean": "rimraf types lib coverage",
+    "clean": "rimraf types lib coverage svg",
     "test": "exit 0",
     "coverage": "rimraf coverage && yarn test --coverage",
-    "build:lib": "rimraf types lib && tsc --outDir types -d --emitDeclarationOnly && babel react --extensions .ts,.tsx --out-dir lib --copy-files",
+    "build:types": "rimraf types && tsc --outDir types -d --emitDeclarationOnly",
+    "build:lib": "rimraf lib && babel react --extensions .ts,.tsx --out-dir lib --copy-files",
     "build:react": "rimraf react && svgr ./svg --out-dir ./react",
     "build:svg": "rimraf svg && node ./scripts/exportSVG.js",
-    "build": "yarn build:svg && yarn build:react && yarn build:lib"
+    "build": "yarn build:svg && yarn build:react && yarn build:lib && yarn build:types"
   },
   "author": "jerome.lin@zhongan.com",
   "license": "MIT",
