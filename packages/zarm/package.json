@@ -26,29 +26,32 @@
     "src/style/*",
     "src/**/style/*",
     "es/**/style/*",
-    "lib/**/style/*",
-    "site/**/**.scss"
+    "lib/**/style/*"
   ],
   "main": "lib/index.js",
   "module": "es/index.js",
-  "typings": "lib/index.d.ts",
+  "typings": "types/index.d.ts",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "lib",
+    "es",
+    "dist",
+    "types"
   ],
   "scripts": {
     "clean": "rimraf types lib es dist coverage",
-    "build:es": "rimraf es && tsc --outDir es -d --emitDeclarationOnly && zarm build --mode es --path src --out-dir es --copy-files --build-css",
-    "build:lib": "rimraf lib && tsc --outDir lib -d --emitDeclarationOnly && zarm build --mode lib --path src --out-dir lib --copy-files --build-css",
+    "build:types": "rimraf types && tsc --outDir types -d --emitDeclarationOnly",
+    "build:es": "rimraf es && zarm build --mode es --path src --out-dir es --copy-files --build-css",
+    "build:lib": "rimraf lib && zarm build --mode lib --path src --out-dir lib --copy-files --build-css",
     "build:umd": "rimraf dist && zarm build --mode umd --path src/style/entry.tsx,src/index.tsx --out-dir dist --library-name zarm && zarm build --mode umd-ugly --path src/style/entry.tsx,src/index.tsx --out-dir dist --library-name zarm",
-    "build": "npm run build:lib && npm run build:es && npm run build:umd",
+    "build": "yarn build:types && yarn build:lib && yarn build:es && yarn build:umd",
     "lint:tsc": "tsc --noEmit",
     "lint:script": "eslint --ext .ts,.tsx src",
     "lint:style": "stylelint \"src/**/*.scss\" --syntax scss",
-    "lint": "npm run lint:tsc && npm run lint:script && npm run lint:style",
+    "lint": "yarn lint:tsc && yarn lint:script && yarn lint:style",
     "test": "zarm test -s scripts/jest/setup.js",
     "coverage": "rimraf coverage && yarn test -c",
     "bundlesize": "bundlesize",

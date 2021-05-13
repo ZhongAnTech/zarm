@@ -6,6 +6,10 @@
   "author": "jerome.lin@zhongan.com",
   "main": "lib/index.js",
   "typings": "types/index.d.ts",
+  "files": [
+    "lib",
+    "types"
+  ],
   "scripts": {
     "clean": "rimraf types lib coverage svg",
     "test": "zarm test -s scripts/jest/setup.js",
