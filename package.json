@@ -16,7 +16,7 @@
     "dev": "yarn prebuild && lerna exec --scope site -- yarn start",
     "deploy:build": "yarn prebuild && lerna exec --scope site -- yarn build",
     "deploy": "yarn prebuild && lerna exec --scope site -- yarn deploy",
-    "release": "yarn lint && yarn build && yarn test && lerna publish --conventional-commits",
+    "release": "yarn lint && yarn build && yarn test && lerna publish",
     "prettier": "prettier -c --write '**/*'",
     "pretty-quick": "pretty-quick",
     "bundlesize": "lerna run bundlesize",
