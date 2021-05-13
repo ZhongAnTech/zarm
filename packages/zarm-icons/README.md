@@ -42,7 +42,7 @@ const App = () => {
 render(<App />, document.getElementById('root'));
 ```
 
-You can find all the icon components based on React [here](https://github.com/ZhongAnTech/zarm/tree/master/packages/zarm-icons/src/react)
+> You can find all the icon components based on React [here](https://github.com/ZhongAnTech/zarm/tree/master/packages/zarm-icons/src/react).
 
 ## Component Interface
 
