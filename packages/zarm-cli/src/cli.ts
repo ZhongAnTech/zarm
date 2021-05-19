@@ -5,9 +5,9 @@ import development from './development';
 import deploy from './deploy';
 import template from './template';
 import test from './test';
-import pkg from '../package.json';
+import { version } from '../package.json';
 
-commander.version(String(pkg.version));
+commander.version(version);
 
 commander
   .command('build')
@@ -29,7 +29,7 @@ commander
   .description('运行开发环境')
   .option('-m, --mode <mode>', '编译模式')
   .option('-h, --host <host>', '站点主机地址', '0.0.0.0')
-  .option('-p, --port <port>', '站点端口号', 3000)
+  .option('-p, --port <port>', '站点端口号', '3000')
   .action(development);
 
 commander

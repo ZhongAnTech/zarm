@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs';
-import { Configuration, Plugin, RuleSetRule } from 'webpack';
+import { Configuration } from 'webpack';
 
 export interface FileInfo {
   filePath?: string;
@@ -27,12 +27,11 @@ const getProjectPath = (dir = './'): string => {
 };
 
 export interface CustomConfig extends Configuration {
-  mode?: string;
   entries: object;
   banner: string;
-  setBabelOptions: (options) => void;
-  setRules: (rules: RuleSetRule[]) => void;
-  setPlugins: (plugins: Plugin[]) => void;
+  setBabelOptions: (options: string | { [index: string]: any }) => void;
+  setRules: (rules: Configuration['module']['rules']) => void;
+  setPlugins: (plugins: Configuration['plugins']) => void;
 }
 
 // 获取项目文件

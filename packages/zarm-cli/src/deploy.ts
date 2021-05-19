@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable import/no-dynamic-require */
-import webpack, { Configuration } from 'webpack';
+import webpack, { Configuration, RuleSetRule } from 'webpack';
 import webpackMerge from 'webpack-merge';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
@@ -16,7 +16,7 @@ export interface IDeployConfig {
   analyzer: boolean;
 }
 
-export function getProjectConfig(config: Configuration) {
+export function getProjectConfig(config: Configuration): Configuration {
   const {
     entries,
     setBabelOptions,
@@ -28,7 +28,7 @@ export function getProjectConfig(config: Configuration) {
 
   config.entry = {};
   config.plugins = config.plugins || [];
-  setBabelOptions && setBabelOptions(config.module.rules[0].use[0].options);
+  setBabelOptions && setBabelOptions((config.module.rules[0] as RuleSetRule).use[0].options);
   setRules && setRules(config.module.rules);
   setPlugins && setPlugins(config.plugins);
 

@@ -47,7 +47,6 @@ export default async ({ mode, host, port }: IDevelopmentConfig) => {
     publicPath: '/',
     compress: true,
     noInfo: true,
-    inline: true,
     hot: true,
   };
   const devServer = new WebpackDevServer(compiler, serverConfig);

@@ -9,7 +9,7 @@ import MenuComponent from '@/web/components/Menu';
 import Events from '@/utils/events';
 import Context from '@/utils/context';
 import Locales from '@/locale';
-import { version } from '@zarmDir/package.json';
+import pkg from '@zarmDir/package.json';
 import 'docsearch.js/dist/cdn/docsearch.min.css';
 import './style.scss';
 import 'zarm/style/entry';
@@ -130,7 +130,7 @@ const Header = ({ children }) => {
               <a href="#/">
                 <img alt="logo" src={require('./images/logo.svg')} />
                 Zarm
-                <sup className="logo-version">v{version}</sup>
+                <sup className="logo-version">v{pkg.version}</sup>
               </a>
             </div>
             {moreRender}
