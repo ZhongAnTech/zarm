@@ -1,4 +1,4 @@
-import changeCase from 'change-case';
+import { paramCase } from 'change-case';
 
 export default (compName) => `import React, { PureComponent } from 'react';
 import classnames from 'classnames';
@@ -16,7 +16,7 @@ export default class ${compName} extends PureComponent<${compName}Props, ${compN
   static displayName = '${compName}';
 
   static defaultProps = {
-    prefixCls: 'za-${changeCase.paramCase(compName)}',
+    prefixCls: 'za-${paramCase(compName)}',
   };
 
   render() {

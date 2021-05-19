@@ -1,8 +1,8 @@
-import changeCase from 'change-case';
+import { paramCase } from 'change-case';
 
 export default (compName) => `@import '../../style/core/index';
 
-@include b(${changeCase.paramCase(compName)}) {
+@include b(${paramCase(compName)}) {
 
 }
 `;
