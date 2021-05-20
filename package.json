@@ -12,7 +12,7 @@
     "lint": "yarn lint:script && yarn lint:style",
     "test": "lerna exec --no-private -- yarn test",
     "prebuild": "lerna exec --scope @zarm-design/cli -- yarn build && lerna exec --scope @zarm-design/icons -- yarn build",
-    "build": "lerna exec --no-private -- yarn build",
+    "build": "yarn prebuild && lerna exec --scope zarm -- yarn build",
     "dev": "yarn prebuild && lerna exec --scope site -- yarn start",
     "deploy:build": "yarn prebuild && lerna exec --scope site -- yarn build",
     "deploy": "yarn prebuild && lerna exec --scope site -- yarn deploy",
