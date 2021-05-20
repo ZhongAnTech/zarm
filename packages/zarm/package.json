@@ -66,6 +66,7 @@
     "Android >= 4"
   ],
   "dependencies": {
+    "@babel/runtime": "^7.14.0",
     "@zarm-design/icons": "^0.1.0",
     "better-scroll": "2.0.7",
     "classnames": "2.2.6",
