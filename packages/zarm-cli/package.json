@@ -53,7 +53,7 @@
     "fork-ts-checker-webpack-plugin": "^6.2.10",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
-    "gulp-sass": "^4.1.0",
+    "gulp-dart-sass": "^1.0.2",
     "html-webpack-plugin": "^5.3.1",
     "import-local": "^3.0.2",
     "jest": "^26.5.3",
