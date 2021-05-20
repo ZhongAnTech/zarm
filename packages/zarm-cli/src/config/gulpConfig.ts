@@ -1,5 +1,5 @@
 import gulp from 'gulp';
-import sass from 'gulp-sass';
+import sass from 'gulp-dart-sass';
 import through2 from 'through2';
 import { getProjectPath } from '../utils';
 
