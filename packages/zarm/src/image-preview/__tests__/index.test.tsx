@@ -80,6 +80,7 @@ describe('ImagePreview', () => {
         { url: 'https://static.zhongan.com/website/health/zarm/images/banners/2.png' },
         { url: 'https://static.zhongan.com/website/health/zarm/images/banners/3.png' },
       ],
+      orientation: 'landscape',
       prevVisible: true,
       prevActiveIndex: 0,
       prevImages: [

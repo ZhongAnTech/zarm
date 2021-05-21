@@ -72,7 +72,7 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
                       style="animation-duration: 200ms;"
                     >
                       <div
-                        class="za-image-preview__content"
+                        class="za-image-preview__content za-image-preview__content--landscape"
                       >
                         <div
                           class="za-carousel za-carousel--horizontal"
@@ -186,7 +186,7 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
                   }
                 >
                   <div
-                    className="za-image-preview__content"
+                    className="za-image-preview__content za-image-preview__content--landscape"
                     onClick={[Function]}
                     onMouseDown={[Function]}
                     onMouseMove={[Function]}
@@ -407,7 +407,7 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
                       style="animation-duration: 200ms;"
                     >
                       <div
-                        class="za-image-preview__content"
+                        class="za-image-preview__content za-image-preview__content--landscape"
                       >
                         <div
                           class="za-carousel za-carousel--horizontal"
@@ -524,7 +524,7 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
                   }
                 >
                   <div
-                    className="za-image-preview__content"
+                    className="za-image-preview__content za-image-preview__content--landscape"
                     onClick={[Function]}
                     onMouseDown={[Function]}
                     onMouseMove={[Function]}
