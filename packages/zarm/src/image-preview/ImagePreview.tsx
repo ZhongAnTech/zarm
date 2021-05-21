@@ -10,6 +10,7 @@ import type { Locale } from '../config-provider/PropsType';
 import LOAD_STATUS from './utils/loadStatus';
 import formatImages from './utils/formatImages';
 import showOriginButton from './utils/showOriginButton';
+import Events from '../utils/events';
 
 export interface ImagePreviewProps extends PropsType {
   prefixCls?: string;
@@ -25,6 +26,7 @@ export interface ImagePreviewState {
   prevVisible?: boolean;
   prevActiveIndex?: number;
   prevImages?: Images;
+  orientation?: 'landscape' | 'portrait';
 }
 
 const parseState = (props: ImagePreviewProps): ImagePreviewState => {
@@ -32,6 +34,7 @@ const parseState = (props: ImagePreviewProps): ImagePreviewState => {
   return {
     visible,
     images: formatImages(images),
+    orientation: window?.orientation !== 0 ? 'landscape' : 'portrait',
   };
 };
 
@@ -51,6 +54,14 @@ export default class ImagePreview extends Component<ImagePreviewProps, ImagePrev
 
   state: ImagePreviewState = parseState(this.props);
 
+  componentDidMount() {
+    Events.on(window, 'orientationchange', this.orientationChange);
+  }
+
+  componentWillUnmount() {
+    Events.off(window, 'orientationchange', this.orientationChange);
+  }
+
   static getDerivedStateFromProps(nextProps: ImagePreviewProps, state: ImagePreviewState) {
     if (
       ('visible' in nextProps && nextProps.visible !== state.prevVisible) ||
@@ -69,6 +80,17 @@ export default class ImagePreview extends Component<ImagePreviewProps, ImagePrev
     }
     return null;
   }
+
+  orientationChange = (e) => {
+    switch (e.target.screen.orientation.angle) {
+      case 90:
+      case -90:
+        this.setState({ orientation: 'landscape' });
+        break;
+      default:
+        this.setState({ orientation: 'portrait' });
+    }
+  };
 
   onChange = (index: number) => {
     const { onChange } = this.props;
@@ -209,12 +231,12 @@ export default class ImagePreview extends Component<ImagePreviewProps, ImagePrev
 
   render() {
     const { prefixCls } = this.props;
-    const { currentIndex = 0, visible, images } = this.state;
+    const { currentIndex = 0, visible, images, orientation } = this.state;
 
     return (
       <Popup direction="center" visible={visible} className={prefixCls}>
         <div
-          className={`${prefixCls}__content`}
+          className={`${prefixCls}__content ${prefixCls}__content--${orientation}`}
           onTouchStart={this.onWrapperTouchStart}
           onTouchEnd={this.onWrapperTouchEnd}
           onTouchCancel={this.onWrapperTouchEnd}
