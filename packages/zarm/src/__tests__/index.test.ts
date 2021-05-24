@@ -12,7 +12,10 @@ describe('index', () => {
         "Affix": [Function],
         "BackToTop": [Function],
         "Badge": [Function],
-        "Button": [Function],
+        "Button": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        },
         "Calendar": [Function],
         "Carousel": [Function],
         "Cell": [Function],
@@ -91,7 +94,14 @@ describe('index', () => {
         "SwipeAction": [Function],
         "Switch": [Function],
         "TabBar": [Function],
-        "Tabs": [Function],
+        "Tabs": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "Panel": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "render": [Function],
+        },
         "Toast": [Function],
         "Tooltip": [Function],
         "Trigger": [Function],

@@ -5,18 +5,11 @@ exports[`Stepper defaultValue 1`] = `
   className="za-stepper za-stepper--radius"
 >
   <Button
-    block={false}
     className="za-stepper__sub"
     disabled={false}
-    ghost={false}
-    htmlType="button"
-    loading={false}
     onClick={[Function]}
-    prefixCls="za-button"
-    shadow={false}
     shape="radius"
     size="xs"
-    theme="default"
   >
     <ForwardRef(SvgMinus) />
   </Button>
@@ -30,18 +23,11 @@ exports[`Stepper defaultValue 1`] = `
     value={2}
   />
   <Button
-    block={false}
     className="za-stepper__plus"
     disabled={false}
-    ghost={false}
-    htmlType="button"
-    loading={false}
     onClick={[Function]}
-    prefixCls="za-button"
-    shadow={false}
     shape="radius"
     size="xs"
-    theme="default"
   >
     <ForwardRef(SvgPlus) />
   </Button>
