@@ -3,7 +3,10 @@ export { default as ActionSheet } from './action-sheet';
 // export { default as Alert } from './alert';
 export { default as BackToTop } from './back-to-top';
 export { default as Badge } from './badge';
+
+export type { ButtonProps, ButtonTheme, ButtonSize, ButtonShape } from './button';
 export { default as Button } from './button';
+
 export { default as Calendar } from './calendar';
 export { default as Cell } from './cell';
 export { default as Checkbox } from './checkbox';
@@ -42,7 +45,10 @@ export { default as Stepper } from './stepper';
 export { default as Carousel } from './carousel';
 export { default as SwipeAction } from './swipe-action';
 export { default as Switch } from './switch';
+
+export type { TabsProps, TabPanelProps } from './tabs';
 export { default as Tabs } from './tabs';
+
 export { default as Toast } from './toast';
 export { default as Tooltip } from './tooltip';
 export { default as Trigger } from './trigger';

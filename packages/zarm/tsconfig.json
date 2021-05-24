@@ -12,7 +12,7 @@
     "noUnusedParameters": true,
     "noUnusedLocals": true,
     "allowSyntheticDefaultImports": true,
-    "target": "es6",
+    "target": "ES2019",
     "skipLibCheck": true,
     "esModuleInterop": true,
     "types": ["react", "react-dom", "react-native", "node", "jest"]

@@ -44,31 +44,13 @@ exports[`SwipeAction renders correctly 1`] = `
   left={
     Array [
       <Button
-        block={false}
-        disabled={false}
-        ghost={false}
-        htmlType="button"
-        loading={false}
         onClick={[MockFunction]}
-        prefixCls="za-button"
-        shadow={false}
-        shape="radius"
-        size="md"
         theme="primary"
       >
         左按钮1
       </Button>,
       <Button
-        block={false}
-        disabled={false}
-        ghost={false}
-        htmlType="button"
-        loading={false}
         onClick={[MockFunction]}
-        prefixCls="za-button"
-        shadow={false}
-        shape="radius"
-        size="md"
         theme="danger"
       >
         左按钮2
@@ -82,31 +64,13 @@ exports[`SwipeAction renders correctly 1`] = `
   right={
     Array [
       <Button
-        block={false}
-        disabled={false}
-        ghost={false}
-        htmlType="button"
-        loading={false}
         onClick={[MockFunction]}
-        prefixCls="za-button"
-        shadow={false}
-        shape="radius"
-        size="md"
         theme="primary"
       >
         右按钮1
       </Button>,
       <Button
-        block={false}
-        disabled={false}
-        ghost={false}
-        htmlType="button"
-        loading={false}
         onClick={[MockFunction]}
-        prefixCls="za-button"
-        shadow={false}
-        shape="radius"
-        size="md"
         theme="danger"
       >
         右按钮2
@@ -121,17 +85,8 @@ exports[`SwipeAction renders correctly 1`] = `
       className="za-swipe-action__actions za-swipe-action__actions--left"
     >
       <Button
-        block={false}
-        disabled={false}
-        ghost={false}
-        htmlType="button"
         key="0"
-        loading={false}
         onClick={[Function]}
-        prefixCls="za-button"
-        shadow={false}
-        shape="radius"
-        size="md"
         theme="primary"
       >
         <button
@@ -146,17 +101,8 @@ exports[`SwipeAction renders correctly 1`] = `
         </button>
       </Button>
       <Button
-        block={false}
-        disabled={false}
-        ghost={false}
-        htmlType="button"
         key="1"
-        loading={false}
         onClick={[Function]}
-        prefixCls="za-button"
-        shadow={false}
-        shape="radius"
-        size="md"
         theme="danger"
       >
         <button
@@ -175,17 +121,8 @@ exports[`SwipeAction renders correctly 1`] = `
       className="za-swipe-action__actions za-swipe-action__actions--right"
     >
       <Button
-        block={false}
-        disabled={false}
-        ghost={false}
-        htmlType="button"
         key="0"
-        loading={false}
         onClick={[Function]}
-        prefixCls="za-button"
-        shadow={false}
-        shape="radius"
-        size="md"
         theme="primary"
       >
         <button
@@ -200,17 +137,8 @@ exports[`SwipeAction renders correctly 1`] = `
         </button>
       </Button>
       <Button
-        block={false}
-        disabled={false}
-        ghost={false}
-        htmlType="button"
         key="1"
-        loading={false}
         onClick={[Function]}
-        prefixCls="za-button"
-        shadow={false}
-        shape="radius"
-        size="md"
         theme="danger"
       >
         <button
