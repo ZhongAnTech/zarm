@@ -5,8 +5,8 @@ import BScroll from 'better-scroll';
 import { mocked } from 'ts-jest/utils';
 import Wheel from '../../wheel';
 import PickerView from '../index';
-import { DataSource } from '../PropsType';
 import parseProps from '../utils/parseProps';
+import type { PickerDataSource } from '../PropsType';
 
 // TODO: make mock package for better-scroll package
 const bsScrollInstance = {
@@ -42,7 +42,7 @@ describe('PickerView', () => {
   });
 
   it('should render wheels if datasource is not empty', () => {
-    const dataSource: DataSource = [
+    const dataSource: PickerDataSource = [
       { label: 'a', value: 1 },
       { label: 'b', value: 2 },
     ];
@@ -84,7 +84,7 @@ describe('PickerView', () => {
     bsScrollInstance.getSelectedIndex.mockReturnValueOnce(1);
 
     mockedBScroll.mockReturnValueOnce(bsScrollInstance as any);
-    const dataSource: DataSource = [
+    const dataSource: PickerDataSource = [
       { label: 'a', value: 1 },
       { label: 'b', value: 2 },
     ];

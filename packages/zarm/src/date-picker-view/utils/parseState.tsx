@@ -1,6 +1,6 @@
-import BaseDatePickerViewProps, { DateValue } from '../PropsType';
+import type { BaseDatePickerViewProps, DatePickerValue } from '../PropsType';
 
-const isExtendDate = (date?: DateValue): Date | '' => {
+const isExtendDate = (date?: DatePickerValue): Date | '' => {
   if (date instanceof Date) {
     return date;
   }
