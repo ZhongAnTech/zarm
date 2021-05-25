@@ -7,7 +7,7 @@ import { scrollTo } from '../utils/dom';
 import type { TabPanelProps } from './TabPanel';
 import type { BaseTabsProps } from './PropsType';
 
-const getChildChecked = (children: React.ReactNode) => {
+const getChildChecked = (children: TabPanelProps['children']) => {
   let selectIndex;
   React.Children.forEach(children, (item, index) => {
     if (React.isValidElement(item) && item.props && item.props.selected) {
@@ -17,12 +17,12 @@ const getChildChecked = (children: React.ReactNode) => {
   return selectIndex;
 };
 
-const parseValueBoundary = (inputValue, children) => {
+const parseValueBoundary = (inputValue: TabsProps['value'], children: TabPanelProps['children']) => {
   const count = React.Children.count(children);
-  if (inputValue <= 0) {
+  if (inputValue! <= 0) {
     return 0;
   }
-  if (inputValue > count - 1) {
+  if (inputValue! > count - 1) {
     return count - 1;
   }
   return inputValue;
@@ -80,7 +80,7 @@ const Tabs = React.forwardRef<unknown, TabsProps>(({
 
   // 计算 line 大小和位置
   const caclLineSizePos = () => {
-    const newValue = parseValue(currentValue);
+    const newValue = parseValue(currentValue)!;
     const ChildCount = React.Children.count(children);
 
     let pos = 100 * newValue;
@@ -184,7 +184,7 @@ const Tabs = React.forwardRef<unknown, TabsProps>(({
     if (!scrollable) {
       return;
     }
-    const newValue = parseValue(currentValue);
+    const newValue = parseValue(currentValue)!;
     const el = tablistRef.current!.children[newValue];
     const size = isVertical
       ? getItemStyle(el, 'height')
@@ -197,7 +197,7 @@ const Tabs = React.forwardRef<unknown, TabsProps>(({
     if (!scrollable) {
       return false;
     }
-    const newValue = parseValue(currentValue);
+    const newValue = parseValue(currentValue)!;
     const index = newValue - 1 >= 0 ? newValue - 1 : 0;
     const prevTabItem = tablistRef.current!.childNodes[index];
     if (scrollable && tablistRef.current && prevTabItem) {
