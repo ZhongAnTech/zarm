@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export interface TabsProps {
+export interface BaseTabsProps {
   value?: number;
   defaultValue?: number;
   lineWidth?: string | number;
@@ -12,7 +12,7 @@ export interface TabsProps {
   children?: React.ReactNode;
 }
 
-export interface TabPanelProps {
+export interface BaseTabPanelProps {
   selected?: boolean;
   disabled?: boolean;
   title?: React.ReactNode;
