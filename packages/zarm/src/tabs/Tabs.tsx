@@ -1,10 +1,11 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import { TabsProps as BaseTabsProps } from './PropsType';
-import TabPanel, { TabPanelProps } from './TabPanel';
+import TabPanel from './TabPanel';
 import Carousel from '../carousel';
 import { getTransformPropValue, getPxStyle } from './util/index';
 import { scrollTo } from '../utils/dom';
+import type { TabPanelProps } from './TabPanel';
+import type { BaseTabsProps } from './PropsType';
 
 const getChildChecked = (children: React.ReactNode) => {
   let selectIndex;

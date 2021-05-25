@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import { TabPanelProps as BaseTabPanelProps } from './PropsType';
+import type { BaseTabPanelProps } from './PropsType';
 
 export interface TabPanelProps extends BaseTabPanelProps {
   prefixCls?: string;
