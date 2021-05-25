@@ -1,6 +1,6 @@
 # Zarm
 
-<img width="150" src="https://zarm.design/images/logo.732d9561.svg">
+<img width="150" src="https://zarm.design/images/logo.1a6cfc30.svg">
 
 Zarm (读音 /zɑːm/，中文可发音为 **扎姆**) 是众安科技基于 React、React-Native 研发的一款适用于企业级的移动端 UI 组件库。
 
