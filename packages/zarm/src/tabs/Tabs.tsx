@@ -52,20 +52,19 @@ interface CompoundedComponent extends React.ForwardRefExoticComponent<TabsProps 
   Panel: typeof TabPanel;
 }
 
-const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
-  const {
-    prefixCls = 'za-tabs',
-    className,
-    value,
-    defaultValue,
-    disabled = false,
-    swipeable = false,
-    scrollable = false,
-    direction = 'horizontal',
-    lineWidth,
-    onChange,
-    children,
-  } = props;
+const Tabs = React.forwardRef<unknown, TabsProps>(({
+  prefixCls = 'za-tabs',
+  className,
+  value,
+  defaultValue,
+  disabled = false,
+  swipeable = false,
+  scrollable = false,
+  direction = 'horizontal',
+  lineWidth,
+  onChange,
+  children,
+}: TabsProps, ref) => {
   const isVertical: boolean = direction === 'vertical';
   const tabsRef = (ref as any) || React.createRef<HTMLElement>();
   const carouselRef = React.useRef<Carousel>(null);
@@ -104,11 +103,11 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
   };
 
   const onTabChange = React.useCallback((newValue: number) => {
-    if (!('value' in props)) {
+    if (typeof value === 'undefined') {
       setCurrentValue(newValue);
     }
     typeof onChange === 'function' && onChange(newValue);
-  }, [onChange, props]);
+  }, [value, onChange]);
 
   const onTabClick = (tab: React.ReactElement<TabPanelProps, typeof TabPanel>, index: number) => {
     if (disabled || tab.props.disabled) {

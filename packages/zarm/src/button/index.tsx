@@ -1,50 +1,44 @@
-import React, {
-  MouseEventHandler,
-  AnchorHTMLAttributes,
-  ButtonHTMLAttributes,
-} from 'react';
+import * as React from 'react';
 import classnames from 'classnames';
-import BasePropsType, { ButtonTheme, ButtonSize, ButtonShape } from './PropsType';
 import ActivityIndicator from '../activity-indicator';
+import type { BaseButtonProps as BaseType, ButtonTheme, ButtonSize, ButtonShape } from './PropsType';
 
-export { ButtonTheme, ButtonSize, ButtonShape };
+export type { ButtonTheme, ButtonSize, ButtonShape };
 
-interface BaseButtonPropsType extends BasePropsType {
+interface BaseButtonProps extends BaseType {
   prefixCls?: string;
-  onClick?: MouseEventHandler<HTMLElement>;
+  onClick?: React.MouseEventHandler<HTMLElement>;
 }
 
 export type AnchorButtonProps = {
   mimeType?: string;
-} & BaseButtonPropsType &
-  Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'type' | 'onClick'>;
+} & BaseButtonProps &
+  Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'type' | 'onClick'>;
 
 export type NativeButtonProps = {
   htmlType?: 'button' | 'submit' | 'reset';
-} & BaseButtonPropsType &
-  Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'onClick'>;
+} & BaseButtonProps &
+  Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'onClick'>;
 
 export type ButtonProps = Partial<AnchorButtonProps & NativeButtonProps>;
 
-const Button = React.forwardRef<unknown, ButtonProps>((props, ref) => {
-  const {
-    prefixCls = 'za-button',
-    className,
-    theme = 'default',
-    size = 'md',
-    shape = 'radius',
-    icon,
-    block = false,
-    ghost = false,
-    shadow = false,
-    disabled = false,
-    loading = false,
-    htmlType = 'button' as ButtonProps['htmlType'],
-    onClick,
-    children,
-    ...rest
-  } = props;
-
+const Button = React.forwardRef<unknown, ButtonProps>(({
+  prefixCls = 'za-button',
+  className,
+  theme = 'default',
+  size = 'md',
+  shape = 'radius',
+  icon,
+  block = false,
+  ghost = false,
+  shadow = false,
+  disabled = false,
+  loading = false,
+  htmlType = 'button' as ButtonProps['htmlType'],
+  onClick,
+  children,
+  ...restProps
+}: ButtonProps, ref) => {
   const buttonRef = (ref as any) || React.createRef<HTMLElement>();
   const iconRender = loading ? <ActivityIndicator /> : icon;
   const childrenRender = children && <span>{children}</span>;
@@ -78,8 +72,8 @@ const Button = React.forwardRef<unknown, ButtonProps>((props, ref) => {
     }
   };
 
-  if ((rest as AnchorButtonProps).href !== undefined) {
-    const { mimeType, ...anchorRest } = rest;
+  if ((restProps as AnchorButtonProps).href !== undefined) {
+    const { mimeType, ...anchorRest } = restProps;
     cls = classnames(cls, `${prefixCls}--link`);
 
     return (
@@ -96,7 +90,7 @@ const Button = React.forwardRef<unknown, ButtonProps>((props, ref) => {
     );
   }
 
-  const { mimeType, target, ...nativeRest } = rest;
+  const { mimeType, target, ...nativeRest } = restProps;
 
   return (
     <button

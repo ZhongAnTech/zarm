@@ -9,10 +9,10 @@ import {
   ViewStyle,
   GestureResponderEvent,
 } from 'react-native';
-import PropsType from './PropsType';
 import buttonStyle from './style/index.native';
+import type { BaseButtonProps } from './PropsType';
 
-export interface ButtonProps extends PropsType {
+export interface ButtonProps extends BaseButtonProps {
   style?: CSSProperties;
   styles?: typeof buttonStyle;
   onClick?: (event: GestureResponderEvent) => void;
