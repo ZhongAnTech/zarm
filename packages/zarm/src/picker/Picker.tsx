@@ -2,21 +2,21 @@ import React, { Component } from 'react';
 import isEqual from 'lodash/isEqual';
 import Popup from '../popup';
 import PickerView from '../picker-view';
-import BasePickerProps from './PropsType';
 import parseProps from '../picker-view/utils/parseProps';
 import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
-import { DataSource } from '../picker-view/PropsType';
-import { WheelValue, WheelItem } from '../wheel/PropsType';
+import type { BasePickerProps } from './PropsType';
+import type { PickerDataSource } from '../picker-view/PropsType';
+import type { WheelValue, WheelItem } from '../wheel/PropsType';
 
 export interface PickerProps extends BasePickerProps {
   prefixCls?: string;
   className?: string;
 }
 
-export interface PickerState {
+interface PickerState {
   value: Array<WheelValue>;
   objValue: Array<WheelItem>;
-  dataSource: DataSource;
+  dataSource: PickerDataSource;
   tempObjValue?: Array<WheelItem>;
   tempValue?: Array<WheelValue>;
   stopScroll?: boolean;

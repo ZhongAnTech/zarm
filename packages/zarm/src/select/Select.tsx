@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import isEqual from 'lodash/isEqual';
-import BaseSelectProps from './PropsType';
 import Picker from '../picker';
 import parseProps from '../picker-view/utils/parseProps';
 import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
-import { WheelItem } from '../wheel/PropsType';
+import type { BaseSelectProps } from './PropsType';
+import type { WheelItem } from '../wheel/PropsType';
 
 export interface SelectProps extends BaseSelectProps {
   prefixCls?: string;

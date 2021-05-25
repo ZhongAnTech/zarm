@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import isEqual from 'lodash/isEqual';
-import BaseDatePickerViewProps from './PropsType';
 import PickerView from '../picker-view';
 import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
 import { isExtendDate, parseState } from './utils/parseState';
 import { cloneDate, getDaysInMonth, getGregorianCalendar, pad, setMonth } from './utils/date';
+import type { BaseDatePickerViewProps } from './PropsType';
 
 const DATETIME = 'datetime';
 const DATE = 'date';

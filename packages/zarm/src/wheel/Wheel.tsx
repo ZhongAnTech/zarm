@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import BScroll from 'better-scroll';
 import isEqual from 'lodash/isEqual';
-import BaseWheelProps, { WheelItem, WheelValue } from './PropsType';
 import { isArray } from '../utils/validate';
+import type { BaseWheelProps, WheelItem, WheelValue } from './PropsType';
 
 const getValue = (props, defaultValue?: any) => {
   if ('value' in props) {
