@@ -1,10 +1,10 @@
-import { ReactNode } from 'react';
+import * as React from 'react';
 
 export type ButtonTheme = 'default' | 'primary' | 'danger';
 export type ButtonSize = 'lg' | 'md' | 'sm' | 'xs';
 export type ButtonShape = 'radius' | 'rect' | 'round' | 'circle';
 
-export default interface PropsType {
+export interface BaseButtonProps {
   theme?: ButtonTheme;
   size?: ButtonSize;
   shape?: ButtonShape;
@@ -14,5 +14,5 @@ export default interface PropsType {
   focus?: boolean;
   disabled?: boolean;
   loading?: boolean;
-  icon?: ReactNode;
+  icon?: React.ReactNode;
 }
