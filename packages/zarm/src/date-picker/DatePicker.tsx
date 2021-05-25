@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import isEqual from 'lodash/isEqual';
-import BaseDatePickerProps from './PropsType';
 import Popup from '../popup';
 import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
 import DatePickerView from '../date-picker-view';
 import { parseState } from '../date-picker-view/utils/parseState';
+import type { BaseDatePickerProps } from './PropsType';
 
 export interface DatePickerProps extends BaseDatePickerProps {
   prefixCls?: string;

@@ -1,9 +1,9 @@
-import BaseDatePickerProps from '../date-picker/PropsType';
+import type { Locale } from '../config-provider/PropsType';
+import type { BaseDatePickerProps } from '../date-picker/PropsType';
 
-type datePickerPropsWithoutVisible = Omit<BaseDatePickerProps, 'visible'>;
-
-export default interface BaseDateSelectProps extends datePickerPropsWithoutVisible {
+export interface BaseDateSelectProps extends Omit<BaseDatePickerProps, 'visible' | 'locale'> {
   placeholder?: string;
   format?: string;
   hasArrow?: boolean;
+  locale?: Locale['DatePickerView'] & Locale['DatePicker'] & Locale['DateSelect'];
 }

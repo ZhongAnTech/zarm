@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import isEqual from 'lodash/isEqual';
-import BasePickerViewProps from './PropsType';
 import Wheel from '../wheel';
 import { isCascader } from '../utils/validate';
 import parseProps from './utils/parseProps';
 import removeFnFromProps from './utils/removeFnFromProps';
-import { WheelValue, WheelItem } from '../wheel/PropsType';
+import type { BasePickerViewProps } from './PropsType';
+import type { WheelValue, WheelItem } from '../wheel/PropsType';
 
 export interface PickerViewProps extends BasePickerViewProps {
   prefixCls?: string;
   className?: string;
 }
 
-export interface PickerViewState {
+interface PickerViewState {
   value: Array<WheelValue>;
   dataSource: WheelItem[][];
 }
