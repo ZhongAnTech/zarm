@@ -95,7 +95,7 @@ const initState = {
 };
 
 const reducer = (state, action) => {
-  const { type, key, visible, value, valueMember, dataSource } = action;
+  const { type, key, value, valueMember, dataSource } = action;
 
   switch (type) {
     case 'visible':
@@ -133,6 +133,8 @@ const reducer = (state, action) => {
           dataSource,
         },
       };
+
+    default:
   }
 };
 
@@ -315,7 +317,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```jsx
 import { useState, useEffect } from 'react';
-import { Select, Cell, Icon } from 'zarm';
+import { Select, Cell } from 'zarm';
 
 // 级联数据
 const CASCADE_DATA = [
@@ -409,7 +411,7 @@ const Demo = () => {
   return (
     <PickerView
       value={value}
-      valueMember="code"
+      valueMember={valueMember}
       dataSource={dataSource}
       onChange={(selected) => {
         console.log('PickerView onChange: ', selected);

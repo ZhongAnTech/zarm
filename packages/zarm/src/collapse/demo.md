@@ -4,7 +4,7 @@
 
 ```jsx
 import { useState } from 'react';
-import { Cell, Switch, Collapse, Checkbox } from 'zarm';
+import { Collapse, Checkbox } from 'zarm';
 
 const Demo = () => {
   const [animated, setAnimated] = useState(false);
