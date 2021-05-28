@@ -38,6 +38,7 @@
     "babel-plugin-prismjs": "^2.0.1",
     "browserslist": "^4.6.6",
     "change-case": "^4.1.1",
+    "codesandbox": "^2.2.3",
     "core-js": "^3.12.1",
     "docsearch.js": "^2.6.1",
     "gh-pages": "^3.1.0",

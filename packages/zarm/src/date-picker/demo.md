@@ -27,7 +27,7 @@ const initState = {
 };
 
 const reducer = (state, action) => {
-  const { type, key, visible, value } = action;
+  const { type, key, value } = action;
 
   switch (type) {
     case 'visible':
@@ -47,6 +47,8 @@ const reducer = (state, action) => {
           value,
         },
       };
+
+    default:
   }
 };
 
@@ -173,7 +175,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```jsx
 import { useState } from 'react';
-import { Cell, DateSelect, Icon } from 'zarm';
+import { Cell, DateSelect } from 'zarm';
 
 const Demo = () => {
   const [value, setValue] = useState('');

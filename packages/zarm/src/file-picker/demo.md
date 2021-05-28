@@ -36,7 +36,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```jsx
 import { useState } from 'react';
-import { Cell, FilePicker, Icon, Toast, Badge } from 'zarm';
+import { FilePicker, Icon, Toast, Badge } from 'zarm';
 
 const MAX_FILES_COUNT = 5;
 

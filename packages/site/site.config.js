@@ -293,7 +293,7 @@ module.exports = {
         key: 'config-provider',
         name: '全局配置',
         module: () => import('zarm/config-provider/demo.md'),
-        style: false,
+        style: true,
       },
       {
         key: 'locale-provider',
