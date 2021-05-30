@@ -47,8 +47,13 @@ const Header = ({ children }) => {
 
   const NAV_ITEMS = [
     {
+      key: 'docs',
+      link: '#/docs/quick-start',
+      title: <FormattedMessage id="app.home.nav.docs" />,
+    },
+    {
       key: 'components',
-      link: '#/components/quick-start',
+      link: '#/components/button',
       title: <FormattedMessage id="app.home.nav.components" />,
     },
     {
@@ -74,7 +79,7 @@ const Header = ({ children }) => {
 
   const menuRender = currentPageKey !== '/' && (
     <div className="header-icon header-icon-menu">
-      {currentPageKey === 'components' && (
+      {currentPageKey !== 'design' && (
         <>
           <Icons type="list" onClick={() => toggleMenu(!menu)} />
           <Popup visible={menu} direction="left" onMaskClick={() => toggleMenu(!menu)}>
