@@ -9,6 +9,7 @@ export default {
   'app.components.type.other': 'Other',
 
   'app.home.nav.search': 'Search Components',
+  'app.home.nav.docs': 'Docs',
   'app.home.nav.components': 'Components',
   'app.home.nav.resources': 'Resources',
   'app.home.footer.resources': 'Resources',

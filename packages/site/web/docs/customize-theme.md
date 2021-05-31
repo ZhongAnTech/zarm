@@ -36,7 +36,7 @@ return (
 document.documentElement.style.setProperty('--theme-primary', '#108ee9');
 ```
 
-以下是一些最常用的通用变量，所有样式变量可以在 [这里](https://github.com/ZhongAnTech/zarm/blob/master/components/style/themes/default.scss) 找到。
+以下是一些最常用的通用变量，所有样式变量可以在 [这里](https://github.com/ZhongAnTech/zarm/blob/master/packages/zarm/src/style/themes/default.scss) 找到。
 
 ```scss
 --theme-primary: #00bc70; // 全局主色

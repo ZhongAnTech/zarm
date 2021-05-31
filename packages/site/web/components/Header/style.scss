@@ -173,14 +173,27 @@ header {
   background-color: #fff;
 }
 
+@media (max-width: 1200px) {
+  header {
+    .lang,
+    .github {
+      display: none;
+    }
+  }
+}
+
 @media (max-width: 1000px) {
+  header {
+    .search {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 768px) {
   header {
     .logo {
       flex: 1;
-    }
-
-    .search {
-      display: none;
     }
 
     nav {
