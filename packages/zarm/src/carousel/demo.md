@@ -176,7 +176,7 @@ ReactDOM.render(
 | autoPlayIntervalTime | number                         | 3000   | 自动轮播时间间隔，单位：毫秒                   |
 | moveDistanceRatio    | number                         | 0.5    | 移动距离比例临界点                             |
 | moveTimeSpan         | number                         | 300    | 移动时间跨度临界点，单位：毫秒                 |
-| animationDuration    | number                         | 300    | 动画执行时间，单位：毫秒                       |
+| animationDuration    | number                         | 500    | 动画执行时间，单位：毫秒                       |
 | showPagination       | boolean                        | true   | 是否显示分页器                                 |
 | onChange             | (activeIndex?: number) => void | -      | 值变化时触发的回调函数                         |
 | onChangeEnd          | (activeIndex?: number) => void | -      | 值变化动画结束后触发的回调函数                 |

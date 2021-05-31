@@ -198,7 +198,7 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
                   >
                     <Carousel
                       activeIndex={0}
-                      animationDuration={300}
+                      animationDuration={500}
                       autoPlay={false}
                       autoPlayIntervalTime={3000}
                       direction="left"
@@ -536,7 +536,7 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
                   >
                     <Carousel
                       activeIndex={0}
-                      animationDuration={300}
+                      animationDuration={500}
                       autoPlay={false}
                       autoPlayIntervalTime={3000}
                       direction="left"
