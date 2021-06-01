@@ -1,5 +1,11 @@
 name: Sync mirror to Gitee
-on: [push, delete]
+on: 
+  delete:
+  push:
+    branches:
+      - master
+      - feature
+      - gh-pages
 
 jobs:
   mirror_to_gitee:
