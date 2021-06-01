@@ -1,6 +1,6 @@
 {
   "name": "zarm",
-  "version": "2.9.0",
+  "version": "2.9.1",
   "description": "基于 React 的移动端UI库",
   "keywords": [
     "react",
@@ -55,7 +55,8 @@
     "test": "zarm test -s scripts/jest/setup.js",
     "coverage": "rimraf coverage && yarn test -c",
     "bundlesize": "bundlesize",
-    "install-react-16": "yarn add react@16 react-dom@16 enzyme-adapter-react-16"
+    "install-react-16": "yarn add react@16 react-dom@16 enzyme-adapter-react-16",
+    "release": "bash scripts/release.sh"
   },
   "browserslist": [
     "last 2 versions",
