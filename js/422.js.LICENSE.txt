@@ -1,6 +1,6 @@
 /*!
  * better-scroll / better-scroll
- * (c) 2016-2020 ustbhuangyi
+ * (c) 2016-2021 ustbhuangyi
  * Released under the MIT License.
  */
 
