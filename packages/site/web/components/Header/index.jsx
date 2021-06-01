@@ -48,17 +48,17 @@ const Header = ({ children }) => {
   const NAV_ITEMS = [
     {
       key: 'docs',
-      link: '#/docs/quick-start',
+      link: '#/docs',
       title: <FormattedMessage id="app.home.nav.docs" />,
     },
     {
       key: 'components',
-      link: '#/components/button',
+      link: '#/components',
       title: <FormattedMessage id="app.home.nav.components" />,
     },
     {
       key: 'design',
-      link: '#/design/download',
+      link: '#/design',
       title: <FormattedMessage id="app.home.nav.resources" />,
     },
     { key: 'gitee', link: 'https://zarm.gitee.io', title: '国内镜像' },
