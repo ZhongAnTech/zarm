@@ -1231,94 +1231,108 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@better-scroll/core@^2.0.7", "@better-scroll/core@^2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@better-scroll/core/-/core-2.3.0.tgz#5f05580db3b3f424909183e14215c514374d7e87"
-  integrity sha512-7ThX4HvqpqB1OwtZa7hQLzBLHO96CcQb4EpAl2KLdgTNBh3/Y1i5cn+HumMB/Bj4FJyGfxKTX0ML+CBOruGGbg==
+"@better-scroll/core@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.nlark.com/@better-scroll/core/download/@better-scroll/core-2.3.1.tgz?cache=0&sync_timestamp=1620476113873&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40better-scroll%2Fcore%2Fdownload%2F%40better-scroll%2Fcore-2.3.1.tgz#4c29a3b7ea462c659dba0a288a060ddb1a4dde14"
+  integrity sha1-TCmjt+pGLGWdugooigYN2xpN3hQ=
   dependencies:
-    "@better-scroll/shared-utils" "^2.3.0"
+    "@better-scroll/shared-utils" "^2.3.1"
 
-"@better-scroll/infinity@^2.0.7":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@better-scroll/infinity/-/infinity-2.3.0.tgz#00e14321f8b1c3116942ce66e11c78eb99a1206b"
-  integrity sha512-qWUfNm3N6qTQLm25HD9CXpsttulvh1oLDY3mtS8rfGhBGtGAsJEJH3+hDMrkrLOTZ5+j+dgsml8xCKqrjjDdGw==
+"@better-scroll/indicators@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.nlark.com/@better-scroll/indicators/download/@better-scroll/indicators-2.3.1.tgz?cache=0&sync_timestamp=1620476113926&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40better-scroll%2Findicators%2Fdownload%2F%40better-scroll%2Findicators-2.3.1.tgz#e9ef087f38d16ced3e873f80b41d9ab07d4224d3"
+  integrity sha1-6e8IfzjRbO0+hz+AtB2asH1CJNM=
   dependencies:
-    "@better-scroll/core" "^2.3.0"
+    "@better-scroll/core" "^2.3.1"
 
-"@better-scroll/mouse-wheel@^2.0.7":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@better-scroll/mouse-wheel/-/mouse-wheel-2.3.0.tgz#ff320e6391dc258731d369a8ed0ac8ef652da3b0"
-  integrity sha512-HFGY5IIRUr2wjqg8Do1oCE5Wb8drYD7N/QTO929JFvp8v36Nwi4m9WM/1sVser73Zh5+6XMhtie1CGyJv2D9Zw==
+"@better-scroll/infinity@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.nlark.com/@better-scroll/infinity/download/@better-scroll/infinity-2.3.1.tgz?cache=0&sync_timestamp=1620476114158&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40better-scroll%2Finfinity%2Fdownload%2F%40better-scroll%2Finfinity-2.3.1.tgz#862d5afeb51224dbff4d7ed477cefd94fecff164"
+  integrity sha1-hi1a/rUSJNv/TX7Ud879lP7P8WQ=
   dependencies:
-    "@better-scroll/core" "^2.3.0"
+    "@better-scroll/core" "^2.3.1"
 
-"@better-scroll/movable@^2.0.7":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@better-scroll/movable/-/movable-2.3.0.tgz#d639ae62e5e3bb4d1e97f2c67e410ea575771e80"
-  integrity sha512-UQZW9IFHMNawmChd8WxXM+EzdtytXBpinf8Q5+bmHOnTdBVqwPLy2KeVjux0jKWUOqJdNWxH8BGyI4wFRf8MwQ==
+"@better-scroll/mouse-wheel@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.nlark.com/@better-scroll/mouse-wheel/download/@better-scroll/mouse-wheel-2.3.1.tgz?cache=0&sync_timestamp=1620476114189&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40better-scroll%2Fmouse-wheel%2Fdownload%2F%40better-scroll%2Fmouse-wheel-2.3.1.tgz#486f72cac74d8bdf46524d4aac68bb6f273016dd"
+  integrity sha1-SG9yysdNi99GUk1KrGi7bycwFt0=
   dependencies:
-    "@better-scroll/core" "^2.3.0"
+    "@better-scroll/core" "^2.3.1"
 
-"@better-scroll/nested-scroll@^2.0.7":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@better-scroll/nested-scroll/-/nested-scroll-2.3.0.tgz#17b3e3abe2afd60b7064273bce2bd7f5d07447a8"
-  integrity sha512-ET905h48R6fWt+JVClM1rdeFVoodzBHjOy2oVZZ7hLR/la5hWeTSBe8P6JAfMaSGtXWSyCwS1Hah74ty3Vg4Ng==
+"@better-scroll/movable@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.nlark.com/@better-scroll/movable/download/@better-scroll/movable-2.3.1.tgz?cache=0&sync_timestamp=1620476113453&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40better-scroll%2Fmovable%2Fdownload%2F%40better-scroll%2Fmovable-2.3.1.tgz#82bfbccf5fad84443b465616b2d14a40b13995a1"
+  integrity sha1-gr+8z1+thEQ7RlYWstFKQLE5laE=
   dependencies:
-    "@better-scroll/core" "^2.3.0"
+    "@better-scroll/core" "^2.3.1"
 
-"@better-scroll/observe-dom@^2.0.7":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@better-scroll/observe-dom/-/observe-dom-2.3.0.tgz#6b7f5987f75d3256c7cf07aaafbc67459e5d6325"
-  integrity sha512-c0Z6zjHdgX/979KDbUokTMUrYD+L+u75UPIdTk4IUCa3w3XwxD1ZMb9FUBiJ8E225DdADE6SHOk01TcdKptmiQ==
+"@better-scroll/nested-scroll@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.nlark.com/@better-scroll/nested-scroll/download/@better-scroll/nested-scroll-2.3.1.tgz?cache=0&sync_timestamp=1620476113432&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40better-scroll%2Fnested-scroll%2Fdownload%2F%40better-scroll%2Fnested-scroll-2.3.1.tgz#d8ca13cec7e36449a1536c26b52fe633dc68c914"
+  integrity sha1-2MoTzsfjZEmhU2wmtS/mM9xoyRQ=
   dependencies:
-    "@better-scroll/core" "^2.3.0"
+    "@better-scroll/core" "^2.3.1"
 
-"@better-scroll/pull-down@^2.0.7":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@better-scroll/pull-down/-/pull-down-2.3.0.tgz#258885d929ab3283b74a7e82bb7fd0b8640f0874"
-  integrity sha512-UFX+44aLUKs3Ri75qqmn/Iq8tNRw3v+FLH5WIIdssj6jD0XxOZR27J+ZmDSlh24El3JYaaId50lQc+J/bbB1HQ==
+"@better-scroll/observe-dom@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.nlark.com/@better-scroll/observe-dom/download/@better-scroll/observe-dom-2.3.1.tgz?cache=0&sync_timestamp=1620476113305&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40better-scroll%2Fobserve-dom%2Fdownload%2F%40better-scroll%2Fobserve-dom-2.3.1.tgz#bfb09456305b8a47dae60804d7647f9db36ae104"
+  integrity sha1-v7CUVjBbikfa5ggE12R/nbNq4QQ=
   dependencies:
-    "@better-scroll/core" "^2.3.0"
+    "@better-scroll/core" "^2.3.1"
 
-"@better-scroll/pull-up@^2.0.7":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@better-scroll/pull-up/-/pull-up-2.3.0.tgz#471e984b3edfb70ee71a7df82671518830a12b11"
-  integrity sha512-xzZg6sHVJecYw+qw+gaOlTlQ5ITn6xVrbVRtNsXGsnpzjV2RvtTRLzO1udJuLCicLo9e1USwQH9KQv74ZT/IGA==
+"@better-scroll/observe-image@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.nlark.com/@better-scroll/observe-image/download/@better-scroll/observe-image-2.3.1.tgz?cache=0&sync_timestamp=1620476114078&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40better-scroll%2Fobserve-image%2Fdownload%2F%40better-scroll%2Fobserve-image-2.3.1.tgz#85bc754dcd88cdcba358897376715fac3150329a"
+  integrity sha1-hbx1Tc2IzcujWIlzdnFfrDFQMpo=
   dependencies:
-    "@better-scroll/core" "^2.3.0"
+    "@better-scroll/core" "^2.3.1"
 
-"@better-scroll/scroll-bar@^2.0.7":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@better-scroll/scroll-bar/-/scroll-bar-2.3.0.tgz#d5ebaafbfc8fad29424e5ecd10fc6d454081b3be"
-  integrity sha512-0Z41w+UZoH9QI7J67DjmDskztz+mA8OiQ8aCTHolUA18NW8TCjynQg2TB8gJXozt0ugqQ+ex/UKr9wSzrRAvGg==
+"@better-scroll/pull-down@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.nlark.com/@better-scroll/pull-down/download/@better-scroll/pull-down-2.3.1.tgz?cache=0&sync_timestamp=1620476113752&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40better-scroll%2Fpull-down%2Fdownload%2F%40better-scroll%2Fpull-down-2.3.1.tgz#275ac78f83e9207dbc5a374173375b7df763d09c"
+  integrity sha1-J1rHj4PpIH28WjdBczdbffdj0Jw=
   dependencies:
-    "@better-scroll/core" "^2.3.0"
+    "@better-scroll/core" "^2.3.1"
 
-"@better-scroll/shared-utils@^2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@better-scroll/shared-utils/-/shared-utils-2.3.0.tgz#7f80b198d73a2844f7b4287d197e18d8bc032d6e"
-  integrity sha512-5RRjC1Fb4BJ6mw1ctIot+U/sWwKMfUlsiFJZzlRwzTXYKtn7IQpYim9nFfeQknivgrVXVRJucawhJ7yqKGLf6w==
-
-"@better-scroll/slide@^2.0.7":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@better-scroll/slide/-/slide-2.3.0.tgz#eb3386bbfbbb3b46d04beb277aa7ec570f4963f0"
-  integrity sha512-dXTp8Jyc7U5zQTs45VZ/08mkOO0moTUR4axSYuYNdXp2J0tpLTaPJYnB3wdivIe+LjeoWXEjIZHFkNcZZKPn6Q==
+"@better-scroll/pull-up@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.nlark.com/@better-scroll/pull-up/download/@better-scroll/pull-up-2.3.1.tgz?cache=0&sync_timestamp=1620476113516&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40better-scroll%2Fpull-up%2Fdownload%2F%40better-scroll%2Fpull-up-2.3.1.tgz#9b167d8e28455c112e6098b6ce9656a67c07b090"
+  integrity sha1-mxZ9jihFXBEuYJi2zpZWpnwHsJA=
   dependencies:
-    "@better-scroll/core" "^2.3.0"
+    "@better-scroll/core" "^2.3.1"
 
-"@better-scroll/wheel@^2.0.7":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@better-scroll/wheel/-/wheel-2.3.0.tgz#4092a582dd7efd8d937872dbb1a75324f4d5d090"
-  integrity sha512-JZAJpiNJwwyWeFdWIpRV2cjq1r4Sye+QYJtKcSniNug/BYDboucAfOWg4qRvt2H1ivoMkh41zz/8n13eGg+NbQ==
+"@better-scroll/scroll-bar@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.nlark.com/@better-scroll/scroll-bar/download/@better-scroll/scroll-bar-2.3.1.tgz?cache=0&sync_timestamp=1620476113640&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40better-scroll%2Fscroll-bar%2Fdownload%2F%40better-scroll%2Fscroll-bar-2.3.1.tgz#f66efc342f771ade52016a721a2a6154833b51cf"
+  integrity sha1-9m78NC93Gt5SAWpyGiphVIM7Uc8=
   dependencies:
-    "@better-scroll/core" "^2.3.0"
+    "@better-scroll/core" "^2.3.1"
 
-"@better-scroll/zoom@^2.0.7":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@better-scroll/zoom/-/zoom-2.3.0.tgz#64bfa41cddd1ce79a8228f2c2922f86f85ad1de1"
-  integrity sha512-BTCUHIHuAP8+e6RzeJBrbFFZrqbGwo6w+GHH1M6eDnBwwNkk69LH72KibCPJDH2e0oPKR5xyHc1MnKtO7kYnZQ==
+"@better-scroll/shared-utils@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.nlark.com/@better-scroll/shared-utils/download/@better-scroll/shared-utils-2.3.1.tgz?cache=0&sync_timestamp=1620476113226&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40better-scroll%2Fshared-utils%2Fdownload%2F%40better-scroll%2Fshared-utils-2.3.1.tgz#e863a6ed32aa79d37870dafe26b052827017a88f"
+  integrity sha1-6GOm7TKqedN4cNr+JrBSgnAXqI8=
+
+"@better-scroll/slide@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.nlark.com/@better-scroll/slide/download/@better-scroll/slide-2.3.1.tgz?cache=0&sync_timestamp=1620476113636&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40better-scroll%2Fslide%2Fdownload%2F%40better-scroll%2Fslide-2.3.1.tgz#9177028ff6dcd866ba4fdd4ca87d5cf54bf57684"
+  integrity sha1-kXcCj/bc2Ga6T91MqH1c9Uv1doQ=
   dependencies:
-    "@better-scroll/core" "^2.3.0"
+    "@better-scroll/core" "^2.3.1"
+
+"@better-scroll/wheel@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.nlark.com/@better-scroll/wheel/download/@better-scroll/wheel-2.3.1.tgz?cache=0&sync_timestamp=1620476113292&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40better-scroll%2Fwheel%2Fdownload%2F%40better-scroll%2Fwheel-2.3.1.tgz#f64776724f3287a7c420d238a175a7b3c8c85685"
+  integrity sha1-9kd2ck8yh6fEINI4oXWns8jIVoU=
+  dependencies:
+    "@better-scroll/core" "^2.3.1"
+
+"@better-scroll/zoom@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.nlark.com/@better-scroll/zoom/download/@better-scroll/zoom-2.3.1.tgz?cache=0&sync_timestamp=1620476114237&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40better-scroll%2Fzoom%2Fdownload%2F%40better-scroll%2Fzoom-2.3.1.tgz#0addef4a5dacd3d3b8f23fa6a937bdec05338b0e"
+  integrity sha1-Ct3vSl2s09O48j+mqTe97AUziw4=
+  dependencies:
+    "@better-scroll/core" "^2.3.1"
 
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
@@ -4556,23 +4570,25 @@ better-scroll@1.15.1:
   dependencies:
     babel-runtime "^6.0.0"
 
-better-scroll@2.0.7:
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/better-scroll/-/better-scroll-2.0.7.tgz#d671084cb45d716cb6a064707c7df5988cf76fcd"
-  integrity sha512-m4BUfi4uE0uRIr9J/Wu223lDZ0jaQXXFVrSExYHaBWNlDpLDTMi1KRWPO/+ziU0qGSRejmV3eSiJWkMHzoeBQA==
+better-scroll@2.3.1:
+  version "2.3.1"
+  resolved "https://registry.nlark.com/better-scroll/download/better-scroll-2.3.1.tgz#56acf254adc09528c5f6d6e0be216932674944e9"
+  integrity sha1-VqzyVK3AlSjF9tbgviFpMmdJROk=
   dependencies:
-    "@better-scroll/core" "^2.0.7"
-    "@better-scroll/infinity" "^2.0.7"
-    "@better-scroll/mouse-wheel" "^2.0.7"
-    "@better-scroll/movable" "^2.0.7"
-    "@better-scroll/nested-scroll" "^2.0.7"
-    "@better-scroll/observe-dom" "^2.0.7"
-    "@better-scroll/pull-down" "^2.0.7"
-    "@better-scroll/pull-up" "^2.0.7"
-    "@better-scroll/scroll-bar" "^2.0.7"
-    "@better-scroll/slide" "^2.0.7"
-    "@better-scroll/wheel" "^2.0.7"
-    "@better-scroll/zoom" "^2.0.7"
+    "@better-scroll/core" "^2.3.1"
+    "@better-scroll/indicators" "^2.3.1"
+    "@better-scroll/infinity" "^2.3.1"
+    "@better-scroll/mouse-wheel" "^2.3.1"
+    "@better-scroll/movable" "^2.3.1"
+    "@better-scroll/nested-scroll" "^2.3.1"
+    "@better-scroll/observe-dom" "^2.3.1"
+    "@better-scroll/observe-image" "^2.3.1"
+    "@better-scroll/pull-down" "^2.3.1"
+    "@better-scroll/pull-up" "^2.3.1"
+    "@better-scroll/scroll-bar" "^2.3.1"
+    "@better-scroll/slide" "^2.3.1"
+    "@better-scroll/wheel" "^2.3.1"
+    "@better-scroll/zoom" "^2.3.1"
 
 big-integer@^1.6.44:
   version "1.6.48"
