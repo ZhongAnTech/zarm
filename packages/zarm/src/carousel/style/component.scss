@@ -15,6 +15,7 @@
     height: 100%;
     vertical-align: top;
     transition-property: transform;
+    transform: translateZ(0);
   }
 
   @include e(pagination) {
