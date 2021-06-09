@@ -48,6 +48,7 @@ describe('ImagePreview', () => {
           { url: 'https://static.zhongan.com/website/health/zarm/images/banners/2.png' },
           { url: 'https://static.zhongan.com/website/health/zarm/images/banners/3.png' },
         ],
+        orientation: 'portrait',
       },
     );
     expect(state).toEqual({
@@ -112,6 +113,16 @@ describe('ImagePreview', () => {
     let srcRef: string;
     const onloadSymbol = Symbol('onload');
     const srcSymbol = Symbol('src');
+    const style = {
+      landscape: {
+        height: '0px',
+        width: 'auto',
+      },
+      portrait: {
+        height: '',
+        width: '',
+      },
+    };
     Object.defineProperty(Image.prototype, 'onload', {
       get() {
         return this[onloadSymbol];
@@ -146,12 +157,14 @@ describe('ImagePreview', () => {
       url: 'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
       originUrl: 'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
       loaded: 'loadEnd',
+      style,
     });
     jest.advanceTimersByTime(1500);
     expect((wrapper.state('images') as Images)[0]).toEqual({
       url: 'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
       originUrl: 'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
       loaded: 'loadAfter',
+      style,
     });
     expect(srcRef!).toEqual('https://static.zhongan.com/website/health/zarm/images/banners/1.png');
   });

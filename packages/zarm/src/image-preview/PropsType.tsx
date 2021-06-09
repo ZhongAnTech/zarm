@@ -1,8 +1,8 @@
 import type LOAD_STATUS from './utils/loadStatus';
-
 export interface ImageObject {
   url: string;
   originUrl: string;
+  style?: any;
 }
 
 export type Images = Array<Partial<ImageObject> & { loaded?: LOAD_STATUS }>;

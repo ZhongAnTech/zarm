@@ -26,7 +26,7 @@ export interface ImagePreviewState {
   prevVisible?: boolean;
   prevActiveIndex?: number;
   prevImages?: Images;
-  orientation?: 'landscape' | 'portrait';
+  orientation: 'landscape' | 'portrait';
 }
 
 const parseState = (props: ImagePreviewProps): ImagePreviewState => {
@@ -117,7 +117,7 @@ export default class ImagePreview extends Component<ImagePreviewProps, ImagePrev
   };
 
   loadOrigin = () => {
-    const { currentIndex = 0, images } = this.state;
+    const { currentIndex = 0, images, orientation } = this.state;
     const { originUrl, loaded } = images[currentIndex];
     if (loaded !== LOAD_STATUS.before || !originUrl) {
       return;
@@ -127,8 +127,21 @@ export default class ImagePreview extends Component<ImagePreviewProps, ImagePrev
 
     const img = new Image();
     img.onload = () => {
+      const { width, height } = img;
+      const { innerWidth, innerHeight } = window;
+
       images[currentIndex].loaded = LOAD_STATUS.end;
       images[currentIndex].url = originUrl;
+      images[currentIndex].style = {
+        landscape: {
+          width: orientation !== 'landscape' && width > innerWidth ? '100%' : 'auto',
+          height: orientation === 'landscape' ? `${Math.min(height, innerHeight)}px` : 'auto',
+        },
+        portrait: {
+          width: '',
+          height: '',
+        },
+      };
       this.setState({ images });
       setTimeout(() => {
         images[currentIndex].loaded = LOAD_STATUS.after;
@@ -181,13 +194,13 @@ export default class ImagePreview extends Component<ImagePreviewProps, ImagePrev
 
   renderImages = () => {
     const { prefixCls, minScale, maxScale } = this.props;
-    const { images } = this.state;
+    const { images, orientation } = this.state;
 
     return images.map((item, i) => {
       return (
         <div className={`${prefixCls}__item`} key={+i}>
           <PinchZoom className={`${prefixCls}__item__img`} minScale={minScale} maxScale={maxScale}>
-            <img src={item.url} alt="" draggable={false} />
+            <img src={item.url} alt="" draggable={false} style={item?.style?.[orientation]} />
           </PinchZoom>
         </div>
       );
