@@ -1,5 +1,11 @@
 # 版本更新日志
 
+## v2.9.2
+
+- Bug Fix
+
+  - [Input] 修复使用了过时的 `Icon` API，导致编译出错的 bug。[#653](https://github.com/ZhongAnTech/zarm/pull/653)
+
 ## v2.9.1
 
 - Bug Fix
