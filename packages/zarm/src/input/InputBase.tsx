@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
+import { CloseCircleFill } from '@zarm-design/icons';
 import { InputBaseProps } from './PropsType';
-import Icon from '../icon';
 import { getValue } from './utils';
 
 export default class InputBase extends PureComponent<InputBaseProps, any> {
@@ -203,8 +203,7 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
 
     // clear icon
     const renderClearIcon = showClearIcon && (
-      <Icon
-        type="wrong-round-fill"
+      <CloseCircleFill
         className={`${prefixCls}__clear`}
         onClick={() => {
           this.onClear();
