@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
+import { CloseCircleFill } from '@zarm-design/icons';
 import { InputNumberProps } from './PropsType';
 import Events from '../utils/events';
 import KeyboardPicker from '../keyboard-picker';
-import Icon from '../icon';
 import { getValue } from './utils';
 
 export default class InputNumber extends Component<InputNumberProps, any> {
@@ -216,8 +216,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     const renderText = <div className={`${prefixCls}__content`}>{value}</div>;
 
     const renderClearIcon = showClearIcon && (
-      <Icon
-        type="wrong-round-fill"
+      <CloseCircleFill
         className={`${prefixCls}__clear`}
         onClick={(e) => {
           e.stopPropagation();

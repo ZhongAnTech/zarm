@@ -1,8 +1,8 @@
-const { name, version } = require('./package.json');
+const { name } = require('./package.json');
 
 module.exports = {
   banner: `
-    ${name} v${version}
+    ${name}
 
     Github: https://github.com/ZhongAnTech/zarm
 
