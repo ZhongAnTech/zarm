@@ -3,3 +3,4 @@ plugins:
       attrs:
         - 'fill'
         - 'stroke'
+        - 'xmlns'

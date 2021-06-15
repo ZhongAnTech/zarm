@@ -9,7 +9,7 @@ import MenuComponent from '@/web/components/Menu';
 import Events from '@/utils/events';
 import Context from '@/utils/context';
 import Locales from '@/locale';
-import { version } from '@zarmDir/package.json';
+import pkg from '@zarmDir/package.json';
 import 'docsearch.js/dist/cdn/docsearch.min.css';
 import './style.scss';
 import 'zarm/style/entry';
@@ -47,13 +47,18 @@ const Header = ({ children }) => {
 
   const NAV_ITEMS = [
     {
+      key: 'docs',
+      link: '#/docs',
+      title: <FormattedMessage id="app.home.nav.docs" />,
+    },
+    {
       key: 'components',
-      link: '#/components/quick-start',
+      link: '#/components',
       title: <FormattedMessage id="app.home.nav.components" />,
     },
     {
       key: 'design',
-      link: '#/design/download',
+      link: '#/design',
       title: <FormattedMessage id="app.home.nav.resources" />,
     },
     { key: 'gitee', link: 'https://zarm.gitee.io', title: '国内镜像' },
@@ -74,7 +79,7 @@ const Header = ({ children }) => {
 
   const menuRender = currentPageKey !== '/' && (
     <div className="header-icon header-icon-menu">
-      {currentPageKey === 'components' && (
+      {currentPageKey !== 'design' && (
         <>
           <Icons type="list" onClick={() => toggleMenu(!menu)} />
           <Popup visible={menu} direction="left" onMaskClick={() => toggleMenu(!menu)}>
@@ -130,7 +135,7 @@ const Header = ({ children }) => {
               <a href="#/">
                 <img alt="logo" src={require('./images/logo.svg')} />
                 Zarm
-                <sup className="logo-version">v{version}</sup>
+                <sup className="logo-version">v{pkg.version}</sup>
               </a>
             </div>
             {moreRender}

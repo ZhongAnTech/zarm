@@ -1,12 +1,15 @@
 import React, { PureComponent, CSSProperties, ReactNode } from 'react';
 import classnames from 'classnames';
+import {
+  SuccessCircle as SuccessCircleIcon,
+  WarningCircle as WarningCircleIcon,
+} from '@zarm-design/icons';
 import { REFRESH_STATE, LOAD_STATE, PullAction, PropsType } from './PropsType';
 import Events from '../utils/events';
 import Throttle from '../utils/throttle';
 import { getScrollTop } from '../utils/dom';
 import Drag from '../drag';
 import ActivityIndicator from '../activity-indicator';
-import Icon from '../icon';
 
 export interface PullProps extends PropsType {
   prefixCls?: string;
@@ -347,7 +350,7 @@ export default class Pull extends PureComponent<PullProps, any> {
       case REFRESH_STATE.success:
         return (
           <div className={cls}>
-            <Icon type="right-round" theme="success" />
+            <SuccessCircleIcon theme="success" />
             <span>{locale!.successText}</span>
           </div>
         );
@@ -355,7 +358,7 @@ export default class Pull extends PureComponent<PullProps, any> {
       case REFRESH_STATE.failure:
         return (
           <div className={cls}>
-            <Icon type="wrong-round" theme="danger" />
+            <WarningCircleIcon theme="danger" />
             <span>{locale!.failureText}</span>
           </div>
         );
@@ -391,7 +394,7 @@ export default class Pull extends PureComponent<PullProps, any> {
       case LOAD_STATE.failure:
         return (
           <div className={cls}>
-            <Icon type="wrong-round" theme="danger" />
+            <WarningCircleIcon theme="danger" />
             <span>{locale!.failureText}</span>
           </div>
         );

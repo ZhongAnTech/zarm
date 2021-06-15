@@ -1,59 +1,9 @@
-import isWsl from 'is-wsl';
-import TerserPlugin from 'terser-webpack-plugin';
-import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
-import safePostCssParser from 'postcss-safe-parser';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import webpackMerge from 'webpack-merge';
 import WebpackBar from 'webpackbar';
-import webpack, { Configuration } from 'webpack';
+import webpack, { Configuration, RuleSetRule } from 'webpack';
 import babelConfig from './babelConfig/base';
-
-const optimization: Configuration['optimization'] = {
-  minimizer: [
-    new TerserPlugin({
-      terserOptions: {
-        parse: {
-          ecma: 8,
-        },
-        compress: {
-          ecma: 5,
-          warnings: false,
-          comparisons: false,
-          inline: 2,
-        },
-        mangle: {
-          safari10: true,
-        },
-        output: {
-          ecma: 5,
-          comments: false,
-          ascii_only: true,
-        },
-      },
-      parallel: !isWsl,
-      cache: true,
-      sourceMap: true,
-    }),
-    new OptimizeCSSAssetsPlugin({
-      cssProcessorOptions: {
-        parser: safePostCssParser,
-      },
-      cssProcessorPluginOptions: {
-        preset: [
-          'default',
-          {
-            reduceTransforms: false,
-            discardComments: {
-              removeAll: true,
-            },
-            calc: false,
-          },
-        ],
-      },
-    }),
-  ],
-};
 
 const config: Configuration = {
   output: {
@@ -118,9 +68,9 @@ const config: Configuration = {
         exclude: /node_modules/,
         use: [
           {
-            loader: require.resolve('url-loader'),
+            loader: require.resolve('file-loader'),
             options: {
-              limit: 1,
+              esModule: false,
               name: 'images/[name].[hash:8].[ext]',
             },
           },
@@ -130,7 +80,10 @@ const config: Configuration = {
         test: /\.(woff|woff2|ttf|eot)$/,
         use: [
           {
-            loader: 'file-loader?name=fonts/[name].[hash:8].[ext]',
+            loader: require.resolve('file-loader'),
+            options: {
+              name: 'fonts/[name].[hash:8].[ext]',
+            },
           },
         ],
       },
@@ -150,27 +103,25 @@ const config: Configuration = {
     },
   },
 
-  plugins: [new WebpackBar()],
+  plugins: [
+    new WebpackBar({}),
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+    }),
+  ],
 };
 
 const deployConfig: Configuration = webpackMerge({}, config, {
   mode: 'production',
-  devtool: 'source-map',
+  devtool: 'hidden-source-map',
   output: {
     filename: 'js/[name].js',
     chunkFilename: 'js/[name].[chunkhash:8].js',
     publicPath: './',
   },
   optimization: {
-    ...optimization,
     splitChunks: {
-      chunks: 'async',
-      minSize: 30000,
-      minChunks: 1,
-      maxAsyncRequests: 5,
-      maxInitialRequests: 3,
-      automaticNameDelimiter: '~',
-      name: true,
+      chunks: 'all',
     },
     runtimeChunk: {
       name: 'manifest',
@@ -186,7 +137,7 @@ const deployConfig: Configuration = webpackMerge({}, config, {
 
 const devConfig: Configuration = webpackMerge({}, deployConfig, {
   mode: 'development',
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'eval-cheap-source-map',
   optimization: {
     minimize: false,
   },
@@ -195,7 +146,7 @@ const devConfig: Configuration = webpackMerge({}, deployConfig, {
 
 const umdConfig: Configuration = webpackMerge({}, config, {
   mode: 'development',
-  devtool: 'source-map',
+  devtool: 'hidden-source-map',
   output: {
     libraryTarget: 'umd',
     filename: '[name].js',
@@ -221,12 +172,10 @@ const umdUglyConfig: Configuration = webpackMerge({}, umdConfig, {
   output: {
     filename: '[name].min.js',
   },
-  optimization,
 });
 
 const umdZipConfig: Configuration = webpackMerge({}, umdConfig, {
   mode: 'production',
-  optimization,
 });
 
 type WebpackConfigType = 'umd' | 'umd-ugly' | 'umd-zip' | 'dev' | 'deploy';
@@ -259,7 +208,9 @@ const getWebpackConfig = (type?: WebpackConfigType): Configuration => {
 
     case 'dev':
       devConfig.output.publicPath = '/';
-      devConfig.module.rules[0].use[0].options.plugins.push(require.resolve('react-refresh/babel'));
+      (devConfig.module.rules[0] as RuleSetRule).use[0].options.plugins.push(
+        require.resolve('react-refresh/babel'),
+      );
       devConfig.plugins.push(new ReactRefreshPlugin());
       return devConfig;
 

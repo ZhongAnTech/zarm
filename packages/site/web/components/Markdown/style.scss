@@ -1,3 +1,13 @@
+.code-preview {
+  position: relative;
+
+  .codesanbox {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
 .markdown {
   line-height: 2;
   font-size: 14px;

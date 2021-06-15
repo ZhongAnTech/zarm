@@ -33,36 +33,29 @@ const umdBuild = async ({ mode, path, outDir, outZip, libraryName, analyzer }, b
   const entryKey = mode === 'umd-zip' ? 'index' : libraryName;
   const entryFiles = path.split(',').map((p) => getProjectPath(p));
 
-  const analyzerConfig = analyzer && {
-    plugins: [
+  const customizePlugins = [];
+  const { banner } = getCustomConfig();
+  analyzer &&
+    customizePlugins.push(
       new BundleAnalyzerPlugin({
         analyzerMode: 'static',
         generateStatsFile: true,
       }),
-    ],
-  };
-
-  const { banner } = getCustomConfig();
-  const bannerConfig = banner && {
-    plugins: [new webpack.BannerPlugin(banner)],
-  };
+    );
+  banner && customizePlugins.push(new webpack.BannerPlugin(banner));
 
   const umdTask = (type) => {
     return new Promise((resolve, reject) => {
-      const config = webpackMerge(
-        getWebpackConfig(type),
-        {
-          entry: {
-            [entryKey]: entryFiles,
-          },
-          output: {
-            path: getProjectPath(outDir),
-            library: libraryName,
-          },
+      const config = webpackMerge(getWebpackConfig(type), {
+        entry: {
+          [entryKey]: entryFiles,
         },
-        analyzerConfig,
-        bannerConfig,
-      );
+        output: {
+          path: getProjectPath(outDir),
+          library: libraryName,
+        },
+        plugins: customizePlugins,
+      });
 
       return webpack(config).run((err, stats) => {
         return err ? reject(err) : resolve(stats);

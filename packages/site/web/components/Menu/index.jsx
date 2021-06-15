@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useRouteMatch, useParams } from 'react-router-dom';
 import { pascalCase } from 'change-case';
 import { Menu } from 'zarm-web';
 import { FormattedMessage } from 'react-intl';
@@ -10,7 +10,7 @@ import './style.scss';
 const getDocs = (locale) => {
   return documents.map((doc) => (
     <Menu.Item key={doc.key}>
-      <a href={`#/components/${doc.key}`}>{locale === 'zhCN' ? doc.name : pascalCase(doc.key)}</a>
+      <a href={`#/docs/${doc.key}`}>{locale === 'zhCN' ? doc.name : pascalCase(doc.key)}</a>
     </Menu.Item>
   ));
 };
@@ -37,7 +37,30 @@ const getMenus = (locale, key) => {
 
 const MenuComponent = () => {
   const params = useParams();
+  const isComponentPage = !!useRouteMatch('/components');
   const { locale } = useContext(Context);
+
+  let selectedKeys = [params.doc];
+  if (isComponentPage) {
+    selectedKeys = [params.component];
+  }
+
+  const menuRender = () => {
+    if (isComponentPage) {
+      return (
+        <>
+          {getMenus(locale, 'general')}
+          {getMenus(locale, 'form')}
+          {getMenus(locale, 'view')}
+          {getMenus(locale, 'feedback')}
+          {getMenus(locale, 'navigation')}
+          {getMenus(locale, 'other')}
+        </>
+      );
+    }
+
+    return getDocs(locale);
+  };
 
   return (
     <div className="menu">
@@ -51,17 +74,9 @@ const MenuComponent = () => {
           'navigation',
           'other',
         ]}
-        selectedKeys={[params.document, params.component]}
+        selectedKeys={selectedKeys}
       >
-        {getDocs(locale)}
-        <Menu.SubMenu title={<FormattedMessage id="app.components" />} key="components">
-          {getMenus(locale, 'general')}
-          {getMenus(locale, 'form')}
-          {getMenus(locale, 'view')}
-          {getMenus(locale, 'feedback')}
-          {getMenus(locale, 'navigation')}
-          {getMenus(locale, 'other')}
-        </Menu.SubMenu>
+        {menuRender()}
       </Menu>
     </div>
   );

@@ -1,0 +1,15 @@
+@import '../core/index.scss';
+
+:root {
+  @include defineColorHSL(--theme-default, 0, 0%, 90%);
+  @include defineColorHSL(--theme-primary, 156, 100%, 36.9%);
+  @include defineColorHSL(--theme-success, 156, 100%, 36.9%);
+  @include defineColorHSL(--theme-warning, 31, 83.1%, 55.9%);
+  @include defineColorHSL(--theme-danger, 0, 100%, 65.7%);
+
+  // Icon
+  --icon-font-size-sm: 16px;
+  --icon-font-size-md: 24px;
+  --icon-font-size-lg: 32px;
+  --icon-theme-default: var(--color-text);
+}

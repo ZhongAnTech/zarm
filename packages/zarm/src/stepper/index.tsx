@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
+import { Minus as MinusIcon, Plus as PlusIcon } from '@zarm-design/icons';
 import PropsType from './PropsType';
 import Button from '../button';
-import Icon from '../icon';
 import Input from '../input';
 import { InputNumberProps } from '../input/PropsType';
 
@@ -201,7 +201,7 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
           shape={shape}
           onClick={this.onSubClick}
         >
-          <Icon type="minus" />
+          <MinusIcon />
         </Button>
         <Input {...(inputProps as InputNumberProps)} />
         <Button
@@ -211,7 +211,7 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
           shape={shape}
           onClick={this.onPlusClick}
         >
-          <Icon type="add" />
+          <PlusIcon />
         </Button>
       </span>
     );

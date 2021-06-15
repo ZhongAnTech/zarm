@@ -26,15 +26,7 @@ const Demo = () => {
         />
       </Cell>
       <Cell title="多行文本">
-        <Input
-          type="text"
-          rows={3}
-          placeholder="请输入"
-          type="text"
-          placeholder="请输入"
-          value={content}
-          onChange={setContent}
-        />
+        <Input rows={3} type="text" placeholder="请输入" value={content} onChange={setContent} />
       </Cell>
     </>
   );

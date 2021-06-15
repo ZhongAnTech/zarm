@@ -1,5 +1,40 @@
 # 版本更新日志
 
+## v2.9.2
+
+- Bug Fix
+
+  - [Input] 修复使用了过时的 `Icon` API，导致编译出错的 bug。[#653](https://github.com/ZhongAnTech/zarm/pull/653)
+
+## v2.9.1
+
+- Bug Fix
+
+  - [Input] 修复包含虚拟键盘的 `Input` 无法在外部获取焦点的 bug。[#638](https://github.com/ZhongAnTech/zarm/pull/638)
+  - [Picker] 修复因低版本 `better-scroll` 引起的快速点确定按钮无法正确取值的问题。[#649](https://github.com/ZhongAnTech/zarm/pull/649)
+
+- Perf
+
+  - 增加 @babel/runtime 依赖，以满足在 [vite](https://github.com/vitejs/vite) 中使用的场景。[#636](https://github.com/ZhongAnTech/zarm/pull/636)
+  - [Carousel] 优化滑动后出现闪烁的问题。[#647](https://github.com/ZhongAnTech/zarm/pull/647) [#648](https://github.com/ZhongAnTech/zarm/pull/648) [@jianhuagao]
+
+## v2.9.0
+
+- Bug Fix
+
+  - [ImagePreview] 修复组件异步获取数据报错的 bug。[#613](https://github.com/ZhongAnTech/zarm/pull/613)
+  - [DatePickerView] 修复当 `mode="date"` 展示错误的 bug。[#624](https://github.com/ZhongAnTech/zarm/pull/624)
+  - [ConfigProvider] 修复服务端渲染时报的 `document is not defined` 的 bug。[#631](https://github.com/ZhongAnTech/zarm/pull/631)
+
+- Perf
+
+  - [ImagePreview] 异步获取数据时增加 loading 用于等待图片加载。[#615](https://github.com/ZhongAnTech/zarm/pull/615)
+  - [Message] 优化消息组件可点区域的鼠标显示状态。[#445a935](https://github.com/ZhongAnTech/zarm/commit/445a935a9f4a756b6aa455e147999148e2df1af2)
+
+- Feature
+
+  - [@zarm-design/icons] 抽离内置的 Icon 图标，独立成新的包 [@zarm-design/icons](https://github.com/ZhongAnTech/zarm/tree/master/packages/zarm-icons) 来管理。[#e4db8e2](https://github.com/ZhongAnTech/zarm/commit/e4db8e2a102ecf8ef2edfd098c2326cb832665c9)
+
 ## v2.8.2
 
 - Bug Fix

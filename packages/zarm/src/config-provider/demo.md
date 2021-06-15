@@ -23,29 +23,30 @@ import zhCN from 'zarm/lib/config-provider/locale/zh_CN';
 
 const TabIcon = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_lpsswvb7yv.js');
 
+const colors = ['#00bc70', '#1890ff', '#f5222d', '#fa541b', '#13c2c2', '#2f54ec', '#712fd1'];
+const BUTTONS = [
+  {
+    text: '操作一',
+    onClick: () => console.log('点击操作一'),
+  },
+  {
+    theme: 'primary',
+    text: '操作二',
+    onClick: () => console.log('点击操作二'),
+  },
+  {
+    theme: 'danger',
+    text: '操作三',
+    onClick: () => console.log('点击操作三'),
+  },
+];
+
 const Demo = () => {
-  const [locale, setLocale] = useState(GlobalContext.locale);
-  const [theme, setTheme] = useState(GlobalContext.theme);
-  const [primaryColor, setPrimaryColor] = useState(GlobalContext.primaryColor);
+  const [locale, setLocale] = useState(localStorage.locale || 'zhCN');
+  const [theme, setTheme] = useState(localStorage.theme || 'light');
+  const [primaryColor, setPrimaryColor] = useState(localStorage.primaryColor || colors[0]);
   const [visiblePopup, setVisiblePopup] = useState(false);
   const [visibleAction, setVisibleAction] = useState(false);
-
-  const BUTTONS = [
-    {
-      text: '操作一',
-      onClick: () => console.log('点击操作一'),
-    },
-    {
-      theme: 'primary',
-      text: '操作二',
-      onClick: () => console.log('点击操作二'),
-    },
-    {
-      theme: 'danger',
-      text: '操作三',
-      onClick: () => console.log('点击操作三'),
-    },
-  ];
 
   const show = (key) => {
     if (key === 'alert') {
@@ -79,17 +80,15 @@ const Demo = () => {
         title="切换品牌色"
         description={
           <ul className="colors">
-            {['#00bc70', '#1890ff', '#f5222d', '#fa541b', '#13c2c2', '#2f54ec', '#712fd1'].map(
-              (color, index) => {
-                return (
-                  <li
-                    key={+index}
-                    style={{ backgroundColor: color }}
-                    onClick={() => setPrimaryColor(color)}
-                  />
-                );
-              },
-            )}
+            {colors.map((color, index) => {
+              return (
+                <li
+                  key={+index}
+                  style={{ backgroundColor: color }}
+                  onClick={() => setPrimaryColor(color)}
+                />
+              );
+            })}
           </ul>
         }
       />

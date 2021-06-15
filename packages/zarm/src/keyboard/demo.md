@@ -33,11 +33,10 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```jsx
 import { useState } from 'react';
-import { Cell, Button, KeyboardPicker, Input } from 'zarm';
+import { Cell, Button, KeyboardPicker } from 'zarm';
 
 const Demo = () => {
   const [visible, setVisible] = useState(false);
-  const [value, setValue] = useState('');
 
   const toggle = () => {
     setVisible(!visible);
@@ -49,13 +48,7 @@ const Demo = () => {
       toggle();
       return;
     }
-
-    const value = [].concat(value);
-    const newValue = key === 'delete' ? value.slice(0, value.length - 1) : value + key;
-
-    if (newValue !== value) {
-      setValue(newValue);
-    }
+    // do something...
   };
 
   return (

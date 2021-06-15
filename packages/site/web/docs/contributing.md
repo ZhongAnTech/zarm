@@ -20,7 +20,7 @@ $ yarn dev
 
 ```bash
 # 开发 react-native 端
-$ cd rnkit && yarn install && cd ios && pod install && cd ../..
+$ cd packages/rnkit/ios && pod install && cd ../../..
 
 # 开发 iOS 端
 $ yarn dev:ios
@@ -36,11 +36,8 @@ $ yarn dev:android
 ```bash
 $ yarn lint
 
-# Typescript 文件检查
-$ yarn lint:ts
-
-# Javascript 文件检查
-$ yarn lint:js
+# ts/js 文件检查
+$ yarn lint:script
 
 # 样式文件检查
 $ yarn lint:style
@@ -52,36 +49,4 @@ $ yarn lint:style
 
 ```bash
 $ yarn test
-
-# 单独测试 h5 版本
-$ yarn test:h5
-
-# 单独测试 react-native 版本
-$ yarn test:rn
-
-# 输出单元测试覆盖率
-$ yarn test:h5 --coverage
-```
-
-## 编译
-
-将 TypeScript 代码编译到 `lib` 和 `es` 目录，并在 `dist` 目录中创建 zarm 的 UMD 版本。
-
-```bash
-$ yarn build
-
-# 编译 esm
-$ yarn build:es
-
-# 编译 lib
-$ yarn build:lib
-
-# 编译 umd
-$ yarn build:umd
-
-# 编译 react-native 的 iOS 安装包
-$ yarn build:ios
-
-# 编译 react-native 的 Android 安装包
-$ yarn build:android
 ```

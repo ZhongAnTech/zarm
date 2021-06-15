@@ -12,18 +12,20 @@ exports[`SearchBar snapshot renders correctly 1`] = `
       class="za-search-bar__content"
     >
       <i
-        class="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
+        class="za-icon za-search-bar__icon za-icon--default za-icon--sm"
         theme="default"
-        type="search"
       >
         <svg
+          aria-hidden="true"
           fill="currentColor"
+          focusable="false"
           height="1em"
-          viewBox="0 0 32 32"
+          viewBox="0 0 1000 1000"
           width="1em"
         >
-          <use
-            href="#search"
+          <path
+            d="M987.88 936.17l.011-.01-226.8-226.8c56.11-72.027 89.545-162.583 89.545-260.959 0-234.73-190.287-425.018-425.018-425.018C190.888 23.383.603 213.67.603 448.401.603 683.132 190.89 873.42 425.62 873.42c109.721 0 209.728-41.585 285.133-109.847l224.864 224.864.032-.032c6.723 6.952 16.127 11.292 26.558 11.292 20.417 0 36.965-16.548 36.965-36.965a36.852 36.852 0 00-11.294-26.56zM424.255 796.948c-192.937 0-349.34-156.406-349.34-349.34 0-192.933 156.403-349.338 349.34-349.338 192.933 0 349.341 156.405 349.341 349.339 0 192.933-156.408 349.339-349.341 349.339z"
+            fill-rule="nonzero"
           />
         </svg>
       </i>
@@ -40,18 +42,20 @@ exports[`SearchBar snapshot renders correctly 1`] = `
             value=""
           />
           <i
-            class="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+            class="za-icon za-input__clear za-icon--default za-icon--md"
             theme="default"
-            type="wrong-round-fill"
           >
             <svg
+              aria-hidden="true"
               fill="currentColor"
+              focusable="false"
               height="1em"
-              viewBox="0 0 32 32"
+              viewBox="0 0 1000 1000"
               width="1em"
             >
-              <use
-                href="#wrong-round-fill"
+              <path
+                d="M500 0C224.32 0 0 224.286 0 500s224.286 500 500 500c275.68 0 500-224.286 500-500S775.714 0 500 0zm203.965 654c13.928 14 13.892 36.572-.072 50.5a35.644 35.644 0 01-25.213 10.429c-9.179 0-18.321-3.5-25.287-10.5L499.821 550.393l-154.07 152.43c-6.964 6.857-16.037 10.32-25.109 10.32-9.213 0-18.392-3.536-25.392-10.607-13.857-14.036-13.75-36.608.286-50.5L449.43 499.821 296.107 346c-13.93-13.965-13.893-36.572.07-50.5 13.966-13.965 36.536-13.892 50.5.07l153.536 154 154.071-152.427c14-13.892 36.643-13.75 50.5.286 13.892 14.036 13.75 36.643-.286 50.5l-153.89 152.213L703.965 654z"
+                fill-rule="nonzero"
               />
             </svg>
           </i>
@@ -109,48 +113,46 @@ exports[`SearchBar snapshot renders defaultValue correctly 1`] = `
           <div
             className="za-search-bar__content"
           >
-            <Icon
+            <ForwardRef(SvgSearch)
               className="za-search-bar__icon"
-              prefixCls="za-icon"
-              size="md"
-              theme="default"
-              type="search"
-              viewBox="0 0 32 32"
+              size="sm"
             >
-              <Iconfont
-                className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
-                size="md"
+              <Icon
+                className="za-search-bar__icon"
+                component={[Function]}
+                prefixCls="za-icon"
+                size="sm"
                 theme="default"
-                type="search"
+                viewBox="0 0 32 32"
               >
-                <Icon
-                  className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
-                  prefixCls="za-icon"
-                  size="md"
+                <i
+                  className="za-icon za-search-bar__icon za-icon--default za-icon--sm"
+                  size="sm"
                   theme="default"
-                  type="search"
-                  viewBox="0 0 32 32"
                 >
-                  <i
-                    className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
-                    size="md"
-                    theme="default"
-                    type="search"
+                  <component
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
                   >
                     <svg
+                      aria-hidden="true"
                       fill="currentColor"
+                      focusable={false}
                       height="1em"
-                      viewBox="0 0 32 32"
+                      viewBox="0 0 1000 1000"
                       width="1em"
                     >
-                      <use
-                        xlinkHref="#search"
+                      <path
+                        d="M987.88 936.17l.011-.01-226.8-226.8c56.11-72.027 89.545-162.583 89.545-260.959 0-234.73-190.287-425.018-425.018-425.018C190.888 23.383.603 213.67.603 448.401.603 683.132 190.89 873.42 425.62 873.42c109.721 0 209.728-41.585 285.133-109.847l224.864 224.864.032-.032c6.723 6.952 16.127 11.292 26.558 11.292 20.417 0 36.965-16.548 36.965-36.965a36.852 36.852 0 00-11.294-26.56zM424.255 796.948c-192.937 0-349.34-156.406-349.34-349.34 0-192.933 156.403-349.338 349.34-349.338 192.933 0 349.341 156.405 349.341 349.339 0 192.933-156.408 349.339-349.341 349.339z"
+                        fillRule="nonzero"
                       />
                     </svg>
-                  </i>
-                </Icon>
-              </Iconfont>
-            </Icon>
+                  </component>
+                </i>
+              </Icon>
+            </ForwardRef(SvgSearch)>
             <div
               className="za-search-bar__mock"
             >
@@ -187,52 +189,48 @@ exports[`SearchBar snapshot renders defaultValue correctly 1`] = `
                     type="search"
                     value=""
                   />
-                  <Icon
+                  <ForwardRef(SvgCloseCircleFill)
                     className="za-input__clear"
                     onClick={[Function]}
-                    prefixCls="za-icon"
-                    size="md"
-                    theme="default"
-                    type="wrong-round-fill"
-                    viewBox="0 0 32 32"
                   >
-                    <Iconfont
-                      className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                    <Icon
+                      className="za-input__clear"
+                      component={[Function]}
                       onClick={[Function]}
+                      prefixCls="za-icon"
                       size="md"
                       theme="default"
-                      type="wrong-round-fill"
+                      viewBox="0 0 32 32"
                     >
-                      <Icon
-                        className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                      <i
+                        className="za-icon za-input__clear za-icon--default za-icon--md"
                         onClick={[Function]}
-                        prefixCls="za-icon"
                         size="md"
                         theme="default"
-                        type="wrong-round-fill"
-                        viewBox="0 0 32 32"
                       >
-                        <i
-                          className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
-                          onClick={[Function]}
-                          size="md"
-                          theme="default"
-                          type="wrong-round-fill"
+                        <component
+                          fill="currentColor"
+                          height="1em"
+                          viewBox="0 0 32 32"
+                          width="1em"
                         >
                           <svg
+                            aria-hidden="true"
                             fill="currentColor"
+                            focusable={false}
                             height="1em"
-                            viewBox="0 0 32 32"
+                            viewBox="0 0 1000 1000"
                             width="1em"
                           >
-                            <use
-                              xlinkHref="#wrong-round-fill"
+                            <path
+                              d="M500 0C224.32 0 0 224.286 0 500s224.286 500 500 500c275.68 0 500-224.286 500-500S775.714 0 500 0zm203.965 654c13.928 14 13.892 36.572-.072 50.5a35.644 35.644 0 01-25.213 10.429c-9.179 0-18.321-3.5-25.287-10.5L499.821 550.393l-154.07 152.43c-6.964 6.857-16.037 10.32-25.109 10.32-9.213 0-18.392-3.536-25.392-10.607-13.857-14.036-13.75-36.608.286-50.5L449.43 499.821 296.107 346c-13.93-13.965-13.893-36.572.07-50.5 13.966-13.965 36.536-13.892 50.5.07l153.536 154 154.071-152.427c14-13.892 36.643-13.75 50.5.286 13.892 14.036 13.75 36.643-.286 50.5l-153.89 152.213L703.965 654z"
+                              fillRule="nonzero"
                             />
                           </svg>
-                        </i>
-                      </Icon>
-                    </Iconfont>
-                  </Icon>
+                        </component>
+                      </i>
+                    </Icon>
+                  </ForwardRef(SvgCloseCircleFill)>
                 </div>
               </InputBase>
             </div>
@@ -325,48 +323,46 @@ exports[`SearchBar snapshot renders onCancel called correctly 1`] = `
           <div
             className="za-search-bar__content"
           >
-            <Icon
+            <ForwardRef(SvgSearch)
               className="za-search-bar__icon"
-              prefixCls="za-icon"
-              size="md"
-              theme="default"
-              type="search"
-              viewBox="0 0 32 32"
+              size="sm"
             >
-              <Iconfont
-                className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
-                size="md"
+              <Icon
+                className="za-search-bar__icon"
+                component={[Function]}
+                prefixCls="za-icon"
+                size="sm"
                 theme="default"
-                type="search"
+                viewBox="0 0 32 32"
               >
-                <Icon
-                  className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
-                  prefixCls="za-icon"
-                  size="md"
+                <i
+                  className="za-icon za-search-bar__icon za-icon--default za-icon--sm"
+                  size="sm"
                   theme="default"
-                  type="search"
-                  viewBox="0 0 32 32"
                 >
-                  <i
-                    className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
-                    size="md"
-                    theme="default"
-                    type="search"
+                  <component
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
                   >
                     <svg
+                      aria-hidden="true"
                       fill="currentColor"
+                      focusable={false}
                       height="1em"
-                      viewBox="0 0 32 32"
+                      viewBox="0 0 1000 1000"
                       width="1em"
                     >
-                      <use
-                        xlinkHref="#search"
+                      <path
+                        d="M987.88 936.17l.011-.01-226.8-226.8c56.11-72.027 89.545-162.583 89.545-260.959 0-234.73-190.287-425.018-425.018-425.018C190.888 23.383.603 213.67.603 448.401.603 683.132 190.89 873.42 425.62 873.42c109.721 0 209.728-41.585 285.133-109.847l224.864 224.864.032-.032c6.723 6.952 16.127 11.292 26.558 11.292 20.417 0 36.965-16.548 36.965-36.965a36.852 36.852 0 00-11.294-26.56zM424.255 796.948c-192.937 0-349.34-156.406-349.34-349.34 0-192.933 156.403-349.338 349.34-349.338 192.933 0 349.341 156.405 349.341 349.339 0 192.933-156.408 349.339-349.341 349.339z"
+                        fillRule="nonzero"
                       />
                     </svg>
-                  </i>
-                </Icon>
-              </Iconfont>
-            </Icon>
+                  </component>
+                </i>
+              </Icon>
+            </ForwardRef(SvgSearch)>
             <div
               className="za-search-bar__mock"
             >
@@ -403,52 +399,48 @@ exports[`SearchBar snapshot renders onCancel called correctly 1`] = `
                     type="search"
                     value=""
                   />
-                  <Icon
+                  <ForwardRef(SvgCloseCircleFill)
                     className="za-input__clear"
                     onClick={[Function]}
-                    prefixCls="za-icon"
-                    size="md"
-                    theme="default"
-                    type="wrong-round-fill"
-                    viewBox="0 0 32 32"
                   >
-                    <Iconfont
-                      className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                    <Icon
+                      className="za-input__clear"
+                      component={[Function]}
                       onClick={[Function]}
+                      prefixCls="za-icon"
                       size="md"
                       theme="default"
-                      type="wrong-round-fill"
+                      viewBox="0 0 32 32"
                     >
-                      <Icon
-                        className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                      <i
+                        className="za-icon za-input__clear za-icon--default za-icon--md"
                         onClick={[Function]}
-                        prefixCls="za-icon"
                         size="md"
                         theme="default"
-                        type="wrong-round-fill"
-                        viewBox="0 0 32 32"
                       >
-                        <i
-                          className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
-                          onClick={[Function]}
-                          size="md"
-                          theme="default"
-                          type="wrong-round-fill"
+                        <component
+                          fill="currentColor"
+                          height="1em"
+                          viewBox="0 0 32 32"
+                          width="1em"
                         >
                           <svg
+                            aria-hidden="true"
                             fill="currentColor"
+                            focusable={false}
                             height="1em"
-                            viewBox="0 0 32 32"
+                            viewBox="0 0 1000 1000"
                             width="1em"
                           >
-                            <use
-                              xlinkHref="#wrong-round-fill"
+                            <path
+                              d="M500 0C224.32 0 0 224.286 0 500s224.286 500 500 500c275.68 0 500-224.286 500-500S775.714 0 500 0zm203.965 654c13.928 14 13.892 36.572-.072 50.5a35.644 35.644 0 01-25.213 10.429c-9.179 0-18.321-3.5-25.287-10.5L499.821 550.393l-154.07 152.43c-6.964 6.857-16.037 10.32-25.109 10.32-9.213 0-18.392-3.536-25.392-10.607-13.857-14.036-13.75-36.608.286-50.5L449.43 499.821 296.107 346c-13.93-13.965-13.893-36.572.07-50.5 13.966-13.965 36.536-13.892 50.5.07l153.536 154 154.071-152.427c14-13.892 36.643-13.75 50.5.286 13.892 14.036 13.75 36.643-.286 50.5l-153.89 152.213L703.965 654z"
+                              fillRule="nonzero"
                             />
                           </svg>
-                        </i>
-                      </Icon>
-                    </Iconfont>
-                  </Icon>
+                        </component>
+                      </i>
+                    </Icon>
+                  </ForwardRef(SvgCloseCircleFill)>
                 </div>
               </InputBase>
             </div>
@@ -547,48 +539,46 @@ exports[`SearchBar snapshot renders onChange called correctly 1`] = `
           <div
             className="za-search-bar__content"
           >
-            <Icon
+            <ForwardRef(SvgSearch)
               className="za-search-bar__icon"
-              prefixCls="za-icon"
-              size="md"
-              theme="default"
-              type="search"
-              viewBox="0 0 32 32"
+              size="sm"
             >
-              <Iconfont
-                className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
-                size="md"
+              <Icon
+                className="za-search-bar__icon"
+                component={[Function]}
+                prefixCls="za-icon"
+                size="sm"
                 theme="default"
-                type="search"
+                viewBox="0 0 32 32"
               >
-                <Icon
-                  className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
-                  prefixCls="za-icon"
-                  size="md"
+                <i
+                  className="za-icon za-search-bar__icon za-icon--default za-icon--sm"
+                  size="sm"
                   theme="default"
-                  type="search"
-                  viewBox="0 0 32 32"
                 >
-                  <i
-                    className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
-                    size="md"
-                    theme="default"
-                    type="search"
+                  <component
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
                   >
                     <svg
+                      aria-hidden="true"
                       fill="currentColor"
+                      focusable={false}
                       height="1em"
-                      viewBox="0 0 32 32"
+                      viewBox="0 0 1000 1000"
                       width="1em"
                     >
-                      <use
-                        xlinkHref="#search"
+                      <path
+                        d="M987.88 936.17l.011-.01-226.8-226.8c56.11-72.027 89.545-162.583 89.545-260.959 0-234.73-190.287-425.018-425.018-425.018C190.888 23.383.603 213.67.603 448.401.603 683.132 190.89 873.42 425.62 873.42c109.721 0 209.728-41.585 285.133-109.847l224.864 224.864.032-.032c6.723 6.952 16.127 11.292 26.558 11.292 20.417 0 36.965-16.548 36.965-36.965a36.852 36.852 0 00-11.294-26.56zM424.255 796.948c-192.937 0-349.34-156.406-349.34-349.34 0-192.933 156.403-349.338 349.34-349.338 192.933 0 349.341 156.405 349.341 349.339 0 192.933-156.408 349.339-349.341 349.339z"
+                        fillRule="nonzero"
                       />
                     </svg>
-                  </i>
-                </Icon>
-              </Iconfont>
-            </Icon>
+                  </component>
+                </i>
+              </Icon>
+            </ForwardRef(SvgSearch)>
             <div
               className="za-search-bar__mock"
             >
@@ -625,52 +615,48 @@ exports[`SearchBar snapshot renders onChange called correctly 1`] = `
                     type="search"
                     value="测试值"
                   />
-                  <Icon
+                  <ForwardRef(SvgCloseCircleFill)
                     className="za-input__clear"
                     onClick={[Function]}
-                    prefixCls="za-icon"
-                    size="md"
-                    theme="default"
-                    type="wrong-round-fill"
-                    viewBox="0 0 32 32"
                   >
-                    <Iconfont
-                      className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                    <Icon
+                      className="za-input__clear"
+                      component={[Function]}
                       onClick={[Function]}
+                      prefixCls="za-icon"
                       size="md"
                       theme="default"
-                      type="wrong-round-fill"
+                      viewBox="0 0 32 32"
                     >
-                      <Icon
-                        className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                      <i
+                        className="za-icon za-input__clear za-icon--default za-icon--md"
                         onClick={[Function]}
-                        prefixCls="za-icon"
                         size="md"
                         theme="default"
-                        type="wrong-round-fill"
-                        viewBox="0 0 32 32"
                       >
-                        <i
-                          className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
-                          onClick={[Function]}
-                          size="md"
-                          theme="default"
-                          type="wrong-round-fill"
+                        <component
+                          fill="currentColor"
+                          height="1em"
+                          viewBox="0 0 32 32"
+                          width="1em"
                         >
                           <svg
+                            aria-hidden="true"
                             fill="currentColor"
+                            focusable={false}
                             height="1em"
-                            viewBox="0 0 32 32"
+                            viewBox="0 0 1000 1000"
                             width="1em"
                           >
-                            <use
-                              xlinkHref="#wrong-round-fill"
+                            <path
+                              d="M500 0C224.32 0 0 224.286 0 500s224.286 500 500 500c275.68 0 500-224.286 500-500S775.714 0 500 0zm203.965 654c13.928 14 13.892 36.572-.072 50.5a35.644 35.644 0 01-25.213 10.429c-9.179 0-18.321-3.5-25.287-10.5L499.821 550.393l-154.07 152.43c-6.964 6.857-16.037 10.32-25.109 10.32-9.213 0-18.392-3.536-25.392-10.607-13.857-14.036-13.75-36.608.286-50.5L449.43 499.821 296.107 346c-13.93-13.965-13.893-36.572.07-50.5 13.966-13.965 36.536-13.892 50.5.07l153.536 154 154.071-152.427c14-13.892 36.643-13.75 50.5.286 13.892 14.036 13.75 36.643-.286 50.5l-153.89 152.213L703.965 654z"
+                              fillRule="nonzero"
                             />
                           </svg>
-                        </i>
-                      </Icon>
-                    </Iconfont>
-                  </Icon>
+                        </component>
+                      </i>
+                    </Icon>
+                  </ForwardRef(SvgCloseCircleFill)>
                 </div>
               </InputBase>
             </div>
@@ -764,48 +750,46 @@ exports[`SearchBar snapshot renders onClear called correctly 1`] = `
           <div
             className="za-search-bar__content"
           >
-            <Icon
+            <ForwardRef(SvgSearch)
               className="za-search-bar__icon"
-              prefixCls="za-icon"
-              size="md"
-              theme="default"
-              type="search"
-              viewBox="0 0 32 32"
+              size="sm"
             >
-              <Iconfont
-                className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
-                size="md"
+              <Icon
+                className="za-search-bar__icon"
+                component={[Function]}
+                prefixCls="za-icon"
+                size="sm"
                 theme="default"
-                type="search"
+                viewBox="0 0 32 32"
               >
-                <Icon
-                  className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
-                  prefixCls="za-icon"
-                  size="md"
+                <i
+                  className="za-icon za-search-bar__icon za-icon--default za-icon--sm"
+                  size="sm"
                   theme="default"
-                  type="search"
-                  viewBox="0 0 32 32"
                 >
-                  <i
-                    className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
-                    size="md"
-                    theme="default"
-                    type="search"
+                  <component
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
                   >
                     <svg
+                      aria-hidden="true"
                       fill="currentColor"
+                      focusable={false}
                       height="1em"
-                      viewBox="0 0 32 32"
+                      viewBox="0 0 1000 1000"
                       width="1em"
                     >
-                      <use
-                        xlinkHref="#search"
+                      <path
+                        d="M987.88 936.17l.011-.01-226.8-226.8c56.11-72.027 89.545-162.583 89.545-260.959 0-234.73-190.287-425.018-425.018-425.018C190.888 23.383.603 213.67.603 448.401.603 683.132 190.89 873.42 425.62 873.42c109.721 0 209.728-41.585 285.133-109.847l224.864 224.864.032-.032c6.723 6.952 16.127 11.292 26.558 11.292 20.417 0 36.965-16.548 36.965-36.965a36.852 36.852 0 00-11.294-26.56zM424.255 796.948c-192.937 0-349.34-156.406-349.34-349.34 0-192.933 156.403-349.338 349.34-349.338 192.933 0 349.341 156.405 349.341 349.339 0 192.933-156.408 349.339-349.341 349.339z"
+                        fillRule="nonzero"
                       />
                     </svg>
-                  </i>
-                </Icon>
-              </Iconfont>
-            </Icon>
+                  </component>
+                </i>
+              </Icon>
+            </ForwardRef(SvgSearch)>
             <div
               className="za-search-bar__mock"
             >
@@ -842,52 +826,48 @@ exports[`SearchBar snapshot renders onClear called correctly 1`] = `
                     type="search"
                     value=""
                   />
-                  <Icon
+                  <ForwardRef(SvgCloseCircleFill)
                     className="za-input__clear"
                     onClick={[Function]}
-                    prefixCls="za-icon"
-                    size="md"
-                    theme="default"
-                    type="wrong-round-fill"
-                    viewBox="0 0 32 32"
                   >
-                    <Iconfont
-                      className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                    <Icon
+                      className="za-input__clear"
+                      component={[Function]}
                       onClick={[Function]}
+                      prefixCls="za-icon"
                       size="md"
                       theme="default"
-                      type="wrong-round-fill"
+                      viewBox="0 0 32 32"
                     >
-                      <Icon
-                        className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                      <i
+                        className="za-icon za-input__clear za-icon--default za-icon--md"
                         onClick={[Function]}
-                        prefixCls="za-icon"
                         size="md"
                         theme="default"
-                        type="wrong-round-fill"
-                        viewBox="0 0 32 32"
                       >
-                        <i
-                          className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
-                          onClick={[Function]}
-                          size="md"
-                          theme="default"
-                          type="wrong-round-fill"
+                        <component
+                          fill="currentColor"
+                          height="1em"
+                          viewBox="0 0 32 32"
+                          width="1em"
                         >
                           <svg
+                            aria-hidden="true"
                             fill="currentColor"
+                            focusable={false}
                             height="1em"
-                            viewBox="0 0 32 32"
+                            viewBox="0 0 1000 1000"
                             width="1em"
                           >
-                            <use
-                              xlinkHref="#wrong-round-fill"
+                            <path
+                              d="M500 0C224.32 0 0 224.286 0 500s224.286 500 500 500c275.68 0 500-224.286 500-500S775.714 0 500 0zm203.965 654c13.928 14 13.892 36.572-.072 50.5a35.644 35.644 0 01-25.213 10.429c-9.179 0-18.321-3.5-25.287-10.5L499.821 550.393l-154.07 152.43c-6.964 6.857-16.037 10.32-25.109 10.32-9.213 0-18.392-3.536-25.392-10.607-13.857-14.036-13.75-36.608.286-50.5L449.43 499.821 296.107 346c-13.93-13.965-13.893-36.572.07-50.5 13.966-13.965 36.536-13.892 50.5.07l153.536 154 154.071-152.427c14-13.892 36.643-13.75 50.5.286 13.892 14.036 13.75 36.643-.286 50.5l-153.89 152.213L703.965 654z"
+                              fillRule="nonzero"
                             />
                           </svg>
-                        </i>
-                      </Icon>
-                    </Iconfont>
-                  </Icon>
+                        </component>
+                      </i>
+                    </Icon>
+                  </ForwardRef(SvgCloseCircleFill)>
                 </div>
               </InputBase>
             </div>
@@ -980,48 +960,46 @@ exports[`SearchBar snapshot renders onFocus called correctly 1`] = `
           <div
             className="za-search-bar__content"
           >
-            <Icon
+            <ForwardRef(SvgSearch)
               className="za-search-bar__icon"
-              prefixCls="za-icon"
-              size="md"
-              theme="default"
-              type="search"
-              viewBox="0 0 32 32"
+              size="sm"
             >
-              <Iconfont
-                className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
-                size="md"
+              <Icon
+                className="za-search-bar__icon"
+                component={[Function]}
+                prefixCls="za-icon"
+                size="sm"
                 theme="default"
-                type="search"
+                viewBox="0 0 32 32"
               >
-                <Icon
-                  className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
-                  prefixCls="za-icon"
-                  size="md"
+                <i
+                  className="za-icon za-search-bar__icon za-icon--default za-icon--sm"
+                  size="sm"
                   theme="default"
-                  type="search"
-                  viewBox="0 0 32 32"
                 >
-                  <i
-                    className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
-                    size="md"
-                    theme="default"
-                    type="search"
+                  <component
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
                   >
                     <svg
+                      aria-hidden="true"
                       fill="currentColor"
+                      focusable={false}
                       height="1em"
-                      viewBox="0 0 32 32"
+                      viewBox="0 0 1000 1000"
                       width="1em"
                     >
-                      <use
-                        xlinkHref="#search"
+                      <path
+                        d="M987.88 936.17l.011-.01-226.8-226.8c56.11-72.027 89.545-162.583 89.545-260.959 0-234.73-190.287-425.018-425.018-425.018C190.888 23.383.603 213.67.603 448.401.603 683.132 190.89 873.42 425.62 873.42c109.721 0 209.728-41.585 285.133-109.847l224.864 224.864.032-.032c6.723 6.952 16.127 11.292 26.558 11.292 20.417 0 36.965-16.548 36.965-36.965a36.852 36.852 0 00-11.294-26.56zM424.255 796.948c-192.937 0-349.34-156.406-349.34-349.34 0-192.933 156.403-349.338 349.34-349.338 192.933 0 349.341 156.405 349.341 349.339 0 192.933-156.408 349.339-349.341 349.339z"
+                        fillRule="nonzero"
                       />
                     </svg>
-                  </i>
-                </Icon>
-              </Iconfont>
-            </Icon>
+                  </component>
+                </i>
+              </Icon>
+            </ForwardRef(SvgSearch)>
             <div
               className="za-search-bar__mock"
             >
@@ -1058,52 +1036,48 @@ exports[`SearchBar snapshot renders onFocus called correctly 1`] = `
                     type="search"
                     value=""
                   />
-                  <Icon
+                  <ForwardRef(SvgCloseCircleFill)
                     className="za-input__clear"
                     onClick={[Function]}
-                    prefixCls="za-icon"
-                    size="md"
-                    theme="default"
-                    type="wrong-round-fill"
-                    viewBox="0 0 32 32"
                   >
-                    <Iconfont
-                      className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                    <Icon
+                      className="za-input__clear"
+                      component={[Function]}
                       onClick={[Function]}
+                      prefixCls="za-icon"
                       size="md"
                       theme="default"
-                      type="wrong-round-fill"
+                      viewBox="0 0 32 32"
                     >
-                      <Icon
-                        className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                      <i
+                        className="za-icon za-input__clear za-icon--default za-icon--md"
                         onClick={[Function]}
-                        prefixCls="za-icon"
                         size="md"
                         theme="default"
-                        type="wrong-round-fill"
-                        viewBox="0 0 32 32"
                       >
-                        <i
-                          className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
-                          onClick={[Function]}
-                          size="md"
-                          theme="default"
-                          type="wrong-round-fill"
+                        <component
+                          fill="currentColor"
+                          height="1em"
+                          viewBox="0 0 32 32"
+                          width="1em"
                         >
                           <svg
+                            aria-hidden="true"
                             fill="currentColor"
+                            focusable={false}
                             height="1em"
-                            viewBox="0 0 32 32"
+                            viewBox="0 0 1000 1000"
                             width="1em"
                           >
-                            <use
-                              xlinkHref="#wrong-round-fill"
+                            <path
+                              d="M500 0C224.32 0 0 224.286 0 500s224.286 500 500 500c275.68 0 500-224.286 500-500S775.714 0 500 0zm203.965 654c13.928 14 13.892 36.572-.072 50.5a35.644 35.644 0 01-25.213 10.429c-9.179 0-18.321-3.5-25.287-10.5L499.821 550.393l-154.07 152.43c-6.964 6.857-16.037 10.32-25.109 10.32-9.213 0-18.392-3.536-25.392-10.607-13.857-14.036-13.75-36.608.286-50.5L449.43 499.821 296.107 346c-13.93-13.965-13.893-36.572.07-50.5 13.966-13.965 36.536-13.892 50.5.07l153.536 154 154.071-152.427c14-13.892 36.643-13.75 50.5.286 13.892 14.036 13.75 36.643-.286 50.5l-153.89 152.213L703.965 654z"
+                              fillRule="nonzero"
                             />
                           </svg>
-                        </i>
-                      </Icon>
-                    </Iconfont>
-                  </Icon>
+                        </component>
+                      </i>
+                    </Icon>
+                  </ForwardRef(SvgCloseCircleFill)>
                 </div>
               </InputBase>
             </div>
@@ -1202,48 +1176,46 @@ exports[`SearchBar snapshot renders onSubmit called correctly 1`] = `
           <div
             className="za-search-bar__content"
           >
-            <Icon
+            <ForwardRef(SvgSearch)
               className="za-search-bar__icon"
-              prefixCls="za-icon"
-              size="md"
-              theme="default"
-              type="search"
-              viewBox="0 0 32 32"
+              size="sm"
             >
-              <Iconfont
-                className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
-                size="md"
+              <Icon
+                className="za-search-bar__icon"
+                component={[Function]}
+                prefixCls="za-icon"
+                size="sm"
                 theme="default"
-                type="search"
+                viewBox="0 0 32 32"
               >
-                <Icon
-                  className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
-                  prefixCls="za-icon"
-                  size="md"
+                <i
+                  className="za-icon za-search-bar__icon za-icon--default za-icon--sm"
+                  size="sm"
                   theme="default"
-                  type="search"
-                  viewBox="0 0 32 32"
                 >
-                  <i
-                    className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
-                    size="md"
-                    theme="default"
-                    type="search"
+                  <component
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
                   >
                     <svg
+                      aria-hidden="true"
                       fill="currentColor"
+                      focusable={false}
                       height="1em"
-                      viewBox="0 0 32 32"
+                      viewBox="0 0 1000 1000"
                       width="1em"
                     >
-                      <use
-                        xlinkHref="#search"
+                      <path
+                        d="M987.88 936.17l.011-.01-226.8-226.8c56.11-72.027 89.545-162.583 89.545-260.959 0-234.73-190.287-425.018-425.018-425.018C190.888 23.383.603 213.67.603 448.401.603 683.132 190.89 873.42 425.62 873.42c109.721 0 209.728-41.585 285.133-109.847l224.864 224.864.032-.032c6.723 6.952 16.127 11.292 26.558 11.292 20.417 0 36.965-16.548 36.965-36.965a36.852 36.852 0 00-11.294-26.56zM424.255 796.948c-192.937 0-349.34-156.406-349.34-349.34 0-192.933 156.403-349.338 349.34-349.338 192.933 0 349.341 156.405 349.341 349.339 0 192.933-156.408 349.339-349.341 349.339z"
+                        fillRule="nonzero"
                       />
                     </svg>
-                  </i>
-                </Icon>
-              </Iconfont>
-            </Icon>
+                  </component>
+                </i>
+              </Icon>
+            </ForwardRef(SvgSearch)>
             <div
               className="za-search-bar__mock"
             >
@@ -1280,52 +1252,48 @@ exports[`SearchBar snapshot renders onSubmit called correctly 1`] = `
                     type="search"
                     value="My new value"
                   />
-                  <Icon
+                  <ForwardRef(SvgCloseCircleFill)
                     className="za-input__clear"
                     onClick={[Function]}
-                    prefixCls="za-icon"
-                    size="md"
-                    theme="default"
-                    type="wrong-round-fill"
-                    viewBox="0 0 32 32"
                   >
-                    <Iconfont
-                      className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                    <Icon
+                      className="za-input__clear"
+                      component={[Function]}
                       onClick={[Function]}
+                      prefixCls="za-icon"
                       size="md"
                       theme="default"
-                      type="wrong-round-fill"
+                      viewBox="0 0 32 32"
                     >
-                      <Icon
-                        className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                      <i
+                        className="za-icon za-input__clear za-icon--default za-icon--md"
                         onClick={[Function]}
-                        prefixCls="za-icon"
                         size="md"
                         theme="default"
-                        type="wrong-round-fill"
-                        viewBox="0 0 32 32"
                       >
-                        <i
-                          className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
-                          onClick={[Function]}
-                          size="md"
-                          theme="default"
-                          type="wrong-round-fill"
+                        <component
+                          fill="currentColor"
+                          height="1em"
+                          viewBox="0 0 32 32"
+                          width="1em"
                         >
                           <svg
+                            aria-hidden="true"
                             fill="currentColor"
+                            focusable={false}
                             height="1em"
-                            viewBox="0 0 32 32"
+                            viewBox="0 0 1000 1000"
                             width="1em"
                           >
-                            <use
-                              xlinkHref="#wrong-round-fill"
+                            <path
+                              d="M500 0C224.32 0 0 224.286 0 500s224.286 500 500 500c275.68 0 500-224.286 500-500S775.714 0 500 0zm203.965 654c13.928 14 13.892 36.572-.072 50.5a35.644 35.644 0 01-25.213 10.429c-9.179 0-18.321-3.5-25.287-10.5L499.821 550.393l-154.07 152.43c-6.964 6.857-16.037 10.32-25.109 10.32-9.213 0-18.392-3.536-25.392-10.607-13.857-14.036-13.75-36.608.286-50.5L449.43 499.821 296.107 346c-13.93-13.965-13.893-36.572.07-50.5 13.966-13.965 36.536-13.892 50.5.07l153.536 154 154.071-152.427c14-13.892 36.643-13.75 50.5.286 13.892 14.036 13.75 36.643-.286 50.5l-153.89 152.213L703.965 654z"
+                              fillRule="nonzero"
                             />
                           </svg>
-                        </i>
-                      </Icon>
-                    </Iconfont>
-                  </Icon>
+                        </component>
+                      </i>
+                    </Icon>
+                  </ForwardRef(SvgCloseCircleFill)>
                 </div>
               </InputBase>
             </div>

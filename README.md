@@ -1,6 +1,6 @@
 <p align="center">
   <a href="http://zarm.design">
-    <img width="200" src="https://zarm.design/images/logo.732d9561.svg">
+    <img width="200" src="https://zarm.design/images/logo.1a6cfc30.svg">
   </a>
 </p>
 
@@ -25,7 +25,7 @@
 
 </div>
 
-Zarm 的命名，灵感来源于众安保险秉承的理念：做有温度的保险。Zarm = za + warm，za 代表“众安”，warm 有“温暖”的含义，以重合的 a 字母为中心，各取左右两部分。追求极致的用户体验，致力于做有温度的组件库也是 zarm 项目发起的初衷。
+Zarm （读音 /zɑːm/，中文可发音为 扎姆）的命名，灵感来源于众安保险秉承的理念：做有温度的保险。Zarm = za + warm，za 代表 “众安”，warm 有 “温暖” 的含义，以重合的 “a” 字母为中心，各取左右两部分。追求极致的用户体验，致力于做有温度的组件库也是 zarm 项目发起的初衷。
 
 ## 预览
 
@@ -59,11 +59,11 @@ import 'zarm/dist/zarm.css';
 
 ## 定制主题
 
-可以参考 [定制主题文档](packages/site/web/docs/customize-theme.md)。
+可以参考 [定制主题文档](https://github.com/ZhongAnTech/zarm/blob/master/packages/site/web/docs/customize-theme.md)。
 
 ## 国际化
 
-可以参考 [国际化文档](packages/site/web/docs/i18n.md)。
+可以参考 [国际化文档](https://github.com/ZhongAnTech/zarm/blob/master/packages/site/web/docs/i18n.md)。
 
 ## 社区
 
@@ -79,7 +79,7 @@ import 'zarm/dist/zarm.css';
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/ZhongAnTech/zarm)
 
-或者克隆到本地开发，请阅读我们的 [贡献指南](packages/site/web/docs/contributing.md)。
+或者克隆到本地开发，请阅读我们的 [贡献指南](https://github.com/ZhongAnTech/zarm/blob/master/packages/site/web/docs/contributing.md)。
 
 ## 开源协议
 

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
+import { CloseCircleFill } from '@zarm-design/icons';
 import { InputNumberProps } from './PropsType';
 import Events from '../utils/events';
 import KeyboardPicker from '../keyboard-picker';
-import Icon from '../icon';
 import { getValue } from './utils';
 
 export default class InputNumber extends Component<InputNumberProps, any> {
@@ -30,7 +30,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
 
   componentDidMount() {
     const { autoFocus, focused } = this.props;
-    Events.on(document.body, 'click', this.onMaskClick);
+    this.addBlurListener();
 
     if (autoFocus || focused) {
       this.onFocus();
@@ -57,8 +57,16 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   }
 
   componentWillUnmount() {
-    Events.off(document.body, 'click', this.onMaskClick);
+    this.removeBlurListener();
   }
+
+  addBlurListener = () => {
+    Events.on(document.body, 'click', this.onMaskClick);
+  };
+
+  removeBlurListener = () => {
+    Events.off(document.body, 'click', this.onMaskClick);
+  };
 
   onMaskClick = (e) => {
     const clsRegExp = new RegExp(`(^|\\s)${this.picker.props.prefixCls}(\\s|$)`, 'g');
@@ -156,7 +164,11 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   };
 
   focus = () => {
+    this.removeBlurListener();
     this.onFocus();
+    setTimeout(() => {
+      this.addBlurListener();
+    }, 50);
   };
 
   blur = () => {
@@ -204,8 +216,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     const renderText = <div className={`${prefixCls}__content`}>{value}</div>;
 
     const renderClearIcon = showClearIcon && (
-      <Icon
-        type="wrong-round-fill"
+      <CloseCircleFill
         className={`${prefixCls}__clear`}
         onClick={(e) => {
           e.stopPropagation();

@@ -2,11 +2,20 @@
   position: relative;
   overflow: hidden;
 
+  @include e(items) {
+    display: flex;
+    transform-style: preserve-3d;
+    transition-property: transform;
+  }
+
   @include e(item) {
-    display: inline-block;
+    flex-shrink: 0;
+    position: relative;
     width: 100%;
     height: 100%;
     vertical-align: top;
+    transition-property: transform;
+    transform: translateZ(0);
   }
 
   @include e(pagination) {
@@ -25,7 +34,6 @@
 
   @include m(horizontal) {
     @include e(items) {
-      will-change: transform;
       white-space: nowrap;
     }
 
@@ -47,6 +55,10 @@
   }
 
   @include m(vertical) {
+    @include e(items) {
+      flex-direction: column;
+    }
+
     @include e(pagination) {
       top: 50%;
       right: var(--carousel-pagination-distance);

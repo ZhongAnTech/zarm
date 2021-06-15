@@ -21,7 +21,6 @@
 
     @include e(icon) {
       margin-right: r(4);
-      font-size: var(--search-bar-icon-size);
       color: var(--color-text-placeholder);
     }
   }

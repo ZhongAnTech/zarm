@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
+import { Close as CloseIcon } from '@zarm-design/icons';
 import { BaseModalHeaderProps } from './PropsType';
-import Icon from '../icon';
 
 export interface ModalHeaderProps extends BaseModalHeaderProps {
   prefixCls?: string;
@@ -17,7 +17,7 @@ export default class ModalHeader extends PureComponent<ModalHeaderProps, {}> {
     const { prefixCls, className, title, closable, onCancel, ...others } = this.props;
     const cls = classnames(`${prefixCls}__header`, className);
     const btnClose = closable && (
-      <Icon type="wrong" size="sm" className={`${prefixCls}__header__close`} onClick={onCancel} />
+      <CloseIcon size="sm" className={`${prefixCls}__header__close`} onClick={onCancel} />
     );
     return (
       <div className={cls} {...others}>

@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { sync } from 'mkdirp';
-import changeCase from 'change-case';
+import { paramCase } from 'change-case';
 import chalk from 'chalk';
 import signale from 'signale';
 import { component, style, test } from './templates';
@@ -15,7 +15,7 @@ const write = (dir: string, code: string) => {
 };
 
 export default ({ compName }: ITemplateConfig) => {
-  const rootDir = `components/${changeCase.paramCase(compName)}`;
+  const rootDir = `components/${paramCase(compName)}`;
   const folder = {
     component: rootDir,
     style: `${rootDir}/style`,

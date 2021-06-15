@@ -24,12 +24,23 @@ export const getRunTimeLocale = () => runTimeLocale;
 export default class ConfigProvider extends PureComponent<ConfigProviderProps, {}> {
   static defaultProps = defaultConfig;
 
-  render() {
-    const { children, locale, theme, primaryColor, safeIphoneX } = this.props;
+  componentDidMount() {
+    this.update();
+  }
+
+  componentDidUpdate() {
+    this.update();
+  }
+
+  update() {
+    const { locale, theme, primaryColor } = this.props;
     changeRunTimeLocale(locale);
     setTheme(theme);
     setPrimaryColor(primaryColor);
+  }
 
+  render() {
+    const { locale, theme, primaryColor, children, safeIphoneX } = this.props;
     return (
       <ConfigContext.Provider value={{ locale, theme, primaryColor, safeIphoneX }}>
         {React.Children.only(children)}

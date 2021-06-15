@@ -19,7 +19,6 @@
 
     @include b(icon) {
       font-size: var(--message-icon-size-md);
-      cursor: pointer;
     }
   }
 
@@ -40,6 +39,10 @@
       font-size: var(--message-icon-size-md);
       cursor: pointer;
     }
+  }
+
+  @include m(link) {
+    cursor: pointer;
   }
 
   @include m(primary) {

@@ -1,5 +1,5 @@
 import React, { useState, useContext, useRef, useEffect } from 'react';
-import { Route, Switch, Redirect, useParams } from 'react-router-dom';
+import { Route, Switch, Redirect, useParams, useRouteMatch } from 'react-router-dom';
 import classnames from 'classnames';
 import Loadable from 'react-loadable';
 import { FormattedMessage } from 'react-intl';
@@ -11,8 +11,6 @@ import SideBar from '@/web/components/SideBar';
 import Footer from '@/web/components/Footer';
 import Markdown from '@/web/components/Markdown';
 import './style.scss';
-
-const isComponentPage = (page) => documents.findIndex((item) => item.key === page) === -1;
 
 const LoadableComponent = (component) => {
   return Loadable({
@@ -69,21 +67,21 @@ const Simulator = () => {
 
 const Page = () => {
   const { general, form, feedback, view, navigation, other } = components;
-  const params = useParams();
+  const isComponentPage = !!useRouteMatch('/components');
 
   const containerCls = classnames('main-container', 'markdown', {
-    'no-simulator': !isComponentPage(params.component),
+    'no-simulator': !isComponentPage,
   });
 
   return (
     <Container className="components-page">
       <main>
         <SideBar />
-        {isComponentPage(params.component) && <Simulator />}
+        {isComponentPage && <Simulator />}
         <div className={containerCls}>
           <Switch>
             {documents.map((doc, i) => (
-              <Route key={+i} path={`/components/${doc.key}`} component={LoadableComponent(doc)} />
+              <Route key={+i} path={`/docs/${doc.key}`} component={LoadableComponent(doc)} />
             ))}
             {[...general, ...form, ...feedback, ...view, ...navigation, ...other].map(
               (component, i) => (

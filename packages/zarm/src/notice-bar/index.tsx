@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
+import { Volume as VolumeIcon } from '@zarm-design/icons';
 import type PropsType from './PropsType';
 import Message from '../message';
-import Icon from '../icon';
 import { addKeyframe, removeKeyframe, existKeyframe } from '../utils/keyframes';
 
 const NOTICEBAR_KEYFRAME_NAME = 'za-notice-bar-scrolling';
@@ -21,7 +21,7 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
   static defaultProps: NoticeBarProps = {
     prefixCls: 'za-notice-bar',
     theme: 'warning',
-    icon: <Icon type="broadcast" />,
+    icon: <VolumeIcon />,
     hasArrow: false,
     closable: false,
     speed: 50,
