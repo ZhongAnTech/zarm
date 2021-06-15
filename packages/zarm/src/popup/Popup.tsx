@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import ConfigReceiver from '../config-receiver';
 import type PropsType from './PropsType';
 import Portal from './Portal';
 
@@ -12,7 +13,7 @@ export interface PopupState {
   portalVisible: boolean;
 }
 
-export default class Popup extends PureComponent<PopupProps, PopupState> {
+class Popup extends PureComponent<PopupProps, PopupState> {
   static defaultProps: PopupProps = {
     prefixCls: 'za-popup',
     destroy: true,
@@ -71,6 +72,7 @@ export default class Popup extends PureComponent<PopupProps, PopupState> {
 
   render() {
     const { renderPortal, portalVisible } = this.state;
+
     return (
       renderPortal && (
         <Portal
@@ -85,3 +87,5 @@ export default class Popup extends PureComponent<PopupProps, PopupState> {
     );
   }
 }
+
+export default ConfigReceiver()(Popup);

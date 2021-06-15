@@ -6,6 +6,7 @@ import Popup from '../popup';
 export interface ActionSheetProps extends PropsType {
   prefixCls?: string;
   className?: string;
+  safeIphoneX?: boolean;
 }
 
 export default class ActionSheet extends PureComponent<ActionSheetProps, {}> {
@@ -43,9 +44,19 @@ export default class ActionSheet extends PureComponent<ActionSheetProps, {}> {
   };
 
   render() {
-    const { prefixCls, className, spacing, visible, onMaskClick, actions, destroy } = this.props;
+    const {
+      prefixCls,
+      className,
+      spacing,
+      visible,
+      onMaskClick,
+      actions,
+      destroy,
+      safeIphoneX,
+    } = this.props;
     const cls = classnames(prefixCls, {
       [`${prefixCls}--spacing`]: spacing,
+      [`${prefixCls}--safeIphoneX`]: safeIphoneX,
     });
 
     return (

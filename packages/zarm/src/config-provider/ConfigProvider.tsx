@@ -8,6 +8,7 @@ const defaultConfig: ConfigProviderProps = {
   locale: ({} as unknown) as Locale,
   theme: 'light',
   primaryColor: '#00bc70',
+  safeIphoneX: false,
 };
 
 export const LocaleContext: Context<Locale> = createContext(defaultConfig.locale);
@@ -24,13 +25,13 @@ export default class ConfigProvider extends PureComponent<ConfigProviderProps, {
   static defaultProps = defaultConfig;
 
   render() {
-    const { children, locale, theme, primaryColor } = this.props;
+    const { children, locale, theme, primaryColor, safeIphoneX } = this.props;
     changeRunTimeLocale(locale);
     setTheme(theme);
     setPrimaryColor(primaryColor);
 
     return (
-      <ConfigContext.Provider value={{ locale, theme, primaryColor }}>
+      <ConfigContext.Provider value={{ locale, theme, primaryColor, safeIphoneX }}>
         {React.Children.only(children)}
       </ConfigContext.Provider>
     );
