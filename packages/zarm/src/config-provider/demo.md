@@ -16,7 +16,6 @@ import {
   TabBar,
   Icon,
   Popup,
-  ActionSheet,
 } from 'zarm';
 import enUS from 'zarm/lib/config-provider/locale/en_US';
 import zhCN from 'zarm/lib/config-provider/locale/zh_CN';
@@ -24,29 +23,12 @@ import zhCN from 'zarm/lib/config-provider/locale/zh_CN';
 const TabIcon = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_lpsswvb7yv.js');
 
 const colors = ['#00bc70', '#1890ff', '#f5222d', '#fa541b', '#13c2c2', '#2f54ec', '#712fd1'];
-const BUTTONS = [
-  {
-    text: '操作一',
-    onClick: () => console.log('点击操作一'),
-  },
-  {
-    theme: 'primary',
-    text: '操作二',
-    onClick: () => console.log('点击操作二'),
-  },
-  {
-    theme: 'danger',
-    text: '操作三',
-    onClick: () => console.log('点击操作三'),
-  },
-];
 
 const Demo = () => {
   const [locale, setLocale] = useState(localStorage.locale || 'zhCN');
   const [theme, setTheme] = useState(localStorage.theme || 'light');
   const [primaryColor, setPrimaryColor] = useState(localStorage.primaryColor || colors[0]);
   const [visiblePopup, setVisiblePopup] = useState(false);
-  const [visibleAction, setVisibleAction] = useState(false);
 
   const show = (key) => {
     if (key === 'alert') {
@@ -145,16 +127,6 @@ const Demo = () => {
             弹出层
           </Cell>
 
-          <Cell
-            description={
-              <Button size="xs" onClick={() => setVisibleAction(true)}>
-                开启
-              </Button>
-            }
-          >
-            动作面板
-          </Cell>
-
           <Popup
             visible={visiblePopup}
             direction="bottom"
@@ -168,13 +140,6 @@ const Demo = () => {
               关闭
             </div>
           </Popup>
-
-          <ActionSheet
-            spacing
-            visible={visibleAction}
-            actions={BUTTONS}
-            onMaskClick={() => setVisibleAction(false)}
-          />
 
           <TabBar visible={true} activeKey={1}>
             <TabBar.Item itemKey="home" title="主页" icon={<TabIcon type="home" />} />

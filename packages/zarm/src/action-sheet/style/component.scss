@@ -11,10 +11,6 @@
     }
   }
 
-  @include m(safe) {
-    @include safeIphoneX(true);
-  }
-
   @include e(actions, cancel) {
     overflow: hidden;
     background-color: var(--action-sheet-background);
