@@ -14,7 +14,6 @@ export default interface BaseSearchBarProps {
   onChange?: (value?: string) => void;
   onFocus?: () => void;
   onBlur?: () => void;
-  onClear?: (value?: string) => void;
   onCancel?: () => void;
   locale?: Locale['SearchBar'];
 }

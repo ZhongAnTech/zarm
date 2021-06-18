@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Popup snapshot renders correctly 1`] = `
-<ForwardRef
+<Popup
   afterClose={[MockFunction]}
   direction="bottom"
   onMaskClick={[MockFunction]}
@@ -9,7 +9,7 @@ exports[`Popup snapshot renders correctly 1`] = `
 `;
 
 exports[`Popup snapshot renders mount node correctly 1`] = `
-<ForwardRef
+<Popup
   afterClose={[MockFunction]}
   direction="bottom"
   mountContainer={[Function]}
@@ -107,5 +107,5 @@ exports[`Popup snapshot renders mount node correctly 1`] = `
       </Portal>
     </Trigger>
   </Portal>
-</ForwardRef>
+</Popup>
 `;

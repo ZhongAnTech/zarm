@@ -61,12 +61,12 @@ describe('SearchBar', () => {
     });
 
     it('renders onClear called correctly', () => {
-      const onClear = jest.fn();
-      const wrapper = mount(<SearchBar onClear={onClear} />);
+      const onChange = jest.fn();
+      const wrapper = mount(<SearchBar onChange={onChange} />);
       const input = wrapper.find('input[type="search"]');
       input.simulate('change', { target: { value: 'My new value' } });
       wrapper.find('i.za-input__clear').simulate('click');
-      expect(onClear).toHaveBeenCalled();
+      expect(onChange).toHaveBeenCalled();
       expect(input.instance()['value']).toEqual('');
       expect(toJson(wrapper)).toMatchSnapshot();
     });
@@ -183,9 +183,7 @@ describe('SearchBar', () => {
     const mEvent = { target: { value: 'test' }, type: 'compositionend' };
     const inputWrapper = wrapper.find('input');
     inputWrapper.simulate('compositionend', mEvent);
-    expect(wrapper.state('value')).toEqual('test');
     expect(mOnChange).toBeCalledWith('test');
-    expect(mOnChange).toBeCalledTimes(2);
   });
 
   it('should handle cancel action and trigger blur event', () => {
@@ -201,22 +199,6 @@ describe('SearchBar', () => {
     expect(wrapper.state('focus')).toBeFalsy();
     expect(mOnCancel).toBeCalledTimes(1);
     expect(mOnBlur).toBeCalledTimes(1);
-  });
-
-  it('should handle clear action and change action', () => {
-    const mOnClear = jest.fn();
-    const mOnChange = jest.fn();
-    const wrapper = mount(
-      <SearchBarOriginal value="test" onClear={mOnClear} onChange={mOnChange} />,
-    );
-    const inputRef = wrapper.instance()['inputRef'];
-    const focusSpy = jest.spyOn(inputRef, 'focus');
-    wrapper.find('.za-input').childAt(1).invoke('onClick')();
-    expect(wrapper.state('value')).toEqual('');
-    expect(wrapper.state('isOnComposition')).toBeFalsy();
-    expect(mOnClear).toBeCalledWith('');
-    expect(mOnChange).toBeCalledWith('');
-    expect(focusSpy).toBeCalledTimes(2);
   });
 
   it('should re-calculate the position of cancel ref if cancel text is changed', () => {

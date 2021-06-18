@@ -63,7 +63,7 @@ exports[`Picker Picker render visible 1`] = `
       valueMember="value"
       visible={true}
     >
-      <ForwardRef
+      <Popup
         destroy={false}
         onMaskClick={[Function]}
         visible={true}
@@ -324,7 +324,7 @@ exports[`Picker Picker render visible 1`] = `
             </Portal>
           </Trigger>
         </Portal>
-      </ForwardRef>
+      </Popup>
     </Picker>
   </ConfigReceiver>
 </ForwardRef(forwardRef)>
@@ -452,7 +452,7 @@ exports[`Picker render custom label 1`] = `
       prefixCls="za-picker"
       valueMember="code"
     >
-      <ForwardRef
+      <Popup
         destroy={false}
         onMaskClick={[Function]}
       />

@@ -18,7 +18,15 @@
       input {
         @include disaleInput;
       }
+    }
 
+    @include e(content) {
+      height: 100%;
+    }
+  }
+
+  @include b(custom-input) {
+    @include m(disabled) {
       @include e(virtual-input) {
         @include disaleInput;
       }

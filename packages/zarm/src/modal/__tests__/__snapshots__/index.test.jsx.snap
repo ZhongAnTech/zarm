@@ -17,7 +17,7 @@ exports[`Modal renders correctly 1`] = `
   visible={true}
   width="70%"
 >
-  <ForwardRef
+  <Popup
     animationDuration={200}
     animationType="fade"
     className="za-modal za-modal--radius"
@@ -231,6 +231,6 @@ exports[`Modal renders correctly 1`] = `
         </Portal>
       </Trigger>
     </Portal>
-  </ForwardRef>
+  </Popup>
 </Modal>
 `;

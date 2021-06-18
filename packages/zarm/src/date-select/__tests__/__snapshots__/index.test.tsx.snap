@@ -93,7 +93,7 @@ exports[`DateSelect DateSelect date 1`] = `
               valueMember="value"
               visible={false}
             >
-              <ForwardRef
+              <Popup
                 destroy={true}
                 onMaskClick={[Function]}
                 visible={false}
@@ -212,7 +212,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
               valueMember="value"
               visible={false}
             >
-              <ForwardRef
+              <Popup
                 destroy={true}
                 onMaskClick={[Function]}
                 visible={false}
@@ -386,7 +386,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
               valueMember="value"
               visible={true}
             >
-              <ForwardRef
+              <Popup
                 destroy={true}
                 onMaskClick={[Function]}
                 visible={true}
@@ -4235,7 +4235,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                     </Portal>
                   </Trigger>
                 </Portal>
-              </ForwardRef>
+              </Popup>
             </DatePicker>
           </ConfigReceiver>
         </ForwardRef(forwardRef)>
@@ -4340,7 +4340,7 @@ exports[`DateSelect DateSelect time 1`] = `
               valueMember="value"
               visible={false}
             >
-              <ForwardRef
+              <Popup
                 destroy={true}
                 onMaskClick={[Function]}
                 visible={false}
@@ -4438,7 +4438,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
               valueMember="value"
               visible={false}
             >
-              <ForwardRef
+              <Popup
                 destroy={true}
                 onMaskClick={[Function]}
                 visible={false}
@@ -4545,7 +4545,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
               visible={false}
               wheelDefaultValue={2017-11-03T10:00:00.000Z}
             >
-              <ForwardRef
+              <Popup
                 destroy={true}
                 onMaskClick={[Function]}
                 visible={false}
@@ -4670,7 +4670,7 @@ exports[`DateSelect DateSelect year 1`] = `
               valueMember="value"
               visible={false}
             >
-              <ForwardRef
+              <Popup
                 destroy={true}
                 onMaskClick={[Function]}
                 visible={false}

@@ -228,7 +228,7 @@ exports[`StackPicker renders correctly 1`] = `
       valueMember="value"
       visible={true}
     >
-      <ForwardRef
+      <Popup
         direction="bottom"
         onMaskClick={[Function]}
         visible={true}
@@ -552,7 +552,7 @@ exports[`StackPicker renders correctly 1`] = `
             </Portal>
           </Trigger>
         </Portal>
-      </ForwardRef>
+      </Popup>
     </Memo()>
   </ConfigReceiver>
 </ForwardRef(forwardRef)>

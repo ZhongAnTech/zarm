@@ -1,9 +1,9 @@
-export function getValue(props, defaultValue: string | number = ''): string | number {
+export function getValue(props, defaultValue?: string | number): string {
   if (typeof props.value !== 'undefined' && props.value !== null) {
-    return props.value;
+    return String(props.value);
   }
   if (typeof props.defaultValue !== 'undefined' && props.defaultValue !== null) {
-    return props.defaultValue;
+    return String(props.defaultValue);
   }
-  return defaultValue;
+  return String(defaultValue);
 }

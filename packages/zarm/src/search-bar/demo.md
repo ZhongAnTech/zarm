@@ -19,9 +19,6 @@ ReactDOM.render(
     onBlur={() => {
       console.log('失去焦点');
     }}
-    onClear={() => {
-      console.log('点击了清除');
-    }}
     onCancel={() => {
       console.log('点击了取消');
     }}
@@ -40,14 +37,7 @@ const Demo = () => {
   const [value, setValue] = useState('');
 
   return (
-    <SearchBar
-      showCancel
-      placeholder="搜索"
-      cancelText="取消"
-      value={value}
-      onChange={setValue}
-      onClear={() => setValue('')}
-    />
+    <SearchBar showCancel placeholder="搜索" cancelText="取消" value={value} onChange={setValue} />
   );
 };
 
@@ -116,5 +106,4 @@ ReactDOM.render(<Demo />, mountNode);
 | onSubmit     | (value?: string) => void | -        | 提交时触发的回调函数                   |
 | onFocus      | () => void               | -        | 获取焦点时触发的回调函数               |
 | onBlur       | () => void               | -        | 失去焦点时触发的回调函数               |
-| onClear      | () => void               | -        | 点击清除按钮时触发的回调函数           |
 | onCancel     | () => void               | -        | 点击取消时触发的回调函数               |

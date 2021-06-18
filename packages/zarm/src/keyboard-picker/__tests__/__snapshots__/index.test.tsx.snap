@@ -2,7 +2,7 @@
 
 exports[`KeyboardPicker snapshot renders correctly 1`] = `
 <KeyboardPicker>
-  <ForwardRef
+  <Popup
     destroy={true}
     mask={false}
     visible={false}

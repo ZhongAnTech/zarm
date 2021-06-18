@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ReactElement } from 'react';
-import { mount, shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 
 describe('Loading', () => {
   let Loading: typeof import('../index').default;
@@ -26,28 +26,6 @@ describe('Loading', () => {
     if (LoadingContainer) {
       document.body.removeChild(LoadingContainer as Node);
     }
-  });
-  describe('snapshot', () => {
-    it('renders correctly', () => {
-      const wrapper = mount(<Loading visible>foo</Loading>);
-      expect(wrapper).toMatchSnapshot();
-    });
-
-    it('visible change true', () => {
-      const wrapper = mount(<Loading />);
-      wrapper.setProps({ visible: true });
-      expect(wrapper).toMatchSnapshot();
-    });
-
-    it('visible change false', () => {
-      const afterClose = jest.fn();
-      const wrapper = mount(<Loading visible afterClose={afterClose} />);
-      wrapper.setProps({ visible: false });
-      wrapper.simulate('transitionEnd');
-      wrapper.simulate('animationEnd');
-      expect(wrapper.state('visible')).toEqual(false);
-      expect(wrapper).toMatchSnapshot();
-    });
   });
 
   it('static function pass params', () => {
@@ -116,34 +94,6 @@ describe('Loading', () => {
     Loading.zarmLoading = null;
     Loading.hide();
     expect(hideHelperSpy).not.toBeCalled();
-  });
-
-  it('should unmount zarm loading from the DOM tree', () => {
-    expect.assertions(5);
-    Loading.show();
-    let zarmLoading = document.body.querySelector('.za-loading-container');
-    expect(zarmLoading).toBeTruthy();
-    if (zarmLoading) {
-      const loadingReactElement = zarmLoading.firstChild;
-      expect(loadingReactElement).toBeTruthy();
-      Loading.unmountNode();
-      expect(zarmLoading.firstChild).toBeFalsy();
-      zarmLoading = document.body.querySelector('.za-loading-container');
-      expect(zarmLoading).toBeFalsy();
-      expect(Loading.zarmLoading).toBeNull();
-    }
-  });
-
-  it('should auto close loading if stay time greater than 0', () => {
-    jest.useFakeTimers();
-    const setTimeoutSpy = jest.spyOn(global, 'setTimeout');
-    const clearTimeoutSpy = jest.spyOn(global, 'clearTimeout');
-    const wrapper = shallow(<Loading visible stayTime={100} />);
-    expect(wrapper.state('visible')).toBeTruthy();
-    expect(setTimeoutSpy).toBeCalledWith(expect.any(Function), 100);
-    jest.advanceTimersByTime(100);
-    expect(wrapper.state('visible')).toBeFalsy();
-    expect(clearTimeoutSpy).toBeCalledWith(expect.any(Number));
   });
 
   it('should call after close handler and remove zarm loading element from the DOM tree', () => {

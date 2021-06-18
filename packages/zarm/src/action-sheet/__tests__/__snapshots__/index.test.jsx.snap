@@ -77,7 +77,7 @@ exports[`ActionSheet renders correctly 1`] = `
       spacing={false}
       visible={true}
     >
-      <ForwardRef
+      <Popup
         destroy={true}
         onMaskClick={[MockFunction]}
         visible={true}
@@ -240,7 +240,7 @@ exports[`ActionSheet renders correctly 1`] = `
             </Portal>
           </Trigger>
         </Portal>
-      </ForwardRef>
+      </Popup>
     </ActionSheet>
   </ConfigReceiver>
 </ForwardRef(forwardRef)>

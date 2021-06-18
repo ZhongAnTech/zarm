@@ -15,7 +15,7 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
   showPagination={true}
   visible={true}
 >
-  <ForwardRef
+  <Popup
     className="za-image-preview"
     direction="center"
     visible={true}
@@ -305,7 +305,7 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
         </Portal>
       </Trigger>
     </Portal>
-  </ForwardRef>
+  </Popup>
 </ImagePreview>
 `;
 
@@ -333,7 +333,7 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
   showPagination={true}
   visible={true}
 >
-  <ForwardRef
+  <Popup
     className="za-image-preview"
     direction="center"
     visible={true}
@@ -630,6 +630,6 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
         </Portal>
       </Trigger>
     </Portal>
-  </ForwardRef>
+  </Popup>
 </ImagePreview>
 `;

@@ -41,45 +41,6 @@ describe('Popup', () => {
       expect(toJson(wrapper)).toMatchSnapshot();
     });
   });
-
-  it('should render portal if props.visible is truthy', () => {
-    const wrapper = shallow(<Popup visible />);
-    expect(wrapper.state()).toEqual({ renderPortal: true, portalVisible: true });
-    expect(wrapper.exists()).toBeTruthy();
-  });
-
-  it('should not render portal if props.visible is falsy', () => {
-    const wrapper = shallow(<Popup />);
-    expect(wrapper.state()).toEqual({ renderPortal: false, portalVisible: false });
-    expect(wrapper.find(Portal).exists()).toBeFalsy();
-  });
-
-  it('should create portal ref', () => {
-    const wrapper = mount(<Popup visible />);
-    expect(wrapper.instance()['portalRef']).toBeInstanceOf(Portal);
-  });
-
-  it('should destroy(unmount) portal from component tree', () => {
-    const wrapper = shallow(<Popup visible destroy />);
-    wrapper.instance()['handlePortalUnmount']();
-    expect(wrapper.state()).toEqual({ renderPortal: false, portalVisible: true });
-    expect(wrapper.find(Portal).exists()).toBeFalsy();
-  });
-
-  // TODO: the logic probably incorrect, getDerivedStateFromProps will be triggered after setState
-  // The state will be updated to { renderPortal: true, portalVisible: true }
-  it('should not destroy(unmount) portal from component tree but set to invisible', () => {
-    const wrapper = shallow(<Popup visible destroy={false} />);
-    wrapper.instance()['handlePortalUnmount']();
-    expect(wrapper.state()).toEqual({ renderPortal: true, portalVisible: true });
-    expect(wrapper.find(Portal).exists()).toBeTruthy();
-    expect(wrapper.find(Portal).prop('visible')).toBeTruthy();
-  });
-
-  it('should pass correct props to Portal', () => {
-    const wrapper = shallow(<Popup visible />);
-    expect(wrapper.prop('destroy')).toBeTruthy();
-  });
 });
 
 describe('Portal', () => {
@@ -170,18 +131,6 @@ describe('Portal', () => {
     expect(wrapper.find(Trigger).children()).toHaveLength(0);
   });
 
-  it('should render popup and its children without mask', () => {
-    const wrapper = shallow(
-      <Portal mask={false}>
-        <div id="test">test</div>
-      </Portal>,
-    );
-    const popup = wrapper.find('[role="dialog"]');
-    expect(popup.exists()).toBeTruthy();
-    expect(popup.prop('className')).toEqual('za-popup za-popup--bottom');
-    expect(popup.find('#test').text()).toEqual('test');
-  });
-
   it('should render popup with normal mask which will perform a fade in animation', () => {
     const wrapper = mount(<Portal visible maskType="normal" />);
     expect(wrapper.find(Mask).exists()).toBeTruthy();
@@ -253,39 +202,6 @@ describe('Portal', () => {
     expect(mOnEsc).toBeCalledTimes(1);
   });
 
-  it('should handle mask click', () => {
-    const mOnMaskClick = jest.fn();
-    const wrapper = mount(<Portal onMaskClick={mOnMaskClick} />);
-    const maskWrapper = wrapper.find('.za-popup__wrapper');
-    const mEvent = { stopPropagation: jest.fn() };
-    maskWrapper.simulate('click', mEvent);
-    expect(mEvent.stopPropagation).toBeCalledTimes(1);
-    expect(mOnMaskClick).toBeCalledTimes(1);
-  });
-
-  it('should not handle mask click if popup ref is event target', () => {
-    let popupRef!: HTMLDivElement;
-    Object.defineProperty(Portal.prototype, 'popup', {
-      get() {
-        return this._popup;
-      },
-      set(ref) {
-        if (ref) {
-          popupRef = ref;
-        }
-        this._popup = ref;
-      },
-      configurable: true,
-    });
-    const mOnMaskClick = jest.fn();
-    const wrapper = mount(<Portal onMaskClick={mOnMaskClick} />);
-    const maskWrapper = wrapper.find('.za-popup__wrapper');
-    const mEvent = { stopPropagation: jest.fn(), target: popupRef };
-    maskWrapper.simulate('click', mEvent);
-    expect(mEvent.stopPropagation).toBeCalledTimes(1);
-    expect(mOnMaskClick).not.toBeCalled();
-  });
-
   it('should not handle animation end event if event target is popup ref', () => {
     let handlerRef!: (e: TransitionEvent | AnimationEvent) => void;
     jest.spyOn(Events, 'on').mockImplementationOnce((_, __, handler) => {
@@ -296,27 +212,6 @@ describe('Portal', () => {
     const mEvent = ({ stopPropagation: jest.fn() } as unknown) as TransitionEvent;
     handlerRef(mEvent);
     expect(mEvent.stopPropagation).not.toBeCalled();
-  });
-
-  it('should handle animation end event if animation state is leave', () => {
-    let handlerRef!: (e: TransitionEvent | AnimationEvent) => void;
-    jest.spyOn(Events, 'on').mockImplementationOnce((_, __, handler) => {
-      handlerRef = handler;
-    });
-    const mHandlePortalUnmount = jest.fn();
-    const mAfterClose = jest.fn();
-    const wrapper = mount(
-      <Portal handlePortalUnmount={mHandlePortalUnmount} afterClose={mAfterClose} />,
-    );
-    const popupRef = wrapper.instance()['popup'] as HTMLDivElement;
-    const mEvent = ({ stopPropagation: jest.fn(), target: popupRef } as unknown) as TransitionEvent;
-    handlerRef(mEvent);
-    expect(wrapper.instance()['_container'].className).toEqual(
-      'za-popup-container za-popup--hidden',
-    );
-    expect(mEvent.stopPropagation).toBeCalledTimes(1);
-    expect(mHandlePortalUnmount).toBeCalledTimes(1);
-    expect(mAfterClose).toBeCalledTimes(1);
   });
 
   it('should handle animation end event if animation state is enter', () => {

@@ -273,7 +273,7 @@ exports[`Select Cascader Select 1`] = `
               valueMember="value"
               visible={false}
             >
-              <ForwardRef
+              <Popup
                 destroy={false}
                 onMaskClick={[Function]}
                 visible={false}
@@ -603,7 +603,7 @@ exports[`Select Cascader Select init value 1`] = `
               valueMember="value"
               visible={false}
             >
-              <ForwardRef
+              <Popup
                 destroy={false}
                 onMaskClick={[Function]}
                 visible={false}
@@ -770,7 +770,7 @@ exports[`Select Select 1`] = `
               valueMember="value"
               visible={false}
             >
-              <ForwardRef
+              <Popup
                 destroy={false}
                 onMaskClick={[Function]}
                 visible={false}
@@ -943,7 +943,7 @@ exports[`Select Select disabled 1`] = `
               valueMember="value"
               visible={true}
             >
-              <ForwardRef
+              <Popup
                 destroy={false}
                 onMaskClick={[Function]}
                 visible={true}
@@ -1206,7 +1206,7 @@ exports[`Select Select disabled 1`] = `
                     </Portal>
                   </Trigger>
                 </Portal>
-              </ForwardRef>
+              </Popup>
             </Picker>
           </ConfigReceiver>
         </ForwardRef(forwardRef)>
@@ -1375,7 +1375,7 @@ exports[`Select render defaultValue correctly  1`] = `
               valueMember="value"
               visible={false}
             >
-              <ForwardRef
+              <Popup
                 destroy={false}
                 onMaskClick={[Function]}
                 visible={false}

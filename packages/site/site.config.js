@@ -60,6 +60,12 @@ module.exports = {
         style: false,
       },
       {
+        key: 'custom-input',
+        name: '自定义输入框',
+        module: () => import('zarm/custom-input/demo.md'),
+        style: false,
+      },
+      {
         key: 'radio',
         name: '单选框',
         module: () => import('zarm/radio/demo.md'),

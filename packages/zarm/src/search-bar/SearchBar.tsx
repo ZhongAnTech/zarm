@@ -3,7 +3,7 @@ import type { FormEvent } from 'react';
 import classnames from 'classnames';
 import { Search as SearchIcon } from '@zarm-design/icons';
 import type BaseSearchBarProps from './PropsType';
-import InputBase from '../input/InputBase';
+import Input from '../input';
 
 export interface SearchBarProps extends BaseSearchBarProps {
   prefixCls?: string;
@@ -22,7 +22,7 @@ export default class SearchBar extends PureComponent<SearchBarProps, SearchBarSt
 
   private cancelOuterWidth: number;
 
-  private inputRef: InputBase | null = null;
+  private inputRef;
 
   static defaultProps: SearchBarProps = {
     prefixCls: 'za-search-bar',
@@ -74,13 +74,14 @@ export default class SearchBar extends PureComponent<SearchBarProps, SearchBarSt
     onFocus && onFocus();
   }
 
-  onChange(value?: string) {
+  onChange(e) {
     const { onChange } = this.props;
     const { isOnComposition } = this.state;
+    const { value } = e.target;
 
     this.setState({ value });
     if (!isOnComposition && onChange) {
-      onChange(value);
+      onChange(e.target.value);
     }
   }
 
@@ -92,15 +93,6 @@ export default class SearchBar extends PureComponent<SearchBarProps, SearchBarSt
       !value && this.blurAnim();
       focus && onBlur && onBlur();
     });
-  }
-
-  onClear() {
-    const { onClear, onChange } = this.props;
-    this.setState({ value: '', isOnComposition: false }, () => {
-      this.focus();
-    });
-    onClear && onClear('');
-    onChange && onChange('');
   }
 
   onCancel() {
@@ -224,7 +216,7 @@ export default class SearchBar extends PureComponent<SearchBarProps, SearchBarSt
           <div className={`${prefixCls}__content`}>
             <SearchIcon size="sm" className={`${prefixCls}__icon`} />
             <div className={`${prefixCls}__mock`}>
-              <InputBase
+              <Input
                 className={`${prefixCls}__input`}
                 type="search"
                 placeholder={placeholder || (locale && locale.placeholder)}
@@ -242,14 +234,11 @@ export default class SearchBar extends PureComponent<SearchBarProps, SearchBarSt
                 onCompositionEnd={(e) => {
                   this.handleComposition(e);
                 }}
-                onChange={(val) => {
-                  this.onChange(val);
+                onChange={(e) => {
+                  this.onChange(e);
                 }}
                 onBlur={() => {
                   this.onBlur();
-                }}
-                onClear={() => {
-                  this.onClear();
                 }}
                 disabled={disabled}
                 clearable={clearable}
