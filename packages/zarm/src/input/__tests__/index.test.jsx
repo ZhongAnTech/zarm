@@ -42,7 +42,6 @@ describe('Input', () => {
     wrapper.find('i.za-input__clear').simulate('click');
     expect(onChange).toHaveBeenCalled();
     expect(input.instance().value).toEqual('');
-    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   // it('renders cn', () => {
