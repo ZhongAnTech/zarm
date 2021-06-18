@@ -1,7 +1,6 @@
 import Keyboard from './Keyboard';
-import type { KeyboardProps } from './Keyboard';
 import ConfigReceiver from '../config-receiver';
 
-export type { KeyboardProps };
+export type { KeyboardProps } from './Keyboard';
 
 export default ConfigReceiver('Keyboard')(Keyboard);

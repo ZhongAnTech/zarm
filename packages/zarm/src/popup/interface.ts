@@ -1,6 +1,6 @@
 import type { ContainerType } from '../utils/dom';
 
-export default interface BasePopupProps {
+export interface BasePopupProps {
   visible?: boolean;
   direction?: 'top' | 'right' | 'bottom' | 'left' | 'center';
   animationType?:

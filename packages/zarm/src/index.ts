@@ -36,7 +36,9 @@ export { default as Input } from './input';
 export type { KeyboardProps } from './keyboard';
 export { default as Keyboard } from './keyboard';
 
+export type { KeyboardPickerProps } from './keyboard-picker';
 export { default as KeyboardPicker } from './keyboard-picker';
+
 export { default as Loading } from './loading';
 
 export type { MaskProps } from './mask';
@@ -57,7 +59,10 @@ export type { SelectProps } from './select';
 export { default as Select } from './select';
 
 export { default as Popper } from './popper';
+
+export type { PopupProps } from './popup';
 export { default as Popup } from './popup';
+
 export { default as Progress } from './progress';
 export { default as Pull } from './pull';
 export { default as Radio } from './radio';

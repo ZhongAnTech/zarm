@@ -1,10 +1,10 @@
 import React, { PureComponent, CSSProperties } from 'react';
 import { StyleSheet, View, ViewStyle, UIManager, Animated, Easing } from 'react-native';
-import PropsType from './PropsType';
+import { BasePopupProps } from './interface';
 import popupStyle from './style/index.native';
 // import Mask from '../Mask';
 
-export interface PopupProps extends PropsType {
+export interface PopupProps extends BasePopupProps {
   style?: CSSProperties;
   styles?: typeof popupStyle;
 }

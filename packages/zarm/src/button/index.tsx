@@ -1,121 +1,126 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import ActivityIndicator from '../activity-indicator';
-import type {
-  BaseButtonProps as BaseType,
-  ButtonTheme,
-  ButtonSize,
-  ButtonShape,
-} from './PropsType';
+import type { BaseButtonProps, ButtonTheme, ButtonSize, ButtonShape } from './interface';
 
 export type { ButtonTheme, ButtonSize, ButtonShape };
 
-interface BaseButtonProps extends BaseType {
+interface CommonProps extends BaseButtonProps {
   prefixCls?: string;
   onClick?: React.MouseEventHandler<HTMLElement>;
 }
 
 export type AnchorButtonProps = {
   mimeType?: string;
-} & BaseButtonProps &
+} & CommonProps &
   Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'type' | 'onClick'>;
 
 export type NativeButtonProps = {
   htmlType?: 'button' | 'submit' | 'reset';
-} & BaseButtonProps &
+} & CommonProps &
   Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'onClick'>;
 
 export type ButtonProps = Partial<AnchorButtonProps & NativeButtonProps>;
 
-const Button = React.forwardRef<unknown, ButtonProps>(
-  (
-    {
-      prefixCls = 'za-button',
-      className,
-      theme = 'default',
-      size = 'md',
-      shape = 'radius',
-      icon,
-      block = false,
-      ghost = false,
-      shadow = false,
-      disabled = false,
-      loading = false,
-      htmlType = 'button' as ButtonProps['htmlType'],
-      onClick,
-      children,
-      ...restProps
-    }: ButtonProps,
-    ref,
-  ) => {
-    const buttonRef = (ref as any) || React.createRef<HTMLElement>();
-    const iconRender = loading ? <ActivityIndicator /> : icon;
-    const childrenRender = children && <span>{children}</span>;
+const Button = React.forwardRef<unknown, ButtonProps>((props, ref) => {
+  const {
+    prefixCls,
+    className,
+    theme,
+    size,
+    shape,
+    icon,
+    block,
+    ghost,
+    shadow,
+    disabled,
+    loading,
+    htmlType,
+    onClick,
+    children,
+    ...restProps
+  } = props;
 
-    let cls = classnames(prefixCls, className, {
-      [`${prefixCls}--${theme}`]: !!theme,
-      [`${prefixCls}--${size}`]: !!size,
-      [`${prefixCls}--${shape}`]: !!shape,
-      [`${prefixCls}--block`]: !!block,
-      [`${prefixCls}--ghost`]: !!ghost,
-      [`${prefixCls}--shadow`]: !!shadow,
-      [`${prefixCls}--disabled`]: !!disabled,
-    });
+  const buttonRef = (ref as any) || React.createRef<HTMLElement>();
+  const iconRender = loading ? <ActivityIndicator /> : icon;
+  const childrenRender = children && <span>{children}</span>;
 
-    const contentRender =
-      !!icon || loading ? (
-        <div className={`${prefixCls}__content`}>
-          {iconRender}
-          {childrenRender}
-        </div>
-      ) : (
-        childrenRender
-      );
+  let cls = classnames(prefixCls, className, {
+    [`${prefixCls}--${theme}`]: !!theme,
+    [`${prefixCls}--${size}`]: !!size,
+    [`${prefixCls}--${shape}`]: !!shape,
+    [`${prefixCls}--block`]: !!block,
+    [`${prefixCls}--ghost`]: !!ghost,
+    [`${prefixCls}--shadow`]: !!shadow,
+    [`${prefixCls}--disabled`]: !!disabled,
+  });
 
-    const onPress: ButtonProps['onClick'] = (e) => {
-      if (disabled) {
-        return;
-      }
-      if (typeof onClick === 'function') {
-        onClick(e);
-      }
-    };
+  const contentRender =
+    !!icon || loading ? (
+      <div className={`${prefixCls}__content`}>
+        {iconRender}
+        {childrenRender}
+      </div>
+    ) : (
+      childrenRender
+    );
 
-    if ((restProps as AnchorButtonProps).href !== undefined) {
-      const { mimeType, ...anchorRest } = restProps;
-      cls = classnames(cls, `${prefixCls}--link`);
-
-      return (
-        <a
-          {...(anchorRest as AnchorButtonProps)}
-          type={mimeType}
-          aria-disabled={disabled}
-          className={cls}
-          onClick={onPress}
-          ref={buttonRef}
-        >
-          {contentRender}
-        </a>
-      );
+  const onPress: ButtonProps['onClick'] = (e) => {
+    if (disabled) {
+      return;
     }
+    if (typeof onClick === 'function') {
+      onClick(e);
+    }
+  };
 
-    const { mimeType, target, ...nativeRest } = restProps;
+  if ((restProps as AnchorButtonProps).href !== undefined) {
+    const { mimeType, ...anchorRest } = restProps;
+    cls = classnames(cls, `${prefixCls}--link`);
 
     return (
-      <button
-        {...(nativeRest as NativeButtonProps)}
-        type={htmlType}
+      <a
+        {...(anchorRest as AnchorButtonProps)}
+        type={mimeType}
         aria-disabled={disabled}
         className={cls}
         onClick={onPress}
         ref={buttonRef}
       >
         {contentRender}
-      </button>
+      </a>
     );
-  },
-);
+  }
+
+  const { mimeType, target, ...nativeRest } = restProps;
+
+  return (
+    <button
+      {...(nativeRest as NativeButtonProps)}
+      type={htmlType}
+      aria-disabled={disabled}
+      className={cls}
+      onClick={onPress}
+      ref={buttonRef}
+    >
+      {contentRender}
+    </button>
+  );
+});
 
 Button.displayName = 'Button';
+
+Button.defaultProps = {
+  prefixCls: 'za-button',
+  theme: 'default',
+  size: 'md',
+  shape: 'radius',
+  block: false,
+  ghost: false,
+  shadow: false,
+  disabled: false,
+  loading: false,
+  htmlType: 'button',
+};
 
 export default Button;

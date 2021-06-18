@@ -1,4 +1,4 @@
-export default interface BaseMaskProps {
+export interface BaseMaskProps {
   visible?: boolean;
   type?: 'normal' | 'transparent';
 }
