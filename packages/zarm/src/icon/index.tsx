@@ -1,4 +1,5 @@
-import { Icon, IconProps } from '@zarm-design/icons';
+import { Icon } from '@zarm-design/icons';
+import type { IconProps } from '@zarm-design/icons';
 
-export { IconProps };
+export type { IconProps };
 export default Icon;

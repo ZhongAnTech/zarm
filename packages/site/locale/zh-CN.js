@@ -9,6 +9,7 @@ export default {
   'app.components.type.other': '其他',
 
   'app.home.nav.search': '搜索组件',
+  'app.home.nav.docs': '文档',
   'app.home.nav.components': '组件',
   'app.home.nav.resources': '资源',
   'app.home.footer.resources': '相关资源',

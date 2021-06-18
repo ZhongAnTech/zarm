@@ -43,7 +43,7 @@ const Page = () => {
             <FormattedMessage id="app.home.index.introduce" />
           </div>
           <div className="navigation">
-            <button type="button" onClick={() => history.push('/components/quick-start')}>
+            <button type="button" onClick={() => history.push('/docs/quick-start')}>
               <FormattedMessage id="app.home.index.getting-started" />
             </button>
             <Dropdown

@@ -3,8 +3,8 @@
 ## 基本用法
 
 ```jsx
+import { useState } from 'react';
 import { Affix, Cell, Button, Switch } from 'zarm';
-const { useState, useCallback } = React;
 
 const Demo = () => {
   const [affixed, setAffixed] = useState(true);
