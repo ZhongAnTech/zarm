@@ -1,6 +1,6 @@
 <p align="center">
   <a href="http://zarm.design">
-    <img width="200" src="https://zarm.design/images/logo.732d9561.svg">
+    <img width="200" src="https://zarm.design/images/logo.1a6cfc30.svg">
   </a>
 </p>
 
@@ -25,7 +25,7 @@
 
 </div>
 
-Zarm 的命名，灵感来源于众安保险秉承的理念：做有温度的保险。Zarm = za + warm，za 代表“众安”，warm 有“温暖”的含义，以重合的 a 字母为中心，各取左右两部分。追求极致的用户体验，致力于做有温度的组件库也是 zarm 项目发起的初衷。
+Zarm （读音 /zɑːm/，中文可发音为 扎姆）的命名，灵感来源于众安保险秉承的理念：做有温度的保险。Zarm = za + warm，za 代表 “众安”，warm 有 “温暖” 的含义，以重合的 “a” 字母为中心，各取左右两部分。追求极致的用户体验，致力于做有温度的组件库也是 zarm 项目发起的初衷。
 
 ## 预览
 

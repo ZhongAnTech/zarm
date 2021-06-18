@@ -30,8 +30,8 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 
   # publish
   # git push origin refs/tags/v"$VERSION"
-  git tag v"$VERSION"
-  git push origin v"$VERSION"
+  git tag zarm@"$VERSION"
+  git push origin zarm@"$VERSION"
   git push origin master
 
   if [[ $VERSION =~ "alpha" ]]

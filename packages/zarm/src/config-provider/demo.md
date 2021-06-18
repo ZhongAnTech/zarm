@@ -8,10 +8,12 @@ import { ConfigProvider, Cell, Button, SearchBar, Modal, Keyboard, Radio, Messag
 import enUS from 'zarm/lib/config-provider/locale/en_US';
 import zhCN from 'zarm/lib/config-provider/locale/zh_CN';
 
+const colors = ['#00bc70', '#1890ff', '#f5222d', '#fa541b', '#13c2c2', '#2f54ec', '#712fd1'];
+
 const Demo = () => {
-  const [locale, setLocale] = useState(GlobalContext.locale);
-  const [theme, setTheme] = useState(GlobalContext.theme);
-  const [primaryColor, setPrimaryColor] = useState(GlobalContext.primaryColor);
+  const [locale, setLocale] = useState(localStorage.locale || 'zhCN');
+  const [theme, setTheme] = useState(localStorage.theme || 'light');
+  const [primaryColor, setPrimaryColor] = useState(localStorage.primaryColor || colors[0]);
 
   const show = (key) => {
     if (key === 'alert') {
@@ -45,17 +47,15 @@ const Demo = () => {
         title="切换品牌色"
         description={
           <ul className="colors">
-            {['#00bc70', '#1890ff', '#f5222d', '#fa541b', '#13c2c2', '#2f54ec', '#712fd1'].map(
-              (color, index) => {
-                return (
-                  <li
-                    key={+index}
-                    style={{ backgroundColor: color }}
-                    onClick={() => setPrimaryColor(color)}
-                  />
-                );
-              },
-            )}
+            {colors.map((color, index) => {
+              return (
+                <li
+                  key={+index}
+                  style={{ backgroundColor: color }}
+                  onClick={() => setPrimaryColor(color)}
+                />
+              );
+            })}
           </ul>
         }
       />

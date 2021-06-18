@@ -3,7 +3,7 @@
 ## 基本用法
 
 ```jsx
-import { useState, useRef, useReducer } from 'react';
+import { useRef, useReducer } from 'react';
 import { Modal, Cell, Button, Select } from 'zarm';
 
 const initState = {
@@ -29,7 +29,7 @@ const initState = {
 };
 
 const reducer = (state, action) => {
-  const { type, key, visible, animationType } = action;
+  const { type, key, animationType } = action;
 
   switch (type) {
     case 'visible':
@@ -49,6 +49,8 @@ const reducer = (state, action) => {
           animationType,
         },
       };
+
+    default:
   }
 };
 
@@ -205,7 +207,7 @@ ReactDOM.render(<Demo />, mountNode);
 ## 警告框 Alert
 
 ```jsx
-import { Cell, Button, Confirm, Modal } from 'zarm';
+import { Cell, Button, Modal } from 'zarm';
 
 const Demo = () => {
   return (
@@ -268,7 +270,7 @@ ReactDOM.render(<Demo />, mountNode);
 ## 确认框 Confirm
 
 ```jsx
-import { Cell, Button, Confirm, Modal } from 'zarm';
+import { Cell, Button, Modal } from 'zarm';
 
 const Demo = () => {
   return (

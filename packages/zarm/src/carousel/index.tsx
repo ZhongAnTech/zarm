@@ -16,7 +16,7 @@ export default class Carousel extends Component<CarouselProps, any> {
     height: 160,
     loop: false,
     activeIndex: 0,
-    animationDuration: 300,
+    animationDuration: 500,
     swipeable: true,
     autoPlay: false,
     autoPlayIntervalTime: 3000,
