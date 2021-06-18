@@ -186,21 +186,6 @@ describe('SearchBar', () => {
     expect(mOnChange).toBeCalledWith('test');
   });
 
-  it('should handle cancel action and trigger blur event', () => {
-    const mOnCancel = jest.fn();
-    const mOnBlur = jest.fn();
-    const wrapper = mount(<SearchBarOriginal value="test" onCancel={mOnCancel} onBlur={mOnBlur} />);
-    const inputWrapper = wrapper.find('input');
-    inputWrapper.simulate('focus');
-    expect(wrapper.state('focus')).toBeTruthy();
-    wrapper.find('.za-search-bar__cancel').simulate('click');
-    expect(wrapper.state('value')).toEqual('');
-    expect(wrapper.state('isOnComposition')).toBeFalsy();
-    expect(wrapper.state('focus')).toBeFalsy();
-    expect(mOnCancel).toBeCalledTimes(1);
-    expect(mOnBlur).toBeCalledTimes(1);
-  });
-
   it('should re-calculate the position of cancel ref if cancel text is changed', () => {
     const calculatePositonSpy = jest.spyOn(SearchBarOriginal.prototype, 'calculatePositon');
     const wrapper = mount(<SearchBarOriginal cancelText="取消" />);
