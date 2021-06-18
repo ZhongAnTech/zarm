@@ -1,10 +1,10 @@
 import * as React from 'react';
 import classnames from 'classnames';
+import { CloseCircleFill } from '@zarm-design/icons';
 import type { BaseCustomInputProps } from './PropsType';
 import KeyboardPicker from '../keyboard-picker';
-import Icon from '../icon';
-import { getValue } from '../input/utils';
 import useClickAway from '../hooks/useClickAway';
+import { getValue } from '../input/utils';
 
 export type CustomInputProps = {
   prefixCls?: string;
@@ -119,7 +119,7 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>(
     };
 
     const renderClearIcon = showClearIcon && (
-      <Icon type="wrong-round-fill" className={`${prefixCls}__clear`} onClick={onInputClear} />
+      <CloseCircleFill className={`${prefixCls}__clear`} onClick={onInputClear} />
     );
 
     const renderText = <div className={`${prefixCls}__content`}>{currentValue}</div>;

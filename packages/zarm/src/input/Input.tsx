@@ -1,8 +1,8 @@
 import * as React from 'react';
 import classnames from 'classnames';
+import { CloseCircleFill } from '@zarm-design/icons';
 import type { BaseInputTextProps, BaseInputTextareaProps } from './PropsType';
 import { getValue } from './utils';
-import Icon from '../icon';
 
 const regexAstralSymbols = /[\uD800-\uDBFF][\uDC00-\uDFFF]|\n/g;
 
@@ -166,7 +166,7 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
 
   // 渲染清除按钮
   const renderClearIcon = showClearIcon && (
-    <Icon type="wrong-round-fill" className={`${prefixCls}__clear`} onClick={onInputClear} />
+    <CloseCircleFill className={`${prefixCls}__clear`} onClick={onInputClear} />
   );
 
   React.useImperativeHandle(wrapperRef, () => ({
