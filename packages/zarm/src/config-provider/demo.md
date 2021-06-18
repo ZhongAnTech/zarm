@@ -47,17 +47,15 @@ const Demo = () => {
         title="切换品牌色"
         description={
           <ul className="colors">
-            {colors.map(
-              (color, index) => {
-                return (
-                  <li
-                    key={+index}
-                    style={{ backgroundColor: color }}
-                    onClick={() => setPrimaryColor(color)}
-                  />
-                );
-              },
-            )}
+            {colors.map((color, index) => {
+              return (
+                <li
+                  key={+index}
+                  style={{ backgroundColor: color }}
+                  onClick={() => setPrimaryColor(color)}
+                />
+              );
+            })}
           </ul>
         }
       />
