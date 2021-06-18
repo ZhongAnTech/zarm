@@ -66,6 +66,7 @@ exports[`Picker Picker render visible 1`] = `
       <Popup
         destroy={false}
         onMaskClick={[Function]}
+        prefixCls="za-popup"
         visible={true}
       >
         <Portal
@@ -74,7 +75,6 @@ exports[`Picker Picker render visible 1`] = `
           direction="bottom"
           handlePortalUnmount={[Function]}
           mask={true}
-          maskType="normal"
           onMaskClick={[Function]}
           prefixCls="za-popup"
           visible={true}
@@ -167,8 +167,9 @@ exports[`Picker Picker render visible 1`] = `
                 </div>
               }
             >
-              <ForwardRef
+              <Mask
                 className="za-fade-enter"
+                prefixCls="za-mask"
                 style={
                   Object {
                     "WebkitAnimationDuration": "200ms",
@@ -187,7 +188,7 @@ exports[`Picker Picker render visible 1`] = `
                     }
                   }
                 />
-              </ForwardRef>
+              </Mask>
               <div
                 className="za-popup__wrapper"
                 data-width={0}
@@ -455,6 +456,8 @@ exports[`Picker render custom label 1`] = `
       <Popup
         destroy={false}
         onMaskClick={[Function]}
+        prefixCls="za-popup"
+        visible={false}
       />
     </Picker>
   </ConfigReceiver>

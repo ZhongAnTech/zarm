@@ -96,6 +96,7 @@ exports[`DateSelect DateSelect date 1`] = `
               <Popup
                 destroy={true}
                 onMaskClick={[Function]}
+                prefixCls="za-popup"
                 visible={false}
               />
             </DatePicker>
@@ -215,6 +216,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
               <Popup
                 destroy={true}
                 onMaskClick={[Function]}
+                prefixCls="za-popup"
                 visible={false}
               />
             </DatePicker>
@@ -389,6 +391,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
               <Popup
                 destroy={true}
                 onMaskClick={[Function]}
+                prefixCls="za-popup"
                 visible={true}
               >
                 <Portal
@@ -397,7 +400,6 @@ exports[`DateSelect DateSelect disabled 1`] = `
                   direction="bottom"
                   handlePortalUnmount={[Function]}
                   mask={true}
-                  maskType="normal"
                   onMaskClick={[Function]}
                   prefixCls="za-popup"
                   visible={true}
@@ -1534,8 +1536,9 @@ exports[`DateSelect DateSelect disabled 1`] = `
                         </div>
                       }
                     >
-                      <ForwardRef
+                      <Mask
                         className="za-fade-enter"
+                        prefixCls="za-mask"
                         style={
                           Object {
                             "WebkitAnimationDuration": "200ms",
@@ -1554,7 +1557,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                             }
                           }
                         />
-                      </ForwardRef>
+                      </Mask>
                       <div
                         className="za-popup__wrapper"
                         data-width={0}
@@ -4343,6 +4346,7 @@ exports[`DateSelect DateSelect time 1`] = `
               <Popup
                 destroy={true}
                 onMaskClick={[Function]}
+                prefixCls="za-popup"
                 visible={false}
               />
             </DatePicker>
@@ -4441,6 +4445,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
               <Popup
                 destroy={true}
                 onMaskClick={[Function]}
+                prefixCls="za-popup"
                 visible={false}
               />
             </DatePicker>
@@ -4548,6 +4553,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
               <Popup
                 destroy={true}
                 onMaskClick={[Function]}
+                prefixCls="za-popup"
                 visible={false}
               />
             </DatePicker>
@@ -4673,6 +4679,7 @@ exports[`DateSelect DateSelect year 1`] = `
               <Popup
                 destroy={true}
                 onMaskClick={[Function]}
+                prefixCls="za-popup"
                 visible={false}
               />
             </DatePicker>

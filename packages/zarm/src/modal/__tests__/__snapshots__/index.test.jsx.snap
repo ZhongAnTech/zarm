@@ -26,6 +26,7 @@ exports[`Modal renders correctly 1`] = `
     mask={true}
     maskType="normal"
     onMaskClick={[MockFunction]}
+    prefixCls="za-popup"
     visible={true}
     width="70%"
   >
@@ -109,8 +110,9 @@ exports[`Modal renders correctly 1`] = `
             </div>
           }
         >
-          <ForwardRef
+          <Mask
             className="za-fade-enter"
+            prefixCls="za-mask"
             style={
               Object {
                 "WebkitAnimationDuration": "200ms",
@@ -129,7 +131,7 @@ exports[`Modal renders correctly 1`] = `
                 }
               }
             />
-          </ForwardRef>
+          </Mask>
           <div
             className="za-popup__wrapper za-fade-enter"
             data-width={0}
