@@ -126,7 +126,7 @@ const Demo = () => {
       <Cell>
         {commonImages.map((pic, index) => (
           <div className="picture-item" onClick={() => show(index)} key={+index}>
-            <img src={pic} />
+            <img src={pic} alt="" />
           </div>
         ))}
       </Cell>

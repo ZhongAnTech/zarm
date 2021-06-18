@@ -1021,13 +1021,13 @@ exports[`Select Select disabled 1`] = `
                                       >
                                         <div
                                           class="za-wheel__item za-wheel__item--selected"
-                                          style="transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none; transform: rotateX(NaNdeg);"
+                                          style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
                                         >
                                           选项一
                                         </div>
                                         <div
                                           class="za-wheel__item"
-                                          style="transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none; transform: rotateX(NaNdeg);"
+                                          style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
                                         >
                                           选项二
                                         </div>

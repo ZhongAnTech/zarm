@@ -269,7 +269,7 @@ exports[`Carousel style render correctly 1`] = `
 exports[`Carousel swipeable 1`] = `
 <Carousel
   activeIndex={0}
-  animationDuration={300}
+  animationDuration={500}
   autoPlay={false}
   autoPlayIntervalTime={3000}
   direction="left"
