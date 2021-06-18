@@ -23,6 +23,10 @@ describe('index', () => {
         "Collapse": [Function],
         "ConfigProvider": [Function],
         "ConfigReceiver": [Function],
+        "CustomInput": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        },
         "DatePicker": Object {
           "$$typeof": Symbol(react.forward_ref),
           "render": [Function],
@@ -42,19 +46,28 @@ describe('index', () => {
           "$$typeof": Symbol(react.forward_ref),
           "render": [Function],
         },
-        "Input": [Function],
+        "Input": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        },
         "Keyboard": Object {
           "$$typeof": Symbol(react.forward_ref),
           "render": [Function],
         },
-        "KeyboardPicker": [Function],
+        "KeyboardPicker": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        },
         "Loading": [Function],
         "LocaleProvider": Object {
           "$$typeof": Symbol(react.forward_ref),
           "render": [Function],
         },
         "Marquee": [Function],
-        "Mask": [Function],
+        "Mask": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        },
         "Message": [Function],
         "Modal": [Function],
         "NavBar": [Function],

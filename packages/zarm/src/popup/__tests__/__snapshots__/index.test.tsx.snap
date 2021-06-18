@@ -3,29 +3,23 @@
 exports[`Popup snapshot renders correctly 1`] = `
 <Popup
   afterClose={[MockFunction]}
-  destroy={true}
   direction="bottom"
   onMaskClick={[MockFunction]}
-  prefixCls="za-popup"
-  visible={false}
 />
 `;
 
 exports[`Popup snapshot renders mount node correctly 1`] = `
 <Popup
   afterClose={[MockFunction]}
-  destroy={true}
   direction="bottom"
   mountContainer={[Function]}
   onMaskClick={[MockFunction]}
-  prefixCls="za-popup"
   visible={true}
 >
   <Portal
     afterClose={[MockFunction]}
     animationDuration={200}
     animationType="fade"
-    destroy={true}
     direction="bottom"
     handlePortalUnmount={[Function]}
     mask={true}
@@ -66,9 +60,8 @@ exports[`Popup snapshot renders mount node correctly 1`] = `
           </div>
         }
       >
-        <Mask
+        <ForwardRef
           className="za-fade-enter"
-          prefixCls="za-mask"
           style={
             Object {
               "WebkitAnimationDuration": "200ms",
@@ -87,7 +80,7 @@ exports[`Popup snapshot renders mount node correctly 1`] = `
               }
             }
           />
-        </Mask>
+        </ForwardRef>
         <div
           className="za-popup__wrapper"
           data-width={0}

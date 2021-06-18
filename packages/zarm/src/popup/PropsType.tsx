@@ -1,7 +1,7 @@
 import type { ContainerType } from '../utils/dom';
 
-export default interface PropsType {
-  visible: boolean;
+export default interface BasePopupProps {
+  visible?: boolean;
   direction?: 'top' | 'right' | 'bottom' | 'left' | 'center';
   animationType?:
     | 'fade'
@@ -27,4 +27,5 @@ export default interface PropsType {
   onMaskClick?: () => void;
   onEsc?: () => void;
   mountContainer?: ContainerType | false;
+  children?: React.ReactNode;
 }

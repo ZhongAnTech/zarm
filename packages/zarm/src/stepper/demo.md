@@ -74,7 +74,7 @@ ReactDOM.render(<Cell title="大号" description={<Stepper size="lg" />} />, mou
 | shape         | string                             | 'radius' | 形状，可选值 `rect`, `radius`, `circle`           |
 | size          | string                             | 'md'     | 大小，可选值 `md`、`lg`                           |
 | type          | string                             | 'text'   | 输入类型，可选值 `text`、`number`、`price`、`tel` |
-| value         | number \| string                   | -        | 值                                                |
+| value         | number                             | -        | 值                                                |
 | defaultValue  | number                             | -        | 初始值                                            |
 | min           | number                             | -        | 最小值                                            |
 | max           | number                             | -        | 最大值                                            |

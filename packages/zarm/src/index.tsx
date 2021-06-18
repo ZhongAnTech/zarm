@@ -27,11 +27,21 @@ export { default as FilePicker } from './file-picker';
 export type { IconProps } from './icon';
 export { default as Icon } from './icon';
 
+export type { CustomInputProps } from './custom-input';
+export { default as CustomInput } from './custom-input';
+
+export type { InputProps, InputTextProps, InputTextareaProps } from './input';
 export { default as Input } from './input';
+
+export type { KeyboardProps } from './keyboard';
 export { default as Keyboard } from './keyboard';
+
 export { default as KeyboardPicker } from './keyboard-picker';
 export { default as Loading } from './loading';
+
+export type { MaskProps } from './mask';
 export { default as Mask } from './mask';
+
 export { default as Message } from './message';
 export { default as Modal } from './modal';
 export { default as NoticeBar } from './notice-bar';

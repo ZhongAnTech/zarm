@@ -1,6 +1,6 @@
 import type { BaseWheelProps, WheelValue, WheelItem } from '../wheel/PropsType';
 
-export type PickerDataSource<T = { value: WheelValue; label: string; }> = Array<
+export type PickerDataSource<T = { value: WheelValue; label: string }> = Array<
   T & { children?: PickerDataSource<T> }
 >;
 

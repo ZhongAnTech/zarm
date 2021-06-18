@@ -15,300 +15,105 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
   showPagination={true}
   visible={true}
 >
-  <ForwardRef(ForwardedRefComp)
+  <Popup
     className="za-image-preview"
     direction="center"
     visible={true}
   >
-    <WarnIfDeprecatedComp
+    <Portal
+      animationDuration={200}
+      animationType="fade"
       className="za-image-preview"
       direction="center"
-      forwardedRef={null}
+      handlePortalUnmount={[Function]}
+      mask={true}
+      maskType="normal"
+      prefixCls="za-popup"
       visible={true}
     >
-      <Popup
-        className="za-image-preview"
-        destroy={true}
-        direction="center"
-        prefixCls="za-popup"
+      <Trigger
+        disabled={false}
+        onClose={[Function]}
         visible={true}
       >
         <Portal
-          animationDuration={200}
-          animationType="fade"
-          className="za-image-preview"
-          destroy={true}
-          direction="center"
-          handlePortalUnmount={[Function]}
-          mask={true}
-          maskType="normal"
-          prefixCls="za-popup"
-          visible={true}
-        >
-          <Trigger
-            disabled={false}
-            onClose={[Function]}
-            visible={true}
-          >
-            <Portal
-              containerInfo={
+          containerInfo={
+            <div
+              class="za-popup-container za-image-preview"
+            >
+              <div
+                class="za-mask za-fade-enter za-mask--normal"
+                style="animation-duration: 200ms;"
+              />
+              <div
+                class="za-popup__wrapper za-fade-enter"
+                data-width="0"
+                role="dialog"
+                style="animation-duration: 200ms;"
+              >
                 <div
-                  class="za-popup-container za-image-preview"
+                  class="za-popup za-popup--center za-fade-enter"
+                  data-width="0"
+                  role="document"
+                  style="animation-duration: 200ms;"
                 >
                   <div
-                    class="za-mask za-fade-enter za-mask--normal"
-                    style="animation-duration: 200ms;"
-                  />
-                  <div
-                    class="za-popup__wrapper za-fade-enter"
-                    data-width="0"
-                    role="dialog"
-                    style="animation-duration: 200ms;"
+                    class="za-image-preview__content"
                   >
                     <div
-                      class="za-popup za-popup--center za-fade-enter"
-                      data-width="0"
-                      role="document"
-                      style="animation-duration: 200ms;"
+                      class="za-carousel za-carousel--horizontal"
                     >
                       <div
-                        class="za-image-preview__content"
+                        class="za-carousel__items"
+                        style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0);"
                       >
                         <div
-                          class="za-carousel za-carousel--horizontal"
+                          class="za-carousel__item za-image-preview__item"
                         >
                           <div
-                            class="za-carousel__items"
-                            style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0);"
+                            class="za-image-preview__item__img za-pinch-zoom"
                           >
-                            <div
-                              class="za-carousel__item za-image-preview__item"
-                            >
-                              <div
-                                class="za-image-preview__item__img za-pinch-zoom"
-                              >
-                                <img
-                                  alt=""
-                                  draggable="false"
-                                  src="https://static.zhongan.com/website/health/zarm/images/banners/1.png"
-                                />
-                              </div>
-                            </div>
-                            <div
-                              class="za-carousel__item za-image-preview__item"
-                            >
-                              <div
-                                class="za-image-preview__item__img za-pinch-zoom"
-                              >
-                                <img
-                                  alt=""
-                                  draggable="false"
-                                  src="https://static.zhongan.com/website/health/zarm/images/banners/2.png"
-                                />
-                              </div>
-                            </div>
-                            <div
-                              class="za-carousel__item za-image-preview__item"
-                            >
-                              <div
-                                class="za-image-preview__item__img za-pinch-zoom"
-                              >
-                                <img
-                                  alt=""
-                                  draggable="false"
-                                  src="https://static.zhongan.com/website/health/zarm/images/banners/3.png"
-                                />
-                              </div>
-                            </div>
+                            <img
+                              alt=""
+                              draggable="false"
+                              src="https://static.zhongan.com/website/health/zarm/images/banners/1.png"
+                            />
                           </div>
                         </div>
-                      </div>
-                      <div
-                        class="za-image-preview__footer"
-                      >
                         <div
-                          class="za-image-preview__index"
+                          class="za-carousel__item za-image-preview__item"
                         >
-                          1
-                           / 
-                          3
+                          <div
+                            class="za-image-preview__item__img za-pinch-zoom"
+                          >
+                            <img
+                              alt=""
+                              draggable="false"
+                              src="https://static.zhongan.com/website/health/zarm/images/banners/2.png"
+                            />
+                          </div>
+                        </div>
+                        <div
+                          class="za-carousel__item za-image-preview__item"
+                        >
+                          <div
+                            class="za-image-preview__item__img za-pinch-zoom"
+                          >
+                            <img
+                              alt=""
+                              draggable="false"
+                              src="https://static.zhongan.com/website/health/zarm/images/banners/3.png"
+                            />
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              }
-            >
-              <Mask
-                className="za-fade-enter"
-                prefixCls="za-mask"
-                style={
-                  Object {
-                    "WebkitAnimationDuration": "200ms",
-                    "animationDuration": "200ms",
-                  }
-                }
-                type="normal"
-                visible={true}
-              >
-                <div
-                  className="za-mask za-fade-enter za-mask--normal"
-                  style={
-                    Object {
-                      "WebkitAnimationDuration": "200ms",
-                      "animationDuration": "200ms",
-                    }
-                  }
-                />
-              </Mask>
-              <div
-                className="za-popup__wrapper za-fade-enter"
-                data-width={0}
-                onClick={[Function]}
-                role="dialog"
-                style={
-                  Object {
-                    "WebkitAnimationDuration": "200ms",
-                    "animationDuration": "200ms",
-                  }
-                }
-              >
-                <div
-                  className="za-popup za-popup--center za-fade-enter"
-                  data-width={0}
-                  role="document"
-                  style={
-                    Object {
-                      "WebkitAnimationDuration": "200ms",
-                      "animationDuration": "200ms",
-                      "width": undefined,
-                    }
-                  }
-                >
                   <div
-                    className="za-image-preview__content"
-                    onClick={[Function]}
-                    onMouseDown={[Function]}
-                    onMouseMove={[Function]}
-                    onMouseUp={[Function]}
-                    onTouchCancel={[Function]}
-                    onTouchEnd={[Function]}
-                    onTouchMove={[Function]}
-                    onTouchStart={[Function]}
-                  >
-                    <Carousel
-                      activeIndex={0}
-                      animationDuration={300}
-                      autoPlay={false}
-                      autoPlayIntervalTime={3000}
-                      direction="left"
-                      height={160}
-                      loop={false}
-                      moveDistanceRatio={0.5}
-                      moveTimeSpan={300}
-                      onChange={[Function]}
-                      prefixCls="za-carousel"
-                      showPagination={false}
-                      swipeable={true}
-                    >
-                      <div
-                        className="za-carousel za-carousel--horizontal"
-                      >
-                        <Drag
-                          onDragEnd={[Function]}
-                          onDragMove={[Function]}
-                          onDragStart={[Function]}
-                        >
-                          <div
-                            className="za-carousel__items"
-                            onMouseDown={[Function]}
-                            onMouseMove={[Function]}
-                            onMouseUp={[Function]}
-                            onTouchEnd={[Function]}
-                            onTouchMove={[Function]}
-                            onTouchStart={[Function]}
-                            onTransitionEnd={[Function]}
-                            style={Object {}}
-                          >
-                            <div
-                              className="za-carousel__item za-image-preview__item"
-                              key=".$0"
-                            >
-                              <PinchZoom
-                                className="za-image-preview__item__img"
-                                maxScale={3}
-                                minScale={1}
-                                prefixCls="za-pinch-zoom"
-                              >
-                                <div
-                                  className="za-image-preview__item__img za-pinch-zoom"
-                                >
-                                  <img
-                                    alt=""
-                                    draggable={false}
-                                    key="0/.0"
-                                    onLoad={[Function]}
-                                    src="https://static.zhongan.com/website/health/zarm/images/banners/1.png"
-                                  />
-                                </div>
-                              </PinchZoom>
-                            </div>
-                            <div
-                              className="za-carousel__item za-image-preview__item"
-                              key=".$1"
-                            >
-                              <PinchZoom
-                                className="za-image-preview__item__img"
-                                maxScale={3}
-                                minScale={1}
-                                prefixCls="za-pinch-zoom"
-                              >
-                                <div
-                                  className="za-image-preview__item__img za-pinch-zoom"
-                                >
-                                  <img
-                                    alt=""
-                                    draggable={false}
-                                    key="0/.0"
-                                    onLoad={[Function]}
-                                    src="https://static.zhongan.com/website/health/zarm/images/banners/2.png"
-                                  />
-                                </div>
-                              </PinchZoom>
-                            </div>
-                            <div
-                              className="za-carousel__item za-image-preview__item"
-                              key=".$2"
-                            >
-                              <PinchZoom
-                                className="za-image-preview__item__img"
-                                maxScale={3}
-                                minScale={1}
-                                prefixCls="za-pinch-zoom"
-                              >
-                                <div
-                                  className="za-image-preview__item__img za-pinch-zoom"
-                                >
-                                  <img
-                                    alt=""
-                                    draggable={false}
-                                    key="0/.0"
-                                    onLoad={[Function]}
-                                    src="https://static.zhongan.com/website/health/zarm/images/banners/3.png"
-                                  />
-                                </div>
-                              </PinchZoom>
-                            </div>
-                          </div>
-                        </Drag>
-                      </div>
-                    </Carousel>
-                  </div>
-                  <div
-                    className="za-image-preview__footer"
+                    class="za-image-preview__footer"
                   >
                     <div
-                      className="za-image-preview__index"
+                      class="za-image-preview__index"
                     >
                       1
                        / 
@@ -317,12 +122,190 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
                   </div>
                 </div>
               </div>
-            </Portal>
-          </Trigger>
+            </div>
+          }
+        >
+          <ForwardRef
+            className="za-fade-enter"
+            style={
+              Object {
+                "WebkitAnimationDuration": "200ms",
+                "animationDuration": "200ms",
+              }
+            }
+            type="normal"
+            visible={true}
+          >
+            <div
+              className="za-mask za-fade-enter za-mask--normal"
+              style={
+                Object {
+                  "WebkitAnimationDuration": "200ms",
+                  "animationDuration": "200ms",
+                }
+              }
+            />
+          </ForwardRef>
+          <div
+            className="za-popup__wrapper za-fade-enter"
+            data-width={0}
+            onClick={[Function]}
+            role="dialog"
+            style={
+              Object {
+                "WebkitAnimationDuration": "200ms",
+                "animationDuration": "200ms",
+              }
+            }
+          >
+            <div
+              className="za-popup za-popup--center za-fade-enter"
+              data-width={0}
+              role="document"
+              style={
+                Object {
+                  "WebkitAnimationDuration": "200ms",
+                  "animationDuration": "200ms",
+                  "width": undefined,
+                }
+              }
+            >
+              <div
+                className="za-image-preview__content"
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseMove={[Function]}
+                onMouseUp={[Function]}
+                onTouchCancel={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+              >
+                <Carousel
+                  activeIndex={0}
+                  animationDuration={300}
+                  autoPlay={false}
+                  autoPlayIntervalTime={3000}
+                  direction="left"
+                  height={160}
+                  loop={false}
+                  moveDistanceRatio={0.5}
+                  moveTimeSpan={300}
+                  onChange={[Function]}
+                  prefixCls="za-carousel"
+                  showPagination={false}
+                  swipeable={true}
+                >
+                  <div
+                    className="za-carousel za-carousel--horizontal"
+                  >
+                    <Drag
+                      onDragEnd={[Function]}
+                      onDragMove={[Function]}
+                      onDragStart={[Function]}
+                    >
+                      <div
+                        className="za-carousel__items"
+                        onMouseDown={[Function]}
+                        onMouseMove={[Function]}
+                        onMouseUp={[Function]}
+                        onTouchEnd={[Function]}
+                        onTouchMove={[Function]}
+                        onTouchStart={[Function]}
+                        onTransitionEnd={[Function]}
+                        style={Object {}}
+                      >
+                        <div
+                          className="za-carousel__item za-image-preview__item"
+                          key=".$0"
+                        >
+                          <PinchZoom
+                            className="za-image-preview__item__img"
+                            maxScale={3}
+                            minScale={1}
+                            prefixCls="za-pinch-zoom"
+                          >
+                            <div
+                              className="za-image-preview__item__img za-pinch-zoom"
+                            >
+                              <img
+                                alt=""
+                                draggable={false}
+                                key="0/.0"
+                                onLoad={[Function]}
+                                src="https://static.zhongan.com/website/health/zarm/images/banners/1.png"
+                              />
+                            </div>
+                          </PinchZoom>
+                        </div>
+                        <div
+                          className="za-carousel__item za-image-preview__item"
+                          key=".$1"
+                        >
+                          <PinchZoom
+                            className="za-image-preview__item__img"
+                            maxScale={3}
+                            minScale={1}
+                            prefixCls="za-pinch-zoom"
+                          >
+                            <div
+                              className="za-image-preview__item__img za-pinch-zoom"
+                            >
+                              <img
+                                alt=""
+                                draggable={false}
+                                key="0/.0"
+                                onLoad={[Function]}
+                                src="https://static.zhongan.com/website/health/zarm/images/banners/2.png"
+                              />
+                            </div>
+                          </PinchZoom>
+                        </div>
+                        <div
+                          className="za-carousel__item za-image-preview__item"
+                          key=".$2"
+                        >
+                          <PinchZoom
+                            className="za-image-preview__item__img"
+                            maxScale={3}
+                            minScale={1}
+                            prefixCls="za-pinch-zoom"
+                          >
+                            <div
+                              className="za-image-preview__item__img za-pinch-zoom"
+                            >
+                              <img
+                                alt=""
+                                draggable={false}
+                                key="0/.0"
+                                onLoad={[Function]}
+                                src="https://static.zhongan.com/website/health/zarm/images/banners/3.png"
+                              />
+                            </div>
+                          </PinchZoom>
+                        </div>
+                      </div>
+                    </Drag>
+                  </div>
+                </Carousel>
+              </div>
+              <div
+                className="za-image-preview__footer"
+              >
+                <div
+                  className="za-image-preview__index"
+                >
+                  1
+                   / 
+                  3
+                </div>
+              </div>
+            </div>
+          </div>
         </Portal>
-      </Popup>
-    </WarnIfDeprecatedComp>
-  </ForwardRef(ForwardedRefComp)>
+      </Trigger>
+    </Portal>
+  </Popup>
 </ImagePreview>
 `;
 
@@ -350,307 +333,108 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
   showPagination={true}
   visible={true}
 >
-  <ForwardRef(ForwardedRefComp)
+  <Popup
     className="za-image-preview"
     direction="center"
     visible={true}
   >
-    <WarnIfDeprecatedComp
+    <Portal
+      animationDuration={200}
+      animationType="fade"
       className="za-image-preview"
       direction="center"
-      forwardedRef={null}
+      handlePortalUnmount={[Function]}
+      mask={true}
+      maskType="normal"
+      prefixCls="za-popup"
       visible={true}
     >
-      <Popup
-        className="za-image-preview"
-        destroy={true}
-        direction="center"
-        prefixCls="za-popup"
+      <Trigger
+        disabled={false}
+        onClose={[Function]}
         visible={true}
       >
         <Portal
-          animationDuration={200}
-          animationType="fade"
-          className="za-image-preview"
-          destroy={true}
-          direction="center"
-          handlePortalUnmount={[Function]}
-          mask={true}
-          maskType="normal"
-          prefixCls="za-popup"
-          visible={true}
-        >
-          <Trigger
-            disabled={false}
-            onClose={[Function]}
-            visible={true}
-          >
-            <Portal
-              containerInfo={
+          containerInfo={
+            <div
+              class="za-popup-container za-image-preview"
+            >
+              <div
+                class="za-mask za-fade-enter za-mask--normal"
+                style="animation-duration: 200ms;"
+              />
+              <div
+                class="za-popup__wrapper za-fade-enter"
+                data-width="0"
+                role="dialog"
+                style="animation-duration: 200ms;"
+              >
                 <div
-                  class="za-popup-container za-image-preview"
+                  class="za-popup za-popup--center za-fade-enter"
+                  data-width="0"
+                  role="document"
+                  style="animation-duration: 200ms;"
                 >
                   <div
-                    class="za-mask za-fade-enter za-mask--normal"
-                    style="animation-duration: 200ms;"
-                  />
-                  <div
-                    class="za-popup__wrapper za-fade-enter"
-                    data-width="0"
-                    role="dialog"
-                    style="animation-duration: 200ms;"
+                    class="za-image-preview__content"
                   >
                     <div
-                      class="za-popup za-popup--center za-fade-enter"
-                      data-width="0"
-                      role="document"
-                      style="animation-duration: 200ms;"
+                      class="za-carousel za-carousel--horizontal"
                     >
                       <div
-                        class="za-image-preview__content"
+                        class="za-carousel__items"
+                        style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0);"
                       >
                         <div
-                          class="za-carousel za-carousel--horizontal"
+                          class="za-carousel__item za-image-preview__item"
                         >
                           <div
-                            class="za-carousel__items"
-                            style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0);"
+                            class="za-image-preview__item__img za-pinch-zoom"
                           >
-                            <div
-                              class="za-carousel__item za-image-preview__item"
-                            >
-                              <div
-                                class="za-image-preview__item__img za-pinch-zoom"
-                              >
-                                <img
-                                  alt=""
-                                  draggable="false"
-                                  src="https://cdn-health.zhongan.com/zarm/imagePreview/compress_1.png"
-                                />
-                              </div>
-                            </div>
-                            <div
-                              class="za-carousel__item za-image-preview__item"
-                            >
-                              <div
-                                class="za-image-preview__item__img za-pinch-zoom"
-                              >
-                                <img
-                                  alt=""
-                                  draggable="false"
-                                  src="https://cdn-health.zhongan.com/zarm/imagePreview/compress_2.png"
-                                />
-                              </div>
-                            </div>
-                            <div
-                              class="za-carousel__item za-image-preview__item"
-                            >
-                              <div
-                                class="za-image-preview__item__img za-pinch-zoom"
-                              >
-                                <img
-                                  alt=""
-                                  draggable="false"
-                                  src="https://cdn-health.zhongan.com/zarm/imagePreview/compress_3.png"
-                                />
-                              </div>
-                            </div>
+                            <img
+                              alt=""
+                              draggable="false"
+                              src="https://cdn-health.zhongan.com/zarm/imagePreview/compress_1.png"
+                            />
                           </div>
                         </div>
-                      </div>
-                      <div
-                        class="za-image-preview__footer"
-                      >
-                        <button
-                          class="za-image-preview__origin__button"
-                        />
                         <div
-                          class="za-image-preview__index"
+                          class="za-carousel__item za-image-preview__item"
                         >
-                          1
-                           / 
-                          3
+                          <div
+                            class="za-image-preview__item__img za-pinch-zoom"
+                          >
+                            <img
+                              alt=""
+                              draggable="false"
+                              src="https://cdn-health.zhongan.com/zarm/imagePreview/compress_2.png"
+                            />
+                          </div>
+                        </div>
+                        <div
+                          class="za-carousel__item za-image-preview__item"
+                        >
+                          <div
+                            class="za-image-preview__item__img za-pinch-zoom"
+                          >
+                            <img
+                              alt=""
+                              draggable="false"
+                              src="https://cdn-health.zhongan.com/zarm/imagePreview/compress_3.png"
+                            />
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              }
-            >
-              <Mask
-                className="za-fade-enter"
-                prefixCls="za-mask"
-                style={
-                  Object {
-                    "WebkitAnimationDuration": "200ms",
-                    "animationDuration": "200ms",
-                  }
-                }
-                type="normal"
-                visible={true}
-              >
-                <div
-                  className="za-mask za-fade-enter za-mask--normal"
-                  style={
-                    Object {
-                      "WebkitAnimationDuration": "200ms",
-                      "animationDuration": "200ms",
-                    }
-                  }
-                />
-              </Mask>
-              <div
-                className="za-popup__wrapper za-fade-enter"
-                data-width={0}
-                onClick={[Function]}
-                role="dialog"
-                style={
-                  Object {
-                    "WebkitAnimationDuration": "200ms",
-                    "animationDuration": "200ms",
-                  }
-                }
-              >
-                <div
-                  className="za-popup za-popup--center za-fade-enter"
-                  data-width={0}
-                  role="document"
-                  style={
-                    Object {
-                      "WebkitAnimationDuration": "200ms",
-                      "animationDuration": "200ms",
-                      "width": undefined,
-                    }
-                  }
-                >
                   <div
-                    className="za-image-preview__content"
-                    onClick={[Function]}
-                    onMouseDown={[Function]}
-                    onMouseMove={[Function]}
-                    onMouseUp={[Function]}
-                    onTouchCancel={[Function]}
-                    onTouchEnd={[Function]}
-                    onTouchMove={[Function]}
-                    onTouchStart={[Function]}
-                  >
-                    <Carousel
-                      activeIndex={0}
-                      animationDuration={300}
-                      autoPlay={false}
-                      autoPlayIntervalTime={3000}
-                      direction="left"
-                      height={160}
-                      loop={false}
-                      moveDistanceRatio={0.5}
-                      moveTimeSpan={300}
-                      onChange={[Function]}
-                      prefixCls="za-carousel"
-                      showPagination={false}
-                      swipeable={true}
-                    >
-                      <div
-                        className="za-carousel za-carousel--horizontal"
-                      >
-                        <Drag
-                          onDragEnd={[Function]}
-                          onDragMove={[Function]}
-                          onDragStart={[Function]}
-                        >
-                          <div
-                            className="za-carousel__items"
-                            onMouseDown={[Function]}
-                            onMouseMove={[Function]}
-                            onMouseUp={[Function]}
-                            onTouchEnd={[Function]}
-                            onTouchMove={[Function]}
-                            onTouchStart={[Function]}
-                            onTransitionEnd={[Function]}
-                            style={Object {}}
-                          >
-                            <div
-                              className="za-carousel__item za-image-preview__item"
-                              key=".$0"
-                            >
-                              <PinchZoom
-                                className="za-image-preview__item__img"
-                                maxScale={3}
-                                minScale={1}
-                                prefixCls="za-pinch-zoom"
-                              >
-                                <div
-                                  className="za-image-preview__item__img za-pinch-zoom"
-                                >
-                                  <img
-                                    alt=""
-                                    draggable={false}
-                                    key="0/.0"
-                                    onLoad={[Function]}
-                                    src="https://cdn-health.zhongan.com/zarm/imagePreview/compress_1.png"
-                                  />
-                                </div>
-                              </PinchZoom>
-                            </div>
-                            <div
-                              className="za-carousel__item za-image-preview__item"
-                              key=".$1"
-                            >
-                              <PinchZoom
-                                className="za-image-preview__item__img"
-                                maxScale={3}
-                                minScale={1}
-                                prefixCls="za-pinch-zoom"
-                              >
-                                <div
-                                  className="za-image-preview__item__img za-pinch-zoom"
-                                >
-                                  <img
-                                    alt=""
-                                    draggable={false}
-                                    key="0/.0"
-                                    onLoad={[Function]}
-                                    src="https://cdn-health.zhongan.com/zarm/imagePreview/compress_2.png"
-                                  />
-                                </div>
-                              </PinchZoom>
-                            </div>
-                            <div
-                              className="za-carousel__item za-image-preview__item"
-                              key=".$2"
-                            >
-                              <PinchZoom
-                                className="za-image-preview__item__img"
-                                maxScale={3}
-                                minScale={1}
-                                prefixCls="za-pinch-zoom"
-                              >
-                                <div
-                                  className="za-image-preview__item__img za-pinch-zoom"
-                                >
-                                  <img
-                                    alt=""
-                                    draggable={false}
-                                    key="0/.0"
-                                    onLoad={[Function]}
-                                    src="https://cdn-health.zhongan.com/zarm/imagePreview/compress_3.png"
-                                  />
-                                </div>
-                              </PinchZoom>
-                            </div>
-                          </div>
-                        </Drag>
-                      </div>
-                    </Carousel>
-                  </div>
-                  <div
-                    className="za-image-preview__footer"
+                    class="za-image-preview__footer"
                   >
                     <button
-                      className="za-image-preview__origin__button"
-                      onClick={[Function]}
+                      class="za-image-preview__origin__button"
                     />
                     <div
-                      className="za-image-preview__index"
+                      class="za-image-preview__index"
                     >
                       1
                        / 
@@ -659,11 +443,193 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
                   </div>
                 </div>
               </div>
-            </Portal>
-          </Trigger>
+            </div>
+          }
+        >
+          <ForwardRef
+            className="za-fade-enter"
+            style={
+              Object {
+                "WebkitAnimationDuration": "200ms",
+                "animationDuration": "200ms",
+              }
+            }
+            type="normal"
+            visible={true}
+          >
+            <div
+              className="za-mask za-fade-enter za-mask--normal"
+              style={
+                Object {
+                  "WebkitAnimationDuration": "200ms",
+                  "animationDuration": "200ms",
+                }
+              }
+            />
+          </ForwardRef>
+          <div
+            className="za-popup__wrapper za-fade-enter"
+            data-width={0}
+            onClick={[Function]}
+            role="dialog"
+            style={
+              Object {
+                "WebkitAnimationDuration": "200ms",
+                "animationDuration": "200ms",
+              }
+            }
+          >
+            <div
+              className="za-popup za-popup--center za-fade-enter"
+              data-width={0}
+              role="document"
+              style={
+                Object {
+                  "WebkitAnimationDuration": "200ms",
+                  "animationDuration": "200ms",
+                  "width": undefined,
+                }
+              }
+            >
+              <div
+                className="za-image-preview__content"
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onMouseMove={[Function]}
+                onMouseUp={[Function]}
+                onTouchCancel={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+              >
+                <Carousel
+                  activeIndex={0}
+                  animationDuration={300}
+                  autoPlay={false}
+                  autoPlayIntervalTime={3000}
+                  direction="left"
+                  height={160}
+                  loop={false}
+                  moveDistanceRatio={0.5}
+                  moveTimeSpan={300}
+                  onChange={[Function]}
+                  prefixCls="za-carousel"
+                  showPagination={false}
+                  swipeable={true}
+                >
+                  <div
+                    className="za-carousel za-carousel--horizontal"
+                  >
+                    <Drag
+                      onDragEnd={[Function]}
+                      onDragMove={[Function]}
+                      onDragStart={[Function]}
+                    >
+                      <div
+                        className="za-carousel__items"
+                        onMouseDown={[Function]}
+                        onMouseMove={[Function]}
+                        onMouseUp={[Function]}
+                        onTouchEnd={[Function]}
+                        onTouchMove={[Function]}
+                        onTouchStart={[Function]}
+                        onTransitionEnd={[Function]}
+                        style={Object {}}
+                      >
+                        <div
+                          className="za-carousel__item za-image-preview__item"
+                          key=".$0"
+                        >
+                          <PinchZoom
+                            className="za-image-preview__item__img"
+                            maxScale={3}
+                            minScale={1}
+                            prefixCls="za-pinch-zoom"
+                          >
+                            <div
+                              className="za-image-preview__item__img za-pinch-zoom"
+                            >
+                              <img
+                                alt=""
+                                draggable={false}
+                                key="0/.0"
+                                onLoad={[Function]}
+                                src="https://cdn-health.zhongan.com/zarm/imagePreview/compress_1.png"
+                              />
+                            </div>
+                          </PinchZoom>
+                        </div>
+                        <div
+                          className="za-carousel__item za-image-preview__item"
+                          key=".$1"
+                        >
+                          <PinchZoom
+                            className="za-image-preview__item__img"
+                            maxScale={3}
+                            minScale={1}
+                            prefixCls="za-pinch-zoom"
+                          >
+                            <div
+                              className="za-image-preview__item__img za-pinch-zoom"
+                            >
+                              <img
+                                alt=""
+                                draggable={false}
+                                key="0/.0"
+                                onLoad={[Function]}
+                                src="https://cdn-health.zhongan.com/zarm/imagePreview/compress_2.png"
+                              />
+                            </div>
+                          </PinchZoom>
+                        </div>
+                        <div
+                          className="za-carousel__item za-image-preview__item"
+                          key=".$2"
+                        >
+                          <PinchZoom
+                            className="za-image-preview__item__img"
+                            maxScale={3}
+                            minScale={1}
+                            prefixCls="za-pinch-zoom"
+                          >
+                            <div
+                              className="za-image-preview__item__img za-pinch-zoom"
+                            >
+                              <img
+                                alt=""
+                                draggable={false}
+                                key="0/.0"
+                                onLoad={[Function]}
+                                src="https://cdn-health.zhongan.com/zarm/imagePreview/compress_3.png"
+                              />
+                            </div>
+                          </PinchZoom>
+                        </div>
+                      </div>
+                    </Drag>
+                  </div>
+                </Carousel>
+              </div>
+              <div
+                className="za-image-preview__footer"
+              >
+                <button
+                  className="za-image-preview__origin__button"
+                  onClick={[Function]}
+                />
+                <div
+                  className="za-image-preview__index"
+                >
+                  1
+                   / 
+                  3
+                </div>
+              </div>
+            </div>
+          </div>
         </Portal>
-      </Popup>
-    </WarnIfDeprecatedComp>
-  </ForwardRef(ForwardedRefComp)>
+      </Trigger>
+    </Portal>
+  </Popup>
 </ImagePreview>
 `;
