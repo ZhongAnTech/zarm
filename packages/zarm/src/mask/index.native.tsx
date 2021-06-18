@@ -6,10 +6,10 @@ import {
   TouchableWithoutFeedback,
   GestureResponderEvent,
 } from 'react-native';
-import PropsType from './PropsType';
+import { BaseMaskProps } from './interface';
 import maskStyle from './style/index.native';
 
-export interface MaskProps extends PropsType {
+export interface MaskProps extends BaseMaskProps {
   style?: CSSProperties;
   styles?: typeof maskStyle;
   onClick?: (event: GestureResponderEvent) => void;

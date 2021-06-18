@@ -1,7 +1,4 @@
-import * as React from 'react';
-
-export interface BaseCustomInputProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'onFocus' | 'onBlur'> {
+export interface BaseCustomInputProps {
   type?: 'number' | 'price' | 'idcard';
   clearable?: boolean;
   onChange?: (value?: string) => void;

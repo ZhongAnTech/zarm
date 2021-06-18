@@ -2,9 +2,9 @@ import * as React from 'react';
 import classnames from 'classnames';
 import { Keyboard as KeyboardIcon, DeleteKey as DeleteKeyIcon } from '@zarm-design/icons';
 // import useLongPress from '../hooks/useLongPress';
-import type PropsType from './PropsType';
+import type { BaseKeyBoardProps } from './interface';
 
-type KeyType = Exclude<PropsType['type'], undefined>;
+type KeyType = Exclude<BaseKeyBoardProps['type'], undefined>;
 
 const KEYS: { [type in KeyType]: readonly string[] } = {
   number: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', 'close'],
@@ -14,79 +14,81 @@ const KEYS: { [type in KeyType]: readonly string[] } = {
 
 // let longPressTimer: number | null;
 
-export interface KeyboardProps extends PropsType {
+export interface KeyboardProps extends BaseKeyBoardProps {
   prefixCls?: string;
   className?: string;
 }
 
-const Keyboard = React.forwardRef<unknown, KeyboardProps>(
-  (
-    { prefixCls = 'za-keyboard', type = 'number', onKeyClick, className, locale }: KeyboardProps,
-    ref,
-  ) => {
-    const keyboardRef = (ref as any) || React.createRef<HTMLElement>();
+const Keyboard = React.forwardRef<unknown, KeyboardProps>((props, ref) => {
+  const { prefixCls, className, type, onKeyClick, locale } = props;
 
-    const cls = classnames(prefixCls, className);
-    const getKeys = KEYS[type];
+  const keyboardRef = (ref as any) || React.createRef<HTMLElement>();
 
-    const onKeyPress = (e, key: string) => {
-      e.stopPropagation();
+  const cls = classnames(prefixCls, className);
+  const getKeys = KEYS[type!];
 
-      if (key.length === 0) {
-        return;
-      }
+  const onKeyPress = (e, key: string) => {
+    e.stopPropagation();
 
-      if (typeof onKeyClick === 'function') {
-        onKeyClick(key);
-      }
-    };
+    if (key.length === 0) {
+      return;
+    }
 
-    // todo: 长按连续删除还有点问题
-    // const longPressEvent = useLongPress({},
-    //   (e) => {
-    //     longPressTimer = window.setInterval(() => {
-    //       onKeyPress(e, 'delete');
-    //     }, 200);
-    //   },
-    //   (e) => onKeyPress(e, 'delete'),
-    //   () => clearInterval(longPressTimer!),
-    // );
+    if (typeof onKeyClick === 'function') {
+      onKeyClick(key);
+    }
+  };
 
-    const renderKey = (text: string, index: number) => {
-      const keyCls = classnames(`${prefixCls}__item`, {
-        [`${prefixCls}__item--disabled`]: text.length === 0,
-      });
+  // todo: 长按连续删除还有点问题
+  // const longPressEvent = useLongPress({},
+  //   (e) => {
+  //     longPressTimer = window.setInterval(() => {
+  //       onKeyPress(e, 'delete');
+  //     }, 200);
+  //   },
+  //   (e) => onKeyPress(e, 'delete'),
+  //   () => clearInterval(longPressTimer!),
+  // );
 
-      return (
-        <div className={keyCls} key={+index} onClick={(e) => onKeyPress(e, text)}>
-          {text === 'close' ? <KeyboardIcon size="lg" /> : text}
-        </div>
-      );
-    };
+  const renderKey = (text: string, index: number) => {
+    const keyCls = classnames(`${prefixCls}__item`, {
+      [`${prefixCls}__item--disabled`]: text.length === 0,
+    });
 
     return (
-      <div className={cls} ref={keyboardRef}>
-        <div className={`${prefixCls}__keys`}>{getKeys.map(renderKey)}</div>
-        <div className={`${prefixCls}__handle`}>
-          <div
-            className={`${prefixCls}__item`}
-            onClick={(e) => onKeyPress(e, 'delete')}
-            // {...longPressEvent}
-          >
-            <DeleteKeyIcon size="lg" />
-          </div>
-          <div
-            className={`${prefixCls}__item ${prefixCls}__item--ok`}
-            onClick={(e) => onKeyPress(e, 'ok')}
-          >
-            {locale!.okText}
-          </div>
-        </div>
+      <div className={keyCls} key={+index} onClick={(e) => onKeyPress(e, text)}>
+        {text === 'close' ? <KeyboardIcon size="lg" /> : text}
       </div>
     );
-  },
-);
+  };
+
+  return (
+    <div className={cls} ref={keyboardRef}>
+      <div className={`${prefixCls}__keys`}>{getKeys.map(renderKey)}</div>
+      <div className={`${prefixCls}__handle`}>
+        <div
+          className={`${prefixCls}__item`}
+          onClick={(e) => onKeyPress(e, 'delete')}
+          // {...longPressEvent}
+        >
+          <DeleteKeyIcon size="lg" />
+        </div>
+        <div
+          className={`${prefixCls}__item ${prefixCls}__item--ok`}
+          onClick={(e) => onKeyPress(e, 'ok')}
+        >
+          {locale!.okText}
+        </div>
+      </div>
+    </div>
+  );
+});
 
 Keyboard.displayName = 'Keyboard';
+
+Keyboard.defaultProps = {
+  prefixCls: 'za-keyboard',
+  type: 'number',
+};
 
 export default Keyboard;
