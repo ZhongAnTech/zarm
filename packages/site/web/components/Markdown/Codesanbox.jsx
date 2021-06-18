@@ -66,8 +66,8 @@ ${parsedSourceCode}
   };
 
   if (component.style) {
-    // eslint-disable-next-line import/no-dynamic-require
     config.files['index.css'] = {
+      // eslint-disable-next-line import/no-dynamic-require
       content: require(`!!raw-loader!sass-loader!@/demo/styles/${pascalCase(
         component.key,
       )}Page.scss`).default,
