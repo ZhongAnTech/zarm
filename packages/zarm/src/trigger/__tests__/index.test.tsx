@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import Trigger from '../trigger';
+import Trigger from '../Trigger';
 import type PropsType from '../PropsType';
 
 describe('Trigger', () => {
