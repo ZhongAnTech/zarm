@@ -186,38 +186,6 @@ describe('SearchBar', () => {
     expect(mOnChange).toBeCalledWith('test');
   });
 
-  it('should re-calculate the position of cancel ref if cancel text is changed', () => {
-    const calculatePositonSpy = jest.spyOn(SearchBarOriginal.prototype, 'calculatePositon');
-    const wrapper = mount(<SearchBarOriginal cancelText="取消" />);
-    expect(calculatePositonSpy).toBeCalledWith(
-      expect.objectContaining({
-        cancelText: '取消',
-      }),
-    );
-    wrapper.setProps({ cancelText: 'cancel' });
-    expect(calculatePositonSpy).toBeCalledWith(
-      expect.objectContaining({
-        cancelText: 'cancel',
-      }),
-    );
-  });
-
-  it('should re-calculate the position of cancel ref if props.showCancel is changed', () => {
-    const calculatePositonSpy = jest.spyOn(SearchBarOriginal.prototype, 'calculatePositon');
-    const wrapper = mount(<SearchBarOriginal />);
-    expect(calculatePositonSpy).toBeCalledWith(
-      expect.objectContaining({
-        showCancel: false,
-      }),
-    );
-    wrapper.setProps({ showCancel: true });
-    expect(calculatePositonSpy).toBeCalledWith(
-      expect.objectContaining({
-        showCancel: true,
-      }),
-    );
-  });
-
   it('should re-calculate the position of cancel ref if props.locale.cancelText is changed', () => {
     const calculatePositonSpy = jest.spyOn(SearchBarOriginal.prototype, 'calculatePositon');
     const wrapper = mount(<SearchBarOriginal locale={{ cancelText: '取消', placeholder: '' }} />);
@@ -232,19 +200,6 @@ describe('SearchBar', () => {
         locale: { cancelText: 'cancel', placeholder: '' },
       }),
     );
-  });
-
-  it('should handle blur event', () => {
-    jest.useFakeTimers();
-    const mOnBlur = jest.fn();
-    const wrapper = mount(<SearchBarOriginal onBlur={mOnBlur} value="test" />);
-    const inputWrapper = wrapper.find('input');
-    inputWrapper.simulate('focus');
-    expect(wrapper.state('focus')).toBeTruthy();
-    inputWrapper.simulate('blur');
-    jest.advanceTimersByTime(200);
-    expect(wrapper.state('focus')).toBeFalsy();
-    expect(mOnBlur).toBeCalledTimes(1);
   });
 
   it('should handle form submit event', () => {
