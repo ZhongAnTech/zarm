@@ -24,9 +24,9 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性           | 类型                      | 默认值 | 说明                   |
-| :------------- | :------------------------ | :----- | :--------------------- |
-| checked        | boolean                   | -      | 值                     |
-| defaultChecked | boolean                   | -      | 初始值                 |
-| disabled       | boolean                   | false  | 是否禁用               |
-| onChange       | (value?: boolean) => void | -      | 值变化时触发的回调函数 |
+| 属性           | 类型                        | 默认值 | 说明                   |
+| :------------- | :-------------------------- | :----- | :--------------------- |
+| checked        | boolean                     | -      | 值                     |
+| defaultChecked | boolean                     | -      | 初始值                 |
+| disabled       | boolean                     | false  | 是否禁用               |
+| onChange       | (checked?: boolean) => void | -      | 值变化时触发的回调函数 |
