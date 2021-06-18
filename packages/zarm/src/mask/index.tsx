@@ -1,23 +1,24 @@
-import React, { PureComponent, HTMLAttributes } from 'react';
+import * as React from 'react';
 import classnames from 'classnames';
-import PropsType from './PropsType';
+import type BaseMaskProps from './PropsType';
 
-export interface MaskProps extends HTMLAttributes<HTMLDivElement>, PropsType {
+export interface MaskProps extends React.HTMLAttributes<HTMLDivElement>, BaseMaskProps {
   prefixCls?: string;
 }
 
-export default class Mask extends PureComponent<MaskProps, {}> {
-  static defaultProps: MaskProps = {
-    prefixCls: 'za-mask',
-    visible: false,
-    type: 'normal',
-  };
+const Mask = React.forwardRef<unknown, MaskProps>(
+  (
+    { prefixCls = 'za-mask', className, visible = false, type = 'normal', ...restProps }: MaskProps,
+    ref,
+  ) => {
+    const maskRef = (ref as any) || React.createRef<HTMLDivElement>();
 
-  render() {
-    const { prefixCls, className, visible, type, ...others } = this.props;
-    const markCls = classnames(prefixCls, className, {
+    const maskCls = classnames(prefixCls, className, {
       [`${prefixCls}--${type}`]: !!type,
     });
-    return visible && <div className={markCls} {...others} />;
-  }
-}
+
+    return visible ? <div ref={maskRef} className={maskCls} {...restProps} /> : null;
+  },
+);
+
+export default Mask;

@@ -19,7 +19,7 @@ exports[`Stepper defaultValue 1`] = `
     disabled={false}
     onBlur={[Function]}
     onChange={[Function]}
-    type="text"
+    type="number"
     value={2}
   />
   <Button
@@ -68,8 +68,7 @@ exports[`Stepper renders correctly 1`] = `
     class="za-input za-stepper__input "
   >
     <input
-      autocomplete="off"
-      type="text"
+      type="number"
       value="0"
     />
   </div>

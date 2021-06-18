@@ -27,7 +27,7 @@ declare global {
 export default {
   supportsPassiveEvents: supportsPassive,
   on(
-    el: Element | Window | Document,
+    el: Window | Document | Element,
     type: string,
     callback: EventListener,
     options: AddEventListenerOptions | boolean = { passive: false },
@@ -42,7 +42,7 @@ export default {
   },
 
   off(
-    el: Element | Window | Document,
+    el: Window | Document | Element,
     type: string,
     callback: EventListener,
     options: AddEventListenerOptions | boolean = { passive: false },
@@ -55,7 +55,7 @@ export default {
   },
 
   once(
-    el: Element,
+    el: Window | Document | Element,
     type: string,
     callback: EventListener,
     options: AddEventListenerOptions | boolean = { passive: false },

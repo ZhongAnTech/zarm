@@ -3,8 +3,10 @@ import classnames from 'classnames';
 import { Minus as MinusIcon, Plus as PlusIcon } from '@zarm-design/icons';
 import PropsType from './PropsType';
 import Button from '../button';
+import CustomInput from '../custom-input';
+import type { CustomInputProps } from '../custom-input';
 import Input from '../input';
-import { InputNumberProps } from '../input/PropsType';
+import type { InputProps } from '../input';
 
 const compareValue = (value, max, min) => {
   if (typeof max === 'number') {
@@ -74,7 +76,7 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
     shape: 'radius',
     disabled: false,
     step: 1,
-    type: 'text',
+    type: 'number',
     disableInput: false,
   };
 
@@ -188,7 +190,7 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
       value,
       disabled: disabled || disableInput,
       clearable: false,
-      onChange: (v) => !disabled && this.onInputChange(v!),
+      onChange: () => !disabled && this.onInputChange(value),
       onBlur: () => !disabled && this.onInputBlur(value),
     };
 
@@ -203,7 +205,17 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
         >
           <MinusIcon />
         </Button>
-        <Input {...(inputProps as InputNumberProps)} />
+        {['price'].indexOf(type!) > -1 ? (
+          <CustomInput
+            {...(inputProps as CustomInputProps)}
+            onChange={(v) => !disabled && this.onInputChange(v!)}
+          />
+        ) : (
+          <Input
+            {...(inputProps as InputProps)}
+            onChange={(e) => !disabled && this.onInputChange(e.target.value)}
+          />
+        )}
         <Button
           className={`${prefixCls}__plus`}
           size={buttonSize}

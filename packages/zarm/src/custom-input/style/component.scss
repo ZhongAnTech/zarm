@@ -1,16 +1,9 @@
 @import 'mixins';
 
-@include b(input) {
+@include b(custom-input) {
   @include input-base();
   @include input-placeholder();
-
-  @include m(textarea) {
-    @include e(length) {
-      text-align: right;
-      color: var(--input-length-count-color);
-      font-size: r(12);
-    }
-  }
+  @include input-keyboard();
 
   // 可清空
   @include m(clearable) {

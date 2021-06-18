@@ -1,7 +1,7 @@
-import React, { PureComponent } from 'react';
-import type { TouchEvent, MouseEvent } from 'react';
+import * as React from 'react';
 import classnames from 'classnames';
 import { Keyboard as KeyboardIcon, DeleteKey as DeleteKeyIcon } from '@zarm-design/icons';
+// import useLongPress from '../hooks/useLongPress';
 import type PropsType from './PropsType';
 
 type KeyType = Exclude<PropsType['type'], undefined>;
@@ -12,89 +12,81 @@ const KEYS: { [type in KeyType]: readonly string[] } = {
   idcard: ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'X', '0', 'close'],
 };
 
+// let longPressTimer: number | null;
+
 export interface KeyboardProps extends PropsType {
   prefixCls?: string;
   className?: string;
 }
 
-export default class Keyboard extends PureComponent<KeyboardProps, {}> {
-  static defaultProps: KeyboardProps = {
-    prefixCls: 'za-keyboard',
-    type: 'number',
-  };
+const Keyboard = React.forwardRef<unknown, KeyboardProps>(
+  (
+    { prefixCls = 'za-keyboard', type = 'number', onKeyClick, className, locale }: KeyboardProps,
+    ref,
+  ) => {
+    const keyboardRef = (ref as any) || React.createRef<HTMLElement>();
 
-  private longPressTimer: ReturnType<typeof setTimeout | typeof setInterval>;
-
-  onLongPressIn = (key: string) => {
-    this.onKeyClick(key);
-    this.longPressTimer = setTimeout(() => {
-      this.longPressTimer = setInterval(() => {
-        this.onKeyClick(key);
-      }, 100);
-    }, 800);
-  };
-
-  onLongPressOut = (e: TouchEvent<HTMLDivElement> | MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    clearInterval(this.longPressTimer);
-  };
-
-  onKeyClick = (key: string) => {
-    if (key.length === 0) {
-      return;
-    }
-
-    const { onKeyClick } = this.props;
-    if (typeof onKeyClick === 'function') {
-      onKeyClick(key);
-    }
-  };
-
-  getKeys = (): ReadonlyArray<string> => {
-    const { type } = this.props;
-    return type ? KEYS[type] : KEYS.number;
-  };
-
-  renderKey = (text: string, index: number) => {
-    const { prefixCls } = this.props;
-
-    const keyCls = classnames(`${prefixCls}__item`, {
-      [`${prefixCls}__item--disabled`]: text.length === 0,
-    });
-
-    return (
-      <div className={keyCls} key={+index} onClick={() => this.onKeyClick(text)}>
-        {text === 'close' ? <KeyboardIcon size="lg" /> : text}
-      </div>
-    );
-  };
-
-  render() {
-    const { prefixCls, className, locale } = this.props;
     const cls = classnames(prefixCls, className);
+    const getKeys = KEYS[type];
+
+    const onKeyPress = (e, key: string) => {
+      e.stopPropagation();
+
+      if (key.length === 0) {
+        return;
+      }
+
+      if (typeof onKeyClick === 'function') {
+        onKeyClick(key);
+      }
+    };
+
+    // todo: 长按连续删除还有点问题
+    // const longPressEvent = useLongPress({},
+    //   (e) => {
+    //     longPressTimer = window.setInterval(() => {
+    //       onKeyPress(e, 'delete');
+    //     }, 200);
+    //   },
+    //   (e) => onKeyPress(e, 'delete'),
+    //   () => clearInterval(longPressTimer!),
+    // );
+
+    const renderKey = (text: string, index: number) => {
+      const keyCls = classnames(`${prefixCls}__item`, {
+        [`${prefixCls}__item--disabled`]: text.length === 0,
+      });
+
+      return (
+        <div className={keyCls} key={+index} onClick={(e) => onKeyPress(e, text)}>
+          {text === 'close' ? <KeyboardIcon size="lg" /> : text}
+        </div>
+      );
+    };
 
     return (
-      <div className={cls}>
-        <div className={`${prefixCls}__keys`}>{this.getKeys().map(this.renderKey)}</div>
+      <div className={cls} ref={keyboardRef}>
+        <div className={`${prefixCls}__keys`}>{getKeys.map(renderKey)}</div>
         <div className={`${prefixCls}__handle`}>
           <div
             className={`${prefixCls}__item`}
-            onTouchStart={() => this.onLongPressIn('delete')}
-            onTouchEnd={this.onLongPressOut}
-            onTouchCancel={this.onLongPressOut}
-            onMouseDown={() => this.onLongPressIn('delete')}
-            onMouseUp={this.onLongPressOut}
+            onClick={(e) => onKeyPress(e, 'delete')}
+            // {...longPressEvent}
           >
             <DeleteKeyIcon size="lg" />
           </div>
           <div
             className={`${prefixCls}__item ${prefixCls}__item--ok`}
-            onClick={() => this.onKeyClick('ok')}
+            onClick={(e) => onKeyPress(e, 'ok')}
           >
             {locale!.okText}
           </div>
         </div>
       </div>
     );
-  }
-}
+  },
+);
+
+Keyboard.displayName = 'Keyboard';
+
+export default Keyboard;

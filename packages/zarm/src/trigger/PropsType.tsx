@@ -1,10 +1,10 @@
-export interface InstanceFn {
+interface TriggerCloseProps {
   (): void;
   disabled?: boolean;
 }
 
-export default interface PropsType {
-  disabled: boolean;
-  visible: boolean;
-  onClose?: InstanceFn;
+export default interface BaseTriggerProps {
+  disabled?: boolean;
+  visible?: boolean;
+  onClose?: TriggerCloseProps;
 }

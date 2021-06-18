@@ -32,13 +32,12 @@ export default class Portal extends PureComponent<PortalProps, PortalState> {
   private popup: HTMLDivElement | null;
 
   static defaultProps: PortalProps = {
-    prefixCls: 'za-popup',
     visible: false,
     mask: true,
     direction: 'bottom',
     animationType: 'fade',
     animationDuration: 200,
-    maskType: Mask.defaultProps.type,
+    maskType: 'normal',
   };
 
   constructor(props: PortalProps) {
