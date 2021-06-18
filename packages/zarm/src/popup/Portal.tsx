@@ -5,12 +5,12 @@ import classnames from 'classnames';
 import Events from '../utils/events';
 import { canUseDOM, getMountContainer } from '../utils/dom';
 import Mask from '../mask';
-import type PropsType from './PropsType';
+import type { BasePopupProps } from './interface';
 import Trigger from '../trigger';
 
 const IS_REACT_16 = !!ReactDOM.createPortal;
 
-export interface PortalProps extends PropsType {
+export interface PortalProps extends BasePopupProps {
   prefixCls?: string;
   className?: string;
   handlePortalUnmount?: () => void;
@@ -37,7 +37,6 @@ export default class Portal extends PureComponent<PortalProps, PortalState> {
     direction: 'bottom',
     animationType: 'fade',
     animationDuration: 200,
-    maskType: 'normal',
   };
 
   constructor(props: PortalProps) {

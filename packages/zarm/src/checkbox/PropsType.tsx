@@ -1,5 +1,5 @@
 import { ChangeEvent } from 'react';
-import { ButtonSize } from '../button/PropsType';
+import { ButtonSize } from '../button/interface';
 
 export type CheckboxType = 'button' | 'cell';
 export type CheckboxShape = 'rect' | 'radius' | 'round';

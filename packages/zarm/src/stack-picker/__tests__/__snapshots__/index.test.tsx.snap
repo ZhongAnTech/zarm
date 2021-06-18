@@ -229,8 +229,10 @@ exports[`StackPicker renders correctly 1`] = `
       visible={true}
     >
       <Popup
+        destroy={true}
         direction="bottom"
         onMaskClick={[Function]}
+        prefixCls="za-popup"
         visible={true}
       >
         <Portal
@@ -239,7 +241,6 @@ exports[`StackPicker renders correctly 1`] = `
           direction="bottom"
           handlePortalUnmount={[Function]}
           mask={true}
-          maskType="normal"
           onMaskClick={[Function]}
           prefixCls="za-popup"
           visible={true}
@@ -372,8 +373,9 @@ exports[`StackPicker renders correctly 1`] = `
                 </div>
               }
             >
-              <ForwardRef
+              <Mask
                 className="za-fade-enter"
+                prefixCls="za-mask"
                 style={
                   Object {
                     "WebkitAnimationDuration": "200ms",
@@ -392,7 +394,7 @@ exports[`StackPicker renders correctly 1`] = `
                     }
                   }
                 />
-              </ForwardRef>
+              </Mask>
               <div
                 className="za-popup__wrapper"
                 data-width={0}

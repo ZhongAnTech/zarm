@@ -1,10 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`KeyboardPicker snapshot renders correctly 1`] = `
-<KeyboardPicker>
+<KeyboardPicker
+  destroy={true}
+  prefixCls="za-keyboard-picker"
+  type="number"
+  visible={false}
+>
   <Popup
     destroy={true}
     mask={false}
+    prefixCls="za-popup"
     visible={false}
   />
 </KeyboardPicker>

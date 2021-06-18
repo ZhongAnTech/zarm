@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import { CloseCircleFill } from '@zarm-design/icons';
-import type { BaseInputTextProps, BaseInputTextareaProps } from './PropsType';
+import type { BaseInputTextProps, BaseInputTextareaProps } from './interface';
 import { getValue } from './utils';
 
 const regexAstralSymbols = /[\uD800-\uDBFF][\uDC00-\uDFFF]|\n/g;
@@ -10,13 +10,17 @@ const countSymbols = (text = '') => {
   return text.replace(regexAstralSymbols, '_').length;
 };
 
-export type InputTextProps = {
+export interface InputTextProps
+  extends BaseInputTextProps,
+    React.InputHTMLAttributes<HTMLInputElement> {
   prefixCls?: string;
-} & BaseInputTextProps;
+}
 
-export type InputTextareaProps = {
+export interface InputTextareaProps
+  extends BaseInputTextareaProps,
+    React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   prefixCls?: string;
-} & BaseInputTextareaProps;
+}
 
 export type InputProps = {
   type?: string;
@@ -24,14 +28,14 @@ export type InputProps = {
 
 const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
   const {
-    prefixCls = 'za-input',
-    type = 'text',
-    disabled = false,
-    autoFocus = false,
-    readOnly = false,
-    clearable = true,
-    showLength = false,
-    autoHeight = false,
+    prefixCls,
+    type,
+    disabled,
+    autoFocus,
+    readOnly,
+    clearable,
+    showLength,
+    autoHeight,
     rows,
     className,
     style,
@@ -48,7 +52,7 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
   const inputRef = React.useRef<HTMLTextAreaElement | HTMLInputElement>();
 
   const [currentValue, setCurrentValue] = React.useState(getValue({ value, defaultValue }));
-  const [focused, setFocused] = React.useState<boolean>(autoFocus);
+  const [focused, setFocused] = React.useState<boolean>(autoFocus!);
 
   const isTextarea = type === 'text' && 'rows' in props;
   let blurFromClear = false;
@@ -206,5 +210,16 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
 });
 
 Input.displayName = 'Input';
+
+Input.defaultProps = {
+  prefixCls: 'za-input',
+  type: 'text',
+  disabled: false,
+  autoFocus: false,
+  readOnly: false,
+  clearable: true,
+  showLength: false,
+  autoHeight: false,
+};
 
 export default Input;

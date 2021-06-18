@@ -10,7 +10,7 @@ import {
   GestureResponderEvent,
 } from 'react-native';
 import buttonStyle from './style/index.native';
-import type { BaseButtonProps } from './PropsType';
+import type { BaseButtonProps } from './interface';
 
 export interface ButtonProps extends BaseButtonProps {
   style?: CSSProperties;

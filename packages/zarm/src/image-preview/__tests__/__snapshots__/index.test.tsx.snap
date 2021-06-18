@@ -17,7 +17,9 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
 >
   <Popup
     className="za-image-preview"
+    destroy={true}
     direction="center"
+    prefixCls="za-popup"
     visible={true}
   >
     <Portal
@@ -27,7 +29,6 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
       direction="center"
       handlePortalUnmount={[Function]}
       mask={true}
-      maskType="normal"
       prefixCls="za-popup"
       visible={true}
     >
@@ -125,8 +126,9 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
             </div>
           }
         >
-          <ForwardRef
+          <Mask
             className="za-fade-enter"
+            prefixCls="za-mask"
             style={
               Object {
                 "WebkitAnimationDuration": "200ms",
@@ -145,7 +147,7 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
                 }
               }
             />
-          </ForwardRef>
+          </Mask>
           <div
             className="za-popup__wrapper za-fade-enter"
             data-width={0}
@@ -335,7 +337,9 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
 >
   <Popup
     className="za-image-preview"
+    destroy={true}
     direction="center"
+    prefixCls="za-popup"
     visible={true}
   >
     <Portal
@@ -345,7 +349,6 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
       direction="center"
       handlePortalUnmount={[Function]}
       mask={true}
-      maskType="normal"
       prefixCls="za-popup"
       visible={true}
     >
@@ -446,8 +449,9 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
             </div>
           }
         >
-          <ForwardRef
+          <Mask
             className="za-fade-enter"
+            prefixCls="za-mask"
             style={
               Object {
                 "WebkitAnimationDuration": "200ms",
@@ -466,7 +470,7 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
                 }
               }
             />
-          </ForwardRef>
+          </Mask>
           <div
             className="za-popup__wrapper za-fade-enter"
             data-width={0}

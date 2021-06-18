@@ -1,10 +1,6 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
-    "paths": {
-      "zarm": ["src/index.tsx"],
-      "zarm/es/*": ["src/*"]
-    },
     "experimentalDecorators": true,
     "strictNullChecks": true,
     "moduleResolution": "node",

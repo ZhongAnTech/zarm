@@ -14,6 +14,18 @@ describe('index', () => {
         "Badge": [Function],
         "Button": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "block": false,
+            "disabled": false,
+            "ghost": false,
+            "htmlType": "button",
+            "loading": false,
+            "prefixCls": "za-button",
+            "shadow": false,
+            "shape": "radius",
+            "size": "md",
+            "theme": "default",
+          },
           "render": [Function],
         },
         "Calendar": [Function],
@@ -25,6 +37,13 @@ describe('index', () => {
         "ConfigReceiver": [Function],
         "CustomInput": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "autoFocus": false,
+            "clearable": true,
+            "prefixCls": "za-custom-input",
+            "readOnly": false,
+            "type": "number",
+          },
           "render": [Function],
         },
         "DatePicker": Object {
@@ -48,6 +67,16 @@ describe('index', () => {
         },
         "Input": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "autoFocus": false,
+            "autoHeight": false,
+            "clearable": true,
+            "disabled": false,
+            "prefixCls": "za-input",
+            "readOnly": false,
+            "showLength": false,
+            "type": "text",
+          },
           "render": [Function],
         },
         "Keyboard": Object {
@@ -56,6 +85,12 @@ describe('index', () => {
         },
         "KeyboardPicker": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "destroy": true,
+            "prefixCls": "za-keyboard-picker",
+            "type": "number",
+            "visible": false,
+          },
           "render": [Function],
         },
         "Loading": [Function],
@@ -66,6 +101,11 @@ describe('index', () => {
         "Marquee": [Function],
         "Mask": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "prefixCls": "za-mask",
+            "type": "normal",
+            "visible": false,
+          },
           "render": [Function],
         },
         "Message": [Function],
@@ -81,6 +121,11 @@ describe('index', () => {
         "Popper": [Function],
         "Popup": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "destroy": true,
+            "prefixCls": "za-popup",
+            "visible": false,
+          },
           "render": [Function],
         },
         "Progress": [Function],
@@ -111,7 +156,17 @@ describe('index', () => {
           "$$typeof": Symbol(react.forward_ref),
           "Panel": Object {
             "$$typeof": Symbol(react.forward_ref),
+            "defaultProps": Object {
+              "prefixCls": "za-tabs",
+            },
             "render": [Function],
+          },
+          "defaultProps": Object {
+            "direction": "horizontal",
+            "disabled": false,
+            "prefixCls": "za-tabs",
+            "scrollable": false,
+            "swipeable": false,
           },
           "render": [Function],
         },

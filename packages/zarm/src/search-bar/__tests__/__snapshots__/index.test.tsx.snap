@@ -138,6 +138,8 @@ exports[`SearchBar snapshot renders defaultValue correctly 1`] = `
               className="za-search-bar__mock"
             >
               <Input
+                autoFocus={false}
+                autoHeight={false}
                 className="za-search-bar__input"
                 clearable={true}
                 disabled={false}
@@ -148,6 +150,9 @@ exports[`SearchBar snapshot renders defaultValue correctly 1`] = `
                 onCompositionUpdate={[Function]}
                 onFocus={[Function]}
                 placeholder="搜索"
+                prefixCls="za-input"
+                readOnly={false}
+                showLength={false}
                 type="search"
                 value=""
               >
@@ -304,6 +309,8 @@ exports[`SearchBar snapshot renders onCancel called correctly 1`] = `
               className="za-search-bar__mock"
             >
               <Input
+                autoFocus={false}
+                autoHeight={false}
                 className="za-search-bar__input"
                 clearable={true}
                 disabled={false}
@@ -314,6 +321,9 @@ exports[`SearchBar snapshot renders onCancel called correctly 1`] = `
                 onCompositionUpdate={[Function]}
                 onFocus={[Function]}
                 placeholder="搜索"
+                prefixCls="za-input"
+                readOnly={false}
+                showLength={false}
                 type="search"
                 value=""
               >
@@ -476,6 +486,8 @@ exports[`SearchBar snapshot renders onChange called correctly 1`] = `
               className="za-search-bar__mock"
             >
               <Input
+                autoFocus={false}
+                autoHeight={false}
                 className="za-search-bar__input"
                 clearable={true}
                 disabled={false}
@@ -486,6 +498,9 @@ exports[`SearchBar snapshot renders onChange called correctly 1`] = `
                 onCompositionUpdate={[Function]}
                 onFocus={[Function]}
                 placeholder="搜索"
+                prefixCls="za-input"
+                readOnly={false}
+                showLength={false}
                 type="search"
                 value="测试值"
               >
@@ -706,6 +721,8 @@ exports[`SearchBar snapshot renders onClear called correctly 1`] = `
               className="za-search-bar__mock"
             >
               <Input
+                autoFocus={false}
+                autoHeight={false}
                 className="za-search-bar__input"
                 clearable={true}
                 disabled={false}
@@ -716,6 +733,9 @@ exports[`SearchBar snapshot renders onClear called correctly 1`] = `
                 onCompositionUpdate={[Function]}
                 onFocus={[Function]}
                 placeholder="搜索"
+                prefixCls="za-input"
+                readOnly={false}
+                showLength={false}
                 type="search"
                 value=""
               >
@@ -872,6 +892,8 @@ exports[`SearchBar snapshot renders onFocus called correctly 1`] = `
               className="za-search-bar__mock"
             >
               <Input
+                autoFocus={false}
+                autoHeight={false}
                 className="za-search-bar__input"
                 clearable={true}
                 disabled={false}
@@ -882,6 +904,9 @@ exports[`SearchBar snapshot renders onFocus called correctly 1`] = `
                 onCompositionUpdate={[Function]}
                 onFocus={[Function]}
                 placeholder="搜索"
+                prefixCls="za-input"
+                readOnly={false}
+                showLength={false}
                 type="search"
                 value=""
               >
@@ -1044,6 +1069,8 @@ exports[`SearchBar snapshot renders onSubmit called correctly 1`] = `
               className="za-search-bar__mock"
             >
               <Input
+                autoFocus={false}
+                autoHeight={false}
                 className="za-search-bar__input"
                 clearable={true}
                 disabled={false}
@@ -1054,6 +1081,9 @@ exports[`SearchBar snapshot renders onSubmit called correctly 1`] = `
                 onCompositionUpdate={[Function]}
                 onFocus={[Function]}
                 placeholder="搜索"
+                prefixCls="za-input"
+                readOnly={false}
+                showLength={false}
                 type="search"
                 value="My new value"
               >
