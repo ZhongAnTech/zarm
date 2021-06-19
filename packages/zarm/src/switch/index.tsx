@@ -1,60 +1,38 @@
-import React, { PureComponent } from 'react';
-import type { HTMLAttributes } from 'react';
+import * as React from 'react';
 import classnames from 'classnames';
-import type PropsType from './PropsType';
+import type { BaseSwitchProps } from './interface';
 
-const getChecked = (props: SwitchProps, defaultChecked: boolean) => {
-  if (typeof props.checked !== 'undefined') {
-    return props.checked;
-  }
-  if (typeof props.defaultChecked !== 'undefined') {
-    return props.defaultChecked;
-  }
-
-  return defaultChecked;
-};
-
-export type SwitchProps = {
+export interface SwitchProps
+  extends BaseSwitchProps,
+    Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
   prefixCls?: string;
-} & Omit<HTMLAttributes<HTMLSpanElement>, 'onChange'> &
-  PropsType;
-
-export interface SwitchStates {
-  checked: boolean;
 }
 
-export default class Switch extends PureComponent<SwitchProps, SwitchStates> {
-  static displayName = 'Switch';
+const Switch = React.forwardRef<unknown, SwitchProps>((props, ref) => {
+  const {
+    prefixCls,
+    className,
+    style,
+    disabled,
+    checked,
+    defaultChecked,
+    onChange,
+    ...restProps
+  } = props;
 
-  static defaultProps: SwitchProps = {
-    prefixCls: 'za-switch',
-    disabled: false,
-  };
+  const switchRef = (ref as any) || React.createRef<HTMLElement>();
+  const getChecked = checked || defaultChecked || false;
+  const [currentChecked, setCurrentChecked] = React.useState(getChecked);
 
-  state: SwitchStates = {
-    checked: getChecked(this.props, false),
-  };
+  const cls = classnames(prefixCls, className, {
+    [`${prefixCls}--disabled`]: disabled,
+  });
 
-  static getDerivedStateFromProps(nextProps: SwitchProps) {
-    if (typeof nextProps.checked !== 'undefined') {
-      return {
-        checked: nextProps.checked,
-      };
-    }
+  const onInputChange = () => {
+    const newChecked = !currentChecked;
 
-    return null;
-  }
-
-  onValueChange = () => {
-    const { disabled, onChange } = this.props;
-    const { checked } = this.state;
-    if (disabled) {
-      return;
-    }
-
-    const newChecked = !checked;
-    if (!('checked' in this.props)) {
-      this.setState({ checked: newChecked });
+    if (!('checked' in props)) {
+      setCurrentChecked(newChecked);
     }
 
     if (typeof onChange === 'function') {
@@ -62,25 +40,34 @@ export default class Switch extends PureComponent<SwitchProps, SwitchStates> {
     }
   };
 
-  render() {
-    const { prefixCls, className, disabled, style } = this.props;
-    const { checked } = this.state;
+  React.useEffect(() => {
+    setCurrentChecked(getChecked);
+  }, [getChecked]);
 
-    const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--disabled`]: disabled,
-    });
+  return (
+    <span className={cls} style={style}>
+      <input
+        {...restProps}
+        ref={switchRef}
+        role="switch"
+        aria-checked={currentChecked}
+        type="checkbox"
+        className={`${prefixCls}__input`}
+        disabled={disabled}
+        value={getChecked ? 'on' : 'off'}
+        checked={'checked' in props ? currentChecked : undefined}
+        defaultChecked={'defaultChecked' in props ? defaultChecked : undefined}
+        onChange={'onChange' in props ? onInputChange : undefined}
+      />
+    </span>
+  );
+});
 
-    return (
-      <span className={cls} style={style}>
-        <input
-          type="checkbox"
-          className={`${prefixCls}__input`}
-          disabled={disabled}
-          checked={checked}
-          onChange={this.onValueChange}
-          value={checked ? 'on' : 'off'}
-        />
-      </span>
-    );
-  }
-}
+Switch.displayName = 'Switch';
+
+Switch.defaultProps = {
+  prefixCls: 'za-switch',
+  disabled: false,
+};
+
+export default Switch;
