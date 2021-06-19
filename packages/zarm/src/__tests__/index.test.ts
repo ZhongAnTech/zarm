@@ -150,7 +150,14 @@ describe('index', () => {
         },
         "Stepper": [Function],
         "SwipeAction": [Function],
-        "Switch": [Function],
+        "Switch": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "disabled": false,
+            "prefixCls": "za-switch",
+          },
+          "render": [Function],
+        },
         "TabBar": [Function],
         "Tabs": Object {
           "$$typeof": Symbol(react.forward_ref),

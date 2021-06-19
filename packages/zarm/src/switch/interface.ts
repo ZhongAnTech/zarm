@@ -1,4 +1,4 @@
-export default interface PropsType {
+export interface BaseSwitchProps {
   checked?: boolean;
   defaultChecked?: boolean;
   disabled?: boolean;
