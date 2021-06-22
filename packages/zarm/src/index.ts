@@ -21,7 +21,10 @@ export { default as DatePicker } from './date-picker';
 export type { DateSelectProps } from './date-select';
 export { default as DateSelect } from './date-select';
 
+export type { DragEvent, DragState, DragProps } from './drag';
 export { default as Drag } from './drag';
+export { default as useDrag } from './useDrag';
+
 export { default as FilePicker } from './file-picker';
 
 export type { IconProps } from './icon';
