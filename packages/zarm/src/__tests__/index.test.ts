@@ -181,6 +181,7 @@ describe('index', () => {
         "Tooltip": [Function],
         "Trigger": [Function],
         "Wheel": [Function],
+        "useDrag": [Function],
       }
     `);
   });
