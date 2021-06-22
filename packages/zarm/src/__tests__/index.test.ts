@@ -96,7 +96,28 @@ describe('index', () => {
           "$$typeof": Symbol(react.forward_ref),
           "render": [Function],
         },
-        "Radio": [Function],
+        "Radio": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "Group": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "defaultProps": Object {
+              "block": false,
+              "compact": false,
+              "disabled": false,
+              "ghost": false,
+              "prefixCls": "za-radio-group",
+              "shape": "radius",
+              "size": "xs",
+            },
+            "render": [Function],
+          },
+          "defaultProps": Object {
+            "disabled": false,
+            "prefixCls": "za-radio",
+            "shape": "radius",
+          },
+          "render": [Function],
+        },
         "Scroller": [Function],
         "SearchBar": Object {
           "$$typeof": Symbol(react.forward_ref),
