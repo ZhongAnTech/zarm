@@ -30,7 +30,7 @@ type RadioButtonProps = Omit<
 export type RadioProps = Partial<RadioSpanProps & RadioCellProps & RadioButtonProps> &
   BaseRadioProps & {
     prefixCls?: string;
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange?: (e?: React.ChangeEvent<HTMLInputElement>) => void;
   };
 
 interface CompoundedComponent
@@ -38,103 +38,106 @@ interface CompoundedComponent
   Group: typeof RadioGroup;
 }
 
-const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
-  const {
-    prefixCls,
-    className,
-    type,
-    value,
-    checked,
-    shape,
-    defaultChecked,
-    disabled,
-    id,
-    children,
-    onChange,
-    ...rest
-  } = props;
-
-  const radioRef = (ref as any) || React.createRef<HTMLElement>();
-  const [currentCheck, setCurrentCheck] = React.useState(
-    getChecked({ checked, defaultChecked }, false),
-  );
-
-  const onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (disabled) {
-      return;
-    }
-    const newChecked = !currentCheck;
-    if (!('checked' in props)) {
-      setCurrentCheck(newChecked);
-    }
-
-    if (typeof onChange === 'function') {
-      onChange(e);
-    }
-  };
-
-  const cls = classnames(prefixCls, className, {
-    [`${prefixCls}--checked`]: currentCheck,
-    [`${prefixCls}--disabled`]: disabled,
-    [`${prefixCls}--untext`]: !children,
-  });
-
-  const inputRender = (
-    <input
-      id={id}
-      type="radio"
-      className={`${prefixCls}__input`}
-      value={value}
-      disabled={disabled}
-      checked={currentCheck}
-      onChange={onValueChange}
-    />
-  );
-
-  React.useEffect(() => {
-    setCurrentCheck(getChecked({ checked, defaultChecked }, false));
-  }, [checked, defaultChecked]);
-
-  const radioRender = (
-    <span className={cls} {...(rest as RadioSpanProps)} ref={radioRef}>
-      <span className={`${prefixCls}__widget`}>
-        <span className={`${prefixCls}__inner`} />
-      </span>
-      {children && <span className={`${prefixCls}__text`}>{children}</span>}
-      {inputRender}
-    </span>
-  );
-
-  if (type === 'cell') {
-    return (
-      <Cell
-        disabled={disabled}
-        className={className}
-        onClick={() => {}}
-        {...(rest as RadioCellProps)}
-      >
-        {radioRender}
-      </Cell>
+const Radio = React.forwardRef<unknown, RadioProps>(
+  (
+    {
+      prefixCls = 'za-radio',
+      className,
+      type,
+      value,
+      checked,
+      shape,
+      defaultChecked,
+      disabled = false,
+      id,
+      children,
+      onChange,
+      ...rest
+    }: RadioProps,
+    ref,
+  ) => {
+    const radioRef = (ref as any) || React.createRef<HTMLElement>();
+    const [currentCheck, setCurrentCheck] = React.useState(
+      getChecked({ checked, defaultChecked }, false),
     );
-  }
 
-  if (type === 'button') {
-    return (
-      <button
-        type="button"
+    const onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (disabled) {
+        return;
+      }
+      const newChecked = !currentCheck;
+      if (typeof checked === 'undefined') {
+        setCurrentCheck(newChecked);
+      }
+
+      if (typeof onChange === 'function') {
+        onChange(e);
+      }
+    };
+
+    const cls = classnames(prefixCls, className, {
+      [`${prefixCls}--checked`]: currentCheck,
+      [`${prefixCls}--disabled`]: disabled,
+      [`${prefixCls}--untext`]: !children,
+    });
+
+    const inputRender = (
+      <input
+        id={id}
+        type="radio"
+        className={`${prefixCls}__input`}
+        value={value}
         disabled={disabled}
-        className={cls}
-        ref={radioRef}
-        {...(rest as RadioButtonProps)}
-      >
-        {children}
+        checked={currentCheck}
+        onChange={onValueChange}
+      />
+    );
+
+    React.useEffect(() => {
+      setCurrentCheck(getChecked({ checked, defaultChecked }, false));
+    }, [checked, defaultChecked]);
+
+    const radioRender = (
+      <span className={cls} ref={radioRef} {...(rest as RadioSpanProps)}>
+        <span className={`${prefixCls}__widget`}>
+          <span className={`${prefixCls}__inner`} />
+        </span>
+        {children && <span className={`${prefixCls}__text`}>{children}</span>}
         {inputRender}
-      </button>
+      </span>
     );
-  }
 
-  return radioRender;
-}) as CompoundedComponent;
+    if (type === 'cell') {
+      return (
+        <Cell
+          disabled={disabled}
+          className={className}
+          onClick={() => {}}
+          {...(rest as RadioCellProps)}
+        >
+          {radioRender}
+        </Cell>
+      );
+    }
+
+    if (type === 'button') {
+      return (
+        <button
+          type="button"
+          disabled={disabled}
+          className={cls}
+          ref={radioRef}
+          {...(rest as RadioButtonProps)}
+        >
+          {children}
+          {inputRender}
+        </button>
+      );
+    }
+
+    return radioRender;
+  },
+) as CompoundedComponent;
 
 Radio.displayName = 'Radio';
 Radio.defaultProps = {
