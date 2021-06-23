@@ -1,65 +1,68 @@
-import React, { PureComponent, HTMLAttributes } from 'react';
+import React, { HTMLAttributes } from 'react';
 import classnames from 'classnames';
-import PropsType from './PropsType';
+import type { BaseCellProps } from './interface';
 
-export type HTMLDivProps = Omit<HTMLAttributes<HTMLDivElement>, 'title'>;
+type HTMLDivProps = Omit<HTMLAttributes<HTMLDivElement>, 'title'>;
 
-export interface CellProps extends HTMLDivProps, PropsType {
+export interface CellProps extends HTMLDivProps, BaseCellProps {
   prefixCls?: string;
-  className?: string;
 }
 
-export default class Cell extends PureComponent<CellProps, {}> {
-  static defaultProps: CellProps = {
-    prefixCls: 'za-cell',
-    hasArrow: false,
-    disabled: false,
-  };
+const Cell = React.forwardRef<unknown, CellProps>((props, ref) => {
+  const {
+    prefixCls,
+    className,
+    hasArrow,
+    icon,
+    title,
+    description,
+    help,
+    disabled,
+    onClick,
+    children,
+    ...others
+  } = props;
 
-  render() {
-    const {
-      prefixCls,
-      className,
-      hasArrow,
-      icon,
-      title,
-      description,
-      help,
-      disabled,
-      onClick,
-      children,
-      ...others
-    } = this.props;
+  const cellRef = (ref as any) || React.createRef<HTMLElement>();
 
-    const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--disabled`]: disabled,
-      [`${prefixCls}--link`]: !disabled && !!onClick,
-      [`${prefixCls}--arrow`]: hasArrow,
-    });
+  const cls = classnames(prefixCls, className, {
+    [`${prefixCls}--disabled`]: disabled,
+    [`${prefixCls}--link`]: !disabled && !!onClick,
+    [`${prefixCls}--arrow`]: hasArrow,
+  });
 
-    const titleCls = classnames(`${prefixCls}__title`, {
-      [`${prefixCls}__title--label`]: !!children,
-    });
+  const titleCls = classnames(`${prefixCls}__title`, {
+    [`${prefixCls}__title--label`]: !!children,
+  });
 
-    const iconRender = icon && <div className={`${prefixCls}__icon`}>{icon}</div>;
-    const titleRender = title && <div className={titleCls}>{title}</div>;
-    const contentRender = children && <div className={`${prefixCls}__content`}>{children}</div>;
-    const arrowRender = hasArrow && <div className={`${prefixCls}__arrow`} />;
-    const helpRender = help && <div className={`${prefixCls}__help`}>{help}</div>;
+  const iconRender = icon && <div className={`${prefixCls}__icon`}>{icon}</div>;
+  const titleRender = title && <div className={titleCls}>{title}</div>;
+  const contentRender = children && <div className={`${prefixCls}__content`}>{children}</div>;
+  const arrowRender = hasArrow && <div className={`${prefixCls}__arrow`} />;
+  const helpRender = help && <div className={`${prefixCls}__help`}>{help}</div>;
 
-    return (
-      <div className={cls} onClick={onClick} onTouchStart={() => {}} {...others}>
-        <div className={`${prefixCls}__inner`}>
-          <div className={`${prefixCls}__header`}>{iconRender}</div>
-          <div className={`${prefixCls}__body`}>
-            {titleRender}
-            {contentRender}
-          </div>
-          <div className={`${prefixCls}__footer`}>{description}</div>
-          {arrowRender}
+  return (
+    <div ref={cellRef} className={cls} onClick={onClick} onTouchStart={() => {}} {...others}>
+      <div className={`${prefixCls}__inner`}>
+        <div className={`${prefixCls}__header`}>{iconRender}</div>
+        <div className={`${prefixCls}__body`}>
+          {titleRender}
+          {contentRender}
         </div>
-        {helpRender}
+        <div className={`${prefixCls}__footer`}>{description}</div>
+        {arrowRender}
       </div>
-    );
-  }
-}
+      {helpRender}
+    </div>
+  );
+});
+
+Cell.displayName = 'Cell';
+
+Cell.defaultProps = {
+  prefixCls: 'za-cell',
+  hasArrow: false,
+  disabled: false,
+};
+
+export default Cell;

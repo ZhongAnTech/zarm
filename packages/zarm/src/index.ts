@@ -2,13 +2,18 @@ export { default as Collapse } from './collapse';
 export { default as ActionSheet } from './action-sheet';
 // export { default as Alert } from './alert';
 export { default as BackToTop } from './back-to-top';
+
+export type { BadgeProps } from './badge';
 export { default as Badge } from './badge';
 
 export type { ButtonProps } from './button';
 export { default as Button } from './button';
 
 export { default as Calendar } from './calendar';
+
+export type { CellProps } from './cell';
 export { default as Cell } from './cell';
+
 export { default as Checkbox } from './checkbox';
 // export { default as Confirm } from './confirm';
 
@@ -68,7 +73,10 @@ export { default as Popup } from './popup';
 
 export { default as Progress } from './progress';
 export { default as Pull } from './pull';
+
+export type { RadioProps, RadioGroupProps } from './radio';
 export { default as Radio } from './radio';
+
 export { default as Scroller } from './scroller';
 export { default as SearchBar } from './search-bar';
 export { default as Slider } from './slider';

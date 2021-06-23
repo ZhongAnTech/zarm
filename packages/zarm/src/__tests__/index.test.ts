@@ -11,7 +11,15 @@ describe('index', () => {
         "ActivityIndicator": [Function],
         "Affix": [Function],
         "BackToTop": [Function],
-        "Badge": [Function],
+        "Badge": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "prefixCls": "za-badge",
+            "shape": "dot",
+            "theme": "danger",
+          },
+          "render": [Function],
+        },
         "Button": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
@@ -30,7 +38,15 @@ describe('index', () => {
         },
         "Calendar": [Function],
         "Carousel": [Function],
-        "Cell": [Function],
+        "Cell": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "disabled": false,
+            "hasArrow": false,
+            "prefixCls": "za-cell",
+          },
+          "render": [Function],
+        },
         "Checkbox": [Function],
         "Collapse": [Function],
         "ConfigProvider": [Function],
