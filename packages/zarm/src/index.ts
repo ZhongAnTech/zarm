@@ -71,7 +71,10 @@ export { default as Popup } from './popup';
 
 export { default as Progress } from './progress';
 export { default as Pull } from './pull';
+
+export type { RadioProps, RadioGroupProps } from './radio';
 export { default as Radio } from './radio';
+
 export { default as Scroller } from './scroller';
 export { default as SearchBar } from './search-bar';
 export { default as Slider } from './slider';
