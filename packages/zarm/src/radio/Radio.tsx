@@ -1,12 +1,6 @@
-import React, {
-  PureComponent,
-  ChangeEvent,
-  InputHTMLAttributes,
-  HTMLAttributes,
-  ButtonHTMLAttributes,
-} from 'react';
+import * as React from 'react';
 import classnames from 'classnames';
-import { BaseRadioProps } from './PropsType';
+import type { BaseRadioProps } from './interface';
 import RadioGroup from './RadioGroup';
 import Cell from '../cell';
 
@@ -21,88 +15,68 @@ const getChecked = (props: RadioProps, defaultChecked: boolean) => {
 };
 
 type RadioSpanProps = Omit<
-  InputHTMLAttributes<HTMLInputElement>,
+  React.InputHTMLAttributes<HTMLInputElement>,
   'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
 >;
 type RadioCellProps = Omit<
-  HTMLAttributes<HTMLDivElement>,
+  React.HTMLAttributes<HTMLDivElement>,
   'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
 >;
 type RadioButtonProps = Omit<
-  ButtonHTMLAttributes<HTMLButtonElement>,
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
   'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
 >;
 
 export type RadioProps = Partial<RadioSpanProps & RadioCellProps & RadioButtonProps> &
   BaseRadioProps & {
     prefixCls?: string;
+    onChange?: (e?: React.ChangeEvent<HTMLInputElement>) => void;
   };
 
-export interface RadioStates {
-  checked: boolean;
+interface CompoundedComponent
+  extends React.ForwardRefExoticComponent<RadioProps & React.RefAttributes<HTMLElement>> {
+  Group: typeof RadioGroup;
 }
 
-export default class Radio extends PureComponent<RadioProps, RadioStates> {
-  static Group: typeof RadioGroup;
-
-  static defaultProps: RadioProps = {
-    prefixCls: 'za-radio',
-    disabled: false,
-    shape: 'radius',
-  };
-
-  state: RadioStates = {
-    checked: getChecked(this.props, false),
-  };
-
-  static getDerivedStateFromProps(nextProps: RadioProps, state) {
-    if ('checked' in nextProps && nextProps.checked !== state.prevChecked) {
-      return {
-        checked: nextProps.checked,
-        prevChecked: nextProps.checked,
-      };
-    }
-
-    return null;
-  }
-
-  onValueChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { disabled, onChange } = this.props;
-    const { checked } = this.state;
-
-    if (disabled) {
-      return;
-    }
-
-    const newChecked = !checked;
-    if (!('checked' in this.props)) {
-      this.setState({ checked: newChecked });
-    }
-
-    if (typeof onChange === 'function') {
-      onChange(e);
-    }
-  };
-
-  render() {
-    const {
-      prefixCls,
+const Radio = React.forwardRef<unknown, RadioProps>(
+  (
+    {
+      prefixCls = 'za-radio',
       className,
       type,
-      shape,
       value,
       checked,
+      shape,
       defaultChecked,
-      disabled,
+      disabled = false,
       id,
       children,
       onChange,
       ...rest
-    } = this.props;
-    const { checked: checkedState } = this.state;
+    }: RadioProps,
+    ref,
+  ) => {
+    const radioRef = (ref as any) || React.createRef<HTMLElement>();
+    const [currentCheck, setCurrentCheck] = React.useState(
+      getChecked({ checked, defaultChecked }, false),
+    );
+
+    const onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (disabled) {
+        return;
+      }
+      const newChecked = !currentCheck;
+      if (typeof checked === 'undefined') {
+        setCurrentCheck(newChecked);
+      }
+
+      if (typeof onChange === 'function') {
+        onChange(e);
+      }
+    };
 
     const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--checked`]: checkedState,
+      [`${prefixCls}--checked`]: currentCheck,
       [`${prefixCls}--disabled`]: disabled,
       [`${prefixCls}--untext`]: !children,
     });
@@ -114,13 +88,17 @@ export default class Radio extends PureComponent<RadioProps, RadioStates> {
         className={`${prefixCls}__input`}
         value={value}
         disabled={disabled}
-        checked={checkedState}
-        onChange={this.onValueChange}
+        checked={currentCheck}
+        onChange={onValueChange}
       />
     );
 
+    React.useEffect(() => {
+      setCurrentCheck(getChecked({ checked, defaultChecked }, false));
+    }, [checked, defaultChecked]);
+
     const radioRender = (
-      <span className={cls} {...(rest as RadioSpanProps)}>
+      <span className={cls} ref={radioRef} {...(rest as RadioSpanProps)}>
         <span className={`${prefixCls}__widget`}>
           <span className={`${prefixCls}__inner`} />
         </span>
@@ -144,7 +122,13 @@ export default class Radio extends PureComponent<RadioProps, RadioStates> {
 
     if (type === 'button') {
       return (
-        <button type="button" disabled={disabled} className={cls} {...(rest as RadioButtonProps)}>
+        <button
+          type="button"
+          disabled={disabled}
+          className={cls}
+          ref={radioRef}
+          {...(rest as RadioButtonProps)}
+        >
           {children}
           {inputRender}
         </button>
@@ -152,5 +136,14 @@ export default class Radio extends PureComponent<RadioProps, RadioStates> {
     }
 
     return radioRender;
-  }
-}
+  },
+) as CompoundedComponent;
+
+Radio.displayName = 'Radio';
+Radio.defaultProps = {
+  prefixCls: 'za-radio',
+  disabled: false,
+  shape: 'radius',
+};
+
+export default Radio;
