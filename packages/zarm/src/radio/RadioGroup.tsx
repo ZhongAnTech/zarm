@@ -35,70 +35,75 @@ export interface RadioGroupProps
   prefixCls?: string;
 }
 
-const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
-  const {
-    prefixCls,
-    type,
-    disabled,
-    className,
-    value,
-    defaultValue,
-    size,
-    shape,
-    block,
-    compact,
-    ghost,
-    children,
-    onChange,
-    ...rest
-  } = props;
-
-  const radioGroupRef = (ref as any) || React.createRef<HTMLElement>();
-  const [currentValue, setCurrentValue] = React.useState(getValue(props, defaultValue));
-
-  const onChildChange = (newValue: RadioValue) => {
-    setCurrentValue(newValue);
-    if (typeof onChange === 'function') {
-      onChange(newValue);
-    }
-  };
-
-  const renderRadio = (element: React.ReactElement, index: number) => {
-    return React.cloneElement(element, {
-      key: index,
+const RadioGroup = React.forwardRef<unknown, RadioGroupProps>(
+  (
+    {
+      prefixCls = 'za-radio-group',
       type,
-      shape,
-      disabled: disabled || !!element.props.disabled,
-      checked: currentValue === element.props.value,
-      onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-        typeof element.props.onChange === 'function' && element.props.onChange(e);
-        onChildChange(element.props.value);
-      },
+      disabled = false,
+      className,
+      value,
+      defaultValue,
+      size = 'xs',
+      shape = 'radius',
+      block = false,
+      compact = false,
+      ghost = false,
+      children,
+      onChange,
+      ...rest
+    }: RadioGroupProps,
+    ref,
+  ) => {
+    const radioGroupRef = (ref as any) || React.createRef<HTMLElement>();
+    const [currentValue, setCurrentValue] = React.useState(
+      getValue({ value, defaultValue }, defaultValue),
+    );
+
+    const onChildChange = (newValue: RadioValue) => {
+      setCurrentValue(newValue);
+      if (typeof onChange === 'function') {
+        onChange(newValue);
+      }
+    };
+
+    const renderRadio = (element: React.ReactElement, index: number) => {
+      return React.cloneElement(element, {
+        key: index,
+        type,
+        shape,
+        disabled: disabled || !!element.props.disabled,
+        checked: currentValue === element.props.value,
+        onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+          typeof element.props.onChange === 'function' && element.props.onChange(e);
+          onChildChange(element.props.value);
+        },
+      });
+    };
+
+    const radioRender = React.Children.map(children, renderRadio);
+
+    const cls = classnames(prefixCls, className, {
+      [`${prefixCls}--${type}`]: !!type,
+      [`${prefixCls}--${size}`]: !!size,
+      [`${prefixCls}--${shape}`]: !!shape,
+      [`${prefixCls}--block`]: block,
+      [`${prefixCls}--disabled`]: disabled,
+      [`${prefixCls}--compact`]: compact,
+      [`${prefixCls}--ghost`]: ghost,
     });
-  };
 
-  const radioRender = React.Children.map(children, renderRadio);
+    React.useEffect(() => {
+      setCurrentValue(getValue({ value, defaultValue }, defaultValue));
+    }, [value, defaultValue]);
 
-  const cls = classnames(prefixCls, className, {
-    [`${prefixCls}--${type}`]: !!type,
-    [`${prefixCls}--${size}`]: !!size,
-    [`${prefixCls}--${shape}`]: !!shape,
-    [`${prefixCls}--block`]: block,
-    [`${prefixCls}--disabled`]: disabled,
-    [`${prefixCls}--compact`]: compact,
-    [`${prefixCls}--ghost`]: ghost,
-  });
-
-  React.useEffect(() => {
-    setCurrentValue(getValue({ value, defaultValue }, defaultValue));
-  }, [value, defaultValue]);
-
-  return (
-    <div className={cls} {...rest} ref={radioGroupRef}>
-      <div className={`${prefixCls}__inner`}>{radioRender}</div>
-    </div>
-  );
-});
+    return (
+      <div className={cls} {...rest} ref={radioGroupRef}>
+        <div className={`${prefixCls}__inner`}>{radioRender}</div>
+      </div>
+    );
+  },
+);
 
 RadioGroup.displayName = 'RadioGroup';
 RadioGroup.defaultProps = {
