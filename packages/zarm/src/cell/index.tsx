@@ -6,7 +6,6 @@ type HTMLDivProps = Omit<HTMLAttributes<HTMLDivElement>, 'title'>;
 
 export interface CellProps extends HTMLDivProps, BaseCellProps {
   prefixCls?: string;
-  className?: string;
 }
 
 const Cell = React.forwardRef<unknown, CellProps>((props, ref)=>{
