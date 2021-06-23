@@ -6,10 +6,11 @@ export interface BadgeProps extends BaseBadgeProps, React.HTMLAttributes<HTMLEle
   prefixCls?: string;
 }
 
-function Badge(props: BadgeProps) {
+const Badge = React.forwardRef((props: BadgeProps, ref: React.ForwardedRef<HTMLElement>) => {
   const { prefixCls, className, theme, shape, text, children, ...restProps } = props;
   return (
     <span
+      ref={ref}
       className={classnames(
         prefixCls,
         {
@@ -26,7 +27,7 @@ function Badge(props: BadgeProps) {
       </sup>
     </span>
   );
-}
+});
 
 Badge.displayName = 'Badge';
 
