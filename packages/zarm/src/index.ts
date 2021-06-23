@@ -53,6 +53,8 @@ export { default as Mask } from './mask';
 export { default as Message } from './message';
 export { default as Modal } from './modal';
 export { default as NoticeBar } from './notice-bar';
+
+export type { PanelProps } from './panel';
 export { default as Panel } from './panel';
 
 export type { PickerViewProps } from './picker-view';
