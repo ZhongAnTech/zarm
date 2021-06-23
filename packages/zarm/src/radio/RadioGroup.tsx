@@ -29,9 +29,10 @@ const getValue = (
   return defaultValue;
 };
 
-export interface RadioGroupProps extends BaseRadioGroupProps {
+export interface RadioGroupProps
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'value' | 'onChange'>,
+    BaseRadioGroupProps {
   prefixCls?: string;
-  className?: string;
 }
 
 const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
@@ -55,7 +56,7 @@ const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
   const radioGroupRef = (ref as any) || React.createRef<HTMLElement>();
   const [currentValue, setCurrentValue] = React.useState(getValue(props, defaultValue));
 
-  const onChildChange = (newValue: string | number) => {
+  const onChildChange = (newValue: RadioValue) => {
     setCurrentValue(newValue);
     if (typeof onChange === 'function') {
       onChange(newValue);
