@@ -191,7 +191,18 @@ describe('index', () => {
           "$$typeof": Symbol(react.forward_ref),
           "render": [Function],
         },
-        "Stepper": [Function],
+        "Stepper": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "disableInput": false,
+            "disabled": false,
+            "prefixCls": "za-stepper",
+            "shape": "radius",
+            "step": 1,
+            "type": "number",
+          },
+          "render": [Function],
+        },
         "SwipeAction": [Function],
         "Switch": Object {
           "$$typeof": Symbol(react.forward_ref),

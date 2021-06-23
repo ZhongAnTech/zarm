@@ -1,6 +1,6 @@
 import React, { PureComponent, CSSProperties } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ViewStyle } from 'react-native';
-import PropsType from './PropsType';
+import PropsType from './interface';
 import stepperStyle from './style/index.native';
 
 const getValue = (props, defaultValue) => {
