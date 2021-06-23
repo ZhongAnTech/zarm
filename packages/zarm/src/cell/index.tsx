@@ -1,8 +1,8 @@
 import React, { HTMLAttributes } from 'react';
 import classnames from 'classnames';
-import BaseCellProps from './interface';
+import type { BaseCellProps } from './interface';
 
-export type HTMLDivProps = Omit<HTMLAttributes<HTMLDivElement>, 'title'>;
+type HTMLDivProps = Omit<HTMLAttributes<HTMLDivElement>, 'title'>;
 
 export interface CellProps extends HTMLDivProps, BaseCellProps {
   prefixCls?: string;
@@ -26,7 +26,7 @@ const {
 } = props;
 
 
-const wrapperRef = (ref as any) || React.createRef<HTMLElement>();
+const cellRef = (ref as any) || React.createRef<HTMLElement>();
 
 const cls = classnames(prefixCls, className, {
   [`${prefixCls}--disabled`]: disabled,
@@ -45,7 +45,7 @@ const arrowRender = hasArrow && <div className={`${prefixCls}__arrow`} />;
 const helpRender = help && <div className={`${prefixCls}__help`}>{help}</div>;
 
 return (
-  <div ref={wrapperRef} className={cls} onClick={onClick} onTouchStart={() => {}} {...others}>
+  <div ref={cellRef} className={cls} onClick={onClick} onTouchStart={() => {}} {...others}>
     <div className={`${prefixCls}__inner`}>
       <div className={`${prefixCls}__header`}>{iconRender}</div>
       <div className={`${prefixCls}__body`}>
@@ -58,7 +58,7 @@ return (
     {helpRender}
   </div>
 );
-})
+});
 
 Cell.displayName = 'Cell';
 
@@ -66,7 +66,7 @@ Cell.defaultProps = {
   prefixCls: 'za-cell',
   hasArrow: false,
   disabled: false,
-}
+};
 
 
-export default Cell
+export default Cell;

@@ -6,7 +6,7 @@ import {
   ViewStyle,
   GestureResponderEvent,
 } from 'react-native';
-import BaseCellProps from './interface';
+import type { BaseCellProps } from './interface';
 import cellStyle from './style/index.native';
 import { RenderWithText } from '../utils/renderWithText.native';
 
