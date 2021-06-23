@@ -9,7 +9,7 @@ export { default as Button } from './button';
 
 export { default as Calendar } from './calendar';
 
-export type { CellProps } from './cell'
+export type { CellProps } from './cell';
 export { default as Cell } from './cell';
 
 export { default as Checkbox } from './checkbox';
