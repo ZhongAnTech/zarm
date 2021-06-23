@@ -30,7 +30,15 @@ describe('index', () => {
         },
         "Calendar": [Function],
         "Carousel": [Function],
-        "Cell": [Function],
+        "Cell": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "disabled": false,
+            "hasArrow": false,
+            "prefixCls": "za-cell",
+          },
+          "render": [Function],
+        },
         "Checkbox": [Function],
         "Collapse": [Function],
         "ConfigProvider": [Function],
