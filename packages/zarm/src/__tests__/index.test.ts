@@ -11,7 +11,15 @@ describe('index', () => {
         "ActivityIndicator": [Function],
         "Affix": [Function],
         "BackToTop": [Function],
-        "Badge": [Function],
+        "Badge": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "prefixCls": "za-badge",
+            "shape": "dot",
+            "theme": "danger",
+          },
+          "render": [Function],
+        },
         "Button": Object {
           "$$typeof": Symbol(react.forward_ref),
           "render": [Function],
