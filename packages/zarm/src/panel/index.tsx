@@ -9,11 +9,11 @@ export interface PanelProps extends HTMLDivProps, BasePanelProps {
 }
 
 const Panel = React.forwardRef<unknown, PanelProps>((props, ref) => {
-  const { prefixCls, className, title, more, children } = props;
+  const { prefixCls, className, title, more, children, ...restProps } = props;
   const cls = classnames(`${prefixCls}`, className);
   const panelRef = (ref as any) || React.createRef<HTMLElement>();
   return (
-    <div className={cls} ref={panelRef}>
+    <div {...restProps} className={cls} ref={panelRef}>
       <div className={`${prefixCls}__header`}>
         {title && <div className={`${prefixCls}__header__title`}>{title}</div>}
         {more && <div className={`${prefixCls}__header__more`}>{more}</div>}
