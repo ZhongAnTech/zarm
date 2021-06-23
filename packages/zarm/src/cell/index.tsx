@@ -1,10 +1,10 @@
 import React, { HTMLAttributes } from 'react';
 import classnames from 'classnames';
-import PropsType from './PropsType';
+import BaseCellProps from './interface';
 
 export type HTMLDivProps = Omit<HTMLAttributes<HTMLDivElement>, 'title'>;
 
-export interface CellProps extends HTMLDivProps, PropsType {
+export interface CellProps extends HTMLDivProps, BaseCellProps {
   prefixCls?: string;
   className?: string;
 }

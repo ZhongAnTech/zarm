@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-export default interface PropsType {
+  export default interface BaseCellProps {
   disabled?: boolean;
   hasArrow?: boolean;
   icon?: ReactNode;
