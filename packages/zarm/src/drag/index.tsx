@@ -1,28 +1,13 @@
 import { PureComponent, cloneElement } from 'react';
 import type { ReactElement } from 'react';
+import type { DragEvent, DragState, DragProps } from './interface';
 import Events from '../utils/events';
-
-export type DragEvent = MouseEvent | TouchEvent;
-
-export interface DragState {
-  startTime?: Date;
-  startX?: number;
-  startY?: number;
-  offsetX?: number;
-  offsetY?: number;
-  // currentX?: number;
-  // currentY?: number;
-}
-
-export interface DragProps {
-  onDragStart?: (event?: DragEvent, dragState?: DragState) => void;
-  onDragMove?: (event?: DragEvent, dragState?: DragState) => boolean;
-  onDragEnd?: (event?: DragEvent, dragState?: DragState) => void;
-}
 
 function isMouseEvent(e: DragEvent): e is MouseEvent {
   return e && !('touches' in e);
 }
+
+export type { DragEvent, DragState, DragProps };
 
 export default class Drag extends PureComponent<DragProps, {}> {
   private currentX?: number;
@@ -79,8 +64,6 @@ export default class Drag extends PureComponent<DragProps, {}> {
       ...this.dragState,
       offsetX,
       offsetY,
-      // currentX: this.currentX,
-      // currentY: this.currentY,
     };
 
     const { onDragMove } = this.props;

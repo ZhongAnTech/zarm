@@ -11,7 +11,15 @@ describe('index', () => {
         "ActivityIndicator": [Function],
         "Affix": [Function],
         "BackToTop": [Function],
-        "Badge": [Function],
+        "Badge": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "prefixCls": "za-badge",
+            "shape": "dot",
+            "theme": "danger",
+          },
+          "render": [Function],
+        },
         "Button": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
@@ -30,7 +38,15 @@ describe('index', () => {
         },
         "Calendar": [Function],
         "Carousel": [Function],
-        "Cell": [Function],
+        "Cell": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "disabled": false,
+            "hasArrow": false,
+            "prefixCls": "za-cell",
+          },
+          "render": [Function],
+        },
         "Checkbox": [Function],
         "Collapse": [Function],
         "ConfigProvider": [Function],
@@ -133,7 +149,28 @@ describe('index', () => {
           "$$typeof": Symbol(react.forward_ref),
           "render": [Function],
         },
-        "Radio": [Function],
+        "Radio": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "Group": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "defaultProps": Object {
+              "block": false,
+              "compact": false,
+              "disabled": false,
+              "ghost": false,
+              "prefixCls": "za-radio-group",
+              "shape": "radius",
+              "size": "xs",
+            },
+            "render": [Function],
+          },
+          "defaultProps": Object {
+            "disabled": false,
+            "prefixCls": "za-radio",
+            "shape": "radius",
+          },
+          "render": [Function],
+        },
         "Scroller": [Function],
         "SearchBar": Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -181,6 +218,7 @@ describe('index', () => {
         "Tooltip": [Function],
         "Trigger": [Function],
         "Wheel": [Function],
+        "useDrag": [Function],
       }
     `);
   });

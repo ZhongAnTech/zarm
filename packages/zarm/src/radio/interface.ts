@@ -1,5 +1,5 @@
-import { ChangeEvent } from 'react';
-import { ButtonSize } from '../button/interface';
+import * as React from 'react';
+import type { ButtonSize } from '../button/interface';
 
 export type RadioType = 'button' | 'cell';
 export type RadioShape = 'rect' | 'radius' | 'round';
@@ -14,7 +14,6 @@ export interface BaseRadioProps {
   defaultChecked?: boolean;
   value?: RadioValue;
   id?: string;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface BaseRadioGroupProps {
@@ -28,4 +27,5 @@ export interface BaseRadioGroupProps {
   value?: RadioValue;
   defaultValue?: RadioValue;
   onChange?: (value?: RadioValue) => void;
+  children?: React.ReactNode;
 }
