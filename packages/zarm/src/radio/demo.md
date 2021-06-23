@@ -8,7 +8,7 @@ import { Radio, Cell } from 'zarm';
 ReactDOM.render(
   <>
     <Cell>
-      <Radio>普通</Radio>
+      <Radio onChange={(e) => console.log(e.target.checked)}>普通</Radio>
     </Cell>
     <Cell>
       <Radio defaultChecked>默认选中</Radio>

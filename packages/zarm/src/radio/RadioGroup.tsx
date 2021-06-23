@@ -1,19 +1,12 @@
-import React, {
-  HTMLAttributes,
-  PureComponent,
-  cloneElement,
-  ReactNode,
-  isValidElement,
-  ChangeEvent,
-} from 'react';
+import * as React from 'react';
 import classnames from 'classnames';
-import { BaseRadioGroupProps, RadioValue } from './PropsType';
-import { Nullable } from '../utils/utilityTypes';
+import type { BaseRadioGroupProps, RadioValue } from './interface';
+import type { Nullable } from '../utils/utilityTypes';
 
-const getChildChecked = (children: ReactNode): Nullable<RadioValue> => {
+const getChildChecked = (children: React.ReactNode): Nullable<RadioValue> => {
   let checkedValue = null;
-  React.Children.forEach(children, (element: ReactNode) => {
-    if (isValidElement(element) && element.props && element.props.checked) {
+  React.Children.forEach(children, (element: React.ReactNode) => {
+    if (React.isValidElement(element) && element.props && element.props.checked) {
       checkedValue = element.props.value;
     }
   });
@@ -21,7 +14,7 @@ const getChildChecked = (children: ReactNode): Nullable<RadioValue> => {
 };
 
 const getValue = (
-  props: RadioGroup['props'],
+  props: RadioGroupProps,
   defaultValue: Nullable<RadioValue> = null,
 ): Nullable<RadioValue> => {
   if (typeof props.value !== 'undefined') {
@@ -37,97 +30,88 @@ const getValue = (
 };
 
 export interface RadioGroupProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'value' | 'onChange'>,
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'value' | 'onChange'>,
     BaseRadioGroupProps {
   prefixCls?: string;
 }
 
-export interface RadioGroupStates {
-  value?: Nullable<RadioValue>;
-}
+const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
+  const {
+    prefixCls,
+    type,
+    disabled,
+    className,
+    value,
+    defaultValue,
+    size,
+    shape,
+    block,
+    compact,
+    ghost,
+    children,
+    onChange,
+    ...rest
+  } = props;
 
-export default class RadioGroup extends PureComponent<RadioGroupProps, RadioGroupStates> {
-  static displayName = 'RadioGroup';
+  const radioGroupRef = (ref as any) || React.createRef<HTMLElement>();
+  const [currentValue, setCurrentValue] = React.useState(
+    getValue({ value, defaultValue }, defaultValue),
+  );
 
-  static defaultProps = {
-    prefixCls: 'za-radio-group',
-    shape: 'radius',
-    block: false,
-    disabled: false,
-    compact: false,
-    ghost: false,
-    size: 'xs',
-  };
-
-  state: RadioGroupStates = {
-    value: getValue(this.props),
-  };
-
-  static getDerivedStateFromProps(nextProps: RadioGroup['props']) {
-    if ('value' in nextProps) {
-      return {
-        value: nextProps.value,
-      };
-    }
-
-    return null;
-  }
-
-  onChildChange = (value: string | number) => {
-    this.setState({ value });
-    const { onChange } = this.props;
+  const onChildChange = (newValue: RadioValue) => {
+    setCurrentValue(newValue);
     if (typeof onChange === 'function') {
-      onChange(value);
+      onChange(newValue);
     }
   };
 
-  render() {
-    const {
-      prefixCls,
-      className,
-      size,
-      shape,
+  const renderRadio = (element: React.ReactElement, index: number) => {
+    return React.cloneElement(element, {
+      key: index,
       type,
-      block,
-      disabled,
-      compact,
-      ghost,
-      children,
-      onChange,
-      defaultValue,
-      value,
-      ...rest
-    } = this.props;
-    const { value: valueState } = this.state;
-
-    const items = React.Children.map(children, (element: React.ReactElement, index) => {
-      return cloneElement(element, {
-        key: index,
-        type,
-        shape,
-        disabled: disabled || !!element.props.disabled,
-        checked: valueState === element.props.value,
-        onChange: (e: ChangeEvent<HTMLInputElement>) => {
-          typeof element.props.onChange === 'function' && element.props.onChange(e);
-          this.onChildChange(element.props.value);
-        },
-      });
+      shape,
+      disabled: disabled || !!element.props.disabled,
+      checked: currentValue === element.props.value,
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+        typeof element.props.onChange === 'function' && element.props.onChange(e);
+        onChildChange(element.props.value);
+      },
     });
+  };
 
-    const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--${type}`]: !!type,
-      [`${prefixCls}--${size}`]: !!size,
-      [`${prefixCls}--${shape}`]: !!shape,
-      [`${prefixCls}--block`]: block,
-      [`${prefixCls}--disabled`]: disabled,
-      [`${prefixCls}--compact`]: compact,
-      [`${prefixCls}--ghost`]: ghost,
-    });
+  const radioRender = React.Children.map(children, renderRadio);
 
-    return (
-      <div className={cls} {...rest}>
-        <div className={`${prefixCls}__inner`}>{items}</div>
-      </div>
-    );
-  }
-}
+  const cls = classnames(prefixCls, className, {
+    [`${prefixCls}--${type}`]: !!type,
+    [`${prefixCls}--${size}`]: !!size,
+    [`${prefixCls}--${shape}`]: !!shape,
+    [`${prefixCls}--block`]: block,
+    [`${prefixCls}--disabled`]: disabled,
+    [`${prefixCls}--compact`]: compact,
+    [`${prefixCls}--ghost`]: ghost,
+  });
+
+  React.useEffect(() => {
+    setCurrentValue(getValue({ value, defaultValue }));
+  }, [value, defaultValue]);
+
+  return (
+    <div className={cls} {...rest} ref={radioGroupRef}>
+      <div className={`${prefixCls}__inner`}>{radioRender}</div>
+    </div>
+  );
+});
+
+RadioGroup.displayName = 'RadioGroup';
+
+RadioGroup.defaultProps = {
+  prefixCls: 'za-radio-group',
+  shape: 'radius',
+  block: false,
+  disabled: false,
+  compact: false,
+  ghost: false,
+  size: 'xs',
+};
+
+export default RadioGroup;
