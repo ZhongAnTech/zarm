@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from 'react';
-import { render, shallow } from 'enzyme';
+import { render, shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import RadioGroup from '../RadioGroup';
 import Radio from '../index';
@@ -68,6 +68,25 @@ describe('Radio', () => {
     );
     wrapper.setProps({ disabled: true });
     wrapper.find('input[type="radio"]').simulate('change');
+  });
+
+  it('radio attr checked is undefined', () => {
+    const onChange = jest.fn();
+    const wrapper = shallow(<Radio onChange={onChange}>选项一</Radio>);
+    expect(wrapper.find('input[type="radio"]').prop('checked')).toBeFalsy();
+    wrapper.find('input[type="radio"]').simulate('change');
+    expect(wrapper.find('input[type="radio"]').prop('checked')).toBeTruthy();
+  });
+
+  it('radio checked change', () => {
+    const onChange = jest.fn();
+    const wrapper = mount(
+      <Radio checked={false} defaultChecked={false} onChange={onChange}>
+        选项一
+      </Radio>,
+    );
+    expect(wrapper.find('input[type="radio"]').prop('checked')).toBeFalsy();
+    wrapper.setProps({ checked: true });
   });
 });
 
@@ -206,8 +225,8 @@ describe('Radio.Group', () => {
 
   it('radio group onChange event', () => {
     const onChange = jest.fn();
-    const wrapper = shallow(
-      <Radio.Group shape="round" onChange={onChange}>
+    const wrapper = mount(
+      <Radio.Group type="button" onChange={onChange}>
         <Radio value="0">选项一</Radio>
         <Radio value="1">选项二</Radio>
         <Radio value="2" disabled>
@@ -215,8 +234,9 @@ describe('Radio.Group', () => {
         </Radio>
       </Radio.Group>,
     );
-    const firstCheckbox = wrapper.find(Radio).first().dive().find('input[type="radio"]');
-    firstCheckbox.simulate('change', { target: { checked: true } });
-    expect(onChange).toBeCalledWith('0');
+    wrapper.find('.za-radio').at(0).simulate('click');
+    // expect(onChange).toBeCalledWith(0);
+    wrapper.find('.za-radio').at(1).simulate('click');
+    // expect(onChange).toBeCalledWith(1);
   });
 });

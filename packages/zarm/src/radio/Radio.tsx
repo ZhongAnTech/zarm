@@ -57,7 +57,7 @@ const Radio = React.forwardRef<unknown, RadioProps>(
     ref,
   ) => {
     const radioRef = (ref as any) || React.createRef<HTMLElement>();
-    const [currentCheck, setCurrentCheck] = React.useState(
+    const [currentCheck, setCurrentCheck] = React.useState<boolean>(
       getChecked({ checked, defaultChecked }, false),
     );
 
