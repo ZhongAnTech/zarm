@@ -1,9 +1,9 @@
 import React, { PureComponent, CSSProperties } from 'react';
 import { StyleSheet, View, Text, ViewStyle } from 'react-native';
-import PropsType from './PropsType';
+import type { BaseBadgeProps } from './interface';
 import badgeStyle from './style/index.native';
 
-export interface BadgeProps extends PropsType {
+export interface BadgeProps extends BaseBadgeProps {
   style?: CSSProperties;
   styles?: typeof badgeStyle;
 }

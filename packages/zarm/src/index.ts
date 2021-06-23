@@ -2,6 +2,8 @@ export { default as Collapse } from './collapse';
 export { default as ActionSheet } from './action-sheet';
 // export { default as Alert } from './alert';
 export { default as BackToTop } from './back-to-top';
+
+export type { BadgeProps } from './badge';
 export { default as Badge } from './badge';
 
 export type { ButtonProps } from './button';
