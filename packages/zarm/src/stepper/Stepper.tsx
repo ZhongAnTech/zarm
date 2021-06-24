@@ -59,7 +59,7 @@ const getValue = (props: StepperProps, defaultValue: number) => {
 
 export interface StepperProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'value' | 'onChange'>,
-  BaseStepperProps {
+    BaseStepperProps {
   prefixCls?: string;
 }
 
@@ -86,7 +86,9 @@ const Stepper = React.forwardRef<unknown, StepperProps>((props, ref) => {
   const [currentValue, setCurrentValue] = React.useState(
     getValue({ value, defaultValue, min, max }, 0),
   );
-  const [lastValue, setLastValue] = React.useState(getValue({ value, defaultValue, min, max }, 0));
+  const [lastValue, setLastValue] = React.useState(
+    getValue({ value, defaultValue, min, max, step }, 0),
+  );
 
   const onInputChangeCallback = (newValue: string | number) => {
     setCurrentValue(newValue);
@@ -145,10 +147,10 @@ const Stepper = React.forwardRef<unknown, StepperProps>((props, ref) => {
   };
 
   React.useEffect(() => {
-    const newValue = getValue({ value, defaultValue, min, max }, 0);
+    const newValue = getValue({ value, defaultValue, min, max, step }, 0);
     setCurrentValue(newValue);
     setLastValue(newValue);
-  }, [value, defaultValue, min, max]);
+  }, [value, defaultValue, min, max, step]);
 
   const cls = classnames(prefixCls, className, {
     [`${prefixCls}--${shape}`]: !!shape,
