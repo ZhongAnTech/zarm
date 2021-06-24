@@ -14,7 +14,9 @@ export { default as Calendar } from './calendar';
 export type { CellProps } from './cell';
 export { default as Cell } from './cell';
 
+export type { CheckboxProps, CheckboxGroupProps } from './checkbox';
 export { default as Checkbox } from './checkbox';
+
 // export { default as Confirm } from './confirm';
 
 export type { DatePickerViewProps } from './date-picker-view';
