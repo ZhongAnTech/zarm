@@ -138,7 +138,7 @@ exports[`Radio.Group Radio checked 1`] = `
       />
     </span>
     <span
-      class="za-radio"
+      class="za-radio za-radio--checked"
     >
       <span
         class="za-radio__widget"
@@ -153,6 +153,7 @@ exports[`Radio.Group Radio checked 1`] = `
         选项二
       </span>
       <input
+        checked=""
         class="za-radio__input"
         type="radio"
         value="1"

@@ -55,7 +55,7 @@ const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
 
   const radioGroupRef = (ref as any) || React.createRef<HTMLElement>();
   const [currentValue, setCurrentValue] = React.useState(
-    getValue({ value, defaultValue }, defaultValue),
+    getValue({ value, defaultValue, children }, defaultValue),
   );
 
   const onChildChange = (newValue: RadioValue) => {
@@ -92,8 +92,8 @@ const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
   });
 
   React.useEffect(() => {
-    setCurrentValue(getValue({ value, defaultValue }));
-  }, [value, defaultValue]);
+    setCurrentValue(getValue({ value, defaultValue, children }));
+  }, [value, defaultValue, children]);
 
   return (
     <div className={cls} {...rest} ref={radioGroupRef}>
