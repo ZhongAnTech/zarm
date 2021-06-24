@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import { Minus as MinusIcon, Plus as PlusIcon } from '@zarm-design/icons';
-import type PropsType from './interface';
+import type { BaseStepperProps } from './interface';
 import Button from '../button';
 import CustomInput from '../custom-input';
 import type { CustomInputProps } from '../custom-input';
@@ -59,20 +59,20 @@ const getValue = (props: StepperProps, defaultValue: number) => {
 
 export interface StepperProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'value' | 'onChange'>,
-    PropsType {
+  BaseStepperProps {
   prefixCls?: string;
 }
 
 const Stepper = React.forwardRef<unknown, StepperProps>((props, ref) => {
   const {
-    prefixCls = 'za-stepper',
+    prefixCls,
     className,
-    shape = 'radius',
-    disabled = false,
+    shape,
+    disabled,
     size,
-    type = 'number',
-    disableInput = false,
-    step = 1,
+    type,
+    disableInput,
+    step,
     max,
     min,
     value,
