@@ -1,6 +1,6 @@
 import React, { PureComponent, CSSProperties } from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
-import { BasePanelProps } from './PropsType';
+import type { BasePanelProps } from './interface';
 import panelStyle from './style/index.native';
 import { RenderWithText } from '../utils/renderWithText.native';
 
