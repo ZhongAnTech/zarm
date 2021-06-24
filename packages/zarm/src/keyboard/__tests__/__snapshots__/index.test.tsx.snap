@@ -1,0 +1,356 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Keyboard snapshot renders correctly 1`] = `
+<div
+  class="za-keyboard"
+>
+  <div
+    class="za-keyboard__keys"
+  >
+    <div
+      class="za-keyboard__item"
+    >
+      1
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      2
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      3
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      4
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      5
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      6
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      7
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      8
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      9
+    </div>
+    <div
+      class="za-keyboard__item za-keyboard__item--disabled"
+    />
+    <div
+      class="za-keyboard__item"
+    >
+      0
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      <i
+        class="za-icon za-icon--default za-icon--lg"
+        theme="default"
+      >
+        <svg
+          aria-hidden="true"
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          viewBox="0 0 1000 1000"
+          width="1em"
+        >
+          <path
+            d="M0 138h1000v600.537H0V138zm61.538 61.594v477.35h876.924v-477.35H61.538zm92.308 76.991h76.923v76.992h-76.923v-76.992zm123.077 0h76.923v76.992h-76.923v-76.992zm123.077 0h76.923v76.992H400v-76.992zm123.077 0H600v76.992h-76.923v-76.992zm123.077 0h76.923v76.992h-76.923v-76.992zm123.077 0h76.923v76.992H769.23v-76.992zM215.385 399.772h76.923v76.992h-76.923v-76.992zm123.077 0h76.923v76.992h-76.923v-76.992zm123.076 0h76.924v76.992h-76.924v-76.992zm123.077 0h76.923v76.992h-76.923v-76.992zm123.077 0h76.923v76.992h-76.923v-76.992zM153.846 522.96h76.923v76.992h-76.923V522.96zm615.385 0h76.923v76.992H769.23V522.96zm-492.308 0h446.154v76.992H276.923V522.96zm138.462 246.374H600l-92.308 92.39-92.307-92.39z"
+            fill-rule="nonzero"
+          />
+        </svg>
+      </i>
+    </div>
+  </div>
+  <div
+    class="za-keyboard__handle"
+  >
+    <div
+      class="za-keyboard__item"
+    >
+      <i
+        class="za-icon za-icon--default za-icon--lg"
+        theme="default"
+      >
+        <svg
+          aria-hidden="true"
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          viewBox="0 0 1000 1000"
+          width="1em"
+        >
+          <path
+            d="M606.557 535.541l129.246 129.246 35.956-35.956-129.246-129.246L771.76 370.34l-35.956-35.956-129.246 129.246-129.246-129.246-35.956 35.956L570.6 499.585 441.355 628.831l35.956 35.956 129.246-129.246zm217.006-341.967c61.114 0 110.863 49.027 110.863 109.29v393.443c0 60.262-49.727 109.29-110.863 109.29H409.836a112.175 112.175 0 01-79.979-33.618L72.852 515.673l-.416-.438-.415-.415a21.094 21.094 0 01-6.426-15.257c0-4.044 1.115-9.989 6.426-15.257l.415-.415.416-.437L329.857 227.17a112.131 112.131 0 0179.979-33.64h413.727v.044zm0-65.574H427.519a177.18 177.18 0 00-126.973 53.465L25.857 437.77a86.842 86.842 0 000 123.65l274.689 256.306a177.18 177.18 0 00126.973 53.465h396.044c97.442 0 176.437-78.295 176.437-174.864V302.885C1000 206.295 921.005 128 823.563 128z"
+            fill-rule="nonzero"
+          />
+        </svg>
+      </i>
+    </div>
+    <div
+      class="za-keyboard__item za-keyboard__item--ok"
+    >
+      确定
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Keyboard snapshot type is idcard 1`] = `
+<div
+  class="za-keyboard"
+>
+  <div
+    class="za-keyboard__keys"
+  >
+    <div
+      class="za-keyboard__item"
+    >
+      1
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      2
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      3
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      4
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      5
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      6
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      7
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      8
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      9
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      X
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      0
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      <i
+        class="za-icon za-icon--default za-icon--lg"
+        theme="default"
+      >
+        <svg
+          aria-hidden="true"
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          viewBox="0 0 1000 1000"
+          width="1em"
+        >
+          <path
+            d="M0 138h1000v600.537H0V138zm61.538 61.594v477.35h876.924v-477.35H61.538zm92.308 76.991h76.923v76.992h-76.923v-76.992zm123.077 0h76.923v76.992h-76.923v-76.992zm123.077 0h76.923v76.992H400v-76.992zm123.077 0H600v76.992h-76.923v-76.992zm123.077 0h76.923v76.992h-76.923v-76.992zm123.077 0h76.923v76.992H769.23v-76.992zM215.385 399.772h76.923v76.992h-76.923v-76.992zm123.077 0h76.923v76.992h-76.923v-76.992zm123.076 0h76.924v76.992h-76.924v-76.992zm123.077 0h76.923v76.992h-76.923v-76.992zm123.077 0h76.923v76.992h-76.923v-76.992zM153.846 522.96h76.923v76.992h-76.923V522.96zm615.385 0h76.923v76.992H769.23V522.96zm-492.308 0h446.154v76.992H276.923V522.96zm138.462 246.374H600l-92.308 92.39-92.307-92.39z"
+            fill-rule="nonzero"
+          />
+        </svg>
+      </i>
+    </div>
+  </div>
+  <div
+    class="za-keyboard__handle"
+  >
+    <div
+      class="za-keyboard__item"
+    >
+      <i
+        class="za-icon za-icon--default za-icon--lg"
+        theme="default"
+      >
+        <svg
+          aria-hidden="true"
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          viewBox="0 0 1000 1000"
+          width="1em"
+        >
+          <path
+            d="M606.557 535.541l129.246 129.246 35.956-35.956-129.246-129.246L771.76 370.34l-35.956-35.956-129.246 129.246-129.246-129.246-35.956 35.956L570.6 499.585 441.355 628.831l35.956 35.956 129.246-129.246zm217.006-341.967c61.114 0 110.863 49.027 110.863 109.29v393.443c0 60.262-49.727 109.29-110.863 109.29H409.836a112.175 112.175 0 01-79.979-33.618L72.852 515.673l-.416-.438-.415-.415a21.094 21.094 0 01-6.426-15.257c0-4.044 1.115-9.989 6.426-15.257l.415-.415.416-.437L329.857 227.17a112.131 112.131 0 0179.979-33.64h413.727v.044zm0-65.574H427.519a177.18 177.18 0 00-126.973 53.465L25.857 437.77a86.842 86.842 0 000 123.65l274.689 256.306a177.18 177.18 0 00126.973 53.465h396.044c97.442 0 176.437-78.295 176.437-174.864V302.885C1000 206.295 921.005 128 823.563 128z"
+            fill-rule="nonzero"
+          />
+        </svg>
+      </i>
+    </div>
+    <div
+      class="za-keyboard__item za-keyboard__item--ok"
+    >
+      确定
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Keyboard snapshot type is price 1`] = `
+<div
+  class="za-keyboard"
+>
+  <div
+    class="za-keyboard__keys"
+  >
+    <div
+      class="za-keyboard__item"
+    >
+      1
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      2
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      3
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      4
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      5
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      6
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      7
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      8
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      9
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      .
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      0
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      <i
+        class="za-icon za-icon--default za-icon--lg"
+        theme="default"
+      >
+        <svg
+          aria-hidden="true"
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          viewBox="0 0 1000 1000"
+          width="1em"
+        >
+          <path
+            d="M0 138h1000v600.537H0V138zm61.538 61.594v477.35h876.924v-477.35H61.538zm92.308 76.991h76.923v76.992h-76.923v-76.992zm123.077 0h76.923v76.992h-76.923v-76.992zm123.077 0h76.923v76.992H400v-76.992zm123.077 0H600v76.992h-76.923v-76.992zm123.077 0h76.923v76.992h-76.923v-76.992zm123.077 0h76.923v76.992H769.23v-76.992zM215.385 399.772h76.923v76.992h-76.923v-76.992zm123.077 0h76.923v76.992h-76.923v-76.992zm123.076 0h76.924v76.992h-76.924v-76.992zm123.077 0h76.923v76.992h-76.923v-76.992zm123.077 0h76.923v76.992h-76.923v-76.992zM153.846 522.96h76.923v76.992h-76.923V522.96zm615.385 0h76.923v76.992H769.23V522.96zm-492.308 0h446.154v76.992H276.923V522.96zm138.462 246.374H600l-92.308 92.39-92.307-92.39z"
+            fill-rule="nonzero"
+          />
+        </svg>
+      </i>
+    </div>
+  </div>
+  <div
+    class="za-keyboard__handle"
+  >
+    <div
+      class="za-keyboard__item"
+    >
+      <i
+        class="za-icon za-icon--default za-icon--lg"
+        theme="default"
+      >
+        <svg
+          aria-hidden="true"
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          viewBox="0 0 1000 1000"
+          width="1em"
+        >
+          <path
+            d="M606.557 535.541l129.246 129.246 35.956-35.956-129.246-129.246L771.76 370.34l-35.956-35.956-129.246 129.246-129.246-129.246-35.956 35.956L570.6 499.585 441.355 628.831l35.956 35.956 129.246-129.246zm217.006-341.967c61.114 0 110.863 49.027 110.863 109.29v393.443c0 60.262-49.727 109.29-110.863 109.29H409.836a112.175 112.175 0 01-79.979-33.618L72.852 515.673l-.416-.438-.415-.415a21.094 21.094 0 01-6.426-15.257c0-4.044 1.115-9.989 6.426-15.257l.415-.415.416-.437L329.857 227.17a112.131 112.131 0 0179.979-33.64h413.727v.044zm0-65.574H427.519a177.18 177.18 0 00-126.973 53.465L25.857 437.77a86.842 86.842 0 000 123.65l274.689 256.306a177.18 177.18 0 00126.973 53.465h396.044c97.442 0 176.437-78.295 176.437-174.864V302.885C1000 206.295 921.005 128 823.563 128z"
+            fill-rule="nonzero"
+          />
+        </svg>
+      </i>
+    </div>
+    <div
+      class="za-keyboard__item za-keyboard__item--ok"
+    >
+      确定
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,51 @@
+{
+  "name": "site",
+  "version": "0.0.2",
+  "private": true,
+  "scripts": {
+    "clean": "rimraf assets",
+    "start": "zarm dev",
+    "build": "rimraf assets && mkdir assets && touch assets/CNAME && echo 'zarm.design' > assets/CNAME && zarm deploy",
+    "deploy": "yarn build -p && gh-pages -d assets"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "Firefox ESR",
+    "> 1%",
+    "ie >= 9",
+    "iOS >= 7",
+    "Android >= 4"
+  ],
+  "dependencies": {
+    "classnames": "2.2.6",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.0.0",
+    "react-intl": "^5.12.1",
+    "react-loadable": "^5.5.0",
+    "react-router-dom": "^5.1.2",
+    "zarm": "^2.9.2",
+    "zarm-web": "0.0.1-alpha.10"
+  },
+  "devDependencies": {
+    "@babel/standalone": "7.12.15",
+    "@sentry/browser": "^5.30.0",
+    "@types/classnames": "^2.2.3",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "@zarm-design/cli": "^0.0.38",
+    "babel-plugin-import": "^1.13.0",
+    "babel-plugin-prismjs": "^2.0.1",
+    "browserslist": "^4.6.6",
+    "change-case": "^4.1.1",
+    "codesandbox": "^2.2.3",
+    "core-js": "^3.12.1",
+    "docsearch.js": "^2.6.1",
+    "gh-pages": "^3.1.0",
+    "history": "^5.0.0",
+    "marked": "^2.0.0",
+    "prismjs": "^1.23.0",
+    "qrious": "^4.0.2",
+    "raw-loader": "^4.0.1"
+  }
+}

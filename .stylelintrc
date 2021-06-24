@@ -1,3 +1,6 @@
 {
-  "extends": "stylelint-config-za"
+  "extends": "stylelint-config-za/scss",
+  "rules": {
+    "unit-case": null,
+  }
 }

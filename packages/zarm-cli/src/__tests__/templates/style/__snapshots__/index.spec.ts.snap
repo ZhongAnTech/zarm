@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`templates style should create index scss template 1`] = `
+"@import '../../style/core/index';
+
+@include b(my-test-component) {
+
+}
+"
+`;
+
+exports[`templates style should create index template 1`] = `
+"import '../../style';
+import './index.scss';
+"
+`;

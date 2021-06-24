@@ -1,0 +1,18 @@
+@import "@/styles/index";
+
+.affix-page {
+  .seperator {
+    height: r(500);
+  }
+
+  .scrollable-container {
+    height: r(100);
+    overflow-y: scroll;
+  }
+
+  .background {
+    padding-top: r(60);
+    height: r(300);
+    background-image: url(https://zos.alipayobjects.com/rmsportal/RmjwQiJorKyobvI.jpg);
+  }
+}
