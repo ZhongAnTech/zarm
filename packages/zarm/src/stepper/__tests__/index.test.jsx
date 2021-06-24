@@ -23,11 +23,11 @@ describe('Stepper', () => {
 
     wrapper.setProps({ value: 0 });
     wrapper.find('.za-stepper__sub').at(0).simulate('click');
-    expect(wrapper.find(Input).at(0).props().value).toBe(0);
+    setTimeout(() => expect(wrapper.find(Input).at(0).props().value).toBe(0));
 
     wrapper.setProps({ value: 2 });
     wrapper.find('.za-stepper__plus').at(0).simulate('click');
-    expect(wrapper.find(Input).at(0).props().value).toBe(2);
+    setTimeout(() => expect(wrapper.find(Input).at(0).props().value).toBe(2));
   });
 
   it('receive new value', () => {
@@ -99,10 +99,10 @@ describe('Stepper', () => {
     wrapper.setProps({ value: 1 });
     wrapper.setProps({ step: 0.1 });
     wrapper.find('.za-stepper__sub').at(0).simulate('click');
-    expect(wrapper.find(Input).at(0).props().value).toBe('0.9');
+    setTimeout(() => expect(wrapper.find(Input).at(0).props().value).toBe('0.9'));
 
     wrapper.setProps({ step: 0.2 });
     wrapper.find('.za-stepper__plus').at(0).simulate('click');
-    expect(wrapper.find(Input).at(0).props().value).toBe('1.1');
+    setTimeout(() => expect(wrapper.find(Input).at(0).props().value).toBe('1.1'));
   });
 });
