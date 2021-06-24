@@ -116,10 +116,11 @@ describe('Checkbox.Group', () => {
         </Checkbox>
       </Checkbox.Group>,
     );
-    const firstCheckbox = wrapper.find(Checkbox).first().dive().find('input[type="checkbox"]');
-    firstCheckbox.simulate('change', { target: { checked: true } });
+    const firstCheckbox = () =>
+      wrapper.find(Checkbox).first().dive().find('input[type="checkbox"]');
+    firstCheckbox().simulate('change', { target: { checked: true } });
     expect(onChange).toBeCalledWith(['0']);
-    firstCheckbox.simulate('change', { target: { checked: false } });
+    firstCheckbox().simulate('change', { target: { checked: false } });
     expect(onChange).toBeCalledWith([]);
 
     // 测试disabled
