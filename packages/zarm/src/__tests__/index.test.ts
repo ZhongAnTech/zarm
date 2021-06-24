@@ -88,7 +88,13 @@ describe('index', () => {
         "Modal": [Function],
         "NavBar": [Function],
         "NoticeBar": [Function],
-        "Panel": [Function],
+        "Panel": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "prefixCls": "za-panel",
+          },
+          "render": [Function],
+        },
         "Picker": Object {
           "$$typeof": Symbol(react.forward_ref),
           "render": [Function],
