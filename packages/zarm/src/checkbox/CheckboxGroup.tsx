@@ -1,22 +1,26 @@
-import React, { cloneElement, ReactNode, isValidElement, HTMLAttributes } from 'react';
+import * as React from 'react';
 import classnames from 'classnames';
-import { BaseCheckboxGroupProps, CheckboxValue } from './interface';
+import type { BaseCheckboxGroupProps, CheckboxValue } from './interface';
 
-const getChildChecked = (children: ReactNode) => {
-  const checkedValue: Array<number | string> = [];
+const getChildChecked = (children: React.ReactNode): Array<CheckboxValue> => {
+  const checkedValues: Array<CheckboxValue> = [];
 
-  React.Children.map(children, (element: ReactNode) => {
+  React.Children.map(children, (element: React.ReactNode) => {
     if (React.isValidElement(element) && element.props && element.props.checked) {
-      checkedValue.push(element.props.value);
+      checkedValues.push(element.props.value);
     }
   });
 
-  return checkedValue;
+  return checkedValues;
 };
 
 const getValue = (props: CheckboxGroupProps, defaultValue: Array<CheckboxValue> = []) => {
-  if (props.value != null) return props.value;
-  if (props.defaultValue != null) return props.defaultValue;
+  if (typeof props.value !== 'undefined') {
+    return props.value;
+  }
+  if (typeof props.defaultValue !== 'undefined') {
+    return props.defaultValue;
+  }
   if (getChildChecked(props.children).length > 0) {
     return getChildChecked(props.children);
   }
@@ -24,13 +28,9 @@ const getValue = (props: CheckboxGroupProps, defaultValue: Array<CheckboxValue> 
 };
 
 export interface CheckboxGroupProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'value' | 'onChange'>,
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'value' | 'onChange'>,
     BaseCheckboxGroupProps {
   prefixCls?: string;
-}
-
-export interface CheckboxGroupStates {
-  value?: Array<number | string>;
 }
 
 const CheckboxGroup = React.forwardRef<unknown, CheckboxGroupProps>((props, ref) => {
@@ -48,12 +48,12 @@ const CheckboxGroup = React.forwardRef<unknown, CheckboxGroupProps>((props, ref)
     onChange,
     defaultValue,
     value,
-    ...rest
+    ...restProps
   } = props;
 
   const radioGroupRef = (ref as any) || React.createRef<HTMLElement>();
   const [currentValue, setCurrentValue] = React.useState(
-    getValue({ value, defaultValue, children }, defaultValue),
+    getValue({ value, defaultValue, children }, []),
   );
 
   const onChildChange = (newValue: string | number) => {
@@ -70,16 +70,15 @@ const CheckboxGroup = React.forwardRef<unknown, CheckboxGroupProps>((props, ref)
     typeof onChange === 'function' && onChange(values);
   };
 
-  const items = React.Children.map(children, (element: ReactNode, index) => {
-    if (!isValidElement(element)) return null;
-    return cloneElement(element, {
-      key: index,
+  const items = React.Children.map(children, (element: React.ReactElement, index: number) => {
+    return React.cloneElement(element, {
+      key: +index,
       type,
       shape,
-      disabled: disabled || element.props.disabled,
+      disabled: disabled || !!element.props.disabled,
       checked: currentValue!.indexOf(element.props.value) > -1,
-      onChange: (checked: boolean) => {
-        typeof element.props.onChange === 'function' && element.props.onChange(checked);
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+        typeof element.props.onChange === 'function' && element.props.onChange(e);
         onChildChange(element.props.value);
       },
     });
@@ -96,11 +95,11 @@ const CheckboxGroup = React.forwardRef<unknown, CheckboxGroupProps>((props, ref)
   });
 
   React.useEffect(() => {
-    setCurrentValue(getValue({ value, defaultValue, children }));
+    setCurrentValue(getValue({ value, defaultValue, children }, []));
   }, [value, defaultValue, children]);
 
   return (
-    <div className={cls} {...rest} ref={radioGroupRef}>
+    <div className={cls} {...restProps} ref={radioGroupRef}>
       <div className={`${prefixCls}__inner`}>{items}</div>
     </div>
   );
