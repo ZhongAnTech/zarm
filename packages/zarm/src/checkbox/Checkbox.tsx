@@ -1,34 +1,30 @@
-import React, {
-  ChangeEvent,
-  InputHTMLAttributes,
-  HTMLAttributes,
-  ButtonHTMLAttributes,
-} from 'react';
+import * as React from 'react';
 import classnames from 'classnames';
-import { BaseCheckboxProps } from './interface';
+import type { BaseCheckboxProps } from './interface';
 import CheckboxGroup from './CheckboxGroup';
 import Cell from '../cell';
 
-const getChecked = (props: CheckboxProps, defaultChecked: boolean) => {
+const getChecked = (props: CheckboxProps, defaultChecked?: boolean) => {
   return props.checked ?? props.defaultChecked ?? defaultChecked;
 };
 
 type CheckboxSpanProps = Omit<
-  InputHTMLAttributes<HTMLInputElement>,
+  React.InputHTMLAttributes<HTMLInputElement>,
   'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
 >;
 type CheckboxCellProps = Omit<
-  HTMLAttributes<HTMLDivElement>,
+  React.HTMLAttributes<HTMLDivElement>,
   'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
 >;
 type CheckboxButtonProps = Omit<
-  ButtonHTMLAttributes<HTMLButtonElement>,
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
   'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
 >;
 
 export type CheckboxProps = Partial<CheckboxSpanProps & CheckboxCellProps & CheckboxButtonProps> &
   BaseCheckboxProps & {
     prefixCls?: string;
+    onChange?: (e?: React.ChangeEvent<HTMLInputElement>) => void;
   };
 interface CompoundedComponent
   extends React.ForwardRefExoticComponent<CheckboxProps & React.RefAttributes<HTMLElement>> {
@@ -49,50 +45,46 @@ const Checkbox = React.forwardRef<unknown, CheckboxProps>((props, ref) => {
     indeterminate,
     children,
     onChange,
-    ...rest
+    ...restProps
   } = props;
 
-  const [currentCheckd, setCurrentCheckd] = React.useState<boolean>(
-    getChecked({ checked, defaultChecked }, false),
-  );
   const checkboxRef = (ref as any) || React.createRef<HTMLElement>();
+  const [currentChecked, setCurrentChecked] = React.useState(
+    getChecked({ checked, defaultChecked }),
+  );
 
   const cls = classnames(prefixCls, className, {
-    [`${prefixCls}--checked`]: currentCheckd,
+    [`${prefixCls}--checked`]: currentChecked,
     [`${prefixCls}--disabled`]: disabled,
     [`${prefixCls}--indeterminate`]: indeterminate,
     [`${prefixCls}--untext`]: !children,
   });
 
-  const onValueChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (disabled) {
-      return;
+  const onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newChecked = !currentChecked;
+    if (!('checked' in props)) {
+      setCurrentChecked(newChecked);
     }
-    const newChecked = !currentCheckd;
-    if (typeof checked === 'undefined') {
-      setCurrentCheckd(newChecked);
-    }
+
     typeof onChange === 'function' && onChange(e);
   };
-
-  React.useEffect(() => {
-    setCurrentCheckd(getChecked({ checked, defaultChecked }, false));
-  }, [checked, defaultChecked]);
 
   const inputRender = (
     <input
       id={id}
       type="checkbox"
+      aria-checked={currentChecked}
       className={`${prefixCls}__input`}
-      value={value}
       disabled={disabled}
-      checked={currentCheckd}
+      value={currentChecked ? 'on' : 'off'}
+      defaultChecked={'defaultChecked' in props ? defaultChecked : undefined}
+      checked={'checked' in props ? currentChecked : undefined}
       onChange={onValueChange}
     />
   );
 
   const checkboxRender = (
-    <span className={cls} ref={checkboxRef} {...(rest as CheckboxSpanProps)}>
+    <span ref={checkboxRef} className={cls} {...(restProps as CheckboxSpanProps)}>
       <span className={`${prefixCls}__widget`}>
         <span className={`${prefixCls}__inner`} />
       </span>
@@ -101,17 +93,12 @@ const Checkbox = React.forwardRef<unknown, CheckboxProps>((props, ref) => {
     </span>
   );
 
+  React.useEffect(() => {
+    setCurrentChecked(getChecked({ checked, defaultChecked }));
+  }, [checked, defaultChecked]);
+
   if (type === 'cell') {
-    return (
-      <Cell
-        disabled={disabled}
-        className={className}
-        onClick={() => {}}
-        {...(rest as CheckboxCellProps)}
-      >
-        {checkboxRender}
-      </Cell>
-    );
+    return <Cell onClick={() => {}}>{checkboxRender}</Cell>;
   }
 
   if (type === 'button') {
@@ -121,7 +108,7 @@ const Checkbox = React.forwardRef<unknown, CheckboxProps>((props, ref) => {
         type="button"
         disabled={disabled}
         className={cls}
-        {...(rest as CheckboxButtonProps)}
+        {...(restProps as CheckboxButtonProps)}
       >
         {children}
         {inputRender}
@@ -136,6 +123,7 @@ Checkbox.displayName = 'Checkbox';
 
 Checkbox.defaultProps = {
   prefixCls: 'za-checkbox',
+  shape: 'radius',
   disabled: false,
   indeterminate: false,
 };

@@ -5,13 +5,7 @@ import RadioGroup from './RadioGroup';
 import Cell from '../cell';
 
 const getChecked = (props: RadioProps, defaultChecked: boolean) => {
-  if (typeof props.checked !== 'undefined') {
-    return props.checked;
-  }
-  if (typeof props.defaultChecked !== 'undefined') {
-    return props.defaultChecked;
-  }
-  return defaultChecked;
+  return props.checked ?? props.defaultChecked ?? defaultChecked;
 };
 
 type RadioSpanProps = Omit<
@@ -43,41 +37,39 @@ const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
     prefixCls,
     className,
     type,
+    shape,
     value,
     checked,
-    shape,
     defaultChecked,
     disabled,
     id,
     children,
     onChange,
-    ...rest
+    ...restProps
   } = props;
 
   const radioRef = (ref as any) || React.createRef<HTMLElement>();
-  const [currentCheck, setCurrentCheck] = React.useState(
+  const [currentChecked, setCurrentChecked] = React.useState(
     getChecked({ checked, defaultChecked }, false),
   );
+
+  const cls = classnames(prefixCls, className, {
+    [`${prefixCls}--checked`]: currentChecked,
+    [`${prefixCls}--disabled`]: disabled,
+    [`${prefixCls}--untext`]: !children,
+  });
 
   const onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (disabled) {
       return;
     }
-    const newChecked = !currentCheck;
-    if (typeof checked === 'undefined') {
-      setCurrentCheck(newChecked);
+    const newChecked = !currentChecked;
+    if (!('checked' in props)) {
+      setCurrentChecked(newChecked);
     }
 
-    if (typeof onChange === 'function') {
-      onChange(e);
-    }
+    typeof onChange === 'function' && onChange(e);
   };
-
-  const cls = classnames(prefixCls, className, {
-    [`${prefixCls}--checked`]: currentCheck,
-    [`${prefixCls}--disabled`]: disabled,
-    [`${prefixCls}--untext`]: !children,
-  });
 
   const inputRender = (
     <input
@@ -86,17 +78,14 @@ const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
       className={`${prefixCls}__input`}
       value={value}
       disabled={disabled}
-      checked={currentCheck}
+      defaultChecked={'defaultChecked' in props ? defaultChecked : undefined}
+      checked={'checked' in props ? currentChecked : undefined}
       onChange={onValueChange}
     />
   );
 
-  React.useEffect(() => {
-    setCurrentCheck(getChecked({ checked, defaultChecked }, false));
-  }, [checked, defaultChecked]);
-
   const radioRender = (
-    <span className={cls} ref={radioRef} {...(rest as RadioSpanProps)}>
+    <span ref={radioRef} className={cls} {...(restProps as RadioSpanProps)}>
       <span className={`${prefixCls}__widget`}>
         <span className={`${prefixCls}__inner`} />
       </span>
@@ -105,27 +94,22 @@ const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
     </span>
   );
 
+  React.useEffect(() => {
+    setCurrentChecked(getChecked({ checked, defaultChecked }, false));
+  }, [checked, defaultChecked]);
+
   if (type === 'cell') {
-    return (
-      <Cell
-        disabled={disabled}
-        className={className}
-        onClick={() => {}}
-        {...(rest as RadioCellProps)}
-      >
-        {radioRender}
-      </Cell>
-    );
+    return <Cell onClick={() => {}}>{radioRender}</Cell>;
   }
 
   if (type === 'button') {
     return (
       <button
+        ref={radioRef}
         type="button"
         disabled={disabled}
         className={cls}
-        ref={radioRef}
-        {...(rest as RadioButtonProps)}
+        {...(restProps as RadioButtonProps)}
       >
         {children}
         {inputRender}
@@ -140,8 +124,8 @@ Radio.displayName = 'Radio';
 
 Radio.defaultProps = {
   prefixCls: 'za-radio',
-  disabled: false,
   shape: 'radius',
+  disabled: false,
 };
 
 export default Radio;

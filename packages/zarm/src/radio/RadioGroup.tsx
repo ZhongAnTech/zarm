@@ -55,7 +55,7 @@ const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
 
   const radioGroupRef = (ref as any) || React.createRef<HTMLElement>();
   const [currentValue, setCurrentValue] = React.useState(
-    getValue({ value, defaultValue, children }, defaultValue),
+    getValue({ value, defaultValue, children }),
   );
 
   const onChildChange = (newValue: RadioValue) => {
@@ -65,9 +65,9 @@ const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
     }
   };
 
-  const renderRadio = (element: React.ReactElement, index: number) => {
+  const items = React.Children.map(children, (element: React.ReactElement, index: number) => {
     return React.cloneElement(element, {
-      key: index,
+      key: +index,
       type,
       shape,
       disabled: disabled || !!element.props.disabled,
@@ -77,9 +77,7 @@ const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
         onChildChange(element.props.value);
       },
     });
-  };
-
-  const radioRender = React.Children.map(children, renderRadio);
+  });
 
   const cls = classnames(prefixCls, className, {
     [`${prefixCls}--${type}`]: !!type,
@@ -97,7 +95,7 @@ const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
 
   return (
     <div className={cls} {...rest} ref={radioGroupRef}>
-      <div className={`${prefixCls}__inner`}>{radioRender}</div>
+      <div className={`${prefixCls}__inner`}>{items}</div>
     </div>
   );
 });

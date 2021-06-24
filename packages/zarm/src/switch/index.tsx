@@ -54,7 +54,7 @@ const Switch = React.forwardRef<unknown, SwitchProps>((props, ref) => {
         type="checkbox"
         className={`${prefixCls}__input`}
         disabled={disabled}
-        value={getChecked ? 'on' : 'off'}
+        value={currentChecked ? 'on' : 'off'}
         checked={'checked' in props ? currentChecked : undefined}
         defaultChecked={'defaultChecked' in props ? defaultChecked : undefined}
         onChange={'onChange' in props ? onInputChange : undefined}
