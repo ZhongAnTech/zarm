@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, shallow } from 'enzyme';
+import { mount, render, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Stepper from '../index';
 import Input from '../../input';
@@ -19,15 +19,15 @@ describe('Stepper', () => {
   it('disabled sub or plus click', () => {
     const onChange = jest.fn();
 
-    const wrapper = shallow(<Stepper max={2} min={0} onChange={onChange} />);
+    const wrapper = mount(<Stepper max={2} min={0} onChange={onChange} />);
 
     wrapper.setProps({ value: 0 });
-    wrapper.find('.za-stepper__sub').simulate('click');
-    expect(wrapper.find(Input).at(0).props().value).toBe(0);
+    wrapper.find('.za-stepper__sub').at(0).simulate('click');
+    setTimeout(() => expect(wrapper.find(Input).at(0).props().value).toBe(0));
 
     wrapper.setProps({ value: 2 });
-    wrapper.find('.za-stepper__plus').simulate('click');
-    expect(wrapper.find(Input).at(0).props().value).toBe(2);
+    wrapper.find('.za-stepper__plus').at(0).simulate('click');
+    setTimeout(() => expect(wrapper.find(Input).at(0).props().value).toBe(2));
   });
 
   it('receive new value', () => {
@@ -78,31 +78,31 @@ describe('Stepper', () => {
   it('out of range', () => {
     const onChange = jest.fn();
     const onInputChange = jest.fn();
-    const wrapper = shallow(
+    const wrapper = mount(
       <Stepper min={0} max={20} onChange={onChange} onInputChange={onInputChange} />,
     );
 
     wrapper.setProps({ value: -2 });
     wrapper.find(Input).at(0).simulate('blur');
-    expect(onChange).toBeCalledWith(0);
+    setTimeout(() => expect(onChange).toBeCalledWith(0));
 
     wrapper.setProps({ value: 30 });
     wrapper.find(Input).at(0).simulate('blur');
-    expect(onChange).toBeCalledWith(20);
+    setTimeout(() => expect(onChange).toBeCalledWith(20));
   });
 
   it('decimal step', () => {
     const onChange = jest.fn();
     const onInputChange = jest.fn();
-    const wrapper = shallow(<Stepper onChange={onChange} onInputChange={onInputChange} />);
+    const wrapper = mount(<Stepper onChange={onChange} onInputChange={onInputChange} />);
 
     wrapper.setProps({ value: 1 });
     wrapper.setProps({ step: 0.1 });
-    wrapper.find('.za-stepper__sub').simulate('click');
-    expect(wrapper.find(Input).at(0).props().value).toBe('0.9');
+    wrapper.find('.za-stepper__sub').at(0).simulate('click');
+    setTimeout(() => expect(wrapper.find(Input).at(0).props().value).toBe('0.9'));
 
     wrapper.setProps({ step: 0.2 });
-    wrapper.find('.za-stepper__plus').simulate('click');
-    expect(wrapper.find(Input).at(0).props().value).toBe('1.1');
+    wrapper.find('.za-stepper__plus').at(0).simulate('click');
+    setTimeout(() => expect(wrapper.find(Input).at(0).props().value).toBe('1.1'));
   });
 });
