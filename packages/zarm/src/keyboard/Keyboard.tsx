@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import { Keyboard as KeyboardIcon, DeleteKey as DeleteKeyIcon } from '@zarm-design/icons';
-// import useLongPress from '../hooks/useLongPress';
+// import useLongPress from '../useLongPress';
 import type { BaseKeyBoardProps } from './interface';
 
 type KeyType = Exclude<BaseKeyBoardProps['type'], undefined>;
