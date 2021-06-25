@@ -110,7 +110,10 @@ describe('index', () => {
         },
         "Message": [Function],
         "Modal": [Function],
-        "NavBar": [Function],
+        "NavBar": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        },
         "NoticeBar": [Function],
         "Panel": [Function],
         "Picker": Object {
