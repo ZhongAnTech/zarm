@@ -1,38 +1,32 @@
 import React, { HTMLAttributes, useCallback, useEffect, useRef } from 'react';
 import classnames from 'classnames';
-import PropsType from './PropsType';
+import type { BaseMarqueeProps } from './interface';
 import { DIRECTION_LEFT, DIRECTION_RIGHT, DIRECTION_UP, DIRECTION_DOWN } from './constants';
 import { getKeyFrameModifier, animationModifier } from './modifiers';
 
-export interface MarqueeProps extends HTMLAttributes<HTMLDivElement>, PropsType {
+export interface MarqueeProps extends HTMLAttributes<HTMLDivElement>, BaseMarqueeProps {
   prefixCls?: string;
-  className?: string;
 }
-
-const SPEED = 30;
-const ANIMATION_DELAY = 0;
-const LOOP = true;
 
 const CLIENT_RECT = { bottom: 0, height: 0, left: 0, right: 0, top: 0, width: 0 };
 
-function Marquee(props: MarqueeProps) {
+function Marquee({
+  prefixCls = 'za-marquee',
+  direction = 'left',
+  loop = true,
+  speed = 30,
+  animationDelay = 0,
+  height,
+  style,
+  width,
+  children,
+  className,
+}: MarqueeProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const scrollItemRef = useRef<HTMLDivElement | null>(null);
 
   const containerBoundingRect = useRef<ClientRect>(CLIENT_RECT);
   const boundingRect = useRef<ClientRect>(CLIENT_RECT);
-
-  const {
-    prefixCls,
-    className,
-    height,
-    width,
-    children,
-    direction,
-    loop = LOOP,
-    speed = SPEED,
-    animationDelay = ANIMATION_DELAY,
-  } = props;
 
   const cls = classnames(prefixCls, className);
   const dir = direction.toLowerCase();
@@ -103,7 +97,6 @@ function Marquee(props: MarqueeProps) {
     animationLoop();
   }, [animationLoop, direction, loop, setScrollItemPosition]);
 
-  let { style } = props;
   style = style || {};
   style.width = width;
   style!.height = height;
@@ -120,12 +113,5 @@ function Marquee(props: MarqueeProps) {
 }
 
 Marquee.displayName = 'Marquee';
-Marquee.defaultProps = {
-  prefixCls: 'za-marquee',
-  direction: 'left',
-  loop: LOOP,
-  speed: SPEED,
-  animationDelay: ANIMATION_DELAY,
-};
 
 export default Marquee;

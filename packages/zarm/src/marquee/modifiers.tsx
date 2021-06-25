@@ -1,4 +1,4 @@
-import PropsType from './PropsType';
+import type { BaseMarqueeProps } from './interface';
 
 import { DIRECTION_LEFT, DIRECTION_RIGHT, DIRECTION_UP, DIRECTION_DOWN } from './constants';
 
@@ -53,7 +53,7 @@ const animationModifier = (duration: number, loop: boolean, delay: number, key: 
   return `${duration}ms ${key} ${delay}ms linear ${infinite}`;
 };
 
-const getKeyFrameModifier = (direction: PropsType['direction']) => {
+const getKeyFrameModifier = (direction: BaseMarqueeProps['direction']) => {
   const dir = direction.toLowerCase();
   switch (dir) {
     case DIRECTION_LEFT:

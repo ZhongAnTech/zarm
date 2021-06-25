@@ -49,7 +49,7 @@ ReactDOM.render(
 | 属性           | 类型             | 默认值 | 说明                                            |
 | :------------- | :--------------- | :----- | :---------------------------------------------- |
 | direction      | string           | 'left' | 滚动方向，可选值为`left`、`right`、`up`、`down` |
-| width          | number \| string | -      |   容器宽度                                      |
+| width          | number \| string | -      | 容器宽度                                        |
 | height         | number \| string | -      | 容器高度                                        |
 | loop           | boolean          | true   | 是否循环                                        |
 | speed          | number           | 30px   | 动画执行速度（单位：秒）                        |
