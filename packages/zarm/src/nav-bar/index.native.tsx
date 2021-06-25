@@ -19,8 +19,7 @@ import {
   TextStyle,
   Platform,
 } from 'react-native';
-
-import { BaseNavBarProps } from './interface';
+import type { BaseNavBarProps } from './interface';
 import navBarStyle from './style/index.native';
 
 export interface NavBarProps extends BaseNavBarProps {

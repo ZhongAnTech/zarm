@@ -1,5 +1,6 @@
 import classnames from 'classnames';
-import React, { forwardRef, HTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'react';
+import React, { forwardRef } from 'react';
 import type { BaseNavBarProps } from './interface';
 
 export interface NavBarProps
@@ -9,7 +10,7 @@ export interface NavBarProps
 }
 
 const NavBar = forwardRef<HTMLDivElement, NavBarProps>((props, ref) => {
-  const { prefixCls, className, style, title, left, right } = props;
+  const { prefixCls, className, title, left, right, ...restProps } = props;
 
   const cls = classnames(prefixCls, className);
   const titleCls = `${prefixCls}__title`;
@@ -18,7 +19,7 @@ const NavBar = forwardRef<HTMLDivElement, NavBarProps>((props, ref) => {
   const rightCls = `${sideCls} ${prefixCls}__side--right`;
 
   return (
-    <div ref={ref} style={style} className={cls}>
+    <div ref={ref} className={cls} {...restProps}>
       <div className={leftCls}>{left}</div>
       <div className={titleCls}>{title}</div>
       <div className={rightCls}>{right}</div>
