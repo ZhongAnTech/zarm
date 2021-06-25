@@ -1,25 +1,29 @@
 import { ArrowRight as ArrowRightIcon, Close as CloseIcon } from '@zarm-design/icons';
 import classnames from 'classnames';
-import type { MouseEvent } from 'react';
+import type { HTMLAttributes, MouseEvent } from 'react';
 import React, { forwardRef, useState } from 'react';
-import type { MessageProps } from './interface';
+import type { BaseMessageProps } from './interface';
+
+export interface MessageProps extends BaseMessageProps, HTMLAttributes<HTMLDivElement> {
+  prefixCls?: string;
+}
 
 const Message = forwardRef<HTMLDivElement, MessageProps>((props, ref) => {
   const {
-    prefixCls = 'za-message',
+    prefixCls,
     className,
-    theme = 'primary',
+    theme,
     size,
     icon,
-    hasArrow = false,
-    closable = false,
+    hasArrow,
+    closable,
     children,
     onClick,
     ...restProps
   } = props;
   const [visible, setVisible] = useState(true);
 
-  const classes = classnames(prefixCls, className, {
+  const cls = classnames(prefixCls, className, {
     [`${prefixCls}--${theme}`]: theme,
     [`${prefixCls}--${size}`]: size,
     [`${prefixCls}--link`]: hasArrow,
@@ -44,7 +48,7 @@ const Message = forwardRef<HTMLDivElement, MessageProps>((props, ref) => {
 
   if (visible) {
     return (
-      <div ref={ref} className={classes} onClick={handleClick} {...restProps}>
+      <div ref={ref} className={cls} onClick={handleClick} {...restProps}>
         <div className={`${prefixCls}__header`}>{iconRender}</div>
         <div className={`${prefixCls}__body`}>{children}</div>
         {!noFooter && (
