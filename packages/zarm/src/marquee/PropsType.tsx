@@ -5,7 +5,7 @@ export default interface PropsType {
   width?: number | string;
   height?: number | string;
   loop?: boolean;
-  animationDuration?: number;
+  speed?: number;
   animationDelay?: number;
   style?: React.CSSProperties;
 }
