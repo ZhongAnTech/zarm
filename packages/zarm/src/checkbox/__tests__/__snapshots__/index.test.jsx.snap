@@ -17,9 +17,11 @@ exports[`Checkbox defaultChecked 1`] = `
     foo
   </span>
   <input
+    aria-checked="true"
     checked=""
     class="za-checkbox__input"
     type="checkbox"
+    value="on"
   />
 </span>
 `;
@@ -44,6 +46,7 @@ exports[`Checkbox disabled 1`] = `
     class="za-checkbox__input"
     disabled=""
     type="checkbox"
+    value="off"
   />
 </span>
 `;
@@ -65,9 +68,11 @@ exports[`Checkbox renders correctly 1`] = `
     foo
   </span>
   <input
+    aria-checked="true"
     checked=""
     class="za-checkbox__input"
     type="checkbox"
+    value="on"
   />
 </span>
 `;
@@ -95,9 +100,10 @@ exports[`Checkbox.Group render defaultValue correctly 1`] = `
         选项一
       </span>
       <input
+        aria-checked="false"
         class="za-checkbox__input"
         type="checkbox"
-        value="0"
+        value="off"
       />
     </span>
     <span
@@ -116,10 +122,11 @@ exports[`Checkbox.Group render defaultValue correctly 1`] = `
         选项二
       </span>
       <input
+        aria-checked="true"
         checked=""
         class="za-checkbox__input"
         type="checkbox"
-        value="1"
+        value="on"
       />
     </span>
     <span
@@ -138,9 +145,10 @@ exports[`Checkbox.Group render defaultValue correctly 1`] = `
         选项三
       </span>
       <input
+        aria-checked="false"
         class="za-checkbox__input"
         type="checkbox"
-        value="2"
+        value="off"
       />
     </span>
   </div>
@@ -170,10 +178,11 @@ exports[`Checkbox.Group render value correctly 1`] = `
         选项一
       </span>
       <input
+        aria-checked="true"
         checked=""
         class="za-checkbox__input"
         type="checkbox"
-        value="0"
+        value="on"
       />
     </span>
     <span
@@ -192,9 +201,10 @@ exports[`Checkbox.Group render value correctly 1`] = `
         选项二
       </span>
       <input
+        aria-checked="false"
         class="za-checkbox__input"
         type="checkbox"
-        value="1"
+        value="off"
       />
     </span>
     <span
@@ -213,9 +223,10 @@ exports[`Checkbox.Group render value correctly 1`] = `
         选项三
       </span>
       <input
+        aria-checked="false"
         class="za-checkbox__input"
         type="checkbox"
-        value="2"
+        value="off"
       />
     </span>
   </div>
@@ -245,9 +256,10 @@ exports[`Checkbox.Group renders correctly 1`] = `
         选项一
       </span>
       <input
+        aria-checked="false"
         class="za-checkbox__input"
         type="checkbox"
-        value="0"
+        value="off"
       />
     </span>
     <span
@@ -266,10 +278,11 @@ exports[`Checkbox.Group renders correctly 1`] = `
         选项二
       </span>
       <input
+        aria-checked="true"
         checked=""
         class="za-checkbox__input"
         type="checkbox"
-        value="1"
+        value="on"
       />
     </span>
     <span
@@ -288,9 +301,10 @@ exports[`Checkbox.Group renders correctly 1`] = `
         选项三
       </span>
       <input
+        aria-checked="false"
         class="za-checkbox__input"
         type="checkbox"
-        value="2"
+        value="off"
       />
     </span>
   </div>
@@ -310,9 +324,10 @@ exports[`Checkbox.Group type is button 1`] = `
     >
       选项一
       <input
+        aria-checked="false"
         class="za-checkbox__input"
         type="checkbox"
-        value="0"
+        value="off"
       />
     </button>
     <button
@@ -321,9 +336,10 @@ exports[`Checkbox.Group type is button 1`] = `
     >
       选项二
       <input
+        aria-checked="false"
         class="za-checkbox__input"
         type="checkbox"
-        value="1"
+        value="off"
       />
     </button>
     <button
@@ -332,9 +348,10 @@ exports[`Checkbox.Group type is button 1`] = `
     >
       选项三
       <input
+        aria-checked="false"
         class="za-checkbox__input"
         type="checkbox"
-        value="2"
+        value="off"
       />
     </button>
   </div>
@@ -379,9 +396,10 @@ exports[`Checkbox.Group type is cell 1`] = `
                 选项一
               </span>
               <input
+                aria-checked="false"
                 class="za-checkbox__input"
                 type="checkbox"
-                value="0"
+                value="off"
               />
             </span>
           </div>
@@ -422,9 +440,10 @@ exports[`Checkbox.Group type is cell 1`] = `
                 选项二
               </span>
               <input
+                aria-checked="false"
                 class="za-checkbox__input"
                 type="checkbox"
-                value="1"
+                value="off"
               />
             </span>
           </div>
@@ -465,9 +484,10 @@ exports[`Checkbox.Group type is cell 1`] = `
                 选项三
               </span>
               <input
+                aria-checked="false"
                 class="za-checkbox__input"
                 type="checkbox"
-                value="2"
+                value="off"
               />
             </span>
           </div>

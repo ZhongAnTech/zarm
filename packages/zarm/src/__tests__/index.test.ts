@@ -66,6 +66,7 @@ describe('index', () => {
             "disabled": false,
             "indeterminate": false,
             "prefixCls": "za-checkbox",
+            "shape": "radius",
           },
           "render": [Function],
         },
