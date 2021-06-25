@@ -6,7 +6,7 @@ import {
   TouchableWithoutFeedback,
   GestureResponderEvent,
 } from 'react-native';
-import { BaseMessageProps } from './interface';
+import type { BaseMessageProps } from './interface';
 import messageStyle from './style/index.native';
 import { RenderWithText } from '../utils/renderWithText.native';
 

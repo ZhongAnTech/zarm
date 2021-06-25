@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 export type MessageTheme = 'default' | 'primary' | 'success' | 'warning' | 'danger';
 export type MessageSize = 'md' | 'lg';
