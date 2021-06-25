@@ -52,5 +52,5 @@ ReactDOM.render(
 | width          | number \| string | -      | 容器宽度                                        |
 | height         | number \| string | -      | 容器高度                                        |
 | loop           | boolean          | true   | 是否循环                                        |
-| speed          | number           | 30px   | 动画执行速度（单位：秒）                        |
+| speed          | number           | 30     | 动画执行速度（单位：秒）                        |
 | animationDelay | number           | 0      | 动画延迟执行时间（单位：毫秒）                  |

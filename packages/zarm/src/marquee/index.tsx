@@ -9,19 +9,18 @@ export interface MarqueeProps extends HTMLAttributes<HTMLDivElement>, BaseMarque
 }
 
 const CLIENT_RECT = { bottom: 0, height: 0, left: 0, right: 0, top: 0, width: 0 };
-
-function Marquee({
-  prefixCls = 'za-marquee',
-  direction = 'left',
-  loop = true,
-  speed = 30,
-  animationDelay = 0,
-  height,
-  style,
-  width,
-  children,
-  className,
-}: MarqueeProps) {
+function Marquee(props: MarqueeProps) {
+  const {
+    prefixCls,
+    direction,
+    loop,
+    speed,
+    animationDelay,
+    height,
+    width,
+    children,
+    className,
+  } = props;
   const containerRef = useRef<HTMLDivElement | null>(null);
   const scrollItemRef = useRef<HTMLDivElement | null>(null);
 
@@ -97,12 +96,12 @@ function Marquee({
     animationLoop();
   }, [animationLoop, direction, loop, setScrollItemPosition]);
 
-  style = style || {};
+  const { style = {} } = props;
   style.width = width;
   style!.height = height;
 
   return (
-    <div className={cls} data-speed={speed}>
+    <div className={cls}>
       <div className={`${prefixCls}__body`} ref={containerRef} style={style}>
         <div className={`${prefixCls}__content`} ref={scrollItemRef}>
           {children}
@@ -113,5 +112,13 @@ function Marquee({
 }
 
 Marquee.displayName = 'Marquee';
+
+Marquee.defaultProps = {
+  prefixCls: 'za-marquee',
+  direction: 'left',
+  loop: true,
+  speed: 30,
+  animationDelay: 0,
+};
 
 export default Marquee;
