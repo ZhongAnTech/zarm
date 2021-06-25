@@ -1,4 +1,4 @@
-import { ButtonSize } from '../button/interface';
+import type { ButtonSize } from '../button/interface';
 
 export type CheckboxType = 'button' | 'cell';
 export type CheckboxShape = 'rect' | 'radius' | 'round';

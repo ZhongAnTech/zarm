@@ -1,7 +1,7 @@
-import { ArrowRight as ArrowRightIcon, Close as CloseIcon } from '@zarm-design/icons';
-import classnames from 'classnames';
-import type { HTMLAttributes, MouseEvent } from 'react';
 import React, { forwardRef, useState } from 'react';
+import type { HTMLAttributes, MouseEvent } from 'react';
+import classnames from 'classnames';
+import { ArrowRight as ArrowRightIcon, Close as CloseIcon } from '@zarm-design/icons';
 import type { BaseMessageProps } from './interface';
 
 export interface MessageProps extends BaseMessageProps, HTMLAttributes<HTMLDivElement> {
