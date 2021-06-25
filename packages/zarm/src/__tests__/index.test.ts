@@ -9,7 +9,15 @@ describe('index', () => {
           "render": [Function],
         },
         "ActivityIndicator": [Function],
-        "Affix": [Function],
+        "Affix": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "offsetTop": 0,
+            "prefixCls": "za-affix",
+            "scrollContainer": [Window],
+          },
+          "render": [Function],
+        },
         "BackToTop": [Function],
         "Badge": Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -66,6 +74,7 @@ describe('index', () => {
             "disabled": false,
             "indeterminate": false,
             "prefixCls": "za-checkbox",
+            "shape": "radius",
           },
           "render": [Function],
         },
