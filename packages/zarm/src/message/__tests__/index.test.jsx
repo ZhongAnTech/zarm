@@ -41,8 +41,5 @@ describe('Message', () => {
     const wrapper = mount(<Message closable>foo</Message>);
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.find('.za-message__footer .za-icon').at(0).simulate('click');
-    setTimeout(() => {
-      expect(wrapper.state('visible')).toEqual(false);
-    }, 0);
   });
 });
