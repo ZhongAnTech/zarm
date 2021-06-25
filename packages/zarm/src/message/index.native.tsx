@@ -6,11 +6,11 @@ import {
   TouchableWithoutFeedback,
   GestureResponderEvent,
 } from 'react-native';
-import PropsType from './PropsType';
+import type { BaseMessageProps } from './interface';
 import messageStyle from './style/index.native';
 import { RenderWithText } from '../utils/renderWithText.native';
 
-export interface MessageProps extends PropsType {
+export interface MessageProps extends BaseMessageProps {
   style?: CSSProperties;
   styles?: typeof messageStyle;
   onClick?: (event: GestureResponderEvent) => void;
