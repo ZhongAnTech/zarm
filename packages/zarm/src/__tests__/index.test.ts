@@ -157,7 +157,13 @@ describe('index', () => {
           "render": [Function],
         },
         "Modal": [Function],
-        "NavBar": [Function],
+        "NavBar": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "prefixCls": "za-nav-bar",
+          },
+          "render": [Function],
+        },
         "NoticeBar": [Function],
         "Panel": Object {
           "$$typeof": Symbol(react.forward_ref),
