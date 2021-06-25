@@ -1,13 +1,8 @@
 import { ArrowRight as ArrowRightIcon, Close as CloseIcon } from '@zarm-design/icons';
 import classnames from 'classnames';
-import type { HTMLAttributes, MouseEvent } from 'react';
+import type { MouseEvent } from 'react';
 import React, { forwardRef, useState } from 'react';
-import type { BaseMessageProps } from './interface';
-
-export interface MessageProps extends BaseMessageProps, HTMLAttributes<HTMLDivElement> {
-  prefixCls?: string;
-  onClick?: (e: MouseEvent<HTMLDivElement>) => void;
-}
+import type { MessageProps } from './interface';
 
 const Message = forwardRef<HTMLDivElement, MessageProps>((props, ref) => {
   const {
@@ -25,9 +20,9 @@ const Message = forwardRef<HTMLDivElement, MessageProps>((props, ref) => {
   const [visible, setVisible] = useState(true);
 
   const classes = classnames(prefixCls, className, {
-    [`${prefixCls}--${theme}`]: !!theme,
-    [`${prefixCls}--${size}`]: !!size,
-    [`${prefixCls}--link`]: !!hasArrow,
+    [`${prefixCls}--${theme}`]: theme,
+    [`${prefixCls}--${size}`]: size,
+    [`${prefixCls}--link`]: hasArrow,
   });
 
   function handleClick(e: MouseEvent<HTMLDivElement>) {
@@ -64,5 +59,14 @@ const Message = forwardRef<HTMLDivElement, MessageProps>((props, ref) => {
 
   return null;
 });
+
+Message.displayName = 'Message';
+
+Message.defaultProps = {
+  prefixCls: 'za-message',
+  theme: 'primary',
+  hasArrow: false,
+  closable: false,
+};
 
 export default Message;

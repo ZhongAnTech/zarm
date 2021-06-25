@@ -44,11 +44,12 @@ exports[`NoticeBar snapshot renders correctly 1`] = `
   speed={50}
   theme="warning"
 >
-  <ForwardRef
+  <Message
     closable={false}
     delay={2000}
     hasArrow={false}
     icon={<ForwardRef(SvgVolume) />}
+    prefixCls="za-message"
     size="lg"
     speed={50}
     theme="warning"
@@ -117,7 +118,7 @@ exports[`NoticeBar snapshot renders correctly 1`] = `
         </div>
       </div>
     </div>
-  </ForwardRef>
+  </Message>
 </NoticeBar>
 `;
 

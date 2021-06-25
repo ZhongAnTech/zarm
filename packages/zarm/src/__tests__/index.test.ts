@@ -148,6 +148,12 @@ describe('index', () => {
         },
         "Message": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "closable": false,
+            "hasArrow": false,
+            "prefixCls": "za-message",
+            "theme": "primary",
+          },
           "render": [Function],
         },
         "Modal": [Function],
