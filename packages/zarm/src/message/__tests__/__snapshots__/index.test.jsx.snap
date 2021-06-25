@@ -1,11 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Message closable 1`] = `
-<Message
+<ForwardRef
   closable={true}
-  hasArrow={false}
-  prefixCls="za-message"
-  theme="primary"
 >
   <div
     className="za-message za-message--primary"
@@ -64,7 +61,7 @@ exports[`Message closable 1`] = `
       </ForwardRef(SvgClose)>
     </div>
   </div>
-</Message>
+</ForwardRef>
 `;
 
 exports[`Message hasArrow 1`] = `
