@@ -9,7 +9,7 @@ export interface NavBarProps
 }
 
 const NavBar = forwardRef<HTMLDivElement, NavBarProps>((props, ref) => {
-  const { prefixCls = 'za-nav-bar', className, style, title, left, right } = props;
+  const { prefixCls, className, style, title, left, right } = props;
 
   const cls = classnames(prefixCls, className);
   const titleCls = `${prefixCls}__title`;
@@ -27,5 +27,9 @@ const NavBar = forwardRef<HTMLDivElement, NavBarProps>((props, ref) => {
 });
 
 NavBar.displayName = 'NavBar';
+
+NavBar.defaultProps = {
+  prefixCls: 'za-nav-bar',
+};
 
 export default NavBar;
