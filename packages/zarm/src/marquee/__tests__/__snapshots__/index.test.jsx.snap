@@ -4,7 +4,6 @@ exports[`Marquee renders correctly 1`] = `
 <div>
   <div
     class="za-marquee"
-    data-speed="30"
   >
     <div
       class="za-marquee__body"

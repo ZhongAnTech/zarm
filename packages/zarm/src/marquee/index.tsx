@@ -9,18 +9,9 @@ export interface MarqueeProps extends HTMLAttributes<HTMLDivElement>, BaseMarque
 }
 
 const CLIENT_RECT = { bottom: 0, height: 0, left: 0, right: 0, top: 0, width: 0 };
-function Marquee(props: MarqueeProps) {
-  const {
-    prefixCls,
-    direction,
-    loop,
-    speed,
-    animationDelay,
-    height,
-    width,
-    children,
-    className,
-  } = props;
+
+const Marquee = React.forwardRef<HTMLDivElement, MarqueeProps>((props, ref) => {
+  const { prefixCls, direction, loop, speed, delay, height, width, children, className } = props;
   const containerRef = useRef<HTMLDivElement | null>(null);
   const scrollItemRef = useRef<HTMLDivElement | null>(null);
 
@@ -84,10 +75,10 @@ function Marquee(props: MarqueeProps) {
     style.innerHTML = modifier(getDistance(), key);
     document.getElementsByTagName('head')[0].appendChild(style);
     const animationDuration = (distance / speed) * 1000;
-    const animation = animationModifier(animationDuration, loop, animationDelay, key);
+    const animation = animationModifier(animationDuration, loop, delay, key);
     containerRef.current!.style.animation = animation;
     containerRef.current!.style.webkitTransform = animation;
-  }, [animationDelay, speed, direction, generateKey, getDistance, loop]);
+  }, [delay, speed, direction, generateKey, getDistance, loop]);
 
   useEffect(() => {
     containerBoundingRect.current = containerRef?.current?.getBoundingClientRect() || CLIENT_RECT;
@@ -101,7 +92,7 @@ function Marquee(props: MarqueeProps) {
   style!.height = height;
 
   return (
-    <div className={cls}>
+    <div className={cls} ref={ref}>
       <div className={`${prefixCls}__body`} ref={containerRef} style={style}>
         <div className={`${prefixCls}__content`} ref={scrollItemRef}>
           {children}
@@ -109,7 +100,7 @@ function Marquee(props: MarqueeProps) {
       </div>
     </div>
   );
-}
+});
 
 Marquee.displayName = 'Marquee';
 
@@ -118,7 +109,7 @@ Marquee.defaultProps = {
   direction: 'left',
   loop: true,
   speed: 30,
-  animationDelay: 0,
+  delay: 0,
 };
 
 export default Marquee;
