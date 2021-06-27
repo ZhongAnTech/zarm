@@ -15,6 +15,7 @@ export interface AffixStates {
 export interface AffixProps extends BaseAffixProps {
   prefixCls?: string;
   className?: string;
+  children?: React.ReactNode;
 }
 
 const DEFAULT_SCROLL_CONTAINER = canUseDOM ? window : undefined;
@@ -38,7 +39,6 @@ const Affix = forwardRef<unknown, AffixProps>((props, ref) => {
   });
 
   const savePlaceholderNode = (ref as any) || React.createRef<HTMLDivElement>();
-  const saveFixedNode = React.createRef<HTMLDivElement>();
 
   const fixedNodeTopRef = useRef('offsetBottom' in props ? -10000 : 10000);
 
@@ -48,11 +48,11 @@ const Affix = forwardRef<unknown, AffixProps>((props, ref) => {
   }, [scrollContainer]);
 
   const getContainerRect = (): DOMRect => {
-    const container = getContainer();
-
     if (!canUseDOM) {
       return { top: 0, bottom: 0 } as any;
     }
+
+    const container = getContainer();
 
     return container !== window
       ? (container as HTMLElement).getBoundingClientRect()
@@ -151,7 +151,7 @@ const Affix = forwardRef<unknown, AffixProps>((props, ref) => {
 
   return (
     <div ref={savePlaceholderNode}>
-      <div className={cls} ref={saveFixedNode} style={getAffixStyle()}>
+      <div className={cls} style={getAffixStyle()}>
         {children}
       </div>
     </div>
