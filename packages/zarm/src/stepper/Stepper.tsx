@@ -5,8 +5,8 @@ import type { BaseStepperProps } from './interface';
 import Button from '../button';
 import CustomInput from '../custom-input';
 import type { CustomInputProps } from '../custom-input';
-import type { InputProps } from '../input';
 import Input from '../input';
+import type { InputProps } from '../input';
 
 const compareValue = (value, max, min) => {
   if (typeof max === 'number') {

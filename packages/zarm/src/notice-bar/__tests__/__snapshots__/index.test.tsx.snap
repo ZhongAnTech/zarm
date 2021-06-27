@@ -3,6 +3,8 @@
 exports[`NoticeBar snapshot icon 1`] = `
 <div
   class="za-message za-message--warning za-message--lg"
+  delay="2000"
+  speed="50"
 >
   <div
     class="za-message__header"
@@ -54,7 +56,9 @@ exports[`NoticeBar snapshot renders correctly 1`] = `
   >
     <div
       className="za-message za-message--warning za-message--lg"
+      delay={2000}
       onClick={[Function]}
+      speed={50}
     >
       <div
         className="za-message__header"
@@ -121,6 +125,8 @@ exports[`NoticeBar snapshot renders correctly 1`] = `
 exports[`NoticeBar snapshot theme 1`] = `
 <div
   class="za-message za-message--danger za-message--lg"
+  delay="2000"
+  speed="50"
 >
   <div
     class="za-message__header"
