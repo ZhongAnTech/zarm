@@ -1,4 +1,4 @@
-export default interface PropsType {
+export interface BaseActivityIndicatorProps {
   size?: 'lg';
   strokeWidth?: number;
   percent?: number;
