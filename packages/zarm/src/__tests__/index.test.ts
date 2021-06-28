@@ -8,7 +8,17 @@ describe('index', () => {
           "$$typeof": Symbol(react.forward_ref),
           "render": [Function],
         },
-        "ActivityIndicator": [Function],
+        "ActivityIndicator": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "loading": true,
+            "percent": 20,
+            "prefixCls": "za-activity-indicator",
+            "strokeWidth": 5,
+            "type": "circular",
+          },
+          "render": [Function],
+        },
         "Affix": [Function],
         "BackToTop": [Function],
         "Badge": Object {

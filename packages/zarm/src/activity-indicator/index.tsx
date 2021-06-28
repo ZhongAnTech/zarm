@@ -6,7 +6,15 @@ const DIAMETER = 62;
 
 const Circular = React.forwardRef(
   (
-    { prefixCls, className, size, percent, strokeWidth, loading, ...rest }: ActivityIndicatorProps,
+    {
+      prefixCls,
+      className,
+      size,
+      percent,
+      strokeWidth,
+      loading,
+      ...htmlAttributes
+    }: ActivityIndicatorProps,
     ref: any,
   ) => {
     const cls = classnames(className, prefixCls, {
@@ -19,7 +27,7 @@ const Circular = React.forwardRef(
 
     if (loading) {
       return (
-        <div className={cls} {...rest} ref={ref}>
+        <div className={cls} {...htmlAttributes} ref={ref}>
           <svg viewBox={`${DIAMETER / 2} ${DIAMETER / 2} ${DIAMETER} ${DIAMETER}`}>
             <circle cx={DIAMETER} cy={DIAMETER} r={r} fill="none" style={{ strokeWidth }} />
           </svg>
@@ -34,7 +42,7 @@ const Circular = React.forwardRef(
     };
 
     return (
-      <div className={cls} {...rest} ref={ref}>
+      <div className={cls} {...htmlAttributes} ref={ref}>
         <svg viewBox={`0 0 ${DIAMETER} ${DIAMETER}`}>
           <circle
             className={`${prefixCls}__path`}
@@ -60,14 +68,18 @@ const Circular = React.forwardRef(
 
 Circular.displayName = 'Circular';
 
+type HTMLDivElementAttributeKeys = keyof HTMLAttributes<HTMLDivElement>;
 const Spinner = React.forwardRef(
   (
     {
       prefixCls,
       className,
       size,
-      ...rest
-    }: Pick<ActivityIndicatorProps, 'prefixCls' | 'className' | 'size' | 'style'>,
+      ...htmlAttributes
+    }: Pick<
+      ActivityIndicatorProps,
+      'prefixCls' | 'className' | 'size' | HTMLDivElementAttributeKeys
+    >,
     ref: any,
   ) => {
     const cls = classnames(prefixCls, `${prefixCls}--spinner`, className, {
@@ -80,7 +92,7 @@ const Spinner = React.forwardRef(
     }
 
     return (
-      <div className={cls} {...rest} ref={ref}>
+      <div className={cls} {...htmlAttributes} ref={ref}>
         {spinner}
       </div>
     );
@@ -96,11 +108,12 @@ export interface ActivityIndicatorProps
 }
 
 const ActivityIndicator = React.forwardRef<unknown, ActivityIndicatorProps>((props, ref) => {
-  return props.type !== 'spinner' ? (
-    <Circular {...props} ref={ref} />
-  ) : (
-    <Spinner {...props} ref={ref} />
-  );
+  if (props.type !== 'spinner') {
+    const { type, ...rest } = props;
+    return <Circular {...rest} ref={ref} />;
+  }
+  const { strokeWidth, percent, loading, type, ...rest } = props;
+  return <Spinner {...rest} ref={ref} />;
 });
 
 ActivityIndicator.defaultProps = {
