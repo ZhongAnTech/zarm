@@ -93,6 +93,10 @@
       var(--button-primary-shadow-color),
     );
 
+    @include m(loading) {
+      @include button-loading(var(--button-primary-color));
+    }
+
     @include m(link) {
       @include button-link(
         var(--button-primary-ghost-color),
@@ -129,6 +133,10 @@
       var(--button-disabled-opacity),
       var(--button-danger-shadow-color),
     );
+
+    @include m(loading) {
+      @include button-loading(var(--button-danger-color));
+    }
 
     @include m(link) {
       @include button-link(

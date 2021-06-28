@@ -177,3 +177,14 @@
   border-style: solid;
   border-radius: $border-radius;
 }
+
+// 加载状态图标颜色设置
+@mixin button-loading($color) {
+  @include b(activity-indicator) {
+    @include m(circular) {
+      circle {
+        stroke: $color;
+      }
+    }
+  }
+}

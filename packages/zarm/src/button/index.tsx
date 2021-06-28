@@ -77,6 +77,7 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       [`${prefixCls}--ghost`]: !!ghost,
       [`${prefixCls}--shadow`]: !!shadow,
       [`${prefixCls}--disabled`]: !!disabled,
+      [`${prefixCls}--loading`]: loading,
     });
 
     const iconRender = loading ? <ActivityIndicator /> : icon;
