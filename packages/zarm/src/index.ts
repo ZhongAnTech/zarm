@@ -86,6 +86,8 @@ export { default as Radio } from './radio';
 export { default as Scroller } from './scroller';
 export { default as SearchBar } from './search-bar';
 export { default as Slider } from './slider';
+
+export type { ActivityIndicatorProps } from './activity-indicator';
 export { default as ActivityIndicator } from './activity-indicator';
 
 export type { StepperProps } from './stepper';
