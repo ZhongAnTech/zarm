@@ -289,31 +289,6 @@ exports[`Progress renders correctly 1`] = `
 </div>
 `;
 
-exports[`Progress renders correctly if percent > 100 1`] = `
-<div
-  class="za-progress za-progress--line za-progress--primary za-progress--md"
->
-  <div
-    class="za-progress__outer"
-  >
-    <div
-      class="za-progress__track"
-      style="height:8;border-radius:8px"
-    >
-      <div
-        class="za-progress__thumb"
-        style="width:200%;height:8px;border-radius:8px"
-      />
-    </div>
-    <div
-      class="za-progress__text"
-    >
-      200%
-    </div>
-  </div>
-</div>
-`;
-
 exports[`Progress renders has children correctly 1`] = `
 <div
   class="za-progress za-progress--line za-progress--primary za-progress--md"
