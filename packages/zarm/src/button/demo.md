@@ -118,7 +118,25 @@ ReactDOM.render(
   <>
     <Button icon={<Icon type="right-round" theme="success" />}>success</Button>
     <Button icon={<Icon type="wrong-round" theme="danger" />}>danger</Button>
+  </>,
+  mountNode,
+);
+```
+
+## 加载状态
+
+```jsx
+import { Button, Icon } from 'zarm';
+
+ReactDOM.render(
+  <>
     <Button loading>loading</Button>
+    <Button loading theme="primary">
+      loading
+    </Button>
+    <Button loading disabled theme="primary">
+      disabled
+    </Button>
   </>,
   mountNode,
 );
