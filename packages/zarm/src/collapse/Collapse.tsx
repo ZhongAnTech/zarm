@@ -16,15 +16,30 @@ interface CollapseStates {
   multiple?: boolean;
 }
 
-const getActiveKey = (props: CollapseProps) => {
+let isMount = true;
+
+const initActiveKey = (props: CollapseProps) => {
   const { multiple, activeKey, defaultActiveKey } = props;
+  let value;
+  if (typeof defaultActiveKey !== 'undefined') {
+    value = defaultActiveKey;
+  }
+  if (typeof activeKey !== 'undefined') {
+    value = activeKey || defaultActiveKey;
+  }
+
+  if (value) {
+    return multiple ? [].concat(value) : value;
+  }
+  return multiple ? [] : undefined;
+};
+
+const getActiveKey = (props: CollapseProps) => {
+  const { multiple, activeKey } = props;
   let value;
 
   if (typeof activeKey !== 'undefined') {
     value = activeKey;
-  }
-  if (typeof defaultActiveKey !== 'undefined') {
-    value = defaultActiveKey;
   }
 
   if (value) {
@@ -45,24 +60,25 @@ export default class Collapse extends Component<CollapseProps, CollapseStates> {
   static Item: typeof CollapseItem;
 
   state: CollapseStates = {
-    activeKey: getActiveKey(this.props),
+    activeKey: initActiveKey(this.props),
   };
 
   static getDerivedStateFromProps(nextProps: CollapseProps, state: CollapseStates) {
     const newState: CollapseStates = {};
-    if ('activeKey' in nextProps && nextProps.activeKey !== state.prevActiveKey) {
-      newState.activeKey = getActiveKey(nextProps);
-      newState.prevActiveKey = nextProps.activeKey;
+
+    if (!isMount) {
+      if ('activeKey' in nextProps && nextProps.activeKey !== state.activeKey) {
+        newState.activeKey = getActiveKey(nextProps);
+      }
     }
-    if ('animated' in nextProps) {
-      newState.animated = nextProps.animated;
+
+    if ('activeKey' in newState) {
+      return newState;
     }
-    if ('multiple' in nextProps) {
-      newState.multiple = nextProps.multiple;
-    }
-    return 'activeKey' in newState || 'animated' in newState || 'multiple' in newState
-      ? newState
-      : null;
+
+    isMount = false;
+
+    return null;
   }
 
   onItemChange = (onItemChange, key) => {
@@ -102,7 +118,8 @@ export default class Collapse extends Component<CollapseProps, CollapseStates> {
   };
 
   renderItems = () => {
-    const { activeKey, multiple, animated } = this.state;
+    const { activeKey } = this.state;
+    const { multiple, animated } = this.props;
     return Children.map(this.props.children, (ele: ReactElement<CollapseItemProps>) => {
       const { disabled, onChange } = ele.props;
       const { key } = ele;
