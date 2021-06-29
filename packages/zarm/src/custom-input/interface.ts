@@ -1,5 +1,7 @@
+export type CustomInputType = 'number' | 'price' | 'idcard';
+
 export interface BaseCustomInputProps {
-  type?: 'number' | 'price' | 'idcard';
+  type?: CustomInputType;
   clearable?: boolean;
   onChange?: (value?: string) => void;
   onFocus?: (value?: string) => void;

@@ -19,11 +19,10 @@ import {
   TextStyle,
   Platform,
 } from 'react-native';
-
-import PropsType from './PropsType';
+import type { BaseNavBarProps } from './interface';
 import navBarStyle from './style/index.native';
 
-export interface NavBarProps extends PropsType {
+export interface NavBarProps extends BaseNavBarProps {
   style?: CSSProperties;
   styles?: typeof navBarStyle;
 }

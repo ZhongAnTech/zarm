@@ -8,10 +8,28 @@ describe('index', () => {
           "$$typeof": Symbol(react.forward_ref),
           "render": [Function],
         },
-        "ActivityIndicator": [Function],
+        "ActivityIndicator": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "loading": true,
+            "percent": 20,
+            "prefixCls": "za-activity-indicator",
+            "strokeWidth": 5,
+            "type": "circular",
+          },
+          "render": [Function],
+        },
         "Affix": [Function],
         "BackToTop": [Function],
-        "Badge": [Function],
+        "Badge": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "prefixCls": "za-badge",
+            "shape": "dot",
+            "theme": "danger",
+          },
+          "render": [Function],
+        },
         "Button": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
@@ -30,8 +48,38 @@ describe('index', () => {
         },
         "Calendar": [Function],
         "Carousel": [Function],
-        "Cell": [Function],
-        "Checkbox": [Function],
+        "Cell": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "disabled": false,
+            "hasArrow": false,
+            "prefixCls": "za-cell",
+          },
+          "render": [Function],
+        },
+        "Checkbox": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "Group": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "defaultProps": Object {
+              "block": false,
+              "compact": false,
+              "disabled": false,
+              "ghost": false,
+              "prefixCls": "za-checkbox-group",
+              "shape": "radius",
+              "size": "xs",
+            },
+            "render": [Function],
+          },
+          "defaultProps": Object {
+            "disabled": false,
+            "indeterminate": false,
+            "prefixCls": "za-checkbox",
+            "shape": "radius",
+          },
+          "render": [Function],
+        },
         "Collapse": [Function],
         "ConfigProvider": [Function],
         "ConfigReceiver": [Function],
@@ -108,11 +156,32 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "Message": [Function],
+        "Message": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "closable": false,
+            "hasArrow": false,
+            "prefixCls": "za-message",
+            "theme": "primary",
+          },
+          "render": [Function],
+        },
         "Modal": [Function],
-        "NavBar": [Function],
+        "NavBar": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "prefixCls": "za-nav-bar",
+          },
+          "render": [Function],
+        },
         "NoticeBar": [Function],
-        "Panel": [Function],
+        "Panel": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "prefixCls": "za-panel",
+          },
+          "render": [Function],
+        },
         "Picker": Object {
           "$$typeof": Symbol(react.forward_ref),
           "render": [Function],
@@ -133,7 +202,28 @@ describe('index', () => {
           "$$typeof": Symbol(react.forward_ref),
           "render": [Function],
         },
-        "Radio": [Function],
+        "Radio": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "Group": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "defaultProps": Object {
+              "block": false,
+              "compact": false,
+              "disabled": false,
+              "ghost": false,
+              "prefixCls": "za-radio-group",
+              "shape": "radius",
+              "size": "xs",
+            },
+            "render": [Function],
+          },
+          "defaultProps": Object {
+            "disabled": false,
+            "prefixCls": "za-radio",
+            "shape": "radius",
+          },
+          "render": [Function],
+        },
         "Scroller": [Function],
         "SearchBar": Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -148,7 +238,18 @@ describe('index', () => {
           "$$typeof": Symbol(react.forward_ref),
           "render": [Function],
         },
-        "Stepper": [Function],
+        "Stepper": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "disableInput": false,
+            "disabled": false,
+            "prefixCls": "za-stepper",
+            "shape": "radius",
+            "step": 1,
+            "type": "number",
+          },
+          "render": [Function],
+        },
         "SwipeAction": [Function],
         "Switch": Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -181,6 +282,7 @@ describe('index', () => {
         "Tooltip": [Function],
         "Trigger": [Function],
         "Wheel": [Function],
+        "useDrag": [Function],
       }
     `);
   });

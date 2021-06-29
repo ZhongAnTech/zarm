@@ -1,6 +1,6 @@
-import React from 'react';
-import { render, shallow, mount } from 'enzyme';
+import { mount, render, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
+import React from 'react';
 import Message from '../index';
 
 describe('Message', () => {
@@ -41,6 +41,5 @@ describe('Message', () => {
     const wrapper = mount(<Message closable>foo</Message>);
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.find('.za-message__footer .za-icon').at(0).simulate('click');
-    expect(wrapper.state('visible')).toEqual(false);
   });
 });

@@ -1,5 +1,5 @@
 import type { ReactNode, CSSProperties } from 'react';
-import type badgePropsType from '../badge/PropsType';
+import type { BaseBadgeProps } from '../badge/interface';
 
 export interface BaseTabBarProps {
   onChange?: (value?: number | string) => void;
@@ -14,7 +14,7 @@ export interface BaseTabBarItemProps {
   title?: ReactNode;
   icon?: ReactNode;
   activeIcon?: ReactNode;
-  badge?: badgePropsType;
+  badge?: BaseBadgeProps;
   selected?: boolean;
   style?: CSSProperties;
   onChange?: (value?: number | string) => void;

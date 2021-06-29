@@ -133,12 +133,16 @@ const Demo = () => {
             onMaskClick={() => setVisiblePopup(false)}
             afterOpen={() => console.log('打开')}
             afterClose={() => console.log('关闭')}
+            className="provider-popup"
             destroy={false}
             mountContainer={() => document.body}
           >
-            <div className="popup-box" onClick={() => setVisiblePopup(false)}>
+            <div className="popup-box-bottom" onClick={() => setVisiblePopup(false)}>
               关闭
             </div>
+            <Button block theme="primary">
+              按钮
+            </Button>
           </Popup>
 
           <TabBar visible={true} activeKey={1}>

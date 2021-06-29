@@ -1,5 +1,4 @@
-import { ChangeEvent } from 'react';
-import { ButtonSize } from '../button/interface';
+import type { ButtonSize } from '../button/interface';
 
 export type CheckboxType = 'button' | 'cell';
 export type CheckboxShape = 'rect' | 'radius' | 'round';
@@ -15,7 +14,6 @@ export interface BaseCheckboxProps {
   defaultChecked?: boolean;
   indeterminate?: boolean;
   id?: string;
-  onChange?: (event?: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface BaseCheckboxGroupProps {

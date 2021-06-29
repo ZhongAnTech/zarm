@@ -1,8 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 
-export default interface PropsType {
+export interface BaseBadgeProps {
   theme?: 'primary' | 'success' | 'warning' | 'danger';
   shape?: 'dot' | 'radius' | 'round' | 'rect' | 'circle' | 'leaf';
   text?: React.ReactNode;
-  style?: React.CSSProperties;
 }

@@ -6,11 +6,11 @@ import {
   ViewStyle,
   GestureResponderEvent,
 } from 'react-native';
-import PropsType from './PropsType';
+import type { BaseCellProps } from './interface';
 import cellStyle from './style/index.native';
 import { RenderWithText } from '../utils/renderWithText.native';
 
-export interface CellProps extends PropsType {
+export interface CellProps extends BaseCellProps {
   style?: CSSProperties;
   styles?: typeof cellStyle;
   onClick?: (event: GestureResponderEvent) => void;

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import { CloseCircleFill } from '@zarm-design/icons';
-import type { BaseCustomInputProps } from './interface';
 import KeyboardPicker from '../keyboard-picker';
+import useClickAway from '../useClickAway';
 import { getValue } from '../input/utils';
-import useClickAway from '../hooks/useClickAway';
+import type { BaseCustomInputProps } from './interface';
 
 export interface CustomInputProps
   extends BaseCustomInputProps,
