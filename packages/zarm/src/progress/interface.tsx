@@ -7,10 +7,13 @@ export type ProgressShape = 'line' | 'circle' | 'semi-circle';
 export type ProgressStrokeShape = 'round' | 'rect';
 export type ProgressPercent = number;
 export type PercentFormatter = (percent?: number) => ReactNode;
+export type WeightMap = {
+  [weight in KnownSize]: number;
+};
 
-export default interface PropsType {
+export interface BaseProgressProps {
   // 类名前缀
-  prefixCls: string;
+  prefixCls?: string;
 
   // 进度条主题
   theme?: ProgressTheme;
