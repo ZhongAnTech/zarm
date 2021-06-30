@@ -192,7 +192,19 @@ describe('index', () => {
           "$$typeof": Symbol(react.forward_ref),
           "render": [Function],
         },
-        "Progress": [Function],
+        "Progress": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "percent": 0,
+            "prefixCls": "za-progress",
+            "shape": "line",
+            "size": "md",
+            "strokeShape": "round",
+            "text": [Function],
+            "theme": "primary",
+          },
+          "render": [Function],
+        },
         "Pull": Object {
           "$$typeof": Symbol(react.forward_ref),
           "render": [Function],
