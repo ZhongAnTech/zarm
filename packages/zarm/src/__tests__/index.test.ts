@@ -190,11 +190,6 @@ describe('index', () => {
         "Popper": [Function],
         "Popup": Object {
           "$$typeof": Symbol(react.forward_ref),
-          "defaultProps": Object {
-            "destroy": true,
-            "prefixCls": "za-popup",
-            "visible": false,
-          },
           "render": [Function],
         },
         "Progress": [Function],
@@ -259,7 +254,11 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "TabBar": [Function],
+        "TabBar": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "Item": [Function],
+          "render": [Function],
+        },
         "Tabs": Object {
           "$$typeof": Symbol(react.forward_ref),
           "Panel": Object {
