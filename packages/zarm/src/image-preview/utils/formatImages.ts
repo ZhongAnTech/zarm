@@ -1,5 +1,5 @@
 import { isObject, isString } from '../../utils/validate';
-import type { Images, ImageObject } from '../PropsType';
+import type { Images, ImageObject } from '../interface';
 import LOAD_STATUS from './loadStatus';
 
 function isImageString(image: ImageObject | string): image is string {

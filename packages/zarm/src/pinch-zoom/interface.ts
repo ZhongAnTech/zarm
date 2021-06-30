@@ -10,3 +10,9 @@ export interface ApplyChangeOpts {
   originX?: number;
   originY?: number;
 }
+
+export interface BasePinchZoomProps {
+  minScale: number;
+  maxScale: number;
+  onPinchZoom?: Function;
+}

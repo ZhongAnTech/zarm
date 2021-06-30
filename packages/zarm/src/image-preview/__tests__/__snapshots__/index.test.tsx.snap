@@ -10,6 +10,8 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
       "https://static.zhongan.com/website/health/zarm/images/banners/3.png",
     ]
   }
+  maxScale={3}
+  minScale={1}
   onChange={[MockFunction]}
   prefixCls="za-image-preview"
   showPagination={true}
@@ -59,7 +61,7 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
                   style="animation-duration: 200ms;"
                 >
                   <div
-                    class="za-image-preview__content"
+                    class="za-image-preview__content za-image-preview__content--portrait"
                   >
                     <div
                       class="za-carousel za-carousel--horizontal"
@@ -72,7 +74,7 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
                           class="za-carousel__item za-image-preview__item"
                         >
                           <div
-                            class="za-image-preview__item__img za-pinch-zoom"
+                            class="za-pinch-zoom za-image-preview__item__img"
                           >
                             <img
                               alt=""
@@ -85,7 +87,7 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
                           class="za-carousel__item za-image-preview__item"
                         >
                           <div
-                            class="za-image-preview__item__img za-pinch-zoom"
+                            class="za-pinch-zoom za-image-preview__item__img"
                           >
                             <img
                               alt=""
@@ -98,7 +100,7 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
                           class="za-carousel__item za-image-preview__item"
                         >
                           <div
-                            class="za-image-preview__item__img za-pinch-zoom"
+                            class="za-pinch-zoom za-image-preview__item__img"
                           >
                             <img
                               alt=""
@@ -173,7 +175,7 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
               }
             >
               <div
-                className="za-image-preview__content"
+                className="za-image-preview__content za-image-preview__content--portrait"
                 onClick={[Function]}
                 onMouseDown={[Function]}
                 onMouseMove={[Function]}
@@ -228,7 +230,7 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
                             prefixCls="za-pinch-zoom"
                           >
                             <div
-                              className="za-image-preview__item__img za-pinch-zoom"
+                              className="za-pinch-zoom za-image-preview__item__img"
                             >
                               <img
                                 alt=""
@@ -236,6 +238,11 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
                                 key="0/.0"
                                 onLoad={[Function]}
                                 src="https://static.zhongan.com/website/health/zarm/images/banners/1.png"
+                                style={
+                                  Object {
+                                    "height": "",
+                                  }
+                                }
                               />
                             </div>
                           </PinchZoom>
@@ -251,7 +258,7 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
                             prefixCls="za-pinch-zoom"
                           >
                             <div
-                              className="za-image-preview__item__img za-pinch-zoom"
+                              className="za-pinch-zoom za-image-preview__item__img"
                             >
                               <img
                                 alt=""
@@ -259,6 +266,11 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
                                 key="0/.0"
                                 onLoad={[Function]}
                                 src="https://static.zhongan.com/website/health/zarm/images/banners/2.png"
+                                style={
+                                  Object {
+                                    "height": "",
+                                  }
+                                }
                               />
                             </div>
                           </PinchZoom>
@@ -274,7 +286,7 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
                             prefixCls="za-pinch-zoom"
                           >
                             <div
-                              className="za-image-preview__item__img za-pinch-zoom"
+                              className="za-pinch-zoom za-image-preview__item__img"
                             >
                               <img
                                 alt=""
@@ -282,6 +294,11 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
                                 key="0/.0"
                                 onLoad={[Function]}
                                 src="https://static.zhongan.com/website/health/zarm/images/banners/3.png"
+                                style={
+                                  Object {
+                                    "height": "",
+                                  }
+                                }
                               />
                             </div>
                           </PinchZoom>
@@ -330,6 +347,8 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
       },
     ]
   }
+  maxScale={3}
+  minScale={1}
   onChange={[MockFunction]}
   prefixCls="za-image-preview"
   showPagination={true}
@@ -379,7 +398,7 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
                   style="animation-duration: 200ms;"
                 >
                   <div
-                    class="za-image-preview__content"
+                    class="za-image-preview__content za-image-preview__content--portrait"
                   >
                     <div
                       class="za-carousel za-carousel--horizontal"
@@ -392,7 +411,7 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
                           class="za-carousel__item za-image-preview__item"
                         >
                           <div
-                            class="za-image-preview__item__img za-pinch-zoom"
+                            class="za-pinch-zoom za-image-preview__item__img"
                           >
                             <img
                               alt=""
@@ -405,7 +424,7 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
                           class="za-carousel__item za-image-preview__item"
                         >
                           <div
-                            class="za-image-preview__item__img za-pinch-zoom"
+                            class="za-pinch-zoom za-image-preview__item__img"
                           >
                             <img
                               alt=""
@@ -418,7 +437,7 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
                           class="za-carousel__item za-image-preview__item"
                         >
                           <div
-                            class="za-image-preview__item__img za-pinch-zoom"
+                            class="za-pinch-zoom za-image-preview__item__img"
                           >
                             <img
                               alt=""
@@ -496,7 +515,7 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
               }
             >
               <div
-                className="za-image-preview__content"
+                className="za-image-preview__content za-image-preview__content--portrait"
                 onClick={[Function]}
                 onMouseDown={[Function]}
                 onMouseMove={[Function]}
@@ -551,7 +570,7 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
                             prefixCls="za-pinch-zoom"
                           >
                             <div
-                              className="za-image-preview__item__img za-pinch-zoom"
+                              className="za-pinch-zoom za-image-preview__item__img"
                             >
                               <img
                                 alt=""
@@ -559,6 +578,11 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
                                 key="0/.0"
                                 onLoad={[Function]}
                                 src="https://cdn-health.zhongan.com/zarm/imagePreview/compress_1.png"
+                                style={
+                                  Object {
+                                    "height": "",
+                                  }
+                                }
                               />
                             </div>
                           </PinchZoom>
@@ -574,7 +598,7 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
                             prefixCls="za-pinch-zoom"
                           >
                             <div
-                              className="za-image-preview__item__img za-pinch-zoom"
+                              className="za-pinch-zoom za-image-preview__item__img"
                             >
                               <img
                                 alt=""
@@ -582,6 +606,11 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
                                 key="0/.0"
                                 onLoad={[Function]}
                                 src="https://cdn-health.zhongan.com/zarm/imagePreview/compress_2.png"
+                                style={
+                                  Object {
+                                    "height": "",
+                                  }
+                                }
                               />
                             </div>
                           </PinchZoom>
@@ -597,7 +626,7 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
                             prefixCls="za-pinch-zoom"
                           >
                             <div
-                              className="za-image-preview__item__img za-pinch-zoom"
+                              className="za-pinch-zoom za-image-preview__item__img"
                             >
                               <img
                                 alt=""
@@ -605,6 +634,11 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
                                 key="0/.0"
                                 onLoad={[Function]}
                                 src="https://cdn-health.zhongan.com/zarm/imagePreview/compress_3.png"
+                                style={
+                                  Object {
+                                    "height": "",
+                                  }
+                                }
                               />
                             </div>
                           </PinchZoom>
