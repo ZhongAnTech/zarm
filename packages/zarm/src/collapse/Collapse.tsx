@@ -18,7 +18,9 @@ interface CollapseStates {
 
 const getActiveKey = (props: CollapseProps) => {
   const { multiple, activeKey, defaultActiveKey } = props;
+
   let value;
+
   if (typeof activeKey !== 'undefined') {
     value = activeKey;
   }

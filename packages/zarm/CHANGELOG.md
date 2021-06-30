@@ -1,5 +1,11 @@
 # 版本更新日志
 
+## v2.9.3
+
+- Bug Fix
+
+  - [Button] 修复 primary 主题下 loading 状态活动指示器不可见的 bug。[#692](https://github.com/ZhongAnTech/zarm/pull/692)
+
 ## v2.9.2
 
 - Bug Fix
