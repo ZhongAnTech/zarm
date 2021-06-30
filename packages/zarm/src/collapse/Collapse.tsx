@@ -16,30 +16,15 @@ interface CollapseStates {
   multiple?: boolean;
 }
 
-let isMount = true;
-
-const initActiveKey = (props: CollapseProps) => {
+const getActiveKey = (props: CollapseProps) => {
   const { multiple, activeKey, defaultActiveKey } = props;
   let value;
-  if (typeof defaultActiveKey !== 'undefined') {
-    value = defaultActiveKey;
-  }
-  if (typeof activeKey !== 'undefined') {
-    value = activeKey || defaultActiveKey;
-  }
-
-  if (value) {
-    return multiple ? [].concat(value) : value;
-  }
-  return multiple ? [] : undefined;
-};
-
-const getActiveKey = (props: CollapseProps) => {
-  const { multiple, activeKey } = props;
-  let value;
-
   if (typeof activeKey !== 'undefined') {
     value = activeKey;
+  }
+
+  if (!('activeKey' in props) && typeof defaultActiveKey !== 'undefined') {
+    value = defaultActiveKey;
   }
 
   if (value) {
@@ -60,23 +45,19 @@ export default class Collapse extends Component<CollapseProps, CollapseStates> {
   static Item: typeof CollapseItem;
 
   state: CollapseStates = {
-    activeKey: initActiveKey(this.props),
+    activeKey: getActiveKey(this.props),
   };
 
   static getDerivedStateFromProps(nextProps: CollapseProps, state: CollapseStates) {
     const newState: CollapseStates = {};
 
-    if (!isMount) {
-      if ('activeKey' in nextProps && nextProps.activeKey !== state.activeKey) {
-        newState.activeKey = getActiveKey(nextProps);
-      }
+    if ('activeKey' in nextProps && nextProps.activeKey !== state.activeKey) {
+      newState.activeKey = getActiveKey(nextProps);
     }
 
     if ('activeKey' in newState) {
       return newState;
     }
-
-    isMount = false;
 
     return null;
   }
