@@ -128,10 +128,9 @@ export default class Collapse extends Component<CollapseProps, CollapseStates> {
       defaultActiveKey,
       ...rest
     } = this.props;
-    const { animated: animatedState } = this.state;
 
     const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--animated`]: animatedState,
+      [`${prefixCls}--animated`]: animated,
     });
 
     return (
