@@ -6,7 +6,6 @@ import type TabBarItem from './TabBarItem';
 export interface TabBarProps extends BaseTabBarProps {
   prefixCls?: string;
   className?: string;
-  safeIphoneX?: boolean;
 }
 
 class TabBar extends PureComponent<TabBarProps, any> {
@@ -15,6 +14,7 @@ class TabBar extends PureComponent<TabBarProps, any> {
   static defaultProps: TabBarProps = {
     prefixCls: 'za-tab-bar',
     visible: true,
+    safeIphoneX: false,
   };
 
   onChildChange = (value: string | number) => {
