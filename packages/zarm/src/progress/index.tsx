@@ -1,5 +1,5 @@
 import React, { useImperativeHandle, useRef } from 'react';
-import type { ForwardedRef, HTMLAttributes } from 'react';
+import type { ForwardedRef, HTMLAttributes, CSSProperties } from 'react';
 import classnames from 'classnames';
 import type { BaseProgressProps } from './interface';
 import {
@@ -12,7 +12,13 @@ import {
   useIndicator,
 } from './hooks';
 
-export interface ProgressProps extends BaseProgressProps, HTMLAttributes<HTMLDivElement> {}
+export interface ProgressProps extends BaseProgressProps, HTMLAttributes<HTMLDivElement> {
+  // 类名前缀
+  prefixCls?: string;
+  // 进度条自定义样式
+  style?: CSSProperties;
+  className?: string;
+}
 
 const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
   (

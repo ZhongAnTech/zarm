@@ -1,4 +1,4 @@
-import { CSSProperties, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 export type KnownSize = 'lg' | 'md' | 'sm';
 export type ProgressTheme = 'primary' | 'success' | 'warning' | 'danger';
@@ -12,9 +12,6 @@ export type WeightMap = {
 };
 
 export interface BaseProgressProps {
-  // 类名前缀
-  prefixCls?: string;
-
   // 进度条主题
   theme?: ProgressTheme;
 
@@ -35,9 +32,4 @@ export interface BaseProgressProps {
 
   // 进度信息
   text?: PercentFormatter;
-
-  // 进度条自定义样式
-  style?: CSSProperties;
-
-  className?: string;
 }
