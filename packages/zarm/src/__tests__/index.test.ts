@@ -8,16 +8,18 @@ describe('index', () => {
           "$$typeof": Symbol(react.forward_ref),
           "render": [Function],
         },
-        "ActivityIndicator": [Function],
-        "Affix": Object {
+        "ActivityIndicator": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
-            "offsetTop": 0,
-            "prefixCls": "za-affix",
-            "scrollContainer": [Window],
+            "loading": true,
+            "percent": 20,
+            "prefixCls": "za-activity-indicator",
+            "strokeWidth": 5,
+            "type": "circular",
           },
           "render": [Function],
         },
+        "Affix": [Function],
         "BackToTop": [Function],
         "Badge": Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -188,14 +190,21 @@ describe('index', () => {
         "Popper": [Function],
         "Popup": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        },
+        "Progress": Object {
+          "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
-            "destroy": true,
-            "prefixCls": "za-popup",
-            "visible": false,
+            "percent": 0,
+            "prefixCls": "za-progress",
+            "shape": "line",
+            "size": "md",
+            "strokeShape": "round",
+            "text": [Function],
+            "theme": "primary",
           },
           "render": [Function],
         },
-        "Progress": [Function],
         "Pull": Object {
           "$$typeof": Symbol(react.forward_ref),
           "render": [Function],
@@ -257,7 +266,11 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "TabBar": [Function],
+        "TabBar": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "Item": [Function],
+          "render": [Function],
+        },
         "Tabs": Object {
           "$$typeof": Symbol(react.forward_ref),
           "Panel": Object {

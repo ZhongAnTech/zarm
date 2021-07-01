@@ -6,6 +6,7 @@ export interface BaseTabBarProps {
   visible?: boolean;
   defaultActiveKey?: string | number;
   activeKey?: string | number;
+  safeIphoneX?: boolean;
   style?: CSSProperties;
 }
 

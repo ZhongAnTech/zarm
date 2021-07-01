@@ -13,6 +13,7 @@ const IS_REACT_16 = !!ReactDOM.createPortal;
 export interface PortalProps extends BasePopupProps {
   prefixCls?: string;
   className?: string;
+  safeIphoneX?: boolean;
   handlePortalUnmount?: () => void;
 }
 
@@ -145,6 +146,7 @@ export default class Portal extends PureComponent<PortalProps, PortalState> {
       children,
       width,
       visible,
+      safeIphoneX,
     } = this.props;
     const { isPending } = this.state;
     const animationState = visible ? 'enter' : 'leave';
@@ -155,6 +157,7 @@ export default class Portal extends PureComponent<PortalProps, PortalState> {
       }),
       popup: classnames(prefixCls, {
         [`${prefixCls}--${direction}`]: !!direction,
+        [`${prefixCls}--safe`]: direction === 'bottom' && safeIphoneX,
         [`${prefixCls}--nomask`]: direction === 'center' && !mask,
         [`za-${animationType}-${animationState}`]: direction === 'center' && isPending,
       }),

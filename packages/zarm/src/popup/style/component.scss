@@ -82,4 +82,8 @@
       transform: translate(0, 0);
     }
   }
+
+  @include m(safe) {
+    @include safeIphoneX(true);
+  }
 }
