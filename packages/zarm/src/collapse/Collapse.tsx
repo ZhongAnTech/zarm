@@ -18,12 +18,14 @@ interface CollapseStates {
 
 const getActiveKey = (props: CollapseProps) => {
   const { multiple, activeKey, defaultActiveKey } = props;
+
   let value;
 
   if (typeof activeKey !== 'undefined') {
     value = activeKey;
   }
-  if (typeof defaultActiveKey !== 'undefined') {
+
+  if (!('activeKey' in props) && typeof defaultActiveKey !== 'undefined') {
     value = defaultActiveKey;
   }
 
@@ -50,19 +52,16 @@ export default class Collapse extends Component<CollapseProps, CollapseStates> {
 
   static getDerivedStateFromProps(nextProps: CollapseProps, state: CollapseStates) {
     const newState: CollapseStates = {};
-    if ('activeKey' in nextProps && nextProps.activeKey !== state.prevActiveKey) {
+
+    if ('activeKey' in nextProps && nextProps.activeKey !== state.activeKey) {
       newState.activeKey = getActiveKey(nextProps);
-      newState.prevActiveKey = nextProps.activeKey;
     }
-    if ('animated' in nextProps) {
-      newState.animated = nextProps.animated;
+
+    if ('activeKey' in newState) {
+      return newState;
     }
-    if ('multiple' in nextProps) {
-      newState.multiple = nextProps.multiple;
-    }
-    return 'activeKey' in newState || 'animated' in newState || 'multiple' in newState
-      ? newState
-      : null;
+
+    return null;
   }
 
   onItemChange = (onItemChange, key) => {
@@ -102,7 +101,8 @@ export default class Collapse extends Component<CollapseProps, CollapseStates> {
   };
 
   renderItems = () => {
-    const { activeKey, multiple, animated } = this.state;
+    const { activeKey } = this.state;
+    const { multiple, animated } = this.props;
     return Children.map(this.props.children, (ele: ReactElement<CollapseItemProps>) => {
       const { disabled, onChange } = ele.props;
       const { key } = ele;
@@ -128,10 +128,9 @@ export default class Collapse extends Component<CollapseProps, CollapseStates> {
       defaultActiveKey,
       ...rest
     } = this.props;
-    const { animated: animatedState } = this.state;
 
     const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--animated`]: animatedState,
+      [`${prefixCls}--animated`]: animated,
     });
 
     return (
