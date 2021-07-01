@@ -21,4 +21,17 @@
       }
     }
   }
+
+  @at-root {
+    .provider-popup {
+      .za-popup--bottom {
+        background: #fff;
+      }
+    }
+
+    .popup-box-bottom {
+      height: r(300);
+      padding: r(20) r(20) r(100);
+    }
+  }
 }

@@ -26,6 +26,7 @@ exports[`DatePickerView DatePickerView time 1`] = `
       minuteStep={1}
       mode="datetime"
       prefixCls="za-date-picker-view"
+      safeIphoneX={false}
       stopScroll={false}
       valueMember="value"
     >
@@ -48,6 +49,7 @@ exports[`DatePickerView DatePickerView time 1`] = `
         mode="datetime"
         onChange={[Function]}
         prefixCls="za-date-picker-view"
+        safeIphoneX={false}
         stopScroll={false}
         value={
           Array [
@@ -104,6 +106,7 @@ exports[`DatePickerView DatePickerView time 2 1`] = `
       minuteStep={1}
       mode="datetime"
       prefixCls="za-date-picker-view"
+      safeIphoneX={false}
       stopScroll={false}
       valueMember="value"
     >
@@ -135,6 +138,7 @@ exports[`DatePickerView DatePickerView time 2 1`] = `
         mode="datetime"
         onChange={[Function]}
         prefixCls="za-date-picker-view"
+        safeIphoneX={false}
         stopScroll={false}
         value={
           Array [

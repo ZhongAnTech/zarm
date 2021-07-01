@@ -77,6 +77,7 @@ export { default as Popper } from './popper';
 export type { PopupProps } from './popup';
 export { default as Popup } from './popup';
 
+export type { ProgressProps } from './progress';
 export { default as Progress } from './progress';
 export { default as Pull } from './pull';
 
@@ -86,6 +87,8 @@ export { default as Radio } from './radio';
 export { default as Scroller } from './scroller';
 export { default as SearchBar } from './search-bar';
 export { default as Slider } from './slider';
+
+export type { ActivityIndicatorProps } from './activity-indicator';
 export { default as ActivityIndicator } from './activity-indicator';
 
 export type { StepperProps } from './stepper';

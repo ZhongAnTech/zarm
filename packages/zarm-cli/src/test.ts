@@ -6,9 +6,16 @@ export interface ITestConfig {
   updateSnapshot: boolean;
   coverage: boolean;
   setupFilesAfterEnv: string;
+  onlyChanged: boolean;
 }
 
-export default ({ mode, updateSnapshot, coverage, setupFilesAfterEnv }: Partial<ITestConfig>) => {
+export default ({
+  mode,
+  updateSnapshot,
+  coverage,
+  setupFilesAfterEnv,
+  onlyChanged,
+}: Partial<ITestConfig>) => {
   const configFile = require.resolve(
     `./config/jestConfig/${mode === 'native' ? 'index.native' : 'index'}`,
   );
@@ -19,5 +26,6 @@ export default ({ mode, updateSnapshot, coverage, setupFilesAfterEnv }: Partial<
   ];
   updateSnapshot && args.push('-u');
   coverage && args.push('--coverage');
+  onlyChanged && args.push('--onlyChanged');
   execa('node', args, { stdio: 'inherit' });
 };
