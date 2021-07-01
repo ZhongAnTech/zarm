@@ -2,7 +2,6 @@ import React, { useState, useEffect, forwardRef, useRef, useCallback, CSSPropert
 import classnames from 'classnames';
 import { AffixProps as BaseAffixProps } from './interface';
 import Events from '../utils/events';
-import { canUseDOM } from '../utils/dom';
 import throttle from '../utils/throttle';
 
 export interface AffixStates {
@@ -17,8 +16,11 @@ export interface AffixProps extends BaseAffixProps {
   className?: string;
   children?: React.ReactNode;
 }
+const canUseDOM = () => {
+  return !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+};
 
-const DEFAULT_SCROLL_CONTAINER = canUseDOM ? window : undefined;
+const DEFAULT_SCROLL_CONTAINER = canUseDOM() ? window : undefined;
 
 const Affix = forwardRef<unknown, AffixProps>((props, ref) => {
   const {
@@ -48,7 +50,7 @@ const Affix = forwardRef<unknown, AffixProps>((props, ref) => {
   }, [scrollContainer]);
 
   const getContainerRect = (): DOMRect => {
-    if (!canUseDOM) {
+    if (!canUseDOM()) {
       return { top: 0, bottom: 0 } as any;
     }
 
