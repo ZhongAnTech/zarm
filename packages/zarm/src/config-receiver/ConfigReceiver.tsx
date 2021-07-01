@@ -15,7 +15,7 @@ const ConfigReceiverWrapper = (name?: nameType, defaultConfig?: typeof defaultCo
     const ConfigReceiver = <P extends { forwardedRef: React.Ref<T> }>(props: P) => {
       return (
         <ConfigContext.Consumer>
-          {({ locale }) => {
+          {({ locale, safeIphoneX }) => {
             const globalLocale = locale.locale
               ? locale
               : defaultConfig?.locale || defaultConfigData?.locale;
@@ -29,6 +29,7 @@ const ConfigReceiverWrapper = (name?: nameType, defaultConfig?: typeof defaultCo
                 ref={forwardedRef}
                 locale={componentLocale}
                 localeCode={localeCode}
+                safeIphoneX={safeIphoneX}
               />
             );
           }}

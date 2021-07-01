@@ -80,6 +80,7 @@
     "react-native-camera-roll-picker": "1.2.3"
   },
   "devDependencies": {
+    "@types/classnames": "^2.3.1",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
     "@types/react-native": "^0.64.2",

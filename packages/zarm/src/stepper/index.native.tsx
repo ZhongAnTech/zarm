@@ -1,6 +1,6 @@
 import React, { PureComponent, CSSProperties } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ViewStyle } from 'react-native';
-import PropsType from './PropsType';
+import type { BaseStepperProps } from './interface';
 import stepperStyle from './style/index.native';
 
 const getValue = (props, defaultValue) => {
@@ -13,7 +13,7 @@ const getValue = (props, defaultValue) => {
   return defaultValue;
 };
 
-export interface StepperProps extends PropsType {
+export interface StepperProps extends BaseStepperProps {
   style?: CSSProperties;
   styles?: typeof stepperStyle;
 }

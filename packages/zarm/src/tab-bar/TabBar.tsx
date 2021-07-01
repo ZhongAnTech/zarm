@@ -14,6 +14,7 @@ class TabBar extends PureComponent<TabBarProps, any> {
   static defaultProps: TabBarProps = {
     prefixCls: 'za-tab-bar',
     visible: true,
+    safeIphoneX: false,
   };
 
   onChildChange = (value: string | number) => {
@@ -35,10 +36,12 @@ class TabBar extends PureComponent<TabBarProps, any> {
   };
 
   render() {
-    const { visible, prefixCls, className, children, style } = this.props;
+    const { visible, prefixCls, className, children, style, safeIphoneX } = this.props;
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--hidden`]: !visible,
+      [`${prefixCls}--safe`]: safeIphoneX,
     });
+
     const items = React.Children.map(children, (element, index) => {
       if (!React.isValidElement(element)) return null;
       const itemKey = element.props.itemKey || index;

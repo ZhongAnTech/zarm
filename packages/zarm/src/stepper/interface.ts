@@ -1,4 +1,4 @@
-export default interface PropsType {
+export interface BaseStepperProps {
   size?: 'md' | 'lg';
   shape?: 'rect' | 'radius' | 'circle';
   value?: number;
