@@ -56,22 +56,22 @@ function ImagePreview(props: ImagePreviewProps) {
   // const { orientation = defaultOrientation, } = props;
 
   const [state, setState] = useState<ImagePreviewState>({
-    visible,
+    visible: visible!,
     activeIndex,
     currentIndex: activeIndex,
     images: formatImages(images),
-    showPagination,
+    showPagination: showPagination!,
     orientation,
   });
 
   useEffect(() => {
     setState({
       ...state,
-      visible,
+      visible: visible!,
       activeIndex,
       currentIndex: activeIndex,
       images: formatImages(images),
-      showPagination,
+      showPagination: showPagination!,
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible, activeIndex, images, showPagination]);
@@ -257,4 +257,5 @@ ImagePreview.defaultProps = {
   minScale: 1,
   maxScale: 3,
 };
+
 export default ImagePreview;
