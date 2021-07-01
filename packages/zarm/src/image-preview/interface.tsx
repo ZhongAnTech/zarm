@@ -14,6 +14,6 @@ export interface BaseImagePreviewProps {
   showPagination: boolean;
   maxScale: number;
   minScale: number;
-  onChange?: Function;
-  onClose?: Function;
+  onChange?: (activeIndex: number) => void;
+  onClose?: () => void;
 }
