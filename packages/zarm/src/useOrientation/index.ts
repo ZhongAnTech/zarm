@@ -21,7 +21,6 @@ const useOrientation = (initialState: OrientationState = defaultState) => {
     const onChange = () => {
       if (mounted) {
         const { orientation } = screen as any;
-
         if (orientation) {
           const { angle, type } = orientation;
           setState({ angle, type });

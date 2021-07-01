@@ -44,9 +44,15 @@ function ImagePreview(props: ImagePreviewProps) {
     maxScale,
   } = props;
 
-  const { angle } = useOrientation();
-  const orientation = angle === 90 || angle === -90 ? 'landscape' : 'portrait';
+  const { type, angle } = useOrientation();
 
+  let orientation =
+    type === 'landscape-primary' || type === 'landscape-secondary' ? 'landscape' : 'portrait';
+
+  if (!type) {
+    // mobile default angle 0 and orientation portrait-primary
+    orientation = angle === 90 || angle === -90 ? 'landscape' : 'portrait';
+  }
   // const { orientation = defaultOrientation, } = props;
 
   const [state, setState] = useState<ImagePreviewState>({
@@ -89,7 +95,7 @@ function ImagePreview(props: ImagePreviewProps) {
   };
 
   const close = () => {
-    if (moving) {
+    if (moving.current) {
       return false;
     }
     if (typeof onClose === 'function') {
