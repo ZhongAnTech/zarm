@@ -226,7 +226,11 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "TabBar": [Function],
+        "TabBar": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "Item": [Function],
+          "render": [Function],
+        },
         "Tabs": Object {
           "$$typeof": Symbol(react.forward_ref),
           "Panel": Object {
