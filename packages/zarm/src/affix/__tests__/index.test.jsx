@@ -7,14 +7,14 @@ import Affix from '../index';
 describe('Affix', () => {
   const waitForComponentToPaint = async (wrapper) => {
     await act(async () => {
-      await new Promise((resolve) => setTimeout(resolve, 0));
       wrapper.update();
+      await new Promise((resolve) => setTimeout(resolve, 1000));
     });
   };
   const waitForComponentToPaint2 = async (wrapper) => {
     await act(async () => {
-      await new Promise((resolve) => setTimeout(resolve, 0));
       wrapper.unmount();
+      await new Promise((resolve) => setTimeout(resolve, 1000));
     });
   };
   it('offsetTop', () => {
@@ -40,6 +40,7 @@ describe('Affix', () => {
         <div>Affix Node</div>
       </Affix>,
     );
+
     await waitForComponentToPaint(wrapper);
     await waitForComponentToPaint2(wrapper);
     expect(toJson(wrapper));
