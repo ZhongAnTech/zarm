@@ -1,7 +1,5 @@
 export default (compName) => `# ${compName} 组件名
 
-
-
 ## 基本用法
 \`\`\`jsx
 import { ${compName} } from 'zarm';
@@ -13,25 +11,19 @@ ReactDOM.render(
 , mountNode);
 \`\`\`
 
-
-
 ## 用法二
 \`\`\`jsx
+import { useState } from 'react';
 import { ${compName} } from 'zarm';
 
-class Demo extends React.Component {
-  state = {
-  }
+const Demo = () => {
+  const [value, setValue] = useState();
 
-  render() {
-    return <${compName} />;
-  }
-}
+  return <${compName} />;
+};
 
 ReactDOM.render(<Demo />, mountNode);
 \`\`\`
-
-
 
 ## API
 

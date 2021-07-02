@@ -15,7 +15,7 @@ const write = (dir: string, code: string) => {
 };
 
 export default ({ compName }: ITemplateConfig) => {
-  const rootDir = `components/${paramCase(compName)}`;
+  const rootDir = `src/${paramCase(compName)}`;
   const folder = {
     component: rootDir,
     style: `${rootDir}/style`,
@@ -24,15 +24,15 @@ export default ({ compName }: ITemplateConfig) => {
 
   const pages = {
     component: [
-      { name: 'index.tsx', module: component.indexTemp(compName) },
+      { name: 'index.ts', module: component.indexTemp(compName) },
       { name: 'demo.md', module: component.demoTemp(compName) },
       { name: `${compName}.tsx`, module: component.compTemp(compName) },
     ],
     style: [
-      { name: 'index.tsx', module: style.indexTemp() },
+      { name: 'index.ts', module: style.indexTemp() },
       { name: 'index.scss', module: style.indexScssTemp(compName) },
     ],
-    test: [{ name: 'index.test.jsx', module: test.indexTemp(compName) }],
+    test: [{ name: 'index.test.tsx', module: test.indexTemp(compName) }],
   };
 
   Object.keys(pages).forEach((key) => {
