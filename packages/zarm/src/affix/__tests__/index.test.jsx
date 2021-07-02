@@ -54,16 +54,4 @@ describe('Affix', () => {
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
-
-  it('when window is undefined', () => {
-    const { window } = global;
-    delete global.window;
-    const wrapper = render(
-      <Affix offsetBottom={20}>
-        <div>Affix Node</div>
-      </Affix>,
-    );
-    expect(toJson(wrapper)).toMatchSnapshot();
-    global.window = window;
-  });
 });

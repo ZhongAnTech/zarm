@@ -28,11 +28,3 @@ exports[`Affix offsetTop 1`] = `
   </div>
 </div>
 `;
-
-exports[`Affix when window is undefined 1`] = `
-<div>
-  <div>
-    Affix Node
-  </div>
-</div>
-`;
