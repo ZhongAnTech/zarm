@@ -1,4 +1,4 @@
-export default (compName) => `import React from 'react';
+export default (compName) => `import * as React from 'react';
 import { render } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import ${compName} from '../index';

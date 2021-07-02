@@ -56,7 +56,7 @@ commander
 commander
   .command('add')
   .description('新增组件模板')
-  .action(() => template({ compName: commander.args[0] }));
+  .action(() => template({ compName: commander.args[1] }));
 
 commander.parse(process.argv);
 
