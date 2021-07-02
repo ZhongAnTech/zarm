@@ -73,7 +73,6 @@ function ImagePreview(props: ImagePreviewProps) {
       images: formatImages(images),
       showPagination: showPagination!,
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible, activeIndex, images, showPagination]);
 
   useEffect(() => {
@@ -81,7 +80,6 @@ function ImagePreview(props: ImagePreviewProps) {
       ...state,
       orientation,
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orientation]);
 
   const onChange = (index: number) => {
