@@ -94,37 +94,6 @@ exports[`Carousel className render correctly 1`] = `
 </div>
 `;
 
-exports[`Carousel componentWillReceiveProps 1`] = `
-<div
-  class="za-carousel za-carousel--horizontal"
->
-  <div
-    class="za-carousel__items"
-  >
-    <div
-      class="za-carousel__item"
-    >
-      1
-    </div>
-    <div
-      class="za-carousel__item"
-    >
-      2
-    </div>
-  </div>
-  <div
-    class="za-carousel__pagination"
-  >
-    <div
-      class="za-carousel__pagination__item"
-    />
-    <div
-      class="za-carousel__pagination__item za-carousel__pagination__item--active"
-    />
-  </div>
-</div>
-`;
-
 exports[`Carousel height render correctly 1`] = `
 <div
   class="za-carousel za-carousel--vertical"
@@ -267,7 +236,7 @@ exports[`Carousel style render correctly 1`] = `
 `;
 
 exports[`Carousel swipeable 1`] = `
-<Carousel
+<ForwardRef
   activeIndex={0}
   animationDuration={500}
   autoPlay={false}
@@ -340,5 +309,5 @@ exports[`Carousel swipeable 1`] = `
       />
     </div>
   </div>
-</Carousel>
+</ForwardRef>
 `;

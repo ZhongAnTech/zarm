@@ -55,7 +55,24 @@ describe('index', () => {
           "render": [Function],
         },
         "Calendar": [Function],
-        "Carousel": [Function],
+        "Carousel": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "activeIndex": 0,
+            "animationDuration": 500,
+            "autoPlay": false,
+            "autoPlayIntervalTime": 3000,
+            "direction": "left",
+            "height": 160,
+            "loop": false,
+            "moveDistanceRatio": 0.5,
+            "moveTimeSpan": 300,
+            "prefixCls": "za-carousel",
+            "showPagination": true,
+            "swipeable": true,
+          },
+          "render": [Function],
+        },
         "Cell": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
