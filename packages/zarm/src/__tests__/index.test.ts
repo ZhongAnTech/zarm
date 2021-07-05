@@ -300,7 +300,17 @@ describe('index', () => {
         "Toast": [Function],
         "Tooltip": [Function],
         "Trigger": [Function],
-        "Wheel": [Function],
+        "Wheel": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "dataSource": Array [],
+            "itemRender": [Function],
+            "prefixCls": "za-wheel",
+            "stopScroll": false,
+            "valueMember": "value",
+          },
+          "render": [Function],
+        },
         "useDrag": [Function],
       }
     `);
