@@ -66,7 +66,7 @@ const Simulator = () => {
 };
 
 const Page = () => {
-  const { general, form, feedback, view, navigation, other } = components;
+  const { general, form, feedback, view, navigation, hooks, other } = components;
   const isComponentPage = !!useRouteMatch('/components');
 
   const containerCls = classnames('main-container', 'markdown', {
@@ -83,7 +83,7 @@ const Page = () => {
             {documents.map((doc, i) => (
               <Route key={+i} path={`/docs/${doc.key}`} component={LoadableComponent(doc)} />
             ))}
-            {[...general, ...form, ...feedback, ...view, ...navigation, ...other].map(
+            {[...general, ...form, ...feedback, ...view, ...navigation, ...hooks, ...other].map(
               (component, i) => (
                 <Route
                   key={+i}
