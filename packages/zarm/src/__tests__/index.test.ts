@@ -294,6 +294,7 @@ describe('index', () => {
         "Trigger": [Function],
         "Wheel": [Function],
         "useDrag": [Function],
+        "useOrientation": [Function],
       }
     `);
   });

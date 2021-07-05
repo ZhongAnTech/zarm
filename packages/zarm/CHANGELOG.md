@@ -6,6 +6,7 @@
 
   - [Input] 拆分使用到虚拟键盘的自定义输入框组件 `CustomInput`。触发的事件入参由 value 值改为 event，受影响的事件有 `onChange` `onFocus` `onBlur` `onFocus`。删除 `onClear` 事件，点击重置按钮请空值将触发 `onChange` 事件。
   - [SearchBar] 删除 `onClear` 事件，点击重置按钮请空值将触发 `onChange` 事件。
+  - [ImagePreview] 原图查看功能`ImageObject[{src: string, originSrc: string}]`替换了`ImageObject[{url: string, originUrl: string}]`,新增支持手机切换横屏模式。
 
 ## v2.9.2
 

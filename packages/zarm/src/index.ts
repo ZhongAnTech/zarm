@@ -115,7 +115,16 @@ export { default as NavBar } from './nav-bar';
 
 export { default as Marquee } from './marquee';
 export { default as TabBar } from './tab-bar';
+
+export type { ImagePreviewProps } from './image-preview';
 export { default as ImagePreview } from './image-preview';
+
+export type { OrientationState } from './useOrientation';
+export { default as useOrientation } from './useOrientation';
+
+export type { PinchZoomProps } from './pinch-zoom';
+export { default as PinchZoom } from './pinch-zoom';
+
 export { default as LocaleProvider } from './locale-provider';
 export { default as ConfigProvider } from './config-provider';
 export { default as ConfigReceiver } from './config-receiver';

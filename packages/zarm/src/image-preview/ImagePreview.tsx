@@ -25,10 +25,12 @@ export interface ImagePreviewState {
   showPagination: boolean;
   orientation: string;
 }
-function ImagePreview(props: ImagePreviewProps) {
+const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) => {
   const doubleClickTimer = useRef<ReturnType<typeof setTimeout> | null>();
 
   const touchStartTime = useRef<number>(Date.now());
+
+  const imagePreviewRef = (ref as any) || React.createRef<HTMLDivElement>();
 
   const moving = useRef<boolean>();
 
@@ -103,8 +105,8 @@ function ImagePreview(props: ImagePreviewProps) {
 
   const loadOrigin = () => {
     const { images: imagesArr, currentIndex = 0 } = state;
-    const { originUrl, loaded } = imagesArr[currentIndex];
-    if (loaded !== LOAD_STATUS.before || !originUrl) {
+    const { originSrc, loaded } = imagesArr[currentIndex];
+    if (loaded !== LOAD_STATUS.before || !originSrc) {
       return;
     }
     imagesArr[currentIndex].loaded = LOAD_STATUS.start;
@@ -113,14 +115,14 @@ function ImagePreview(props: ImagePreviewProps) {
     const img = new Image();
     img.onload = () => {
       imagesArr[currentIndex].loaded = LOAD_STATUS.end;
-      imagesArr[currentIndex].url = originUrl;
+      imagesArr[currentIndex].src = originSrc;
       setState({ ...state, images: imagesArr });
       setTimeout(() => {
         imagesArr[currentIndex].loaded = LOAD_STATUS.after;
         setState({ ...state, images: imagesArr });
       }, 1500);
     };
-    img.src = originUrl;
+    img.src = originSrc;
   };
 
   const onWrapperTouchStart = useCallback(() => {
@@ -173,7 +175,7 @@ function ImagePreview(props: ImagePreviewProps) {
       return (
         <div className={`${prefixCls}__item`} key={+i}>
           <PinchZoom className={`${prefixCls}__item__img`} minScale={minScale} maxScale={maxScale}>
-            <img src={item.url} alt="" draggable={false} style={style} />
+            <img src={item.src} alt="" draggable={false} style={style} />
           </PinchZoom>
         </div>
       );
@@ -227,6 +229,7 @@ function ImagePreview(props: ImagePreviewProps) {
         onMouseMove={onWrapperTouchMove}
         onMouseUp={onWrapperMouseUp}
         onClick={close}
+        ref={imagePreviewRef}
       >
         {visible &&
           (state.images?.length ? (
@@ -243,7 +246,7 @@ function ImagePreview(props: ImagePreviewProps) {
       </div>
     </Popup>
   );
-}
+});
 
 ImagePreview.displayName = 'ImagePreview';
 

@@ -1,7 +1,12 @@
 import React, { useRef, HTMLAttributes, useLayoutEffect, useCallback } from 'react';
 import classnames from 'classnames';
-import type { Point, BasePinchZoomProps } from './interface';
+import type { BasePinchZoomProps } from './interface';
 import Events from '../utils/events';
+
+export interface Point {
+  clientX: number;
+  clientY: number;
+}
 
 function getDistance(a: Point, b?: Point): number {
   if (!b) return 0;
@@ -115,7 +120,7 @@ function PinchZoom(props: PinchZoomProps) {
     if (zooming && touches.length === 2) {
       const distance = getDistance(touches[0], touches[1]);
       const currentScale = (startScale * distance) / prevDistance;
-      scale = range(minScale, currentScale, maxScale);
+      scale = range(minScale!, currentScale, maxScale!);
     }
 
     updateTransform(scale, moveX, moveY);

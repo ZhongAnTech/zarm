@@ -14,12 +14,12 @@ const formatImages = (images: ReadonlyArray<ImageObject | string>): Images => {
   (images || []).forEach((image: ImageObject | string) => {
     if (isImageString(image)) {
       previewImages.push({
-        url: image,
+        src: image,
       });
     } else if (isImageObject(image)) {
       previewImages.push({
-        url: image.url,
-        originUrl: image.originUrl,
+        src: image.src,
+        originSrc: image.originSrc,
         loaded: LOAD_STATUS.before,
       });
     }

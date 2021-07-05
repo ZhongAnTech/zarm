@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable dot-notation */
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, render } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import ImagePreview from '../ImagePreview';
 import { images, originImages } from '../../../tests/testData/images';
@@ -18,12 +18,12 @@ describe('ImagePreview', () => {
   });
   describe('snapshot', () => {
     it('renders correctly', () => {
-      const wrapper = mount(<ImagePreview visible onChange={jest.fn()} images={images} />);
+      const wrapper = render(<ImagePreview visible onChange={jest.fn()} images={images} />);
       expect(toJson(wrapper)).toMatchSnapshot();
     });
 
     it('renders correctly with origin', () => {
-      const wrapper = mount(<ImagePreview visible onChange={jest.fn()} images={originImages} />);
+      const wrapper = render(<ImagePreview visible onChange={jest.fn()} images={originImages} />);
       expect(toJson(wrapper)).toMatchSnapshot();
     });
   });
