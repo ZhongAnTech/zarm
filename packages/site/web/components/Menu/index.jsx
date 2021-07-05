@@ -54,6 +54,7 @@ const MenuComponent = () => {
           {getMenus(locale, 'view')}
           {getMenus(locale, 'feedback')}
           {getMenus(locale, 'navigation')}
+          {getMenus(locale, 'hooks')}
           {getMenus(locale, 'other')}
         </>
       );

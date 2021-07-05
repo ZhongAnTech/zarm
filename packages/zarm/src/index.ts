@@ -129,4 +129,6 @@ export { default as LocaleProvider } from './locale-provider';
 export { default as ConfigProvider } from './config-provider';
 export { default as ConfigReceiver } from './config-receiver';
 export { default as StackPicker } from './stack-picker';
+
+export type { AffixProps } from './affix';
 export { default as Affix } from './affix';

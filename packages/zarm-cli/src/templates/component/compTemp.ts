@@ -1,6 +1,6 @@
 import { paramCase } from 'change-case';
 
-export default (compName) => `import React, { PureComponent } from 'react';
+export default (compName) => `import * as React from 'react';
 import classnames from 'classnames';
 
 export interface ${compName}Props {
@@ -8,31 +8,30 @@ export interface ${compName}Props {
   className?: string;
 }
 
-export interface ${compName}States {
+const ${compName} = React.forwardRef<unknown, ${compName}Props>((props, ref) => {
+  const {
+    prefixCls,
+    className,
+    children,
+    ...restProps
+  } = props;
 
-}
+  const compRef = (ref as any) || React.createRef<HTMLElement>();
+  const cls = classnames(prefixCls, className);
 
-export default class ${compName} extends PureComponent<${compName}Props, ${compName}States> {
-  static displayName = '${compName}';
+  return (
+    <div ref={compRef} className={cls} {...restProps}>
+      {children}
+    </div>
+  );
+});
 
-  static defaultProps = {
-    prefixCls: 'za-${paramCase(compName)}',
-  };
+${compName}.displayName = '${compName}';
 
-  render() {
-    const {
-      prefixCls,
-      className,
-      children,
-    } = this.props;
+${compName}.defaultProps = {
+  prefixCls: 'za-${paramCase(compName)}',
+};
 
-    const cls = classnames(prefixCls, className);
+export default ${compName};
 
-    return (
-      <div className={cls}>
-        {children}
-      </div>
-    );
-  }
-}
 `;
