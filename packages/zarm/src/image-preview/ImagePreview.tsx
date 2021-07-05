@@ -15,7 +15,6 @@ import useOrientation from '../useOrientation';
 export interface ImagePreviewProps extends BaseImagePreviewProps {
   prefixCls?: string;
   className?: string;
-  locale?: Locale['ImagePreview'];
 }
 export interface ImagePreviewState {
   images: Images;

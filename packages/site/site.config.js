@@ -295,6 +295,12 @@ module.exports = {
         module: () => import('zarm/useDrag/demo.md'),
         style: false,
       },
+      {
+        key: 'useOrientation',
+        name: '屏幕方向',
+        module: () => import('zarm/useOrientation/demo.md'),
+        style: false,
+      },
       // {
       //   key: 'useClickAway',
       //   name: '点击离开',

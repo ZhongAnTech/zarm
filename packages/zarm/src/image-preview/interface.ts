@@ -1,4 +1,5 @@
 import type LOAD_STATUS from './utils/loadStatus';
+import type { Locale } from '../config-provider/PropsType';
 
 export interface ImageObject {
   src: string;
@@ -14,6 +15,7 @@ export interface BaseImagePreviewProps {
   showPagination?: boolean;
   maxScale?: number;
   minScale?: number;
+  locale?: Locale['ImagePreview'];
   onChange?: (activeIndex: number) => void;
   onClose?: () => void;
 }

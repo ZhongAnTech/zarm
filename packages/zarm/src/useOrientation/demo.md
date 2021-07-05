@@ -3,7 +3,6 @@
 ## 基本用法
 
 ```jsx
-import { useEffect, useState, useRef } from 'react';
 import { useOrientation } from 'zarm';
 
 let currentPoint = [0, 0];
@@ -17,7 +16,9 @@ const Demo = () => {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-### State
+## API
+
+### OrientationState
 
 | 属性  | 类型   | 默认值             | 说明     |
 | :---- | :----- | :----------------- | :------- |
