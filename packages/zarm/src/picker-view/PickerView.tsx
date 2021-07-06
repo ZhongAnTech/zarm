@@ -56,6 +56,7 @@ export default class PickerView extends Component<PickerViewProps, PickerViewSta
     }
     value[level] = selected;
     const newState = parseProps.getSource({ dataSource, value, valueMember, cols });
+    // console.log('[59] PickerView.tsx: newState', JSON.stringify(newState));
     this.setState(newState);
     if (typeof onChange === 'function') {
       onChange(newState.objValue, level);
