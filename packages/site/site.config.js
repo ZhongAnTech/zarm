@@ -199,6 +199,12 @@ module.exports = {
         module: () => import('zarm/popper/demo.md'),
         style: true,
       },
+      {
+        key: 'pinch-zoom',
+        name: '缩放',
+        module: () => import('zarm/pinch-zoom/demo.md'),
+        style: false,
+      },
     ],
     view: [
       {

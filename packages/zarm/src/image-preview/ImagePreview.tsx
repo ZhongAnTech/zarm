@@ -6,7 +6,6 @@ import Popup from '../popup';
 import Carousel from '../carousel';
 import PinchZoom from '../pinch-zoom';
 import ActivityIndicator from '../activity-indicator';
-import type { Locale } from '../config-provider/PropsType';
 import LOAD_STATUS from './utils/loadStatus';
 import formatImages from './utils/formatImages';
 import showOriginButton from './utils/showOriginButton';
@@ -43,6 +42,7 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
     locale,
     minScale,
     maxScale,
+    className,
   } = props;
 
   const { type, angle } = useOrientation();
@@ -217,7 +217,7 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
   };
   const cls = classnames(`${prefixCls}__content`, `${prefixCls}__content--${state.orientation}`);
   return (
-    <Popup direction="center" visible={visible} className={prefixCls}>
+    <Popup direction="center" visible={visible} className={classnames(prefixCls, className)}>
       <div
         className={cls}
         onTouchStart={onWrapperTouchStart}
@@ -236,7 +236,7 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
               {renderImages()}
             </Carousel>
           ) : (
-            <ActivityIndicator className={`${prefixCls}__loading`} type="spinner" size="lg" />
+            <ActivityIndicator type="spinner" size="lg" />
           ))}
       </div>
       <div className={`${prefixCls}__footer`}>

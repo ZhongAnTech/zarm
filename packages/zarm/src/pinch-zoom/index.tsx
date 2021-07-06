@@ -1,4 +1,4 @@
-import React, { useRef, HTMLAttributes, useLayoutEffect, useCallback } from 'react';
+import React, { useRef, HTMLAttributes, useEffect, useCallback } from 'react';
 import classnames from 'classnames';
 import type { BasePinchZoomProps } from './interface';
 import Events from '../utils/events';
@@ -21,8 +21,10 @@ export interface PinchZoomProps extends HTMLAttributes<HTMLDivElement>, BasePinc
   prefixCls?: string;
   className?: string;
 }
-function PinchZoom(props: PinchZoomProps) {
-  const container = useRef<HTMLDivElement | null>(null);
+
+const PinchZoom = React.forwardRef<unknown, PinchZoomProps>((props, ref) => {
+  const containerRef = (ref as any) || React.createRef<HTMLDivElement>();
+  const container = useRef<HTMLDivElement | null>();
 
   const { children, className, prefixCls, minScale, maxScale, onPinchZoom } = props;
 
@@ -158,7 +160,8 @@ function PinchZoom(props: PinchZoomProps) {
     }
   };
 
-  useLayoutEffect(() => {
+  useEffect(() => {
+    container.current = containerRef.current;
     Events.on(container?.current!, 'touchstart', touchstart);
     Events.on(document.documentElement, 'touchmove', touchmove);
     Events.on(document.documentElement, 'touchend', touchEnd);
@@ -182,11 +185,11 @@ function PinchZoom(props: PinchZoomProps) {
     });
   });
   return (
-    <div ref={container} className={cls}>
+    <div ref={containerRef} className={cls}>
       {child}
     </div>
   );
-}
+});
 
 PinchZoom.defaultProps = {
   prefixCls: 'za-pinch-zoom',

@@ -195,6 +195,15 @@ describe('index', () => {
           "render": [Function],
         },
         "PickerView": [Function],
+        "PinchZoom": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "maxScale": 3,
+            "minScale": 1,
+            "prefixCls": "za-pinch-zoom",
+          },
+          "render": [Function],
+        },
         "Popper": [Function],
         "Popup": Object {
           "$$typeof": Symbol(react.forward_ref),
