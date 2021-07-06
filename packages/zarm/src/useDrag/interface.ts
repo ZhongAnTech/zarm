@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 export type DragEvent = React.MouseEvent | React.TouchEvent;
 
 export interface DragState {
