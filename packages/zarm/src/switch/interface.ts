@@ -2,5 +2,5 @@ export interface BaseSwitchProps {
   checked?: boolean;
   defaultChecked?: boolean;
   disabled?: boolean;
-  onChange?: (checked?: boolean) => void;
+  onChange?: (checked: boolean) => void;
 }

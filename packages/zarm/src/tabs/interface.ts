@@ -8,7 +8,7 @@ export interface BaseTabsProps {
   swipeable?: boolean;
   scrollable?: boolean;
   direction?: 'horizontal' | 'vertical';
-  onChange?: (index?: number) => void;
+  onChange?: (index: number) => void;
   children?: React.ReactNode;
 }
 

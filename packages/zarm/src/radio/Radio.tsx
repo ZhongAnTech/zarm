@@ -24,7 +24,7 @@ type RadioButtonProps = Omit<
 export type RadioProps = Partial<RadioSpanProps & RadioCellProps & RadioButtonProps> &
   BaseRadioProps & {
     prefixCls?: string;
-    onChange?: (e?: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   };
 
 interface CompoundedComponent
