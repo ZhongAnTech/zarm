@@ -1,31 +1,32 @@
-import React, { PureComponent, cloneElement } from 'react';
+import React, { cloneElement, useCallback } from 'react';
 import classnames from 'classnames';
-import type { BaseTabBarProps } from './PropsType';
-import type TabBarItem from './TabBarItem';
+import type { BaseTabBarProps } from './interface';
+import TabBarItem from './TabBarItem';
+import type { TabBarItemProps } from './TabBarItem';
 
-export interface TabBarProps extends BaseTabBarProps {
+// type a = 'onChange' | 'title'
+// type xx = Exclude<keyof React.HTMLAttributes<HTMLElement>, 'onChange'>
+export interface TabBarProps
+  extends BaseTabBarProps,
+    Omit<React.HTMLAttributes<HTMLElement>, 'onChange'> {
   prefixCls?: string;
-  className?: string;
 }
 
-class TabBar extends PureComponent<TabBarProps, any> {
-  static Item: typeof TabBarItem;
+const TabBar = React.forwardRef<unknown, TabBarProps>((props, ref) => {
+  const tabBarRef = (ref as any) || React.createRef<HTMLElement>();
 
-  static defaultProps: TabBarProps = {
-    prefixCls: 'za-tab-bar',
-    visible: true,
-    safeIphoneX: false,
-  };
+  const { visible, prefixCls, className, children, style, safeIphoneX, onChange } = props;
+  const onChildChange = useCallback(
+    (value: string | number) => {
+      if (typeof onChange === 'function') {
+        onChange(value);
+      }
+    },
+    [onChange],
+  );
 
-  onChildChange = (value: string | number) => {
-    const { onChange } = this.props;
-    if (typeof onChange === 'function') {
-      onChange(value);
-    }
-  };
-
-  getSelected = (index: number, itemKey: string | number) => {
-    const { activeKey, defaultActiveKey } = this.props;
+  const getSelected = (index: number, itemKey: string | number) => {
+    const { activeKey, defaultActiveKey } = props;
     if (!activeKey) {
       if (!defaultActiveKey && index === 0) {
         return true;
@@ -35,34 +36,40 @@ class TabBar extends PureComponent<TabBarProps, any> {
     return activeKey === itemKey;
   };
 
-  render() {
-    const { visible, prefixCls, className, children, style, safeIphoneX } = this.props;
-    const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--hidden`]: !visible,
-      [`${prefixCls}--safe`]: safeIphoneX,
-    });
+  const cls = classnames(prefixCls, className, {
+    [`${prefixCls}--hidden`]: !visible,
+    [`${prefixCls}--safe`]: safeIphoneX,
+  });
 
-    const items = React.Children.map(children, (element, index) => {
+  const items = React.Children.map(
+    children,
+    (element: React.ReactElement<TabBarItemProps, typeof TabBarItem>, index: number) => {
       if (!React.isValidElement(element)) return null;
       const itemKey = element.props.itemKey || index;
       return cloneElement(element, {
         key: index,
-        disabled: element.props.disabled,
-        onChange: () => this.onChildChange(itemKey),
+        // disabled: element.props.disabled,
+        onChange: () => onChildChange(itemKey),
         badge: element.props.badge,
         title: element.props.title,
         icon: element.props.icon,
         itemKey,
         style: element.props.style,
-        selected: this.getSelected(index, itemKey),
+        selected: getSelected(index, itemKey),
       });
-    });
-    return (
-      <div className={cls} style={style}>
-        {items}
-      </div>
-    );
-  }
-}
+    },
+  );
+  return (
+    <div className={cls} style={style} ref={tabBarRef}>
+      {items}
+    </div>
+  );
+});
+
+TabBar.defaultProps = {
+  prefixCls: 'za-tab-bar',
+  visible: true,
+  safeIphoneX: false,
+};
 
 export default TabBar;

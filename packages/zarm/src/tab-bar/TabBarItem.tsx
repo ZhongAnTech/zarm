@@ -1,9 +1,11 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import Badge from '../badge';
-import type { BaseTabBarItemProps } from './PropsType';
+import type { BaseTabBarItemProps } from './interface';
 
-export interface TabBarItemProps extends BaseTabBarItemProps {
+export interface TabBarItemProps
+  extends BaseTabBarItemProps,
+    Omit<React.HTMLAttributes<HTMLElement>, 'onChange' | 'title'> {
   prefixCls?: string;
 }
 

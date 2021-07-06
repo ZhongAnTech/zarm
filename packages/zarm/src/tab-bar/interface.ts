@@ -1,4 +1,4 @@
-import type { ReactNode, CSSProperties } from 'react';
+import type { ReactNode } from 'react';
 import type { BaseBadgeProps } from '../badge/interface';
 
 export interface BaseTabBarProps {
@@ -7,7 +7,6 @@ export interface BaseTabBarProps {
   defaultActiveKey?: string | number;
   activeKey?: string | number;
   safeIphoneX?: boolean;
-  style?: CSSProperties;
 }
 
 export interface BaseTabBarItemProps {
@@ -17,6 +16,5 @@ export interface BaseTabBarItemProps {
   activeIcon?: ReactNode;
   badge?: BaseBadgeProps;
   selected?: boolean;
-  style?: CSSProperties;
   onChange?: (value?: number | string) => void;
 }
