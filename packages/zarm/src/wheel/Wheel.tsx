@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { forwardRef, createRef, useEffect, useRef } from 'react';
 import classnames from 'classnames';
 import BScroll, { BScrollInstance } from 'better-scroll';
 import { isArray } from '../utils/validate';
 import usePrevious from '../usePrevious';
+import useEventCallback from '../useEventCallback';
 import type { BaseWheelProps, WheelItem, WheelValue } from './interface';
 
 const getValue = (props: Omit<WheelProps, 'itemRender'>, defaultValue?: any) => {
@@ -24,7 +25,7 @@ export interface WheelProps
   prefixCls?: string;
 }
 
-const Wheel = React.forwardRef<unknown, WheelProps>((props, ref) => {
+const Wheel = forwardRef<unknown, WheelProps>((props, ref) => {
   const {
     prefixCls,
     className,
@@ -38,11 +39,9 @@ const Wheel = React.forwardRef<unknown, WheelProps>((props, ref) => {
     onChange,
   } = props;
 
-  const scrollInstance = React.useRef<BScrollInstance | null>(null);
-  const wheelWrapperRef = (ref as any) || React.createRef<HTMLElement>();
-  const [currentValue, setCurrentValue] = React.useState(
-    getValue({ value, defaultValue, dataSource, valueMember }),
-  );
+  const scrollInstance = useRef<BScrollInstance | null>(null);
+  const wheelWrapperRef = (ref as any) || createRef<HTMLElement>();
+  const currentValue = getValue({ value, defaultValue, dataSource, valueMember });
   const prevValue = usePrevious(value);
   const prevDataSource = usePrevious(dataSource);
   const prevStopScroll = usePrevious(stopScroll);
@@ -70,15 +69,15 @@ const Wheel = React.forwardRef<unknown, WheelProps>((props, ref) => {
     }
   };
 
-  const handleScrollEnd = () => {
+  const handleScrollEnd = useEventCallback(() => {
     const index = scrollInstance.current?.getSelectedIndex();
     const child = dataSource[index];
     if (child) {
       fireValueChange(child[valueMember!]);
     }
-  };
+  }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const initIndex = getSelectedIndex(currentValue, dataSource);
     if (!scrollInstance.current) {
       scrollInstance.current = new BScroll(wheelWrapperRef.current, {
@@ -99,19 +98,17 @@ const Wheel = React.forwardRef<unknown, WheelProps>((props, ref) => {
     return () => {
       scrollInstance.current?.destroy();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  React.useEffect(() => {
-    disabled && scrollInstance.current?.disable();
+  useEffect(() => {
     scrollInstance.current?.refresh();
+  }, [dataSource]);
 
-    console.log('[105] Wheel.tsx: prevValue', prevValue);
-    console.log('[105] Wheel.tsx: prevDataSource', prevDataSource);
+  useEffect(() => {
+    disabled && scrollInstance.current?.disable();
+
     const oldIndex = getSelectedIndex(prevValue, prevDataSource);
-    console.log('[108] Wheel.tsx: oldIndex', oldIndex);
     const newIndex = getSelectedIndex(value, dataSource);
-    console.log('[108] Wheel.tsx: newIndex', newIndex);
     if (newIndex !== oldIndex) {
       scrollInstance.current?.wheelTo(newIndex);
     }
@@ -119,12 +116,7 @@ const Wheel = React.forwardRef<unknown, WheelProps>((props, ref) => {
     if (stopScroll && prevStopScroll !== stopScroll) {
       scrollInstance.current?.stop();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value, defaultValue, dataSource, disabled, stopScroll, valueMember]);
-
-  // React.useEffect(() => {
-  //   setCurrentValue(getValue({ value, defaultValue, dataSource, valueMember }))
-  // }, [value, defaultValue, dataSource, valueMember])
 
   const rollerCls = classnames(prefixCls, className);
   const items = dataSource!.map((item, index) => {
