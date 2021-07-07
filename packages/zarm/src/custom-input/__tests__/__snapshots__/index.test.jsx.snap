@@ -85,7 +85,6 @@ exports[`CustomInput.Idcard renders correctly 1`] = `
             destroy={true}
             localeCode="zh-CN"
             mask={false}
-            prefixCls="za-popup"
             safeIphoneX={false}
             visible={false}
           />
@@ -138,7 +137,6 @@ exports[`CustomInput.Price renders correctly 1`] = `
             destroy={true}
             localeCode="zh-CN"
             mask={false}
-            prefixCls="za-popup"
             safeIphoneX={false}
             visible={false}
           />

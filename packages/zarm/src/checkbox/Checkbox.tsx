@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import type { BaseCheckboxProps } from './interface';
 import CheckboxGroup from './CheckboxGroup';
 import Cell from '../cell';
+import { ConfigContext } from '../n-config-provider';
 
 const getChecked = (props: CheckboxProps, defaultChecked?: boolean) => {
   return props.checked ?? props.defaultChecked ?? defaultChecked;
@@ -23,7 +24,6 @@ type CheckboxButtonProps = Omit<
 
 export type CheckboxProps = Partial<CheckboxSpanProps & CheckboxCellProps & CheckboxButtonProps> &
   BaseCheckboxProps & {
-    prefixCls?: string;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   };
 
@@ -34,7 +34,6 @@ interface CompoundedComponent
 
 const Checkbox = React.forwardRef<unknown, CheckboxProps>((props, ref) => {
   const {
-    prefixCls,
     className,
     type,
     shape,
@@ -53,6 +52,9 @@ const Checkbox = React.forwardRef<unknown, CheckboxProps>((props, ref) => {
   const [currentChecked, setCurrentChecked] = React.useState(
     getChecked({ checked, defaultChecked }),
   );
+
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-checkbox`;
 
   const cls = classnames(prefixCls, className, {
     [`${prefixCls}--checked`]: currentChecked,
@@ -123,7 +125,6 @@ const Checkbox = React.forwardRef<unknown, CheckboxProps>((props, ref) => {
 Checkbox.displayName = 'Checkbox';
 
 Checkbox.defaultProps = {
-  prefixCls: 'za-checkbox',
   shape: 'radius',
   disabled: false,
   indeterminate: false,

@@ -2,15 +2,13 @@ import React, { forwardRef, useState } from 'react';
 import type { HTMLAttributes, MouseEvent } from 'react';
 import classnames from 'classnames';
 import { ArrowRight as ArrowRightIcon, Close as CloseIcon } from '@zarm-design/icons';
+import { ConfigContext } from '../n-config-provider';
 import type { BaseMessageProps } from './interface';
 
-export interface MessageProps extends BaseMessageProps, HTMLAttributes<HTMLDivElement> {
-  prefixCls?: string;
-}
+export type MessageProps = BaseMessageProps & HTMLAttributes<HTMLDivElement>;
 
 const Message = forwardRef<HTMLDivElement, MessageProps>((props, ref) => {
   const {
-    prefixCls,
     className,
     theme,
     size,
@@ -22,6 +20,9 @@ const Message = forwardRef<HTMLDivElement, MessageProps>((props, ref) => {
     ...restProps
   } = props;
   const [visible, setVisible] = useState(true);
+
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-message`;
 
   const cls = classnames(prefixCls, className, {
     [`${prefixCls}--${theme}`]: theme,
@@ -67,7 +68,6 @@ const Message = forwardRef<HTMLDivElement, MessageProps>((props, ref) => {
 Message.displayName = 'Message';
 
 Message.defaultProps = {
-  prefixCls: 'za-message',
   theme: 'primary',
   hasArrow: false,
   closable: false,

@@ -17,7 +17,6 @@ exports[`KeyboardPicker snapshot renders correctly 1`] = `
         destroy={true}
         localeCode="zh-CN"
         mask={false}
-        prefixCls="za-popup"
         safeIphoneX={false}
         visible={false}
       />

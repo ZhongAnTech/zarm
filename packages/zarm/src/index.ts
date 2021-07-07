@@ -116,9 +116,12 @@ export { default as NavBar } from './nav-bar';
 export { default as Marquee } from './marquee';
 export { default as TabBar } from './tab-bar';
 export { default as ImagePreview } from './image-preview';
-export { default as LocaleProvider } from './locale-provider';
+
 export { default as ConfigProvider } from './config-provider';
-export { default as ConfigReceiver } from './config-receiver';
+
+export type { ConfigProviderProps as NConfigProviderProps } from './n-config-provider';
+export { default as NConfigProvider } from './n-config-provider';
+
 export { default as StackPicker } from './stack-picker';
 
 export type { AffixProps } from './affix';
