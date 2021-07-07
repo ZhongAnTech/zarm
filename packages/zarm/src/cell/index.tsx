@@ -1,16 +1,14 @@
 import React, { HTMLAttributes } from 'react';
 import classnames from 'classnames';
+import { ConfigContext } from '../n-config-provider';
 import type { BaseCellProps } from './interface';
 
 type HTMLDivProps = Omit<HTMLAttributes<HTMLDivElement>, 'title'>;
 
-export interface CellProps extends HTMLDivProps, BaseCellProps {
-  prefixCls?: string;
-}
+export type CellProps = HTMLDivProps & BaseCellProps;
 
 const Cell = React.forwardRef<unknown, CellProps>((props, ref) => {
   const {
-    prefixCls,
     className,
     hasArrow,
     icon,
@@ -24,6 +22,9 @@ const Cell = React.forwardRef<unknown, CellProps>((props, ref) => {
   } = props;
 
   const cellRef = (ref as any) || React.createRef<HTMLElement>();
+
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-cell`;
 
   const cls = classnames(prefixCls, className, {
     [`${prefixCls}--disabled`]: disabled,
@@ -60,7 +61,6 @@ const Cell = React.forwardRef<unknown, CellProps>((props, ref) => {
 Cell.displayName = 'Cell';
 
 Cell.defaultProps = {
-  prefixCls: 'za-cell',
   hasArrow: false,
   disabled: false,
 };

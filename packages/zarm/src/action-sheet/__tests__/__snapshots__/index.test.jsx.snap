@@ -93,7 +93,6 @@ exports[`ActionSheet renders correctly 1`] = `
             destroy={true}
             localeCode="zh-CN"
             onMaskClick={[MockFunction]}
-            prefixCls="za-popup"
             safeIphoneX={false}
             visible={true}
           >
@@ -173,7 +172,6 @@ exports[`ActionSheet renders correctly 1`] = `
                 >
                   <Mask
                     className="za-fade-enter"
-                    prefixCls="za-mask"
                     style={
                       Object {
                         "WebkitAnimationDuration": "200ms",

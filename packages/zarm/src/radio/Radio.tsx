@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import type { BaseRadioProps } from './interface';
 import RadioGroup from './RadioGroup';
 import Cell from '../cell';
+import { ConfigContext } from '../n-config-provider';
 
 const getChecked = (props: RadioProps, defaultChecked: boolean) => {
   return props.checked ?? props.defaultChecked ?? defaultChecked;
@@ -23,7 +24,6 @@ type RadioButtonProps = Omit<
 
 export type RadioProps = Partial<RadioSpanProps & RadioCellProps & RadioButtonProps> &
   BaseRadioProps & {
-    prefixCls?: string;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   };
 
@@ -34,7 +34,6 @@ interface CompoundedComponent
 
 const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
   const {
-    prefixCls,
     className,
     type,
     shape,
@@ -52,6 +51,9 @@ const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
   const [currentChecked, setCurrentChecked] = React.useState(
     getChecked({ checked, defaultChecked }, false),
   );
+
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-radio`;
 
   const cls = classnames(prefixCls, className, {
     [`${prefixCls}--checked`]: currentChecked,
@@ -123,7 +125,6 @@ const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
 Radio.displayName = 'Radio';
 
 Radio.defaultProps = {
-  prefixCls: 'za-radio',
   shape: 'radius',
   disabled: false,
 };

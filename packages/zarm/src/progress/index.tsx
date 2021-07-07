@@ -1,6 +1,7 @@
 import React, { useImperativeHandle, useRef } from 'react';
 import type { ForwardedRef, HTMLAttributes } from 'react';
 import classnames from 'classnames';
+import { ConfigContext } from '../n-config-provider';
 import type { BaseProgressProps } from './interface';
 import {
   useSizeStyle,
@@ -13,14 +14,12 @@ import {
 } from './hooks';
 
 export interface ProgressProps extends BaseProgressProps, HTMLAttributes<HTMLDivElement> {
-  prefixCls?: string;
   className?: string;
 }
 
 const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
   (
     {
-      prefixCls,
       theme,
       shape,
       size,
@@ -65,6 +64,9 @@ const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
     });
 
     const indicator = useIndicator({ percent, children, text });
+
+    const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+    const prefixCls = `${globalPrefixCls}-progress`;
 
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--${shape}`]: !!shape,
@@ -118,14 +120,14 @@ const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
 );
 
 Progress.displayName = 'Progress';
+
 Progress.defaultProps = {
-  prefixCls: 'za-progress',
   theme: 'primary',
   shape: 'line',
   size: 'md',
   percent: 0,
   strokeShape: 'round',
-  text: (val?: number) => `${val}%`,
+  text: (val: number) => `${val}%`,
 };
 
 export default Progress;

@@ -113,7 +113,6 @@ exports[`Tab lineWidth is auto 1`] = `
   >
     <TabPanel
       key=".0"
-      prefixCls="za-tabs"
       selected={true}
       title="选项卡1"
     >
@@ -123,7 +122,6 @@ exports[`Tab lineWidth is auto 1`] = `
     </TabPanel>
     <TabPanel
       key=".1"
-      prefixCls="za-tabs"
       selected={false}
       title="选项卡2"
     >
@@ -190,7 +188,6 @@ exports[`Tab lineWidth is auto 2`] = `
   >
     <TabPanel
       key=".0"
-      prefixCls="za-tabs"
       selected={true}
       title="选项卡1"
     >
@@ -200,7 +197,6 @@ exports[`Tab lineWidth is auto 2`] = `
     </TabPanel>
     <TabPanel
       key=".1"
-      prefixCls="za-tabs"
       selected={false}
       title="选项卡2"
     >

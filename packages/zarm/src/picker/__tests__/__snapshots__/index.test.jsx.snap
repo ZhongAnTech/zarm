@@ -79,7 +79,6 @@ exports[`Picker Picker render visible 1`] = `
             destroy={false}
             localeCode="zh-CN"
             onMaskClick={[Function]}
-            prefixCls="za-popup"
             safeIphoneX={false}
             visible={true}
           >
@@ -185,7 +184,6 @@ exports[`Picker Picker render visible 1`] = `
                 >
                   <Mask
                     className="za-fade-enter"
-                    prefixCls="za-mask"
                     style={
                       Object {
                         "WebkitAnimationDuration": "200ms",
@@ -486,7 +484,6 @@ exports[`Picker render custom label 1`] = `
             destroy={false}
             localeCode="zh-CN"
             onMaskClick={[Function]}
-            prefixCls="za-popup"
             safeIphoneX={false}
             visible={false}
           />

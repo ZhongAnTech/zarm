@@ -1,22 +1,18 @@
 import React, { HTMLAttributes } from 'react';
 import classnames from 'classnames';
+import { ConfigContext } from '../n-config-provider';
 import type { BaseActivityIndicatorProps } from './interface';
 
 const DIAMETER = 62;
 
 const Circular = React.forwardRef(
   (
-    {
-      prefixCls,
-      className,
-      size,
-      percent,
-      strokeWidth,
-      loading,
-      ...htmlAttributes
-    }: ActivityIndicatorProps,
+    { className, size, percent, strokeWidth, loading, ...htmlAttributes }: ActivityIndicatorProps,
     ref: any,
   ) => {
+    const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+    const prefixCls = `${globalPrefixCls}-activity-indicator`;
+
     const cls = classnames(className, prefixCls, {
       [`${prefixCls}--${size}`]: !!size,
       [`${prefixCls}--circular`]: loading,
@@ -72,19 +68,19 @@ type HTMLDivElementAttributeKeys = keyof HTMLAttributes<HTMLDivElement>;
 const Spinner = React.forwardRef(
   (
     {
-      prefixCls,
       className,
       size,
       ...htmlAttributes
-    }: Pick<
-      ActivityIndicatorProps,
-      'prefixCls' | 'className' | 'size' | HTMLDivElementAttributeKeys
-    >,
+    }: Pick<ActivityIndicatorProps, 'className' | 'size' | HTMLDivElementAttributeKeys>,
     ref: any,
   ) => {
+    const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+    const prefixCls = `${globalPrefixCls}-activity-indicator`;
+
     const cls = classnames(prefixCls, `${prefixCls}--spinner`, className, {
       [`${prefixCls}--${size}`]: !!size,
     });
+
     const spinner: React.ReactElement[] = [];
 
     for (let i = 0; i < 12; i++) {
@@ -101,11 +97,7 @@ const Spinner = React.forwardRef(
 
 Spinner.displayName = 'Spinner';
 
-export interface ActivityIndicatorProps
-  extends BaseActivityIndicatorProps,
-    HTMLAttributes<HTMLDivElement> {
-  prefixCls?: string;
-}
+export type ActivityIndicatorProps = BaseActivityIndicatorProps & HTMLAttributes<HTMLDivElement>;
 
 const ActivityIndicator = React.forwardRef<unknown, ActivityIndicatorProps>((props, ref) => {
   if (props.type !== 'spinner') {
@@ -117,7 +109,6 @@ const ActivityIndicator = React.forwardRef<unknown, ActivityIndicatorProps>((pro
 });
 
 ActivityIndicator.defaultProps = {
-  prefixCls: 'za-activity-indicator',
   strokeWidth: 5,
   percent: 20,
   type: 'circular',
