@@ -125,9 +125,11 @@ export { default as useOrientation } from './useOrientation';
 export type { PinchZoomProps } from './pinch-zoom';
 export { default as PinchZoom } from './pinch-zoom';
 
-export { default as LocaleProvider } from './locale-provider';
 export { default as ConfigProvider } from './config-provider';
-export { default as ConfigReceiver } from './config-receiver';
+
+export type { ConfigProviderProps as NConfigProviderProps } from './n-config-provider';
+export { default as NConfigProvider } from './n-config-provider';
+
 export { default as StackPicker } from './stack-picker';
 
 export type { AffixProps } from './affix';

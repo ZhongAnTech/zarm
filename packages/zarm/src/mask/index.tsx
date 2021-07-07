@@ -1,14 +1,16 @@
 import * as React from 'react';
 import classnames from 'classnames';
+import { ConfigContext } from '../n-config-provider';
 import type { BaseMaskProps } from './interface';
 
-export interface MaskProps extends BaseMaskProps, React.HTMLAttributes<HTMLDivElement> {
-  prefixCls?: string;
-}
+export type MaskProps = BaseMaskProps & React.HTMLAttributes<HTMLDivElement>;
 
 const Mask = React.forwardRef<unknown, MaskProps>((props, ref) => {
-  const { prefixCls, className, visible, type, ...restProps } = props;
+  const { className, visible, type, ...restProps } = props;
   const maskRef = (ref as any) || React.createRef<HTMLDivElement>();
+
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-mask`;
 
   const maskCls = classnames(prefixCls, className, {
     [`${prefixCls}--${type}`]: !!type,
@@ -20,7 +22,6 @@ const Mask = React.forwardRef<unknown, MaskProps>((props, ref) => {
 Mask.displayName = 'Mask';
 
 Mask.defaultProps = {
-  prefixCls: 'za-mask',
   type: 'normal',
   visible: false,
 };

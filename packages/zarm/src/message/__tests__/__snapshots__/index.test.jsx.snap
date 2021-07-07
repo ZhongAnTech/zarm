@@ -4,7 +4,6 @@ exports[`Message closable 1`] = `
 <Message
   closable={true}
   hasArrow={false}
-  prefixCls="za-message"
   theme="primary"
 >
   <div

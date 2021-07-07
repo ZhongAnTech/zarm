@@ -37,6 +37,10 @@ export default ({ location, globalContext, children }) => {
             /import\s+(.*)\s+from\s+'zarm\/lib\/config-provider\/locale\/(.*)';/g,
             "const $1 = Locale['$2'];",
           )
+          .replace(
+            /import\s+(.*)\s+from\s+'zarm\/lib\/n-config-provider\/locale\/(.*)';/g,
+            "const $1 = Locale['$2'];",
+          )
           // 替换格式
           // ReactDOM.render(<Demo />, mountNode);
           .replace(

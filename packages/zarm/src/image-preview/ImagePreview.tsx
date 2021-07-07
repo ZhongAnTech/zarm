@@ -10,6 +10,7 @@ import LOAD_STATUS from './utils/loadStatus';
 import formatImages from './utils/formatImages';
 import showOriginButton from './utils/showOriginButton';
 import useOrientation from '../useOrientation';
+import { ConfigContext } from '../n-config-provider';
 
 export interface ImagePreviewProps extends BaseImagePreviewProps {
   prefixCls?: string;
@@ -30,6 +31,10 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
 
   const imagePreviewRef = (ref as any) || React.createRef<HTMLDivElement>();
 
+  const { locale: globalLocal, prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+
+  const prefixCls = `${globalPrefixCls}-image-preview`;
+
   const moving = useRef<boolean>();
 
   const {
@@ -38,8 +43,6 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
     images,
     onClose,
     showPagination,
-    prefixCls,
-    locale,
     minScale,
     maxScale,
     className,
@@ -208,7 +211,7 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
           {loaded === LOAD_STATUS.start && (
             <ActivityIndicator className={`${prefixCls}__loading`} type="spinner" />
           )}
-          {locale && locale[loaded]}
+          {globalLocal?.ImagePreview && globalLocal?.ImagePreview?.[loaded]}
         </button>
       );
     }
@@ -250,7 +253,6 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
 ImagePreview.displayName = 'ImagePreview';
 
 ImagePreview.defaultProps = {
-  prefixCls: 'za-image-preview',
   activeIndex: 0,
   showPagination: true,
   visible: false,

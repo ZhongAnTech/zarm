@@ -2,17 +2,20 @@ import * as React from 'react';
 import type { BaseKeyBoardPickerProps } from './interface';
 import Keyboard from '../keyboard';
 import Popup from '../popup';
+import { ConfigContext } from '../n-config-provider';
 
 export interface KeyboardPickerProps extends BaseKeyBoardPickerProps {
-  prefixCls?: string;
   className?: string;
 }
 
 const KeyboardPicker = React.forwardRef<unknown, KeyboardPickerProps>((props, ref) => {
-  const { prefixCls, className, visible, destroy, onKeyClick, ...restProps } = props;
+  const { className, visible, destroy, onKeyClick, ...restProps } = props;
 
   const keyboardPickerRef = (ref as any) || React.createRef<HTMLDivElement>();
   const [currentVisible, setCurrentVisible] = React.useState(visible);
+
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-keyboard-picker`;
 
   const onKeyboardKeyClick = (key: string) => {
     if (typeof onKeyClick === 'function') {
@@ -36,7 +39,6 @@ const KeyboardPicker = React.forwardRef<unknown, KeyboardPickerProps>((props, re
 KeyboardPicker.displayName = 'KeyboardPicker';
 
 KeyboardPicker.defaultProps = {
-  prefixCls: 'za-keyboard-picker',
   visible: false,
   type: 'number',
   destroy: true,

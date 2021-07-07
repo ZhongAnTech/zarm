@@ -9,7 +9,7 @@ import { images, originImages } from '../../../tests/testData/images';
 // import { Images } from '../interface';
 import { sleep } from '../../../tests/utils';
 // import ActivityIndicator from '../../activity-indicator';
-import ImagePreviewEnhanced from '../index';
+// import ImagePreviewEnhanced from '../index';
 
 describe('ImagePreview', () => {
   afterEach(() => {
@@ -28,16 +28,16 @@ describe('ImagePreview', () => {
     });
   });
 
-  it('should pass locale and localeCode props to original component after wrapped by ConfigReceiverWrapper HOC', () => {
-    /*  @ts-ignore */
-    const wrapper = mount(<ImagePreviewEnhanced visible images={images} />);
-    expect(wrapper.find(ImagePreview).prop('locale')).toEqual({
-      loadBefore: '查看原图',
-      loadStart: '加载中',
-      loadEnd: '加载完成',
-    });
-    expect(wrapper.find(ImagePreview).prop('localeCode')).toEqual('zh-CN');
-  });
+  // it('should pass locale and localeCode props to original component after wrapped by ConfigReceiverWrapper HOC', () => {
+  //   /*  @ts-ignore */
+  //   const wrapper = mount(<ImagePreviewEnhanced visible images={images} />);
+  //   expect(wrapper.find(ImagePreview).prop('locale')).toEqual({
+  //     loadBefore: '查看原图',
+  //     loadStart: '加载中',
+  //     loadEnd: '加载完成',
+  //   });
+  //   expect(wrapper.find(ImagePreview).prop('localeCode')).toEqual('zh-CN');
+  // });
 
   // it('should get initial derived state from props - 2', () => {
   //   const wrapper = mount(<ImagePreview visible images={images} />);
