@@ -78,7 +78,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
 
   // 是否横向移动
   const isDirectionX = useCallback(() => {
-    return ['left', 'right'].indexOf(direction!) > -1;
+    return ['left', 'right'].includes(direction!);
   }, [direction]);
 
   // 处理节点（首尾拼接）
@@ -247,7 +247,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
     }
 
     // 设置不循环的时候
-    if (loop) {
+    if (!loop) {
       // 在尾页时禁止拖动
       if (isLastIndex()) {
         if ((isDirectionX() && offsetX < 0) || (!isDirectionX() && offsetY < 0)) {
