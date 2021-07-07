@@ -1,7 +1,8 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import TabPanel from './TabPanel';
-import Carousel, { CarouselHTMLElement } from '../carousel';
+import Carousel from '../carousel';
+import type { CarouselHTMLElement } from '../carousel';
 import { getTransformPropValue, getPxStyle } from './util/index';
 import { scrollTo } from '../utils/dom';
 import type { TabPanelProps } from './TabPanel';

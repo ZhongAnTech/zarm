@@ -1,40 +1,56 @@
 import React, {
   cloneElement,
   Children,
-  CSSProperties,
   forwardRef,
   useState,
   useEffect,
   useRef,
   useCallback,
 } from 'react';
+import type { CSSProperties } from 'react';
 import classnames from 'classnames';
-import PropsType from './interface';
+import type PropsType from './interface';
 import Events from '../utils/events';
-import Drag from '../drag';
+import useDrag from '../useDrag';
+import type { DragState, DragEvent } from '../useDrag/interface';
 
 export interface CarouselProps extends PropsType {
   prefixCls?: string;
   className?: string;
-}
-export interface Offset {
-  x: number;
-  y: number;
+  style?: CSSProperties;
 }
 export interface CarouselHTMLElement extends HTMLElement {
   onJumpTo: (index: number) => void;
   onSlideTo: (index: number) => void;
 }
-
+interface Offset {
+  x: number;
+  y: number;
+}
 interface StateProps {
   activeIndex: number;
   activeIndexChanged: boolean;
 }
 const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => {
-  const { prefixCls, className, height, style } = props;
+  const {
+    prefixCls,
+    className,
+    height,
+    style,
+    children,
+    direction,
+    loop,
+    onChangeEnd,
+    onChange,
+    autoPlay,
+    autoPlayIntervalTime,
+    swipeable,
+    animationDuration,
+    activeIndex: propActiveIndex,
+  } = props;
 
   const stateRef = useRef<StateProps>({
-    activeIndex: props.activeIndex!,
+    activeIndex: propActiveIndex!,
     activeIndexChanged: false,
   });
   const [activeIndexState, setActiveIndexState] = useState(stateRef.current.activeIndex);
@@ -52,8 +68,8 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
 
   // 判断当前是否在最后一页
   const isLastIndex = useCallback(() => {
-    return stateRef.current.activeIndex >= props.children!.length - 1;
-  }, [props.children]);
+    return stateRef.current.activeIndex >= children!.length - 1;
+  }, [children]);
 
   // 判断当前是否在第一页
   const isFirstIndex = () => {
@@ -62,20 +78,20 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
 
   // 是否横向移动
   const isDirectionX = useCallback(() => {
-    return ['left', 'right'].indexOf(props.direction!) > -1;
-  }, [props.direction]);
+    return ['left', 'right'].indexOf(direction!) > -1;
+  }, [direction]);
 
   // 处理节点（首尾拼接）
   const parseItems = () => {
-    if (props.children == null || props.children.length === 0) {
+    if (children == null || children.length === 0) {
       return;
     }
     // 增加头尾拼接节点
-    const itemList = [...props.children];
+    const itemList = [...children];
     const firstItem = itemList[0];
     const lastItem = itemList[itemList.length - 1];
 
-    if (props.loop) {
+    if (loop) {
       itemList.push(firstItem);
       itemList.unshift(lastItem);
     }
@@ -84,7 +100,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
     const newItems = React.Children.map(itemList, (element: any, index) => {
       return cloneElement(element, {
         key: index,
-        className: classnames(`${props.prefixCls}__item`, element.props.className),
+        className: classnames(`${prefixCls}__item`, element.props.className),
       });
     });
     return newItems;
@@ -92,7 +108,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
 
   // 执行过渡动画
   const doTransition = useCallback(
-    (offset: Offset, animationDuration: number) => {
+    (offset: Offset, animationDurationNum: number) => {
       const dom = carouselItemsRef.current;
       let x = 0;
       let y = 0;
@@ -102,14 +118,13 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
       } else {
         ({ y } = offset);
       }
-      dom!.style.transitionDuration = `${animationDuration}ms`;
+      dom!.style.transitionDuration = `${animationDurationNum}ms`;
       dom!.style.transform = `translate3d(${x}px, ${y}px, 0)`;
     },
     [isDirectionX],
   );
 
   const transitionEnd = useCallback(() => {
-    const { onChangeEnd, loop } = props;
     const { activeIndex, activeIndexChanged } = stateRef.current;
     const dom = carouselItemsRef.current;
     const index = loop ? activeIndex + 1 : activeIndex;
@@ -120,19 +135,18 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
     if (typeof onChangeEnd === 'function' && activeIndexChanged) {
       onChangeEnd(activeIndex);
     }
-  }, [props, doTransition]);
+  }, [loop, doTransition, onChangeEnd]);
 
   // 移动到指定编号
   const onMoveTo = useCallback(
-    (index: number, animationDuration: number) => {
+    (index: number, animationDurationNum: number) => {
       const dom = carouselItemsRef.current;
-      const { loop, children, onChange } = props;
       const maxLength = children!.length;
       const previousIndex = stateRef.current.activeIndex;
       const num = loop ? 1 : 0;
       translateXRef.current = -dom!.offsetWidth * (index + num);
       translateYRef.current = -dom!.offsetHeight * (index + num);
-      doTransition({ x: translateXRef.current, y: translateYRef.current }, animationDuration);
+      doTransition({ x: translateXRef.current, y: translateYRef.current }, animationDurationNum);
 
       if (index > maxLength - 1) {
         index = 0;
@@ -149,15 +163,15 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
         onChange(index);
       }
     },
-    [doTransition, props],
+    [children, doTransition, loop, onChange],
   );
 
   // 滑动到指定编号
   const onSlideTo = useCallback(
     (index: number) => {
-      onMoveTo(index, props.animationDuration!);
+      onMoveTo(index, animationDuration!);
     },
-    [onMoveTo, props.animationDuration],
+    [onMoveTo, animationDuration],
   );
 
   // 静默跳到指定编号
@@ -176,7 +190,6 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
 
   // 自动轮播开始
   const startAutoPlay = useCallback(() => {
-    const { direction, loop, autoPlay, autoPlayIntervalTime } = props;
     if (autoPlay) {
       moveIntervalRef.current = setInterval(() => {
         const isLeftOrUpDirection = ['left', 'up'].indexOf(direction!) > -1;
@@ -192,7 +205,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
         onSlideTo(activeIndex);
       }, autoPlayIntervalTime);
     }
-  }, [isLastIndex, onSlideTo, props]);
+  }, [autoPlay, autoPlayIntervalTime, direction, isLastIndex, loop, onSlideTo]);
 
   // 更新窗口变化的位置偏移
   const resize = useCallback(() => {
@@ -201,7 +214,6 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
 
   // 触屏事件
   const onDragStart = () => {
-    const { swipeable, children } = props;
     if (!swipeable) {
       return false;
     }
@@ -219,8 +231,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
     pauseAutoPlay();
   };
 
-  const onDragMove = (event: DragEvent, { offsetX, offsetY }) => {
-    const { swipeable } = props;
+  const onDragMove = (event: DragEvent, { offsetX = 0, offsetY = 0 }: DragState) => {
     if (!swipeable) {
       return false;
     }
@@ -236,7 +247,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
     }
 
     // 设置不循环的时候
-    if (!props.loop) {
+    if (loop) {
       // 在尾页时禁止拖动
       if (isLastIndex()) {
         if ((isDirectionX() && offsetX < 0) || (!isDirectionX() && offsetY < 0)) {
@@ -260,8 +271,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
     return true;
   };
 
-  const onDragEnd = (_event: DragEvent, { offsetX, offsetY, startTime }) => {
-    const { swipeable } = props;
+  const onDragEnd = (_event: DragEvent, { offsetX = 0, offsetY = 0, startTime }: DragState) => {
     if (!swipeable) {
       return false;
     }
@@ -275,7 +285,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
     let { activeIndex } = stateRef.current;
 
     const dom = carouselItemsRef.current;
-    const timeSpan = new Date().getTime() - startTime.getTime();
+    const timeSpan = new Date().getTime() - startTime!.getTime();
     const ratio = isDirectionX()
       ? Math.abs(offsetX / dom!.offsetWidth)
       : Math.abs(offsetY / dom!.offsetHeight);
@@ -332,7 +342,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
   };
 
   const renderPagination = () => {
-    const { showPagination, children } = props;
+    const { showPagination } = props;
     return (
       showPagination && (
         <div className={`${prefixCls}__pagination`}>
@@ -341,9 +351,9 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
       )
     );
   };
-
-  const direction = isDirectionX() ? 'horizontal' : 'vertical';
-  const cls = classnames(prefixCls, className, `${prefixCls}--${direction}`);
+  const getDragProps = useDrag({ onDragStart, onDragMove, onDragEnd });
+  const directionText = isDirectionX() ? 'horizontal' : 'vertical';
+  const cls = classnames(prefixCls, className, `${prefixCls}--${directionText}`);
 
   const content = () => {
     const items = parseItems();
@@ -362,12 +372,9 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
       </div>
     );
   };
-
   return (
-    <div className={cls} style={style} ref={carouselRef}>
-      <Drag onDragStart={onDragStart} onDragMove={onDragMove} onDragEnd={onDragEnd}>
-        {content()}
-      </Drag>
+    <div className={cls} style={style} ref={carouselRef} {...getDragProps}>
+      {content()}
       {renderPagination()}
     </div>
   );
