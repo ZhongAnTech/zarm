@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import type { BasePinchZoomProps } from './interface';
 import Events from '../utils/events';
 
-export interface Point {
+interface Point {
   clientX: number;
   clientY: number;
 }
