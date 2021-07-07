@@ -6,6 +6,7 @@ export default {
   'app.components.type.feedback': '操作反馈',
   'app.components.type.view': '数据展示',
   'app.components.type.navigation': '导航',
+  'app.components.type.hooks': '钩子',
   'app.components.type.other': '其他',
 
   'app.home.nav.search': '搜索组件',

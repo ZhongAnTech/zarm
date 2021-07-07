@@ -24,8 +24,9 @@ type CheckboxButtonProps = Omit<
 export type CheckboxProps = Partial<CheckboxSpanProps & CheckboxCellProps & CheckboxButtonProps> &
   BaseCheckboxProps & {
     prefixCls?: string;
-    onChange?: (e?: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   };
+
 interface CompoundedComponent
   extends React.ForwardRefExoticComponent<CheckboxProps & React.RefAttributes<HTMLElement>> {
   Group: typeof CheckboxGroup;

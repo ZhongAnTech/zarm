@@ -26,6 +26,6 @@ export interface BaseRadioGroupProps {
   ghost?: boolean;
   value?: RadioValue;
   defaultValue?: RadioValue;
-  onChange?: (value?: RadioValue) => void;
+  onChange?: (value: RadioValue) => void;
   children?: React.ReactNode;
 }
