@@ -1,16 +1,16 @@
-import classnames from 'classnames';
-import type { HTMLAttributes } from 'react';
 import React, { forwardRef } from 'react';
+import type { HTMLAttributes } from 'react';
+import classnames from 'classnames';
+import { ConfigContext } from '../n-config-provider';
 import type { BaseNavBarProps } from './interface';
 
-export interface NavBarProps
-  extends BaseNavBarProps,
-    Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
-  prefixCls?: string;
-}
+export type NavBarProps = BaseNavBarProps & Omit<HTMLAttributes<HTMLDivElement>, 'title'>;
 
 const NavBar = forwardRef<HTMLDivElement, NavBarProps>((props, ref) => {
-  const { prefixCls, className, title, left, right, ...restProps } = props;
+  const { className, title, left, right, ...restProps } = props;
+
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-nav-bar`;
 
   const cls = classnames(prefixCls, className);
   const titleCls = `${prefixCls}__title`;
@@ -29,8 +29,6 @@ const NavBar = forwardRef<HTMLDivElement, NavBarProps>((props, ref) => {
 
 NavBar.displayName = 'NavBar';
 
-NavBar.defaultProps = {
-  prefixCls: 'za-nav-bar',
-};
+NavBar.defaultProps = {};
 
 export default NavBar;

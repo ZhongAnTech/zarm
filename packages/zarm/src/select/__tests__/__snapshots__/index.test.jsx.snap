@@ -292,7 +292,6 @@ exports[`Select Cascader Select 1`] = `
                     destroy={false}
                     localeCode="zh-CN"
                     onMaskClick={[Function]}
-                    prefixCls="za-popup"
                     safeIphoneX={false}
                     visible={false}
                   />
@@ -642,7 +641,6 @@ exports[`Select Cascader Select init value 1`] = `
                     destroy={false}
                     localeCode="zh-CN"
                     onMaskClick={[Function]}
-                    prefixCls="za-popup"
                     safeIphoneX={false}
                     visible={false}
                   />
@@ -829,7 +827,6 @@ exports[`Select Select 1`] = `
                     destroy={false}
                     localeCode="zh-CN"
                     onMaskClick={[Function]}
-                    prefixCls="za-popup"
                     safeIphoneX={false}
                     visible={false}
                   />
@@ -1022,7 +1019,6 @@ exports[`Select Select disabled 1`] = `
                     destroy={false}
                     localeCode="zh-CN"
                     onMaskClick={[Function]}
-                    prefixCls="za-popup"
                     safeIphoneX={false}
                     visible={true}
                   >
@@ -1128,7 +1124,6 @@ exports[`Select Select disabled 1`] = `
                         >
                           <Mask
                             className="za-fade-enter"
-                            prefixCls="za-mask"
                             style={
                               Object {
                                 "WebkitAnimationDuration": "200ms",
@@ -1477,7 +1472,6 @@ exports[`Select render defaultValue correctly  1`] = `
                     destroy={false}
                     localeCode="zh-CN"
                     onMaskClick={[Function]}
-                    prefixCls="za-popup"
                     safeIphoneX={false}
                     visible={false}
                   />
