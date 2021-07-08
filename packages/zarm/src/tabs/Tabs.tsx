@@ -2,6 +2,7 @@ import * as React from 'react';
 import classnames from 'classnames';
 import TabPanel from './TabPanel';
 import Carousel from '../carousel';
+import type { CarouselHTMLElement } from '../carousel';
 import { getTransformPropValue, getPxStyle } from './util/index';
 import { scrollTo } from '../utils/dom';
 import { ConfigContext } from '../n-config-provider';
@@ -69,7 +70,7 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
   } = props;
 
   const tabsRef = (ref as any) || React.createRef<HTMLElement>();
-  const carouselRef = React.useRef<Carousel>(null);
+  const carouselRef = React.useRef<CarouselHTMLElement>(null);
   const tablistRef = React.useRef<HTMLUListElement>(null);
   const [itemWidth, setItemWidth] = React.useState(0);
   const [currentValue, setCurrentValue] = React.useState(
