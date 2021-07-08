@@ -64,7 +64,6 @@ describe('index', () => {
             "loop": false,
             "moveDistanceRatio": 0.5,
             "moveTimeSpan": 300,
-            "prefixCls": "za-carousel",
             "showPagination": true,
             "swipeable": true,
           },

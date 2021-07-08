@@ -9,13 +9,13 @@ import React, {
 } from 'react';
 import type { CSSProperties } from 'react';
 import classnames from 'classnames';
-import type PropsType from './interface';
+import type BaseCarouselProps from './interface';
 import Events from '../utils/events';
 import useDrag from '../useDrag';
 import type { DragState, DragEvent } from '../useDrag/interface';
+import { ConfigContext } from '../n-config-provider';
 
-export interface CarouselProps extends PropsType {
-  prefixCls?: string;
+export interface CarouselProps extends BaseCarouselProps {
   className?: string;
   style?: CSSProperties;
 }
@@ -32,8 +32,10 @@ interface StateProps {
   activeIndexChanged: boolean;
 }
 const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => {
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-carousel`;
+
   const {
-    prefixCls,
     className,
     height,
     style,
@@ -47,6 +49,9 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
     swipeable,
     animationDuration,
     activeIndex: propActiveIndex,
+    showPagination,
+    moveDistanceRatio,
+    moveTimeSpan,
   } = props;
 
   const stateRef = useRef<StateProps>({
@@ -192,7 +197,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
   const startAutoPlay = useCallback(() => {
     if (autoPlay) {
       moveIntervalRef.current = setInterval(() => {
-        const isLeftOrUpDirection = ['left', 'up'].indexOf(direction!) > -1;
+        const isLeftOrUpDirection = ['left', 'up'].includes(direction!);
         const activeIndex = isLeftOrUpDirection
           ? stateRef.current.activeIndex + 1
           : stateRef.current.activeIndex - 1;
@@ -281,7 +286,6 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
       return;
     }
 
-    const { moveDistanceRatio, moveTimeSpan } = props;
     let { activeIndex } = stateRef.current;
 
     const dom = carouselItemsRef.current;
@@ -307,13 +311,12 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
   };
 
   useEffect(() => {
-    const { activeIndex } = props;
-
     // 监听窗口变化
     Events.on(window, 'resize', resize);
+
     startAutoPlay();
     // 设置起始位置编号
-    onJumpTo(activeIndex!);
+    onJumpTo(propActiveIndex!);
 
     return () => {
       // 自动轮播结束
@@ -321,7 +324,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
       // 移除监听窗口变化
       Events.off(window, 'resize', resize);
     };
-  }, [onJumpTo, onSlideTo, props, resize, startAutoPlay, transitionEnd]);
+  }, [onJumpTo, onSlideTo, propActiveIndex, resize, startAutoPlay, transitionEnd]);
 
   useEffect(() => {
     carouselRef.current.onJumpTo = onJumpTo;
@@ -342,7 +345,6 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
   };
 
   const renderPagination = () => {
-    const { showPagination } = props;
     return (
       showPagination && (
         <div className={`${prefixCls}__pagination`}>
@@ -380,8 +382,9 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
   );
 });
 
+Carousel.displayName = 'Carousel';
+
 Carousel.defaultProps = {
-  prefixCls: 'za-carousel',
   direction: 'left',
   height: 160,
   loop: false,
