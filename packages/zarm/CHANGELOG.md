@@ -1,5 +1,16 @@
 # 版本更新日志
 
+## v2.9.4
+
+- Bug Fix
+
+  - [Collapse] 修复同时设置 activeKey 和 defaultActiveKey 属性属性导致的 bug。[#698](https://github.com/ZhongAnTech/zarm/pull/698)
+
+  - [Modal] 修复 Modal 静态方法 `Modal.confirm` 和 `Modal.alert` 使用后实例未销毁的 bug。[#710](https://github.com/ZhongAnTech/zarm/pull/710)
+
+- Perf
+  - [Button] 优化按钮点击 300ms 延时。[#701](https://github.com/ZhongAnTech/zarm/pull/701)
+
 ## v2.9.3
 
 - Bug Fix
