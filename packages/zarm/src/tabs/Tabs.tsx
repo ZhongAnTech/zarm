@@ -5,6 +5,7 @@ import Carousel from '../carousel';
 import type { CarouselHTMLElement } from '../carousel';
 import { getTransformPropValue, getPxStyle } from './util/index';
 import { scrollTo } from '../utils/dom';
+import { ConfigContext } from '../n-config-provider';
 import type { TabPanelProps } from './TabPanel';
 import type { BaseTabsProps } from './interface';
 
@@ -46,7 +47,6 @@ const getValue = (props: TabsProps, defaultValue: TabsProps['value']) => {
 };
 
 export interface TabsProps extends BaseTabsProps {
-  prefixCls?: string;
   className?: string;
 }
 
@@ -57,7 +57,6 @@ interface CompoundedComponent
 
 const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
   const {
-    prefixCls,
     className,
     value,
     defaultValue,
@@ -77,6 +76,9 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
   const [currentValue, setCurrentValue] = React.useState(
     getValue({ value, defaultValue, children }, 0),
   );
+
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-tabs`;
 
   const isVertical: boolean = direction === 'vertical';
 
@@ -244,7 +246,6 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
 Tabs.displayName = 'Tabs';
 
 Tabs.defaultProps = {
-  prefixCls: 'za-tabs',
   disabled: false,
   swipeable: false,
   scrollable: false,

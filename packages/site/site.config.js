@@ -322,9 +322,9 @@ module.exports = {
         style: true,
       },
       {
-        key: 'locale-provider',
-        name: '国际化（即将废弃）',
-        module: () => import('zarm/locale-provider/demo.md'),
+        key: 'n-config-provider',
+        name: '全局配置（新）',
+        module: () => import('zarm/n-config-provider/demo.md'),
         style: false,
       },
       {
