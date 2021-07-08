@@ -47,7 +47,6 @@ exports[`CustomInput.Idcard renders correctly 1`] = `
   autoFocus={false}
   clearable={true}
   maxLength={18}
-  prefixCls="za-custom-input"
   readOnly={false}
   type="idcard"
 >
@@ -72,7 +71,6 @@ exports[`CustomInput.Idcard renders correctly 1`] = `
     <KeyboardPicker
       destroy={true}
       onKeyClick={[Function]}
-      prefixCls="za-keyboard-picker"
       type="idcard"
       visible={false}
     >
@@ -91,7 +89,6 @@ exports[`CustomInput.Idcard renders correctly 1`] = `
             destroy={true}
             localeCode="zh-CN"
             mask={false}
-            prefixCls="za-popup"
             safeIphoneX={false}
             visible={false}
           />
@@ -106,7 +103,6 @@ exports[`CustomInput.Price renders correctly 1`] = `
 <CustomInput
   autoFocus={false}
   clearable={true}
-  prefixCls="za-custom-input"
   readOnly={false}
   type="price"
 >
@@ -131,7 +127,6 @@ exports[`CustomInput.Price renders correctly 1`] = `
     <KeyboardPicker
       destroy={true}
       onKeyClick={[Function]}
-      prefixCls="za-keyboard-picker"
       type="price"
       visible={false}
     >
@@ -150,7 +145,6 @@ exports[`CustomInput.Price renders correctly 1`] = `
             destroy={true}
             localeCode="zh-CN"
             mask={false}
-            prefixCls="za-popup"
             safeIphoneX={false}
             visible={false}
           />

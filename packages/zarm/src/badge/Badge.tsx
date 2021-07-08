@@ -1,14 +1,16 @@
 import * as React from 'react';
 import classnames from 'classnames';
+import { ConfigContext } from '../n-config-provider';
 import type { BaseBadgeProps } from './interface';
 
-export interface BadgeProps extends BaseBadgeProps, React.HTMLAttributes<HTMLElement> {
-  prefixCls?: string;
-}
+export type BadgeProps = BaseBadgeProps & React.HTMLAttributes<HTMLElement>;
 
 const Badge = React.forwardRef<unknown, BadgeProps>((props, ref) => {
-  const { prefixCls, className, theme, shape, text, children, ...restProps } = props;
+  const { className, theme, shape, text, children, ...restProps } = props;
   const badgeRef = (ref as any) || React.createRef<HTMLElement>();
+
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-badge`;
 
   const cls = classnames(prefixCls, className, {
     [`${prefixCls}--${theme}`]: !!theme,
@@ -27,7 +29,6 @@ const Badge = React.forwardRef<unknown, BadgeProps>((props, ref) => {
 Badge.displayName = 'Badge';
 
 Badge.defaultProps = {
-  prefixCls: 'za-badge',
   shape: 'dot',
   theme: 'danger',
 };

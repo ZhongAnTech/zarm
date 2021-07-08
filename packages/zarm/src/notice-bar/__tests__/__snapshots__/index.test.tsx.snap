@@ -49,7 +49,6 @@ exports[`NoticeBar snapshot renders correctly 1`] = `
     delay={2000}
     hasArrow={false}
     icon={<ForwardRef(SvgVolume) />}
-    prefixCls="za-message"
     size="lg"
     speed={50}
     theme="warning"

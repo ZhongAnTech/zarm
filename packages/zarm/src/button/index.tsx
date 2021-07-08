@@ -1,12 +1,12 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import ActivityIndicator from '../activity-indicator';
+import { ConfigContext } from '../n-config-provider';
 import type { BaseButtonProps, ButtonTheme, ButtonSize, ButtonShape } from './interface';
 
 export type { ButtonTheme, ButtonSize, ButtonShape };
 
 interface CommonProps extends BaseButtonProps {
-  prefixCls?: string;
   onClick?: React.MouseEventHandler<HTMLElement>;
 }
 
@@ -24,7 +24,6 @@ export type ButtonProps = Partial<AnchorButtonProps & NativeButtonProps>;
 
 const Button = React.forwardRef<unknown, ButtonProps>((props, ref) => {
   const {
-    prefixCls,
     className,
     theme,
     size,
@@ -44,6 +43,9 @@ const Button = React.forwardRef<unknown, ButtonProps>((props, ref) => {
   const buttonRef = (ref as any) || React.createRef<HTMLElement>();
   const iconRender = loading ? <ActivityIndicator /> : icon;
   const childrenRender = children && <span>{children}</span>;
+
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-button`;
 
   let cls = classnames(prefixCls, className, {
     [`${prefixCls}--${theme}`]: !!theme,
@@ -111,7 +113,6 @@ const Button = React.forwardRef<unknown, ButtonProps>((props, ref) => {
 Button.displayName = 'Button';
 
 Button.defaultProps = {
-  prefixCls: 'za-button',
   theme: 'default',
   size: 'md',
   shape: 'radius',

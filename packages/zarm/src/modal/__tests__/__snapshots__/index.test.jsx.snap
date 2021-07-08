@@ -52,7 +52,6 @@ exports[`Modal renders correctly 1`] = `
         mask={true}
         maskType="normal"
         onMaskClick={[MockFunction]}
-        prefixCls="za-popup"
         safeIphoneX={false}
         visible={true}
         width="70%"
@@ -141,7 +140,6 @@ exports[`Modal renders correctly 1`] = `
             >
               <Mask
                 className="za-fade-enter"
-                prefixCls="za-mask"
                 style={
                   Object {
                     "WebkitAnimationDuration": "200ms",
