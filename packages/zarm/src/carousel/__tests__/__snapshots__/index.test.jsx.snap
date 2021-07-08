@@ -94,37 +94,6 @@ exports[`Carousel className render correctly 1`] = `
 </div>
 `;
 
-exports[`Carousel componentWillReceiveProps 1`] = `
-<div
-  class="za-carousel za-carousel--horizontal"
->
-  <div
-    class="za-carousel__items"
-  >
-    <div
-      class="za-carousel__item"
-    >
-      1
-    </div>
-    <div
-      class="za-carousel__item"
-    >
-      2
-    </div>
-  </div>
-  <div
-    class="za-carousel__pagination"
-  >
-    <div
-      class="za-carousel__pagination__item"
-    />
-    <div
-      class="za-carousel__pagination__item za-carousel__pagination__item--active"
-    />
-  </div>
-</div>
-`;
-
 exports[`Carousel height render correctly 1`] = `
 <div
   class="za-carousel za-carousel--vertical"
@@ -231,22 +200,22 @@ exports[`Carousel pagination render correctly 1`] = `
 
 exports[`Carousel prefixCls render correctly 1`] = `
 <div
-  class="za-test za-test--horizontal"
+  class="za-carousel za-carousel--horizontal"
 >
   <div
-    class="za-test__items"
+    class="za-carousel__items"
   >
     <div
-      class="za-test__item"
+      class="za-carousel__item"
     >
       0
     </div>
   </div>
   <div
-    class="za-test__pagination"
+    class="za-carousel__pagination"
   >
     <div
-      class="za-test__pagination__item za-test__pagination__item--active"
+      class="za-carousel__pagination__item za-carousel__pagination__item--active"
     />
   </div>
 </div>
@@ -277,49 +246,42 @@ exports[`Carousel swipeable 1`] = `
   loop={false}
   moveDistanceRatio={0.5}
   moveTimeSpan={300}
-  prefixCls="za-carousel"
   showPagination={true}
   swipeable={false}
 >
   <div
     className="za-carousel za-carousel--horizontal"
+    onMouseDown={[Function]}
+    onMouseMove={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
   >
-    <Drag
-      onDragEnd={[Function]}
-      onDragMove={[Function]}
-      onDragStart={[Function]}
+    <div
+      className="za-carousel__items"
+      onTransitionEnd={[Function]}
+      style={Object {}}
     >
       <div
-        className="za-carousel__items"
-        onMouseDown={[Function]}
-        onMouseMove={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        onTransitionEnd={[Function]}
-        style={Object {}}
+        className="za-carousel__item"
+        key=".$0"
       >
-        <div
-          className="za-carousel__item"
-          key=".$0"
-        >
-          0
-        </div>
-        <div
-          className="za-carousel__item"
-          key=".$1"
-        >
-          1
-        </div>
-        <div
-          className="za-carousel__item"
-          key=".$2"
-        >
-          2
-        </div>
+        0
       </div>
-    </Drag>
+      <div
+        className="za-carousel__item"
+        key=".$1"
+      >
+        1
+      </div>
+      <div
+        className="za-carousel__item"
+        key=".$2"
+      >
+        2
+      </div>
+    </div>
     <div
       className="za-carousel__pagination"
     >
