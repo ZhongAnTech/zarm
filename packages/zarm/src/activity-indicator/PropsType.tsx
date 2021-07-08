@@ -1,5 +1,5 @@
 export default interface PropsType {
-  size?: 'lg';
+  size?: 'lg' | 'md';
   strokeWidth?: number;
   percent?: number;
   type?: 'circular' | 'spinner';
