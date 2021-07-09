@@ -31,8 +31,6 @@ const getActiveKey = (props) => {
   return multiple ? [] : undefined;
 };
 
-
-
 const Collapse = React.forwardRef<unknown, CollapseProps>((props, ref) => {
   const {
     prefixCls,
