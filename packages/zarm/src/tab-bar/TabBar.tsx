@@ -3,19 +3,24 @@ import classnames from 'classnames';
 import type { BaseTabBarProps } from './interface';
 import TabBarItem from './TabBarItem';
 import type { TabBarItemProps } from './TabBarItem';
+import { ConfigContext } from '../n-config-provider';
 
-// type a = 'onChange' | 'title'
-// type xx = Exclude<keyof React.HTMLAttributes<HTMLElement>, 'onChange'>
 export interface TabBarProps
   extends BaseTabBarProps,
-    Omit<React.HTMLAttributes<HTMLElement>, 'onChange'> {
-  prefixCls?: string;
+    Omit<React.HTMLAttributes<HTMLElement>, 'onChange'> {}
+
+interface CompoundedComponent
+  extends React.ForwardRefExoticComponent<TabBarProps & React.RefAttributes<HTMLElement>> {
+  Item: typeof TabBarItem;
 }
 
 const TabBar = React.forwardRef<unknown, TabBarProps>((props, ref) => {
   const tabBarRef = (ref as any) || React.createRef<HTMLElement>();
 
-  const { visible, prefixCls, className, children, style, safeIphoneX, onChange } = props;
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-tab-bar`;
+
+  const { visible, className, children, style, safeIphoneX, onChange } = props;
   const onChildChange = useCallback(
     (value: string | number) => {
       if (typeof onChange === 'function') {
@@ -64,10 +69,11 @@ const TabBar = React.forwardRef<unknown, TabBarProps>((props, ref) => {
       {items}
     </div>
   );
-});
+}) as CompoundedComponent;
+
+TabBar.displayName = 'TabBar';
 
 TabBar.defaultProps = {
-  prefixCls: 'za-tab-bar',
   visible: true,
   safeIphoneX: false,
 };

@@ -1,61 +1,55 @@
-import React, { PureComponent } from 'react';
+import React, { useCallback } from 'react';
 import classnames from 'classnames';
 import Badge from '../badge';
 import type { BaseTabBarItemProps } from './interface';
+import { ConfigContext } from '../n-config-provider';
 
 export interface TabBarItemProps
   extends BaseTabBarItemProps,
-    Omit<React.HTMLAttributes<HTMLElement>, 'onChange' | 'title'> {
-  prefixCls?: string;
-}
+    Omit<React.HTMLAttributes<HTMLElement>, 'onChange' | 'title'> {}
 
-class TabBarItem extends PureComponent<TabBarItemProps, {}> {
-  static defaultProps = {
-    prefixCls: 'za-tab-bar',
-  };
+const TabBarItem = React.forwardRef<unknown, TabBarItemProps>((props, ref) => {
+  const tabBaItemrRef = (ref as any) || React.createRef<HTMLElement>();
 
-  change = (value?: string | number) => {
-    const { onChange } = this.props;
-    if (typeof onChange === 'function') {
-      onChange(value);
-    }
-  };
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-tab-bar`;
 
-  render() {
-    const {
-      prefixCls,
-      title,
-      icon,
-      badge,
-      style,
-      itemKey,
-      selected,
-      activeIcon = icon,
-    } = this.props;
+  const { title, icon, badge, style, itemKey, selected, activeIcon = icon, onChange } = props;
 
-    const cls = classnames(`${prefixCls}__item`, {
-      [`${prefixCls}--active`]: selected,
-    });
+  const change = useCallback(
+    (value?: string | number) => {
+      if (typeof onChange === 'function') {
+        onChange(value);
+      }
+    },
+    [onChange],
+  );
 
-    const contentRender = (
-      <>
-        <div className={`${prefixCls}__icon`}>{selected ? activeIcon : icon}</div>
-        <div className={`${prefixCls}__title`}>{title}</div>
-      </>
-    );
+  const cls = classnames(`${prefixCls}__item`, {
+    [`${prefixCls}--active`]: selected,
+  });
 
-    return (
-      <div
-        className={cls}
-        style={style}
-        onClick={() => {
-          this.change(itemKey);
-        }}
-      >
-        {badge ? <Badge {...badge}>{contentRender}</Badge> : contentRender}
-      </div>
-    );
-  }
-}
+  const contentRender = (
+    <>
+      <div className={`${prefixCls}__icon`}>{selected ? activeIcon : icon}</div>
+      <div className={`${prefixCls}__title`}>{title}</div>
+    </>
+  );
+
+  return (
+    <div
+      className={cls}
+      style={style}
+      onClick={() => {
+        change(itemKey);
+      }}
+      ref={tabBaItemrRef}
+    >
+      {badge ? <Badge {...badge}>{contentRender}</Badge> : contentRender}
+    </div>
+  );
+});
+
+TabBarItem.displayName = 'TabBarItem';
 
 export default TabBarItem;
