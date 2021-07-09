@@ -1,6 +1,6 @@
 import React, { Component, CSSProperties, Children, cloneElement, ReactElement } from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
-import { BaseCollapseProps } from './PropsType';
+import type { BaseCollapseProps } from './interface';
 import collapaseStyle from './style/index.native';
 import { isArray } from '../utils/validate';
 import { CollapseItemProps } from './CollapseItem.native';
