@@ -103,7 +103,9 @@ export { default as Switch } from './switch';
 export type { TabsProps, TabPanelProps } from './tabs';
 export { default as Tabs } from './tabs';
 
+export type { ToastProps } from './toast';
 export { default as Toast } from './toast';
+
 export { default as Tooltip } from './tooltip';
 export { default as Trigger } from './trigger';
 

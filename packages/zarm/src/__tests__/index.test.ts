@@ -289,7 +289,16 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "Toast": [Function],
+        "Toast": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "mask": false,
+            "stayTime": 3000,
+            "visible": false,
+          },
+          "render": [Function],
+          "useToast": [Function],
+        },
         "Tooltip": [Function],
         "Trigger": [Function],
         "Wheel": [Function],

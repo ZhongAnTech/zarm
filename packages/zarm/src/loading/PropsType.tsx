@@ -1,3 +1,3 @@
-import type PropsType from '../toast/PropsType';
+import type BaseToastProps from '../toast/interface';
 
-export default PropsType;
+export default BaseToastProps;

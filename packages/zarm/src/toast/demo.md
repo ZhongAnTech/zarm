@@ -5,88 +5,92 @@
 ```jsx
 import { Toast, Cell, Button, Icon } from 'zarm';
 
-const Demo = () => (
-  <>
-    <Cell
-      description={
-        <Button
-          size="xs"
-          onClick={() => {
-            Toast.show('默认3秒自动关闭');
-          }}
-        >
-          开启
-        </Button>
-      }
-    >
-      普通
-    </Cell>
+const Demo = () => {
+  const toast = Toast.useToast();
 
-    <Cell
-      description={
-        <Button
-          size="xs"
-          onClick={() => {
-            Toast.show({
-              content: '指定5秒后自动关闭',
-              stayTime: 5000,
-              afterClose: () => {
-                console.log('Toast已关闭');
-              },
-            });
-          }}
-        >
-          开启
-        </Button>
-      }
-    >
-      指定停留时间
-    </Cell>
+  return (
+    <>
+      <Cell
+        description={
+          <Button
+            size="xs"
+            onClick={() => {
+              toast.show('默认3秒自动关闭');
+            }}
+          >
+            开启
+          </Button>
+        }
+      >
+        普通
+      </Cell>
 
-    <Cell
-      description={
-        <Button
-          size="xs"
-          onClick={() => {
-            Toast.show({
-              className: 'test',
-              content: '不可同时进行其他交互',
-              mountContainer: document.getElementById('test-div'),
-              mask: true,
-              afterClose: () => {
-                console.log('Toast已关闭');
-              },
-            });
-          }}
-        >
-          开启
-        </Button>
-      }
-    >
-      有遮罩层
-    </Cell>
+      <Cell
+        description={
+          <Button
+            size="xs"
+            onClick={() => {
+              toast.show({
+                content: '指定5秒后自动关闭',
+                stayTime: 5000,
+                afterClose: () => {
+                  console.log('Toast已关闭');
+                },
+              });
+            }}
+          >
+            开启
+          </Button>
+        }
+      >
+        指定停留时间
+      </Cell>
 
-    <Cell
-      description={
-        <Button
-          size="xs"
-          onClick={() => {
-            Toast.show(
-              <div className="box">
-                <Icon className="box-icon" type="right-round-fill" />
-                <div className="box-text">预约成功</div>
-              </div>,
-            );
-          }}
-        >
-          开启
-        </Button>
-      }
-    >
-      自定义内容
-    </Cell>
-  </>
-);
+      <Cell
+        description={
+          <Button
+            size="xs"
+            onClick={() => {
+              toast.show({
+                className: 'test',
+                content: '不可同时进行其他交互',
+                mountContainer: document.getElementById('test-div'),
+                mask: true,
+                afterClose: () => {
+                  console.log('Toast已关闭');
+                },
+              });
+            }}
+          >
+            开启
+          </Button>
+        }
+      >
+        有遮罩层
+      </Cell>
+
+      <Cell
+        description={
+          <Button
+            size="xs"
+            onClick={() => {
+              toast.show(
+                <div className="box">
+                  <Icon className="box-icon" type="right-round-fill" />
+                  <div className="box-text">预约成功</div>
+                </div>,
+              );
+            }}
+          >
+            开启
+          </Button>
+        }
+      >
+        自定义内容
+      </Cell>
+    </>
+  );
+};
 
 ReactDOM.render(<Demo />, mountNode);
 ```
