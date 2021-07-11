@@ -3,10 +3,11 @@
 ## 基本用法
 
 ```jsx
+import { useRef } from 'react';
 import { Toast, Cell, Button, Icon } from 'zarm';
-
 const Demo = () => {
   const toast = Toast.useToast();
+  const containerRef = useRef(null);
 
   return (
     <>
@@ -19,6 +20,21 @@ const Demo = () => {
             }}
           >
             开启
+          </Button>
+        }
+      >
+        普通
+      </Cell>
+
+      <Cell
+        description={
+          <Button
+            size="xs"
+            onClick={() => {
+              toast.hide();
+            }}
+          >
+            关闭
           </Button>
         }
       >
@@ -54,7 +70,7 @@ const Demo = () => {
               toast.show({
                 className: 'test',
                 content: '不可同时进行其他交互',
-                mountContainer: document.getElementById('test-div'),
+                mountContainer: containerRef.current,
                 mask: true,
                 afterClose: () => {
                   console.log('Toast已关闭');
@@ -66,7 +82,7 @@ const Demo = () => {
           </Button>
         }
       >
-        有遮罩层
+        <div ref={containerRef}>有遮罩层</div>
       </Cell>
 
       <Cell

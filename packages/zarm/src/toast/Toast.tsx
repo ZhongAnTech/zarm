@@ -19,14 +19,7 @@ const Toast = React.forwardRef<unknown, ToastProps>((props, ref) => {
   const prefixCls = `${globalPrefixCls}-toast`;
 
   const toastRef = (ref as any) || React.createRef<HTMLElement>();
-  const {
-    className,
-    stayTime,
-    content,
-    visible: propVisible,
-    afterClose: propAfterClose,
-    ...others
-  } = props;
+  const { className, stayTime, content, visible: propVisible, afterClose, ...others } = props;
 
   const [visible, setVisible] = useState(propVisible!);
 
@@ -52,11 +45,6 @@ const Toast = React.forwardRef<unknown, ToastProps>((props, ref) => {
     };
   }, [autoClose]);
 
-  const afterClose = () => {
-    if (typeof propAfterClose === 'function') {
-      propAfterClose();
-    }
-  };
   return (
     <Popup
       direction="center"

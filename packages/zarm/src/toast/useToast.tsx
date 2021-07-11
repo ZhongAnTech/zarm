@@ -18,6 +18,15 @@ const useToast = (): UseToast => {
       zarmToastRef.current = null;
     }
   };
+  const removeDom = (propAfterClose?: Function) => {
+    if (zarmToastRef.current != null) {
+      toastContainerRef.current?.removeChild(zarmToastRef.current);
+      zarmToastRef.current = null;
+    }
+    if (typeof propAfterClose === 'function') {
+      propAfterClose();
+    }
+  };
   const show = (content: ReactNode | ToastProps) => {
     unmountNode();
     if (zarmToastRef.current == null) {
@@ -34,31 +43,38 @@ const useToast = (): UseToast => {
     }
 
     if (zarmToastRef.current != null) {
+      let afterClose: () => void;
+      if (contentIsToastProps(content)) {
+        afterClose = () => {
+          removeDom(content.afterClose);
+        };
+      } else {
+        afterClose = () => {
+          removeDom();
+        };
+      }
+      hideHelperRef.current = afterClose;
       const props: ToastProps = contentIsToastProps(content)
         ? {
             ...Toast.defaultProps,
             ...content,
             mountContainer: false,
             visible: true,
+            afterClose,
           }
         : {
             ...Toast.defaultProps,
             visible: true,
             mountContainer: false,
             content,
+            afterClose,
           };
-
-      hideHelperRef.current = () => {
-        ReactDOM.render(<Toast {...props} visible={false} />, zarmToastRef.current);
-      };
       ReactDOM.render(<Toast {...props} />, zarmToastRef.current);
     }
   };
 
   const hide = () => {
-    if (zarmToastRef.current) {
-      hideHelperRef.current();
-    }
+    hideHelperRef.current();
   };
   return {
     show,
