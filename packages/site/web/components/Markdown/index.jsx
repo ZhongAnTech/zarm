@@ -15,7 +15,6 @@ export default (props) => {
   const getRenderer = () => {
     const renderer = new marked.Renderer();
 
-
     // 表格
     renderer.table = (header, body) => {
       return `<div class="grid-container"><table class="grid"><thead>${header}</thead><tbody>${body}</tbody></table></div>`;
