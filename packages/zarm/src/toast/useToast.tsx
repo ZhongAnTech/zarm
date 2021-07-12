@@ -15,12 +15,14 @@ const useToast = (): UseToast => {
     if (zarmToastRef.current != null) {
       ReactDOM.render(<></>, zarmToastRef.current);
       toastContainerRef.current?.removeChild(zarmToastRef.current);
+      ReactDOM.unmountComponentAtNode(zarmToastRef.current);
       zarmToastRef.current = null;
     }
   };
   const removeDom = (propAfterClose?: Function) => {
     if (zarmToastRef.current != null) {
       toastContainerRef.current?.removeChild(zarmToastRef.current);
+      ReactDOM.unmountComponentAtNode(zarmToastRef.current);
       zarmToastRef.current = null;
     }
     if (typeof propAfterClose === 'function') {

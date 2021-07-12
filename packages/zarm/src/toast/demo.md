@@ -13,29 +13,25 @@ const Demo = () => {
     <>
       <Cell
         description={
-          <Button
-            size="xs"
-            onClick={() => {
-              toast.show('默认3秒自动关闭');
-            }}
-          >
-            开启
-          </Button>
-        }
-      >
-        普通
-      </Cell>
-
-      <Cell
-        description={
-          <Button
-            size="xs"
-            onClick={() => {
-              toast.hide();
-            }}
-          >
-            关闭
-          </Button>
+          <>
+            <Button
+              size="xs"
+              onClick={() => {
+                toast.show('默认3秒自动关闭');
+              }}
+            >
+              开启
+            </Button>
+            <Button
+              size="xs"
+              onClick={() => {
+                toast.hide();
+              }}
+              style={{ marginLeft: 12 }}
+            >
+              关闭
+            </Button>
+          </>
         }
       >
         普通
