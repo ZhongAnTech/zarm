@@ -1,31 +1,21 @@
 import React, { HTMLAttributes } from 'react';
 import classnames from 'classnames';
 import type { BaseCollapseItemProps } from './interface';
+import { ConfigContext } from '../n-config-provider';
 
 export interface CollapseItemProps
   extends Omit<HTMLAttributes<HTMLDivElement>, 'key' | 'title' | 'onChange'>,
     BaseCollapseItemProps {
-  prefixCls?: string;
+  // prefixCls?: string;
 }
 
 const CollapseItem = React.forwardRef<unknown, CollapseItemProps>((props, ref) => {
-  const {
-    prefixCls,
-    title,
-    className,
-    disabled,
-    animated,
-    isActive,
-    children,
-    onChange,
-    ...rest
-  } = props;
+  const { title, className, disabled, animated, isActive, children, onChange, ...rest } = props;
 
-  // const content = React.useRef<HTMLDivElement>(null);
   const content = (ref as any) || React.createRef<HTMLElement>();
-  // const collapseItemRef = React.useRef<HTMLDivElement>(null);
   const collapseItemRef = (ref as any) || React.createRef<HTMLElement>();
-
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-collapse-item`;
   const onClickItem = () => {
     if (disabled) return;
     typeof onChange === 'function' && onChange(isActive);
@@ -69,7 +59,6 @@ const CollapseItem = React.forwardRef<unknown, CollapseItemProps>((props, ref) =
 CollapseItem.displayName = 'CollapseItem';
 
 CollapseItem.defaultProps = {
-  prefixCls: 'za-collapse-item',
   animated: false,
   disabled: false,
 };

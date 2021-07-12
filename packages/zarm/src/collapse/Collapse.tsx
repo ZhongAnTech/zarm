@@ -2,11 +2,12 @@ import React, { HTMLAttributes, Children, cloneElement, ReactElement, useState }
 import classnames from 'classnames';
 import type { CollapseActiveKey, CollapseItemKey, BaseCollapseProps } from './interface';
 import CollapseItem, { CollapseItemProps } from './CollapseItem';
+import { ConfigContext } from '../n-config-provider';
 
 export interface CollapseProps
   extends Omit<HTMLAttributes<HTMLDivElement>, 'activeKey' | 'defaultActiveKey' | 'onChange'>,
     BaseCollapseProps {
-  prefixCls?: string;
+  // prefixCls?: string;
 }
 
 interface CompoundedComponent
@@ -33,7 +34,6 @@ const getActiveKey = (props) => {
 
 const Collapse = React.forwardRef<unknown, CollapseProps>((props, ref) => {
   const {
-    prefixCls,
     className,
     onChange,
     animated,
@@ -49,6 +49,9 @@ const Collapse = React.forwardRef<unknown, CollapseProps>((props, ref) => {
   const [activeKeyState, setActiveKey] = useState<CollapseActiveKey>(
     getActiveKey({ multiple, activeKey, defaultActiveKey, hasActiveKeys }),
   );
+
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-collapse`;
 
   const onItemChange = (onItemChangeProps, key) => {
     if (!key) {
@@ -116,7 +119,6 @@ const Collapse = React.forwardRef<unknown, CollapseProps>((props, ref) => {
 Collapse.displayName = 'Collapse';
 
 Collapse.defaultProps = {
-  prefixCls: 'za-collapse',
   multiple: false,
   animated: false,
   onChange: () => {},
