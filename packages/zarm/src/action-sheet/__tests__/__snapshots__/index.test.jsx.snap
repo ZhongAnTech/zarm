@@ -83,13 +83,9 @@ exports[`ActionSheet renders correctly 1`] = `
         onMaskClick={[MockFunction]}
         visible={true}
       >
-        <Portal
-          animationDuration={200}
-          animationType="fade"
-          direction="bottom"
-          handlePortalUnmount={[Function]}
-          mask={true}
-          maskType="normal"
+        <ConfigReceiver
+          destroy={true}
+          forwardedRef={null}
           onMaskClick={[MockFunction]}
           visible={true}
         >
@@ -256,91 +252,8 @@ exports[`ActionSheet renders correctly 1`] = `
                       </div>
                     </div>
                   </div>
-                </div>
-              }
-            >
-              <ForwardRef
-                className="za-fade-enter"
-                style={
-                  Object {
-                    "WebkitAnimationDuration": "200ms",
-                    "animationDuration": "200ms",
-                  }
-                }
-                type="normal"
-                visible={true}
-              >
-                <div
-                  className="za-mask za-fade-enter za-mask--normal"
-                  style={
-                    Object {
-                      "WebkitAnimationDuration": "200ms",
-                      "animationDuration": "200ms",
-                    }
-                  }
-                />
-              </ForwardRef>
-              <div
-                className="za-popup__wrapper"
-                data-width={0}
-                onClick={[Function]}
-                role="dialog"
-                style={Object {}}
-              >
-                <div
-                  className="za-popup za-popup--bottom"
-                  data-width={0}
-                  role="document"
-                  style={
-                    Object {
-                      "WebkitTransitionDuration": "200ms",
-                      "WebkitTransitionProperty": "transform",
-                      "transitionDuration": "200ms",
-                      "transitionProperty": "transform",
-                    }
-                  }
-                >
-                  <div
-                    className="za-action-sheet"
-                  >
-                    <div
-                      className="za-action-sheet__actions"
-                    >
-                      <div
-                        className="za-action-sheet__item"
-                        key="0"
-                        onClick={[MockFunction]}
-                      >
-                        操作一
-                      </div>
-                      <div
-                        className="za-action-sheet__item"
-                        key="1"
-                        onClick={[MockFunction]}
-                      >
-                        操作二
-                      </div>
-                      <div
-                        className="za-action-sheet__item za-action-sheet__item--danger"
-                        key="2"
-                        onClick={[MockFunction]}
-                      >
-                        操作三
-                      </div>
-                    </div>
-                    <div
-                      className="za-action-sheet__cancel"
-                    >
-                      <div
-                        className="za-action-sheet__item"
-                        onClick={[MockFunction]}
-                      >
-                        取消
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                </Portal>
+              </Trigger>
             </Portal>
           </Popup>
         </ConfigReceiver>

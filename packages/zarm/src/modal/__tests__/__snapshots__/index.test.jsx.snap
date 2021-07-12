@@ -136,53 +136,6 @@ exports[`Modal renders correctly 1`] = `
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          }
-        >
-          <ForwardRef
-            className="za-fade-enter"
-            style={
-              Object {
-                "WebkitAnimationDuration": "200ms",
-                "animationDuration": "200ms",
-              }
-            }
-            type="normal"
-            visible={true}
-          >
-            <div
-              className="za-mask za-fade-enter za-mask--normal"
-              style={
-                Object {
-                  "WebkitAnimationDuration": "200ms",
-                  "animationDuration": "200ms",
-                }
-              }
-            />
-          </ForwardRef>
-          <div
-            className="za-popup__wrapper za-fade-enter"
-            data-width={0}
-            onClick={[Function]}
-            role="dialog"
-            style={
-              Object {
-                "WebkitAnimationDuration": "200ms",
-                "animationDuration": "200ms",
-              }
-            }
-          >
-            <div
-              className="za-popup za-popup--center za-fade-enter"
-              data-width={0}
-              role="document"
-              style={
-                Object {
-                  "WebkitAnimationDuration": "200ms",
-                  "animationDuration": "200ms",
-                  "width": "70%",
-                }
               }
             >
               <Mask

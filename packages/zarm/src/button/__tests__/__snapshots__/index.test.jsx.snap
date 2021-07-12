@@ -84,7 +84,7 @@ exports[`Button icon 1`] = `
 exports[`Button loading 1`] = `
 <button
   aria-disabled="false"
-  class="za-button za-button--default za-button--md za-button--radius za-button--loading"
+  class="za-button za-button--default za-button--md za-button--radius"
   type="button"
 >
   <div

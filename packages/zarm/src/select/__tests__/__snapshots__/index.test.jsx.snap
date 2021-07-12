@@ -1009,13 +1009,9 @@ exports[`Select Select disabled 1`] = `
                 onMaskClick={[Function]}
                 visible={true}
               >
-                <Portal
-                  animationDuration={200}
-                  animationType="fade"
-                  direction="bottom"
-                  handlePortalUnmount={[Function]}
-                  mask={true}
-                  maskType="normal"
+                <ConfigReceiver
+                  destroy={false}
+                  forwardedRef={null}
                   onMaskClick={[Function]}
                   visible={true}
                 >
@@ -1124,49 +1120,6 @@ exports[`Select Select disabled 1`] = `
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        </div>
-                      }
-                    >
-                      <ForwardRef
-                        className="za-fade-enter"
-                        style={
-                          Object {
-                            "WebkitAnimationDuration": "200ms",
-                            "animationDuration": "200ms",
-                          }
-                        }
-                        type="normal"
-                        visible={true}
-                      >
-                        <div
-                          className="za-mask za-fade-enter za-mask--normal"
-                          style={
-                            Object {
-                              "WebkitAnimationDuration": "200ms",
-                              "animationDuration": "200ms",
-                            }
-                          }
-                        />
-                      </ForwardRef>
-                      <div
-                        className="za-popup__wrapper"
-                        data-width={0}
-                        onClick={[Function]}
-                        role="dialog"
-                        style={Object {}}
-                      >
-                        <div
-                          className="za-popup za-popup--bottom"
-                          data-width={0}
-                          role="document"
-                          style={
-                            Object {
-                              "WebkitTransitionDuration": "200ms",
-                              "WebkitTransitionProperty": "transform",
-                              "transitionDuration": "200ms",
-                              "transitionProperty": "transform",
-                            }
                           }
                         >
                           <Mask

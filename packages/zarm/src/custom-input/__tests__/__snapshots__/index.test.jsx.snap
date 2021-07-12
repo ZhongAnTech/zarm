@@ -44,7 +44,10 @@ exports[`CustomInput renders correctly if type isn't valid 1`] = `
 
 exports[`CustomInput.Idcard renders correctly 1`] = `
 <CustomInput
+  autoFocus={false}
+  clearable={true}
   maxLength={18}
+  readOnly={false}
   type="idcard"
 >
   <div
@@ -66,6 +69,7 @@ exports[`CustomInput.Idcard renders correctly 1`] = `
       />
     </div>
     <KeyboardPicker
+      destroy={true}
       onKeyClick={[Function]}
       type="idcard"
       visible={false}
@@ -97,6 +101,9 @@ exports[`CustomInput.Idcard renders correctly 1`] = `
 
 exports[`CustomInput.Price renders correctly 1`] = `
 <CustomInput
+  autoFocus={false}
+  clearable={true}
+  readOnly={false}
   type="price"
 >
   <div
@@ -118,6 +125,7 @@ exports[`CustomInput.Price renders correctly 1`] = `
       />
     </div>
     <KeyboardPicker
+      destroy={true}
       onKeyClick={[Function]}
       type="price"
       visible={false}
