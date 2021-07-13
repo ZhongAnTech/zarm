@@ -3,7 +3,6 @@ import Events from '../utils/events';
 import throttle from '../utils/throttle';
 import { canUseDOM, getScrollContainer, getScrollTop } from '../utils/dom';
 import type { ContainerType } from '../utils/dom';
-import noop from '../utils/noop';
 
 export interface ScrollerProps {
   prefixCls?: string;
@@ -21,7 +20,7 @@ export default class Scroller extends PureComponent<ScrollerProps, {}> {
 
   private mounted: boolean;
 
-  private scrollThrottled = this.props.onScroll ? throttle(this.props.onScroll, 250) : noop;
+  private scrollThrottled = this.props.onScroll ? throttle(this.props.onScroll, 250) : () => {};
 
   componentDidMount() {
     this.bindEvent();
