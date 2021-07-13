@@ -7,7 +7,7 @@ export interface ToastProps extends BaseToastProps {
   className?: string;
 }
 export interface UseToast {
-  show: (propsType: ToastProps) => void;
+  show: (props: ToastProps) => void;
   hide: () => void;
 }
 interface CompoundedComponent
@@ -23,27 +23,33 @@ const Toast = React.forwardRef<unknown, ToastProps>((props, ref) => {
 
   const [visible, setVisible] = useState(propVisible!);
 
-  const timerRef = useRef<number>();
+  const timerRef = useRef<NodeJS.Timeout>();
 
   const _hide = () => {
     setVisible(false);
   };
 
   const autoClose = useCallback(() => {
-    if ((stayTime as number) > 0) {
-      timerRef.current = window.setTimeout(() => {
+    if (stayTime! > 0) {
+      timerRef.current = setTimeout(() => {
         _hide();
-        clearTimeout(timerRef.current);
+        clearTimeout(timerRef.current!);
       }, stayTime);
     }
   }, [stayTime]);
 
   useEffect(() => {
-    autoClose();
+    if (visible) {
+      autoClose();
+    }
     return () => {
-      clearTimeout(timerRef.current);
+      clearTimeout(timerRef.current!);
     };
-  }, [autoClose]);
+  }, [autoClose, visible]);
+
+  useEffect(() => {
+    setVisible(propVisible!);
+  }, [propVisible]);
 
   return (
     <Popup

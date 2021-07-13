@@ -1,6 +1,57 @@
 # Toast 轻提示
 
-## 基本用法
+## 基础用法
+
+```jsx
+import { useState } from 'react';
+import { Toast, Cell, Button, Icon } from 'zarm';
+
+const Demo = () => {
+  const [visible, setVisible] = useState(false);
+
+  return (
+    <>
+      <Cell
+        description={
+          <>
+            <Button
+              size="xs"
+              onClick={() => {
+                setVisible(true);
+              }}
+            >
+              展示
+            </Button>
+            <Button
+              size="xs"
+              onClick={() => {
+                setVisible(false);
+              }}
+              style={{ marginLeft: 12 }}
+            >
+              关闭
+            </Button>
+          </>
+        }
+      >
+        普通
+      </Cell>
+
+      <Toast
+        visible={visible}
+        content="默认3秒自动关闭"
+        afterClose={() => {
+          setVisible(false);
+        }}
+      />
+    </>
+  );
+};
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## useToast
 
 ```jsx
 import { useRef } from 'react';
@@ -118,20 +169,3 @@ ReactDOM.render(<Demo />, mountNode);
 | onMaskClick    | () => void                           | -             | 点击遮罩层时触发的回调函数         |
 | afterClose     | () => void                           | -             | Toast 隐藏后的回调函数             |
 | mountContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 Toast 挂载的 HTML 节点        |
-
-## 静态方法
-
-```js
-// 显示轻提示 Toast.show(content: ReactNode | ToastProps)
-Toast.show('默认3秒自动关闭');
-Toast.show({
-  content: '指定5秒后自动关闭',
-  stayTime: 5000,
-  afterClose: () => {
-    console.log('Toast已关闭');
-  },
-});
-
-// 隐藏轻提示
-Toast.hide();
-```

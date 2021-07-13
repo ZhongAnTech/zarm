@@ -1,5 +1,6 @@
 import React, { ReactNode, useRef } from 'react';
 import ReactDOM from 'react-dom';
+import { ConfigContext } from '../n-config-provider';
 import { getMountContainer } from '../utils/dom';
 import Toast, { ToastProps, UseToast } from './Toast';
 
@@ -7,6 +8,7 @@ const contentIsToastProps = (content: ReactNode | ToastProps): content is ToastP
   !!content && typeof content === 'object' && 'content' in content;
 
 const useToast = (): UseToast => {
+  const { prefixCls } = React.useContext(ConfigContext);
   const zarmToastRef = useRef<HTMLElement | null>(null);
   const toastContainerRef = useRef<HTMLElement | null>(null);
 
@@ -33,7 +35,7 @@ const useToast = (): UseToast => {
     unmountNode();
     if (zarmToastRef.current == null) {
       zarmToastRef.current = document.createElement('div');
-      zarmToastRef.current.classList.add('za-toast-container');
+      zarmToastRef.current.classList.add(`${prefixCls}-toast-container`);
       if (contentIsToastProps(content) && content.className) {
         zarmToastRef.current.classList.add(content.className);
       }
