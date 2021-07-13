@@ -17,10 +17,14 @@ interface CompoundedComponent
 const TabBar = React.forwardRef<unknown, TabBarProps>((props, ref) => {
   const tabBarRef = (ref as any) || React.createRef<HTMLElement>();
 
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const { prefixCls: globalPrefixCls, safeIphoneX: globalSafeIphoneX } = React.useContext(
+    ConfigContext,
+  );
   const prefixCls = `${globalPrefixCls}-tab-bar`;
 
-  const { visible, className, children, style, safeIphoneX, onChange } = props;
+  const { visible, className, children, style, onChange } = props;
+
+  const safeIphoneX = props.safeIphoneX || globalSafeIphoneX;
 
   const onChildChange = useCallback(
     (value: string | number) => {
@@ -76,7 +80,6 @@ TabBar.displayName = 'TabBar';
 
 TabBar.defaultProps = {
   visible: true,
-  safeIphoneX: false,
 };
 
 export default TabBar;

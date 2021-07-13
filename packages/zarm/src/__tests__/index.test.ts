@@ -276,7 +276,6 @@ describe('index', () => {
             "render": [Function],
           },
           "defaultProps": Object {
-            "safeIphoneX": false,
             "visible": true,
           },
           "render": [Function],
