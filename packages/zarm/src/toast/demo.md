@@ -20,7 +20,7 @@ const Demo = () => {
                 setVisible(true);
               }}
             >
-              展示
+              开启
             </Button>
             <Button
               size="xs"
