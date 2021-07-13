@@ -51,7 +51,7 @@ describe('TabBarItem', () => {
     const mOnChange = jest.fn();
     const wrapper = shallow(<TabBarItem itemKey={1} onChange={mOnChange} />);
     wrapper.simulate('click');
-    expect(mOnChange).toBeCalledWith(1);
+    expect(mOnChange).toBeCalled();
   });
 
   it('should render with icon if it is selected', () => {

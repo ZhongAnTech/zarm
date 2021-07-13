@@ -16,5 +16,5 @@ export interface BaseTabBarItemProps {
   activeIcon?: ReactNode;
   badge?: BaseBadgeProps;
   selected?: boolean;
-  onChange?: (value?: number | string) => void;
+  onChange?: () => void;
 }

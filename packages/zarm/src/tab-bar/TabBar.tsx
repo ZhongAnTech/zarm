@@ -21,6 +21,7 @@ const TabBar = React.forwardRef<unknown, TabBarProps>((props, ref) => {
   const prefixCls = `${globalPrefixCls}-tab-bar`;
 
   const { visible, className, children, style, safeIphoneX, onChange } = props;
+
   const onChildChange = useCallback(
     (value: string | number) => {
       if (typeof onChange === 'function') {

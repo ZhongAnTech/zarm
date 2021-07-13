@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import Badge from '../badge';
 import type { BaseTabBarItemProps } from './interface';
@@ -14,16 +14,7 @@ const TabBarItem = React.forwardRef<unknown, TabBarItemProps>((props, ref) => {
   const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
   const prefixCls = `${globalPrefixCls}-tab-bar`;
 
-  const { title, icon, badge, style, itemKey, selected, activeIcon = icon, onChange } = props;
-
-  const change = useCallback(
-    (value?: string | number) => {
-      if (typeof onChange === 'function') {
-        onChange(value);
-      }
-    },
-    [onChange],
-  );
+  const { title, icon, badge, style, selected, activeIcon = icon, onChange } = props;
 
   const cls = classnames(`${prefixCls}__item`, {
     [`${prefixCls}--active`]: selected,
@@ -37,14 +28,7 @@ const TabBarItem = React.forwardRef<unknown, TabBarItemProps>((props, ref) => {
   );
 
   return (
-    <div
-      className={cls}
-      style={style}
-      onClick={() => {
-        change(itemKey);
-      }}
-      ref={tabBaItemrRef}
-    >
+    <div className={cls} style={style} ref={tabBaItemrRef} onClick={onChange}>
       {badge ? <Badge {...badge}>{contentRender}</Badge> : contentRender}
     </div>
   );
