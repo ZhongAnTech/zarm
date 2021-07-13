@@ -3,11 +3,8 @@ import classnames from 'classnames';
 import type { BaseCollapseItemProps } from './interface';
 import { ConfigContext } from '../n-config-provider';
 
-export interface CollapseItemProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, 'key' | 'title' | 'onChange'>,
-    BaseCollapseItemProps {
-  // prefixCls?: string;
-}
+export type CollapseItemProps = Omit<HTMLAttributes<HTMLDivElement>, 'key' | 'title' | 'onChange'> &
+  BaseCollapseItemProps;
 
 const CollapseItem = React.forwardRef<unknown, CollapseItemProps>((props, ref) => {
   const { title, className, disabled, animated, isActive, children, onChange, ...rest } = props;
@@ -29,19 +26,19 @@ const CollapseItem = React.forwardRef<unknown, CollapseItemProps>((props, ref) =
     }, 0);
   };
 
-  const setStyle = () => {
+  const setStyle = React.useCallback(() => {
     if (!content.current) return;
     content.current.style.height = isActive ? `${getContentHeight(content.current)}px` : '0px';
-  };
+  }, [content, isActive]);
 
   const cls = classnames(prefixCls, className, {
     [`${prefixCls}--active`]: isActive,
     [`${prefixCls}--disabled`]: disabled,
   });
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     setStyle();
-  });
+  }, [setStyle]);
 
   return (
     <div className={cls} {...rest} ref={collapseItemRef}>

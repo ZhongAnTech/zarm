@@ -4,11 +4,11 @@ import type { CollapseActiveKey, CollapseItemKey, BaseCollapseProps } from './in
 import CollapseItem, { CollapseItemProps } from './CollapseItem';
 import { ConfigContext } from '../n-config-provider';
 
-export interface CollapseProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, 'activeKey' | 'defaultActiveKey' | 'onChange'>,
-    BaseCollapseProps {
-  // prefixCls?: string;
-}
+export type CollapseProps = Omit<
+  HTMLAttributes<HTMLDivElement>,
+  'activeKey' | 'defaultActiveKey' | 'onChange'
+> &
+  BaseCollapseProps;
 
 interface CompoundedComponent
   extends React.ForwardRefExoticComponent<CollapseProps & React.RefAttributes<HTMLElement>> {
@@ -66,13 +66,12 @@ const Collapse = React.forwardRef<unknown, CollapseProps>((props, ref) => {
       newActiveKey = [];
       tempActiveKey = (tempActiveKey as CollapseItemKey[]) || [];
 
-      if (tempActiveKey.indexOf(key) > -1) {
+      if (tempActiveKey.includes(key)) {
         newActiveKey = tempActiveKey.filter((i) => i !== key);
       } else {
-        newActiveKey = tempActiveKey.slice(0);
-        newActiveKey.push(key);
+        newActiveKey = [...tempActiveKey, key];
       }
-      isActive = newActiveKey.indexOf(key) > -1;
+      isActive = newActiveKey.includes(key);
     } else {
       tempActiveKey = tempActiveKey as CollapseItemKey;
       newActiveKey = tempActiveKey === key ? undefined : key;
@@ -90,9 +89,8 @@ const Collapse = React.forwardRef<unknown, CollapseProps>((props, ref) => {
       const { disabled, onChange: itemOnChange } = ele.props;
       const { key } = ele;
       const isActive = multiple
-        ? ((activeKeyState as CollapseItemKey[]) || []).indexOf(key!) > -1
+        ? ((activeKeyState as CollapseItemKey[]) || []).includes(key!)
         : (activeKeyState as CollapseItemKey) === key;
-
       return cloneElement(ele, {
         animated,
         isActive,
@@ -121,7 +119,6 @@ Collapse.displayName = 'Collapse';
 Collapse.defaultProps = {
   multiple: false,
   animated: false,
-  onChange: () => {},
 };
 
 export default Collapse;

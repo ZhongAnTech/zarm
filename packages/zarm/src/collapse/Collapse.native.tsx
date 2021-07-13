@@ -96,7 +96,7 @@ export default class Collapse extends Component<CollapseProps, any> {
     this.setState({
       activeKey: newactiveKey,
     });
-    onChange(key);
+    typeof onChange === 'function' && onChange(key);
   };
 
   renderItems() {
