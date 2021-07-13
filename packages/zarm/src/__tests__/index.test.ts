@@ -105,15 +105,12 @@ describe('index', () => {
             "defaultProps": Object {
               "animated": false,
               "disabled": false,
-              "prefixCls": "za-collapse-item",
             },
             "render": [Function],
           },
           "defaultProps": Object {
             "animated": false,
             "multiple": false,
-            "onChange": [Function],
-            "prefixCls": "za-collapse",
           },
           "render": [Function],
         },
