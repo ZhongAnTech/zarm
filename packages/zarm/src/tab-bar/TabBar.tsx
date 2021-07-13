@@ -1,4 +1,4 @@
-import React, { cloneElement, useCallback } from 'react';
+import React, { cloneElement, useCallback, useState } from 'react';
 import classnames from 'classnames';
 import type { BaseTabBarProps } from './interface';
 import TabBarItem from './TabBarItem';
@@ -22,21 +22,25 @@ const TabBar = React.forwardRef<unknown, TabBarProps>((props, ref) => {
   );
   const prefixCls = `${globalPrefixCls}-tab-bar`;
 
-  const { visible, className, children, style, onChange } = props;
+  const { visible, className, children, style, onChange, activeKey, defaultActiveKey } = props;
 
   const safeIphoneX = props.safeIphoneX || globalSafeIphoneX;
 
+  const [selectedKey, setSelectedKey] = useState(defaultActiveKey);
+
   const onChildChange = useCallback(
     (value: string | number) => {
+      if (!activeKey) {
+        setSelectedKey(value);
+      }
       if (typeof onChange === 'function') {
         onChange(value);
       }
     },
-    [onChange],
+    [activeKey, onChange],
   );
 
   const getSelected = (index: number, itemKey: string | number) => {
-    const { activeKey, defaultActiveKey } = props;
     if (!activeKey) {
       if (!defaultActiveKey && index === 0) {
         return true;
@@ -56,6 +60,10 @@ const TabBar = React.forwardRef<unknown, TabBarProps>((props, ref) => {
     (element: React.ReactElement<TabBarItemProps, typeof TabBarItem>, index: number) => {
       if (!React.isValidElement(element)) return null;
       const itemKey = element.props.itemKey || index;
+      let selected = getSelected(index, itemKey);
+      if (!activeKey && defaultActiveKey) {
+        selected = selectedKey === itemKey;
+      }
       return cloneElement(element, {
         key: index,
         // disabled: element.props.disabled,
@@ -65,7 +73,7 @@ const TabBar = React.forwardRef<unknown, TabBarProps>((props, ref) => {
         icon: element.props.icon,
         itemKey,
         style: element.props.style,
-        selected: getSelected(index, itemKey),
+        selected,
       });
     },
   );

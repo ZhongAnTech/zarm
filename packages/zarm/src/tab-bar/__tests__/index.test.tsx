@@ -129,7 +129,7 @@ describe('TabBar', () => {
     expect(wrapper.childAt(1).prop('selected')).toBeFalsy();
   });
 
-  it('should render icon if selected is false(defaultActivceKey is not equal with itemKey)', () => {
+  it('should render actionIcon if selected is false(defaultActivceKey is not equal with itemKey)', () => {
     const onChange = jest.fn();
     const wrapper = mount(
       <TabBar defaultActiveKey="home" onChange={onChange}>
@@ -144,7 +144,7 @@ describe('TabBar', () => {
     );
     wrapper.find(TabBarItem).first().simulate('click');
     expect(onChange).toBeCalledWith('badge');
-    expect(wrapper.find('.za-tab-bar__icon').contains(icon)).toBeTruthy();
+    expect(wrapper.find('.za-tab-bar__icon').contains(activeIcon)).toBeTruthy();
   });
 
   it('should selected tab bar item if activeKey is equal with itemKey', () => {
