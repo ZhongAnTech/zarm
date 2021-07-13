@@ -2,6 +2,8 @@ import React, { useRef, HTMLAttributes, useEffect, useCallback } from 'react';
 import classnames from 'classnames';
 import type { BasePinchZoomProps } from './interface';
 import Events from '../utils/events';
+import { ConfigContext } from '../n-config-provider';
+import mergerRefs from '../utils/mergeRefs';
 
 interface Point {
   clientX: number;
@@ -17,16 +19,16 @@ function range(num: number, min: number, max: number): number {
   return Math.min(Math.max(num, min), max);
 }
 
-export interface PinchZoomProps extends HTMLAttributes<HTMLDivElement>, BasePinchZoomProps {
-  prefixCls?: string;
-  className?: string;
-}
+export interface PinchZoomProps extends HTMLAttributes<HTMLElement>, BasePinchZoomProps {}
 
 const PinchZoom = React.forwardRef<unknown, PinchZoomProps>((props, ref) => {
-  const containerRef = (ref as any) || React.createRef<HTMLDivElement>();
   const container = useRef<HTMLDivElement | null>();
 
-  const { children, className, prefixCls, minScale, maxScale, onPinchZoom } = props;
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+
+  const prefixCls = `${globalPrefixCls}-pinch-zoom`;
+
+  const { children, className, minScale, maxScale, onPinchZoom } = props;
 
   let startTouchX = 0;
   let startTouchY = 0;
@@ -161,14 +163,14 @@ const PinchZoom = React.forwardRef<unknown, PinchZoomProps>((props, ref) => {
   };
 
   useEffect(() => {
-    container.current = containerRef.current;
+    // Events.off(container.current!, 'touchstart', touchstart);
     Events.on(container?.current!, 'touchstart', touchstart);
     Events.on(document.documentElement, 'touchmove', touchmove);
     Events.on(document.documentElement, 'touchend', touchEnd);
     Events.on(document.documentElement, 'touchcancel', touchEnd);
 
     return () => {
-      Events.off(container.current!, 'touchstart', touchstart);
+      // container.current && Events.off(container.current!, 'touchstart', touchstart);
       Events.off(document.documentElement, 'touchmove', touchmove);
       Events.off(document.documentElement, 'touchend', touchEnd);
       Events.off(document.documentElement, 'touchcancel', touchEnd);
@@ -185,14 +187,13 @@ const PinchZoom = React.forwardRef<unknown, PinchZoomProps>((props, ref) => {
     });
   });
   return (
-    <div ref={containerRef} className={cls}>
+    <div ref={mergerRefs([container, ref])} className={cls} onTouchStart={touchstart}>
       {child}
     </div>
   );
 });
 
 PinchZoom.defaultProps = {
-  prefixCls: 'za-pinch-zoom',
   minScale: 1,
   maxScale: 3,
 };

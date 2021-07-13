@@ -207,7 +207,6 @@ describe('index', () => {
           "defaultProps": Object {
             "maxScale": 3,
             "minScale": 1,
-            "prefixCls": "za-pinch-zoom",
           },
           "render": [Function],
         },

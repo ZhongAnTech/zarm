@@ -13,17 +13,9 @@ import useOrientation from '../useOrientation';
 import { ConfigContext } from '../n-config-provider';
 
 export interface ImagePreviewProps extends BaseImagePreviewProps {
-  prefixCls?: string;
   className?: string;
 }
-export interface ImagePreviewState {
-  images: Images;
-  visible: boolean;
-  activeIndex?: number;
-  currentIndex?: number;
-  showPagination: boolean;
-  orientation: string;
-}
+
 const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) => {
   const doubleClickTimer = useRef<ReturnType<typeof setTimeout> | null>();
 
@@ -39,8 +31,7 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
 
   const {
     visible,
-    activeIndex,
-    images,
+    activeIndex = 0,
     onClose,
     showPagination,
     minScale,
@@ -57,40 +48,20 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
     // mobile default angle 0 and orientation portrait-primary
     orientation = angle === 90 || angle === -90 ? 'landscape' : 'portrait';
   }
-  // const { orientation = defaultOrientation, } = props;
 
-  const [state, setState] = useState<ImagePreviewState>({
-    visible: visible!,
-    activeIndex,
-    currentIndex: activeIndex,
-    images: formatImages(images),
-    showPagination: showPagination!,
-    orientation,
-  });
+  const [images, setImages] = useState<Images>(formatImages(props.images));
+  const [currentIndex, setCurrentIndex] = useState<number>(activeIndex);
 
   useEffect(() => {
-    setState({
-      ...state,
-      visible: visible!,
-      activeIndex,
-      currentIndex: activeIndex,
-      images: formatImages(images),
-      showPagination: showPagination!,
-    });
-  }, [visible, activeIndex, images, showPagination]);
+    setImages(formatImages(props.images));
+  }, [props.images]);
 
   useEffect(() => {
-    setState({
-      ...state,
-      orientation,
-    });
-  }, [orientation]);
+    setCurrentIndex(activeIndex);
+  }, [activeIndex]);
 
   const onChange = (index: number) => {
-    setState({
-      ...state,
-      currentIndex: index,
-    });
+    setCurrentIndex(index);
     if (typeof props.onChange === 'function') {
       props.onChange(index);
     }
@@ -106,22 +77,24 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
   };
 
   const loadOrigin = () => {
-    const { images: imagesArr, currentIndex = 0 } = state;
-    const { originSrc, loaded } = imagesArr[currentIndex];
+    const { originSrc, loaded } = images[currentIndex];
     if (loaded !== LOAD_STATUS.before || !originSrc) {
       return;
     }
-    imagesArr[currentIndex].loaded = LOAD_STATUS.start;
-    setState({ ...state, images: imagesArr });
+    const newImages = [...images];
+    newImages[currentIndex].loaded = LOAD_STATUS.start;
+    setImages(newImages);
 
     const img = new Image();
     img.onload = () => {
-      imagesArr[currentIndex].loaded = LOAD_STATUS.end;
-      imagesArr[currentIndex].src = originSrc;
-      setState({ ...state, images: imagesArr });
+      const loadImages = [...images];
+      loadImages[currentIndex].loaded = LOAD_STATUS.end;
+      loadImages[currentIndex].src = originSrc;
+      setImages(loadImages);
       setTimeout(() => {
-        imagesArr[currentIndex].loaded = LOAD_STATUS.after;
-        setState({ ...state, images: imagesArr });
+        const loadAfeterImages = [...images];
+        loadAfeterImages[currentIndex].loaded = LOAD_STATUS.after;
+        setImages(loadAfeterImages);
       }, 1500);
     };
     img.src = originSrc;
@@ -168,12 +141,11 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
   }, []);
 
   const renderImages = () => {
-    const { images: imagesArr } = state;
     const height = Math.min(window?.innerHeight, window?.innerWidth);
     const style = {
-      height: state.orientation === 'landscape' ? height : '',
+      height: orientation === 'landscape' ? height : '',
     };
-    return imagesArr.map((item, i) => {
+    return images.map((item, i) => {
       return (
         <div className={`${prefixCls}__item`} key={+i}>
           <PinchZoom className={`${prefixCls}__item__img`} minScale={minScale} maxScale={maxScale}>
@@ -185,11 +157,10 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
   };
 
   const renderPagination = () => {
-    const { currentIndex = 0 } = state;
-    if (state.visible && state.showPagination && state.images && state.images.length > 1) {
+    if (visible && showPagination && images && images.length > 1) {
       return (
         <div className={`${prefixCls}__index`}>
-          {currentIndex + 1} / {state?.images?.length}
+          {currentIndex + 1} / {images?.length}
         </div>
       );
     }
@@ -197,15 +168,10 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
   };
 
   const renderOriginButton = () => {
-    if (state?.images?.length === 0) return;
+    if (images?.length === 0) return;
 
-    const { loaded } = state?.images?.[state?.currentIndex || 0];
-
-    if (
-      loaded &&
-      showOriginButton(state.images, state?.currentIndex) &&
-      loaded !== LOAD_STATUS.after
-    ) {
+    const { loaded } = images?.[currentIndex || 0];
+    if (loaded && showOriginButton(images, currentIndex) && loaded !== LOAD_STATUS.after) {
       return (
         <button className={`${prefixCls}__origin__button`} onClick={loadOrigin}>
           {loaded === LOAD_STATUS.start && (
@@ -218,7 +184,9 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
 
     return null;
   };
-  const cls = classnames(`${prefixCls}__content`, `${prefixCls}__content--${state.orientation}`);
+
+  const cls = classnames(`${prefixCls}__content`, `${prefixCls}__content--${orientation}`);
+
   return (
     <Popup direction="center" visible={visible} className={classnames(prefixCls, className)}>
       <div
@@ -234,8 +202,8 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
         ref={imagePreviewRef}
       >
         {visible &&
-          (state.images?.length ? (
-            <Carousel showPagination={false} onChange={onChange} activeIndex={state.currentIndex}>
+          (images?.length ? (
+            <Carousel showPagination={false} onChange={onChange} activeIndex={currentIndex}>
               {renderImages()}
             </Carousel>
           ) : (
