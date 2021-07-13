@@ -6,6 +6,7 @@ export default {
   'app.components.type.feedback': 'Feedback',
   'app.components.type.view': 'Data Display',
   'app.components.type.navigation': 'Navigation',
+  'app.components.type.hooks': 'Hooks',
   'app.components.type.other': 'Other',
 
   'app.home.nav.search': 'Search Components',

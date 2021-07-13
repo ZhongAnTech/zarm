@@ -35,13 +35,13 @@ const LoadableComponent = (component) => {
 };
 
 const App = () => {
-  const { general, form, feedback, view, navigation, other } = components;
+  const { general, form, feedback, view, navigation, hooks, other } = components;
   return (
     <SentryBoundary>
       <Suspense fallback={<Loading visible />}>
         <Switch>
           <Route exact path="/" component={lazy(() => import('@/demo/pages/Index'))} />
-          {[...general, ...form, ...feedback, ...view, ...navigation, ...other].map(
+          {[...general, ...form, ...feedback, ...view, ...navigation, ...hooks, ...other].map(
             (component, i) => (
               <Route key={+i} path={`/${component.key}`} component={LoadableComponent(component)} />
             ),

@@ -80,6 +80,7 @@ exports[`SearchBar snapshot renders defaultValue correctly 1`] = `
       localeCode="zh-CN"
       placeholder="搜索"
       prefixCls="za-search-bar"
+      safeIphoneX={false}
       shape="round"
       showCancel={false}
     >
@@ -150,7 +151,6 @@ exports[`SearchBar snapshot renders defaultValue correctly 1`] = `
                 onCompositionUpdate={[Function]}
                 onFocus={[Function]}
                 placeholder="搜索"
-                prefixCls="za-input"
                 readOnly={false}
                 showLength={false}
                 type="search"
@@ -251,6 +251,7 @@ exports[`SearchBar snapshot renders onCancel called correctly 1`] = `
       }
       placeholder="搜索"
       prefixCls="za-search-bar"
+      safeIphoneX={false}
       shape="round"
       showCancel={false}
     >
@@ -321,7 +322,6 @@ exports[`SearchBar snapshot renders onCancel called correctly 1`] = `
                 onCompositionUpdate={[Function]}
                 onFocus={[Function]}
                 placeholder="搜索"
-                prefixCls="za-input"
                 readOnly={false}
                 showLength={false}
                 type="search"
@@ -428,6 +428,7 @@ exports[`SearchBar snapshot renders onChange called correctly 1`] = `
       }
       placeholder="搜索"
       prefixCls="za-search-bar"
+      safeIphoneX={false}
       shape="round"
       showCancel={false}
     >
@@ -498,7 +499,6 @@ exports[`SearchBar snapshot renders onChange called correctly 1`] = `
                 onCompositionUpdate={[Function]}
                 onFocus={[Function]}
                 placeholder="搜索"
-                prefixCls="za-input"
                 readOnly={false}
                 showLength={false}
                 type="search"
@@ -663,6 +663,7 @@ exports[`SearchBar snapshot renders onClear called correctly 1`] = `
         }
       }
       prefixCls="za-search-bar"
+      safeIphoneX={false}
       shape="radius"
       showCancel={false}
     >
@@ -733,7 +734,6 @@ exports[`SearchBar snapshot renders onClear called correctly 1`] = `
                 onCompositionUpdate={[Function]}
                 onFocus={[Function]}
                 placeholder="搜索"
-                prefixCls="za-input"
                 readOnly={false}
                 showLength={false}
                 type="search"
@@ -834,6 +834,7 @@ exports[`SearchBar snapshot renders onFocus called correctly 1`] = `
       }
       placeholder="搜索"
       prefixCls="za-search-bar"
+      safeIphoneX={false}
       shape="round"
       showCancel={false}
     >
@@ -904,7 +905,6 @@ exports[`SearchBar snapshot renders onFocus called correctly 1`] = `
                 onCompositionUpdate={[Function]}
                 onFocus={[Function]}
                 placeholder="搜索"
-                prefixCls="za-input"
                 readOnly={false}
                 showLength={false}
                 type="search"
@@ -1011,6 +1011,7 @@ exports[`SearchBar snapshot renders onSubmit called correctly 1`] = `
       }
       placeholder="搜索"
       prefixCls="za-search-bar"
+      safeIphoneX={false}
       shape="round"
       showCancel={false}
     >
@@ -1081,7 +1082,6 @@ exports[`SearchBar snapshot renders onSubmit called correctly 1`] = `
                 onCompositionUpdate={[Function]}
                 onFocus={[Function]}
                 placeholder="搜索"
-                prefixCls="za-input"
                 readOnly={false}
                 showLength={false}
                 type="search"

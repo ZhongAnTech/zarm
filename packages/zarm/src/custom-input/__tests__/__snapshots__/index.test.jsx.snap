@@ -47,7 +47,6 @@ exports[`CustomInput.Idcard renders correctly 1`] = `
   autoFocus={false}
   clearable={true}
   maxLength={18}
-  prefixCls="za-custom-input"
   readOnly={false}
   type="idcard"
 >
@@ -72,16 +71,29 @@ exports[`CustomInput.Idcard renders correctly 1`] = `
     <KeyboardPicker
       destroy={true}
       onKeyClick={[Function]}
-      prefixCls="za-keyboard-picker"
       type="idcard"
       visible={false}
     >
-      <Popup
+      <ForwardRef(forwardRef)
         destroy={true}
         mask={false}
-        prefixCls="za-popup"
         visible={false}
-      />
+      >
+        <ConfigReceiver
+          destroy={true}
+          forwardedRef={null}
+          mask={false}
+          visible={false}
+        >
+          <Popup
+            destroy={true}
+            localeCode="zh-CN"
+            mask={false}
+            safeIphoneX={false}
+            visible={false}
+          />
+        </ConfigReceiver>
+      </ForwardRef(forwardRef)>
     </KeyboardPicker>
   </div>
 </CustomInput>
@@ -91,7 +103,6 @@ exports[`CustomInput.Price renders correctly 1`] = `
 <CustomInput
   autoFocus={false}
   clearable={true}
-  prefixCls="za-custom-input"
   readOnly={false}
   type="price"
 >
@@ -116,16 +127,29 @@ exports[`CustomInput.Price renders correctly 1`] = `
     <KeyboardPicker
       destroy={true}
       onKeyClick={[Function]}
-      prefixCls="za-keyboard-picker"
       type="price"
       visible={false}
     >
-      <Popup
+      <ForwardRef(forwardRef)
         destroy={true}
         mask={false}
-        prefixCls="za-popup"
         visible={false}
-      />
+      >
+        <ConfigReceiver
+          destroy={true}
+          forwardedRef={null}
+          mask={false}
+          visible={false}
+        >
+          <Popup
+            destroy={true}
+            localeCode="zh-CN"
+            mask={false}
+            safeIphoneX={false}
+            visible={false}
+          />
+        </ConfigReceiver>
+      </ForwardRef(forwardRef)>
     </KeyboardPicker>
   </div>
 </CustomInput>

@@ -6,7 +6,6 @@ exports[`Popup snapshot renders correctly 1`] = `
   destroy={true}
   direction="bottom"
   onMaskClick={[MockFunction]}
-  prefixCls="za-popup"
   visible={false}
 />
 `;
@@ -18,7 +17,6 @@ exports[`Popup snapshot renders mount node correctly 1`] = `
   direction="bottom"
   mountContainer={[Function]}
   onMaskClick={[MockFunction]}
-  prefixCls="za-popup"
   visible={true}
 >
   <Portal
@@ -66,7 +64,6 @@ exports[`Popup snapshot renders mount node correctly 1`] = `
       >
         <Mask
           className="za-fade-enter"
-          prefixCls="za-mask"
           style={
             Object {
               "WebkitAnimationDuration": "200ms",

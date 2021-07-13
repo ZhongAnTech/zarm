@@ -42,16 +42,16 @@ ReactDOM.render(<Demo />, mountNode);
 ## 滚动容器
 
 ```jsx
-import { useState } from 'react';
+import { useRef } from 'react';
 import { Affix, Button } from 'zarm';
 
 const Demo = () => {
-  const [container, setContainer] = useState(null);
+  const containerRef = useRef(null);
 
   return (
-    <div className="scrollable-container" ref={setContainer}>
+    <div className="scrollable-container" ref={containerRef}>
       <div className="background">
-        <Affix scrollContainer={() => container}>
+        <Affix scrollContainer={() => containerRef.current}>
           <Button theme="primary">根据滚动容器顶部固定</Button>
         </Affix>
       </div>

@@ -1,4 +1,4 @@
-import { CSSProperties, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 export type KnownSize = 'lg' | 'md' | 'sm';
 export type ProgressTheme = 'primary' | 'success' | 'warning' | 'danger';
@@ -6,12 +6,12 @@ export type ProgressSize = KnownSize | number | string;
 export type ProgressShape = 'line' | 'circle' | 'semi-circle';
 export type ProgressStrokeShape = 'round' | 'rect';
 export type ProgressPercent = number;
-export type PercentFormatter = (percent?: number) => ReactNode;
+export type PercentFormatter = (percent: number) => ReactNode;
+export type WeightMap = {
+  [weight in KnownSize]: number;
+};
 
-export default interface PropsType {
-  // 类名前缀
-  prefixCls: string;
-
+export interface BaseProgressProps {
   // 进度条主题
   theme?: ProgressTheme;
 
@@ -32,9 +32,4 @@ export default interface PropsType {
 
   // 进度信息
   text?: PercentFormatter;
-
-  // 进度条自定义样式
-  style?: CSSProperties;
-
-  className?: string;
 }

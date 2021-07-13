@@ -6,6 +6,7 @@ import Popup from '../popup';
 export interface ActionSheetProps extends PropsType {
   prefixCls?: string;
   className?: string;
+  safeIphoneX?: boolean;
 }
 
 export default class ActionSheet extends PureComponent<ActionSheetProps, {}> {

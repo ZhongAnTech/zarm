@@ -4,7 +4,6 @@ import { pascalCase } from 'change-case';
 export default ({ code, component, preview }) => {
   const title = `${component.name} ${pascalCase(component.key)} - Zarm Design`;
   const pageCls = `${component.key}-page`;
-
   let parsedSourceCode = code;
   let importReactContent = "import React from 'react';";
 

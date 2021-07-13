@@ -1,8 +1,8 @@
 import * as React from 'react';
 import Events from '../utils/events';
-import type { DragEvent, DragState, DragProps } from '../drag';
+import type { DragEvent, DragState, DragProps } from './interface';
 
-function isMouseEvent(e: DragEvent): e is MouseEvent {
+function isMouseEvent(e): e is MouseEvent {
   return e && !('touches' in e);
 }
 
@@ -18,10 +18,10 @@ const useDrag = (props: DragProps) => {
     if (!isDragStart) return false;
 
     if (isMouseEvent(event)) {
-      currentX = event.clientX;
-      currentY = event.clientY;
+      currentX = (event as React.MouseEvent).clientX;
+      currentY = (event as React.MouseEvent).clientY;
     } else {
-      const touch = event.touches[0];
+      const touch = (event as React.TouchEvent).touches[0];
       currentX = touch.pageX;
       currentY = touch.pageY;
     }
@@ -46,8 +46,8 @@ const useDrag = (props: DragProps) => {
     if (!isDragStart) return false;
 
     if (isMouseEvent(event)) {
-      Events.off(document.body, 'mousemove', move);
-      Events.off(document.body, 'mouseup', end);
+      Events.off(document.body, 'mousemove', move as any);
+      Events.off(document.body, 'mouseup', end as any);
     }
 
     if (typeof onDragEnd === 'function') {
@@ -64,10 +64,10 @@ const useDrag = (props: DragProps) => {
       dragState.startX = event.clientX;
       dragState.startY = event.clientY;
 
-      Events.on(document.body, 'mousemove', move);
-      Events.on(document.body, 'mouseup', end);
+      Events.on(document.body, 'mousemove', move as any);
+      Events.on(document.body, 'mouseup', end as any);
     } else {
-      const touch = event.touches[0];
+      const touch = (event as React.TouchEvent).touches[0];
       dragState.startX = touch.pageX;
       dragState.startY = touch.pageY;
     }

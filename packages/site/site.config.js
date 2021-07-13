@@ -288,6 +288,26 @@ module.exports = {
         style: false,
       },
     ],
+    hooks: [
+      {
+        key: 'useDrag',
+        name: '拖拽',
+        module: () => import('zarm/useDrag/demo.md'),
+        style: false,
+      },
+      // {
+      //   key: 'useClickAway',
+      //   name: '点击离开',
+      //   module: () => import('zarm/useClickAway/demo.md'),
+      //   style: false,
+      // },
+      // {
+      //   key: 'useLongPress',
+      //   name: '长按',
+      //   module: () => import('zarm/useLongPress/demo.md'),
+      //   style: false,
+      // },
+    ],
     other: [
       // {
       //   key: 'mask',
@@ -302,9 +322,9 @@ module.exports = {
         style: true,
       },
       {
-        key: 'locale-provider',
-        name: '国际化（即将废弃）',
-        module: () => import('zarm/locale-provider/demo.md'),
+        key: 'n-config-provider',
+        name: '全局配置（新）',
+        module: () => import('zarm/n-config-provider/demo.md'),
         style: false,
       },
       {

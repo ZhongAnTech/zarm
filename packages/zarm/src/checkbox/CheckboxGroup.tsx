@@ -1,29 +1,21 @@
-import React, {
-  PureComponent,
-  cloneElement,
-  ReactNode,
-  isValidElement,
-  HTMLAttributes,
-} from 'react';
+import * as React from 'react';
 import classnames from 'classnames';
-import { BaseCheckboxGroupProps } from './PropsType';
+import { ConfigContext } from '../n-config-provider';
+import type { BaseCheckboxGroupProps, CheckboxValue } from './interface';
 
-const getChildChecked = (children: ReactNode) => {
-  const checkedValue: Array<number | string> = [];
+const getChildChecked = (children: React.ReactNode): Array<CheckboxValue> => {
+  const checkedValues: Array<CheckboxValue> = [];
 
-  React.Children.map(children, (element: ReactNode) => {
+  React.Children.map(children, (element: React.ReactNode) => {
     if (React.isValidElement(element) && element.props && element.props.checked) {
-      checkedValue.push(element.props.value);
+      checkedValues.push(element.props.value);
     }
   });
 
-  return checkedValue;
+  return checkedValues;
 };
 
-const getValue = (
-  props: CheckboxGroup['props'],
-  defaultValue: BaseCheckboxGroupProps['defaultValue'],
-) => {
+const getValue = (props: CheckboxGroupProps, defaultValue: Array<CheckboxValue> = []) => {
   if (typeof props.value !== 'undefined') {
     return props.value;
   }
@@ -36,113 +28,95 @@ const getValue = (
   return defaultValue;
 };
 
-export interface CheckboxGroupProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'value' | 'onChange'>,
-    BaseCheckboxGroupProps {
-  prefixCls?: string;
-}
+export type CheckboxGroupProps = Omit<
+  React.HTMLAttributes<HTMLDivElement>,
+  'defaultValue' | 'value' | 'onChange'
+> &
+  BaseCheckboxGroupProps;
 
-export interface CheckboxGroupStates {
-  value?: Array<number | string>;
-}
+const CheckboxGroup = React.forwardRef<unknown, CheckboxGroupProps>((props, ref) => {
+  const {
+    className,
+    size,
+    shape,
+    type,
+    block,
+    disabled,
+    compact,
+    ghost,
+    children,
+    onChange,
+    defaultValue,
+    value,
+    ...restProps
+  } = props;
 
-export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, CheckboxGroupStates> {
-  static displayName = 'CheckboxGroup';
+  const radioGroupRef = (ref as any) || React.createRef<HTMLElement>();
+  const [currentValue, setCurrentValue] = React.useState(
+    getValue({ value, defaultValue, children }, []),
+  );
 
-  static defaultProps: CheckboxGroupProps = {
-    prefixCls: 'za-checkbox-group',
-    shape: 'radius',
-    block: false,
-    disabled: false,
-    compact: false,
-    ghost: false,
-    size: 'xs',
-  };
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-checkbox-group`;
 
-  constructor(props: CheckboxGroup['props']) {
-    super(props);
-    this.state = {
-      value: getValue(props, []),
-    };
-  }
-
-  static getDerivedStateFromProps(nextProps: CheckboxGroup['props']) {
-    if ('value' in nextProps) {
-      return {
-        value: getValue(nextProps, []),
-      };
-    }
-
-    return null;
-  }
-
-  onChildChange = (value: string | number) => {
-    const { value: valueState } = this.state;
-    const { onChange } = this.props;
-    const values = valueState!.slice();
-    const index = values.indexOf(value);
+  const onChildChange = (newValue: string | number) => {
+    const values = currentValue!.slice();
+    const index = values.indexOf(newValue);
 
     if (index < 0) {
-      values.push(value);
+      values.push(newValue);
     } else {
       values.splice(index, 1);
     }
+    setCurrentValue(values);
 
-    this.setState({ value: values });
     typeof onChange === 'function' && onChange(values);
   };
 
-  render() {
-    const {
-      prefixCls,
-      className,
-      size,
-      shape,
+  const items = React.Children.map(children, (element: React.ReactElement, index: number) => {
+    return React.cloneElement(element, {
+      key: +index,
       type,
-      block,
-      disabled,
-      compact,
-      ghost,
-      children,
-      onChange,
-      defaultValue,
-      value,
-      ...rest
-    } = this.props;
-    const { value: valueState } = this.state;
-
-    const items = React.Children.map(children, (element: ReactNode, index) => {
-      if (isValidElement(element)) {
-        return cloneElement(element, {
-          key: index,
-          type,
-          shape,
-          disabled: disabled || element.props.disabled,
-          checked: valueState!.indexOf(element.props.value) > -1,
-          onChange: (checked: boolean) => {
-            typeof element.props.onChange === 'function' && element.props.onChange(checked);
-            this.onChildChange(element.props.value);
-          },
-        });
-      }
-
-      return null;
+      shape,
+      disabled: disabled || !!element.props.disabled,
+      checked: currentValue!.indexOf(element.props.value) > -1,
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+        typeof element.props.onChange === 'function' && element.props.onChange(e);
+        onChildChange(element.props.value);
+      },
     });
+  });
 
-    const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--${type}`]: !!type,
-      [`${prefixCls}--${size}`]: !!size,
-      [`${prefixCls}--${shape}`]: !!shape,
-      [`${prefixCls}--block`]: block,
-      [`${prefixCls}--disabled`]: disabled,
-      [`${prefixCls}--compact`]: compact,
-      [`${prefixCls}--ghost`]: ghost,
-    });
+  const cls = classnames(prefixCls, className, {
+    [`${prefixCls}--${type}`]: !!type,
+    [`${prefixCls}--${size}`]: !!size,
+    [`${prefixCls}--${shape}`]: !!shape,
+    [`${prefixCls}--block`]: block,
+    [`${prefixCls}--disabled`]: disabled,
+    [`${prefixCls}--compact`]: compact,
+    [`${prefixCls}--ghost`]: ghost,
+  });
 
-    return (
-      <div className={cls} {...rest}>
-        <div className={`${prefixCls}__inner`}>{items}</div>
-      </div>
-    );
-  }
-}
+  React.useEffect(() => {
+    setCurrentValue(getValue({ value, defaultValue, children }, []));
+  }, [value, defaultValue, children]);
+
+  return (
+    <div className={cls} {...restProps} ref={radioGroupRef}>
+      <div className={`${prefixCls}__inner`}>{items}</div>
+    </div>
+  );
+});
+
+CheckboxGroup.displayName = 'CheckboxGroup';
+
+CheckboxGroup.defaultProps = {
+  shape: 'radius',
+  block: false,
+  disabled: false,
+  compact: false,
+  ghost: false,
+  size: 'xs',
+};
+
+export default CheckboxGroup;

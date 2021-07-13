@@ -63,6 +63,7 @@ const Child = () => {
         {getMenus('feedback')}
         {getMenus('view')}
         {getMenus('navigation')}
+        {getMenus('hooks')}
         {getMenus('other')}
       </main>
       <Footer />
