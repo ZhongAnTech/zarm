@@ -17,7 +17,7 @@
     "deploy:build": "yarn prebuild && lerna exec --scope site -- yarn build -p",
     "deploy": "lerna exec --scope site -- gh-pages -d assets",
     "release": "yarn lint && yarn build && yarn test && lerna publish",
-    "prepublish": "yarn lint && yarn build && yarn test",
+    "prepublishOnly": "yarn lint && yarn build && yarn test",
     "prettier": "prettier -c --write '**/*'",
     "pretty-quick": "pretty-quick",
     "bundlesize": "lerna run bundlesize",

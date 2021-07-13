@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { ContainerType } from '../utils/dom';
 
-export default interface PropsType {
+export default interface BaseToastProps {
   visible?: boolean;
   stayTime?: number;
   content?: ReactNode;
