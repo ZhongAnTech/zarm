@@ -2,7 +2,8 @@ import React, { ReactNode, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import { ConfigContext } from '../n-config-provider';
 import { getMountContainer } from '../utils/dom';
-import Toast, { ToastProps, UseToast } from './Toast';
+import Toast from './Toast';
+import type { ToastProps, UseToast } from './Toast';
 
 const contentIsToastProps = (content: ReactNode | ToastProps): content is ToastProps =>
   !!content && typeof content === 'object' && 'content' in content;
