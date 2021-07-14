@@ -61,8 +61,11 @@ const TabBar = React.forwardRef<unknown, TabBarProps>((props, ref) => {
       if (!React.isValidElement(element)) return null;
       const itemKey = element.props.itemKey || index;
       let selected = getSelected(index, itemKey);
-      if (!activeKey && defaultActiveKey) {
+      if (!activeKey) {
         selected = selectedKey === itemKey;
+        if (!selectedKey && index === 0) {
+          selected = true;
+        }
       }
       return cloneElement(element, {
         key: index,
