@@ -55,6 +55,7 @@ const reducer = (state, action) => {
 const Demo = () => {
   const myRef = useRef();
   const [state, dispatch] = useReducer(reducer, initState);
+  const toast = Toast.useToast();
 
   const setValue = (key, value) => {
     dispatch({ type: 'value', key, value });
@@ -117,7 +118,7 @@ const Demo = () => {
         onOk={(value) => {
           setValue('date', value);
           toggle('date');
-          Toast.show(JSON.stringify(value));
+          toast.show(JSON.stringify(value));
         }}
         onCancel={() => toggle('date')}
       />
@@ -129,7 +130,7 @@ const Demo = () => {
         onOk={(value) => {
           setValue('time', value);
           toggle('time');
-          Toast.show(JSON.stringify(value));
+          toast.show(JSON.stringify(value));
         }}
         onCancel={() => toggle('time')}
       />
@@ -146,7 +147,7 @@ const Demo = () => {
         onOk={(value) => {
           setValue('limitDate', value);
           toggle('limitDate');
-          Toast.show(JSON.stringify(value));
+          toast.show(JSON.stringify(value));
         }}
         onCancel={() => toggle('limitDate')}
       />
@@ -157,7 +158,7 @@ const Demo = () => {
         onOk={(value) => {
           setValue('specDOM', value);
           toggle('specDOM');
-          Toast.show(JSON.stringify(value));
+          toast.show(JSON.stringify(value));
         }}
         onCancel={() => toggle('specDOM')}
         getContainer={() => myRef.current}

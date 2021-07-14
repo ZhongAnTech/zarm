@@ -141,6 +141,7 @@ const reducer = (state, action) => {
 const Demo = () => {
   const myRef = useRef();
   const [state, dispatch] = useReducer(reducer, initState);
+  const toast = Toast.useToast();
 
   const setVisible = (key) => {
     dispatch({ type: 'visible', key });
@@ -225,7 +226,7 @@ const Demo = () => {
         dataSource={state.single.dataSource}
         onOk={(selected) => {
           console.log('Single Picker onOk: ', selected);
-          Toast.show(JSON.stringify(selected));
+          toast.show(JSON.stringify(selected));
           setValue(
             'single',
             selected.map((item) => item.value),
@@ -241,7 +242,7 @@ const Demo = () => {
         dataSource={state.multi.dataSource}
         onOk={(selected) => {
           console.log('Multi Picker onOk: ', selected);
-          Toast.show(JSON.stringify(selected));
+          toast.show(JSON.stringify(selected));
           setValue(
             'multi',
             selected.map((item) => item.value),
@@ -257,7 +258,7 @@ const Demo = () => {
         dataSource={state.cascade.dataSource}
         onOk={(selected) => {
           console.log('Cascade Picker onOk: ', selected);
-          Toast.show(JSON.stringify(selected));
+          toast.show(JSON.stringify(selected));
           setValue(
             'cascade',
             selected.map((item) => item.value),
@@ -278,7 +279,7 @@ const Demo = () => {
         itemRender={(data) => data.name}
         onOk={(selected) => {
           console.log('DIY Picker onOk: ', selected);
-          Toast.show(JSON.stringify(selected));
+          toast.show(JSON.stringify(selected));
           setValue(
             'diy',
             selected.map((item) => item.code),
@@ -294,7 +295,7 @@ const Demo = () => {
         dataSource={state.specDOM.dataSource}
         onOk={(selected) => {
           console.log('Picker onOk: ', selected);
-          Toast.show(JSON.stringify(selected));
+          toast.show(JSON.stringify(selected));
           setValue(
             'specDOM',
             selected.map((item) => item.value),

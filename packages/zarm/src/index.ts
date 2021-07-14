@@ -28,10 +28,6 @@ export { default as DatePicker } from './date-picker';
 export type { DateSelectProps } from './date-select';
 export { default as DateSelect } from './date-select';
 
-export type { DragProps, DragEvent, DragState } from './drag';
-export { default as Drag } from './drag';
-export { default as useDrag } from './useDrag';
-
 export { default as FilePicker } from './file-picker';
 
 export type { IconProps } from './icon';
@@ -128,3 +124,12 @@ export { default as StackPicker } from './stack-picker';
 
 export type { AffixProps } from './affix';
 export { default as Affix } from './affix';
+
+export type { DragProps, DragEvent, DragState } from './drag';
+export { default as Drag } from './drag';
+export { default as useDrag } from './useDrag';
+
+export type { UseLongPressProps } from './useLongPress';
+export { default as useLongPress } from './useLongPress';
+
+export { default as useSafeLayoutEffect } from './useSafeLayoutEffect';
