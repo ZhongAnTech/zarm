@@ -1,9 +1,12 @@
 import { useCallback, useRef } from 'react';
 import Events from '../utils/events';
 
-interface Options {
+export interface UseLongPressProps {
   isPreventDefault?: boolean;
   delay?: number;
+  onLongPress?: (event: TouchEvent | MouseEvent) => void;
+  onPress?: (event: TouchEvent | MouseEvent) => void;
+  onClear?: (event: TouchEvent | MouseEvent) => void;
 }
 
 const isTouchEvent = (ev: Event): ev is TouchEvent => {
@@ -18,12 +21,13 @@ const preventDefault = (ev: Event) => {
   }
 };
 
-const useLongPress = (
-  { isPreventDefault = true, delay = 300 }: Options = {},
-  onLongPress?: (event: TouchEvent | MouseEvent) => void,
-  onPress?: (event: TouchEvent | MouseEvent) => void,
-  onClear?: (event: TouchEvent | MouseEvent) => void,
-) => {
+const useLongPress = ({
+  isPreventDefault = true,
+  delay = 300,
+  ...restProps
+}: UseLongPressProps) => {
+  const { onLongPress, onPress, onClear } = restProps;
+
   const timeout = useRef<ReturnType<typeof setTimeout>>();
   const target = useRef<EventTarget>();
 
