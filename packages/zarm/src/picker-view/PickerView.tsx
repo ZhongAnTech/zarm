@@ -6,7 +6,7 @@ import { isCascader } from '../utils/validate';
 import parseProps from './utils/parseProps';
 import removeFnFromProps from './utils/removeFnFromProps';
 import type { BasePickerViewProps } from './PropsType';
-import type { WheelValue, WheelItem } from '../wheel/PropsType';
+import type { WheelValue, WheelItem } from '../wheel/interface';
 
 export interface PickerViewProps extends BasePickerViewProps {
   prefixCls?: string;

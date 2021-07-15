@@ -5,7 +5,7 @@ import Picker from '../picker';
 import parseProps from '../picker-view/utils/parseProps';
 import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
 import type { BaseSelectProps } from './PropsType';
-import type { WheelItem } from '../wheel/PropsType';
+import type { WheelItem } from '../wheel/interface';
 
 export interface SelectProps extends BaseSelectProps {
   prefixCls?: string;
