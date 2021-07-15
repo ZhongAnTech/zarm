@@ -5,9 +5,9 @@ import type { BaseBadgeProps } from './interface';
 
 export type BadgeProps = BaseBadgeProps & React.HTMLAttributes<HTMLSpanElement>;
 
-const Badge = React.forwardRef<unknown, BadgeProps>((props, ref) => {
+const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
   const { className, theme, shape, text, children, ...restProps } = props;
-  const badgeRef = (ref as any) || React.createRef<HTMLSpanElement>();
+  const badgeRef = ref || React.createRef<HTMLSpanElement>();
 
   const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
   const prefixCls = `${globalPrefixCls}-badge`;
