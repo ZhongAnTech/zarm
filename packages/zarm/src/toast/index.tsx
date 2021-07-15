@@ -112,6 +112,7 @@ export default class Toast extends Component<ToastProps, any> {
   afterClose = () => {
     const { afterClose } = this.props;
     if (Toast.zarmToast) {
+      ReactDOM.unmountComponentAtNode(Toast.zarmToast);
       Toast.toastContainer.removeChild(Toast.zarmToast);
       Toast.zarmToast = null;
     }
