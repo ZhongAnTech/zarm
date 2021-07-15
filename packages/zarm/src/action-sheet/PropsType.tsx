@@ -1,7 +1,8 @@
+import * as React from 'react';
 import { Locale } from '../config-provider/PropsType';
 
 export interface Action {
-  text: string;
+  text?: React.ReactNode;
   theme?: 'default' | 'primary' | 'danger';
   className?: string;
   onClick?: () => void;
@@ -10,7 +11,7 @@ export interface Action {
 export default interface PropsType {
   visible?: boolean;
   spacing?: boolean;
-  actions: Action[];
+  actions?: Action[];
   cancelText?: string;
   onMaskClick?: () => void;
   onCancel?: () => void;
