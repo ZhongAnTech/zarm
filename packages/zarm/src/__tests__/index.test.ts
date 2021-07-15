@@ -98,7 +98,25 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "Collapse": [Function],
+        "Collapse": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "Item": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "defaultProps": Object {
+              "animated": false,
+              "disabled": false,
+              "prefixCls": "za-collapse-item",
+            },
+            "render": [Function],
+          },
+          "defaultProps": Object {
+            "animated": false,
+            "multiple": false,
+            "onChange": [Function],
+            "prefixCls": "za-collapse",
+          },
+          "render": [Function],
+        },
         "ConfigProvider": [Function],
         "CustomInput": Object {
           "$$typeof": Symbol(react.forward_ref),
