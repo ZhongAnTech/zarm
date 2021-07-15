@@ -28,7 +28,7 @@ const useLongPress = ({
 }: UseLongPressProps) => {
   const { onLongPress, onPress, onClear } = restProps;
 
-  const timeout = useRef<ReturnType<typeof setTimeout>>();
+  const timeout = useRef(0);
   const target = useRef<EventTarget>();
 
   const start = useCallback(
@@ -44,7 +44,7 @@ const useLongPress = ({
       }
 
       if (typeof onLongPress === 'function') {
-        timeout.current = setTimeout(() => onLongPress!(event), delay);
+        timeout.current = window.setTimeout(() => onLongPress!(event), delay);
       }
     },
     [onPress, onLongPress, delay, isPreventDefault],
@@ -53,7 +53,7 @@ const useLongPress = ({
   const clear = useCallback(
     (event) => {
       // clearTimeout and removeEventListener
-      timeout.current && clearTimeout(timeout.current);
+      timeout.current && window.clearTimeout(timeout.current);
       if (typeof onClear === 'function') {
         onClear(event);
       }

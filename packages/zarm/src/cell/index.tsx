@@ -21,7 +21,7 @@ const Cell = React.forwardRef<unknown, CellProps>((props, ref) => {
     ...others
   } = props;
 
-  const cellRef = (ref as any) || React.createRef<HTMLElement>();
+  const cellRef = (ref as any) || React.createRef<HTMLDivElement>();
 
   const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
   const prefixCls = `${globalPrefixCls}-cell`;
