@@ -137,7 +137,7 @@ const Affix = forwardRef<unknown, AffixProps>((props, ref) => {
 
   useEffect(() => {
     // wait for ref not null
-    setTimeout(() => {
+    window.setTimeout(() => {
       Events.on(getContainer(), 'scroll', onPositionUpdate);
       if (offsetBottom != null) {
         onPositionUpdate();
@@ -145,7 +145,7 @@ const Affix = forwardRef<unknown, AffixProps>((props, ref) => {
     });
 
     return () => {
-      setTimeout(() => {
+      window.setTimeout(() => {
         const container = getContainer();
         Events.off(container, 'scroll', onPositionUpdate);
       });

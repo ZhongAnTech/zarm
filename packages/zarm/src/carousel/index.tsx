@@ -69,11 +69,11 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
   });
 
   const carouselRef = (ref as any) || React.createRef<CarouselHTMLElement>();
-  const moveIntervalRef = useRef<NodeJS.Timeout>();
   const carouselItemsRef = useRef<HTMLDivElement>(null);
 
   const translateXRef = useRef(0);
   const translateYRef = useRef(0);
+  const timer = useRef(0);
 
   // 判断当前是否在最后一页
   const isLastIndex = useCallback(() => {
@@ -192,15 +192,15 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
   );
   // 暂停自动轮播
   const pauseAutoPlay = () => {
-    if (moveIntervalRef.current) {
-      clearInterval(moveIntervalRef.current);
+    if (timer.current) {
+      clearInterval(timer.current);
     }
   };
 
   // 自动轮播开始
   const startAutoPlay = useCallback(() => {
     if (autoPlay) {
-      moveIntervalRef.current = setInterval(() => {
+      timer.current = window.setInterval(() => {
         const isLeftOrUpDirection = ['left', 'up'].includes(direction!);
         const activeIndex = isLeftOrUpDirection
           ? stateRef.current.activeIndex + 1

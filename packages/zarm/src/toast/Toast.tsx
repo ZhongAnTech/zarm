@@ -20,10 +20,8 @@ const Toast = React.forwardRef<unknown, ToastProps>((props, ref) => {
 
   const toastRef = (ref as any) || React.createRef<HTMLDivElement>();
   const { className, stayTime, content, visible: propVisible, afterClose, ...others } = props;
-
   const [visible, setVisible] = useState(propVisible!);
-
-  const timerRef = useRef<NodeJS.Timeout>();
+  const timerRef = useRef(0);
 
   const _hide = () => {
     setVisible(false);
@@ -31,9 +29,9 @@ const Toast = React.forwardRef<unknown, ToastProps>((props, ref) => {
 
   const autoClose = useCallback(() => {
     if (stayTime! > 0) {
-      timerRef.current = setTimeout(() => {
+      timerRef.current = window.setTimeout(() => {
         _hide();
-        clearTimeout(timerRef.current!);
+        window.clearTimeout(timerRef.current!);
       }, stayTime);
     }
   }, [stayTime]);
@@ -43,7 +41,7 @@ const Toast = React.forwardRef<unknown, ToastProps>((props, ref) => {
       autoClose();
     }
     return () => {
-      clearTimeout(timerRef.current!);
+      window.clearTimeout(timerRef.current!);
     };
   }, [autoClose, visible]);
 
