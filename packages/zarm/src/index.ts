@@ -6,7 +6,7 @@ export { default as BackToTop } from './back-to-top';
 export type { BadgeProps } from './badge';
 export { default as Badge } from './badge';
 
-export type { ButtonProps, ButtonTheme, ButtonSize, ButtonShape } from './button';
+export type { ButtonProps } from './button';
 export { default as Button } from './button';
 
 export { default as Calendar } from './calendar';
@@ -33,7 +33,7 @@ export { default as FilePicker } from './file-picker';
 export type { IconProps } from './icon';
 export { default as Icon } from './icon';
 
-export type { CustomInputProps, CustomInputType } from './custom-input';
+export type { CustomInputProps } from './custom-input';
 export { default as CustomInput } from './custom-input';
 
 export type { InputProps, InputTextProps, InputTextareaProps } from './input';
@@ -50,7 +50,7 @@ export { default as Loading } from './loading';
 export type { MaskProps } from './mask';
 export { default as Mask } from './mask';
 
-export type { MessageProps, MessageSize, MessageTheme } from './message';
+export type { MessageProps } from './message';
 export { default as Message } from './message';
 
 export { default as Modal } from './modal';

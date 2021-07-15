@@ -10,7 +10,7 @@ export interface TabPanelProps extends BaseTabPanelProps {
 const TabPanel = React.forwardRef<unknown, TabPanelProps>((props, ref) => {
   const { className, selected, children } = props;
 
-  const panelRef = (ref as any) || React.createRef<HTMLElement>();
+  const panelRef = (ref as any) || React.createRef<HTMLDivElement>();
 
   const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
   const prefixCls = `${globalPrefixCls}-tabs__panel`;

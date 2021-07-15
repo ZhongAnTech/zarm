@@ -21,7 +21,7 @@ export interface KeyboardProps extends BaseKeyBoardProps {
 
 const Keyboard = React.forwardRef<unknown, KeyboardProps>((props, ref) => {
   const { className, type, onKeyClick } = props;
-  const keyboardRef = (ref as any) || React.createRef<HTMLElement>();
+  const keyboardRef = (ref as any) || React.createRef<HTMLDivElement>();
 
   const { locale: globalLocal, prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
   const locale = globalLocal?.Keyboard;

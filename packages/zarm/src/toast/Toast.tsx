@@ -11,14 +11,14 @@ export interface UseToast {
   hide: () => void;
 }
 interface CompoundedComponent
-  extends React.ForwardRefExoticComponent<ToastProps & React.RefAttributes<HTMLElement>> {
+  extends React.ForwardRefExoticComponent<ToastProps & React.RefAttributes<HTMLDivElement>> {
   useToast: () => UseToast;
 }
 const Toast = React.forwardRef<unknown, ToastProps>((props, ref) => {
   const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
   const prefixCls = `${globalPrefixCls}-toast`;
 
-  const toastRef = (ref as any) || React.createRef<HTMLElement>();
+  const toastRef = (ref as any) || React.createRef<HTMLDivElement>();
   const { className, stayTime, content, visible: propVisible, afterClose, ...others } = props;
 
   const [visible, setVisible] = useState(propVisible!);

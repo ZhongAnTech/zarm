@@ -19,18 +19,22 @@ export interface CarouselProps extends BaseCarouselProps {
   className?: string;
   style?: CSSProperties;
 }
-export interface CarouselHTMLElement extends HTMLElement {
+
+export interface CarouselHTMLElement extends HTMLDivElement {
   onJumpTo: (index: number) => void;
   onSlideTo: (index: number) => void;
 }
+
 interface Offset {
   x: number;
   y: number;
 }
+
 interface StateProps {
   activeIndex: number;
   activeIndexChanged: boolean;
 }
+
 const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => {
   const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
   const prefixCls = `${globalPrefixCls}-carousel`;
