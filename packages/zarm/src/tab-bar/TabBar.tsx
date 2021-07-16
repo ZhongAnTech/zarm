@@ -7,15 +7,15 @@ import { ConfigContext } from '../n-config-provider';
 
 export interface TabBarProps
   extends BaseTabBarProps,
-    Omit<React.HTMLAttributes<HTMLElement>, 'onChange'> {}
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {}
 
 interface CompoundedComponent
-  extends React.ForwardRefExoticComponent<TabBarProps & React.RefAttributes<HTMLElement>> {
+  extends React.ForwardRefExoticComponent<TabBarProps & React.RefAttributes<HTMLDivElement>> {
   Item: typeof TabBarItem;
 }
 
 const TabBar = React.forwardRef<unknown, TabBarProps>((props, ref) => {
-  const tabBarRef = (ref as any) || React.createRef<HTMLElement>();
+  const tabBarRef = (ref as any) || React.createRef<HTMLDivElement>();
 
   const { prefixCls: globalPrefixCls, safeIphoneX: globalSafeIphoneX } = React.useContext(
     ConfigContext,
