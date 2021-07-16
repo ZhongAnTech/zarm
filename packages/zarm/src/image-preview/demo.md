@@ -39,16 +39,16 @@ const Demo = () => {
     setTimeout(() => {
       setOriginImages([
         {
-          url: 'https://cdn-health.zhongan.com/zarm/imagePreview/1-small.jpg',
-          originUrl: 'https://cdn-health.zhongan.com/zarm/imagePreview/1.jpg',
+          src: 'https://cdn-health.zhongan.com/zarm/imagePreview/1-small.jpg',
+          originSrc: 'https://cdn-health.zhongan.com/zarm/imagePreview/1.jpg',
         },
         {
-          url: 'https://cdn-health.zhongan.com/zarm/imagePreview/2-small.jpg',
-          originUrl: 'https://cdn-health.zhongan.com/zarm/imagePreview/2.jpg',
+          src: 'https://cdn-health.zhongan.com/zarm/imagePreview/2-small.jpg',
+          originSrc: 'https://cdn-health.zhongan.com/zarm/imagePreview/2.jpg',
         },
         {
-          url: 'https://cdn-health.zhongan.com/zarm/imagePreview/3-small.jpg',
-          originUrl: 'https://cdn-health.zhongan.com/zarm/imagePreview/3.jpg',
+          src: 'https://cdn-health.zhongan.com/zarm/imagePreview/3-small.jpg',
+          originSrc: 'https://cdn-health.zhongan.com/zarm/imagePreview/3.jpg',
         },
       ]);
     }, 5000);
@@ -150,7 +150,7 @@ ReactDOM.render(<Demo />, mountNode);
 | visible        | boolean                                            | false  | 是否显示                          |
 | minScale       | number                                             | 1      | 图片最小缩放比例，1 为最小值      |
 | maxScale       | number                                             | 3      | 图片最大缩放比例                  |
-| images         | Array<string \| {url: string; originUrl: string;}> | -      | 图片地址                          |
+| images         | Array<string \| {src: string; originSrc: string;}> | -      | 图片地址                          |
 | activeIndex    | number                                             | 0      | 当前展示的图片是第几张，从 0 开始 |
 | showPagination | boolean                                            | true   | 是否显示分页器                    |
 | onChange       | (activeIndex?: number) => void                     | -      | 图片切换时候回调                  |

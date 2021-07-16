@@ -1,6 +1,13 @@
-import React, { Component } from 'react';
-import { Point } from './PropsType';
-import Events from '../utils/events';
+import React, { useRef, HTMLAttributes, useCallback } from 'react';
+import classnames from 'classnames';
+import type { BasePinchZoomProps } from './interface';
+import { ConfigContext } from '../n-config-provider';
+import mergerRefs from '../utils/mergeRefs';
+
+interface Point {
+  clientX: number;
+  clientY: number;
+}
 
 function getDistance(a: Point, b?: Point): number {
   if (!b) return 0;
@@ -11,177 +18,33 @@ function range(num: number, min: number, max: number): number {
   return Math.min(Math.max(num, min), max);
 }
 
-export interface PinchZoomProps {
-  prefixCls?: string;
-  className?: string;
-  onChange?: Function;
-  minScale: number;
-  maxScale: number;
-}
+export interface PinchZoomProps extends HTMLAttributes<HTMLDivElement>, BasePinchZoomProps {}
 
-export default class PinchZoom extends Component<PinchZoomProps, any> {
-  static defaultProps = {
-    prefixCls: 'za-pinch-zoom',
-    minScale: 1,
-    maxScale: 3,
-  };
+const PinchZoom = React.forwardRef<unknown, PinchZoomProps>((props, ref) => {
+  const container = useRef<HTMLDivElement | null>();
 
-  private _container;
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
 
-  private startTouchX = 0;
+  const prefixCls = `${globalPrefixCls}-pinch-zoom`;
 
-  private startTouchY = 0;
+  const { children, className, maxScale, onPinchZoom } = props;
 
-  private moveX = 0;
+  const startTouchX = useRef<number>(0);
+  const startTouchY = useRef<number>(0);
+  const prevDistance = useRef<number>(0);
+  const moveX = useRef<number>(0);
+  const moveY = useRef<number>(0);
+  const startMoveX = useRef<number>(0);
+  const startMoveY = useRef<number>(0);
+  const moving = useRef<boolean>(false);
+  const zooming = useRef<boolean>(false);
+  const scale = useRef<number>(1);
+  const startScale = useRef<number>(1);
 
-  private moveY = 0;
+  const originHeight = useRef<Number>(0);
+  const originWidth = useRef<Number>(0);
 
-  private startMoveX = 0;
-
-  private startMoveY = 0;
-
-  private deltaX = 0;
-
-  private deltaY = 0;
-
-  private moving = false;
-
-  private zooming = false;
-
-  private scale = 1;
-
-  private startScale;
-
-  private prevDistance = 0;
-
-  private originHeight;
-
-  private originWidth;
-
-  constructor(props) {
-    super(props);
-    this._container = React.createRef();
-  }
-
-  componentDidMount() {
-    Events.on(this._container.current, 'touchstart', this.touchstart);
-    Events.on(document.documentElement, 'touchmove', this.touchmove);
-    Events.on(document.documentElement, 'touchend', this.touchEnd);
-    Events.on(document.documentElement, 'touchcancel', this.touchEnd);
-  }
-
-  componentWillUnmount() {
-    Events.off(this._container.current, 'touchstart', this.touchstart);
-    Events.off(document.documentElement, 'touchmove', this.touchmove);
-    Events.off(document.documentElement, 'touchend', this.touchEnd);
-    Events.off(document.documentElement, 'touchcancel', this.touchEnd);
-  }
-
-  getMaxMoveX = () => {
-    if (this.originWidth) {
-      return Math.max(0, (this.scale * this.originWidth - window.innerWidth) / 2);
-    }
-    return 0;
-  };
-
-  getMaxMoveY() {
-    if (this.originHeight) {
-      return Math.max(0, (this.scale * this.originHeight - window.innerHeight) / 2);
-    }
-    return 0;
-  }
-
-  touchstart = (event) => {
-    const { touches } = event;
-    this.startTouchX = touches[0].clientX;
-    this.startTouchY = touches[0].clientY;
-
-    this.startMoveX = this.moveX;
-    this.startMoveY = this.moveY;
-
-    this.moving = touches.length === 1 && this.scale !== 1;
-    this.zooming = touches.length === 2;
-
-    if (this.zooming) {
-      this.startScale = this.scale;
-      this.prevDistance = getDistance(touches[0], touches[1]);
-    }
-  };
-
-  updateTransform = (scale, x, y) => {
-    const moveX = scale > 1 ? x : 0;
-    const moveY = scale > 1 ? y : 0;
-
-    this._container.current.style.setProperty('--x', `${moveX}px`);
-    this._container.current.style.setProperty('--y', `${moveY}px`);
-    this._container.current.style.setProperty('--scale', scale);
-  };
-
-  touchmove = (event) => {
-    const { touches } = event;
-    this.deltaX = touches[0].clientX - this.startTouchX;
-    this.deltaY = touches[0].clientY - this.startTouchY;
-
-    if (this.moving) {
-      const moveX = this.deltaX + this.startMoveX;
-      const moveY = this.deltaY + this.startMoveY;
-
-      const maxMoveX = this.getMaxMoveX();
-      const maxMoveY = this.getMaxMoveY();
-      this.moveX = range(moveX, -maxMoveX, maxMoveX);
-      this.moveY = range(moveY, -maxMoveY, maxMoveY);
-    }
-
-    const { minScale, maxScale, onChange } = this.props;
-    if (this.zooming && touches.length === 2) {
-      const distance = getDistance(touches[0], touches[1]);
-      const scale = (this.startScale * distance) / this.prevDistance;
-      this.scale = range(minScale, scale, maxScale);
-    }
-
-    this.updateTransform(this.scale, this.moveX, this.moveY);
-
-    if (typeof onChange === 'function') {
-      onChange({
-        scale: this.scale,
-        x: this.moveX,
-        y: this.moveY,
-      });
-    }
-    if (this.moving || this.zooming) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-  };
-
-  touchEnd = (event) => {
-    let stopPropagation = false;
-    if (this.moving || this.zooming) {
-      stopPropagation = true;
-      if (this.moving && this.startMoveX === this.moveX && this.startMoveY === this.moveY) {
-        stopPropagation = false;
-      }
-
-      if (!event.touches.length) {
-        if (this.zooming) {
-          this.moveX = range(this.moveX, -this.getMaxMoveX(), this.getMaxMoveX());
-          this.moveY = range(this.moveY, -this.getMaxMoveY(), this.getMaxMoveY());
-          this.zooming = false;
-          this.updateTransform(this.scale, this.moveX, this.moveY);
-        }
-        this.moving = false;
-        this.startTouchX = 0;
-        this.startTouchY = 0;
-        this.startScale = 1;
-      }
-    }
-    if (stopPropagation) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-  };
-
-  onload = (event) => {
+  const onload = (event) => {
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
     const { naturalWidth, naturalHeight } = event.target;
@@ -191,26 +54,134 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
     const vertical = imageRatio > windowRatio;
 
     if (vertical) {
-      this.originWidth = windowHeight / imageRatio;
-      this.originHeight = windowHeight;
+      originWidth.current = windowHeight / imageRatio;
+      originHeight.current = windowHeight;
     } else {
-      this.originWidth = windowWidth;
-      this.originHeight = windowWidth * imageRatio;
+      originWidth.current = windowWidth;
+      originHeight.current = windowWidth * imageRatio;
     }
   };
 
-  render() {
-    const { children, className, prefixCls } = this.props;
-    const child = React.Children.map(children, (element: JSX.Element, index) => {
-      return React.cloneElement(element, {
-        key: +index,
-        onLoad: this.onload,
-      });
+  const updateTransform = (currentScale, x, y) => {
+    container?.current!.style.setProperty('--x', `${x}px`);
+    container.current!.style.setProperty('--y', `${y}px`);
+    container.current!.style.setProperty('--scale', currentScale);
+    if (typeof onPinchZoom === 'function') {
+      onPinchZoom(currentScale, x, y);
+    }
+  };
+
+  const getMaxMoveX = useCallback(() => {
+    if (originWidth.current) {
+      return Math.max(0, (scale.current * Number(originWidth.current) - window.innerWidth) / 2);
+    }
+    return 0;
+  }, [originWidth, scale]);
+
+  const getMaxMoveY = useCallback(() => {
+    if (originHeight.current) {
+      return Math.max(0, (scale.current * Number(originHeight.current) - window.innerHeight) / 2);
+    }
+    return 0;
+  }, [originHeight, scale]);
+
+  const touchstart = (event) => {
+    const { touches } = event;
+    startTouchX.current = touches[0].clientX;
+    startTouchY.current = touches[0].clientY;
+
+    startMoveX.current = moveX.current;
+    startMoveY.current = moveY.current;
+
+    moving.current = touches.length === 1 && scale.current !== 1;
+    zooming.current = touches.length === 2;
+
+    if (zooming.current) {
+      startScale.current = scale.current;
+      prevDistance.current = getDistance(touches[0], touches[1]);
+    }
+  };
+
+  const touchmove = (event) => {
+    const { touches } = event;
+
+    const deltaX = touches[0].clientX - startTouchX.current;
+    const deltaY = touches[0].clientY - startTouchY.current;
+
+    if (moving.current) {
+      const maxMoveX = getMaxMoveX();
+      const maxMoveY = getMaxMoveY();
+      moveX.current = range(deltaX + startMoveX.current, -maxMoveX, maxMoveX);
+      moveY.current = range(deltaY + startMoveY.current, -maxMoveY, maxMoveY);
+      if (scale.current !== 1) {
+        updateTransform(scale.current, moveX.current, moveY.current);
+      }
+    }
+
+    if (zooming.current && touches.length === 2) {
+      const distance = getDistance(touches[0], touches[1]);
+      const currentScale = (startScale.current * distance) / prevDistance.current;
+      scale.current = currentScale > maxScale! ? maxScale! : currentScale;
+      updateTransform(scale.current, 0, 0);
+    }
+  };
+
+  const touchEnd = (event) => {
+    let stopPropagation = false;
+    if (moving.current || zooming.current) {
+      stopPropagation = true;
+      if (moving && startMoveX.current === moveX.current && startMoveY.current === moveY.current) {
+        stopPropagation = false;
+      }
+
+      if (!event.touches.length) {
+        if (zooming.current) {
+          moveX.current = range(moveX.current, -getMaxMoveX(), getMaxMoveX());
+          moveY.current = range(moveY.current, -getMaxMoveY(), getMaxMoveY());
+          zooming.current = false;
+          // updateTransform(scale.current, moveX.current, moveY.current);
+        }
+        moving.current = false;
+        startTouchX.current = 0;
+        startTouchY.current = 0;
+        startScale.current = 1;
+        if (scale.current < 1) {
+          scale.current = 1;
+          updateTransform(scale.current, 0, 0);
+        }
+      }
+    }
+    if (stopPropagation) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  };
+
+  const cls = classnames(prefixCls, className);
+
+  const child = React.Children.map(children, (element: JSX.Element, index) => {
+    return React.cloneElement(element, {
+      key: +index,
+      onLoad: onload,
     });
-    return (
-      <div ref={this._container} className={`${className} ${prefixCls}`}>
-        {child}
-      </div>
-    );
-  }
-}
+  });
+  return (
+    <div
+      onTouchStart={touchstart}
+      onTouchCancel={touchEnd}
+      onTouchEnd={touchEnd}
+      onTouchMove={touchmove}
+      ref={mergerRefs([container, ref])}
+      className={cls}
+    >
+      {child}
+    </div>
+  );
+});
+
+PinchZoom.defaultProps = {
+  minScale: 1,
+  maxScale: 3,
+};
+
+export default PinchZoom;

@@ -127,6 +127,13 @@ describe('index', () => {
         "Icon": [Function],
         "ImagePreview": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "activeIndex": 0,
+            "maxScale": 3,
+            "minScale": 1,
+            "showPagination": true,
+            "visible": false,
+          },
           "render": [Function],
         },
         "Input": Object {
@@ -195,6 +202,14 @@ describe('index', () => {
           "render": [Function],
         },
         "PickerView": [Function],
+        "PinchZoom": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "maxScale": 3,
+            "minScale": 1,
+          },
+          "render": [Function],
+        },
         "Popper": [Function],
         "Popup": Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -304,6 +319,7 @@ describe('index', () => {
         "Wheel": [Function],
         "useDrag": [Function],
         "useLongPress": [Function],
+        "useOrientation": [Function],
         "useSafeLayoutEffect": [Function],
       }
     `);
