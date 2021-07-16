@@ -22,7 +22,16 @@ const TabBar = React.forwardRef<unknown, TabBarProps>((props, ref) => {
   );
   const prefixCls = `${globalPrefixCls}-tab-bar`;
 
-  const { visible, className, children, style, onChange, activeKey, defaultActiveKey } = props;
+  const {
+    visible,
+    className,
+    children,
+    style,
+    onChange,
+    activeKey,
+    defaultActiveKey,
+    ...restProps
+  } = props;
 
   const safeIphoneX = props.safeIphoneX || globalSafeIphoneX;
 
@@ -81,7 +90,7 @@ const TabBar = React.forwardRef<unknown, TabBarProps>((props, ref) => {
     },
   );
   return (
-    <div className={cls} style={style} ref={tabBarRef}>
+    <div className={cls} style={style} ref={tabBarRef} {...restProps}>
       {items}
     </div>
   );

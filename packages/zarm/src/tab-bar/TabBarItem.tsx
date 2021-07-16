@@ -6,15 +6,25 @@ import { ConfigContext } from '../n-config-provider';
 
 export interface TabBarItemProps
   extends BaseTabBarItemProps,
-    Omit<React.HTMLAttributes<HTMLElement>, 'onChange' | 'title'> {}
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'title'> {}
 
 const TabBarItem = React.forwardRef<unknown, TabBarItemProps>((props, ref) => {
-  const tabBaItemrRef = (ref as any) || React.createRef<HTMLElement>();
+  const tabBaItemrRef = (ref as any) || React.createRef<HTMLDivElement>();
 
   const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
   const prefixCls = `${globalPrefixCls}-tab-bar`;
 
-  const { title, icon, badge, style, selected, activeIcon = icon, onChange } = props;
+  const {
+    title,
+    icon,
+    badge,
+    style,
+    selected,
+    activeIcon = icon,
+    onChange,
+    itemKey,
+    ...restProps
+  } = props;
 
   const cls = classnames(`${prefixCls}__item`, {
     [`${prefixCls}--active`]: selected,
@@ -28,7 +38,7 @@ const TabBarItem = React.forwardRef<unknown, TabBarItemProps>((props, ref) => {
   );
 
   return (
-    <div className={cls} style={style} ref={tabBaItemrRef} onClick={onChange}>
+    <div className={cls} style={style} ref={tabBaItemrRef} onClick={onChange} {...restProps}>
       {badge ? <Badge {...badge}>{contentRender}</Badge> : contentRender}
     </div>
   );
