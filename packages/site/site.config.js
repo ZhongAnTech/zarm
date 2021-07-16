@@ -199,6 +199,12 @@ module.exports = {
         module: () => import('zarm/popper/demo.md'),
         style: true,
       },
+      {
+        key: 'pinch-zoom',
+        name: '缩放',
+        module: () => import('zarm/pinch-zoom/demo.md'),
+        style: false,
+      },
     ],
     view: [
       {
@@ -311,6 +317,12 @@ module.exports = {
         key: 'useSafeLayoutEffect',
         name: '安全布局副作用',
         module: () => import('zarm/useSafeLayoutEffect/demo.md'),
+        style: false,
+      },
+      {
+        key: 'useOrientation',
+        name: '屏幕方向',
+        module: () => import('zarm/useOrientation/demo.md'),
         style: false,
       },
     ],

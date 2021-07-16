@@ -1,19 +1,21 @@
 import type LOAD_STATUS from './utils/loadStatus';
+import type { Locale } from '../config-provider/PropsType';
 
 export interface ImageObject {
-  url: string;
-  originUrl: string;
+  src: string;
+  originSrc: string;
 }
 
 export type Images = Array<Partial<ImageObject> & { loaded?: LOAD_STATUS }>;
 
-export default interface PropsType {
+export interface BaseImagePreviewProps {
   images: ReadonlyArray<ImageObject | string>;
-  visible: boolean;
+  visible?: boolean;
   activeIndex?: number;
   showPagination?: boolean;
   maxScale?: number;
   minScale?: number;
-  onChange?: Function;
-  onClose?: Function;
+  locale?: Locale['ImagePreview'];
+  onChange?: (activeIndex: number) => void;
+  onClose?: () => void;
 }
