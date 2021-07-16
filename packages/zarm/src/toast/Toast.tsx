@@ -14,13 +14,13 @@ interface CompoundedComponent
   extends React.ForwardRefExoticComponent<ToastProps & React.RefAttributes<HTMLDivElement>> {
   useToast: () => UseToast;
 }
-const Toast = React.forwardRef<unknown, ToastProps>((props, ref) => {
+const Toast = React.forwardRef<HTMLDivElement, ToastProps>((props, ref) => {
   const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
   const prefixCls = `${globalPrefixCls}-toast`;
 
-  const toastRef = (ref as any) || React.createRef<HTMLDivElement>();
+  const toastRef = ref || React.createRef<HTMLDivElement>();
   const { className, stayTime, content, visible: propVisible, afterClose, ...others } = props;
-  const [visible, setVisible] = useState(propVisible!);
+  const [visible, setVisible] = useState(propVisible);
   const timerRef = useRef(0);
 
   const _hide = () => {
@@ -46,7 +46,7 @@ const Toast = React.forwardRef<unknown, ToastProps>((props, ref) => {
   }, [autoClose, visible]);
 
   useEffect(() => {
-    setVisible(propVisible!);
+    setVisible(propVisible);
   }, [propVisible]);
 
   return (
