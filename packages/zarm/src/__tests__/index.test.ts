@@ -13,18 +13,24 @@ describe('index', () => {
           "defaultProps": Object {
             "loading": true,
             "percent": 20,
-            "prefixCls": "za-activity-indicator",
             "strokeWidth": 5,
             "type": "circular",
           },
           "render": [Function],
         },
-        "Affix": [Function],
+        "Affix": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "offsetTop": 0,
+            "prefixCls": "za-affix",
+            "scrollContainer": [Window],
+          },
+          "render": [Function],
+        },
         "BackToTop": [Function],
         "Badge": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
-            "prefixCls": "za-badge",
             "shape": "dot",
             "theme": "danger",
           },
@@ -38,7 +44,6 @@ describe('index', () => {
             "ghost": false,
             "htmlType": "button",
             "loading": false,
-            "prefixCls": "za-button",
             "shadow": false,
             "shape": "radius",
             "size": "md",
@@ -47,13 +52,28 @@ describe('index', () => {
           "render": [Function],
         },
         "Calendar": [Function],
-        "Carousel": [Function],
+        "Carousel": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "activeIndex": 0,
+            "animationDuration": 500,
+            "autoPlay": false,
+            "autoPlayIntervalTime": 3000,
+            "direction": "left",
+            "height": 160,
+            "loop": false,
+            "moveDistanceRatio": 0.5,
+            "moveTimeSpan": 300,
+            "showPagination": true,
+            "swipeable": true,
+          },
+          "render": [Function],
+        },
         "Cell": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
             "disabled": false,
             "hasArrow": false,
-            "prefixCls": "za-cell",
           },
           "render": [Function],
         },
@@ -66,7 +86,6 @@ describe('index', () => {
               "compact": false,
               "disabled": false,
               "ghost": false,
-              "prefixCls": "za-checkbox-group",
               "shape": "radius",
               "size": "xs",
             },
@@ -75,20 +94,17 @@ describe('index', () => {
           "defaultProps": Object {
             "disabled": false,
             "indeterminate": false,
-            "prefixCls": "za-checkbox",
             "shape": "radius",
           },
           "render": [Function],
         },
         "Collapse": [Function],
         "ConfigProvider": [Function],
-        "ConfigReceiver": [Function],
         "CustomInput": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
             "autoFocus": false,
             "clearable": true,
-            "prefixCls": "za-custom-input",
             "readOnly": false,
             "type": "number",
           },
@@ -120,7 +136,6 @@ describe('index', () => {
             "autoHeight": false,
             "clearable": true,
             "disabled": false,
-            "prefixCls": "za-input",
             "readOnly": false,
             "showLength": false,
             "type": "text",
@@ -129,28 +144,25 @@ describe('index', () => {
         },
         "Keyboard": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "type": "number",
+          },
           "render": [Function],
         },
         "KeyboardPicker": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
             "destroy": true,
-            "prefixCls": "za-keyboard-picker",
             "type": "number",
             "visible": false,
           },
           "render": [Function],
         },
         "Loading": [Function],
-        "LocaleProvider": Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "render": [Function],
-        },
         "Marquee": [Function],
         "Mask": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
-            "prefixCls": "za-mask",
             "type": "normal",
             "visible": false,
           },
@@ -161,25 +173,21 @@ describe('index', () => {
           "defaultProps": Object {
             "closable": false,
             "hasArrow": false,
-            "prefixCls": "za-message",
             "theme": "primary",
           },
           "render": [Function],
         },
         "Modal": [Function],
+        "NConfigProvider": [Function],
         "NavBar": Object {
           "$$typeof": Symbol(react.forward_ref),
-          "defaultProps": Object {
-            "prefixCls": "za-nav-bar",
-          },
+          "defaultProps": Object {},
           "render": [Function],
         },
         "NoticeBar": [Function],
         "Panel": Object {
           "$$typeof": Symbol(react.forward_ref),
-          "defaultProps": Object {
-            "prefixCls": "za-panel",
-          },
+          "defaultProps": Object {},
           "render": [Function],
         },
         "Picker": Object {
@@ -196,7 +204,6 @@ describe('index', () => {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
             "percent": 0,
-            "prefixCls": "za-progress",
             "shape": "line",
             "size": "md",
             "strokeShape": "round",
@@ -218,7 +225,6 @@ describe('index', () => {
               "compact": false,
               "disabled": false,
               "ghost": false,
-              "prefixCls": "za-radio-group",
               "shape": "radius",
               "size": "xs",
             },
@@ -226,7 +232,6 @@ describe('index', () => {
           },
           "defaultProps": Object {
             "disabled": false,
-            "prefixCls": "za-radio",
             "shape": "radius",
           },
           "render": [Function],
@@ -250,7 +255,6 @@ describe('index', () => {
           "defaultProps": Object {
             "disableInput": false,
             "disabled": false,
-            "prefixCls": "za-stepper",
             "shape": "radius",
             "step": 1,
             "type": "number",
@@ -262,7 +266,6 @@ describe('index', () => {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
             "disabled": false,
-            "prefixCls": "za-switch",
           },
           "render": [Function],
         },
@@ -275,25 +278,33 @@ describe('index', () => {
           "$$typeof": Symbol(react.forward_ref),
           "Panel": Object {
             "$$typeof": Symbol(react.forward_ref),
-            "defaultProps": Object {
-              "prefixCls": "za-tabs",
-            },
+            "defaultProps": Object {},
             "render": [Function],
           },
           "defaultProps": Object {
             "direction": "horizontal",
             "disabled": false,
-            "prefixCls": "za-tabs",
             "scrollable": false,
             "swipeable": false,
           },
           "render": [Function],
         },
-        "Toast": [Function],
+        "Toast": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "mask": false,
+            "stayTime": 3000,
+            "visible": false,
+          },
+          "render": [Function],
+          "useToast": [Function],
+        },
         "Tooltip": [Function],
         "Trigger": [Function],
         "Wheel": [Function],
         "useDrag": [Function],
+        "useLongPress": [Function],
+        "useSafeLayoutEffect": [Function],
       }
     `);
   });

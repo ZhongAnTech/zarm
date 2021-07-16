@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import { Keyboard as KeyboardIcon, DeleteKey as DeleteKeyIcon } from '@zarm-design/icons';
 // import useLongPress from '../useLongPress';
 import type { BaseKeyBoardProps } from './interface';
+import { ConfigContext } from '../n-config-provider';
 
 type KeyType = Exclude<BaseKeyBoardProps['type'], undefined>;
 
@@ -15,14 +16,16 @@ const KEYS: { [type in KeyType]: readonly string[] } = {
 // let longPressTimer: number | null;
 
 export interface KeyboardProps extends BaseKeyBoardProps {
-  prefixCls?: string;
   className?: string;
 }
 
 const Keyboard = React.forwardRef<unknown, KeyboardProps>((props, ref) => {
-  const { prefixCls, className, type, onKeyClick, locale } = props;
+  const { className, type, onKeyClick } = props;
+  const keyboardRef = (ref as any) || React.createRef<HTMLDivElement>();
 
-  const keyboardRef = (ref as any) || React.createRef<HTMLElement>();
+  const { locale: globalLocal, prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const locale = globalLocal?.Keyboard;
+  const prefixCls = `${globalPrefixCls}-keyboard`;
 
   const cls = classnames(prefixCls, className);
   const getKeys = KEYS[type!];
@@ -87,7 +90,6 @@ const Keyboard = React.forwardRef<unknown, KeyboardProps>((props, ref) => {
 Keyboard.displayName = 'Keyboard';
 
 Keyboard.defaultProps = {
-  prefixCls: 'za-keyboard',
   type: 'number',
 };
 

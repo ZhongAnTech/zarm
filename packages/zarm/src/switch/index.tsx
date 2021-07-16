@@ -1,28 +1,20 @@
 import * as React from 'react';
 import classnames from 'classnames';
+import { ConfigContext } from '../n-config-provider';
 import type { BaseSwitchProps } from './interface';
 
-export interface SwitchProps
-  extends BaseSwitchProps,
-    Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
-  prefixCls?: string;
-}
+export type SwitchProps = BaseSwitchProps &
+  Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'>;
 
 const Switch = React.forwardRef<unknown, SwitchProps>((props, ref) => {
-  const {
-    prefixCls,
-    className,
-    style,
-    disabled,
-    checked,
-    defaultChecked,
-    onChange,
-    ...restProps
-  } = props;
+  const { className, style, disabled, checked, defaultChecked, onChange, ...restProps } = props;
 
-  const switchRef = (ref as any) || React.createRef<HTMLElement>();
+  const switchRef = (ref as any) || React.createRef<HTMLDivElement>();
   const getChecked = checked || defaultChecked || false;
   const [currentChecked, setCurrentChecked] = React.useState(getChecked);
+
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-switch`;
 
   const cls = classnames(prefixCls, className, {
     [`${prefixCls}--disabled`]: disabled,
@@ -45,10 +37,9 @@ const Switch = React.forwardRef<unknown, SwitchProps>((props, ref) => {
   }, [getChecked]);
 
   return (
-    <span className={cls} style={style}>
+    <span className={cls} style={style} ref={switchRef}>
       <input
         {...restProps}
-        ref={switchRef}
         role="switch"
         aria-checked={currentChecked}
         type="checkbox"
@@ -66,7 +57,6 @@ const Switch = React.forwardRef<unknown, SwitchProps>((props, ref) => {
 Switch.displayName = 'Switch';
 
 Switch.defaultProps = {
-  prefixCls: 'za-switch',
   disabled: false,
 };
 

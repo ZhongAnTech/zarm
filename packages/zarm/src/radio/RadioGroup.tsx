@@ -1,5 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
+import { ConfigContext } from '../n-config-provider';
 import type { BaseRadioGroupProps, RadioValue } from './interface';
 import type { Nullable } from '../utils/utilityTypes';
 
@@ -29,15 +30,14 @@ const getValue = (
   return defaultValue;
 };
 
-export interface RadioGroupProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'value' | 'onChange'>,
-    BaseRadioGroupProps {
-  prefixCls?: string;
-}
+export type RadioGroupProps = Omit<
+  React.HTMLAttributes<HTMLDivElement>,
+  'defaultValue' | 'value' | 'onChange'
+> &
+  BaseRadioGroupProps;
 
 const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
   const {
-    prefixCls,
     type,
     disabled,
     className,
@@ -53,10 +53,13 @@ const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
     ...rest
   } = props;
 
-  const radioGroupRef = (ref as any) || React.createRef<HTMLElement>();
+  const radioGroupRef = (ref as any) || React.createRef<HTMLDivElement>();
   const [currentValue, setCurrentValue] = React.useState(
     getValue({ value, defaultValue, children }),
   );
+
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-radio-group`;
 
   const onChildChange = (newValue: RadioValue) => {
     setCurrentValue(newValue);
@@ -103,7 +106,6 @@ const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
 RadioGroup.displayName = 'RadioGroup';
 
 RadioGroup.defaultProps = {
-  prefixCls: 'za-radio-group',
   shape: 'radius',
   block: false,
   disabled: false,

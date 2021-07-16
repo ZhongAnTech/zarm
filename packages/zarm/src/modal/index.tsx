@@ -67,6 +67,7 @@ function modalType(props, type) {
   function _afterClose() {
     if (mountNode) {
       mountNode.removeChild(container);
+      ReactDOM.unmountComponentAtNode(container);
     }
   }
 

@@ -58,7 +58,7 @@ export default function useClickAway(
       onClickAwayRef.current!(event);
     };
 
-    setTimeout(() => {
+    window.setTimeout(() => {
       Events.on(document, eventName, handler);
     }, 50);
 

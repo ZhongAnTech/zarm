@@ -245,7 +245,6 @@ exports[`StackPicker renders correctly 1`] = `
             direction="bottom"
             localeCode="zh-CN"
             onMaskClick={[Function]}
-            prefixCls="za-popup"
             safeIphoneX={false}
             visible={true}
           >
@@ -391,7 +390,6 @@ exports[`StackPicker renders correctly 1`] = `
                 >
                   <Mask
                     className="za-fade-enter"
-                    prefixCls="za-mask"
                     style={
                       Object {
                         "WebkitAnimationDuration": "200ms",

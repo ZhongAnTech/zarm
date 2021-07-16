@@ -26,5 +26,5 @@ export interface BaseCheckboxGroupProps {
   ghost?: boolean;
   value?: Array<CheckboxValue>;
   defaultValue?: Array<CheckboxValue>;
-  onChange?: (value?: Array<CheckboxValue>) => void;
+  onChange?: (value: Array<CheckboxValue>) => void;
 }

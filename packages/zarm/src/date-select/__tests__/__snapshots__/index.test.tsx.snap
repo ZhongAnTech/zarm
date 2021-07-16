@@ -112,7 +112,6 @@ exports[`DateSelect DateSelect date 1`] = `
                     destroy={true}
                     localeCode="zh-CN"
                     onMaskClick={[Function]}
-                    prefixCls="za-popup"
                     safeIphoneX={false}
                     visible={false}
                   />
@@ -251,7 +250,6 @@ exports[`DateSelect DateSelect datetime 1`] = `
                     destroy={true}
                     localeCode="zh-CN"
                     onMaskClick={[Function]}
-                    prefixCls="za-popup"
                     safeIphoneX={false}
                     visible={false}
                   />
@@ -445,7 +443,6 @@ exports[`DateSelect DateSelect disabled 1`] = `
                     destroy={true}
                     localeCode="zh-CN"
                     onMaskClick={[Function]}
-                    prefixCls="za-popup"
                     safeIphoneX={false}
                     visible={true}
                   >
@@ -1595,7 +1592,6 @@ exports[`DateSelect DateSelect disabled 1`] = `
                         >
                           <Mask
                             className="za-fade-enter"
-                            prefixCls="za-mask"
                             style={
                               Object {
                                 "WebkitAnimationDuration": "200ms",
@@ -4425,7 +4421,6 @@ exports[`DateSelect DateSelect time 1`] = `
                     destroy={true}
                     localeCode="zh-CN"
                     onMaskClick={[Function]}
-                    prefixCls="za-popup"
                     safeIphoneX={false}
                     visible={false}
                   />
@@ -4543,7 +4538,6 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                     destroy={true}
                     localeCode="zh-CN"
                     onMaskClick={[Function]}
-                    prefixCls="za-popup"
                     safeIphoneX={false}
                     visible={false}
                   />
@@ -4670,7 +4664,6 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                     destroy={true}
                     localeCode="zh-CN"
                     onMaskClick={[Function]}
-                    prefixCls="za-popup"
                     safeIphoneX={false}
                     visible={false}
                   />
@@ -4815,7 +4808,6 @@ exports[`DateSelect DateSelect year 1`] = `
                     destroy={true}
                     localeCode="zh-CN"
                     onMaskClick={[Function]}
-                    prefixCls="za-popup"
                     safeIphoneX={false}
                     visible={false}
                   />

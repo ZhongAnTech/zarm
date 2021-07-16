@@ -17,6 +17,7 @@
     var(--color-text-disabled),
     var(--button-disabled-opacity),
     var(--button-default-shadow-color),
+    var(--theme-primary),
   );
 
   @include m(link) {

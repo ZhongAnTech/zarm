@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
-import type PropsType from './PropsType';
+import type BaseToastProps from './PropsType';
 import Popup from '../popup';
 import { getMountContainer } from '../utils/dom';
 import ActivityIndicator from '../activity-indicator';
 
-export interface LoadingProps extends PropsType {
+export interface LoadingProps extends BaseToastProps {
   prefixCls?: string;
   className?: string;
 }
@@ -94,6 +94,7 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
   afterClose = () => {
     const { afterClose } = this.props;
     if (Loading.zarmLoading) {
+      ReactDOM.unmountComponentAtNode(Loading.zarmLoading);
       Loading.loadingContainer.removeChild(Loading.zarmLoading);
       Loading.zarmLoading = null;
     }

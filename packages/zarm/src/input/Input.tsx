@@ -1,8 +1,9 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import { CloseCircleFill } from '@zarm-design/icons';
-import type { BaseInputTextProps, BaseInputTextareaProps } from './interface';
 import { getValue } from './utils';
+import { ConfigContext } from '../n-config-provider';
+import type { BaseInputTextProps, BaseInputTextareaProps } from './interface';
 
 const regexAstralSymbols = /[\uD800-\uDBFF][\uDC00-\uDFFF]|\n/g;
 
@@ -16,11 +17,8 @@ export interface InputTextProps
   prefixCls?: string;
 }
 
-export interface InputTextareaProps
-  extends BaseInputTextareaProps,
-    React.TextareaHTMLAttributes<HTMLTextAreaElement> {
-  prefixCls?: string;
-}
+export type InputTextareaProps = BaseInputTextareaProps &
+  React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 export type InputProps = {
   type?: string;
@@ -28,7 +26,6 @@ export type InputProps = {
 
 const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
   const {
-    prefixCls,
     type,
     disabled,
     autoFocus,
@@ -48,7 +45,7 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
     ...restProps
   } = props as InputTextProps & InputTextareaProps;
 
-  const wrapperRef = (ref as any) || React.createRef<HTMLElement>();
+  const wrapperRef = (ref as any) || React.createRef<HTMLDivElement>();
   const inputRef = React.useRef<HTMLTextAreaElement | HTMLInputElement>();
 
   const [currentValue, setCurrentValue] = React.useState(getValue({ value, defaultValue }));
@@ -65,6 +62,9 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
     typeof value !== 'undefined' &&
     typeof onChange !== 'undefined' &&
     currentValue.length > 0;
+
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-input`;
 
   const cls = classnames(prefixCls, className, {
     [`${prefixCls}--textarea`]: isTextarea,
@@ -212,7 +212,6 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
 Input.displayName = 'Input';
 
 Input.defaultProps = {
-  prefixCls: 'za-input',
   type: 'text',
   disabled: false,
   autoFocus: false,

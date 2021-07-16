@@ -3,7 +3,6 @@
 exports[`KeyboardPicker snapshot renders correctly 1`] = `
 <KeyboardPicker
   destroy={true}
-  prefixCls="za-keyboard-picker"
   type="number"
   visible={false}
 >
@@ -22,7 +21,6 @@ exports[`KeyboardPicker snapshot renders correctly 1`] = `
         destroy={true}
         localeCode="zh-CN"
         mask={false}
-        prefixCls="za-popup"
         safeIphoneX={false}
         visible={false}
       />

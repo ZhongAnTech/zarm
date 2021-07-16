@@ -31,7 +31,6 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
         destroy={true}
         direction="center"
         localeCode="zh-CN"
-        prefixCls="za-popup"
         safeIphoneX={false}
         visible={true}
       >
@@ -143,7 +142,6 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
             >
               <Mask
                 className="za-fade-enter"
-                prefixCls="za-mask"
                 style={
                   Object {
                     "WebkitAnimationDuration": "200ms",
@@ -209,100 +207,93 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
                       moveDistanceRatio={0.5}
                       moveTimeSpan={300}
                       onChange={[Function]}
-                      prefixCls="za-carousel"
                       showPagination={false}
                       swipeable={true}
                     >
                       <div
                         className="za-carousel za-carousel--horizontal"
+                        onMouseDown={[Function]}
+                        onMouseMove={[Function]}
+                        onMouseUp={[Function]}
+                        onTouchEnd={[Function]}
+                        onTouchMove={[Function]}
+                        onTouchStart={[Function]}
                       >
-                        <Drag
-                          onDragEnd={[Function]}
-                          onDragMove={[Function]}
-                          onDragStart={[Function]}
+                        <div
+                          className="za-carousel__items"
+                          onTransitionEnd={[Function]}
+                          style={Object {}}
                         >
                           <div
-                            className="za-carousel__items"
-                            onMouseDown={[Function]}
-                            onMouseMove={[Function]}
-                            onMouseUp={[Function]}
-                            onTouchEnd={[Function]}
-                            onTouchMove={[Function]}
-                            onTouchStart={[Function]}
-                            onTransitionEnd={[Function]}
-                            style={Object {}}
+                            className="za-carousel__item za-image-preview__item"
+                            key=".$0"
                           >
-                            <div
-                              className="za-carousel__item za-image-preview__item"
-                              key=".$0"
+                            <PinchZoom
+                              className="za-image-preview__item__img"
+                              maxScale={3}
+                              minScale={1}
+                              prefixCls="za-pinch-zoom"
                             >
-                              <PinchZoom
-                                className="za-image-preview__item__img"
-                                maxScale={3}
-                                minScale={1}
-                                prefixCls="za-pinch-zoom"
+                              <div
+                                className="za-image-preview__item__img za-pinch-zoom"
                               >
-                                <div
-                                  className="za-image-preview__item__img za-pinch-zoom"
-                                >
-                                  <img
-                                    alt=""
-                                    draggable={false}
-                                    key="0/.0"
-                                    onLoad={[Function]}
-                                    src="https://static.zhongan.com/website/health/zarm/images/banners/1.png"
-                                  />
-                                </div>
-                              </PinchZoom>
-                            </div>
-                            <div
-                              className="za-carousel__item za-image-preview__item"
-                              key=".$1"
-                            >
-                              <PinchZoom
-                                className="za-image-preview__item__img"
-                                maxScale={3}
-                                minScale={1}
-                                prefixCls="za-pinch-zoom"
-                              >
-                                <div
-                                  className="za-image-preview__item__img za-pinch-zoom"
-                                >
-                                  <img
-                                    alt=""
-                                    draggable={false}
-                                    key="0/.0"
-                                    onLoad={[Function]}
-                                    src="https://static.zhongan.com/website/health/zarm/images/banners/2.png"
-                                  />
-                                </div>
-                              </PinchZoom>
-                            </div>
-                            <div
-                              className="za-carousel__item za-image-preview__item"
-                              key=".$2"
-                            >
-                              <PinchZoom
-                                className="za-image-preview__item__img"
-                                maxScale={3}
-                                minScale={1}
-                                prefixCls="za-pinch-zoom"
-                              >
-                                <div
-                                  className="za-image-preview__item__img za-pinch-zoom"
-                                >
-                                  <img
-                                    alt=""
-                                    draggable={false}
-                                    key="0/.0"
-                                    onLoad={[Function]}
-                                    src="https://static.zhongan.com/website/health/zarm/images/banners/3.png"
-                                  />
-                                </div>
-                              </PinchZoom>
-                            </div>
+                                <img
+                                  alt=""
+                                  draggable={false}
+                                  key="0/.0"
+                                  onLoad={[Function]}
+                                  src="https://static.zhongan.com/website/health/zarm/images/banners/1.png"
+                                />
+                              </div>
+                            </PinchZoom>
                           </div>
-                        </Drag>
+                          <div
+                            className="za-carousel__item za-image-preview__item"
+                            key=".$1"
+                          >
+                            <PinchZoom
+                              className="za-image-preview__item__img"
+                              maxScale={3}
+                              minScale={1}
+                              prefixCls="za-pinch-zoom"
+                            >
+                              <div
+                                className="za-image-preview__item__img za-pinch-zoom"
+                              >
+                                <img
+                                  alt=""
+                                  draggable={false}
+                                  key="0/.0"
+                                  onLoad={[Function]}
+                                  src="https://static.zhongan.com/website/health/zarm/images/banners/2.png"
+                                />
+                              </div>
+                            </PinchZoom>
+                          </div>
+                          <div
+                            className="za-carousel__item za-image-preview__item"
+                            key=".$2"
+                          >
+                            <PinchZoom
+                              className="za-image-preview__item__img"
+                              maxScale={3}
+                              minScale={1}
+                              prefixCls="za-pinch-zoom"
+                            >
+                              <div
+                                className="za-image-preview__item__img za-pinch-zoom"
+                              >
+                                <img
+                                  alt=""
+                                  draggable={false}
+                                  key="0/.0"
+                                  onLoad={[Function]}
+                                  src="https://static.zhongan.com/website/health/zarm/images/banners/3.png"
+                                />
+                              </div>
+                            </PinchZoom>
+                          </div>
+                        </div>
                       </div>
                     </Carousel>
                   </div>
@@ -368,7 +359,6 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
         destroy={true}
         direction="center"
         localeCode="zh-CN"
-        prefixCls="za-popup"
         safeIphoneX={false}
         visible={true}
       >
@@ -483,7 +473,6 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
             >
               <Mask
                 className="za-fade-enter"
-                prefixCls="za-mask"
                 style={
                   Object {
                     "WebkitAnimationDuration": "200ms",
@@ -549,100 +538,93 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
                       moveDistanceRatio={0.5}
                       moveTimeSpan={300}
                       onChange={[Function]}
-                      prefixCls="za-carousel"
                       showPagination={false}
                       swipeable={true}
                     >
                       <div
                         className="za-carousel za-carousel--horizontal"
+                        onMouseDown={[Function]}
+                        onMouseMove={[Function]}
+                        onMouseUp={[Function]}
+                        onTouchEnd={[Function]}
+                        onTouchMove={[Function]}
+                        onTouchStart={[Function]}
                       >
-                        <Drag
-                          onDragEnd={[Function]}
-                          onDragMove={[Function]}
-                          onDragStart={[Function]}
+                        <div
+                          className="za-carousel__items"
+                          onTransitionEnd={[Function]}
+                          style={Object {}}
                         >
                           <div
-                            className="za-carousel__items"
-                            onMouseDown={[Function]}
-                            onMouseMove={[Function]}
-                            onMouseUp={[Function]}
-                            onTouchEnd={[Function]}
-                            onTouchMove={[Function]}
-                            onTouchStart={[Function]}
-                            onTransitionEnd={[Function]}
-                            style={Object {}}
+                            className="za-carousel__item za-image-preview__item"
+                            key=".$0"
                           >
-                            <div
-                              className="za-carousel__item za-image-preview__item"
-                              key=".$0"
+                            <PinchZoom
+                              className="za-image-preview__item__img"
+                              maxScale={3}
+                              minScale={1}
+                              prefixCls="za-pinch-zoom"
                             >
-                              <PinchZoom
-                                className="za-image-preview__item__img"
-                                maxScale={3}
-                                minScale={1}
-                                prefixCls="za-pinch-zoom"
+                              <div
+                                className="za-image-preview__item__img za-pinch-zoom"
                               >
-                                <div
-                                  className="za-image-preview__item__img za-pinch-zoom"
-                                >
-                                  <img
-                                    alt=""
-                                    draggable={false}
-                                    key="0/.0"
-                                    onLoad={[Function]}
-                                    src="https://cdn-health.zhongan.com/zarm/imagePreview/compress_1.png"
-                                  />
-                                </div>
-                              </PinchZoom>
-                            </div>
-                            <div
-                              className="za-carousel__item za-image-preview__item"
-                              key=".$1"
-                            >
-                              <PinchZoom
-                                className="za-image-preview__item__img"
-                                maxScale={3}
-                                minScale={1}
-                                prefixCls="za-pinch-zoom"
-                              >
-                                <div
-                                  className="za-image-preview__item__img za-pinch-zoom"
-                                >
-                                  <img
-                                    alt=""
-                                    draggable={false}
-                                    key="0/.0"
-                                    onLoad={[Function]}
-                                    src="https://cdn-health.zhongan.com/zarm/imagePreview/compress_2.png"
-                                  />
-                                </div>
-                              </PinchZoom>
-                            </div>
-                            <div
-                              className="za-carousel__item za-image-preview__item"
-                              key=".$2"
-                            >
-                              <PinchZoom
-                                className="za-image-preview__item__img"
-                                maxScale={3}
-                                minScale={1}
-                                prefixCls="za-pinch-zoom"
-                              >
-                                <div
-                                  className="za-image-preview__item__img za-pinch-zoom"
-                                >
-                                  <img
-                                    alt=""
-                                    draggable={false}
-                                    key="0/.0"
-                                    onLoad={[Function]}
-                                    src="https://cdn-health.zhongan.com/zarm/imagePreview/compress_3.png"
-                                  />
-                                </div>
-                              </PinchZoom>
-                            </div>
+                                <img
+                                  alt=""
+                                  draggable={false}
+                                  key="0/.0"
+                                  onLoad={[Function]}
+                                  src="https://cdn-health.zhongan.com/zarm/imagePreview/compress_1.png"
+                                />
+                              </div>
+                            </PinchZoom>
                           </div>
-                        </Drag>
+                          <div
+                            className="za-carousel__item za-image-preview__item"
+                            key=".$1"
+                          >
+                            <PinchZoom
+                              className="za-image-preview__item__img"
+                              maxScale={3}
+                              minScale={1}
+                              prefixCls="za-pinch-zoom"
+                            >
+                              <div
+                                className="za-image-preview__item__img za-pinch-zoom"
+                              >
+                                <img
+                                  alt=""
+                                  draggable={false}
+                                  key="0/.0"
+                                  onLoad={[Function]}
+                                  src="https://cdn-health.zhongan.com/zarm/imagePreview/compress_2.png"
+                                />
+                              </div>
+                            </PinchZoom>
+                          </div>
+                          <div
+                            className="za-carousel__item za-image-preview__item"
+                            key=".$2"
+                          >
+                            <PinchZoom
+                              className="za-image-preview__item__img"
+                              maxScale={3}
+                              minScale={1}
+                              prefixCls="za-pinch-zoom"
+                            >
+                              <div
+                                className="za-image-preview__item__img za-pinch-zoom"
+                              >
+                                <img
+                                  alt=""
+                                  draggable={false}
+                                  key="0/.0"
+                                  onLoad={[Function]}
+                                  src="https://cdn-health.zhongan.com/zarm/imagePreview/compress_3.png"
+                                />
+                              </div>
+                            </PinchZoom>
+                          </div>
+                        </div>
                       </div>
                     </Carousel>
                   </div>

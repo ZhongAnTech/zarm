@@ -3,7 +3,6 @@
 exports[`Progress circle shape progress renders percent correctly 1`] = `
 <Progress
   percent={50}
-  prefixCls="za-progress"
   shape="circle"
   size="md"
   strokeShape="round"
@@ -126,7 +125,6 @@ exports[`Progress circle shape progress renders shape is semi-circle correctly 1
 exports[`Progress line shape progress renders size is lg correctly 1`] = `
 <Progress
   percent={10}
-  prefixCls="za-progress"
   shape="line"
   size="lg"
   strokeShape="round"
@@ -173,7 +171,6 @@ exports[`Progress line shape progress renders size is lg correctly 1`] = `
 exports[`Progress line shape progress renders size is md correctly 1`] = `
 <Progress
   percent={10}
-  prefixCls="za-progress"
   shape="line"
   size="md"
   strokeShape="round"
@@ -220,7 +217,6 @@ exports[`Progress line shape progress renders size is md correctly 1`] = `
 exports[`Progress line shape progress renders size is sm correctly 1`] = `
 <Progress
   percent={10}
-  prefixCls="za-progress"
   shape="line"
   size="sm"
   strokeShape="round"

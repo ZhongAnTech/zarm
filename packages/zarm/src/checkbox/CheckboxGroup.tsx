@@ -1,5 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
+import { ConfigContext } from '../n-config-provider';
 import type { BaseCheckboxGroupProps, CheckboxValue } from './interface';
 
 const getChildChecked = (children: React.ReactNode): Array<CheckboxValue> => {
@@ -27,15 +28,14 @@ const getValue = (props: CheckboxGroupProps, defaultValue: Array<CheckboxValue> 
   return defaultValue;
 };
 
-export interface CheckboxGroupProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'value' | 'onChange'>,
-    BaseCheckboxGroupProps {
-  prefixCls?: string;
-}
+export type CheckboxGroupProps = Omit<
+  React.HTMLAttributes<HTMLDivElement>,
+  'defaultValue' | 'value' | 'onChange'
+> &
+  BaseCheckboxGroupProps;
 
 const CheckboxGroup = React.forwardRef<unknown, CheckboxGroupProps>((props, ref) => {
   const {
-    prefixCls,
     className,
     size,
     shape,
@@ -55,6 +55,9 @@ const CheckboxGroup = React.forwardRef<unknown, CheckboxGroupProps>((props, ref)
   const [currentValue, setCurrentValue] = React.useState(
     getValue({ value, defaultValue, children }, []),
   );
+
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-checkbox-group`;
 
   const onChildChange = (newValue: string | number) => {
     const values = currentValue!.slice();
@@ -108,7 +111,6 @@ const CheckboxGroup = React.forwardRef<unknown, CheckboxGroupProps>((props, ref)
 CheckboxGroup.displayName = 'CheckboxGroup';
 
 CheckboxGroup.defaultProps = {
-  prefixCls: 'za-checkbox-group',
   shape: 'radius',
   block: false,
   disabled: false,

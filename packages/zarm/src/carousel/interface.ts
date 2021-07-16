@@ -1,6 +1,6 @@
-import { ReactNode, CSSProperties } from 'react';
+import { ReactNode } from 'react';
 
-export default interface PropsType {
+export default interface BaseCarouselProps {
   direction?: 'left' | 'right' | 'up' | 'down';
   height?: string | number;
   loop?: boolean;
@@ -12,8 +12,7 @@ export default interface PropsType {
   moveDistanceRatio?: number;
   moveTimeSpan?: number;
   showPagination?: boolean;
-  onChange?: (activeIndex?: number) => void;
-  onChangeEnd?: (activeIndex?: number) => void;
-  style?: CSSProperties;
+  onChange?: (activeIndex: number) => void;
+  onChangeEnd?: (activeIndex: number) => void;
   children?: ReactNode[];
 }

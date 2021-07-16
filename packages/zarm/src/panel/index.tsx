@@ -1,19 +1,23 @@
 import React, { HTMLAttributes } from 'react';
 import classnames from 'classnames';
+import { ConfigContext } from '../n-config-provider';
 import type { BasePanelProps } from './interface';
 
 type HTMLDivProps = Omit<HTMLAttributes<HTMLDivElement>, 'title'>;
 
-export interface PanelProps extends HTMLDivProps, BasePanelProps {
-  prefixCls?: string;
-}
+export type PanelProps = HTMLDivProps & BasePanelProps;
 
 const Panel = React.forwardRef<unknown, PanelProps>((props, ref) => {
-  const { prefixCls, className, title, more, children, ...restProps } = props;
-  const cls = classnames(`${prefixCls}`, className);
-  const panelRef = (ref as any) || React.createRef<HTMLElement>();
+  const { className, title, more, children, ...restProps } = props;
+
+  const panelRef = (ref as any) || React.createRef<HTMLDivElement>();
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-panel`;
+
+  const cls = classnames(prefixCls, className);
+
   return (
-    <div {...restProps} className={cls} ref={panelRef}>
+    <div className={cls} ref={panelRef} {...restProps}>
       <div className={`${prefixCls}__header`}>
         {title && <div className={`${prefixCls}__header__title`}>{title}</div>}
         {more && <div className={`${prefixCls}__header__more`}>{more}</div>}
@@ -25,8 +29,6 @@ const Panel = React.forwardRef<unknown, PanelProps>((props, ref) => {
 
 Panel.displayName = 'Panel';
 
-Panel.defaultProps = {
-  prefixCls: 'za-panel',
-};
+Panel.defaultProps = {};
 
 export default Panel;

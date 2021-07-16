@@ -1,7 +1,7 @@
-import type { Locale } from '../config-provider/PropsType';
+import type { Locale } from '../n-config-provider/interface';
 
 export interface BaseKeyBoardProps {
   type?: 'number' | 'price' | 'idcard';
-  onKeyClick?: (key?: string) => void;
+  onKeyClick?: (key: string) => void;
   locale?: Locale['Keyboard'];
 }
