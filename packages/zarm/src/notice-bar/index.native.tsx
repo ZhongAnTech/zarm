@@ -1,10 +1,10 @@
 import React, { PureComponent, CSSProperties } from 'react';
 import { Text, StyleSheet, UIManager, ScrollView, findNodeHandle } from 'react-native';
-import PropsType from './PropsType';
+import BaseNoticeBarProps from './interface';
 import noticeBarStyle from './style/index.native';
 import Message from '../message/index.native';
 
-export interface NoticeBarProps extends PropsType {
+export interface NoticeBarProps extends BaseNoticeBarProps {
   style?: CSSProperties;
   styles?: typeof noticeBarStyle;
 }
