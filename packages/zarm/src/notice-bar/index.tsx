@@ -1,60 +1,37 @@
-import React, { PureComponent } from 'react';
+import React, { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
 import { Volume as VolumeIcon } from '@zarm-design/icons';
-import type PropsType from './PropsType';
+import type BaseNoticeBarProps from './interface';
 import Message from '../message';
 import { addKeyframe, removeKeyframe, existKeyframe } from '../utils/keyframes';
+import { ConfigContext } from '../n-config-provider';
 
-const NOTICEBAR_KEYFRAME_NAME = 'za-notice-bar-scrolling';
-
-export interface NoticeBarProps extends PropsType {
-  prefixCls?: string;
+export interface NoticeBarProps extends BaseNoticeBarProps, React.HTMLAttributes<HTMLElement> {
   className?: string;
 }
 
-export interface NoticeBarState {
-  animationDuration?: number;
-}
+const NoticeBar = forwardRef<unknown, NoticeBarProps>((props, ref) => {
+  const { children, speed, delay, ...others } = props;
 
-export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarState> {
-  static displayName = 'NoticeBar';
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-notice-bar`;
+  const NOTICEBAR_KEYFRAME_NAME = `${globalPrefixCls}-notice-bar-scrolling`;
 
-  static defaultProps: NoticeBarProps = {
-    prefixCls: 'za-notice-bar',
-    theme: 'warning',
-    icon: <VolumeIcon />,
-    hasArrow: false,
-    closable: false,
-    speed: 50,
-    delay: 2000,
-  };
+  const [animationDuration, setAnimationDuration] = useState(0);
 
-  private wrapper: HTMLDivElement | null = null;
+  const noticeBarRef = (ref as any) || React.createRef<HTMLDivElement>();
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
-  private content: HTMLDivElement | null = null;
-
-  state: NoticeBarState = {
-    animationDuration: 0,
-  };
-
-  componentDidMount() {
-    this.updateScrolling();
-  }
-
-  componentDidUpdate() {
-    this.updateScrolling();
-  }
-
-  updateScrolling() {
-    const { speed, delay } = this.props;
-    const wrapWidth = this.wrapper!.getBoundingClientRect().width;
-    const offsetWidth = this.content!.getBoundingClientRect().width;
+  const updateScrolling = useCallback(() => {
+    const wrapWidth = wrapperRef.current!.getBoundingClientRect().width;
+    const offsetWidth = contentRef.current!.getBoundingClientRect().width;
 
     if (offsetWidth > wrapWidth) {
       // 完整的执行时间 = 前后停留时间 + 移动时间
-      const animationDuration = Math.round(delay! * 2 + (offsetWidth / speed!) * 1000);
+      const newAnimationDuration = Math.round(delay! * 2 + (offsetWidth / speed!) * 1000);
 
       // 计算停留时间占总时间的百分比
-      const delayPercent = Math.round((delay! * 100) / animationDuration);
+      const delayPercent = Math.round((delay! * 100) / newAnimationDuration);
 
       // 删除之前的 keyframe 定义
       if (existKeyframe(NOTICEBAR_KEYFRAME_NAME)) {
@@ -76,41 +53,44 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
         }
       `,
       );
-
-      this.setState({ animationDuration });
+      setAnimationDuration(newAnimationDuration);
     }
-  }
+  }, [NOTICEBAR_KEYFRAME_NAME, delay, speed]);
 
-  render() {
-    const { prefixCls, children, ...others } = this.props;
-    const { animationDuration } = this.state;
+  useEffect(() => {
+    updateScrolling();
+  }, [updateScrolling]);
 
-    return (
-      <Message {...others} size="lg">
+  return (
+    <Message {...others} size="lg" ref={noticeBarRef}>
+      <div className={prefixCls} ref={wrapperRef}>
         <div
-          className={prefixCls}
-          ref={(ele) => {
-            this.wrapper = ele;
-          }}
+          className={`${prefixCls}__body`}
+          ref={contentRef}
+          style={
+            animationDuration > 0
+              ? {
+                  WebkitAnimation: `${NOTICEBAR_KEYFRAME_NAME} ${animationDuration}ms linear infinite`,
+                  animation: `${NOTICEBAR_KEYFRAME_NAME} ${animationDuration}ms linear infinite`,
+                }
+              : undefined
+          }
         >
-          <div
-            className={`${prefixCls}__body`}
-            ref={(ele) => {
-              this.content = ele;
-            }}
-            style={
-              animationDuration! > 0
-                ? {
-                    WebkitAnimation: `${NOTICEBAR_KEYFRAME_NAME} ${animationDuration}ms linear infinite`,
-                    animation: `${NOTICEBAR_KEYFRAME_NAME} ${animationDuration}ms linear infinite`,
-                  }
-                : undefined
-            }
-          >
-            {children}
-          </div>
+          {children}
         </div>
-      </Message>
-    );
-  }
-}
+      </div>
+    </Message>
+  );
+});
+
+NoticeBar.displayName = 'NoticeBar';
+
+NoticeBar.defaultProps = {
+  theme: 'warning',
+  icon: <VolumeIcon />,
+  hasArrow: false,
+  closable: false,
+  speed: 50,
+  delay: 2000,
+};
+export default NoticeBar;

@@ -184,7 +184,18 @@ describe('index', () => {
           "defaultProps": Object {},
           "render": [Function],
         },
-        "NoticeBar": [Function],
+        "NoticeBar": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "closable": false,
+            "delay": 2000,
+            "hasArrow": false,
+            "icon": <ForwardRef(SvgVolume) />,
+            "speed": 50,
+            "theme": "warning",
+          },
+          "render": [Function],
+        },
         "Panel": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {},
