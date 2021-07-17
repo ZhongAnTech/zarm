@@ -18,7 +18,6 @@ const TabBarItem = React.forwardRef<unknown, TabBarItemProps>((props, ref) => {
     title,
     icon,
     badge,
-    style,
     selected,
     activeIcon = icon,
     onChange,
@@ -38,7 +37,7 @@ const TabBarItem = React.forwardRef<unknown, TabBarItemProps>((props, ref) => {
   );
 
   return (
-    <div className={cls} style={style} ref={tabBaItemrRef} onClick={onChange} {...restProps}>
+    <div className={cls} ref={tabBaItemrRef} onClick={onChange} {...restProps}>
       {badge ? <Badge {...badge}>{contentRender}</Badge> : contentRender}
     </div>
   );

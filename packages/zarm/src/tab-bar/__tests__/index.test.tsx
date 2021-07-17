@@ -1,9 +1,10 @@
 import React from 'react';
 import { render, mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import TabBar from '../TabBar';
-import TabBarItem from '../TabBarItem';
+import TabBar from '../index';
 import Badge from '../../badge';
+
+const TabBarItem = TabBar.Item;
 
 const activeIcon = (
   <div

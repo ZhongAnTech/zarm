@@ -26,7 +26,6 @@ const TabBar = React.forwardRef<unknown, TabBarProps>((props, ref) => {
     visible,
     className,
     children,
-    style,
     onChange,
     activeKey,
     defaultActiveKey,
@@ -90,7 +89,7 @@ const TabBar = React.forwardRef<unknown, TabBarProps>((props, ref) => {
     },
   );
   return (
-    <div className={cls} style={style} ref={tabBarRef} {...restProps}>
+    <div className={cls} ref={tabBarRef} {...restProps}>
       {items}
     </div>
   );
