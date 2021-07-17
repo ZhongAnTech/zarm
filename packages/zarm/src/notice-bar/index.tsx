@@ -5,12 +5,10 @@ import Message from '../message';
 import { addKeyframe, removeKeyframe, existKeyframe } from '../utils/keyframes';
 import { ConfigContext } from '../n-config-provider';
 
-export interface NoticeBarProps extends BaseNoticeBarProps, React.HTMLAttributes<HTMLElement> {
-  className?: string;
-}
+export type NoticeBarProps = BaseNoticeBarProps & React.HTMLAttributes<HTMLDivElement>;
 
 const NoticeBar = forwardRef<unknown, NoticeBarProps>((props, ref) => {
-  const { children, speed, delay, ...others } = props;
+  const { children, speed, delay, ...restProps } = props;
 
   const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
   const prefixCls = `${globalPrefixCls}-notice-bar`;
@@ -62,24 +60,26 @@ const NoticeBar = forwardRef<unknown, NoticeBarProps>((props, ref) => {
   }, [updateScrolling]);
 
   return (
-    <Message {...others} size="lg" ref={noticeBarRef}>
-      <div className={prefixCls} ref={wrapperRef}>
-        <div
-          className={`${prefixCls}__body`}
-          ref={contentRef}
-          style={
-            animationDuration > 0
-              ? {
-                  WebkitAnimation: `${NOTICEBAR_KEYFRAME_NAME} ${animationDuration}ms linear infinite`,
-                  animation: `${NOTICEBAR_KEYFRAME_NAME} ${animationDuration}ms linear infinite`,
-                }
-              : undefined
-          }
-        >
-          {children}
+    <div className={prefixCls} ref={wrapperRef}>
+      <Message {...restProps} size="lg" ref={noticeBarRef}>
+        <div className={`${prefixCls}__body`}>
+          <div
+            className={`${prefixCls}__content`}
+            ref={contentRef}
+            style={
+              animationDuration > 0
+                ? {
+                    WebkitAnimation: `${NOTICEBAR_KEYFRAME_NAME} ${animationDuration}ms linear infinite`,
+                    animation: `${NOTICEBAR_KEYFRAME_NAME} ${animationDuration}ms linear infinite`,
+                  }
+                : undefined
+            }
+          >
+            {children}
+          </div>
         </div>
-      </div>
-    </Message>
+      </Message>
+    </div>
   );
 });
 
