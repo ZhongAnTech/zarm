@@ -1,31 +1,30 @@
-import React, { forwardRef, createRef, useEffect, useRef } from 'react';
+import React, { createRef, useEffect, useRef } from 'react';
 import classnames from 'classnames';
 import BScroll, { BScrollInstance } from 'better-scroll';
+import isEqual from 'lodash/isEqual';
 import { isArray } from '../utils/validate';
 import usePrevious from '../usePrevious';
 import useEventCallback from '../useEventCallback';
 import type { BaseWheelProps, WheelItem, WheelValue } from './interface';
 
-const getValue = (props: Omit<WheelProps, 'itemRender'>, defaultValue?: any) => {
-  if ('value' in props) {
-    return props.value;
-  }
+const getValue = (props: Omit<WheelProps, 'itemRender'>) => {
   if ('defaultValue' in props) {
     return props.defaultValue;
+  }
+  if ('value' in props) {
+    return props.value;
   }
   if (isArray(props.dataSource) && props.dataSource[0] && props.valueMember) {
     return props.dataSource[0][props.valueMember];
   }
-  return defaultValue;
 };
 
-export interface WheelProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'value' | 'onChange'>,
-    BaseWheelProps {
+export interface WheelProps extends BaseWheelProps {
   prefixCls?: string;
+  className?: string;
 }
 
-const Wheel = forwardRef<unknown, WheelProps>((props, ref) => {
+const Wheel = (props: WheelProps) => {
   const {
     prefixCls,
     className,
@@ -40,7 +39,7 @@ const Wheel = forwardRef<unknown, WheelProps>((props, ref) => {
   } = props;
 
   const scrollInstance = useRef<BScrollInstance | null>(null);
-  const wheelWrapperRef = (ref as any) || createRef<HTMLElement>();
+  const wheelWrapperRef = createRef<HTMLDivElement>();
   const currentValue = getValue({ value, defaultValue, dataSource, valueMember });
   const prevValue = usePrevious(value);
   const prevDataSource = usePrevious(dataSource);
@@ -61,7 +60,10 @@ const Wheel = forwardRef<unknown, WheelProps>((props, ref) => {
   };
 
   const fireValueChange = (newValue: any) => {
-    if (newValue === currentValue) {
+    const _currentValue = getValue({ value, defaultValue, dataSource, valueMember });
+    console.log('[63] src/wheel/Wheel.tsx newValue ', newValue);
+    console.log('[64] src/wheel/Wheel.tsx _currentValue ', _currentValue);
+    if (newValue === _currentValue) {
       return;
     }
     if (typeof onChange === 'function') {
@@ -79,7 +81,7 @@ const Wheel = forwardRef<unknown, WheelProps>((props, ref) => {
 
   useEffect(() => {
     const initIndex = getSelectedIndex(currentValue, dataSource);
-    if (!scrollInstance.current) {
+    if (wheelWrapperRef.current && !scrollInstance.current) {
       scrollInstance.current = new BScroll(wheelWrapperRef.current, {
         wheel: {
           selectedIndex: initIndex,
@@ -90,7 +92,6 @@ const Wheel = forwardRef<unknown, WheelProps>((props, ref) => {
       });
     }
 
-    disabled && scrollInstance.current?.disable();
     scrollInstance.current?.on('scrollEnd', () => {
       handleScrollEnd();
     });
@@ -101,12 +102,16 @@ const Wheel = forwardRef<unknown, WheelProps>((props, ref) => {
   }, []);
 
   useEffect(() => {
-    scrollInstance.current?.refresh();
+    disabled && scrollInstance.current?.disable();
+  }, [disabled]);
+
+  useEffect(() => {
+    if (!isEqual(prevDataSource, dataSource)) {
+      scrollInstance.current?.refresh();
+    }
   }, [dataSource]);
 
   useEffect(() => {
-    disabled && scrollInstance.current?.disable();
-
     const oldIndex = getSelectedIndex(prevValue, prevDataSource);
     const newIndex = getSelectedIndex(value, dataSource);
     if (newIndex !== oldIndex) {
@@ -116,7 +121,7 @@ const Wheel = forwardRef<unknown, WheelProps>((props, ref) => {
     if (stopScroll && prevStopScroll !== stopScroll) {
       scrollInstance.current?.stop();
     }
-  }, [value, defaultValue, dataSource, disabled, stopScroll, valueMember]);
+  }, [value, defaultValue, dataSource, stopScroll, valueMember]);
 
   const rollerCls = classnames(prefixCls, className);
   const items = dataSource!.map((item, index) => {
@@ -137,7 +142,7 @@ const Wheel = forwardRef<unknown, WheelProps>((props, ref) => {
       <div className={`${prefixCls}__content`}>{items}</div>
     </div>
   );
-});
+};
 
 Wheel.displayName = 'Wheel';
 Wheel.defaultProps = {
