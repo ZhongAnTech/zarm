@@ -40,7 +40,7 @@ const Wheel = (props: WheelProps) => {
 
   const scrollInstance = useRef<BScrollInstance | null>(null);
   const wheelWrapperRef = createRef<HTMLDivElement>();
-  const currentValue = getValue({ value, defaultValue, dataSource, valueMember });
+  const currentValue = getValue(props);
   const prevValue = usePrevious(value);
   const prevDataSource = usePrevious(dataSource);
   const prevStopScroll = usePrevious(stopScroll);
@@ -60,10 +60,7 @@ const Wheel = (props: WheelProps) => {
   };
 
   const fireValueChange = (newValue: any) => {
-    const _currentValue = getValue({ value, defaultValue, dataSource, valueMember });
-    console.log('[63] src/wheel/Wheel.tsx newValue ', newValue);
-    console.log('[64] src/wheel/Wheel.tsx _currentValue ', _currentValue);
-    if (newValue === _currentValue) {
+    if (newValue === currentValue) {
       return;
     }
     if (typeof onChange === 'function') {
