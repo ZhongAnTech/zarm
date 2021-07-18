@@ -22,7 +22,6 @@ describe('index', () => {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
             "offsetTop": 0,
-            "prefixCls": "za-affix",
             "scrollContainer": [Window],
           },
           "render": [Function],
