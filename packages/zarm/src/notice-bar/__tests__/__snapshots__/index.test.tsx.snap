@@ -37,7 +37,7 @@ exports[`NoticeBar should be closable(remove from the document when user click t
     class="za-notice-bar"
   >
     <div
-      class="za-message za-message--warning za-message--lg"
+      class="za-message za-message--warning"
       data-testid="root"
     >
       <div
@@ -143,7 +143,7 @@ exports[`NoticeBar should render default notice bar 1`] = `
     class="za-notice-bar"
   >
     <div
-      class="za-message za-message--warning za-message--lg"
+      class="za-message za-message--warning"
     >
       <div
         class="za-message__header"
@@ -195,7 +195,7 @@ exports[`NoticeBar should render default notice bar 2`] = `
     class="za-notice-bar"
   >
     <div
-      class="za-message za-message--warning za-message--lg"
+      class="za-message za-message--warning"
     >
       <div
         class="za-message__header"
@@ -246,7 +246,7 @@ exports[`NoticeBar should render notice bar with custom theme 1`] = `
     class="za-notice-bar"
   >
     <div
-      class="za-message za-message--danger za-message--lg"
+      class="za-message za-message--danger"
     >
       <div
         class="za-message__header"
@@ -298,7 +298,7 @@ exports[`NoticeBar should respond to user click events when notice bar has arrow
     class="za-notice-bar"
   >
     <div
-      class="za-message za-message--warning za-message--lg za-message--link"
+      class="za-message za-message--warning za-message--link"
       data-testid="root"
     >
       <div

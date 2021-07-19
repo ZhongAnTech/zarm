@@ -76,9 +76,7 @@ describe('NoticeBar', () => {
       if (messageElement.parentElement) {
         expect(messageElement.parentElement.className).toEqual('zarm-notice-bar');
       }
-      expect(messageElement.className).toEqual(
-        'zarm-message zarm-message--warning zarm-message--lg',
-      );
+      expect(messageElement.className).toEqual('zarm-message zarm-message--warning');
     }
   });
 
@@ -88,7 +86,7 @@ describe('NoticeBar', () => {
     render(<NoticeBar ref={ref}>普通</NoticeBar>);
     if (ref.current) {
       expect(ref.current.nodeName.toLowerCase()).toEqual('div');
-      expect(ref.current.className).toEqual('za-message za-message--warning za-message--lg');
+      expect(ref.current.className).toEqual('za-message za-message--warning');
     }
   });
 
@@ -155,8 +153,7 @@ describe('NoticeBar', () => {
       fireEvent.click(closeIcon);
       expect(screen.queryByTestId('root')).toBeNull();
     }
-    // TODO: should remove wrapper?
-    expect(document.querySelector('.za-notice-bar')).toBeTruthy();
+    expect(document.querySelector('.za-notice-bar')).toBeNull();
   });
 
   test('should respond to user click events when notice bar has arrow prop', () => {

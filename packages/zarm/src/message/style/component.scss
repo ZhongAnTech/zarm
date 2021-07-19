@@ -60,28 +60,4 @@
   @include m(danger) {
     @include message-theme(var(--theme-danger));
   }
-
-  @include m(lg) {
-    min-height: var(--message-min-height-lg);
-    font-size: var(--message-font-size-lg);
-    padding: var(--message-padding-v-lg) var(--message-padding-h-lg);
-
-    @include e(icon) {
-      margin-right: r(6);
-
-      @include b(icon) {
-        font-size: var(--message-icon-size-lg);
-      }
-    }
-
-    @include e(body) {
-      font-size: var(--message-font-size-lg);
-    }
-
-    @include e(footer) {
-      @include b(icon) {
-        font-size: var(--message-icon-size-lg);
-      }
-    }
-  }
 }

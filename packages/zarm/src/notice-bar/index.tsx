@@ -1,4 +1,5 @@
-import React, { forwardRef, useRef } from 'react';
+import React, { forwardRef, useRef, useState } from 'react';
+import type { MouseEvent } from 'react';
 import { Volume as VolumeIcon } from '@zarm-design/icons';
 import type BaseNoticeBarProps from './interface';
 import Message from '../message';
@@ -8,8 +9,8 @@ import useAnimationDuration from './hooks';
 export type NoticeBarProps = BaseNoticeBarProps & React.HTMLAttributes<HTMLDivElement>;
 
 const NoticeBar = forwardRef<HTMLDivElement, NoticeBarProps>((props, ref) => {
-  const { children, speed, delay, ...restProps } = props;
-
+  const { children, speed, delay, onClose, ...restProps } = props;
+  const [visible, setVisible] = useState(true);
   const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
   const prefixCls = `${globalPrefixCls}-notice-bar`;
   const NOTICEBAR_KEYFRAME_NAME = `${globalPrefixCls}-notice-bar-scrolling`;
@@ -25,9 +26,16 @@ const NoticeBar = forwardRef<HTMLDivElement, NoticeBarProps>((props, ref) => {
     keyframeName: NOTICEBAR_KEYFRAME_NAME,
   });
 
+  if (!visible) return null;
+
+  function handleClose(e: MouseEvent<HTMLElement>) {
+    setVisible(false);
+    onClose?.(e);
+  }
+
   return (
     <div className={prefixCls} ref={wrapperRef}>
-      <Message {...restProps} size="lg" ref={noticeBarRef}>
+      <Message {...restProps} onClose={handleClose} ref={noticeBarRef}>
         <div className={`${prefixCls}__body`}>
           <div
             className={`${prefixCls}__content`}
