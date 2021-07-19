@@ -23,15 +23,7 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
 
   const prefixCls = `${globalPrefixCls}-image-preview`;
 
-  const {
-    visible,
-    activeIndex = 0,
-    onClose,
-    showPagination,
-    minScale,
-    maxScale,
-    className,
-  } = props;
+  const { visible, activeIndex, onClose, showPagination, minScale, maxScale, className } = props;
 
   const { type, angle } = useOrientation();
 

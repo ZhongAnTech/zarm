@@ -22,7 +22,6 @@ describe('index', () => {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
             "offsetTop": 0,
-            "prefixCls": "za-affix",
             "scrollContainer": [Window],
           },
           "render": [Function],
@@ -191,7 +190,18 @@ describe('index', () => {
           "defaultProps": Object {},
           "render": [Function],
         },
-        "NoticeBar": [Function],
+        "NoticeBar": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "closable": false,
+            "delay": 2000,
+            "hasArrow": false,
+            "icon": <ForwardRef(SvgVolume) />,
+            "speed": 50,
+            "theme": "warning",
+          },
+          "render": [Function],
+        },
         "Panel": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {},
@@ -286,7 +296,13 @@ describe('index', () => {
         },
         "TabBar": Object {
           "$$typeof": Symbol(react.forward_ref),
-          "Item": [Function],
+          "Item": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "defaultProps": Object {
+            "visible": true,
+          },
           "render": [Function],
         },
         "Tabs": Object {

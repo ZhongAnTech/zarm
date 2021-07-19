@@ -112,6 +112,8 @@ export type { NavBarProps } from './nav-bar';
 export { default as NavBar } from './nav-bar';
 
 export { default as Marquee } from './marquee';
+
+export type { TabBarProps, TabBarItemProps } from './tab-bar';
 export { default as TabBar } from './tab-bar';
 
 export type { ImagePreviewProps } from './image-preview';

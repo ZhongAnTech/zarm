@@ -8,6 +8,7 @@
   - [SearchBar] 删除 `onClear` 事件，点击重置按钮请空值将触发 `onChange` 事件。
   - [Toast] 静态方法挂载到 `Toast.useToast` 下，详细用法参考官网例子。
   - [ImagePreview] 原图查看功能`ImageObject[{src: string, originSrc: string}]`替换了`ImageObject[{url: string, originUrl: string}]`,新增支持手机切换横屏模式。
+  - [NoticeBar] DOM 节点调整，原有样式会有影响。
 
 ## v2.9.5
 

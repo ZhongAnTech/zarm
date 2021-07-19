@@ -2,7 +2,6 @@ import React, { useRef, HTMLAttributes, useCallback } from 'react';
 import classnames from 'classnames';
 import type { BasePinchZoomProps } from './interface';
 import { ConfigContext } from '../n-config-provider';
-import mergerRefs from '../utils/mergeRefs';
 
 interface Point {
   clientX: number;
@@ -21,7 +20,7 @@ function range(num: number, min: number, max: number): number {
 export interface PinchZoomProps extends HTMLAttributes<HTMLDivElement>, BasePinchZoomProps {}
 
 const PinchZoom = React.forwardRef<unknown, PinchZoomProps>((props, ref) => {
-  const container = useRef<HTMLDivElement | null>();
+  const container = (ref as any) || React.createRef<HTMLDivElement>();
 
   const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
 
@@ -171,7 +170,7 @@ const PinchZoom = React.forwardRef<unknown, PinchZoomProps>((props, ref) => {
       onTouchCancel={touchEnd}
       onTouchEnd={touchEnd}
       onTouchMove={touchmove}
-      ref={mergerRefs([container, ref])}
+      ref={container}
       className={cls}
     >
       {child}

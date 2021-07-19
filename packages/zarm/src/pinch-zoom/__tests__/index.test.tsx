@@ -3,7 +3,7 @@
 import React from 'react';
 import { render } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import PinchZoom from '../../pinch-zoom';
+import PinchZoom from '../index';
 
 describe('PinchZoom', () => {
   describe('snapshot', () => {

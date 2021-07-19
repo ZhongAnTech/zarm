@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-export default interface PropsType {
+export default interface BaseNoticeBarProps {
   theme?: 'primary' | 'success' | 'warning' | 'danger';
   icon?: ReactNode;
   closable?: boolean;

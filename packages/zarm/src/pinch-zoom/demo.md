@@ -3,20 +3,24 @@
 ## 基本用法
 
 ```jsx
+import { useState } from 'react';
 import { PinchZoom, NoticeBar } from 'zarm';
 
-ReactDOM.render(
-  <>
-    <NoticeBar>图片缩放只支持Touch事件，建议使用移动模式/设备浏览以获得最佳体验。</NoticeBar>
-    <PinchZoom>
-      <img
-        src="https://static.zhongan.com/website/health/zarm/images/banners/1.png"
-        style={{ width: '100%' }}
-      />
-    </PinchZoom>
-  </>,
-  mountNode,
-);
+function Demo() {
+  return (
+    <>
+      <NoticeBar>图片缩放只支持Touch事件，建议使用移动模式/设备浏览以获得最佳体验。</NoticeBar>
+      <PinchZoom>
+        <img
+          src="https://static.zhongan.com/website/health/zarm/images/banners/1.png"
+          style={{ width: '100%' }}
+        />
+      </PinchZoom>
+    </>
+  );
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 
 ## API
