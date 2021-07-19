@@ -116,4 +116,19 @@ describe('useToast', () => {
       result.current.hide();
     });
   });
+
+  test('should append popup into toast container', () => {
+    expect.assertions(1);
+    const { result } = renderHook(() => useToast());
+    act(() => {
+      result.current.show({ content: "I'm a toast" });
+    });
+    const popupc = document.querySelector('.za-popup');
+    if (popupc) {
+      expect(popupc.closest('.za-toast-container')).toBeTruthy();
+    }
+    act(() => {
+      result.current.hide();
+    });
+  });
 });
