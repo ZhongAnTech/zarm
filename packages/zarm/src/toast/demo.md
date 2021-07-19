@@ -95,7 +95,7 @@ const Demo = () => {
             onClick={() => {
               toast.show({
                 content: '指定5秒后自动关闭',
-                stayTime: 5000 * 10,
+                stayTime: 5000,
                 afterClose: () => {
                   console.log('Toast已关闭');
                 },
@@ -117,7 +117,6 @@ const Demo = () => {
               toast.show({
                 className: 'test',
                 content: '不可同时进行其他交互',
-                stayTime: 5000 * 10,
                 mountContainer: containerRef.current,
                 mask: true,
                 afterClose: () => {
