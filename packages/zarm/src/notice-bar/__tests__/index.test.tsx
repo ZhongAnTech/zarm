@@ -1,140 +1,143 @@
-import React from 'react';
-import { render, mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
-// import { mocked } from 'ts-jest/utils';
-// import { Volume as VolumeIcon } from '@zarm-design/icons';
+import React, { useRef } from 'react';
+import { render, screen } from '@testing-library/react';
+import { mocked } from 'ts-jest/utils';
+import { Icon } from '@zarm-design/icons';
+import { createFCRefMock } from '../../../tests/utils';
 import NoticeBar from '../index';
-// import { addKeyframe, removeKeyframe, existKeyframe } from '../../utils/keyframes';
-// import { mockRefReturnValueOnce } from '../../../tests/utils';
-// import Message from '../../message';
+import ConfigProvider from '../../n-config-provider';
 
-jest.mock('../../utils/keyframes');
+jest.mock('react', () => {
+  return {
+    ...jest.requireActual('react'),
+    useRef: jest.fn().mockReturnValue({ current: { getBoundingClientRect: jest.fn() } }),
+  };
+});
 
-// const mAddKeyframe = mocked(addKeyframe);
-// const mRemoveKeyframe = mocked(removeKeyframe);
-// const mExistKeyframe = mocked(existKeyframe);
+const useMockRef = mocked(useRef);
 
 describe('NoticeBar', () => {
-  describe('snapshot', () => {
-    it('renders correctly', () => {
-      jest.useFakeTimers();
-      const wrapper = mount(<NoticeBar>foo</NoticeBar>);
-      jest.runTimersToTime(3000);
-      expect(toJson(wrapper)).toMatchSnapshot();
-      wrapper.unmount();
-    });
-
-    it('theme', () => {
-      const wrapper = render(<NoticeBar theme="danger">foo</NoticeBar>);
-      expect(toJson(wrapper)).toMatchSnapshot();
-    });
-
-    it('icon', () => {
-      const wrapper = render(
-        <NoticeBar
-          icon={
-            <img alt="" src="\\static.zhongan.com/website/health/zarm/images/icons/state.png" />
-          }
-        >
-          foo
-        </NoticeBar>,
-      );
-      expect(toJson(wrapper)).toMatchSnapshot();
-    });
+  afterEach(() => {
+    jest.restoreAllMocks();
+    jest.clearAllMocks();
   });
 
-  describe('behaviour', () => {
-    afterEach(() => {
-      jest.restoreAllMocks();
-      jest.clearAllMocks();
-    });
+  test('should render default notice bar', () => {
+    const { container } = render(<NoticeBar>普通</NoticeBar>);
+    expect(screen.queryByText(/普通/)).toBeTruthy();
+    expect(container).toMatchSnapshot();
+  });
 
-    // it('should render message component', () => {
-    //   jest.spyOn(NoticeBar.prototype, 'updateScrolling').mockImplementation();
-    //   const wrapper = shallow(<NoticeBar />);
-    //   const messageWrapper = wrapper.find(Message);
-    //   expect(messageWrapper.exists()).toBeTruthy();
-    //   expect(messageWrapper.props()).toEqual(
-    //     expect.objectContaining({
-    //       size: 'lg',
-    //       theme: 'warning',
-    //       icon: <VolumeIcon />,
-    //       hasArrow: false,
-    //       closable: false,
-    //       speed: 50,
-    //       delay: 2000,
-    //     }),
-    //   );
-    // });
+  test('should render notice bar with custom theme', () => {
+    const { container } = render(<NoticeBar theme="danger">自定义主题</NoticeBar>);
+    expect(screen.queryByText(/自定义主题/)).toBeTruthy();
+    expect(container).toMatchSnapshot();
+  });
 
-    // it('should create ref', () => {
-    //   const wrapper = mount(<NoticeBar />);
-    //   expect(wrapper.instance().wrapper).toBeTruthy();
-    //   expect(wrapper.instance().content).toBeTruthy();
-    // });
-    // it('should add keyframe when component mount', () => {
-    //   let keyframeContent!: string;
-    //   mAddKeyframe.mockImplementationOnce((_, content: string) => {
-    //     keyframeContent = content;
-    //   });
-    //   mExistKeyframe.mockReturnValueOnce(false);
-    //   mockRefReturnValueOnce(NoticeBar, 'wrapper', 'getBoundingClientRect', { width: 50 });
-    //   mockRefReturnValueOnce(NoticeBar, 'content', 'getBoundingClientRect', { width: 100 });
-    //   const wrapper = mount(<NoticeBar />);
-    //   expect(mExistKeyframe).toBeCalledWith('za-notice-bar-scrolling');
-    //   expect(mAddKeyframe).toBeCalledWith('za-notice-bar-scrolling', keyframeContent);
-    //   expect(wrapper.state('animationDuration')).toEqual(6000);
-    //   expect(wrapper.find('.za-notice-bar__body').prop('style')).toEqual({
-    //     WebkitAnimation: 'za-notice-bar-scrolling 6000ms linear infinite',
-    //     animation: `za-notice-bar-scrolling 6000ms linear infinite`,
-    //   });
-    // });
+  test('should render default notice bar', () => {
+    const { container } = render(
+      <NoticeBar icon={<Icon type="wrong-round" data-testid="notice-bar-icon" />}>
+        自定义图标
+      </NoticeBar>,
+    );
+    expect(screen.queryByText(/自定义图标/)).toBeTruthy();
+    expect(screen.queryByTestId('notice-bar-icon')).toBeTruthy();
+    expect(container).toMatchSnapshot();
+  });
 
-    // it('should remove existed keyframe', () => {
-    //   let keyframeContent!: string;
-    //   mExistKeyframe.mockReturnValueOnce(true);
-    //   mAddKeyframe.mockImplementationOnce((_, content: string) => {
-    //     keyframeContent = content;
-    //   });
-    //   mockRefReturnValueOnce(NoticeBar, 'wrapper', 'getBoundingClientRect', { width: 50 });
-    //   mockRefReturnValueOnce(NoticeBar, 'content', 'getBoundingClientRect', { width: 100 });
-    //   const wrapper = mount(<NoticeBar />);
-    //   expect(mExistKeyframe).toBeCalledWith('za-notice-bar-scrolling');
-    //   expect(mRemoveKeyframe).toBeCalledWith('za-notice-bar-scrolling');
-    //   expect(mAddKeyframe).toBeCalledWith('za-notice-bar-scrolling', keyframeContent);
-    //   expect(wrapper.state('animationDuration')).toEqual(6000);
-    //   expect(wrapper.find('.za-notice-bar__body').prop('style')).toEqual({
-    //     WebkitAnimation: 'za-notice-bar-scrolling 6000ms linear infinite',
-    //     animation: `za-notice-bar-scrolling 6000ms linear infinite`,
-    //   });
-    // });
+  test('should add animation style to the content element and append a style tag into document with keyframe animation', () => {
+    expect.assertions(3);
+    const mWrapperRef = createFCRefMock('getBoundingClientRect', { width: 100 });
+    const mContentRef = createFCRefMock('getBoundingClientRect', { width: 200 });
+    useMockRef.mockReturnValueOnce(mWrapperRef).mockReturnValueOnce(mContentRef);
+    render(<NoticeBar>普通</NoticeBar>);
+    const noticeBarContent = document.querySelector('.za-notice-bar__content') as HTMLDivElement;
+    if (noticeBarContent) {
+      expect(window.getComputedStyle(noticeBarContent).getPropertyValue('animation')).toEqual(
+        'za-notice-bar-scrolling 8000ms linear infinite',
+      );
+    }
+    const keyframeStyleElement = document.querySelector('#za-notice-bar-scrolling');
+    if (keyframeStyleElement) {
+      expect(keyframeStyleElement).toBeTruthy();
+      expect(keyframeStyleElement.innerHTML).toMatchSnapshot();
+    }
+  });
 
-    // it('should not update scroll if offset width less than wrap width', () => {
-    //   mockRefReturnValueOnce(NoticeBar, 'wrapper', 'getBoundingClientRect', { width: 0 });
-    //   mockRefReturnValueOnce(NoticeBar, 'content', 'getBoundingClientRect', { width: 0 });
-    //   const wrapper = mount(<NoticeBar />);
-    //   expect(mExistKeyframe).not.toBeCalled();
-    //   expect(mRemoveKeyframe).not.toBeCalled();
-    //   expect(mAddKeyframe).not.toBeCalled();
-    //   expect(wrapper.state('animationDuration')).toEqual(0);
-    //   expect(wrapper.find('.za-notice-bar__body').prop('style')).toBeUndefined();
-    // });
+  test('should use prefixCls from context', () => {
+    expect.assertions(3);
+    render(
+      <ConfigProvider prefixCls="zarm">
+        <NoticeBar data-testid="message">普通</NoticeBar>
+      </ConfigProvider>,
+    );
+    expect(screen.queryByText(/普通/)).toBeTruthy();
+    const messageElement = screen.queryByTestId('message');
+    if (messageElement) {
+      if (messageElement.parentElement) {
+        expect(messageElement.parentElement.className).toEqual('zarm-notice-bar');
+      }
+      expect(messageElement.className).toEqual(
+        'zarm-message zarm-message--warning zarm-message--lg',
+      );
+    }
+  });
 
-    // it('should update scrolling when component did mount', () => {
-    //   const updateScrollingSpy = jest
-    //     .spyOn(NoticeBar.prototype, 'updateScrolling')
-    //     .mockImplementation();
-    //   mount(<NoticeBar />);
-    //   expect(updateScrollingSpy).toBeCalledTimes(1);
-    // });
+  test('should forward ref from parent', () => {
+    expect.assertions(2);
+    const ref = React.createRef<HTMLDivElement>();
+    render(<NoticeBar ref={ref}>普通</NoticeBar>);
+    if (ref.current) {
+      expect(ref.current.nodeName.toLowerCase()).toEqual('div');
+      expect(ref.current.className).toEqual('za-message za-message--warning za-message--lg');
+    }
+  });
 
-    // it('should update scrolling when component did update', () => {
-    //   const updateScrollingSpy = jest
-    //     .spyOn(NoticeBar.prototype, 'updateScrolling')
-    //     .mockImplementation();
-    //   const wrapper = mount(<NoticeBar />);
-    //   wrapper.setState({ animationDuration: 100 });
-    //   expect(updateScrollingSpy).toBeCalledTimes(2);
-    // });
+  test('should recalculate keyframe of the animation when new value of speed prop comes', () => {
+    expect.assertions(4);
+    const mWrapperRef = createFCRefMock('getBoundingClientRect', { width: 100 });
+    const mContentRef = createFCRefMock('getBoundingClientRect', { width: 200 });
+    useMockRef.mockReturnValueOnce(mWrapperRef).mockReturnValueOnce(mContentRef);
+    const { rerender } = render(<NoticeBar>普通</NoticeBar>);
+    let noticeBarContent = document.querySelector('.za-notice-bar__content') as HTMLDivElement;
+    if (noticeBarContent) {
+      expect(window.getComputedStyle(noticeBarContent).getPropertyValue('animation')).toEqual(
+        'za-notice-bar-scrolling 8000ms linear infinite',
+      );
+    }
+    useMockRef.mockReturnValueOnce(mWrapperRef).mockReturnValueOnce(mContentRef);
+    rerender(<NoticeBar speed={100}>普通</NoticeBar>);
+    noticeBarContent = document.querySelector('.za-notice-bar__content') as HTMLDivElement;
+    if (noticeBarContent) {
+      expect(window.getComputedStyle(noticeBarContent).getPropertyValue('animation')).toEqual(
+        'za-notice-bar-scrolling 6000ms linear infinite',
+      );
+    }
+    const keyframeStyleElement = document.querySelector('#za-notice-bar-scrolling');
+    if (keyframeStyleElement) {
+      expect(keyframeStyleElement).toBeTruthy();
+      expect(keyframeStyleElement.innerHTML).toMatchSnapshot();
+    }
+  });
+
+  test('should recalculate keyframe of the animation when new value of delay prop comes', () => {
+    expect.assertions(2);
+    const mWrapperRef = createFCRefMock('getBoundingClientRect', { width: 100 });
+    const mContentRef = createFCRefMock('getBoundingClientRect', { width: 200 });
+    useMockRef.mockReturnValueOnce(mWrapperRef).mockReturnValueOnce(mContentRef);
+    const { rerender } = render(<NoticeBar>普通</NoticeBar>);
+    let noticeBarContent = document.querySelector('.za-notice-bar__content') as HTMLDivElement;
+    if (noticeBarContent) {
+      expect(window.getComputedStyle(noticeBarContent).getPropertyValue('animation')).toEqual(
+        'za-notice-bar-scrolling 8000ms linear infinite',
+      );
+    }
+    useMockRef.mockReturnValueOnce(mWrapperRef).mockReturnValueOnce(mContentRef);
+    rerender(<NoticeBar delay={4000}>普通</NoticeBar>);
+    noticeBarContent = document.querySelector('.za-notice-bar__content') as HTMLDivElement;
+    if (noticeBarContent) {
+      expect(window.getComputedStyle(noticeBarContent).getPropertyValue('animation')).toEqual(
+        'za-notice-bar-scrolling 12000ms linear infinite',
+      );
+    }
   });
 });

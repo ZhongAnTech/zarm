@@ -1,63 +1,29 @@
-import React, { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
+import React, { forwardRef, useRef } from 'react';
 import { Volume as VolumeIcon } from '@zarm-design/icons';
 import type BaseNoticeBarProps from './interface';
 import Message from '../message';
-import { addKeyframe, removeKeyframe, existKeyframe } from '../utils/keyframes';
 import { ConfigContext } from '../n-config-provider';
+import useAnimationDuration from './hooks';
 
 export type NoticeBarProps = BaseNoticeBarProps & React.HTMLAttributes<HTMLDivElement>;
 
-const NoticeBar = forwardRef<unknown, NoticeBarProps>((props, ref) => {
+const NoticeBar = forwardRef<HTMLDivElement, NoticeBarProps>((props, ref) => {
   const { children, speed, delay, ...restProps } = props;
 
   const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
   const prefixCls = `${globalPrefixCls}-notice-bar`;
   const NOTICEBAR_KEYFRAME_NAME = `${globalPrefixCls}-notice-bar-scrolling`;
 
-  const [animationDuration, setAnimationDuration] = useState(0);
-
-  const noticeBarRef = (ref as any) || React.createRef<HTMLDivElement>();
+  const noticeBarRef = ref || React.createRef<HTMLDivElement>();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-
-  const updateScrolling = useCallback(() => {
-    const wrapWidth = wrapperRef.current!.getBoundingClientRect().width;
-    const offsetWidth = contentRef.current!.getBoundingClientRect().width;
-
-    if (offsetWidth > wrapWidth) {
-      // 完整的执行时间 = 前后停留时间 + 移动时间
-      const newAnimationDuration = Math.round(delay! * 2 + (offsetWidth / speed!) * 1000);
-
-      // 计算停留时间占总时间的百分比
-      const delayPercent = Math.round((delay! * 100) / newAnimationDuration);
-
-      // 删除之前的 keyframe 定义
-      if (existKeyframe(NOTICEBAR_KEYFRAME_NAME)) {
-        removeKeyframe(NOTICEBAR_KEYFRAME_NAME);
-      }
-
-      // 增加重新计算后的 keyframe
-      addKeyframe(
-        NOTICEBAR_KEYFRAME_NAME,
-        `
-        0%, ${delayPercent}% {
-          -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-        }
-
-        ${100 - delayPercent}%, 100% {
-          -webkit-transform: translate3d(${-(offsetWidth - wrapWidth)}px, 0, 0);
-          transform: translate3d(${-(offsetWidth - wrapWidth)}px, 0, 0);
-        }
-      `,
-      );
-      setAnimationDuration(newAnimationDuration);
-    }
-  }, [NOTICEBAR_KEYFRAME_NAME, delay, speed]);
-
-  useEffect(() => {
-    updateScrolling();
-  }, [updateScrolling]);
+  const animationDuration = useAnimationDuration({
+    wrapperRef,
+    contentRef,
+    delay,
+    speed,
+    keyframeName: NOTICEBAR_KEYFRAME_NAME,
+  });
 
   return (
     <div className={prefixCls} ref={wrapperRef}>
