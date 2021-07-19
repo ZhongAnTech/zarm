@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { mocked } from 'ts-jest/utils';
 import { Icon } from '@zarm-design/icons';
 import { createFCRefMock } from '../../../tests/utils';
@@ -138,6 +138,40 @@ describe('NoticeBar', () => {
       expect(window.getComputedStyle(noticeBarContent).getPropertyValue('animation')).toEqual(
         'za-notice-bar-scrolling 12000ms linear infinite',
       );
+    }
+  });
+
+  test('should be closable(remove from the document when user click the close icon)', () => {
+    expect.assertions(3);
+    const { container } = render(
+      <NoticeBar closable data-testid="root">
+        普通
+      </NoticeBar>,
+    );
+    expect(container).toMatchSnapshot();
+    const closeIcon = screen.queryByTestId('root')?.querySelector('.za-message__footer')
+      ?.firstChild;
+    if (closeIcon) {
+      fireEvent.click(closeIcon);
+      expect(screen.queryByTestId('root')).toBeNull();
+    }
+    // TODO: should remove wrapper?
+    expect(document.querySelector('.za-notice-bar')).toBeTruthy();
+  });
+
+  test('should respond to user click events when notice bar has arrow prop', () => {
+    expect.assertions(2);
+    const onClick = jest.fn();
+    const { container } = render(
+      <NoticeBar hasArrow data-testid="root" onClick={onClick}>
+        普通
+      </NoticeBar>,
+    );
+    expect(container).toMatchSnapshot();
+    const message = screen.queryByTestId('root');
+    if (message) {
+      fireEvent.click(message);
+      expect(onClick).toBeCalledTimes(1);
     }
   });
 });
