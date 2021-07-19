@@ -36,14 +36,14 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
   }
 
   const [images, setImages] = useState<Images>(formatImages(props.images));
-  const [currentIndex, setCurrentIndex] = useState<number>(activeIndex);
+  const [currentIndex, setCurrentIndex] = useState<number>(activeIndex!);
 
   useEffect(() => {
     setImages(formatImages(props.images));
   }, [props.images]);
 
   useEffect(() => {
-    setCurrentIndex(activeIndex);
+    setCurrentIndex(activeIndex!);
   }, [activeIndex]);
 
   const onChange = (index: number) => {
@@ -165,7 +165,7 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
             <ActivityIndicator type="spinner" size="lg" />
           ))}
       </div>
-      <div className={`${prefixCls}__footer`}>
+      <div className={`${prefixCls}__footer`} onClick={close}>
         {renderOriginButton()}
         {renderPagination()}
       </div>
