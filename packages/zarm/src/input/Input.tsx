@@ -45,7 +45,7 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
     ...restProps
   } = props as InputTextProps & InputTextareaProps;
 
-  const wrapperRef = (ref as any) || React.createRef<HTMLElement>();
+  const wrapperRef = (ref as any) || React.createRef<HTMLDivElement>();
   const inputRef = React.useRef<HTMLTextAreaElement | HTMLInputElement>();
 
   const [currentValue, setCurrentValue] = React.useState(getValue({ value, defaultValue }));

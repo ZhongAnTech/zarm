@@ -40,7 +40,7 @@ const Button = React.forwardRef<unknown, ButtonProps>((props, ref) => {
     ...restProps
   } = props;
 
-  const buttonRef = (ref as any) || React.createRef<HTMLElement>();
+  const buttonRef = (ref as any) || React.createRef<HTMLButtonElement | HTMLAnchorElement>();
   const iconRender = loading ? <ActivityIndicator /> : icon;
   const childrenRender = children && <span>{children}</span>;
 

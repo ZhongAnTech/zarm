@@ -8,7 +8,7 @@ export { default as BackToTop } from './back-to-top';
 export type { BadgeProps } from './badge';
 export { default as Badge } from './badge';
 
-export type { ButtonProps, ButtonTheme, ButtonSize, ButtonShape } from './button';
+export type { ButtonProps } from './button';
 export { default as Button } from './button';
 
 export { default as Calendar } from './calendar';
@@ -30,16 +30,12 @@ export { default as DatePicker } from './date-picker';
 export type { DateSelectProps } from './date-select';
 export { default as DateSelect } from './date-select';
 
-export type { DragProps, DragEvent, DragState } from './drag';
-export { default as Drag } from './drag';
-export { default as useDrag } from './useDrag';
-
 export { default as FilePicker } from './file-picker';
 
 export type { IconProps } from './icon';
 export { default as Icon } from './icon';
 
-export type { CustomInputProps, CustomInputType } from './custom-input';
+export type { CustomInputProps } from './custom-input';
 export { default as CustomInput } from './custom-input';
 
 export type { InputProps, InputTextProps, InputTextareaProps } from './input';
@@ -56,7 +52,7 @@ export { default as Loading } from './loading';
 export type { MaskProps } from './mask';
 export { default as Mask } from './mask';
 
-export type { MessageProps, MessageSize, MessageTheme } from './message';
+export type { MessageProps } from './message';
 export { default as Message } from './message';
 
 export { default as Modal } from './modal';
@@ -118,7 +114,10 @@ export type { NavBarProps } from './nav-bar';
 export { default as NavBar } from './nav-bar';
 
 export { default as Marquee } from './marquee';
+
+export type { TabBarProps, TabBarItemProps } from './tab-bar';
 export { default as TabBar } from './tab-bar';
+
 export { default as ImagePreview } from './image-preview';
 
 export { default as ConfigProvider } from './config-provider';
@@ -130,3 +129,12 @@ export { default as StackPicker } from './stack-picker';
 
 export type { AffixProps } from './affix';
 export { default as Affix } from './affix';
+
+export type { DragProps, DragEvent, DragState } from './drag';
+export { default as Drag } from './drag';
+export { default as useDrag } from './useDrag';
+
+export type { UseLongPressProps } from './useLongPress';
+export { default as useLongPress } from './useLongPress';
+
+export { default as useSafeLayoutEffect } from './useSafeLayoutEffect';

@@ -53,7 +53,7 @@ const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
     ...rest
   } = props;
 
-  const radioGroupRef = (ref as any) || React.createRef<HTMLElement>();
+  const radioGroupRef = (ref as any) || React.createRef<HTMLDivElement>();
   const [currentValue, setCurrentValue] = React.useState(
     getValue({ value, defaultValue, children }),
   );

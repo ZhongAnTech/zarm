@@ -1,31 +1,54 @@
-import React, { PureComponent, cloneElement } from 'react';
+import React, { cloneElement, useCallback, useState } from 'react';
 import classnames from 'classnames';
-import type { BaseTabBarProps } from './PropsType';
-import type TabBarItem from './TabBarItem';
+import type { BaseTabBarProps } from './interface';
+import TabBarItem from './TabBarItem';
+import type { TabBarItemProps } from './TabBarItem';
+import { ConfigContext } from '../n-config-provider';
 
-export interface TabBarProps extends BaseTabBarProps {
-  prefixCls?: string;
-  className?: string;
+export interface TabBarProps
+  extends BaseTabBarProps,
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {}
+
+interface CompoundedComponent
+  extends React.ForwardRefExoticComponent<TabBarProps & React.RefAttributes<HTMLDivElement>> {
+  Item: typeof TabBarItem;
 }
 
-class TabBar extends PureComponent<TabBarProps, any> {
-  static Item: typeof TabBarItem;
+const TabBar = React.forwardRef<unknown, TabBarProps>((props, ref) => {
+  const tabBarRef = (ref as any) || React.createRef<HTMLDivElement>();
 
-  static defaultProps: TabBarProps = {
-    prefixCls: 'za-tab-bar',
-    visible: true,
-    safeIphoneX: false,
-  };
+  const { prefixCls: globalPrefixCls, safeIphoneX: globalSafeIphoneX } = React.useContext(
+    ConfigContext,
+  );
+  const prefixCls = `${globalPrefixCls}-tab-bar`;
 
-  onChildChange = (value: string | number) => {
-    const { onChange } = this.props;
-    if (typeof onChange === 'function') {
-      onChange(value);
-    }
-  };
+  const {
+    visible,
+    className,
+    children,
+    onChange,
+    activeKey,
+    defaultActiveKey,
+    ...restProps
+  } = props;
 
-  getSelected = (index: number, itemKey: string | number) => {
-    const { activeKey, defaultActiveKey } = this.props;
+  const safeIphoneX = props.safeIphoneX || globalSafeIphoneX;
+
+  const [selectedKey, setSelectedKey] = useState(defaultActiveKey);
+
+  const onChildChange = useCallback(
+    (value: string | number) => {
+      if (!activeKey) {
+        setSelectedKey(value);
+      }
+      if (typeof onChange === 'function') {
+        onChange(value);
+      }
+    },
+    [activeKey, onChange],
+  );
+
+  const getSelected = (index: number, itemKey: string | number) => {
     if (!activeKey) {
       if (!defaultActiveKey && index === 0) {
         return true;
@@ -35,34 +58,47 @@ class TabBar extends PureComponent<TabBarProps, any> {
     return activeKey === itemKey;
   };
 
-  render() {
-    const { visible, prefixCls, className, children, style, safeIphoneX } = this.props;
-    const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--hidden`]: !visible,
-      [`${prefixCls}--safe`]: safeIphoneX,
-    });
+  const cls = classnames(prefixCls, className, {
+    [`${prefixCls}--hidden`]: !visible,
+    [`${prefixCls}--safe`]: safeIphoneX,
+  });
 
-    const items = React.Children.map(children, (element, index) => {
+  const items = React.Children.map(
+    children,
+    (element: React.ReactElement<TabBarItemProps, typeof TabBarItem>, index: number) => {
       if (!React.isValidElement(element)) return null;
       const itemKey = element.props.itemKey || index;
+      let selected = getSelected(index, itemKey);
+      if (!activeKey) {
+        selected = selectedKey === itemKey;
+        if (!selectedKey && index === 0) {
+          selected = true;
+        }
+      }
       return cloneElement(element, {
         key: index,
-        disabled: element.props.disabled,
-        onChange: () => this.onChildChange(itemKey),
+        // disabled: element.props.disabled,
+        onChange: () => onChildChange(itemKey),
         badge: element.props.badge,
         title: element.props.title,
         icon: element.props.icon,
         itemKey,
         style: element.props.style,
-        selected: this.getSelected(index, itemKey),
+        selected,
       });
-    });
-    return (
-      <div className={cls} style={style}>
-        {items}
-      </div>
-    );
-  }
-}
+    },
+  );
+  return (
+    <div className={cls} ref={tabBarRef} {...restProps}>
+      {items}
+    </div>
+  );
+}) as CompoundedComponent;
+
+TabBar.displayName = 'TabBar';
+
+TabBar.defaultProps = {
+  visible: true,
+};
 
 export default TabBar;

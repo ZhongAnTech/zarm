@@ -94,6 +94,7 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
   afterClose = () => {
     const { afterClose } = this.props;
     if (Loading.zarmLoading) {
+      ReactDOM.unmountComponentAtNode(Loading.zarmLoading);
       Loading.loadingContainer.removeChild(Loading.zarmLoading);
       Loading.zarmLoading = null;
     }

@@ -58,11 +58,7 @@ const getValue = (props: StepperProps, defaultValue: number) => {
   return formatValue(compareValue(tempValue, max, min), step);
 };
 
-export type StepperProps = Omit<
-  React.HTMLAttributes<HTMLDivElement>,
-  'defaultValue' | 'value' | 'onChange'
-> &
-  BaseStepperProps;
+export type StepperProps = BaseStepperProps & React.HTMLAttributes<HTMLSpanElement>;
 
 const Stepper = React.forwardRef<unknown, StepperProps>((props, ref) => {
   const {
@@ -81,7 +77,7 @@ const Stepper = React.forwardRef<unknown, StepperProps>((props, ref) => {
     onInputChange,
   } = props;
 
-  const stepperRef = (ref as any) || React.createRef<HTMLElement>();
+  const stepperRef = (ref as any) || React.createRef<HTMLSpanElement>();
 
   const [currentValue, setCurrentValue] = React.useState(
     getValue({ value, defaultValue, min, max }, 0),

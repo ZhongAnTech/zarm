@@ -51,7 +51,7 @@ export interface TabsProps extends BaseTabsProps {
 }
 
 interface CompoundedComponent
-  extends React.ForwardRefExoticComponent<TabsProps & React.RefAttributes<HTMLElement>> {
+  extends React.ForwardRefExoticComponent<TabsProps & React.RefAttributes<HTMLDivElement>> {
   Panel: typeof TabPanel;
 }
 
@@ -69,7 +69,7 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
     children,
   } = props;
 
-  const tabsRef = (ref as any) || React.createRef<HTMLElement>();
+  const tabsRef = (ref as any) || React.createRef<HTMLDivElement>();
   const carouselRef = React.useRef<CarouselHTMLElement>(null);
   const tablistRef = React.useRef<HTMLUListElement>(null);
   const [itemWidth, setItemWidth] = React.useState(0);

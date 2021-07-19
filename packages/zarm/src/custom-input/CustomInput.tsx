@@ -28,9 +28,9 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
     ...restProps
   } = props;
 
-  const wrapperRef = (ref as any) || React.createRef<HTMLElement>();
+  const wrapperRef = (ref as any) || React.createRef<HTMLDivElement>();
   const contentRef = React.useRef<HTMLDivElement>(null);
-  const pickerRef = React.useRef<HTMLDivElement>();
+  const pickerRef = React.useRef<HTMLDivElement>(null);
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [currentValue, setCurrentValue] = React.useState(getValue({ value, defaultValue }, ''));
   const [focused, setFocused] = React.useState<boolean>(autoFocus!);

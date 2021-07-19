@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Badge should render with default props 1`] = `
+<div>
+  <span
+    class="za-badge za-badge--danger za-badge--dot"
+  >
+    <sup
+      class="za-badge__content"
+    />
+  </span>
+</div>
+`;

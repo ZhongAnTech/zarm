@@ -301,12 +301,18 @@ module.exports = {
       //   module: () => import('zarm/useClickAway/demo.md'),
       //   style: false,
       // },
-      // {
-      //   key: 'useLongPress',
-      //   name: '长按',
-      //   module: () => import('zarm/useLongPress/demo.md'),
-      //   style: false,
-      // },
+      {
+        key: 'useLongPress',
+        name: '长按',
+        module: () => import('zarm/useLongPress/demo.md'),
+        style: false,
+      },
+      {
+        key: 'useSafeLayoutEffect',
+        name: '安全布局副作用',
+        module: () => import('zarm/useSafeLayoutEffect/demo.md'),
+        style: false,
+      },
     ],
     other: [
       // {

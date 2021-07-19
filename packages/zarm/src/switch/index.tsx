@@ -9,7 +9,7 @@ export type SwitchProps = BaseSwitchProps &
 const Switch = React.forwardRef<unknown, SwitchProps>((props, ref) => {
   const { className, style, disabled, checked, defaultChecked, onChange, ...restProps } = props;
 
-  const switchRef = (ref as any) || React.createRef<HTMLElement>();
+  const switchRef = (ref as any) || React.createRef<HTMLDivElement>();
   const getChecked = checked || defaultChecked || false;
   const [currentChecked, setCurrentChecked] = React.useState(getChecked);
 
@@ -37,10 +37,9 @@ const Switch = React.forwardRef<unknown, SwitchProps>((props, ref) => {
   }, [getChecked]);
 
   return (
-    <span className={cls} style={style}>
+    <span className={cls} style={style} ref={switchRef}>
       <input
         {...restProps}
-        ref={switchRef}
         role="switch"
         aria-checked={currentChecked}
         type="checkbox"
