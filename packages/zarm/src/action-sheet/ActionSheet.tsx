@@ -52,7 +52,7 @@ export default class ActionSheet extends PureComponent<ActionSheetProps, {}> {
     return (
       <Popup className={className} visible={visible} onMaskClick={onMaskClick} destroy={destroy}>
         <div className={cls}>
-          <div className={`${prefixCls}__actions`}>{actions.map(this.renderActions)}</div>
+          <div className={`${prefixCls}__actions`}>{actions!.map(this.renderActions)}</div>
           {this.renderCancel()}
         </div>
       </Popup>
