@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
 import Events from '../utils/events';
 
-export interface OrientationState {
+export interface UseOrientationProps {
   angle: number;
   type: string;
 }
 
-const defaultState: OrientationState = {
+const defaultProps: UseOrientationProps = {
   angle: 0,
   type: 'portrait-primary',
 };
 
-const useOrientation = (initialState: OrientationState = defaultState) => {
+const useOrientation = (initialState: UseOrientationProps = defaultProps) => {
   const [state, setState] = useState(initialState);
 
   useEffect(() => {
