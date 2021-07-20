@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { addKeyframe, removeKeyframe, existKeyframe } from '../utils/keyframes';
 
 export default function useAnimationDuration({
-  wrapperRef,
+  noticeBarRef,
   contentRef,
   delay,
   speed,
@@ -10,8 +10,9 @@ export default function useAnimationDuration({
 }) {
   const [animationDuration, setAnimationDuration] = useState(0);
   const updateScrolling = useCallback(() => {
-    const wrapWidth = wrapperRef.current!.getBoundingClientRect().width;
-    const contentWidth = contentRef.current!.getBoundingClientRect().width;
+    if (!noticeBarRef.current || !contentRef.current) return;
+    const wrapWidth = noticeBarRef.current.getBoundingClientRect().width;
+    const contentWidth = contentRef.current.getBoundingClientRect().width;
 
     if (contentWidth > wrapWidth) {
       // 完整的执行时间 = 前后停留时间 + 移动时间
@@ -42,7 +43,7 @@ export default function useAnimationDuration({
       );
       setAnimationDuration(newAnimationDuration);
     }
-  }, [keyframeName, delay, speed, wrapperRef, contentRef]);
+  }, [keyframeName, delay, speed, noticeBarRef, contentRef]);
 
   useEffect(() => {
     updateScrolling();

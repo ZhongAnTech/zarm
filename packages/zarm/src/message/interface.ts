@@ -1,6 +1,6 @@
 import type { ReactNode, MouseEvent } from 'react';
 
-export type MessageTheme = 'default' | 'primary' | 'success' | 'warning' | 'danger';
+export type MessageTheme = 'primary' | 'success' | 'warning' | 'danger';
 
 export interface BaseMessageProps {
   theme?: MessageTheme;

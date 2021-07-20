@@ -86,7 +86,7 @@ describe('NoticeBar', () => {
     render(<NoticeBar ref={ref}>普通</NoticeBar>);
     if (ref.current) {
       expect(ref.current.nodeName.toLowerCase()).toEqual('div');
-      expect(ref.current.className).toEqual('za-message za-message--warning');
+      expect(ref.current.className).toEqual('za-notice-bar');
     }
   });
 
@@ -140,9 +140,10 @@ describe('NoticeBar', () => {
   });
 
   test('should be closable(remove from the document when user click the close icon)', () => {
-    expect.assertions(3);
+    expect.assertions(4);
+    const onClose = jest.fn();
     const { container } = render(
-      <NoticeBar closable data-testid="root">
+      <NoticeBar closable onClose={onClose} data-testid="root">
         普通
       </NoticeBar>,
     );
@@ -154,6 +155,7 @@ describe('NoticeBar', () => {
       expect(screen.queryByTestId('root')).toBeNull();
     }
     expect(document.querySelector('.za-notice-bar')).toBeNull();
+    expect(onClose).toBeCalledTimes(1);
   });
 
   test('should respond to user click events when notice bar has arrow prop', () => {

@@ -245,16 +245,11 @@
   --loading-background: rgba(0, 0, 0, var(--opacity-toast));
 
   // Message
-  --message-min-height-md: 29px;
-  --message-min-height-lg: 40px;
-  --message-font-size-md: 12px;
-  --message-font-size-lg: 14px;
-  --message-icon-size-md: 14px;
-  --message-icon-size-lg: 16px;
-  --message-padding-v-md: 6px;
-  --message-padding-h-md: 8px;
-  --message-padding-v-lg: 8px;
-  --message-padding-h-lg: 12px;
+  --message-min-height: 29px;
+  --message-font-size: 12px;
+  --message-icon-size: 14px;
+  --message-padding-v: 6px;
+  --message-padding-h: 8px;
 
   // Modal
   --modal-background: #fff;

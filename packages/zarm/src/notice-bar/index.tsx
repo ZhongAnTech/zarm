@@ -16,10 +16,9 @@ const NoticeBar = forwardRef<HTMLDivElement, NoticeBarProps>((props, ref) => {
   const NOTICEBAR_KEYFRAME_NAME = `${globalPrefixCls}-notice-bar-scrolling`;
 
   const noticeBarRef = ref || React.createRef<HTMLDivElement>();
-  const wrapperRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const animationDuration = useAnimationDuration({
-    wrapperRef,
+    noticeBarRef,
     contentRef,
     delay,
     speed,
@@ -34,8 +33,8 @@ const NoticeBar = forwardRef<HTMLDivElement, NoticeBarProps>((props, ref) => {
   }
 
   return (
-    <div className={prefixCls} ref={wrapperRef}>
-      <Message {...restProps} onClose={handleClose} ref={noticeBarRef}>
+    <div className={prefixCls} ref={noticeBarRef}>
+      <Message {...restProps} onClose={handleClose}>
         <div className={`${prefixCls}__body`}>
           <div
             className={`${prefixCls}__content`}
