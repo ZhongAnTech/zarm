@@ -128,8 +128,9 @@ export { default as StackPicker } from './stack-picker';
 export type { AffixProps } from './affix';
 export { default as Affix } from './affix';
 
-export type { DragProps, DragEvent, DragState } from './drag';
+export type { DragProps } from './drag';
 export { default as Drag } from './drag';
+export type { UseDragProps, DragEvent, DragState } from './useDrag';
 export { default as useDrag } from './useDrag';
 
 export type { UseLongPressProps } from './useLongPress';
