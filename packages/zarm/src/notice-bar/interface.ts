@@ -1,7 +1,6 @@
 import type { BaseMessageProps } from '../message/interface';
 
-export default interface BaseNoticeBarProps extends Omit<BaseMessageProps, 'theme'> {
-  theme?: Exclude<BaseMessageProps['theme'], 'default'>;
+export default interface BaseNoticeBarProps extends BaseMessageProps {
   speed?: number;
   delay?: number;
 }
