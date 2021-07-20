@@ -19,7 +19,7 @@
     "@react-navigation/stack": "^5.9.0",
     "color": "^3.1.2",
     "react": "16.13.1",
-    "react-native": "0.63.2",
+    "react-native": "0.64.1",
     "react-native-camera-roll-picker": "1.2.3",
     "react-native-gesture-handler": "^1.7.0",
     "react-native-safe-area-context": "^3.1.7",
