@@ -132,6 +132,7 @@ export type { DragProps, DragEvent, DragState } from './drag';
 export { default as Drag } from './drag';
 export { default as useDrag } from './useDrag';
 
+export type { UseOrientationProps } from './useOrientation';
 export { default as useOrientation } from './useOrientation';
 
 export type { UseLongPressProps } from './useLongPress';
