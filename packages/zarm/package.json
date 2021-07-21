@@ -99,7 +99,7 @@
   "bundlesize": [
     {
       "path": "./dist/zarm.min.js",
-      "maxSize": "100 kB"
+      "maxSize": "120 kB"
     },
     {
       "path": "./dist/zarm.min.css",
