@@ -1,4 +1,19 @@
 @include b(notice-bar) {
+  @include b(message) {
+    min-height: var(--notice-bar-min-height);
+    font-size: var(--notice-bar-font-size);
+    padding: var(--notice-bar-padding-v) var(--notice-bar-padding-h);
+
+    @include e(icon) {
+      margin-right: r(4);
+
+      @include b(icon) {
+        font-size: var(--notice-bar-icon-size);
+      }
+    }
+  }
+
+
   @include e(body) {
     position: relative;
     width: 100%;

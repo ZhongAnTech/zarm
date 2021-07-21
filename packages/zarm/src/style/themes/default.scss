@@ -265,6 +265,11 @@
 
   // NoticeBar
   --notice-bar-height: 24px;
+  --notice-bar-min-height: 40px;
+  --notice-bar-font-size: 14px;
+  --notice-bar-padding-v: 8px;
+  --notice-bar-padding-h: 12px;
+  --notice-bar-icon-size: 16px;
 
   // Panel
   --panel-header-color: var(--color-text-caption);
