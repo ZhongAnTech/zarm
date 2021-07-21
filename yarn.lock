@@ -3218,7 +3218,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/classnames@^2.2.3", "@types/classnames@^2.3.1":
+"@types/classnames@^2.2.3":
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.3.1.tgz#3c2467aa0f1a93f1f021e3b9bcf938bd5dfdc0dd"
   integrity sha512-zeOWb0JGBoVmlQoznvqXbE0tEC/HONsnoUNH19Hc96NFsTAwTXbTqb8FMYkru1F/iqp7a18Ws3nWJvtA1sHD1A==
