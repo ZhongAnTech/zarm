@@ -1,19 +1,26 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import classnames from 'classnames';
+import { ConfigContext } from '../n-config-provider';
 
-interface ModalFooterProps {
-  prefixCls?: string;
+export interface ModalFooterProps {
+  children?: React.ReactNode;
 }
 
-export default class ModalFooter extends PureComponent<ModalFooterProps, {}> {
-  static defaultProps: ModalFooterProps = {
-    prefixCls: 'za-modal',
-  };
+const ModalFooter = React.forwardRef<unknown, ModalFooterProps>((props, ref) => {
+  const footerRef = (ref as any) || React.createRef<HTMLElement>();
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-modal`;
 
-  render() {
-    const { prefixCls, children } = this.props;
-    const cls = classnames(`${prefixCls}__footer`);
+  const { children } = props;
+  const cls = classnames(`${prefixCls}__footer`);
+  return (
+    <div className={cls} ref={footerRef}>
+      {children}
+    </div>
+  );
+});
 
-    return <div className={cls}>{children}</div>;
-  }
-}
+ModalFooter.displayName = 'ModalFooter';
+ModalFooter.defaultProps = {};
+
+export default ModalFooter;

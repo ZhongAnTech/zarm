@@ -11,7 +11,6 @@ exports[`Modal renders correctly 1`] = `
   maskType="normal"
   onCancel={[MockFunction]}
   onMaskClick={[MockFunction]}
-  prefixCls="za-modal"
   shape="radius"
   title="标题"
   visible={true}
@@ -189,7 +188,6 @@ exports[`Modal renders correctly 1`] = `
                     <ModalHeader
                       closable={true}
                       onCancel={[MockFunction]}
-                      prefixCls="za-modal"
                       title="标题"
                     >
                       <div
@@ -245,15 +243,13 @@ exports[`Modal renders correctly 1`] = `
                         </ForwardRef(SvgClose)>
                       </div>
                     </ModalHeader>
-                    <ModalBody
-                      prefixCls="za-modal"
-                    >
+                    <ForwardRef>
                       <div
                         className="za-modal__body"
                       >
                         foo
                       </div>
-                    </ModalBody>
+                    </ForwardRef>
                   </div>
                 </div>
               </div>

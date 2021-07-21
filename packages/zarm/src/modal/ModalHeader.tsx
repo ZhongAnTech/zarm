@@ -1,29 +1,33 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import { Close as CloseIcon } from '@zarm-design/icons';
-import { BaseModalHeaderProps } from './PropsType';
+import { ConfigContext } from '../n-config-provider';
+import { BaseModalHeaderProps } from './interface';
 
-export interface ModalHeaderProps extends BaseModalHeaderProps {
-  prefixCls?: string;
-  className?: string;
-}
+export type ModalHeaderProps = BaseModalHeaderProps &
+  Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>;
 
-export default class ModalHeader extends PureComponent<ModalHeaderProps, {}> {
-  static defaultProps: ModalHeaderProps = {
-    prefixCls: 'za-modal',
-  };
+const ModalHeader = React.forwardRef<unknown, ModalHeaderProps>((props, ref) => {
+  const headerRef = (ref as any) || React.createRef<HTMLElement>();
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-modal`;
 
-  render() {
-    const { prefixCls, className, title, closable, onCancel, ...others } = this.props;
-    const cls = classnames(`${prefixCls}__header`, className);
-    const btnClose = closable && (
-      <CloseIcon size="sm" className={`${prefixCls}__header__close`} onClick={onCancel} />
-    );
-    return (
-      <div className={cls} {...others}>
-        <div className={`${prefixCls}__header__title`}>{title}</div>
-        {btnClose}
-      </div>
-    );
-  }
-}
+  const { className, title, closable, onCancel, ...others } = props;
+  const cls = classnames(`${prefixCls}__header`, className);
+
+  const btnClose = closable && (
+    <CloseIcon size="sm" className={`${prefixCls}__header__close`} onClick={onCancel} />
+  );
+  return (
+    <div className={cls} {...others} ref={headerRef}>
+      <div className={`${prefixCls}__header__title`}>{title}</div>
+      {btnClose}
+    </div>
+  );
+});
+
+ModalHeader.displayName = 'ModalHeader';
+
+ModalHeader.defaultProps = {};
+
+export default ModalHeader;

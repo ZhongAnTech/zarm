@@ -20,14 +20,14 @@ export interface BaseModalProps {
     | 'slideRight';
   animationDuration?: number;
   width?: string | number;
-  mask: boolean;
+  mask?: boolean;
   maskType?: 'transparent' | 'normal';
   maskClosable?: boolean;
   closable?: boolean;
   mountContainer?: ContainerType;
   title?: ReactNode;
   footer?: ReactNode;
-  destroy: boolean;
+  destroy?: boolean;
   afterOpen?: () => void;
   onCancel?: () => void;
   afterClose?: () => void;

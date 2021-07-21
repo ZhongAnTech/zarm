@@ -1,20 +1,25 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import classnames from 'classnames';
+import { ConfigContext } from '../n-config-provider';
 
-interface ModalBodyProps {
-  prefixCls?: string;
-  className?: string;
-}
+export type ModalBodyProps = {
+  children?: React.ReactNode;
+} & React.HTMLAttributes<HTMLDivElement>;
 
-export default class ModalBody extends PureComponent<ModalBodyProps, {}> {
-  static defaultProps: ModalBodyProps = {
-    prefixCls: 'za-modal',
-  };
+const ModalBody = React.forwardRef<unknown, ModalBodyProps>((props, ref) => {
+  const { className, children } = props;
 
-  render() {
-    const { prefixCls, className, children } = this.props;
-    const cls = classnames(`${prefixCls}__body`, className);
+  const bodyRef = (ref as any) || React.createRef<HTMLElement>();
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-modal`;
 
-    return <div className={cls}>{children}</div>;
-  }
-}
+  const cls = classnames(`${prefixCls}__body`, className);
+
+  return (
+    <div className={cls} ref={bodyRef}>
+      {children}
+    </div>
+  );
+});
+
+export default ModalBody;
