@@ -12,10 +12,6 @@
       }
     }
 
-    @include e(body) {
-      font-size: var(--notice-bar-icon-size);
-    }
-
     @include e(footer) {
       @include b(icon) {
         font-size: var(--notice-bar-icon-size);
