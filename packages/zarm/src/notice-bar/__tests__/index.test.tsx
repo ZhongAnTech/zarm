@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { mocked } from 'ts-jest/utils';
-import { Icon } from '@zarm-design/icons';
+import { CloseCircle } from '@zarm-design/icons';
 import { createFCRefMock } from '../../../tests/utils';
 import NoticeBar from '../index';
 import ConfigProvider from '../../n-config-provider';
@@ -35,9 +35,7 @@ describe('NoticeBar', () => {
 
   test('should render default notice bar', () => {
     const { container } = render(
-      <NoticeBar icon={<Icon type="wrong-round" data-testid="notice-bar-icon" />}>
-        自定义图标
-      </NoticeBar>,
+      <NoticeBar icon={<CloseCircle data-testid="notice-bar-icon" />}>自定义图标</NoticeBar>,
     );
     expect(screen.queryByText(/自定义图标/)).toBeTruthy();
     expect(screen.queryByTestId('notice-bar-icon')).toBeTruthy();
