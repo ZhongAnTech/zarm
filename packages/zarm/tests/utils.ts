@@ -91,3 +91,20 @@ export function mockRefReturnValueOnce(
     configurable: true,
   });
 }
+
+export function createFCRefMock(method: string, value: any) {
+  const ref = { current: {} };
+  const refKey = Symbol('ref');
+  Object.defineProperty(ref, 'current', {
+    set(_ref) {
+      if (_ref) {
+        jest.spyOn(_ref, method).mockReturnValueOnce(value);
+      }
+      this[refKey] = _ref;
+    },
+    get() {
+      return this[refKey];
+    },
+  });
+  return ref;
+}

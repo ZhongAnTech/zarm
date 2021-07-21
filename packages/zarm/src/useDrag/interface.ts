@@ -10,7 +10,7 @@ export interface DragState {
   offsetY?: number;
 }
 
-export interface DragProps {
+export interface UseDragProps {
   onDragStart?: (event: DragEvent, dragState: DragState) => void;
   onDragMove?: (event: DragEvent, dragState: DragState) => boolean;
   onDragEnd?: (event: DragEvent, dragState: DragState) => void;

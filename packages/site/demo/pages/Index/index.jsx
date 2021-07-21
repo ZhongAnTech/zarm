@@ -36,7 +36,7 @@ const Child = () => {
               key={+i}
               title={
                 <div className="menu-item-content">
-                  <span>{pascalCase(component.key)}</span>
+                  <span>{key === 'hooks' ? component.key : pascalCase(component.key)}</span>
                   {locale !== 'enUS' && <span className="chinese">{component.name}</span>}
                 </div>
               }

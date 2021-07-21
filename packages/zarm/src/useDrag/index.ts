@@ -1,12 +1,14 @@
 import * as React from 'react';
 import Events from '../utils/events';
-import type { DragEvent, DragState, DragProps } from './interface';
+import type { DragEvent, DragState, UseDragProps } from './interface';
 
 function isMouseEvent(e): e is MouseEvent {
   return e && !('touches' in e);
 }
 
-const useDrag = (props: DragProps) => {
+export type { DragEvent, DragState, UseDragProps };
+
+const useDrag = (props: UseDragProps) => {
   const { onDragStart, onDragMove, onDragEnd } = props;
   const [dragState, setDragState] = React.useState(Object.create(null));
 

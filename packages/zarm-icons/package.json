@@ -13,7 +13,7 @@
     "types"
   ],
   "scripts": {
-    "clean": "rimraf types lib coverage svg",
+    "clean": "rimraf types lib es coverage svg",
     "test": "zarm test -s scripts/jest/setup.js",
     "coverage": "rimraf coverage && yarn test -c",
     "build:types": "rimraf types && tsc --outDir types -d --emitDeclarationOnly",
