@@ -7,7 +7,13 @@
   - [Input] 拆分使用到虚拟键盘的自定义输入框组件 `CustomInput`。触发的事件入参由 value 值改为 event，受影响的事件有 `onChange` `onFocus` `onBlur` `onFocus`。删除 `onClear` 事件，点击重置按钮请空值将触发 `onChange` 事件。
   - [SearchBar] 删除 `onClear` 事件，点击重置按钮请空值将触发 `onChange` 事件。
   - [Toast] 静态方法挂载到 `Toast.useToast` 下，详细用法参考官网例子。
-  - [NoticeBar] DOM 节点调整，原有样式会有影响。
+  - [NoticeBar]
+    - DOM 节点调整，原有样式会有影响。
+    - 新增`onClose` prop, 关闭触发的回调函数。
+    - 修复关闭后只移除了`Message`组件，根节点没有被移除的 bug。
+  - [Message]
+    - 移除`size` prop，及相关样式。
+    - 新增`onClose` prop, 关闭触发的回调函数。
 
 ## v2.9.5
 
