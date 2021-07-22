@@ -107,19 +107,19 @@ ReactDOM.render(
 
 ## Collapse
 
-| 属性             | 类型                                                           | 默认值 | 说明                                     |
-| :--------------- | :------------------------------------------------------------- | :----- | :--------------------------------------- |
-| multiple         | boolean                                                        | false  | 是否可以同时展开多项                     |
-| animated         | boolean                                                        | false  | 是否添加展开动画                         |
-| activeKey        | string \| number \| string[] \| number[]                       | []     | 动态更新展开项的索引数组或字符串或数字   |
-| defaultActiveKey | string \| number \| string[] \| number[]                       | []     | 初始化默认展开项的索引数组或字符串或数字 |
-| onChange         | (activeKey?: string \| number \| string[] \| number[]) => void | -      | 点击某一项的回调函数，返回选中的项       |
+| 属性             | 类型                                                          | 默认值 | 说明                                     |
+| :--------------- | :------------------------------------------------------------ | :----- | :--------------------------------------- |
+| multiple         | boolean                                                       | false  | 是否可以同时展开多项                     |
+| animated         | boolean                                                       | false  | 是否添加展开动画                         |
+| activeKey        | string \| number \| string[] \| number[]                      | -      | 动态更新展开项的索引数组或字符串或数字   |
+| defaultActiveKey | string \| number \| string[] \| number[]                      | -      | 初始化默认展开项的索引数组或字符串或数字 |
+| onChange         | (activeKey: string \| number \| string[] \| number[]) => void | -      | 点击某一项的回调函数，返回选中的项       |
 
 ## Collapse.Item
 
-| 属性     | 类型                       | 默认值 | 说明                 |
-| :------- | :------------------------- | :----- | :------------------- |
-| title    | ReactNode                  | -      | 每一项的名称         |
-| key      | string \| number           | -      | 对应 activeKey       |
-| disabled | boolean                    | false  | 是否禁用             |
-| onChange | (active?: boolean) => void | -      | 点击某一项的回调函数 |
+| 属性     | 类型                      | 默认值 | 说明                 |
+| :------- | :------------------------ | :----- | :------------------- |
+| title    | ReactNode                 | -      | 每一项的名称         |
+| key      | string \| number          | -      | 对应 activeKey       |
+| disabled | boolean                   | false  | 是否禁用             |
+| onChange | (active: boolean) => void | -      | 点击某一项的回调函数 |
