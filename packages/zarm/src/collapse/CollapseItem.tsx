@@ -2,6 +2,7 @@ import React, { HTMLAttributes } from 'react';
 import classnames from 'classnames';
 import type { BaseCollapseItemProps } from './interface';
 import { ConfigContext } from '../n-config-provider';
+import useSafeLayoutEffect from '../useSafeLayoutEffect';
 
 export type CollapseItemProps = Omit<HTMLAttributes<HTMLDivElement>, 'key' | 'title' | 'onChange'> &
   BaseCollapseItemProps;
@@ -36,7 +37,7 @@ const CollapseItem = React.forwardRef<unknown, CollapseItemProps>((props, ref) =
     [`${prefixCls}--disabled`]: disabled,
   });
 
-  React.useLayoutEffect(() => {
+  useSafeLayoutEffect(() => {
     setStyle();
   }, [setStyle]);
 

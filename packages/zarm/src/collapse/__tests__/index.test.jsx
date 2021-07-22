@@ -3,8 +3,6 @@ import { render, mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Collapse from '../index';
 
-React.useLayoutEffect = React.useEffect;
-
 describe('Collapse', () => {
   it('renders correctly', () => {
     const wrapper = render(
