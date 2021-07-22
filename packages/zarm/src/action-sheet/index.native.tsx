@@ -93,7 +93,7 @@ export default class ActionSheet extends PureComponent<ButtonProps, any> {
     return (
       <Popup visible={visible} onMaskClick={onMaskClick}>
         <View style={wrapperStyle as ViewStyle}>
-          <View style={actionsStyle}>{actions.map(this.renderActions)}</View>
+          <View style={actionsStyle}>{actions!.map(this.renderActions)}</View>
           {this.renderCancel()}
         </View>
       </Popup>

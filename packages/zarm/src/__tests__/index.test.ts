@@ -335,6 +335,7 @@ describe('index', () => {
         "Wheel": [Function],
         "useDrag": [Function],
         "useLongPress": [Function],
+        "useOrientation": [Function],
         "useSafeLayoutEffect": [Function],
       }
     `);

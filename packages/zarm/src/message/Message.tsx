@@ -11,12 +11,12 @@ const Message = forwardRef<HTMLDivElement, MessageProps>((props, ref) => {
   const {
     className,
     theme,
-    size,
     icon,
     hasArrow,
     closable,
     children,
     onClick,
+    onClose,
     ...restProps
   } = props;
   const [visible, setVisible] = useState(true);
@@ -27,7 +27,6 @@ const Message = forwardRef<HTMLDivElement, MessageProps>((props, ref) => {
   const prefixCls = `${globalPrefixCls}-message`;
   const cls = classnames(prefixCls, className, {
     [`${prefixCls}--${theme}`]: theme,
-    [`${prefixCls}--${size}`]: size,
     [`${prefixCls}--link`]: hasArrow,
   });
 
@@ -37,6 +36,11 @@ const Message = forwardRef<HTMLDivElement, MessageProps>((props, ref) => {
       return;
     }
     onClick?.(e);
+  }
+
+  function handleClose(e: MouseEvent<HTMLElement>) {
+    setVisible(false);
+    onClose?.(e);
   }
 
   return (
@@ -50,7 +54,7 @@ const Message = forwardRef<HTMLDivElement, MessageProps>((props, ref) => {
       {(closable || hasArrow) && (
         <div className={`${prefixCls}__footer`}>
           {hasArrow && <ArrowRightIcon />}
-          {closable && <CloseIcon onClick={() => setVisible(false)} />}
+          {closable && <CloseIcon onClick={handleClose} />}
         </div>
       )}
     </div>

@@ -43,15 +43,15 @@ const Keyboard = React.forwardRef<unknown, KeyboardProps>((props, ref) => {
   };
 
   // todo: 长按连续删除还有点问题
-  // const longPressEvent = useLongPress({},
-  //   (e) => {
+  // const longPressEvent = useLongPress({
+  //   onLongPress: (e) => {
   //     longPressTimer = window.setInterval(() => {
   //       onKeyPress(e, 'delete');
   //     }, 200);
   //   },
-  //   (e) => onKeyPress(e, 'delete'),
-  //   () => clearInterval(longPressTimer!),
-  // );
+  //   onPress: (e) => onKeyPress(e, 'delete'),
+  //   onClear: () => clearInterval(longPressTimer!),
+  // });
 
   const renderKey = (text: string, index: number) => {
     const keyCls = classnames(`${prefixCls}__item`, {
