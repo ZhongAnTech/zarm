@@ -111,8 +111,8 @@ ReactDOM.render(
 | :--------------- | :------------------------------------------------------------- | :----- | :--------------------------------------- |
 | multiple         | boolean                                                        | false  | 是否可以同时展开多项                     |
 | animated         | boolean                                                        | false  | 是否添加展开动画                         |
-| activeKey        | string \| number \| string[] \| number[]                       | []     | 动态更新展开项的索引数组或字符串或数字   |
-| defaultActiveKey | string \| number \| string[] \| number[]                       | []     | 初始化默认展开项的索引数组或字符串或数字 |
+| activeKey        | string \| number \| string[] \| number[]                       | -      | 动态更新展开项的索引数组或字符串或数字   |
+| defaultActiveKey | string \| number \| string[] \| number[]                       | -      | 初始化默认展开项的索引数组或字符串或数字 |
 | onChange         | (activeKey?: string \| number \| string[] \| number[]) => void | -      | 点击某一项的回调函数，返回选中的项       |
 
 ## Collapse.Item
