@@ -22,4 +22,7 @@ const ModalBody = React.forwardRef<unknown, ModalBodyProps>((props, ref) => {
   );
 });
 
+ModalBody.displayName = 'ModalBody';
+ModalBody.defaultProps = {};
+
 export default ModalBody;

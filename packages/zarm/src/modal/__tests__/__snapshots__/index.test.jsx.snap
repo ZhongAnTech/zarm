@@ -243,13 +243,13 @@ exports[`Modal renders correctly 1`] = `
                         </ForwardRef(SvgClose)>
                       </div>
                     </ModalHeader>
-                    <ForwardRef>
+                    <ModalBody>
                       <div
                         className="za-modal__body"
                       >
                         foo
                       </div>
-                    </ForwardRef>
+                    </ModalBody>
                   </div>
                 </div>
               </div>
