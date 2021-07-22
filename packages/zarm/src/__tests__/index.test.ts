@@ -97,7 +97,22 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "Collapse": [Function],
+        "Collapse": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "Item": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "defaultProps": Object {
+              "animated": false,
+              "disabled": false,
+            },
+            "render": [Function],
+          },
+          "defaultProps": Object {
+            "animated": false,
+            "multiple": false,
+          },
+          "render": [Function],
+        },
         "ConfigProvider": [Function],
         "CustomInput": Object {
           "$$typeof": Symbol(react.forward_ref),

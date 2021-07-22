@@ -249,7 +249,6 @@ exports[`Collapse renders correctly with animated 1`] = `
 exports[`Collapse renders correctly with array defaultActiveKey 1`] = `
 <div
   class="za-collapse"
-  multiple=""
 >
   <div
     class="za-collapse-item"
@@ -332,7 +331,6 @@ exports[`Collapse renders correctly with array defaultActiveKey 1`] = `
 exports[`Collapse renders correctly with collapse mode 1`] = `
 <div
   class="za-collapse"
-  multiple=""
 >
   <div
     class="za-collapse-item"
