@@ -3,9 +3,10 @@ import classnames from 'classnames';
 import BScroll, { BScrollInstance } from 'better-scroll';
 import isEqual from 'lodash/isEqual';
 import { isArray } from '../utils/validate';
-import usePrevious from '../usePrevious';
-import useEventCallback from '../useEventCallback';
+import usePrevious from '../utils/hooks/usePrevious';
+import useEventCallback from '../utils/hooks/useEventCallback';
 import type { BaseWheelProps, WheelItem, WheelValue } from './interface';
+import { ConfigContext } from '../n-config-provider';
 
 const getValue = (props: Omit<WheelProps, 'itemRender'>) => {
   if ('defaultValue' in props) {
@@ -20,13 +21,11 @@ const getValue = (props: Omit<WheelProps, 'itemRender'>) => {
 };
 
 export interface WheelProps extends BaseWheelProps {
-  prefixCls?: string;
   className?: string;
 }
 
 const Wheel = (props: WheelProps) => {
   const {
-    prefixCls,
     className,
     value,
     defaultValue,
@@ -44,6 +43,8 @@ const Wheel = (props: WheelProps) => {
   const prevValue = usePrevious(value);
   const prevDataSource = usePrevious(dataSource);
   const prevStopScroll = usePrevious(stopScroll);
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-wheel`;
 
   const getSelectedIndex = (newValue?: WheelValue, newDataSource?: Array<WheelItem>): number => {
     let index = 0;
@@ -143,7 +144,6 @@ const Wheel = (props: WheelProps) => {
 
 Wheel.displayName = 'Wheel';
 Wheel.defaultProps = {
-  prefixCls: 'za-wheel',
   dataSource: [],
   valueMember: 'value',
   itemRender: (item) => item!.label as string,
