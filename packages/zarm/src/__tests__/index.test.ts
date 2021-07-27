@@ -332,17 +332,7 @@ describe('index', () => {
         },
         "Tooltip": [Function],
         "Trigger": [Function],
-        "Wheel": Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "defaultProps": Object {
-            "dataSource": Array [],
-            "itemRender": [Function],
-            "prefixCls": "za-wheel",
-            "stopScroll": false,
-            "valueMember": "value",
-          },
-          "render": [Function],
-        },
+        "Wheel": [Function],
         "useDrag": [Function],
         "useLongPress": [Function],
         "useOrientation": [Function],
