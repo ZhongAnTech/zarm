@@ -1,9 +1,12 @@
 import React from 'react';
-import { render, mount, shallow } from 'enzyme';
+import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import Collapse from '../index';
+import Collapse, { CollapseProps } from '../index';
 
-React.useLayoutEffect = React.useEffect; 
+jest.mock('react', () => ({
+  ...(jest.requireActual('react') as typeof React),
+  useLayoutEffect: jest.requireActual('react').useEffect,
+}));
 
 describe('Collapse', () => {
   it('renders correctly', () => {
@@ -24,7 +27,7 @@ describe('Collapse', () => {
   });
 
   it('renders correctly with collapse mode', () => {
-    const props = {};
+    const props: CollapseProps = {};
     props.multiple = true;
     const wrapper = render(
       <Collapse {...props}>
@@ -43,7 +46,7 @@ describe('Collapse', () => {
   });
 
   it('renders correctly with animated', () => {
-    const props = {};
+    const props: CollapseProps = {};
     props.animated = true;
     const wrapper = render(
       <Collapse {...props}>
@@ -62,7 +65,7 @@ describe('Collapse', () => {
   });
 
   it('renders correctly with defaultActiveKey', () => {
-    const props = {};
+    const props: CollapseProps = {};
     props.defaultActiveKey = '1';
     const wrapper = render(
       <Collapse {...props}>
@@ -81,7 +84,7 @@ describe('Collapse', () => {
   });
 
   it('renders correctly with number defaultActiveKey', () => {
-    const props = {};
+    const props: CollapseProps = {};
     props.defaultActiveKey = 0;
     const wrapper = render(
       <Collapse {...props}>
@@ -100,7 +103,7 @@ describe('Collapse', () => {
   });
 
   it('renders correctly with array defaultActiveKey', () => {
-    const props = {};
+    const props: CollapseProps = {};
     props.multiple = true;
     props.defaultActiveKey = ['1'];
     const wrapper = render(
@@ -120,7 +123,7 @@ describe('Collapse', () => {
   });
 
   it('renders correctly with activeKey', () => {
-    const props = {};
+    const props: CollapseProps = {};
     props.activeKey = '0';
     const wrapper = render(
       <Collapse {...props}>
@@ -139,7 +142,7 @@ describe('Collapse', () => {
   });
 
   it('renders correctly with number activeKey', () => {
-    const props = {};
+    const props: CollapseProps = {};
     props.activeKey = 1;
     const wrapper = render(
       <Collapse {...props}>
@@ -199,7 +202,7 @@ describe('Collapse', () => {
   // });
 
   it('renders correctly with defaultActiveKey and activeKey', () => {
-    const props = {};
+    const props: CollapseProps = {};
     props.defaultActiveKey = '0';
     props.activeKey = '1';
     const wrapper = render(
@@ -238,7 +241,7 @@ describe('Collapse', () => {
   });
 
   it('click collapse item correctly with disabled mode', () => {
-    const props = {};
+    const props: CollapseProps = {};
     props.onChange = jest.fn();
     const wrapper = mount(
       <Collapse {...props}>
@@ -258,7 +261,7 @@ describe('Collapse', () => {
   });
 
   it('collapse items toggle correctly with animated', (done) => {
-    const props = {};
+    const props: CollapseProps = {};
     props.animated = true;
     const wrapper = mount(
       <Collapse {...props}>
@@ -281,7 +284,7 @@ describe('Collapse', () => {
   });
 
   it('negative item toggle correctly with animated', (done) => {
-    const props = {};
+    const props: CollapseProps = {};
     props.animated = true;
     const wrapper = mount(
       <Collapse {...props}>
@@ -304,7 +307,7 @@ describe('Collapse', () => {
   });
 
   it('active item toggle correctly with animated', (done) => {
-    const props = {};
+    const props: CollapseProps = {};
     props.animated = true;
     props.defaultActiveKey = '0';
     const wrapper = mount(
@@ -328,7 +331,7 @@ describe('Collapse', () => {
   });
 
   it('collapse items toggle correctly without multiple mode', () => {
-    const props = {};
+    const props: CollapseProps = {};
     props.multiple = false;
     props.activeKey = '1';
     props.onChange = jest.fn();
@@ -350,7 +353,7 @@ describe('Collapse', () => {
   });
 
   it('collapse items toggle correctly with multiple mode', () => {
-    const props = {};
+    const props: CollapseProps = {};
     props.multiple = true;
     props.defaultActiveKey = ['0', '1'];
 
@@ -372,7 +375,7 @@ describe('Collapse', () => {
   });
 
   it('click should not trigger callback without key', () => {
-    const props = {};
+    const props: CollapseProps = {};
     props.onChange = jest.fn();
     const wrapper = mount(
       <Collapse {...props}>

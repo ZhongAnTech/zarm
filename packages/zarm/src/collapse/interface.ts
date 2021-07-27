@@ -15,8 +15,8 @@ export interface BaseCollapseProps {
 export interface BaseCollapseItemProps {
   key?: CollapseItemKey;
   title?: ReactNode;
-  isActive: boolean;
+  isActive?: boolean;
   disabled?: boolean;
-  animated: boolean;
+  animated?: boolean;
   onChange?: (active: boolean) => void;
 }
