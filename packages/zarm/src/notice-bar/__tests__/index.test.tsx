@@ -8,7 +8,7 @@ import ConfigProvider from '../../n-config-provider';
 
 jest.mock('react', () => {
   return {
-    ...jest.requireActual('react'),
+    ...(jest.requireActual('react') as typeof React),
     useRef: jest.fn().mockReturnValue({ current: { getBoundingClientRect: jest.fn() } }),
   };
 });
