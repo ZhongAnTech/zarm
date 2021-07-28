@@ -140,5 +140,3 @@ export { default as useOrientation } from './useOrientation';
 
 export type { UseLongPressProps } from './useLongPress';
 export { default as useLongPress } from './useLongPress';
-
-export { default as useSafeLayoutEffect } from './useSafeLayoutEffect';

@@ -3,8 +3,7 @@ import classnames from 'classnames';
 import BScroll, { BScrollInstance } from 'better-scroll';
 import isEqual from 'lodash/isEqual';
 import { isArray } from '../utils/validate';
-import usePrevious from '../utils/hooks/usePrevious';
-import useEventCallback from '../utils/hooks/useEventCallback';
+import { usePrevious, useEventCallback } from '../utils/hooks';
 import type { BaseWheelProps, WheelItem, WheelValue } from './interface';
 import { ConfigContext } from '../n-config-provider';
 
