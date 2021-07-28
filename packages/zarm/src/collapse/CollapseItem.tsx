@@ -2,7 +2,7 @@ import React, { HTMLAttributes } from 'react';
 import classnames from 'classnames';
 import type { BaseCollapseItemProps } from './interface';
 import { ConfigContext } from '../n-config-provider';
-import useSafeLayoutEffect from '../useSafeLayoutEffect';
+import { useSafeLayoutEffect } from '../utils/hooks';
 
 export type CollapseItemProps = Omit<HTMLAttributes<HTMLDivElement>, 'key' | 'title' | 'onChange'> &
   BaseCollapseItemProps;
@@ -16,7 +16,7 @@ const CollapseItem = React.forwardRef<unknown, CollapseItemProps>((props, ref) =
   const prefixCls = `${globalPrefixCls}-collapse-item`;
   const onClickItem = () => {
     if (disabled) return;
-    typeof onChange === 'function' && onChange(isActive);
+    typeof onChange === 'function' && onChange(isActive!);
   };
 
   const getContentHeight = (ele) => {
