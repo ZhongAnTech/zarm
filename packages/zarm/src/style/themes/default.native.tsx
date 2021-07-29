@@ -194,18 +194,12 @@ const components = {
   keyboard_icon_font_size: 21,
 
   // Message
-  message_min_height_md: 29,
-  message_min_height_lg: 40,
-  message_font_size_md: 12,
-  message_font_size_lg: 14,
-  message_padding_v_md: 6,
-  message_padding_v_lg: 8,
-  message_padding_h_md: 8,
-  message_padding_h_lg: 12,
-  message_close_length_md: 12,
-  message_close_length_lg: 14,
-  message_arrow_length_md: 8,
-  message_arrow_length_lg: 10, // 箭头颜色
+  message_min_height: 29,
+  message_font_size: 12,
+  message_padding_v: 6,
+  message_padding_h: 8,
+  message_close_length: 12,
+  message_arrow_length: 8,
   message_arrow_border_width: 1, // 箭头粗细
 
   // Modal
