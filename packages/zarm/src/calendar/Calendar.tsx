@@ -6,8 +6,6 @@ import CalendarMonthView from './Month';
 import parseState from './utils/parseState';
 import DateTool from '../utils/date';
 
-const CN_DAY_NAME = ['日', '一', '二', '三', '四', '五', '六'];
-
 export interface CalendarProps extends BaseCalendarProps {
   prefixCls?: string;
   className?: string;
@@ -40,13 +38,6 @@ export default class CalendarView extends PureComponent<CalendarProps, CalendarS
     min: new Date(),
     dateRender: (date: Date) => date.getDate(),
     disabledDate: () => false,
-  };
-
-  static now = new Date();
-
-  // 月份缓存数据
-  static cache = {
-    now: `${CalendarView.now.getFullYear()}-${CalendarView.now.getMonth()}-${CalendarView.now.getDate()}`,
   };
 
   // 当前月份dom数据缓存
@@ -116,7 +107,7 @@ export default class CalendarView extends PureComponent<CalendarProps, CalendarS
   // 月历定位
   anchor = () => {
     const { value } = this.state;
-    const target = value[0] || CalendarView.now;
+    const target = value[0] || new Date();
     const key = `${target.getFullYear()}-${target.getMonth()}`;
     const node = this.nodes![key];
     if (node && Object.prototype.toString.call(node.anchor) === '[object Function]') {
@@ -126,8 +117,8 @@ export default class CalendarView extends PureComponent<CalendarProps, CalendarS
 
   // 生成星期条
   renderWeekBar = () => {
-    const { prefixCls } = this.props;
-    const content = CN_DAY_NAME.map((week) => (
+    const { prefixCls, locale } = this.props;
+    const content = locale!.weeks.map((week) => (
       <li key={week} className={`${prefixCls}__bar__item`}>
         {week}
       </li>
