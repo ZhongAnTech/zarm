@@ -1,5 +1,11 @@
 # 版本更新日志
 
+## v2.9.6
+
+- Bug Fix
+
+  - [Calendar] 修复日历组件不支持国际化的 bug。[#738](https://github.com/ZhongAnTech/zarm/pull/738)
+
 ## v2.9.5
 
 - Bug Fix
