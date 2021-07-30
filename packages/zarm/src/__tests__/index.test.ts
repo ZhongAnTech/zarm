@@ -51,7 +51,10 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "Calendar": [Function],
+        "Calendar": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        },
         "Carousel": [Function],
         "Cell": Object {
           "$$typeof": Symbol(react.forward_ref),
