@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import type { Locale } from '../n-config-provider/interface';
+import type { Locale } from '../config-provider/PropsType';
 
 export interface BaseCalendarProps {
   value?: Date | Date[];
