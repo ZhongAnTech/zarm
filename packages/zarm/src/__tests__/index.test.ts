@@ -13,7 +13,10 @@ describe('index', () => {
         "BackToTop": [Function],
         "Badge": [Function],
         "Button": [Function],
-        "Calendar": [Function],
+        "Calendar": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        },
         "Carousel": [Function],
         "Cell": [Function],
         "Checkbox": [Function],
