@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { BaseLoadingProps } from './interface';
+import type { BaseLoadingProps } from './interface';
 import Popup from '../popup';
 import { ConfigContext } from '../n-config-provider';
 import ActivityIndicator from '../activity-indicator';

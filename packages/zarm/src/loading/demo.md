@@ -58,7 +58,7 @@ const Demo = () => {
             onClick={() => {
               loading.show();
               setTimeout(() => {
-                // loading.hide();
+                loading.hide();
               }, 3000);
             }}
           >
