@@ -39,13 +39,13 @@ ReactDOM.render(
 
 ## API
 
-| 属性     | 类型                                                 | 默认值    | 说明                                                   |
-| :------- | :--------------------------------------------------- | :-------- | :----------------------------------------------------- |
-| theme    | string                                               | 'warning' | 主题，可选值 `primary`、`success`、`warning`、`danger` |
-| icon     | ReactNode                                            | -         | 设置图标                                               |
-| closable | boolean                                              | false     | 是否显示关闭按钮                                       |
-| hasArrow | boolean                                              | false     | 是否显示箭头                                           |
-| speed    | number                                               | 50        | 滚动时的速度（单位：px/s）                             |
-| delay    | number                                               | 2000      | 开启滚动功能时前后停留的时间（单位：ms）               |
-| onClick  | () => void                                           | -         | 点击后触发的回调函数                                   |
-| onClose  | (e: React.MouseEvent<HTMLElement>) => void ) => void | -         | 点击关闭 icon 触发的回调函数                           |
+| 属性     | 类型                                       | 默认值    | 说明                                                   |
+| :------- | :----------------------------------------- | :-------- | :----------------------------------------------------- |
+| theme    | string                                     | 'warning' | 主题，可选值 `primary`、`success`、`warning`、`danger` |
+| icon     | ReactNode                                  | -         | 设置图标                                               |
+| closable | boolean                                    | false     | 是否显示关闭按钮                                       |
+| hasArrow | boolean                                    | false     | 是否显示箭头                                           |
+| speed    | number                                     | 50        | 滚动时的速度（单位：px/s）                             |
+| delay    | number                                     | 2000      | 开启滚动功能时前后停留的时间（单位：ms）               |
+| onClick  | () => void                                 | -         | 点击后触发的回调函数                                   |
+| onClose  | (e: React.MouseEvent<HTMLElement>) => void | -         | 点击关闭 icon 触发的回调函数                           |

@@ -308,12 +308,6 @@ module.exports = {
         style: false,
       },
       {
-        key: 'useSafeLayoutEffect',
-        name: '安全布局副作用',
-        module: () => import('zarm/useSafeLayoutEffect/demo.md'),
-        style: false,
-      },
-      {
         key: 'useOrientation',
         name: '屏幕方向',
         module: () => import('zarm/useOrientation/demo.md'),

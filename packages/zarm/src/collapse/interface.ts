@@ -9,7 +9,7 @@ export interface BaseCollapseProps {
   defaultActiveKey?: CollapseActiveKey;
   multiple?: boolean;
   animated?: boolean;
-  onChange: (activeKey?: CollapseActiveKey) => void;
+  onChange?: (activeKey: CollapseActiveKey) => void;
 }
 
 export interface BaseCollapseItemProps {
@@ -17,6 +17,6 @@ export interface BaseCollapseItemProps {
   title?: ReactNode;
   isActive?: boolean;
   disabled?: boolean;
-  animated: boolean;
-  onChange?: (active?: boolean) => void;
+  animated?: boolean;
+  onChange?: (active: boolean) => void;
 }

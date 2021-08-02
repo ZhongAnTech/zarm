@@ -1,4 +1,6 @@
+export type { CollapseProps, CollapseItemProps } from './collapse';
 export { default as Collapse } from './collapse';
+
 export { default as ActionSheet } from './action-sheet';
 // export { default as Alert } from './alert';
 export { default as BackToTop } from './back-to-top';
@@ -138,5 +140,3 @@ export { default as useOrientation } from './useOrientation';
 
 export type { UseLongPressProps } from './useLongPress';
 export { default as useLongPress } from './useLongPress';
-
-export { default as useSafeLayoutEffect } from './useSafeLayoutEffect';

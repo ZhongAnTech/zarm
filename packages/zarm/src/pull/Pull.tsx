@@ -1,6 +1,9 @@
 import React, { PureComponent, CSSProperties, ReactNode } from 'react';
 import classnames from 'classnames';
-import { SuccessCircle as SuccessCircleIcon, WarningCircle as WarningCircleIcon } from '@zarm-design/icons';
+import {
+  SuccessCircle as SuccessCircleIcon,
+  WarningCircle as WarningCircleIcon,
+} from '@zarm-design/icons';
 import { REFRESH_STATE, LOAD_STATE, PullAction, PropsType } from './PropsType';
 import Events from '../utils/events';
 import Throttle from '../utils/throttle';
@@ -52,10 +55,7 @@ export default class Pull extends PureComponent<PullProps, any> {
 
   componentDidMount() {
     this.mounted = true;
-    this.addScrollEvent();
-    Events.on(this.wrap, 'touchstart', this.wrapTouchstart);
-    Events.on(this.wrap, 'touchmove', this.wrapTouchmove);
-    Events.on(this.wrap, 'touchend', this.wrapTouchEnd);
+    this.addEvent();
   }
 
   static getDerivedStateFromProps(nextProps, state) {
@@ -78,9 +78,7 @@ export default class Pull extends PureComponent<PullProps, any> {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.wrap !== this.scrollContainer) {
-      this.addScrollEvent();
-    }
+    this.addEvent();
 
     const { load, refresh } = this.props;
     if (prevProps.load!.state !== load!.state) {
@@ -93,11 +91,7 @@ export default class Pull extends PureComponent<PullProps, any> {
 
   componentWillUnmount() {
     this.mounted = false;
-    const scroller = this.wrap === document.documentElement ? window : this.wrap;
-    Events.off(scroller, 'scroll', this.throttledScroll);
-    Events.off(this.wrap, 'touchstart', this.wrapTouchstart);
-    Events.off(this.wrap, 'touchmove', this.wrapTouchmove);
-    Events.off(this.wrap, 'touchend', this.wrapTouchEnd);
+    this.removeEvent();
   }
 
   get scrollContainer(): HTMLElement | Window {
@@ -116,7 +110,8 @@ export default class Pull extends PureComponent<PullProps, any> {
           }
           node = node.parentNode;
         }
-      })(this.pull) || document.documentElement;
+      })(this.pull) || window;
+
     return container;
   }
 
@@ -152,10 +147,30 @@ export default class Pull extends PureComponent<PullProps, any> {
     this.setState({ animationDuration: this.props.animationDuration });
   };
 
-  addScrollEvent = (): void => {
+  addEvent = (): void => {
+    // scrollContainer 未变更
+    if (this.wrap === this.scrollContainer) return;
+
+    // 解除事件监听
+    if (this.wrap) {
+      this.removeEvent();
+    }
+
+    // 重新获取 scrollContainer
     this.wrap = this.scrollContainer;
-    const scroller = this.wrap === document.documentElement ? window : this.wrap;
-    Events.on(scroller, 'scroll', this.throttledScroll);
+
+    // 监听事件
+    Events.on(this.wrap, 'scroll', this.throttledScroll);
+    Events.on(this.wrap, 'touchstart', this.wrapTouchstart);
+    Events.on(this.wrap, 'touchmove', this.wrapTouchmove);
+    Events.on(this.wrap, 'touchend', this.wrapTouchEnd);
+  };
+
+  removeEvent = (): void => {
+    Events.off(this.wrap, 'scroll', this.throttledScroll);
+    Events.off(this.wrap, 'touchstart', this.wrapTouchstart);
+    Events.off(this.wrap, 'touchmove', this.wrapTouchmove);
+    Events.off(this.wrap, 'touchend', this.wrapTouchEnd);
   };
 
   onScroll = (): void => {
