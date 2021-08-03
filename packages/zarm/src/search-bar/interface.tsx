@@ -3,7 +3,6 @@ import type { Locale } from '../config-provider/PropsType';
 export default interface BaseSearchBarProps {
   disabled?: boolean;
   defaultValue?: string;
-  value?: string;
   shape?: 'rect' | 'radius' | 'round';
   cancelText?: string;
   placeholder?: string;
@@ -11,9 +10,6 @@ export default interface BaseSearchBarProps {
   clearable?: boolean;
   maxLength?: number;
   onSubmit?: (value?: string) => void;
-  onChange?: (value?: string) => void;
-  onFocus?: () => void;
-  onBlur?: () => void;
   onCancel?: () => void;
   locale?: Locale['SearchBar'];
 }

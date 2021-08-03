@@ -4,7 +4,7 @@ import React from 'react';
 import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import SearchBar from '../index';
-import SearchBarOriginal from '../SearchBar';
+// import SearchBarOriginal from '../SearchBar';
 
 describe('SearchBar', () => {
   afterEach(() => {
@@ -17,11 +17,11 @@ describe('SearchBar', () => {
       expect(toJson(wrapper)).toMatchSnapshot();
     });
 
-    // it('renders defaultValue correctly', () => {
-    //   const wrapper = mount(<SearchBar shape="round" cancelText="取消" placeholder="搜索" />);
-    //   wrapper.setProps({ defaultValue: '搜索关键字' });
-    //   expect(toJson(wrapper)).toMatchSnapshot();
-    // });
+    it('renders defaultValue correctly', () => {
+      const wrapper = mount(<SearchBar shape="round" cancelText="取消" placeholder="搜索" />);
+      wrapper.setProps({ defaultValue: '搜索关键字' });
+      expect(toJson(wrapper)).toMatchSnapshot();
+    });
 
     // it('renders onFocus called correctly', () => {
     //   const onFocus = jest.fn();
@@ -177,14 +177,14 @@ describe('SearchBar', () => {
   //   expect(mOnChange).not.toBeCalled();
   // });
 
-  it('should handle composition end event and call props.onChange()', () => {
-    const mOnChange = jest.fn();
-    const wrapper = mount(<SearchBarOriginal onChange={mOnChange} />);
-    const mEvent = { target: { value: 'test' }, type: 'compositionend' };
-    const inputWrapper = wrapper.find('input');
-    inputWrapper.simulate('compositionend', mEvent);
-    expect(mOnChange).toBeCalledWith('test');
-  });
+  // it('should handle composition end event and call props.onChange()', () => {
+  //   const mOnChange = jest.fn();
+  //   const wrapper = mount(<SearchBarOriginal onChange={mOnChange} />);
+  //   const mEvent = { target: { value: 'test' }, type: 'compositionend' };
+  //   const inputWrapper = wrapper.find('input');
+  //   inputWrapper.simulate('compositionend', mEvent);
+  //   expect(mOnChange).toBeCalledWith('test');
+  // });
 
   // it('should re-calculate the position of cancel ref if props.locale.cancelText is changed', () => {
   //   const calculatePositonSpy = jest.spyOn(SearchBarOriginal.prototype, 'calculatePositon');

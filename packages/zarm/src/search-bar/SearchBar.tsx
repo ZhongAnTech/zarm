@@ -1,26 +1,18 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import { Search as SearchIcon } from '@zarm-design/icons';
-import type BaseSearchBarProps from './PropsType';
+import type BaseSearchBarProps from './interface';
 import useEventCallback from '../utils/hooks/useEventCallback';
 import { ConfigContext } from '../n-config-provider';
 import Input from '../input';
+import { getValue } from '../input/utils';
 
-export interface SearchBarProps extends BaseSearchBarProps {
-  className?: string;
-}
+export type SearchBarProps = BaseSearchBarProps &
+  React.InputHTMLAttributes<HTMLInputElement> & {
+    className?: string;
+  };
 
 const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
-  const cancelRef = React.useRef<HTMLDivElement>(null);
-  const inputRef = React.useRef<HTMLTextAreaElement | HTMLInputElement>();
-  const formRef = React.createRef<HTMLFormElement>();
-  const cancelOuterWidth = React.useRef<number>(0);
-  const [currentValue, setCurrentValue] = React.useState<string>(
-    props.defaultValue || props.value || '',
-  );
-  const [isFocus, setIsFocus] = React.useState<boolean>(false);
-  const [isOnComposition, setIsOnComposition] = React.useState<boolean>(false);
-
   const {
     className,
     shape,
@@ -31,7 +23,16 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
     maxLength,
     locale,
     cancelText,
+    defaultValue,
+    value,
   } = props;
+  const cancelRef = React.useRef<HTMLDivElement>(null);
+  const inputRef = React.useRef<HTMLTextAreaElement | HTMLInputElement>();
+  const formRef = React.createRef<HTMLFormElement>();
+  const cancelOuterWidth = React.useRef<number>(0);
+  const [currentValue, setCurrentValue] = React.useState<string>(getValue({ value, defaultValue }));
+  const [isFocus, setIsFocus] = React.useState<boolean>(false);
+  const [isOnComposition, setIsOnComposition] = React.useState<boolean>(false);
 
   const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
   const prefixCls = `${globalPrefixCls}-search-bar`;
@@ -52,11 +53,11 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
     cancelRef.current.className += ' animation-ease';
   };
 
-  const onInternalBlur = (): void => {
+  const onInternalBlur = (e: React.FocusEvent<HTMLInputElement>): void => {
     const { onBlur } = props;
     setIsFocus(false);
     !currentValue && blurAnim();
-    typeof onBlur === 'function' && onBlur();
+    typeof onBlur === 'function' && onBlur(e);
   };
 
   const handleCancelCallback = useEventCallback(onInternalBlur, [currentValue, isOnComposition]);
@@ -69,23 +70,24 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
     typeof onCancel === 'function' && onCancel();
   };
 
-  const onInternalFocus = (): void => {
+  const onInternalFocus = (e: React.FocusEvent<HTMLInputElement>): void => {
     const { onFocus } = props;
     setIsFocus(true);
     focusAnim();
-    typeof onFocus === 'function' && onFocus();
+    typeof onFocus === 'function' && onFocus(e);
   };
 
-  const onInternalChange = (e): void => {
+  const onInternalChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { onChange } = props;
-    const { value } = e.target;
-    setCurrentValue(value);
+    setCurrentValue(e.target.value);
     if (!isOnComposition && typeof onChange === 'function') {
-      onChange(value);
+      onChange(e);
     }
   };
 
-  const handleComposition = (e: React.CompositionEvent<HTMLInputElement>): void => {
+  const handleComposition = (
+    e: React.CompositionEvent<HTMLInputElement> | React.ChangeEvent<HTMLInputElement>,
+  ): void => {
     if (e.type === 'compositionstart') {
       setIsOnComposition(true);
     }
@@ -93,9 +95,7 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
     if (e.type === 'compositionend') {
       setIsOnComposition(false);
       const { onChange } = props;
-      const { target } = e;
-      const { value } = target as HTMLInputElement;
-      typeof onChange === 'function' && onChange(value);
+      typeof onChange === 'function' && onChange(e as React.ChangeEvent<HTMLInputElement>);
     }
   };
 
@@ -134,6 +134,10 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
   React.useEffect(() => {
     calculatePositon();
   }, [cancelText, showCancel, locale, calculatePositon]);
+
+  React.useEffect(() => {
+    setCurrentValue(getValue({ value, defaultValue: defaultValue || '' }));
+  }, [defaultValue, value]);
 
   const renderCancel = (): JSX.Element => {
     return (
