@@ -56,6 +56,8 @@ export type { MessageProps } from './message';
 export { default as Message } from './message';
 
 export { default as Modal } from './modal';
+
+export type { NoticeBarProps } from './notice-bar';
 export { default as NoticeBar } from './notice-bar';
 
 export type { PanelProps } from './panel';
@@ -83,7 +85,10 @@ export type { RadioProps, RadioGroupProps } from './radio';
 export { default as Radio } from './radio';
 
 export { default as Scroller } from './scroller';
+
+export type { SearchBarProps } from './search-bar';
 export { default as SearchBar } from './search-bar';
+
 export { default as Slider } from './slider';
 
 export type { ActivityIndicatorProps } from './activity-indicator';
@@ -92,7 +97,9 @@ export { default as ActivityIndicator } from './activity-indicator';
 export type { StepperProps } from './stepper';
 export { default as Stepper } from './stepper';
 
+export type { CarouselProps } from './carousel';
 export { default as Carousel } from './carousel';
+
 export { default as SwipeAction } from './swipe-action';
 
 export type { SwitchProps } from './switch';
