@@ -48,7 +48,7 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
   const wrapperRef = (ref as any) || React.createRef<HTMLDivElement>();
   const inputRef = React.useRef<HTMLTextAreaElement | HTMLInputElement>();
 
-  const [currentValue, setCurrentValue] = React.useState(getValue({ value, defaultValue }));
+  const [currentValue, setCurrentValue] = React.useState(getValue({ value, defaultValue }, ''));
   const [focused, setFocused] = React.useState<boolean>(autoFocus!);
 
   const isTextarea = type === 'text' && 'rows' in props;
@@ -132,18 +132,23 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
     target.value = originalValue;
   };
 
-  const commonProps = {
+  const commonProps: InputTextProps & InputTextareaProps = {
     ...restProps,
     maxLength,
     disabled,
     autoFocus,
     readOnly,
-    value: 'value' in props ? currentValue : undefined,
-    defaultValue: 'defaultValue' in props ? defaultValue : undefined,
-    onChange: 'onChange' in props ? onInputChange : undefined,
+    defaultValue,
     onFocus: onInputFocus,
     onBlur: onInputBlur,
   };
+
+  if ('value' in props) {
+    commonProps.value = currentValue;
+  }
+  if ('onChange' in props) {
+    commonProps.onChange = onInputChange;
+  }
 
   // 渲染输入框
   const renderInput = isTextarea ? (
