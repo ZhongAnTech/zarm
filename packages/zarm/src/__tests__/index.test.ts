@@ -264,6 +264,12 @@ describe('index', () => {
         "Scroller": [Function],
         "SearchBar": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "clearable": true,
+            "disabled": false,
+            "shape": "radius",
+            "showButton": false,
+          },
           "render": [Function],
         },
         "Select": Object {

@@ -13,19 +13,23 @@ describe('SearchBar', () => {
   });
   describe('snapshot', () => {
     it('renders correctly', () => {
-      const wrapper = render(<SearchBar shape="round" cancelText="取消" placeholder="搜索" />);
+      const wrapper = render(
+        <SearchBar shape="round" buttonText="搜索" placeholder="请输入关键字" />,
+      );
       expect(toJson(wrapper)).toMatchSnapshot();
     });
 
     it('renders defaultValue correctly', () => {
-      const wrapper = mount(<SearchBar shape="round" cancelText="取消" placeholder="搜索" />);
+      const wrapper = mount(
+        <SearchBar shape="round" buttonText="搜索" placeholder="请输入关键字" />,
+      );
       wrapper.setProps({ defaultValue: '搜索关键字' });
       expect(toJson(wrapper)).toMatchSnapshot();
     });
 
     // it('renders onFocus called correctly', () => {
     //   const onFocus = jest.fn();
-    //   const wrapper = mount(<SearchBar shape="round" placeholder="搜索" onFocus={onFocus} />);
+    //   const wrapper = mount(<SearchBar shape="round" placeholder="请输入关键字" onFocus={onFocus} />);
     //   wrapper.find('input[type="search"]').simulate('focus');
     //   expect(onFocus).toBeCalled();
     //   expect(toJson(wrapper)).toMatchSnapshot();
@@ -33,7 +37,7 @@ describe('SearchBar', () => {
 
     // it('renders onChange called correctly', () => {
     //   const onChange = jest.fn();
-    //   const wrapper = mount(<SearchBar shape="round" placeholder="搜索" onChange={onChange} />);
+    //   const wrapper = mount(<SearchBar shape="round" placeholder="请输入关键字" onChange={onChange} />);
     //   const input = wrapper.find('input[type="search"]');
     //   input.simulate('change', { target: { value: '测试值' } });
     //   expect(input.instance()['value']).toEqual('测试值');
@@ -42,7 +46,7 @@ describe('SearchBar', () => {
 
     // it('renders onCancel called correctly', () => {
     //   const onCancel = jest.fn();
-    //   const wrapper = mount(<SearchBar shape="round" placeholder="搜索" onCancel={onCancel} />);
+    //   const wrapper = mount(<SearchBar shape="round" placeholder="请输入关键字" onCancel={onCancel} />);
     //   const input = wrapper.find('input[type="search"]');
     //   input.simulate('focus');
     //   wrapper.find('.za-search-bar__cancel').simulate('click');
@@ -52,7 +56,7 @@ describe('SearchBar', () => {
 
     // it('renders onSubmit called correctly', () => {
     //   const onSubmit = jest.fn();
-    //   const wrapper = mount(<SearchBar shape="round" placeholder="搜索" onSubmit={onSubmit} />);
+    //   const wrapper = mount(<SearchBar shape="round" placeholder="请输入关键字" onSubmit={onSubmit} />);
     //   const input = wrapper.find('input[type="search"]');
     //   input.simulate('change', { target: { value: 'My new value' } });
     //   wrapper.find('.za-search-bar__form').simulate('submit');
@@ -186,18 +190,18 @@ describe('SearchBar', () => {
   //   expect(mOnChange).toBeCalledWith('test');
   // });
 
-  // it('should re-calculate the position of cancel ref if props.locale.cancelText is changed', () => {
+  // it('should re-calculate the position of cancel ref if props.locale.buttonText is changed', () => {
   //   const calculatePositonSpy = jest.spyOn(SearchBarOriginal.prototype, 'calculatePositon');
-  //   const wrapper = mount(<SearchBarOriginal locale={{ cancelText: '取消', placeholder: '' }} />);
+  //   const wrapper = mount(<SearchBarOriginal locale={{ buttonText: '搜索', placeholder: '' }} />);
   //   expect(calculatePositonSpy).toBeCalledWith(
   //     expect.objectContaining({
-  //       locale: { cancelText: '取消', placeholder: '' },
+  //       locale: { buttonText: '搜索', placeholder: '' },
   //     }),
   //   );
-  //   wrapper.setProps({ locale: { cancelText: 'cancel', placeholder: '' } });
+  //   wrapper.setProps({ locale: { buttonText: 'cancel', placeholder: '' } });
   //   expect(calculatePositonSpy).toBeCalledWith(
   //     expect.objectContaining({
-  //       locale: { cancelText: 'cancel', placeholder: '' },
+  //       locale: { buttonText: 'cancel', placeholder: '' },
   //     }),
   //   );
   // });
