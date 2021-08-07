@@ -1,12 +1,10 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { HTMLAttributes, useCallback, useEffect, useRef, useState } from 'react';
 import type { BaseLoadingProps } from './interface';
 import Popup from '../popup';
 import { ConfigContext } from '../n-config-provider';
 import ActivityIndicator from '../activity-indicator';
 
-export interface LoadingProps extends BaseLoadingProps {
-  className?: string;
-}
+export interface LoadingProps extends BaseLoadingProps, HTMLAttributes<HTMLDivElement> {}
 export interface UseLoading {
   show: (props: LoadingProps) => void;
   hide: () => void;
