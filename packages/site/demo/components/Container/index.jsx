@@ -50,7 +50,9 @@ const Container = (props) => {
                     return (
                       <li
                         key={+index}
-                        style={{ backgroundColor: color }}
+                        style={{
+                          backgroundColor: color,
+                        }}
                         onClick={() => {
                           setPrimaryColor(color);
                           window.localStorage.primaryColor = color;
