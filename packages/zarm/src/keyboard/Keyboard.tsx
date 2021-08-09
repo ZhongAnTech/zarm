@@ -27,11 +27,13 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
 
   onLongPressIn = (key: string) => {
     this.onKeyClick(key);
-    this.longPressTimer = setTimeout(() => {
-      this.longPressTimer = setInterval(() => {
-        this.onKeyClick(key);
-      }, 100);
-    }, 800);
+    !this.longPressTimer &&
+      setTimeout(() => {
+        this.longPressTimer && clearInterval(this.longPressTimer);
+        this.longPressTimer = setInterval(() => {
+          this.onKeyClick(key);
+        }, 100);
+      }, 800);
   };
 
   onLongPressOut = (e: TouchEvent<HTMLDivElement> | MouseEvent<HTMLDivElement>) => {
