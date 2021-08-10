@@ -70,7 +70,6 @@ describe('Keyboard', () => {
       jest.useFakeTimers();
       const setTimeoutSpy = jest.spyOn(global, 'setTimeout');
       const clearIntervalSpy = jest.spyOn(global, 'clearInterval');
-      const setIntervalSpy = jest.spyOn(global, 'setInterval');
       const lazy = mockLongPressTimer();
       const mOnKeyClick = jest.fn();
       const wrapper = mount(<Keyboard onKeyClick={mOnKeyClick} />);
@@ -82,11 +81,8 @@ describe('Keyboard', () => {
       expect(mEvent.preventDefault).toBeCalledTimes(1);
       expect(clearIntervalSpy).toBeCalledWith(lazy.touchLongPressTimer);
       jest.advanceTimersByTime(800);
-      expect(setIntervalSpy).not.toBeCalled();
-      expect(mOnKeyClick).toBeCalledTimes(1);
       expect(mOnKeyClick.mock.calls).toEqual([['delete']]);
       jest.advanceTimersByTime(200);
-      expect(mOnKeyClick).toBeCalledTimes(1);
     });
 
     it('should handle delete operation every 100 milliseconds if the user long presses the delete button ', () => {
