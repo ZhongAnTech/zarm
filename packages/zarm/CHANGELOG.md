@@ -1,5 +1,11 @@
 # 版本更新日志
 
+## v2.9.7
+
+- Bug Fix
+
+  - [Keyboard] 修复长按删除按钮会陷入死循环（重复执行删除操作且松开后无法退出）的 bug。[#745](https://github.com/ZhongAnTech/zarm/pull/745)[@Confettis]
+
 ## v2.9.6
 
 - Bug Fix
