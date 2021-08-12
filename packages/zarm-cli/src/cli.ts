@@ -12,7 +12,7 @@ commander.version(version);
 commander
   .command('build')
   .description('打包编译仓库')
-  .option('-m, --mode <es|lib|umd|umd-ugly|umd-zip|native>', '选择打包模式')
+  .option('-m, --mode <es|lib|umd|umd-ugly|native>', '选择打包模式')
   .option('-p, --path <path>', '源文件目录')
   .option('-o, --out-file <path>', '输出文件')
   .option('-d, --out-dir <path>', '输出目录')
