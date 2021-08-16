@@ -1,33 +1,38 @@
 import React, { RefAttributes, useCallback, useEffect, useRef, useState } from 'react';
+import { HTMLDefProps } from 'src/toast/interface';
 import classNames from 'classnames';
-import BaseToastProps, { HTMLDefProps } from './interface';
+import type { BaseLoadingProps } from './interface';
 import Popup from '../popup';
 import { ConfigContext } from '../n-config-provider';
+import ActivityIndicator from '../activity-indicator';
 
-export interface ToastProps extends BaseToastProps, HTMLDefProps {}
-export interface UseToast {
-  show: (props: ToastProps) => void;
+export interface LoadingProps extends BaseLoadingProps, HTMLDefProps {}
+export interface UseLoading {
+  show: (props: LoadingProps) => void;
   hide: () => void;
 }
 interface CompoundedComponent
-  extends React.ForwardRefExoticComponent<ToastProps & RefAttributes<HTMLDivElement>> {
-  useToast: () => UseToast;
+  extends React.ForwardRefExoticComponent<LoadingProps & RefAttributes<HTMLDivElement>> {
+  useLoading: () => UseLoading;
 }
-const Toast = React.forwardRef<unknown, ToastProps>((props, ref) => {
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-toast`;
 
-  const toastRef = (ref as any) || React.createRef<HTMLDivElement>();
+const Loading = React.forwardRef<unknown, LoadingProps>((props, ref) => {
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-loading`;
+
+  const loadingRef = (ref as any) || React.createRef<HTMLDivElement>();
+
   const {
     className,
-    stayTime,
-    content,
     visible: propVisible,
+    content,
     afterClose,
+    stayTime,
     style,
     onClick,
     ...others
   } = props;
+
   const [visible, setVisible] = useState(propVisible!);
   const timerRef = useRef(0);
 
@@ -68,22 +73,21 @@ const Toast = React.forwardRef<unknown, ToastProps>((props, ref) => {
     >
       <div
         className={classNames(prefixCls, className)}
-        ref={toastRef}
+        ref={loadingRef}
         style={style}
         onClick={onClick}
       >
-        <div className={`${prefixCls}__container`}>{content}</div>
+        <div className={`${prefixCls}__container`} style={style}>
+          {content || <ActivityIndicator type="spinner" size="lg" />}
+        </div>
       </div>
     </Popup>
   );
 }) as CompoundedComponent;
 
-Toast.displayName = 'Toast';
+Loading.displayName = 'Loading';
 
-Toast.defaultProps = {
-  visible: false,
-  stayTime: 3000,
-  mask: false,
+Loading.defaultProps = {
+  mask: true,
 };
-
-export default Toast;
+export default Loading;
