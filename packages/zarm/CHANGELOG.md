@@ -20,6 +20,18 @@
     - 移除`size` prop，及相关样式。
     - 新增`onClose` prop, 关闭触发的回调函数。
 
+## v2.9.7
+
+- Bug Fix
+
+  - [Keyboard] 修复长按删除按钮会陷入死循环（重复执行删除操作且松开后无法退出）的 bug。[#745](https://github.com/ZhongAnTech/zarm/pull/745)[@Confettis]
+
+## v2.9.6
+
+- Bug Fix
+
+  - [Calendar] 修复日历组件不支持国际化的 bug。[#738](https://github.com/ZhongAnTech/zarm/pull/738)
+
 ## v2.9.5
 
 - Bug Fix

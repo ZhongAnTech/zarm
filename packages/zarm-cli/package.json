@@ -57,7 +57,6 @@
     "html-webpack-plugin": "^5.3.1",
     "import-local": "^3.0.2",
     "jest": "^26.5.3",
-    "jszip": "^3.6.0",
     "metro-react-native-babel-preset": "^0.63.0",
     "mini-css-extract-plugin": "^1.6.0",
     "mkdirp": "^0.5.1",

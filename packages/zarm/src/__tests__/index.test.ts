@@ -50,7 +50,10 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "Calendar": [Function],
+        "Calendar": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        },
         "Carousel": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
