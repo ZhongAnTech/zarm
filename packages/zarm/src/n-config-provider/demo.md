@@ -28,6 +28,7 @@ const Demo = () => {
   const [locale, setLocale] = useState(localStorage.locale || 'zhCN');
   const [theme, setTheme] = useState(localStorage.theme || 'light');
   const [primaryColor, setPrimaryColor] = useState(localStorage.primaryColor || colors[0]);
+  const [cssVars, setCssVars] = useState();
   const [visiblePopup, setVisiblePopup] = useState(false);
 
   const show = (key) => {
@@ -85,15 +86,37 @@ const Demo = () => {
         }
       />
 
+      <Cell
+        title="设置 CSS 变量"
+        description={
+          <Button
+            size="xs"
+            onClick={() => {
+              setCssVars(
+                cssVars
+                  ? null
+                  : {
+                      '--button-primary-color': '#ff0000',
+                      '--cell-height': '70px',
+                    },
+              );
+            }}
+          >
+            {cssVars ? '还原' : '设置'}
+          </Button>
+        }
+      />
+
       <Message theme="warning">以下为组件示例</Message>
 
       <NConfigProvider
+        safeIphoneX
         locale={locale === 'enUS' ? enUS : zhCN}
         primaryColor={primaryColor}
         theme={theme}
-        safeIphoneX
+        cssVars={cssVars}
       >
-        <>
+        <div>
           <SearchBar />
           <Keyboard />
 
@@ -109,7 +132,7 @@ const Demo = () => {
 
           <Cell
             description={
-              <Button size="xs" onClick={() => show('confirm')}>
+              <Button theme="primary" size="xs" onClick={() => show('confirm')}>
                 开启
               </Button>
             }
@@ -160,7 +183,7 @@ const Demo = () => {
               badge={{ shape: 'dot' }}
             />
           </TabBar>
-        </>
+        </div>
       </NConfigProvider>
     </>
   );
