@@ -27,6 +27,7 @@ export default {
   'app.home.index.scanning-code': 'Scan QR Code',
   'app.home.components.simulator.affix': 'set affix',
   'app.home.components.simulator.unaffix': 'set unaffix',
+  'app.home.components.action.edit': 'Edit this page on GitHub',
   'app.home.resources': 'Design Resources',
   'app.home.resources.introduce':
     'Please find below some of the design resources and tools about Zarm Design that we consider valuable.',
