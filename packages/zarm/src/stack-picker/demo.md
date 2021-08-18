@@ -127,6 +127,6 @@ ReactDOM.render(<Demo />, mountNode);
 | okText        | string                                                                    | '确定'                                       | 确定栏文字                                     |
 | cancelText    | string                                                                    | '取消'                                       | 取消栏文字                                     |
 | maskClosable  | boolean                                                                   | true                                         | 是否点击遮罩层时关闭，需要和 onCancel 一起使用 |
-| onChange      | (selected?: object) => {label, value}[]                                   | -                                            | 值变化时触发的回调函数                         |
-| onOk          | (selected?: object) => value[]                                            | -                                            | 点击确定时触发的回调函数                       |
+| onChange      | (value: string[]) => void                                                 | -                                            | 值变化时触发的回调函数                         |
+| onOk          | (value: string[]) => void                                                 | -                                            | 点击确定时触发的回调函数                       |
 | onCancel      | () => void                                                                | -                                            | 点击取消时触发的回调函数                       |

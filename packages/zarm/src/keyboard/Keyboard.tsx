@@ -23,20 +23,36 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
     type: 'number',
   };
 
-  private longPressTimer: ReturnType<typeof setTimeout | typeof setInterval>;
+  private touchLongPressTimer: ReturnType<typeof setTimeout | typeof setInterval>;
 
-  onLongPressIn = (key: string) => {
+  private mouseLongPressTimer: ReturnType<typeof setTimeout | typeof setInterval>;
+
+  onTouchLongPressIn = (key: string) => {
     this.onKeyClick(key);
-    this.longPressTimer = setTimeout(() => {
-      this.longPressTimer = setInterval(() => {
+    this.touchLongPressTimer = setTimeout(() => {
+      this.touchLongPressTimer = setInterval(() => {
         this.onKeyClick(key);
       }, 100);
     }, 800);
   };
 
-  onLongPressOut = (e: TouchEvent<HTMLDivElement> | MouseEvent<HTMLDivElement>) => {
+  onTouchLongPressOut = (e: TouchEvent<HTMLDivElement> | MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
-    clearInterval(this.longPressTimer);
+    clearInterval(this.touchLongPressTimer);
+  };
+
+  onMouseLongPressIn = (key: string) => {
+    this.onKeyClick(key);
+    this.mouseLongPressTimer = setTimeout(() => {
+      this.mouseLongPressTimer = setInterval(() => {
+        this.onKeyClick(key);
+      }, 100);
+    }, 800);
+  };
+
+  onMouseLongPressOut = (e: TouchEvent<HTMLDivElement> | MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    clearInterval(this.mouseLongPressTimer);
   };
 
   onKeyClick = (key: string) => {
@@ -79,11 +95,11 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
         <div className={`${prefixCls}__handle`}>
           <div
             className={`${prefixCls}__item`}
-            onTouchStart={() => this.onLongPressIn('delete')}
-            onTouchEnd={this.onLongPressOut}
-            onTouchCancel={this.onLongPressOut}
-            onMouseDown={() => this.onLongPressIn('delete')}
-            onMouseUp={this.onLongPressOut}
+            onTouchStart={() => this.onTouchLongPressIn('delete')}
+            onTouchEnd={this.onTouchLongPressOut}
+            onTouchCancel={this.onTouchLongPressOut}
+            onMouseDown={() => this.onMouseLongPressIn('delete')}
+            onMouseUp={this.onMouseLongPressOut}
           >
             <DeleteKeyIcon size="lg" />
           </div>
