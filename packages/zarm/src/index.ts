@@ -118,6 +118,9 @@ export { default as TabBar } from './tab-bar';
 
 export { default as ImagePreview } from './image-preview';
 
+export type { PinchZoomProps } from './pinch-zoom';
+export { default as PinchZoom } from './pinch-zoom';
+
 export { default as ConfigProvider } from './config-provider';
 
 export type { ConfigProviderProps as NConfigProviderProps } from './n-config-provider';
