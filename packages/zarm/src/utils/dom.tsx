@@ -249,6 +249,26 @@ export function scrollTo(
   animate();
 }
 
+export function getElementSize(element: HTMLElement | null): { width: number; height: number } {
+  if (element) {
+    const { offsetWidth, offsetHeight } = element;
+
+    if (offsetWidth && offsetHeight) {
+      return { width: offsetWidth, height: offsetHeight };
+    }
+
+    const style = getComputedStyle(element);
+    const width = parseFloat(style.width);
+    const height = parseFloat(style.height);
+
+    if (height && width) {
+      return { width, height };
+    }
+  }
+
+  return { width: 0, height: 0 };
+}
+
 export const canUseDOM = !!(
   typeof window !== 'undefined' &&
   window.document &&
