@@ -3,21 +3,20 @@
 exports[`templates component should create component template 1`] = `
 "import * as React from 'react';
 import classnames from 'classnames';
+import { ConfigContext } from '../n-config-provider';
+import type { BaseMyTestComponentProps } from './interface';
 
-export interface MyTestComponentProps {
-  prefixCls?: string;
+export interface MyTestComponentProps extends BaseMyTestComponentProps {
   className?: string;
 }
 
 const MyTestComponent = React.forwardRef<unknown, MyTestComponentProps>((props, ref) => {
-  const {
-    prefixCls,
-    className,
-    children,
-    ...restProps
-  } = props;
+  const { className, children, ...restProps } = props;
 
-  const compRef = (ref as any) || React.createRef<HTMLElement>();
+  const compRef = (ref as any) || React.createRef<HTMLDivElement>();
+
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = \`\${globalPrefixCls}-my-test-component\`;
   const cls = classnames(prefixCls, className);
 
   return (
@@ -29,9 +28,7 @@ const MyTestComponent = React.forwardRef<unknown, MyTestComponentProps>((props, 
 
 MyTestComponent.displayName = 'MyTestComponent';
 
-MyTestComponent.defaultProps = {
-  prefixCls: 'za-my-test-component',
-};
+MyTestComponent.defaultProps = {};
 
 export default MyTestComponent;
 

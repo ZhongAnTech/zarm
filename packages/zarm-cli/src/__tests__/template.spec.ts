@@ -35,6 +35,7 @@ describe('template', () => {
       expect(syncMocked).toBeCalledWith('src/primary-button/__tests__');
       expect(infoStub).toBeCalledWith(expect.stringMatching('create src/primary-button/index.ts'));
       expect(infoStub).toBeCalledWith(expect.stringMatching('create src/primary-button/demo.md'));
+      expect(infoStub).toBeCalledWith(expect.stringMatching('create src/primary-button/interface.ts'));
       expect(infoStub).toBeCalledWith(
         expect.stringMatching('create src/primary-button/primary button.tsx'),
       );
@@ -47,9 +48,9 @@ describe('template', () => {
       expect(infoStub).toBeCalledWith(
         expect.stringMatching('create src/primary-button/__tests__/index.test.tsx'),
       );
-      expect(infoStub).toBeCalledTimes(6);
-      expect(openSyncMocked).toBeCalledTimes(6);
-      expect(writeSyncMocked).toBeCalledTimes(6);
+      expect(infoStub).toBeCalledTimes(7);
+      expect(openSyncMocked).toBeCalledTimes(7);
+      expect(writeSyncMocked).toBeCalledTimes(7);
       expect(signaleSuccessStub).toBeCalledWith('create component templates successfully!!');
     });
   });
