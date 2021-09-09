@@ -86,7 +86,7 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
                               class="za-carousel__item za-image-preview__item"
                             >
                               <div
-                                class="za-image-preview__item__img za-pinch-zoom"
+                                class="za-pinch-zoom za-image-preview__item__img"
                               >
                                 <img
                                   alt=""
@@ -99,7 +99,7 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
                               class="za-carousel__item za-image-preview__item"
                             >
                               <div
-                                class="za-image-preview__item__img za-pinch-zoom"
+                                class="za-pinch-zoom za-image-preview__item__img"
                               >
                                 <img
                                   alt=""
@@ -112,7 +112,7 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
                               class="za-carousel__item za-image-preview__item"
                             >
                               <div
-                                class="za-image-preview__item__img za-pinch-zoom"
+                                class="za-pinch-zoom za-image-preview__item__img"
                               >
                                 <img
                                   alt=""
@@ -228,70 +228,79 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
                             className="za-carousel__item za-image-preview__item"
                             key=".$0"
                           >
-                            <PinchZoom
+                            <ForwardRef
                               className="za-image-preview__item__img"
                               maxScale={3}
                               minScale={1}
-                              prefixCls="za-pinch-zoom"
                             >
                               <div
-                                className="za-image-preview__item__img za-pinch-zoom"
+                                className="za-pinch-zoom za-image-preview__item__img"
+                                onTouchCancel={[Function]}
+                                onTouchEnd={[Function]}
+                                onTouchMove={[Function]}
+                                onTouchStart={[Function]}
+                                onWheel={[Function]}
                               >
                                 <img
                                   alt=""
                                   draggable={false}
                                   key="0/.0"
-                                  onLoad={[Function]}
                                   src="https://static.zhongan.com/website/health/zarm/images/banners/1.png"
                                 />
                               </div>
-                            </PinchZoom>
+                            </ForwardRef>
                           </div>
                           <div
                             className="za-carousel__item za-image-preview__item"
                             key=".$1"
                           >
-                            <PinchZoom
+                            <ForwardRef
                               className="za-image-preview__item__img"
                               maxScale={3}
                               minScale={1}
-                              prefixCls="za-pinch-zoom"
                             >
                               <div
-                                className="za-image-preview__item__img za-pinch-zoom"
+                                className="za-pinch-zoom za-image-preview__item__img"
+                                onTouchCancel={[Function]}
+                                onTouchEnd={[Function]}
+                                onTouchMove={[Function]}
+                                onTouchStart={[Function]}
+                                onWheel={[Function]}
                               >
                                 <img
                                   alt=""
                                   draggable={false}
                                   key="0/.0"
-                                  onLoad={[Function]}
                                   src="https://static.zhongan.com/website/health/zarm/images/banners/2.png"
                                 />
                               </div>
-                            </PinchZoom>
+                            </ForwardRef>
                           </div>
                           <div
                             className="za-carousel__item za-image-preview__item"
                             key=".$2"
                           >
-                            <PinchZoom
+                            <ForwardRef
                               className="za-image-preview__item__img"
                               maxScale={3}
                               minScale={1}
-                              prefixCls="za-pinch-zoom"
                             >
                               <div
-                                className="za-image-preview__item__img za-pinch-zoom"
+                                className="za-pinch-zoom za-image-preview__item__img"
+                                onTouchCancel={[Function]}
+                                onTouchEnd={[Function]}
+                                onTouchMove={[Function]}
+                                onTouchStart={[Function]}
+                                onWheel={[Function]}
                               >
                                 <img
                                   alt=""
                                   draggable={false}
                                   key="0/.0"
-                                  onLoad={[Function]}
                                   src="https://static.zhongan.com/website/health/zarm/images/banners/3.png"
                                 />
                               </div>
-                            </PinchZoom>
+                            </ForwardRef>
                           </div>
                         </div>
                       </div>
@@ -414,7 +423,7 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
                               class="za-carousel__item za-image-preview__item"
                             >
                               <div
-                                class="za-image-preview__item__img za-pinch-zoom"
+                                class="za-pinch-zoom za-image-preview__item__img"
                               >
                                 <img
                                   alt=""
@@ -427,7 +436,7 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
                               class="za-carousel__item za-image-preview__item"
                             >
                               <div
-                                class="za-image-preview__item__img za-pinch-zoom"
+                                class="za-pinch-zoom za-image-preview__item__img"
                               >
                                 <img
                                   alt=""
@@ -440,7 +449,7 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
                               class="za-carousel__item za-image-preview__item"
                             >
                               <div
-                                class="za-image-preview__item__img za-pinch-zoom"
+                                class="za-pinch-zoom za-image-preview__item__img"
                               >
                                 <img
                                   alt=""
@@ -559,70 +568,79 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
                             className="za-carousel__item za-image-preview__item"
                             key=".$0"
                           >
-                            <PinchZoom
+                            <ForwardRef
                               className="za-image-preview__item__img"
                               maxScale={3}
                               minScale={1}
-                              prefixCls="za-pinch-zoom"
                             >
                               <div
-                                className="za-image-preview__item__img za-pinch-zoom"
+                                className="za-pinch-zoom za-image-preview__item__img"
+                                onTouchCancel={[Function]}
+                                onTouchEnd={[Function]}
+                                onTouchMove={[Function]}
+                                onTouchStart={[Function]}
+                                onWheel={[Function]}
                               >
                                 <img
                                   alt=""
                                   draggable={false}
                                   key="0/.0"
-                                  onLoad={[Function]}
                                   src="https://cdn-health.zhongan.com/zarm/imagePreview/compress_1.png"
                                 />
                               </div>
-                            </PinchZoom>
+                            </ForwardRef>
                           </div>
                           <div
                             className="za-carousel__item za-image-preview__item"
                             key=".$1"
                           >
-                            <PinchZoom
+                            <ForwardRef
                               className="za-image-preview__item__img"
                               maxScale={3}
                               minScale={1}
-                              prefixCls="za-pinch-zoom"
                             >
                               <div
-                                className="za-image-preview__item__img za-pinch-zoom"
+                                className="za-pinch-zoom za-image-preview__item__img"
+                                onTouchCancel={[Function]}
+                                onTouchEnd={[Function]}
+                                onTouchMove={[Function]}
+                                onTouchStart={[Function]}
+                                onWheel={[Function]}
                               >
                                 <img
                                   alt=""
                                   draggable={false}
                                   key="0/.0"
-                                  onLoad={[Function]}
                                   src="https://cdn-health.zhongan.com/zarm/imagePreview/compress_2.png"
                                 />
                               </div>
-                            </PinchZoom>
+                            </ForwardRef>
                           </div>
                           <div
                             className="za-carousel__item za-image-preview__item"
                             key=".$2"
                           >
-                            <PinchZoom
+                            <ForwardRef
                               className="za-image-preview__item__img"
                               maxScale={3}
                               minScale={1}
-                              prefixCls="za-pinch-zoom"
                             >
                               <div
-                                className="za-image-preview__item__img za-pinch-zoom"
+                                className="za-pinch-zoom za-image-preview__item__img"
+                                onTouchCancel={[Function]}
+                                onTouchEnd={[Function]}
+                                onTouchMove={[Function]}
+                                onTouchStart={[Function]}
+                                onWheel={[Function]}
                               >
                                 <img
                                   alt=""
                                   draggable={false}
                                   key="0/.0"
-                                  onLoad={[Function]}
                                   src="https://cdn-health.zhongan.com/zarm/imagePreview/compress_3.png"
                                 />
                               </div>
-                            </PinchZoom>
+                            </ForwardRef>
                           </div>
                         </div>
                       </div>

@@ -50,7 +50,10 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "Calendar": [Function],
+        "Calendar": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        },
         "Carousel": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
@@ -97,7 +100,22 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "Collapse": [Function],
+        "Collapse": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "Item": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "defaultProps": Object {
+              "animated": false,
+              "disabled": false,
+            },
+            "render": [Function],
+          },
+          "defaultProps": Object {
+            "animated": false,
+            "multiple": false,
+          },
+          "render": [Function],
+        },
         "ConfigProvider": [Function],
         "CustomInput": Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -157,7 +175,14 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "Loading": [Function],
+        "Loading": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "mask": true,
+          },
+          "render": [Function],
+          "useLoading": [Function],
+        },
         "Marquee": [Function],
         "Mask": Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -205,6 +230,14 @@ describe('index', () => {
           "render": [Function],
         },
         "PickerView": [Function],
+        "PinchZoom": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "maxScale": 3,
+            "minScale": 1,
+          },
+          "render": [Function],
+        },
         "Popper": [Function],
         "Popup": Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -249,6 +282,12 @@ describe('index', () => {
         "Scroller": [Function],
         "SearchBar": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "clearable": true,
+            "disabled": false,
+            "shape": "radius",
+            "showButton": false,
+          },
           "render": [Function],
         },
         "Select": Object {
@@ -321,7 +360,6 @@ describe('index', () => {
         "useDrag": [Function],
         "useLongPress": [Function],
         "useOrientation": [Function],
-        "useSafeLayoutEffect": [Function],
       }
     `);
   });

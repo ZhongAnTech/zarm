@@ -1,17 +1,16 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import BaseToastProps from './interface';
+import React, { RefAttributes, useCallback, useEffect, useRef, useState } from 'react';
+import classNames from 'classnames';
+import BaseToastProps, { HTMLDefProps } from './interface';
 import Popup from '../popup';
 import { ConfigContext } from '../n-config-provider';
 
-export interface ToastProps extends BaseToastProps {
-  className?: string;
-}
+export interface ToastProps extends BaseToastProps, HTMLDefProps {}
 export interface UseToast {
   show: (props: ToastProps) => void;
   hide: () => void;
 }
 interface CompoundedComponent
-  extends React.ForwardRefExoticComponent<ToastProps & React.RefAttributes<HTMLDivElement>> {
+  extends React.ForwardRefExoticComponent<ToastProps & RefAttributes<HTMLDivElement>> {
   useToast: () => UseToast;
 }
 const Toast = React.forwardRef<unknown, ToastProps>((props, ref) => {
@@ -19,7 +18,16 @@ const Toast = React.forwardRef<unknown, ToastProps>((props, ref) => {
   const prefixCls = `${globalPrefixCls}-toast`;
 
   const toastRef = (ref as any) || React.createRef<HTMLDivElement>();
-  const { className, stayTime, content, visible: propVisible, afterClose, ...others } = props;
+  const {
+    className,
+    stayTime,
+    content,
+    visible: propVisible,
+    afterClose,
+    style,
+    onClick,
+    ...others
+  } = props;
   const [visible, setVisible] = useState(propVisible!);
   const timerRef = useRef(0);
 
@@ -58,7 +66,12 @@ const Toast = React.forwardRef<unknown, ToastProps>((props, ref) => {
       visible={visible}
       afterClose={afterClose}
     >
-      <div className={prefixCls} ref={toastRef}>
+      <div
+        className={classNames(prefixCls, className)}
+        ref={toastRef}
+        style={style}
+        onClick={onClick}
+      >
         <div className={`${prefixCls}__container`}>{content}</div>
       </div>
     </Popup>

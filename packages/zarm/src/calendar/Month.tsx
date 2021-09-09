@@ -2,6 +2,7 @@ import React, { Component, isValidElement } from 'react';
 import classnames from 'classnames';
 import { BaseCalendarMonthProps } from './PropsType';
 import DateTool from '../utils/date';
+import ConfigReceiver from '../config-receiver';
 
 export interface CalendarMonthProps extends BaseCalendarMonthProps {
   prefixCls?: string;
@@ -12,7 +13,7 @@ export interface CalendarMonthState {
   dateMonth: Date;
 }
 
-export default class CalendarMonthView extends Component<CalendarMonthProps, CalendarMonthState> {
+class CalendarMonthView extends Component<CalendarMonthProps, CalendarMonthState> {
   static displayName = 'CalendarMonthView';
 
   static defaultProps = {
@@ -25,32 +26,14 @@ export default class CalendarMonthView extends Component<CalendarMonthProps, Cal
     disabledDate: () => false,
   };
 
-  static now = new Date();
-
-  // 月份缓存数据
-  static cache = {
-    now: `${CalendarMonthView.now.getFullYear()}-${CalendarMonthView.now.getMonth()}-${CalendarMonthView.now.getDate()}`,
-  };
-
-  // 月份最小值
-  private min: Date;
-
-  // 月份最大值
-  private max: Date;
-
   // 上次是否落点在当前月份内
   private lastIn?: boolean = false;
-
-  // 当前组件是否需要更新
-  private isRefresh = true;
 
   // 当前月份的dom
   private node?: any;
 
   constructor(props: CalendarMonthProps) {
     super(props);
-    this.min = props.min;
-    this.max = props.max;
     this.state = {
       value: props.value,
       dateMonth: props.dateMonth,
@@ -72,50 +55,10 @@ export default class CalendarMonthView extends Component<CalendarMonthProps, Cal
     return null;
   }
 
-  shouldComponentUpdate(nextProps) {
-    this.isRefresh = this.checkRefresh(nextProps);
-    if (this.isRefresh) {
-      this.min = nextProps.min;
-      this.max = nextProps.max;
-    }
-    return this.isRefresh;
-  }
-
   anchor = () => {
     if (this.node && this.node.scrollIntoViewIfNeeded) {
       this.node.scrollIntoViewIfNeeded();
     }
-  };
-
-  // 检查当前是否需要更新
-  checkRefresh = (props: CalendarMonthProps) => {
-    const { dateMonth, value, min, max, dateRender, disabledDate } = props;
-    const { dateRender: dateRenderProp, disabledDate: disabledDateProp } = this.props;
-    const { dateMonth: dateMonthState } = this.state;
-
-    if (dateRender !== dateRenderProp || disabledDate !== disabledDateProp) {
-      return true;
-    }
-
-    if (+dateMonth - +dateMonthState !== 0) {
-      return true;
-    }
-
-    if (+min - +this.min !== 0 || +max - +this.max !== 0) {
-      return true;
-    }
-
-    let isIn!: boolean;
-
-    if (value.length > 0) {
-      const currMonth = DateTool.cloneDate(dateMonth, 'dd', 1);
-      const min1 = DateTool.cloneDate(value[0], 'dd', 1);
-      const max1 = DateTool.cloneDate(value[value.length - 1], 'dd', 1);
-      isIn = currMonth >= min1 && currMonth <= max1;
-    }
-    const result = !(!isIn && !this.lastIn);
-    this.lastIn = isIn;
-    return result;
   };
 
   // 日期状态: 选中，区间
@@ -138,7 +81,10 @@ export default class CalendarMonthView extends Component<CalendarMonthProps, Cal
   renderDay = (day: number, year: number, month: number, firstDay: number) => {
     const { prefixCls, dateRender, onDateClick } = this.props;
     const date = new Date(year, month, day);
-    const isToday = CalendarMonthView.cache.now === `${year}-${month}-${day}`;
+    const isToday =
+      new Date().getFullYear() === year &&
+      new Date().getMonth() === month &&
+      new Date().getDate() === day;
     const status = this.checkStatus(date);
 
     let txt = (date && dateRender && dateRender(date)) || '';
@@ -181,18 +127,23 @@ export default class CalendarMonthView extends Component<CalendarMonthProps, Cal
   };
 
   render() {
-    const { prefixCls } = this.props;
+    const { prefixCls, locale } = this.props;
     const { dateMonth } = this.state;
 
     const year = dateMonth.getFullYear();
     const month = dateMonth.getMonth();
     const monthKey = `${year}-${month}`;
 
+    const title =
+      locale?.yearText === '年'
+        ? year + locale.yearText + locale.months[month]
+        : `${locale?.months[month]} ${year}`;
+
     return (
       <section
         key={monthKey}
         className={`${prefixCls}__month`}
-        title={`${year}年${month + 1}月`}
+        title={title}
         ref={(n) => {
           this.node = n;
         }}
@@ -202,3 +153,5 @@ export default class CalendarMonthView extends Component<CalendarMonthProps, Cal
     );
   }
 }
+
+export default ConfigReceiver('Calendar')(CalendarMonthView);

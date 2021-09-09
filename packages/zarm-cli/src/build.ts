@@ -1,21 +1,15 @@
-import fs from 'fs';
 import webpack from 'webpack';
 import webpackMerge from 'webpack-merge';
 import gulp from 'gulp';
 import { Signale } from 'signale';
-import JSZip from 'jszip';
 import execa from 'execa';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import getWebpackConfig from './config/webpackConfig';
 import getGulpConfig from './config/gulpConfig';
-import { getProjectPath, fileTree, FileInfo, getCustomConfig } from './utils';
+import { getProjectPath, getCustomConfig } from './utils';
 
 // eslint-disable-next-line
 const { name } = require(getProjectPath('package.json'));
-
-const wirte = (dir, code) => {
-  fs.writeSync(fs.openSync(dir, 'w'), code);
-};
 
 // print error
 const showErrors = (errors) => {
@@ -27,10 +21,9 @@ const showErrors = (errors) => {
 };
 
 // build for umd
-const umdBuild = async ({ mode, path, outDir, outZip, libraryName, analyzer }, barActive) => {
+const umdBuild = async ({ mode, path, outDir, libraryName, analyzer }, barActive) => {
   libraryName = libraryName || name;
 
-  const entryKey = mode === 'umd-zip' ? 'index' : libraryName;
   const entryFiles = path.split(',').map((p) => getProjectPath(p));
 
   const customizePlugins = [];
@@ -47,7 +40,7 @@ const umdBuild = async ({ mode, path, outDir, outZip, libraryName, analyzer }, b
         getWebpackConfig(type),
         {
           entry: {
-            [entryKey]: entryFiles,
+            [libraryName]: entryFiles,
           },
           output: {
             path: getProjectPath(outDir),
@@ -64,38 +57,7 @@ const umdBuild = async ({ mode, path, outDir, outZip, libraryName, analyzer }, b
   };
 
   barActive.process('building...');
-
-  if (mode === 'umd-zip') {
-    await umdTask('umd-zip');
-    const jsZip = new JSZip();
-    const list: FileInfo[] = [];
-
-    fileTree(list, outDir);
-    jsZip.file(
-      `${outDir}/manifest.json`,
-      `{
-      "id": "${libraryName}",
-      "name": "${libraryName}",
-      "description": "",
-      "propsSchema": {
-
-      }
-    }`,
-    );
-    list.forEach(({ filePath }) => {
-      jsZip.file(filePath, fs.readFileSync(filePath, 'utf-8'));
-    });
-
-    jsZip
-      .folder(outDir)
-      .generateAsync({ type: 'nodebuffer' })
-      .then((content) => {
-        wirte(`${outZip}/${libraryName}.zip`, content);
-      });
-  } else {
-    await umdTask(mode);
-  }
-
+  await umdTask(mode);
   barActive.success('Compiled successfully!');
 };
 
@@ -152,10 +114,6 @@ export default async (options) => {
   const errors = [];
   if (!mode) {
     errors.push('--mode requires define');
-  }
-
-  if (mode === 'umd-zip' && !outZip) {
-    errors.push('--out-zip requires foldername');
   }
 
   // if (!isZarmGroup()) {

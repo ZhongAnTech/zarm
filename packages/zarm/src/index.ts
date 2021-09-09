@@ -1,4 +1,6 @@
+export type { CollapseProps, CollapseItemProps } from './collapse';
 export { default as Collapse } from './collapse';
+
 export { default as ActionSheet } from './action-sheet';
 // export { default as Alert } from './alert';
 export { default as BackToTop } from './back-to-top';
@@ -54,6 +56,8 @@ export type { MessageProps } from './message';
 export { default as Message } from './message';
 
 export { default as Modal } from './modal';
+
+export type { NoticeBarProps } from './notice-bar';
 export { default as NoticeBar } from './notice-bar';
 
 export type { PanelProps } from './panel';
@@ -81,7 +85,10 @@ export type { RadioProps, RadioGroupProps } from './radio';
 export { default as Radio } from './radio';
 
 export { default as Scroller } from './scroller';
+
+export type { SearchBarProps } from './search-bar';
 export { default as SearchBar } from './search-bar';
+
 export { default as Slider } from './slider';
 
 export type { ActivityIndicatorProps } from './activity-indicator';
@@ -90,7 +97,9 @@ export { default as ActivityIndicator } from './activity-indicator';
 export type { StepperProps } from './stepper';
 export { default as Stepper } from './stepper';
 
+export type { CarouselProps } from './carousel';
 export { default as Carousel } from './carousel';
+
 export { default as SwipeAction } from './swipe-action';
 
 export type { SwitchProps } from './switch';
@@ -118,6 +127,9 @@ export { default as TabBar } from './tab-bar';
 
 export { default as ImagePreview } from './image-preview';
 
+export type { PinchZoomProps } from './pinch-zoom';
+export { default as PinchZoom } from './pinch-zoom';
+
 export { default as ConfigProvider } from './config-provider';
 
 export type { ConfigProviderProps as NConfigProviderProps } from './n-config-provider';
@@ -138,5 +150,3 @@ export { default as useOrientation } from './useOrientation';
 
 export type { UseLongPressProps } from './useLongPress';
 export { default as useLongPress } from './useLongPress';
-
-export { default as useSafeLayoutEffect } from './useSafeLayoutEffect';

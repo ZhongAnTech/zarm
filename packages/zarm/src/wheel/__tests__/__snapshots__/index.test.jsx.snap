@@ -16,7 +16,6 @@ exports[`Wheel Wheel disabled 1`] = `
   }
   disabled={true}
   itemRender={[Function]}
-  prefixCls="za-wheel"
   stopScroll={false}
   valueMember="value"
 >
@@ -59,7 +58,6 @@ exports[`Wheel Wheel render defaultValue 1`] = `
   }
   defaultValue="1"
   itemRender={[Function]}
-  prefixCls="za-wheel"
   stopScroll={false}
   valueMember="value"
 >
@@ -101,7 +99,6 @@ exports[`Wheel Wheel render visible 1`] = `
     ]
   }
   itemRender={[Function]}
-  prefixCls="za-wheel"
   stopScroll={false}
   valueMember="value"
 >
@@ -144,7 +141,6 @@ exports[`Wheel Wheel set props disabled 1`] = `
   }
   defaultValue="1"
   itemRender={[Function]}
-  prefixCls="za-wheel"
   stopScroll={false}
   value="1"
   valueMember="value"
@@ -188,7 +184,6 @@ exports[`Wheel Wheel set props value 1`] = `
   }
   defaultValue="1"
   itemRender={[Function]}
-  prefixCls="za-wheel"
   stopScroll={false}
   value="1"
   valueMember="value"

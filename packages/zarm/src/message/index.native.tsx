@@ -43,30 +43,17 @@ export default class Message extends PureComponent<MessageProps, MessageState> {
   };
 
   render() {
-    const { theme, icon, hasArrow, closable, styles, style, onClick, children, size } = this.props;
+    const { theme, icon, hasArrow, closable, styles, style, onClick, children } = this.props;
 
     const { visible } = this.state;
 
-    const wrapperStyle = [
-      styles!.wrapper,
-      styles![`${theme}Wrapper`],
-      styles![`${size}Wrapper`],
-      style,
-    ] as ViewStyle;
+    const wrapperStyle = [styles!.wrapper, styles![`${theme}Wrapper`], style] as ViewStyle;
 
-    const textStyle = [styles![`${theme}TextStyle`], styles![`${size}TextStyle`]];
+    const textStyle = [styles!.textStyle, styles![`${theme}TextStyle`]];
 
-    const arrowStyle = [
-      styles!.arrowStyle,
-      styles![`${theme}ArrowStyle`],
-      styles![`${size}ArrowStyle`],
-    ];
+    const arrowStyle = [styles!.arrowStyle, styles![`${theme}ArrowStyle`]];
 
-    const closeIconStyle = [
-      styles!.closeIconStyle,
-      styles![`${theme}CloseIconStyle`],
-      styles![`${size}CloseIconStyle`],
-    ];
+    const closeIconStyle = [styles!.closeIconStyle, styles![`${theme}CloseIconStyle`]];
 
     const closeRender = closable && (
       <TouchableWithoutFeedback onPress={this.onPressClose}>

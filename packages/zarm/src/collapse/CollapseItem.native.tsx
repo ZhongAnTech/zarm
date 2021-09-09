@@ -1,6 +1,6 @@
 import React, { PureComponent, CSSProperties } from 'react';
 import { StyleSheet, Text, View, TouchableHighlight, Animated, ViewStyle } from 'react-native';
-import { BaseCollapseItemProps } from './PropsType';
+import type { BaseCollapseItemProps } from './interface';
 import collapaseStyle from './style/index.native';
 import variables from '../style/themes/default.native';
 

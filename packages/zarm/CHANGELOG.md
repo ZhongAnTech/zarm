@@ -5,7 +5,12 @@
 - Break Change
 
   - [Input] 拆分使用到虚拟键盘的自定义输入框组件 `CustomInput`。触发的事件入参由 value 值改为 event，受影响的事件有 `onChange` `onFocus` `onBlur` `onFocus`。删除 `onClear` 事件，点击重置按钮请空值将触发 `onChange` 事件。
-  - [SearchBar] 删除 `onClear` 事件，点击重置按钮请空值将触发 `onChange` 事件。
+  - [SearchBar]
+    - 输入框事件变更为与原生 `input` 保持一致，如 `onChange`、`onFocus`、`onBlur`等。
+    - 删除 `onClear` 事件，点击重置按钮请空值将触发 `onChange` 事件。
+    - “取消”按钮变更为“搜索”按钮，相关属性调整：
+      - 删除 `showCancel`、`cancelText`、`onCancel`。
+      - 新增 `showButton`、`buttonText`，搜索按钮点击触发 `onSubmit` 事件。
   - [Toast] 静态方法挂载到 `Toast.useToast` 下，详细用法参考官网例子。
   - [NoticeBar]
     - DOM 节点调整，原有样式会有影响。
@@ -15,11 +20,24 @@
     - 移除`size` prop，及相关样式。
     - 新增`onClose` prop, 关闭触发的回调函数。
 
+## v2.9.7
+
+- Bug Fix
+
+  - [Keyboard] 修复长按删除按钮会陷入死循环（重复执行删除操作且松开后无法退出）的 bug。[#745](https://github.com/ZhongAnTech/zarm/pull/745)[@Confettis]
+
+## v2.9.6
+
+- Bug Fix
+
+  - [Calendar] 修复日历组件不支持国际化的 bug。[#738](https://github.com/ZhongAnTech/zarm/pull/738)
+
 ## v2.9.5
 
 - Bug Fix
 
   - 修复 Loading 和 Toast 静态方法使用后实例未销毁的 bug。[#710](https://github.com/ZhongAnTech/zarm/issues/710)
+  - [Pull] 修复因滚动容器变更导致原有容器事件监听未解除的 bug。[#734](https://github.com/ZhongAnTech/zarm/issues/734)
 
 ## v2.9.4
 

@@ -1,6 +1,6 @@
 import { ContainerType } from '../utils/dom';
 import type { BasePickerViewProps } from '../picker-view/PropsType';
-import type { WheelItem } from '../wheel/PropsType';
+import type { WheelItem } from '../wheel/interface';
 import type { Locale } from '../config-provider/PropsType';
 
 export interface BasePickerProps extends Omit<BasePickerViewProps, 'onChange' | 'stopScroll'> {

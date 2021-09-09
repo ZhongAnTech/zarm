@@ -25,30 +25,27 @@
     }
   }
 
-  @include e(mock) {
+  @include b(input) {
     flex: 1;
     font-size: var(--search-bar-font-size);
+    background-color: transparent;
 
-    @include b(input) {
-      background-color: transparent;
-
-      input {
-        &::-webkit-search-cancel-button {
-          display: none;
-        }
+    input {
+      &::-webkit-search-cancel-button {
+        display: none;
       }
     }
   }
 
-  @include e(cancel) {
+  @include e(button) {
     font-size: var(--search-bar-font-size);
     color: var(--color-text);
+    transition: all .2s;
     margin-left: r(15);
   }
 
   @include m(focus) {
-    @include e(cancel) {
-      transition: all .2s;
+    @include e(button) {
       margin-right: 0;
     }
   }

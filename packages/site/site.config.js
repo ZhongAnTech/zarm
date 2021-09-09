@@ -199,6 +199,12 @@ module.exports = {
         module: () => import('zarm/popper/demo.md'),
         style: true,
       },
+      {
+        key: 'pinch-zoom',
+        name: '缩放',
+        module: () => import('zarm/pinch-zoom/demo.md'),
+        style: false,
+      },
     ],
     view: [
       {
@@ -305,12 +311,6 @@ module.exports = {
         key: 'useLongPress',
         name: '长按',
         module: () => import('zarm/useLongPress/demo.md'),
-        style: false,
-      },
-      {
-        key: 'useSafeLayoutEffect',
-        name: '安全布局副作用',
-        module: () => import('zarm/useSafeLayoutEffect/demo.md'),
         style: false,
       },
       {

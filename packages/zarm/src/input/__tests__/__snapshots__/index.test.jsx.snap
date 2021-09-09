@@ -41,7 +41,7 @@ exports[`Input showLength 1`] = `
   <div
     class="za-input__length"
   >
-    9/100
+    0/100
   </div>
 </div>
 `;

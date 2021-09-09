@@ -166,7 +166,6 @@ exports[`DatePickerView DatePickerView time 2 1`] = `
               itemRender={[Function]}
               key="0"
               onChange={[Function]}
-              prefixCls="za-wheel"
               stopScroll={false}
               value={2021}
               valueMember="value"
