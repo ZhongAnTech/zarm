@@ -1,5 +1,11 @@
 # 版本更新日志
 
+## v2.9.8
+
+- Bug Fix
+
+  - [Pull] 修复当 window 作为滚动容器时，触发事件的临界点判断错误的 bug。[#760](https://github.com/ZhongAnTech/zarm/pull/760)
+
 ## v2.9.7
 
 - Bug Fix
