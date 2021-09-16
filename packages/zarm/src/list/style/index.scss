@@ -1,0 +1,99 @@
+@import '../../style/core/index';
+
+@include b(list) {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+}
+
+@include b(list-item) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: var(--za-list-item-padding-horizontal);
+  min-height: var(--za-list-item-height);
+  position: relative;
+  background-color: var(--za-list-item-background);
+  font-size: var(--za-list-item-font-size);
+
+  a,
+  a:hover {
+    text-decoration: none;
+  }
+
+  @include e(prefix) {
+    display: flex;
+    flex-shrink: 0;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-right: var(--za-list-item-padding-horizontal);
+    padding: var(--za-list-item-padding-vertical) 0;
+  }
+
+  @include e(wrapper) {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    padding: var(--za-list-item-padding-vertical) 0;
+    padding-right: var(--za-list-item-padding-horizontal);
+    @include onepx(bottom);
+  }
+
+  @include e(inner) {
+    width: 100%;
+    min-width: 0;
+  }
+
+  @include e(title) {
+    white-space: var(--za-list-item-title-white-space);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @include e(after) {
+    display: flex;
+    flex-shrink: 0;
+    white-space: nowrap;
+    margin-left: auto;
+    padding-left: var(--za-list-item-space);
+    color: var(--za-list-item-after-text-color);
+  }
+
+  @include e(arrow) {
+    margin-left: var(--za-list-item-space);
+    margin-right: var(--za-list-item-arrow-border-width);
+
+    &:after {
+      display: inline-block;
+      content: '';
+      border-right: var(--za-list-item-arrow-border-width) solid var(--za-list-item-arrow-color);
+      border-top: var(--za-list-item-arrow-border-width) solid var(--za-list-item-arrow-color);
+      width: var(--za-list-item-arrow-size);
+      height: var(--za-list-item-arrow-size);
+      transform: rotate(45deg);
+    }
+  }
+
+  @include e(info) {
+    font-size: var(--za-list-item-info-font-size);
+    color: var(--za-list-item-info-text-color);
+  }
+
+  @include m(link) {
+    cursor: pointer;
+    user-select: none;
+    transition-duration: 0.1s;
+    transition-property: background-color, color;
+
+    &:active {
+      background-color: var(--za-list-item-background-active);
+    }
+  }
+}

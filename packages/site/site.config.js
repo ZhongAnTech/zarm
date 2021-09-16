@@ -226,6 +226,12 @@ module.exports = {
         style: true,
       },
       {
+        key: 'list',
+        name: '列表',
+        module: () => import('zarm/list/demo.md'),
+        style: false,
+      },
+      {
         key: 'carousel',
         name: '走马灯',
         module: () => import('zarm/carousel/demo.md'),

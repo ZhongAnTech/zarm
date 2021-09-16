@@ -7,8 +7,8 @@
   @include m(textarea) {
     @include e(length) {
       text-align: right;
-      color: var(--input-length-count-color);
-      font-size: r(12);
+      color: var(--za-input-length-color);
+      font-size: var(--za-input-length-font-size);
     }
   }
 
@@ -27,5 +27,15 @@
   // 禁用
   @include m(disabled) {
     @include input-disabled();
+  }
+
+  // 纵向
+  @include m(vertical) {
+    flex-direction: column;
+
+    @include e(label) {
+      width: auto;
+      font-size: var(--za-input-vertical-label-font-size);
+    }
   }
 }

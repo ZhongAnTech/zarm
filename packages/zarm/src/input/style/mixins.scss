@@ -1,11 +1,13 @@
-
 @mixin input-base() {
+  display: flex;
   position: relative;
   width: 100%;
-  color: var(--color-text);
+  color: var(--za-input-color);
+  font-size: var(--za-input-font-size);
 
   input,
   textarea {
+    flex: 1;
     position: relative;
     width: 100%;
     padding: 0;
@@ -14,8 +16,9 @@
     border: 0;
     outline: 0;
     -webkit-appearance: none;
-    color: var(--color-text);
-    line-height: var(--input-line-height);
+    font-size: var(--za-input-font-size);
+    color: var(--za-input-color);
+    line-height: var(--za-input-line-height);
 
     @include placeholder {
       color: var(--color-text-placeholder);
@@ -24,7 +27,7 @@
 
   input {
     display: inline-block;
-    height: var(--input-line-height);
+    height: var(--za-input-line-height);
   }
 
   textarea {
@@ -35,10 +38,20 @@
     overflow: visible;
   }
 
+  @include e(inner) {
+    flex: 1;
+  }
+
+  @include e(label) {
+    width: var(--za-input-label-width);
+    line-height: var(--za-input-line-height);
+  }
+
   @include e(content) {
+    flex: 1;
     position: relative;
-    height: var(--input-line-height);
-    line-height: var(--input-line-height);
+    height: var(--za-input-height);
+    line-height: var(--za-input-line-height);
   }
 }
 
@@ -57,8 +70,8 @@
   @include e(clear) {
     position: absolute;
     visibility: hidden;
-    color: var(--input-clear-icon-color);
-    width: var(--input-clear-icon-width);
+    color: var(--za-input-clear-icon-color);
+    width: var(--za-input-clear-icon-width);
     text-align: center;
     top: 50%;
     transform: translateY(-50%);
@@ -67,7 +80,7 @@
   }
 
   @include m(focus) {
-    padding-right: var(--input-clear-icon-width);
+    padding-right: var(--za-input-clear-icon-width);
 
     @include e(clear) {
       visibility: visible;

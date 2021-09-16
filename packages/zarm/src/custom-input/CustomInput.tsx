@@ -21,6 +21,8 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
     value,
     defaultValue,
     maxLength,
+    label,
+    vertical,
     onChange,
     onBlur,
     onFocus,
@@ -50,6 +52,7 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
     [`${prefixCls}--focus`]: focused,
     [`${prefixCls}--clearable`]: showClearIcon,
     [`${prefixCls}--readonly`]: readOnly,
+    [`${prefixCls}--vertical`]: vertical,
   });
 
   const onInputFocus = () => {
@@ -118,14 +121,18 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
     onInputBlur();
   };
 
-  const renderClearIcon = showClearIcon && (
+  // 渲染标签栏
+  const labelRender = !!label && <div className={`${prefixCls}__label`}>{label}</div>;
+
+  const clearIconRender = showClearIcon && (
     <CloseCircleFill className={`${prefixCls}__clear`} onClick={onInputClear} />
   );
 
-  const renderText = <div className={`${prefixCls}__content`}>{currentValue}</div>;
+  const textRender = <div className={`${prefixCls}__content`}>{currentValue}</div>;
 
-  const renderInput = (
+  const inputRender = (
     <div {...restProps} ref={wrapperRef} className={cls} onClick={onInputFocus}>
+      {labelRender}
       <div className={`${prefixCls}__content`}>
         {(currentValue === undefined || currentValue === '') && !readOnly && (
           <div className={`${prefixCls}__placeholder`}>{placeholder}</div>
@@ -135,7 +142,7 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
         </div>
         <input ref={inputRef} type="hidden" value={currentValue} />
       </div>
-      {renderClearIcon}
+      {clearIconRender}
       <KeyboardPicker ref={pickerRef} visible={focused} type={type} onKeyClick={onKeyClick} />
     </div>
   );
@@ -161,16 +168,18 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
     }
   }, [readOnly, focused, currentValue]);
 
-  return readOnly ? renderText : renderInput;
+  return readOnly ? textRender : inputRender;
 });
 
 CustomInput.displayName = 'CustomInput';
 
 CustomInput.defaultProps = {
   type: 'number',
-  clearable: true,
-  readOnly: false,
+  disabled: false,
   autoFocus: false,
+  readOnly: false,
+  clearable: false,
+  vertical: false,
 };
 
 export default CustomInput;

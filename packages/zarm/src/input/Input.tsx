@@ -39,6 +39,8 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
     value,
     defaultValue,
     maxLength,
+    label,
+    vertical,
     onChange,
     onBlur,
     onFocus,
@@ -72,6 +74,7 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
     [`${prefixCls}--clearable`]: showClearIcon,
     [`${prefixCls}--readonly`]: readOnly,
     [`${prefixCls}--focus`]: focused,
+    [`${prefixCls}--vertical`]: vertical,
   });
 
   const focus = () => {
@@ -132,6 +135,11 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
     target.value = originalValue;
   };
 
+  // 渲染文字长度
+  const textLengthRender = showLength && maxLength && (
+    <div className={`${prefixCls}__length`}>{`${countSymbols(currentValue)}/${maxLength}`}</div>
+  );
+
   const commonProps: InputTextProps & InputTextareaProps = {
     ...restProps,
     maxLength,
@@ -151,12 +159,15 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
   }
 
   // 渲染输入框
-  const renderInput = isTextarea ? (
-    <textarea
-      ref={inputRef as React.RefObject<HTMLTextAreaElement>}
-      {...(commonProps as React.HTMLAttributes<HTMLTextAreaElement>)}
-      rows={rows}
-    />
+  const inputRender = isTextarea ? (
+    <div className={`${prefixCls}__inner`}>
+      <textarea
+        ref={inputRef as React.RefObject<HTMLTextAreaElement>}
+        {...(commonProps as React.HTMLAttributes<HTMLTextAreaElement>)}
+        rows={rows}
+      />
+      {textLengthRender}
+    </div>
   ) : (
     <input
       ref={inputRef as React.RefObject<HTMLInputElement>}
@@ -166,15 +177,13 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
   );
 
   // 渲染文本内容
-  const renderText = <div className={`${prefixCls}__content`}>{currentValue}</div>;
+  const textRender = <div className={`${prefixCls}__content`}>{currentValue}</div>;
 
-  // 渲染文字长度
-  const renderTextLength = showLength && maxLength && (
-    <div className={`${prefixCls}__length`}>{`${countSymbols(currentValue)}/${maxLength}`}</div>
-  );
+  // 渲染标签栏
+  const labelRender = !!label && <div className={`${prefixCls}__label`}>{label}</div>;
 
   // 渲染清除按钮
-  const renderClearIcon = showClearIcon && (
+  const clearIconRender = showClearIcon && (
     <CloseCircleFill className={`${prefixCls}__clear`} onClick={onInputClear} />
   );
 
@@ -207,9 +216,9 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
 
   return (
     <div ref={wrapperRef} className={cls} style={style}>
-      {!readOnly ? renderInput : renderText}
-      {renderTextLength}
-      {renderClearIcon}
+      {labelRender}
+      {!readOnly ? inputRender : textRender}
+      {clearIconRender}
     </div>
   );
 });
@@ -221,7 +230,8 @@ Input.defaultProps = {
   disabled: false,
   autoFocus: false,
   readOnly: false,
-  clearable: true,
+  clearable: false,
+  vertical: false,
   showLength: false,
   autoHeight: false,
 };
