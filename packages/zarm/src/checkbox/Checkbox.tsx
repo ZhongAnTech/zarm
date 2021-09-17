@@ -2,7 +2,8 @@ import * as React from 'react';
 import classnames from 'classnames';
 import type { BaseCheckboxProps } from './interface';
 import CheckboxGroup from './CheckboxGroup';
-import Cell from '../cell';
+import List from '../list';
+import type { ListItemProps } from '../list';
 import { ConfigContext } from '../n-config-provider';
 
 const getChecked = (props: CheckboxProps, defaultChecked?: boolean) => {
@@ -13,7 +14,7 @@ type CheckboxSpanProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
   'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
 >;
-type CheckboxCellProps = Omit<
+type CheckboxListProps = Omit<
   React.HTMLAttributes<HTMLDivElement>,
   'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
 >;
@@ -22,7 +23,7 @@ type CheckboxButtonProps = Omit<
   'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
 >;
 
-export type CheckboxProps = Partial<CheckboxSpanProps & CheckboxCellProps & CheckboxButtonProps> &
+export type CheckboxProps = Partial<CheckboxSpanProps & CheckboxListProps & CheckboxButtonProps> &
   BaseCheckboxProps & {
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   };
@@ -100,8 +101,27 @@ const Checkbox = React.forwardRef<unknown, CheckboxProps>((props, ref) => {
     setCurrentChecked(getChecked({ checked, defaultChecked }));
   }, [checked, defaultChecked]);
 
-  if (type === 'cell') {
-    return <Cell onClick={() => {}}>{checkboxRender}</Cell>;
+  if (type === 'list') {
+    const listProps: ListItemProps = {
+      hasArrow: false,
+      className: cls,
+      prefix: (
+        <>
+          <span className={`${prefixCls}__widget`}>
+            <span className={`${prefixCls}__inner`} />
+          </span>
+          {inputRender}
+        </>
+      ),
+      title: (
+        <>
+          {children && <span className={`${prefixCls}__text`}>{children}</span>}
+          {inputRender}
+        </>
+      ),
+      onClick: !disabled ? () => {} : undefined,
+    };
+    return <List.Item ref={checkboxRef} {...listProps} />;
   }
 
   if (type === 'button') {

@@ -358,144 +358,150 @@ exports[`Checkbox.Group type is button 1`] = `
 </div>
 `;
 
-exports[`Checkbox.Group type is cell 1`] = `
+exports[`Checkbox.Group type is list 1`] = `
 <div
-  class="za-checkbox-group za-checkbox-group--cell za-checkbox-group--xs za-checkbox-group--radius"
+  class="za-checkbox-group za-checkbox-group--list za-checkbox-group--xs za-checkbox-group--radius"
 >
   <div
     class="za-checkbox-group__inner"
   >
     <div
-      class="za-cell za-cell--link"
+      class="za-list"
     >
-      <div
-        class="za-cell__inner"
-      >
-        <div
-          class="za-cell__header"
-        />
-        <div
-          class="za-cell__body"
+      <ul>
+        <li
+          class="za-list-item za-checkbox za-list-item--link"
         >
           <div
-            class="za-cell__content"
+            class="za-list-item__prefix"
           >
             <span
-              class="za-checkbox"
+              class="za-checkbox__widget"
             >
               <span
-                class="za-checkbox__widget"
-              >
-                <span
-                  class="za-checkbox__inner"
-                />
-              </span>
-              <span
-                class="za-checkbox__text"
-              >
-                选项一
-              </span>
-              <input
-                aria-checked="false"
-                class="za-checkbox__input"
-                type="checkbox"
-                value="off"
+                class="za-checkbox__inner"
               />
             </span>
+            <input
+              aria-checked="false"
+              class="za-checkbox__input"
+              type="checkbox"
+              value="off"
+            />
           </div>
-        </div>
-        <div
-          class="za-cell__footer"
-        />
-      </div>
-    </div>
-    <div
-      class="za-cell za-cell--link"
-    >
-      <div
-        class="za-cell__inner"
-      >
-        <div
-          class="za-cell__header"
-        />
-        <div
-          class="za-cell__body"
+          <div
+            class="za-list-item__wrapper"
+          >
+            <div
+              class="za-list-item__inner"
+            >
+              <div
+                class="za-list-item__title"
+              >
+                <span
+                  class="za-checkbox__text"
+                >
+                  选项一
+                </span>
+                <input
+                  aria-checked="false"
+                  class="za-checkbox__input"
+                  type="checkbox"
+                  value="off"
+                />
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          class="za-list-item za-checkbox za-list-item--link"
         >
           <div
-            class="za-cell__content"
+            class="za-list-item__prefix"
           >
             <span
-              class="za-checkbox"
+              class="za-checkbox__widget"
             >
               <span
-                class="za-checkbox__widget"
-              >
-                <span
-                  class="za-checkbox__inner"
-                />
-              </span>
-              <span
-                class="za-checkbox__text"
-              >
-                选项二
-              </span>
-              <input
-                aria-checked="false"
-                class="za-checkbox__input"
-                type="checkbox"
-                value="off"
+                class="za-checkbox__inner"
               />
             </span>
+            <input
+              aria-checked="false"
+              class="za-checkbox__input"
+              type="checkbox"
+              value="off"
+            />
           </div>
-        </div>
-        <div
-          class="za-cell__footer"
-        />
-      </div>
-    </div>
-    <div
-      class="za-cell za-cell--link"
-    >
-      <div
-        class="za-cell__inner"
-      >
-        <div
-          class="za-cell__header"
-        />
-        <div
-          class="za-cell__body"
+          <div
+            class="za-list-item__wrapper"
+          >
+            <div
+              class="za-list-item__inner"
+            >
+              <div
+                class="za-list-item__title"
+              >
+                <span
+                  class="za-checkbox__text"
+                >
+                  选项二
+                </span>
+                <input
+                  aria-checked="false"
+                  class="za-checkbox__input"
+                  type="checkbox"
+                  value="off"
+                />
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          class="za-list-item za-checkbox za-list-item--link"
         >
           <div
-            class="za-cell__content"
+            class="za-list-item__prefix"
           >
             <span
-              class="za-checkbox"
+              class="za-checkbox__widget"
             >
               <span
-                class="za-checkbox__widget"
-              >
-                <span
-                  class="za-checkbox__inner"
-                />
-              </span>
-              <span
-                class="za-checkbox__text"
-              >
-                选项三
-              </span>
-              <input
-                aria-checked="false"
-                class="za-checkbox__input"
-                type="checkbox"
-                value="off"
+                class="za-checkbox__inner"
               />
             </span>
+            <input
+              aria-checked="false"
+              class="za-checkbox__input"
+              type="checkbox"
+              value="off"
+            />
           </div>
-        </div>
-        <div
-          class="za-cell__footer"
-        />
-      </div>
+          <div
+            class="za-list-item__wrapper"
+          >
+            <div
+              class="za-list-item__inner"
+            >
+              <div
+                class="za-list-item__title"
+              >
+                <span
+                  class="za-checkbox__text"
+                >
+                  选项三
+                </span>
+                <input
+                  aria-checked="false"
+                  class="za-checkbox__input"
+                  type="checkbox"
+                  value="off"
+                />
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 </div>

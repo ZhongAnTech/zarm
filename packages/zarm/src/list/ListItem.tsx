@@ -3,10 +3,21 @@ import classnames from 'classnames';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseListItemProps } from './interface';
 
-export type ListItemProps = React.HTMLAttributes<HTMLLIElement> & BaseListItemProps;
+export type ListItemProps = BaseListItemProps &
+  Omit<React.HTMLAttributes<HTMLLIElement>, 'title' | 'prefix'>;
 
 const ListItem = React.forwardRef<unknown, ListItemProps>((props, ref) => {
-  const { className, prefix, after, title, info, children, onClick, ...restProps } = props;
+  const {
+    className,
+    prefix,
+    after,
+    title,
+    info,
+    children,
+    onClick,
+    hasArrow,
+    ...restProps
+  } = props;
 
   const compRef = (ref as any) || React.createRef<HTMLLIElement>();
 
@@ -14,14 +25,15 @@ const ListItem = React.forwardRef<unknown, ListItemProps>((props, ref) => {
   const prefixCls = `${globalPrefixCls}-list-item`;
   const cls = classnames(prefixCls, className, {
     [`${prefixCls}--link`]: !!onClick,
+    [`${prefixCls}--inline`]: !!children,
+    [`${prefixCls}--arrow`]: !!onClick && hasArrow,
   });
-
   const prefixRender = prefix && <div className={`${prefixCls}__prefix`}>{prefix}</div>;
   const afterRender = after && <div className={`${prefixCls}__after`}>{after}</div>;
   const titleRender = title && <div className={`${prefixCls}__title`}>{title}</div>;
   const contentRender = children && <div className={`${prefixCls}__content`}>{children}</div>;
   const infoRender = info && <div className={`${prefixCls}__info`}>{info}</div>;
-  const arrowRender = !!onClick && <div className={`${prefixCls}__arrow`} />;
+  const arrowRender = !!onClick && hasArrow && <div className={`${prefixCls}__arrow`} />;
 
   return (
     <li ref={compRef} className={cls} onClick={onClick} onTouchStart={() => {}} {...restProps}>
@@ -30,10 +42,10 @@ const ListItem = React.forwardRef<unknown, ListItemProps>((props, ref) => {
         <div className={`${prefixCls}__inner`}>
           {titleRender}
           {contentRender}
-          {infoRender}
+          {afterRender}
+          {arrowRender}
         </div>
-        {afterRender}
-        {arrowRender}
+        {infoRender}
       </div>
     </li>
   );
@@ -41,7 +53,8 @@ const ListItem = React.forwardRef<unknown, ListItemProps>((props, ref) => {
 
 ListItem.displayName = 'ListItem';
 
-ListItem.defaultProps = {};
+ListItem.defaultProps = {
+  hasArrow: true,
+};
 
 export default ListItem;
-

@@ -34,7 +34,7 @@ exports[`DateSelect DateSelect date 1`] = `
       valueMember="value"
     >
       <div
-        className="za-date-select za-date-select--arrow"
+        className="za-date-select"
         onClick={[Function]}
       >
         <input
@@ -50,7 +50,11 @@ exports[`DateSelect DateSelect date 1`] = `
             2019-04-23
           </div>
         </div>
+        <div
+          className="za-date-select__arrow"
+        />
         <ForwardRef(forwardRef)
+          hasArrow={true}
           localeCode="zh-CN"
           minuteStep={1}
           mode="date"
@@ -64,6 +68,7 @@ exports[`DateSelect DateSelect date 1`] = `
         >
           <ConfigReceiver
             forwardedRef={null}
+            hasArrow={true}
             localeCode="zh-CN"
             minuteStep={1}
             mode="date"
@@ -76,6 +81,7 @@ exports[`DateSelect DateSelect date 1`] = `
             visible={false}
           >
             <DatePicker
+              hasArrow={true}
               locale={
                 Object {
                   "cancelText": "取消",
@@ -166,7 +172,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
       valueMember="value"
     >
       <div
-        className="za-date-select za-date-select--placeholder za-date-select--arrow"
+        className="za-date-select za-date-select--placeholder"
         onClick={[Function]}
       >
         <input
@@ -182,8 +188,12 @@ exports[`DateSelect DateSelect datetime 1`] = `
             请选择时间
           </div>
         </div>
+        <div
+          className="za-date-select__arrow"
+        />
         <ForwardRef(forwardRef)
           defaultValue={2017-11-03T10:00:00.000Z}
+          hasArrow={true}
           localeCode="zh-CN"
           max={2017-11-02T09:00:00.000Z}
           min={2017-11-02T03:00:00.000Z}
@@ -199,6 +209,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
           <ConfigReceiver
             defaultValue={2017-11-03T10:00:00.000Z}
             forwardedRef={null}
+            hasArrow={true}
             localeCode="zh-CN"
             max={2017-11-02T09:00:00.000Z}
             min={2017-11-02T03:00:00.000Z}
@@ -213,6 +224,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
           >
             <DatePicker
               defaultValue={2017-11-03T10:00:00.000Z}
+              hasArrow={true}
               locale={
                 Object {
                   "cancelText": "取消",
@@ -329,7 +341,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
       valueMember="value"
     >
       <div
-        className="za-date-select za-date-select--arrow"
+        className="za-date-select"
         onClick={[Function]}
       >
         <input
@@ -345,6 +357,9 @@ exports[`DateSelect DateSelect disabled 1`] = `
             2019-04-23
           </div>
         </div>
+        <div
+          className="za-date-select__arrow"
+        />
         <ForwardRef(forwardRef)
           dataSource={
             Array [
@@ -359,6 +374,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
             ]
           }
           disabeld={true}
+          hasArrow={true}
           localeCode="zh-CN"
           minuteStep={1}
           mode="date"
@@ -384,6 +400,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
             }
             disabeld={true}
             forwardedRef={null}
+            hasArrow={true}
             localeCode="zh-CN"
             minuteStep={1}
             mode="date"
@@ -408,6 +425,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                 ]
               }
               disabeld={true}
+              hasArrow={true}
               locale={
                 Object {
                   "cancelText": "取消",
@@ -1670,6 +1688,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                     ]
                                   }
                                   disabeld={true}
+                                  hasArrow={true}
                                   localeCode="zh-CN"
                                   minuteStep={1}
                                   mode="date"
@@ -1695,6 +1714,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                     }
                                     disabeld={true}
                                     forwardedRef={null}
+                                    hasArrow={true}
                                     localeCode="zh-CN"
                                     minuteStep={1}
                                     mode="date"
@@ -1720,6 +1740,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                       }
                                       disabeld={true}
                                       disabled={false}
+                                      hasArrow={true}
                                       locale={
                                         Object {
                                           "day": "日",
@@ -2446,6 +2467,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                         }
                                         disabeld={true}
                                         disabled={false}
+                                        hasArrow={true}
                                         itemRender={[Function]}
                                         locale={
                                           Object {
@@ -4340,7 +4362,7 @@ exports[`DateSelect DateSelect time 1`] = `
       valueMember="value"
     >
       <div
-        className="za-date-select za-date-select--placeholder za-date-select--arrow"
+        className="za-date-select za-date-select--placeholder"
         onClick={[Function]}
       >
         <input
@@ -4356,8 +4378,12 @@ exports[`DateSelect DateSelect time 1`] = `
             请选择时间
           </div>
         </div>
+        <div
+          className="za-date-select__arrow"
+        />
         <ForwardRef(forwardRef)
           defaultValue={2017-11-03T07:00:00.000Z}
+          hasArrow={true}
           localeCode="zh-CN"
           minuteStep={15}
           mode="time"
@@ -4371,6 +4397,7 @@ exports[`DateSelect DateSelect time 1`] = `
           <ConfigReceiver
             defaultValue={2017-11-03T07:00:00.000Z}
             forwardedRef={null}
+            hasArrow={true}
             localeCode="zh-CN"
             minuteStep={15}
             mode="time"
@@ -4383,6 +4410,7 @@ exports[`DateSelect DateSelect time 1`] = `
           >
             <DatePicker
               defaultValue={2017-11-03T07:00:00.000Z}
+              hasArrow={true}
               locale={
                 Object {
                   "cancelText": "取消",
@@ -4460,7 +4488,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
       valueMember="value"
     >
       <div
-        className="za-date-select za-date-select--placeholder za-date-select--arrow"
+        className="za-date-select za-date-select--placeholder"
         onClick={[Function]}
       >
         <input
@@ -4476,8 +4504,12 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
             请选择
           </div>
         </div>
+        <div
+          className="za-date-select__arrow"
+        />
         <ForwardRef(forwardRef)
           defaultValue={2019-04-23T00:00:00.000Z}
+          hasArrow={true}
           localeCode="zh-CN"
           minuteStep={1}
           mode="date"
@@ -4490,6 +4522,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
           <ConfigReceiver
             defaultValue={2019-04-23T00:00:00.000Z}
             forwardedRef={null}
+            hasArrow={true}
             localeCode="zh-CN"
             minuteStep={1}
             mode="date"
@@ -4501,6 +4534,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
           >
             <DatePicker
               defaultValue={2019-04-23T00:00:00.000Z}
+              hasArrow={true}
               locale={
                 Object {
                   "cancelText": "取消",
@@ -4583,7 +4617,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
       wheelDefaultValue={2017-11-03T10:00:00.000Z}
     >
       <div
-        className="za-date-select za-date-select--placeholder za-date-select--arrow"
+        className="za-date-select za-date-select--placeholder"
         onClick={[Function]}
       >
         <input
@@ -4599,7 +4633,11 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
             请选择日期
           </div>
         </div>
+        <div
+          className="za-date-select__arrow"
+        />
         <ForwardRef(forwardRef)
+          hasArrow={true}
           localeCode="zh-CN"
           minuteStep={1}
           mode="date"
@@ -4613,6 +4651,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
         >
           <ConfigReceiver
             forwardedRef={null}
+            hasArrow={true}
             localeCode="zh-CN"
             minuteStep={1}
             mode="date"
@@ -4625,6 +4664,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
             wheelDefaultValue={2017-11-03T10:00:00.000Z}
           >
             <DatePicker
+              hasArrow={true}
               locale={
                 Object {
                   "cancelText": "取消",
@@ -4727,7 +4767,7 @@ exports[`DateSelect DateSelect year 1`] = `
       valueMember="value"
     >
       <div
-        className="za-date-select za-date-select--arrow"
+        className="za-date-select"
         onClick={[Function]}
       >
         <input
@@ -4743,7 +4783,11 @@ exports[`DateSelect DateSelect year 1`] = `
             2017
           </div>
         </div>
+        <div
+          className="za-date-select__arrow"
+        />
         <ForwardRef(forwardRef)
+          hasArrow={true}
           localeCode="zh-CN"
           minuteStep={1}
           mode="year"
@@ -4757,6 +4801,7 @@ exports[`DateSelect DateSelect year 1`] = `
         >
           <ConfigReceiver
             forwardedRef={null}
+            hasArrow={true}
             localeCode="zh-CN"
             minuteStep={1}
             mode="year"
@@ -4769,6 +4814,7 @@ exports[`DateSelect DateSelect year 1`] = `
             visible={false}
           >
             <DatePicker
+              hasArrow={true}
               locale={
                 Object {
                   "cancelText": "取消",

@@ -70,7 +70,7 @@ const img = 'https://static.zhongan.com/website/health/zarm/images/icons/state.p
 ReactDOM.render(
   <List>
     <List.Item
-      prefix={<Icon type="broadcast" theme="primary" style={{ fontSize: 28 }} />}
+      prefix={<Icon type="broadcast" theme="primary" style={{ fontSize: 24 }} />}
       title="Vue"
       onClick={() => {}}
     />
@@ -87,6 +87,27 @@ ReactDOM.render(
       after="more"
       onClick={() => {}}
     />
+  </List>,
+  mountNode,
+);
+```
+
+## 表单列表
+
+```jsx
+import { List, Input, CustomInput, Message, Icon } from 'zarm';
+
+ReactDOM.render(
+  <List>
+    <List.Item title="姓名" info="最少8个字符，由英文字母、数字组成">
+      <Input placeholder="请输入" />
+    </List.Item>
+    <List.Item title="年龄">
+      <CustomInput placeholder="请输入" />
+    </List.Item>
+     <List.Item title="简介">
+      <Input rows={3} placeholder="请输入" />
+    </List.Item>
   </List>,
   mountNode,
 );

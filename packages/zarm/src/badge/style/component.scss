@@ -4,7 +4,6 @@
   position: relative;
   display: inline-block;
   vertical-align: middle;
-  line-height: 1;
   @include badge-theme(var(--theme-danger));
 
   @include e(content) {

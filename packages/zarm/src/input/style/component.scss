@@ -28,14 +28,4 @@
   @include m(disabled) {
     @include input-disabled();
   }
-
-  // 纵向
-  @include m(vertical) {
-    flex-direction: column;
-
-    @include e(label) {
-      width: auto;
-      font-size: var(--za-input-vertical-label-font-size);
-    }
-  }
 }

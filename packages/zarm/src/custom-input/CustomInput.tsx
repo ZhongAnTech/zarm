@@ -22,7 +22,6 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
     defaultValue,
     maxLength,
     label,
-    vertical,
     onChange,
     onBlur,
     onFocus,
@@ -52,7 +51,6 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
     [`${prefixCls}--focus`]: focused,
     [`${prefixCls}--clearable`]: showClearIcon,
     [`${prefixCls}--readonly`]: readOnly,
-    [`${prefixCls}--vertical`]: vertical,
   });
 
   const onInputFocus = () => {
@@ -179,7 +177,6 @@ CustomInput.defaultProps = {
   autoFocus: false,
   readOnly: false,
   clearable: false,
-  vertical: false,
 };
 
 export default CustomInput;

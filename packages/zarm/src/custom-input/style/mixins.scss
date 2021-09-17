@@ -1,16 +1,15 @@
 @mixin input-base() {
-  display: flex;
   position: relative;
   width: 100%;
   color: var(--color-text);
+  font-size: var(--za-input-font-size);
 
   @include e(label) {
-    width: var(--za-input-label-width);
+    font-size: var(--za-input-vertical-label-font-size);
     line-height: var(--za-input-line-height);
   }
 
   @include e(content) {
-    flex: 1;
     position: relative;
     height: var(--za-input-height);
     line-height: var(--za-input-line-height);

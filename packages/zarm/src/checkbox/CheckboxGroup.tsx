@@ -1,5 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
+import List from '../list';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseCheckboxGroupProps, CheckboxValue } from './interface';
 
@@ -103,7 +104,7 @@ const CheckboxGroup = React.forwardRef<unknown, CheckboxGroupProps>((props, ref)
 
   return (
     <div className={cls} {...restProps} ref={radioGroupRef}>
-      <div className={`${prefixCls}__inner`}>{items}</div>
+      <div className={`${prefixCls}__inner`}>{type === 'list' ? <List>{items}</List> : items}</div>
     </div>
   );
 });

@@ -2,7 +2,8 @@ import * as React from 'react';
 import classnames from 'classnames';
 import type { BaseRadioProps } from './interface';
 import RadioGroup from './RadioGroup';
-import Cell from '../cell';
+import List from '../list';
+import type { ListItemProps } from '../list';
 import { ConfigContext } from '../n-config-provider';
 
 const getChecked = (props: RadioProps, defaultChecked: boolean) => {
@@ -13,7 +14,7 @@ type RadioSpanProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
   'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
 >;
-type RadioCellProps = Omit<
+type RadioListProps = Omit<
   React.HTMLAttributes<HTMLDivElement>,
   'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
 >;
@@ -22,7 +23,7 @@ type RadioButtonProps = Omit<
   'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
 >;
 
-export type RadioProps = Partial<RadioSpanProps & RadioCellProps & RadioButtonProps> &
+export type RadioProps = Partial<RadioSpanProps & RadioListProps & RadioButtonProps> &
   BaseRadioProps & {
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   };
@@ -100,8 +101,27 @@ const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
     setCurrentChecked(getChecked({ checked, defaultChecked }, false));
   }, [checked, defaultChecked]);
 
-  if (type === 'cell') {
-    return <Cell onClick={() => {}}>{radioRender}</Cell>;
+  if (type === 'list') {
+    const listProps: ListItemProps = {
+      hasArrow: false,
+      className: cls,
+      prefix: (
+        <>
+          <span className={`${prefixCls}__widget`}>
+            <span className={`${prefixCls}__inner`} />
+          </span>
+          {inputRender}
+        </>
+      ),
+      title: (
+        <>
+          {children && <span className={`${prefixCls}__text`}>{children}</span>}
+          {inputRender}
+        </>
+      ),
+      onClick: !disabled ? () => {} : undefined,
+    };
+    return <List.Item ref={radioRef} {...listProps} />;
   }
 
   if (type === 'button') {

@@ -14,7 +14,6 @@
   justify-content: space-between;
   align-items: center;
   padding-left: var(--za-list-item-padding-horizontal);
-  min-height: var(--za-list-item-height);
   position: relative;
   background-color: var(--za-list-item-background);
   font-size: var(--za-list-item-font-size);
@@ -26,27 +25,32 @@
 
   @include e(prefix) {
     display: flex;
-    flex-shrink: 0;
     flex-wrap: nowrap;
     align-items: center;
     margin-right: var(--za-list-item-padding-horizontal);
     padding: var(--za-list-item-padding-vertical) 0;
+    min-height: var(--za-list-item-height);
   }
 
   @include e(wrapper) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     position: relative;
     width: 100%;
+    height: 100%;
     min-width: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    align-self: stretch;
+    min-height: var(--za-list-item-height);
     padding: var(--za-list-item-padding-vertical) 0;
     padding-right: var(--za-list-item-padding-horizontal);
-    @include onepx(bottom);
+    @include onepx(top);
   }
 
   @include e(inner) {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
     min-width: 0;
   }
@@ -55,6 +59,15 @@
     white-space: var(--za-list-item-title-white-space);
     overflow: hidden;
     text-overflow: ellipsis;
+    line-height: var(--za-list-item-title-height);
+  }
+
+  @include e(content) {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    min-height: var(--za-list-item-title-height);
+    line-height: var(--za-list-item-title-height);
   }
 
   @include e(after) {
@@ -84,6 +97,17 @@
   @include e(info) {
     font-size: var(--za-list-item-info-font-size);
     color: var(--za-list-item-info-text-color);
+  }
+
+  @include m(inline) {
+    @include e(inner) {
+      align-items: flex-start;
+    }
+  
+    @include e(title) {
+      width: var(--cell-label-width);
+      line-height: var(--za-input-line-height);
+    }
   }
 
   @include m(link) {

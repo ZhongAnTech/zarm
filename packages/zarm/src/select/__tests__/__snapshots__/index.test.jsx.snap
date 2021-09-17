@@ -105,7 +105,6 @@ exports[`Select Cascader Select 1`] = `
         ]
       }
       displayRender={[Function]}
-      hasArrow={true}
       itemRender={[Function]}
       locale={
         Object {
@@ -120,7 +119,7 @@ exports[`Select Cascader Select 1`] = `
       valueMember="value"
     >
       <div
-        className="za-select za-select--placeholder za-select--arrow"
+        className="za-select za-select--placeholder"
         onClick={[Function]}
       >
         <div
@@ -132,6 +131,9 @@ exports[`Select Cascader Select 1`] = `
             请选择
           </div>
         </div>
+        <div
+          className="za-select__arrow"
+        />
         <ForwardRef(forwardRef)
           cols={Infinity}
           dataSource={
@@ -426,7 +428,6 @@ exports[`Select Cascader Select init value 1`] = `
       }
       displayAddon="-"
       displayRender={[Function]}
-      hasArrow={true}
       itemRender={[Function]}
       locale={
         Object {
@@ -447,7 +448,7 @@ exports[`Select Cascader Select init value 1`] = `
       valueMember="value"
     >
       <div
-        className="za-select za-select--arrow"
+        className="za-select"
         onClick={[Function]}
       >
         <div
@@ -460,6 +461,9 @@ exports[`Select Cascader Select init value 1`] = `
             选项二
           </div>
         </div>
+        <div
+          className="za-select__arrow"
+        />
         <ForwardRef(forwardRef)
           cols={Infinity}
           dataSource={
@@ -700,7 +704,6 @@ exports[`Select Select 1`] = `
         ]
       }
       displayRender={[Function]}
-      hasArrow={true}
       itemRender={[Function]}
       locale={
         Object {
@@ -715,7 +718,7 @@ exports[`Select Select 1`] = `
       valueMember="value"
     >
       <div
-        className="za-select za-select--placeholder za-select--arrow"
+        className="za-select za-select--placeholder"
         onClick={[Function]}
       >
         <div
@@ -727,6 +730,9 @@ exports[`Select Select 1`] = `
             请选择
           </div>
         </div>
+        <div
+          className="za-select__arrow"
+        />
         <ForwardRef(forwardRef)
           cols={Infinity}
           dataSource={
@@ -889,7 +895,6 @@ exports[`Select Select disabled 1`] = `
       }
       disabeld={true}
       displayRender={[Function]}
-      hasArrow={true}
       itemRender={[Function]}
       locale={
         Object {
@@ -904,7 +909,7 @@ exports[`Select Select disabled 1`] = `
       valueMember="value"
     >
       <div
-        className="za-select za-select--placeholder za-select--arrow"
+        className="za-select za-select--placeholder"
         onClick={[Function]}
       >
         <div
@@ -916,6 +921,9 @@ exports[`Select Select disabled 1`] = `
             请选择
           </div>
         </div>
+        <div
+          className="za-select__arrow"
+        />
         <ForwardRef(forwardRef)
           cols={Infinity}
           dataSource={
@@ -1341,7 +1349,6 @@ exports[`Select render defaultValue correctly  1`] = `
       }
       defaultValue="2"
       displayRender={[Function]}
-      hasArrow={true}
       itemRender={[Function]}
       locale={
         Object {
@@ -1356,7 +1363,7 @@ exports[`Select render defaultValue correctly  1`] = `
       valueMember="value"
     >
       <div
-        className="za-select za-select--arrow"
+        className="za-select"
         onClick={[Function]}
       >
         <div
@@ -1368,6 +1375,9 @@ exports[`Select render defaultValue correctly  1`] = `
             选项二
           </div>
         </div>
+        <div
+          className="za-select__arrow"
+        />
         <ForwardRef(forwardRef)
           cols={Infinity}
           dataSource={

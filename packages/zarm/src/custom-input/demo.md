@@ -12,12 +12,11 @@ const Demo = () => {
 
   return (
     <List>
-      <List.Item>
+      <List.Item title="数字">
         <CustomInput
           ref={focusInput}
           type="number"
           placeholder="type is number"
-          label="数字"
           value={value}
           onChange={(value) => {
             setValue(value);
@@ -26,12 +25,12 @@ const Demo = () => {
         />
       </List.Item>
 
-      <List.Item>
-        <CustomInput type="price" label="金额" placeholder="type is price" defaultValue="14.00" />
+      <List.Item title="金额">
+        <CustomInput type="price" placeholder="type is price" defaultValue="14.00" />
       </List.Item>
 
-      <List.Item>
-        <CustomInput type="idcard" label="身份证" maxLength={18} placeholder="type is idcard" />
+      <List.Item title="身份证">
+        <CustomInput type="idcard" maxLength={18} placeholder="type is idcard" />
       </List.Item>
 
       <List.Item>
@@ -60,7 +59,7 @@ import { CustomInput, List } from 'zarm';
 ReactDOM.render(
   <List>
     <List.Item>
-      <CustomInput vertical type="price" label="金额" placeholder="请输入金额" />
+      <CustomInput label="金额" type="price" placeholder="请输入金额" />
     </List.Item>
   </List>,
   mountNode,
@@ -107,7 +106,6 @@ ReactDOM.render(
 | defaultValue | number \| string                   | -        | 初始值                                                                   |
 | disabled     | boolean                            | false    | 是否禁用                                                                 |
 | readOnly     | boolean                            | false    | 是否只读                                                                 |
-| vertical     | boolean                                                                    | false  | 是否纵向排列标签栏和输入框                                                               |
 | autoFocus    | boolean                            | false    | 是否自动获取焦点                                                         |
 | maxLength    | number                             | -        | 输入字数上限                                                             |
 | clearable    | boolean                            | false     | 是否显示清除按钮。必须为受控组件（属性包含 value、onChange）时方可生效。 |

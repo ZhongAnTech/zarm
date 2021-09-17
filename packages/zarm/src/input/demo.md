@@ -13,10 +13,9 @@ const Demo = () => {
 
   return (
     <List>
-      <List.Item>
+      <List.Item title="单行文本">
         <Input
           ref={focusInput}
-          label="单行文本"
           placeholder="请输入"
           value={title}
           onChange={(e) => {
@@ -25,10 +24,9 @@ const Demo = () => {
           }}
         />
       </List.Item>
-      <List.Item>
+      <List.Item title="多行文本">
         <Input
           rows={3}
-          label="多行文本"
           placeholder="请输入"
           value={content}
           onChange={(e) => {
@@ -65,11 +63,10 @@ const Demo = () => {
 
   return (
     <List>
-      <List.Item>
+      <List.Item title="单行文本">
         <Input
           clearable
-          label="单行文本"
-          placeholder="请输入"
+          placeholder="输入后右侧可见清除按钮"
           value={value}
           onChange={(e) => {
             setValue(e.target.value);
@@ -96,10 +93,9 @@ const Demo = () => {
 
   return (
     <List>
-      <List.Item>
+      <List.Item title="密码输入">
         <Input
           type="password"
-          label="密码输入"
           placeholder="请输入"
           value={password}
           onChange={(e) => {
@@ -107,10 +103,9 @@ const Demo = () => {
           }}
         />
       </List.Item>
-      <List.Item>
+      <List.Item title="搜索框">
         <Input
           type="search"
-          label="搜索框"
           placeholder="请输入"
           value={value}
           onChange={(e) => {
@@ -132,11 +127,11 @@ import { Input, List } from 'zarm';
 
 ReactDOM.render(
   <List>
-    <List.Item>
-      <Input readOnly label="单行文本" defaultValue="我是只读状态" />
+    <List.Item title="单行文本">
+      <Input readOnly defaultValue="我是只读状态" />
     </List.Item>
-    <List.Item>
-      <Input readOnly label="多行文本" rows={3} value="我是只读状态，我是只读状态，我是只读状态，我是只读状态。" />
+    <List.Item title="多行文本">
+      <Input readOnly rows={3} value="我是只读状态，我是只读状态，我是只读状态，我是只读状态。" />
     </List.Item>
   </List>,
   mountNode,
@@ -150,11 +145,11 @@ import { Input, List } from 'zarm';
 
 ReactDOM.render(
   <List>
-    <List.Item>
-      <Input disabled label="单行文本" value="我是禁用状态" />
+    <List.Item title="单行文本">
+      <Input disabled value="我是禁用状态" />
     </List.Item>
-    <List.Item>
-      <Input disabled label="多行文本" rows={3} value="我是禁用状态，我是禁用状态，我是禁用状态，我是禁用状态。" />
+    <List.Item title="多行文本">
+      <Input disabled rows={3} value="我是禁用状态，我是禁用状态，我是禁用状态，我是禁用状态。" />
     </List.Item>
   </List>,
   mountNode,
@@ -172,11 +167,10 @@ const Demo = () => {
 
   return (
     <List>
-      <List.Item>
+      <List.Item title="多行文本">
         <Input
           autoHeight
           rows={3}
-          label="多行文本"
           placeholder="请输入"
           value={value}
           onChange={(e) => {
@@ -202,13 +196,12 @@ const Demo = () => {
 
   return (
     <List>
-      <List.Item>
+      <List.Item title="多行文本">
         <Input
           autoHeight
           showLength
           maxLength={200}
           rows={3}
-          label="多行文本"
           placeholder="请输入"
           value={value}
           onChange={(e) => {
@@ -249,13 +242,13 @@ import { Input, List } from 'zarm';
 ReactDOM.render(
   <List>
     <List.Item info="最少4个字符，包含大小写英文字母和数字">
-      <Input vertical label="账号" placeholder="请输入您的账号" />
+      <Input label="账号" placeholder="请输入您的账号" />
     </List.Item>
     <List.Item info="最少8个字符，包含大小写英文字母、数字和字符">
-      <Input vertical label="密码" type="password" placeholder="请输入您的密码" />
+      <Input label="密码" type="password" placeholder="请输入您的密码" />
     </List.Item>
     <List.Item>
-      <Input vertical label="个人介绍" autoHeight rows={4} maxLength={200} placeholder="请输入您的个人介绍" />
+      <Input label="个人介绍" autoHeight rows={4} maxLength={200} placeholder="请输入您的个人介绍" />
     </List.Item>
   </List>,
   mountNode,
@@ -272,7 +265,6 @@ ReactDOM.render(
 | defaultValue | number \| string                                                           | -      | 初始值                                                                   |
 | disabled     | boolean                                                                    | false  | 是否禁用                                                                 |
 | readOnly     | boolean                                                                    | false  | 是否只读                                                                 |
-| vertical     | boolean                                                                    | false  | 是否纵向排列标签栏和输入框                                                               |
 | rows         | number                                                                     | -      | 多行文本时的显示行数。type="text" 时有效。                               |
 | autoHeight   | boolean                                                                    | false  | 是否高度自适应。多行文本（type="text" 且包含 rows 属性）时有效。         |
 | autoFocus    | boolean                                                                    | false  | 是否自动获取焦点                                                         |

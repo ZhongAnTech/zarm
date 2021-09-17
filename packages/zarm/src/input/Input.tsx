@@ -40,7 +40,6 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
     defaultValue,
     maxLength,
     label,
-    vertical,
     onChange,
     onBlur,
     onFocus,
@@ -74,7 +73,6 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
     [`${prefixCls}--clearable`]: showClearIcon,
     [`${prefixCls}--readonly`]: readOnly,
     [`${prefixCls}--focus`]: focused,
-    [`${prefixCls}--vertical`]: vertical,
   });
 
   const focus = () => {
@@ -231,7 +229,6 @@ Input.defaultProps = {
   autoFocus: false,
   readOnly: false,
   clearable: false,
-  vertical: false,
   showLength: false,
   autoHeight: false,
 };

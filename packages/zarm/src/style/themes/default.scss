@@ -222,25 +222,26 @@
   --confirm-button-active-background: var(--background-active);
 
   // List
-  --za-list-item-font-size: 17px;
+  --za-list-item-font-size: var(--font-size-md);
   --za-list-item-background: #fff;
   --za-list-item-background-active: rgba(0, 0, 0, 0.15);
   --za-list-item-padding-vertical: 8px;
   --za-list-item-padding-horizontal: 16px;
   --za-list-item-height: 44px;
   --za-list-item-space: 5px;
+  --za-list-item-title-height: calc(var(--za-list-item-height) - var(--za-list-item-padding-vertical) * 2);
+  --za-list-item-title-white-space: nowrap;
   --za-list-item-after-text-color: rgba(0, 0, 0, 0.45);
   --za-list-item-arrow-color: rgba(0, 0, 0, 0.2);
   --za-list-item-arrow-size: 10px;
   --za-list-item-arrow-border-width: 2px;
   --za-list-item-info-font-size: var(--font-size-sm);
   --za-list-item-info-text-color: rgba(0, 0, 0, 0.45);
-  --za-list-item-title-white-space: nowrap;
 
   // Input
-  --za-input-height: calc(var(--za-list-item-height) - var(--za-list-item-padding-vertical) * 2); // 28px
+  --za-input-height: var(--za-list-item-title-height); // 28px
   --za-input-line-height: var(--za-input-height);
-  --za-input-font-size: 17px;
+  --za-input-font-size: var(--font-size-md);
   --za-input-color: var(--color-text);
   --za-input-clear-icon-width: 16px;
   --za-input-clear-icon-color: #bcbcbc;
