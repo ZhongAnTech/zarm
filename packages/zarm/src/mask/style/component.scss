@@ -6,6 +6,11 @@
   height: 100%;
   background-color: rgba(0, 0, 0, var(--opacity-mask));
   z-index: var(--zindex-mask);
+  visibility: visible;
+
+  @include m(hidden) {
+    visibility: hidden;
+  }
 
   @include m(transparent) {
     background-color: transparent;

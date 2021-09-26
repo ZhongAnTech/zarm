@@ -116,3 +116,86 @@ exports[`Popup snapshot renders mount node correctly 1`] = `
   </Portal>
 </Popup>
 `;
+
+exports[`Popup snapshot renders mount without mountContainer 1`] = `
+<Popup
+  afterClose={[MockFunction]}
+  destroy={true}
+  direction="bottom"
+  mountContainer={false}
+  onMaskClick={[MockFunction]}
+  prefixCls="za-popup"
+  visible={true}
+>
+  <Portal
+    afterClose={[MockFunction]}
+    animationDuration={200}
+    animationType="fade"
+    destroy={true}
+    direction="bottom"
+    handlePortalUnmount={[Function]}
+    mask={true}
+    maskType="normal"
+    mountContainer={false}
+    onMaskClick={[MockFunction]}
+    prefixCls="za-popup"
+    visible={true}
+  >
+    <Trigger
+      disabled={false}
+      onClose={[Function]}
+      visible={true}
+    >
+      <div
+        className="za-popup-container"
+      >
+        <Mask
+          className="za-fade-enter"
+          prefixCls="za-mask"
+          style={
+            Object {
+              "WebkitAnimationDuration": "200ms",
+              "animationDuration": "200ms",
+            }
+          }
+          type="normal"
+          visible={true}
+        >
+          <div
+            className="za-mask za-fade-enter za-mask--normal"
+            style={
+              Object {
+                "WebkitAnimationDuration": "200ms",
+                "animationDuration": "200ms",
+              }
+            }
+          />
+        </Mask>
+        <div
+          className="za-popup__wrapper"
+          data-width={0}
+          onClick={[Function]}
+          role="dialog"
+          style={Object {}}
+        >
+          <div
+            className="za-popup za-popup--bottom"
+            data-width={0}
+            role="document"
+            style={
+              Object {
+                "WebkitTransitionDuration": "200ms",
+                "WebkitTransitionProperty": "transform",
+                "transitionDuration": "200ms",
+                "transitionProperty": "transform",
+              }
+            }
+          >
+            foo
+          </div>
+        </div>
+      </div>
+    </Trigger>
+  </Portal>
+</Popup>
+`;
