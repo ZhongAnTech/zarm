@@ -7,8 +7,8 @@
   @include m(textarea) {
     @include e(length) {
       text-align: right;
-      color: var(--input-length-count-color);
-      font-size: r(12);
+      color: var(--za-input-length-color);
+      font-size: var(--za-input-length-font-size);
     }
   }
 

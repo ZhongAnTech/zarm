@@ -4,7 +4,7 @@
 
 ```jsx
 import { useState } from 'react';
-import { Cell, FilePicker, Icon } from 'zarm';
+import { List, FilePicker, Icon } from 'zarm';
 
 const Demo = () => {
   const [files, setFiles] = useState([]);
@@ -17,9 +17,12 @@ const Demo = () => {
 
   return (
     <>
-      {files.map((item, index) => (
-        <Cell key={+index}>{item.fileName}</Cell>
-      ))}
+      <List>
+        {files.map((item, index) => (
+          <List.Item key={+index} title={item.fileName} />
+        ))}
+      </List>
+
       <div className="file-picker-wrapper">
         <FilePicker className="file-picker-btn" onChange={onSelect}>
           <Icon type="add" size="lg" />
@@ -64,7 +67,7 @@ const Demo = () => {
     toast.show('删除成功');
   };
 
-  const imgRender = () => {
+  const renderImages = () => {
     return files.map((item, index) => {
       return (
         <Badge
@@ -72,11 +75,10 @@ const Demo = () => {
           className="file-picker-item"
           shape="circle"
           text={
-            <span className="file-picker-closebtn">
+            <span className="file-picker-closebtn" onClick={() => remove(index)}>
               <Icon type="wrong" />
             </span>
           }
-          onClick={() => remove(index)}
         >
           <div className="file-picker-item-img">
             <a href={item.thumbnail} target="_blank" rel="noopener noreferrer">
@@ -90,7 +92,7 @@ const Demo = () => {
 
   return (
     <div className="file-picker-wrapper">
-      {imgRender()}
+      {renderImages()}
       {files.length < MAX_FILES_COUNT && (
         <FilePicker
           multiple

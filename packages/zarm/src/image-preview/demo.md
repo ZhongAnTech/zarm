@@ -4,7 +4,7 @@
 
 ```jsx
 import { useState, useEffect } from 'react';
-import { Cell, Button, ImagePreview, NoticeBar } from 'zarm';
+import { List, Button, ImagePreview, NoticeBar } from 'zarm';
 
 const commonImages = [
   'https://cdn-health.zhongan.com/zarm/imagePreview/1-small.jpg',
@@ -61,24 +61,26 @@ const Demo = () => {
   return (
     <>
       <NoticeBar>图片缩放只支持Touch事件，建议使用移动模式/设备浏览以获得最佳体验。</NoticeBar>
-      <Cell
-        description={
-          <Button size="xs" onClick={() => open('common')}>
-            开启
-          </Button>
-        }
-      >
-        普通
-      </Cell>
-      <Cell
-        description={
-          <Button size="xs" onClick={() => open('origin')}>
-            开启
-          </Button>
-        }
-      >
-        有查看原始图片功能
-      </Cell>
+      <List>
+        <List.Item
+          after={
+            <Button size="xs" onClick={() => open('common')}>
+              开启
+            </Button>
+          }
+        >
+          普通
+        </List.Item>
+        <List.Item
+          after={
+            <Button size="xs" onClick={() => open('origin')}>
+              开启
+            </Button>
+          }
+        >
+          有查看原始图片功能
+        </List.Item>
+      </List>
       <ImagePreview
         visible={visibleState.common}
         images={commonImages}
@@ -102,7 +104,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```jsx
 import { useState } from 'react';
-import { ImagePreview, Cell } from 'zarm';
+import { ImagePreview, List } from 'zarm';
 
 const commonImages = [
   'https://cdn-health.zhongan.com/zarm/imagePreview/1-small.jpg',
@@ -123,13 +125,16 @@ const Demo = () => {
 
   return (
     <>
-      <Cell>
-        {commonImages.map((pic, index) => (
-          <div className="picture-item" onClick={() => show(index)} key={+index}>
-            <img src={pic} alt="" />
-          </div>
-        ))}
-      </Cell>
+      <List>
+        <List.Item>
+          {commonImages.map((pic, index) => (
+            <div className="picture-item" onClick={() => show(index)} key={+index}>
+              <img src={pic} alt="" />
+            </div>
+          ))}
+        </List.Item>
+      </List>
+
       <ImagePreview
         visible={visible}
         images={commonImages}

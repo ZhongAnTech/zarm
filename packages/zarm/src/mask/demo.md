@@ -4,7 +4,7 @@
 
 ```jsx
 import { useState } from 'react';
-import { Cell, Button, Mask } from 'zarm';
+import { List, Button, Mask } from 'zarm';
 
 const Demo = () => {
   const [visible, setVisible] = useState(false);
@@ -13,14 +13,16 @@ const Demo = () => {
 
   return (
     <>
-      <Cell
-        title="默认"
-        description={
-          <Button size="xs" onClick={toggle}>
-            开启
-          </Button>
-        }
-      />
+      <List>
+        <List.Item
+          title="默认"
+          after={
+            <Button size="xs" onClick={toggle}>
+              开启
+            </Button>
+          }
+        />
+      </List>
       <Mask visible={visible} onClick={toggle} />
     </>
   );

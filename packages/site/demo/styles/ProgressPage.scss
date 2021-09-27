@@ -1,8 +1,13 @@
 @import "@/styles/index";
 
 .progress-page {
+  .progress-container {
+    width: 100%;
+    padding: r(20) r(20) 0;
+  }
+
   .progress {
-    padding: r(30);
+    margin-bottom: r(20);
     text-align: center;
 
     &-percent {

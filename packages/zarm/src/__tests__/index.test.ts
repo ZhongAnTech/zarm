@@ -121,7 +121,8 @@ describe('index', () => {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
             "autoFocus": false,
-            "clearable": true,
+            "clearable": false,
+            "disabled": false,
             "readOnly": false,
             "type": "number",
           },
@@ -151,7 +152,7 @@ describe('index', () => {
           "defaultProps": Object {
             "autoFocus": false,
             "autoHeight": false,
-            "clearable": true,
+            "clearable": false,
             "disabled": false,
             "readOnly": false,
             "showLength": false,
@@ -173,6 +174,18 @@ describe('index', () => {
             "type": "number",
             "visible": false,
           },
+          "render": [Function],
+        },
+        "List": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "Item": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "defaultProps": Object {
+              "hasArrow": true,
+            },
+            "render": [Function],
+          },
+          "defaultProps": Object {},
           "render": [Function],
         },
         "Loading": Object {
