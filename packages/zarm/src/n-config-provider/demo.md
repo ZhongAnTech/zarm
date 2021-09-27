@@ -84,28 +84,27 @@ const Demo = () => {
             </Radio.Group>
           }
         />
+        <List.Item
+          title="设置 CSS 变量"
+          after={
+            <Button
+              size="xs"
+              onClick={() => {
+                setCssVars(
+                  cssVars
+                    ? null
+                    : {
+                        '--button-primary-color': '#ff0000',
+                        '--list-item-height': '70px',
+                      },
+                );
+              }}
+            >
+              {cssVars ? '还原' : '设置'}
+            </Button>
+          }
+        />
       </List>
-
-      <Cell
-        title="设置 CSS 变量"
-        description={
-          <Button
-            size="xs"
-            onClick={() => {
-              setCssVars(
-                cssVars
-                  ? null
-                  : {
-                      '--button-primary-color': '#ff0000',
-                      '--cell-height': '70px',
-                    },
-              );
-            }}
-          >
-            {cssVars ? '还原' : '设置'}
-          </Button>
-        }
-      />
 
       <Message theme="warning">以下为组件示例</Message>
 
