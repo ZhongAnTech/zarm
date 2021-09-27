@@ -3,25 +3,25 @@
 ## 基本用法
 
 ```jsx
-import { Cell, Checkbox } from 'zarm';
+import { List, Checkbox } from 'zarm';
 
 ReactDOM.render(
-  <>
-    <Cell>
+  <List>
+    <List.Item>
       <Checkbox>普通</Checkbox>
-    </Cell>
-    <Cell>
+    </List.Item>
+    <List.Item>
       <Checkbox defaultChecked>默认选中</Checkbox>
-    </Cell>
-    <Cell>
+    </List.Item>
+    <List.Item>
       <Checkbox disabled>禁用</Checkbox>
-    </Cell>
-    <Cell>
+    </List.Item>
+    <List.Item>
       <Checkbox defaultChecked disabled>
         选中且禁用
       </Checkbox>
-    </Cell>
-    <Cell>
+    </List.Item>
+    <List.Item>
       <div className="agreement-box">
         <Checkbox id="agreement" />
         <label htmlFor="agreement">
@@ -38,8 +38,8 @@ ReactDOM.render(
           中的相关规定
         </label>
       </div>
-    </Cell>
-  </>,
+    </List.Item>
+  </List>,
   mountNode,
 );
 ```
@@ -48,7 +48,7 @@ ReactDOM.render(
 
 ```jsx
 import { useState } from 'react';
-import { Cell, Checkbox, Modal } from 'zarm';
+import { List, Checkbox, Modal } from 'zarm';
 
 const Demo = () => {
   const [checked, setChecked] = useState(false);
@@ -67,11 +67,13 @@ const Demo = () => {
   };
 
   return (
-    <Cell>
-      <Checkbox checked={checked} onChange={onChange}>
-        取消勾选前确认
-      </Checkbox>
-    </Cell>
+    <List>
+      <List.Item>
+        <Checkbox checked={checked} onChange={onChange}>
+          取消勾选前确认
+        </Checkbox>
+      </List.Item>
+    </List>
   );
 };
 
@@ -82,7 +84,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```jsx
 import { useState } from 'react';
-import { Cell, Checkbox } from 'zarm';
+import { List, Checkbox } from 'zarm';
 
 const Demo = () => {
   const [value, setValue] = useState([]);
@@ -92,8 +94,8 @@ const Demo = () => {
   };
 
   return (
-    <>
-      <Cell>
+    <List>
+      <List.Item>
         <Checkbox
           checked={value.length === 3}
           indeterminate={value.length < 3 && value.length > 0}
@@ -101,15 +103,15 @@ const Demo = () => {
         >
           全选 / 反选
         </Checkbox>
-      </Cell>
-      <Cell>
+      </List.Item>
+      <List.Item>
         <Checkbox.Group value={value} onChange={setValue}>
           <Checkbox value="0">选项一</Checkbox>
           <Checkbox value="1">选项二</Checkbox>
           <Checkbox value="2">选项三</Checkbox>
         </Checkbox.Group>
-      </Cell>
-    </>
+      </List.Item>
+    </List>
   );
 };
 
@@ -120,15 +122,15 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```jsx
 import { useState } from 'react';
-import { Cell, Checkbox } from 'zarm';
+import { List, Checkbox } from 'zarm';
 
 const Demo = () => {
   const [value, setValue] = useState([]);
 
   return (
-    <div>
-      <Cell
-        description={
+    <List>
+      <List.Item
+        after={
           <Checkbox.Group
             type="button"
             value={value}
@@ -144,10 +146,9 @@ const Demo = () => {
         }
       >
         普通
-      </Cell>
-
-      <Cell
-        description={
+      </List.Item>
+      <List.Item
+        after={
           <Checkbox.Group type="button" defaultValue={['0', '1']}>
             <Checkbox value="0">选项一</Checkbox>
             <Checkbox value="1">选项二</Checkbox>
@@ -156,10 +157,9 @@ const Demo = () => {
         }
       >
         指定默认值
-      </Cell>
-
-      <Cell
-        description={
+      </List.Item>
+      <List.Item
+        after={
           <Checkbox.Group type="button">
             <Checkbox value="0">选项一</Checkbox>
             <Checkbox value="1" disabled>
@@ -172,10 +172,9 @@ const Demo = () => {
         }
       >
         禁用指定项
-      </Cell>
-
-      <Cell
-        description={
+      </List.Item>
+      <List.Item
+        after={
           <Checkbox.Group type="button" shape="rect">
             <Checkbox value="0">选项一</Checkbox>
             <Checkbox value="1">选项二</Checkbox>
@@ -184,10 +183,9 @@ const Demo = () => {
         }
       >
         直角
-      </Cell>
-
-      <Cell
-        description={
+      </List.Item>
+      <List.Item
+        after={
           <Checkbox.Group type="button" shape="round">
             <Checkbox value="0">选项一</Checkbox>
             <Checkbox value="1">选项二</Checkbox>
@@ -196,10 +194,9 @@ const Demo = () => {
         }
       >
         椭圆角
-      </Cell>
-
-      <Cell
-        description={
+      </List.Item>
+      <List.Item
+        after={
           <Checkbox.Group ghost type="button" defaultValue={['2']}>
             <Checkbox value="0">选项一</Checkbox>
             <Checkbox value="1">选项二</Checkbox>
@@ -210,8 +207,8 @@ const Demo = () => {
         }
       >
         幽灵按钮
-      </Cell>
-    </div>
+      </List.Item>
+    </List>
   );
 };
 
@@ -221,16 +218,18 @@ ReactDOM.render(<Demo />, mountNode);
 ## 块级样式
 
 ```jsx
-import { Cell, Checkbox } from 'zarm';
+import { List, Checkbox } from 'zarm';
 
 ReactDOM.render(
-  <Cell>
-    <Checkbox.Group block type="button">
-      <Checkbox value="0">选项一</Checkbox>
-      <Checkbox value="1">选项二</Checkbox>
-      <Checkbox value="2">选项三</Checkbox>
-    </Checkbox.Group>
-  </Cell>,
+  <List>
+    <List.Item>
+      <Checkbox.Group block type="button">
+        <Checkbox value="0">选项一</Checkbox>
+        <Checkbox value="1">选项二</Checkbox>
+        <Checkbox value="2">选项三</Checkbox>
+      </Checkbox.Group>
+    </List.Item>
+  </List>,
   mountNode,
 );
 ```
@@ -241,7 +240,7 @@ ReactDOM.render(
 import { Checkbox } from 'zarm';
 
 ReactDOM.render(
-  <Checkbox.Group type="cell">
+  <Checkbox.Group type="list">
     <Checkbox value="0">选项一</Checkbox>
     <Checkbox value="1">选项二</Checkbox>
     <Checkbox value="2" disabled>
@@ -258,7 +257,7 @@ ReactDOM.render(
 import { Checkbox } from 'zarm';
 
 ReactDOM.render(
-  <Checkbox.Group disabled type="cell">
+  <Checkbox.Group disabled type="list">
     <Checkbox value="0">选项一</Checkbox>
     <Checkbox value="1">选项二</Checkbox>
     <Checkbox value="2" checked>
@@ -275,7 +274,7 @@ ReactDOM.render(
 
 | 属性           | 类型                                            | 默认值 | 说明                                                |
 | :------------- | :---------------------------------------------- | :----- | :-------------------------------------------------- |
-| type           | string                                          | -      | 显示类型，可选值 `button`, `cell`                   |
+| type           | string                                          | -      | 显示类型，可选值 `button`, `list`                   |
 | disabled       | boolean                                         | false  | 是否禁用                                            |
 | value          | string &#124; number                            | -      | 值                                                  |
 | checked        | boolean                                         | -      | 当前是否选中                                        |
@@ -288,7 +287,7 @@ ReactDOM.render(
 
 | 属性         | 类型                                    | 默认值   | 说明                                               |
 | :----------- | :-------------------------------------- | :------- | :------------------------------------------------- |
-| type         | string                                  | -        | 显示类型，可选值 `button`, `cell`                  |
+| type         | string                                  | -        | 显示类型，可选值 `button`, `list`                  |
 | value        | number[] \| string[]                    | []       | 选中值                                             |
 | defaultValue | number[] \| string[]                    | []       | 初始选中值                                         |
 | disabled     | boolean                                 | false    | 是否禁用                                           |

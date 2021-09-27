@@ -4,30 +4,31 @@
 
 ```jsx
 import { useState } from 'react';
-import { Loading, Cell, Button, Icon } from 'zarm';
+import { Loading, List, Button, Icon } from 'zarm';
 
 const Demo = () => {
   const [visible, setVisible] = useState(false);
 
   return (
     <>
-      <Cell
-        description={
-          <Button
-            size="xs"
-            onClick={() => {
-              setVisible(true);
-              setTimeout(() => {
-                setVisible(false);
-              }, 1000);
-            }}
-          >
-            开启
-          </Button>
-        }
-      >
-        普通
-      </Cell>
+      <List>
+        <List.Item
+          title="普通"
+          after={
+            <Button
+              size="xs"
+              onClick={() => {
+                setVisible(true);
+                setTimeout(() => {
+                  setVisible(false);
+                }, 1000);
+              }}
+            >
+              开启
+            </Button>
+          }
+        />
+      </List>
 
       <Loading
         visible={visible}
@@ -45,14 +46,14 @@ ReactDOM.render(<Demo />, mountNode);
 ## useLoading
 
 ```jsx
-import { Loading, Cell, Button, ActivityIndicator } from 'zarm';
+import { Loading, List, Button, ActivityIndicator } from 'zarm';
 
 const Demo = () => {
   const loading = Loading.useLoading();
   return (
-    <>
-      <Cell
-        description={
+    <List>
+      <List.Item
+        after={
           <Button
             size="xs"
             onClick={() => {
@@ -67,10 +68,9 @@ const Demo = () => {
         }
       >
         普通
-      </Cell>
-
-      <Cell
-        description={
+      </List.Item>
+      <List.Item
+        after={
           <Button
             size="xs"
             onClick={() => {
@@ -85,8 +85,8 @@ const Demo = () => {
         }
       >
         自定义内容
-      </Cell>
-    </>
+      </List.Item>
+    </List>
   );
 };
 

@@ -3,25 +3,25 @@
 ## 基本用法
 
 ```jsx
-import { Radio, Cell } from 'zarm';
+import { Radio, List } from 'zarm';
 
 ReactDOM.render(
-  <>
-    <Cell>
+  <List>
+    <List.Item>
       <Radio>普通</Radio>
-    </Cell>
-    <Cell>
+    </List.Item>
+    <List.Item>
       <Radio defaultChecked>默认选中</Radio>
-    </Cell>
-    <Cell>
+    </List.Item>
+    <List.Item>
       <Radio disabled>禁用</Radio>
-    </Cell>
-    <Cell>
+    </List.Item>
+    <List.Item>
       <Radio defaultChecked disabled>
         选中且禁用
       </Radio>
-    </Cell>
-  </>,
+    </List.Item>
+  </List>,
   mountNode,
 );
 ```
@@ -29,16 +29,18 @@ ReactDOM.render(
 ## 组合使用
 
 ```jsx
-import { Cell, Radio } from 'zarm';
+import { List, Radio } from 'zarm';
 
 ReactDOM.render(
-  <Cell>
-    <Radio.Group>
-      <Radio value="0">选项一</Radio>
-      <Radio value="1">选项二</Radio>
-      <Radio value="2">选项三</Radio>
-    </Radio.Group>
-  </Cell>,
+  <List>
+    <List.Item>
+      <Radio.Group>
+        <Radio value="0">选项一</Radio>
+        <Radio value="1">选项二</Radio>
+        <Radio value="2">选项三</Radio>
+      </Radio.Group>
+    </List.Item>
+  </List>,
   mountNode,
 );
 ```
@@ -47,15 +49,15 @@ ReactDOM.render(
 
 ```jsx
 import { useState } from 'react';
-import { Radio, Cell } from 'zarm';
+import { Radio, List } from 'zarm';
 
 const Demo = () => {
   const [value, setValue] = useState('0');
 
   return (
-    <>
-      <Cell
-        description={
+    <List>
+      <List.Item
+        after={
           <Radio.Group
             type="button"
             value={value}
@@ -71,10 +73,10 @@ const Demo = () => {
         }
       >
         普通
-      </Cell>
+      </List.Item>
 
-      <Cell
-        description={
+      <List.Item
+        after={
           <Radio.Group type="button" defaultValue="1">
             <Radio value="0">选项一</Radio>
             <Radio value="1">选项二</Radio>
@@ -83,10 +85,10 @@ const Demo = () => {
         }
       >
         指定默认值
-      </Cell>
+      </List.Item>
 
-      <Cell
-        description={
+      <List.Item
+        after={
           <Radio.Group type="button">
             <Radio value="0">选项一</Radio>
             <Radio value="1" disabled>
@@ -99,10 +101,10 @@ const Demo = () => {
         }
       >
         禁用指定项
-      </Cell>
+      </List.Item>
 
-      <Cell
-        description={
+      <List.Item
+        after={
           <Radio.Group type="button" shape="rect">
             <Radio value="0">选项一</Radio>
             <Radio value="1">选项二</Radio>
@@ -111,10 +113,10 @@ const Demo = () => {
         }
       >
         直角
-      </Cell>
+      </List.Item>
 
-      <Cell
-        description={
+      <List.Item
+        after={
           <Radio.Group type="button" shape="round">
             <Radio value="0">选项一</Radio>
             <Radio value="1">选项二</Radio>
@@ -123,10 +125,10 @@ const Demo = () => {
         }
       >
         椭圆角
-      </Cell>
+      </List.Item>
 
-      <Cell
-        description={
+      <List.Item
+        after={
           <Radio.Group compact type="button" defaultValue="0">
             <Radio value="0">选项一</Radio>
             <Radio value="1">选项二</Radio>
@@ -135,10 +137,10 @@ const Demo = () => {
         }
       >
         紧凑模式
-      </Cell>
+      </List.Item>
 
-      <Cell
-        description={
+      <List.Item
+        after={
           <Radio.Group compact ghost type="button" defaultValue="0">
             <Radio value="0">选项一</Radio>
             <Radio value="1">选项二</Radio>
@@ -147,8 +149,8 @@ const Demo = () => {
         }
       >
         幽灵按钮
-      </Cell>
-    </>
+      </List.Item>
+    </List>
   );
 };
 
@@ -158,16 +160,18 @@ ReactDOM.render(<Demo />, mountNode);
 ## 块级样式
 
 ```jsx
-import { Cell, Radio } from 'zarm';
+import { List, Radio } from 'zarm';
 
 ReactDOM.render(
-  <Cell>
-    <Radio.Group block type="button">
-      <Radio value="0">选项一</Radio>
-      <Radio value="1">选项二</Radio>
-      <Radio value="2">选项三</Radio>
-    </Radio.Group>
-  </Cell>,
+  <List>
+    <List.Item>
+      <Radio.Group block type="button">
+        <Radio value="0">选项一</Radio>
+        <Radio value="1">选项二</Radio>
+        <Radio value="2">选项三</Radio>
+      </Radio.Group>
+    </List.Item>
+  </List>,
   mountNode,
 );
 ```
@@ -178,7 +182,7 @@ ReactDOM.render(
 import { Radio } from 'zarm';
 
 ReactDOM.render(
-  <Radio.Group type="cell">
+  <Radio.Group type="list">
     <Radio value="0">选项一</Radio>
     <Radio value="1">选项二</Radio>
     <Radio value="2" disabled>
@@ -195,7 +199,7 @@ ReactDOM.render(
 import { Radio } from 'zarm';
 
 ReactDOM.render(
-  <Radio.Group disabled type="cell">
+  <Radio.Group disabled type="list">
     <Radio value="0">选项一</Radio>
     <Radio value="1">选项二</Radio>
     <Radio value="2" checked>
@@ -222,7 +226,7 @@ ReactDOM.render(
 
 | 属性         | 类型                               | 默认值   | 说明                                               |
 | :----------- | :--------------------------------- | :------- | :------------------------------------------------- |
-| type         | string                             | -        | 显示类型，可选值 `button`, `cell`                  |
+| type         | string                             | -        | 显示类型，可选值 `button`, `list`                  |
 | value        | string \| number                   | -        | 选中值                                             |
 | defaultValue | string \| number                   | -        | 初始选中值                                         |
 | disabled     | boolean                            | false    | 是否禁用                                           |

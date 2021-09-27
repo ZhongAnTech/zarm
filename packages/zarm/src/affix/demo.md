@@ -4,17 +4,19 @@
 
 ```jsx
 import { useState } from 'react';
-import { Affix, Cell, Button, Switch } from 'zarm';
+import { Affix, List, Button, Switch } from 'zarm';
 
 const Demo = () => {
   const [affixed, setAffixed] = useState(true);
 
   return (
     <>
-      <Cell
-        title="是否启用 Affix"
-        description={<Switch checked={affixed} onChange={setAffixed} />}
-      />
+      <List>
+        <List.Item
+          title="是否启用 Affix"
+          after={<Switch checked={affixed} onChange={setAffixed} />}
+        />
+      </List>
       {affixed ? (
         <>
           <Affix offsetTop={20}>
