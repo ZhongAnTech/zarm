@@ -1,5 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
+import List from '../list';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseRadioGroupProps, RadioValue } from './interface';
 import type { Nullable } from '../utils/utilityTypes';
@@ -98,7 +99,7 @@ const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
 
   return (
     <div className={cls} {...rest} ref={radioGroupRef}>
-      <div className={`${prefixCls}__inner`}>{items}</div>
+      <div className={`${prefixCls}__inner`}>{type === 'list' ? <List>{items}</List> : items}</div>
     </div>
   );
 });

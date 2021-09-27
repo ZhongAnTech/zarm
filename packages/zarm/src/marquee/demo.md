@@ -3,21 +3,21 @@
 ## 基本用法
 
 ```jsx
-import { Marquee, Cell } from 'zarm';
+import { Marquee, List } from 'zarm';
 
 ReactDOM.render(
   <>
-    <Cell>
+    <List.Item>
       <Marquee animationDelay={2000} animationDuration={30000}>
         <div>我延迟执行2秒，从右向左滚动，字有点多，我走慢点</div>
       </Marquee>
-    </Cell>
-    <Cell>
+    </List.Item>
+    <List.Item>
       <Marquee direction="right" width="100%">
         <div>我从左向右滚动</div>
       </Marquee>
-    </Cell>
-    <Cell>
+    </List.Item>
+    <List.Item>
       <Marquee direction="up" height={60}>
         <div>我</div>
         <div>从</div>
@@ -27,8 +27,8 @@ ReactDOM.render(
         <div>滚</div>
         <div>动</div>
       </Marquee>
-    </Cell>
-    <Cell>
+    </List.Item>
+    <List.Item>
       <Marquee direction="down" height={60}>
         <div>我</div>
         <div>从</div>
@@ -38,7 +38,7 @@ ReactDOM.render(
         <div>滚</div>
         <div>动</div>
       </Marquee>
-    </Cell>
+    </List.Item>
   </>,
   mountNode,
 );

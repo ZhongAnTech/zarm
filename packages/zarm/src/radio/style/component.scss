@@ -2,10 +2,8 @@
 
 @include b(radio) {
   display: inline-block;
-  vertical-align: middle;
   position: relative;
   color: var(--color-text);
-  font-size: r(14);
 
   &:not(&--disabled):hover {
     @include e(inner) {
@@ -299,7 +297,7 @@
     }
   }
 
-  @include m(cell) {
+  @include m(list) {
     display: block;
     overflow: visible;
 
@@ -309,9 +307,14 @@
     }
 
     @include b(radio) {
-      position: static;
+      display: flex;
+      position: relative;
       margin-right: 0;
       margin-bottom: 0;
+
+      @include e(text) {
+        margin-left: 0;
+      }
     }
   }
 }

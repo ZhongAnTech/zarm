@@ -63,50 +63,49 @@ exports[`Radio type is button 1`] = `
 </button>
 `;
 
-exports[`Radio type is cell 1`] = `
-<div
-  class="za-cell za-cell--link"
+exports[`Radio type is list 1`] = `
+<li
+  class="za-list-item za-radio za-list-item--link"
 >
   <div
-    class="za-cell__inner"
+    class="za-list-item__prefix"
   >
-    <div
-      class="za-cell__header"
-    />
-    <div
-      class="za-cell__body"
+    <span
+      class="za-radio__widget"
     >
-      <div
-        class="za-cell__content"
-      >
-        <span
-          class="za-radio"
-        >
-          <span
-            class="za-radio__widget"
-          >
-            <span
-              class="za-radio__inner"
-            />
-          </span>
-          <span
-            class="za-radio__text"
-          >
-            选项一
-          </span>
-          <input
-            class="za-radio__input"
-            type="radio"
-            value="0"
-          />
-        </span>
-      </div>
-    </div>
-    <div
-      class="za-cell__footer"
+      <span
+        class="za-radio__inner"
+      />
+    </span>
+    <input
+      class="za-radio__input"
+      type="radio"
+      value="0"
     />
   </div>
-</div>
+  <div
+    class="za-list-item__wrapper"
+  >
+    <div
+      class="za-list-item__inner"
+    >
+      <div
+        class="za-list-item__title"
+      >
+        <span
+          class="za-radio__text"
+        >
+          选项一
+        </span>
+        <input
+          class="za-radio__input"
+          type="radio"
+          value="0"
+        />
+      </div>
+    </div>
+  </div>
+</li>
 `;
 
 exports[`Radio.Group Radio checked 1`] = `

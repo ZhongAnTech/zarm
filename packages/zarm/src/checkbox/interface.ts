@@ -1,6 +1,6 @@
 import type { ButtonSize } from '../button/interface';
 
-export type CheckboxType = 'button' | 'cell';
+export type CheckboxType = 'button' | 'list';
 export type CheckboxShape = 'rect' | 'radius' | 'round';
 export type CheckboxValue = number | string;
 export type CheckboxSize = ButtonSize;

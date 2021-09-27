@@ -80,7 +80,6 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
       onChange,
       locale,
       value,
-      hasArrow,
       ...others
     } = this.props;
     const { visible, selectValue } = this.state;
@@ -88,8 +87,9 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
     const cls = classnames(prefixCls, {
       [`${prefixCls}--placeholder`]: !selectValue,
       [`${prefixCls}--disabled`]: disabled,
-      [`${prefixCls}--arrow`]: hasArrow,
     });
+
+    const arrowRender = <div className={`${prefixCls}__arrow`} />;
 
     return (
       <div className={cls} onClick={this.handleClick}>
@@ -99,6 +99,7 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
             {formatFn(this, selectValue) || placeholder || locale!.placeholder}
           </div>
         </div>
+        {arrowRender}
         <DatePicker
           {...others}
           className={className}

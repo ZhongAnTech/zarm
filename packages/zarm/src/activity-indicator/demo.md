@@ -3,15 +3,15 @@
 ## 基本用法
 
 ```jsx
-import { Cell, ActivityIndicator } from 'zarm';
+import { List, ActivityIndicator } from 'zarm';
 
 ReactDOM.render(
-  <>
-    <Cell description={<ActivityIndicator />}>普通</Cell>
-    <Cell description={<ActivityIndicator size="lg" />}>大号</Cell>
-    <Cell description={<ActivityIndicator loading={false} />}>无旋转动画</Cell>
-    <Cell description={<ActivityIndicator loading={false} percent={75} />}>指定百分比</Cell>
-  </>,
+  <List>
+    <List.Item title="普通" after={<ActivityIndicator />} />
+    <List.Item title="大号" after={<ActivityIndicator size="lg" />} />
+    <List.Item title="无旋转动画" after={<ActivityIndicator loading={false} />} />
+    <List.Item title="指定百分比" after={<ActivityIndicator loading={false} percent={75} />} />
+  </List>,
   mountNode,
 );
 ```
@@ -19,13 +19,13 @@ ReactDOM.render(
 ## 传统菊花状
 
 ```jsx
-import { Cell, ActivityIndicator } from 'zarm';
+import { List, ActivityIndicator } from 'zarm';
 
 ReactDOM.render(
-  <>
-    <Cell description={<ActivityIndicator type="spinner" />}>普通</Cell>
-    <Cell description={<ActivityIndicator type="spinner" size="lg" />}>大号</Cell>
-  </>,
+  <List>
+    <List.Item title="普通" after={<ActivityIndicator type="spinner" />} />
+    <List.Item title="大号" after={<ActivityIndicator type="spinner" size="lg" />} />
+  </List>,
   mountNode,
 );
 ```

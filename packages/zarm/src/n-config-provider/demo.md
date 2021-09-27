@@ -6,7 +6,7 @@
 import { useState } from 'react';
 import {
   NConfigProvider,
-  Cell,
+  List,
   Button,
   SearchBar,
   Modal,
@@ -49,42 +49,42 @@ const Demo = () => {
 
   return (
     <>
-      <Cell
-        title="切换语言"
-        description={
-          <Radio.Group compact type="button" value={locale} onChange={setLocale}>
-            <Radio value="zhCN">中文</Radio>
-            <Radio value="enUS">EN</Radio>
-          </Radio.Group>
-        }
-      />
-
-      <Cell
-        title="切换品牌色"
-        description={
-          <ul className="colors">
-            {colors.map((color, index) => {
-              return (
-                <li
-                  key={+index}
-                  style={{ backgroundColor: color }}
-                  onClick={() => setPrimaryColor(color)}
-                />
-              );
-            })}
-          </ul>
-        }
-      />
-
-      <Cell
-        title="切换主题"
-        description={
-          <Radio.Group compact type="button" value={theme} onChange={(value) => setTheme(value)}>
-            <Radio value="light">默认主题</Radio>
-            <Radio value="dark">暗黑主题</Radio>
-          </Radio.Group>
-        }
-      />
+      <List>
+        <List.Item
+          title="切换语言"
+          after={
+            <Radio.Group compact type="button" value={locale} onChange={setLocale}>
+              <Radio value="zhCN">中文</Radio>
+              <Radio value="enUS">EN</Radio>
+            </Radio.Group>
+          }
+        />
+        <List.Item
+          title="切换品牌色"
+          after={
+            <ul className="colors">
+              {colors.map((color, index) => {
+                return (
+                  <li
+                    key={+index}
+                    style={{ backgroundColor: color }}
+                    onClick={() => setPrimaryColor(color)}
+                  />
+                );
+              })}
+            </ul>
+          }
+        />
+        <List.Item
+          title="切换主题"
+          after={
+            <Radio.Group compact type="button" value={theme} onChange={(value) => setTheme(value)}>
+              <Radio value="light">默认主题</Radio>
+              <Radio value="dark">暗黑主题</Radio>
+            </Radio.Group>
+          }
+        />
+      </List>
 
       <Cell
         title="设置 CSS 变量"
@@ -120,35 +120,32 @@ const Demo = () => {
           <SearchBar />
           <Keyboard />
 
-          <Cell
-            description={
-              <Button size="xs" onClick={() => show('alert')}>
-                开启
-              </Button>
-            }
-          >
-            警告框
-          </Cell>
-
-          <Cell
-            description={
-              <Button theme="primary" size="xs" onClick={() => show('confirm')}>
-                开启
-              </Button>
-            }
-          >
-            确认框
-          </Cell>
-
-          <Cell
-            description={
-              <Button size="xs" onClick={() => setVisiblePopup(true)}>
-                开启
-              </Button>
-            }
-          >
-            弹出层
-          </Cell>
+          <List>
+            <List.Item
+              title="警告框"
+              after={
+                <Button size="xs" onClick={() => show('alert')}>
+                  开启
+                </Button>
+              }
+            />
+            <List.Item
+              title="确认框"
+              after={
+                <Button size="xs" onClick={() => show('confirm')}>
+                  开启
+                </Button>
+              }
+            />
+            <List.Item
+              title="弹出层"
+              after={
+                <Button size="xs" onClick={() => setVisiblePopup(true)}>
+                  开启
+                </Button>
+              }
+            />
+          </List>
 
           <Popup
             visible={visiblePopup}
