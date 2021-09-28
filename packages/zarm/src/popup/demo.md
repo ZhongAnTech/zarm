@@ -121,7 +121,7 @@ const Demo = () => {
         afterOpen={() => console.log('打开')}
         afterClose={() => console.log('关闭')}
         destroy={false}
-        mountContainer={false}
+        mountContainer={() => document.body}
       >
         <div className="popup-box">
           <Button size="xs" onClick={() => toggle('picker')}>

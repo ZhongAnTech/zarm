@@ -116,7 +116,7 @@ export default class Portal extends PureComponent<PortalProps, PortalState> {
       WebkitAnimationDuration: `${animationDuration}ms`,
       animationDuration: `${animationDuration}ms`,
     };
-    return mask && <Mask className={maskCls} style={maskStyle} visible={visible} type={maskType} />;
+    return mask && <Mask className={maskCls} style={maskStyle} visible type={maskType} />;
   };
 
   onEsc = () => {

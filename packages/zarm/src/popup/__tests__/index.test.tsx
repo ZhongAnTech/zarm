@@ -225,7 +225,7 @@ describe('Portal', () => {
           WebkitAnimationDuration: `200ms`,
           animationDuration: `200ms`,
         },
-        visible: false,
+        visible: true,
         type: 'transparent',
       }),
     );
