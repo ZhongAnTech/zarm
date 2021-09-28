@@ -20,7 +20,7 @@ const Demo = () => {
     <List>
       <List.Item
         title={text}
-        description={
+        after={
           <Button size="sm" style={{ margin: 10 }} {...longPressEvent}>
             长按我试试？
           </Button>
