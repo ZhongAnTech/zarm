@@ -23,7 +23,7 @@ const initDocSearch = () => {
   });
 };
 
-const Icons = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_lpsswvb7yv.js');
+const Icons = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_mk657pke2hj.js');
 
 const Header = ({ children }) => {
   const searchInput = useRef();

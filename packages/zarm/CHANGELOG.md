@@ -32,6 +32,17 @@
     - Checkbox.Group 的 `type` 属性可选值 `cell` 变更为 `list`。
   - [Radio]
     - Radio.Group 的 `type` 属性可选值 `cell` 变更为 `list`。
+## v2.9.9
+
+- Bug Fix
+
+  - [Popup] 修复当 mountContainer 为 `false` 时，丢失容器 div 的 bug。[#769](https://github.com/ZhongAnTech/zarm/issue/769)
+
+## v2.9.8
+
+- Bug Fix
+
+  - [Pull] 修复当 window 作为滚动容器时，触发事件的临界点判断错误的 bug。[#760](https://github.com/ZhongAnTech/zarm/pull/760)
 
 ## v2.9.7
 

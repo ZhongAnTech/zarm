@@ -56,7 +56,7 @@ export default ({ location, globalContext, children }) => {
           //   mountNode,
           // );
           .replace(
-            /ReactDOM.render\(\s?([^]+?)(,([\r\n])(\s)*mountNode,\s?\))/g,
+            /ReactDOM.render\(\s?([^]+?)(,([\r\n])(\s)*mountNode,(\s)*\))/g,
             `ReactDOM.render($1, document.getElementById('${containerId}'))`,
           );
 
