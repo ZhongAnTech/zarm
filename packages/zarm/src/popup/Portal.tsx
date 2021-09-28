@@ -25,7 +25,7 @@ export default class Portal extends PureComponent<PortalProps, PortalState> {
 
   private mountNode?: HTMLElement;
 
-  private _container?: HTMLDivElement;
+  private _container: HTMLDivElement | null;
 
   private _reflow?: number;
 
@@ -116,7 +116,7 @@ export default class Portal extends PureComponent<PortalProps, PortalState> {
       WebkitAnimationDuration: `${animationDuration}ms`,
       animationDuration: `${animationDuration}ms`,
     };
-    return mask && <Mask className={maskCls} style={maskStyle} visible type={maskType} />;
+    return mask && <Mask className={maskCls} style={maskStyle} visible={visible} type={maskType} />;
   };
 
   onEsc = () => {
@@ -150,7 +150,6 @@ export default class Portal extends PureComponent<PortalProps, PortalState> {
     } = this.props;
     const { isPending } = this.state;
     const animationState = visible ? 'enter' : 'leave';
-
     const cls = {
       wrapper: classnames(`${prefixCls}__wrapper`, {
         [`za-fade-${animationState}`]: direction === 'center' && isPending,
@@ -207,9 +206,7 @@ export default class Portal extends PureComponent<PortalProps, PortalState> {
           className={cls.wrapper}
           style={wrapStyle}
           data-width={this._reflow}
-          onClick={(e) => {
-            this.handleMaskClick(e);
-          }}
+          onClick={this.handleMaskClick}
         >
           <div
             ref={(ref) => {
@@ -245,12 +242,21 @@ export default class Portal extends PureComponent<PortalProps, PortalState> {
   };
 
   renderPortal = (): ReactPortal | JSX.Element | null => {
-    const { mountContainer } = this.props;
+    const { mountContainer, className, prefixCls } = this.props;
     if (!canUseDOM) {
       return null;
     }
     if (mountContainer === false) {
-      return this.getComponent();
+      return (
+        <div
+          className={classnames([`${prefixCls}-container`, className])}
+          ref={(ref) => {
+            this._container = ref;
+          }}
+        >
+          {this.getComponent()}
+        </div>
+      );
     }
     if (this._container) {
       if (!IS_REACT_16) {
