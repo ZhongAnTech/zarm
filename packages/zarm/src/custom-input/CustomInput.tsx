@@ -35,7 +35,6 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [currentValue, setCurrentValue] = React.useState(getValue({ value, defaultValue }, ''));
   const [focused, setFocused] = React.useState<boolean>(autoFocus!);
-  const [area, setArea] = React.useState<React.RefObject<any>[]>([]);
 
   const showClearIcon =
     clearable &&
@@ -55,8 +54,6 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
 
   const onInputFocus = () => {
     if (disabled) return;
-
-    setArea([contentRef, pickerRef]);
     setFocused(true);
 
     if (typeof onFocus === 'function') {
@@ -145,7 +142,7 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
     </div>
   );
 
-  useClickAway(onInputBlur, area);
+  useClickAway(onInputBlur, [contentRef, pickerRef]);
 
   React.useImperativeHandle(wrapperRef, () => ({
     focus,
