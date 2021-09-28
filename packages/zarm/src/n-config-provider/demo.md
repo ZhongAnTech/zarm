@@ -95,7 +95,7 @@ const Demo = () => {
                     ? null
                     : {
                         '--button-primary-color': '#ff0000',
-                        '--list-item-height': '70px',
+                        '--za-list-item-height': '70px',
                       },
                 );
               }}
