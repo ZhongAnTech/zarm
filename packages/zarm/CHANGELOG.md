@@ -1,5 +1,11 @@
 # 版本更新日志
 
+## v2.9.9
+
+- Bug Fix
+
+  - [Popup] 修复当 mountContainer 为 `false` 时，丢失容器 div 的 bug。[#769](https://github.com/ZhongAnTech/zarm/issue/769)
+
 ## v2.9.8
 
 - Bug Fix
