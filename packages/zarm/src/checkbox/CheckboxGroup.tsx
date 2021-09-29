@@ -38,7 +38,7 @@ export type CheckboxGroupProps = Omit<
 const CheckboxGroup = React.forwardRef<unknown, CheckboxGroupProps>((props, ref) => {
   const {
     className,
-    size,
+    buttonSize,
     shape,
     type,
     block,
@@ -79,6 +79,7 @@ const CheckboxGroup = React.forwardRef<unknown, CheckboxGroupProps>((props, ref)
       key: +index,
       type,
       shape,
+      buttonSize,
       disabled: disabled || !!element.props.disabled,
       checked: currentValue!.indexOf(element.props.value) > -1,
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -90,8 +91,8 @@ const CheckboxGroup = React.forwardRef<unknown, CheckboxGroupProps>((props, ref)
 
   const cls = classnames(prefixCls, className, {
     [`${prefixCls}--${type}`]: !!type,
-    [`${prefixCls}--${size}`]: !!size,
     [`${prefixCls}--${shape}`]: !!shape,
+    [`${prefixCls}--${buttonSize}`]: !!buttonSize,
     [`${prefixCls}--block`]: block,
     [`${prefixCls}--disabled`]: disabled,
     [`${prefixCls}--compact`]: compact,
@@ -117,7 +118,7 @@ CheckboxGroup.defaultProps = {
   disabled: false,
   compact: false,
   ghost: false,
-  size: 'xs',
+  buttonSize: 'xs',
 };
 
 export default CheckboxGroup;

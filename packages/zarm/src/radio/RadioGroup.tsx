@@ -44,7 +44,7 @@ const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
     className,
     value,
     defaultValue,
-    size,
+    buttonSize,
     shape,
     block,
     compact,
@@ -74,6 +74,7 @@ const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
       key: +index,
       type,
       shape,
+      buttonSize,
       disabled: disabled || !!element.props.disabled,
       checked: currentValue === element.props.value,
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -85,7 +86,7 @@ const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
 
   const cls = classnames(prefixCls, className, {
     [`${prefixCls}--${type}`]: !!type,
-    [`${prefixCls}--${size}`]: !!size,
+    [`${prefixCls}--${buttonSize}`]: !!buttonSize,
     [`${prefixCls}--${shape}`]: !!shape,
     [`${prefixCls}--block`]: block,
     [`${prefixCls}--disabled`]: disabled,
@@ -112,7 +113,7 @@ RadioGroup.defaultProps = {
   disabled: false,
   compact: false,
   ghost: false,
-  size: 'xs',
+  buttonSize: 'xs',
 };
 
 export default RadioGroup;

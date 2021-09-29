@@ -18,7 +18,6 @@ export interface BaseCheckboxProps {
 
 export interface BaseCheckboxGroupProps {
   type?: CheckboxType;
-  size?: CheckboxSize;
   shape?: CheckboxShape;
   disabled?: boolean;
   block?: boolean;
@@ -26,5 +25,6 @@ export interface BaseCheckboxGroupProps {
   ghost?: boolean;
   value?: Array<CheckboxValue>;
   defaultValue?: Array<CheckboxValue>;
+  buttonSize?: CheckboxSize;
   onChange?: (value: Array<CheckboxValue>) => void;
 }
