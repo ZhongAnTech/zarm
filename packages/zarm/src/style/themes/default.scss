@@ -221,16 +221,37 @@
   --confirm-button-background: var(--button-default-background);
   --confirm-button-active-background: var(--background-active);
 
+  // List
+  --za-list-item-font-size: var(--font-size-md);
+  --za-list-item-background: #fff;
+  --za-list-item-background-active: rgba(0, 0, 0, 0.15);
+  --za-list-item-padding-vertical: 8px;
+  --za-list-item-padding-horizontal: 16px;
+  --za-list-item-height: 44px;
+  --za-list-item-space: 5px;
+  --za-list-item-title-height: calc(var(--za-list-item-height) - var(--za-list-item-padding-vertical) * 2);
+  --za-list-item-title-white-space: nowrap;
+  --za-list-item-after-text-color: rgba(0, 0, 0, 0.45);
+  --za-list-item-arrow-color: rgba(0, 0, 0, 0.2);
+  --za-list-item-arrow-size: 10px;
+  --za-list-item-arrow-border-width: 2px;
+  --za-list-item-info-font-size: var(--font-size-sm);
+  --za-list-item-info-text-color: rgba(0, 0, 0, 0.45);
+
   // Input
-  --input-clear-icon-width: 16px;
-  --input-clear-icon-color: #bcbcbc;
-  --input-padding-v: var(--cell-padding-v);
-  --input-cursor-color: #597cf6;
-  --input-cursor-width: 2px;
-  --input-cursor-height: calc(var(--cell-title-line-height) - 4px);
-  --input-length-count-color: var(--color-text-disabled);
-  --input-height: 28px;
-  --input-line-height: var(--cell-title-line-height);
+  --za-input-height: var(--za-list-item-title-height); // 28px
+  --za-input-line-height: var(--za-input-height);
+  --za-input-font-size: var(--font-size-md);
+  --za-input-color: var(--color-text);
+  --za-input-clear-icon-width: 16px;
+  --za-input-clear-icon-color: #bcbcbc;
+  --za-input-cursor-color: #597cf6;
+  --za-input-cursor-width: 2px;
+  --za-input-cursor-height: calc(var(--za-input-height) - 8px); // 20px
+  --za-input-length-font-size: var(--font-size-sm);
+  --za-input-length-color: var(--color-text-disabled);
+  --za-input-label-width: 100px;
+  --za-input-vertical-label-font-size: var(--font-size-sm);
 
   // ImagePreview
   --image-preview-origin-button-background: #2d2d2d;
@@ -245,16 +266,11 @@
   --loading-background: rgba(0, 0, 0, var(--opacity-toast));
 
   // Message
-  --message-min-height-md: 29px;
-  --message-min-height-lg: 40px;
-  --message-font-size-md: 12px;
-  --message-font-size-lg: 14px;
-  --message-icon-size-md: 14px;
-  --message-icon-size-lg: 16px;
-  --message-padding-v-md: 6px;
-  --message-padding-h-md: 8px;
-  --message-padding-v-lg: 8px;
-  --message-padding-h-lg: 12px;
+  --message-min-height: 29px;
+  --message-font-size: 12px;
+  --message-icon-size: 14px;
+  --message-padding-v: 6px;
+  --message-padding-h: 8px;
 
   // Modal
   --modal-background: #fff;
@@ -270,6 +286,11 @@
 
   // NoticeBar
   --notice-bar-height: 24px;
+  --notice-bar-min-height: 40px;
+  --notice-bar-font-size: 14px;
+  --notice-bar-padding-v: 8px;
+  --notice-bar-padding-h: 12px;
+  --notice-bar-icon-size: 16px;
 
   // Panel
   --panel-header-color: var(--color-text-caption);

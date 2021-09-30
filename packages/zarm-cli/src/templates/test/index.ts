@@ -1,5 +1,5 @@
-import indexTemp from './indexTemp';
+import indexTpl from './indexTpl';
 
 export default {
-  indexTemp,
+  indexTpl,
 };

@@ -4,7 +4,7 @@
 
 ```jsx
 import { useRef, useReducer } from 'react';
-import { Modal, Cell, Button, Select } from 'zarm';
+import { Modal, List, Button, Select } from 'zarm';
 
 const initState = {
   normal: {
@@ -62,90 +62,83 @@ const Demo = () => {
 
   return (
     <>
-      <Cell
-        description={
-          <Button size="xs" onClick={() => toggle('normal')}>
-            开启
-          </Button>
-        }
-      >
-        普通
-      </Cell>
-
-      <Cell
-        description={
-          <Button size="xs" onClick={() => toggle('hasFooter')}>
-            开启
-          </Button>
-        }
-      >
-        有底部按钮
-      </Cell>
-
-      <Cell
-        description={
-          <Button size="xs" onClick={() => toggle('closable')}>
-            开启
-          </Button>
-        }
-      >
-        遮罩层可关闭
-      </Cell>
-
-      <Cell
-        description={
-          <Button size="xs" onClick={() => toggle('onlyBody')}>
-            开启
-          </Button>
-        }
-      >
-        无头部，无底部
-      </Cell>
-
-      <Cell
-        title="动画效果"
-        description={
-          <Button size="xs" onClick={() => toggle('animation')}>
-            开启
-          </Button>
-        }
-      >
-        <Select
-          value={state.animation.animationType}
-          dataSource={[
-            { value: 'fade', label: '淡出淡入效果(fade)' },
-            { value: 'zoom', label: '缩放效果(zoom)' },
-            { value: 'rotate', label: '旋转效果(rotate)' },
-            { value: 'door', label: '开关门效果(door)' },
-            { value: 'flip', label: '翻转效果(flip)' },
-            { value: 'moveUp', label: '移出移入效果(moveUp)' },
-            { value: 'moveDown', label: '移出移入效果(moveDown)' },
-            { value: 'moveLeft', label: '移出移入效果(moveLeft)' },
-            { value: 'moveRight', label: '移出移入效果(moveRight)' },
-            { value: 'slideUp', label: '滑出滑入效果(slideUp)' },
-            { value: 'slideDown', label: '滑出滑入效果(slideDown)' },
-            { value: 'slideLeft', label: '滑出滑入效果(slideLeft)' },
-            { value: 'slideRight', label: '滑出滑入效果(slideRight)' },
-          ]}
-          onOk={(selected) => {
-            dispatch({
-              type: 'animation',
-              key: 'animation',
-              animationType: selected.map((item) => item.value),
-            });
-          }}
+      <List>
+        <List.Item
+          title="普通"
+          after={
+            <Button size="xs" onClick={() => toggle('normal')}>
+              开启
+            </Button>
+          }
         />
-      </Cell>
-
-      <Cell
-        description={
-          <Button size="xs" onClick={() => toggle('customContainer')}>
-            开启
-          </Button>
-        }
-      >
-        挂载到指定dom节点
-      </Cell>
+        <List.Item
+          title="有底部按钮"
+          after={
+            <Button size="xs" onClick={() => toggle('hasFooter')}>
+              开启
+            </Button>
+          }
+        />
+        <List.Item
+          title="遮罩层可关闭"
+          after={
+            <Button size="xs" onClick={() => toggle('closable')}>
+              开启
+            </Button>
+          }
+        />
+        <List.Item
+          title="无头部，无底部"
+          after={
+            <Button size="xs" onClick={() => toggle('onlyBody')}>
+              开启
+            </Button>
+          }
+        />
+        <List.Item
+          title="动画效果"
+          after={
+            <Button size="xs" onClick={() => toggle('animation')}>
+              开启
+            </Button>
+          }
+        >
+          <Select
+            value={state.animation.animationType}
+            dataSource={[
+              { value: 'fade', label: '淡出淡入效果(fade)' },
+              { value: 'zoom', label: '缩放效果(zoom)' },
+              { value: 'rotate', label: '旋转效果(rotate)' },
+              { value: 'door', label: '开关门效果(door)' },
+              { value: 'flip', label: '翻转效果(flip)' },
+              { value: 'moveUp', label: '移出移入效果(moveUp)' },
+              { value: 'moveDown', label: '移出移入效果(moveDown)' },
+              { value: 'moveLeft', label: '移出移入效果(moveLeft)' },
+              { value: 'moveRight', label: '移出移入效果(moveRight)' },
+              { value: 'slideUp', label: '滑出滑入效果(slideUp)' },
+              { value: 'slideDown', label: '滑出滑入效果(slideDown)' },
+              { value: 'slideLeft', label: '滑出滑入效果(slideLeft)' },
+              { value: 'slideRight', label: '滑出滑入效果(slideRight)' },
+            ]}
+            onOk={(selected) => {
+              dispatch({
+                type: 'animation',
+                key: 'animation',
+                animationType: selected.map((item) => item.value),
+              });
+            }}
+          />
+        </List.Item>
+        <List.Item
+          after={
+            <Button size="xs" onClick={() => toggle('customContainer')}>
+              开启
+            </Button>
+          }
+        >
+          挂载到指定dom节点
+        </List.Item>
+      </List>
 
       <div id="test-div" style={{ position: 'relative', zIndex: 1 }} ref={myRef} />
 
@@ -207,129 +200,117 @@ ReactDOM.render(<Demo />, mountNode);
 ## 警告框 Alert
 
 ```jsx
-import { Cell, Button, Modal } from 'zarm';
+import { List, Button, Modal } from 'zarm';
 
-const Demo = () => {
-  return (
-    <>
-      <Cell
-        description={
-          <Button
-            size="xs"
-            onClick={() => {
-              const modal = Modal.alert({
-                className: 'test',
-                title: '静态调用的title',
-                content: '静态调用的body',
-                onCancel: () => {
-                  modal.hide();
-                },
-              });
-            }}
-          >
-            开启
-          </Button>
-        }
-      >
-        静态调用（静态关闭）
-      </Cell>
-
-      <Cell
-        description={
-          <Button
-            size="xs"
-            onClick={() => {
-              const modal = Modal.alert({
-                title: '静态调用的title',
-                content: '静态调用的body，使用promise关闭',
-                onCancel: () => {
-                  return new Promise((resolve, reject) => {
-                    resolve();
-                    // setTimeout(Math.random() > 0.5 ? resolve : reject, 500);
-                  }).catch(() => {
-                    window.alert('出错啦，弹窗无法关闭，继续点击试试');
-                    return false; // 返回false，可使弹窗无法关闭
-                  });
-                },
-              });
-            }}
-          >
-            开启
-          </Button>
-        }
-      >
-        静态调用（使用promise关闭）
-      </Cell>
-    </>
-  );
-};
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <List>
+    <List.Item
+      title="静态调用（静态关闭）"
+      after={
+        <Button
+          size="xs"
+          onClick={() => {
+            const modal = Modal.alert({
+              className: 'test',
+              title: '静态调用的title',
+              content: '静态调用的body',
+              onCancel: () => {
+                modal.hide();
+              },
+            });
+          }}
+        >
+          开启
+        </Button>
+      }
+    />
+    <List.Item
+      title="静态调用（使用promise关闭）"
+      after={
+        <Button
+          size="xs"
+          onClick={() => {
+            const modal = Modal.alert({
+              title: '静态调用的title',
+              content: '静态调用的body，使用promise关闭',
+              onCancel: () => {
+                return new Promise((resolve, reject) => {
+                  resolve();
+                  // setTimeout(Math.random() > 0.5 ? resolve : reject, 500);
+                }).catch(() => {
+                  window.alert('出错啦，弹窗无法关闭，继续点击试试');
+                  return false; // 返回false，可使弹窗无法关闭
+                });
+              },
+            });
+          }}
+        >
+          开启
+        </Button>
+      }
+    />
+  </List>,
+  mountNode,
+);
 ```
 
 ## 确认框 Confirm
 
 ```jsx
-import { Cell, Button, Modal } from 'zarm';
+import { List, Button, Modal } from 'zarm';
 
-const Demo = () => {
-  return (
-    <>
-      <Cell
-        description={
-          <Button
-            size="xs"
-            onClick={() => {
-              const modal = Modal.confirm({
-                title: '确认信息',
-                content: '静态调用的body',
-                onCancel: () => {
-                  console.log('点击cancel');
-                },
-                onOk: () => {
-                  console.log('点击ok');
-                },
-              });
-            }}
-          >
-            开启
-          </Button>
-        }
-      >
-        静态调用（静态关闭）
-      </Cell>
-
-      <Cell
-        description={
-          <Button
-            size="xs"
-            onClick={() => {
-              const modal = Modal.confirm({
-                title: '静态调用的title',
-                content: '静态调用的body，使用promise关闭',
-                onCancel: () => {
-                  return new Promise((resolve, reject) => {
-                    resolve();
-                    // setTimeout(Math.random() > 0.5 ? resolve : reject, 500);
-                  }).catch(() => {
-                    window.alert('出错啦，弹窗无法关闭，继续点击试试');
-                    return false; // 返回false，可使弹窗无法关闭
-                  });
-                },
-              });
-            }}
-          >
-            开启
-          </Button>
-        }
-      >
-        静态调用（使用promise关闭）
-      </Cell>
-    </>
-  );
-};
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <List>
+    <List.Item
+      title="静态调用（静态关闭）"
+      after={
+        <Button
+          size="xs"
+          onClick={() => {
+            const modal = Modal.confirm({
+              title: '确认信息',
+              content: '静态调用的body',
+              onCancel: () => {
+                console.log('点击cancel');
+              },
+              onOk: () => {
+                console.log('点击ok');
+              },
+            });
+          }}
+        >
+          开启
+        </Button>
+      }
+    />
+    <List.Item
+      title="静态调用（使用promise关闭）"
+      after={
+        <Button
+          size="xs"
+          onClick={() => {
+            const modal = Modal.confirm({
+              title: '静态调用的title',
+              content: '静态调用的body，使用promise关闭',
+              onCancel: () => {
+                return new Promise((resolve, reject) => {
+                  resolve();
+                  // setTimeout(Math.random() > 0.5 ? resolve : reject, 500);
+                }).catch(() => {
+                  window.alert('出错啦，弹窗无法关闭，继续点击试试');
+                  return false; // 返回false，可使弹窗无法关闭
+                });
+              },
+            });
+          }}
+        >
+          开启
+        </Button>
+      }
+    />
+  </List>,
+  mountNode,
+);
 ```
 
 ## API

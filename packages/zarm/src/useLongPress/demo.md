@@ -6,7 +6,7 @@
 
 ```jsx
 import { useState } from 'react';
-import { useLongPress, Button, Cell } from 'zarm';
+import { useLongPress, Button, List } from 'zarm';
 
 const Demo = () => {
   const [text, setText] = useState('');
@@ -17,14 +17,16 @@ const Demo = () => {
   });
 
   return (
-    <Cell
-      title={text}
-      description={
-        <Button size="sm" style={{ margin: 10 }} {...longPressEvent}>
-          长按我试试？
-        </Button>
-      }
-    />
+    <List>
+      <List.Item
+        title={text}
+        after={
+          <Button size="sm" style={{ margin: 10 }} {...longPressEvent}>
+            长按我试试？
+          </Button>
+        }
+      />
+    </List>
   );
 };
 

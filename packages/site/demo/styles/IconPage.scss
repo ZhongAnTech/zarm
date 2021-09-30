@@ -1,15 +1,6 @@
 @import "@/styles/index";
 
 .icon-page {
-  .za-icon {
-    display: block;
-    margin-bottom: r(15);
-
-    & + span {
-      font-size: r(12);
-    }
-  }
-
   .grid {
     display: flex;
     flex-wrap: wrap;
@@ -26,6 +17,15 @@
 
       &:nth-of-type(3n) {
         @include onepx(bottom);
+      }
+
+      .za-icon {
+        display: block;
+        margin-bottom: r(8);
+
+        & + span {
+          font-size: r(12);
+        }
       }
     }
   }

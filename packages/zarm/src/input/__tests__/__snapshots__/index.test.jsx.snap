@@ -24,9 +24,13 @@ exports[`Input renders correctly if type=text and props includes rows 1`] = `
 <div
   class="za-input za-input--textarea"
 >
-  <textarea
-    rows="1"
-  />
+  <div
+    class="za-input__inner"
+  >
+    <textarea
+      rows="1"
+    />
+  </div>
 </div>
 `;
 
@@ -34,14 +38,18 @@ exports[`Input showLength 1`] = `
 <div
   class="za-input za-input--textarea"
 >
-  <textarea
-    maxlength="100"
-    rows="4"
-  />
   <div
-    class="za-input__length"
+    class="za-input__inner"
   >
-    9/100
+    <textarea
+      maxlength="100"
+      rows="4"
+    />
+    <div
+      class="za-input__length"
+    >
+      0/100
+    </div>
   </div>
 </div>
 `;
@@ -50,8 +58,12 @@ exports[`Input.Textarea renders correctly 1`] = `
 <div
   class="za-input za-input--textarea"
 >
-  <textarea
-    rows="4"
-  />
+  <div
+    class="za-input__inner"
+  >
+    <textarea
+      rows="4"
+    />
+  </div>
 </div>
 `;

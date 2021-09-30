@@ -4,11 +4,11 @@
 
 ```jsx
 import { useRef, useState } from 'react';
-import { Cell, BackToTop, Message, Button, Icon } from 'zarm';
+import { List, BackToTop, Message, Button, Icon } from 'zarm';
 
 const Demo = () => {
   const list = [];
-  for (let i = 0; i < 100; i++) list.push(<Cell key={+i}>第 {i + 1} 行</Cell>);
+  for (let i = 0; i < 100; i++) list.push(<List.Item key={+i} title={`第 ${i + 1} 行`} />);
 
   const containerRef = useRef();
   const [useWindowScroll, setUseWindowScroll] = useState(true);
@@ -31,9 +31,9 @@ const Demo = () => {
         </Button>
       </Message>
 
-      <div ref={containerRef} style={containerStyle}>
+      <List ref={containerRef} style={containerStyle}>
         {list}
-      </div>
+      </List>
 
       <BackToTop scrollContainer={scrollContainer} onClick={() => console.log('click back to top')}>
         <div

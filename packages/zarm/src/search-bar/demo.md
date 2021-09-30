@@ -3,31 +3,36 @@
 ## 基本用法
 
 ```jsx
+import { useState, useRef } from 'react';
 import { SearchBar } from 'zarm';
 
-ReactDOM.render(
-  <SearchBar
-    onSubmit={(value) => {
-      console.log(`搜索内容为${value}`);
-    }}
-    onFocus={() => {
-      console.log('获取焦点');
-    }}
-    onChange={(value) => {
-      console.log(value);
-    }}
-    onBlur={() => {
-      console.log('失去焦点');
-    }}
-    onCancel={() => {
-      console.log('点击了取消');
-    }}
-  />,
-  mountNode,
-);
+const Demo = () => {
+  const [value, setValue] = useState('');
+
+  return (
+    <SearchBar
+      value={value}
+      onChange={(e) => {
+        setValue(e.target.value);
+        console.log(`onChange: ${e.target.value}`);
+      }}
+      onFocus={() => {
+        console.log('onFocus');
+      }}
+      onBlur={() => {
+        console.log('onBlur');
+      }}
+      onSubmit={(value) => {
+        console.log(`onSubmit: ${value}`);
+      }}
+    />
+  );
+};
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 
-## 始终展示取消按钮
+## 始终展示搜索按钮
 
 ```jsx
 import { useState } from 'react';
@@ -37,7 +42,18 @@ const Demo = () => {
   const [value, setValue] = useState('');
 
   return (
-    <SearchBar showCancel placeholder="搜索" cancelText="取消" value={value} onChange={setValue} />
+    <SearchBar
+      showButton
+      buttonText="点我搜索"
+      value={value}
+      onChange={(e) => {
+        setValue(e.target.value);
+        console.log(`onChange: ${e.target.value}`);
+      }}
+      onSubmit={(value) => {
+        console.log(`onSubmit: ${value}`);
+      }}
+    />
   );
 };
 
@@ -65,18 +81,18 @@ import { useRef } from 'react';
 import { SearchBar, Button } from 'zarm';
 
 const Demo = () => {
-  const manualFocus = useRef();
+  const searchRef = useRef();
 
   return (
     <>
-      <SearchBar ref={manualFocus} />
+      <SearchBar ref={searchRef} />
       <div className="button-wrap">
         <Button
           theme="primary"
           size="xs"
           shape="radius"
           onClick={() => {
-            manualFocus.current.focus();
+            searchRef.current.focus();
           }}
         >
           点击获取焦点
@@ -91,19 +107,18 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性         | 类型                     | 默认值   | 说明                                   |
-| :----------- | :----------------------- | :------- | :------------------------------------- |
-| placeholder  | string                   | '搜索'   | 占位符                                 |
-| value        | string                   | -        | 值                                     |
-| defaultValue | string                   | -        | 初始值                                 |
-| shape        | string                   | 'radius' | 形状，可选值 `rect`, `radius`, `round` |
-| disabled     | boolean                  | false    | 是否禁用                               |
-| showCancel   | boolean                  | false    | 是否一直展示取消按钮                   |
-| cancelText   | string                   | '取消'   | 取消按钮显示的内容                     |
-| maxLength    | number                   | -        | 输入字数上限                           |
-| clearable    | boolean                  | true     | 是否提供清空输入框功能                 |
-| onChange     | (value?: string) => void | -        | 值变化时触发的回调函数                 |
-| onSubmit     | (value?: string) => void | -        | 提交时触发的回调函数                   |
-| onFocus      | () => void               | -        | 获取焦点时触发的回调函数               |
-| onBlur       | () => void               | -        | 失去焦点时触发的回调函数               |
-| onCancel     | () => void               | -        | 点击取消时触发的回调函数               |
+| 属性         | 类型                                               | 默认值         | 说明                                   |
+| :----------- | :------------------------------------------------- | :------------- | :------------------------------------- |
+| placeholder  | string                                             | '请搜索关键字' | 占位符                                 |
+| value        | string                                             | -              | 值                                     |
+| defaultValue | string                                             | -              | 初始值                                 |
+| shape        | string                                             | 'radius'       | 形状，可选值 `rect`, `radius`, `round` |
+| disabled     | boolean                                            | false          | 是否禁用                               |
+| showButton   | boolean                                            | false          | 是否一直展示搜索按钮                   |
+| buttonText   | string                                             | '搜索'         | 搜索按钮显示的内容                     |
+| maxLength    | number                                             | -              | 输入字数上限                           |
+| clearable    | boolean                                            | true           | 是否提供清空输入框功能                 |
+| onChange     | (e: React.ChangeEvent\<HTMLInputElement\>) => void | -              | 值变化时触发的回调函数                 |
+| onSubmit     | (value: string) => void                            | -              | 提交时触发的回调函数                   |
+| onFocus      | (e: React.FocusEvent\<HTMLInputElement\>) => void  | -              | 获取焦点时触发的回调函数               |
+| onBlur       | (e: React.FocusEvent\<HTMLInputElement\>) => void  | -              | 失去焦点时触发的回调函数               |

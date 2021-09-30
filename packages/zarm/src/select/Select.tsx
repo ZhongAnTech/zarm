@@ -5,7 +5,7 @@ import Picker from '../picker';
 import parseProps from '../picker-view/utils/parseProps';
 import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
 import type { BaseSelectProps } from './PropsType';
-import type { WheelItem } from '../wheel/PropsType';
+import type { WheelItem } from '../wheel/interface';
 
 export interface SelectProps extends BaseSelectProps {
   prefixCls?: string;
@@ -24,7 +24,6 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
     valueMember: 'value',
     itemRender: (data) => data && data.label,
     cols: Infinity,
-    hasArrow: true,
     maskClosable: true,
     displayRender: (selected) => selected.map((item) => item && item.label),
     onClick: () => {},
@@ -111,15 +110,16 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
       displayRender,
       locale,
       value,
-      hasArrow,
       ...others
     } = this.props;
     const { visible, selectValue = [] } = this.state;
     const cls = classnames(prefixCls, {
       [`${prefixCls}--placeholder`]: !selectValue.length,
       [`${prefixCls}--disabled`]: disabled,
-      [`${prefixCls}--arrow`]: hasArrow,
     });
+
+    const arrowRender = <div className={`${prefixCls}__arrow`} />;
+
     return (
       <div className={cls} onClick={this.handleClick}>
         <div className={`${prefixCls}__input`}>
@@ -129,6 +129,7 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
               locale!.placeholder}
           </div>
         </div>
+        {arrowRender}
         <Picker
           {...others}
           className={className}

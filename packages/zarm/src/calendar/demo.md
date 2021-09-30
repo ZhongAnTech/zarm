@@ -4,7 +4,7 @@
 
 ```jsx
 import { useState } from 'react';
-import { Radio, DateSelect, Cell, Calendar } from 'zarm';
+import { Radio, DateSelect, List, Calendar } from 'zarm';
 
 const Demo = () => {
   const [multiple, setMultiple] = useState(true);
@@ -15,38 +15,41 @@ const Demo = () => {
 
   return (
     <>
-      <Cell title="是否多选">
-        <Radio.Group
-          compact
-          type="button"
-          value={multiple}
-          onChange={(value) => {
-            setMultiple(value);
-          }}
-        >
-          <Radio value={false}>单选</Radio>
-          <Radio value={true}>双选</Radio>
-        </Radio.Group>
-      </Cell>
-      <Cell title="最小日期">
-        <DateSelect placeholder="Please input start date" mode="date" value={min} onOk={setMin} />
-      </Cell>
-      <Cell title="最大日期">
-        <DateSelect placeholder="Please input end date" mode="date" value={max} onOk={setMax} />
-      </Cell>
-      <Cell title="自定义渲染">
-        <Radio.Group
-          compact
-          type="button"
-          value={custom}
-          onChange={(value) => {
-            setCustom(value);
-          }}
-        >
-          <Radio value={false}>否</Radio>
-          <Radio value={true}>是</Radio>
-        </Radio.Group>
-      </Cell>
+      <List>
+        <List.Item title="是否多选">
+          <Radio.Group
+            compact
+            type="button"
+            value={multiple}
+            onChange={(value) => {
+              setMultiple(value);
+            }}
+          >
+            <Radio value={false}>单选</Radio>
+            <Radio value={true}>双选</Radio>
+          </Radio.Group>
+        </List.Item>
+        <List.Item title="最小日期">
+          <DateSelect placeholder="Please input start date" mode="date" value={min} onOk={setMin} />
+        </List.Item>
+        <List.Item title="最大日期">
+          <DateSelect placeholder="Please input end date" mode="date" value={max} onOk={setMax} />
+        </List.Item>
+        <List.Item title="自定义渲染">
+          <Radio.Group
+            compact
+            type="button"
+            value={custom}
+            onChange={(value) => {
+              setCustom(value);
+            }}
+          >
+            <Radio value={false}>否</Radio>
+            <Radio value={true}>是</Radio>
+          </Radio.Group>
+        </List.Item>
+      </List>
+
       <Calendar
         multiple={multiple}
         value={value}

@@ -299,7 +299,6 @@ exports[`Picker Picker render visible 1`] = `
                                 itemRender={[Function]}
                                 key="0"
                                 onChange={[Function]}
-                                prefixCls="za-wheel"
                                 stopScroll={false}
                                 value="1"
                                 valueMember="value"

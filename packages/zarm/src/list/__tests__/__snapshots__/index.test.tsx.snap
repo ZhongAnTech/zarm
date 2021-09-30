@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List renders correctly 1`] = `
+<div
+  class="za-list"
+>
+  <ul>
+    <li
+      class="za-list-item"
+    >
+      <div
+        class="za-list-item__wrapper"
+      >
+        <div
+          class="za-list-item__inner"
+        >
+          <div
+            class="za-list-item__title"
+          >
+            Item 1
+          </div>
+        </div>
+      </div>
+    </li>
+    <li
+      class="za-list-item"
+    >
+      <div
+        class="za-list-item__wrapper"
+      >
+        <div
+          class="za-list-item__inner"
+        >
+          <div
+            class="za-list-item__title"
+          >
+            Item 2
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+`;

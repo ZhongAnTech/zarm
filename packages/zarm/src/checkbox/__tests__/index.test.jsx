@@ -83,9 +83,9 @@ describe('Checkbox.Group', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('type is cell', () => {
+  it('type is list', () => {
     const wrapper = render(
-      <Checkbox.Group type="cell">
+      <Checkbox.Group type="list">
         <Checkbox value="0">选项一</Checkbox>
         <Checkbox value="1">选项二</Checkbox>
         <Checkbox value="2">选项三</Checkbox>
@@ -108,7 +108,7 @@ describe('Checkbox.Group', () => {
   it('onChange', () => {
     const onChange = jest.fn();
     const wrapper = shallow(
-      <Checkbox.Group type="cell" onChange={onChange}>
+      <Checkbox.Group type="list" onChange={onChange}>
         <Checkbox value="0">选项一</Checkbox>
         <Checkbox value="1">选项二</Checkbox>
         <Checkbox value="2" disabled>
@@ -117,14 +117,21 @@ describe('Checkbox.Group', () => {
       </Checkbox.Group>,
     );
     const firstCheckbox = () =>
-      wrapper.find(Checkbox).first().dive().find('input[type="checkbox"]');
+      wrapper.find(Checkbox).first().dive().dive().find('input[type="checkbox"]').first();
     firstCheckbox().simulate('change', { target: { checked: true } });
     expect(onChange).toBeCalledWith(['0']);
     firstCheckbox().simulate('change', { target: { checked: false } });
     expect(onChange).toBeCalledWith([]);
 
     // 测试disabled
-    const lastCheckbox = wrapper.find(Checkbox).last().dive().find('input[type="checkbox"]');
+    const lastCheckbox = wrapper
+      .find(Checkbox)
+      .last()
+      .dive()
+      .dive()
+      .find('input[type="checkbox"]')
+      .first();
     lastCheckbox.simulate('change', { target: { checked: true } });
+    expect(onChange).toBeCalledWith([]);
   });
 });

@@ -4,23 +4,26 @@
 
 ```jsx
 import { useState } from 'react';
-import { Cell, Radio, Keyboard } from 'zarm';
+import { List, Keyboard, Radio } from 'zarm';
 
 const Demo = () => {
   const [type, setType] = useState('number');
 
   return (
     <>
-      <Cell
-        title="键盘类型"
-        description={
-          <Radio.Group compact type="button" value={type} onChange={setType}>
-            <Radio value="number">数字键盘</Radio>
-            <Radio value="price">金额键盘</Radio>
-            <Radio value="idcard">身份证键盘</Radio>
-          </Radio.Group>
-        }
-      />
+      <List>
+        <List.Item
+          title="键盘类型"
+          after={
+            <Radio.Group compact type="button" value={type} onChange={setType}>
+              <Radio value="number">数字键盘</Radio>
+              <Radio value="price">金额键盘</Radio>
+              <Radio value="idcard">身份证键盘</Radio>
+            </Radio.Group>
+          }
+        />
+      </List>
+
       <Keyboard type={type} onKeyClick={(key) => console.log(key)} />
     </>
   );
@@ -33,7 +36,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```jsx
 import { useState } from 'react';
-import { Cell, Button, KeyboardPicker } from 'zarm';
+import { List, Button, KeyboardPicker } from 'zarm';
 
 const Demo = () => {
   const [visible, setVisible] = useState(false);
@@ -53,15 +56,16 @@ const Demo = () => {
 
   return (
     <>
-      <Cell
-        description={
-          <Button size="xs" onClick={toggle}>
-            {visible ? '关闭' : '开启'}
-          </Button>
-        }
-      >
-        拾取器触发方式
-      </Cell>
+      <List>
+        <List.Item
+          title="拾取器触发方式"
+          after={
+            <Button size="xs" onClick={toggle}>
+              {visible ? '关闭' : '开启'}
+            </Button>
+          }
+        />
+      </List>
 
       <KeyboardPicker visible={visible} onKeyClick={onKeyClick} />
     </>

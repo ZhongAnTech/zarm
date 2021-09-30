@@ -22,89 +22,28 @@ describe('index', () => {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
             "offsetTop": 0,
-            "prefixCls": "za-affix",
             "scrollContainer": [Window],
           },
           "render": [Function],
         },
         "BackToTop": [Function],
-        "Badge": Object {
+        "Badge": [Function],
+        "Button": [Function],
+        "Calendar": Object {
           "$$typeof": Symbol(react.forward_ref),
-          "defaultProps": Object {
-            "shape": "dot",
-            "theme": "danger",
-          },
           "render": [Function],
         },
-        "Button": Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "defaultProps": Object {
-            "block": false,
-            "disabled": false,
-            "ghost": false,
-            "htmlType": "button",
-            "loading": false,
-            "shadow": false,
-            "shape": "radius",
-            "size": "md",
-            "theme": "default",
-          },
-          "render": [Function],
-        },
-        "Calendar": [Function],
-        "Carousel": Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "defaultProps": Object {
-            "activeIndex": 0,
-            "animationDuration": 500,
-            "autoPlay": false,
-            "autoPlayIntervalTime": 3000,
-            "direction": "left",
-            "height": 160,
-            "loop": false,
-            "moveDistanceRatio": 0.5,
-            "moveTimeSpan": 300,
-            "showPagination": true,
-            "swipeable": true,
-          },
-          "render": [Function],
-        },
-        "Cell": Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "defaultProps": Object {
-            "disabled": false,
-            "hasArrow": false,
-          },
-          "render": [Function],
-        },
-        "Checkbox": Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "Group": Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "defaultProps": Object {
-              "block": false,
-              "compact": false,
-              "disabled": false,
-              "ghost": false,
-              "shape": "radius",
-              "size": "xs",
-            },
-            "render": [Function],
-          },
-          "defaultProps": Object {
-            "disabled": false,
-            "indeterminate": false,
-            "shape": "radius",
-          },
-          "render": [Function],
-        },
+        "Carousel": [Function],
+        "Cell": [Function],
+        "Checkbox": [Function],
         "Collapse": [Function],
         "ConfigProvider": [Function],
         "CustomInput": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
             "autoFocus": false,
-            "clearable": true,
+            "clearable": false,
+            "disabled": false,
             "readOnly": false,
             "type": "number",
           },
@@ -134,7 +73,7 @@ describe('index', () => {
           "defaultProps": Object {
             "autoFocus": false,
             "autoHeight": false,
-            "clearable": true,
+            "clearable": false,
             "disabled": false,
             "readOnly": false,
             "showLength": false,
@@ -158,7 +97,26 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "Loading": [Function],
+        "List": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "Item": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "defaultProps": Object {
+              "hasArrow": true,
+            },
+            "render": [Function],
+          },
+          "defaultProps": Object {},
+          "render": [Function],
+        },
+        "Loading": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "mask": true,
+          },
+          "render": [Function],
+          "useLoading": [Function],
+        },
         "Marquee": [Function],
         "Mask": Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -184,7 +142,18 @@ describe('index', () => {
           "defaultProps": Object {},
           "render": [Function],
         },
-        "NoticeBar": [Function],
+        "NoticeBar": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "closable": false,
+            "delay": 2000,
+            "hasArrow": false,
+            "icon": <ForwardRef(SvgVolume) />,
+            "speed": 50,
+            "theme": "warning",
+          },
+          "render": [Function],
+        },
         "Panel": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {},
@@ -195,6 +164,14 @@ describe('index', () => {
           "render": [Function],
         },
         "PickerView": [Function],
+        "PinchZoom": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "maxScale": 3,
+            "minScale": 1,
+          },
+          "render": [Function],
+        },
         "Popper": [Function],
         "Popup": Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -239,6 +216,12 @@ describe('index', () => {
         "Scroller": [Function],
         "SearchBar": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "clearable": true,
+            "disabled": false,
+            "shape": "radius",
+            "showButton": false,
+          },
           "render": [Function],
         },
         "Select": Object {
@@ -271,7 +254,13 @@ describe('index', () => {
         },
         "TabBar": Object {
           "$$typeof": Symbol(react.forward_ref),
-          "Item": [Function],
+          "Item": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "defaultProps": Object {
+            "visible": true,
+          },
           "render": [Function],
         },
         "Tabs": Object {
@@ -304,7 +293,7 @@ describe('index', () => {
         "Wheel": [Function],
         "useDrag": [Function],
         "useLongPress": [Function],
-        "useSafeLayoutEffect": [Function],
+        "useOrientation": [Function],
       }
     `);
   });

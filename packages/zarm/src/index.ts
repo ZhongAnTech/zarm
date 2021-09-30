@@ -1,4 +1,6 @@
+export type { CollapseProps, CollapseItemProps } from './collapse';
 export { default as Collapse } from './collapse';
+
 export { default as ActionSheet } from './action-sheet';
 // export { default as Alert } from './alert';
 export { default as BackToTop } from './back-to-top';
@@ -13,6 +15,9 @@ export { default as Calendar } from './calendar';
 
 export type { CellProps } from './cell';
 export { default as Cell } from './cell';
+
+export type { ListProps } from './list';
+export { default as List } from './list';
 
 export type { CheckboxProps, CheckboxGroupProps } from './checkbox';
 export { default as Checkbox } from './checkbox';
@@ -54,6 +59,8 @@ export type { MessageProps } from './message';
 export { default as Message } from './message';
 
 export { default as Modal } from './modal';
+
+export type { NoticeBarProps } from './notice-bar';
 export { default as NoticeBar } from './notice-bar';
 
 export type { PanelProps } from './panel';
@@ -81,7 +88,10 @@ export type { RadioProps, RadioGroupProps } from './radio';
 export { default as Radio } from './radio';
 
 export { default as Scroller } from './scroller';
+
+export type { SearchBarProps } from './search-bar';
 export { default as SearchBar } from './search-bar';
+
 export { default as Slider } from './slider';
 
 export type { ActivityIndicatorProps } from './activity-indicator';
@@ -90,7 +100,9 @@ export { default as ActivityIndicator } from './activity-indicator';
 export type { StepperProps } from './stepper';
 export { default as Stepper } from './stepper';
 
+export type { CarouselProps } from './carousel';
 export { default as Carousel } from './carousel';
+
 export { default as SwipeAction } from './swipe-action';
 
 export type { SwitchProps } from './switch';
@@ -112,8 +124,14 @@ export type { NavBarProps } from './nav-bar';
 export { default as NavBar } from './nav-bar';
 
 export { default as Marquee } from './marquee';
+
+export type { TabBarProps, TabBarItemProps } from './tab-bar';
 export { default as TabBar } from './tab-bar';
+
 export { default as ImagePreview } from './image-preview';
+
+export type { PinchZoomProps } from './pinch-zoom';
+export { default as PinchZoom } from './pinch-zoom';
 
 export { default as ConfigProvider } from './config-provider';
 
@@ -125,11 +143,13 @@ export { default as StackPicker } from './stack-picker';
 export type { AffixProps } from './affix';
 export { default as Affix } from './affix';
 
-export type { DragProps, DragEvent, DragState } from './drag';
+export type { DragProps } from './drag';
 export { default as Drag } from './drag';
+export type { UseDragProps, DragEvent, DragState } from './useDrag';
 export { default as useDrag } from './useDrag';
+
+export type { UseOrientationProps } from './useOrientation';
+export { default as useOrientation } from './useOrientation';
 
 export type { UseLongPressProps } from './useLongPress';
 export { default as useLongPress } from './useLongPress';
-
-export { default as useSafeLayoutEffect } from './useSafeLayoutEffect';
