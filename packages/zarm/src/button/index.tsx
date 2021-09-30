@@ -51,10 +51,11 @@ const Button = React.forwardRef<unknown, ButtonProps>((props, ref) => {
     [`${prefixCls}--${theme}`]: !!theme,
     [`${prefixCls}--${size}`]: !!size,
     [`${prefixCls}--${shape}`]: !!shape,
-    [`${prefixCls}--block`]: !!block,
-    [`${prefixCls}--ghost`]: !!ghost,
-    [`${prefixCls}--shadow`]: !!shadow,
-    [`${prefixCls}--disabled`]: !!disabled,
+    [`${prefixCls}--block`]: block,
+    [`${prefixCls}--ghost`]: ghost,
+    [`${prefixCls}--shadow`]: shadow,
+    [`${prefixCls}--disabled`]: disabled,
+    [`${prefixCls}--loading`]: loading,
   });
 
   const contentRender =
