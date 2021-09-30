@@ -50,6 +50,14 @@
       transform-origin: 0 0;
       border-radius: $border-radius * 2;
     }
+
+    @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 3dppx) {
+      width: 300%;
+      height: 300%;
+      transform: scale(0.3333);
+      transform-origin: 0 0;
+      border-radius: $border-radius * 3;
+    }
   }
 }
 
