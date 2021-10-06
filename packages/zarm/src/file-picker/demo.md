@@ -4,7 +4,8 @@
 
 ```jsx
 import { useState } from 'react';
-import { Cell, FilePicker, Icon } from 'zarm';
+import { Cell, FilePicker } from 'zarm';
+import { Plus } from '@zarm-design/icons';
 
 const Demo = () => {
   const [files, setFiles] = useState([]);
@@ -22,7 +23,7 @@ const Demo = () => {
       ))}
       <div className="file-picker-wrapper">
         <FilePicker className="file-picker-btn" onChange={onSelect}>
-          <Icon type="add" size="lg" />
+          <Plus size="lg" />
         </FilePicker>
       </div>
     </>
@@ -36,7 +37,8 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```jsx
 import { useState } from 'react';
-import { FilePicker, Icon, Toast, Badge } from 'zarm';
+import { FilePicker, Toast, Badge } from 'zarm';
+import { Plus, Close } from '@zarm-design/icons';
 
 const MAX_FILES_COUNT = 5;
 
@@ -72,7 +74,7 @@ const Demo = () => {
           shape="circle"
           text={
             <span className="file-picker-closebtn">
-              <Icon type="wrong" />
+              <Close />
             </span>
           }
           onClick={() => remove(index)}
@@ -98,7 +100,7 @@ const Demo = () => {
           onBeforeSelect={onBeforeSelect}
           onChange={onSelect}
         >
-          <Icon type="add" size="lg" />
+          <Plus size="lg" />
         </FilePicker>
       )}
     </div>
@@ -112,11 +114,12 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```jsx
 import { FilePicker, Icon } from 'zarm';
+import { Plus } from '@zarm-design/icons';
 
 ReactDOM.render(
   <div className="file-picker-wrapper">
     <FilePicker className="file-picker-btn" disabled>
-      <Icon type="add" size="lg" />
+      <Plus size="lg" />
     </FilePicker>
   </div>,
   mountNode,

@@ -4,7 +4,8 @@
 
 ```jsx
 import { useRef, useState } from 'react';
-import { Scroller, Cell, Icon, Message } from 'zarm';
+import { Scroller, Cell, Message } from 'zarm';
+import { WarningCircle } from '@zarm-design/icons';
 
 const Demo = () => {
   const list = [];
@@ -15,7 +16,7 @@ const Demo = () => {
 
   return (
     <>
-      <Message theme="warning" icon={<Icon type="warning-round" />}>
+      <Message theme="warning" icon={<WarningCircle />}>
         当前 scrollTop：{scrollTop}
       </Message>
       <Scroller container={() => containerRef.current} onScroll={setScrollTop}>
