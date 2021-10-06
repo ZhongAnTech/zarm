@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import { transform } from '@babel/standalone';
 import { Panel } from 'zarm';
+import * as ZarmDesignIcons from '@zarm-design/icons';
 import enUS from 'zarm/config-provider/locale/en_US';
 import zhCN from 'zarm/config-provider/locale/zh_CN';
 import 'zarm/style/entry';
@@ -21,8 +22,8 @@ export default ({ location, globalContext, children }) => {
           en_US: enUS,
           zh_CN: zhCN,
         };
-        const args = ['context', 'React', 'ReactDOM', 'Zarm', 'GlobalContext', 'Locale'];
-        const argv = [this, React, ReactDOM, Element, globalContext, locale];
+        const args = ['context', 'React', 'ReactDOM', 'Zarm', 'GlobalContext', 'Locale', 'ZarmDesignIcons'];
+        const argv = [this, React, ReactDOM, Element, globalContext, locale, ZarmDesignIcons];
 
         return {
           args,
@@ -33,6 +34,7 @@ export default ({ location, globalContext, children }) => {
         const value = source[2]
           .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'react';/, 'const { $1 } = React;')
           .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'zarm';/, 'const { $1 } = Zarm;')
+          .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'@zarm-design\/icons';/, 'const { $1 } = ZarmDesignIcons;')
           .replace(
             /import\s+(.*)\s+from\s+'zarm\/lib\/config-provider\/locale\/(.*)';/g,
             "const $1 = Locale['$2'];",
