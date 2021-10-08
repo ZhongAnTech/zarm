@@ -1,5 +1,6 @@
 @include b(swipe-action) {
   position: relative;
+  overflow: hidden;
 
   @include e(content) {
     position: relative;

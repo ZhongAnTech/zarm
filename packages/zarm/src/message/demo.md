@@ -3,15 +3,14 @@
 ## 基本用法
 
 ```jsx
-import { Message, Icon } from 'zarm';
+import { Message } from 'zarm';
+import { WarningCircle } from '@zarm-design/icons';
 
 ReactDOM.render(
   <>
     <Message>普通</Message>
     <Message theme="danger">自定义主题</Message>
-    <Message theme="warning" icon={<Icon type="warning-round" />}>
-      自定义图标
-    </Message>
+    <Message theme="warning" icon={<WarningCircle />}>自定义图标</Message>
   </>,
   mountNode,
 );

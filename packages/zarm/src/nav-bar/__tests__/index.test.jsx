@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from 'enzyme';
 import toJson from 'enzyme-to-json';
+import { ArrowLeft, ArrowRight } from '@zarm-design/icons';
 import NavBar from '../index';
-import Icon from '../../icon';
 
 describe('NavBar', () => {
   const props = {};
@@ -19,13 +19,13 @@ describe('NavBar', () => {
   });
 
   it('renders correctly with left content', () => {
-    props.left = <Icon type="arrow-left" />;
+    props.left = <ArrowLeft />;
     const wrapper = render(<NavBar {...props} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders correctly with right content', () => {
-    props.right = <Icon type="arrow-right" />;
+    props.right = <ArrowRight />;
     const wrapper = render(<NavBar {...props} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -67,12 +67,12 @@ describe('NavBar', () => {
     );
     props.left = (
       <div>
-        <Icon type="arrow-left" />
+        <ArrowLeft />
       </div>
     );
     props.right = (
       <div>
-        <Icon type="arrow-right" />
+        <ArrowRight />
         {infoRoundSvg}
       </div>
     );

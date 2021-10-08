@@ -3,13 +3,14 @@
 ## 基本用法
 
 ```jsx
-import { NoticeBar, Icon } from 'zarm';
+import { NoticeBar } from 'zarm';
+import { CloseCircle } from '@zarm-design/icons';
 
 ReactDOM.render(
   <>
     <NoticeBar>普通</NoticeBar>
     <NoticeBar theme="danger">自定义主题</NoticeBar>
-    <NoticeBar icon={<Icon type="wrong-round" />}>自定义图标</NoticeBar>
+    <NoticeBar icon={<CloseCircle />}>自定义图标</NoticeBar>
     <NoticeBar>
       各位zarmer请注意，当前文本超出了屏幕宽度，组件会自动开启滚动功能，前后停留时间和滚动速度可以自定义设置，更多用法请参见使用文档。
     </NoticeBar>
