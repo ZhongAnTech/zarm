@@ -13,10 +13,7 @@ export { default as Button } from './button';
 
 export { default as Calendar } from './calendar';
 
-export type { CellProps } from './cell';
-export { default as Cell } from './cell';
-
-export type { ListProps } from './list';
+export type { ListProps, ListItemProps } from './list';
 export { default as List } from './list';
 
 export type { CheckboxProps, CheckboxGroupProps } from './checkbox';

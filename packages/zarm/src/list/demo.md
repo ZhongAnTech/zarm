@@ -50,7 +50,6 @@ ReactDOM.render(
         <Icon
           type="add"
           theme="primary"
-          size="sm"
           onClick={() => window.alert('You clicked the icon')}
         />
       }

@@ -3,7 +3,7 @@ import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import SwipeAction from '../index';
 import Button from '../../button/index';
-import Cell from '../../cell/index';
+import List from '../../list/index';
 
 function createClientXYObject(x, y) {
   return { clientX: x, clientY: y };
@@ -105,19 +105,21 @@ describe('SwipeAction', () => {
       onClose: jest.fn(),
     };
     const wrapper = mount(
-      <SwipeAction
-        {...props}
-        left={[
-          <Button theme="primary" onClick={jest.fn()}>
-            左按钮1
-          </Button>,
-          <Button theme="danger" onClick={jest.fn()}>
-            左按钮2
-          </Button>,
-        ]}
-      >
-        <Cell>右滑看看</Cell>
-      </SwipeAction>,
+      <List>
+        <SwipeAction
+          {...props}
+          left={[
+            <Button theme="primary" onClick={jest.fn()}>
+              左按钮1
+            </Button>,
+            <Button theme="danger" onClick={jest.fn()}>
+              左按钮2
+            </Button>,
+          ]}
+        >
+          <List.Item>右滑看看</List.Item>
+        </SwipeAction>
+      </List>,
     ).find('.za-swipe-action__content');
     wrapper.simulate('touchStart', {
       touches: [10, 0],
@@ -138,19 +140,21 @@ describe('SwipeAction', () => {
     //   onClose: jest.fn(),
     // };
     const wrapper = mount(
-      <SwipeAction
-        onOpen={onOpen}
-        left={[
-          <Button theme="primary" onClick={jest.fn()}>
-            左按钮1
-          </Button>,
-          <Button theme="danger" onClick={jest.fn()}>
-            左按钮2
-          </Button>,
-        ]}
-      >
-        <Cell>右滑看看</Cell>
-      </SwipeAction>,
+      <List>
+        <SwipeAction
+          onOpen={onOpen}
+          left={[
+            <Button theme="primary" onClick={jest.fn()}>
+              左按钮1
+            </Button>,
+            <Button theme="danger" onClick={jest.fn()}>
+              左按钮2
+            </Button>,
+          ]}
+        >
+          <List.Item>右滑看看</List.Item>
+        </SwipeAction>
+      </List>,
     ).find('.za-swipe-action__content');
     wrapper.simulate('touchStart', createStartTouchEventObject({ x: 0, y: 0, preventDefault }));
     wrapper.simulate('touchMove', createMoveTouchEventObject({ x: 10, y: 0, preventDefault }));

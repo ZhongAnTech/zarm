@@ -1,7 +1,6 @@
 export { default as ActionSheet } from './action-sheet/index.native';
 export { default as Badge } from './badge/index.native';
 export { default as Button } from './button/index.native';
-export { default as Cell } from './cell/index.native';
 export { default as FilePicker } from './file-picker/index.native';
 export { default as Mask } from './mask/index.native';
 export { default as NavBar } from './nav-bar/index.native';

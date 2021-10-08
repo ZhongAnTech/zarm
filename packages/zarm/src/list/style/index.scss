@@ -16,7 +16,17 @@
   padding-left: var(--za-list-item-padding-horizontal);
   position: relative;
   background-color: var(--za-list-item-background);
-  font-size: var(--za-list-item-font-size);
+  font-size: var(--za-list-item-title-font-size);
+
+  &:first-child {
+    @include b(list-item) {
+      @include e(wrapper) {
+        &::after {
+          content: none;
+        }
+      }
+    }
+  }
 
   a,
   a:hover {
@@ -43,7 +53,7 @@
     min-height: var(--za-list-item-height);
     padding: var(--za-list-item-padding-vertical) 0;
     padding-right: var(--za-list-item-padding-horizontal);
-    @include onepx(top);
+    @include onepx(top, var(--za-list-item-separator-color));
   }
 
   @include e(inner) {
@@ -59,21 +69,20 @@
     white-space: var(--za-list-item-title-white-space);
     overflow: hidden;
     text-overflow: ellipsis;
-    line-height: var(--za-list-item-title-height);
+    line-height: var(--za-list-item-title-line-height);
   }
 
   @include e(content) {
     flex: 1;
     display: flex;
     align-items: center;
-    min-height: var(--za-list-item-title-height);
-    line-height: var(--za-list-item-title-height);
+    min-height: var(--za-list-item-title-line-height);
+    line-height: var(--za-list-item-title-line-height);
   }
 
   @include e(after) {
     display: flex;
     flex-shrink: 0;
-    white-space: nowrap;
     margin-left: auto;
     padding-left: var(--za-list-item-space);
     color: var(--za-list-item-after-text-color);
@@ -97,6 +106,7 @@
   @include e(info) {
     font-size: var(--za-list-item-info-font-size);
     color: var(--za-list-item-info-text-color);
+    line-height: var(--za-list-item-info-line-height);
   }
 
   @include m(inline) {
@@ -105,8 +115,8 @@
     }
   
     @include e(title) {
-      width: var(--cell-label-width);
-      line-height: var(--za-input-line-height);
+      width: var(--za-list-item-inline-title-width);
+      line-height: var(--za-list-item-title-line-height);
     }
   }
 
@@ -117,7 +127,7 @@
     transition-property: background-color, color;
 
     &:active {
-      background-color: var(--za-list-item-background-active);
+      background-color: var(--za-list-item-active-background);
     }
   }
 }

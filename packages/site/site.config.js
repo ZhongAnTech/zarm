@@ -253,16 +253,10 @@ module.exports = {
         style: true,
       },
       {
-        key: 'cell',
-        name: '列表项',
-        module: () => import('zarm/cell/demo.md'),
-        source: 'zarm/cell/demo.md', 
-        style: true,
-      },
-      {
         key: 'list',
         name: '列表',
         module: () => import('zarm/list/demo.md'),
+        source: 'zarm/list/demo.md', 
         style: false,
       },
       {

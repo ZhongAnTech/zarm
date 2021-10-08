@@ -7,7 +7,6 @@ describe('index.native', () => {
         "ActionSheet": [Function],
         "Badge": [Function],
         "Button": [Function],
-        "Cell": [Function],
         "Collapse": [Function],
         "FilePicker": [Function],
         "Mask": [Function],
