@@ -1,21 +1,12 @@
 @include b(tab-bar) {
-  display: flex;
-  width: 100%;
-  background: var(--tabbar-background);
   height: var(--tabbar-height);
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  text-align: center;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  transition-duration: .2s;
-  transition-property: height bottom;
-  overflow: hidden;
 
   @include m(safe) {
-    @include safeIphoneX(true, var(--tabbar-height));
+    @include safeIphoneX(false);
+
+    @include e(inner) {
+      @include safeIphoneX(true, var(--tabbar-height));
+    }
   }
 
   @include m(hidden) {
@@ -27,6 +18,24 @@
     @include e(title, icon) {
       color: var(--tabbar-item-active-color);
     }
+  }
+
+  @include e(inner) {
+    display: flex;
+    width: 100%;
+    background: var(--tabbar-background);
+    height: var(--tabbar-height);
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: var(--zindex-tabbar);
+    transition-duration: .2s;
+    transition-property: height bottom;
+    overflow: hidden;
   }
 
   @include e(item) {
