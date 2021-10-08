@@ -32,10 +32,13 @@
     - `type` 属性可选值 `cell` 变更为 `list`。
     - `size` 属性变更为 `buttonSize`。
     - `shape` 属性变更为 `buttonShape`。
+    - `ghost` 属性变更为 `buttonGhost`。
   - [Radio.Group]
     - `type` 属性可选值 `cell` 变更为 `list`。
     - `size` 属性变更为 `buttonSize`。
     - `shape` 属性变更为 `buttonShape`。
+    - `ghost` 属性变更为 `buttonGhost`。
+    - `compact` 属性变更为 `buttonCompact`。
     - 新增 `listMarkerAlign` 属性，用于设置列表类型时标记的位置。
 
 ## v2.9.9

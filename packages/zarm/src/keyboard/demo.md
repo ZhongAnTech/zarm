@@ -15,7 +15,7 @@ const Demo = () => {
         <List.Item
           title="键盘类型"
           after={
-            <Radio.Group compact type="button" value={type} onChange={setType}>
+            <Radio.Group buttonCompact type="button" value={type} onChange={setType}>
               <Radio value="number">数字键盘</Radio>
               <Radio value="price">金额键盘</Radio>
               <Radio value="idcard">身份证键盘</Radio>

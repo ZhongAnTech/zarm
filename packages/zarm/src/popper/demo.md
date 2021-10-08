@@ -113,7 +113,7 @@ const Demo = () => {
       <List.Item
         after={
           <Radio.Group
-            compact
+            buttonCompact
             type="button"
             value={arrowPointAtCenter}
             onChange={setArrowPointAtCenter}

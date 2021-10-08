@@ -18,7 +18,7 @@ const Demo = () => {
       <List>
         <List.Item title="是否多选">
           <Radio.Group
-            compact
+            buttonCompact
             type="button"
             value={multiple}
             onChange={(value) => {
@@ -37,7 +37,7 @@ const Demo = () => {
         </List.Item>
         <List.Item title="自定义渲染">
           <Radio.Group
-            compact
+            buttonCompact
             type="button"
             value={custom}
             onChange={(value) => {

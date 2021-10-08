@@ -52,7 +52,7 @@ const Demo = () => {
         <List.Item
           title="切换语言"
           after={
-            <Radio.Group compact type="button" value={locale} onChange={setLocale}>
+            <Radio.Group buttonCompact type="button" value={locale} onChange={setLocale}>
               <Radio value="zhCN">中文</Radio>
               <Radio value="enUS">EN</Radio>
             </Radio.Group>
@@ -77,7 +77,7 @@ const Demo = () => {
         <List.Item
           title="切换主题"
           after={
-            <Radio.Group compact type="button" value={theme} onChange={(value) => setTheme(value)}>
+            <Radio.Group buttonCompact type="button" value={theme} onChange={(value) => setTheme(value)}>
               <Radio value="light">默认主题</Radio>
               <Radio value="dark">暗黑主题</Radio>
             </Radio.Group>
