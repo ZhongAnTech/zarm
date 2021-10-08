@@ -118,6 +118,24 @@ const Demo = () => {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
+## 块级样式
+
+```jsx
+import { List, Checkbox } from 'zarm';
+
+ReactDOM.render(
+  <List>
+    <List.Item>
+      <Checkbox.Group block>
+        <Checkbox value="0">选项一</Checkbox>
+        <Checkbox value="1">选项二</Checkbox>
+      </Checkbox.Group>
+    </List.Item>
+  </List>,
+  mountNode,
+);
+```
+
 ## 按钮样式
 
 ```jsx
@@ -130,6 +148,7 @@ const Demo = () => {
   return (
     <List>
       <List.Item
+        title="普通"
         after={
           <Checkbox.Group
             type="button"
@@ -144,10 +163,9 @@ const Demo = () => {
             <Checkbox value="2">选项三</Checkbox>
           </Checkbox.Group>
         }
-      >
-        普通
-      </List.Item>
+      />
       <List.Item
+        title="指定默认值"
         after={
           <Checkbox.Group type="button" defaultValue={['0', '1']}>
             <Checkbox value="0">选项一</Checkbox>
@@ -155,10 +173,9 @@ const Demo = () => {
             <Checkbox value="2">选项三</Checkbox>
           </Checkbox.Group>
         }
-      >
-        指定默认值
-      </List.Item>
+      />
       <List.Item
+        title="禁用指定项"
         after={
           <Checkbox.Group type="button">
             <Checkbox value="0">选项一</Checkbox>
@@ -170,32 +187,39 @@ const Demo = () => {
             </Checkbox>
           </Checkbox.Group>
         }
-      >
-        禁用指定项
-      </List.Item>
+      />
       <List.Item
+        title="直角"
         after={
-          <Checkbox.Group type="button" shape="rect">
+          <Checkbox.Group type="button" buttonShape="rect">
             <Checkbox value="0">选项一</Checkbox>
             <Checkbox value="1">选项二</Checkbox>
             <Checkbox value="2">选项三</Checkbox>
           </Checkbox.Group>
         }
-      >
-        直角
-      </List.Item>
+      />
       <List.Item
+        title="椭圆角"
         after={
-          <Checkbox.Group type="button" shape="round">
+          <Checkbox.Group type="button" buttonShape="round">
             <Checkbox value="0">选项一</Checkbox>
             <Checkbox value="1">选项二</Checkbox>
             <Checkbox value="2">选项三</Checkbox>
           </Checkbox.Group>
         }
-      >
-        椭圆角
-      </List.Item>
+      />
       <List.Item
+        title="大小"
+        after={
+          <Checkbox.Group type="button" buttonSize="sm" buttonShape="radius">
+            <Checkbox value="0">选项一</Checkbox>
+            <Checkbox value="1">选项二</Checkbox>
+            <Checkbox value="2">选项三</Checkbox>
+          </Checkbox.Group>
+        }
+      />
+      <List.Item
+        title="幽灵按钮"
         after={
           <Checkbox.Group ghost type="button" defaultValue={['2']}>
             <Checkbox value="0">选项一</Checkbox>
@@ -205,9 +229,7 @@ const Demo = () => {
             </Checkbox>
           </Checkbox.Group>
         }
-      >
-        幽灵按钮
-      </List.Item>
+      />
     </List>
   );
 };
@@ -215,7 +237,7 @@ const Demo = () => {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-## 块级样式
+## 按钮类型块级样式
 
 ```jsx
 import { List, Checkbox } from 'zarm';
@@ -287,12 +309,12 @@ ReactDOM.render(
 
 | 属性         | 类型                                    | 默认值   | 说明                                               |
 | :----------- | :-------------------------------------- | :------- | :------------------------------------------------- |
-| type         | string                                  | -        | 显示类型，可选值 `button`, `list`                  |
+| type         | string                                  | -        | 显示类型，可选值 `button`、`list`                  |
 | value        | number[] \| string[]                    | []       | 选中值                                             |
 | defaultValue | number[] \| string[]                    | []       | 初始选中值                                         |
 | disabled     | boolean                                 | false    | 是否禁用                                           |
 | block        | boolean                                 | false    | 子项是否为块级元素                                 |
 | onChange     | (values?: number[] \| string[]) => void | -        | 值变化时触发的回调函数                             |
-| buttonSize   | string                                  | 'xs'     | 按钮类型时的大小，可选值为 `lg`、`md`、`sm`、`xs`  |
-| shape        | string                                  | 'radius' | 按钮类型时的形状，可选值 `rect`, `radius`, `round` |
-| ghost        | boolean                                 | false    | 按钮类型时，选中项样式是否为幽灵按钮               |
+| buttonSize   | string                             | 'xs'     | 按钮类型时的大小，可选值为 `lg`、`md`、`sm`、`xs`  |
+| buttonShape        | string                             | 'radius' | 按钮类型时的形状，可选值 `rect`、`radius`、`round`、`circle` |
+| buttonGhost        | boolean                            | false    | 按钮类型时，选中项样式是否为幽灵按钮               |

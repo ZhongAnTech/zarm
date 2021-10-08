@@ -1,5 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
+import { Success as SuccessIcon } from '@zarm-design/icons';
 import type { BaseRadioProps } from './interface';
 import RadioGroup from './RadioGroup';
 import List from '../list';
@@ -37,12 +38,12 @@ const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
   const {
     className,
     type,
-    shape,
     value,
     checked,
     defaultChecked,
     disabled,
     id,
+    listMarkerAlign,
     children,
     onChange,
     ...restProps
@@ -90,7 +91,9 @@ const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
   const radioRender = (
     <span ref={radioRef} className={cls} {...(restProps as RadioSpanProps)}>
       <span className={`${prefixCls}__widget`}>
-        <span className={`${prefixCls}__inner`} />
+        <span className={`${prefixCls}__inner`}>
+          <SuccessIcon className={`${prefixCls}__marker`} />
+        </span>
       </span>
       {children && <span className={`${prefixCls}__text`}>{children}</span>}
       {inputRender}
@@ -102,17 +105,20 @@ const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
   }, [checked, defaultChecked]);
 
   if (type === 'list') {
+    const marker = (
+      <>
+        <span className={`${prefixCls}__widget`}>
+          <span className={`${prefixCls}__inner`}>
+            <SuccessIcon className={`${prefixCls}__marker`} />
+          </span>
+        </span>
+        {inputRender}
+      </>
+    );
+
     const listProps: ListItemProps = {
       hasArrow: false,
       className: cls,
-      prefix: (
-        <>
-          <span className={`${prefixCls}__widget`}>
-            <span className={`${prefixCls}__inner`} />
-          </span>
-          {inputRender}
-        </>
-      ),
       title: (
         <>
           {children && <span className={`${prefixCls}__text`}>{children}</span>}
@@ -121,6 +127,11 @@ const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
       ),
       onClick: !disabled ? () => {} : undefined,
     };
+    
+    listMarkerAlign === 'after'
+      ? listProps.after = marker
+      : listProps.prefix = marker;
+
     return <List.Item ref={radioRef} {...listProps} />;
   }
 
@@ -145,7 +156,6 @@ const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
 Radio.displayName = 'Radio';
 
 Radio.defaultProps = {
-  shape: 'radius',
   disabled: false,
 };
 

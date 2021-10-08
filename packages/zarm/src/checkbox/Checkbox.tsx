@@ -1,5 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
+import { Success as SuccessIcon, Minus as MinusIcon } from '@zarm-design/icons';
 import type { BaseCheckboxProps } from './interface';
 import CheckboxGroup from './CheckboxGroup';
 import List from '../list';
@@ -37,7 +38,6 @@ const Checkbox = React.forwardRef<unknown, CheckboxProps>((props, ref) => {
   const {
     className,
     type,
-    shape,
     value,
     checked,
     defaultChecked,
@@ -46,6 +46,8 @@ const Checkbox = React.forwardRef<unknown, CheckboxProps>((props, ref) => {
     indeterminate,
     children,
     onChange,
+    buttonShape,
+    buttonSize,
     ...restProps
   } = props;
 
@@ -60,8 +62,8 @@ const Checkbox = React.forwardRef<unknown, CheckboxProps>((props, ref) => {
   const cls = classnames(prefixCls, className, {
     [`${prefixCls}--checked`]: currentChecked,
     [`${prefixCls}--disabled`]: disabled,
-    [`${prefixCls}--indeterminate`]: indeterminate,
     [`${prefixCls}--untext`]: !children,
+    [`${prefixCls}--indeterminate`]: indeterminate,
   });
 
   const onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -90,7 +92,9 @@ const Checkbox = React.forwardRef<unknown, CheckboxProps>((props, ref) => {
   const checkboxRender = (
     <span ref={checkboxRef} className={cls} {...(restProps as CheckboxSpanProps)}>
       <span className={`${prefixCls}__widget`}>
-        <span className={`${prefixCls}__inner`} />
+        <span className={`${prefixCls}__inner`}>
+          {indeterminate ? <MinusIcon className={`${prefixCls}__marker`} /> : <SuccessIcon className={`${prefixCls}__marker`} />}
+        </span>
       </span>
       {children && <span className={`${prefixCls}__text`}>{children}</span>}
       {inputRender}
@@ -108,7 +112,9 @@ const Checkbox = React.forwardRef<unknown, CheckboxProps>((props, ref) => {
       prefix: (
         <>
           <span className={`${prefixCls}__widget`}>
-            <span className={`${prefixCls}__inner`} />
+            <span className={`${prefixCls}__inner`}>
+              <SuccessIcon className={`${prefixCls}__marker`} />
+            </span>
           </span>
           {inputRender}
         </>
@@ -145,7 +151,6 @@ const Checkbox = React.forwardRef<unknown, CheckboxProps>((props, ref) => {
 Checkbox.displayName = 'Checkbox';
 
 Checkbox.defaultProps = {
-  shape: 'radius',
   disabled: false,
   indeterminate: false,
 };

@@ -1,29 +1,29 @@
-import type { ButtonSize } from '../button/interface';
+import type { ButtonSize, ButtonShape } from '../button/interface';
 
 export type RadioType = 'button' | 'list';
-export type RadioShape = 'rect' | 'radius' | 'round';
 export type RadioValue = number | string;
-export type RadioSize = ButtonSize;
+export type RadioGroupListMarkerAlign = 'before' | 'after';
 
 export interface BaseRadioProps {
   type?: RadioType;
-  shape?: RadioShape;
   disabled?: boolean;
   checked?: boolean;
   defaultChecked?: boolean;
   value?: RadioValue;
   id?: string;
+  listMarkerAlign?: RadioGroupListMarkerAlign;
 }
 
 export interface BaseRadioGroupProps {
   type?: RadioType;
-  shape?: RadioShape;
   disabled?: boolean;
   block?: boolean;
-  compact?: boolean;
-  ghost?: boolean;
   value?: RadioValue;
   defaultValue?: RadioValue;
-  buttonSize?: RadioSize;
+  buttonShape?: ButtonShape;
+  buttonSize?: ButtonSize;
+  buttonCompact?: boolean;
+  buttonGhost?: boolean;
+  listMarkerAlign?: RadioGroupListMarkerAlign;
   onChange?: (value: RadioValue) => void;
 }

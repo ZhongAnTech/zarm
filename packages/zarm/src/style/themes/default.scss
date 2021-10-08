@@ -25,8 +25,8 @@
   --border-disabled: #e6e6e6;
 
   // 圆角
-  --radius-xs: 2px;
-  --radius-sm: 2px;
+  --radius-xs: 4px;
+  --radius-sm: 4px;
   --radius-md: 4px;
   --radius-lg: 8px;
   --radius-xl: 8px;
@@ -48,11 +48,11 @@
   --padding-v-xl: 18px;
 
   // 字体大小
-  --font-size-xs: 10px;
-  --font-size-sm: 12px;
-  --font-size-md: 14px;
-  --font-size-lg: 16px;
-  --font-size-xl: 18px;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-md: 17px;
+  --font-size-lg: 20px;
+  --font-size-xl: 22px;
 
   // 堆叠顺序
   --zindex-mask: 1000;
@@ -92,7 +92,7 @@
 
   // Badge
   --badge-height: 14px;
-  --badge-font-size: var(--font-size-xs);
+  --badge-font-size: 10px;
   --badge-padding-h: 4px;
   --badge-dot-diameter: 8px;
   --badge-border-radius-rect: var(--radius-sm);
@@ -109,10 +109,10 @@
   --button-padding-h-sm: var(--padding-h-sm);
   --button-padding-h-md: var(--padding-h-md);
   --button-padding-h-lg: var(--padding-h-lg);
-  --button-font-size-xs: 12px;
-  --button-font-size-sm: 14px;
-  --button-font-size-md: 16px;
-  --button-font-size-lg: 18px;
+  --button-font-size-xs: var(--font-size-sm);
+  --button-font-size-sm: var(--font-size-sm);
+  --button-font-size-md: var(--font-size-md);
+  --button-font-size-lg: var(--font-size-lg);
   --button-icon-size-xs: 16px;
   --button-icon-size-sm: 18px;
   --button-icon-size-md: 22px;
@@ -181,32 +181,61 @@
   --carousel-pagination-rect-color: rgba(255, 255, 255, 0.6);
   --carousel-pagination-rect-color-active: #fff;
 
-  // Cell
-  --cell-height: 52px;                                    // 最小高度
-  --cell-background: #fff;                              // 背景色
-  --cell-background-active: var(--background-active);     // 激活背景色
-  --cell-line-padding-left: 16px;                         // 分隔线左边距
-  --cell-padding-h: 16px;                                 // 水平边内距
-  --cell-padding-v: 15px;                                 // 纵向边内距
-  --cell-title-color: var(--color-text);                  // 标题文字颜色
-  --cell-title-font-size: 15px;                           // 标题文字大小
-  --cell-title-line-height: 22px;                         // 标题文字行高
-  --cell-description-color: var(--color-text-caption);    // 标题文字颜色
-  --cell-description-font-size: 15px;                     // 描述文字大小
-  --cell-label-width: 100px;                              // 表单label宽度
-  --cell-arrow-color: #bcbcbc;                          // 箭头颜色
-  --cell-arrow-length: 10px;                              // 箭头长度
-  --cell-arrow-border-width: 2px;                         // 箭头粗细
-
   // Checkbox
-  --checkbox-size: 18px;
-  --checkbox-radius: var(--radius-md);
-  --checkbox-background: var(--color-text-inverse);
-  --checkbox-border-color: var(--border-color);
-  --checkbox-active-border-color: var(--theme-primary);
-  --checkbox-disabled-background: var(--background-disabled);
-  --checkbox-disabled-color: #bcbcbc;
-  --checkbox-arrow-color: var(--color-text-inverse);
+  // 大小
+  --za-checkbox-size: 22px;
+  // 圆角弧度
+  --za-checkbox-radius: var(--radius-circle);
+  // 背景色
+  --za-checkbox-background: transparent;
+  // 边框宽度
+  --za-checkbox-border-width: 1px;
+  // 边框颜色
+  --za-checkbox-border-color: rgb(199, 199, 204);
+  // 文本横向边距
+  --za-checkbox-text-spacing-horizontal: 8px;
+  // 勾选标记颜色
+  --za-checkbox-marker-color: #fff;
+  // 勾选标记图标大小
+  --za-checkbox-marker-font-size: 16px;
+  // 勾选标记的动画
+  --za-checkbox-marker-transition: all 0.2s cubic-bezier(.71, -0.46, .88, .6);
+  // 选中状态背景颜色
+  --za-checkbox-checked-background: var(--theme-primary);
+  // 选中状态边框颜色
+  --za-checkbox-checked-border-color: var(--theme-primary);
+  // 选中状态标记颜色
+  --za-checkbox-checked-marker-color: var(--theme-primary);
+  // 激活状态透明度
+  --za-checkbox-active-opacity: 0.6;
+  // 禁用状态透背景色
+  --za-checkbox-disabled-background: #f2f2f2;
+  // 禁用状态边框颜色
+  --za-checkbox-disabled-border-color: rgba(199, 199, 204, 0.7);
+  // 禁用状态文本颜色
+  --za-checkbox-disabled-text-color: rgba(0, 0, 0, 0.3);
+  // 禁用状态勾选标记颜色
+  --za-checkbox-disabled-marker-color: #bcbcbc;
+  // 子项的纵向间距
+  --za-checkbox-group-spacing-vertical: 8px;
+  // 子项的横向间距
+  --za-checkbox-group-spacing-horizontal: 24px;
+  // xs大小的按钮样式时子项的纵向间距
+  --za-checkbox-group-button-spacing-vertical-xs: var(--padding-v-xs);
+  // sm大小的按钮样式时子项的纵向间距
+  --za-checkbox-group-button-spacing-vertical-sm: var(--padding-v-sm);
+  // md大小的按钮样式时子项的纵向间距
+  --za-checkbox-group-button-spacing-vertical-md: var(--padding-v-md);
+  // lg大小的按钮样式时子项的纵向间距
+  --za-checkbox-group-button-spacing-vertical-lg: var(--padding-v-lg);
+  // xs大小的按钮样式时子项的横向间距
+  --za-checkbox-group-button-spacing-horizontal-xs: var(--padding-h-xs);
+  // sm大小的按钮样式时子项的横向间距
+  --za-checkbox-group-button-spacing-horizontal-sm: var(--padding-h-sm);
+  // md大小的按钮样式时子项的横向间距
+  --za-checkbox-group-button-spacing-horizontal-md: var(--padding-h-md);
+  // lg大小的按钮样式时子项的横向间距
+  --za-checkbox-group-button-spacing-horizontal-lg: var(--padding-h-lg);
 
   // Collapse
   --collapse-height: 52px;
@@ -222,35 +251,69 @@
   --confirm-button-active-background: var(--background-active);
 
   // List
-  --za-list-item-font-size: var(--font-size-md);
-  --za-list-item-background: #fff;
-  --za-list-item-background-active: rgba(0, 0, 0, 0.15);
-  --za-list-item-padding-vertical: 8px;
-  --za-list-item-padding-horizontal: 16px;
+  // 列表项高度
   --za-list-item-height: 44px;
+  // 列表项背景颜色
+  --za-list-item-background: #fff;
+  // 激活状态背景颜色
+  --za-list-item-active-background: rgba(0, 0, 0, 0.15);
+  // 列表项纵向内边距
+  --za-list-item-padding-vertical: 8px;
+  // 列表项横行内边距
+  --za-list-item-padding-horizontal: 16px;
+  // 列表项内部元素间距
   --za-list-item-space: 5px;
-  --za-list-item-title-height: calc(var(--za-list-item-height) - var(--za-list-item-padding-vertical) * 2);
+  // 列表项 title 文本字体大小
+  --za-list-item-title-font-size: var(--font-size-md);
+  // 列表项 title 文本字体行高
+  --za-list-item-title-line-height: calc(var(--za-list-item-height) - var(--za-list-item-padding-vertical) * 2);
+  // 列表项 title 文本折行
   --za-list-item-title-white-space: nowrap;
+  // 列表项 inline 模式下 title 文本区域的宽度
+  --za-list-item-inline-title-width: var(--za-input-label-width);
+  // 列表项 after 文本颜色
   --za-list-item-after-text-color: rgba(0, 0, 0, 0.45);
+  // 列表项 info 文本字体大小
+  --za-list-item-info-font-size: 12px;
+  // 列表项 info 文本字体行高
+  --za-list-item-info-line-height: 15px;
+  // 列表项 info 文本字体颜色
+  --za-list-item-info-text-color: rgba(60, 60, 67, 0.6);
+  // 列表项箭头符号颜色
   --za-list-item-arrow-color: rgba(0, 0, 0, 0.2);
+  // 列表项箭头符号线条长度
   --za-list-item-arrow-size: 10px;
+  // 列表项箭头符号线条宽度
   --za-list-item-arrow-border-width: 2px;
-  --za-list-item-info-font-size: var(--font-size-sm);
-  --za-list-item-info-text-color: rgba(0, 0, 0, 0.45);
+  // 列表项分割线颜色
+  --za-list-item-separator-color: rgba(60, 60, 67, 0.36);
 
   // Input
-  --za-input-height: var(--za-list-item-title-height); // 28px
-  --za-input-line-height: var(--za-input-height);
+  // 高度
+  --za-input-height: 28px;
+  // 行高
+  --za-input-line-height: 28px;
+  // 字体大小
   --za-input-font-size: var(--font-size-md);
+  // 字体颜色
   --za-input-color: var(--color-text);
-  --za-input-clear-icon-width: 16px;
-  --za-input-clear-icon-color: #bcbcbc;
+  // 清除按钮大小
+  --za-input-clear-icon-size: 16px;
+  // 清除按钮颜色
+  --za-input-clear-icon-color: #ccc;
+  // 虚拟光标颜色
   --za-input-cursor-color: #597cf6;
+  // 虚拟光标线条宽度
   --za-input-cursor-width: 2px;
-  --za-input-cursor-height: calc(var(--za-input-height) - 8px); // 20px
+  // 虚拟光标线条高度
+  --za-input-cursor-height: 20px;
+  // 输入长度字体大小
   --za-input-length-font-size: var(--font-size-sm);
+  // 输入长度字体颜色
   --za-input-length-color: var(--color-text-disabled);
+  // 标签栏宽度
   --za-input-label-width: 100px;
+  // 纵向标签栏字体大小
   --za-input-vertical-label-font-size: var(--font-size-sm);
 
   // ImagePreview
@@ -324,14 +387,60 @@
   --pull-control-font-size: 14px;
 
   // Radio
-  --radio-size: 18px;
-  --radio-radius: var(--radius-circle);
-  --radio-background: var(--color-text-inverse);
-  --radio-border-color: var(--border-color);
-  --radio-active-border-color: var(--theme-primary);
-  --radio-disabled-background: var(--background-disabled);
-  --radio-disabled-color: #bcbcbc;
-  --radio-arrow-color: var(--color-text-inverse);
+  // 大小
+  --za-radio-size: 22px;
+  // 圆角弧度
+  --za-radio-radius: var(--radius-circle);
+  // 背景色
+  --za-radio-background: transparent;
+  // 边框宽度
+  --za-radio-border-width: 1px;
+  // 边框颜色
+  --za-radio-border-color: rgb(199, 199, 204);
+  // 文本横向边距
+  --za-radio-text-spacing-horizontal: 8px;
+  // 勾选标记颜色
+  --za-radio-marker-color: var(--theme-primary);
+  // 勾选标记图标大小
+  --za-radio-marker-font-size: 16px;
+  // 勾选标记的动画
+  --za-radio-marker-transition: all 0.2s cubic-bezier(.71, -0.46, .88, .6);
+  // 选中状态背景颜色
+  --za-radio-checked-background: transparent;
+  // 选中状态边框颜色
+  --za-radio-checked-border-color: var(--theme-primary);
+  // 选中状态标记颜色
+  --za-radio-checked-marker-color: var(--theme-primary);
+  // 激活状态透明度
+  --za-radio-active-opacity: 0.6;
+  // 禁用状态透背景色
+  --za-radio-disabled-background: transparent;
+  // 禁用状态边框颜色
+  --za-radio-disabled-border-color: rgba(199, 199, 204, 0.7);
+  // 禁用状态文本颜色
+  --za-radio-disabled-text-color: rgba(0, 0, 0, 0.3);
+  // 禁用状态勾选标记颜色
+  --za-radio-disabled-marker-color: #bcbcbc;
+  // 子项的纵向间距
+  --za-radio-group-spacing-vertical: 8px;
+  // 子项的横向间距
+  --za-radio-group-spacing-horizontal: 24px;
+  // xs大小的按钮样式时子项的纵向间距
+  --za-radio-group-button-spacing-vertical-xs: var(--padding-v-xs);
+  // sm大小的按钮样式时子项的纵向间距
+  --za-radio-group-button-spacing-vertical-sm: var(--padding-v-sm);
+  // md大小的按钮样式时子项的纵向间距
+  --za-radio-group-button-spacing-vertical-md: var(--padding-v-md);
+  // lg大小的按钮样式时子项的纵向间距
+  --za-radio-group-button-spacing-vertical-lg: var(--padding-v-lg);
+  // xs大小的按钮样式时子项的横向间距
+  --za-radio-group-button-spacing-horizontal-xs: var(--padding-h-xs);
+  // sm大小的按钮样式时子项的横向间距
+  --za-radio-group-button-spacing-horizontal-sm: var(--padding-h-sm);
+  // md大小的按钮样式时子项的横向间距
+  --za-radio-group-button-spacing-horizontal-md: var(--padding-h-md);
+  // lg大小的按钮样式时子项的横向间距
+  --za-radio-group-button-spacing-horizontal-lg: var(--padding-h-lg);
 
   // SearchBar
   --search-bar-font-size: 14px;
@@ -368,14 +477,30 @@
   --stepper-input-padding-h-lg: 8px;
 
   // Switch
-  --switch-width: 53px;
-  --switch-height: 32px;
-  --switch-handle-size: 26px;
-  // --switch-width-sm: 41px;
-  // --switch-height-sm: 21px;
-  --switch-border-color: var(--border-color);
-  --switch-background: var(--border-color);
-  --switch-handle-background: #fff;
+  // 宽度
+  --za-switch-width: 52px;
+  // 高度
+  --za-switch-height: 32px;
+  // 背景颜色
+  --za-switch-background: rgba(120, 120, 128, 0.16);
+  // 选中状态背景颜色
+  --za-switch-checked-background: var(--theme-primary);
+  // 圆角
+  --za-switch-border-radius: var(--radius-round);
+  // 选中动画执行时间
+  --za-switch-transition-duration: 0.3s;
+  // 把手大小
+  --za-switch-knob-size: 28px;
+  // 把手背景颜色
+  --za-switch-knob-background: #fff;
+  // 把手阴影
+  --za-switch-knob-box-shadow: 0 3px 1px rgba(0, 0, 0, 0.06), 0 3px 8px rgba(0, 0, 0, 0.15);
+  // 把手边框颜色
+  --za-switch-knob-border-color: rgba(0, 0, 0, 0.04);
+  // 把手边框宽度
+  --za-switch-knob-border-width: 0.5px;
+  // 把手移动动画执行时间
+  --za-switch-knob-transition-duration: 0.3s;
 
   // Tabs
   --tabs-height: 45px;

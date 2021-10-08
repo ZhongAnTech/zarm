@@ -40,18 +40,19 @@ export type RadioGroupProps = Omit<
 const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
   const {
     type,
-    disabled,
     className,
     value,
     defaultValue,
-    buttonSize,
-    shape,
     block,
-    compact,
-    ghost,
+    disabled,
+    buttonSize,
+    buttonShape,
+    buttonCompact,
+    buttonGhost,
+    listMarkerAlign,
     children,
     onChange,
-    ...rest
+    ...restProps
   } = props;
 
   const radioGroupRef = (ref as any) || React.createRef<HTMLDivElement>();
@@ -73,8 +74,7 @@ const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
     return React.cloneElement(element, {
       key: +index,
       type,
-      shape,
-      buttonSize,
+      listMarkerAlign,
       disabled: disabled || !!element.props.disabled,
       checked: currentValue === element.props.value,
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -86,12 +86,12 @@ const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
 
   const cls = classnames(prefixCls, className, {
     [`${prefixCls}--${type}`]: !!type,
-    [`${prefixCls}--${buttonSize}`]: !!buttonSize,
-    [`${prefixCls}--${shape}`]: !!shape,
     [`${prefixCls}--block`]: block,
     [`${prefixCls}--disabled`]: disabled,
-    [`${prefixCls}--compact`]: compact,
-    [`${prefixCls}--ghost`]: ghost,
+    [`${prefixCls}--button-${buttonSize}`]: !!buttonSize,
+    [`${prefixCls}--button-${buttonShape}`]: !!buttonShape,
+    [`${prefixCls}--button-compact`]: buttonCompact,
+    [`${prefixCls}--button-ghost`]: buttonGhost,
   });
 
   React.useEffect(() => {
@@ -99,7 +99,7 @@ const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
   }, [value, defaultValue, children]);
 
   return (
-    <div className={cls} {...rest} ref={radioGroupRef}>
+    <div className={cls} {...restProps} ref={radioGroupRef}>
       <div className={`${prefixCls}__inner`}>{type === 'list' ? <List>{items}</List> : items}</div>
     </div>
   );
@@ -108,12 +108,13 @@ const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
 RadioGroup.displayName = 'RadioGroup';
 
 RadioGroup.defaultProps = {
-  shape: 'radius',
   block: false,
   disabled: false,
-  compact: false,
-  ghost: false,
+  buttonCompact: false,
+  buttonGhost: false,
+  buttonShape: 'radius',
   buttonSize: 'xs',
+  listMarkerAlign: 'before',
 };
 
 export default RadioGroup;

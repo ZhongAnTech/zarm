@@ -1,30 +1,29 @@
-import type { ButtonSize } from '../button/interface';
+import type { ButtonSize, ButtonShape } from '../button/interface';
 
 export type CheckboxType = 'button' | 'list';
-export type CheckboxShape = 'rect' | 'radius' | 'round';
 export type CheckboxValue = number | string;
-export type CheckboxSize = ButtonSize;
 
 export interface BaseCheckboxProps {
   type?: CheckboxType;
-  shape?: CheckboxShape;
   disabled?: boolean;
   value?: CheckboxValue;
   checked?: boolean;
   defaultChecked?: boolean;
   indeterminate?: boolean;
   id?: string;
+  buttonSize?: ButtonSize;
+  buttonShape?: ButtonShape;
 }
 
 export interface BaseCheckboxGroupProps {
   type?: CheckboxType;
-  shape?: CheckboxShape;
   disabled?: boolean;
   block?: boolean;
-  compact?: boolean;
-  ghost?: boolean;
   value?: Array<CheckboxValue>;
   defaultValue?: Array<CheckboxValue>;
-  buttonSize?: CheckboxSize;
+  buttonSize?: ButtonSize;
+  buttonShape?: ButtonShape;
+  buttonCompact?: boolean;
+  buttonGhost?: boolean;
   onChange?: (value: Array<CheckboxValue>) => void;
 }

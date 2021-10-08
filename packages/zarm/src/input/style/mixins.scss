@@ -69,7 +69,7 @@
     position: absolute;
     visibility: hidden;
     color: var(--za-input-clear-icon-color);
-    width: var(--za-input-clear-icon-width);
+    width: var(--za-input-clear-icon-size);
     text-align: center;
     top: 50%;
     transform: translateY(-50%);
@@ -78,7 +78,7 @@
   }
 
   @include m(focus) {
-    padding-right: var(--za-input-clear-icon-width);
+    padding-right: var(--za-input-clear-icon-size);
 
     @include e(clear) {
       visibility: visible;

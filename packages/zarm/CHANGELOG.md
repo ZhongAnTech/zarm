@@ -13,7 +13,6 @@
       - 新增 `showButton`、`buttonText`，搜索按钮点击触发 `onSubmit` 事件。
   - [Toast] 静态方法挂载到 `Toast.useToast` 下，详细用法参考官网例子。
   - [NoticeBar]
-    - DOM 节点调整，原有样式会有影响。
     - 新增 `onClose` 属性，关闭触发的回调函数。
     - 修复关闭后只移除了 `Message` 组件，根节点没有被移除的 bug。
   - [Message]
@@ -24,14 +23,21 @@
   - [DateSelect]
     - 移除 `hasArrow` 属性，默认展示箭头。
   - [Cell]
-    - 变更为 List 和 List.Item 组件。
+    - 变更为 List 和 List.Item 组件，样式结构调整。
     - 属性 `icon` 变更为 `prefix`。
     - 属性 `description` 变更为 `after`。
     - 属性 `help` 变更为 `info`。
-  - [Checkbox]
-    - Checkbox.Group 的 `type` 属性可选值 `cell` 变更为 `list`。
-  - [Radio]
-    - Radio.Group 的 `type` 属性可选值 `cell` 变更为 `list`。
+    - 属性 `title` 字体大小变更为 17px。
+  - [Checkbox.Group]
+    - `type` 属性可选值 `cell` 变更为 `list`。
+    - `size` 属性变更为 `buttonSize`。
+    - `shape` 属性变更为 `buttonShape`。
+  - [Radio.Group]
+    - `type` 属性可选值 `cell` 变更为 `list`。
+    - `size` 属性变更为 `buttonSize`。
+    - `shape` 属性变更为 `buttonShape`。
+    - 新增 `listMarkerAlign` 属性，用于设置列表类型时标记的位置。
+
 ## v2.9.9
 
 - Bug Fix
