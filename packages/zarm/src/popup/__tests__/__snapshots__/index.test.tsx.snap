@@ -119,18 +119,15 @@ exports[`Popup snapshot renders mount without mountContainer 1`] = `
   direction="bottom"
   mountContainer={false}
   onMaskClick={[MockFunction]}
-  prefixCls="za-popup"
   visible={true}
 >
   <Portal
     afterClose={[MockFunction]}
     animationDuration={200}
     animationType="fade"
-    destroy={true}
     direction="bottom"
     handlePortalUnmount={[Function]}
     mask={true}
-    maskType="normal"
     mountContainer={false}
     onMaskClick={[MockFunction]}
     prefixCls="za-popup"
@@ -146,7 +143,6 @@ exports[`Popup snapshot renders mount without mountContainer 1`] = `
       >
         <Mask
           className="za-fade-enter"
-          prefixCls="za-mask"
           style={
             Object {
               "WebkitAnimationDuration": "200ms",
