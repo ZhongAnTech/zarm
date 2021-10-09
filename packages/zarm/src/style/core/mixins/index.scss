@@ -48,8 +48,7 @@
         border-#{$position}: 1PX solid $border-color;
       }
 
-      @media (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 2dppx) {
+      @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
         width: 200%;
         height: 200%;
         transform: scale(0.5);
@@ -57,8 +56,7 @@
         border-radius: $border-radius * 2;
       }
 
-      @media (-webkit-min-device-pixel-ratio: 3),
-      (min-resolution: 3dppx) {
+      @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 3dppx) {
         width: 300%;
         height: 300%;
         transform: scale(0.3333);
