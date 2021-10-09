@@ -47,11 +47,7 @@ ReactDOM.render(
     <List.Item
       title="Item 3"
       after={
-        <Icon
-          type="add"
-          theme="primary"
-          onClick={() => window.alert('You clicked the icon')}
-        />
+        <Icon type="add" theme="primary" onClick={() => window.alert('You clicked the icon')} />
       }
     />
     <List.Item title="Item 4" after={<Switch />} />

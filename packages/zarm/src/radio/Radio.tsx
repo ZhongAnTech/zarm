@@ -127,10 +127,8 @@ const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
       ),
       onClick: !disabled ? () => {} : undefined,
     };
-    
-    listMarkerAlign === 'after'
-      ? listProps.after = marker
-      : listProps.prefix = marker;
+
+    listMarkerAlign === 'after' ? (listProps.after = marker) : (listProps.prefix = marker);
 
     return <List.Item ref={radioRef} {...listProps} />;
   }

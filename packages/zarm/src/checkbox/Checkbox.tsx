@@ -93,7 +93,11 @@ const Checkbox = React.forwardRef<unknown, CheckboxProps>((props, ref) => {
     <span ref={checkboxRef} className={cls} {...(restProps as CheckboxSpanProps)}>
       <span className={`${prefixCls}__widget`}>
         <span className={`${prefixCls}__inner`}>
-          {indeterminate ? <MinusIcon className={`${prefixCls}__marker`} /> : <SuccessIcon className={`${prefixCls}__marker`} />}
+          {indeterminate ? (
+            <MinusIcon className={`${prefixCls}__marker`} />
+          ) : (
+            <SuccessIcon className={`${prefixCls}__marker`} />
+          )}
         </span>
       </span>
       {children && <span className={`${prefixCls}__text`}>{children}</span>}

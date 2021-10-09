@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
- 
+
 export interface BaseInputTextProps {
   label?: ReactNode;
   clearable?: boolean;

@@ -31,4 +31,3 @@ List.displayName = 'List';
 List.defaultProps = {};
 
 export default List;
-

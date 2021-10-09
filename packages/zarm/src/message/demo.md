@@ -10,7 +10,9 @@ ReactDOM.render(
   <>
     <Message>普通</Message>
     <Message theme="danger">自定义主题</Message>
-    <Message theme="warning" icon={<WarningCircle />}>自定义图标</Message>
+    <Message theme="warning" icon={<WarningCircle />}>
+      自定义图标
+    </Message>
   </>,
   mountNode,
 );
