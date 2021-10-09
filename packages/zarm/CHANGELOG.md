@@ -9,19 +9,19 @@
     - 输入框事件变更为与原生 `input` 保持一致，如 `onChange`、`onFocus`、`onBlur` 等。
     - 删除 `onClear` 事件，点击重置按钮请空值将触发 `onChange` 事件。
     - “取消”按钮变更为“搜索”按钮，相关属性调整：
-      - 删除 `showCancel`、`cancelText`、`onCancel`。
-      - 新增 `showButton`、`buttonText`，搜索按钮点击触发 `onSubmit` 事件。
+      - 删除属性 `showCancel`、`cancelText`、`onCancel`。
+      - 新增属性 `showButton`、`buttonText`，搜索按钮点击触发 `onSubmit` 事件。
   - [Toast] 静态方法挂载到 `Toast.useToast` 下，详细用法参考官网例子。
   - [NoticeBar]
-    - 新增 `onClose` 属性，关闭触发的回调函数。
+    - 新增属性 `onClose`，关闭触发的回调函数。
     - 修复关闭后只移除了 `Message` 组件，根节点没有被移除的 bug。
   - [Message]
-    - 移除 `size` 属性，及相关样式。
-    - 新增 `onClose` 属性，关闭触发的回调函数。
+    - 移除属性 `size`，及相关样式。
+    - 新增属性 `onClose`，关闭触发的回调函数。
   - [Select]
-    - 移除 `hasArrow` 属性，默认展示箭头。
+    - 移除属性 `hasArrow`，默认展示箭头。
   - [DateSelect]
-    - 移除 `hasArrow` 属性，默认展示箭头。
+    - 移除属性 `hasArrow`，默认展示箭头。
   - [Cell]
     - 变更为 List 和 List.Item 组件，样式结构调整。
     - 属性 `icon` 变更为 `prefix`。
@@ -29,17 +29,17 @@
     - 属性 `help` 变更为 `info`。
     - 属性 `title` 字体大小变更为 17px。
   - [Checkbox.Group]
-    - `type` 属性可选值 `cell` 变更为 `list`。
-    - `size` 属性变更为 `buttonSize`。
-    - `shape` 属性变更为 `buttonShape`。
-    - `ghost` 属性变更为 `buttonGhost`。
+    - 属性 `type` 可选值 `cell` 变更为 `list`。
+    - 属性 `size` 变更为 `buttonSize`。
+    - 属性 `shape` 变更为 `buttonShape`。
+    - 属性 `ghost` 变更为 `buttonGhost`。
   - [Radio.Group]
-    - `type` 属性可选值 `cell` 变更为 `list`。
-    - `size` 属性变更为 `buttonSize`。
-    - `shape` 属性变更为 `buttonShape`。
-    - `ghost` 属性变更为 `buttonGhost`。
-    - `compact` 属性变更为 `buttonCompact`。
-    - 新增 `listMarkerAlign` 属性，用于设置列表类型时标记的位置。
+    - 属性 `type` 可选值 `cell` 变更为 `list`。
+    - 属性 `size` 变更为 `buttonSize`。
+    - 属性 `shape` 变更为 `buttonShape`。
+    - 属性 `ghost` 变更为 `buttonGhost`。
+    - 属性 `compact` 变更为 `buttonCompact`。
+    - 新增属性 `listMarkerAlign` ，用于设置列表类型时标记的位置。
 
 ## v2.9.9
 
