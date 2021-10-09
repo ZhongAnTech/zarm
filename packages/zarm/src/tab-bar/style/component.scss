@@ -10,6 +10,7 @@
   position: fixed;
   left: 0;
   bottom: 0;
+  z-index: var(--zindex-tabbar);
   transition-duration: .2s;
   transition-property: height bottom;
   overflow: hidden;
