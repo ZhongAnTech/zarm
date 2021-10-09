@@ -20,11 +20,11 @@ const ConfigProvider = (props: React.PropsWithChildren<ConfigProviderProps>) => 
   const { children, cssVars, primaryColor, theme, ...restProps } = props;
 
   React.useEffect(() => {
-    setPrimaryColor(primaryColor);
+    primaryColor && setPrimaryColor(primaryColor);
   }, [primaryColor]);
 
   React.useEffect(() => {
-    setTheme(theme);
+    theme && setTheme(theme);
   }, [theme]);
 
   const newChildren = setCssVars(children, cssVars);
