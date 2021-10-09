@@ -292,7 +292,7 @@ describe('index', () => {
             "clearable": true,
             "disabled": false,
             "shape": "radius",
-            "showButton": false,
+            "showCancel": false,
           },
           "render": [Function],
         },

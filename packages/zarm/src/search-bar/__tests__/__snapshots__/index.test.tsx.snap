@@ -33,15 +33,16 @@ exports[`SearchBar snapshot renders correctly 1`] = `
         class="za-input"
       >
         <input
+          buttontext="搜索"
           placeholder="请输入关键字"
           type="search"
         />
       </div>
     </div>
     <div
-      class="za-search-bar__button"
+      class="za-search-bar__cancel"
     >
-      搜索
+      取消
     </div>
   </form>
 </div>
@@ -55,7 +56,7 @@ exports[`SearchBar snapshot renders defaultValue correctly 1`] = `
   disabled={false}
   placeholder="请输入关键字"
   shape="round"
-  showButton={false}
+  showCancel={false}
 >
   <div
     className="za-search-bar za-search-bar--round"
@@ -111,6 +112,7 @@ exports[`SearchBar snapshot renders defaultValue correctly 1`] = `
         <Input
           autoFocus={false}
           autoHeight={false}
+          buttonText="搜索"
           clearable={true}
           defaultValue="搜索关键字"
           disabled={false}
@@ -126,6 +128,7 @@ exports[`SearchBar snapshot renders defaultValue correctly 1`] = `
           >
             <input
               autoFocus={false}
+              buttonText="搜索"
               defaultValue="搜索关键字"
               disabled={false}
               onBlur={[Function]}
@@ -138,10 +141,10 @@ exports[`SearchBar snapshot renders defaultValue correctly 1`] = `
         </Input>
       </div>
       <div
-        className="za-search-bar__button"
+        className="za-search-bar__cancel"
         onClick={[Function]}
       >
-        搜索
+        取消
       </div>
     </form>
   </div>

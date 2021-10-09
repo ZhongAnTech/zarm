@@ -20,7 +20,7 @@
     line-height: var(--za-input-line-height);
 
     @include placeholder {
-      color: var(--color-text-placeholder);
+      color: var(--za-input-placeholder-color);
     }
   }
 
@@ -55,7 +55,7 @@
 
 @mixin input-placeholder() {
   @include placeholder {
-    color: var(--color-text-placeholder);
+    color: var(--za-input-placeholder-color);
   }
 }
 
@@ -69,12 +69,11 @@
     position: absolute;
     visibility: hidden;
     color: var(--za-input-clear-icon-color);
-    width: var(--za-input-clear-icon-size);
     text-align: center;
     top: 50%;
     transform: translateY(-50%);
     right: 0;
-    font-size: r(16);
+    font-size: var(--za-input-clear-icon-size);
   }
 
   @include m(focus) {
@@ -90,18 +89,18 @@
   input,
   textarea {
     cursor: not-allowed;
-    color: var(--color-text-disabled);
+    color: var(--za-input-disabled-color);
     // 用于修复真机上不显示的bug
-    -webkit-text-fill-color: var(--color-text-disabled);
+    -webkit-text-fill-color: var(--za-input-disabled-color);
     opacity: 1;
 
     @include placeholder {
-      color: var(--color-text-disabled);
+      color: var(--za-input-disabled-color);
     }
   }
 
   @include e(content) {
     cursor: not-allowed;
-    color: var(--color-text-disabled);
+    color: var(--za-input-disabled-color);
   }
 }

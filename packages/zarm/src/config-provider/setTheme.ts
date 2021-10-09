@@ -36,8 +36,6 @@ export const themes = {
   '--picker-mask-background-start': 'rgba(0, 0, 0, 0.4)',
   '--picker-mask-background-end': 'rgba(0, 0, 0, 0.8)',
   '--progress-background': 'var(--border-color)',
-  '--search-bar-background': '#1b1c1e',
-  '--search-bar-inner-background': '#000',
   '--slider-line-dot-color': 'var(--border-color)',
   '--stack-picker-background': '#000',
   '--stack-picker-shadow': 'none',
@@ -68,6 +66,9 @@ export const themes = {
   '--za-panel-header-color': 'rgba(235, 235, 245, 0.6)',
   '--za-panel-body-background': '#1c1c1e',
   '--za-nav-bar-background': '#1b1c1e',
+  '--za-search-bar-input-background': 'rgba(118, 118, 128, 0.24)',
+  '--za-search-bar-input-placeholder-color': '#8e8e93',
+  '--za-search-bar-icon-color': '#8e8e93',
 } as const;
 
 const setTheme = (value: Theme) => {

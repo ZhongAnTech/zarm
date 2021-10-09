@@ -8,9 +8,6 @@
   - [SearchBar]
     - 输入框事件变更为与原生 `input` 保持一致，如 `onChange`、`onFocus`、`onBlur` 等。
     - 删除 `onClear` 事件，点击重置按钮请空值将触发 `onChange` 事件。
-    - “取消”按钮变更为“搜索”按钮，相关属性调整：
-      - 删除属性 `showCancel`、`cancelText`、`onCancel`。
-      - 新增属性 `showButton`、`buttonText`，搜索按钮点击触发 `onSubmit` 事件。
   - [Toast] 静态方法挂载到 `Toast.useToast` 下，详细用法参考官网例子。
   - [NoticeBar]
     - 新增属性 `onClose`，关闭触发的回调函数。
