@@ -22,6 +22,7 @@ export default ({ location, globalContext, children }) => {
           en_US: enUS,
           zh_CN: zhCN,
         };
+
         const args = [
           'context',
           'React',
@@ -39,6 +40,15 @@ export default ({ location, globalContext, children }) => {
         };
       })
       .then(({ args, argv }) => {
+        const renderTpl = `ReactDOM.render(
+          <Zarm.NConfigProvider primaryColor={GlobalContext.primaryColor} theme={GlobalContext.theme} locale={Locale[GlobalContext.locale === 'zhCN' ? 'zh_CN' : 'en_US']}>
+            <Zarm.ConfigProvider primaryColor={GlobalContext.primaryColor} theme={GlobalContext.theme} locale={Locale[GlobalContext.locale === 'zhCN' ? 'zh_CN' : 'en_US']}>
+              <div>$1</div>
+            </Zarm.ConfigProvider>
+          </Zarm.NConfigProvider>,
+          document.getElementById('${containerId}'),
+        )`;
+
         const value = source[2]
           .replace(/import\s+\{\s+([\s\S]*)\s+\}\s+from\s+'react';/, 'const { $1 } = React;')
           .replace(/import\s+\{\s+([\s\S]*)\s+\}\s+from\s+'zarm';/, 'const { $1 } = Zarm;')
@@ -58,7 +68,7 @@ export default ({ location, globalContext, children }) => {
           // ReactDOM.render(<Demo />, mountNode);
           .replace(
             /ReactDOM.render\(\s?([^]+?)(,\s?mountNode\s?\))/g,
-            `ReactDOM.render($1, document.getElementById('${containerId}'))`,
+            renderTpl,
           )
           // 替换格式
           // ReactDOM.render(
@@ -70,7 +80,7 @@ export default ({ location, globalContext, children }) => {
           // );
           .replace(
             /ReactDOM.render\(\s?([^]+?)(,([\r\n])(\s)*mountNode,(\s)*\))/g,
-            `ReactDOM.render($1, document.getElementById('${containerId}'))`,
+            renderTpl,
           );
 
         const { code } = transform(value, {
