@@ -299,7 +299,7 @@ const Demo = () => {
         mountContainer={() => myRef.current}
       />
 
-      <div id="test-div" style={{ position: 'relative', zIndex: 1 }} ref={myRef} />
+      <div id="test-div" ref={myRef} />
     </>
   );
 };
