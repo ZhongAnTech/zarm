@@ -6,15 +6,16 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: var(--nav-bar-height);
-  background: var(--nav-bar-color);
+  height: var(--za-nav-bar-height);
+  background: var(--za-nav-bar-background);
 
   @include e(title) {
     position: absolute;
     left: 50%;
     white-space: nowrap;
-    font-size: r(18);
-    font-weight: 500;
+    color: var(--za-nav-bar-title-color);
+    font-size: var(--za-nav-bar-title-font-size);
+    font-weight: var(--za-nav-bar-title-font-weight);
     transform: translate(-50%, 0);
   }
 
@@ -23,11 +24,11 @@
     justify-content: center;
 
     @include m(left) {
-      margin-left: r(16);
+      margin-left: var(--za-nav-bar-padding-horizontal);
     }
 
     @include m(right) {
-      margin-right: r(16);
+      margin-right: var(--za-nav-bar-padding-horizontal);
     }
   }
 }

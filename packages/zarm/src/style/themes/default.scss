@@ -344,9 +344,13 @@
   --modal-close-active-color: #999;
 
   // NavBar
-  --nav-bar-color: #fdfdfd;
-  --nav-bar-height: 44px;
-  --nav-bar-icon-size: 24px;
+  --za-nav-bar-background: rgba(249, 249, 249, 0.94);
+  --za-nav-bar-height: 44px;
+  --za-nav-bar-icon-size: 24px;
+  --za-nav-bar-title-color: var(--color-text);
+  --za-nav-bar-title-font-size: 18px;
+  --za-nav-bar-title-font-weight: 500;
+  --za-nav-bar-padding-horizontal: 16px;
 
   // NoticeBar
   --notice-bar-height: 24px;

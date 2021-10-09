@@ -31,8 +31,6 @@ export const themes = {
   '--modal-background': '#2b2c2d',
   '--modal-close-color': 'rgba(255, 255, 255, 0.3)',
   '--modal-close-active-color': 'rgba(255, 255, 255, 0.65)',
-  '--nav-bar-color': '#1b1c1e',
-  '--panel-body-background': '#1b1c1e',
   '--picker-background': '#000',
   '--picker-header-background': '#1b1c1e',
   '--picker-mask-background-start': 'rgba(0, 0, 0, 0.4)',
@@ -47,7 +45,7 @@ export const themes = {
   '--tabbar-background': '#1b1c1e',
   '--toast-background': '#2b2c2d',
   '--tooltip-background': '#5b5c60',
-  '--za-list-item-background': '#1C1C1E',
+  '--za-list-item-background': '#1c1c1e',
   '--za-list-item-active-background': '#363738',
   '--za-list-item-arrow-color': '#666',
   '--za-list-item-separator-color': 'rgba(84, 84, 88, 0.65)',
@@ -68,7 +66,8 @@ export const themes = {
   '--za-input-clear-icon-color': '#8e8e93',
   '--za-switch-background': 'rgba(120, 120, 128, 0.32)',
   '--za-panel-header-color': 'rgba(235, 235, 245, 0.6)',
-  '--za-panel-body-background': '#1C1C1E',
+  '--za-panel-body-background': '#1c1c1e',
+  '--za-nav-bar-background': '#1b1c1e',
 } as const;
 
 const setTheme = (value: Theme) => {
