@@ -344,12 +344,17 @@
   --modal-close-active-color: #999;
 
   // NavBar
+  // 背景色
   --za-nav-bar-background: rgba(249, 249, 249, 0.94);
+  // 高度
   --za-nav-bar-height: 44px;
-  --za-nav-bar-icon-size: 24px;
+  // 标题字体色
   --za-nav-bar-title-color: var(--color-text);
+  // 标题字体大小
   --za-nav-bar-title-font-size: 18px;
+  // 标题字体粗细
   --za-nav-bar-title-font-weight: 500;
+  // 横向内边距
   --za-nav-bar-padding-horizontal: 16px;
 
   // NoticeBar
@@ -361,11 +366,17 @@
   --notice-bar-icon-size: 16px;
 
   // Panel
+  // 左右留白宽度
   --za-panel-spacing-padding-horizontal: 16px;
+  // 头部字体色
   --za-panel-header-color: rgba(60, 60, 67, 0.6);
+  // 头部字体大小
   --za-panel-header-font-size: 13px;
+  // 头部内边距
   --za-panel-header-padding: 25px 16px 10px 16px;
+  // 内容背景
   --za-panel-body-background: #fff;
+  // 内容圆角大小
   --za-panel-body-border-radius: 10px;
 
   // Picker
