@@ -126,8 +126,8 @@ describe('TabBar', () => {
         <TabBarItem itemKey="about us" title="关于我们" />
       </TabBar>,
     );
-    expect(wrapper.find('.za-tab-bar__inner').childAt(0).prop('selected')).toBeTruthy();
-    expect(wrapper.find('.za-tab-bar__inner').childAt(1).prop('selected')).toBeFalsy();
+    expect(wrapper.childAt(0).prop('selected')).toBeTruthy();
+    expect(wrapper.childAt(1).prop('selected')).toBeFalsy();
   });
 
   it('should render actionIcon if selected is false(defaultActivceKey is not equal with itemKey)', () => {
@@ -164,8 +164,8 @@ describe('TabBar', () => {
         <TabBarItem />
       </TabBar>,
     );
-    expect(wrapper.find('.za-tab-bar__inner').childAt(0).prop('itemKey')).toBe(0);
-    expect(wrapper.find('.za-tab-bar__inner').childAt(1).prop('itemKey')).toBe(1);
+    expect(wrapper.childAt(0).prop('itemKey')).toBe(0);
+    expect(wrapper.childAt(1).prop('itemKey')).toBe(1);
   });
 
   it('should have hidden class name if visible prop is false', () => {
@@ -186,7 +186,7 @@ describe('TabBar', () => {
         <TabBarItem itemKey="about us" title="关于我们" />
       </TabBar>,
     );
-    expect(wrapper.find('.za-tab-bar__inner').childAt(0).props()).toEqual(
+    expect(wrapper.childAt(0).props()).toEqual(
       expect.objectContaining({
         title: '主页',
         itemKey: 'home',
@@ -194,7 +194,7 @@ describe('TabBar', () => {
         selected: true,
       }),
     );
-    expect(wrapper.find('.za-tab-bar__inner').childAt(1).props()).toEqual(
+    expect(wrapper.childAt(1).props()).toEqual(
       expect.objectContaining({
         title: '关于我们',
         itemKey: 'about us',

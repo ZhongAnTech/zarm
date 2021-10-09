@@ -90,7 +90,7 @@ const TabBar = React.forwardRef<unknown, TabBarProps>((props, ref) => {
   );
   return (
     <div className={cls} ref={tabBarRef} {...restProps}>
-      <div className={`${prefixCls}__inner`}>{items}</div>
+      {items}
     </div>
   );
 }) as CompoundedComponent;
