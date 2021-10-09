@@ -226,7 +226,9 @@ describe('index', () => {
         },
         "Panel": Object {
           "$$typeof": Symbol(react.forward_ref),
-          "defaultProps": Object {},
+          "defaultProps": Object {
+            "spacing": false,
+          },
           "render": [Function],
         },
         "Picker": Object {

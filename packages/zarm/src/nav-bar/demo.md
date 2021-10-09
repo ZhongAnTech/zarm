@@ -3,11 +3,12 @@
 ## 左侧渲染
 
 ```jsx
-import { NavBar, Icon } from 'zarm';
+import { NavBar } from 'zarm';
+import { ArrowLeft } from '@zarm-design/icons';
 
 ReactDOM.render(
   <NavBar
-    left={<Icon type="arrow-left" theme="primary" onClick={() => window.history.back()} />}
+    left={<ArrowLeft theme="primary" onClick={() => window.history.back()} />}
     title="这是标题"
   />,
   mountNode,
@@ -17,13 +18,14 @@ ReactDOM.render(
 ## 右侧渲染
 
 ```jsx
-import { NavBar, Icon } from 'zarm';
+import { NavBar } from 'zarm';
+import { Plus } from '@zarm-design/icons';
 
 ReactDOM.render(
   <NavBar
     title="这是标题这是标题这是标题"
     right={
-      <Icon type="question-round" theme="primary" onClick={() => window.alert('click icon')} />
+      <Plus theme="primary" onClick={() => window.alert('click icon')} />
     }
   />,
   mountNode,
@@ -34,20 +36,20 @@ ReactDOM.render(
 
 ```jsx
 import { NavBar, Icon } from 'zarm';
+import { ArrowLeft, Search, Plus } from '@zarm-design/icons';
 
 ReactDOM.render(
   <NavBar
-    left={<Icon type="arrow-left" theme="primary" onClick={() => window.history.back()} />}
+    left={<ArrowLeft theme="primary" onClick={() => window.history.back()} />}
     title="这是标题"
     right={
       <>
-        <Icon
-          type="add"
+        <Plus
           theme="primary"
           onClick={() => alert('click icon1')}
           style={{ marginRight: 16 }}
         />
-        <Icon type="question-round" theme="primary" onClick={() => alert('click icon2')} />
+        <Search theme="primary" onClick={() => alert('click icon2')} />
       </>
     }
   />,

@@ -125,7 +125,8 @@
     @include b(radio) {
       @include button-base();
       @include button-shape(var(--radius-xs));
-      @include button-theme(var(--button-default-background),
+      @include button-theme(
+        var(--button-default-background),
         var(--button-default-border),
         var(--button-default-color),
         var(--button-default-background),
@@ -143,7 +144,8 @@
       }
 
       @include m(checked) {
-        @include button-theme(var(--button-primary-background),
+        @include button-theme(
+          var(--button-primary-background),
           var(--button-primary-border),
           var(--button-primary-color),
           var(--button-primary-active-background),
@@ -199,7 +201,8 @@
       @include b(radio) {
         margin-right: var(--za-radio-group-button-spacing-horizontal-lg);
         margin-bottom: var(--za-radio-group-button-spacing-vertical-lg);
-        @include button-size(var(--button-height-lg),
+        @include button-size(
+          var(--button-height-lg),
           var(--button-padding-h-lg),
           var(--button-font-size-lg),
           var(--button-icon-size-lg),
@@ -216,7 +219,8 @@
       @include b(radio) {
         margin-right: var(--za-radio-group-button-spacing-horizontal-md);
         margin-bottom: var(--za-radio-group-button-spacing-vertical-md);
-        @include button-size(var(--button-height-md),
+        @include button-size(
+          var(--button-height-md),
           var(--button-padding-h-md),
           var(--button-font-size-md),
           var(--button-icon-size-md),
@@ -233,7 +237,8 @@
       @include b(radio) {
         margin-right: var(--za-radio-group-button-spacing-horizontal-sm);
         margin-bottom: var(--za-radio-group-button-spacing-vertical-sm);
-        @include button-size(var(--button-height-sm),
+        @include button-size(
+          var(--button-height-sm),
           var(--button-padding-h-sm),
           var(--button-font-size-sm),
           var(--button-icon-size-sm),
@@ -250,7 +255,8 @@
       @include b(radio) {
         margin-right: var(--za-radio-group-button-spacing-horizontal-xs);
         margin-bottom: var(--za-radio-group-button-spacing-vertical-xs);
-        @include button-size(var(--button-height-xs),
+        @include button-size(
+          var(--button-height-xs),
           var(--button-padding-h-xs),
           var(--button-font-size-xs),
           var(--button-icon-size-xs),
@@ -262,7 +268,8 @@
     @include m(button-ghost) {
       @include b(radio) {
         @include m(checked) {
-          @include button-ghost(transparent,
+          @include button-ghost(
+            transparent,
             var(--za-radio-checked-border-color),
             var(--theme-primary),
             transparent,
@@ -326,10 +333,6 @@
       @include e(inner) {
         border: none;
         background: transparent;
-
-        // @include e(marker) {
-        //   font-size: var(--za-radio-marker-font-size);
-        // }
       }
     }
   }

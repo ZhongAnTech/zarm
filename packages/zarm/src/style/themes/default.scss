@@ -357,11 +357,12 @@
   --notice-bar-icon-size: 16px;
 
   // Panel
-  --panel-header-color: var(--color-text-caption);
-  --panel-header-font-size: 14px;
-  --panel-body-color: var(--color-text);
-  --panel-body-font-size: 15px;
-  --panel-body-background: #fff;
+  --za-panel-spacing-padding-horizontal: 16px;
+  --za-panel-header-color: rgba(60, 60, 67, 0.6);
+  --za-panel-header-font-size: 13px;
+  --za-panel-header-padding: 25px 16px 10px 16px;
+  --za-panel-body-background: #fff;
+  --za-panel-body-border-radius: 10px;
 
   // Picker
   --picker-background: #fff;

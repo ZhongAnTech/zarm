@@ -78,7 +78,12 @@ const Demo = () => {
         <List.Item
           title="切换主题"
           after={
-            <Radio.Group buttonCompact type="button" value={theme} onChange={(value) => setTheme(value)}>
+            <Radio.Group
+              buttonCompact
+              type="button"
+              value={theme}
+              onChange={(value) => setTheme(value)}
+            >
               <Radio value="light">默认主题</Radio>
               <Radio value="dark">暗黑主题</Radio>
             </Radio.Group>

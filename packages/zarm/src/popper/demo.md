@@ -103,7 +103,8 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```jsx
 import { useState } from 'react';
-import { List, Button, Popper, Radio, Message, Icon } from 'zarm';
+import { List, Button, Popper, Radio, Message } from 'zarm';
+import { WarningCircle } from '@zarm-design/icons';
 
 const Demo = () => {
   const [arrowPointAtCenter, setArrowPointAtCenter] = useState(false);
@@ -255,7 +256,7 @@ const Demo = () => {
             </Popper>
           </div>
 
-          <Message theme="warning" icon={<Icon type="warning-round" />}>
+          <Message theme="warning" icon={<WarningCircle />}>
             左右两侧显示位置不足会自动调整为反向显示
           </Message>
         </div>

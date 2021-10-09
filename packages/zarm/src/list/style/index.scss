@@ -6,6 +6,28 @@
     margin: 0;
     padding: 0;
     position: relative;
+
+    > *:first-child {
+      @include b(list-item) {
+        @include e(wrapper) {
+          &::after {
+            content: none;
+          }
+        }
+      }
+    }
+
+    *:first-child {
+      @include b(list-item) {
+        @include b(list-item) {
+          @include e(wrapper) {
+            &::after {
+              content: none;
+            }
+          }
+        }
+      }
+    }
   }
 }
 
@@ -17,16 +39,6 @@
   position: relative;
   background-color: var(--za-list-item-background);
   font-size: var(--za-list-item-title-font-size);
-
-  &:first-child {
-    @include b(list-item) {
-      @include e(wrapper) {
-        &::after {
-          content: none;
-        }
-      }
-    }
-  }
 
   a,
   a:hover {
@@ -113,7 +125,7 @@
     @include e(inner) {
       align-items: flex-start;
     }
-  
+
     @include e(title) {
       width: var(--za-list-item-inline-title-width);
       line-height: var(--za-list-item-title-line-height);

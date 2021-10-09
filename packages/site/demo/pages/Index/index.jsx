@@ -20,6 +20,7 @@ const Child = () => {
 
     return (
       <Panel
+        spacing
         title={
           <>
             <FormattedMessage id={`app.components.type.${key}`} />（{list.length}）

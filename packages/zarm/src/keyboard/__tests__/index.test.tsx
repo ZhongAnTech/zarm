@@ -65,7 +65,7 @@ describe('Keyboard', () => {
       handles.childAt(1).simulate('click');
       expect(onKeyClick).toBeCalledWith('ok');
     });
-    
+
     // it("should handle delete operation once if user's touch event gets interrupted", () => {
     //   jest.useFakeTimers();
     //   const setTimeoutSpy = jest.spyOn(global, 'setTimeout');

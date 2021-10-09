@@ -70,10 +70,7 @@ const Keyboard = React.forwardRef<unknown, KeyboardProps>((props, ref) => {
     <div className={cls} ref={keyboardRef} {...restProps}>
       <div className={`${prefixCls}__keys`}>{getKeys.map(renderKey)}</div>
       <div className={`${prefixCls}__handle`}>
-        <div
-          className={`${prefixCls}__item`}
-          {...longPressEvent}
-        >
+        <div className={`${prefixCls}__item`} {...longPressEvent}>
           <DeleteKeyIcon size="lg" />
         </div>
         <div

@@ -307,14 +307,14 @@ ReactDOM.render(
 
 ### Checkbox.Group
 
-| 属性         | 类型                                    | 默认值   | 说明                                               |
-| :----------- | :-------------------------------------- | :------- | :------------------------------------------------- |
-| type         | string                                  | -        | 显示类型，可选值 `button`、`list`                  |
-| value        | number[] \| string[]                    | []       | 选中值                                             |
-| defaultValue | number[] \| string[]                    | []       | 初始选中值                                         |
-| disabled     | boolean                                 | false    | 是否禁用                                           |
-| block        | boolean                                 | false    | 子项是否为块级元素                                 |
-| onChange     | (values?: number[] \| string[]) => void | -        | 值变化时触发的回调函数                             |
-| buttonSize   | string                             | 'xs'     | 按钮类型时的大小，可选值为 `lg`、`md`、`sm`、`xs`  |
-| buttonShape        | string                             | 'radius' | 按钮类型时的形状，可选值 `rect`、`radius`、`round`、`circle` |
-| buttonGhost        | boolean                            | false    | 按钮类型时，选中项样式是否为幽灵按钮               |
+| 属性         | 类型                                    | 默认值   | 说明                                                         |
+| :----------- | :-------------------------------------- | :------- | :----------------------------------------------------------- |
+| type         | string                                  | -        | 显示类型，可选值 `button`、`list`                            |
+| value        | number[] \| string[]                    | []       | 选中值                                                       |
+| defaultValue | number[] \| string[]                    | []       | 初始选中值                                                   |
+| disabled     | boolean                                 | false    | 是否禁用                                                     |
+| block        | boolean                                 | false    | 子项是否为块级元素                                           |
+| onChange     | (values?: number[] \| string[]) => void | -        | 值变化时触发的回调函数                                       |
+| buttonSize   | string                                  | 'xs'     | 按钮类型时的大小，可选值为 `lg`、`md`、`sm`、`xs`            |
+| buttonShape  | string                                  | 'radius' | 按钮类型时的形状，可选值 `rect`、`radius`、`round`、`circle` |
+| buttonGhost  | boolean                                 | false    | 按钮类型时，选中项样式是否为幽灵按钮                         |

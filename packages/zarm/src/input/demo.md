@@ -248,7 +248,13 @@ ReactDOM.render(
       <Input label="密码" type="password" placeholder="请输入您的密码" />
     </List.Item>
     <List.Item>
-      <Input label="个人介绍" autoHeight rows={4} maxLength={200} placeholder="请输入您的个人介绍" />
+      <Input
+        label="个人介绍"
+        autoHeight
+        rows={4}
+        maxLength={200}
+        placeholder="请输入您的个人介绍"
+      />
     </List.Item>
   </List>,
   mountNode,
@@ -259,7 +265,7 @@ ReactDOM.render(
 
 | 属性         | 类型                                                                       | 默认值 | 说明                                                                     |
 | :----------- | :------------------------------------------------------------------------- | :----- | :----------------------------------------------------------------------- |
-| label     | ReactNode                                                                    | -  | 标签栏内容                                                               |
+| label        | ReactNode                                                                  | -      | 标签栏内容                                                               |
 | type         | string                                                                     | 'text' | 类型，同原生 `input` 组件                                                |
 | value        | number \| string                                                           | -      | 值                                                                       |
 | defaultValue | number \| string                                                           | -      | 初始值                                                                   |
@@ -270,5 +276,5 @@ ReactDOM.render(
 | autoFocus    | boolean                                                                    | false  | 是否自动获取焦点                                                         |
 | maxLength    | number                                                                     | -      | 输入字数上限                                                             |
 | showLength   | boolean                                                                    | false  | 是否显示输入字数。多行文本（type="text" 且包含 rows 属性）时有效。       |
-| clearable    | boolean                                                                    | false   | 是否显示清除按钮。必须为受控组件（属性包含 value、onChange）时方可生效。 |
+| clearable    | boolean                                                                    | false  | 是否显示清除按钮。必须为受控组件（属性包含 value、onChange）时方可生效。 |
 | onChange     | (e?: React.ChangeEvent\<HTMLInputElement \| HTMLTextAreaElement\>) => void | -      | 值变化时触发的回调函数                                                   |

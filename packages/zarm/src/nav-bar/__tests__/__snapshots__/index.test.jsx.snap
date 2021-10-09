@@ -24,18 +24,20 @@ exports[`NavBar renders correctly with left content 1`] = `
     class="za-nav-bar__side za-nav-bar__side--left"
   >
     <i
-      class="za-icon za-icon--arrow-left za-icon--default za-icon--md"
+      class="za-icon za-icon--default za-icon--md"
       theme="default"
-      type="arrow-left"
     >
       <svg
+        aria-hidden="true"
         fill="currentColor"
+        focusable="false"
         height="1em"
-        viewBox="0 0 32 32"
+        viewBox="0 0 1000 1000"
         width="1em"
       >
-        <use
-          href="#arrow-left"
+        <path
+          d="M296.114 508.035c-3.22-13.597.473-28.499 11.079-39.105l333.912-333.912c16.271-16.272 42.653-16.272 58.925 0s16.272 42.654 0 58.926L395.504 498.47l304.574 304.574c16.272 16.272 16.272 42.654 0 58.926s-42.654 16.272-58.926 0L307.241 528.058a41.472 41.472 0 01-11.127-20.023z"
+          fill-rule="evenodd"
         />
       </svg>
     </i>
@@ -60,18 +62,20 @@ exports[`NavBar renders correctly with multiple icons 1`] = `
   >
     <div>
       <i
-        class="za-icon za-icon--arrow-left za-icon--default za-icon--md"
+        class="za-icon za-icon--default za-icon--md"
         theme="default"
-        type="arrow-left"
       >
         <svg
+          aria-hidden="true"
           fill="currentColor"
+          focusable="false"
           height="1em"
-          viewBox="0 0 32 32"
+          viewBox="0 0 1000 1000"
           width="1em"
         >
-          <use
-            href="#arrow-left"
+          <path
+            d="M296.114 508.035c-3.22-13.597.473-28.499 11.079-39.105l333.912-333.912c16.271-16.272 42.653-16.272 58.925 0s16.272 42.654 0 58.926L395.504 498.47l304.574 304.574c16.272 16.272 16.272 42.654 0 58.926s-42.654 16.272-58.926 0L307.241 528.058a41.472 41.472 0 01-11.127-20.023z"
+            fill-rule="evenodd"
           />
         </svg>
       </i>
@@ -87,18 +91,20 @@ exports[`NavBar renders correctly with multiple icons 1`] = `
   >
     <div>
       <i
-        class="za-icon za-icon--arrow-right za-icon--default za-icon--md"
+        class="za-icon za-icon--default za-icon--md"
         theme="default"
-        type="arrow-right"
       >
         <svg
+          aria-hidden="true"
           fill="currentColor"
+          focusable="false"
           height="1em"
-          viewBox="0 0 32 32"
+          viewBox="0 0 1000 1000"
           width="1em"
         >
-          <use
-            href="#arrow-right"
+          <path
+            d="M711.156 508.035a41.472 41.472 0 01-11.126 20.023L366.12 861.97c-16.272 16.272-42.654 16.272-58.926 0s-16.272-42.654 0-58.926L611.767 498.47 307.241 193.944c-16.272-16.272-16.272-42.654 0-58.926 16.271-16.272 42.653-16.272 58.925 0L700.078 468.93c10.606 10.606 14.299 25.508 11.078 39.105z"
+            fill-rule="evenodd"
           />
         </svg>
       </i>
@@ -148,18 +154,20 @@ exports[`NavBar renders correctly with right content 1`] = `
     class="za-nav-bar__side za-nav-bar__side--left"
   >
     <i
-      class="za-icon za-icon--arrow-left za-icon--default za-icon--md"
+      class="za-icon za-icon--default za-icon--md"
       theme="default"
-      type="arrow-left"
     >
       <svg
+        aria-hidden="true"
         fill="currentColor"
+        focusable="false"
         height="1em"
-        viewBox="0 0 32 32"
+        viewBox="0 0 1000 1000"
         width="1em"
       >
-        <use
-          href="#arrow-left"
+        <path
+          d="M296.114 508.035c-3.22-13.597.473-28.499 11.079-39.105l333.912-333.912c16.271-16.272 42.653-16.272 58.925 0s16.272 42.654 0 58.926L395.504 498.47l304.574 304.574c16.272 16.272 16.272 42.654 0 58.926s-42.654 16.272-58.926 0L307.241 528.058a41.472 41.472 0 01-11.127-20.023z"
+          fill-rule="evenodd"
         />
       </svg>
     </i>
@@ -173,18 +181,20 @@ exports[`NavBar renders correctly with right content 1`] = `
     class="za-nav-bar__side za-nav-bar__side--right"
   >
     <i
-      class="za-icon za-icon--arrow-right za-icon--default za-icon--md"
+      class="za-icon za-icon--default za-icon--md"
       theme="default"
-      type="arrow-right"
     >
       <svg
+        aria-hidden="true"
         fill="currentColor"
+        focusable="false"
         height="1em"
-        viewBox="0 0 32 32"
+        viewBox="0 0 1000 1000"
         width="1em"
       >
-        <use
-          href="#arrow-right"
+        <path
+          d="M711.156 508.035a41.472 41.472 0 01-11.126 20.023L366.12 861.97c-16.272 16.272-42.654 16.272-58.926 0s-16.272-42.654 0-58.926L611.767 498.47 307.241 193.944c-16.272-16.272-16.272-42.654 0-58.926 16.271-16.272 42.653-16.272 58.925 0L700.078 468.93c10.606 10.606 14.299 25.508 11.078 39.105z"
+          fill-rule="evenodd"
         />
       </svg>
     </i>
