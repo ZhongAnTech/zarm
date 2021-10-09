@@ -175,7 +175,11 @@ export default class Pull extends PureComponent<PullProps, any> {
 
   onScroll = (): void => {
     const { refreshState, loadState } = this.state;
-    const { scrollHeight, clientHeight } = this.wrap;
+    // window为滚动容器时，无法通过 window 直接取到 scrollHeight 和 clientHeight。
+    const {
+      scrollHeight = document.body.clientHeight,
+      clientHeight = document.documentElement.clientHeight
+    } = this.wrap;
     const load: PullAction = { ...Pull.defaultProps.load, ...this.props.load };
     const { handler, distance } = load;
 

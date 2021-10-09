@@ -4,38 +4,39 @@
 
 ```jsx
 import { useState } from 'react';
-import { Toast, Cell, Button, Icon } from 'zarm';
+import { Toast, List, Button } from 'zarm';
 
 const Demo = () => {
   const [visible, setVisible] = useState(false);
 
   return (
     <>
-      <Cell
-        description={
-          <>
-            <Button
-              size="xs"
-              onClick={() => {
-                setVisible(true);
-              }}
-            >
-              开启
-            </Button>
-            <Button
-              size="xs"
-              onClick={() => {
-                setVisible(false);
-              }}
-              style={{ marginLeft: 12 }}
-            >
-              关闭
-            </Button>
-          </>
-        }
-      >
-        普通
-      </Cell>
+      <List>
+        <List.Item
+          title="普通"
+          after={
+            <>
+              <Button
+                size="xs"
+                onClick={() => {
+                  setVisible(true);
+                }}
+              >
+                开启
+              </Button>
+              <Button
+                size="xs"
+                onClick={() => {
+                  setVisible(false);
+                }}
+                style={{ marginLeft: 12 }}
+              >
+                关闭
+              </Button>
+            </>
+          }
+        />
+      </List>
 
       <Toast
         visible={visible}
@@ -55,15 +56,18 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```jsx
 import { useRef } from 'react';
-import { Toast, Cell, Button, Icon } from 'zarm';
+import { Toast, List, Button } from 'zarm';
+import { Success } from '@zarm-design/icons';
+
 const Demo = () => {
   const toast = Toast.useToast();
   const containerRef = useRef(null);
 
   return (
-    <>
-      <Cell
-        description={
+    <List>
+      <List.Item
+        title="普通"
+        after={
           <>
             <Button
               size="xs"
@@ -84,12 +88,10 @@ const Demo = () => {
             </Button>
           </>
         }
-      >
-        普通
-      </Cell>
-
-      <Cell
-        description={
+      />
+      <List.Item
+        title="指定停留时间"
+        after={
           <Button
             size="xs"
             onClick={() => {
@@ -105,23 +107,15 @@ const Demo = () => {
             开启
           </Button>
         }
-      >
-        指定停留时间
-      </Cell>
-
-      <Cell
-        description={
+      />
+      <List.Item
+        after={
           <Button
             size="xs"
             onClick={() => {
               toast.show({
-                className: 'test',
-                content: '不可同时进行其他交互',
+                content: '挂载在指定的 div 元素上',
                 mountContainer: containerRef.current,
-                mask: true,
-                afterClose: () => {
-                  console.log('Toast已关闭');
-                },
               });
             }}
           >
@@ -129,29 +123,46 @@ const Demo = () => {
           </Button>
         }
       >
-        <div ref={containerRef}>有遮罩层</div>
-      </Cell>
-
-      <Cell
-        description={
+        <div ref={containerRef}>指定挂载节点</div>
+      </List.Item>
+      <List.Item
+        title="有遮罩层"
+        after={
           <Button
             size="xs"
             onClick={() => {
-              toast.show(
-                <div className="box">
-                  <Icon className="box-icon" type="right-round-fill" />
-                  <div className="box-text">预约成功</div>
-                </div>,
-              );
+              toast.show({
+                content: '不可同时进行其他交互',
+                mask: true,
+              });
             }}
           >
             开启
           </Button>
         }
-      >
-        自定义内容
-      </Cell>
-    </>
+      />
+      <List.Item
+        title="自定义内容"
+        after={
+          <Button
+            size="xs"
+            onClick={() => {
+              toast.show({
+                className: 'test',
+                content: (
+                  <div className="box">
+                    <Success className="box-icon" />
+                    <div className="box-text">预约成功</div>
+                  </div>
+                ),
+              });
+            }}
+          >
+            开启
+          </Button>
+        }
+      />
+    </List>
   );
 };
 

@@ -3,7 +3,8 @@
 ## 基本用法
 
 ```jsx
-import { Tooltip, Button, Message, Icon } from 'zarm';
+import { Tooltip, Button, Message } from 'zarm';
+import { WarningCircle } from '@zarm-design/icons';
 
 const Demo = () => (
   <div className="direction-demo">
@@ -63,7 +64,7 @@ const Demo = () => (
           <Button size="xs">BR</Button>
         </Tooltip>
       </div>
-      <Message theme="warning" icon={<Icon type="warning-round" />}>
+      <Message theme="warning" icon={<WarningCircle />}>
         左右两侧显示位置不足会自动调整为反向显示
       </Message>
     </div>

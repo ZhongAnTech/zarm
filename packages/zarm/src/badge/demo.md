@@ -3,42 +3,17 @@
 ## 基本用法
 
 ```jsx
-import { Badge, Cell } from 'zarm';
+import { Badge, List } from 'zarm';
 
 ReactDOM.render(
-  <>
-    <Cell hasArrow title="点状" description={<Badge />} onClick={() => {}} />
-    <Cell
-      hasArrow
-      title="直角"
-      description={<Badge shape="rect" text="免费" />}
-      onClick={() => {}}
-    />
-    <Cell
-      hasArrow
-      title="圆角"
-      description={<Badge shape="radius" text="new" />}
-      onClick={() => {}}
-    />
-    <Cell
-      hasArrow
-      title="椭圆角"
-      description={<Badge shape="round" text="999+" />}
-      onClick={() => {}}
-    />
-    <Cell
-      hasArrow
-      title="圆形"
-      description={<Badge shape="circle" text={3} />}
-      onClick={() => {}}
-    />
-    <Cell
-      hasArrow
-      title="叶形"
-      description={<Badge shape="leaf" text="新品" />}
-      onClick={() => {}}
-    />
-  </>,
+  <List>
+    <List.Item title="点状" after={<Badge />} onClick={() => {}} />
+    <List.Item title="直角" after={<Badge shape="rect" text="免费" />} onClick={() => {}} />
+    <List.Item title="圆角" after={<Badge shape="radius" text="new" />} onClick={() => {}} />
+    <List.Item title="椭圆角" after={<Badge shape="round" text="999+" />} onClick={() => {}} />
+    <List.Item title="圆形" after={<Badge shape="circle" text={3} />} onClick={() => {}} />
+    <List.Item title="叶形" after={<Badge shape="leaf" text="新品" />} onClick={() => {}} />
+  </List>,
   mountNode,
 );
 ```

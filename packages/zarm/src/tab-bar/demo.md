@@ -4,9 +4,9 @@
 
 ```jsx
 import { useState } from 'react';
-import { Icon, TabBar, Cell, Button } from 'zarm';
+import { Icon, TabBar, List, Button } from 'zarm';
 
-const TabIcon = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_lpsswvb7yv.js');
+const TabIcon = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_mk657pke2hj.js');
 
 const Demo = () => {
   const [activeKey, setActiveKey] = useState('home');
@@ -14,20 +14,21 @@ const Demo = () => {
 
   return (
     <>
-      <Cell
-        description={
-          <Button
-            size="xs"
-            onClick={() => {
-              setVisible(!visible);
-            }}
-          >
-            {visible ? '隐藏' : '展示'}
-          </Button>
-        }
-      >
-        隐藏 | 展示
-      </Cell>
+      <List>
+        <List.Item
+          title="隐藏 | 展示"
+          after={
+            <Button
+              size="xs"
+              onClick={() => {
+                setVisible(!visible);
+              }}
+            >
+              {visible ? '隐藏' : '展示'}
+            </Button>
+          }
+        />
+      </List>
 
       <TabBar visible={visible} activeKey={activeKey} onChange={setActiveKey}>
         <TabBar.Item itemKey="home" title="主页" icon={<TabIcon type="home" />} />

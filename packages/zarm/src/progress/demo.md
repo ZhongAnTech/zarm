@@ -4,7 +4,7 @@
 
 ```jsx
 import { useState } from 'react';
-import { Progress, Cell, Select, Radio, Stepper } from 'zarm';
+import { Progress, List, Select, Radio, Stepper } from 'zarm';
 
 const Demo = () => {
   const [percent, setPercent] = useState(10);
@@ -13,48 +13,51 @@ const Demo = () => {
   const [strokeWidth, setStrokeWidth] = useState('');
 
   return (
-    <>
-      <div className="progress">
-        <Progress
-          shape="line"
-          percent={percent}
-          theme={theme}
-          strokeShape={strokeShape}
-          strokeWidth={strokeWidth}
-        />
-      </div>
-      <div className="progress">
-        <Progress
-          shape="circle"
-          percent={percent}
-          theme={theme}
-          strokeShape={strokeShape}
-          strokeWidth={strokeWidth}
-          text={(percent) => (
-            <div className="progress-content">
-              <span className="progress-text">{percent}</span>
-              <span className="progress-percent">%</span>
-            </div>
-          )}
-        />
-      </div>
-      <div className="progress">
-        <Progress
-          shape="semi-circle"
-          percent={percent}
-          theme={theme}
-          strokeShape={strokeShape}
-          strokeWidth={strokeWidth}
-          text={(percent) => (
-            <div className="progress-content">
-              <span className="progress-text">{percent}</span>
-              <span className="progress-percent">%</span>
-            </div>
-          )}
-        />
-      </div>
-
-      <Cell title="进度">
+    <List>
+      <List.Item>
+        <div className="progress-container">
+          <div className="progress">
+            <Progress
+              shape="line"
+              percent={percent}
+              theme={theme}
+              strokeShape={strokeShape}
+              strokeWidth={strokeWidth}
+            />
+          </div>
+          <div className="progress">
+            <Progress
+              shape="circle"
+              percent={percent}
+              theme={theme}
+              strokeShape={strokeShape}
+              strokeWidth={strokeWidth}
+              text={(percent) => (
+                <div className="progress-content">
+                  <span className="progress-text">{percent}</span>
+                  <span className="progress-percent">%</span>
+                </div>
+              )}
+            />
+          </div>
+          <div className="progress">
+            <Progress
+              shape="semi-circle"
+              percent={percent}
+              theme={theme}
+              strokeShape={strokeShape}
+              strokeWidth={strokeWidth}
+              text={(percent) => (
+                <div className="progress-content">
+                  <span className="progress-text">{percent}</span>
+                  <span className="progress-percent">%</span>
+                </div>
+              )}
+            />
+          </div>
+        </div>
+      </List.Item>
+      <List.Item title="进度">
         <Stepper
           step={10}
           min={0}
@@ -65,9 +68,8 @@ const Demo = () => {
             setPercent(value);
           }}
         />
-      </Cell>
-
-      <Cell title="主题">
+      </List.Item>
+      <List.Item title="主题">
         <Select
           value={theme}
           dataSource={[
@@ -78,16 +80,14 @@ const Demo = () => {
           ]}
           onOk={(selected) => setTheme(selected[0].value)}
         />
-      </Cell>
-
-      <Cell title="线条形状">
-        <Radio.Group compact type="button" value={strokeShape} onChange={setStrokeShape}>
+      </List.Item>
+      <List.Item title="线条形状">
+        <Radio.Group buttonCompact type="button" value={strokeShape} onChange={setStrokeShape}>
           <Radio value="round">round</Radio>
           <Radio value="rect">rect</Radio>
         </Radio.Group>
-      </Cell>
-
-      <Cell title="线条粗细">
+      </List.Item>
+      <List.Item title="线条粗细">
         <Stepper
           step={1}
           min={0}
@@ -97,8 +97,8 @@ const Demo = () => {
             setStrokeWidth(value);
           }}
         />
-      </Cell>
-    </>
+      </List.Item>
+    </List>
   );
 };
 

@@ -4,7 +4,7 @@
 
 ```jsx
 import { useEffect, useRef, useReducer } from 'react';
-import { Cell, Button, Picker, Toast } from 'zarm';
+import { List, Button, Picker, Toast } from 'zarm';
 
 const SINGLE_DATA = [
   { value: '1', label: '选项一' },
@@ -170,55 +170,48 @@ const Demo = () => {
 
   return (
     <>
-      <Cell
-        description={
-          <Button size="xs" onClick={() => setVisible('single')}>
-            选择
-          </Button>
-        }
-      >
-        单列
-      </Cell>
-
-      <Cell
-        description={
-          <Button size="xs" onClick={() => setVisible('multi')}>
-            选择
-          </Button>
-        }
-      >
-        多列
-      </Cell>
-
-      <Cell
-        description={
-          <Button size="xs" onClick={() => setVisible('cascade')}>
-            选择
-          </Button>
-        }
-      >
-        级联
-      </Cell>
-
-      <Cell
-        description={
-          <Button size="xs" onClick={() => setVisible('diy')}>
-            选择
-          </Button>
-        }
-      >
-        自定义
-      </Cell>
-
-      <Cell
-        description={
-          <Button size="xs" onClick={() => setVisible('specDOM')}>
-            选择
-          </Button>
-        }
-      >
-        挂载到指定dom节点
-      </Cell>
+      <List>
+        <List.Item
+          title="单列"
+          after={
+            <Button size="xs" onClick={() => setVisible('single')}>
+              选择
+            </Button>
+          }
+        />
+        <List.Item
+          title="多列"
+          after={
+            <Button size="xs" onClick={() => setVisible('multi')}>
+              选择
+            </Button>
+          }
+        />
+        <List.Item
+          title="级联"
+          after={
+            <Button size="xs" onClick={() => setVisible('cascade')}>
+              选择
+            </Button>
+          }
+        />
+        <List.Item
+          title="自定义"
+          after={
+            <Button size="xs" onClick={() => setVisible('diy')}>
+              选择
+            </Button>
+          }
+        />
+        <List.Item
+          title="挂载到指定dom节点"
+          after={
+            <Button size="xs" onClick={() => setVisible('specDOM')}>
+              选择
+            </Button>
+          }
+        />
+      </List>
 
       <Picker
         visible={state.single.visible}
@@ -306,7 +299,7 @@ const Demo = () => {
         mountContainer={() => myRef.current}
       />
 
-      <div id="test-div" style={{ position: 'relative', zIndex: 1 }} ref={myRef} />
+      <div id="test-div" ref={myRef} />
     </>
   );
 };
@@ -318,7 +311,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```jsx
 import { useState, useEffect } from 'react';
-import { Select, Cell } from 'zarm';
+import { Select, List } from 'zarm';
 
 // 级联数据
 const CASCADE_DATA = [
@@ -353,17 +346,19 @@ const Demo = () => {
   }, []);
 
   return (
-    <Cell title="城市">
-      <Select
-        value={value}
-        wheelDefaultValue={wheelDefaultValue}
-        dataSource={dataSource}
-        onOk={(selected) => {
-          console.log('Select onOk: ', selected);
-          setValue(selected.map((item) => item.value));
-        }}
-      />
-    </Cell>
+    <List>
+      <List.Item title="城市">
+        <Select
+          value={value}
+          wheelDefaultValue={wheelDefaultValue}
+          dataSource={dataSource}
+          onOk={(selected) => {
+            console.log('Select onOk: ', selected);
+            setValue(selected.map((item) => item.value));
+          }}
+        />
+      </List.Item>
+    </List>
   );
 };
 
@@ -463,5 +458,4 @@ ReactDOM.render(<Demo />, mountNode);
 | 属性          | 类型                                                                                    | 默认值                                       | 说明         |
 | :------------ | :-------------------------------------------------------------------------------------- | :------------------------------------------- | :----------- |
 | placeholder   | string                                                                                  | '请选择'                                     | 输入提示信息 |
-| hasArrow      | boolean                                                                                 | true                                         | 是否显示箭头 |
 | displayRender | (selected?: Array<{ [key: string]: string &#124; number &#124; boolean }>) => ReactNode | selected => selected.map(item => item.label) | 所选值的展示 |

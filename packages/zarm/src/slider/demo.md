@@ -4,29 +4,26 @@
 
 ```jsx
 import { useState } from 'react';
-import { Cell, Slider } from 'zarm';
+import { List, Slider } from 'zarm';
 
 const Demo = () => {
   const [value, setValue] = useState(0);
 
   return (
-    <>
-      <Cell title="普通">
+    <List>
+      <List.Item title="普通">
         <Slider value={value} onChange={setValue} />
-      </Cell>
-
-      <Cell title="设置默认值">
+      </List.Item>
+      <List.Item title="设置默认值">
         <Slider defaultValue={20} />
-      </Cell>
-
-      <Cell title="设置上下限">
+      </List.Item>
+      <List.Item title="设置上下限">
         <Slider min={-100} max={100} defaultValue={0} />
-      </Cell>
-
-      <Cell title="禁用状态">
+      </List.Item>
+      <List.Item title="禁用状态">
         <Slider disabled defaultValue={20} />
-      </Cell>
-    </>
+      </List.Item>
+    </List>
   );
 };
 
@@ -36,7 +33,7 @@ ReactDOM.render(<Demo />, mountNode);
 ## 刻度与标记
 
 ```jsx
-import { Cell, Slider } from 'zarm';
+import { List, Slider } from 'zarm';
 
 const MARKS = {
   0: '0°C',
@@ -46,23 +43,20 @@ const MARKS = {
 };
 
 ReactDOM.render(
-  <>
-    <Cell title="显示刻度">
+  <List>
+    <List.Item title="显示刻度">
       <Slider marks={MARKS} />
-    </Cell>
-
-    <Cell title="显示标记" style={{ paddingBottom: 15 }}>
+    </List.Item>
+    <List.Item title="显示标记" style={{ height: 70 }}>
       <Slider showMark marks={MARKS} />
-    </Cell>
-
-    <Cell title="步长为10" style={{ paddingBottom: 15 }}>
+    </List.Item>
+    <List.Item title="步长为10" style={{ height: 70 }}>
       <Slider showMark step={10} marks={MARKS} />
-    </Cell>
-
-    <Cell title="步长为null" style={{ paddingBottom: 15 }}>
+    </List.Item>
+    <List.Item title="步长为null" style={{ height: 70 }}>
       <Slider showMark step={null} marks={MARKS} />
-    </Cell>
-  </>,
+    </List.Item>
+  </List>,
   mountNode,
 );
 ```
@@ -70,7 +64,7 @@ ReactDOM.render(
 ## 方向
 
 ```jsx
-import { Cell, Slider } from 'zarm';
+import { List, Slider } from 'zarm';
 
 const MARKS = {
   0: '0°C',
@@ -80,11 +74,13 @@ const MARKS = {
 };
 
 ReactDOM.render(
-  <Cell title="垂直方向" style={{ padding: '15px 0' }}>
-    <div style={{ height: 200 }}>
-      <Slider vertical showMark marks={MARKS} />
-    </div>
-  </Cell>,
+  <List>
+    <List.Item title="垂直方向">
+      <div style={{ height: 200, margin: '15px 0' }}>
+        <Slider vertical showMark marks={MARKS} />
+      </div>
+    </List.Item>
+  </List>,
   mountNode,
 );
 ```

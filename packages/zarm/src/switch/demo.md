@@ -4,18 +4,18 @@
 
 ```jsx
 import { useState } from 'react';
-import { Switch, Cell } from 'zarm';
+import { Switch, List } from 'zarm';
 
 const Demo = () => {
   const [checked, setChecked] = useState(false);
 
   return (
-    <>
-      <Cell title="普通" description={<Switch checked={checked} onChange={setChecked} />} />
-      <Cell title="默认开" description={<Switch defaultChecked />} />
-      <Cell title="禁用的开关（默认关）" description={<Switch disabled />} />
-      <Cell title="禁用的开关（默认开）" description={<Switch defaultChecked disabled />} />
-    </>
+    <List>
+      <List.Item title="普通" after={<Switch checked={checked} onChange={setChecked} />} />
+      <List.Item title="默认开" after={<Switch defaultChecked />} />
+      <List.Item title="禁用的开关（默认关）" after={<Switch disabled />} />
+      <List.Item title="禁用的开关（默认开）" after={<Switch defaultChecked disabled />} />
+    </List>
   );
 };
 

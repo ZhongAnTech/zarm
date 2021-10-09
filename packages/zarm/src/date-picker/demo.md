@@ -4,7 +4,7 @@
 
 ```jsx
 import { useRef, useReducer } from 'react';
-import { Cell, Button, DatePicker, Toast } from 'zarm';
+import { List, Button, DatePicker, Toast } from 'zarm';
 
 const initState = {
   date: {
@@ -69,46 +69,45 @@ const Demo = () => {
   };
 
   return (
-    <div>
-      <Cell
-        description={
-          <Button size="xs" onClick={() => toggle('date')}>
-            选择
-          </Button>
-        }
-      >
-        选择日期
-      </Cell>
-
-      <Cell
-        description={
-          <Button size="xs" onClick={() => toggle('time')}>
-            选择
-          </Button>
-        }
-      >
-        选择时间
-      </Cell>
-
-      <Cell
-        description={
-          <Button size="xs" onClick={() => toggle('limitDate')}>
-            选择
-          </Button>
-        }
-      >
-        选择日期(自定义)
-      </Cell>
-
-      <Cell
-        description={
-          <Button size="xs" onClick={() => toggle('specDOM')}>
-            选择
-          </Button>
-        }
-      >
-        挂载到指定dom节点
-      </Cell>
+    <>
+      <List>
+        <List.Item
+          after={
+            <Button size="xs" onClick={() => toggle('date')}>
+              选择
+            </Button>
+          }
+        >
+          选择日期
+        </List.Item>
+        <List.Item
+          after={
+            <Button size="xs" onClick={() => toggle('time')}>
+              选择
+            </Button>
+          }
+        >
+          选择时间
+        </List.Item>
+        <List.Item
+          after={
+            <Button size="xs" onClick={() => toggle('limitDate')}>
+              选择
+            </Button>
+          }
+        >
+          选择日期(自定义)
+        </List.Item>
+        <List.Item
+          after={
+            <Button size="xs" onClick={() => toggle('specDOM')}>
+              选择
+            </Button>
+          }
+        >
+          挂载到指定dom节点
+        </List.Item>
+      </List>
 
       <DatePicker
         visible={state.date.visible}
@@ -165,7 +164,7 @@ const Demo = () => {
       />
 
       <div ref={myRef} id="test-div" style={{ position: 'relative', zIndex: 1 }} />
-    </div>
+    </>
   );
 };
 
@@ -176,27 +175,29 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```jsx
 import { useState } from 'react';
-import { Cell, DateSelect } from 'zarm';
+import { List, DateSelect } from 'zarm';
 
 const Demo = () => {
   const [value, setValue] = useState('');
 
   return (
-    <Cell title="日期选择">
-      <DateSelect
-        className="test-dateSelect"
-        title="选择日期"
-        placeholder="请选择日期"
-        mode="date"
-        min="1974-05-16"
-        max="2027-05-15"
-        value={value}
-        onOk={(value) => {
-          console.log('DateSelect onOk: ', value);
-          setValue(value);
-        }}
-      />
-    </Cell>
+    <List>
+      <List.Item title="日期选择">
+        <DateSelect
+          className="test-dateSelect"
+          title="选择日期"
+          placeholder="请选择日期"
+          mode="date"
+          min="1974-05-16"
+          max="2027-05-15"
+          value={value}
+          onOk={(value) => {
+            console.log('DateSelect onOk: ', value);
+            setValue(value);
+          }}
+        />
+      </List.Item>
+    </List>
   );
 };
 
@@ -257,8 +258,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ### 仅 DateSelect 支持的属性
 
-| 属性        | 类型    | 默认值   | 说明                                                                                                 |
-| :---------- | :------ | :------- | :--------------------------------------------------------------------------------------------------- |
-| placeholder | string  | '请选择' | 输入提示信息                                                                                         |
-| hasArrow    | boolean | true     | 是否显示箭头                                                                                         |
-| format      | string  | -        | 格式化显示值。例：format="yyyy 年 MM 月 dd 日"<br /> 年:`yyyy`, 月:`MM`, 日:`dd`, 时:`hh`, 分:`mm`。 |
+| 属性        | 类型   | 默认值   | 说明                                                                                                 |
+| :---------- | :----- | :------- | :--------------------------------------------------------------------------------------------------- |
+| placeholder | string | '请选择' | 输入提示信息                                                                                         |
+| format      | string | -        | 格式化显示值。例：format="yyyy 年 MM 月 dd 日"<br /> 年:`yyyy`, 月:`MM`, 日:`dd`, 时:`hh`, 分:`mm`。 |

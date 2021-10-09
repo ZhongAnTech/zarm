@@ -4,7 +4,7 @@
 
 ```jsx
 import { useState } from 'react';
-import { ActionSheet, Cell, Button } from 'zarm';
+import { ActionSheet, List, Button } from 'zarm';
 
 const BUTTONS = [
   {
@@ -30,33 +30,35 @@ const Demo = () => {
 
   return (
     <>
-      <Cell
-        description={
-          <Button size="xs" onClick={() => setVisible1(true)}>
-            开启
-          </Button>
-        }
-      >
-        普通
-      </Cell>
-      <Cell
-        description={
-          <Button size="xs" onClick={() => setVisible2(true)}>
-            开启
-          </Button>
-        }
-      >
-        带取消操作
-      </Cell>
-      <Cell
-        description={
-          <Button size="xs" onClick={() => setVisible3(true)}>
-            开启
-          </Button>
-        }
-      >
-        圆角、留边
-      </Cell>
+      <List>
+        <List.Item
+          after={
+            <Button size="xs" onClick={() => setVisible1(true)}>
+              开启
+            </Button>
+          }
+        >
+          普通
+        </List.Item>
+        <List.Item
+          after={
+            <Button size="xs" onClick={() => setVisible2(true)}>
+              开启
+            </Button>
+          }
+        >
+          带取消操作
+        </List.Item>
+        <List.Item
+          after={
+            <Button size="xs" onClick={() => setVisible3(true)}>
+              开启
+            </Button>
+          }
+        >
+          圆角、留边
+        </List.Item>
+      </List>
 
       <ActionSheet
         visible={visible1}

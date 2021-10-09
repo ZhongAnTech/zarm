@@ -2,15 +2,10 @@
 
 @include b(radio) {
   display: inline-block;
-  vertical-align: middle;
   position: relative;
-  color: var(--color-text);
-  font-size: r(14);
 
-  &:not(&--disabled):hover {
-    @include e(inner) {
-      border-color: var(--radio-active-border-color);
-    }
+  &:not(&--disabled):active {
+    opacity: var(--za-radio-active-opacity);
   }
 
   @include e(widget) {
@@ -30,43 +25,35 @@
 
   @include e(text) {
     vertical-align: middle;
-    margin: 0 r(8);
+    margin: 0 var(--za-radio-text-spacing-horizontal);
   }
 
   @include e(inner) {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: var(--radio-size);
-    height: var(--radio-size);
-    border: 1PX solid var(--radio-border-color);
-    border-radius: var(--radio-radius);
-    background: var(--radio-background);
-    transition: all .2s cubic-bezier(.71, -0.46, .88, .6);
+    width: var(--za-radio-size);
+    height: var(--za-radio-size);
+    border: var(--za-radio-border-width) solid var(--za-radio-border-color);
+    border-radius: var(--za-radio-radius);
+    background-color: var(--za-radio-background);
 
-    &:before {
-      content: '';
-      width: calc(var(--radio-size) / 3.5);
-      height: calc(var(--radio-size) / 2);
-      border: calc(var(--radio-size) / 9) solid var(--radio-arrow-color);
-      border-top: 0;
-      border-left: 0;
-      margin-top: calc(var(--radio-size) / -12);
-      margin-left: calc(var(--radio-size) / 18);
-      transform: rotate(45deg) scale(0);
-      transition: all .2s cubic-bezier(.71, -0.46, .88, .6);
+    @include e(marker) {
+      font-size: var(--za-radio-marker-font-size);
+      color: var(--za-radio-marker-color);
+      transform: scale(0);
+      transition: var(--za-radio-marker-transition);
     }
   }
 
   // 选中状态
   @include m(checked) {
     @include e(inner) {
-      border-color: var(--theme-primary);
-      background-color: var(--theme-primary);
+      border-color: var(--za-radio-checked-border-color);
+      background-color: var(--za-radio-checked-background);
 
-      &:before {
-        transform: rotate(45deg) scale(1);
-        transition: all .2s cubic-bezier(.12, .4, .29, 1.46) .1s;
+      @include e(marker) {
+        transform: scale(1);
       }
     }
   }
@@ -78,20 +65,21 @@
     }
 
     @include e(text) {
-      color: var(--color-text-disabled);
+      color: var(--za-radio-disabled-text-color);
     }
 
     @include e(inner) {
-      background-color: var(--radio-disabled-background);
+      border-color: var(--za-radio-disabled-border-color);
+      background-color: var(--za-radio-disabled-background);
     }
 
     @include m(checked) {
       @include e(inner) {
-        border-color: var(--radio-border-color);
-        background-color: var(--radio-disabled-background);
+        border-color: var(--za-radio-disabled-border-color);
+        background-color: var(--za-radio-disabled-background);
 
-        &:before {
-          border-color: var(--radio-disabled-color);
+        @include e(marker) {
+          color: var(--za-radio-disabled-marker-color);
         }
       }
     }
@@ -109,13 +97,13 @@
   overflow: hidden;
 
   @include e(inner) {
-    margin-right: r(-24);
-    margin-bottom: r(-8);
+    margin-right: calc(var(--za-radio-group-spacing-horizontal) * -1);
+    margin-bottom: calc(var(--za-radio-group-spacing-vertical) * -1);
   }
 
   @include b(radio) {
-    margin-right: r(24);
-    margin-bottom: r(8);
+    margin-right: var(--za-radio-group-spacing-horizontal);
+    margin-bottom: var(--za-radio-group-spacing-vertical);
   }
 
   // 通栏样式
@@ -134,14 +122,7 @@
 
   // 按钮样式
   @include m(button) {
-    @include e(inner) {
-      margin-right: r(-8);
-      margin-bottom: r(-8);
-    }
-
     @include b(radio) {
-      margin-right: r(8);
-      margin-bottom: r(8);
       @include button-base();
       @include button-shape(var(--radius-xs));
       @include button-theme(
@@ -185,33 +166,41 @@
       }
     }
 
-    @include m(rect) {
+    // button shape
+    @include m(button-rect) {
       @include b(radio) {
         @include button-shape(0);
       }
     }
 
-    @include m(radius) {
+    @include m(button-radius) {
       @include b(radio) {
         @include button-shape(var(--radius-md));
       }
     }
 
-    @include m(round) {
+    @include m(button-round) {
       @include b(radio) {
         @include button-shape(var(--radius-round));
       }
     }
 
-    @include m(circle) {
+    @include m(button-circle) {
       @include b(radio) {
         @include button-shape(var(--radius-circle));
       }
     }
 
-    // sizes
-    @include m(lg) {
+    // button sizes
+    @include m(button-lg) {
+      @include e(inner) {
+        margin-right: calc(var(--za-radio-group-button-spacing-horizontal-lg) * -1);
+        margin-bottom: calc(var(--za-radio-group-button-spacing-vertical-lg) * -1);
+      }
+
       @include b(radio) {
+        margin-right: var(--za-radio-group-button-spacing-horizontal-lg);
+        margin-bottom: var(--za-radio-group-button-spacing-vertical-lg);
         @include button-size(
           var(--button-height-lg),
           var(--button-padding-h-lg),
@@ -221,8 +210,15 @@
       }
     }
 
-    @include m(md) {
+    @include m(button-md) {
+      @include e(inner) {
+        margin-right: calc(var(--za-radio-group-button-spacing-horizontal-md) * -1);
+        margin-bottom: calc(var(--za-radio-group-button-spacing-vertical-md) * -1);
+      }
+
       @include b(radio) {
+        margin-right: var(--za-radio-group-button-spacing-horizontal-md);
+        margin-bottom: var(--za-radio-group-button-spacing-vertical-md);
         @include button-size(
           var(--button-height-md),
           var(--button-padding-h-md),
@@ -232,8 +228,15 @@
       }
     }
 
-    @include m(sm) {
+    @include m(button-sm) {
+      @include e(inner) {
+        margin-right: calc(var(--za-radio-group-button-spacing-horizontal-sm) * -1);
+        margin-bottom: calc(var(--za-radio-group-button-spacing-vertical-sm) * -1);
+      }
+
       @include b(radio) {
+        margin-right: var(--za-radio-group-button-spacing-horizontal-sm);
+        margin-bottom: var(--za-radio-group-button-spacing-vertical-sm);
         @include button-size(
           var(--button-height-sm),
           var(--button-padding-h-sm),
@@ -243,8 +246,15 @@
       }
     }
 
-    @include m(xs) {
+    @include m(button-xs) {
+      @include e(inner) {
+        margin-right: calc(var(--za-radio-group-button-spacing-horizontal-xs) * -1);
+        margin-bottom: calc(var(--za-radio-group-button-spacing-vertical-xs) * -1);
+      }
+
       @include b(radio) {
+        margin-right: var(--za-radio-group-button-spacing-horizontal-xs);
+        margin-bottom: var(--za-radio-group-button-spacing-vertical-xs);
         @include button-size(
           var(--button-height-xs),
           var(--button-padding-h-xs),
@@ -254,25 +264,27 @@
       }
     }
 
-    @include m(ghost) {
+    // button ghost
+    @include m(button-ghost) {
       @include b(radio) {
         @include m(checked) {
           @include button-ghost(
             transparent,
-            var(--theme-primary),
-            var(--theme-primary),
-            transparent,
-            var(--theme-primary),
+            var(--za-radio-checked-border-color),
             var(--theme-primary),
             transparent,
+            var(--za-radio-checked-border-color),
             var(--theme-primary),
+            transparent,
+            var(--za-radio-checked-border-color),
             var(--theme-primary),
           );
         }
       }
     }
 
-    @include m(compact) {
+    // button compact
+    @include m(button-compact) {
       @include b(radio) {
         &:not(:last-child) {
           margin-right: -1PX;
@@ -299,7 +311,7 @@
     }
   }
 
-  @include m(cell) {
+  @include m(list) {
     display: block;
     overflow: visible;
 
@@ -309,9 +321,19 @@
     }
 
     @include b(radio) {
-      position: static;
+      display: flex;
+      position: relative;
       margin-right: 0;
       margin-bottom: 0;
+
+      @include e(text) {
+        margin-left: 0;
+      }
+
+      @include e(inner) {
+        border: none;
+        background: transparent;
+      }
     }
   }
 }

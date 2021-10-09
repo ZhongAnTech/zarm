@@ -1,8 +1,10 @@
 import * as React from 'react';
 import classnames from 'classnames';
+import { Success as SuccessIcon } from '@zarm-design/icons';
 import type { BaseRadioProps } from './interface';
 import RadioGroup from './RadioGroup';
-import Cell from '../cell';
+import List from '../list';
+import type { ListItemProps } from '../list';
 import { ConfigContext } from '../n-config-provider';
 
 const getChecked = (props: RadioProps, defaultChecked: boolean) => {
@@ -13,7 +15,7 @@ type RadioSpanProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
   'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
 >;
-type RadioCellProps = Omit<
+type RadioListProps = Omit<
   React.HTMLAttributes<HTMLDivElement>,
   'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
 >;
@@ -22,7 +24,7 @@ type RadioButtonProps = Omit<
   'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
 >;
 
-export type RadioProps = Partial<RadioSpanProps & RadioCellProps & RadioButtonProps> &
+export type RadioProps = Partial<RadioSpanProps & RadioListProps & RadioButtonProps> &
   BaseRadioProps & {
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   };
@@ -36,12 +38,12 @@ const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
   const {
     className,
     type,
-    shape,
     value,
     checked,
     defaultChecked,
     disabled,
     id,
+    listMarkerAlign,
     children,
     onChange,
     ...restProps
@@ -89,7 +91,9 @@ const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
   const radioRender = (
     <span ref={radioRef} className={cls} {...(restProps as RadioSpanProps)}>
       <span className={`${prefixCls}__widget`}>
-        <span className={`${prefixCls}__inner`} />
+        <span className={`${prefixCls}__inner`}>
+          <SuccessIcon className={`${prefixCls}__marker`} />
+        </span>
       </span>
       {children && <span className={`${prefixCls}__text`}>{children}</span>}
       {inputRender}
@@ -100,8 +104,33 @@ const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
     setCurrentChecked(getChecked({ checked, defaultChecked }, false));
   }, [checked, defaultChecked]);
 
-  if (type === 'cell') {
-    return <Cell onClick={() => {}}>{radioRender}</Cell>;
+  if (type === 'list') {
+    const marker = (
+      <>
+        <span className={`${prefixCls}__widget`}>
+          <span className={`${prefixCls}__inner`}>
+            <SuccessIcon className={`${prefixCls}__marker`} />
+          </span>
+        </span>
+        {inputRender}
+      </>
+    );
+
+    const listProps: ListItemProps = {
+      hasArrow: false,
+      className: cls,
+      title: (
+        <>
+          {children && <span className={`${prefixCls}__text`}>{children}</span>}
+          {inputRender}
+        </>
+      ),
+      onClick: !disabled ? () => {} : undefined,
+    };
+
+    listMarkerAlign === 'after' ? (listProps.after = marker) : (listProps.prefix = marker);
+
+    return <List.Item ref={radioRef} {...listProps} />;
   }
 
   if (type === 'button') {
@@ -125,7 +154,6 @@ const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
 Radio.displayName = 'Radio';
 
 Radio.defaultProps = {
-  shape: 'radius',
   disabled: false,
 };
 

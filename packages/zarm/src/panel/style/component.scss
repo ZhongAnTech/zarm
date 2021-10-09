@@ -1,9 +1,9 @@
 @include b(panel) {
   @include e(header) {
     display: flex;
-    padding: r(25) r(16) r(7) r(16);
-    font-size: var(--panel-header-font-size);
-    color: var(--panel-header-color);
+    padding: var(--za-panel-header-padding);
+    font-size: var(--za-panel-header-font-size);
+    color: var(--za-panel-header-color);
 
     &__title {
       flex: 1;
@@ -12,9 +12,19 @@
 
   @include e(body) {
     position: relative;
-    background: var(--panel-body-background);
-    font-size: var(--panel-body-font-size);
-    color: var(--color-text);
+    background: var(--za-panel-body-background);
+    font-size: var(--za-panel-body-font-size);
+    color: var(--za-panel-body-color);
     @include onepx(top bottom);
+  }
+
+  @include m(spacing) {
+    padding: 0 var(--za-panel-spacing-padding-horizontal);
+
+    @include e(body) {
+      border-radius: var(--za-panel-body-border-radius);
+      overflow: hidden;
+      @include onepx(none);
+    }
   }
 }

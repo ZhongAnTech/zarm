@@ -38,9 +38,9 @@ describe('Radio', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('type is cell', () => {
+  it('type is list', () => {
     const wrapper = render(
-      <Radio type="cell" value="0">
+      <Radio type="list" value="0">
         选项一
       </Radio>,
     );
@@ -94,7 +94,7 @@ describe('Radio.Group', () => {
       value: 1,
       checked: false,
       type: 'button',
-      shape: 'radius',
+      listMarkerAlign: 'before',
       disabled: false,
       onChange: expect.any(Function),
     });
@@ -102,7 +102,7 @@ describe('Radio.Group', () => {
       value: 2,
       checked: false,
       type: 'button',
-      shape: 'radius',
+      listMarkerAlign: 'before',
       disabled: false,
       onChange: expect.any(Function),
     });
@@ -155,27 +155,27 @@ describe('Radio.Group', () => {
   });
 
   // 圆角
-  it('shape is radius', () => {
+  it('buttonShape is radius', () => {
     const wrapper = shallow(
-      <Radio.Group shape="radius">
+      <Radio.Group buttonShape="radius">
         <Radio value="0">选项一</Radio>
         <Radio value="1">选项二</Radio>
         <Radio value="2">选项三</Radio>
       </Radio.Group>,
     );
-    expect(wrapper.find('.za-radio-group').hasClass('za-radio-group--radius')).toBe(true);
+    expect(wrapper.find('.za-radio-group').hasClass('za-radio-group--button-radius')).toBe(true);
   });
 
   // 椭圆角
-  it('shape is round', () => {
+  it('buttonShape is round', () => {
     const wrapper = shallow(
-      <Radio.Group shape="round">
+      <Radio.Group buttonShape="round">
         <Radio value="0">选项一</Radio>
         <Radio value="1">选项二</Radio>
         <Radio value="2">选项三</Radio>
       </Radio.Group>,
     );
-    expect(wrapper.find('.za-radio-group').hasClass('za-radio-group--round')).toBe(true);
+    expect(wrapper.find('.za-radio-group').hasClass('za-radio-group--button-round')).toBe(true);
   });
 
   // 块级样式
@@ -191,9 +191,9 @@ describe('Radio.Group', () => {
   });
 
   // 列表样式
-  it('type is cell', () => {
+  it('type is list', () => {
     const wrapper = shallow(
-      <Radio.Group type="cell">
+      <Radio.Group type="list">
         <Radio value="0">选项一</Radio>
         <Radio value="1">选项二</Radio>
         <Radio value="2" disabled>
@@ -201,13 +201,13 @@ describe('Radio.Group', () => {
         </Radio>
       </Radio.Group>,
     );
-    expect(wrapper.find('.za-radio-group').hasClass('za-radio-group--cell')).toBe(true);
+    expect(wrapper.find('.za-radio-group').hasClass('za-radio-group--list')).toBe(true);
   });
 
   it('radio group onChange event', () => {
     const onChange = jest.fn();
     const wrapper = shallow(
-      <Radio.Group shape="round" onChange={onChange}>
+      <Radio.Group buttonShape="round" onChange={onChange}>
         <Radio value="0">选项一</Radio>
         <Radio value="1">选项二</Radio>
         <Radio value="2" disabled>

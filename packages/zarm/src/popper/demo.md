@@ -4,7 +4,7 @@
 
 ```jsx
 import { useState } from 'react';
-import { Cell, Button, Popper, Select } from 'zarm';
+import { List, Button, Popper, Select } from 'zarm';
 
 const Demo = () => {
   const [visible, setVisible] = useState(false);
@@ -13,8 +13,8 @@ const Demo = () => {
   const [animationType, setAnimationType] = useState('zoomFade');
 
   return (
-    <>
-      <Cell className="basic-demo">
+    <List>
+      <List.Item className="basic-demo">
         <Popper
           content="我是气泡层的内容"
           destroy={false}
@@ -32,8 +32,8 @@ const Demo = () => {
             点击{visible ? '隐藏' : '显示'}
           </Button>
         </Popper>
-      </Cell>
-      <Cell title="显示方向">
+      </List.Item>
+      <List.Item title="显示方向">
         <Select
           value={direction}
           dataSource={[
@@ -52,8 +52,8 @@ const Demo = () => {
           ]}
           onOk={(selected) => setDirection(selected[0].value)}
         />
-      </Cell>
-      <Cell title="动画效果">
+      </List.Item>
+      <List.Item title="动画效果">
         <Select
           value={animationType}
           dataSource={[
@@ -75,8 +75,8 @@ const Demo = () => {
           ]}
           onOk={(selected) => setAnimationType(selected[0].value)}
         />
-      </Cell>
-      <Cell title="触发方式">
+      </List.Item>
+      <List.Item title="触发方式">
         <Select
           value={trigger}
           dataSource={[
@@ -91,8 +91,8 @@ const Demo = () => {
             setVisible(false);
           }}
         />
-      </Cell>
-    </>
+      </List.Item>
+    </List>
   );
 };
 
@@ -103,17 +103,18 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```jsx
 import { useState } from 'react';
-import { Cell, Button, Popper, Radio, Message, Icon } from 'zarm';
+import { List, Button, Popper, Radio, Message } from 'zarm';
+import { WarningCircle } from '@zarm-design/icons';
 
 const Demo = () => {
   const [arrowPointAtCenter, setArrowPointAtCenter] = useState(false);
 
   return (
-    <>
-      <Cell
-        description={
+    <List>
+      <List.Item
+        after={
           <Radio.Group
-            compact
+            buttonCompact
             type="button"
             value={arrowPointAtCenter}
             onChange={setArrowPointAtCenter}
@@ -124,8 +125,8 @@ const Demo = () => {
         }
       >
         箭头位置
-      </Cell>
-      <Cell className="direction-demo">
+      </List.Item>
+      <List.Item className="direction-demo">
         <div>
           <div style={{ marginLeft: 60 }}>
             <Popper
@@ -255,12 +256,12 @@ const Demo = () => {
             </Popper>
           </div>
 
-          <Message theme="warning" icon={<Icon type="warning-round" />}>
+          <Message theme="warning" icon={<WarningCircle />}>
             左右两侧显示位置不足会自动调整为反向显示
           </Message>
         </div>
-      </Cell>
-    </>
+      </List.Item>
+    </List>
   );
 };
 

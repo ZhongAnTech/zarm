@@ -1,0 +1,145 @@
+@import '../../style/core/index';
+
+@include b(list) {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+
+    > *:first-child {
+      @include b(list-item) {
+        @include e(wrapper) {
+          &::after {
+            content: none;
+          }
+        }
+      }
+    }
+
+    *:first-child {
+      @include b(list-item) {
+        @include b(list-item) {
+          @include e(wrapper) {
+            &::after {
+              content: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include b(list-item) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: var(--za-list-item-padding-horizontal);
+  position: relative;
+  background-color: var(--za-list-item-background);
+  font-size: var(--za-list-item-title-font-size);
+
+  a,
+  a:hover {
+    text-decoration: none;
+  }
+
+  @include e(prefix) {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-right: var(--za-list-item-padding-horizontal);
+    padding: var(--za-list-item-padding-vertical) 0;
+    min-height: var(--za-list-item-height);
+  }
+
+  @include e(wrapper) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: var(--za-list-item-height);
+    padding: var(--za-list-item-padding-vertical) 0;
+    padding-right: var(--za-list-item-padding-horizontal);
+    @include onepx(top, var(--za-list-item-separator-color));
+  }
+
+  @include e(inner) {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+  }
+
+  @include e(title) {
+    white-space: var(--za-list-item-title-white-space);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: var(--za-list-item-title-line-height);
+  }
+
+  @include e(content) {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    min-height: var(--za-list-item-title-line-height);
+    line-height: var(--za-list-item-title-line-height);
+  }
+
+  @include e(after) {
+    display: flex;
+    flex-shrink: 0;
+    margin-left: auto;
+    padding-left: var(--za-list-item-space);
+    color: var(--za-list-item-after-text-color);
+  }
+
+  @include e(arrow) {
+    margin-left: var(--za-list-item-space);
+    margin-right: var(--za-list-item-arrow-border-width);
+
+    &:after {
+      display: inline-block;
+      content: '';
+      border-right: var(--za-list-item-arrow-border-width) solid var(--za-list-item-arrow-color);
+      border-top: var(--za-list-item-arrow-border-width) solid var(--za-list-item-arrow-color);
+      width: var(--za-list-item-arrow-size);
+      height: var(--za-list-item-arrow-size);
+      transform: rotate(45deg);
+    }
+  }
+
+  @include e(info) {
+    font-size: var(--za-list-item-info-font-size);
+    color: var(--za-list-item-info-text-color);
+    line-height: var(--za-list-item-info-line-height);
+  }
+
+  @include m(inline) {
+    @include e(inner) {
+      align-items: flex-start;
+    }
+
+    @include e(title) {
+      width: var(--za-list-item-inline-title-width);
+      line-height: var(--za-list-item-title-line-height);
+    }
+  }
+
+  @include m(link) {
+    cursor: pointer;
+    user-select: none;
+    transition-duration: 0.1s;
+    transition-property: background-color, color;
+
+    &:active {
+      background-color: var(--za-list-item-active-background);
+    }
+  }
+}

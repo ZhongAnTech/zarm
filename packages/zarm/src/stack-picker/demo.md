@@ -4,7 +4,7 @@
 
 ```jsx
 import { useState } from 'react';
-import { StackPicker, Cell, Button } from 'zarm';
+import { StackPicker, List, Button } from 'zarm';
 
 const Demo = () => {
   const [visible, setVisible] = useState(false);
@@ -74,16 +74,18 @@ const Demo = () => {
 
   return (
     <>
-      <Cell
-        title="普通"
-        description={
-          <Button size="xs" onClick={() => setVisible(true)}>
-            选择
-          </Button>
-        }
-      >
-        {value.join(',')}
-      </Cell>
+      <List>
+        <List.Item
+          title="普通"
+          after={
+            <Button size="xs" onClick={() => setVisible(true)}>
+              选择
+            </Button>
+          }
+        >
+          {value.join(',')}
+        </List.Item>
+      </List>
 
       <StackPicker
         maskClosable

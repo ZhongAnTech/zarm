@@ -71,32 +71,23 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "Cell": Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "defaultProps": Object {
-            "disabled": false,
-            "hasArrow": false,
-          },
-          "render": [Function],
-        },
         "Checkbox": Object {
           "$$typeof": Symbol(react.forward_ref),
           "Group": Object {
             "$$typeof": Symbol(react.forward_ref),
             "defaultProps": Object {
               "block": false,
-              "compact": false,
+              "buttonCompact": false,
+              "buttonGhost": false,
+              "buttonShape": "radius",
+              "buttonSize": "xs",
               "disabled": false,
-              "ghost": false,
-              "shape": "radius",
-              "size": "xs",
             },
             "render": [Function],
           },
           "defaultProps": Object {
             "disabled": false,
             "indeterminate": false,
-            "shape": "radius",
           },
           "render": [Function],
         },
@@ -121,7 +112,8 @@ describe('index', () => {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
             "autoFocus": false,
-            "clearable": true,
+            "clearable": false,
+            "disabled": false,
             "readOnly": false,
             "type": "number",
           },
@@ -151,7 +143,7 @@ describe('index', () => {
           "defaultProps": Object {
             "autoFocus": false,
             "autoHeight": false,
-            "clearable": true,
+            "clearable": false,
             "disabled": false,
             "readOnly": false,
             "showLength": false,
@@ -173,6 +165,18 @@ describe('index', () => {
             "type": "number",
             "visible": false,
           },
+          "render": [Function],
+        },
+        "List": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "Item": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "defaultProps": Object {
+              "hasArrow": true,
+            },
+            "render": [Function],
+          },
+          "defaultProps": Object {},
           "render": [Function],
         },
         "Loading": Object {
@@ -222,7 +226,9 @@ describe('index', () => {
         },
         "Panel": Object {
           "$$typeof": Symbol(react.forward_ref),
-          "defaultProps": Object {},
+          "defaultProps": Object {
+            "spacing": false,
+          },
           "render": [Function],
         },
         "Picker": Object {
@@ -265,17 +271,17 @@ describe('index', () => {
             "$$typeof": Symbol(react.forward_ref),
             "defaultProps": Object {
               "block": false,
-              "compact": false,
+              "buttonCompact": false,
+              "buttonGhost": false,
+              "buttonShape": "radius",
+              "buttonSize": "xs",
               "disabled": false,
-              "ghost": false,
-              "shape": "radius",
-              "size": "xs",
+              "listMarkerAlign": "before",
             },
             "render": [Function],
           },
           "defaultProps": Object {
             "disabled": false,
-            "shape": "radius",
           },
           "render": [Function],
         },

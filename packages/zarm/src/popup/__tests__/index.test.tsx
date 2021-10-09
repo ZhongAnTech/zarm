@@ -40,6 +40,23 @@ describe('Popup', () => {
       );
       expect(toJson(wrapper)).toMatchSnapshot();
     });
+
+    it('renders mount without mountContainer', () => {
+      const onMaskClick = jest.fn();
+      const afterClose = jest.fn();
+      const wrapper = mount(
+        <Popup
+          visible
+          direction="bottom"
+          onMaskClick={onMaskClick}
+          afterClose={afterClose}
+          mountContainer={false}
+        >
+          foo
+        </Popup>,
+      );
+      expect(toJson(wrapper)).toMatchSnapshot();
+    });
   });
 });
 

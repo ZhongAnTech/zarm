@@ -6,19 +6,52 @@
 
   - [Input] 拆分使用到虚拟键盘的自定义输入框组件 `CustomInput`。触发的事件入参由 value 值改为 event，受影响的事件有 `onChange` `onFocus` `onBlur` `onFocus`。删除 `onClear` 事件，点击重置按钮请空值将触发 `onChange` 事件。
   - [SearchBar]
-    - 输入框事件变更为与原生 `input` 保持一致，如 `onChange`、`onFocus`、`onBlur`等。
+    - 输入框事件变更为与原生 `input` 保持一致，如 `onChange`、`onFocus`、`onBlur` 等。
     - 删除 `onClear` 事件，点击重置按钮请空值将触发 `onChange` 事件。
     - “取消”按钮变更为“搜索”按钮，相关属性调整：
-      - 删除 `showCancel`、`cancelText`、`onCancel`。
-      - 新增 `showButton`、`buttonText`，搜索按钮点击触发 `onSubmit` 事件。
+      - 删除属性 `showCancel`、`cancelText`、`onCancel`。
+      - 新增属性 `showButton`、`buttonText`，搜索按钮点击触发 `onSubmit` 事件。
   - [Toast] 静态方法挂载到 `Toast.useToast` 下，详细用法参考官网例子。
   - [NoticeBar]
-    - DOM 节点调整，原有样式会有影响。
-    - 新增`onClose` prop, 关闭触发的回调函数。
-    - 修复关闭后只移除了`Message`组件，根节点没有被移除的 bug。
+    - 新增属性 `onClose`，关闭触发的回调函数。
+    - 修复关闭后只移除了 `Message` 组件，根节点没有被移除的 bug。
   - [Message]
-    - 移除`size` prop，及相关样式。
-    - 新增`onClose` prop, 关闭触发的回调函数。
+    - 移除属性 `size`，及相关样式。
+    - 新增属性 `onClose`，关闭触发的回调函数。
+  - [Select]
+    - 移除属性 `hasArrow`，默认展示箭头。
+  - [DateSelect]
+    - 移除属性 `hasArrow`，默认展示箭头。
+  - [Cell]
+    - 变更为 List 和 List.Item 组件，样式结构调整。
+    - 属性 `icon` 变更为 `prefix`。
+    - 属性 `description` 变更为 `after`。
+    - 属性 `help` 变更为 `info`。
+    - 属性 `title` 字体大小变更为 17px。
+  - [Checkbox.Group]
+    - 属性 `type` 可选值 `cell` 变更为 `list`。
+    - 属性 `size` 变更为 `buttonSize`。
+    - 属性 `shape` 变更为 `buttonShape`。
+    - 属性 `ghost` 变更为 `buttonGhost`。
+  - [Radio.Group]
+    - 属性 `type` 可选值 `cell` 变更为 `list`。
+    - 属性 `size` 变更为 `buttonSize`。
+    - 属性 `shape` 变更为 `buttonShape`。
+    - 属性 `ghost` 变更为 `buttonGhost`。
+    - 属性 `compact` 变更为 `buttonCompact`。
+    - 新增属性 `listMarkerAlign` ，用于设置列表类型时标记的位置。
+
+## v2.9.9
+
+- Bug Fix
+
+  - [Popup] 修复当 mountContainer 为 `false` 时，丢失容器 div 的 bug。[#769](https://github.com/ZhongAnTech/zarm/issue/769)
+
+## v2.9.8
+
+- Bug Fix
+
+  - [Pull] 修复当 window 作为滚动容器时，触发事件的临界点判断错误的 bug。[#760](https://github.com/ZhongAnTech/zarm/pull/760)
 
 ## v2.9.7
 

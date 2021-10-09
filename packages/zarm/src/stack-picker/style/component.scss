@@ -31,7 +31,7 @@
 
   @include e(input) {
     width: 100%;
-    padding: var(--cell-padding-v) 0;
+    padding: var(--za-list-item-padding-vertical) 0;
   }
 
   @include e(placeholder) {
@@ -80,7 +80,7 @@
 
   @include e(crumbs) {
     position: relative;
-    padding: var(--cell-padding-v) var(--padding-h-lg);
+    padding: var(--za-list-item-padding-vertical) var(--za-list-item-padding-horizontal);
     line-height: var(--stack-picker-crumbs-line-height);
     font-size: var(--font-size-md);
     color: var(--color-text-caption);

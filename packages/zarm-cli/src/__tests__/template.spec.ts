@@ -35,7 +35,9 @@ describe('template', () => {
       expect(syncMocked).toBeCalledWith('src/primary-button/__tests__');
       expect(infoStub).toBeCalledWith(expect.stringMatching('create src/primary-button/index.ts'));
       expect(infoStub).toBeCalledWith(expect.stringMatching('create src/primary-button/demo.md'));
-      expect(infoStub).toBeCalledWith(expect.stringMatching('create src/primary-button/interface.ts'));
+      expect(infoStub).toBeCalledWith(
+        expect.stringMatching('create src/primary-button/interface.ts'),
+      );
       expect(infoStub).toBeCalledWith(
         expect.stringMatching('create src/primary-button/primary button.tsx'),
       );
