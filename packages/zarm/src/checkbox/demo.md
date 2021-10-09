@@ -221,7 +221,7 @@ const Demo = () => {
       <List.Item
         title="幽灵按钮"
         after={
-          <Checkbox.Group ghost type="button" defaultValue={['2']}>
+          <Checkbox.Group buttonGhost type="button" defaultValue={['2']}>
             <Checkbox value="0">选项一</Checkbox>
             <Checkbox value="1">选项二</Checkbox>
             <Checkbox value="2" disabled>
