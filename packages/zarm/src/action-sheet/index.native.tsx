@@ -1,6 +1,6 @@
 import React, { PureComponent, CSSProperties } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ViewStyle } from 'react-native';
-import PropsType from './PropsType';
+import PropsType from './interface';
 import actionsheetStyle from './style/index.native';
 import Popup from '../popup/index.native';
 
