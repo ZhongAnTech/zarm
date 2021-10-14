@@ -14,14 +14,14 @@ describe('SearchBar', () => {
   describe('snapshot', () => {
     it('renders correctly', () => {
       const wrapper = render(
-        <SearchBar shape="round" buttonText="搜索" placeholder="请输入关键字" />,
+        <SearchBar shape="round" cancelText="搜索" placeholder="请输入关键字" />,
       );
       expect(toJson(wrapper)).toMatchSnapshot();
     });
 
     it('renders defaultValue correctly', () => {
       const wrapper = mount(
-        <SearchBar shape="round" buttonText="搜索" placeholder="请输入关键字" />,
+        <SearchBar shape="round" cancelText="搜索" placeholder="请输入关键字" />,
       );
       wrapper.setProps({ defaultValue: '搜索关键字' });
       expect(toJson(wrapper)).toMatchSnapshot();
@@ -190,18 +190,18 @@ describe('SearchBar', () => {
   //   expect(mOnChange).toBeCalledWith('test');
   // });
 
-  // it('should re-calculate the position of cancel ref if props.locale.buttonText is changed', () => {
+  // it('should re-calculate the position of cancel ref if props.locale.cancelText is changed', () => {
   //   const calculatePositonSpy = jest.spyOn(SearchBarOriginal.prototype, 'calculatePositon');
-  //   const wrapper = mount(<SearchBarOriginal locale={{ buttonText: '搜索', placeholder: '' }} />);
+  //   const wrapper = mount(<SearchBarOriginal locale={{ cancelText: '搜索', placeholder: '' }} />);
   //   expect(calculatePositonSpy).toBeCalledWith(
   //     expect.objectContaining({
-  //       locale: { buttonText: '搜索', placeholder: '' },
+  //       locale: { cancelText: '搜索', placeholder: '' },
   //     }),
   //   );
-  //   wrapper.setProps({ locale: { buttonText: 'cancel', placeholder: '' } });
+  //   wrapper.setProps({ locale: { cancelText: 'cancel', placeholder: '' } });
   //   expect(calculatePositonSpy).toBeCalledWith(
   //     expect.objectContaining({
-  //       locale: { buttonText: 'cancel', placeholder: '' },
+  //       locale: { cancelText: 'cancel', placeholder: '' },
   //     }),
   //   );
   // });

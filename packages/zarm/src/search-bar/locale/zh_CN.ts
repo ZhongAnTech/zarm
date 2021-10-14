@@ -1,4 +1,4 @@
 export default {
-  placeholder: '请输入关键字',
-  buttonText: '搜索',
+  placeholder: '搜索',
+  cancelText: '取消',
 };

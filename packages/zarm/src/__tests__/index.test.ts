@@ -6,7 +6,14 @@ describe('index', () => {
       Object {
         "ActionSheet": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "actions": Array [],
+            "destroy": true,
+            "spacing": false,
+            "visible": false,
+          },
           "render": [Function],
+          "useActionSheet": [Function],
         },
         "ActivityIndicator": Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -292,7 +299,7 @@ describe('index', () => {
             "clearable": true,
             "disabled": false,
             "shape": "radius",
-            "showButton": false,
+            "showCancel": false,
           },
           "render": [Function],
         },

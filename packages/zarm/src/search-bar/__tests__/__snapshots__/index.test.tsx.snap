@@ -39,7 +39,7 @@ exports[`SearchBar snapshot renders correctly 1`] = `
       </div>
     </div>
     <div
-      class="za-search-bar__button"
+      class="za-search-bar__cancel"
     >
       搜索
     </div>
@@ -49,13 +49,13 @@ exports[`SearchBar snapshot renders correctly 1`] = `
 
 exports[`SearchBar snapshot renders defaultValue correctly 1`] = `
 <SearchBar
-  buttonText="搜索"
+  cancelText="搜索"
   clearable={true}
   defaultValue="搜索关键字"
   disabled={false}
   placeholder="请输入关键字"
   shape="round"
-  showButton={false}
+  showCancel={false}
 >
   <div
     className="za-search-bar za-search-bar--round"
@@ -138,7 +138,7 @@ exports[`SearchBar snapshot renders defaultValue correctly 1`] = `
         </Input>
       </div>
       <div
-        className="za-search-bar__button"
+        className="za-search-bar__cancel"
         onClick={[Function]}
       >
         搜索

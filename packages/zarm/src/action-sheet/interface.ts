@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Locale } from '../config-provider/PropsType';
+import type { ContainerType } from '../utils/dom';
+import { Locale } from '../n-config-provider/interface';
 
 export interface Action {
   text?: React.ReactNode;
@@ -15,6 +16,8 @@ export default interface PropsType {
   cancelText?: string;
   onMaskClick?: () => void;
   onCancel?: () => void;
+  afterClose?: () => void;
   destroy?: boolean;
   locale?: Locale['ActionSheet'];
+  mountContainer?: ContainerType | false;
 }

@@ -14,20 +14,21 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
     className,
     shape,
     placeholder,
-    showButton,
-    buttonText,
+    showCancel,
+    cancelText,
     defaultValue,
     value,
     onFocus,
     onBlur,
     onChange,
+    onCancel,
     onSubmit,
     ...restProps
   } = props;
-  const buttonRef = React.useRef<HTMLDivElement>(null);
+  const cancelRef = React.useRef<HTMLDivElement>(null);
   const inputRef = React.useRef<HTMLTextAreaElement | HTMLInputElement>();
   const formRef = React.createRef<HTMLFormElement>();
-  const buttonOuterWidth = React.useRef<number>(0);
+  const cancelOuterWidth = React.useRef<number>(0);
   const [currentValue, setCurrentValue] = React.useState(getValue({ value, defaultValue }, ''));
   const [isFocus, setIsFocus] = React.useState<boolean>(false);
 
@@ -37,18 +38,18 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
 
   const cls = classnames(prefixCls, className, {
     [`${prefixCls}--${shape}`]: !!shape,
-    [`${prefixCls}--focus`]: !!(showButton || isFocus || String(currentValue).length > 0),
+    [`${prefixCls}--focus`]: !!(showCancel || isFocus || String(currentValue).length > 0),
   });
 
   const blurAnim = (): void => {
-    if (!showButton && buttonRef.current) {
-      buttonRef.current.style.cssText = `margin-right: -${buttonOuterWidth.current}px;`;
+    if (!showCancel && cancelRef.current) {
+      cancelRef.current.style.cssText = `margin-right: -${cancelOuterWidth.current}px;`;
     }
   };
 
   const focusAnim = (): void => {
-    if (!buttonRef.current) return;
-    buttonRef.current.style.cssText = 'margin-right: 0px;';
+    if (!cancelRef.current) return;
+    cancelRef.current.style.cssText = 'margin-right: 0px;';
   };
 
   const onInputFocus = (e: React.FocusEvent<HTMLInputElement>): void => {
@@ -74,24 +75,31 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
     typeof onSubmit === 'function' && onSubmit(currentValue);
   };
 
+  const onClickCancelButton = (): void => {
+    setCurrentValue('');
+    inputRef.current && inputRef.current.blur();
+    blurAnim();
+    typeof onCancel === 'function' && onCancel();
+  };
+
   const calculatePositon = useEventCallback(() => {
-    if (!buttonRef.current) return;
-    if (!showButton) {
+    if (!cancelRef.current) return;
+    if (!showCancel) {
       const ml = parseInt(
-        window.getComputedStyle(buttonRef.current, '')['margin-left'].split('px')[0],
+        window.getComputedStyle(cancelRef.current, '')['margin-left'].split('px')[0],
         10,
       );
-      const w = Math.ceil(ml + buttonRef.current.getBoundingClientRect().width);
-      buttonOuterWidth.current = w;
-      buttonRef.current!.style.cssText = `margin-right: -${w}px;`;
+      const w = Math.ceil(ml + cancelRef.current.getBoundingClientRect().width);
+      cancelOuterWidth.current = w;
+      cancelRef.current!.style.cssText = `margin-right: -${w}px;`;
     } else {
-      buttonRef.current.style.cssText = 'margin-right: 0px;';
+      cancelRef.current.style.cssText = 'margin-right: 0px;';
     }
 
     if (currentValue) {
       focusAnim();
     }
-  }, [currentValue, showButton]);
+  }, [currentValue, showCancel]);
 
   React.useImperativeHandle(ref, () => ({
     focus: inputRef.current?.focus,
@@ -101,19 +109,17 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
 
   React.useEffect(() => {
     calculatePositon();
-  }, [buttonText, showButton, locale, calculatePositon]);
+  }, [cancelText, showCancel, locale, calculatePositon]);
 
   React.useEffect(() => {
     setCurrentValue(getValue({ value, defaultValue }, ''));
   }, [defaultValue, value]);
 
-  const renderCancel = (): JSX.Element => {
-    return (
-      <div className={`${prefixCls}__button`} ref={buttonRef} onClick={onFormSubmit}>
-        {buttonText || locale?.buttonText}
-      </div>
-    );
-  };
+  const cancelRender = (
+    <div className={`${prefixCls}__cancel`} ref={cancelRef} onClick={onClickCancelButton}>
+      {cancelText || locale?.cancelText}
+    </div>
+  );
 
   const inputProps: InputTextProps = {
     type: 'search',
@@ -138,7 +144,7 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
           <SearchIcon size="sm" className={`${prefixCls}__icon`} />
           <Input ref={inputRef} {...(inputProps as InputTextProps)} />
         </div>
-        {renderCancel()}
+        {cancelRender}
       </form>
     </div>
   );
@@ -147,7 +153,7 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
 SearchBar.defaultProps = {
   shape: 'radius',
   disabled: false,
-  showButton: false,
+  showCancel: false,
   clearable: true,
 };
 
