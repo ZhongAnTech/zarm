@@ -1,6 +1,6 @@
 import React, { createRef, forwardRef, useState, useEffect, useImperativeHandle } from 'react';
 import type { ContainerType } from 'src/utils/dom';
-import ActionSheet, { ActionSheetProps } from './ActionSheet'
+import ActionSheet, { ActionSheetProps } from './ActionSheet';
 import renderToContainer from '../utils/renderToContainer';
 
 interface Ref {
@@ -8,13 +8,11 @@ interface Ref {
 }
 
 const useActionSheet = () => {
-
   const ref = createRef<Ref>();
 
   let unmount = () => {};
 
   const show = (props: Omit<ActionSheetProps, 'visible'>) => {
-
     // 卸载上个实例
     unmount();
 

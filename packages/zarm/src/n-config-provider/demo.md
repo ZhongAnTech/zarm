@@ -200,4 +200,4 @@ ReactDOM.render(<Demo />, mountNode);
 | locale       | Object            | -         | 语言包配置，默认为中文，语言包可到 [zarm/lib/config-provider/locale](https://unpkg.com/zarm/lib/config-provider/locale/) 目录下寻找 |
 | theme        | 'light' \| 'dark' | 'light'   | 主题模式，光亮主题 和 暗黑主题的切换                                                                                                |
 | primaryColor | string            | '#00bc70' | 品牌标准色                                                                                                                          |
-| safeIphoneX  | boolean           | false     | 适配刘海屏 iphoneX                                                                                                                  |
+| safeIphoneX  | boolean           | false     | 是否适配 iphoneX 刘海屏                                                                                                             |

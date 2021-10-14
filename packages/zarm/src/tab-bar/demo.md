@@ -56,13 +56,13 @@ ReactDOM.render(<Demo />, mountNode);
 
 ### TabBar
 
-| 属性             | 类型                              | 默认值  | 说明                       |
-| :--------------- | :-------------------------------- | :------ | :------------------------- |
-| visible          | boolean                           | `true`  | 是否显示                   |
-| activeKey        | number \| string                  | -       | 当前选中项                 |
-| defaultActiveKey | number \| string                  | -       | 初始选中项, 默认第一个选中 |
-| safeIphoneX      | boolean                           | `false` | 适配刘海屏 iphoneX         |
-| onChange         | (value: number \| string) => void | -       | 值变化时触发的回调函数     |
+| 属性             | 类型                              | 默认值 | 说明                       |
+| :--------------- | :-------------------------------- | :----- | :------------------------- |
+| visible          | boolean                           | true   | 是否显示                   |
+| activeKey        | number \| string                  | -      | 当前选中项                 |
+| defaultActiveKey | number \| string                  | -      | 初始选中项, 默认第一个选中 |
+| safeIphoneX      | boolean                           | false  | 是否适配 iphoneX 刘海屏    |
+| onChange         | (value: number \| string) => void | -      | 值变化时触发的回调函数     |
 
 ### TabBar.Item
 

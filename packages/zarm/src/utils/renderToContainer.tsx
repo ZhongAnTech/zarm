@@ -2,7 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { ContainerType, getMountContainer } from './dom';
 
-export default function renderToContainer(mountContainer: ContainerType, element: React.ReactElement) {
+export default function renderToContainer(
+  mountContainer: ContainerType,
+  element: React.ReactElement,
+) {
   const container = getMountContainer(mountContainer);
   const wrapper = document.createElement('div');
   container.appendChild(wrapper);
