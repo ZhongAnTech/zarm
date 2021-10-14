@@ -3,62 +3,76 @@
 ## 基本用法
 
 ```jsx
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { ActionSheet, List, Button } from 'zarm';
 
 const BUTTONS = [
   {
-    text: '操作一',
-    onClick: () => console.log('点击操作一'),
+    text: 'Action 1',
+    onClick: () => console.log('Clicked action 1'),
   },
   {
     theme: 'primary',
-    text: '操作二',
-    onClick: () => console.log('点击操作二'),
+    text: 'Action 2',
+    onClick: () => console.log('Clicked action 2'),
   },
   {
     theme: 'danger',
-    text: '操作三',
-    onClick: () => console.log('点击操作三'),
+    text: 'Action 3',
+    onClick: () => console.log('Clicked action 3'),
+  },
+  {
+    disabled: true,
+    text: 'Disabled Action',
+    onClick: () => console.log('Clicked disabled action'),
   },
 ];
 
 const Demo = () => {
+  const containerRef = useRef();
   const [visible1, setVisible1] = useState(false);
   const [visible2, setVisible2] = useState(false);
   const [visible3, setVisible3] = useState(false);
+  const [visible4, setVisible4] = useState(false);
 
   return (
     <>
       <List>
         <List.Item
+          title="普通"
           after={
             <Button size="xs" onClick={() => setVisible1(true)}>
               开启
             </Button>
           }
-        >
-          普通
-        </List.Item>
+        />
         <List.Item
+          title="带取消操作"
           after={
             <Button size="xs" onClick={() => setVisible2(true)}>
               开启
             </Button>
           }
-        >
-          带取消操作
-        </List.Item>
+        />
         <List.Item
+          title="圆角、留边"
           after={
             <Button size="xs" onClick={() => setVisible3(true)}>
               开启
             </Button>
           }
-        >
-          圆角、留边
-        </List.Item>
+        />
+        <List.Item
+          title="指定挂载节点"
+          after={
+            <Button size="xs" onClick={() => setVisible4(true)}>
+              开启
+            </Button>
+          }
+        />
       </List>
+
+      <div ref={containerRef} />
 
       <ActionSheet
         visible={visible1}
@@ -78,6 +92,12 @@ const Demo = () => {
         onMaskClick={() => setVisible3(!visible3)}
         onCancel={() => setVisible3(!visible3)}
       />
+      <ActionSheet
+        visible={visible4}
+        actions={BUTTONS}
+        onMaskClick={() => setVisible4(!visible4)}
+        mountContainer={containerRef.current}
+      />
     </>
   );
 };
@@ -88,68 +108,48 @@ ReactDOM.render(<Demo />, mountNode);
 ## useActionSheet
 
 ```jsx
-import { useRef } from 'react';
 import { ActionSheet, List, Button } from 'zarm';
 
+const BUTTONS = [
+  {
+    text: 'Action 1',
+    onClick: () => console.log('Clicked action 1'),
+  },
+  {
+    theme: 'primary',
+    text: 'Action 2',
+    onClick: () => console.log('Clicked action 2'),
+  },
+  {
+    theme: 'danger',
+    text: 'Action 3',
+    onClick: () => console.log('Clicked action 3'),
+  },
+  {
+    disabled: true,
+    text: 'Disabled Action',
+    onClick: () => console.log('Clicked disabled action'),
+  },
+];
+
 const Demo = () => {
-  const containerRef = useRef()
   const ac = ActionSheet.useActionSheet();
-
-
-  const BUTTONS = [
-    {
-      text: '操作一',
-      onClick: () => console.log('点击操作一'),
-    },
-    {
-      theme: 'primary',
-      text: '操作二',
-      onClick: () => console.log('点击操作二'),
-    },
-    {
-      theme: 'danger',
-      text: '操作三',
-      onClick: () => console.log('点击操作三'),
-    },
-  ];
-
 
   return (
     <List>
       <List.Item
-        after={
-          <Button size="xs" onClick={() => ac.show({ actions: BUTTONS, onMaskClick: ac.hide })}>
-            开启
-          </Button>
-        }
-      >
-        普通
-        <div id='mock'/>
-      </List.Item>
-      <List.Item
+        title="普通"
         after={
           <Button
             size="xs"
-            onClick={() => ac.show({ actions: BUTTONS, onMaskClick: ac.hide, onCancel: ac.hide })}
+            onClick={() =>
+              ac.show({ spacing: true, actions: BUTTONS, onMaskClick: ac.hide, onCancel: ac.hide })
+            }
           >
             开启
           </Button>
         }
-      >
-        带取消操作
-      </List.Item>
-      <List.Item
-        after={
-          <Button
-            size="xs"
-            onClick={() => ac.show({ mountContainer: containerRef.current , actions: BUTTONS, onMaskClick: ac.hide, onCancel: ac.hide })}
-          >
-            开启
-          </Button>
-        }
-      >
-        <div ref={containerRef}>指定挂载节点</div>
-      </List.Item>
+      />
     </List>
   );
 };
@@ -168,7 +168,7 @@ ReactDOM.render(<Demo />, mountNode);
 | onMaskClick    | () => void                           | -             | 点击遮罩层时触发的回调函数         |
 | onCancel       | () => void                           | -             | 显示取消菜单，点击时触发的回调函数 |
 | cancelText     | string                               | '取消'        | 取消菜单的文案                     |
-| safeIphoneX    | boolean                              | `false`       | 适配刘海屏 iphoneX                 |
+| safeIphoneX    | boolean                              | false         | 是否适配 iphoneX 刘海屏            |
 | afterClose     | () => void                           | -             | ActionSheet 隐藏后的回调函数       |
 | mountContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 ActionSheet 挂载的 HTML 节点  |
 
@@ -178,5 +178,6 @@ ReactDOM.render(<Demo />, mountNode);
 | :-------- | :--------- | :-------- | :---------------------------------------------- |
 | text      | ReactNode  | -         | 按钮文字                                        |
 | theme     | string     | 'default' | 按钮主题，可选值 `default`、`primary`、`danger` |
+| disabled  | boolean    | false     | 按钮是否禁用                                    |
 | className | string     | -         | 追加类名                                        |
 | onClick   | () => void | -         | 按钮点击后触发的回调函数                        |

@@ -10,7 +10,7 @@ export interface ActionSheetProps extends PropsType {
   safeIphoneX?: boolean;
 }
 
-export type UseActionSheet = () => ReturnType<typeof useActionSheet>
+export type UseActionSheet = () => ReturnType<typeof useActionSheet>;
 
 interface CompoundedComponent
   extends React.ForwardRefExoticComponent<ActionSheetProps & React.RefAttributes<HTMLDivElement>> {
@@ -31,7 +31,9 @@ const ActionSheet = React.forwardRef<HTMLDivElement, ActionSheetProps>((props, r
     onCancel,
     afterClose,
   } = props;
-  const { prefixCls: globalPrefixCls, safeIphoneX: globalSafeIphoneX, locale } = useContext(ConfigContext);
+  const { prefixCls: globalPrefixCls, safeIphoneX: globalSafeIphoneX, locale } = useContext(
+    ConfigContext,
+  );
   const prefixCls = `${globalPrefixCls}-action-sheet`;
   const cls = classnames(prefixCls, {
     [`${prefixCls}--spacing`]: spacing,
@@ -44,6 +46,7 @@ const ActionSheet = React.forwardRef<HTMLDivElement, ActionSheetProps>((props, r
         key={+index}
         className={classnames(`${prefixCls}__item`, action.className, {
           [`${prefixCls}__item--${action.theme}`]: !!action.theme,
+          [`${prefixCls}__item--disabled`]: action.disabled,
         })}
         onClick={action.onClick}
       >
@@ -82,6 +85,7 @@ ActionSheet.defaultProps = {
   visible: false,
   actions: [],
   destroy: true,
+  safeIphoneX: false,
 };
 
 export default ActionSheet;

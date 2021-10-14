@@ -17,11 +17,11 @@
   --color-shadow: rgba(56, 56, 56, 0.15);            // 阴影色
 
   // 背景色
-  --background-active: #e6e6e6;
+  --background-active: rgba(0, 0, 0, 0.15);
   --background-disabled: #f2f2f2;
 
   // 边框色
-  --border-color: #dcdcdc;
+  --border-color: rgba(0, 0, 0, 0.2);
   --border-disabled: #e6e6e6;
 
   // 圆角
@@ -62,7 +62,7 @@
 
   // 透明度
   --opacity-disabled: 0.5;
-  --opacity-mask: 0.5;
+  --opacity-mask: 0.4;
   --opacity-toast: 0.8;
   --opacity-tooltip: 0.8;
 
@@ -73,11 +73,15 @@
   // Components
 
   // ActionSheet
-  --action-sheet-background: #fff;
-  --action-sheet-active-background: var(--background-active);
-  --action-sheet-margin: 0;
-  --action-sheet-item-height: 50px;
-  --action-sheet-item-font-size: 16px;
+  --za-action-sheet-border-radius: 14px;
+  --za-action-sheet-spacing-margin: 0 8px 8px;
+  --za-action-sheet-actions-background: rgba(249, 249, 249, 0.94);
+  --za-action-sheet-item-height: 56px;
+  --za-action-sheet-item-font-size: 20px;
+  --za-action-sheet-item-active-background: var(--background-active);
+  --za-action-sheet-cancel-background: #fff;
+  --za-action-sheet-cancel-color: var(--theme-primary);
+  --za-action-sheet-cancel-margin-top: 8px;
 
   // activity-indicator
   --activity-indicator-size-md: 20px;
@@ -123,13 +127,13 @@
   --button-default-background: var(--color-text-inverse);
   --button-default-border: var(--theme-default);
   --button-default-color: var(--color-text);
-  --button-default-active-background: var(--background-active);
-  --button-default-active-border: var(--background-active);
+  --button-default-active-background: #e6e6e6;
+  --button-default-active-border: #e6e6e6;
   --button-default-active-color: var(--color-text);
   --button-default-ghost-border: var(--color-text-inverse);
   --button-default-ghost-color: var(--color-text-inverse);
-  --button-default-ghost-active-border: var(--background-active);
-  --button-default-ghost-active-color: var(--background-active);
+  --button-default-ghost-active-border: #e6e6e6;
+  --button-default-ghost-active-color: #e6e6e6;
   --button-default-shadow-color: rgba(230, 230, 230, 0.3);
   --button-primary-background: var(--theme-primary);
   --button-primary-border: var(--theme-primary);

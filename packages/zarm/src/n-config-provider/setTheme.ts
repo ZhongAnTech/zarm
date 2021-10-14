@@ -9,8 +9,6 @@ export const themes = {
   '--border-color': '#3a3b3d',
   '--opacity-mask': '0.7',
   '--activity-indicator-path-color': 'var(--border-color)',
-  '--action-sheet-background': '#1b1c1e',
-  '--action-sheet-active-background': '#363738',
   '--alert-button-background': '#2b2c2d',
   '--alert-button-active-background': '#363738',
   '--button-default-background': '#393939',
@@ -69,6 +67,9 @@ export const themes = {
   '--za-search-bar-input-background': 'rgba(118, 118, 128, 0.24)',
   '--za-search-bar-input-placeholder-color': '#8e8e93',
   '--za-search-bar-icon-color': '#8e8e93',
+  '--za-action-sheet-actions-background': '#222222',
+  '--za-action-sheet-cancel-background': '#2c2c2e',
+  '--za-action-sheet-item-active-background': '#404040',
 } as const;
 
 const setTheme = (value: Theme = 'light') => {
