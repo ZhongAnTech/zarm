@@ -76,7 +76,7 @@ ReactDOM.render(
 
 ## 自定义 Iconfont 图标
 
-我们提供了一个 createFromIconfont 方法，方便开发者调用在 [iconfont.cn](iconfont.cn) 上自行管理的图标。
+我们提供了一个 createFromIconfont 方法，方便开发者调用在 [iconfont.cn](https://iconfont.cn) 上自行管理的图标。
 
 其本质上是组件在渲染前会自动引入 iconfont.cn 项目中的图标符号集，并且创建了一个 `<use>` 标签来渲染图标的组件。
 
