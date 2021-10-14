@@ -1,10 +1,11 @@
-/* eslint-disable operator-linebreak */
-import React, { PureComponent } from 'react';
+import * as React from 'react';
 import classnames from 'classnames';
-import { BaseCalendarProps } from './PropsType';
+import { BaseCalendarProps } from './interface';
 import CalendarMonthView from './Month';
 import parseState from './utils/parseState';
 import DateTool from '../utils/date';
+import { ConfigContext } from '../n-config-provider';
+import useSetState from '../utils/hooks/useSetState';
 
 export interface CalendarProps extends BaseCalendarProps {
   prefixCls?: string;
@@ -27,109 +28,47 @@ export interface CalendarStates {
   // step 是为了扩展的，以后如果是三选，四选之类的，用这个，step 标注每次事件是第几次选择 via zouhuan
   step: number;
   multiple: boolean;
+  [key: string]: any;
 }
 
-export default class CalendarView extends PureComponent<CalendarProps, CalendarStates> {
-  static displayName = 'CalendarView';
-
-  static defaultProps: CalendarProps = {
-    prefixCls: 'za-calendar',
-    multiple: false,
-    min: new Date(),
-    dateRender: (date: Date) => date.getDate(),
-    disabledDate: () => false,
-  };
-
-  // 当前月份dom数据缓存
-  private nodes?: object;
-
-  constructor(props: CalendarProps) {
-    super(props);
-    this.nodes = {};
-  }
-
-  state = {
-    ...parseState(this.props),
+const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) => {
+  const { className, dateRender, disabledDate, onChange } = props;
+  const { prefixCls: globalPrefixCls, locale } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-calendar`;
+  const nodes = React.useRef<Record<string, HTMLDivElement>>({});
+  const [
+    { value, min, max, startMonth, step, steps, refresh, ...state },
+    setState,
+  ] = useSetState<CalendarStates>({
+    ...parseState(props),
+    prevValue: [],
     step: 1,
+  });
+
+  const months = Array.from({ length: DateTool.getMonthCount(startMonth, max) }).map((_, index) =>
+    DateTool.cloneDate(startMonth, 'm', index),
+  );
+
+  const handleAnchor = () => {
+    const [target = new Date()] = value || [];
+    const key = `${target.getFullYear()}-${target.getMonth()}`;
+    const node = nodes.current[key];
+    // @ts-ignore
+    node?.scrollIntoViewIfNeeded?.(true);
   };
 
-  componentDidMount() {
-    this.anchor();
-  }
-
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if (
-      ('value' in nextProps && nextProps.value !== prevState.prevValue) ||
-      ('multiple' in nextProps && nextProps.multiple !== prevState.prevMultiple) ||
-      ('min' in nextProps && nextProps.min !== prevState.prevMin) ||
-      ('max' in nextProps && nextProps.max !== prevState.prevMax)
-    ) {
-      return {
-        ...parseState(nextProps),
-        step: prevState.step ? 1 : prevState.step,
-        refresh: !prevState.refresh,
-        prevValue: nextProps.value,
-        prevMax: nextProps.max,
-        prevMin: nextProps.min,
-        prevMultiple: nextProps.multiple,
-      };
-    }
-    return null;
-  }
-
-  componentDidUpdate(_prevProps: CalendarProps, prevState: CalendarStates) {
-    const { refresh } = this.state;
-    if (refresh !== prevState.refresh) {
-      this.anchor();
-    }
-  }
-
-  // 日期点击事件，注意排序
-  handleDateClick = (date: Date) => {
-    const { step, steps, value } = this.state;
-    const { onChange } = this.props;
+  const handleDateClick = (date: Date) => {
     if (step === 1) {
       value.splice(0, value.length);
     }
     value[step - 1] = date;
-    value.sort((item1: Date, item2: Date) => +item1 - +item2);
-    this.setState(
-      {
-        value,
-        step: step >= steps ? 1 : step + 1,
-      },
-      () => {
-        step >= steps && typeof onChange === 'function' && onChange(value);
-      },
-    );
+    value.sort((a: Date, b: Date) => +a - +b);
+    setState({ value, step: step >= steps ? 1 : step + 1 });
+    step >= steps && onChange?.(value);
   };
 
-  // 月历定位
-  anchor = () => {
-    const { value } = this.state;
-    const target = value[0] || new Date();
-    const key = `${target.getFullYear()}-${target.getMonth()}`;
-    const node = this.nodes![key];
-    if (node && Object.prototype.toString.call(node.anchor) === '[object Function]') {
-      node.anchor();
-    }
-  };
-
-  // 生成星期条
-  renderWeekBar = () => {
-    const { prefixCls, locale } = this.props;
-    const content = locale!.weeks.map((week) => (
-      <li key={week} className={`${prefixCls}__bar__item`}>
-        {week}
-      </li>
-    ));
-    return <ul className={`${prefixCls}__bar`}>{content}</ul>;
-  };
-
-  renderMonth = (dateMonth: Date) => {
-    const { value, min, max } = this.state;
-    const { prefixCls, dateRender, disabledDate } = this.props;
-    const key = `${dateMonth.getFullYear()}-${dateMonth.getMonth()}`;
+  const renderMonth = (month: Date) => {
+    const key = `${month.getFullYear()}-${month.getMonth()}`;
     return (
       <CalendarMonthView
         prefixCls={prefixCls}
@@ -137,33 +76,65 @@ export default class CalendarView extends PureComponent<CalendarProps, CalendarS
         min={min}
         max={max}
         value={value}
-        dateMonth={dateMonth}
+        dateMonth={month}
         dateRender={dateRender}
         disabledDate={disabledDate}
-        onDateClick={this.handleDateClick}
-        ref={(n) => {
-          this.nodes![key] = n;
+        onDateClick={handleDateClick}
+        ref={(element) => {
+          element && (nodes.current[key] = element);
         }}
       />
     );
   };
 
-  // 生成日历内容
-  renderMonths() {
-    const { prefixCls } = this.props;
-    const { startMonth, max } = this.state;
-    const arr = Array.from({ length: DateTool.getMonthCount(startMonth, max) });
-    const content = arr.map((_item, i) => this.renderMonth(DateTool.cloneDate(startMonth, 'm', i)));
-    return <section className={`${prefixCls}__body`}>{content}</section>;
-  }
+  React.useLayoutEffect(() => {
+    handleAnchor();
+  }, []);
 
-  render() {
-    const { prefixCls, className } = this.props;
-    return (
-      <div className={classnames(prefixCls, className)}>
-        {this.renderWeekBar()}
-        {this.renderMonths()}
-      </div>
-    );
-  }
-}
+  React.useEffect(() => {
+    if (
+      props.value !== state.prevValue ||
+      props.multiple !== state.prevMultiple ||
+      props.min !== state.prevMin ||
+      props.max !== state.prevMax
+    ) {
+      setState({
+        ...parseState(props),
+        step: step ? 1 : step,
+        refresh: !state.refresh,
+        prevValue: props.value,
+        prevMax: props.max,
+        prevMin: props.min,
+        prevMultiple: props.multiple,
+      });
+    }
+  }, [props.value, props.multiple, props.min, props.max]);
+
+  React.useEffect(() => {
+    handleAnchor();
+  }, [refresh]);
+
+  return (
+    <div ref={ref} className={classnames(prefixCls, className)}>
+      <ul className={`${prefixCls}__bar`}>
+        {locale?.Calendar?.weeks?.map((week) => (
+          <li key={week} className={`${prefixCls}__bar__item`}>
+            {week}
+          </li>
+        ))}
+      </ul>
+      <section className={`${prefixCls}__body`}>{months.map(renderMonth)}</section>
+    </div>
+  );
+});
+
+Calendar.displayName = 'CalendarView';
+
+Calendar.defaultProps = {
+  multiple: false,
+  max: new Date(),
+  dateRender: (date: Date) => date.getDate(),
+  disabledDate: () => false,
+};
+
+export default Calendar;

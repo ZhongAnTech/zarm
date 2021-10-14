@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import type { Locale } from '../config-provider/PropsType';
 
 export interface BaseCalendarProps {
   value?: Date | Date[];
@@ -10,7 +9,6 @@ export interface BaseCalendarProps {
   dateRender?: (value?: Date) => ReactNode;
   disabledDate?: (value?: Date) => boolean;
   onChange?: (value?: Date[]) => void;
-  locale?: Locale['Calendar'];
 }
 
 export interface BaseCalendarMonthProps {
@@ -21,5 +19,4 @@ export interface BaseCalendarMonthProps {
   dateRender?: (value?: Date) => ReactNode;
   disabledDate?: (value?: Date) => boolean;
   onDateClick?: (value?: Date) => void;
-  locale?: Locale['Calendar'];
 }

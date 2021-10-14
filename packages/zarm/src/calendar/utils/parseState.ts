@@ -13,9 +13,7 @@ const parseState = (props: {
   let tmpValue!: Date[];
 
   value = value || defaultValue;
-  value = (Object.prototype.toString.call(value) === '[object Array]'
-    ? value
-    : (value && [value]) || []) as Date[];
+  value = (Array.isArray(value) ? value : (value && [value]) || []) as Date[];
 
   // 注掉该逻辑，强制根据 multiple 控制节点个数，后面改进
   // tmpValue = value.map(item => DateTool.parseDay(item));

@@ -59,6 +59,12 @@ describe('index', () => {
         },
         "Calendar": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "dateRender": [Function],
+            "disabledDate": [Function],
+            "max": 2021-10-14T10:37:12.102Z,
+            "multiple": false,
+          },
           "render": [Function],
         },
         "Carousel": Object {

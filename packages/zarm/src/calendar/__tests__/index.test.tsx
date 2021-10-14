@@ -18,7 +18,7 @@ describe('Calendar', () => {
 
   it('should trigger onChange when double click', () => {
     const onChangeFn = jest.fn();
-    const wrapper = mount(<Calendar multiple={false} onChange={onChangeFn} />);
+    const wrapper = mount(<Calendar min={date7} multiple={false} onChange={onChangeFn} />);
 
     const day3 = wrapper.find(`.${prefixCls}__day`).at(30);
     const day4 = wrapper.find(`.${prefixCls}__day`).at(20);
