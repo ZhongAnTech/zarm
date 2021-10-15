@@ -1,0 +1,20 @@
+@import 'mixins';
+
+@include b(image) {
+  position: relative;
+  display: inline-block;
+
+  @include e(img) {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  @include e(loading) {
+    @include image-react();
+  }
+
+  @include e(fallback) {
+    @include image-react();
+  }
+}

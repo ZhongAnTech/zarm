@@ -310,6 +310,13 @@ module.exports = {
         source: 'zarm/image-preview/demo.md',
         style: true,
       },
+      {
+        key: 'image',
+        name: '图片加载',
+        module: () => import('zarm/image/demo.md'),
+        source: 'zarm/image/demo.md',
+        style: false,
+      },
     ],
     navigation: [
       {
