@@ -140,6 +140,7 @@ export { default as TabBar } from './tab-bar';
 
 export type { ImagePreviewProps } from './image-preview';
 export { default as ImagePreview } from './image-preview';
+export { default as Image } from './image';
 
 export type { PinchZoomProps } from './pinch-zoom';
 export { default as PinchZoom } from './pinch-zoom';

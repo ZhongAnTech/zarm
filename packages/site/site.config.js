@@ -324,6 +324,13 @@ module.exports = {
         source: 'zarm/water-mark/demo.md',
         style: false,
       },
+      {
+        key: 'image',
+        name: '图片加载',
+        module: () => import('zarm/image/demo.md'),
+        source: 'zarm/image/demo.md',
+        style: false,
+      },
     ],
     navigation: [
       {
