@@ -24,7 +24,7 @@
   @include e(cancel) {
     background-color: var(--za-action-sheet-cancel-background);
     margin-top: var(--za-action-sheet-cancel-margin-top);
-    
+
     @include e(item) {
       color: var(--za-action-sheet-cancel-color);
     }
