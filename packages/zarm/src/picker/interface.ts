@@ -1,5 +1,5 @@
 import { ContainerType } from '../utils/dom';
-import type { BasePickerViewProps } from '../picker-view/PropsType';
+import type { BasePickerViewProps } from '../picker-view/interface';
 import type { WheelItem } from '../wheel/interface';
 import type { Locale } from '../config-provider/PropsType';
 
