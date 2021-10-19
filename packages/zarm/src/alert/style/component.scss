@@ -36,6 +36,12 @@
     &:active {
       background-color: var(--alert-button-active-background);
     }
+
+    @include m(loading) {
+      cursor: not-allowed;
+      opacity: 0.4;
+      pointer-events: none;
+    }
   }
 
   @include m(radius) {

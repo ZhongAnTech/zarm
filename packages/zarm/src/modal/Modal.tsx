@@ -1,72 +1,72 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import classnames from 'classnames';
-import { BaseModalProps } from './PropsType';
+import { Close as CloseIcon } from '@zarm-design/icons';
+import { BaseModalProps } from './interface';
+import { ConfigContext } from '../n-config-provider';
 import Popup from '../popup';
-import ModalHeader from './ModalHeader';
-import ModalBody from './ModalBody';
-import ModalFooter from './ModalFooter';
 
 export interface ModalProps extends BaseModalProps {
-  prefixCls?: string;
   className?: string;
+  style?: React.CSSProperties;
 }
 
-export default class Modal extends Component<ModalProps, any> {
-  static alert;
+const Modal: React.FC<ModalProps> = (props) => {
+  const {
+    className,
+    title,
+    shape,
+    closable,
+    onCancel,
+    children,
+    footer,
+    maskClosable,
+    ...rest
+  } = props;
 
-  static confirm;
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-modal`;
 
-  static defaultProps: ModalProps = {
-    prefixCls: 'za-modal',
-    visible: false,
-    animationType: 'fade',
-    animationDuration: 200,
-    width: '70%',
-    mask: true,
-    maskType: 'normal',
-    shape: 'radius',
-    closable: false,
-    maskClosable: false,
-    destroy: true,
-  };
+  const classes = classnames(prefixCls, className, {
+    [`${prefixCls}--${shape}`]: !!shape,
+  });
 
-  render() {
-    const {
-      prefixCls,
-      className,
-      shape,
-      children,
-      maskClosable,
-      title,
-      closable,
-      footer,
-      onCancel,
-      ...others
-    } = this.props;
+  const showHeader = title || closable;
+  const noop = () => {};
 
-    const cls = {
-      modal: classnames(prefixCls, className, {
-        [`${prefixCls}--${shape}`]: !!shape,
-      }),
-      dialog: classnames(`${prefixCls}__dialog`),
-    };
+  return (
+    <Popup
+      {...rest}
+      className={classes}
+      direction="center"
+      onMaskClick={maskClosable ? onCancel : noop}
+    >
+      <div className={classnames(`${prefixCls}__dialog`)}>
+        {showHeader && (
+          <div className={`${prefixCls}__header`}>
+            <div className={`${prefixCls}__header__title`}>{title}</div>
+            {closable && (
+              <CloseIcon size="sm" className={`${prefixCls}__header__close`} onClick={onCancel} />
+            )}
+          </div>
+        )}
+        <div className={`${prefixCls}__body`}>{children}</div>
+        {footer && <div className={`${prefixCls}__footer`}>{footer}</div>}
+      </div>
+    </Popup>
+  );
+};
 
-    const showHeader = title || closable;
-    const noop = () => {};
+Modal.defaultProps = {
+  visible: false,
+  animationType: 'fade',
+  animationDuration: 200,
+  width: '70%',
+  mask: true,
+  maskType: 'normal',
+  shape: 'radius',
+  closable: false,
+  maskClosable: false,
+  destroy: true,
+};
 
-    return (
-      <Popup
-        className={cls.modal}
-        direction="center"
-        onMaskClick={maskClosable ? onCancel : noop}
-        {...others}
-      >
-        <div className={cls.dialog}>
-          {showHeader && <ModalHeader title={title} closable={closable} onCancel={onCancel} />}
-          <ModalBody>{children}</ModalBody>
-          {footer && <ModalFooter>{footer}</ModalFooter>}
-        </div>
-      </Popup>
-    );
-  }
-}
+export default Modal;

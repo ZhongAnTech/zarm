@@ -200,117 +200,112 @@ ReactDOM.render(<Demo />, mountNode);
 ## 警告框 Alert
 
 ```jsx
-import { List, Button, Modal } from 'zarm';
+import { List, Button, Modal, Toast } from 'zarm';
 
-ReactDOM.render(
-  <List>
-    <List.Item
-      title="静态调用（静态关闭）"
-      after={
-        <Button
-          size="xs"
-          onClick={() => {
-            const modal = Modal.alert({
-              className: 'test',
-              title: '静态调用的title',
-              content: '静态调用的body',
-              onCancel: () => {
-                modal.hide();
-              },
-            });
-          }}
-        >
-          开启
-        </Button>
-      }
-    />
-    <List.Item
-      title="静态调用（使用promise关闭）"
-      after={
-        <Button
-          size="xs"
-          onClick={() => {
-            const modal = Modal.alert({
-              title: '静态调用的title',
-              content: '静态调用的body，使用promise关闭',
-              onCancel: () => {
-                return new Promise((resolve, reject) => {
-                  resolve();
-                  // setTimeout(Math.random() > 0.5 ? resolve : reject, 500);
-                }).catch(() => {
-                  window.alert('出错啦，弹窗无法关闭，继续点击试试');
-                  return false; // 返回false，可使弹窗无法关闭
-                });
-              },
-            });
-          }}
-        >
-          开启
-        </Button>
-      }
-    />
-  </List>,
-  mountNode,
-);
+const Demo = () => {
+  const toast = Toast.useToast();
+  return (
+    <List>
+      <List.Item
+        title="静态调用（静态关闭）"
+        after={
+          <Button
+            size="xs"
+            onClick={() => {
+              const modal = Modal.alert({
+                className: 'test',
+                title: '静态调用的title',
+                content: '静态调用的body',
+              });
+            }}
+          >
+            开启
+          </Button>
+        }
+      />
+      <List.Item
+        title="静态调用（使用promise关闭）"
+        after={
+          <Button
+            size="xs"
+            onClick={() => {
+              const modal = Modal.alert({
+                title: '静态调用的title',
+                content: '静态调用的body，使用promise关闭',
+                onCancel: async () => {
+                  await new Promise((resolve) => setTimeout(resolve, 3000));
+                  toast.show({ content: '提交成功' });
+                },
+              });
+            }}
+          >
+            开启
+          </Button>
+        }
+      />
+    </List>
+  );
+};
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 
 ## 确认框 Confirm
 
 ```jsx
-import { List, Button, Modal } from 'zarm';
+import { List, Button, Modal, Toast } from 'zarm';
 
-ReactDOM.render(
-  <List>
-    <List.Item
-      title="静态调用（静态关闭）"
-      after={
-        <Button
-          size="xs"
-          onClick={() => {
-            const modal = Modal.confirm({
-              title: '确认信息',
-              content: '静态调用的body',
-              onCancel: () => {
-                console.log('点击cancel');
-              },
-              onOk: () => {
-                console.log('点击ok');
-              },
-            });
-          }}
-        >
-          开启
-        </Button>
-      }
-    />
-    <List.Item
-      title="静态调用（使用promise关闭）"
-      after={
-        <Button
-          size="xs"
-          onClick={() => {
-            const modal = Modal.confirm({
-              title: '静态调用的title',
-              content: '静态调用的body，使用promise关闭',
-              onCancel: () => {
-                return new Promise((resolve, reject) => {
-                  resolve();
-                  // setTimeout(Math.random() > 0.5 ? resolve : reject, 500);
-                }).catch(() => {
-                  window.alert('出错啦，弹窗无法关闭，继续点击试试');
-                  return false; // 返回false，可使弹窗无法关闭
-                });
-              },
-            });
-          }}
-        >
-          开启
-        </Button>
-      }
-    />
-  </List>,
-  mountNode,
-);
+const Demo = () => {
+  const toast = Toast.useToast();
+  return (
+    <List>
+      <List.Item
+        title="静态调用（静态关闭）"
+        after={
+          <Button
+            size="xs"
+            onClick={() => {
+              const modal = Modal.confirm({
+                title: '确认信息',
+                content: '静态调用的body',
+                onCancel: () => {
+                  console.log('点击cancel');
+                },
+                onOk: () => {
+                  console.log('点击ok');
+                },
+              });
+            }}
+          >
+            开启
+          </Button>
+        }
+      />
+      <List.Item
+        title="静态调用（使用promise关闭）"
+        after={
+          <Button
+            size="xs"
+            onClick={() => {
+              const modal = Modal.confirm({
+                title: '静态调用的title',
+                content: '静态调用的body，使用promise关闭',
+                onOk: async () => {
+                  await new Promise((resolve) => setTimeout(resolve, 3000));
+                  toast.show({ content: '提交成功' });
+                },
+              });
+            }}
+          >
+            开启
+          </Button>
+        }
+      />
+    </List>
+  );
+};
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 
 ## API

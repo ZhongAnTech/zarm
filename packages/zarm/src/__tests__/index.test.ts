@@ -9,6 +9,7 @@ describe('index', () => {
           "defaultProps": Object {
             "actions": Array [],
             "destroy": true,
+            "safeIphoneX": false,
             "spacing": false,
             "visible": false,
           },

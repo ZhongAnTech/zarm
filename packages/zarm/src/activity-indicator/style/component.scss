@@ -7,6 +7,8 @@ $activity-indicator-spinner-count: 8;
   display: inline-block;
   position: relative;
   transform: rotate(-90deg);
+  vertical-align: middle;
+
   @include activity-indicator-size(var(--za-activity-indicator-size-md));
 
   @include e(path) {
