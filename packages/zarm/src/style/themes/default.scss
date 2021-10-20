@@ -84,10 +84,11 @@
   --za-action-sheet-cancel-margin-top: 8px;
 
   // activity-indicator
-  --activity-indicator-size-md: 20px;
-  --activity-indicator-size-lg: 32px;
-  --activity-indicator-path-color: #e6e6e6;
-  --activity-indicator-spinner-color: #989697;
+  --za-activity-indicator-color: var(--theme-primary);
+  --za-activity-indicator-size-md: 22px;
+  --za-activity-indicator-size-lg: 29px;
+  --za-activity-indicator-path-color: #e6e6e6;
+  --za-activity-indicator-spinner-color: #989697;
 
   // Alert
   --alert-button-height: 50px;
