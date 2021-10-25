@@ -73,7 +73,7 @@ const Button = React.forwardRef<unknown, ButtonProps>((props, ref) => {
     );
 
   const onPress: ButtonProps['onClick'] = (e) => {
-    if (disabled) {
+    if (disabled || computedLoading) {
       return;
     }
     if (typeof onClick === 'function') {
