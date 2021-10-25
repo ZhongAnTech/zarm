@@ -3,11 +3,13 @@ import classnames from 'classnames';
 import ActivityIndicator from '../activity-indicator';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseButtonProps, ButtonTheme, ButtonSize, ButtonShape } from './interface';
+import { isPromise } from '../utils/validate';
+import type { ModifyReturnType } from '../utils/utilityTypes';
 
 export type { ButtonTheme, ButtonSize, ButtonShape };
 
 interface CommonProps extends BaseButtonProps {
-  onClick?: React.MouseEventHandler<HTMLElement>;
+  onClick?: ModifyReturnType<MouseEventHandler<HTMLElement>, any>;
 }
 
 export type AnchorButtonProps = {
@@ -40,8 +42,10 @@ const Button = React.forwardRef<unknown, ButtonProps>((props, ref) => {
     ...restProps
   } = props;
 
+  const [_loading, setLoading] = React.useState(false);
+  const computedLoading = loading || _loading;
   const buttonRef = (ref as any) || React.createRef<HTMLButtonElement | HTMLAnchorElement>();
-  const iconRender = loading ? <ActivityIndicator /> : icon;
+  const iconRender = computedLoading ? <ActivityIndicator /> : icon;
   const childrenRender = children && <span>{children}</span>;
 
   const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
@@ -55,11 +59,11 @@ const Button = React.forwardRef<unknown, ButtonProps>((props, ref) => {
     [`${prefixCls}--ghost`]: ghost,
     [`${prefixCls}--shadow`]: shadow,
     [`${prefixCls}--disabled`]: disabled,
-    [`${prefixCls}--loading`]: loading,
+    [`${prefixCls}--loading`]: computedLoading,
   });
 
   const contentRender =
-    !!icon || loading ? (
+    !!icon || computedLoading ? (
       <div className={`${prefixCls}__content`}>
         {iconRender}
         {childrenRender}
@@ -73,7 +77,13 @@ const Button = React.forwardRef<unknown, ButtonProps>((props, ref) => {
       return;
     }
     if (typeof onClick === 'function') {
-      onClick(e);
+      const returnValue = onClick(e);
+      if (isPromise(returnValue)) {
+        setLoading(true);
+        (returnValue as Promise<unknown>).finally(() => {
+          setLoading(false);
+        });
+      }
     }
   };
 

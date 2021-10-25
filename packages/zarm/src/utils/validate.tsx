@@ -17,3 +17,11 @@ export const isNumber = (val: any) => {
 export const isCascader = ({ dataSource }) => {
   return dataSource && dataSource[0] && !isArray(dataSource[0]);
 };
+
+export const isPromise = (obj) => {
+  return (
+    !!obj &&
+    (typeof obj === 'object' || typeof obj === 'function') &&
+    typeof obj.then === 'function'
+  );
+};
