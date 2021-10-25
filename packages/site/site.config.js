@@ -394,6 +394,13 @@ module.exports = {
         style: false,
       },
       {
+        key: 'SafeArea',
+        name: '安全区域',
+        module: () => import('zarm/safearea/demo.md'),
+        source: 'zarm/safearea/demo.md',
+        style: false,
+      },
+      {
         key: 'drag',
         name: '拖拽',
         module: () => import('zarm/drag/demo.md'),
