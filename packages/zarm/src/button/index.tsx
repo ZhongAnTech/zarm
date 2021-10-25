@@ -7,10 +7,12 @@ import React, {
 import classnames from 'classnames';
 import BasePropsType from './PropsType';
 import ActivityIndicator from '../activity-indicator';
+import { isPromise } from '../utils/validate';
+import type { ModifyReturnType } from '../utils/utilityTypes';
 
 interface BaseButtonPropsType extends BasePropsType {
   prefixCls?: string;
-  onClick?: MouseEventHandler<HTMLElement>;
+  onClick?: ModifyReturnType<MouseEventHandler<HTMLElement>, any>;
 }
 
 export type AnchorButtonProps = {
@@ -25,7 +27,7 @@ export type NativeButtonProps = {
 
 export type ButtonProps = Partial<AnchorButtonProps & NativeButtonProps>;
 
-export default class Button extends PureComponent<ButtonProps, {}> {
+export default class Button extends PureComponent<ButtonProps, { _loading: boolean }> {
   static displayName = 'Button';
 
   static defaultProps: ButtonProps = {
@@ -41,13 +43,24 @@ export default class Button extends PureComponent<ButtonProps, {}> {
     htmlType: 'button',
   };
 
+  constructor(props) {
+    super(props);
+    this.state = { _loading: false };
+  }
+
   onClick: ButtonProps['onClick'] = (e) => {
-    const { disabled, onClick } = this.props;
-    if (disabled) {
+    const { disabled, onClick, loading } = this.props;
+    if (disabled || loading || this.state._loading) {
       return;
     }
     if (typeof onClick === 'function') {
-      onClick(e);
+      const returnValue = onClick(e);
+      if (isPromise(returnValue)) {
+        this.setState({ _loading: true });
+        (returnValue as Promise<unknown>).finally(() => {
+          this.setState({ _loading: false });
+        });
+      }
     }
   };
 
@@ -63,11 +76,13 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       ghost,
       shadow,
       disabled,
-      loading,
       onClick,
+      loading,
       children,
       ...rest
     } = this.props;
+    const { _loading } = this.state;
+    const computedLoading = loading || _loading;
 
     let cls = classnames(prefixCls, className, {
       [`${prefixCls}--${theme}`]: !!theme,
@@ -77,15 +92,15 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       [`${prefixCls}--ghost`]: !!ghost,
       [`${prefixCls}--shadow`]: !!shadow,
       [`${prefixCls}--disabled`]: !!disabled,
-      [`${prefixCls}--loading`]: loading,
+      [`${prefixCls}--loading`]: computedLoading,
     });
 
-    const iconRender = loading ? <ActivityIndicator /> : icon;
+    const iconRender = computedLoading ? <ActivityIndicator /> : icon;
 
     const childrenRender = children && <span>{children}</span>;
 
     const contentRender =
-      !!icon || loading ? (
+      !!icon || computedLoading ? (
         <div className={`${prefixCls}__content`}>
           {iconRender}
           {childrenRender}
@@ -107,6 +122,9 @@ export default class Button extends PureComponent<ButtonProps, {}> {
           className={cls}
           onClick={this.onClick}
         >
+          <Button onClick={() => new Promise((resolve) => setTimeout(resolve, 1000 * 3))}>
+            Automatic Loading
+          </Button>
           {contentRender}
         </a>
       );

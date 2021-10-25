@@ -7,3 +7,7 @@ export type StringPropertyNames<T> = {
 export type NonFunctionPropertyNames<T> = {
   [K in keyof T]: T[K] extends Function ? never : K;
 }[keyof T];
+
+export type ModifyReturnType<OriginalFN, ReturnType> = OriginalFN extends (...a: infer A) => any
+  ? (...a: A) => ReturnType
+  : never;
