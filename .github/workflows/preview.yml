@@ -94,15 +94,14 @@ jobs:
 
       - name: Upload Surge Service
         id: deploy
-        uses: dswistowski/surge-sh-action@v1
-        with:
-          domain: 'https://preview-${{ github.event.number }}-zarm-design.surge.sh'
-          project: './packages/site/assets'
-          login: ${{ secrets.SURGE_LOGIN }}
-          token: ${{ secrets.SURGE_TOKEN }}
-        # run: |
-        #   export DEPLOY_DOMAIN=https://preview-${{ github.event.number }}-zarm-design.surge.sh
-        #   npx surge --project ./packages/site/assets --domain $DEPLOY_DOMAIN --token ${{ secrets.SURGE_TOKEN }}
+        # uses: dswistowski/surge-sh-action@v1
+        # with:
+        #   domain: 'https://preview-${{ github.event.number }}-zarm-design.surge.sh'
+        #   project: './packages/site/assets'
+        #   login: ${{ secrets.SURGE_LOGIN }}
+        #   token: ${{ secrets.SURGE_TOKEN }}
+        run: |
+          npx surge ./packages/site/assets https://preview-${{ github.event.number }}-zarm-design.surge.sh --token ${{ secrets.SURGE_TOKEN }}
     needs: build
 
   comment:
