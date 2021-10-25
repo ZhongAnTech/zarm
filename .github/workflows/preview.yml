@@ -76,7 +76,7 @@ jobs:
           key: ${{ runner.os }}-assets-${{ github.sha }}
 
       - name: Deploy Build
-        run: yarn deploy:build
+        run: lerna exec --scope site -- yarn build
     needs: compile-cli
 
   deploy:
