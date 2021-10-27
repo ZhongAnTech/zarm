@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import { BaseConfirmProps } from './interface';
+import type { BaseConfirmProps } from './interface';
 import Modal from '../modal';
 import ModalButton from '../modal/ModalButton';
 import { ConfigContext } from '../n-config-provider';

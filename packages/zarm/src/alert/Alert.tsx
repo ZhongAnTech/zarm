@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import { BaseAlertProps } from './interface';
+import type { BaseAlertProps } from './interface';
 import Modal from '../modal';
 import { ConfigContext } from '../n-config-provider';
 import ModalButton from '../modal/ModalButton';

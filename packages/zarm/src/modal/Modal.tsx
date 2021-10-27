@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import { Close as CloseIcon } from '@zarm-design/icons';
-import { BaseModalProps } from './interface';
+import type { BaseModalProps } from './interface';
 import { ConfigContext } from '../n-config-provider';
 import Popup from '../popup';
 

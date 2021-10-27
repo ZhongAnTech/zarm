@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { ContainerType } from '../utils/dom';
+import type { ContainerType } from '../utils/dom';
 
 export interface BaseConfirmProps {
   shape?: 'radius' | 'rect';
