@@ -1,8 +1,7 @@
 import { ReactNode } from 'react';
-import { Locale } from '../config-provider/PropsType';
 import { ContainerType } from '../utils/dom';
 
-export default interface PropsType {
+export interface BaseConfirmProps {
   shape?: 'radius' | 'rect';
   visible?: boolean;
   animationType?:
@@ -23,10 +22,10 @@ export default interface PropsType {
   width?: string | number;
   title?: ReactNode;
   content?: ReactNode;
+  okText?: string;
+  onOk?: () => void | Promise<boolean | void>;
   cancelText?: string;
-  destroy?: boolean;
-  onCancel?: () => void;
+  onCancel?: () => void | Promise<boolean | void>;
   afterClose?: () => void;
-  locale?: Locale['Alert'];
-  mountContainer?: ContainerType;
+  mountContainer?: ContainerType | false;
 }

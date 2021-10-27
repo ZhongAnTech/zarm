@@ -5,9 +5,10 @@ import { ContainerType, getMountContainer } from './dom';
 export default function renderToContainer(
   mountContainer: ContainerType,
   element: React.ReactElement,
+  slot?: HTMLDivElement,
 ) {
   const container = getMountContainer(mountContainer);
-  const wrapper = document.createElement('div');
+  const wrapper = slot instanceof HTMLElement ? slot : document.createElement('div');
   container.appendChild(wrapper);
   function unmount() {
     const removed = ReactDOM.unmountComponentAtNode(wrapper);

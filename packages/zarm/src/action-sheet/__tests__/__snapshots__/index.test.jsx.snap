@@ -22,6 +22,7 @@ exports[`ActionSheet renders correctly 1`] = `
   destroy={true}
   onCancel={[MockFunction]}
   onMaskClick={[MockFunction]}
+  safeIphoneX={false}
   spacing={false}
   visible={true}
 >

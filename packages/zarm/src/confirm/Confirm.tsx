@@ -1,62 +1,59 @@
-import React, { PureComponent } from 'react';
+import * as React from 'react';
 import classnames from 'classnames';
-import PropsType from './PropsType';
+import { BaseConfirmProps } from './interface';
 import Modal from '../modal';
-import confirmLocale from './locale/zh_CN';
+import ModalButton from '../modal/ModalButton';
+import { ConfigContext } from '../n-config-provider';
 
-export interface ConfirmProps extends PropsType {
-  prefixCls?: string;
+export interface ConfirmProps extends BaseConfirmProps {
   className?: string;
+  style?: React.CSSProperties;
 }
 
-export default class Confirm extends PureComponent<ConfirmProps, {}> {
-  static defaultProps: ConfirmProps = {
-    prefixCls: 'za-confirm',
-    animationType: 'zoom',
-    locale: confirmLocale,
-    shape: 'radius',
-  };
+const Confirm: React.FC<ConfirmProps> = (props) => {
+  const { className, shape, content, okText, cancelText, onOk, onCancel, ...rest } = props;
+  const { prefixCls: globalPrefixCls, locale } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-confirm`;
+  const classes = classnames(prefixCls, className, {
+    [`${prefixCls}--${shape}`]: !!shape,
+  });
 
-  render() {
-    const {
-      prefixCls,
-      className,
-      content,
-      okText,
-      cancelText,
-      shape,
-      onOk,
-      onCancel,
-      locale,
-      ...others
-    } = this.props;
-    const cls = {
-      confirm: classnames(prefixCls, className, {
-        [`${prefixCls}--${shape}`]: !!shape,
-      }),
-    };
-    return (
-      <div className={cls.confirm}>
-        <Modal
-          {...others}
-          footer={
-            <>
-              <button type="button" className={`${prefixCls}__button`} onClick={onCancel}>
-                {cancelText || locale!.cancelText}
-              </button>
-              <button
-                type="button"
-                className={`${prefixCls}__button ${prefixCls}__button--ok`}
-                onClick={onOk}
-              >
-                {okText || locale!.okText}
-              </button>
-            </>
-          }
-        >
-          {content}
-        </Modal>
-      </div>
-    );
-  }
-}
+  const loadingClassName = `${prefixCls}__button--loading`;
+
+  return (
+    <div className={classes}>
+      <Modal
+        {...rest}
+        footer={
+          <>
+            <ModalButton
+              className={`${prefixCls}__button`}
+              loadingClassName={loadingClassName}
+              onClick={onCancel}
+            >
+              {cancelText || locale?.Confirm.cancelText}
+            </ModalButton>
+            <ModalButton
+              className={`${prefixCls}__button ${prefixCls}__button--ok`}
+              loadingClassName={loadingClassName}
+              onClick={onOk}
+            >
+              {okText || locale?.Confirm.okText}
+            </ModalButton>
+          </>
+        }
+      >
+        {content}
+      </Modal>
+    </div>
+  );
+};
+
+Confirm.displayName = 'Confirm';
+
+Confirm.defaultProps = {
+  animationType: 'zoom',
+  shape: 'radius',
+};
+
+export default Confirm;

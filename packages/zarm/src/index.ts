@@ -2,7 +2,10 @@ export type { CollapseProps, CollapseItemProps } from './collapse';
 export { default as Collapse } from './collapse';
 
 export { default as ActionSheet } from './action-sheet';
+
+export type { AlertProps } from './alert';
 // export { default as Alert } from './alert';
+
 export { default as BackToTop } from './back-to-top';
 
 export type { BadgeProps } from './badge';
@@ -19,6 +22,7 @@ export { default as List } from './list';
 export type { CheckboxProps, CheckboxGroupProps } from './checkbox';
 export { default as Checkbox } from './checkbox';
 
+export type { ConfirmProps } from './confirm';
 // export { default as Confirm } from './confirm';
 
 export type { DatePickerViewProps } from './date-picker-view';
@@ -55,6 +59,7 @@ export { default as Mask } from './mask';
 export type { MessageProps } from './message';
 export { default as Message } from './message';
 
+export type { ModalProps } from './modal';
 export { default as Modal } from './modal';
 
 export type { NoticeBarProps } from './notice-bar';
