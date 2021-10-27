@@ -23,10 +23,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @include m(landscape) {
+      overflow: hidden;
+
+      @include e(item) {
+        overflow: hidden;
+
+        img {
+          // height: 100%;
+          width: auto;
+          // height: 100vh;
+        }
+      }
+    }
   }
 
   @include e(item) {
-    text-align: center;
+    // text-align: center;
     position: relative;
     overflow: auto;
 

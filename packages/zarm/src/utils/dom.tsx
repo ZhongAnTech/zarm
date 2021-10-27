@@ -2,7 +2,7 @@
 import raf from 'raf';
 import { StringPropertyNames } from './utilityTypes';
 
-export type ContainerType = HTMLElement | (() => HTMLElement) | Window;
+export type ContainerType = HTMLElement | (() => HTMLElement) | Window | false;
 
 // 获取元素的纵坐标（相对于窗口）
 export const getTop = (ele: HTMLElement): number => {

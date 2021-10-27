@@ -93,22 +93,38 @@ const PinchZoom = React.forwardRef<unknown, PinchZoomProps>((props, ref) => {
   }, [currentScale, container, onPinchZoom]);
 
   useEffect(() => {
-    const rect = container.current.getBoundingClientRect();
-
     const node = container.current?.firstElementChild;
+    const alignCenter = () => {
+      initOffset.current = {
+        x: 0,
+        y: 0,
+      };
+
+      const rect = container.current?.getBoundingClientRect();
+      const { width, height } = getElementSize(node);
+
+      if (width < rect?.width) {
+        initOffset.current = { x: -(rect?.width - width) / 2, y: 0 };
+      }
+      if (height < rect?.height) {
+        initOffset.current = { x: initOffset.current.x, y: -(rect?.height - height) / 2 };
+      }
+      offset.current = initOffset?.current;
+      update();
+    };
     if (node.nodeName === 'IMG') {
       Events.on(node, 'load', () => {
-        const { width, height } = getElementSize(node);
-        if (width < rect.width || height < rect.height) {
-          initOffset.current = { x: -(rect.width - width) / 2, y: -(rect.height - height) / 2 };
-          offset.current = initOffset?.current;
-          update();
-        }
+        alignCenter();
         node.style.setProperty('opacity', 1);
       });
     } else {
+      alignCenter();
       node.style.setProperty('opacity', 1);
     }
+    Events.on(window, 'resize', alignCenter);
+    return () => {
+      Events.off(window, 'resize', alignCenter);
+    };
   }, [initOffset, offset, container, update]);
 
   const calculateOffset = (newOffset: Point) => {

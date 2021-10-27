@@ -144,7 +144,15 @@ describe('index', () => {
         "Icon": [Function],
         "ImagePreview": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "activeIndex": 0,
+            "maxScale": 3,
+            "minScale": 1,
+            "showPagination": true,
+            "visible": false,
+          },
           "render": [Function],
+          "show": [Function],
         },
         "Input": Object {
           "$$typeof": Symbol(react.forward_ref),
