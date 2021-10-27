@@ -198,8 +198,7 @@ ReactDOM.render(<Demo />, mountNode);
 | maxScale       | number                                             | 3      | 图片最大缩放比例                  |
 | images         | Array<string \| {src: string; originSrc: string;}> | -      | 图片地址                          |
 | activeIndex    | number                                             | 0      | 当前展示的图片是第几张，从 0 开始 |
-| showPagination | boolean                                            | true   | 是否显示                          |
-| 分页器         |
+| showPagination | boolean                                            | true   | 是否显示分页器                    |
 | orientation    | string                                             | ''     | 横竖屏，默认使用`UseOrientation`  |
 | onChange       | (activeIndex?: number) => void                     | -      | 图片切换时候回调                  |
 | onClose        | () => void                                         | -      | 关闭时候回调                      |
