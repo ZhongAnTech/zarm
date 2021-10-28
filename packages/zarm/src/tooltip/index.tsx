@@ -1,41 +1,38 @@
 import React from 'react';
+import classnames from 'classnames';
+import { ConfigContext } from '../n-config-provider';
 import Popper from '../popper';
-import BaseTooltipProps from './PropsType';
+import BaseTooltipProps from './interface';
 import { PopperPlacement, PopperTrigger } from '../popper/PropsType';
 
-export interface TooltipProps extends BaseTooltipProps {
-  prefixCls?: string;
-  className?: string;
-  children?: React.ReactNode;
-}
+export type TooltipProps = BaseTooltipProps & React.InputHTMLAttributes<HTMLInputElement>;
 
 export type TooltipPlacement = PopperPlacement;
 
 export type TooltipTrigger = PopperTrigger;
 
-class Tooltip extends React.Component<TooltipProps, any> {
-  static updateAll() {
-    Popper.update();
-  }
+const Tooltip = (props: TooltipProps) => {
+  const { children, content, className, ...others } = props;
 
-  static defaultProps: TooltipProps = {
-    prefixCls: 'za-tooltip',
-    direction: 'top' as TooltipPlacement,
-    hasArrow: true,
-    onVisibleChange: () => {},
-  };
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-tooltip`;
+  const cls = classnames(prefixCls, className);
 
-  render() {
-    const { children, content, ...others } = this.props;
+  return !(content === '' || content === null || content === undefined) ? (
+    <Popper content={content} prefixCls={prefixCls} className={cls} {...others}>
+      {children}
+    </Popper>
+  ) : (
+    <>{children}</>
+  );
+};
 
-    return !(content === '' || content === null || content === undefined) ? (
-      <Popper content={content} {...others}>
-        {children}
-      </Popper>
-    ) : (
-      children
-    );
-  }
-}
+Tooltip.defaultProps = {
+  direction: 'top' as TooltipPlacement,
+  hasArrow: true,
+  onVisibleChange: () => {},
+};
+
+Tooltip.updateAll = () => Popper.update();
 
 export default Tooltip;
