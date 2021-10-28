@@ -1,6 +1,7 @@
 /* eslint-disable import/no-duplicates */
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
+import { useGesture } from '@use-gesture/react';
 import type { Images, BaseImagePreviewProps } from './interface';
 import Popup from '../popup';
 import Carousel from '../carousel';
@@ -91,71 +92,15 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
     event.stopPropagation();
   };
 
-  const [swipeable, setSwipeable] = useState(true);
-
-  const onPinchZoom = useCallback(
-    (scale) => {
-      if (scale !== minScale!) {
-        setSwipeable(false);
-      } else {
-        setSwipeable(true);
+  const bindEvent = useGesture({
+    onDrag: (state) => {
+      if (state.tap && state.elapsedTime > 0) {
+        if (typeof onClose === 'function') {
+          onClose();
+        }
       }
     },
-    [minScale],
-  );
-
-  const touchStartTime = useRef(0);
-  const moving = useRef(false);
-  const doubleClickTimer = useRef<null | ReturnType<typeof setTimeout>>(null);
-
-  const onWrapperTouchStart = () => {
-    touchStartTime.current = Date.now();
-  };
-
-  const onWrapperTouchEnd = () => {
-    const deltaTime = Date.now() - touchStartTime.current;
-    // prevent long tap to close component
-    if (deltaTime < 300) {
-      if (!doubleClickTimer.current && !moving.current) {
-        doubleClickTimer.current = setTimeout(() => {
-          doubleClickTimer.current = null;
-          if (typeof onClose === 'function') {
-            onClose();
-          }
-        }, 300);
-      } else {
-        doubleClickTimer.current && clearTimeout(doubleClickTimer.current);
-        doubleClickTimer.current = null;
-      }
-    }
-    moving.current = false;
-  };
-
-  const onWrapperTouchMove = () => {
-    if (touchStartTime.current) {
-      moving.current = true;
-    }
-  };
-
-  const onWrapperMouseDown = () => {
-    touchStartTime.current = Date.now();
-  };
-
-  const onWrapperMouseUp = () => {
-    setTimeout(() => {
-      moving.current = false;
-    }, 0);
-    touchStartTime.current = 0;
-  };
-
-  const close = () => {
-    if (moving.current) {
-      return false;
-    }
-    if (typeof onClose === 'function') {
-      onClose();
-    }
-  };
+  });
 
   const renderImages = () => {
     const height = Math.min(window?.innerHeight, window?.innerWidth);
@@ -165,12 +110,7 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
     return images.map((item, i) => {
       return (
         <div className={`${prefixCls}__item`} key={+i}>
-          <PinchZoom
-            className={`${prefixCls}__item__img`}
-            minScale={minScale}
-            maxScale={maxScale}
-            onPinchZoom={onPinchZoom}
-          >
+          <PinchZoom className={`${prefixCls}__item__img`} minScale={minScale} maxScale={maxScale}>
             <img src={item.src} alt="" draggable={false} style={imageStyle} />
           </PinchZoom>
         </div>
@@ -211,25 +151,14 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
 
   return (
     <Popup direction="center" visible={visible} className={classnames(prefixCls, className)}>
-      <div
-        className={cls}
-        ref={imagePreviewRef}
-        onTouchStart={onWrapperTouchStart}
-        onTouchEnd={onWrapperTouchEnd}
-        onTouchCancel={onWrapperTouchEnd}
-        onTouchMove={onWrapperTouchMove}
-        onMouseDown={onWrapperMouseDown}
-        onMouseMove={onWrapperTouchMove}
-        onMouseUp={onWrapperMouseUp}
-        onClick={close}
-      >
+      <div className={cls} ref={imagePreviewRef} {...bindEvent()}>
         {visible &&
           (images?.length ? (
             <Carousel
               showPagination={false}
               onChange={onChange}
               activeIndex={currentIndex}
-              swipeable={swipeable}
+              swipeable
             >
               {renderImages()}
             </Carousel>

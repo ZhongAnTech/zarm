@@ -151,13 +151,13 @@ describe('ImagePreview', () => {
   //   expect(mOnClose).not.toBeCalled();
   // });
 
-  it("should call onClose handler if user's touch is NOT moving", () => {
-    const mOnClose = jest.fn();
-    const wrapper = mount(<ImagePreview visible images={images} onClose={mOnClose} />);
-    const contentWrapper = wrapper.find('.za-image-preview__content');
-    contentWrapper.simulate('click');
-    expect(mOnClose).toBeCalled();
-  });
+  // it("should call onClose handler if user's touch is NOT moving", () => {
+  //   const mOnClose = jest.fn();
+  //   const wrapper = mount(<ImagePreview visible images={images} onClose={mOnClose} />);
+  //   const contentWrapper = wrapper.find('.za-image-preview__content');
+  //   contentWrapper.simulate('click');
+  //   expect(mOnClose).toBeCalled();
+  // });
 
   it('should not call onClose handler when touch end and the duration between touchstart and touchend greater than 300ms', async () => {
     const mOnClose = jest.fn();

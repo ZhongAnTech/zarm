@@ -9,8 +9,8 @@ import { List, Button, ImagePreview, NoticeBar, useOrientation } from 'zarm';
 console.log(ImagePreview);
 const commonImages = [
   'https://cdn-health.zhongan.com/zarm/imagePreview/1-small.jpg',
-  'https://cdn-health.zhongan.com/zarm/imagePreview/2-small.jpg',
-  'https://cdn-health.zhongan.com/zarm/imagePreview/3-small.jpg',
+  // 'https://cdn-health.zhongan.com/zarm/imagePreview/2-small.jpg',
+  // 'https://cdn-health.zhongan.com/zarm/imagePreview/3-small.jpg',
 ];
 
 const Demo = () => {

@@ -99,14 +99,12 @@ const PinchZoom = React.forwardRef<unknown, PinchZoomProps>((props, ref) => {
         x: 0,
         y: 0,
       };
-
       const rect = container.current?.getBoundingClientRect();
       const { width, height } = getElementSize(node);
-
-      if (width < rect?.width) {
+      if (width <= rect?.width) {
         initOffset.current = { x: -(rect?.width - width) / 2, y: 0 };
       }
-      if (height < rect?.height) {
+      if (height <= rect?.height) {
         initOffset.current = { x: initOffset.current.x, y: -(rect?.height - height) / 2 };
       }
       offset.current = initOffset?.current;
@@ -115,16 +113,11 @@ const PinchZoom = React.forwardRef<unknown, PinchZoomProps>((props, ref) => {
     if (node.nodeName === 'IMG') {
       Events.on(node, 'load', () => {
         alignCenter();
-        node.style.setProperty('opacity', 1);
       });
     } else {
       alignCenter();
-      node.style.setProperty('opacity', 1);
     }
-    Events.on(window, 'resize', alignCenter);
-    return () => {
-      Events.off(window, 'resize', alignCenter);
-    };
+    alignCenter();
   }, [initOffset, offset, container, update]);
 
   const calculateOffset = (newOffset: Point) => {
