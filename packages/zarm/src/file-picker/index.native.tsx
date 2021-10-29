@@ -16,7 +16,7 @@ import CameraRollPicker from 'react-native-camera-roll-picker';
 
 import NavBar from '../nav-bar/index.native';
 
-import PropsType from './PropsType';
+import PropsType from './interface';
 import filePickerStyle from './style/index.native';
 
 export interface FilePickerProps extends PropsType {
