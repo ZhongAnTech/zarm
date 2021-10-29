@@ -77,7 +77,8 @@
     "normalize.css": "8.0.1",
     "popper.js": "^1.15.0",
     "raf": "^3.4.1",
-    "react-native-camera-roll-picker": "1.2.3"
+    "react-native-camera-roll-picker": "1.2.3",
+    "react-signature-canvas": "^1.0.3"
   },
   "devDependencies": {
     "@types/react": "^17.0.3",

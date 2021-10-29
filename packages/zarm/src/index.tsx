@@ -56,3 +56,4 @@ export { default as ConfigProvider } from './config-provider';
 export { default as ConfigReceiver } from './config-receiver';
 export { default as StackPicker } from './stack-picker';
 export { default as Affix } from './affix';
+export { default as SignatureBoard } from './signature-board';
