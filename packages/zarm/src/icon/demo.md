@@ -1,5 +1,30 @@
 # Icon 图标
 
+## @zarm-design/icons 自带图标
+
+```jsx
+import { Info, Close, WaitingCircleFill } from '@zarm-design/icons';
+
+// ArrowDown,ArrowLeft,ArrowRight,ArrowUp,Close,CloseCircle,CloseCircleFill,DeleteKey,Info,InfoCircle,InfoCircleFill,Keyboard,Minus,Plus,PlusCircle,Search,Success,SuccessCircle,Volume,Waiting,WaitingCircle,WaitingCircleFill,Warning,WarningCircle
+ReactDOM.render(
+  <div className="grid">
+    <div className="grid-column">
+      <Info theme="primary" />
+      <span>Info</span>
+    </div>
+    <div className="grid-column">
+      <Close theme="warning" />
+      <span>Close</span>
+    </div>
+    <div className="grid-column">
+      <WaitingCircleFill theme="danger" />
+      <span>WaitingCircleFill</span>
+    </div>
+  </div>,
+  mountNode,
+);
+```
+
 ## 基本用法
 
 ```jsx
