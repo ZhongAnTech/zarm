@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { IntlProvider, FormattedMessage } from 'react-intl';
-import { Icon, Popup, Radio } from 'zarm';
+import { Popup, Radio, Icon } from 'zarm';
 import { Dropdown, Menu } from 'zarm-web';
+import { Search as SearchIcon, Close as CloseIcon } from '@zarm-design/icons';
 import classnames from 'classnames';
 import docsearch from 'docsearch.js';
 import MenuComponent from '@/web/components/Menu';
@@ -23,7 +24,7 @@ const initDocSearch = () => {
   });
 };
 
-const Icons = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_lpsswvb7yv.js');
+const Icons = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_mk657pke2hj.js');
 
 const Header = ({ children }) => {
   const searchInput = useRef();
@@ -84,7 +85,7 @@ const Header = ({ children }) => {
           <Icons type="list" onClick={() => toggleMenu(!menu)} />
           <Popup visible={menu} direction="left" onMaskClick={() => toggleMenu(!menu)}>
             <div className="header-menu">
-              {/* <div className="header-menu__close"><Icon type="close" /></div> */}
+              {/* <div className="header-menu__close"><CloseIcon /></div> */}
               <MenuComponent />
             </div>
           </Popup>
@@ -141,7 +142,7 @@ const Header = ({ children }) => {
             {moreRender}
             <nav>
               <div className="search">
-                <Icon type="search" />
+                <SearchIcon />
                 <FormattedMessage id="app.home.nav.search">
                   {(txt) => <input placeholder={txt} ref={searchInput} />}
                 </FormattedMessage>

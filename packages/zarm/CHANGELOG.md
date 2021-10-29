@@ -1,5 +1,53 @@
 # 版本更新日志
 
+## v2.9.9
+
+- Bug Fix
+
+  - [Popup] 修复当 mountContainer 为 `false` 时，丢失容器 div 的 bug。[#769](https://github.com/ZhongAnTech/zarm/issue/769)
+
+## v2.9.8
+
+- Bug Fix
+
+  - [Pull] 修复当 window 作为滚动容器时，触发事件的临界点判断错误的 bug。[#760](https://github.com/ZhongAnTech/zarm/pull/760)
+
+## v2.9.7
+
+- Bug Fix
+
+  - [Keyboard] 修复长按删除按钮会陷入死循环（重复执行删除操作且松开后无法退出）的 bug。[#745](https://github.com/ZhongAnTech/zarm/pull/745)[@Confettis]
+
+## v2.9.6
+
+- Bug Fix
+
+  - [Calendar] 修复日历组件不支持国际化的 bug。[#738](https://github.com/ZhongAnTech/zarm/pull/738)
+
+## v2.9.5
+
+- Bug Fix
+
+  - 修复 Loading 和 Toast 静态方法使用后实例未销毁的 bug。[#710](https://github.com/ZhongAnTech/zarm/issues/710)
+  - [Pull] 修复因滚动容器变更导致原有容器事件监听未解除的 bug。[#734](https://github.com/ZhongAnTech/zarm/issues/734)
+
+## v2.9.4
+
+- Bug Fix
+
+  - [Collapse] 修复同时设置 activeKey 和 defaultActiveKey 属性属性导致的 bug。[#698](https://github.com/ZhongAnTech/zarm/pull/698)
+
+  - [Modal] 修复 Modal 静态方法 `Modal.confirm` 和 `Modal.alert` 使用后实例未销毁的 bug。[#710](https://github.com/ZhongAnTech/zarm/issues/710)
+
+- Perf
+  - [Button] 优化按钮点击 300ms 延时。[#701](https://github.com/ZhongAnTech/zarm/pull/701)
+
+## v2.9.3
+
+- Bug Fix
+
+  - [Button] 修复 primary 主题下 loading 状态活动指示器不可见的 bug。[#692](https://github.com/ZhongAnTech/zarm/pull/692)
+
 ## v2.9.2
 
 - Bug Fix

@@ -1,6 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
-import { Icon, BackToTop } from 'zarm';
+import { BackToTop } from 'zarm';
+import { ArrowUp as ArrowUpIcon } from '@zarm-design/icons';
 import Header from '@/web/components/Header';
 import './style.scss';
 
@@ -12,7 +13,7 @@ const Container = ({ className, children, ...others }) => {
       <Header>{children}</Header>
       <BackToTop>
         <div className="scroll-to-top">
-          <Icon type="arrow-top" size="sm" />
+          <ArrowUpIcon size="sm" />
         </div>
       </BackToTop>
     </div>
