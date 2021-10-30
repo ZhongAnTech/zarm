@@ -1,9 +1,8 @@
-import type { Locale } from '../config-provider/PropsType';
 import type { BaseDatePickerViewProps } from '../date-picker-view/PropsType';
 import type { ContainerType } from '../utils/dom';
 
 export interface BaseDatePickerProps
-  extends Omit<BaseDatePickerViewProps, 'onChange' | 'stopScroll' | 'locale'> {
+  extends Omit<BaseDatePickerViewProps, 'onChange' | 'stopScroll'> {
   visible?: boolean;
   title?: string;
   okText?: string;
@@ -13,5 +12,4 @@ export interface BaseDatePickerProps
   onChange?: (value: Date) => void;
   maskClosable?: boolean;
   mountContainer?: ContainerType;
-  locale?: Locale['DatePickerView'] & Locale['DatePicker'];
 }
