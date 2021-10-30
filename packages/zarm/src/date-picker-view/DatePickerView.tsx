@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import isEqual from 'lodash/isEqual';
+import React, { useContext, useEffect, useState } from 'react';
+import { ConfigContext } from '../n-config-provider';
 import PickerView from '../picker-view';
-import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
 import { isExtendDate, parseState } from './utils/parseState';
 import { cloneDate, getDaysInMonth, getGregorianCalendar, pad, setMonth } from './utils/date';
-import type { BaseDatePickerViewProps } from './PropsType';
+import type { BaseDatePickerViewProps } from './interface';
 
 const DATETIME = 'datetime';
 const DATE = 'date';
@@ -13,65 +12,100 @@ const MONTH = 'month';
 const YEAR = 'year';
 const ONE_DAY = 24 * 60 * 60 * 1000;
 
-export interface DatePickerViewProps extends BaseDatePickerViewProps {
-  prefixCls?: string;
-  className?: string;
-}
-
-export type DatePickerViewState = ReturnType<typeof parseState>;
-
-export default class DatePickerView extends Component<DatePickerViewProps, DatePickerViewState> {
-  static defaultProps: DatePickerViewProps = {
-    prefixCls: 'za-date-picker-view',
-    mode: DATE,
-    disabled: false,
-    minuteStep: 1,
-    valueMember: 'value',
-    stopScroll: false,
-  };
-
-  static getDerivedStateFromProps(props, state) {
-    if (
-      !isEqual(
-        removeFnFromProps(props, ['onChange', 'onInit', 'onTransition']),
-        removeFnFromProps(state.prevProps, ['onChange', 'onInit', 'onTransition']),
-      )
-    ) {
-      return {
-        prevProps: props,
-        ...parseState(props),
-      };
-    }
-
-    return null;
+const getRangeItems = (start: number, end: number, fn: Function) => {
+  const items: object[] = [];
+  for (let i = start; i <= end; i += 1) {
+    items.push(fn(i));
   }
 
-  constructor(props: DatePickerViewProps) {
-    super(props);
-    this.state = parseState(props);
-    const { onInit } = this.props;
-    if (typeof onInit === 'function') {
-      onInit(this.getDate());
-    }
-    this.getColsValue = this.getColsValue.bind(this);
-  }
+  return items;
+};
 
-  onValueChange = (selected, index) => {
-    const { onChange } = this.props;
-    const newValue = this.getNewDate(selected, index);
-    this.setState({
-      date: newValue,
-    });
+export type DatePickerViewProps = BaseDatePickerViewProps & React.HTMLAttributes<HTMLElement>;
 
-    if (typeof onChange === 'function') {
-      onChange(newValue);
-    }
+const DatePickerView = (props: DatePickerViewProps) => {
+  const {
+    className,
+    onInit,
+    defaultValue,
+    wheelDefaultValue,
+    onChange,
+    mode,
+    valueMember,
+    min,
+    max,
+    minuteStep,
+    ...others
+  } = props;
+
+  const [state, setState] = useState<{ date: any; wheelDefault: any }>(parseState(props));
+
+  const { prefixCls: globalPrefixCls, locale: globalLocal } = useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-date-picker`;
+  // const cls = classnames(prefixCls, className);
+  const locale = globalLocal?.DatePickerView;
+
+  const getRangeDate = (minDate, maxDate) => {
+    return {
+      min: isExtendDate(minDate) || getGregorianCalendar(1900, 0, 1, 0, 0, 0),
+      max: isExtendDate(maxDate) || getGregorianCalendar(2030, 11, 30, 23, 59, 59),
+    };
   };
 
-  getNewDate = (values, index) => {
-    const { mode, valueMember } = this.props;
+  const clipDate = (date) => {
+    const { min: minDate, max: maxDate } = getRangeDate(min, max);
+
+    if (mode === DATETIME) {
+      if (date < minDate) {
+        return cloneDate(minDate);
+      }
+      if (date > maxDate) {
+        return cloneDate(maxDate);
+      }
+    } else if (mode === DATE || mode === MONTH || mode === YEAR) {
+      if (+date + ONE_DAY <= +minDate) {
+        return cloneDate(minDate);
+      }
+      if (date >= +maxDate + ONE_DAY) {
+        return cloneDate(maxDate);
+      }
+    } else {
+      const maxHour = maxDate.getHours();
+      const maxMinutes = maxDate.getMinutes();
+      const minHour = minDate.getHours();
+      const minMinutes = minDate.getMinutes();
+      const hour = date.getHours();
+      const minutes = date.getMinutes();
+      if (hour < minHour || (hour === minHour && minutes < minMinutes)) {
+        return cloneDate(minDate);
+      }
+      if (hour > maxHour || (hour === maxHour && minutes > maxMinutes)) {
+        return cloneDate(maxDate);
+      }
+    }
+    return date;
+  };
+
+  const getDefaultDate = () => {
+    const { min: minDate, max: maxDate } = getRangeDate(min, max);
+
+    // 存在最小值且毫秒数大于现在
+    if (min && minDate.getTime() >= Date.now()) {
+      return minDate;
+    }
+    if (minuteStep && minuteStep > 1 && (mode === DATETIME || mode === TIME)) {
+      return new Date(new Date().setMinutes(0));
+    }
+    return new Date();
+  };
+
+  const getDate = () => {
+    return clipDate(state.date || state.wheelDefault || getDefaultDate());
+  };
+
+  const getNewDate = (values, index) => {
     const value = parseInt(values[index][valueMember!], 10);
-    const newValue = cloneDate(this.getDate());
+    const newValue = cloneDate(getDate());
     if (mode === YEAR || mode === MONTH || mode === DATE || mode === DATETIME) {
       switch (index) {
         case 0:
@@ -104,61 +138,50 @@ export default class DatePickerView extends Component<DatePickerViewProps, DateP
           break;
       }
     }
-    return this.clipDate(newValue);
+    return clipDate(newValue);
   };
 
-  getColsValue() {
-    const { mode } = this.props;
-    const date = this.getDate();
+  const onValueChange = (selected, index) => {
+    const newValue = getNewDate(selected, index);
+    setState((preState) => ({ ...preState, date: newValue }));
 
-    let dataSource: any[] = [];
-    let value: any[] = [];
+    if (typeof onChange === 'function') {
+      onChange(newValue);
+    }
+  };
 
-    if (mode === YEAR) {
-      dataSource = this.getDateData();
-      value = [date.getFullYear()];
-    }
-    if (mode === MONTH) {
-      dataSource = this.getDateData();
-      value = [date.getFullYear(), date.getMonth()];
-    }
-    if (mode === DATE || mode === DATETIME) {
-      dataSource = this.getDateData();
-      value = [date.getFullYear(), date.getMonth(), date.getDate()];
-    }
-    if (mode === DATETIME) {
-      dataSource = dataSource.concat(this.getTimeData());
-      value = value.concat([date.getHours(), date.getMinutes()]);
-    }
-    if (mode === TIME) {
-      dataSource = this.getTimeData();
-      value = [date.getHours(), date.getMinutes()];
-    }
-
+  const parseDate = (date: Date) => {
     return {
-      dataSource,
-      value,
+      minute: date.getMinutes(),
+      hour: date.getHours(),
+      day: date.getDate(),
+      month: date.getMonth(),
+      year: date.getFullYear(),
     };
-  }
+  };
 
-  getDateData = () => {
-    const { locale, mode } = this.props;
-    const date = this.getDate();
-    const yearCol: object[] = [];
-    const monthCol: object[] = [];
-    const dayCol: object[] = [];
+  const parseRangeDate = (minDate, maxDate) => {
+    const date = getRangeDate(minDate, maxDate);
+    return {
+      max: parseDate(date.max),
+      min: parseDate(date.min),
+    };
+  };
+
+  const getDateData = () => {
+    const date = getDate();
+
+    const { min: minDate, max: maxDate } = parseRangeDate(min, max);
 
     const selectYear = date.getFullYear();
     const selectMonth = date.getMonth();
-    const minYear = this.getMinYear();
-    const maxYear = this.getMaxYear();
+    const minYear = minDate.year;
+    const maxYear = maxDate.year;
 
-    for (let i = minYear; i <= maxYear; i += 1) {
-      yearCol.push({
-        label: i + locale!.year,
-        value: i,
-      });
-    }
+    const yearCol = getRangeItems(minYear, maxYear, (item: number) => ({
+      label: item + locale!.year,
+      value: item,
+    }));
 
     if (mode === YEAR) {
       return [yearCol];
@@ -166,19 +189,18 @@ export default class DatePickerView extends Component<DatePickerViewProps, DateP
 
     let minMonth = 0;
     let maxMonth = 11;
+
     if (selectYear === minYear) {
-      minMonth = this.getMinMonth();
+      minMonth = minDate.month;
     }
     if (selectYear === maxYear) {
-      maxMonth = this.getMaxMonth();
+      maxMonth = maxDate.month;
     }
 
-    for (let i = minMonth; i <= maxMonth; i += 1) {
-      monthCol.push({
-        label: i + 1 + locale!.month,
-        value: i,
-      });
-    }
+    const monthCol = getRangeItems(minMonth, maxMonth, (item: number) => ({
+      label: item + 1 + locale!.month,
+      value: item,
+    }));
 
     if (mode === MONTH) {
       return [yearCol, monthCol];
@@ -188,19 +210,17 @@ export default class DatePickerView extends Component<DatePickerViewProps, DateP
     let maxDay = getDaysInMonth(date);
 
     if (selectYear === minYear && selectMonth === minMonth) {
-      minDay = this.getMinDay();
+      minDay = minDate.day;
     }
 
     if (selectYear === maxYear && selectMonth === maxMonth) {
-      maxDay = this.getMaxDay();
+      maxDay = maxDate.day;
     }
 
-    for (let i = minDay; i <= maxDay; i += 1) {
-      dayCol.push({
-        label: i + locale!.day,
-        value: i,
-      });
-    }
+    const dayCol = getRangeItems(minDay, maxDay, (item: number) => ({
+      label: item + locale!.day,
+      value: item,
+    }));
 
     if (mode === DATE) {
       return [yearCol, monthCol, dayCol];
@@ -209,33 +229,33 @@ export default class DatePickerView extends Component<DatePickerViewProps, DateP
     return [yearCol, monthCol, dayCol];
   };
 
-  getTimeData = () => {
-    const { locale, mode, minuteStep } = this.props;
-    const date = this.getDate();
-    const hourCol: object[] = [];
-    const minuteCol: object[] = [];
+  const getTimeData = () => {
+    const date = getDate();
 
     let minHour = 0;
     let maxHour = 23;
     let minMinute = 0;
     let maxMinute = 59;
 
-    const minDateHour = this.getMinHour();
-    const maxDateHour = this.getMaxHour();
-    const minDateMinute = this.getMinMinute();
-    const maxDateMinute = this.getMaxMinute();
+    const { min: minDate, max: maxDate } = parseRangeDate(min, max);
+
+    const minDateHour = minDate.hour;
+    const maxDateHour = maxDate.hour;
+    const minDateMinute = minDate.minute;
+    const maxDateMinute = maxDate.minute;
     const selectHour = date.getHours();
 
     if (mode === DATETIME) {
       const selectYear = date.getFullYear();
       const selectMonth = date.getMonth();
       const selectDay = date.getDate();
-      const minYear = this.getMinYear();
-      const maxYear = this.getMaxYear();
-      const minMonth = this.getMinMonth();
-      const maxMonth = this.getMaxMonth();
-      const minDay = this.getMinDay();
-      const maxDay = this.getMaxDay();
+
+      const minYear = minDate.year;
+      const maxYear = maxDate.year;
+      const minMonth = minDate.month;
+      const maxMonth = maxDate.month;
+      const minDay = minDate.day;
+      const maxDay = maxDate.day;
 
       if (selectYear === minYear && selectMonth === minMonth && selectDay === minDay) {
         minHour = minDateHour;
@@ -262,145 +282,78 @@ export default class DatePickerView extends Component<DatePickerViewProps, DateP
       }
     }
 
-    for (let i = minHour; i <= maxHour; i += 1) {
-      hourCol.push({
-        label: locale!.hour ? i + locale!.hour : pad(i),
-        value: i,
-      });
-    }
+    const hourCol = getRangeItems(minHour, maxHour, (item: number) => ({
+      label: locale!.hour ? item + locale!.hour : pad(item),
+      value: item,
+    }));
 
-    for (let i = minMinute; i <= maxMinute; i += minuteStep!) {
-      minuteCol.push({
-        label: locale!.minute ? i + locale!.minute : pad(i),
-        value: i,
-      });
-    }
+    const minuteCol = getRangeItems(minMinute, maxMinute, (item: number) => ({
+      label: locale!.minute ? item + locale!.minute : pad(item),
+      value: item,
+    }));
 
     return [hourCol, minuteCol];
   };
 
-  getDate() {
-    const { date, wheelDefault } = this.state;
-    return this.clipDate(date || wheelDefault || this.getDefaultDate());
-  }
+  const getColsValue = () => {
+    const date = getDate();
 
-  getDefaultDate = () => {
-    const { min, mode, minuteStep } = this.props;
-    // 存在最小值且毫秒数大于现在
-    if (min && this.getMinDate().getTime() >= Date.now()) {
-      return this.getMinDate();
+    let dataSource: any[] = [];
+    let value: any[] = [];
+
+    if (mode === YEAR) {
+      dataSource = getDateData();
+      value = [date.getFullYear()];
     }
-    if (minuteStep && minuteStep > 1 && (mode === DATETIME || mode === TIME)) {
-      return new Date(new Date().setMinutes(0));
+    if (mode === MONTH) {
+      dataSource = getDateData();
+      value = [date.getFullYear(), date.getMonth()];
     }
-    return new Date();
-  };
-
-  getMinYear = () => {
-    return this.getMinDate().getFullYear();
-  };
-
-  getMaxYear = () => {
-    return this.getMaxDate().getFullYear();
-  };
-
-  getMinMonth = () => {
-    return this.getMinDate().getMonth();
-  };
-
-  getMaxMonth = () => {
-    return this.getMaxDate().getMonth();
-  };
-
-  getMinDay = () => {
-    return this.getMinDate().getDate();
-  };
-
-  getMaxDay = () => {
-    return this.getMaxDate().getDate();
-  };
-
-  getMinHour = () => {
-    return this.getMinDate().getHours();
-  };
-
-  getMaxHour = () => {
-    return this.getMaxDate().getHours();
-  };
-
-  getMinMinute = () => {
-    return this.getMinDate().getMinutes();
-  };
-
-  getMaxMinute = () => {
-    return this.getMaxDate().getMinutes();
-  };
-
-  getMinDate = () => {
-    const minDate = isExtendDate(this.props.min);
-    return minDate || this.getDefaultMinDate();
-  };
-
-  getMaxDate = () => {
-    const maxDate = isExtendDate(this.props.max);
-    return maxDate || this.getDefaultMaxDate();
-  };
-
-  getDefaultMinDate = () => {
-    return getGregorianCalendar(1900, 0, 1, 0, 0, 0);
-  };
-
-  getDefaultMaxDate = () => {
-    return getGregorianCalendar(2030, 11, 30, 23, 59, 59);
-  };
-
-  clipDate = (date) => {
-    const { mode } = this.props;
-    const minDate = this.getMinDate();
-    const maxDate = this.getMaxDate();
+    if (mode === DATE || mode === DATETIME) {
+      dataSource = getDateData();
+      value = [date.getFullYear(), date.getMonth(), date.getDate()];
+    }
     if (mode === DATETIME) {
-      if (date < minDate) {
-        return cloneDate(minDate);
-      }
-      if (date > maxDate) {
-        return cloneDate(maxDate);
-      }
-    } else if (mode === DATE || mode === MONTH || mode === YEAR) {
-      if (+date + ONE_DAY <= +minDate) {
-        return cloneDate(minDate);
-      }
-      if (date >= +maxDate + ONE_DAY) {
-        return cloneDate(maxDate);
-      }
-    } else {
-      const maxHour = maxDate.getHours();
-      const maxMinutes = maxDate.getMinutes();
-      const minHour = minDate.getHours();
-      const minMinutes = minDate.getMinutes();
-      const hour = date.getHours();
-      const minutes = date.getMinutes();
-      if (hour < minHour || (hour === minHour && minutes < minMinutes)) {
-        return cloneDate(minDate);
-      }
-      if (hour > maxHour || (hour === maxHour && minutes > maxMinutes)) {
-        return cloneDate(maxDate);
-      }
+      dataSource = dataSource.concat(getTimeData());
+      value = value.concat([date.getHours(), date.getMinutes()]);
     }
-    return date;
+    if (mode === TIME) {
+      dataSource = getTimeData();
+      value = [date.getHours(), date.getMinutes()];
+    }
+
+    return {
+      dataSource,
+      value,
+    };
   };
 
-  render() {
-    const { prefixCls, className, onInit, defaultValue, wheelDefaultValue, ...others } = this.props;
-    const { dataSource, value } = this.getColsValue();
-    return (
-      <PickerView
-        {...others}
-        className={className}
-        prefixCls={prefixCls}
-        dataSource={dataSource}
-        value={value}
-        onChange={this.onValueChange}
-      />
-    );
-  }
-}
+  useEffect(() => {
+    if (typeof onInit === 'function') {
+      onInit(getDate());
+    }
+  }, []);
+
+  const { dataSource, value } = getColsValue();
+
+  return (
+    <PickerView
+      {...others}
+      className={className}
+      prefixCls={prefixCls}
+      dataSource={dataSource}
+      value={value}
+      onChange={onValueChange}
+    />
+  );
+};
+
+DatePickerView.defaultProps = {
+  mode: DATE,
+  disabled: false,
+  minuteStep: 1,
+  valueMember: 'value',
+  stopScroll: false,
+};
+
+export default DatePickerView;

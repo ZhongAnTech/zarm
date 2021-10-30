@@ -1,5 +1,3 @@
-import type { Locale } from '../config-provider/PropsType';
-
 export type DatePickerValue = string | Date;
 
 export interface BaseDatePickerViewProps {
@@ -14,6 +12,5 @@ export interface BaseDatePickerViewProps {
   min?: DatePickerValue;
   max?: DatePickerValue;
   valueMember?: string;
-  locale?: Locale['DatePickerView'];
   stopScroll?: boolean;
 }

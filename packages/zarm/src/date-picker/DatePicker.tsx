@@ -52,7 +52,7 @@ const DatePicker = (props: DatePickerProps) => {
     setDate((preState) => ({ ...preState, date: selected }));
   };
 
-  const onValueChange = (newValue: Date) => {
+  const onValueChange = (newValue) => {
     setDate((preState) => ({ ...preState, date: newValue }));
 
     if (typeof onChange === 'function') {

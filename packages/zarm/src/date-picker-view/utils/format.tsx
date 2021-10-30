@@ -46,8 +46,8 @@ function formatDate(date, fmt) {
   return fmt;
 }
 
-export default function formatFn(instance, value) {
-  const { format } = instance.props;
+export default function formatFn(props, value) {
+  const { format, mode } = props;
   const type = typeof format;
   if (format && type === 'string') {
     return formatDate(value, format) || '';
@@ -61,6 +61,6 @@ export default function formatFn(instance, value) {
     return format(value) || '';
   }
 
-  return formatDate(value, getFormatter(instance.props.mode)) || '';
+  return formatDate(value, getFormatter(mode)) || '';
   // return value.format(getFormatter(instance.props.mode));
 }
