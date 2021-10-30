@@ -22,16 +22,16 @@ Zarm （读音 /zɑːm/，中文可发音为 扎姆）的命名，灵感来源�
 
 ## 谁在使用
 
-- [众安保险](https://www.zhongan.com)
-- [众安科技](https://www.zhongan.io)
-- [最福利](https://zuifuli.com)
-- [i 云保](https://www.iyunbao.com)
+- <a href="https://www.zhongan.com" target="_blank">众安保险</a>
+- <a href="https://www.zhongan.io" target="_blank">众安科技</a>
+- <a href="https://zuifuli.com" target="_blank">最福利</a>
+- <a href="https://www.iyunbao.com" target="_blank">i 云保</a>
 
 ## 社区
 
-| 问题上报                                                    | 讨论交流                                                              | 微信群                                                                                                     |
-| :---------------------------------------------------------- | :-------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------- |
-| [github issues](https://github.com/ZhongAnTech/zarm/issues) | [github discussions](https://github.com/ZhongAnTech/zarm/discussions) | <img src="https://cdn-health.zhongan.com/zarm/qrcode.jpg" width="80" /> <br />备注 "zarm" 加好友后邀请进群 |
+| 问题上报                                                                               | 讨论交流                                                                                         | 微信群                                                                                                     |
+| :------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------- |
+| <a href="https://github.com/ZhongAnTech/zarm/issues" target="_blank">github issues</a> | <a href="https://github.com/ZhongAnTech/zarm/discussions" target="_blank">github discussions</a> | <img src="https://cdn-health.zhongan.com/zarm/qrcode.jpg" width="80" /> <br />备注 "zarm" 加好友后邀请进群 |
 
 ## 开源协议
 
