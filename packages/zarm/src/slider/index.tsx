@@ -31,13 +31,15 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
     value,
     marks,
     onChange,
+    style,
   } = props;
   const [tooltip, setTooltip] = useState(false);
   const [currentValue, setCurrentValue] = React.useState(getValue(props, 0));
   const lineRef = React.createRef<HTMLDivElement>();
 
   const getMaxOffset = useCallback(() => {
-    return (vertical ? lineRef?.current?.offsetHeight : lineRef?.current?.offsetWidth) || 0;
+    const divRect = lineRef?.current?.getBoundingClientRect();
+    return (vertical ? divRect?.height : divRect?.width) || 0;
   }, [vertical, lineRef]);
 
   const getOffsetByValue = useCallback(
@@ -107,7 +109,6 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
     if (offset < 0) {
       offset = 0;
       const newValue = getValueByOffset(offset);
-      console.log(getValueByOffset(offset), offset, offsetX, offsetY, '1_________________>');
       setCurrentValue(newValue);
       return false;
     }
@@ -115,13 +116,11 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
     const maxOffset = getMaxOffset();
     if (offset > maxOffset) {
       offset = maxOffset;
-      console.log(getValueByOffset(offset), offset, '2_________________>');
       const newValue = getValueByOffset(offset);
       setCurrentValue(newValue);
       return false;
     }
     setCurrentValue(getValueByOffset(offset));
-    console.log(getValueByOffset(offset), offset, '3_________________>');
     return true;
   };
 
@@ -226,7 +225,7 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
   };
 
   return (
-    <div className={cls} ref={handleRef}>
+    <div className={cls} ref={handleRef} style={style}>
       <div className={`${prefixCls}__content`}>
         <div className={`${prefixCls}__line`} ref={lineRef}>
           <div className={`${prefixCls}__line__bg`} style={lineBg} />
