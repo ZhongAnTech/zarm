@@ -1,6 +1,6 @@
 import getClosestPoint from './getClosestPoint';
 import getPrecision from './getPrecision';
-import type PropsType from '../PropsType';
+import type PropsType from '../interface';
 
 export default function ensureValuePrecision(
   val: number,

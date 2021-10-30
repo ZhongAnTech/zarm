@@ -308,7 +308,19 @@ describe('index', () => {
           "$$typeof": Symbol(react.forward_ref),
           "render": [Function],
         },
-        "Slider": [Function],
+        "Slider": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "disabled": false,
+            "marks": Object {},
+            "max": 100,
+            "min": 0,
+            "showMark": false,
+            "step": 1,
+            "vertical": false,
+          },
+          "render": [Function],
+        },
         "StackPicker": Object {
           "$$typeof": Symbol(react.forward_ref),
           "render": [Function],

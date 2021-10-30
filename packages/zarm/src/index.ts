@@ -94,6 +94,7 @@ export { default as Scroller } from './scroller';
 export type { SearchBarProps } from './search-bar';
 export { default as SearchBar } from './search-bar';
 
+export type { SliderProps } from './slider';
 export { default as Slider } from './slider';
 
 export type { ActivityIndicatorProps } from './activity-indicator';
