@@ -1,114 +1,89 @@
-import React, { PureComponent } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import classnames from 'classnames';
+import { ConfigContext } from '../n-config-provider';
 import formatFn from '../date-picker-view/utils/format';
 import DatePicker from '../date-picker';
-import type { BaseDateSelectProps } from './PropsType';
+import type { BaseDateSelectProps } from './interface';
 
-export interface DateSelectProps extends BaseDateSelectProps {
-  prefixCls?: string;
-  className?: string;
-}
+export type DateSelectProps = BaseDateSelectProps & React.HTMLAttributes<HTMLElement>;
 
-export default class DateSelect extends PureComponent<DateSelectProps, any> {
-  static defaultProps: DateSelectProps = {
-    prefixCls: 'za-date-select',
-    mode: 'date',
-    disabled: false,
-    minuteStep: 1,
-    valueMember: 'value',
-    hasArrow: true,
-    onCancel: () => {},
-  };
+const DateSelect = (props) => {
+  const {
+    className,
+    placeholder,
+    disabled,
+    onChange,
+    onCancel,
+    value,
+    onOk,
+    format,
+    mode,
+    ...others
+  } = props;
 
-  static getDerivedStateFromProps(props) {
-    return {
-      selectValue: props.value,
-    };
-  }
+  const [visible, setVisible] = useState(false);
+  const [selectValue, setSelectValue] = useState(value);
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      visible: false,
-      selectValue: props.value,
-    };
-  }
+  const { prefixCls: globalPrefixCls, locale: globalLocal } = useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-date-select`;
+  // const cls = classnames(prefixCls, className);
+  const locale = globalLocal?.DateSelect;
 
-  handleClick = () => {
-    const { disabled } = this.props;
+  const cls = classnames(prefixCls, {
+    [`${prefixCls}--placeholder`]: !selectValue,
+    [`${prefixCls}--disabled`]: disabled,
+  });
+
+  const handleClick = () => {
     if (disabled) {
       return false;
     }
-    this.setState({
-      visible: true,
-    });
+    setVisible(true);
   };
 
-  onChange = (selected) => {
-    const { onChange } = this.props;
-    if (typeof onChange === 'function') {
-      onChange(selected);
-    }
+  const onDatePickerOk = (selected) => {
+    setVisible(false);
+    setSelectValue(selected);
+
+    typeof onOk === 'function' && onOk(selected);
   };
 
-  onOk = (selected) => {
-    const { onOk } = this.props;
-    this.setState({
-      visible: false,
-      selectValue: selected,
-    });
+  const onDatePickerCancel = () => {
+    setVisible(false);
 
-    if (typeof onOk === 'function') {
-      onOk(selected);
-    }
+    typeof onCancel === 'function' && onCancel();
   };
 
-  onCancel = () => {
-    const { onCancel } = this.props;
-    this.setState({ visible: false });
-    if (typeof onCancel === 'function') {
-      onCancel();
-    }
-  };
+  useEffect(() => setSelectValue(value), [value]);
 
-  render() {
-    const {
-      prefixCls,
-      className,
-      placeholder,
-      disabled,
-      onChange,
-      locale,
-      value,
-      ...others
-    } = this.props;
-    const { visible, selectValue } = this.state;
-
-    const cls = classnames(prefixCls, {
-      [`${prefixCls}--placeholder`]: !selectValue,
-      [`${prefixCls}--disabled`]: disabled,
-    });
-
-    const arrowRender = <div className={`${prefixCls}__arrow`} />;
-
-    return (
-      <div className={cls} onClick={this.handleClick}>
-        <input type="hidden" value={formatFn(this, selectValue)} />
-        <div className={`${prefixCls}__input`}>
-          <div className={`${prefixCls}__value`}>
-            {formatFn(this, selectValue) || placeholder || locale!.placeholder}
-          </div>
+  return (
+    <div className={cls} onClick={handleClick}>
+      <input type="hidden" value={formatFn({ mode, format }, selectValue)} />
+      <div className={`${prefixCls}__input`}>
+        <div className={`${prefixCls}__value`}>
+          {formatFn({ mode, format }, selectValue) || placeholder || locale!.placeholder}
         </div>
-        {arrowRender}
-        <DatePicker
-          {...others}
-          className={className}
-          visible={visible}
-          value={selectValue}
-          onOk={this.onOk}
-          onCancel={this.onCancel}
-        />
       </div>
-    );
-  }
-}
+      <div className={`${prefixCls}__arrow`} />
+      <DatePicker
+        {...others}
+        className={className}
+        visible={visible}
+        value={selectValue}
+        onOk={onDatePickerOk}
+        onCancel={onDatePickerCancel}
+      />
+    </div>
+  );
+};
+
+DateSelect.defaultProps = {
+  mode: 'date',
+  disabled: false,
+  minuteStep: 1,
+  valueMember: 'value',
+  hasArrow: true,
+  onCancel: () => {},
+};
+
+export default DateSelect;
