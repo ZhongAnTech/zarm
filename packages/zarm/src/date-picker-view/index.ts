@@ -1,6 +1,5 @@
 import DatePickerView from './DatePickerView';
 
-export type { DatePickerValue } from './interface';
-export type { DatePickerViewProps } from './DatePickerView';
+export type { DatePickerViewProps, DatePickerValue } from './interface';
 
 export default DatePickerView;

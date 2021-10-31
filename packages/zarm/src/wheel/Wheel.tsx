@@ -34,6 +34,8 @@ const Wheel = (props: WheelProps) => {
     stopScroll,
     itemRender,
     onChange,
+    onScrollStart,
+    onScrollEnd,
   } = props;
 
   const scrollInstance = useRef<BScrollInstance | null>(null);
@@ -91,6 +93,11 @@ const Wheel = (props: WheelProps) => {
 
     scrollInstance.current?.on('scrollEnd', () => {
       handleScrollEnd();
+      onScrollEnd && onScrollEnd();
+    });
+
+    scrollInstance.current?.on('scrollStart', () => {
+      onScrollStart && onScrollStart();
     });
 
     return () => {

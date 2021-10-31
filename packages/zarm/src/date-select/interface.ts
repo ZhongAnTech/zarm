@@ -5,3 +5,5 @@ export interface BaseDateSelectProps extends Omit<BaseDatePickerProps, 'visible'
   format?: string;
   hasArrow?: boolean;
 }
+
+export type DateSelectProps = BaseDateSelectProps & React.HTMLAttributes<HTMLElement>;

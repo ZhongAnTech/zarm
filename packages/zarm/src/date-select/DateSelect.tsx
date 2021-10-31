@@ -3,11 +3,9 @@ import classnames from 'classnames';
 import { ConfigContext } from '../n-config-provider';
 import formatFn from '../date-picker-view/utils/format';
 import DatePicker from '../date-picker';
-import type { BaseDateSelectProps } from './interface';
+import type { DateSelectProps } from './interface';
 
-export type DateSelectProps = BaseDateSelectProps & React.HTMLAttributes<HTMLElement>;
-
-const DateSelect = (props) => {
+const DateSelect = (props: DateSelectProps) => {
   const {
     className,
     placeholder,

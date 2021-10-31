@@ -1,7 +1,6 @@
 import { ContainerType } from '../utils/dom';
 import type { BasePickerViewProps } from '../picker-view/interface';
 import type { WheelItem } from '../wheel/interface';
-import type { Locale } from '../config-provider/PropsType';
 
 export interface BasePickerProps extends Omit<BasePickerViewProps, 'onChange' | 'stopScroll'> {
   visible?: boolean;
@@ -14,5 +13,6 @@ export interface BasePickerProps extends Omit<BasePickerViewProps, 'onChange' | 
   onOk?: (selected: Array<WheelItem>) => void;
   onCancel?: () => void;
   mountContainer?: ContainerType;
-  locale?: Locale['Picker'];
 }
+
+export type PickerProps = BasePickerProps & React.HTMLAttributes<HTMLElement>;

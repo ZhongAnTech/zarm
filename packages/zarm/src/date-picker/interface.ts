@@ -1,4 +1,4 @@
-import type { BaseDatePickerViewProps } from '../date-picker-view/PropsType';
+import type { BaseDatePickerViewProps } from '../date-picker-view/interface';
 import type { ContainerType } from '../utils/dom';
 
 export interface BaseDatePickerProps

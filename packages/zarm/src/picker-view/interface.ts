@@ -11,5 +11,9 @@ export interface BasePickerViewProps
   wheelDefaultValue?: WheelValue | Array<WheelValue>;
   dataSource: PickerDataSource;
   onChange?: (value?: Array<WheelItem>, i?: number) => void;
+  onScrollStart?: () => void;
+  onScrollEnd?: () => void;
   cols?: number;
 }
+
+export type PickerViewProps = BasePickerViewProps & React.HTMLAttributes<HTMLElement>;

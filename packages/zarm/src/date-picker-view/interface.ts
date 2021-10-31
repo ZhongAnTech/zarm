@@ -14,3 +14,5 @@ export interface BaseDatePickerViewProps {
   valueMember?: string;
   stopScroll?: boolean;
 }
+
+export type DatePickerViewProps = BaseDatePickerViewProps & { className?: string };

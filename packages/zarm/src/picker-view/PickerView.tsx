@@ -5,10 +5,8 @@ import Wheel from '../wheel';
 import { isCascader } from '../utils/validate';
 import parseProps from './utils/parseProps';
 
-import type { BasePickerViewProps } from './interface';
 import type { WheelValue } from '../wheel/interface';
-
-export type PickerViewProps = BasePickerViewProps & React.HTMLAttributes<HTMLDivElement>;
+import type { PickerViewProps } from './interface';
 
 const PickerView = forwardRef<HTMLDivElement, PickerViewProps>((props, ref) => {
   const {
@@ -19,7 +17,10 @@ const PickerView = forwardRef<HTMLDivElement, PickerViewProps>((props, ref) => {
     stopScroll,
     onChange,
     dataSource,
+    value,
     cols,
+    onScrollStart,
+    onScrollEnd,
   } = props;
   const [state, setState] = useState(parseProps.getSource(props));
 
@@ -28,13 +29,13 @@ const PickerView = forwardRef<HTMLDivElement, PickerViewProps>((props, ref) => {
   const cls = classnames(prefixCls, className);
 
   const onValueChange = (selected: WheelValue, level: number) => {
-    const value = state.value.slice();
+    const _value = state.value.slice();
     if (isCascader({ dataSource })) {
-      value.length = level + 1;
+      _value.length = level + 1;
     }
 
-    value[level] = selected;
-    const newState = parseProps.getSource({ dataSource, value, valueMember, cols });
+    _value[level] = selected;
+    const newState = parseProps.getSource({ dataSource, value: _value, valueMember, cols });
     setState(newState);
 
     if (typeof onChange === 'function') {
@@ -53,13 +54,15 @@ const PickerView = forwardRef<HTMLDivElement, PickerViewProps>((props, ref) => {
         disabled={disabled}
         onChange={(selected: WheelValue) => onValueChange(selected, index)}
         stopScroll={stopScroll}
+        onScrollStart={onScrollStart}
+        onScrollEnd={onScrollEnd}
       />
     ));
   };
 
   useEffect(() => {
     setState(parseProps.getSource(props));
-  }, [dataSource]);
+  }, [dataSource, value]);
 
   return (
     <div className={cls} ref={ref}>

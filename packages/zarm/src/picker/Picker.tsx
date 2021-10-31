@@ -1,74 +1,51 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import classnames from 'classnames';
 
 import { ConfigContext } from '../n-config-provider';
 import Popup from '../popup';
 import PickerView from '../picker-view';
-import parseProps from '../picker-view/utils/parseProps';
-import type { BasePickerProps } from './interface';
+import usePicker from './usePicker';
+import type { PickerProps } from './interface';
 
-export type PickerProps = BasePickerProps & React.HTMLAttributes<HTMLDivElement>;
+let isScrollStatus = false;
 
 const Picker: React.FC<PickerProps> = (props) => {
   const {
     className,
+    dataSource,
     cancelText,
     okText,
     title,
     maskClosable,
     mountContainer,
     destroy,
-    onOk,
-    onCancel,
     visible,
-    valueMember,
-    onChange,
-    itemRender,
-    dataSource,
+    ...rest
   } = props;
-  const [state, setState] = useState(parseProps.getSource(props));
 
-  const { prefixCls: globalPrefixCls, locale } = useContext(ConfigContext);
+  const { prefixCls: globalPrefixCls, locale: globalLocal } = useContext(ConfigContext);
   const prefixCls = `${globalPrefixCls}-picker`;
+  const locale = globalLocal?.Picker;
   const cls = classnames(prefixCls, className);
 
-  const onClickCancel = () => {
-    const { value = [], objValue = [] } = state.value;
+  const [state, { onPickerCancel, onPickerOk, onPickViewChange }] = usePicker(props);
 
-    setState((preState) => ({
-      ...preState,
-      value,
-      objValue,
-    }));
-
-    if (typeof onCancel === 'function') {
-      onCancel();
+  const onMaskClick = () => {
+    if (!maskClosable) {
+      return;
     }
-  };
 
-  const onClickOk = () => {
-    if (typeof onOk === 'function') {
-      onOk(state.objValue);
+    if (isScrollStatus) {
+      return;
     }
+
+    onPickerCancel();
   };
-
-  const onPickViewChange = (selected) => {
-    const value = selected.map((item) => item[valueMember!]);
-    setState((prevState) => ({ ...prevState, value, objValue: selected }));
-
-    if (typeof onChange === 'function') {
-      onChange(selected);
-    }
-  };
-
-  useEffect(() => {
-    setState(parseProps.getSource(props));
-  }, [dataSource]);
 
   return (
     <Popup
       visible={visible}
-      onMaskClick={maskClosable ? onClickCancel : () => {}}
+      onMaskClick={onMaskClick}
       mountContainer={mountContainer}
       destroy={destroy}
     >
@@ -79,19 +56,25 @@ const Picker: React.FC<PickerProps> = (props) => {
         }}
       >
         <div className={`${prefixCls}__header`}>
-          <div className={`${prefixCls}__cancel`} onClick={onClickCancel}>
-            {cancelText || locale?.Picker?.cancelText}
+          <div className={`${prefixCls}__cancel`} onClick={onPickerCancel}>
+            {cancelText || locale?.cancelText}
           </div>
-          <div className={`${prefixCls}__title`}>{title || locale?.Picker?.title}</div>
-          <div className={`${prefixCls}__submit`} onClick={onClickOk}>
-            {okText || locale?.Picker?.okText}
+          <div className={`${prefixCls}__title`}>{title || locale?.title}</div>
+          <div className={`${prefixCls}__submit`} onClick={onPickerOk}>
+            {okText || locale?.okText}
           </div>
         </div>
         <PickerView
-          dataSource={state.dataSource}
+          {...rest}
+          dataSource={dataSource}
           value={state.value}
-          itemRender={itemRender}
           onChange={onPickViewChange}
+          onScrollStart={() => {
+            isScrollStatus = true;
+          }}
+          onScrollEnd={() => {
+            isScrollStatus = false;
+          }}
         />
       </div>
     </Popup>
