@@ -1,70 +1,25 @@
-import React, { Component, isValidElement } from 'react';
+import React, { useContext, forwardRef, isValidElement, useRef, useImperativeHandle } from 'react';
 import classnames from 'classnames';
-import { BaseCalendarMonthProps } from './PropsType';
+import { ConfigContext } from '../n-config-provider';
 import DateTool from '../utils/date';
-import ConfigReceiver from '../config-receiver';
+import { BaseCalendarMonthProps } from './interface';
 
-export interface CalendarMonthProps extends BaseCalendarMonthProps {
-  prefixCls?: string;
-}
+export type CalendarMonthProps = BaseCalendarMonthProps & React.HTMLAttributes<HTMLElement>;
 
-export interface CalendarMonthState {
-  value: Date[];
-  dateMonth: Date;
-}
+let lastIn = false;
 
-class CalendarMonthView extends Component<CalendarMonthProps, CalendarMonthState> {
-  static displayName = 'CalendarMonthView';
+const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
+  const { dateRender, min, max, disabledDate, onDateClick, dateMonth, value } = props;
 
-  static defaultProps = {
-    prefixCls: 'za-calendar',
-    value: [],
-    dateMonth: new Date(),
-    min: new Date(),
-    max: new Date(),
-    dateRender: (date: Date) => date.getDate(),
-    disabledDate: () => false,
-  };
+  const { prefixCls: globalPrefixCls, locale: globalLocal } = useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-calendar`;
+  // const cls = classnames(prefixCls, className);
+  const locale = globalLocal?.Calendar;
 
-  // 上次是否落点在当前月份内
-  private lastIn?: boolean = false;
-
-  // 当前月份的dom
-  private node?: any;
-
-  constructor(props: CalendarMonthProps) {
-    super(props);
-    this.state = {
-      value: props.value,
-      dateMonth: props.dateMonth,
-    };
-    this.checkStatus = this.checkStatus.bind(this);
-  }
-
-  static getDerivedStateFromProps(nextProps, state) {
-    if (
-      // eslint-disable-next-line operator-linebreak
-      ('value' in nextProps && nextProps.value !== state.value) ||
-      ('dateMonth' in nextProps && nextProps.dateMonth !== state.dateMonth)
-    ) {
-      return {
-        value: nextProps.value,
-        dateMonth: nextProps.dateMonth,
-      };
-    }
-    return null;
-  }
-
-  anchor = () => {
-    if (this.node && this.node.scrollIntoViewIfNeeded) {
-      this.node.scrollIntoViewIfNeeded();
-    }
-  };
+  const monthRef = useRef<any>();
 
   // 日期状态: 选中，区间
-  checkStatus(date: Date) {
-    const { min, max, disabledDate } = this.props;
-    const { value = [] } = this.state;
+  const checkStatus = (date: Date) => {
     const disabled =
       date < DateTool.cloneDate(min, 'd', 0) || date > DateTool.cloneDate(max, 'd', 0);
     const res = {
@@ -74,18 +29,18 @@ class CalendarMonthView extends Component<CalendarMonthProps, CalendarMonthState
       rangeStart: value.length > 1 && DateTool.isOneDay(date, value[0]),
       rangeEnd: value.length > 1 && DateTool.isOneDay(date, value[value.length - 1]),
     };
-    this.lastIn = this.lastIn || res.isSelected || res.isRange;
-    return res;
-  }
 
-  renderDay = (day: number, year: number, month: number, firstDay: number) => {
-    const { prefixCls, dateRender, onDateClick } = this.props;
+    lastIn = lastIn || res.isSelected || res.isRange;
+    return res;
+  };
+
+  const renderDay = (day: number, year: number, month: number, firstDay: number) => {
     const date = new Date(year, month, day);
     const isToday =
       new Date().getFullYear() === year &&
       new Date().getMonth() === month &&
       new Date().getDate() === day;
-    const status = this.checkStatus(date);
+    const status = checkStatus(date);
 
     let txt = (date && dateRender && dateRender(date)) || '';
     if (typeof txt === 'object') {
@@ -118,40 +73,47 @@ class CalendarMonthView extends Component<CalendarMonthProps, CalendarMonthState
     );
   };
 
-  renderContent = (year: number, month: number) => {
+  const renderContent = (year: number, month: number) => {
     const data = DateTool.getCurrMonthInfo(year, month);
     const { firstDay, dayCount } = data;
     return Array.from({ length: dayCount }).map((_item, i) =>
-      this.renderDay(i + 1, year, month, firstDay),
+      renderDay(i + 1, year, month, firstDay),
     );
   };
 
-  render() {
-    const { prefixCls, locale } = this.props;
-    const { dateMonth } = this.state;
+  useImperativeHandle(ref, () => {
+    return {
+      anchor: () => {
+        if (monthRef.current.scrollIntoViewIfNeeded) {
+          monthRef.current.scrollIntoViewIfNeeded();
+        }
+      },
+    };
+  });
 
-    const year = dateMonth.getFullYear();
-    const month = dateMonth.getMonth();
-    const monthKey = `${year}-${month}`;
+  const year = dateMonth.getFullYear();
+  const month = dateMonth.getMonth();
+  const monthKey = `${year}-${month}`;
 
-    const title =
-      locale?.yearText === '年'
-        ? year + locale.yearText + locale.months[month]
-        : `${locale?.months[month]} ${year}`;
+  const title =
+    locale?.yearText === '年'
+      ? year + locale.yearText + locale.months[month]
+      : `${locale?.months[month]} ${year}`;
 
-    return (
-      <section
-        key={monthKey}
-        className={`${prefixCls}__month`}
-        title={title}
-        ref={(n) => {
-          this.node = n;
-        }}
-      >
-        <ul>{this.renderContent(year, month)}</ul>
-      </section>
-    );
-  }
-}
+  return (
+    <section key={monthKey} className={`${prefixCls}__month`} title={title} ref={monthRef}>
+      <ul>{renderContent(year, month)}</ul>
+    </section>
+  );
+});
 
-export default ConfigReceiver('Calendar')(CalendarMonthView);
+CalendarMonthView.defaultProps = {
+  value: [],
+  dateMonth: new Date(),
+  min: new Date(),
+  max: new Date(),
+  dateRender: (date: Date) => date.getDate(),
+  disabledDate: () => false,
+};
+
+export default CalendarMonthView;

@@ -14,6 +14,10 @@ export const isNumber = (val: any) => {
   return Object.prototype.toString.call(val) === '[object Number]';
 };
 
+export const isFunction = (val: any) => {
+  return Object.prototype.toString.call(val) === '[object Function]';
+};
+
 export const isCascader = ({ dataSource }) => {
   return dataSource && dataSource[0] && !isArray(dataSource[0]);
 };
