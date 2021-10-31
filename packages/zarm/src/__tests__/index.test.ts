@@ -306,6 +306,15 @@ describe('index', () => {
         },
         "Select": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "cols": Infinity,
+            "dataSource": Array [],
+            "displayRender": [Function],
+            "itemRender": [Function],
+            "maskClosable": true,
+            "onClick": [Function],
+            "valueMember": "value",
+          },
           "render": [Function],
         },
         "Slider": [Function],
