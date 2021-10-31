@@ -140,7 +140,7 @@ export { default as StackPicker } from './stack-picker';
 export type { AffixProps } from './affix';
 export { default as Affix } from './affix';
 
-export * from './safearea';
+export * from './useSafeArea';
 
 export type { DragProps } from './drag';
 export { default as Drag } from './drag';
@@ -152,3 +152,8 @@ export { default as useOrientation } from './useOrientation';
 
 export type { UseLongPressProps } from './useLongPress';
 export { default as useLongPress } from './useLongPress';
+
+export * from './useCSSVar';
+export { default as useCSSVar } from './useCSSVar';
+
+export * from './useSafeArea';

@@ -1,0 +1,6 @@
+:root {
+  --zarm-safe-area-inset-top: var(--zarm-default-safe-area-inset-top, env(safe-area-inset-top));
+  --zarm-safe-area-inset-bottom: var(--zarm-default-safe-area-inset-bottom, env(safe-area-inset-bottom));
+  --zarm-safe-area-inset-left: var(--zarm-default-safe-area-inset-left, env(safe-area-inset-left));
+  --zarm-safe-area-inset-right: var(--zarm-defualt-safe-area-inset-right, env(safe-area-inset-right));
+}

@@ -370,6 +370,20 @@ module.exports = {
         source: 'zarm/useOrientation/demo.md',
         style: false,
       },
+      {
+        key: 'useCSSVar',
+        name: 'CSS 变量',
+        module: () => import ('zarm/useCSSVar/demo.md'),
+        source: 'zarm/useCSSVar/demo.md',
+        style: true,
+      },
+      {
+        key: 'useSafeArea',
+        name: '安全区域',
+        module: () => import('zarm/useSafeArea/demo.md'),
+        source: 'zarm/useSafeArea/demo.md',
+        style: false,
+      },
     ],
     other: [
       // {
@@ -391,13 +405,6 @@ module.exports = {
         name: '全局配置（新）',
         module: () => import('zarm/n-config-provider/demo.md'),
         source: 'zarm/n-config-provider/demo.md',
-        style: false,
-      },
-      {
-        key: 'SafeArea',
-        name: '安全区域',
-        module: () => import('zarm/safearea/demo.md'),
-        source: 'zarm/safearea/demo.md',
         style: false,
       },
       {
