@@ -69,7 +69,7 @@ class Footer extends Component {
               </a>
             </li>
             <li>
-              <a href="/#/components/change-log">
+              <a href="/#/docs/change-log">
                 <FormattedMessage id="app.home.footer.help.changelog" />
               </a>
             </li>
