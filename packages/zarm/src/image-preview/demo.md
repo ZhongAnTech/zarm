@@ -6,11 +6,10 @@
 import { useState, useEffect } from 'react';
 import { List, Button, ImagePreview, NoticeBar, useOrientation } from 'zarm';
 
-console.log(ImagePreview);
 const commonImages = [
   'https://cdn-health.zhongan.com/zarm/imagePreview/1-small.jpg',
-  // 'https://cdn-health.zhongan.com/zarm/imagePreview/2-small.jpg',
-  // 'https://cdn-health.zhongan.com/zarm/imagePreview/3-small.jpg',
+  'https://cdn-health.zhongan.com/zarm/imagePreview/2-small.jpg',
+  'https://cdn-health.zhongan.com/zarm/imagePreview/3-small.jpg',
 ];
 
 const Demo = () => {
@@ -191,14 +190,14 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性           | 类型                                               | 默认值 | 说明                              |
-| :------------- | :------------------------------------------------- | :----- | :-------------------------------- |
-| visible        | boolean                                            | false  | 是否显示                          |
-| minScale       | number                                             | 1      | 图片最小缩放比例，1 为最小值      |
-| maxScale       | number                                             | 3      | 图片最大缩放比例                  |
-| images         | Array<string \| {src: string; originSrc: string;}> | -      | 图片地址                          |
-| activeIndex    | number                                             | 0      | 当前展示的图片是第几张，从 0 开始 |
-| showPagination | boolean                                            | true   | 是否显示分页器                    |
-| orientation    | string                                             | ''     | 横竖屏，默认使用`UseOrientation`  |
-| onChange       | (activeIndex?: number) => void                     | -      | 图片切换时候回调                  |
-| onClose        | () => void                                         | -      | 关闭时候回调                      |
+| 属性           | 类型                                               | 默认值 | 说明                                           |
+| :------------- | :------------------------------------------------- | :----- | :--------------------------------------------- |
+| visible        | boolean                                            | false  | 是否显示                                       |
+| minScale       | number                                             | 1      | 图片最小缩放比例，1 为最小值                   |
+| maxScale       | number                                             | 3      | 图片最大缩放比例                               |
+| images         | Array<string \| {src: string; originSrc: string;}> | -      | 图片地址                                       |
+| activeIndex    | number                                             | 0      | 当前展示的图片是第几张，从 0 开始              |
+| showPagination | boolean                                            | true   | 是否显示分页器                                 |
+| orientation    | string                                             | -      | 横竖屏，默认自动识别 `landscape` \| `portrait` |
+| onChange       | (activeIndex: number) => void                      | -      | 图片切换时候回调                               |
+| onClose        | () => void                                         | -      | 关闭时候回调                                   |

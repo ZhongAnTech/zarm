@@ -23,6 +23,7 @@ const show = (props: Omit<ImagePreviewProps, 'visible'>) => {
       <ImagePreview
         {...props}
         visible={visible}
+        mountContainer={false}
         onClose={() => {
           props.onClose?.();
           setVisible(false);
@@ -32,8 +33,13 @@ const show = (props: Omit<ImagePreviewProps, 'visible'>) => {
     );
   });
   const ref = React.createRef<Ref>();
-  const { mountContainer = false } = props;
-  unmount = renderToContainer(mountContainer, <Wrapper ref={ref} />);
+  const { mountContainer = false, className } = props;
+
+  const slot = document.createElement('div');
+  slot.classList.add('za-image-preview-container');
+  className && slot.classList.add(className);
+
+  unmount = renderToContainer(mountContainer, <Wrapper ref={ref} />, slot);
   return {
     close: () => {
       ref.current?.close();

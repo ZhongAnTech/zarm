@@ -23,6 +23,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    touch-action: none;
 
     @include m(landscape) {
       overflow: hidden;
@@ -70,6 +71,7 @@
     align-items: center;
     justify-content: center;
     padding: 0 var(--padding-v-lg);
+    touch-action: none;
   }
 
   @include e(index) {
@@ -108,6 +110,7 @@
     padding: 0 var(--padding-h-sm);
     height: var(--button-height-xs);
     line-height: var(--button-height-xs);
+    touch-action: none;
   }
 
   @include b(carousel) {

@@ -1,4 +1,3 @@
-/* eslint-disable import/no-duplicates */
 import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import { useGesture } from '@use-gesture/react';
@@ -33,6 +32,7 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
     maxScale,
     className,
     orientation: defatultOrientation,
+    mountContainer,
   } = props;
 
   const { type, angle } = useOrientation();
@@ -90,14 +90,23 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
     };
     img.src = originSrc;
     event.stopPropagation();
+    return false;
   };
 
-  const bindEvent = useGesture({
+  const bindEvent: any = useGesture({
     onDrag: (state) => {
       if (state.tap && state.elapsedTime > 0) {
         if (typeof onClose === 'function') {
           onClose();
         }
+      }
+    },
+  });
+
+  const loadEvent: any = useGesture({
+    onDrag: (state) => {
+      if (state.tap && state.elapsedTime > 0) {
+        loadOrigin(state.event);
       }
     },
   });
@@ -121,7 +130,7 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
   const renderPagination = () => {
     if (visible && showPagination && images && images.length > 1) {
       return (
-        <div className={`${prefixCls}__index`}>
+        <div className={`${prefixCls}__index`} {...bindEvent()}>
           {currentIndex + 1} / {images?.length}
         </div>
       );
@@ -133,9 +142,14 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
     if (images?.length === 0) return;
 
     const { loaded } = images?.[currentIndex || 0];
-    if (loaded && showOriginButton(images, currentIndex) && loaded !== LOAD_STATUS.after) {
+    if (
+      loaded &&
+      showOriginButton(images, currentIndex) &&
+      loaded !== LOAD_STATUS.after &&
+      visible
+    ) {
       return (
-        <button className={`${prefixCls}__origin__button`} onClick={loadOrigin}>
+        <button className={`${prefixCls}__origin__button`} {...loadEvent()}>
           {loaded === LOAD_STATUS.start && (
             <ActivityIndicator className={`${prefixCls}__loading`} type="spinner" />
           )}
@@ -150,7 +164,12 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
   const cls = classnames(`${prefixCls}__content`, `${prefixCls}__content--${orientation}`);
 
   return (
-    <Popup direction="center" visible={visible} className={classnames(prefixCls, className)}>
+    <Popup
+      direction="center"
+      visible={visible}
+      className={classnames(prefixCls, className)}
+      mountContainer={mountContainer}
+    >
       <div className={cls} ref={imagePreviewRef} {...bindEvent()}>
         {visible &&
           (images?.length ? (
@@ -166,7 +185,7 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
             <ActivityIndicator type="spinner" size="lg" />
           ))}
       </div>
-      <div className={`${prefixCls}__footer`} onClick={close}>
+      <div className={`${prefixCls}__footer`}>
         {renderOriginButton()}
         {renderPagination()}
       </div>
