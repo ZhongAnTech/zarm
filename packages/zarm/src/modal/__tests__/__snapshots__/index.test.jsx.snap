@@ -48,6 +48,7 @@ exports[`Modal renders correctly 1`] = `
         destroy={true}
         direction="center"
         localeCode="zh-CN"
+        lockScroll={true}
         mask={true}
         maskType="normal"
         onMaskClick={[Function]}

@@ -89,6 +89,7 @@ exports[`CustomInput.Idcard renders correctly 1`] = `
           <Popup
             destroy={true}
             localeCode="zh-CN"
+            lockScroll={true}
             mask={false}
             safeIphoneX={false}
             visible={false}
@@ -146,6 +147,7 @@ exports[`CustomInput.Price renders correctly 1`] = `
           <Popup
             destroy={true}
             localeCode="zh-CN"
+            lockScroll={true}
             mask={false}
             safeIphoneX={false}
             visible={false}

@@ -293,6 +293,7 @@ exports[`Select Cascader Select 1`] = `
                   <Popup
                     destroy={false}
                     localeCode="zh-CN"
+                    lockScroll={true}
                     onMaskClick={[Function]}
                     safeIphoneX={false}
                     visible={false}
@@ -644,6 +645,7 @@ exports[`Select Cascader Select init value 1`] = `
                   <Popup
                     destroy={false}
                     localeCode="zh-CN"
+                    lockScroll={true}
                     onMaskClick={[Function]}
                     safeIphoneX={false}
                     visible={false}
@@ -832,6 +834,7 @@ exports[`Select Select 1`] = `
                   <Popup
                     destroy={false}
                     localeCode="zh-CN"
+                    lockScroll={true}
                     onMaskClick={[Function]}
                     safeIphoneX={false}
                     visible={false}
@@ -1026,6 +1029,7 @@ exports[`Select Select disabled 1`] = `
                   <Popup
                     destroy={false}
                     localeCode="zh-CN"
+                    lockScroll={true}
                     onMaskClick={[Function]}
                     safeIphoneX={false}
                     visible={true}
@@ -1480,6 +1484,7 @@ exports[`Select render defaultValue correctly  1`] = `
                   <Popup
                     destroy={false}
                     localeCode="zh-CN"
+                    lockScroll={true}
                     onMaskClick={[Function]}
                     safeIphoneX={false}
                     visible={false}
