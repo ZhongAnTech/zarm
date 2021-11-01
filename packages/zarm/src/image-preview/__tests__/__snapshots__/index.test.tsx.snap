@@ -31,6 +31,7 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
         destroy={true}
         direction="center"
         localeCode="zh-CN"
+        lockScroll={true}
         safeIphoneX={false}
         visible={true}
       >
@@ -368,6 +369,7 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
         destroy={true}
         direction="center"
         localeCode="zh-CN"
+        lockScroll={true}
         safeIphoneX={false}
         visible={true}
       >

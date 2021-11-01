@@ -78,6 +78,7 @@ exports[`Picker Picker render visible 1`] = `
           <Popup
             destroy={false}
             localeCode="zh-CN"
+            lockScroll={true}
             onMaskClick={[Function]}
             safeIphoneX={false}
             visible={true}
@@ -482,6 +483,7 @@ exports[`Picker render custom label 1`] = `
           <Popup
             destroy={false}
             localeCode="zh-CN"
+            lockScroll={true}
             onMaskClick={[Function]}
             safeIphoneX={false}
             visible={false}
