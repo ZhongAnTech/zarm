@@ -9,10 +9,11 @@
  * onChange: () => { file, fileType, fileSize, fileName, thumbnail }。
  * onBeforeSelect: () => boolean，返回 false 的时候阻止后续的选择事件。
  */
-import React, { PureComponent, cloneElement, MouseEventHandler, ChangeEventHandler } from 'react';
+import React, { cloneElement, useCallback } from 'react';
 import classNames from 'classnames';
-import PropsType from './PropsType';
+import PropsType from './interface';
 import handleFileInfo from './utils/handleFileInfo';
+import { ConfigContext } from '../n-config-provider';
 
 export interface FilePickerProps extends PropsType {
   prefixCls?: string;
@@ -27,37 +28,50 @@ export interface IFileDetail {
   thumbnail: string;
 }
 
-export default class FilePicker extends PureComponent<FilePickerProps, {}> {
-  static defaultProps: FilePickerProps = {
-    prefixCls: 'za-file-picker',
-    disabled: false,
-    multiple: false,
-    onBeforeSelect: () => true,
-  };
+const FilePicker = React.forwardRef<unknown, FilePickerProps>((props, ref) => {
+  const fileRef = (ref as any) || React.createRef<HTMLDivElement>();
 
-  private file: HTMLInputElement | null = null;
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
 
-  handleDefaultInput: MouseEventHandler<HTMLInputElement> = (e) => {
-    // 防止选择同一张图片两次造成 onChange 事件不触发
-    e.currentTarget.value = '';
+  const prefixCls = `${globalPrefixCls}-file-picker`;
+  const {
+    className,
+    multiple,
+    accept,
+    capture,
+    disabled,
+    children,
+    onBeforeSelect,
+    onChange,
+    quality,
+  } = props;
 
-    const { onBeforeSelect, disabled } = this.props;
-    if (typeof onBeforeSelect !== 'function') {
-      return;
-    }
+  const cls = classNames(prefixCls, className, {
+    [`${prefixCls}--disabled`]: disabled,
+  });
 
-    // 阻止 input onChange 默认事件
-    if (onBeforeSelect() === false || disabled) {
-      e.preventDefault();
-    }
-  };
+  const handleClick = useCallback(() => {
+    fileRef?.current.click();
+  }, [fileRef]);
 
-  handleClick = () => {
-    this.file!.click();
-  };
+  const handleDefaultInput = useCallback(
+    (e) => {
+      // 防止选择同一张图片两次造成 onChange 事件不触发
+      e.currentTarget.value = '';
 
-  handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    const { onChange, quality, multiple } = this.props;
+      if (typeof onBeforeSelect !== 'function') {
+        return;
+      }
+
+      // 阻止 input onChange 默认事件
+      if (onBeforeSelect() === false || disabled) {
+        e.preventDefault();
+      }
+    },
+    [onBeforeSelect, disabled],
+  );
+
+  const handleChange = (e) => {
     const files: Array<File> = [].slice.call(e.target.files);
     const fileList: Array<IFileDetail> = [];
 
@@ -78,34 +92,32 @@ export default class FilePicker extends PureComponent<FilePickerProps, {}> {
     }
   };
 
-  render() {
-    const { prefixCls, className, multiple, accept, capture, disabled, children } = this.props;
+  const content = cloneElement(children, {
+    onClick: handleClick,
+    className: classNames(children.props.className, 'needsclick'), // 修复加载fastClick库后引起的合成事件问题
+  });
+  return (
+    <div className={cls}>
+      <input
+        className={`${prefixCls}__input`}
+        type="file"
+        ref={fileRef}
+        accept={accept}
+        multiple={multiple}
+        capture={capture}
+        onClick={handleDefaultInput}
+        onChange={handleChange}
+      />
+      {content}
+    </div>
+  );
+});
 
-    const cls = classNames(prefixCls, className, {
-      [`${prefixCls}--disabled`]: disabled,
-    });
+FilePicker.displayName = 'FilePicker';
+FilePicker.defaultProps = {
+  disabled: false,
+  multiple: false,
+  onBeforeSelect: () => true,
+};
 
-    const content = cloneElement(children, {
-      onClick: this.handleClick,
-      className: classNames(children.props.className, 'needsclick'), // 修复加载fastClick库后引起的合成事件问题
-    });
-
-    return (
-      <div className={cls}>
-        <input
-          className={`${prefixCls}__input`}
-          type="file"
-          ref={(ele) => {
-            this.file = ele;
-          }}
-          accept={accept}
-          multiple={multiple}
-          capture={capture}
-          onClick={this.handleDefaultInput}
-          onChange={this.handleChange}
-        />
-        {content}
-      </div>
-    );
-  }
-}
+export default FilePicker;
