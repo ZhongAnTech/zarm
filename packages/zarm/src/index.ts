@@ -145,6 +145,9 @@ export { default as StackPicker } from './stack-picker';
 export type { AffixProps } from './affix';
 export { default as Affix } from './affix';
 
+export type { AddressAnchorProps } from './address-anchor';
+export { default as AddressAnchor } from './address-anchor';
+
 export type { DragProps } from './drag';
 export { default as Drag } from './drag';
 export type { UseDragProps, DragEvent, DragState } from './useDrag';

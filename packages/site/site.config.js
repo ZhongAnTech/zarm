@@ -310,6 +310,13 @@ module.exports = {
         source: 'zarm/image-preview/demo.md',
         style: true,
       },
+      {
+        key: 'address-anchor',
+        name: '地址锚点',
+        module: () => import('zarm/address-anchor/demo.md'),
+        source: 'zarm/address-anchor/demo.md',
+        style: true,
+      },
     ],
     navigation: [
       {
