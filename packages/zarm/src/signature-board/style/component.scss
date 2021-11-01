@@ -1,0 +1,30 @@
+
+@include b(signature) {
+
+  @include e(container) {
+    border-radius: r(5);
+    border: r(1) solid #ddd;
+    margin: r(10) r(3);
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 r(15) 0 rgba(203, 203, 203, 0.5);
+    background: white;
+
+    @include e(tip) {
+      font-size: r(14);
+      color: #888;
+      text-align: center;
+      margin-top: r(12);
+    }
+
+    @include e(btns) {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 r(10) r(8) r(10);
+    }
+
+  }
+  
+
+}

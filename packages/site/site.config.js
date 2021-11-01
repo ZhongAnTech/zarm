@@ -310,6 +310,13 @@ module.exports = {
         source: 'zarm/image-preview/demo.md',
         style: true,
       },
+      {
+        key: 'signature-board',
+        name: '签名板',
+        module: () => import('zarm/signature-board/demo.md'),
+        source: 'zarm/signature-board/demo.md',
+        style: false,
+      },
     ],
     navigation: [
       {
