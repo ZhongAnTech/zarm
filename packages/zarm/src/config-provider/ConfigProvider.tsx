@@ -20,6 +20,7 @@ const changeRunTimeLocale = (locale: Locale) => {
 };
 
 export const getRunTimeLocale = () => runTimeLocale;
+
 export default class ConfigProvider extends PureComponent<ConfigProviderProps, {}> {
   static defaultProps = defaultConfig;
 
