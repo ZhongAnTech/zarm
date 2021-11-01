@@ -11,21 +11,13 @@
  */
 import React, { cloneElement, useCallback } from 'react';
 import classNames from 'classnames';
-import PropsType from './interface';
+import type { FileObject, BaseFilePickerProps } from './interface';
 import handleFileInfo from './utils/handleFileInfo';
 import { ConfigContext } from '../n-config-provider';
 
-export interface FilePickerProps extends PropsType {
-  prefixCls?: string;
+export interface FilePickerProps extends BaseFilePickerProps {
   className?: string;
-}
-
-export interface IFileDetail {
-  file: File;
-  fileType: string;
-  fileSize: number;
-  fileName: string;
-  thumbnail: string;
+  style?: React.CSSProperties;
 }
 
 const FilePicker = React.forwardRef<unknown, FilePickerProps>((props, ref) => {
@@ -44,6 +36,7 @@ const FilePicker = React.forwardRef<unknown, FilePickerProps>((props, ref) => {
     onBeforeSelect,
     onChange,
     quality,
+    ...restProps
   } = props;
 
   const cls = classNames(prefixCls, className, {
@@ -73,9 +66,9 @@ const FilePicker = React.forwardRef<unknown, FilePickerProps>((props, ref) => {
 
   const handleChange = (e) => {
     const files: Array<File> = [].slice.call(e.target.files);
-    const fileList: Array<IFileDetail> = [];
+    const fileList: Array<FileObject> = [];
 
-    const getFileInfo = (data: IFileDetail) => {
+    const getFileInfo = (data: FileObject) => {
       if (multiple) {
         fileList.push(data);
 
@@ -92,12 +85,12 @@ const FilePicker = React.forwardRef<unknown, FilePickerProps>((props, ref) => {
     }
   };
 
-  const content = cloneElement(children, {
+  const content = cloneElement(children as React.ReactElement, {
     onClick: handleClick,
-    className: classNames(children.props.className, 'needsclick'), // 修复加载fastClick库后引起的合成事件问题
+    className: classNames((children as React.ReactElement).props.className, 'needsclick'), // 修复加载fastClick库后引起的合成事件问题
   });
   return (
-    <div className={cls}>
+    <div className={cls} {...restProps}>
       <input
         className={`${prefixCls}__input`}
         type="file"
@@ -114,6 +107,7 @@ const FilePicker = React.forwardRef<unknown, FilePickerProps>((props, ref) => {
 });
 
 FilePicker.displayName = 'FilePicker';
+
 FilePicker.defaultProps = {
   disabled: false,
   multiple: false,
