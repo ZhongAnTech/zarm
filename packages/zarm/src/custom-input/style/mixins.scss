@@ -1,0 +1,109 @@
+@mixin input-base() {
+  position: relative;
+  width: 100%;
+  color: var(--color-text);
+  font-size: var(--za-input-font-size);
+
+  @include e(label) {
+    font-size: var(--za-input-vertical-label-font-size);
+    line-height: var(--za-input-line-height);
+  }
+
+  @include e(content) {
+    position: relative;
+    height: var(--za-input-height);
+    line-height: var(--za-input-line-height);
+  }
+}
+
+@mixin input-keyboard() {
+  @include e(virtual-input) {
+    display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+  }
+
+  @include m(focus) {
+    @include e(virtual-input) {
+      display: flex;
+      align-items: center;
+      transform: translate3d(0, 0, 0);
+
+      &:after {
+        content: '';
+        display: inline-block;
+        height: var(--za-input-cursor-height);
+        border-right: var(--za-input-cursor-width) solid var(--za-input-cursor-color);
+        transition: opacity 0.1s ease-out;
+        animation: virtual-cursor 1s infinite step-start;
+      }
+    }
+  }
+
+  @include m(readonly) {
+    @include e(virtual-input) {
+      position: static;
+      white-space: normal;
+    }
+  }
+}
+
+@mixin input-placeholder() {
+  @include e(placeholder) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--color-text-placeholder);
+  }
+}
+
+@mixin input-clearable() {
+  @include e(clear) {
+    position: absolute;
+    visibility: hidden;
+    color: var(--za-input-clear-icon-color);
+    width: var(--za-input-clear-icon-width);
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    font-size: r(16);
+  }
+
+  @include m(focus) {
+    padding-right: var(--za-input-clear-icon-width);
+
+    @include e(clear) {
+      visibility: visible;
+    }
+  }
+}
+
+@mixin input-disabled() {
+  @include e(content, placeholder) {
+    cursor: not-allowed;
+    color: var(--color-text-disabled);
+  }
+}
+
+@keyframes virtual-cursor {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

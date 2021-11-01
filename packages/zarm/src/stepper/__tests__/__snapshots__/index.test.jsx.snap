@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stepper defaultValue 1`] = `
+<span
+  className="za-stepper za-stepper--radius"
+>
+  <Button
+    block={false}
+    className="za-stepper__sub"
+    disabled={false}
+    ghost={false}
+    htmlType="button"
+    loading={false}
+    onClick={[Function]}
+    shadow={false}
+    shape="radius"
+    size="xs"
+    theme="default"
+  >
+    <ForwardRef(SvgMinus) />
+  </Button>
+  <Input
+    autoFocus={false}
+    autoHeight={false}
+    className="za-stepper__input "
+    clearable={false}
+    disabled={false}
+    onBlur={[Function]}
+    onChange={[Function]}
+    readOnly={false}
+    showLength={false}
+    type="number"
+    value={2}
+  />
+  <Button
+    block={false}
+    className="za-stepper__plus"
+    disabled={false}
+    ghost={false}
+    htmlType="button"
+    loading={false}
+    onClick={[Function]}
+    shadow={false}
+    shape="radius"
+    size="xs"
+    theme="default"
+  >
+    <ForwardRef(SvgPlus) />
+  </Button>
+</span>
+`;
+
+exports[`Stepper renders correctly 1`] = `
+<span
+  class="za-stepper za-stepper--radius"
+>
+  <button
+    aria-disabled="false"
+    class="za-button za-stepper__sub za-button--default za-button--xs za-button--radius"
+    type="button"
+  >
+    <span>
+      <i
+        class="za-icon za-icon--default za-icon--md"
+        theme="default"
+      >
+        <svg
+          aria-hidden="true"
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          viewBox="0 0 1000 1000"
+          width="1em"
+        >
+          <path
+            d="M537.5 537.5h-400c-20.71 0-37.5-16.79-37.5-37.5s16.79-37.5 37.5-37.5h725c20.71 0 37.5 16.79 37.5 37.5s-16.79 37.5-37.5 37.5h-325z"
+            fill-rule="nonzero"
+          />
+        </svg>
+      </i>
+    </span>
+  </button>
+  <div
+    class="za-input za-stepper__input "
+  >
+    <input
+      type="number"
+      value="0"
+    />
+  </div>
+  <button
+    aria-disabled="false"
+    class="za-button za-stepper__plus za-button--default za-button--xs za-button--radius"
+    type="button"
+  >
+    <span>
+      <i
+        class="za-icon za-icon--default za-icon--md"
+        theme="default"
+      >
+        <svg
+          aria-hidden="true"
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          viewBox="0 0 1000 1000"
+          width="1em"
+        >
+          <path
+            d="M537.5 537.5v325c0 20.71-16.79 37.5-37.5 37.5s-37.5-16.79-37.5-37.5v-325h-325c-20.71 0-37.5-16.79-37.5-37.5s16.79-37.5 37.5-37.5h325v-325c0-20.71 16.79-37.5 37.5-37.5s37.5 16.79 37.5 37.5v325h325c20.71 0 37.5 16.79 37.5 37.5s-16.79 37.5-37.5 37.5h-325z"
+            fill-rule="nonzero"
+          />
+        </svg>
+      </i>
+    </span>
+  </button>
+</span>
+`;

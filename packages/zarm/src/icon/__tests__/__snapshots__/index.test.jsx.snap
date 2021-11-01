@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icon renders Icons using iconfont 1`] = `
+Array [
+  <i
+    class="za-icon za-icon--home za-icon--default za-icon--md"
+    theme="default"
+    type="home"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#home"
+      />
+    </svg>
+  </i>,
+  <i
+    class="za-icon za-icon--user za-icon--default za-icon--md"
+    theme="default"
+    type="user"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#user"
+      />
+    </svg>
+  </i>,
+]
+`;
+
+exports[`Icon renders Icons using svg component 1`] = `
+<i
+  class="za-icon za-icon--primary za-icon--lg"
+  theme="primary"
+>
+  <svg
+    fill="currentColor"
+    height="1em"
+    stroke="currentColor"
+    viewBox="0 0 32 32"
+    width="1em"
+  >
+    <path
+      d="M1 12.376l8.8 9.114L30.431 1.568"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2.6"
+    />
+  </svg>
+</i>
+`;

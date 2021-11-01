@@ -1,0 +1,311 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Progress circle shape progress renders percent correctly 1`] = `
+<Progress
+  percent={50}
+  shape="circle"
+  size="md"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="za-progress za-progress--circle za-progress--primary za-progress--md"
+    style={Object {}}
+  >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        className="za-progress__track"
+        d="
+    MInfinity, Infinity
+    m0 -16
+    a16 16 0 1 1 0 32
+    a16 16 0 1 1 0 -32"
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+      <path
+        className="za-progress__thumb"
+        d="
+    MInfinity, Infinity
+    m0 -16
+    a16 16 0 1 1 0 32
+    a16 16 0 1 1 0 -32"
+        strokeDasharray={100.53096491487338}
+        strokeDashoffset={50.26548245743669}
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+    </svg>
+    <div
+      className="za-progress__text"
+    >
+      foo
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress circle shape progress renders shape is circle correctly 1`] = `
+<div
+  class="za-progress za-progress--circle za-progress--primary za-progress--md"
+>
+  <svg
+    viewBox="0 0 40 40"
+  >
+    <path
+      class="za-progress__track"
+      d="
+    M20, 20
+    m0 -16
+    a16 16 0 1 1 0 32
+    a16 16 0 1 1 0 -32"
+      stroke-linecap="butt"
+      stroke-width="8"
+    />
+    <path
+      class="za-progress__thumb"
+      d="
+    M20, 20
+    m0 -16
+    a16 16 0 1 1 0 32
+    a16 16 0 1 1 0 -32"
+      stroke-dasharray="100.53096491487338"
+      stroke-dashoffset="90.47786842338604"
+      stroke-linecap="butt"
+      stroke-width="8"
+    />
+  </svg>
+  <div
+    class="za-progress__text"
+  >
+    foo
+  </div>
+</div>
+`;
+
+exports[`Progress circle shape progress renders shape is semi-circle correctly 1`] = `
+<div
+  class="za-progress za-progress--semi-circle za-progress--primary za-progress--md"
+>
+  <svg
+    viewBox="0 0 40 20"
+  >
+    <path
+      class="za-progress__track"
+      d="
+    M20, 20
+    m-16 0
+    a16 16 0 0 1 32 0"
+      stroke-linecap="round"
+      stroke-width="8"
+    />
+    <path
+      class="za-progress__thumb"
+      d="
+    M20, 20
+    m-16 0
+    a16 16 0 0 1 32 0"
+      stroke-dasharray="50.26548245743669"
+      stroke-dashoffset="45.23893421169302"
+      stroke-linecap="round"
+      stroke-width="8"
+    />
+  </svg>
+  <div
+    class="za-progress__text"
+  >
+    foo
+  </div>
+</div>
+`;
+
+exports[`Progress line shape progress renders size is lg correctly 1`] = `
+<Progress
+  percent={10}
+  shape="line"
+  size="lg"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="za-progress za-progress--line za-progress--primary za-progress--lg"
+    style={Object {}}
+  >
+    <div
+      className="za-progress__outer"
+    >
+      <div
+        className="za-progress__track"
+        style={
+          Object {
+            "borderRadius": "8px",
+            "height": "8",
+          }
+        }
+      >
+        <div
+          className="za-progress__thumb"
+          style={
+            Object {
+              "borderRadius": "8px",
+              "height": "8px",
+              "width": "10%",
+            }
+          }
+        />
+      </div>
+      <div
+        className="za-progress__text"
+      >
+        10%
+      </div>
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress line shape progress renders size is md correctly 1`] = `
+<Progress
+  percent={10}
+  shape="line"
+  size="md"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="za-progress za-progress--line za-progress--primary za-progress--md"
+    style={Object {}}
+  >
+    <div
+      className="za-progress__outer"
+    >
+      <div
+        className="za-progress__track"
+        style={
+          Object {
+            "borderRadius": "8px",
+            "height": "8",
+          }
+        }
+      >
+        <div
+          className="za-progress__thumb"
+          style={
+            Object {
+              "borderRadius": "8px",
+              "height": "8px",
+              "width": "10%",
+            }
+          }
+        />
+      </div>
+      <div
+        className="za-progress__text"
+      >
+        10%
+      </div>
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress line shape progress renders size is sm correctly 1`] = `
+<Progress
+  percent={10}
+  shape="line"
+  size="sm"
+  strokeShape="round"
+  text={[Function]}
+  theme="primary"
+>
+  <div
+    className="za-progress za-progress--line za-progress--primary za-progress--sm"
+    style={Object {}}
+  >
+    <div
+      className="za-progress__outer"
+    >
+      <div
+        className="za-progress__track"
+        style={
+          Object {
+            "borderRadius": "8px",
+            "height": "8",
+          }
+        }
+      >
+        <div
+          className="za-progress__thumb"
+          style={
+            Object {
+              "borderRadius": "8px",
+              "height": "8px",
+              "width": "10%",
+            }
+          }
+        />
+      </div>
+      <div
+        className="za-progress__text"
+      >
+        10%
+      </div>
+    </div>
+  </div>
+</Progress>
+`;
+
+exports[`Progress renders correctly 1`] = `
+<div
+  class="za-progress za-progress--line za-progress--primary za-progress--md"
+>
+  <div
+    class="za-progress__outer"
+  >
+    <div
+      class="za-progress__track"
+      style="height:8;border-radius:8px"
+    >
+      <div
+        class="za-progress__thumb"
+        style="width:10%;height:8px;border-radius:8px"
+      />
+    </div>
+    <div
+      class="za-progress__text"
+    >
+      10%
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Progress renders has children correctly 1`] = `
+<div
+  class="za-progress za-progress--line za-progress--primary za-progress--md"
+>
+  <div
+    class="za-progress__outer"
+  >
+    <div
+      class="za-progress__track"
+      style="height:8;border-radius:8px"
+    >
+      <div
+        class="za-progress__thumb"
+        style="width:10%;height:8px;border-radius:8px"
+      />
+    </div>
+    <div
+      class="za-progress__text"
+    >
+      foo
+    </div>
+  </div>
+</div>
+`;

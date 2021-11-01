@@ -1,0 +1,36 @@
+@include b(notice-bar) {
+  @include b(message) {
+    min-height: var(--notice-bar-min-height);
+    font-size: var(--notice-bar-font-size);
+    padding: var(--notice-bar-padding-v) var(--notice-bar-padding-h);
+
+    @include e(icon) {
+      margin-right: r(6);
+
+      @include b(icon) {
+        font-size: var(--notice-bar-icon-size);
+      }
+    }
+
+    @include e(footer) {
+      @include b(icon) {
+        font-size: var(--notice-bar-icon-size);
+      }
+    }
+  }
+
+  @include e(body) {
+    position: relative;
+    width: 100%;
+    height: var(--notice-bar-height);
+    line-height: var(--notice-bar-height);
+    overflow: hidden;
+  }
+
+  @include e(content) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+  }
+}

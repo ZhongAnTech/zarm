@@ -1,0 +1,34 @@
+@import 'mixins';
+
+@include b(nav-bar) {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: var(--za-nav-bar-height);
+  background: var(--za-nav-bar-background);
+
+  @include e(title) {
+    position: absolute;
+    left: 50%;
+    white-space: nowrap;
+    color: var(--za-nav-bar-title-color);
+    font-size: var(--za-nav-bar-title-font-size);
+    font-weight: var(--za-nav-bar-title-font-weight);
+    transform: translate(-50%, 0);
+  }
+
+  @include e(side) {
+    display: flex;
+    justify-content: center;
+
+    @include m(left) {
+      margin-left: var(--za-nav-bar-padding-horizontal);
+    }
+
+    @include m(right) {
+      margin-right: var(--za-nav-bar-padding-horizontal);
+    }
+  }
+}

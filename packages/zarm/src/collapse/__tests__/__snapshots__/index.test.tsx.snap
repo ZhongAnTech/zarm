@@ -1,0 +1,657 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Collapse renders correctly 1`] = `
+<div
+  class="za-collapse"
+>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__header"
+    >
+      <div
+        class="za-collapse-item__title"
+      >
+        Header of Item1
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item1.
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__header"
+    >
+      <div
+        class="za-collapse-item__title"
+      >
+        Header of Item2
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item2.
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__header"
+    >
+      <div
+        class="za-collapse-item__title"
+      >
+        Header of Item3
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item3.
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Collapse renders correctly with activeKey 1`] = `
+<div
+  class="za-collapse"
+>
+  <div
+    class="za-collapse-item za-collapse-item--active"
+  >
+    <div
+      class="za-collapse-item__header"
+    >
+      <div
+        class="za-collapse-item__title"
+      >
+        Header of Item1
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item1.
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__header"
+    >
+      <div
+        class="za-collapse-item__title"
+      >
+        Header of Item2
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item2.
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__header"
+    >
+      <div
+        class="za-collapse-item__title"
+      >
+        Header of Item3
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item3.
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Collapse renders correctly with animated 1`] = `
+<div
+  class="za-collapse za-collapse--animated"
+>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__header"
+    >
+      <div
+        class="za-collapse-item__title"
+      >
+        Header of Item1
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item1.
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__header"
+    >
+      <div
+        class="za-collapse-item__title"
+      >
+        Header of Item2
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item2.
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__header"
+    >
+      <div
+        class="za-collapse-item__title"
+      >
+        Header of Item3
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item3.
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Collapse renders correctly with array defaultActiveKey 1`] = `
+<div
+  class="za-collapse"
+>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__header"
+    >
+      <div
+        class="za-collapse-item__title"
+      >
+        Header of Item1
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item1.
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item za-collapse-item--active"
+  >
+    <div
+      class="za-collapse-item__header"
+    >
+      <div
+        class="za-collapse-item__title"
+      >
+        Header of Item2
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item2.
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__header"
+    >
+      <div
+        class="za-collapse-item__title"
+      >
+        Header of Item3
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item3.
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Collapse renders correctly with collapse mode 1`] = `
+<div
+  class="za-collapse"
+>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__header"
+    >
+      <div
+        class="za-collapse-item__title"
+      >
+        Header of Item1
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item1.
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__header"
+    >
+      <div
+        class="za-collapse-item__title"
+      >
+        Header of Item2
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item2.
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__header"
+    >
+      <div
+        class="za-collapse-item__title"
+      >
+        Header of Item3
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item3.
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Collapse renders correctly with defaultActiveKey 1`] = `
+<div
+  class="za-collapse"
+>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__header"
+    >
+      <div
+        class="za-collapse-item__title"
+      >
+        Header of Item1
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item1.
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item za-collapse-item--active"
+  >
+    <div
+      class="za-collapse-item__header"
+    >
+      <div
+        class="za-collapse-item__title"
+      >
+        Header of Item2
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item2.
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__header"
+    >
+      <div
+        class="za-collapse-item__title"
+      >
+        Header of Item3
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item3.
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Collapse renders correctly with number activeKey 1`] = `
+<div
+  class="za-collapse"
+>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__header"
+    >
+      <div
+        class="za-collapse-item__title"
+      >
+        Header of Item1
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item1.
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__header"
+    >
+      <div
+        class="za-collapse-item__title"
+      >
+        Header of Item2
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item2.
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__header"
+    >
+      <div
+        class="za-collapse-item__title"
+      >
+        Header of Item3
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item3.
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Collapse renders correctly with number defaultActiveKey 1`] = `
+<div
+  class="za-collapse"
+>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__header"
+    >
+      <div
+        class="za-collapse-item__title"
+      >
+        Header of Item1
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item1.
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__header"
+    >
+      <div
+        class="za-collapse-item__title"
+      >
+        Header of Item2
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item2.
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__header"
+    >
+      <div
+        class="za-collapse-item__title"
+      >
+        Header of Item3
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item3.
+      </div>
+    </div>
+  </div>
+</div>
+`;

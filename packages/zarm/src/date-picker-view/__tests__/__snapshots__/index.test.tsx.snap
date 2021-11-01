@@ -1,0 +1,200 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DatePickerView DatePickerView time 1`] = `
+<ForwardRef(forwardRef)
+  defaultValue="2017-12-3 14:00"
+  mode="datetime"
+>
+  <ConfigReceiver
+    defaultValue="2017-12-3 14:00"
+    forwardedRef={null}
+    mode="datetime"
+  >
+    <DatePickerView
+      defaultValue="2017-12-3 14:00"
+      disabled={false}
+      locale={
+        Object {
+          "day": "日",
+          "hour": "时",
+          "minute": "分",
+          "month": "月",
+          "year": "年",
+        }
+      }
+      localeCode="zh-CN"
+      minuteStep={1}
+      mode="datetime"
+      prefixCls="za-date-picker-view"
+      safeIphoneX={false}
+      stopScroll={false}
+      valueMember="value"
+    >
+      <PickerView
+        cols={Infinity}
+        dataSource={Array []}
+        disabled={false}
+        itemRender={[Function]}
+        locale={
+          Object {
+            "day": "日",
+            "hour": "时",
+            "minute": "分",
+            "month": "月",
+            "year": "年",
+          }
+        }
+        localeCode="zh-CN"
+        minuteStep={1}
+        mode="datetime"
+        onChange={[Function]}
+        prefixCls="za-date-picker-view"
+        safeIphoneX={false}
+        stopScroll={false}
+        value={
+          Array [
+            2021,
+          ]
+        }
+        valueMember="value"
+      >
+        <div
+          className="za-date-picker-view"
+        >
+          <div
+            className="za-date-picker-view__content"
+          />
+          <div
+            className="za-date-picker-view__mask za-date-picker-view__mask--top"
+          />
+          <div
+            className="za-date-picker-view__mask za-date-picker-view__mask--bottom"
+          />
+        </div>
+      </PickerView>
+    </DatePickerView>
+  </ConfigReceiver>
+</ForwardRef(forwardRef)>
+`;
+
+exports[`DatePickerView DatePickerView time 2 1`] = `
+<ForwardRef(forwardRef)
+  max="2019-11-23 21:00"
+  min="2007-01-03 11:00"
+  mode="datetime"
+>
+  <ConfigReceiver
+    forwardedRef={null}
+    max="2019-11-23 21:00"
+    min="2007-01-03 11:00"
+    mode="datetime"
+  >
+    <DatePickerView
+      disabled={false}
+      locale={
+        Object {
+          "day": "日",
+          "hour": "时",
+          "minute": "分",
+          "month": "月",
+          "year": "年",
+        }
+      }
+      localeCode="zh-CN"
+      max="2019-11-23 21:00"
+      min="2007-01-03 11:00"
+      minuteStep={1}
+      mode="datetime"
+      prefixCls="za-date-picker-view"
+      safeIphoneX={false}
+      stopScroll={false}
+      valueMember="value"
+    >
+      <PickerView
+        cols={Infinity}
+        dataSource={
+          Array [
+            Object {
+              "label": 1988,
+              "value": 1988,
+            },
+          ]
+        }
+        disabled={false}
+        itemRender={[Function]}
+        locale={
+          Object {
+            "day": "日",
+            "hour": "时",
+            "minute": "分",
+            "month": "月",
+            "year": "年",
+          }
+        }
+        localeCode="zh-CN"
+        max="2019-11-23 21:00"
+        min="2007-01-03 11:00"
+        minuteStep={1}
+        mode="datetime"
+        onChange={[Function]}
+        prefixCls="za-date-picker-view"
+        safeIphoneX={false}
+        stopScroll={false}
+        value={
+          Array [
+            2021,
+          ]
+        }
+        valueMember="value"
+      >
+        <div
+          className="za-date-picker-view"
+        >
+          <div
+            className="za-date-picker-view__content"
+          >
+            <Wheel
+              dataSource={
+                Array [
+                  Object {
+                    "label": 1988,
+                    "value": 1988,
+                  },
+                ]
+              }
+              disabled={false}
+              itemRender={[Function]}
+              key="0"
+              onChange={[Function]}
+              stopScroll={false}
+              value={2021}
+              valueMember="value"
+            >
+              <div
+                className="za-wheel"
+              >
+                <div
+                  className="za-wheel__content"
+                >
+                  <div
+                    className="za-wheel__item"
+                    key="0"
+                  >
+                    1988
+                  </div>
+                </div>
+              </div>
+            </Wheel>
+          </div>
+          <div
+            className="za-date-picker-view__mask za-date-picker-view__mask--top"
+          />
+          <div
+            className="za-date-picker-view__mask za-date-picker-view__mask--bottom"
+          />
+        </div>
+      </PickerView>
+    </DatePickerView>
+  </ConfigReceiver>
+</ForwardRef(forwardRef)>
+`;

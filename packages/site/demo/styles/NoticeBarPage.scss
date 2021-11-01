@@ -1,0 +1,11 @@
+@import "@/styles/index";
+
+.notice-bar-page {
+  .za-notice-bar {
+    margin-bottom: r(15);
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}

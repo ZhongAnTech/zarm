@@ -1,0 +1,68 @@
+@include b(search-bar) {
+  background: var(--za-search-bar-background);
+
+  @include e(form) {
+    height: var(--za-search-bar-height);
+    margin: 0 var(--za-search-bar-padding-horizontal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  @include e(content) {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 var(--za-search-bar-input-padding-horizontal);
+    height: var(--za-search-bar-input-height);
+    background: var(--za-search-bar-input-background);
+    overflow: hidden;
+
+    @include e(icon) {
+      margin-right: var(--za-search-bar-icon-margin-right);
+      color: var(--za-search-bar-icon-color);
+    }
+  }
+
+  @include b(input) {
+    flex: 1;
+    font-size: var(--za-search-bar-input-font-size);
+    background-color: transparent;
+
+    input {
+      &::-webkit-search-cancel-button {
+        display: none;
+      }
+    }
+
+    --za-input-placeholder-color: var(--za-search-bar-input-placeholder-color);
+    --za-input-clear-icon-color: var(--za-search-bar-input-clear-icon-color);
+  }
+
+  @include e(cancel) {
+    font-size: var(--za-search-bar-cancel-font-size);
+    color: var(--za-search-bar-cancel-color);
+    margin-left: var(--za-search-bar-cancel-margin-left);
+    transition: var(--za-search-bar-cancel-transition);
+  }
+
+  @include m(focus) {
+    @include e(cancel) {
+      margin-right: 0;
+    }
+  }
+
+  @include m(radius) {
+    @include e(content) {
+      border-radius: var(--za-search-bar-input-border-radius);
+    }
+  }
+
+  @include m(round) {
+    @include e(content) {
+      border-radius: var(--radius-round);
+    }
+  }
+}

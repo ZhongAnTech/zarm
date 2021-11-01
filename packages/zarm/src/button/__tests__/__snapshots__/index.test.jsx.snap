@@ -1,0 +1,161 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button block 1`] = `
+<button
+  aria-disabled="false"
+  class="za-button za-button--default za-button--md za-button--radius za-button--block"
+  type="button"
+>
+  <span>
+    foo
+  </span>
+</button>
+`;
+
+exports[`Button disabled 1`] = `
+<button
+  aria-disabled="true"
+  class="za-button za-button--default za-button--md za-button--radius za-button--disabled"
+  type="button"
+>
+  <span>
+    foo
+  </span>
+</button>
+`;
+
+exports[`Button ghost 1`] = `
+<button
+  aria-disabled="false"
+  class="za-button za-button--default za-button--md za-button--radius za-button--ghost"
+  type="button"
+>
+  <span>
+    foo
+  </span>
+</button>
+`;
+
+exports[`Button href and target 1`] = `
+<a
+  aria-disabled="false"
+  class="za-button za-button--default za-button--md za-button--radius za-button--link"
+  href="https://zarm.design"
+  target="_blank"
+>
+  <span>
+    foo
+  </span>
+</a>
+`;
+
+exports[`Button htmlType 1`] = `
+<button
+  aria-disabled="false"
+  class="za-button za-button--default za-button--md za-button--radius"
+  type="submit"
+>
+  <span>
+    foo
+  </span>
+</button>
+`;
+
+exports[`Button icon 1`] = `
+<button
+  aria-disabled="false"
+  class="za-button za-button--default za-button--md za-button--radius"
+  type="button"
+>
+  <div
+    class="za-button__content"
+  >
+    <img
+      alt=""
+      src="https://zarm.design/images/logo.ce68565d.svg"
+    />
+    <span>
+      foo
+    </span>
+  </div>
+</button>
+`;
+
+exports[`Button loading 1`] = `
+<button
+  aria-disabled="false"
+  class="za-button za-button--default za-button--md za-button--radius za-button--loading"
+  type="button"
+>
+  <div
+    class="za-button__content"
+  >
+    <div
+      class="za-activity-indicator za-activity-indicator--circular"
+    >
+      <svg
+        viewBox="31 31 62 62"
+      >
+        <circle
+          cx="62"
+          cy="62"
+          fill="none"
+          r="28.5"
+          style="stroke-width:5"
+        />
+      </svg>
+    </div>
+    <span>
+      foo
+    </span>
+  </div>
+</button>
+`;
+
+exports[`Button renders correctly 1`] = `
+<button
+  aria-disabled="false"
+  class="za-button za-button--default za-button--md za-button--radius"
+  type="button"
+>
+  <span>
+    foo
+  </span>
+</button>
+`;
+
+exports[`Button shape is radius 1`] = `
+<button
+  aria-disabled="false"
+  class="za-button za-button--default za-button--md za-button--radius"
+  type="button"
+>
+  <span>
+    foo
+  </span>
+</button>
+`;
+
+exports[`Button size 1`] = `
+<button
+  aria-disabled="false"
+  class="za-button za-button--default za-button--lg za-button--radius"
+  type="button"
+>
+  <span>
+    foo
+  </span>
+</button>
+`;
+
+exports[`Button theme 1`] = `
+<button
+  aria-disabled="false"
+  class="za-button za-button--primary za-button--md za-button--radius"
+  type="button"
+>
+  <span>
+    foo
+  </span>
+</button>
+`;

@@ -1,0 +1,306 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Carousel base render correctly 1`] = `
+<div>
+  <div
+    class="za-carousel za-carousel--horizontal"
+  >
+    <div
+      class="za-carousel__items"
+    >
+      <div
+        class="za-carousel__item"
+      >
+        0
+      </div>
+      <div
+        class="za-carousel__item"
+      >
+        1
+      </div>
+      <div
+        class="za-carousel__item"
+      >
+        2
+      </div>
+    </div>
+    <div
+      class="za-carousel__pagination"
+    >
+      <div
+        class="za-carousel__pagination__item za-carousel__pagination__item--active"
+      />
+      <div
+        class="za-carousel__pagination__item"
+      />
+      <div
+        class="za-carousel__pagination__item"
+      />
+    </div>
+  </div>
+  <div
+    class="za-carousel za-carousel--horizontal"
+  >
+    <div
+      class="za-carousel__items"
+    />
+    <div
+      class="za-carousel__pagination"
+    />
+  </div>
+  <div
+    class="za-carousel za-carousel--horizontal"
+  >
+    <div
+      class="za-carousel__items"
+    />
+    <div
+      class="za-carousel__pagination"
+    />
+  </div>
+  <div
+    class="za-carousel za-carousel--horizontal"
+  >
+    <div
+      class="za-carousel__items"
+    >
+      <div
+        class="za-carousel__item"
+      >
+        0
+      </div>
+    </div>
+    <div
+      class="za-carousel__pagination"
+    >
+      <div
+        class="za-carousel__pagination__item za-carousel__pagination__item--active"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Carousel className render correctly 1`] = `
+<div
+  class="za-carousel za-wrapper-test za-carousel--horizontal"
+>
+  <div
+    class="za-carousel__items"
+  />
+  <div
+    class="za-carousel__pagination"
+  />
+</div>
+`;
+
+exports[`Carousel height render correctly 1`] = `
+<div
+  class="za-carousel za-carousel--vertical"
+>
+  <div
+    class="za-carousel__items"
+    style="height:150px"
+  >
+    <div
+      class="za-carousel__item"
+    >
+      0
+    </div>
+    <div
+      class="za-carousel__item"
+    >
+      1
+    </div>
+    <div
+      class="za-carousel__item"
+    >
+      2
+    </div>
+  </div>
+  <div
+    class="za-carousel__pagination"
+  >
+    <div
+      class="za-carousel__pagination__item za-carousel__pagination__item--active"
+    />
+    <div
+      class="za-carousel__pagination__item"
+    />
+    <div
+      class="za-carousel__pagination__item"
+    />
+  </div>
+</div>
+`;
+
+exports[`Carousel pagination render correctly 1`] = `
+<div>
+  <div
+    class="za-carousel za-carousel--horizontal"
+  >
+    <div
+      class="za-carousel__items"
+    >
+      <div
+        class="za-carousel__item"
+      >
+        0
+      </div>
+      <div
+        class="za-carousel__item"
+      >
+        1
+      </div>
+      <div
+        class="za-carousel__item"
+      >
+        2
+      </div>
+    </div>
+    <div
+      class="za-carousel__pagination"
+    >
+      <div
+        class="za-carousel__pagination__item za-carousel__pagination__item--active"
+      />
+      <div
+        class="za-carousel__pagination__item"
+      />
+      <div
+        class="za-carousel__pagination__item"
+      />
+    </div>
+  </div>
+  <div
+    class="za-carousel za-carousel--horizontal"
+  >
+    <div
+      class="za-carousel__items"
+    >
+      <div
+        class="za-carousel__item"
+      >
+        0
+      </div>
+      <div
+        class="za-carousel__item"
+      >
+        1
+      </div>
+      <div
+        class="za-carousel__item"
+      >
+        2
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Carousel prefixCls render correctly 1`] = `
+<div
+  class="za-carousel za-carousel--horizontal"
+>
+  <div
+    class="za-carousel__items"
+  >
+    <div
+      class="za-carousel__item"
+    >
+      0
+    </div>
+  </div>
+  <div
+    class="za-carousel__pagination"
+  >
+    <div
+      class="za-carousel__pagination__item za-carousel__pagination__item--active"
+    />
+  </div>
+</div>
+`;
+
+exports[`Carousel style render correctly 1`] = `
+<div
+  class="za-carousel za-carousel--horizontal"
+  style="background:red"
+>
+  <div
+    class="za-carousel__items"
+  />
+  <div
+    class="za-carousel__pagination"
+  />
+</div>
+`;
+
+exports[`Carousel swipeable 1`] = `
+<Carousel
+  activeIndex={0}
+  animationDuration={500}
+  autoPlay={false}
+  autoPlayIntervalTime={3000}
+  direction="left"
+  height={160}
+  loop={false}
+  moveDistanceRatio={0.5}
+  moveTimeSpan={300}
+  showPagination={true}
+  swipeable={false}
+>
+  <div
+    className="za-carousel za-carousel--horizontal"
+    onMouseDown={[Function]}
+    onMouseMove={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+  >
+    <div
+      className="za-carousel__items"
+      onTransitionEnd={[Function]}
+      style={Object {}}
+    >
+      <div
+        className="za-carousel__item"
+        key=".$0"
+      >
+        0
+      </div>
+      <div
+        className="za-carousel__item"
+        key=".$1"
+      >
+        1
+      </div>
+      <div
+        className="za-carousel__item"
+        key=".$2"
+      >
+        2
+      </div>
+    </div>
+    <div
+      className="za-carousel__pagination"
+    >
+      <div
+        className="za-carousel__pagination__item za-carousel__pagination__item--active"
+        key="pagination-0/.$0"
+        onClick={[Function]}
+      />
+      <div
+        className="za-carousel__pagination__item"
+        key="pagination-1/.$1"
+        onClick={[Function]}
+      />
+      <div
+        className="za-carousel__pagination__item"
+        key="pagination-2/.$2"
+        onClick={[Function]}
+      />
+    </div>
+  </div>
+</Carousel>
+`;

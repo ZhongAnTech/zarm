@@ -1,0 +1,17 @@
+@import "@/styles/index";
+
+.progress-page {
+  .progress-container {
+    width: 100%;
+    padding: r(20) r(20) 0;
+  }
+
+  .progress {
+    margin-bottom: r(20);
+    text-align: center;
+
+    &-percent {
+      font-size: r(14);
+    }
+  }
+}

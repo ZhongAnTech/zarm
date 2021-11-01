@@ -1,0 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomInput renders correctly 1`] = `
+<div
+  class="za-custom-input za-custom-input--number"
+>
+  <div
+    class="za-custom-input__content"
+  >
+    <div
+      class="za-custom-input__placeholder"
+    />
+    <div
+      class="za-custom-input__virtual-input"
+    />
+    <input
+      type="hidden"
+      value=""
+    />
+  </div>
+</div>
+`;
+
+exports[`CustomInput renders correctly if type isn't valid 1`] = `
+<div
+  class="za-custom-input za-custom-input--xxx"
+>
+  <div
+    class="za-custom-input__content"
+  >
+    <div
+      class="za-custom-input__placeholder"
+    />
+    <div
+      class="za-custom-input__virtual-input"
+    />
+    <input
+      type="hidden"
+      value=""
+    />
+  </div>
+</div>
+`;
+
+exports[`CustomInput.Idcard renders correctly 1`] = `
+<CustomInput
+  autoFocus={false}
+  clearable={false}
+  disabled={false}
+  maxLength={18}
+  readOnly={false}
+  type="idcard"
+>
+  <div
+    className="za-custom-input za-custom-input--idcard"
+    onClick={[Function]}
+  >
+    <div
+      className="za-custom-input__content"
+    >
+      <div
+        className="za-custom-input__placeholder"
+      />
+      <div
+        className="za-custom-input__virtual-input"
+      />
+      <input
+        type="hidden"
+        value=""
+      />
+    </div>
+    <KeyboardPicker
+      destroy={true}
+      onKeyClick={[Function]}
+      type="idcard"
+      visible={false}
+    >
+      <ForwardRef(forwardRef)
+        destroy={true}
+        mask={false}
+        visible={false}
+      >
+        <ConfigReceiver
+          destroy={true}
+          forwardedRef={null}
+          mask={false}
+          visible={false}
+        >
+          <Popup
+            destroy={true}
+            localeCode="zh-CN"
+            mask={false}
+            safeIphoneX={false}
+            visible={false}
+          />
+        </ConfigReceiver>
+      </ForwardRef(forwardRef)>
+    </KeyboardPicker>
+  </div>
+</CustomInput>
+`;
+
+exports[`CustomInput.Price renders correctly 1`] = `
+<CustomInput
+  autoFocus={false}
+  clearable={false}
+  disabled={false}
+  readOnly={false}
+  type="price"
+>
+  <div
+    className="za-custom-input za-custom-input--price"
+    onClick={[Function]}
+  >
+    <div
+      className="za-custom-input__content"
+    >
+      <div
+        className="za-custom-input__placeholder"
+      />
+      <div
+        className="za-custom-input__virtual-input"
+      />
+      <input
+        type="hidden"
+        value=""
+      />
+    </div>
+    <KeyboardPicker
+      destroy={true}
+      onKeyClick={[Function]}
+      type="price"
+      visible={false}
+    >
+      <ForwardRef(forwardRef)
+        destroy={true}
+        mask={false}
+        visible={false}
+      >
+        <ConfigReceiver
+          destroy={true}
+          forwardedRef={null}
+          mask={false}
+          visible={false}
+        >
+          <Popup
+            destroy={true}
+            localeCode="zh-CN"
+            mask={false}
+            safeIphoneX={false}
+            visible={false}
+          />
+        </ConfigReceiver>
+      </ForwardRef(forwardRef)>
+    </KeyboardPicker>
+  </div>
+</CustomInput>
+`;

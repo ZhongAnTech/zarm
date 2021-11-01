@@ -1,0 +1,28 @@
+@include b(loading) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  user-select: none;
+
+  @include m(open) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @include e(container) {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: r(80);
+    height: r(80);
+    padding: r(20) r(15);
+    border-radius: var(--radius-md);
+    background: var(--loading-background);
+    color: var(--color-text);
+  }
+}

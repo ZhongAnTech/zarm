@@ -24,5 +24,3 @@ What needs to be done to address this issue? Ideally, provide a pull request wit
 - browser version
 
 You can get this information from `package.json` and your device.
-
-

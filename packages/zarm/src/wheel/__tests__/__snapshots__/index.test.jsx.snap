@@ -1,0 +1,212 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Wheel Wheel disabled 1`] = `
+<Wheel
+  dataSource={
+    Array [
+      Object {
+        "label": "选项一",
+        "value": "1",
+      },
+      Object {
+        "label": "选项二",
+        "value": "2",
+      },
+    ]
+  }
+  disabled={true}
+  itemRender={[Function]}
+  stopScroll={false}
+  valueMember="value"
+>
+  <div
+    className="za-wheel"
+  >
+    <div
+      className="za-wheel__content"
+    >
+      <div
+        className="za-wheel__item za-wheel__item--selected za-wheel__item--disabled"
+        key="0"
+      >
+        选项一
+      </div>
+      <div
+        className="za-wheel__item za-wheel__item--disabled"
+        key="1"
+      >
+        选项二
+      </div>
+    </div>
+  </div>
+</Wheel>
+`;
+
+exports[`Wheel Wheel render defaultValue 1`] = `
+<Wheel
+  dataSource={
+    Array [
+      Object {
+        "label": "选项一",
+        "value": "1",
+      },
+      Object {
+        "label": "选项二",
+        "value": "2",
+      },
+    ]
+  }
+  defaultValue="1"
+  itemRender={[Function]}
+  stopScroll={false}
+  valueMember="value"
+>
+  <div
+    className="za-wheel"
+  >
+    <div
+      className="za-wheel__content"
+    >
+      <div
+        className="za-wheel__item za-wheel__item--selected"
+        key="0"
+      >
+        选项一
+      </div>
+      <div
+        className="za-wheel__item"
+        key="1"
+      >
+        选项二
+      </div>
+    </div>
+  </div>
+</Wheel>
+`;
+
+exports[`Wheel Wheel render visible 1`] = `
+<Wheel
+  dataSource={
+    Array [
+      Object {
+        "label": "选项一",
+        "value": "1",
+      },
+      Object {
+        "label": "选项二",
+        "value": "2",
+      },
+    ]
+  }
+  itemRender={[Function]}
+  stopScroll={false}
+  valueMember="value"
+>
+  <div
+    className="za-wheel"
+  >
+    <div
+      className="za-wheel__content"
+    >
+      <div
+        className="za-wheel__item za-wheel__item--selected"
+        key="0"
+      >
+        选项一
+      </div>
+      <div
+        className="za-wheel__item"
+        key="1"
+      >
+        选项二
+      </div>
+    </div>
+  </div>
+</Wheel>
+`;
+
+exports[`Wheel Wheel set props disabled 1`] = `
+<Wheel
+  dataSource={
+    Array [
+      Object {
+        "label": "选项一",
+        "value": "1",
+      },
+      Object {
+        "label": "选项二",
+        "value": "2",
+      },
+    ]
+  }
+  defaultValue="1"
+  itemRender={[Function]}
+  stopScroll={false}
+  value="1"
+  valueMember="value"
+>
+  <div
+    className="za-wheel"
+  >
+    <div
+      className="za-wheel__content"
+    >
+      <div
+        className="za-wheel__item za-wheel__item--selected"
+        key="0"
+      >
+        选项一
+      </div>
+      <div
+        className="za-wheel__item"
+        key="1"
+      >
+        选项二
+      </div>
+    </div>
+  </div>
+</Wheel>
+`;
+
+exports[`Wheel Wheel set props value 1`] = `
+<Wheel
+  dataSource={
+    Array [
+      Object {
+        "label": "选项一",
+        "value": "1",
+      },
+      Object {
+        "label": "选项二",
+        "value": "2",
+      },
+    ]
+  }
+  defaultValue="1"
+  itemRender={[Function]}
+  stopScroll={false}
+  value="1"
+  valueMember="value"
+>
+  <div
+    className="za-wheel"
+  >
+    <div
+      className="za-wheel__content"
+    >
+      <div
+        className="za-wheel__item za-wheel__item--selected"
+        key="0"
+      >
+        选项一
+      </div>
+      <div
+        className="za-wheel__item"
+        key="1"
+      >
+        选项二
+      </div>
+    </div>
+  </div>
+</Wheel>
+`;

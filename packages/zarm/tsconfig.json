@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "experimentalDecorators": true,
+    "strictNullChecks": true,
+    "moduleResolution": "node",
+    "jsx": "react",
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2019",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "types": ["react", "react-dom", "react-native", "node", "jest"]
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "lib", "es", "**/__tests__/**", "tests"],
+  "compileOnSave": false
+}

@@ -1,0 +1,33 @@
+@include b(picker-view) {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  height: r(210);
+  padding: r(20) 0;
+  background: var(--picker-background);
+
+  @include e(mask) {
+    width: 100%;
+    height: r(88);
+    pointer-events: none;
+    transform: translateZ(0);
+
+    @include m(top) {
+      position: absolute;
+      top: 0;
+      background: linear-gradient(to top, var(--picker-mask-background-start), var(--picker-mask-background-end));
+      @include onepx(bottom);
+    }
+
+    @include m(bottom) {
+      position: absolute;
+      bottom: 0;
+      background: linear-gradient(to bottom, var(--picker-mask-background-start), var(--picker-mask-background-end));
+      @include onepx(top);
+    }
+  }
+
+  @include e(content) {
+    display: flex;
+  }
+}

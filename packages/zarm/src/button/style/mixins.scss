@@ -1,0 +1,198 @@
+// 主题
+@mixin button-theme(
+  $background,
+  $border,
+  $color,
+  $active-background,
+  $active-border,
+  $active-color,
+  $disabled-background,
+  $disabled-border,
+  $disabled-color,
+  $disabled-opacity,
+  $shadow-color: rgba(var(--theme-default), 0.3),
+  $loading-color: $color
+) {
+  &,
+  &:hover {
+    background-color: $background;
+    border-color: $border;
+    color: $color;
+  }
+
+  &:active {
+    background-color: $active-background;
+    border-color: $active-border;
+    color: $active-color;
+  }
+
+  @include m(disabled) {
+    opacity: $disabled-opacity;
+    cursor: not-allowed;
+
+    &:active,
+    &:focus,
+    &:visited {
+      background-color: $background;
+      border-color: $border;
+      color: $color;
+    }
+  }
+
+  @include m(shadow) {
+    box-shadow: 0 r(3) r(3) 0 $shadow-color;
+  }
+
+  @include m(loading) {
+    @include b(activity-indicator) {
+      @include m(circular) {
+        circle {
+          stroke: $loading-color;
+        }
+      }
+    }
+  }
+}
+
+// 大小
+@mixin button-size($height, $padding, $font-size, $icon-size) {
+  padding: 0 $padding;
+  font-size: $font-size;
+  height: $height;
+  line-height: 1.5;
+
+  @include m(circle) {
+    width: $height;
+    padding: 0;
+  }
+
+  @include b(icon) {
+    font-size: $icon-size;
+  }
+
+  @include m(link) {
+    line-height: $height;
+  }
+
+  @include m(loading) {
+    @include b(activity-indicator) {
+      width: $font-size;
+      height: $font-size;
+    }
+  }
+
+  * + span {
+    margin-left: calc(#{$padding} / 2);
+  }
+}
+
+// 链接按钮
+@mixin button-link(
+  $color,
+  $active-color
+) {
+  &,
+  &:hover {
+    background-color: transparent;
+    border-color: transparent;
+    color: $color;
+  }
+
+  &:active {
+    color: $active-color;
+  }
+
+  @include m(disabled) {
+    &,
+    &:active,
+    &:hover,
+    &:focus,
+    &:visited {
+      color: var(--color-text-disabled);
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+}
+
+// 幽灵按钮
+@mixin button-ghost(
+  $background,
+  $border,
+  $color,
+  $active-background,
+  $active-border,
+  $active-color,
+  $disabled-background,
+  $disabled-border,
+  $disabled-color
+) {
+  &,
+  &:hover {
+    background-color: $background;
+    border-color: $border;
+    color: $color;
+  }
+
+  &:active {
+    background-color: $active-background;
+    border-color: $active-border;
+    color: $active-color;
+  }
+
+  @include m(disabled) {
+    &,
+    &:active,
+    &:hover,
+    &:focus,
+    &:visited {
+      background-color: $disabled-background;
+      border-color: $disabled-border;
+      color: $disabled-color;
+      cursor: not-allowed;
+    }
+  }
+}
+
+// 基础
+@mixin button-base() {
+  padding: 0;
+  border: none;
+  font-weight: normal;
+  text-align: center;
+  overflow: hidden;
+  color: var(--color-text);
+  // transition: all 0.2s ease-out;
+  outline: 0 none;
+  user-select: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-appearance: none;
+
+  &,
+  &:active,
+  &:hover,
+  &:focus,
+  &:visited {
+    text-decoration: none;
+  }
+
+  /* disabled Button */
+  @include m(disabled) {
+    cursor: not-allowed;
+    opacity: var(--opacity-disabled);
+  }
+
+  /* block Button */
+  @include m(block) {
+    display: block;
+    width: 100%;
+  }
+}
+
+// 形状
+@mixin button-shape($border-radius: 0) {
+  border-width: 1PX;
+  border-style: solid;
+  border-radius: $border-radius;
+}

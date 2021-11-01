@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input renders correctly 1`] = `
+<div
+  class="za-input"
+>
+  <input
+    type="text"
+  />
+</div>
+`;
+
+exports[`Input renders correctly if type isn't valid 1`] = `
+<div
+  class="za-input"
+>
+  <input
+    type="xxx"
+  />
+</div>
+`;
+
+exports[`Input renders correctly if type=text and props includes rows 1`] = `
+<div
+  class="za-input za-input--textarea"
+>
+  <div
+    class="za-input__inner"
+  >
+    <textarea
+      rows="1"
+    />
+  </div>
+</div>
+`;
+
+exports[`Input showLength 1`] = `
+<div
+  class="za-input za-input--textarea"
+>
+  <div
+    class="za-input__inner"
+  >
+    <textarea
+      maxlength="100"
+      rows="4"
+    />
+    <div
+      class="za-input__length"
+    >
+      0/100
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Input.Textarea renders correctly 1`] = `
+<div
+  class="za-input za-input--textarea"
+>
+  <div
+    class="za-input__inner"
+  >
+    <textarea
+      rows="4"
+    />
+  </div>
+</div>
+`;

@@ -1,0 +1,346 @@
+@import '../../button/style/mixins';
+
+@include b(checkbox) {
+  display: inline-block;
+  position: relative;
+
+  &:not(&--disabled):active {
+    opacity: var(--za-checkbox-active-opacity);
+  }
+
+  @include e(widget) {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  @include e(input) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  @include e(text) {
+    vertical-align: middle;
+    margin: 0 var(--za-checkbox-text-spacing-horizontal);
+  }
+
+  @include e(inner) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--za-checkbox-size);
+    height: var(--za-checkbox-size);
+    border: var(--za-checkbox-border-width) solid var(--za-checkbox-border-color);
+    border-radius: var(--za-checkbox-radius);
+    background-color: var(--za-checkbox-background);
+
+    @include e(marker) {
+      font-size: var(--za-checkbox-marker-font-size);
+      color: var(--za-checkbox-marker-color);
+      transform: scale(0);
+      transition: var(--za-checkbox-marker-transition);
+    }
+  }
+
+  // 半选状态
+  @include m(indeterminate) {
+    @include e(inner) {
+      border-color: var(--za-checkbox-checked-border-color);
+      background-color: var(--za-checkbox-checked-background);
+
+      @include e(marker) {
+        transform: scale(1);
+      }
+    }
+  }
+
+  // 选中状态
+  @include m(checked) {
+    @include e(inner) {
+      border-color: var(--za-checkbox-checked-border-color);
+      background-color: var(--za-checkbox-checked-background);
+
+      @include e(marker) {
+        transform: scale(1);
+      }
+    }
+  }
+
+  // 禁用状态
+  @include m(disabled) {
+    @include e(input) {
+      cursor: not-allowed;
+    }
+
+    @include e(text) {
+      color: var(--za-checkbox-disabled-text-color);
+    }
+
+    @include e(inner) {
+      border-color: var(--za-checkbox-disabled-border-color);
+      background-color: var(--za-checkbox-disabled-background);
+    }
+
+    @include m(checked) {
+      @include e(inner) {
+        border-color: var(--za-checkbox-disabled-border-color);
+        background-color: var(--za-checkbox-disabled-background);
+
+        @include e(marker) {
+          color: var(--za-checkbox-disabled-marker-color);
+        }
+      }
+    }
+  }
+
+  // 无文本状态
+  @include m(untext) {
+    line-height: 1;
+  }
+}
+
+@include b(checkbox-group) {
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+
+  @include e(inner) {
+    margin-right: calc(var(--za-checkbox-group-spacing-horizontal) * -1);
+    margin-bottom: calc(var(--za-checkbox-group-spacing-vertical) * -1);
+  }
+
+  @include b(checkbox) {
+    margin-right: var(--za-checkbox-group-spacing-horizontal);
+    margin-bottom: var(--za-checkbox-group-spacing-vertical);
+  }
+
+  // 通栏样式
+  @include m(block) {
+    width: 100%;
+
+    @include e(inner) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    @include b(checkbox) {
+      flex: 1;
+    }
+  }
+
+  // 按钮样式
+  @include m(button) {
+    @include b(checkbox) {
+      @include button-base();
+      @include button-shape(var(--radius-xs));
+      @include button-theme(
+        var(--button-default-background),
+        var(--button-default-border),
+        var(--button-default-color),
+        var(--button-default-background),
+        var(--button-default-border),
+        var(--button-default-color),
+        var(--button-default-background),
+        var(--button-default-border),
+        var(--button-default-color),
+        var(--button-disabled-opacity),
+        var(--button-default-shadow-color),
+      );
+
+      @include e(text) {
+        margin: 0;
+      }
+
+      @include m(checked) {
+        @include button-theme(
+          var(--button-primary-background),
+          var(--button-primary-border),
+          var(--button-primary-color),
+          var(--button-primary-active-background),
+          var(--button-primary-active-border),
+          var(--button-primary-active-color),
+          var(--button-primary-background),
+          var(--button-primary-border),
+          var(--button-primary-color),
+          var(--button-disabled-opacity),
+          var(--button-primary-shadow-color),
+        );
+      }
+    }
+
+    @include m(block) {
+      @include b(checkbox) {
+        flex: 1;
+      }
+    }
+
+    // button shape
+    @include m(button-rect) {
+      @include b(checkbox) {
+        @include button-shape(0);
+      }
+    }
+
+    @include m(button-radius) {
+      @include b(checkbox) {
+        @include button-shape(var(--radius-md));
+      }
+    }
+
+    @include m(button-round) {
+      @include b(checkbox) {
+        @include button-shape(var(--radius-round));
+      }
+    }
+
+    @include m(button-circle) {
+      @include b(checkbox) {
+        @include button-shape(var(--radius-circle));
+      }
+    }
+
+    // button sizes
+    @include m(button-lg) {
+      @include e(inner) {
+        margin-right: calc(var(--za-checkbox-group-button-spacing-horizontal-lg) * -1);
+        margin-bottom: calc(var(--za-checkbox-group-button-spacing-vertical-lg) * -1);
+      }
+
+      @include b(checkbox) {
+        margin-right: var(--za-checkbox-group-button-spacing-horizontal-lg);
+        margin-bottom: var(--za-checkbox-group-button-spacing-vertical-lg);
+        @include button-size(
+          var(--button-height-lg),
+          var(--button-padding-h-lg),
+          var(--button-font-size-lg),
+          var(--button-icon-size-lg),
+        );
+      }
+    }
+
+    @include m(button-md) {
+      @include e(inner) {
+        margin-right: calc(var(--za-checkbox-group-button-spacing-horizontal-md) * -1);
+        margin-bottom: calc(var(--za-checkbox-group-button-spacing-vertical-md) * -1);
+      }
+
+      @include b(checkbox) {
+        margin-right: var(--za-checkbox-group-button-spacing-horizontal-md);
+        margin-bottom: var(--za-checkbox-group-button-spacing-vertical-md);
+        @include button-size(
+          var(--button-height-md),
+          var(--button-padding-h-md),
+          var(--button-font-size-md),
+          var(--button-icon-size-md),
+        );
+      }
+    }
+
+    @include m(button-sm) {
+      @include e(inner) {
+        margin-right: calc(var(--za-checkbox-group-button-spacing-horizontal-sm) * -1);
+        margin-bottom: calc(var(--za-checkbox-group-button-spacing-vertical-sm) * -1);
+      }
+
+      @include b(checkbox) {
+        margin-right: var(--za-checkbox-group-button-spacing-horizontal-sm);
+        margin-bottom: var(--za-checkbox-group-button-spacing-vertical-sm);
+        @include button-size(
+          var(--button-height-sm),
+          var(--button-padding-h-sm),
+          var(--button-font-size-sm),
+          var(--button-icon-size-sm),
+        );
+      }
+    }
+
+    @include m(button-xs) {
+      @include e(inner) {
+        margin-right: calc(var(--za-checkbox-group-button-spacing-horizontal-xs) * -1);
+        margin-bottom: calc(var(--za-checkbox-group-button-spacing-vertical-xs) * -1);
+      }
+
+      @include b(checkbox) {
+        margin-right: var(--za-checkbox-group-button-spacing-horizontal-xs);
+        margin-bottom: var(--za-checkbox-group-button-spacing-vertical-xs);
+        @include button-size(
+          var(--button-height-xs),
+          var(--button-padding-h-xs),
+          var(--button-font-size-xs),
+          var(--button-icon-size-xs),
+        );
+      }
+    }
+
+    // button ghost
+    @include m(button-ghost) {
+      @include b(checkbox) {
+        @include m(checked) {
+          @include button-ghost(
+            transparent,
+            var(--za-checkbox-checked-border-color),
+            var(--theme-primary),
+            transparent,
+            var(--za-checkbox-checked-border-color),
+            var(--theme-primary),
+            transparent,
+            var(--za-checkbox-checked-border-color),
+            var(--theme-primary),
+          );
+        }
+      }
+    }
+
+    // button compact
+    @include m(button-compact) {
+      @include b(checkbox) {
+        &:not(:last-child) {
+          margin-right: -1PX;
+        }
+
+        &:first-child {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+
+        &:last-child {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+
+        &:not(:first-child):not(:last-child) {
+          border-radius: 0;
+        }
+
+        @include m(checked) {
+          z-index: 1;
+        }
+      }
+    }
+  }
+
+  @include m(list) {
+    display: block;
+    overflow: visible;
+
+    @include e(inner) {
+      margin-right: 0;
+      margin-bottom: 0;
+    }
+
+    @include b(checkbox) {
+      display: flex;
+      position: relative;
+      margin-right: 0;
+      margin-bottom: 0;
+
+      @include e(text) {
+        margin-left: 0;
+      }
+    }
+  }
+}

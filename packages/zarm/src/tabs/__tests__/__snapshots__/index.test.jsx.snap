@@ -1,0 +1,313 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tab canSwipe 1`] = `
+<div
+  class="za-tabs za-tabs--horizontal"
+>
+  <div
+    class="za-tabs__header"
+  >
+    <ul
+      class="za-tabs__tablist"
+      role="tablist"
+    >
+      <li
+        class="za-tabs__tab za-tabs__tab--active"
+        role="tab"
+      >
+        选项卡1
+      </li>
+      <li
+        class="za-tabs__tab"
+        role="tab"
+      >
+        选项卡2
+      </li>
+      <div
+        class="za-tabs__line"
+        style="transform:translate3d(0%, 0px, 0px);-webkit-transform:translate3d(0%, 0px, 0px);-moz-transform:translate3d(0%, 0px, 0px);width:50%"
+      />
+    </ul>
+  </div>
+  <div
+    class="za-tabs__body"
+  >
+    <div
+      class="za-carousel za-carousel--horizontal"
+    >
+      <div
+        class="za-carousel__items"
+      >
+        <div
+          class="za-carousel__item"
+        >
+          <div>
+            试试点我左滑
+          </div>
+        </div>
+        <div
+          class="za-carousel__item"
+        >
+          <div>
+            试试点我右滑
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Tab lineWidth is auto 1`] = `
+<div
+  className="za-tabs za-tabs--horizontal"
+>
+  <div
+    className="za-tabs__header"
+  >
+    <ul
+      className="za-tabs__tablist"
+      role="tablist"
+    >
+      <li
+        className="za-tabs__tab za-tabs__tab--active"
+        key="0/.0"
+        onClick={[Function]}
+        role="tab"
+      >
+        选项卡1
+      </li>
+      <li
+        className="za-tabs__tab"
+        key="1/.1"
+        onClick={[Function]}
+        role="tab"
+      >
+        选项卡2
+      </li>
+      <div
+        className="za-tabs__line"
+        style={
+          Object {
+            "MozTransform": "translate3d(0%, 0px, 0px)",
+            "WebkitTransform": "translate3d(0%, 0px, 0px)",
+            "backgroundColor": "transparent",
+            "transform": "translate3d(0%, 0px, 0px)",
+            "width": "50%",
+          }
+        }
+      >
+        <span
+          className="za-tabs__line__inner"
+          style={
+            Object {
+              "width": "auto",
+            }
+          }
+        />
+      </div>
+    </ul>
+  </div>
+  <div
+    className="za-tabs__body"
+  >
+    <TabPanel
+      key=".0"
+      selected={true}
+      title="选项卡1"
+    >
+      <div>
+        试试点我左滑
+      </div>
+    </TabPanel>
+    <TabPanel
+      key=".1"
+      selected={false}
+      title="选项卡2"
+    >
+      <div>
+        试试点我右滑
+      </div>
+    </TabPanel>
+  </div>
+</div>
+`;
+
+exports[`Tab lineWidth is auto 2`] = `
+<div
+  className="za-tabs za-tabs--horizontal"
+>
+  <div
+    className="za-tabs__header"
+  >
+    <ul
+      className="za-tabs__tablist"
+      role="tablist"
+    >
+      <li
+        className="za-tabs__tab za-tabs__tab--active"
+        key="0/.0"
+        onClick={[Function]}
+        role="tab"
+      >
+        选项卡1
+      </li>
+      <li
+        className="za-tabs__tab"
+        key="1/.1"
+        onClick={[Function]}
+        role="tab"
+      >
+        选项卡2
+      </li>
+      <div
+        className="za-tabs__line"
+        style={
+          Object {
+            "MozTransform": "translate3d(0%, 0px, 0px)",
+            "WebkitTransform": "translate3d(0%, 0px, 0px)",
+            "backgroundColor": "transparent",
+            "transform": "translate3d(0%, 0px, 0px)",
+            "width": "50%",
+          }
+        }
+      >
+        <span
+          className="za-tabs__line__inner"
+          style={
+            Object {
+              "width": 30,
+            }
+          }
+        />
+      </div>
+    </ul>
+  </div>
+  <div
+    className="za-tabs__body"
+  >
+    <TabPanel
+      key=".0"
+      selected={true}
+      title="选项卡1"
+    >
+      <div>
+        试试点我左滑
+      </div>
+    </TabPanel>
+    <TabPanel
+      key=".1"
+      selected={false}
+      title="选项卡2"
+    >
+      <div>
+        试试点我右滑
+      </div>
+    </TabPanel>
+  </div>
+</div>
+`;
+
+exports[`Tab renders correctly 1`] = `
+<div
+  class="za-tabs za-tabs--horizontal"
+>
+  <div
+    class="za-tabs__header"
+  >
+    <ul
+      class="za-tabs__tablist"
+      role="tablist"
+    >
+      <li
+        class="za-tabs__tab za-tabs__tab--active"
+        role="tab"
+      >
+        选项卡1
+      </li>
+      <li
+        class="za-tabs__tab"
+        role="tab"
+      >
+        选项卡2
+      </li>
+      <div
+        class="za-tabs__line"
+        style="transform:translate3d(0%, 0px, 0px);-webkit-transform:translate3d(0%, 0px, 0px);-moz-transform:translate3d(0%, 0px, 0px);width:50%"
+      />
+    </ul>
+  </div>
+  <div
+    class="za-tabs__body"
+  >
+    <div
+      class="za-tabs__panel za-tabs__panel--active"
+      role="tabpanel"
+    >
+      <div>
+        试试点我左滑
+      </div>
+    </div>
+    <div
+      class="za-tabs__panel"
+      role="tabpanel"
+    >
+      <div>
+        试试点我右滑
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Tab renders correctly vertical 1`] = `
+<div
+  class="za-tabs za-tabs--vertical"
+>
+  <div
+    class="za-tabs__header"
+  >
+    <ul
+      class="za-tabs__tablist"
+      role="tablist"
+    >
+      <li
+        class="za-tabs__tab za-tabs__tab--active"
+        role="tab"
+      >
+        选项卡1
+      </li>
+      <li
+        class="za-tabs__tab"
+        role="tab"
+      >
+        选项卡2
+      </li>
+      <div
+        class="za-tabs__line"
+        style="transform:translate3d(0px, 0%, 0px);-webkit-transform:translate3d(0px, 0%, 0px);-moz-transform:translate3d(0px, 0%, 0px);height:50%"
+      />
+    </ul>
+  </div>
+  <div
+    class="za-tabs__body"
+  >
+    <div
+      class="za-tabs__panel za-tabs__panel--active"
+      role="tabpanel"
+    >
+      <div>
+        试试点我左滑
+      </div>
+    </div>
+    <div
+      class="za-tabs__panel"
+      role="tabpanel"
+    >
+      <div>
+        试试点我右滑
+      </div>
+    </div>
+  </div>
+</div>
+`;

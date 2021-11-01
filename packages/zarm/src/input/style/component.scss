@@ -1,0 +1,31 @@
+@import 'mixins';
+
+@include b(input) {
+  @include input-base();
+  @include input-placeholder();
+
+  @include m(textarea) {
+    @include e(length) {
+      text-align: right;
+      color: var(--za-input-length-color);
+      font-size: var(--za-input-length-font-size);
+    }
+  }
+
+  // 可清空
+  @include m(clearable) {
+    @include input-clearable();
+  }
+
+  // 只读
+  @include m(readonly) {
+    @include e(content) {
+      height: auto;
+    }
+  }
+
+  // 禁用
+  @include m(disabled) {
+    @include input-disabled();
+  }
+}

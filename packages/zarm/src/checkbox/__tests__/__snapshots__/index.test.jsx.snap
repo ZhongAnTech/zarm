@@ -1,0 +1,793 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox defaultChecked 1`] = `
+<span
+  class="za-checkbox za-checkbox--checked"
+>
+  <span
+    class="za-checkbox__widget"
+  >
+    <span
+      class="za-checkbox__inner"
+    >
+      <i
+        class="za-icon za-checkbox__marker za-icon--default za-icon--md"
+        theme="default"
+      >
+        <svg
+          aria-hidden="true"
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          viewBox="0 0 1000 1000"
+          width="1em"
+        >
+          <path
+            d="M119.415 524.046c-9.708-9.693-11.278-24.766-2.72-35.554l20.007-25.223c8.201-10.34 23.543-12.936 34.386-5.699l173.175 115.585c9.134 6.097 24.856 5.303 33.384-1.616l457.6-371.25c10.286-8.345 26.397-7.634 35.412 1.368l11.272 11.255c9.81 9.795 9.096 25.343-1.187 35.611l-491.14 490.414c-15.28 15.258-40.369 14.59-56.099-1.116l-214.09-213.775z"
+            fill-rule="nonzero"
+          />
+        </svg>
+      </i>
+    </span>
+  </span>
+  <span
+    class="za-checkbox__text"
+  >
+    foo
+  </span>
+  <input
+    aria-checked="true"
+    checked=""
+    class="za-checkbox__input"
+    type="checkbox"
+    value="on"
+  />
+</span>
+`;
+
+exports[`Checkbox disabled 1`] = `
+<span
+  class="za-checkbox za-checkbox--disabled"
+>
+  <span
+    class="za-checkbox__widget"
+  >
+    <span
+      class="za-checkbox__inner"
+    >
+      <i
+        class="za-icon za-checkbox__marker za-icon--default za-icon--md"
+        theme="default"
+      >
+        <svg
+          aria-hidden="true"
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          viewBox="0 0 1000 1000"
+          width="1em"
+        >
+          <path
+            d="M119.415 524.046c-9.708-9.693-11.278-24.766-2.72-35.554l20.007-25.223c8.201-10.34 23.543-12.936 34.386-5.699l173.175 115.585c9.134 6.097 24.856 5.303 33.384-1.616l457.6-371.25c10.286-8.345 26.397-7.634 35.412 1.368l11.272 11.255c9.81 9.795 9.096 25.343-1.187 35.611l-491.14 490.414c-15.28 15.258-40.369 14.59-56.099-1.116l-214.09-213.775z"
+            fill-rule="nonzero"
+          />
+        </svg>
+      </i>
+    </span>
+  </span>
+  <span
+    class="za-checkbox__text"
+  >
+    foo
+  </span>
+  <input
+    class="za-checkbox__input"
+    disabled=""
+    type="checkbox"
+    value="off"
+  />
+</span>
+`;
+
+exports[`Checkbox renders correctly 1`] = `
+<span
+  class="za-checkbox za-checkbox--checked"
+>
+  <span
+    class="za-checkbox__widget"
+  >
+    <span
+      class="za-checkbox__inner"
+    >
+      <i
+        class="za-icon za-checkbox__marker za-icon--default za-icon--md"
+        theme="default"
+      >
+        <svg
+          aria-hidden="true"
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          viewBox="0 0 1000 1000"
+          width="1em"
+        >
+          <path
+            d="M119.415 524.046c-9.708-9.693-11.278-24.766-2.72-35.554l20.007-25.223c8.201-10.34 23.543-12.936 34.386-5.699l173.175 115.585c9.134 6.097 24.856 5.303 33.384-1.616l457.6-371.25c10.286-8.345 26.397-7.634 35.412 1.368l11.272 11.255c9.81 9.795 9.096 25.343-1.187 35.611l-491.14 490.414c-15.28 15.258-40.369 14.59-56.099-1.116l-214.09-213.775z"
+            fill-rule="nonzero"
+          />
+        </svg>
+      </i>
+    </span>
+  </span>
+  <span
+    class="za-checkbox__text"
+  >
+    foo
+  </span>
+  <input
+    aria-checked="true"
+    checked=""
+    class="za-checkbox__input"
+    type="checkbox"
+    value="on"
+  />
+</span>
+`;
+
+exports[`Checkbox.Group render defaultValue correctly 1`] = `
+<div
+  class="za-checkbox-group za-checkbox-group--button-xs za-checkbox-group--button-radius"
+>
+  <div
+    class="za-checkbox-group__inner"
+  >
+    <span
+      class="za-checkbox"
+    >
+      <span
+        class="za-checkbox__widget"
+      >
+        <span
+          class="za-checkbox__inner"
+        >
+          <i
+            class="za-icon za-checkbox__marker za-icon--default za-icon--md"
+            theme="default"
+          >
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="0 0 1000 1000"
+              width="1em"
+            >
+              <path
+                d="M119.415 524.046c-9.708-9.693-11.278-24.766-2.72-35.554l20.007-25.223c8.201-10.34 23.543-12.936 34.386-5.699l173.175 115.585c9.134 6.097 24.856 5.303 33.384-1.616l457.6-371.25c10.286-8.345 26.397-7.634 35.412 1.368l11.272 11.255c9.81 9.795 9.096 25.343-1.187 35.611l-491.14 490.414c-15.28 15.258-40.369 14.59-56.099-1.116l-214.09-213.775z"
+                fill-rule="nonzero"
+              />
+            </svg>
+          </i>
+        </span>
+      </span>
+      <span
+        class="za-checkbox__text"
+      >
+        选项一
+      </span>
+      <input
+        aria-checked="false"
+        class="za-checkbox__input"
+        type="checkbox"
+        value="off"
+      />
+    </span>
+    <span
+      class="za-checkbox za-checkbox--checked"
+    >
+      <span
+        class="za-checkbox__widget"
+      >
+        <span
+          class="za-checkbox__inner"
+        >
+          <i
+            class="za-icon za-checkbox__marker za-icon--default za-icon--md"
+            theme="default"
+          >
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="0 0 1000 1000"
+              width="1em"
+            >
+              <path
+                d="M119.415 524.046c-9.708-9.693-11.278-24.766-2.72-35.554l20.007-25.223c8.201-10.34 23.543-12.936 34.386-5.699l173.175 115.585c9.134 6.097 24.856 5.303 33.384-1.616l457.6-371.25c10.286-8.345 26.397-7.634 35.412 1.368l11.272 11.255c9.81 9.795 9.096 25.343-1.187 35.611l-491.14 490.414c-15.28 15.258-40.369 14.59-56.099-1.116l-214.09-213.775z"
+                fill-rule="nonzero"
+              />
+            </svg>
+          </i>
+        </span>
+      </span>
+      <span
+        class="za-checkbox__text"
+      >
+        选项二
+      </span>
+      <input
+        aria-checked="true"
+        checked=""
+        class="za-checkbox__input"
+        type="checkbox"
+        value="on"
+      />
+    </span>
+    <span
+      class="za-checkbox"
+    >
+      <span
+        class="za-checkbox__widget"
+      >
+        <span
+          class="za-checkbox__inner"
+        >
+          <i
+            class="za-icon za-checkbox__marker za-icon--default za-icon--md"
+            theme="default"
+          >
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="0 0 1000 1000"
+              width="1em"
+            >
+              <path
+                d="M119.415 524.046c-9.708-9.693-11.278-24.766-2.72-35.554l20.007-25.223c8.201-10.34 23.543-12.936 34.386-5.699l173.175 115.585c9.134 6.097 24.856 5.303 33.384-1.616l457.6-371.25c10.286-8.345 26.397-7.634 35.412 1.368l11.272 11.255c9.81 9.795 9.096 25.343-1.187 35.611l-491.14 490.414c-15.28 15.258-40.369 14.59-56.099-1.116l-214.09-213.775z"
+                fill-rule="nonzero"
+              />
+            </svg>
+          </i>
+        </span>
+      </span>
+      <span
+        class="za-checkbox__text"
+      >
+        选项三
+      </span>
+      <input
+        aria-checked="false"
+        class="za-checkbox__input"
+        type="checkbox"
+        value="off"
+      />
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Checkbox.Group render value correctly 1`] = `
+<div
+  class="za-checkbox-group za-checkbox-group--button-xs za-checkbox-group--button-radius"
+>
+  <div
+    class="za-checkbox-group__inner"
+  >
+    <span
+      class="za-checkbox za-checkbox--checked"
+    >
+      <span
+        class="za-checkbox__widget"
+      >
+        <span
+          class="za-checkbox__inner"
+        >
+          <i
+            class="za-icon za-checkbox__marker za-icon--default za-icon--md"
+            theme="default"
+          >
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="0 0 1000 1000"
+              width="1em"
+            >
+              <path
+                d="M119.415 524.046c-9.708-9.693-11.278-24.766-2.72-35.554l20.007-25.223c8.201-10.34 23.543-12.936 34.386-5.699l173.175 115.585c9.134 6.097 24.856 5.303 33.384-1.616l457.6-371.25c10.286-8.345 26.397-7.634 35.412 1.368l11.272 11.255c9.81 9.795 9.096 25.343-1.187 35.611l-491.14 490.414c-15.28 15.258-40.369 14.59-56.099-1.116l-214.09-213.775z"
+                fill-rule="nonzero"
+              />
+            </svg>
+          </i>
+        </span>
+      </span>
+      <span
+        class="za-checkbox__text"
+      >
+        选项一
+      </span>
+      <input
+        aria-checked="true"
+        checked=""
+        class="za-checkbox__input"
+        type="checkbox"
+        value="on"
+      />
+    </span>
+    <span
+      class="za-checkbox"
+    >
+      <span
+        class="za-checkbox__widget"
+      >
+        <span
+          class="za-checkbox__inner"
+        >
+          <i
+            class="za-icon za-checkbox__marker za-icon--default za-icon--md"
+            theme="default"
+          >
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="0 0 1000 1000"
+              width="1em"
+            >
+              <path
+                d="M119.415 524.046c-9.708-9.693-11.278-24.766-2.72-35.554l20.007-25.223c8.201-10.34 23.543-12.936 34.386-5.699l173.175 115.585c9.134 6.097 24.856 5.303 33.384-1.616l457.6-371.25c10.286-8.345 26.397-7.634 35.412 1.368l11.272 11.255c9.81 9.795 9.096 25.343-1.187 35.611l-491.14 490.414c-15.28 15.258-40.369 14.59-56.099-1.116l-214.09-213.775z"
+                fill-rule="nonzero"
+              />
+            </svg>
+          </i>
+        </span>
+      </span>
+      <span
+        class="za-checkbox__text"
+      >
+        选项二
+      </span>
+      <input
+        aria-checked="false"
+        class="za-checkbox__input"
+        type="checkbox"
+        value="off"
+      />
+    </span>
+    <span
+      class="za-checkbox"
+    >
+      <span
+        class="za-checkbox__widget"
+      >
+        <span
+          class="za-checkbox__inner"
+        >
+          <i
+            class="za-icon za-checkbox__marker za-icon--default za-icon--md"
+            theme="default"
+          >
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="0 0 1000 1000"
+              width="1em"
+            >
+              <path
+                d="M119.415 524.046c-9.708-9.693-11.278-24.766-2.72-35.554l20.007-25.223c8.201-10.34 23.543-12.936 34.386-5.699l173.175 115.585c9.134 6.097 24.856 5.303 33.384-1.616l457.6-371.25c10.286-8.345 26.397-7.634 35.412 1.368l11.272 11.255c9.81 9.795 9.096 25.343-1.187 35.611l-491.14 490.414c-15.28 15.258-40.369 14.59-56.099-1.116l-214.09-213.775z"
+                fill-rule="nonzero"
+              />
+            </svg>
+          </i>
+        </span>
+      </span>
+      <span
+        class="za-checkbox__text"
+      >
+        选项三
+      </span>
+      <input
+        aria-checked="false"
+        class="za-checkbox__input"
+        type="checkbox"
+        value="off"
+      />
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Checkbox.Group renders correctly 1`] = `
+<div
+  class="za-checkbox-group za-checkbox-group--button-xs za-checkbox-group--button-radius"
+>
+  <div
+    class="za-checkbox-group__inner"
+  >
+    <span
+      class="za-checkbox"
+    >
+      <span
+        class="za-checkbox__widget"
+      >
+        <span
+          class="za-checkbox__inner"
+        >
+          <i
+            class="za-icon za-checkbox__marker za-icon--default za-icon--md"
+            theme="default"
+          >
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="0 0 1000 1000"
+              width="1em"
+            >
+              <path
+                d="M119.415 524.046c-9.708-9.693-11.278-24.766-2.72-35.554l20.007-25.223c8.201-10.34 23.543-12.936 34.386-5.699l173.175 115.585c9.134 6.097 24.856 5.303 33.384-1.616l457.6-371.25c10.286-8.345 26.397-7.634 35.412 1.368l11.272 11.255c9.81 9.795 9.096 25.343-1.187 35.611l-491.14 490.414c-15.28 15.258-40.369 14.59-56.099-1.116l-214.09-213.775z"
+                fill-rule="nonzero"
+              />
+            </svg>
+          </i>
+        </span>
+      </span>
+      <span
+        class="za-checkbox__text"
+      >
+        选项一
+      </span>
+      <input
+        aria-checked="false"
+        class="za-checkbox__input"
+        type="checkbox"
+        value="off"
+      />
+    </span>
+    <span
+      class="za-checkbox za-checkbox--checked"
+    >
+      <span
+        class="za-checkbox__widget"
+      >
+        <span
+          class="za-checkbox__inner"
+        >
+          <i
+            class="za-icon za-checkbox__marker za-icon--default za-icon--md"
+            theme="default"
+          >
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="0 0 1000 1000"
+              width="1em"
+            >
+              <path
+                d="M119.415 524.046c-9.708-9.693-11.278-24.766-2.72-35.554l20.007-25.223c8.201-10.34 23.543-12.936 34.386-5.699l173.175 115.585c9.134 6.097 24.856 5.303 33.384-1.616l457.6-371.25c10.286-8.345 26.397-7.634 35.412 1.368l11.272 11.255c9.81 9.795 9.096 25.343-1.187 35.611l-491.14 490.414c-15.28 15.258-40.369 14.59-56.099-1.116l-214.09-213.775z"
+                fill-rule="nonzero"
+              />
+            </svg>
+          </i>
+        </span>
+      </span>
+      <span
+        class="za-checkbox__text"
+      >
+        选项二
+      </span>
+      <input
+        aria-checked="true"
+        checked=""
+        class="za-checkbox__input"
+        type="checkbox"
+        value="on"
+      />
+    </span>
+    <span
+      class="za-checkbox"
+    >
+      <span
+        class="za-checkbox__widget"
+      >
+        <span
+          class="za-checkbox__inner"
+        >
+          <i
+            class="za-icon za-checkbox__marker za-icon--default za-icon--md"
+            theme="default"
+          >
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="0 0 1000 1000"
+              width="1em"
+            >
+              <path
+                d="M119.415 524.046c-9.708-9.693-11.278-24.766-2.72-35.554l20.007-25.223c8.201-10.34 23.543-12.936 34.386-5.699l173.175 115.585c9.134 6.097 24.856 5.303 33.384-1.616l457.6-371.25c10.286-8.345 26.397-7.634 35.412 1.368l11.272 11.255c9.81 9.795 9.096 25.343-1.187 35.611l-491.14 490.414c-15.28 15.258-40.369 14.59-56.099-1.116l-214.09-213.775z"
+                fill-rule="nonzero"
+              />
+            </svg>
+          </i>
+        </span>
+      </span>
+      <span
+        class="za-checkbox__text"
+      >
+        选项三
+      </span>
+      <input
+        aria-checked="false"
+        class="za-checkbox__input"
+        type="checkbox"
+        value="off"
+      />
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Checkbox.Group type is button 1`] = `
+<div
+  class="za-checkbox-group za-checkbox-group--button za-checkbox-group--button-xs za-checkbox-group--button-radius"
+>
+  <div
+    class="za-checkbox-group__inner"
+  >
+    <button
+      class="za-checkbox"
+      type="button"
+    >
+      选项一
+      <input
+        aria-checked="false"
+        class="za-checkbox__input"
+        type="checkbox"
+        value="off"
+      />
+    </button>
+    <button
+      class="za-checkbox"
+      type="button"
+    >
+      选项二
+      <input
+        aria-checked="false"
+        class="za-checkbox__input"
+        type="checkbox"
+        value="off"
+      />
+    </button>
+    <button
+      class="za-checkbox"
+      type="button"
+    >
+      选项三
+      <input
+        aria-checked="false"
+        class="za-checkbox__input"
+        type="checkbox"
+        value="off"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Checkbox.Group type is list 1`] = `
+<div
+  class="za-checkbox-group za-checkbox-group--list za-checkbox-group--button-xs za-checkbox-group--button-radius"
+>
+  <div
+    class="za-checkbox-group__inner"
+  >
+    <div
+      class="za-list"
+    >
+      <ul>
+        <li
+          class="za-list-item za-checkbox za-list-item--link"
+        >
+          <div
+            class="za-list-item__prefix"
+          >
+            <span
+              class="za-checkbox__widget"
+            >
+              <span
+                class="za-checkbox__inner"
+              >
+                <i
+                  class="za-icon za-checkbox__marker za-icon--default za-icon--md"
+                  theme="default"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="currentColor"
+                    focusable="false"
+                    height="1em"
+                    viewBox="0 0 1000 1000"
+                    width="1em"
+                  >
+                    <path
+                      d="M119.415 524.046c-9.708-9.693-11.278-24.766-2.72-35.554l20.007-25.223c8.201-10.34 23.543-12.936 34.386-5.699l173.175 115.585c9.134 6.097 24.856 5.303 33.384-1.616l457.6-371.25c10.286-8.345 26.397-7.634 35.412 1.368l11.272 11.255c9.81 9.795 9.096 25.343-1.187 35.611l-491.14 490.414c-15.28 15.258-40.369 14.59-56.099-1.116l-214.09-213.775z"
+                      fill-rule="nonzero"
+                    />
+                  </svg>
+                </i>
+              </span>
+            </span>
+            <input
+              aria-checked="false"
+              class="za-checkbox__input"
+              type="checkbox"
+              value="off"
+            />
+          </div>
+          <div
+            class="za-list-item__wrapper"
+          >
+            <div
+              class="za-list-item__inner"
+            >
+              <div
+                class="za-list-item__title"
+              >
+                <span
+                  class="za-checkbox__text"
+                >
+                  选项一
+                </span>
+                <input
+                  aria-checked="false"
+                  class="za-checkbox__input"
+                  type="checkbox"
+                  value="off"
+                />
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          class="za-list-item za-checkbox za-list-item--link"
+        >
+          <div
+            class="za-list-item__prefix"
+          >
+            <span
+              class="za-checkbox__widget"
+            >
+              <span
+                class="za-checkbox__inner"
+              >
+                <i
+                  class="za-icon za-checkbox__marker za-icon--default za-icon--md"
+                  theme="default"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="currentColor"
+                    focusable="false"
+                    height="1em"
+                    viewBox="0 0 1000 1000"
+                    width="1em"
+                  >
+                    <path
+                      d="M119.415 524.046c-9.708-9.693-11.278-24.766-2.72-35.554l20.007-25.223c8.201-10.34 23.543-12.936 34.386-5.699l173.175 115.585c9.134 6.097 24.856 5.303 33.384-1.616l457.6-371.25c10.286-8.345 26.397-7.634 35.412 1.368l11.272 11.255c9.81 9.795 9.096 25.343-1.187 35.611l-491.14 490.414c-15.28 15.258-40.369 14.59-56.099-1.116l-214.09-213.775z"
+                      fill-rule="nonzero"
+                    />
+                  </svg>
+                </i>
+              </span>
+            </span>
+            <input
+              aria-checked="false"
+              class="za-checkbox__input"
+              type="checkbox"
+              value="off"
+            />
+          </div>
+          <div
+            class="za-list-item__wrapper"
+          >
+            <div
+              class="za-list-item__inner"
+            >
+              <div
+                class="za-list-item__title"
+              >
+                <span
+                  class="za-checkbox__text"
+                >
+                  选项二
+                </span>
+                <input
+                  aria-checked="false"
+                  class="za-checkbox__input"
+                  type="checkbox"
+                  value="off"
+                />
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          class="za-list-item za-checkbox za-list-item--link"
+        >
+          <div
+            class="za-list-item__prefix"
+          >
+            <span
+              class="za-checkbox__widget"
+            >
+              <span
+                class="za-checkbox__inner"
+              >
+                <i
+                  class="za-icon za-checkbox__marker za-icon--default za-icon--md"
+                  theme="default"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="currentColor"
+                    focusable="false"
+                    height="1em"
+                    viewBox="0 0 1000 1000"
+                    width="1em"
+                  >
+                    <path
+                      d="M119.415 524.046c-9.708-9.693-11.278-24.766-2.72-35.554l20.007-25.223c8.201-10.34 23.543-12.936 34.386-5.699l173.175 115.585c9.134 6.097 24.856 5.303 33.384-1.616l457.6-371.25c10.286-8.345 26.397-7.634 35.412 1.368l11.272 11.255c9.81 9.795 9.096 25.343-1.187 35.611l-491.14 490.414c-15.28 15.258-40.369 14.59-56.099-1.116l-214.09-213.775z"
+                      fill-rule="nonzero"
+                    />
+                  </svg>
+                </i>
+              </span>
+            </span>
+            <input
+              aria-checked="false"
+              class="za-checkbox__input"
+              type="checkbox"
+              value="off"
+            />
+          </div>
+          <div
+            class="za-list-item__wrapper"
+          >
+            <div
+              class="za-list-item__inner"
+            >
+              <div
+                class="za-list-item__title"
+              >
+                <span
+                  class="za-checkbox__text"
+                >
+                  选项三
+                </span>
+                <input
+                  aria-checked="false"
+                  class="za-checkbox__input"
+                  type="checkbox"
+                  value="off"
+                />
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;

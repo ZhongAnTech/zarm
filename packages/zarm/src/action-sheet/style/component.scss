@@ -1,0 +1,57 @@
+@import '../../button/style/mixins';
+
+@include b(action-sheet) {
+  @include m(safe) {
+    @include safeIphoneX(true);
+  }
+
+  @include m(spacing) {
+    margin: var(--za-action-sheet-spacing-margin);
+
+    @include e(actions, cancel) {
+      border-radius: var(--za-action-sheet-border-radius);
+    }
+  }
+
+  @include e(actions, cancel) {
+    overflow: hidden;
+  }
+
+  @include e(actions) {
+    background-color: var(--za-action-sheet-actions-background);
+  }
+
+  @include e(cancel) {
+    background-color: var(--za-action-sheet-cancel-background);
+    margin-top: var(--za-action-sheet-cancel-margin-top);
+
+    @include e(item) {
+      color: var(--za-action-sheet-cancel-color);
+    }
+  }
+
+  @include e(item) {
+    display: block;
+    position: relative;
+    height: var(--za-action-sheet-item-height);
+    line-height: var(--za-action-sheet-item-height);
+    font-size: var(--za-action-sheet-item-font-size);
+    @include button-base();
+
+    &:not(&--disabled):active {
+      background-color: var(--za-action-sheet-item-active-background);
+    }
+
+    &:not(:first-of-type) {
+      @include onepx(top);
+    }
+
+    @include m(primary) {
+      color: var(--theme-primary);
+    }
+
+    @include m(danger) {
+      color: var(--theme-danger);
+    }
+  }
+}

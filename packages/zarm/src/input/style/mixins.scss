@@ -1,0 +1,106 @@
+@mixin input-base() {
+  position: relative;
+  width: 100%;
+  color: var(--za-input-color);
+  font-size: var(--za-input-font-size);
+
+  input,
+  textarea {
+    flex: 1;
+    position: relative;
+    width: 100%;
+    padding: 0;
+    background-color: transparent;
+    background-image: none;
+    border: 0;
+    outline: 0;
+    -webkit-appearance: none;
+    font-size: var(--za-input-font-size);
+    color: var(--za-input-color);
+    line-height: var(--za-input-line-height);
+
+    @include placeholder {
+      color: var(--za-input-placeholder-color);
+    }
+  }
+
+  input {
+    display: inline-block;
+    height: var(--za-input-line-height);
+  }
+
+  textarea {
+    display: block;
+    resize: none;
+    word-break: break-all;
+    word-wrap: break-word;
+    overflow: visible;
+  }
+
+  @include e(inner) {
+    flex: 1;
+  }
+
+  @include e(label) {
+    font-size: var(--za-input-vertical-label-font-size);
+    line-height: var(--za-input-line-height);
+  }
+
+  @include e(content) {
+    position: relative;
+    height: var(--za-input-height);
+    line-height: var(--za-input-line-height);
+  }
+}
+
+@mixin input-placeholder() {
+  @include placeholder {
+    color: var(--za-input-placeholder-color);
+  }
+}
+
+@mixin input-clearable() {
+  // 隐藏原生search输入框自带的清空按钮
+  input::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  @include e(clear) {
+    position: absolute;
+    visibility: hidden;
+    color: var(--za-input-clear-icon-color);
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    font-size: var(--za-input-clear-icon-size);
+  }
+
+  @include m(focus) {
+    padding-right: var(--za-input-clear-icon-size);
+
+    @include e(clear) {
+      visibility: visible;
+    }
+  }
+}
+
+@mixin input-disabled() {
+  input,
+  textarea {
+    cursor: not-allowed;
+    color: var(--za-input-disabled-color);
+    // 用于修复真机上不显示的bug
+    -webkit-text-fill-color: var(--za-input-disabled-color);
+    opacity: 1;
+
+    @include placeholder {
+      color: var(--za-input-disabled-color);
+    }
+  }
+
+  @include e(content) {
+    cursor: not-allowed;
+    color: var(--za-input-disabled-color);
+  }
+}

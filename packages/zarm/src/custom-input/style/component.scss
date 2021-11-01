@@ -1,0 +1,24 @@
+@import 'mixins';
+
+@include b(custom-input) {
+  @include input-base();
+  @include input-placeholder();
+  @include input-keyboard();
+
+  // 可清空
+  @include m(clearable) {
+    @include input-clearable();
+  }
+
+  // 只读
+  @include m(readonly) {
+    @include e(content) {
+      height: auto;
+    }
+  }
+
+  // 禁用
+  @include m(disabled) {
+    @include input-disabled();
+  }
+}

@@ -1,0 +1,106 @@
+@import 'mixins';
+
+$PI: 3.141592674;
+$activity-indicator-spinner-count: 8;
+
+@include b(activity-indicator) {
+  display: inline-block;
+  position: relative;
+  transform: rotate(-90deg);
+  vertical-align: middle;
+
+  @include activity-indicator-size(var(--za-activity-indicator-size-md));
+
+  @include e(path) {
+    stroke: var(--za-activity-indicator-path-color);
+  }
+
+  @include e(line) {
+    stroke-dasharray: 100 * $PI;
+    stroke: var(--za-activity-indicator-color);
+  }
+
+  @include m(circular) {
+    display: inline-block;
+
+    svg {
+      vertical-align: top;
+      @include animation(rotate360, 2s linear infinite);
+    }
+
+    circle {
+      stroke-linecap: round;
+      stroke: var(--za-activity-indicator-color);
+      @include animation(rotate-circular, 1.5s ease-in-out infinite);
+    }
+  }
+
+  @include m(spinner) {
+    @include animation(rotate360, .8s linear infinite);
+
+    animation-timing-function: steps($activity-indicator-spinner-count);
+
+    div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      @for $i from 1 through $activity-indicator-spinner-count {
+        &:nth-of-type(#{$i}) {
+          transform: rotate($i * (360 / $activity-indicator-spinner-count) * 1deg);
+          opacity: $i / $activity-indicator-spinner-count;
+        }
+      }
+
+      &::before {
+        content: '';
+        display: block;
+        width: 2px;
+        height: 30%;
+        margin: 0 auto;
+        background-color: var(--za-activity-indicator-spinner-color);
+        border-radius: 1000px;
+      }
+    }
+  }
+
+  /* sizes */
+  @include m(lg) {
+    @include activity-indicator-size(var(--za-activity-indicator-size-lg));
+
+    @include m(spinner) {
+      div::before {
+        width: 3px;
+      }
+    }
+  }
+
+  @include keyframes(rotate-circular) {
+    0% {
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+    }
+
+    50% {
+      stroke-dasharray: 120, 200;
+      stroke-dashoffset: -60;
+    }
+
+    100% {
+      stroke-dasharray: 120, 200;
+      stroke-dashoffset: -180;
+    }
+  }
+
+  @include keyframes(rotate360) {
+    from {
+      transform: rotate(0);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}

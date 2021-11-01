@@ -1,0 +1,286 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SwipeAction left only 1`] = `
+<div
+  class="za-swipe-action"
+>
+  <div
+    class="za-swipe-action__actions za-swipe-action__actions--left"
+  >
+    <button
+      aria-disabled="false"
+      class="za-button za-button--primary za-button--md za-button--radius"
+      type="button"
+    >
+      <span>
+        左按钮1
+      </span>
+    </button>
+    <button
+      aria-disabled="false"
+      class="za-button za-button--danger za-button--md za-button--radius"
+      type="button"
+    >
+      <span>
+        左按钮2
+      </span>
+    </button>
+  </div>
+  <div
+    class="za-swipe-action__content"
+    style="-webkit-transition-duration:undefinedms;transition-duration:undefinedms;-webkit-transform:translateX(0px);transform:translateX(0px)"
+  >
+    <div>
+      右滑
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SwipeAction renders correctly 1`] = `
+<SwipeAction
+  animationDuration={300}
+  autoClose={true}
+  left={
+    Array [
+      <Button
+        block={false}
+        disabled={false}
+        ghost={false}
+        htmlType="button"
+        loading={false}
+        onClick={[MockFunction]}
+        shadow={false}
+        shape="radius"
+        size="md"
+        theme="primary"
+      >
+        左按钮1
+      </Button>,
+      <Button
+        block={false}
+        disabled={false}
+        ghost={false}
+        htmlType="button"
+        loading={false}
+        onClick={[MockFunction]}
+        shadow={false}
+        shape="radius"
+        size="md"
+        theme="danger"
+      >
+        左按钮2
+      </Button>,
+    ]
+  }
+  moveDistanceRatio={0.5}
+  moveTimeSpan={300}
+  offset={10}
+  prefixCls="za-swipe-action"
+  right={
+    Array [
+      <Button
+        block={false}
+        disabled={false}
+        ghost={false}
+        htmlType="button"
+        loading={false}
+        onClick={[MockFunction]}
+        shadow={false}
+        shape="radius"
+        size="md"
+        theme="primary"
+      >
+        右按钮1
+      </Button>,
+      <Button
+        block={false}
+        disabled={false}
+        ghost={false}
+        htmlType="button"
+        loading={false}
+        onClick={[MockFunction]}
+        shadow={false}
+        shape="radius"
+        size="md"
+        theme="danger"
+      >
+        右按钮2
+      </Button>,
+    ]
+  }
+>
+  <div
+    className="za-swipe-action"
+  >
+    <div
+      className="za-swipe-action__actions za-swipe-action__actions--left"
+    >
+      <Button
+        block={false}
+        disabled={false}
+        ghost={false}
+        htmlType="button"
+        key="0"
+        loading={false}
+        onClick={[Function]}
+        shadow={false}
+        shape="radius"
+        size="md"
+        theme="primary"
+      >
+        <button
+          aria-disabled={false}
+          className="za-button za-button--primary za-button--md za-button--radius"
+          onClick={[Function]}
+          type="button"
+        >
+          <span>
+            左按钮1
+          </span>
+        </button>
+      </Button>
+      <Button
+        block={false}
+        disabled={false}
+        ghost={false}
+        htmlType="button"
+        key="1"
+        loading={false}
+        onClick={[Function]}
+        shadow={false}
+        shape="radius"
+        size="md"
+        theme="danger"
+      >
+        <button
+          aria-disabled={false}
+          className="za-button za-button--danger za-button--md za-button--radius"
+          onClick={[Function]}
+          type="button"
+        >
+          <span>
+            左按钮2
+          </span>
+        </button>
+      </Button>
+    </div>
+    <div
+      className="za-swipe-action__actions za-swipe-action__actions--right"
+    >
+      <Button
+        block={false}
+        disabled={false}
+        ghost={false}
+        htmlType="button"
+        key="0"
+        loading={false}
+        onClick={[Function]}
+        shadow={false}
+        shape="radius"
+        size="md"
+        theme="primary"
+      >
+        <button
+          aria-disabled={false}
+          className="za-button za-button--primary za-button--md za-button--radius"
+          onClick={[Function]}
+          type="button"
+        >
+          <span>
+            右按钮1
+          </span>
+        </button>
+      </Button>
+      <Button
+        block={false}
+        disabled={false}
+        ghost={false}
+        htmlType="button"
+        key="1"
+        loading={false}
+        onClick={[Function]}
+        shadow={false}
+        shape="radius"
+        size="md"
+        theme="danger"
+      >
+        <button
+          aria-disabled={false}
+          className="za-button za-button--danger za-button--md za-button--radius"
+          onClick={[Function]}
+          type="button"
+        >
+          <span>
+            右按钮2
+          </span>
+        </button>
+      </Button>
+    </div>
+    <Drag
+      onDragEnd={[Function]}
+      onDragMove={[Function]}
+      onDragStart={[Function]}
+    >
+      <div
+        className="za-swipe-action__content"
+        onMouseDown={[Function]}
+        onMouseMove={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        style={
+          Object {
+            "WebkitTransform": "translateX(0px)",
+            "WebkitTransitionDuration": "undefinedms",
+            "transform": "translateX(0px)",
+            "transitionDuration": "undefinedms",
+          }
+        }
+      >
+        <div>
+          左右都能滑动
+        </div>
+      </div>
+    </Drag>
+  </div>
+</SwipeAction>
+`;
+
+exports[`SwipeAction right only 1`] = `
+<div
+  class="za-swipe-action"
+>
+  <div
+    class="za-swipe-action__actions za-swipe-action__actions--right"
+  >
+    <button
+      aria-disabled="false"
+      class="za-button za-button--primary za-button--md za-button--radius"
+      type="button"
+    >
+      <span>
+        右按钮1
+      </span>
+    </button>
+    <button
+      aria-disabled="false"
+      class="za-button za-button--danger za-button--md za-button--radius"
+      type="button"
+    >
+      <span>
+        右按钮2
+      </span>
+    </button>
+  </div>
+  <div
+    class="za-swipe-action__content"
+    style="-webkit-transition-duration:undefinedms;transition-duration:undefinedms;-webkit-transform:translateX(0px);transform:translateX(0px)"
+  >
+    <div>
+      左滑
+    </div>
+  </div>
+</div>
+`;

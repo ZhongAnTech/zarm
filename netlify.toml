@@ -1,9 +1,0 @@
-[build]
-  base    = ""
-  command = "npm run deploy:build"
-  publish = "assets"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200

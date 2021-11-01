@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Affix getAffixed is true test of offsetTop 1`] = `
+<div>
+  <div
+    class="za-affix"
+    style="position:fixed;top:100000px;width:0;height:0"
+  >
+    <div>
+      Affix Node
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Affix offsetBottom 1`] = `
+<div>
+  <div>
+    Affix Node
+  </div>
+</div>
+`;
+
+exports[`Affix offsetTop 1`] = `
+<div>
+  <div>
+    Affix Node
+  </div>
+</div>
+`;

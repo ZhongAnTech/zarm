@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PickerView PickerView disabled 1`] = `
+<PickerView
+  cols={Infinity}
+  dataSource={
+    Array [
+      Object {
+        "label": "选项一",
+        "value": "1",
+      },
+      Object {
+        "label": "选项二",
+        "value": "2",
+      },
+    ]
+  }
+  disabled={true}
+  itemRender={[Function]}
+  onChange={[MockFunction]}
+  prefixCls="za-picker-view"
+  valueMember="value"
+>
+  <div
+    className="za-picker-view"
+  >
+    <div
+      className="za-picker-view__content"
+    >
+      <Wheel
+        dataSource={
+          Array [
+            Object {
+              "label": "选项一",
+              "value": "1",
+            },
+            Object {
+              "label": "选项二",
+              "value": "2",
+            },
+          ]
+        }
+        disabled={true}
+        itemRender={[Function]}
+        key="0"
+        onChange={[Function]}
+        stopScroll={false}
+        value="1"
+        valueMember="value"
+      >
+        <div
+          className="za-wheel"
+        >
+          <div
+            className="za-wheel__content"
+          >
+            <div
+              className="za-wheel__item za-wheel__item--selected za-wheel__item--disabled"
+              key="0"
+            >
+              选项一
+            </div>
+            <div
+              className="za-wheel__item za-wheel__item--disabled"
+              key="1"
+            >
+              选项二
+            </div>
+          </div>
+        </div>
+      </Wheel>
+    </div>
+    <div
+      className="za-picker-view__mask za-picker-view__mask--top"
+    />
+    <div
+      className="za-picker-view__mask za-picker-view__mask--bottom"
+    />
+  </div>
+</PickerView>
+`;
+
+exports[`PickerView PickerView render visible 1`] = `
+<div
+  class="za-picker-view"
+>
+  <div
+    class="za-picker-view__content"
+  >
+    <div
+      class="za-wheel"
+    >
+      <div
+        class="za-wheel__content"
+      >
+        <div
+          class="za-wheel__item za-wheel__item--selected"
+        >
+          选项一
+        </div>
+        <div
+          class="za-wheel__item"
+        >
+          选项二
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-picker-view__mask za-picker-view__mask--top"
+  />
+  <div
+    class="za-picker-view__mask za-picker-view__mask--bottom"
+  />
+</div>
+`;

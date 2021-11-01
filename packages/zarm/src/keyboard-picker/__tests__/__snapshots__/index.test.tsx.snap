@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`KeyboardPicker snapshot renders correctly 1`] = `
+<KeyboardPicker
+  destroy={true}
+  type="number"
+  visible={false}
+>
+  <ForwardRef(forwardRef)
+    destroy={true}
+    mask={false}
+    visible={false}
+  >
+    <ConfigReceiver
+      destroy={true}
+      forwardedRef={null}
+      mask={false}
+      visible={false}
+    >
+      <Popup
+        destroy={true}
+        localeCode="zh-CN"
+        mask={false}
+        safeIphoneX={false}
+        visible={false}
+      />
+    </ConfigReceiver>
+  </ForwardRef(forwardRef)>
+</KeyboardPicker>
+`;

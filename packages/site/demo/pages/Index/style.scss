@@ -1,0 +1,22 @@
+@import "@/styles/index";
+
+.index-page {
+  .brand {
+    padding: r(45) r(45) r(15) r(45);
+
+    &-title {
+      font-size: r(30);
+    }
+
+    &-description {
+      font-size: r(14);
+    }
+  }
+
+  .menu-item-content {
+    .chinese {
+      margin-left: r(6);
+      opacity: 0.5;
+    }
+  }
+}

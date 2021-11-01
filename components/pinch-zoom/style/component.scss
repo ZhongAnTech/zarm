@@ -1,9 +1,0 @@
-@include b(pinch-zoom) {
-  overflow: hidden;
-  touch-action: none;
-
-  > * {
-    transform: translate(var(--x), var(--y)) scale(var(--scale));
-    will-change: transform;
-  }
-}

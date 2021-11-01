@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Message should renders with default props 1`] = `
+<div>
+  <div
+    class="za-message za-message--primary"
+  >
+    <div
+      class="za-message__body"
+    >
+      foo
+    </div>
+  </div>
+</div>
+`;

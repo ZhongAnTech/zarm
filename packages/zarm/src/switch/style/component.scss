@@ -1,0 +1,53 @@
+
+@include b(switch) {
+  @include e(input) {
+    position: relative;
+    width: var(--za-switch-width);
+    height: var(--za-switch-height);
+    border: calc((var(--za-switch-height) - var(--za-switch-knob-size)) / 2) solid transparent;
+    border-radius: var(--za-switch-border-radius);
+    background-color: var(--za-switch-background);
+    vertical-align: middle;
+    transition: all var(--za-switch-transition-duration);
+    outline: 0;
+    -webkit-appearance: none;
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: var(--za-switch-knob-size);
+      border-radius: var(--za-switch-border-radius);
+    }
+
+    &:before {
+      width: calc(var(--za-switch-width) - var(--za-switch-height) + var(--za-switch-knob-size));
+      transition: transform var(--za-switch-knob-transition-duration) cubic-bezier(0.45, 1, 0.4, 1), -webkit-transform var(--za-switch-knob-transition-duration) cubic-bezier(0.45, 1, 0.4, 1);
+    }
+
+    &:after {
+      width: var(--za-switch-knob-size);
+      background-color: var(--za-switch-knob-background);
+      box-shadow: var(--za-switch-knob-box-shadow);
+      transition: transform var(--za-switch-knob-transition-duration) cubic-bezier(0.4, 0.4, 0.25, 1.35), -webkit-transform var(--za-switch-knob-transition-duration) cubic-bezier(0.4, 0.4, 0.25, 1.35);
+      border: var(--za-switch-knob-border-width) solid var(--za-switch-knob-border-color);
+    }
+
+    &:checked {
+      background-color: var(--za-switch-checked-background);
+
+      &:after {
+        transform: translateX(calc(var(--za-switch-width) - var(--za-switch-height)));
+      }
+    }
+  }
+
+  @include m(disabled) {
+    @include e(input) {
+      cursor: not-allowed;
+      opacity: var(--opacity-disabled);
+    }
+  }
+}

@@ -1,0 +1,182 @@
+@mixin pickerStackColumn($count, $ele) {
+  @for $i from 1 through $count {
+    &:nth-child(#{$i}) {
+      z-index: $i * 1001;
+
+      @if ($i > 2) {
+        left: calc(var(--stack-picker-left) * (#{$i} - 2));
+      }
+
+      #{$ele + '-wrapper'} {
+        z-index: $i * 2 + 1;
+
+        @if ($i > 1) {
+          left: var(--stack-picker-left);
+        }
+      }
+
+      //@include e(stack-item) {
+      //  @if ($i > 2) {
+      //    padding-left: r(10);
+      //  }
+      //}
+    }
+  }
+}
+
+@include b(stack-picker) {
+  width: 100%;
+  height: 100%;
+  background: var(--stack-picker-background);
+
+  @include e(input) {
+    width: 100%;
+    padding: var(--za-list-item-padding-vertical) 0;
+  }
+
+  @include e(placeholder) {
+    color: var(--color-text-placeholder);
+  }
+
+  @include m(disabled) {
+    color: var(--color-text-disabled);
+  }
+
+  @include e(header) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+    height: var(--picker-header-height);
+    line-height: var(--picker-header-height);
+    font-size: var(--picker-header-font-size);
+    background: var(--picker-header-background);
+    @include onepx(top);
+  }
+
+  @include e(cancel, submit) {
+    padding: 0 var(--padding-h-lg);
+    cursor: pointer;
+  }
+
+  @include e(cancel) {
+    color: var(--color-text-caption);
+  }
+
+  @include e(submit) {
+    color: var(--theme-primary);
+  }
+
+  @include e(column-group) {
+    display: flex;
+    align-items: center;
+
+    @include e(item) {
+      flex: 1;
+      text-align: center;
+    }
+  }
+
+  @include e(crumbs) {
+    position: relative;
+    padding: var(--za-list-item-padding-vertical) var(--za-list-item-padding-horizontal);
+    line-height: var(--stack-picker-crumbs-line-height);
+    font-size: var(--font-size-md);
+    color: var(--color-text-caption);
+    @include onepx(bottom);
+
+    p {
+      margin: 0;
+    }
+  }
+
+  @include e(crumbs-error) {
+    color: var(--stack-picker-error);
+  }
+
+  @include e(group) {
+    position: relative;
+    height: calc(8 * var(--stack-picker-stack-item-height));
+    overflow: hidden;
+  }
+
+  @include e(stack-column) {
+    $ele: &;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: translate(0, 0);
+    transition: transform 0.3s;
+
+    @include m(hidden) {
+      ~ #{$ele} {
+        transform: translate(100%, 0);
+      }
+
+      @include e(item) {
+        padding-left: var(--stack-picker-padding);
+      }
+    }
+
+    @include pickerStackColumn(5, $ele);
+
+    &:not(:last-child) {
+      #{$ele + '__item'} {
+        padding-right: r(40);
+
+        &:before {
+          position: absolute;
+          right: r(15);
+          top: 50%;
+          content: '';
+          width: r(9);
+          height: r(9);
+          margin-top: r(-4);
+          border-right: r(2) solid #c7c7cc;
+          border-top: r(2) solid #c7c7cc;
+          transform: rotate(45deg);
+        }
+      }
+    }
+
+    &:first-child:last-child,
+    &:nth-child(2):last-child {
+      #{$ele + '__item'} {
+        padding-left: var(--stack-picker-padding);
+      }
+    }
+
+    &-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: calc(var(--stack-picker-padding) * -1);
+      bottom: 0;
+      padding-right: var(--stack-picker-padding);
+      overflow-y: scroll;
+      box-shadow: var(--stack-picker-shadow);
+      background: var(--stack-picker-background);
+    }
+
+    &-item {
+      position: relative;
+      padding: 0 r(10);
+      line-height: var(--stack-picker-stack-item-height);
+      font-size: var(--stack-picker-stack-item-font-size);
+      color: var(--color-text);
+      transition: padding-left 0.4s;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      @include onepx(bottom);
+
+      @include m(active) {
+        color: var(--theme-primary);
+      }
+    }
+  }
+}

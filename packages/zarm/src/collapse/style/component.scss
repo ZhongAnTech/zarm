@@ -1,0 +1,95 @@
+@include b(collapse) {
+  position: relative;
+  @include onepx(top bottom, var(--za-list-item-separator-color));
+
+  @include m(animated) {
+    @include b(collapse-item) {
+      &__content {
+        transition: all 0.15s ease-out;
+      }
+    }
+  }
+}
+
+@include b(collapse-item) {
+  font-size: r(15);
+
+  @include e(header) {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    min-height: var(--collapse-height);
+    padding: var(--collapse-padding-v) var(--collapse-padding-h);
+    @include onepx(top, var(--za-list-item-separator-color));
+
+    &:after {
+      left: var(--za-list-item-padding-horizontal);
+    }
+  }
+
+  @include e(title) {
+    flex: 1;
+  }
+
+  @include e(content) {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    font-size: r(13);
+    color: var(--color-text-caption);
+    will-change: height;
+    @include onepx(top, var(--za-list-item-separator-color));
+
+    &:after {
+      left: var(--za-list-item-padding-horizontal);
+    }
+  }
+
+  @include e(content__inner) {
+    padding: var(--padding-v-md) var(--padding-h-md);
+  }
+
+  @include e(arrow) {
+    margin-top: r(-3);
+    margin-left: r(5);
+    margin-right: r(2);
+
+    &:after {
+      display: inline-block;
+      content: '';
+      border-right: var(--za-list-item-arrow-border-width) solid var(--za-list-item-arrow-color);
+      border-top: var(--za-list-item-arrow-border-width) solid var(--za-list-item-arrow-color);
+      width: var(--za-list-item-arrow-size);
+      height: var(--za-list-item-arrow-size);
+      transform: rotate(135deg);
+      transition: all 0.15s ease-out;
+    }
+  }
+
+  @include m(disabled) {
+    @include e(title) {
+      color: var(--color-text-disabled);
+    }
+
+    @include e(arrow) {
+      &:after {
+        border-right-color: var(--collapse-arrow-disabled-color);
+        border-top-color: var(--collapse-arrow-disabled-color);
+      }
+    }
+  }
+
+  @include m(active) {
+    @include e(content) {
+      height: auto;
+    }
+
+    @include e(arrow) {
+      margin-top: 0;
+
+      &:after {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}

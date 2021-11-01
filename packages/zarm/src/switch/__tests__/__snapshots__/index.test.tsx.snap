@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switch snapshot defaultChecked 1`] = `
+<span
+  class="za-switch"
+>
+  <input
+    aria-checked="true"
+    checked=""
+    class="za-switch__input"
+    role="switch"
+    type="checkbox"
+    value="on"
+  />
+</span>
+`;
+
+exports[`Switch snapshot renders correctly 1`] = `
+<span
+  class="za-switch"
+>
+  <input
+    aria-checked="false"
+    class="za-switch__input"
+    role="switch"
+    type="checkbox"
+    value="off"
+  />
+</span>
+`;

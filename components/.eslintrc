@@ -1,7 +1,0 @@
-{
-  "root": true,
-  "extends": ["za/typescript-react"],
-  "env": {
-    "jest": true
-  }
-}
