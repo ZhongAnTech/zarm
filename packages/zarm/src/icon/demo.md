@@ -3,24 +3,74 @@
 ## @zarm-design/icons 自带图标
 
 ```jsx
-import { Info, Close, WaitingCircleFill } from '@zarm-design/icons';
+import {
+  ArrowDown,
+  ArrowLeft,
+  ArrowRight,
+  ArrowUp,
+  Close,
+  CloseCircle,
+  CloseCircleFill,
+  DeleteKey,
+  Info,
+  InfoCircle,
+  InfoCircleFill,
+  Keyboard,
+  Plus,
+  Minus,
+  PlusCircle,
+  Search,
+  Success,
+  SuccessCircle,
+  Volume,
+  Waiting,
+  WaitingCircle,
+  WaitingCircleFill,
+  Warning,
+  WarningCircle,
+} from '@zarm-design/icons';
+import { Collapse } from 'zarm';
 
-// ArrowDown,ArrowLeft,ArrowRight,ArrowUp,Close,CloseCircle,CloseCircleFill,DeleteKey,Info,InfoCircle,InfoCircleFill,Keyboard,Minus,Plus,PlusCircle,Search,Success,SuccessCircle,Volume,Waiting,WaitingCircle,WaitingCircleFill,Warning,WarningCircle
+const icons = [
+  { ele: ArrowDown, name: 'ArrowDown' },
+  { ele: ArrowLeft, name: 'ArrowLeft' },
+  { ele: ArrowRight, name: 'ArrowRight' },
+  { ele: ArrowUp, name: 'ArrowUp' },
+  { ele: Close, name: 'Close' },
+  { ele: CloseCircle, name: 'CloseCircle' },
+  { ele: CloseCircleFill, name: 'CloseCircleFill' },
+  { ele: DeleteKey, name: 'DeleteKey' },
+  { ele: Info, name: 'Info' },
+  { ele: InfoCircle, name: 'InfoCircle' },
+  { ele: InfoCircleFill, name: 'InfoCircleFill' },
+  { ele: Keyboard, name: 'Keyboard' },
+  { ele: Plus, name: 'Plus' },
+  { ele: Minus, name: 'Minus' },
+  { ele: PlusCircle, name: 'PlusCircle' },
+  { ele: Search, name: 'Search' },
+  { ele: Success, name: 'Success' },
+  { ele: SuccessCircle, name: 'SuccessCircle' },
+  { ele: Volume, name: 'Volume' },
+  { ele: Waiting, name: 'Waiting' },
+  { ele: WaitingCircle, name: 'WaitingCircle' },
+  { ele: WaitingCircleFill, name: 'WaitingCircleFill' },
+  { ele: Warning, name: 'Warning', theme: 'warning' },
+  { ele: WarningCircle, name: 'WarningCircle', theme: 'warning' },
+];
+
 ReactDOM.render(
-  <div className="grid">
-    <div className="grid-column">
-      <Info theme="primary" />
-      <span>Info</span>
-    </div>
-    <div className="grid-column">
-      <Close theme="warning" />
-      <span>Close</span>
-    </div>
-    <div className="grid-column">
-      <WaitingCircleFill theme="danger" />
-      <span>WaitingCircleFill</span>
-    </div>
-  </div>,
+  <Collapse>
+    <Collapse.Item key="1" title="自带图标">
+      <div className="grid">
+        {icons.map((Item) => (
+          <div className="grid-column">
+            <Item.ele theme={Item.theme || 'primary'} />
+            <span>{Item.name}</span>
+          </div>
+        ))}
+      </div>
+    </Collapse.Item>
+  </Collapse>,
   mountNode,
 );
 ```
