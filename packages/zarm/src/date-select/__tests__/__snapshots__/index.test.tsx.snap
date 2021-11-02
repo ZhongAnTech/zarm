@@ -117,6 +117,7 @@ exports[`DateSelect DateSelect date 1`] = `
                   <Popup
                     destroy={true}
                     localeCode="zh-CN"
+                    lockScroll={true}
                     onMaskClick={[Function]}
                     safeIphoneX={false}
                     visible={false}
@@ -261,6 +262,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
                   <Popup
                     destroy={true}
                     localeCode="zh-CN"
+                    lockScroll={true}
                     onMaskClick={[Function]}
                     safeIphoneX={false}
                     visible={false}
@@ -460,6 +462,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                   <Popup
                     destroy={true}
                     localeCode="zh-CN"
+                    lockScroll={true}
                     onMaskClick={[Function]}
                     safeIphoneX={false}
                     visible={true}
@@ -4445,6 +4448,7 @@ exports[`DateSelect DateSelect time 1`] = `
                   <Popup
                     destroy={true}
                     localeCode="zh-CN"
+                    lockScroll={true}
                     onMaskClick={[Function]}
                     safeIphoneX={false}
                     visible={false}
@@ -4568,6 +4572,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                   <Popup
                     destroy={true}
                     localeCode="zh-CN"
+                    lockScroll={true}
                     onMaskClick={[Function]}
                     safeIphoneX={false}
                     visible={false}
@@ -4700,6 +4705,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                   <Popup
                     destroy={true}
                     localeCode="zh-CN"
+                    lockScroll={true}
                     onMaskClick={[Function]}
                     safeIphoneX={false}
                     visible={false}
@@ -4850,6 +4856,7 @@ exports[`DateSelect DateSelect year 1`] = `
                   <Popup
                     destroy={true}
                     localeCode="zh-CN"
+                    lockScroll={true}
                     onMaskClick={[Function]}
                     safeIphoneX={false}
                     visible={false}

@@ -244,6 +244,7 @@ exports[`StackPicker renders correctly 1`] = `
             destroy={true}
             direction="bottom"
             localeCode="zh-CN"
+            lockScroll={true}
             onMaskClick={[Function]}
             safeIphoneX={false}
             visible={true}

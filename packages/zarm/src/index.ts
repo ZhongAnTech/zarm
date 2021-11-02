@@ -34,6 +34,7 @@ export { default as DatePicker } from './date-picker';
 export type { DateSelectProps } from './date-select';
 export { default as DateSelect } from './date-select';
 
+export type { FilePickerProps } from './file-picker';
 export { default as FilePicker } from './file-picker';
 
 export type { IconProps } from './icon';
