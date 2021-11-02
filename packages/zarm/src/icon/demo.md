@@ -127,14 +127,14 @@ const icons = [
   { ele: Waiting, name: 'Waiting' },
   { ele: WaitingCircle, name: 'WaitingCircle' },
   { ele: WaitingCircleFill, name: 'WaitingCircleFill' },
-  { ele: Warning, name: 'Warning', theme: 'warning' },
-  { ele: WarningCircle, name: 'WarningCircle', theme: 'warning' },
+  { ele: Warning, name: 'Warning' },
+  { ele: WarningCircle, name: 'WarningCircle' },
 ];
 
 ReactDOM.render(
   <div className="grid">
-    {icons.map((Item) => (
-      <div className="grid-column">
+    {icons.map((Item, index) => (
+      <div className="grid-column" key={+index}>
         <Item.ele theme={Item.theme || 'primary'} />
         <span>{Item.name}</span>
       </div>
