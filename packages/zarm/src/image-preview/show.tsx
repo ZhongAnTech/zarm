@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useImperativeHandle } from 'react';
-
 import renderToContainer from '../utils/renderToContainer';
 import ImagePreview, { ImagePreviewProps } from './ImagePreview';
-import { getRunTimeLocale } from '../n-config-provider';
 
 interface Ref {
   close: () => void;

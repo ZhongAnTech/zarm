@@ -4,6 +4,12 @@ import { StringPropertyNames } from './utilityTypes';
 
 export type ContainerType = HTMLElement | (() => HTMLElement) | Window | false;
 
+export const canUseDOM = !!(
+  typeof window !== 'undefined' &&
+  window.document &&
+  window.document.createElement
+);
+
 // 获取元素的纵坐标（相对于窗口）
 export const getTop = (ele: HTMLElement): number => {
   let offset = ele.offsetTop;
@@ -109,28 +115,32 @@ export const getOffsetParent = (ele) => {
     : offsetParent;
 };
 
-// 获取指定元素可滚动的父元素
-export const getScrollParent = (ele): HTMLElement => {
-  const parent = ele.parentNode;
+type ScrollElement = HTMLElement | Window;
 
-  if (!parent) {
-    return ele;
-  }
-  if (parent === window.document) {
-    if (window.document.body.scrollTop) {
-      return window.document.body;
+const overflowScrollReg = /scroll|auto/i;
+const defaultRoot = canUseDOM ? window : undefined;
+
+function isElement(node: Element) {
+  const ELEMENT_NODE_TYPE = 1;
+  return node.tagName !== 'HTML' && node.tagName !== 'BODY' && node.nodeType === ELEMENT_NODE_TYPE;
+}
+
+// 获取指定元素可滚动的父元素
+export const getScrollParent = (
+  element: Element,
+  root: ScrollElement | undefined = defaultRoot,
+) => {
+  let node = element;
+
+  while (node && node !== root && isElement(node)) {
+    const { overflowY } = window.getComputedStyle(node);
+    if (overflowScrollReg.test(overflowY)) {
+      return node;
     }
-    return window.document.documentElement;
+    node = node.parentNode as Element;
   }
-  const overflowValues = ['scroll', 'auto'];
-  if (
-    overflowValues.indexOf(getStyleComputedProperty(parent, 'overflow')) !== -1 ||
-    overflowValues.indexOf(getStyleComputedProperty(parent, 'overflowX')) !== -1 ||
-    overflowValues.indexOf(getStyleComputedProperty(parent, 'overflowY')) !== -1
-  ) {
-    return parent;
-  }
-  return getScrollParent(ele.parentNode);
+
+  return root;
 };
 
 // 获取浏览器支持的带前缀属性名
@@ -268,9 +278,3 @@ export function getElementSize(element: HTMLElement | null): { width: number; he
 
   return { width: 0, height: 0 };
 }
-
-export const canUseDOM = !!(
-  typeof window !== 'undefined' &&
-  window.document &&
-  window.document.createElement
-);
