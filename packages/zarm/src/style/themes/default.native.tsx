@@ -156,22 +156,6 @@ const components = {
   button_danger_ghost_active_border: base.theme_danger_press,
   button_danger_ghost_active_color: base.theme_danger_press,
 
-  // Cell
-  cell_height: 52, // 最小度
-  cell_background: '#fff', // 背景色
-  cell_line_padding_left: 16, // 分隔线左边距
-  cell_padding_h: 16, // 水平边内距
-  cell_padding_v: 15, // 纵向边内距
-  cell_title_color: base.color_text, // 标题文字颜色
-  cell_title_font_size: 15, // 标题文字大小
-  cell_title_line_height: 22, // 标题文字行高
-  cell_description_color: base.color_text_caption, // 标题文字颜色
-  cell_description_font_size: 15, // 描述文字大小
-  cell_label_width: 100, // 表单label度
-  cell_arrow_color: '#bcbcbc', // 箭头颜色
-  cell_arrow_length: 10, // 箭头长度
-  cell_arrow_border_width: 2, // 箭头粗细
-
   // Checkbox
   checkbox_size: 20,
 
@@ -194,18 +178,12 @@ const components = {
   keyboard_icon_font_size: 21,
 
   // Message
-  message_min_height_md: 29,
-  message_min_height_lg: 40,
-  message_font_size_md: 12,
-  message_font_size_lg: 14,
-  message_padding_v_md: 6,
-  message_padding_v_lg: 8,
-  message_padding_h_md: 8,
-  message_padding_h_lg: 12,
-  message_close_length_md: 12,
-  message_close_length_lg: 14,
-  message_arrow_length_md: 8,
-  message_arrow_length_lg: 10, // 箭头颜色
+  message_min_height: 29,
+  message_font_size: 12,
+  message_padding_v: 6,
+  message_padding_h: 8,
+  message_close_length: 12,
+  message_arrow_length: 8,
   message_arrow_border_width: 1, // 箭头粗细
 
   // Modal

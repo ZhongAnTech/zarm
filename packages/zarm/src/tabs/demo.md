@@ -164,8 +164,8 @@ ReactDOM.render(
 ## 垂直用法
 
 ```jsx
-import { Tabs } from 'zarm';
 import { useState } from 'react';
+import { Tabs } from 'zarm';
 
 const { Panel } = Tabs;
 
@@ -205,8 +205,8 @@ ReactDOM.render(<Demo />, mountNode);
 ## 垂直限高
 
 ```jsx
-import { Tabs } from 'zarm';
 import { useState } from 'react';
+import { Tabs } from 'zarm';
 
 const { Panel } = Tabs;
 

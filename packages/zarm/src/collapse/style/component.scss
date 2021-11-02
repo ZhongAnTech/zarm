@@ -1,6 +1,6 @@
 @include b(collapse) {
   position: relative;
-  @include onepx(top bottom);
+  @include onepx(top bottom, var(--za-list-item-separator-color));
 
   @include m(animated) {
     @include b(collapse-item) {
@@ -20,10 +20,10 @@
     display: flex;
     min-height: var(--collapse-height);
     padding: var(--collapse-padding-v) var(--collapse-padding-h);
-    @include onepx(bottom);
+    @include onepx(top, var(--za-list-item-separator-color));
 
     &:after {
-      left: var(--cell-line-padding-left);
+      left: var(--za-list-item-padding-horizontal);
     }
   }
 
@@ -38,10 +38,10 @@
     font-size: r(13);
     color: var(--color-text-caption);
     will-change: height;
-    @include onepx(bottom);
+    @include onepx(top, var(--za-list-item-separator-color));
 
     &:after {
-      left: var(--cell-line-padding-left);
+      left: var(--za-list-item-padding-horizontal);
     }
   }
 
@@ -57,10 +57,10 @@
     &:after {
       display: inline-block;
       content: '';
-      border-right: var(--cell-arrow-border-width) solid var(--cell-arrow-color);
-      border-top: var(--cell-arrow-border-width) solid var(--cell-arrow-color);
-      width: var(--cell-arrow-length);
-      height: var(--cell-arrow-length);
+      border-right: var(--za-list-item-arrow-border-width) solid var(--za-list-item-arrow-color);
+      border-top: var(--za-list-item-arrow-border-width) solid var(--za-list-item-arrow-color);
+      width: var(--za-list-item-arrow-size);
+      height: var(--za-list-item-arrow-size);
       transform: rotate(135deg);
       transition: all 0.15s ease-out;
     }

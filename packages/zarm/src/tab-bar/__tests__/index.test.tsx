@@ -2,8 +2,9 @@ import React from 'react';
 import { render, mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import TabBar from '../index';
-import TabBarItem from '../TabBarItem';
 import Badge from '../../badge';
+
+const TabBarItem = TabBar.Item;
 
 const activeIcon = (
   <div
@@ -51,7 +52,7 @@ describe('TabBarItem', () => {
     const mOnChange = jest.fn();
     const wrapper = shallow(<TabBarItem itemKey={1} onChange={mOnChange} />);
     wrapper.simulate('click');
-    expect(mOnChange).toBeCalledWith(1);
+    expect(mOnChange).toBeCalled();
   });
 
   it('should render with icon if it is selected', () => {
@@ -81,7 +82,7 @@ describe('TabBar', () => {
     it('should render correctly', () => {
       const wrapper = render(
         <TabBar>
-          <TabBar.Item itemKey="home" title="主页" icon={icon} activeIcon={activeIcon} />
+          <TabBarItem itemKey="home" title="主页" icon={icon} activeIcon={activeIcon} />
         </TabBar>,
       );
       expect(toJson(wrapper)).toMatchSnapshot();
@@ -90,7 +91,7 @@ describe('TabBar', () => {
     it('with defaultActiveKey', () => {
       const wrapper = render(
         <TabBar defaultActiveKey="home">
-          <TabBar.Item itemKey="home" title="主页" icon={icon} activeIcon={activeIcon} />
+          <TabBarItem itemKey="home" title="主页" icon={icon} activeIcon={activeIcon} />
         </TabBar>,
       );
       expect(toJson(wrapper)).toMatchSnapshot();
@@ -99,7 +100,7 @@ describe('TabBar', () => {
     it('with activeKey', () => {
       const wrapper = render(
         <TabBar activeKey="home">
-          <TabBar.Item itemKey="home" title="主页" icon={icon} activeIcon={activeIcon} />
+          <TabBarItem itemKey="home" title="主页" icon={icon} activeIcon={activeIcon} />
         </TabBar>,
       );
       expect(toJson(wrapper)).toMatchSnapshot();
@@ -110,7 +111,7 @@ describe('TabBar', () => {
     const onChange = jest.fn();
     const wrapper = mount(
       <TabBar defaultActiveKey="home" onChange={onChange}>
-        <TabBar.Item itemKey="home" title="主页" icon={icon} activeIcon={activeIcon} />
+        <TabBarItem itemKey="home" title="主页" icon={icon} activeIcon={activeIcon} />
       </TabBar>,
     );
 
@@ -121,19 +122,19 @@ describe('TabBar', () => {
   it('should select first tab bar item if activeKey and defaultActivceKey are not existed', () => {
     const wrapper = shallow(
       <TabBar visible={false} className="test">
-        <TabBar.Item itemKey="home" title="主页" />
-        <TabBar.Item itemKey="about us" title="关于我们" />
+        <TabBarItem itemKey="home" title="主页" />
+        <TabBarItem itemKey="about us" title="关于我们" />
       </TabBar>,
     );
     expect(wrapper.childAt(0).prop('selected')).toBeTruthy();
     expect(wrapper.childAt(1).prop('selected')).toBeFalsy();
   });
 
-  it('should render icon if selected is false(defaultActivceKey is not equal with itemKey)', () => {
+  it('should render actionIcon if selected is false(defaultActivceKey is not equal with itemKey)', () => {
     const onChange = jest.fn();
     const wrapper = mount(
       <TabBar defaultActiveKey="home" onChange={onChange}>
-        <TabBar.Item
+        <TabBarItem
           itemKey="badge"
           title="主页"
           icon={icon}
@@ -142,25 +143,25 @@ describe('TabBar', () => {
         />
       </TabBar>,
     );
-    wrapper.find(TabBar.Item).first().simulate('click');
+    wrapper.find(TabBarItem).first().simulate('click');
     expect(onChange).toBeCalledWith('badge');
-    expect(wrapper.find('.za-tab-bar__icon').contains(icon)).toBeTruthy();
+    expect(wrapper.find('.za-tab-bar__icon').contains(activeIcon)).toBeTruthy();
   });
 
   it('should selected tab bar item if activeKey is equal with itemKey', () => {
     const wrapper = shallow(
       <TabBar defaultActiveKey="home">
-        <TabBar.Item itemKey="home" title="主页" />
+        <TabBarItem itemKey="home" title="主页" />
       </TabBar>,
     );
-    expect(wrapper.find(TabBar.Item).prop('selected')).toBeTruthy();
+    expect(wrapper.find(TabBarItem).prop('selected')).toBeTruthy();
   });
 
   it('should use element index as the fallback itemKey', () => {
     const wrapper = shallow(
       <TabBar>
-        <TabBar.Item />
-        <TabBar.Item />
+        <TabBarItem />
+        <TabBarItem />
       </TabBar>,
     );
     expect(wrapper.childAt(0).prop('itemKey')).toBe(0);
@@ -170,7 +171,7 @@ describe('TabBar', () => {
   it('should have hidden class name if visible prop is false', () => {
     const wrapper = shallow(
       <TabBar visible={false} className="test">
-        <TabBar.Item itemKey="home" title="主页" />
+        <TabBarItem itemKey="home" title="主页" />
       </TabBar>,
     );
     expect(wrapper.hasClass('test')).toBeTruthy();
@@ -181,8 +182,8 @@ describe('TabBar', () => {
   it('should render children with extra props', () => {
     const wrapper = shallow(
       <TabBar visible={false} className="test">
-        <TabBar.Item itemKey="home" title="主页" />
-        <TabBar.Item itemKey="about us" title="关于我们" />
+        <TabBarItem itemKey="home" title="主页" />
+        <TabBarItem itemKey="about us" title="关于我们" />
       </TabBar>,
     );
     expect(wrapper.childAt(0).props()).toEqual(

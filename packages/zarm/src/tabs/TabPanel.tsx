@@ -1,19 +1,22 @@
 import * as React from 'react';
 import classnames from 'classnames';
+import { ConfigContext } from '../n-config-provider';
 import type { BaseTabPanelProps } from './interface';
 
 export interface TabPanelProps extends BaseTabPanelProps {
-  prefixCls?: string;
   className?: string;
 }
 
 const TabPanel = React.forwardRef<unknown, TabPanelProps>((props, ref) => {
-  const { prefixCls, className, selected, children } = props;
+  const { className, selected, children } = props;
 
-  const panelRef = (ref as any) || React.createRef<HTMLElement>();
+  const panelRef = (ref as any) || React.createRef<HTMLDivElement>();
 
-  const cls = classnames(`${prefixCls}__panel`, className, {
-    [`${prefixCls}__panel--active`]: selected,
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-tabs__panel`;
+
+  const cls = classnames(prefixCls, className, {
+    [`${prefixCls}--active`]: selected,
   });
 
   return (
@@ -25,8 +28,6 @@ const TabPanel = React.forwardRef<unknown, TabPanelProps>((props, ref) => {
 
 TabPanel.displayName = 'TabPanel';
 
-TabPanel.defaultProps = {
-  prefixCls: 'za-tabs',
-};
+TabPanel.defaultProps = {};
 
 export default TabPanel;

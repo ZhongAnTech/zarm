@@ -1,60 +1,91 @@
-import React, { PureComponent } from 'react';
+import React, { useContext } from 'react';
 import classnames from 'classnames';
-import PropsType from './PropsType';
+import PropsType from './interface';
 import Popup from '../popup';
+import { ConfigContext } from '../n-config-provider';
+import useActionSheet from './useActionSheet';
 
 export interface ActionSheetProps extends PropsType {
-  prefixCls?: string;
   className?: string;
+  safeIphoneX?: boolean;
 }
 
-export default class ActionSheet extends PureComponent<ActionSheetProps, {}> {
-  static defaultProps: ActionSheetProps = {
-    prefixCls: 'za-action-sheet',
-    visible: false,
-    spacing: false,
-    actions: [],
-    destroy: true,
-  };
+export type UseActionSheet = () => ReturnType<typeof useActionSheet>;
 
-  renderActions = (action, index) => {
-    const { prefixCls } = this.props;
-    const actionCls = classnames(`${prefixCls}__item`, action.className, {
-      [`${prefixCls}__item--${action.theme}`]: !!action.theme,
-    });
+interface CompoundedComponent
+  extends React.ForwardRefExoticComponent<ActionSheetProps & React.RefAttributes<HTMLDivElement>> {
+  useActionSheet: UseActionSheet;
+}
+
+const ActionSheet = React.forwardRef<HTMLDivElement, ActionSheetProps>((props, ref) => {
+  const {
+    className,
+    safeIphoneX,
+    spacing,
+    visible,
+    onMaskClick,
+    actions,
+    destroy,
+    cancelText,
+    mountContainer,
+    onCancel,
+    afterClose,
+  } = props;
+  const { prefixCls: globalPrefixCls, safeIphoneX: globalSafeIphoneX, locale } = useContext(
+    ConfigContext,
+  );
+  const prefixCls = `${globalPrefixCls}-action-sheet`;
+  const cls = classnames(prefixCls, {
+    [`${prefixCls}--spacing`]: spacing,
+    [`${prefixCls}--safe`]: safeIphoneX || globalSafeIphoneX,
+  });
+
+  const renderAction = (action, index) => {
     return (
-      <div key={+index} className={actionCls} onClick={action.onClick}>
+      <div
+        key={+index}
+        className={classnames(`${prefixCls}__item`, action.className, {
+          [`${prefixCls}__item--${action.theme}`]: !!action.theme,
+          [`${prefixCls}__item--disabled`]: action.disabled,
+        })}
+        onClick={action.onClick}
+      >
         {action.text}
       </div>
     );
   };
 
-  renderCancel = () => {
-    const { prefixCls, onCancel, cancelText, locale } = this.props;
-    return (
-      typeof onCancel === 'function' && (
-        <div className={`${prefixCls}__cancel`}>
-          <div className={`${prefixCls}__item`} onClick={onCancel}>
-            {cancelText || locale!.cancelText}
+  return (
+    <Popup
+      className={className}
+      visible={visible}
+      onMaskClick={onMaskClick}
+      destroy={destroy}
+      afterClose={afterClose}
+      mountContainer={mountContainer}
+    >
+      <div ref={ref} className={cls}>
+        <div className={`${prefixCls}__actions`}>{actions?.map(renderAction)}</div>
+        {typeof onCancel === 'function' && (
+          <div className={`${prefixCls}__cancel`}>
+            <div className={`${prefixCls}__item`} onClick={onCancel}>
+              {cancelText || locale?.ActionSheet?.cancelText}
+            </div>
           </div>
-        </div>
-      )
-    );
-  };
+        )}
+      </div>
+    </Popup>
+  );
+}) as CompoundedComponent;
 
-  render() {
-    const { prefixCls, className, spacing, visible, onMaskClick, actions, destroy } = this.props;
-    const cls = classnames(prefixCls, {
-      [`${prefixCls}--spacing`]: spacing,
-    });
+ActionSheet.displayName = 'ActionSheet';
 
-    return (
-      <Popup className={className} visible={visible} onMaskClick={onMaskClick} destroy={destroy}>
-        <div className={cls}>
-          <div className={`${prefixCls}__actions`}>{actions.map(this.renderActions)}</div>
-          {this.renderCancel()}
-        </div>
-      </Popup>
-    );
-  }
-}
+ActionSheet.defaultProps = {
+  spacing: false,
+  visible: false,
+  actions: [],
+  destroy: true,
+  safeIphoneX: false,
+};
+
+export default ActionSheet;

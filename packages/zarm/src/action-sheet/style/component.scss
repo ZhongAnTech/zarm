@@ -1,35 +1,45 @@
 @import '../../button/style/mixins';
 
 @include b(action-sheet) {
-  margin: var(--action-sheet-margin);
+  @include m(safe) {
+    @include safeIphoneX(true);
+  }
 
   @include m(spacing) {
-    margin: 0 r(10) r(10);
+    margin: var(--za-action-sheet-spacing-margin);
 
     @include e(actions, cancel) {
-      border-radius: var(--radius-md);
+      border-radius: var(--za-action-sheet-border-radius);
     }
   }
 
   @include e(actions, cancel) {
     overflow: hidden;
-    background-color: var(--action-sheet-background);
+  }
+
+  @include e(actions) {
+    background-color: var(--za-action-sheet-actions-background);
   }
 
   @include e(cancel) {
-    margin-top: r(10);
+    background-color: var(--za-action-sheet-cancel-background);
+    margin-top: var(--za-action-sheet-cancel-margin-top);
+
+    @include e(item) {
+      color: var(--za-action-sheet-cancel-color);
+    }
   }
 
   @include e(item) {
     display: block;
     position: relative;
-    height: var(--action-sheet-item-height);
-    line-height: var(--action-sheet-item-height);
-    font-size: var(--action-sheet-item-font-size);
+    height: var(--za-action-sheet-item-height);
+    line-height: var(--za-action-sheet-item-height);
+    font-size: var(--za-action-sheet-item-font-size);
     @include button-base();
 
-    &:active {
-      background-color: var(--action-sheet-active-background);
+    &:not(&--disabled):active {
+      background-color: var(--za-action-sheet-item-active-background);
     }
 
     &:not(:first-of-type) {

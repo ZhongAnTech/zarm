@@ -43,6 +43,12 @@
     @include m(ok) {
       color: var(--theme-primary);
     }
+
+    @include m(loading) {
+      cursor: not-allowed;
+      opacity: 0.4;
+      pointer-events: none;
+    }
   }
 
   @include m(radius) {

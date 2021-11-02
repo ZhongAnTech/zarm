@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActivityIndicator Circular should render with HTML div element attributes 1`] = `
+<div
+  class="za-activity-indicator za-activity-indicator--circular"
+  spellcheck="true"
+  style="width:100px;height:100px"
+>
+  <svg
+    viewBox="31 31 62 62"
+  >
+    <circle
+      cx="62"
+      cy="62"
+      fill="none"
+      r="28.5"
+      style="stroke-width:5"
+    />
+  </svg>
+</div>
+`;
+
+exports[`ActivityIndicator Spinner should render with HTML div element attributes 1`] = `
+<div
+  class="za-activity-indicator za-activity-indicator--spinner"
+  spellcheck="true"
+  style="width:100px;height:100px"
+>
+  <div />
+  <div />
+  <div />
+  <div />
+  <div />
+  <div />
+  <div />
+  <div />
+  <div />
+  <div />
+  <div />
+  <div />
+</div>
+`;
+
+exports[`ActivityIndicator renders correctly 1`] = `
+<div
+  class="za-activity-indicator"
+>
+  <svg
+    viewBox="0 0 62 62"
+  >
+    <circle
+      class="za-activity-indicator__path"
+      cx="31"
+      cy="31"
+      fill="none"
+      r="28.5"
+      style="stroke-width:5"
+    />
+    <circle
+      class="za-activity-indicator__line"
+      cx="31"
+      cy="31"
+      fill="none"
+      r="28.5"
+      style="stroke-dasharray:35.81415625092364 179.0707812546182;stroke-width:5"
+    />
+  </svg>
+</div>
+`;
+
+exports[`ActivityIndicator renders spinner correctly 1`] = `
+<div
+  class="za-activity-indicator za-activity-indicator--spinner"
+>
+  <div />
+  <div />
+  <div />
+  <div />
+  <div />
+  <div />
+  <div />
+  <div />
+  <div />
+  <div />
+  <div />
+  <div />
+</div>
+`;

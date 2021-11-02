@@ -13,6 +13,7 @@
     justify-content: center;
     position: relative;
     font-size: var(--keyboard-item-font-size);
+    user-select: none;
     @include button-base();
     @include button-theme(
       var(--keyboard-item-background),

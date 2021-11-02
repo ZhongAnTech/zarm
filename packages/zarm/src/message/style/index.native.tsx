@@ -7,15 +7,10 @@ export default {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    minHeight: variables.message_min_height_md,
-    paddingHorizontal: variables.message_padding_h_md,
-    paddingVertical: variables.message_padding_v_md,
+    minHeight: variables.message_min_height,
+    paddingHorizontal: variables.message_padding_h,
+    paddingVertical: variables.message_padding_v,
     backgroundColor: variables.message_theme_bg_primary,
-  },
-  lgWrapper: {
-    minHeight: variables.message_min_height_lg,
-    paddingHorizontal: variables.message_padding_h_lg,
-    paddingVertical: variables.message_padding_v_lg,
   },
   primaryWrapper: {
     backgroundColor: `${Color(variables.theme_primary).alpha(0.1)}`,
@@ -42,11 +37,8 @@ export default {
     paddingLeft: 10,
   },
 
-  mdTextStyle: {
-    fontSize: variables.message_font_size_md,
-  },
-  lgTextStyle: {
-    fontSize: variables.message_font_size_lg,
+  textStyle: {
+    fontSize: variables.message_font_size,
   },
   primaryTextStyle: {
     color: variables.theme_primary,
@@ -72,13 +64,7 @@ export default {
   closeIconStyle: {
     position: 'absolute',
     height: 1,
-  },
-  // close icon size
-  mdCloseIconStyle: {
-    width: variables.message_close_length_md,
-  },
-  lgCloseIconStyle: {
-    width: variables.message_close_length_lg,
+    width: variables.message_close_length,
   },
   // close icon theme
   primaryCloseIconStyle: {
@@ -114,15 +100,8 @@ export default {
     borderTopWidth: variables.message_arrow_border_width,
     borderRightWidth: variables.message_arrow_border_width,
     transform: [{ rotate: '45deg' }],
-  },
-  // arrow size
-  mdArrowStyle: {
-    width: variables.message_arrow_length_md,
-    height: variables.message_arrow_length_md,
-  },
-  lgArrowStyle: {
-    width: variables.message_arrow_length_lg,
-    height: variables.message_arrow_length_lg,
+    width: variables.message_arrow_length,
+    height: variables.message_arrow_length,
   },
   // arrow theme
   primaryArrowStyle: {

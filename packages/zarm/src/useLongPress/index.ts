@@ -1,16 +1,22 @@
 import { useCallback, useRef } from 'react';
+import type { MouseEvent, TouchEvent } from 'react';
 import Events from '../utils/events';
 
-interface Options {
+type TouchOrMouseEvent = TouchEvent | MouseEvent;
+
+export interface UseLongPressProps {
   isPreventDefault?: boolean;
   delay?: number;
+  onLongPress?: (event: TouchOrMouseEvent) => void;
+  onPress?: (event: TouchOrMouseEvent) => void;
+  onClear?: (event: TouchOrMouseEvent) => void;
 }
 
-const isTouchEvent = (ev: Event): ev is TouchEvent => {
+const isTouchEvent = (ev: TouchOrMouseEvent | Event): ev is TouchEvent => {
   return 'touches' in ev;
 };
 
-const preventDefault = (ev: Event) => {
+const preventDefault = (ev: TouchOrMouseEvent | Event) => {
   if (!isTouchEvent(ev)) return;
 
   if (ev.touches.length < 2 && ev.preventDefault) {
@@ -18,20 +24,21 @@ const preventDefault = (ev: Event) => {
   }
 };
 
-const useLongPress = (
-  { isPreventDefault = true, delay = 300 }: Options = {},
-  onLongPress?: (event: TouchEvent | MouseEvent) => void,
-  onPress?: (event: TouchEvent | MouseEvent) => void,
-  onClear?: (event: TouchEvent | MouseEvent) => void,
-) => {
-  const timeout = useRef<ReturnType<typeof setTimeout>>();
+const useLongPress = ({
+  isPreventDefault = true,
+  delay = 300,
+  ...restProps
+}: UseLongPressProps) => {
+  const { onLongPress, onPress, onClear } = restProps;
+
+  const timeout = useRef(0);
   const target = useRef<EventTarget>();
 
   const start = useCallback(
-    (event) => {
+    (event: MouseEvent | TouchEvent) => {
       // prevent ghost click on mobile devices
-      if (isPreventDefault && event.target) {
-        Events.on(event.target as HTMLElement, 'touchend', preventDefault, { passive: false });
+      if (isPreventDefault && event.target instanceof Element) {
+        Events.on(event.target, 'touchend', preventDefault, { passive: false });
         target.current = event.target;
       }
 
@@ -40,7 +47,7 @@ const useLongPress = (
       }
 
       if (typeof onLongPress === 'function') {
-        timeout.current = setTimeout(() => onLongPress!(event), delay);
+        timeout.current = window.setTimeout(() => onLongPress!(event), delay);
       }
     },
     [onPress, onLongPress, delay, isPreventDefault],
@@ -49,13 +56,13 @@ const useLongPress = (
   const clear = useCallback(
     (event) => {
       // clearTimeout and removeEventListener
-      timeout.current && clearTimeout(timeout.current);
+      timeout.current && window.clearTimeout(timeout.current);
       if (typeof onClear === 'function') {
         onClear(event);
       }
 
-      if (isPreventDefault && target.current) {
-        Events.off(target.current as HTMLElement, 'touchend', preventDefault);
+      if (isPreventDefault && target.current instanceof Element) {
+        Events.off(target.current, 'touchend', preventDefault);
       }
     },
     [onClear, isPreventDefault],

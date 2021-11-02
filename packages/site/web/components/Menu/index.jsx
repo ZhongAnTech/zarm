@@ -26,7 +26,7 @@ const getMenus = (locale, key) => {
         .map((component) => (
           <Menu.Item key={component.key}>
             <a href={`#/components/${component.key}`}>
-              <span>{pascalCase(component.key)}</span>
+              <span>{key === 'hooks' ? component.key : pascalCase(component.key)}</span>
               {locale === 'zhCN' && <span className="chinese">{component.name}</span>}
             </a>
           </Menu.Item>
@@ -54,6 +54,7 @@ const MenuComponent = () => {
           {getMenus(locale, 'view')}
           {getMenus(locale, 'feedback')}
           {getMenus(locale, 'navigation')}
+          {getMenus(locale, 'hooks')}
           {getMenus(locale, 'other')}
         </>
       );

@@ -1,8 +1,9 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import { CloseCircleFill } from '@zarm-design/icons';
-import type { BaseInputTextProps, BaseInputTextareaProps } from './interface';
 import { getValue } from './utils';
+import { ConfigContext } from '../n-config-provider';
+import type { BaseInputTextProps, BaseInputTextareaProps } from './interface';
 
 const regexAstralSymbols = /[\uD800-\uDBFF][\uDC00-\uDFFF]|\n/g;
 
@@ -16,11 +17,8 @@ export interface InputTextProps
   prefixCls?: string;
 }
 
-export interface InputTextareaProps
-  extends BaseInputTextareaProps,
-    React.TextareaHTMLAttributes<HTMLTextAreaElement> {
-  prefixCls?: string;
-}
+export type InputTextareaProps = BaseInputTextareaProps &
+  React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 export type InputProps = {
   type?: string;
@@ -28,7 +26,6 @@ export type InputProps = {
 
 const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
   const {
-    prefixCls,
     type,
     disabled,
     autoFocus,
@@ -42,16 +39,17 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
     value,
     defaultValue,
     maxLength,
+    label,
     onChange,
     onBlur,
     onFocus,
     ...restProps
   } = props as InputTextProps & InputTextareaProps;
 
-  const wrapperRef = (ref as any) || React.createRef<HTMLElement>();
+  const wrapperRef = (ref as any) || React.createRef<HTMLDivElement>();
   const inputRef = React.useRef<HTMLTextAreaElement | HTMLInputElement>();
 
-  const [currentValue, setCurrentValue] = React.useState(getValue({ value, defaultValue }));
+  const [currentValue, setCurrentValue] = React.useState(getValue({ value, defaultValue }, ''));
   const [focused, setFocused] = React.useState<boolean>(autoFocus!);
 
   const isTextarea = type === 'text' && 'rows' in props;
@@ -65,6 +63,9 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
     typeof value !== 'undefined' &&
     typeof onChange !== 'undefined' &&
     currentValue.length > 0;
+
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-input`;
 
   const cls = classnames(prefixCls, className, {
     [`${prefixCls}--textarea`]: isTextarea,
@@ -132,26 +133,39 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
     target.value = originalValue;
   };
 
-  const commonProps = {
+  // 渲染文字长度
+  const textLengthRender = showLength && maxLength && (
+    <div className={`${prefixCls}__length`}>{`${countSymbols(currentValue)}/${maxLength}`}</div>
+  );
+
+  const commonProps: InputTextProps & InputTextareaProps = {
     ...restProps,
     maxLength,
     disabled,
     autoFocus,
     readOnly,
-    value: 'value' in props ? currentValue : undefined,
-    defaultValue: 'defaultValue' in props ? defaultValue : undefined,
-    onChange: 'onChange' in props ? onInputChange : undefined,
+    defaultValue,
     onFocus: onInputFocus,
     onBlur: onInputBlur,
   };
 
+  if ('value' in props) {
+    commonProps.value = currentValue;
+  }
+  if ('onChange' in props) {
+    commonProps.onChange = onInputChange;
+  }
+
   // 渲染输入框
-  const renderInput = isTextarea ? (
-    <textarea
-      ref={inputRef as React.RefObject<HTMLTextAreaElement>}
-      {...(commonProps as React.HTMLAttributes<HTMLTextAreaElement>)}
-      rows={rows}
-    />
+  const inputRender = isTextarea ? (
+    <div className={`${prefixCls}__inner`}>
+      <textarea
+        ref={inputRef as React.RefObject<HTMLTextAreaElement>}
+        {...(commonProps as React.HTMLAttributes<HTMLTextAreaElement>)}
+        rows={rows}
+      />
+      {textLengthRender}
+    </div>
   ) : (
     <input
       ref={inputRef as React.RefObject<HTMLInputElement>}
@@ -161,15 +175,13 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
   );
 
   // 渲染文本内容
-  const renderText = <div className={`${prefixCls}__content`}>{currentValue}</div>;
+  const textRender = <div className={`${prefixCls}__content`}>{currentValue}</div>;
 
-  // 渲染文字长度
-  const renderTextLength = showLength && maxLength && (
-    <div className={`${prefixCls}__length`}>{`${countSymbols(currentValue)}/${maxLength}`}</div>
-  );
+  // 渲染标签栏
+  const labelRender = !!label && <div className={`${prefixCls}__label`}>{label}</div>;
 
   // 渲染清除按钮
-  const renderClearIcon = showClearIcon && (
+  const clearIconRender = showClearIcon && (
     <CloseCircleFill className={`${prefixCls}__clear`} onClick={onInputClear} />
   );
 
@@ -202,9 +214,9 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
 
   return (
     <div ref={wrapperRef} className={cls} style={style}>
-      {!readOnly ? renderInput : renderText}
-      {renderTextLength}
-      {renderClearIcon}
+      {labelRender}
+      {!readOnly ? inputRender : textRender}
+      {clearIconRender}
     </div>
   );
 });
@@ -212,12 +224,11 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
 Input.displayName = 'Input';
 
 Input.defaultProps = {
-  prefixCls: 'za-input',
   type: 'text',
   disabled: false,
   autoFocus: false,
   readOnly: false,
-  clearable: true,
+  clearable: false,
   showLength: false,
   autoHeight: false,
 };

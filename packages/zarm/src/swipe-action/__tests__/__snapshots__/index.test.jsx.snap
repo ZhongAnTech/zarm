@@ -28,7 +28,7 @@ exports[`SwipeAction left only 1`] = `
   </div>
   <div
     class="za-swipe-action__content"
-    style="-webkit-transition-duration:undefinedms;transition-duration:undefinedms;-webkit-transform:translate3d(0px, 0, 0);transform:translate3d(0px, 0, 0)"
+    style="-webkit-transition-duration:undefinedms;transition-duration:undefinedms;-webkit-transform:translateX(0px);transform:translateX(0px)"
   >
     <div>
       右滑
@@ -50,7 +50,6 @@ exports[`SwipeAction renders correctly 1`] = `
         htmlType="button"
         loading={false}
         onClick={[MockFunction]}
-        prefixCls="za-button"
         shadow={false}
         shape="radius"
         size="md"
@@ -65,7 +64,6 @@ exports[`SwipeAction renders correctly 1`] = `
         htmlType="button"
         loading={false}
         onClick={[MockFunction]}
-        prefixCls="za-button"
         shadow={false}
         shape="radius"
         size="md"
@@ -88,7 +86,6 @@ exports[`SwipeAction renders correctly 1`] = `
         htmlType="button"
         loading={false}
         onClick={[MockFunction]}
-        prefixCls="za-button"
         shadow={false}
         shape="radius"
         size="md"
@@ -103,7 +100,6 @@ exports[`SwipeAction renders correctly 1`] = `
         htmlType="button"
         loading={false}
         onClick={[MockFunction]}
-        prefixCls="za-button"
         shadow={false}
         shape="radius"
         size="md"
@@ -128,7 +124,6 @@ exports[`SwipeAction renders correctly 1`] = `
         key="0"
         loading={false}
         onClick={[Function]}
-        prefixCls="za-button"
         shadow={false}
         shape="radius"
         size="md"
@@ -153,7 +148,6 @@ exports[`SwipeAction renders correctly 1`] = `
         key="1"
         loading={false}
         onClick={[Function]}
-        prefixCls="za-button"
         shadow={false}
         shape="radius"
         size="md"
@@ -182,7 +176,6 @@ exports[`SwipeAction renders correctly 1`] = `
         key="0"
         loading={false}
         onClick={[Function]}
-        prefixCls="za-button"
         shadow={false}
         shape="radius"
         size="md"
@@ -207,7 +200,6 @@ exports[`SwipeAction renders correctly 1`] = `
         key="1"
         loading={false}
         onClick={[Function]}
-        prefixCls="za-button"
         shadow={false}
         shape="radius"
         size="md"
@@ -240,9 +232,9 @@ exports[`SwipeAction renders correctly 1`] = `
         onTouchStart={[Function]}
         style={
           Object {
-            "WebkitTransform": "translate3d(0px, 0, 0)",
+            "WebkitTransform": "translateX(0px)",
             "WebkitTransitionDuration": "undefinedms",
-            "transform": "translate3d(0px, 0, 0)",
+            "transform": "translateX(0px)",
             "transitionDuration": "undefinedms",
           }
         }
@@ -284,7 +276,7 @@ exports[`SwipeAction right only 1`] = `
   </div>
   <div
     class="za-swipe-action__content"
-    style="-webkit-transition-duration:undefinedms;transition-duration:undefinedms;-webkit-transform:translate3d(0px, 0, 0);transform:translate3d(0px, 0, 0)"
+    style="-webkit-transition-duration:undefinedms;transition-duration:undefinedms;-webkit-transform:translateX(0px);transform:translateX(0px)"
   >
     <div>
       左滑

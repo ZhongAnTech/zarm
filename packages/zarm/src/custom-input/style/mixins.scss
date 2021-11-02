@@ -2,11 +2,17 @@
   position: relative;
   width: 100%;
   color: var(--color-text);
+  font-size: var(--za-input-font-size);
+
+  @include e(label) {
+    font-size: var(--za-input-vertical-label-font-size);
+    line-height: var(--za-input-line-height);
+  }
 
   @include e(content) {
     position: relative;
-    height: var(--input-line-height);
-    line-height: var(--input-line-height);
+    height: var(--za-input-height);
+    line-height: var(--za-input-line-height);
   }
 }
 
@@ -32,8 +38,8 @@
       &:after {
         content: '';
         display: inline-block;
-        height: var(--input-cursor-height);
-        border-right: var(--input-cursor-width) solid var(--input-cursor-color);
+        height: var(--za-input-cursor-height);
+        border-right: var(--za-input-cursor-width) solid var(--za-input-cursor-color);
         transition: opacity 0.1s ease-out;
         animation: virtual-cursor 1s infinite step-start;
       }
@@ -63,8 +69,8 @@
   @include e(clear) {
     position: absolute;
     visibility: hidden;
-    color: var(--input-clear-icon-color);
-    width: var(--input-clear-icon-width);
+    color: var(--za-input-clear-icon-color);
+    width: var(--za-input-clear-icon-width);
     text-align: center;
     top: 50%;
     transform: translateY(-50%);
@@ -73,7 +79,7 @@
   }
 
   @include m(focus) {
-    padding-right: var(--input-clear-icon-width);
+    padding-right: var(--za-input-clear-icon-width);
 
     @include e(clear) {
       visibility: visible;

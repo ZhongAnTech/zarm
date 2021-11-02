@@ -4,17 +4,14 @@ import { CloseCircleFill } from '@zarm-design/icons';
 import KeyboardPicker from '../keyboard-picker';
 import useClickAway from '../useClickAway';
 import { getValue } from '../input/utils';
+import { ConfigContext } from '../n-config-provider';
 import type { BaseCustomInputProps } from './interface';
 
-export interface CustomInputProps
-  extends BaseCustomInputProps,
-    Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type' | 'onChange' | 'onFocus' | 'onBlur'> {
-  prefixCls?: string;
-}
+export type CustomInputProps = BaseCustomInputProps &
+  Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type' | 'onChange' | 'onFocus' | 'onBlur'>;
 
 const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => {
   const {
-    prefixCls,
     type,
     clearable,
     readOnly,
@@ -24,6 +21,7 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
     value,
     defaultValue,
     maxLength,
+    label,
     onChange,
     onBlur,
     onFocus,
@@ -31,19 +29,21 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
     ...restProps
   } = props;
 
-  const wrapperRef = (ref as any) || React.createRef<HTMLElement>();
+  const wrapperRef = (ref as any) || React.createRef<HTMLDivElement>();
   const contentRef = React.useRef<HTMLDivElement>(null);
-  const pickerRef = React.useRef<HTMLDivElement>();
+  const pickerRef = React.useRef<HTMLDivElement>(null);
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [currentValue, setCurrentValue] = React.useState(getValue({ value, defaultValue }, ''));
   const [focused, setFocused] = React.useState<boolean>(autoFocus!);
-  const [area, setArea] = React.useState<React.RefObject<any>[]>([]);
 
   const showClearIcon =
     clearable &&
     typeof value !== 'undefined' &&
     currentValue.length > 0 &&
     typeof onChange === 'function';
+
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-custom-input`;
 
   const cls = classnames(prefixCls, `${prefixCls}--${type}`, className, {
     [`${prefixCls}--disabled`]: disabled,
@@ -54,8 +54,6 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
 
   const onInputFocus = () => {
     if (disabled) return;
-
-    setArea([contentRef, pickerRef]);
     setFocused(true);
 
     if (typeof onFocus === 'function') {
@@ -118,14 +116,18 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
     onInputBlur();
   };
 
-  const renderClearIcon = showClearIcon && (
+  // 渲染标签栏
+  const labelRender = !!label && <div className={`${prefixCls}__label`}>{label}</div>;
+
+  const clearIconRender = showClearIcon && (
     <CloseCircleFill className={`${prefixCls}__clear`} onClick={onInputClear} />
   );
 
-  const renderText = <div className={`${prefixCls}__content`}>{currentValue}</div>;
+  const textRender = <div className={`${prefixCls}__content`}>{currentValue}</div>;
 
-  const renderInput = (
+  const inputRender = (
     <div {...restProps} ref={wrapperRef} className={cls} onClick={onInputFocus}>
+      {labelRender}
       <div className={`${prefixCls}__content`}>
         {(currentValue === undefined || currentValue === '') && !readOnly && (
           <div className={`${prefixCls}__placeholder`}>{placeholder}</div>
@@ -135,12 +137,12 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
         </div>
         <input ref={inputRef} type="hidden" value={currentValue} />
       </div>
-      {renderClearIcon}
+      {clearIconRender}
       <KeyboardPicker ref={pickerRef} visible={focused} type={type} onKeyClick={onKeyClick} />
     </div>
   );
 
-  useClickAway(onInputBlur, area);
+  useClickAway(onInputBlur, [contentRef, pickerRef]);
 
   React.useImperativeHandle(wrapperRef, () => ({
     focus,
@@ -161,17 +163,17 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
     }
   }, [readOnly, focused, currentValue]);
 
-  return readOnly ? renderText : renderInput;
+  return readOnly ? textRender : inputRender;
 });
 
 CustomInput.displayName = 'CustomInput';
 
 CustomInput.defaultProps = {
-  prefixCls: 'za-custom-input',
   type: 'number',
-  clearable: true,
-  readOnly: false,
+  disabled: false,
   autoFocus: false,
+  readOnly: false,
+  clearable: false,
 };
 
 export default CustomInput;

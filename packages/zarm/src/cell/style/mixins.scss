@@ -1,5 +1,0 @@
-@mixin cell-theme($color) {
-  @include e(footer) {
-    color: $color;
-  }
-}

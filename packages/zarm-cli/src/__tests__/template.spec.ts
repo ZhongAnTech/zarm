@@ -30,30 +30,29 @@ describe('template', () => {
       const signaleSuccessStub = jest.spyOn(signale, 'success').mockReturnValue(1);
       createTemplate({ compName: 'primary button' });
 
-      expect(syncMocked).toBeCalledWith('components/primary-button');
-      expect(syncMocked).toBeCalledWith('components/primary-button/style');
-      expect(syncMocked).toBeCalledWith('components/primary-button/__tests__');
+      expect(syncMocked).toBeCalledWith('src/primary-button');
+      expect(syncMocked).toBeCalledWith('src/primary-button/style');
+      expect(syncMocked).toBeCalledWith('src/primary-button/__tests__');
+      expect(infoStub).toBeCalledWith(expect.stringMatching('create src/primary-button/index.ts'));
+      expect(infoStub).toBeCalledWith(expect.stringMatching('create src/primary-button/demo.md'));
       expect(infoStub).toBeCalledWith(
-        expect.stringMatching('create components/primary-button/index.tsx'),
+        expect.stringMatching('create src/primary-button/interface.ts'),
       );
       expect(infoStub).toBeCalledWith(
-        expect.stringMatching('create components/primary-button/demo.md'),
+        expect.stringMatching('create src/primary-button/primary button.tsx'),
       );
       expect(infoStub).toBeCalledWith(
-        expect.stringMatching('create components/primary-button/primary button.tsx'),
+        expect.stringMatching('create src/primary-button/style/index.ts'),
       );
       expect(infoStub).toBeCalledWith(
-        expect.stringMatching('create components/primary-button/style/index.tsx'),
+        expect.stringMatching('create src/primary-button/style/index.scss'),
       );
       expect(infoStub).toBeCalledWith(
-        expect.stringMatching('create components/primary-button/style/index.scss'),
+        expect.stringMatching('create src/primary-button/__tests__/index.test.tsx'),
       );
-      expect(infoStub).toBeCalledWith(
-        expect.stringMatching('create components/primary-button/__tests__/index.test.jsx'),
-      );
-      expect(infoStub).toBeCalledTimes(6);
-      expect(openSyncMocked).toBeCalledTimes(6);
-      expect(writeSyncMocked).toBeCalledTimes(6);
+      expect(infoStub).toBeCalledTimes(7);
+      expect(openSyncMocked).toBeCalledTimes(7);
+      expect(writeSyncMocked).toBeCalledTimes(7);
       expect(signaleSuccessStub).toBeCalledWith('create component templates successfully!!');
     });
   });

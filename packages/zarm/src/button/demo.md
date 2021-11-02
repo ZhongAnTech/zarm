@@ -70,7 +70,8 @@ ReactDOM.render(
 ## 按钮形状
 
 ```jsx
-import { Button, Icon } from 'zarm';
+import { Button } from 'zarm';
+import { Success } from '@zarm-design/icons';
 
 ReactDOM.render(
   <>
@@ -84,7 +85,7 @@ ReactDOM.render(
     <Button shape="circle" theme="primary">
       circle
     </Button>
-    <Button shape="circle" icon={<Icon type="right" />} />
+    <Button shape="circle" icon={<Success />} />
   </>,
   mountNode,
 );
@@ -113,12 +114,31 @@ ReactDOM.render(
 
 ```jsx
 import { Button, Icon } from 'zarm';
+import { SuccessCircle, CloseCircle } from '@zarm-design/icons';
 
 ReactDOM.render(
   <>
-    <Button icon={<Icon type="right-round" theme="success" />}>success</Button>
-    <Button icon={<Icon type="wrong-round" theme="danger" />}>danger</Button>
+    <Button icon={<SuccessCircle theme="success" />}>success</Button>
+    <Button icon={<CloseCircle theme="danger" />}>danger</Button>
+  </>,
+  mountNode,
+);
+```
+
+## 加载状态
+
+```jsx
+import { Button, Icon } from 'zarm';
+
+ReactDOM.render(
+  <>
     <Button loading>loading</Button>
+    <Button loading theme="primary">
+      loading
+    </Button>
+    <Button loading disabled theme="primary">
+      disabled
+    </Button>
   </>,
   mountNode,
 );

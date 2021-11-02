@@ -4,7 +4,7 @@
 
 ```jsx
 import { useState, useReducer, useRef } from 'react';
-import { Popup, Cell, Button, Picker, Toast } from 'zarm';
+import { Popup, List, Button, Picker, Toast } from 'zarm';
 
 const SINGLE_DATA = [
   { value: '1', label: '选项一' },
@@ -36,74 +36,65 @@ const Demo = () => {
 
   return (
     <>
-      <Cell
-        description={
-          <Button
-            size="xs"
-            onClick={() => {
-              toggle('popTop');
-
-              setTimeout(() => {
+      <List>
+        <List.Item
+          title="从上方弹出"
+          after={
+            <Button
+              size="xs"
+              onClick={() => {
                 toggle('popTop');
-              }, 3000);
-            }}
-          >
-            开启
-          </Button>
-        }
-      >
-        从上方弹出
-      </Cell>
 
-      <Cell
-        description={
-          <Button size="xs" onClick={() => toggle('popBottom')}>
-            开启
-          </Button>
-        }
-      >
-        从下方弹出
-      </Cell>
-
-      <Cell
-        description={
-          <Button size="xs" onClick={() => toggle('popLeft')}>
-            开启
-          </Button>
-        }
-      >
-        从左侧弹出
-      </Cell>
-
-      <Cell
-        description={
-          <Button size="xs" onClick={() => toggle('popRight')}>
-            开启
-          </Button>
-        }
-      >
-        从右侧弹出
-      </Cell>
-
-      <Cell
-        description={
-          <Button size="xs" onClick={() => toggle('popCenter')}>
-            开启
-          </Button>
-        }
-      >
-        从中间弹出
-      </Cell>
-
-      <Cell
-        description={
-          <Button size="xs" onClick={() => toggle('popSpec')}>
-            开启
-          </Button>
-        }
-      >
-        自定义挂载节点
-      </Cell>
+                setTimeout(() => {
+                  toggle('popTop');
+                }, 3000);
+              }}
+            >
+              开启
+            </Button>
+          }
+        />
+        <List.Item
+          title="从下方弹出"
+          after={
+            <Button size="xs" onClick={() => toggle('popBottom')}>
+              开启
+            </Button>
+          }
+        />
+        <List.Item
+          title="从左侧弹出"
+          after={
+            <Button size="xs" onClick={() => toggle('popLeft')}>
+              开启
+            </Button>
+          }
+        />
+        <List.Item
+          title="从右侧弹出"
+          after={
+            <Button size="xs" onClick={() => toggle('popRight')}>
+              开启
+            </Button>
+          }
+        />
+        <List.Item
+          title="从中间弹出"
+          after={
+            <Button size="xs" onClick={() => toggle('popCenter')}>
+              开启
+            </Button>
+          }
+        />
+        <List.Item
+          title="自定义挂载节点"
+          after={
+            <Button size="xs" onClick={() => toggle('popSpec')}>
+              开启
+            </Button>
+          }
+        />
+      </List>
 
       <Popup
         visible={visible.popTop}
@@ -247,3 +238,4 @@ ReactDOM.render(<Demo />, mountNode);
 | onMaskClick       | () => void                           | -             | 点击遮罩层时触发的回调函数                                                                                                                                                                              |
 | onEsc             | () => void                           | -             | 点击 Esc 键时触发的回调函数                                                                                                                                                                             |
 | mountContainer    | HTMLElement &#124; () => HTMLElement | document.body | 指定 Popup 挂载的 HTML 节点                                                                                                                                                                             |
+| lockScroll        | boolean                              | true          | 锁定背景滚动                                                                                                                                                                                            |

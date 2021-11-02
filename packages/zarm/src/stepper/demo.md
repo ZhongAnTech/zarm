@@ -4,16 +4,16 @@
 
 ```jsx
 import { useState } from 'react';
-import { Cell, Stepper } from 'zarm';
+import { List, Stepper } from 'zarm';
 
 const Demo = () => {
   const [value, setValue] = useState(1);
 
   return (
-    <>
-      <Cell
+    <List>
+      <List.Item
         title="普通"
-        description={
+        after={
           <Stepper
             value={value}
             onChange={setValue}
@@ -23,21 +23,16 @@ const Demo = () => {
           />
         }
       />
-
-      <Cell title="设置默认值" description={<Stepper defaultValue={2} />} />
-
-      <Cell title="设置上下限（-3 ~ 3）" description={<Stepper min={-3} max={3} />} />
-
-      <Cell title="设置步长" description={<Stepper step={5} />} />
-
-      <Cell
+      <List.Item title="设置默认值" after={<Stepper defaultValue={2} />} />
+      <List.Item title="设置上下限（-3 ~ 3）" after={<Stepper min={-3} max={3} />} />
+      <List.Item title="设置步长" after={<Stepper step={5} />} />
+      <List.Item
         title="步长小数"
-        description={<Stepper type="price" step={0.12} defaultValue={0.9} max={2.0} min={1} />}
+        after={<Stepper type="price" step={0.12} defaultValue={0.9} max={2.0} min={1} />}
       />
-
-      <Cell title="禁用状态" description={<Stepper disabled />} />
-      <Cell title="禁用输入" description={<Stepper disableInput />} />
-    </>
+      <List.Item title="禁用状态" after={<Stepper disabled />} />
+      <List.Item title="禁用输入" after={<Stepper disableInput />} />
+    </List>
   );
 };
 
@@ -47,14 +42,13 @@ ReactDOM.render(<Demo />, mountNode);
 ## 多形状
 
 ```jsx
-import { Cell, Stepper } from 'zarm';
+import { List, Stepper } from 'zarm';
 
 ReactDOM.render(
-  <>
-    <Cell title="直角" description={<Stepper shape="rect" />} />
-
-    <Cell title="圆形" description={<Stepper shape="circle" />} />
-  </>,
+  <List>
+    <List.Item title="直角" after={<Stepper shape="rect" />} />
+    <List.Item title="圆形" after={<Stepper shape="circle" />} />
+  </List>,
   mountNode,
 );
 ```
@@ -62,9 +56,14 @@ ReactDOM.render(
 ## 多尺寸
 
 ```jsx
-import { Cell, Stepper } from 'zarm';
+import { List, Stepper } from 'zarm';
 
-ReactDOM.render(<Cell title="大号" description={<Stepper size="lg" />} />, mountNode);
+ReactDOM.render(
+  <List>
+    <List.Item title="大号" after={<Stepper size="lg" />} />
+  </List>,
+  mountNode,
+);
 ```
 
 ## API

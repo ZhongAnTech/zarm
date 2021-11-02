@@ -12,7 +12,7 @@ commander.version(version);
 commander
   .command('build')
   .description('打包编译仓库')
-  .option('-m, --mode <es|lib|umd|umd-ugly|umd-zip|native>', '选择打包模式')
+  .option('-m, --mode <es|lib|umd|umd-ugly|native>', '选择打包模式')
   .option('-p, --path <path>', '源文件目录')
   .option('-o, --out-file <path>', '输出文件')
   .option('-d, --out-dir <path>', '输出目录')
@@ -47,12 +47,16 @@ commander
   .option('-u, --update-snapshot', '是否更新快照')
   .option('-c, --coverage', '是否生成覆盖率报告')
   .option('-s, --setupFilesAfterEnv <file>', '测试前装载的脚本文件')
+  .option(
+    '-o, --onlyChanged',
+    '试图根据当前存储库中更改的文件确定要运行哪些测试。只有当你在git/hg存储库中运行测试，并且需要静态依赖关系图时才有效',
+  )
   .action(test);
 
 commander
   .command('add')
   .description('新增组件模板')
-  .action(() => template({ compName: commander.args[0] }));
+  .action(() => template({ compName: commander.args[1] }));
 
 commander.parse(process.argv);
 

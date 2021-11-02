@@ -4,7 +4,8 @@
 
 ```jsx
 import { useState } from 'react';
-import { Cell, FilePicker, Icon } from 'zarm';
+import { List, FilePicker } from 'zarm';
+import { Plus } from '@zarm-design/icons';
 
 const Demo = () => {
   const [files, setFiles] = useState([]);
@@ -17,12 +18,15 @@ const Demo = () => {
 
   return (
     <>
-      {files.map((item, index) => (
-        <Cell key={+index}>{item.fileName}</Cell>
-      ))}
+      <List>
+        {files.map((item, index) => (
+          <List.Item key={+index} title={item.fileName} />
+        ))}
+      </List>
+
       <div className="file-picker-wrapper">
         <FilePicker className="file-picker-btn" onChange={onSelect}>
-          <Icon type="add" size="lg" />
+          <Plus size="lg" />
         </FilePicker>
       </div>
     </>
@@ -36,7 +40,8 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```jsx
 import { useState } from 'react';
-import { FilePicker, Icon, Toast, Badge } from 'zarm';
+import { FilePicker, Toast, Badge } from 'zarm';
+import { Plus, Close } from '@zarm-design/icons';
 
 const MAX_FILES_COUNT = 5;
 
@@ -46,11 +51,12 @@ const onBeforeSelect = () => {
 
 const Demo = () => {
   const [files, setFiles] = useState([]);
+  const toast = Toast.useToast();
 
   const onSelect = (selFiles) => {
     const newFiles = files.concat(selFiles);
     if (newFiles.length > MAX_FILES_COUNT) {
-      Toast.show('最多只能选择5张图片');
+      toast.show('最多只能选择5张图片');
       return;
     }
     setFiles(newFiles);
@@ -60,10 +66,10 @@ const Demo = () => {
     const newFiles = [].concat(files);
     newFiles.splice(index, 1);
     setFiles(newFiles);
-    Toast.show('删除成功');
+    toast.show('删除成功');
   };
 
-  const imgRender = () => {
+  const renderImages = () => {
     return files.map((item, index) => {
       return (
         <Badge
@@ -71,11 +77,10 @@ const Demo = () => {
           className="file-picker-item"
           shape="circle"
           text={
-            <span className="file-picker-closebtn">
-              <Icon type="wrong" />
+            <span className="file-picker-closebtn" onClick={() => remove(index)}>
+              <Close />
             </span>
           }
-          onClick={() => remove(index)}
         >
           <div className="file-picker-item-img">
             <a href={item.thumbnail} target="_blank" rel="noopener noreferrer">
@@ -89,7 +94,7 @@ const Demo = () => {
 
   return (
     <div className="file-picker-wrapper">
-      {imgRender()}
+      {renderImages()}
       {files.length < MAX_FILES_COUNT && (
         <FilePicker
           multiple
@@ -98,7 +103,7 @@ const Demo = () => {
           onBeforeSelect={onBeforeSelect}
           onChange={onSelect}
         >
-          <Icon type="add" size="lg" />
+          <Plus size="lg" />
         </FilePicker>
       )}
     </div>
@@ -112,11 +117,12 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```jsx
 import { FilePicker, Icon } from 'zarm';
+import { Plus } from '@zarm-design/icons';
 
 ReactDOM.render(
   <div className="file-picker-wrapper">
     <FilePicker className="file-picker-btn" disabled>
-      <Icon type="add" size="lg" />
+      <Plus size="lg" />
     </FilePicker>
   </div>,
   mountNode,

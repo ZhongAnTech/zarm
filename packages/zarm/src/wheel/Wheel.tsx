@@ -1,98 +1,55 @@
-import React, { Component } from 'react';
+import React, { createRef, useEffect, useRef } from 'react';
 import classnames from 'classnames';
-import BScroll from 'better-scroll';
+import BScroll, { BScrollInstance } from 'better-scroll';
 import isEqual from 'lodash/isEqual';
 import { isArray } from '../utils/validate';
-import type { BaseWheelProps, WheelItem, WheelValue } from './PropsType';
+import { usePrevious, useEventCallback } from '../utils/hooks';
+import type { BaseWheelProps, WheelItem, WheelValue } from './interface';
+import { ConfigContext } from '../n-config-provider';
 
-const getValue = (props, defaultValue?: any) => {
-  if ('value' in props) {
-    return props.value;
-  }
+const getValue = (props: Omit<WheelProps, 'itemRender'>) => {
   if ('defaultValue' in props) {
     return props.defaultValue;
   }
-  if (isArray(props.dataSource) && props.dataSource[0]) {
+  if ('value' in props) {
+    return props.value;
+  }
+  if (isArray(props.dataSource) && props.dataSource[0] && props.valueMember) {
     return props.dataSource[0][props.valueMember];
   }
-  return defaultValue;
 };
 
 export interface WheelProps extends BaseWheelProps {
-  prefixCls?: string;
   className?: string;
 }
 
-export default class Wheel extends Component<WheelProps, any> {
-  private BScroll;
+const Wheel = (props: WheelProps) => {
+  const {
+    className,
+    value,
+    defaultValue,
+    valueMember,
+    dataSource,
+    disabled,
+    stopScroll,
+    itemRender,
+    onChange,
+  } = props;
 
-  private wrapper;
+  const scrollInstance = useRef<BScrollInstance | null>(null);
+  const wheelWrapperRef = createRef<HTMLDivElement>();
+  const currentValue = getValue(props);
+  const prevValue = usePrevious(value);
+  const prevDataSource = usePrevious(dataSource);
+  const prevStopScroll = usePrevious(stopScroll);
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-wheel`;
 
-  static defaultProps: WheelProps = {
-    prefixCls: 'za-wheel',
-    dataSource: [],
-    valueMember: 'value',
-    itemRender: (item) => item!.label as string,
-    stopScroll: false,
-  };
-
-  componentDidMount() {
-    const { prefixCls, dataSource, disabled } = this.props;
-    const value = getValue(this.props);
-    const initIndex = this.getSelectedIndex(value, dataSource);
-    this.BScroll = new BScroll(this.wrapper, {
-      wheel: {
-        selectedIndex: initIndex,
-        wheelWrapperClass: `${prefixCls}-content`,
-        wheelItemClass: `${prefixCls}-item`,
-      },
-      probeType: 3,
-    });
-
-    disabled && this.BScroll.disable();
-
-    this.BScroll.on('scrollEnd', () => {
-      this.handleScrollEnd();
-    });
-  }
-
-  componentDidUpdate(prevProps) {
-    const { value, dataSource, disabled, stopScroll } = this.props;
-    disabled && this.BScroll.disable();
-    if (!isEqual(prevProps.dataSource, dataSource)) {
-      this.BScroll.refresh();
-    }
-    const oldIndex = this.getSelectedIndex(prevProps.value, prevProps.dataSource);
-    const newIndex = this.getSelectedIndex(value, dataSource);
-    if (newIndex !== oldIndex) {
-      this.BScroll.wheelTo(newIndex);
-    }
-
-    if (stopScroll && prevProps.stopScroll !== stopScroll) {
-      this.BScroll.stop();
-    }
-  }
-
-  componentWillUnmount() {
-    this.BScroll.destroy();
-  }
-
-  handleScrollEnd = () => {
-    const { dataSource: curDataSource, valueMember } = this.props;
-    const index = this.BScroll.getSelectedIndex();
-    const child = curDataSource[index];
-
-    if (child) {
-      this.fireValueChange(child[valueMember!]);
-    }
-  };
-
-  getSelectedIndex = (value?: WheelValue, dataSource?: Array<WheelItem>): number => {
-    const { valueMember } = this.props;
+  const getSelectedIndex = (newValue?: WheelValue, newDataSource?: Array<WheelItem>): number => {
     let index = 0;
-    if (dataSource) {
-      dataSource.some((item, i) => {
-        if (item[valueMember!] === value) {
+    if (newDataSource) {
+      newDataSource.some((item, i) => {
+        if (item[valueMember!] === newValue) {
           index = i;
           return true;
         }
@@ -102,46 +59,94 @@ export default class Wheel extends Component<WheelProps, any> {
     return index;
   };
 
-  fireValueChange = (value) => {
-    const currentValue = getValue(this.props);
-    if (value === currentValue) {
+  const fireValueChange = (newValue: any) => {
+    if (newValue === currentValue) {
       return;
     }
-
-    const { onChange } = this.props;
     if (typeof onChange === 'function') {
-      onChange(value);
+      onChange(newValue);
     }
   };
 
-  render() {
-    const { prefixCls, className, valueMember, dataSource, itemRender, disabled } = this.props;
-    const value = getValue(this.props);
+  const handleScrollEnd = useEventCallback(() => {
+    const index = scrollInstance.current?.getSelectedIndex();
+    const child = dataSource[index];
+    if (child) {
+      fireValueChange(child[valueMember!]);
+    }
+  }, []);
 
-    const items = dataSource!.map((item, index) => {
-      const itemCls = classnames(`${prefixCls}__item`, {
-        [`${prefixCls}__item--selected`]: value === item[valueMember!],
-        [`${prefixCls}__item--disabled`]: disabled,
+  useEffect(() => {
+    const initIndex = getSelectedIndex(currentValue, dataSource);
+    if (wheelWrapperRef.current && !scrollInstance.current) {
+      scrollInstance.current = new BScroll(wheelWrapperRef.current, {
+        wheel: {
+          selectedIndex: initIndex,
+          wheelWrapperClass: `${prefixCls}-content`,
+          wheelItemClass: `${prefixCls}-item`,
+        },
+        probeType: 3,
       });
+    }
 
-      return (
-        <div key={+index} className={itemCls}>
-          {itemRender!(item)}
-        </div>
-      );
+    scrollInstance.current?.on('scrollEnd', () => {
+      handleScrollEnd();
     });
 
-    const rollerCls = classnames(prefixCls, className);
+    return () => {
+      scrollInstance.current?.destroy();
+    };
+  }, []);
+
+  useEffect(() => {
+    disabled && scrollInstance.current?.disable();
+  }, [disabled]);
+
+  useEffect(() => {
+    if (!isEqual(prevDataSource, dataSource)) {
+      scrollInstance.current?.refresh();
+    }
+  }, [dataSource]);
+
+  useEffect(() => {
+    const oldIndex = getSelectedIndex(prevValue, prevDataSource);
+    const newIndex = getSelectedIndex(value, dataSource);
+    if (newIndex !== oldIndex) {
+      scrollInstance.current?.wheelTo(newIndex);
+    }
+
+    if (stopScroll && prevStopScroll !== stopScroll) {
+      scrollInstance.current?.stop();
+    }
+  }, [value, defaultValue, dataSource, stopScroll, valueMember]);
+
+  const rollerCls = classnames(prefixCls, className);
+  const items = dataSource!.map((item, index) => {
+    const itemCls = classnames(`${prefixCls}__item`, {
+      [`${prefixCls}__item--selected`]: currentValue === item[valueMember!],
+      [`${prefixCls}__item--disabled`]: disabled,
+    });
 
     return (
-      <div
-        className={rollerCls}
-        ref={(wrapper) => {
-          this.wrapper = wrapper;
-        }}
-      >
-        <div className={`${prefixCls}__content`}>{items}</div>
+      <div key={+index} className={itemCls}>
+        {itemRender!(item)}
       </div>
     );
-  }
-}
+  });
+
+  return (
+    <div className={rollerCls} ref={wheelWrapperRef}>
+      <div className={`${prefixCls}__content`}>{items}</div>
+    </div>
+  );
+};
+
+Wheel.displayName = 'Wheel';
+Wheel.defaultProps = {
+  dataSource: [],
+  valueMember: 'value',
+  itemRender: (item) => item!.label as string,
+  stopScroll: false,
+};
+
+export default Wheel;

@@ -1,256 +1,162 @@
-import React, { PureComponent, CompositionEvent } from 'react';
-import type { FormEvent } from 'react';
+import * as React from 'react';
 import classnames from 'classnames';
 import { Search as SearchIcon } from '@zarm-design/icons';
-import type BaseSearchBarProps from './PropsType';
-import Input from '../input';
+import type BaseSearchBarProps from './interface';
+import { ConfigContext } from '../n-config-provider';
+import { useEventCallback } from '../utils/hooks';
+import Input, { InputTextProps } from '../input';
+import { getValue } from '../input/utils';
 
-export interface SearchBarProps extends BaseSearchBarProps {
-  prefixCls?: string;
-  className?: string;
-}
+export type SearchBarProps = BaseSearchBarProps & React.InputHTMLAttributes<HTMLInputElement>;
 
-export interface SearchBarState {
-  focus: boolean;
-  value?: string;
-  isOnComposition: boolean;
-  preValue?: string;
-}
+const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
+  const {
+    className,
+    shape,
+    placeholder,
+    showCancel,
+    cancelText,
+    defaultValue,
+    value,
+    onFocus,
+    onBlur,
+    onChange,
+    onCancel,
+    onSubmit,
+    ...restProps
+  } = props;
+  const cancelRef = React.useRef<HTMLDivElement>(null);
+  const inputRef = React.useRef<HTMLTextAreaElement | HTMLInputElement>();
+  const formRef = React.createRef<HTMLFormElement>();
+  const cancelOuterWidth = React.useRef<number>(0);
+  const [currentValue, setCurrentValue] = React.useState(getValue({ value, defaultValue }, ''));
+  const [isFocus, setIsFocus] = React.useState<boolean>(false);
 
-export default class SearchBar extends PureComponent<SearchBarProps, SearchBarState> {
-  private cancelRef: HTMLDivElement | null = null;
+  const { prefixCls: globalPrefixCls, locale: globalLocal } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-search-bar`;
+  const locale = globalLocal?.SearchBar;
 
-  private cancelOuterWidth: number;
+  const cls = classnames(prefixCls, className, {
+    [`${prefixCls}--${shape}`]: !!shape,
+    [`${prefixCls}--focus`]: !!(showCancel || isFocus || String(currentValue).length > 0),
+  });
 
-  private inputRef;
-
-  static defaultProps: SearchBarProps = {
-    prefixCls: 'za-search-bar',
-    shape: 'radius',
-    disabled: false,
-    showCancel: false,
-    clearable: true,
+  const blurAnim = (): void => {
+    if (!showCancel && cancelRef.current) {
+      cancelRef.current.style.cssText = `margin-right: -${cancelOuterWidth.current}px;`;
+    }
   };
 
-  constructor(props: SearchBarProps) {
-    super(props);
-    this.state = {
-      focus: false,
-      value: props.defaultValue || props.value || '',
-      isOnComposition: false,
-    };
-  }
+  const focusAnim = (): void => {
+    if (!cancelRef.current) return;
+    cancelRef.current.style.cssText = 'margin-right: 0px;';
+  };
 
-  componentDidMount() {
-    this.calculatePositon(this.props);
-  }
+  const onInputFocus = (e: React.FocusEvent<HTMLInputElement>): void => {
+    setIsFocus(true);
+    focusAnim();
+    typeof onFocus === 'function' && onFocus(e);
+  };
 
-  static getDerivedStateFromProps(nextProps: SearchBarProps, state: SearchBarState) {
-    if ('value' in nextProps && nextProps.value !== state.preValue) {
-      return {
-        value: nextProps.value,
-        preValue: nextProps.value,
-      };
-    }
-    return null;
-  }
+  const onInputBlur = (e: React.FocusEvent<HTMLInputElement>): void => {
+    setIsFocus(false);
+    !currentValue && blurAnim();
+    typeof onBlur === 'function' && onBlur(e);
+  };
 
-  componentDidUpdate(prevProps: SearchBarProps) {
-    const { cancelText, showCancel, locale } = this.props;
-    // 若改变了取消文字的内容或者placeholder的内容需要重新计算位置
-    if (
-      cancelText !== prevProps.cancelText ||
-      showCancel !== prevProps.showCancel ||
-      (locale && prevProps.locale && locale.cancelText !== prevProps.locale.cancelText)
-    ) {
-      this.calculatePositon(this.props);
-    }
-  }
+  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setCurrentValue(e.target.value);
+    typeof onChange === 'function' && onChange(e);
+  };
 
-  onFocus() {
-    const { onFocus } = this.props;
-    this.setState({ focus: true });
-    this.focusAnim();
-    onFocus && onFocus();
-  }
+  const onFormSubmit = (e?: React.FormEvent): void => {
+    e?.preventDefault();
+    inputRef.current && inputRef.current.blur();
+    typeof onSubmit === 'function' && onSubmit(currentValue);
+  };
 
-  onChange(e) {
-    const { onChange } = this.props;
-    const { isOnComposition } = this.state;
-    const { value } = e.target;
+  const onClickCancelButton = (): void => {
+    setCurrentValue('');
+    inputRef.current && inputRef.current.blur();
+    blurAnim();
+    typeof onCancel === 'function' && onCancel();
+  };
 
-    this.setState({ value });
-    if (!isOnComposition && onChange) {
-      onChange(e.target.value);
-    }
-  }
-
-  onBlur() {
-    const { onBlur } = this.props;
-    const { value, focus } = this.state;
-
-    this.setState({ focus: false }, () => {
-      !value && this.blurAnim();
-      focus && onBlur && onBlur();
-    });
-  }
-
-  onCancel() {
-    const { onCancel } = this.props;
-    this.setState({ value: '', isOnComposition: false }, () => {
-      this.onBlur();
-    });
-    onCancel && onCancel();
-  }
-
-  onSubmit(e: FormEvent) {
-    const { onSubmit } = this.props;
-    const { value } = this.state;
-
-    e.preventDefault();
-    this.inputRef && this.inputRef.blur();
-    onSubmit && onSubmit(value);
-  }
-
-  handleComposition(e: CompositionEvent<HTMLInputElement>) {
-    if (e.type === 'compositionstart') {
-      this.setState({ isOnComposition: true });
-    }
-
-    if (e.type === 'compositionend') {
-      // composition is end
-      this.setState({ isOnComposition: false });
-
-      const { onChange } = this.props;
-      const { target } = e;
-      const { value } = target as HTMLInputElement;
-      onChange && onChange(value);
-    }
-  }
-
-  // 初始化搜索提示文字的位置
-  calculatePositon(props: SearchBarProps) {
-    if (!this.cancelRef) return;
-    const { showCancel } = props;
-    const { value } = this.state;
-
+  const calculatePositon = useEventCallback(() => {
+    if (!cancelRef.current) return;
     if (!showCancel) {
       const ml = parseInt(
-        window.getComputedStyle(this.cancelRef, '')['margin-left'].split('px')[0],
+        window.getComputedStyle(cancelRef.current, '')['margin-left'].split('px')[0],
         10,
       );
-      this.cancelOuterWidth = Math.ceil(ml + this.cancelRef.getBoundingClientRect().width);
-      this.cancelRef.style.cssText = `margin-right: -${this.cancelOuterWidth}px;`;
+      const w = Math.ceil(ml + cancelRef.current.getBoundingClientRect().width);
+      cancelOuterWidth.current = w;
+      cancelRef.current!.style.cssText = `margin-right: -${w}px;`;
     } else {
-      this.cancelRef.style.cssText = 'margin-right: 0px;';
+      cancelRef.current.style.cssText = 'margin-right: 0px;';
     }
 
-    if (value) {
-      this.focusAnim();
+    if (currentValue) {
+      focusAnim();
     }
+  }, [currentValue, showCancel]);
+
+  React.useImperativeHandle(ref, () => ({
+    focus: inputRef.current?.focus,
+    blur: inputRef.current?.blur,
+    submit: onFormSubmit,
+  }));
+
+  React.useEffect(() => {
+    calculatePositon();
+  }, [cancelText, showCancel, locale, calculatePositon]);
+
+  React.useEffect(() => {
+    setCurrentValue(getValue({ value, defaultValue }, ''));
+  }, [defaultValue, value]);
+
+  const cancelRender = (
+    <div className={`${prefixCls}__cancel`} ref={cancelRef} onClick={onClickCancelButton}>
+      {cancelText || locale?.cancelText}
+    </div>
+  );
+
+  const inputProps: InputTextProps = {
+    type: 'search',
+    placeholder: placeholder || (locale && locale.placeholder),
+    defaultValue,
+    onFocus: onInputFocus,
+    onBlur: onInputBlur,
+    ...restProps,
+  };
+
+  if ('value' in props) {
+    inputProps.value = currentValue;
+  }
+  if ('onChange' in props) {
+    inputProps.onChange = onInputChange;
   }
 
-  focusAnim() {
-    if (!this.cancelRef) return;
-    this.cancelRef.style.cssText = 'margin-right: 0px;';
-    this.cancelRef.className += ' animation-ease';
-  }
+  return (
+    <div className={cls}>
+      <form action="#" className={`${prefixCls}__form`} onSubmit={onFormSubmit} ref={formRef}>
+        <div className={`${prefixCls}__content`}>
+          <SearchIcon size="sm" className={`${prefixCls}__icon`} />
+          <Input ref={inputRef} {...(inputProps as InputTextProps)} />
+        </div>
+        {cancelRender}
+      </form>
+    </div>
+  );
+});
 
-  blurAnim() {
-    const { showCancel } = this.props;
-    if (!showCancel && this.cancelRef) {
-      this.cancelRef.style.cssText = `margin-right: -${this.cancelOuterWidth}px;`;
-    }
-  }
+SearchBar.defaultProps = {
+  shape: 'radius',
+  disabled: false,
+  showCancel: false,
+  clearable: true,
+};
 
-  focus() {
-    this.inputRef && this.inputRef.focus();
-  }
+SearchBar.displayName = 'SearchBar';
 
-  renderCancel() {
-    const { prefixCls, cancelText, locale } = this.props;
-
-    return (
-      <div
-        className={`${prefixCls}__cancel`}
-        ref={(cancelRef) => {
-          this.cancelRef = cancelRef;
-        }}
-        onClick={() => {
-          this.onCancel();
-        }}
-      >
-        {cancelText || (locale && locale.cancelText)}
-      </div>
-    );
-  }
-
-  render() {
-    const {
-      prefixCls,
-      className,
-      shape,
-      placeholder,
-      disabled,
-      clearable,
-      showCancel,
-      maxLength,
-      locale,
-    } = this.props;
-    const { value, focus } = this.state;
-
-    const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--${shape}`]: !!shape,
-      [`${prefixCls}--focus`]: !!(showCancel || focus || (value && value.length > 0)),
-    });
-
-    return (
-      <div className={cls}>
-        <form
-          action="#"
-          className={`${prefixCls}__form`}
-          onSubmit={(e) => {
-            this.onSubmit(e);
-          }}
-        >
-          <div className={`${prefixCls}__content`}>
-            <SearchIcon size="sm" className={`${prefixCls}__icon`} />
-            <div className={`${prefixCls}__mock`}>
-              <Input
-                className={`${prefixCls}__input`}
-                type="search"
-                placeholder={placeholder || (locale && locale.placeholder)}
-                value={value}
-                maxLength={maxLength}
-                onFocus={() => {
-                  this.onFocus();
-                }}
-                onCompositionStart={(e) => {
-                  this.handleComposition(e);
-                }}
-                onCompositionUpdate={(e) => {
-                  this.handleComposition(e);
-                }}
-                onCompositionEnd={(e) => {
-                  this.handleComposition(e);
-                }}
-                onChange={(e) => {
-                  this.onChange(e);
-                }}
-                onBlur={() => {
-                  this.onBlur();
-                }}
-                disabled={disabled}
-                clearable={clearable}
-                ref={(inputRef) => {
-                  this.inputRef = inputRef;
-                }}
-              />
-            </div>
-          </div>
-          {this.renderCancel()}
-        </form>
-      </div>
-    );
-  }
-}
+export default SearchBar;

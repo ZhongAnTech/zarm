@@ -10,9 +10,14 @@
   position: fixed;
   left: 0;
   bottom: 0;
+  z-index: var(--zindex-tabbar);
   transition-duration: .2s;
   transition-property: height bottom;
   overflow: hidden;
+
+  @include m(safe) {
+    @include safeIphoneX(true, var(--tabbar-height));
+  }
 
   @include m(hidden) {
     bottom: var(--tabbar-hidden-bottom);

@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { IntlProvider, FormattedMessage } from 'react-intl';
-import { Panel, Cell } from 'zarm';
+import { Panel, List } from 'zarm';
 import { components } from '@/site.config';
 import { pascalCase } from 'change-case';
 import Container from '@/demo/components/Container';
@@ -20,29 +20,31 @@ const Child = () => {
 
     return (
       <Panel
+        spacing
         title={
           <>
             <FormattedMessage id={`app.components.type.${key}`} />（{list.length}）
           </>
         }
       >
-        {list
-          .sort((a, b) => {
-            return a.key.localeCompare(b.key);
-          })
-          .map((component, i) => (
-            <Cell
-              hasArrow
-              key={+i}
-              title={
-                <div className="menu-item-content">
-                  <span>{pascalCase(component.key)}</span>
-                  {locale !== 'enUS' && <span className="chinese">{component.name}</span>}
-                </div>
-              }
-              onClick={() => history.push(`/${component.key}`)}
-            />
-          ))}
+        <List>
+          {list
+            .sort((a, b) => {
+              return a.key.localeCompare(b.key);
+            })
+            .map((component, i) => (
+              <List.Item
+                key={+i}
+                title={
+                  <div className="menu-item-content">
+                    <span>{key === 'hooks' ? component.key : pascalCase(component.key)}</span>
+                    {locale !== 'enUS' && <span className="chinese">{component.name}</span>}
+                  </div>
+                }
+                onClick={() => history.push(`/${component.key}`)}
+              />
+            ))}
+        </List>
       </Panel>
     );
   };
@@ -63,6 +65,7 @@ const Child = () => {
         {getMenus('feedback')}
         {getMenus('view')}
         {getMenus('navigation')}
+        {getMenus('hooks')}
         {getMenus('other')}
       </main>
       <Footer />

@@ -4,17 +4,19 @@
 
 ```jsx
 import { useState } from 'react';
-import { Affix, Cell, Button, Switch } from 'zarm';
+import { Affix, List, Button, Switch } from 'zarm';
 
 const Demo = () => {
   const [affixed, setAffixed] = useState(true);
 
   return (
     <>
-      <Cell
-        title="是否启用 Affix"
-        description={<Switch checked={affixed} onChange={setAffixed} />}
-      />
+      <List>
+        <List.Item
+          title="是否启用 Affix"
+          after={<Switch checked={affixed} onChange={setAffixed} />}
+        />
+      </List>
       {affixed ? (
         <>
           <Affix offsetTop={20}>
@@ -42,16 +44,16 @@ ReactDOM.render(<Demo />, mountNode);
 ## 滚动容器
 
 ```jsx
-import { useState } from 'react';
+import { useRef } from 'react';
 import { Affix, Button } from 'zarm';
 
 const Demo = () => {
-  const [container, setContainer] = useState(null);
+  const containerRef = useRef(null);
 
   return (
-    <div className="scrollable-container" ref={setContainer}>
+    <div className="scrollable-container" ref={containerRef}>
       <div className="background">
-        <Affix scrollContainer={() => container}>
+        <Affix scrollContainer={() => containerRef.current}>
           <Button theme="primary">根据滚动容器顶部固定</Button>
         </Affix>
       </div>

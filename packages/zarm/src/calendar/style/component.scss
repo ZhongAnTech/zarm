@@ -9,8 +9,6 @@ $--calendar-day-width: 14.28571%;
 
   ul {
     list-style-type: disc;
-    margin: 0;
-    padding: 0;
   }
 
   li {
@@ -44,6 +42,11 @@ $--calendar-day-width: 14.28571%;
   @include e(month) {
     padding: 0 var(--calendar-section-padding);
     color: var(--calendar-day-color);
+
+    ul {
+      margin: 0;
+      padding: 0;
+    }
 
     &:before {
       content: attr(title);

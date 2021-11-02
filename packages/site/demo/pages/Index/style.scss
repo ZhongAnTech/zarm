@@ -13,26 +13,6 @@
     }
   }
 
-  main {
-    padding: r(15);
-  }
-
-  .za-panel-body {
-    border-radius: r(2);
-
-    &:after {
-      display: none;
-    }
-  }
-
-  .za-cell {
-    &:first-of-type {
-      &:after {
-        display: none;
-      }
-    }
-  }
-
   .menu-item-content {
     .chinese {
       margin-left: r(6);

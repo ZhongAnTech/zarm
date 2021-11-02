@@ -5,7 +5,86 @@
 - Break Change
 
   - [Input] 拆分使用到虚拟键盘的自定义输入框组件 `CustomInput`。触发的事件入参由 value 值改为 event，受影响的事件有 `onChange` `onFocus` `onBlur` `onFocus`。删除 `onClear` 事件，点击重置按钮请空值将触发 `onChange` 事件。
-  - [SearchBar] 删除 `onClear` 事件，点击重置按钮请空值将触发 `onChange` 事件。
+  - [SearchBar]
+    - 输入框事件变更为与原生 `input` 保持一致，如 `onChange`、`onFocus`、`onBlur` 等。
+    - 删除 `onClear` 事件，点击重置按钮请空值将触发 `onChange` 事件。
+  - [Toast] 静态方法挂载到 `Toast.useToast` 下，详细用法参考官网例子。
+  - [NoticeBar]
+    - 新增属性 `onClose`，关闭触发的回调函数。
+    - 修复关闭后只移除了 `Message` 组件，根节点没有被移除的 bug。
+  - [Message]
+    - 移除属性 `size`，及相关样式。
+    - 新增属性 `onClose`，关闭触发的回调函数。
+  - [Select]
+    - 移除属性 `hasArrow`，默认展示箭头。
+  - [DateSelect]
+    - 移除属性 `hasArrow`，默认展示箭头。
+  - [Cell]
+    - 变更为 List 和 List.Item 组件，样式结构调整。
+    - 属性 `icon` 变更为 `prefix`。
+    - 属性 `description` 变更为 `after`。
+    - 属性 `help` 变更为 `info`。
+    - 属性 `title` 字体大小变更为 17px。
+  - [Checkbox.Group]
+    - 属性 `type` 可选值 `cell` 变更为 `list`。
+    - 属性 `size` 变更为 `buttonSize`。
+    - 属性 `shape` 变更为 `buttonShape`。
+    - 属性 `ghost` 变更为 `buttonGhost`。
+  - [Radio.Group]
+    - 属性 `type` 可选值 `cell` 变更为 `list`。
+    - 属性 `size` 变更为 `buttonSize`。
+    - 属性 `shape` 变更为 `buttonShape`。
+    - 属性 `ghost` 变更为 `buttonGhost`。
+    - 属性 `compact` 变更为 `buttonCompact`。
+    - 新增属性 `listMarkerAlign` ，用于设置列表类型时标记的位置。
+
+## v2.9.9
+
+- Bug Fix
+
+  - [Popup] 修复当 mountContainer 为 `false` 时，丢失容器 div 的 bug。[#769](https://github.com/ZhongAnTech/zarm/issue/769)
+
+## v2.9.8
+
+- Bug Fix
+
+  - [Pull] 修复当 window 作为滚动容器时，触发事件的临界点判断错误的 bug。[#760](https://github.com/ZhongAnTech/zarm/pull/760)
+
+## v2.9.7
+
+- Bug Fix
+
+  - [Keyboard] 修复长按删除按钮会陷入死循环（重复执行删除操作且松开后无法退出）的 bug。[#745](https://github.com/ZhongAnTech/zarm/pull/745)[@Confettis]
+
+## v2.9.6
+
+- Bug Fix
+
+  - [Calendar] 修复日历组件不支持国际化的 bug。[#738](https://github.com/ZhongAnTech/zarm/pull/738)
+
+## v2.9.5
+
+- Bug Fix
+
+  - 修复 Loading 和 Toast 静态方法使用后实例未销毁的 bug。[#710](https://github.com/ZhongAnTech/zarm/issues/710)
+  - [Pull] 修复因滚动容器变更导致原有容器事件监听未解除的 bug。[#734](https://github.com/ZhongAnTech/zarm/issues/734)
+
+## v2.9.4
+
+- Bug Fix
+
+  - [Collapse] 修复同时设置 activeKey 和 defaultActiveKey 属性属性导致的 bug。[#698](https://github.com/ZhongAnTech/zarm/pull/698)
+
+  - [Modal] 修复 Modal 静态方法 `Modal.confirm` 和 `Modal.alert` 使用后实例未销毁的 bug。[#710](https://github.com/ZhongAnTech/zarm/issues/710)
+
+- Perf
+  - [Button] 优化按钮点击 300ms 延时。[#701](https://github.com/ZhongAnTech/zarm/pull/701)
+
+## v2.9.3
+
+- Bug Fix
+
+  - [Button] 修复 primary 主题下 loading 状态活动指示器不可见的 bug。[#692](https://github.com/ZhongAnTech/zarm/pull/692)
 
 ## v2.9.2
 

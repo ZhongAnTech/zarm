@@ -5,8 +5,8 @@ exports[`Popup snapshot renders correctly 1`] = `
   afterClose={[MockFunction]}
   destroy={true}
   direction="bottom"
+  lockScroll={true}
   onMaskClick={[MockFunction]}
-  prefixCls="za-popup"
   visible={false}
 />
 `;
@@ -16,9 +16,9 @@ exports[`Popup snapshot renders mount node correctly 1`] = `
   afterClose={[MockFunction]}
   destroy={true}
   direction="bottom"
+  lockScroll={true}
   mountContainer={[Function]}
   onMaskClick={[MockFunction]}
-  prefixCls="za-popup"
   visible={true}
 >
   <Portal
@@ -66,7 +66,6 @@ exports[`Popup snapshot renders mount node correctly 1`] = `
       >
         <Mask
           className="za-fade-enter"
-          prefixCls="za-mask"
           style={
             Object {
               "WebkitAnimationDuration": "200ms",
@@ -110,6 +109,86 @@ exports[`Popup snapshot renders mount node correctly 1`] = `
           </div>
         </div>
       </Portal>
+    </Trigger>
+  </Portal>
+</Popup>
+`;
+
+exports[`Popup snapshot renders mount without mountContainer 1`] = `
+<Popup
+  afterClose={[MockFunction]}
+  destroy={true}
+  direction="bottom"
+  lockScroll={true}
+  mountContainer={false}
+  onMaskClick={[MockFunction]}
+  visible={true}
+>
+  <Portal
+    afterClose={[MockFunction]}
+    animationDuration={200}
+    animationType="fade"
+    direction="bottom"
+    handlePortalUnmount={[Function]}
+    mask={true}
+    mountContainer={false}
+    onMaskClick={[MockFunction]}
+    prefixCls="za-popup"
+    visible={true}
+  >
+    <Trigger
+      disabled={false}
+      onClose={[Function]}
+      visible={true}
+    >
+      <div
+        className="za-popup-container"
+      >
+        <Mask
+          className="za-fade-enter"
+          style={
+            Object {
+              "WebkitAnimationDuration": "200ms",
+              "animationDuration": "200ms",
+            }
+          }
+          type="normal"
+          visible={true}
+        >
+          <div
+            className="za-mask za-fade-enter za-mask--normal"
+            style={
+              Object {
+                "WebkitAnimationDuration": "200ms",
+                "animationDuration": "200ms",
+              }
+            }
+          />
+        </Mask>
+        <div
+          className="za-popup__wrapper"
+          data-width={0}
+          onClick={[Function]}
+          role="dialog"
+          style={Object {}}
+        >
+          <div
+            className="za-popup za-popup--bottom"
+            data-width={0}
+            role="document"
+            style={
+              Object {
+                "WebkitTransitionDuration": "200ms",
+                "WebkitTransitionProperty": "transform",
+                "transitionDuration": "200ms",
+                "transitionProperty": "transform",
+              }
+            }
+          >
+            foo
+          </div>
+        </div>
+      </div>
     </Trigger>
   </Portal>
 </Popup>

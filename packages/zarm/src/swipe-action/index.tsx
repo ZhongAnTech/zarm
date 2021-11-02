@@ -212,8 +212,8 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     const style = {
       WebkitTransitionDuration: `${animationDuration}ms`,
       transitionDuration: `${animationDuration}ms`,
-      WebkitTransform: `translate3d(${offsetLeft}px, 0, 0)`,
-      transform: `translate3d(${offsetLeft}px, 0, 0)`,
+      WebkitTransform: `translateX(${offsetLeft}px)`,
+      transform: `translateX(${offsetLeft}px)`,
     };
 
     return left || right ? (

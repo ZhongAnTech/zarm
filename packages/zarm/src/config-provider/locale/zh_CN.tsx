@@ -1,5 +1,6 @@
 import ActionSheet from '../../action-sheet/locale/zh_CN';
 import Alert from '../../alert/locale/zh_CN';
+import Calendar from '../../calendar/locale/zh_CN';
 import Confirm from '../../confirm/locale/zh_CN';
 import DatePicker from '../../date-picker/locale/zh_CN';
 import DatePickerView from '../../date-picker-view/locale/zh_CN';
@@ -16,6 +17,7 @@ export default {
   locale: 'zh-CN',
   ActionSheet,
   Alert,
+  Calendar,
   Confirm,
   DatePicker,
   DatePickerView,

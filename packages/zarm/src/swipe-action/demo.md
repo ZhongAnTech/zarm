@@ -3,57 +3,57 @@
 ## 基本用法
 
 ```jsx
-import { SwipeAction, Button, Cell } from 'zarm';
+import { SwipeAction, Button, List } from 'zarm';
 
 ReactDOM.render(
-  <>
+  <List>
     <SwipeAction
       right={[
-        <Button size="lg" shape="rect" theme="primary" onClick={() => console.log('右按钮1')}>
+        <Button shape="rect" theme="primary" onClick={() => console.log('右按钮1')}>
           右按钮1
         </Button>,
-        <Button size="lg" shape="rect" theme="danger" onClick={() => console.log('右按钮2')}>
+        <Button shape="rect" theme="danger" onClick={() => console.log('右按钮2')}>
           右按钮2
         </Button>,
       ]}
     >
-      <Cell>左滑看看</Cell>
+      <List.Item title="左滑看看" />
     </SwipeAction>
 
     <SwipeAction
       left={[
-        <Button size="lg" shape="rect" theme="primary" onClick={() => console.log('左按钮1')}>
+        <Button shape="rect" theme="primary" onClick={() => console.log('左按钮1')}>
           左按钮1
         </Button>,
-        <Button size="lg" shape="rect" theme="danger" onClick={() => console.log('左按钮2')}>
+        <Button shape="rect" theme="danger" onClick={() => console.log('左按钮2')}>
           左按钮2
         </Button>,
       ]}
     >
-      <Cell>右滑看看</Cell>
+      <List.Item title="右滑看看" />
     </SwipeAction>
 
     <SwipeAction
       autoClose
       left={[
-        <Button size="lg" shape="rect" theme="primary" onClick={() => console.log('左按钮1')}>
+        <Button shape="rect" theme="primary" onClick={() => console.log('左按钮1')}>
           左按钮1
         </Button>,
-        <Button size="lg" shape="rect" theme="danger" onClick={() => console.log('左按钮2')}>
+        <Button shape="rect" theme="danger" onClick={() => console.log('左按钮2')}>
           左按钮2
         </Button>,
       ]}
       right={[
-        <Button size="lg" shape="rect" theme="danger" onClick={() => console.log('右按钮1')}>
+        <Button shape="rect" theme="danger" onClick={() => console.log('右按钮1')}>
           右按钮2
         </Button>,
       ]}
       onOpen={() => console.log('open')}
       onClose={() => console.log('close')}
     >
-      <Cell>左右都能滑动（自动关闭）</Cell>
+      <List.Item title="左右都能滑动（自动关闭）" />
     </SwipeAction>
-  </>,
+  </List>,
   mountNode,
 );
 ```

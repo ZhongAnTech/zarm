@@ -1,6 +1,6 @@
 import React, { PureComponent, CSSProperties } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ViewStyle } from 'react-native';
-import PropsType from './PropsType';
+import PropsType from './interface';
 import actionsheetStyle from './style/index.native';
 import Popup from '../popup/index.native';
 
@@ -93,7 +93,7 @@ export default class ActionSheet extends PureComponent<ButtonProps, any> {
     return (
       <Popup visible={visible} onMaskClick={onMaskClick}>
         <View style={wrapperStyle as ViewStyle}>
-          <View style={actionsStyle}>{actions.map(this.renderActions)}</View>
+          <View style={actionsStyle}>{actions!.map(this.renderActions)}</View>
           {this.renderCancel()}
         </View>
       </Popup>

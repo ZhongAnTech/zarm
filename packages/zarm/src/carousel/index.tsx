@@ -1,166 +1,272 @@
-import React, { Component, cloneElement, Children, CSSProperties } from 'react';
+import React, {
+  cloneElement,
+  Children,
+  forwardRef,
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+} from 'react';
+import type { CSSProperties } from 'react';
 import classnames from 'classnames';
-import PropsType from './PropsType';
+import type BaseCarouselProps from './interface';
 import Events from '../utils/events';
-import Drag from '../drag';
+import useDrag from '../useDrag';
+import type { DragState, DragEvent } from '../useDrag/interface';
+import { ConfigContext } from '../n-config-provider';
 
-export interface CarouselProps extends PropsType {
-  prefixCls?: string;
+export interface CarouselProps extends BaseCarouselProps {
   className?: string;
+  style?: CSSProperties;
 }
 
-export default class Carousel extends Component<CarouselProps, any> {
-  static defaultProps: CarouselProps = {
-    prefixCls: 'za-carousel',
-    direction: 'left',
-    height: 160,
-    loop: false,
-    activeIndex: 0,
-    animationDuration: 500,
-    swipeable: true,
-    autoPlay: false,
-    autoPlayIntervalTime: 3000,
-    moveDistanceRatio: 0.5,
-    moveTimeSpan: 300,
-    showPagination: true,
+export interface CarouselHTMLElement extends HTMLDivElement {
+  onJumpTo: (index: number) => void;
+  onSlideTo: (index: number) => void;
+}
+
+interface Offset {
+  x: number;
+  y: number;
+}
+
+interface StateProps {
+  activeIndex: number;
+  activeIndexChanged: boolean;
+}
+
+const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => {
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-carousel`;
+
+  const {
+    className,
+    height,
+    style,
+    children,
+    direction,
+    loop,
+    onChangeEnd,
+    onChange,
+    autoPlay,
+    autoPlayIntervalTime,
+    swipeable,
+    animationDuration,
+    activeIndex: propActiveIndex,
+    showPagination,
+    moveDistanceRatio,
+    moveTimeSpan,
+  } = props;
+
+  const stateRef = useRef<StateProps>({
+    activeIndex: propActiveIndex!,
+    activeIndexChanged: false,
+  });
+  const [activeIndexState, setActiveIndexState] = useState(stateRef.current.activeIndex);
+  const updateRef = useRef((state: StateProps) => {
+    stateRef.current = state;
+    setActiveIndexState(state.activeIndex);
+  });
+
+  const carouselRef = (ref as any) || React.createRef<CarouselHTMLElement>();
+  const carouselItemsRef = useRef<HTMLDivElement>(null);
+
+  const translateXRef = useRef(0);
+  const translateYRef = useRef(0);
+  const timer = useRef(0);
+
+  // 判断当前是否在最后一页
+  const isLastIndex = useCallback(() => {
+    return stateRef.current.activeIndex >= children!.length - 1;
+  }, [children]);
+
+  // 判断当前是否在第一页
+  const isFirstIndex = () => {
+    return stateRef.current.activeIndex <= 0;
   };
 
-  private carouselItems;
+  // 是否横向移动
+  const isDirectionX = useCallback(() => {
+    return ['left', 'right'].includes(direction!);
+  }, [direction]);
 
-  private moveInterval;
-
-  private translateX = 0;
-
-  private translateY = 0;
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      // items: [],
-      activeIndex: props.activeIndex,
-      activeIndexChanged: false,
-    };
-  }
-
-  componentDidMount() {
-    const { activeIndex } = this.props;
-
-    // 监听窗口变化
-    Events.on(window, 'resize', this.resize);
-    this.startAutoPlay();
-    // 设置起始位置编号
-    this.onJumpTo(activeIndex);
-  }
-
-  componentDidUpdate(prevProps) {
-    const { activeIndex } = this.props;
-    if (activeIndex !== prevProps.activeIndex) {
-      this.onSlideTo(activeIndex);
+  // 处理节点（首尾拼接）
+  const parseItems = () => {
+    if (children == null || children.length === 0) {
+      return;
     }
-  }
+    // 增加头尾拼接节点
+    const itemList = [...children];
+    const firstItem = itemList[0];
+    const lastItem = itemList[itemList.length - 1];
 
-  componentWillUnmount() {
-    // 自动轮播结束
-    this.pauseAutoPlay();
+    if (loop) {
+      itemList.push(firstItem);
+      itemList.unshift(lastItem);
+    }
 
-    // 移除监听窗口变化
-    Events.off(window, 'resize', this.resize);
-    Events.off(this.carouselItems, 'webkitTransitionEnd', this.transitionEnd);
-    Events.off(this.carouselItems, 'transitionend', this.transitionEnd);
-  }
-
-  // 滑动到指定编号
-  onSlideTo = (index) => {
-    this.onMoveTo(index, this.props.animationDuration);
+    // 节点追加后重排key
+    const newItems = React.Children.map(itemList, (element: any, index) => {
+      return cloneElement(element, {
+        key: index,
+        className: classnames(`${prefixCls}__item`, element.props.className),
+      });
+    });
+    return newItems;
   };
 
-  // 静默跳到指定编号
-  onJumpTo = (index) => {
-    this.onMoveTo(index, 0);
-  };
+  // 执行过渡动画
+  const doTransition = useCallback(
+    (offset: Offset, animationDurationNum: number) => {
+      const dom = carouselItemsRef.current;
+      let x = 0;
+      let y = 0;
+
+      if (isDirectionX()) {
+        ({ x } = offset);
+      } else {
+        ({ y } = offset);
+      }
+      dom!.style.transitionDuration = `${animationDurationNum}ms`;
+      dom!.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    },
+    [isDirectionX],
+  );
+
+  const transitionEnd = useCallback(() => {
+    const { activeIndex, activeIndexChanged } = stateRef.current;
+    const dom = carouselItemsRef.current;
+    const index = loop ? activeIndex + 1 : activeIndex;
+    translateXRef.current = -dom!.offsetWidth * index;
+    translateYRef.current = -dom!.offsetHeight * index;
+    doTransition({ x: translateXRef.current, y: translateYRef.current }, 0);
+
+    if (typeof onChangeEnd === 'function' && activeIndexChanged) {
+      onChangeEnd(activeIndex);
+    }
+  }, [loop, doTransition, onChangeEnd]);
 
   // 移动到指定编号
-  onMoveTo = (index, animationDuration) => {
-    const dom = this.carouselItems;
+  const onMoveTo = useCallback(
+    (index: number, animationDurationNum: number) => {
+      const dom = carouselItemsRef.current;
+      const maxLength = children!.length;
+      const previousIndex = stateRef.current.activeIndex;
+      const num = loop ? 1 : 0;
+      translateXRef.current = -dom!.offsetWidth * (index + num);
+      translateYRef.current = -dom!.offsetHeight * (index + num);
+      doTransition({ x: translateXRef.current, y: translateYRef.current }, animationDurationNum);
 
-    const { loop, children, onChange } = this.props;
-    const maxLength = children!.length;
-    const previousIndex = this.state.activeIndex;
+      if (index > maxLength - 1) {
+        index = 0;
+      } else if (index < 0) {
+        index = maxLength - 1;
+      }
+      const activeIndexChanged = previousIndex !== index;
 
-    this.translateX = -dom.offsetWidth * (index + loop);
-    this.translateY = -dom.offsetHeight * (index + loop);
-    this.doTransition({ x: this.translateX, y: this.translateY }, animationDuration);
+      updateRef.current({
+        activeIndex: index,
+        activeIndexChanged,
+      });
+      if (typeof onChange === 'function' && activeIndexChanged) {
+        onChange(index);
+      }
+    },
+    [children, doTransition, loop, onChange],
+  );
 
-    if (index > maxLength - 1) {
-      index = 0;
-    } else if (index < 0) {
-      index = maxLength - 1;
-    }
-    const activeIndexChanged = previousIndex !== index;
-    this.setState({
-      activeIndex: index,
-      activeIndexChanged,
-    });
+  // 滑动到指定编号
+  const onSlideTo = useCallback(
+    (index: number) => {
+      onMoveTo(index, animationDuration!);
+    },
+    [onMoveTo, animationDuration],
+  );
 
-    if (typeof onChange === 'function' && activeIndexChanged) {
-      onChange(index);
+  // 静默跳到指定编号
+  const onJumpTo = useCallback(
+    (index: number) => {
+      onMoveTo(index, 0);
+    },
+    [onMoveTo],
+  );
+  // 暂停自动轮播
+  const pauseAutoPlay = () => {
+    if (timer.current) {
+      clearInterval(timer.current);
     }
   };
 
+  // 自动轮播开始
+  const startAutoPlay = useCallback(() => {
+    if (autoPlay) {
+      timer.current = window.setInterval(() => {
+        const isLeftOrUpDirection = ['left', 'up'].includes(direction!);
+        const activeIndex = isLeftOrUpDirection
+          ? stateRef.current.activeIndex + 1
+          : stateRef.current.activeIndex - 1;
+
+        // 不循环暂停轮播
+        if (!loop && (isLeftOrUpDirection ? isLastIndex() : isFirstIndex())) {
+          pauseAutoPlay();
+          return;
+        }
+        onSlideTo(activeIndex);
+      }, autoPlayIntervalTime);
+    }
+  }, [autoPlay, autoPlayIntervalTime, direction, isLastIndex, loop, onSlideTo]);
+
+  // 更新窗口变化的位置偏移
+  const resize = useCallback(() => {
+    onJumpTo(stateRef.current.activeIndex);
+  }, [onJumpTo]);
+
   // 触屏事件
-  onDragStart = () => {
-    const { swipeable, children } = this.props;
+  const onDragStart = () => {
     if (!swipeable) {
       return false;
     }
     // 跳转到头尾
-    const { activeIndex } = this.state;
+    const { activeIndex } = stateRef.current;
     const maxLength = children!.length;
 
     if (activeIndex <= 0) {
-      this.onJumpTo(0);
+      onJumpTo(0);
     } else if (activeIndex >= maxLength - 1) {
-      this.onJumpTo(maxLength - 1);
+      onJumpTo(maxLength - 1);
     }
 
     // 暂停自动轮播
-    this.pauseAutoPlay();
+    pauseAutoPlay();
   };
 
-  onDragMove = (event, { offsetX, offsetY }) => {
-    const { swipeable } = this.props;
+  const onDragMove = (event: DragEvent, { offsetX = 0, offsetY = 0 }: DragState) => {
     if (!swipeable) {
       return false;
     }
     const distanceX = Math.abs(offsetX);
     const distanceY = Math.abs(offsetY);
 
-    if (
-      this.isDirectionX() &&
-      (distanceX < 5 || (distanceX >= 5 && distanceY >= 1.73 * distanceX))
-    ) {
+    if (isDirectionX() && (distanceX < 5 || (distanceX >= 5 && distanceY >= 1.73 * distanceX))) {
       return false;
     }
 
-    if (
-      !this.isDirectionX() &&
-      (distanceY < 5 || (distanceY >= 5 && distanceX >= 1.73 * distanceY))
-    ) {
+    if (!isDirectionX() && (distanceY < 5 || (distanceY >= 5 && distanceX >= 1.73 * distanceY))) {
       return false;
     }
 
     // 设置不循环的时候
-    if (!this.props.loop) {
+    if (!loop) {
       // 在尾页时禁止拖动
-      if (this.isLastIndex()) {
-        if ((this.isDirectionX() && offsetX < 0) || (!this.isDirectionX() && offsetY < 0)) {
+      if (isLastIndex()) {
+        if ((isDirectionX() && offsetX < 0) || (!isDirectionX() && offsetY < 0)) {
           return false;
         }
       }
 
       // 在首页时禁止拖动
-      if (this.isFirstIndex()) {
-        if ((this.isDirectionX() && offsetX > 0) || (!this.isDirectionX() && offsetY > 0)) {
+      if (isFirstIndex()) {
+        if ((isDirectionX() && offsetX > 0) || (!isDirectionX() && offsetY > 0)) {
           return false;
         }
       }
@@ -170,216 +276,130 @@ export default class Carousel extends Component<CarouselProps, any> {
       event.preventDefault();
     }
 
-    this.doTransition({ x: this.translateX + offsetX, y: this.translateY + offsetY }, 0);
+    doTransition({ x: translateXRef.current + offsetX, y: translateYRef.current + offsetY }, 0);
     return true;
   };
 
-  onDragEnd = (_event, { offsetX, offsetY, startTime }) => {
-    const { swipeable } = this.props;
+  const onDragEnd = (_event: DragEvent, { offsetX = 0, offsetY = 0, startTime }: DragState) => {
     if (!swipeable) {
       return false;
     }
     if (!offsetX && !offsetY) {
       // 恢复自动轮播
-      this.startAutoPlay();
+      startAutoPlay();
       return;
     }
 
-    const { moveDistanceRatio, moveTimeSpan } = this.props;
-    let { activeIndex } = this.state;
+    let { activeIndex } = stateRef.current;
 
-    const dom = this.carouselItems;
-    const timeSpan = new Date().getTime() - startTime.getTime();
-    const ratio = this.isDirectionX()
-      ? Math.abs(offsetX / dom.offsetWidth)
-      : Math.abs(offsetY / dom.offsetHeight);
+    const dom = carouselItemsRef.current;
+    const timeSpan = new Date().getTime() - startTime!.getTime();
+    const ratio = isDirectionX()
+      ? Math.abs(offsetX / dom!.offsetWidth)
+      : Math.abs(offsetY / dom!.offsetHeight);
 
     // 判断滑动临界点
     // 1.滑动距离超过0，且滑动距离和父容器长度之比超过moveDistanceRatio
     // 2.滑动释放时间差低于moveTimeSpan
     if (ratio >= moveDistanceRatio! || timeSpan <= moveTimeSpan!) {
       const action =
-        (this.isDirectionX() && offsetX > 0) || (!this.isDirectionX() && offsetY > 0)
-          ? 'prev'
-          : 'next';
+        (isDirectionX() && offsetX > 0) || (!isDirectionX() && offsetY > 0) ? 'prev' : 'next';
 
       activeIndex = action === 'next' ? activeIndex + 1 : activeIndex - 1;
     }
 
-    this.onSlideTo(activeIndex);
+    onSlideTo(activeIndex);
 
     // 恢复自动轮播
-    this.startAutoPlay();
+    startAutoPlay();
   };
 
-  // 自动轮播开始
-  startAutoPlay = () => {
-    const { direction, loop, autoPlay, autoPlayIntervalTime } = this.props;
+  useEffect(() => {
+    // 监听窗口变化
+    Events.on(window, 'resize', resize);
 
-    this.moveInterval =
-      autoPlay &&
-      setInterval(() => {
-        let { activeIndex } = this.state;
-        const isLeftOrUpDirection = ['left', 'up'].indexOf(direction!) > -1;
+    startAutoPlay();
+    // 设置起始位置编号
+    onJumpTo(propActiveIndex!);
 
-        activeIndex = isLeftOrUpDirection ? activeIndex + 1 : activeIndex - 1;
+    return () => {
+      // 自动轮播结束
+      pauseAutoPlay();
+      // 移除监听窗口变化
+      Events.off(window, 'resize', resize);
+    };
+  }, [onJumpTo, onSlideTo, propActiveIndex, resize, startAutoPlay, transitionEnd]);
 
-        // 不循环暂停轮播
-        if (!loop && (isLeftOrUpDirection ? this.isLastIndex() : this.isFirstIndex())) {
-          this.pauseAutoPlay();
-          return;
-        }
-        this.onSlideTo(activeIndex);
-      }, autoPlayIntervalTime);
-  };
+  useEffect(() => {
+    carouselRef.current.onJumpTo = onJumpTo;
+    carouselRef.current.onSlideTo = onSlideTo;
+  }, [carouselRef, onJumpTo, onSlideTo]);
 
-  // 暂停自动轮播
-  pauseAutoPlay = () => {
-    if (this.moveInterval) {
-      clearInterval(this.moveInterval);
-    }
-  };
-
-  // 处理节点（首尾拼接）
-  parseItems = (props) => {
-    if (props.children.length === 0) {
-      return;
-    }
-
-    // 增加头尾拼接节点
-    const items = [].concat(props.children);
-    const firstItem = items[0];
-    const lastItem = items[items.length - 1];
-
-    if (props.loop) {
-      items.push(firstItem);
-      items.unshift(lastItem);
-    }
-
-    // 节点追加后重排key
-    const newItems = React.Children.map(items, (element: any, index) => {
-      return cloneElement(element, {
-        key: index,
-        className: classnames(`${props.prefixCls}__item`, element.props.className),
-      });
-    });
-    return newItems;
-  };
-
-  // 更新窗口变化的位置偏移
-  resize = () => {
-    this.onJumpTo(this.state.activeIndex);
-  };
-
-  // 执行过渡动画
-  doTransition = (offset, animationDuration) => {
-    const dom = this.carouselItems;
-    let x = 0;
-    let y = 0;
-
-    if (this.isDirectionX()) {
-      ({ x } = offset);
-    } else {
-      ({ y } = offset);
-    }
-
-    dom.style.WebkitTransformDuration = `${animationDuration}ms`;
-    dom.style.transitionDuration = `${animationDuration}ms`;
-    dom.style.WebkitTransform = `translate3d(${x}px, ${y}px, 0)`;
-    dom.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-  };
-
-  transitionEnd = () => {
-    const { onChangeEnd } = this.props;
-    const { activeIndex, activeIndexChanged } = this.state;
-    const dom = this.carouselItems;
-
-    this.translateX = -dom.offsetWidth * (activeIndex + this.props.loop);
-    this.translateY = -dom.offsetHeight * (activeIndex + this.props.loop);
-    this.doTransition({ x: this.translateX, y: this.translateY }, 0);
-
-    if (typeof onChangeEnd === 'function' && activeIndexChanged) {
-      onChangeEnd(activeIndex);
-    }
-  };
-
-  // 判断当前是否在最后一页
-  isLastIndex = () => {
-    return this.state.activeIndex >= this.props.children!.length - 1;
-  };
-
-  // 判断当前是否在第一页
-  isFirstIndex = () => {
-    return this.state.activeIndex <= 0;
-  };
-
-  // 是否横向移动
-  isDirectionX = () => {
-    return ['left', 'right'].indexOf(this.props.direction!) > -1;
-  };
-
-  renderPaginationItem = (_result, index) => {
-    const { prefixCls } = this.props;
+  const renderPaginationItem = (_result, index: number) => {
     const paginationItemCls = classnames(`${prefixCls}__pagination__item`, {
-      [`${prefixCls}__pagination__item--active`]: index === this.state.activeIndex,
+      [`${prefixCls}__pagination__item--active`]: index === activeIndexState,
     });
-
     return (
       <div
         key={`pagination-${index}`}
         className={paginationItemCls}
-        onClick={() => this.onSlideTo(index)}
+        onClick={() => onSlideTo(index)}
       />
     );
   };
 
-  renderPagination = () => {
-    const { prefixCls, showPagination, children } = this.props;
+  const renderPagination = () => {
     return (
       showPagination && (
         <div className={`${prefixCls}__pagination`}>
-          {Children.map(children, this.renderPaginationItem)}
+          {Children.map(children, renderPaginationItem)}
         </div>
       )
     );
   };
+  const getDragProps = useDrag({ onDragStart, onDragMove, onDragEnd });
+  const directionText = isDirectionX() ? 'horizontal' : 'vertical';
+  const cls = classnames(prefixCls, className, `${prefixCls}--${directionText}`);
 
-  render() {
-    const { prefixCls, className, height, style } = this.props;
-    const items = this.parseItems(this.props);
+  const content = () => {
+    const items = parseItems();
     const itemsStyle: CSSProperties = {};
-
-    const direction = this.isDirectionX() ? 'horizontal' : 'vertical';
-    const cls = classnames(prefixCls, className, `${prefixCls}--${direction}`);
-
-    if (!this.isDirectionX()) {
+    if (!isDirectionX()) {
       itemsStyle.height = height;
     }
-
-    const content = (
+    return (
       <div
-        ref={(ele) => {
-          this.carouselItems = ele;
-        }}
+        ref={carouselItemsRef}
         className={`${prefixCls}__items`}
-        onTransitionEnd={this.transitionEnd}
+        onTransitionEnd={transitionEnd}
         style={itemsStyle}
       >
         {items}
       </div>
     );
+  };
+  return (
+    <div className={cls} style={style} ref={carouselRef} {...getDragProps}>
+      {content()}
+      {renderPagination()}
+    </div>
+  );
+});
 
-    return (
-      <div className={cls} style={style}>
-        <Drag
-          onDragStart={this.onDragStart}
-          onDragMove={this.onDragMove}
-          onDragEnd={this.onDragEnd}
-        >
-          {content}
-        </Drag>
-        {this.renderPagination()}
-      </div>
-    );
-  }
-}
+Carousel.displayName = 'Carousel';
+
+Carousel.defaultProps = {
+  direction: 'left',
+  height: 160,
+  loop: false,
+  activeIndex: 0,
+  animationDuration: 500,
+  swipeable: true,
+  autoPlay: false,
+  autoPlayIntervalTime: 3000,
+  moveDistanceRatio: 0.5,
+  moveTimeSpan: 300,
+  showPagination: true,
+};
+
+export default Carousel;

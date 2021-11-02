@@ -1,93 +1,120 @@
-import React, { PureComponent, CSSProperties } from 'react';
+import React, { HTMLAttributes } from 'react';
 import classnames from 'classnames';
-import PropsType from './PropsType';
+import { ConfigContext } from '../n-config-provider';
+import type { BaseActivityIndicatorProps } from './interface';
 
 const DIAMETER = 62;
 
-export interface ActivityIndicatorProps extends PropsType {
-  prefixCls?: string;
-  className?: string;
-  style?: CSSProperties;
-}
+const Circular = React.forwardRef(
+  (
+    { className, size, percent, strokeWidth, loading, ...htmlAttributes }: ActivityIndicatorProps,
+    ref: any,
+  ) => {
+    const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+    const prefixCls = `${globalPrefixCls}-activity-indicator`;
 
-const Circular = (props: ActivityIndicatorProps) => {
-  const { prefixCls, className, size, percent, strokeWidth, loading, style } = props;
-  const cls = classnames(className, prefixCls, {
-    [`${prefixCls}--${size}`]: !!size,
-    [`${prefixCls}--circular`]: loading,
-  });
+    const cls = classnames(className, prefixCls, {
+      [`${prefixCls}--${size}`]: !!size,
+      [`${prefixCls}--circular`]: loading,
+    });
 
-  const half = DIAMETER / 2;
-  const r = half - (strokeWidth as number) / 2;
-  const round = 2 * Math.PI * r;
-  const lineStyle = {
-    strokeDasharray: `${(round * (percent as number)) / 100} ${round}`,
-    strokeWidth,
-  };
+    const half = DIAMETER / 2;
+    const r = half - (strokeWidth as number) / 2;
 
-  if (loading) {
+    if (loading) {
+      return (
+        <div className={cls} {...htmlAttributes} ref={ref}>
+          <svg viewBox={`${DIAMETER / 2} ${DIAMETER / 2} ${DIAMETER} ${DIAMETER}`}>
+            <circle cx={DIAMETER} cy={DIAMETER} r={r} fill="none" style={{ strokeWidth }} />
+          </svg>
+        </div>
+      );
+    }
+
+    const round = 2 * Math.PI * r;
+    const lineStyle = {
+      strokeDasharray: `${(round * (percent as number)) / 100} ${round}`,
+      strokeWidth,
+    };
+
     return (
-      <span className={cls} style={style}>
-        <svg viewBox={`${DIAMETER / 2} ${DIAMETER / 2} ${DIAMETER} ${DIAMETER}`}>
-          <circle cx={DIAMETER} cy={DIAMETER} r={r} fill="none" style={{ strokeWidth }} />
+      <div className={cls} {...htmlAttributes} ref={ref}>
+        <svg viewBox={`0 0 ${DIAMETER} ${DIAMETER}`}>
+          <circle
+            className={`${prefixCls}__path`}
+            cx={half}
+            cy={half}
+            r={r}
+            fill="none"
+            style={{ strokeWidth }}
+          />
+          <circle
+            className={`${prefixCls}__line`}
+            cx={half}
+            cy={half}
+            r={r}
+            fill="none"
+            style={lineStyle}
+          />
         </svg>
-      </span>
+      </div>
     );
-  }
+  },
+);
 
-  return (
-    <span className={cls} style={style}>
-      <svg viewBox={`0 0 ${DIAMETER} ${DIAMETER}`}>
-        <circle
-          className={`${prefixCls}__path`}
-          cx={half}
-          cy={half}
-          r={r}
-          fill="none"
-          style={{ strokeWidth }}
-        />
-        <circle
-          className={`${prefixCls}__line`}
-          cx={half}
-          cy={half}
-          r={r}
-          fill="none"
-          style={lineStyle}
-        />
-      </svg>
-    </span>
-  );
+Circular.displayName = 'Circular';
+
+type HTMLDivElementAttributeKeys = keyof HTMLAttributes<HTMLDivElement>;
+const Spinner = React.forwardRef(
+  (
+    {
+      className,
+      size,
+      ...htmlAttributes
+    }: Pick<ActivityIndicatorProps, 'className' | 'size' | HTMLDivElementAttributeKeys>,
+    ref: any,
+  ) => {
+    const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+    const prefixCls = `${globalPrefixCls}-activity-indicator`;
+
+    const cls = classnames(prefixCls, `${prefixCls}--spinner`, className, {
+      [`${prefixCls}--${size}`]: !!size,
+    });
+
+    const spinner: React.ReactElement[] = [];
+
+    for (let i = 0; i < 12; i++) {
+      spinner.push(<div key={i} />);
+    }
+
+    return (
+      <div className={cls} {...htmlAttributes} ref={ref}>
+        {spinner}
+      </div>
+    );
+  },
+);
+
+Spinner.displayName = 'Spinner';
+
+export type ActivityIndicatorProps = BaseActivityIndicatorProps & HTMLAttributes<HTMLDivElement>;
+
+const ActivityIndicator = React.forwardRef<unknown, ActivityIndicatorProps>((props, ref) => {
+  if (props.type !== 'spinner') {
+    const { type, ...rest } = props;
+    return <Circular {...rest} ref={ref} />;
+  }
+  const { strokeWidth, percent, loading, type, ...rest } = props;
+  return <Spinner {...rest} ref={ref} />;
+});
+
+ActivityIndicator.defaultProps = {
+  strokeWidth: 5,
+  percent: 20,
+  type: 'circular',
+  loading: true,
 };
 
-const Spinner = (props: ActivityIndicatorProps) => {
-  const { prefixCls, className, size, style } = props;
-  const cls = classnames(prefixCls, `${prefixCls}--spinner`, className, {
-    [`${prefixCls}--${size}`]: !!size,
-  });
-  const spinner: any[] = [];
+ActivityIndicator.displayName = 'ActivityIndicator';
 
-  for (let i = 0; i < 12; i++) {
-    spinner.push(<div key={i} />);
-  }
-
-  return (
-    <div className={cls} style={style}>
-      {spinner}
-    </div>
-  );
-};
-
-export default class ActivityIndicator extends PureComponent<ActivityIndicatorProps, any> {
-  static defaultProps: ActivityIndicatorProps = {
-    prefixCls: 'za-activity-indicator',
-    strokeWidth: 5,
-    percent: 20,
-    type: 'circular',
-    loading: true,
-  };
-
-  render() {
-    const { type } = this.props;
-    return type !== 'spinner' ? <Circular {...this.props} /> : <Spinner {...this.props} />;
-  }
-}
+export default ActivityIndicator;

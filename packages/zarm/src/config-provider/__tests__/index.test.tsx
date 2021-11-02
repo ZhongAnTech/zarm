@@ -143,6 +143,7 @@ describe('ConfigProvider', () => {
         locale: {},
         theme: 'light',
         primaryColor: '#00bc70',
+        safeIphoneX: false,
       });
     });
 

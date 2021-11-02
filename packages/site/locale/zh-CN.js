@@ -6,6 +6,7 @@ export default {
   'app.components.type.feedback': '操作反馈',
   'app.components.type.view': '数据展示',
   'app.components.type.navigation': '导航',
+  'app.components.type.hooks': '钩子',
   'app.components.type.other': '其他',
 
   'app.home.nav.search': '搜索组件',
@@ -26,6 +27,7 @@ export default {
   'app.home.index.scanning-code': '扫码体验',
   'app.home.components.simulator.affix': '设置悬浮',
   'app.home.components.simulator.unaffix': '取消悬浮',
+  'app.home.components.action.edit': '在 GitHub 上编辑此页',
   'app.home.resources': '设计资源',
   'app.home.resources.introduce':
     '这里提供 Zarm Design 相关设计资源和设计工具的下载，更多设计资源正在整理和完善中。',

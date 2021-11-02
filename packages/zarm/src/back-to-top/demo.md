@@ -4,11 +4,12 @@
 
 ```jsx
 import { useRef, useState } from 'react';
-import { Cell, BackToTop, Message, Button, Icon } from 'zarm';
+import { List, BackToTop, Message, Button } from 'zarm';
+import { WarningCircle } from '@zarm-design/icons';
 
 const Demo = () => {
   const list = [];
-  for (let i = 0; i < 100; i++) list.push(<Cell key={+i}>第 {i + 1} 行</Cell>);
+  for (let i = 0; i < 100; i++) list.push(<List.Item key={+i} title={`第 ${i + 1} 行`} />);
 
   const containerRef = useRef();
   const [useWindowScroll, setUseWindowScroll] = useState(true);
@@ -24,16 +25,16 @@ const Demo = () => {
 
   return (
     <>
-      <Message theme="warning" icon={<Icon type="warning-round" />}>
+      <Message theme="warning" icon={<WarningCircle />}>
         当前使用的是 `{useWindowScroll ? 'window' : 'div'}` 作为滚动容器。
         <Button theme="primary" size="xs" onClick={() => setUseWindowScroll(!useWindowScroll)}>
           点击切换
         </Button>
       </Message>
 
-      <div ref={containerRef} style={containerStyle}>
+      <List ref={containerRef} style={containerStyle}>
         {list}
-      </div>
+      </List>
 
       <BackToTop scrollContainer={scrollContainer} onClick={() => console.log('click back to top')}>
         <div

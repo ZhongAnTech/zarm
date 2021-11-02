@@ -1,8 +1,9 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import { Keyboard as KeyboardIcon, DeleteKey as DeleteKeyIcon } from '@zarm-design/icons';
-// import useLongPress from '../useLongPress';
+import useLongPress from '../useLongPress';
 import type { BaseKeyBoardProps } from './interface';
+import { ConfigContext } from '../n-config-provider';
 
 type KeyType = Exclude<BaseKeyBoardProps['type'], undefined>;
 
@@ -12,20 +13,22 @@ const KEYS: { [type in KeyType]: readonly string[] } = {
   idcard: ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'X', '0', 'close'],
 };
 
-// let longPressTimer: number | null;
-
 export interface KeyboardProps extends BaseKeyBoardProps {
-  prefixCls?: string;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 const Keyboard = React.forwardRef<unknown, KeyboardProps>((props, ref) => {
-  const { prefixCls, className, type, onKeyClick, locale } = props;
+  const { className, type, onKeyClick, ...restProps } = props;
+  const keyboardRef = (ref as any) || React.createRef<HTMLDivElement>();
 
-  const keyboardRef = (ref as any) || React.createRef<HTMLElement>();
+  const { locale: globalLocal, prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const locale = globalLocal?.Keyboard;
+  const prefixCls = `${globalPrefixCls}-keyboard`;
 
   const cls = classnames(prefixCls, className);
   const getKeys = KEYS[type!];
+  let longPressTimer: number | null;
 
   const onKeyPress = (e, key: string) => {
     e.stopPropagation();
@@ -39,16 +42,17 @@ const Keyboard = React.forwardRef<unknown, KeyboardProps>((props, ref) => {
     }
   };
 
-  // todo: 长按连续删除还有点问题
-  // const longPressEvent = useLongPress({},
-  //   (e) => {
-  //     longPressTimer = window.setInterval(() => {
-  //       onKeyPress(e, 'delete');
-  //     }, 200);
-  //   },
-  //   (e) => onKeyPress(e, 'delete'),
-  //   () => clearInterval(longPressTimer!),
-  // );
+  const longPressEvent = useLongPress({
+    // todo: 长按连续删除还有点问题，暂时关闭支持
+    // onLongPress: (e) => {
+    //   e.stopPropagation();
+    //   longPressTimer = window.setInterval(() => {
+    //     onKeyPress(e, 'delete');
+    //   }, 100);
+    // },
+    onPress: (e) => onKeyPress(e, 'delete'),
+    onClear: () => clearInterval(longPressTimer!),
+  });
 
   const renderKey = (text: string, index: number) => {
     const keyCls = classnames(`${prefixCls}__item`, {
@@ -63,14 +67,10 @@ const Keyboard = React.forwardRef<unknown, KeyboardProps>((props, ref) => {
   };
 
   return (
-    <div className={cls} ref={keyboardRef}>
+    <div className={cls} ref={keyboardRef} {...restProps}>
       <div className={`${prefixCls}__keys`}>{getKeys.map(renderKey)}</div>
       <div className={`${prefixCls}__handle`}>
-        <div
-          className={`${prefixCls}__item`}
-          onClick={(e) => onKeyPress(e, 'delete')}
-          // {...longPressEvent}
-        >
+        <div className={`${prefixCls}__item`} {...longPressEvent}>
           <DeleteKeyIcon size="lg" />
         </div>
         <div
@@ -87,7 +87,6 @@ const Keyboard = React.forwardRef<unknown, KeyboardProps>((props, ref) => {
 Keyboard.displayName = 'Keyboard';
 
 Keyboard.defaultProps = {
-  prefixCls: 'za-keyboard',
   type: 'number',
 };
 
