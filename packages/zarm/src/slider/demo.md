@@ -15,7 +15,7 @@ const Demo = () => {
         <Slider value={value} onChange={setValue} />
       </List.Item>
       <List.Item title="设置默认值">
-        <Slider defaultValue={20} />
+        <Slider defaultValue={100} />
       </List.Item>
       <List.Item title="设置上下限">
         <Slider min={-100} max={100} defaultValue={0} />

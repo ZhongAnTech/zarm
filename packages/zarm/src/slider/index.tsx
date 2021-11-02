@@ -36,22 +36,22 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
   } = props;
   const [tooltip, setTooltip] = useState(false);
   const [currentValue, setCurrentValue] = React.useState(getValue(props, 0));
-  const lineRef = React.createRef<HTMLDivElement>();
 
-  const getMaxOffset = useCallback(() => {
+  const prevValue = useRef(currentValue);
+
+  const lineRef = React.useRef<HTMLDivElement>(null);
+
+  const getMaxOffset = () => {
     const divRect = lineRef?.current?.getBoundingClientRect();
     return (vertical ? divRect?.height : divRect?.width) || 0;
-  }, [vertical, lineRef]);
+  };
 
-  const getOffsetByValue = useCallback(
-    (val: number): number => {
-      const maxOffset = getMaxOffset();
-      const range = max - min;
+  const getOffsetByValue = (val: number): number => {
+    const maxOffset = getMaxOffset();
+    const range = max - min;
 
-      return vertical ? maxOffset * ((max - val) / range) : maxOffset * ((val - min) / range);
-    },
-    [getMaxOffset, max, min, vertical],
-  );
+    return vertical ? maxOffset * ((max - val) / range) : maxOffset * ((val - min) / range);
+  };
 
   const getValueByOffset = (offset: number): number => {
     const maxOffset = getMaxOffset();
@@ -66,84 +66,69 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
 
   const offsetStart = useRef(0);
 
-  const val = getValue(props, 0);
   // offsetStart.current = getOffsetByValue(val);
   // console.log(offsetStart)
+  useEffect(() => {
+    const val = getValue(
+      {
+        defaultValue: props.defaultValue,
+        value: props.value,
+      },
+      0,
+    );
+    setCurrentValue(val);
+  }, [props.defaultValue, props.value]);
+
+  // const init = useCallback(() => {
+  //   offsetStart.current = getOffsetByValue(val);
+  // }, []);
+
   // useEffect(() => {
-  //   setCurrentValue(val);
-  // }, [props, val]);
-
-  const init = useCallback(() => {
-    offsetStart.current = getOffsetByValue(val);
-  }, []);
-
-  useEffect(() => {
-    Events.on(window, 'resize', init);
-    return () => {
-      Events.off(window, 'resize', init);
-    };
-  }, [init]);
-
-  useEffect(() => {
-    init();
-  }, []);
+  //   Events.on(window, 'resize', init);
+  //   return () => {
+  //     Events.off(window, 'resize', init);
+  //   };
+  // }, [init]);
 
   const bind = useDrag(
     (state) => {
-      //  console.log(offsetStart);
-      // state.event.stopPropagation();
-      const [offsetX, offsetY] = state.distance;
-      // console.error(state)
+      if (state.first) {
+        offsetStart.current = getOffsetByValue(currentValue);
+      }
+      const [offsetX, offsetY] = state.offset;
 
-      if (state.dragging) {
-        // if(state.first) {
-        //   console.log('fffff')
-        //   setTooltip(true);
-        // }
-        // Tooltip.updateAll()
-        let offset = vertical
-          ? offsetStart.current + (offsetY || 0)
-          : offsetStart.current + (offsetX || 0);
+      console.error(state.offset[0]);
 
-        // console.log(offset)
+      state.event.stopPropagation();
+      // if(state.first) {
+      //   console.log('fffff')
+      //   setTooltip(true);
+      // }
+      // Tooltip.updateAll()
+      let offset = vertical ? offsetY : offsetX;
+      offset = offsetStart.current + offset;
+      // console.log(offset)
 
-        const maxOffset = getMaxOffset();
-        offset = Math.min(maxOffset, Math.max(offset, 0));
+      const maxOffset = getMaxOffset();
+      console.log(lineRef.current);
+      offset = Math.min(maxOffset, Math.max(offset, 0));
 
-        // if (offset < 0) {
-        //   offset = 0;
-        //   const newValue = getValueByOffset(offset);
-        //   setCurrentValue(newValue);
-        //   // return false;
-        // }
+      // console.log(prevValue.current, '---------------------->')
+      // console.error(getValueByOffset(offset));
+      console.log(offset, 'offset');
+      setCurrentValue(getValueByOffset(offset));
 
-        // const maxOffset = getMaxOffset();
-        // if (offset > maxOffset) {
-        //   offset = maxOffset;
-        //   const newValue = getValueByOffset(offset);
-        //   setCurrentValue(newValue);
-        //   // return false;
-        // }
-        // console.log(getValueByOffset(offset), offset);
-
-        console.error(getValueByOffset(offset), offset);
-        setCurrentValue(getValueByOffset(offset));
-      } else {
-        /// console.log('fffffff')
-        // setTooltip(false);
-        const offsetVal = vertical ? offsetY : offsetX;
-        // // console.log(offsetVal, '------------------------------>')
-        offsetStart.current += offsetVal;
-
-        // if (typeof onChange === 'function') {
-        //   onChange(currentValue);
-        // }
+      if (state.last) {
+        if (typeof onChange === 'function') {
+          console.warn(currentValue);
+          onChange(currentValue);
+        }
       }
     },
     {
       enabled: !props.disabled,
       axis: vertical ? 'y' : 'x',
-      // preventDefault: !Events.supportsPassiveEvents,
+      preventDefault: !Events.supportsPassiveEvents,
     },
   );
 
@@ -206,7 +191,6 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
   const ratio = (currentValue - min) / (max - min);
   const offset = `${ratio * 100}%`;
 
-  // console.error(currentValue, '-------------------->')
   const handleStyle: React.CSSProperties = {
     [`${vertical ? 'bottom' : 'left'}`]: offset || 0,
   };
