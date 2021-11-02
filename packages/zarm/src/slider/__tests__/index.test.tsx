@@ -1,11 +1,14 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable dot-notation */
 import React from 'react';
+// import ReactDOM from 'react-dom'
+// import { act } from 'react-dom/test-utils';
 import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import type { TouchEvent } from 'react';
 import Slider from '../index';
 import ToolTip from '../../tooltip';
+
 // import Events from '../../utils/events';
 
 // import { NonFunctionPropertyNames } from '../../utils/utilityTypes';
@@ -309,6 +312,8 @@ describe('Slider', () => {
     const mOnChange = jest.fn();
     // mockLineRef(Slider, 'offsetWidth', 200);
     const resetMock = mockGetBoundingClientRect(200);
+    // const el = document.createElement("div");
+
     const wrapper = mount(<Slider value={20} vertical={false} onChange={mOnChange} />);
     // expect(wrapper.state('tooltip')).toBeFalsy();
     const touchStartEvent = ({ touches: [{ pageX: 100, pageY: 0 }] } as unknown) as TouchEvent;

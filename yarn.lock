@@ -3553,6 +3553,18 @@
   dependencies:
     eslint-visitor-keys "^1.1.0"
 
+"@use-gesture/core@10.1.1":
+  version "10.1.1"
+  resolved "https://registry.npmmirror.com/@use-gesture/core/download/@use-gesture/core-10.1.1.tgz?cache=0&sync_timestamp=1634550967479&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40use-gesture%2Fcore%2Fdownload%2F%40use-gesture%2Fcore-10.1.1.tgz#e1a6ef6f2566fc5f2eaeb8b5549ebe93d5cafb82"
+  integrity sha1-4abvbyVm/F8urri1VJ6+k9XK+4I=
+
+"@use-gesture/react@^10.1.1":
+  version "10.1.1"
+  resolved "https://registry.npmmirror.com/@use-gesture/react/download/@use-gesture/react-10.1.1.tgz?cache=0&sync_timestamp=1634550964899&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40use-gesture%2Freact%2Fdownload%2F%40use-gesture%2Freact-10.1.1.tgz#b0daa4baa81185f4732756568793e6a3e0efc913"
+  integrity sha1-sNqkuqgRhfRzJ1ZWh5Pmo+DvyRM=
+  dependencies:
+    "@use-gesture/core" "10.1.1"
+
 "@webassemblyjs/ast@1.11.0":
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/@webassemblyjs%2fast/-/ast-1.11.0.tgz#a5aa679efdc9e51707a4207139da57920555961f"

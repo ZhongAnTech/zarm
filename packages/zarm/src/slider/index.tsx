@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import classnames from 'classnames';
+import { useDrag } from '@use-gesture/react';
 import BaseSliderProps from './interface';
 import Events from '../utils/events';
 import Tooltip from '../tooltip';
 import ensureValuePrecision from './utils/ensureValuePrecision';
 import getValue from './utils/getValue';
 import { ConfigContext } from '../n-config-provider';
-import Drag, { DragEvent, DragState } from '../drag';
 import preventDefault from './utils/preventDefault';
 
 import { isObject } from '../utils/validate';
+import { start } from 'repl';
 
 export interface SliderProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'>,
@@ -64,14 +65,17 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
   };
 
   const offsetStart = useRef(0);
+
   const val = getValue(props, 0);
-  useEffect(() => {
-    setCurrentValue(val);
-  }, [props, val]);
+  // offsetStart.current = getOffsetByValue(val);
+  // console.log(offsetStart)
+  // useEffect(() => {
+  //   setCurrentValue(val);
+  // }, [props, val]);
 
   const init = useCallback(() => {
     offsetStart.current = getOffsetByValue(val);
-  }, [val, getOffsetByValue]);
+  }, []);
 
   useEffect(() => {
     Events.on(window, 'resize', init);
@@ -84,61 +88,64 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
     init();
   }, []);
 
-  const onDragStart = () => {
-    if (disabled) {
-      return false;
-    }
-    setTooltip(true);
-  };
+  const bind = useDrag(
+    (state) => {
+      //  console.log(offsetStart);
+      // state.event.stopPropagation();
+      const [offsetX, offsetY] = state.distance;
+      // console.error(state)
 
-  const onDragMove = (event: DragEvent, dragState: DragState) => {
-    if (disabled) {
-      return false;
-    }
+      if (state.dragging) {
+        // if(state.first) {
+        //   console.log('fffff')
+        //   setTooltip(true);
+        // }
+        // Tooltip.updateAll()
+        let offset = vertical
+          ? offsetStart.current + (offsetY || 0)
+          : offsetStart.current + (offsetX || 0);
 
-    Tooltip.updateAll();
-    event.stopPropagation();
+        // console.log(offset)
 
-    if (!Events.supportsPassiveEvents) {
-      event.preventDefault();
-    }
-    const { offsetX, offsetY } = dragState!;
-    let offset = vertical
-      ? offsetStart.current + (offsetY || 0)
-      : offsetStart.current + (offsetX || 0);
-    if (offset < 0) {
-      offset = 0;
-      const newValue = getValueByOffset(offset);
-      setCurrentValue(newValue);
-      return false;
-    }
+        const maxOffset = getMaxOffset();
+        offset = Math.min(maxOffset, Math.max(offset, 0));
 
-    const maxOffset = getMaxOffset();
-    if (offset > maxOffset) {
-      offset = maxOffset;
-      const newValue = getValueByOffset(offset);
-      setCurrentValue(newValue);
-      return false;
-    }
-    setCurrentValue(getValueByOffset(offset));
-    return true;
-  };
+        // if (offset < 0) {
+        //   offset = 0;
+        //   const newValue = getValueByOffset(offset);
+        //   setCurrentValue(newValue);
+        //   // return false;
+        // }
 
-  const onDragEnd = (_event: DragEvent, dragState: DragState) => {
-    const { offsetX, offsetY } = dragState;
+        // const maxOffset = getMaxOffset();
+        // if (offset > maxOffset) {
+        //   offset = maxOffset;
+        //   const newValue = getValueByOffset(offset);
+        //   setCurrentValue(newValue);
+        //   // return false;
+        // }
+        // console.log(getValueByOffset(offset), offset);
 
-    setTooltip(false);
+        console.error(getValueByOffset(offset), offset);
+        setCurrentValue(getValueByOffset(offset));
+      } else {
+        /// console.log('fffffff')
+        // setTooltip(false);
+        const offsetVal = vertical ? offsetY : offsetX;
+        // // console.log(offsetVal, '------------------------------>')
+        offsetStart.current += offsetVal;
 
-    const offsetVal = (vertical ? offsetY : offsetX) || 0;
-    if (Number.isNaN(offsetVal)) {
-      return false;
-    }
-    offsetStart.current += offsetVal;
-
-    if (typeof onChange === 'function') {
-      onChange(currentValue);
-    }
-  };
+        // if (typeof onChange === 'function') {
+        //   onChange(currentValue);
+        // }
+      }
+    },
+    {
+      enabled: !props.disabled,
+      axis: vertical ? 'y' : 'x',
+      // preventDefault: !Events.supportsPassiveEvents,
+    },
+  );
 
   const renderMark = () => {
     const isEmptyMarks = !isObject(marks) || JSON.stringify(marks) === '{}';
@@ -199,6 +206,7 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
   const ratio = (currentValue - min) / (max - min);
   const offset = `${ratio * 100}%`;
 
+  // console.error(currentValue, '-------------------->')
   const handleStyle: React.CSSProperties = {
     [`${vertical ? 'bottom' : 'left'}`]: offset || 0,
   };
@@ -207,25 +215,25 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
     [`${vertical ? 'height' : 'width'}`]: offset || 0,
   };
 
-  const containerRef = useRef<HTMLDivElement | null>();
-  const handleRef = (divRef: HTMLDivElement) => {
-    container.current = divRef;
-    const nextContainer = divRef;
-    const prevContainer = containerRef;
+  // const containerRef = useRef<HTMLDivElement | null>();
+  // const handleRef = (divRef: HTMLDivElement) => {
+  //   container.current = divRef;
+  //   const nextContainer = divRef;
+  //   const prevContainer = containerRef;
 
-    if (prevContainer.current !== nextContainer) {
-      if (prevContainer.current) {
-        prevContainer?.current?.removeEventListener('touchstart', preventDefault);
-      }
-      if (nextContainer) {
-        nextContainer.addEventListener('touchstart', preventDefault, { passive: false });
-      }
-    }
-    containerRef.current = nextContainer;
-  };
+  //   if (prevContainer.current !== nextContainer) {
+  //     if (prevContainer.current) {
+  //       prevContainer?.current?.removeEventListener('touchstart', preventDefault);
+  //     }
+  //     if (nextContainer) {
+  //       nextContainer.addEventListener('touchstart', preventDefault, { passive: false });
+  //     }
+  //   }
+  //   containerRef.current = nextContainer;
+  // };
 
   return (
-    <div className={cls} ref={handleRef} style={style}>
+    <div className={cls} ref={container} style={style}>
       <div className={`${prefixCls}__content`}>
         <div className={`${prefixCls}__line`} ref={lineRef}>
           <div className={`${prefixCls}__line__bg`} style={lineBg} />
@@ -233,21 +241,22 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
           {renderMark()}
         </div>
 
-        <Drag onDragStart={onDragStart} onDragMove={onDragMove} onDragEnd={onDragEnd}>
-          <div
-            className={`${prefixCls}__handle`}
-            role="slider"
-            aria-valuemin={min}
-            aria-valuemax={max}
-            aria-valuenow={value}
-            aria-orientation={vertical ? 'vertical' : 'horizontal'}
-            style={handleStyle}
-          >
-            <Tooltip trigger="manual" arrowPointAtCenter visible={tooltip} content={currentValue}>
+        {/* <Drag onDragStart={onDragStart} onDragMove={onDragMove} onDragEnd={onDragEnd}> */}
+        <div
+          className={`${prefixCls}__handle`}
+          role="slider"
+          aria-valuemin={min}
+          aria-valuemax={max}
+          aria-valuenow={value}
+          aria-orientation={vertical ? 'vertical' : 'horizontal'}
+          style={handleStyle}
+          {...bind()}
+        >
+          {/* <Tooltip trigger="manual" arrowPointAtCenter visible={tooltip} content={currentValue}>
               <div className={`${prefixCls}__handle__shadow`} />
-            </Tooltip>
-          </div>
-        </Drag>
+            </Tooltip> */}
+        </div>
+        {/* </Drag> */}
       </div>
     </div>
   );
