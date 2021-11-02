@@ -2,8 +2,8 @@ import React from 'react';
 import classnames from 'classnames';
 import { ConfigContext } from '../n-config-provider';
 import Popper from '../popper';
-import BaseTooltipProps from './interface';
-import { PopperPlacement, PopperTrigger } from '../popper/PropsType';
+import type { BaseTooltipProps } from './interface';
+import type { PopperPlacement, PopperTrigger } from '../popper/PropsType';
 
 export type TooltipProps = BaseTooltipProps & React.InputHTMLAttributes<HTMLInputElement>;
 

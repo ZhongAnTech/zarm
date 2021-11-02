@@ -1,7 +1,7 @@
 import React from 'react';
-import { PopperPlacement, PopperTrigger } from '../popper/PropsType';
+import type { PopperPlacement, PopperTrigger } from '../popper/PropsType';
 
-export default interface BaseTooltipProps {
+export interface BaseTooltipProps {
   visible?: boolean;
   hasArrow?: boolean;
   arrowPointAtCenter?: boolean;
