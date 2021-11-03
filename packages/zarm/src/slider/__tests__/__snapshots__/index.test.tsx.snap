@@ -40,7 +40,6 @@ exports[`Slider snapshot defaultValue 1`] = `
         direction="top"
         hasArrow={true}
         onVisibleChange={[Function]}
-        prefixCls="za-tooltip"
         trigger="manual"
         visible={false}
       >
@@ -90,7 +89,6 @@ exports[`Slider snapshot disabled 1`] = `
         direction="top"
         hasArrow={true}
         onVisibleChange={[Function]}
-        prefixCls="za-tooltip"
         trigger="manual"
         visible={false}
       >
@@ -179,7 +177,6 @@ exports[`Slider snapshot marks 1`] = `
         direction="top"
         hasArrow={true}
         onVisibleChange={[Function]}
-        prefixCls="za-tooltip"
         trigger="manual"
         visible={false}
       >
@@ -232,7 +229,6 @@ exports[`Slider snapshot marks error 1`] = `
         direction="top"
         hasArrow={true}
         onVisibleChange={[Function]}
-        prefixCls="za-tooltip"
         trigger="manual"
         visible={false}
       >
@@ -285,7 +281,6 @@ exports[`Slider snapshot max 1`] = `
         direction="top"
         hasArrow={true}
         onVisibleChange={[Function]}
-        prefixCls="za-tooltip"
         trigger="manual"
         visible={false}
       >
@@ -338,7 +333,6 @@ exports[`Slider snapshot min 1`] = `
         direction="top"
         hasArrow={true}
         onVisibleChange={[Function]}
-        prefixCls="za-tooltip"
         trigger="manual"
         visible={false}
       >
@@ -391,7 +385,6 @@ exports[`Slider snapshot shallows correctly 1`] = `
         direction="top"
         hasArrow={true}
         onVisibleChange={[Function]}
-        prefixCls="za-tooltip"
         trigger="manual"
         visible={false}
       >
@@ -528,7 +521,6 @@ exports[`Slider snapshot showMark 1`] = `
         direction="top"
         hasArrow={true}
         onVisibleChange={[Function]}
-        prefixCls="za-tooltip"
         trigger="manual"
         visible={false}
       >
@@ -581,7 +573,6 @@ exports[`Slider snapshot step 1`] = `
         direction="top"
         hasArrow={true}
         onVisibleChange={[Function]}
-        prefixCls="za-tooltip"
         trigger="manual"
         visible={false}
       >
@@ -635,7 +626,6 @@ exports[`Slider snapshot value 1`] = `
         direction="top"
         hasArrow={true}
         onVisibleChange={[Function]}
-        prefixCls="za-tooltip"
         trigger="manual"
         visible={false}
       >
@@ -688,7 +678,6 @@ exports[`Slider snapshot vertical 1`] = `
         direction="top"
         hasArrow={true}
         onVisibleChange={[Function]}
-        prefixCls="za-tooltip"
         trigger="manual"
         visible={false}
       >
