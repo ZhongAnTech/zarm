@@ -63,9 +63,9 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性            | 类型                                               | 默认值 | 说明                   |
-| :-------------- | :------------------------------------------------- | :----- | :--------------------- |
-| speed           | number                                             | 100    | 每 10 毫秒滑动的距离   |
-| visibleDistance | number                                             | 400    | 离滚动条顶部的可视距离 |
-| scrollContainer | HTMLElement \| (() => HTMLElement)                 | window | 设置滚动容器           |
-| onClick         | (event?: MouseEvent&lt;HTMLDivElement&gt;) => void | -      | 点击后触发的回调函数   |
+| 属性            | 类型                                          | 默认值 | 说明                   |
+| :-------------- | :-------------------------------------------- | :----- | :--------------------- |
+| speed           | number                                        | 100    | 每 10 毫秒滑动的距离   |
+| visibleDistance | number                                        | 400    | 离滚动条顶部的可视距离 |
+| scrollContainer | HTMLElement \| (() => HTMLElement)            | window | 设置滚动容器           |
+| onClick         | (event: MouseEvent\<HTMLDivElement\>) => void | -      | 点击后触发的回调函数   |

@@ -166,7 +166,7 @@ const Demo = () => {
             allowHalf
             value={value}
             onChange={(value) => {
-              setValue(value)
+              setValue(value);
               toast.show(value);
             }}
           />

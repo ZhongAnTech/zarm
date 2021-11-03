@@ -263,18 +263,18 @@ ReactDOM.render(
 
 ## API
 
-| 属性         | 类型                                                                       | 默认值 | 说明                                                                     |
-| :----------- | :------------------------------------------------------------------------- | :----- | :----------------------------------------------------------------------- |
-| label        | ReactNode                                                                  | -      | 标签栏内容                                                               |
-| type         | string                                                                     | 'text' | 类型，同原生 `input` 组件                                                |
-| value        | number \| string                                                           | -      | 值                                                                       |
-| defaultValue | number \| string                                                           | -      | 初始值                                                                   |
-| disabled     | boolean                                                                    | false  | 是否禁用                                                                 |
-| readOnly     | boolean                                                                    | false  | 是否只读                                                                 |
-| rows         | number                                                                     | -      | 多行文本时的显示行数。type="text" 时有效。                               |
-| autoHeight   | boolean                                                                    | false  | 是否高度自适应。多行文本（type="text" 且包含 rows 属性）时有效。         |
-| autoFocus    | boolean                                                                    | false  | 是否自动获取焦点                                                         |
-| maxLength    | number                                                                     | -      | 输入字数上限                                                             |
-| showLength   | boolean                                                                    | false  | 是否显示输入字数。多行文本（type="text" 且包含 rows 属性）时有效。       |
-| clearable    | boolean                                                                    | false  | 是否显示清除按钮。必须为受控组件（属性包含 value、onChange）时方可生效。 |
-| onChange     | (e?: React.ChangeEvent\<HTMLInputElement \| HTMLTextAreaElement\>) => void | -      | 值变化时触发的回调函数                                                   |
+| 属性         | 类型                                                                          | 默认值 | 说明                                                                     |
+| :----------- | :---------------------------------------------------------------------------- | :----- | :----------------------------------------------------------------------- |
+| label        | ReactNode                                                                     | -      | 标签栏内容                                                               |
+| type         | string                                                                        | 'text' | 类型，同原生 `input` 组件                                                |
+| value        | number \| string                                                              | -      | 值                                                                       |
+| defaultValue | number \| string                                                              | -      | 初始值                                                                   |
+| disabled     | boolean                                                                       | false  | 是否禁用                                                                 |
+| readOnly     | boolean                                                                       | false  | 是否只读                                                                 |
+| rows         | number                                                                        | -      | 多行文本时的显示行数。type="text" 时有效。                               |
+| autoHeight   | boolean                                                                       | false  | 是否高度自适应。多行文本（type="text" 且包含 rows 属性）时有效。         |
+| autoFocus    | boolean                                                                       | false  | 是否自动获取焦点                                                         |
+| maxLength    | number                                                                        | -      | 输入字数上限                                                             |
+| showLength   | boolean                                                                       | false  | 是否显示输入字数。多行文本（type="text" 且包含 rows 属性）时有效。       |
+| clearable    | boolean                                                                       | false  | 是否显示清除按钮。必须为受控组件（属性包含 value、onChange）时方可生效。 |
+| onChange     | (event: React.ChangeEvent\<HTMLInputElement \| HTMLTextAreaElement\>) => void | -      | 值变化时触发的回调函数                                                   |
