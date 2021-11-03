@@ -70,6 +70,8 @@ export const themes = {
   '--za-action-sheet-actions-background': '#222222',
   '--za-action-sheet-cancel-background': '#2c2c2e',
   '--za-action-sheet-item-active-background': '#404040',
+  '--za-rate-color': 'var(--theme-danger-dark)',
+  '--za-rate-unchecked-color': '#393939',
 } as const;
 
 const setTheme = (value: Theme = 'light') => {

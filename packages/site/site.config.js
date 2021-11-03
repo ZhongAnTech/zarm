@@ -139,6 +139,13 @@ module.exports = {
         style: false,
       },
       {
+        key: 'rate',
+        name: '评分',
+        module: () => import('zarm/rate/demo.md'),
+        source: 'zarm/rate/demo.md',
+        style: false,
+      },
+      {
         key: 'search-bar',
         name: '搜索栏',
         module: () => import('zarm/search-bar/demo.md'),
