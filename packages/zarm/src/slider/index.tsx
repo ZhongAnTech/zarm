@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import classnames from 'classnames';
 import { useDrag } from '@use-gesture/react';
 import BaseSliderProps from './interface';
@@ -102,7 +102,7 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
     },
   );
 
-  const renderMark = useMemo(() => {
+  const renderMark = () => {
     const isEmptyMarks = !isObject(marks) || JSON.stringify(marks) === '{}';
 
     if (showMark && isEmptyMarks) {
@@ -118,7 +118,7 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
 
     const lineDot = markKeys.map((item) => {
       const dotStyle = classnames(`${prefixCls}__line__dot`, {
-        [`${prefixCls}__line__dot--active`]: Number(value) >= +item,
+        [`${prefixCls}__line__dot--active`]: currentValue >= +item,
       });
 
       const markStyle: React.CSSProperties = {
@@ -150,7 +150,7 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
         <div className={`${prefixCls}__marks`}>{marksElement}</div>
       </>
     );
-  }, [marks, showMark, prefixCls, value, vertical]);
+  };
 
   const cls = classnames(prefixCls, className, {
     [`${prefixCls}--disabled`]: disabled,
@@ -174,8 +174,7 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
       <div className={`${prefixCls}__content`}>
         <div className={`${prefixCls}__line`} ref={lineRef}>
           <div className={`${prefixCls}__line__bg`} style={lineBg} />
-
-          {renderMark}
+          {renderMark()}
         </div>
         <div
           className={`${prefixCls}__handle`}
