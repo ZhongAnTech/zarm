@@ -40,6 +40,7 @@ exports[`ActionSheet renders correctly 1`] = `
       <Popup
         destroy={true}
         localeCode="zh-CN"
+        lockScroll={true}
         onMaskClick={[MockFunction]}
         safeIphoneX={false}
         visible={true}

@@ -2,7 +2,8 @@ import React from 'react';
 import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { mocked } from 'ts-jest/utils';
-import FilePicker, { IFileDetail } from '../index';
+import FilePicker from '../index';
+import type { FileObject } from '../interface';
 import { mockCreateObjectURL, mockResetCreateObjectURL } from '../../../tests/utils';
 import handleFileInfo from '../utils/handleFileInfo';
 
@@ -54,7 +55,7 @@ describe('file picker event', () => {
       multiple: true,
       onBeforeSelect: false as any,
     };
-    mHandleFileInfo.mockImplementation((_, callback: (data: IFileDetail) => void) => {
+    mHandleFileInfo.mockImplementation((_, callback: (data: FileObject) => void) => {
       callback(mFileDetail);
     });
     const wrapper = mount(<FilePicker {..._props} />);
@@ -71,8 +72,8 @@ describe('file picker event', () => {
   });
 
   it('should handle change event if files is an array of File instance', () => {
-    let getFileInfo: (data: IFileDetail) => void;
-    mHandleFileInfo.mockImplementation((_, callback: (data: IFileDetail) => void) => {
+    let getFileInfo: (data: FileObject) => void;
+    mHandleFileInfo.mockImplementation((_, callback: (data: FileObject) => void) => {
       getFileInfo = callback;
       callback(mFileDetail);
     });

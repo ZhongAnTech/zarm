@@ -16,15 +16,12 @@ import CameraRollPicker from 'react-native-camera-roll-picker';
 
 import NavBar from '../nav-bar/index.native';
 
-import PropsType from './PropsType';
+import type { BaseFilePickerProps } from './interface';
 import filePickerStyle from './style/index.native';
 
-export interface FilePickerProps extends PropsType {
+export interface FilePickerProps extends BaseFilePickerProps {
   styles?: typeof filePickerStyle;
-  onBeforeSelect: () => boolean;
-  onChange: (file: Object | Array<Object>) => void;
-  multiple: boolean;
-  accept: string;
+  maximum?: number;
 }
 
 const filePickerStyles = StyleSheet.create<any>(filePickerStyle);
@@ -47,10 +44,7 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
     disabled: false,
     multiple: false,
     styles: filePickerStyles,
-    onBeforeSelect() {
-      return true;
-    },
-    onChange() {},
+    onBeforeSelect: () => true,
   };
 
   state = {
@@ -73,7 +67,7 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
   handleShowCameraRoll = () => {
     const { disabled, onBeforeSelect } = this.props;
 
-    if (onBeforeSelect() === false || disabled) {
+    if (onBeforeSelect!() === false || disabled) {
       return;
     }
 
@@ -101,7 +95,7 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
     } else {
       const data = this.getFileInfo(images[0]);
 
-      onChange(data);
+      typeof onChange === 'function' && onChange(data);
 
       this.handleShowCameraRoll();
     }
@@ -114,7 +108,7 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
   handleConfirm = () => {
     const { onChange } = this.props;
 
-    onChange(this.state.imageList);
+    typeof onChange === 'function' && onChange(this.state.imageList);
     this.handleShowCameraRoll();
   };
 
@@ -130,7 +124,7 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
 
     const { isShowRoll, selectedImages } = this.state;
 
-    const assetType = accept.indexOf('image') > -1 ? 'Photos' : accept;
+    const assetType = accept!.indexOf('image') > -1 ? 'Photos' : accept;
 
     const content = disabled ? (
       <View>{children}</View>
