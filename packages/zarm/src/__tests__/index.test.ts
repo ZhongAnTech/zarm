@@ -301,6 +301,7 @@ describe('index', () => {
           },
           "render": [Function],
         },
+        "Rate": [Function],
         "Scroller": [Function],
         "SearchBar": Object {
           "$$typeof": Symbol(react.forward_ref),

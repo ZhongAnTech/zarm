@@ -131,11 +131,11 @@ ReactDOM.render(
 
 ## API
 
-| 属性           | 类型                                | 默认值     | 说明                                                                        |
-| :------------- | :---------------------------------- | :--------- | :-------------------------------------------------------------------------- |
-| accept         | string                              | -          | 允许上传的附件格式                                                          |
-| capture        | string                              | -          | 唤起的原生应用，可选值：照相机`camera`, 摄像机`camcorder`, 录音`microphone` |
-| multiple       | boolean                             | false      | 是否多选                                                                    |
-| disabled       | boolean                             | false      | 是否禁用                                                                    |
-| onBeforeSelect | () => boolean                       | () => true | 选择前触发的事件                                                            |
-| onChange       | (file?: object \| object[]) => void | -          | 值变化时触发的回调函数                                                      |
+| 属性           | 类型                               | 默认值     | 说明                                                                        |
+| :------------- | :--------------------------------- | :--------- | :-------------------------------------------------------------------------- |
+| accept         | string                             | -          | 允许上传的附件格式                                                          |
+| capture        | string                             | -          | 唤起的原生应用，可选值：照相机`camera`, 摄像机`camcorder`, 录音`microphone` |
+| multiple       | boolean                            | false      | 是否多选                                                                    |
+| disabled       | boolean                            | false      | 是否禁用                                                                    |
+| onBeforeSelect | () => boolean                      | () => true | 选择前触发的事件                                                            |
+| onChange       | (file: object \| object[]) => void | -          | 值变化时触发的回调函数                                                      |

@@ -112,6 +112,9 @@ export { default as SwipeAction } from './swipe-action';
 export type { SwitchProps } from './switch';
 export { default as Switch } from './switch';
 
+export type { RateProps } from './rate';
+export { default as Rate } from './rate';
+
 export type { TabsProps, TabPanelProps } from './tabs';
 export { default as Tabs } from './tabs';
 

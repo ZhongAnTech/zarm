@@ -15,6 +15,8 @@ export { default as Minus } from './Minus';
 export { default as PlusCircle } from './PlusCircle';
 export { default as Plus } from './Plus';
 export { default as Search } from './Search';
+export { default as StarFill } from './StarFill';
+export { default as Star } from './Star';
 export { default as SuccessCircle } from './SuccessCircle';
 export { default as Success } from './Success';
 export { default as Volume } from './Volume';
