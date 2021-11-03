@@ -19,39 +19,36 @@ exports[`Slider snapshot defaultValue 1`] = `
         }
       />
     </div>
-    <Drag
-      onDragEnd={[Function]}
-      onDragMove={[Function]}
-      onDragStart={[Function]}
-    >
-      <div
-        aria-orientation="horizontal"
-        aria-valuemax={100}
-        aria-valuemin={0}
-        className="za-slider__handle"
-        role="slider"
-        style={
-          Object {
-            "left": "10%",
-          }
+    <div
+      aria-orientation="horizontal"
+      aria-valuemax={100}
+      aria-valuemin={0}
+      className="za-slider__handle"
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      role="slider"
+      style={
+        Object {
+          "left": "10%",
         }
+      }
+    >
+      <Tooltip
+        arrowPointAtCenter={true}
+        content={10}
+        direction="top"
+        hasArrow={true}
+        onVisibleChange={[Function]}
+        prefixCls="za-tooltip"
+        trigger="manual"
+        visible={false}
       >
-        <Tooltip
-          arrowPointAtCenter={true}
-          content={10}
-          direction="top"
-          hasArrow={true}
-          onVisibleChange={[Function]}
-          prefixCls="za-tooltip"
-          trigger="manual"
-          visible={false}
-        >
-          <div
-            className="za-slider__handle__shadow"
-          />
-        </Tooltip>
-      </div>
-    </Drag>
+        <div
+          className="za-slider__handle__shadow"
+        />
+      </Tooltip>
+    </div>
   </div>
 </div>
 `;
@@ -75,39 +72,33 @@ exports[`Slider snapshot disabled 1`] = `
         }
       />
     </div>
-    <Drag
-      onDragEnd={[Function]}
-      onDragMove={[Function]}
-      onDragStart={[Function]}
-    >
-      <div
-        aria-orientation="horizontal"
-        aria-valuemax={100}
-        aria-valuemin={0}
-        className="za-slider__handle"
-        role="slider"
-        style={
-          Object {
-            "left": "0%",
-          }
+    <div
+      aria-orientation="horizontal"
+      aria-valuemax={100}
+      aria-valuemin={0}
+      className="za-slider__handle"
+      role="slider"
+      style={
+        Object {
+          "left": "0%",
         }
+      }
+    >
+      <Tooltip
+        arrowPointAtCenter={true}
+        content={0}
+        direction="top"
+        hasArrow={true}
+        onVisibleChange={[Function]}
+        prefixCls="za-tooltip"
+        trigger="manual"
+        visible={false}
       >
-        <Tooltip
-          arrowPointAtCenter={true}
-          content={0}
-          direction="top"
-          hasArrow={true}
-          onVisibleChange={[Function]}
-          prefixCls="za-tooltip"
-          trigger="manual"
-          visible={false}
-        >
-          <div
-            className="za-slider__handle__shadow"
-          />
-        </Tooltip>
-      </div>
-    </Drag>
+        <div
+          className="za-slider__handle__shadow"
+        />
+      </Tooltip>
+    </div>
   </div>
 </div>
 `;
@@ -167,39 +158,36 @@ exports[`Slider snapshot marks 1`] = `
         }
       />
     </div>
-    <Drag
-      onDragEnd={[Function]}
-      onDragMove={[Function]}
-      onDragStart={[Function]}
-    >
-      <div
-        aria-orientation="horizontal"
-        aria-valuemax={100}
-        aria-valuemin={0}
-        className="za-slider__handle"
-        role="slider"
-        style={
-          Object {
-            "left": "0%",
-          }
+    <div
+      aria-orientation="horizontal"
+      aria-valuemax={100}
+      aria-valuemin={0}
+      className="za-slider__handle"
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      role="slider"
+      style={
+        Object {
+          "left": "0%",
         }
+      }
+    >
+      <Tooltip
+        arrowPointAtCenter={true}
+        content={0}
+        direction="top"
+        hasArrow={true}
+        onVisibleChange={[Function]}
+        prefixCls="za-tooltip"
+        trigger="manual"
+        visible={false}
       >
-        <Tooltip
-          arrowPointAtCenter={true}
-          content={0}
-          direction="top"
-          hasArrow={true}
-          onVisibleChange={[Function]}
-          prefixCls="za-tooltip"
-          trigger="manual"
-          visible={false}
-        >
-          <div
-            className="za-slider__handle__shadow"
-          />
-        </Tooltip>
-      </div>
-    </Drag>
+        <div
+          className="za-slider__handle__shadow"
+        />
+      </Tooltip>
+    </div>
   </div>
 </div>
 `;
@@ -223,39 +211,36 @@ exports[`Slider snapshot marks error 1`] = `
         }
       />
     </div>
-    <Drag
-      onDragEnd={[Function]}
-      onDragMove={[Function]}
-      onDragStart={[Function]}
-    >
-      <div
-        aria-orientation="horizontal"
-        aria-valuemax={100}
-        aria-valuemin={0}
-        className="za-slider__handle"
-        role="slider"
-        style={
-          Object {
-            "left": "0%",
-          }
+    <div
+      aria-orientation="horizontal"
+      aria-valuemax={100}
+      aria-valuemin={0}
+      className="za-slider__handle"
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      role="slider"
+      style={
+        Object {
+          "left": "0%",
         }
+      }
+    >
+      <Tooltip
+        arrowPointAtCenter={true}
+        content={0}
+        direction="top"
+        hasArrow={true}
+        onVisibleChange={[Function]}
+        prefixCls="za-tooltip"
+        trigger="manual"
+        visible={false}
       >
-        <Tooltip
-          arrowPointAtCenter={true}
-          content={0}
-          direction="top"
-          hasArrow={true}
-          onVisibleChange={[Function]}
-          prefixCls="za-tooltip"
-          trigger="manual"
-          visible={false}
-        >
-          <div
-            className="za-slider__handle__shadow"
-          />
-        </Tooltip>
-      </div>
-    </Drag>
+        <div
+          className="za-slider__handle__shadow"
+        />
+      </Tooltip>
+    </div>
   </div>
 </div>
 `;
@@ -279,39 +264,36 @@ exports[`Slider snapshot max 1`] = `
         }
       />
     </div>
-    <Drag
-      onDragEnd={[Function]}
-      onDragMove={[Function]}
-      onDragStart={[Function]}
-    >
-      <div
-        aria-orientation="horizontal"
-        aria-valuemax={100}
-        aria-valuemin={0}
-        className="za-slider__handle"
-        role="slider"
-        style={
-          Object {
-            "left": "0%",
-          }
+    <div
+      aria-orientation="horizontal"
+      aria-valuemax={100}
+      aria-valuemin={0}
+      className="za-slider__handle"
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      role="slider"
+      style={
+        Object {
+          "left": "0%",
         }
+      }
+    >
+      <Tooltip
+        arrowPointAtCenter={true}
+        content={0}
+        direction="top"
+        hasArrow={true}
+        onVisibleChange={[Function]}
+        prefixCls="za-tooltip"
+        trigger="manual"
+        visible={false}
       >
-        <Tooltip
-          arrowPointAtCenter={true}
-          content={0}
-          direction="top"
-          hasArrow={true}
-          onVisibleChange={[Function]}
-          prefixCls="za-tooltip"
-          trigger="manual"
-          visible={false}
-        >
-          <div
-            className="za-slider__handle__shadow"
-          />
-        </Tooltip>
-      </div>
-    </Drag>
+        <div
+          className="za-slider__handle__shadow"
+        />
+      </Tooltip>
+    </div>
   </div>
 </div>
 `;
@@ -335,39 +317,36 @@ exports[`Slider snapshot min 1`] = `
         }
       />
     </div>
-    <Drag
-      onDragEnd={[Function]}
-      onDragMove={[Function]}
-      onDragStart={[Function]}
-    >
-      <div
-        aria-orientation="horizontal"
-        aria-valuemax={100}
-        aria-valuemin={0}
-        className="za-slider__handle"
-        role="slider"
-        style={
-          Object {
-            "left": "0%",
-          }
+    <div
+      aria-orientation="horizontal"
+      aria-valuemax={100}
+      aria-valuemin={0}
+      className="za-slider__handle"
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      role="slider"
+      style={
+        Object {
+          "left": "0%",
         }
+      }
+    >
+      <Tooltip
+        arrowPointAtCenter={true}
+        content={0}
+        direction="top"
+        hasArrow={true}
+        onVisibleChange={[Function]}
+        prefixCls="za-tooltip"
+        trigger="manual"
+        visible={false}
       >
-        <Tooltip
-          arrowPointAtCenter={true}
-          content={0}
-          direction="top"
-          hasArrow={true}
-          onVisibleChange={[Function]}
-          prefixCls="za-tooltip"
-          trigger="manual"
-          visible={false}
-        >
-          <div
-            className="za-slider__handle__shadow"
-          />
-        </Tooltip>
-      </div>
-    </Drag>
+        <div
+          className="za-slider__handle__shadow"
+        />
+      </Tooltip>
+    </div>
   </div>
 </div>
 `;
@@ -391,39 +370,36 @@ exports[`Slider snapshot shallows correctly 1`] = `
         }
       />
     </div>
-    <Drag
-      onDragEnd={[Function]}
-      onDragMove={[Function]}
-      onDragStart={[Function]}
-    >
-      <div
-        aria-orientation="horizontal"
-        aria-valuemax={100}
-        aria-valuemin={0}
-        className="za-slider__handle"
-        role="slider"
-        style={
-          Object {
-            "left": "0%",
-          }
+    <div
+      aria-orientation="horizontal"
+      aria-valuemax={100}
+      aria-valuemin={0}
+      className="za-slider__handle"
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      role="slider"
+      style={
+        Object {
+          "left": "0%",
         }
+      }
+    >
+      <Tooltip
+        arrowPointAtCenter={true}
+        content={0}
+        direction="top"
+        hasArrow={true}
+        onVisibleChange={[Function]}
+        prefixCls="za-tooltip"
+        trigger="manual"
+        visible={false}
       >
-        <Tooltip
-          arrowPointAtCenter={true}
-          content={0}
-          direction="top"
-          hasArrow={true}
-          onVisibleChange={[Function]}
-          prefixCls="za-tooltip"
-          trigger="manual"
-          visible={false}
-        >
-          <div
-            className="za-slider__handle__shadow"
-          />
-        </Tooltip>
-      </div>
-    </Drag>
+        <div
+          className="za-slider__handle__shadow"
+        />
+      </Tooltip>
+    </div>
   </div>
 </div>
 `;
@@ -531,39 +507,36 @@ exports[`Slider snapshot showMark 1`] = `
         </span>
       </div>
     </div>
-    <Drag
-      onDragEnd={[Function]}
-      onDragMove={[Function]}
-      onDragStart={[Function]}
-    >
-      <div
-        aria-orientation="horizontal"
-        aria-valuemax={100}
-        aria-valuemin={0}
-        className="za-slider__handle"
-        role="slider"
-        style={
-          Object {
-            "left": "0%",
-          }
+    <div
+      aria-orientation="horizontal"
+      aria-valuemax={100}
+      aria-valuemin={0}
+      className="za-slider__handle"
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      role="slider"
+      style={
+        Object {
+          "left": "0%",
         }
+      }
+    >
+      <Tooltip
+        arrowPointAtCenter={true}
+        content={0}
+        direction="top"
+        hasArrow={true}
+        onVisibleChange={[Function]}
+        prefixCls="za-tooltip"
+        trigger="manual"
+        visible={false}
       >
-        <Tooltip
-          arrowPointAtCenter={true}
-          content={0}
-          direction="top"
-          hasArrow={true}
-          onVisibleChange={[Function]}
-          prefixCls="za-tooltip"
-          trigger="manual"
-          visible={false}
-        >
-          <div
-            className="za-slider__handle__shadow"
-          />
-        </Tooltip>
-      </div>
-    </Drag>
+        <div
+          className="za-slider__handle__shadow"
+        />
+      </Tooltip>
+    </div>
   </div>
 </div>
 `;
@@ -587,39 +560,36 @@ exports[`Slider snapshot step 1`] = `
         }
       />
     </div>
-    <Drag
-      onDragEnd={[Function]}
-      onDragMove={[Function]}
-      onDragStart={[Function]}
-    >
-      <div
-        aria-orientation="horizontal"
-        aria-valuemax={100}
-        aria-valuemin={0}
-        className="za-slider__handle"
-        role="slider"
-        style={
-          Object {
-            "left": "0%",
-          }
+    <div
+      aria-orientation="horizontal"
+      aria-valuemax={100}
+      aria-valuemin={0}
+      className="za-slider__handle"
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      role="slider"
+      style={
+        Object {
+          "left": "0%",
         }
+      }
+    >
+      <Tooltip
+        arrowPointAtCenter={true}
+        content={0}
+        direction="top"
+        hasArrow={true}
+        onVisibleChange={[Function]}
+        prefixCls="za-tooltip"
+        trigger="manual"
+        visible={false}
       >
-        <Tooltip
-          arrowPointAtCenter={true}
-          content={0}
-          direction="top"
-          hasArrow={true}
-          onVisibleChange={[Function]}
-          prefixCls="za-tooltip"
-          trigger="manual"
-          visible={false}
-        >
-          <div
-            className="za-slider__handle__shadow"
-          />
-        </Tooltip>
-      </div>
-    </Drag>
+        <div
+          className="za-slider__handle__shadow"
+        />
+      </Tooltip>
+    </div>
   </div>
 </div>
 `;
@@ -643,40 +613,37 @@ exports[`Slider snapshot value 1`] = `
         }
       />
     </div>
-    <Drag
-      onDragEnd={[Function]}
-      onDragMove={[Function]}
-      onDragStart={[Function]}
-    >
-      <div
-        aria-orientation="horizontal"
-        aria-valuemax={100}
-        aria-valuemin={0}
-        aria-valuenow={10}
-        className="za-slider__handle"
-        role="slider"
-        style={
-          Object {
-            "left": "10%",
-          }
+    <div
+      aria-orientation="horizontal"
+      aria-valuemax={100}
+      aria-valuemin={0}
+      aria-valuenow={10}
+      className="za-slider__handle"
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      role="slider"
+      style={
+        Object {
+          "left": "10%",
         }
+      }
+    >
+      <Tooltip
+        arrowPointAtCenter={true}
+        content={10}
+        direction="top"
+        hasArrow={true}
+        onVisibleChange={[Function]}
+        prefixCls="za-tooltip"
+        trigger="manual"
+        visible={false}
       >
-        <Tooltip
-          arrowPointAtCenter={true}
-          content={10}
-          direction="top"
-          hasArrow={true}
-          onVisibleChange={[Function]}
-          prefixCls="za-tooltip"
-          trigger="manual"
-          visible={false}
-        >
-          <div
-            className="za-slider__handle__shadow"
-          />
-        </Tooltip>
-      </div>
-    </Drag>
+        <div
+          className="za-slider__handle__shadow"
+        />
+      </Tooltip>
+    </div>
   </div>
 </div>
 `;
@@ -700,39 +667,36 @@ exports[`Slider snapshot vertical 1`] = `
         }
       />
     </div>
-    <Drag
-      onDragEnd={[Function]}
-      onDragMove={[Function]}
-      onDragStart={[Function]}
-    >
-      <div
-        aria-orientation="vertical"
-        aria-valuemax={100}
-        aria-valuemin={0}
-        className="za-slider__handle"
-        role="slider"
-        style={
-          Object {
-            "bottom": "0%",
-          }
+    <div
+      aria-orientation="vertical"
+      aria-valuemax={100}
+      aria-valuemin={0}
+      className="za-slider__handle"
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      role="slider"
+      style={
+        Object {
+          "bottom": "0%",
         }
+      }
+    >
+      <Tooltip
+        arrowPointAtCenter={true}
+        content={0}
+        direction="top"
+        hasArrow={true}
+        onVisibleChange={[Function]}
+        prefixCls="za-tooltip"
+        trigger="manual"
+        visible={false}
       >
-        <Tooltip
-          arrowPointAtCenter={true}
-          content={0}
-          direction="top"
-          hasArrow={true}
-          onVisibleChange={[Function]}
-          prefixCls="za-tooltip"
-          trigger="manual"
-          visible={false}
-        >
-          <div
-            className="za-slider__handle__shadow"
-          />
-        </Tooltip>
-      </div>
-    </Drag>
+        <div
+          className="za-slider__handle__shadow"
+        />
+      </Tooltip>
+    </div>
   </div>
 </div>
 `;

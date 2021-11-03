@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import classnames from 'classnames';
 import { useDrag } from '@use-gesture/react';
 import BaseSliderProps from './interface';
@@ -7,10 +7,7 @@ import Tooltip from '../tooltip';
 import ensureValuePrecision from './utils/ensureValuePrecision';
 import getValue from './utils/getValue';
 import { ConfigContext } from '../n-config-provider';
-import preventDefault from './utils/preventDefault';
-
 import { isObject } from '../utils/validate';
-import { start } from 'repl';
 
 export interface SliderProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'>,
@@ -25,19 +22,18 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
   const {
     className,
     disabled,
-    min = 0,
-    max = 100,
+    min,
+    max,
     vertical,
     showMark,
     value,
     marks,
     onChange,
+    defaultValue,
     style,
   } = props;
   const [tooltip, setTooltip] = useState(false);
   const [currentValue, setCurrentValue] = React.useState(getValue(props, 0));
-
-  const prevValue = useRef(currentValue);
 
   const lineRef = React.useRef<HTMLDivElement>(null);
 
@@ -48,9 +44,9 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
 
   const getOffsetByValue = (val: number): number => {
     const maxOffset = getMaxOffset();
-    const range = max - min;
+    const range = max! - min!;
 
-    return vertical ? maxOffset * ((max - val) / range) : maxOffset * ((val - min) / range);
+    return vertical ? maxOffset * ((max! - val) / range) : maxOffset * ((val - min!) / range);
   };
 
   const getValueByOffset = (offset: number): number => {
@@ -58,69 +54,43 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
     const percent = offset / maxOffset;
 
     const val = vertical
-      ? (1 - percent) * (max - min) + min
-      : Math.round(min + (max - min) * percent);
+      ? (1 - percent) * (max! - min!) + min!
+      : Math.round(min! + (max! - min!) * percent);
 
     return ensureValuePrecision(val, props);
   };
 
   const offsetStart = useRef(0);
-
-  // offsetStart.current = getOffsetByValue(val);
-  // console.log(offsetStart)
   useEffect(() => {
     const val = getValue(
       {
-        defaultValue: props.defaultValue,
-        value: props.value,
+        defaultValue,
+        value,
       },
       0,
     );
     setCurrentValue(val);
-  }, [props.defaultValue, props.value]);
-
-  // const init = useCallback(() => {
-  //   offsetStart.current = getOffsetByValue(val);
-  // }, []);
-
-  // useEffect(() => {
-  //   Events.on(window, 'resize', init);
-  //   return () => {
-  //     Events.off(window, 'resize', init);
-  //   };
-  // }, [init]);
+  }, [defaultValue, value]);
 
   const bind = useDrag(
     (state) => {
-      if (state.first) {
-        offsetStart.current = getOffsetByValue(currentValue);
-      }
-      const [offsetX, offsetY] = state.offset;
-
-      console.error(state.offset[0]);
+      const [offsetX, offsetY] = [state.xy[0] - state.initial[0], state.xy[1] - state.initial[1]];
 
       state.event.stopPropagation();
-      // if(state.first) {
-      //   console.log('fffff')
-      //   setTooltip(true);
-      // }
-      // Tooltip.updateAll()
+      if (state.first) {
+        offsetStart.current = getOffsetByValue(currentValue);
+        setTooltip(true);
+      }
+      Tooltip.updateAll();
       let offset = vertical ? offsetY : offsetX;
-      offset = offsetStart.current + offset;
-      // console.log(offset)
-
+      offset += offsetStart.current;
       const maxOffset = getMaxOffset();
-      console.log(lineRef.current);
       offset = Math.min(maxOffset, Math.max(offset, 0));
-
-      // console.log(prevValue.current, '---------------------->')
-      // console.error(getValueByOffset(offset));
-      console.log(offset, 'offset');
       setCurrentValue(getValueByOffset(offset));
 
       if (state.last) {
+        setTooltip(false);
         if (typeof onChange === 'function') {
-          console.warn(currentValue);
           onChange(currentValue);
         }
       }
@@ -132,7 +102,7 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
     },
   );
 
-  const renderMark = () => {
+  const renderMark = useMemo(() => {
     const isEmptyMarks = !isObject(marks) || JSON.stringify(marks) === '{}';
 
     if (showMark && isEmptyMarks) {
@@ -180,7 +150,7 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
         <div className={`${prefixCls}__marks`}>{marksElement}</div>
       </>
     );
-  };
+  }, [marks, showMark, prefixCls, value, vertical]);
 
   const cls = classnames(prefixCls, className, {
     [`${prefixCls}--disabled`]: disabled,
@@ -188,7 +158,7 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
     [`${prefixCls}--marked`]: showMark,
   });
 
-  const ratio = (currentValue - min) / (max - min);
+  const ratio = (currentValue - min!) / (max! - min!);
   const offset = `${ratio * 100}%`;
 
   const handleStyle: React.CSSProperties = {
@@ -199,33 +169,14 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
     [`${vertical ? 'height' : 'width'}`]: offset || 0,
   };
 
-  // const containerRef = useRef<HTMLDivElement | null>();
-  // const handleRef = (divRef: HTMLDivElement) => {
-  //   container.current = divRef;
-  //   const nextContainer = divRef;
-  //   const prevContainer = containerRef;
-
-  //   if (prevContainer.current !== nextContainer) {
-  //     if (prevContainer.current) {
-  //       prevContainer?.current?.removeEventListener('touchstart', preventDefault);
-  //     }
-  //     if (nextContainer) {
-  //       nextContainer.addEventListener('touchstart', preventDefault, { passive: false });
-  //     }
-  //   }
-  //   containerRef.current = nextContainer;
-  // };
-
   return (
     <div className={cls} ref={container} style={style}>
       <div className={`${prefixCls}__content`}>
         <div className={`${prefixCls}__line`} ref={lineRef}>
           <div className={`${prefixCls}__line__bg`} style={lineBg} />
 
-          {renderMark()}
+          {renderMark}
         </div>
-
-        {/* <Drag onDragStart={onDragStart} onDragMove={onDragMove} onDragEnd={onDragEnd}> */}
         <div
           className={`${prefixCls}__handle`}
           role="slider"
@@ -236,11 +187,10 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
           style={handleStyle}
           {...bind()}
         >
-          {/* <Tooltip trigger="manual" arrowPointAtCenter visible={tooltip} content={currentValue}>
-              <div className={`${prefixCls}__handle__shadow`} />
-            </Tooltip> */}
+          <Tooltip trigger="manual" arrowPointAtCenter visible={tooltip} content={currentValue}>
+            <div className={`${prefixCls}__handle__shadow`} />
+          </Tooltip>
         </div>
-        {/* </Drag> */}
       </div>
     </div>
   );
