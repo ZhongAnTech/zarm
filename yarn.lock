@@ -3555,15 +3555,6 @@
 
 "@use-gesture/core@10.1.1":
   version "10.1.1"
-<<<<<<< HEAD
-  resolved "https://registry.npmmirror.com/@use-gesture/core/download/@use-gesture/core-10.1.1.tgz?cache=0&sync_timestamp=1634550967479&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40use-gesture%2Fcore%2Fdownload%2F%40use-gesture%2Fcore-10.1.1.tgz#e1a6ef6f2566fc5f2eaeb8b5549ebe93d5cafb82"
-  integrity sha1-4abvbyVm/F8urri1VJ6+k9XK+4I=
-
-"@use-gesture/react@^10.1.1":
-  version "10.1.1"
-  resolved "https://registry.npmmirror.com/@use-gesture/react/download/@use-gesture/react-10.1.1.tgz?cache=0&sync_timestamp=1634550964899&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40use-gesture%2Freact%2Fdownload%2F%40use-gesture%2Freact-10.1.1.tgz#b0daa4baa81185f4732756568793e6a3e0efc913"
-  integrity sha1-sNqkuqgRhfRzJ1ZWh5Pmo+DvyRM=
-=======
   resolved "https://registry.yarnpkg.com/@use-gesture/core/-/core-10.1.1.tgz#e1a6ef6f2566fc5f2eaeb8b5549ebe93d5cafb82"
   integrity sha512-IAHo/pus6kzgNErKnUoS9h/eAbRFByyHL+02MmBRa6A8zu8raXpwl/VIgHjBTUNh7fJtlhzyljIPI6r9Bwz6bA==
 
@@ -3571,7 +3562,6 @@
   version "10.1.1"
   resolved "https://registry.yarnpkg.com/@use-gesture/react/-/react-10.1.1.tgz#b0daa4baa81185f4732756568793e6a3e0efc913"
   integrity sha512-wjaUJzhtHtkzg5QLirdgKyM0B4MweT8dWrP1vrz1uc6K9zcv78qwGR7k/k3tG2bXw/yGvZBYO+vKvLYTJu4hmA==
->>>>>>> 23606819895b08ec00fd27afb8e450192f52028c
   dependencies:
     "@use-gesture/core" "10.1.1"
 
