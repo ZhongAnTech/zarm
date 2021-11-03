@@ -9,6 +9,7 @@
   @include e(item) {
     line-height: 1;
     position: relative;
+
     &:not(:last-child) {
       margin-right: var(--za-rate-gap);
     }
