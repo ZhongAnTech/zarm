@@ -148,18 +148,31 @@ const Demo = () => {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-## 监听 onChange 事件
+## 受控组件
 
 ```jsx
+import { useState } from 'react';
 import { List, Rate, Toast } from 'zarm';
 
 const Demo = () => {
+  const [value, setValue] = useState(3);
+
   const toast = Toast.useToast();
   return (
     <List>
-      <List.Item>
-        <Rate defaultValue={3} onChange={(value) => toast.show(value)} allowHalf />
-      </List.Item>
+      <List.Item
+        title={
+          <Rate
+            allowHalf
+            value={value}
+            onChange={(value) => {
+              setValue(value)
+              toast.show(value);
+            }}
+          />
+        }
+        after={value}
+      />
     </List>
   );
 };
