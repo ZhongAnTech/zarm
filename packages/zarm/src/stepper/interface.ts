@@ -9,6 +9,6 @@ export interface BaseStepperProps {
   max?: number;
   disabled?: boolean;
   disableInput?: boolean;
-  onInputChange?: (value?: number | string) => void;
-  onChange?: (value?: number | string) => void;
+  onInputChange?: (value: number | string) => void;
+  onChange?: (value: number | string) => void;
 }

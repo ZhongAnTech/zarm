@@ -140,7 +140,15 @@ describe('index', () => {
           "render": [Function],
         },
         "Drag": [Function],
-        "FilePicker": [Function],
+        "FilePicker": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "disabled": false,
+            "multiple": false,
+            "onBeforeSelect": [Function],
+          },
+          "render": [Function],
+        },
         "Icon": [Function],
         "ImagePreview": Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -293,6 +301,7 @@ describe('index', () => {
           },
           "render": [Function],
         },
+        "Rate": [Function],
         "Scroller": [Function],
         "SearchBar": Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -317,7 +326,19 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "Slider": [Function],
+        "Slider": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "disabled": false,
+            "marks": Object {},
+            "max": 100,
+            "min": 0,
+            "showMark": false,
+            "step": 1,
+            "vertical": false,
+          },
+          "render": [Function],
+        },
         "StackPicker": Object {
           "$$typeof": Symbol(react.forward_ref),
           "render": [Function],

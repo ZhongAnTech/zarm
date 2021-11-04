@@ -20,6 +20,7 @@ exports[`KeyboardPicker snapshot renders correctly 1`] = `
       <Popup
         destroy={true}
         localeCode="zh-CN"
+        lockScroll={true}
         mask={false}
         safeIphoneX={false}
         visible={false}
