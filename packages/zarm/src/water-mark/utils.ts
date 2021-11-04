@@ -13,6 +13,18 @@ const resolveImage = (url: string) => {
   });
 };
 
+export const isContainNode = (nodes: NodeList, target: HTMLElement) =>
+  nodes.length && Array.from(nodes).some((node) => node.contains(target));
+
+export const compareUUID = (left: Node, right: Node) =>
+  (left as HTMLElement)?.dataset?.watermark === (right as HTMLElement)?.dataset?.watermark;
+
+let id = 0;
+export const getUUID = () => {
+  id += 1;
+  return id;
+};
+
 export const plainStyle = (style: React.CSSProperties) => {
   return Object.entries(style).reduce((acc, [name, value]) => {
     if (value === undefined || value === null) return acc;

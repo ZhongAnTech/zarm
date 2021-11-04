@@ -9,7 +9,8 @@ import {
   IMAGE_STYLE_DEFAULT,
   MARK_STYLE_DEFAULT,
 } from './defaults';
-import { draw, plainStyle } from './utils';
+import { draw, isContainNode, getUUID, compareUUID, plainStyle } from './utils';
+import { noop } from '../utils';
 
 export interface WaterMarkProps extends BaseWaterMarkProps {
   style?: React.CSSProperties;
@@ -18,86 +19,114 @@ export interface WaterMarkProps extends BaseWaterMarkProps {
 const MUTATION_OBSERVER_CONFIG = {
   childList: true,
   subtree: true,
-  attributeFilter: ['class', 'style'],
+  attributeFilter: ['class', 'style', 'data-watermark'],
   attributeOldValue: true,
 };
 
 const WaterMark: React.FC<WaterMarkProps> = (props) => {
+  const uuid = React.useRef(getUUID());
   const { text, image, mode, monitor, children } = props;
   const watermark = React.useRef<HTMLDivElement>(null);
   const [styles, setStyels] = React.useState<React.CSSProperties>(WATERMARK_DEFAULT_STYLES);
   const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
   const prefixCls = `${globalPrefixCls}-water-mark`;
 
-  const textStyle = Object.assign(TEXT_STYLE_DEFAULT!, props.textStyle);
-  const imageStyle = Object.assign(IMAGE_STYLE_DEFAULT!, props.imageStyle);
-  const markStyle = Object.assign(MARK_STYLE_DEFAULT!, props.markStyle);
+  const textStyle = { ...TEXT_STYLE_DEFAULT!, ...props.textStyle };
+  const imageStyle = { ...IMAGE_STYLE_DEFAULT!, ...props.imageStyle };
+  const markStyle = { ...MARK_STYLE_DEFAULT!, ...props.markStyle };
 
-  let render = () => {};
-  let handleMonitor = () => {};
+  let rerender = noop;
 
-  const [setNode] = useMutationObserverRef((records, observer) => {
+  const [, setNode] = useMutationObserverRef((records, observer) => {
+    // 重置监听状态
+    const reset = (target?: HTMLElement | Node | null, cb?: () => void) => {
+      if (!target) return;
+      observer.disconnect();
+      cb?.();
+      observer.observe(target, MUTATION_OBSERVER_CONFIG);
+    };
+
     records.forEach((record) => {
-      const { type, target, attributeName, removedNodes } = record;
+      const { type, target, attributeName, addedNodes, removedNodes } = record;
+      const source = watermark.current;
+      if (!source) return;
+
       // style 发生变化
-      if (type === 'attributes' && target.contains(watermark.current)) {
-        attributeName === 'class' && watermark.current?.removeAttribute('class');
-        attributeName === 'style' && render();
+      if (type === 'attributes' && target.contains(source)) {
+        attributeName === 'class' && source?.removeAttribute('class');
+        attributeName === 'style' && rerender();
+        attributeName === 'data-watermark' &&
+          reset(watermark.current?.parentNode, () =>
+            source?.setAttribute('data-watermark', String(uuid.current)),
+          );
+      }
+
+      // 篡改节点标签名
+      if (type === 'childList' && addedNodes.length) {
+        const element = Array.from(addedNodes).find((node) => compareUUID(node, source));
+        element && target.removeChild(element);
       }
 
       // 移除节点
-      if (
-        type === 'childList' &&
-        removedNodes.length &&
-        watermark.current &&
-        Array.from(removedNodes).some((node) => node.contains(watermark.current))
-      ) {
-        observer.disconnect();
-        ReactDOM.unmountComponentAtNode(watermark.current);
-        target.appendChild(watermark.current);
-        observer.observe(target, MUTATION_OBSERVER_CONFIG);
+      if (type === 'childList' && isContainNode(removedNodes, source)) {
+        reset(target, () => {
+          ReactDOM.unmountComponentAtNode(source);
+          target.appendChild(source);
+        });
       }
     });
   }, MUTATION_OBSERVER_CONFIG);
 
-  handleMonitor = () => {
-    if (!monitor) return setNode(null);
-    const parentElement = watermark.current?.parentElement;
-    parentElement && setNode(parentElement);
-  };
-
-  render = async () => {
-    const rest: React.CSSProperties = { ...WATERMARK_DEFAULT_STYLES };
-    draw({ text, image, textStyle, imageStyle, markStyle })
-      .then((config) => {
-        if (config.url) {
-          const { url, ratio } = config;
-          if (mode === 'repeat') {
-            rest.backgroundImage = `url(${url})`;
-          } else {
-            rest.backgroundImage = `url(${url}), url(${url})`;
-            rest.backgroundRepeat = 'repeat, repeat';
-            rest.backgroundPosition = `${config.width / 2}px ${config.height / 2}px, 0 0`;
-          }
-          rest.backgroundSize = `${config.width / ratio}px`;
-        }
-        setStyels(rest);
-        handleMonitor();
-      })
-      .catch((error) => console.error(error.message));
+  // 渲染水印
+  rerender = async () => {
+    const style: React.CSSProperties = { ...WATERMARK_DEFAULT_STYLES };
+    try {
+      const rest = { text, image, textStyle, imageStyle, markStyle };
+      const { url, ratio, width, height } = await draw(rest);
+      if (!url) return;
+      if (mode === 'repeat') {
+        style.backgroundImage = `url(${url})`;
+      } else {
+        style.backgroundImage = `url(${url}), url(${url})`;
+        style.backgroundRepeat = 'repeat, repeat';
+        style.backgroundPosition = `${width / 2}px ${height / 2}px, 0 0`;
+      }
+      style.backgroundSize = `${width / ratio}px`;
+      setStyels(style);
+      setNode(monitor ? watermark.current?.parentElement! : null);
+    } catch (error) {
+      console.error(error.message);
+    }
   };
 
   const isContains = React.isValidElement(children);
 
   React.useEffect(() => {
-    render();
+    rerender();
   }, [
+    textStyle.color,
+    textStyle.fontStyle,
+    textStyle.fontWeight,
+    textStyle.fontSize,
+    textStyle.fontFamily,
+    textStyle.fontVariant,
+    textStyle.textAlign,
+    textStyle.textBaseline,
+    imageStyle.width,
+    imageStyle.height,
+    markStyle.width,
+    markStyle.height,
+    markStyle.rotate,
+    markStyle.opacity,
+    markStyle.gapX,
+    markStyle.gapY,
+    markStyle.offsetLeft,
+    markStyle.offsetTop,
     text,
     image,
     mode,
     monitor,
     isContains,
-    ...Object.values({ ...textStyle, ...imageStyle, ...markStyle }),
   ]);
 
   const style = React.useMemo(() => {
@@ -118,7 +147,7 @@ const WaterMark: React.FC<WaterMarkProps> = (props) => {
     return properties;
   }, [markStyle.zIndex, monitor, styles, props.style, isContains]);
 
-  const element = <div ref={watermark} style={style} />;
+  const element = <div ref={watermark} data-watermark={uuid.current} style={style} />;
 
   if (isContains)
     return (

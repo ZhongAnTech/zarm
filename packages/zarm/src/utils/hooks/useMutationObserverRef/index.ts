@@ -1,30 +1,32 @@
 import * as React from 'react';
 
-const config: MutationObserverInit = {
+const config = {
   attributes: true,
   characterData: true,
   childList: true,
   subtree: true,
 };
 
+type useMutationObserverRefTarget = HTMLElement | null;
+
 const useMutationObserverRef = (
   callback: MutationCallback,
   options: MutationObserverInit = config,
-): [(node: HTMLElement | null) => void] => {
-  const [node, setNode] = React.useState<HTMLElement | null>(null);
+): [useMutationObserverRefTarget, (node: useMutationObserverRefTarget) => void] => {
+  const [target, setTarget] = React.useState<HTMLElement | null>(null);
 
   React.useEffect(() => {
-    if (node) {
+    if (target) {
       const observer = new MutationObserver(callback);
-      observer.observe(node, options);
+      observer.observe(target, options);
 
       return () => {
         observer.disconnect();
       };
     }
-  }, [node, callback, options]);
+  }, [target, callback, options]);
 
-  return [setNode];
+  return [target, setTarget];
 };
 
 export default useMutationObserverRef;
