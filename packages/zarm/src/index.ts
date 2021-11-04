@@ -159,3 +159,7 @@ export { default as useOrientation } from './useOrientation';
 
 export type { UseLongPressProps } from './useLongPress';
 export { default as useLongPress } from './useLongPress';
+
+export { default as SignatureBoard } from './signature-board';
+export type { SignatureBoardProps } from './signature-board';
+export type { SignatureBoardRef } from './signature-board';
