@@ -1,9 +1,3 @@
-// import Select from './Select';
-// import ConfigReceiver from '../config-receiver';
-
-// export type { SelectProps } from './Select';
-
-// export default ConfigReceiver('Select')(Select);
 import React, { HTMLAttributes, useCallback, useEffect, useState } from 'react';
 import classnames from 'classnames';
 import Picker from '../picker';
