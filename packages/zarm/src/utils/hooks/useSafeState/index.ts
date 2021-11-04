@@ -2,9 +2,12 @@ import * as React from 'react';
 
 function useSafeState<S>(initialState: S | (() => S)): [S, React.Dispatch<React.SetStateAction<S>>];
 
-function useSafeState<S = undefined>(): [S | undefined, React.Dispatch<React.SetStateAction<S | undefined>>];
+function useSafeState<S = undefined>(): [
+  S | undefined,
+  React.Dispatch<React.SetStateAction<S | undefined>>,
+];
 
-function useSafeState <S>(initialState?: S | (() => S)) {
+function useSafeState<S>(initialState?: S | (() => S)) {
   const [state, setState] = React.useState(initialState);
   const mounted = React.useRef(false);
 
@@ -20,6 +23,6 @@ function useSafeState <S>(initialState?: S | (() => S)) {
   }, []);
 
   return [state, update] as const;
-};
+}
 
 export default useSafeState;

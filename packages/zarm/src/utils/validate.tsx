@@ -17,3 +17,5 @@ export const isNumber = (val: any) => {
 export const isCascader = ({ dataSource }) => {
   return dataSource && dataSource[0] && !isArray(dataSource[0]);
 };
+
+export const isFunction = (value: unknown): value is Function => typeof value === 'function';

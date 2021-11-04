@@ -3553,6 +3553,18 @@
   dependencies:
     eslint-visitor-keys "^1.1.0"
 
+"@use-gesture/core@10.1.1":
+  version "10.1.1"
+  resolved "https://registry.yarnpkg.com/@use-gesture/core/-/core-10.1.1.tgz#e1a6ef6f2566fc5f2eaeb8b5549ebe93d5cafb82"
+  integrity sha512-IAHo/pus6kzgNErKnUoS9h/eAbRFByyHL+02MmBRa6A8zu8raXpwl/VIgHjBTUNh7fJtlhzyljIPI6r9Bwz6bA==
+
+"@use-gesture/react@^10.1.1":
+  version "10.1.1"
+  resolved "https://registry.yarnpkg.com/@use-gesture/react/-/react-10.1.1.tgz#b0daa4baa81185f4732756568793e6a3e0efc913"
+  integrity sha512-wjaUJzhtHtkzg5QLirdgKyM0B4MweT8dWrP1vrz1uc6K9zcv78qwGR7k/k3tG2bXw/yGvZBYO+vKvLYTJu4hmA==
+  dependencies:
+    "@use-gesture/core" "10.1.1"
+
 "@webassemblyjs/ast@1.11.0":
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/@webassemblyjs%2fast/-/ast-1.11.0.tgz#a5aa679efdc9e51707a4207139da57920555961f"
@@ -7647,6 +7659,11 @@ extsprintf@^1.2.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.4.0.tgz#e2689f8f356fad62cca65a3a91c5df5f9551692f"
   integrity sha1-4mifjzVvrWLMplo6kcXfX5VRaS8=
+
+f2-touchemulator@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/f2-touchemulator/-/f2-touchemulator-0.0.1.tgz#1ac82b9bda26f1a8dd0585a5366471d0a284c0ef"
+  integrity sha512-dL2EqGgRFjePteQHMqvZ6UkNO357KcLbsuPqhs/Y9aCP8UBBGrHyTCrtnF38eoWY5ukfMqCNM0qpuggVybCPNQ==
 
 fancy-log@^1.3.2:
   version "1.3.3"

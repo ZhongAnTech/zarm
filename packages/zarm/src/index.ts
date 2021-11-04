@@ -34,6 +34,7 @@ export { default as DatePicker } from './date-picker';
 export type { DateSelectProps } from './date-select';
 export { default as DateSelect } from './date-select';
 
+export type { FilePickerProps } from './file-picker';
 export { default as FilePicker } from './file-picker';
 
 export type { IconProps } from './icon';
@@ -109,6 +110,9 @@ export { default as SwipeAction } from './swipe-action';
 
 export type { SwitchProps } from './switch';
 export { default as Switch } from './switch';
+
+export type { RateProps } from './rate';
+export { default as Rate } from './rate';
 
 export type { TabsProps, TabPanelProps } from './tabs';
 export { default as Tabs } from './tabs';

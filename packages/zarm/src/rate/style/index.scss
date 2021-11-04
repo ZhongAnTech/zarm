@@ -1,0 +1,47 @@
+@import '../../style/core/index';
+
+@include b(rate) {
+  display: inline-flex;
+  cursor: pointer;
+  user-select: none;
+  flex-wrap: wrap;
+
+  @include e(item) {
+    line-height: 1;
+    position: relative;
+
+    &:not(:last-child) {
+      margin-right: var(--za-rate-gap);
+    }
+  }
+
+  @include e(character) {
+    color: var(--za-rate-unchecked-color);
+    font-size: var(--za-rate-size);
+    @include b(icon) {
+      font-size: var(--za-rate-size);
+    }
+
+    @include m(active) {
+      color: var(--za-rate-color);
+    }
+  }
+
+  @include e(character-half) {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+  }
+
+  @include m(readonly) {
+    cursor: default;
+  }
+
+  @include m(disabled) {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}

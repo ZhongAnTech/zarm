@@ -68,17 +68,17 @@ ReactDOM.render(
 
 ## API
 
-| 属性          | 类型                               | 默认值   | 说明                                              |
-| :------------ | :--------------------------------- | :------- | :------------------------------------------------ |
-| shape         | string                             | 'radius' | 形状，可选值 `rect`, `radius`, `circle`           |
-| size          | string                             | 'md'     | 大小，可选值 `md`、`lg`                           |
-| type          | string                             | 'text'   | 输入类型，可选值 `text`、`number`、`price`、`tel` |
-| value         | number                             | -        | 值                                                |
-| defaultValue  | number                             | -        | 初始值                                            |
-| min           | number                             | -        | 最小值                                            |
-| max           | number                             | -        | 最大值                                            |
-| step          | number                             | 1        | 步长                                              |
-| disabled      | boolean                            | false    | 是否禁用                                          |
-| disableInput  | boolean                            | false    | 是否禁用输入框                                    |
-| onInputChange | (value?: number ｜ string) => void | -        | 输入值变化时触发的回调函数                        |
-| onChange      | (value?: number ｜ string) => void | -        | 值变化时触发的回调函数                            |
+| 属性          | 类型                              | 默认值   | 说明                                              |
+| :------------ | :-------------------------------- | :------- | :------------------------------------------------ |
+| shape         | string                            | 'radius' | 形状，可选值 `rect`, `radius`, `circle`           |
+| size          | string                            | 'md'     | 大小，可选值 `md`、`lg`                           |
+| type          | string                            | 'text'   | 输入类型，可选值 `text`、`number`、`price`、`tel` |
+| value         | number                            | -        | 值                                                |
+| defaultValue  | number                            | -        | 初始值                                            |
+| min           | number                            | -        | 最小值                                            |
+| max           | number                            | -        | 最大值                                            |
+| step          | number                            | 1        | 步长                                              |
+| disabled      | boolean                           | false    | 是否禁用                                          |
+| disableInput  | boolean                           | false    | 是否禁用输入框                                    |
+| onInputChange | (value: number \| string) => void | -        | 输入值变化时触发的回调函数                        |
+| onChange      | (value: number \| string) => void | -        | 值变化时触发的回调函数                            |

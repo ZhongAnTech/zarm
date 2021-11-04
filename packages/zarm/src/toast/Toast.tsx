@@ -62,6 +62,7 @@ const Toast = React.forwardRef<unknown, ToastProps>((props, ref) => {
       direction="center"
       maskType="transparent"
       width="70%"
+      lockScroll={false}
       {...others}
       visible={visible}
       afterClose={afterClose}

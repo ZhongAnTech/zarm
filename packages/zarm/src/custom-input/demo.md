@@ -95,15 +95,15 @@ ReactDOM.render(
 
 ## API
 
-| 属性         | 类型                               | 默认值   | 说明                                                                     |
-| :----------- | :--------------------------------- | :------- | :----------------------------------------------------------------------- |
-| label        | ReactNode                          | -        | 标签栏内容                                                               |
-| type         | string                             | 'number' | 类型，可选值 `number`、`idcard`、`price`                                 |
-| value        | number \| string                   | -        | 值                                                                       |
-| defaultValue | number \| string                   | -        | 初始值                                                                   |
-| disabled     | boolean                            | false    | 是否禁用                                                                 |
-| readOnly     | boolean                            | false    | 是否只读                                                                 |
-| autoFocus    | boolean                            | false    | 是否自动获取焦点                                                         |
-| maxLength    | number                             | -        | 输入字数上限                                                             |
-| clearable    | boolean                            | false    | 是否显示清除按钮。必须为受控组件（属性包含 value、onChange）时方可生效。 |
-| onChange     | (value?: number \| string) => void | -        | 值变化时触发的回调函数                                                   |
+| 属性         | 类型                              | 默认值   | 说明                                                                     |
+| :----------- | :-------------------------------- | :------- | :----------------------------------------------------------------------- |
+| label        | ReactNode                         | -        | 标签栏内容                                                               |
+| type         | string                            | 'number' | 类型，可选值 `number`、`idcard`、`price`                                 |
+| value        | number \| string                  | -        | 值                                                                       |
+| defaultValue | number \| string                  | -        | 初始值                                                                   |
+| disabled     | boolean                           | false    | 是否禁用                                                                 |
+| readOnly     | boolean                           | false    | 是否只读                                                                 |
+| autoFocus    | boolean                           | false    | 是否自动获取焦点                                                         |
+| maxLength    | number                            | -        | 输入字数上限                                                             |
+| clearable    | boolean                           | false    | 是否显示清除按钮。必须为受控组件（属性包含 value、onChange）时方可生效。 |
+| onChange     | (value: number \| string) => void | -        | 值变化时触发的回调函数                                                   |

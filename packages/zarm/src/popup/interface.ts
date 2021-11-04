@@ -27,5 +27,6 @@ export interface BasePopupProps {
   onMaskClick?: () => void;
   onEsc?: () => void;
   mountContainer?: ContainerType | false;
+  lockScroll?: boolean;
   children?: React.ReactNode;
 }
