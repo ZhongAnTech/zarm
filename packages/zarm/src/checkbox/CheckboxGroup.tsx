@@ -47,6 +47,7 @@ const CheckboxGroup = React.forwardRef<unknown, CheckboxGroupProps>((props, ref)
     buttonShape,
     buttonCompact,
     buttonGhost,
+    listMarkerAlign,
     children,
     onChange,
     ...restProps
@@ -78,6 +79,7 @@ const CheckboxGroup = React.forwardRef<unknown, CheckboxGroupProps>((props, ref)
     return React.cloneElement(element, {
       key: +index,
       type,
+      listMarkerAlign,
       disabled: disabled || !!element.props.disabled,
       checked: currentValue!.indexOf(element.props.value) > -1,
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -117,6 +119,7 @@ CheckboxGroup.defaultProps = {
   buttonGhost: false,
   buttonShape: 'radius',
   buttonSize: 'xs',
+  listMarkerAlign: 'before',
 };
 
 export default CheckboxGroup;

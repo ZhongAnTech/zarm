@@ -40,7 +40,6 @@ exports[`Checkbox defaultChecked 1`] = `
     checked=""
     class="za-checkbox__input"
     type="checkbox"
-    value="on"
   />
 </span>
 `;
@@ -84,7 +83,6 @@ exports[`Checkbox disabled 1`] = `
     class="za-checkbox__input"
     disabled=""
     type="checkbox"
-    value="off"
   />
 </span>
 `;
@@ -129,7 +127,6 @@ exports[`Checkbox renders correctly 1`] = `
     checked=""
     class="za-checkbox__input"
     type="checkbox"
-    value="on"
   />
 </span>
 `;
@@ -179,7 +176,7 @@ exports[`Checkbox.Group render defaultValue correctly 1`] = `
         aria-checked="false"
         class="za-checkbox__input"
         type="checkbox"
-        value="off"
+        value="0"
       />
     </span>
     <span
@@ -221,7 +218,7 @@ exports[`Checkbox.Group render defaultValue correctly 1`] = `
         checked=""
         class="za-checkbox__input"
         type="checkbox"
-        value="on"
+        value="1"
       />
     </span>
     <span
@@ -262,7 +259,7 @@ exports[`Checkbox.Group render defaultValue correctly 1`] = `
         aria-checked="false"
         class="za-checkbox__input"
         type="checkbox"
-        value="off"
+        value="2"
       />
     </span>
   </div>
@@ -315,7 +312,7 @@ exports[`Checkbox.Group render value correctly 1`] = `
         checked=""
         class="za-checkbox__input"
         type="checkbox"
-        value="on"
+        value="0"
       />
     </span>
     <span
@@ -356,7 +353,7 @@ exports[`Checkbox.Group render value correctly 1`] = `
         aria-checked="false"
         class="za-checkbox__input"
         type="checkbox"
-        value="off"
+        value="1"
       />
     </span>
     <span
@@ -397,7 +394,7 @@ exports[`Checkbox.Group render value correctly 1`] = `
         aria-checked="false"
         class="za-checkbox__input"
         type="checkbox"
-        value="off"
+        value="2"
       />
     </span>
   </div>
@@ -449,7 +446,7 @@ exports[`Checkbox.Group renders correctly 1`] = `
         aria-checked="false"
         class="za-checkbox__input"
         type="checkbox"
-        value="off"
+        value="0"
       />
     </span>
     <span
@@ -491,7 +488,7 @@ exports[`Checkbox.Group renders correctly 1`] = `
         checked=""
         class="za-checkbox__input"
         type="checkbox"
-        value="on"
+        value="1"
       />
     </span>
     <span
@@ -532,7 +529,7 @@ exports[`Checkbox.Group renders correctly 1`] = `
         aria-checked="false"
         class="za-checkbox__input"
         type="checkbox"
-        value="off"
+        value="2"
       />
     </span>
   </div>
@@ -555,7 +552,7 @@ exports[`Checkbox.Group type is button 1`] = `
         aria-checked="false"
         class="za-checkbox__input"
         type="checkbox"
-        value="off"
+        value="0"
       />
     </button>
     <button
@@ -567,7 +564,7 @@ exports[`Checkbox.Group type is button 1`] = `
         aria-checked="false"
         class="za-checkbox__input"
         type="checkbox"
-        value="off"
+        value="1"
       />
     </button>
     <button
@@ -579,7 +576,7 @@ exports[`Checkbox.Group type is button 1`] = `
         aria-checked="false"
         class="za-checkbox__input"
         type="checkbox"
-        value="off"
+        value="2"
       />
     </button>
   </div>
@@ -633,7 +630,7 @@ exports[`Checkbox.Group type is list 1`] = `
               aria-checked="false"
               class="za-checkbox__input"
               type="checkbox"
-              value="off"
+              value="0"
             />
           </div>
           <div
@@ -654,7 +651,7 @@ exports[`Checkbox.Group type is list 1`] = `
                   aria-checked="false"
                   class="za-checkbox__input"
                   type="checkbox"
-                  value="off"
+                  value="0"
                 />
               </div>
             </div>
@@ -696,7 +693,7 @@ exports[`Checkbox.Group type is list 1`] = `
               aria-checked="false"
               class="za-checkbox__input"
               type="checkbox"
-              value="off"
+              value="1"
             />
           </div>
           <div
@@ -717,7 +714,7 @@ exports[`Checkbox.Group type is list 1`] = `
                   aria-checked="false"
                   class="za-checkbox__input"
                   type="checkbox"
-                  value="off"
+                  value="1"
                 />
               </div>
             </div>
@@ -759,7 +756,7 @@ exports[`Checkbox.Group type is list 1`] = `
               aria-checked="false"
               class="za-checkbox__input"
               type="checkbox"
-              value="off"
+              value="2"
             />
           </div>
           <div
@@ -780,7 +777,7 @@ exports[`Checkbox.Group type is list 1`] = `
                   aria-checked="false"
                   class="za-checkbox__input"
                   type="checkbox"
-                  value="off"
+                  value="2"
                 />
               </div>
             </div>

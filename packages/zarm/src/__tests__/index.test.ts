@@ -90,6 +90,7 @@ describe('index', () => {
               "buttonShape": "radius",
               "buttonSize": "xs",
               "disabled": false,
+              "listMarkerAlign": "before",
             },
             "render": [Function],
           },
