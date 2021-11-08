@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WaterMark mounted watermark 1`] = `ReactWrapper {}`;
+
+exports[`WaterMark renders correctly 1`] = `
+<div
+  data-watermark="1"
+  style="position:fixed;left:0;top:0;right:0;bottom:0;pointer-events:none;overflow:hidden;background-color:transparent;background-repeat:repeat"
+/>
+`;

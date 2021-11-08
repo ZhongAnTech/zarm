@@ -317,6 +317,13 @@ module.exports = {
         source: 'zarm/image-preview/demo.md',
         style: true,
       },
+      {
+        key: 'water-mark',
+        name: '水印',
+        module: () => import('zarm/water-mark/demo.md'),
+        source: 'zarm/water-mark/demo.md',
+        style: false,
+      },
     ],
     navigation: [
       {

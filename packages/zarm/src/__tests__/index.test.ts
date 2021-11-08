@@ -401,6 +401,7 @@ describe('index', () => {
         },
         "Tooltip": [Function],
         "Trigger": [Function],
+        "WaterMark": [Function],
         "Wheel": [Function],
         "useDrag": [Function],
         "useLongPress": [Function],
