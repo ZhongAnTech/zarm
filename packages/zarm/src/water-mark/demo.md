@@ -18,6 +18,9 @@ const DEFAULT_PROPS = {
   markStyle: {
     opacity: 0.15,
   },
+  textStyle: {
+    textAlign: 'left',
+  },
   imageStyle: {
     width: 37.5,
     height: 37.5,
@@ -124,6 +127,22 @@ const Demo = () => {
               }
             />
           </List.Item>
+          <List.Item
+            after={
+              <Radio.Group
+                value={props.textStyle.textAlign}
+                buttonCompact
+                type="button"
+                onChange={(value) => setProps({ textStyle: { textAlign: value } })}
+              >
+                <Radio value="left">居左</Radio>
+                <Radio value="center">居中</Radio>
+                <Radio value="right">居右</Radio>
+              </Radio.Group>
+            }
+          >
+            对齐方式
+          </List.Item>
         </>
       )}
       <List.Item
@@ -208,7 +227,7 @@ ReactDOM.render(<Demo />, mountNode);
 | fontStyle    | string           | 'normal'     | 规定字体样式       |
 | fontFamily   | string           | 'sans-serif' | 设置水印文字的字体 |
 | fontVariant  | string           | 'normal'     | 规定字体变体       |
-| textAlign    | string           | 'center'     | 水印文字的对齐方式 |
+| textAlign    | string           | 'left'       | 水印文字的对齐方式 |
 | textBaseline | string           | 'alphabetic' | 绘制文本的文本基线 |
 
 ## ImageStyle

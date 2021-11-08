@@ -33,7 +33,7 @@ interface TextStyle {
   fontVariant?: React.CSSProperties['fontVariant'];
   /**
    * 水印文字的对齐方式
-   * @default center
+   * @default left
    */
   textAlign?: CanvasTextAlign;
   /**

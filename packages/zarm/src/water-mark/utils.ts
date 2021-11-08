@@ -61,13 +61,12 @@ export const draw = async ({
   context.translate(canvasOffsetLeft * ratio, canvasOffsetTop * ratio);
   context.rotate((Math.PI / 180) * Number(rotate));
 
-  let url;
-
   if (image) {
     const { width: imageWidth, height: imageHeight } = imageStyle!;
     const img = await resolveImage(image);
     context.drawImage(img, 0, 0, imageWidth! * ratio, imageHeight! * ratio);
-    url = canvas.toDataURL();
+
+    return { url: canvas.toDataURL(), width: canvasWidth, height: canvasHeight, ratio };
   }
 
   if (isString(text) || (Array.isArray(text) && text.length)) {
@@ -103,20 +102,29 @@ export const draw = async ({
     }px/${lineHeight}px ${fontFamily}`;
 
     // 计算水印在y轴上的初始位置
-    const initY = Math.min(
-      (markHeight - (fontSize! * texts.length + (texts.length - 1) * 5)) / 2,
-      0,
-    );
+    let initY = (markHeight - (fontSize! * texts.length + (texts.length - 1) * 5)) / 2;
+    initY = initY < 0 ? 0 : initY;
+
+    let initX = markWidth / 2;
+
+    switch (textAlign) {
+      case 'left':
+      case 'start':
+        initX = 0;
+        break;
+      case 'right':
+      case 'end':
+        initX = width! * ratio;
+        break;
+    }
 
     // 处理多行文本
     for (let i = 0; i < texts.length; i++) {
-      context.fillText(texts[i], markWidth / 2, initY + lineHeight * i);
+      context.fillText(texts[i], initX, initY + lineHeight * i, canvasWidth);
     }
 
-    url = canvas.toDataURL();
+    return { url: canvas.toDataURL(), width: canvasWidth, height: canvasHeight, ratio };
   }
-
-  if (url) return { url, width: canvasWidth, height: canvasHeight, ratio };
 
   return Promise.reject(new Error('图片或文字选项缺失'));
 };
