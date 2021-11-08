@@ -79,9 +79,10 @@ const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
     <input
       id={id}
       type="radio"
+      aria-checked={currentChecked}
       className={`${prefixCls}__input`}
-      value={value}
       disabled={disabled}
+      value={value}
       defaultChecked={'defaultChecked' in props ? defaultChecked : undefined}
       checked={'checked' in props ? currentChecked : undefined}
       onChange={onValueChange}
