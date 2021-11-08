@@ -174,10 +174,6 @@ const umdUglyConfig: Configuration = webpackMerge({}, umdConfig, {
   },
 });
 
-const umdZipConfig: Configuration = webpackMerge({}, umdConfig, {
-  mode: 'production',
-});
-
 type WebpackConfigType = 'umd' | 'umd-ugly' | 'dev' | 'deploy';
 
 const getWebpackConfig = (type?: WebpackConfigType): Configuration => {
