@@ -26,7 +26,10 @@ const show = (props: Omit<ImagePreviewProps, 'visible'>) => {
         onClose={() => {
           props.onClose?.();
           setVisible(false);
-          unmount();
+          // unmount();
+          setTimeout(() => {
+            unmount();
+          }, 0);
         }}
       />
     );
