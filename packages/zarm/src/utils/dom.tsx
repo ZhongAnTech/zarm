@@ -2,7 +2,7 @@
 import raf from 'raf';
 import { StringPropertyNames } from './utilityTypes';
 
-export type ContainerType = HTMLElement | (() => HTMLElement) | Window;
+export type ContainerType = HTMLElement | (() => HTMLElement) | Window | false;
 
 export const canUseDOM = !!(
   typeof window !== 'undefined' &&
