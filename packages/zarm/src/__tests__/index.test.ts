@@ -272,6 +272,11 @@ describe('index', () => {
         "Popper": [Function],
         "Popup": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "destroy": true,
+            "lockScroll": true,
+            "visible": false,
+          },
           "render": [Function],
         },
         "Progress": Object {

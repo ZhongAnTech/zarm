@@ -6,6 +6,7 @@ import { useLockScroll } from '../utils/hooks';
 
 export interface PopupProps extends BasePopupProps {
   className?: string;
+  style?: React.CSSProperties;
 }
 
 const Popup = React.forwardRef<unknown, PopupProps>((props, ref) => {
@@ -14,7 +15,7 @@ const Popup = React.forwardRef<unknown, PopupProps>((props, ref) => {
   const [renderPortal, setRenderPortal] = React.useState(false);
   const [portalVisible, setPortalVisible] = React.useState(visible);
 
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const { prefixCls: globalPrefixCls, mountContainer } = React.useContext(ConfigContext);
   const prefixCls = `${globalPrefixCls}-popup`;
 
   useLockScroll(visible! && lockScroll!);
@@ -30,6 +31,7 @@ const Popup = React.forwardRef<unknown, PopupProps>((props, ref) => {
       prefixCls={prefixCls}
       visible={portalVisible}
       handlePortalUnmount={handlePortalUnmount}
+      mountContainer={mountContainer}
       {...restProps}
     />
   );
