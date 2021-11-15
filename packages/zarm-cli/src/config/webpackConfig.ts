@@ -196,7 +196,9 @@ const getWebpackConfig = (type?: WebpackConfigType): Configuration => {
 
     case 'dev':
       devConfig.output.publicPath = '/';
-      (devConfig.module.rules[0] as RuleSetRule).use[0].options.plugins.push(require.resolve('react-refresh/babel'));
+      (devConfig.module.rules[0] as RuleSetRule).use[0].options.plugins.push(
+        require.resolve('react-refresh/babel'),
+      );
       devConfig.plugins.push(new ReactRefreshPlugin());
       return devConfig;
 
