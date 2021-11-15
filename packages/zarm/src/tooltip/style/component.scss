@@ -1,11 +1,11 @@
 @import 'mixins';
 
 @include b(tooltip) {
-  padding: var(--tooltip-padding-v) var(--tooltip-padding-h);
-  background-color: var(--tooltip-background);
+  padding: var(--za-tooltip-padding-vertical) var(--za-tooltip-padding-horizontal);
+  background-color: var(--za-tooltip-background);
   border-radius: r(4);
-  font-size: var(--tooltip-font-size);
-  color: var(--tooltip-color);
+  font-size: var(--za-tooltip-font-size);
+  color: var(--za-tooltip-color);
   z-index: var(--zindex-tooltip);
 
   &[x-placement^=right] {
@@ -13,8 +13,8 @@
 
     @include arrow () {
       left: r(-4);
-      border-width: var(--tooltip-arrow-size) var(--tooltip-arrow-size) var(--tooltip-arrow-size) 0;
-      border-right-color: var(--tooltip-background);
+      border-width: var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size) 0;
+      border-right-color: var(--za-tooltip-background);
     }
   }
 
@@ -23,8 +23,8 @@
 
     @include arrow () {
       bottom: r(-4);
-      border-width: var(--tooltip-arrow-size) var(--tooltip-arrow-size) 0;
-      border-top-color: var(--tooltip-background);
+      border-width: var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size) 0;
+      border-top-color: var(--za-tooltip-background);
     }
   }
 
@@ -33,8 +33,8 @@
 
     @include arrow () {
       top: r(-4);
-      border-width: 0 var(--tooltip-arrow-size) var(--tooltip-arrow-size) var(--tooltip-arrow-size);
-      border-bottom-color: var(--tooltip-background);
+      border-width: 0 var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size);
+      border-bottom-color: var(--za-tooltip-background);
     }
   }
 
@@ -43,8 +43,8 @@
 
     @include arrow () {
       right: r(-4);
-      border-width: var(--tooltip-arrow-size) 0 var(--tooltip-arrow-size) var(--tooltip-arrow-size);
-      border-left-color: var(--tooltip-background);
+      border-width: var(--za-tooltip-arrow-size) 0 var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size);
+      border-left-color: var(--za-tooltip-background);
     }
   }
 

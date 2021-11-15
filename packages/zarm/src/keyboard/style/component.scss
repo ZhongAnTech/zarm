@@ -3,7 +3,7 @@
 @include b(keyboard) {
   display: flex;
   flex-wrap: wrap;
-  background-color: var(--keyboard-background);
+  background-color: var(--za-keyboard-background);
   color: var(--color-text);
   user-select: none;
 
@@ -12,11 +12,11 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    font-size: var(--keyboard-item-font-size);
+    font-size: var(--za-keyboard-item-font-size);
     user-select: none;
     @include button-base();
     @include button-theme(
-      var(--keyboard-item-background),
+      var(--za-keyboard-item-background),
       var(--button-default-border),
       var(--button-default-color),
       var(--button-default-active-background),
@@ -48,7 +48,7 @@
       &,
       &:hover,
       &:active {
-        background-color: var(--keyboard-background);
+        background-color: var(--za-keyboard-background);
       }
     }
   }
@@ -60,7 +60,7 @@
 
     @include e(item) {
       width: 33.333333%;
-      height: var(--keyboard-item-height);
+      height: var(--za-keyboard-item-height);
       @include onepx(top left);
 
       &:nth-of-type(3n+1) {

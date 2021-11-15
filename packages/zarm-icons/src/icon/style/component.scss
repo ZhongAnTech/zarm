@@ -32,12 +32,12 @@
 
   /* icon sizes */
   @include m(sm) {
-    @include icon-size(var(--icon-font-size-sm));
+    @include icon-size(var(--za-icon-font-size-sm));
   }
   @include m(md) {
-    @include icon-size(var(--icon-font-size-md));
+    @include icon-size(var(--za-icon-font-size-md));
   }
   @include m(lg) {
-    @include icon-size(var(--icon-font-size-lg));
+    @include icon-size(var(--za-icon-font-size-lg));
   }
 }

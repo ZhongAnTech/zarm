@@ -43,22 +43,22 @@
   }
 
   @include e(sub, plus) {
-    width: var(--stepper-height-md);
+    width: var(--za-stepper-height-md);
     padding: 0;
 
     @include b(icon) {
-      font-size: var(--stepper-icon-font-size-md);
+      font-size: var(--za-stepper-icon-font-size-md);
     }
   }
 
   @include e(input) {
     position: relative;
-    width: var(--stepper-input-width-md);
-    height: var(--stepper-height-md);
-    margin: 0 var(--stepper-input-margin-h-md);
-    padding: 0 var(--stepper-input-padding-h-md);
-    font-size: var(--stepper-input-font-size-md);
-    background: var(--stepper-input-background);
+    width: var(--za-stepper-input-width-md);
+    height: var(--za-stepper-height-md);
+    margin: 0 var(--za-stepper-input-margin-horizontal-md);
+    padding: 0 var(--za-stepper-input-padding-horizontal-md);
+    font-size: var(--za-stepper-input-font-size-md);
+    background: var(--za-stepper-input-background);
     color: var(--color-text);
     text-align: center;
     border: r(1) solid var(--border-color);
@@ -69,7 +69,7 @@
 
   @include m(disabled) {
     @include e(input) {
-      color: var(--stepper-input-disabled);
+      color: var(--za-stepper-input-disabled);
       opacity: var(--opacity-disabled);
     }
   }
@@ -82,25 +82,25 @@
 
   @include m(circle) {
     @include e(input) {
-      border-radius: var(--stepper-height-md);
+      border-radius: var(--za-stepper-height-md);
     }
   }
 
   @include m(lg) {
     @include e(input) {
-      width: var(--stepper-input-width-lg);
-      height: var(--stepper-height-lg);
-      margin: 0 var(--stepper-input-margin-h-lg);
-      padding: 0 var(--stepper-input-padding-h-lg);
-      font-size: var(--stepper-input-font-size-lg);
+      width: var(--za-stepper-input-width-lg);
+      height: var(--za-stepper-height-lg);
+      margin: 0 var(--za-stepper-input-margin-horizontal-lg);
+      padding: 0 var(--za-stepper-input-padding-horizontal-lg);
+      font-size: var(--za-stepper-input-font-size-lg);
     }
 
     @include e(sub, plus) {
-      width: var(--stepper-height-lg);
+      width: var(--za-stepper-height-lg);
       padding: 0;
 
       @include b(icon) {
-        font-size: var(--stepper-icon-font-size-lg);
+        font-size: var(--za-stepper-icon-font-size-lg);
       }
     }
   }

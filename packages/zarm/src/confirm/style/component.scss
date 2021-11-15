@@ -12,7 +12,7 @@
 
   @include b(popup) {
     position: relative;
-    background-color: var(--modal-background);
+    background-color: var(--za-modal-background);
     box-shadow: 0 r(7) r(21) var(--color-shadow);
     overflow: hidden;
   }
@@ -30,10 +30,10 @@
     );
     @include onepx(top);
 
-    background-color: var(--confirm-button-background);
+    background-color: var(--za-confirm-button-background);
 
     &:active {
-      background-color: var(--confirm-button-active-background);
+      background-color: var(--za-confirm-button-active-background);
     }
 
     &:not(:first-of-type) {

@@ -12,7 +12,7 @@
 
   @include b(popup) {
     position: relative;
-    background-color: var(--modal-background);
+    background-color: var(--za-modal-background);
     box-shadow: 0 r(7) r(21) var(--color-shadow);
     overflow: hidden;
   }
@@ -31,10 +31,10 @@
     @include onepx(top);
 
     color: var(--theme-primary);
-    background-color: var(--alert-button-background);
+    background-color: var(--za-alert-button-background);
 
     &:active {
-      background-color: var(--alert-button-active-background);
+      background-color: var(--za-alert-button-active-background);
     }
 
     @include m(loading) {

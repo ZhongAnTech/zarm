@@ -14,7 +14,7 @@
 
   @include b(popup) {
     position: relative;
-    background-color: var(--modal-background);
+    background-color: var(--za-modal-background);
     box-shadow: 0 r(7) r(21) var(--color-shadow);
     overflow: hidden;
   }
@@ -31,9 +31,9 @@
     text-align: center;
 
     &__title {
-      font-size: var(--modal-title-font-size);
+      font-size: var(--za-modal-title-font-size);
       line-height: 1;
-      color: var(--modal-title-color);
+      color: var(--za-modal-title-color);
     }
 
     &__close {
@@ -41,12 +41,12 @@
       top: r(20);
       right: r(15);
       line-height: r(15);
-      color: var(--modal-close-color);
+      color: var(--za-modal-close-color);
       font-size: r(20);
       cursor: pointer;
 
       &:hover {
-        color: var(--modal-close-active-color);
+        color: var(--za-modal-close-active-color);
       }
     }
   }

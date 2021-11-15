@@ -3,9 +3,9 @@
 @include b(message) {
   display: flex;
   position: relative;
-  padding: var(--message-padding-v) var(--message-padding-h);
-  min-height: var(--message-min-height);
-  font-size: var(--message-font-size);
+  padding: var(--za-message-padding-vertical) var(--za-message-padding-horizontal);
+  min-height: var(--za-message-min-height);
+  font-size: var(--za-message-font-size);
   @include message-theme(var(--theme-default));
 
   @include e(header) {
@@ -18,7 +18,7 @@
     margin-right: r(4);
 
     @include b(icon) {
-      font-size: var(--message-icon-size);
+      font-size: var(--za-message-icon-size);
     }
   }
 
@@ -36,7 +36,7 @@
     padding-left: r(10);
 
     @include b(icon) {
-      font-size: var(--message-icon-size);
+      font-size: var(--za-message-icon-size);
       cursor: pointer;
     }
   }
