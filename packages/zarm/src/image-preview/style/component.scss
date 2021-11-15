@@ -101,7 +101,7 @@
   }
 
   @include e(origin__button) {
-    background: var(--image-preview-origin-button-background);
+    background: var(--za-image-preview-origin-button-background);
     border: none;
     border-radius: var(--radius-xs);
     font-size: var(--font-size-sm);
