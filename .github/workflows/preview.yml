@@ -7,21 +7,17 @@ jobs:
     name: Deploy Preview
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@master
-
-      - name: Install
-        run: yarn
-
-      - name: Compile @zarm-design/cli
-        run: lerna exec --scope @zarm-design/cli -- yarn build
-
-      - name: Deploy Build
-        run: lerna exec --scope site -- yarn build
-
-      - name: Upload Surge Service
-        run: |
-          npx surge ./packages/site/assets https://preview-${{ github.event.number }}-zarm-design.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+      - uses: actions/checkout@v2
+      - uses: afc163/surge-preview@v1
+        id: preview_step
+        with:
+          surge_token: ${{ secrets.SURGE_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          dist: packages/site/assets
+          build: |
+            yarn
+            lerna exec --scope @zarm-design/cli -- yarn build
+            lerna exec --scope site -- yarn build
 
   comment:
     name: Update Status Comment
@@ -32,7 +28,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           body: |
-            [https://preview-${{ github.event.number }}-zarm-design.surge.sh](https://preview-${{ github.event.number }}-zarm-design.surge.sh)
+            [${{ steps.preview_step.outputs.preview_url }}](${{ steps.preview_step.outputs.preview_url }})
             <!-- AUTO_PREVIEW_HOOK -->
           body-include: '<!-- AUTO_PREVIEW_HOOK -->'
           number: ${{ github.event.number }}
