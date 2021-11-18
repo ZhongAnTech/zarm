@@ -18,28 +18,30 @@ jobs:
             yarn
             lerna exec --scope @zarm-design/cli -- yarn build
             lerna exec --scope site -- yarn build
+      - name: Get the preview_url
+        run: echo "url => ${{ steps.preview_step.outputs.preview_url }}"
 
-  comment:
-    name: Update Status Comment
-    runs-on: ubuntu-latest
-    steps:
-      - name: Comment Preview URL
-        uses: actions-cool/maintain-one-comment@v1.1.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          body: |
-            [${{ steps.preview_step.outputs.preview_url }}](${{ steps.preview_step.outputs.preview_url }})
-            <!-- AUTO_PREVIEW_HOOK -->
-          body-include: '<!-- AUTO_PREVIEW_HOOK -->'
-          number: ${{ github.event.number }}
-      - name: Comment For Failed
-        if: ${{ failure() }}
-        uses: actions-cool/maintain-one-comment@v1.1.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          body: |
-            Preview Site Deploy Failed!
-            <!-- AUTO_PREVIEW_HOOK -->
-          body-include: '<!-- AUTO_PREVIEW_HOOK -->'
-          number: ${{ github.event.number }}
-    needs: deploy
+  # comment:
+  #   name: Update Status Comment
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Comment Preview URL
+  #       uses: actions-cool/maintain-one-comment@v1.1.0
+  #       with:
+  #         token: ${{ secrets.GITHUB_TOKEN }}
+  #         body: |
+  #           [${{ steps.preview_step.outputs.preview_url }}](${{ steps.preview_step.outputs.preview_url }})
+  #           <!-- AUTO_PREVIEW_HOOK -->
+  #         body-include: '<!-- AUTO_PREVIEW_HOOK -->'
+  #         number: ${{ github.event.number }}
+  #     - name: Comment For Failed
+  #       if: ${{ failure() }}
+  #       uses: actions-cool/maintain-one-comment@v1.1.0
+  #       with:
+  #         token: ${{ secrets.GITHUB_TOKEN }}
+  #         body: |
+  #           Preview Site Deploy Failed!
+  #           <!-- AUTO_PREVIEW_HOOK -->
+  #         body-include: '<!-- AUTO_PREVIEW_HOOK -->'
+  #         number: ${{ github.event.number }}
+  #   needs: deploy
