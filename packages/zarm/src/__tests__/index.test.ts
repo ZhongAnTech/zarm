@@ -217,7 +217,6 @@ describe('index', () => {
           "defaultProps": Object {
             "delay": 0,
             "direction": "left",
-            "loop": true,
             "speed": 30,
           },
           "render": [Function],
