@@ -212,7 +212,16 @@ describe('index', () => {
           "render": [Function],
           "useLoading": [Function],
         },
-        "Marquee": [Function],
+        "Marquee": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "delay": 0,
+            "direction": "left",
+            "loop": true,
+            "speed": 30,
+          },
+          "render": [Function],
+        },
         "Mask": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
