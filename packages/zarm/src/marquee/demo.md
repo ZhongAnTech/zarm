@@ -8,13 +8,18 @@ import { Marquee, List } from 'zarm';
 ReactDOM.render(
   <>
     <List.Item>
-      <Marquee animationDelay={2000} animationDuration={30000}>
-        <div>我延迟执行2秒，从右向左滚动，字有点多，我走慢点</div>
+      <Marquee delay={2000} speed={120}>
+        <div>我延迟执行2秒，从右向左滚动，速度120。</div>
       </Marquee>
     </List.Item>
     <List.Item>
-      <Marquee direction="right" width="100%">
-        <div>我从左向右滚动</div>
+      <Marquee direction="right" width="100%" speed={40}>
+        <div>我从左向右滚动, 速度是40。</div>
+      </Marquee>
+    </List.Item>
+    <List.Item>
+      <Marquee direction="right" width="100%" speed={40}>
+        <div>我也是从左向右滚动，速度也是40。</div>
       </Marquee>
     </List.Item>
     <List.Item>
@@ -46,11 +51,10 @@ ReactDOM.render(
 
 ## API
 
-| 属性              | 类型             | 默认值 | 说明                                            |
-| :---------------- | :--------------- | :----- | :---------------------------------------------- |
-| direction         | string           | 'left' | 滚动方向，可选值为`left`、`right`、`up`、`down` |
-| width             | number \| string | -      |   容器宽度                                      |
-| height            | number \| string | -      | 容器高度                                        |
-| loop              | boolean          | true   | 是否循环                                        |
-| animationDuration | number           | 6000   | 动画执行时间（单位：毫秒）                      |
-| animationDelay    | number           | 0      | 动画延迟执行时间（单位：毫秒）                  |
+| 属性      | 类型             | 默认值 | 说明                                            |
+| :-------- | :--------------- | :----- | :---------------------------------------------- |
+| direction | string           | 'left' | 滚动方向，可选值为`left`、`right`、`up`、`down` |
+| width     | number \| string | -      |   容器宽度                                      |
+| height    | number \| string | -      | 容器高度                                        |
+| speed     | number           | 30     | 动画移动速度 （单位：px/秒）                    |
+| delay     | number           | 0      | 动画延迟执行时间（单位：毫秒）                  |
