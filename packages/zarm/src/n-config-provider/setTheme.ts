@@ -1,6 +1,7 @@
 import type { Theme } from './interface';
 
 export const themes = {
+  '--background-color': '#393939',
   '--theme-primary-lighter': '#303030',
   '--color-text': 'rgba(255, 255, 255, 0.85)',
   '--color-text-inverse': 'rgba(255, 255, 255, 0.8)',

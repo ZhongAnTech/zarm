@@ -1,0 +1,67 @@
+@import '../../style/core/index';
+
+$prefixCls: #{$prefix}-grid;
+
+:root {
+  --#{$prefixCls}-border-color: var(--border-color);
+  --#{$prefixCls}-background-color: var(--background-color);
+}
+
+@include b(grid) {
+  --border-color: var(--#{$prefixCls}-border-color);
+  --background-color: var(--#{$prefixCls}-background-color);
+
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+
+  @include m(bordered) {
+    @include onepx(top left, var(--border-color));
+  }
+}
+
+@include b(grid-item) {
+  position: relative;
+  box-sizing: border-box;
+
+  @include m(square) {
+    height: 0;
+
+    @include e(content) {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+    }
+  }
+
+  @include e(content) {
+    box-sizing: border-box;
+    height: 100%;
+    background: var(--background-color);
+    position: relative;
+    transition: 200ms;
+
+    @include onepx(right bottom, var(--border-color));
+
+    @include m(clickable) {
+      &:active {
+        background-color: #eee;
+      }
+    }
+
+    @include m(horizontal-bordered) {
+      &::after {
+        border-left-width: 1px;
+        border-right-width: 1px;
+      }
+    }
+
+    @include m(vertical-bordered) {
+      &::after {
+        border-top-width: 1px;
+        border-bottom-width: 1px;
+      }
+    }
+  }
+}
