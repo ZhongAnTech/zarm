@@ -1,5 +1,7 @@
 @import '../core/index.scss';
 
+$prefix: za;
+
 :root {
   @include defineColorHSL(--theme-default, 0, 0%, 90%);
   @include defineColorHSL(--theme-primary, 156, 100%, 36.9%);
@@ -17,11 +19,12 @@
   --color-shadow: rgba(56, 56, 56, 0.15);            // 阴影色
 
   // 背景色
-  --background-active: #e6e6e6;
+  --background-color: #fff;
+  --background-active: #d4d4d4;
   --background-disabled: #f2f2f2;
 
   // 边框色
-  --border-color: #dcdcdc;
+  --border-color: #c5c5c5;
   --border-disabled: #e6e6e6;
 
   // 圆角
@@ -62,7 +65,7 @@
 
   // 透明度
   --opacity-disabled: 0.5;
-  --opacity-mask: 0.5;
+  --opacity-mask: 0.4;
   --opacity-toast: 0.8;
   --opacity-tooltip: 0.8;
 
@@ -73,86 +76,91 @@
   // Components
 
   // ActionSheet
-  --action-sheet-background: #fff;
-  --action-sheet-active-background: var(--background-active);
-  --action-sheet-margin: 0;
-  --action-sheet-item-height: 50px;
-  --action-sheet-item-font-size: 16px;
+  --za-action-sheet-border-radius: 14px;
+  --za-action-sheet-spacing-margin: 0 8px 8px;
+  --za-action-sheet-actions-background: rgba(249, 249, 249, 0.94);
+  --za-action-sheet-item-height: 56px;
+  --za-action-sheet-item-font-size: 20px;
+  --za-action-sheet-item-active-background: var(--background-active);
+  --za-action-sheet-cancel-background: #fff;
+  --za-action-sheet-cancel-color: var(--theme-primary);
+  --za-action-sheet-cancel-margin-top: 8px;
 
   // activity-indicator
-  --activity-indicator-size-md: 20px;
-  --activity-indicator-size-lg: 32px;
-  --activity-indicator-path-color: #e6e6e6;
-  --activity-indicator-spinner-color: #989697;
+  --za-activity-indicator-color: var(--theme-primary);
+  --za-activity-indicator-size-md: 22px;
+  --za-activity-indicator-size-lg: 29px;
+  --za-activity-indicator-path-color: #e6e6e6;
+  --za-activity-indicator-spinner-color: #989697;
 
   // Alert
-  --alert-button-height: 50px;
-  --alert-button-font-size: 18px;
-  --alert-button-background: var(--button-default-background);
-  --alert-button-active-background: var(--background-active);
+  --za-alert-button-height: 50px;
+  --za-alert-button-font-size: 18px;
+  --za-alert-button-background: var(--za-button-default-background);
+  --za-alert-button-active-background: var(--background-active);
 
   // Badge
-  --badge-height: 14px;
-  --badge-font-size: 10px;
-  --badge-padding-h: 4px;
-  --badge-dot-diameter: 8px;
-  --badge-border-radius-rect: var(--radius-sm);
-  --badge-border-radius-round: var(--radius-round);
-  --badge-sup-top: -4px;
-  --badge-text-color: #fff;
+  --za-badge-height: 14px;
+  --za-badge-font-size: 10px;
+  --za-badge-padding-horizontal: 4px;
+  --za-badge-dot-diameter: 8px;
+  --za-badge-border-radius-rect: var(--radius-sm);
+  --za-badge-border-radius-round: var(--radius-round);
+  --za-badge-sup-top: -4px;
+  --za-badge-text-color: #fff;
 
   // Button
-  --button-height-xs: 28px;
-  --button-height-sm: 36px;
-  --button-height-md: 44px;
-  --button-height-lg: 52px;
-  --button-padding-h-xs: var(--padding-h-xs);
-  --button-padding-h-sm: var(--padding-h-sm);
-  --button-padding-h-md: var(--padding-h-md);
-  --button-padding-h-lg: var(--padding-h-lg);
-  --button-font-size-xs: var(--font-size-sm);
-  --button-font-size-sm: var(--font-size-sm);
-  --button-font-size-md: var(--font-size-md);
-  --button-font-size-lg: var(--font-size-lg);
-  --button-icon-size-xs: 16px;
-  --button-icon-size-sm: 18px;
-  --button-icon-size-md: 22px;
-  --button-icon-size-lg: 26px;
-  --button-disabled-opacity: var(--opacity-disabled);
-  --button-disabled-color-ghost: var(--border-disabled);
-  --button-default-background: var(--color-text-inverse);
-  --button-default-border: var(--theme-default);
-  --button-default-color: var(--color-text);
-  --button-default-active-background: var(--background-active);
-  --button-default-active-border: var(--background-active);
-  --button-default-active-color: var(--color-text);
-  --button-default-ghost-border: var(--color-text-inverse);
-  --button-default-ghost-color: var(--color-text-inverse);
-  --button-default-ghost-active-border: var(--background-active);
-  --button-default-ghost-active-color: var(--background-active);
-  --button-default-shadow-color: rgba(230, 230, 230, 0.3);
-  --button-primary-background: var(--theme-primary);
-  --button-primary-border: var(--theme-primary);
-  --button-primary-color: var(--color-text-inverse);
-  --button-primary-active-background: var(--theme-primary-dark);
-  --button-primary-active-border: var(--theme-primary-dark);
-  --button-primary-active-color: rgba(255, 255, 255, 0.4);
-  --button-primary-ghost-border: var(--theme-primary);
-  --button-primary-ghost-color: var(--theme-primary);
-  --button-primary-ghost-active-border: var(--theme-primary-dark);
-  --button-primary-ghost-active-color: var(--theme-primary-dark);
-  --button-primary-shadow-color: rgba(0, 188, 112, 0.3);
-  --button-danger-background: var(--theme-danger);
-  --button-danger-border: var(--theme-danger);
-  --button-danger-color: var(--color-text-inverse);
-  --button-danger-active-background: var(--theme-danger-dark);
-  --button-danger-active-border: var(--theme-danger-dark);
-  --button-danger-active-color: rgba(255, 255, 255, 0.4);
-  --button-danger-ghost-border: var(--theme-danger);
-  --button-danger-ghost-color: var(--theme-danger);
-  --button-danger-ghost-active-border: var(--theme-danger-dark);
-  --button-danger-ghost-active-color: var(--theme-danger-dark);
-  --button-danger-shadow-color: rgba(255, 80, 80, 0.3);
+  --za-button-height-xs: 28px;
+  --za-button-height-sm: 36px;
+  --za-button-height-md: 44px;
+  --za-button-height-lg: 52px;
+  --za-button-padding-h-xs: var(--padding-h-xs);
+  --za-button-padding-h-sm: var(--padding-h-sm);
+  --za-button-padding-h-md: var(--padding-h-md);
+  --za-button-padding-h-lg: var(--padding-h-lg);
+  --za-button-font-size-xs: var(--font-size-sm);
+  --za-button-font-size-sm: var(--font-size-sm);
+  --za-button-font-size-md: var(--font-size-md);
+  --za-button-font-size-lg: var(--font-size-lg);
+  --za-button-icon-size-xs: 16px;
+  --za-button-icon-size-sm: 18px;
+  --za-button-icon-size-md: 22px;
+  --za-button-icon-size-lg: 26px;
+  --za-button-disabled-opacity: var(--opacity-disabled);
+  --za-button-disabled-color-ghost: var(--border-disabled);
+  --za-button-default-background: var(--color-text-inverse);
+  --za-button-default-border: var(--theme-default);
+  --za-button-default-color: var(--color-text);
+  --za-button-default-active-background: #e6e6e6;
+  --za-button-default-active-border: #e6e6e6;
+  --za-button-default-active-color: var(--color-text);
+  --za-button-default-ghost-border: var(--color-text-inverse);
+  --za-button-default-ghost-color: var(--color-text-inverse);
+  --za-button-default-ghost-active-border: #e6e6e6;
+  --za-button-default-ghost-active-color: #e6e6e6;
+  --za-button-default-shadow-color: rgba(230, 230, 230, 0.3);
+  --za-button-primary-background: var(--theme-primary);
+  --za-button-primary-border: var(--theme-primary);
+  --za-button-primary-color: var(--color-text-inverse);
+  --za-button-primary-active-background: var(--theme-primary-dark);
+  --za-button-primary-active-border: var(--theme-primary-dark);
+  --za-button-primary-active-color: rgba(255, 255, 255, 0.4);
+  --za-button-primary-ghost-border: var(--theme-primary);
+  --za-button-primary-ghost-color: var(--theme-primary);
+  --za-button-primary-ghost-active-border: var(--theme-primary-dark);
+  --za-button-primary-ghost-active-color: var(--theme-primary-dark);
+  --za-button-primary-shadow-color: rgba(0, 188, 112, 0.3);
+  --za-button-danger-background: var(--theme-danger);
+  --za-button-danger-border: var(--theme-danger);
+  --za-button-danger-color: var(--color-text-inverse);
+  --za-button-danger-active-background: var(--theme-danger-dark);
+  --za-button-danger-active-border: var(--theme-danger-dark);
+  --za-button-danger-active-color: rgba(255, 255, 255, 0.4);
+  --za-button-danger-ghost-border: var(--theme-danger);
+  --za-button-danger-ghost-color: var(--theme-danger);
+  --za-button-danger-ghost-active-border: var(--theme-danger-dark);
+  --za-button-danger-ghost-active-color: var(--theme-danger-dark);
+  --za-button-danger-shadow-color: rgba(255, 80, 80, 0.3);
 
   // Calendar
   --calendar-height: 45px; // 最小高度
@@ -174,13 +182,13 @@
   --calendar-day-height: 40px; // 日期高度
 
   // Carousel
-  --carousel-pagination-distance: 8px;
-  --carousel-pagination-rect-width: 19px;
-  --carousel-pagination-rect-height: 4px;
-  --carousel-pagination-rect-border-radius: 1px;
-  --carousel-pagination-rect-step: 2px;
-  --carousel-pagination-rect-color: rgba(255, 255, 255, 0.6);
-  --carousel-pagination-rect-color-active: #fff;
+  --za-carousel-pagination-distance: 8px;
+  --za-carousel-pagination-rect-width: 19px;
+  --za-carousel-pagination-rect-height: 4px;
+  --za-carousel-pagination-rect-border-radius: 1px;
+  --za-carousel-pagination-rect-step: 2px;
+  --za-carousel-pagination-rect-color: rgba(255, 255, 255, 0.6);
+  --za-carousel-pagination-rect-color-active: #fff;
 
   // Checkbox
   // 大小
@@ -239,17 +247,17 @@
   --za-checkbox-group-button-spacing-horizontal-lg: var(--padding-h-lg);
 
   // Collapse
-  --collapse-height: 52px;
-  --collapse-padding-h: 16px;
-  --collapse-padding-v: 15px;
-  --collapse-arrow-color: #bcbcbc;
-  --collapse-arrow-disabled-color: #eee;
+  --za-collapse-height: 52px;
+  --za-collapse-padding-horizontal: 16px;
+  --za-collapse-padding-vertical: 15px;
+  --za-collapse-arrow-color: #bcbcbc;
+  --za-collapse-arrow-disabled-color: #eee;
 
   // Confirm
-  --confirm-button-height: 50px;
-  --confirm-button-font-size: 18px;
-  --confirm-button-background: var(--button-default-background);
-  --confirm-button-active-background: var(--background-active);
+  --za-confirm-button-height: 50px;
+  --za-confirm-button-font-size: 18px;
+  --za-confirm-button-background: var(--za-button-default-background);
+  --za-confirm-button-active-background: var(--background-active);
 
   // List
   // 列表项高度
@@ -322,30 +330,30 @@
   --za-input-disabled-color: var(--color-text-disabled);
 
   // ImagePreview
-  --image-preview-origin-button-background: #2d2d2d;
+  --za-image-preview-origin-button-background: #2d2d2d;
 
   // Keyboard
-  --keyboard-background: #fff;
-  --keyboard-item-background: #fff;
-  --keyboard-item-height: 52px;
-  --keyboard-item-font-size: 30px;
+  --za-keyboard-background: #fff;
+  --za-keyboard-item-background: #fff;
+  --za-keyboard-item-height: 52px;
+  --za-keyboard-item-font-size: 30px;
 
   // Loading
-  --loading-background: rgba(0, 0, 0, var(--opacity-toast));
+  --za-loading-background: rgba(0, 0, 0, var(--opacity-toast));
 
   // Message
-  --message-min-height: 29px;
-  --message-font-size: 12px;
-  --message-icon-size: 14px;
-  --message-padding-v: 6px;
-  --message-padding-h: 8px;
+  --za-message-min-height: 29px;
+  --za-message-font-size: 12px;
+  --za-message-icon-size: 14px;
+  --za-message-padding-vertical: 6px;
+  --za-message-padding-horizontal: 8px;
 
   // Modal
-  --modal-background: #fff;
-  --modal-title-font-size: 18px;
-  --modal-title-color: var(--color-text);
-  --modal-close-color: #ccc;
-  --modal-close-active-color: #999;
+  --za-modal-background: #fff;
+  --za-modal-title-font-size: 18px;
+  --za-modal-title-color: var(--color-text);
+  --za-modal-close-color: #ccc;
+  --za-modal-close-active-color: #999;
 
   // NavBar
   // 背景色
@@ -362,12 +370,12 @@
   --za-nav-bar-padding-horizontal: 16px;
 
   // NoticeBar
-  --notice-bar-height: 24px;
-  --notice-bar-min-height: 40px;
-  --notice-bar-font-size: 14px;
-  --notice-bar-padding-v: 8px;
-  --notice-bar-padding-h: 12px;
-  --notice-bar-icon-size: 16px;
+  --za-notice-bar-height: 24px;
+  --za-notice-bar-min-height: 40px;
+  --za-notice-bar-font-size: 14px;
+  --za-notice-bar-padding-vertical: 8px;
+  --za-notice-bar-padding-horizontal: 12px;
+  --za-notice-bar-icon-size: 16px;
 
   // Panel
   // 左右留白宽度
@@ -392,16 +400,16 @@
   --picker-header-background: #f7f7f7;
 
   // Progress
-  --progress-background: #f2f2f2;
-  --progress-width-lg: 100%;
-  --progress-width-md: 100%;
-  --progress-width-sm: 140px;
-  --progress-size-lg: 200px;
-  --progress-size-md: 150px;
-  --progress-size-sm: 80px;
-  --progress-font-size-circle-lg: 30px;
-  --progress-font-size-circle-md: 24px;
-  --progress-font-size-circle-sm: 18px;
+  --za-progress-background: #f2f2f2;
+  --za-progress-width-lg: 100%;
+  --za-progress-width-md: 100%;
+  --za-progress-width-sm: 140px;
+  --za-progress-size-lg: 200px;
+  --za-progress-size-md: 150px;
+  --za-progress-size-sm: 80px;
+  --za-progress-font-size-circle-lg: 30px;
+  --za-progress-font-size-circle-md: 24px;
+  --za-progress-font-size-circle-sm: 18px;
 
   // Pull
   --pull-control-height: 50px;
@@ -498,33 +506,33 @@
   --za-search-bar-cancel-transition: all .2s;
 
   // Slider
-  --slider-line-background: var(--border-color);
-  --slider-line-height: 2px;
-  --slider-line-dot-width: 6px;
-  --slider-line-dot-color: #fff;
-  --slider-vertical-line-width: 2px;
-  --slider-handle-size: 24px;
-  --slider-handle-size-small: 16px;
-  --slider-mark-handle: 24px;
-  --slider-mark-size: 15px;
-  --slider-handle-background: #fff;
-  --slider-handle-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --za-slider-line-background: var(--border-color);
+  --za-slider-line-height: 2px;
+  --za-slider-line-dot-width: 6px;
+  --za-slider-line-dot-color: #fff;
+  --za-slider-vertical-line-width: 2px;
+  --za-slider-handle-size: 24px;
+  --za-slider-handle-size-small: 16px;
+  --za-slider-mark-handle: 24px;
+  --za-slider-mark-size: 15px;
+  --za-slider-handle-background: #fff;
+  --za-slider-handle-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 
   // Stepper
-  --stepper-input-background: #fff;
-  --stepper-height-md: 28px;
-  --stepper-height-lg: 36px;
-  --stepper-icon-font-size-md: 12px;
-  --stepper-icon-font-size-lg: 14px;
-  --stepper-input-width-md: 50px;
-  --stepper-input-width-lg: 60px;
-  --stepper-input-disabled: var(--color-text-disabled);
-  --stepper-input-font-size-md: 14px;
-  --stepper-input-font-size-lg: 16px;
-  --stepper-input-margin-h-md: 4px;
-  --stepper-input-margin-h-lg: 4px;
-  --stepper-input-padding-h-md: 8px;
-  --stepper-input-padding-h-lg: 8px;
+  --za-stepper-input-background: #fff;
+  --za-stepper-height-md: 28px;
+  --za-stepper-height-lg: 36px;
+  --za-stepper-icon-font-size-md: 12px;
+  --za-stepper-icon-font-size-lg: 14px;
+  --za-stepper-input-width-md: 50px;
+  --za-stepper-input-width-lg: 60px;
+  --za-stepper-input-disabled: var(--color-text-disabled);
+  --za-stepper-input-font-size-md: 14px;
+  --za-stepper-input-font-size-lg: 16px;
+  --za-stepper-input-margin-horizontal-md: 4px;
+  --za-stepper-input-margin-horizontal-lg: 4px;
+  --za-stepper-input-padding-horizontal-md: 8px;
+  --za-stepper-input-padding-horizontal-lg: 8px;
 
   // Switch
   // 宽度
@@ -553,44 +561,44 @@
   --za-switch-knob-transition-duration: 0.3s;
 
   // Tabs
-  --tabs-height: 45px;
-  --tabs-item-font-size: var(--font-size-lg);
-  --tabs-line-height: 2px;
-  --tabs-item-horizontal-padding: 20px;
-  --tabs-item-vertical-padding: 12px;
+  --za-tabs-height: 45px;
+  --za-tabs-line-height: 2px;
+  --za-tabs-item-font-size: var(--font-size-lg);
+  --za-tabs-item-padding-horizontal: 20px;
+  --za-tabs-item-padding-vertical: 12px;
 
   // Toast
-  --toast-border-radius: 6px;
-  --toast-background: rgba(0, 0, 0, var(--opacity-toast));
-  --toast-color: var(--color-text-inverse);
-  --toast-font-size: 13px;
+  --za-toast-border-radius: 6px;
+  --za-toast-background: rgba(0, 0, 0, var(--opacity-toast));
+  --za-toast-color: var(--color-text-inverse);
+  --za-toast-font-size: 13px;
 
   // Tooltip
-  --tooltip-font-size: 12px;
-  --tooltip-color: var(--color-text-inverse);
-  --tooltip-arrow-size: 4px;
-  --tooltip-padding-v: var(--padding-v-xs);
-  --tooltip-padding-h: var(--padding-h-xs);
-  --tooltip-background: rgba(0, 0, 0, var(--opacity-tooltip));
+  --za-tooltip-font-size: 12px;
+  --za-tooltip-color: var(--color-text-inverse);
+  --za-tooltip-arrow-size: 4px;
+  --za-tooltip-padding-vertical: var(--padding-v-xs);
+  --za-tooltip-padding-horizontal: var(--padding-h-xs);
+  --za-tooltip-background: rgba(0, 0, 0, var(--opacity-tooltip));
 
   // Tabbar
-  --tabbar-height: 50px;
-  --tabbar-hidden-bottom: -50px;
-  --tabbar-background: #fff;
-  --tabbar-item-font-size: 12px;
-  --tabbar-item-active-color: var(--theme-primary);
+  --za-tabbar-height: 50px;
+  --za-tabbar-hidden-bottom: -50px;
+  --za-tabbar-background: #fff;
+  --za-tabbar-item-font-size: 12px;
+  --za-tabbar-item-active-color: var(--theme-primary);
 
   // Wheel
-  --wheel-item-height: 34px;
-  --wheel-item-rows: 5;
-  --wheel-item-font-size: 18px;
-  --wheel-color: var(--color-text);
+  --za-wheel-item-height: 34px;
+  --za-wheel-item-rows: 5;
+  --za-wheel-item-font-size: 18px;
+  --za-wheel-color: var(--color-text);
 
   // Icon
-  --icon-font-size-sm: 16px;
-  --icon-font-size-md: 24px;
-  --icon-font-size-lg: 32px;
-  --icon-theme-default: var(--color-text);
+  --za-icon-font-size-sm: 16px;
+  --za-icon-font-size-md: 24px;
+  --za-icon-font-size-lg: 32px;
+  --za-icon-theme-default: var(--color-text);
 
   // StackPicker
   --stack-picker-background: #fff;
@@ -601,4 +609,10 @@
   --stack-picker-stack-item-height: 35px;
   --stack-picker-padding: 20px;
   --stack-picker-left: 60px;
+
+  // Rate
+  --za-rate-size: 20px;
+  --za-rate-color: var(--theme-danger);
+  --za-rate-unchecked-color: #eee;
+  --za-rate-gap: 4px;
 }

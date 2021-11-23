@@ -18,8 +18,8 @@
     position: relative;
     overflow: hidden;
     display: flex;
-    min-height: var(--collapse-height);
-    padding: var(--collapse-padding-v) var(--collapse-padding-h);
+    min-height: var(--za-collapse-height);
+    padding: var(--za-collapse-padding-vertical) var(--za-collapse-padding-horizontal);
     @include onepx(top, var(--za-list-item-separator-color));
 
     &:after {
@@ -73,8 +73,8 @@
 
     @include e(arrow) {
       &:after {
-        border-right-color: var(--collapse-arrow-disabled-color);
-        border-top-color: var(--collapse-arrow-disabled-color);
+        border-right-color: var(--za-collapse-arrow-disabled-color);
+        border-top-color: var(--za-collapse-arrow-disabled-color);
       }
     }
   }

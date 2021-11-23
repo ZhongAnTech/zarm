@@ -2,17 +2,17 @@ import type { ButtonSize, ButtonShape } from '../button/interface';
 
 export type CheckboxType = 'button' | 'list';
 export type CheckboxValue = number | string;
+export type CheckboxGroupListMarkerAlign = 'before' | 'after';
 
 export interface BaseCheckboxProps {
   type?: CheckboxType;
   disabled?: boolean;
-  value?: CheckboxValue;
   checked?: boolean;
   defaultChecked?: boolean;
-  indeterminate?: boolean;
+  value?: CheckboxValue;
   id?: string;
-  buttonSize?: ButtonSize;
-  buttonShape?: ButtonShape;
+  listMarkerAlign?: CheckboxGroupListMarkerAlign;
+  indeterminate?: boolean;
 }
 
 export interface BaseCheckboxGroupProps {
@@ -25,5 +25,6 @@ export interface BaseCheckboxGroupProps {
   buttonShape?: ButtonShape;
   buttonCompact?: boolean;
   buttonGhost?: boolean;
+  listMarkerAlign?: CheckboxGroupListMarkerAlign;
   onChange?: (value: Array<CheckboxValue>) => void;
 }

@@ -1,8 +1,9 @@
 import React, { RefAttributes, useCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
-import BaseToastProps, { HTMLDefProps } from './interface';
-import Popup from '../popup';
 import { ConfigContext } from '../n-config-provider';
+import Popup from '../popup';
+import type { BaseToastProps } from './interface';
+import type { HTMLDefProps } from '../utils/utilityTypes';
 
 export interface ToastProps extends BaseToastProps, HTMLDefProps {}
 export interface UseToast {
@@ -62,6 +63,7 @@ const Toast = React.forwardRef<unknown, ToastProps>((props, ref) => {
       direction="center"
       maskType="transparent"
       width="70%"
+      lockScroll={false}
       {...others}
       visible={visible}
       afterClose={afterClose}

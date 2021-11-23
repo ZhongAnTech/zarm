@@ -43,11 +43,10 @@ const Checkbox = React.forwardRef<unknown, CheckboxProps>((props, ref) => {
     defaultChecked,
     disabled,
     id,
+    listMarkerAlign,
     indeterminate,
     children,
     onChange,
-    buttonShape,
-    buttonSize,
     ...restProps
   } = props;
 
@@ -67,6 +66,9 @@ const Checkbox = React.forwardRef<unknown, CheckboxProps>((props, ref) => {
   });
 
   const onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (disabled) {
+      return;
+    }
     const newChecked = !currentChecked;
     if (!('checked' in props)) {
       setCurrentChecked(newChecked);
@@ -82,7 +84,7 @@ const Checkbox = React.forwardRef<unknown, CheckboxProps>((props, ref) => {
       aria-checked={currentChecked}
       className={`${prefixCls}__input`}
       disabled={disabled}
-      value={currentChecked ? 'on' : 'off'}
+      value={value}
       defaultChecked={'defaultChecked' in props ? defaultChecked : undefined}
       checked={'checked' in props ? currentChecked : undefined}
       onChange={onValueChange}
@@ -110,19 +112,20 @@ const Checkbox = React.forwardRef<unknown, CheckboxProps>((props, ref) => {
   }, [checked, defaultChecked]);
 
   if (type === 'list') {
+    const marker = (
+      <>
+        <span className={`${prefixCls}__widget`}>
+          <span className={`${prefixCls}__inner`}>
+            <SuccessIcon className={`${prefixCls}__marker`} />
+          </span>
+        </span>
+        {inputRender}
+      </>
+    );
+
     const listProps: ListItemProps = {
       hasArrow: false,
       className: cls,
-      prefix: (
-        <>
-          <span className={`${prefixCls}__widget`}>
-            <span className={`${prefixCls}__inner`}>
-              <SuccessIcon className={`${prefixCls}__marker`} />
-            </span>
-          </span>
-          {inputRender}
-        </>
-      ),
       title: (
         <>
           {children && <span className={`${prefixCls}__text`}>{children}</span>}
@@ -131,6 +134,9 @@ const Checkbox = React.forwardRef<unknown, CheckboxProps>((props, ref) => {
       ),
       onClick: !disabled ? () => {} : undefined,
     };
+
+    listMarkerAlign === 'after' ? (listProps.after = marker) : (listProps.prefix = marker);
+
     return <List.Item ref={checkboxRef} {...listProps} />;
   }
 

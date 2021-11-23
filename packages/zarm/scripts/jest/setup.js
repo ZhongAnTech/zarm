@@ -1,4 +1,6 @@
 const Enzyme = require('enzyme');
+require('jest-canvas-mock');
+
 const Adapter =
   process.env.REACT === '16'
     ? require('enzyme-adapter-react-16')

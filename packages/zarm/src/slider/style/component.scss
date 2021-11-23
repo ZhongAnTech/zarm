@@ -6,7 +6,7 @@
   // 横向
   @include e(content) {
     position: relative;
-    margin: calc(var(--slider-handle-size) / 2) calc(var(--slider-handle-size) / 2);
+    margin: calc(var(--za-slider-handle-size) / 2) calc(var(--za-slider-handle-size) / 2);
     flex: 1;
   }
 
@@ -14,8 +14,8 @@
   @include e(line) {
     position: relative;
     flex: 1;
-    height: var(--slider-line-height);
-    background-color: var(--slider-line-background);
+    height: var(--za-slider-line-height);
+    background-color: var(--za-slider-line-background);
 
     @include e(line__bg) {
       height: 100%;
@@ -25,12 +25,12 @@
     // 刻度
     @include e(line__dot) {
       position: absolute;
-      width: var(--slider-line-dot-width);
-      height: var(--slider-line-dot-width);
-      margin-top: calc((var(--slider-line-dot-width) + var(--slider-line-height)) / -2);
-      margin-left: calc(var(--slider-line-dot-width) / -2);
-      background-color: var(--slider-line-dot-color);
-      border: 1px solid var(--slider-line-background);
+      width: var(--za-slider-line-dot-width);
+      height: var(--za-slider-line-dot-width);
+      margin-top: calc((var(--za-slider-line-dot-width) + var(--za-slider-line-height)) / -2);
+      margin-left: calc(var(--za-slider-line-dot-width) / -2);
+      background-color: var(--za-slider-line-dot-color);
+      border: 1px solid var(--za-slider-line-background);
       border-radius: 50%;
       cursor: pointer;
 
@@ -44,13 +44,13 @@
   @include e(handle) {
     position: absolute;
     left: 0;
-    margin-top: calc((var(--slider-handle-size) + var(--slider-line-height)) / -2);
-    margin-left: calc(var(--slider-handle-size) / -2);
-    width: var(--slider-handle-size);
-    height: var(--slider-handle-size);
+    margin-top: calc((var(--za-slider-handle-size) + var(--za-slider-line-height)) / -2);
+    margin-left: calc(var(--za-slider-handle-size) / -2);
+    width: var(--za-slider-handle-size);
+    height: var(--za-slider-handle-size);
     border-radius: 50%;
-    background-color: var(--slider-handle-background);
-    box-shadow: var(--slider-handle-shadow);
+    background-color: var(--za-slider-handle-background);
+    box-shadow: var(--za-slider-handle-shadow);
     touch-action: none;
 
     @include b(tooltip) {
@@ -58,19 +58,19 @@
     }
 
     @include e(handle__shadow) {
-      width: var(--slider-handle-size);
-      height: var(--slider-handle-size);
+      width: var(--za-slider-handle-size);
+      height: var(--za-slider-handle-size);
     }
   }
 
   // 标签
   @include e(marks) {
     position: absolute;
-    font-size: var(--slider-mark-size);
+    font-size: var(--za-slider-mark-size);
     top: r(10);
     left: 0;
     right: 0;
-    color: var(--slider-line-background);
+    color: var(--za-slider-line-background);
 
     @include e(mark) {
       position: absolute;
@@ -82,18 +82,18 @@
   // 横向显示标签
   @include m(marked) {
     @include e(content) {
-      margin: calc(var(--slider-handle-size-small) / 2) calc(var(--slider-handle-size-small) / 2);
+      margin: calc(var(--za-slider-handle-size-small) / 2) calc(var(--za-slider-handle-size-small) / 2);
     }
 
     @include e(handle) {
-      width: var(--slider-handle-size-small);
-      height: var(--slider-handle-size-small);
-      margin-top: calc((var(--slider-handle-size-small) + var(--slider-line-height)) / -2);
-      margin-left: calc(var(--slider-handle-size-small) / -2);
+      width: var(--za-slider-handle-size-small);
+      height: var(--za-slider-handle-size-small);
+      margin-top: calc((var(--za-slider-handle-size-small) + var(--za-slider-line-height)) / -2);
+      margin-left: calc(var(--za-slider-handle-size-small) / -2);
 
       @include e(handle__shadow) {
-        width: var(--slider-handle-size-small);
-        height: var(--slider-handle-size-small);
+        width: var(--za-slider-handle-size-small);
+        height: var(--za-slider-handle-size-small);
       }
     }
   }
@@ -112,11 +112,11 @@
     align-items: initial;
 
     @include e(content) {
-      margin: calc(var(--slider-handle-size) / 2) calc(var(--slider-handle-size) / 2);
+      margin: calc(var(--za-slider-handle-size) / 2) calc(var(--za-slider-handle-size) / 2);
     }
 
     @include e(line) {
-      width: var(--slider-vertical-line-width);
+      width: var(--za-slider-vertical-line-width);
       position: absolute;
       top: 0;
       height: 100%;
@@ -124,23 +124,23 @@
       @include e(line__bg) {
         position: absolute;
         bottom: 0;
-        width: var(--slider-line-height);
+        width: var(--za-slider-line-height);
       }
     }
 
     @include e(line__dot) {
-      margin-bottom: calc(var(--slider-line-dot-width) / -2);
-      margin-left: calc((var(--slider-line-dot-width) - var(--slider-line-height)) / -2);
+      margin-bottom: calc(var(--za-slider-line-dot-width) / -2);
+      margin-left: calc((var(--za-slider-line-dot-width) - var(--za-slider-line-height)) / -2);
     }
 
     @include e(handle) {
-      margin-top: calc(var(--slider-handle-size) / -2);
+      margin-top: calc(var(--za-slider-handle-size) / -2);
     }
 
     // 垂直显示标签
     @include m(marked) {
       @include e(content) {
-        margin: calc(var(--slider-handle-size-small) / 2) calc(var(--slider-handle-size-small) / 2);
+        margin: calc(var(--za-slider-handle-size-small) / 2) calc(var(--za-slider-handle-size-small) / 2);
       }
 
       @include e(marks) {
@@ -156,10 +156,10 @@
 
       @include e(handle) {
         margin-top: 0;
-        margin-bottom: calc(var(--slider-handle-size-small) / -2);
-        margin-left: calc((var(--slider-handle-size-small) - var(--slider-line-height)) / -2);
-        width: var(--slider-handle-size-small);
-        height: var(--slider-handle-size-small);
+        margin-bottom: calc(var(--za-slider-handle-size-small) / -2);
+        margin-left: calc((var(--za-slider-handle-size-small) - var(--za-slider-line-height)) / -2);
+        width: var(--za-slider-handle-size-small);
+        height: var(--za-slider-handle-size-small);
       }
     }
   }

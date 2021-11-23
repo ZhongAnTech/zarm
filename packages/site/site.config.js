@@ -139,6 +139,13 @@ module.exports = {
         style: false,
       },
       {
+        key: 'rate',
+        name: '评分',
+        module: () => import('zarm/rate/demo.md'),
+        source: 'zarm/rate/demo.md',
+        style: false,
+      },
+      {
         key: 'search-bar',
         name: '搜索栏',
         module: () => import('zarm/search-bar/demo.md'),
@@ -310,6 +317,13 @@ module.exports = {
         source: 'zarm/image-preview/demo.md',
         style: true,
       },
+      {
+        key: 'water-mark',
+        name: '水印',
+        module: () => import('zarm/water-mark/demo.md'),
+        source: 'zarm/water-mark/demo.md',
+        style: false,
+      },
     ],
     navigation: [
       {
@@ -339,6 +353,13 @@ module.exports = {
         module: () => import('zarm/tab-bar/demo.md'),
         source: 'zarm/tab-bar/demo.md',
         style: false,
+      },
+      {
+        key: 'grid',
+        name: '宫格',
+        module: () => import('zarm/grid/demo.md'),
+        source: 'zarm/grid/demo.md',
+        style: true,
       },
     ],
     hooks: [

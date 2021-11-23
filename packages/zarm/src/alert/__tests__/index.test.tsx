@@ -14,8 +14,8 @@ describe('Alert', () => {
     const wrapper = shallow(<Alert />);
     const button = wrapper.find(Modal).prop('footer') as React.ReactElement;
     expect(button.props).toEqual({
-      type: 'button',
       className: 'za-alert__button',
+      loadingClassName: 'za-alert__button--loading',
       onClick: undefined,
       children: '关闭',
     });
@@ -26,8 +26,8 @@ describe('Alert', () => {
     const wrapper = shallow(<Alert onCancel={onCancel} cancelText="close" />);
     const button = wrapper.find(Modal).prop('footer') as React.ReactElement;
     expect(button.props).toEqual({
-      type: 'button',
       className: 'za-alert__button',
+      loadingClassName: 'za-alert__button--loading',
       onClick: onCancel,
       children: 'close',
     });

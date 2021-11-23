@@ -1,52 +1,48 @@
-import React, { PureComponent } from 'react';
+import * as React from 'react';
 import classnames from 'classnames';
-import PropsType from './PropsType';
+import type { BaseAlertProps } from './interface';
 import Modal from '../modal';
-import alertLocale from './locale/zh_CN';
+import { ConfigContext } from '../n-config-provider';
+import ModalButton from '../modal/ModalButton';
 
-export interface AlertProps extends PropsType {
-  prefixCls?: string;
+export interface AlertProps extends BaseAlertProps {
   className?: string;
+  style?: React.CSSProperties;
 }
 
-export default class Alert extends PureComponent<AlertProps, {}> {
-  static defaultProps: AlertProps = {
-    prefixCls: 'za-alert',
-    animationType: 'zoom',
-    locale: alertLocale,
-    shape: 'radius',
-  };
+const Alert: React.FC<AlertProps> = (props) => {
+  const { className, shape, content, cancelText, onCancel, ...rest } = props;
+  const { prefixCls: globalPrefixCls, locale } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-alert`;
+  const classes = classnames(prefixCls, className, {
+    [`${prefixCls}--${shape}`]: !!shape,
+  });
 
-  render() {
-    const {
-      prefixCls,
-      className,
-      content,
-      cancelText,
-      onCancel,
-      locale,
-      shape,
-      ...others
-    } = this.props;
-    const cls = {
-      alert: classnames(prefixCls, className, {
-        [`${prefixCls}--${shape}`]: !!shape,
-      }),
-    };
+  return (
+    <div className={classes}>
+      <Modal
+        {...rest}
+        footer={
+          <ModalButton
+            className={`${prefixCls}__button`}
+            loadingClassName={`${prefixCls}__button--loading`}
+            onClick={onCancel}
+          >
+            {cancelText || locale?.Alert.cancelText}
+          </ModalButton>
+        }
+      >
+        {content}
+      </Modal>
+    </div>
+  );
+};
 
-    return (
-      <div className={cls.alert}>
-        <Modal
-          {...others}
-          footer={
-            <button type="button" className={`${prefixCls}__button`} onClick={onCancel}>
-              {cancelText || locale!.cancelText}
-            </button>
-          }
-        >
-          {content}
-        </Modal>
-      </div>
-    );
-  }
-}
+Alert.displayName = 'Alert';
+
+Alert.defaultProps = {
+  animationType: 'zoom',
+  shape: 'radius',
+};
+
+export default Alert;

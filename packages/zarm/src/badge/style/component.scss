@@ -11,10 +11,10 @@
     justify-content: center;
     align-items: center;
     top: auto;
-    color: var(--badge-text-color);
-    font-size: var(--badge-font-size);
-    height: var(--badge-height);
-    padding: 0 var(--badge-padding-h);
+    color: var(--za-badge-text-color);
+    font-size: var(--za-badge-font-size);
+    height: var(--za-badge-height);
+    padding: 0 var(--za-badge-padding-horizontal);
     white-space: nowrap;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -38,8 +38,8 @@
 
   @include m(dot) {
     @include e(content) {
-      width: var(--badge-dot-diameter);
-      height: var(--badge-dot-diameter);
+      width: var(--za-badge-dot-diameter);
+      height: var(--za-badge-dot-diameter);
       padding: 0;
       border-radius: var(--radius-circle);
     }
@@ -47,20 +47,20 @@
 
   @include m(radius) {
     @include e(content) {
-      border-radius: var(--badge-border-radius-rect);
+      border-radius: var(--za-badge-border-radius-rect);
     }
   }
 
   @include m(round) {
     @include e(content) {
-      min-width: var(--badge-height);
-      border-radius: var(--badge-border-radius-round);
+      min-width: var(--za-badge-height);
+      border-radius: var(--za-badge-border-radius-round);
     }
   }
 
   @include m(circle) {
     @include e(content) {
-      width: var(--badge-height);
+      width: var(--za-badge-height);
       border-radius: var(--radius-circle);
       padding: 0;
     }
@@ -68,8 +68,8 @@
 
   @include m(leaf) {
     @include e(content) {
-      min-width: var(--badge-height);
-      border-radius: var(--badge-border-radius-round) var(--badge-border-radius-round) var(--badge-border-radius-round) 0;
+      min-width: var(--za-badge-height);
+      border-radius: var(--za-badge-border-radius-round) var(--za-badge-border-radius-round) var(--za-badge-border-radius-round) 0;
     }
   }
 
@@ -78,12 +78,12 @@
       position: absolute;
       top: 0;
       left: 100%;
-      transform: translateX(calc(var(--badge-height) / -2)) translateY(var(--badge-sup-top));
+      transform: translateX(calc(var(--za-badge-height) / -2)) translateY(var(--za-badge-sup-top));
     }
 
     @include m(dot) {
       @include e(content) {
-        transform: translateX(calc(var(--badge-dot-diameter) / -2)) translateY(-50%);
+        transform: translateX(calc(var(--za-badge-dot-diameter) / -2)) translateY(-50%);
       }
     }
   }

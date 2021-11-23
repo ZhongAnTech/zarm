@@ -68,6 +68,7 @@
   ],
   "dependencies": {
     "@babel/runtime": "^7.14.0",
+    "@use-gesture/react": "^10.1.1",
     "@zarm-design/icons": "^0.1.1",
     "better-scroll": "2.3.1",
     "classnames": "^2.3.1",
@@ -90,6 +91,7 @@
     "dekko": "^0.2.1",
     "enzyme": "^3.11.0",
     "enzyme-to-json": "^3.6.2",
+    "jest-canvas-mock": "^2.3.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },

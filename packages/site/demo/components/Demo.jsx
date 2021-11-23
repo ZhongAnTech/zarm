@@ -66,10 +66,7 @@ export default ({ location, globalContext, children }) => {
           )
           // 替换格式
           // ReactDOM.render(<Demo />, mountNode);
-          .replace(
-            /ReactDOM.render\(\s?([^]+?)(,\s?mountNode\s?\))/g,
-            renderTpl,
-          )
+          .replace(/ReactDOM.render\(\s?([^]+?)(,\s?mountNode\s?\))/g, renderTpl)
           // 替换格式
           // ReactDOM.render(
           //   <>
@@ -78,10 +75,7 @@ export default ({ location, globalContext, children }) => {
           //   </>,
           //   mountNode,
           // );
-          .replace(
-            /ReactDOM.render\(\s?([^]+?)(,([\r\n])(\s)*mountNode,(\s)*\))/g,
-            renderTpl,
-          );
+          .replace(/ReactDOM.render\(\s?([^]+?)(,([\r\n])(\s)*mountNode,(\s)*\))/g, renderTpl);
 
         const { code } = transform(value, {
           presets: ['es2015', 'react'],

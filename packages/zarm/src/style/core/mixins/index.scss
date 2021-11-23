@@ -43,9 +43,10 @@
       left: 0;
       top: 0;
       border-radius: $border-radius;
+      border: 0 solid $border-color;
 
       @each $position in $positions {
-        border-#{$position}: 1PX solid $border-color;
+        border-#{$position}-width: 1PX;
       }
 
       @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {

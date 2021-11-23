@@ -77,10 +77,10 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性       | 类型                   | 默认值   | 说明                                         |
-| :--------- | :--------------------- | :------- | :------------------------------------------- |
-| type       | string                 | 'number' | 键盘类型，可选值 `number`、`price`、`idcard` |
-| onKeyClick | (key?: string) => void | -        | 点击按键时触发的回调函数                     |
+| 属性       | 类型                  | 默认值   | 说明                                         |
+| :--------- | :-------------------- | :------- | :------------------------------------------- |
+| type       | string                | 'number' | 键盘类型，可选值 `number`、`price`、`idcard` |
+| onKeyClick | (key: string) => void | -        | 点击按键时触发的回调函数                     |
 
 ### 仅 KeyboardPicker 支持的属性
 

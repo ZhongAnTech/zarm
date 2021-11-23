@@ -208,7 +208,7 @@ ReactDOM.render(
 );
 ```
 
-## 列表样式标记在尾部
+## 列表样式，尾部标记
 
 ```jsx
 import { Radio } from 'zarm';
@@ -225,7 +225,7 @@ ReactDOM.render(
 );
 ```
 
-## 列表样式禁用状态
+## 列表样式，禁用状态
 
 ```jsx
 import { Radio } from 'zarm';
@@ -246,13 +246,13 @@ ReactDOM.render(
 
 ### Radio
 
-| 属性           | 类型                                       | 默认值 | 说明                   |
-| :------------- | :----------------------------------------- | :----- | :--------------------- |
-| value          | string \| number                           | -      | 值                     |
-| checked        | boolean                                    | -      | 当前是否选中           |
-| defaultChecked | boolean                                    | -      | 初始是否选中           |
-| disabled       | boolean                                    | false  | 是否禁用               |
-| onChange       | (e: ChangeEvent<HTMLInputElement>) => void | -      | 值变化时触发的回调函数 |
+| 属性           | 类型                                             | 默认值 | 说明                   |
+| :------------- | :----------------------------------------------- | :----- | :--------------------- |
+| value          | string \| number                                 | -      | 值                     |
+| checked        | boolean                                          | -      | 当前是否选中           |
+| defaultChecked | boolean                                          | -      | 初始是否选中           |
+| disabled       | boolean                                          | false  | 是否禁用               |
+| onChange       | (event: ChangeEvent\<HTMLInputElement\>) => void | -      | 值变化时触发的回调函数 |
 
 ### Radio.Group
 

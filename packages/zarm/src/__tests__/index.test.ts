@@ -9,6 +9,7 @@ describe('index', () => {
           "defaultProps": Object {
             "actions": Array [],
             "destroy": true,
+            "safeIphoneX": false,
             "spacing": false,
             "visible": false,
           },
@@ -89,6 +90,7 @@ describe('index', () => {
               "buttonShape": "radius",
               "buttonSize": "xs",
               "disabled": false,
+              "listMarkerAlign": "before",
             },
             "render": [Function],
           },
@@ -139,11 +141,27 @@ describe('index', () => {
           "render": [Function],
         },
         "Drag": [Function],
-        "FilePicker": [Function],
+        "FilePicker": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "disabled": false,
+            "multiple": false,
+            "onBeforeSelect": [Function],
+          },
+          "render": [Function],
+        },
         "Icon": [Function],
         "ImagePreview": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "activeIndex": 0,
+            "maxScale": 3,
+            "minScale": 1,
+            "showPagination": true,
+            "visible": false,
+          },
           "render": [Function],
+          "show": [Function],
         },
         "Input": Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -194,7 +212,15 @@ describe('index', () => {
           "render": [Function],
           "useLoading": [Function],
         },
-        "Marquee": [Function],
+        "Marquee": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "delay": 0,
+            "direction": "left",
+            "speed": 30,
+          },
+          "render": [Function],
+        },
         "Mask": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
@@ -254,6 +280,11 @@ describe('index', () => {
         "Popper": [Function],
         "Popup": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "destroy": true,
+            "lockScroll": true,
+            "visible": false,
+          },
           "render": [Function],
         },
         "Progress": Object {
@@ -292,6 +323,7 @@ describe('index', () => {
           },
           "render": [Function],
         },
+        "Rate": [Function],
         "Scroller": [Function],
         "SearchBar": Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -305,9 +337,30 @@ describe('index', () => {
         },
         "Select": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "cols": Infinity,
+            "dataSource": Array [],
+            "displayRender": [Function],
+            "itemRender": [Function],
+            "maskClosable": true,
+            "onClick": [Function],
+            "valueMember": "value",
+          },
           "render": [Function],
         },
-        "Slider": [Function],
+        "Slider": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "disabled": false,
+            "marks": Object {},
+            "max": 100,
+            "min": 0,
+            "showMark": false,
+            "step": 1,
+            "vertical": false,
+          },
+          "render": [Function],
+        },
         "StackPicker": Object {
           "$$typeof": Symbol(react.forward_ref),
           "render": [Function],
@@ -369,6 +422,7 @@ describe('index', () => {
         },
         "Tooltip": [Function],
         "Trigger": [Function],
+        "WaterMark": [Function],
         "Wheel": [Function],
         "useDrag": [Function],
         "useLongPress": [Function],

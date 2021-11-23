@@ -1,8 +1,14 @@
+export type { WaterMarkProps } from './water-mark';
+export { default as WaterMark } from './water-mark';
+
 export type { CollapseProps, CollapseItemProps } from './collapse';
 export { default as Collapse } from './collapse';
 
 export { default as ActionSheet } from './action-sheet';
+
+export type { AlertProps } from './alert';
 // export { default as Alert } from './alert';
+
 export { default as BackToTop } from './back-to-top';
 
 export type { BadgeProps } from './badge';
@@ -19,6 +25,7 @@ export { default as List } from './list';
 export type { CheckboxProps, CheckboxGroupProps } from './checkbox';
 export { default as Checkbox } from './checkbox';
 
+export type { ConfirmProps } from './confirm';
 // export { default as Confirm } from './confirm';
 
 export type { DatePickerViewProps } from './date-picker-view';
@@ -30,6 +37,7 @@ export { default as DatePicker } from './date-picker';
 export type { DateSelectProps } from './date-select';
 export { default as DateSelect } from './date-select';
 
+export type { FilePickerProps } from './file-picker';
 export { default as FilePicker } from './file-picker';
 
 export type { IconProps } from './icon';
@@ -55,6 +63,7 @@ export { default as Mask } from './mask';
 export type { MessageProps } from './message';
 export { default as Message } from './message';
 
+export type { ModalProps } from './modal';
 export { default as Modal } from './modal';
 
 export type { NoticeBarProps } from './notice-bar';
@@ -89,6 +98,7 @@ export { default as Scroller } from './scroller';
 export type { SearchBarProps } from './search-bar';
 export { default as SearchBar } from './search-bar';
 
+export type { SliderProps } from './slider';
 export { default as Slider } from './slider';
 
 export type { ActivityIndicatorProps } from './activity-indicator';
@@ -104,6 +114,9 @@ export { default as SwipeAction } from './swipe-action';
 
 export type { SwitchProps } from './switch';
 export { default as Switch } from './switch';
+
+export type { RateProps } from './rate';
+export { default as Rate } from './rate';
 
 export type { TabsProps, TabPanelProps } from './tabs';
 export { default as Tabs } from './tabs';
@@ -125,6 +138,7 @@ export { default as Marquee } from './marquee';
 export type { TabBarProps, TabBarItemProps } from './tab-bar';
 export { default as TabBar } from './tab-bar';
 
+export type { ImagePreviewProps } from './image-preview';
 export { default as ImagePreview } from './image-preview';
 
 export type { PinchZoomProps } from './pinch-zoom';
@@ -139,6 +153,9 @@ export { default as StackPicker } from './stack-picker';
 
 export type { AffixProps } from './affix';
 export { default as Affix } from './affix';
+
+export type { GridProps } from './grid';
+export { default as Grid } from './grid';
 
 export type { DragProps } from './drag';
 export { default as Drag } from './drag';

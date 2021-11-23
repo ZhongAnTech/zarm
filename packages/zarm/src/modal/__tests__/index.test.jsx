@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import Modal from '../index';
+import Modal from '../Modal';
 
 describe('Modal', () => {
   it('renders correctly', () => {
