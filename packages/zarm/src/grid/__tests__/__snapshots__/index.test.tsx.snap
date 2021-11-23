@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Grid renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="za-grid"
+    style="padding: 5px 5px 5px 5px;"
+  >
+    <div
+      class="za-grid-item za-grid-item--square"
+      style="flex-basis: 50%; padding: 5px 5px 5px 5px;"
+    >
+      <div
+        class="za-grid-item__content za-grid-item__content--horizontal-bordered za-grid-item__content--vertical-bordered"
+      />
+    </div>
+    <div
+      class="za-grid-item za-grid-item--square"
+      style="flex-basis: 50%; padding: 5px 5px 5px 5px;"
+    >
+      <div
+        class="za-grid-item__content za-grid-item__content--horizontal-bordered za-grid-item__content--vertical-bordered"
+      />
+    </div>
+    <div
+      class="za-grid-item za-grid-item--square"
+      style="flex-basis: 50%; padding: 5px 5px 5px 5px;"
+    >
+      <div
+        class="za-grid-item__content za-grid-item__content--horizontal-bordered za-grid-item__content--vertical-bordered"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
