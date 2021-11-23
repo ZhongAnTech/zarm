@@ -2,6 +2,7 @@ import * as React from 'react';
 import classnames from 'classnames';
 import { ConfigContext } from '../n-config-provider';
 import GridContext from './GridContext';
+import type { BaseGridProps } from './interface';
 import type { CSSVariables } from '../utils/types';
 
 export type GridCSSVariables = CSSVariables<{
@@ -11,31 +12,11 @@ export type GridCSSVariables = CSSVariables<{
   '--background-color': React.CSSProperties['backgroundColor'];
 }>;
 
-export interface GridProps {
+export interface GridProps extends BaseGridProps {
   /** 组件样式名 */
   className?: string;
   /** 组件样式 */
   style?: GridCSSVariables;
-  /**
-   * 列数
-   * @default 4
-   */
-  columns?: number;
-  /**
-   * 格子之间的间距
-   * @default 0
-   */
-  gutter?: number | [number, number];
-  /**
-   * 是否显示边框
-   * @default true
-   */
-  bordered?: boolean;
-  /**
-   * 是否将格子固定为正方形
-   * @default false
-   */
-  square?: boolean;
 }
 
 const Grid: React.FC<GridProps> = (props) => {
@@ -57,12 +38,12 @@ const Grid: React.FC<GridProps> = (props) => {
   const horizontalGutter = gutters[0] > 0 ? gutters[0] / 2 : undefined;
   const verticalGutter = gutters[1] > 0 ? gutters[1] / 2 : undefined;
 
-  if (horizontalGutter) {
+  if (!square && horizontalGutter) {
     gridStyle.paddingLeft = horizontalGutter;
     gridStyle.paddingRight = horizontalGutter;
   }
 
-  if (verticalGutter) {
+  if (!square && verticalGutter) {
     gridStyle.paddingTop = verticalGutter;
     gridStyle.paddingBottom = verticalGutter;
   }
@@ -70,7 +51,8 @@ const Grid: React.FC<GridProps> = (props) => {
   const classes = classnames(
     prefixCls,
     {
-      [`${prefixCls}--bordered`]: bordered && !horizontalGutter && !verticalGutter,
+      [`${prefixCls}--bordered`]: bordered,
+      [`${prefixCls}--square`]: square,
     },
     className,
   );

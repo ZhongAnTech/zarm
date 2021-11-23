@@ -5,35 +5,13 @@
 ```tsx
 import { Grid } from 'zarm';
 
-const GridText = () => (
-  <div
-    style={{
-      width: '100%',
-      height: '100%',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: '8px 16px',
-    }}
-  >
-    文本
-  </div>
-);
-
 ReactDOM.render(
   <Grid>
-    <Grid.Item>
-      <GridText />
-    </Grid.Item>
-    <Grid.Item>
-      <GridText />
-    </Grid.Item>
-    <Grid.Item>
-      <GridText />
-    </Grid.Item>
-    <Grid.Item>
-      <GridText />
-    </Grid.Item>
+    {Array.from(Array(4).keys()).map((_, i) => (
+      <Grid.Item key={i} onClick={() => console.log(i)}>
+        <div className="block">文本</div>
+      </Grid.Item>
+    ))}
   </Grid>,
   mountNode,
 );
@@ -44,42 +22,14 @@ ReactDOM.render(
 ```tsx
 import { Grid } from 'zarm';
 
-const GridText = () => (
-  <div
-    style={{
-      width: '100%',
-      height: '100%',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: '8px 16px',
-    }}
-  >
-    文本
-  </div>
-);
-
 const Demo = () => {
   return (
     <Grid columns={3}>
-      <Grid.Item>
-        <GridText />
-      </Grid.Item>
-      <Grid.Item>
-        <GridText />
-      </Grid.Item>
-      <Grid.Item>
-        <GridText />
-      </Grid.Item>
-      <Grid.Item>
-        <GridText />
-      </Grid.Item>
-      <Grid.Item>
-        <GridText />
-      </Grid.Item>
-      <Grid.Item>
-        <GridText />
-      </Grid.Item>
+      {Array.from(Array(6).keys()).map((_, i) => (
+        <Grid.Item key={i} onClick={() => console.log(i)}>
+          <div className="block">文本</div>
+        </Grid.Item>
+      ))}
     </Grid>
   );
 };
@@ -92,42 +42,14 @@ ReactDOM.render(<Demo />, mountNode);
 ```tsx
 import { Grid } from 'zarm';
 
-const GridText = () => (
-  <div
-    style={{
-      width: '100%',
-      height: '100%',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: '8px 16px',
-    }}
-  >
-    文本
-  </div>
-);
-
 const Demo = () => {
   return (
     <Grid columns={3} square>
-      <Grid.Item>
-        <GridText />
-      </Grid.Item>
-      <Grid.Item>
-        <GridText />
-      </Grid.Item>
-      <Grid.Item>
-        <GridText />
-      </Grid.Item>
-      <Grid.Item>
-        <GridText />
-      </Grid.Item>
-      <Grid.Item>
-        <GridText />
-      </Grid.Item>
-      <Grid.Item>
-        <GridText />
-      </Grid.Item>
+      {Array.from(Array(6).keys()).map((_, i) => (
+        <Grid.Item key={i} onClick={() => console.log(i)}>
+          <div className="block">文本</div>
+        </Grid.Item>
+      ))}
     </Grid>
   );
 };
@@ -140,42 +62,14 @@ ReactDOM.render(<Demo />, mountNode);
 ```tsx
 import { Grid } from 'zarm';
 
-const GridText = () => (
-  <div
-    style={{
-      width: '100%',
-      height: '100%',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: '8px 16px',
-    }}
-  >
-    文本
-  </div>
-);
-
 const Demo = () => {
   return (
-    <Grid columns={3} gutter={10}>
-      <Grid.Item>
-        <GridText />
-      </Grid.Item>
-      <Grid.Item>
-        <GridText />
-      </Grid.Item>
-      <Grid.Item>
-        <GridText />
-      </Grid.Item>
-      <Grid.Item>
-        <GridText />
-      </Grid.Item>
-      <Grid.Item>
-        <GridText />
-      </Grid.Item>
-      <Grid.Item>
-        <GridText />
-      </Grid.Item>
+    <Grid columns={3} gutter={[10, 20]}>
+      {Array.from(Array(6).keys()).map((_, i) => (
+        <Grid.Item key={i} onClick={() => console.log(i)}>
+          <div className="block">文本</div>
+        </Grid.Item>
+      ))}
     </Grid>
   );
 };
@@ -188,21 +82,6 @@ ReactDOM.render(<Demo />, mountNode);
 ```tsx
 import { Grid } from 'zarm';
 
-const GridText = () => (
-  <div
-    style={{
-      width: '100%',
-      height: '100%',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: '8px 16px',
-    }}
-  >
-    文本
-  </div>
-);
-
 const Demo = () => {
   return (
     <Grid
@@ -210,26 +89,14 @@ const Demo = () => {
       style={{
         '--border-color': '#000',
         '--background-color': '#eee',
+        '--background-active-color': '#bbb',
       }}
     >
-      <Grid.Item>
-        <GridText />
-      </Grid.Item>
-      <Grid.Item>
-        <GridText />
-      </Grid.Item>
-      <Grid.Item>
-        <GridText />
-      </Grid.Item>
-      <Grid.Item>
-        <GridText />
-      </Grid.Item>
-      <Grid.Item>
-        <GridText />
-      </Grid.Item>
-      <Grid.Item>
-        <GridText />
-      </Grid.Item>
+      {Array.from(Array(6).keys()).map((_, i) => (
+        <Grid.Item key={i} onClick={() => console.log(i)}>
+          <div className="block">文本</div>
+        </Grid.Item>
+      ))}
     </Grid>
   );
 };
@@ -239,16 +106,17 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性     | 类型              | 默认值 | 说明                   |
-| :------- | :---------------- | :----- | :--------------------- |
-| columns  | number            | 0      | 列数                   |
-| gutter   | number \|number[] | 0      | 格子之间的间距         |
-| bordered | boolean           | true   | 是否显示边框           |
-| square   | boolean           | false  | 是否将格子固定为正方形 |
+| 属性     | 类型              | 默认值 | 说明                                              |
+| :------- | :---------------- | :----- | :------------------------------------------------ |
+| columns  | number            | 0      | 列数                                              |
+| gutter   | number \|number[] | 0      | 格子之间的间距                                    |
+| bordered | boolean           | true   | 是否显示边框                                      |
+| square   | boolean           | false  | 是否将格子固定为正方形 (设置正方形会导致间距失效) |
 
 ## CSS 变量
 
-| 属性               | 类型   | 默认值                     | 说明         |
-| :----------------- | :----- | :------------------------- | :----------- |
-| --border-color     | string | var(--za-border-color)     | 宫格边框颜色 |
-| --background-color | string | var(--za-background-color) | 宫格背景颜色 |
+| 属性                      | 类型   | 默认值                      | 说明                 |
+| :------------------------ | :----- | :-------------------------- | :------------------- |
+| --border-color            | string | var(--za-border-color)      | 格子边框颜色         |
+| --background-color        | string | var(--za-background-color)  | 格子背景颜色         |
+| --background-active-color | string | var(--za-background-active) | 格子点击反馈背景颜色 |

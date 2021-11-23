@@ -359,7 +359,7 @@ module.exports = {
         name: '宫格',
         module: () => import('zarm/grid/demo.md'),
         source: 'zarm/grid/demo.md',
-        style: false,
+        style: true,
       },
     ],
     hooks: [
