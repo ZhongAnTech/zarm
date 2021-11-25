@@ -23,10 +23,10 @@
     width: 100%;
     @include button-base();
     @include button-size(
-      var(--button-height-lg),
-      var(--button-padding-h-lg),
-      var(--button-font-size-lg),
-      var(--button-icon-size-lg),
+      var(--za-button-height-lg),
+      var(--za-button-padding-h-lg),
+      var(--za-button-font-size-lg),
+      var(--za-button-icon-size-lg),
     );
     @include onepx(top);
 

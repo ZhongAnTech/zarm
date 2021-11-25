@@ -12,7 +12,7 @@ const setPrimaryColor = (color: ConfigProviderProps['primaryColor']) => {
     Color(color).lightness(95).string(),
   );
   document.documentElement.style.setProperty(
-    '--button-primary-shadow-color',
+    '--za-button-primary-shadow-color',
     Color(color).alpha(0.3).string(),
   );
 };

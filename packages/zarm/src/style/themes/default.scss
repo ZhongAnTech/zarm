@@ -1,5 +1,7 @@
 @import '../core/index.scss';
 
+$prefix: za;
+
 :root {
   @include defineColorHSL(--theme-default, 0, 0%, 90%);
   @include defineColorHSL(--theme-primary, 156, 100%, 36.9%);
@@ -17,11 +19,12 @@
   --color-shadow: rgba(56, 56, 56, 0.15);            // 阴影色
 
   // 背景色
-  --background-active: rgba(0, 0, 0, 0.15);
+  --background-color: #fff;
+  --background-active: #d4d4d4;
   --background-disabled: #f2f2f2;
 
   // 边框色
-  --border-color: rgba(0, 0, 0, 0.2);
+  --border-color: #c5c5c5;
   --border-disabled: #e6e6e6;
 
   // 圆角
@@ -93,7 +96,7 @@
   // Alert
   --za-alert-button-height: 50px;
   --za-alert-button-font-size: 18px;
-  --za-alert-button-background: var(--button-default-background);
+  --za-alert-button-background: var(--za-button-default-background);
   --za-alert-button-active-background: var(--background-active);
 
   // Badge
@@ -107,57 +110,57 @@
   --za-badge-text-color: #fff;
 
   // Button
-  --button-height-xs: 28px;
-  --button-height-sm: 36px;
-  --button-height-md: 44px;
-  --button-height-lg: 52px;
-  --button-padding-h-xs: var(--padding-h-xs);
-  --button-padding-h-sm: var(--padding-h-sm);
-  --button-padding-h-md: var(--padding-h-md);
-  --button-padding-h-lg: var(--padding-h-lg);
-  --button-font-size-xs: var(--font-size-sm);
-  --button-font-size-sm: var(--font-size-sm);
-  --button-font-size-md: var(--font-size-md);
-  --button-font-size-lg: var(--font-size-lg);
-  --button-icon-size-xs: 16px;
-  --button-icon-size-sm: 18px;
-  --button-icon-size-md: 22px;
-  --button-icon-size-lg: 26px;
-  --button-disabled-opacity: var(--opacity-disabled);
-  --button-disabled-color-ghost: var(--border-disabled);
-  --button-default-background: var(--color-text-inverse);
-  --button-default-border: var(--theme-default);
-  --button-default-color: var(--color-text);
-  --button-default-active-background: #e6e6e6;
-  --button-default-active-border: #e6e6e6;
-  --button-default-active-color: var(--color-text);
-  --button-default-ghost-border: var(--color-text-inverse);
-  --button-default-ghost-color: var(--color-text-inverse);
-  --button-default-ghost-active-border: #e6e6e6;
-  --button-default-ghost-active-color: #e6e6e6;
-  --button-default-shadow-color: rgba(230, 230, 230, 0.3);
-  --button-primary-background: var(--theme-primary);
-  --button-primary-border: var(--theme-primary);
-  --button-primary-color: var(--color-text-inverse);
-  --button-primary-active-background: var(--theme-primary-dark);
-  --button-primary-active-border: var(--theme-primary-dark);
-  --button-primary-active-color: rgba(255, 255, 255, 0.4);
-  --button-primary-ghost-border: var(--theme-primary);
-  --button-primary-ghost-color: var(--theme-primary);
-  --button-primary-ghost-active-border: var(--theme-primary-dark);
-  --button-primary-ghost-active-color: var(--theme-primary-dark);
-  --button-primary-shadow-color: rgba(0, 188, 112, 0.3);
-  --button-danger-background: var(--theme-danger);
-  --button-danger-border: var(--theme-danger);
-  --button-danger-color: var(--color-text-inverse);
-  --button-danger-active-background: var(--theme-danger-dark);
-  --button-danger-active-border: var(--theme-danger-dark);
-  --button-danger-active-color: rgba(255, 255, 255, 0.4);
-  --button-danger-ghost-border: var(--theme-danger);
-  --button-danger-ghost-color: var(--theme-danger);
-  --button-danger-ghost-active-border: var(--theme-danger-dark);
-  --button-danger-ghost-active-color: var(--theme-danger-dark);
-  --button-danger-shadow-color: rgba(255, 80, 80, 0.3);
+  --za-button-height-xs: 28px;
+  --za-button-height-sm: 36px;
+  --za-button-height-md: 44px;
+  --za-button-height-lg: 52px;
+  --za-button-padding-h-xs: var(--padding-h-xs);
+  --za-button-padding-h-sm: var(--padding-h-sm);
+  --za-button-padding-h-md: var(--padding-h-md);
+  --za-button-padding-h-lg: var(--padding-h-lg);
+  --za-button-font-size-xs: var(--font-size-sm);
+  --za-button-font-size-sm: var(--font-size-sm);
+  --za-button-font-size-md: var(--font-size-md);
+  --za-button-font-size-lg: var(--font-size-lg);
+  --za-button-icon-size-xs: 16px;
+  --za-button-icon-size-sm: 18px;
+  --za-button-icon-size-md: 22px;
+  --za-button-icon-size-lg: 26px;
+  --za-button-disabled-opacity: var(--opacity-disabled);
+  --za-button-disabled-color-ghost: var(--border-disabled);
+  --za-button-default-background: var(--color-text-inverse);
+  --za-button-default-border: var(--theme-default);
+  --za-button-default-color: var(--color-text);
+  --za-button-default-active-background: #e6e6e6;
+  --za-button-default-active-border: #e6e6e6;
+  --za-button-default-active-color: var(--color-text);
+  --za-button-default-ghost-border: var(--color-text-inverse);
+  --za-button-default-ghost-color: var(--color-text-inverse);
+  --za-button-default-ghost-active-border: #e6e6e6;
+  --za-button-default-ghost-active-color: #e6e6e6;
+  --za-button-default-shadow-color: rgba(230, 230, 230, 0.3);
+  --za-button-primary-background: var(--theme-primary);
+  --za-button-primary-border: var(--theme-primary);
+  --za-button-primary-color: var(--color-text-inverse);
+  --za-button-primary-active-background: var(--theme-primary-dark);
+  --za-button-primary-active-border: var(--theme-primary-dark);
+  --za-button-primary-active-color: rgba(255, 255, 255, 0.4);
+  --za-button-primary-ghost-border: var(--theme-primary);
+  --za-button-primary-ghost-color: var(--theme-primary);
+  --za-button-primary-ghost-active-border: var(--theme-primary-dark);
+  --za-button-primary-ghost-active-color: var(--theme-primary-dark);
+  --za-button-primary-shadow-color: rgba(0, 188, 112, 0.3);
+  --za-button-danger-background: var(--theme-danger);
+  --za-button-danger-border: var(--theme-danger);
+  --za-button-danger-color: var(--color-text-inverse);
+  --za-button-danger-active-background: var(--theme-danger-dark);
+  --za-button-danger-active-border: var(--theme-danger-dark);
+  --za-button-danger-active-color: rgba(255, 255, 255, 0.4);
+  --za-button-danger-ghost-border: var(--theme-danger);
+  --za-button-danger-ghost-color: var(--theme-danger);
+  --za-button-danger-ghost-active-border: var(--theme-danger-dark);
+  --za-button-danger-ghost-active-color: var(--theme-danger-dark);
+  --za-button-danger-shadow-color: rgba(255, 80, 80, 0.3);
 
   // Calendar
   --calendar-height: 45px; // 最小高度
@@ -253,7 +256,7 @@
   // Confirm
   --za-confirm-button-height: 50px;
   --za-confirm-button-font-size: 18px;
-  --za-confirm-button-background: var(--button-default-background);
+  --za-confirm-button-background: var(--za-button-default-background);
   --za-confirm-button-active-background: var(--background-active);
 
   // List

@@ -99,7 +99,7 @@ const Demo = () => {
                   cssVars
                     ? null
                     : {
-                        '--button-primary-color': '#ff0000',
+                        '--za-button-primary-color': '#ff0000',
                         '--za-list-item-height': '70px',
                       },
                 );

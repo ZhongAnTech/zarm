@@ -10,5 +10,3 @@ export interface BaseImagePropsProps {
   onLoad?: () => void;
   onError?: () => void;
 }
-
-export type ImageProps = BaseImagePropsProps & React.HTMLAttributes<HTMLImageElement>;

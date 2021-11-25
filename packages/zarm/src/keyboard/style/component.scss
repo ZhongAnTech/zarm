@@ -17,13 +17,13 @@
     @include button-base();
     @include button-theme(
       var(--za-keyboard-item-background),
-      var(--button-default-border),
-      var(--button-default-color),
-      var(--button-default-active-background),
-      var(--button-default-active-border),
-      var(--button-default-active-color),
-      var(--button-default-background),
-      var(--button-default-border),
+      var(--za-button-default-border),
+      var(--za-button-default-color),
+      var(--za-button-default-active-background),
+      var(--za-button-default-active-border),
+      var(--za-button-default-active-color),
+      var(--za-button-default-background),
+      var(--za-button-default-border),
       var(--color-text-disabled),
       1,
     );
@@ -31,15 +31,15 @@
     @include m(ok) {
       font-size: r(21);
       @include button-theme(
-        var(--button-primary-background),
-        var(--button-primary-border),
-        var(--button-primary-color),
-        var(--button-primary-active-background),
-        var(--button-primary-active-border),
-        var(--button-primary-active-color),
-        var(--button-primary-background),
-        var(--button-primary-border),
-        var(--button-primary-color),
+        var(--za-button-primary-background),
+        var(--za-button-primary-border),
+        var(--za-button-primary-color),
+        var(--za-button-primary-active-background),
+        var(--za-button-primary-active-border),
+        var(--za-button-primary-active-color),
+        var(--za-button-primary-background),
+        var(--za-button-primary-border),
+        var(--za-button-primary-color),
         1,
       );
     }

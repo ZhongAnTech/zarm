@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { createRef, useContext, forwardRef, isValidElement, HTMLAttributes } from 'react';
 import classnames from 'classnames';
 import { ConfigContext } from '../n-config-provider';
 import ActivityIndicator from '../activity-indicator';
 import useImage, { IMAGE_STATUS } from './useImage';
-import type { ImageProps } from './interface';
+import type { BaseImagePropsProps } from './interface';
 
-const Image = React.forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
+export type ImageProps = BaseImagePropsProps & HTMLAttributes<HTMLImageElement>;
+
+const Image = forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
   const {
     src,
     placeholder,
@@ -19,12 +21,12 @@ const Image = React.forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
     ...restProps
   } = props;
 
-  const { prefixCls: globalPrefixCls, locale: globalLocal } = React.useContext(ConfigContext);
+  const { prefixCls: globalPrefixCls, locale: globalLocal } = useContext(ConfigContext);
   const prefixCls = `${globalPrefixCls}-image`;
   const cls = classnames(prefixCls, className);
   const locale = globalLocal?.Image;
 
-  const imgRef = ref || React.createRef<HTMLImageElement>();
+  const imgRef = ref || createRef<HTMLImageElement>();
   const status = useImage({ src, onLoad, onError });
 
   const renderImageStatus = {
@@ -35,14 +37,14 @@ const Image = React.forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
       const renderFallback = (text) => <div className={`${prefixCls}__fallback`}>{text}</div>;
 
       if (fallback) {
-        return React.isValidElement(fallback) ? fallback : renderFallback(fallback);
+        return isValidElement(fallback) ? fallback : renderFallback(fallback);
       }
 
       return renderFallback(locale?.loadFailed);
     },
     [IMAGE_STATUS.LOADING]: () => {
       if (placeholder) {
-        return React.isValidElement(placeholder) ? (
+        return isValidElement(placeholder) ? (
           placeholder
         ) : (
           <div className={`${prefixCls}__loading`}>{placeholder}</div>

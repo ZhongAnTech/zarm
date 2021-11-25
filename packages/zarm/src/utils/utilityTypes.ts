@@ -1,3 +1,5 @@
+import { CSSProperties } from 'react';
+
 export type Nullable<T> = T | null;
 
 export type StringPropertyNames<T> = {
@@ -7,3 +9,8 @@ export type StringPropertyNames<T> = {
 export type NonFunctionPropertyNames<T> = {
   [K in keyof T]: T[K] extends Function ? never : K;
 }[keyof T];
+
+export interface HTMLDefProps {
+  style?: CSSProperties;
+  className?: string;
+}

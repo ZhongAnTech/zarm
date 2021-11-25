@@ -140,6 +140,7 @@ export { default as TabBar } from './tab-bar';
 
 export type { ImagePreviewProps } from './image-preview';
 export { default as ImagePreview } from './image-preview';
+export type { ImageProps } from './image';
 export { default as Image } from './image';
 
 export type { PinchZoomProps } from './pinch-zoom';
@@ -154,6 +155,9 @@ export { default as StackPicker } from './stack-picker';
 
 export type { AffixProps } from './affix';
 export { default as Affix } from './affix';
+
+export type { GridProps } from './grid';
+export { default as Grid } from './grid';
 
 export type { DragProps } from './drag';
 export { default as Drag } from './drag';
