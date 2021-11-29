@@ -125,9 +125,7 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
   };
 
   renderTabs = (tab: ReactElement<TabPanelProps, typeof TabPanel>, index: number) => {
-    console.log('«128» /src/tabs/Tabs.tsx ~> ', tab);
     if (!tab) {
-      console.log('«130» /src/tabs/Tabs.tsx ~> ');
       return;
     }
     const { prefixCls, disabled } = this.props;
