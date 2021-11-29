@@ -25,17 +25,19 @@ export default function createFromIconfont(scriptUrl: string): FunctionComponent
     document.body.appendChild(script);
   }
 
-  const Iconfont: FunctionComponent<IconProps> = (props) => {
-    Iconfont.displayName = 'Iconfont';
-
+  const Iconfont = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
     const { type } = props;
 
     let content: ReactNode;
     if (type) {
       content = <use xlinkHref={`#${type}`} />;
     }
-    return <Icon {...props}>{content}</Icon>;
-  };
+    return (
+      <Icon {...props} ref={ref}>
+        {content}
+      </Icon>
+    );
+  });
 
   return Iconfont;
 }
