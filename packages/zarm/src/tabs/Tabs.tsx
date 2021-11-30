@@ -125,6 +125,9 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
   };
 
   renderTabs = (tab: ReactElement<TabPanelProps, typeof TabPanel>, index: number) => {
+    if (!tab) {
+      return;
+    }
     const { prefixCls, disabled } = this.props;
     const { value } = this.state;
 
@@ -251,7 +254,9 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
       contentRender = React.Children.map(
         children,
         (item: ReactElement<TabPanel['props'], typeof TabPanel>, index) => {
-          return item.props.children && <TabPanel {...item.props} selected={value === index} />;
+          return (
+            item && item.props.children && <TabPanel {...item.props} selected={value === index} />
+          );
         },
       );
     }
