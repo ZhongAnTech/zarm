@@ -1,46 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SwipeAction left only 1`] = `
-<div
-  class="za-swipe-action"
->
+Array [
+  "leftButton || rightButton ? (",
   <div
-    class="za-swipe-action__actions za-swipe-action__actions--left"
+    class="za-swipe-action"
   >
-    <button
-      aria-disabled="false"
-      class="za-button za-button--primary za-button--md za-button--radius"
-      type="button"
+    <div
+      class="za-swipe-action__actions za-swipe-action__actions--left"
     >
-      <span>
-        左按钮1
-      </span>
-    </button>
-    <button
-      aria-disabled="false"
-      class="za-button za-button--danger za-button--md za-button--radius"
-      type="button"
-    >
-      <span>
-        左按钮2
-      </span>
-    </button>
-  </div>
-  <div
-    class="za-swipe-action__content"
-    style="-webkit-transition-duration:undefinedms;transition-duration:undefinedms;-webkit-transform:translate3d(0px, 0, 0);transform:translate3d(0px, 0, 0)"
-  >
-    <div>
-      右滑
+      <button
+        aria-disabled="false"
+        class="za-button za-button--primary za-button--md za-button--radius"
+        type="button"
+      >
+        <span>
+          左按钮1
+        </span>
+      </button>
+      <button
+        aria-disabled="false"
+        class="za-button za-button--danger za-button--md za-button--radius"
+        type="button"
+      >
+        <span>
+          左按钮2
+        </span>
+      </button>
     </div>
-  </div>
-</div>
+    <div
+      class="za-swipe-action__content"
+      style="-webkit-transition-duration:300ms;transition-duration:300ms;-webkit-transform:translate3d(0px, 0, 0);transform:translate3d(0px, 0, 0)"
+    >
+      <div>
+        右滑
+      </div>
+    </div>
+  </div>,
+  ") : ( children );",
+]
 `;
 
 exports[`SwipeAction renders correctly 1`] = `
 <SwipeAction
-  animationDuration={300}
-  autoClose={true}
   left={
     Array [
       <Button
@@ -73,10 +75,6 @@ exports[`SwipeAction renders correctly 1`] = `
       </Button>,
     ]
   }
-  moveDistanceRatio={0.5}
-  moveTimeSpan={300}
-  offset={10}
-  prefixCls="za-swipe-action"
   right={
     Array [
       <Button
@@ -110,6 +108,7 @@ exports[`SwipeAction renders correctly 1`] = `
     ]
   }
 >
+  leftButton || rightButton ? (
   <div
     className="za-swipe-action"
   >
@@ -233,9 +232,9 @@ exports[`SwipeAction renders correctly 1`] = `
         style={
           Object {
             "WebkitTransform": "translate3d(0px, 0, 0)",
-            "WebkitTransitionDuration": "undefinedms",
+            "WebkitTransitionDuration": "300ms",
             "transform": "translate3d(0px, 0, 0)",
-            "transitionDuration": "undefinedms",
+            "transitionDuration": "300ms",
           }
         }
       >
@@ -245,42 +244,47 @@ exports[`SwipeAction renders correctly 1`] = `
       </div>
     </Drag>
   </div>
+  ) : ( children );
 </SwipeAction>
 `;
 
 exports[`SwipeAction right only 1`] = `
-<div
-  class="za-swipe-action"
->
+Array [
+  "leftButton || rightButton ? (",
   <div
-    class="za-swipe-action__actions za-swipe-action__actions--right"
+    class="za-swipe-action"
   >
-    <button
-      aria-disabled="false"
-      class="za-button za-button--primary za-button--md za-button--radius"
-      type="button"
+    <div
+      class="za-swipe-action__actions za-swipe-action__actions--right"
     >
-      <span>
-        右按钮1
-      </span>
-    </button>
-    <button
-      aria-disabled="false"
-      class="za-button za-button--danger za-button--md za-button--radius"
-      type="button"
-    >
-      <span>
-        右按钮2
-      </span>
-    </button>
-  </div>
-  <div
-    class="za-swipe-action__content"
-    style="-webkit-transition-duration:undefinedms;transition-duration:undefinedms;-webkit-transform:translate3d(0px, 0, 0);transform:translate3d(0px, 0, 0)"
-  >
-    <div>
-      左滑
+      <button
+        aria-disabled="false"
+        class="za-button za-button--primary za-button--md za-button--radius"
+        type="button"
+      >
+        <span>
+          右按钮1
+        </span>
+      </button>
+      <button
+        aria-disabled="false"
+        class="za-button za-button--danger za-button--md za-button--radius"
+        type="button"
+      >
+        <span>
+          右按钮2
+        </span>
+      </button>
     </div>
-  </div>
-</div>
+    <div
+      class="za-swipe-action__content"
+      style="-webkit-transition-duration:300ms;transition-duration:300ms;-webkit-transform:translate3d(0px, 0, 0);transform:translate3d(0px, 0, 0)"
+    >
+      <div>
+        左滑
+      </div>
+    </div>
+  </div>,
+  ") : ( children );",
+]
 `;

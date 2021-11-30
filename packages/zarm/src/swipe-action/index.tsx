@@ -1,75 +1,90 @@
-import React, { PureComponent, cloneElement } from 'react';
+import React, { useState, useEffect, forwardRef, cloneElement, useRef } from 'react';
 import classnames from 'classnames';
-import PropsType from './PropsType';
+import { ConfigContext } from '../n-config-provider';
 import Events from '../utils/events';
 import Drag from '../drag';
-
-export interface SwipeActionProps extends PropsType {
+import { BaseSwipeActionProps } from './interface';
+export interface SwipeActionProps extends BaseSwipeActionProps {
   prefixCls?: string;
   className?: string;
 }
 
-export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
-  private isOpen = false;
+const SwipeAction = forwardRef<HTMLDivElement, SwipeActionProps>((props, ref) => {
+  const {
+    children,
+    className,
+    left: leftButton,
+    right: rightButton,
+    moveDistanceRatio = 0.5,
+    moveTimeSpan = 300,
+    animationDuration: propsAnimationDuration = 300,
+    offset = 10,
+    autoClose = false,
+    disabled = false,
+  } = props;
 
-  private touchEnd = true;
+  let isOpen = false;
+  let touchEnd = true;
 
-  private wrap;
+  const leftRef = useRef<HTMLDivElement>();
+  const rightRef = useRef<HTMLDivElement>();
+  const swipeAction = (ref as any) || useRef<HTMLDivElement>();
 
-  private left;
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-swipe-action`;
 
-  private right;
+  const [offsetLeft, setOffsetLeft] = useState<number>(0);
+  const [animationDuration, setAnimationDuration] = useState(propsAnimationDuration);
 
-  static defaultProps: SwipeActionProps = {
-    prefixCls: 'za-swipe-action',
-    left: [],
-    right: [],
-    moveDistanceRatio: 0.5,
-    moveTimeSpan: 300,
-    animationDuration: 300,
-    offset: 10,
-    autoClose: true,
-  };
+  useEffect(() => {
+    Events.on(document.body, 'touchstart', onCloseSwipe);
+    Events.on(document.body, 'click', onCloseSwipe);
+  }, []);
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      offsetLeft: 0,
-    };
-  }
+  useEffect(() => {
+    Events.off(document.body, 'touchstart', onCloseSwipe);
+    Events.off(document.body, 'click', onCloseSwipe);
+  }, []);
 
-  componentDidMount() {
-    Events.on(document.body, 'touchstart', this.onCloseSwipe);
-    Events.on(document.body, 'click', this.onCloseSwipe);
-  }
-
-  componentWillUnmount() {
-    Events.off(document.body, 'touchstart', this.onCloseSwipe);
-    Events.off(document.body, 'click', this.onCloseSwipe);
-  }
-
-  onDragStart = () => {
-    if (this.isOpen) {
-      this.touchEnd = false;
-      this.close();
+  const onCloseSwipe = (e) => {
+    if (!swipeAction) {
       return;
     }
-    this.touchEnd = true;
+
+    if (isOpen) {
+      const pNode = ((node) => {
+        while (node.parentNode && node.parentNode !== document.body) {
+          if (node === swipeAction) {
+            return node;
+          }
+          node = node.parentNode;
+        }
+      })(e.target);
+
+      if (!pNode) {
+        e.preventDefault();
+        touchEnd = true;
+        close();
+      }
+    }
   };
 
-  onDragMove = (event, { offsetX, offsetY }) => {
-    const { disabled } = this.props;
+  const onDragStart = () => {
+    if (isOpen) {
+      touchEnd = false;
+      close();
+    }
+    touchEnd = true;
+  };
 
-    if (!this.touchEnd || disabled) {
+  const onDragMove = (event, { offsetX, offsetY }) => {
+    if (!touchEnd || disabled) {
       return false;
     }
 
     // 拖动距离达到上限
-    const { offset } = this.props;
-    const { offsetLeft } = this.state;
-    const btnsLeftWidth = this.left && this.left.offsetWidth;
-    const btnsRightWidth = this.right && this.right.offsetWidth;
-
+    const btnsLeftWidth = leftRef.current && leftRef.current.offsetWidth;
+    const btnsRightWidth = rightRef.current && rightRef.current.offsetWidth;
     if (offsetX > 0 && (!btnsLeftWidth || offsetLeft >= btnsLeftWidth + offset)) {
       return false;
     }
@@ -88,155 +103,116 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     if (!Events.supportsPassiveEvents) {
       event.preventDefault();
     }
-    this.doTransition({ offsetLeft: offsetX, animationDuration: 0 });
+    doTransition({ offsetLeft: offsetX, animationDuration: 0 });
     return true;
   };
 
-  onDragEnd = (_event, { offsetX, startTime }) => {
-    const { animationDuration, moveDistanceRatio, moveTimeSpan } = this.props;
-    const timeSpan = new Date().getTime() - startTime.getTime();
-    const btnsLeftWidth = this.left && this.left.offsetWidth;
-    const btnsRightWidth = this.right && this.right.offsetWidth;
+  const doTransition = ({ offsetLeft, animationDuration }) => {
+    setOffsetLeft(offsetLeft);
+    setAnimationDuration(animationDuration);
+  };
 
-    // if (this.left.offsetWidth) {
-    //   this.props.onOpen!();
-    // }
+  const onDragEnd = (_event, { offsetX, startTime }) => {
+    const timeSpan = new Date().getTime() - startTime.getTime();
+    const btnsLeftWidth = (leftRef.current && leftRef.current.offsetWidth) || 0;
+    const btnsRightWidth = (rightRef.current && rightRef.current.offsetWidth) || 0;
+
     let distanceX = 0;
-    let isOpen = false;
+    let _isOpen = false;
 
     if (offsetX / btnsLeftWidth > moveDistanceRatio || (offsetX > 0 && timeSpan <= moveTimeSpan)) {
-      distanceX = btnsLeftWidth;
-      isOpen = true;
+      distanceX = btnsLeftWidth || 0;
+      _isOpen = true;
     } else if (
       offsetX / btnsRightWidth < -moveDistanceRatio ||
       (offsetX < 0 && timeSpan <= moveTimeSpan)
     ) {
       distanceX = -btnsRightWidth;
-      isOpen = true;
+      _isOpen = true;
     }
 
-    if (isOpen && !this.isOpen) {
+    if (_isOpen && !isOpen) {
       // 打开
-      this.open(distanceX);
-    } else if (!isOpen && this.isOpen) {
+      open(distanceX);
+    } else if (!_isOpen && isOpen) {
       // 关闭
-      this.close();
+      close();
     } else {
       // 还原
-      this.doTransition({ offsetLeft: distanceX, animationDuration });
+      doTransition({ offsetLeft: distanceX, animationDuration });
     }
   };
 
-  onCloseSwipe = (e) => {
-    if (!this.wrap) {
-      return;
-    }
-
-    if (this.isOpen) {
-      const pNode = ((node) => {
-        while (node.parentNode && node.parentNode !== document.body) {
-          if (node === this.wrap) {
-            return node;
-          }
-          node = node.parentNode;
-        }
-      })(e.target);
-
-      if (!pNode) {
-        e.preventDefault();
-        this.touchEnd = true;
-        this.close();
-      }
-    }
-  };
-
-  open = (offsetLeft) => {
-    const { animationDuration, onOpen } = this.props;
-    this.isOpen = true;
-    this.doTransition({ offsetLeft, animationDuration });
+  const open = (offsetLeft) => {
+    const { onOpen } = props;
+    isOpen = true;
+    doTransition({ offsetLeft, animationDuration });
     if (typeof onOpen === 'function') {
       onOpen();
     }
   };
 
-  close = () => {
-    const { animationDuration, onClose } = this.props;
-    this.isOpen = false;
-    this.doTransition({ offsetLeft: 0, animationDuration });
+  const close = () => {
+    const { onClose } = props;
+    isOpen = false;
+    doTransition({ offsetLeft: 0, animationDuration });
     if (typeof onClose === 'function') {
       onClose();
     }
   };
 
-  doTransition = ({ offsetLeft, animationDuration }) => {
-    this.setState({ offsetLeft, animationDuration });
-  };
-
-  renderButton = (button, index) => {
+  const renderButton = (button, index) => {
     return cloneElement(button, {
       key: +index,
       onClick: (e) => {
         const { onClick } = button.props;
         onClick && onClick(e);
-        if (this.props.autoClose) {
-          this.close();
+        if (autoClose) {
+          close();
         }
       },
     });
   };
 
-  renderButtons = (buttons, direction) => {
+  const renderButtons = (buttons, direction, refs) => {
     if (!buttons || buttons.length === 0) {
       return;
     }
 
-    const { prefixCls } = this.props;
     const cls = classnames(`${prefixCls}__actions`, `${prefixCls}__actions--${direction}`);
-
     return (
-      <div
-        className={cls}
-        ref={(el) => {
-          this[direction] = el;
-        }}
-      >
-        {buttons.map(this.renderButton)}
+      <div className={cls} ref={refs}>
+        {buttons.map(renderButton)}
       </div>
     );
   };
 
-  render() {
-    const { prefixCls, className, left, right, children } = this.props;
-    const { offsetLeft, animationDuration } = this.state;
-    const cls = classnames(prefixCls, className);
-    const style = {
-      WebkitTransitionDuration: `${animationDuration}ms`,
-      transitionDuration: `${animationDuration}ms`,
-      WebkitTransform: `translate3d(${offsetLeft}px, 0, 0)`,
-      transform: `translate3d(${offsetLeft}px, 0, 0)`,
-    };
+  const style = {
+    WebkitTransitionDuration: `${animationDuration}ms`,
+    transitionDuration: `${animationDuration}ms`,
+    WebkitTransform: `translate3d(${offsetLeft}px, 0, 0)`,
+    transform: `translate3d(${offsetLeft}px, 0, 0)`,
+  };
 
-    return left || right ? (
-      <div
-        className={cls}
-        ref={(wrap) => {
-          this.wrap = wrap;
-        }}
-      >
-        {this.renderButtons(left, 'left')}
-        {this.renderButtons(right, 'right')}
-        <Drag
-          onDragStart={this.onDragStart}
-          onDragMove={this.onDragMove}
-          onDragEnd={this.onDragEnd}
-        >
+  const cls = classnames(prefixCls, className);
+
+  return (
+    <>
+      leftButton || rightButton ? (
+      <div className={cls} ref={swipeAction}>
+        {renderButtons(leftButton, 'left', leftRef)}
+        {renderButtons(rightButton, 'right', rightRef)}
+        <Drag onDragStart={onDragStart} onDragMove={onDragMove} onDragEnd={onDragEnd}>
           <div className={`${prefixCls}__content`} style={style}>
             {children}
           </div>
         </Drag>
       </div>
-    ) : (
-      children
-    );
-  }
-}
+      ) : ( children );
+    </>
+  );
+});
+
+SwipeAction.displayName = 'SwipeAction';
+
+export default SwipeAction;

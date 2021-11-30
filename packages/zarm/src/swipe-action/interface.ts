@@ -1,10 +1,10 @@
-export default interface PropsType {
+export interface BaseSwipeActionProps {
   left?: object[];
   right?: object[];
-  moveDistanceRatio: number;
-  moveTimeSpan: number;
+  moveDistanceRatio?: number;
+  moveTimeSpan?: number;
   animationDuration?: number;
-  offset: number;
+  offset?: number;
   autoClose?: boolean;
   disabled?: boolean;
   onOpen?: () => void;
