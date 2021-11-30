@@ -32,10 +32,13 @@ export default function createFromIconfont(scriptUrl: string): FunctionComponent
     if (type) {
       content = <use xlinkHref={`#${type}`} />;
     }
+    // fix https://github.com/ZhongAnTech/zarm/issues/835
+    // @ts-ignore
+    const I = Icon.default ? Icon.default : Icon;
     return (
-      <Icon {...props} ref={ref}>
+      <I {...props} ref={ref}>
         {content}
-      </Icon>
+      </I>
     );
   });
 
