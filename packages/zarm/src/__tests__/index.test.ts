@@ -37,7 +37,17 @@ describe('index', () => {
         },
         "Drag": [Function],
         "FilePicker": [Function],
-        "Icon": [Function],
+        "Icon": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "createFromIconfont": [Function],
+          "defaultProps": Object {
+            "prefixCls": "za-icon",
+            "size": "md",
+            "theme": "default",
+            "viewBox": "0 0 32 32",
+          },
+          "render": [Function],
+        },
         "ImagePreview": Object {
           "$$typeof": Symbol(react.forward_ref),
           "render": [Function],

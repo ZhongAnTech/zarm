@@ -73,7 +73,7 @@ const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
   return null;
 }) as CompoundedComponent;
 
-// Icon.createFromIconfont = createFromIconfont;
+Icon.createFromIconfont = createFromIconfont;
 
 Icon.displayName = 'Icon';
 Icon.defaultProps = {
