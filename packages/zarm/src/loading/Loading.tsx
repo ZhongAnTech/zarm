@@ -29,7 +29,6 @@ const Loading = React.forwardRef<unknown, LoadingProps>((props, ref) => {
     afterClose,
     stayTime,
     style,
-    onClick,
     ...others
   } = props;
 
@@ -71,12 +70,7 @@ const Loading = React.forwardRef<unknown, LoadingProps>((props, ref) => {
       visible={visible}
       afterClose={afterClose}
     >
-      <div
-        className={classNames(prefixCls, className)}
-        ref={loadingRef}
-        style={style}
-        onClick={onClick}
-      >
+      <div className={classNames(prefixCls, className)} ref={loadingRef} style={style}>
         <div className={`${prefixCls}__container`} style={style}>
           {content || <ActivityIndicator type="spinner" size="lg" />}
         </div>

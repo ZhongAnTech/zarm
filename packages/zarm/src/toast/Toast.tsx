@@ -26,7 +26,6 @@ const Toast = React.forwardRef<unknown, ToastProps>((props, ref) => {
     visible: propVisible,
     afterClose,
     style,
-    onClick,
     ...others
   } = props;
   const [visible, setVisible] = useState(propVisible!);
@@ -68,12 +67,7 @@ const Toast = React.forwardRef<unknown, ToastProps>((props, ref) => {
       visible={visible}
       afterClose={afterClose}
     >
-      <div
-        className={classNames(prefixCls, className)}
-        ref={toastRef}
-        style={style}
-        onClick={onClick}
-      >
+      <div className={classNames(prefixCls, className)} ref={toastRef} style={style}>
         <div className={`${prefixCls}__container`}>{content}</div>
       </div>
     </Popup>
