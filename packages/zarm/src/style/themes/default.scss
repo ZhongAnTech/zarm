@@ -1,5 +1,7 @@
 @import '../core/index.scss';
 
+$prefix: za;
+
 :root {
   @include defineColorHSL(--theme-default, 0, 0%, 90%);
   @include defineColorHSL(--theme-primary, 156, 100%, 36.9%);
@@ -17,11 +19,12 @@
   --color-shadow: rgba(56, 56, 56, 0.15);            // 阴影色
 
   // 背景色
-  --background-active: rgba(0, 0, 0, 0.15);
+  --background-color: #fff;
+  --background-active: #d4d4d4;
   --background-disabled: #f2f2f2;
 
   // 边框色
-  --border-color: rgba(0, 0, 0, 0.2);
+  --border-color: #c5c5c5;
   --border-disabled: #e6e6e6;
 
   // 圆角

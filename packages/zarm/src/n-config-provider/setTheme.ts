@@ -1,12 +1,14 @@
 import type { Theme } from './interface';
 
 export const themes = {
+  '--background-color': '#393939',
+  '--background-active': '#222',
   '--theme-primary-lighter': '#303030',
   '--color-text': 'rgba(255, 255, 255, 0.85)',
   '--color-text-inverse': 'rgba(255, 255, 255, 0.8)',
   '--color-text-placeholder': 'rgba(255, 255, 255, 0.3)',
   '--color-text-disabled': '#666',
-  '--border-color': '#3a3b3d',
+  '--border-color': '#1a1a1a',
   '--opacity-mask': '0.7',
   '--calendar-background': 'transparent',
   '--calendar-week-bar-background': '#303030',

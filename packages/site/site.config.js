@@ -354,6 +354,13 @@ module.exports = {
         source: 'zarm/tab-bar/demo.md',
         style: false,
       },
+      {
+        key: 'grid',
+        name: '宫格',
+        module: () => import('zarm/grid/demo.md'),
+        source: 'zarm/grid/demo.md',
+        style: true,
+      },
     ],
     hooks: [
       {
