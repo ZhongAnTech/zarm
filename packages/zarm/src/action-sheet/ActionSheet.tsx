@@ -3,18 +3,10 @@ import classnames from 'classnames';
 import PropsType from './interface';
 import Popup from '../popup';
 import { ConfigContext } from '../n-config-provider';
-import useActionSheet from './useActionSheet';
 
 export interface ActionSheetProps extends PropsType {
   className?: string;
   safeIphoneX?: boolean;
-}
-
-export type UseActionSheet = () => ReturnType<typeof useActionSheet>;
-
-interface CompoundedComponent
-  extends React.ForwardRefExoticComponent<ActionSheetProps & React.RefAttributes<HTMLDivElement>> {
-  useActionSheet: UseActionSheet;
 }
 
 const ActionSheet = React.forwardRef<HTMLDivElement, ActionSheetProps>((props, ref) => {
@@ -76,7 +68,7 @@ const ActionSheet = React.forwardRef<HTMLDivElement, ActionSheetProps>((props, r
       </div>
     </Popup>
   );
-}) as CompoundedComponent;
+});
 
 ActionSheet.displayName = 'ActionSheet';
 
