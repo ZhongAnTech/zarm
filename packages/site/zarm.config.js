@@ -12,10 +12,10 @@ module.exports = {
       template: './demo/index.html',
       favicon: './favicon.ico',
     },
-    // demo_umd: {
-    //   template: './demo/index_umd.html',
-    //   favicon: './favicon.ico',
-    // },
+    demo_umd: {
+      template: './demo/index_umd.html',
+      favicon: './favicon.ico',
+    },
   },
   resolve: {
     alias: {
