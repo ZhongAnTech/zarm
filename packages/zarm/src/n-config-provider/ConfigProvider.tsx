@@ -16,8 +16,16 @@ const defaultConfig: ConfigProviderProps = {
 
 export const ConfigContext: Context<ConfigProviderProps> = React.createContext(defaultConfig);
 
-const ConfigProvider = (props: React.PropsWithChildren<ConfigProviderProps>) => {
-  const { children, cssVars, primaryColor, theme, ...restProps } = props;
+let runtimeConfigContext: ConfigProviderProps;
+
+const changeRuntimeConfigContext = (props: ConfigProviderProps) => {
+  runtimeConfigContext = props;
+};
+
+const ConfigProvider: React.FC<ConfigProviderProps> = (props) => {
+  const { children, cssVars, primaryColor, theme, ...rest } = props;
+
+  changeRuntimeConfigContext(props);
 
   React.useEffect(() => {
     primaryColor && setPrimaryColor(primaryColor);
@@ -30,14 +38,21 @@ const ConfigProvider = (props: React.PropsWithChildren<ConfigProviderProps>) => 
   const newChildren = setCssVars(children, cssVars);
 
   return (
-    <ConfigContext.Provider value={{ ...restProps }}>
-      {React.Children.only(newChildren)}
-    </ConfigContext.Provider>
+    <ConfigContext.Provider value={rest}>{React.Children.only(newChildren)}</ConfigContext.Provider>
   );
 };
 
-ConfigProvider.displayName = 'ConfigProvider';
+export const RuntimeConfigProvider: React.FC = ({ children }) => {
+  const props = React.useRef(runtimeConfigContext);
 
+  React.useEffect(() => {
+    props.current = runtimeConfigContext;
+  }, [runtimeConfigContext]);
+
+  return <ConfigProvider {...props?.current}>{children}</ConfigProvider>;
+};
+
+ConfigProvider.displayName = 'ConfigProvider';
 ConfigProvider.defaultProps = defaultConfig;
 
 export default ConfigProvider;

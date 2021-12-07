@@ -105,7 +105,7 @@ const Demo = () => {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-## useActionSheet
+## 静态方法
 
 ```jsx
 import { ActionSheet, List, Button } from 'zarm';
@@ -133,8 +133,6 @@ const BUTTONS = [
 ];
 
 const Demo = () => {
-  const ac = ActionSheet.useActionSheet();
-
   return (
     <List>
       <List.Item
@@ -142,9 +140,18 @@ const Demo = () => {
         after={
           <Button
             size="xs"
-            onClick={() =>
-              ac.show({ spacing: true, actions: BUTTONS, onMaskClick: ac.hide, onCancel: ac.hide })
-            }
+            onClick={() => {
+              const { close } = ActionSheet.show({
+                spacing: true,
+                actions: BUTTONS,
+                onMaskClick: () => {
+                  close();
+                },
+                onCancel: () => {
+                  close();
+                },
+              });
+            }}
           >
             开启
           </Button>
