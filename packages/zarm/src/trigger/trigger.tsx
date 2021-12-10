@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import includes from 'lodash/includes';
 import PropsType, { InstanceFn } from './PropsType';
 
 class Trigger extends Component<PropsType, {}> {
@@ -14,7 +15,7 @@ class Trigger extends Component<PropsType, {}> {
     const { visible, onClose, disabled } = nextProps;
     onClose && (onClose.disabled = disabled);
     if (visible === true && typeof onClose === 'function') {
-      if (!Trigger.instanceList.includes(onClose)) {
+      if (!includes(Trigger.instanceList, onClose)) {
         Trigger.instanceList.push(onClose);
       }
     } else {
