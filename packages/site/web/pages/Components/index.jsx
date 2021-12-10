@@ -36,7 +36,7 @@ const Simulator = () => {
 
   useEffect(() => {
     !/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent) &&
-      simulatorRef.current.contentWindow.postMessage({ locale });
+      simulatorRef.current.contentWindow.postMessage({ locale }, '*');
   }, [locale]);
 
   return (
