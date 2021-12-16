@@ -56,6 +56,7 @@ $prefixCls: #{$prefix}-grid;
   @include m(square) {
     @include b(grid-item) {
       height: 0;
+
       @include e(content) {
         position: absolute;
         top: 0;

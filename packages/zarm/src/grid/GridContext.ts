@@ -2,7 +2,7 @@ import * as React from 'react';
 
 export interface GridContextState {
   columns?: number;
-  gutter?: [number, number];
+  gutter?: number | [number, number];
   bordered?: boolean;
   square?: boolean;
 }

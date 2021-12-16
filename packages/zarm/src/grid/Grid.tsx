@@ -3,9 +3,9 @@ import classnames from 'classnames';
 import { ConfigContext } from '../n-config-provider';
 import GridContext from './GridContext';
 import type { BaseGridProps } from './interface';
-import type { CSSVariables } from '../utils/types';
+import type { ZarmCSSProperties } from '../utils/utilityTypes';
 
-export type GridCSSVariables = CSSVariables<{
+export type GridStyle = ZarmCSSProperties<{
   /** 宫格边框颜色 */
   '--border-color': React.CSSProperties['borderColor'];
   /** 宫格背景颜色 */
@@ -16,16 +16,16 @@ export interface GridProps extends BaseGridProps {
   /** 组件样式名 */
   className?: string;
   /** 组件样式 */
-  style?: GridCSSVariables;
+  style?: GridStyle;
 }
 
 const Grid: React.FC<GridProps> = (props) => {
-  const { className, style, columns = 4, gutter = 0, bordered = true, square, children } = props;
+  const { className, style, columns, gutter, bordered, square, children } = props;
 
   const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
   const prefixCls = `${globalPrefixCls}-grid`;
 
-  const gutters: [number, number] = Array.isArray(gutter) ? gutter : [gutter, gutter];
+  const gutters: [number, number] = Array.isArray(gutter) ? gutter : [gutter!, gutter!];
 
   const gridContext = React.useMemo(() => ({ columns, gutter: gutters, bordered, square }), [
     columns,
@@ -64,6 +64,14 @@ const Grid: React.FC<GridProps> = (props) => {
       </div>
     </GridContext.Provider>
   );
+};
+
+Grid.displayName = 'Grid';
+
+Grid.defaultProps = {
+  columns: 4,
+  gutter: 0,
+  bordered: true,
 };
 
 export default Grid;
