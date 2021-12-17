@@ -1,17 +1,15 @@
 import localeCN from './locale/zh_CN';
-import type { CssVars } from './setCssVars';
 import type { ContainerType } from '../utils/dom';
+import type { GridCssVars } from '../grid';
+import type { ActionSheetCssVars } from '../action-sheet';
 
-export type Locale = typeof localeCN;
-export type Theme = 'dark' | 'light';
-export type PrimaryColor = string;
-export type { CssVars };
+type CssVars = GridCssVars & ActionSheetCssVars;
 
 export interface ConfigProviderProps {
   prefixCls?: string;
-  locale?: Locale;
-  theme?: Theme;
-  primaryColor?: PrimaryColor;
+  locale?: typeof localeCN;
+  primaryColor?: string;
+  theme?: 'dark' | 'light';
   safeIphoneX?: boolean;
   mountContainer?: ContainerType;
   cssVars?: CssVars;

@@ -31,11 +31,11 @@ const Demo = () => {
   const [visiblePopup, setVisiblePopup] = useState(false);
 
   const [locale, setLocale] = useState(localStorage.locale || 'zhCN');
-  const [theme, setTheme] = useState(localStorage.theme || 'light');
   const [primaryColor, setPrimaryColor] = useState(localStorage.primaryColor || colors[0]);
-  const [cssVars, setCssVars] = useState();
+  const [theme, setTheme] = useState(localStorage.theme || 'light');
   const [safeIphoneX, setSafeIphoneX] = useState(false);
   const [mountContainer, setMountContainer] = useState(false);
+  const [cssVars, setCssVars] = useState(null);
 
   return (
     <>
@@ -80,6 +80,14 @@ const Demo = () => {
           }
         />
         <List.Item
+          title="安全区域开启"
+          after={<Switch checked={safeIphoneX} onChange={setSafeIphoneX} />}
+        />
+        <List.Item
+          title="自定义弹层渲染节点"
+          after={<Switch checked={mountContainer} onChange={setMountContainer} />}
+        />
+        <List.Item
           title="设置 CSS 变量"
           after={
             <Button
@@ -99,23 +107,15 @@ const Demo = () => {
             </Button>
           }
         />
-        <List.Item
-          title="安全区域开启"
-          after={<Switch checked={safeIphoneX} onChange={setSafeIphoneX} />}
-        />
-        <List.Item
-          title="自定义弹层渲染节点"
-          after={<Switch checked={mountContainer} onChange={setMountContainer} />}
-        />
       </List>
 
       <Message theme="warning">以下为组件示例</Message>
 
       <NConfigProvider
-        safeIphoneX={safeIphoneX}
         locale={locale === 'enUS' ? enUS : zhCN}
         primaryColor={primaryColor}
         theme={theme}
+        safeIphoneX={safeIphoneX}
         cssVars={cssVars}
         mountContainer={!mountContainer ? document.body : containerRef.current}
       >
@@ -193,9 +193,12 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性         | 类型    | 默认值    | 说明                                                                                                                                |
-| :----------- | :------ | :-------- | :---------------------------------------------------------------------------------------------------------------------------------- |
-| locale       | Object  | -         | 语言包配置，默认为中文，语言包可到 [zarm/lib/config-provider/locale](https://unpkg.com/zarm/lib/config-provider/locale/) 目录下寻找 |
-| theme        | string  | 'light'   | 主题模式，'light' 为光明主题，'dark' 为暗黑主题的切换                                                                               |
-| primaryColor | string  | '#00bc70' | 品牌标准色                                                                                                                          |
-| safeIphoneX  | boolean | false     | 是否适配 iphoneX 刘海屏                                                                                                             |
+| 属性           | 类型                                                  | 默认值    | 说明                                                                                                                                |
+| :------------- | :---------------------------------------------------- | :-------- | :---------------------------------------------------------------------------------------------------------------------------------- |
+| prefix         | string                                                | 'za'      | 组件类名前缀                                                                                                                        |
+| locale         | Object                                                | -         | 语言包配置，默认为中文，语言包可到 [zarm/lib/config-provider/locale](https://unpkg.com/zarm/lib/config-provider/locale/) 目录下寻找 |
+| theme          | string                                                | 'light'   | 主题模式，'light' 为光明主题，'dark' 为暗黑主题的切换                                                                               |
+| primaryColor   | string                                                | '#00bc70' | 品牌标准色                                                                                                                          |
+| safeIphoneX    | boolean                                               | false     | 是否适配 iphoneX 刘海屏                                                                                                             |
+| mountContainer | false \| HTMLElement \| (() => HTMLElement) \| Window | -         | 弹层组件渲染节点                                                                                                                    |
+| cssVars        | Object                                                | {}        | 组件 CSS 变量设置                                                                                                                   |

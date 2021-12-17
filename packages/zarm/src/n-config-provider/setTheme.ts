@@ -1,6 +1,6 @@
-import type { Theme } from './interface';
+import type { ConfigProviderProps } from './interface';
 
-export const themes = {
+const themes = {
   '--background-color': '#393939',
   '--background-active': '#222',
   '--theme-primary-lighter': '#303030',
@@ -66,9 +66,9 @@ export const themes = {
   '--za-search-bar-input-background': 'rgba(118, 118, 128, 0.24)',
   '--za-search-bar-input-placeholder-color': '#8e8e93',
   '--za-search-bar-icon-color': '#8e8e93',
-  '--za-action-sheet-actions-background': '#222222',
-  '--za-action-sheet-cancel-background': '#2c2c2e',
+  '--za-action-sheet-item-background': '#222222',
   '--za-action-sheet-item-active-background': '#404040',
+  '--za-action-sheet-cancel-background': '#2c2c2e',
   '--za-rate-color': 'var(--theme-danger-dark)',
   '--za-rate-unchecked-color': '#393939',
   '--za-tabbar-background': '#1b1c1e',
@@ -76,8 +76,8 @@ export const themes = {
   '--za-tooltip-background': '#5b5c60',
 } as const;
 
-const setTheme = (value: Theme = 'light') => {
-  document.body.setAttribute('data-theme', value);
+const setTheme = (value: ConfigProviderProps['theme']) => {
+  document.body.setAttribute('data-theme', value!);
   Object.keys(themes).forEach((key) => {
     value === 'dark'
       ? document.documentElement.style.setProperty(key, themes[key])

@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { Context } from 'react';
 import type { ConfigProviderProps } from './interface';
 import defaultLocaleData from './locale/zh_CN';
-import setCssVars, { defaultCssVars } from './setCssVars';
+import setCssVars from './setCssVars';
 import setPrimaryColor from './setPrimaryColor';
 import setTheme from './setTheme';
 
@@ -11,7 +11,7 @@ const defaultConfig: ConfigProviderProps = {
   locale: defaultLocaleData,
   theme: 'light',
   safeIphoneX: false,
-  cssVars: defaultCssVars,
+  cssVars: {},
 };
 
 export const ConfigContext: Context<ConfigProviderProps> = React.createContext(defaultConfig);
@@ -35,7 +35,7 @@ const ConfigProvider: React.FC<ConfigProviderProps> = (props) => {
     theme && setTheme(theme);
   }, [theme]);
 
-  const newChildren = setCssVars(children, cssVars);
+  const newChildren = setCssVars(children, cssVars!);
 
   return (
     <ConfigContext.Provider value={rest}>{React.Children.only(newChildren)}</ConfigContext.Provider>

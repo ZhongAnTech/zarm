@@ -1,30 +1,15 @@
 import * as React from 'react';
-// import { paramCase } from 'change-case';
+import type { ConfigProviderProps } from './interface';
 
-interface ZarmCssVars {
-  '--za-action-sheet-border-radius'?: React.CSSProperties['borderRadius'];
-  '--za-action-sheet-spacing-margin'?: React.CSSProperties['margin'];
-  '--za-action-sheet-item-background'?: React.CSSProperties['background'];
-  '--za-action-sheet-item-active-background'?: React.CSSProperties['background'];
-  '--za-action-sheet-item-height'?: React.CSSProperties['height'];
-  '--za-action-sheet-item-color'?: React.CSSProperties['color'];
-  '--za-action-sheet-item-font-size'?: React.CSSProperties['fontSize'];
-  '--za-action-sheet-cancel-background'?: React.CSSProperties['background'];
-  '--za-action-sheet-cancel-color'?: React.CSSProperties['color'];
-  '--za-action-sheet-cancel-margin-top'?: React.CSSProperties['marginTop'];
-}
-const defaultCssVars: ZarmCssVars = {};
-
-const setCssVars = (children, cssVars) => {
-  const newChildren = children as React.DetailedReactHTMLElement<any, HTMLElement>;
+const setCssVars = (children: React.ReactNode, cssVars: ConfigProviderProps['cssVars']) => {
   if (!cssVars) return children;
 
-  return React.cloneElement(newChildren, {
-    style: { ...newChildren.props.style, ...cssVars },
+  return React.cloneElement(children as React.DetailedReactHTMLElement<any, HTMLElement>, {
+    style: {
+      ...(children as React.DetailedReactHTMLElement<any, HTMLElement>).props.style,
+      ...cssVars,
+    },
   });
 };
 
-export type CssVars = typeof defaultCssVars;
-
-export { defaultCssVars };
 export default setCssVars;
