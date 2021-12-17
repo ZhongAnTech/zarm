@@ -21,3 +21,7 @@
   $color-l: var(#{$color+'-l'});
   @return hsl($color-h, $color-s, calc(#{$color-l} * #{$lightnessMultiplier}));
 }
+
+@function zavar($key) {
+  @return var(--#{$prefixCls+'-'+$key});
+}

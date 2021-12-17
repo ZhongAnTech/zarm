@@ -1,5 +1,9 @@
 @import './bem';
 
+@mixin define($key, $value) {
+  --#{$prefixCls+'-'+$key}: #{$value};
+}
+
 @mixin defineColorHSL($color, $hue, $saturation, $lightness) {
   #{$color}: unquote("hsl(#{$hue}, #{$saturation}, #{$lightness})");
   #{$color}-h: #{$hue};
@@ -69,7 +73,7 @@
 }
 
 // adapt iphone x
-@mixin safeIphoneX ($padding: true, $height: 0) {
+@mixin safeIphoneX($padding: true, $height: 0) {
   @if $padding {
     @if $height != 0 {
       height: calc(#{$height} + constant(safe-area-inset-bottom));
