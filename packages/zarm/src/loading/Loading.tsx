@@ -1,12 +1,20 @@
-import React, { RefAttributes, useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  RefAttributes,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  CSSProperties,
+} from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../n-config-provider';
 import Popup from '../popup';
 import ActivityIndicator from '../activity-indicator';
-import type { HTMLDefProps } from '../utils/utilityTypes';
+import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseLoadingProps } from './interface';
 
-export interface LoadingProps extends BaseLoadingProps, HTMLDefProps {}
+export type LoadingProps = BaseLoadingProps & HTMLProps;
+
 export interface UseLoading {
   show: (props: LoadingProps) => void;
   hide: () => void;

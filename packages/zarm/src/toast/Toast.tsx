@@ -1,11 +1,19 @@
-import React, { RefAttributes, useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  RefAttributes,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  CSSProperties,
+} from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../n-config-provider';
 import Popup from '../popup';
 import type { BaseToastProps } from './interface';
-import type { HTMLDefProps } from '../utils/utilityTypes';
+import type { HTMLProps } from '../utils/utilityTypes';
 
-export interface ToastProps extends BaseToastProps, HTMLDefProps {}
+export type ToastProps = BaseToastProps & HTMLProps;
+
 export interface UseToast {
   show: (props: ToastProps) => void;
   hide: () => void;

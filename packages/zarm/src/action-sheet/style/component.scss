@@ -1,15 +1,30 @@
 @import '../../button/style/mixins';
 
+$prefixCls: #{$prefix}-action-sheet;
+
+:root {
+  @include define(border-radius, 14px);
+  @include define(spacing-margin, 8px);
+  @include define(item-background, rgba(249, 249, 249, 0.94));
+  @include define(item-active-background, var(--background-active));
+  @include define(item-height, 56px);
+  @include define(item-color, var(--color-text));
+  @include define(item-font-size, 20px);
+  @include define(cancel-background, #fff);
+  @include define(cancel-color, var(--theme-primary));
+  @include define(cancel-margin-top, 8px);
+}
+
 @include b(action-sheet) {
   @include m(safe) {
     @include safeIphoneX(true);
   }
 
   @include m(spacing) {
-    margin: var(--za-action-sheet-spacing-margin);
+    margin: zavar(spacing-margin);
 
     @include e(actions, cancel) {
-      border-radius: var(--za-action-sheet-border-radius);
+      border-radius: zavar(border-radius);
     }
   }
 
@@ -17,29 +32,27 @@
     overflow: hidden;
   }
 
-  @include e(actions) {
-    background-color: var(--za-action-sheet-actions-background);
-  }
-
   @include e(cancel) {
-    background-color: var(--za-action-sheet-cancel-background);
-    margin-top: var(--za-action-sheet-cancel-margin-top);
+    background-color: zavar(cancel-background);
+    margin-top: zavar(cancel-margin-top);
 
     @include e(item) {
-      color: var(--za-action-sheet-cancel-color);
+      color: zavar(cancel-color);
     }
   }
 
   @include e(item) {
     display: block;
     position: relative;
-    height: var(--za-action-sheet-item-height);
-    line-height: var(--za-action-sheet-item-height);
-    font-size: var(--za-action-sheet-item-font-size);
-    @include button-base();
+    height: zavar(item-height);
+    line-height: zavar(item-height);
+    background-color: zavar(item-background);
+    color: zavar(item-color);
+    font-size: zavar(item-font-size);
+    text-align: center;
 
     &:not(&--disabled):active {
-      background-color: var(--za-action-sheet-item-active-background);
+      background-color: zavar(item-active-background);
     }
 
     &:not(:first-of-type) {
@@ -47,11 +60,16 @@
     }
 
     @include m(primary) {
-      color: var(--theme-primary);
+      @include define(item-color, var(--theme-primary));
     }
 
     @include m(danger) {
-      color: var(--theme-danger);
+      @include define(item-color, var(--theme-danger));
+    }
+
+    @include m(disabled) {
+      cursor: not-allowed;
+      @include define(item-color, var(--color-text-disabled));
     }
   }
 }

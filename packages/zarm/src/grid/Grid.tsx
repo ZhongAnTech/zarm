@@ -3,21 +3,9 @@ import classnames from 'classnames';
 import { ConfigContext } from '../n-config-provider';
 import GridContext from './GridContext';
 import type { BaseGridProps } from './interface';
-import type { ZarmCSSProperties } from '../utils/utilityTypes';
+import type { HTMLProps } from '../utils/utilityTypes';
 
-export type GridStyle = ZarmCSSProperties<{
-  /** 宫格边框颜色 */
-  '--border-color': React.CSSProperties['borderColor'];
-  /** 宫格背景颜色 */
-  '--background-color': React.CSSProperties['backgroundColor'];
-}>;
-
-export interface GridProps extends BaseGridProps {
-  /** 组件样式名 */
-  className?: string;
-  /** 组件样式 */
-  style?: GridStyle;
-}
+export type GridProps = BaseGridProps & HTMLProps;
 
 const Grid: React.FC<GridProps> = (props) => {
   const { className, style, columns, gutter, bordered, square, children } = props;

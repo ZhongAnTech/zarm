@@ -10,9 +10,9 @@ import React, {
 import classnames from 'classnames';
 import { ConfigContext } from '../n-config-provider';
 import { canUseDOM } from '../utils/dom';
-import type { BaseAffixProps } from './interface';
 import Events from '../utils/events';
 import throttle from '../utils/throttle';
+import type { BaseAffixProps } from './interface';
 
 export interface AffixStates {
   affixed: boolean;
