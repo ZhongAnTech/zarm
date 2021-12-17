@@ -4,7 +4,7 @@ export { default as WaterMark } from './water-mark';
 export type { CollapseProps, CollapseItemProps } from './collapse';
 export { default as Collapse } from './collapse';
 
-export type { ActionSheetProps, ActionSheetActionProps } from './action-sheet';
+export type { ActionSheetProps, ActionSheetActionProps, ActionSheetCssVars } from './action-sheet';
 export { default as ActionSheet } from './action-sheet';
 
 export type { AffixProps } from './affix';

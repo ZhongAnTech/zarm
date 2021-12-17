@@ -5,6 +5,19 @@ import { ConfigContext } from '../n-config-provider';
 import type { BaseActionSheetActionProps, BaseActionSheetProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
 
+export interface ActionSheetCssVars {
+  '--za-action-sheet-border-radius'?: React.CSSProperties['borderRadius'];
+  '--za-action-sheet-spacing-margin'?: React.CSSProperties['margin'];
+  '--za-action-sheet-item-background'?: React.CSSProperties['background'];
+  '--za-action-sheet-item-active-background'?: React.CSSProperties['background'];
+  '--za-action-sheet-item-height'?: React.CSSProperties['height'];
+  '--za-action-sheet-item-color'?: React.CSSProperties['color'];
+  '--za-action-sheet-item-font-size'?: React.CSSProperties['fontSize'];
+  '--za-action-sheet-cancel-background'?: React.CSSProperties['background'];
+  '--za-action-sheet-cancel-color'?: React.CSSProperties['color'];
+  '--za-action-sheet-cancel-margin-top'?: React.CSSProperties['marginTop'];
+}
+
 export type ActionSheetActionProps = BaseActionSheetActionProps & HTMLProps;
 
 export type ActionSheetProps = BaseActionSheetProps &

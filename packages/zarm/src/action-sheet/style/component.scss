@@ -33,10 +33,10 @@ $prefixCls: #{$prefix}-action-sheet;
   }
 
   @include e(cancel) {
-    background-color: zavar(cancel-background);
     margin-top: zavar(cancel-margin-top);
 
     @include e(item) {
+      background-color: zavar(cancel-background);
       color: zavar(cancel-color);
     }
   }
