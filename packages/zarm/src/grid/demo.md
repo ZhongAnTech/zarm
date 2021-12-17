@@ -7,9 +7,26 @@ import { Grid } from 'zarm';
 
 ReactDOM.render(
   <Grid>
-    {Array.from(Array(4).keys()).map((_, i) => (
+    {Array.from(Array(6).keys()).map((_, i) => (
+      <Grid.Item key={i}>
+        <div className="block">内容{i + 1}</div>
+      </Grid.Item>
+    ))}
+  </Grid>,
+  mountNode,
+);
+```
+
+## 可点击的
+
+```tsx
+import { Grid } from 'zarm';
+
+ReactDOM.render(
+  <Grid>
+    {Array.from(Array(6).keys()).map((_, i) => (
       <Grid.Item key={i} onClick={() => console.log(i)}>
-        <div className="block">文本</div>
+        <div className="block">内容{i + 1}</div>
       </Grid.Item>
     ))}
   </Grid>,
@@ -24,10 +41,30 @@ import { Grid } from 'zarm';
 
 const Demo = () => {
   return (
-    <Grid columns={3}>
+    <Grid columns={4}>
       {Array.from(Array(6).keys()).map((_, i) => (
-        <Grid.Item key={i} onClick={() => console.log(i)}>
-          <div className="block">文本</div>
+        <Grid.Item key={i}>
+          <div className="block">内容{i + 1}</div>
+        </Grid.Item>
+      ))}
+    </Grid>
+  );
+};
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## 自定义间距
+
+```tsx
+import { Grid } from 'zarm';
+
+const Demo = () => {
+  return (
+    <Grid gutter={[10, 16]}>
+      {Array.from(Array(6).keys()).map((_, i) => (
+        <Grid.Item key={i}>
+          <div className="block">内容{i + 1}</div>
         </Grid.Item>
       ))}
     </Grid>
@@ -44,57 +81,10 @@ import { Grid } from 'zarm';
 
 const Demo = () => {
   return (
-    <Grid columns={3} square>
+    <Grid square>
       {Array.from(Array(6).keys()).map((_, i) => (
-        <Grid.Item key={i} onClick={() => console.log(i)}>
-          <div className="block">文本</div>
-        </Grid.Item>
-      ))}
-    </Grid>
-  );
-};
-
-ReactDOM.render(<Demo />, mountNode);
-```
-
-## 格子间距
-
-```tsx
-import { Grid } from 'zarm';
-
-const Demo = () => {
-  return (
-    <Grid columns={3} gutter={[10, 20]}>
-      {Array.from(Array(6).keys()).map((_, i) => (
-        <Grid.Item key={i} onClick={() => console.log(i)}>
-          <div className="block">文本</div>
-        </Grid.Item>
-      ))}
-    </Grid>
-  );
-};
-
-ReactDOM.render(<Demo />, mountNode);
-```
-
-## 自定义宫格样式
-
-```tsx
-import { Grid } from 'zarm';
-
-const Demo = () => {
-  return (
-    <Grid
-      columns={3}
-      style={{
-        '--border-color': '#000',
-        '--background-color': '#eee',
-        '--background-active-color': '#bbb',
-      }}
-    >
-      {Array.from(Array(6).keys()).map((_, i) => (
-        <Grid.Item key={i} onClick={() => console.log(i)}>
-          <div className="block">文本</div>
+        <Grid.Item key={i}>
+          <div className="block">内容{i + 1}</div>
         </Grid.Item>
       ))}
     </Grid>
@@ -106,17 +96,17 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性     | 类型              | 默认值 | 说明                                              |
-| :------- | :---------------- | :----- | :------------------------------------------------ |
-| columns  | number            | 0      | 列数                                              |
-| gutter   | number \|number[] | 0      | 格子之间的间距                                    |
-| bordered | boolean           | true   | 是否显示边框                                      |
-| square   | boolean           | false  | 是否将格子固定为正方形 (设置正方形会导致间距失效) |
+| 属性     | 类型               | 默认值 | 说明                                                 |
+| :------- | :----------------- | :----- | :--------------------------------------------------- |
+| columns  | number             | 3      | 列数                                                 |
+| gutter   | number \| number[] | 0      | 格子之间的间距，数组类型时表示：[上下间距, 左右间距] |
+| bordered | boolean            | true   | 是否显示边框                                         |
+| square   | boolean            | false  | 是否将格子固定为正方形 (设置正方形会导致间距失效)    |
 
 ## CSS 变量
 
-| 属性                      | 类型   | 默认值                      | 说明                 |
-| :------------------------ | :----- | :-------------------------- | :------------------- |
-| --border-color            | string | var(--za-border-color)      | 格子边框颜色         |
-| --background-color        | string | var(--za-background-color)  | 格子背景颜色         |
-| --background-active-color | string | var(--za-background-active) | 格子点击反馈背景颜色 |
+| 属性                        | 类型                               | 默认值                     | 说明                 |
+| :-------------------------- | :--------------------------------- | :------------------------- | :------------------- |
+| --za-grid-border-color      | React.CSSProperties['borderColor'] | 'var(--border-color)'      | 格子边框颜色         |
+| --za-grid-background        | React.CSSProperties['background']  | 'var(--background-color)'  | 格子背景颜色         |
+| --za-grid-active-background | React.CSSProperties['background']  | 'var(--background-active)' | 格子点击反馈背景颜色 |

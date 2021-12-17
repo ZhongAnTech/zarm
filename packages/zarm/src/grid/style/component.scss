@@ -1,0 +1,81 @@
+$prefixCls: #{$prefix}-grid;
+
+:root {
+  @include define(border-color, var(--border-color));
+  @include define(background, var(--background-color));
+  @include define(active-background, var(--background-active));
+}
+
+@include b(grid) {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+
+  @include m(bordered) {
+    @include onepx(top left, zavar(border-color));
+
+    &::after {
+      z-index: 1;
+    }
+
+    @include b(grid-item) {
+      @include e(content) {
+        @include onepx(right bottom, zavar(border-color));
+
+        &::after {
+          z-index: 1;
+        }
+      }
+
+      @include m(horizontal-bordered) {
+        @include e(content) {
+          &::after {
+            border-left-width: 1px;
+            border-right-width: 1px;
+          }
+        }
+      }
+
+      @include m(vertical-bordered) {
+        @include e(content) {
+          &::after {
+            border-top-width: 1px;
+            border-bottom-width: 1px;
+          }
+        }
+      }
+    }
+  }
+
+  @include m(square) {
+    @include b(grid-item) {
+      height: 0;
+
+      @include e(content) {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+      }
+    }
+  }
+}
+
+@include b(grid-item) {
+  position: relative;
+
+  @include m(clickable) {
+    @include e(content) {
+      &:active {
+        background: zavar(active-background);
+      }
+    }
+  }
+
+  @include e(content) {
+    height: 100%;
+    background: zavar(background);
+    position: relative;
+    transition: 200ms;
+  }
+}

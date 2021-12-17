@@ -5,6 +5,12 @@ import GridContext from './GridContext';
 import type { BaseGridProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
 
+export interface GridCssVars {
+  '--za-grid-border-color'?: React.CSSProperties['borderColor'];
+  '--za-grid-background'?: React.CSSProperties['background'];
+  '--za-grid-active-background'?: React.CSSProperties['background'];
+}
+
 export type GridProps = BaseGridProps & HTMLProps;
 
 const Grid: React.FC<GridProps> = (props) => {
@@ -27,13 +33,13 @@ const Grid: React.FC<GridProps> = (props) => {
   const verticalGutter = gutters[1] > 0 ? gutters[1] / 2 : undefined;
 
   if (!square && horizontalGutter) {
-    gridStyle.paddingLeft = horizontalGutter;
-    gridStyle.paddingRight = horizontalGutter;
+    gridStyle.paddingTop = horizontalGutter;
+    gridStyle.paddingBottom = horizontalGutter;
   }
 
   if (!square && verticalGutter) {
-    gridStyle.paddingTop = verticalGutter;
-    gridStyle.paddingBottom = verticalGutter;
+    gridStyle.paddingLeft = verticalGutter;
+    gridStyle.paddingRight = verticalGutter;
   }
 
   const classes = classnames(
@@ -57,7 +63,7 @@ const Grid: React.FC<GridProps> = (props) => {
 Grid.displayName = 'Grid';
 
 Grid.defaultProps = {
-  columns: 4,
+  columns: 3,
   gutter: 0,
   bordered: true,
 };

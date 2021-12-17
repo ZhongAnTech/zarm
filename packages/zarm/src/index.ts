@@ -7,6 +7,9 @@ export { default as Collapse } from './collapse';
 export type { ActionSheetProps, ActionSheetActionProps } from './action-sheet';
 export { default as ActionSheet } from './action-sheet';
 
+export type { AffixProps } from './affix';
+export { default as Affix } from './affix';
+
 export type { AlertProps } from './alert';
 // export { default as Alert } from './alert';
 
@@ -46,6 +49,9 @@ export { default as Icon } from './icon';
 
 export type { CustomInputProps } from './custom-input';
 export { default as CustomInput } from './custom-input';
+
+export type { GridProps, GridItemProps, GridCssVars } from './grid';
+export { default as Grid } from './grid';
 
 export type { InputProps, InputTextProps, InputTextareaProps } from './input';
 export { default as Input } from './input';
@@ -151,12 +157,6 @@ export type { ConfigProviderProps as NConfigProviderProps } from './n-config-pro
 export { default as NConfigProvider } from './n-config-provider';
 
 export { default as StackPicker } from './stack-picker';
-
-export type { AffixProps } from './affix';
-export { default as Affix } from './affix';
-
-export type { GridProps } from './grid';
-export { default as Grid } from './grid';
 
 export type { DragProps } from './drag';
 export { default as Drag } from './drag';
