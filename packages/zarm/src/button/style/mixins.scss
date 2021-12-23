@@ -59,7 +59,8 @@
   padding: 0 $padding;
   font-size: $font-size;
   height: $height;
-  line-height: 1.5;
+  line-height: $height;
+  // line-height: 1.5;
 
   @include m(circle) {
     width: $height;

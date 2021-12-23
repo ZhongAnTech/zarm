@@ -2,7 +2,7 @@
 
 $prefix: za;
 
-:root {
+:root, page {
   @include defineColorHSL(--theme-default, 0, 0%, 90%);
   @include defineColorHSL(--theme-primary, 156, 100%, 36.9%);
   @include defineColorHSL(--theme-success, 156, 100%, 36.9%);
@@ -335,7 +335,7 @@ $prefix: za;
   // 列表项 title 文本字体大小
   --za-list-item-title-font-size: var(--font-size-md);
   // 列表项 title 文本字体行高
-  --za-list-item-title-line-height: calc(var(--za-list-item-height) - var(--za-list-item-padding-vertical) * 2);
+  --za-list-item-title-line-height: calc(var(--za-list-item-height) - var(--za-list-item-padding-vertical) - var(--za-list-item-padding-vertical));
   // 列表项 title 文本折行
   --za-list-item-title-white-space: nowrap;
   // 列表项 inline 模式下 title 文本区域的宽度
