@@ -1,9 +1,6 @@
 import localeCN from './locale/zh_CN';
 import type { ContainerType } from '../utils/dom';
-import type { GridCssVars } from '../grid';
-import type { ActionSheetCssVars } from '../action-sheet';
-
-type CssVars = GridCssVars & ActionSheetCssVars;
+import type { CssVars } from './cssVars';
 
 export interface ConfigProviderProps {
   prefixCls?: string;

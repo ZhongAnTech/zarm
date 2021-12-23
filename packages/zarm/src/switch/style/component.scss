@@ -1,14 +1,28 @@
+$prefixCls: #{$prefix}-switch;
 
 @include b(switch) {
+  @include define(width, 52px);
+  @include define(height, 32px);
+  @include define(background, rgba(120, 120, 128, 0.16));
+  @include define(border-radius, var(--za-radius-round));
+  @include define(transition, all 0.3s);
+  @include define(checked-background, var(--za-theme-primary));
+  @include define(knob-background, #fff);
+  @include define(knob-size, 28px);
+  @include define(knob-box-shadow, '0 3px 1px rgba(0, 0, 0, 0.06), 0 3px 8px rgba(0, 0, 0, 0.15)');
+  @include define(knob-border-color, rgba(0, 0, 0, 0.04));
+  @include define(knob-border-width, 0.5px);
+  @include define(knob-transition, 'transform 0.3s cubic-bezier(0.45, 1, 0.4, 1), transform 0.3s cubic-bezier(0.4, 0.4, 0.25, 1.35)');
+
   @include e(input) {
     position: relative;
-    width: var(--za-switch-width);
-    height: var(--za-switch-height);
-    border: calc((var(--za-switch-height) - var(--za-switch-knob-size)) / 2) solid transparent;
-    border-radius: var(--za-switch-border-radius);
-    background-color: var(--za-switch-background);
+    width: var(--width);
+    height: var(--height);
+    border: calc((var(--height) - var(--knob-size)) / 2) solid transparent;
+    border-radius: var(--border-radius);
+    background-color: var(--background);
     vertical-align: middle;
-    transition: all var(--za-switch-transition-duration);
+    transition: var(--transition);
     outline: 0;
     -webkit-appearance: none;
 
@@ -18,28 +32,28 @@
       position: absolute;
       top: 0;
       left: 0;
-      height: var(--za-switch-knob-size);
-      border-radius: var(--za-switch-border-radius);
+      height: var(--knob-size);
+      border-radius: var(--border-radius);
     }
 
     &:before {
-      width: calc(var(--za-switch-width) - var(--za-switch-height) + var(--za-switch-knob-size));
-      transition: transform var(--za-switch-knob-transition-duration) cubic-bezier(0.45, 1, 0.4, 1), -webkit-transform var(--za-switch-knob-transition-duration) cubic-bezier(0.45, 1, 0.4, 1);
+      width: calc(var(--width) - var(--height) + var(--knob-size));
+      transition: var(--knob-transition);
     }
 
     &:after {
-      width: var(--za-switch-knob-size);
-      background-color: var(--za-switch-knob-background);
-      box-shadow: var(--za-switch-knob-box-shadow);
-      transition: transform var(--za-switch-knob-transition-duration) cubic-bezier(0.4, 0.4, 0.25, 1.35), -webkit-transform var(--za-switch-knob-transition-duration) cubic-bezier(0.4, 0.4, 0.25, 1.35);
-      border: var(--za-switch-knob-border-width) solid var(--za-switch-knob-border-color);
+      width: var(--knob-size);
+      background-color: var(--knob-background);
+      border: var(--knob-border-width) solid var(--knob-border-color);
+      box-shadow: var(--knob-box-shadow);
+      transition: var(--knob-transition);
     }
 
     &:checked {
-      background-color: var(--za-switch-checked-background);
+      background-color: var(--checked-background);
 
       &:after {
-        transform: translateX(calc(var(--za-switch-width) - var(--za-switch-height)));
+        transform: translateX(calc(var(--width) - var(--height)));
       }
     }
   }

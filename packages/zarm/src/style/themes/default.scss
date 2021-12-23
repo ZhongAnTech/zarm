@@ -73,7 +73,78 @@ $prefix: za;
   --box-shadow-light: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
   --box-shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.2);
 
-  // Components
+  // New Variables
+
+  @include defineColorHSL(--za-theme-default, 0, 0%, 90%);
+  @include defineColorHSL(--za-theme-primary, 156, 100%, 36.9%);
+  @include defineColorHSL(--za-theme-success, 156, 100%, 36.9%);
+  @include defineColorHSL(--za-theme-warning, 31, 83.1%, 55.9%);
+  @include defineColorHSL(--za-theme-danger, 0, 100%, 65.7%);
+
+  // 文字色
+
+  --za-color-text: #343434;
+  --za-color-text-inverse: #fff; // 反色
+  --za-color-text-placeholder: rgba(128, 128, 132, 0.3); // 文本框提示
+  --za-color-text-disabled: #bcbcbc; // 失效
+  --za-color-text-caption: #909090; // 辅助描述
+  --za-color-link: var(--za-theme-primary); // 链接
+  --za-color-shadow: rgba(56, 56, 56, 0.15); // 阴影色
+
+  // 背景色
+  --za-background-color: #fff;
+  --za-background-active: #d4d4d4;
+  --za-background-disabled: #f2f2f2;
+
+  // 边框色
+  --za-border-color: #c5c5c5;
+  --za-border-disabled: #e6e6e6;
+
+  // 圆角
+  --za-radius-xs: 4px;
+  --za-radius-sm: 4px;
+  --za-radius-md: 4px;
+  --za-radius-lg: 8px;
+  --za-radius-xl: 8px;
+  --za-radius-round: 1000px;
+  --za-radius-circle: 50%;
+
+  // 水平间距
+  --za-padding-h-xs: 8px;
+  --za-padding-h-sm: 12px;
+  --za-padding-h-md: 16px;
+  --za-padding-h-lg: 20px;
+  --za-padding-h-xl: 24px;
+
+  // 垂直间距
+  --za-padding-v-xs: 6px;
+  --za-padding-v-sm: 8px;
+  --za-padding-v-md: 12px;
+  --za-padding-v-lg: 16px;
+  --za-padding-v-xl: 18px;
+
+  // 字体大小
+  --za-font-size-xs: 12px;
+  --za-font-size-sm: 14px;
+  --za-font-size-md: 17px;
+  --za-font-size-lg: 20px;
+  --za-font-size-xl: 22px;
+
+  // 堆叠顺序
+  --za-zindex-mask: 1000;
+  --za-zindex-popup: 1100;
+  --za-zindex-tooltip: 1700;
+  --za-zindex-tabbar: 100;
+
+  // 透明度
+  --za-opacity-disabled: 0.5;
+  --za-opacity-mask: 0.4;
+  --za-opacity-toast: 0.8;
+  --za-opacity-tooltip: 0.8;
+
+  //阴影
+  --za-box-shadow-light: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+  --za-box-shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.2);
 
   // activity-indicator
   --za-activity-indicator-color: var(--theme-primary);
@@ -522,32 +593,6 @@ $prefix: za;
   --za-stepper-input-margin-horizontal-lg: 4px;
   --za-stepper-input-padding-horizontal-md: 8px;
   --za-stepper-input-padding-horizontal-lg: 8px;
-
-  // Switch
-  // 宽度
-  --za-switch-width: 52px;
-  // 高度
-  --za-switch-height: 32px;
-  // 背景颜色
-  --za-switch-background: rgba(120, 120, 128, 0.16);
-  // 选中状态背景颜色
-  --za-switch-checked-background: var(--theme-primary);
-  // 圆角
-  --za-switch-border-radius: var(--radius-round);
-  // 选中动画执行时间
-  --za-switch-transition-duration: 0.3s;
-  // 把手大小
-  --za-switch-knob-size: 28px;
-  // 把手背景颜色
-  --za-switch-knob-background: #fff;
-  // 把手阴影
-  --za-switch-knob-box-shadow: 0 3px 1px rgba(0, 0, 0, 0.06), 0 3px 8px rgba(0, 0, 0, 0.15);
-  // 把手边框颜色
-  --za-switch-knob-border-color: rgba(0, 0, 0, 0.04);
-  // 把手边框宽度
-  --za-switch-knob-border-width: 0.5px;
-  // 把手移动动画执行时间
-  --za-switch-knob-transition-duration: 0.3s;
 
   // Tabs
   --za-tabs-height: 45px;

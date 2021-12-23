@@ -1,18 +1,16 @@
 $prefixCls: #{$prefix}-grid;
 
-:root {
-  @include define(border-color, var(--border-color));
-  @include define(background, var(--background-color));
-  @include define(active-background, var(--background-active));
-}
-
 @include b(grid) {
+  @include define(border-color, var(--za-border-color));
+  @include define(item-background, var(--za-background-color));
+  @include define(item-active-background, var(--za-background-active));
+
   display: flex;
   flex-wrap: wrap;
   position: relative;
 
   @include m(bordered) {
-    @include onepx(top left, zavar(border-color));
+    @include onepx(top left, var(--border-color));
 
     &::after {
       z-index: 1;
@@ -20,7 +18,7 @@ $prefixCls: #{$prefix}-grid;
 
     @include b(grid-item) {
       @include e(content) {
-        @include onepx(right bottom, zavar(border-color));
+        @include onepx(right bottom, var(--border-color));
 
         &::after {
           z-index: 1;
@@ -67,14 +65,14 @@ $prefixCls: #{$prefix}-grid;
   @include m(clickable) {
     @include e(content) {
       &:active {
-        background: zavar(active-background);
+        background: var(--item-active-background);
       }
     }
   }
 
   @include e(content) {
     height: 100%;
-    background: zavar(background);
+    background: var(--item-background);
     position: relative;
     transition: 200ms;
   }

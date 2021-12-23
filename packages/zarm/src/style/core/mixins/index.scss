@@ -1,7 +1,7 @@
 @import './bem';
 
 @mixin define($key, $value) {
-  --#{$prefixCls+'-'+$key}: #{$value};
+  --#{$key}: var(--#{$prefixCls+'-'+$key}, #{$value});
 }
 
 @mixin defineColorHSL($color, $hue, $saturation, $lightness) {

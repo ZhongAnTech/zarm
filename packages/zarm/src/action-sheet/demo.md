@@ -191,15 +191,15 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## CSS 变量
 
-| 属性                                     | 类型                                | 默认值                      | 说明                 |
-| :--------------------------------------- | :---------------------------------- | :-------------------------- | :------------------- |
-| --za-action-sheet-border-radius          | React.CSSProperties['borderRadius'] | '14px'                      | 圆角大小             |
-| --za-action-sheet-spacing-margin         | React.CSSProperties['margin']       | '8px'                       | 边距                 |
-| --za-action-sheet-item-background        | React.CSSProperties['background']   | 'rgba(249, 249, 249, 0.94)' | 选项背景色           |
-| --za-action-sheet-item-active-background | React.CSSProperties['background']   | 'var(--background-active)'  | 选项激活状态下背景色 |
-| --za-action-sheet-item-height            | React.CSSProperties['height']       | '56px'                      | 选项高度             |
-| --za-action-sheet-item-color             | React.CSSProperties['color']        | 'var(--color-text)'         | 选项字体色           |
-| --za-action-sheet-item-font-size         | React.CSSProperties['fontSize']     | '20px'                      | 选项字体大小         |
-| --za-action-sheet-cancel-background      | React.CSSProperties['background']   | '#fff'                      | 取消选项背景色       |
-| --za-action-sheet-cancel-color           | React.CSSProperties['color']        | 'var(--theme-primary)'      | 取消选项字体大小     |
-| --za-action-sheet-cancel-margin-top      | React.CSSProperties['marginTop']    | '8px'                       | 取消选项上边距大小   |
+| 属性                                     | 类型                                | 默认值                        | 说明                 |
+| :--------------------------------------- | :---------------------------------- | :---------------------------- | :------------------- |
+| --za-action-sheet-border-radius          | React.CSSProperties['borderRadius'] | '14px'                        | 圆角大小             |
+| --za-action-sheet-spacing-margin         | React.CSSProperties['margin']       | '8px'                         | 边距                 |
+| --za-action-sheet-item-background        | React.CSSProperties['background']   | 'rgba(249, 249, 249, 0.94)'   | 选项背景色           |
+| --za-action-sheet-item-active-background | React.CSSProperties['background']   | 'var(--za-background-active)' | 选项激活状态下背景色 |
+| --za-action-sheet-item-height            | React.CSSProperties['height']       | '56px'                        | 选项高度             |
+| --za-action-sheet-item-color             | React.CSSProperties['color']        | 'var(--za-color-text)'        | 选项字体色           |
+| --za-action-sheet-item-font-size         | React.CSSProperties['fontSize']     | '20px'                        | 选项字体大小         |
+| --za-action-sheet-cancel-background      | React.CSSProperties['background']   | '#fff'                        | 取消选项背景色       |
+| --za-action-sheet-cancel-color           | React.CSSProperties['color']        | 'var(--za-theme-primary)'     | 取消选项字体大小     |
+| --za-action-sheet-cancel-margin-top      | React.CSSProperties['marginTop']    | '8px'                         | 取消选项上边距大小   |

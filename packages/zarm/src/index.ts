@@ -119,7 +119,7 @@ export { default as Carousel } from './carousel';
 
 export { default as SwipeAction } from './swipe-action';
 
-export type { SwitchProps } from './switch';
+export type { SwitchProps, SwitchCssVars } from './switch';
 export { default as Switch } from './switch';
 
 export type { RateProps } from './rate';

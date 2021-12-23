@@ -7,8 +7,8 @@ import type { HTMLProps } from '../utils/utilityTypes';
 
 export interface GridCssVars {
   '--za-grid-border-color'?: React.CSSProperties['borderColor'];
-  '--za-grid-background'?: React.CSSProperties['background'];
-  '--za-grid-active-background'?: React.CSSProperties['background'];
+  '--za-grid-item-background'?: React.CSSProperties['background'];
+  '--za-grid-item-active-background'?: React.CSSProperties['background'];
 }
 
 export type GridProps = BaseGridProps & HTMLProps;
