@@ -1,3 +1,9 @@
+$prefix: za;
+$block-separator: '-';
+$element-separator: '__';
+$modifier-separator: '--';
+$keyframes-separator: '_';
+
 @import './bem';
 
 @mixin define($key, $value) {
@@ -87,4 +93,24 @@
     margin-bottom: constant(safe-area-inset-bottom);
     margin-bottom: env(safe-area-inset-bottom);
   }
+}
+
+@mixin keyframes($name) {
+  $selector: selector-append(get-block(&), $keyframes-separator + $name);
+  $selector: str-selector($selector);
+  $selector: str-slice($selector, 2, str-length($selector) - 1);
+
+  @at-root {
+    @keyframes #{$selector} {
+      @content;
+    }
+  }
+}
+
+@mixin animation($name, $value) {
+  $selector: selector-append(get-block(&), $keyframes-separator + $name);
+  $selector: str-selector($selector);
+  $selector: str-slice($selector, 2, str-length($selector) - 1);
+
+  animation: $selector $value;
 }

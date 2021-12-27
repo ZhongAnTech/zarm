@@ -1,3 +1,9 @@
+$prefix: 'za';
+$block-separator: '-';
+$element-separator: '__';
+$modifier-separator: '--';
+$keyframes-separator: '_';
+
 @import './bem';
 
 @mixin defineColorHSL($color, $hue, $saturation, $lightness) {
@@ -21,34 +27,4 @@
   #{$color}-darker-h: #{$hue};
   #{$color}-darker-s: #{$saturation};
   #{$color}-darker-l: 20%;
-}
-
-@mixin placeholder {
-  &::placeholder {
-    @content;
-  }
-}
-
-@mixin onepx($positions: top right bottom left, $border-color: var(--border-color), $border-radius: 0) {
-  &:after {
-    content: '';
-    pointer-events: none;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    border-radius: $border-radius;
-    @each $position in $positions {
-      border-#{$position}: 1PX solid $border-color;
-    }
-
-    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
-      width: 200%;
-      height: 200%;
-      transform: scale(0.5);
-      transform-origin: 0 0;
-      border-radius: $border-radius * 2;
-    }
-  }
 }

@@ -1,19 +1,13 @@
 @import '../functions/string';
 
-$--namespace: 'za';
-$--block-separator: '-';
-$--element-separator: '__';
-$--modifier-separator: '--';
-$--keyframes-separator: '_';
-
 // 是否包含Modifier
 @function contains-modifier($selector) {
-  @return str-contains(str-selector($selector), $--modifier-separator);
+  @return str-contains(str-selector($selector), $modifier-separator);
 }
 
 // 是否包含Element
 @function containsElement($selector) {
-  @return str-contains(str-selector($selector), $--element-separator);
+  @return str-contains(str-selector($selector), $element-separator);
 }
 
 // 获取块名
@@ -21,12 +15,15 @@ $--keyframes-separator: '_';
   $selector: str-selector($selector);
   $parent: str-slice($selector, str-index-reverse($selector, '.'));
   $start: -2;
+
   @if containsElement($parent) {
-    $start: str-index($parent, $--element-separator) - 1;
+    $start: str-index($parent, $element-separator) - 1;
   }
+
   @else if contains-modifier($parent) {
-    $start: str-index($parent, $--modifier-separator) - 1;
+    $start: str-index($parent, $modifier-separator) - 1;
   }
+
   $block: str-slice($parent, 0, $start);
   // @debug $block;
   @return $block;
@@ -37,13 +34,17 @@ $--keyframes-separator: '_';
   $result: '';
   $block: get-block(&);
   $selector: if(contains-modifier(&), get-block(&), &);
+
   @each $unit in $elements {
-    $element: selector-append($selector, $--element-separator + $unit);
+    $element: selector-append($selector, $element-separator + $unit);
+
     @if containsElement($selector) {
-      $element: selector-nest($selector, selector-append($block, $--element-separator + $unit));
+      $element: selector-nest($selector, selector-append($block, $element-separator + $unit));
     }
-    $result: $result + $element + ',';
+
+    $result: $result+$element+',';
   }
+
   @return $result;
 }
 
@@ -62,7 +63,8 @@ $--keyframes-separator: '_';
  *    .za-checkbox-group { ... }
  */
 @mixin b($block) {
-  $block: selector-append($--namespace, $--block-separator + $block);
+  $block: selector-append($prefix, $block-separator + $block);
+
   // @debug $block;
   .#{$block} {
     @content;
@@ -90,6 +92,7 @@ $--keyframes-separator: '_';
 @mixin e($elements...) {
   $elements: get-elements($elements);
   $selector: if(contains-modifier(&), selector-nest(&, $elements), $elements);
+
   @at-root {
     #{$selector} {
       @content;
@@ -128,7 +131,8 @@ $--keyframes-separator: '_';
  */
 @mixin m($modifier) {
   $parent: if(contains-modifier(&), & + get-block(&), &);
-  $selector: selector-append($parent, $--modifier-separator + $modifier);
+  $selector: selector-append($parent, $modifier-separator + $modifier);
+
   @at-root {
     #{$selector} {
       @content;
