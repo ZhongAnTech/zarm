@@ -1,11 +1,4 @@
-import React, {
-  RefAttributes,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-  CSSProperties,
-} from 'react';
+import React, { RefAttributes, useCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../n-config-provider';
 import Popup from '../popup';
