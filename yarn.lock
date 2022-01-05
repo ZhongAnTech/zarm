@@ -4016,6 +4016,11 @@ ansi-regex@^5.0.0:
   resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-5.0.0.tgz#388539f55179bf39339c81af30a654d69f87cb75"
   integrity sha512-bY6fj56OUQ0hU1KjFNDQuJFezqKdrAyFdIevADiqrWHwSlbmBNMHp5ak2f40Pm8JTFyM2mqxkG6ngkHO11f/lg==
 
+ansi-regex@^5.0.1:
+  version "5.0.1"
+  resolved "https://npm.zhonganinfo.com/ansi-regex/-/ansi-regex-5.0.1.tgz#082cb2c89c9fe8659a311a53bd6a4dc5301db304"
+  integrity sha1-CCyyyJyf6GWaMRpTvWpNxTAdswQ=
+
 ansi-styles@^3.1.0, ansi-styles@^3.2.0, ansi-styles@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-3.2.1.tgz#41fbb20243e50b12be0f04b8dedbf07520ce841d"
@@ -5193,7 +5198,7 @@ chalk@2.1.0:
     escape-string-regexp "^1.0.5"
     supports-color "^4.0.0"
 
-chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0, chalk@^2.3.0, chalk@^2.3.2, chalk@^2.4.1, chalk@^2.4.2:
+chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0, chalk@^2.3.2, chalk@^2.4.1, chalk@^2.4.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
   integrity sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==
@@ -8739,19 +8744,17 @@ gulp-cli@^2.2.0:
     v8flags "^3.2.0"
     yargs "^7.1.0"
 
-gulp-dart-sass@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/gulp-dart-sass/-/gulp-dart-sass-1.0.2.tgz#20e33c236b48d557c91e8dfe67a2aef2b8a2e328"
-  integrity sha512-8fLttA824mbuc0jRVlGs00zWYZXBckat6INawx5kp66Eqsz5srNWTA51t0mbfB4C8a/a/GZ9muYLwXGklgAHlw==
+gulp-sass@^5.1.0:
+  version "5.1.0"
+  resolved "https://npm.zhonganinfo.com/gulp-sass/-/gulp-sass-5.1.0.tgz#bb3d9094f39a260f62a8d0a6797b95ab826f9663"
+  integrity sha512-7VT0uaF+VZCmkNBglfe1b34bxn/AfcssquLKVDYnCDJ3xNBaW7cUuI3p3BQmoKcoKFrs9jdzUxyb+u+NGfL4OQ==
   dependencies:
-    chalk "^2.3.0"
-    lodash.clonedeep "^4.3.2"
+    lodash.clonedeep "^4.5.0"
+    picocolors "^1.0.0"
     plugin-error "^1.0.1"
-    replace-ext "^1.0.0"
-    sass "^1.26.3"
-    strip-ansi "^4.0.0"
-    through2 "^2.0.0"
-    vinyl-sourcemaps-apply "^0.2.0"
+    replace-ext "^2.0.0"
+    strip-ansi "^6.0.1"
+    vinyl-sourcemaps-apply "^0.2.1"
 
 gulp@^4.0.2:
   version "4.0.2"
@@ -11054,7 +11057,7 @@ lodash._reinterpolate@^3.0.0:
   resolved "https://registry.yarnpkg.com/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
   integrity sha1-DM8tiRZq8Ds2Y8eWU4t1rG4RTZ0=
 
-lodash.clonedeep@^4.3.2, lodash.clonedeep@^4.5.0:
+lodash.clonedeep@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
   integrity sha1-4j8/nE+Pvd6HJSnBBxhXoIblzO8=
@@ -13281,6 +13284,11 @@ performance-now@^2.1.0:
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
 
+picocolors@^1.0.0:
+  version "1.0.0"
+  resolved "https://npm.zhonganinfo.com/picocolors/-/picocolors-1.0.0.tgz#cb5bdc74ff3f51892236eaf79d68bc44564ab81c"
+  integrity sha1-y1vcdP8/UYkiNur3nWi8RFZKuBw=
+
 picomatch@^2.0.4, picomatch@^2.0.5, picomatch@^2.2.1:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.2.2.tgz#21f333e9b6b8eaff02468f5146ea406d345f4dad"
@@ -14953,6 +14961,11 @@ replace-ext@^1.0.0:
   resolved "https://registry.yarnpkg.com/replace-ext/-/replace-ext-1.0.1.tgz#2d6d996d04a15855d967443631dd5f77825b016a"
   integrity sha512-yD5BHCe7quCgBph4rMQ+0KkIRKwWCrHDOX1p1Gp6HwjPM5kVoCdKGNhN7ydqqsX6lJEnQDKZ/tFMiEdQ1dvPEw==
 
+replace-ext@^2.0.0:
+  version "2.0.0"
+  resolved "https://npm.zhonganinfo.com/replace-ext/-/replace-ext-2.0.0.tgz#9471c213d22e1bcc26717cd6e50881d88f812b06"
+  integrity sha1-lHHCE9IuG8wmcXzW5QiB2I+BKwY=
+
 replace-homedir@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/replace-homedir/-/replace-homedir-1.0.0.tgz#e87f6d513b928dde808260c12be7fec6ff6e798c"
@@ -15269,7 +15282,7 @@ sass-loader@^11.1.1:
     klona "^2.0.4"
     neo-async "^2.6.2"
 
-sass@^1.26.3, sass@^1.32.13:
+sass@^1.32.13:
   version "1.32.13"
   resolved "https://registry.yarnpkg.com/sass/-/sass-1.32.13.tgz#8d29c849e625a415bce71609c7cf95e15f74ed00"
   integrity sha512-dEgI9nShraqP7cXQH+lEXVf73WOPCse0QlFzSD8k+1TcOxCMwVXfQlr0jtoluZysQOyJGnfr21dLvYKDJq8HkA==
@@ -16177,6 +16190,13 @@ strip-ansi@^6.0.0:
   integrity sha512-AuvKTrTfQNYNIctbR1K/YGTR1756GycPsg7b9bdV9Duqur4gv6aKqHXah67Z8ImS7WEz5QVcOtlfW2rZEugt6w==
   dependencies:
     ansi-regex "^5.0.0"
+
+strip-ansi@^6.0.1:
+  version "6.0.1"
+  resolved "https://npm.zhonganinfo.com/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
+  integrity sha1-nibGPTD1NEPpSJSVshBdN7Z6hdk=
+  dependencies:
+    ansi-regex "^5.0.1"
 
 strip-bom@^2.0.0:
   version "2.0.0"
@@ -17439,7 +17459,7 @@ vinyl-sourcemap@^1.1.0:
     remove-bom-buffer "^3.0.0"
     vinyl "^2.0.0"
 
-vinyl-sourcemaps-apply@^0.2.0:
+vinyl-sourcemaps-apply@^0.2.0, vinyl-sourcemaps-apply@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/vinyl-sourcemaps-apply/-/vinyl-sourcemaps-apply-0.2.1.tgz#ab6549d61d172c2b1b87be5c508d239c8ef87705"
   integrity sha1-q2VJ1h0XLCsbh75cUI0jnI74dwU=

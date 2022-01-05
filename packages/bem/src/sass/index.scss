@@ -1,0 +1,61 @@
+@import 'variables';
+@import 'functions';
+
+@mixin b($blocks...) {
+  $selector: getSelector('.' + $namespace, $block-separator, $blocks...);
+
+  #{$selector} {
+    @content;
+  }
+}
+
+@mixin e($elements...) {
+  $selector: '';
+  $prefix: get-block(&);
+
+  @if contains-modifier(&) {
+    @each $element in $elements {
+      $newElement: selector-nest(&, selector-append($prefix, $element-separator + $element));
+
+      @if contains-element(&) {
+        $newElement: '&' + $element-separator + $element;
+      }
+
+      $selector: $selector + $newElement + ',';
+    }
+  } @else {
+     @if contains-element(&) {
+      @each $element in $elements {
+        $newElement: selector-nest(&, selector-append($prefix, $element-separator + $element))+',';
+        $selector: $selector + $newElement + ',';
+      }
+    } @else {
+      $selector: getSelector('&', $element-separator, $elements...);
+    }
+  }
+
+  @at-root {
+    #{$selector} {
+      @content;
+    }
+  }
+}
+
+@mixin m($modifiers...) {
+  $selector: '';
+  $prefix: get-block(&);
+
+  @if contains-modifier(&) {
+    @each $modifier in $modifiers {
+      $selector: $selector + '&' + $prefix + $modifier-separator + $modifier + ',';
+    }
+  } @else {
+    $selector: getSelector('&', $modifier-separator, $modifiers...);
+  }
+
+  @at-root {
+    #{$selector} {
+      @content;
+    }
+  }
+}
