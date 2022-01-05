@@ -1,4 +1,25 @@
-@import '../core/index.scss';
+@mixin defineColorHSL($color, $hue, $saturation, $lightness) {
+  #{$color}: unquote("hsl(#{$hue}, #{$saturation}, #{$lightness})");
+  #{$color}-h: #{$hue};
+  #{$color}-s: #{$saturation};
+  #{$color}-l: #{$lightness};
+  #{$color}-light: unquote("hsl(#{$hue}, #{$saturation}, #{$lightness + 4})");
+  #{$color}-light-h: #{$hue};
+  #{$color}-light-s: #{$saturation};
+  #{$color}-light-l: #{$lightness + 4};
+  #{$color}-lighter: unquote("hsl(#{$hue}, #{$saturation}, 95%)");
+  #{$color}-lighter-h: #{$hue};
+  #{$color}-lighter-s: #{$saturation};
+  #{$color}-lighter-l: 95%;
+  #{$color}-dark: unquote("hsl(#{$hue}, #{$saturation}, #{$lightness - 4})");
+  #{$color}-dark-h: #{$hue};
+  #{$color}-dark-s: #{$saturation};
+  #{$color}-dark-l: #{$lightness - 4};
+  #{$color}-darker: unquote("hsl(#{$hue}, #{$saturation}, 20%)");
+  #{$color}-darker-h: #{$hue};
+  #{$color}-darker-s: #{$saturation};
+  #{$color}-darker-l: 20%;
+}
 
 :root {
   @include defineColorHSL(--theme-default, 0, 0%, 90%);

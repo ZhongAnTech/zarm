@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react';
-import classnames from 'classnames/dedupe';
+import { createBEM } from '@zarm-design/bem';
 import BasePropsType from './interface';
 import createFromIconfont from './IconFont';
 
@@ -33,11 +33,14 @@ const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
     viewBox,
     ...rest
   } = props;
-  const cls = classnames(prefixCls, className, {
-    [`${prefixCls}--${type}`]: !!type,
-    [`${prefixCls}--${theme}`]: !!theme,
-    [`${prefixCls}--${size}`]: !!size,
-  });
+
+  const bem = createBEM('icon', { prefixCls });
+
+  const cls = bem([{
+    [`${type}`]: !!type,
+    [`${theme}`]: !!theme,
+    [`${size}`]: !!size,
+  }, className]);
 
   const newProps = {
     className: cls,
@@ -77,7 +80,7 @@ Icon.createFromIconfont = createFromIconfont;
 
 Icon.displayName = 'Icon';
 Icon.defaultProps = {
-  prefixCls: 'za-icon',
+  prefixCls: 'za',
   theme: 'default',
   size: 'md',
   viewBox: INNER_SVG_PROPS.viewBox,
