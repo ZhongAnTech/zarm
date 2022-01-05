@@ -1,7 +1,10 @@
 import gulp from 'gulp';
-import sass from 'gulp-dart-sass';
+import dartSass from 'sass';
+import gulpSass from 'gulp-sass';
 import through2 from 'through2';
 import { getProjectPath } from '../utils';
+
+const sass = gulpSass(dartSass);
 
 const cssInjection = (content) => {
   return content
@@ -17,12 +20,17 @@ const gulpTask = (path?: string, outDir?: string, callback?: () => void) => {
   };
 
   gulp.task('sass', () => {
-    sass.compiler = require('sass');
     return gulp
       .src(DIR.sass)
       .pipe(
         sass({
           includePaths: ['node_modules'],
+          importer: (url, prev, done) => {
+            if (url.startsWith("~")) {
+              const resolved = require.resolve(url.replace("~", ""));
+              done({ file: resolved });
+            }
+          }
         }).on('error', sass.logError),
       )
       .pipe(gulp.dest(outDir));
