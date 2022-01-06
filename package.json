@@ -5,7 +5,7 @@
     "packages/*"
   ],
   "scripts": {
-    "postinstall": "lerna exec --scope @zarm-design/cli -- yarn build && lerna exec --scope @zarm-design/icons -- yarn build",
+    "postinstall": "lerna exec --scope @zarm-design/cli -- yarn build && lerna exec --scope @zarm-design/bem -- yarn build && lerna exec --scope @zarm-design/icons -- yarn build",
     "clean": "lerna run clean && lerna clean -y",
     "lint:tsc": "tsc --noEmit",
     "lint:script": "eslint --ext .ts,.tsx,.js,.jsx packages",

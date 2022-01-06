@@ -97,6 +97,31 @@ jobs:
         run: lerna exec --scope @zarm-design/cli -- yarn build
     needs: setup
 
+  compile-bem:
+    name: Compile @zarm-design/bem
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@master
+
+      - name: Restore lerna
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Cache @zarm-design/bem
+        uses: actions/cache@v2
+        with:
+          path: packages/bem/lib
+          key: ${{ runner.os }}-bem-${{ github.sha }}
+
+      - name: Compile @zarm-design/bem
+        run: lerna exec --scope @zarm-design/bem -- yarn build
+    needs: setup
+
   compile-icons:
     name: Compile @zarm-design/icons
     runs-on: ubuntu-latest
@@ -149,6 +174,12 @@ jobs:
           path: packages/zarm-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
+      - name: Restore @zarm-design/bem
+        uses: actions/cache@v2
+        with:
+          path: packages/bem/lib
+          key: ${{ runner.os }}-bem-${{ github.sha }}
+
       - name: Restore @zarm-design/icons
         uses: actions/cache@v2
         with:
@@ -181,6 +212,12 @@ jobs:
         with:
           path: packages/zarm-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
+
+      - name: Restore @zarm-design/bem
+        uses: actions/cache@v2
+        with:
+          path: packages/bem/lib
+          key: ${{ runner.os }}-bem-${{ github.sha }}
 
       - name: Restore @zarm-design/icons
         uses: actions/cache@v2
@@ -237,6 +274,12 @@ jobs:
           path: packages/zarm-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
+      - name: Restore @zarm-design/bem
+        uses: actions/cache@v2
+        with:
+          path: packages/bem/lib
+          key: ${{ runner.os }}-bem-${{ github.sha }}
+
       - name: Restore @zarm-design/icons
         uses: actions/cache@v2
         with:
@@ -270,6 +313,12 @@ jobs:
         with:
           path: packages/zarm-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
+
+      - name: Restore @zarm-design/bem
+        uses: actions/cache@v2
+        with:
+          path: packages/bem/lib
+          key: ${{ runner.os }}-bem-${{ github.sha }}
 
       - name: Restore @zarm-design/icons
         uses: actions/cache@v2
@@ -314,6 +363,12 @@ jobs:
           path: packages/zarm-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
+      - name: Restore @zarm-design/bem
+        uses: actions/cache@v2
+        with:
+          path: packages/bem/lib
+          key: ${{ runner.os }}-bem-${{ github.sha }}
+
       - name: Restore @zarm-design/icons
         uses: actions/cache@v2
         with:
@@ -346,6 +401,12 @@ jobs:
         with:
           path: packages/zarm-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
+
+      - name: Restore @zarm-design/bem
+        uses: actions/cache@v2
+        with:
+          path: packages/bem/lib
+          key: ${{ runner.os }}-bem-${{ github.sha }}
 
       - name: Restore @zarm-design/icons
         uses: actions/cache@v2
