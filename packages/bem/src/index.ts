@@ -3,7 +3,7 @@ export interface BEMConfig {
   blockSeparator?: string;
   elementSeparator?: string;
   modifierSeparator?: string;
-};
+}
 
 const defaultConfig: BEMConfig = {
   prefixCls: '',
@@ -15,12 +15,12 @@ const defaultConfig: BEMConfig = {
 // const bem = createBEM('button', {
 //   prefixCls: 'za',
 // });
-// 
+//
 // bem();  // za-button
 // bem(['customClass', {
 //   'loading': true,
 // }]) // za-button za-button--loading customClass
-// 
+//
 // bem('text') // za-button__text
 // bem('text',['customClass']) // za-button__text customClass
 // bem('text', ['customClass', {
@@ -43,7 +43,7 @@ export const BEMClassName = (name: string, config: BEMConfig) => {
       const modifierType = typeof modifier;
       switch (modifierType) {
         case 'string':
-          classList.push(newBlock + modifierSeparator + modifier);
+          classList.push(modifier);
           break;
 
         case 'object':
@@ -58,9 +58,10 @@ export const BEMClassName = (name: string, config: BEMConfig) => {
           break;
       }
     });
+
     return classList.join(' ');
   };
-}
+};
 
 export const createBEM = (name: string, config?: BEMConfig) => {
   config = { ...defaultConfig, ...config };
@@ -68,4 +69,4 @@ export const createBEM = (name: string, config?: BEMConfig) => {
   const prefixedName = prefixCls ? prefixCls + blockSeparator + name : name;
 
   return BEMClassName(prefixedName, config);
-}
+};
