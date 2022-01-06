@@ -9,19 +9,19 @@ const bem = createBEM('button', { prefixCls: 'za' });
 
 bem(); // za-button
 
-bem(['customClass', { primary: true }]); // za-button customClass za-button--primary
+bem([{ primary: true }, 'customClass']); // za-button za-button--primary customClass
 
 bem('text'); // za-button__text
 
 bem('text', ['customClass']); // za-button__text customClass
 
 bem('text', [
-  'customClass',
   {
     loading: true,
     disabled: false,
   },
-]); // za-button__text customClass za-button__loading--aaa
+  'customClass',
+]); // za-button__text za-button__text--loading customClass
 ```
 
 ## Usage in SASS
@@ -88,7 +88,7 @@ const createBEM: (name: string, config?: BEMConfig) => (element?: string, modifi
 
 ### config
 
-| 属性              | 对应 SASS 变量 ｜ 类型   | 默认值 | 说明     |
+| 属性              | 对应 SASS 变量 | 类型   | 默认值 | 说明     |
 | :---------------- | :----------------| :----- | :----- | :------- |
 | prefixCls         | $prefixCls | string | ''     | 类名前缀 |
 | blockSeparator    | $block-separator | string | '-'    | 类名前缀 |
