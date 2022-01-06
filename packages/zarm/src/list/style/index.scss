@@ -19,11 +19,9 @@
 
     *:first-child {
       @include b(list-item) {
-        @include b(list-item) {
-          @include e(wrapper) {
-            &::after {
-              content: none;
-            }
+        @include e(wrapper) {
+          &::after {
+            content: none;
           }
         }
       }
