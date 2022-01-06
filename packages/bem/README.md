@@ -55,7 +55,7 @@ Input
 
 Output
 
-```
+```css
 .za-button {
   height: 40px;
 }
