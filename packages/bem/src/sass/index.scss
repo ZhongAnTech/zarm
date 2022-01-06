@@ -2,8 +2,8 @@
 @import 'functions';
 
 @mixin b($blocks...) {
-  $current-block: $blocks !global;
-  $selector: getSelector('.' + $prefixCls, $block-separator, $blocks...);
+  $currentBlock: $blocks !global;
+  $selector: getSelector('.' + $prefixCls, $blockSeparator, $blocks...);
 
   #{$selector} {
     @content;
@@ -16,10 +16,10 @@
 
   @if contains-modifier(&) {
     @each $element in $elements {
-      $newElement: selector-nest(&, selector-append($prefix, $element-separator + $element));
+      $newElement: selector-nest(&, selector-append($prefix, $elementSeparator + $element));
 
       @if contains-element(&) {
-        $newElement: '&' + $element-separator + $element;
+        $newElement: '&' + $elementSeparator + $element;
       }
 
       $selector: $selector + $newElement + ',';
@@ -27,11 +27,11 @@
   } @else {
      @if contains-element(&) {
       @each $element in $elements {
-        $newElement: selector-nest(&, selector-append($prefix, $element-separator + $element))+',';
+        $newElement: selector-nest(&, selector-append($prefix, $elementSeparator + $element))+',';
         $selector: $selector + $newElement + ',';
       }
     } @else {
-      $selector: getSelector('&', $element-separator, $elements...);
+      $selector: getSelector('&', $elementSeparator, $elements...);
     }
   }
 
@@ -48,10 +48,10 @@
 
   @if contains-modifier(&) {
     @each $modifier in $modifiers {
-      $selector: $selector + '&' + $prefix + $modifier-separator + $modifier + ',';
+      $selector: $selector + '&' + $prefix + $modifierSeparator + $modifier + ',';
     }
   } @else {
-    $selector: getSelector('&', $modifier-separator, $modifiers...);
+    $selector: getSelector('&', $modifierSeparator, $modifiers...);
   }
 
   @at-root {

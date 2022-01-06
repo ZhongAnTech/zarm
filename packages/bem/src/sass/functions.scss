@@ -50,14 +50,14 @@
 @function contains-modifier($selector) {
   $index: str-index-reverse(str-selector($selector), ' ');
   $selector: if($index > 0, str-slice(str-selector($selector), $index), $selector);
-  @return str-contains(str-selector($selector), $modifier-separator);
+  @return str-contains(str-selector($selector), $modifierSeparator);
 }
 
 // 是否包含Element
 @function contains-element($selector) {
   $index: str-index-reverse(str-selector($selector), ' ');
   $selector: if($index > 0, str-slice(str-selector($selector), $index), $selector);
-  @return str-contains(str-selector($selector), $element-separator);
+  @return str-contains(str-selector($selector), $elementSeparator);
 }
 
 // 获取块名
@@ -67,11 +67,11 @@
   $start: str-length($parent) - 1;
 
   @if contains-element($parent) {
-    $start: str-index($parent, $element-separator) - 1;
+    $start: str-index($parent, $elementSeparator) - 1;
   }
 
   @else if contains-modifier($parent) {
-    $start: str-index($parent, $modifier-separator) - 1;
+    $start: str-index($parent, $modifierSeparator) - 1;
   }
 
   $block: str-slice($parent, 0, $start);
@@ -85,10 +85,10 @@
   $selector: if(contains-modifier(&), get-block(&), &);
 
   @each $unit in $elements {
-    $element: selector-append($selector, $element-separator + $unit);
+    $element: selector-append($selector, $elementSeparator + $unit);
 
     @if contains-element($selector) {
-      $element: selector-nest($selector, selector-append($block, $element-separator + $unit));
+      $element: selector-nest($selector, selector-append($block, $elementSeparator + $unit));
     }
 
     $result: $result+$element+',';

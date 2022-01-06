@@ -91,6 +91,6 @@ const createBEM: (name: string, config?: BEMConfig) => (element?: string, modifi
 | 属性              | 对应 SASS 变量 | 类型   | 默认值 | 说明     |
 | :---------------- | :----------------| :----- | :----- | :------- |
 | prefixCls         | $prefixCls | string | ''     | 类名前缀 |
-| blockSeparator    | $block-separator | string | '-'    | 类名前缀 |
-| elementSeparator  | $element-separator | string | '\_\_' | 类名前缀 |
-| modifierSeparator | $modifier-separator | string | '--'   | 类名前缀 |
+| blockSeparator    | $blockSeparator | string | '-'    | 类名前缀 |
+| elementSeparator  | $elementSeparator | string | '\_\_' | 类名前缀 |
+| modifierSeparator | $modifierSeparator | string | '--'   | 类名前缀 |
