@@ -26,11 +26,11 @@ const gulpTask = (path?: string, outDir?: string, callback?: () => void) => {
         sass({
           includePaths: ['node_modules'],
           importer: (url, prev, done) => {
-            if (url.startsWith("~")) {
-              const resolved = require.resolve(url.replace("~", ""));
+            if (url.startsWith('~')) {
+              const resolved = require.resolve(url.replace('~', ''));
               done({ file: resolved });
             }
-          }
+          },
         }).on('error', sass.logError),
       )
       .pipe(gulp.dest(outDir));

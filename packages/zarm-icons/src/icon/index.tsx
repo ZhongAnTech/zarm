@@ -36,11 +36,14 @@ const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
 
   const bem = createBEM('icon', { prefixCls });
 
-  const cls = bem([{
-    [`${type}`]: !!type,
-    [`${theme}`]: !!theme,
-    [`${size}`]: !!size,
-  }, className]);
+  const cls = bem([
+    {
+      [`${type}`]: !!type,
+      [`${theme}`]: !!theme,
+      [`${size}`]: !!size,
+    },
+    className,
+  ]);
 
   const newProps = {
     className: cls,
