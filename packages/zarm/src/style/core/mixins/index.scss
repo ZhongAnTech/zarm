@@ -1,13 +1,24 @@
-$prefix: za;
-$block-separator: '-';
-$element-separator: '__';
-$modifier-separator: '--';
+@import '~@zarm-design/bem/sass';
+
 $keyframes-separator: '_';
 
-@import './bem';
-
 @mixin define($key, $value) {
-  --#{$key}: var(--#{$prefixCls+'-'+$key}, #{$value});
+  --#{$key}: var(--#{$namespace + $block-separator + $_zaBlock + $block-separator + $key}, #{$value});
+}
+
+@mixin keyframes($name) {
+  $selector: selector-append($namespace + $block-separator + $_zaBlock, $keyframes-separator + $name);
+
+  @at-root {
+    @keyframes #{$selector} {
+      @content;
+    }
+  }
+}
+
+@mixin animation($name, $value) {
+  $selector: selector-append($namespace + $block-separator + $_zaBlock, $keyframes-separator + $name);
+  animation: $selector $value;
 }
 
 @mixin defineColorHSL($color, $hue, $saturation, $lightness) {
@@ -39,7 +50,7 @@ $keyframes-separator: '_';
   }
 }
 
-@mixin onepx($positions: top right bottom left, $border-color: var(--border-color), $border-radius: 0) {
+@mixin onepx($positions: top right bottom left, $border-color: var(--za-border-color), $border-radius: 0) {
   &:after {
     @if $positions == 'none' {
       content: none;
@@ -93,24 +104,4 @@ $keyframes-separator: '_';
     margin-bottom: constant(safe-area-inset-bottom);
     margin-bottom: env(safe-area-inset-bottom);
   }
-}
-
-@mixin keyframes($name) {
-  $selector: selector-append(get-block(&), $keyframes-separator + $name);
-  $selector: str-selector($selector);
-  $selector: str-slice($selector, 2, str-length($selector) - 1);
-
-  @at-root {
-    @keyframes #{$selector} {
-      @content;
-    }
-  }
-}
-
-@mixin animation($name, $value) {
-  $selector: selector-append(get-block(&), $keyframes-separator + $name);
-  $selector: str-selector($selector);
-  $selector: str-slice($selector, 2, str-length($selector) - 1);
-
-  animation: $selector $value;
 }

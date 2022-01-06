@@ -1,5 +1,5 @@
 import * as React from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseSwitchProps } from './interface';
 
@@ -28,12 +28,15 @@ const Switch = React.forwardRef<unknown, SwitchProps>((props, ref) => {
   const getChecked = checked || defaultChecked || false;
   const [currentChecked, setCurrentChecked] = React.useState(getChecked);
 
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-switch`;
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('switch', { prefixCls });
 
-  const cls = classnames(prefixCls, className, {
-    [`${prefixCls}--disabled`]: disabled,
-  });
+  const cls = bem([
+    className,
+    {
+      disabled,
+    },
+  ]);
 
   const onInputChange = () => {
     const newChecked = !currentChecked;
@@ -58,7 +61,7 @@ const Switch = React.forwardRef<unknown, SwitchProps>((props, ref) => {
         role="switch"
         aria-checked={currentChecked}
         type="checkbox"
-        className={`${prefixCls}__input`}
+        className={bem('input')}
         disabled={disabled}
         value={currentChecked ? 'on' : 'off'}
         checked={'checked' in props ? currentChecked : undefined}

@@ -1,101 +1,99 @@
 @include b(slider) {
+  @include define(line-size, 2px);
+  @include define(line-background, #dcdcdc);
+  @include define(line-active-background, var(--za-theme-primary));
+  @include define(dot-size, 6px);
+  @include define(dot-background, var(--za-background-color));
+  @include define(dot-border-color, #dcdcdc);
+  @include define(dot-active-border-color, var(--za-theme-primary));
+  @include define(knob-size, 24px);
+  @include define(knob-size-small, 16px);
+  @include define(knob-background, #fff);
+  @include define(knob-shadow, 0 1px 3px rgba(0, 0, 0, 0.4));
+  @include define(mark-font-size, 14px);
+  @include define(mark-text-color, var(--za-theme-primary));
+
   display: flex;
   align-items: center;
   width: 100%;
 
-  // 横向
   @include e(content) {
-    position: relative;
-    margin: calc(var(--za-slider-handle-size) / 2) calc(var(--za-slider-handle-size) / 2);
     flex: 1;
+    position: relative;
+    margin: calc(var(--knob-size) / 2) calc(var(--knob-size) / 2);
   }
 
   // 线
   @include e(line) {
-    position: relative;
     flex: 1;
-    height: var(--za-slider-line-height);
-    background-color: var(--za-slider-line-background);
+    position: relative;
+    height: var(--line-size);
+    background-color: var(--line-background);
 
     @include e(line__bg) {
       height: 100%;
-      background-color: var(--theme-primary);
+      background-color: var(--line-active-background);
     }
+  }
 
-    // 刻度
-    @include e(line__dot) {
-      position: absolute;
-      width: var(--za-slider-line-dot-width);
-      height: var(--za-slider-line-dot-width);
-      margin-top: calc((var(--za-slider-line-dot-width) + var(--za-slider-line-height)) / -2);
-      margin-left: calc(var(--za-slider-line-dot-width) / -2);
-      background-color: var(--za-slider-line-dot-color);
-      border: 1px solid var(--za-slider-line-background);
-      border-radius: 50%;
-      cursor: pointer;
+  // 刻度
+  @include e(dot) {
+    position: absolute;
+    width: var(--dot-size);
+    height: var(--dot-size);
+    margin-top: calc((var(--dot-size) + var(--line-size)) / -2);
+    margin-left: calc(var(--dot-size) / -2);
+    background-color: var(--dot-background);
+    border: 1px solid var(--dot-border-color);
+    border-radius: 50%;
+    cursor: pointer;
 
-      @include m(active) {
-        border: 1px solid var(--theme-primary);
-      }
+    @include m(active) {
+      border-color: var(--dot-active-border-color);
     }
   }
 
   // 滑动控制器
-  @include e(handle) {
+  @include e(knob) {
     position: absolute;
     left: 0;
-    margin-top: calc((var(--za-slider-handle-size) + var(--za-slider-line-height)) / -2);
-    margin-left: calc(var(--za-slider-handle-size) / -2);
-    width: var(--za-slider-handle-size);
-    height: var(--za-slider-handle-size);
+    margin-top: calc((var(--knob-size) + var(--line-size)) / -2);
+    margin-left: calc(var(--knob-size) / -2);
+    width: var(--knob-size);
+    height: var(--knob-size);
     border-radius: 50%;
-    background-color: var(--za-slider-handle-background);
-    box-shadow: var(--za-slider-handle-shadow);
+    background-color: var(--knob-background);
+    box-shadow: var(--knob-shadow);
     touch-action: none;
 
     @include b(tooltip) {
       display: block;
     }
 
-    @include e(handle__shadow) {
-      width: var(--za-slider-handle-size);
-      height: var(--za-slider-handle-size);
+    @include e(knob__shadow) {
+      width: var(--knob-size);
+      height: var(--knob-size);
     }
   }
 
   // 标签
   @include e(marks) {
     position: absolute;
-    font-size: var(--za-slider-mark-size);
     top: r(10);
     left: 0;
     right: 0;
-    color: var(--za-slider-line-background);
 
     @include e(mark) {
       position: absolute;
       transform: translateX(-50%);
-      color: var(--theme-primary);
+      font-size: var(--mark-font-size);
+      color: var(--mark-text-color);
     }
   }
 
-  // 横向显示标签
+  // 显示标签状态
   @include m(marked) {
-    @include e(content) {
-      margin: calc(var(--za-slider-handle-size-small) / 2) calc(var(--za-slider-handle-size-small) / 2);
-    }
-
-    @include e(handle) {
-      width: var(--za-slider-handle-size-small);
-      height: var(--za-slider-handle-size-small);
-      margin-top: calc((var(--za-slider-handle-size-small) + var(--za-slider-line-height)) / -2);
-      margin-left: calc(var(--za-slider-handle-size-small) / -2);
-
-      @include e(handle__shadow) {
-        width: var(--za-slider-handle-size-small);
-        height: var(--za-slider-handle-size-small);
-      }
-    }
+    @include define(knob-size, var(--knob-size-small));
   }
 
   // 禁用状态
@@ -111,12 +109,8 @@
     height: 100%;
     align-items: initial;
 
-    @include e(content) {
-      margin: calc(var(--za-slider-handle-size) / 2) calc(var(--za-slider-handle-size) / 2);
-    }
-
     @include e(line) {
-      width: var(--za-slider-vertical-line-width);
+      width: var(--line-size);
       position: absolute;
       top: 0;
       height: 100%;
@@ -124,25 +118,23 @@
       @include e(line__bg) {
         position: absolute;
         bottom: 0;
-        width: var(--za-slider-line-height);
+        width: var(--line-size);
       }
     }
 
-    @include e(line__dot) {
-      margin-bottom: calc(var(--za-slider-line-dot-width) / -2);
-      margin-left: calc((var(--za-slider-line-dot-width) - var(--za-slider-line-height)) / -2);
+    @include e(dot) {
+      margin-bottom: calc(var(--dot-size) / -2);
+      margin-left: calc((var(--dot-size) - var(--line-size)) / -2);
     }
 
-    @include e(handle) {
-      margin-top: calc(var(--za-slider-handle-size) / -2);
+    @include e(knob) {
+      margin-top: 0;
+      margin-bottom: calc(var(--knob-size) / -2);
+      margin-left: calc((var(--knob-size) - var(--line-size)) / -2);
     }
 
-    // 垂直显示标签
+    // 显示标签状态
     @include m(marked) {
-      @include e(content) {
-        margin: calc(var(--za-slider-handle-size-small) / 2) calc(var(--za-slider-handle-size-small) / 2);
-      }
-
       @include e(marks) {
         top: 0;
         left: r(15);
@@ -152,14 +144,6 @@
 
       @include e(mark) {
         transform: translateY(50%);
-      }
-
-      @include e(handle) {
-        margin-top: 0;
-        margin-bottom: calc(var(--za-slider-handle-size-small) / -2);
-        margin-left: calc((var(--za-slider-handle-size-small) - var(--za-slider-line-height)) / -2);
-        width: var(--za-slider-handle-size-small);
-        height: var(--za-slider-handle-size-small);
       }
     }
   }

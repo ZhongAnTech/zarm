@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import Popup from '../popup';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseActionSheetActionProps, BaseActionSheetProps } from './interface';
@@ -37,23 +37,31 @@ const ActionSheet = React.forwardRef<HTMLDivElement, ActionSheetProps>((props, r
     safeIphoneX,
     ...restProps
   } = props;
-  const { prefixCls: globalPrefixCls, safeIphoneX: globalSafeIphoneX, locale } = useContext(
-    ConfigContext,
-  );
-  const prefixCls = `${globalPrefixCls}-action-sheet`;
-  const cls = classnames(prefixCls, className, {
-    [`${prefixCls}--spacing`]: spacing,
-    [`${prefixCls}--safe`]: safeIphoneX || globalSafeIphoneX,
-  });
+  const { prefixCls, safeIphoneX: globalSafeIphoneX, locale } = useContext(ConfigContext);
+
+  const bem = createBEM('action-sheet', { prefixCls });
+
+  const cls = bem([
+    {
+      spacing,
+      safe: safeIphoneX || globalSafeIphoneX,
+    },
+    className,
+  ]);
 
   const renderAction = (action: ActionSheetActionProps, index) => {
+    const actionCls = bem('item', [
+      action.className,
+      {
+        [`${action.theme}`]: !!action.theme,
+        disabled: action.disabled,
+      },
+    ]);
+
     return (
       <div
         key={+index}
-        className={classnames(`${prefixCls}__item`, action.className, {
-          [`${prefixCls}__item--${action.theme}`]: !!action.theme,
-          [`${prefixCls}__item--disabled`]: action.disabled,
-        })}
+        className={actionCls}
         onClick={!action.disabled ? action.onClick : undefined}
       >
         {action.text}
@@ -65,8 +73,8 @@ const ActionSheet = React.forwardRef<HTMLDivElement, ActionSheetProps>((props, r
     if (typeof onCancel !== 'function') return;
 
     return (
-      <div className={`${prefixCls}__cancel`}>
-        <div className={`${prefixCls}__item`} onClick={onCancel}>
+      <div className={bem('cancel')}>
+        <div className={bem('item')} onClick={onCancel}>
           {cancelText || locale?.ActionSheet?.cancelText}
         </div>
       </div>
@@ -76,7 +84,7 @@ const ActionSheet = React.forwardRef<HTMLDivElement, ActionSheetProps>((props, r
   return (
     <Popup {...restProps}>
       <div ref={ref} className={cls} style={style}>
-        <div className={`${prefixCls}__actions`}>{actions?.map(renderAction)}</div>
+        <div className={bem('actions')}>{actions?.map(renderAction)}</div>
         {renderCancel()}
       </div>
     </Popup>

@@ -95,7 +95,7 @@
   --za-background-disabled: #f2f2f2;
 
   // 边框色
-  --za-border-color: #c5c5c5;
+  --za-border-color: rgba(60, 60, 67, 0.36);
   --za-border-disabled: #e6e6e6;
 
   // 圆角
@@ -562,19 +562,6 @@
   --za-search-bar-cancel-margin-left: 13px;
   // 取消按钮动画
   --za-search-bar-cancel-transition: all .2s;
-
-  // Slider
-  --za-slider-line-background: var(--border-color);
-  --za-slider-line-height: 2px;
-  --za-slider-line-dot-width: 6px;
-  --za-slider-line-dot-color: #fff;
-  --za-slider-vertical-line-width: 2px;
-  --za-slider-handle-size: 24px;
-  --za-slider-handle-size-small: 16px;
-  --za-slider-mark-handle: 24px;
-  --za-slider-mark-size: 15px;
-  --za-slider-handle-background: #fff;
-  --za-slider-handle-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 
   // Stepper
   --za-stepper-input-background: #fff;

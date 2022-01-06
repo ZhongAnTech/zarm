@@ -1,5 +1,5 @@
 import * as React from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import { ConfigContext } from '../n-config-provider';
 import GridContext from './GridContext';
 import type { BaseGridProps } from './interface';
@@ -16,8 +16,8 @@ export type GridProps = BaseGridProps & HTMLProps;
 const Grid: React.FC<GridProps> = (props) => {
   const { className, style, columns, gutter, bordered, square, children } = props;
 
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-grid`;
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('grid', { prefixCls });
 
   const gutters: [number, number] = Array.isArray(gutter) ? gutter : [gutter!, gutter!];
 
@@ -42,14 +42,13 @@ const Grid: React.FC<GridProps> = (props) => {
     gridStyle.paddingRight = verticalGutter;
   }
 
-  const classes = classnames(
-    prefixCls,
+  const classes = bem([
     {
-      [`${prefixCls}--bordered`]: bordered,
-      [`${prefixCls}--square`]: square,
+      bordered,
+      square,
     },
     className,
-  );
+  ]);
 
   return (
     <GridContext.Provider value={gridContext}>

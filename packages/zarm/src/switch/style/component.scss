@@ -1,5 +1,3 @@
-$prefixCls: #{$prefix}-switch;
-
 @include b(switch) {
   @include define(width, 52px);
   @include define(height, 32px);
@@ -61,7 +59,7 @@ $prefixCls: #{$prefix}-switch;
   @include m(disabled) {
     @include e(input) {
       cursor: not-allowed;
-      opacity: var(--opacity-disabled);
+      opacity: var(--za-opacity-disabled);
     }
   }
 }

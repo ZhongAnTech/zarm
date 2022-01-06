@@ -1,5 +1,3 @@
-$prefixCls: #{$prefix}-grid;
-
 @include b(grid) {
   @include define(border-color, var(--za-border-color));
   @include define(item-background, var(--za-background-color));

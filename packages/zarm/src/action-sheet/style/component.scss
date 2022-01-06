@@ -1,7 +1,5 @@
 @import '../../button/style/mixins';
 
-$prefixCls: #{$prefix}-action-sheet;
-
 @include b(action-sheet) {
   @include define(border-radius, 14px);
   @include define(spacing-margin, 8px);
