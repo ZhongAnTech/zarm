@@ -2,6 +2,7 @@
 @import 'functions';
 
 @mixin b($blocks...) {
+  $_zaBlock: $blocks !global;
   $selector: getSelector('.' + $namespace, $block-separator, $blocks...);
 
   #{$selector} {
