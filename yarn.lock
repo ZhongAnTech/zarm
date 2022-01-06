@@ -4018,7 +4018,7 @@ ansi-regex@^5.0.0:
 
 ansi-regex@^5.0.1:
   version "5.0.1"
-  resolved "https://npm.zhonganinfo.com/ansi-regex/-/ansi-regex-5.0.1.tgz#082cb2c89c9fe8659a311a53bd6a4dc5301db304"
+  resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-5.0.1.tgz#082cb2c89c9fe8659a311a53bd6a4dc5301db304"
   integrity sha1-CCyyyJyf6GWaMRpTvWpNxTAdswQ=
 
 ansi-styles@^3.1.0, ansi-styles@^3.2.0, ansi-styles@^3.2.1:
@@ -8746,7 +8746,7 @@ gulp-cli@^2.2.0:
 
 gulp-sass@^5.1.0:
   version "5.1.0"
-  resolved "https://npm.zhonganinfo.com/gulp-sass/-/gulp-sass-5.1.0.tgz#bb3d9094f39a260f62a8d0a6797b95ab826f9663"
+  resolved "https://registry.yarnpkg.com/gulp-sass/-/gulp-sass-5.1.0.tgz#bb3d9094f39a260f62a8d0a6797b95ab826f9663"
   integrity sha512-7VT0uaF+VZCmkNBglfe1b34bxn/AfcssquLKVDYnCDJ3xNBaW7cUuI3p3BQmoKcoKFrs9jdzUxyb+u+NGfL4OQ==
   dependencies:
     lodash.clonedeep "^4.5.0"
@@ -13286,7 +13286,7 @@ performance-now@^2.1.0:
 
 picocolors@^1.0.0:
   version "1.0.0"
-  resolved "https://npm.zhonganinfo.com/picocolors/-/picocolors-1.0.0.tgz#cb5bdc74ff3f51892236eaf79d68bc44564ab81c"
+  resolved "https://registry.yarnpkg.com/picocolors/-/picocolors-1.0.0.tgz#cb5bdc74ff3f51892236eaf79d68bc44564ab81c"
   integrity sha1-y1vcdP8/UYkiNur3nWi8RFZKuBw=
 
 picomatch@^2.0.4, picomatch@^2.0.5, picomatch@^2.2.1:
@@ -14963,7 +14963,7 @@ replace-ext@^1.0.0:
 
 replace-ext@^2.0.0:
   version "2.0.0"
-  resolved "https://npm.zhonganinfo.com/replace-ext/-/replace-ext-2.0.0.tgz#9471c213d22e1bcc26717cd6e50881d88f812b06"
+  resolved "https://registry.yarnpkg.com/replace-ext/-/replace-ext-2.0.0.tgz#9471c213d22e1bcc26717cd6e50881d88f812b06"
   integrity sha1-lHHCE9IuG8wmcXzW5QiB2I+BKwY=
 
 replace-homedir@^1.0.0:
@@ -16193,7 +16193,7 @@ strip-ansi@^6.0.0:
 
 strip-ansi@^6.0.1:
   version "6.0.1"
-  resolved "https://npm.zhonganinfo.com/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
+  resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
   integrity sha1-nibGPTD1NEPpSJSVshBdN7Z6hdk=
   dependencies:
     ansi-regex "^5.0.1"
