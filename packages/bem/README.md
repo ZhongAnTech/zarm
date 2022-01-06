@@ -9,7 +9,7 @@ const bem = createBEM('button', { prefixCls: 'za' });
 
 bem(); // za-button
 
-bem(['customClass', { primary: true }]); // za-button za-button--primary customClass
+bem(['customClass', { primary: true }]); // za-button customClass za-button--primary
 
 bem('text'); // za-button__text
 
@@ -21,7 +21,7 @@ bem('text', [
     loading: true,
     disabled: false,
   },
-]); // za-button__text za-button__loading--aaa customClass
+]); // za-button__text customClass za-button__loading--aaa
 ```
 
 ## Usage in SASS
@@ -30,6 +30,8 @@ Input
 
 ```scss
 @import '~@zarm-design/bem/sass';
+
+$prefixCls: za;
 
 @include b(button) {
   height: 40px;
@@ -86,9 +88,9 @@ const createBEM: (name: string, config?: BEMConfig) => (element?: string, modifi
 
 ### config
 
-| 属性              | 类型   | 默认值 | 说明     |
-| :---------------- | :----- | :----- | :------- |
-| prefixCls         | string | ''     | 类名前缀 |
-| blockSeparator    | string | '-'    | 类名前缀 |
-| elementSeparator  | string | '\_\_' | 类名前缀 |
-| modifierSeparator | string | '--'   | 类名前缀 |
+| 属性              | 对应 SASS 变量 ｜ 类型   | 默认值 | 说明     |
+| :---------------- | :----------------| :----- | :----- | :------- |
+| prefixCls         | $prefixCls | string | ''     | 类名前缀 |
+| blockSeparator    | $block-separator | string | '-'    | 类名前缀 |
+| elementSeparator  | $element-separator | string | '\_\_' | 类名前缀 |
+| modifierSeparator | $modifier-separator | string | '--'   | 类名前缀 |

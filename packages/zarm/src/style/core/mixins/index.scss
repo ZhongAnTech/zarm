@@ -1,13 +1,14 @@
 @import '~@zarm-design/bem/sass';
 
+$prefixCls: 'za';
 $keyframes-separator: '_';
 
 @mixin define($key, $value) {
-  --#{$key}: var(--#{$namespace + $block-separator + $_zaBlock + $block-separator + $key}, #{$value});
+  --#{$key}: var(--#{$prefixCls + $block-separator + $current-block + $block-separator + $key}, #{$value});
 }
 
 @mixin keyframes($name) {
-  $selector: selector-append($namespace + $block-separator + $_zaBlock, $keyframes-separator + $name);
+  $selector: selector-append($prefixCls + $block-separator + $current-block, $keyframes-separator + $name);
 
   @at-root {
     @keyframes #{$selector} {
@@ -17,7 +18,7 @@ $keyframes-separator: '_';
 }
 
 @mixin animation($name, $value) {
-  $selector: selector-append($namespace + $block-separator + $_zaBlock, $keyframes-separator + $name);
+  $selector: selector-append($prefixCls + $block-separator + $current-block, $keyframes-separator + $name);
   animation: $selector $value;
 }
 
