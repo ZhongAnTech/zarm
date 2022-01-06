@@ -3,7 +3,7 @@
 
 @mixin b($blocks...) {
   $currentBlock: $blocks !global;
-  $selector: getSelector('.' + $prefixCls, $blockSeparator, $blocks...);
+  $selector: get-selector('.' + $prefixCls, $blockSeparator, $blocks...);
 
   #{$selector} {
     @content;
@@ -24,14 +24,16 @@
 
       $selector: $selector + $newElement + ',';
     }
-  } @else {
-     @if contains-element(&) {
+  }
+  @else {
+    @if contains-element(&) {
       @each $element in $elements {
-        $newElement: selector-nest(&, selector-append($prefix, $elementSeparator + $element))+',';
+        $newElement: selector-nest(&, selector-append($prefix, $elementSeparator + $element)) + ',';
         $selector: $selector + $newElement + ',';
       }
-    } @else {
-      $selector: getSelector('&', $elementSeparator, $elements...);
+    }
+    @else {
+      $selector: get-selector('&', $elementSeparator, $elements...);
     }
   }
 
@@ -50,8 +52,9 @@
     @each $modifier in $modifiers {
       $selector: $selector + '&' + $prefix + $modifierSeparator + $modifier + ',';
     }
-  } @else {
-    $selector: getSelector('&', $modifierSeparator, $modifiers...);
+  }
+  @else {
+    $selector: get-selector('&', $modifierSeparator, $modifiers...);
   }
 
   @at-root {

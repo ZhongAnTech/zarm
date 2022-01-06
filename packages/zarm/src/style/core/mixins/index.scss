@@ -19,6 +19,7 @@ $keyframesSeparator: '_';
 
 @mixin animation($name, $value) {
   $selector: selector-append($prefixCls + $blockSeparator + $currentBlock, $keyframesSeparator + $name);
+
   animation: $selector $value;
 }
 

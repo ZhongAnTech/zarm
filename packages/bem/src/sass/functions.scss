@@ -45,7 +45,6 @@
   @return $string;
 }
 
-
 // 是否包含Modifier
 @function contains-modifier($selector) {
   $index: str-index-reverse(str-selector($selector), ' ');
@@ -97,7 +96,7 @@
   @return $result;
 }
 
-@function getSelector($prefix, $separator, $params...) {
+@function get-selector($prefix, $separator, $params...) {
   $selector: '';
   @each $param in $params {
     $selector: $selector + $prefix + $separator + $param + ',';
