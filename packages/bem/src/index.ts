@@ -12,23 +12,7 @@ const defaultConfig: BEMConfig = {
   modifierSeparator: '--',
 };
 
-// const bem = createBEM('button', {
-//   prefixCls: 'za',
-// });
-//
-// bem();  // za-button
-// bem(['customClass', {
-//   'loading': true,
-// }]) // za-button za-button--loading customClass
-//
-// bem('text') // za-button__text
-// bem('text',['customClass']) // za-button__text customClass
-// bem('text', ['customClass', {
-//   'loading': true,
-//   'disabled': false,
-// }]) // za-button__text za-button__loading--aaa customClass
-
-export const BEMClassName = (name: string, config: BEMConfig) => {
+const BEMClassName = (name: string, config: BEMConfig) => {
   const { elementSeparator, modifierSeparator } = config;
   return (element?: string, modifiers?: []) => {
     if (element && typeof element !== 'string') {
