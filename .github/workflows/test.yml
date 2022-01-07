@@ -112,6 +112,12 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
 
+      - name: Restore @zarm-design/cli
+        uses: actions/cache@v2
+        with:
+          path: packages/zarm-cli/lib
+          key: ${{ runner.os }}-cli-${{ github.sha }}
+
       - name: Cache @zarm-design/bem
         uses: actions/cache@v2
         with:
