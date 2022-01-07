@@ -30,8 +30,8 @@
   "scripts": {
     "clean": "rimraf types lib es dist coverage",
     "build:types": "rimraf types && tsc --outDir types -d --emitDeclarationOnly",
-    "build:es": "rimraf es && zarm build --mode es --path src --out-dir es --copy-files --build-css",
-    "build:lib": "rimraf lib && zarm build --mode lib --path src --out-dir lib --copy-files --build-css",
+    "build:es": "rimraf es && zarm build --mode es --path src --out-dir es --copy-files",
+    "build:lib": "rimraf lib && zarm build --mode lib --path src --out-dir lib --copy-files",
     "build": "yarn build:types && yarn build:lib && yarn build:es"
   },
   "devDependencies": {
