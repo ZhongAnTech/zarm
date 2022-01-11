@@ -12,9 +12,12 @@ const defaultConfig: BEMConfig = {
   modifierSeparator: '--',
 };
 
+type ModifierType = (string | { [x: string]: boolean })[];
+
 const BEMClassName = (name: string, config: BEMConfig) => {
   const { elementSeparator, modifierSeparator } = config;
-  return (element?: string, modifiers?: []) => {
+
+  return (element: string | ModifierType, modifiers?: ModifierType) => {
     if (element && typeof element !== 'string') {
       modifiers = element;
       element = '';
@@ -27,7 +30,7 @@ const BEMClassName = (name: string, config: BEMConfig) => {
       const modifierType = typeof modifier;
       switch (modifierType) {
         case 'string':
-          classList.push(modifier);
+          classList.push(modifier as string);
           break;
 
         case 'object':
