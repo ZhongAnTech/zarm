@@ -1,5 +1,10 @@
 module.exports = {
   extends: ['za/react', 'prettier'],
+  parserOptions: {
+    babelOptions: {
+      plugins: ['@babel/plugin-proposal-class-properties'],
+    },
+  },
   env: {
     jest: true,
   },

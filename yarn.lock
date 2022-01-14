@@ -7196,10 +7196,10 @@ eslint-config-prettier@8.1.0:
   resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.1.0.tgz#4ef1eaf97afe5176e6a75ddfb57c335121abc5a6"
   integrity sha512-oKMhGv3ihGbCIimCAjqkdzx2Q+jthoqnXSP+d86M9tptwugycmTFdVR4IpLgq2c4SHifbwO90z2fQ8/Aio73yw==
 
-eslint-config-za@^2.4.0-alpha.1:
-  version "2.4.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/eslint-config-za/-/eslint-config-za-2.4.0-alpha.1.tgz#058ad826b994121d51e0161489ff1ff3da68bd27"
-  integrity sha512-D8TvQKEGJVe2txm0RdEKp/SYDvCQk8CGwXDxjE9t7Lh37cIlBYaIXnUcJJofhXq9pdATSZ+65GTOUtxd2xEDIQ==
+eslint-config-za@^2.4.0-alpha.2:
+  version "2.4.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/eslint-config-za/-/eslint-config-za-2.4.0-alpha.2.tgz#473a44c73e9c67fc2efb80f9acb2e2f6d8b45bd5"
+  integrity sha512-eXLmfEDcllcjj4/voZkbxBaKxbt2+TZZKFYfpyFz4ED4gEAMqwQNr8HoPy6SUnL81m3nnL42N6Hl+D7r3MvpFQ==
   dependencies:
     eslint-config-airbnb "^18.2.1"
 
