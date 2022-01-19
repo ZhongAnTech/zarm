@@ -19,17 +19,20 @@
     "build:types": "rimraf types && tsc --outDir types -d --emitDeclarationOnly",
     "build:es": "rimraf es && zarm build --mode es --path src --out-dir es --copy-files --build-css",
     "build:lib": "rimraf lib && zarm build --mode lib --path src --out-dir lib --copy-files --build-css",
-    "build:react": "rimraf src/react && svgr ./svg --out-dir ./src/react",
+    "build:react": "svgr ./svg --out-dir ./src/react",
     "build:svg": "rimraf svg && node ./scripts/exportSVG.js",
-    "build": "yarn build:types && yarn build:lib && yarn build:es"
+    "build": "yarn build:types && yarn build:lib && yarn build:es",
+    "build:font": "webFontsHelper --src ./svg --fontName zaicon --fontPath src/font --className za-icon"
+  },
+  "dependencies": {
+    "classnames": "^2.3.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.16",
     "@svgr/cli": "^5.5.0",
-    "@zarm-design/bem": "^0.0.1",
-    "@zarm-design/cli": "^0.0.39",
     "react": "^17.0.2",
-    "shelljs": "^0.8.4"
+    "shelljs": "^0.8.4",
+    "webfonts-helper": "^0.0.5"
   },
   "publishConfig": {
     "access": "public"

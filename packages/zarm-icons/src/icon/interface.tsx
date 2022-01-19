@@ -6,4 +6,5 @@ export default interface BasePropsType {
   size?: 'sm' | 'md' | 'lg';
   component?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   viewBox?: string;
+  mode?: 'svg' | 'font';
 }

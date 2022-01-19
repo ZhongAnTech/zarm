@@ -93,7 +93,8 @@ ReactDOM.render(
 ## @zarm-design/icons 自带图标
 
 ```jsx
-import { Grid } from 'zarm';
+import { useState } from 'react';
+import { Grid, List, Radio } from 'zarm';
 import {
   ArrowDown,
   ArrowLeft,
@@ -148,19 +149,36 @@ const icons = [
   { ele: WarningCircle, name: 'WarningCircle' },
 ];
 
-ReactDOM.render(
-  <Grid square>
-    {icons.map((Item, index) => (
-      <Grid.Item key={+index}>
-        <div className="block">
-          <Item.ele theme={Item.theme || 'primary'} />
-          <span>{Item.name}</span>
-        </div>
-      </Grid.Item>
-    ))}
-  </Grid>,
-  mountNode,
-);
+function Demo() {
+  const [mode, setMode] = useState('svg');
+  return (
+    <>
+      <List>
+        <List.Item
+          title="模式"
+          after={
+            <Radio.Group type="button" onChange={setMode} value={mode}>
+              <Radio value="svg">svg</Radio>
+              <Radio value="font">font</Radio>
+            </Radio.Group>
+          }
+        />
+      </List>
+      <Grid square>
+        {icons.map((Item, index) => (
+          <Grid.Item key={+index}>
+            <div className="block">
+              <Item.ele theme={Item.theme || 'primary'} mode={mode} />
+              <span>{Item.name}</span>
+            </div>
+          </Grid.Item>
+        ))}
+      </Grid>
+    </>
+  );
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 
 ## 自定义 Iconfont 图标
@@ -236,6 +254,7 @@ ReactDOM.render(<Icon component={YourSvg} />, mountNode);
 | :-------- | :------------------------------------------------------------- | :---------- | :---------------------------------------------------------------- |
 | theme     | string                                                         | 'default'   | 主题，可选值 `default`、`primary`、`success`、`warning`、`danger` |
 | size      | string                                                         | 'md'        | 大小，可选值 `sm`、`md`、`lg`                                     |
+| mode      | string                                                         | 'svg'       | 模式，可选值 `svg`、`font` 自带 icon 可选                         |
 | type      | string                                                         | -           | 图标类型，可选值详见 demo 的基本用法                              |
 | component | React.ComponentType&lt;React.SVGProps&lt;SVGSVGElement&gt;&gt; | -           | 本地 svg 文件，需配合 viewBox 使用                                |
 | viewBox   | string                                                         | '0 0 32 32' | 自定义 SVG 图标时，用来设置画布的起始坐标及大小                   |
