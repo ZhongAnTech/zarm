@@ -81,6 +81,7 @@ Icon.defaultProps = {
   theme: 'default',
   size: 'md',
   viewBox: INNER_SVG_PROPS.viewBox,
+  mode: 'svg',
 };
 
 export default Icon;

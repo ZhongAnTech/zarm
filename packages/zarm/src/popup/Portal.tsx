@@ -83,9 +83,9 @@ export default class Portal extends PureComponent<PortalProps, PortalState> {
   }
 
   animationEnd = (e: TransitionEvent | AnimationEvent) => {
-    if (e.target !== this.popup) {
-      return;
-    }
+    // if (e.target !== this.popup) {
+    //   return;
+    // }
     e.stopPropagation();
     const { afterClose, afterOpen, handlePortalUnmount, visible, prefixCls } = this.props;
     const animationState = visible ? 'enter' : 'leave';

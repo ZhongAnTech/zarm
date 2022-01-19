@@ -214,5 +214,6 @@ ReactDOM.render(<Icon component={YourSvg} />, mountNode);
 | theme     | string                                                         | 'default'   | 主题，可选值 `default`、`primary`、`success`、`warning`、`danger` |
 | size      | string                                                         | 'md'        | 大小，可选值 `sm`、`md`、`lg`                                     |
 | type      | string                                                         | -           | 图标类型，可选值详见 demo 的基本用法                              |
+| mode      | string                                                         | 'svg'       | 图标模式，可选值 `svg`、`font`, 自带图标可设置                    |
 | component | React.ComponentType&lt;React.SVGProps&lt;SVGSVGElement&gt;&gt; | -           | 本地 svg 文件，需配合 viewBox 使用                                |
 | viewBox   | string                                                         | '0 0 32 32' | 自定义 SVG 图标时，用来设置画布的起始坐标及大小                   |

@@ -1,8 +1,16 @@
 import * as React from 'react';
 import Icon from '../icon';
+import Font from '../icon/font';
 import type { IconProps } from '../icon';
 
 const SvgCloseCircle = (props: IconProps, svgRef?: React.Ref<SVGSVGElement>) => {
+  const { mode } = props;
+
+  if (mode === 'font') {
+    const rest = { ...props, name: 'SvgCloseCircle' };
+    return <Font {...rest} />;
+  }
+
   return React.createElement(Icon, {
     ...props,
     component: () => (
