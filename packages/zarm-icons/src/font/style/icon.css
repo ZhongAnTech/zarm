@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: 'zaicon';
+  src: url('../zaicon.eot');
+  src: url('../zaicon.eot?#iefix') format('embedded-opentype'), url('../zaicon.woff') format('woff'),
+    url('../zaicon.ttf') format('truetype'), url('../zaicon.svg#zaicon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[data-icon]:before {
+  font-family: 'zaicon' !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^='za-icon-']:before,
+[class*=' za-icon-']:before {
+  font-family: 'zaicon' !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.za-icon-arrow-down:before {
+  content: '\EA01';
+}
+.za-icon-arrow-left:before {
+  content: '\EA02';
+}
+.za-icon-arrow-right:before {
+  content: '\EA03';
+}
+.za-icon-arrow-up:before {
+  content: '\EA04';
+}
+.za-icon-close:before {
+  content: '\EA05';
+}
+.za-icon-close-circle:before {
+  content: '\EA06';
+}
+.za-icon-close-circle-fill:before {
+  content: '\EA07';
+}
+.za-icon-delete-key:before {
+  content: '\EA08';
+}
+.za-icon-empty:before {
+  content: '\EA09';
+}
+.za-icon-info:before {
+  content: '\EA0A';
+}
+.za-icon-info-circle:before {
+  content: '\EA0B';
+}
+.za-icon-info-circle-fill:before {
+  content: '\EA0C';
+}
+.za-icon-keyboard:before {
+  content: '\EA0D';
+}
+.za-icon-minus:before {
+  content: '\EA0E';
+}
+.za-icon-plus:before {
+  content: '\EA0F';
+}
+.za-icon-plus-circle:before {
+  content: '\EA10';
+}
+.za-icon-search:before {
+  content: '\EA11';
+}
+.za-icon-star:before {
+  content: '\EA12';
+}
+.za-icon-star-fill:before {
+  content: '\EA13';
+}
+.za-icon-success:before {
+  content: '\EA14';
+}
+.za-icon-success-circle:before {
+  content: '\EA15';
+}
+.za-icon-volume:before {
+  content: '\EA16';
+}
+.za-icon-waiting:before {
+  content: '\EA17';
+}
+.za-icon-waiting-circle:before {
+  content: '\EA18';
+}
+.za-icon-waiting-circle-fill:before {
+  content: '\EA19';
+}
+.za-icon-warning:before {
+  content: '\EA1A';
+}
+.za-icon-warning-circle:before {
+  content: '\EA1B';
+}
