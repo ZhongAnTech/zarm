@@ -1,6 +1,5 @@
 import React, { HTMLAttributes } from 'react';
 import { createBEM } from '@zarm-design/bem';
-import classnames from 'classnames';
 import BasePropsType from './interface';
 import decamelize from './util';
 

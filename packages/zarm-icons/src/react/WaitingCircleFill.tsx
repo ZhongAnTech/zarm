@@ -1,18 +1,11 @@
 import * as React from 'react';
 import Icon from '../icon';
-import Font from '../icon/font';
 import type { IconProps } from '../icon';
 
 const SvgWaitingCircleFill = (props: IconProps, svgRef?: React.Ref<SVGSVGElement>) => {
-  const { mode } = props;
-
-  if (mode === 'font') {
-    const rest = { ...props, name: 'SvgWaitingCircleFill' };
-    return <Font {...rest} />;
-  }
-
+  const newProps = { ...props, name: 'SvgWaitingCircleFill' };
   return React.createElement(Icon, {
-    ...props,
+    ...newProps,
     component: () => (
       <svg
         width="1em"

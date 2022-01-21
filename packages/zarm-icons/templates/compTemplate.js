@@ -6,19 +6,14 @@ function defaultTemplate({ template }, opts, { imports, componentName, jsx, expo
   const typeScriptTpl = template.smart({ plugins });
   return typeScriptTpl.ast`${imports}
 import Icon from '../icon';
-import Font from '../icon/font'
 import type { IconProps } from '../icon';
 
 const ${componentName} = (props: IconProps, svgRef?: React.Ref<SVGSVGElement>) => {
-  const { mode } = props;
-  if (mode === 'font') {
-    const rest = {
-      ...props,
-      name: '${componentName.name}'
-    };
-    return <Font {...rest} />
+  const newProps = {
+    ...props,
+    name: '${componentName.name}'
   }
-  return React.createElement(Icon, { ...props, component: () => ${jsx}});
+  return React.createElement(Icon, { ...newProps, component: () => ${jsx}});
 }
 
 ${exports}
