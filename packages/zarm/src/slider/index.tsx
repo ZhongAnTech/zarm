@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import { useDrag } from '@use-gesture/react';
 import BaseSliderProps from './interface';
 import Events from '../utils/events';
@@ -16,9 +16,9 @@ export interface SliderProps
 const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
   const container = (ref as any) || React.createRef<HTMLDivElement>();
 
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('slider', { prefixCls });
 
-  const prefixCls = `${globalPrefixCls}-slider`;
   const {
     className,
     disabled,
@@ -117,9 +117,11 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
     const markKeys = Object.keys(marks || {});
 
     const lineDot = markKeys.map((item) => {
-      const dotStyle = classnames(`${prefixCls}__line__dot`, {
-        [`${prefixCls}__line__dot--active`]: currentValue >= +item,
-      });
+      const dotStyle = bem('dot', [
+        {
+          active: currentValue >= +item,
+        },
+      ]);
 
       const markStyle: React.CSSProperties = {
         [`${vertical ? 'bottom' : 'left'}`]: `${item}%`,
@@ -138,7 +140,7 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
       };
 
       return (
-        <span key={item} className={`${prefixCls}__mark`} style={markStyle}>
+        <span key={item} className={bem('mark')} style={markStyle}>
           {marks?.[+item]}
         </span>
       );
@@ -147,21 +149,24 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
     return (
       <>
         {lineDot}
-        <div className={`${prefixCls}__marks`}>{marksElement}</div>
+        <div className={bem('marks')}>{marksElement}</div>
       </>
     );
   };
 
-  const cls = classnames(prefixCls, className, {
-    [`${prefixCls}--disabled`]: disabled,
-    [`${prefixCls}--vertical`]: vertical,
-    [`${prefixCls}--marked`]: showMark,
-  });
+  const cls = bem([
+    className,
+    {
+      disabled,
+      vertical,
+      marked: showMark,
+    },
+  ]);
 
   const ratio = (currentValue - min!) / (max! - min!);
   const offset = `${ratio * 100}%`;
 
-  const handleStyle: React.CSSProperties = {
+  const knobStyle: React.CSSProperties = {
     [`${vertical ? 'bottom' : 'left'}`]: offset || 0,
   };
 
@@ -171,23 +176,23 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
 
   return (
     <div className={cls} ref={container} style={style}>
-      <div className={`${prefixCls}__content`}>
-        <div className={`${prefixCls}__line`} ref={lineRef}>
-          <div className={`${prefixCls}__line__bg`} style={lineBg} />
+      <div className={bem('content')}>
+        <div className={bem('line')} ref={lineRef}>
+          <div className={bem('line__bg')} style={lineBg} />
           {renderMark()}
         </div>
         <div
-          className={`${prefixCls}__handle`}
+          className={bem('knob')}
           role="slider"
           aria-valuemin={min}
           aria-valuemax={max}
           aria-valuenow={value}
           aria-orientation={vertical ? 'vertical' : 'horizontal'}
-          style={handleStyle}
+          style={knobStyle}
           {...bind()}
         >
           <Tooltip trigger="manual" arrowPointAtCenter visible={tooltip} content={currentValue}>
-            <div className={`${prefixCls}__handle__shadow`} />
+            <div className={bem('knob__shadow')} />
           </Tooltip>
         </div>
       </div>

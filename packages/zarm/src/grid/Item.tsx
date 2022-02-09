@@ -3,13 +3,9 @@ import classnames from 'classnames';
 import GridContext from './GridContext';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseGridItemProps } from './interface';
+import type { HTMLProps } from '../utils/utilityTypes';
 
-export interface GridItemProps extends BaseGridItemProps {
-  /** 组件样式名 */
-  className?: string;
-  /** 组件样式 */
-  style?: React.CSSProperties;
-}
+export type GridItemProps = BaseGridItemProps & HTMLProps;
 
 const GridItem: React.FC<GridItemProps> = (props) => {
   const { className, style, onClick, children } = props;
@@ -29,14 +25,14 @@ const GridItem: React.FC<GridItemProps> = (props) => {
 
   if (!square && gutter && gutter[0] > 0) {
     horizontalGutter = gutter[0] / 2;
-    mergedStyle.paddingLeft = horizontalGutter;
-    mergedStyle.paddingRight = horizontalGutter;
+    mergedStyle.paddingTop = horizontalGutter;
+    mergedStyle.paddingBottom = horizontalGutter;
   }
 
   if (!square && gutter && gutter[1] > 0) {
     verticalGutter = gutter[1] / 2;
-    mergedStyle.paddingTop = verticalGutter;
-    mergedStyle.paddingBottom = verticalGutter;
+    mergedStyle.paddingLeft = verticalGutter;
+    mergedStyle.paddingRight = verticalGutter;
   }
 
   const classes = classnames(

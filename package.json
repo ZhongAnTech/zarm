@@ -5,7 +5,7 @@
     "packages/*"
   ],
   "scripts": {
-    "postinstall": "lerna exec --scope @zarm-design/cli -- yarn build && lerna exec --scope @zarm-design/icons -- yarn build",
+    "postinstall": "lerna exec --scope @zarm-design/cli -- yarn build && lerna exec --scope @zarm-design/bem -- yarn build && lerna exec --scope @zarm-design/icons -- yarn build",
     "clean": "lerna run clean && lerna clean -y",
     "lint:tsc": "tsc --noEmit",
     "lint:script": "eslint --ext .ts,.tsx,.js,.jsx packages",
@@ -16,10 +16,7 @@
     "dev": "lerna exec --scope site -- yarn start",
     "deploy:build": "lerna exec --scope site -- yarn build -p",
     "deploy": "lerna exec --scope site -- gh-pages -d assets",
-    "release": "yarn build && yarn test && lerna publish",
-    "release:auto": "yarn run build && lerna publish --exact --conventional-commits --force-publish",
-    "release:lerna": "lerna version --exact --no-git-tag-version",
-    "release:alpha": "lerna publish --exact --preid=alpha --npm-tag=alpha",
+    "release": "lerna publish",
     "prepublishOnly": "yarn lint && yarn build && yarn test",
     "prettier": "prettier -c --write '**/*'",
     "pretty-quick": "pretty-quick",
@@ -59,6 +56,5 @@
     "stylelint-config-za": "0.3.0",
     "stylelint-scss": "^3.18.0",
     "typescript": "4.0.2"
-  },
-  "dependencies": {}
+  }
 }

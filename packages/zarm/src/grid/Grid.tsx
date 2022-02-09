@@ -1,31 +1,25 @@
 import * as React from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import { ConfigContext } from '../n-config-provider';
 import GridContext from './GridContext';
 import type { BaseGridProps } from './interface';
-import type { CSSVariables } from '../utils/types';
+import type { HTMLProps } from '../utils/utilityTypes';
 
-export type GridCSSVariables = CSSVariables<{
-  /** 宫格边框颜色 */
-  '--border-color': React.CSSProperties['borderColor'];
-  /** 宫格背景颜色 */
-  '--background-color': React.CSSProperties['backgroundColor'];
-}>;
-
-export interface GridProps extends BaseGridProps {
-  /** 组件样式名 */
-  className?: string;
-  /** 组件样式 */
-  style?: GridCSSVariables;
+export interface GridCssVars {
+  '--za-grid-border-color'?: React.CSSProperties['borderColor'];
+  '--za-grid-item-background'?: React.CSSProperties['background'];
+  '--za-grid-item-active-background'?: React.CSSProperties['background'];
 }
 
+export type GridProps = BaseGridProps & HTMLProps;
+
 const Grid: React.FC<GridProps> = (props) => {
-  const { className, style, columns = 4, gutter = 0, bordered = true, square, children } = props;
+  const { className, style, columns, gutter, bordered, square, children } = props;
 
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-grid`;
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('grid', { prefixCls });
 
-  const gutters: [number, number] = Array.isArray(gutter) ? gutter : [gutter, gutter];
+  const gutters: [number, number] = Array.isArray(gutter) ? gutter : [gutter!, gutter!];
 
   const gridContext = React.useMemo(() => ({ columns, gutter: gutters, bordered, square }), [
     columns,
@@ -39,23 +33,22 @@ const Grid: React.FC<GridProps> = (props) => {
   const verticalGutter = gutters[1] > 0 ? gutters[1] / 2 : undefined;
 
   if (!square && horizontalGutter) {
-    gridStyle.paddingLeft = horizontalGutter;
-    gridStyle.paddingRight = horizontalGutter;
+    gridStyle.paddingTop = horizontalGutter;
+    gridStyle.paddingBottom = horizontalGutter;
   }
 
   if (!square && verticalGutter) {
-    gridStyle.paddingTop = verticalGutter;
-    gridStyle.paddingBottom = verticalGutter;
+    gridStyle.paddingLeft = verticalGutter;
+    gridStyle.paddingRight = verticalGutter;
   }
 
-  const classes = classnames(
-    prefixCls,
+  const classes = bem([
     {
-      [`${prefixCls}--bordered`]: bordered,
-      [`${prefixCls}--square`]: square,
+      bordered,
+      square,
     },
     className,
-  );
+  ]);
 
   return (
     <GridContext.Provider value={gridContext}>
@@ -64,6 +57,14 @@ const Grid: React.FC<GridProps> = (props) => {
       </div>
     </GridContext.Provider>
   );
+};
+
+Grid.displayName = 'Grid';
+
+Grid.defaultProps = {
+  columns: 3,
+  gutter: 0,
+  bordered: true,
 };
 
 export default Grid;

@@ -3,5 +3,5 @@ export interface BaseActivityIndicatorProps {
   strokeWidth?: number;
   percent?: number;
   type?: 'circular' | 'spinner';
-  loading?: Boolean;
+  loading?: boolean;
 }

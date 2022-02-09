@@ -3,12 +3,11 @@
 ## 基本用法
 
 ```jsx
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import {
   NConfigProvider,
   List,
   Button,
-  SearchBar,
   Modal,
   Keyboard,
   Radio,
@@ -16,6 +15,9 @@ import {
   TabBar,
   Icon,
   Popup,
+  Rate,
+  Switch,
+  SearchBar,
 } from 'zarm';
 import enUS from 'zarm/lib/n-config-provider/locale/en_US';
 import zhCN from 'zarm/lib/n-config-provider/locale/zh_CN';
@@ -25,27 +27,15 @@ const TabIcon = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_lpsswvb7
 const colors = ['#00bc70', '#1890ff', '#f5222d', '#fa541b', '#13c2c2', '#2f54ec', '#712fd1'];
 
 const Demo = () => {
-  const [locale, setLocale] = useState(localStorage.locale || 'zhCN');
-  const [theme, setTheme] = useState(localStorage.theme || 'light');
-  const [primaryColor, setPrimaryColor] = useState(localStorage.primaryColor || colors[0]);
-  const [cssVars, setCssVars] = useState();
+  const containerRef = useRef();
   const [visiblePopup, setVisiblePopup] = useState(false);
 
-  const show = (key) => {
-    if (key === 'alert') {
-      Modal.alert({
-        title: '警告',
-        content: '这里是警告信息',
-        shape: 'radius',
-      });
-    } else {
-      Modal.confirm({
-        title: '确认信息',
-        content: '你确定要这样做吗？',
-        shape: 'radius',
-      });
-    }
-  };
+  const [locale, setLocale] = useState(localStorage.locale || 'zhCN');
+  const [primaryColor, setPrimaryColor] = useState(localStorage.primaryColor || colors[0]);
+  const [theme, setTheme] = useState(localStorage.theme || 'light');
+  const [safeIphoneX, setSafeIphoneX] = useState(false);
+  const [mountContainer, setMountContainer] = useState(false);
+  const [cssVars, setCssVars] = useState(null);
 
   return (
     <>
@@ -90,6 +80,14 @@ const Demo = () => {
           }
         />
         <List.Item
+          title="安全区域开启"
+          after={<Switch checked={safeIphoneX} onChange={setSafeIphoneX} />}
+        />
+        <List.Item
+          title="自定义弹层渲染节点"
+          after={<Switch checked={mountContainer} onChange={setMountContainer} />}
+        />
+        <List.Item
           title="设置 CSS 变量"
           after={
             <Button
@@ -100,7 +98,7 @@ const Demo = () => {
                     ? null
                     : {
                         '--za-button-primary-color': '#ff0000',
-                        '--za-list-item-height': '70px',
+                        '--za-rate-color': '#ffd21e',
                       },
                 );
               }}
@@ -114,29 +112,31 @@ const Demo = () => {
       <Message theme="warning">以下为组件示例</Message>
 
       <NConfigProvider
-        safeIphoneX
         locale={locale === 'enUS' ? enUS : zhCN}
         primaryColor={primaryColor}
         theme={theme}
+        safeIphoneX={safeIphoneX}
         cssVars={cssVars}
+        mountContainer={!mountContainer ? document.body : containerRef.current}
       >
         <div>
           <SearchBar />
-          <Keyboard />
-
           <List>
-            <List.Item
-              title="警告框"
-              after={
-                <Button size="xs" onClick={() => show('alert')}>
-                  开启
-                </Button>
-              }
-            />
+            <List.Item title={<Switch defaultChecked />} />
+            <List.Item title={<Rate defaultValue={3} />} />
             <List.Item
               title="确认框"
               after={
-                <Button size="xs" onClick={() => show('confirm')}>
+                <Button
+                  size="xs"
+                  onClick={() => {
+                    Modal.confirm({
+                      title: '确认信息',
+                      content: '你确定要这样做吗？',
+                      shape: 'radius',
+                    });
+                  }}
+                >
                   开启
                 </Button>
               }
@@ -157,19 +157,11 @@ const Demo = () => {
             onMaskClick={() => setVisiblePopup(false)}
             afterOpen={() => console.log('打开')}
             afterClose={() => console.log('关闭')}
-            className="provider-popup"
-            destroy={false}
-            mountContainer={() => document.body}
           >
-            <div className="popup-box-bottom" onClick={() => setVisiblePopup(false)}>
-              关闭
-            </div>
-            <Button block theme="primary">
-              按钮
-            </Button>
+            <div className="popup-box">内容</div>
           </Popup>
 
-          <TabBar visible={true} activeKey={1}>
+          <TabBar defaultActiveKey="home">
             <TabBar.Item itemKey="home" title="主页" icon={<TabIcon type="home" />} />
             <TabBar.Item
               itemKey="found"
@@ -184,6 +176,12 @@ const Demo = () => {
               badge={{ shape: 'dot' }}
             />
           </TabBar>
+
+          <Button block theme="primary">
+            Button
+          </Button>
+
+          <div ref={containerRef} />
         </div>
       </NConfigProvider>
     </>
@@ -195,9 +193,12 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性         | 类型    | 默认值    | 说明                                                                                                                                |
-| :----------- | :------ | :-------- | :---------------------------------------------------------------------------------------------------------------------------------- |
-| locale       | Object  | -         | 语言包配置，默认为中文，语言包可到 [zarm/lib/config-provider/locale](https://unpkg.com/zarm/lib/config-provider/locale/) 目录下寻找 |
-| theme        | string  | 'light'   | 主题模式，'light' 为光明主题，'dark' 为暗黑主题的切换                                                                               |
-| primaryColor | string  | '#00bc70' | 品牌标准色                                                                                                                          |
-| safeIphoneX  | boolean | false     | 是否适配 iphoneX 刘海屏                                                                                                             |
+| 属性           | 类型                                                  | 默认值    | 说明                                                                                                                                |
+| :------------- | :---------------------------------------------------- | :-------- | :---------------------------------------------------------------------------------------------------------------------------------- |
+| prefix         | string                                                | 'za'      | 组件类名前缀                                                                                                                        |
+| locale         | Object                                                | -         | 语言包配置，默认为中文，语言包可到 [zarm/lib/config-provider/locale](https://unpkg.com/zarm/lib/config-provider/locale/) 目录下寻找 |
+| theme          | string                                                | 'light'   | 主题模式，'light' 为光明主题，'dark' 为暗黑主题的切换                                                                               |
+| primaryColor   | string                                                | '#00bc70' | 品牌标准色                                                                                                                          |
+| safeIphoneX    | boolean                                               | false     | 是否适配 iphoneX 刘海屏                                                                                                             |
+| mountContainer | false \| HTMLElement \| (() => HTMLElement) \| Window | -         | 弹层组件渲染节点                                                                                                                    |
+| cssVars        | Object                                                | {}        | 组件 CSS 变量设置                                                                                                                   |

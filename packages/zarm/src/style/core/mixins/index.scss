@@ -1,4 +1,27 @@
-@import './bem';
+@import '~@zarm-design/bem/sass';
+
+$prefixCls: 'za';
+$keyframesSeparator: '_';
+
+@mixin define($key, $value) {
+  --#{$key}: var(--#{$prefixCls + $blockSeparator + $currentBlock + $blockSeparator + $key}, #{$value});
+}
+
+@mixin keyframes($name) {
+  $selector: selector-append($prefixCls + $blockSeparator + $currentBlock, $keyframesSeparator + $name);
+
+  @at-root {
+    @keyframes #{$selector} {
+      @content;
+    }
+  }
+}
+
+@mixin animation($name, $value) {
+  $selector: selector-append($prefixCls + $blockSeparator + $currentBlock, $keyframesSeparator + $name);
+
+  animation: $selector $value;
+}
 
 @mixin defineColorHSL($color, $hue, $saturation, $lightness) {
   #{$color}: unquote("hsl(#{$hue}, #{$saturation}, #{$lightness})");
@@ -29,7 +52,7 @@
   }
 }
 
-@mixin onepx($positions: top right bottom left, $border-color: var(--border-color), $border-radius: 0) {
+@mixin onepx($positions: top right bottom left, $border-color: var(--za-border-color), $border-radius: 0) {
   &:after {
     @if $positions == 'none' {
       content: none;
@@ -69,7 +92,7 @@
 }
 
 // adapt iphone x
-@mixin safeIphoneX ($padding: true, $height: 0) {
+@mixin safeIphoneX($padding: true, $height: 0) {
   @if $padding {
     @if $height != 0 {
       height: calc(#{$height} + constant(safe-area-inset-bottom));

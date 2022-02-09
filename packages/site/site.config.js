@@ -412,7 +412,7 @@ module.exports = {
         name: '全局配置（新）',
         module: () => import('zarm/n-config-provider/demo.md'),
         source: 'zarm/n-config-provider/demo.md',
-        style: false,
+        style: true,
       },
       {
         key: 'drag',

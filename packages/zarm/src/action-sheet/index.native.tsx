@@ -1,10 +1,10 @@
 import React, { PureComponent, CSSProperties } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ViewStyle } from 'react-native';
-import PropsType from './interface';
 import actionsheetStyle from './style/index.native';
 import Popup from '../popup/index.native';
+import type { BaseActionSheetProps } from './interface';
 
-export interface ButtonProps extends PropsType {
+export interface ButtonProps extends BaseActionSheetProps {
   style?: CSSProperties;
   styles?: typeof actionsheetStyle;
 }

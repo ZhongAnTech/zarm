@@ -1,0 +1,105 @@
+// 选择器转字符串
+@function str-selector($selector) {
+  $selector: inspect($selector);
+  $selector: str-slice($selector, 2, -2);
+  @return $selector;
+}
+
+// 反向字符串
+@function str-reverse($string) {
+  $result: '';
+  @for $i from str-length($string) through 1 {
+    $result: $result + str-slice($string, $i, $i);
+  }
+  @return $result;
+}
+
+// 反向查找字符串
+@function str-index-reverse($string, $substring) {
+  $re-string: str-reverse($string);
+  $re-substring: str-reverse($substring);
+  $start: str-index($re-string, $re-substring);
+  @if $start == null {
+    @return 0;
+  }
+  $re-index: str-length($string) - str-length($substring) - if($start, $start, 0) + 2;
+  @return $re-index;
+}
+
+// 是否包含字符串
+@function str-contains($string, $substring) {
+  @if str-index($string, $substring) {
+    @return true;
+  }
+  @return false;
+}
+
+// 查找替换
+// replace substring with another string
+// credits: https://css-tricks.com/snippets/sass/str-replace-function/
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+  @return $string;
+}
+
+// 是否包含Modifier
+@function contains-modifier($selector) {
+  $index: str-index-reverse(str-selector($selector), ' ');
+  $selector: if($index > 0, str-slice(str-selector($selector), $index), $selector);
+  @return str-contains(str-selector($selector), $modifierSeparator);
+}
+
+// 是否包含Element
+@function contains-element($selector) {
+  $index: str-index-reverse(str-selector($selector), ' ');
+  $selector: if($index > 0, str-slice(str-selector($selector), $index), $selector);
+  @return str-contains(str-selector($selector), $elementSeparator);
+}
+
+// 获取块名
+@function get-block($selector) {
+  $selector: str-selector($selector);
+  $parent: str-slice($selector, str-index-reverse($selector, '.'));
+  $start: str-length($parent) - 1;
+
+  @if contains-element($parent) {
+    $start: str-index($parent, $elementSeparator) - 1;
+  }
+
+  @else if contains-modifier($parent) {
+    $start: str-index($parent, $modifierSeparator) - 1;
+  }
+
+  $block: str-slice($parent, 0, $start);
+  @return $block;
+}
+
+// 获取节点列表
+@function get-elements($elements) {
+  $result: '';
+  $block: get-block(&);
+  $selector: if(contains-modifier(&), get-block(&), &);
+
+  @each $unit in $elements {
+    $element: selector-append($selector, $elementSeparator + $unit);
+
+    @if contains-element($selector) {
+      $element: selector-nest($selector, selector-append($block, $elementSeparator + $unit));
+    }
+
+    $result: $result+$element+',';
+  }
+
+  @return $result;
+}
+
+@function get-selector($prefix, $separator, $params...) {
+  $selector: '';
+  @each $param in $params {
+    $selector: $selector + $prefix + $separator + $param + ',';
+  }
+  @return $selector;
+}

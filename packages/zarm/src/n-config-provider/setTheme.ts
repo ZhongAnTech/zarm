@@ -1,6 +1,6 @@
-import type { Theme } from './interface';
+import type { ConfigProviderProps } from './interface';
 
-export const themes = {
+const themes = {
   '--background-color': '#393939',
   '--background-active': '#222',
   '--theme-primary-lighter': '#303030',
@@ -18,6 +18,16 @@ export const themes = {
   '--picker-mask-background-end': 'rgba(0, 0, 0, 0.8)',
   '--stack-picker-background': '#000',
   '--stack-picker-shadow': 'none',
+
+  '--za-background-color': '#1c1c1e',
+  '--za-background-active': '#363738',
+  '--za-theme-primary-lighter': '#303030',
+  '--za-color-text': 'rgba(255, 255, 255, 0.85)',
+  '--za-color-text-inverse': 'rgba(255, 255, 255, 0.8)',
+  '--za-color-text-placeholder': 'rgba(255, 255, 255, 0.3)',
+  '--za-color-text-disabled': '#666',
+  '--za-border-color': '#3a3b3d',
+  '--za-opacity-mask': '0.7',
   '--za-alert-button-background': '#2b2c2d',
   '--za-alert-button-active-background': '#363738',
   '--za-activity-indicator-path-color': '#3a3b3d',
@@ -53,7 +63,6 @@ export const themes = {
   '--za-input-clear-icon-color': '#8e8e93',
   '--za-keyboard-background': '#000',
   '--za-keyboard-item-background': 'rgba(255, 255, 255, 0.1)',
-  '--za-slider-line-dot-color': 'var(--border-color)',
   '--za-switch-background': 'rgba(120, 120, 128, 0.32)',
   '--za-stepper-input-background': '#000',
   '--za-panel-header-color': 'rgba(235, 235, 245, 0.6)',
@@ -63,12 +72,13 @@ export const themes = {
   '--za-modal-close-color': 'rgba(255, 255, 255, 0.3)',
   '--za-modal-close-active-color': 'rgba(255, 255, 255, 0.65)',
   '--za-nav-bar-background': '#1b1c1e',
+  '--za-slider-line-background': '#3a3b3d',
+  '--za-slider-dot-border-color': '#3a3b3d',
   '--za-search-bar-input-background': 'rgba(118, 118, 128, 0.24)',
   '--za-search-bar-input-placeholder-color': '#8e8e93',
   '--za-search-bar-icon-color': '#8e8e93',
-  '--za-action-sheet-actions-background': '#222222',
+  '--za-action-sheet-item-background': '#222222',
   '--za-action-sheet-cancel-background': '#2c2c2e',
-  '--za-action-sheet-item-active-background': '#404040',
   '--za-rate-color': 'var(--theme-danger-dark)',
   '--za-rate-unchecked-color': '#393939',
   '--za-tabbar-background': '#1b1c1e',
@@ -76,8 +86,8 @@ export const themes = {
   '--za-tooltip-background': '#5b5c60',
 } as const;
 
-const setTheme = (value: Theme = 'light') => {
-  document.body.setAttribute('data-theme', value);
+const setTheme = (value: ConfigProviderProps['theme']) => {
+  document.body.setAttribute('data-theme', value!);
   Object.keys(themes).forEach((key) => {
     value === 'dark'
       ? document.documentElement.style.setProperty(key, themes[key])

@@ -1,23 +1,23 @@
 import * as React from 'react';
 import type { ContainerType } from '../utils/dom';
-import { Locale } from '../n-config-provider/interface';
+import type { Locale } from '../n-config-provider/interface';
 
-export interface Action {
+export interface BaseActionSheetActionProps {
   text?: React.ReactNode;
   theme?: 'default' | 'primary' | 'danger';
-  className?: string;
   onClick?: () => void;
+  disabled: boolean;
 }
 
-export default interface PropsType {
+export interface BaseActionSheetProps {
   visible?: boolean;
   spacing?: boolean;
-  actions?: Action[];
+  actions?: BaseActionSheetActionProps[];
   cancelText?: string;
   onMaskClick?: () => void;
   onCancel?: () => void;
   afterClose?: () => void;
   destroy?: boolean;
   locale?: Locale['ActionSheet'];
-  mountContainer?: ContainerType | false;
+  mountContainer?: ContainerType;
 }
