@@ -19,7 +19,7 @@
     "build:types": "rimraf types && tsc --outDir types -d --emitDeclarationOnly",
     "build:es": "rimraf es && zarm build --mode es --path src --out-dir es --copy-files --build-css",
     "build:lib": "rimraf lib && zarm build --mode lib --path src --out-dir lib --copy-files --build-css",
-    "build:react": "svgr ./svg --out-dir ./src/react",
+    "build:react": "rimraf src/react && svgr ./svg --out-dir ./src/react",
     "build:svg": "rimraf svg && node ./scripts/exportSVG.js",
     "build": "yarn build:types && yarn build:lib && yarn build:es",
     "build:font": "webFontsHelper --src ./svg --fontName zaicon --fontPath src/font --className za-icon"
