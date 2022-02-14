@@ -450,12 +450,15 @@
   --za-panel-body-border-radius: 10px;
 
   // Picker
-  --picker-background: #fff;
-  --picker-mask-background-start: rgba(255, 255, 255, 0.4);
-  --picker-mask-background-end: rgba(255, 255, 255, 0.8);
-  --picker-header-height: 45px;
-  --picker-header-font-size: 16px;
-  --picker-header-background: #f7f7f7;
+  --za-picker-background: #fff;
+  --za-picker-padding: 16px;
+  --za-picker-mask-background-start: rgba(255, 255, 255, 0.4);
+  --za-picker-mask-background-end: rgba(255, 255, 255, 0.8);
+  --za-picker-header-height: 45px;
+  --za-picker-header-font-size: 16px;
+  --za-picker-header-background: #f7f7f7;
+  --za-picker-item-selected-background: rgba(116, 116, 128, 0.08);
+  --za-picker-item-selected-border-radius: 7px;
 
   // Progress
   --za-progress-background: #f2f2f2;
@@ -610,7 +613,7 @@
   // Wheel
   --za-wheel-item-height: 34px;
   --za-wheel-item-rows: 5;
-  --za-wheel-item-font-size: 18px;
+  --za-wheel-item-font-size: 20px;
   --za-wheel-color: var(--color-text);
 
   // Icon
