@@ -78,18 +78,23 @@ $--calendar-day-width: 14.28571%;
     @include firstday();
 
     @include m(today) {
-      @include e(day__content) {
-        background-color: var(--calendar-day-today-background);
-        color: var(--calendar-day-today-color);
-      }
+      @include b(calendar) {
+        @include e(day__content) {
+          background-color: var(--calendar-day-today-background);
+          color: var(--calendar-day-today-color);
+        }
+      } 
+      
     }
 
     @include m(selected) {
-      @include e(day__content) {
-        background-color: var(--calendar-day-selected-background);
-        color: var(--calendar-day-selected-color);
-        box-shadow: 0 r(2) r(5) 0 var(--calendar-day-selected-shadow);
-      }
+      @include b(calendar) {
+        @include e(day__content) {
+          background-color: var(--calendar-day-selected-background);
+          color: var(--calendar-day-selected-color);
+          box-shadow: 0 r(2) r(5) 0 var(--calendar-day-selected-shadow);
+        }
+      } 
     }
 
     @include m(disabled) {
@@ -104,9 +109,11 @@ $--calendar-day-width: 14.28571%;
       background-color: var(--calendar-day-range-background);
       color: var(--calendar-day-range-color);
 
-      @include e(day__content) {
-        background-color: var(--calendar-day-range-background);
-      }
+      @include b(calendar) {
+        @include e(day__content) {
+          background-color: var(--calendar-day-range-background);
+        }
+      } 
 
       &.d6 {
         background-color: transparent;

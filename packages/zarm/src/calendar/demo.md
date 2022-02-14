@@ -8,9 +8,9 @@ import { Radio, DateSelect, List, Calendar } from 'zarm';
 
 const Demo = () => {
   const [multiple, setMultiple] = useState(true);
-  const [value, setValue] = useState(['2020-07-29', '2020-08-04']);
-  const [min, setMin] = useState('2017-12-29');
-  const [max, setMax] = useState('2020-08-04');
+  const [value, setValue] = useState(['2022-2-01', '2022-2-07']);
+  const [min, setMin] = useState('2022-1-29');
+  const [max, setMax] = useState('2022-12-31');
   const [custom, setCustom] = useState(false);
 
   return (
