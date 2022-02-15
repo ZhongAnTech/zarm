@@ -1,16 +1,18 @@
 @include b(slider) {
-  @include define(line-size, 2px);
-  @include define(line-background, #dcdcdc);
+  @include define(line-size, 4px);
+  @include define(line-border-radius, 2px);
+  @include define(line-background, rgba(120, 120, 128, 0.2));
   @include define(line-active-background, var(--za-theme-primary));
-  @include define(dot-size, 6px);
+  @include define(dot-size, 10px);
   @include define(dot-background, var(--za-background-color));
-  @include define(dot-border-color, #dcdcdc);
+  @include define(dot-border-color, rgba(120, 120, 128, 0.2));
+  @include define(dot-border-width, 2px);
   @include define(dot-active-border-color, var(--za-theme-primary));
-  @include define(knob-size, 24px);
-  @include define(knob-size-small, 16px);
+  @include define(knob-size, 28px);
+  @include define(knob-size-small, 20px);
   @include define(knob-background, #fff);
   @include define(knob-shadow, 0 1px 3px rgba(0, 0, 0, 0.4));
-  @include define(mark-font-size, 14px);
+  @include define(mark-font-size, 15px);
   @include define(mark-text-color, var(--za-theme-primary));
 
   display: flex;
@@ -29,10 +31,12 @@
     position: relative;
     height: var(--line-size);
     background-color: var(--line-background);
+    border-radius: var(--line-border-radius);
 
     @include e(line__bg) {
       height: 100%;
       background-color: var(--line-active-background);
+      border-radius: var(--line-border-radius);
     }
   }
 
@@ -44,7 +48,7 @@
     margin-top: calc((var(--dot-size) + var(--line-size)) / -2);
     margin-left: calc(var(--dot-size) / -2);
     background-color: var(--dot-background);
-    border: 1px solid var(--dot-border-color);
+    border: var(--dot-border-width) solid var(--dot-border-color);
     border-radius: 50%;
     cursor: pointer;
 
@@ -138,7 +142,6 @@
       @include e(marks) {
         top: 0;
         left: r(15);
-        width: r(20);
         height: 100%;
       }
 

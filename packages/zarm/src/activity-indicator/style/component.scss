@@ -57,11 +57,11 @@ $activity-indicator-spinner-count: 8;
       &::before {
         content: '';
         display: block;
-        width: 2px;
-        height: 30%;
+        width: 3px;
+        height: 32%;
         margin: 0 auto;
         background-color: var(--za-activity-indicator-spinner-color);
-        border-radius: 1000px;
+        border-radius: r(1.5);
       }
     }
   }

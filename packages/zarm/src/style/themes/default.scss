@@ -149,7 +149,7 @@
   --za-activity-indicator-size-md: 22px;
   --za-activity-indicator-size-lg: 29px;
   --za-activity-indicator-path-color: #e6e6e6;
-  --za-activity-indicator-spinner-color: #989697;
+  --za-activity-indicator-spinner-color: #80858E;
 
   // Alert
   --za-alert-button-height: 50px;
@@ -343,7 +343,7 @@
   // 列表项 info 文本字体大小
   --za-list-item-info-font-size: 12px;
   // 列表项 info 文本字体行高
-  --za-list-item-info-line-height: 15px;
+  --za-list-item-info-line-height: 16px;
   // 列表项 info 文本字体颜色
   --za-list-item-info-text-color: rgba(60, 60, 67, 0.6);
   // 列表项箭头符号颜色
@@ -421,9 +421,11 @@
   // 标题字体色
   --za-nav-bar-title-color: var(--color-text);
   // 标题字体大小
-  --za-nav-bar-title-font-size: 18px;
+  --za-nav-bar-title-font-size: 17px;
   // 标题字体粗细
   --za-nav-bar-title-font-weight: 500;
+  // 左右栏字体大小
+  --za-nav-bar-side-font-size: 17px;
   // 横向内边距
   --za-nav-bar-padding-horizontal: 16px;
 
