@@ -1,23 +1,30 @@
 @import 'mixins';
 
-$PI: 3.141592674;
 $activity-indicator-spinner-count: 8;
 
 @include b(activity-indicator) {
+  @include define(size, 22px);
+  @include define(size-large, 29px);
+  @include define(stroke-color, #e6e6e6);
+  @include define(stroke-active-color, var(--za-theme-primary));
+  @include define(spinner-item-color, #80858e);
+  @include define(spinner-item-width, 3px);
+  @include define(spinner-item-height, 32%);
+  @include define(spinner-item-border-radius, 1.5px);
+
   display: inline-block;
   position: relative;
   transform: rotate(-90deg);
   vertical-align: middle;
 
-  @include activity-indicator-size(var(--za-activity-indicator-size-md));
+  @include activity-indicator-size(var(--size));
 
-  @include e(path) {
-    stroke: var(--za-activity-indicator-path-color);
+  @include e(stroke) {
+    stroke: var(--stroke-color);
   }
 
   @include e(line) {
-    stroke-dasharray: 100 * $PI;
-    stroke: var(--za-activity-indicator-color);
+    stroke: var(--stroke-active-color);
   }
 
   @include m(circular) {
@@ -30,7 +37,7 @@ $activity-indicator-spinner-count: 8;
 
     circle {
       stroke-linecap: round;
-      stroke: var(--za-activity-indicator-color);
+      stroke: var(--stroke-active-color);
       @include animation(rotate-circular, 1.5s ease-in-out infinite);
     }
   }
@@ -57,24 +64,18 @@ $activity-indicator-spinner-count: 8;
       &::before {
         content: '';
         display: block;
-        width: 3px;
-        height: 32%;
+        width: var(--spinner-item-width);
+        height: var(--spinner-item-height);
         margin: 0 auto;
-        background-color: var(--za-activity-indicator-spinner-color);
-        border-radius: r(1.5);
+        background-color: var(--spinner-item-color);
+        border-radius: var(--spinner-item-border-radius);
       }
     }
   }
 
   /* sizes */
   @include m(lg) {
-    @include activity-indicator-size(var(--za-activity-indicator-size-lg));
-
-    @include m(spinner) {
-      div::before {
-        width: 3px;
-      }
-    }
+    @include activity-indicator-size(var(--size-large));
   }
 
   @include keyframes(rotate-circular) {

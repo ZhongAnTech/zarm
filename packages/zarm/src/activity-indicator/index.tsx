@@ -4,7 +4,14 @@ import { ConfigContext } from '../n-config-provider';
 import type { BaseActivityIndicatorProps } from './interface';
 
 export interface ActivityIndicatorCssVars {
-  '--za-activity-indicator-strokeidth'?: React.CSSProperties['width'];
+  '--za-activity-indicator-size'?: React.CSSProperties['width' | 'height'];
+  '--za-activity-indicator-size-large'?: React.CSSProperties['width' | 'height'];
+  '--za-activity-indicator-stroke-color'?: React.CSSProperties['stroke'];
+  '--za-activity-indicator-stroke-active-color'?: React.CSSProperties['stroke'];
+  '--za-activity-indicator-spinner-item-color'?: React.CSSProperties['color'];
+  '--za-activity-indicator-spinner-item-width'?: React.CSSProperties['width'];
+  '--za-activity-indicator-spinner-item-height'?: React.CSSProperties['height'];
+  '--za-activity-indicator-spinner-item-border-radius'?: React.CSSProperties['borderRadius'];
 }
 
 const DIAMETER = 62;
@@ -48,7 +55,7 @@ const Circular = React.forwardRef(
       <div className={cls} {...htmlAttributes} ref={ref}>
         <svg viewBox={`0 0 ${DIAMETER} ${DIAMETER}`}>
           <circle
-            className={bem('path')}
+            className={bem('stroke')}
             cx={half}
             cy={half}
             r={r}
@@ -113,10 +120,10 @@ const ActivityIndicator = React.forwardRef<unknown, ActivityIndicatorProps>((pro
 });
 
 ActivityIndicator.defaultProps = {
-  strokeWidth: 5,
-  percent: 20,
   type: 'circular',
   loading: true,
+  strokeWidth: 5,
+  percent: 20,
 };
 
 ActivityIndicator.displayName = 'ActivityIndicator';
