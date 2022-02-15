@@ -19,8 +19,8 @@ const Circular = React.forwardRef(
 
     const cls = bem([
       {
-        [`${size}`]: !!size,
         circular: loading,
+        [`${size}`]: !!size,
       },
       className,
     ]);
@@ -80,7 +80,7 @@ const Spinner = React.forwardRef(
     const cls = bem([
       {
         spinner: true,
-        [`${prefixCls}--${size}`]: !!size,
+        [`${size}`]: !!size,
       },
       className,
     ]);
