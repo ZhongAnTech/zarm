@@ -74,6 +74,7 @@
 
   @include e(button) {
     @include button-base();
+
     position: relative;
     display: block;
     width: 100%;
