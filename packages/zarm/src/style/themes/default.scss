@@ -91,7 +91,7 @@
 
   // 背景色
   --za-background-color: #fff;
-  --za-background-active: #d4d4d4;
+  --za-background-active: #dbdbdd;
   --za-background-disabled: #f2f2f2;
 
   // 边框色
@@ -143,12 +143,6 @@
   //阴影
   --za-box-shadow-light: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
   --za-box-shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.2);
-
-  // Alert
-  --za-alert-button-height: 50px;
-  --za-alert-button-font-size: 18px;
-  --za-alert-button-background: var(--za-button-default-background);
-  --za-alert-button-active-background: var(--background-active);
 
   // Badge
   --za-badge-height: 14px;
@@ -304,12 +298,6 @@
   --za-collapse-arrow-color: #bcbcbc;
   --za-collapse-arrow-disabled-color: #eee;
 
-  // Confirm
-  --za-confirm-button-height: 50px;
-  --za-confirm-button-font-size: 18px;
-  --za-confirm-button-background: var(--za-button-default-background);
-  --za-confirm-button-active-background: var(--background-active);
-
   // List
   // 列表项高度
   --za-list-item-height: 44px;
@@ -398,13 +386,6 @@
   --za-message-icon-size: 14px;
   --za-message-padding-vertical: 6px;
   --za-message-padding-horizontal: 8px;
-
-  // Modal
-  --za-modal-background: #fff;
-  --za-modal-title-font-size: 18px;
-  --za-modal-title-color: var(--color-text);
-  --za-modal-close-color: #ccc;
-  --za-modal-close-active-color: #999;
 
   // NavBar
   // 背景色

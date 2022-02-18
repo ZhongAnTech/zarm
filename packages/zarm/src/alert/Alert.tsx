@@ -1,42 +1,35 @@
 import * as React from 'react';
-import classnames from 'classnames';
-import type { BaseAlertProps } from './interface';
-import Modal from '../modal';
+import { createBEM } from '@zarm-design/bem';
 import { ConfigContext } from '../n-config-provider';
-import ModalButton from '../modal/ModalButton';
+import Modal from '../modal';
+import type { BaseAlertProps } from './interface';
+import type { HTMLProps } from '../utils/utilityTypes';
 
-export interface AlertProps extends BaseAlertProps {
-  className?: string;
-  style?: React.CSSProperties;
-}
+export type AlertProps = BaseAlertProps & HTMLProps;
 
-const Alert: React.FC<AlertProps> = (props) => {
-  const { className, shape, content, cancelText, onCancel, ...rest } = props;
-  const { prefixCls: globalPrefixCls, locale } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-alert`;
-  const classes = classnames(prefixCls, className, {
-    [`${prefixCls}--${shape}`]: !!shape,
-  });
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
+  const { className, content, cancelText, onCancel, ...rest } = props;
+  const { prefixCls, locale } = React.useContext(ConfigContext);
+  const bem = createBEM('alert', { prefixCls });
+  const cls = bem([className]);
 
   return (
-    <div className={classes}>
+    <div ref={ref} className={cls}>
       <Modal
         {...rest}
-        footer={
-          <ModalButton
-            className={`${prefixCls}__button`}
-            loadingClassName={`${prefixCls}__button--loading`}
-            onClick={onCancel}
-          >
-            {cancelText || locale?.Alert.cancelText}
-          </ModalButton>
-        }
+        actions={[
+          {
+            text: cancelText || locale?.Confirm.cancelText,
+            onClick: onCancel,
+            bold: true,
+          },
+        ]}
       >
         {content}
       </Modal>
     </div>
   );
-};
+});
 
 Alert.displayName = 'Alert';
 

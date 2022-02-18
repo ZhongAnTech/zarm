@@ -1,71 +1,106 @@
+@import '../../button/style/mixins';
+
 @include b(modal) {
+  @include define(background, rgb(242, 242, 242));
+  @include define(border-radius, 14px);
+  @include define(box-shadow, 0 7px 21px var(--za-color-shadow));
+  @include define(title-font-size, 17px);
+  @include define(title-font-weight, 500);
+  @include define(title-text-color, var(--za-color-text));
+  @include define(close-size, 20px);
+  @include define(close-color, #ccc);
+  @include define(close-active-color, #999);
+  @include define(body-font-size, 13px);
+  @include define(body-text-color, var(--za-color-text));
+  @include define(body-padding, 16px);
+  @include define(button-height, 44px);
+  @include define(button-font-size, 17px);
+  @include define(button-font-weight, 500);
+  @include define(button-text-color, var(--za-theme-primary));
+  @include define(button-background, transparent);
+  @include define(button-active-background, var(--za-background-active));
+
   -webkit-overflow-scrolling: touch;
-  // position: fixed;
-  // left: 0;
-  // top: 0;
-  // width: 100%;
-  // height: 100%;
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
-  // user-select: none;
-  // overflow: auto;
-  // z-index: var(--zindex-modal);
 
   @include b(popup) {
     position: relative;
-    background-color: var(--za-modal-background);
-    box-shadow: 0 r(7) r(21) var(--color-shadow);
+    background-color: var(--background);
+    box-shadow: var(--box-shadow);
     overflow: hidden;
   }
 
   @include m(radius) {
     @include b(popup) {
-      border-radius: var(--radius-md);
-    }
-  }
-
-  @include e(header) {
-    position: relative;
-    padding: r(20) r(15) 0 r(15);
-    text-align: center;
-
-    &__title {
-      font-size: var(--za-modal-title-font-size);
-      line-height: 1;
-      color: var(--za-modal-title-color);
-    }
-
-    &__close {
-      position: absolute;
-      top: r(20);
-      right: r(15);
-      line-height: r(15);
-      color: var(--za-modal-close-color);
-      font-size: r(20);
-      cursor: pointer;
-
-      &:hover {
-        color: var(--za-modal-close-active-color);
-      }
+      border-radius: var(--border-radius);
     }
   }
 
   @include e(body) {
-    font-size: r(15);
-    color: var(--color-text-caption);
-    padding: r(20);
-    overflow: auto;
+    position: relative;
+    font-size: var(--body-font-size);
+    color: var(--body-text-color);
+    padding: var(--body-padding);
     user-select: auto;
+
+    @include e(title) {
+      text-align: center;
+      font-size: var(--title-font-size);
+      font-weight: var(--title-font-weight);
+      color: var(--title-text-color);
+      margin-bottom: 6px;
+    }
+
+    @include e(close) {
+      position: absolute;
+      top: 0;
+      right: 0;
+      color: var(--close-color);
+      font-size: var(--close-size);
+      margin: var(--body-padding);
+      cursor: pointer;
+
+      &:hover {
+        color: var(--close-active-color);
+      }
+    }
   }
 
-  @include e(footer) {
+  @include e(action) {
+    position: relative;
     display: flex;
-    padding: 0 r(15) r(20);
-    width: 100%;
+    align-items: stretch;
+    @include onepx(top);
+  }
 
-    // @include m(block) {
-    //   flex-direction: column;
-    // }
+  @include e(button) {
+    @include button-base();
+    position: relative;
+    display: block;
+    width: 100%;
+    height: var(--button-height);
+    line-height: var(--button-height);
+    background-color: var(--button-background);
+    font-size: var(--button-font-size);
+    color: var(--button-text-color);
+
+    &:active {
+      background-color: var(--button-active-background);
+    }
+
+    &:not(:first-of-type) {
+      @include onepx(left);
+    }
+
+    @include m(bold) {
+      font-weight: var(--button-font-weight);
+    }
+
+    @include m(default) {
+      @include define(button-text-color, var(--za-color-text));
+    }
+
+    @include m(danger) {
+      @include define(button-text-color, var(--za-theme-danger));
+    }
   }
 }

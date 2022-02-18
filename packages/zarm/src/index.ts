@@ -1,13 +1,10 @@
-export type { WaterMarkProps } from './water-mark';
-export { default as WaterMark } from './water-mark';
-
-export type { CollapseProps, CollapseItemProps } from './collapse';
-export { default as Collapse } from './collapse';
-
 export type { ActionSheetProps, ActionSheetActionProps, ActionSheetCssVars } from './action-sheet';
 export { default as ActionSheet } from './action-sheet';
 
-export type { AffixProps } from './affix';
+export type { ActivityIndicatorProps, ActivityIndicatorCssVars } from './activity-indicator';
+export { default as ActivityIndicator } from './activity-indicator';
+
+export type { AffixProps, AffixCssVars } from './affix';
 export { default as Affix } from './affix';
 
 export type { AlertProps } from './alert';
@@ -22,6 +19,9 @@ export type { ButtonProps } from './button';
 export { default as Button } from './button';
 
 export { default as Calendar } from './calendar';
+
+export type { CollapseProps, CollapseItemProps } from './collapse';
+export { default as Collapse } from './collapse';
 
 export type { ListProps, ListItemProps } from './list';
 export { default as List } from './list';
@@ -70,7 +70,7 @@ export { default as Mask } from './mask';
 export type { MessageProps } from './message';
 export { default as Message } from './message';
 
-export type { ModalProps } from './modal';
+export type { ModalProps, ModalCssVars } from './modal';
 export { default as Modal } from './modal';
 
 export type { NoticeBarProps } from './notice-bar';
@@ -105,11 +105,8 @@ export { default as Scroller } from './scroller';
 export type { SearchBarProps } from './search-bar';
 export { default as SearchBar } from './search-bar';
 
-export type { SliderProps } from './slider';
+export type { SliderProps, SliderCssVars } from './slider';
 export { default as Slider } from './slider';
-
-export type { ActivityIndicatorProps } from './activity-indicator';
-export { default as ActivityIndicator } from './activity-indicator';
 
 export type { StepperProps } from './stepper';
 export { default as Stepper } from './stepper';
@@ -133,6 +130,9 @@ export { default as Toast } from './toast';
 
 export { default as Tooltip } from './tooltip';
 export { default as Trigger } from './trigger';
+
+export type { WaterMarkProps } from './water-mark';
+export { default as WaterMark } from './water-mark';
 
 export type { WheelProps } from './wheel';
 export { default as Wheel } from './wheel';
