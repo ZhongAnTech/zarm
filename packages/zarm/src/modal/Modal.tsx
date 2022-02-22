@@ -3,7 +3,7 @@ import { createBEM } from '@zarm-design/bem';
 import { Close as CloseIcon } from '@zarm-design/icons';
 import { ConfigContext } from '../n-config-provider';
 import Popup from '../popup';
-import ModalButton from './ModalAction';
+import ModalAction from './ModalAction';
 import { noop } from '../utils';
 import type { BaseModalProps } from './interface';
 import type { ModalActionProps } from './ModalAction';
@@ -26,8 +26,6 @@ export interface ModalCssVars {
   '--za-modal-button-font-size'?: React.CSSProperties['fontSize'];
   '--za-modal-button-font-weight'?: React.CSSProperties['fontWeight'];
   '--za-modal-button-text-color'?: React.CSSProperties['color'];
-  '--za-modal-button-background'?: React.CSSProperties['background'];
-  '--za-modal-button-active-background'?: React.CSSProperties['background'];
 }
 
 export type ModalProps = BaseModalProps &
@@ -71,7 +69,7 @@ const Modal = React.forwardRef<typeof Popup, ModalProps>((props, ref) => {
     return (
       <div key={+i} className={bem('action')}>
         {currentAction.map((child, j) => (
-          <ModalButton
+          <ModalAction
             {...child}
             key={+j}
             onClick={async () => {

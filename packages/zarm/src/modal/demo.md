@@ -458,23 +458,21 @@ const confirm = Modal.confirm({
 
 ### Modal CSS 变量
 
-| 属性                                | 类型                                | 默认值                              | 说明                   |
-| :---------------------------------- | :---------------------------------- | :---------------------------------- | :--------------------- |
-| --za-modal-background               | React.CSSProperties['background']   | 'rgb(242, 242, 242)'                | 背景色                 |
-| --za-modal-border-radius            | React.CSSProperties['borderRadius'] | '14px'                              | 圆角大小               |
-| --za-modal-box-shadow               | React.CSSProperties['boxShadow']    | '0 7px 21px var(--za-color-shadow)' | 阴影样式               |
-| --za-modal-title-font-size          | React.CSSProperties['fontSize']     | '17px'                              | 标题字体大小           |
-| --za-modal-title-font-weight        | React.CSSProperties['fontWeight']   | 500                                 | 标题字体粗细           |
-| --za-modal-title-text-color         | React.CSSProperties['color']        | 'var(--za-color-text)'              | 标题字体颜色           |
-| --za-modal-close-size               | React.CSSProperties['fontSize']     | '20px'                              | 关闭图标字体大小       |
-| --za-modal-close-color              | React.CSSProperties['color']        | '#ccc'                              | 关闭图标颜色           |
-| --za-modal-close-active-color       | React.CSSProperties['color']        | '#999'                              | 关闭图标激活状态颜色   |
-| --za-modal-body-font-size           | React.CSSProperties['fontSize']     | '13px'                              | 内容字体大小           |
-| --za-modal-body-text-color          | React.CSSProperties['color']        | 'var(--za-color-text)'              | 内容字体颜色           |
-| --za-modal-body-padding             | React.CSSProperties['padding']      | '16px'                              | 内容内边距             |
-| --za-modal-button-height            | React.CSSProperties['height']       | '44px'                              | 操作按钮高度           |
-| --za-modal-button-font-size         | React.CSSProperties['fontSize']     | '17px'                              | 操作按钮字体大小       |
-| --za-modal-button-font-weight       | React.CSSProperties['fontWeight']   | 500                                 | 操作按钮字体粗细       |
-| --za-modal-button-text-color        | React.CSSProperties['color']        | 'var(--za-theme-primary)'           | 操作按钮字体颜色       |
-| --za-modal-button-background        | React.CSSProperties['background']   | 'transparent'                       | 操作按钮背景色         |
-| --za-modal-button-active-background | React.CSSProperties['background']   | 'var(--za-background-active)'       | 操作按钮激活状态背景色 |
+| 属性                          | 类型                                | 默认值                              | 说明                 |
+| :---------------------------- | :---------------------------------- | :---------------------------------- | :------------------- |
+| --za-modal-background         | React.CSSProperties['background']   | 'rgb(242, 242, 242)'                | 背景色               |
+| --za-modal-border-radius      | React.CSSProperties['borderRadius'] | '14px'                              | 圆角大小             |
+| --za-modal-box-shadow         | React.CSSProperties['boxShadow']    | '0 7px 21px var(--za-color-shadow)' | 阴影样式             |
+| --za-modal-title-font-size    | React.CSSProperties['fontSize']     | '17px'                              | 标题字体大小         |
+| --za-modal-title-font-weight  | React.CSSProperties['fontWeight']   | 500                                 | 标题字体粗细         |
+| --za-modal-title-text-color   | React.CSSProperties['color']        | 'var(--za-color-text)'              | 标题字体颜色         |
+| --za-modal-close-size         | React.CSSProperties['fontSize']     | '20px'                              | 关闭图标字体大小     |
+| --za-modal-close-color        | React.CSSProperties['color']        | '#ccc'                              | 关闭图标颜色         |
+| --za-modal-close-active-color | React.CSSProperties['color']        | '#999'                              | 关闭图标激活状态颜色 |
+| --za-modal-body-font-size     | React.CSSProperties['fontSize']     | '13px'                              | 内容字体大小         |
+| --za-modal-body-text-color    | React.CSSProperties['color']        | 'var(--za-color-text)'              | 内容字体颜色         |
+| --za-modal-body-padding       | React.CSSProperties['padding']      | '16px'                              | 内容内边距           |
+| --za-modal-button-height      | React.CSSProperties['height']       | '44px'                              | 操作按钮高度         |
+| --za-modal-button-font-size   | React.CSSProperties['fontSize']     | '17px'                              | 操作按钮字体大小     |
+| --za-modal-button-font-weight | React.CSSProperties['fontWeight']   | 500                                 | 操作按钮字体粗细     |
+| --za-modal-button-text-color  | React.CSSProperties['color']        | 'var(--za-theme-primary)'           | 操作按钮字体颜色     |

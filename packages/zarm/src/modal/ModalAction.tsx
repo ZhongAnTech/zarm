@@ -8,7 +8,7 @@ import type { HTMLProps } from '../utils/utilityTypes';
 
 export type ModalActionProps = BaseModalActionProps & HTMLProps;
 
-const ModalButton = React.forwardRef<HTMLDivElement, ModalActionProps>((props, ref) => {
+const ModalAction = React.forwardRef<HTMLDivElement, ModalActionProps>((props, ref) => {
   const { className, bold, theme, disabled, text, onClick, ...rest } = props;
   const [loading, setLoading] = useSafeState(false);
   const { prefixCls } = React.useContext(ConfigContext);
@@ -41,4 +41,4 @@ const ModalButton = React.forwardRef<HTMLDivElement, ModalActionProps>((props, r
   );
 });
 
-export default ModalButton;
+export default ModalAction;
