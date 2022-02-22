@@ -1,15 +1,12 @@
-@import '../../button/style/mixins';
-
 @include b(action-sheet) {
+  @include define(background, #fff);
   @include define(border-radius, 14px);
   @include define(spacing-margin, 8px);
-  @include define(item-background, rgba(249, 249, 249, 0.94));
-  @include define(item-active-background, var(--za-background-active));
   @include define(item-height, 56px);
-  @include define(item-color, var(--za-color-text));
   @include define(item-font-size, 20px);
-  @include define(cancel-background, #fff);
-  @include define(cancel-color, var(--za-theme-primary));
+  @include define(item-font-weight, 500);
+  @include define(item-text-color, var(--za-theme-primary));
+  @include define(cancel-text-color, var(--za-theme-primary));
   @include define(cancel-margin-top, 8px);
 
   @include m(safe) {
@@ -26,46 +23,52 @@
 
   @include e(actions, cancel) {
     overflow: hidden;
+    background: var(--background);
   }
 
   @include e(cancel) {
     margin-top: var(--cancel-margin-top);
 
     @include e(item) {
-      background-color: var(--cancel-background);
-      color: var(--cancel-color);
+      color: var(--cancel-text-color);
     }
   }
 
   @include e(item) {
-    display: block;
     position: relative;
+    display: block;
     height: var(--item-height);
     line-height: var(--item-height);
-    background-color: var(--item-background);
-    color: var(--item-color);
     font-size: var(--item-font-size);
+    color: var(--item-text-color);
     text-align: center;
 
     &:not(&--disabled):active {
-      background-color: var(--item-active-background);
+      background-color: var(--za-background-active);
     }
 
     &:not(:first-of-type) {
       @include onepx(top);
     }
 
-    @include m(primary) {
-      @include define(item-color, var(--za-theme-primary));
-    }
-
-    @include m(danger) {
-      @include define(item-color, var(--za-theme-danger));
+    @include m(bold) {
+      font-weight: var(--item-font-weight);
     }
 
     @include m(disabled) {
+      @include define(item-text-color, var(--za-color-text));
+
+      opacity: var(--za-opacity-disabled);
       cursor: not-allowed;
-      @include define(item-color, var(--za-color-text-disabled));
+      pointer-events: none;
+    }
+
+    @include m(default) {
+      @include define(item-text-color, var(--za-color-text));
+    }
+
+    @include m(danger) {
+      @include define(item-text-color, var(--za-theme-danger));
     }
   }
 }

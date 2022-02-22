@@ -12,7 +12,7 @@ const BUTTONS = [
     onClick: () => console.log('Clicked action 1'),
   },
   {
-    theme: 'primary',
+    theme: 'default',
     text: 'Action 2',
     onClick: () => console.log('Clicked action 2'),
   },
@@ -105,6 +105,63 @@ const Demo = () => {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
+## 异步操作
+
+```jsx
+import { useState, useRef } from 'react';
+import { ActionSheet, List, Button } from 'zarm';
+
+const BUTTONS = [
+  {
+    text: 'Action 1',
+  },
+  {
+    text: 'Action 2',
+  },
+  {
+    theme: 'danger',
+    text: 'Action 3',
+  },
+  {
+    disabled: true,
+    text: 'Disabled Action',
+  },
+];
+
+const Demo = () => {
+  const [visible, setVisible] = useState(false);
+
+  return (
+    <>
+      <List>
+        <List.Item
+          title="普通"
+          after={
+            <Button size="xs" onClick={() => setVisible(true)}>
+              开启
+            </Button>
+          }
+        />
+      </List>
+
+      <ActionSheet
+        visible={visible}
+        onMaskClick={() => setVisible(false)}
+        actions={BUTTONS}
+        onAction={async (action, index) => {
+          // 模拟异步操作
+          await new Promise((resolve) => setTimeout(resolve, 3000));
+          console.log(action);
+          setVisible(false);
+        }}
+      />
+    </>
+  );
+};
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
 ## 静态方法
 
 ```jsx
@@ -116,7 +173,7 @@ const BUTTONS = [
     onClick: () => console.log('Clicked action 1'),
   },
   {
-    theme: 'primary',
+    theme: 'default',
     text: 'Action 2',
     onClick: () => console.log('Clicked action 2'),
   },
@@ -166,18 +223,19 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性           | 类型                                 | 默认值        | 说明                               |
-| :------------- | :----------------------------------- | :------------ | :--------------------------------- |
-| visible        | boolean                              | false         | 是否显示                           |
-| spacing        | boolean                              | false         | 是否和外部有间距                   |
-| destroy        | boolean                              | true          | 弹层关闭后是否移除节点             |
-| actions        | Action[]                             | []            | 动作列表                           |
-| onMaskClick    | () => void                           | -             | 点击遮罩层时触发的回调函数         |
-| onCancel       | () => void                           | -             | 显示取消菜单，点击时触发的回调函数 |
-| cancelText     | string                               | '取消'        | 取消菜单的文案                     |
-| safeIphoneX    | boolean                              | false         | 是否适配 iphoneX 刘海屏            |
-| afterClose     | () => void                           | -             | ActionSheet 隐藏后的回调函数       |
-| mountContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 ActionSheet 挂载的 HTML 节点  |
+| 属性           | 类型                                                                       | 默认值        | 说明                               |
+| :------------- | :------------------------------------------------------------------------- | :------------ | :--------------------------------- |
+| visible        | boolean                                                                    | false         | 是否显示                           |
+| spacing        | boolean                                                                    | false         | 是否和外部有间距                   |
+| destroy        | boolean                                                                    | true          | 弹层关闭后是否移除节点             |
+| actions        | Action[]                                                                   | []            | 面板选项列表                       |
+| onMaskClick    | () => void                                                                 | -             | 点击遮罩层时触发的回调函数         |
+| onCancel       | () => void                                                                 | -             | 显示取消菜单，点击时触发的回调函数 |
+| onAction       | (action: ActionSheetActionProps, index: number) => void \| Promise\<void\> | -             | 点击面板选项后触发的函数           |
+| cancelText     | string                                                                     | '取消'        | 取消菜单的文案                     |
+| safeIphoneX    | boolean                                                                    | false         | 是否适配 iphoneX 刘海屏            |
+| afterClose     | () => void                                                                 | -             | ActionSheet 隐藏后的回调函数       |
+| mountContainer | HTMLElement &#124; () => HTMLElement                                       | document.body | 指定 ActionSheet 挂载的 HTML 节点  |
 
 ### Action 类型定义
 
@@ -191,15 +249,14 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## CSS 变量
 
-| 属性                                     | 类型                                | 默认值                        | 说明                 |
-| :--------------------------------------- | :---------------------------------- | :---------------------------- | :------------------- |
-| --za-action-sheet-border-radius          | React.CSSProperties['borderRadius'] | '14px'                        | 圆角大小             |
-| --za-action-sheet-spacing-margin         | React.CSSProperties['margin']       | '8px'                         | 边距                 |
-| --za-action-sheet-item-background        | React.CSSProperties['background']   | 'rgba(249, 249, 249, 0.94)'   | 选项背景色           |
-| --za-action-sheet-item-active-background | React.CSSProperties['background']   | 'var(--za-background-active)' | 选项激活状态下背景色 |
-| --za-action-sheet-item-height            | React.CSSProperties['height']       | '56px'                        | 选项高度             |
-| --za-action-sheet-item-color             | React.CSSProperties['color']        | 'var(--za-color-text)'        | 选项字体色           |
-| --za-action-sheet-item-font-size         | React.CSSProperties['fontSize']     | '20px'                        | 选项字体大小         |
-| --za-action-sheet-cancel-background      | React.CSSProperties['background']   | '#fff'                        | 取消选项背景色       |
-| --za-action-sheet-cancel-color           | React.CSSProperties['color']        | 'var(--za-theme-primary)'     | 取消选项字体大小     |
-| --za-action-sheet-cancel-margin-top      | React.CSSProperties['marginTop']    | '8px'                         | 取消选项上边距大小   |
+| 属性                                | 类型                                | 默认值                    | 说明               |
+| :---------------------------------- | :---------------------------------- | :------------------------ | :----------------- |
+| --za-action-sheet-background        | React.CSSProperties['background']   | '#fff'                    | 背景色             |
+| --za-action-sheet-border-radius     | React.CSSProperties['borderRadius'] | '14px'                    | 圆角大小           |
+| --za-action-sheet-spacing-margin    | React.CSSProperties['margin']       | '8px'                     | 边距               |
+| --za-action-sheet-item-height       | React.CSSProperties['height']       | '56px'                    | 选项高度           |
+| --za-action-sheet-item-font-size    | React.CSSProperties['fontSize']     | '20px'                    | 选项字体大小       |
+| --za-action-sheet-item-font-weight  | React.CSSProperties['fontWeight']   | 500                       | 选项字体粗细       |
+| --za-action-sheet-item-text-color   | React.CSSProperties['color']        | 'var(--za-theme-primary)' | 选项字体色         |
+| --za-action-sheet-cancel-text-color | React.CSSProperties['color']        | 'var(--za-theme-primary)' | 取消选项字体大小   |
+| --za-action-sheet-cancel-margin-top | React.CSSProperties['marginTop']    | '8px'                     | 取消选项上边距大小 |
