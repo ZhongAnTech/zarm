@@ -11,8 +11,7 @@ exports[`Radio defaultChecked 1`] = `
       class="za-radio__inner"
     >
       <i
-        class="za-icon za-radio__marker za-icon--default za-icon--md"
-        theme="default"
+        class="za-icon za-radio__marker"
       >
         <svg
           aria-hidden="true"
@@ -56,8 +55,7 @@ exports[`Radio renders correctly 1`] = `
       class="za-radio__inner"
     >
       <i
-        class="za-icon za-radio__marker za-icon--default za-icon--md"
-        theme="default"
+        class="za-icon za-radio__marker"
       >
         <svg
           aria-hidden="true"
@@ -118,8 +116,7 @@ exports[`Radio type is list 1`] = `
         class="za-radio__inner"
       >
         <i
-          class="za-icon za-radio__marker za-icon--default za-icon--md"
-          theme="default"
+          class="za-icon za-radio__marker"
         >
           <svg
             aria-hidden="true"
@@ -187,8 +184,7 @@ exports[`Radio.Group Radio checked 1`] = `
           class="za-radio__inner"
         >
           <i
-            class="za-icon za-radio__marker za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon za-radio__marker"
           >
             <svg
               aria-hidden="true"
@@ -228,8 +224,7 @@ exports[`Radio.Group Radio checked 1`] = `
           class="za-radio__inner"
         >
           <i
-            class="za-icon za-radio__marker za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon za-radio__marker"
           >
             <svg
               aria-hidden="true"
@@ -270,8 +265,7 @@ exports[`Radio.Group Radio checked 1`] = `
           class="za-radio__inner"
         >
           <i
-            class="za-icon za-radio__marker za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon za-radio__marker"
           >
             <svg
               aria-hidden="true"
@@ -322,8 +316,7 @@ exports[`Radio.Group defaultValue 1`] = `
           class="za-radio__inner"
         >
           <i
-            class="za-icon za-radio__marker za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon za-radio__marker"
           >
             <svg
               aria-hidden="true"
@@ -363,8 +356,7 @@ exports[`Radio.Group defaultValue 1`] = `
           class="za-radio__inner"
         >
           <i
-            class="za-icon za-radio__marker za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon za-radio__marker"
           >
             <svg
               aria-hidden="true"
@@ -405,8 +397,7 @@ exports[`Radio.Group defaultValue 1`] = `
           class="za-radio__inner"
         >
           <i
-            class="za-icon za-radio__marker za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon za-radio__marker"
           >
             <svg
               aria-hidden="true"
@@ -457,8 +448,7 @@ exports[`Radio.Group renders correctly 1`] = `
           class="za-radio__inner"
         >
           <i
-            class="za-icon za-radio__marker za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon za-radio__marker"
           >
             <svg
               aria-hidden="true"
@@ -499,8 +489,7 @@ exports[`Radio.Group renders correctly 1`] = `
           class="za-radio__inner"
         >
           <i
-            class="za-icon za-radio__marker za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon za-radio__marker"
           >
             <svg
               aria-hidden="true"
@@ -540,8 +529,7 @@ exports[`Radio.Group renders correctly 1`] = `
           class="za-radio__inner"
         >
           <i
-            class="za-icon za-radio__marker za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon za-radio__marker"
           >
             <svg
               aria-hidden="true"

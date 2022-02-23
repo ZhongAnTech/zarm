@@ -12,8 +12,7 @@ exports[`SearchBar snapshot renders correctly 1`] = `
       class="za-search-bar__content"
     >
       <i
-        class="za-icon za-search-bar__icon za-icon--default za-icon--sm"
-        theme="default"
+        class="za-icon za-icon--sm za-search-bar__icon"
       >
         <svg
           aria-hidden="true"
@@ -75,20 +74,17 @@ exports[`SearchBar snapshot renders defaultValue correctly 1`] = `
           <Icon
             className="za-search-bar__icon"
             component={[Function]}
-            prefixCls="za-icon"
+            prefixCls="za"
             size="sm"
-            theme="default"
-            viewBox="0 0 32 32"
+            viewBox="0 0 1000 1000"
           >
             <i
-              className="za-icon za-search-bar__icon za-icon--default za-icon--sm"
-              size="sm"
-              theme="default"
+              className="za-icon za-icon--sm za-search-bar__icon"
             >
               <component
                 fill="currentColor"
                 height="1em"
-                viewBox="0 0 32 32"
+                viewBox="0 0 1000 1000"
                 width="1em"
               >
                 <svg

@@ -41,12 +41,14 @@ describe('ActionSheet', () => {
 
 describe('UseActionSheet', () => {
   const container = document.createElement('div');
-  const ac = ActionSheet.useActionSheet();
   it('mount correctly', () => {
     act(() => {
-      ac.show({ actions: props.actions, mountContainer: container });
+      const { close } = ActionSheet.show({
+        actions: props.actions,
+        mountContainer: container,
+      });
       expect(container.childNodes.length).toBe(1);
-      ac.hide();
+      close();
     });
   });
 });

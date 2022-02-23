@@ -18,14 +18,14 @@ describe('Modal', () => {
   });
 
   it('onClose', () => {
-    const onCancel = jest.fn();
+    const onClose = jest.fn();
     const wrapper = mount(
-      <Modal visible title="标题" closable onCancel={onCancel}>
+      <Modal visible title="标题" closable onClose={onClose}>
         模态框内容
       </Modal>,
     );
-    wrapper.find('.za-modal__header__close').at(0).simulate('click');
-    expect(onCancel).toBeCalled();
+    wrapper.find('.za-modal__close').at(0).simulate('click');
+    expect(onClose).toBeCalled();
   });
 
   it('receive new visible', () => {

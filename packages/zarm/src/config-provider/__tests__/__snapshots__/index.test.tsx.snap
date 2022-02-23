@@ -2,13 +2,13 @@
 
 exports[`ConfigProvider snapshot renders correctly with en_US 1`] = `
 <div
-  class="za-alert za-alert--radius"
+  class="za-alert"
 />
 `;
 
 exports[`ConfigProvider snapshot renders correctly with zh_CN 1`] = `
 <div
-  class="za-alert za-alert--radius"
+  class="za-alert"
 />
 `;
 

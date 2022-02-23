@@ -49,7 +49,7 @@ exports[`ActivityIndicator renders correctly 1`] = `
     viewBox="0 0 62 62"
   >
     <circle
-      class="za-activity-indicator__path"
+      class="za-activity-indicator__stroke"
       cx="31"
       cy="31"
       fill="none"

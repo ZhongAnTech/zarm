@@ -93,7 +93,7 @@ exports[`ActionSheet renders correctly 1`] = `
                       class="za-action-sheet__cancel"
                     >
                       <div
-                        class="za-action-sheet__item"
+                        class="za-action-sheet__item za-action-sheet__item--bold"
                       >
                         取消
                       </div>
@@ -151,33 +151,49 @@ exports[`ActionSheet renders correctly 1`] = `
                 <div
                   className="za-action-sheet__actions"
                 >
-                  <div
-                    className="za-action-sheet__item"
+                  <ForwardRef
                     key="0"
-                    onClick={[MockFunction]}
+                    onClick={[Function]}
+                    text="操作一"
                   >
-                    操作一
-                  </div>
-                  <div
-                    className="za-action-sheet__item"
+                    <div
+                      className="za-action-sheet__item"
+                      onClick={[Function]}
+                    >
+                      操作一
+                    </div>
+                  </ForwardRef>
+                  <ForwardRef
                     key="1"
-                    onClick={[MockFunction]}
+                    onClick={[Function]}
+                    text="操作二"
                   >
-                    操作二
-                  </div>
-                  <div
-                    className="za-action-sheet__item za-action-sheet__item--danger"
+                    <div
+                      className="za-action-sheet__item"
+                      onClick={[Function]}
+                    >
+                      操作二
+                    </div>
+                  </ForwardRef>
+                  <ForwardRef
                     key="2"
-                    onClick={[MockFunction]}
+                    onClick={[Function]}
+                    text="操作三"
+                    theme="danger"
                   >
-                    操作三
-                  </div>
+                    <div
+                      className="za-action-sheet__item za-action-sheet__item--danger"
+                      onClick={[Function]}
+                    >
+                      操作三
+                    </div>
+                  </ForwardRef>
                 </div>
                 <div
                   className="za-action-sheet__cancel"
                 >
                   <div
-                    className="za-action-sheet__item"
+                    className="za-action-sheet__item za-action-sheet__item--bold"
                     onClick={[MockFunction]}
                   >
                     取消
