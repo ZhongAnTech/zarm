@@ -11,6 +11,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  @include icon-size(var(--za-icon-font-size-md));
 
   &[type=search] {
     -webkit-appearance: initial !important;
@@ -33,9 +34,6 @@
   /* icon sizes */
   @include m(sm) {
     @include icon-size(var(--za-icon-font-size-sm));
-  }
-  @include m(md) {
-    @include icon-size(var(--za-icon-font-size-md));
   }
   @include m(lg) {
     @include icon-size(var(--za-icon-font-size-lg));

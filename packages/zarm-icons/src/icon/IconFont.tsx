@@ -26,7 +26,7 @@ export default function createFromIconfont(scriptUrl: string): FunctionComponent
   }
 
   const Iconfont = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
-    const { type } = props;
+    const { type, ...rest } = props;
 
     let content: ReactNode;
     if (type) {
@@ -36,7 +36,7 @@ export default function createFromIconfont(scriptUrl: string): FunctionComponent
     // @ts-ignore
     const I = Icon.default ? Icon.default : Icon;
     return (
-      <I {...props} ref={ref}>
+      <I {...rest} ref={ref}>
         {content}
       </I>
     );
