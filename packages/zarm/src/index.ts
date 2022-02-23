@@ -1,4 +1,4 @@
-export type { ActionSheetProps, ActionSheetActionProps, ActionSheetCssVars } from './action-sheet';
+export type { ActionSheetProps, ActionSheetItemProps, ActionSheetCssVars } from './action-sheet';
 export { default as ActionSheet } from './action-sheet';
 
 export type { ActivityIndicatorProps, ActivityIndicatorCssVars } from './activity-indicator';
