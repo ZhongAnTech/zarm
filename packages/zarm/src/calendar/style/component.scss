@@ -6,6 +6,7 @@ $--calendar-day-width: 14.28571%;
 @include b(calendar) {
   background-color: var(--calendar-background);
   user-select: none;
+  position: relative;
 
   ul {
     list-style-type: disc;
@@ -16,6 +17,11 @@ $--calendar-day-width: 14.28571%;
     width: $--calendar-day-width;
     text-align: center;
     vertical-align: middle;
+  }
+
+  @include b(picker-view) {
+    position: absolute;
+    top: 44px;
   }
 
   @include e(bar) {
@@ -34,18 +40,73 @@ $--calendar-day-width: 14.28571%;
     }
   }
 
+  @include e(header) {
+    padding: var(--calendar-header-vertical-padding) var(--calendar-section-padding);
+    display: flex;
+
+    @include b(calendar__action-btn) {
+      display: flex;
+  
+      @include m(disabled) {
+        color: var(--color-text-disabled);
+      }
+    }
+  }
+
+  @include e(title) {
+    flex: 1;
+    align-items: center;
+    align-content: center;
+
+    @include m(animate) {
+      @include b(icon) {
+        transform: rotate(90deg);
+        transition: all 0.15s ease-in-out;
+      }
+    }
+  }
+
+  @include e(action) {
+    display: flex;
+
+    @include m(disabled) {
+      color: var(--color-text-disabled);
+    }
+  }
+
+  
+
   @include e(body) {
     padding: r(10) 0;
     overflow: auto;
   }
 
+  @include e(scroll-title) {
+    position: absolute;
+    top: 44px;
+    width: 100%;
+    text-align: center;
+    display: none;
+
+    @include m(animate) {
+      display: block;
+    }
+  }
+
   @include e(month) {
     padding: 0 var(--calendar-section-padding);
     color: var(--calendar-day-color);
+    flex-shrink: 0;
+    width: 100%;
 
     ul {
       margin: 0;
       padding: 0;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: stretch;
     }
 
     &:before {
@@ -83,8 +144,7 @@ $--calendar-day-width: 14.28571%;
           background-color: var(--calendar-day-today-background);
           color: var(--calendar-day-today-color);
         }
-      } 
-      
+      }
     }
 
     @include m(selected) {
@@ -99,9 +159,10 @@ $--calendar-day-width: 14.28571%;
 
     @include m(disabled) {
       cursor: auto;
-
-      @include e(day__content) {
-        color: var(--color-text-disabled);
+      @include b(calendar) {
+        @include e(day__content) {
+          color: var(--color-text-disabled);
+        }
       }
     }
 
@@ -113,7 +174,7 @@ $--calendar-day-width: 14.28571%;
         @include e(day__content) {
           background-color: var(--calendar-day-range-background);
         }
-      } 
+      }
 
       &.d6 {
         background-color: transparent;

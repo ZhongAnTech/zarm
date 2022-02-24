@@ -5,9 +5,10 @@ const parseState = (props: {
   max?: Date;
   value?: Date | Date[];
   defaultValue?: Date | Date[];
-  multiple: boolean;
+  selectMode: string;
+  swipeable: boolean;
 }) => {
-  const { defaultValue, multiple } = props;
+  const { defaultValue, selectMode, swipeable } = props;
   let { value } = props;
 
   let tmpValue!: Date[];
@@ -19,9 +20,12 @@ const parseState = (props: {
 
   // 注掉该逻辑，强制根据 multiple 控制节点个数，后面改进
   // tmpValue = value.map(item => DateTool.parseDay(item));
-  tmpValue = value.slice(0, multiple ? 2 : 1).map((item: Date) => DateTool.parseDay(item));
+  tmpValue = value.map((item: Date) => DateTool.parseDay(item));
   // 排序过滤
   tmpValue = tmpValue!.sort((item1: Date, item2: Date) => +item1 - +item2);
+  if (selectMode === 'range') {
+    tmpValue = [tmpValue[0], tmpValue[tmpValue.length - 1]];
+  }
   const min = props.min ? DateTool.parseDay(props.min) : new Date();
   const startMonth = DateTool.cloneDate(min, 'dd', 1);
   const max = props.max ? DateTool.parseDay(props.max) : DateTool.cloneDate(min, 'y', 1);
@@ -29,7 +33,10 @@ const parseState = (props: {
 
   // min、max 排序
   const duration = [min, max].sort((item1: Date, item2: Date) => +item1 - +item2);
-
+  let steps = selectMode === 'single' ? 1 : 2;
+  if (selectMode === 'multiple') {
+    steps = Number.MAX_VALUE;
+  }
   const tmp = {
     value: tmpValue,
     min: duration[0],
@@ -40,9 +47,10 @@ const parseState = (props: {
     refresh: false,
     // 注掉该逻辑，强制根据 multiple 控制节点个数，后面改进
     // steps:Math.max(tmp.value.length, tmp.defaultValue.length);
-    steps: multiple ? 2 : 1,
+    steps,
     // 初始化点击步数
-    multiple,
+    selectMode,
+    swipeable,
   };
 
   return tmp;

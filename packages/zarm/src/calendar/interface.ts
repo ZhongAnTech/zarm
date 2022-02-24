@@ -6,7 +6,8 @@ export interface BaseCalendarProps {
   defaultValue?: Date | Date[];
   min?: Date;
   max?: Date;
-  multiple: boolean;
+  selectMode: 'single' | 'multiple' | 'range';
+  swipeable: boolean;
   dateRender?: (value?: Date) => ReactNode;
   disabledDate?: (value?: Date) => boolean;
   onChange?: (value?: Date[]) => void;
@@ -18,6 +19,7 @@ export interface BaseCalendarMonthProps {
   min: Date;
   max: Date;
   dateMonth: Date;
+  selectMode: 'single' | 'multiple' | 'range';
   dateRender?: (value?: Date) => ReactNode;
   disabledDate?: (value?: Date) => boolean;
   onDateClick?: (value?: Date) => void;
