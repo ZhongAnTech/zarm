@@ -2,7 +2,6 @@ import * as React from 'react';
 import ActionSheet, { ActionSheetProps } from './ActionSheet';
 import renderToContainer from '../utils/renderToContainer';
 import { RuntimeConfigProvider } from '../n-config-provider/ConfigProvider';
-import type { ContainerType } from '../utils/dom';
 
 interface ActionSheetRef {
   close: () => void;
@@ -28,7 +27,6 @@ const showActionSheet = (props: Omit<ActionSheetProps, 'visible'>) => {
       <RuntimeConfigProvider>
         <ActionSheet
           {...props}
-          mountContainer={false}
           visible={visible}
           afterClose={() => {
             props.afterClose?.();
@@ -40,7 +38,7 @@ const showActionSheet = (props: Omit<ActionSheetProps, 'visible'>) => {
   });
 
   const ref = React.createRef<ActionSheetRef>();
-  unmount = renderToContainer(props.mountContainer as ContainerType, <Wrapper ref={ref} />);
+  unmount = renderToContainer(<Wrapper ref={ref} />, props.mountContainer);
 
   return {
     close: () => {

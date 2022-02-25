@@ -22,7 +22,6 @@ const show = (props: Omit<ImagePreviewProps, 'visible'>) => {
       <ImagePreview
         {...props}
         visible={visible}
-        mountContainer={false}
         onClose={() => {
           props.onClose?.();
           setVisible(false);
@@ -35,8 +34,7 @@ const show = (props: Omit<ImagePreviewProps, 'visible'>) => {
     );
   });
   const ref = React.createRef<Ref>();
-  const { mountContainer = false } = props;
-  unmount = renderToContainer(mountContainer, <Wrapper ref={ref} />);
+  unmount = renderToContainer(<Wrapper ref={ref} />, props.mountContainer);
   return {
     close: () => {
       ref.current?.close();
