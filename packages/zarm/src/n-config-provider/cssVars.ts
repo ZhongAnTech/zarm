@@ -5,6 +5,7 @@ import type { GridCssVars } from '../grid';
 import type { SliderCssVars } from '../slider';
 import type { SwitchCssVars } from '../switch';
 import type { ModalCssVars } from '../modal';
+import type { IconCssVars } from '../icon';
 
 export type CssVars = ActionSheetCssVars &
   ActivityIndicatorCssVars &
@@ -12,4 +13,5 @@ export type CssVars = ActionSheetCssVars &
   GridCssVars &
   SliderCssVars &
   SwitchCssVars &
-  ModalCssVars;
+  ModalCssVars &
+  IconCssVars;

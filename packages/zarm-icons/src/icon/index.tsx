@@ -3,11 +3,8 @@ import { createBEM } from '@zarm-design/bem';
 import { BaseIconProps } from './interface';
 import createFromIconfont from './IconFont';
 
-export type IconProps = BaseIconProps & {
-  prefixCls?: string;
-  className?: string;
-  style?: React.CSSProperties;
-};
+export type IconProps = BaseIconProps &
+  Pick<React.HTMLAttributes<HTMLElement>, 'onClick' | 'className' | 'style'>;
 
 interface CompoundedComponent
   extends React.ForwardRefExoticComponent<IconProps & React.RefAttributes<HTMLElement>> {

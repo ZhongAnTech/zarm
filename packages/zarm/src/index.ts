@@ -44,7 +44,7 @@ export { default as DateSelect } from './date-select';
 export type { FilePickerProps } from './file-picker';
 export { default as FilePicker } from './file-picker';
 
-export type { IconProps } from './icon';
+export type { IconProps, IconCssVars } from './icon';
 export { default as Icon } from './icon';
 
 export type { CustomInputProps } from './custom-input';

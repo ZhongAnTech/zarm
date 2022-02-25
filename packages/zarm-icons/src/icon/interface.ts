@@ -1,6 +1,7 @@
 import React from 'react';
 
 export interface BaseIconProps {
+  prefixCls?: string;
   type?: string;
   theme?: 'primary' | 'success' | 'warning' | 'danger';
   size?: 'sm' | 'lg';

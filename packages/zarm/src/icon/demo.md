@@ -189,7 +189,14 @@ ReactDOM.render(<Icon component={YourSvg} />, mountNode);
 | 属性      | 类型                                                           | 默认值      | 说明                                                              |
 | :-------- | :------------------------------------------------------------- | :---------- | :---------------------------------------------------------------- |
 | theme     | string                                                         | 'default'   | 主题，可选值 `default`、`primary`、`success`、`warning`、`danger` |
-| size      | string                                                         | 'md'        | 大小，可选值 `sm`、`md`、`lg`                                     |
-| type      | string                                                         | -           | 图标类型，可选值详见 demo 的基本用法                              |
+| size      | string                                                         | -           | 大小，可选值 `sm`、`lg`                                           |
+| type      | string                                                         | -           | 图标类型，可选项为来源 iconfont 的图标名称                        |
 | component | React.ComponentType&lt;React.SVGProps&lt;SVGSVGElement&gt;&gt; | -           | 本地 svg 文件，需配合 viewBox 使用                                |
 | viewBox   | string                                                         | '0 0 32 32' | 自定义 SVG 图标时，用来设置画布的起始坐标及大小                   |
+
+## CSS 变量
+
+| 属性                | 类型                            | 默认值                 | 说明     |
+| :------------------ | :------------------------------ | :--------------------- | :------- |
+| --za-icon-font-size | React.CSSProperties['fontSize'] | '24px'                 | 图标大小 |
+| --za-icon-color     | React.CSSProperties['color']    | 'var(--za-color-text)' | 图标颜色 |
