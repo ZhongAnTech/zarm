@@ -4,6 +4,8 @@
 
 - Break Change
 
+  - [BackTop]
+    - 新增属性 `mountContainer` ，用于设置组件挂载节点
   - [Input] 拆分使用到虚拟键盘的自定义输入框组件 `CustomInput`。触发的事件入参由 value 值改为 event，受影响的事件有 `onChange` `onFocus` `onBlur` `onFocus`。删除 `onClear` 事件，点击重置按钮请空值将触发 `onChange` 事件。
   - [SearchBar]
     - 输入框事件变更为与原生 `input` 保持一致，如 `onChange`、`onFocus`、`onBlur` 等。
@@ -37,6 +39,10 @@
     - 属性 `ghost` 变更为 `buttonGhost`。
     - 属性 `compact` 变更为 `buttonCompact`。
     - 新增属性 `listMarkerAlign` ，用于设置列表类型时标记的位置。
+
+  组件更名
+
+  - 返回顶部 `BackToTop` 组件更名为 `BackTop`
 
 ## v2.9.12
 

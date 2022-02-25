@@ -34,7 +34,7 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "BackToTop": [Function],
+        "BackTop": [Function],
         "Badge": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
