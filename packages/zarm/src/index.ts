@@ -168,3 +168,6 @@ export { default as useOrientation } from './useOrientation';
 
 export type { UseLongPressProps } from './useLongPress';
 export { default as useLongPress } from './useLongPress';
+
+export type { UseScrollProps } from './useScroll';
+export { default as useScroll } from './useScroll';
