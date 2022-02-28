@@ -1,9 +1,9 @@
 import React, { useState, useEffect, forwardRef, useRef, useCallback, CSSProperties } from 'react';
 import { createBEM } from '@zarm-design/bem';
+import throttle from 'lodash/throttle';
 import { ConfigContext } from '../n-config-provider';
 import { canUseDOM } from '../utils/dom';
 import Events from '../utils/events';
-import throttle from '../utils/throttle';
 import type { BaseAffixProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
 
