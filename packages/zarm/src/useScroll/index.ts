@@ -1,17 +1,17 @@
 import { RefObject, useEffect } from 'react';
-import throttle from '../utils/throttle';
+import throttle from 'lodash/throttle';
 import Events from '../utils/events';
 
 export interface UseScrollProps {
   container: RefObject<HTMLElement>;
-  onScroll?: Function;
+  onScroll?: (event: MouseEvent | TouchEvent) => void;
   wait?: number;
 }
 
 const useScroll = ({ container, onScroll, wait = 200 }: UseScrollProps) => {
   useEffect(() => {
-    const handler = throttle((e: MouseEvent | TouchEvent): void => {
-      typeof onScroll === 'function' && onScroll(e);
+    const handler = throttle((event): void => {
+      typeof onScroll === 'function' && onScroll(event);
     }, wait);
 
     if (container.current) {
