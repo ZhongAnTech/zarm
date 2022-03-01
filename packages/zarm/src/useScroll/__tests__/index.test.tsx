@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, MouseEvent, TouchEvent } from 'react';
 import { fireEvent, render, waitFor } from '@testing-library/react';
 import useScroll from '..';
 
@@ -9,7 +9,7 @@ function TestComponent() {
 
   useScroll({
     container,
-    onScroll: (e: Event) => {
+    onScroll: (e: MouseEvent | TouchEvent) => {
       setScrollTop((e.target as HTMLElement).scrollTop);
     },
   });
