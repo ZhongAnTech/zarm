@@ -1,4 +1,4 @@
-import { RefObject, useEffect } from 'react';
+import { RefObject, useEffect, MouseEvent, TouchEvent } from 'react';
 import throttle from 'lodash/throttle';
 import Events from '../utils/events';
 

@@ -364,6 +364,13 @@ module.exports = {
     ],
     hooks: [
       {
+        key: 'useClickaway',
+        name: '元素外事件监听',
+        module: () => import('zarm/useClickaway/demo.md'),
+        source: 'zarm/useClickaway/demo.md',
+        style: false,
+      },
+      {
         key: 'useDrag',
         name: '拖拽',
         module: () => import('zarm/useDrag/demo.md'),

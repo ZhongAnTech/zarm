@@ -450,9 +450,11 @@ describe('index', () => {
         "Trigger": [Function],
         "WaterMark": [Function],
         "Wheel": [Function],
+        "useClickAway": [Function],
         "useDrag": [Function],
         "useLongPress": [Function],
         "useOrientation": [Function],
+        "useScroll": [Function],
       }
     `);
   });

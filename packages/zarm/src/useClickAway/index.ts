@@ -29,13 +29,10 @@ export function getTargetElement(
   return targetElement;
 }
 
-// 鼠标点击事件，click 不会监听右键
-const defaultEvent = 'click';
-
 export default function useClickAway(
-  onClickAway?: (event: MouseEvent | TouchEvent) => void,
-  target?: BasicTarget | BasicTarget[],
-  eventName: string = defaultEvent,
+  target: BasicTarget | BasicTarget[],
+  onClickAway?: (event: React.MouseEvent | React.TouchEvent) => void,
+  eventName = 'click',
 ) {
   const onClickAwayRef = useRef(onClickAway);
 

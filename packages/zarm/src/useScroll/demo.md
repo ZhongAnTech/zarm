@@ -44,8 +44,8 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性      | 类型                                      | 默认值 | 说明                 |
-| :-------- | :---------------------------------------- | :----- | :------------------- |
-| container | RefObject                                 | -      | 设置监听的滚动容器   |
-| onScroll  | (event: MouseEvent \| TouchEvent) => void | -      | 滚动时触发的回调函数 |
-| wait      | number                                    | 200    | 需要节流的毫秒数     |
+| 属性      | 类型                                                  | 默认值 | 说明                 |
+| :-------- | :---------------------------------------------------- | :----- | :------------------- |
+| container | RefObject                                             | -      | 设置监听的滚动容器   |
+| onScroll  | (event: React.MouseEvent \| React.TouchEvent) => void | -      | 滚动时触发的回调函数 |
+| wait      | number                                                | 200    | 需要节流的毫秒数     |

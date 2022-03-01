@@ -160,6 +160,8 @@ export { default as StackPicker } from './stack-picker';
 
 export type { DragProps } from './drag';
 export { default as Drag } from './drag';
+
+// hooks
 export type { UseDragProps, DragEvent, DragState } from './useDrag';
 export { default as useDrag } from './useDrag';
 
@@ -171,3 +173,5 @@ export { default as useLongPress } from './useLongPress';
 
 export type { UseScrollProps } from './useScroll';
 export { default as useScroll } from './useScroll';
+
+export { default as useClickAway } from './useClickAway';
