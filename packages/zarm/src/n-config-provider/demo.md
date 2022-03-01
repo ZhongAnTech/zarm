@@ -98,7 +98,7 @@ const Demo = () => {
                     ? null
                     : {
                         '--za-button-primary-color': '#ff0000',
-                        '--za-rate-color': '#ffd21e',
+                        '--za-rate-active-color': '#fa541b',
                       },
                 );
               }}

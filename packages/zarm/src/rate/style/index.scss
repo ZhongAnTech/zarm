@@ -1,38 +1,53 @@
 @import '../../style/core/index';
 
 @include b(rate) {
+  @include define(size, 20px);
+  @include define(color, #eee);
+  @include define(active-color, #fadb14);
+  @include define(gap, 4px);
+
   display: inline-flex;
-  cursor: pointer;
   user-select: none;
   flex-wrap: wrap;
+  cursor: pointer;
 
   @include e(item) {
     line-height: 1;
     position: relative;
+    color: var(--color);
+    font-size: var(--size);
 
     &:not(:last-child) {
-      margin-right: var(--za-rate-gap);
+      margin-right: var(--gap);
     }
-  }
 
-  @include e(character) {
-    color: var(--za-rate-unchecked-color);
-    font-size: var(--za-rate-size);
     @include b(icon) {
-      color: var(--za-rate-unchecked-color);
-      font-size: var(--za-rate-size);
+      color: var(--color);
+      font-size: var(--size);
     }
 
     @include m(active) {
-      color: var(--za-rate-color);
+      color: var(--active-color);
 
       @include b(icon) {
-        color: var(--za-rate-color);
+        color: var(--active-color);
+      }
+    }
+
+    @include m(half) {
+      @include b(rate) {
+        @include e(character__half) {
+          color: var(--active-color);
+
+          @include b(icon) {
+            color: var(--active-color);
+          }
+        }
       }
     }
   }
 
-  @include e(character-half) {
+  @include e(character__half) {
     width: 50%;
     height: 100%;
     position: absolute;
@@ -43,10 +58,5 @@
 
   @include m(readonly) {
     cursor: default;
-  }
-
-  @include m(disabled) {
-    cursor: not-allowed;
-    pointer-events: none;
   }
 }

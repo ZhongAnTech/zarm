@@ -349,7 +349,17 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "Rate": [Function],
+        "Rate": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "allowClear": false,
+            "allowHalf": false,
+            "character": <ForwardRef(SvgStarFill) />,
+            "count": 5,
+            "defaultValue": 0,
+          },
+          "render": [Function],
+        },
         "Scroller": [Function],
         "SearchBar": Object {
           "$$typeof": Symbol(react.forward_ref),

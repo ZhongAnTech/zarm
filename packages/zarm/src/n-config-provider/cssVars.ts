@@ -6,6 +6,7 @@ import type { SliderCssVars } from '../slider';
 import type { SwitchCssVars } from '../switch';
 import type { ModalCssVars } from '../modal';
 import type { IconCssVars } from '../icon';
+import type { RateCssVars } from '../rate';
 
 export type CssVars = ActionSheetCssVars &
   ActivityIndicatorCssVars &
@@ -14,4 +15,5 @@ export type CssVars = ActionSheetCssVars &
   SliderCssVars &
   SwitchCssVars &
   ModalCssVars &
-  IconCssVars;
+  IconCssVars &
+  RateCssVars;
