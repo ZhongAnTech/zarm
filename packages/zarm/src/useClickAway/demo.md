@@ -1,4 +1,4 @@
-# useClickAway 元素外事件监听
+# useClickAway 单击外部跟踪器
 
 ## 基本用法
 

@@ -365,7 +365,7 @@ module.exports = {
     hooks: [
       {
         key: 'useClickaway',
-        name: '元素外事件监听',
+        name: '单击外部跟踪器',
         module: () => import('zarm/useClickaway/demo.md'),
         source: 'zarm/useClickaway/demo.md',
         style: false,
