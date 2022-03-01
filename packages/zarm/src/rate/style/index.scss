@@ -19,11 +19,16 @@
     color: var(--za-rate-unchecked-color);
     font-size: var(--za-rate-size);
     @include b(icon) {
+      color: var(--za-rate-unchecked-color);
       font-size: var(--za-rate-size);
     }
 
     @include m(active) {
       color: var(--za-rate-color);
+
+      @include b(icon) {
+        color: var(--za-rate-color);
+      }
     }
   }
 
