@@ -364,10 +364,10 @@ module.exports = {
     ],
     hooks: [
       {
-        key: 'useClickaway',
+        key: 'useClickAway',
         name: '单击外部跟踪器',
-        module: () => import('zarm/useClickaway/demo.md'),
-        source: 'zarm/useClickaway/demo.md',
+        module: () => import('zarm/useClickAway/demo.md'),
+        source: 'zarm/useClickAway/demo.md',
         style: false,
       },
       {
