@@ -11,6 +11,7 @@ export interface UseScrollProps {
 const useScroll = ({ container, onScroll, wait = 200 }: UseScrollProps) => {
   useEffect(() => {
     const handler = throttle((event): void => {
+      // console.log(`[${Date.now()}] handler`);
       typeof onScroll === 'function' && onScroll(event);
     }, wait);
 

@@ -453,6 +453,7 @@ describe('index', () => {
         "useDrag": [Function],
         "useLongPress": [Function],
         "useOrientation": [Function],
+        "useScroll": [Function],
       }
     `);
   });
