@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Modal renders correctly 1`] = `
-<Modal
+<ForwardRef
+  actions={Array []}
   animationDuration={200}
   animationType="fade"
   closable={true}
@@ -25,6 +26,7 @@ exports[`Modal renders correctly 1`] = `
     lockScroll={true}
     mask={true}
     maskType="normal"
+    onCancel={[MockFunction]}
     onMaskClick={[Function]}
     visible={true}
     width="70%"
@@ -37,6 +39,7 @@ exports[`Modal renders correctly 1`] = `
       handlePortalUnmount={[Function]}
       mask={true}
       maskType="normal"
+      onCancel={[MockFunction]}
       onMaskClick={[Function]}
       prefixCls="za-popup"
       visible={true}
@@ -72,16 +75,15 @@ exports[`Modal renders correctly 1`] = `
                     class="za-modal__dialog"
                   >
                     <div
-                      class="za-modal__header"
+                      class="za-modal__body"
                     >
                       <div
-                        class="za-modal__header__title"
+                        class="za-modal__title"
                       >
                         标题
                       </div>
                       <i
-                        class="za-icon za-modal__header__close za-icon--default za-icon--sm"
-                        theme="default"
+                        class="za-icon za-icon--sm za-modal__close"
                       >
                         <svg
                           aria-hidden="true"
@@ -97,10 +99,6 @@ exports[`Modal renders correctly 1`] = `
                           />
                         </svg>
                       </i>
-                    </div>
-                    <div
-                      class="za-modal__body"
-                    >
                       foo
                     </div>
                   </div>
@@ -158,37 +156,31 @@ exports[`Modal renders correctly 1`] = `
                 className="za-modal__dialog"
               >
                 <div
-                  className="za-modal__header"
+                  className="za-modal__body"
                 >
                   <div
-                    className="za-modal__header__title"
+                    className="za-modal__title"
                   >
                     标题
                   </div>
                   <ForwardRef(SvgClose)
-                    className="za-modal__header__close"
-                    onClick={[MockFunction]}
+                    className="za-modal__close"
                     size="sm"
                   >
                     <Icon
-                      className="za-modal__header__close"
+                      className="za-modal__close"
                       component={[Function]}
-                      onClick={[MockFunction]}
-                      prefixCls="za-icon"
+                      prefixCls="za"
                       size="sm"
-                      theme="default"
-                      viewBox="0 0 32 32"
+                      viewBox="0 0 1000 1000"
                     >
                       <i
-                        className="za-icon za-modal__header__close za-icon--default za-icon--sm"
-                        onClick={[MockFunction]}
-                        size="sm"
-                        theme="default"
+                        className="za-icon za-icon--sm za-modal__close"
                       >
                         <component
                           fill="currentColor"
                           height="1em"
-                          viewBox="0 0 32 32"
+                          viewBox="0 0 1000 1000"
                           width="1em"
                         >
                           <svg
@@ -208,10 +200,6 @@ exports[`Modal renders correctly 1`] = `
                       </i>
                     </Icon>
                   </ForwardRef(SvgClose)>
-                </div>
-                <div
-                  className="za-modal__body"
-                >
                   foo
                 </div>
               </div>
@@ -221,5 +209,5 @@ exports[`Modal renders correctly 1`] = `
       </Trigger>
     </Portal>
   </Popup>
-</Modal>
+</ForwardRef>
 `;

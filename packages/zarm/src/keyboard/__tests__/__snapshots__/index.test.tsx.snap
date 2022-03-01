@@ -64,8 +64,7 @@ exports[`Keyboard snapshot renders correctly 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon--default za-icon--lg"
-        theme="default"
+        class="za-icon za-icon--lg"
       >
         <svg
           aria-hidden="true"
@@ -90,8 +89,7 @@ exports[`Keyboard snapshot renders correctly 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon--default za-icon--lg"
-        theme="default"
+        class="za-icon za-icon--lg"
       >
         <svg
           aria-hidden="true"
@@ -183,8 +181,7 @@ exports[`Keyboard snapshot type is idcard 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon--default za-icon--lg"
-        theme="default"
+        class="za-icon za-icon--lg"
       >
         <svg
           aria-hidden="true"
@@ -209,8 +206,7 @@ exports[`Keyboard snapshot type is idcard 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon--default za-icon--lg"
-        theme="default"
+        class="za-icon za-icon--lg"
       >
         <svg
           aria-hidden="true"
@@ -302,8 +298,7 @@ exports[`Keyboard snapshot type is price 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon--default za-icon--lg"
-        theme="default"
+        class="za-icon za-icon--lg"
       >
         <svg
           aria-hidden="true"
@@ -328,8 +323,7 @@ exports[`Keyboard snapshot type is price 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon--default za-icon--lg"
-        theme="default"
+        class="za-icon za-icon--lg"
       >
         <svg
           aria-hidden="true"

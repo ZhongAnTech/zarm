@@ -1,36 +1,7 @@
-@mixin defineColorHSL($color, $hue, $saturation, $lightness) {
-  #{$color}: unquote("hsl(#{$hue}, #{$saturation}, #{$lightness})");
-  #{$color}-h: #{$hue};
-  #{$color}-s: #{$saturation};
-  #{$color}-l: #{$lightness};
-  #{$color}-light: unquote("hsl(#{$hue}, #{$saturation}, #{$lightness + 4})");
-  #{$color}-light-h: #{$hue};
-  #{$color}-light-s: #{$saturation};
-  #{$color}-light-l: #{$lightness + 4};
-  #{$color}-lighter: unquote("hsl(#{$hue}, #{$saturation}, 95%)");
-  #{$color}-lighter-h: #{$hue};
-  #{$color}-lighter-s: #{$saturation};
-  #{$color}-lighter-l: 95%;
-  #{$color}-dark: unquote("hsl(#{$hue}, #{$saturation}, #{$lightness - 4})");
-  #{$color}-dark-h: #{$hue};
-  #{$color}-dark-s: #{$saturation};
-  #{$color}-dark-l: #{$lightness - 4};
-  #{$color}-darker: unquote("hsl(#{$hue}, #{$saturation}, 20%)");
-  #{$color}-darker-h: #{$hue};
-  #{$color}-darker-s: #{$saturation};
-  #{$color}-darker-l: 20%;
-}
-
 :root {
-  @include defineColorHSL(--theme-default, 0, 0%, 90%);
-  @include defineColorHSL(--theme-primary, 156, 100%, 36.9%);
-  @include defineColorHSL(--theme-success, 156, 100%, 36.9%);
-  @include defineColorHSL(--theme-warning, 31, 83.1%, 55.9%);
-  @include defineColorHSL(--theme-danger, 0, 100%, 65.7%);
-
-  // Icon
-  --za-icon-font-size-sm: 16px;
-  --za-icon-font-size-md: 24px;
-  --za-icon-font-size-lg: 32px;
-  --za-icon-theme-default: var(--color-text);
+  --za-theme-default: hsl(0, 0%, 90%);
+  --za-theme-primary: hsl(156, 100%, 36.9%);
+  --za-theme-success: hsl(156, 100%, 36.9%);
+  --za-theme-warning: hsl(31, 83.1%, 55.9%);
+  --za-theme-danger: hsl(0, 100%, 65.7%);
 }

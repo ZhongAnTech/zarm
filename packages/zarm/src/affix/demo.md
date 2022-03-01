@@ -1,4 +1,4 @@
-# Affix 组件名
+# Affix 固钉
 
 ## 基本用法
 
@@ -72,3 +72,9 @@ ReactDOM.render(<Demo />, mountNode);
 | offsetBottom    | number                                       | -      | 距离窗口底部达到指定偏移量后触发                                       |
 | scrollContainer | HTMLElement \| (() => HTMLElement) \| Window | window | 设置 `Affix` 需要监听其滚动事件的元素，值为一个返回对应 DOM 元素的函数 |
 | onChange        | (affixed: boolean) => void                   | -      | 固定状态改变时触发的回调函数                                           |
+
+## CSS 变量
+
+| 属性              | 类型                          | 默认值 | 说明     |
+| :---------------- | :---------------------------- | :----- | :------- |
+| --za-affix-zindex | React.CSSProperties['zIndex'] | 10     | 固钉层级 |

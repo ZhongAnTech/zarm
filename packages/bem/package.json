@@ -32,7 +32,8 @@
     "build:types": "rimraf types && tsc --outDir types -d --emitDeclarationOnly",
     "build:es": "rimraf es && zarm build --mode es --path src --out-dir es --copy-files",
     "build:lib": "rimraf lib && zarm build --mode lib --path src --out-dir lib --copy-files",
-    "build": "yarn build:types && yarn build:lib && yarn build:es"
+    "build": "yarn build:types && yarn build:lib && yarn build:es",
+    "test": "jest --passWithNoTests"
   },
   "devDependencies": {
     "@zarm-design/cli": "^0.0.39"

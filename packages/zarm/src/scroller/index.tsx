@@ -1,6 +1,6 @@
 import { PureComponent } from 'react';
+import throttle from 'lodash/throttle';
 import Events from '../utils/events';
-import throttle from '../utils/throttle';
 import { canUseDOM, getScrollContainer, getScrollTop } from '../utils/dom';
 import type { ContainerType } from '../utils/dom';
 

@@ -2,17 +2,18 @@ import * as React from 'react';
 import type { ContainerType } from '../utils/dom';
 import type { Locale } from '../n-config-provider/interface';
 
-export interface BaseActionSheetActionProps {
+export interface BaseActionSheetItemProps {
+  key?: string | number;
   text?: React.ReactNode;
   theme?: 'default' | 'primary' | 'danger';
-  onClick?: () => void;
   disabled: boolean;
+  onClick?: () => void;
+  bold?: boolean;
 }
 
 export interface BaseActionSheetProps {
   visible?: boolean;
   spacing?: boolean;
-  actions?: BaseActionSheetActionProps[];
   cancelText?: string;
   onMaskClick?: () => void;
   onCancel?: () => void;

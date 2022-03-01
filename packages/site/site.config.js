@@ -391,6 +391,13 @@ module.exports = {
         source: 'zarm/useOrientation/demo.md',
         style: false,
       },
+      {
+        key: 'useScroll',
+        name: '滚动',
+        module: () => import('zarm/useScroll/demo.md'),
+        source: 'zarm/useScroll/demo.md',
+        style: false,
+      },
     ],
     other: [
       // {
