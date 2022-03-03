@@ -56,7 +56,7 @@ export { default as Grid } from './grid';
 export type { InputProps, InputTextProps, InputTextareaProps } from './input';
 export { default as Input } from './input';
 
-export type { KeyboardProps } from './keyboard';
+export type { KeyboardProps, KeyboardCssVars } from './keyboard';
 export { default as Keyboard } from './keyboard';
 
 export type { KeyboardPickerProps } from './keyboard-picker';
