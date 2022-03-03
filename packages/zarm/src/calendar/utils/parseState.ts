@@ -5,10 +5,10 @@ const parseState = (props: {
   max?: Date;
   value?: Date | Date[];
   defaultValue?: Date | Date[];
-  selectMode: string;
-  swipeable: boolean;
+  mode: string;
+  direction: string;
 }) => {
-  const { defaultValue, selectMode, swipeable } = props;
+  const { defaultValue, mode, direction } = props;
   let { value } = props;
 
   let tmpValue!: Date[];
@@ -23,7 +23,7 @@ const parseState = (props: {
   tmpValue = value.map((item: Date) => DateTool.parseDay(item));
   // 排序过滤
   tmpValue = tmpValue!.sort((item1: Date, item2: Date) => +item1 - +item2);
-  if (selectMode === 'range') {
+  if (mode === 'range') {
     tmpValue = [tmpValue[0], tmpValue[tmpValue.length - 1]];
   }
   const min = props.min ? DateTool.parseDay(props.min) : new Date();
@@ -33,8 +33,8 @@ const parseState = (props: {
 
   // min、max 排序
   const duration = [min, max].sort((item1: Date, item2: Date) => +item1 - +item2);
-  let steps = selectMode === 'single' ? 1 : 2;
-  if (selectMode === 'multiple') {
+  let steps = mode === 'single' ? 1 : 2;
+  if (mode === 'multiple') {
     steps = Number.MAX_VALUE;
   }
   const tmp = {
@@ -49,8 +49,8 @@ const parseState = (props: {
     // steps:Math.max(tmp.value.length, tmp.defaultValue.length);
     steps,
     // 初始化点击步数
-    selectMode,
-    swipeable,
+    mode,
+    direction,
   };
 
   return tmp;

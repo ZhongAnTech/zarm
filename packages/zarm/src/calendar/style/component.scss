@@ -83,13 +83,26 @@ $--calendar-day-width: 14.28571%;
 
   @include e(scroll-title) {
     position: absolute;
-    top: 44px;
+    top: var(--calendar-day-height);
     width: 100%;
     text-align: center;
     display: none;
+    transition: opacity 300ms ease-in-out;
+    background-color: var(--calendar-scroll-title-background);
+    height: var(--calendar-day-height);
+    line-height: var(--calendar-day-height);
 
-    @include m(animate) {
+    @include m(entering) {
       display: block;
+      opacity: 1;
+    }
+    @include m(entered) {
+      display: block;
+      opacity: 1;
+    }
+    @include m(exiting) {
+      display: block;
+      opacity: 0;
     }
   }
 

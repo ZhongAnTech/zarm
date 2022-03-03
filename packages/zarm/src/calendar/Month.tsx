@@ -8,7 +8,17 @@ import { BaseCalendarMonthProps } from './interface';
 export type CalendarMonthProps = BaseCalendarMonthProps & React.HTMLAttributes<HTMLElement>;
 
 const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
-  const { dateRender, min, max, disabledDate, onDateClick, dateMonth, value, selectMode } = props;
+  const {
+    dateRender,
+    min,
+    max,
+    disabledDate,
+    onDateClick,
+    dateMonth,
+    value,
+    mode,
+    weekStartsOn,
+  } = props;
 
   const { prefixCls: globalPrefixCls, locale: globalLocal } = useContext(ConfigContext);
 
@@ -26,19 +36,14 @@ const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
     const res = {
       disabled: disabled || (disabledDate && disabledDate(date)),
       isSelected:
-        selectMode !== 'single'
+        mode !== 'single'
           ? value.some((item) => DateTool.isOneDay(date, item))
           : DateTool.isOneDay(date, value[0]),
       isRange:
-        value.length > 1 &&
-        date > value[0] &&
-        date < value[value.length - 1] &&
-        selectMode === 'range',
-      rangeStart: value.length > 1 && DateTool.isOneDay(date, value[0]) && selectMode === 'range',
+        value.length > 1 && date > value[0] && date < value[value.length - 1] && mode === 'range',
+      rangeStart: value.length > 1 && DateTool.isOneDay(date, value[0]) && mode === 'range',
       rangeEnd:
-        value.length > 1 &&
-        DateTool.isOneDay(date, value[value.length - 1]) &&
-        selectMode === 'range',
+        value.length > 1 && DateTool.isOneDay(date, value[value.length - 1]) && mode === 'range',
     };
 
     lastIn.current = lastIn.current || res.isSelected || res.isRange;
@@ -95,7 +100,7 @@ const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
     const data = DateTool.getCurrMonthInfo(year, month);
     const { firstDay, dayCount } = data;
     return Array.from({ length: dayCount }).map((_item, i) =>
-      renderDay(i + 1, year, month, firstDay),
+      renderDay(i + 1, year, month, weekStartsOn === 'Sunday' ? firstDay : firstDay - 1),
     );
   };
 

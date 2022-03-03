@@ -10,6 +10,7 @@ export const themes = {
   '--opacity-mask': '0.7',
   '--calendar-background': 'transparent',
   '--calendar-week-bar-background': '#303030',
+  '--calendar-scroll-title-background': 'rgba(0, 0, 0, .5)',
   '--picker-background': '#000',
   '--picker-header-background': '#1b1c1e',
   '--picker-mask-background-start': 'rgba(0, 0, 0, 0.4)',

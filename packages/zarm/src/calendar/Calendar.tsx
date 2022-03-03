@@ -1,6 +1,7 @@
 import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { ArrowLeft, ArrowRight } from '@zarm-design/icons';
+import { Transition } from 'react-transition-group';
 import { BaseCalendarProps } from './interface';
 import { ConfigContext } from '../n-config-provider';
 import CalendarMonthView from './Month';
@@ -28,7 +29,7 @@ export interface CalendarStates {
   // 初始化点击步数
   // step 是为了扩展的，以后如果是三选，四选之类的，用这个，step 标注每次事件是第几次选择 via zouhuan
   step: number;
-  selectMode: string;
+  mode: string;
 }
 
 const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) => {
@@ -37,10 +38,11 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
     dateRender,
     disabledDate,
     onChange,
-    selectMode,
+    mode,
     max: maxDate,
     min: minDate,
-    swipeable,
+    direction,
+    weekStartsOn,
   } = props;
 
   const container = (ref as any) || React.createRef<HTMLDivElement>();
@@ -70,18 +72,23 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
     }
   };
 
-  const renderWeekBar = () => {
-    const content = locale!.weeks.map((week) => (
+  const renderWeekBar = useCallback(() => {
+    const weeks = [...locale!.weeks];
+    if (weekStartsOn === 'Monday') {
+      const item = weeks.shift();
+      weeks.push(item);
+    }
+    const content = weeks.map((week) => (
       <li key={week} className={bem('bar__item')}>
         {week}
       </li>
     ));
     return <ul className={bem('bar')}>{content}</ul>;
-  };
+  }, [weekStartsOn, locale!.weeks]);
 
   const handleDateClick = (date: Date) => {
     const { step, steps, value } = state;
-    if (selectMode !== 'multiple') {
+    if (mode !== 'multiple') {
       if (step === 1) {
         value.splice(0, value.length);
       }
@@ -92,7 +99,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
     value.sort((item1: Date, item2: Date) => +item1 - +item2);
     setState((prevState) => ({ ...prevState, value, step: step >= steps ? 1 : step + 1 }));
 
-    if (step >= steps || selectMode === 'multiple') {
+    if (step >= steps || mode === 'multiple') {
       typeof onChange === 'function' && onChange(value);
     }
   };
@@ -105,9 +112,10 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
         key={key}
         min={min}
         max={max}
-        selectMode={selectMode}
+        mode={mode}
         value={value}
         dateMonth={dateMonth}
+        weekStartsOn={weekStartsOn}
         dateRender={dateRender}
         disabledDate={disabledDate}
         onDateClick={handleDateClick}
@@ -126,7 +134,9 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
     return (
       <div className={bem('body')} ref={scrollBodyRef}>
         {content}
-        <div className={bem('scroll-title', [{ animate: scrolling }])}>{scrollDate}</div>
+        <Transition in={scrolling} timeout={500}>
+          {(state) => <div className={bem('scroll-title', [{ [state]: true }])}>{scrollDate}</div>}
+        </Transition>
       </div>
     );
   };
@@ -297,7 +307,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
   }, [nodes]);
 
   useEffect(() => {
-    if (!swipeable) {
+    if (direction !== 'horizontal') {
       setTimeout(() => {
         let timer;
         const onScroll = () => {
@@ -316,31 +326,32 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
         };
       });
     }
-  }, [swipeable]);
+  }, [direction]);
 
   useEffect(() => {
     setState({
       ...parseState(props),
       step: 1,
     });
-  }, [selectMode, maxDate, minDate, swipeable]);
+  }, [mode, maxDate, minDate, direction]);
 
   return (
     <div className={cls} ref={container}>
-      {swipeable ? renderActionBar() : null}
+      {direction === 'horizontal' ? renderActionBar() : null}
       {renderWeekBar()}
-      {swipeable ? renderSwipeMonths() : renderMonths()}
-      {swipeable ? renderDatePicker() : null}
+      {direction === 'horizontal' ? renderSwipeMonths() : renderMonths()}
+      {direction === 'horizontal' ? renderDatePicker() : null}
     </div>
   );
 });
 
 Calendar.defaultProps = {
-  selectMode: 'single',
+  mode: 'single',
   min: new Date(),
   dateRender: (date: Date) => date.getDate(),
   disabledDate: () => false,
-  swipeable: false,
+  direction: 'vertical',
+  weekStartsOn: 'Sunday',
 };
 
 export default Calendar;
