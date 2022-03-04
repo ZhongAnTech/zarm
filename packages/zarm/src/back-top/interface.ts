@@ -5,5 +5,5 @@ export interface BaseBackTopProps {
   visibleDistance?: number;
   scrollContainer?: ContainerType;
   mountContainer?: ContainerType;
-  className?: string;
+  destroy?: boolean;
 }

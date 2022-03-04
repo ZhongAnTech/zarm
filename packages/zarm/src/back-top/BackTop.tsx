@@ -1,8 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import classnames from 'classnames';
+import { useScroll } from '@use-gesture/react';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseBackTopProps } from './interface';
+import { HTMLProps } from '../utils/utilityTypes';
 import {
   canUseDOM,
   getMountContainer,
@@ -11,13 +13,17 @@ import {
   scrollTo,
 } from '../utils/dom';
 
-export interface BackTopProps extends BaseBackTopProps {
-  style?: React.CSSProperties;
-  onClick?: (event?: React.MouseEvent<HTMLElement>) => void;
+export interface BackTopCssVars {
+  '--right'?: React.CSSProperties['right'];
+  '--bottom'?: React.CSSProperties['bottom'];
+}
+
+export interface BackTopProps extends BaseBackTopProps, HTMLProps<BackTopCssVars> {
+  onClick?: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
 const BackTop: React.FC<BackTopProps> = (props) => {
-  const { className, style, visibleDistance, onClick, children } = props;
+  const { className, style, visibleDistance, destroy, onClick, children } = props;
   const [visible, setVisible] = React.useState(false);
   const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
   const prefixCls = `${globalPrefixCls}-back-top`;
@@ -30,11 +36,6 @@ const BackTop: React.FC<BackTopProps> = (props) => {
     return canUseDOM ? getMountContainer(props.mountContainer) : undefined;
   }, [props.mountContainer]);
 
-  const onScroll = (event: Event) => {
-    const scrollTop = getScrollTop(event.target as HTMLElement) || 0;
-    setVisible(scrollTop > visibleDistance!);
-  };
-
   const scrollToTop = (event: React.MouseEvent<HTMLDivElement>) => {
     onClick?.(event);
 
@@ -45,12 +46,15 @@ const BackTop: React.FC<BackTopProps> = (props) => {
     scrollTo(scrollContainer, 0, 0, duration);
   };
 
-  React.useEffect(() => {
-    scrollContainer?.addEventListener('scroll', onScroll);
-    return () => {
-      scrollContainer?.removeEventListener('scroll', onScroll);
-    };
-  }, [scrollContainer]);
+  useScroll(
+    (event) => {
+      const scrollTop = getScrollTop(event.target as HTMLElement) || 0;
+      setVisible(scrollTop > visibleDistance!);
+    },
+    {
+      target: scrollContainer,
+    },
+  );
 
   const element = React.useMemo(() => {
     if (!canUseDOM || !mountContainer) return null;
@@ -61,8 +65,6 @@ const BackTop: React.FC<BackTopProps> = (props) => {
         style={{
           display: !visible ? 'none' : 'inline',
           position: mountContainer !== document.body ? 'absolute' : 'fixed',
-          bottom: 50,
-          right: 50,
           ...style,
         }}
         onClick={scrollToTop}
@@ -73,12 +75,13 @@ const BackTop: React.FC<BackTopProps> = (props) => {
     );
   }, [visible, mountContainer]);
 
-  return element;
+  return destroy && !visible ? null : element;
 };
 
 BackTop.defaultProps = {
   speed: 100,
   visibleDistance: 400,
+  destroy: true,
 };
 
 export default BackTop;

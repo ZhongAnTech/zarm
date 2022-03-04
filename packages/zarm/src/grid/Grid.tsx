@@ -6,12 +6,12 @@ import type { BaseGridProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
 
 export interface GridCssVars {
-  '--za-grid-border-color'?: React.CSSProperties['borderColor'];
-  '--za-grid-item-background'?: React.CSSProperties['background'];
-  '--za-grid-item-active-background'?: React.CSSProperties['background'];
+  '--border-color'?: React.CSSProperties['borderColor'];
+  '--item-background'?: React.CSSProperties['background'];
+  '--item-active-background'?: React.CSSProperties['background'];
 }
 
-export type GridProps = BaseGridProps & HTMLProps;
+export type GridProps = BaseGridProps & HTMLProps<GridCssVars>;
 
 const Grid: React.FC<GridProps> = (props) => {
   const { className, style, columns, gutter, bordered, square, children } = props;

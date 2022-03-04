@@ -67,10 +67,11 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性            | 类型                                          | 默认值        | 说明                   |
-| :-------------- | :-------------------------------------------- | :------------ | :--------------------- |
-| speed           | number                                        | 100           | 每 10 毫秒滑动的距离   |
-| visibleDistance | number                                        | 400           | 离滚动条顶部的可视距离 |
-| scrollContainer | HTMLElement \| (() => HTMLElement)            | window        | 设置滚动容器           |
-| mountContainer  | HTMLElement \| (() => HTMLElement)            | document.body | 设置挂载容器           |
-| onClick         | (event: MouseEvent\<HTMLDivElement\>) => void | -             | 点击后触发的回调函数   |
+| 属性            | 类型                                          | 默认值        | 说明                     |
+| :-------------- | :-------------------------------------------- | :------------ | :----------------------- |
+| speed           | number                                        | 100           | 每 10 毫秒滑动的距离     |
+| visibleDistance | number                                        | 400           | 离滚动条顶部的可视距离   |
+| scrollContainer | HTMLElement \| (() => HTMLElement)            | window        | 设置滚动容器             |
+| mountContainer  | HTMLElement \| (() => HTMLElement)            | document.body | 设置挂载容器             |
+| destroy         | boolean                                       | true          | 组件不可见时是否移除节点 |
+| onClick         | (event: MouseEvent\<HTMLDivElement\>) => void | -             | 点击后触发的回调函数     |

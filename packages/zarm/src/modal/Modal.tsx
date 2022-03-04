@@ -10,29 +10,28 @@ import type { ModalActionProps } from './ModalAction';
 import type { HTMLProps } from '../utils/utilityTypes';
 
 export interface ModalCssVars {
-  '--za-modal-background'?: React.CSSProperties['background'];
-  '--za-modal-border-radius'?: React.CSSProperties['borderRadius'];
-  '--za-modal-box-shadow'?: React.CSSProperties['boxShadow'];
-  '--za-modal-title-font-size'?: React.CSSProperties['fontSize'];
-  '--za-modal-title-font-weight'?: React.CSSProperties['fontWeight'];
-  '--za-modal-title-text-color'?: React.CSSProperties['color'];
-  '--za-modal-close-size'?: React.CSSProperties['fontSize'];
-  '--za-modal-close-color'?: React.CSSProperties['color'];
-  '--za-modal-close-active-color'?: React.CSSProperties['color'];
-  '--za-modal-body-font-size'?: React.CSSProperties['fontSize'];
-  '--za-modal-body-text-color'?: React.CSSProperties['color'];
-  '--za-modal-body-padding'?: React.CSSProperties['padding'];
-  '--za-modal-button-height'?: React.CSSProperties['height'];
-  '--za-modal-button-font-size'?: React.CSSProperties['fontSize'];
-  '--za-modal-button-font-weight'?: React.CSSProperties['fontWeight'];
-  '--za-modal-button-text-color'?: React.CSSProperties['color'];
+  '--background'?: React.CSSProperties['background'];
+  '--border-radius'?: React.CSSProperties['borderRadius'];
+  '--box-shadow'?: React.CSSProperties['boxShadow'];
+  '--title-font-size'?: React.CSSProperties['fontSize'];
+  '--title-font-weight'?: React.CSSProperties['fontWeight'];
+  '--title-text-color'?: React.CSSProperties['color'];
+  '--close-size'?: React.CSSProperties['fontSize'];
+  '--close-color'?: React.CSSProperties['color'];
+  '--close-active-color'?: React.CSSProperties['color'];
+  '--body-font-size'?: React.CSSProperties['fontSize'];
+  '--body-text-color'?: React.CSSProperties['color'];
+  '--body-padding'?: React.CSSProperties['padding'];
+  '--button-height'?: React.CSSProperties['height'];
+  '--button-font-size'?: React.CSSProperties['fontSize'];
+  '--button-font-weight'?: React.CSSProperties['fontWeight'];
+  '--button-text-color'?: React.CSSProperties['color'];
 }
 
-export type ModalProps = BaseModalProps &
-  HTMLProps & {
-    actions?: (ModalActionProps | ModalActionProps[])[];
-    onAction?: (action: ModalActionProps) => void | Promise<void>;
-  };
+export interface ModalProps extends BaseModalProps, HTMLProps<ModalCssVars> {
+  actions?: (ModalActionProps | ModalActionProps[])[];
+  onAction?: (action: ModalActionProps) => void | Promise<void>;
+}
 
 const Modal = React.forwardRef<typeof Popup, ModalProps>((props, ref) => {
   const {
