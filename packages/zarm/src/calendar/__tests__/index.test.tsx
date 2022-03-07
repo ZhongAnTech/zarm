@@ -8,7 +8,7 @@ const prefixCls = 'za-calendar';
 describe('Calendar', () => {
   it('should trigger onChange when single click', async () => {
     const onChangeFn = jest.fn();
-    const wrapper = mount(<Calendar min={date7} multiple={false} onChange={onChangeFn} />);
+    const wrapper = mount(<Calendar min={date7} mode="single" onChange={onChangeFn} />);
 
     const day2 = wrapper.find(`.${prefixCls}__day`).at(15);
     expect(day2.childAt(0).text()).toBe('16');
@@ -18,7 +18,7 @@ describe('Calendar', () => {
 
   it('should trigger onChange when double click', () => {
     const onChangeFn = jest.fn();
-    const wrapper = mount(<Calendar multiple={false} onChange={onChangeFn} />);
+    const wrapper = mount(<Calendar mode="range" onChange={onChangeFn} />);
 
     const day3 = wrapper.find(`.${prefixCls}__day`).at(30);
     const day4 = wrapper.find(`.${prefixCls}__day`).at(20);

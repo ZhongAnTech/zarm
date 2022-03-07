@@ -6,7 +6,7 @@ const parseState = (props: {
   value?: Date | Date[];
   defaultValue?: Date | Date[];
   mode: string;
-  direction: string;
+  direction?: string;
 }) => {
   const { defaultValue, mode, direction } = props;
   let { value } = props;

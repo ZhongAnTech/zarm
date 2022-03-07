@@ -8,7 +8,7 @@ export interface BaseCalendarProps {
   max?: Date;
   mode: 'single' | 'multiple' | 'range';
   weekStartsOn?: 'Monday' | 'Sunday';
-  direction: 'horizontal' | 'vertical';
+  direction?: 'horizontal' | 'vertical';
   dateRender?: (value?: Date) => ReactNode;
   disabledDate?: (value?: Date) => boolean;
   onChange?: (value?: Date[]) => void;

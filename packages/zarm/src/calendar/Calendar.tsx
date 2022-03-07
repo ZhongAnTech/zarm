@@ -61,6 +61,10 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
   const [scrollDate, setScrollDate] = useState<string | null>();
   const [scrolling, setScrolling] = useState(false);
 
+  const isHorizontal = () => {
+    return direction === 'horizontal';
+  };
+
   // 月历定位
   const anchor = () => {
     const { value } = state;
@@ -75,8 +79,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
   const renderWeekBar = useCallback(() => {
     const weeks = [...locale!.weeks];
     if (weekStartsOn === 'Monday') {
-      const item = weeks.shift();
-      weeks.push(item);
+      weeks.push(weeks.shift()!);
     }
     const content = weeks.map((week) => (
       <li key={week} className={bem('bar__item')}>
@@ -127,33 +130,13 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
   };
 
   const scrollBodyRef = useRef(null);
-  const renderMonths = () => {
-    const { startMonth, max } = state;
-    const arr = Array.from({ length: DateTool.getMonthCount(startMonth, max) });
-    const content = arr.map((_item, i) => renderMonth(DateTool.cloneDate(startMonth, 'm', i)));
-    return (
-      <div className={bem('body')} ref={scrollBodyRef}>
-        {content}
-        <Transition in={scrolling} timeout={500}>
-          {(state) => <div className={bem('scroll-title', [{ [state]: true }])}>{scrollDate}</div>}
-        </Transition>
-      </div>
+  const findMonthIndex = (monthArr, currentTime) => {
+    return monthArr.findIndex(
+      (current) => `${current?.getFullYear()}_${current?.getMonth()}` === currentTime,
     );
   };
-
   const monthList = useRef<Date[]>([]);
-
-  const findMonthIndex = (monthArr, currentTime) => {
-    let index = 0;
-    for (let i = 0; i < monthArr.length; i++) {
-      if (currentTime === `${monthArr[i].getFullYear()}_${monthArr[i].getMonth()}`) {
-        index = i;
-        break;
-      }
-    }
-    return index;
-  };
-  const getCurrentMonth = () => {
+  const getCurrentMonth = useCallback(() => {
     const { startMonth, max, value } = state;
     const currentTime = value[0] || new Date();
     const arr = Array.from({ length: DateTool.getMonthCount(startMonth, max) });
@@ -161,35 +144,50 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
     monthList.current = monthArr;
     const currentTimeStr = `${currentTime.getFullYear()}_${currentTime.getMonth()}`;
     return findMonthIndex(monthArr, currentTimeStr);
-  };
+  }, [state]);
 
   const [currentMonth, setCurrentMonth] = useState<number>(getCurrentMonth());
-
-  const renderSwipeMonths = () => {
+  const renderMonths = () => {
     const { startMonth, max } = state;
     const arr = Array.from({ length: DateTool.getMonthCount(startMonth, max) });
     const content = arr.map((_item, i) => renderMonth(DateTool.cloneDate(startMonth, 'm', i)));
-    return (
+    if (isHorizontal()) {
       <Carousel className={bem('body')} showPagination={false} activeIndex={currentMonth}>
         {content}
-      </Carousel>
+      </Carousel>;
+    }
+    return (
+      <div className={bem('body')} ref={scrollBodyRef}>
+        {content}
+        <Transition in={scrolling} timeout={500}>
+          {(tState) => (
+            <div className={bem('scroll-title', [{ [tState]: true }])}>{scrollDate}</div>
+          )}
+        </Transition>
+      </div>
     );
   };
 
-  const changeMonth = (index) => {
-    const len = monthList.current.length;
-    let currentIndex = currentMonth + index;
-    if (currentIndex < 0) {
-      currentIndex = 0;
-    }
-    if (currentIndex > len - 1) {
-      currentIndex = len - 1;
-    }
-    setCurrentMonth(currentIndex);
-  };
+  const changeMonth = useCallback(
+    (index) => {
+      const len = monthList.current.length;
+      let currentIndex = currentMonth + index;
+      if (currentIndex < 0) {
+        currentIndex = 0;
+      }
+      if (currentIndex > len - 1) {
+        currentIndex = len - 1;
+      }
+      setCurrentMonth(currentIndex);
+    },
+    [monthList],
+  );
 
   const [showDatePicker, setShowDatePicker] = useState(false);
   const renderActionBar = () => {
+    if (!isHorizontal()) {
+      return null;
+    }
     const dateMonth = monthList.current?.[currentMonth] || new Date();
     const year = dateMonth.getFullYear();
     const month = dateMonth.getMonth();
@@ -197,16 +195,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
       locale?.yearText === '年'
         ? year + locale.yearText + locale.months[month]
         : `${locale?.months[month]} ${year}`;
-    const leftCls = bem('action-btn', [
-      {
-        disabled: currentMonth <= 0,
-      },
-    ]);
-    const rightCls = bem('action-btn', [
-      {
-        disabled: currentMonth >= monthList.current.length - 1,
-      },
-    ]);
+
     return (
       <div className={bem('header')}>
         <div
@@ -224,7 +213,11 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
           <div className={bem('action-btn')}>
             <ArrowLeft
               theme="primary"
-              className={leftCls}
+              className={bem('action-btn', [
+                {
+                  disabled: currentMonth <= 0,
+                },
+              ])}
               onClick={() => {
                 changeMonth(-1);
               }}
@@ -233,7 +226,11 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
           <div className={bem('action-btn')}>
             <ArrowRight
               theme="primary"
-              className={rightCls}
+              className={bem('action-btn', [
+                {
+                  disabled: currentMonth >= monthList.current.length - 1,
+                },
+              ])}
               onClick={() => {
                 changeMonth(1);
               }}
@@ -251,6 +248,9 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
   };
 
   const renderDatePicker = () => {
+    if (!isHorizontal()) {
+      return null;
+    }
     const monthData = monthList.current;
     const dataSource = {};
     for (let i = 0; i < monthData.length - 1; i++) {
@@ -288,43 +288,50 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
   useEffect(() => {
     anchor();
   }, []);
+
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (changes, obs) => {
-        changes.forEach((change) => {
-          if (change.intersectionRatio > 0) {
-            setScrollDate(change?.target?.getAttribute('title'));
-          }
-        });
-      },
-      {
-        root: null,
-        rootMargin: '0px',
-        threshold: 1,
-      },
-    );
-    Object.values(nodes?.current)?.forEach((node: any) => observer.observe(node.el()));
+    let observer;
+    if (window?.IntersectionObserver) {
+      observer = new IntersectionObserver(
+        (changes) => {
+          changes.forEach((change) => {
+            if (change.intersectionRatio > 0) {
+              setScrollDate(change?.target?.getAttribute('title'));
+            }
+          });
+        },
+        {
+          root: null,
+          rootMargin: '0px',
+          threshold: 1,
+        },
+      );
+      Object.values(nodes?.current)?.forEach((node: any) => observer.observe(node.el()));
+    }
+    return () => {
+      window?.IntersectionObserver && observer.disconnect();
+    };
   }, [nodes]);
 
   useEffect(() => {
-    if (direction !== 'horizontal') {
+    if (isHorizontal()) {
+      let timer;
+      const onScroll = () => {
+        setScrolling(true);
+        if (timer) {
+          clearTimeout(timer);
+        }
+        timer = setTimeout(() => {
+          setScrolling(false);
+        }, 800);
+      };
+      const throttleFn = throttle(onScroll, 150);
       setTimeout(() => {
-        let timer;
-        const onScroll = () => {
-          setScrolling(true);
-          if (timer) {
-            clearTimeout(timer);
-          }
-          timer = setTimeout(() => {
-            setScrolling(false);
-          }, 800);
-        };
-        const throttleFn = throttle(onScroll, 150);
-        scrollBodyRef?.current && Events.on(scrollBodyRef?.current, 'scroll', throttleFn);
-        return () => {
-          scrollBodyRef?.current && Events.off(scrollBodyRef?.current, 'scroll', throttleFn);
-        };
+        scrollBodyRef?.current && Events.on(scrollBodyRef?.current!, 'scroll', throttleFn);
       });
+      return () => {
+        scrollBodyRef?.current && Events.off(scrollBodyRef?.current!, 'scroll', throttleFn);
+      };
     }
   }, [direction]);
 
@@ -337,10 +344,10 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
 
   return (
     <div className={cls} ref={container}>
-      {direction === 'horizontal' ? renderActionBar() : null}
+      {renderActionBar()}
       {renderWeekBar()}
-      {direction === 'horizontal' ? renderSwipeMonths() : renderMonths()}
-      {direction === 'horizontal' ? renderDatePicker() : null}
+      {renderMonths()}
+      {renderDatePicker()}
     </div>
   );
 });

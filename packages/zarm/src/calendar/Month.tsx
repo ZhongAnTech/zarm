@@ -24,7 +24,7 @@ const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
 
   const bem = createBEM('calendar', { prefixCls: globalPrefixCls });
   const lastIn = useRef(false);
-  // const cls = classnames(prefixCls, className);
+
   const locale = globalLocal?.Calendar;
 
   const monthRef = useRef<any>();
@@ -34,16 +34,16 @@ const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
     const disabled =
       date < DateTool.cloneDate(min, 'd', 0) || date > DateTool.cloneDate(max, 'd', 0);
     const res = {
-      disabled: disabled || (disabledDate && disabledDate(date)),
+      disabled: disabled || (typeof disabledDate === 'function' && disabledDate(date)),
       isSelected:
         mode !== 'single'
           ? value.some((item) => DateTool.isOneDay(date, item))
           : DateTool.isOneDay(date, value[0]),
       isRange:
-        value.length > 1 && date > value[0] && date < value[value.length - 1] && mode === 'range',
-      rangeStart: value.length > 1 && DateTool.isOneDay(date, value[0]) && mode === 'range',
+        mode === 'range' && value.length > 1 && date > value[0] && date < value[value.length - 1],
+      rangeStart: mode === 'range' && value.length > 1 && DateTool.isOneDay(date, value[0]),
       rangeEnd:
-        value.length > 1 && DateTool.isOneDay(date, value[value.length - 1]) && mode === 'range',
+        mode === 'range' && value.length > 1 && DateTool.isOneDay(date, value[value.length - 1]),
     };
 
     lastIn.current = lastIn.current || res.isSelected || res.isRange;
@@ -52,10 +52,9 @@ const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
 
   const renderDay = (day: number, year: number, month: number, firstDay: number) => {
     const date = new Date(year, month, day);
+    const newDate = new Date();
     const isToday =
-      new Date().getFullYear() === year &&
-      new Date().getMonth() === month &&
-      new Date().getDate() === day;
+      newDate.getFullYear() === year && newDate.getMonth() === month && newDate.getDate() === day;
     const status = checkStatus(date);
 
     let txt = (date && dateRender && dateRender(date)) || '';

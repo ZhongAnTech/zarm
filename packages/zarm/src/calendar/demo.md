@@ -116,14 +116,14 @@ ReactDOM.render(<Demo />, mountNode);
 ## API
 
 | 属性         | 类型                              | 默认值                   | 说明                             |
-| :----------- | :-------------------------------- | :----------------------- | :------------------------------- | ---- |
+| :----------- | :-------------------------------- | :----------------------- | :------------------------------- |
 | value        | Date \| Date[]                    | -                        | 值                               |
 | defaultValue | Date \| Date[]                    | -                        | 初始值                           |
 | min          | Date                              | new Date()               | 最小可选日期                     |
 | max          | Date                              | min + 1 年               | 最大可选日期                     |
 | mode         | 'single' \| 'multiple' \| 'range' | 'single'                 | 选择模式                         |
 | weekStartsOn | 'Monday' \| 'Sunday'              | 'Sunday'                 | 以周几作为第一天                 |
-| direction    | 'horizontal'                      | 'vertical'               | 'horizontal'                     | 方向 |
+| direction    | 'horizontal' \| 'vertical'        | 'vertical'               | 展示模式                         |
 | dateRender   | (date?: Date) => void             | (date) => date.getDate() | 日期渲染函数                     |
 | disabledDate | (date?: Date) => boolean          | () => false              | 日期是否禁止选择                 |
 | onChange     | (value?: Date[]) => void          | -                        | 日期选择发生变化时触发的回调函数 |
