@@ -12,7 +12,7 @@ export type Replace<
   ReplaceStr extends string
 > = S extends `${infer Left}${MatchStr}${infer Right}` ? `${Left}${ReplaceStr}${Right}` : S;
 
-export type HTMLProps<T extends object = {}> = {
+export interface HTMLProps<T extends object = {}> {
   className?: string;
   style?: React.CSSProperties & Partial<T>;
 };

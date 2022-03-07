@@ -30,17 +30,17 @@
     }
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.16.3",
+    "@babel/eslint-plugin": "^7.14.5",
     "@commitlint/cli": "^12.1.1",
     "@commitlint/config-conventional": "^12.1.1",
     "@types/jest": "^26.0.22",
     "@typescript-eslint/eslint-plugin": "^5.3.1",
     "@typescript-eslint/parser": "^5.3.1",
-    "@babel/eslint-parser": "^7.16.3",
-    "@babel/eslint-plugin": "^7.14.5",
     "browserslist": "^4.16.4",
     "bundlesize": "^0.18.1",
     "concurrently": "^6.0.2",
-    "eslint": "7.10.0",
+    "eslint": "^7.10.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-config-za": "^2.4.0-alpha.2",
     "eslint-plugin-import": "2.22.1",
@@ -55,6 +55,6 @@
     "stylelint": "13.8.0",
     "stylelint-config-za": "0.3.0",
     "stylelint-scss": "^3.18.0",
-    "typescript": "4.0.2"
+    "typescript": "~4.5.0"
   }
 }
