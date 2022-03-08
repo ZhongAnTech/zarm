@@ -142,7 +142,7 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
     </div>
   );
 
-  useClickAway(onInputBlur, [contentRef, pickerRef]);
+  useClickAway([contentRef, pickerRef], onInputBlur);
 
   React.useImperativeHandle(wrapperRef, () => ({
     focus,

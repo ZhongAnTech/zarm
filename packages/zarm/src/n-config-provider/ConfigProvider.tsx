@@ -6,7 +6,7 @@ import setCssVars from './setCssVars';
 import setPrimaryColor from './setPrimaryColor';
 import setTheme from './setTheme';
 
-const defaultConfig: ConfigProviderProps = {
+export const defaultConfig: ConfigProviderProps = {
   prefixCls: 'za',
   locale: defaultLocaleData,
   theme: 'light',

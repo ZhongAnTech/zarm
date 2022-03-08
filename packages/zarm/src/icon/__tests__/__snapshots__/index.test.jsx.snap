@@ -3,14 +3,12 @@
 exports[`Icon renders Icons using iconfont 1`] = `
 Array [
   <i
-    class="za-icon za-icon--home za-icon--default za-icon--md"
-    theme="default"
-    type="home"
+    class="za-icon"
   >
     <svg
       fill="currentColor"
       height="1em"
-      viewBox="0 0 32 32"
+      viewBox="0 0 1000 1000"
       width="1em"
     >
       <use
@@ -19,14 +17,12 @@ Array [
     </svg>
   </i>,
   <i
-    class="za-icon za-icon--user za-icon--default za-icon--md"
-    theme="default"
-    type="user"
+    class="za-icon"
   >
     <svg
       fill="currentColor"
       height="1em"
-      viewBox="0 0 32 32"
+      viewBox="0 0 1000 1000"
       width="1em"
     >
       <use
@@ -40,13 +36,12 @@ Array [
 exports[`Icon renders Icons using svg component 1`] = `
 <i
   class="za-icon za-icon--primary za-icon--lg"
-  theme="primary"
 >
   <svg
     fill="currentColor"
     height="1em"
     stroke="currentColor"
-    viewBox="0 0 32 32"
+    viewBox="0 0 1000 1000"
     width="1em"
   >
     <path

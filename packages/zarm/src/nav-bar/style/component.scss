@@ -22,6 +22,8 @@
   @include e(side) {
     display: flex;
     justify-content: center;
+    color: var(--theme-primary);
+    font-size: var(--za-nav-bar-side-font-size);
 
     @include m(left) {
       margin-left: var(--za-nav-bar-padding-horizontal);

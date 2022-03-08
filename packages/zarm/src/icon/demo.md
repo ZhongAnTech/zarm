@@ -94,70 +94,24 @@ ReactDOM.render(
 
 ```jsx
 import { Grid } from 'zarm';
-import {
-  ArrowDown,
-  ArrowLeft,
-  ArrowRight,
-  ArrowUp,
-  Close,
-  CloseCircle,
-  CloseCircleFill,
-  DeleteKey,
-  Info,
-  InfoCircle,
-  InfoCircleFill,
-  Keyboard,
-  Plus,
-  Minus,
-  PlusCircle,
-  Search,
-  Success,
-  SuccessCircle,
-  Volume,
-  Waiting,
-  WaitingCircle,
-  WaitingCircleFill,
-  Warning,
-  WarningCircle,
-} from '@zarm-design/icons';
-
-const icons = [
-  { ele: ArrowDown, name: 'ArrowDown' },
-  { ele: ArrowLeft, name: 'ArrowLeft' },
-  { ele: ArrowRight, name: 'ArrowRight' },
-  { ele: ArrowUp, name: 'ArrowUp' },
-  { ele: Close, name: 'Close' },
-  { ele: CloseCircle, name: 'CloseCircle' },
-  { ele: CloseCircleFill, name: 'CloseCircleFill' },
-  { ele: DeleteKey, name: 'DeleteKey' },
-  { ele: Info, name: 'Info' },
-  { ele: InfoCircle, name: 'InfoCircle' },
-  { ele: InfoCircleFill, name: 'InfoCircleFill' },
-  { ele: Keyboard, name: 'Keyboard' },
-  { ele: Plus, name: 'Plus' },
-  { ele: Minus, name: 'Minus' },
-  { ele: PlusCircle, name: 'PlusCircle' },
-  { ele: Search, name: 'Search' },
-  { ele: Success, name: 'Success' },
-  { ele: SuccessCircle, name: 'SuccessCircle' },
-  { ele: Volume, name: 'Volume' },
-  { ele: Waiting, name: 'Waiting' },
-  { ele: WaitingCircle, name: 'WaitingCircle' },
-  { ele: WaitingCircleFill, name: 'WaitingCircleFill' },
-  { ele: Warning, name: 'Warning' },
-  { ele: WarningCircle, name: 'WarningCircle' },
-];
+import Icons from '@zarm-design/icons';
 
 ReactDOM.render(
   <Grid square>
-    {icons.map((Item, index) => (
-      <Grid.Item key={+index}>
-        <div className="block">
-          <Item.ele theme={Item.theme || 'primary'} />
-          <span>{Item.name}</span>
-        </div>
-      </Grid.Item>
-    ))}
+    {Object.keys(Icons).map((item, index) => {
+      if (['Icon', 'Empty'].includes(item)) return;
+      return (
+        <Grid.Item key={+index}>
+          <div className="block">
+            {React.createElement(Icons[item], {
+              key: +index,
+              theme: 'primary',
+            })}
+            <span>{item}</span>
+          </div>
+        </Grid.Item>
+      );
+    })}
   </Grid>,
   mountNode,
 );
@@ -235,7 +189,14 @@ ReactDOM.render(<Icon component={YourSvg} />, mountNode);
 | 属性      | 类型                                                           | 默认值      | 说明                                                              |
 | :-------- | :------------------------------------------------------------- | :---------- | :---------------------------------------------------------------- |
 | theme     | string                                                         | 'default'   | 主题，可选值 `default`、`primary`、`success`、`warning`、`danger` |
-| size      | string                                                         | 'md'        | 大小，可选值 `sm`、`md`、`lg`                                     |
-| type      | string                                                         | -           | 图标类型，可选值详见 demo 的基本用法                              |
+| size      | string                                                         | -           | 大小，可选值 `sm`、`lg`                                           |
+| type      | string                                                         | -           | 图标类型，可选项为来源 iconfont 的图标名称                        |
 | component | React.ComponentType&lt;React.SVGProps&lt;SVGSVGElement&gt;&gt; | -           | 本地 svg 文件，需配合 viewBox 使用                                |
 | viewBox   | string                                                         | '0 0 32 32' | 自定义 SVG 图标时，用来设置画布的起始坐标及大小                   |
+
+## CSS 变量
+
+| 属性                | 类型                            | 默认值                 | 说明     |
+| :------------------ | :------------------------------ | :--------------------- | :------- |
+| --za-icon-font-size | React.CSSProperties['fontSize'] | '24px'                 | 图标大小 |
+| --za-icon-color     | React.CSSProperties['color']    | 'var(--za-color-text)' | 图标颜色 |

@@ -76,6 +76,7 @@ exports[`CustomInput.Idcard renders correctly 1`] = `
       visible={false}
     >
       <Popup
+        className="za-keyboard-picker"
         destroy={true}
         lockScroll={true}
         mask={false}
@@ -119,6 +120,7 @@ exports[`CustomInput.Price renders correctly 1`] = `
       visible={false}
     >
       <Popup
+        className="za-keyboard-picker"
         destroy={true}
         lockScroll={true}
         mask={false}

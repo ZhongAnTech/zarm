@@ -1,29 +1,30 @@
 import React, { useContext } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import Popup from '../popup';
+import ActionSheetItem from './ActionSheetItem';
 import { ConfigContext } from '../n-config-provider';
-import type { BaseActionSheetActionProps, BaseActionSheetProps } from './interface';
+import type { BaseActionSheetItemProps, BaseActionSheetProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
 
 export interface ActionSheetCssVars {
+  '--za-action-sheet-background'?: React.CSSProperties['background'];
   '--za-action-sheet-border-radius'?: React.CSSProperties['borderRadius'];
   '--za-action-sheet-spacing-margin'?: React.CSSProperties['margin'];
-  '--za-action-sheet-item-background'?: React.CSSProperties['background'];
-  '--za-action-sheet-item-active-background'?: React.CSSProperties['background'];
   '--za-action-sheet-item-height'?: React.CSSProperties['height'];
-  '--za-action-sheet-item-color'?: React.CSSProperties['color'];
   '--za-action-sheet-item-font-size'?: React.CSSProperties['fontSize'];
-  '--za-action-sheet-cancel-background'?: React.CSSProperties['background'];
-  '--za-action-sheet-cancel-color'?: React.CSSProperties['color'];
+  '--za-action-sheet-item-font-weight'?: React.CSSProperties['fontWeight'];
+  '--za-action-sheet-item-text-color'?: React.CSSProperties['color'];
+  '--za-action-sheet-cancel-text-color'?: React.CSSProperties['color'];
   '--za-action-sheet-cancel-margin-top'?: React.CSSProperties['marginTop'];
 }
 
-export type ActionSheetActionProps = BaseActionSheetActionProps & HTMLProps;
+export type ActionSheetItemProps = BaseActionSheetItemProps & HTMLProps;
 
 export type ActionSheetProps = BaseActionSheetProps &
   HTMLProps & {
     safeIphoneX?: boolean;
-    actions?: ActionSheetActionProps[];
+    actions?: ActionSheetItemProps[];
+    onAction?: (action: ActionSheetItemProps, index: number) => void;
   };
 
 const ActionSheet = React.forwardRef<HTMLDivElement, ActionSheetProps>((props, ref) => {
@@ -34,6 +35,7 @@ const ActionSheet = React.forwardRef<HTMLDivElement, ActionSheetProps>((props, r
     actions,
     cancelText,
     onCancel,
+    onAction,
     safeIphoneX,
     ...restProps
   } = props;
@@ -49,32 +51,23 @@ const ActionSheet = React.forwardRef<HTMLDivElement, ActionSheetProps>((props, r
     className,
   ]);
 
-  const renderAction = (action: ActionSheetActionProps, index) => {
-    const actionCls = bem('item', [
-      action.className,
-      {
-        [`${action.theme}`]: !!action.theme,
-        disabled: action.disabled,
-      },
-    ]);
-
-    return (
-      <div
-        key={+index}
-        className={actionCls}
-        onClick={!action.disabled ? action.onClick : undefined}
-      >
-        {action.text}
-      </div>
-    );
-  };
+  const actionsRender = actions!.map((action, index) => (
+    <ActionSheetItem
+      {...action}
+      key={+index}
+      onClick={async () => {
+        await action.onClick?.();
+        await onAction?.(action, index);
+      }}
+    />
+  ));
 
   const renderCancel = () => {
     if (typeof onCancel !== 'function') return;
 
     return (
       <div className={bem('cancel')}>
-        <div className={bem('item')} onClick={onCancel}>
+        <div className={bem('item', [{ bold: true }])} onClick={onCancel}>
           {cancelText || locale?.ActionSheet?.cancelText}
         </div>
       </div>
@@ -84,7 +77,7 @@ const ActionSheet = React.forwardRef<HTMLDivElement, ActionSheetProps>((props, r
   return (
     <Popup {...restProps}>
       <div ref={ref} className={cls} style={style}>
-        <div className={bem('actions')}>{actions?.map(renderAction)}</div>
+        <div className={bem('actions')}>{actionsRender}</div>
         {renderCancel()}
       </div>
     </Popup>

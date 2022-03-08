@@ -2,11 +2,12 @@ import React, { PureComponent, CSSProperties } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ViewStyle } from 'react-native';
 import actionsheetStyle from './style/index.native';
 import Popup from '../popup/index.native';
-import type { BaseActionSheetProps } from './interface';
+import type { BaseActionSheetProps, BaseActionSheetItemProps } from './interface';
 
 export interface ButtonProps extends BaseActionSheetProps {
   style?: CSSProperties;
   styles?: typeof actionsheetStyle;
+  actions?: BaseActionSheetItemProps[];
 }
 
 const actionsheetStyles = StyleSheet.create<any>(actionsheetStyle);

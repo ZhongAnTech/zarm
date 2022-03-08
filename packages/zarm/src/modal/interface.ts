@@ -24,25 +24,21 @@ export interface BaseModalProps {
   maskType?: 'transparent' | 'normal';
   maskClosable?: boolean;
   closable?: boolean;
-  mountContainer?: ContainerType | false;
+  mountContainer?: ContainerType;
   title?: ReactNode;
   footer?: ReactNode;
+  children?: ReactNode;
   destroy?: boolean;
   afterOpen?: () => void;
-  onCancel?: () => void;
+  onClose?: () => void;
   afterClose?: () => void;
 }
 
-export interface BaseModalHeaderProps {
-  title?: ReactNode;
-  closable?: boolean;
-  onCancel?: () => void;
+export interface BaseModalActionProps {
+  key?: string | number;
+  text?: ReactNode;
+  theme?: 'default' | 'primary' | 'danger';
+  disabled?: boolean;
+  bold?: boolean;
+  onClick?: () => void;
 }
-
-// export interface BaseModalBodyProps {
-//   height?: string | number;
-// }
-
-// export interface BaseModalFooterProps {
-//   block?: boolean;
-// }
