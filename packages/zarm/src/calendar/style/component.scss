@@ -46,7 +46,7 @@ $--calendar-day-width: 14.28571%;
 
     @include b(calendar__action-btn) {
       display: flex;
-  
+
       @include m(disabled) {
         color: var(--color-text-disabled);
       }
@@ -73,8 +73,6 @@ $--calendar-day-width: 14.28571%;
       color: var(--color-text-disabled);
     }
   }
-
-  
 
   @include e(body) {
     padding: r(10) 0;
@@ -167,7 +165,7 @@ $--calendar-day-width: 14.28571%;
           color: var(--calendar-day-selected-color);
           box-shadow: 0 r(2) r(5) 0 var(--calendar-day-selected-shadow);
         }
-      } 
+      }
     }
 
     @include m(disabled) {
