@@ -26,6 +26,7 @@ export function getTargetElement(
   } else {
     targetElement = target;
   }
+
   return targetElement;
 }
 
@@ -47,7 +48,7 @@ export default function useClickAway(
       if (
         targets.some((targetItem) => {
           const targetElement = getTargetElement(targetItem) as HTMLElement;
-          return !targetElement || targetElement.contains(event.target);
+          return !targetElement || (targetElement.contains && targetElement.contains(event.target));
         })
       ) {
         return;
@@ -55,9 +56,7 @@ export default function useClickAway(
       onClickAwayRef.current!(event);
     };
 
-    window.setTimeout(() => {
-      Events.on(document, eventName, handler);
-    }, 50);
+    Events.on(document, eventName, handler);
 
     return () => {
       Events.off(document, eventName, handler);

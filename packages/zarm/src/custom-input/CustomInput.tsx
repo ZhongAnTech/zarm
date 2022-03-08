@@ -109,7 +109,9 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
   };
 
   const focus = () => {
-    onInputFocus();
+    window.setTimeout(() => {
+      onInputFocus();
+    }, 0);
   };
 
   const blur = () => {
@@ -148,6 +150,20 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
     focus,
     blur,
   }));
+
+  React.useEffect(() => {
+    if (!focused) return;
+    const timeout = window.setTimeout(() => {
+      contentRef.current?.scrollIntoView({
+        block: 'center',
+        inline: 'center',
+        behavior: 'smooth',
+      });
+    }, 0);
+    return () => {
+      window.clearTimeout(timeout);
+    };
+  }, [focused]);
 
   React.useEffect(() => {
     setCurrentValue(getValue({ value, defaultValue }, ''));
