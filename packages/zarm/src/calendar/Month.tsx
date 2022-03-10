@@ -1,8 +1,18 @@
-import React, { useContext, forwardRef, isValidElement, useRef, useImperativeHandle } from 'react';
+import React, {
+  useContext,
+  forwardRef,
+  isValidElement,
+  useRef,
+  useImperativeHandle,
+  ReactNode,
+  useMemo,
+  useCallback,
+} from 'react';
 import classnames from 'classnames';
 import { createBEM } from '@zarm-design/bem';
+import dayjs from 'dayjs';
 import { ConfigContext } from '../n-config-provider';
-import DateTool from '../utils/date';
+import { useTitle } from './hooks';
 import { BaseCalendarMonthProps } from './interface';
 
 export type CalendarMonthProps = BaseCalendarMonthProps & React.HTMLAttributes<HTMLElement>;
@@ -20,48 +30,76 @@ const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
     weekStartsOn,
   } = props;
 
-  const { prefixCls: globalPrefixCls, locale: globalLocal } = useContext(ConfigContext);
+  const { prefixCls: globalPrefixCls } = useContext(ConfigContext);
 
   const bem = createBEM('calendar', { prefixCls: globalPrefixCls });
-  const lastIn = useRef(false);
-
-  const locale = globalLocal?.Calendar;
 
   const monthRef = useRef<any>();
 
-  // 日期状态: 选中，区间
-  const checkStatus = (date: Date) => {
-    const disabled =
-      date < DateTool.cloneDate(min, 'd', 0) || date > DateTool.cloneDate(max, 'd', 0);
-    const res = {
-      disabled: disabled || (typeof disabledDate === 'function' && disabledDate(date)),
-      isSelected:
-        mode !== 'single'
-          ? value.some((item) => DateTool.isOneDay(date, item))
-          : DateTool.isOneDay(date, value[0]),
-      isRange:
-        mode === 'range' && value.length > 1 && date > value[0] && date < value[value.length - 1],
-      rangeStart: mode === 'range' && value.length > 1 && DateTool.isOneDay(date, value[0]),
-      rangeEnd:
-        mode === 'range' && value.length > 1 && DateTool.isOneDay(date, value[value.length - 1]),
-    };
+  const isDisabled = useCallback(
+    (date) => {
+      return (
+        dayjs(date).isBefore(dayjs(min)) ||
+        dayjs(date).isAfter(dayjs(max)) ||
+        (typeof disabledDate === 'function' && disabledDate(date))
+      );
+    },
+    [min, max],
+  );
 
-    lastIn.current = lastIn.current || res.isSelected || res.isRange;
-    return res;
-  };
+  const isSelected = useCallback(
+    (date) => {
+      const currentDate = dayjs(date);
+      return mode === 'single'
+        ? currentDate.isSame(dayjs(value[0]), 'day')
+        : value.some((item) => currentDate.isSame(dayjs(item), 'day'));
+    },
+    [mode, value],
+  );
 
-  const renderDay = (day: number, year: number, month: number, firstDay: number) => {
+  const range = useCallback(
+    (date) => {
+      if (mode !== 'range') {
+        return '';
+      }
+      const currentDate = dayjs(date);
+      const start = value[0];
+      const end = value[value.length - 1];
+      if (currentDate.isAfter(dayjs(start)) && currentDate.isBefore(dayjs(end))) {
+        return bem('day', [{ range: true }]);
+      }
+      if (value.length > 1) {
+        if (currentDate.isSame(dayjs(start), 'day')) {
+          return 'range-start';
+        }
+        if (currentDate.isSame(dayjs(end), 'day')) {
+          return 'range-end';
+        }
+      }
+      return '';
+    },
+    [mode, value],
+  );
+
+  const hanlerDateClick = useCallback(
+    (date) => {
+      if (!isDisabled(date) && typeof onDateClick === 'function') {
+        onDateClick(date);
+      }
+    },
+    [onDateClick],
+  );
+
+  const renderDay = (day: number, year: number, month: number, firstDay: number): ReactNode => {
     const date = new Date(year, month, day);
-    const newDate = new Date();
-    const isToday =
-      newDate.getFullYear() === year && newDate.getMonth() === month && newDate.getDate() === day;
-    const status = checkStatus(date);
+    const isToday = dayjs().isSame(dayjs(date), 'day');
 
-    let txt = (date && dateRender && dateRender(date)) || '';
-    if (typeof txt === 'object') {
-      if (!isValidElement(txt)) {
+    let text: string | ReactNode = '';
+    if (typeof dateRender === 'function') {
+      text = dateRender(date);
+      if (typeof text === 'object' && !isValidElement(text)) {
         console.warn('dateRender函数返回数据类型错误，请返回基本数据类型或者reactNode');
-        txt = '';
+        text = '';
       }
     }
 
@@ -69,8 +107,6 @@ const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
       {
         d6: (day + firstDay) % 7 === 0,
         d7: (day + firstDay) % 7 === 1,
-        'range-start': status.rangeStart,
-        'range-end': status.rangeEnd,
         [`firstday-${firstDay}`]: day === 1 && firstDay,
       },
       bem('day'),
@@ -78,36 +114,40 @@ const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
 
     const className = bem('day', [
       {
-        disabled: status.disabled,
+        disabled: isDisabled(date),
         today: isToday,
-        selected: status.isSelected,
-        range: status.isRange,
+        selected: isSelected(date),
       },
     ]);
     return (
       <li
         key={`${year}-${month}-${day}`}
-        className={`${baseClassName} ${className}`}
-        onClick={() => !status.disabled && date && onDateClick && onDateClick(date)}
+        className={`${baseClassName} ${className} ${range(date)}`}
+        onClick={() => hanlerDateClick(date)}
       >
-        {(txt && <div className={bem('day__content')}>{txt}</div>) || ''}
+        {(text && <div className={bem('day__content')}>{text}</div>) || ''}
       </li>
     );
   };
 
-  const renderContent = (year: number, month: number) => {
-    const data = DateTool.getCurrMonthInfo(year, month);
-    const { firstDay, dayCount } = data;
-    return Array.from({ length: dayCount }).map((_item, i) =>
-      renderDay(i + 1, year, month, weekStartsOn === 'Sunday' ? firstDay : firstDay - 1),
-    );
+  const renderDays = (year: number, month: number): ReactNode[] => {
+    const date = dayjs().year(year).month(month).date(1);
+    const daysInMonth = date.daysInMonth();
+    const firstDay = date.day();
+    const days: ReactNode[] = [];
+    let i = 1;
+    while (i <= daysInMonth) {
+      days.push(renderDay(i, year, month, weekStartsOn === 'Sunday' ? firstDay : firstDay - 1));
+      i += 1;
+    }
+    return days;
   };
 
   useImperativeHandle(ref, () => {
     return {
       anchor: () => {
         if (monthRef?.current?.scrollIntoViewIfNeeded) {
-          monthRef.current.scrollIntoViewIfNeeded();
+          monthRef.current.scrollIntoView();
         }
       },
       el: () => {
@@ -120,14 +160,11 @@ const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
   const month = dateMonth.getMonth();
   const monthKey = `${year}-${month}`;
 
-  const title =
-    locale?.yearText === '年'
-      ? year + locale.yearText + locale.months[month]
-      : `${locale?.months[month]} ${year}`;
+  const title = useTitle(dateMonth);
 
   return (
     <div key={monthKey} className={bem('month')} title={title} ref={monthRef}>
-      <ul>{renderContent(year, month)}</ul>
+      <ul>{renderDays(year, month)}</ul>
     </div>
   );
 });

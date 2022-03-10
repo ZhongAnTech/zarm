@@ -1,4 +1,4 @@
-import { RefObject, useEffect, MouseEvent, TouchEvent } from 'react';
+import { RefObject, useEffect, MouseEvent, TouchEvent, useRef } from 'react';
 import throttle from 'lodash/throttle';
 import Events from '../utils/events';
 
@@ -20,6 +20,7 @@ const useScroll = ({ container, onScroll, wait = 200 }: UseScrollProps) => {
     }
 
     return () => {
+      console.log('--------->');
       if (container.current) {
         Events.off(container.current, 'scroll', handler);
       }

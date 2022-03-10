@@ -22,6 +22,7 @@ $--calendar-day-width: 14.28571%;
   @include b(picker-view) {
     position: absolute;
     top: 44px;
+    z-index: 1111;
   }
 
   @include e(bar) {
@@ -123,10 +124,10 @@ $--calendar-day-width: 14.28571%;
     &:before {
       content: attr(title);
       display: block;
-      margin: r(15) auto;
+      margin: 0 auto;
       font-size: var(--calendar-day-title-fontsize);
       font-weight: 500;
-      padding-left: r(15);
+      padding: r(15);
     }
   }
 
