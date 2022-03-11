@@ -20,7 +20,3 @@ export interface BaseGridProps {
    */
   square?: boolean;
 }
-
-export interface BaseGridItemProps {
-  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
-}

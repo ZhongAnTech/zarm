@@ -2,10 +2,11 @@ import * as React from 'react';
 import classnames from 'classnames';
 import GridContext from './GridContext';
 import { ConfigContext } from '../n-config-provider';
-import type { BaseGridItemProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
 
-export type GridItemProps = BaseGridItemProps & HTMLProps;
+export type GridItemProps = HTMLProps & {
+  onClick?: React.MouseEventHandler;
+};
 
 const GridItem: React.FC<GridItemProps> = (props) => {
   const { className, style, onClick, children } = props;
