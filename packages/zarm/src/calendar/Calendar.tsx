@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { Transition } from 'react-transition-group';
 import dayjs from 'dayjs';
@@ -53,6 +53,8 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
     return { ...parseState(props), step: 1 };
   });
 
+  const { min, max, value } = state;
+
   const nodes = useRef<any>({});
 
   const scrollBodyRef = React.createRef<HTMLDivElement>();
@@ -67,7 +69,6 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
 
   const months = useMemo(() => {
     const month: Date[] = [];
-    const { min, max } = state;
     const len = dayjs(max).diff(min, 'month');
     let i = 0;
     do {
@@ -78,10 +79,9 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
   }, [state.max, state.min]);
 
   const currentMonthIndex = useMemo(() => {
-    const { value } = state;
-    const currentTime = value[0] || new Date();
+    const currentTime = dayjs(value[0] || new Date());
     return months.findIndex((current) => {
-      return dayjs(current).isSame(dayjs(currentTime), 'month');
+      return dayjs(current).isSame(currentTime, 'month');
     });
   }, [state.value]);
 
@@ -90,7 +90,6 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
   // 月历定位
   const scrollIntoView = useRef(false);
   const anchor = () => {
-    const { value } = state;
     const target = value[0] || new Date();
     const key = `${target.getFullYear()}-${target.getMonth()}`;
     const node = nodes.current[key]!;
@@ -101,7 +100,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
   };
 
   const handleDateClick = (date: Date) => {
-    const { step, steps, value } = state;
+    const { step, steps } = state;
     if (mode === 'multiple') {
       value.push(date);
     } else {
@@ -119,7 +118,6 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
   };
 
   const renderMonth = (dateMonth: Date) => {
-    const { value, min, max } = state;
     const key = `${dateMonth.getFullYear()}-${dateMonth.getMonth()}`;
     return (
       <CalendarMonthView
@@ -170,15 +168,15 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
     anchor();
   }, []);
 
-  let timer: ReturnType<typeof setTimeout>;
+  const timer = useRef<ReturnType<typeof setTimeout>>();
   useScroll({
     container: scrollBodyRef,
     onScroll: () => {
       !scrollIntoView.current && setScrolling(true);
-      timer = setTimeout(() => {
-        if (timer) {
-          clearTimeout(timer);
-        }
+      if (timer.current) {
+        clearTimeout(timer.current);
+      }
+      timer.current = setTimeout(() => {
         setScrolling(false);
         scrollIntoView.current = false;
       }, 800);

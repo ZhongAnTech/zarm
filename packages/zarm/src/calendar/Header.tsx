@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { ArrowLeft, ArrowRight } from '@zarm-design/icons';
 import dayjs from 'dayjs';
-import { useTitle } from './hooks';
+import useTitle from './useTitle';
 import PickerView from '../picker-view';
 import { ConfigContext } from '../n-config-provider';
 import parseDataSource from './utils/parseDataSource';

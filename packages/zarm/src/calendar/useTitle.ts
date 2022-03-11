@@ -1,8 +1,7 @@
 import { useContext } from 'react';
 import { ConfigContext } from '../n-config-provider';
-// import {}
 
-export function useTitle(value: Date) {
+function useTitle(value: Date) {
   const { locale: globalLocal } = useContext(ConfigContext);
   const locale = globalLocal?.Calendar;
 
@@ -14,6 +13,4 @@ export function useTitle(value: Date) {
     : `${locale?.months[month]} ${year}`;
 }
 
-// export function useScroll(target: HTMLElement) {
-
-// }
+export default useTitle;

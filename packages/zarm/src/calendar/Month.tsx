@@ -12,7 +12,7 @@ import classnames from 'classnames';
 import { createBEM } from '@zarm-design/bem';
 import dayjs from 'dayjs';
 import { ConfigContext } from '../n-config-provider';
-import { useTitle } from './hooks';
+import useTitle from './useTitle';
 import { BaseCalendarMonthProps } from './interface';
 
 export type CalendarMonthProps = BaseCalendarMonthProps & React.HTMLAttributes<HTMLElement>;
