@@ -429,13 +429,6 @@ module.exports = {
         style: true,
       },
       {
-        key: 'drag',
-        name: '拖拽',
-        module: () => import('zarm/drag/demo.md'),
-        source: 'zarm/drag/demo.md',
-        style: false,
-      },
-      {
         key: 'back-top',
         name: '返回顶部',
         module: () => import('zarm/back-top/demo.md'),
