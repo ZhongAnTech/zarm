@@ -3,7 +3,7 @@ import renderToContainer from '../renderToContainer';
 
 describe('renderToContainer', () => {
   const wrapper = document.createElement('div');
-  const unmount = renderToContainer(wrapper, <span />);
+  const unmount = renderToContainer(<span />, wrapper);
 
   test('insert', () => {
     expect(wrapper.querySelector('span')).toBeInstanceOf(HTMLElement);

@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { ContainerType, getMountContainer } from './dom';
 
 export default function renderToContainer(
-  mountContainer: ContainerType,
   element: React.ReactElement,
+  mountContainer?: ContainerType,
 ) {
   const container = getMountContainer(mountContainer);
   const wrapper = document.createElement('div');

@@ -1,4 +1,4 @@
-import { CSSProperties, AriaAttributes } from 'react';
+import * as React from 'react';
 
 export type Nullable<T> = T | null;
 
@@ -6,9 +6,13 @@ export type StringPropertyNames<T> = {
   [K in keyof T]: T[K] extends string ? K : never;
 }[keyof T];
 
-export type ZarmCSSProperties<T extends object = never> = CSSProperties & Partial<T>;
+export type Replace<
+  S extends string,
+  MatchStr extends string,
+  ReplaceStr extends string
+> = S extends `${infer Left}${MatchStr}${infer Right}` ? `${Left}${ReplaceStr}${Right}` : S;
 
-export type HTMLProps = AriaAttributes & {
+export interface HTMLProps<T extends object = {}> {
   className?: string;
-  style?: CSSProperties;
+  style?: React.CSSProperties & Partial<T>;
 };

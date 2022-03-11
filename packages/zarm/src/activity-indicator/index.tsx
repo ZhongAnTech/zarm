@@ -4,14 +4,14 @@ import { ConfigContext } from '../n-config-provider';
 import type { BaseActivityIndicatorProps } from './interface';
 
 export interface ActivityIndicatorCssVars {
-  '--za-activity-indicator-size'?: React.CSSProperties['width' | 'height'];
-  '--za-activity-indicator-size-large'?: React.CSSProperties['width' | 'height'];
-  '--za-activity-indicator-stroke-color'?: React.CSSProperties['stroke'];
-  '--za-activity-indicator-stroke-active-color'?: React.CSSProperties['stroke'];
-  '--za-activity-indicator-spinner-item-color'?: React.CSSProperties['color'];
-  '--za-activity-indicator-spinner-item-width'?: React.CSSProperties['width'];
-  '--za-activity-indicator-spinner-item-height'?: React.CSSProperties['height'];
-  '--za-activity-indicator-spinner-item-border-radius'?: React.CSSProperties['borderRadius'];
+  '--size'?: React.CSSProperties['width' | 'height'];
+  '--size-large'?: React.CSSProperties['width' | 'height'];
+  '--stroke-color'?: React.CSSProperties['stroke'];
+  '--stroke-active-color'?: React.CSSProperties['stroke'];
+  '--spinner-item-color'?: React.CSSProperties['color'];
+  '--spinner-item-width'?: React.CSSProperties['width'];
+  '--spinner-item-height'?: React.CSSProperties['height'];
+  '--spinner-item-border-radius'?: React.CSSProperties['borderRadius'];
 }
 
 const DIAMETER = 62;
