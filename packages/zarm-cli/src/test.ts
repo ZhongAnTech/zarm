@@ -6,9 +6,10 @@ export interface ITestConfig {
   updateSnapshot: boolean;
   coverage: boolean;
   setupFilesAfterEnv: string;
+  watch?: boolean;
 }
 
-export default ({ mode, updateSnapshot, coverage, setupFilesAfterEnv }: Partial<ITestConfig>) => {
+export default ({ mode, updateSnapshot, coverage, setupFilesAfterEnv, watch }: Partial<ITestConfig>) => {
   const configFile = require.resolve(
     `./config/jestConfig/${mode === 'native' ? 'index.native' : 'index'}`,
   );
@@ -19,5 +20,6 @@ export default ({ mode, updateSnapshot, coverage, setupFilesAfterEnv }: Partial<
   ];
   updateSnapshot && args.push('-u');
   coverage && args.push('--coverage');
+  watch && args.push("--watch");
   execa('node', args, { stdio: 'inherit' });
 };
