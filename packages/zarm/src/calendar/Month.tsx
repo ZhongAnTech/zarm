@@ -5,7 +5,6 @@ import React, {
   useRef,
   useImperativeHandle,
   ReactNode,
-  useMemo,
   useCallback,
 } from 'react';
 import classnames from 'classnames';
