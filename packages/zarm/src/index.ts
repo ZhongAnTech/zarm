@@ -13,7 +13,7 @@ export type { AlertProps } from './alert';
 export type { BackTopProps } from './back-top';
 export { default as BackTop } from './back-top';
 
-export type { BadgeProps } from './badge';
+export type { BadgeProps, BadgeCssVars } from './badge';
 export { default as Badge } from './badge';
 
 export type { ButtonProps } from './button';
