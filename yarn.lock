@@ -17846,10 +17846,10 @@ wcwidth@^1.0.0, wcwidth@^1.0.1:
   dependencies:
     defaults "^1.0.3"
 
-webfonts-helper@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/webfonts-helper/-/webfonts-helper-0.0.5.tgz#16402d0186724f28ed631a14f0978fcec8cad709"
-  integrity sha512-mbeZ5wiE0ifwXey2HD1PCTvJaVmlotyAQgkbr+a2om/QuT3DgxAZzJV/F5fp7P30NcEZUZOn/D3zqIDoY+4Apg==
+webfonts-helper@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/webfonts-helper/-/webfonts-helper-0.0.6.tgz#271cf7ca3a2ee06a8407597fda48900a966a21a3"
+  integrity sha512-dAXrzNYKd2Itz628BbN6GaWMPQISmqPLTSbcDLpHZZ37zjUVtb2h1gDxSCBW5Jv7CRfLxb8d1qQ/A3GbMA3cqg==
   dependencies:
     commander "^8.3.0"
     consolidate "^0.16.0"

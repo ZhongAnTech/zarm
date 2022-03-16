@@ -1,0 +1,126 @@
+@charset "UTF-8";
+
+$prefix: 'za-icon';
+
+@font-face {
+  font-family: "zaicon";
+  src: url('../zaicon.eot');
+  src: url('../zaicon.eot?#iefix') format('embedded-opentype'),
+  url('../zaicon.woff') format('woff'),
+  url('../zaicon.ttf') format('truetype'),
+  url('../zaicon.svg#zaicon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[data-icon]:before {
+  font-family: "zaicon" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^='#{$prefix}']:before,
+[class*=' #{$prefix}']:before {
+  font-family: "zaicon" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.#{$prefix}{
+  &-arrow-down:before {
+    content: "\EA01";
+  }
+  &-arrow-left:before {
+    content: "\EA02";
+  }
+  &-arrow-right:before {
+    content: "\EA03";
+  }
+  &-arrow-up:before {
+    content: "\EA04";
+  }
+  &-close:before {
+    content: "\EA05";
+  }
+  &-close-circle:before {
+    content: "\EA06";
+  }
+  &-close-circle-fill:before {
+    content: "\EA07";
+  }
+  &-delete-key:before {
+    content: "\EA08";
+  }
+  &-empty:before {
+    content: "\EA09";
+  }
+  &-info:before {
+    content: "\EA0A";
+  }
+  &-info-circle:before {
+    content: "\EA0B";
+  }
+  &-info-circle-fill:before {
+    content: "\EA0C";
+  }
+  &-keyboard:before {
+    content: "\EA0D";
+  }
+  &-minus:before {
+    content: "\EA0E";
+  }
+  &-plus:before {
+    content: "\EA0F";
+  }
+  &-plus-circle:before {
+    content: "\EA10";
+  }
+  &-search:before {
+    content: "\EA11";
+  }
+  &-star:before {
+    content: "\EA12";
+  }
+  &-star-fill:before {
+    content: "\EA13";
+  }
+  &-success:before {
+    content: "\EA14";
+  }
+  &-success-circle:before {
+    content: "\EA15";
+  }
+  &-volume:before {
+    content: "\EA16";
+  }
+  &-waiting:before {
+    content: "\EA17";
+  }
+  &-waiting-circle:before {
+    content: "\EA18";
+  }
+  &-waiting-circle-fill:before {
+    content: "\EA19";
+  }
+  &-warning:before {
+    content: "\EA1A";
+  }
+  &-warning-circle:before {
+    content: "\EA1B";
+  }
+  
+}

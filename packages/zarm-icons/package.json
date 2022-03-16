@@ -31,7 +31,7 @@
     "@zarm-design/cli": "^0.0.39",
     "react": "^17.0.2",
     "shelljs": "^0.8.4",
-    "webfonts-helper": "^0.0.5"
+    "webfonts-helper": "^0.0.6"
   },
   "publishConfig": {
     "access": "public"

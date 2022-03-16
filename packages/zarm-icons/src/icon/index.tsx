@@ -1,8 +1,10 @@
 import React, { HTMLAttributes } from 'react';
 import { createBEM } from '@zarm-design/bem';
+import decamelize from 'decamelize';
 import BasePropsType from './interface';
 import createFromIconfont from './IconFont';
-import Font from './font';
+
+import '../font/style/icon.scss';
 
 const INNER_SVG_PROPS = {
   width: '1em',
@@ -13,7 +15,7 @@ const INNER_SVG_PROPS = {
 
 export type IconProps = {
   prefixCls?: string;
-  name?: string;
+  name: string;
 } & BasePropsType &
   HTMLAttributes<HTMLElement>;
 
@@ -34,12 +36,16 @@ const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
     component: SvgComponent,
     viewBox,
     mode,
-    name,
+    name = '',
     ...rest
   } = props;
 
   const bem = createBEM('icon', { prefixCls });
 
+  const decamelizeName = decamelize(name, '-').replace('svg', '');
+  const isFont = (mode === 'auto' && typeof SVGRect === 'undefined') || mode === 'font';
+  const iconClassName = isFont ? `${prefixCls}-icon${decamelizeName}` : '';
+  console.log(iconClassName);
   const cls = bem([
     {
       [`${type}`]: !!type,
@@ -58,8 +64,8 @@ const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
     ...rest,
   };
 
-  if ((mode === 'auto' && typeof SVGRect === 'undefined') || mode === 'font') {
-    return <Font name={name} {...newProps} />;
+  if (isFont) {
+    return <span {...newProps} ref={ref} className={`${cls} ${iconClassName}`} />;
   }
 
   // svg component > children by iconfont > type
