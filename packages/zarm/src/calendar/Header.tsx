@@ -23,7 +23,7 @@ function Header(props: HeaderProps) {
 
   const { changeMonth, direction = 'vertical', months, currentMonth } = props;
 
-  const current = months[currentMonth];
+  const current = months[currentMonth] || new Date();
   const title = useTitle(current);
 
   if (direction !== 'horizontal') {
