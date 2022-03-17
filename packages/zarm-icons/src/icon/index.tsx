@@ -6,7 +6,7 @@ import createFromIconfont from './IconFont';
 
 import '../font/style/icon.scss';
 
-export type IconProps = BaseIconProps & { name: string } & Pick<
+export type IconProps = BaseIconProps & { name?: string } & Pick<
     React.HTMLAttributes<HTMLElement>,
     'onClick' | 'className' | 'style'
   >;
