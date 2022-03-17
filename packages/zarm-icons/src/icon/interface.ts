@@ -1,9 +1,10 @@
 import React from 'react';
 
-export default interface BasePropsType {
+export interface BaseIconProps {
+  prefixCls?: string;
   type?: string;
-  theme?: 'default' | 'primary' | 'success' | 'warning' | 'danger';
-  size?: 'sm' | 'md' | 'lg';
+  theme?: 'primary' | 'success' | 'warning' | 'danger';
+  size?: 'sm' | 'lg';
   component?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   viewBox?: string;
   mode?: 'auto' | 'svg' | 'font';

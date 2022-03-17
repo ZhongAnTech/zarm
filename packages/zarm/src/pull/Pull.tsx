@@ -4,9 +4,9 @@ import {
   SuccessCircle as SuccessCircleIcon,
   WarningCircle as WarningCircleIcon,
 } from '@zarm-design/icons';
+import throttle from 'lodash/throttle';
 import { REFRESH_STATE, LOAD_STATE, PullAction, PropsType } from './PropsType';
 import Events from '../utils/events';
-import Throttle from '../utils/throttle';
 import { getScrollTop } from '../utils/dom';
 import Drag from '../drag';
 import ActivityIndicator from '../activity-indicator';
@@ -50,7 +50,7 @@ export default class Pull extends PureComponent<PullProps, any> {
       refreshState: props.refresh.state,
       loadState: props.load.state,
     };
-    this.throttledScroll = Throttle(this.onScroll, 250);
+    this.throttledScroll = throttle(this.onScroll, 250);
   }
 
   componentDidMount() {
@@ -178,7 +178,7 @@ export default class Pull extends PureComponent<PullProps, any> {
     // window为滚动容器时，无法通过 window 直接取到 scrollHeight 和 clientHeight。
     const {
       scrollHeight = document.body.clientHeight,
-      clientHeight = document.documentElement.clientHeight
+      clientHeight = document.documentElement.clientHeight,
     } = this.wrap;
     const load: PullAction = { ...Pull.defaultProps.load, ...this.props.load };
     const { handler, distance } = load;

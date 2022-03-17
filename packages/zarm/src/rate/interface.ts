@@ -27,7 +27,7 @@ export interface BaseRateProps {
   allowHalf?: boolean;
   /**
    * 是否允许再次点击后清除
-   * @default true
+   * @default false
    */
   allowClear?: boolean;
   /**

@@ -1,27 +1,39 @@
 import * as React from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseBadgeProps } from './interface';
+import type { HTMLProps } from '../utils/utilityTypes';
 
-export type BadgeProps = BaseBadgeProps & React.HTMLAttributes<HTMLSpanElement>;
+export interface BadgeCssVars {
+  '--height'?: React.CSSProperties['height'];
+  '--font-size'?: React.CSSProperties['fontSize'];
+  '--text-color'?: React.CSSProperties['color'];
+  '--border-radius'?: React.CSSProperties['borderRadius'];
+  '--padding-horizontal'?: React.CSSProperties['padding'];
+  '--dot-size'?: React.CSSProperties['width' | 'height'];
+  '--sup-offset'?: React.CSSProperties['top'];
+}
+
+export type BadgeProps = BaseBadgeProps & HTMLProps<BadgeCssVars>;
 
 const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
   const { className, theme, shape, text, children, ...restProps } = props;
-  const badgeRef = ref || React.createRef<HTMLSpanElement>();
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('badge', { prefixCls });
 
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-badge`;
-
-  const cls = classnames(prefixCls, className, {
-    [`${prefixCls}--${theme}`]: !!theme,
-    [`${prefixCls}--${shape}`]: shape,
-    [`${prefixCls}--sup`]: !!children,
-  });
+  const cls = bem([
+    {
+      [`${theme}`]: !!theme,
+      [`${shape}`]: !!shape,
+      sup: !!children,
+    },
+    className,
+  ]);
 
   return (
-    <span ref={badgeRef} className={cls} {...restProps}>
+    <span ref={ref} className={cls} {...restProps}>
       {children}
-      <sup className={`${prefixCls}__content`}>{shape !== 'dot' && text}</sup>
+      <sup className={bem('content')}>{shape !== 'dot' && text}</sup>
     </span>
   );
 });

@@ -1,5 +1,5 @@
 export interface BaseActivityIndicatorProps {
-  size?: 'lg' | 'md';
+  size?: 'lg';
   strokeWidth?: number;
   percent?: number;
   type?: 'circular' | 'spinner';

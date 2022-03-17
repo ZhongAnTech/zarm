@@ -4,4 +4,5 @@ export interface BaseBadgeProps {
   theme?: 'primary' | 'success' | 'warning' | 'danger';
   shape?: 'dot' | 'radius' | 'round' | 'rect' | 'circle' | 'leaf';
   text?: React.ReactNode;
+  children?: React.ReactNode;
 }

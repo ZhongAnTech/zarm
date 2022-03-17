@@ -44,10 +44,10 @@ describe('Badge', () => {
 
   test.each`
     theme        | className         | shape       | expected
-    ${'primary'} | ${'custom-badge'} | ${'dot'}    | ${'za-badge custom-badge za-badge--primary za-badge--dot'}
-    ${'success'} | ${'custom-badge'} | ${'round'}  | ${'za-badge custom-badge za-badge--success za-badge--round'}
-    ${'warning'} | ${'custom-badge'} | ${'radius'} | ${'za-badge custom-badge za-badge--warning za-badge--radius'}
-    ${'danger'}  | ${'custom-badge'} | ${'rect'}   | ${'za-badge custom-badge za-badge--danger za-badge--rect'}
+    ${'primary'} | ${'custom-badge'} | ${'dot'}    | ${'za-badge za-badge--primary za-badge--dot custom-badge'}
+    ${'success'} | ${'custom-badge'} | ${'round'}  | ${'za-badge za-badge--success za-badge--round custom-badge'}
+    ${'warning'} | ${'custom-badge'} | ${'radius'} | ${'za-badge za-badge--warning za-badge--radius custom-badge'}
+    ${'danger'}  | ${'custom-badge'} | ${'rect'}   | ${'za-badge za-badge--danger za-badge--rect custom-badge'}
   `(
     'should render with theme - $theme, className - $className and shape - $shape',
     ({ theme, className, shape, expected }) => {

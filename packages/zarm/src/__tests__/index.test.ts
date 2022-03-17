@@ -14,7 +14,7 @@ describe('index', () => {
             "visible": false,
           },
           "render": [Function],
-          "useActionSheet": [Function],
+          "show": [Function],
         },
         "ActivityIndicator": Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -34,7 +34,7 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "BackToTop": [Function],
+        "BackTop": [Function],
         "Badge": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
@@ -150,14 +150,12 @@ describe('index', () => {
           },
           "render": [Function],
         },
+        "Grid": [Function],
         "Icon": Object {
           "$$typeof": Symbol(react.forward_ref),
           "createFromIconfont": [Function],
           "defaultProps": Object {
-            "prefixCls": "za-icon",
-            "size": "md",
-            "theme": "default",
-            "viewBox": "0 0 32 32",
+            "viewBox": "0 0 1000 1000",
           },
           "render": [Function],
         },
@@ -248,7 +246,25 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "Modal": [Function],
+        "Modal": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "alert": [Function],
+          "confirm": [Function],
+          "defaultProps": Object {
+            "actions": Array [],
+            "animationDuration": 200,
+            "animationType": "fade",
+            "closable": false,
+            "destroy": true,
+            "mask": true,
+            "maskClosable": false,
+            "maskType": "normal",
+            "shape": "radius",
+            "visible": false,
+            "width": "70%",
+          },
+          "render": [Function],
+        },
         "NConfigProvider": [Function],
         "NavBar": Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -333,7 +349,17 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "Rate": [Function],
+        "Rate": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "allowClear": false,
+            "allowHalf": false,
+            "character": <ForwardRef(SvgStarFill) />,
+            "count": 5,
+            "defaultValue": 0,
+          },
+          "render": [Function],
+        },
         "Scroller": [Function],
         "SearchBar": Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -434,9 +460,11 @@ describe('index', () => {
         "Trigger": [Function],
         "WaterMark": [Function],
         "Wheel": [Function],
+        "useClickAway": [Function],
         "useDrag": [Function],
         "useLongPress": [Function],
         "useOrientation": [Function],
+        "useScroll": [Function],
       }
     `);
   });

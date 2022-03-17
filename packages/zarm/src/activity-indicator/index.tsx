@@ -4,7 +4,14 @@ import { ConfigContext } from '../n-config-provider';
 import type { BaseActivityIndicatorProps } from './interface';
 
 export interface ActivityIndicatorCssVars {
-  '--za-activity-indicator-strokeidth'?: React.CSSProperties['width'];
+  '--size'?: React.CSSProperties['width' | 'height'];
+  '--size-large'?: React.CSSProperties['width' | 'height'];
+  '--stroke-color'?: React.CSSProperties['stroke'];
+  '--stroke-active-color'?: React.CSSProperties['stroke'];
+  '--spinner-item-color'?: React.CSSProperties['color'];
+  '--spinner-item-width'?: React.CSSProperties['width'];
+  '--spinner-item-height'?: React.CSSProperties['height'];
+  '--spinner-item-border-radius'?: React.CSSProperties['borderRadius'];
 }
 
 const DIAMETER = 62;
@@ -19,8 +26,8 @@ const Circular = React.forwardRef(
 
     const cls = bem([
       {
-        [`${size}`]: !!size,
         circular: loading,
+        [`${size}`]: !!size,
       },
       className,
     ]);
@@ -48,7 +55,7 @@ const Circular = React.forwardRef(
       <div className={cls} {...htmlAttributes} ref={ref}>
         <svg viewBox={`0 0 ${DIAMETER} ${DIAMETER}`}>
           <circle
-            className={bem('path')}
+            className={bem('stroke')}
             cx={half}
             cy={half}
             r={r}
@@ -80,7 +87,7 @@ const Spinner = React.forwardRef(
     const cls = bem([
       {
         spinner: true,
-        [`${prefixCls}--${size}`]: !!size,
+        [`${size}`]: !!size,
       },
       className,
     ]);
@@ -113,10 +120,10 @@ const ActivityIndicator = React.forwardRef<unknown, ActivityIndicatorProps>((pro
 });
 
 ActivityIndicator.defaultProps = {
-  strokeWidth: 5,
-  percent: 20,
   type: 'circular',
   loading: true,
+  strokeWidth: 5,
+  percent: 20,
 };
 
 ActivityIndicator.displayName = 'ActivityIndicator';

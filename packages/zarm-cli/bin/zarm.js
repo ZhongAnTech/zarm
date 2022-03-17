@@ -2,8 +2,6 @@
 
 const importLocal = require('import-local');
 
-if (importLocal(__filename)) {
-  return;
+if (!importLocal(__filename)) {
+  require('../lib/cli');
 }
-
-require('../lib/cli');

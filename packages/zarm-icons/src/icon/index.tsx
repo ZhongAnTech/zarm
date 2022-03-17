@@ -1,23 +1,15 @@
-import React, { HTMLAttributes } from 'react';
+import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
 import decamelize from 'decamelize';
-import BasePropsType from './interface';
+import { BaseIconProps } from './interface';
 import createFromIconfont from './IconFont';
 
 import '../font/style/icon.scss';
 
-const INNER_SVG_PROPS = {
-  width: '1em',
-  height: '1em',
-  fill: 'currentColor',
-  viewBox: '0 0 32 32',
-};
-
-export type IconProps = {
-  prefixCls?: string;
-  name: string;
-} & BasePropsType &
-  HTMLAttributes<HTMLElement>;
+export type IconProps = BaseIconProps & { name: string } & Pick<
+    React.HTMLAttributes<HTMLElement>,
+    'onClick' | 'className' | 'style'
+  >;
 
 interface CompoundedComponent
   extends React.ForwardRefExoticComponent<IconProps & React.RefAttributes<HTMLElement>> {
@@ -27,8 +19,6 @@ interface CompoundedComponent
 const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
   const {
     className,
-    type,
-    style,
     prefixCls,
     theme,
     size,
@@ -45,43 +35,39 @@ const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
   const decamelizeName = decamelize(name, '-').replace('svg', '');
   const isFont = (mode === 'auto' && typeof SVGRect === 'undefined') || mode === 'font';
   const iconClassName = isFont ? `${prefixCls}-icon${decamelizeName}` : '';
-  console.log(iconClassName);
+
   const cls = bem([
     {
-      [`${type}`]: !!type,
       [`${theme}`]: !!theme,
       [`${size}`]: !!size,
     },
     className,
   ]);
 
-  const newProps = {
-    className: cls,
-    style,
-    type,
-    theme,
-    size,
-    ...rest,
+  const svgProps = {
+    width: '1em',
+    height: '1em',
+    fill: 'currentColor',
+    viewBox,
   };
 
   if (isFont) {
-    return <span {...newProps} ref={ref} className={`${cls} ${iconClassName}`} />;
+    return <span {...rest} ref={ref} className={`${cls} ${iconClassName}`} />;
   }
 
   // svg component > children by iconfont > type
   if (SvgComponent) {
-    INNER_SVG_PROPS.viewBox = viewBox!;
     return (
-      <i {...newProps} ref={ref}>
-        <SvgComponent {...INNER_SVG_PROPS}>{children}</SvgComponent>
+      <i ref={ref} className={cls} {...rest}>
+        <SvgComponent {...svgProps}>{children}</SvgComponent>
       </i>
     );
   }
 
   if (children) {
     return (
-      <i {...newProps} ref={ref}>
-        <svg {...INNER_SVG_PROPS}>{children}</svg>
+      <i ref={ref} className={cls} {...rest}>
+        <svg {...svgProps}>{children}</svg>
       </i>
     );
   }
@@ -93,9 +79,7 @@ Icon.createFromIconfont = createFromIconfont;
 Icon.displayName = 'Icon';
 Icon.defaultProps = {
   prefixCls: 'za',
-  theme: 'default',
-  size: 'md',
-  viewBox: INNER_SVG_PROPS.viewBox,
+  viewBox: '0 0 1000 1000',
   mode: 'auto',
 };
 

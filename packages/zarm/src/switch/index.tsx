@@ -4,18 +4,18 @@ import { ConfigContext } from '../n-config-provider';
 import type { BaseSwitchProps } from './interface';
 
 export interface SwitchCssVars {
-  '--za-switch-width'?: React.CSSProperties['width'];
-  '--za-switch-height'?: React.CSSProperties['height'];
-  '--za-switch-background'?: React.CSSProperties['background'];
-  '--za-switch-border-radius'?: React.CSSProperties['borderRadius'];
-  '--za-switch-transition'?: React.CSSProperties['transition'];
-  '--za-switch-checked-background'?: React.CSSProperties['background'];
-  '--za-switch-knob-background'?: React.CSSProperties['background'];
-  '--za-switch-knob-size'?: React.CSSProperties['width' | 'height'];
-  '--za-switch-knob-box-shadow'?: React.CSSProperties['boxShadow'];
-  '--za-switch-knob-border-color'?: React.CSSProperties['borderColor'];
-  '--za-switch-knob-border-width'?: React.CSSProperties['width'];
-  '--za-switch-knob-transition'?: React.CSSProperties['transition'];
+  '--width'?: React.CSSProperties['width'];
+  '--height'?: React.CSSProperties['height'];
+  '--background'?: React.CSSProperties['background'];
+  '--border-radius'?: React.CSSProperties['borderRadius'];
+  '--transition'?: React.CSSProperties['transition'];
+  '--checked-background'?: React.CSSProperties['background'];
+  '--knob-background'?: React.CSSProperties['background'];
+  '--knob-size'?: React.CSSProperties['width' | 'height'];
+  '--knob-box-shadow'?: React.CSSProperties['boxShadow'];
+  '--knob-border-color'?: React.CSSProperties['borderColor'];
+  '--knob-border-width'?: React.CSSProperties['width'];
+  '--knob-transition'?: React.CSSProperties['transition'];
 }
 
 export type SwitchProps = BaseSwitchProps &

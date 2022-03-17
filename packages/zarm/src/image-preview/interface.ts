@@ -18,7 +18,7 @@ export interface BaseImagePreviewProps {
   minScale?: number;
   locale?: Locale['ImagePreview'];
   orientation?: 'landscape' | 'portrait';
-  mountContainer?: ContainerType | false;
+  mountContainer?: ContainerType;
   onChange?: (activeIndex: number) => void;
   onClose?: () => void;
 }

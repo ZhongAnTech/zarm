@@ -91,7 +91,7 @@
 
   // 背景色
   --za-background-color: #fff;
-  --za-background-active: #d4d4d4;
+  --za-background-active: #dbdbdd;
   --za-background-disabled: #f2f2f2;
 
   // 边框色
@@ -143,29 +143,6 @@
   //阴影
   --za-box-shadow-light: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
   --za-box-shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.2);
-
-  // activity-indicator
-  --za-activity-indicator-color: var(--theme-primary);
-  --za-activity-indicator-size-md: 22px;
-  --za-activity-indicator-size-lg: 29px;
-  --za-activity-indicator-path-color: #e6e6e6;
-  --za-activity-indicator-spinner-color: #989697;
-
-  // Alert
-  --za-alert-button-height: 50px;
-  --za-alert-button-font-size: 18px;
-  --za-alert-button-background: var(--za-button-default-background);
-  --za-alert-button-active-background: var(--background-active);
-
-  // Badge
-  --za-badge-height: 14px;
-  --za-badge-font-size: 10px;
-  --za-badge-padding-horizontal: 4px;
-  --za-badge-dot-diameter: 8px;
-  --za-badge-border-radius-rect: var(--radius-sm);
-  --za-badge-border-radius-round: var(--radius-round);
-  --za-badge-sup-top: -4px;
-  --za-badge-text-color: #fff;
 
   // Button
   --za-button-height-xs: 28px;
@@ -311,12 +288,6 @@
   --za-collapse-arrow-color: #bcbcbc;
   --za-collapse-arrow-disabled-color: #eee;
 
-  // Confirm
-  --za-confirm-button-height: 50px;
-  --za-confirm-button-font-size: 18px;
-  --za-confirm-button-background: var(--za-button-default-background);
-  --za-confirm-button-active-background: var(--background-active);
-
   // List
   // 列表项高度
   --za-list-item-height: 44px;
@@ -343,7 +314,7 @@
   // 列表项 info 文本字体大小
   --za-list-item-info-font-size: 12px;
   // 列表项 info 文本字体行高
-  --za-list-item-info-line-height: 15px;
+  --za-list-item-info-line-height: 16px;
   // 列表项 info 文本字体颜色
   --za-list-item-info-text-color: rgba(60, 60, 67, 0.6);
   // 列表项箭头符号颜色
@@ -390,12 +361,6 @@
   // ImagePreview
   --za-image-preview-origin-button-background: #2d2d2d;
 
-  // Keyboard
-  --za-keyboard-background: #fff;
-  --za-keyboard-item-background: #fff;
-  --za-keyboard-item-height: 52px;
-  --za-keyboard-item-font-size: 30px;
-
   // Loading
   --za-loading-background: rgba(0, 0, 0, var(--opacity-toast));
 
@@ -406,13 +371,6 @@
   --za-message-padding-vertical: 6px;
   --za-message-padding-horizontal: 8px;
 
-  // Modal
-  --za-modal-background: #fff;
-  --za-modal-title-font-size: 18px;
-  --za-modal-title-color: var(--color-text);
-  --za-modal-close-color: #ccc;
-  --za-modal-close-active-color: #999;
-
   // NavBar
   // 背景色
   --za-nav-bar-background: rgba(249, 249, 249, 0.94);
@@ -421,9 +379,11 @@
   // 标题字体色
   --za-nav-bar-title-color: var(--color-text);
   // 标题字体大小
-  --za-nav-bar-title-font-size: 18px;
+  --za-nav-bar-title-font-size: 17px;
   // 标题字体粗细
   --za-nav-bar-title-font-weight: 500;
+  // 左右栏字体大小
+  --za-nav-bar-side-font-size: 17px;
   // 横向内边距
   --za-nav-bar-padding-horizontal: 16px;
 
@@ -450,12 +410,15 @@
   --za-panel-body-border-radius: 10px;
 
   // Picker
-  --picker-background: #fff;
-  --picker-mask-background-start: rgba(255, 255, 255, 0.4);
-  --picker-mask-background-end: rgba(255, 255, 255, 0.8);
-  --picker-header-height: 45px;
-  --picker-header-font-size: 16px;
-  --picker-header-background: #f7f7f7;
+  --za-picker-background: #fff;
+  --za-picker-padding: 16px;
+  --za-picker-mask-background-start: rgba(255, 255, 255, 0.4);
+  --za-picker-mask-background-end: rgba(255, 255, 255, 0.8);
+  --za-picker-header-height: 45px;
+  --za-picker-header-font-size: 16px;
+  --za-picker-header-background: #f7f7f7;
+  --za-picker-item-selected-background: rgba(116, 116, 128, 0.08);
+  --za-picker-item-selected-border-radius: 7px;
 
   // Progress
   --za-progress-background: #f2f2f2;
@@ -610,7 +573,7 @@
   // Wheel
   --za-wheel-item-height: 34px;
   --za-wheel-item-rows: 5;
-  --za-wheel-item-font-size: 18px;
+  --za-wheel-item-font-size: 20px;
   --za-wheel-color: var(--color-text);
 
   // Icon
@@ -628,10 +591,4 @@
   --stack-picker-stack-item-height: 35px;
   --stack-picker-padding: 20px;
   --stack-picker-left: 60px;
-
-  // Rate
-  --za-rate-size: 20px;
-  --za-rate-color: var(--theme-danger);
-  --za-rate-unchecked-color: #eee;
-  --za-rate-gap: 4px;
 }

@@ -3,7 +3,6 @@ import Confirm from '../confirm';
 import renderToContainer from '../utils/renderToContainer';
 import { RuntimeConfigProvider } from '../n-config-provider/ConfigProvider';
 import type { ConfirmProps } from '../confirm';
-import type { ContainerType } from '../utils/dom';
 
 const confirm = (props: Omit<ConfirmProps, 'visible'>): Promise<boolean> => {
   return new Promise((resolve) => {
@@ -19,7 +18,6 @@ const confirm = (props: Omit<ConfirmProps, 'visible'>): Promise<boolean> => {
           <Confirm
             {...props}
             visible={visible}
-            mountContainer={false}
             onOk={async () => {
               const close = await props.onOk?.();
               if (close === false) return;
@@ -41,7 +39,7 @@ const confirm = (props: Omit<ConfirmProps, 'visible'>): Promise<boolean> => {
       );
     };
 
-    unmount = renderToContainer(props.mountContainer as ContainerType, <Wrapper />);
+    unmount = renderToContainer(<Wrapper />, props.mountContainer);
   });
 };
 
