@@ -230,7 +230,6 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
 
 Calendar.defaultProps = {
   mode: 'single',
-  min: new Date(),
   dateRender: (date: Date) => date.getDate(),
   disabledDate: () => false,
   direction: 'vertical',

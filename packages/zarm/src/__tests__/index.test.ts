@@ -64,7 +64,6 @@ describe('index', () => {
             "dateRender": [Function],
             "direction": "vertical",
             "disabledDate": [Function],
-            "min": 2022-03-17T08:08:05.430Z,
             "mode": "single",
             "weekStartsOn": "Sunday",
           },
