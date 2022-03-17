@@ -1,31 +1,28 @@
 import React, { useContext } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import Popup from '../popup';
-import ActionSheetItem from './ActionSheetItem';
+import ActionSheetItem, { ActionSheetItemProps } from './ActionSheetItem';
 import { ConfigContext } from '../n-config-provider';
-import type { BaseActionSheetItemProps, BaseActionSheetProps } from './interface';
+import type { BaseActionSheetProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
 
 export interface ActionSheetCssVars {
-  '--za-action-sheet-background'?: React.CSSProperties['background'];
-  '--za-action-sheet-border-radius'?: React.CSSProperties['borderRadius'];
-  '--za-action-sheet-spacing-margin'?: React.CSSProperties['margin'];
-  '--za-action-sheet-item-height'?: React.CSSProperties['height'];
-  '--za-action-sheet-item-font-size'?: React.CSSProperties['fontSize'];
-  '--za-action-sheet-item-font-weight'?: React.CSSProperties['fontWeight'];
-  '--za-action-sheet-item-text-color'?: React.CSSProperties['color'];
-  '--za-action-sheet-cancel-text-color'?: React.CSSProperties['color'];
-  '--za-action-sheet-cancel-margin-top'?: React.CSSProperties['marginTop'];
+  '--background'?: React.CSSProperties['background'];
+  '--border-radius'?: React.CSSProperties['borderRadius'];
+  '--spacing-margin'?: React.CSSProperties['margin'];
+  '--item-height'?: React.CSSProperties['height'];
+  '--item-font-size'?: React.CSSProperties['fontSize'];
+  '--item-font-weight'?: React.CSSProperties['fontWeight'];
+  '--item-text-color'?: React.CSSProperties['color'];
+  '--cancel-text-color'?: React.CSSProperties['color'];
+  '--cancel-margin-top'?: React.CSSProperties['marginTop'];
 }
 
-export type ActionSheetItemProps = BaseActionSheetItemProps & HTMLProps;
-
-export type ActionSheetProps = BaseActionSheetProps &
-  HTMLProps & {
-    safeIphoneX?: boolean;
-    actions?: ActionSheetItemProps[];
-    onAction?: (action: ActionSheetItemProps, index: number) => void;
-  };
+export interface ActionSheetProps extends BaseActionSheetProps, HTMLProps<ActionSheetCssVars> {
+  safeIphoneX?: boolean;
+  actions?: ActionSheetItemProps[];
+  onAction?: (action: ActionSheetItemProps, index: number) => void;
+}
 
 const ActionSheet = React.forwardRef<HTMLDivElement, ActionSheetProps>((props, ref) => {
   const {

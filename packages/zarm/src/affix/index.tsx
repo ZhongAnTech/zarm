@@ -8,7 +8,7 @@ import type { BaseAffixProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
 
 export interface AffixCssVars {
-  '--za-affix-zindex'?: React.CSSProperties['zIndex'];
+  '--zindex'?: React.CSSProperties['zIndex'];
 }
 
 export interface AffixStates {
@@ -18,7 +18,7 @@ export interface AffixStates {
   height: number;
 }
 
-export type AffixProps = BaseAffixProps & HTMLProps;
+export type AffixProps = BaseAffixProps & HTMLProps<AffixCssVars>;
 
 const DEFAULT_SCROLL_CONTAINER = canUseDOM ? window : undefined;
 

@@ -9,10 +9,10 @@ import type { BaseRateProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
 
 export interface RateCssVars {
-  '--za-rate-size'?: number | string;
-  '--za-rate-color'?: React.CSSProperties['color'];
-  '--za-rate-active-color'?: React.CSSProperties['color'];
-  '--za-rate-gap'?: React.CSSProperties['marginRight'];
+  '--size'?: number | string;
+  '--color'?: React.CSSProperties['color'];
+  '--active-color'?: React.CSSProperties['color'];
+  '--gap'?: React.CSSProperties['marginRight'];
 }
 
 export type RateProps = BaseRateProps & HTMLProps;

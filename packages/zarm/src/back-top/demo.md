@@ -1,10 +1,10 @@
-# BackToTop 返回顶部
+# BackTop 返回顶部
 
 ## 基本用法
 
 ```jsx
 import { useRef, useState } from 'react';
-import { List, BackToTop, Message, Button } from 'zarm';
+import { List, BackTop, Message, Button } from 'zarm';
 import { WarningCircle } from '@zarm-design/icons';
 
 const Demo = () => {
@@ -14,7 +14,7 @@ const Demo = () => {
   const containerRef = useRef();
   const [useWindowScroll, setUseWindowScroll] = useState(true);
 
-  const scrollContainer = !useWindowScroll ? () => containerRef.current : null;
+  const container = !useWindowScroll ? () => containerRef.current : null;
 
   const containerStyle = !useWindowScroll
     ? {
@@ -36,7 +36,11 @@ const Demo = () => {
         {list}
       </List>
 
-      <BackToTop scrollContainer={scrollContainer} onClick={() => console.log('click back to top')}>
+      <BackTop
+        scrollContainer={container}
+        mountContainer={container}
+        onClick={() => console.log('click back to top')}
+      >
         <div
           style={{
             width: 60,
@@ -53,7 +57,7 @@ const Demo = () => {
         >
           Up
         </div>
-      </BackToTop>
+      </BackTop>
     </>
   );
 };
@@ -63,9 +67,11 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性            | 类型                                          | 默认值 | 说明                   |
-| :-------------- | :-------------------------------------------- | :----- | :--------------------- |
-| speed           | number                                        | 100    | 每 10 毫秒滑动的距离   |
-| visibleDistance | number                                        | 400    | 离滚动条顶部的可视距离 |
-| scrollContainer | HTMLElement \| (() => HTMLElement)            | window | 设置滚动容器           |
-| onClick         | (event: MouseEvent\<HTMLDivElement\>) => void | -      | 点击后触发的回调函数   |
+| 属性            | 类型                                          | 默认值        | 说明                     |
+| :-------------- | :-------------------------------------------- | :------------ | :----------------------- |
+| speed           | number                                        | 100           | 每 10 毫秒滑动的距离     |
+| visibleDistance | number                                        | 400           | 离滚动条顶部的可视距离   |
+| scrollContainer | HTMLElement \| (() => HTMLElement)            | window        | 设置滚动容器             |
+| mountContainer  | HTMLElement \| (() => HTMLElement)            | document.body | 设置挂载容器             |
+| destroy         | boolean                                       | true          | 组件不可见时是否移除节点 |
+| onClick         | (event: MouseEvent\<HTMLDivElement\>) => void | -             | 点击后触发的回调函数     |

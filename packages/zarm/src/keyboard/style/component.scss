@@ -29,7 +29,7 @@
     box-shadow: var(--item-box-shadow);
     user-select: none;
 
-    &:not(&--disabled, &--blank):active {
+    &:not(&--disabled):not(&--blank):active {
       background-color: var(--item-active-background);
     }
 

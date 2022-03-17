@@ -4,8 +4,8 @@ import type { IconProps as BaseIconProps } from '@zarm-design/icons';
 import { ConfigContext } from '../n-config-provider';
 
 export interface IconCssVars {
-  '--za-icon-font-size'?: React.CSSProperties['fontSize'];
-  '--za-icon-color'?: React.CSSProperties['color'];
+  '--font-size'?: React.CSSProperties['fontSize'];
+  '--color'?: React.CSSProperties['color'];
 }
 
 export type IconProps = Omit<BaseIconProps, 'prefixCls'>;

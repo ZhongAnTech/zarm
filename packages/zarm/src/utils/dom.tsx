@@ -2,7 +2,7 @@
 import raf from 'raf';
 import { StringPropertyNames } from './utilityTypes';
 
-export type ContainerType = HTMLElement | (() => HTMLElement) | Window | false;
+export type ContainerType = HTMLElement | (() => HTMLElement) | Window;
 
 export const canUseDOM = !!(
   typeof window !== 'undefined' &&
@@ -159,18 +159,18 @@ export const getSupportedPropertyName = (property) => {
 };
 
 // 获取元素scrollTop
-export const getScrollTop = (ele: HTMLElement | Window): number => {
-  if (ele === document.documentElement) {
-    return (document.scrollingElement || document.documentElement).scrollTop;
+export const getScrollTop = (element: HTMLElement | Window | Document): number => {
+  if (element === document) {
+    return (element.scrollingElement || element.documentElement).scrollTop;
   }
-  if (ele === window) {
+  if (element === window) {
     return Math.max(
       window.pageYOffset,
       document.documentElement.scrollTop,
       document.body.scrollTop,
     );
   }
-  return (ele as HTMLElement).scrollTop;
+  return (element as HTMLElement).scrollTop;
 };
 
 export const getScrollLeft = (ele: HTMLElement | Window): number => {

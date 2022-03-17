@@ -1,9 +1,9 @@
-import type { CSSProperties } from 'react';
 import type { ContainerType } from '../utils/dom';
 
-export default interface PropsType {
-  style?: CSSProperties;
+export interface BaseBackTopProps {
   speed?: number;
   visibleDistance?: number;
   scrollContainer?: ContainerType;
+  mountContainer?: ContainerType;
+  destroy?: boolean;
 }

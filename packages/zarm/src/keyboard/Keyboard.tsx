@@ -8,17 +8,17 @@ import type { BaseKeyBoardProps, KeyBoardKey, KeyBoardDataSource } from './inter
 import type { HTMLProps } from '../utils/utilityTypes';
 
 export interface KeyboardCssVars {
-  '--za-keyboard-background'?: React.CSSProperties['background'];
-  '--za-keyboard-item-background'?: React.CSSProperties['background'];
-  '--za-keyboard-item-active-background'?: React.CSSProperties['background'];
-  '--za-keyboard-item-gap'?: React.CSSProperties['gap'];
-  '--za-keyboard-item-height'?: React.CSSProperties['height'];
-  '--za-keyboard-item-font-size'?: React.CSSProperties['fontSize'];
-  '--za-keyboard-item-border-radius'?: React.CSSProperties['borderRadius'];
-  '--za-keyboard-item-box-shadow'?: React.CSSProperties['boxShadow'];
-  '--za-keyboard-ok-background'?: React.CSSProperties['background'];
-  '--za-keyboard-ok-font-size'?: React.CSSProperties['fontSize'];
-  '--za-keyboard-ok-text-color'?: React.CSSProperties['color'];
+  '--background'?: React.CSSProperties['background'];
+  '--item-background'?: React.CSSProperties['background'];
+  '--item-active-background'?: React.CSSProperties['background'];
+  '--item-gap'?: React.CSSProperties['gap'];
+  '--item-height'?: React.CSSProperties['height'];
+  '--item-font-size'?: React.CSSProperties['fontSize'];
+  '--item-border-radius'?: React.CSSProperties['borderRadius'];
+  '--item-box-shadow'?: React.CSSProperties['boxShadow'];
+  '--ok-background'?: React.CSSProperties['background'];
+  '--ok-font-size'?: React.CSSProperties['fontSize'];
+  '--ok-text-color'?: React.CSSProperties['color'];
 }
 
 export type KeyboardProps = BaseKeyBoardProps &

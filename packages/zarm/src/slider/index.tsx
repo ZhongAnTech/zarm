@@ -10,22 +10,22 @@ import { ConfigContext } from '../n-config-provider';
 import { isObject } from '../utils/validate';
 
 export interface SliderCssVars {
-  '--za-slider-line-size'?: React.CSSProperties['width' | 'height'];
-  '--za-slider-line-border-radius'?: React.CSSProperties['borderRadius'];
-  '--za-slider-line-background'?: React.CSSProperties['background'];
-  '--za-slider-line-active-background'?: React.CSSProperties['background'];
-  '--za-slider-dot-size'?: React.CSSProperties['width' | 'height'];
-  '--za-slider-dot-background'?: React.CSSProperties['background'];
-  '--za-slider-dot-border-color'?: React.CSSProperties['borderColor'];
-  '--za-slider-dot-border-width'?: React.CSSProperties['borderWidth'];
-  '--za-slider-dot-active-border-color'?: React.CSSProperties['borderColor'];
-  '--za-slider-knob-size'?: React.CSSProperties['width' | 'height'];
-  '--za-slider-knob-size-small'?: React.CSSProperties['width' | 'height'];
-  '--za-slider-knob-background'?: React.CSSProperties['background'];
-  '--za-slider-knob-box-shadow'?: React.CSSProperties['boxShadow'];
-  '--za-slider-mark-font-size'?: React.CSSProperties['fontSize'];
-  '--za-slider-mark-text-color'?: React.CSSProperties['color'];
-  '--za-slider-mark-spacing'?: React.CSSProperties['left' | 'top'];
+  '--line-size'?: React.CSSProperties['width' | 'height'];
+  '--line-border-radius'?: React.CSSProperties['borderRadius'];
+  '--line-background'?: React.CSSProperties['background'];
+  '--line-active-background'?: React.CSSProperties['background'];
+  '--dot-size'?: React.CSSProperties['width' | 'height'];
+  '--dot-background'?: React.CSSProperties['background'];
+  '--dot-border-color'?: React.CSSProperties['borderColor'];
+  '--dot-border-width'?: React.CSSProperties['borderWidth'];
+  '--dot-active-border-color'?: React.CSSProperties['borderColor'];
+  '--knob-size'?: React.CSSProperties['width' | 'height'];
+  '--knob-size-small'?: React.CSSProperties['width' | 'height'];
+  '--knob-background'?: React.CSSProperties['background'];
+  '--knob-box-shadow'?: React.CSSProperties['boxShadow'];
+  '--mark-font-size'?: React.CSSProperties['fontSize'];
+  '--mark-text-color'?: React.CSSProperties['color'];
+  '--mark-spacing'?: React.CSSProperties['left' | 'top'];
 }
 
 export interface SliderProps
