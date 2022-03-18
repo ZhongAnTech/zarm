@@ -6607,6 +6607,11 @@ decamelize@^1.1.0, decamelize@^1.1.1, decamelize@^1.1.2, decamelize@^1.2.0:
   resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
   integrity sha1-9lNNFRSCabIDUue+4m9QH5oZEpA=
 
+decamelize@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-6.0.0.tgz#8cad4d916fde5c41a264a43d0ecc56fe3d31749e"
+  integrity sha512-Fv96DCsdOgB6mdGl67MT5JaTNKRzrzill5OH5s8bjYJXVlcXyPYGyPsUkWyGV5p1TXI5esYIYMMeDJL0hEIwaA==
+
 decimal.js@^10.2.1:
   version "10.2.1"
   resolved "https://registry.yarnpkg.com/decimal.js/-/decimal.js-10.2.1.tgz#238ae7b0f0c793d3e3cea410108b35a2c01426a3"
@@ -18000,10 +18005,10 @@ wcwidth@^1.0.0, wcwidth@^1.0.1:
   dependencies:
     defaults "^1.0.3"
 
-webfonts-helper@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/webfonts-helper/-/webfonts-helper-0.0.6.tgz#271cf7ca3a2ee06a8407597fda48900a966a21a3"
-  integrity sha512-dAXrzNYKd2Itz628BbN6GaWMPQISmqPLTSbcDLpHZZ37zjUVtb2h1gDxSCBW5Jv7CRfLxb8d1qQ/A3GbMA3cqg==
+webfonts-helper@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/webfonts-helper/-/webfonts-helper-0.0.7.tgz#cd24e606343883ecc9b2b0afc97844e80e31f7d4"
+  integrity sha512-e5i945GzgErv0RfSyFvEiRe4bst/gEAF+7EfIzJEmXlWInKO83HG2nkO5Szsa+OforwC5LKbpi9fMDOsPHdvVQ==
   dependencies:
     commander "^8.3.0"
     consolidate "^0.16.0"
