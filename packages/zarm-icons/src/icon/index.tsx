@@ -4,8 +4,6 @@ import decamelize from 'decamelize';
 import { BaseIconProps } from './interface';
 import createFromIconfont from './IconFont';
 
-import '../font/style/icon.scss';
-
 export type IconProps = BaseIconProps & { name?: string } & Pick<
     React.HTMLAttributes<HTMLElement>,
     'onClick' | 'className' | 'style'
@@ -56,6 +54,7 @@ const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
   };
 
   if (isFont) {
+    require('../font/style/icon.scss');
     return <i {...rest} ref={ref} className={`${cls} ${iconClassName}`} />;
   }
 
