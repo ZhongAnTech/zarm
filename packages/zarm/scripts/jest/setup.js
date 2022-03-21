@@ -11,3 +11,5 @@ Enzyme.configure({ adapter: new Adapter() });
 jest.mock('react-native', () => require('dl-react-native-mock-render'), {
   virtual: true,
 });
+
+Object.defineProperty(window, 'SVGRect', { value: 'SVGRect', writable: true });
