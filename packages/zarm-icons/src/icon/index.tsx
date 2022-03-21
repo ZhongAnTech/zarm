@@ -31,7 +31,10 @@ const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
   const bem = createBEM('icon', { prefixCls });
 
   const decamelizeName = decamelize(name, { separator: '-' }).replace('svg-', '');
-  const isFont = (mode === 'auto' && typeof SVGRect === 'undefined') || mode === 'font';
+  // jest test render svg
+  const isFont =
+    (mode === 'auto' && typeof SVGRect === 'undefined' && process?.env?.NODE_ENV !== 'test') ||
+    mode === 'font';
   const iconClassName = bem([
     {
       [`${decamelizeName}`]: isFont,
@@ -57,7 +60,6 @@ const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
     require('../font/style/icon.scss');
     return <i {...rest} ref={ref} className={`${cls} ${iconClassName}`} />;
   }
-
   // svg component > children by iconfont > type
   if (SvgComponent) {
     return (
