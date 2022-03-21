@@ -35,84 +35,84 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.za-icon-arrow-down:before {
+.za-icon--arrow-down:before {
   content: '\EA01';
 }
-.za-icon-arrow-left:before {
+.za-icon--arrow-left:before {
   content: '\EA02';
 }
-.za-icon-arrow-right:before {
+.za-icon--arrow-right:before {
   content: '\EA03';
 }
-.za-icon-arrow-up:before {
+.za-icon--arrow-up:before {
   content: '\EA04';
 }
-.za-icon-close:before {
+.za-icon--close:before {
   content: '\EA05';
 }
-.za-icon-close-circle:before {
+.za-icon--close-circle:before {
   content: '\EA06';
 }
-.za-icon-close-circle-fill:before {
+.za-icon--close-circle-fill:before {
   content: '\EA07';
 }
-.za-icon-delete-key:before {
+.za-icon--delete-key:before {
   content: '\EA08';
 }
-.za-icon-empty:before {
+.za-icon--empty:before {
   content: '\EA09';
 }
-.za-icon-info:before {
+.za-icon--info:before {
   content: '\EA0A';
 }
-.za-icon-info-circle:before {
+.za-icon--info-circle:before {
   content: '\EA0B';
 }
-.za-icon-info-circle-fill:before {
+.za-icon--info-circle-fill:before {
   content: '\EA0C';
 }
-.za-icon-keyboard:before {
+.za-icon--keyboard:before {
   content: '\EA0D';
 }
-.za-icon-minus:before {
+.za-icon--minus:before {
   content: '\EA0E';
 }
-.za-icon-plus:before {
+.za-icon--plus:before {
   content: '\EA0F';
 }
-.za-icon-plus-circle:before {
+.za-icon--plus-circle:before {
   content: '\EA10';
 }
-.za-icon-search:before {
+.za-icon--search:before {
   content: '\EA11';
 }
-.za-icon-star:before {
+.za-icon--star:before {
   content: '\EA12';
 }
-.za-icon-star-fill:before {
+.za-icon--star-fill:before {
   content: '\EA13';
 }
-.za-icon-success:before {
+.za-icon--success:before {
   content: '\EA14';
 }
-.za-icon-success-circle:before {
+.za-icon--success-circle:before {
   content: '\EA15';
 }
-.za-icon-volume:before {
+.za-icon--volume:before {
   content: '\EA16';
 }
-.za-icon-waiting:before {
+.za-icon--waiting:before {
   content: '\EA17';
 }
-.za-icon-waiting-circle:before {
+.za-icon--waiting-circle:before {
   content: '\EA18';
 }
-.za-icon-waiting-circle-fill:before {
+.za-icon--waiting-circle-fill:before {
   content: '\EA19';
 }
-.za-icon-warning:before {
+.za-icon--warning:before {
   content: '\EA1A';
 }
-.za-icon-warning-circle:before {
+.za-icon--warning-circle:before {
   content: '\EA1B';
 }

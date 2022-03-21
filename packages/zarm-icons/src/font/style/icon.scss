@@ -1,15 +1,15 @@
 @charset "UTF-8";
 
-$prefix: "za-icon-";
+$prefix: 'za-icon';
 
 @font-face {
   font-family: "zaicon";
-  src: url("../zaicon.eot");
+  src: url('../zaicon.eot');
   /* stylelint-disable-next-line */
-  src: url("../zaicon.eot?#iefix") format("embedded-opentype"),
-    url("../zaicon.woff") format("woff"),
-    url("../zaicon.ttf") format("truetype"),
-    url("../zaicon.svg#zaicon") format("svg");
+  src: url('../zaicon.eot?#iefix') format('embedded-opentype'),
+    url('../zaicon.woff') format('woff'),
+    url('../zaicon.ttf') format('truetype'),
+    url('../zaicon.svg#zaicon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -28,8 +28,8 @@ $prefix: "za-icon-";
   -moz-osx-font-smoothing: grayscale;
 }
 
-[class^="#{$prefix}"]:before,
-[class*=" #{$prefix}"]:before {
+[class^='#{$prefix}']:before,
+[class*=' #{$prefix}']:before {
   /* stylelint-disable-next-line */
   font-family: "zaicon" !important;
   font-style: normal !important;
@@ -42,112 +42,114 @@ $prefix: "za-icon-";
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* stylelint-disable block-closing-brace-empty-line-before */
 .#{$prefix} {
-  &-arrow-down:before {
+  &--arrow-down:before {
     content: "\EA01";
   }
 
-  &-arrow-left:before {
+  &--arrow-left:before {
     content: "\EA02";
   }
 
-  &-arrow-right:before {
+  &--arrow-right:before {
     content: "\EA03";
   }
 
-  &-arrow-up:before {
+  &--arrow-up:before {
     content: "\EA04";
   }
 
-  &-close:before {
+  &--close:before {
     content: "\EA05";
   }
 
-  &-close-circle:before {
+  &--close-circle:before {
     content: "\EA06";
   }
 
-  &-close-circle-fill:before {
+  &--close-circle-fill:before {
     content: "\EA07";
   }
 
-  &-delete-key:before {
+  &--delete-key:before {
     content: "\EA08";
   }
 
-  &-empty:before {
+  &--empty:before {
     content: "\EA09";
   }
 
-  &-info:before {
+  &--info:before {
     content: "\EA0A";
   }
 
-  &-info-circle:before {
+  &--info-circle:before {
     content: "\EA0B";
   }
 
-  &-info-circle-fill:before {
+  &--info-circle-fill:before {
     content: "\EA0C";
   }
 
-  &-keyboard:before {
+  &--keyboard:before {
     content: "\EA0D";
   }
 
-  &-minus:before {
+  &--minus:before {
     content: "\EA0E";
   }
 
-  &-plus:before {
+  &--plus:before {
     content: "\EA0F";
   }
 
-  &-plus-circle:before {
+  &--plus-circle:before {
     content: "\EA10";
   }
 
-  &-search:before {
+  &--search:before {
     content: "\EA11";
   }
 
-  &-star:before {
+  &--star:before {
     content: "\EA12";
   }
 
-  &-star-fill:before {
+  &--star-fill:before {
     content: "\EA13";
   }
 
-  &-success:before {
+  &--success:before {
     content: "\EA14";
   }
 
-  &-success-circle:before {
+  &--success-circle:before {
     content: "\EA15";
   }
 
-  &-volume:before {
+  &--volume:before {
     content: "\EA16";
   }
 
-  &-waiting:before {
+  &--waiting:before {
     content: "\EA17";
   }
 
-  &-waiting-circle:before {
+  &--waiting-circle:before {
     content: "\EA18";
   }
 
-  &-waiting-circle-fill:before {
+  &--waiting-circle-fill:before {
     content: "\EA19";
   }
 
-  &-warning:before {
+  &--warning:before {
     content: "\EA1A";
   }
 
-  &-warning-circle:before {
+  &--warning-circle:before {
     content: "\EA1B";
   }
+
 }
