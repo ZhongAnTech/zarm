@@ -1,11 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, forwardRef } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { ConfigContext } from '../n-config-provider';
 
 interface WeekProps {
   weekStartsOn?: 'Monday' | 'Sunday';
 }
-function Week({ weekStartsOn }: WeekProps) {
+
+const Week = forwardRef<any, WeekProps>((props, ref) => {
+  const { weekStartsOn } = props;
   const { prefixCls: globalPrefixCls, locale: globalLocal } = useContext(ConfigContext);
   const locale = globalLocal?.Calendar;
 
@@ -20,8 +22,12 @@ function Week({ weekStartsOn }: WeekProps) {
       {week}
     </li>
   ));
-  return <ul className={bem('bar')}>{content}</ul>;
-}
+  return (
+    <ul className={bem('bar')} ref={ref}>
+      {content}
+    </ul>
+  );
+});
 
 Week.defaultProps = {
   weekStartsOn: 'Sunday',

@@ -80,10 +80,10 @@ const Demo = () => {
       </List>
 
       <Calendar
-        mode={multiple}
-        value={value}
-        min={min}
-        max={max}
+        mode="range"
+        // value={value}
+        // min={min}
+        // max={max}
         direction={direction}
         weekStartsOn={weekStartsOn}
         dateRender={(date) => {

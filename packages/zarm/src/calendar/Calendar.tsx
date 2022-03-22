@@ -10,7 +10,7 @@ import Header from './Header';
 import Carousel from '../carousel';
 import useScroll from '../useScroll';
 import parseState from './utils/parseState';
-import { isFunction } from '../utils/validate';
+import { getElementSize } from '../utils/dom';
 
 export type CalendarProps = BaseCalendarProps & React.HTMLAttributes<HTMLElement>;
 
@@ -58,6 +58,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
   const nodes = useRef<any>({});
 
   const scrollBodyRef = React.createRef<HTMLDivElement>();
+  const weekRef = React.useRef<HTMLDivElement>();
 
   const [scrollDate, setScrollDate] = useState<string | null>();
 
@@ -93,9 +94,11 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
     const target = value[0] || new Date();
     const key = `${target.getFullYear()}-${target.getMonth()}`;
     const node = nodes.current[key]!;
-    if (node && isFunction(node.anchor)) {
+    if (node?.el() && scrollBodyRef.current && weekRef.current) {
       scrollIntoView.current = true;
-      node.anchor();
+      const top = node.el()?.offsetTop;
+      const { height } = getElementSize(weekRef.current!);
+      scrollBodyRef.current.scrollTop! = top - height;
     }
   };
 
@@ -165,8 +168,8 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
   };
 
   useEffect(() => {
-    anchor();
-  }, []);
+    !isHorizontal() && anchor();
+  }, [direction]);
 
   const timer = useRef<ReturnType<typeof setTimeout>>();
   useScroll({
@@ -179,7 +182,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
       timer.current = setTimeout(() => {
         setScrolling(false);
         scrollIntoView.current = false;
-      }, 800);
+      }, 150);
     },
   });
 
@@ -222,7 +225,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
         months={months}
         currentMonth={currentMonth}
       />
-      <Week weekStartsOn={weekStartsOn!} />
+      <Week weekStartsOn={weekStartsOn!} ref={weekRef} />
       {renderMonths()}
     </div>
   );

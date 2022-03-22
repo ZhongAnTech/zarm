@@ -14,7 +14,7 @@ const parseState = (props: {
   let tmpValue: Date[];
 
   value = value || defaultValue;
-  value = Array.isArray(value) ? value : ((value ? [value] : [new Date()]) as Date[]);
+  value = Array.isArray(value) ? value : ((value ? [value] : []) as Date[]);
 
   tmpValue = value
     .map((item: Date) => dayjs(item).toDate())
@@ -23,14 +23,13 @@ const parseState = (props: {
     tmpValue = [tmpValue[0], tmpValue[tmpValue.length - 1]];
   }
 
-  const min = props.min ? dayjs(props.min).toDate() : new Date();
+  const min = props.min ? dayjs(props.min).toDate() : dayjs().toDate();
   // const startMonth = dayjs(min).toDate();
   const max = props.max ? dayjs(props.max).toDate() : dayjs(min).add(1, 'year').toDate();
 
   // min、max 排序
   const duration = [min, max].sort((item1: Date, item2: Date) => +item1 - +item2);
   const steps = mode === 'range' ? 2 : 1;
-
   return {
     value: tmpValue,
     min: duration[0],

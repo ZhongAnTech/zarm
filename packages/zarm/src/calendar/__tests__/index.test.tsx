@@ -21,7 +21,7 @@ describe('Calendar', () => {
     const wrapper = mount(<Calendar mode="range" onChange={onChangeFn} />);
 
     const day3 = wrapper.find(`.${prefixCls}__day`).at(30);
-    const day4 = wrapper.find(`.${prefixCls}__day`).at(20);
+    const day4 = wrapper.find(`.${prefixCls}__day`).at(26);
     day3.simulate('click');
     day4.simulate('click');
     expect(onChangeFn).toBeCalled();

@@ -38,8 +38,8 @@ const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
   const isDisabled = useCallback(
     (date) => {
       return (
-        dayjs(date).isBefore(dayjs(min)) ||
-        dayjs(date).isAfter(dayjs(max)) ||
+        dayjs(date).isBefore(dayjs(min), 'day') ||
+        dayjs(date).isAfter(dayjs(max), 'day') ||
         (typeof disabledDate === 'function' && disabledDate(date))
       );
     },
@@ -50,8 +50,8 @@ const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
     (date) => {
       const currentDate = dayjs(date);
       return mode === 'single'
-        ? currentDate.isSame(dayjs(value[0]), 'day')
-        : value.some((item) => currentDate.isSame(dayjs(item), 'day'));
+        ? value[0] && currentDate.isSame(dayjs(value[0]), 'day')
+        : value.some((item) => (item ? currentDate.isSame(dayjs(item), 'day') : false));
     },
     [mode, value],
   );
@@ -68,10 +68,10 @@ const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
         return bem('day', [{ range: true }]);
       }
       if (value.length > 1) {
-        if (currentDate.isSame(dayjs(start), 'day')) {
+        if (currentDate.isSame(dayjs(start), 'day') && start) {
           return 'range-start';
         }
-        if (currentDate.isSame(dayjs(end), 'day')) {
+        if (currentDate.isSame(dayjs(end), 'day') && end) {
           return 'range-end';
         }
       }
@@ -144,11 +144,6 @@ const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
 
   useImperativeHandle(ref, () => {
     return {
-      anchor: () => {
-        if (monthRef?.current?.scrollIntoViewIfNeeded) {
-          monthRef.current.scrollIntoView();
-        }
-      },
       el: () => {
         return monthRef.current;
       },
