@@ -28,10 +28,10 @@
     "@babel/cli": "^7.13.16",
     "@svgr/cli": "^5.5.0",
     "@zarm-design/bem": "^0.0.1",
-    "@zarm-design/cli": "^0.0.39",
+    "@zarm-design/cli": "^0.0.40",
     "react": "^17.0.2",
     "shelljs": "^0.8.4",
-    "webfonts-helper": "^0.0.9",
+    "webfonts-helper": "^0.1.0",
     "decamelize": "^5.0.0"
   },
   "publishConfig": {
