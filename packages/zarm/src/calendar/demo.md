@@ -7,8 +7,8 @@ import { useState } from 'react';
 import { Radio, DateSelect, List, Calendar } from 'zarm';
 
 const Demo = () => {
-  const [multiple, setMultiple] = useState('single');
-  const [value, setValue] = useState(['2022-2-13', '2022-2-27']);
+  const [mode, setMode] = useState('single');
+  const [value, setValue] = useState(['2022-2-18', '2022-2-27']);
   const [min, setMin] = useState('2022-1-1');
   const [max, setMax] = useState('2022-5-1');
   const [custom, setCustom] = useState(false);
@@ -22,9 +22,9 @@ const Demo = () => {
           <Radio.Group
             buttonCompact
             type="button"
-            value={multiple}
+            value={mode}
             onChange={(value) => {
-              setMultiple(value);
+              setMode(value);
             }}
           >
             <Radio value={'single'}>单选</Radio>
@@ -80,10 +80,10 @@ const Demo = () => {
       </List>
 
       <Calendar
-        mode="range"
-        // value={value}
-        // min={min}
-        // max={max}
+        mode={mode}
+        value={value}
+        min={min}
+        max={max}
         direction={direction}
         weekStartsOn={weekStartsOn}
         dateRender={(date) => {

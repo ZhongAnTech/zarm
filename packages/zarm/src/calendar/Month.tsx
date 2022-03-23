@@ -7,7 +7,6 @@ import React, {
   ReactNode,
   useCallback,
 } from 'react';
-import classnames from 'classnames';
 import { createBEM } from '@zarm-design/bem';
 import dayjs from 'dayjs';
 import { ConfigContext } from '../n-config-provider';
@@ -43,7 +42,7 @@ const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
         (typeof disabledDate === 'function' && disabledDate(date))
       );
     },
-    [min, max],
+    [min, max, disabledDate],
   );
 
   const isSelected = useCallback(
@@ -65,14 +64,14 @@ const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
       const start = value[0];
       const end = value[value.length - 1];
       if (currentDate.isAfter(dayjs(start)) && currentDate.isBefore(dayjs(end))) {
-        return bem('day', [{ range: true }]);
+        return 'range';
       }
       if (value.length > 1) {
         if (currentDate.isSame(dayjs(start), 'day') && start) {
-          return 'range-start';
+          return 'start';
         }
         if (currentDate.isSame(dayjs(end), 'day') && end) {
-          return 'range-end';
+          return 'end';
         }
       }
       return '';
@@ -102,26 +101,34 @@ const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
       }
     }
 
-    const baseClassName = classnames(
-      {
-        d6: (day + firstDay) % 7 === 0,
-        d7: (day + firstDay) % 7 === 1,
-        [`firstday-${firstDay}`]: day === 1 && firstDay,
-      },
-      bem('day'),
-    );
+    const style =
+      day === 1
+        ? {
+            marginLeft: `${14.28571 * firstDay}%`,
+          }
+        : {};
 
+    const rangeStatus = range(date);
     const className = bem('day', [
       {
         disabled: isDisabled(date),
         today: isToday,
         selected: isSelected(date),
+        range: rangeStatus === 'range',
+        d6: (day + firstDay) % 7 === 0 && !!rangeStatus,
+        d7: (day + firstDay) % 7 === 1 && !!rangeStatus,
+        start: rangeStatus === 'start',
+        end: rangeStatus === 'end',
+        last: rangeStatus === 'end' && (day + firstDay) % 7 === 1,
+        first: rangeStatus === 'start' && (day + firstDay) % 7 === 0,
       },
     ]);
+
     return (
       <li
         key={`${year}-${month}-${day}`}
-        className={`${baseClassName} ${className} ${range(date)}`}
+        className={className}
+        style={style}
         onClick={() => hanlerDateClick(date)}
       >
         {(text && <div className={bem('day__content')}>{text}</div>) || ''}

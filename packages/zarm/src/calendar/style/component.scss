@@ -148,7 +148,7 @@ $--calendar-day-width: 14.28571%;
       margin: 0 auto;
     }
 
-    @include firstday();
+    // @include firstday();
 
     @include m(today) {
       @include b(calendar) {
@@ -187,43 +187,34 @@ $--calendar-day-width: 14.28571%;
           background-color: var(--calendar-day-range-background);
         }
       }
-
-      &.d6 {
-        background-color: transparent;
-        @include linegradient(left);
-      }
-
-      &.d7 {
-        background-color: transparent;
-        @include linegradient(right);
-      }
-
-      &:first-child:not(.d6) {
-        background-color: transparent;
-        @include linegradient(right);
-      }
-
-      &:last-child:not(.d7) {
-        background-color: transparent;
-        @include linegradient(left);
-      }
-
-      &:last-child.d7,
-      &:first-child.d6 {
-        background-image: none;
-      }
     }
 
-    &.range-start.range-end {
-      background-image: none;
+    @include m(d6) {
+      background-color: transparent;
+      @include linegradient(left);
     }
 
-    &.range-start:not(.range-end):not(.d6):not(:last-child) {
+    @include m(d7) {
+      background-color: transparent;
       @include linegradient(right);
     }
 
-    &.range-end:not(.range-start):not(.d7):not(:first-child) {
+    @include m(start) {
+      background-color: transparent;
+      @include linegradient(right);
+    }
+
+    @include m(end) {
+      background-color: transparent;
       @include linegradient(left);
+    }
+
+    @include m(last) {
+      background-image: none;
+    }
+
+    @include m(first) {
+      background-image: none;
     }
   }
 }
