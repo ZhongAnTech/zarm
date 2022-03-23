@@ -155,6 +155,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
         </Carousel>
       );
     }
+
     return (
       <div className={bem('body')} ref={scrollBodyRef}>
         {content}
@@ -182,7 +183,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
       timer.current = setTimeout(() => {
         setScrolling(false);
         scrollIntoView.current = false;
-      }, 150);
+      }, 300);
     },
   });
 
