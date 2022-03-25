@@ -35,7 +35,7 @@
     "@types/classnames": "^2.2.3",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
-    "@zarm-design/cli": "^0.0.39",
+    "@zarm-design/cli": "^0.0.40",
     "babel-plugin-import": "^1.13.0",
     "babel-plugin-prismjs": "^2.0.1",
     "browserslist": "^4.6.6",

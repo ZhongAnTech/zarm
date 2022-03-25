@@ -36,7 +36,7 @@
     "test": "jest --passWithNoTests"
   },
   "devDependencies": {
-    "@zarm-design/cli": "^0.0.39"
+    "@zarm-design/cli": "^0.0.40"
   },
   "bugs": {
     "url": "https://github.com/ZhongAnTech/zarm/issues"
