@@ -51,7 +51,7 @@ const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
   };
 
   if (isFont) {
-    require('../font/style/icon.scss');
+    // require('../font/style/icon.scss');
     return <i {...rest} ref={ref} className={`${cls} ${iconClassName}`} />;
   }
   // svg component > children by iconfont > type

@@ -7,6 +7,10 @@
   "main": "lib/index.js",
   "modules": "es/index.js",
   "typings": "types/index.d.ts",
+  "exports": {
+    ".": "./lib/index.js",
+    "./style": "./lib/style/index.scss"
+  },
   "files": [
     "es",
     "lib",
