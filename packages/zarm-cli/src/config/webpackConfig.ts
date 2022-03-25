@@ -55,6 +55,9 @@ const config: Configuration = {
             },
           },
           {
+            loader: require.resolve('resolve-url-loader'),
+          },
+          {
             loader: require.resolve('sass-loader'),
             options: {
               sourceMap: true,
