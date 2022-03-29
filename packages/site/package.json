@@ -48,6 +48,7 @@
     "marked": "^2.0.0",
     "prismjs": "^1.23.0",
     "qrious": "^4.0.2",
-    "raw-loader": "^4.0.1"
+    "raw-loader": "^4.0.1",
+    "resolve-url-loader": "^5.0.0"
   }
 }

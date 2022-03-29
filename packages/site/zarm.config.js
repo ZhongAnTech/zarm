@@ -40,5 +40,8 @@ module.exports = {
       test: /\.md$/,
       use: ['raw-loader'],
     });
+    rules[1].use.splice(3, 0, {
+      loader: require.resolve('resolve-url-loader'),
+    });
   },
 };
