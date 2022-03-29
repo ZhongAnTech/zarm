@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { ArrowLeft, ArrowRight } from '@zarm-design/icons';
 import dayjs from 'dayjs';
-import useTitle from './useTitle';
 import PickerView from '../picker-view';
 import { ConfigContext } from '../n-config-provider';
 import parseDataSource from './utils/parseDataSource';
@@ -24,14 +23,16 @@ function Header(props: HeaderProps) {
   const { changeMonth, direction = 'vertical', months, currentMonth } = props;
 
   const current = months[currentMonth] || new Date();
-  const title = useTitle(current);
+  const year = current.getFullYear();
+  const month = current.getMonth();
+  const title = dayjs().year(year).month(month).format(globalLocal.Calendar.yearMonthFormat);;
 
   if (direction !== 'horizontal') {
     return null;
   }
   const dataSource = parseDataSource(months, locale);
 
-  const currentValue = [current.getFullYear(), current.getMonth()];
+  const currentValue = [year, month];
 
   const dateChange = (value) => {
     const day = dayjs().year(value[0].value).month(value[1].value);

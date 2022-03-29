@@ -10,7 +10,6 @@ import React, {
 import { createBEM } from '@zarm-design/bem';
 import dayjs from 'dayjs';
 import { ConfigContext } from '../n-config-provider';
-import useTitle from './useTitle';
 import { BaseCalendarMonthProps } from './interface';
 
 export type CalendarMonthProps = BaseCalendarMonthProps & React.HTMLAttributes<HTMLElement>;
@@ -28,7 +27,7 @@ const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
     weekStartsOn,
   } = props;
 
-  const { prefixCls: globalPrefixCls } = useContext(ConfigContext);
+  const { prefixCls: globalPrefixCls, locale: globalLocal } = useContext(ConfigContext);
 
   const bem = createBEM('calendar', { prefixCls: globalPrefixCls });
 
@@ -160,8 +159,7 @@ const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
   const year = dateMonth.getFullYear();
   const month = dateMonth.getMonth();
   const monthKey = `${year}-${month}`;
-
-  const title = useTitle(dateMonth);
+  const title = dayjs().year(year).month(month).format(globalLocal.Calendar.yearMonthFormat);
 
   return (
     <div key={monthKey} className={bem('month')} title={title} ref={monthRef}>

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useRef, useState, useCallback } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { Transition } from 'react-transition-group';
 import dayjs from 'dayjs';
@@ -102,7 +102,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
     }
   };
 
-  const handleDateClick = (date: Date) => {
+  const handleDateClick = useCallback((date: Date) => {
     const { step, steps } = state;
     if (mode === 'multiple') {
       value.push(date);
@@ -118,7 +118,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
     if ((step >= steps || mode === 'multiple') && typeof onChange === 'function') {
       onChange(value);
     }
-  };
+  }, [value, mode, onChange, state]);
 
   const renderMonth = (dateMonth: Date) => {
     const key = `${dateMonth.getFullYear()}-${dateMonth.getMonth()}`;
@@ -141,22 +141,22 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
     );
   };
 
-  const renderMonths = () => {
-    const content = months.map((item) => renderMonth(item));
-    if (isHorizontal()) {
-      return (
-        <Carousel
-          className={bem('body')}
-          showPagination={false}
-          activeIndex={currentMonth}
-          onChange={setCurrentMonth}
-        >
-          {content}
-        </Carousel>
-      );
-    }
+  const content = useMemo(() => {
+    return months.map((item) => renderMonth(item))
+  }, [months, min, max, disabledDate, dateRender, mode, weekStartsOn, handleDateClick, value]);
 
-    return (
+  const monthsContent = isHorizontal()
+    ? (
+      <Carousel
+        className={bem('body')}
+        showPagination={false}
+        activeIndex={currentMonth}
+        onChange={setCurrentMonth}
+      >
+        {content}
+      </Carousel>
+    ) :
+    (
       <div className={bem('body')} ref={scrollBodyRef}>
         {content}
         <Transition in={scrolling} timeout={500}>
@@ -166,7 +166,6 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
         </Transition>
       </div>
     );
-  };
 
   useEffect(() => {
     !isHorizontal() && anchor();
@@ -209,7 +208,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
     return () => {
       window?.IntersectionObserver && observer.disconnect();
     };
-  }, [nodes]);
+  }, [nodes, min, max]);
 
   useEffect(() => {
     setState({
@@ -227,7 +226,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
         currentMonth={currentMonth}
       />
       <Week weekStartsOn={weekStartsOn!} ref={weekRef} />
-      {renderMonths()}
+      {monthsContent}
     </div>
   );
 });
