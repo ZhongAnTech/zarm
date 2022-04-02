@@ -170,6 +170,8 @@ exports[`Modal renders correctly 1`] = `
                     <Icon
                       className="za-modal__close"
                       component={[Function]}
+                      mode="auto"
+                      name="SvgClose"
                       prefixCls="za"
                       size="sm"
                       viewBox="0 0 1000 1000"

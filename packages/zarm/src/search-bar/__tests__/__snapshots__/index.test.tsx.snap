@@ -74,6 +74,8 @@ exports[`SearchBar snapshot renders defaultValue correctly 1`] = `
           <Icon
             className="za-search-bar__icon"
             component={[Function]}
+            mode="auto"
+            name="SvgSearch"
             prefixCls="za"
             size="sm"
             viewBox="0 0 1000 1000"

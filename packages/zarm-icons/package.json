@@ -7,6 +7,10 @@
   "main": "lib/index.js",
   "modules": "es/index.js",
   "typings": "types/index.d.ts",
+  "exports": {
+    ".": "./lib/index.js",
+    "./style": "./lib/style/index.scss"
+  },
   "files": [
     "es",
     "lib",
@@ -21,7 +25,8 @@
     "build:lib": "rimraf lib && zarm build --mode lib --path src --out-dir lib --copy-files --build-css",
     "build:react": "rimraf src/react && svgr ./svg --out-dir ./src/react",
     "build:svg": "rimraf svg && node ./scripts/exportSVG.js",
-    "build": "yarn build:types && yarn build:lib && yarn build:es"
+    "build": "yarn build:types && yarn build:lib && yarn build:es",
+    "build:font": "webFontsHelper --src ./svg --fontName zaicon --fontPath src/font --className za-icon"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.16",
@@ -29,7 +34,9 @@
     "@zarm-design/bem": "^0.0.1",
     "@zarm-design/cli": "^0.0.40",
     "react": "^17.0.2",
-    "shelljs": "^0.8.4"
+    "shelljs": "^0.8.4",
+    "webfonts-helper": "^0.1.0",
+    "decamelize": "^5.0.0"
   },
   "publishConfig": {
     "access": "public"

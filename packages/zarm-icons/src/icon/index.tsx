@@ -1,10 +1,13 @@
 import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
+import decamelize from 'decamelize';
 import { BaseIconProps } from './interface';
 import createFromIconfont from './IconFont';
 
-export type IconProps = BaseIconProps &
-  Pick<React.HTMLAttributes<HTMLElement>, 'onClick' | 'className' | 'style'>;
+export type IconProps = BaseIconProps & { name?: string } & Pick<
+    React.HTMLAttributes<HTMLElement>,
+    'onClick' | 'className' | 'style'
+  >;
 
 interface CompoundedComponent
   extends React.ForwardRefExoticComponent<IconProps & React.RefAttributes<HTMLElement>> {
@@ -20,10 +23,16 @@ const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
     children,
     component: SvgComponent,
     viewBox,
+    mode,
+    name = '',
     ...rest
   } = props;
 
   const bem = createBEM('icon', { prefixCls });
+
+  const decamelizeName = decamelize(name, { separator: '-' }).replace('svg-', '');
+  const isFont = (mode === 'auto' && typeof SVGRect === 'undefined') || mode === 'font';
+  const iconClassName = bem(`${decamelizeName}`);
 
   const cls = bem([
     {
@@ -40,6 +49,10 @@ const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
     viewBox,
   };
 
+  if (isFont) {
+    return <i {...rest} ref={ref} className={`${cls} ${iconClassName}`} />;
+  }
+  // svg component > children by iconfont > type
   if (SvgComponent) {
     return (
       <i ref={ref} className={cls} {...rest}>
@@ -55,7 +68,6 @@ const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
       </i>
     );
   }
-
   return null;
 }) as CompoundedComponent;
 
@@ -65,6 +77,7 @@ Icon.displayName = 'Icon';
 Icon.defaultProps = {
   prefixCls: 'za',
   viewBox: '0 0 1000 1000',
+  mode: 'auto',
 };
 
 export default Icon;
