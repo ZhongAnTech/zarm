@@ -47,8 +47,7 @@ exports[`NoticeBar should be closable(remove from the document when user click t
           class="za-message__icon"
         >
           <i
-            class="za-icon za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon"
           >
             <svg
               aria-hidden="true"
@@ -83,8 +82,7 @@ exports[`NoticeBar should be closable(remove from the document when user click t
         class="za-message__footer"
       >
         <i
-          class="za-icon za-icon--default za-icon--md"
-          theme="default"
+          class="za-icon"
         >
           <svg
             aria-hidden="true"
@@ -152,8 +150,7 @@ exports[`NoticeBar should render default notice bar 1`] = `
           class="za-message__icon"
         >
           <i
-            class="za-icon za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon"
           >
             <svg
               aria-hidden="true"
@@ -204,9 +201,8 @@ exports[`NoticeBar should render default notice bar 2`] = `
           class="za-message__icon"
         >
           <i
-            class="za-icon za-icon--default za-icon--md"
+            class="za-icon"
             data-testid="notice-bar-icon"
-            theme="default"
           >
             <svg
               aria-hidden="true"
@@ -266,8 +262,7 @@ exports[`NoticeBar should render notice bar with custom theme 1`] = `
           class="za-message__icon"
         >
           <i
-            class="za-icon za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon"
           >
             <svg
               aria-hidden="true"
@@ -319,8 +314,7 @@ exports[`NoticeBar should respond to user click events when notice bar has arrow
           class="za-message__icon"
         >
           <i
-            class="za-icon za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon"
           >
             <svg
               aria-hidden="true"
@@ -355,8 +349,7 @@ exports[`NoticeBar should respond to user click events when notice bar has arrow
         class="za-message__footer"
       >
         <i
-          class="za-icon za-icon--default za-icon--md"
-          theme="default"
+          class="za-icon"
         >
           <svg
             aria-hidden="true"

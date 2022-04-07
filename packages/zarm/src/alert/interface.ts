@@ -22,9 +22,9 @@ export interface BaseAlertProps {
   width?: string | number;
   title?: ReactNode;
   content?: ReactNode;
-  cancelText?: string;
+  cancelText?: ReactNode;
   destroy?: boolean;
   onCancel?: () => void | Promise<boolean | void>;
   afterClose?: () => void;
-  mountContainer?: ContainerType | false;
+  mountContainer?: ContainerType;
 }

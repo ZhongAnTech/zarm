@@ -17,11 +17,12 @@
   --color-shadow: rgba(56, 56, 56, 0.15);            // 阴影色
 
   // 背景色
-  --background-active: rgba(0, 0, 0, 0.15);
+  --background-color: #fff;
+  --background-active: #d4d4d4;
   --background-disabled: #f2f2f2;
 
   // 边框色
-  --border-color: rgba(0, 0, 0, 0.2);
+  --border-color: #c5c5c5;
   --border-disabled: #e6e6e6;
 
   // 圆角
@@ -70,94 +71,131 @@
   --box-shadow-light: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
   --box-shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.2);
 
-  // Components
+  // New Variables
 
-  // ActionSheet
-  --za-action-sheet-border-radius: 14px;
-  --za-action-sheet-spacing-margin: 0 8px 8px;
-  --za-action-sheet-actions-background: rgba(249, 249, 249, 0.94);
-  --za-action-sheet-item-height: 56px;
-  --za-action-sheet-item-font-size: 20px;
-  --za-action-sheet-item-active-background: var(--background-active);
-  --za-action-sheet-cancel-background: #fff;
-  --za-action-sheet-cancel-color: var(--theme-primary);
-  --za-action-sheet-cancel-margin-top: 8px;
+  @include defineColorHSL(--za-theme-default, 0, 0%, 90%);
+  @include defineColorHSL(--za-theme-primary, 156, 100%, 36.9%);
+  @include defineColorHSL(--za-theme-success, 156, 100%, 36.9%);
+  @include defineColorHSL(--za-theme-warning, 31, 83.1%, 55.9%);
+  @include defineColorHSL(--za-theme-danger, 0, 100%, 65.7%);
 
-  // activity-indicator
-  --za-activity-indicator-color: var(--theme-primary);
-  --za-activity-indicator-size-md: 22px;
-  --za-activity-indicator-size-lg: 29px;
-  --za-activity-indicator-path-color: #e6e6e6;
-  --za-activity-indicator-spinner-color: #989697;
+  // 文字色
 
-  // Alert
-  --alert-button-height: 50px;
-  --alert-button-font-size: 18px;
-  --alert-button-background: var(--button-default-background);
-  --alert-button-active-background: var(--background-active);
+  --za-color-text: #343434;
+  --za-color-text-inverse: #fff; // 反色
+  --za-color-text-placeholder: rgba(128, 128, 132, 0.3); // 文本框提示
+  --za-color-text-disabled: #bcbcbc; // 失效
+  --za-color-text-caption: #909090; // 辅助描述
+  --za-color-link: var(--za-theme-primary); // 链接
+  --za-color-shadow: rgba(56, 56, 56, 0.15); // 阴影色
 
-  // Badge
-  --badge-height: 14px;
-  --badge-font-size: 10px;
-  --badge-padding-h: 4px;
-  --badge-dot-diameter: 8px;
-  --badge-border-radius-rect: var(--radius-sm);
-  --badge-border-radius-round: var(--radius-round);
-  --badge-sup-top: -4px;
-  --badge-text-color: #fff;
+  // 背景色
+  --za-background-color: #fff;
+  --za-background-active: #dbdbdd;
+  --za-background-disabled: #f2f2f2;
+
+  // 边框色
+  --za-border-color: rgba(60, 60, 67, 0.36);
+  --za-border-disabled: #e6e6e6;
+
+  // 圆角
+  --za-radius-xs: 4px;
+  --za-radius-sm: 4px;
+  --za-radius-md: 4px;
+  --za-radius-lg: 8px;
+  --za-radius-xl: 8px;
+  --za-radius-round: 1000px;
+  --za-radius-circle: 50%;
+
+  // 水平间距
+  --za-padding-h-xs: 8px;
+  --za-padding-h-sm: 12px;
+  --za-padding-h-md: 16px;
+  --za-padding-h-lg: 20px;
+  --za-padding-h-xl: 24px;
+
+  // 垂直间距
+  --za-padding-v-xs: 6px;
+  --za-padding-v-sm: 8px;
+  --za-padding-v-md: 12px;
+  --za-padding-v-lg: 16px;
+  --za-padding-v-xl: 18px;
+
+  // 字体大小
+  --za-font-size-xs: 12px;
+  --za-font-size-sm: 14px;
+  --za-font-size-md: 17px;
+  --za-font-size-lg: 20px;
+  --za-font-size-xl: 22px;
+
+  // 堆叠顺序
+  --za-zindex-mask: 1000;
+  --za-zindex-popup: 1100;
+  --za-zindex-tooltip: 1700;
+  --za-zindex-tabbar: 100;
+
+  // 透明度
+  --za-opacity-disabled: 0.5;
+  --za-opacity-mask: 0.4;
+  --za-opacity-toast: 0.8;
+  --za-opacity-tooltip: 0.8;
+
+  //阴影
+  --za-box-shadow-light: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+  --za-box-shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.2);
 
   // Button
-  --button-height-xs: 28px;
-  --button-height-sm: 36px;
-  --button-height-md: 44px;
-  --button-height-lg: 52px;
-  --button-padding-h-xs: var(--padding-h-xs);
-  --button-padding-h-sm: var(--padding-h-sm);
-  --button-padding-h-md: var(--padding-h-md);
-  --button-padding-h-lg: var(--padding-h-lg);
-  --button-font-size-xs: var(--font-size-sm);
-  --button-font-size-sm: var(--font-size-sm);
-  --button-font-size-md: var(--font-size-md);
-  --button-font-size-lg: var(--font-size-lg);
-  --button-icon-size-xs: 16px;
-  --button-icon-size-sm: 18px;
-  --button-icon-size-md: 22px;
-  --button-icon-size-lg: 26px;
-  --button-disabled-opacity: var(--opacity-disabled);
-  --button-disabled-color-ghost: var(--border-disabled);
-  --button-default-background: var(--color-text-inverse);
-  --button-default-border: var(--theme-default);
-  --button-default-color: var(--color-text);
-  --button-default-active-background: #e6e6e6;
-  --button-default-active-border: #e6e6e6;
-  --button-default-active-color: var(--color-text);
-  --button-default-ghost-border: var(--color-text-inverse);
-  --button-default-ghost-color: var(--color-text-inverse);
-  --button-default-ghost-active-border: #e6e6e6;
-  --button-default-ghost-active-color: #e6e6e6;
-  --button-default-shadow-color: rgba(230, 230, 230, 0.3);
-  --button-primary-background: var(--theme-primary);
-  --button-primary-border: var(--theme-primary);
-  --button-primary-color: var(--color-text-inverse);
-  --button-primary-active-background: var(--theme-primary-dark);
-  --button-primary-active-border: var(--theme-primary-dark);
-  --button-primary-active-color: rgba(255, 255, 255, 0.4);
-  --button-primary-ghost-border: var(--theme-primary);
-  --button-primary-ghost-color: var(--theme-primary);
-  --button-primary-ghost-active-border: var(--theme-primary-dark);
-  --button-primary-ghost-active-color: var(--theme-primary-dark);
-  --button-primary-shadow-color: rgba(0, 188, 112, 0.3);
-  --button-danger-background: var(--theme-danger);
-  --button-danger-border: var(--theme-danger);
-  --button-danger-color: var(--color-text-inverse);
-  --button-danger-active-background: var(--theme-danger-dark);
-  --button-danger-active-border: var(--theme-danger-dark);
-  --button-danger-active-color: rgba(255, 255, 255, 0.4);
-  --button-danger-ghost-border: var(--theme-danger);
-  --button-danger-ghost-color: var(--theme-danger);
-  --button-danger-ghost-active-border: var(--theme-danger-dark);
-  --button-danger-ghost-active-color: var(--theme-danger-dark);
-  --button-danger-shadow-color: rgba(255, 80, 80, 0.3);
+  --za-button-height-xs: 28px;
+  --za-button-height-sm: 36px;
+  --za-button-height-md: 44px;
+  --za-button-height-lg: 52px;
+  --za-button-padding-h-xs: var(--padding-h-xs);
+  --za-button-padding-h-sm: var(--padding-h-sm);
+  --za-button-padding-h-md: var(--padding-h-md);
+  --za-button-padding-h-lg: var(--padding-h-lg);
+  --za-button-font-size-xs: var(--font-size-sm);
+  --za-button-font-size-sm: var(--font-size-sm);
+  --za-button-font-size-md: var(--font-size-md);
+  --za-button-font-size-lg: var(--font-size-lg);
+  --za-button-icon-size-xs: 16px;
+  --za-button-icon-size-sm: 18px;
+  --za-button-icon-size-md: 22px;
+  --za-button-icon-size-lg: 26px;
+  --za-button-disabled-opacity: var(--opacity-disabled);
+  --za-button-disabled-color-ghost: var(--border-disabled);
+  --za-button-default-background: var(--color-text-inverse);
+  --za-button-default-border: var(--theme-default);
+  --za-button-default-color: var(--color-text);
+  --za-button-default-active-background: #e6e6e6;
+  --za-button-default-active-border: #e6e6e6;
+  --za-button-default-active-color: var(--color-text);
+  --za-button-default-ghost-border: var(--color-text-inverse);
+  --za-button-default-ghost-color: var(--color-text-inverse);
+  --za-button-default-ghost-active-border: #e6e6e6;
+  --za-button-default-ghost-active-color: #e6e6e6;
+  --za-button-default-shadow-color: rgba(230, 230, 230, 0.3);
+  --za-button-primary-background: var(--theme-primary);
+  --za-button-primary-border: var(--theme-primary);
+  --za-button-primary-color: var(--color-text-inverse);
+  --za-button-primary-active-background: var(--theme-primary-dark);
+  --za-button-primary-active-border: var(--theme-primary-dark);
+  --za-button-primary-active-color: rgba(255, 255, 255, 0.4);
+  --za-button-primary-ghost-border: var(--theme-primary);
+  --za-button-primary-ghost-color: var(--theme-primary);
+  --za-button-primary-ghost-active-border: var(--theme-primary-dark);
+  --za-button-primary-ghost-active-color: var(--theme-primary-dark);
+  --za-button-primary-shadow-color: rgba(0, 188, 112, 0.3);
+  --za-button-danger-background: var(--theme-danger);
+  --za-button-danger-border: var(--theme-danger);
+  --za-button-danger-color: var(--color-text-inverse);
+  --za-button-danger-active-background: var(--theme-danger-dark);
+  --za-button-danger-active-border: var(--theme-danger-dark);
+  --za-button-danger-active-color: rgba(255, 255, 255, 0.4);
+  --za-button-danger-ghost-border: var(--theme-danger);
+  --za-button-danger-ghost-color: var(--theme-danger);
+  --za-button-danger-ghost-active-border: var(--theme-danger-dark);
+  --za-button-danger-ghost-active-color: var(--theme-danger-dark);
+  --za-button-danger-shadow-color: rgba(255, 80, 80, 0.3);
 
   // Calendar
   --calendar-height: 45px; // 最小高度
@@ -179,13 +217,13 @@
   --calendar-day-height: 40px; // 日期高度
 
   // Carousel
-  --carousel-pagination-distance: 8px;
-  --carousel-pagination-rect-width: 19px;
-  --carousel-pagination-rect-height: 4px;
-  --carousel-pagination-rect-border-radius: 1px;
-  --carousel-pagination-rect-step: 2px;
-  --carousel-pagination-rect-color: rgba(255, 255, 255, 0.6);
-  --carousel-pagination-rect-color-active: #fff;
+  --za-carousel-pagination-distance: 8px;
+  --za-carousel-pagination-rect-width: 19px;
+  --za-carousel-pagination-rect-height: 4px;
+  --za-carousel-pagination-rect-border-radius: 1px;
+  --za-carousel-pagination-rect-step: 2px;
+  --za-carousel-pagination-rect-color: rgba(255, 255, 255, 0.6);
+  --za-carousel-pagination-rect-color-active: #fff;
 
   // Checkbox
   // 大小
@@ -244,17 +282,11 @@
   --za-checkbox-group-button-spacing-horizontal-lg: var(--padding-h-lg);
 
   // Collapse
-  --collapse-height: 52px;
-  --collapse-padding-h: 16px;
-  --collapse-padding-v: 15px;
-  --collapse-arrow-color: #bcbcbc;
-  --collapse-arrow-disabled-color: #eee;
-
-  // Confirm
-  --confirm-button-height: 50px;
-  --confirm-button-font-size: 18px;
-  --confirm-button-background: var(--button-default-background);
-  --confirm-button-active-background: var(--background-active);
+  --za-collapse-height: 52px;
+  --za-collapse-padding-horizontal: 16px;
+  --za-collapse-padding-vertical: 15px;
+  --za-collapse-arrow-color: #bcbcbc;
+  --za-collapse-arrow-disabled-color: #eee;
 
   // List
   // 列表项高度
@@ -282,7 +314,7 @@
   // 列表项 info 文本字体大小
   --za-list-item-info-font-size: 12px;
   // 列表项 info 文本字体行高
-  --za-list-item-info-line-height: 15px;
+  --za-list-item-info-line-height: 16px;
   // 列表项 info 文本字体颜色
   --za-list-item-info-text-color: rgba(60, 60, 67, 0.6);
   // 列表项箭头符号颜色
@@ -327,30 +359,17 @@
   --za-input-disabled-color: var(--color-text-disabled);
 
   // ImagePreview
-  --image-preview-origin-button-background: #2d2d2d;
-
-  // Keyboard
-  --keyboard-background: #fff;
-  --keyboard-item-background: #fff;
-  --keyboard-item-height: 52px;
-  --keyboard-item-font-size: 30px;
+  --za-image-preview-origin-button-background: #2d2d2d;
 
   // Loading
-  --loading-background: rgba(0, 0, 0, var(--opacity-toast));
+  --za-loading-background: rgba(0, 0, 0, var(--opacity-toast));
 
   // Message
-  --message-min-height: 29px;
-  --message-font-size: 12px;
-  --message-icon-size: 14px;
-  --message-padding-v: 6px;
-  --message-padding-h: 8px;
-
-  // Modal
-  --modal-background: #fff;
-  --modal-title-font-size: 18px;
-  --modal-title-color: var(--color-text);
-  --modal-close-color: #ccc;
-  --modal-close-active-color: #999;
+  --za-message-min-height: 29px;
+  --za-message-font-size: 12px;
+  --za-message-icon-size: 14px;
+  --za-message-padding-vertical: 6px;
+  --za-message-padding-horizontal: 8px;
 
   // NavBar
   // 背景色
@@ -360,19 +379,21 @@
   // 标题字体色
   --za-nav-bar-title-color: var(--color-text);
   // 标题字体大小
-  --za-nav-bar-title-font-size: 18px;
+  --za-nav-bar-title-font-size: 17px;
   // 标题字体粗细
   --za-nav-bar-title-font-weight: 500;
+  // 左右栏字体大小
+  --za-nav-bar-side-font-size: 17px;
   // 横向内边距
   --za-nav-bar-padding-horizontal: 16px;
 
   // NoticeBar
-  --notice-bar-height: 24px;
-  --notice-bar-min-height: 40px;
-  --notice-bar-font-size: 14px;
-  --notice-bar-padding-v: 8px;
-  --notice-bar-padding-h: 12px;
-  --notice-bar-icon-size: 16px;
+  --za-notice-bar-height: 24px;
+  --za-notice-bar-min-height: 40px;
+  --za-notice-bar-font-size: 14px;
+  --za-notice-bar-padding-vertical: 8px;
+  --za-notice-bar-padding-horizontal: 12px;
+  --za-notice-bar-icon-size: 16px;
 
   // Panel
   // 左右留白宽度
@@ -389,24 +410,27 @@
   --za-panel-body-border-radius: 10px;
 
   // Picker
-  --picker-background: #fff;
-  --picker-mask-background-start: rgba(255, 255, 255, 0.4);
-  --picker-mask-background-end: rgba(255, 255, 255, 0.8);
-  --picker-header-height: 45px;
-  --picker-header-font-size: 16px;
-  --picker-header-background: #f7f7f7;
+  --za-picker-background: #fff;
+  --za-picker-padding: 16px;
+  --za-picker-mask-background-start: rgba(255, 255, 255, 0.4);
+  --za-picker-mask-background-end: rgba(255, 255, 255, 0.8);
+  --za-picker-header-height: 45px;
+  --za-picker-header-font-size: 16px;
+  --za-picker-header-background: #f7f7f7;
+  --za-picker-item-selected-background: rgba(116, 116, 128, 0.08);
+  --za-picker-item-selected-border-radius: 7px;
 
   // Progress
-  --progress-background: #f2f2f2;
-  --progress-width-lg: 100%;
-  --progress-width-md: 100%;
-  --progress-width-sm: 140px;
-  --progress-size-lg: 200px;
-  --progress-size-md: 150px;
-  --progress-size-sm: 80px;
-  --progress-font-size-circle-lg: 30px;
-  --progress-font-size-circle-md: 24px;
-  --progress-font-size-circle-sm: 18px;
+  --za-progress-background: #f2f2f2;
+  --za-progress-width-lg: 100%;
+  --za-progress-width-md: 100%;
+  --za-progress-width-sm: 140px;
+  --za-progress-size-lg: 200px;
+  --za-progress-size-md: 150px;
+  --za-progress-size-sm: 80px;
+  --za-progress-font-size-circle-lg: 30px;
+  --za-progress-font-size-circle-md: 24px;
+  --za-progress-font-size-circle-sm: 18px;
 
   // Pull
   --pull-control-height: 50px;
@@ -502,100 +526,61 @@
   // 取消按钮动画
   --za-search-bar-cancel-transition: all .2s;
 
-  // Slider
-  --slider-line-background: var(--border-color);
-  --slider-line-height: 2px;
-  --slider-line-dot-width: 6px;
-  --slider-line-dot-color: #fff;
-  --slider-vertical-line-width: 2px;
-  --slider-handle-size: 24px;
-  --slider-handle-size-small: 16px;
-  --slider-mark-handle: 24px;
-  --slider-mark-size: 15px;
-  --slider-handle-background: #fff;
-  --slider-handle-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-
   // Stepper
-  --stepper-input-background: #fff;
-  --stepper-height-md: 28px;
-  --stepper-height-lg: 36px;
-  --stepper-icon-font-size-md: 12px;
-  --stepper-icon-font-size-lg: 14px;
-  --stepper-input-width-md: 50px;
-  --stepper-input-width-lg: 60px;
-  --stepper-input-disabled: var(--color-text-disabled);
-  --stepper-input-font-size-md: 14px;
-  --stepper-input-font-size-lg: 16px;
-  --stepper-input-margin-h-md: 4px;
-  --stepper-input-margin-h-lg: 4px;
-  --stepper-input-padding-h-md: 8px;
-  --stepper-input-padding-h-lg: 8px;
-
-  // Switch
-  // 宽度
-  --za-switch-width: 52px;
-  // 高度
-  --za-switch-height: 32px;
-  // 背景颜色
-  --za-switch-background: rgba(120, 120, 128, 0.16);
-  // 选中状态背景颜色
-  --za-switch-checked-background: var(--theme-primary);
-  // 圆角
-  --za-switch-border-radius: var(--radius-round);
-  // 选中动画执行时间
-  --za-switch-transition-duration: 0.3s;
-  // 把手大小
-  --za-switch-knob-size: 28px;
-  // 把手背景颜色
-  --za-switch-knob-background: #fff;
-  // 把手阴影
-  --za-switch-knob-box-shadow: 0 3px 1px rgba(0, 0, 0, 0.06), 0 3px 8px rgba(0, 0, 0, 0.15);
-  // 把手边框颜色
-  --za-switch-knob-border-color: rgba(0, 0, 0, 0.04);
-  // 把手边框宽度
-  --za-switch-knob-border-width: 0.5px;
-  // 把手移动动画执行时间
-  --za-switch-knob-transition-duration: 0.3s;
+  --za-stepper-input-background: #fff;
+  --za-stepper-height-md: 28px;
+  --za-stepper-height-lg: 36px;
+  --za-stepper-icon-font-size-md: 12px;
+  --za-stepper-icon-font-size-lg: 14px;
+  --za-stepper-input-width-md: 50px;
+  --za-stepper-input-width-lg: 60px;
+  --za-stepper-input-disabled: var(--color-text-disabled);
+  --za-stepper-input-font-size-md: 14px;
+  --za-stepper-input-font-size-lg: 16px;
+  --za-stepper-input-margin-horizontal-md: 4px;
+  --za-stepper-input-margin-horizontal-lg: 4px;
+  --za-stepper-input-padding-horizontal-md: 8px;
+  --za-stepper-input-padding-horizontal-lg: 8px;
 
   // Tabs
-  --tabs-height: 45px;
-  --tabs-item-font-size: var(--font-size-lg);
-  --tabs-line-height: 2px;
-  --tabs-item-horizontal-padding: 20px;
-  --tabs-item-vertical-padding: 12px;
+  --za-tabs-height: 45px;
+  --za-tabs-line-height: 2px;
+  --za-tabs-item-font-size: var(--font-size-lg);
+  --za-tabs-item-padding-horizontal: 20px;
+  --za-tabs-item-padding-vertical: 12px;
 
   // Toast
-  --toast-border-radius: 6px;
-  --toast-background: rgba(0, 0, 0, var(--opacity-toast));
-  --toast-color: var(--color-text-inverse);
-  --toast-font-size: 13px;
+  --za-toast-border-radius: 6px;
+  --za-toast-background: rgba(0, 0, 0, var(--opacity-toast));
+  --za-toast-color: var(--color-text-inverse);
+  --za-toast-font-size: 13px;
 
   // Tooltip
-  --tooltip-font-size: 12px;
-  --tooltip-color: var(--color-text-inverse);
-  --tooltip-arrow-size: 4px;
-  --tooltip-padding-v: var(--padding-v-xs);
-  --tooltip-padding-h: var(--padding-h-xs);
-  --tooltip-background: rgba(0, 0, 0, var(--opacity-tooltip));
+  --za-tooltip-font-size: 12px;
+  --za-tooltip-color: var(--color-text-inverse);
+  --za-tooltip-arrow-size: 4px;
+  --za-tooltip-padding-vertical: var(--padding-v-xs);
+  --za-tooltip-padding-horizontal: var(--padding-h-xs);
+  --za-tooltip-background: rgba(0, 0, 0, var(--opacity-tooltip));
 
   // Tabbar
-  --tabbar-height: 50px;
-  --tabbar-hidden-bottom: -50px;
-  --tabbar-background: #fff;
-  --tabbar-item-font-size: 12px;
-  --tabbar-item-active-color: var(--theme-primary);
+  --za-tabbar-height: 50px;
+  --za-tabbar-hidden-bottom: -50px;
+  --za-tabbar-background: #fff;
+  --za-tabbar-item-font-size: 12px;
+  --za-tabbar-item-active-color: var(--theme-primary);
 
   // Wheel
-  --wheel-item-height: 34px;
-  --wheel-item-rows: 5;
-  --wheel-item-font-size: 18px;
-  --wheel-color: var(--color-text);
+  --za-wheel-item-height: 34px;
+  --za-wheel-item-rows: 5;
+  --za-wheel-item-font-size: 20px;
+  --za-wheel-color: var(--color-text);
 
   // Icon
-  --icon-font-size-sm: 16px;
-  --icon-font-size-md: 24px;
-  --icon-font-size-lg: 32px;
-  --icon-theme-default: var(--color-text);
+  --za-icon-font-size-sm: 16px;
+  --za-icon-font-size-md: 24px;
+  --za-icon-font-size-lg: 32px;
+  --za-icon-theme-default: var(--color-text);
 
   // StackPicker
   --stack-picker-background: #fff;
@@ -606,10 +591,4 @@
   --stack-picker-stack-item-height: 35px;
   --stack-picker-padding: 20px;
   --stack-picker-left: 60px;
-
-  // Rate
-  --za-rate-size: 20px;
-  --za-rate-color: var(--theme-danger);
-  --za-rate-unchecked-color: #eee;
-  --za-rate-gap: 4px;
 }

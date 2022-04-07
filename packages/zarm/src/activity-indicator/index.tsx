@@ -1,7 +1,18 @@
 import React, { HTMLAttributes } from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseActivityIndicatorProps } from './interface';
+
+export interface ActivityIndicatorCssVars {
+  '--size'?: React.CSSProperties['width' | 'height'];
+  '--size-large'?: React.CSSProperties['width' | 'height'];
+  '--stroke-color'?: React.CSSProperties['stroke'];
+  '--stroke-active-color'?: React.CSSProperties['stroke'];
+  '--spinner-item-color'?: React.CSSProperties['color'];
+  '--spinner-item-width'?: React.CSSProperties['width'];
+  '--spinner-item-height'?: React.CSSProperties['height'];
+  '--spinner-item-border-radius'?: React.CSSProperties['borderRadius'];
+}
 
 const DIAMETER = 62;
 
@@ -10,13 +21,16 @@ const Circular = React.forwardRef(
     { className, size, percent, strokeWidth, loading, ...htmlAttributes }: ActivityIndicatorProps,
     ref: any,
   ) => {
-    const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-    const prefixCls = `${globalPrefixCls}-activity-indicator`;
+    const { prefixCls } = React.useContext(ConfigContext);
+    const bem = createBEM('activity-indicator', { prefixCls });
 
-    const cls = classnames(className, prefixCls, {
-      [`${prefixCls}--${size}`]: !!size,
-      [`${prefixCls}--circular`]: loading,
-    });
+    const cls = bem([
+      {
+        circular: loading,
+        [`${size}`]: !!size,
+      },
+      className,
+    ]);
 
     const half = DIAMETER / 2;
     const r = half - (strokeWidth as number) / 2;
@@ -41,21 +55,14 @@ const Circular = React.forwardRef(
       <div className={cls} {...htmlAttributes} ref={ref}>
         <svg viewBox={`0 0 ${DIAMETER} ${DIAMETER}`}>
           <circle
-            className={`${prefixCls}__path`}
+            className={bem('stroke')}
             cx={half}
             cy={half}
             r={r}
             fill="none"
             style={{ strokeWidth }}
           />
-          <circle
-            className={`${prefixCls}__line`}
-            cx={half}
-            cy={half}
-            r={r}
-            fill="none"
-            style={lineStyle}
-          />
+          <circle className={bem('line')} cx={half} cy={half} r={r} fill="none" style={lineStyle} />
         </svg>
       </div>
     );
@@ -74,12 +81,16 @@ const Spinner = React.forwardRef(
     }: Pick<ActivityIndicatorProps, 'className' | 'size' | HTMLDivElementAttributeKeys>,
     ref: any,
   ) => {
-    const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-    const prefixCls = `${globalPrefixCls}-activity-indicator`;
+    const { prefixCls } = React.useContext(ConfigContext);
+    const bem = createBEM('activity-indicator', { prefixCls });
 
-    const cls = classnames(prefixCls, `${prefixCls}--spinner`, className, {
-      [`${prefixCls}--${size}`]: !!size,
-    });
+    const cls = bem([
+      {
+        spinner: true,
+        [`${size}`]: !!size,
+      },
+      className,
+    ]);
 
     const spinner: React.ReactElement[] = [];
 
@@ -109,10 +120,10 @@ const ActivityIndicator = React.forwardRef<unknown, ActivityIndicatorProps>((pro
 });
 
 ActivityIndicator.defaultProps = {
-  strokeWidth: 5,
-  percent: 20,
   type: 'circular',
   loading: true,
+  strokeWidth: 5,
+  percent: 20,
 };
 
 ActivityIndicator.displayName = 'ActivityIndicator';

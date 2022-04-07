@@ -22,10 +22,10 @@ export interface BaseConfirmProps {
   width?: string | number;
   title?: ReactNode;
   content?: ReactNode;
-  okText?: string;
+  okText?: ReactNode;
   onOk?: () => void | Promise<boolean | void>;
-  cancelText?: string;
+  cancelText?: ReactNode;
   onCancel?: () => void | Promise<boolean | void>;
   afterClose?: () => void;
-  mountContainer?: ContainerType | false;
+  mountContainer?: ContainerType;
 }

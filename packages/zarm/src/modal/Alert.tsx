@@ -1,10 +1,10 @@
 import * as React from 'react';
 import Alert from '../alert';
 import renderToContainer from '../utils/renderToContainer';
+import { RuntimeConfigProvider } from '../n-config-provider/ConfigProvider';
 import type { AlertProps } from '../alert';
-import type { ContainerType } from '../utils/dom';
 
-const alert = ({ className, ...props }: Omit<AlertProps, 'visible'>) => {
+const alert = (props: Omit<AlertProps, 'visible'>) => {
   return new Promise((resolve) => {
     let unmount = () => {};
     const Wrapper = () => {
@@ -14,28 +14,26 @@ const alert = ({ className, ...props }: Omit<AlertProps, 'visible'>) => {
       }, []);
 
       return (
-        <Alert
-          {...props}
-          visible={visible}
-          mountContainer={false}
-          onCancel={async () => {
-            const close = await props.onCancel?.();
-            if (close === false) return;
-            setVisible(false);
-            resolve(null);
-          }}
-          afterClose={() => {
-            props.afterClose?.();
-            unmount();
-          }}
-        />
+        <RuntimeConfigProvider>
+          <Alert
+            {...props}
+            visible={visible}
+            onCancel={async () => {
+              const close = await props.onCancel?.();
+              if (close === false) return;
+              setVisible(false);
+              resolve(null);
+            }}
+            afterClose={() => {
+              props.afterClose?.();
+              unmount();
+            }}
+          />
+        </RuntimeConfigProvider>
       );
     };
-    const slot = document.createElement('div');
-    slot.classList.add('za-alert-container');
-    className && slot.classList.add(className);
 
-    unmount = renderToContainer(props.mountContainer as ContainerType, <Wrapper />, slot);
+    unmount = renderToContainer(<Wrapper />, props.mountContainer);
   });
 };
 

@@ -45,7 +45,7 @@ export default class Portal extends PureComponent<PortalProps, PortalState> {
     this.state = {
       isPending: false,
     };
-    if (props.mountContainer !== false) {
+    if (props.mountContainer !== false && canUseDOM) {
       this.createContainer();
     }
   }

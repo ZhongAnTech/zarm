@@ -1,3 +1,1 @@
-import type BaseLoadingProps from '../toast/interface';
-
-export type { BaseLoadingProps };
+export type { BaseToastProps as BaseLoadingProps } from '../toast/interface';

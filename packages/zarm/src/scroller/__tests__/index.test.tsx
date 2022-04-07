@@ -1,10 +1,10 @@
 import { shallow } from 'enzyme';
 import React from 'react';
+import throttle from 'lodash/throttle';
 import Scroller from '../index';
 import Events from '../../utils/events';
-import throttle from '../../utils/throttle';
 
-jest.mock('../../utils/throttle');
+jest.mock('lodash/throttle');
 
 describe('Scroller', () => {
   let eventsOnSpy: jest.SpyInstance;

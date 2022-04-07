@@ -1,12 +1,29 @@
 @include b(marquee) {
+  --transform-x: 200%;
+  --transform-y: 200%;
+
   width: 100%;
   overflow: hidden;
 
   @include e(body) {
     white-space: nowrap;
+    width: 100%;
+    transform: translate3d(var(--transform-x), var(--transform-y), 0);
+    animation-timing-function: linear;
+    animation-direction: normal;
+    animation-fill-mode: none;
+    animation-play-state: running;
+    animation-iteration-count: infinite;
+    animation-name: za-marqueue-animation;
   }
 
   @include e(content) {
     display: inline-block;
+  }
+}
+
+@keyframes za-marqueue-animation {
+  100% {
+    transform: translate3d(var(--distance-x), var(--distance-y), 0);
   }
 }

@@ -6,26 +6,12 @@ exports[`KeyboardPicker snapshot renders correctly 1`] = `
   type="number"
   visible={false}
 >
-  <ForwardRef(forwardRef)
+  <Popup
+    className="za-keyboard-picker"
     destroy={true}
+    lockScroll={true}
     mask={false}
     visible={false}
-  >
-    <ConfigReceiver
-      destroy={true}
-      forwardedRef={null}
-      mask={false}
-      visible={false}
-    >
-      <Popup
-        destroy={true}
-        localeCode="zh-CN"
-        lockScroll={true}
-        mask={false}
-        safeIphoneX={false}
-        visible={false}
-      />
-    </ConfigReceiver>
-  </ForwardRef(forwardRef)>
+  />
 </KeyboardPicker>
 `;

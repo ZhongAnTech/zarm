@@ -1,8 +1,10 @@
 import ActionSheet from './ActionSheet';
-import useActionSheet from './useActionSheet';
+import attachPropertiesToComponent from '../utils/attachPropertiesToComponent';
+import showActionSheet from './show';
 
-export type { ActionSheetProps, UseActionSheet } from './ActionSheet';
+export type { ActionSheetProps, ActionSheetCssVars } from './ActionSheet';
+export type { ActionSheetItemProps } from './ActionSheetItem';
 
-ActionSheet.useActionSheet = useActionSheet;
-
-export default ActionSheet;
+export default attachPropertiesToComponent(ActionSheet, {
+  show: showActionSheet,
+});

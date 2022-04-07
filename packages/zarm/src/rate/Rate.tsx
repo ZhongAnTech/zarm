@@ -1,23 +1,30 @@
 import * as React from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import { StarFill } from '@zarm-design/icons';
 import { useDrag } from '@use-gesture/react';
 import { ConfigContext } from '../n-config-provider';
-import type { BaseRateProps } from './interface';
 import { useControllableValue } from '../utils/hooks';
 import { getBoundingClientRect } from '../utils/dom';
+import type { BaseRateProps } from './interface';
+import type { HTMLProps } from '../utils/utilityTypes';
 
-export interface RateProps extends BaseRateProps {
-  className?: string;
-  style?: React.CSSProperties;
+export interface RateCssVars {
+  '--size'?: number | string;
+  '--color'?: React.CSSProperties['color'];
+  '--active-color'?: React.CSSProperties['color'];
+  '--gap'?: React.CSSProperties['marginRight'];
 }
 
-const Rate = (props: RateProps) => {
+export type RateProps = BaseRateProps & HTMLProps;
+
+const Rate = React.forwardRef<HTMLDivElement, RateProps>((props, ref) => {
   const { className, style, count, character, allowHalf, allowClear, readonly } = props;
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-rate`;
+
   const [value, setValue] = useControllableValue<number>(props);
   const itemRefs = React.useRef<(HTMLDivElement | null)[]>([]);
+
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('rate', { prefixCls });
 
   const items = Array(count).fill(null);
 
@@ -66,6 +73,13 @@ const Rate = (props: RateProps) => {
       setValue(allowHalf ? next : score);
     };
 
+    const itemCls = bem('item', [
+      {
+        active: value >= index + 1,
+        half: allowHalf && value === index + 0.5,
+      },
+    ]);
+
     return (
       <div
         key={index}
@@ -74,39 +88,19 @@ const Rate = (props: RateProps) => {
         }}
         role="radio"
         tabIndex={0}
-        className={`${prefixCls}__item`}
+        className={itemCls}
         onClick={handleClick}
         aria-setsize={count}
         aria-posinset={score}
         aria-checked={checked}
       >
-        <div
-          className={classnames(`${prefixCls}__character`, {
-            [`${prefixCls}__character--active`]: value >= index + 1,
-          })}
-        >
-          {character}
-        </div>
-        {allowHalf && (
-          <div
-            className={classnames(`${prefixCls}__character ${prefixCls}__character-half`, {
-              [`${prefixCls}__character--active`]: value >= index + 0.5,
-            })}
-          >
-            {character}
-          </div>
-        )}
+        <div className={bem('character__half')}>{character}</div>
+        <div className={bem('character__full')}>{character}</div>
       </div>
     );
   };
 
-  const classes = classnames(
-    prefixCls,
-    {
-      [`${prefixCls}--readonly`]: readonly,
-    },
-    className,
-  );
+  const cls = bem([{ readonly }, className]);
 
   const bind = useDrag(
     ({ values: [x] }) => {
@@ -116,11 +110,11 @@ const Rate = (props: RateProps) => {
     { pointer: { touch: true }, axis: 'x' },
   );
   return (
-    <div {...bind()} role="radiogroup" tabIndex={0} className={classes} style={style}>
+    <div ref={ref} role="radiogroup" tabIndex={0} className={cls} style={style} {...bind()}>
       {items.map(render)}
     </div>
   );
-};
+});
 
 Rate.displayName = 'Rate';
 
@@ -130,7 +124,6 @@ Rate.defaultProps = {
   allowHalf: false,
   allowClear: false,
   character: <StarFill />,
-  touchable: true,
 };
 
 export default Rate;

@@ -23,7 +23,7 @@ exports[`Slider snapshot defaultValue 1`] = `
       aria-orientation="horizontal"
       aria-valuemax={100}
       aria-valuemin={0}
-      className="za-slider__handle"
+      className="za-slider__knob"
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       onMouseDown={[Function]}
@@ -44,7 +44,7 @@ exports[`Slider snapshot defaultValue 1`] = `
         visible={false}
       >
         <div
-          className="za-slider__handle__shadow"
+          className="za-slider__knob__shadow"
         />
       </Tooltip>
     </div>
@@ -75,7 +75,7 @@ exports[`Slider snapshot disabled 1`] = `
       aria-orientation="horizontal"
       aria-valuemax={100}
       aria-valuemin={0}
-      className="za-slider__handle"
+      className="za-slider__knob"
       role="slider"
       style={
         Object {
@@ -93,7 +93,7 @@ exports[`Slider snapshot disabled 1`] = `
         visible={false}
       >
         <div
-          className="za-slider__handle__shadow"
+          className="za-slider__knob__shadow"
         />
       </Tooltip>
     </div>
@@ -120,7 +120,7 @@ exports[`Slider snapshot marks 1`] = `
         }
       />
       <span
-        className="za-slider__line__dot za-slider__line__dot--active"
+        className="za-slider__dot za-slider__dot--active"
         key="0"
         style={
           Object {
@@ -129,7 +129,7 @@ exports[`Slider snapshot marks 1`] = `
         }
       />
       <span
-        className="za-slider__line__dot"
+        className="za-slider__dot"
         key="26"
         style={
           Object {
@@ -138,7 +138,7 @@ exports[`Slider snapshot marks 1`] = `
         }
       />
       <span
-        className="za-slider__line__dot"
+        className="za-slider__dot"
         key="60"
         style={
           Object {
@@ -147,7 +147,7 @@ exports[`Slider snapshot marks 1`] = `
         }
       />
       <span
-        className="za-slider__line__dot"
+        className="za-slider__dot"
         key="100"
         style={
           Object {
@@ -160,7 +160,7 @@ exports[`Slider snapshot marks 1`] = `
       aria-orientation="horizontal"
       aria-valuemax={100}
       aria-valuemin={0}
-      className="za-slider__handle"
+      className="za-slider__knob"
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       onMouseDown={[Function]}
@@ -181,7 +181,7 @@ exports[`Slider snapshot marks 1`] = `
         visible={false}
       >
         <div
-          className="za-slider__handle__shadow"
+          className="za-slider__knob__shadow"
         />
       </Tooltip>
     </div>
@@ -212,7 +212,7 @@ exports[`Slider snapshot marks error 1`] = `
       aria-orientation="horizontal"
       aria-valuemax={100}
       aria-valuemin={0}
-      className="za-slider__handle"
+      className="za-slider__knob"
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       onMouseDown={[Function]}
@@ -233,7 +233,7 @@ exports[`Slider snapshot marks error 1`] = `
         visible={false}
       >
         <div
-          className="za-slider__handle__shadow"
+          className="za-slider__knob__shadow"
         />
       </Tooltip>
     </div>
@@ -264,7 +264,7 @@ exports[`Slider snapshot max 1`] = `
       aria-orientation="horizontal"
       aria-valuemax={100}
       aria-valuemin={0}
-      className="za-slider__handle"
+      className="za-slider__knob"
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       onMouseDown={[Function]}
@@ -285,7 +285,7 @@ exports[`Slider snapshot max 1`] = `
         visible={false}
       >
         <div
-          className="za-slider__handle__shadow"
+          className="za-slider__knob__shadow"
         />
       </Tooltip>
     </div>
@@ -316,7 +316,7 @@ exports[`Slider snapshot min 1`] = `
       aria-orientation="horizontal"
       aria-valuemax={100}
       aria-valuemin={0}
-      className="za-slider__handle"
+      className="za-slider__knob"
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       onMouseDown={[Function]}
@@ -337,7 +337,7 @@ exports[`Slider snapshot min 1`] = `
         visible={false}
       >
         <div
-          className="za-slider__handle__shadow"
+          className="za-slider__knob__shadow"
         />
       </Tooltip>
     </div>
@@ -368,7 +368,7 @@ exports[`Slider snapshot shallows correctly 1`] = `
       aria-orientation="horizontal"
       aria-valuemax={100}
       aria-valuemin={0}
-      className="za-slider__handle"
+      className="za-slider__knob"
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       onMouseDown={[Function]}
@@ -389,7 +389,7 @@ exports[`Slider snapshot shallows correctly 1`] = `
         visible={false}
       >
         <div
-          className="za-slider__handle__shadow"
+          className="za-slider__knob__shadow"
         />
       </Tooltip>
     </div>
@@ -416,7 +416,7 @@ exports[`Slider snapshot showMark 1`] = `
         }
       />
       <span
-        className="za-slider__line__dot za-slider__line__dot--active"
+        className="za-slider__dot za-slider__dot--active"
         key="0"
         style={
           Object {
@@ -425,7 +425,7 @@ exports[`Slider snapshot showMark 1`] = `
         }
       />
       <span
-        className="za-slider__line__dot"
+        className="za-slider__dot"
         key="26"
         style={
           Object {
@@ -434,7 +434,7 @@ exports[`Slider snapshot showMark 1`] = `
         }
       />
       <span
-        className="za-slider__line__dot"
+        className="za-slider__dot"
         key="60"
         style={
           Object {
@@ -443,7 +443,7 @@ exports[`Slider snapshot showMark 1`] = `
         }
       />
       <span
-        className="za-slider__line__dot"
+        className="za-slider__dot"
         key="100"
         style={
           Object {
@@ -504,7 +504,7 @@ exports[`Slider snapshot showMark 1`] = `
       aria-orientation="horizontal"
       aria-valuemax={100}
       aria-valuemin={0}
-      className="za-slider__handle"
+      className="za-slider__knob"
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       onMouseDown={[Function]}
@@ -525,7 +525,7 @@ exports[`Slider snapshot showMark 1`] = `
         visible={false}
       >
         <div
-          className="za-slider__handle__shadow"
+          className="za-slider__knob__shadow"
         />
       </Tooltip>
     </div>
@@ -556,7 +556,7 @@ exports[`Slider snapshot step 1`] = `
       aria-orientation="horizontal"
       aria-valuemax={100}
       aria-valuemin={0}
-      className="za-slider__handle"
+      className="za-slider__knob"
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       onMouseDown={[Function]}
@@ -577,7 +577,7 @@ exports[`Slider snapshot step 1`] = `
         visible={false}
       >
         <div
-          className="za-slider__handle__shadow"
+          className="za-slider__knob__shadow"
         />
       </Tooltip>
     </div>
@@ -609,7 +609,7 @@ exports[`Slider snapshot value 1`] = `
       aria-valuemax={100}
       aria-valuemin={0}
       aria-valuenow={10}
-      className="za-slider__handle"
+      className="za-slider__knob"
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       onMouseDown={[Function]}
@@ -630,7 +630,7 @@ exports[`Slider snapshot value 1`] = `
         visible={false}
       >
         <div
-          className="za-slider__handle__shadow"
+          className="za-slider__knob__shadow"
         />
       </Tooltip>
     </div>
@@ -661,7 +661,7 @@ exports[`Slider snapshot vertical 1`] = `
       aria-orientation="vertical"
       aria-valuemax={100}
       aria-valuemin={0}
-      className="za-slider__handle"
+      className="za-slider__knob"
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       onMouseDown={[Function]}
@@ -682,7 +682,143 @@ exports[`Slider snapshot vertical 1`] = `
         visible={false}
       >
         <div
-          className="za-slider__handle__shadow"
+          className="za-slider__knob__shadow"
+        />
+      </Tooltip>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Slider snapshot vertical and marks 1`] = `
+<div
+  className="za-slider za-slider--vertical za-slider--marked"
+>
+  <div
+    className="za-slider__content"
+  >
+    <div
+      className="za-slider__line"
+    >
+      <div
+        className="za-slider__line__bg"
+        style={
+          Object {
+            "height": "0%",
+          }
+        }
+      />
+      <span
+        className="za-slider__dot za-slider__dot--active"
+        key="0"
+        style={
+          Object {
+            "bottom": "0%",
+          }
+        }
+      />
+      <span
+        className="za-slider__dot"
+        key="26"
+        style={
+          Object {
+            "bottom": "26%",
+          }
+        }
+      />
+      <span
+        className="za-slider__dot"
+        key="60"
+        style={
+          Object {
+            "bottom": "60%",
+          }
+        }
+      />
+      <span
+        className="za-slider__dot"
+        key="100"
+        style={
+          Object {
+            "bottom": "100%",
+          }
+        }
+      />
+      <div
+        className="za-slider__marks"
+      >
+        <span
+          className="za-slider__mark"
+          key="0"
+          style={
+            Object {
+              "bottom": "0%",
+            }
+          }
+        >
+          0
+        </span>
+        <span
+          className="za-slider__mark"
+          key="26"
+          style={
+            Object {
+              "bottom": "26%",
+            }
+          }
+        >
+          26
+        </span>
+        <span
+          className="za-slider__mark"
+          key="60"
+          style={
+            Object {
+              "bottom": "60%",
+            }
+          }
+        >
+          60
+        </span>
+        <span
+          className="za-slider__mark"
+          key="100"
+          style={
+            Object {
+              "bottom": "100%",
+            }
+          }
+        >
+          100
+        </span>
+      </div>
+    </div>
+    <div
+      aria-orientation="vertical"
+      aria-valuemax={100}
+      aria-valuemin={0}
+      className="za-slider__knob"
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      role="slider"
+      style={
+        Object {
+          "bottom": "0%",
+        }
+      }
+    >
+      <Tooltip
+        arrowPointAtCenter={true}
+        content={0}
+        direction="top"
+        hasArrow={true}
+        onVisibleChange={[Function]}
+        trigger="manual"
+        visible={false}
+      >
+        <div
+          className="za-slider__knob__shadow"
         />
       </Tooltip>
     </div>

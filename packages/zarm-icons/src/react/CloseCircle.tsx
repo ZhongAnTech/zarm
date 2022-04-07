@@ -3,8 +3,9 @@ import Icon from '../icon';
 import type { IconProps } from '../icon';
 
 const SvgCloseCircle = (props: IconProps, svgRef?: React.Ref<SVGSVGElement>) => {
+  const newProps = { ...props, name: 'SvgCloseCircle' };
   return React.createElement(Icon, {
-    ...props,
+    ...newProps,
     component: () => (
       <svg
         width="1em"

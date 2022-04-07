@@ -1,4 +1,9 @@
-import ConfigReceiver from '../config-receiver';
 import ImagePreview from './ImagePreview';
+import show from './show';
+import attachPropertiesToComponent from '../utils/attachPropertiesToComponent';
 
-export default ConfigReceiver('ImagePreview')(ImagePreview);
+attachPropertiesToComponent(ImagePreview, { show });
+
+export type { ImagePreviewProps } from './ImagePreview';
+
+export default ImagePreview;

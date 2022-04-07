@@ -71,11 +71,11 @@ describe('setPrimaryColor', () => {
       'hsl(155.70000000000005, 100%, 95%)',
     );
     expect(setPropertySpy).toBeCalledWith(
-      '--button-primary-shadow-color',
+      '--za-button-primary-shadow-color',
       'rgba(0, 188, 112, 0.3)',
     );
     expect(document.documentElement.style.cssText).toMatchInlineSnapshot(
-      `"--theme-primary: #00bc70; --theme-primary-dark: hsl(155.70000000000005, 100%, 35%); --theme-primary-lighter: hsl(155.70000000000005, 100%, 95%); --button-primary-shadow-color: rgba(0, 188, 112, 0.3);"`,
+      `"--theme-primary: #00bc70; --theme-primary-dark: hsl(155.70000000000005, 100%, 35%); --theme-primary-lighter: hsl(155.70000000000005, 100%, 95%); --za-button-primary-shadow-color: rgba(0, 188, 112, 0.3);"`,
     );
   });
 });

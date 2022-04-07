@@ -1,7 +1,7 @@
-import { CSSProperties, MouseEventHandler, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { ContainerType } from '../utils/dom';
 
-export default interface BaseToastProps {
+export interface BaseToastProps {
   visible?: boolean;
   stayTime?: number;
   content?: ReactNode;
@@ -9,10 +9,4 @@ export default interface BaseToastProps {
   afterClose?: () => void;
   mask?: boolean;
   onMaskClick?: () => void;
-}
-
-export interface HTMLDefProps {
-  style?: CSSProperties;
-  className?: string;
-  onClick?: MouseEventHandler<HTMLElement>;
 }

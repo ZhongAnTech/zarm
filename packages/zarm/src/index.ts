@@ -1,20 +1,28 @@
-export type { CollapseProps, CollapseItemProps } from './collapse';
-export { default as Collapse } from './collapse';
-
+export type { ActionSheetProps, ActionSheetItemProps, ActionSheetCssVars } from './action-sheet';
 export { default as ActionSheet } from './action-sheet';
+
+export type { ActivityIndicatorProps, ActivityIndicatorCssVars } from './activity-indicator';
+export { default as ActivityIndicator } from './activity-indicator';
+
+export type { AffixProps, AffixCssVars } from './affix';
+export { default as Affix } from './affix';
 
 export type { AlertProps } from './alert';
 // export { default as Alert } from './alert';
 
-export { default as BackToTop } from './back-to-top';
+export type { BackTopProps } from './back-top';
+export { default as BackTop } from './back-top';
 
-export type { BadgeProps } from './badge';
+export type { BadgeProps, BadgeCssVars } from './badge';
 export { default as Badge } from './badge';
 
 export type { ButtonProps } from './button';
 export { default as Button } from './button';
 
 export { default as Calendar } from './calendar';
+
+export type { CollapseProps, CollapseItemProps } from './collapse';
+export { default as Collapse } from './collapse';
 
 export type { ListProps, ListItemProps } from './list';
 export { default as List } from './list';
@@ -37,16 +45,19 @@ export { default as DateSelect } from './date-select';
 export type { FilePickerProps } from './file-picker';
 export { default as FilePicker } from './file-picker';
 
-export type { IconProps } from './icon';
+export type { IconProps, IconCssVars } from './icon';
 export { default as Icon } from './icon';
 
 export type { CustomInputProps } from './custom-input';
 export { default as CustomInput } from './custom-input';
 
+export type { GridProps, GridItemProps, GridCssVars } from './grid';
+export { default as Grid } from './grid';
+
 export type { InputProps, InputTextProps, InputTextareaProps } from './input';
 export { default as Input } from './input';
 
-export type { KeyboardProps } from './keyboard';
+export type { KeyboardProps, KeyboardCssVars } from './keyboard';
 export { default as Keyboard } from './keyboard';
 
 export type { KeyboardPickerProps } from './keyboard-picker';
@@ -60,7 +71,7 @@ export { default as Mask } from './mask';
 export type { MessageProps } from './message';
 export { default as Message } from './message';
 
-export type { ModalProps } from './modal';
+export type { ModalProps, ModalCssVars } from './modal';
 export { default as Modal } from './modal';
 
 export type { NoticeBarProps } from './notice-bar';
@@ -95,11 +106,8 @@ export { default as Scroller } from './scroller';
 export type { SearchBarProps } from './search-bar';
 export { default as SearchBar } from './search-bar';
 
-export type { SliderProps } from './slider';
+export type { SliderProps, SliderCssVars } from './slider';
 export { default as Slider } from './slider';
-
-export type { ActivityIndicatorProps } from './activity-indicator';
-export { default as ActivityIndicator } from './activity-indicator';
 
 export type { StepperProps } from './stepper';
 export { default as Stepper } from './stepper';
@@ -109,7 +117,7 @@ export { default as Carousel } from './carousel';
 
 export { default as SwipeAction } from './swipe-action';
 
-export type { SwitchProps } from './switch';
+export type { SwitchProps, SwitchCssVars } from './switch';
 export { default as Switch } from './switch';
 
 export type { RateProps } from './rate';
@@ -124,6 +132,9 @@ export { default as Toast } from './toast';
 export { default as Tooltip } from './tooltip';
 export { default as Trigger } from './trigger';
 
+export type { WaterMarkProps } from './water-mark';
+export { default as WaterMark } from './water-mark';
+
 export type { WheelProps } from './wheel';
 export { default as Wheel } from './wheel';
 
@@ -135,6 +146,7 @@ export { default as Marquee } from './marquee';
 export type { TabBarProps, TabBarItemProps } from './tab-bar';
 export { default as TabBar } from './tab-bar';
 
+export type { ImagePreviewProps } from './image-preview';
 export { default as ImagePreview } from './image-preview';
 
 export type { PinchZoomProps } from './pinch-zoom';
@@ -147,11 +159,10 @@ export { default as NConfigProvider } from './n-config-provider';
 
 export { default as StackPicker } from './stack-picker';
 
-export type { AffixProps } from './affix';
-export { default as Affix } from './affix';
-
 export type { DragProps } from './drag';
 export { default as Drag } from './drag';
+
+// hooks
 export type { UseDragProps, DragEvent, DragState } from './useDrag';
 export { default as useDrag } from './useDrag';
 
@@ -160,3 +171,8 @@ export { default as useOrientation } from './useOrientation';
 
 export type { UseLongPressProps } from './useLongPress';
 export { default as useLongPress } from './useLongPress';
+
+export type { UseScrollProps } from './useScroll';
+export { default as useScroll } from './useScroll';
+
+export { default as useClickAway } from './useClickAway';

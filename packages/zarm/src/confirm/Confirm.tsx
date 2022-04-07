@@ -1,53 +1,41 @@
 import * as React from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import type { BaseConfirmProps } from './interface';
 import Modal from '../modal';
-import ModalButton from '../modal/ModalButton';
 import { ConfigContext } from '../n-config-provider';
+import type { HTMLProps } from '../utils/utilityTypes';
 
-export interface ConfirmProps extends BaseConfirmProps {
-  className?: string;
-  style?: React.CSSProperties;
-}
+export type ConfirmProps = BaseConfirmProps & HTMLProps;
 
-const Confirm: React.FC<ConfirmProps> = (props) => {
-  const { className, shape, content, okText, cancelText, onOk, onCancel, ...rest } = props;
-  const { prefixCls: globalPrefixCls, locale } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-confirm`;
-  const classes = classnames(prefixCls, className, {
-    [`${prefixCls}--${shape}`]: !!shape,
-  });
-
-  const loadingClassName = `${prefixCls}__button--loading`;
+const Confirm = React.forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
+  const { className, content, okText, cancelText, onOk, onCancel, ...rest } = props;
+  const { prefixCls, locale } = React.useContext(ConfigContext);
+  const bem = createBEM('confirm', { prefixCls });
+  const cls = bem([className]);
 
   return (
-    <div className={classes}>
+    <div className={cls} ref={ref}>
       <Modal
         {...rest}
-        footer={
-          <>
-            <ModalButton
-              className={`${prefixCls}__button`}
-              loadingClassName={loadingClassName}
-              onClick={onCancel}
-            >
-              {cancelText || locale?.Confirm.cancelText}
-            </ModalButton>
-            <ModalButton
-              className={`${prefixCls}__button ${prefixCls}__button--ok`}
-              loadingClassName={loadingClassName}
-              onClick={onOk}
-            >
-              {okText || locale?.Confirm.okText}
-            </ModalButton>
-          </>
-        }
+        actions={[
+          [
+            {
+              text: cancelText || locale?.Confirm.cancelText,
+              onClick: onCancel,
+            },
+            {
+              text: okText || locale?.Confirm.okText,
+              bold: true,
+              onClick: onOk,
+            },
+          ],
+        ]}
       >
         {content}
       </Modal>
     </div>
   );
-};
+});
 
 Confirm.displayName = 'Confirm';
 

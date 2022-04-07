@@ -1,20 +1,20 @@
 @include b(notice-bar) {
   @include b(message) {
-    min-height: var(--notice-bar-min-height);
-    font-size: var(--notice-bar-font-size);
-    padding: var(--notice-bar-padding-v) var(--notice-bar-padding-h);
+    min-height: var(--za-notice-bar-min-height);
+    font-size: var(--za-notice-bar-font-size);
+    padding: var(--za-notice-bar-padding-vertical) var(--za-notice-bar-padding-horizontal);
 
     @include e(icon) {
       margin-right: r(6);
 
       @include b(icon) {
-        font-size: var(--notice-bar-icon-size);
+        font-size: var(--za-notice-bar-icon-size);
       }
     }
 
     @include e(footer) {
       @include b(icon) {
-        font-size: var(--notice-bar-icon-size);
+        font-size: var(--za-notice-bar-icon-size);
       }
     }
   }
@@ -22,8 +22,8 @@
   @include e(body) {
     position: relative;
     width: 100%;
-    height: var(--notice-bar-height);
-    line-height: var(--notice-bar-height);
+    height: var(--za-notice-bar-height);
+    line-height: var(--za-notice-bar-height);
     overflow: hidden;
   }
 
