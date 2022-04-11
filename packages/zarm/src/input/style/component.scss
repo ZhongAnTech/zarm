@@ -2,7 +2,6 @@
 
 @include b(input) {
   @include input-base();
-  @include input-clearable();
   @include input-placeholder();
 
   // 多种类型
