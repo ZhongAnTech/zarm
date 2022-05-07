@@ -2,7 +2,6 @@ import React from 'react';
 import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import SwipeAction from '../index';
-import Button from '../../button/index';
 import List from '../../list/index';
 
 function createClientXYObject(x, y) {
@@ -38,21 +37,26 @@ describe('SwipeAction', () => {
     jest.useFakeTimers();
     const wrapper = mount(
       <SwipeAction
-        left={[
-          <Button theme="primary" onClick={jest.fn()}>
-            左按钮1
-          </Button>,
-          <Button theme="danger" onClick={jest.fn()}>
-            左按钮2
-          </Button>,
+        leftActions={[
+          {
+            text: '左按钮1',
+            onClick: () => jest.fn(),
+          },
+          {
+            text: '左按钮2',
+            onClick: () => jest.fn(),
+          },
         ]}
-        right={[
-          <Button theme="primary" onClick={jest.fn()}>
-            右按钮1
-          </Button>,
-          <Button theme="danger" onClick={jest.fn()}>
-            右按钮2
-          </Button>,
+        rightActions={[
+          {
+            text: '右按钮1',
+            onClick: () => jest.fn(),
+          },
+          {
+            text: '右按钮2',
+            theme: 'danger',
+            onClick: () => jest.fn(),
+          },
         ]}
       >
         <div>左右都能滑动</div>
@@ -66,13 +70,16 @@ describe('SwipeAction', () => {
   it('left only', () => {
     const wrapper = render(
       <SwipeAction
-        left={[
-          <Button theme="primary" onClick={jest.fn()}>
-            左按钮1
-          </Button>,
-          <Button theme="danger" onClick={jest.fn()}>
-            左按钮2
-          </Button>,
+        leftActions={[
+          {
+            text: '左按钮1',
+            onClick: () => jest.fn(),
+          },
+          {
+            text: '左按钮2',
+            theme: 'danger',
+            onClick: () => jest.fn(),
+          },
         ]}
       >
         <div>右滑</div>
@@ -84,13 +91,16 @@ describe('SwipeAction', () => {
   it('right only', () => {
     const wrapper = render(
       <SwipeAction
-        right={[
-          <Button theme="primary" onClick={jest.fn()}>
-            右按钮1
-          </Button>,
-          <Button theme="danger" onClick={jest.fn()}>
-            右按钮2
-          </Button>,
+        rightActions={[
+          {
+            text: '右按钮1',
+            onClick: () => jest.fn(),
+          },
+          {
+            text: '右按钮2',
+            theme: 'danger',
+            onClick: () => jest.fn(),
+          },
         ]}
       >
         <div>左滑</div>
@@ -108,13 +118,16 @@ describe('SwipeAction', () => {
       <List>
         <SwipeAction
           {...props}
-          left={[
-            <Button theme="primary" onClick={jest.fn()}>
-              左按钮1
-            </Button>,
-            <Button theme="danger" onClick={jest.fn()}>
-              左按钮2
-            </Button>,
+          leftActions={[
+            {
+              text: '左按钮1',
+              onClick: () => jest.fn(),
+            },
+            {
+              text: '左按钮2',
+              theme: 'danger',
+              onClick: () => jest.fn(),
+            },
           ]}
         >
           <List.Item>右滑看看</List.Item>
@@ -143,13 +156,16 @@ describe('SwipeAction', () => {
       <List>
         <SwipeAction
           onOpen={onOpen}
-          left={[
-            <Button theme="primary" onClick={jest.fn()}>
-              左按钮1
-            </Button>,
-            <Button theme="danger" onClick={jest.fn()}>
-              左按钮2
-            </Button>,
+          rightActions={[
+            {
+              text: '左按钮1',
+              onClick: () => jest.fn(),
+            },
+            {
+              text: '左按钮2',
+              theme: 'danger',
+              onClick: () => jest.fn(),
+            },
           ]}
         >
           <List.Item>右滑看看</List.Item>

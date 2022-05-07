@@ -3,57 +3,82 @@
 ## 基本用法
 
 ```jsx
-import { SwipeAction, Button, List } from 'zarm';
+import { SwipeAction, Button, Cell } from 'zarm';
 
 ReactDOM.render(
-  <List>
+  <>
     <SwipeAction
-      right={[
-        <Button shape="rect" theme="primary" onClick={() => console.log('右按钮1')}>
-          右按钮1
-        </Button>,
-        <Button shape="rect" theme="danger" onClick={() => console.log('右按钮2')}>
-          右按钮2
-        </Button>,
+      onOpen={() => console.log('open')}
+      onClose={() => console.log('close')}
+      rightActions={[
+        {
+          text: '右按钮1',
+          onClick: () => console.log('右按钮1'),
+        },
+        {
+          text: '右按钮2',
+          theme: 'danger',
+          onClick: () => console.log('右按钮1'),
+        },
       ]}
     >
-      <List.Item title="左滑看看" />
+      <Cell>左滑看看</Cell>
     </SwipeAction>
 
     <SwipeAction
-      left={[
-        <Button shape="rect" theme="primary" onClick={() => console.log('左按钮1')}>
-          左按钮1
-        </Button>,
-        <Button shape="rect" theme="danger" onClick={() => console.log('左按钮2')}>
-          左按钮2
-        </Button>,
+      onOpen={() => console.log('open')}
+      onClose={() => console.log('close')}
+      leftActions={[
+        {
+          text: '异步',
+          onClick: async (action, index) => {
+            // 模拟异步操作
+            await new Promise((resolve) => setTimeout(resolve, 3000));
+            console.log('>>>3s');
+          },
+        },
+        {
+          text: '左按钮2',
+          theme: 'danger',
+          onClick: () => console.log('左按钮1'),
+        },
       ]}
     >
-      <List.Item title="右滑看看" />
+      <Cell>右滑看看</Cell>
     </SwipeAction>
 
     <SwipeAction
+      onOpen={() => console.log('open')}
+      onClose={() => console.log('close')}
       autoClose
-      left={[
-        <Button shape="rect" theme="primary" onClick={() => console.log('左按钮1')}>
-          左按钮1
-        </Button>,
-        <Button shape="rect" theme="danger" onClick={() => console.log('左按钮2')}>
-          左按钮2
-        </Button>,
+      leftActions={[
+        {
+          text: '左按钮1',
+          onClick: () => console.log('左按钮1'),
+        },
+        {
+          text: '左按钮2',
+          theme: 'danger',
+          onClick: () => console.log('左按钮1'),
+        },
       ]}
-      right={[
-        <Button shape="rect" theme="danger" onClick={() => console.log('右按钮1')}>
-          右按钮2
-        </Button>,
+      rightActions={[
+        {
+          text: '右按钮1',
+          onClick: () => console.log('右按钮1'),
+        },
+        {
+          text: '右按钮2',
+          theme: 'danger',
+          onClick: () => console.log('右按钮1'),
+        },
       ]}
       onOpen={() => console.log('open')}
       onClose={() => console.log('close')}
     >
-      <List.Item title="左右都能滑动（自动关闭）" />
+      <Cell>左右都能滑动（自动关闭）</Cell>
     </SwipeAction>
-  </List>,
+  </>,
   mountNode,
 );
 ```

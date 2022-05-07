@@ -28,7 +28,7 @@ exports[`SwipeAction left only 1`] = `
   </div>
   <div
     class="za-swipe-action__content"
-    style="-webkit-transition-duration:undefinedms;transition-duration:undefinedms;-webkit-transform:translateX(0px);transform:translateX(0px)"
+    style="-webkit-transition-duration:300ms;transition-duration:300ms;-webkit-transform:translate3d(0px, 0, 0);transform:translate3d(0px, 0, 0)"
   >
     <div>
       右滑
@@ -40,7 +40,8 @@ exports[`SwipeAction left only 1`] = `
 exports[`SwipeAction renders correctly 1`] = `
 <SwipeAction
   animationDuration={300}
-  autoClose={true}
+  autoClose={false}
+  disabled={false}
   left={
     Array [
       <Button
@@ -76,7 +77,6 @@ exports[`SwipeAction renders correctly 1`] = `
   moveDistanceRatio={0.5}
   moveTimeSpan={300}
   offset={10}
-  prefixCls="za-swipe-action"
   right={
     Array [
       <Button
@@ -217,33 +217,27 @@ exports[`SwipeAction renders correctly 1`] = `
         </button>
       </Button>
     </div>
-    <Drag
-      onDragEnd={[Function]}
-      onDragMove={[Function]}
-      onDragStart={[Function]}
-    >
-      <div
-        className="za-swipe-action__content"
-        onMouseDown={[Function]}
-        onMouseMove={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        style={
-          Object {
-            "WebkitTransform": "translateX(0px)",
-            "WebkitTransitionDuration": "undefinedms",
-            "transform": "translateX(0px)",
-            "transitionDuration": "undefinedms",
-          }
+    <div
+      className="za-swipe-action__content"
+      onMouseDown={[Function]}
+      onMouseMove={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      style={
+        Object {
+          "WebkitTransform": "translate3d(0px, 0, 0)",
+          "WebkitTransitionDuration": "300ms",
+          "transform": "translate3d(0px, 0, 0)",
+          "transitionDuration": "300ms",
         }
-      >
-        <div>
-          左右都能滑动
-        </div>
+      }
+    >
+      <div>
+        左右都能滑动
       </div>
-    </Drag>
+    </div>
   </div>
 </SwipeAction>
 `;
@@ -276,7 +270,7 @@ exports[`SwipeAction right only 1`] = `
   </div>
   <div
     class="za-swipe-action__content"
-    style="-webkit-transition-duration:undefinedms;transition-duration:undefinedms;-webkit-transform:translateX(0px);transform:translateX(0px)"
+    style="-webkit-transition-duration:300ms;transition-duration:300ms;-webkit-transform:translate3d(0px, 0, 0);transform:translate3d(0px, 0, 0)"
   >
     <div>
       左滑
