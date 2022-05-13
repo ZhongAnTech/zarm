@@ -1,7 +1,22 @@
 import * as React from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseSwitchProps } from './interface';
+
+export interface SwitchCssVars {
+  '--width'?: React.CSSProperties['width'];
+  '--height'?: React.CSSProperties['height'];
+  '--background'?: React.CSSProperties['background'];
+  '--border-radius'?: React.CSSProperties['borderRadius'];
+  '--transition'?: React.CSSProperties['transition'];
+  '--checked-background'?: React.CSSProperties['background'];
+  '--knob-background'?: React.CSSProperties['background'];
+  '--knob-size'?: React.CSSProperties['width' | 'height'];
+  '--knob-box-shadow'?: React.CSSProperties['boxShadow'];
+  '--knob-border-color'?: React.CSSProperties['borderColor'];
+  '--knob-border-width'?: React.CSSProperties['width'];
+  '--knob-transition'?: React.CSSProperties['transition'];
+}
 
 export type SwitchProps = BaseSwitchProps &
   Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'>;
@@ -13,12 +28,15 @@ const Switch = React.forwardRef<unknown, SwitchProps>((props, ref) => {
   const getChecked = checked || defaultChecked || false;
   const [currentChecked, setCurrentChecked] = React.useState(getChecked);
 
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-switch`;
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('switch', { prefixCls });
 
-  const cls = classnames(prefixCls, className, {
-    [`${prefixCls}--disabled`]: disabled,
-  });
+  const cls = bem([
+    className,
+    {
+      disabled,
+    },
+  ]);
 
   const onInputChange = () => {
     const newChecked = !currentChecked;
@@ -43,7 +61,7 @@ const Switch = React.forwardRef<unknown, SwitchProps>((props, ref) => {
         role="switch"
         aria-checked={currentChecked}
         type="checkbox"
-        className={`${prefixCls}__input`}
+        className={bem('input')}
         disabled={disabled}
         value={currentChecked ? 'on' : 'off'}
         checked={'checked' in props ? currentChecked : undefined}

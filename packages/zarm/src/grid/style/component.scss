@@ -1,0 +1,77 @@
+@include b(grid) {
+  @include define(border-color, var(--za-border-color));
+  @include define(item-background, var(--za-background-color));
+  @include define(item-active-background, var(--za-background-active));
+
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+
+  @include m(bordered) {
+    @include onepx(top left, var(--border-color));
+
+    &::after {
+      z-index: 1;
+    }
+
+    @include b(grid-item) {
+      @include e(content) {
+        @include onepx(right bottom, var(--border-color));
+
+        &::after {
+          z-index: 1;
+        }
+      }
+
+      @include m(horizontal-bordered) {
+        @include e(content) {
+          &::after {
+            border-left-width: 1px;
+            border-right-width: 1px;
+          }
+        }
+      }
+
+      @include m(vertical-bordered) {
+        @include e(content) {
+          &::after {
+            border-top-width: 1px;
+            border-bottom-width: 1px;
+          }
+        }
+      }
+    }
+  }
+
+  @include m(square) {
+    @include b(grid-item) {
+      height: 0;
+
+      @include e(content) {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+      }
+    }
+  }
+}
+
+@include b(grid-item) {
+  position: relative;
+
+  @include m(clickable) {
+    @include e(content) {
+      &:active {
+        background: var(--item-active-background);
+      }
+    }
+  }
+
+  @include e(content) {
+    height: 100%;
+    background: var(--item-background);
+    position: relative;
+    transition: 200ms;
+  }
+}

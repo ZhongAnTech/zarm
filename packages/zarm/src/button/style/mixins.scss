@@ -181,6 +181,7 @@
   @include m(disabled) {
     cursor: not-allowed;
     opacity: var(--opacity-disabled);
+    pointer-events: none;
   }
 
   /* block Button */

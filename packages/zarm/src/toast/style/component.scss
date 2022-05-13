@@ -11,10 +11,10 @@
   @include e(container) {
     position: relative;
     padding: var(--padding-v-md) var(--padding-h-md);
-    border-radius: var(--toast-border-radius);
-    background: var(--toast-background);
-    color: var(--toast-color);
+    border-radius: var(--za-toast-border-radius);
+    background: var(--za-toast-background);
+    color: var(--za-toast-color);
     text-align: center;
-    font-size: var(--toast-font-size);
+    font-size: var(--za-toast-font-size);
   }
 }

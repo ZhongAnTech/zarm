@@ -273,7 +273,24 @@ ReactDOM.render(
 );
 ```
 
-## 列表样式禁用状态
+## 列表样式，尾部标记
+
+```jsx
+import { Checkbox } from 'zarm';
+
+ReactDOM.render(
+  <Checkbox.Group type="list" listMarkerAlign="after">
+    <Checkbox value="0">选项一</Checkbox>
+    <Checkbox value="1">选项二</Checkbox>
+    <Checkbox value="2" disabled>
+      选项三（禁止选择）
+    </Checkbox>
+  </Checkbox.Group>,
+  mountNode,
+);
+```
+
+## 列表样式，禁用状态
 
 ```jsx
 import { Checkbox } from 'zarm';

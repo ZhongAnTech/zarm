@@ -1,3 +1,5 @@
 @include b(affix) {
-  z-index: 10;
+  @include define(zindex, 10);
+
+  z-index: var(--zindex);
 }

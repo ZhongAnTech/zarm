@@ -208,7 +208,7 @@ ReactDOM.render(
 );
 ```
 
-## 列表样式标记在尾部
+## 列表样式，尾部标记
 
 ```jsx
 import { Radio } from 'zarm';
@@ -225,7 +225,7 @@ ReactDOM.render(
 );
 ```
 
-## 列表样式禁用状态
+## 列表样式，禁用状态
 
 ```jsx
 import { Radio } from 'zarm';

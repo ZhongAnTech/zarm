@@ -1,19 +1,21 @@
 import * as React from 'react';
-import { render, mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { fireEvent, render } from '@testing-library/react';
 import Rate from '../index';
 
 describe('Rate', () => {
-  it('renders correctly', () => {
-    const wrapper = render(<Rate />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+  it('should be render the specified number of nodes', () => {
+    const { container } = render(<Rate count={10} />);
+    expect(container).toMatchSnapshot();
+    expect(document.getElementsByClassName('za-rate__item')).toHaveLength(10);
   });
 
   it('should emit change and value event when rate icon is clicked', () => {
     const onChange = jest.fn();
-    const wrapper = mount(<Rate onChange={onChange} />);
-    const item = wrapper.find('.za-rate__item');
-    item.at(3).simulate('click');
-    expect(onChange).toBeCalledWith(4);
+    const { container } = render(<Rate onChange={onChange} />);
+    expect(container).toMatchSnapshot();
+
+    const items = [].slice.call(document.getElementsByClassName('za-rate__item'));
+    fireEvent.click(items?.[0]);
+    expect(onChange).toBeCalled();
   });
 });

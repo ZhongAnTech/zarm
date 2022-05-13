@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, RenderOptions, screen } from '@testing-library/react';
-import ConfigProvider, { ConfigContext } from '../ConfigProvider';
+import ConfigProvider, { defaultConfig, ConfigContext } from '../ConfigProvider';
 import type { ConfigProviderProps } from '../interface';
 
 interface CustomRenderOptions extends RenderOptions {
@@ -18,44 +18,33 @@ describe('ConfigProvider', () => {
   test('should provide default context config via default props', () => {
     customRender(
       <ConfigContext.Consumer>
-        {(value) => {
-          return (
-            <>
-              <span data-testid="theme">{value.theme}</span>
-              <span data-testid="primaryColor">{value.primaryColor}</span>
-              <span data-testid="safeIphoneX">{value.safeIphoneX ? 1 : 0}</span>
-              <span data-testid="prefixCls">{value.prefixCls}</span>
-            </>
-          );
-        }}
+        {(value) => (
+          <>
+            <span data-testid="prefixCls">{value.prefixCls}</span>
+            <span data-testid="safeIphoneX">{value.safeIphoneX ? 1 : 0}</span>
+          </>
+        )}
       </ConfigContext.Consumer>,
       {
         providerProps: {},
       },
     );
-    // expect(screen.getByTestId('theme').textContent).toEqual(ConfigProvider.defaultProps.theme);
-    // expect(screen.getByTestId('primaryColor').textContent).toEqual(
-    //   ConfigProvider.defaultProps.primaryColor,
-    // );
-    expect(!!+screen.getByTestId('safeIphoneX').textContent!).toEqual(
-      ConfigProvider.defaultProps.safeIphoneX,
-    );
-    expect(screen.getByTestId('prefixCls').textContent).toEqual(
-      ConfigProvider.defaultProps.prefixCls,
-    );
+    expect(screen.getByTestId('prefixCls').textContent).toEqual(defaultConfig.prefixCls);
+    expect(document.body.getAttribute('data-theme')).toEqual(defaultConfig.theme);
+    expect(!!+screen.getByTestId('safeIphoneX').textContent!).toEqual(defaultConfig.safeIphoneX);
   });
 
-  // test('should custum the value from context provider', () => {
-  //   customRender(
-  //     <ConfigContext.Consumer>
-  //       {(value) => <span>theme: {value.theme}</span>}
-  //     </ConfigContext.Consumer>,
-  //     {
-  //       providerProps: { theme: 'dark' },
-  //     },
-  //   );
-  //   expect(screen.getByText(/^theme:/).textContent).toBe('theme: dark');
-  // });
+  test('should custum the value from context provider', () => {
+    customRender(
+      <ConfigContext.Consumer>
+        {(value) => <span>theme: {value.theme}</span>}
+      </ConfigContext.Consumer>,
+      {
+        providerProps: { theme: 'dark' },
+      },
+    );
+    expect(document.body.getAttribute('data-theme')).toEqual('dark');
+  });
 
   test('should throw error if children has more than one child', () => {
     const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => 'silence');

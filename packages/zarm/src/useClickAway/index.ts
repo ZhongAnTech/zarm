@@ -26,16 +26,14 @@ export function getTargetElement(
   } else {
     targetElement = target;
   }
+
   return targetElement;
 }
 
-// 鼠标点击事件，click 不会监听右键
-const defaultEvent = 'click';
-
 export default function useClickAway(
-  onClickAway?: (event: MouseEvent | TouchEvent) => void,
-  target?: BasicTarget | BasicTarget[],
-  eventName: string = defaultEvent,
+  target: BasicTarget | BasicTarget[],
+  onClickAway?: (event: React.MouseEvent | React.TouchEvent) => void,
+  eventName = 'click',
 ) {
   const onClickAwayRef = useRef(onClickAway);
 
@@ -50,7 +48,7 @@ export default function useClickAway(
       if (
         targets.some((targetItem) => {
           const targetElement = getTargetElement(targetItem) as HTMLElement;
-          return !targetElement || targetElement.contains(event.target);
+          return !targetElement || (targetElement.contains && targetElement.contains(event.target));
         })
       ) {
         return;
@@ -58,9 +56,7 @@ export default function useClickAway(
       onClickAwayRef.current!(event);
     };
 
-    window.setTimeout(() => {
-      Events.on(document, eventName, handler);
-    }, 50);
+    Events.on(document, eventName, handler);
 
     return () => {
       Events.off(document, eventName, handler);

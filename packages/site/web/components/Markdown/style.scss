@@ -85,6 +85,15 @@
     border-collapse: collapse;
     border-spacing: 0;
 
+    code {
+      font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+      padding: 0.2em 0.4em;
+      margin: 0;
+      font-size: 85%;
+      background-color: rgba(175, 184, 193, 0.2);
+      border-radius: 6px;
+    }
+
     strong {
       font-weight: normal;
     }

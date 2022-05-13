@@ -15,9 +15,7 @@ const LoadableComponent = (component) => {
   const compName = pascalCase(component.key);
 
   if (component.style) {
-    // todo: eslint字符串模版变量问题，暂时先屏蔽
-    // eslint-disable-next-line
-    loader.style = () => import('@/demo/styles/' + compName + 'Page');
+    loader.style = () => import(`@/demo/styles/${compName}Page`);
   }
 
   return Loadable.Map({

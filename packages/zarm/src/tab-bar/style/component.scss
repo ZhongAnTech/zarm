@@ -1,8 +1,8 @@
 @include b(tab-bar) {
   display: flex;
   width: 100%;
-  background: var(--tabbar-background);
-  height: var(--tabbar-height);
+  background: var(--za-tabbar-background);
+  height: var(--za-tabbar-height);
   justify-content: center;
   align-content: center;
   align-items: center;
@@ -16,17 +16,17 @@
   overflow: hidden;
 
   @include m(safe) {
-    @include safeIphoneX(true, var(--tabbar-height));
+    @include safeIphoneX(true, var(--za-tabbar-height));
   }
 
   @include m(hidden) {
-    bottom: var(--tabbar-hidden-bottom);
+    bottom: var(--za-tabbar-hidden-bottom);
     height: 0;
   }
 
   @include m(active) {
     @include e(title, icon) {
-      color: var(--tabbar-item-active-color);
+      color: var(--za-tabbar-item-active-color);
     }
   }
 
@@ -34,7 +34,7 @@
     flex: 1;
 
     @include e(title) {
-      font-size: var(--tabbar-item-font-size);
+      font-size: var(--za-tabbar-item-font-size);
       line-height: 1;
       margin-top: r(2);
     }

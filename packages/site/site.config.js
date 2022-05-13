@@ -317,6 +317,13 @@ module.exports = {
         source: 'zarm/image-preview/demo.md',
         style: true,
       },
+      {
+        key: 'water-mark',
+        name: '水印',
+        module: () => import('zarm/water-mark/demo.md'),
+        source: 'zarm/water-mark/demo.md',
+        style: false,
+      },
     ],
     navigation: [
       {
@@ -347,8 +354,22 @@ module.exports = {
         source: 'zarm/tab-bar/demo.md',
         style: false,
       },
+      {
+        key: 'grid',
+        name: '宫格',
+        module: () => import('zarm/grid/demo.md'),
+        source: 'zarm/grid/demo.md',
+        style: true,
+      },
     ],
     hooks: [
+      {
+        key: 'useClickAway',
+        name: '单击外部跟踪器',
+        module: () => import('zarm/useClickAway/demo.md'),
+        source: 'zarm/useClickAway/demo.md',
+        style: false,
+      },
       {
         key: 'useDrag',
         name: '拖拽',
@@ -377,6 +398,13 @@ module.exports = {
         source: 'zarm/useOrientation/demo.md',
         style: false,
       },
+      {
+        key: 'useScroll',
+        name: '滚动',
+        module: () => import('zarm/useScroll/demo.md'),
+        source: 'zarm/useScroll/demo.md',
+        style: false,
+      },
     ],
     other: [
       // {
@@ -386,19 +414,19 @@ module.exports = {
       //   source: 'zarm/mask/demo.md',
       //   style: false,
       // },
-      {
-        key: 'config-provider',
-        name: '全局配置',
-        module: () => import('zarm/config-provider/demo.md'),
-        source: 'zarm/config-provider/demo.md',
-        style: true,
-      },
+      // {
+      //   key: 'config-provider',
+      //   name: '全局配置',
+      //   module: () => import('zarm/config-provider/demo.md'),
+      //   source: 'zarm/config-provider/demo.md',
+      //   style: true,
+      // },
       {
         key: 'n-config-provider',
         name: '全局配置（新）',
         module: () => import('zarm/n-config-provider/demo.md'),
         source: 'zarm/n-config-provider/demo.md',
-        style: false,
+        style: true,
       },
       {
         key: 'drag',
@@ -408,10 +436,10 @@ module.exports = {
         style: false,
       },
       {
-        key: 'back-to-top',
+        key: 'back-top',
         name: '返回顶部',
-        module: () => import('zarm/back-to-top/demo.md'),
-        source: 'zarm/back-to-top/demo.md',
+        module: () => import('zarm/back-top/demo.md'),
+        source: 'zarm/back-top/demo.md',
         style: false,
       },
     ],

@@ -11,8 +11,7 @@ exports[`Radio defaultChecked 1`] = `
       class="za-radio__inner"
     >
       <i
-        class="za-icon za-radio__marker za-icon--default za-icon--md"
-        theme="default"
+        class="za-icon za-radio__marker"
       >
         <svg
           aria-hidden="true"
@@ -36,6 +35,7 @@ exports[`Radio defaultChecked 1`] = `
     选项一
   </span>
   <input
+    aria-checked="true"
     checked=""
     class="za-radio__input"
     type="radio"
@@ -55,8 +55,7 @@ exports[`Radio renders correctly 1`] = `
       class="za-radio__inner"
     >
       <i
-        class="za-icon za-radio__marker za-icon--default za-icon--md"
-        theme="default"
+        class="za-icon za-radio__marker"
       >
         <svg
           aria-hidden="true"
@@ -80,6 +79,7 @@ exports[`Radio renders correctly 1`] = `
     选项一
   </span>
   <input
+    aria-checked="false"
     class="za-radio__input"
     type="radio"
     value="0"
@@ -94,6 +94,7 @@ exports[`Radio type is button 1`] = `
 >
   选项一
   <input
+    aria-checked="false"
     class="za-radio__input"
     type="radio"
     value="0"
@@ -115,8 +116,7 @@ exports[`Radio type is list 1`] = `
         class="za-radio__inner"
       >
         <i
-          class="za-icon za-radio__marker za-icon--default za-icon--md"
-          theme="default"
+          class="za-icon za-radio__marker"
         >
           <svg
             aria-hidden="true"
@@ -135,6 +135,7 @@ exports[`Radio type is list 1`] = `
       </span>
     </span>
     <input
+      aria-checked="false"
       class="za-radio__input"
       type="radio"
       value="0"
@@ -155,6 +156,7 @@ exports[`Radio type is list 1`] = `
           选项一
         </span>
         <input
+          aria-checked="false"
           class="za-radio__input"
           type="radio"
           value="0"
@@ -182,8 +184,7 @@ exports[`Radio.Group Radio checked 1`] = `
           class="za-radio__inner"
         >
           <i
-            class="za-icon za-radio__marker za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon za-radio__marker"
           >
             <svg
               aria-hidden="true"
@@ -207,6 +208,7 @@ exports[`Radio.Group Radio checked 1`] = `
         选项一
       </span>
       <input
+        aria-checked="false"
         class="za-radio__input"
         type="radio"
         value="0"
@@ -222,8 +224,7 @@ exports[`Radio.Group Radio checked 1`] = `
           class="za-radio__inner"
         >
           <i
-            class="za-icon za-radio__marker za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon za-radio__marker"
           >
             <svg
               aria-hidden="true"
@@ -247,6 +248,7 @@ exports[`Radio.Group Radio checked 1`] = `
         选项二
       </span>
       <input
+        aria-checked="true"
         checked=""
         class="za-radio__input"
         type="radio"
@@ -263,8 +265,7 @@ exports[`Radio.Group Radio checked 1`] = `
           class="za-radio__inner"
         >
           <i
-            class="za-icon za-radio__marker za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon za-radio__marker"
           >
             <svg
               aria-hidden="true"
@@ -288,6 +289,7 @@ exports[`Radio.Group Radio checked 1`] = `
         选项三
       </span>
       <input
+        aria-checked="false"
         class="za-radio__input"
         type="radio"
         value="2"
@@ -314,8 +316,7 @@ exports[`Radio.Group defaultValue 1`] = `
           class="za-radio__inner"
         >
           <i
-            class="za-icon za-radio__marker za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon za-radio__marker"
           >
             <svg
               aria-hidden="true"
@@ -339,6 +340,7 @@ exports[`Radio.Group defaultValue 1`] = `
         选项一
       </span>
       <input
+        aria-checked="false"
         class="za-radio__input"
         type="radio"
         value="0"
@@ -354,8 +356,7 @@ exports[`Radio.Group defaultValue 1`] = `
           class="za-radio__inner"
         >
           <i
-            class="za-icon za-radio__marker za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon za-radio__marker"
           >
             <svg
               aria-hidden="true"
@@ -379,6 +380,7 @@ exports[`Radio.Group defaultValue 1`] = `
         选项二
       </span>
       <input
+        aria-checked="true"
         checked=""
         class="za-radio__input"
         type="radio"
@@ -395,8 +397,7 @@ exports[`Radio.Group defaultValue 1`] = `
           class="za-radio__inner"
         >
           <i
-            class="za-icon za-radio__marker za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon za-radio__marker"
           >
             <svg
               aria-hidden="true"
@@ -420,6 +421,7 @@ exports[`Radio.Group defaultValue 1`] = `
         选项三
       </span>
       <input
+        aria-checked="false"
         class="za-radio__input"
         type="radio"
         value="2"
@@ -446,8 +448,7 @@ exports[`Radio.Group renders correctly 1`] = `
           class="za-radio__inner"
         >
           <i
-            class="za-icon za-radio__marker za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon za-radio__marker"
           >
             <svg
               aria-hidden="true"
@@ -471,6 +472,7 @@ exports[`Radio.Group renders correctly 1`] = `
         选项一
       </span>
       <input
+        aria-checked="true"
         checked=""
         class="za-radio__input"
         type="radio"
@@ -487,8 +489,7 @@ exports[`Radio.Group renders correctly 1`] = `
           class="za-radio__inner"
         >
           <i
-            class="za-icon za-radio__marker za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon za-radio__marker"
           >
             <svg
               aria-hidden="true"
@@ -512,6 +513,7 @@ exports[`Radio.Group renders correctly 1`] = `
         选项二
       </span>
       <input
+        aria-checked="false"
         class="za-radio__input"
         type="radio"
         value="1"
@@ -527,8 +529,7 @@ exports[`Radio.Group renders correctly 1`] = `
           class="za-radio__inner"
         >
           <i
-            class="za-icon za-radio__marker za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon za-radio__marker"
           >
             <svg
               aria-hidden="true"
@@ -552,6 +553,7 @@ exports[`Radio.Group renders correctly 1`] = `
         选项三
       </span>
       <input
+        aria-checked="false"
         class="za-radio__input"
         type="radio"
         value="2"

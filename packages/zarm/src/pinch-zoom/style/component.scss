@@ -9,7 +9,7 @@
     transform: scale(var(--scale)) translate3d(var(--x), var(--y), 0);
     // will-change: transform;
     transform-origin: 0 0;
-    opacity: 0;
+    // opacity: 0;
     // transform-origin: 0 0;
   }
 }

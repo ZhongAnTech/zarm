@@ -61,8 +61,7 @@ exports[`Stepper renders correctly 1`] = `
   >
     <span>
       <i
-        class="za-icon za-icon--default za-icon--md"
-        theme="default"
+        class="za-icon"
       >
         <svg
           aria-hidden="true"
@@ -95,8 +94,7 @@ exports[`Stepper renders correctly 1`] = `
   >
     <span>
       <i
-        class="za-icon za-icon--default za-icon--md"
-        theme="default"
+        class="za-icon"
       >
         <svg
           aria-hidden="true"

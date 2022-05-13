@@ -58,7 +58,7 @@ const Demo = () => {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-## 自定义样式
+## 自定义颜色
 
 ```jsx
 import { List, Rate } from 'zarm';
@@ -67,7 +67,7 @@ const Demo = () => {
   return (
     <List>
       <List.Item>
-        <Rate defaultValue={3} style={{ '--za-rate-color': '#ffd21e' }} allowHalf />
+        <Rate defaultValue={3} style={{ '--za-rate-active-color': '#fa541b' }} allowHalf />
       </List.Item>
     </List>
   );
@@ -182,13 +182,22 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性         | 类型                    | 默认值           | 说明                   |
-| :----------- | :---------------------- | :--------------- | :--------------------- |
-| value        | number                  | -                | 默认分值               |
-| defaultValue | number                  | 0                | 当前分值               |
-| count        | number                  | 5                | 评分总数               |
-| character    | React.ReactNode         | \<StartFill \/\> | 自定义字符             |
-| allowHalf    | boolean                 | false            | 是否允许半选           |
-| allowClear   | boolean                 | true             | 是否允许再次点击后清除 |
-| readonly     | boolean                 | false            | 设置只读状态           |
-| onChange     | (value: number) => void | -                | 当前分值变化时的回调   |
+| 属性         | 类型                    | 默认值           | 说明                     |
+| :----------- | :---------------------- | :--------------- | :----------------------- |
+| value        | number                  | -                | 分值                     |
+| defaultValue | number                  | 0                | 初始分值                 |
+| count        | number                  | 5                | 总分值                   |
+| character    | React.ReactNode         | \<StartFill \/\> | 自定义字符               |
+| allowHalf    | boolean                 | false            | 是否允许半选             |
+| allowClear   | boolean                 | false            | 是否允许再次点击后清除   |
+| readonly     | boolean                 | false            | 是否只读状态             |
+| onChange     | (value: number) => void | -                | 分值变化时触发的回调函数 |
+
+## CSS 变量
+
+| 属性                   | 类型                               | 默认值    | 说明             |
+| :--------------------- | :--------------------------------- | :-------- | :--------------- |
+| --za-rate-size         | number \| string                   | '20px'    | 选项大小         |
+| --za-rate-color        | React.CSSProperties['color']       | '#eee'    | 选项颜色         |
+| --za-rate-active-color | React.CSSProperties['color']       | '#fadb14' | 选项激活后的颜色 |
+| --za-rate-gap          | React.CSSProperties['marginRight'] | '4px'     | 选项之间的间距   |

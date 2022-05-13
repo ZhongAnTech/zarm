@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import classnames from 'classnames';
-import { Icon, Radio, Popper, ConfigProvider } from 'zarm';
+import { Icon, Radio, Popper, NConfigProvider as ConfigProvider } from 'zarm';
 import Context from '@/utils/context';
 import Events from '@/utils/events';
 import enUS from 'zarm/config-provider/locale/en_US';
