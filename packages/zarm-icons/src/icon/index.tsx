@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
-import decamelize from 'decamelize';
+import { paramCase, noCase } from 'change-case';
 import { BaseIconProps } from './interface';
 import createFromIconfont from './IconFont';
 
@@ -30,7 +30,7 @@ const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
 
   const bem = createBEM('icon', { prefixCls });
 
-  const decamelizeName = decamelize(name, { separator: '-' }).replace('svg-', '');
+  const decamelizeName = paramCase(noCase(name)).replace('svg-', '');
   const isFont = (mode === 'auto' && typeof SVGRect === 'undefined') || mode === 'font';
   const iconClassName = bem(`${decamelizeName}`);
 
