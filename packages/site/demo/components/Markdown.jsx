@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import ReactDOM from 'react-dom';
-import marked from 'marked';
+import { marked } from 'marked';
 // import { NavBar, Radio, Icon } from 'zarm';
 import { useLocation } from 'react-router-dom';
 import Context from '@/utils/context';
