@@ -137,7 +137,7 @@ const deployConfig: Configuration = webpackMerge({}, config, {
 
 const devConfig: Configuration = webpackMerge({}, deployConfig, {
   mode: 'development',
-  devtool: 'eval-cheap-source-map',
+  devtool: 'cheap-module-source-map',
   optimization: {
     minimize: false,
   },
