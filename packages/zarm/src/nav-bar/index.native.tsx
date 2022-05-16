@@ -45,6 +45,7 @@ export default class NavBar extends PureComponent<NavBarProps, any> {
       style,
       left,
       right,
+      title,
       /* leftText,
       rightText,
       onClickLeft,
@@ -83,7 +84,7 @@ export default class NavBar extends PureComponent<NavBarProps, any> {
             {leftBtn}
 
             <View style={styles!.titleWrapper}>
-              <Text style={styles!.titleText as TextStyle}>Photos</Text>
+              <Text style={styles!.titleText as TextStyle}>{title}</Text>
             </View>
 
             {rightBtn}
