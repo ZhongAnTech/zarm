@@ -167,7 +167,6 @@ $--calendar-day-width: 14.28571%;
           box-shadow: 0 r(2) r(5) 0 var(--calendar-day-selected-shadow);
         }
       }
-
     }
 
     @include m(disabled) {
@@ -199,7 +198,6 @@ $--calendar-day-width: 14.28571%;
         @include linegradient(left);
       }
     }
-
 
     @include m(d6) {
       background-color: transparent;
