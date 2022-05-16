@@ -142,6 +142,14 @@ const devConfig: Configuration = webpackMerge({}, deployConfig, {
     minimize: false,
   },
   plugins: [new webpack.HotModuleReplacementPlugin()],
+  cache: {
+    type: 'filesystem',
+    name: 'zarm-dev',
+    buildDependencies: {
+      config: [__filename],
+    },
+    store: 'pack',
+  },
 });
 
 const umdConfig: Configuration = webpackMerge({}, config, {
