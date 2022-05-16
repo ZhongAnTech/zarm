@@ -36,7 +36,7 @@
     "react": "^17.0.2",
     "shelljs": "^0.8.4",
     "webfonts-helper": "^0.1.0",
-    "decamelize": "^5.0.0"
+    "change-case": "^4.1.2"
   },
   "publishConfig": {
     "access": "public"
