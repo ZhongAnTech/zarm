@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import { pascalCase } from 'change-case';
-import marked from 'marked';
+import { marked } from 'marked';
 import Prism from 'prismjs';
 import { Icon } from 'zarm';
 import { Tooltip } from 'zarm-web';
@@ -50,7 +50,7 @@ export default (props) => {
       //     </a>
       //     ${text}
       //   </h${level}>`;
-    }
+    },
   };
   marked.use({ renderer });
 
@@ -59,27 +59,36 @@ export default (props) => {
   }, []);
 
   if (typeof document === 'string') {
-    const title = `${locale === 'zhCN' ? component.name : ''} ${locale !== 'zhCN' || isComponentPage(component.key) ? pascalCase(component.key) : ''}`;
+    const title = `${locale === 'zhCN' ? component.name : ''} ${
+      locale !== 'zhCN' || isComponentPage(component.key) ? pascalCase(component.key) : ''
+    }`;
     const pageCls = `${component.key}-page`;
     const demoHTML = marked(document.replace(/## API\s?([^]+)/g, ''));
     const api = document.match(/## API\s?([^]+)/g);
     const apiHTML = marked(Object.prototype.toString.call(api) === '[object Array]' ? api[0] : '');
-    const sourceURL = `https://github.com/ZhongAnTech/zarm/blob/master/${
-      component.source
-        .replace('zarm/', 'packages/zarm/src/')
-        .replace('@zarmDir/', 'packages/zarm/')
-        .replace('@/', 'packages/site/')
-    }`;
+    const sourceURL = `https://github.com/ZhongAnTech/zarm/blob/master/${component.source
+      .replace('zarm/', 'packages/zarm/src/')
+      .replace('@zarmDir/', 'packages/zarm/')
+      .replace('@/', 'packages/site/')}`;
 
     return (
       <>
-        <Meta title={`${title} - Zarm Design`} description={component.description || component.name} />
+        <Meta
+          title={`${title} - Zarm Design`}
+          description={component.description || component.name}
+        />
         <div className={pageCls}>
           <h1>
             {title}
             &nbsp;
-            <Tooltip visible content={<FormattedMessage id="app.home.components.action.edit" />} direction="right">
-              <a alt="#" href={sourceURL} rel="noreferrer" target="_blank"><Icons type="edit" size="sm" /></a>
+            <Tooltip
+              visible
+              content={<FormattedMessage id="app.home.components.action.edit" />}
+              direction="right"
+            >
+              <a alt="#" href={sourceURL} rel="noreferrer" target="_blank">
+                <Icons type="edit" size="sm" />
+              </a>
             </Tooltip>
           </h1>
           <div className="demo" dangerouslySetInnerHTML={{ __html: demoHTML }} />
