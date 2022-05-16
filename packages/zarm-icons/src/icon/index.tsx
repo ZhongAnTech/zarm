@@ -30,9 +30,9 @@ const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
 
   const bem = createBEM('icon', { prefixCls });
 
-  const decamelizeName = paramCase(noCase(name)).replace('svg-', '');
+  const decamelizeName = paramCase(name).replace('svg-', '');
+  const iconClassName = bem(decamelizeName);
   const isFont = (mode === 'auto' && typeof SVGRect === 'undefined') || mode === 'font';
-  const iconClassName = bem(`${decamelizeName}`);
 
   const cls = bem([
     {
@@ -40,6 +40,7 @@ const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
       [`${size}`]: !!size,
     },
     className,
+    isFont && iconClassName,
   ]);
 
   const svgProps = {
@@ -49,10 +50,12 @@ const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
     viewBox,
   };
 
+  // iconfont > svg component > children by iconfont
+
   if (isFont) {
-    return <i {...rest} ref={ref} className={`${cls} ${iconClassName}`} />;
+    return <i ref={ref} className={cls} {...rest} />;
   }
-  // svg component > children by iconfont > type
+
   if (SvgComponent) {
     return (
       <i ref={ref} className={cls} {...rest}>
