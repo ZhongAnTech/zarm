@@ -18,10 +18,10 @@
     );
 }
 
-@mixin firstday() {
-  @each $num in 1, 2, 3, 4, 5, 6 {
-    &.firstday-#{$num} {
-      margin-left: $--calendar-day-width * $num;
-    }
-  }
-}
+// @mixin firstday() {
+//   @each $num in 1, 2, 3, 4, 5, 6 {
+//     &.firstday-#{$num} {
+//       margin-left: $--calendar-day-width * $num;
+//     }
+//   }
+// }
