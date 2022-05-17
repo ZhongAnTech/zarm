@@ -203,6 +203,7 @@
   --calendar-week-bar-fontsize: 14px; // 星期条文字大小
   --calendar-week-bar-background: #f2f2f2; // 星期条文字背景色
   --calendar-week-bar-color: var(--color-text-caption); // 星期条文字颜色
+  --calendar-header-vertical-padding: 10px; // 两边垂直间距
   --calendar-section-padding: 15px; // 两边留白间距
   --calendar-day-fontsize: 16px; // 月份文字大小
   --calendar-day-title-fontsize: 17px; // 月份title文字大小
@@ -215,6 +216,7 @@
   --calendar-day-range-background: var(--theme-primary-lighter); // 日期文字范围内背景颜色
   --calendar-day-range-color: var(--theme-primary); // 日期文字范围内颜色
   --calendar-day-height: 40px; // 日期高度
+  --calendar-scroll-title-background: rgba(255, 255, 255, 0.5);
 
   // Carousel
   --za-carousel-pagination-distance: 8px;

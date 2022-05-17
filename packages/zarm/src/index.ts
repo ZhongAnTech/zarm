@@ -19,6 +19,7 @@ export { default as Badge } from './badge';
 export type { ButtonProps } from './button';
 export { default as Button } from './button';
 
+export type { CalendarProps } from './calendar';
 export { default as Calendar } from './calendar';
 
 export type { CollapseProps, CollapseItemProps } from './collapse';

@@ -10,6 +10,7 @@ const themes = {
   '--color-text-disabled': '#666',
   '--border-color': '#1a1a1a',
   '--opacity-mask': '0.7',
+  '--calendar-scroll-title-background': 'rgba(0, 0, 0, .5)',
   '--calendar-background': 'transparent',
   '--calendar-week-bar-background': '#303030',
   '--stack-picker-background': '#000',

@@ -6,7 +6,9 @@ export interface BaseCalendarProps {
   defaultValue?: Date | Date[];
   min?: Date;
   max?: Date;
-  multiple: boolean;
+  mode: 'single' | 'multiple' | 'range';
+  weekStartsOn?: 'Monday' | 'Sunday';
+  direction?: 'horizontal' | 'vertical';
   dateRender?: (value?: Date) => ReactNode;
   disabledDate?: (value?: Date) => boolean;
   onChange?: (value?: Date[]) => void;
@@ -18,6 +20,8 @@ export interface BaseCalendarMonthProps {
   min: Date;
   max: Date;
   dateMonth: Date;
+  mode: 'single' | 'multiple' | 'range';
+  weekStartsOn?: 'Monday' | 'Sunday';
   dateRender?: (value?: Date) => ReactNode;
   disabledDate?: (value?: Date) => boolean;
   onDateClick?: (value?: Date) => void;
