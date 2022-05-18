@@ -108,6 +108,6 @@ ReactDOM.render(<Demo />, mountNode);
 | max          | Date                              | min + 1 年               | 最大可选日期                     |
 | mode         | 'single' \| 'multiple' \| 'range' | 'single'                 | 选择模式                         |
 | direction    | 'horizontal' \| 'vertical'        | 'vertical'               | 展示模式                         |
-| dateRender   | (date?: Date) => void             | (date) => date.getDate() | 日期渲染函数                     |
-| disabledDate | (date?: Date) => boolean          | () => false              | 日期是否禁止选择                 |
-| onChange     | (value?: Date[]) => void          | -                        | 日期选择发生变化时触发的回调函数 |
+| dateRender   | (date: Date) => void             | (date) => date.getDate() | 日期渲染函数                     |
+| disabledDate | (date: Date) => boolean          | () => false              | 日期是否禁止选择                 |
+| onChange     | (value: Date[]) => void          | -                        | 日期选择发生变化时触发的回调函数 |

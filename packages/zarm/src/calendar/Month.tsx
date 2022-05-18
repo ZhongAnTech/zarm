@@ -66,7 +66,7 @@ const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
       if (currentDate.isAfter(dayjs(start)) && currentDate.isBefore(dayjs(end))) {
         return 'range';
       }
-      if (value.length > 1) {
+      if (value.length > 1 && !dayjs(start).isSame(dayjs(end))) {
         if (currentDate.isSame(dayjs(start), 'day') && start) {
           return 'start';
         }

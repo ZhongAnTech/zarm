@@ -50,7 +50,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
   const cls = bem([className]);
 
   const [state, setState] = useState<CalendarStates>(() => {
-    return { ...parseState(props), step: 1 };
+    return { ...parseState(props), step: 0 };
   });
 
   const { min, max, value } = state;
@@ -105,18 +105,23 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
   const handleDateClick = useCallback(
     (date: Date) => {
       const { step, steps } = state;
-      if (mode === 'multiple') {
+      const currentStep = step + 1;
+      const idx = value.map(Number).indexOf(Number(date));
+      if (currentStep === 1 && mode !== 'multiple') {
+        value.splice(0, value.length);
+      }
+      if (mode === 'range') {
+        value[currentStep - 1] = date;
+      } else if (mode === 'multiple') {
         value.push(date);
+      } else if (idx > -1) {
+        value.splice(idx, 1);
       } else {
-        if (step === 1) {
-          value.splice(0, value.length);
-        }
-        value[step - 1] = date;
+        value[currentStep - 1] = date;
       }
       value.sort((item1: Date, item2: Date) => +item1 - +item2);
-      setState((prevState) => ({ ...prevState, value, step: step >= steps ? 1 : step + 1 }));
-
-      if ((step >= steps || mode === 'multiple') && typeof onChange === 'function') {
+      setState((prevState) => ({ ...prevState, value, step: currentStep === steps ? 0: currentStep }));
+      if ((currentStep >= steps || mode === 'multiple') && typeof onChange === 'function') {
         onChange(value);
       }
     },
@@ -185,7 +190,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
 
   useEffect(() => {
     !isHorizontal && anchor();
-  }, [direction, max, min, value]);
+  }, [direction, minDate, maxDate]);
 
   const timer = useRef<ReturnType<typeof setTimeout>>();
   useScroll({
@@ -205,7 +210,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
   useEffect(() => {
     setState({
       ...parseState(props),
-      step: 1,
+      step: state.step,
     });
   }, [mode, maxDate, minDate, direction]);
 
