@@ -12,6 +12,7 @@ import Codesanbox from './Codesanbox';
 import './style.scss';
 
 const isComponentPage = (page) => documents.findIndex((item) => item.key === page) === -1;
+const isHooks = (key) => key.indexOf('use') === 0; // components key startsWith use
 const Icons = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_mk657pke2hj.js');
 
 export default (props) => {
@@ -60,7 +61,9 @@ export default (props) => {
 
   if (typeof document === 'string') {
     const title = `${locale === 'zhCN' ? component.name : ''} ${
-      locale !== 'zhCN' || isComponentPage(component.key) ? pascalCase(component.key) : ''
+      isComponentPage(component.key) && !isHooks(component.key)
+        ? pascalCase(component.key)
+        : component.key
     }`;
     const pageCls = `${component.key}-page`;
     const demoHTML = marked(document.replace(/## API\s?([^]+)/g, ''));
