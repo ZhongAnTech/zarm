@@ -13,7 +13,6 @@ const Demo = () => {
   const [max, setMax] = useState('2022-10-28');
   const [custom, setCustom] = useState(false);
   const [direction, setDirection] = useState('vertical');
-  const [weekStartsOn, setWeekStartsOn] = useState('Sunday');
 
   return (
     <>
@@ -51,19 +50,6 @@ const Demo = () => {
             <Radio value={'vertical'}>垂直</Radio>
           </Radio.Group>
         </List.Item>
-        <List.Item title="周几开始">
-          <Radio.Group
-            buttonCompact
-            type="button"
-            value={weekStartsOn}
-            onChange={(value) => {
-              setWeekStartsOn(value);
-            }}
-          >
-            <Radio value={'Sunday'}>Sunday</Radio>
-            <Radio value={'Monday'}>Monday</Radio>
-          </Radio.Group>
-        </List.Item>
         <List.Item title="自定义渲染">
           <Radio.Group
             buttonCompact
@@ -85,7 +71,6 @@ const Demo = () => {
         min={min}
         max={max}
         direction={direction}
-        weekStartsOn={weekStartsOn}
         dateRender={(date) => {
           if (custom && /(0|6)/.test(date.getDay())) {
             return (
@@ -122,7 +107,6 @@ ReactDOM.render(<Demo />, mountNode);
 | min          | Date                              | new Date()               | 最小可选日期                     |
 | max          | Date                              | min + 1 年               | 最大可选日期                     |
 | mode         | 'single' \| 'multiple' \| 'range' | 'single'                 | 选择模式                         |
-| weekStartsOn | 'Monday' \| 'Sunday'              | 'Sunday'                 | 以周几作为第一天                 |
 | direction    | 'horizontal' \| 'vertical'        | 'vertical'               | 展示模式                         |
 | dateRender   | (date?: Date) => void             | (date) => date.getDate() | 日期渲染函数                     |
 | disabledDate | (date?: Date) => boolean          | () => false              | 日期是否禁止选择                 |

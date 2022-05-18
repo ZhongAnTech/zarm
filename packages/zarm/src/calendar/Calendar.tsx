@@ -41,7 +41,6 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
     max: maxDate,
     min: minDate,
     direction,
-    weekStartsOn,
   } = props;
 
   const container = (ref as any) || React.createRef<HTMLDivElement>();
@@ -65,9 +64,9 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
 
   const [scrolling, setScrolling] = useState(false);
 
-  const isHorizontal = () => {
+  const isHorizontal = useMemo(() => {
     return direction === 'horizontal';
-  };
+  }, [direction]);
 
   const months = useMemo(() => {
     const month: Date[] = [];
@@ -95,8 +94,8 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
     const target = value[0] || new Date();
     const key = `${target.getFullYear()}-${target.getMonth()}`;
     const node = nodes.current[key]!;
-    scrollIntoView.current = true;
     if (node?.el() && scrollBodyRef.current && weekRef.current) {
+      scrollIntoView.current = true;
       const top = node.el()?.offsetTop;
       const { height } = getElementSize(weekRef.current!);
       scrollBodyRef.current.scrollTop! = top - height;
@@ -134,7 +133,6 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
         mode={mode}
         value={value}
         dateMonth={dateMonth}
-        weekStartsOn={weekStartsOn}
         dateRender={dateRender}
         disabledDate={disabledDate}
         onDateClick={handleDateClick}
@@ -147,7 +145,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
 
   const content = useMemo(() => {
     return months.map((item) => renderMonth(item));
-  }, [months, min, max, disabledDate, dateRender, mode, weekStartsOn, handleDateClick, value]);
+  }, [months, min, max, disabledDate, dateRender, mode, handleDateClick, value]);
 
   const weekNode = weekRef?.current;
   const bodyScroll = throttle(() => {
@@ -167,7 +165,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
     }
   }, 150);
 
-  const monthsContent = isHorizontal() ? (
+  const monthsContent = isHorizontal ? (
     <Carousel
       className={bem('body')}
       showPagination={false}
@@ -186,8 +184,8 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
   );
 
   useEffect(() => {
-    !isHorizontal() && anchor();
-  }, [direction, max, min]);
+    !isHorizontal && anchor();
+  }, [direction, max, min, value]);
 
   const timer = useRef<ReturnType<typeof setTimeout>>();
   useScroll({
@@ -219,7 +217,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
         months={months}
         currentMonth={currentMonth}
       />
-      <Week weekStartsOn={weekStartsOn!} ref={weekRef} />
+      <Week ref={weekRef} />
       {monthsContent}
     </div>
   );
@@ -230,7 +228,6 @@ Calendar.defaultProps = {
   dateRender: (date: Date) => date.getDate(),
   disabledDate: () => false,
   direction: 'vertical',
-  weekStartsOn: 'Sunday',
 };
 
 export default Calendar;

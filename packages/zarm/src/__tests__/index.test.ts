@@ -65,7 +65,6 @@ describe('index', () => {
             "direction": "vertical",
             "disabledDate": [Function],
             "mode": "single",
-            "weekStartsOn": "Sunday",
           },
           "render": [Function],
         },

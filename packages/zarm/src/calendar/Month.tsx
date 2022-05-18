@@ -24,10 +24,11 @@ const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
     dateMonth,
     value,
     mode,
-    weekStartsOn,
   } = props;
 
   const { prefixCls: globalPrefixCls, locale: globalLocal } = useContext(ConfigContext);
+
+  const weekStartsOn = globalLocal?.Calendar.weekStartsOn;
 
   const bem = createBEM('calendar', { prefixCls: globalPrefixCls });
 
