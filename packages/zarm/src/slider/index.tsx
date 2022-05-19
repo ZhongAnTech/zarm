@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { useDrag } from '@use-gesture/react';
 import BaseSliderProps from './interface';
@@ -48,6 +48,7 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
     value,
     marks,
     onChange,
+    onSlideChange,
     defaultValue,
     style,
   } = props;
@@ -91,10 +92,24 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
     setCurrentValue(val);
   }, [defaultValue, value]);
 
+  const trackClick = useCallback((event: React.MouseEvent) => {
+    event.stopPropagation()
+    if (disabled) return
+    const line = lineRef.current
+    if (!line) return
+    const { left, top } = line.getBoundingClientRect();
+    const offset = vertical ?  event.clientY - top : event.clientX - left;
+    let current = getValueByOffset(offset);
+    current = Math.min(max!, Math.max(min!, current))
+    setCurrentValue(current);
+    if (typeof onChange === 'function') {
+      onChange(currentValue);
+    }
+  }, [onChange, max, min]);
+
   const bind = useDrag(
     (state) => {
       const [offsetX, offsetY] = [state.xy[0] - state.initial[0], state.xy[1] - state.initial[1]];
-
       state.event.stopPropagation();
       if (state.first) {
         offsetStart.current = getOffsetByValue(currentValue);
@@ -105,8 +120,11 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
       offset += offsetStart.current;
       const maxOffset = getMaxOffset();
       offset = Math.min(maxOffset, Math.max(offset, 0));
-      setCurrentValue(getValueByOffset(offset));
-
+      const current = getValueByOffset(offset)
+      setCurrentValue(current);
+      if (typeof onSlideChange === 'function' && state.dragging && !state.first) {
+        onSlideChange(current);
+      }
       if (state.last) {
         setTooltip(false);
         if (typeof onChange === 'function') {
@@ -196,7 +214,7 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
   return (
     <div className={cls} ref={container} style={style}>
       <div className={bem('content')}>
-        <div className={bem('line')} ref={lineRef}>
+        <div className={bem('line')} ref={lineRef} onClick={trackClick}>
           <div className={bem('line__bg')} style={lineBg} />
           {renderMark()}
         </div>
