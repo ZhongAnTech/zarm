@@ -103,7 +103,7 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
     current = Math.min(max!, Math.max(min!, current))
     setCurrentValue(current);
     if (typeof onChange === 'function') {
-      onChange(currentValue);
+      onChange(current);
     }
   }, [onChange, max, min]);
 
