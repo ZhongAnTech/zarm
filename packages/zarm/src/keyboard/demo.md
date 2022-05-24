@@ -231,16 +231,16 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## CSS 变量
 
-| 属性                                 | 类型                                | 默认值                     | 说明               |
-| :----------------------------------- | :---------------------------------- | :------------------------- | :----------------- |
-| --za-keyboard-background             | React.CSSProperties['background']   | '#d8d8d8'                  | 面板背景色         |
-| --za-keyboard-item-background        | React.CSSProperties['background']   | '#fff'                     | 按键背景色         |
-| --za-keyboard-item-active-background | React.CSSProperties['background']   | 'rgba(162, 165, 176, 0.8)' | 按键激活状态背景色 |
-| --za-keyboard-item-gap               | React.CSSProperties['gap']          | '6px'                      | 按键间距           |
-| --za-keyboard-item-height            | React.CSSProperties['height']       | '52px'                     | 按键高度           |
-| --za-keyboard-item-font-size         | React.CSSProperties['fontSize']     | '30px'                     | 按键字体大小       |
-| --za-keyboard-item-border-radius     | React.CSSProperties['borderRadius'] | '5px'                      | 按键圆角           |
-| --za-keyboard-item-box-shadow        | React.CSSProperties['boxShadow']    | '0 1px 0 #898a8d'          | 按键阴影           |
-| --za-keyboard-ok-background          | React.CSSProperties['background']   | 'var(--za-theme-primary)'  | 确定按键背景色     |
-| --za-keyboard-ok-font-size           | React.CSSProperties['fontSize']     | '20px'                     | 确定按键字体大小   |
-| --za-keyboard-ok-text-color          | React.CSSProperties['color']        | '#fff'                     | 确定按键字体颜色   |
+| 属性                                 | 默认值                     | 说明               |
+| :----------------------------------- | :------------------------- | :----------------- |
+| --za-keyboard-background             | '#d8d8d8'                  | 面板背景色         |
+| --za-keyboard-item-background        | '#fff'                     | 按键背景色         |
+| --za-keyboard-item-active-background | 'rgba(162, 165, 176, 0.8)' | 按键激活状态背景色 |
+| --za-keyboard-item-gap               | '6px'                      | 按键间距           |
+| --za-keyboard-item-height            | '52px'                     | 按键高度           |
+| --za-keyboard-item-font-size         | '30px'                     | 按键字体大小       |
+| --za-keyboard-item-border-radius     | '5px'                      | 按键圆角           |
+| --za-keyboard-item-box-shadow        | '0 1px 0 #898a8d'          | 按键阴影           |
+| --za-keyboard-ok-background          | 'var(--za-theme-primary)'  | 确定按键背景色     |
+| --za-keyboard-ok-font-size           | '20px'                     | 确定按键字体大小   |
+| --za-keyboard-ok-text-color          | '#fff'                     | 确定按键字体颜色   |

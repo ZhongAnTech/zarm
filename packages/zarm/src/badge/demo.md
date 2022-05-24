@@ -127,12 +127,12 @@ ReactDOM.render(
 
 ## CSS 变量
 
-| 属性                 | 类型                                     | 默认值                | 说明               |
-| :------------------- | :--------------------------------------- | :-------------------- | :----------------- |
-| --height             | React.CSSProperties['height']            | '14px'                | 徽标高度           |
-| --font-size          | React.CSSProperties['fontSize']          | '10px'                | 徽标内文字字体大小 |
-| --text-color         | React.CSSProperties['color']             | '#fff'                | 徽标内文字字体色   |
-| --border-radius      | React.CSSProperties['borderRadius']      | 'var(--za-radius-sm)' | 徽标圆角大小       |
-| --padding-horizontal | React.CSSProperties['padding']           | '4px'                 | 徽标横向内边距     |
-| --dot-size           | React.CSSProperties['width' \| 'height'] | '8px'                 | 圆点徽标大小       |
-| --sup-offset         | React.CSSProperties['top']               | '-4px'                | 徽标顶部位置偏移   |
+| 属性                          | 默认值                | 说明               |
+| :---------------------------- | :-------------------- | :----------------- |
+| --za-badge-height             | '14px'                | 徽标高度           |
+| --za-badge-font-size          | '10px'                | 徽标内文字字体大小 |
+| --za-badge-text-color         | '#fff'                | 徽标内文字字体色   |
+| --za-badge-border-radius      | 'var(--za-radius-sm)' | 徽标圆角大小       |
+| --za-badge-padding-horizontal | '4px'                 | 徽标横向内边距     |
+| --za-badge-dot-size           | '8px'                 | 圆点徽标大小       |
+| --za-badge-sup-offset         | '-4px'                | 徽标顶部位置偏移   |

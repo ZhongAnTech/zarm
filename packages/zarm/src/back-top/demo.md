@@ -78,7 +78,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## CSS 变量
 
-| 属性                 | 类型                          | 默认值 | 说明             |
-| :------------------- | :---------------------------- | :----- | :--------------- |
-| --za-back-top-right  | React.CSSProperties['right']  | '50px' | 距离容器右侧距离 |
-| --za-back-top-bottom | React.CSSProperties['bottom'] | '50px' | 距离容器底部距离 |
+| 属性                 | 默认值 | 说明             |
+| :------------------- | :----- | :--------------- |
+| --za-back-top-right  | '50px' | 距离容器右侧距离 |
+| --za-back-top-bottom | '50px' | 距离容器底部距离 |
