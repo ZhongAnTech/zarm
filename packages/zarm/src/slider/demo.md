@@ -98,8 +98,8 @@ ReactDOM.render(
 | vertical     | boolean                            | false  | 是否为纵向               |
 | showMark     | boolean                            | false  | 是否显示标记刻度         |
 | marks        | { [key: number]: React.ReactNode } | {}     | 自定义标记刻度的渲染展示 |
-| onSlideChange     | (value?: number) => void      | -      | 滑动时触发的回调函数   |
-| onChange     | (value?: number) => void           | -      | 值变化时触发的回调函数   |
+| onSlideChange     | (value: number) => void      | -      | 滑动时触发的回调函数   |
+| onChange     | (value: number) => void           | -      | 值变化时触发的回调函数   |
 
 ## CSS 变量
 
