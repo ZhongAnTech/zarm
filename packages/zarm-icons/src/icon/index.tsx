@@ -38,6 +38,7 @@ const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
     {
       [`${theme}`]: !!theme,
       [`${size}`]: !!size,
+      'font': isFont,
     },
     className,
     isFont && iconClassName,

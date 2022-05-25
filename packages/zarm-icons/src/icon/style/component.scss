@@ -18,6 +18,10 @@
     -webkit-appearance: initial !important;
   }
 
+  @include m(font) {
+    height: var(--font-size);
+  }
+
   /* icon themes */
   @include m(primary) {
     @include define(color, var(--za-theme-primary));
