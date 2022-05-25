@@ -19,7 +19,9 @@
   }
 
   @include m(font) {
-    height: var(--font-size);
+    /* stylelint-disable-next-line */
+    font-family: 'zaicon';
+    line-height: 1;
   }
 
   /* icon themes */

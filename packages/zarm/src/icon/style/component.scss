@@ -15,7 +15,9 @@
   font-size: var(--font-size);
 
   @include m(font) {
-    height: var(--font-size);
+    /* stylelint-disable-next-line */
+    font-family: 'zaicon';
+    line-height: 1;
   }
 
   &[type=search] {
