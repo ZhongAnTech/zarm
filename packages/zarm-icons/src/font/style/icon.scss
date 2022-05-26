@@ -12,34 +12,6 @@ $prefix: 'za-icon';
   font-style: normal;
 }
 
-[data-icon]:before {
-  /* stylelint-disable-next-line */
-  font-family: "zaicon" !important;
-  content: attr(data-icon);
-  font-style: normal !important;
-  font-weight: normal !important;
-  font-variant: normal !important;
-  text-transform: none !important;
-  speak: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-[class^='#{$prefix}']:before,
-[class*=' #{$prefix}']:before {
-  /* stylelint-disable-next-line */
-  font-family: "zaicon" !important;
-  font-style: normal !important;
-  font-weight: normal !important;
-  font-variant: normal !important;
-  text-transform: none !important;
-  speak: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 /* stylelint-disable block-closing-brace-empty-line-before */
 .#{$prefix} {
   &__arrow-down:before {
