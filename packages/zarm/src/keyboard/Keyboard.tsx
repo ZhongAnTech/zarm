@@ -117,7 +117,13 @@ const Keyboard = React.forwardRef<unknown, KeyboardProps>((props, ref) => {
 
     if (keyObj.text === 'delete')
       return (
-        <div {...commonProps} {...longPressEvent}>
+        <div
+          {...commonProps}
+          {...longPressEvent}
+          onClick={(e) => {
+            onKeyPressRef.current?.(e, keyObj);
+          }}
+        >
           {renderText()}
         </div>
       );
