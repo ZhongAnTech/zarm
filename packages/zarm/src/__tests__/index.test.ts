@@ -430,7 +430,10 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "SwipeAction": [Function],
+        "SwipeAction": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        },
         "Switch": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
