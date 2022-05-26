@@ -37,6 +37,7 @@ const useLongPress = ({
   const onLongPressRef = useLatest(onLongPress);
   const onPressRef = useLatest(onPress);
   const onClearRef = useLatest(onClear);
+  const startedRef = useRef(false);
 
   const start = useCallback(
     (event: MouseEvent | TouchEvent) => {
@@ -51,16 +52,26 @@ const useLongPress = ({
       }
 
       if (typeof onLongPressRef.current === 'function') {
-        timeout.current = window.setTimeout(() => onLongPressRef.current!(event), delay);
+        timeout.current = window.setTimeout(() => {
+          onLongPressRef.current!(event);
+        }, delay);
       }
+
+      startedRef.current = true;
     },
     [delay, isPreventDefault],
   );
 
   const clear = useCallback(
     (event) => {
+      if (!startedRef.current) {
+        return;
+      }
       // clearTimeout and removeEventListener
-      timeout.current && window.clearTimeout(timeout.current);
+      if (timeout.current) {
+        window.clearTimeout(timeout.current);
+      }
+
       if (typeof onClearRef.current === 'function') {
         onClearRef.current(event);
       }
@@ -72,13 +83,18 @@ const useLongPress = ({
     [isPreventDefault],
   );
 
-  return {
-    onMouseDown: start,
-    onTouchStart: start,
-    onMouseUp: clear,
-    onMouseLeave: clear,
-    onTouchEnd: clear,
-  } as const;
+  const isTouchDevice = window.ontouchstart !== undefined;
+
+  return isTouchDevice
+    ? {
+        onTouchStart: start,
+        onTouchEnd: clear,
+      }
+    : {
+        onMouseDown: start,
+        onMouseUp: clear,
+        onMouseLeave: clear,
+      };
 };
 
 export default useLongPress;
