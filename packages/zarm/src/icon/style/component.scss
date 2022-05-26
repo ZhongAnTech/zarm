@@ -4,7 +4,7 @@
 
   display: inline-block;
   font-style: normal;
-  line-height: 0;
+  line-height: 1;
   text-align: center;
   text-transform: none;
   vertical-align: -0.125em;
@@ -13,6 +13,12 @@
   -moz-osx-font-smoothing: grayscale;
   color: var(--color);
   font-size: var(--font-size);
+
+  @include m(font) {
+    /* stylelint-disable-next-line */
+    font-family: 'zaicon';
+    line-height: 1;
+  }
 
   &[type=search] {
     -webkit-appearance: initial !important;
