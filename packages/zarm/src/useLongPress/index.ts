@@ -1,6 +1,7 @@
 import { useCallback, useRef } from 'react';
 import type { MouseEvent, TouchEvent } from 'react';
 import Events from '../utils/events';
+import { useLatest } from '../utils/hooks';
 
 type TouchOrMouseEvent = TouchEvent | MouseEvent;
 
@@ -33,6 +34,9 @@ const useLongPress = ({
 
   const timeout = useRef(0);
   const target = useRef<EventTarget>();
+  const onLongPressRef = useLatest(onLongPress);
+  const onPressRef = useLatest(onPress);
+  const onClearRef = useLatest(onClear);
 
   const start = useCallback(
     (event: MouseEvent | TouchEvent) => {
@@ -42,30 +46,30 @@ const useLongPress = ({
         target.current = event.target;
       }
 
-      if (typeof onPress === 'function') {
-        onPress(event);
+      if (typeof onPressRef.current === 'function') {
+        onPressRef.current(event);
       }
 
-      if (typeof onLongPress === 'function') {
-        timeout.current = window.setTimeout(() => onLongPress!(event), delay);
+      if (typeof onLongPressRef.current === 'function') {
+        timeout.current = window.setTimeout(() => onLongPressRef.current!(event), delay);
       }
     },
-    [onPress, onLongPress, delay, isPreventDefault],
+    [delay, isPreventDefault],
   );
 
   const clear = useCallback(
     (event) => {
       // clearTimeout and removeEventListener
       timeout.current && window.clearTimeout(timeout.current);
-      if (typeof onClear === 'function') {
-        onClear(event);
+      if (typeof onClearRef.current === 'function') {
+        onClearRef.current(event);
       }
 
       if (isPreventDefault && target.current instanceof Element) {
         Events.off(target.current, 'touchend', preventDefault);
       }
     },
-    [onClear, isPreventDefault],
+    [isPreventDefault],
   );
 
   return {
