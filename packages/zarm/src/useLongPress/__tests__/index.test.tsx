@@ -49,12 +49,28 @@ describe('useLongPress', () => {
     eventType         | expected
     ${'onMouseUp'}    | ${new MouseEvent('mouseup')}
     ${'onMouseLeave'} | ${new MouseEvent('mouseleave')}
-    ${'onTouchEnd'}   | ${new MouseEvent('touchend')}
   `(
     'should execute the clear function after triggering the $eventType event',
     ({ eventType, expected }) => {
       const mOnClear = jest.fn();
       const { result } = renderHook(() => useLongPress({ onClear: mOnClear }));
+      const mEvent = new MouseEvent('mousedown') as any;
+      result.current.onMouseDown(mEvent);
+      result.current[eventType](expected);
+      expect(mOnClear).toBeCalledWith(expected);
+    },
+  );
+
+  test.each`
+    eventType       | expected
+    ${'onTouchEnd'} | ${new MouseEvent('touchend')}
+  `(
+    'should execute the clear function after triggering the $eventType event',
+    ({ eventType, expected }) => {
+      const mOnClear = jest.fn();
+      const { result } = renderHook(() => useLongPress({ onClear: mOnClear }));
+      const mEvent = new MouseEvent('touchstart') as any;
+      result.current.onTouchStart(mEvent);
       result.current[eventType](expected);
       expect(mOnClear).toBeCalledWith(expected);
     },
