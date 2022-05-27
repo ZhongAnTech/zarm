@@ -83,8 +83,6 @@ const useLongPress = ({
     [isPreventDefault],
   );
 
-  const isTouchDevice = window.ontouchstart !== undefined;
-
   return {
     onTouchStart: start,
     onTouchEnd: clear,
