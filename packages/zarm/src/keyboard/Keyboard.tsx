@@ -140,7 +140,15 @@ const Keyboard = React.forwardRef<unknown, KeyboardProps>((props, ref) => {
     .join(' ');
 
   return (
-    <div ref={keyboardRef} className={cls} style={{ gridTemplateColumns, ...style }} {...restProps}>
+    <div
+      {...restProps}
+      ref={keyboardRef}
+      className={cls}
+      style={{ gridTemplateColumns, ...style }}
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
+    >
       {(getKeyConfig.keys || []).map(renderKey)}
     </div>
   );
