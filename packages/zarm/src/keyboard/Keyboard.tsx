@@ -121,7 +121,7 @@ const Keyboard = React.forwardRef<unknown, KeyboardProps>((props, ref) => {
           {...commonProps}
           {...longPressEvent}
           onClick={(e) => {
-            onKeyPressRef.current?.(e, keyObj);
+            e.stopPropagation();
           }}
         >
           {renderText()}
