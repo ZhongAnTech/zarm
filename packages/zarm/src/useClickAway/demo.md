@@ -45,7 +45,7 @@ const Demo = () => {
 
   useClickAway([ref1, ref2], () => {
     setCount(count + 1);
-    console.log('click away');
+    console.log('click away with multiple targets');
   });
 
   return (
