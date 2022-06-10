@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { ConfigContext } from '../n-config-provider';
 import Popper from '../popper';
 import type { BaseTooltipProps } from './interface';
-import type { PopperPlacement, PopperTrigger } from '../popper/PropsType';
+import type { PopperPlacement, PopperTrigger } from '../popper/interface';
 
 export type TooltipProps = BaseTooltipProps & React.InputHTMLAttributes<HTMLInputElement>;
 

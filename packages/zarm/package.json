@@ -68,6 +68,7 @@
   ],
   "dependencies": {
     "@babel/runtime": "^7.14.0",
+    "@popperjs/core": "^2.11.5",
     "@use-gesture/react": "^10.1.1",
     "@zarm-design/bem": "^0.0.1",
     "@zarm-design/icons": "^0.1.4",
@@ -77,7 +78,6 @@
     "hoist-non-react-statics": "^3.3.0",
     "lodash": "^4.17.15",
     "normalize.css": "8.0.1",
-    "popper.js": "^1.15.0",
     "raf": "^3.4.1",
     "react-native-camera-roll-picker": "1.2.3"
   },

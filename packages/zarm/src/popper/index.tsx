@@ -1,12 +1,15 @@
-import React, { HTMLAttributes } from 'react';
+import React, { HTMLAttributes, useCallback, useEffect, useRef, useState, useMemo} from 'react';
 import ReactDOM, { createPortal } from 'react-dom';
-import PopperJS from 'popper.js';
+import { createPopper, Instance as PopperInstance } from '@popperjs/core';
+
 import classnames from 'classnames';
 import includes from 'lodash/includes';
 import ClickOutside from '../click-outside';
-import { canUseDOM, getOuterSizes } from '../utils/dom';
-import BasePopperProps, { PopperPlacement, directionMap } from './PropsType';
+import { canUseDOM, getOuterSizes, getMountContainer } from '../utils/dom';
+import BasePopperProps, { PopperPlacement, directionMap } from './interface';
+import { ConfigContext } from '../n-config-provider';
 import Events from '../utils/events';
+import { useSafeLayoutEffect } from '../utils/hooks';
 
 export interface PopperProps extends BasePopperProps, HTMLAttributes<HTMLDivElement> {
   prefixCls?: string;
@@ -23,162 +26,33 @@ interface PopperStates {
   animationState: 'leave' | 'enter';
 }
 
-const invertKeyValues = (obj: object, fn?) => {
-  return Object.keys(obj).reduce((acc, key) => {
-    const val = fn ? fn(obj[key]) : obj[key];
-    acc[val] = acc[val] || [];
-    acc[val].push(key);
-    return acc as object;
-  }, {});
-};
+const Popper =  React.forwardRef<unknown, PopperProps>((props, ref) => {
+  const container = (ref as any) || React.createRef<HTMLDivElement>();
 
-const getPopperClientRect = (popperOffsets) => {
-  const offsets = { ...popperOffsets };
-  offsets.right = offsets.left + offsets.width;
-  offsets.bottom = offsets.top + offsets.height;
-  return offsets;
-};
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
 
-const setTransformOrigin = (domNode) => {
-  const placement = domNode.getAttribute('x-placement');
-  const transformOrigin = {
-    'top-start': 'left bottom',
-    top: 'center bottom',
-    'top-end': 'right bottom',
-    'left-start': 'right top',
-    left: 'right center',
-    'left-end': 'right bottom',
-    'bottom-start': 'left top',
-    bottom: 'center top',
-    'bottom-end': 'right top',
-    'right-start': 'left top',
-    right: 'left center',
-    'right-end': 'left bottom',
-  };
-  domNode.style.transformOrigin = transformOrigin[placement];
-};
+  const { visible, mountContainer, direction, trigger, animationDuration, hasArrow, className, animationType, content, style, children } = props;
 
-const customArrowOffsetFn = (data: PopperJS.Data) => {
-  const [placement, placement1] = data.placement.split('-');
-  const arrow =
-    data.instance.options.modifiers && (data.instance.options.modifiers!.arrow!.element as Element);
-  const {
-    offsets: { reference },
-  } = data;
-  const popper = getPopperClientRect(data.offsets.popper);
-  const isVertical = ['left', 'right'].indexOf(placement) !== -1;
-  const len = isVertical ? 'height' : 'width';
-  const side = isVertical ? 'top' : 'left';
-  const altSide = isVertical ? 'left' : 'top';
-  const opSide = isVertical ? 'bottom' : 'right';
-  const arrowSize = getOuterSizes(arrow as HTMLElement)[len];
-  const offsetSize = parseFloat(getComputedStyle(data.instance.popper, null).paddingLeft!);
-  const hashMap = {
-    start:
-      side === 'top' || side === 'left'
-        ? reference[side] + offsetSize
-        : reference[opSide] - offsetSize - arrowSize,
-    center: reference[side] + reference[len] / 2 - arrowSize / 2,
-    end:
-      side === 'top' || side === 'left'
-        ? reference[opSide] - offsetSize - arrowSize
-        : reference[side] + offsetSize,
-  };
-  const place = hashMap[placement1 || 'center'];
-  const sideValue = place - popper[side];
+  const prefixCls = `${globalPrefixCls}-popper`;
 
-  data.arrowElement = arrow!;
-  data.arrowStyles[side] = Math.floor(sideValue).toString();
-  data.arrowStyles[altSide] = '';
+  const [reference, setReference] = useState<HTMLElement | null>();
+  const [arrowRef, setArrowRef] = useState<HTMLElement | null>();
+  const [popperNode, setPopperNode] = useState<HTMLElement | null>()
 
-  return data;
-};
-
-const popperInstances: Set<PopperJS> = new Set();
-
-class Popper extends React.Component<PopperProps, PopperStates> {
-  static update() {
-    popperInstances.forEach((popperInstance) => popperInstance.scheduleUpdate());
-  }
-
-  private popper: PopperJS | null;
-
-  private popperNode: HTMLDivElement;
-
-  private reference: HTMLElement;
-
-  private arrowRef: HTMLSpanElement;
-
-  private enterTimer: number;
-
-  private leaveTimer: number;
-
-  static defaultProps: PopperProps = {
-    prefixCls: 'za-popper',
-    hasArrow: false,
-    destroy: true,
-    arrowPointAtCenter: false,
-    trigger:
-      (canUseDOM && /(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)
-        ? 'click'
-        : 'hover') || 'click',
-    direction: 'top',
-    mouseEnterDelay: 150,
-    mouseLeaveDelay: 100,
-    visible: false,
-    content: '',
-    animationType: 'zoomFade',
-    animationDuration: 300,
-    onVisibleChange: () => {},
-  };
-
-  static getDerivedStateFromProps(props: PopperProps, state: PopperStates) {
-    if ('visible' in props && props.trigger === 'manual') {
-      return {
-        ...state,
-        show: props.visible,
-        ...(props.visible && { mounted: true }),
-      };
-    }
-    return null;
-  }
-
-  state: PopperStates = {
+  const [state, setState]= useState<PopperStates>({
     show: false,
-    direction: this.props.direction!,
+    direction: direction!,
     arrowRef: null,
     mounted: false,
     isPending: false,
-    animationState: 'leave',
-  };
+    animationState: 'leave'
+  })
 
-  componentDidUpdate(prevProps: PopperProps) {
-    const { direction, visible } = this.props;
-    if (visible && (prevProps.visible !== visible || prevProps.direction !== direction)) {
-      this.handleOpen();
-    }
-    if (prevProps.visible !== visible && !visible) {
-      this.handleClose();
-    }
-  }
+  const { isPending, animationState, mounted } = state;
 
-  componentWillUnmount() {
-    if (this.popperNode) {
-      Events.off(this.popperNode, 'webkitAnimationEnd', this.animationEnd);
-      Events.off(this.popperNode, 'animationend', this.animationEnd);
-    }
-    this.destroy();
-    clearTimeout(this.enterTimer);
-    clearTimeout(this.leaveTimer);
-  }
-
-  getPopperDomNode() {
-    return this.popperNode;
-  }
-
-  getTransitionName(animationType, animationState) {
-    if (this.popperNode) {
-      const placement = this.popperNode!.getAttribute('x-placement');
+  const getTransitionName = useCallback(() => {
+    if (popperNode) {
+      const placement = popperNode.getAttribute('x-placement');
 
       if (animationType === 'menuSlide' && placement) {
         if (includes(placement, 'top')) {
@@ -188,222 +62,190 @@ class Popper extends React.Component<PopperProps, PopperStates> {
       }
       return `za-${animationType}-${animationState}`;
     }
-  }
+    return '';
+  }, [popperNode, animationType, animationState]);
 
-  handleOpen = () => {
-    const { direction, hasArrow, arrowPointAtCenter } = this.props;
-    const reference = this.reference as Element;
-    const popperNode = this.popperNode as Element;
+  const transitionName = getTransitionName();
 
-    if (!popperNode) {
-      return;
-    }
+  const innerCls = useMemo(() => {
+    return classnames(className, prefixCls, `${prefixCls}--${direction}`, {
+      [`${prefixCls}--hidden`]: animationState === 'leave',
+      [transitionName!]: isPending,
+    })
+  }, [animationState, isPending]);
 
-    if (this.popper) {
-      this.destroy();
-    }
+  const popperInstanceRef = React.useRef<PopperInstance | null>();
 
-    this.popper = new PopperJS(reference, popperNode, {
-      placement: directionMap[direction!],
-      modifiers: {
-        preventOverflow: {
-          boundariesElement: 'window',
-        },
-        computeStyle: {
-          gpuAcceleration: false,
-        },
-        arrow: {
-          enabled: Boolean(this.arrowRef),
-          element: this.arrowRef,
-          ...(!(hasArrow && arrowPointAtCenter) && { fn: customArrowOffsetFn }),
-        },
-      },
-      onCreate: this.handlePopperUpdate,
-      onUpdate: this.handlePopperUpdate,
-    });
-
-    Events.on(this.popperNode, 'webkitAnimationEnd', this.animationEnd);
-    Events.on(this.popperNode, 'animationend', this.animationEnd);
-
-    this.enter();
-
-    popperInstances.add(this.popper);
-  };
-
-  animationEnd = (e) => {
+  const animationEnd = (e) => {
     e.stopPropagation();
-
-    const { animationState } = this.state;
-    const { destroy } = this.props;
+    const { destroy } = props;
 
     if (animationState === 'leave') {
-      this.setState(
-        {
+      setState({
+          ...state,
           show: false,
           isPending: false,
           ...(destroy && { mounted: false }),
-        },
-        () => {
-          this.destroy();
-          this.props.onVisibleChange!(false);
-        },
+        }
       );
+      // todo
     } else {
-      this.props.onVisibleChange!(true);
+      props.onVisibleChange!(true);
     }
   };
 
-  handlePopperUpdate = (data) => {
-    const { animationType } = this.props;
-    if (animationType !== 'menuSlide') setTransformOrigin(this.popperNode);
-    if (data.placement !== this.state.direction) {
-      this.setState({
-        direction: invertKeyValues(directionMap)[data.placement],
+  useSafeLayoutEffect(() => {
+    if (!reference || !popperNode) {
+     return;
+    }
+    const popperInstance: PopperInstance = createPopper(reference, popperNode!, {
+      placement: directionMap[direction!],
+      modifiers: [
+        {
+          name: 'computeStyles',
+          options: {
+            adaptive: false,
+            gpuAcceleration: false,
+          },
+        },
+        {
+          name: 'arrow',
+          options: {
+            element: arrowRef,
+          },
+        },
+      ]
+    });
+    popperInstanceRef.current = popperInstance;
+    return () => {
+      popperInstance.destroy();
+      popperInstanceRef.current = null;
+    }
+  }, [reference, popperNode]);
+
+  useEffect(() => {
+    if (trigger === 'manual') {
+      setState({
+        ...state,
+        show: !!visible,
+        ...(visible && { mounted: true }),
       });
     }
-  };
+  }, [visible, trigger]);
 
-  handleClose = () => {
-    if (!this.popper) {
-      return;
-    }
-    this.leave();
-  };
 
-  handleClick = (event) => {
-    const { trigger } = this.props;
-    const { show } = this.state;
-
-    if (trigger === 'contextMenu') event.preventDefault();
-    this.setState({ mounted: true }, () => {
-      if (!show) {
-        this.handleOpen();
-      } else {
-        this.handleClose();
-      }
-    });
-  };
-
-  handleEnter = (event) => {
-    const { children, mouseEnterDelay } = this.props;
-    const childrenProps = (children as React.ReactElement<any>).props;
-
-    if (React.isValidElement(children) && event.type === 'mouseover' && childrenProps.onMouseOver) {
-      childrenProps.onMouseOver(event);
-    }
-
-    clearTimeout(this.enterTimer);
-    clearTimeout(this.leaveTimer);
-    this.enterTimer = window.setTimeout(() => {
-      this.setState({ mounted: true }, this.handleOpen);
-    }, mouseEnterDelay);
-  };
-
-  handleLeave = (event) => {
-    const { children, mouseLeaveDelay } = this.props;
-    const childrenProps = (children as React.ReactElement<any>).props;
-
-    if (React.isValidElement(children) && event.type === 'blur' && childrenProps.onBlur) {
-      childrenProps.onBlur(event);
-    }
-
-    if (
-      React.isValidElement(children) &&
-      event.type === 'mouseleave' &&
-      childrenProps.onMouseLeave
-    ) {
-      childrenProps.onMouseLeave(event);
-    }
-
-    clearTimeout(this.enterTimer);
-    clearTimeout(this.leaveTimer);
-    this.leaveTimer = window.setTimeout(() => {
-      this.handleClose();
-    }, mouseLeaveDelay);
-  };
-
-  mountContainer() {
-    const { mountContainer } = this.props;
-    if (mountContainer) {
-      if (typeof mountContainer === 'function') {
-        return mountContainer();
-      }
-      if (typeof mountContainer === 'object' && mountContainer instanceof HTMLElement) {
-        return mountContainer;
-      }
-    }
-    return document.body;
+  const handleOpen = () => {
+    enter();
   }
 
-  enter() {
-    this.setState({
+  const handleClick = (event) => {
+    if (trigger === 'contextMenu') {
+      event.preventDefault()
+    };
+    setState({ ...state,  mounted: true });
+  }
+
+  useEffect(() => {
+    const { show } = state;
+    if (mounted) {
+      if (!show) {
+        handleOpen();
+      } else {
+        handleClose();
+      }
+    }
+  }, [mounted]);
+
+  const enter = () => {
+    setState({
+      ...state,
       show: true,
       isPending: true,
       animationState: 'enter',
     });
   }
 
-  leave() {
-    this.setState({
+  const leave = () => {
+    setState({
+      ...state,
       show: false,
       isPending: true,
       animationState: 'leave',
     });
   }
 
-  destroy() {
-    if (this.popper) {
-      this.popper.destroy();
-      popperInstances.delete(this.popper);
-      this.popper = null;
+  const enterTimer = useRef<number>();
+  const leaveTimer = useRef<number>();
+  const handleEnter = (event) => {
+    const { mouseEnterDelay } = props;
+    const childrenProps = (children as React.ReactElement<any>).props;
+
+    if (React.isValidElement(children) && event.type === 'mouseover' && childrenProps.onMouseOver) {
+      childrenProps.onMouseOver(event);
     }
+
+    clearTimeout(enterTimer.current);
+    clearTimeout(leaveTimer.current);
+    enterTimer.current = window.setTimeout(() => {
+      setState({ ...state, mounted: true });
+      // handleOpen
+    }, mouseEnterDelay);
   }
 
-  render() {
-    const {
-      children,
-      content,
-      prefixCls,
-      className,
-      trigger,
-      hasArrow,
-      animationType,
-      animationDuration,
-      style,
-    } = this.props;
+  const handleLeave = (event) => {
+    const { mouseEnterDelay } = props;
+    const childrenProps = (children as React.ReactElement<any>).props;
 
-    const { direction, mounted, animationState, isPending } = this.state;
-    const transitionName = this.getTransitionName(animationType, animationState);
-    const innerCls = classnames(className, prefixCls, `${prefixCls}--${direction}`, {
-      [`${prefixCls}--hidden`]: animationState === 'leave',
-      [transitionName!]: isPending,
-    });
-    const child = React.isValidElement(children) ? children : <span>{children}</span>;
-    const childrenProps: React.RefAttributes<any> & React.HTMLAttributes<any> = {
-      ...(children && (children as React.ReactElement).props),
-    };
-    const event: React.DOMAttributes<HTMLDivElement> = {};
-    if (trigger === 'click') {
-      childrenProps.onClick = this.handleClick;
-    }
-    if (trigger === 'contextMenu') {
-      childrenProps.onContextMenu = this.handleClick;
-    }
-    if (trigger === 'hover') {
-      childrenProps.onMouseOver = this.handleEnter;
-      childrenProps.onMouseLeave = this.handleLeave;
-      event.onMouseOver = this.handleEnter;
-      event.onMouseLeave = this.handleLeave;
-    }
-    if (trigger === 'focus') {
-      childrenProps.onFocus = this.handleClick;
-      // childrenProps.onBlur = this.handleLeave;
+    if (React.isValidElement(children) && event.type === 'mouseover' && childrenProps.onMouseOver) {
+      childrenProps.onMouseOver(event);
     }
 
-    const toolTip = (
+    clearTimeout(enterTimer.current!);
+    clearTimeout(leaveTimer.current!);
+    enterTimer.current = window.setTimeout(() => {
+      setState({ ...state, mounted: true });
+     //   handleOpen();
+    }, mouseEnterDelay);
+  }
+
+  const child = React.isValidElement(children) ? children : <span>{children}</span>;
+  const childrenProps: React.RefAttributes<any> & React.HTMLAttributes<any> = {
+    ...(children && (children as React.ReactElement).props),
+  };
+
+  const event: React.DOMAttributes<HTMLDivElement> = {};
+  if (trigger === 'click') {
+    childrenProps.onClick = handleClick;
+  }
+
+  if (trigger === 'contextMenu') {
+    childrenProps.onContextMenu = handleClick;
+  }
+  if (trigger === 'hover') {
+    childrenProps.onMouseOver = handleEnter;
+    childrenProps.onMouseLeave = handleLeave;
+    event.onMouseOver = handleEnter;
+    event.onMouseLeave = handleLeave;
+  }
+  if (trigger === 'focus') {
+    childrenProps.onFocus = handleClick;
+    // childrenProps.onBlur = this.handleLeave;
+  }
+
+  const handleClose = () => {
+    // if (!this.popper) {
+    //   return;
+    // }
+    // console.error('handleClose')
+    leave();
+  }
+
+  // console.log(state);
+
+  const toolTip = (
       <ClickOutside
-        onClickOutside={this.handleClose}
-        ignoredNode={this.reference}
+        onClickOutside={handleClose}
+        ignoredNode={reference!}
         className={`${prefixCls}-container`}
         disabled={trigger === 'manual'}
       >
@@ -417,16 +259,17 @@ class Popper extends React.Component<PopperProps, PopperStates> {
           }}
           className={innerCls}
           ref={(node) => {
-            this.popperNode = node!;
+            setPopperNode(node);
           }}
           {...event}
+          onAnimationEnd={animationEnd}
         >
           <div className={`${prefixCls}__content`}>{content}</div>
           {hasArrow && (
             <span
               className={`${prefixCls}__arrow`}
               ref={(el) => {
-                this.arrowRef = el!;
+                setArrowRef(el);
               }}
             />
           )}
@@ -434,19 +277,37 @@ class Popper extends React.Component<PopperProps, PopperStates> {
       </ClickOutside>
     );
 
-    return (
-      <>
-        {mounted && createPortal(toolTip, this.mountContainer())}
-        {React.cloneElement(child, {
-          ref: (node) => {
-            // eslint-disable-next-line react/no-find-dom-node
-            this.reference = ReactDOM.findDOMNode(node) as HTMLElement;
-          },
-          ...childrenProps,
-        })}
-      </>
-    );
-  }
+  return (
+    <>
+      {mounted && createPortal(toolTip, getMountContainer(mountContainer) )}
+      {React.cloneElement(child, {
+        ref: (node) => {
+          // eslint-disable-next-line react/no-find-dom-node
+          setReference(ReactDOM.findDOMNode(node) as HTMLElement);
+        },
+        ...childrenProps,
+      })}
+    </>
+  );
+
+})
+
+Popper.defaultProps = {
+  hasArrow: false,
+  destroy: false,
+  arrowPointAtCenter: false,
+  trigger:
+    (canUseDOM && /(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)
+      ? 'click'
+      : 'hover') || 'click',
+  direction: 'top',
+  mouseEnterDelay: 150,
+  mouseLeaveDelay: 100,
+  visible: false,
+  content: '',
+  animationType: 'zoomFade',
+  animationDuration: 300,
+  onVisibleChange: () => {},
 }
 
 export default Popper;
