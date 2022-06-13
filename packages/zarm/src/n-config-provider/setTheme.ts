@@ -31,6 +31,7 @@ const themes = {
   '--za-button-default-active-background': 'rgba(255, 255, 255, 0.2)',
   '--za-button-default-active-border': 'transparent',
   '--za-button-default-active-color': '#fff',
+  '--za-badge-border-color': 'transparent',
   '--za-list-item-background': '#1c1c1e',
   '--za-list-item-active-background': '#363738',
   '--za-list-item-arrow-color': '#666',
