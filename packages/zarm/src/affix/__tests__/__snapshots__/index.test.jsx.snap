@@ -2,16 +2,24 @@
 
 exports[`Affix offsetBottom 1`] = `
 <div>
-  <div>
-    Affix Node
+  <div
+    class=""
+  >
+    <div>
+      Affix Node
+    </div>
   </div>
 </div>
 `;
 
 exports[`Affix offsetTop 1`] = `
 <div>
-  <div>
-    Affix Node
+  <div
+    class=""
+  >
+    <div>
+      Affix Node
+    </div>
   </div>
 </div>
 `;
