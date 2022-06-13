@@ -137,11 +137,19 @@ const deployConfig: Configuration = webpackMerge({}, config, {
 
 const devConfig: Configuration = webpackMerge({}, deployConfig, {
   mode: 'development',
-  devtool: 'eval-cheap-source-map',
+  devtool: 'cheap-module-source-map',
   optimization: {
     minimize: false,
   },
   plugins: [new webpack.HotModuleReplacementPlugin()],
+  cache: {
+    type: 'filesystem',
+    name: 'zarm-dev',
+    buildDependencies: {
+      config: [__filename],
+    },
+    store: 'pack',
+  },
 });
 
 const umdConfig: Configuration = webpackMerge({}, config, {

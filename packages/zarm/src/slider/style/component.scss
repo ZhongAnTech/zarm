@@ -33,6 +33,7 @@
     height: var(--line-size);
     background-color: var(--line-background);
     border-radius: var(--line-border-radius);
+    cursor: pointer;
 
     @include e(line__bg) {
       height: 100%;
@@ -70,6 +71,7 @@
     background-color: var(--knob-background);
     box-shadow: var(--knob-box-shadow);
     touch-action: none;
+    cursor: pointer;
 
     @include b(tooltip) {
       display: block;

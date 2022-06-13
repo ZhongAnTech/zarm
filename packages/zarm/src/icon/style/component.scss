@@ -1,5 +1,5 @@
 @include b(icon) {
-  // @include define(color, var(--za-color-text));
+  @include define(color, var(--za-color-text));
   @include define(font-size, 24px);
 
   display: inline-block;
@@ -13,6 +13,12 @@
   -moz-osx-font-smoothing: grayscale;
   color: var(--color);
   font-size: var(--font-size);
+
+  @include m(font) {
+    /* stylelint-disable-next-line */
+    font-family: 'zaicon';
+    line-height: 1;
+  }
 
   &[type=search] {
     -webkit-appearance: initial !important;

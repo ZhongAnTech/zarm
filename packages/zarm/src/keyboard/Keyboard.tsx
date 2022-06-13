@@ -6,6 +6,7 @@ import { ConfigContext } from '../n-config-provider';
 import BuildInConfig from './BuildInConfig';
 import type { BaseKeyBoardProps, KeyBoardKey, KeyBoardDataSource } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
+import { useLatest } from '../utils/hooks';
 
 export interface KeyboardCssVars {
   '--background'?: React.CSSProperties['background'];
@@ -37,7 +38,6 @@ const Keyboard = React.forwardRef<unknown, KeyboardProps>((props, ref) => {
   const cls = bem([className]);
 
   const getKeyConfig = dataSource || BuildInConfig[type!];
-  let longPressTimer: number | null;
 
   const onKeyPress = (e, text: KeyBoardKey | KeyBoardKey['value']) => {
     e.stopPropagation();
@@ -51,19 +51,25 @@ const Keyboard = React.forwardRef<unknown, KeyboardProps>((props, ref) => {
     }
   };
 
+  const timerRef = React.useRef(0);
+  const onKeyPressRef = useLatest(onKeyPress);
+
   const longPressEvent = useLongPress({
-    // todo: 长按连续删除还有点问题，暂时关闭支持
-    // onLongPress: (e) => {
-    //   e.stopPropagation();
-    //   longPressTimer = window.setInterval(() => {
-    //     onKeyPress(e, 'delete');
-    //   }, 100);
-    // },
-    onPress: (e) => onKeyPress(e, 'delete'),
-    onClear: () => clearInterval(longPressTimer!),
+    // 长按连续删除
+    onLongPress: (e) => {
+      clearInterval(timerRef.current);
+      timerRef.current = window.setInterval(() => {
+        onKeyPressRef.current(e, 'delete');
+      }, 100);
+    },
+    onPress: (e) => {
+      clearInterval(timerRef.current);
+      onKeyPressRef.current(e, 'delete');
+    },
+    onClear: () => clearInterval(timerRef.current),
   });
 
-  const renderKey = (text: KeyBoardKey, index: number) => {
+  const renderKey = React.useCallback((text: KeyBoardKey, index: number) => {
     const keyObj: KeyBoardKey = typeof text === 'object' ? text : { text };
 
     const commonProps = {
@@ -99,7 +105,7 @@ const Keyboard = React.forwardRef<unknown, KeyboardProps>((props, ref) => {
           return locale!.okText;
 
         case 'delete':
-          return <DeleteKeyIcon size="lg" />;
+          return <DeleteKeyIcon size="lg" style={{ pointerEvents: 'none' }} />;
 
         case 'close':
           return <KeyboardIcon size="lg" />;
@@ -117,18 +123,26 @@ const Keyboard = React.forwardRef<unknown, KeyboardProps>((props, ref) => {
       );
 
     return (
-      <div {...commonProps} onClick={(e) => onKeyPress(e, keyObj)}>
+      <div {...commonProps} onClick={(e) => onKeyPressRef.current?.(e, keyObj)}>
         {renderText()}
       </div>
     );
-  };
+  }, []);
 
   const gridTemplateColumns = Array.from(Array(getKeyConfig.columns).keys())
     .map(() => '1fr')
     .join(' ');
 
   return (
-    <div ref={keyboardRef} className={cls} style={{ gridTemplateColumns, ...style }} {...restProps}>
+    <div
+      {...restProps}
+      ref={keyboardRef}
+      className={cls}
+      style={{ gridTemplateColumns, ...style }}
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
+    >
       {(getKeyConfig.keys || []).map(renderKey)}
     </div>
   );

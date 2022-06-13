@@ -15,8 +15,6 @@ export type BadgeProps = BaseBadgeProps & HTMLProps<BadgeCssVars>;
 
 const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
   const { className, shape, bordered, text, children, ...restProps } = props;
-  const badgeRef = ref || React.createRef<HTMLSpanElement>();
-
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('badge', { prefixCls });
 
@@ -30,7 +28,7 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
   ]);
 
   return (
-    <span ref={badgeRef} className={cls} {...restProps}>
+    <span ref={ref} className={cls} {...restProps}>
       {children}
       <sup className={bem('content')}>{shape !== 'dot' && text}</sup>
     </span>

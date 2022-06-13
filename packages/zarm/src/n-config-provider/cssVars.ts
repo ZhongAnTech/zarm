@@ -3,6 +3,7 @@ import type { ActionSheetCssVars } from '../action-sheet';
 import type { ActivityIndicatorCssVars } from '../activity-indicator';
 import type { AffixCssVars } from '../affix';
 import type { BackTopCssVars } from '../back-top';
+import type { BadgeCssVars } from '../badge';
 import type { GridCssVars } from '../grid';
 import type { SliderCssVars } from '../slider';
 import type { SwitchCssVars } from '../switch';
@@ -20,6 +21,7 @@ export type CssVars = Prefix<ActionSheetCssVars, 'action-sheet'> &
   Prefix<AffixCssVars, 'affix'> &
   Prefix<GridCssVars, 'grid'> &
   Prefix<BackTopCssVars, 'back-top'> &
+  Prefix<BadgeCssVars, 'badge'> &
   Prefix<SliderCssVars, 'slider'> &
   Prefix<SwitchCssVars, 'switch'> &
   Prefix<ModalCssVars, 'modal'> &

@@ -105,8 +105,8 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## CSS 变量
 
-| 属性                             | 类型                               | 默认值                        | 说明                 |
-| :------------------------------- | :--------------------------------- | :---------------------------- | :------------------- |
-| --za-grid-border-color           | React.CSSProperties['borderColor'] | 'var(--za-border-color)'      | 格子边框颜色         |
-| --za-grid-item-background        | React.CSSProperties['background']  | 'var(--za-background-color)'  | 格子背景颜色         |
-| --za-grid-item-active-background | React.CSSProperties['background']  | 'var(--za-background-active)' | 格子点击反馈背景颜色 |
+| 属性                             | 默认值                        | 说明                 |
+| :------------------------------- | :---------------------------- | :------------------- |
+| --za-grid-border-color           | 'var(--za-border-color)'      | 格子边框颜色         |
+| --za-grid-item-background        | 'var(--za-background-color)'  | 格子背景颜色         |
+| --za-grid-item-active-background | 'var(--za-background-active)' | 格子点击反馈背景颜色 |

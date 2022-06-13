@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import includes from 'lodash/includes';
 import type BaseTriggerProps from './PropsType';
 
 export type TriggerProps = BaseTriggerProps;
@@ -17,7 +18,7 @@ class Trigger extends Component<TriggerProps, {}> {
     const { visible, onClose, disabled } = nextProps;
     onClose && (onClose.disabled = disabled);
     if (visible === true && typeof onClose === 'function') {
-      if (!Trigger.instanceList.includes(onClose)) {
+      if (!includes(Trigger.instanceList, onClose)) {
         Trigger.instanceList.push(onClose);
       }
     } else {

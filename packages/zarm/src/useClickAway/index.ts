@@ -1,5 +1,6 @@
-import { useEffect, useRef, MutableRefObject } from 'react';
+import { useEffect, MutableRefObject } from 'react';
 import Events from '../utils/events';
+import { useLatest } from '../utils/hooks';
 
 export type BasicTarget<T = HTMLElement> =
   | (() => T | null)
@@ -35,15 +36,14 @@ export default function useClickAway(
   onClickAway?: (event: React.MouseEvent | React.TouchEvent) => void,
   eventName = 'click',
 ) {
-  const onClickAwayRef = useRef(onClickAway);
-
-  useEffect(() => {
-    onClickAwayRef.current = onClickAway;
-  }, [onClickAway]);
+  const onClickAwayRef = useLatest(onClickAway);
+  const eventNameRef = useLatest(eventName);
+  const targetRef = useLatest(target);
 
   useEffect(() => {
     const handler = (event: any) => {
-      const targets = Array.isArray(target) ? target : [target];
+      const currentTarget = targetRef.current;
+      const targets = Array.isArray(currentTarget) ? currentTarget : [currentTarget];
 
       if (
         targets.some((targetItem) => {
@@ -53,13 +53,13 @@ export default function useClickAway(
       ) {
         return;
       }
-      onClickAwayRef.current!(event);
+      onClickAwayRef.current?.(event);
     };
 
-    Events.on(document, eventName, handler);
+    Events.on(document, eventNameRef.current, handler);
 
     return () => {
-      Events.off(document, eventName, handler);
+      Events.off(document, eventNameRef.current, handler);
     };
-  }, [target, eventName]);
+  }, []);
 }

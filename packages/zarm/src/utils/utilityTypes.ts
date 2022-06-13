@@ -15,4 +15,4 @@ export type Replace<
 export interface HTMLProps<T extends object = {}> {
   className?: string;
   style?: React.CSSProperties & Partial<T>;
-};
+}

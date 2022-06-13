@@ -85,7 +85,7 @@ const Demo = () => {
   return (
     <List>
       <List.Item>
-        <Rate defaultValue={3} style={{ '--za-rate-gap': '16px' }} allowHalf />
+        <Rate allowHalf defaultValue={3} style={{ '--za-rate-gap': '16px' }} />
       </List.Item>
     </List>
   );
@@ -195,9 +195,9 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## CSS 变量
 
-| 属性                   | 类型                               | 默认值    | 说明             |
-| :--------------------- | :--------------------------------- | :-------- | :--------------- |
-| --za-rate-size         | number \| string                   | '20px'    | 选项大小         |
-| --za-rate-color        | React.CSSProperties['color']       | '#eee'    | 选项颜色         |
-| --za-rate-active-color | React.CSSProperties['color']       | '#fadb14' | 选项激活后的颜色 |
-| --za-rate-gap          | React.CSSProperties['marginRight'] | '4px'     | 选项之间的间距   |
+| 属性                   | 默认值    | 说明             |
+| :--------------------- | :-------- | :--------------- |
+| --za-rate-size         | '20px'    | 选项大小         |
+| --za-rate-color        | '#eee'    | 选项颜色         |
+| --za-rate-active-color | '#fadb14' | 选项激活后的颜色 |
+| --za-rate-gap          | '4px'     | 选项之间的间距   |

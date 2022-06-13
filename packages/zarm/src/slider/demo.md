@@ -12,7 +12,7 @@ const Demo = () => {
   return (
     <List>
       <List.Item title="普通">
-        <Slider value={value} onChange={setValue} />
+        <Slider value={value} onChange={setValue} onSlideChange={(value) => console.log(value)} />
       </List.Item>
       <List.Item title="设置默认值">
         <Slider defaultValue={20} />
@@ -87,36 +87,37 @@ ReactDOM.render(
 
 ## API
 
-| 属性         | 类型                               | 默认值 | 说明                     |
-| :----------- | :--------------------------------- | :----- | :----------------------- |
-| value        | number                             | -      | 值                       |
-| defaultValue | number                             | -      | 初始值                   |
-| min          | number                             | 0      | 最小值                   |
-| max          | number                             | 100    | 最大值                   |
-| disabled     | boolean                            | false  | 是否禁用                 |
-| step         | number                             | 1      | 步长                     |
-| vertical     | boolean                            | false  | 是否为纵向               |
-| showMark     | boolean                            | false  | 是否显示标记刻度         |
-| marks        | { [key: number]: React.ReactNode } | {}     | 自定义标记刻度的渲染展示 |
-| onChange     | (value?: number) => void           | -      | 值变化时触发的回调函数   |
+| 属性          | 类型                               | 默认值 | 说明                     |
+| :------------ | :--------------------------------- | :----- | :----------------------- |
+| value         | number                             | -      | 值                       |
+| defaultValue  | number                             | -      | 初始值                   |
+| min           | number                             | 0      | 最小值                   |
+| max           | number                             | 100    | 最大值                   |
+| disabled      | boolean                            | false  | 是否禁用                 |
+| step          | number                             | 1      | 步长                     |
+| vertical      | boolean                            | false  | 是否为纵向               |
+| showMark      | boolean                            | false  | 是否显示标记刻度         |
+| marks         | { [key: number]: React.ReactNode } | {}     | 自定义标记刻度的渲染展示 |
+| onSlideChange | (value: number) => void            | -      | 滑动时触发的回调函数     |
+| onChange      | (value: number) => void            | -      | 值变化时触发的回调函数   |
 
 ## CSS 变量
 
-| 属性                                | 类型                                     | 默认值                         | 说明                   |
-| :---------------------------------- | :--------------------------------------- | :----------------------------- | :--------------------- |
-| --za-slider-line-size               | React.CSSProperties['width' \| 'height'] | '4px'                          | 轨道线宽度             |
-| --za-slider-line-border-radius      | React.CSSProperties['borderRadius']      | '2px'                          | 轨道线圆角大小         |
-| --za-slider-line-background         | React.CSSProperties['background']        | 'rgba(120, 120, 128, 0.2)'     | 轨道背景色             |
-| --za-slider-line-active-background  | React.CSSProperties['background']        | 'var(--za-theme-primary)'      | 轨道激活状态背景色     |
-| --za-slider-dot-size                | React.CSSProperties['width' \| 'height'] | '10px'                         | 刻度圆点大小           |
-| --za-slider-dot-background          | React.CSSProperties['background']        | 'var(--za-background-color)'   | 刻度圆点背景色         |
-| --za-slider-dot-border-color        | React.CSSProperties['borderColor']       | 'rgba(120, 120, 128, 0.2)'     | 刻度圆点边框色         |
-| --za-slider-dot-border-width        | React.CSSProperties['borderWidth']       | '2px'                          | 刻度圆点边框宽度       |
-| --za-slider-dot-active-border-color | React.CSSProperties['borderColor']       | 'var(--za-theme-primary)'      | 刻度圆点激活状态边框色 |
-| --za-slider-knob-size               | React.CSSProperties['witdh' \| 'height'] | '24px'                         | 把手尺寸               |
-| --za-slider-knob-size-small         | React.CSSProperties['witdh' \| 'height'] | '16px'                         | 小型号把手尺寸         |
-| --za-slider-knob-background         | React.CSSProperties['background']        | '#fff'                         | 把手背景色             |
-| --za-slider-knob-box-shadow         | React.CSSProperties['boxShadow']         | '0 1px 3px rgba(0, 0, 0, 0.4)' | 把手阴影               |
-| --za-slider-mark-font-size          | React.CSSProperties['fontSize']          | '14px'                         | 标记字体大小           |
-| --za-slider-mark-text-color         | React.CSSProperties['color']             | 'var(--za-theme-primary)'      | 标记字体颜色           |
-| --za-slider-mark-spacing            | React.CSSProperties['left' \| 'top']     | '15px'                         | 标记与轨道的间距       |
+| 属性                                | 默认值                         | 说明                   |
+| :---------------------------------- | :----------------------------- | :--------------------- |
+| --za-slider-line-size               | '4px'                          | 轨道线宽度             |
+| --za-slider-line-border-radius      | '2px'                          | 轨道线圆角大小         |
+| --za-slider-line-background         | 'rgba(120, 120, 128, 0.2)'     | 轨道背景色             |
+| --za-slider-line-active-background  | 'var(--za-theme-primary)'      | 轨道激活状态背景色     |
+| --za-slider-dot-size                | '10px'                         | 刻度圆点大小           |
+| --za-slider-dot-background          | 'var(--za-background-color)'   | 刻度圆点背景色         |
+| --za-slider-dot-border-color        | 'rgba(120, 120, 128, 0.2)'     | 刻度圆点边框色         |
+| --za-slider-dot-border-width        | '2px'                          | 刻度圆点边框宽度       |
+| --za-slider-dot-active-border-color | 'var(--za-theme-primary)'      | 刻度圆点激活状态边框色 |
+| --za-slider-knob-size               | '24px'                         | 把手尺寸               |
+| --za-slider-knob-size-small         | '16px'                         | 小型号把手尺寸         |
+| --za-slider-knob-background         | '#fff'                         | 把手背景色             |
+| --za-slider-knob-box-shadow         | '0 1px 3px rgba(0, 0, 0, 0.4)' | 把手阴影               |
+| --za-slider-mark-font-size          | '14px'                         | 标记字体大小           |
+| --za-slider-mark-text-color         | 'var(--za-theme-primary)'      | 标记字体颜色           |
+| --za-slider-mark-spacing            | '15px'                         | 标记与轨道的间距       |

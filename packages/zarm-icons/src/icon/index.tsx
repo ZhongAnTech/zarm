@@ -1,10 +1,13 @@
 import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
+import { paramCase, noCase } from 'change-case';
 import { BaseIconProps } from './interface';
 import createFromIconfont from './IconFont';
 
-export type IconProps = BaseIconProps &
-  Pick<React.HTMLAttributes<HTMLElement>, 'onClick' | 'className' | 'style'>;
+export type IconProps = BaseIconProps & { name?: string } & Pick<
+    React.HTMLAttributes<HTMLElement>,
+    'onClick' | 'className' | 'style'
+  >;
 
 interface CompoundedComponent
   extends React.ForwardRefExoticComponent<IconProps & React.RefAttributes<HTMLElement>> {
@@ -20,17 +23,25 @@ const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
     children,
     component: SvgComponent,
     viewBox,
+    mode,
+    name = '',
     ...rest
   } = props;
 
   const bem = createBEM('icon', { prefixCls });
 
+  const decamelizeName = paramCase(name).replace('svg-', '');
+  const iconClassName = bem(decamelizeName);
+  const isFont = (mode === 'auto' && typeof SVGRect === 'undefined') || mode === 'font';
+
   const cls = bem([
     {
       [`${theme}`]: !!theme,
       [`${size}`]: !!size,
+      font: isFont,
     },
     className,
+    isFont && iconClassName,
   ]);
 
   const svgProps = {
@@ -39,6 +50,12 @@ const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
     fill: 'currentColor',
     viewBox,
   };
+
+  // iconfont > svg component > children by iconfont
+
+  if (isFont) {
+    return <i ref={ref} className={cls} {...rest} />;
+  }
 
   if (SvgComponent) {
     return (
@@ -55,7 +72,6 @@ const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
       </i>
     );
   }
-
   return null;
 }) as CompoundedComponent;
 
@@ -65,6 +81,7 @@ Icon.displayName = 'Icon';
 Icon.defaultProps = {
   prefixCls: 'za',
   viewBox: '0 0 1000 1000',
+  mode: 'auto',
 };
 
 export default Icon;

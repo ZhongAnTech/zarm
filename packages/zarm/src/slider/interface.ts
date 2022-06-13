@@ -14,5 +14,6 @@ export default interface BaseSliderProps {
   vertical?: boolean;
   showMark?: boolean;
   marks?: SliderMarks;
+  onSlideChange?: (value: number) => void;
   onChange?: (value: number) => void;
 }

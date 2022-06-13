@@ -28,6 +28,7 @@ exports[`Keyboard should render keyboard dom 1`] = `
     >
       <i
         class="za-icon za-icon--lg"
+        style="pointer-events: none;"
       >
         <svg
           aria-hidden="true"

@@ -22,7 +22,8 @@
     }
 
     @include b(icon) {
-      color: var(--color);
+      @include define(color, var(--color));
+      // color: var(--color);
       font-size: var(--size);
     }
 
@@ -30,7 +31,8 @@
       color: var(--active-color);
 
       @include b(icon) {
-        color: var(--active-color);
+        @include define(color, var(--active-color));
+        // color: var(--active-color);
       }
     }
 
