@@ -45,6 +45,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
 
   const container = (ref as any) || React.createRef<HTMLDivElement>();
   const { prefixCls: globalPrefixCls } = useContext(ConfigContext);
+  const carouselRef = useRef(null);
 
   const bem = createBEM('calendar', { prefixCls: globalPrefixCls });
   const cls = bem([className]);
@@ -120,7 +121,11 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
         value[currentStep - 1] = date;
       }
       value.sort((item1: Date, item2: Date) => +item1 - +item2);
-      setState((prevState) => ({ ...prevState, value, step: currentStep === steps ? 0: currentStep }));
+      setState((prevState) => ({
+        ...prevState,
+        value,
+        step: currentStep === steps ? 0 : currentStep,
+      }));
       if ((currentStep >= steps || mode === 'multiple') && typeof onChange === 'function') {
         onChange(value);
       }
@@ -176,6 +181,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
       showPagination={false}
       activeIndex={currentMonth}
       onChange={setCurrentMonth}
+      ref={carouselRef}
     >
       {content}
     </Carousel>
@@ -217,7 +223,10 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
   return (
     <div className={cls} ref={container}>
       <Header
-        changeMonth={setCurrentMonth}
+        changeMonth={(idx) => {
+          // @ts-ignore
+          carouselRef?.current?.onSlideTo(idx)!;
+        }}
         direction={direction!}
         months={months}
         currentMonth={currentMonth}
