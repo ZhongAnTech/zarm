@@ -13,8 +13,6 @@ import useScroll from '../useScroll';
 import parseState from './utils/parseState';
 import { getElementSize } from '../utils/dom';
 
-export type CalendarProps = BaseCalendarProps & React.HTMLAttributes<HTMLElement>;
-
 export interface CalendarStates {
   value: Date[];
   min: Date;
@@ -30,6 +28,30 @@ export interface CalendarStates {
   step: number;
   mode: string;
 }
+
+export interface CalendarCssVars {
+  '--background'?: React.CSSProperties['background'];
+  '--week-bar-font-size'?: React.CSSProperties['fontSize'];
+  '--week-bar-color'?: React.CSSProperties['color'];
+  '--week-bar-background'?: React.CSSProperties['background'];
+  '--section-padding'?: React.CSSProperties['padding'];
+  '--action-bar-height'?: React.CSSProperties['height'];
+  '--action-bar-zindex'?: React.CSSProperties['zIndex'];
+  '--day-fontsize'?: React.CSSProperties['fontSize'];
+  '--day-title-fontsize'?: React.CSSProperties['fontSize'];
+  '--day-height'?: React.CSSProperties['height'];
+  '--day-color'?: React.CSSProperties['color'];
+  '--day-today-background'?: React.CSSProperties['background'];
+  '--day-today-color'?: React.CSSProperties['color'];
+  '--day-selected-background'?: React.CSSProperties['background'];
+  '--day-selected-shadow'?: React.CSSProperties['background'];
+  '--day-selected-color'?: React.CSSProperties['color'];
+  '--day-range-background'?: React.CSSProperties['background'];
+  '--day-range-color'?: React.CSSProperties['color'];
+  '--scroll-title-background'?: React.CSSProperties['background'];
+}
+
+export type CalendarProps = BaseCalendarProps & React.HTMLAttributes<HTMLElement> & CalendarCssVars;
 
 const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) => {
   const {

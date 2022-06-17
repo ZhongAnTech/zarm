@@ -108,6 +108,30 @@ ReactDOM.render(<Demo />, mountNode);
 | max          | Date                              | min + 1 年               | 最大可选日期                     |
 | mode         | 'single' \| 'multiple' \| 'range' | 'single'                 | 选择模式                         |
 | direction    | 'horizontal' \| 'vertical'        | 'vertical'               | 展示模式                         |
-| dateRender   | (date: Date) => void             | (date) => date.getDate() | 日期渲染函数                     |
-| disabledDate | (date: Date) => boolean          | () => false              | 日期是否禁止选择                 |
-| onChange     | (value: Date[]) => void          | -                        | 日期选择发生变化时触发的回调函数 |
+| dateRender   | (date: Date) => void              | (date) => date.getDate() | 日期渲染函数                     |
+| disabledDate | (date: Date) => boolean           | () => false              | 日期是否禁止选择                 |
+| onChange     | (value: Date[]) => void           | -                        | 日期选择发生变化时触发的回调函数 |
+
+## CSS 变量
+
+| 属性                                  | 默认值                         | 说明                   |
+| :------------------------------------ | :----------------------------- | :--------------------- |
+| --za-calendar-background              | '#fff'                         | 背景色                 |
+| --za-calendar-section-padding         | '15px'                         | 模块的边距             |
+| --za-calendar-week-bar-font-size      | '14px'                         | 日期栏字体大小         |
+| --za-calendar-week-bar-background     | '#f2f2f2'                      | 日期栏背景颜色         |
+| --za-calendar-week-bar-color          | 'var(--color-text-caption)'    | 日期栏字体颜色         |
+| --za-calendar-action-bar-height       | '44px'                         | 控制栏的高度           |
+| --za-calendar-action-bar-zindex       | 10                             | 月份选择器层级         |
+| --za-calendar-day-fontsize            | '16px'                         | 日期字体大小           |
+| --za-calendar-day-title-fontsize      | '17px'                         | 日期标题字体大小       |
+| --za-calendar-day-color               | 'var(--color-text)'            | 日期字体颜色           |
+| --za-calendar-day-heigt               | '40px'                         | 日期高度               |
+| --za-calendar-day-today-color         | 'var(--theme-primary)'         | 当前日期字体颜色       |
+| --za-calendar-day-today-background    | 'var(--theme-primary-lighter)' | 当前日期背景           |
+| --za-calendar-day-selected-background | 'var(--theme-primary)'         | 选中日期背景           |
+| --za-calendar-day-selected-shadow     | 'var(--theme-primary-lighter)' | 选中日期背景阴影       |
+| --za-calendar-day-selected-color      | '#fff'                         | 选中日期姿态颜色       |
+| --za-calendar-day-range-background    | 'var(--theme-primary-lighter)' | 选择范围内日期背景     |
+| --za-calendar-day-range-color         | 'var(--theme-primary)'         | 选择范围内日期字体颜色 |
+| --za-calendar-scroll-title-background | 'rgba(255, 255, 255, 0.5)'     | 滚动标题的背景         |

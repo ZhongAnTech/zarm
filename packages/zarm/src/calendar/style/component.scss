@@ -1,10 +1,29 @@
 @import '../../style/core/index';
 @import 'mixins';
 
-$--calendar-day-width: 14.28571%;
 
 @include b(calendar) {
-  background-color: var(--calendar-background);
+  @include define(background, #fff);
+  @include define(week-bar-font-size, 14px);
+  @include define(week-bar-background, #f2f2f2);
+  @include define(week-bar-color, var(--color-text-caption));
+  @include define(action-bar-height, 44px);
+  @include define(action-bar-zindex, 10);
+  @include define(section-padding, 15px);
+  @include define(day-fontsize, 16px);
+  @include define(day-title-fontsize, 17px);
+  @include define(day-color, var(--color-text));
+  @include define(day-height, 40px);
+  @include define(day-today-background, var(--theme-primary-lighter));
+  @include define(day-today-color,  var(--theme-primary));
+  @include define(day-selected-background, var(--theme-primary));
+  @include define(day-selected-color, #fff);
+  @include define(day-selected-shadow, var(--theme-primary-lighter));
+  @include define(day-range-background, var(--theme-primary-lighter));
+  @include define(day-range-color, var(--theme-primary));
+  @include define(scroll-title-background, rgba(255, 255, 255, 0.5));
+
+  background-color: var(--background);
   user-select: none;
   position: relative;
 
@@ -14,36 +33,38 @@ $--calendar-day-width: 14.28571%;
 
   li {
     display: inline-block;
-    width: $--calendar-day-width;
+    width: 14.28571%;
     text-align: center;
     vertical-align: middle;
   }
 
   @include b(picker-view) {
     position: absolute;
-    top: 44px;
-    z-index: 1111;
+    top: var(--action-bar-height);
+    z-index: var(--action-bar-zindex);
   }
 
   @include e(bar) {
     display: flex;
     flex-wrap: wrap;
-    color: var(--calendar-week-bar-color);
-    background-color: var(--calendar-week-bar-background);
-    font-size: var(--calendar-week-bar-fontsize);
+    color: var(--week-bar-color);
+    background-color: var(--week-bar-background);
+    font-size: var(--week-bar-fontsize);
     margin: 0;
-    padding: 0 var(--calendar-section-padding);
+    padding: 0 var(--section-padding);
     list-style-type: disc;
 
     &__item {
-      height: var(--calendar-day-height);
-      line-height: var(--calendar-day-height);
+      height: var(--day-height);
+      line-height: var(--day-height);
     }
   }
 
   @include e(header) {
-    padding: var(--calendar-header-vertical-padding) var(--calendar-section-padding);
+    padding: var(--section-padding);
     display: flex;
+    height: var(--action-bar-height);
+    align-items: center;
 
     @include b(calendar__action-btn) {
       display: flex;
@@ -82,14 +103,14 @@ $--calendar-day-width: 14.28571%;
 
   @include e(scroll-title) {
     position: absolute;
-    top: var(--calendar-day-height);
+    top: var(--day-height);
     width: 100%;
     text-align: center;
     display: none;
     transition: opacity 300ms ease-in-out;
-    background-color: var(--calendar-scroll-title-background);
-    height: var(--calendar-day-height);
-    line-height: var(--calendar-day-height);
+    background-color: var(--scroll-title-background);
+    height: var(--day-height);
+    line-height: var(--day-height);
 
     @include m(entering) {
       display: block;
@@ -106,8 +127,8 @@ $--calendar-day-width: 14.28571%;
   }
 
   @include e(month) {
-    padding: 0 var(--calendar-section-padding);
-    color: var(--calendar-day-color);
+    padding: 0 var(--section-padding);
+    color: var(--day-color);
     flex-shrink: 0;
     width: 100%;
 
@@ -125,7 +146,7 @@ $--calendar-day-width: 14.28571%;
       content: attr(title);
       display: block;
       margin: 0 auto;
-      font-size: var(--calendar-day-title-fontsize);
+      font-size: var(--day-title-fontsize);
       font-weight: 500;
       padding: r(15);
     }
@@ -134,7 +155,7 @@ $--calendar-day-width: 14.28571%;
   @include e(day) {
     margin: r(10) 0;
     position: relative;
-    font-size: var(--calendar-day-fontsize);
+    font-size: var(--day-fontsize);
     cursor: pointer;
 
     &__content {
@@ -153,8 +174,8 @@ $--calendar-day-width: 14.28571%;
     @include m(today) {
       @include b(calendar) {
         @include e(day__content) {
-          background-color: var(--calendar-day-today-background);
-          color: var(--calendar-day-today-color);
+          background-color: var(--day-today-background);
+          color: var(--day-today-color);
         }
       }
     }
@@ -162,9 +183,9 @@ $--calendar-day-width: 14.28571%;
     @include m(selected) {
       @include b(calendar) {
         @include e(day__content) {
-          background-color: var(--calendar-day-selected-background);
-          color: var(--calendar-day-selected-color);
-          box-shadow: 0 r(2) r(5) 0 var(--calendar-day-selected-shadow);
+          background-color: var(--day-selected-background);
+          color: var(--day-selected-color);
+          box-shadow: 0 r(2) r(5) 0 var(--day-selected-shadow);
         }
       }
     }
@@ -179,12 +200,12 @@ $--calendar-day-width: 14.28571%;
     }
 
     @include m(range) {
-      background-color: var(--calendar-day-range-background);
-      color: var(--calendar-day-range-color);
+      background-color: var(--day-range-background);
+      color: var(--day-range-color);
 
       @include b(calendar) {
         @include e(day__content) {
-          background-color: var(--calendar-day-range-background);
+          background-color: var(--day-range-background);
         }
       }
 

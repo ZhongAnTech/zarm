@@ -197,27 +197,6 @@
   --za-button-danger-ghost-active-color: var(--theme-danger-dark);
   --za-button-danger-shadow-color: rgba(255, 80, 80, 0.3);
 
-  // Calendar
-  --calendar-height: 45px; // 最小高度
-  --calendar-background: #fff; // 背景色
-  --calendar-week-bar-fontsize: 14px; // 星期条文字大小
-  --calendar-week-bar-background: #f2f2f2; // 星期条文字背景色
-  --calendar-week-bar-color: var(--color-text-caption); // 星期条文字颜色
-  --calendar-header-vertical-padding: 10px; // 两边垂直间距
-  --calendar-section-padding: 15px; // 两边留白间距
-  --calendar-day-fontsize: 16px; // 月份文字大小
-  --calendar-day-title-fontsize: 17px; // 月份title文字大小
-  --calendar-day-color: var(--color-text); // 月份日期文字颜色
-  --calendar-day-today-background: var(--theme-primary-lighter); // 日期今天选中背景颜色
-  --calendar-day-today-color: var(--theme-primary); // 日期今天选中颜色
-  --calendar-day-selected-background: var(--theme-primary); // 日期文字选中背景颜色
-  --calendar-day-selected-color: #fff; // 日期文字选中颜色
-  --calendar-day-selected-shadow: var(--theme-primary-lighter);
-  --calendar-day-range-background: var(--theme-primary-lighter); // 日期文字范围内背景颜色
-  --calendar-day-range-color: var(--theme-primary); // 日期文字范围内颜色
-  --calendar-day-height: 40px; // 日期高度
-  --calendar-scroll-title-background: rgba(255, 255, 255, 0.5);
-
   // Carousel
   --za-carousel-pagination-distance: 8px;
   --za-carousel-pagination-rect-width: 19px;
