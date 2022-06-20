@@ -13,10 +13,10 @@ interface HeaderProps {
   changeMonth: Function;
 }
 function Header(props: HeaderProps) {
-  const { prefixCls: globalPrefixCls, locale: globalLocal } = useContext(ConfigContext);
+  const { prefixCls, locale: globalLocal } = useContext(ConfigContext);
   const locale = globalLocal?.Calendar;
 
-  const bem = createBEM('calendar', { prefixCls: globalPrefixCls });
+  const bem = createBEM('calendar', { prefixCls });
 
   const [showDatePicker, setShowDatePicker] = useState<boolean>(false);
 

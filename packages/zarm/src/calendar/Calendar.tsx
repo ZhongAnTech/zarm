@@ -12,6 +12,7 @@ import Carousel from '../carousel';
 import useScroll from '../useScroll';
 import parseState from './utils/parseState';
 import { getElementSize } from '../utils/dom';
+import type { HTMLProps } from '../utils/utilityTypes';
 
 export interface CalendarStates {
   value: Date[];
@@ -51,7 +52,9 @@ export interface CalendarCssVars {
   '--scroll-title-background'?: React.CSSProperties['background'];
 }
 
-export type CalendarProps = BaseCalendarProps & React.HTMLAttributes<HTMLElement> & CalendarCssVars;
+export type CalendarProps = BaseCalendarProps &
+  React.HTMLAttributes<HTMLElement> &
+  HTMLProps<CalendarCssVars>;
 
 const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) => {
   const {
@@ -66,10 +69,10 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
   } = props;
 
   const container = (ref as any) || React.createRef<HTMLDivElement>();
-  const { prefixCls: globalPrefixCls } = useContext(ConfigContext);
+  const { prefixCls } = useContext(ConfigContext);
   const carouselRef = useRef(null);
 
-  const bem = createBEM('calendar', { prefixCls: globalPrefixCls });
+  const bem = createBEM('calendar', { prefixCls });
   const cls = bem([className]);
 
   const [state, setState] = useState<CalendarStates>(() => {

@@ -6,21 +6,21 @@
   @include define(background, #fff);
   @include define(week-bar-font-size, 14px);
   @include define(week-bar-background, #f2f2f2);
-  @include define(week-bar-color, var(--color-text-caption));
+  @include define(week-bar-color, var(--za-color-text-caption));
   @include define(action-bar-height, 44px);
   @include define(action-bar-zindex, 10);
   @include define(section-padding, 15px);
   @include define(day-fontsize, 16px);
   @include define(day-title-fontsize, 17px);
-  @include define(day-color, var(--color-text));
+  @include define(day-color, var(--za-color-text));
   @include define(day-height, 40px);
-  @include define(day-today-background, var(--theme-primary-lighter));
-  @include define(day-today-color,  var(--theme-primary));
-  @include define(day-selected-background, var(--theme-primary));
+  @include define(day-today-background, var(--za-theme-primary-lighter));
+  @include define(day-today-color,  var(--za-theme-primary));
+  @include define(day-selected-background, var(--za-theme-primary));
   @include define(day-selected-color, #fff);
-  @include define(day-selected-shadow, var(--theme-primary-lighter));
-  @include define(day-range-background, var(--theme-primary-lighter));
-  @include define(day-range-color, var(--theme-primary));
+  @include define(day-selected-shadow, var(--za-theme-primary-lighter));
+  @include define(day-range-background, var(--za-theme-primary-lighter));
+  @include define(day-range-color, var(--za-theme-primary));
   @include define(scroll-title-background, rgba(255, 255, 255, 0.5));
 
   background-color: var(--background);
@@ -240,11 +240,7 @@
       @include linegradient(left);
     }
 
-    @include m(last) {
-      background-image: none;
-    }
-
-    @include m(first) {
+    @include m(last, first) {
       background-image: none;
     }
   }

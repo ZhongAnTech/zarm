@@ -15,22 +15,13 @@ import { BaseCalendarMonthProps } from './interface';
 export type CalendarMonthProps = BaseCalendarMonthProps & React.HTMLAttributes<HTMLElement>;
 
 const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
-  const {
-    dateRender,
-    min,
-    max,
-    disabledDate,
-    onDateClick,
-    dateMonth,
-    value,
-    mode,
-  } = props;
+  const { dateRender, min, max, disabledDate, onDateClick, dateMonth, value, mode } = props;
 
-  const { prefixCls: globalPrefixCls, locale: globalLocal } = useContext(ConfigContext);
+  const { prefixCls, locale: globalLocal } = useContext(ConfigContext);
 
   const weekStartsOn = globalLocal?.Calendar.weekStartsOn;
 
-  const bem = createBEM('calendar', { prefixCls: globalPrefixCls });
+  const bem = createBEM('calendar', { prefixCls });
 
   const monthRef = useRef<any>();
 
