@@ -10,8 +10,8 @@
   @include define(action-bar-height, 44px);
   @include define(action-bar-zindex, 10);
   @include define(section-padding, 15px);
-  @include define(day-fontsize, 16px);
-  @include define(day-title-fontsize, 17px);
+  @include define(day-font-size, 16px);
+  @include define(day-title-font-size, 17px);
   @include define(day-color, var(--za-color-text));
   @include define(day-height, 40px);
   @include define(day-today-background, var(--za-theme-primary-lighter));
@@ -49,7 +49,7 @@
     flex-wrap: wrap;
     color: var(--week-bar-color);
     background-color: var(--week-bar-background);
-    font-size: var(--week-bar-fontsize);
+    font-size: var(--week-bar-font-size);
     margin: 0;
     padding: 0 var(--section-padding);
     list-style-type: disc;
@@ -146,7 +146,7 @@
       content: attr(title);
       display: block;
       margin: 0 auto;
-      font-size: var(--day-title-fontsize);
+      font-size: var(--day-title-font-size);
       font-weight: 500;
       padding: r(15);
     }
@@ -155,7 +155,7 @@
   @include e(day) {
     margin: r(10) 0;
     position: relative;
-    font-size: var(--day-fontsize);
+    font-size: var(--day-font-size);
     cursor: pointer;
 
     &__content {

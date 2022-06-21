@@ -38,8 +38,8 @@ export interface CalendarCssVars {
   '--section-padding'?: React.CSSProperties['padding'];
   '--action-bar-height'?: React.CSSProperties['height'];
   '--action-bar-zindex'?: React.CSSProperties['zIndex'];
-  '--day-fontsize'?: React.CSSProperties['fontSize'];
-  '--day-title-fontsize'?: React.CSSProperties['fontSize'];
+  '--day-font-size'?: React.CSSProperties['fontSize'];
+  '--day-title-font-size'?: React.CSSProperties['fontSize'];
   '--day-height'?: React.CSSProperties['height'];
   '--day-color'?: React.CSSProperties['color'];
   '--day-today-background'?: React.CSSProperties['background'];
