@@ -1,7 +1,6 @@
 @import '../../style/core/index';
 @import 'mixins';
 
-
 @include b(calendar) {
   @include define(background, #fff);
   @include define(week-bar-font-size, 14px);
