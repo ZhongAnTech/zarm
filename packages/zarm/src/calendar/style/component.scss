@@ -70,7 +70,7 @@
       display: flex;
 
       @include m(disabled) {
-        color: var(--color-text-disabled);
+        color: var(--za-color-text-disabled);
       }
     }
   }
@@ -194,7 +194,7 @@
       cursor: auto;
       @include b(calendar) {
         @include e(day__content) {
-          color: var(--color-text-disabled);
+          color: var(--za-color-text-disabled);
         }
       }
     }
