@@ -8,7 +8,6 @@ import parseDataSource from './utils/parseDataSource';
 
 interface HeaderProps {
   months: Date[];
-  direction: 'vertical' | 'horizontal';
   currentMonth: number;
   changeMonth: Function;
 }
@@ -20,16 +19,13 @@ function Header(props: HeaderProps) {
 
   const [showDatePicker, setShowDatePicker] = useState<boolean>(false);
 
-  const { changeMonth, direction = 'vertical', months, currentMonth } = props;
+  const { changeMonth, months, currentMonth } = props;
 
   const current = months[currentMonth] || new Date();
   const year = current.getFullYear();
   const month = current.getMonth();
   const title = dayjs().year(year).month(month).format(globalLocal?.Calendar?.yearMonthFormat);
 
-  if (direction !== 'horizontal') {
-    return null;
-  }
   const dataSource = parseDataSource(months, locale);
 
   const currentValue = [year, month];

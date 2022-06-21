@@ -64,6 +64,7 @@ describe('index', () => {
             "dateRender": [Function],
             "direction": "vertical",
             "disabledDate": [Function],
+            "header": false,
             "mode": "single",
           },
           "render": [Function],

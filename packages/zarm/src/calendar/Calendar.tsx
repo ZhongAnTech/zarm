@@ -66,6 +66,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
     max: maxDate,
     min: minDate,
     direction,
+    header,
   } = props;
 
   const container = (ref as any) || React.createRef<HTMLDivElement>();
@@ -182,6 +183,10 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
     return months.map((item) => renderMonth(item));
   }, [months, min, max, disabledDate, dateRender, mode, handleDateClick, value]);
 
+  const showHeader = useMemo(() => {
+    return direction === 'horizontal' && header;
+  }, [direction, header]);
+
   const weekNode = weekRef?.current;
   const bodyScroll = throttle(() => {
     const body = scrollBodyRef.current;
@@ -247,15 +252,16 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
 
   return (
     <div className={cls} ref={container}>
-      <Header
-        changeMonth={(idx) => {
-          // @ts-ignore
-          carouselRef?.current?.onSlideTo(idx)!;
-        }}
-        direction={direction!}
-        months={months}
-        currentMonth={currentMonth}
-      />
+      {showHeader && (
+        <Header
+          changeMonth={(idx) => {
+            // @ts-ignore
+            carouselRef?.current?.onSlideTo(idx)!;
+          }}
+          months={months}
+          currentMonth={currentMonth}
+        />
+      )}
       <Week ref={weekRef} />
       {monthsContent}
     </div>
@@ -267,6 +273,7 @@ Calendar.defaultProps = {
   dateRender: (date: Date) => date.getDate(),
   disabledDate: () => false,
   direction: 'vertical',
+  header: false,
 };
 
 export default Calendar;

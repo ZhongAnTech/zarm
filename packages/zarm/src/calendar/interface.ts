@@ -7,6 +7,7 @@ export interface BaseCalendarProps {
   max?: Date;
   mode: 'single' | 'multiple' | 'range';
   direction?: 'horizontal' | 'vertical';
+  header?: boolean;
   dateRender?: (value: Date) => ReactNode;
   disabledDate?: (value: Date) => boolean;
   onChange?: (value: Date[]) => void;
