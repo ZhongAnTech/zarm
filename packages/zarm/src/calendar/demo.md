@@ -7,11 +7,13 @@ import { useState } from 'react';
 import { Radio, DateSelect, List, Calendar } from 'zarm';
 
 const Demo = () => {
-  const [multiple, setMultiple] = useState(true);
-  const [value, setValue] = useState(['2020-07-29', '2020-08-04']);
-  const [min, setMin] = useState('2017-12-29');
-  const [max, setMax] = useState('2020-08-04');
+  const [mode, setMode] = useState('single');
+  const [value, setValue] = useState(['2022-5-18', '2022-6-3']);
+  const [min, setMin] = useState('2022-5-1');
+  const [max, setMax] = useState('2022-10-28');
   const [custom, setCustom] = useState(false);
+  const [direction, setDirection] = useState('vertical');
+  const [header, setHeader] = useState(false);
 
   return (
     <>
@@ -20,13 +22,14 @@ const Demo = () => {
           <Radio.Group
             buttonCompact
             type="button"
-            value={multiple}
+            value={mode}
             onChange={(value) => {
-              setMultiple(value);
+              setMode(value);
             }}
           >
-            <Radio value={false}>单选</Radio>
-            <Radio value={true}>双选</Radio>
+            <Radio value={'single'}>单选</Radio>
+            <Radio value={'multiple'}>多选</Radio>
+            <Radio value={'range'}>区间</Radio>
           </Radio.Group>
         </List.Item>
         <List.Item title="最小日期">
@@ -34,6 +37,32 @@ const Demo = () => {
         </List.Item>
         <List.Item title="最大日期">
           <DateSelect placeholder="Please input end date" mode="date" value={max} onOk={setMax} />
+        </List.Item>
+        <List.Item title="方向">
+          <Radio.Group
+            buttonCompact
+            type="button"
+            value={direction}
+            onChange={(value) => {
+              setDirection(value);
+            }}
+          >
+            <Radio value={'horizontal'}>水平</Radio>
+            <Radio value={'vertical'}>垂直</Radio>
+          </Radio.Group>
+        </List.Item>
+        <List.Item title="是否显示头部">
+          <Radio.Group
+            buttonCompact
+            type="button"
+            value={header}
+            onChange={(value) => {
+              setHeader(value);
+            }}
+          >
+            <Radio value={true}>展示</Radio>
+            <Radio value={false}>不展示</Radio>
+          </Radio.Group>
         </List.Item>
         <List.Item title="自定义渲染">
           <Radio.Group
@@ -51,10 +80,12 @@ const Demo = () => {
       </List>
 
       <Calendar
-        multiple={multiple}
+        mode={mode}
         value={value}
         min={min}
         max={max}
+        direction={direction}
+        header={header}
         dateRender={(date) => {
           if (custom && /(0|6)/.test(date.getDay())) {
             return (
@@ -84,13 +115,39 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性         | 类型                     | 默认值                   | 说明                             |
-| :----------- | :----------------------- | :----------------------- | :------------------------------- |
-| value        | Date \| Date[]           | -                        | 值                               |
-| defaultValue | Date \| Date[]           | -                        | 初始值                           |
-| min          | Date                     | new Date()               | 最小可选日期                     |
-| max          | Date                     | min + 1 年               | 最大可选日期                     |
-| multiple     | boolean                  | false                    | 是否双选                         |
-| dateRender   | (date?: Date) => void    | (date) => date.getDate() | 日期渲染函数                     |
-| disabledDate | (date?: Date) => boolean | () => false              | 日期是否禁止选择                 |
-| onChange     | (value?: Date[]) => void | -                        | 日期选择发生变化时触发的回调函数 |
+| 属性         | 类型                              | 默认值                   | 说明                                          |
+| :----------- | :-------------------------------- | :----------------------- | :-------------------------------------------- |
+| value        | Date \| Date[]                    | -                        | 值                                            |
+| defaultValue | Date \| Date[]                    | -                        | 初始值                                        |
+| min          | Date                              | new Date()               | 最小可选日期                                  |
+| max          | Date                              | min + 1 年               | 最大可选日期                                  |
+| mode         | 'single' \| 'multiple' \| 'range' | 'single'                 | 选择模式                                      |
+| direction    | 'horizontal' \| 'vertical'        | 'vertical'               | 展示模式                                      |
+| header       | boolean                           | false                    | 是否展示头部`direction` 为`horizontal` 时生效 |
+| dateRender   | (date: Date) => void              | (date) => date.getDate() | 日期渲染函数                                  |
+| disabledDate | (date: Date) => boolean           | () => false              | 日期是否禁止选择                              |
+| onChange     | (value: Date[]) => void           | -                        | 日期选择发生变化时触发的回调函数              |
+
+## CSS 变量
+
+| 属性                                  | 默认值                         | 说明                   |
+| :------------------------------------ | :----------------------------- | :--------------------- |
+| --za-calendar-background              | '#fff'                         | 背景色                 |
+| --za-calendar-section-padding         | '15px'                         | 模块的边距             |
+| --za-calendar-week-bar-font-size      | '14px'                         | 日期栏字体大小         |
+| --za-calendar-week-bar-background     | '#f2f2f2'                      | 日期栏背景颜色         |
+| --za-calendar-week-bar-color          | 'var(--color-text-caption)'    | 日期栏字体颜色         |
+| --za-calendar-action-bar-height       | '44px'                         | 控制栏的高度           |
+| --za-calendar-action-bar-zindex       | 10                             | 月份选择器层级         |
+| --za-calendar-day-font-size           | '16px'                         | 日期字体大小           |
+| --za-calendar-day-title-font-size     | '17px'                         | 日期标题字体大小       |
+| --za-calendar-day-color               | 'var(--color-text)'            | 日期字体颜色           |
+| --za-calendar-day-heigt               | '40px'                         | 日期高度               |
+| --za-calendar-day-today-color         | 'var(--theme-primary)'         | 当前日期字体颜色       |
+| --za-calendar-day-today-background    | 'var(--theme-primary-lighter)' | 当前日期背景           |
+| --za-calendar-day-selected-background | 'var(--theme-primary)'         | 选中日期背景           |
+| --za-calendar-day-selected-shadow     | 'var(--theme-primary-lighter)' | 选中日期背景阴影       |
+| --za-calendar-day-selected-color      | '#fff'                         | 选中日期姿态颜色       |
+| --za-calendar-day-range-background    | 'var(--theme-primary-lighter)' | 选择范围内日期背景     |
+| --za-calendar-day-range-color         | 'var(--theme-primary)'         | 选择范围内日期字体颜色 |
+| --za-calendar-scroll-title-background | 'rgba(255, 255, 255, 0.5)'     | 滚动标题的背景         |

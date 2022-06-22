@@ -1,157 +1,178 @@
-import React, { Component, isValidElement } from 'react';
-import classnames from 'classnames';
-import { BaseCalendarMonthProps } from './PropsType';
-import DateTool from '../utils/date';
-import ConfigReceiver from '../config-receiver';
+import React, {
+  useContext,
+  forwardRef,
+  isValidElement,
+  useRef,
+  useImperativeHandle,
+  ReactNode,
+  useCallback,
+} from 'react';
+import { createBEM } from '@zarm-design/bem';
+import dayjs from 'dayjs';
+import { ConfigContext } from '../n-config-provider';
+import { BaseCalendarMonthProps } from './interface';
 
-export interface CalendarMonthProps extends BaseCalendarMonthProps {
-  prefixCls?: string;
-}
+export type CalendarMonthProps = BaseCalendarMonthProps & React.HTMLAttributes<HTMLElement>;
 
-export interface CalendarMonthState {
-  value: Date[];
-  dateMonth: Date;
-}
+const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
+  const { dateRender, min, max, disabledDate, onDateClick, dateMonth, value, mode } = props;
 
-class CalendarMonthView extends Component<CalendarMonthProps, CalendarMonthState> {
-  static displayName = 'CalendarMonthView';
+  const { prefixCls, locale: globalLocal } = useContext(ConfigContext);
 
-  static defaultProps = {
-    prefixCls: 'za-calendar',
-    value: [],
-    dateMonth: new Date(),
-    min: new Date(),
-    max: new Date(),
-    dateRender: (date: Date) => date.getDate(),
-    disabledDate: () => false,
-  };
+  const weekStartsOn = globalLocal?.Calendar.weekStartsOn;
 
-  // 上次是否落点在当前月份内
-  private lastIn?: boolean = false;
+  const bem = createBEM('calendar', { prefixCls });
 
-  // 当前月份的dom
-  private node?: any;
+  const monthRef = useRef<any>();
 
-  constructor(props: CalendarMonthProps) {
-    super(props);
-    this.state = {
-      value: props.value,
-      dateMonth: props.dateMonth,
-    };
-    this.checkStatus = this.checkStatus.bind(this);
-  }
+  const isDisabled = useCallback(
+    (date) => {
+      return (
+        dayjs(date).isBefore(dayjs(min), 'day') ||
+        dayjs(date).isAfter(dayjs(max), 'day') ||
+        (typeof disabledDate === 'function' && disabledDate(date))
+      );
+    },
+    [min, max, disabledDate],
+  );
 
-  static getDerivedStateFromProps(nextProps, state) {
-    if (
-      // eslint-disable-next-line operator-linebreak
-      ('value' in nextProps && nextProps.value !== state.value) ||
-      ('dateMonth' in nextProps && nextProps.dateMonth !== state.dateMonth)
-    ) {
-      return {
-        value: nextProps.value,
-        dateMonth: nextProps.dateMonth,
-      };
-    }
-    return null;
-  }
+  const isSelected = useCallback(
+    (date) => {
+      const currentDate = dayjs(date);
+      return mode === 'single'
+        ? value[0] && currentDate.isSame(dayjs(value[0]), 'day')
+        : value.some((item) => (item ? currentDate.isSame(dayjs(item), 'day') : false));
+    },
+    [mode, value],
+  );
 
-  anchor = () => {
-    if (this.node && this.node.scrollIntoViewIfNeeded) {
-      this.node.scrollIntoViewIfNeeded();
-    }
-  };
+  const range = useCallback(
+    (date) => {
+      if (mode !== 'range') {
+        return '';
+      }
+      const currentDate = dayjs(date);
+      const start = value[0];
+      const end = value[value.length - 1];
+      if (currentDate.isAfter(dayjs(start)) && currentDate.isBefore(dayjs(end))) {
+        return 'range';
+      }
+      if (value.length > 1 && !dayjs(start).isSame(dayjs(end))) {
+        if (currentDate.isSame(dayjs(start), 'day') && start) {
+          return 'start';
+        }
+        if (currentDate.isSame(dayjs(end), 'day') && end) {
+          return 'end';
+        }
+      }
+      return '';
+    },
+    [mode, value],
+  );
 
-  // 日期状态: 选中，区间
-  checkStatus(date: Date) {
-    const { min, max, disabledDate } = this.props;
-    const { value = [] } = this.state;
-    const disabled =
-      date < DateTool.cloneDate(min, 'd', 0) || date > DateTool.cloneDate(max, 'd', 0);
-    const res = {
-      disabled: disabled || (disabledDate && disabledDate(date)),
-      isSelected: value.some((item) => DateTool.isOneDay(date, item)),
-      isRange: value.length > 1 && date > value[0] && date < value[value.length - 1],
-      rangeStart: value.length > 1 && DateTool.isOneDay(date, value[0]),
-      rangeEnd: value.length > 1 && DateTool.isOneDay(date, value[value.length - 1]),
-    };
-    this.lastIn = this.lastIn || res.isSelected || res.isRange;
-    return res;
-  }
+  const hanlerDateClick = useCallback(
+    (date) => {
+      if (!isDisabled(date) && typeof onDateClick === 'function') {
+        onDateClick(date);
+      }
+    },
+    [onDateClick],
+  );
 
-  renderDay = (day: number, year: number, month: number, firstDay: number) => {
-    const { prefixCls, dateRender, onDateClick } = this.props;
+  const renderDay = (day: number, year: number, month: number, firstDay: number): ReactNode => {
     const date = new Date(year, month, day);
-    const isToday =
-      new Date().getFullYear() === year &&
-      new Date().getMonth() === month &&
-      new Date().getDate() === day;
-    const status = this.checkStatus(date);
+    const dayjsDate = dayjs(date);
+    const isToday = dayjs().isSame(dayjsDate, 'day');
 
-    let txt = (date && dateRender && dateRender(date)) || '';
-    if (typeof txt === 'object') {
-      if (!isValidElement(txt)) {
+    let text: string | ReactNode = '';
+    if (typeof dateRender === 'function') {
+      text = dateRender(date);
+      if (typeof text === 'object' && !isValidElement(text)) {
         console.warn('dateRender函数返回数据类型错误，请返回基本数据类型或者reactNode');
-        txt = '';
+        text = '';
       }
     }
 
-    const className = {
-      d6: (day + firstDay) % 7 === 0,
-      d7: (day + firstDay) % 7 === 1,
-      [`${prefixCls}__day--disabled`]: status.disabled,
-      [`${prefixCls}__day--today`]: isToday,
-      [`${prefixCls}__day--selected`]: status.isSelected,
-      [`${prefixCls}__day--range`]: status.isRange,
-      'range-start': status.rangeStart,
-      'range-end': status.rangeEnd,
-      [`firstday-${firstDay}`]: day === 1 && firstDay,
-    };
+    const style =
+      day === 1
+        ? {
+            marginLeft: `${14.28571 * firstDay}%`,
+          }
+        : {};
+
+    const rangeStatus = range(date);
+    const className = bem('day', [
+      {
+        disabled: isDisabled(date),
+        today: isToday,
+        selected: isSelected(date),
+        range: rangeStatus === 'range',
+        d6: (day + firstDay) % 7 === 0 && !!rangeStatus,
+        d7: (day + firstDay) % 7 === 1 && !!rangeStatus,
+        start: rangeStatus === 'start',
+        end: rangeStatus === 'end',
+        last: rangeStatus === 'end' && (day === 1 || (day + firstDay) % 7 === 1),
+        first:
+          rangeStatus === 'start' &&
+          (dayjsDate.daysInMonth() === day || (day + firstDay) % 7 === 0),
+      },
+    ]);
 
     return (
       <li
         key={`${year}-${month}-${day}`}
-        className={classnames(`${prefixCls}__day`, className)}
-        onClick={() => !status.disabled && date && onDateClick && onDateClick(date)}
+        className={className}
+        style={style}
+        onClick={() => hanlerDateClick(date)}
       >
-        {(txt && <div className={`${prefixCls}__day__content`}>{txt}</div>) || ''}
+        {(text && <div className={bem('day__content')}>{text}</div>) || ''}
       </li>
     );
   };
 
-  renderContent = (year: number, month: number) => {
-    const data = DateTool.getCurrMonthInfo(year, month);
-    const { firstDay, dayCount } = data;
-    return Array.from({ length: dayCount }).map((_item, i) =>
-      this.renderDay(i + 1, year, month, firstDay),
-    );
+  const renderDays = (year: number, month: number): ReactNode[] => {
+    const date = dayjs().year(year).month(month).date(1);
+    const daysInMonth = date.daysInMonth();
+    let firstDay = date.day();
+    if (weekStartsOn !== 'Sunday') {
+      firstDay = firstDay === 0 ? firstDay + 6 : firstDay - 1;
+    }
+    const days: ReactNode[] = [];
+    let i = 1;
+    while (i <= daysInMonth) {
+      days.push(renderDay(i, year, month, firstDay));
+      i += 1;
+    }
+    return days;
   };
 
-  render() {
-    const { prefixCls, locale } = this.props;
-    const { dateMonth } = this.state;
+  useImperativeHandle(ref, () => {
+    return {
+      el: () => {
+        return monthRef.current;
+      },
+    };
+  });
 
-    const year = dateMonth.getFullYear();
-    const month = dateMonth.getMonth();
-    const monthKey = `${year}-${month}`;
+  const year = dateMonth.getFullYear();
+  const month = dateMonth.getMonth();
+  const monthKey = `${year}-${month}`;
+  const title = dayjs().year(year).month(month).format(globalLocal?.Calendar?.yearMonthFormat);
 
-    const title =
-      locale?.yearText === '年'
-        ? year + locale.yearText + locale.months[month]
-        : `${locale?.months[month]} ${year}`;
+  return (
+    <div key={monthKey} className={bem('month')} title={title} ref={monthRef}>
+      <ul>{renderDays(year, month)}</ul>
+    </div>
+  );
+});
 
-    return (
-      <section
-        key={monthKey}
-        className={`${prefixCls}__month`}
-        title={title}
-        ref={(n) => {
-          this.node = n;
-        }}
-      >
-        <ul>{this.renderContent(year, month)}</ul>
-      </section>
-    );
-  }
-}
+CalendarMonthView.defaultProps = {
+  value: [],
+  dateMonth: new Date(),
+  min: new Date(),
+  max: new Date(),
+  dateRender: (date: Date) => date.getDate(),
+  disabledDate: () => false,
+};
 
-export default ConfigReceiver('Calendar')(CalendarMonthView);
+export default CalendarMonthView;
