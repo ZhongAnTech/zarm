@@ -77,4 +77,4 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性              | 默认值 | 说明     |
 | :---------------- | :----- | :------- |
-| --za-affix-zindex | 10     | 固钉层级 |
+| --zindex | 10     | 固钉层级 |

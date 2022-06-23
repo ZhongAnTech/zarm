@@ -44,11 +44,11 @@ ReactDOM.render(
 
 | 属性                                               | 默认值                    | 说明                     |
 | :------------------------------------------------- | :------------------------ | :----------------------- |
-| --za-activity-indicator-size                       | '22px'                    | 指示器大小               |
-| --za-activity-indicator-size-large                 | '29px'                    | 大型指示器大小           |
-| --za-activity-indicator-stroke-color               | '#e6e6e6'                 | 指示器轨道颜色           |
-| --za-activity-indicator-stroke-active-color        | 'var(--za-theme-primary)' | 指示器激活色             |
-| --za-activity-indicator-spinner-item-color         | '#80858e'                 | 菊花状指示器花瓣颜色     |
-| --za-activity-indicator-spinner-item-width         | '3px'                     | 菊花状指示器花瓣宽度     |
-| --za-activity-indicator-spinner-item-height        | '32%'                     | 菊花状指示器花瓣长度     |
-| --za-activity-indicator-spinner-item-border-radius | '1.5px'                   | 菊花状指示器花瓣圆角大小 |
+| --size                       | '22px'                    | 指示器大小               |
+| --size-large                 | '29px'                    | 大型指示器大小           |
+| --stroke-color               | '#e6e6e6'                 | 指示器轨道颜色           |
+| --stroke-active-color        | 'var(--za-theme-primary)' | 指示器激活色             |
+| --spinner-item-color         | '#80858e'                 | 菊花状指示器花瓣颜色     |
+| --spinner-item-width         | '3px'                     | 菊花状指示器花瓣宽度     |
+| --spinner-item-height        | '32%'                     | 菊花状指示器花瓣长度     |
+| --spinner-item-border-radius | '1.5px'                   | 菊花状指示器花瓣圆角大小 |
