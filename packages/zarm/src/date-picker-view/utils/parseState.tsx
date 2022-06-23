@@ -10,7 +10,7 @@ const isExtendDate = (date?: DateValue): Date | '' => {
     return '';
   }
 
-  const isTime = /^\d{2}:\d{2}$/.test(date);
+  const isTime = /^\d{1,2}:\d{1,2}$/.test(date);
 
   if (isTime) {
     const [hour, minute] = date.split(':');
