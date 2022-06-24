@@ -11,6 +11,7 @@ interface HeaderProps {
   currentMonth: number;
   changeMonth: Function;
 }
+
 function Header(props: HeaderProps) {
   const { prefixCls, locale: globalLocal } = useContext(ConfigContext);
   const locale = globalLocal?.Calendar;
@@ -53,36 +54,32 @@ function Header(props: HeaderProps) {
           <ArrowRight theme="primary" size="sm" />
         </div>
         <div className={bem('action')}>
-          <div className={bem('action-btn')}>
-            <ArrowLeft
-              theme="primary"
-              className={bem('action-btn', [
-                {
-                  disabled: currentMonth === 0,
-                },
-              ])}
-              onClick={() => {
-                if (currentMonth > 0) {
-                  changeMonth(currentMonth - 1);
-                }
-              }}
-            />
-          </div>
-          <div className={bem('action-btn')}>
-            <ArrowRight
-              theme="primary"
-              className={bem('action-btn', [
-                {
-                  disabled: currentMonth >= months.length - 1,
-                },
-              ])}
-              onClick={() => {
-                if (currentMonth < months.length - 1) {
-                  changeMonth(currentMonth + 1);
-                }
-              }}
-            />
-          </div>
+          <ArrowLeft
+            theme="primary"
+            className={bem('action-btn', [
+              {
+                disabled: currentMonth === 0,
+              },
+            ])}
+            onClick={() => {
+              if (currentMonth > 0) {
+                changeMonth(currentMonth - 1);
+              }
+            }}
+          />
+          <ArrowRight
+            theme="primary"
+            className={bem('action-btn', [
+              {
+                disabled: currentMonth >= months.length - 1,
+              },
+            ])}
+            onClick={() => {
+              if (currentMonth < months.length - 1) {
+                changeMonth(currentMonth + 1);
+              }
+            }}
+          />
         </div>
       </div>
       {showDatePicker ? (
@@ -95,4 +92,5 @@ function Header(props: HeaderProps) {
     </>
   );
 }
+
 export default React.memo(Header);

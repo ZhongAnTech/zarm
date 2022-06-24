@@ -7,13 +7,9 @@ const Week = forwardRef<any, any>((_props, ref) => {
   const weeks = globalLocal?.Calendar?.weeks;
   const bem = createBEM('calendar', { prefixCls });
 
-  const content = weeks?.map((week) => (
-    <li key={week} className={bem('bar__item')}>
-      {week}
-    </li>
-  ));
+  const content = weeks?.map((week) => <li key={week}>{week}</li>);
   return (
-    <ul className={bem('bar')} ref={ref}>
+    <ul className={bem('week')} ref={ref}>
       {content}
     </ul>
   );

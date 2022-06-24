@@ -160,7 +160,8 @@ const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
   const title = dayjs().year(year).month(month).format(globalLocal?.Calendar?.yearMonthFormat);
 
   return (
-    <div key={monthKey} className={bem('month')} title={title} ref={monthRef}>
+    <div key={monthKey} className={bem('month__wrapper')} ref={monthRef} title={title}>
+      <div className={bem('month')}>{title}</div>
       <ul>{renderDays(year, month)}</ul>
     </div>
   );
