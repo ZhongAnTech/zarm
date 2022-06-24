@@ -543,8 +543,8 @@ exports[`DatePickerView DatePickerView time 3 1`] = `
         stopScroll={false}
         value={
           Array [
-            11,
-            0,
+            18,
+            34,
           ]
         }
         valueMember="value"
@@ -610,7 +610,7 @@ exports[`DatePickerView DatePickerView time 3 1`] = `
               onChange={[Function]}
               prefixCls="za-wheel"
               stopScroll={false}
-              value={11}
+              value={18}
               valueMember="value"
             >
               <div
@@ -620,7 +620,7 @@ exports[`DatePickerView DatePickerView time 3 1`] = `
                   className="za-wheel__content"
                 >
                   <div
-                    className="za-wheel__item za-wheel__item--selected"
+                    className="za-wheel__item"
                     key="0"
                   >
                     11时
@@ -662,7 +662,7 @@ exports[`DatePickerView DatePickerView time 3 1`] = `
                     17时
                   </div>
                   <div
-                    className="za-wheel__item"
+                    className="za-wheel__item za-wheel__item--selected"
                     key="7"
                   >
                     18时
@@ -939,7 +939,7 @@ exports[`DatePickerView DatePickerView time 3 1`] = `
               onChange={[Function]}
               prefixCls="za-wheel"
               stopScroll={false}
-              value={0}
+              value={34}
               valueMember="value"
             >
               <div
@@ -949,7 +949,7 @@ exports[`DatePickerView DatePickerView time 3 1`] = `
                   className="za-wheel__content"
                 >
                   <div
-                    className="za-wheel__item za-wheel__item--selected"
+                    className="za-wheel__item"
                     key="0"
                   >
                     0分
@@ -1153,7 +1153,7 @@ exports[`DatePickerView DatePickerView time 3 1`] = `
                     33分
                   </div>
                   <div
-                    className="za-wheel__item"
+                    className="za-wheel__item za-wheel__item--selected"
                     key="34"
                   >
                     34分
