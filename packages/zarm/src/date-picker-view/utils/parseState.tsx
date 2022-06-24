@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import BaseDatePickerViewProps, { DateValue } from '../PropsType';
 
 const isExtendDate = (date?: DateValue): Date | '' => {
@@ -9,12 +10,18 @@ const isExtendDate = (date?: DateValue): Date | '' => {
     return '';
   }
 
-  const isTime = /^\d{2}:\d{2}$/.test(date);
+  const isTime = /^\d{1,2}:\d{1,2}$/.test(date);
+
   if (isTime) {
-    return new Date(`${new Date().getFullYear()} ${date}`);
+    const [hour, minute] = date.split(':');
+    const today = new Date();
+    today.setHours(+hour);
+    today.setMinutes(+minute);
+
+    return today;
   }
 
-  return new Date(date.toString().replace(/-/g, '/'));
+  return new Date(dayjs(date).format());
 };
 
 const parseState = (props: BaseDatePickerViewProps) => {
