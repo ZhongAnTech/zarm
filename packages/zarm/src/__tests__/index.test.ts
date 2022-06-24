@@ -39,7 +39,6 @@ describe('index', () => {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
             "shape": "dot",
-            "theme": "danger",
           },
           "render": [Function],
         },

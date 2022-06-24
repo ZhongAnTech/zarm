@@ -10,7 +10,7 @@ describe('Badge', () => {
     render(<Badge data-testid="badge-root" />);
     expect(screen.getByTestId('badge-root')).toBeTruthy();
     expect(screen.getByTestId('badge-root').className).toEqual(
-      'za-badge za-badge--danger za-badge--dot',
+      'za-badge za-badge--dot',
     );
   });
 
@@ -18,7 +18,7 @@ describe('Badge', () => {
     render(<Badge shape="rect" text="免费" data-testid="badge-root" />);
     expect(screen.getByTestId('badge-root')).toBeTruthy();
     expect(screen.getByTestId('badge-root').className).toEqual(
-      'za-badge za-badge--danger za-badge--rect',
+      'za-badge za-badge--rect',
     );
     expect(screen.getByText('免费')).toBeTruthy();
     expect(screen.getByTestId('badge-root').firstChild!.nodeName.toLowerCase()).toEqual('sup');
@@ -29,7 +29,7 @@ describe('Badge', () => {
     render(<Badge shape="radius">foo</Badge>);
     expect(screen.getByText('foo')).toBeTruthy();
     expect(screen.getByText('foo').className).toEqual(
-      'za-badge za-badge--danger za-badge--radius za-badge--sup',
+      'za-badge za-badge--radius za-badge--sup',
     );
   });
 
@@ -38,20 +38,20 @@ describe('Badge', () => {
     expect(screen.getByText('99+')).toBeTruthy();
     expect(screen.getByText('99+').className).toEqual('za-badge__content');
     expect(screen.getByText('99+').parentElement!.className).toEqual(
-      'za-badge za-badge--danger za-badge--round',
+      'za-badge za-badge--round',
     );
   });
 
   test.each`
-    theme        | className         | shape       | expected
-    ${'primary'} | ${'custom-badge'} | ${'dot'}    | ${'za-badge za-badge--primary za-badge--dot custom-badge'}
-    ${'success'} | ${'custom-badge'} | ${'round'}  | ${'za-badge za-badge--success za-badge--round custom-badge'}
-    ${'warning'} | ${'custom-badge'} | ${'radius'} | ${'za-badge za-badge--warning za-badge--radius custom-badge'}
-    ${'danger'}  | ${'custom-badge'} | ${'rect'}   | ${'za-badge za-badge--danger za-badge--rect custom-badge'}
+    className         | shape       | expected
+    ${'custom-badge'} | ${'dot'}    | ${'za-badge za-badge--dot custom-badge'}
+    ${'custom-badge'} | ${'round'}  | ${'za-badge za-badge--round custom-badge'}
+    ${'custom-badge'} | ${'radius'} | ${'za-badge za-badge--radius custom-badge'}
+    ${'custom-badge'} | ${'rect'}   | ${'za-badge za-badge--rect custom-badge'}
   `(
-    'should render with theme - $theme, className - $className and shape - $shape',
-    ({ theme, className, shape, expected }) => {
-      render(<Badge data-testid="badge-root" theme={theme} className={className} shape={shape} />);
+    'should render with className - $className and shape - $shape',
+    ({ className, shape, expected }) => {
+      render(<Badge data-testid="badge-root" className={className} shape={shape} />);
       expect(screen.getByTestId('badge-root').className).toEqual(expected);
     },
   );
@@ -63,7 +63,7 @@ describe('Badge', () => {
       </ConfigProvider>,
     );
     expect(screen.getByTestId('badge-root').className).toEqual(
-      'zarm-badge zarm-badge--danger zarm-badge--dot',
+      'zarm-badge zarm-badge--dot',
     );
   });
 
