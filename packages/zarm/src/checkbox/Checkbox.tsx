@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import { ConfigContext } from '../n-config-provider';
 import { Success as SuccessIcon, Minus as MinusIcon } from '@zarm-design/icons';
+import { ConfigContext } from '../n-config-provider';
 import Button from '../button';
 import List from '../list';
 import type { BaseCheckboxProps, BaseCheckboxGroupProps } from './interface';
