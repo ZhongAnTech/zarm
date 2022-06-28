@@ -5434,7 +5434,7 @@ camelcase@^6.0.0, camelcase@^6.2.0:
 
 caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001214, caniuse-lite@^1.0.30001219:
   version "1.0.30001359"
-  resolved "https://npm.zhonganinfo.com/caniuse-lite/-/caniuse-lite-1.0.30001359.tgz"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001359.tgz"
   integrity sha512-Xln/BAsPzEuiVLgJ2/45IaqD9jShtk3Y33anKb4+yLwQzws3+v6odKfpgES/cDEaZMLzSChpIGdbOYtH9MyuHw==
 
 capital-case@^1.0.4:
