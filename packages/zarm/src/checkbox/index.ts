@@ -1,9 +1,10 @@
 import Checkbox from './Checkbox';
-import CheckboxGroup from './CheckboxGroup';
+import Group from './CheckboxGroup';
+import attachPropertiesToComponent from '../utils/attachPropertiesToComponent';
 
 export type { CheckboxProps } from './Checkbox';
 export type { CheckboxGroupProps } from './CheckboxGroup';
 
-Checkbox.Group = CheckboxGroup;
-
-export default Checkbox;
+export default attachPropertiesToComponent(Checkbox, {
+  Group,
+});

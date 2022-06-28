@@ -89,16 +89,19 @@ exports[`Radio renders correctly 1`] = `
 
 exports[`Radio type is button 1`] = `
 <button
-  class="za-radio"
+  aria-disabled="false"
+  class="za-button za-radio za-button--default za-button--md za-button--radius"
   type="button"
 >
-  选项一
-  <input
-    aria-checked="false"
-    class="za-radio__input"
-    type="radio"
-    value="0"
-  />
+  <span>
+    选项一
+    <input
+      aria-checked="false"
+      class="za-radio__input"
+      type="radio"
+      value="0"
+    />
+  </span>
 </button>
 `;
 

@@ -1,9 +1,10 @@
 import Radio from './Radio';
-import RadioGroup from './RadioGroup';
+import Group from './RadioGroup';
+import attachPropertiesToComponent from '../utils/attachPropertiesToComponent';
 
 export type { RadioProps } from './Radio';
 export type { RadioGroupProps } from './RadioGroup';
 
-Radio.Group = RadioGroup;
-
-export default Radio;
+export default attachPropertiesToComponent(Radio, {
+  Group,
+});
