@@ -22,7 +22,15 @@ export default ({ location, globalContext, children }) => {
           en_US: enUS,
           zh_CN: zhCN,
         };
-        const args = ['context', 'React', 'ReactDOM', 'Zarm', 'GlobalContext', 'Locale', 'ZarmDesignIcons'];
+        const args = [
+          'context',
+          'React',
+          'ReactDOM',
+          'Zarm',
+          'GlobalContext',
+          'Locale',
+          'ZarmDesignIcons',
+        ];
         const argv = [this, React, ReactDOM, Element, globalContext, locale, ZarmDesignIcons];
 
         return {
@@ -34,7 +42,10 @@ export default ({ location, globalContext, children }) => {
         const value = source[2]
           .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'react';/, 'const { $1 } = React;')
           .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'zarm';/, 'const { $1 } = Zarm;')
-          .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'@zarm-design\/icons';/, 'const { $1 } = ZarmDesignIcons;')
+          .replace(
+            /import\s+\{\s+(.*)\s+\}\s+from\s+'@zarm-design\/icons';/,
+            'const { $1 } = ZarmDesignIcons;',
+          )
           .replace(
             /import\s+(.*)\s+from\s+'zarm\/lib\/config-provider\/locale\/(.*)';/g,
             "const $1 = Locale['$2'];",

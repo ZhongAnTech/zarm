@@ -52,8 +52,8 @@ $activity-indicator-spinner-count : 12;
         height: 100%;
 
         &:nth-of-type(#{$i}) {
-          transform: rotate($i * 30deg);
-          opacity: 1 - calc(0.75 / $activity-indicator-spinner-count * ($i - 1));
+          transform: rotate($i * (360 / $activity-indicator-spinner-count) * 1deg);
+          opacity: $i / $activity-indicator-spinner-count;
         }
 
         &::before {

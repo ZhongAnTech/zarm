@@ -24,9 +24,7 @@ import { Plus } from '@zarm-design/icons';
 ReactDOM.render(
   <NavBar
     title="这是标题这是标题这是标题"
-    right={
-      <Plus theme="primary" onClick={() => window.alert('click icon')} />
-    }
+    right={<Plus theme="primary" onClick={() => window.alert('click icon')} />}
   />,
   mountNode,
 );
@@ -44,11 +42,7 @@ ReactDOM.render(
     title="这是标题"
     right={
       <>
-        <Plus
-          theme="primary"
-          onClick={() => alert('click icon1')}
-          style={{ marginRight: 16 }}
-        />
+        <Plus theme="primary" onClick={() => alert('click icon1')} style={{ marginRight: 16 }} />
         <Search theme="primary" onClick={() => alert('click icon2')} />
       </>
     }
