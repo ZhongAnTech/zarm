@@ -2,7 +2,7 @@ import React, { HTMLAttributes } from 'react';
 import ReactDOM, { createPortal } from 'react-dom';
 import PopperJS from 'popper.js';
 import classnames from 'classnames';
-
+import includes from 'lodash/includes';
 import ClickOutside from '../click-outside';
 import { canUseDOM, getOuterSizes } from '../utils/dom';
 import BasePopperProps, { PopperPlacement, directionMap } from './PropsType';
@@ -181,7 +181,7 @@ class Popper extends React.Component<PopperProps, PopperStates> {
       const placement = this.popperNode!.getAttribute('x-placement');
 
       if (animationType === 'menuSlide' && placement) {
-        if (placement.includes('top')) {
+        if (includes(placement, 'top')) {
           return `za-${animationType}-down-${animationState}`;
         }
         return `za-${animationType}-up-${animationState}`;

@@ -39,6 +39,7 @@
 
     @include e(thumb) {
       height: 100%;
+      width: 0;
       transition: width .6s ease, background-color .6s ease;
     }
   }

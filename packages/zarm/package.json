@@ -1,6 +1,6 @@
 {
   "name": "zarm",
-  "version": "2.9.9",
+  "version": "2.9.14",
   "description": "基于 React 的移动端UI库",
   "keywords": [
     "react",
@@ -68,10 +68,11 @@
   ],
   "dependencies": {
     "@babel/runtime": "^7.14.0",
-    "@zarm-design/icons": "^0.1.1",
+    "@zarm-design/icons": "^0.1.4",
     "better-scroll": "2.3.1",
     "classnames": "2.2.6",
     "color": "^3.1.3",
+    "dayjs": "^1.11.3",
     "hoist-non-react-statics": "^3.3.0",
     "lodash": "^4.17.15",
     "normalize.css": "8.0.1",
@@ -84,7 +85,7 @@
     "@types/react-dom": "^17.0.3",
     "@types/react-native": "^0.64.2",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.1",
-    "@zarm-design/cli": "^0.0.38",
+    "@zarm-design/cli": "^0.0.39",
     "dekko": "^0.2.1",
     "enzyme": "^3.11.0",
     "enzyme-to-json": "^3.6.2",
@@ -98,7 +99,7 @@
   "bundlesize": [
     {
       "path": "./dist/zarm.min.js",
-      "maxSize": "100 kB"
+      "maxSize": "120 kB"
     },
     {
       "path": "./dist/zarm.min.css",

@@ -125,6 +125,9 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
   };
 
   renderTabs = (tab: ReactElement<TabPanelProps, typeof TabPanel>, index: number) => {
+    if (!tab) {
+      return;
+    }
     const { prefixCls, disabled } = this.props;
     const { value } = this.state;
 
@@ -146,7 +149,10 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     const { itemWidth } = this.state;
     const value = this.currentValue;
     const { children, scrollable } = this.props;
-    const ChildCount = React.Children.count(children);
+    let ChildCount = React.Children.count(children);
+    if (Array.isArray(children)) {
+      ChildCount = children.filter((i) => i).length;
+    }
     let pos = 100 * value;
     if (scrollable && this.layout) {
       const el = this.layout!.children[value];
@@ -225,7 +231,11 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     });
 
     // 渲染选项
-    const tabsRender = React.Children.map(children, this.renderTabs);
+    let _children = children;
+    if (Array.isArray(_children)) {
+      _children = _children.filter((i) => i);
+    }
+    const tabsRender = React.Children.map(_children, this.renderTabs);
 
     // 渲染内容
     let contentRender;
@@ -249,9 +259,11 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
       );
     } else {
       contentRender = React.Children.map(
-        children,
+        _children,
         (item: ReactElement<TabPanel['props'], typeof TabPanel>, index) => {
-          return item.props.children && <TabPanel {...item.props} selected={value === index} />;
+          return (
+            item && item.props.children && <TabPanel {...item.props} selected={value === index} />
+          );
         },
       );
     }

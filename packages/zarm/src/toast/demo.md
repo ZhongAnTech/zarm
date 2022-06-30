@@ -3,7 +3,8 @@
 ## 基本用法
 
 ```jsx
-import { Toast, Cell, Button, Icon } from 'zarm';
+import { Toast, Cell, Button } from 'zarm';
+import { Success } from '@zarm-design/icons';
 
 const Demo = () => (
   <>
@@ -73,7 +74,7 @@ const Demo = () => (
           onClick={() => {
             Toast.show(
               <div className="box">
-                <Icon className="box-icon" type="right-round-fill" />
+                <Success className="box-icon" />
                 <div className="box-text">预约成功</div>
               </div>,
             );

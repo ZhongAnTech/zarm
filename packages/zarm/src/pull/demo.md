@@ -4,7 +4,8 @@
 
 ```jsx
 import { useState, useEffect, useRef } from 'react';
-import { Pull, Cell, Message, Icon, Button, ActivityIndicator, BackToTop } from 'zarm';
+import { Pull, Cell, Message, Button, ActivityIndicator, BackToTop } from 'zarm';
+import { WarningCircle, SuccessCircle, CloseCircle } from '@zarm-design/icons';
 
 const REFRESH_STATE = {
   normal: 0, // 普通
@@ -108,7 +109,7 @@ const Demo = () => {
 
   return (
     <>
-      <Message theme="warning" icon={<Icon type="warning-round" />}>
+      <Message theme="warning" icon={<WarningCircle />}>
         当前使用的是 `{bodyScroll ? 'window' : 'div'}` 作为滚动容器。
         <Button theme="primary" size="xs" onClick={toggleScrollContainer}>
           点击切换
@@ -150,7 +151,7 @@ const Demo = () => {
           //     case REFRESH_STATE.success:
           //       return (
           //         <div className={cls}>
-          //           <Icon type="right-round" theme="success" />
+          //           <SuccessCircle theme="success" />
           //           <span>加载成功</span>
           //         </div>
           //       );
@@ -158,7 +159,7 @@ const Demo = () => {
           //     case REFRESH_STATE.failure:
           //       return (
           //         <div className={cls}>
-          //           <Icon type="wrong-round" theme="danger" />
+          //           <CloseCircle theme="danger" />
           //           <span>加载失败</span>
           //         </div>
           //       );

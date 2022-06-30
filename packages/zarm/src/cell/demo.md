@@ -11,12 +11,13 @@ ReactDOM.render(<Cell title="标题文字" />, mountNode);
 ## 带描述
 
 ```jsx
-import { Cell, Icon } from 'zarm';
+import { Cell } from 'zarm';
+import { Plus } from '@zarm-design/icons';
 
 ReactDOM.render(
   <>
     <Cell title="标题文字" description="描述文字" />
-    <Cell title="标题文字" description={<Icon type="add" theme="primary" size="sm" />} />
+    <Cell title="标题文字" description={<Plus theme="primary" />} />
   </>,
   mountNode,
 );
@@ -25,13 +26,14 @@ ReactDOM.render(
 ## 带图标、标题
 
 ```jsx
-import { Cell, Icon } from 'zarm';
+import { Cell } from 'zarm';
+import { Volume } from '@zarm-design/icons';
 
 const img = 'https://static.zhongan.com/website/health/zarm/images/icons/state.png';
 
 ReactDOM.render(
   <>
-    <Cell title="标题文字" icon={<Icon type="broadcast" theme="primary" />} />
+    <Cell title="标题文字" icon={<Volume theme="primary" />} />
     <Cell title="标题文字" icon={<img alt="" src={img} style={{ width: 24, height: 24 }} />} />
   </>,
   mountNode,
@@ -70,6 +72,7 @@ ReactDOM.render(
 
 ```jsx
 import { Cell, Icon } from 'zarm';
+import { Volume } from '@zarm-design/icons';
 
 const img = 'https://static.zhongan.com/website/health/zarm/images/icons/state.png';
 
@@ -79,7 +82,7 @@ ReactDOM.render(
       hasArrow
       title="标题文字"
       description="描述文字"
-      icon={<Icon type="broadcast" theme="primary" />}
+      icon={<Volume theme="primary" />}
       onClick={() => {}}
     />
 
@@ -111,13 +114,14 @@ ReactDOM.render(
 ## 提示信息
 
 ```jsx
-import { Cell, Message, Icon, Input } from 'zarm';
+import { Cell, Message, Input } from 'zarm';
+import { WarningCircle } from '@zarm-design/icons';
 
 ReactDOM.render(
   <Cell
     title="标题"
     help={
-      <Message theme="danger" icon={<Icon type="warning-round" size="sm" />}>
+      <Message theme="danger" icon={<WarningCircle size="sm" />}>
         标题不能为空
       </Message>
     }

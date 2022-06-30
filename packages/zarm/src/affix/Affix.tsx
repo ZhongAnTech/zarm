@@ -43,23 +43,23 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
   componentDidMount() {
     // wait for ref not null
     const { offsetBottom } = this.props;
+    const { container, onPositionUpdate } = this;
 
-    setTimeout(() => {
-      const { container, onPositionUpdate } = this;
-      Events.on(container, 'scroll', onPositionUpdate);
-
-      if (typeof offsetBottom !== 'undefined') {
-        this.onPositionUpdate();
-      }
-    });
+    container &&
+      setTimeout(() => {
+        Events.on(this.container!, 'scroll', onPositionUpdate);
+        if (typeof offsetBottom !== 'undefined') {
+          this.onPositionUpdate();
+        }
+      });
   }
 
   componentWillUnmount() {
-    setTimeout(() => {
-      const { container, onPositionUpdate } = this;
-
-      Events.off(container, 'scroll', onPositionUpdate);
-    });
+    const { container, onPositionUpdate } = this;
+    container &&
+      setTimeout(() => {
+        Events.off(container, 'scroll', onPositionUpdate);
+      });
   }
 
   onPositionUpdate = throttle(() => {
@@ -86,6 +86,7 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
   }, 10);
 
   get container() {
+    if (!canUseDOM) return DEFAULT_SCROLL_CONTAINER;
     const { scrollContainer } = this.props;
     const container = typeof scrollContainer === 'function' ? scrollContainer!() : scrollContainer;
 
@@ -130,7 +131,6 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
     const { containerRect } = this;
     const { offsetTop, offsetBottom } = this.props;
     const { width, height } = this.state;
-
     if (this.affixed && typeof offsetBottom !== 'undefined') {
       return {
         position: 'fixed',
@@ -155,11 +155,12 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
   render() {
     const { prefixCls, className, children } = this.props;
 
-    const cls = classnames(prefixCls, className);
-
-    if (!this.affixed) {
-      return <div ref={this.savePlaceholderNode}>{children}</div>;
-    }
+    const cls = classnames(
+      {
+        [`${prefixCls}`]: this.affixed,
+      },
+      className,
+    );
 
     return (
       <div ref={this.savePlaceholderNode}>

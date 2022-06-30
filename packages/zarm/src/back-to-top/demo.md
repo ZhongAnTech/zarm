@@ -4,7 +4,8 @@
 
 ```jsx
 import { useRef, useState } from 'react';
-import { Cell, BackToTop, Message, Button, Icon } from 'zarm';
+import { Cell, BackToTop, Message, Button } from 'zarm';
+import { WarningCircle } from '@zarm-design/icons';
 
 const Demo = () => {
   const list = [];
@@ -24,7 +25,7 @@ const Demo = () => {
 
   return (
     <>
-      <Message theme="warning" icon={<Icon type="warning-round" />}>
+      <Message theme="warning" icon={<WarningCircle />}>
         当前使用的是 `{useWindowScroll ? 'window' : 'div'}` 作为滚动容器。
         <Button theme="primary" size="xs" onClick={() => setUseWindowScroll(!useWindowScroll)}>
           点击切换
