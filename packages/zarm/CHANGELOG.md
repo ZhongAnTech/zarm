@@ -1,5 +1,11 @@
 # 版本更新日志
 
+## v2.9.15
+
+- Bug Fix
+
+  - [ActivityIndicator] 修复 scss 编译问题。[#911](https://github.com/ZhongAnTech/zarm/pull/911)
+
 ## v2.9.14
 
 - Bug Fix
