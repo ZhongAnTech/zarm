@@ -29,7 +29,9 @@ describe('DatePickerView', () => {
   });
 
   it('DatePickerView time 3', () => {
-    const wrapper = mount(<DatePickerViewEnhanced mode="time" min="11:00" max="21:00" />);
+    const wrapper = mount(
+      <DatePickerViewEnhanced mode="time" value="14:00" min="11:00" max="21:00" />,
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });
