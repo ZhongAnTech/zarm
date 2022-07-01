@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Affix offsetBottom 1`] = `
+<div>
+  <div
+    class=""
+  >
+    <div>
+      Affix Node
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Affix offsetTop 1`] = `
+<div>
+  <div
+    class=""
+  >
+    <div>
+      Affix Node
+    </div>
+  </div>
+</div>
+`;

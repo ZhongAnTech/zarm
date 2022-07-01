@@ -1,19 +1,23 @@
 # COMMUNITY
 
 ## PMC:
+
 Jerome Lin <jerome.lin@zhongan.com>
 
 ## Maintanier:
+
 Jerome Lin <jerome.lin@zhongan.com>
 
 ## Committer:
+
 edison-hm <magichuangmian@sina.com>
 
 ## Reviewer:
+
 Jerome Lin <jerome.lin@zhongan.com>
 
-
 ## Contributors:
+
 - Jerome Lin <jerome.lin@zhongan.com>
 - Cheng007 <565460621@qq.com>
 - JasonYou <qingwei0713@163.com>
