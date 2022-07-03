@@ -1,186 +1,49 @@
-import React, { PureComponent, CSSProperties, ReactNode } from 'react';
-import classnames from 'classnames';
+import React, { useState, useEffect, useRef, useCallback, useLayoutEffect, ReactNode, CSSProperties } from 'react';
+import { createBEM } from '@zarm-design/bem';
+import { useDrag } from '@use-gesture/react';
 import {
   SuccessCircle as SuccessCircleIcon,
   WarningCircle as WarningCircleIcon,
 } from '@zarm-design/icons';
 import throttle from 'lodash/throttle';
-import { REFRESH_STATE, LOAD_STATE, PullAction, PropsType } from './PropsType';
 import Events from '../utils/events';
-import { getScrollTop } from '../utils/dom';
-import Drag from '../drag';
+import { ConfigContext } from '../n-config-provider';
+import { REFRESH_STATE, LOAD_STATE, PullAction, PropsType } from './PropsType';
+import { getScrollParent, getScrollTop } from '../utils/dom';
 import ActivityIndicator from '../activity-indicator';
+import { useEventCallback } from '../utils/hooks';
 
-export interface PullProps extends PropsType {
+
+interface PullProps extends PropsType {
   prefixCls?: string;
   className?: string;
 }
 
-export default class Pull extends PureComponent<PullProps, any> {
-  private pull;
+const Pull = React.forwardRef<unknown, PullProps>((props, ref) => {
+  const pullRef = (ref as any) || React.createRef<HTMLDivElement>();
+  const wrap = useRef<HTMLElement | Window>(window);
 
-  private wrap;
+  const [isMounted, setIsMounted] = useState(false);
+  const [offsetY, setOffsetY] = useState<number | 'auto'>(0);
+  const [animationDuration, setAnimationDuration] = useState(0);
+  const [refreshState, setRefreshState] = useState(props.refresh!.state);
+  const [loadState, setLoadState] = useState(props.load!.state);
+  const prevLoad = useRef<PullAction>({});
+  const prevRefresh = useRef<PullAction>({});
+  const scrollContainer = useRef<HTMLElement | Window>(window)
+  
+  const wrapTouchstartY = useRef(0);
 
-  private throttledScroll;
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('pull', { prefixCls });
 
-  private wrapTouchstartY;
-
-  private mounted = true;
-
-  static defaultProps: PullProps = {
-    prefixCls: 'za-pull',
-    refresh: {
-      state: REFRESH_STATE.normal,
-      startDistance: 30,
-      distance: 30,
-    },
-    load: {
-      state: LOAD_STATE.normal,
-      distance: 0,
-    },
-    animationDuration: 400,
-    stayTime: 1000,
-  };
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      offsetY: 0,
-      animationDuration: 0,
-      refreshState: props.refresh.state,
-      loadState: props.load.state,
-    };
-    this.throttledScroll = throttle(this.onScroll, 250);
-  }
-
-  componentDidMount() {
-    this.mounted = true;
-    this.addEvent();
-  }
-
-  static getDerivedStateFromProps(nextProps, state) {
-    const { load, refresh } = nextProps;
-    const { prevLoad = {}, prevRefresh = {} } = state;
-    if ('load' in nextProps && load.state !== prevLoad.state) {
-      return {
-        loadState: load.state,
-        prevLoad: load,
-      };
-    }
-
-    if ('refresh' in nextProps && refresh.state !== prevRefresh.state) {
-      return {
-        refreshState: refresh.state,
-        prevRefresh: refresh,
-      };
-    }
-    return null;
-  }
-
-  componentDidUpdate(prevProps) {
-    this.addEvent();
-
-    const { load, refresh } = this.props;
-    if (prevProps.load!.state !== load!.state) {
-      this.doLoadAction(load!.state as LOAD_STATE);
-    }
-    if (prevProps.refresh!.state !== refresh!.state) {
-      this.doRefreshAction(refresh!.state as REFRESH_STATE);
-    }
-  }
-
-  componentWillUnmount() {
-    this.mounted = false;
-    this.removeEvent();
-  }
-
-  get scrollContainer(): HTMLElement | Window {
-    const container =
-      ((node) => {
-        while (node && node.parentNode && node.parentNode !== document.body) {
-          const style = window.getComputedStyle(node);
-          if (
-            // overflow 或者 overflowY 值为 scroll/auto
-            (['scroll', 'auto'].indexOf(style.overflowY!) > -1 ||
-              ['scroll', 'auto'].indexOf(style.overflow!) > -1) &&
-            // height 或者 max-height 值大于 0
-            (parseInt(style.height!, 10) > 0 || parseInt(style.maxHeight!, 10) > 0)
-          ) {
-            return node;
-          }
-          node = node.parentNode;
-        }
-      })(this.pull) || window;
-
-    return container;
-  }
-
-  get scrollTop(): number {
-    return getScrollTop(this.wrap);
-  }
-
-  // 该方法即将过期
-  getScrollContainer = (): HTMLElement | Window => {
-    if (process.env.NODE_ENV !== 'production') {
-      console.warn(`Warning: getScrollContainer() has been renamed, and is not recommended for use.
-
-* Rename \`getScrollContainer()\` to \`scrollContainer\` to suppress this warning.`);
-    }
-    return this.scrollContainer;
-  };
-
-  wrapTouchstart = (event): void => {
-    const touch = event.touches[0];
-    this.wrapTouchstartY = touch.pageY;
-  };
-
-  wrapTouchmove = (event): void => {
-    const touch = event.touches[0];
-    const currentY = touch.pageY;
-    if (currentY - this.wrapTouchstartY > 0 && event.cancelable && this.scrollTop === 0) {
-      event.preventDefault();
-    }
-  };
-
-  wrapTouchEnd = (): void => {
-    this.wrapTouchstartY = 0;
-    this.setState({ animationDuration: this.props.animationDuration });
-  };
-
-  addEvent = (): void => {
-    // scrollContainer 未变更
-    if (this.wrap === this.scrollContainer) return;
-
-    // 解除事件监听
-    if (this.wrap) {
-      this.removeEvent();
-    }
-
-    // 重新获取 scrollContainer
-    this.wrap = this.scrollContainer;
-
-    // 监听事件
-    Events.on(this.wrap, 'scroll', this.throttledScroll);
-    Events.on(this.wrap, 'touchstart', this.wrapTouchstart);
-    Events.on(this.wrap, 'touchmove', this.wrapTouchmove);
-    Events.on(this.wrap, 'touchend', this.wrapTouchEnd);
-  };
-
-  removeEvent = (): void => {
-    Events.off(this.wrap, 'scroll', this.throttledScroll);
-    Events.off(this.wrap, 'touchstart', this.wrapTouchstart);
-    Events.off(this.wrap, 'touchmove', this.wrapTouchmove);
-    Events.off(this.wrap, 'touchend', this.wrapTouchEnd);
-  };
-
-  onScroll = (): void => {
-    const { refreshState, loadState } = this.state;
+  const onScroll = useEventCallback((): void => {
     // window为滚动容器时，无法通过 window 直接取到 scrollHeight 和 clientHeight。
     const {
       scrollHeight = document.body.clientHeight,
-      clientHeight = document.documentElement.clientHeight,
-    } = this.wrap;
-    const load: PullAction = { ...Pull.defaultProps.load, ...this.props.load };
+      clientHeight = document.documentElement.clientHeight
+    } = wrap.current as any;
+    const load: PullAction = { ...Pull.defaultProps!.load, ...props!.load };
     const { handler, distance } = load;
 
     if (
@@ -188,25 +51,154 @@ export default class Pull extends PureComponent<PullProps, any> {
       refreshState !== REFRESH_STATE.normal ||
       loadState !== LOAD_STATE.normal ||
       scrollHeight <= clientHeight ||
-      // 内容高度 - 偏移值 - 修正距离 <= 容器可见高度
-      scrollHeight - this.scrollTop - distance! > clientHeight
+      // 内容高度 - 偏移值 - 修正距离 <= 容器可见高度‚
+      scrollHeight - getScrollTop(wrap.current as HTMLElement) - distance! > clientHeight
     ) {
       return;
     }
     handler();
+  }, [props?.load?.handler])
+
+  const throttledScroll = throttle(onScroll, 250);
+
+  const wrapTouchstart = (event): void => {
+    const touch = event.touches[0];
+    wrapTouchstartY.current = touch.pageY;
   };
 
-  onDragMove = (event, { offsetY }): boolean => {
-    const { handler } = this.props.refresh!;
+  const wrapTouchmove = (event): void => {
+    const touch = event.touches[0];
+    const currentY = touch.pageY;
+    if (currentY - wrapTouchstartY.current > 0 && event.cancelable && getScrollTop(wrap.current) === 0) {
+      event.preventDefault();
+    }
+  };
+
+  const wrapTouchEnd = (): void => {
+    wrapTouchstartY.current = 0;
+    setAnimationDuration(props!.animationDuration!)
+  };
+
+  const removeEvent = (): void => {
+    if (!wrap.current)  return;
+    Events.off(wrap.current, 'scroll', throttledScroll);
+    Events.off(wrap.current, 'touchstart', wrapTouchstart);
+    Events.off(wrap.current, 'touchmove', wrapTouchmove);
+    Events.off(wrap.current, 'touchend', wrapTouchEnd);
+  };
+
+  const addEvent = (): void => {
+    const _scrollContainer = getScrollParent(pullRef.current);
+    if (_scrollContainer) {
+      scrollContainer.current = _scrollContainer as HTMLElement | Window;
+    }
+    // scrollContainer 未变更
+    if (wrap.current === scrollContainer.current) return;
+
+    // 解除事件监听
+    if (wrap.current) {
+      removeEvent();
+    }
+
+    // 重新获取 scrollContainer
+    wrap.current = scrollContainer.current;
+
+    // 监听事件
+    Events.on(wrap.current, 'scroll', throttledScroll);
+    Events.on(wrap.current, 'touchstart', wrapTouchstart);
+    Events.on(wrap.current, 'touchmove', wrapTouchmove);
+    Events.on(wrap.current, 'touchend', wrapTouchEnd);
+  };
+  
+
+  /**
+   * 执行动画
+   * @param  {number} options.offsetY  偏移距离
+   * @param  {number} options.animationDuration 动画执行时间
+  */
+  const doTransition = (
+      { offsetY: iOffsetY, animationDuration: iAnimationDuration }: { offsetY: number | 'auto', animationDuration: number }
+    ): void => {
+    setOffsetY(iOffsetY);
+    setAnimationDuration(iAnimationDuration)
+  };
+    
+  /**
+   * 执行加载动作
+   * @param  {LOAD_STATE} iLoadState 加载状态
+   */
+  const doLoadAction = (iLoadState: LOAD_STATE): void => {
+    const { stayTime } = props;
+    setLoadState(iLoadState)
+
+    switch (iLoadState) {
+      case LOAD_STATE.success:
+        doLoadAction(LOAD_STATE.normal);
+        break;
+
+      case LOAD_STATE.failure:
+        setTimeout(() => {
+          if (!isMounted) return;
+          doLoadAction(LOAD_STATE.abort);
+        }, stayTime);
+        break;
+
+      default:
+    }
+  };
+    
+  /**
+   * 执行刷新动作
+   * @param  {REFRESH_STATE} iRefreshState 刷新状态
+   * @param  {number}        iOffsetY      偏移距离
+   */
+  const doRefreshAction = (iRefreshState: REFRESH_STATE, iOffsetY?: number): void => {
+    const { stayTime } = props;
+
+    setRefreshState(iRefreshState)
+
+    switch (iRefreshState) {
+      case REFRESH_STATE.pull:
+      case REFRESH_STATE.drop:
+        doTransition({ offsetY: iOffsetY!, animationDuration: 0 });
+        break;
+
+      case REFRESH_STATE.loading:
+        doTransition({ offsetY: 'auto', animationDuration });
+        break;
+
+      case REFRESH_STATE.success:
+      case REFRESH_STATE.failure:
+        doTransition({ offsetY: 'auto', animationDuration });
+        setTimeout(() => {
+          if (!isMounted) return;
+          doRefreshAction(REFRESH_STATE.normal);
+          doLoadAction(LOAD_STATE.normal);
+        }, stayTime);
+        break;
+
+      default:
+        doTransition({ offsetY: 0, animationDuration });
+    }
+  };
+
+  const onDragMove = (state): boolean => {
+    const { movement, event } = state;
+    const [, dragOffsetY] = movement;
+    const { handler } = props.refresh!;
+    if (dragOffsetY <= 0) {
+      addEvent();
+      return false;
+    }
     if (
       // 未设置刷新事件
       !handler ||
       // 上拉
-      offsetY <= 0 ||
+      dragOffsetY <= 0 ||
       // 未滚动到顶部
-      (offsetY > 0 && this.scrollTop > 0) ||
+      (dragOffsetY > 0 && getScrollTop(wrap.current) > 0) ||
       // 已经触发过加载状态
-      this.state.refreshState >= REFRESH_STATE.loading
+      refreshState! >= REFRESH_STATE.loading
     ) {
       return false;
     }
@@ -216,116 +208,86 @@ export default class Pull extends PureComponent<PullProps, any> {
       event.preventDefault();
     }
 
-    const refresh: PullAction = { ...Pull.defaultProps.refresh, ...this.props.refresh };
+    const refresh: PullAction = { ...Pull.defaultProps?.refresh, ...props?.refresh };
     const { startDistance, distance } = refresh;
 
     // 设置拖动距离衰减（实际下拉移动距离为拖动距离的1/3）
-    const offset = offsetY / 3;
+    const offset = state.movement[1] / 3;
 
     // 判断是否达到释放立即刷新的条件
     const action = offset - startDistance! < distance! ? REFRESH_STATE.pull : REFRESH_STATE.drop;
 
-    this.doRefreshAction(action, offset);
+    doRefreshAction(action, offset);
     return true;
-  };
+  }
 
-  onDragEnd = (_event, { offsetY }): void => {
+  const onDragEnd = ({ offsetY: iOffsetY }: { offsetY: number | 'auto' }): void => {
     // 没有产生位移
-    if (!offsetY) {
+    if (!iOffsetY) {
       return;
     }
 
     // 当前状态为下拉状态时
-    const { refreshState } = this.state;
     if (refreshState === REFRESH_STATE.pull) {
-      this.doRefreshAction(REFRESH_STATE.normal);
+      doRefreshAction(REFRESH_STATE.normal);
       return;
     }
 
     // 执行外部触发刷新的回调
-    const { handler } = this.props.refresh!;
+    const { handler } = props.refresh!;
     if (typeof handler === 'function') {
       handler();
     }
-  };
+  }
 
-  /**
-   * 执行动画
-   * @param  {number} options.offsetY  偏移距离
-   * @param  {number} options.animationDuration 动画执行时间
-   */
-  doTransition = ({ offsetY, animationDuration }): void => {
-    this.setState({ offsetY, animationDuration });
-  };
+  const bind = useDrag(
+    (state) => {
+      if (state.last) {
+        onDragEnd({ offsetY })
+        return;
+      }
 
-  /**
-   * 执行刷新动作
-   * @param  {REFRESH_STATE} refreshState 刷新状态
-   * @param  {number}        offsetY      偏移距离
-   */
-  doRefreshAction = (refreshState: REFRESH_STATE, offsetY?: number): void => {
-    const { animationDuration, stayTime } = this.props;
-
-    this.setState({ refreshState });
-    switch (refreshState) {
-      case REFRESH_STATE.pull:
-      case REFRESH_STATE.drop:
-        this.doTransition({ offsetY, animationDuration: 0 });
-        break;
-
-      case REFRESH_STATE.loading:
-        this.doTransition({ offsetY: 'auto', animationDuration });
-        break;
-
-      case REFRESH_STATE.success:
-      case REFRESH_STATE.failure:
-        this.doTransition({ offsetY: 'auto', animationDuration });
-        setTimeout(() => {
-          if (!this.mounted) return;
-          this.doRefreshAction(REFRESH_STATE.normal);
-          this.doLoadAction(LOAD_STATE.normal);
-        }, stayTime);
-        break;
-
-      default:
-        this.doTransition({ offsetY: 0, animationDuration });
+      onDragMove(state)
+    },
+    {
+      enabled: true,
+      axis: 'y',
+      preventDefault: !Events.supportsPassiveEvents,
     }
-  };
+  );
 
-  /**
-   * 执行加载动作
-   * @param  {LOAD_STATE} loadState 加载状态
-   */
-  doLoadAction = (loadState: LOAD_STATE): void => {
-    const { stayTime } = this.props;
-    this.setState({ loadState });
+  const { load, refresh } = props;
+  if (prevLoad.current.state !== load!.state) {
+    doLoadAction(load!.state as LOAD_STATE);
+    prevLoad.current = load!;
+  }
+  if (prevRefresh.current.state !== refresh!.state) {
+    doRefreshAction(refresh!.state as REFRESH_STATE);
+    prevRefresh.current = refresh!;
+  }
 
-    switch (loadState) {
-      case LOAD_STATE.success:
-        this.doLoadAction(LOAD_STATE.normal);
-        break;
+  useEffect(() => {
+    addEvent();
+  }, [scrollContainer.current, loadState, refreshState]);
+  
+  useEffect(() => {
+    setIsMounted(true);
 
-      case LOAD_STATE.failure:
-        setTimeout(() => {
-          if (!this.mounted) return;
-          this.doLoadAction(LOAD_STATE.abort);
-        }, stayTime);
-        break;
-
-      default:
-    }
-  };
+    return () => {
+      removeEvent();
+      setIsMounted(false);
+    };
+  }, []);
 
   /**
    * 渲染刷新节点
    */
-  renderRefresh = (): ReactNode => {
-    const refresh: PullAction = { ...Pull.defaultProps.refresh, ...this.props.refresh };
-    const { startDistance, distance, render } = refresh;
-    const { refreshState, offsetY } = this.state;
+  const renderRefresh = (): ReactNode => {
+    const refreshProps: PullAction = { ...Pull.defaultProps?.refresh, ...props?.refresh };
+    const { startDistance, distance, render } = refreshProps;
 
     let percent = 0;
-    if (offsetY >= startDistance!) {
+    if (typeof offsetY === 'number' && offsetY >= startDistance!) {
       percent =
         ((offsetY - startDistance! < distance! ? offsetY - startDistance! : distance)! * 100) /
         distance!;
@@ -335,13 +297,13 @@ export default class Pull extends PureComponent<PullProps, any> {
       return render(refreshState, percent);
     }
 
-    const { prefixCls, locale } = this.props;
-    const cls = `${prefixCls}__control`;
+    const { locale } = props;
+    const refreshCls = bem('control');
 
     switch (refreshState) {
       case REFRESH_STATE.pull:
         return (
-          <div className={cls}>
+          <div className={refreshCls}>
             <ActivityIndicator loading={false} percent={percent} />
             <span>{locale!.pullText}</span>
           </div>
@@ -349,7 +311,7 @@ export default class Pull extends PureComponent<PullProps, any> {
 
       case REFRESH_STATE.drop:
         return (
-          <div className={cls}>
+          <div className={refreshCls}>
             <ActivityIndicator loading={false} percent={100} />
             <span>{locale!.dropText}</span>
           </div>
@@ -357,7 +319,7 @@ export default class Pull extends PureComponent<PullProps, any> {
 
       case REFRESH_STATE.loading:
         return (
-          <div className={cls}>
+          <div className={refreshCls}>
             <ActivityIndicator type="spinner" />
             <span>{locale!.loadingText}</span>
           </div>
@@ -365,7 +327,7 @@ export default class Pull extends PureComponent<PullProps, any> {
 
       case REFRESH_STATE.success:
         return (
-          <div className={cls}>
+          <div className={refreshCls}>
             <SuccessCircleIcon theme="success" />
             <span>{locale!.successText}</span>
           </div>
@@ -373,7 +335,7 @@ export default class Pull extends PureComponent<PullProps, any> {
 
       case REFRESH_STATE.failure:
         return (
-          <div className={cls}>
+          <div className={refreshCls}>
             <WarningCircleIcon theme="danger" />
             <span>{locale!.failureText}</span>
           </div>
@@ -386,22 +348,21 @@ export default class Pull extends PureComponent<PullProps, any> {
   /**
    * 渲染加载节点
    */
-  renderLoad = (): ReactNode => {
-    const load: PullAction = { ...Pull.defaultProps.load, ...this.props.load };
-    const { render } = load;
-    const { loadState } = this.state;
+  const renderLoad = (): ReactNode => {
+    const loadProps: PullAction = { ...Pull.defaultProps?.load, ...props?.load };
+    const { render } = loadProps;
 
     if (typeof render === 'function') {
       return render(loadState);
     }
 
-    const { prefixCls, locale } = this.props;
-    const cls = `${prefixCls}__control`;
+    const { locale } = props;
+    const loadCls = bem('control');
 
     switch (loadState) {
       case LOAD_STATE.loading:
         return (
-          <div className={cls}>
+          <div className={loadCls}>
             <ActivityIndicator type="spinner" />
             <span>{locale!.loadingText}</span>
           </div>
@@ -409,7 +370,7 @@ export default class Pull extends PureComponent<PullProps, any> {
 
       case LOAD_STATE.failure:
         return (
-          <div className={cls}>
+          <div className={loadCls}>
             <WarningCircleIcon theme="danger" />
             <span>{locale!.failureText}</span>
           </div>
@@ -417,7 +378,7 @@ export default class Pull extends PureComponent<PullProps, any> {
 
       case LOAD_STATE.complete:
         return (
-          <div className={cls}>
+          <div className={loadCls}>
             <span>{locale!.completeText}</span>
           </div>
         );
@@ -426,41 +387,53 @@ export default class Pull extends PureComponent<PullProps, any> {
     }
   };
 
-  render() {
-    const { prefixCls, className, style, children } = this.props;
-    const { offsetY, animationDuration, refreshState, loadState } = this.state;
-    const cls = classnames(prefixCls, className);
+  const { className, style, children } = props;
+  const cls = bem([className]);
 
-    const loadCls = classnames(`${prefixCls}__load`, {
-      [`${prefixCls}__load--show`]: loadState >= LOAD_STATE.loading,
-    });
-
-    const contentStyle: CSSProperties = {
-      WebkitTransition: `all ${animationDuration}ms`,
-      transition: `all ${animationDuration}ms`,
-    };
-
-    if (refreshState <= REFRESH_STATE.drop) {
-      contentStyle.WebkitTransform = `translate3d(0, ${offsetY}px, 0)`;
-      contentStyle.transform = `translate3d(0, ${offsetY}px, 0)`;
+  const loadCls = bem('load', [
+    {
+      'show': loadState! >= LOAD_STATE.loading,
     }
+  ]);
 
-    return (
-      <Drag onDragMove={this.onDragMove} onDragEnd={this.onDragEnd}>
-        <div className={cls} style={style}>
-          <div
-            className={`${prefixCls}__content`}
-            style={contentStyle}
-            ref={(ele) => {
-              this.pull = ele;
-            }}
-          >
-            <div className={`${prefixCls}__refresh`}>{this.renderRefresh()}</div>
-            <div className={`${prefixCls}__body`}>{children}</div>
-            <div className={loadCls}>{this.renderLoad()}</div>
-          </div>
-        </div>
-      </Drag>
-    );
+  const contentStyle: CSSProperties = {
+    WebkitTransition: `all ${animationDuration}ms`,
+    transition: `all ${animationDuration}ms`,
+  };
+
+  if (refreshState! <= REFRESH_STATE.drop) {
+    contentStyle.WebkitTransform = `translate3d(0, ${offsetY}px, 0)`;
+    contentStyle.transform = `translate3d(0, ${offsetY}px, 0)`;
   }
-}
+
+  return (
+    <div className={cls} style={style} {...bind()}>
+      <div
+        className={bem('content')}
+        ref={pullRef}
+        style={contentStyle}
+      >
+        <div className={bem('refresh')}>{renderRefresh()}</div>
+        <div className={bem('body')}>{children}</div>
+        <div className={loadCls}>{renderLoad()}</div>
+      </div>
+    </div>
+  )
+})
+
+Pull.defaultProps = {
+  prefixCls: 'za-pull',
+  refresh: {
+    state: REFRESH_STATE.normal,
+    startDistance: 30,
+    distance: 30,
+  },
+  load: {
+    state: LOAD_STATE.normal,
+    distance: 0,
+  },
+  animationDuration: 400,
+  stayTime: 1000,
+};
+
+export default Pull;
