@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback, useLayoutEffect, ReactNode, CSSProperties } from 'react';
+import React, { useState, useEffect, useRef, ReactNode, CSSProperties } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { useDrag } from '@use-gesture/react';
 import {
@@ -8,18 +8,16 @@ import {
 import throttle from 'lodash/throttle';
 import Events from '../utils/events';
 import { ConfigContext } from '../n-config-provider';
-import { REFRESH_STATE, LOAD_STATE, PullAction, PropsType } from './PropsType';
+import { REFRESH_STATE, LOAD_STATE, PullAction, PropsType } from './interface';
 import { getScrollParent, getScrollTop } from '../utils/dom';
 import ActivityIndicator from '../activity-indicator';
 import { useEventCallback } from '../utils/hooks';
+import type { HTMLProps } from '../utils/utilityTypes';
 
 
-interface PullProps extends PropsType {
-  prefixCls?: string;
-  className?: string;
-}
+interface PullProps extends PropsType, HTMLProps {}
 
-const Pull = React.forwardRef<unknown, PullProps>((props, ref) => {
+const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
   const pullRef = (ref as any) || React.createRef<HTMLDivElement>();
   const wrap = useRef<HTMLElement | Window>(window);
 
@@ -178,7 +176,7 @@ const Pull = React.forwardRef<unknown, PullProps>((props, ref) => {
         break;
 
       default:
-        doTransition({ offsetY: 0, animationDuration });
+        doTransition({ offsetY: 0, animationDuration: props.animationDuration! });
     }
   };
 
@@ -422,7 +420,6 @@ const Pull = React.forwardRef<unknown, PullProps>((props, ref) => {
 })
 
 Pull.defaultProps = {
-  prefixCls: 'za-pull',
   refresh: {
     state: REFRESH_STATE.normal,
     startDistance: 30,
