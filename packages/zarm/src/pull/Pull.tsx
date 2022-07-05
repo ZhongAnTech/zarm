@@ -31,8 +31,7 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
   const scrollContainer = useRef<HTMLElement | Window>(window)
   
   const wrapTouchstartY = useRef(0);
-
-  const { prefixCls } = React.useContext(ConfigContext);
+  const { prefixCls, locale } = React.useContext(ConfigContext);
   const bem = createBEM('pull', { prefixCls });
 
   const onScroll = useEventCallback((): void => {
@@ -295,7 +294,6 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
       return render(refreshState, percent);
     }
 
-    const { locale } = props;
     const refreshCls = bem('control');
 
     switch (refreshState) {
@@ -303,7 +301,7 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
         return (
           <div className={refreshCls}>
             <ActivityIndicator loading={false} percent={percent} />
-            <span>{locale!.pullText}</span>
+            <span>{locale!.Pull!.pullText}</span>
           </div>
         );
 
@@ -311,7 +309,7 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
         return (
           <div className={refreshCls}>
             <ActivityIndicator loading={false} percent={100} />
-            <span>{locale!.dropText}</span>
+            <span>{locale!.Pull!.dropText}</span>
           </div>
         );
 
@@ -319,7 +317,7 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
         return (
           <div className={refreshCls}>
             <ActivityIndicator type="spinner" />
-            <span>{locale!.loadingText}</span>
+            <span>{locale!.Pull!.loadingText}</span>
           </div>
         );
 
@@ -327,7 +325,7 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
         return (
           <div className={refreshCls}>
             <SuccessCircleIcon theme="success" />
-            <span>{locale!.successText}</span>
+            <span>{locale!.Pull!.successText}</span>
           </div>
         );
 
@@ -335,7 +333,7 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
         return (
           <div className={refreshCls}>
             <WarningCircleIcon theme="danger" />
-            <span>{locale!.failureText}</span>
+            <span>{locale!.Pull!.failureText}</span>
           </div>
         );
 
@@ -354,7 +352,6 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
       return render(loadState);
     }
 
-    const { locale } = props;
     const loadCls = bem('control');
 
     switch (loadState) {
@@ -362,7 +359,7 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
         return (
           <div className={loadCls}>
             <ActivityIndicator type="spinner" />
-            <span>{locale!.loadingText}</span>
+            <span>{locale!.Pull!.loadingText}</span>
           </div>
         );
 
@@ -370,14 +367,14 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
         return (
           <div className={loadCls}>
             <WarningCircleIcon theme="danger" />
-            <span>{locale!.failureText}</span>
+            <span>{locale!.Pull!.failureText}</span>
           </div>
         );
 
       case LOAD_STATE.complete:
         return (
           <div className={loadCls}>
-            <span>{locale!.completeText}</span>
+            <span>{locale!.Pull!.completeText}</span>
           </div>
         );
 
