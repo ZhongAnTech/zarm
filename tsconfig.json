@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./packages",
+    "target": "ES2019",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true
+  }
+}

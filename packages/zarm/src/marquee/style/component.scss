@@ -1,0 +1,12 @@
+@include b(marquee) {
+  width: 100%;
+  overflow: hidden;
+
+  @include e(body) {
+    white-space: nowrap;
+  }
+
+  @include e(content) {
+    display: inline-block;
+  }
+}

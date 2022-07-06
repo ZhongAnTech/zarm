@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Message closable 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      可关闭
+    </react-native-mock>
+  </react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      <react-native-mock>
+        <react-native-mock />
+        <react-native-mock />
+      </react-native-mock>
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Message onClick 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      <react-native-mock>
+        Message
+      </react-native-mock>
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Message renders correctly 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      This is a Message
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Message theme 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      This is a Message
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;

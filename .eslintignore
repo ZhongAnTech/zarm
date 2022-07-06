@@ -1,0 +1,6 @@
+packages/*/assets/
+packages/*/coverage/
+packages/*/dist/
+packages/*/es/
+packages/*/lib/
+packages/*/types/

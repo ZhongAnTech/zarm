@@ -1,0 +1,28 @@
+
+@keyframes za-zoom-enter {
+  from {
+    transform: scale3d(.3, .3, .3);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.za-zoom-enter {
+  animation: za-zoom-enter both cubic-bezier(0.4, 0, 0, 1.5);
+}
+
+@keyframes za-zoom-leave {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  to {
+    transform: scale3d(.3, .3, .3);
+  }
+}
+
+.za-zoom-leave {
+  animation: za-zoom-leave both;
+}

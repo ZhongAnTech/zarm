@@ -1,0 +1,28 @@
+name: Deploy website
+on:
+  release:
+    types: [published]
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@master
+
+    - name: install
+      run: yarn
+
+    - name: build
+      run: yarn deploy:build
+
+    - name: deploy
+      uses: peaceiris/actions-gh-pages@v2
+      env:
+        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: ./packages/site/assets
+      with:
+        emptyCommits: false

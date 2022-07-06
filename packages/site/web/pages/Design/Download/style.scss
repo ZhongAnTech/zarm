@@ -1,0 +1,68 @@
+.design-page {
+  .resource-cards {
+    display: flex;
+    margin-top: 28px;
+    flex-flow: wrap;
+    width: 100%;
+  }
+
+  .resource-card {
+    position: relative;
+    display: flex;
+    width: 40%;
+    min-width: 400px;
+    max-width: 500px;
+    margin: 0 24px 24px 0;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+    transition: all .3s ease;
+
+    &:hover {
+      box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    &-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40%;
+      padding: 12px 24px;
+      // height: 116px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    &-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 12px 24px 12px 0;
+    }
+
+    &-title {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 20px;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    &-description {
+      font-size: 14px;
+      color: #999;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .design-page {
+    .resource-card {
+      width: 100%;
+      min-width: unset;
+      margin-right: 0;
+    }
+  }
+}

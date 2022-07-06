@@ -1,0 +1,34 @@
+@include b(date-picker) {
+  @include e(header) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: var(--picker-header-height);
+    line-height: var(--picker-header-height);
+    font-size: var(--picker-header-font-size);
+    background: var(--picker-header-background);
+    @include onepx(top);
+  }
+
+  @include e(cancel, submit) {
+    flex: 1;
+    padding: 0 r(20);
+    cursor: pointer;
+  }
+
+  @include e(cancel) {
+    text-align: left;
+    color: var(--color-text-caption);
+  }
+
+  @include e(submit) {
+    text-align: right;
+    color: var(--theme-primary);
+  }
+
+  @include e(title) {
+    color: var(--color-text);
+  }
+}

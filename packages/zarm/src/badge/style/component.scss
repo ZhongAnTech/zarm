@@ -1,0 +1,91 @@
+@import 'mixins';
+
+@include b(badge) {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  @include badge-theme(var(--theme-danger));
+
+  @include e(content) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: auto;
+    color: var(--badge-text-color);
+    font-size: var(--badge-font-size);
+    height: var(--badge-height);
+    padding: 0 var(--badge-padding-h);
+    white-space: nowrap;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @include m(primary) {
+    @include badge-theme(var(--theme-primary));
+  }
+
+  @include m(success) {
+    @include badge-theme(var(--theme-success));
+  }
+
+  @include m(warning) {
+    @include badge-theme(var(--theme-warning));
+  }
+
+  @include m(danger) {
+    @include badge-theme(var(--theme-danger));
+  }
+
+  @include m(dot) {
+    @include e(content) {
+      width: var(--badge-dot-diameter);
+      height: var(--badge-dot-diameter);
+      padding: 0;
+      border-radius: var(--radius-circle);
+    }
+  }
+
+  @include m(radius) {
+    @include e(content) {
+      border-radius: var(--badge-border-radius-rect);
+    }
+  }
+
+  @include m(round) {
+    @include e(content) {
+      min-width: var(--badge-height);
+      border-radius: var(--badge-border-radius-round);
+    }
+  }
+
+  @include m(circle) {
+    @include e(content) {
+      width: var(--badge-height);
+      border-radius: var(--radius-circle);
+      padding: 0;
+    }
+  }
+
+  @include m(leaf) {
+    @include e(content) {
+      min-width: var(--badge-height);
+      border-radius: var(--badge-border-radius-round) var(--badge-border-radius-round) var(--badge-border-radius-round) 0;
+    }
+  }
+
+  @include m(sup) {
+    @include e(content) {
+      position: absolute;
+      top: 0;
+      left: 100%;
+      transform: translateX(calc(var(--badge-height) / -2)) translateY(var(--badge-sup-top));
+    }
+
+    @include m(dot) {
+      @include e(content) {
+        transform: translateX(calc(var(--badge-dot-diameter) / -2)) translateY(-50%);
+      }
+    }
+  }
+}

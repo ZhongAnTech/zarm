@@ -1,0 +1,37 @@
+@keyframes za-flip-enter {
+  from {
+    transform: perspective(400px) rotate3d(1, 0, 0, 60deg);
+  }
+
+  70% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -15deg);
+  }
+
+  to {
+    transform: perspective(400px);
+  }
+}
+
+.za-flip-enter {
+  animation: za-flip-enter both ease-in;
+  backface-visibility: visible !important;
+}
+
+@keyframes za-flip-leave {
+  from {
+    transform: perspective(400px);
+  }
+
+  30% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -15deg);
+  }
+
+  to {
+    transform: perspective(400px) rotate3d(1, 0, 0, 45deg);
+  }
+}
+
+.za-flip-leave {
+  animation: za-flip-leave both;
+  backface-visibility: visible !important;
+}

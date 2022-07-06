@@ -1,0 +1,35 @@
+@keyframes za-scaleDown-enter {
+  from {
+    opacity: 0;
+    transform-origin: 0 0;
+    transform: scaleY(.8);
+  }
+
+  to {
+    opacity: 1;
+    transform-origin: 0 0;
+    transform: scaleY(1);
+  }
+}
+
+.za-scaleDown-enter {
+  animation: za-scaleDown-enter both;
+}
+
+@keyframes za-scaleDown-leave {
+  from {
+    opacity: 1;
+    transform-origin: 0 0;
+    transform: scaleY(1);
+  }
+
+  to {
+    opacity: 0;
+    transform-origin: 0 0;
+    transform: scaleY(.8);
+  }
+}
+
+.za-scaleDown-leave {
+  animation: za-scaleDown-leave both;
+}

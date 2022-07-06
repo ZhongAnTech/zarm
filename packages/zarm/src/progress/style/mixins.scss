@@ -1,0 +1,28 @@
+$themeMap: (
+  primary: var(--theme-primary),
+  success: var(--theme-success),
+  warning: var(--theme-warning),
+  danger: var(--theme-danger),
+);
+
+@mixin progress-theme($attr) {
+  @each $key, $value in $themeMap {
+    @include m($key) {
+      @include e(thumb) {
+        #{$attr}: $value;
+      }
+    }
+  }
+}
+
+@mixin progress-type() {
+  @include e(track) {
+    stroke: var(--progress-background);
+    fill-opacity: 0;
+  }
+
+  @include e(thumb) {
+    fill-opacity: 0;
+    transition: stroke-dashoffset .6s ease, stroke .6s ease;
+  }
+}

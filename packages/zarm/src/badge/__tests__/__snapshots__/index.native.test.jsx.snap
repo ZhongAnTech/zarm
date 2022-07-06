@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Badge renders dot display in the upper right corner 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock />
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Badge renders shape is circle correctly 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock />
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Badge renders shape is dot correctly 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock />
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Badge renders shape is dot correctly 2`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock />
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Badge renders shape is leaf correctly 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock />
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Badge renders shape is radius correctly 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock />
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Badge renders shape is rectangle correctly 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock />
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Badge renders shape is round correctly 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock />
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Badge text  1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      999+
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Badge theme 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock />
+  </react-native-mock>
+</react-native-mock>
+`;

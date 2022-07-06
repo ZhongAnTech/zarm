@@ -1,0 +1,7 @@
+@mixin icon-size($font-size) {
+  font-size: $font-size;
+}
+
+@mixin icon-theme($color) {
+  color: $color;
+}

@@ -1,0 +1,43 @@
+@import 'mixins';
+
+@include b(icon) {
+  display: inline-block;
+  color: inherit;
+  font-style: normal;
+  line-height: 0;
+  text-align: center;
+  text-transform: none;
+  vertical-align: -0.125em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &[type=search] {
+    -webkit-appearance: initial !important;
+  }
+
+  /* icon themes */
+  @include m(primary) {
+    @include icon-theme(var(--theme-primary));
+  }
+  @include m(success) {
+    @include icon-theme(var(--theme-success));
+  }
+  @include m(warning) {
+    @include icon-theme(var(--theme-warning));
+  }
+  @include m(danger) {
+    @include icon-theme(var(--theme-danger));
+  }
+
+  /* icon sizes */
+  @include m(sm) {
+    @include icon-size(var(--icon-font-size-sm));
+  }
+  @include m(md) {
+    @include icon-size(var(--icon-font-size-md));
+  }
+  @include m(lg) {
+    @include icon-size(var(--icon-font-size-lg));
+  }
+}

@@ -1,0 +1,297 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button block 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      foo
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Button children is valid element 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      foo
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Button circle size 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      foo
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Button disabled 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      foo
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Button ghost 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      foo
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Button ghost active 1`] = `
+<TouchableOpacity
+  activeOpacity={1}
+  block={false}
+  disabled={false}
+  onPressIn={[Function]}
+  onPressOut={[Function]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "height": 44,
+        "justifyContent": "center",
+        "paddingLeft": 16,
+        "paddingRight": 16,
+      },
+      Object {
+        "height": 44,
+        "paddingLeft": 16,
+        "paddingRight": 16,
+      },
+      Object {
+        "backgroundColor": "#fff",
+        "borderColor": "#e6e6e6",
+        "borderWidth": 1,
+      },
+      Object {
+        "borderRadius": 4,
+      },
+      Object {
+        "backgroundColor": "#e6e6e6",
+        "borderColor": "#e6e6e6",
+      },
+      Object {
+        "backgroundColor": "transparent",
+        "borderWidth": 1,
+      },
+      Object {
+        "backgroundColor": "transparent",
+        "borderColor": "#fff",
+      },
+      Object {
+        "backgroundColor": "transparent",
+        "borderColor": "#e6e6e6",
+      },
+      false,
+      false,
+      false,
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "fontSize": 16,
+          },
+          Object {
+            "fontSize": 16,
+          },
+          Object {
+            "color": "#464646",
+          },
+          Object {
+            "color": "#464646",
+          },
+          false,
+          Object {
+            "color": "#fff",
+          },
+          Object {
+            "color": "#e6e6e6",
+          },
+          false,
+        ]
+      }
+    >
+      foo
+    </Text>
+  </View>
+</TouchableOpacity>
+`;
+
+exports[`Button ghost disabled 1`] = `
+<TouchableOpacity
+  activeOpacity={1}
+  block={false}
+  disabled={true}
+  onPressIn={[Function]}
+  onPressOut={[Function]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "height": 44,
+        "justifyContent": "center",
+        "paddingLeft": 16,
+        "paddingRight": 16,
+      },
+      Object {
+        "height": 44,
+        "paddingLeft": 16,
+        "paddingRight": 16,
+      },
+      Object {
+        "backgroundColor": "#fff",
+        "borderColor": "#e6e6e6",
+        "borderWidth": 1,
+      },
+      Object {
+        "borderRadius": 4,
+      },
+      false,
+      Object {
+        "backgroundColor": "transparent",
+        "borderWidth": 1,
+      },
+      Object {
+        "backgroundColor": "transparent",
+        "borderColor": "#fff",
+      },
+      false,
+      Object {
+        "opacity": 0.5,
+      },
+      Object {
+        "borderColor": "#bcbcbc",
+        "opacity": 1,
+      },
+      false,
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "fontSize": 16,
+          },
+          Object {
+            "fontSize": 16,
+          },
+          Object {
+            "color": "#464646",
+          },
+          false,
+          Object {
+            "color": "#bcbcbc",
+          },
+          Object {
+            "color": "#fff",
+          },
+          false,
+          Object {
+            "color": "#bcbcbc",
+          },
+        ]
+      }
+    >
+      foo
+    </Text>
+  </View>
+</TouchableOpacity>
+`;
+
+exports[`Button icon 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <img
+      alt=""
+      src="https://zarm.design/images/logo.ce68565d.svg"
+    />
+    <react-native-mock>
+      foo
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Button loading 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock />
+    <react-native-mock>
+      foo
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Button renders correctly 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      foo
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Button shape is radius 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      foo
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Button size 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      foo
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Button theme 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      foo
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;

@@ -1,0 +1,5 @@
+@mixin arrow() {
+  @include b(tooltip__arrow) {
+    @content;
+  }
+}

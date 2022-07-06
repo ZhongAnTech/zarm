@@ -1,0 +1,21 @@
+_book
+.DS_Store
+.idea
+.vscode
+.history
+.prettierrc.yaml
+*.log
+*.iml
+package-lock.json
+/node_modules/
+/packages/*/node_modules/
+
+# bundle files
+/packages/*/dist/
+/packages/*/es/
+/packages/*/lib/
+/packages/*/native/
+/packages/*/types/
+
+# test coverage
+/packages/*/coverage/

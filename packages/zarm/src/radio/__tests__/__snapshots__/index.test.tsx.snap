@@ -1,0 +1,335 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Radio defaultChecked 1`] = `
+<span
+  class="za-radio za-radio--checked"
+>
+  <span
+    class="za-radio__widget"
+  >
+    <span
+      class="za-radio__inner"
+    />
+  </span>
+  <span
+    class="za-radio__text"
+  >
+    选项一
+  </span>
+  <input
+    checked=""
+    class="za-radio__input"
+    type="radio"
+    value="0"
+  />
+</span>
+`;
+
+exports[`Radio renders correctly 1`] = `
+<span
+  class="za-radio"
+>
+  <span
+    class="za-radio__widget"
+  >
+    <span
+      class="za-radio__inner"
+    />
+  </span>
+  <span
+    class="za-radio__text"
+  >
+    选项一
+  </span>
+  <input
+    class="za-radio__input"
+    type="radio"
+    value="0"
+  />
+</span>
+`;
+
+exports[`Radio type is button 1`] = `
+<button
+  class="za-radio"
+  type="button"
+>
+  选项一
+  <input
+    class="za-radio__input"
+    type="radio"
+    value="0"
+  />
+</button>
+`;
+
+exports[`Radio type is cell 1`] = `
+<div
+  class="za-cell za-cell--link"
+>
+  <div
+    class="za-cell__inner"
+  >
+    <div
+      class="za-cell__header"
+    />
+    <div
+      class="za-cell__body"
+    >
+      <div
+        class="za-cell__content"
+      >
+        <span
+          class="za-radio"
+        >
+          <span
+            class="za-radio__widget"
+          >
+            <span
+              class="za-radio__inner"
+            />
+          </span>
+          <span
+            class="za-radio__text"
+          >
+            选项一
+          </span>
+          <input
+            class="za-radio__input"
+            type="radio"
+            value="0"
+          />
+        </span>
+      </div>
+    </div>
+    <div
+      class="za-cell__footer"
+    />
+  </div>
+</div>
+`;
+
+exports[`Radio.Group Radio checked 1`] = `
+<div
+  class="za-radio-group za-radio-group--xs za-radio-group--radius"
+>
+  <div
+    class="za-radio-group__inner"
+  >
+    <span
+      class="za-radio"
+    >
+      <span
+        class="za-radio__widget"
+      >
+        <span
+          class="za-radio__inner"
+        />
+      </span>
+      <span
+        class="za-radio__text"
+      >
+        选项一
+      </span>
+      <input
+        class="za-radio__input"
+        type="radio"
+        value="0"
+      />
+    </span>
+    <span
+      class="za-radio za-radio--checked"
+    >
+      <span
+        class="za-radio__widget"
+      >
+        <span
+          class="za-radio__inner"
+        />
+      </span>
+      <span
+        class="za-radio__text"
+      >
+        选项二
+      </span>
+      <input
+        checked=""
+        class="za-radio__input"
+        type="radio"
+        value="1"
+      />
+    </span>
+    <span
+      class="za-radio"
+    >
+      <span
+        class="za-radio__widget"
+      >
+        <span
+          class="za-radio__inner"
+        />
+      </span>
+      <span
+        class="za-radio__text"
+      >
+        选项三
+      </span>
+      <input
+        class="za-radio__input"
+        type="radio"
+        value="2"
+      />
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Radio.Group defaultValue 1`] = `
+<div
+  class="za-radio-group za-radio-group--xs za-radio-group--radius"
+>
+  <div
+    class="za-radio-group__inner"
+  >
+    <span
+      class="za-radio"
+    >
+      <span
+        class="za-radio__widget"
+      >
+        <span
+          class="za-radio__inner"
+        />
+      </span>
+      <span
+        class="za-radio__text"
+      >
+        选项一
+      </span>
+      <input
+        class="za-radio__input"
+        type="radio"
+        value="0"
+      />
+    </span>
+    <span
+      class="za-radio za-radio--checked"
+    >
+      <span
+        class="za-radio__widget"
+      >
+        <span
+          class="za-radio__inner"
+        />
+      </span>
+      <span
+        class="za-radio__text"
+      >
+        选项二
+      </span>
+      <input
+        checked=""
+        class="za-radio__input"
+        type="radio"
+        value="1"
+      />
+    </span>
+    <span
+      class="za-radio"
+    >
+      <span
+        class="za-radio__widget"
+      >
+        <span
+          class="za-radio__inner"
+        />
+      </span>
+      <span
+        class="za-radio__text"
+      >
+        选项三
+      </span>
+      <input
+        class="za-radio__input"
+        type="radio"
+        value="2"
+      />
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Radio.Group renders correctly 1`] = `
+<div
+  class="za-radio-group za-radio-group--xs za-radio-group--radius"
+>
+  <div
+    class="za-radio-group__inner"
+  >
+    <span
+      class="za-radio za-radio--checked"
+    >
+      <span
+        class="za-radio__widget"
+      >
+        <span
+          class="za-radio__inner"
+        />
+      </span>
+      <span
+        class="za-radio__text"
+      >
+        选项一
+      </span>
+      <input
+        checked=""
+        class="za-radio__input"
+        type="radio"
+        value="0"
+      />
+    </span>
+    <span
+      class="za-radio"
+    >
+      <span
+        class="za-radio__widget"
+      >
+        <span
+          class="za-radio__inner"
+        />
+      </span>
+      <span
+        class="za-radio__text"
+      >
+        选项二
+      </span>
+      <input
+        class="za-radio__input"
+        type="radio"
+        value="1"
+      />
+    </span>
+    <span
+      class="za-radio"
+    >
+      <span
+        class="za-radio__widget"
+      >
+        <span
+          class="za-radio__inner"
+        />
+      </span>
+      <span
+        class="za-radio__text"
+      >
+        选项三
+      </span>
+      <input
+        class="za-radio__input"
+        type="radio"
+        value="2"
+      />
+    </span>
+  </div>
+</div>
+`;

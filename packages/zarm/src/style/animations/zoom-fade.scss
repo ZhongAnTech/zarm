@@ -1,0 +1,30 @@
+@keyframes za-zoom-fade-enter {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes za-zoom-fade-leave {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+
+.za-zoomFade-enter {
+  animation: za-zoom-fade-enter both cubic-bezier(0.08, 0.82, 0.17, 1);
+}
+
+.za-zoomFade-leave {
+  animation: za-zoom-fade-leave both cubic-bezier(0.78, 0.14, 0.15, 0.86);
+}

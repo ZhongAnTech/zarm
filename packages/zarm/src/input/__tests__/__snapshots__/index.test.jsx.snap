@@ -1,0 +1,429 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input renders correctly 1`] = `
+<div
+  class="za-input"
+>
+  <input
+    autocomplete="off"
+    type="text"
+  />
+</div>
+`;
+
+exports[`Input renders correctly if type isn't valid 1`] = `
+<div
+  class="za-input"
+>
+  <input
+    autocomplete="off"
+    type="xxx"
+  />
+</div>
+`;
+
+exports[`Input renders correctly if type=text and props includes rows 1`] = `
+<div
+  class="za-input za-input--textarea"
+>
+  <textarea
+    rows="1"
+  />
+</div>
+`;
+
+exports[`Input renders onClear called correctly 1`] = `
+<Input
+  clearable={true}
+  onChange={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "My new value",
+        ],
+        Array [
+          "",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  onClear={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  type="text"
+  value=""
+>
+  <InputBase
+    clearable={true}
+    disabled={false}
+    onChange={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            "My new value",
+          ],
+          Array [
+            "",
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      }
+    }
+    onClear={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            "",
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      }
+    }
+    prefixCls="za-input"
+    readOnly={false}
+    type="text"
+    value=""
+  >
+    <div
+      className="za-input za-input--clearable"
+    >
+      <input
+        autoComplete="off"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onCompositionEnd={[Function]}
+        onCompositionStart={[Function]}
+        onCompositionUpdate={[Function]}
+        onFocus={[Function]}
+        type="text"
+        value=""
+      />
+      <ForwardRef(SvgCloseCircleFill)
+        className="za-input__clear"
+        onClick={[Function]}
+      >
+        <Icon
+          className="za-input__clear"
+          component={[Function]}
+          onClick={[Function]}
+          prefixCls="za-icon"
+          size="md"
+          theme="default"
+          viewBox="0 0 32 32"
+        >
+          <i
+            className="za-icon za-input__clear za-icon--default za-icon--md"
+            onClick={[Function]}
+            size="md"
+            theme="default"
+          >
+            <component
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 32 32"
+              width="1em"
+            >
+              <svg
+                aria-hidden="true"
+                fill="currentColor"
+                focusable={false}
+                height="1em"
+                viewBox="0 0 1000 1000"
+                width="1em"
+              >
+                <path
+                  d="M500 0C224.32 0 0 224.286 0 500s224.286 500 500 500c275.68 0 500-224.286 500-500S775.714 0 500 0zm203.965 654c13.928 14 13.892 36.572-.072 50.5a35.644 35.644 0 01-25.213 10.429c-9.179 0-18.321-3.5-25.287-10.5L499.821 550.393l-154.07 152.43c-6.964 6.857-16.037 10.32-25.109 10.32-9.213 0-18.392-3.536-25.392-10.607-13.857-14.036-13.75-36.608.286-50.5L449.43 499.821 296.107 346c-13.93-13.965-13.893-36.572.07-50.5 13.966-13.965 36.536-13.892 50.5.07l153.536 154 154.071-152.427c14-13.892 36.643-13.75 50.5.286 13.892 14.036 13.75 36.643-.286 50.5l-153.89 152.213L703.965 654z"
+                  fillRule="nonzero"
+                />
+              </svg>
+            </component>
+          </i>
+        </Icon>
+      </ForwardRef(SvgCloseCircleFill)>
+    </div>
+  </InputBase>
+</Input>
+`;
+
+exports[`Input showLength 1`] = `
+<div
+  class="za-input za-input--textarea"
+>
+  <textarea
+    maxlength="100"
+    rows="4"
+  />
+  <div
+    class="za-input__length"
+  >
+    0/100
+  </div>
+</div>
+`;
+
+exports[`Input.Idcard renders correctly 1`] = `
+<Input
+  type="idcard"
+>
+  <InputNumber
+    clearable={true}
+    disabled={false}
+    prefixCls="za-input"
+    type="idcard"
+  >
+    <div
+      className="za-input za-input--idcard"
+      onClick={[Function]}
+    >
+      <div
+        className="za-input__content"
+      >
+        <div
+          className="za-input__placeholder"
+        />
+        <div
+          className="za-input__virtual-input"
+        />
+        <input
+          disabled={false}
+          type="hidden"
+          value=""
+        />
+        <KeyboardPicker
+          destroy={true}
+          onKeyClick={[Function]}
+          prefixCls="za-keyboard-picker"
+          type="idcard"
+          visible={false}
+        >
+          <ForwardRef(ForwardedRefComp)
+            destroy={true}
+            mask={false}
+            visible={false}
+          >
+            <WarnIfDeprecatedComp
+              destroy={true}
+              forwardedRef={null}
+              mask={false}
+              visible={false}
+            >
+              <Popup
+                destroy={true}
+                mask={false}
+                prefixCls="za-popup"
+                visible={false}
+              />
+            </WarnIfDeprecatedComp>
+          </ForwardRef(ForwardedRefComp)>
+        </KeyboardPicker>
+      </div>
+    </div>
+  </InputNumber>
+</Input>
+`;
+
+exports[`Input.Number renders correctly 1`] = `
+<Input
+  type="number"
+>
+  <InputNumber
+    clearable={true}
+    disabled={false}
+    prefixCls="za-input"
+    type="number"
+  >
+    <div
+      className="za-input za-input--number"
+      onClick={[Function]}
+    >
+      <div
+        className="za-input__content"
+      >
+        <div
+          className="za-input__placeholder"
+        />
+        <div
+          className="za-input__virtual-input"
+        />
+        <input
+          disabled={false}
+          type="hidden"
+          value=""
+        />
+        <KeyboardPicker
+          destroy={true}
+          onKeyClick={[Function]}
+          prefixCls="za-keyboard-picker"
+          type="number"
+          visible={false}
+        >
+          <ForwardRef(ForwardedRefComp)
+            destroy={true}
+            mask={false}
+            visible={false}
+          >
+            <WarnIfDeprecatedComp
+              destroy={true}
+              forwardedRef={null}
+              mask={false}
+              visible={false}
+            >
+              <Popup
+                destroy={true}
+                mask={false}
+                prefixCls="za-popup"
+                visible={false}
+              />
+            </WarnIfDeprecatedComp>
+          </ForwardRef(ForwardedRefComp)>
+        </KeyboardPicker>
+      </div>
+    </div>
+  </InputNumber>
+</Input>
+`;
+
+exports[`Input.Price renders correctly 1`] = `
+<Input
+  type="price"
+>
+  <InputNumber
+    clearable={true}
+    disabled={false}
+    prefixCls="za-input"
+    type="price"
+  >
+    <div
+      className="za-input za-input--price"
+      onClick={[Function]}
+    >
+      <div
+        className="za-input__content"
+      >
+        <div
+          className="za-input__placeholder"
+        />
+        <div
+          className="za-input__virtual-input"
+        />
+        <input
+          disabled={false}
+          type="hidden"
+          value=""
+        />
+        <KeyboardPicker
+          destroy={true}
+          onKeyClick={[Function]}
+          prefixCls="za-keyboard-picker"
+          type="price"
+          visible={false}
+        >
+          <ForwardRef(ForwardedRefComp)
+            destroy={true}
+            mask={false}
+            visible={false}
+          >
+            <WarnIfDeprecatedComp
+              destroy={true}
+              forwardedRef={null}
+              mask={false}
+              visible={false}
+            >
+              <Popup
+                destroy={true}
+                mask={false}
+                prefixCls="za-popup"
+                visible={false}
+              />
+            </WarnIfDeprecatedComp>
+          </ForwardRef(ForwardedRefComp)>
+        </KeyboardPicker>
+      </div>
+    </div>
+  </InputNumber>
+</Input>
+`;
+
+exports[`Input.Textarea autoHeight 1`] = `
+<Input
+  autoHeight={true}
+  onChange={[MockFunction]}
+  rows={4}
+  type="text"
+  value="foo"
+>
+  <InputTextarea
+    autoHeight={true}
+    disabled={false}
+    focused={false}
+    onChange={[MockFunction]}
+    prefixCls="za-input"
+    rows={4}
+    showLength={false}
+    value="foo"
+  >
+    <div
+      className="za-input za-input--textarea"
+    >
+      <textarea
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onCompositionEnd={[Function]}
+        onCompositionStart={[Function]}
+        onCompositionUpdate={[Function]}
+        onFocus={[Function]}
+        rows={4}
+        value="foo"
+      />
+    </div>
+  </InputTextarea>
+</Input>
+`;
+
+exports[`Input.Textarea renders correctly 1`] = `
+<div
+  class="za-input za-input--textarea"
+>
+  <textarea
+    rows="4"
+  />
+</div>
+`;

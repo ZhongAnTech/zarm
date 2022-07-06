@@ -1,0 +1,31 @@
+@keyframes za-door-enter {
+  from {
+    transform: scale3d(0, 1, 1);
+  }
+
+  to {
+    transform: scale3d(1, 1, .1);
+  }
+}
+
+.za-door-enter {
+  animation: za-door-enter both cubic-bezier(0.4, 0, 0, 0);
+}
+
+@keyframes za-door-leave {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  60% {
+    transform: scale3d(.01, 1, 1);
+  }
+
+  to {
+    transform: scale3d(0, 1, .1);
+  }
+}
+
+.za-door-leave {
+  animation: za-door-leave both;
+}
