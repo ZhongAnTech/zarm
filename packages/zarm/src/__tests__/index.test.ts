@@ -14,7 +14,7 @@ describe('index', () => {
             "visible": false,
           },
           "render": [Function],
-          "useActionSheet": [Function],
+          "show": [Function],
         },
         "ActivityIndicator": Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -34,12 +34,11 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "BackToTop": [Function],
+        "BackTop": [Function],
         "Badge": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
             "shape": "dot",
-            "theme": "danger",
           },
           "render": [Function],
         },
@@ -60,6 +59,13 @@ describe('index', () => {
         },
         "Calendar": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "dateRender": [Function],
+            "direction": "vertical",
+            "disabledDate": [Function],
+            "header": false,
+            "mode": "single",
+          },
           "render": [Function],
         },
         "Carousel": Object {
@@ -90,6 +96,7 @@ describe('index', () => {
               "buttonShape": "radius",
               "buttonSize": "xs",
               "disabled": false,
+              "listMarkerAlign": "before",
             },
             "render": [Function],
           },
@@ -140,11 +147,35 @@ describe('index', () => {
           "render": [Function],
         },
         "Drag": [Function],
-        "FilePicker": [Function],
-        "Icon": [Function],
+        "FilePicker": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "disabled": false,
+            "multiple": false,
+            "onBeforeSelect": [Function],
+          },
+          "render": [Function],
+        },
+        "Grid": [Function],
+        "Icon": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "createFromIconfont": [Function],
+          "defaultProps": Object {
+            "viewBox": "0 0 1000 1000",
+          },
+          "render": [Function],
+        },
         "ImagePreview": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "activeIndex": 0,
+            "maxScale": 3,
+            "minScale": 1,
+            "showPagination": true,
+            "visible": false,
+          },
           "render": [Function],
+          "show": [Function],
         },
         "Input": Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -195,7 +226,15 @@ describe('index', () => {
           "render": [Function],
           "useLoading": [Function],
         },
-        "Marquee": [Function],
+        "Marquee": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "delay": 0,
+            "direction": "left",
+            "speed": 30,
+          },
+          "render": [Function],
+        },
         "Mask": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
@@ -213,7 +252,25 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "Modal": [Function],
+        "Modal": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "alert": [Function],
+          "confirm": [Function],
+          "defaultProps": Object {
+            "actions": Array [],
+            "animationDuration": 200,
+            "animationType": "fade",
+            "closable": false,
+            "destroy": true,
+            "mask": true,
+            "maskClosable": false,
+            "maskType": "normal",
+            "shape": "radius",
+            "visible": false,
+            "width": "70%",
+          },
+          "render": [Function],
+        },
         "NConfigProvider": [Function],
         "NavBar": Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -255,6 +312,11 @@ describe('index', () => {
         "Popper": [Function],
         "Popup": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "destroy": true,
+            "lockScroll": true,
+            "visible": false,
+          },
           "render": [Function],
         },
         "Progress": Object {
@@ -293,6 +355,17 @@ describe('index', () => {
           },
           "render": [Function],
         },
+        "Rate": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "allowClear": false,
+            "allowHalf": false,
+            "character": <ForwardRef(SvgStarFill) />,
+            "count": 5,
+            "defaultValue": 0,
+          },
+          "render": [Function],
+        },
         "Scroller": [Function],
         "SearchBar": Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -306,9 +379,30 @@ describe('index', () => {
         },
         "Select": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "cols": Infinity,
+            "dataSource": Array [],
+            "displayRender": [Function],
+            "itemRender": [Function],
+            "maskClosable": true,
+            "onClick": [Function],
+            "valueMember": "value",
+          },
           "render": [Function],
         },
-        "Slider": [Function],
+        "Slider": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "disabled": false,
+            "marks": Object {},
+            "max": 100,
+            "min": 0,
+            "showMark": false,
+            "step": 1,
+            "vertical": false,
+          },
+          "render": [Function],
+        },
         "StackPicker": Object {
           "$$typeof": Symbol(react.forward_ref),
           "render": [Function],
@@ -370,10 +464,13 @@ describe('index', () => {
         },
         "Tooltip": [Function],
         "Trigger": [Function],
+        "WaterMark": [Function],
         "Wheel": [Function],
+        "useClickAway": [Function],
         "useDrag": [Function],
         "useLongPress": [Function],
         "useOrientation": [Function],
+        "useScroll": [Function],
       }
     `);
   });

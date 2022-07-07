@@ -57,6 +57,10 @@ export default ({ location, globalContext, children }) => {
             'const { $1 } = ZarmDesignIcons;',
           )
           .replace(
+            /import\s+([\s\S]*)\s+from\s+'@zarm-design\/icons';/,
+            'const $1 = ZarmDesignIcons;',
+          )
+          .replace(
             /import\s+(.*)\s+from\s+'zarm\/lib\/config-provider\/locale\/(.*)';/g,
             "const $1 = Locale['$2'];",
           )

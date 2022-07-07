@@ -23,10 +23,25 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    touch-action: none;
+
+    @include m(landscape) {
+      overflow: hidden;
+
+      @include e(item) {
+        overflow: hidden;
+
+        img {
+          // height: 100%;
+          width: auto;
+          // height: 100vh;
+        }
+      }
+    }
   }
 
   @include e(item) {
-    text-align: center;
+    // text-align: center;
     position: relative;
     overflow: auto;
 
@@ -56,6 +71,7 @@
     align-items: center;
     justify-content: center;
     padding: 0 var(--padding-v-lg);
+    touch-action: none;
   }
 
   @include e(index) {
@@ -85,15 +101,16 @@
   }
 
   @include e(origin__button) {
-    background: var(--image-preview-origin-button-background);
+    background: var(--za-image-preview-origin-button-background);
     border: none;
     border-radius: var(--radius-xs);
     font-size: var(--font-size-sm);
     display: inline-block;
     color: var(--color-text-inverse);
     padding: 0 var(--padding-h-sm);
-    height: var(--button-height-xs);
-    line-height: var(--button-height-xs);
+    height: var(--za-button-height-xs);
+    line-height: var(--za-button-height-xs);
+    touch-action: none;
   }
 
   @include b(carousel) {

@@ -1,5 +1,6 @@
-import { useEffect, useRef, MutableRefObject } from 'react';
+import { useEffect, MutableRefObject } from 'react';
 import Events from '../utils/events';
+import { useLatest } from '../utils/hooks';
 
 export type BasicTarget<T = HTMLElement> =
   | (() => T | null)
@@ -26,44 +27,39 @@ export function getTargetElement(
   } else {
     targetElement = target;
   }
+
   return targetElement;
 }
 
-// 鼠标点击事件，click 不会监听右键
-const defaultEvent = 'click';
-
 export default function useClickAway(
-  onClickAway?: (event: MouseEvent | TouchEvent) => void,
-  target?: BasicTarget | BasicTarget[],
-  eventName: string = defaultEvent,
+  target: BasicTarget | BasicTarget[],
+  onClickAway?: (event: React.MouseEvent | React.TouchEvent) => void,
+  eventName = 'click',
 ) {
-  const onClickAwayRef = useRef(onClickAway);
-
-  useEffect(() => {
-    onClickAwayRef.current = onClickAway;
-  }, [onClickAway]);
+  const onClickAwayRef = useLatest(onClickAway);
+  const eventNameRef = useLatest(eventName);
+  const targetRef = useLatest(target);
 
   useEffect(() => {
     const handler = (event: any) => {
-      const targets = Array.isArray(target) ? target : [target];
+      const currentTarget = targetRef.current;
+      const targets = Array.isArray(currentTarget) ? currentTarget : [currentTarget];
 
       if (
         targets.some((targetItem) => {
           const targetElement = getTargetElement(targetItem) as HTMLElement;
-          return !targetElement || targetElement.contains(event.target);
+          return !targetElement || (targetElement.contains && targetElement.contains(event.target));
         })
       ) {
         return;
       }
-      onClickAwayRef.current!(event);
+      onClickAwayRef.current?.(event);
     };
 
-    window.setTimeout(() => {
-      Events.on(document, eventName, handler);
-    }, 50);
+    Events.on(document, eventNameRef.current, handler);
 
     return () => {
-      Events.off(document, eventName, handler);
+      Events.off(document, eventNameRef.current, handler);
     };
-  }, [target, eventName]);
+  }, []);
 }

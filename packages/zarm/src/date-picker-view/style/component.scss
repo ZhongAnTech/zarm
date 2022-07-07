@@ -1,33 +1,45 @@
 @include b(date-picker-view) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
-  bottom: 0;
   width: 100%;
-  height: r(210);
-  padding: r(20) 0;
-  background: var(--picker-background);
+  padding: var(--za-picker-padding);
+  background: var(--za-picker-background);
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: calc(100% - var(--za-picker-padding) * 2);
+    height: var(--za-wheel-item-height);
+    left: var(--za-picker-padding);
+    margin-top: calc(var(--za-wheel-item-height) / -2);
+    background-color: var(--za-picker-item-selected-background);
+    border-radius: var(--za-picker-item-selected-border-radius);
+  }
 
   @include e(mask) {
     width: 100%;
-    height: r(88);
+    height: calc((100% - var(--za-wheel-item-height)) / 2);
     pointer-events: none;
     transform: translateZ(0);
 
     @include m(top) {
       position: absolute;
       top: 0;
-      background: linear-gradient(to top, var(--picker-mask-background-start), var(--picker-mask-background-end));
-      @include onepx(bottom);
+      background: linear-gradient(to top, var(--za-picker-mask-background-start), var(--za-picker-mask-background-end));
     }
 
     @include m(bottom) {
       position: absolute;
       bottom: 0;
-      background: linear-gradient(to bottom, var(--picker-mask-background-start), var(--picker-mask-background-end));
-      @include onepx(top);
+      background: linear-gradient(to bottom, var(--za-picker-mask-background-start), var(--za-picker-mask-background-end));
     }
   }
 
   @include e(content) {
+    flex: 1;
     display: flex;
   }
 }

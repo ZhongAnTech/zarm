@@ -12,6 +12,7 @@ import Select from '../../select/locale/en_US';
 import Keyboard from '../../keyboard/locale/en_US';
 import ImagePreview from '../../image-preview/locale/en_US';
 import Image from '../../image/locale/en_US';
+import Calendar from '../../calendar/locale/en_US';
 
 export default {
   locale: 'en-US',
@@ -29,4 +30,5 @@ export default {
   Keyboard,
   ImagePreview,
   Image,
+  Calendar,
 };

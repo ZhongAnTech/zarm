@@ -3,8 +3,9 @@ import Icon from '../icon';
 import type { IconProps } from '../icon';
 
 const SvgWarning = (props: IconProps, svgRef?: React.Ref<SVGSVGElement>) => {
+  const newProps = { ...props, name: 'SvgWarning' };
   return React.createElement(Icon, {
-    ...props,
+    ...newProps,
     component: () => (
       <svg
         width="1em"

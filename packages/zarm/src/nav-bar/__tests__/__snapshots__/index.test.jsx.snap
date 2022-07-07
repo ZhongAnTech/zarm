@@ -24,8 +24,7 @@ exports[`NavBar renders correctly with left content 1`] = `
     class="za-nav-bar__side za-nav-bar__side--left"
   >
     <i
-      class="za-icon za-icon--default za-icon--md"
-      theme="default"
+      class="za-icon"
     >
       <svg
         aria-hidden="true"
@@ -62,8 +61,7 @@ exports[`NavBar renders correctly with multiple icons 1`] = `
   >
     <div>
       <i
-        class="za-icon za-icon--default za-icon--md"
-        theme="default"
+        class="za-icon"
       >
         <svg
           aria-hidden="true"
@@ -91,8 +89,7 @@ exports[`NavBar renders correctly with multiple icons 1`] = `
   >
     <div>
       <i
-        class="za-icon za-icon--default za-icon--md"
-        theme="default"
+        class="za-icon"
       >
         <svg
           aria-hidden="true"
@@ -154,8 +151,7 @@ exports[`NavBar renders correctly with right content 1`] = `
     class="za-nav-bar__side za-nav-bar__side--left"
   >
     <i
-      class="za-icon za-icon--default za-icon--md"
-      theme="default"
+      class="za-icon"
     >
       <svg
         aria-hidden="true"
@@ -181,8 +177,7 @@ exports[`NavBar renders correctly with right content 1`] = `
     class="za-nav-bar__side za-nav-bar__side--right"
   >
     <i
-      class="za-icon za-icon--default za-icon--md"
-      theme="default"
+      class="za-icon"
     >
       <svg
         aria-hidden="true"

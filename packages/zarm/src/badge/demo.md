@@ -18,42 +18,6 @@ ReactDOM.render(
 );
 ```
 
-## 多主题
-
-```jsx
-import { Badge } from 'zarm';
-
-ReactDOM.render(
-  <div className="custom-panel">
-    <div className="box">
-      <Badge theme="primary" />
-    </div>
-    <div className="box">
-      <Badge theme="success" />
-    </div>
-    <div className="box">
-      <Badge theme="warning" />
-    </div>
-    <div className="box">
-      <Badge theme="danger" />
-    </div>
-    <div className="box">
-      <Badge shape="round" text="999+" theme="primary" />
-    </div>
-    <div className="box">
-      <Badge shape="round" text="999+" theme="success" />
-    </div>
-    <div className="box">
-      <Badge shape="round" text="999+" theme="warning" />
-    </div>
-    <div className="box">
-      <Badge shape="round" text="999+" theme="danger" />
-    </div>
-  </div>,
-  mountNode,
-);
-```
-
 ## 上标位置
 
 ```jsx
@@ -96,21 +60,54 @@ ReactDOM.render(
 );
 ```
 
-## 文本示例
+## 带边框
 
 ```jsx
 import { Badge } from 'zarm';
 
 ReactDOM.render(
-  <div className="text-panel">
+  <div className="custom-panel">
     <div className="box">
-      <Badge shape="dot">
-        <span className="box-text">邀请有奖</span>
+      <Badge bordered shape="dot">
+        <div className="box-item" />
       </Badge>
     </div>
     <div className="box">
-      <span className="box-text">邀请有奖</span>
-      <Badge shape="dot" />
+      <Badge bordered shape="rect" text="免费">
+        <div className="box-item" />
+      </Badge>
+    </div>
+  </div>,
+  mountNode,
+);
+```
+
+## 自定义颜色和位置
+
+```jsx
+import { Badge } from 'zarm';
+
+ReactDOM.render(
+  <div className="custom-panel">
+    <div className="box">
+      <Badge style={{ '--color': '#00bc70' }}>
+        <div className="box-item" />
+      </Badge>
+    </div>
+    <div className="box">
+      <Badge style={{ '--color': '#1890ff', '--top': '100%' }}>
+        <div className="box-item" />
+      </Badge>
+    </div>
+    <div className="box">
+      <Badge style={{ '--color': '#fa541b', '--right': '100%' }}>
+        <div className="box-item" />
+      </Badge>
+    </div>
+    <div className="box">
+      <Badge style={{ '--color': '#712fd1', '--top': '100%', '--right': '100%' }}>
+        <div className="box-item" />
+      </Badge>
     </div>
   </div>,
   mountNode,
@@ -119,8 +116,17 @@ ReactDOM.render(
 
 ## API
 
-| 属性  | 类型      | 默认值   | 说明                                                                   |
-| :---- | :-------- | :------- | :--------------------------------------------------------------------- |
-| theme | string    | 'danger' | 设置主题，可选值为 `primary`、`success`、`warning`、`danger`           |
-| shape | string    | 'dot'    | 设置形状，可选值为 `dot`、`rect` 、`radius`、`round`、`circle`、`leaf` |
-| text  | ReactNode | -        | 设置显示的文字                                                         |
+| 属性     | 类型      | 默认值 | 说明                                                                   |
+| :------- | :-------- | :----- | :--------------------------------------------------------------------- |
+| text     | ReactNode | -      | 设置显示的文字                                                         |
+| shape    | string    | 'dot'  | 徽标形状，可选值为 `dot`、`rect` 、`radius`、`round`、`circle`、`leaf` |
+| bordered | boolean   | false  | 是否带边框                                                             |
+
+## CSS 变量
+
+| 属性         | 默认值                   | 说明                                   |
+| :----------- | :----------------------- | :------------------------------------- |
+| --color      | 'var(--za-theme-danger)' | 徽标背景色                             |
+| --text-color | '#fff'                   | 徽标文字颜色                           |
+| --top        | 0                        | 作为角标时，相对于最右边，向左的偏移量 |
+| --right      | 0                        | 作为角标时，相对于最上边，向下的偏移量 |

@@ -75,26 +75,13 @@ exports[`CustomInput.Idcard renders correctly 1`] = `
       type="idcard"
       visible={false}
     >
-      <ForwardRef(forwardRef)
+      <Popup
+        className="za-keyboard-picker"
         destroy={true}
+        lockScroll={true}
         mask={false}
         visible={false}
-      >
-        <ConfigReceiver
-          destroy={true}
-          forwardedRef={null}
-          mask={false}
-          visible={false}
-        >
-          <Popup
-            destroy={true}
-            localeCode="zh-CN"
-            mask={false}
-            safeIphoneX={false}
-            visible={false}
-          />
-        </ConfigReceiver>
-      </ForwardRef(forwardRef)>
+      />
     </KeyboardPicker>
   </div>
 </CustomInput>
@@ -132,26 +119,13 @@ exports[`CustomInput.Price renders correctly 1`] = `
       type="price"
       visible={false}
     >
-      <ForwardRef(forwardRef)
+      <Popup
+        className="za-keyboard-picker"
         destroy={true}
+        lockScroll={true}
         mask={false}
         visible={false}
-      >
-        <ConfigReceiver
-          destroy={true}
-          forwardedRef={null}
-          mask={false}
-          visible={false}
-        >
-          <Popup
-            destroy={true}
-            localeCode="zh-CN"
-            mask={false}
-            safeIphoneX={false}
-            visible={false}
-          />
-        </ConfigReceiver>
-      </ForwardRef(forwardRef)>
+      />
     </KeyboardPicker>
   </div>
 </CustomInput>

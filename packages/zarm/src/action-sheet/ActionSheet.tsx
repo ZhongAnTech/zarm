@@ -1,82 +1,85 @@
 import React, { useContext } from 'react';
-import classnames from 'classnames';
-import PropsType from './interface';
+import { createBEM } from '@zarm-design/bem';
 import Popup from '../popup';
+import ActionSheetItem, { ActionSheetItemProps } from './ActionSheetItem';
 import { ConfigContext } from '../n-config-provider';
-import useActionSheet from './useActionSheet';
+import type { BaseActionSheetProps } from './interface';
+import type { HTMLProps } from '../utils/utilityTypes';
 
-export interface ActionSheetProps extends PropsType {
-  className?: string;
-  safeIphoneX?: boolean;
+export interface ActionSheetCssVars {
+  '--background'?: React.CSSProperties['background'];
+  '--border-radius'?: React.CSSProperties['borderRadius'];
+  '--spacing-margin'?: React.CSSProperties['margin'];
+  '--item-height'?: React.CSSProperties['height'];
+  '--item-font-size'?: React.CSSProperties['fontSize'];
+  '--item-font-weight'?: React.CSSProperties['fontWeight'];
+  '--item-text-color'?: React.CSSProperties['color'];
+  '--cancel-text-color'?: React.CSSProperties['color'];
+  '--cancel-margin-top'?: React.CSSProperties['marginTop'];
 }
 
-export type UseActionSheet = () => ReturnType<typeof useActionSheet>;
-
-interface CompoundedComponent
-  extends React.ForwardRefExoticComponent<ActionSheetProps & React.RefAttributes<HTMLDivElement>> {
-  useActionSheet: UseActionSheet;
+export interface ActionSheetProps extends BaseActionSheetProps, HTMLProps<ActionSheetCssVars> {
+  safeIphoneX?: boolean;
+  actions?: ActionSheetItemProps[];
+  onAction?: (action: ActionSheetItemProps, index: number) => void;
 }
 
 const ActionSheet = React.forwardRef<HTMLDivElement, ActionSheetProps>((props, ref) => {
   const {
     className,
-    safeIphoneX,
+    style,
     spacing,
-    visible,
-    onMaskClick,
     actions,
-    destroy,
     cancelText,
-    mountContainer,
     onCancel,
-    afterClose,
+    onAction,
+    safeIphoneX,
+    ...restProps
   } = props;
-  const { prefixCls: globalPrefixCls, safeIphoneX: globalSafeIphoneX, locale } = useContext(
-    ConfigContext,
-  );
-  const prefixCls = `${globalPrefixCls}-action-sheet`;
-  const cls = classnames(prefixCls, {
-    [`${prefixCls}--spacing`]: spacing,
-    [`${prefixCls}--safe`]: safeIphoneX || globalSafeIphoneX,
-  });
+  const { prefixCls, safeIphoneX: globalSafeIphoneX, locale } = useContext(ConfigContext);
 
-  const renderAction = (action, index) => {
+  const bem = createBEM('action-sheet', { prefixCls });
+
+  const cls = bem([
+    {
+      spacing,
+      safe: safeIphoneX || globalSafeIphoneX,
+    },
+    className,
+  ]);
+
+  const actionsRender = actions!.map((action, index) => (
+    <ActionSheetItem
+      {...action}
+      key={+index}
+      onClick={async () => {
+        await action.onClick?.();
+        await onAction?.(action, index);
+      }}
+    />
+  ));
+
+  const renderCancel = () => {
+    if (typeof onCancel !== 'function') return;
+
     return (
-      <div
-        key={+index}
-        className={classnames(`${prefixCls}__item`, action.className, {
-          [`${prefixCls}__item--${action.theme}`]: !!action.theme,
-          [`${prefixCls}__item--disabled`]: action.disabled,
-        })}
-        onClick={action.onClick}
-      >
-        {action.text}
+      <div className={bem('cancel')}>
+        <div className={bem('item', [{ bold: true }])} onClick={onCancel}>
+          {cancelText || locale?.ActionSheet?.cancelText}
+        </div>
       </div>
     );
   };
 
   return (
-    <Popup
-      className={className}
-      visible={visible}
-      onMaskClick={onMaskClick}
-      destroy={destroy}
-      afterClose={afterClose}
-      mountContainer={mountContainer}
-    >
-      <div ref={ref} className={cls}>
-        <div className={`${prefixCls}__actions`}>{actions?.map(renderAction)}</div>
-        {typeof onCancel === 'function' && (
-          <div className={`${prefixCls}__cancel`}>
-            <div className={`${prefixCls}__item`} onClick={onCancel}>
-              {cancelText || locale?.ActionSheet?.cancelText}
-            </div>
-          </div>
-        )}
+    <Popup {...restProps}>
+      <div ref={ref} className={cls} style={style}>
+        <div className={bem('actions')}>{actionsRender}</div>
+        {renderCancel()}
       </div>
     </Popup>
   );
-}) as CompoundedComponent;
+});
 
 ActionSheet.displayName = 'ActionSheet';
 

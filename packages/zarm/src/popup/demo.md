@@ -34,6 +34,8 @@ const Demo = () => {
 
   const toggle = (type) => setVisible({ type });
 
+  const toast = Toast.useToast();
+
   return (
     <>
       <List>
@@ -127,7 +129,7 @@ const Demo = () => {
         dataSource={SINGLE_DATA}
         onOk={(selected) => {
           console.log('Picker onOk: ', selected);
-          Toast.show(JSON.stringify(selected));
+          toast.show(JSON.stringify(selected));
           setValue(selected.map((item) => item.value));
           toggle('picker');
         }}
@@ -238,3 +240,4 @@ ReactDOM.render(<Demo />, mountNode);
 | onMaskClick       | () => void                           | -             | 点击遮罩层时触发的回调函数                                                                                                                                                                              |
 | onEsc             | () => void                           | -             | 点击 Esc 键时触发的回调函数                                                                                                                                                                             |
 | mountContainer    | HTMLElement &#124; () => HTMLElement | document.body | 指定 Popup 挂载的 HTML 节点                                                                                                                                                                             |
+| lockScroll        | boolean                              | true          | 锁定背景滚动                                                                                                                                                                                            |

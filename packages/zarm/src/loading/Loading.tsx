@@ -1,12 +1,13 @@
 import React, { RefAttributes, useCallback, useEffect, useRef, useState } from 'react';
-import { HTMLDefProps } from 'src/toast/interface';
 import classNames from 'classnames';
-import type { BaseLoadingProps } from './interface';
-import Popup from '../popup';
 import { ConfigContext } from '../n-config-provider';
+import Popup from '../popup';
 import ActivityIndicator from '../activity-indicator';
+import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseLoadingProps } from './interface';
 
-export interface LoadingProps extends BaseLoadingProps, HTMLDefProps {}
+export type LoadingProps = BaseLoadingProps & HTMLProps;
+
 export interface UseLoading {
   show: (props: LoadingProps) => void;
   hide: () => void;
@@ -29,7 +30,6 @@ const Loading = React.forwardRef<unknown, LoadingProps>((props, ref) => {
     afterClose,
     stayTime,
     style,
-    onClick,
     ...others
   } = props;
 
@@ -71,12 +71,7 @@ const Loading = React.forwardRef<unknown, LoadingProps>((props, ref) => {
       visible={visible}
       afterClose={afterClose}
     >
-      <div
-        className={classNames(prefixCls, className)}
-        ref={loadingRef}
-        style={style}
-        onClick={onClick}
-      >
+      <div className={classNames(prefixCls, className)} ref={loadingRef} style={style}>
         <div className={`${prefixCls}__container`} style={style}>
           {content || <ActivityIndicator type="spinner" size="lg" />}
         </div>

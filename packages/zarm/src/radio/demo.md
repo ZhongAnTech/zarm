@@ -208,7 +208,7 @@ ReactDOM.render(
 );
 ```
 
-## 列表样式标记在尾部
+## 列表样式，尾部标记
 
 ```jsx
 import { Radio } from 'zarm';
@@ -225,7 +225,7 @@ ReactDOM.render(
 );
 ```
 
-## 列表样式禁用状态
+## 列表样式，禁用状态
 
 ```jsx
 import { Radio } from 'zarm';
@@ -246,13 +246,13 @@ ReactDOM.render(
 
 ### Radio
 
-| 属性           | 类型                                       | 默认值 | 说明                   |
-| :------------- | :----------------------------------------- | :----- | :--------------------- |
-| value          | string \| number                           | -      | 值                     |
-| checked        | boolean                                    | -      | 当前是否选中           |
-| defaultChecked | boolean                                    | -      | 初始是否选中           |
-| disabled       | boolean                                    | false  | 是否禁用               |
-| onChange       | (e: ChangeEvent<HTMLInputElement>) => void | -      | 值变化时触发的回调函数 |
+| 属性           | 类型                                             | 默认值 | 说明                   |
+| :------------- | :----------------------------------------------- | :----- | :--------------------- |
+| value          | string \| number                                 | -      | 值                     |
+| checked        | boolean                                          | -      | 当前是否选中           |
+| defaultChecked | boolean                                          | -      | 初始是否选中           |
+| disabled       | boolean                                          | false  | 是否禁用               |
+| onChange       | (event: ChangeEvent\<HTMLInputElement\>) => void | -      | 值变化时触发的回调函数 |
 
 ### Radio.Group
 
@@ -269,3 +269,26 @@ ReactDOM.render(
 | buttonGhost     | boolean                           | false    | 按钮类型时，选中项样式是否为幽灵按钮                         |
 | buttonCompact   | boolean                           | false    | 按钮类型时，是否为紧凑模式                                   |
 | listMarkerAlign | string                            | 'before' | 列表类型时标记的位置，可选值 `before`、`after`               |
+
+## CSS 变量
+
+| 属性                           | 默认值                                       | 说明                     |
+| :----------------------------- | :------------------------------------------- | :----------------------- |
+| --widget-size                  | '22px'                                       | 控件大小                 |
+| --widget-background            | 'transparent'                                | 控件背景色               |
+| --widget-border-radius         | '22px'                                       | 控件圆角大虾皮           |
+| --widget-border-width          | '1px'                                        | 控件边框粗细             |
+| --widget-border-color          | 'rgb(199, 199, 204)'                         | 控件边框颜色             |
+| --marker-font-size             | '16px'                                       | 勾选图标大小             |
+| --marker-color                 | '#fff'                                       | 勾选图标颜色             |
+| --marker-transition            | 'all 0.2s cubic-bezier(.71, -0.46, .88, .6)' | 勾选图标动画效果         |
+| --text-margin-horizontal       | '8px'                                        | 文字横向外边距           |
+| --active-opacity               | 0.6                                          | 激活状态透明度           |
+| --checked-widget-background    | 'var(--za-theme-primary)'                    | 选中状态控件背景色       |
+| --checked-widget-border-color  | 'var(--za-theme-primary)'                    | 选中状态控件边框颜色     |
+| --disabled-widget-background   | '#f2f2f2'                                    | 禁用状态控件背景色       |
+| --disabled-widget-border-color | 'rgba(199, 199, 204, 0.7)'                   | 禁用状态控件控件边框颜色 |
+| --disabled-text-color          | 'rgba(0, 0, 0, 0.3)'                         | 禁用状态控件文字颜色     |
+| --disabled--marker-color       | '#bcbcbc'                                    | 禁用状态控件勾选图标颜色 |
+| --group-spacing-vertical       | '8px'                                        | 组合使用时的纵向间距     |
+| --group-spacing-horizontal     | '24px'                                       | 组合使用时的横向间距     |

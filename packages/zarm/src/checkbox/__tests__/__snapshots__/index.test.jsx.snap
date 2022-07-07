@@ -11,8 +11,7 @@ exports[`Checkbox defaultChecked 1`] = `
       class="za-checkbox__inner"
     >
       <i
-        class="za-icon za-checkbox__marker za-icon--default za-icon--md"
-        theme="default"
+        class="za-icon za-checkbox__marker"
       >
         <svg
           aria-hidden="true"
@@ -40,7 +39,6 @@ exports[`Checkbox defaultChecked 1`] = `
     checked=""
     class="za-checkbox__input"
     type="checkbox"
-    value="on"
   />
 </span>
 `;
@@ -56,8 +54,7 @@ exports[`Checkbox disabled 1`] = `
       class="za-checkbox__inner"
     >
       <i
-        class="za-icon za-checkbox__marker za-icon--default za-icon--md"
-        theme="default"
+        class="za-icon za-checkbox__marker"
       >
         <svg
           aria-hidden="true"
@@ -84,7 +81,6 @@ exports[`Checkbox disabled 1`] = `
     class="za-checkbox__input"
     disabled=""
     type="checkbox"
-    value="off"
   />
 </span>
 `;
@@ -100,8 +96,7 @@ exports[`Checkbox renders correctly 1`] = `
       class="za-checkbox__inner"
     >
       <i
-        class="za-icon za-checkbox__marker za-icon--default za-icon--md"
-        theme="default"
+        class="za-icon za-checkbox__marker"
       >
         <svg
           aria-hidden="true"
@@ -129,7 +124,6 @@ exports[`Checkbox renders correctly 1`] = `
     checked=""
     class="za-checkbox__input"
     type="checkbox"
-    value="on"
   />
 </span>
 `;
@@ -151,8 +145,7 @@ exports[`Checkbox.Group render defaultValue correctly 1`] = `
           class="za-checkbox__inner"
         >
           <i
-            class="za-icon za-checkbox__marker za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon za-checkbox__marker"
           >
             <svg
               aria-hidden="true"
@@ -179,7 +172,7 @@ exports[`Checkbox.Group render defaultValue correctly 1`] = `
         aria-checked="false"
         class="za-checkbox__input"
         type="checkbox"
-        value="off"
+        value="0"
       />
     </span>
     <span
@@ -192,8 +185,7 @@ exports[`Checkbox.Group render defaultValue correctly 1`] = `
           class="za-checkbox__inner"
         >
           <i
-            class="za-icon za-checkbox__marker za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon za-checkbox__marker"
           >
             <svg
               aria-hidden="true"
@@ -221,7 +213,7 @@ exports[`Checkbox.Group render defaultValue correctly 1`] = `
         checked=""
         class="za-checkbox__input"
         type="checkbox"
-        value="on"
+        value="1"
       />
     </span>
     <span
@@ -234,8 +226,7 @@ exports[`Checkbox.Group render defaultValue correctly 1`] = `
           class="za-checkbox__inner"
         >
           <i
-            class="za-icon za-checkbox__marker za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon za-checkbox__marker"
           >
             <svg
               aria-hidden="true"
@@ -262,7 +253,7 @@ exports[`Checkbox.Group render defaultValue correctly 1`] = `
         aria-checked="false"
         class="za-checkbox__input"
         type="checkbox"
-        value="off"
+        value="2"
       />
     </span>
   </div>
@@ -286,8 +277,7 @@ exports[`Checkbox.Group render value correctly 1`] = `
           class="za-checkbox__inner"
         >
           <i
-            class="za-icon za-checkbox__marker za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon za-checkbox__marker"
           >
             <svg
               aria-hidden="true"
@@ -315,7 +305,7 @@ exports[`Checkbox.Group render value correctly 1`] = `
         checked=""
         class="za-checkbox__input"
         type="checkbox"
-        value="on"
+        value="0"
       />
     </span>
     <span
@@ -328,8 +318,7 @@ exports[`Checkbox.Group render value correctly 1`] = `
           class="za-checkbox__inner"
         >
           <i
-            class="za-icon za-checkbox__marker za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon za-checkbox__marker"
           >
             <svg
               aria-hidden="true"
@@ -356,7 +345,7 @@ exports[`Checkbox.Group render value correctly 1`] = `
         aria-checked="false"
         class="za-checkbox__input"
         type="checkbox"
-        value="off"
+        value="1"
       />
     </span>
     <span
@@ -369,8 +358,7 @@ exports[`Checkbox.Group render value correctly 1`] = `
           class="za-checkbox__inner"
         >
           <i
-            class="za-icon za-checkbox__marker za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon za-checkbox__marker"
           >
             <svg
               aria-hidden="true"
@@ -397,7 +385,7 @@ exports[`Checkbox.Group render value correctly 1`] = `
         aria-checked="false"
         class="za-checkbox__input"
         type="checkbox"
-        value="off"
+        value="2"
       />
     </span>
   </div>
@@ -421,8 +409,7 @@ exports[`Checkbox.Group renders correctly 1`] = `
           class="za-checkbox__inner"
         >
           <i
-            class="za-icon za-checkbox__marker za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon za-checkbox__marker"
           >
             <svg
               aria-hidden="true"
@@ -449,7 +436,7 @@ exports[`Checkbox.Group renders correctly 1`] = `
         aria-checked="false"
         class="za-checkbox__input"
         type="checkbox"
-        value="off"
+        value="0"
       />
     </span>
     <span
@@ -462,8 +449,7 @@ exports[`Checkbox.Group renders correctly 1`] = `
           class="za-checkbox__inner"
         >
           <i
-            class="za-icon za-checkbox__marker za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon za-checkbox__marker"
           >
             <svg
               aria-hidden="true"
@@ -491,7 +477,7 @@ exports[`Checkbox.Group renders correctly 1`] = `
         checked=""
         class="za-checkbox__input"
         type="checkbox"
-        value="on"
+        value="1"
       />
     </span>
     <span
@@ -504,8 +490,7 @@ exports[`Checkbox.Group renders correctly 1`] = `
           class="za-checkbox__inner"
         >
           <i
-            class="za-icon za-checkbox__marker za-icon--default za-icon--md"
-            theme="default"
+            class="za-icon za-checkbox__marker"
           >
             <svg
               aria-hidden="true"
@@ -532,7 +517,7 @@ exports[`Checkbox.Group renders correctly 1`] = `
         aria-checked="false"
         class="za-checkbox__input"
         type="checkbox"
-        value="off"
+        value="2"
       />
     </span>
   </div>
@@ -547,40 +532,49 @@ exports[`Checkbox.Group type is button 1`] = `
     class="za-checkbox-group__inner"
   >
     <button
-      class="za-checkbox"
+      aria-disabled="false"
+      class="za-button za-checkbox za-button--default za-button--xs za-button--radius"
       type="button"
     >
-      选项一
-      <input
-        aria-checked="false"
-        class="za-checkbox__input"
-        type="checkbox"
-        value="off"
-      />
+      <span>
+        选项一
+        <input
+          aria-checked="false"
+          class="za-checkbox__input"
+          type="checkbox"
+          value="0"
+        />
+      </span>
     </button>
     <button
-      class="za-checkbox"
+      aria-disabled="false"
+      class="za-button za-checkbox za-button--default za-button--xs za-button--radius"
       type="button"
     >
-      选项二
-      <input
-        aria-checked="false"
-        class="za-checkbox__input"
-        type="checkbox"
-        value="off"
-      />
+      <span>
+        选项二
+        <input
+          aria-checked="false"
+          class="za-checkbox__input"
+          type="checkbox"
+          value="1"
+        />
+      </span>
     </button>
     <button
-      class="za-checkbox"
+      aria-disabled="false"
+      class="za-button za-checkbox za-button--default za-button--xs za-button--radius"
       type="button"
     >
-      选项三
-      <input
-        aria-checked="false"
-        class="za-checkbox__input"
-        type="checkbox"
-        value="off"
-      />
+      <span>
+        选项三
+        <input
+          aria-checked="false"
+          class="za-checkbox__input"
+          type="checkbox"
+          value="2"
+        />
+      </span>
     </button>
   </div>
 </div>
@@ -610,8 +604,7 @@ exports[`Checkbox.Group type is list 1`] = `
                 class="za-checkbox__inner"
               >
                 <i
-                  class="za-icon za-checkbox__marker za-icon--default za-icon--md"
-                  theme="default"
+                  class="za-icon za-checkbox__marker"
                 >
                   <svg
                     aria-hidden="true"
@@ -633,7 +626,7 @@ exports[`Checkbox.Group type is list 1`] = `
               aria-checked="false"
               class="za-checkbox__input"
               type="checkbox"
-              value="off"
+              value="0"
             />
           </div>
           <div
@@ -654,7 +647,7 @@ exports[`Checkbox.Group type is list 1`] = `
                   aria-checked="false"
                   class="za-checkbox__input"
                   type="checkbox"
-                  value="off"
+                  value="0"
                 />
               </div>
             </div>
@@ -673,8 +666,7 @@ exports[`Checkbox.Group type is list 1`] = `
                 class="za-checkbox__inner"
               >
                 <i
-                  class="za-icon za-checkbox__marker za-icon--default za-icon--md"
-                  theme="default"
+                  class="za-icon za-checkbox__marker"
                 >
                   <svg
                     aria-hidden="true"
@@ -696,7 +688,7 @@ exports[`Checkbox.Group type is list 1`] = `
               aria-checked="false"
               class="za-checkbox__input"
               type="checkbox"
-              value="off"
+              value="1"
             />
           </div>
           <div
@@ -717,7 +709,7 @@ exports[`Checkbox.Group type is list 1`] = `
                   aria-checked="false"
                   class="za-checkbox__input"
                   type="checkbox"
-                  value="off"
+                  value="1"
                 />
               </div>
             </div>
@@ -736,8 +728,7 @@ exports[`Checkbox.Group type is list 1`] = `
                 class="za-checkbox__inner"
               >
                 <i
-                  class="za-icon za-checkbox__marker za-icon--default za-icon--md"
-                  theme="default"
+                  class="za-icon za-checkbox__marker"
                 >
                   <svg
                     aria-hidden="true"
@@ -759,7 +750,7 @@ exports[`Checkbox.Group type is list 1`] = `
               aria-checked="false"
               class="za-checkbox__input"
               type="checkbox"
-              value="off"
+              value="2"
             />
           </div>
           <div
@@ -780,7 +771,7 @@ exports[`Checkbox.Group type is list 1`] = `
                   aria-checked="false"
                   class="za-checkbox__input"
                   type="checkbox"
-                  value="off"
+                  value="2"
                 />
               </div>
             </div>

@@ -74,23 +74,25 @@ describe('Radio', () => {
 describe('Radio.Group', () => {
   it('should render with children', () => {
     const wrapper = shallow(
-      <RadioGroup id="test-radio-group">
+      <RadioGroup>
         <TestRadio value={1} checked={false} />
         <TestRadio value={2} checked={false} />
       </RadioGroup>,
     );
     expect(wrapper.find('.za-radio-group__inner').children()).toHaveLength(2);
-    expect(wrapper.prop('id')).toEqual('test-radio-group');
   });
 
   it('should render with cloned react element correctly', () => {
     const wrapper = shallow(
-      <RadioGroup id="test-radio-group" type="button">
+      <RadioGroup type="button">
         <TestRadio value={1} />
         <TestRadio value={2} />
       </RadioGroup>,
     );
     expect(wrapper.find(TestRadio).at(0).props()).toEqual({
+      buttonGhost: false,
+      buttonShape: 'radius',
+      buttonSize: 'xs',
       value: 1,
       checked: false,
       type: 'button',
@@ -99,6 +101,9 @@ describe('Radio.Group', () => {
       onChange: expect.any(Function),
     });
     expect(wrapper.find(TestRadio).at(1).props()).toEqual({
+      buttonGhost: false,
+      buttonShape: 'radius',
+      buttonSize: 'xs',
       value: 2,
       checked: false,
       type: 'button',

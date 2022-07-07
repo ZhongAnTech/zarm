@@ -48,10 +48,10 @@
     justify-content: space-between;
     position: relative;
     width: 100%;
-    height: var(--picker-header-height);
-    line-height: var(--picker-header-height);
-    font-size: var(--picker-header-font-size);
-    background: var(--picker-header-background);
+    height: var(--za-picker-header-height);
+    line-height: var(--za-picker-header-height);
+    font-size: var(--za-picker-header-font-size);
+    background: var(--za-picker-header-background);
     @include onepx(top);
   }
 

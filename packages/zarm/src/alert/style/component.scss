@@ -1,52 +1,7 @@
-@import '../../button/style/mixins';
-
 @include b(alert) {
   @include b(modal) {
     @include e(body) {
       text-align: center;
-    }
-    @include e(footer) {
-      padding: 0;
-    }
-  }
-
-  @include b(popup) {
-    position: relative;
-    background-color: var(--modal-background);
-    box-shadow: 0 r(7) r(21) var(--color-shadow);
-    overflow: hidden;
-  }
-
-  @include e(button) {
-    display: block;
-    position: relative;
-    width: 100%;
-    @include button-base();
-    @include button-size(
-      var(--button-height-lg),
-      var(--button-padding-h-lg),
-      var(--button-font-size-lg),
-      var(--button-icon-size-lg),
-    );
-    @include onepx(top);
-
-    color: var(--theme-primary);
-    background-color: var(--alert-button-background);
-
-    &:active {
-      background-color: var(--alert-button-active-background);
-    }
-
-    @include m(loading) {
-      cursor: not-allowed;
-      opacity: 0.4;
-      pointer-events: none;
-    }
-  }
-
-  @include m(radius) {
-    @include b(popup) {
-      border-radius: var(--radius-md);
     }
   }
 }

@@ -1,0 +1,7 @@
+@include b(back-top) {
+  @include define(right, 50px);
+  @include define(bottom, 50px);
+
+  right: var(--right);
+  bottom: var(--bottom);
+}

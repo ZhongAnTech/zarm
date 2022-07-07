@@ -1,18 +1,15 @@
-import React, {
-  useState,
-  useEffect,
-  forwardRef,
-  useRef,
-  useCallback,
-  CSSProperties,
-  HTMLAttributes,
-} from 'react';
-import classnames from 'classnames';
+import React, { useState, useEffect, forwardRef, useRef, useCallback, CSSProperties } from 'react';
+import { createBEM } from '@zarm-design/bem';
+import throttle from 'lodash/throttle';
 import { ConfigContext } from '../n-config-provider';
 import { canUseDOM } from '../utils/dom';
-import type { BaseAffixProps } from './interface';
 import Events from '../utils/events';
-import throttle from '../utils/throttle';
+import type { BaseAffixProps } from './interface';
+import type { HTMLProps } from '../utils/utilityTypes';
+
+export interface AffixCssVars {
+  '--zindex'?: React.CSSProperties['zIndex'];
+}
 
 export interface AffixStates {
   affixed: boolean;
@@ -21,16 +18,16 @@ export interface AffixStates {
   height: number;
 }
 
-export type AffixProps = BaseAffixProps & Omit<HTMLAttributes<HTMLDivElement>, 'onChange'>;
+export type AffixProps = BaseAffixProps & HTMLProps<AffixCssVars>;
 
 const DEFAULT_SCROLL_CONTAINER = canUseDOM ? window : undefined;
 
 const Affix = forwardRef<unknown, AffixProps>((props, ref) => {
   const { className, children, offsetBottom, offsetTop, onChange, scrollContainer } = props;
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('affix', { prefixCls });
 
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-affix`;
-  const cls = classnames(prefixCls, className);
+  const cls = bem([className]);
 
   const [affixState, setAffixState] = useState<AffixStates>({
     affixed: false,

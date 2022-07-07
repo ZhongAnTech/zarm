@@ -29,11 +29,11 @@ const icon = (
 
 describe('TabBarItem', () => {
   it('should render with a badge', () => {
-    const wrapper = shallow(<TabBarItem itemKey="1" badge={{ theme: 'primary' }} />);
+    const wrapper = shallow(<TabBarItem itemKey="1" badge={{ shape: 'leaf' }} />);
     expect(wrapper.prop('className')).toBe('za-tab-bar__item');
     expect(wrapper.prop('style')).toBeUndefined();
     expect(wrapper.find(Badge)).toBeTruthy();
-    expect(wrapper.find(Badge).prop('theme')).toEqual('primary');
+    expect(wrapper.find(Badge).prop('shape')).toEqual('leaf');
   });
 
   it('should render with content', () => {

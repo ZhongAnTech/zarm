@@ -1,21 +1,22 @@
 import * as React from 'react';
 import Portal from './Portal';
 import { ConfigContext } from '../n-config-provider';
+import { useLockScroll } from '../utils/hooks';
 import type { BasePopupProps } from './interface';
+import type { HTMLProps } from '../utils/utilityTypes';
 
-export interface PopupProps extends BasePopupProps {
-  className?: string;
-}
+export type PopupProps = BasePopupProps & HTMLProps;
 
 const Popup = React.forwardRef<unknown, PopupProps>((props, ref) => {
-  const { destroy, visible, ...restProps } = props;
-
-  const popupRef = (ref as any) || React.createRef<typeof Portal>();
+  const { destroy, visible, lockScroll, ...restProps } = props;
+  const popupRef = React.useRef(null);
   const [renderPortal, setRenderPortal] = React.useState(false);
   const [portalVisible, setPortalVisible] = React.useState(visible);
 
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const { prefixCls: globalPrefixCls, mountContainer } = React.useContext(ConfigContext);
   const prefixCls = `${globalPrefixCls}-popup`;
+
+  useLockScroll(visible! && lockScroll!);
 
   const handlePortalUnmount = () => {
     destroy && setPortalVisible(false);
@@ -28,9 +29,12 @@ const Popup = React.forwardRef<unknown, PopupProps>((props, ref) => {
       prefixCls={prefixCls}
       visible={portalVisible}
       handlePortalUnmount={handlePortalUnmount}
+      mountContainer={mountContainer}
       {...restProps}
     />
   );
+
+  React.useImperativeHandle(ref, () => popupRef.current!);
 
   React.useEffect(() => {
     visible && setRenderPortal(true);
@@ -45,6 +49,7 @@ Popup.displayName = 'Popup';
 Popup.defaultProps = {
   destroy: true,
   visible: false,
+  lockScroll: true,
 };
 
 export default Popup;

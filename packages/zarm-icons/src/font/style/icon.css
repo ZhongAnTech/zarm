@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: 'zaicon';
+  src: url('../zaicon.eot');
+  src: url('../zaicon.eot?#iefix') format('embedded-opentype'), url('../zaicon.woff') format('woff'),
+    url('../zaicon.ttf') format('truetype'), url('../zaicon.svg#zaicon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.za-icon__arrow-down:before {
+  content: '\EA01';
+}
+.za-icon__arrow-left:before {
+  content: '\EA02';
+}
+.za-icon__arrow-right:before {
+  content: '\EA03';
+}
+.za-icon__arrow-up:before {
+  content: '\EA04';
+}
+.za-icon__close:before {
+  content: '\EA05';
+}
+.za-icon__close-circle:before {
+  content: '\EA06';
+}
+.za-icon__close-circle-fill:before {
+  content: '\EA07';
+}
+.za-icon__delete-key:before {
+  content: '\EA08';
+}
+.za-icon__empty:before {
+  content: '\EA09';
+}
+.za-icon__info:before {
+  content: '\EA0A';
+}
+.za-icon__info-circle:before {
+  content: '\EA0B';
+}
+.za-icon__info-circle-fill:before {
+  content: '\EA0C';
+}
+.za-icon__keyboard:before {
+  content: '\EA0D';
+}
+.za-icon__minus:before {
+  content: '\EA0E';
+}
+.za-icon__plus:before {
+  content: '\EA0F';
+}
+.za-icon__plus-circle:before {
+  content: '\EA10';
+}
+.za-icon__search:before {
+  content: '\EA11';
+}
+.za-icon__star:before {
+  content: '\EA12';
+}
+.za-icon__star-fill:before {
+  content: '\EA13';
+}
+.za-icon__success:before {
+  content: '\EA14';
+}
+.za-icon__success-circle:before {
+  content: '\EA15';
+}
+.za-icon__volume:before {
+  content: '\EA16';
+}
+.za-icon__waiting:before {
+  content: '\EA17';
+}
+.za-icon__waiting-circle:before {
+  content: '\EA18';
+}
+.za-icon__waiting-circle-fill:before {
+  content: '\EA19';
+}
+.za-icon__warning:before {
+  content: '\EA1A';
+}
+.za-icon__warning-circle:before {
+  content: '\EA1B';
+}

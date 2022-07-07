@@ -38,7 +38,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ### UseOrientationProps
 
-| 属性  | 类型   | 默认值           | 说明                                                                        |
-| :---- | :----- | :--------------- | :-------------------------------------------------------------------------- |
-| angle | number | 0                | 旋转角度                                                                    |
-| type  | string | portrait-primary | [方向](https://developer.mozilla.org/en-US/docs/Web/API/Screen/orientation) |
+| 属性  | 类型   | 默认值             | 说明                                                                                          |
+| :---- | :----- | :----------------- | :-------------------------------------------------------------------------------------------- |
+| angle | number | 0                  | 旋转角度                                                                                      |
+| type  | string | 'portrait-primary' | 屏幕的方向，详见[文档](https://developer.mozilla.org/en-US/docs/Web/API/Screen/orientation)。 |

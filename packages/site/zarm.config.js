@@ -12,10 +12,10 @@ module.exports = {
       template: './demo/index.html',
       favicon: './favicon.ico',
     },
-    // demo_umd: {
-    //   template: './demo/index_umd.html',
-    //   favicon: './favicon.ico',
-    // },
+    demo_umd: {
+      template: './demo/index_umd.html',
+      favicon: './favicon.ico',
+    },
   },
   resolve: {
     alias: {
@@ -39,6 +39,9 @@ module.exports = {
     rules.push({
       test: /\.md$/,
       use: ['raw-loader'],
+    });
+    rules[1].use.splice(3, 0, {
+      loader: require.resolve('resolve-url-loader'),
     });
   },
 };

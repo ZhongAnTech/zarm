@@ -3,7 +3,7 @@
 exports[`Badge should render with default props 1`] = `
 <div>
   <span
-    class="za-badge za-badge--danger za-badge--dot"
+    class="za-badge za-badge--dot"
   >
     <sup
       class="za-badge__content"

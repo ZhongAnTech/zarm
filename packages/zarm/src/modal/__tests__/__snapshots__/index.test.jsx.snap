@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Modal renders correctly 1`] = `
-<Modal
+<ForwardRef
+  actions={Array []}
   animationDuration={200}
   animationType="fade"
   closable={true}
@@ -16,240 +17,199 @@ exports[`Modal renders correctly 1`] = `
   visible={true}
   width="70%"
 >
-  <ForwardRef(forwardRef)
+  <Popup
     animationDuration={200}
     animationType="fade"
     className="za-modal za-modal--radius"
     destroy={true}
     direction="center"
+    lockScroll={true}
     mask={true}
     maskType="normal"
+    onCancel={[MockFunction]}
     onMaskClick={[Function]}
     visible={true}
     width="70%"
   >
-    <ConfigReceiver
+    <Portal
       animationDuration={200}
       animationType="fade"
       className="za-modal za-modal--radius"
-      destroy={true}
       direction="center"
-      forwardedRef={null}
+      handlePortalUnmount={[Function]}
       mask={true}
       maskType="normal"
+      onCancel={[MockFunction]}
       onMaskClick={[Function]}
+      prefixCls="za-popup"
       visible={true}
       width="70%"
     >
-      <Popup
-        animationDuration={200}
-        animationType="fade"
-        className="za-modal za-modal--radius"
-        destroy={true}
-        direction="center"
-        localeCode="zh-CN"
-        mask={true}
-        maskType="normal"
-        onMaskClick={[Function]}
-        safeIphoneX={false}
+      <Trigger
+        disabled={false}
+        onClose={[Function]}
         visible={true}
-        width="70%"
       >
         <Portal
-          animationDuration={200}
-          animationType="fade"
-          className="za-modal za-modal--radius"
-          direction="center"
-          handlePortalUnmount={[Function]}
-          localeCode="zh-CN"
-          mask={true}
-          maskType="normal"
-          onMaskClick={[Function]}
-          prefixCls="za-popup"
-          safeIphoneX={false}
-          visible={true}
-          width="70%"
-        >
-          <Trigger
-            disabled={false}
-            onClose={[Function]}
-            visible={true}
-          >
-            <Portal
-              containerInfo={
-                <div
-                  class="za-popup-container za-modal za-modal--radius"
-                >
-                  <div
-                    class="za-mask za-fade-enter za-mask--normal"
-                    style="animation-duration: 200ms;"
-                  />
-                  <div
-                    class="za-popup__wrapper za-fade-enter"
-                    data-width="0"
-                    role="dialog"
-                    style="animation-duration: 200ms;"
-                  >
-                    <div
-                      class="za-popup za-popup--center za-fade-enter"
-                      data-width="0"
-                      role="document"
-                      style="width: 70%; animation-duration: 200ms;"
-                    >
-                      <div
-                        class="za-modal__dialog"
-                      >
-                        <div
-                          class="za-modal__header"
-                        >
-                          <div
-                            class="za-modal__header__title"
-                          >
-                            标题
-                          </div>
-                          <i
-                            class="za-icon za-modal__header__close za-icon--default za-icon--sm"
-                            theme="default"
-                          >
-                            <svg
-                              aria-hidden="true"
-                              fill="currentColor"
-                              focusable="false"
-                              height="1em"
-                              viewBox="0 0 1000 1000"
-                              width="1em"
-                            >
-                              <path
-                                d="M560.149 501.223l255.344 255.344c16.272 16.272 16.272 42.654 0 58.926s-42.654 16.272-58.926 0L501.223 560.149 245.88 815.493c-16.272 16.272-42.654 16.272-58.925 0-16.272-16.272-16.272-42.654 0-58.926l255.344-255.344L186.954 245.88c-16.272-16.272-16.272-42.654 0-58.925 16.271-16.272 42.653-16.272 58.925 0l255.344 255.344 255.344-255.344c16.272-16.272 42.654-16.272 58.926 0 16.272 16.271 16.272 42.653 0 58.925L560.149 501.223z"
-                                fill-rule="nonzero"
-                              />
-                            </svg>
-                          </i>
-                        </div>
-                        <div
-                          class="za-modal__body"
-                        >
-                          foo
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              }
+          containerInfo={
+            <div
+              class="za-popup-container za-modal za-modal--radius"
             >
-              <Mask
-                className="za-fade-enter"
-                style={
-                  Object {
-                    "WebkitAnimationDuration": "200ms",
-                    "animationDuration": "200ms",
-                  }
-                }
-                type="normal"
-                visible={true}
-              >
-                <div
-                  className="za-mask za-fade-enter za-mask--normal"
-                  style={
-                    Object {
-                      "WebkitAnimationDuration": "200ms",
-                      "animationDuration": "200ms",
-                    }
-                  }
-                />
-              </Mask>
               <div
-                className="za-popup__wrapper za-fade-enter"
-                data-width={0}
-                onClick={[Function]}
+                class="za-mask za-fade-enter za-mask--normal"
+                style="animation-duration: 200ms;"
+              />
+              <div
+                class="za-popup__wrapper za-fade-enter"
+                data-width="0"
                 role="dialog"
-                style={
-                  Object {
-                    "WebkitAnimationDuration": "200ms",
-                    "animationDuration": "200ms",
-                  }
-                }
+                style="animation-duration: 200ms;"
               >
                 <div
-                  className="za-popup za-popup--center za-fade-enter"
-                  data-width={0}
+                  class="za-popup za-popup--center za-fade-enter"
+                  data-width="0"
                   role="document"
-                  style={
-                    Object {
-                      "WebkitAnimationDuration": "200ms",
-                      "animationDuration": "200ms",
-                      "width": "70%",
-                    }
-                  }
+                  style="width: 70%; animation-duration: 200ms;"
                 >
                   <div
-                    className="za-modal__dialog"
+                    class="za-modal__dialog"
                   >
                     <div
-                      className="za-modal__header"
+                      class="za-modal__body"
                     >
                       <div
-                        className="za-modal__header__title"
+                        class="za-modal__title"
                       >
                         标题
                       </div>
-                      <ForwardRef(SvgClose)
-                        className="za-modal__header__close"
-                        onClick={[MockFunction]}
-                        size="sm"
+                      <i
+                        class="za-icon za-icon--sm za-modal__close"
                       >
-                        <Icon
-                          className="za-modal__header__close"
-                          component={[Function]}
-                          onClick={[MockFunction]}
-                          prefixCls="za-icon"
-                          size="sm"
-                          theme="default"
-                          viewBox="0 0 32 32"
+                        <svg
+                          aria-hidden="true"
+                          fill="currentColor"
+                          focusable="false"
+                          height="1em"
+                          viewBox="0 0 1000 1000"
+                          width="1em"
                         >
-                          <i
-                            className="za-icon za-modal__header__close za-icon--default za-icon--sm"
-                            onClick={[MockFunction]}
-                            size="sm"
-                            theme="default"
-                          >
-                            <component
-                              fill="currentColor"
-                              height="1em"
-                              viewBox="0 0 32 32"
-                              width="1em"
-                            >
-                              <svg
-                                aria-hidden="true"
-                                fill="currentColor"
-                                focusable={false}
-                                height="1em"
-                                viewBox="0 0 1000 1000"
-                                width="1em"
-                              >
-                                <path
-                                  d="M560.149 501.223l255.344 255.344c16.272 16.272 16.272 42.654 0 58.926s-42.654 16.272-58.926 0L501.223 560.149 245.88 815.493c-16.272 16.272-42.654 16.272-58.925 0-16.272-16.272-16.272-42.654 0-58.926l255.344-255.344L186.954 245.88c-16.272-16.272-16.272-42.654 0-58.925 16.271-16.272 42.653-16.272 58.925 0l255.344 255.344 255.344-255.344c16.272-16.272 42.654-16.272 58.926 0 16.272 16.271 16.272 42.653 0 58.925L560.149 501.223z"
-                                  fillRule="nonzero"
-                                />
-                              </svg>
-                            </component>
-                          </i>
-                        </Icon>
-                      </ForwardRef(SvgClose)>
-                    </div>
-                    <div
-                      className="za-modal__body"
-                    >
+                          <path
+                            d="M560.149 501.223l255.344 255.344c16.272 16.272 16.272 42.654 0 58.926s-42.654 16.272-58.926 0L501.223 560.149 245.88 815.493c-16.272 16.272-42.654 16.272-58.925 0-16.272-16.272-16.272-42.654 0-58.926l255.344-255.344L186.954 245.88c-16.272-16.272-16.272-42.654 0-58.925 16.271-16.272 42.653-16.272 58.925 0l255.344 255.344 255.344-255.344c16.272-16.272 42.654-16.272 58.926 0 16.272 16.271 16.272 42.653 0 58.925L560.149 501.223z"
+                            fill-rule="nonzero"
+                          />
+                        </svg>
+                      </i>
                       foo
                     </div>
                   </div>
                 </div>
               </div>
-            </Portal>
-          </Trigger>
+            </div>
+          }
+        >
+          <Mask
+            className="za-fade-enter"
+            style={
+              Object {
+                "WebkitAnimationDuration": "200ms",
+                "animationDuration": "200ms",
+              }
+            }
+            type="normal"
+            visible={true}
+          >
+            <div
+              className="za-mask za-fade-enter za-mask--normal"
+              style={
+                Object {
+                  "WebkitAnimationDuration": "200ms",
+                  "animationDuration": "200ms",
+                }
+              }
+            />
+          </Mask>
+          <div
+            className="za-popup__wrapper za-fade-enter"
+            data-width={0}
+            onClick={[Function]}
+            role="dialog"
+            style={
+              Object {
+                "WebkitAnimationDuration": "200ms",
+                "animationDuration": "200ms",
+              }
+            }
+          >
+            <div
+              className="za-popup za-popup--center za-fade-enter"
+              data-width={0}
+              role="document"
+              style={
+                Object {
+                  "WebkitAnimationDuration": "200ms",
+                  "animationDuration": "200ms",
+                  "width": "70%",
+                }
+              }
+            >
+              <div
+                className="za-modal__dialog"
+              >
+                <div
+                  className="za-modal__body"
+                >
+                  <div
+                    className="za-modal__title"
+                  >
+                    标题
+                  </div>
+                  <ForwardRef(SvgClose)
+                    className="za-modal__close"
+                    size="sm"
+                  >
+                    <Icon
+                      className="za-modal__close"
+                      component={[Function]}
+                      mode="auto"
+                      name="SvgClose"
+                      prefixCls="za"
+                      size="sm"
+                      viewBox="0 0 1000 1000"
+                    >
+                      <i
+                        className="za-icon za-icon--sm za-modal__close"
+                      >
+                        <component
+                          fill="currentColor"
+                          height="1em"
+                          viewBox="0 0 1000 1000"
+                          width="1em"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            fill="currentColor"
+                            focusable={false}
+                            height="1em"
+                            viewBox="0 0 1000 1000"
+                            width="1em"
+                          >
+                            <path
+                              d="M560.149 501.223l255.344 255.344c16.272 16.272 16.272 42.654 0 58.926s-42.654 16.272-58.926 0L501.223 560.149 245.88 815.493c-16.272 16.272-42.654 16.272-58.925 0-16.272-16.272-16.272-42.654 0-58.926l255.344-255.344L186.954 245.88c-16.272-16.272-16.272-42.654 0-58.925 16.271-16.272 42.653-16.272 58.925 0l255.344 255.344 255.344-255.344c16.272-16.272 42.654-16.272 58.926 0 16.272 16.271 16.272 42.653 0 58.925L560.149 501.223z"
+                              fillRule="nonzero"
+                            />
+                          </svg>
+                        </component>
+                      </i>
+                    </Icon>
+                  </ForwardRef(SvgClose)>
+                  foo
+                </div>
+              </div>
+            </div>
+          </div>
         </Portal>
-      </Popup>
-    </ConfigReceiver>
-  </ForwardRef(forwardRef)>
-</Modal>
+      </Trigger>
+    </Portal>
+  </Popup>
+</ForwardRef>
 `;

@@ -1,10 +1,12 @@
 import React, { RefAttributes, useCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
-import BaseToastProps, { HTMLDefProps } from './interface';
-import Popup from '../popup';
 import { ConfigContext } from '../n-config-provider';
+import Popup from '../popup';
+import type { BaseToastProps } from './interface';
+import type { HTMLProps } from '../utils/utilityTypes';
 
-export interface ToastProps extends BaseToastProps, HTMLDefProps {}
+export type ToastProps = BaseToastProps & HTMLProps;
+
 export interface UseToast {
   show: (props: ToastProps) => void;
   hide: () => void;
@@ -25,7 +27,6 @@ const Toast = React.forwardRef<unknown, ToastProps>((props, ref) => {
     visible: propVisible,
     afterClose,
     style,
-    onClick,
     ...others
   } = props;
   const [visible, setVisible] = useState(propVisible!);
@@ -62,16 +63,12 @@ const Toast = React.forwardRef<unknown, ToastProps>((props, ref) => {
       direction="center"
       maskType="transparent"
       width="70%"
+      lockScroll={false}
       {...others}
       visible={visible}
       afterClose={afterClose}
     >
-      <div
-        className={classNames(prefixCls, className)}
-        ref={toastRef}
-        style={style}
-        onClick={onClick}
-      >
+      <div className={classNames(prefixCls, className)} ref={toastRef} style={style}>
         <div className={`${prefixCls}__container`}>{content}</div>
       </div>
     </Popup>

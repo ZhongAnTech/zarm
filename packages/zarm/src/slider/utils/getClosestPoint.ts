@@ -1,8 +1,8 @@
-import type PropsType from '../PropsType';
+import type PropsType from '../interface';
 
 export default function getClosestPoint(
   val: number,
-  { marks, step, min, max }: Pick<PropsType, 'marks' | 'step' | 'min' | 'max'>,
+  { marks = {}, step = 1, min = 0, max = 10 }: Pick<PropsType, 'marks' | 'step' | 'min' | 'max'>,
 ) {
   if (max < min) {
     throw new Error(`"max" should be greater than "min". Got "min" = ${min}, "max" = ${max}`);
