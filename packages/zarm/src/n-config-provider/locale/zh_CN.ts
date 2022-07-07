@@ -11,6 +11,7 @@ import SearchBar from '../../search-bar/locale/zh_CN';
 import Select from '../../select/locale/zh_CN';
 import Keyboard from '../../keyboard/locale/zh_CN';
 import ImagePreview from '../../image-preview/locale/zh_CN';
+import Image from '../../image/locale/zh_CN';
 
 export default {
   locale: 'zh-CN',
@@ -27,4 +28,5 @@ export default {
   Select,
   Keyboard,
   ImagePreview,
+  Image,
 };
