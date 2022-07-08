@@ -1,4 +1,7 @@
 @mixin image-react() {
+  position: absolute;
+  left: 0;
+  top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,4 +9,7 @@
   width: 100%;
   height: 100%;
   text-align: center;
+  background-color: var(--default-background-color);
+  color: var(--default-text-color);
+  font-size: var(--default-font-size);
 }

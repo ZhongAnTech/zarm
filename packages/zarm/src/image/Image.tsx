@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classnames from 'classnames';
 import { ConfigContext } from '../n-config-provider';
-import useImage, { IMAGE_STATUS } from './useImage';
+
+export const IMAGE_STATUS = {
+  PENDING: 'pending',
+  LOADING: 'loading',
+  LOADED: 'loaded',
+  FAILED: 'failed',
+};
 
 export interface ImageCssVars {
   '--default-background-color'?: React.CSSProperties['color'];
@@ -28,46 +34,53 @@ const Image = React.forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
     style,
     ...restProps
   } = props;
+  const [status, setStatus] = useState(IMAGE_STATUS.LOADING);
 
   const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
   const prefixCls = `${globalPrefixCls}-image`;
   const cls = classnames(prefixCls, className);
 
   const imgRef = ref || React.createRef<HTMLImageElement>();
-  const status = useImage({ src, onLoad, onError });
+
+  const handleLoad = (event: React.SyntheticEvent<HTMLImageElement>) => {
+    onLoad && onLoad(event);
+    setStatus(IMAGE_STATUS.LOADED);
+  };
+
+  const handleError = (event: React.SyntheticEvent<HTMLImageElement>) => {
+    onError && onError(event);
+    setStatus(IMAGE_STATUS.FAILED);
+  };
 
   const renderImageStatus = {
-    [IMAGE_STATUS.LOADED]: () => (
-      <img className={`${prefixCls}__img`} src={src} alt={alt} ref={imgRef} {...restProps} />
-    ),
+    [IMAGE_STATUS.LOADED]: () => null,
     [IMAGE_STATUS.FAILED]: () => {
-      const renderFallback = (text) => <div className={`${prefixCls}__fallback`}>{text}</div>;
-
       if (fallback) {
-        return React.isValidElement(fallback) ? fallback : renderFallback(fallback);
+        return <div className={`${prefixCls}__fallback`}>{fallback}</div>;
       }
 
-      return (
-        <img className={`${prefixCls}__img`} src={src} alt={alt} ref={imgRef} {...restProps} />
-      );
+      return null;
     },
     [IMAGE_STATUS.LOADING]: () => {
       if (placeholder) {
-        return React.isValidElement(placeholder) ? (
-          placeholder
-        ) : (
-          <div className={`${prefixCls}__loading`}>{placeholder}</div>
-        );
+        return <div className={`${prefixCls}__loading`}>{placeholder}</div>;
       }
 
-      return (
-        <img className={`${prefixCls}__img`} src={src} alt={alt} ref={imgRef} {...restProps} />
-      );
+      return null;
     },
   };
 
   return (
     <div className={cls} style={{ width, height, ...style }}>
+      <img
+        className={`${prefixCls}__img`}
+        src={src}
+        alt={alt}
+        ref={imgRef}
+        {...restProps}
+        onError={handleError}
+        onLoad={handleLoad}
+      />
       {renderImageStatus[status]()}
     </div>
   );

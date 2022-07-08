@@ -8,6 +8,8 @@ exports[`Image height 1`] = `undefined`;
 
 exports[`Image placeholder 1`] = `undefined`;
 
+exports[`Image render correctly 1`] = `undefined`;
+
 exports[`Image renders correctly 1`] = `undefined`;
 
 exports[`Image width 1`] = `undefined`;

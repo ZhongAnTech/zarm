@@ -51,6 +51,22 @@ ReactDOM.render(
 );
 ```
 
+## 图片加载失败, 自定义 fallback element
+
+```jsx
+import { Image } from 'zarm';
+ReactDOM.render(
+  <Image
+    src="https://zarm.com"
+    width="100px"
+    height="100px"
+    placeholder="加载中..."
+    fallback={<span>图片不见啦</span>}
+  />,
+  mountNode,
+);
+```
+
 ## 自定义占位显示
 
 ```jsx
