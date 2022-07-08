@@ -17,12 +17,12 @@ export const useImage = ({ src, onLoad, onError }: UseImageProps) => {
   const [status, setStatus] = useState(IMAGE_STATUS.LOADING);
   const ref: any = useRef();
 
-  const handleLoad = (event: React.SyntheticEvent<HTMLImageElement, Event>) => {
+  const handleLoad = (event: React.SyntheticEvent<HTMLImageElement>) => {
     onLoad && onLoad(event);
     setStatus(IMAGE_STATUS.LOADED);
   };
 
-  const handleError = (event: React.SyntheticEvent<HTMLImageElement, Event>) => {
+  const handleError = (event: React.SyntheticEvent<HTMLImageElement>) => {
     onError && onError(event);
     setStatus(IMAGE_STATUS.FAILED);
   };

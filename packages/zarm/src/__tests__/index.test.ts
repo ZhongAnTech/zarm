@@ -165,6 +165,16 @@ describe('index', () => {
           },
           "render": [Function],
         },
+        "Image": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "fallback": true,
+            "height": "100%",
+            "placeholder": true,
+            "width": "100%",
+          },
+          "render": [Function],
+        },
         "ImagePreview": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {

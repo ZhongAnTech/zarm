@@ -1,40 +1,57 @@
 import React from 'react';
-import { render } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import Icon from '../index';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import Image from '../index';
 
-const Right = (props) => (
-  <svg
-    viewBox="0 0 32 24"
-    fill="currentColor"
-    stroke="currentColor"
-    width="1em"
-    height="1em"
-    {...props}
-  >
-    <path
-      d="M1 12.376l8.8 9.114L30.431 1.568"
-      stroke="currentColor"
-      strokeWidth={2.6}
-      fill="none"
-    />
-  </svg>
-);
+const src =
+  'src="https://camo.githubusercontent.com/f5847256d81e5f8c31aee6554f749baf64654a131fed0fca987bd39e023a690f/68747470733a2f2f7a61726d2e64657369676e2f696d616765732f6c6f676f2e31613663666333302e737667"';
 
-describe('Icon', () => {
-  it('renders Icons using iconfont', () => {
-    const MyIcon = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_mk657pke2hj.js');
-    const wrapper = render(
-      <>
-        <MyIcon type="home" />
-        <MyIcon type="user" />
-      </>,
-    );
+describe('Image', () => {
+  it('renders correctly', () => {
+    const wrapper = render(<Image src={src} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('renders Icons using svg component', () => {
-    const wrapper = render(<Icon size="lg" theme="primary" component={Right} />);
+  it('width', () => {
+    const wrapper = render(<Image src={src} width={40} />);
     expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('height', () => {
+    const wrapper = render(<Image src={src} height={40} />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('placeholder', () => {
+    const wrapper = render(<Image src={src} placeholder="loading" />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('alt', () => {
+    const wrapper = render(<Image src={src} alt="image" />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('fallback', () => {
+    const wrapper = render(<Image src={src} fallback={<span>图片不见啦</span>} />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  // it('onLoad', () => {
+  //   const onLoad = jest.fn();
+  //   render(<Image src={src} onLoad={onLoad} />);
+  //   expect(onLoad).toHaveBeenCalled();
+  // });
+
+  it('onError', async () => {
+    const onError = jest.fn();
+    const dom = render(
+      <Image src="xxx" alt="test" fallback={false} placeholder={false} onError={onError} />,
+    );
+    const img = dom.querySelector('img');
+    console.log(img);
+    fireEvent.error(dom.querySelector('img'));
+    jest.setTimeout(5000);
+    await waitFor(() => expect(onError).toHaveBeenCalled());
   });
 });

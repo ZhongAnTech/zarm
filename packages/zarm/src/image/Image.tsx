@@ -1,8 +1,13 @@
 import React from 'react';
 import classnames from 'classnames';
-import ActivityIndicator from '../activity-indicator';
 import { ConfigContext } from '../n-config-provider';
 import useImage, { IMAGE_STATUS } from './useImage';
+
+export interface ImageCssVars {
+  '--default-background-color'?: React.CSSProperties['color'];
+  '--default-text-color'?: React.CSSProperties['color'];
+  '--default-font-size'?: React.CSSProperties['fontSize'];
+}
 
 export interface ImageProps extends Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'placeholder'> {
   placeholder?: React.ReactNode | boolean;
@@ -24,10 +29,9 @@ const Image = React.forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
     ...restProps
   } = props;
 
-  const { prefixCls: globalPrefixCls, locale: globalLocal } = React.useContext(ConfigContext);
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
   const prefixCls = `${globalPrefixCls}-image`;
   const cls = classnames(prefixCls, className);
-  const locale = globalLocal?.Image;
 
   const imgRef = ref || React.createRef<HTMLImageElement>();
   const status = useImage({ src, onLoad, onError });
@@ -43,10 +47,11 @@ const Image = React.forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
         return React.isValidElement(fallback) ? fallback : renderFallback(fallback);
       }
 
-      return renderFallback(locale?.loadFailed);
+      return (
+        <img className={`${prefixCls}__img`} src={src} alt={alt} ref={imgRef} {...restProps} />
+      );
     },
     [IMAGE_STATUS.LOADING]: () => {
-      console.log(placeholder, React.isValidElement(placeholder));
       if (placeholder) {
         return React.isValidElement(placeholder) ? (
           placeholder
@@ -56,9 +61,7 @@ const Image = React.forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
       }
 
       return (
-        <div className={`${prefixCls}__loading`}>
-          <ActivityIndicator type="spinner" />
-        </div>
+        <img className={`${prefixCls}__img`} src={src} alt={alt} ref={imgRef} {...restProps} />
       );
     },
   };

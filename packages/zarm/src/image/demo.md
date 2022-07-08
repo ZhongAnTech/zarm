@@ -26,7 +26,26 @@ ReactDOM.render(
     width="100px"
     height="100px"
     placeholder="加载中..."
-    fallback="图片不见啦"
+    fallback="图片不见啦........"
+  />,
+  mountNode,
+);
+```
+
+## 图片加载失败,且关闭 fallback
+
+```jsx
+import { Image } from 'zarm';
+ReactDOM.render(
+  <Image
+    src="https://zarm.com"
+    width="100px"
+    height="100px"
+    placeholder="加载中..."
+    fallback={false}
+    onError={() => {
+      console.log('trigger error');
+    }}
   />,
   mountNode,
 );
@@ -52,13 +71,21 @@ ReactDOM.render(
 
 ## API
 
-| 属性        | 类型             | 默认值 | 说明                                         |
-| :---------- | :--------------- | :----- | :------------------------------------------- |
-| src         | string           | -      | 图片地址                                     |
-| placeholder | ReactNode        | true   | 加载中的占位显示，为 `true` 时使用默认显示   |
-| fallback    | ReactNode        | true   | 加载失败的容错显示，为 `true` 时使用默认显示 |
-| width       | string \| number | -      | 图像宽度                                     |
-| height      | string \| number | -      | 图像高度                                     |
-| alt         | string           | -      | 图片描述                                     |
-| onLoad      | () => void       | -      | 加载时触发的回调函数                         |
-| onError     | () => void       | -      | 加载出错时触发的回调函数                     |
+| 属性        | 类型                                                    | 默认值 | 说明                                         |
+| :---------- | :------------------------------------------------------ | :----- | :------------------------------------------- |
+| src         | string                                                  | -      | 图片地址                                     |
+| placeholder | ReactNode                                               | true   | 加载中的占位显示，为 `true` 时使用默认显示   |
+| fallback    | ReactNode                                               | true   | 加载失败的容错显示，为 `true` 时使用默认显示 |
+| width       | string \| number                                        | -      | 图像宽度                                     |
+| height      | string \| number                                        | -      | 图像高度                                     |
+| alt         | string                                                  | -      | 图片描述                                     |
+| onLoad      | (event: React.SyntheticEvent<HTMLImageElement>) => void | -      | 加载时触发的回调函数                         |
+| onError     | (event: React.SyntheticEvent<HTMLImageElement>) => void | -      | 加载出错时触发的回调函数                     |
+
+## CSS 变量
+
+| 属性                       | 默认值    | 说明     |
+| :------------------------- | :-------- | :------- |
+| --default-background-color | '#fafafa' | 背景色   |
+| --default-text-color       | '#343434' | 字体颜色 |
+| --default-font-size        | '12px'    | 字体大小 |

@@ -1,8 +1,17 @@
 @import 'mixins';
 
 @include b(image) {
+
+  @include define(default-background-color, var(--za-image-background));
+  @include define(default-text-color, var(--za-image-text-color));
+  @include define(default-font-size, 12px);
+
   position: relative;
   display: inline-block;
+  background-color: var(--default-background-color);
+  color: var(--default-text-color);
+  font-size: var(--default-font-size);
+
 
   @include e(img) {
     display: block;
