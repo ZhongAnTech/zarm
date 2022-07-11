@@ -8,7 +8,7 @@
   color: var(--za-tooltip-color);
   z-index: var(--zindex-tooltip);
 
-  &[x-placement^=right] {
+  &[data-popper-placement^=right] {
     margin-left: r(10);
 
     @include arrow () {
@@ -18,7 +18,7 @@
     }
   }
 
-  &[x-placement^=top] {
+  &[data-popper-placement^=top] {
     margin-bottom: r(10);
 
     @include arrow () {
@@ -28,7 +28,7 @@
     }
   }
 
-  &[x-placement^=bottom] {
+  &[data-popper-placement^=bottom] {
     margin-top: r(10);
 
     @include arrow () {
@@ -38,7 +38,7 @@
     }
   }
 
-  &[x-placement^=left] {
+  &[data-popper-placement^=left] {
     margin-right: r(10);
 
     @include arrow () {

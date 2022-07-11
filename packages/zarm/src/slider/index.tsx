@@ -92,20 +92,25 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
     setCurrentValue(val);
   }, [defaultValue, value]);
 
-  const trackClick = useCallback((event: React.MouseEvent) => {
-    event.stopPropagation()
-    if (disabled) return
-    const line = lineRef.current
-    if (!line) return
-    const { left, top } = line.getBoundingClientRect();
-    const offset = vertical ?  event.clientY - top : event.clientX - left;
-    let current = getValueByOffset(offset);
-    current = Math.min(max!, Math.max(min!, current))
-    setCurrentValue(current);
-    if (typeof onChange === 'function') {
-      onChange(current);
-    }
-  }, [onChange, max, min]);
+  const trackClick = useCallback(
+    (event: React.MouseEvent) => {
+      event.stopPropagation();
+      if (disabled) return;
+      const line = lineRef.current;
+      if (!line) return;
+      const { left, top } = line.getBoundingClientRect();
+      const offset = vertical ? event.clientY - top : event.clientX - left;
+      let current = getValueByOffset(offset);
+      current = Math.min(max!, Math.max(min!, current));
+      setCurrentValue(current);
+      if (typeof onChange === 'function') {
+        onChange(current);
+      }
+    },
+    [onChange, max, min],
+  );
+
+  const tooltipRef = useRef();
 
   const bind = useDrag(
     (state) => {
@@ -115,12 +120,13 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
         offsetStart.current = getOffsetByValue(currentValue);
         setTooltip(true);
       }
-      Tooltip.updateAll();
+      /* @ts-ignore */
+      tooltipRef?.current?.update();
       let offset = vertical ? offsetY : offsetX;
       offset += offsetStart.current;
       const maxOffset = getMaxOffset();
       offset = Math.min(maxOffset, Math.max(offset, 0));
-      const current = getValueByOffset(offset)
+      const current = getValueByOffset(offset);
       setCurrentValue(current);
       if (typeof onSlideChange === 'function' && state.dragging && !state.first) {
         onSlideChange(current);
@@ -228,7 +234,13 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
           style={knobStyle}
           {...bind()}
         >
-          <Tooltip trigger="manual" arrowPointAtCenter visible={tooltip} content={currentValue}>
+          <Tooltip
+            trigger="manual"
+            arrowPointAtCenter
+            visible={tooltip}
+            content={currentValue}
+            ref={tooltipRef}
+          >
             <div className={bem('knob__shadow')} />
           </Tooltip>
         </div>

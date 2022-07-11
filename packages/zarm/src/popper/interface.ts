@@ -25,6 +25,7 @@ export default interface BasePopperProps {
   trigger?: PopperTrigger;
   animationType?: string;
   animationDuration?: number;
+  arrowClassName?: string;
   // popperOptions?: PopperJS.PopperOptions;
   // modifiers?: PopperJS.Modifiers;
   content?: React.ReactNode;

@@ -1,0 +1,39 @@
+@include b(popper) {
+  @include m(topLeft, bottomLeft) {
+    @include e(arrow) {
+      left: 10px;
+    }
+  }
+
+  @include m(topRight, bottomRight) {
+    @include e(arrow) {
+      right: 10px;
+    }
+  }
+
+  // @include m(top, bottom) {
+  //   @include e(arrow) {
+  //     left: 50%;
+  //     transform: translateX(-50%);
+  //   }
+  // }
+
+  // @include m(left, right) {
+  //   @include e(arrow) {
+  //     top: 50%;
+  //     transform: translateY(-50%);
+  //   }
+  // }
+
+  @include m(leftTop, rightTop) {
+    @include e(arrow) {
+      top: 10px;
+    }
+  }
+
+  @include m(leftBottom, rightBottom) {
+    @include e(arrow) {
+      bottom: 10px;
+    }
+  }
+}

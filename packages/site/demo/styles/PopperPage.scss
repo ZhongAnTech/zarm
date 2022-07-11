@@ -17,6 +17,7 @@
       width: r(100);
       height: r(50);
       color: #333;
+      z-index: 1;
     }
 
     // 自定义箭头
@@ -29,7 +30,7 @@
         border-style: solid;
       }
 
-      &[x-placement^=top] {
+      &[data-popper-placement^=top] {
         margin-bottom: r(10);
 
         .za-popper__arrow {
@@ -39,7 +40,7 @@
         }
       }
 
-      &[x-placement^=right] {
+      &[data-popper-placement^=right] {
         margin-left: r(10);
 
         .za-popper__arrow {
@@ -49,7 +50,7 @@
         }
       }
 
-      &[x-placement^=bottom] {
+      &[data-popper-placement^=bottom] {
         margin-top: r(10);
 
         .za-popper__arrow {
@@ -59,7 +60,7 @@
         }
       }
 
-      &[x-placement^=left] {
+      &[data-popper-placement^=left] {
         margin-right: r(10);
 
         .za-popper__arrow {

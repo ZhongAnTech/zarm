@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tooltip renders correctly 1`] = `
-<Tooltip
+<ForwardRef
   direction="top"
   hasArrow={true}
   onVisibleChange={[Function]}
@@ -10,5 +10,5 @@ exports[`Tooltip renders correctly 1`] = `
   <span>
     foo
   </span>
-</Tooltip>
+</ForwardRef>
 `;
