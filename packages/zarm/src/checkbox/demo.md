@@ -338,6 +338,8 @@ ReactDOM.render(
 
 ## CSS 变量
 
+### Checkbox
+
 | 属性                           | 默认值                                       | 说明                     |
 | :----------------------------- | :------------------------------------------- | :----------------------- |
 | --widget-size                  | '22px'                                       | 控件大小                 |
@@ -352,9 +354,13 @@ ReactDOM.render(
 | --active-opacity               | 0.6                                          | 激活状态透明度           |
 | --checked-widget-background    | 'var(--za-theme-primary)'                    | 选中状态控件背景色       |
 | --checked-widget-border-color  | 'var(--za-theme-primary)'                    | 选中状态控件边框颜色     |
+| --checked-marker-color         | 'var(--za-theme-primary)'                    | 选中状态勾选图标颜色     |
 | --disabled-widget-background   | '#f2f2f2'                                    | 禁用状态控件背景色       |
 | --disabled-widget-border-color | 'rgba(199, 199, 204, 0.7)'                   | 禁用状态控件控件边框颜色 |
 | --disabled-text-color          | 'rgba(0, 0, 0, 0.3)'                         | 禁用状态控件文字颜色     |
 | --disabled--marker-color       | '#bcbcbc'                                    | 禁用状态控件勾选图标颜色 |
-| --group-spacing-vertical       | '8px'                                        | 组合使用时的纵向间距     |
-| --group-spacing-horizontal     | '24px'                                       | 组合使用时的横向间距     |
+
+### Checkbox.Group
+
+| --group-spacing-vertical | '8px' | 组合使用时的纵向间距 |
+| --group-spacing-horizontal | '24px' | 组合使用时的横向间距 |
