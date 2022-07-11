@@ -9,7 +9,7 @@ export const themes = {
   '--border-color': '#3a3b3d',
   '--opacity-mask': '0.7',
   '--calendar-background': 'transparent',
-  '--calendar-week-bar-background': '#303030',
+  '--calendar-week-background': '#303030',
   '--picker-background': '#000',
   '--picker-header-background': '#1b1c1e',
   '--picker-mask-background-start': 'rgba(0, 0, 0, 0.4)',

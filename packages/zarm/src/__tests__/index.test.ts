@@ -39,7 +39,6 @@ describe('index', () => {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
             "shape": "dot",
-            "theme": "danger",
           },
           "render": [Function],
         },
@@ -60,6 +59,13 @@ describe('index', () => {
         },
         "Calendar": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "dateRender": [Function],
+            "direction": "vertical",
+            "disabledDate": [Function],
+            "header": false,
+            "mode": "single",
+          },
           "render": [Function],
         },
         "Carousel": Object {

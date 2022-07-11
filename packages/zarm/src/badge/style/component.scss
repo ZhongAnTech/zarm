@@ -1,24 +1,25 @@
-@import 'mixins';
-
 @include b(badge) {
-  @include define(height, 14px);
-  @include define(font-size, 10px);
-  @include define(text-color, #fff);
-  @include define(border-radius, var(--za-radius-sm));
-  @include define(padding-horizontal, 4px);
   @include define(dot-size, 8px);
-  @include define(sup-offset, -4px);
+  @include define(color, var(--za-theme-danger));
+  @include define(text-color, #fff);
+  @include define(border-color, #fff);
+  @include define(font-size, 10px);
+  @include define(height, 14px);
+  @include define(padding-horizontal, 4px);
+  @include define(border-radius, var(--za-radius-sm));
+  @include define(top, 0);
+  @include define(right, 0);
 
   position: relative;
   display: inline-block;
   vertical-align: middle;
-  @include badge-theme(var(--za-theme-danger));
 
   @include e(content) {
     display: flex;
     justify-content: center;
     align-items: center;
     top: auto;
+    background-color: var(--color);
     color: var(--text-color);
     font-size: var(--font-size);
     height: var(--height);
@@ -28,28 +29,13 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  @include m(primary) {
-    @include badge-theme(var(--za-theme-primary));
-  }
-
-  @include m(success) {
-    @include badge-theme(var(--za-theme-success));
-  }
-
-  @include m(warning) {
-    @include badge-theme(var(--za-theme-warning));
-  }
-
-  @include m(danger) {
-    @include badge-theme(var(--za-theme-danger));
-  }
-
   @include m(dot) {
+    @include define(height, var(--dot-size));
     @include e(content) {
       width: var(--dot-size);
       height: var(--dot-size);
+      border-radius: 50%;
       padding: 0;
-      border-radius: var(--za-radius-circle);
     }
   }
 
@@ -62,14 +48,14 @@
   @include m(round) {
     @include e(content) {
       min-width: var(--height);
-      border-radius: var(--za-radius-round);
+      border-radius: var(--height);
     }
   }
 
   @include m(circle) {
     @include e(content) {
       width: var(--height);
-      border-radius: var(--za-radius-circle);
+      border-radius: 50%;
       padding: 0;
     }
   }
@@ -77,22 +63,22 @@
   @include m(leaf) {
     @include e(content) {
       min-width: var(--height);
-      border-radius: var(--za-radius-round) var(--za-radius-round) var(--za-radius-round) 0;
+      border-radius: var(--height) var(--height) var(--height) 0;
     }
   }
 
   @include m(sup) {
     @include e(content) {
       position: absolute;
-      top: 0;
-      left: 100%;
-      transform: translateX(calc(var(--height) / -2)) translateY(var(--sup-offset));
+      top: var(--top);
+      right: var(--right);
+      transform: translate3d(calc(100% - var(--height) / 2), -50%, 0);
     }
+  }
 
-    @include m(dot) {
-      @include e(content) {
-        transform: translateX(calc(var(--dot-size) / -2)) translateY(-50%);
-      }
+  @include m(bordered) {
+    @include e(content) {
+      border: 1px solid var(--border-color);
     }
   }
 }

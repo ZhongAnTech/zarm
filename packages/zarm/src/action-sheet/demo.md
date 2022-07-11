@@ -249,14 +249,14 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## CSS 变量
 
-| 属性                                | 类型                                | 默认值                    | 说明               |
-| :---------------------------------- | :---------------------------------- | :------------------------ | :----------------- |
-| --za-action-sheet-background        | React.CSSProperties['background']   | '#fff'                    | 背景色             |
-| --za-action-sheet-border-radius     | React.CSSProperties['borderRadius'] | '14px'                    | 圆角大小           |
-| --za-action-sheet-spacing-margin    | React.CSSProperties['margin']       | '8px'                     | 边距               |
-| --za-action-sheet-item-height       | React.CSSProperties['height']       | '56px'                    | 选项高度           |
-| --za-action-sheet-item-font-size    | React.CSSProperties['fontSize']     | '20px'                    | 选项字体大小       |
-| --za-action-sheet-item-font-weight  | React.CSSProperties['fontWeight']   | 500                       | 选项字体粗细       |
-| --za-action-sheet-item-text-color   | React.CSSProperties['color']        | 'var(--za-theme-primary)' | 选项字体色         |
-| --za-action-sheet-cancel-text-color | React.CSSProperties['color']        | 'var(--za-theme-primary)' | 取消选项字体大小   |
-| --za-action-sheet-cancel-margin-top | React.CSSProperties['marginTop']    | '8px'                     | 取消选项上边距大小 |
+| 属性                | 默认值                    | 说明               |
+| :------------------ | :------------------------ | :----------------- |
+| --background        | '#fff'                    | 背景色             |
+| --border-radius     | '14px'                    | 圆角大小           |
+| --spacing-margin    | '8px'                     | 边距               |
+| --item-height       | '56px'                    | 选项高度           |
+| --item-font-size    | '20px'                    | 选项字体大小       |
+| --item-font-weight  | 500                       | 选项字体粗细       |
+| --item-text-color   | 'var(--za-theme-primary)' | 选项字体色         |
+| --cancel-text-color | 'var(--za-theme-primary)' | 取消选项字体大小   |
+| --cancel-margin-top | '8px'                     | 取消选项上边距大小 |

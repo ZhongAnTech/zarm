@@ -1,11 +1,28 @@
 @import '../../button/style/mixins';
 
 @include b(checkbox) {
+  @include define(widget-size, 22px);
+  @include define(widget-background, transparent);
+  @include define(widget-border-radius, 22px);
+  @include define(widget-border-width, 1px);
+  @include define(widget-border-color, rgb(199, 199, 204));
+  @include define(marker-font-size, 16px);
+  @include define(marker-color, #fff);
+  @include define(marker-transition, all 0.2s cubic-bezier(.71, -0.46, .88, .6));
+  @include define(text-margin-horizontal, 8px);
+  @include define(active-opacity, 0.6);
+  @include define(checked-widget-background, var(--za-theme-primary));
+  @include define(checked-widget-border-color, var(--za-theme-primary));
+  @include define(disabled-widget-background, #f2f2f2);
+  @include define(disabled-widget-border-color, rgba(199, 199, 204, 0.7));
+  @include define(disabled-text-color, rgba(0, 0, 0, 0.3));
+  @include define(disabled-marker-color, #bcbcbc);
+
   display: inline-block;
   position: relative;
 
   &:not(&--disabled):active {
-    opacity: var(--za-checkbox-active-opacity);
+    opacity: var(--active-opacity);
   }
 
   @include e(widget) {
@@ -25,44 +42,32 @@
 
   @include e(text) {
     vertical-align: middle;
-    margin: 0 var(--za-checkbox-text-spacing-horizontal);
+    margin: 0 var(--text-margin-horizontal);
   }
 
   @include e(inner) {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: var(--za-checkbox-size);
-    height: var(--za-checkbox-size);
-    border: var(--za-checkbox-border-width) solid var(--za-checkbox-border-color);
-    border-radius: var(--za-checkbox-radius);
-    background-color: var(--za-checkbox-background);
+    width: var(--widget-size);
+    height: var(--widget-size);
+    border: var(--widget-border-width) solid var(--widget-border-color);
+    border-radius: var(--widget-border-radius);
+    background-color: var(--widget-background);
 
     @include e(marker) {
-      font-size: var(--za-checkbox-marker-font-size);
-      color: var(--za-checkbox-marker-color);
+      font-size: var(--marker-font-size);
+      color: var(--marker-color);
       transform: scale(0);
-      transition: var(--za-checkbox-marker-transition);
+      transition: var(--marker-transition);
     }
   }
 
-  // 半选状态
-  @include m(indeterminate) {
+  // 选中/半选状态
+  @include m(checked, indeterminate) {
     @include e(inner) {
-      border-color: var(--za-checkbox-checked-border-color);
-      background-color: var(--za-checkbox-checked-background);
-
-      @include e(marker) {
-        transform: scale(1);
-      }
-    }
-  }
-
-  // 选中状态
-  @include m(checked) {
-    @include e(inner) {
-      border-color: var(--za-checkbox-checked-border-color);
-      background-color: var(--za-checkbox-checked-background);
+      border-color: var(--checked-widget-border-color);
+      background-color: var(--checked-widget-background);
 
       @include e(marker) {
         transform: scale(1);
@@ -77,21 +82,21 @@
     }
 
     @include e(text) {
-      color: var(--za-checkbox-disabled-text-color);
+      color: var(--disabled-text-color);
     }
 
     @include e(inner) {
-      border-color: var(--za-checkbox-disabled-border-color);
-      background-color: var(--za-checkbox-disabled-background);
+      border-color: var(--disabled-widget-border-color);
+      background-color: var(--disabled-widget-background);
     }
 
     @include m(checked) {
       @include e(inner) {
-        border-color: var(--za-checkbox-disabled-border-color);
-        background-color: var(--za-checkbox-disabled-background);
+        border-color: var(--disabled-widget-border-color);
+        background-color: var(--disabled-widget-background);
 
         @include e(marker) {
-          color: var(--za-checkbox-disabled-marker-color);
+          color: var(--disabled-marker-color);
         }
       }
     }
@@ -104,18 +109,21 @@
 }
 
 @include b(checkbox-group) {
+  @include define(group-spacing-vertical, 8px);
+  @include define(group-spacing-horizontal, 24px);
+
   display: inline-block;
   vertical-align: middle;
   overflow: hidden;
 
   @include e(inner) {
-    margin-right: calc(var(--za-checkbox-group-spacing-horizontal) * -1);
-    margin-bottom: calc(var(--za-checkbox-group-spacing-vertical) * -1);
+    margin-right: calc(var(--group-spacing-horizontal) * -1);
+    margin-bottom: calc(var(--group-spacing-vertical) * -1);
   }
 
   @include b(checkbox) {
-    margin-right: var(--za-checkbox-group-spacing-horizontal);
-    margin-bottom: var(--za-checkbox-group-spacing-vertical);
+    margin-right: var(--group-spacing-horizontal);
+    margin-bottom: var(--group-spacing-vertical);
   }
 
   // 通栏样式
@@ -134,165 +142,23 @@
 
   // 按钮样式
   @include m(button) {
-    @include b(checkbox) {
-      @include button-base();
-      @include button-shape(var(--radius-xs));
-      @include button-theme(
-        var(--za-button-default-background),
-        var(--za-button-default-border),
-        var(--za-button-default-color),
-        var(--za-button-default-background),
-        var(--za-button-default-border),
-        var(--za-button-default-color),
-        var(--za-button-default-background),
-        var(--za-button-default-border),
-        var(--za-button-default-color),
-        var(--za-button-disabled-opacity),
-        var(--za-button-default-shadow-color),
-      );
-
-      @include e(text) {
-        margin: 0;
-      }
-
-      @include m(checked) {
-        @include button-theme(
-          var(--za-button-primary-background),
-          var(--za-button-primary-border),
-          var(--za-button-primary-color),
-          var(--za-button-primary-active-background),
-          var(--za-button-primary-active-border),
-          var(--za-button-primary-active-color),
-          var(--za-button-primary-background),
-          var(--za-button-primary-border),
-          var(--za-button-primary-color),
-          var(--za-button-disabled-opacity),
-          var(--za-button-primary-shadow-color),
-        );
-      }
-    }
-
-    @include m(block) {
-      @include b(checkbox) {
-        flex: 1;
-      }
-    }
-
-    // button shape
-    @include m(button-rect) {
-      @include b(checkbox) {
-        @include button-shape(0);
-      }
-    }
-
-    @include m(button-radius) {
-      @include b(checkbox) {
-        @include button-shape(var(--radius-md));
-      }
-    }
-
-    @include m(button-round) {
-      @include b(checkbox) {
-        @include button-shape(var(--radius-round));
-      }
-    }
-
-    @include m(button-circle) {
-      @include b(checkbox) {
-        @include button-shape(var(--radius-circle));
-      }
-    }
+    @include define(group-spacing-vertical, var(--za-padding-v-md));
+    @include define(group-spacing-horizontal, var(--za-padding-h-md));
 
     // button sizes
     @include m(button-lg) {
-      @include e(inner) {
-        margin-right: calc(var(--za-checkbox-group-button-spacing-horizontal-lg) * -1);
-        margin-bottom: calc(var(--za-checkbox-group-button-spacing-vertical-lg) * -1);
-      }
-
-      @include b(checkbox) {
-        margin-right: var(--za-checkbox-group-button-spacing-horizontal-lg);
-        margin-bottom: var(--za-checkbox-group-button-spacing-vertical-lg);
-        @include button-size(
-          var(--za-button-height-lg),
-          var(--za-button-padding-h-lg),
-          var(--za-button-font-size-lg),
-          var(--za-button-icon-size-lg),
-        );
-      }
-    }
-
-    @include m(button-md) {
-      @include e(inner) {
-        margin-right: calc(var(--za-checkbox-group-button-spacing-horizontal-md) * -1);
-        margin-bottom: calc(var(--za-checkbox-group-button-spacing-vertical-md) * -1);
-      }
-
-      @include b(checkbox) {
-        margin-right: var(--za-checkbox-group-button-spacing-horizontal-md);
-        margin-bottom: var(--za-checkbox-group-button-spacing-vertical-md);
-        @include button-size(
-          var(--za-button-height-md),
-          var(--za-button-padding-h-md),
-          var(--za-button-font-size-md),
-          var(--za-button-icon-size-md),
-        );
-      }
+      @include define(group-spacing-vertical, var(--za-padding-v-lg));
+      @include define(group-spacing-horizontal, var(--za-padding-h-lg));
     }
 
     @include m(button-sm) {
-      @include e(inner) {
-        margin-right: calc(var(--za-checkbox-group-button-spacing-horizontal-sm) * -1);
-        margin-bottom: calc(var(--za-checkbox-group-button-spacing-vertical-sm) * -1);
-      }
-
-      @include b(checkbox) {
-        margin-right: var(--za-checkbox-group-button-spacing-horizontal-sm);
-        margin-bottom: var(--za-checkbox-group-button-spacing-vertical-sm);
-        @include button-size(
-          var(--za-button-height-sm),
-          var(--za-button-padding-h-sm),
-          var(--za-button-font-size-sm),
-          var(--za-button-icon-size-sm),
-        );
-      }
+      @include define(group-spacing-vertical, var(--za-padding-v-sm));
+      @include define(group-spacing-horizontal, var(--za-padding-h-sm));
     }
 
     @include m(button-xs) {
-      @include e(inner) {
-        margin-right: calc(var(--za-checkbox-group-button-spacing-horizontal-xs) * -1);
-        margin-bottom: calc(var(--za-checkbox-group-button-spacing-vertical-xs) * -1);
-      }
-
-      @include b(checkbox) {
-        margin-right: var(--za-checkbox-group-button-spacing-horizontal-xs);
-        margin-bottom: var(--za-checkbox-group-button-spacing-vertical-xs);
-        @include button-size(
-          var(--za-button-height-xs),
-          var(--za-button-padding-h-xs),
-          var(--za-button-font-size-xs),
-          var(--za-button-icon-size-xs),
-        );
-      }
-    }
-
-    // button ghost
-    @include m(button-ghost) {
-      @include b(checkbox) {
-        @include m(checked) {
-          @include button-ghost(
-            transparent,
-            var(--za-checkbox-checked-border-color),
-            var(--theme-primary),
-            transparent,
-            var(--za-checkbox-checked-border-color),
-            var(--theme-primary),
-            transparent,
-            var(--za-checkbox-checked-border-color),
-            var(--theme-primary),
-          );
-        }
-      }
+      @include define(group-spacing-vertical, var(--za-padding-v-xs));
+      @include define(group-spacing-horizontal, var(--za-padding-h-xs));
     }
 
     // button compact

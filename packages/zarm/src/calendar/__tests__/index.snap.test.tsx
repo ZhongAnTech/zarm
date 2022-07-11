@@ -28,17 +28,16 @@ describe('Calendar snapshot', () => {
       value: [date2, date6],
       min: date2,
       max: date6,
-      startMonth: date2,
-      endMonth: date6,
       refresh: false,
       steps: 1,
-      multiple: false,
+      mode: 'multiple',
+      direction: 'vertical',
     });
     jest.spyOn(DateTool, 'cloneDate').mockReturnValue(date7);
     jest.spyOn(DateTool, 'getMonthCount').mockReturnValue(1);
 
     const wrapper = mount(
-      <Calendar defaultValue={date2} min={date2} max={date6} multiple={false} />,
+      <Calendar defaultValue={date2} min={date2} max={date6} mode="multiple" />,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();

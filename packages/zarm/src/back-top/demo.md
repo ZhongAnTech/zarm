@@ -75,3 +75,10 @@ ReactDOM.render(<Demo />, mountNode);
 | mountContainer  | HTMLElement \| (() => HTMLElement)            | document.body | 设置挂载容器             |
 | destroy         | boolean                                       | true          | 组件不可见时是否移除节点 |
 | onClick         | (event: MouseEvent\<HTMLDivElement\>) => void | -             | 点击后触发的回调函数     |
+
+## CSS 变量
+
+| 属性     | 默认值 | 说明                             |
+| :------- | :----- | :------------------------------- |
+| --right  | '50px' | 返回顶部的按钮基于容器的右侧间距 |
+| --bottom | '50px' | 返回顶部的按钮基于容器的底部间距 |

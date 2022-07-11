@@ -22,7 +22,7 @@
     - 新增属性 `onClose`，关闭触发的回调函数。
   - [Select]
     - 移除属性 `hasArrow`，默认展示箭头。
-  - [DateSelect]
+  - [DateSelect]
     - 移除属性 `hasArrow`，默认展示箭头。
   - [Cell]
     - 变更为 List 和 List.Item 组件，样式结构调整。
@@ -42,6 +42,9 @@
     - 属性 `ghost` 变更为 `buttonGhost`。
     - 属性 `compact` 变更为 `buttonCompact`。
     - 新增属性 `listMarkerAlign` ，用于设置列表类型时标记的位置。
+  - [Badge]
+    - 移除属性 `theme`，颜色设置通过 css 变量 --background 来定义。
+    - 新增属性 `bordered` ，用于判断徽标是否有边框。
 
   组件更名
 

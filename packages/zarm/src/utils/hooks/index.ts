@@ -6,3 +6,4 @@ export { default as useUpdateEffect } from './useUpdateEffect';
 export { default as useControllableValue } from './useControllableValue';
 export { default as useSafeLayoutEffect } from './useSafeLayoutEffect';
 export { default as useMutationObserverRef } from './useMutationObserverRef';
+export { default as useLatest } from './useLatest';

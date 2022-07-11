@@ -40,8 +40,7 @@
     }
 
     @include m(blank) {
-      @include define(item-background, transparent);
-
+      background-color: transparent;
       box-shadow: none;
     }
 

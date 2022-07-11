@@ -1,40 +1,30 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import { Success as SuccessIcon, Minus as MinusIcon } from '@zarm-design/icons';
-import type { BaseCheckboxProps } from './interface';
-import CheckboxGroup from './CheckboxGroup';
-import List from '../list';
-import type { ListItemProps } from '../list';
 import { ConfigContext } from '../n-config-provider';
+import Button from '../button';
+import List from '../list';
+import type { BaseCheckboxProps, BaseCheckboxGroupProps } from './interface';
+import type { ListItemProps } from '../list';
+import type { ButtonProps } from '../button';
+import type { HTMLProps } from '../utils/utilityTypes';
 
 const getChecked = (props: CheckboxProps, defaultChecked?: boolean) => {
   return props.checked ?? props.defaultChecked ?? defaultChecked;
 };
 
-type CheckboxSpanProps = Omit<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
->;
-type CheckboxListProps = Omit<
-  React.HTMLAttributes<HTMLDivElement>,
-  'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
->;
-type CheckboxButtonProps = Omit<
-  React.ButtonHTMLAttributes<HTMLButtonElement>,
-  'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
->;
-
-export type CheckboxProps = Partial<CheckboxSpanProps & CheckboxListProps & CheckboxButtonProps> &
-  BaseCheckboxProps & {
+type CheckboxNormalProps = BaseCheckboxProps &
+  HTMLProps & {
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   };
 
-interface CompoundedComponent
-  extends React.ForwardRefExoticComponent<CheckboxProps & React.RefAttributes<HTMLElement>> {
-  Group: typeof CheckboxGroup;
-}
+type CheckboxButtonProps = CheckboxNormalProps &
+  ButtonProps &
+  Pick<BaseCheckboxGroupProps, 'buttonGhost' | 'buttonSize' | 'buttonShape'>;
 
-const Checkbox = React.forwardRef<unknown, CheckboxProps>((props, ref) => {
+export type CheckboxProps = Partial<CheckboxNormalProps & CheckboxButtonProps>;
+
+const Checkbox = React.forwardRef<unknown, CheckboxButtonProps>((props, ref) => {
   const {
     className,
     type,
@@ -45,11 +35,13 @@ const Checkbox = React.forwardRef<unknown, CheckboxProps>((props, ref) => {
     id,
     listMarkerAlign,
     indeterminate,
+    buttonGhost,
+    buttonShape,
+    buttonSize,
     children,
     onChange,
     ...restProps
   } = props;
-
   const checkboxRef = (ref as any) || React.createRef<HTMLElement>();
   const [currentChecked, setCurrentChecked] = React.useState(
     getChecked({ checked, defaultChecked }),
@@ -92,7 +84,7 @@ const Checkbox = React.forwardRef<unknown, CheckboxProps>((props, ref) => {
   );
 
   const checkboxRender = (
-    <span ref={checkboxRef} className={cls} {...(restProps as CheckboxSpanProps)}>
+    <span ref={checkboxRef} className={cls} {...(restProps as CheckboxNormalProps)}>
       <span className={`${prefixCls}__widget`}>
         <span className={`${prefixCls}__inner`}>
           {indeterminate ? (
@@ -142,21 +134,24 @@ const Checkbox = React.forwardRef<unknown, CheckboxProps>((props, ref) => {
 
   if (type === 'button') {
     return (
-      <button
+      <Button
         ref={checkboxRef}
-        type="button"
-        disabled={disabled}
         className={cls}
+        disabled={disabled}
+        theme={checked ? 'primary' : 'default'}
+        ghost={buttonGhost && checked}
+        shape={buttonShape}
+        size={buttonSize}
         {...(restProps as CheckboxButtonProps)}
       >
         {children}
         {inputRender}
-      </button>
+      </Button>
     );
   }
 
   return checkboxRender;
-}) as CompoundedComponent;
+});
 
 Checkbox.displayName = 'Checkbox';
 
