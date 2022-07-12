@@ -9,8 +9,8 @@ describe('Mask', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('type is transparent', () => {
-    const wrapper = render(<Mask visible type="transparent" />);
+  it('color is transparent', () => {
+    const wrapper = render(<Mask visible color="transparent" />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 

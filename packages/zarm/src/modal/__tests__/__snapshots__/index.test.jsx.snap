@@ -9,7 +9,6 @@ exports[`Modal renders correctly 1`] = `
   destroy={true}
   mask={true}
   maskClosable={false}
-  maskType="normal"
   onCancel={[MockFunction]}
   onMaskClick={[MockFunction]}
   shape="radius"
@@ -25,7 +24,6 @@ exports[`Modal renders correctly 1`] = `
     direction="center"
     lockScroll={true}
     mask={true}
-    maskType="normal"
     onCancel={[MockFunction]}
     onMaskClick={[Function]}
     visible={true}
@@ -38,7 +36,6 @@ exports[`Modal renders correctly 1`] = `
       direction="center"
       handlePortalUnmount={[Function]}
       mask={true}
-      maskType="normal"
       onCancel={[MockFunction]}
       onMaskClick={[Function]}
       prefixCls="za-popup"
@@ -56,8 +53,8 @@ exports[`Modal renders correctly 1`] = `
               class="za-popup-container za-modal za-modal--radius"
             >
               <div
-                class="za-mask za-fade-enter za-mask--normal"
-                style="animation-duration: 200ms;"
+                class="za-mask za-fade-enter"
+                style="animation-duration: 200ms; background-color: rgba(0, 0, 0, 0.55);"
               />
               <div
                 class="za-popup__wrapper za-fade-enter"
@@ -109,21 +106,23 @@ exports[`Modal renders correctly 1`] = `
         >
           <Mask
             className="za-fade-enter"
+            color="black"
+            opacity="normal"
             style={
               Object {
                 "WebkitAnimationDuration": "200ms",
                 "animationDuration": "200ms",
               }
             }
-            type="normal"
             visible={true}
           >
             <div
-              className="za-mask za-fade-enter za-mask--normal"
+              className="za-mask za-fade-enter"
               style={
                 Object {
                   "WebkitAnimationDuration": "200ms",
                   "animationDuration": "200ms",
+                  "backgroundColor": "rgba(0, 0, 0, 0.55)",
                 }
               }
             />

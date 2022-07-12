@@ -1,4 +1,5 @@
 export interface BaseMaskProps {
   visible?: boolean;
-  type?: 'normal' | 'transparent';
+  color?: 'black' | 'white' | 'transparent';
+  opacity?: 'normal' | 'light' | 'dark' | number;
 }

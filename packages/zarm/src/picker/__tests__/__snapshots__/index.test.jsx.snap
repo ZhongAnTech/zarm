@@ -91,8 +91,8 @@ exports[`Picker Picker render visible 1`] = `
                   class="za-popup-container"
                 >
                   <div
-                    class="za-mask za-fade-enter za-mask--normal"
-                    style="animation-duration: 200ms;"
+                    class="za-mask za-fade-enter"
+                    style="animation-duration: 200ms; background-color: rgba(0, 0, 0, 0.55);"
                   />
                   <div
                     class="za-popup__wrapper"
@@ -170,21 +170,23 @@ exports[`Picker Picker render visible 1`] = `
             >
               <Mask
                 className="za-fade-enter"
+                color="black"
+                opacity="normal"
                 style={
                   Object {
                     "WebkitAnimationDuration": "200ms",
                     "animationDuration": "200ms",
                   }
                 }
-                type="normal"
                 visible={true}
               >
                 <div
-                  className="za-mask za-fade-enter za-mask--normal"
+                  className="za-mask za-fade-enter"
                   style={
                     Object {
                       "WebkitAnimationDuration": "200ms",
                       "animationDuration": "200ms",
+                      "backgroundColor": "rgba(0, 0, 0, 0.55)",
                     }
                   }
                 />

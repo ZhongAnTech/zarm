@@ -111,7 +111,6 @@ Modal.defaultProps = {
   animationDuration: 200,
   width: '70%',
   mask: true,
-  maskType: 'normal',
   shape: 'radius',
   closable: false,
   maskClosable: false,

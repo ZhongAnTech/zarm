@@ -149,7 +149,7 @@ describe('Portal', () => {
   });
 
   it('should render popup with normal mask which will perform a fade in animation', () => {
-    const wrapper = mount(<Portal visible maskType="normal" />);
+    const wrapper = mount(<Portal visible maskColor="white" />);
     expect(wrapper.find(Mask).exists()).toBeTruthy();
     expect(wrapper.find(Mask).props()).toEqual(
       expect.objectContaining({
@@ -159,13 +159,13 @@ describe('Portal', () => {
           animationDuration: `200ms`,
         },
         visible: true,
-        type: 'normal',
+        color: 'white',
       }),
     );
   });
 
   it('should render a transparent mask which will perform a fade out animation', () => {
-    const wrapper = mount(<Portal maskType="transparent" />);
+    const wrapper = mount(<Portal maskColor="transparent" />);
     expect(wrapper.find(Mask).exists()).toBeTruthy();
     expect(wrapper.find(Mask).props()).toEqual(
       expect.objectContaining({
@@ -175,7 +175,7 @@ describe('Portal', () => {
           animationDuration: `200ms`,
         },
         visible: true,
-        type: 'transparent',
+        color: 'transparent',
       }),
     );
   });

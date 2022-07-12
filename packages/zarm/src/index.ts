@@ -66,7 +66,7 @@ export { default as KeyboardPicker } from './keyboard-picker';
 
 export { default as Loading } from './loading';
 
-export type { MaskProps } from './mask';
+export type { MaskProps, MaskCssVars } from './mask';
 export { default as Mask } from './mask';
 
 export type { MessageProps } from './message';
