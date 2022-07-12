@@ -4,13 +4,43 @@
 
 ```jsx
 import { Image } from 'zarm';
+const imgSrc = 'https://cdn-health.zhongan.com/zarm/imagePreview/1.jpg';
 ReactDOM.render(
   <>
-    <Image
-      src="https://camo.githubusercontent.com/f5847256d81e5f8c31aee6554f749baf64654a131fed0fca987bd39e023a690f/68747470733a2f2f7a61726d2e64657369676e2f696d616765732f6c6f676f2e31613663666333302e737667"
-      width="100px"
-      height="100px"
-    />
+    <Image src={imgSrc} width="100px" height="100px" />
+  </>,
+  mountNode,
+);
+```
+
+## 多种填充模式
+
+```jsx
+import { Image } from 'zarm';
+const imgSrc = 'https://cdn-health.zhongan.com/zarm/imagePreview/1.jpg';
+ReactDOM.render(
+  <>
+    <Image src={imgSrc} width="100px" height="100px" fit="fill" />
+    <Image src={imgSrc} width="100px" height="100px" fit="contain" />
+    <Image src={imgSrc} width="100px" height="100px" fit="cover" />
+    <Image src={imgSrc} width="100px" height="100px" fit="scale-down" />
+    <Image src={imgSrc} width="100px" height="100px" fit="none" />
+  </>,
+  mountNode,
+);
+```
+
+## 多种形状
+
+```jsx
+import { Image } from 'zarm';
+const imgSrc = 'https://cdn-health.zhongan.com/zarm/imagePreview/1.jpg';
+ReactDOM.render(
+  <>
+    <Image src={imgSrc} width="100px" height="200px" shape="rect" />
+    <Image src={imgSrc} width="100px" height="200px" shape="radius" />
+    <Image src={imgSrc} width="100px" height="200px" shape="round" />
+    <Image src={imgSrc} width="100px" height="200px" shape="circle" />
   </>,
   mountNode,
 );
@@ -71,15 +101,29 @@ ReactDOM.render(
 
 ```jsx
 import { Image } from 'zarm';
+const imgSrc = 'https://cdn-health.zhongan.com/zarm/imagePreview/1.jpg';
 ReactDOM.render(
   <>
     <Image
-      src="https://camo.githubusercontent.com/f5847256d81e5f8c31aee6554f749baf64654a131fed0fca987bd39e023a690f/68747470733a2f2f7a61726d2e64657369676e2f696d616765732f6c6f676f2e31613663666333302e737667"
+      src={imgSrc}
       width="100px"
       height="100px"
       placeholder={<span>加载中</span>}
       fallback={<span>图片不见啦</span>}
     />
+  </>,
+  mountNode,
+);
+```
+
+## 点击预览
+
+```jsx
+import { Image } from 'zarm';
+const imgSrc = 'https://cdn-health.zhongan.com/zarm/imagePreview/1.jpg';
+ReactDOM.render(
+  <>
+    <Image src={imgSrc} width="100px" height="100px" shape="rect" preview />
   </>,
   mountNode,
 );

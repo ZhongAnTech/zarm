@@ -5,9 +5,23 @@
   @include define(default-background-color, var(--za-image-background));
   @include define(default-text-color, var(--za-image-text-color));
   @include define(default-font-size, 12px);
-
+  
   position: relative;
   display: inline-block;
+  overflow: hidden;
+
+  @include m(radius) {
+    @include define(default-radius, 15px);
+    border-radius: var(--default-radius);
+  }
+  
+  @include m(round) {
+    border-radius: 44px;
+  }
+
+  @include m(circle) {
+    border-radius: 50%;
+  }
 
   @include e(img) {
     display: block;
