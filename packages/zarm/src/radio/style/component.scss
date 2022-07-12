@@ -13,6 +13,7 @@
   @include define(active-opacity, 0.6);
   @include define(checked-widget-background, transparent);
   @include define(checked-widget-border-color, var(--za-theme-primary));
+  @include define(checked-marker-color, var(--za-theme-primary));
   @include define(disabled-widget-background, transparent);
   @include define(disabled-widget-border-color, rgba(199, 199, 204, 0.7));
   @include define(disabled-text-color, rgba(0, 0, 0, 0.3));
@@ -70,6 +71,7 @@
       background-color: var(--checked-widget-background);
 
       @include e(marker) {
+        color: var(--checked-marker-color);
         transform: scale(1);
       }
     }
