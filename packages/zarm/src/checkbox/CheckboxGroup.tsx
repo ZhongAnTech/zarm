@@ -3,6 +3,12 @@ import classnames from 'classnames';
 import List from '../list';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseCheckboxGroupProps, CheckboxValue } from './interface';
+import type { HTMLProps } from '../utils/utilityTypes';
+
+export interface CheckboxGroupCssVars {
+  '--group-spacing-vertical'?: React.CSSProperties['marginBottom'];
+  '--group-spacing-horizontal'?: React.CSSProperties['marginRight'];
+}
 
 const getChildChecked = (children: React.ReactNode): Array<CheckboxValue> => {
   const checkedValues: Array<CheckboxValue> = [];
@@ -29,11 +35,7 @@ const getValue = (props: CheckboxGroupProps, defaultValue: Array<CheckboxValue> 
   return defaultValue;
 };
 
-export type CheckboxGroupProps = Omit<
-  React.HTMLAttributes<HTMLDivElement>,
-  'defaultValue' | 'value' | 'onChange'
-> &
-  BaseCheckboxGroupProps;
+export type CheckboxGroupProps = BaseCheckboxGroupProps & HTMLProps<CheckboxGroupCssVars>;
 
 const CheckboxGroup = React.forwardRef<unknown, CheckboxGroupProps>((props, ref) => {
   const {
@@ -82,6 +84,9 @@ const CheckboxGroup = React.forwardRef<unknown, CheckboxGroupProps>((props, ref)
       listMarkerAlign,
       disabled: disabled || !!element.props.disabled,
       checked: currentValue!.indexOf(element.props.value) > -1,
+      buttonGhost,
+      buttonSize,
+      buttonShape,
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
         typeof element.props.onChange === 'function' && element.props.onChange(e);
         onChildChange(element.props.value);
@@ -96,7 +101,6 @@ const CheckboxGroup = React.forwardRef<unknown, CheckboxGroupProps>((props, ref)
     [`${prefixCls}--button-${buttonSize}`]: !!buttonSize,
     [`${prefixCls}--button-${buttonShape}`]: !!buttonShape,
     [`${prefixCls}--button-compact`]: buttonCompact,
-    [`${prefixCls}--button-ghost`]: buttonGhost,
   });
 
   React.useEffect(() => {

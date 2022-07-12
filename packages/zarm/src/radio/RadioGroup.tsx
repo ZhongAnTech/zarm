@@ -3,7 +3,14 @@ import classnames from 'classnames';
 import List from '../list';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseRadioGroupProps, RadioValue } from './interface';
-import type { Nullable } from '../utils/utilityTypes';
+import type { HTMLProps, Nullable } from '../utils/utilityTypes';
+
+export interface RadioGroupCssVars {
+  '--group-spacing-vertical'?: React.CSSProperties['marginBottom'];
+  '--group-spacing-horizontal'?: React.CSSProperties['marginRight'];
+}
+
+export type RadioGroupProps = BaseRadioGroupProps & HTMLProps<RadioGroupCssVars>;
 
 const getChildChecked = (children: React.ReactNode): Nullable<RadioValue> => {
   let checkedValue = null;
@@ -30,12 +37,6 @@ const getValue = (
   }
   return defaultValue;
 };
-
-export type RadioGroupProps = Omit<
-  React.HTMLAttributes<HTMLDivElement>,
-  'defaultValue' | 'value' | 'onChange'
-> &
-  BaseRadioGroupProps;
 
 const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
   const {
@@ -77,6 +78,9 @@ const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
       listMarkerAlign,
       disabled: disabled || !!element.props.disabled,
       checked: currentValue === element.props.value,
+      buttonGhost,
+      buttonSize,
+      buttonShape,
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
         typeof element.props.onChange === 'function' && element.props.onChange(e);
         onChildChange(element.props.value);
@@ -91,7 +95,6 @@ const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
     [`${prefixCls}--button-${buttonSize}`]: !!buttonSize,
     [`${prefixCls}--button-${buttonShape}`]: !!buttonShape,
     [`${prefixCls}--button-compact`]: buttonCompact,
-    [`${prefixCls}--button-ghost`]: buttonGhost,
   });
 
   React.useEffect(() => {

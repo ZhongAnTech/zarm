@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import type { ButtonSize, ButtonShape } from '../button/interface';
 
 export type RadioType = 'button' | 'list';
@@ -26,4 +27,5 @@ export interface BaseRadioGroupProps {
   buttonGhost?: boolean;
   listMarkerAlign?: RadioGroupListMarkerAlign;
   onChange?: (value: RadioValue) => void;
+  children?: ReactNode;
 }

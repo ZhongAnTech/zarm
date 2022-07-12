@@ -1,38 +1,48 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import { Success as SuccessIcon } from '@zarm-design/icons';
-import type { BaseRadioProps } from './interface';
-import RadioGroup from './RadioGroup';
+import type { BaseRadioProps, BaseRadioGroupProps } from './interface';
+import Button from '../button';
 import List from '../list';
 import type { ListItemProps } from '../list';
 import { ConfigContext } from '../n-config-provider';
+import type { ButtonProps } from '../button';
+import type { HTMLProps } from '../utils/utilityTypes';
+
+export interface RadioCssVars {
+  '--widget-size'?: React.CSSProperties['height'];
+  '--widget-background'?: React.CSSProperties['background'];
+  '--widget-border-radius'?: React.CSSProperties['borderRadius'];
+  '--widget-border-width'?: React.CSSProperties['borderWidth'];
+  '--widget-border-color'?: React.CSSProperties['borderColor'];
+  '--marker-font-size'?: React.CSSProperties['fontSize'];
+  '--marker-color'?: React.CSSProperties['color'];
+  '--marker-transition'?: React.CSSProperties['transition'];
+  '--text-margin-horizontal'?: React.CSSProperties['marginLeft'];
+  '--active-opacity'?: React.CSSProperties['opacity'];
+  '--checked-widget-background'?: React.CSSProperties['background'];
+  '--checked-widget-border-color'?: React.CSSProperties['borderColor'];
+  '--checked-marker-color'?: React.CSSProperties['color'];
+  '--disabled-widget-background'?: React.CSSProperties['background'];
+  '--disabled-widget-border-color'?: React.CSSProperties['borderColor'];
+  '--disabled-text-color'?: React.CSSProperties['color'];
+  '--disabled-marker-color'?: React.CSSProperties['color'];
+}
 
 const getChecked = (props: RadioProps, defaultChecked: boolean) => {
   return props.checked ?? props.defaultChecked ?? defaultChecked;
 };
 
-type RadioSpanProps = Omit<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
->;
-type RadioListProps = Omit<
-  React.HTMLAttributes<HTMLDivElement>,
-  'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
->;
-type RadioButtonProps = Omit<
-  React.ButtonHTMLAttributes<HTMLButtonElement>,
-  'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
->;
-
-export type RadioProps = Partial<RadioSpanProps & RadioListProps & RadioButtonProps> &
-  BaseRadioProps & {
+type RadioNormalProps = BaseRadioProps &
+  HTMLProps<RadioCssVars> & {
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   };
 
-interface CompoundedComponent
-  extends React.ForwardRefExoticComponent<RadioProps & React.RefAttributes<HTMLElement>> {
-  Group: typeof RadioGroup;
-}
+type RadioButtonProps = RadioNormalProps &
+  ButtonProps &
+  Pick<BaseRadioGroupProps, 'buttonGhost' | 'buttonSize' | 'buttonShape'>;
+
+export type RadioProps = Partial<RadioNormalProps & RadioButtonProps>;
 
 const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
   const {
@@ -44,6 +54,9 @@ const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
     disabled,
     id,
     listMarkerAlign,
+    buttonGhost,
+    buttonShape,
+    buttonSize,
     children,
     onChange,
     ...restProps
@@ -90,7 +103,7 @@ const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
   );
 
   const radioRender = (
-    <span ref={radioRef} className={cls} {...(restProps as RadioSpanProps)}>
+    <span ref={radioRef} className={cls} {...(restProps as RadioNormalProps)}>
       <span className={`${prefixCls}__widget`}>
         <span className={`${prefixCls}__inner`}>
           <SuccessIcon className={`${prefixCls}__marker`} />
@@ -136,21 +149,24 @@ const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
 
   if (type === 'button') {
     return (
-      <button
+      <Button
         ref={radioRef}
-        type="button"
-        disabled={disabled}
         className={cls}
+        disabled={disabled}
+        theme={checked ? 'primary' : 'default'}
+        ghost={buttonGhost && checked}
+        shape={buttonShape}
+        size={buttonSize}
         {...(restProps as RadioButtonProps)}
       >
         {children}
         {inputRender}
-      </button>
+      </Button>
     );
   }
 
   return radioRender;
-}) as CompoundedComponent;
+});
 
 Radio.displayName = 'Radio';
 

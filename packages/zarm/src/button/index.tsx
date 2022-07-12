@@ -3,10 +3,28 @@ import classnames from 'classnames';
 import ActivityIndicator from '../activity-indicator';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseButtonProps, ButtonTheme, ButtonSize, ButtonShape } from './interface';
+import type { HTMLProps } from '../utils/utilityTypes';
 
 export type { ButtonTheme, ButtonSize, ButtonShape };
 
-interface CommonProps extends BaseButtonProps {
+export interface ButtontCssVars {
+  '--height'?: React.CSSProperties['height'];
+  '--background'?: React.CSSProperties['background'];
+  '--border-radius'?: React.CSSProperties['borderRadius'];
+  '--border-color'?: React.CSSProperties['borderColor'];
+  '--border-width'?: React.CSSProperties['borderWidth'];
+  '--padding-horizontal'?: React.CSSProperties['paddingLeft'];
+  '--text-color'?: React.CSSProperties['color'];
+  '--font-size'?: React.CSSProperties['fontSize'];
+  '--icon-size'?: React.CSSProperties['fontSize'];
+  '--active-background'?: React.CSSProperties['background'];
+  '--active-border-color'?: React.CSSProperties['borderColor'];
+  '--active-text-color'?: React.CSSProperties['color'];
+  '--shadow'?: React.CSSProperties['boxShadow'];
+  '--loading-color'?: React.CSSProperties['color'];
+}
+
+interface CommonProps extends BaseButtonProps, HTMLProps<ButtontCssVars> {
   onClick?: React.MouseEventHandler<HTMLElement>;
 }
 
