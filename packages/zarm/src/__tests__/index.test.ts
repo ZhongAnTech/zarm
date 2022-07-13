@@ -248,7 +248,8 @@ describe('index', () => {
         "Mask": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
-            "type": "normal",
+            "color": "black",
+            "opacity": "normal",
             "visible": false,
           },
           "render": [Function],
@@ -274,7 +275,6 @@ describe('index', () => {
             "destroy": true,
             "mask": true,
             "maskClosable": false,
-            "maskType": "normal",
             "shape": "radius",
             "visible": false,
             "width": "70%",
