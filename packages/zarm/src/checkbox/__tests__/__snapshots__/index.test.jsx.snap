@@ -533,7 +533,7 @@ exports[`Checkbox.Group type is button 1`] = `
   >
     <button
       aria-disabled="false"
-      class="za-button za-checkbox za-button--default za-button--xs za-button--radius"
+      class="za-button za-button--default za-button--xs za-button--radius za-checkbox"
       type="button"
     >
       <span>
@@ -548,7 +548,7 @@ exports[`Checkbox.Group type is button 1`] = `
     </button>
     <button
       aria-disabled="false"
-      class="za-button za-checkbox za-button--default za-button--xs za-button--radius"
+      class="za-button za-button--default za-button--xs za-button--radius za-checkbox"
       type="button"
     >
       <span>
@@ -563,7 +563,7 @@ exports[`Checkbox.Group type is button 1`] = `
     </button>
     <button
       aria-disabled="false"
-      class="za-button za-checkbox za-button--default za-button--xs za-button--radius"
+      class="za-button za-button--default za-button--xs za-button--radius za-checkbox"
       type="button"
     >
       <span>
