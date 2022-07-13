@@ -7,7 +7,7 @@ import type { HTMLProps } from '../utils/utilityTypes';
 
 export type { ButtonTheme, ButtonSize, ButtonShape };
 
-export interface ButtontCssVars {
+export interface ButtonCssVars {
   '--height'?: React.CSSProperties['height'];
   '--background'?: React.CSSProperties['background'];
   '--border-radius'?: React.CSSProperties['borderRadius'];
@@ -24,7 +24,7 @@ export interface ButtontCssVars {
   '--loading-color'?: React.CSSProperties['color'];
 }
 
-interface CommonProps extends BaseButtonProps, HTMLProps<ButtontCssVars> {
+interface CommonProps extends BaseButtonProps, HTMLProps<ButtonCssVars> {
   onClick?: React.MouseEventHandler<HTMLElement>;
 }
 

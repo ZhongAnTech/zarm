@@ -61,7 +61,7 @@ const Toast = React.forwardRef<unknown, ToastProps>((props, ref) => {
   return (
     <Popup
       direction="center"
-      maskType="transparent"
+      maskColor="transparent"
       width="70%"
       lockScroll={false}
       {...others}

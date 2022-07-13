@@ -420,13 +420,13 @@ module.exports = {
       },
     ],
     other: [
-      // {
-      //   key: 'mask',
-      //   name: '遮罩层',
-      //   module: () => import('zarm/mask/demo.md'),
-      //   source: 'zarm/mask/demo.md',
-      //   style: false,
-      // },
+      {
+        key: 'mask',
+        name: '遮罩层',
+        module: () => import('zarm/mask/demo.md'),
+        source: 'zarm/mask/demo.md',
+        style: true,
+      },
       // {
       //   key: 'config-provider',
       //   name: '全局配置',

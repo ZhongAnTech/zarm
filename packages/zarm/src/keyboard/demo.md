@@ -20,8 +20,14 @@ const CAR_PLATE = {
   keys: [
     '沪',
     '苏',
-    '黑',
-    '辽',
+    {
+      text: '黑',
+      disabled: true,
+    },
+    {
+      text: '辽',
+      disabled: true,
+    },
     '浙',
     '赣',
     '湘',
@@ -37,7 +43,10 @@ const CAR_PLATE = {
     '甘',
     '蒙',
     '陕',
-    '吉',
+    {
+      text: '吉',
+      disabled: true,
+    },
     '闽',
     '贵',
     '粤',

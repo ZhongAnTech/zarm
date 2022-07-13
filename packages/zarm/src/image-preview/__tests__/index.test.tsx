@@ -250,14 +250,14 @@ describe('ImagePreview', () => {
 
   it('should render pagination', () => {
     const wrapper = mount(<ImagePreview visible images={images} />);
-    const paginationWrapper = wrapper.find('.za-image-preview__index');
+    const paginationWrapper = wrapper.find('.za-image-preview__pagination');
     expect(paginationWrapper.exists()).toBeTruthy();
     expect(paginationWrapper.text()).toEqual('1 / 3');
   });
 
   it('should not render pagination', () => {
     const wrapper = mount(<ImagePreview visible images={images} showPagination={false} />);
-    expect(wrapper.find('.za-image-preview__index').exists()).toBeFalsy();
+    expect(wrapper.find('.za-image-preview__pagination').exists()).toBeFalsy();
   });
 
   it('should render images', () => {

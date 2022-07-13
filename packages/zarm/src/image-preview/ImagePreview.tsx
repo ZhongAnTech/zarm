@@ -1,28 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import { useGesture } from '@use-gesture/react';
 import type { Images, BaseImagePreviewProps } from './interface';
 import Popup from '../popup';
 import Carousel from '../carousel';
 import PinchZoom from '../pinch-zoom';
 import ActivityIndicator from '../activity-indicator';
+import Button from '../button';
 import LOAD_STATUS from './utils/loadStatus';
 import formatImages from './utils/formatImages';
 import showOriginButton from './utils/showOriginButton';
 import useOrientation from '../useOrientation';
 import { ConfigContext } from '../n-config-provider';
+import type { HTMLProps } from '../utils/utilityTypes';
 
-export interface ImagePreviewProps extends BaseImagePreviewProps {
-  className?: string;
+export interface ImagePreviewCssVars {
+  '--footer-padding'?: React.CSSProperties['padding'];
+  '--pagination-text-color'?: React.CSSProperties['color'];
+  '--pagination-font-size'?: React.CSSProperties['fontSize'];
 }
 
-const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) => {
-  const imagePreviewRef = (ref as any) || React.createRef<HTMLDivElement>();
+export type ImagePreviewProps = BaseImagePreviewProps & HTMLProps<ImagePreviewCssVars>;
 
-  const { locale: globalLocal, prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-
-  const prefixCls = `${globalPrefixCls}-image-preview`;
-
+const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props, ref) => {
   const {
     visible,
     activeIndex,
@@ -35,8 +35,10 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
     mountContainer,
   } = props;
 
-  const { type, angle } = useOrientation();
+  const { prefixCls, locale } = React.useContext(ConfigContext);
+  const bem = createBEM('image-preview', { prefixCls });
 
+  const { type, angle } = useOrientation();
   let orientation = defatultOrientation;
 
   if (!orientation) {
@@ -93,7 +95,7 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
     return false;
   };
 
-  const bindEvent: any = useGesture({
+  const bindEvent = useGesture({
     onDrag: (state) => {
       if (state.tap && state.elapsedTime > 0) {
         if (typeof onClose === 'function') {
@@ -103,7 +105,7 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
     },
   });
 
-  const loadEvent: any = useGesture({
+  const loadEvent = useGesture({
     onDrag: (state) => {
       if (state.tap && state.elapsedTime > 0) {
         loadOrigin(state.event);
@@ -118,8 +120,8 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
     };
     return images.map((item, i) => {
       return (
-        <div className={`${prefixCls}__item`} key={+i}>
-          <PinchZoom className={`${prefixCls}__item__img`} minScale={minScale} maxScale={maxScale}>
+        <div className={bem('item')} key={+i}>
+          <PinchZoom minScale={minScale} maxScale={maxScale}>
             <img src={item.src} alt="" draggable={false} style={imageStyle} />
           </PinchZoom>
         </div>
@@ -130,7 +132,7 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
   const renderPagination = () => {
     if (visible && showPagination && images && images.length > 1) {
       return (
-        <div className={`${prefixCls}__index`} {...bindEvent()}>
+        <div className={bem('pagination')} {...bindEvent()}>
           {currentIndex + 1} / {images?.length}
         </div>
       );
@@ -149,28 +151,24 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
       visible
     ) {
       return (
-        <button className={`${prefixCls}__origin__button`} {...loadEvent()}>
-          {loaded === LOAD_STATUS.start && (
-            <ActivityIndicator className={`${prefixCls}__loading`} type="spinner" />
-          )}
-          {globalLocal?.ImagePreview && globalLocal?.ImagePreview?.[loaded]}
-        </button>
+        <Button size="xs" loading={loaded === LOAD_STATUS.start} {...loadEvent()}>
+          {locale?.ImagePreview && locale?.ImagePreview?.[loaded]}
+        </Button>
       );
     }
 
     return null;
   };
 
-  const cls = classnames(`${prefixCls}__content`, `${prefixCls}__content--${orientation}`);
-
   return (
     <Popup
       direction="center"
       visible={visible}
-      className={classnames(prefixCls, className)}
+      className={bem([className])}
       mountContainer={mountContainer}
+      maskOpacity={1}
     >
-      <div className={cls} ref={imagePreviewRef} {...bindEvent()}>
+      <div ref={ref} className={bem('content')} {...bindEvent()}>
         {visible &&
           (images?.length ? (
             <Carousel
@@ -185,7 +183,7 @@ const ImagePreview = React.forwardRef<unknown, ImagePreviewProps>((props, ref) =
             <ActivityIndicator type="spinner" size="lg" />
           ))}
       </div>
-      <div className={`${prefixCls}__footer`}>
+      <div className={bem('footer')}>
         {renderOriginButton()}
         {renderPagination()}
       </div>

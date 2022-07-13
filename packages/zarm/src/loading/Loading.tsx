@@ -65,7 +65,7 @@ const Loading = React.forwardRef<unknown, LoadingProps>((props, ref) => {
   return (
     <Popup
       direction="center"
-      maskType="transparent"
+      maskColor="transparent"
       width="70%"
       {...others}
       visible={visible}
