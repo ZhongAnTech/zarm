@@ -90,7 +90,7 @@ exports[`Radio renders correctly 1`] = `
 exports[`Radio type is button 1`] = `
 <button
   aria-disabled="false"
-  class="za-button za-radio za-button--default za-button--md za-button--radius"
+  class="za-button za-button--default za-button--md za-button--radius za-radio"
   type="button"
 >
   <span>

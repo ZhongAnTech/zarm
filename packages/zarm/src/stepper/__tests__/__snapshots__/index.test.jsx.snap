@@ -56,7 +56,7 @@ exports[`Stepper renders correctly 1`] = `
 >
   <button
     aria-disabled="false"
-    class="za-button za-stepper__sub za-button--default za-button--xs za-button--radius"
+    class="za-button za-button--default za-button--xs za-button--radius za-stepper__sub"
     type="button"
   >
     <span>
@@ -89,7 +89,7 @@ exports[`Stepper renders correctly 1`] = `
   </div>
   <button
     aria-disabled="false"
-    class="za-button za-stepper__plus za-button--default za-button--xs za-button--radius"
+    class="za-button za-button--default za-button--xs za-button--radius za-stepper__plus"
     type="button"
   >
     <span>
