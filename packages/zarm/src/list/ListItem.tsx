@@ -1,12 +1,15 @@
 import * as React from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseListItemProps } from './interface';
+import type { HTMLProps } from '../utils/utilityTypes';
 
 export type ListItemProps = BaseListItemProps &
-  Omit<React.HTMLAttributes<HTMLLIElement>, 'title' | 'prefix'>;
+  HTMLProps & {
+    onClick?: React.MouseEventHandler<HTMLLIElement>;
+  };
 
-const ListItem = React.forwardRef<unknown, ListItemProps>((props, ref) => {
+const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
   const {
     className,
     prefix,
@@ -18,28 +21,30 @@ const ListItem = React.forwardRef<unknown, ListItemProps>((props, ref) => {
     hasArrow,
     ...restProps
   } = props;
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('list-item', { prefixCls });
 
-  const compRef = (ref as any) || React.createRef<HTMLLIElement>();
+  const cls = bem([
+    {
+      link: !!onClick,
+      inline: !!children,
+      arrow: !!onClick && hasArrow,
+    },
+    className,
+  ]);
 
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-list-item`;
-  const cls = classnames(prefixCls, className, {
-    [`${prefixCls}--link`]: !!onClick,
-    [`${prefixCls}--inline`]: !!children,
-    [`${prefixCls}--arrow`]: !!onClick && hasArrow,
-  });
-  const prefixRender = prefix && <div className={`${prefixCls}__prefix`}>{prefix}</div>;
-  const afterRender = after && <div className={`${prefixCls}__after`}>{after}</div>;
-  const titleRender = title && <div className={`${prefixCls}__title`}>{title}</div>;
-  const contentRender = children && <div className={`${prefixCls}__content`}>{children}</div>;
-  const infoRender = info && <div className={`${prefixCls}__info`}>{info}</div>;
-  const arrowRender = !!onClick && hasArrow && <div className={`${prefixCls}__arrow`} />;
+  const prefixRender = prefix && <div className={bem('prefix')}>{prefix}</div>;
+  const afterRender = after && <div className={bem('after')}>{after}</div>;
+  const titleRender = title && <div className={bem('title')}>{title}</div>;
+  const contentRender = children && <div className={bem('content')}>{children}</div>;
+  const infoRender = info && <div className={bem('info')}>{info}</div>;
+  const arrowRender = !!onClick && hasArrow && <div className={bem('arrow')} />;
 
   return (
-    <li ref={compRef} className={cls} onClick={onClick} onTouchStart={() => {}} {...restProps}>
+    <li ref={ref} className={cls} onClick={onClick} onTouchStart={() => {}} {...restProps}>
       {prefixRender}
-      <div className={`${prefixCls}__wrapper`}>
-        <div className={`${prefixCls}__inner`}>
+      <div className={bem('wrapper')}>
+        <div className={bem('inner')}>
           {titleRender}
           {contentRender}
           {afterRender}

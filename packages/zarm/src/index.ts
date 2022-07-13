@@ -25,7 +25,7 @@ export { default as Calendar } from './calendar';
 export type { CollapseProps, CollapseItemProps } from './collapse';
 export { default as Collapse } from './collapse';
 
-export type { ListProps, ListItemProps } from './list';
+export type { ListProps, ListItemProps, ListCssVars } from './list';
 export { default as List } from './list';
 
 export type {

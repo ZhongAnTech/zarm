@@ -107,7 +107,7 @@ exports[`Radio type is button 1`] = `
 
 exports[`Radio type is list 1`] = `
 <li
-  class="za-list-item za-radio za-list-item--link"
+  class="za-list-item za-list-item--link za-radio"
 >
   <div
     class="za-list-item__prefix"
