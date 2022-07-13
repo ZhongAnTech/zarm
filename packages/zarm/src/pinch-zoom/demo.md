@@ -1,4 +1,4 @@
-# PinchZoom
+# PinchZoom 缩放
 
 ## 基本用法
 
