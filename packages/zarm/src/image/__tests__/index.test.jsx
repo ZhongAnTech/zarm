@@ -1,5 +1,4 @@
 import React from 'react';
-import toJson from 'enzyme-to-json';
 import { fireEvent, render, screen } from '@testing-library/react';
 import Image from '../index';
 
@@ -8,33 +7,43 @@ const src =
 
 describe('Image', () => {
   it('render correctly', () => {
-    const wrapper = render(<Image src={src} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { asFragment } = render(<Image src={src} />);
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('width', () => {
-    const wrapper = render(<Image src={src} width={40} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { asFragment } = render(<Image src={src} width={50} />);
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('height', () => {
-    const wrapper = render(<Image src={src} height={40} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { asFragment } = render(<Image src={src} height={40} />);
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('placeholder', () => {
-    const wrapper = render(<Image src={src} placeholder="loading" />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { asFragment } = render(<Image src={src} placeholder="loading" />);
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('alt', () => {
-    const wrapper = render(<Image src={src} alt="image" />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { asFragment } = render(<Image src={src} alt="image" />);
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('shape', () => {
+    const { asFragment } = render(<Image src={src} shape="circle" />);
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('fill', () => {
+    const { asFragment } = render(<Image src={src} fill="cover" />);
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('fallback', () => {
-    const wrapper = render(<Image src={src} fallback={<span>图片不见啦</span>} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { asFragment } = render(<Image src={src} fallback={<span>图片不见啦</span>} />);
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('onLoad', () => {

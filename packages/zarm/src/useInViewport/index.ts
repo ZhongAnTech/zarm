@@ -41,7 +41,6 @@ function useInViewport(target: BasicTarget, options?: Options): readonly [boolea
 
   useEffect(() => {
     const el = getTargetElement(target);
-    console.log(el);
     if (el) {
       const observer = new IntersectionObserver(
         (entries) => {

@@ -64,6 +64,7 @@ ReactDOM.render(
     height="100px"
     placeholder="加载中..."
     fallback={false}
+    alt="加载失败图片"
     onError={() => {
       console.log('trigger error');
     }}
@@ -135,16 +136,20 @@ ReactDOM.render(
 
 ## API
 
-| 属性        | 类型                                                    | 默认值 | 说明                                         |
-| :---------- | :------------------------------------------------------ | :----- | :------------------------------------------- |
-| src         | string                                                  | -      | 图片地址                                     |
-| placeholder | ReactNode                                               | true   | 加载中的占位显示，为 `true` 时使用默认显示   |
-| fallback    | ReactNode                                               | true   | 加载失败的容错显示，为 `true` 时使用默认显示 |
-| width       | string \| number                                        | -      | 图像宽度                                     |
-| height      | string \| number                                        | -      | 图像高度                                     |
-| alt         | string                                                  | -      | 图片描述                                     |
-| onLoad      | (event: React.SyntheticEvent<HTMLImageElement>) => void | -      | 加载时触发的回调函数                         |
-| onError     | (event: React.SyntheticEvent<HTMLImageElement>) => void | -      | 加载出错时触发的回调函数                     |
+| 属性        | 类型                                                     | 默认值 | 说明                                         |
+| :---------- | :------------------------------------------------------- | :----- | :------------------------------------------- |
+| src         | string                                                   | -      | 图片地址                                     |
+| placeholder | ReactNode                                                | true   | 加载中的占位显示，为 `true` 时使用默认显示   |
+| fallback    | ReactNode                                                | true   | 加载失败的容错显示，为 `true` 时使用默认显示 |
+| width       | string \| number                                         | -      | 图像宽度                                     |
+| height      | string \| number                                         | -      | 图像高度                                     |
+| alt         | boolean                                                  | -      | 图片描述                                     |
+| lazy        | string                                                   | false  | 是否懒加载                                   |
+| shape       | 'rect' \| 'radius' \| 'round' \| 'circle'                | 'rect' | 图片形状                                     |
+| fill        | 'contain' \| 'cover' \| 'fill' \| 'none' \| 'scale-down' | 'fill' | 图片填充模式                                 |
+| preview     | boolean                                                  | false  | 是否支持图片预览                             |
+| onLoad      | (event: React.SyntheticEvent<HTMLImageElement>) => void  | -      | 加载时触发的回调函数                         |
+| onError     | (event: React.SyntheticEvent<HTMLImageElement>) => void  | -      | 加载出错时触发的回调函数                     |
 
 ## CSS 变量
 

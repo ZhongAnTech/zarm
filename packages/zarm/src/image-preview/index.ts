@@ -1,8 +1,6 @@
 import ImagePreview from './ImagePreview';
-import show from './show';
+import showImaggePreview from './show';
 import attachPropertiesToComponent from '../utils/attachPropertiesToComponent';
 
-attachPropertiesToComponent(ImagePreview, { show });
-
 export type { ImagePreviewProps, ImagePreviewCssVars } from './ImagePreview';
-export default ImagePreview;
+export default attachPropertiesToComponent(ImagePreview, { show: showImaggePreview });

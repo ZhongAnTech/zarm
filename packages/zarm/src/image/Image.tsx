@@ -57,7 +57,7 @@ const Image = React.forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
 
   const inIframe = window.self !== window.top;
 
-  const orientation = inIframe ? 'portrait' : '';
+  const orientation = inIframe ? 'portrait' : undefined;
 
   const handleLoad = (event: React.SyntheticEvent<HTMLImageElement>) => {
     onLoad && onLoad(event);
@@ -71,7 +71,7 @@ const Image = React.forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
 
   const handleClick = (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
     if (preview) {
-      ImagePreview.show({ images: [src], orientation });
+      ImagePreview.show({ images: [src || ''], orientation });
     }
     onClick && onClick(event);
   };
@@ -79,7 +79,6 @@ const Image = React.forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
   const renderImageStatus = {
     [IMAGE_STATUS.LOADED]: () => null,
     [IMAGE_STATUS.FAILED]: () => {
-      console.log(locale);
       if (fallback) {
         return (
           <div className={bem('fallback')}>
