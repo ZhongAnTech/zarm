@@ -1,5 +1,5 @@
 export default {
-  loadBefore: 'load origin1',
+  loadBefore: 'load origin',
   loadStart: 'loading',
   loadEnd: 'loading completed',
 };
