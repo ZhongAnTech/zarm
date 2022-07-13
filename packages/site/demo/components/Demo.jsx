@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { transform } from '@babel/standalone';
 import { Panel } from 'zarm';
 import * as ZarmDesignIcons from '@zarm-design/icons';
-import enUS from 'zarm/config-provider/locale/en_US';
-import zhCN from 'zarm/config-provider/locale/zh_CN';
+import enUS from 'zarm/n-config-provider/locale/en_US';
+import zhCN from 'zarm/n-config-provider/locale/zh_CN';
 import 'zarm/style/entry';
 
 export default ({ location, globalContext, children }) => {
