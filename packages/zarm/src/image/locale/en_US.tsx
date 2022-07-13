@@ -1,3 +1,5 @@
 export default {
-  loadFailed: 'Load failed',
+  loadBefore: 'load origin1',
+  loadStart: 'loading',
+  loadEnd: 'loading completed',
 };

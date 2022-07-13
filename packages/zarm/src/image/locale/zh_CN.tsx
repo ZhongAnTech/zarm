@@ -1,3 +1,5 @@
 export default {
-  loadFailed: '加载失败',
+  loadBefore: '查看原图',
+  loadStart: '加载中',
+  loadEnd: '加载完成',
 };

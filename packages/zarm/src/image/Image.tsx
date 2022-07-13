@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, createRef } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import ImagePreview from '../image-preview';
 import { ConfigContext } from '../n-config-provider';
+import LazyDetector from './lazy-detector';
 
 export const IMAGE_STATUS = {
   PENDING: 'pending',
@@ -11,10 +12,10 @@ export const IMAGE_STATUS = {
 };
 
 export interface ImageCssVars {
-  '--default-background-color'?: React.CSSProperties['color'];
-  '--default-text-color'?: React.CSSProperties['color'];
-  '--default-font-size'?: React.CSSProperties['fontSize'];
-  '--default-radius'?: React.CSSProperties['borderRadius'];
+  '--background'?: React.CSSProperties['background'];
+  '--text-color'?: React.CSSProperties['color'];
+  '--font-size'?: React.CSSProperties['fontSize'];
+  '--radius'?: React.CSSProperties['borderRadius'];
 }
 
 export interface ImageProps extends Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'placeholder'> {
@@ -23,6 +24,7 @@ export interface ImageProps extends Omit<React.ImgHTMLAttributes<HTMLImageElemen
   fit?: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down';
   shape?: 'rect' | 'radius' | 'round' | 'circle';
   preview?: boolean;
+  lazy?: boolean;
 }
 
 const Image = React.forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
@@ -33,6 +35,7 @@ const Image = React.forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
     alt,
     onLoad,
     onError,
+    onClick,
     className,
     width,
     height,
@@ -40,15 +43,17 @@ const Image = React.forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
     fit,
     shape,
     preview,
+    lazy,
     ...restProps
   } = props;
   const [status, setStatus] = useState(IMAGE_STATUS.LOADING);
+  const [initialized, setInitialized] = useState(!lazy);
 
-  const { prefixCls } = React.useContext(ConfigContext);
+  const { prefixCls, locale } = useContext(ConfigContext);
   const bem = createBEM('image', { prefixCls });
   const cls = bem([{ [`${shape}`]: !!shape }, className]);
 
-  const imgRef = ref || React.createRef<HTMLImageElement>();
+  const imgRef = ref || createRef<HTMLImageElement>();
 
   const inIframe = window.self !== window.top;
 
@@ -64,24 +69,34 @@ const Image = React.forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
     setStatus(IMAGE_STATUS.FAILED);
   };
 
-  const handlePreview = () => {
+  const handleClick = (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
     if (preview) {
       ImagePreview.show({ images: [src], orientation });
     }
+    onClick && onClick(event);
   };
 
   const renderImageStatus = {
     [IMAGE_STATUS.LOADED]: () => null,
     [IMAGE_STATUS.FAILED]: () => {
+      console.log(locale);
       if (fallback) {
-        return <div className={bem('fallback')}>{fallback}</div>;
+        return (
+          <div className={bem('fallback')}>
+            {typeof fallback === 'boolean' ? locale?.Image?.loadFailed : fallback}
+          </div>
+        );
       }
 
       return null;
     },
     [IMAGE_STATUS.LOADING]: () => {
       if (placeholder) {
-        return <div className={bem('loading')}>{placeholder}</div>;
+        return (
+          <div className={bem('loading')}>
+            {typeof placeholder === 'boolean' ? locale?.Image?.loading : placeholder}
+          </div>
+        );
       }
 
       return null;
@@ -89,16 +104,24 @@ const Image = React.forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
   };
 
   return (
-    <div className={`${cls}`} style={{ width, height, ...style }} onClick={handlePreview}>
+    <div className={`${cls}`} style={{ width, height, ...style }}>
+      {lazy && !initialized && (
+        <LazyDetector
+          onActive={() => {
+            setInitialized(true);
+          }}
+        />
+      )}
       <img
         className={bem('img')}
-        src={src}
+        src={initialized ? src : undefined}
         alt={alt}
         ref={imgRef}
         style={{
           objectFit: fit,
         }}
         {...restProps}
+        onClick={handleClick}
         onError={handleError}
         onLoad={handleLoad}
       />
@@ -116,6 +139,7 @@ Image.defaultProps = {
   fit: 'fill',
   shape: 'rect',
   preview: false,
+  lazy: false,
 };
 
 export default Image;

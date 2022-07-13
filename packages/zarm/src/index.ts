@@ -150,6 +150,7 @@ export { default as TabBar } from './tab-bar';
 export type { ImagePreviewProps } from './image-preview';
 export { default as ImagePreview } from './image-preview';
 
+export type { ImageProps, ImageCssVars } from './image';
 export { default as Image } from './image';
 
 export type { PinchZoomProps } from './pinch-zoom';
@@ -179,3 +180,5 @@ export type { UseScrollProps } from './useScroll';
 export { default as useScroll } from './useScroll';
 
 export { default as useClickAway } from './useClickAway';
+
+export { default as useInViewport } from './useInViewport';

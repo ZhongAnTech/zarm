@@ -411,6 +411,13 @@ module.exports = {
         source: 'zarm/useScroll/demo.md',
         style: false,
       },
+      {
+        key: 'useInViewport',
+        name: '进入浏览器窗口',
+        module: () => import('zarm/useInViewport/demo.md'),
+        source: 'zarm/useInViewport/demo.md',
+        style: false,
+      },
     ],
     other: [
       // {

@@ -50,16 +50,7 @@ ReactDOM.render(
 
 ```jsx
 import { Image } from 'zarm';
-ReactDOM.render(
-  <Image
-    src="https://zarm.com"
-    width="100px"
-    height="100px"
-    placeholder="加载中..."
-    fallback="图片不见啦........"
-  />,
-  mountNode,
-);
+ReactDOM.render(<Image src="https://zarm.com" width="100px" height="100px" />, mountNode);
 ```
 
 ## 图片加载失败,且关闭 fallback
@@ -129,6 +120,19 @@ ReactDOM.render(
 );
 ```
 
+## 懒加载
+
+```jsx
+import { Image } from 'zarm';
+const imgSrc = 'https://cdn-health.zhongan.com/zarm/imagePreview/2.jpg';
+ReactDOM.render(
+  <>
+    <Image src={imgSrc} width="100px" height="100px" lazy />
+  </>,
+  mountNode,
+);
+```
+
 ## API
 
 | 属性        | 类型                                                    | 默认值 | 说明                                         |
@@ -144,8 +148,8 @@ ReactDOM.render(
 
 ## CSS 变量
 
-| 属性                       | 默认值    | 说明     |
-| :------------------------- | :-------- | :------- |
-| --default-background-color | '#fafafa' | 背景色   |
-| --default-text-color       | '#343434' | 字体颜色 |
-| --default-font-size        | '12px'    | 字体大小 |
+| 属性               | 默认值    | 说明     |
+| :----------------- | :-------- | :------- |
+| --background-color | '#fafafa' | 背景色   |
+| --text-color       | '#343434' | 字体颜色 |
+| --font-size        | '12px'    | 字体大小 |
