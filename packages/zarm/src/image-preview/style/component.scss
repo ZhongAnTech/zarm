@@ -3,7 +3,8 @@
   @include define(pagination-text-color, var(--za-color-text-inverse));
   @include define(pagination-font-size, var(--za-font-size-lg));
 
-  &, * {
+  &,
+  * {
     touch-action: none;
   }
 
