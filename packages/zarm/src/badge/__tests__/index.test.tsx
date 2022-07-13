@@ -9,17 +9,13 @@ describe('Badge', () => {
   it('should render dot shape badge', () => {
     render(<Badge data-testid="badge-root" />);
     expect(screen.getByTestId('badge-root')).toBeTruthy();
-    expect(screen.getByTestId('badge-root').className).toEqual(
-      'za-badge za-badge--dot',
-    );
+    expect(screen.getByTestId('badge-root').className).toEqual('za-badge za-badge--dot');
   });
 
   it('should render rect shape badge with text', () => {
     render(<Badge shape="rect" text="免费" data-testid="badge-root" />);
     expect(screen.getByTestId('badge-root')).toBeTruthy();
-    expect(screen.getByTestId('badge-root').className).toEqual(
-      'za-badge za-badge--rect',
-    );
+    expect(screen.getByTestId('badge-root').className).toEqual('za-badge za-badge--rect');
     expect(screen.getByText('免费')).toBeTruthy();
     expect(screen.getByTestId('badge-root').firstChild!.nodeName.toLowerCase()).toEqual('sup');
     expect(screen.getByText('免费').className).toEqual('za-badge__content');
@@ -28,18 +24,14 @@ describe('Badge', () => {
   it('should render radius shape badge with text', () => {
     render(<Badge shape="radius">foo</Badge>);
     expect(screen.getByText('foo')).toBeTruthy();
-    expect(screen.getByText('foo').className).toEqual(
-      'za-badge za-badge--radius za-badge--sup',
-    );
+    expect(screen.getByText('foo').className).toEqual('za-badge za-badge--radius za-badge--sup');
   });
 
   it('should render round shape badge with text', () => {
     render(<Badge shape="round" text="99+" />);
     expect(screen.getByText('99+')).toBeTruthy();
     expect(screen.getByText('99+').className).toEqual('za-badge__content');
-    expect(screen.getByText('99+').parentElement!.className).toEqual(
-      'za-badge za-badge--round',
-    );
+    expect(screen.getByText('99+').parentElement!.className).toEqual('za-badge za-badge--round');
   });
 
   test.each`
@@ -62,9 +54,7 @@ describe('Badge', () => {
         <Badge data-testid="badge-root" />
       </ConfigProvider>,
     );
-    expect(screen.getByTestId('badge-root').className).toEqual(
-      'zarm-badge zarm-badge--dot',
-    );
+    expect(screen.getByTestId('badge-root').className).toEqual('zarm-badge zarm-badge--dot');
   });
 
   test('should forward ref from parent', () => {
