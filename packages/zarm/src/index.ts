@@ -10,16 +10,16 @@ export { default as Affix } from './affix';
 export type { AlertProps } from './alert';
 // export { default as Alert } from './alert';
 
-export type { BackTopProps } from './back-top';
+export type { BackTopProps, BackTopCssVars } from './back-top';
 export { default as BackTop } from './back-top';
 
 export type { BadgeProps, BadgeCssVars } from './badge';
 export { default as Badge } from './badge';
 
-export type { ButtonProps } from './button';
+export type { ButtonProps, ButtonCssVars } from './button';
 export { default as Button } from './button';
 
-export type { CalendarProps } from './calendar';
+export type { CalendarProps, CalendarCssVars } from './calendar';
 export { default as Calendar } from './calendar';
 
 export type { CollapseProps, CollapseItemProps } from './collapse';
@@ -28,7 +28,12 @@ export { default as Collapse } from './collapse';
 export type { ListProps, ListItemProps } from './list';
 export { default as List } from './list';
 
-export type { CheckboxProps, CheckboxGroupProps } from './checkbox';
+export type {
+  CheckboxProps,
+  CheckboxGroupProps,
+  CheckboxCssVars,
+  CheckboxGroupCssVars,
+} from './checkbox';
 export { default as Checkbox } from './checkbox';
 
 export type { ConfirmProps } from './confirm';
