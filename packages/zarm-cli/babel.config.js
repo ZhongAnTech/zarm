@@ -8,4 +8,9 @@ module.exports = {
     require.resolve('@babel/plugin-transform-runtime'),
     [require.resolve('@babel/plugin-proposal-class-properties'), { loose: true }],
   ],
+  env: {
+    test: {
+      plugins: ['@babel/plugin-transform-modules-commonjs'],
+    },
+  },
 };

@@ -15,7 +15,7 @@ import {
   createPopper,
   StrictModifiers,
   Modifier,
-} from '@popperjs/core/dist/cjs/popper';
+} from '@popperjs/core';
 import { createBEM } from '@zarm-design/bem';
 import ClickOutside from '../click-outside';
 import { canUseDOM, getOuterSizes, getMountContainer } from '../utils/dom';
