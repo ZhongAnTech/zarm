@@ -14,12 +14,11 @@ const Demo = () => {
     if (inViewport) {
       alert('in viewport');
     }
-    console.log(intersectionRatio);
   }, [inViewport]);
 
   return (
     <div>
-      <div style={{ height: '1000px', backgroundColor: '#ccc' }}>很长的一个内容</div>
+      <div style={{ height: '1000px', backgroundColor: '#ccc' }}>一个很长的内容</div>
       <div ref={divRef}>in viewport</div>
     </div>
   );

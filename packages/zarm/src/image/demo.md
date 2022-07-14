@@ -4,11 +4,11 @@
 
 ```jsx
 import { Image } from 'zarm';
-const imgSrc = 'https://cdn-health.zhongan.com/zarm/imagePreview/1.jpg';
+const imgSrc = 'https://static.zhongan.com/website/health/zarm/images/banners/1.png';
 ReactDOM.render(
-  <>
-    <Image src={imgSrc} width="100px" height="100px" />
-  </>,
+  <div style={{ display: 'flex' }}>
+    <Image src={imgSrc} width="80px" height="80px" />
+  </div>,
   mountNode,
 );
 ```
@@ -16,15 +16,42 @@ ReactDOM.render(
 ## 多种填充模式
 
 ```jsx
-import { Image } from 'zarm';
-const imgSrc = 'https://cdn-health.zhongan.com/zarm/imagePreview/1.jpg';
+import { Image, Grid } from 'zarm';
+const imgSrc = 'https://static.zhongan.com/website/health/zarm/images/banners/1.png';
 ReactDOM.render(
   <>
-    <Image src={imgSrc} width="100px" height="100px" fit="fill" />
-    <Image src={imgSrc} width="100px" height="100px" fit="contain" />
-    <Image src={imgSrc} width="100px" height="100px" fit="cover" />
-    <Image src={imgSrc} width="100px" height="100px" fit="scale-down" />
-    <Image src={imgSrc} width="100px" height="100px" fit="none" />
+    <Grid square bordered={false}>
+      <Grid.Item>
+        <div className="block">
+          <Image src={imgSrc} width="80px" height="80px" fit="fill" />
+          <span>fill</span>
+        </div>
+      </Grid.Item>
+      <Grid.Item>
+        <div className="block">
+          <Image src={imgSrc} width="80px" height="80px" fit="contain" />
+          <span>contain</span>
+        </div>
+      </Grid.Item>
+      <Grid.Item>
+        <div className="block">
+          <Image src={imgSrc} width="80px" height="80px" fit="cover" />
+          <span>cover</span>
+        </div>
+      </Grid.Item>
+      <Grid.Item>
+        <div className="block">
+          <Image src={imgSrc} width="80px" height="80px" fit="scale-down" />
+          <span>scale-down</span>
+        </div>
+      </Grid.Item>
+      <Grid.Item>
+        <div className="block">
+          <Image src={imgSrc} width="80px" height="80px" fit="none" />
+          <span>none</span>
+        </div>
+      </Grid.Item>
+    </Grid>
   </>,
   mountNode,
 );
@@ -33,15 +60,35 @@ ReactDOM.render(
 ## 多种形状
 
 ```jsx
-import { Image } from 'zarm';
-const imgSrc = 'https://cdn-health.zhongan.com/zarm/imagePreview/1.jpg';
+import { Image, Grid } from 'zarm';
+const imgSrc = 'https://static.zhongan.com/website/health/zarm/images/banners/1.png';
 ReactDOM.render(
-  <>
-    <Image src={imgSrc} width="100px" height="200px" shape="rect" />
-    <Image src={imgSrc} width="100px" height="200px" shape="radius" />
-    <Image src={imgSrc} width="100px" height="200px" shape="round" />
-    <Image src={imgSrc} width="100px" height="200px" shape="circle" />
-  </>,
+  <Grid square bordered={false}>
+    <Grid.Item>
+      <div className="block">
+        <Image src={imgSrc} width="80px" height="80px" shape="rect" />
+        <span>rect</span>
+      </div>
+    </Grid.Item>
+    <Grid.Item>
+      <div className="block">
+        <Image src={imgSrc} width="80px" height="80px" shape="radius" />
+        <span>radius</span>
+      </div>
+    </Grid.Item>
+    <Grid.Item>
+      <div className="block">
+        <Image src={imgSrc} width="80px" height="80px" shape="round" />
+        <span>round</span>
+      </div>
+    </Grid.Item>
+    <Grid.Item>
+      <div className="block">
+        <Image src={imgSrc} width="80px" height="80px" shape="circle" />
+        <span>circle</span>
+      </div>
+    </Grid.Item>
+  </Grid>,
   mountNode,
 );
 ```
@@ -49,42 +96,44 @@ ReactDOM.render(
 ## 图片加载失败
 
 ```jsx
-import { Image } from 'zarm';
-ReactDOM.render(<Image src="https://zarm.com" width="100px" height="100px" />, mountNode);
-```
-
-## 图片加载失败,且关闭 fallback
-
-```jsx
-import { Image } from 'zarm';
+import { Image, Grid } from 'zarm';
 ReactDOM.render(
-  <Image
-    src="https://zarm.com"
-    width="100px"
-    height="100px"
-    placeholder="加载中..."
-    fallback={false}
-    alt="加载失败图片"
-    onError={() => {
-      console.log('trigger error');
-    }}
-  />,
-  mountNode,
-);
-```
-
-## 图片加载失败, 自定义 fallback element
-
-```jsx
-import { Image } from 'zarm';
-ReactDOM.render(
-  <Image
-    src="https://zarm.com"
-    width="100px"
-    height="100px"
-    placeholder="加载中..."
-    fallback={<span>图片不见啦</span>}
-  />,
+  <Grid square bordered={false}>
+    <Grid.Item>
+      <div className="block">
+        <Image src="https://zarm.com" width="80px" height="80px" />
+        <span>默认显示</span>
+      </div>
+    </Grid.Item>
+    <Grid.Item>
+      <div className="block">
+        <Image
+          src="https://zarm.com"
+          width="80px"
+          height="80px"
+          placeholder="加载中..."
+          fallback={false}
+          alt="加载失败图片"
+          onError={() => {
+            console.log('trigger error');
+          }}
+        />
+        <span>关闭默认显示</span>
+      </div>
+    </Grid.Item>
+    <Grid.Item>
+      <div className="block">
+        <Image
+          src="https://zarm.com"
+          width="80px"
+          height="80px"
+          placeholder="加载中..."
+          fallback={<span>图片不见啦</span>}
+        />
+        <span>自定义显示</span>
+      </div>
+    </Grid.Item>
+  </Grid>,
   mountNode,
 );
 ```
@@ -93,17 +142,17 @@ ReactDOM.render(
 
 ```jsx
 import { Image } from 'zarm';
-const imgSrc = 'https://cdn-health.zhongan.com/zarm/imagePreview/1.jpg';
+const imgSrc = 'https://static.zhongan.com/website/health/zarm/images/banners/1.png';
 ReactDOM.render(
-  <>
+  <div style={{ display: 'flex' }}>
     <Image
       src={imgSrc}
-      width="100px"
-      height="100px"
+      width="80px"
+      height="80px"
       placeholder={<span>加载中</span>}
       fallback={<span>图片不见啦</span>}
     />
-  </>,
+  </div>,
   mountNode,
 );
 ```
@@ -112,11 +161,11 @@ ReactDOM.render(
 
 ```jsx
 import { Image } from 'zarm';
-const imgSrc = 'https://cdn-health.zhongan.com/zarm/imagePreview/1.jpg';
+const imgSrc = 'https://static.zhongan.com/website/health/zarm/images/banners/1.png';
 ReactDOM.render(
-  <>
-    <Image src={imgSrc} width="100px" height="100px" shape="rect" preview />
-  </>,
+  <div style={{ display: 'flex' }}>
+    <Image src={imgSrc} width="80px" height="80px" shape="rect" preview />
+  </div>,
   mountNode,
 );
 ```
@@ -125,11 +174,11 @@ ReactDOM.render(
 
 ```jsx
 import { Image } from 'zarm';
-const imgSrc = 'https://cdn-health.zhongan.com/zarm/imagePreview/2.jpg';
+const imgSrc = 'https://static.zhongan.com/website/health/zarm/images/banners/1.png';
 ReactDOM.render(
-  <>
-    <Image src={imgSrc} width="100px" height="100px" lazy />
-  </>,
+  <div style={{ display: 'flex' }}>
+    <Image src={imgSrc} width="80px" height="80px" lazy />
+  </div>,
   mountNode,
 );
 ```

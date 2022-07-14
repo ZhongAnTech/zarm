@@ -1,39 +1,11 @@
 import 'intersection-observer';
-import { useEffect, MutableRefObject, useState } from 'react';
-
-export type BasicTarget<T = Element> =
-  | (() => T | null)
-  | T
-  | null
-  | MutableRefObject<T | null | undefined>;
-
-type TargetElement = Element;
+import { useEffect, useState } from 'react';
+import { BasicTarget, getTargetElement } from '../utils/getTargetElement';
 
 interface Options {
   rootMargin?: string;
   threshold?: number | number[];
   root?: BasicTarget<Element>;
-}
-
-export function getTargetElement(
-  target?: BasicTarget<TargetElement>,
-  defaultElement?: TargetElement,
-): TargetElement | undefined | null {
-  if (!target) {
-    return defaultElement;
-  }
-
-  let targetElement: TargetElement | undefined | null;
-
-  if (typeof target === 'function') {
-    targetElement = target();
-  } else if ('current' in target) {
-    targetElement = target.current;
-  } else {
-    targetElement = target;
-  }
-
-  return targetElement;
 }
 
 function useInViewport(target: BasicTarget, options?: Options): readonly [boolean | undefined] {

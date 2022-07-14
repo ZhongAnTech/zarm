@@ -322,7 +322,7 @@ module.exports = {
         name: '图片加载',
         module: () => import('zarm/image/demo.md'),
         source: 'zarm/image/demo.md',
-        style: false,
+        style: true,
       },
       {
         key: 'water-mark',
