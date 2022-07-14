@@ -4,7 +4,7 @@
 
 ```jsx
 import { useState } from 'react';
-import { List, Button, Mask, Radio, Slider } from 'zarm';
+import { List, Button, Mask, Radio } from 'zarm';
 
 const Demo = () => {
   const [visible, setVisible] = useState(false);
@@ -17,7 +17,7 @@ const Demo = () => {
     <>
       <List>
         <List.Item className="basic-demo">
-          <Button theme="primary" size="sm" onClick={toggle}>
+          <Button theme="primary" size="xs" onClick={toggle}>
             点击显示
           </Button>
         </List.Item>
@@ -45,8 +45,8 @@ const Demo = () => {
         ) : null}
       </List>
       <Mask visible={visible} color={color} opacity={opacity} onClick={toggle}>
-        <Button size="sm" onClick={toggle}>
-          关闭
+        <Button size="xs" onClick={toggle}>
+          关闭遮罩
         </Button>
       </Mask>
     </>
