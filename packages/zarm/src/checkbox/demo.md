@@ -362,5 +362,7 @@ ReactDOM.render(
 
 ### Checkbox.Group
 
-| --group-spacing-vertical | '8px' | 组合使用时的纵向间距 |
+| 属性                       | 默认值 | 说明                 |
+| :------------------------- | :----- | :------------------- |
+| --group-spacing-vertical   | '8px'  | 组合使用时的纵向间距 |
 | --group-spacing-horizontal | '24px' | 组合使用时的横向间距 |

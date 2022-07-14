@@ -104,7 +104,7 @@ export default class Portal extends PureComponent<PortalProps, PortalState> {
   };
 
   renderMask = () => {
-    const { mask, maskType, animationDuration, visible } = this.props;
+    const { mask, maskColor, maskOpacity, animationDuration, visible } = this.props;
     const { isPending } = this.state;
     const animationState = visible ? 'enter' : 'leave';
     const maskCls = classnames({
@@ -115,7 +115,17 @@ export default class Portal extends PureComponent<PortalProps, PortalState> {
       WebkitAnimationDuration: `${animationDuration}ms`,
       animationDuration: `${animationDuration}ms`,
     };
-    return mask && <Mask className={maskCls} style={maskStyle} visible type={maskType} />;
+    return (
+      mask && (
+        <Mask
+          visible
+          className={maskCls}
+          style={maskStyle}
+          color={maskColor}
+          opacity={maskOpacity}
+        />
+      )
+    );
   };
 
   onEsc = () => {

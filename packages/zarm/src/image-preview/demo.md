@@ -201,3 +201,11 @@ ReactDOM.render(<Demo />, mountNode);
 | orientation    | string                                             | -      | 横竖屏，默认自动识别 `landscape` \| `portrait` |
 | onChange       | (activeIndex: number) => void                      | -      | 图片切换时候回调                               |
 | onClose        | () => void                                         | -      | 关闭时候回调                                   |
+
+## CSS 变量
+
+| 属性                    | 默认值                                          | 说明         |
+| :---------------------- | :---------------------------------------------- | :----------- |
+| --footer-padding        | 'var(--za-padding-v-lg) var(--za-padding-h-lg)' | 底部内边距   |
+| --pagination-text-color | 'var(--za-color-text-inverse)'                  | 页码字体颜色 |
+| --pagination-font-size  | 'var(--za-font-size-lg)'                        | 页码字号     |

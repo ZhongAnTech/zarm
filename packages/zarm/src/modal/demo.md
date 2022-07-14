@@ -458,21 +458,21 @@ const confirm = Modal.confirm({
 
 ### Modal CSS 变量
 
-| 属性                          | 默认值                              | 说明                 |
-| :---------------------------- | :---------------------------------- | :------------------- |
-| --za-modal-background         | 'rgb(242, 242, 242)'                | 背景色               |
-| --za-modal-border-radius      | '14px'                              | 圆角大小             |
-| --za-modal-box-shadow         | '0 7px 21px var(--za-color-shadow)' | 阴影样式             |
-| --za-modal-title-font-size    | '17px'                              | 标题字体大小         |
-| --za-modal-title-font-weight  | 500                                 | 标题字体粗细         |
-| --za-modal-title-text-color   | 'var(--za-color-text)'              | 标题字体颜色         |
-| --za-modal-close-size         | '20px'                              | 关闭图标字体大小     |
-| --za-modal-close-color        | '#ccc'                              | 关闭图标颜色         |
-| --za-modal-close-active-color | '#999'                              | 关闭图标激活状态颜色 |
-| --za-modal-body-font-size     | '13px'                              | 内容字体大小         |
-| --za-modal-body-text-color    | 'var(--za-color-text)'              | 内容字体颜色         |
-| --za-modal-body-padding       | '16px'                              | 内容内边距           |
-| --za-modal-button-height      | '44px'                              | 操作按钮高度         |
-| --za-modal-button-font-size   | '17px'                              | 操作按钮字体大小     |
-| --za-modal-button-font-weight | 500                                 | 操作按钮字体粗细     |
-| --za-modal-button-text-color  | 'var(--za-theme-primary)'           | 操作按钮字体颜色     |
+| 属性                 | 默认值                              | 说明                 |
+| :------------------- | :---------------------------------- | :------------------- |
+| --background         | 'rgb(242, 242, 242)'                | 背景色               |
+| --border-radius      | '14px'                              | 圆角大小             |
+| --shadow             | '0 7px 21px var(--za-color-shadow)' | 阴影样式             |
+| --title-font-size    | '17px'                              | 标题字体大小         |
+| --title-font-weight  | 500                                 | 标题字体粗细         |
+| --title-text-color   | 'var(--za-color-text)'              | 标题字体颜色         |
+| --close-size         | '20px'                              | 关闭图标字体大小     |
+| --close-color        | '#ccc'                              | 关闭图标颜色         |
+| --close-active-color | '#999'                              | 关闭图标激活状态颜色 |
+| --body-font-size     | '13px'                              | 内容字体大小         |
+| --body-text-color    | 'var(--za-color-text)'              | 内容字体颜色         |
+| --body-padding       | '16px'                              | 内容内边距           |
+| --button-height      | '44px'                              | 操作按钮高度         |
+| --button-font-size   | '17px'                              | 操作按钮字体大小     |
+| --button-font-weight | 500                                 | 操作按钮字体粗细     |
+| --button-text-color  | 'var(--za-theme-primary)'           | 操作按钮字体颜色     |

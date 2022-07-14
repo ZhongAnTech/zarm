@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { ContainerType } from '../utils/dom';
+import { MaskProps } from '../mask';
 
 export interface BaseModalProps {
   shape?: 'radius' | 'rect';
@@ -21,7 +22,8 @@ export interface BaseModalProps {
   animationDuration?: number;
   width?: string | number;
   mask?: boolean;
-  maskType?: 'transparent' | 'normal';
+  maskColor?: MaskProps['color'];
+  maskOpacity?: MaskProps['opacity'];
   maskClosable?: boolean;
   closable?: boolean;
   mountContainer?: ContainerType;

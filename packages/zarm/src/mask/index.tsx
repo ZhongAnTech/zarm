@@ -1,29 +1,47 @@
 import * as React from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
+import isFinite from 'lodash/isFinite';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseMaskProps } from './interface';
+import type { HTMLProps } from '../utils/utilityTypes';
 
-export type MaskProps = BaseMaskProps & React.HTMLAttributes<HTMLDivElement>;
+const OpacityList = {
+  normal: 0.55,
+  light: 0.35,
+  dark: 0.75,
+};
 
-const Mask = React.forwardRef<unknown, MaskProps>((props, ref) => {
-  const { className, visible, type, ...restProps } = props;
-  const maskRef = (ref as any) || React.createRef<HTMLDivElement>();
+export interface MaskCssVars {
+  '--z-index'?: React.CSSProperties['zIndex'];
+}
 
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-mask`;
+export type MaskProps = BaseMaskProps & HTMLProps<MaskCssVars>;
 
-  const maskCls = classnames(prefixCls, className, {
-    [`${prefixCls}--${type}`]: !!type,
-  });
+const Mask = React.forwardRef<HTMLDivElement, MaskProps>((props, ref) => {
+  const { className, style, visible, color, opacity, ...restProps } = props;
 
-  return visible ? <div ref={maskRef} className={maskCls} {...restProps} /> : null;
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('mask', { prefixCls });
+
+  const rgb = color === 'black' ? '0, 0, 0' : '255, 255, 255';
+  const backgroundOpacity = isFinite(opacity) ? opacity : OpacityList[opacity!];
+
+  const maskStyle = {
+    ...style,
+    backgroundColor: color === 'transparent' ? 'transparent' : `rgba(${rgb}, ${backgroundOpacity})`,
+  };
+
+  return visible ? (
+    <div ref={ref} className={bem([className])} style={maskStyle} {...restProps} />
+  ) : null;
 });
 
 Mask.displayName = 'Mask';
 
 Mask.defaultProps = {
-  type: 'normal',
   visible: false,
+  color: 'black',
+  opacity: 'normal',
 };
 
 export default Mask;
