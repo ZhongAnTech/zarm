@@ -83,6 +83,8 @@ const themes = {
   '--za-tabbar-background': '#1b1c1e',
   '--za-toast-background': '#2b2c2d',
   '--za-tooltip-background': '#5b5c60',
+  '--za-image-background': '#3a3b3d',
+  '--za-image-text-color': '#fff',
 } as const;
 
 const setTheme = (value: ConfigProviderProps['theme']) => {

@@ -318,6 +318,13 @@ module.exports = {
         style: true,
       },
       {
+        key: 'image',
+        name: '图片',
+        module: () => import('zarm/image/demo.md'),
+        source: 'zarm/image/demo.md',
+        style: true,
+      },
+      {
         key: 'water-mark',
         name: '水印',
         module: () => import('zarm/water-mark/demo.md'),
@@ -403,6 +410,13 @@ module.exports = {
         name: '滚动',
         module: () => import('zarm/useScroll/demo.md'),
         source: 'zarm/useScroll/demo.md',
+        style: false,
+      },
+      {
+        key: 'useInViewport',
+        name: '进入浏览器窗口',
+        module: () => import('zarm/useInViewport/demo.md'),
+        source: 'zarm/useInViewport/demo.md',
         style: false,
       },
     ],

@@ -165,6 +165,18 @@ describe('index', () => {
           },
           "render": [Function],
         },
+        "Image": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "fallback": true,
+            "fit": "fill",
+            "lazy": false,
+            "placeholder": true,
+            "preview": false,
+            "shape": "rect",
+          },
+          "render": [Function],
+        },
         "ImagePreview": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
@@ -468,6 +480,7 @@ describe('index', () => {
         "Wheel": [Function],
         "useClickAway": [Function],
         "useDrag": [Function],
+        "useInViewport": [Function],
         "useLongPress": [Function],
         "useOrientation": [Function],
         "useScroll": [Function],
