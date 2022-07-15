@@ -22,9 +22,16 @@ import { canUseDOM, getOuterSizes, getMountContainer } from '../utils/dom';
 import BasePopperProps, { PopperPlacement, directionMap } from './interface';
 import { ConfigContext } from '../n-config-provider';
 import { getTransitionName, getTransformOrigin } from './utils';
+import type { HTMLProps } from '../utils/utilityTypes';
 
-export interface PopperProps extends BasePopperProps, HTMLAttributes<HTMLDivElement> {}
+export interface PopperCssVars {
+  arrowLeft?: React.CSSProperties['left'];
+  arrowRight?: React.CSSProperties['right'];
+  arrowBottom?: React.CSSProperties['bottom'];
+  arrowTop?: React.CSSProperties['top'];
+}
 
+export type PopperProps = BasePopperProps & HTMLProps<PopperCssVars>;
 interface PopperStates {
   show: boolean;
   direction: PopperPlacement;

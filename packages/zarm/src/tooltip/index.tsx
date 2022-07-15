@@ -19,7 +19,7 @@ const Tooltip = forwardRef<any, TooltipProps>((props, ref) => {
   const bem = createBEM('tooltip', { prefixCls });
   const cls = bem([className]);
 
-  const poperRef = useRef();
+  const poperRef = useRef(null);
 
   useImperativeHandle(ref, () => {
     return {
