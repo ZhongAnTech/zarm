@@ -31,7 +31,8 @@ export interface PopperCssVars {
   arrowTop?: React.CSSProperties['top'];
 }
 
-export type PopperProps = BasePopperProps & HTMLProps<PopperCssVars>;
+interface PopperProps extends BasePopperProps, HTMLAttributes<HTMLDivElement> {}
+
 interface PopperStates {
   show: boolean;
   direction: PopperPlacement;
@@ -41,7 +42,7 @@ interface PopperStates {
   animationState: 'leave' | 'enter';
 }
 
-const Popper = forwardRef<any, PopperProps>((props, ref) => {
+const Popper = forwardRef<any, PopperProps & HTMLProps<PopperCssVars>>((props, ref) => {
   const { prefixCls } = React.useContext(ConfigContext);
   const {
     visible,
