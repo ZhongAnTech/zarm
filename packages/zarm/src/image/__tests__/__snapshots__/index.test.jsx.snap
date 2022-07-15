@@ -4,7 +4,6 @@ exports[`Image alt 1`] = `
 <DocumentFragment>
   <div
     class="za-image za-image--rect"
-    style="width: 100%; height: 100%;"
   >
     <img
       alt="image"
@@ -25,7 +24,6 @@ exports[`Image fallback 1`] = `
 <DocumentFragment>
   <div
     class="za-image za-image--rect"
-    style="width: 100%; height: 100%;"
   >
     <img
       class="za-image__img"
@@ -45,7 +43,6 @@ exports[`Image fill 1`] = `
 <DocumentFragment>
   <div
     class="za-image za-image--rect"
-    style="width: 100%; height: 100%;"
   >
     <img
       class="za-image__img"
@@ -66,7 +63,7 @@ exports[`Image height 1`] = `
 <DocumentFragment>
   <div
     class="za-image za-image--rect"
-    style="width: 100%; height: 40px;"
+    style="height: 40px;"
   >
     <img
       class="za-image__img"
@@ -86,7 +83,6 @@ exports[`Image placeholder 1`] = `
 <DocumentFragment>
   <div
     class="za-image za-image--rect"
-    style="width: 100%; height: 100%;"
   >
     <img
       class="za-image__img"
@@ -106,7 +102,6 @@ exports[`Image render correctly 1`] = `
 <DocumentFragment>
   <div
     class="za-image za-image--rect"
-    style="width: 100%; height: 100%;"
   >
     <img
       class="za-image__img"
@@ -126,7 +121,6 @@ exports[`Image shape 1`] = `
 <DocumentFragment>
   <div
     class="za-image za-image--circle"
-    style="width: 100%; height: 100%;"
   >
     <img
       class="za-image__img"
@@ -146,7 +140,7 @@ exports[`Image width 1`] = `
 <DocumentFragment>
   <div
     class="za-image za-image--rect"
-    style="width: 50px; height: 100%;"
+    style="width: 50px;"
   >
     <img
       class="za-image__img"

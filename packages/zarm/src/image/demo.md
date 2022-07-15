@@ -5,9 +5,10 @@
 ```jsx
 import { Image } from 'zarm';
 const imgSrc = 'https://static.zhongan.com/website/health/zarm/images/banners/1.png';
+
 ReactDOM.render(
-  <div style={{ display: 'flex' }}>
-    <Image src={imgSrc} width="80px" height="80px" />
+  <div className="block">
+    <Image src={imgSrc} />
   </div>,
   mountNode,
 );
@@ -18,36 +19,43 @@ ReactDOM.render(
 ```jsx
 import { Image, Grid } from 'zarm';
 const imgSrc = 'https://static.zhongan.com/website/health/zarm/images/banners/1.png';
+
 ReactDOM.render(
   <>
-    <Grid square bordered={false}>
+    <Grid
+      square
+      style={{
+        '--za-image-width': '80px',
+        '--za-image-height': '80px',
+      }}
+    >
       <Grid.Item>
         <div className="block">
-          <Image src={imgSrc} width="80px" height="80px" fit="fill" />
+          <Image src={imgSrc} fit="fill" />
           <span>fill</span>
         </div>
       </Grid.Item>
       <Grid.Item>
         <div className="block">
-          <Image src={imgSrc} width="80px" height="80px" fit="contain" />
+          <Image src={imgSrc} fit="contain" />
           <span>contain</span>
         </div>
       </Grid.Item>
       <Grid.Item>
         <div className="block">
-          <Image src={imgSrc} width="80px" height="80px" fit="cover" />
+          <Image src={imgSrc} fit="cover" />
           <span>cover</span>
         </div>
       </Grid.Item>
       <Grid.Item>
         <div className="block">
-          <Image src={imgSrc} width="80px" height="80px" fit="scale-down" />
+          <Image src={imgSrc} fit="scale-down" />
           <span>scale-down</span>
         </div>
       </Grid.Item>
       <Grid.Item>
         <div className="block">
-          <Image src={imgSrc} width="80px" height="80px" fit="none" />
+          <Image src={imgSrc} fit="none" />
           <span>none</span>
         </div>
       </Grid.Item>
@@ -62,29 +70,30 @@ ReactDOM.render(
 ```jsx
 import { Image, Grid } from 'zarm';
 const imgSrc = 'https://static.zhongan.com/website/health/zarm/images/banners/1.png';
+
 ReactDOM.render(
-  <Grid square bordered={false}>
+  <Grid
+    square
+    style={{
+      '--za-image-width': '80px',
+      '--za-image-height': '80px',
+    }}
+  >
     <Grid.Item>
       <div className="block">
-        <Image src={imgSrc} width="80px" height="80px" shape="rect" />
+        <Image src={imgSrc} shape="rect" />
         <span>rect</span>
       </div>
     </Grid.Item>
     <Grid.Item>
       <div className="block">
-        <Image src={imgSrc} width="80px" height="80px" shape="radius" />
+        <Image src={imgSrc} shape="radius" />
         <span>radius</span>
       </div>
     </Grid.Item>
     <Grid.Item>
       <div className="block">
-        <Image src={imgSrc} width="80px" height="80px" shape="round" />
-        <span>round</span>
-      </div>
-    </Grid.Item>
-    <Grid.Item>
-      <div className="block">
-        <Image src={imgSrc} width="80px" height="80px" shape="circle" />
+        <Image src={imgSrc} shape="circle" />
         <span>circle</span>
       </div>
     </Grid.Item>
@@ -97,11 +106,18 @@ ReactDOM.render(
 
 ```jsx
 import { Image, Grid } from 'zarm';
+
 ReactDOM.render(
-  <Grid square bordered={false}>
+  <Grid
+    square
+    style={{
+      '--za-image-width': '80px',
+      '--za-image-height': '80px',
+    }}
+  >
     <Grid.Item>
       <div className="block">
-        <Image src="https://zarm.com" width="80px" height="80px" />
+        <Image src="https://zarm.com" />
         <span>默认显示</span>
       </div>
     </Grid.Item>
@@ -109,8 +125,6 @@ ReactDOM.render(
       <div className="block">
         <Image
           src="https://zarm.com"
-          width="80px"
-          height="80px"
           placeholder="加载中..."
           fallback={false}
           alt="加载失败图片"
@@ -123,13 +137,7 @@ ReactDOM.render(
     </Grid.Item>
     <Grid.Item>
       <div className="block">
-        <Image
-          src="https://zarm.com"
-          width="80px"
-          height="80px"
-          placeholder="加载中..."
-          fallback={<span>图片不见啦</span>}
-        />
+        <Image src="https://zarm.com" placeholder="加载中..." fallback={<span>图片不见啦</span>} />
         <span>自定义显示</span>
       </div>
     </Grid.Item>
@@ -143,15 +151,10 @@ ReactDOM.render(
 ```jsx
 import { Image } from 'zarm';
 const imgSrc = 'https://static.zhongan.com/website/health/zarm/images/banners/1.png';
+
 ReactDOM.render(
-  <div style={{ display: 'flex' }}>
-    <Image
-      src={imgSrc}
-      width="80px"
-      height="80px"
-      placeholder={<span>加载中</span>}
-      fallback={<span>图片不见啦</span>}
-    />
+  <div className="block">
+    <Image src={imgSrc} placeholder={<span>加载中</span>} fallback={<span>图片不见啦</span>} />
   </div>,
   mountNode,
 );
@@ -162,9 +165,10 @@ ReactDOM.render(
 ```jsx
 import { Image } from 'zarm';
 const imgSrc = 'https://static.zhongan.com/website/health/zarm/images/banners/1.png';
+
 ReactDOM.render(
-  <div style={{ display: 'flex' }}>
-    <Image src={imgSrc} width="80px" height="80px" shape="rect" preview />
+  <div className="block">
+    <Image preview src={imgSrc} shape="rect" />
   </div>,
   mountNode,
 );
@@ -175,9 +179,10 @@ ReactDOM.render(
 ```jsx
 import { Image } from 'zarm';
 const imgSrc = 'https://static.zhongan.com/website/health/zarm/images/banners/1.png';
+
 ReactDOM.render(
-  <div style={{ display: 'flex' }}>
-    <Image src={imgSrc} width="80px" height="80px" lazy />
+  <div className="block">
+    <Image lazy src={imgSrc} />
   </div>,
   mountNode,
 );
@@ -190,8 +195,8 @@ ReactDOM.render(
 | src         | string                                                   | -      | 图片地址                                     |
 | placeholder | ReactNode                                                | true   | 加载中的占位显示，为 `true` 时使用默认显示   |
 | fallback    | ReactNode                                                | true   | 加载失败的容错显示，为 `true` 时使用默认显示 |
-| width       | string \| number                                         | -      | 图像宽度                                     |
-| height      | string \| number                                         | -      | 图像高度                                     |
+| width       | string \| number                                         | -      | 图片宽度                                     |
+| height      | string \| number                                         | -      | 图片高度                                     |
 | alt         | boolean                                                  | -      | 图片描述                                     |
 | lazy        | string                                                   | false  | 是否懒加载                                   |
 | shape       | 'rect' \| 'radius' \| 'round' \| 'circle'                | 'rect' | 图片形状                                     |
@@ -202,8 +207,11 @@ ReactDOM.render(
 
 ## CSS 变量
 
-| 属性               | 默认值    | 说明     |
-| :----------------- | :-------- | :------- |
-| --background-color | '#fafafa' | 背景色   |
-| --text-color       | '#343434' | 字体颜色 |
-| --font-size        | '12px'    | 字体大小 |
+| 属性               | 默认值                 | 说明         |
+| :----------------- | :--------------------- | :----------- |
+| --background-color | '#fafafa'              | 占位背景色   |
+| --text-color       | 'var(--za-color-text)' | 占位字体颜色 |
+| --font-size        | '12px'                 | 占位字体大小 |
+| --radius           | 'var(--za-radius-lg)'  | 图片圆角大小 |
+| --width            | -                      | 图片宽度     |
+| --height           | -                      | 图片高度     |

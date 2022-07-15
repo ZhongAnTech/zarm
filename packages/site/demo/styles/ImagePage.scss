@@ -1,3 +1,4 @@
+@import "@/styles/index";
 
 .image-page {
   .block {
@@ -7,5 +8,10 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+
+    span {
+      margin-top: r(4);
+      font-size: r(12);
+    }
   }
 }

@@ -1,4 +1,4 @@
-# useInViewport 进入 Viewport 检测
+# useInViewport 进入窗口检测
 
 ## 基本用法
 
@@ -18,8 +18,12 @@ const Demo = () => {
 
   return (
     <div>
-      <div style={{ height: '1000px', backgroundColor: '#ccc' }}>一个很长的内容</div>
-      <div ref={divRef}>in viewport</div>
+      <div style={{ height: '1000px', backgroundColor: '#ccc', padding: '15px' }}>
+        一个很长的内容
+      </div>
+      <div ref={divRef} style={{ padding: '15px' }}>
+        检测对象
+      </div>
     </div>
   );
 };

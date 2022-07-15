@@ -16,6 +16,8 @@ export interface ImageCssVars {
   '--text-color'?: React.CSSProperties['color'];
   '--font-size'?: React.CSSProperties['fontSize'];
   '--radius'?: React.CSSProperties['borderRadius'];
+  '--width'?: React.CSSProperties['width'];
+  '--height'?: React.CSSProperties['height'];
 }
 
 export interface ImageProps extends Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'placeholder'> {
@@ -131,8 +133,6 @@ const Image = React.forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
 
 Image.displayName = 'Image';
 Image.defaultProps = {
-  width: '100%',
-  height: '100%',
   placeholder: true,
   fallback: true,
   fit: 'fill',

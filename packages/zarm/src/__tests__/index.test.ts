@@ -170,12 +170,10 @@ describe('index', () => {
           "defaultProps": Object {
             "fallback": true,
             "fit": "fill",
-            "height": "100%",
             "lazy": false,
             "placeholder": true,
             "preview": false,
             "shape": "rect",
-            "width": "100%",
           },
           "render": [Function],
         },

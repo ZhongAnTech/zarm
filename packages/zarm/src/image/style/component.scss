@@ -1,22 +1,19 @@
-@import 'mixins';
-
 @include b(image) {
-
   @include define(background, #fafafa);
-  @include define(text-color, #343434);
+  @include define(text-color, var(--za-color-text));
   @include define(font-size, 12px);
-  
+  @include define(radius, var(--za-radius-lg));
+  @include define(width, 100%);
+  @include define(height, 100%);
+
   position: relative;
   display: inline-block;
+  width: var(--width);
+  height: var(--height);
   overflow: hidden;
 
   @include m(radius) {
-    @include define(radius, 15px);
     border-radius: var(--radius);
-  }
-  
-  @include m(round) {
-    border-radius: 44px;
   }
 
   @include m(circle) {
@@ -29,11 +26,19 @@
     height: 100%;
   }
 
-  @include e(loading) {
-    @include image-react();
-  }
-
-  @include e(fallback) {
-    @include image-react();
+  @include e(loading, fallback) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: var(--background);
+    color: var(--text-color);
+    font-size: var(--font-size);
   }
 }

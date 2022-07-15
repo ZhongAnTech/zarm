@@ -319,7 +319,7 @@ module.exports = {
       },
       {
         key: 'image',
-        name: '图片加载',
+        name: '图片',
         module: () => import('zarm/image/demo.md'),
         source: 'zarm/image/demo.md',
         style: true,
