@@ -1,7 +1,7 @@
 @include b(modal) {
   @include define(background, rgb(242, 242, 242));
   @include define(border-radius, 14px);
-  @include define(box-shadow, 0 7px 21px var(--za-color-shadow));
+  @include define(shadow, 0 7px 21px var(--za-color-shadow));
   @include define(title-font-size, 17px);
   @include define(title-font-weight, 500);
   @include define(title-text-color, var(--za-color-text));
@@ -21,7 +21,7 @@
   @include b(popup) {
     position: relative;
     background-color: var(--background);
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--shadow);
     overflow: hidden;
   }
 

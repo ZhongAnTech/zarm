@@ -16,7 +16,7 @@ commander
   .option('-p, --path <path>', '源文件目录')
   .option('-o, --out-file <path>', '输出文件')
   .option('-d, --out-dir <path>', '输出目录')
-  .option('-z, --out-zip <path>', '输出zip压缩包存放目录')
+  // .option('-z, --out-zip <path>', '输出zip压缩包存放目录')
   .option('-e, --ext <ext>', '要匹配的文件格式', '.ts,.tsx')
   .option('-l, --library-name <libraryName>', '包名')
   .option('-c, --copy-files', '拷贝不参与编译的文件')

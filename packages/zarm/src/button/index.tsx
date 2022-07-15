@@ -1,5 +1,5 @@
-import * as React from 'react';
-import classnames from 'classnames';
+import React, { useContext } from 'react';
+import { createBEM } from '@zarm-design/bem';
 import ActivityIndicator from '../activity-indicator';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseButtonProps, ButtonTheme, ButtonSize, ButtonShape } from './interface';
@@ -7,7 +7,7 @@ import type { HTMLProps } from '../utils/utilityTypes';
 
 export type { ButtonTheme, ButtonSize, ButtonShape };
 
-export interface ButtontCssVars {
+export interface ButtonCssVars {
   '--height'?: React.CSSProperties['height'];
   '--background'?: React.CSSProperties['background'];
   '--border-radius'?: React.CSSProperties['borderRadius'];
@@ -24,18 +24,18 @@ export interface ButtontCssVars {
   '--loading-color'?: React.CSSProperties['color'];
 }
 
-interface CommonProps extends BaseButtonProps, HTMLProps<ButtontCssVars> {
-  onClick?: React.MouseEventHandler<HTMLElement>;
-}
-
 export type AnchorButtonProps = {
   mimeType?: string;
-} & CommonProps &
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+} & BaseButtonProps &
+  HTMLProps<ButtonCssVars> &
   Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'type' | 'onClick'>;
 
 export type NativeButtonProps = {
   htmlType?: 'button' | 'submit' | 'reset';
-} & CommonProps &
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+} & BaseButtonProps &
+  HTMLProps<ButtonCssVars> &
   Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'onClick'>;
 
 export type ButtonProps = Partial<AnchorButtonProps & NativeButtonProps>;
@@ -62,23 +62,27 @@ const Button = React.forwardRef<unknown, ButtonProps>((props, ref) => {
   const iconRender = loading ? <ActivityIndicator /> : icon;
   const childrenRender = children && <span>{children}</span>;
 
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-button`;
+  const { prefixCls } = useContext(ConfigContext);
+  const bem = createBEM('button', { prefixCls });
 
-  let cls = classnames(prefixCls, className, {
-    [`${prefixCls}--${theme}`]: !!theme,
-    [`${prefixCls}--${size}`]: !!size,
-    [`${prefixCls}--${shape}`]: !!shape,
-    [`${prefixCls}--block`]: block,
-    [`${prefixCls}--ghost`]: ghost,
-    [`${prefixCls}--shadow`]: shadow,
-    [`${prefixCls}--disabled`]: disabled,
-    [`${prefixCls}--loading`]: loading,
-  });
+  const cls = bem([
+    {
+      [`${theme}`]: !!theme,
+      [`${size}`]: !!size,
+      [`${shape}`]: !!shape,
+      block,
+      ghost,
+      shadow,
+      disabled,
+      loading,
+      link: (restProps as AnchorButtonProps).href !== undefined,
+    },
+    className,
+  ]);
 
   const contentRender =
     !!icon || loading ? (
-      <div className={`${prefixCls}__content`}>
+      <div className={bem('content')}>
         {iconRender}
         {childrenRender}
       </div>
@@ -97,8 +101,6 @@ const Button = React.forwardRef<unknown, ButtonProps>((props, ref) => {
 
   if ((restProps as AnchorButtonProps).href !== undefined) {
     const { mimeType, ...anchorRest } = restProps;
-    cls = classnames(cls, `${prefixCls}--link`);
-
     return (
       <a
         {...(anchorRest as AnchorButtonProps)}

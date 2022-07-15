@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
-import { paramCase, noCase } from 'change-case';
+import { paramCase } from 'change-case';
 import { BaseIconProps } from './interface';
 import createFromIconfont from './IconFont';
 

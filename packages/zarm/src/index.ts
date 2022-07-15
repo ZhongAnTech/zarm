@@ -10,25 +10,30 @@ export { default as Affix } from './affix';
 export type { AlertProps } from './alert';
 // export { default as Alert } from './alert';
 
-export type { BackTopProps } from './back-top';
+export type { BackTopProps, BackTopCssVars } from './back-top';
 export { default as BackTop } from './back-top';
 
 export type { BadgeProps, BadgeCssVars } from './badge';
 export { default as Badge } from './badge';
 
-export type { ButtonProps } from './button';
+export type { ButtonProps, ButtonCssVars } from './button';
 export { default as Button } from './button';
 
-export type { CalendarProps } from './calendar';
+export type { CalendarProps, CalendarCssVars } from './calendar';
 export { default as Calendar } from './calendar';
 
 export type { CollapseProps, CollapseItemProps } from './collapse';
 export { default as Collapse } from './collapse';
 
-export type { ListProps, ListItemProps } from './list';
+export type { ListProps, ListItemProps, ListCssVars } from './list';
 export { default as List } from './list';
 
-export type { CheckboxProps, CheckboxGroupProps } from './checkbox';
+export type {
+  CheckboxProps,
+  CheckboxGroupProps,
+  CheckboxCssVars,
+  CheckboxGroupCssVars,
+} from './checkbox';
 export { default as Checkbox } from './checkbox';
 
 export type { ConfirmProps } from './confirm';
@@ -66,7 +71,7 @@ export { default as KeyboardPicker } from './keyboard-picker';
 
 export { default as Loading } from './loading';
 
-export type { MaskProps } from './mask';
+export type { MaskProps, MaskCssVars } from './mask';
 export { default as Mask } from './mask';
 
 export type { MessageProps } from './message';
@@ -147,8 +152,11 @@ export { default as Marquee } from './marquee';
 export type { TabBarProps, TabBarItemProps } from './tab-bar';
 export { default as TabBar } from './tab-bar';
 
-export type { ImagePreviewProps } from './image-preview';
+export type { ImagePreviewProps, ImagePreviewCssVars } from './image-preview';
 export { default as ImagePreview } from './image-preview';
+
+export type { ImageProps, ImageCssVars } from './image';
+export { default as Image } from './image';
 
 export type { PinchZoomProps } from './pinch-zoom';
 export { default as PinchZoom } from './pinch-zoom';
@@ -177,3 +185,5 @@ export type { UseScrollProps } from './useScroll';
 export { default as useScroll } from './useScroll';
 
 export { default as useClickAway } from './useClickAway';
+
+export { default as useInViewport } from './useInViewport';

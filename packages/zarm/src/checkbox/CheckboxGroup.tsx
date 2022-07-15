@@ -6,22 +6,6 @@ import type { BaseCheckboxGroupProps, CheckboxValue } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
 
 export interface CheckboxGroupCssVars {
-  '--widget-size'?: React.CSSProperties['height'];
-  '--widget-background'?: React.CSSProperties['background'];
-  '--widget-border-radius'?: React.CSSProperties['borderRadius'];
-  '--widget-border-width'?: React.CSSProperties['borderWidth'];
-  '--widget-border-color'?: React.CSSProperties['borderColor'];
-  '--marker-font-size'?: React.CSSProperties['fontSize'];
-  '--marker-color'?: React.CSSProperties['color'];
-  '--marker-transition'?: React.CSSProperties['transition'];
-  '--text-margin-horizontal'?: React.CSSProperties['marginLeft'];
-  '--active-opacity'?: React.CSSProperties['opacity'];
-  '--checked-widget-background'?: React.CSSProperties['background'];
-  '--checked-widget-border-color'?: React.CSSProperties['borderColor'];
-  '--disabled-widget-background'?: React.CSSProperties['background'];
-  '--disabled-widget-border-color'?: React.CSSProperties['borderColor'];
-  '--disabled-text-color'?: React.CSSProperties['color'];
-  '--disabled-marker-color'?: React.CSSProperties['color'];
   '--group-spacing-vertical'?: React.CSSProperties['marginBottom'];
   '--group-spacing-horizontal'?: React.CSSProperties['marginRight'];
 }
