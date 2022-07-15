@@ -6,13 +6,13 @@
 
   @include m(topLeft, bottomLeft) {
     @include e(arrow) {
-      left: var(arrowLeft);
+      left: var(--arrowLeft);
     }
   }
 
   @include m(topRight, bottomRight) {
     @include e(arrow) {
-      right: var(arrowRight);
+      right: var(--arrowRight);
     }
   }
 
@@ -32,13 +32,13 @@
 
   @include m(leftTop, rightTop) {
     @include e(arrow) {
-      top: var(arrowTop);
+      top: var(--arrowTop);
     }
   }
 
   @include m(leftBottom, rightBottom) {
     @include e(arrow) {
-      bottom: var(arrowBottom);
+      bottom: var(--arrowBottom);
     }
   }
 }

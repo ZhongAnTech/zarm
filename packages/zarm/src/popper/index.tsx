@@ -236,7 +236,13 @@ const Popper = forwardRef<any, PopperProps & HTMLProps<PopperCssVars>>((props, r
         });
       }
     }
-  }, [popperInstanceRef.current, direction, direction, arrowPointAtCenter]);
+  }, [popperInstanceRef.current, direction, arrowPointAtCenter]);
+
+  useEffect(() => {
+    if (popperInstanceRef.current) {
+      popperInstanceRef.current.update();
+    }
+  }, [animationState]);
 
   useEffect(() => {
     return () => {
