@@ -65,26 +65,27 @@ const Demo = () => {
 
   return (
     <>
-      <NoticeBar>图片缩放只支持Touch事件，建议使用移动模式/设备浏览以获得最佳体验。</NoticeBar>
-      <List.Item
-        after={
-          <Button size="xs" onClick={() => open('common')}>
-            开启
-          </Button>
-        }
-      >
-        普通
-      </List.Item>
-      <List.Item
-        after={
-          <Button size="xs" onClick={() => open('origin')}>
-            开启
-          </Button>
-        }
-      >
-        有查看原始图片功能
-      </List.Item>
-
+      <List>
+        <NoticeBar>图片缩放只支持Touch事件，建议使用移动模式/设备浏览以获得最佳体验。</NoticeBar>
+        <List.Item
+          after={
+            <Button size="xs" onClick={() => open('common')}>
+              开启
+            </Button>
+          }
+        >
+          普通
+        </List.Item>
+        <List.Item
+          after={
+            <Button size="xs" onClick={() => open('origin')}>
+              开启
+            </Button>
+          }
+        >
+          有查看原始图片功能
+        </List.Item>
+      </List>
       <ImagePreview
         visible={visibleState.common}
         images={commonImages}
@@ -124,15 +125,20 @@ const Demo = () => {
   const orientation = inIframe ? 'portrait' : '';
 
   return (
-    <List.Item
-      after={
-        <Button size="xs" onClick={() => ImagePreview.show({ images: commonImages, orientation })}>
-          开启
-        </Button>
-      }
-    >
-      静态用法
-    </List.Item>
+    <List>
+      <List.Item
+        after={
+          <Button
+            size="xs"
+            onClick={() => ImagePreview.show({ images: commonImages, orientation })}
+          >
+            开启
+          </Button>
+        }
+      >
+        静态用法
+      </List.Item>
+    </List>
   );
 };
 ReactDOM.render(<Demo />, mountNode);
@@ -167,13 +173,15 @@ const Demo = () => {
 
   return (
     <>
-      <List.Item>
-        {commonImages.map((pic, index) => (
-          <div className="picture-item" onClick={() => show(index)} key={+index}>
-            <img src={pic} alt="" />
-          </div>
-        ))}
-      </List.Item>
+      <List>
+        <List.Item>
+          {commonImages.map((pic, index) => (
+            <div className="picture-item" onClick={() => show(index)} key={+index}>
+              <img src={pic} alt="" />
+            </div>
+          ))}
+        </List.Item>
+      </List>
       <ImagePreview
         visible={visible}
         images={commonImages}
