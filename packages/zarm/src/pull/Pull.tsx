@@ -8,14 +8,20 @@ import {
 import throttle from 'lodash/throttle';
 import Events from '../utils/events';
 import { ConfigContext } from '../n-config-provider';
-import { REFRESH_STATE, LOAD_STATE, PullAction, PropsType } from './interface';
+import { REFRESH_STATE, LOAD_STATE, PullAction, BasePullProps } from './interface';
 import { getScrollParent, getScrollTop } from '../utils/dom';
 import ActivityIndicator from '../activity-indicator';
 import { useEventCallback } from '../utils/hooks';
 import type { HTMLProps } from '../utils/utilityTypes';
 
+export interface PullCssVars {
+  '--control-padding-vertical'?: React.CSSProperties['padding'];
+  '--control-text-font-size'?: React.CSSProperties['fontSize'];
+  '--control-text-color'?: React.CSSProperties['color'];
+  '--control-icon-font-size'?: React.CSSProperties['fontSize'];
+}
 
-interface PullProps extends PropsType, HTMLProps {}
+export interface PullProps extends BasePullProps, HTMLProps<PullCssVars> {}
 
 const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
   const pullRef = (ref as any) || React.createRef<HTMLDivElement>();
@@ -240,6 +246,7 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
   const bind = useDrag(
     (state) => {
       if (state.last) {
+        setAnimationDuration(props!.animationDuration!)
         onDragEnd({ offsetY })
         return;
       }
