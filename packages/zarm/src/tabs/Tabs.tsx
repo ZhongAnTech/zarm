@@ -182,10 +182,15 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
       return false;
     }
     const value = this.currentValue;
-    const index = value - 1 >= 0 ? value - 1 : 0;
-    const prevTabItem = this.layout!.childNodes[index];
-    if (scrollable && this.layout && prevTabItem) {
-      const { offsetTop: top = 0, offsetLeft: left = 0 } = prevTabItem as HTMLElement;
+    if (scrollable && this.layout && this.layout.childNodes[value]) {
+      const {
+        offsetWidth: layoutOffsetWidth = 0,
+        offsetHeight: layoutOffsetHeight = 0,
+      } = this.layout;
+      const curTab = this.layout.childNodes[value] as HTMLElement;
+      const left = curTab.offsetLeft + curTab.offsetWidth / 2 - layoutOffsetWidth / 2;
+      const top = curTab.offsetTop + curTab.offsetHeight / 2 - layoutOffsetHeight / 2;
+
       scrollTo(this.layout, top, left, 0.3);
     }
   };
