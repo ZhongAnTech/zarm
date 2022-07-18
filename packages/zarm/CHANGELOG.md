@@ -1,5 +1,11 @@
 # 版本更新日志
 
+## v2.9.16
+
+- Perf
+
+  - [Tabs] 优化在 scrollable 为 true 的场景下，使得选中项居中。[#918](https://github.com/ZhongAnTech/zarm/pull/918)
+
 ## v2.9.15
 
 - Bug Fix
