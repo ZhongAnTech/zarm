@@ -333,6 +333,19 @@ describe('index', () => {
         },
         "Pull": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "animationDuration": 400,
+            "load": Object {
+              "distance": 0,
+              "state": 0,
+            },
+            "refresh": Object {
+              "distance": 30,
+              "startDistance": 30,
+              "state": 0,
+            },
+            "stayTime": 1000,
+          },
           "render": [Function],
         },
         "Radio": Object {
