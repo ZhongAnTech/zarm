@@ -5,7 +5,7 @@ exports[`TabBar snapshot should render correctly 1`] = `
   class="za-tab-bar"
 >
   <div
-    class="za-tab-bar__item za-tab-bar--active"
+    class="za-tab-bar__item za-tab-bar__item--active"
   >
     <div
       class="za-tab-bar__icon"
@@ -28,7 +28,7 @@ exports[`TabBar snapshot with activeKey 1`] = `
   class="za-tab-bar"
 >
   <div
-    class="za-tab-bar__item za-tab-bar--active"
+    class="za-tab-bar__item za-tab-bar__item--active"
   >
     <div
       class="za-tab-bar__icon"
@@ -51,7 +51,7 @@ exports[`TabBar snapshot with defaultActiveKey 1`] = `
   class="za-tab-bar"
 >
   <div
-    class="za-tab-bar__item za-tab-bar--active"
+    class="za-tab-bar__item za-tab-bar__item--active"
   >
     <div
       class="za-tab-bar__icon"

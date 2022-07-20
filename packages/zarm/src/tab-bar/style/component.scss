@@ -24,12 +24,6 @@
     height: 0;
   }
 
-  @include m(active) {
-    @include e(title, icon) {
-      color: var(--za-tabbar-item-active-color);
-    }
-  }
-
   @include e(item) {
     flex: 1;
 
@@ -45,6 +39,24 @@
       width: r(24);
       height: r(24);
       font-size: r(18);
+    }
+
+    @include b(badge) {
+      @include e(content) {
+        --top: 6px;
+      }
+    }
+
+    @include m(active) {
+      @include b(tab-bar) {
+        @include e(title) {
+          color: var(--za-tabbar-item-active-color);
+        }
+      }
+
+      @include b(icon) {
+        color: var(--za-tabbar-item-active-color);
+      }
     }
   }
 }

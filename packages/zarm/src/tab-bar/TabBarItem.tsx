@@ -26,7 +26,7 @@ const TabBarItem = React.forwardRef<unknown, TabBarItemProps>((props, ref) => {
   } = props;
 
   const cls = classnames(`${prefixCls}__item`, {
-    [`${prefixCls}--active`]: selected,
+    [`${prefixCls}__item--active`]: selected,
   });
 
   const contentRender = (
