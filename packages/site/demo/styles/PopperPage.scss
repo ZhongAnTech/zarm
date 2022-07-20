@@ -29,8 +29,8 @@
         border-style: solid;
       }
 
-      &[x-placement^=top] {
-        margin-bottom: r(10);
+      &[data-popper-placement^=top] {
+        // margin-bottom: r(10);
 
         .za-popper__arrow {
           bottom: r(-4);
@@ -39,8 +39,8 @@
         }
       }
 
-      &[x-placement^=right] {
-        margin-left: r(10);
+      &[data-popper-placement^=right] {
+        // margin-left: r(10);
 
         .za-popper__arrow {
           left: r(-4);
@@ -49,8 +49,8 @@
         }
       }
 
-      &[x-placement^=bottom] {
-        margin-top: r(10);
+      &[data-popper-placement^=bottom] {
+        // margin-top: r(10);
 
         .za-popper__arrow {
           top: r(-4);
@@ -59,8 +59,8 @@
         }
       }
 
-      &[x-placement^=left] {
-        margin-right: r(10);
+      &[data-popper-placement^=left] {
+        // margin-right: r(10);
 
         .za-popper__arrow {
           right: r(-4);

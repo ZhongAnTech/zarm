@@ -27,6 +27,7 @@ export default interface BasePopperProps {
   animationDuration?: number;
   // popperOptions?: PopperJS.PopperOptions;
   // modifiers?: PopperJS.Modifiers;
+  arrowClassName?: string;
   content?: React.ReactNode;
   destroy?: boolean;
   mountContainer?: ContainerType;
