@@ -1,111 +1,97 @@
-@keyframes za-moveUp-enter {
+.#{$prefixCls}-move-up {
+  &-enter-active {
+    animation: 200ms #{$prefixCls}-move-up-enter both ease-out;
+  }
+
+  &-exit-active {
+    animation: 200ms #{$prefixCls}-move-up-leave both ease-in;
+  }
+}
+
+.#{$prefixCls}-move-down {
+  &-enter-active {
+    animation: 200ms #{$prefixCls}-move-down-enter both ease-out;
+  }
+
+  &-exit-active {
+    animation: 200ms #{$prefixCls}-move-down-leave both ease-in;
+  }
+}
+
+.#{$prefixCls}-move-left {
+  &-enter-active {
+    animation: 200ms #{$prefixCls}-move-left-enter both ease-out;
+  }
+
+  &-exit-active {
+    animation: 200ms #{$prefixCls}-move-left-leave both ease-in;
+  }
+}
+
+.#{$prefixCls}-move-right {
+  &-enter-active {
+    animation: 200ms #{$prefixCls}-move-right-enter both ease-out;
+  }
+
+  &-exit-active {
+    animation: 200ms #{$prefixCls}-move-right-leave both ease-in;
+  }
+}
+
+
+
+@keyframes #{$prefixCls}-move-up-enter {
   from {
+    opacity: 1;
     transform: translate3d(0, 100%, 0);
   }
-
-  to {
-    transform: translate3d(0, 0, 0);
-  }
 }
 
-.za-moveUp-enter {
-  animation: za-moveUp-enter both ease-in;
-}
-
-@keyframes za-moveUp-leave {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-
+@keyframes #{$prefixCls}-move-up-leave {
   to {
+    opacity: 0;
     transform: translate3d(0, 100%, 0);
   }
 }
 
-.za-moveUp-leave {
-  animation: za-moveUp-leave both ease-out;
-}
-
-@keyframes za-moveDown-enter {
+@keyframes #{$prefixCls}-move-down-enter {
   from {
-    transform: translate3d(0, -100%, 0);
-  }
-
-  to {
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-.za-moveDown-enter {
-  animation: za-moveDown-enter both ease-in;
-}
-
-@keyframes za-moveDown-leave {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
+    opacity: 1;
     transform: translate3d(0, -100%, 0);
   }
 }
 
-.za-moveDown-leave {
-  animation: za-moveDown-leave both ease-out;
-}
-
-@keyframes za-moveLeft-enter {
-  from {
-    transform: translate3d(100%, 0, 0);
-  }
-
+@keyframes #{$prefixCls}-move-down-leave {
   to {
-    transform: translate3d(0, 0, 0);
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
   }
 }
 
-.za-moveLeft-enter {
-  animation: za-moveLeft-enter both ease-in;
-}
-
-@keyframes za-moveLeft-leave {
+@keyframes #{$prefixCls}-move-left-enter {
   from {
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
-    transform: translate3d(100%, 0, 0);
-  }
-}
-
-.za-moveLeft-leave {
-  animation: za-moveLeft-leave both ease-out;
-}
-
-@keyframes za-moveRight-enter {
-  from {
-    transform: translate3d(-100%, 0, 0);
-  }
-
-  to {
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-.za-moveRight-enter {
-  animation: za-moveRight-enter both ease-in;
-}
-
-@keyframes za-moveRight-leave {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
+    opacity: 1;
     transform: translate3d(-100%, 0, 0);
   }
 }
 
-.za-moveRight-leave {
-  animation: za-moveRight-leave both ease-out;
+@keyframes #{$prefixCls}-move-left-leave {
+  to {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes #{$prefixCls}-move-right-enter {
+  from {
+    opacity: 1;
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+@keyframes #{$prefixCls}-move-right-leave {
+  to {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
 }

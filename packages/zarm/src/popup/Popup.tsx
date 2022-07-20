@@ -1,54 +1,132 @@
 import * as React from 'react';
-import Portal from './Portal';
+import { createBEM } from '@zarm-design/bem';
+import { CSSTransition } from 'react-transition-group';
 import { ConfigContext } from '../n-config-provider';
 import { useLockScroll } from '../utils/hooks';
+import Trigger from '../trigger';
+import Mask from '../mask';
 import type { BasePopupProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
+import { renderToContainer } from '../utils/dom';
 
 export type PopupProps = BasePopupProps & HTMLProps;
 
-const Popup = React.forwardRef<unknown, PopupProps>((props, ref) => {
-  const { destroy, visible, lockScroll, ...restProps } = props;
-  const popupRef = React.useRef(null);
-  const [renderPortal, setRenderPortal] = React.useState(false);
-  const [portalVisible, setPortalVisible] = React.useState(visible);
+const TRANSITION_NAMES = {
+  top: 'slide-down',
+  bottom: 'slide-up',
+  center: 'fade',
+  left: 'slide-left',
+  right: 'slide-right',
+};
 
-  const { prefixCls: globalPrefixCls, mountContainer } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-popup`;
+const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
+  const {
+    className,
+    style,
+    width,
+    destroy,
+    forceRender,
+    visible,
+    animationType,
+    animationDuration,
+    lockScroll,
+    direction,
+    mask,
+    maskColor,
+    maskOpacity,
+    afterOpen,
+    afterClose,
+    onMaskClick,
+    onEsc,
+    children,
+  } = props;
+  const nodeRef = React.useRef<HTMLDivElement>(null);
+
+  const { prefixCls, mountContainer } = React.useContext(ConfigContext);
+  const bem = createBEM('popup', { prefixCls });
+  const visibleRef = React.useRef(visible);
+  const [animatedVisible, setAnimatedVisible] = React.useState(visible);
+
+  visibleRef.current = visible;
 
   useLockScroll(visible! && lockScroll!);
 
-  const handlePortalUnmount = () => {
-    destroy && setPortalVisible(false);
-    setRenderPortal(!destroy);
+  React.useImperativeHandle(ref, () => nodeRef.current!);
+
+  const handleEsc = () => {
+    visibleRef.current && onEsc?.();
   };
 
-  const portalRender = (
-    <Portal
-      ref={popupRef}
-      prefixCls={prefixCls}
-      visible={portalVisible}
-      handlePortalUnmount={handlePortalUnmount}
-      mountContainer={mountContainer}
-      {...restProps}
-    />
+  const styles = {
+    ...style,
+    width,
+    WebkitTransitionDuration: animationDuration ? `${animationDuration}ms` : undefined,
+    transitionDuration: animationDuration ? `${animationDuration}ms` : undefined,
+  };
+
+  const transitionName = animationType ?? TRANSITION_NAMES[direction!];
+
+  return (
+    <>
+      {mask && (
+        <Mask
+          visible={visible}
+          color={maskColor}
+          opacity={maskOpacity}
+          mountContainer={props.mountContainer}
+          forceRender={forceRender}
+          destroy={destroy}
+          onClick={() => {
+            onMaskClick?.();
+          }}
+        />
+      )}
+      <CSSTransition
+        nodeRef={nodeRef}
+        in={visible}
+        timeout={animationDuration!}
+        classNames={`${prefixCls}-${transitionName}`}
+        mountOnEnter={!forceRender}
+        unmountOnExit={destroy}
+        onEnter={() => {
+          setAnimatedVisible(true);
+          afterOpen?.();
+        }}
+        onExited={() => {
+          setAnimatedVisible(false);
+          afterClose?.();
+        }}
+      >
+        {renderToContainer(
+          props.mountContainer ?? mountContainer,
+          <Trigger visible={visible} onClose={handleEsc}>
+            <div
+              className={bem('wrapper', [className])}
+              style={{ display: !visible && !animatedVisible ? 'none' : undefined }}
+            >
+              <div
+                ref={nodeRef}
+                className={bem([{ [`${direction}`]: !!direction }])}
+                style={styles}
+              >
+                {children}
+              </div>
+            </div>
+          </Trigger>,
+        )}
+      </CSSTransition>
+    </>
   );
-
-  React.useImperativeHandle(ref, () => popupRef.current!);
-
-  React.useEffect(() => {
-    visible && setRenderPortal(true);
-    setPortalVisible(visible);
-  }, [visible, destroy]);
-
-  return renderPortal ? portalRender : null;
 });
 
 Popup.displayName = 'Popup';
 
 Popup.defaultProps = {
-  destroy: true,
   visible: false,
+  mask: true,
+  direction: 'bottom',
+  animationDuration: 200,
+  destroy: true,
   lockScroll: true,
 };
 

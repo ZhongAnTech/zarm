@@ -1,5 +1,17 @@
-@keyframes za-flip-enter {
+.#{$prefixCls}-flip {
+  &-enter-active {
+    animation: 200ms #{$prefixCls}-flip-in both cubic-bezier(0.4, 0, 0, 0);
+    backface-visibility: visible !important;
+  }
+  &-exit-active {
+    animation: 200ms #{$prefixCls}-flip-out both;
+    backface-visibility: visible !important;
+  }
+}
+
+@keyframes #{$prefixCls}-flip-in {
   from {
+    opacity: 0;
     transform: perspective(400px) rotate3d(1, 0, 0, 60deg);
   }
 
@@ -8,17 +20,14 @@
   }
 
   to {
+    opacity: 1;
     transform: perspective(400px);
   }
 }
 
-.za-flip-enter {
-  animation: za-flip-enter both ease-in;
-  backface-visibility: visible !important;
-}
-
-@keyframes za-flip-leave {
+@keyframes #{$prefixCls}-flip-out {
   from {
+    opacity: 1;
     transform: perspective(400px);
   }
 
@@ -27,11 +36,7 @@
   }
 
   to {
+    opacity: 0;
     transform: perspective(400px) rotate3d(1, 0, 0, 45deg);
   }
-}
-
-.za-flip-leave {
-  animation: za-flip-leave both;
-  backface-visibility: visible !important;
 }

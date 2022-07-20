@@ -1,8 +1,8 @@
 /* eslint-disable operator-linebreak */
 import raf from 'raf';
-import { StringPropertyNames } from './utilityTypes';
+import { StringPropertyNames } from '../utilityTypes';
 
-export type ContainerType = HTMLElement | (() => HTMLElement) | Window;
+export type ContainerType = HTMLElement | (() => HTMLElement) | undefined | null;
 
 export const canUseDOM = !!(
   typeof window !== 'undefined' &&

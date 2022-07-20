@@ -184,7 +184,7 @@ const Demo = () => {
           toggle('popCenterSpec');
         }}
         mountContainer={() => {
-          return popupRef.current.popup;
+          return popupRef.current;
         }}
       >
         <div className="popup-box">

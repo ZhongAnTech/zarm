@@ -6,6 +6,7 @@
   @include defineColorHSL(--theme-success, 156, 100%, 36.9%);
   @include defineColorHSL(--theme-warning, 31, 83.1%, 55.9%);
   @include defineColorHSL(--theme-danger, 0, 100%, 65.7%);
+  @include defineColorHSL(--theme-danger, 0, 100%, 65.7%);
 
   // 文字色
   --color-text: #343434;                             // 基本
@@ -149,6 +150,18 @@
   //阴影
   --za-box-shadow-light: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
   --za-box-shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+  // 动画
+  @include define(animation-duration-base, 0.2s);
+
+  // Carousel
+  --za-carousel-pagination-distance: 8px;
+  --za-carousel-pagination-rect-width: 19px;
+  --za-carousel-pagination-rect-height: 4px;
+  --za-carousel-pagination-rect-border-radius: 1px;
+  --za-carousel-pagination-rect-step: 2px;
+  --za-carousel-pagination-rect-color: rgba(255, 255, 255, 0.6);
+  --za-carousel-pagination-rect-color-active: #fff;
 
   // Collapse
   --za-collapse-height: 52px;

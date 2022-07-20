@@ -1,28 +1,32 @@
+.#{$prefixCls}-zoom {
+  &-enter-active {
+    animation: 200ms #{$prefixCls}-zoom-in both cubic-bezier(0.08, 0.82, 0.17, 1);
+  }
+  &-exit-active {
+    animation: 200ms #{$prefixCls}-zoom-out both cubic-bezier(0.78, 0.14, 0.15, 0.86);
+  }
+}
 
-@keyframes za-zoom-enter {
+@keyframes #{$prefixCls}-zoom-in {
   from {
-    transform: scale3d(.3, .3, .3);
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
   }
 
   to {
+    opacity: 1;
     transform: scale3d(1, 1, 1);
   }
 }
 
-.za-zoom-enter {
-  animation: za-zoom-enter both cubic-bezier(0.4, 0, 0, 1.5);
-}
-
-@keyframes za-zoom-leave {
+@keyframes #{$prefixCls}-zoom-out {
   from {
+    opacity: 1;
     transform: scale3d(1, 1, 1);
   }
 
   to {
-    transform: scale3d(.3, .3, .3);
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
   }
-}
-
-.za-zoom-leave {
-  animation: za-zoom-leave both;
 }

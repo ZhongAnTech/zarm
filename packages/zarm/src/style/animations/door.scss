@@ -1,19 +1,60 @@
-@keyframes za-door-enter {
+// @keyframes za-door-enter {
+//   from {
+//     transform: scale3d(0, 1, 1);
+//   }
+
+//   to {
+//     transform: scale3d(1, 1, .1);
+//   }
+// }
+
+// .za-door-enter {
+//   animation: za-door-enter both cubic-bezier(0.4, 0, 0, 0);
+// }
+
+// @keyframes za-door-leave {
+//   from {
+//     transform: scale3d(1, 1, 1);
+//   }
+
+//   60% {
+//     transform: scale3d(.01, 1, 1);
+//   }
+
+//   to {
+//     transform: scale3d(0, 1, .1);
+//   }
+// }
+
+// .za-door-leave {
+//   animation: za-door-leave both;
+// }
+
+
+.#{$prefixCls}-door {
+  &-enter-active {
+    animation: 200ms #{$prefixCls}-door-in both cubic-bezier(0.4, 0, 0, 0);
+  }
+  &-exit-active {
+    animation: 200ms #{$prefixCls}-door-out both;
+  }
+}
+
+@keyframes #{$prefixCls}-door-in {
   from {
+    opacity: 0;
     transform: scale3d(0, 1, 1);
   }
 
   to {
+    opacity: 1;
     transform: scale3d(1, 1, .1);
   }
 }
 
-.za-door-enter {
-  animation: za-door-enter both cubic-bezier(0.4, 0, 0, 0);
-}
-
-@keyframes za-door-leave {
+@keyframes #{$prefixCls}-door-out {
   from {
+    opacity: 1;
     transform: scale3d(1, 1, 1);
   }
 
@@ -22,10 +63,7 @@
   }
 
   to {
+    opacity: 0;
     transform: scale3d(0, 1, .1);
   }
-}
-
-.za-door-leave {
-  animation: za-door-leave both;
 }

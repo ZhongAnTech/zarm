@@ -1,4 +1,13 @@
-@keyframes za-fade-enter {
+.#{$prefixCls}-fade {
+  &-enter-active {
+    animation: 200ms #{$prefixCls}-fade-in both ease-in;
+  }
+  &-exit-active {
+    animation: 200ms #{$prefixCls}-fade-out both ease-out;
+  }
+}
+
+@keyframes #{$prefixCls}-fade-in {
   from {
     opacity: 0;
   }
@@ -8,11 +17,7 @@
   }
 }
 
-.za-fade-enter {
-  animation: za-fade-enter both ease-in;
-}
-
-@keyframes za-fade-leave {
+@keyframes #{$prefixCls}-fade-out {
   from {
     opacity: 1;
   }
@@ -20,8 +25,4 @@
   to {
     opacity: 0;
   }
-}
-
-.za-fade-leave {
-  animation: za-fade-leave both ease-out;
 }

@@ -10,25 +10,26 @@ export interface BasePopupProps {
     | 'flip'
     | 'rotate'
     | 'zoom'
-    | 'moveUp'
-    | 'moveDown'
-    | 'moveLeft'
-    | 'moveRight'
-    | 'slideUp'
-    | 'slideDown'
-    | 'slideLeft'
-    | 'slideRight';
+    | 'move-up'
+    | 'move-down'
+    | 'move-left'
+    | 'move-right'
+    | 'slide-up'
+    | 'slide-down'
+    | 'slide-left'
+    | 'slide-right';
   animationDuration?: number;
   width?: string | number;
   mask?: boolean;
   maskColor?: MaskProps['color'];
   maskOpacity?: MaskProps['opacity'];
   destroy?: boolean;
+  forceRender?: boolean;
   afterOpen?: () => void;
   afterClose?: () => void;
   onMaskClick?: () => void;
   onEsc?: () => void;
-  mountContainer?: ContainerType | false;
+  mountContainer?: ContainerType;
   lockScroll?: boolean;
   children?: React.ReactNode;
 }

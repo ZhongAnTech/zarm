@@ -1,30 +1,35 @@
-@keyframes za-rotate-enter {
+.#{$prefixCls}-rotate {
+  &-enter-active {
+    animation: 200ms #{$prefixCls}-rotate-in both;
+  }
+  &-exit-active {
+    animation: 200ms #{$prefixCls}-rotate-out both
+  }
+}
+
+@keyframes #{$prefixCls}-rotate-in {
   from {
+    opacity: 0;
     transform-origin: center;
     transform: rotate3d(0, 0, 1, -180deg) scale3d(.3, .3, .3);
   }
 
   to {
+    opacity: 1;
     transform-origin: center;
     transform: scale3d(1, 1, 1);
   }
 }
 
-.za-rotate-enter {
-  animation: za-rotate-enter both;
-}
-
-@keyframes za-rotate-leave {
+@keyframes #{$prefixCls}-rotate-out {
   from {
+    opacity: 1;
     transform-origin: center;
   }
 
   to {
+    opacity: 0;
     transform-origin: center;
     transform: rotate3d(0, 0, 1, 180deg) scale3d(.3, .3, .3);
   }
-}
-
-.za-rotate-leave {
-  animation: za-rotate-leave both;
 }
