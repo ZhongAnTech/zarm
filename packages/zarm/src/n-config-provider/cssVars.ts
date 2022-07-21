@@ -23,6 +23,7 @@ import type { ModalCssVars } from '../modal';
 import type { IconCssVars } from '../icon';
 import type { RateCssVars } from '../rate';
 import type { MaskCssVars } from '../mask';
+import type { PopperCssVars } from '../popper';
 
 type Prefix<T extends object, N extends string> = {
   [Key in keyof T as Key extends string ? `--za-${N}-${Replace<Key, '--', ''>}` : never]: T[Key];
@@ -51,4 +52,5 @@ export type CssVars = Prefix<ActionSheetCssVars, 'action-sheet'> &
   Prefix<ModalCssVars, 'modal'> &
   Prefix<IconCssVars, 'icon'> &
   Prefix<RateCssVars, 'rate'> &
-  Prefix<MaskCssVars, 'mask'>;
+  Prefix<MaskCssVars, 'mask'> &
+  Prefix<PopperCssVars, 'popper'>;

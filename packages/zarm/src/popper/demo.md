@@ -220,7 +220,7 @@ const Demo = () => {
               direction="rightBottom"
               content="rightBottom text"
             >
-              <Button size="xs">RB</Button>
+              <Button size="xs">RB2</Button>
             </Popper>
           </div>
 
@@ -287,3 +287,12 @@ ReactDOM.render(<Demo />, mountNode);
 | trigger            | string                               | 移动端为'click' <br /> 桌面端为'hover' | 触发方式，可选值为：`click` 点击触发状态、`hover` 鼠标经过触发、`focus` 聚焦状态触发、`manual` 受控触发、`contextMenu` 右键触发                                          |
 | visible            | boolean                              | false                                  | 是否显示，`trigger='manual'` 时有效                                                                                                                                      |
 | onVisibleChange    | (visible: boolean) => void           | () => {}                               | 显示/隐藏 气泡层触发的事件                                                                                                                                               |
+
+## CSS 变量
+
+| 属性          | 默认值 | 说明       |
+| :------------ | :----- | :--------- |
+| --arrowLeft   | '10px' | 箭头左偏移 |
+| --arrowRight  | '10px' | 箭头右偏移 |
+| --arrowTop    | '10px' | 箭头上偏移 |
+| --arrowBottom | '10px' | 箭头下偏移 |

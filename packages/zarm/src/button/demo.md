@@ -21,7 +21,7 @@ import { Button } from 'zarm';
 
 ReactDOM.render(
   <>
-    <Button block>default</Button>
+    <Button block>default1</Button>
     <Button block disabled>
       default disabled
     </Button>

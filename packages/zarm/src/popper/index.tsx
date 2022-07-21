@@ -19,7 +19,6 @@ import {
   useInteractions,
   offset,
   autoUpdate,
-  useRole,
   arrow,
   useHover,
   useFocus,
@@ -33,7 +32,14 @@ import mergeRefs from '../utils/mergeRefs';
 
 interface PopperProps extends BasePopperProps, HTMLAttributes<HTMLDivElement> {}
 
-const Popper = forwardRef<any, PopperProps>((props, ref) => {
+export interface PopperCssVars {
+  arrowLeft?: React.CSSProperties['left'];
+  arrowRight?: React.CSSProperties['right'];
+  arrowBottom?: React.CSSProperties['bottom'];
+  arrowTop?: React.CSSProperties['top'];
+}
+
+const Popper = forwardRef<any, PopperProps & PopperCssVars>((props, ref) => {
   const { prefixCls } = React.useContext(ConfigContext);
   const {
     visible,
@@ -55,15 +61,21 @@ const Popper = forwardRef<any, PopperProps>((props, ref) => {
 
   const bem = createBEM('popper', { prefixCls });
 
-  const [open, setOpen] = useState(visible);
+  const isVisible = trigger === 'manual' && visible;
+  const [open, setOpen] = useState(isVisible);
   const [mounted, setMounted] = useState(false);
   const arrowRef = useRef<HTMLElement | null>(null);
 
-  const offsetVlaue = useMemo(() => {
-    return getOuterSizes(arrowRef.current);
-  }, [arrowRef.current]);
-
-  const middleware = [offset(offsetVlaue.height), flip(), shift()];
+  const middleware = [
+    offset(({ placement }) => {
+      const { width, height } = getOuterSizes(arrowRef.current);
+      const side = placement.split('-')[0];
+      const value = side === 'bottom' || side === 'top' ? height : width;
+      return value;
+    }),
+    flip(),
+    shift(),
+  ];
 
   if (hasArrow) {
     middleware.push(
@@ -103,20 +115,7 @@ const Popper = forwardRef<any, PopperProps>((props, ref) => {
           top: y != null ? `${arrowY}px` : '',
         };
       }
-      let postionMap = {
-        start: 'top',
-        end: 'bottom',
-      };
-      if (postion[0] === 'top' || postion[0] === 'bottom') {
-        postionMap = {
-          start: 'left',
-          end: 'right',
-        };
-      }
-
-      return {
-        [postionMap[postion[1]]]: `${offsetVlaue.width * 2}px`,
-      };
+      return {};
     }
   }
 
@@ -131,13 +130,8 @@ const Popper = forwardRef<any, PopperProps>((props, ref) => {
     }),
     useClick(context, { enabled: trigger === 'click' }),
     useFocus(context, { enabled: trigger === 'focus' }),
-    useRole(context, { role: 'menu', enabled: trigger === 'contextMenu' }),
     useDismiss(context, { enabled: trigger !== 'manual' }),
   ]);
-
-  // useClickAway(refs?.domReference.current, () => {
-  //   setOpen(false);
-  // });
 
   const innerCls = (state) => {
     const animationState = {
@@ -168,13 +162,14 @@ const Popper = forwardRef<any, PopperProps>((props, ref) => {
   }, [open]);
 
   useEffect(() => {
-    setOpen(visible);
-  }, [visible]);
+    setOpen(isVisible);
+  }, [isVisible]);
 
   const hidden = () => {
     setOpen(false);
     destroy && setMounted(false);
   };
+
   const toolTip = (
     <Transition timeout={animationDuration} in={open} onExited={hidden}>
       {(state) => (
@@ -217,6 +212,12 @@ const Popper = forwardRef<any, PopperProps>((props, ref) => {
   const child = React.isValidElement(children) ? children : <span>{children}</span>;
   const childrenProps: React.RefAttributes<any> & React.HTMLAttributes<any> = {
     ...(children && (children as React.ReactElement).props),
+    ...(trigger === 'contextMenu' && {
+      onContextMenu: (e) => {
+        e.preventDefault();
+        setOpen(true);
+      },
+    }),
   };
   return (
     <>
