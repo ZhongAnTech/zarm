@@ -50,6 +50,7 @@ const Popper = forwardRef<any, PopperProps>((props, ref) => {
     children,
     arrowPointAtCenter,
     arrowClassName,
+    onVisibleChange,
   } = props;
 
   const bem = createBEM('popper', { prefixCls });
@@ -75,6 +76,9 @@ const Popper = forwardRef<any, PopperProps>((props, ref) => {
     open,
     onOpenChange: (state) => {
       setOpen(state);
+      if (typeof onVisibleChange === 'function') {
+        onVisibleChange(state);
+      }
     },
     middleware,
     placement: directionMap[direction!],
