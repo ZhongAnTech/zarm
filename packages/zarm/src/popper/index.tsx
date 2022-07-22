@@ -33,10 +33,10 @@ import mergeRefs from '../utils/mergeRefs';
 interface PopperProps extends BasePopperProps, HTMLAttributes<HTMLDivElement> {}
 
 export interface PopperCssVars {
-  arrowLeft?: React.CSSProperties['left'];
-  arrowRight?: React.CSSProperties['right'];
-  arrowBottom?: React.CSSProperties['bottom'];
-  arrowTop?: React.CSSProperties['top'];
+  '--arrow-left'?: React.CSSProperties['left'];
+  '--arrow-right'?: React.CSSProperties['right'];
+  '--arrow-top'?: React.CSSProperties['top'];
+  '--arrow-bottom'?: React.CSSProperties['bottom'];
 }
 
 const Popper = forwardRef<any, PopperProps & PopperCssVars>((props, ref) => {

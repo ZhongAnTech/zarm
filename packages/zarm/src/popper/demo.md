@@ -220,7 +220,7 @@ const Demo = () => {
               direction="rightBottom"
               content="rightBottom text"
             >
-              <Button size="xs">RB2</Button>
+              <Button size="xs">RB</Button>
             </Popper>
           </div>
 
@@ -290,9 +290,9 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## CSS 变量
 
-| 属性          | 默认值 | 说明       |
-| :------------ | :----- | :--------- |
-| --arrowLeft   | '10px' | 箭头左偏移 |
-| --arrowRight  | '10px' | 箭头右偏移 |
-| --arrowTop    | '10px' | 箭头上偏移 |
-| --arrowBottom | '10px' | 箭头下偏移 |
+| 属性           | 默认值 | 说明             |
+| :------------- | :----- | :--------------- |
+| --arrow-left   | '10px' | 箭头水平左距离   |
+| --arrow-right  | '10px' | 箭头水平右距离   |
+| --arrow-top    | '5px'  | 箭头垂直顶部距离 |
+| --arrow-bottom | '5px'  | 箭头垂直底部距离 |
