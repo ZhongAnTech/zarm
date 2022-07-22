@@ -1,5 +1,5 @@
 import React from 'react';
-import type { PopperPlacement, PopperTrigger } from '../popper/PropsType';
+import type { PopperPlacement, PopperTrigger } from '../popper/interface';
 
 export interface BaseTooltipProps {
   visible?: boolean;
