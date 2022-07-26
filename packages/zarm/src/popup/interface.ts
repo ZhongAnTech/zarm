@@ -1,4 +1,4 @@
-import type { ContainerType } from '../utils/dom';
+import type { MountContainer } from '../utils/dom';
 import type { MaskProps } from '../mask';
 
 export interface BasePopupProps {
@@ -29,7 +29,7 @@ export interface BasePopupProps {
   afterClose?: () => void;
   onMaskClick?: () => void;
   onEsc?: () => void;
-  mountContainer?: ContainerType;
+  mountContainer?: MountContainer;
   lockScroll?: boolean;
   children?: React.ReactNode;
 }

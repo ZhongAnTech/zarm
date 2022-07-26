@@ -5,7 +5,7 @@ import isFinite from 'lodash/isFinite';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseMaskProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
-import { renderToContainer } from '../utils/dom';
+import Portal from '../portal';
 
 const OpacityList = {
   normal: 0.55,
@@ -65,12 +65,11 @@ const Mask = React.forwardRef<HTMLDivElement, MaskProps>((props, ref) => {
         setAnimatedVisible(false);
       }}
     >
-      {renderToContainer(
-        props.mountContainer ?? mountContainer,
+      <Portal mountContainer={props.mountContainer ?? mountContainer}>
         <div ref={nodeRef} className={bem([className])} style={maskStyle} onClick={onClick}>
           {children}
-        </div>,
-      )}
+        </div>
+      </Portal>
     </CSSTransition>
   );
 });

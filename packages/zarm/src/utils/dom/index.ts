@@ -1,3 +1,3 @@
 export * from './dom';
-export * from './getContainer';
+export * from './getMountContainer';
 export * from './renderToContainer';

@@ -457,11 +457,93 @@ exports[`Picker render custom label 1`] = `
       valueMember="code"
     >
       <Popup
+        animationDuration={200}
         destroy={false}
+        direction="bottom"
         lockScroll={true}
+        mask={true}
         onMaskClick={[Function]}
         visible={false}
-      />
+      >
+        <Mask
+          color="black"
+          destroy={false}
+          onClick={[Function]}
+          opacity="normal"
+          visible={false}
+        >
+          <CSSTransition
+            classNames="za-fade"
+            in={false}
+            mountOnEnter={true}
+            nodeRef={
+              Object {
+                "current": null,
+              }
+            }
+            onEnter={[Function]}
+            onExited={[Function]}
+            timeout={300}
+            unmountOnExit={false}
+          >
+            <Transition
+              appear={false}
+              enter={true}
+              exit={true}
+              in={false}
+              mountOnEnter={true}
+              nodeRef={
+                Object {
+                  "current": null,
+                }
+              }
+              onEnter={[Function]}
+              onEntered={[Function]}
+              onEntering={[Function]}
+              onExit={[Function]}
+              onExited={[Function]}
+              onExiting={[Function]}
+              timeout={300}
+              unmountOnExit={false}
+            />
+          </CSSTransition>
+        </Mask>
+        <CSSTransition
+          classNames="za-slide-up"
+          in={false}
+          mountOnEnter={true}
+          nodeRef={
+            Object {
+              "current": null,
+            }
+          }
+          onEnter={[Function]}
+          onExited={[Function]}
+          timeout={200}
+          unmountOnExit={false}
+        >
+          <Transition
+            appear={false}
+            enter={true}
+            exit={true}
+            in={false}
+            mountOnEnter={true}
+            nodeRef={
+              Object {
+                "current": null,
+              }
+            }
+            onEnter={[Function]}
+            onEntered={[Function]}
+            onEntering={[Function]}
+            onExit={[Function]}
+            onExited={[Function]}
+            onExiting={[Function]}
+            timeout={200}
+            unmountOnExit={false}
+          />
+        </CSSTransition>
+      </Popup>
     </Picker>
   </ConfigReceiver>
 </ForwardRef(forwardRef)>

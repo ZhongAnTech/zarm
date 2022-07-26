@@ -1,11 +1,11 @@
 import { ReactNode } from 'react';
-import { ContainerType } from '../utils/dom';
+import type { GetContainer } from '../utils/dom';
 
 export interface BaseToastProps {
   visible?: boolean;
   stayTime?: number;
   content?: ReactNode;
-  mountContainer?: ContainerType | false;
+  mountContainer?: GetContainer;
   afterClose?: () => void;
   mask?: boolean;
   onMaskClick?: () => void;

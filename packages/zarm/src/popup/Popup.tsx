@@ -8,6 +8,7 @@ import Mask from '../mask';
 import type { BasePopupProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
 import { renderToContainer } from '../utils/dom';
+import Portal from '../portal';
 
 export type PopupProps = BasePopupProps & HTMLProps;
 
@@ -67,43 +68,42 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
   const transitionName = animationType ?? TRANSITION_NAMES[direction!];
 
   return (
-    <>
-      {mask && (
-        <Mask
-          visible={visible}
-          color={maskColor}
-          opacity={maskOpacity}
-          mountContainer={props.mountContainer}
-          forceRender={forceRender}
-          destroy={destroy}
-          onClick={() => {
-            onMaskClick?.();
-          }}
-        />
-      )}
-      <CSSTransition
-        nodeRef={nodeRef}
-        in={visible}
-        timeout={animationDuration!}
-        classNames={`${prefixCls}-${transitionName}`}
-        mountOnEnter={!forceRender}
-        unmountOnExit={destroy}
-        onEnter={() => {
-          setAnimatedVisible(true);
-          afterOpen?.();
-        }}
-        onExited={() => {
-          setAnimatedVisible(false);
-          afterClose?.();
-        }}
-      >
-        {renderToContainer(
-          props.mountContainer ?? mountContainer,
-          <Trigger visible={visible} onClose={handleEsc}>
-            <div
-              className={bem('wrapper', [className])}
-              style={{ display: !visible && !animatedVisible ? 'none' : undefined }}
-            >
+    <CSSTransition
+      nodeRef={nodeRef}
+      in={visible}
+      timeout={animationDuration!}
+      classNames={`${prefixCls}-${transitionName}`}
+      mountOnEnter={!forceRender}
+      unmountOnExit={destroy}
+      onEnter={() => {
+        setAnimatedVisible(true);
+        afterOpen?.();
+      }}
+      onExited={() => {
+        setAnimatedVisible(false);
+        afterClose?.();
+      }}
+    >
+      <Portal mountContainer={props.mountContainer ?? mountContainer}>
+        {mask && (
+          <Mask
+            visible={visible}
+            color={maskColor}
+            opacity={maskOpacity}
+            mountContainer={false}
+            forceRender={forceRender}
+            destroy={destroy}
+            onClick={() => {
+              onMaskClick?.();
+            }}
+          />
+        )}
+        <Trigger visible={visible} onClose={handleEsc}>
+          <div
+            className={bem('container')}
+            style={{ display: !visible && !animatedVisible ? 'none' : undefined }}
+          >
+            <div className={bem('wrapper', [className])}>
               <div
                 ref={nodeRef}
                 className={bem([{ [`${direction}`]: !!direction }])}
@@ -112,10 +112,10 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
                 {children}
               </div>
             </div>
-          </Trigger>,
-        )}
-      </CSSTransition>
-    </>
+          </div>
+        </Trigger>
+      </Portal>
+    </CSSTransition>
   );
 });
 

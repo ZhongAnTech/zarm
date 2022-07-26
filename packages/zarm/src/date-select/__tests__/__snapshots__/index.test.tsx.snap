@@ -104,11 +104,93 @@ exports[`DateSelect DateSelect date 1`] = `
               visible={false}
             >
               <Popup
+                animationDuration={200}
                 destroy={true}
+                direction="bottom"
                 lockScroll={true}
+                mask={true}
                 onMaskClick={[Function]}
                 visible={false}
-              />
+              >
+                <Mask
+                  color="black"
+                  destroy={true}
+                  onClick={[Function]}
+                  opacity="normal"
+                  visible={false}
+                >
+                  <CSSTransition
+                    classNames="za-fade"
+                    in={false}
+                    mountOnEnter={true}
+                    nodeRef={
+                      Object {
+                        "current": null,
+                      }
+                    }
+                    onEnter={[Function]}
+                    onExited={[Function]}
+                    timeout={300}
+                    unmountOnExit={true}
+                  >
+                    <Transition
+                      appear={false}
+                      enter={true}
+                      exit={true}
+                      in={false}
+                      mountOnEnter={true}
+                      nodeRef={
+                        Object {
+                          "current": null,
+                        }
+                      }
+                      onEnter={[Function]}
+                      onEntered={[Function]}
+                      onEntering={[Function]}
+                      onExit={[Function]}
+                      onExited={[Function]}
+                      onExiting={[Function]}
+                      timeout={300}
+                      unmountOnExit={true}
+                    />
+                  </CSSTransition>
+                </Mask>
+                <CSSTransition
+                  classNames="za-slide-up"
+                  in={false}
+                  mountOnEnter={true}
+                  nodeRef={
+                    Object {
+                      "current": null,
+                    }
+                  }
+                  onEnter={[Function]}
+                  onExited={[Function]}
+                  timeout={200}
+                  unmountOnExit={true}
+                >
+                  <Transition
+                    appear={false}
+                    enter={true}
+                    exit={true}
+                    in={false}
+                    mountOnEnter={true}
+                    nodeRef={
+                      Object {
+                        "current": null,
+                      }
+                    }
+                    onEnter={[Function]}
+                    onEntered={[Function]}
+                    onEntering={[Function]}
+                    onExit={[Function]}
+                    onExited={[Function]}
+                    onExiting={[Function]}
+                    timeout={200}
+                    unmountOnExit={true}
+                  />
+                </CSSTransition>
+              </Popup>
             </DatePicker>
           </ConfigReceiver>
         </ForwardRef(forwardRef)>
@@ -234,11 +316,93 @@ exports[`DateSelect DateSelect datetime 1`] = `
               visible={false}
             >
               <Popup
+                animationDuration={200}
                 destroy={true}
+                direction="bottom"
                 lockScroll={true}
+                mask={true}
                 onMaskClick={[Function]}
                 visible={false}
-              />
+              >
+                <Mask
+                  color="black"
+                  destroy={true}
+                  onClick={[Function]}
+                  opacity="normal"
+                  visible={false}
+                >
+                  <CSSTransition
+                    classNames="za-fade"
+                    in={false}
+                    mountOnEnter={true}
+                    nodeRef={
+                      Object {
+                        "current": null,
+                      }
+                    }
+                    onEnter={[Function]}
+                    onExited={[Function]}
+                    timeout={300}
+                    unmountOnExit={true}
+                  >
+                    <Transition
+                      appear={false}
+                      enter={true}
+                      exit={true}
+                      in={false}
+                      mountOnEnter={true}
+                      nodeRef={
+                        Object {
+                          "current": null,
+                        }
+                      }
+                      onEnter={[Function]}
+                      onEntered={[Function]}
+                      onEntering={[Function]}
+                      onExit={[Function]}
+                      onExited={[Function]}
+                      onExiting={[Function]}
+                      timeout={300}
+                      unmountOnExit={true}
+                    />
+                  </CSSTransition>
+                </Mask>
+                <CSSTransition
+                  classNames="za-slide-up"
+                  in={false}
+                  mountOnEnter={true}
+                  nodeRef={
+                    Object {
+                      "current": null,
+                    }
+                  }
+                  onEnter={[Function]}
+                  onExited={[Function]}
+                  timeout={200}
+                  unmountOnExit={true}
+                >
+                  <Transition
+                    appear={false}
+                    enter={true}
+                    exit={true}
+                    in={false}
+                    mountOnEnter={true}
+                    nodeRef={
+                      Object {
+                        "current": null,
+                      }
+                    }
+                    onEnter={[Function]}
+                    onEntered={[Function]}
+                    onEntering={[Function]}
+                    onExit={[Function]}
+                    onExited={[Function]}
+                    onExiting={[Function]}
+                    timeout={200}
+                    unmountOnExit={true}
+                  />
+                </CSSTransition>
+              </Popup>
             </DatePicker>
           </ConfigReceiver>
         </ForwardRef(forwardRef)>
@@ -4390,11 +4554,93 @@ exports[`DateSelect DateSelect time 1`] = `
               visible={false}
             >
               <Popup
+                animationDuration={200}
                 destroy={true}
+                direction="bottom"
                 lockScroll={true}
+                mask={true}
                 onMaskClick={[Function]}
                 visible={false}
-              />
+              >
+                <Mask
+                  color="black"
+                  destroy={true}
+                  onClick={[Function]}
+                  opacity="normal"
+                  visible={false}
+                >
+                  <CSSTransition
+                    classNames="za-fade"
+                    in={false}
+                    mountOnEnter={true}
+                    nodeRef={
+                      Object {
+                        "current": null,
+                      }
+                    }
+                    onEnter={[Function]}
+                    onExited={[Function]}
+                    timeout={300}
+                    unmountOnExit={true}
+                  >
+                    <Transition
+                      appear={false}
+                      enter={true}
+                      exit={true}
+                      in={false}
+                      mountOnEnter={true}
+                      nodeRef={
+                        Object {
+                          "current": null,
+                        }
+                      }
+                      onEnter={[Function]}
+                      onEntered={[Function]}
+                      onEntering={[Function]}
+                      onExit={[Function]}
+                      onExited={[Function]}
+                      onExiting={[Function]}
+                      timeout={300}
+                      unmountOnExit={true}
+                    />
+                  </CSSTransition>
+                </Mask>
+                <CSSTransition
+                  classNames="za-slide-up"
+                  in={false}
+                  mountOnEnter={true}
+                  nodeRef={
+                    Object {
+                      "current": null,
+                    }
+                  }
+                  onEnter={[Function]}
+                  onExited={[Function]}
+                  timeout={200}
+                  unmountOnExit={true}
+                >
+                  <Transition
+                    appear={false}
+                    enter={true}
+                    exit={true}
+                    in={false}
+                    mountOnEnter={true}
+                    nodeRef={
+                      Object {
+                        "current": null,
+                      }
+                    }
+                    onEnter={[Function]}
+                    onEntered={[Function]}
+                    onEntering={[Function]}
+                    onExit={[Function]}
+                    onExited={[Function]}
+                    onExiting={[Function]}
+                    timeout={200}
+                    unmountOnExit={true}
+                  />
+                </CSSTransition>
+              </Popup>
             </DatePicker>
           </ConfigReceiver>
         </ForwardRef(forwardRef)>
@@ -4499,11 +4745,93 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
               visible={false}
             >
               <Popup
+                animationDuration={200}
                 destroy={true}
+                direction="bottom"
                 lockScroll={true}
+                mask={true}
                 onMaskClick={[Function]}
                 visible={false}
-              />
+              >
+                <Mask
+                  color="black"
+                  destroy={true}
+                  onClick={[Function]}
+                  opacity="normal"
+                  visible={false}
+                >
+                  <CSSTransition
+                    classNames="za-fade"
+                    in={false}
+                    mountOnEnter={true}
+                    nodeRef={
+                      Object {
+                        "current": null,
+                      }
+                    }
+                    onEnter={[Function]}
+                    onExited={[Function]}
+                    timeout={300}
+                    unmountOnExit={true}
+                  >
+                    <Transition
+                      appear={false}
+                      enter={true}
+                      exit={true}
+                      in={false}
+                      mountOnEnter={true}
+                      nodeRef={
+                        Object {
+                          "current": null,
+                        }
+                      }
+                      onEnter={[Function]}
+                      onEntered={[Function]}
+                      onEntering={[Function]}
+                      onExit={[Function]}
+                      onExited={[Function]}
+                      onExiting={[Function]}
+                      timeout={300}
+                      unmountOnExit={true}
+                    />
+                  </CSSTransition>
+                </Mask>
+                <CSSTransition
+                  classNames="za-slide-up"
+                  in={false}
+                  mountOnEnter={true}
+                  nodeRef={
+                    Object {
+                      "current": null,
+                    }
+                  }
+                  onEnter={[Function]}
+                  onExited={[Function]}
+                  timeout={200}
+                  unmountOnExit={true}
+                >
+                  <Transition
+                    appear={false}
+                    enter={true}
+                    exit={true}
+                    in={false}
+                    mountOnEnter={true}
+                    nodeRef={
+                      Object {
+                        "current": null,
+                      }
+                    }
+                    onEnter={[Function]}
+                    onEntered={[Function]}
+                    onEntering={[Function]}
+                    onExit={[Function]}
+                    onExited={[Function]}
+                    onExiting={[Function]}
+                    timeout={200}
+                    unmountOnExit={true}
+                  />
+                </CSSTransition>
+              </Popup>
             </DatePicker>
           </ConfigReceiver>
         </ForwardRef(forwardRef)>
@@ -4617,11 +4945,93 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
               wheelDefaultValue={2017-11-03T10:00:00.000Z}
             >
               <Popup
+                animationDuration={200}
                 destroy={true}
+                direction="bottom"
                 lockScroll={true}
+                mask={true}
                 onMaskClick={[Function]}
                 visible={false}
-              />
+              >
+                <Mask
+                  color="black"
+                  destroy={true}
+                  onClick={[Function]}
+                  opacity="normal"
+                  visible={false}
+                >
+                  <CSSTransition
+                    classNames="za-fade"
+                    in={false}
+                    mountOnEnter={true}
+                    nodeRef={
+                      Object {
+                        "current": null,
+                      }
+                    }
+                    onEnter={[Function]}
+                    onExited={[Function]}
+                    timeout={300}
+                    unmountOnExit={true}
+                  >
+                    <Transition
+                      appear={false}
+                      enter={true}
+                      exit={true}
+                      in={false}
+                      mountOnEnter={true}
+                      nodeRef={
+                        Object {
+                          "current": null,
+                        }
+                      }
+                      onEnter={[Function]}
+                      onEntered={[Function]}
+                      onEntering={[Function]}
+                      onExit={[Function]}
+                      onExited={[Function]}
+                      onExiting={[Function]}
+                      timeout={300}
+                      unmountOnExit={true}
+                    />
+                  </CSSTransition>
+                </Mask>
+                <CSSTransition
+                  classNames="za-slide-up"
+                  in={false}
+                  mountOnEnter={true}
+                  nodeRef={
+                    Object {
+                      "current": null,
+                    }
+                  }
+                  onEnter={[Function]}
+                  onExited={[Function]}
+                  timeout={200}
+                  unmountOnExit={true}
+                >
+                  <Transition
+                    appear={false}
+                    enter={true}
+                    exit={true}
+                    in={false}
+                    mountOnEnter={true}
+                    nodeRef={
+                      Object {
+                        "current": null,
+                      }
+                    }
+                    onEnter={[Function]}
+                    onEntered={[Function]}
+                    onEntering={[Function]}
+                    onExit={[Function]}
+                    onExited={[Function]}
+                    onExiting={[Function]}
+                    timeout={200}
+                    unmountOnExit={true}
+                  />
+                </CSSTransition>
+              </Popup>
             </DatePicker>
           </ConfigReceiver>
         </ForwardRef(forwardRef)>
@@ -4753,11 +5163,93 @@ exports[`DateSelect DateSelect year 1`] = `
               visible={false}
             >
               <Popup
+                animationDuration={200}
                 destroy={true}
+                direction="bottom"
                 lockScroll={true}
+                mask={true}
                 onMaskClick={[Function]}
                 visible={false}
-              />
+              >
+                <Mask
+                  color="black"
+                  destroy={true}
+                  onClick={[Function]}
+                  opacity="normal"
+                  visible={false}
+                >
+                  <CSSTransition
+                    classNames="za-fade"
+                    in={false}
+                    mountOnEnter={true}
+                    nodeRef={
+                      Object {
+                        "current": null,
+                      }
+                    }
+                    onEnter={[Function]}
+                    onExited={[Function]}
+                    timeout={300}
+                    unmountOnExit={true}
+                  >
+                    <Transition
+                      appear={false}
+                      enter={true}
+                      exit={true}
+                      in={false}
+                      mountOnEnter={true}
+                      nodeRef={
+                        Object {
+                          "current": null,
+                        }
+                      }
+                      onEnter={[Function]}
+                      onEntered={[Function]}
+                      onEntering={[Function]}
+                      onExit={[Function]}
+                      onExited={[Function]}
+                      onExiting={[Function]}
+                      timeout={300}
+                      unmountOnExit={true}
+                    />
+                  </CSSTransition>
+                </Mask>
+                <CSSTransition
+                  classNames="za-slide-up"
+                  in={false}
+                  mountOnEnter={true}
+                  nodeRef={
+                    Object {
+                      "current": null,
+                    }
+                  }
+                  onEnter={[Function]}
+                  onExited={[Function]}
+                  timeout={200}
+                  unmountOnExit={true}
+                >
+                  <Transition
+                    appear={false}
+                    enter={true}
+                    exit={true}
+                    in={false}
+                    mountOnEnter={true}
+                    nodeRef={
+                      Object {
+                        "current": null,
+                      }
+                    }
+                    onEnter={[Function]}
+                    onEntered={[Function]}
+                    onEntering={[Function]}
+                    onExit={[Function]}
+                    onExited={[Function]}
+                    onExiting={[Function]}
+                    timeout={200}
+                    unmountOnExit={true}
+                  />
+                </CSSTransition>
+              </Popup>
             </DatePicker>
           </ConfigReceiver>
         </ForwardRef(forwardRef)>

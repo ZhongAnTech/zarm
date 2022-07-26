@@ -63,14 +63,12 @@ const useToast = (): UseToast => {
         ? {
             ...Toast.defaultProps,
             ...content,
-            mountContainer: false,
             visible: true,
             afterClose,
           }
         : {
             ...Toast.defaultProps,
             visible: true,
-            mountContainer: false,
             content,
             afterClose,
           };

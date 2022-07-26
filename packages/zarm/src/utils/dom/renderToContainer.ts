@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { createPortal } from 'react-dom';
-import { resolveContainer } from './getContainer';
+import { resolveContainer } from './getMountContainer';
+import type { MountContainer } from './getMountContainer';
 import { canUseDOM } from '.';
-import type { ContainerType } from '.';
 
 export function renderToContainer(
-  getContainer: ContainerType,
+  mountContainer: MountContainer,
   node: React.ReactElement,
 ): React.ReactElement {
-  if (canUseDOM && getContainer) {
-    const container = resolveContainer(getContainer);
+  if (canUseDOM && mountContainer) {
+    const container = resolveContainer(mountContainer);
     return createPortal(node, container);
   }
 

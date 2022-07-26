@@ -3,12 +3,93 @@
 exports[`Popup snapshot renders correctly 1`] = `
 <Popup
   afterClose={[MockFunction]}
+  animationDuration={200}
   destroy={true}
   direction="bottom"
   lockScroll={true}
+  mask={true}
   onMaskClick={[MockFunction]}
   visible={false}
-/>
+>
+  <Mask
+    color="black"
+    destroy={true}
+    onClick={[Function]}
+    opacity="normal"
+    visible={false}
+  >
+    <CSSTransition
+      classNames="za-fade"
+      in={false}
+      mountOnEnter={true}
+      nodeRef={
+        Object {
+          "current": null,
+        }
+      }
+      onEnter={[Function]}
+      onExited={[Function]}
+      timeout={300}
+      unmountOnExit={true}
+    >
+      <Transition
+        appear={false}
+        enter={true}
+        exit={true}
+        in={false}
+        mountOnEnter={true}
+        nodeRef={
+          Object {
+            "current": null,
+          }
+        }
+        onEnter={[Function]}
+        onEntered={[Function]}
+        onEntering={[Function]}
+        onExit={[Function]}
+        onExited={[Function]}
+        onExiting={[Function]}
+        timeout={300}
+        unmountOnExit={true}
+      />
+    </CSSTransition>
+  </Mask>
+  <CSSTransition
+    classNames="za-slide-up"
+    in={false}
+    mountOnEnter={true}
+    nodeRef={
+      Object {
+        "current": null,
+      }
+    }
+    onEnter={[Function]}
+    onExited={[Function]}
+    timeout={200}
+    unmountOnExit={true}
+  >
+    <Transition
+      appear={false}
+      enter={true}
+      exit={true}
+      in={false}
+      mountOnEnter={true}
+      nodeRef={
+        Object {
+          "current": null,
+        }
+      }
+      onEnter={[Function]}
+      onEntered={[Function]}
+      onEntering={[Function]}
+      onExit={[Function]}
+      onExited={[Function]}
+      onExiting={[Function]}
+      timeout={200}
+      unmountOnExit={true}
+    />
+  </CSSTransition>
+</Popup>
 `;
 
 exports[`Popup snapshot renders mount node correctly 1`] = `
@@ -111,88 +192,6 @@ exports[`Popup snapshot renders mount node correctly 1`] = `
           </div>
         </div>
       </Portal>
-    </Trigger>
-  </Portal>
-</Popup>
-`;
-
-exports[`Popup snapshot renders mount without mountContainer 1`] = `
-<Popup
-  afterClose={[MockFunction]}
-  destroy={true}
-  direction="bottom"
-  lockScroll={true}
-  mountContainer={false}
-  onMaskClick={[MockFunction]}
-  visible={true}
->
-  <Portal
-    afterClose={[MockFunction]}
-    animationDuration={200}
-    animationType="fade"
-    direction="bottom"
-    handlePortalUnmount={[Function]}
-    mask={true}
-    mountContainer={false}
-    onMaskClick={[MockFunction]}
-    prefixCls="za-popup"
-    visible={true}
-  >
-    <Trigger
-      disabled={false}
-      onClose={[Function]}
-      visible={true}
-    >
-      <div
-        className="za-popup-container"
-      >
-        <Mask
-          className="za-fade-enter"
-          color="black"
-          opacity="normal"
-          style={
-            Object {
-              "WebkitAnimationDuration": "200ms",
-              "animationDuration": "200ms",
-            }
-          }
-          visible={true}
-        >
-          <div
-            className="za-mask za-fade-enter"
-            style={
-              Object {
-                "WebkitAnimationDuration": "200ms",
-                "animationDuration": "200ms",
-                "backgroundColor": "rgba(0, 0, 0, 0.55)",
-              }
-            }
-          />
-        </Mask>
-        <div
-          className="za-popup__wrapper"
-          data-width={0}
-          onClick={[Function]}
-          role="dialog"
-          style={Object {}}
-        >
-          <div
-            className="za-popup za-popup--bottom"
-            data-width={0}
-            role="document"
-            style={
-              Object {
-                "WebkitTransitionDuration": "200ms",
-                "WebkitTransitionProperty": "transform",
-                "transitionDuration": "200ms",
-                "transitionProperty": "transform",
-              }
-            }
-          >
-            foo
-          </div>
-        </div>
-      </div>
     </Trigger>
   </Portal>
 </Popup>

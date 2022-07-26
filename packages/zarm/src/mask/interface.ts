@@ -1,4 +1,4 @@
-import type { ContainerType } from '../utils/dom';
+import type { MountContainer } from '../utils/dom';
 
 export interface BaseMaskProps {
   visible?: boolean;
@@ -6,5 +6,5 @@ export interface BaseMaskProps {
   opacity?: 'normal' | 'light' | 'dark' | number;
   forceRender?: boolean;
   destroy?: boolean;
-  mountContainer?: ContainerType;
+  mountContainer?: MountContainer;
 }
