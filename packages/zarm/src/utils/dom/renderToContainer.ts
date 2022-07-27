@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createPortal } from 'react-dom';
-import { resolveContainer } from './getMountContainer';
+import { getMountContainer } from './getMountContainer';
 import type { MountContainer } from './getMountContainer';
 import { canUseDOM } from '.';
 
@@ -9,7 +9,7 @@ export function renderToContainer(
   node: React.ReactElement,
 ): React.ReactElement {
   if (canUseDOM && mountContainer) {
-    const container = resolveContainer(mountContainer);
+    const container = getMountContainer(mountContainer);
     return createPortal(node, container);
   }
 

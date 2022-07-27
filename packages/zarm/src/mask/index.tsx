@@ -5,7 +5,7 @@ import isFinite from 'lodash/isFinite';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseMaskProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
-import Portal from '../portal';
+import { renderToContainer } from '../utils/dom';
 
 const OpacityList = {
   normal: 0.55,
@@ -33,10 +33,12 @@ const Mask = React.forwardRef<HTMLDivElement, MaskProps>((props, ref) => {
     destroy,
     onClick,
     children,
+    mountContainer,
+    ...rest
   } = props;
   const nodeRef = React.useRef<HTMLDivElement>(null);
   const [animatedVisible, setAnimatedVisible] = React.useState(visible);
-  const { prefixCls, mountContainer } = React.useContext(ConfigContext);
+  const { prefixCls, ...context } = React.useContext(ConfigContext);
   const bem = createBEM('mask', { prefixCls });
 
   const rgb = color === 'black' ? '0, 0, 0' : '255, 255, 255';
@@ -65,11 +67,20 @@ const Mask = React.forwardRef<HTMLDivElement, MaskProps>((props, ref) => {
         setAnimatedVisible(false);
       }}
     >
-      <Portal mountContainer={props.mountContainer ?? mountContainer}>
-        <div ref={nodeRef} className={bem([className])} style={maskStyle} onClick={onClick}>
-          {children}
-        </div>
-      </Portal>
+      {() =>
+        renderToContainer(
+          mountContainer ?? context.mountContainer,
+          <div
+            {...rest}
+            ref={nodeRef}
+            className={bem([className])}
+            style={maskStyle}
+            onClick={onClick}
+          >
+            {children}
+          </div>,
+        )
+      }
     </CSSTransition>
   );
 });

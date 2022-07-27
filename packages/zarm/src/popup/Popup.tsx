@@ -8,7 +8,6 @@ import Mask from '../mask';
 import type { BasePopupProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
 import { renderToContainer } from '../utils/dom';
-import Portal from '../portal';
 
 export type PopupProps = BasePopupProps & HTMLProps;
 
@@ -84,26 +83,27 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
         afterClose?.();
       }}
     >
-      <Portal mountContainer={props.mountContainer ?? mountContainer}>
-        {mask && (
-          <Mask
-            visible={visible}
-            color={maskColor}
-            opacity={maskOpacity}
-            mountContainer={false}
-            forceRender={forceRender}
-            destroy={destroy}
-            onClick={() => {
-              onMaskClick?.();
-            }}
-          />
-        )}
-        <Trigger visible={visible} onClose={handleEsc}>
-          <div
-            className={bem('container')}
-            style={{ display: !visible && !animatedVisible ? 'none' : undefined }}
-          >
-            <div className={bem('wrapper', [className])}>
+      {() =>
+        renderToContainer(
+          props.mountContainer ?? mountContainer,
+          <Trigger visible={visible} onClose={handleEsc}>
+            {mask && (
+              <Mask
+                visible={visible}
+                color={maskColor}
+                opacity={maskOpacity}
+                mountContainer={false}
+                forceRender={forceRender}
+                destroy={destroy}
+                onClick={() => {
+                  onMaskClick?.();
+                }}
+              />
+            )}
+            <div
+              className={bem('wrapper', [className])}
+              style={{ display: !visible && !animatedVisible ? 'none' : undefined }}
+            >
               <div
                 ref={nodeRef}
                 className={bem([{ [`${direction}`]: !!direction }])}
@@ -112,9 +112,9 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
                 {children}
               </div>
             </div>
-          </div>
-        </Trigger>
-      </Portal>
+          </Trigger>,
+        )
+      }
     </CSSTransition>
   );
 });

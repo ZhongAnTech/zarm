@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { GetContainer } from '../utils/dom';
+import type { MountContainer } from '../utils/dom';
 import type { Locale } from '../n-config-provider/interface';
 
 export interface BaseActionSheetItemProps {
@@ -20,5 +20,5 @@ export interface BaseActionSheetProps {
   afterClose?: () => void;
   destroy?: boolean;
   locale?: Locale['ActionSheet'];
-  mountContainer?: GetContainer;
+  mountContainer?: MountContainer;
 }

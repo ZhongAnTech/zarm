@@ -72,7 +72,7 @@ const useToast = (): UseToast => {
             content,
             afterClose,
           };
-      ReactDOM.render(<Toast {...props} />, zarmToastRef.current);
+      ReactDOM.render(<Toast {...props} mountContainer={false} />, zarmToastRef.current);
     }
   };
 

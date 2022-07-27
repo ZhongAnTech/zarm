@@ -20,10 +20,6 @@
     pointer-events: none;
   }
 
-  @include m(center) {
-
-  }
-
   @include m(bottom) {
     position: fixed;
     left: 0;

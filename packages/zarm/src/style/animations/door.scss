@@ -3,6 +3,7 @@
   &-enter-active {
     animation: 200ms #{$prefixCls}-door-in both cubic-bezier(0.4, 0, 0, 0);
   }
+
   &-exit-active {
     animation: 200ms #{$prefixCls}-door-out both;
   }

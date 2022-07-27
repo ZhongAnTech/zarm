@@ -2,8 +2,9 @@
   &-enter-active {
     animation: 200ms #{$prefixCls}-rotate-in both;
   }
+
   &-exit-active {
-    animation: 200ms #{$prefixCls}-rotate-out both
+    animation: 200ms #{$prefixCls}-rotate-out both;
   }
 }
 

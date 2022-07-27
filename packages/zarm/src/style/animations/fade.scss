@@ -2,6 +2,7 @@
   &-enter-active {
     animation: 200ms #{$prefixCls}-fade-in both ease-in;
   }
+
   &-exit-active {
     animation: 200ms #{$prefixCls}-fade-out both ease-out;
   }

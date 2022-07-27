@@ -2,6 +2,7 @@
   &-enter-active {
     animation: 200ms #{$prefixCls}-zoom-in both cubic-bezier(0.08, 0.82, 0.17, 1);
   }
+
   &-exit-active {
     animation: 200ms #{$prefixCls}-zoom-out both cubic-bezier(0.78, 0.14, 0.15, 0.86);
   }

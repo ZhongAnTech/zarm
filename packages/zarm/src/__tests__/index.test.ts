@@ -325,8 +325,11 @@ describe('index', () => {
         "Popup": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
+            "animationDuration": 200,
             "destroy": true,
+            "direction": "bottom",
             "lockScroll": true,
+            "mask": true,
             "visible": false,
           },
           "render": [Function],

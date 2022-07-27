@@ -3,6 +3,7 @@
     animation: 200ms #{$prefixCls}-flip-in both cubic-bezier(0.4, 0, 0, 0);
     backface-visibility: visible !important;
   }
+
   &-exit-active {
     animation: 200ms #{$prefixCls}-flip-out both;
     backface-visibility: visible !important;

@@ -28,6 +28,7 @@ const alert = (props: Omit<AlertProps, 'visible'>) => {
               props.afterClose?.();
               unmount();
             }}
+            mountContainer={false}
           />
         </RuntimeConfigProvider>
       );

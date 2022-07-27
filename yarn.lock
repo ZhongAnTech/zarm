@@ -3510,7 +3510,7 @@
 
 "@types/react-transition-group@^4.4.5":
   version "4.4.5"
-  resolved "https://npm.zhonganinfo.com/@types%2freact-transition-group/-/react-transition-group-4.4.5.tgz#aae20dcf773c5aa275d5b9f7cdbca638abc5e416"
+  resolved "https://registry.yarnpkg.com/@types%2freact-transition-group/-/react-transition-group-4.4.5.tgz#aae20dcf773c5aa275d5b9f7cdbca638abc5e416"
   integrity sha512-juKD/eiSM3/xZYzjuzH6ZwpP+/lejltmiS3QEzV/vmb/Q8+HfDmxu+Baga8UEMGBqV88Nbg4l2hY/K2DkyaLLA==
   dependencies:
     "@types/react" "*"

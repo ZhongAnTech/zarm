@@ -1,25 +1,14 @@
 import { ReactNode } from 'react';
-import type { GetContainer } from '../utils/dom';
-import type { MaskProps } from '../mask';
 import type { PopupProps } from '../popup';
 
-export interface BaseModalProps extends Pick<PopupProps, 'animationType' | 'animationDuration'> {
+export interface BaseModalProps extends PopupProps {
   shape?: 'radius' | 'rect';
-  visible?: boolean;
-  width?: string | number;
-  mask?: boolean;
-  maskColor?: MaskProps['color'];
-  maskOpacity?: MaskProps['opacity'];
-  maskClosable?: boolean;
   closable?: boolean;
-  mountContainer?: GetContainer;
   title?: ReactNode;
   footer?: ReactNode;
   children?: ReactNode;
-  destroy?: boolean;
-  afterOpen?: () => void;
+  maskClosable?: boolean;
   onClose?: () => void;
-  afterClose?: () => void;
 }
 
 export interface BaseModalActionProps {
