@@ -12,6 +12,7 @@ import type { IconCssVars } from '../icon';
 import type { RateCssVars } from '../rate';
 import type { KeyboardCssVars } from '../keyboard';
 import type { CalendarCssVars } from '../calendar';
+import type { PullCssVars } from '../pull';
 
 type Prefix<T extends object, N extends string> = {
   [Key in keyof T as Key extends string ? `--za-${N}-${Replace<Key, '--', ''>}` : never]: T[Key];
@@ -29,4 +30,5 @@ export type CssVars = Prefix<ActionSheetCssVars, 'action-sheet'> &
   Prefix<IconCssVars, 'icon'> &
   Prefix<RateCssVars, 'rate'> &
   Prefix<KeyboardCssVars, 'keyboard'> &
-  Prefix<CalendarCssVars, 'calendar'>;
+  Prefix<CalendarCssVars, 'calendar'>&
+  Prefix<PullCssVars, 'pull'>;
