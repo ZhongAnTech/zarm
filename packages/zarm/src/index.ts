@@ -180,6 +180,7 @@ export { default as ConfigProvider } from './config-provider';
 export type { ConfigProviderProps as NConfigProviderProps } from './n-config-provider';
 export { default as NConfigProvider } from './n-config-provider';
 
+export type { StackPickerProps, StackPickerCssVars } from './stack-picker';
 export { default as StackPicker } from './stack-picker';
 
 // hooks

@@ -478,8 +478,12 @@ describe('index', () => {
           "render": [Function],
         },
         "StackPicker": Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "render": [Function],
+          "$$typeof": Symbol(react.memo),
+          "compare": null,
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
         },
         "Stepper": Object {
           "$$typeof": Symbol(react.forward_ref),

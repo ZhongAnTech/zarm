@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { ContainerType } from 'src/utils/dom';
 import { Locale } from '../config-provider/PropsType';
 
 export interface IDataSource {
@@ -14,7 +15,7 @@ type TItemRender = (data: TDataSource) => string;
 
 type TDisplayRender = (data: TDataSource[]) => string;
 
-export default interface PropsType {
+export interface BaseStackPickerProps {
   defaultValue?: ReactNode[];
   value?: ReactNode[];
   displayMember?: string;
@@ -34,4 +35,5 @@ export default interface PropsType {
   onConfirm?: (value: string[]) => void;
   onCancel?: () => void;
   locale?: Locale['StackPicker'];
+  mountContainer?: ContainerType | false;
 }

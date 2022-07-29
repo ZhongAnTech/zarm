@@ -1,6 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { fireEvent, render, screen } from '@testing-library/react';
 import StackPicker from '../index';
 
 jest.useFakeTimers();
@@ -68,9 +67,9 @@ const District = [
 ];
 
 describe('StackPicker', () => {
-  it('renders correctly', () => {
+  it('renders correctly if visible is true', () => {
     const onChange = jest.fn();
-    const wrapper = mount(
+    const { container } = render(
       <StackPicker
         defaultValue={[]}
         value={[]}
@@ -81,46 +80,68 @@ describe('StackPicker', () => {
         itemRender={(data) => data.label}
         dataSource={District}
         onChange={onChange}
+        mountContainer={false}
       />,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
+  });
+
+  it('renders correctly if visible is false', () => {
+    const onChange = jest.fn();
+    render(
+      <StackPicker
+        title="层叠选择器"
+        defaultValue={[]}
+        value={[]}
+        cancelText="取消"
+        confirmText="确定"
+        visible={false}
+        valueMember="value"
+        itemRender={(data) => data.label}
+        dataSource={District}
+        onChange={onChange}
+        mountContainer={false}
+      />,
+    );
+    expect(screen.queryByText('层叠选择器')).toBeFalsy();
   });
 
   it('handle props click', () => {
     const onCancel = jest.fn();
     const onConfirm = jest.fn();
 
-    const wrapper = mount(
+    const { container, getByText } = render(
       <StackPicker
         defaultValue={[]}
+        value={['340000', '340800', '340803']}
         cancelText="取消"
         confirmText="确定"
+        visible
         maskClosable
-        value={['340000', '340800', '340803']}
         dataSource={District}
         onCancel={onCancel}
         onConfirm={onConfirm}
+        mountContainer={false}
       />,
     );
 
-    wrapper.setProps({ visible: true });
-    wrapper.update();
-
-    wrapper.find('.za-stack-picker__submit').simulate('click');
+    fireEvent.click(getByText('确定'));
     expect(onConfirm).toHaveBeenCalledWith(['340000', '340800', '340803']);
 
-    wrapper.find('.za-stack-picker__cancel').simulate('click');
+    fireEvent.click(getByText('取消'));
     expect(onCancel).toBeCalled();
 
-    wrapper.find('.za-mask').simulate('click');
+    const mask = container.querySelector('.za-mask');
+    fireEvent.click(mask!);
     expect(onCancel).toBeCalled();
   });
 
-  it('handle onChange', () => {
+  it('handle onChange', async () => {
     const onChange = jest.fn();
 
-    const wrapper = mount(
+    const { container } = render(
       <StackPicker
+        data-testid="root"
         defaultValue={[]}
         value={[]}
         cancelText="取消"
@@ -128,97 +149,23 @@ describe('StackPicker', () => {
         visible
         dataSource={District}
         onChange={onChange}
+        mountContainer={false}
       />,
     );
 
     // popupWrapper = mount(wrapper.instance().getComponent());
 
-    wrapper
-      .find('.za-stack-picker__group')
-      .at(0)
-      .find('.za-stack-picker__stack-column')
-      .at(0)
-      .simulate('click');
+    fireEvent.click(screen.getAllByDisplayValue('340800')[0]);
+    await screen.findByText('大观区');
+    expect(container).toMatchSnapshot();
 
-    wrapper
-      .find('.za-stack-picker__group')
-      .at(0)
-      .find('.za-stack-picker__stack-column-wrapper')
-      .at(0)
-      .simulate('click');
+    fireEvent.click(screen.getAllByDisplayValue('340803')[0]);
+    expect(container).toMatchSnapshot();
 
-    wrapper
-      .find('.za-stack-picker__group')
-      .at(0)
-      .find('.za-stack-picker__stack-column-wrapper')
-      .at(0)
-      .find('.za-stack-picker__stack-column-item')
-      .at(0)
-      .simulate('click');
-
-    expect(onChange).toHaveBeenCalledWith(['340000']);
-  });
-
-  it('handle onChangeValidate', () => {
-    const onChange = jest.fn();
-    const onChangeValidate = jest.fn(() => 'error');
-
-    const wrapper = mount(
-      <StackPicker
-        defaultValue={[]}
-        value={[]}
-        cancelText="取消"
-        confirmText="确定"
-        visible
-        dataSource={District}
-        onChange={onChange}
-        onChangeValidate={onChangeValidate}
-      />,
-    );
-
-    // popupWrapper = mount(wrapper.instance().getComponent());
-
-    wrapper
-      .find('.za-stack-picker__group')
-      .at(0)
-      .find('.za-stack-picker__stack-column-wrapper')
-      .at(0)
-      .find('.za-stack-picker__stack-column-item')
-      .at(0)
-      .simulate('click');
-
-    // 目前不能取到 useState 的值
-    expect(onChange).toHaveBeenCalledWith(['340000']);
+    expect(onChange).toBeCalledTimes(3);
+    expect(onChange).toHaveBeenCalledWith(['340000', '340800', '340803']);
   });
 });
-
-// describe('StackPicker props disabled', () => {
-//   let wrapper;
-//   const setState = jest.fn();
-//   const useStateSpy = jest.spyOn(React, 'useState');
-//   useStateSpy.mockImplementation((init) => [init, setState]);
-//
-//   const onCancel = jest.fn();
-//   const onConfirm = jest.fn();
-//
-//   beforeEach(() => {
-//     wrapper = shallow(
-//       <StackPicker
-//         visible
-//         disabled
-//         dataSource={District}
-//         onCancel={onCancel}
-//         onConfirm={onConfirm}
-//       />,
-//     );
-//   });
-//
-//   it('handle props disabled', () => {
-//     wrapper.find('.za-stack-picker__cancel').simulate('click');
-//     // 目前不能取到 useState 的值
-//     expect(onCancel).toBeCalled();
-//   });
-// });
 
 describe('StackPicker error type', () => {
   const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
@@ -230,45 +177,31 @@ describe('StackPicker error type', () => {
   it('handle props error type', () => {
     const onCancel = 1 as any;
     const onConfirm = 1 as any;
-    const displayRender = 1 as any;
     const onChangeValidate = 1 as any;
     const onChange = 1 as any;
 
-    const wrapper = mount(
+    const { getByText } = render(
       <StackPicker
         defaultValue={[]}
         value={[]}
         cancelText="取消"
         confirmText="确定"
+        visible
         dataSource={District}
         onCancel={onCancel}
         onConfirm={onConfirm}
-        displayRender={displayRender}
         onChange={onChange}
         onChangeValidate={onChangeValidate}
       />,
     );
 
-    wrapper.setProps({ visible: true });
-    wrapper.update();
-
-    expect(consoleSpy).toHaveBeenCalledWith('displayRender need a function');
-
-    wrapper.find('.za-stack-picker__cancel').simulate('click');
+    fireEvent.click(getByText('取消'));
     expect(consoleSpy).toHaveBeenCalledWith('onCancel need a function');
 
-    wrapper.find('.za-stack-picker__submit').simulate('click');
+    fireEvent.click(getByText('确定'));
     expect(consoleSpy).toHaveBeenCalledWith('onConfirm need a function');
 
-    wrapper
-      .find('.za-stack-picker__group')
-      .at(0)
-      .find('.za-stack-picker__stack-column-wrapper')
-      .at(0)
-      .find('.za-stack-picker__stack-column-item')
-      .at(0)
-      .simulate('click');
-    expect(consoleSpy).toHaveBeenCalledWith('onChangeValidate need a function');
+    fireEvent.click(screen.getAllByDisplayValue('340000')[0]);
     expect(consoleSpy).toHaveBeenCalledWith('onChange need a function');
 
     consoleSpy.mockRestore();

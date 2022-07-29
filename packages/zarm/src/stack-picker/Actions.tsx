@@ -1,12 +1,12 @@
 import React from 'react';
 
-export default ({ prefixCls, cancelText, confirmText, title, handleCancel, handleOk, locale }) => (
-  <div className={`${prefixCls}__header`}>
-    <div className={`${prefixCls}__cancel`} onClick={handleCancel}>
+export default ({ bem, cancelText, confirmText, title, handleCancel, handleOk, locale }) => (
+  <div className={bem('header')}>
+    <div className={bem('cancel')} onClick={handleCancel}>
       {cancelText || locale!.cancelText}
     </div>
-    <div className={`${prefixCls}__title`}>{title}</div>
-    <div className={`${prefixCls}__submit`} onClick={handleOk}>
+    <div className={bem('title')}>{title}</div>
+    <div className={bem('submit')} onClick={handleOk}>
       {confirmText || locale!.confirmText}
     </div>
   </div>
