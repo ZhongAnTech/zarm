@@ -65,26 +65,27 @@ const Demo = () => {
 
   return (
     <>
-      <NoticeBar>图片缩放只支持Touch事件，建议使用移动模式/设备浏览以获得最佳体验。</NoticeBar>
-      <List.Item
-        after={
-          <Button size="xs" onClick={() => open('common')}>
-            开启
-          </Button>
-        }
-      >
-        普通
-      </List.Item>
-      <List.Item
-        after={
-          <Button size="xs" onClick={() => open('origin')}>
-            开启
-          </Button>
-        }
-      >
-        有查看原始图片功能
-      </List.Item>
-
+      <List>
+        <NoticeBar>图片缩放只支持Touch事件，建议使用移动模式/设备浏览以获得最佳体验。</NoticeBar>
+        <List.Item
+          after={
+            <Button size="xs" onClick={() => open('common')}>
+              开启
+            </Button>
+          }
+        >
+          普通
+        </List.Item>
+        <List.Item
+          after={
+            <Button size="xs" onClick={() => open('origin')}>
+              开启
+            </Button>
+          }
+        >
+          有查看原始图片功能
+        </List.Item>
+      </List>
       <ImagePreview
         visible={visibleState.common}
         images={commonImages}
@@ -124,15 +125,20 @@ const Demo = () => {
   const orientation = inIframe ? 'portrait' : '';
 
   return (
-    <List.Item
-      after={
-        <Button size="xs" onClick={() => ImagePreview.show({ images: commonImages, orientation })}>
-          开启
-        </Button>
-      }
-    >
-      静态用法
-    </List.Item>
+    <List>
+      <List.Item
+        after={
+          <Button
+            size="xs"
+            onClick={() => ImagePreview.show({ images: commonImages, orientation })}
+          >
+            开启
+          </Button>
+        }
+      >
+        静态用法
+      </List.Item>
+    </List>
   );
 };
 ReactDOM.render(<Demo />, mountNode);
@@ -167,13 +173,15 @@ const Demo = () => {
 
   return (
     <>
-      <List.Item>
-        {commonImages.map((pic, index) => (
-          <div className="picture-item" onClick={() => show(index)} key={+index}>
-            <img src={pic} alt="" />
-          </div>
-        ))}
-      </List.Item>
+      <List>
+        <List.Item>
+          {commonImages.map((pic, index) => (
+            <div className="picture-item" onClick={() => show(index)} key={+index}>
+              <img src={pic} alt="" />
+            </div>
+          ))}
+        </List.Item>
+      </List>
       <ImagePreview
         visible={visible}
         images={commonImages}
@@ -201,3 +209,11 @@ ReactDOM.render(<Demo />, mountNode);
 | orientation    | string                                             | -      | 横竖屏，默认自动识别 `landscape` \| `portrait` |
 | onChange       | (activeIndex: number) => void                      | -      | 图片切换时候回调                               |
 | onClose        | () => void                                         | -      | 关闭时候回调                                   |
+
+## CSS 变量
+
+| 属性                    | 默认值                                          | 说明         |
+| :---------------------- | :---------------------------------------------- | :----------- |
+| --footer-padding        | 'var(--za-padding-v-lg) var(--za-padding-h-lg)' | 底部内边距   |
+| --pagination-text-color | 'var(--za-color-text-inverse)'                  | 页码字体颜色 |
+| --pagination-font-size  | 'var(--za-font-size-lg)'                        | 页码字号     |

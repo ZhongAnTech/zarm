@@ -7499,10 +7499,10 @@ eslint-config-prettier@8.1.0:
   resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.1.0.tgz#4ef1eaf97afe5176e6a75ddfb57c335121abc5a6"
   integrity sha512-oKMhGv3ihGbCIimCAjqkdzx2Q+jthoqnXSP+d86M9tptwugycmTFdVR4IpLgq2c4SHifbwO90z2fQ8/Aio73yw==
 
-eslint-config-za@^2.4.0-alpha.2:
-  version "2.4.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/eslint-config-za/-/eslint-config-za-2.4.0-alpha.2.tgz#473a44c73e9c67fc2efb80f9acb2e2f6d8b45bd5"
-  integrity sha512-eXLmfEDcllcjj4/voZkbxBaKxbt2+TZZKFYfpyFz4ED4gEAMqwQNr8HoPy6SUnL81m3nnL42N6Hl+D7r3MvpFQ==
+eslint-config-za@^2.4.0-alpha.3:
+  version "2.4.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/eslint-config-za/-/eslint-config-za-2.4.0-alpha.3.tgz#e6dad0b92029f40642d2a303c5fda8a452d4e8d7"
+  integrity sha512-ZXyXAmM9P50+uQJfriYIqspGwLW76wxgYFyylS7BG+Aw0l5tGZ51VHN2MdUqi/7fhEHiedaMtC+iPfqSX7TrlQ==
   dependencies:
     eslint-config-airbnb "^18.2.1"
 
@@ -9862,6 +9862,11 @@ interpret@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-2.2.0.tgz#1a78a0b5965c40a5416d007ad6f50ad27c417df9"
   integrity sha512-Ju0Bz/cEia55xDwUWEa8+olFpCiQoypjnQySseKtmjNrnps3P+xfpUmGr90T7yjlVJmOtybRvPXhKMbHr+fWnw==
+
+intersection-observer@^0.12.2:
+  version "0.12.2"
+  resolved "https://registry.yarnpkg.com/intersection-observer/-/intersection-observer-0.12.2.tgz#4a45349cc0cd91916682b1f44c28d7ec737dc375"
+  integrity sha512-7m1vEcPCxXYI8HqnL8CKI6siDyD+eIWSwgB3DZA+ZTogxk9I4CDnj4wilt9x/+/QbHI4YG5YZNmC6458/e9Ktg==
 
 intl-messageformat@9.6.12:
   version "9.6.12"
@@ -14632,10 +14637,10 @@ q@^1.1.2, q@^1.5.1:
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
 
-qrious@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/qrious/-/qrious-4.0.2.tgz#09c4d4079d2b961617f62c69cff3b9bb66a39693"
-  integrity sha512-xWPJIrK1zu5Ypn898fBp8RHkT/9ibquV2Kv24S/JY9VYEhMBMKur1gHVsOiNUh7PHP9uCgejjpZUHUIXXKoU/g==
+qrcode.react@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/qrcode.react/-/qrcode.react-3.1.0.tgz#5c91ddc0340f768316fbdb8fff2765134c2aecd8"
+  integrity sha512-oyF+Urr3oAMUG/OiOuONL3HXM+53wvuH3mtIWQrYmsXoAq0DkvZp2RYUWFSMFtbdOpuS++9v+WAkzNVkMlNW6Q==
 
 qs@6.7.0:
   version "6.7.0"

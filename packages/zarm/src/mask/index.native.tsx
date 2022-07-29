@@ -20,14 +20,14 @@ const maskStyles = StyleSheet.create<any>(maskStyle);
 export default class Mask extends PureComponent<MaskProps, any> {
   static defaultProps = {
     visible: false,
-    type: 'normal',
+    color: 'normal',
     styles: maskStyles,
   };
 
   render() {
-    const { visible, styles, type, style, onClick } = this.props;
+    const { visible, styles, color, style, onClick } = this.props;
 
-    const popupCls = [styles!.wrapperStyle, styles![`${type}Wrapper`], style] as ViewStyle;
+    const popupCls = [styles!.wrapperStyle, styles![`${color}Wrapper`], style] as ViewStyle;
 
     return (
       visible && (

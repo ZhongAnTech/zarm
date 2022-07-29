@@ -1,21 +1,27 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import includes from 'lodash/includes';
-import type BaseTriggerProps from './PropsType';
+import BaseTriggerProps from './interface';
+import Events from '../utils/events';
 
 export type TriggerProps = BaseTriggerProps;
 
-class Trigger extends Component<TriggerProps, {}> {
-  static defaultProps = {
-    visible: false,
-    disabled: false,
+const Trigger: React.FC<TriggerProps> & {
+  instanceList: TriggerProps['onClose'][];
+} = (props) => {
+  const { visible, onClose, disabled } = props;
+
+  // execute callback function, KeyboardEvent.keycode was not recommended in MDN
+  const onKeydown = (e: KeyboardEvent) => {
+    if (e.code === 'Escape') {
+      const lens = Trigger.instanceList.length;
+      const last = Trigger.instanceList[lens - 1];
+      if (last) {
+        !last.disabled && last();
+      }
+    }
   };
 
-  static count = 0;
-
-  static instanceList: TriggerProps['onClose'][] = [];
-
-  static getDerivedStateFromProps(nextProps: Trigger['props']) {
-    const { visible, onClose, disabled } = nextProps;
+  useEffect(() => {
     onClose && (onClose.disabled = disabled);
     if (visible === true && typeof onClose === 'function') {
       if (!includes(Trigger.instanceList, onClose)) {
@@ -27,48 +33,30 @@ class Trigger extends Component<TriggerProps, {}> {
         Trigger.instanceList.splice(index, 1);
       }
     }
+  }, [visible, disabled, onClose]);
 
-    return null;
-  }
+  useEffect(() => {
+    if (Trigger.instanceList.length === 1) {
+      Events.on(document.body, 'keydown', onKeydown);
+    }
 
-  static onKeydown(e: KeyboardEvent) {
-    if (e.keyCode === 27) {
-      const lens = Trigger.instanceList.length;
-      const last = Trigger.instanceList[lens - 1];
-      if (last) {
-        if (last.disabled) {
-          return;
-        }
-        last();
+    return () => {
+      const index = Trigger.instanceList.findIndex((c) => c === onClose);
+      if (index > -1) {
+        Trigger.instanceList.splice(index, 1);
       }
-    }
-  }
+      Events.off(document.body, 'keydown', onKeydown);
+    };
+  }, []);
 
-  state = {};
+  return <>{props.children}</>;
+};
 
-  componentDidMount() {
-    if (Trigger.count === 0) {
-      document.body.addEventListener('keydown', Trigger.onKeydown);
-    }
-    Trigger.count += 1;
-  }
+Trigger.defaultProps = {
+  visible: false,
+  disabled: false,
+};
 
-  componentWillUnmount() {
-    const { onClose } = this.props;
-    const index = Trigger.instanceList.findIndex((c) => c === onClose);
-    if (index > -1) {
-      Trigger.instanceList.splice(index, 1);
-    }
-    Trigger.count -= 1;
-    if (Trigger.count === 0) {
-      document.body.removeEventListener('keydown', Trigger.onKeydown);
-    }
-  }
-
-  render() {
-    const { children } = this.props;
-    return <>{children}</>;
-  }
-}
+Trigger.instanceList = [];
 
 export default Trigger;

@@ -215,7 +215,7 @@ ReactDOM.render(<Icon component={YourSvg} />, mountNode);
 
 ## CSS 变量
 
-| 属性                | 默认值                 | 说明     |
-| :------------------ | :--------------------- | :------- |
-| --za-icon-font-size | '24px'                 | 图标大小 |
-| --za-icon-color     | 'var(--za-color-text)' | 图标颜色 |
+| 属性        | 默认值                 | 说明     |
+| :---------- | :--------------------- | :------- |
+| --font-size | '24px'                 | 图标大小 |
+| --color     | 'var(--za-color-text)' | 图标颜色 |

@@ -103,21 +103,21 @@ ReactDOM.render(
 
 ## CSS 变量
 
-| 属性                                | 默认值                         | 说明                   |
-| :---------------------------------- | :----------------------------- | :--------------------- |
-| --za-slider-line-size               | '4px'                          | 轨道线宽度             |
-| --za-slider-line-border-radius      | '2px'                          | 轨道线圆角大小         |
-| --za-slider-line-background         | 'rgba(120, 120, 128, 0.2)'     | 轨道背景色             |
-| --za-slider-line-active-background  | 'var(--za-theme-primary)'      | 轨道激活状态背景色     |
-| --za-slider-dot-size                | '10px'                         | 刻度圆点大小           |
-| --za-slider-dot-background          | 'var(--za-background-color)'   | 刻度圆点背景色         |
-| --za-slider-dot-border-color        | 'rgba(120, 120, 128, 0.2)'     | 刻度圆点边框色         |
-| --za-slider-dot-border-width        | '2px'                          | 刻度圆点边框宽度       |
-| --za-slider-dot-active-border-color | 'var(--za-theme-primary)'      | 刻度圆点激活状态边框色 |
-| --za-slider-knob-size               | '24px'                         | 把手尺寸               |
-| --za-slider-knob-size-small         | '16px'                         | 小型号把手尺寸         |
-| --za-slider-knob-background         | '#fff'                         | 把手背景色             |
-| --za-slider-knob-box-shadow         | '0 1px 3px rgba(0, 0, 0, 0.4)' | 把手阴影               |
-| --za-slider-mark-font-size          | '14px'                         | 标记字体大小           |
-| --za-slider-mark-text-color         | 'var(--za-theme-primary)'      | 标记字体颜色           |
-| --za-slider-mark-spacing            | '15px'                         | 标记与轨道的间距       |
+| 属性                      | 默认值                         | 说明                   |
+| :------------------------ | :----------------------------- | :--------------------- |
+| --line-size               | '4px'                          | 轨道线宽度             |
+| --line-border-radius      | '2px'                          | 轨道线圆角大小         |
+| --line-background         | 'rgba(120, 120, 128, 0.2)'     | 轨道背景色             |
+| --line-active-background  | 'var(--za-theme-primary)'      | 轨道激活状态背景色     |
+| --dot-size                | '10px'                         | 刻度圆点大小           |
+| --dot-background          | 'var(--za-background-color)'   | 刻度圆点背景色         |
+| --dot-border-color        | 'rgba(120, 120, 128, 0.2)'     | 刻度圆点边框色         |
+| --dot-border-width        | '2px'                          | 刻度圆点边框宽度       |
+| --dot-active-border-color | 'var(--za-theme-primary)'      | 刻度圆点激活状态边框色 |
+| --knob-size               | '24px'                         | 把手尺寸               |
+| --knob-size-small         | '16px'                         | 小型号把手尺寸         |
+| --knob-background         | '#fff'                         | 把手背景色             |
+| --knob-box-shadow         | '0 1px 3px rgba(0, 0, 0, 0.4)' | 把手阴影               |
+| --mark-font-size          | '14px'                         | 标记字体大小           |
+| --mark-text-color         | 'var(--za-theme-primary)'      | 标记字体颜色           |
+| --mark-spacing            | '15px'                         | 标记与轨道的间距       |

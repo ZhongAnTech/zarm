@@ -1,9 +1,8 @@
 import List from './List';
-import ListItem from './ListItem';
+import Item from './ListItem';
+import attachPropertiesToComponent from '../utils/attachPropertiesToComponent';
 
-List.Item = ListItem;
-
-export type { ListProps } from './List';
+export type { ListProps, ListCssVars } from './List';
 export type { ListItemProps } from './ListItem';
 
-export default List;
+export default attachPropertiesToComponent(List, { Item });

@@ -111,7 +111,7 @@ const buildLibrary = async (
 };
 
 export default async (options) => {
-  const { mode, path, outFile, outDir, outZip } = options;
+  const { mode, path, outFile, outDir } = options;
   const errors = [];
   if (!mode) {
     errors.push('--mode requires define');

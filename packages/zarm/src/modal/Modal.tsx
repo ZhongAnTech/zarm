@@ -12,7 +12,7 @@ import type { HTMLProps } from '../utils/utilityTypes';
 export interface ModalCssVars {
   '--background'?: React.CSSProperties['background'];
   '--border-radius'?: React.CSSProperties['borderRadius'];
-  '--box-shadow'?: React.CSSProperties['boxShadow'];
+  '--shadow'?: React.CSSProperties['boxShadow'];
   '--title-font-size'?: React.CSSProperties['fontSize'];
   '--title-font-weight'?: React.CSSProperties['fontWeight'];
   '--title-text-color'?: React.CSSProperties['color'];
@@ -111,7 +111,6 @@ Modal.defaultProps = {
   animationDuration: 200,
   width: '70%',
   mask: true,
-  maskType: 'normal',
   shape: 'radius',
   closable: false,
   maskClosable: false,

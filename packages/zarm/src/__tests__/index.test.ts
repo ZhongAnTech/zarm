@@ -165,6 +165,18 @@ describe('index', () => {
           },
           "render": [Function],
         },
+        "Image": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "fallback": true,
+            "fit": "fill",
+            "lazy": false,
+            "placeholder": true,
+            "preview": false,
+            "shape": "rect",
+          },
+          "render": [Function],
+        },
         "ImagePreview": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
@@ -238,7 +250,8 @@ describe('index', () => {
         "Mask": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
-            "type": "normal",
+            "color": "black",
+            "opacity": "normal",
             "visible": false,
           },
           "render": [Function],
@@ -264,7 +277,6 @@ describe('index', () => {
             "destroy": true,
             "mask": true,
             "maskClosable": false,
-            "maskType": "normal",
             "shape": "radius",
             "visible": false,
             "width": "70%",
@@ -481,6 +493,7 @@ describe('index', () => {
         "Wheel": [Function],
         "useClickAway": [Function],
         "useDrag": [Function],
+        "useInViewport": [Function],
         "useLongPress": [Function],
         "useOrientation": [Function],
         "useScroll": [Function],
