@@ -2,6 +2,8 @@
 
 .carousel-page {
   .carousel__item__pic {
+    display: flex;
+
     img {
       width: 100%;
       height: auto;

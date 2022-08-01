@@ -3,7 +3,12 @@
 ## 基本用法
 
 ```jsx
-import { Carousel } from 'zarm';
+import { Carousel, Image } from 'zarm';
+
+Image.defaultProps = {
+  placeholder: true,
+  fallback: true,
+};
 
 const ITEMS = [
   'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
@@ -15,7 +20,7 @@ const contentRender = () => {
   return ITEMS.map((item, i) => {
     return (
       <div className="carousel__item__pic" key={+i}>
-        <img src={item} alt="" draggable={false} />
+        <Image src={item} alt="" draggable={false} />
       </div>
     );
   });
@@ -36,7 +41,7 @@ ReactDOM.render(
 ## 纵向
 
 ```jsx
-import { Carousel } from 'zarm';
+import { Carousel, Image } from 'zarm';
 
 const ITEMS = [
   'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
@@ -48,7 +53,7 @@ const contentRender = () => {
   return ITEMS.map((item, i) => {
     return (
       <div className="carousel__item__pic" key={+i}>
-        <img src={item} alt="" draggable={false} />
+        <Image src={item} alt="" draggable={false} />
       </div>
     );
   });
@@ -66,7 +71,7 @@ ReactDOM.render(
 
 ```jsx
 import { useRef } from 'react';
-import { Carousel, Button } from 'zarm';
+import { Carousel, Button, Image } from 'zarm';
 
 const ITEMS = [
   'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
@@ -78,7 +83,7 @@ const contentRender = () => {
   return ITEMS.map((item, i) => {
     return (
       <div className="carousel__item__pic" key={+i}>
-        <img src={item} alt="" draggable={false} />
+        <Image src={item} alt="" draggable={false} />
       </div>
     );
   });
@@ -130,7 +135,7 @@ ReactDOM.render(<Demo />, mountNode);
 ## 自动循环轮播
 
 ```jsx
-import { Carousel } from 'zarm';
+import { Carousel, Image } from 'zarm';
 
 const ITEMS = [
   'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
@@ -142,7 +147,7 @@ const contentRender = () => {
   return ITEMS.map((item, i) => {
     return (
       <div className="carousel__item__pic" key={+i}>
-        <img src={item} alt="" draggable={false} />
+        <Image src={item} alt="" draggable={false} />
       </div>
     );
   });
@@ -180,3 +185,15 @@ ReactDOM.render(
 | showPagination       | boolean                       | true   | 是否显示分页器                                 |
 | onChange             | (activeIndex: number) => void | -      | 值变化时触发的回调函数                         |
 | onChangeEnd          | (activeIndex: number) => void | -      | 值变化动画结束后触发的回调函数                 |
+
+## CSS 变量
+
+| 属性                                | 默认值                     | 说明               |
+| :---------------------------------- | :------------------------- | :----------------- |
+| --pagination-margin                 | '8px'                      | 分页器外边距       |
+| --pagination-item-width             | '18px'                     | 页码宽度           |
+| --pagination-item-height            | '4px'                      | 页码高度           |
+| --pagination-item-border-radius     | '1px'                      | 页码圆角大小       |
+| --pagination-item-spacing           | '2px'                      | 页码间距           |
+| --pagination-item-background        | 'rgba(255, 255, 255, 0.6)' | 页码背景色         |
+| --pagination-item-active-background | '#fff'                     | 页码激活状态背景色 |

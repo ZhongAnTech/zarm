@@ -83,7 +83,7 @@ exports[`Carousel base render correctly 1`] = `
 
 exports[`Carousel className render correctly 1`] = `
 <div
-  class="za-carousel za-wrapper-test za-carousel--horizontal"
+  class="za-carousel za-carousel--horizontal za-wrapper-test"
 >
   <div
     class="za-carousel__items"
