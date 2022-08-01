@@ -38,11 +38,11 @@ const Page = () => {
               visible={dropdown}
               onVisibleChange={setDropdown}
               direction="bottom"
-              content={(
+              content={
                 <a href={demoURL}>
                   <QRCodeSVG value={demoURL} size={120} />
                 </a>
-              )}
+              }
               destroy={false}
             >
               <button type="button" className="ghost">
