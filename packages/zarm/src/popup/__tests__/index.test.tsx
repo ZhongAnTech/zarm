@@ -61,7 +61,7 @@ describe('Popup', () => {
 });
 
 describe('Portal', () => {
-  let PortalCJS: typeof import('../Portal').default;
+  // let PortalCJS: typeof import('../Portal').default;
   const events = [
     'webkitTransitionEnd',
     'transitionend',
@@ -138,15 +138,15 @@ describe('Portal', () => {
     expect(createElementSpy).not.toBeCalled();
   });
 
-  it('should render null if canUseDOM is false', () => {
-    jest.doMock('../../utils/dom', () => {
-      const origin = jest.requireActual('../../utils/dom');
-      return { ...origin, canUseDOM: false };
-    });
-    PortalCJS = require('../Portal').default;
-    const wrapper = mount(<PortalCJS />);
-    expect(wrapper.find(Trigger).children()).toHaveLength(0);
-  });
+  // it('should render null if canUseDOM is false', () => {
+  //   jest.doMock('../../utils/dom', () => {
+  //     const origin = jest.requireActual('../../utils/dom');
+  //     return { ...origin, canUseDOM: false };
+  //   });
+  //   PortalCJS = require('../Portal').default;
+  //   const wrapper = mount(<PortalCJS />);
+  //   expect(wrapper.find(Trigger).children()).toHaveLength(0);
+  // });
 
   it('should render popup with normal mask which will perform a fade in animation', () => {
     const wrapper = mount(<Portal visible maskColor="white" />);
@@ -192,25 +192,25 @@ describe('Portal', () => {
     expect(portal.type().toString()).toBe('Symbol(react.portal)');
   });
 
-  it('should render portal inside the popup container html div element (react version < 16)', () => {
-    const { createPortal } = require('react-dom');
-    // eslint-disable-next-line camelcase
-    const unstable_renderSubtreeIntoContainerProxy = jest.fn((_, element, container) => {
-      createPortal(element, container);
-    });
-    jest.doMock('react-dom', () => {
-      const origin = jest.requireActual('react-dom');
-      return {
-        ...origin,
-        unstable_renderSubtreeIntoContainer: unstable_renderSubtreeIntoContainerProxy,
-        createPortal: undefined,
-      };
-    });
+  // it('should render portal inside the popup container html div element (react version < 16)', () => {
+  //   const { createPortal } = require('react-dom');
+  //   // eslint-disable-next-line camelcase
+  //   const unstable_renderSubtreeIntoContainerProxy = jest.fn((_, element, container) => {
+  //     createPortal(element, container);
+  //   });
+  //   jest.doMock('react-dom', () => {
+  //     const origin = jest.requireActual('react-dom');
+  //     return {
+  //       ...origin,
+  //       unstable_renderSubtreeIntoContainer: unstable_renderSubtreeIntoContainerProxy,
+  //       createPortal: undefined,
+  //     };
+  //   });
 
-    PortalCJS = require('../Portal').default;
-    mount(<PortalCJS mask={false} mountContainer={document.body} />);
-    expect(unstable_renderSubtreeIntoContainerProxy).toBeCalled();
-  });
+  //   PortalCJS = require('../Portal').default;
+  //   mount(<PortalCJS mask={false} mountContainer={document.body} />);
+  //   expect(unstable_renderSubtreeIntoContainerProxy).toBeCalled();
+  // });
 
   it('should handle ESC keyboard input', () => {
     const mOnEsc = jest.fn();

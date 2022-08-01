@@ -136,6 +136,8 @@ export type { ToastProps, UseToast } from './toast';
 export { default as Toast } from './toast';
 
 export { default as Tooltip } from './tooltip';
+
+export type { TriggerProps } from './trigger';
 export { default as Trigger } from './trigger';
 
 export type { WaterMarkProps } from './water-mark';

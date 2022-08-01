@@ -192,9 +192,6 @@
   // 禁用状态字体颜色
   --za-input-disabled-color: var(--color-text-disabled);
 
-  // ImagePreview
-  --za-image-preview-origin-button-background: #2d2d2d;
-
   // Loading
   --za-loading-background: rgba(0, 0, 0, var(--opacity-toast));
 
@@ -323,7 +320,7 @@
   // Tabs
   --za-tabs-height: 45px;
   --za-tabs-line-height: 2px;
-  --za-tabs-item-font-size: var(--font-size-lg);
+  --za-tabs-item-font-size: var(--font-size-md);
   --za-tabs-item-padding-horizontal: 20px;
   --za-tabs-item-padding-vertical: 12px;
 

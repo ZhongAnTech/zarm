@@ -59,7 +59,7 @@ describe('TabBarItem', () => {
     const wrapper = shallow(
       <TabBarItem itemKey="1" selected title={<h1>test</h1>} icon={<span>test icon</span>} />,
     );
-    expect(wrapper.prop('className')).toEqual('za-tab-bar__item za-tab-bar--active');
+    expect(wrapper.prop('className')).toEqual('za-tab-bar__item za-tab-bar__item--active');
     expect(wrapper.find('.za-tab-bar__icon').contains(<span>test icon</span>)).toBeTruthy();
   });
 

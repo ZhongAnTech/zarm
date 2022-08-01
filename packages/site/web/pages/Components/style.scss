@@ -64,7 +64,9 @@
         top: 100px;
 
         .simulator__control {
-          color: var(--theme-primary);
+          .za-icon {
+            color: var(--theme-primary);
+          }
         }
       }
     }

@@ -37,6 +37,7 @@ const Affix = forwardRef<unknown, AffixProps>((props, ref) => {
 
   const savePlaceholderNode = (ref as any) || React.createRef<HTMLDivElement>();
 
+  const timerRef = useRef(0);
   const fixedNodeTopRef = useRef('offsetBottom' in props ? -10000 : 10000);
 
   const getContainer = useCallback(() => {
@@ -127,7 +128,7 @@ const Affix = forwardRef<unknown, AffixProps>((props, ref) => {
 
   useEffect(() => {
     // wait for ref not null
-    window.setTimeout(() => {
+    timerRef.current = window.setTimeout(() => {
       Events.on(getContainer(), 'scroll', onPositionUpdate);
       if (offsetBottom != null) {
         onPositionUpdate();
@@ -135,10 +136,10 @@ const Affix = forwardRef<unknown, AffixProps>((props, ref) => {
     });
 
     return () => {
-      window.setTimeout(() => {
-        const container = getContainer();
-        Events.off(container, 'scroll', onPositionUpdate);
-      });
+      const container = getContainer();
+      Events.off(container, 'scroll', onPositionUpdate);
+
+      window.clearTimeout(timerRef.current)
     };
   }, [getContainer, offsetBottom, onPositionUpdate]);
 
