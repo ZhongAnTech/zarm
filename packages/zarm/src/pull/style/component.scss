@@ -39,7 +39,7 @@
   @include e(control) {
     display: flex;
     align-items: center;
-    padding: var(---control-padding-vertical) 0;
+    padding: var(--control-padding-vertical) 0;
     height: var(--pull-control-height);
     color: var(--control-text-color);
     font-size: var(--pull-control-font-size);
