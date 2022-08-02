@@ -19,7 +19,6 @@ export interface PullCssVars {
   '--control-font-size'?: React.CSSProperties['fontSize'];
   '--control-padding-vertical'?: React.CSSProperties['padding'];
   '--control-text-font-size'?: React.CSSProperties['fontSize'];
-  '--control-text-color'?: React.CSSProperties['color'];
   '--control-icon-size'?: React.CSSProperties['fontSize'];
 }
 
