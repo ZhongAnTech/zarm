@@ -1,10 +1,12 @@
 @include b(pull) {
+  @include define(control-height, 50px);
+  @include define(control-font-size, 14px);
   @include define(control-padding-vertical, 20px);
   @include define(control-text-color, var(--color-text-caption));
-  @include define(control-icon-font-size, 22px);
+  @include define(control-icon-size, 22px);
 
   overflow: hidden;
-  min-height: var(--pull-control-height);
+  min-height: var(--control-height);
   // overflow-x: hidden;
   // overflow-y: scroll;
   // height: r(300);
@@ -12,7 +14,7 @@
 
   @include e(content) {
     will-change: transform;
-    transform: translate3d(0, var(--pull-control-height), 0);
+    transform: translate3d(0, var(--control-height), 0);
   }
 
   @include e(refresh, load) {
@@ -24,15 +26,15 @@
   }
 
   @include e(refresh) {
-    margin-top: calc(var(--pull-control-height) * -1);
-    height: var(--pull-control-height);
+    margin-top: calc(var(--control-height) * -1);
+    height: var(--control-height);
   }
 
   @include e(load) {
     height: 0;
 
     @include m(show) {
-      height: var(--pull-control-height);
+      height: var(--control-height);
     }
   }
 
@@ -40,9 +42,9 @@
     display: flex;
     align-items: center;
     padding: var(--control-padding-vertical) 0;
-    height: var(--pull-control-height);
+    height: var(--control-height);
     color: var(--control-text-color);
-    font-size: var(--pull-control-font-size);
+    font-size: var(--control-font-size);
 
     @include b(icon) {
       font-size: var(--control-icon-size);

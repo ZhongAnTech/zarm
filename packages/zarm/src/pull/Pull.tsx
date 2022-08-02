@@ -15,6 +15,8 @@ import { useEventCallback } from '../utils/hooks';
 import type { HTMLProps } from '../utils/utilityTypes';
 
 export interface PullCssVars {
+  '--control-height'?: React.CSSProperties['height'];
+  '--control-font-size'?: React.CSSProperties['fontSize'];
   '--control-padding-vertical'?: React.CSSProperties['padding'];
   '--control-text-font-size'?: React.CSSProperties['fontSize'];
   '--control-text-color'?: React.CSSProperties['color'];
