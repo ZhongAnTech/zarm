@@ -256,8 +256,9 @@ ReactDOM.render(<Demo />, mountNode);
 | complete | 加载完成 |
 
 ## CSS 变量
-| 属性                | 默认值                    | 说明               |
-| :------------------ | :------------------------ | :----------------- |
-| --control-padding-vertical | '20px'  | 垂直方向内边距大小   |
-| --control-text-color       | 'var(--color-text-caption)' | 字体颜色    |
-| --control-icon-font-size   | '22px'  | 图标大小           |
+
+| 属性                       | 默认值                      | 说明               |
+| :------------------------- | :-------------------------- | :----------------- |
+| --control-padding-vertical | '20px'                      | 垂直方向内边距大小 |
+| --control-text-color       | 'var(--color-text-caption)' | 字体颜色           |
+| --control-icon-size        | '22px'                      | 图标大小           |

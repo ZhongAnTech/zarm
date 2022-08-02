@@ -18,7 +18,7 @@ export interface PullCssVars {
   '--control-padding-vertical'?: React.CSSProperties['padding'];
   '--control-text-font-size'?: React.CSSProperties['fontSize'];
   '--control-text-color'?: React.CSSProperties['color'];
-  '--control-icon-font-size'?: React.CSSProperties['fontSize'];
+  '--control-icon-size'?: React.CSSProperties['fontSize'];
 }
 
 export interface PullProps extends BasePullProps, HTMLProps<PullCssVars> {}
@@ -34,8 +34,8 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
   const [loadState, setLoadState] = useState(props.load!.state);
   const prevLoad = useRef<PullAction>({});
   const prevRefresh = useRef<PullAction>({});
-  const scrollContainer = useRef<HTMLElement | Window>(window)
-  
+  const scrollContainer = useRef<HTMLElement | Window>(window);
+
   const wrapTouchstartY = useRef(0);
   const { prefixCls, locale } = React.useContext(ConfigContext);
   const bem = createBEM('pull', { prefixCls });
@@ -44,7 +44,7 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
     // window为滚动容器时，无法通过 window 直接取到 scrollHeight 和 clientHeight。
     const {
       scrollHeight = document.body.clientHeight,
-      clientHeight = document.documentElement.clientHeight
+      clientHeight = document.documentElement.clientHeight,
     } = wrap.current as any;
     const load: PullAction = { ...Pull.defaultProps!.load, ...props!.load };
     const { handler, distance } = load;
@@ -60,7 +60,7 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
       return;
     }
     handler();
-  }, [props?.load?.handler])
+  }, [props?.load?.handler]);
 
   const throttledScroll = throttle(onScroll, 250);
 
@@ -72,18 +72,22 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
   const wrapTouchmove = (event): void => {
     const touch = event.touches[0];
     const currentY = touch.pageY;
-    if (currentY - wrapTouchstartY.current > 0 && event.cancelable && getScrollTop(wrap.current) === 0) {
+    if (
+      currentY - wrapTouchstartY.current > 0 &&
+      event.cancelable &&
+      getScrollTop(wrap.current) === 0
+    ) {
       event.preventDefault();
     }
   };
 
   const wrapTouchEnd = (): void => {
     wrapTouchstartY.current = 0;
-    setAnimationDuration(props!.animationDuration!)
+    setAnimationDuration(props!.animationDuration!);
   };
 
   const removeEvent = (): void => {
-    if (!wrap.current)  return;
+    if (!wrap.current) return;
     Events.off(wrap.current, 'scroll', throttledScroll);
     Events.off(wrap.current, 'touchstart', wrapTouchstart);
     Events.off(wrap.current, 'touchmove', wrapTouchmove);
@@ -112,27 +116,30 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
     Events.on(wrap.current, 'touchmove', wrapTouchmove);
     Events.on(wrap.current, 'touchend', wrapTouchEnd);
   };
-  
 
   /**
    * 执行动画
    * @param  {number} options.offsetY  偏移距离
    * @param  {number} options.animationDuration 动画执行时间
-  */
-  const doTransition = (
-      { offsetY: iOffsetY, animationDuration: iAnimationDuration }: { offsetY: number | 'auto', animationDuration: number }
-    ): void => {
+   */
+  const doTransition = ({
+    offsetY: iOffsetY,
+    animationDuration: iAnimationDuration,
+  }: {
+    offsetY: number | 'auto';
+    animationDuration: number;
+  }): void => {
     setOffsetY(iOffsetY);
-    setAnimationDuration(iAnimationDuration)
+    setAnimationDuration(iAnimationDuration);
   };
-    
+
   /**
    * 执行加载动作
    * @param  {LOAD_STATE} iLoadState 加载状态
    */
   const doLoadAction = (iLoadState: LOAD_STATE): void => {
     const { stayTime } = props;
-    setLoadState(iLoadState)
+    setLoadState(iLoadState);
 
     switch (iLoadState) {
       case LOAD_STATE.success:
@@ -149,7 +156,7 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
       default:
     }
   };
-    
+
   /**
    * 执行刷新动作
    * @param  {REFRESH_STATE} iRefreshState 刷新状态
@@ -158,7 +165,7 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
   const doRefreshAction = (iRefreshState: REFRESH_STATE, iOffsetY?: number): void => {
     const { stayTime } = props;
 
-    setRefreshState(iRefreshState)
+    setRefreshState(iRefreshState);
 
     switch (iRefreshState) {
       case REFRESH_STATE.pull:
@@ -222,7 +229,7 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
 
     doRefreshAction(action, offset);
     return true;
-  }
+  };
 
   const onDragEnd = ({ offsetY: iOffsetY }: { offsetY: number | 'auto' }): void => {
     // 没有产生位移
@@ -241,23 +248,23 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
     if (typeof handler === 'function') {
       handler();
     }
-  }
+  };
 
   const bind = useDrag(
     (state) => {
       if (state.last) {
-        setAnimationDuration(props!.animationDuration!)
-        onDragEnd({ offsetY })
+        setAnimationDuration(props!.animationDuration!);
+        onDragEnd({ offsetY });
         return;
       }
 
-      onDragMove(state)
+      onDragMove(state);
     },
     {
       enabled: true,
       axis: 'y',
       preventDefault: !Events.supportsPassiveEvents,
-    }
+    },
   );
 
   const { load, refresh } = props;
@@ -273,7 +280,7 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
   useEffect(() => {
     addEvent();
   }, [scrollContainer.current, loadState, refreshState]);
-  
+
   useEffect(() => {
     setIsMounted(true);
 
@@ -394,8 +401,8 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
 
   const loadCls = bem('load', [
     {
-      'show': loadState! >= LOAD_STATE.loading,
-    }
+      show: loadState! >= LOAD_STATE.loading,
+    },
   ]);
 
   const contentStyle: CSSProperties = {
@@ -410,18 +417,14 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
 
   return (
     <div className={cls} style={style} {...bind()}>
-      <div
-        className={bem('content')}
-        ref={pullRef}
-        style={contentStyle}
-      >
+      <div className={bem('content')} ref={pullRef} style={contentStyle}>
         <div className={bem('refresh')}>{renderRefresh()}</div>
         <div className={bem('body')}>{children}</div>
         <div className={loadCls}>{renderLoad()}</div>
       </div>
     </div>
-  )
-})
+  );
+});
 
 Pull.defaultProps = {
   refresh: {

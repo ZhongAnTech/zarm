@@ -45,7 +45,7 @@
     font-size: var(--pull-control-font-size);
 
     @include b(icon) {
-      font-size: var(--control-icon-font-size);
+      font-size: var(--control-icon-size);
     }
 
     * + span {
