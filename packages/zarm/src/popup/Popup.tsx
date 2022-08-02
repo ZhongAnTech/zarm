@@ -44,18 +44,15 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
 
   const { prefixCls, mountContainer } = React.useContext(ConfigContext);
   const bem = createBEM('popup', { prefixCls });
-  const visibleRef = React.useRef(visible);
   const [animatedVisible, setAnimatedVisible] = React.useState(visible);
-
-  visibleRef.current = visible;
 
   useLockScroll(visible! && lockScroll!);
 
   React.useImperativeHandle(ref, () => nodeRef.current!);
 
-  const handleEsc = () => {
-    visibleRef.current && onEsc?.();
-  };
+  const handleEsc = React.useCallback(() => {
+    onEsc?.();
+  }, []);
 
   const styles = {
     ...style,
