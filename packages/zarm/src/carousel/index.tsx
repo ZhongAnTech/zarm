@@ -348,7 +348,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
     const paginationItemCls = bem('pagination__item', [
       {
         active: index === activeIndexState,
-      }
+      },
     ]);
     return (
       <div
@@ -362,17 +362,18 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
   const renderPagination = () => {
     return (
       showPagination && (
-        <div className={bem('pagination')}>
-          {Children.map(children, renderPaginationItem)}
-        </div>
+        <div className={bem('pagination')}>{Children.map(children, renderPaginationItem)}</div>
       )
     );
   };
   const getDragProps = useDrag({ onDragStart, onDragMove, onDragEnd });
   const directionText = isDirectionX() ? 'horizontal' : 'vertical';
-  const cls = bem([{
-    [`${directionText}`]: true,
-  }, className]);
+  const cls = bem([
+    {
+      [`${directionText}`]: true,
+    },
+    className,
+  ]);
 
   const content = () => {
     const items = parseItems();

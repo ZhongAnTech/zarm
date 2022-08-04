@@ -4,7 +4,6 @@
   padding: 0;
   border: none;
   text-align: center;
-  color: var(--text-color);
   outline: none;
   user-select: none;
   cursor: pointer;
@@ -30,26 +29,42 @@
   }
 }
 
-@mixin button-theme {
-  background-color: var(--background);
-  border-color: var(--border-color);
-  color: var(--text-color);
-
-  &:active {
-    background-color: var(--active-background);
-    border-color: var(--active-border-color);
-    color: var(--active-text-color);
-  }
+@mixin button-theme(
+  $background,
+  $border-color,
+  $text-color,
+  $loading-color,
+  $active-background,
+  $active-border-color,
+  $active-text-color,
+  $active-loading-color,
+  $shadow,
+) {
+  background-color: $background;
+  border-color: $border-color;
+  color: $text-color;
 
   @include m(shadow) {
-    box-shadow: var(--shadow);
+    box-shadow: $shadow;
   }
 
-  @include m(loading) {
+  @include b(activity-indicator) {
+    @include m(circular) {
+      circle {
+        stroke: $loading-color;
+      }
+    }
+  }
+
+  &:active {
+    background-color: $active-background;
+    border-color: $active-border-color;
+    color: $active-text-color;
+
     @include b(activity-indicator) {
       @include m(circular) {
         circle {
-          stroke: var(--loading-color);
+          stroke: $active-loading-color;
         }
       }
     }
@@ -69,10 +84,6 @@
 
   @include b(icon) {
     font-size: var(--icon-size);
-  }
-
-  @include m(link) {
-    line-height: calc(var(--height) - var(--border-width) * 2);
   }
 
   @include m(loading) {

@@ -7,6 +7,7 @@ $keyframesSeparator: '_';
   // .za-button
   // .za- => button
   $block: str-slice(get-block(&), 2);
+
   --#{$key}: var(--#{$block + $blockSeparator + $key}, #{$value});
 }
 
