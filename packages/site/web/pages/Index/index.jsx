@@ -2,28 +2,15 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { Dropdown } from 'zarm-web';
-import QRious from 'qrious';
+import { QRCodeSVG } from 'qrcode.react';
 import Container from '@/web/components/Container';
 import Meta from '@/web/components/Meta';
 import './style.scss';
 
 const Page = () => {
-  const qrcode = useRef();
   const [dropdown, setDropdown] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const history = useHistory();
   const demoURL = `${window.location.origin}/demo.html`;
-
-  useEffect(() => {
-    if (!dropdown || mounted) return;
-
-    const qr = new QRious({
-      element: qrcode.current,
-      value: demoURL,
-      size: 134,
-    });
-    setMounted(true);
-  }, [demoURL, dropdown, mounted]);
 
   return (
     <Container className="index-page">
@@ -47,13 +34,13 @@ const Page = () => {
               <FormattedMessage id="app.home.index.getting-started" />
             </button>
             <Dropdown
-              className="btn-try"
+              className="qrcode"
               visible={dropdown}
               onVisibleChange={setDropdown}
               direction="bottom"
               content={
                 <a href={demoURL}>
-                  <canvas ref={qrcode} />
+                  <QRCodeSVG value={demoURL} size={120} />
                 </a>
               }
               destroy={false}

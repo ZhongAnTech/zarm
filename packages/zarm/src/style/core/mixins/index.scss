@@ -4,7 +4,11 @@ $prefixCls: 'za';
 $keyframesSeparator: '_';
 
 @mixin define($key, $value) {
-  --#{$key}: var(--#{$prefixCls + $blockSeparator + $currentBlock + $blockSeparator + $key}, #{$value});
+  // .za-button
+  // .za- => button
+  $block: str-slice(get-block(&), 2);
+
+  --#{$key}: var(--#{$block + $blockSeparator + $key}, #{$value});
 }
 
 @mixin keyframes($name) {

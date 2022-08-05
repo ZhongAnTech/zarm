@@ -8,17 +8,25 @@ import React, {
   useCallback,
 } from 'react';
 import type { CSSProperties } from 'react';
-import classnames from 'classnames';
-import type BaseCarouselProps from './interface';
+import { createBEM } from '@zarm-design/bem';
+import type { BaseCarouselProps } from './interface';
 import Events from '../utils/events';
 import useDrag from '../useDrag';
 import type { DragState, DragEvent } from '../useDrag/interface';
 import { ConfigContext } from '../n-config-provider';
+import type { HTMLProps } from '../utils/utilityTypes';
 
-export interface CarouselProps extends BaseCarouselProps {
-  className?: string;
-  style?: CSSProperties;
+export interface CarouselCssVars {
+  '--pagination-margin'?: React.CSSProperties['right' | 'bottom'];
+  '--pagination-item-width'?: React.CSSProperties['width'];
+  '--pagination-item-height'?: React.CSSProperties['height'];
+  '--pagination-item-border-radius'?: React.CSSProperties['borderRadius'];
+  '--pagination-item-spacing'?: React.CSSProperties['marginRight'];
+  '--pagination-item-background'?: React.CSSProperties['background'];
+  '--pagination-item-active-background'?: React.CSSProperties['background'];
 }
+
+export type CarouselProps = BaseCarouselProps & HTMLProps<CarouselCssVars>;
 
 export interface CarouselHTMLElement extends HTMLDivElement {
   onJumpTo: (index: number) => void;
@@ -36,8 +44,9 @@ interface StateProps {
 }
 
 const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => {
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-carousel`;
+  const { prefixCls } = React.useContext(ConfigContext);
+
+  const bem = createBEM('carousel', { prefixCls });
 
   const {
     className,
@@ -109,7 +118,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
     const newItems = React.Children.map(itemList, (element: any, index) => {
       return cloneElement(element, {
         key: index,
-        className: classnames(`${prefixCls}__item`, element.props.className),
+        className: bem('item', [element.props.className]),
       });
     });
     return newItems;
@@ -336,9 +345,11 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
   }, [carouselRef, onJumpTo, onSlideTo]);
 
   const renderPaginationItem = (_result, index: number) => {
-    const paginationItemCls = classnames(`${prefixCls}__pagination__item`, {
-      [`${prefixCls}__pagination__item--active`]: index === activeIndexState,
-    });
+    const paginationItemCls = bem('pagination__item', [
+      {
+        active: index === activeIndexState,
+      },
+    ]);
     return (
       <div
         key={`pagination-${index}`}
@@ -351,15 +362,18 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
   const renderPagination = () => {
     return (
       showPagination && (
-        <div className={`${prefixCls}__pagination`}>
-          {Children.map(children, renderPaginationItem)}
-        </div>
+        <div className={bem('pagination')}>{Children.map(children, renderPaginationItem)}</div>
       )
     );
   };
   const getDragProps = useDrag({ onDragStart, onDragMove, onDragEnd });
   const directionText = isDirectionX() ? 'horizontal' : 'vertical';
-  const cls = classnames(prefixCls, className, `${prefixCls}--${directionText}`);
+  const cls = bem([
+    {
+      [`${directionText}`]: true,
+    },
+    className,
+  ]);
 
   const content = () => {
     const items = parseItems();
@@ -370,7 +384,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
     return (
       <div
         ref={carouselItemsRef}
-        className={`${prefixCls}__items`}
+        className={bem('items')}
         onTransitionEnd={transitionEnd}
         style={itemsStyle}
       >

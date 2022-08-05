@@ -10,7 +10,6 @@ import Button from '../button';
 import LOAD_STATUS from './utils/loadStatus';
 import formatImages from './utils/formatImages';
 import showOriginButton from './utils/showOriginButton';
-import useOrientation from '../useOrientation';
 import { ConfigContext } from '../n-config-provider';
 import type { HTMLProps } from '../utils/utilityTypes';
 
@@ -31,28 +30,14 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
     minScale,
     maxScale,
     className,
-    orientation: defatultOrientation,
     mountContainer,
   } = props;
 
-  const { prefixCls, locale } = React.useContext(ConfigContext);
-  const bem = createBEM('image-preview', { prefixCls });
-
-  const { type, angle } = useOrientation();
-  let orientation = defatultOrientation;
-
-  if (!orientation) {
-    orientation =
-      type === 'landscape-primary' || type === 'landscape-secondary' ? 'landscape' : 'portrait';
-
-    if (!type) {
-      // mobile default angle 0 and orientation portrait-primary
-      orientation = angle === 90 || angle === -90 ? 'landscape' : 'portrait';
-    }
-  }
-
   const [images, setImages] = useState<Images>(formatImages(props.images));
   const [currentIndex, setCurrentIndex] = useState<number>(activeIndex!);
+
+  const { prefixCls, locale } = React.useContext(ConfigContext);
+  const bem = createBEM('image-preview', { prefixCls });
 
   useEffect(() => {
     setImages(formatImages(props.images));
@@ -88,7 +73,7 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
         const loadAfeterImages = [...images];
         loadAfeterImages[currentIndex].loaded = LOAD_STATUS.after;
         setImages(loadAfeterImages);
-      }, 1500);
+      }, 0);
     };
     img.src = originSrc;
     event.stopPropagation();
@@ -114,9 +99,9 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
   });
 
   const renderImages = () => {
-    const height = Math.min(window?.innerHeight, window?.innerWidth);
     const imageStyle = {
-      height: orientation === 'landscape' ? height : '',
+      maxWidth: window?.innerWidth <= window?.innerHeight ? window?.innerWidth : undefined,
+      maxHeight: window?.innerHeight <= window?.innerWidth ? window?.innerHeight : undefined,
     };
     return images.map((item, i) => {
       return (

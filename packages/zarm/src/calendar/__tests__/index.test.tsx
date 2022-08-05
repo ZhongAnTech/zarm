@@ -27,7 +27,6 @@ describe('Calendar', () => {
 
     const day3 = wrapper.find('.za-calendar__day').at(27);
     const day4 = wrapper.find('.za-calendar__day').at(16);
-    console.log(day3);
     day3.simulate('click');
     day4.simulate('click');
     expect(onChangeFn).toBeCalled();

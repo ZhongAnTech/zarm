@@ -168,10 +168,10 @@ describe('index', () => {
         "Image": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
-            "fallback": true,
+            "fallback": false,
             "fit": "fill",
             "lazy": false,
-            "placeholder": true,
+            "placeholder": false,
             "preview": false,
             "shape": "rect",
           },

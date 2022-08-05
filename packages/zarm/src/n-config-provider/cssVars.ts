@@ -6,7 +6,7 @@ import type { BackTopCssVars } from '../back-top';
 import type { BadgeCssVars } from '../badge';
 import type { ButtonCssVars } from '../button';
 import type { CalendarCssVars } from '../calendar';
-// import type { CarouselCssVars } from '../carousel';
+import type { CarouselCssVars } from '../carousel';
 import type { CheckboxCssVars, CheckboxGroupCssVars } from '../checkbox';
 // import type { CollapseCssVars } from '../collapse';
 // import type { CustomInputCssVars } from '../custom-input';
@@ -36,7 +36,7 @@ export type CssVars = Prefix<ActionSheetCssVars, 'action-sheet'> &
   Prefix<BadgeCssVars, 'badge'> &
   Prefix<ButtonCssVars, 'button'> &
   Prefix<CalendarCssVars, 'calendar'> &
-  // Prefix<CarouselCssVars, 'carousel'> &
+  Prefix<CarouselCssVars, 'carousel'> &
   Prefix<CheckboxCssVars & CheckboxGroupCssVars, 'checkbox'> &
   // Prefix<CollapseCssVars, 'collapse'> &
   // Prefix<CustomInputCssVars, 'custom-input'> &

@@ -118,7 +118,7 @@ export { default as Slider } from './slider';
 export type { StepperProps } from './stepper';
 export { default as Stepper } from './stepper';
 
-export type { CarouselProps } from './carousel';
+export type { CarouselProps, CarouselCssVars } from './carousel';
 export { default as Carousel } from './carousel';
 
 export { default as SwipeAction } from './swipe-action';

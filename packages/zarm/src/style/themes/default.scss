@@ -80,7 +80,6 @@
   @include defineColorHSL(--za-theme-danger, 0, 100%, 65.7%);
 
   // 文字色
-
   --za-color-text: #343434;
   --za-color-text-inverse: #fff; // 反色
   --za-color-text-placeholder: rgba(128, 128, 132, 0.3); // 文本框提示
@@ -121,6 +120,13 @@
   --za-padding-v-lg: 16px;
   --za-padding-v-xl: 18px;
 
+  // 高度
+  --za-height-xs: 28px;
+  --za-height-sm: 36px;
+  --za-height-md: 44px;
+  --za-height-lg: 52px;
+  --za-height-xl: 60px;
+
   // 字体大小
   --za-font-size-xs: 14px;
   --za-font-size-sm: 14px;
@@ -143,15 +149,6 @@
   //阴影
   --za-box-shadow-light: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
   --za-box-shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.2);
-
-  // Carousel
-  --za-carousel-pagination-distance: 8px;
-  --za-carousel-pagination-rect-width: 19px;
-  --za-carousel-pagination-rect-height: 4px;
-  --za-carousel-pagination-rect-border-radius: 1px;
-  --za-carousel-pagination-rect-step: 2px;
-  --za-carousel-pagination-rect-color: rgba(255, 255, 255, 0.6);
-  --za-carousel-pagination-rect-color-active: #fff;
 
   // Collapse
   --za-collapse-height: 52px;
@@ -320,7 +317,7 @@
   // Tabs
   --za-tabs-height: 45px;
   --za-tabs-line-height: 2px;
-  --za-tabs-item-font-size: var(--font-size-lg);
+  --za-tabs-item-font-size: var(--font-size-md);
   --za-tabs-item-padding-horizontal: 20px;
   --za-tabs-item-padding-vertical: 12px;
 

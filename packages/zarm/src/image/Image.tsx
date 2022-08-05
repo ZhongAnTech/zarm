@@ -133,8 +133,8 @@ const Image = React.forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
 
 Image.displayName = 'Image';
 Image.defaultProps = {
-  placeholder: true,
-  fallback: true,
+  placeholder: false,
+  fallback: false,
   fit: 'fill',
   shape: 'rect',
   preview: false,
