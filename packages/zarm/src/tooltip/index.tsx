@@ -31,13 +31,7 @@ const Tooltip = forwardRef<any, TooltipProps>((props, ref) => {
   });
 
   return content ? (
-    <Popper
-      content={content!}
-      arrowClassName={bem('arrow')}
-      className={cls}
-      {...others}
-      ref={poperRef}
-    >
+    <Popper content={content!} className={cls} {...others} ref={poperRef}>
       {children}
     </Popper>
   ) : (

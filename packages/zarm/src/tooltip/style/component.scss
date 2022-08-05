@@ -11,48 +11,58 @@
   &[data-popper-placement^=right] {
     margin-left: r(10);
 
-    @include arrow () {
-      left: r(-4);
-      border-width: var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size) 0;
-      border-right-color: var(--za-tooltip-background);
+    @include b(popper) {
+      @include e(arrow) {
+        left: r(-4);
+        border-width: var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size) 0;
+        border-right-color: var(--za-tooltip-background);
+      }
     }
   }
 
   &[data-popper-placement^=top] {
     margin-bottom: r(10);
 
-    @include arrow () {
-      bottom: r(-4);
-      border-width: var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size) 0;
-      border-top-color: var(--za-tooltip-background);
+    @include b(popper) {
+      @include e(arrow) {
+        bottom: r(-4);
+        border-width: var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size) 0;
+        border-top-color: var(--za-tooltip-background);
+      }
     }
   }
 
   &[data-popper-placement^=bottom] {
     margin-top: r(10);
 
-    @include arrow () {
-      top: r(-4);
-      border-width: 0 var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size);
-      border-bottom-color: var(--za-tooltip-background);
+    @include b(popper) {
+      @include e(arrow) {
+        top: r(-4);
+        border-width: 0 var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size);
+        border-bottom-color: var(--za-tooltip-background);
+      }
     }
   }
 
   &[data-popper-placement^=left] {
     margin-right: r(10);
 
-    @include arrow () {
-      right: r(-4);
-      border-width: var(--za-tooltip-arrow-size) 0 var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size);
-      border-left-color: var(--za-tooltip-background);
+    @include b(popper) {
+      @include e(arrow) {
+        right: r(-4);
+        border-width: var(--za-tooltip-arrow-size) 0 var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size);
+        border-left-color: var(--za-tooltip-background);
+      }
     }
   }
 
-  @include e(arrow) {
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-color: transparent;
-    border-style: solid;
+  @include b(popper) {
+    @include e(arrow) {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-color: transparent;
+      border-style: solid;
+    }
   }
 }

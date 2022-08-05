@@ -55,7 +55,6 @@ const Popper = forwardRef<any, PopperProps & PopperCssVars>((props, ref) => {
     style,
     children,
     arrowPointAtCenter,
-    arrowClassName,
     onVisibleChange,
   } = props;
 
@@ -192,11 +191,7 @@ const Popper = forwardRef<any, PopperProps & PopperCssVars>((props, ref) => {
           <div className={bem('content')}>
             {content}
             {hasArrow && (
-              <span
-                className={bem('arrow', [arrowClassName])}
-                ref={arrowRef}
-                style={computeArrowStyle(context)}
-              />
+              <span className={bem('arrow')} ref={arrowRef} style={computeArrowStyle(context)} />
             )}
           </div>
         </div>
