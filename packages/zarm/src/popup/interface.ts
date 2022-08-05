@@ -1,8 +1,8 @@
 import type { MountContainer } from '../utils/dom';
 import type { MaskProps } from '../mask';
+import type { BaseTransitionProps } from '../transition/interface';
 
-export interface BasePopupProps {
-  visible?: boolean;
+export interface BasePopupProps extends BaseTransitionProps {
   direction?: 'top' | 'right' | 'bottom' | 'left' | 'center';
   animationType?:
     | 'fade'
@@ -23,8 +23,6 @@ export interface BasePopupProps {
   mask?: boolean;
   maskColor?: MaskProps['color'];
   maskOpacity?: MaskProps['opacity'];
-  destroy?: boolean;
-  forceRender?: boolean;
   afterOpen?: () => void;
   afterClose?: () => void;
   onMaskClick?: () => void;

@@ -76,7 +76,6 @@ exports[`CustomInput.Idcard renders correctly 1`] = `
       visible={false}
     >
       <Popup
-        animationDuration={200}
         className="za-keyboard-picker"
         destroy={true}
         direction="bottom"
@@ -84,41 +83,45 @@ exports[`CustomInput.Idcard renders correctly 1`] = `
         mask={false}
         visible={false}
       >
-        <CSSTransition
-          classNames="za-slide-up"
-          in={false}
-          mountOnEnter={true}
-          nodeRef={
-            Object {
-              "current": null,
-            }
-          }
-          onEnter={[Function]}
-          onExited={[Function]}
-          timeout={200}
-          unmountOnExit={true}
+        <Trigger
+          disabled={false}
+          onClose={[Function]}
+          visible={false}
         >
           <Transition
-            appear={false}
-            enter={true}
-            exit={true}
-            in={false}
-            mountOnEnter={true}
+            destroy={true}
             nodeRef={
               Object {
-                "current": null,
+                "current": undefined,
               }
             }
             onEnter={[Function]}
-            onEntered={[Function]}
-            onEntering={[Function]}
-            onExit={[Function]}
-            onExited={[Function]}
-            onExiting={[Function]}
-            timeout={200}
-            unmountOnExit={true}
-          />
-        </CSSTransition>
+            onLeaveEnd={[Function]}
+            tranisitionName="za-move-up"
+            visible={false}
+          >
+            <Transition
+              addEndListener={[Function]}
+              appear={false}
+              enter={true}
+              exit={true}
+              in={false}
+              mountOnEnter={true}
+              nodeRef={
+                Object {
+                  "current": undefined,
+                }
+              }
+              onEnter={[Function]}
+              onEntered={[Function]}
+              onEntering={[Function]}
+              onExit={[Function]}
+              onExited={[Function]}
+              onExiting={[Function]}
+              unmountOnExit={true}
+            />
+          </Transition>
+        </Trigger>
       </Popup>
     </KeyboardPicker>
   </div>
@@ -158,7 +161,6 @@ exports[`CustomInput.Price renders correctly 1`] = `
       visible={false}
     >
       <Popup
-        animationDuration={200}
         className="za-keyboard-picker"
         destroy={true}
         direction="bottom"
@@ -166,41 +168,45 @@ exports[`CustomInput.Price renders correctly 1`] = `
         mask={false}
         visible={false}
       >
-        <CSSTransition
-          classNames="za-slide-up"
-          in={false}
-          mountOnEnter={true}
-          nodeRef={
-            Object {
-              "current": null,
-            }
-          }
-          onEnter={[Function]}
-          onExited={[Function]}
-          timeout={200}
-          unmountOnExit={true}
+        <Trigger
+          disabled={false}
+          onClose={[Function]}
+          visible={false}
         >
           <Transition
-            appear={false}
-            enter={true}
-            exit={true}
-            in={false}
-            mountOnEnter={true}
+            destroy={true}
             nodeRef={
               Object {
-                "current": null,
+                "current": undefined,
               }
             }
             onEnter={[Function]}
-            onEntered={[Function]}
-            onEntering={[Function]}
-            onExit={[Function]}
-            onExited={[Function]}
-            onExiting={[Function]}
-            timeout={200}
-            unmountOnExit={true}
-          />
-        </CSSTransition>
+            onLeaveEnd={[Function]}
+            tranisitionName="za-move-up"
+            visible={false}
+          >
+            <Transition
+              addEndListener={[Function]}
+              appear={false}
+              enter={true}
+              exit={true}
+              in={false}
+              mountOnEnter={true}
+              nodeRef={
+                Object {
+                  "current": undefined,
+                }
+              }
+              onEnter={[Function]}
+              onEntered={[Function]}
+              onEntering={[Function]}
+              onExit={[Function]}
+              onExited={[Function]}
+              onExiting={[Function]}
+              unmountOnExit={true}
+            />
+          </Transition>
+        </Trigger>
       </Popup>
     </KeyboardPicker>
   </div>

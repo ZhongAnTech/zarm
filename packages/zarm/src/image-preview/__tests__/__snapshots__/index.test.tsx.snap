@@ -3,15 +3,14 @@
 exports[`ImagePreview snapshot renders correctly 1`] = `
 Array [
   <div
-    class="za-mask"
+    class="za-mask "
     style="background-color:rgba(0, 0, 0, 1)"
   />,
   <div
     class="za-popup__wrapper za-image-preview"
   >
     <div
-      class="za-popup za-popup--center"
-      style="-webkit-transition-duration:200ms;transition-duration:200ms"
+      class="za-popup za-popup--center "
     >
       <div
         class="za-image-preview__content"
@@ -84,15 +83,14 @@ Array [
 exports[`ImagePreview snapshot renders correctly with origin 1`] = `
 Array [
   <div
-    class="za-mask"
+    class="za-mask "
     style="background-color:rgba(0, 0, 0, 1)"
   />,
   <div
     class="za-popup__wrapper za-image-preview"
   >
     <div
-      class="za-popup za-popup--center"
-      style="-webkit-transition-duration:200ms;transition-duration:200ms"
+      class="za-popup za-popup--center "
     >
       <div
         class="za-image-preview__content"

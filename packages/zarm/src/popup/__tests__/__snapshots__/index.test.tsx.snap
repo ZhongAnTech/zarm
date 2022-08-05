@@ -3,7 +3,6 @@
 exports[`Popup snapshot renders correctly 1`] = `
 <Popup
   afterClose={[MockFunction]}
-  animationDuration={200}
   destroy={true}
   direction="bottom"
   lockScroll={true}
@@ -11,48 +10,83 @@ exports[`Popup snapshot renders correctly 1`] = `
   onMaskClick={[MockFunction]}
   visible={false}
 >
-  <CSSTransition
-    classNames="za-slide-up"
-    in={false}
-    mountOnEnter={true}
-    nodeRef={
-      Object {
-        "current": null,
-      }
-    }
-    onEnter={[Function]}
-    onExited={[Function]}
-    timeout={200}
-    unmountOnExit={true}
+  <Trigger
+    disabled={false}
+    onClose={[Function]}
+    visible={false}
   >
+    <Mask
+      color="black"
+      destroy={true}
+      mountContainer={[Function]}
+      onClick={[Function]}
+      opacity="normal"
+      visible={false}
+    >
+      <Transition
+        destroy={true}
+        nodeRef={null}
+        tranisitionName="za-fade"
+        visible={false}
+      >
+        <Transition
+          addEndListener={[Function]}
+          appear={false}
+          enter={true}
+          exit={true}
+          in={false}
+          mountOnEnter={true}
+          nodeRef={
+            Object {
+              "current": undefined,
+            }
+          }
+          onEnter={[Function]}
+          onEntered={[Function]}
+          onEntering={[Function]}
+          onExit={[Function]}
+          onExited={[Function]}
+          onExiting={[Function]}
+          unmountOnExit={true}
+        />
+      </Transition>
+    </Mask>
     <Transition
-      appear={false}
-      enter={true}
-      exit={true}
-      in={false}
-      mountOnEnter={true}
-      nodeRef={
-        Object {
-          "current": null,
-        }
-      }
+      destroy={true}
+      nodeRef={null}
       onEnter={[Function]}
-      onEntered={[Function]}
-      onEntering={[Function]}
-      onExit={[Function]}
-      onExited={[Function]}
-      onExiting={[Function]}
-      timeout={200}
-      unmountOnExit={true}
-    />
-  </CSSTransition>
+      onLeaveEnd={[Function]}
+      tranisitionName="za-move-up"
+      visible={false}
+    >
+      <Transition
+        addEndListener={[Function]}
+        appear={false}
+        enter={true}
+        exit={true}
+        in={false}
+        mountOnEnter={true}
+        nodeRef={
+          Object {
+            "current": undefined,
+          }
+        }
+        onEnter={[Function]}
+        onEntered={[Function]}
+        onEntering={[Function]}
+        onExit={[Function]}
+        onExited={[Function]}
+        onExiting={[Function]}
+        unmountOnExit={true}
+      />
+    </Transition>
+  </Trigger>
 </Popup>
 `;
 
 exports[`Popup snapshot renders mount node correctly 1`] = `
 <Popup
   afterClose={[MockFunction]}
-  animationDuration={200}
   destroy={true}
   direction="bottom"
   lockScroll={true}
@@ -61,138 +95,140 @@ exports[`Popup snapshot renders mount node correctly 1`] = `
   onMaskClick={[MockFunction]}
   visible={true}
 >
-  <CSSTransition
-    classNames="za-slide-up"
-    in={true}
-    mountOnEnter={true}
-    nodeRef={
-      Object {
-        "current": <div
-          class="za-popup za-popup--bottom"
-          style="transition-duration: 200ms;"
-        >
-          foo
-        </div>,
-      }
-    }
-    onEnter={[Function]}
-    onExited={[Function]}
-    timeout={200}
-    unmountOnExit={true}
+  <Trigger
+    disabled={false}
+    onClose={[Function]}
+    visible={true}
   >
-    <Transition
-      appear={false}
-      enter={true}
-      exit={true}
-      in={true}
-      mountOnEnter={true}
-      nodeRef={
-        Object {
-          "current": <div
-            class="za-popup za-popup--bottom"
-            style="transition-duration: 200ms;"
-          >
-            foo
-          </div>,
-        }
-      }
-      onEnter={[Function]}
-      onEntered={[Function]}
-      onEntering={[Function]}
-      onExit={[Function]}
-      onExited={[Function]}
-      onExiting={[Function]}
-      timeout={200}
-      unmountOnExit={true}
+    <Mask
+      color="black"
+      destroy={true}
+      mountContainer={[Function]}
+      onClick={[Function]}
+      opacity="normal"
+      visible={true}
     >
-      <Portal
-        containerInfo={
-          <body
-            style="overflow: hidden;"
-          >
-            <div
-              class="za-mask"
-              style="background-color: rgba(0, 0, 0, 0.55);"
-            />
-            <div
-              class="za-popup__wrapper"
-            >
-              <div
-                class="za-popup za-popup--bottom"
-                style="transition-duration: 200ms;"
-              >
-                foo
-              </div>
-            </div>
-          </body>
-        }
+      <Transition
+        destroy={true}
+        nodeRef={null}
+        tranisitionName="za-fade"
+        visible={true}
       >
-        <Trigger
-          disabled={false}
-          onClose={[Function]}
-          visible={true}
+        <Transition
+          addEndListener={[Function]}
+          appear={false}
+          enter={true}
+          exit={true}
+          in={true}
+          mountOnEnter={true}
+          nodeRef={
+            Object {
+              "current": <div
+                class="za-mask "
+                style="background-color: rgba(0, 0, 0, 0.55);"
+              />,
+            }
+          }
+          onEnter={[Function]}
+          onEntered={[Function]}
+          onEntering={[Function]}
+          onExit={[Function]}
+          onExited={[Function]}
+          onExiting={[Function]}
+          unmountOnExit={true}
         >
-          <Mask
-            color="black"
-            destroy={true}
-            mountContainer={false}
-            onClick={[Function]}
-            opacity="normal"
-            visible={true}
-          >
-            <CSSTransition
-              classNames="za-fade"
-              in={true}
-              mountOnEnter={true}
-              nodeRef={
-                Object {
-                  "current": <div
-                    class="za-mask"
-                    style="background-color: rgba(0, 0, 0, 0.55);"
-                  />,
-                }
-              }
-              onEnter={[Function]}
-              onExited={[Function]}
-              timeout={300}
-              unmountOnExit={true}
-            >
-              <Transition
-                appear={false}
-                enter={true}
-                exit={true}
-                in={true}
-                mountOnEnter={true}
-                nodeRef={
-                  Object {
-                    "current": <div
-                      class="za-mask"
-                      style="background-color: rgba(0, 0, 0, 0.55);"
-                    />,
-                  }
-                }
-                onEnter={[Function]}
-                onEntered={[Function]}
-                onEntering={[Function]}
-                onExit={[Function]}
-                onExited={[Function]}
-                onExiting={[Function]}
-                timeout={300}
-                unmountOnExit={true}
+          <Portal
+            containerInfo={
+              <body
+                style="overflow: hidden;"
               >
                 <div
-                  className="za-mask"
-                  onClick={[Function]}
-                  style={
-                    Object {
-                      "backgroundColor": "rgba(0, 0, 0, 0.55)",
-                      "display": undefined,
-                    }
-                  }
+                  class="za-mask "
+                  style="background-color: rgba(0, 0, 0, 0.55);"
                 />
-              </Transition>
-            </CSSTransition>
-          </Mask>
+                <div
+                  class="za-popup__wrapper"
+                >
+                  <div
+                    class="za-popup za-popup--bottom "
+                  >
+                    foo
+                  </div>
+                </div>
+              </body>
+            }
+          >
+            <div
+              className="za-mask "
+              onClick={[Function]}
+              style={
+                Object {
+                  "WebkitAnimationDuration": undefined,
+                  "WebkitTransitionDuration": undefined,
+                  "animationDuration": undefined,
+                  "backgroundColor": "rgba(0, 0, 0, 0.55)",
+                  "display": undefined,
+                  "transitionDuration": undefined,
+                }
+              }
+            />
+          </Portal>
+        </Transition>
+      </Transition>
+    </Mask>
+    <Transition
+      destroy={true}
+      nodeRef={null}
+      onEnter={[Function]}
+      onLeaveEnd={[Function]}
+      tranisitionName="za-move-up"
+      visible={true}
+    >
+      <Transition
+        addEndListener={[Function]}
+        appear={false}
+        enter={true}
+        exit={true}
+        in={true}
+        mountOnEnter={true}
+        nodeRef={
+          Object {
+            "current": <div
+              class="za-popup za-popup--bottom "
+            >
+              foo
+            </div>,
+          }
+        }
+        onEnter={[Function]}
+        onEntered={[Function]}
+        onEntering={[Function]}
+        onExit={[Function]}
+        onExited={[Function]}
+        onExiting={[Function]}
+        unmountOnExit={true}
+      >
+        <Portal
+          containerInfo={
+            <body
+              style="overflow: hidden;"
+            >
+              <div
+                class="za-mask "
+                style="background-color: rgba(0, 0, 0, 0.55);"
+              />
+              <div
+                class="za-popup__wrapper"
+              >
+                <div
+                  class="za-popup za-popup--bottom "
+                >
+                  foo
+                </div>
+              </div>
+            </body>
+          }
+        >
           <div
             className="za-popup__wrapper"
             style={
@@ -202,11 +238,13 @@ exports[`Popup snapshot renders mount node correctly 1`] = `
             }
           >
             <div
-              className="za-popup za-popup--bottom"
+              className="za-popup za-popup--bottom "
               style={
                 Object {
-                  "WebkitTransitionDuration": "200ms",
-                  "transitionDuration": "200ms",
+                  "WebkitAnimationDuration": undefined,
+                  "WebkitTransitionDuration": undefined,
+                  "animationDuration": undefined,
+                  "transitionDuration": undefined,
                   "width": undefined,
                 }
               }
@@ -214,9 +252,9 @@ exports[`Popup snapshot renders mount node correctly 1`] = `
               foo
             </div>
           </div>
-        </Trigger>
-      </Portal>
+        </Portal>
+      </Transition>
     </Transition>
-  </CSSTransition>
+  </Trigger>
 </Popup>
 `;

@@ -1,13 +1,17 @@
-
-.#{$prefixCls}-door {
-  &-enter-active {
-    animation: 200ms #{$prefixCls}-door-in both cubic-bezier(0.4, 0, 0, 0);
+@mixin door-motion($className, $keyframeName) {
+  $name: #{$prefixCls}-#{$className};
+  @include make-motion($name, #{$prefixCls}-#{$keyframeName});
+  .#{$name}-enter,
+  .#{$name}-appear {
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.4, 0, 0, 0);
   }
-
-  &-exit-active {
-    animation: 200ms #{$prefixCls}-door-out both;
+  .#{$name}-leave {
+    animation-timing-function: ease;
   }
 }
+
+@include door-motion(door, door);
 
 @keyframes #{$prefixCls}-door-in {
   from {

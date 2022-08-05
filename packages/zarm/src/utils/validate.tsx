@@ -1,21 +1,21 @@
-export const isArray = (val: any) => {
-  return Object.prototype.toString.call(val) === '[object Array]';
+export const isArray = <T,>(value: T): value is T => {
+  return Array.isArray(value);
 };
 
-export const isString = (val: any) => {
-  return Object.prototype.toString.call(val) === '[object String]';
+export const isString = <T,>(value: T): value is T => {
+  return typeof value === 'string';
 };
 
-export const isObject = (val: any) => {
-  return Object.prototype.toString.call(val) === '[object Object]';
+export const isObject = <T,>(value: T): value is T => {
+  return Object.prototype.toString.call(value) === '[object Object]';
 };
 
-export const isNumber = (val: any) => {
-  return Object.prototype.toString.call(val) === '[object Number]';
+export const isNumber = <T,>(value: T): value is T => {
+  return Object.prototype.toString.call(value) === '[object Number]';
 };
 
 export const isCascader = ({ dataSource }) => {
   return dataSource && dataSource[0] && !isArray(dataSource[0]);
 };
 
-export const isFunction = (value: unknown): value is Function => typeof value === 'function';
+export const isFunction = <T,>(value: T): value is T => typeof value === 'function';

@@ -1,14 +1,19 @@
-.#{$prefixCls}-flip {
-  &-enter-active {
-    animation: 200ms #{$prefixCls}-flip-in both cubic-bezier(0.4, 0, 0, 0);
+@mixin flip-motion($className, $keyframeName) {
+  $name: #{$prefixCls}-#{$className};
+  @include make-motion($name, #{$prefixCls}-#{$keyframeName});
+  .#{$name}-enter,
+  .#{$name}-appear {
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.4, 0, 0, 0);
     backface-visibility: visible !important;
   }
-
-  &-exit-active {
-    animation: 200ms #{$prefixCls}-flip-out both;
+  .#{$name}-leave {
+    animation-timing-function: ease;
     backface-visibility: visible !important;
   }
 }
+
+@include flip-motion(flip, flip);
 
 @keyframes #{$prefixCls}-flip-in {
   from {

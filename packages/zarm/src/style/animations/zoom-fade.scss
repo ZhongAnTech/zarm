@@ -1,8 +1,9 @@
-@mixin zoom-motion($className, $keyframeName) {
+@mixin zoom-fade-motion($className, $keyframeName) {
   $name: #{$prefixCls}-#{$className};
   @include make-motion($name, #{$prefixCls}-#{$keyframeName});
   .#{$name}-enter,
   .#{$name}-appear {
+    opacity: 0;
     animation-timing-function: cubic-bezier(0.08, 0.82, 0.17, 1);
   }
   .#{$name}-leave {
@@ -10,28 +11,27 @@
   }
 }
 
-@include zoom-motion(zoom, zoom);
+@include zoom-fade-motion(zoom-fade, zoom-fade);
 
-@keyframes #{$prefixCls}-zoom-in {
-  from {
+@keyframes #{$prefixCls}-zoom-fade-in {
+  0% {
+    transform: scale(0.8);
     opacity: 0;
-    transform: scale3d(0.3, 0.3, 0.3);
   }
 
-  to {
+  100% {
+    transform: scale(1);
     opacity: 1;
-    transform: scale3d(1, 1, 1);
   }
 }
 
-@keyframes #{$prefixCls}-zoom-out {
-  from {
-    opacity: 1;
-    transform: scale3d(1, 1, 1);
+@keyframes #{$prefixCls}-zoom-fade-out {
+  0% {
+    transform: scale(1);
   }
 
-  to {
+  100% {
+    transform: scale(0.8);
     opacity: 0;
-    transform: scale3d(0.3, 0.3, 0.3);
   }
 }

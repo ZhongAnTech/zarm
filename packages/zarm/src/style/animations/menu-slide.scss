@@ -1,0 +1,70 @@
+@mixin menu-slide-motion($className, $keyframeName) {
+  $name: #{$prefixCls}-#{$className};
+  @include make-motion($name, #{$prefixCls}-#{$keyframeName});
+  .#{$name}-enter,
+  .#{$name}-appear {
+    animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .#{$name}-leave {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+  }
+}
+
+@include menu-slide-motion(menu-slide-up, menu-slide-up);
+@include menu-slide-motion(menu-slide-down, menu-slide-down);
+
+@keyframes #{$prefixCls}-menu-slide-up-in {
+  0% {
+    transform: scaleY(0.8);
+    transform-origin: 0% 0%;
+    opacity: 0;
+  }
+
+  100% {
+    transform: scaleY(1);
+    transform-origin: 0% 0%;
+    opacity: 1;
+  }
+}
+
+@keyframes #{$prefixCls}-menu-slide-up-out {
+  0% {
+    transform: scaleY(1);
+    transform-origin: 0% 0%;
+    opacity: 1;
+  }
+
+  100% {
+    transform: scaleY(0.8);
+    transform-origin: 0% 0%;
+    opacity: 0;
+  }
+}
+
+@keyframes #{$prefixCls}-menu-slide-down-in {
+  0% {
+    transform: scaleY(0.8);
+    transform-origin: 100% 100%;
+    opacity: 0;
+  }
+
+  100% {
+    transform: scaleY(1);
+    transform-origin: 100% 100%;
+    opacity: 1;
+  }
+}
+
+@keyframes #{$prefixCls}-menu-slide-down-out {
+  0% {
+    transform: scaleY(1);
+    transform-origin: 100% 100%;
+    opacity: 1;
+  }
+
+  100% {
+    transform: scaleY(0.8);
+    transform-origin: 100% 100%;
+    opacity: 0;
+  }
+}

@@ -1,12 +1,17 @@
-.#{$prefixCls}-fade {
-  &-enter-active {
-    animation: 200ms #{$prefixCls}-fade-in both ease-in;
+@mixin fade-motion($className, $keyframeName) {
+  $name: #{$prefixCls}-#{$className};
+  @include make-motion($name, #{$prefixCls}-#{$keyframeName});
+  .#{$name}-enter,
+  .#{$name}-appear {
+    opacity: 0;
+    animation-timing-function: linear;
   }
-
-  &-exit-active {
-    animation: 200ms #{$prefixCls}-fade-out both ease-out;
+  .#{$name}-leave {
+    animation-timing-function: linear;
   }
 }
+
+@include fade-motion(fade, fade);
 
 @keyframes #{$prefixCls}-fade-in {
   from {

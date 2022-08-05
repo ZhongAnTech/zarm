@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
-import { CSSTransition } from 'react-transition-group';
 import { ConfigContext } from '../n-config-provider';
 import { useLockScroll } from '../utils/hooks';
 import Trigger from '../trigger';
@@ -8,21 +7,20 @@ import Mask from '../mask';
 import type { BasePopupProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
 import { renderToContainer } from '../utils/dom';
+import Transition from '../transition';
 
 export type PopupProps = BasePopupProps & HTMLProps;
 
 const TRANSITION_NAMES = {
-  top: 'slide-down',
-  bottom: 'slide-up',
+  top: 'move-down',
+  bottom: 'move-up',
   center: 'fade',
-  left: 'slide-left',
-  right: 'slide-right',
+  left: 'move-left',
+  right: 'move-right',
 };
 
 const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
   const {
-    className,
-    style,
     width,
     destroy,
     forceRender,
@@ -40,79 +38,69 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
     onEsc,
     children,
   } = props;
-  const nodeRef = React.useRef<HTMLDivElement>(null);
 
   const { prefixCls, mountContainer } = React.useContext(ConfigContext);
   const bem = createBEM('popup', { prefixCls });
-  const [animatedVisible, setAnimatedVisible] = React.useState(visible);
 
   useLockScroll(visible! && lockScroll!);
-
-  React.useImperativeHandle(ref, () => nodeRef.current!);
 
   const handleEsc = React.useCallback(() => {
     onEsc?.();
   }, []);
 
-  const styles = {
-    ...style,
-    width,
-    WebkitTransitionDuration: animationDuration ? `${animationDuration}ms` : undefined,
-    transitionDuration: animationDuration ? `${animationDuration}ms` : undefined,
-  };
-
   const transitionName = animationType ?? TRANSITION_NAMES[direction!];
 
   return (
-    <CSSTransition
-      nodeRef={nodeRef}
-      in={visible}
-      timeout={animationDuration!}
-      classNames={`${prefixCls}-${transitionName}`}
-      mountOnEnter={!forceRender}
-      unmountOnExit={destroy}
-      onEnter={() => {
-        setAnimatedVisible(true);
-        afterOpen?.();
-      }}
-      onExited={() => {
-        setAnimatedVisible(false);
-        afterClose?.();
-      }}
-    >
-      {() =>
-        renderToContainer(
-          props.mountContainer ?? mountContainer,
-          <Trigger visible={visible} onClose={handleEsc}>
-            {mask && (
-              <Mask
-                visible={visible}
-                color={maskColor}
-                opacity={maskOpacity}
-                mountContainer={false}
-                forceRender={forceRender}
-                destroy={destroy}
-                onClick={() => {
-                  onMaskClick?.();
-                }}
-              />
-            )}
-            <div
-              className={bem('wrapper', [className])}
-              style={{ display: !visible && !animatedVisible ? 'none' : undefined }}
-            >
+    <Trigger visible={visible} onClose={handleEsc}>
+      {mask && (
+        <Mask
+          visible={visible}
+          color={maskColor}
+          opacity={maskOpacity}
+          animationDuration={animationDuration}
+          mountContainer={props.mountContainer ?? mountContainer}
+          forceRender={forceRender}
+          destroy={destroy}
+          onClick={() => {
+            onMaskClick?.();
+          }}
+        />
+      )}
+      <Transition
+        nodeRef={ref}
+        visible={visible}
+        tranisitionName={`${prefixCls}-${transitionName}`}
+        duration={animationDuration}
+        forceRender={forceRender}
+        destroy={destroy}
+        onEnter={() => {
+          afterOpen?.();
+        }}
+        onLeaveEnd={() => {
+          afterClose?.();
+        }}
+      >
+        {({ className, style }, setNodeRef) => {
+          const { display, ...restStyle } = style;
+          return renderToContainer(
+            props.mountContainer ?? mountContainer,
+            <div className={bem('wrapper', [props.className])} style={{ display }}>
               <div
-                ref={nodeRef}
-                className={bem([{ [`${direction}`]: !!direction }])}
-                style={styles}
+                ref={setNodeRef}
+                className={bem([{ [`${direction}`]: !!direction }, className])}
+                style={{
+                  ...props.style,
+                  ...restStyle,
+                  width,
+                }}
               >
                 {children}
               </div>
-            </div>
-          </Trigger>,
-        )
-      }
-    </CSSTransition>
+            </div>,
+          );
+        }}
+      </Transition>
+    </Trigger>
   );
 });
 
@@ -122,7 +110,6 @@ Popup.defaultProps = {
   visible: false,
   mask: true,
   direction: 'bottom',
-  animationDuration: 200,
   destroy: true,
   lockScroll: true,
 };

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
-import { CSSTransition } from 'react-transition-group';
 import isFinite from 'lodash/isFinite';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseMaskProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
 import { renderToContainer } from '../utils/dom';
+import Transition from '../transition';
 
 const OpacityList = {
   normal: 0.55,
@@ -29,59 +29,48 @@ const Mask = React.forwardRef<HTMLDivElement, MaskProps>((props, ref) => {
     visible,
     color,
     opacity,
+    animationDuration,
     forceRender,
     destroy,
     onClick,
     children,
     mountContainer,
-    ...rest
   } = props;
-  const nodeRef = React.useRef<HTMLDivElement>(null);
-  const [animatedVisible, setAnimatedVisible] = React.useState(visible);
+
   const { prefixCls, ...context } = React.useContext(ConfigContext);
   const bem = createBEM('mask', { prefixCls });
 
   const rgb = color === 'black' ? '0, 0, 0' : '255, 255, 255';
   const backgroundOpacity = isFinite(opacity) ? opacity : OpacityList[opacity!];
 
-  const maskStyle = {
-    ...style,
-    display: !visible && !animatedVisible ? 'none' : undefined,
-    backgroundColor: color === 'transparent' ? 'transparent' : `rgba(${rgb}, ${backgroundOpacity})`,
-  };
-
-  React.useImperativeHandle(ref, () => nodeRef.current!);
-
   return (
-    <CSSTransition
-      nodeRef={nodeRef}
-      in={visible}
-      timeout={300}
-      classNames={`${prefixCls}-fade`}
-      mountOnEnter={!forceRender}
-      unmountOnExit={destroy}
-      onEnter={() => {
-        setAnimatedVisible(true);
-      }}
-      onExited={() => {
-        setAnimatedVisible(false);
-      }}
+    <Transition
+      nodeRef={ref}
+      visible={visible}
+      tranisitionName={`${prefixCls}-fade`}
+      duration={animationDuration}
+      forceRender={forceRender}
+      destroy={destroy}
     >
-      {() =>
+      {(rest, setNodeRef) =>
         renderToContainer(
           mountContainer ?? context.mountContainer,
           <div
-            {...rest}
-            ref={nodeRef}
-            className={bem([className])}
-            style={maskStyle}
+            ref={setNodeRef}
+            className={bem([className, rest.className])}
+            style={{
+              ...style,
+              ...rest.style,
+              backgroundColor:
+                color === 'transparent' ? 'transparent' : `rgba(${rgb}, ${backgroundOpacity})`,
+            }}
             onClick={onClick}
           >
             {children}
           </div>,
         )
       }
-    </CSSTransition>
+    </Transition>
   );
 });
 

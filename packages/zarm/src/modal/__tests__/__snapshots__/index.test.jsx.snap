@@ -3,7 +3,6 @@
 exports[`Modal renders correctly 1`] = `
 <ForwardRef
   actions={Array []}
-  animationDuration={200}
   animationType="fade"
   closable={true}
   destroy={true}
@@ -17,7 +16,6 @@ exports[`Modal renders correctly 1`] = `
   width="70%"
 >
   <Popup
-    animationDuration={200}
     animationType="fade"
     className="za-modal za-modal--radius"
     destroy={true}
@@ -29,228 +27,233 @@ exports[`Modal renders correctly 1`] = `
     visible={true}
     width="70%"
   >
-    <CSSTransition
-      classNames="za-fade"
-      in={true}
-      mountOnEnter={true}
-      nodeRef={
-        Object {
-          "current": <div
-            class="za-popup za-popup--center"
-            style="width: 70%; transition-duration: 200ms;"
-          >
-            <div
-              class="za-modal__dialog"
-            >
-              <div
-                class="za-modal__body"
-              >
-                <div
-                  class="za-modal__title"
-                >
-                  标题
-                </div>
-                <i
-                  class="za-icon za-icon--sm za-modal__close"
-                >
-                  <svg
-                    aria-hidden="true"
-                    fill="currentColor"
-                    focusable="false"
-                    height="1em"
-                    viewBox="0 0 1000 1000"
-                    width="1em"
-                  >
-                    <path
-                      d="M560.149 501.223l255.344 255.344c16.272 16.272 16.272 42.654 0 58.926s-42.654 16.272-58.926 0L501.223 560.149 245.88 815.493c-16.272 16.272-42.654 16.272-58.925 0-16.272-16.272-16.272-42.654 0-58.926l255.344-255.344L186.954 245.88c-16.272-16.272-16.272-42.654 0-58.925 16.271-16.272 42.653-16.272 58.925 0l255.344 255.344 255.344-255.344c16.272-16.272 42.654-16.272 58.926 0 16.272 16.271 16.272 42.653 0 58.925L560.149 501.223z"
-                      fill-rule="nonzero"
-                    />
-                  </svg>
-                </i>
-                foo
-              </div>
-            </div>
-          </div>,
-        }
-      }
-      onEnter={[Function]}
-      onExited={[Function]}
-      timeout={200}
-      unmountOnExit={true}
+    <Trigger
+      disabled={false}
+      onClose={[Function]}
+      visible={true}
     >
-      <Transition
-        appear={false}
-        enter={true}
-        exit={true}
-        in={true}
-        mountOnEnter={true}
-        nodeRef={
-          Object {
-            "current": <div
-              class="za-popup za-popup--center"
-              style="width: 70%; transition-duration: 200ms;"
-            >
-              <div
-                class="za-modal__dialog"
-              >
-                <div
-                  class="za-modal__body"
-                >
-                  <div
-                    class="za-modal__title"
-                  >
-                    标题
-                  </div>
-                  <i
-                    class="za-icon za-icon--sm za-modal__close"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="0 0 1000 1000"
-                      width="1em"
-                    >
-                      <path
-                        d="M560.149 501.223l255.344 255.344c16.272 16.272 16.272 42.654 0 58.926s-42.654 16.272-58.926 0L501.223 560.149 245.88 815.493c-16.272 16.272-42.654 16.272-58.925 0-16.272-16.272-16.272-42.654 0-58.926l255.344-255.344L186.954 245.88c-16.272-16.272-16.272-42.654 0-58.925 16.271-16.272 42.653-16.272 58.925 0l255.344 255.344 255.344-255.344c16.272-16.272 42.654-16.272 58.926 0 16.272 16.271 16.272 42.653 0 58.925L560.149 501.223z"
-                        fill-rule="nonzero"
-                      />
-                    </svg>
-                  </i>
-                  foo
-                </div>
-              </div>
-            </div>,
-          }
-        }
-        onEnter={[Function]}
-        onEntered={[Function]}
-        onEntering={[Function]}
-        onExit={[Function]}
-        onExited={[Function]}
-        onExiting={[Function]}
-        timeout={200}
-        unmountOnExit={true}
+      <Mask
+        color="black"
+        destroy={true}
+        mountContainer={[Function]}
+        onClick={[Function]}
+        opacity="normal"
+        visible={true}
       >
-        <Portal
-          containerInfo={
-            <body
-              style="overflow: hidden;"
-            >
-              <div
-                class="za-mask"
-                style="background-color: rgba(0, 0, 0, 0.55);"
-              />
-              <div
-                class="za-popup__wrapper za-modal za-modal--radius"
-              >
-                <div
-                  class="za-popup za-popup--center"
-                  style="width: 70%; transition-duration: 200ms;"
+        <Transition
+          destroy={true}
+          nodeRef={null}
+          tranisitionName="za-fade"
+          visible={true}
+        >
+          <Transition
+            addEndListener={[Function]}
+            appear={false}
+            enter={true}
+            exit={true}
+            in={true}
+            mountOnEnter={true}
+            nodeRef={
+              Object {
+                "current": <div
+                  class="za-mask "
+                  style="background-color: rgba(0, 0, 0, 0.55);"
+                />,
+              }
+            }
+            onEnter={[Function]}
+            onEntered={[Function]}
+            onEntering={[Function]}
+            onExit={[Function]}
+            onExited={[Function]}
+            onExiting={[Function]}
+            unmountOnExit={true}
+          >
+            <Portal
+              containerInfo={
+                <body
+                  style="overflow: hidden;"
                 >
                   <div
-                    class="za-modal__dialog"
+                    class="za-mask "
+                    style="background-color: rgba(0, 0, 0, 0.55);"
+                  />
+                  <div
+                    class="za-popup__wrapper za-modal za-modal--radius"
                   >
                     <div
-                      class="za-modal__body"
+                      class="za-popup za-popup--center "
+                      style="width: 70%;"
                     >
                       <div
-                        class="za-modal__title"
+                        class="za-modal__dialog"
                       >
-                        标题
-                      </div>
-                      <i
-                        class="za-icon za-icon--sm za-modal__close"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          fill="currentColor"
-                          focusable="false"
-                          height="1em"
-                          viewBox="0 0 1000 1000"
-                          width="1em"
+                        <div
+                          class="za-modal__body"
                         >
-                          <path
-                            d="M560.149 501.223l255.344 255.344c16.272 16.272 16.272 42.654 0 58.926s-42.654 16.272-58.926 0L501.223 560.149 245.88 815.493c-16.272 16.272-42.654 16.272-58.925 0-16.272-16.272-16.272-42.654 0-58.926l255.344-255.344L186.954 245.88c-16.272-16.272-16.272-42.654 0-58.925 16.271-16.272 42.653-16.272 58.925 0l255.344 255.344 255.344-255.344c16.272-16.272 42.654-16.272 58.926 0 16.272 16.271 16.272 42.653 0 58.925L560.149 501.223z"
-                            fill-rule="nonzero"
-                          />
-                        </svg>
-                      </i>
-                      foo
+                          <div
+                            class="za-modal__title"
+                          >
+                            标题
+                          </div>
+                          <i
+                            class="za-icon za-icon--sm za-modal__close"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              fill="currentColor"
+                              focusable="false"
+                              height="1em"
+                              viewBox="0 0 1000 1000"
+                              width="1em"
+                            >
+                              <path
+                                d="M560.149 501.223l255.344 255.344c16.272 16.272 16.272 42.654 0 58.926s-42.654 16.272-58.926 0L501.223 560.149 245.88 815.493c-16.272 16.272-42.654 16.272-58.925 0-16.272-16.272-16.272-42.654 0-58.926l255.344-255.344L186.954 245.88c-16.272-16.272-16.272-42.654 0-58.925 16.271-16.272 42.653-16.272 58.925 0l255.344 255.344 255.344-255.344c16.272-16.272 42.654-16.272 58.926 0 16.272 16.271 16.272 42.653 0 58.925L560.149 501.223z"
+                                fill-rule="nonzero"
+                              />
+                            </svg>
+                          </i>
+                          foo
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </body>
+              }
+            >
+              <div
+                className="za-mask "
+                onClick={[Function]}
+                style={
+                  Object {
+                    "WebkitAnimationDuration": undefined,
+                    "WebkitTransitionDuration": undefined,
+                    "animationDuration": undefined,
+                    "backgroundColor": "rgba(0, 0, 0, 0.55)",
+                    "display": undefined,
+                    "transitionDuration": undefined,
+                  }
+                }
+              />
+            </Portal>
+          </Transition>
+        </Transition>
+      </Mask>
+      <Transition
+        destroy={true}
+        nodeRef={null}
+        onEnter={[Function]}
+        onLeaveEnd={[Function]}
+        tranisitionName="za-fade"
+        visible={true}
+      >
+        <Transition
+          addEndListener={[Function]}
+          appear={false}
+          enter={true}
+          exit={true}
+          in={true}
+          mountOnEnter={true}
+          nodeRef={
+            Object {
+              "current": <div
+                class="za-popup za-popup--center "
+                style="width: 70%;"
+              >
+                <div
+                  class="za-modal__dialog"
+                >
+                  <div
+                    class="za-modal__body"
+                  >
+                    <div
+                      class="za-modal__title"
+                    >
+                      标题
+                    </div>
+                    <i
+                      class="za-icon za-icon--sm za-modal__close"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="0 0 1000 1000"
+                        width="1em"
+                      >
+                        <path
+                          d="M560.149 501.223l255.344 255.344c16.272 16.272 16.272 42.654 0 58.926s-42.654 16.272-58.926 0L501.223 560.149 245.88 815.493c-16.272 16.272-42.654 16.272-58.925 0-16.272-16.272-16.272-42.654 0-58.926l255.344-255.344L186.954 245.88c-16.272-16.272-16.272-42.654 0-58.925 16.271-16.272 42.653-16.272 58.925 0l255.344 255.344 255.344-255.344c16.272-16.272 42.654-16.272 58.926 0 16.272 16.271 16.272 42.653 0 58.925L560.149 501.223z"
+                          fill-rule="nonzero"
+                        />
+                      </svg>
+                    </i>
+                    foo
+                  </div>
+                </div>
+              </div>,
+            }
+          }
+          onEnter={[Function]}
+          onEntered={[Function]}
+          onEntering={[Function]}
+          onExit={[Function]}
+          onExited={[Function]}
+          onExiting={[Function]}
+          unmountOnExit={true}
+        >
+          <Portal
+            containerInfo={
+              <body
+                style="overflow: hidden;"
+              >
+                <div
+                  class="za-mask "
+                  style="background-color: rgba(0, 0, 0, 0.55);"
+                />
+                <div
+                  class="za-popup__wrapper za-modal za-modal--radius"
+                >
+                  <div
+                    class="za-popup za-popup--center "
+                    style="width: 70%;"
+                  >
+                    <div
+                      class="za-modal__dialog"
+                    >
+                      <div
+                        class="za-modal__body"
+                      >
+                        <div
+                          class="za-modal__title"
+                        >
+                          标题
+                        </div>
+                        <i
+                          class="za-icon za-icon--sm za-modal__close"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            fill="currentColor"
+                            focusable="false"
+                            height="1em"
+                            viewBox="0 0 1000 1000"
+                            width="1em"
+                          >
+                            <path
+                              d="M560.149 501.223l255.344 255.344c16.272 16.272 16.272 42.654 0 58.926s-42.654 16.272-58.926 0L501.223 560.149 245.88 815.493c-16.272 16.272-42.654 16.272-58.925 0-16.272-16.272-16.272-42.654 0-58.926l255.344-255.344L186.954 245.88c-16.272-16.272-16.272-42.654 0-58.925 16.271-16.272 42.653-16.272 58.925 0l255.344 255.344 255.344-255.344c16.272-16.272 42.654-16.272 58.926 0 16.272 16.271 16.272 42.653 0 58.925L560.149 501.223z"
+                              fill-rule="nonzero"
+                            />
+                          </svg>
+                        </i>
+                        foo
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </body>
-          }
-        >
-          <Trigger
-            disabled={false}
-            onClose={[Function]}
-            visible={true}
+              </body>
+            }
           >
-            <Mask
-              color="black"
-              destroy={true}
-              mountContainer={false}
-              onClick={[Function]}
-              opacity="normal"
-              visible={true}
-            >
-              <CSSTransition
-                classNames="za-fade"
-                in={true}
-                mountOnEnter={true}
-                nodeRef={
-                  Object {
-                    "current": <div
-                      class="za-mask"
-                      style="background-color: rgba(0, 0, 0, 0.55);"
-                    />,
-                  }
-                }
-                onEnter={[Function]}
-                onExited={[Function]}
-                timeout={300}
-                unmountOnExit={true}
-              >
-                <Transition
-                  appear={false}
-                  enter={true}
-                  exit={true}
-                  in={true}
-                  mountOnEnter={true}
-                  nodeRef={
-                    Object {
-                      "current": <div
-                        class="za-mask"
-                        style="background-color: rgba(0, 0, 0, 0.55);"
-                      />,
-                    }
-                  }
-                  onEnter={[Function]}
-                  onEntered={[Function]}
-                  onEntering={[Function]}
-                  onExit={[Function]}
-                  onExited={[Function]}
-                  onExiting={[Function]}
-                  timeout={300}
-                  unmountOnExit={true}
-                >
-                  <div
-                    className="za-mask"
-                    onClick={[Function]}
-                    style={
-                      Object {
-                        "backgroundColor": "rgba(0, 0, 0, 0.55)",
-                        "display": undefined,
-                      }
-                    }
-                  />
-                </Transition>
-              </CSSTransition>
-            </Mask>
             <div
               className="za-popup__wrapper za-modal za-modal--radius"
               style={
@@ -260,11 +263,13 @@ exports[`Modal renders correctly 1`] = `
               }
             >
               <div
-                className="za-popup za-popup--center"
+                className="za-popup za-popup--center "
                 style={
                   Object {
-                    "WebkitTransitionDuration": "200ms",
-                    "transitionDuration": "200ms",
+                    "WebkitAnimationDuration": undefined,
+                    "WebkitTransitionDuration": undefined,
+                    "animationDuration": undefined,
+                    "transitionDuration": undefined,
                     "width": "70%",
                   }
                 }
@@ -324,10 +329,10 @@ exports[`Modal renders correctly 1`] = `
                 </div>
               </div>
             </div>
-          </Trigger>
-        </Portal>
+          </Portal>
+        </Transition>
       </Transition>
-    </CSSTransition>
+    </Trigger>
   </Popup>
 </ForwardRef>
 `;

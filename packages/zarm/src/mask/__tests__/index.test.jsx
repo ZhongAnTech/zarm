@@ -16,9 +16,11 @@ describe('Mask', () => {
   it('onClick', () => {
     const onClick = jest.fn();
     const wrapper = render(
-      <Mask mountContainer={false} data-testid="root" onClick={onClick} visible />,
+      <Mask mountContainer={false} onClick={onClick} visible>
+        content
+      </Mask>,
     );
-    fireEvent.click(wrapper.getByTestId('root'));
+    fireEvent.click(wrapper.getByText('content'));
     expect(onClick).toBeCalled();
   });
 });

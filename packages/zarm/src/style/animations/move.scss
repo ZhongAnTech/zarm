@@ -1,95 +1,96 @@
-.#{$prefixCls}-move-up {
-  &-enter-active {
-    animation: 200ms #{$prefixCls}-move-up-enter both ease-out;
+@mixin move-motion($className, $keyframeName) {
+  $name: #{$prefixCls}-#{$className};
+  @include make-motion($name, #{$prefixCls}-#{$keyframeName});
+  .#{$name}-enter,
+  .#{$name}-appear {
+    animation-timing-function: ease-out;
   }
-
-  &-exit-active {
-    animation: 200ms #{$prefixCls}-move-up-leave both ease-in;
-  }
-}
-
-.#{$prefixCls}-move-down {
-  &-enter-active {
-    animation: 200ms #{$prefixCls}-move-down-enter both ease-out;
-  }
-
-  &-exit-active {
-    animation: 200ms #{$prefixCls}-move-down-leave both ease-in;
+  .#{$name}-leave {
+    animation-timing-function: ease-in;
   }
 }
 
-.#{$prefixCls}-move-left {
-  &-enter-active {
-    animation: 200ms #{$prefixCls}-move-left-enter both ease-out;
-  }
+@include move-motion(move-up, move-up);
+@include move-motion(move-down, move-down);
+@include move-motion(move-left, move-left);
+@include move-motion(move-right, move-right);
 
-  &-exit-active {
-    animation: 200ms #{$prefixCls}-move-left-leave both ease-in;
-  }
-}
-
-.#{$prefixCls}-move-right {
-  &-enter-active {
-    animation: 200ms #{$prefixCls}-move-right-enter both ease-out;
-  }
-
-  &-exit-active {
-    animation: 200ms #{$prefixCls}-move-right-leave both ease-in;
-  }
-}
-
-@keyframes #{$prefixCls}-move-up-enter {
+@keyframes #{$prefixCls}-move-up-in {
   from {
-    opacity: 1;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes #{$prefixCls}-move-up-out {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
     transform: translate3d(0, 100%, 0);
   }
 }
 
-@keyframes #{$prefixCls}-move-up-leave {
+@keyframes #{$prefixCls}-move-down-in {
+  from {
+    transform: translate3d(0, -100%, 0);
+  }
+
   to {
-    opacity: 0;
-    transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
-@keyframes #{$prefixCls}-move-down-enter {
+@keyframes #{$prefixCls}-move-down-out {
   from {
-    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
     transform: translate3d(0, -100%, 0);
   }
 }
 
-@keyframes #{$prefixCls}-move-down-leave {
+@keyframes #{$prefixCls}-move-left-in {
+  from {
+    transform: translate3d(-100%, 0, 0);
+  }
+
   to {
-    opacity: 0;
-    transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
-@keyframes #{$prefixCls}-move-left-enter {
+@keyframes #{$prefixCls}-move-left-out {
   from {
-    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
     transform: translate3d(-100%, 0, 0);
   }
 }
 
-@keyframes #{$prefixCls}-move-left-leave {
-  to {
-    opacity: 0;
-    transform: translate3d(-100%, 0, 0);
-  }
-}
-
-@keyframes #{$prefixCls}-move-right-enter {
+@keyframes #{$prefixCls}-move-right-in {
   from {
-    opacity: 1;
     transform: translate3d(100%, 0, 0);
   }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
-@keyframes #{$prefixCls}-move-right-leave {
+@keyframes #{$prefixCls}-move-right-out {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
   to {
-    opacity: 0;
     transform: translate3d(100%, 0, 0);
   }
 }

@@ -108,7 +108,6 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 Modal.defaultProps = {
   visible: false,
   animationType: 'fade',
-  animationDuration: 200,
   width: '70%',
   mask: true,
   shape: 'radius',

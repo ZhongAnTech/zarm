@@ -1,95 +1,96 @@
-.#{$prefixCls}-slide-up {
-  &-enter-active {
-    animation: 200ms #{$prefixCls}-slide-up-enter both ease-out;
+@mixin slide-motion($className, $keyframeName) {
+  $name: #{$prefixCls}-#{$className};
+  @include make-motion($name, #{$prefixCls}-#{$keyframeName});
+  .#{$name}-enter,
+  .#{$name}-appear {
+    animation-timing-function: ease-out;
   }
-
-  &-exit-active {
-    animation: 200ms #{$prefixCls}-slide-up-leave both ease-in;
-  }
-}
-
-.#{$prefixCls}-slide-down {
-  &-enter-active {
-    animation: 200ms #{$prefixCls}-slide-down-enter both ease-out;
-  }
-
-  &-exit-active {
-    animation: 200ms #{$prefixCls}-slide-down-leave both ease-in;
+  .#{$name}-leave {
+    animation-timing-function: ease-in;
   }
 }
 
-.#{$prefixCls}-slide-left {
-  &-enter-active {
-    animation: 200ms #{$prefixCls}-slide-left-enter both ease-out;
-  }
+@include slide-motion(slide-up, slide-up);
+@include slide-motion(slide-down, slide-down);
+@include slide-motion(slide-left, slide-left);
+@include slide-motion(slide-right, slide-right);
 
-  &-exit-active {
-    animation: 200ms #{$prefixCls}-slide-left-leave both ease-in;
-  }
-}
-
-.#{$prefixCls}-slide-right {
-  &-enter-active {
-    animation: 200ms #{$prefixCls}-slide-right-enter both ease-out;
-  }
-
-  &-exit-active {
-    animation: 200ms #{$prefixCls}-slide-right-leave both ease-in;
-  }
-}
-
-@keyframes #{$prefixCls}-slide-up-enter {
+@keyframes #{$prefixCls}-slide-up-in {
   from {
-    opacity: 1;
-    transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100px, 0);
   }
-}
 
-@keyframes #{$prefixCls}-slide-up-leave {
   to {
-    opacity: 0;
-    transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
-@keyframes #{$prefixCls}-slide-down-enter {
+@keyframes #{$prefixCls}-slide-up-out {
   from {
-    opacity: 1;
-    transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, 0, 0);
   }
-}
 
-@keyframes #{$prefixCls}-slide-down-leave {
   to {
-    opacity: 0;
-    transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, 100px, 0);
   }
 }
 
-@keyframes #{$prefixCls}-slide-left-enter {
+@keyframes #{$prefixCls}-slide-down-in {
   from {
-    opacity: 1;
-    transform: translate3d(-100%, 0, 0);
+    transform: translate3d(0, -100px, 0);
   }
-}
 
-@keyframes #{$prefixCls}-slide-left-leave {
   to {
-    opacity: 0;
-    transform: translate3d(-100%, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
-@keyframes #{$prefixCls}-slide-right-enter {
+@keyframes #{$prefixCls}-slide-down-out {
   from {
-    opacity: 1;
-    transform: translate3d(100%, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, -100px, 0);
   }
 }
 
-@keyframes #{$prefixCls}-slide-right-leave {
+@keyframes #{$prefixCls}-slide-left-in {
+  from {
+    transform: translate3d(-150px, 0, 0);
+  }
+
   to {
-    opacity: 0;
-    transform: translate3d(100%, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes #{$prefixCls}-slide-left-out {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-150px, 0, 0);
+  }
+}
+
+@keyframes #{$prefixCls}-slide-right-in {
+  from {
+    transform: translate3d(150px, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes #{$prefixCls}-slide-right-out {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(150px, 0, 0);
   }
 }

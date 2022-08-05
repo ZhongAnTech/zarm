@@ -1,12 +1,16 @@
-.#{$prefixCls}-rotate {
-  &-enter-active {
-    animation: 200ms #{$prefixCls}-rotate-in both;
+@mixin rotate-motion($className, $keyframeName) {
+  $name: #{$prefixCls}-#{$className};
+  @include make-motion($name, #{$prefixCls}-#{$keyframeName});
+  .#{$name}-enter,
+  .#{$name}-appear {
+    animation-timing-function: ease;
   }
-
-  &-exit-active {
-    animation: 200ms #{$prefixCls}-rotate-out both;
+  .#{$name}-leave {
+    animation-timing-function: ease;
   }
 }
+
+@include rotate-motion(rotate, rotate);
 
 @keyframes #{$prefixCls}-rotate-in {
   from {
