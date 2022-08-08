@@ -48,14 +48,14 @@
 // 是否包含Modifier
 @function contains-modifier($selector) {
   $index: str-index-reverse(str-selector($selector), ' ');
-  $selector: if($index > 0, str-slice(str-selector($selector), $index), $selector);
+  $selector: if($index > 0, str-slice(str-selector($selector), 0, $index), $selector);
   @return str-contains(str-selector($selector), $modifierSeparator);
 }
 
 // 是否包含Element
 @function contains-element($selector) {
   $index: str-index-reverse(str-selector($selector), ' ');
-  $selector: if($index > 0, str-slice(str-selector($selector), $index), $selector);
+  $selector: if($index > 0, str-slice(str-selector($selector), 0, $index), $selector);
   @return str-contains(str-selector($selector), $elementSeparator);
 }
 

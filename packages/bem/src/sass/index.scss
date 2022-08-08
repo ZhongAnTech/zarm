@@ -3,7 +3,6 @@
 
 @mixin b($blocks...) {
   $selector: get-selector('.' + $prefixCls, $blockSeparator, $blocks...);
-
   #{$selector} {
     @content;
   }
