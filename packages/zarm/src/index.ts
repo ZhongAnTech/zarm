@@ -102,6 +102,8 @@ export { default as Popup } from './popup';
 
 export type { ProgressProps } from './progress';
 export { default as Progress } from './progress';
+
+export type { PullProps, PullCssVars } from './pull';
 export { default as Pull } from './pull';
 
 export type { RadioProps, RadioGroupProps } from './radio';

@@ -22,6 +22,7 @@ import type { SwitchCssVars } from '../switch';
 import type { ModalCssVars } from '../modal';
 import type { IconCssVars } from '../icon';
 import type { RateCssVars } from '../rate';
+import type { PullCssVars } from '../pull';
 import type { MaskCssVars } from '../mask';
 
 type Prefix<T extends object, N extends string> = {
@@ -51,4 +52,5 @@ export type CssVars = Prefix<ActionSheetCssVars, 'action-sheet'> &
   Prefix<ModalCssVars, 'modal'> &
   Prefix<IconCssVars, 'icon'> &
   Prefix<RateCssVars, 'rate'> &
+  Prefix<PullCssVars, 'pull'>&
   Prefix<MaskCssVars, 'mask'>;
