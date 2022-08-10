@@ -1,144 +1,138 @@
-import React, { Component } from 'react';
-import isEqual from 'lodash/isEqual';
+import React, { useState, useContext, useEffect, useCallback } from 'react';
+import { createBEM } from '@zarm-design/bem';
 import Popup from '../popup';
-import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
 import DatePickerView from '../date-picker-view';
 import { parseState } from '../date-picker-view/utils/parseState';
-import type { BaseDatePickerProps } from './PropsType';
+import type { BaseDatePickerProps } from './interface';
+import { ConfigContext } from '../n-config-provider';
+import { HTMLProps } from '../utils/utilityTypes';
 
-export interface DatePickerProps extends BaseDatePickerProps {
-  prefixCls?: string;
-  className?: string;
-}
+export type DatePickerProps = BaseDatePickerProps & HTMLProps;
 
-export default class DatePicker extends Component<DatePickerProps, any> {
-  static defaultProps: DatePickerProps = {
-    mode: 'date',
-    minuteStep: 1,
-    prefixCls: 'za-date-picker',
-    valueMember: 'value',
-    maskClosable: true,
-    onCancel: () => {},
-    onInit: () => {},
-  };
+const DatePicker = (props: DatePickerProps) => {
+  const {
+    className,
+    title,
+    okText,
+    cancelText,
+    mountContainer,
+    maskClosable,
+    onOk,
+    onCancel,
+    onChange,
+    visible,
+    ...others
+  } = props;
+  const [state, setState] = useState({ ...parseState(props), stopScroll: false });
 
-  static getDerivedStateFromProps(props, state) {
-    if (
-      !isEqual(
-        removeFnFromProps(props, ['onOk', 'onCancel', 'onChange']),
-        removeFnFromProps(state.prevProps, ['onOk', 'onCancel', 'onChange']),
-      )
-    ) {
-      return {
-        prevProps: props,
-        ...parseState(props),
-      };
+  const { date, stopScroll } = state;
+  const noop = () => {};
+
+  useEffect(() => {
+    setState({ ...parseState(props), stopScroll: false });
+  }, [
+    props.mode,
+    props.defaultValue,
+    props.minuteStep,
+    props.wheelDefaultValue,
+    props.min,
+    props.max,
+  ]);
+
+  useEffect(() => {
+    if (stopScroll) {
+      setState({
+        ...state,
+        stopScroll: false,
+      });
     }
-    return null;
-  }
+  }, [stopScroll]);
 
-  constructor(props) {
-    super(props);
-    this.state = { ...parseState(props), stopScroll: false };
-  }
-
-  onCancel = () => {
-    const { onCancel } = this.props;
+  const handleCancel = useCallback(() => {
     if (typeof onCancel === 'function') {
       onCancel();
     }
-  };
+  }, [onCancel]);
 
-  onOk = () => {
-    const { onOk } = this.props;
-    this.setState(
-      {
-        stopScroll: true,
-      },
-      () => {
-        this.setState(
-          {
-            stopScroll: false,
-          },
-          () => {
-            if (typeof onOk === 'function') {
-              onOk(this.state.date);
-            }
-          },
-        );
-      },
-    );
-  };
-
-  onInit = (selected) => {
-    this.setState({
-      date: selected,
+  const handleOnOk = useCallback(() => {
+    setState({
+      ...state,
+      stopScroll: true,
     });
-  };
-
-  onValueChange = (newValue) => {
-    const { onChange } = this.props;
-    this.setState({
-      date: newValue,
-    });
-
-    if (typeof onChange === 'function') {
-      onChange(newValue);
+    if (typeof onOk === 'function') {
+      onOk(date as Date);
     }
-  };
+  }, [onOk, date]);
 
-  render() {
-    const {
-      prefixCls,
-      className,
-      title,
-      okText,
-      cancelText,
-      locale,
-      mountContainer,
-      maskClosable,
-      onOk,
-      onCancel,
-      onInit,
-      visible,
-      ...others
-    } = this.props;
-    const { date, stopScroll } = this.state;
-    const noop = () => {};
+  const onValueChange = useCallback(
+    (newValue) => {
+      setState({
+        ...state,
+        date: newValue,
+      });
 
-    return (
-      <Popup
-        className={className}
-        visible={visible}
-        onMaskClick={maskClosable ? this.onCancel : noop}
-        mountContainer={mountContainer}
-        destroy
+      if (typeof onChange === 'function') {
+        onChange(newValue);
+      }
+    },
+    [onChange],
+  );
+
+  const handleOnInit = useCallback(
+    (selected) => {
+      setState({
+        ...state,
+        date: selected,
+      });
+    },
+    [state],
+  );
+
+  const { prefixCls, locale } = useContext(ConfigContext);
+
+  const bem = createBEM('date-picker', { prefixCls });
+
+  return (
+    <Popup
+      className={className}
+      visible={visible}
+      onMaskClick={maskClosable ? handleCancel : noop}
+      mountContainer={mountContainer}
+      destroy
+    >
+      <div
+        className={prefixCls}
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
       >
-        <div
-          className={prefixCls}
-          onClick={(e) => {
-            e.stopPropagation();
-          }}
-        >
-          <div className={`${prefixCls}__header`}>
-            <div className={`${prefixCls}__cancel`} onClick={this.onCancel}>
-              {cancelText || locale!.cancelText}
-            </div>
-            <div className={`${prefixCls}__title`}>{title || locale!.title}</div>
-            <div className={`${prefixCls}__submit`} onClick={this.onOk}>
-              {okText || locale!.okText}
-            </div>
+        <div className={bem('header')}>
+          <div className={bem('cancel')} onClick={handleCancel}>
+            {cancelText || locale?.DatePicker?.cancelText}
           </div>
-          <DatePickerView
-            {...others}
-            className={className}
-            value={date}
-            onInit={this.onInit}
-            onChange={this.onValueChange}
-            stopScroll={stopScroll}
-          />
+          <div className={bem('title')}>{title || locale?.DatePicker?.title}</div>
+          <div className={bem('submit')} onClick={handleOnOk}>
+            {okText || locale?.DatePicker?.okText}
+          </div>
         </div>
-      </Popup>
-    );
-  }
-}
+        <DatePickerView
+          {...others}
+          className={className}
+          value={date}
+          onChange={onValueChange}
+          stopScroll={stopScroll}
+          onInit={handleOnInit}
+        />
+      </div>
+    </Popup>
+  );
+};
+
+DatePicker.defaultProps = {
+  mode: 'date',
+  minuteStep: 1,
+  maskClosable: true,
+  onCancel: () => {},
+};
+
+export default DatePicker;

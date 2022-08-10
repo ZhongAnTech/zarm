@@ -188,7 +188,7 @@ const Demo = () => {
           title="选择日期"
           placeholder="请选择日期"
           mode="date"
-          min="1974-05-16"
+          min="2021-05-16"
           max="2027-05-15"
           value={value}
           onOk={(value) => {
@@ -208,21 +208,58 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```jsx
 import { useState } from 'react';
-import { DatePickerView } from 'zarm';
+import { DatePickerView, List, Select, Radio } from 'zarm';
 
 const Demo = () => {
   const [value, setValue] = useState('');
-
+  const [mode, setMode] = useState('datetime');
+  const [use12hours, setUse12hours] = useState(false);
+  const modeSource = [
+    { label: 'year', value: 'year' },
+    { label: 'datetime', value: 'datetime' },
+    { label: 'month', value: 'month' },
+    { label: 'date', value: 'date' },
+    { label: 'time', value: 'time' },
+  ];
   return (
-    <DatePickerView
-      mode="datetime"
-      value={value}
-      min="2018-1-13"
-      onChange={(value) => {
-        console.log('datePickerView => ', value);
-        setValue(value);
-      }}
-    />
+    <>
+      <List>
+        <List.Item title="模式">
+          <Select
+            value={mode}
+            dataSource={modeSource}
+            onOk={(selected) => {
+              setMode(selected.map((item) => item.value));
+            }}
+          />
+        </List.Item>
+        <List.Item title="12小时模式">
+          <Radio.Group
+            buttonCompact
+            type="button"
+            value={use12hours}
+            onChange={(value) => {
+              setUse12hours(value);
+            }}
+            disabled={mode !== 'datetime' || mode !== 'time'}
+          >
+            <Radio value={true}>是</Radio>
+            <Radio value={false}>否</Radio>
+          </Radio.Group>
+        </List.Item>
+      </List>
+      <DatePickerView
+        mode={mode.toString()}
+        use12Hours={use12hours}
+        value={value}
+        min="2018-1-13"
+        minuteStep={50}
+        onChange={(value) => {
+          console.log('datePickerView => ', value);
+          setValue(value);
+        }}
+      />
+    </>
   );
 };
 
@@ -239,6 +276,7 @@ ReactDOM.render(<Demo />, mountNode);
 | min          | string \| Date         | -      | 相应 mode 的最小时间                                                 |
 | max          | string \| Date         | -      | 相应 mode 的最大时间                                                 |
 | minuteStep   | number                 | 1      | 分钟间隔                                                             |
+| use12Hours   | boolean                | false  | `time`, `datetime` 可选择是否 12 小时显示模式                        |
 | disabled     | boolean                | false  | 是否禁用                                                             |
 | onChange     | (value?: Date) => void | -      | 值变化时触发的回调函数                                               |
 
@@ -258,7 +296,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ### 仅 DateSelect 支持的属性
 
-| 属性        | 类型   | 默认值   | 说明                                                                                                 |
-| :---------- | :----- | :------- | :--------------------------------------------------------------------------------------------------- |
-| placeholder | string | '请选择' | 输入提示信息                                                                                         |
-| format      | string | -        | 格式化显示值。例：format="yyyy 年 MM 月 dd 日"<br /> 年:`yyyy`, 月:`MM`, 日:`dd`, 时:`hh`, 分:`mm`。 |
+| 属性        | 类型   | 默认值   | 说明                                                                                                                                                     |
+| :---------- | :----- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| placeholder | string | '请选择' | 输入提示信息                                                                                                                                             |
+| format      | string | -        | 格式化显示值。例：format="YYYY 年 MM 月 DD 日"<br /> 年:`YYYY`, 月:`MM`, 日:`DD`, 时:`HH`, 分:`m`。[dayjs](https://day.js.org/docs/zh-CN/display/format) |

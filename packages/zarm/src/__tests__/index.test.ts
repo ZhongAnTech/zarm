@@ -134,18 +134,9 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "DatePicker": Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "render": [Function],
-        },
-        "DatePickerView": Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "render": [Function],
-        },
-        "DateSelect": Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "render": [Function],
-        },
+        "DatePicker": [Function],
+        "DatePickerView": [Function],
+        "DateSelect": [Function],
         "Drag": [Function],
         "FilePicker": Object {
           "$$typeof": Symbol(react.forward_ref),

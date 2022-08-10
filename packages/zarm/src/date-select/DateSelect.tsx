@@ -1,114 +1,114 @@
-import React, { PureComponent } from 'react';
-import classnames from 'classnames';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
+import { createBEM } from '@zarm-design/bem';
 import formatFn from '../date-picker-view/utils/format';
 import DatePicker from '../date-picker';
-import type { BaseDateSelectProps } from './PropsType';
+import { ConfigContext } from '../n-config-provider';
+import type { BaseDateSelectProps } from './interface';
+import { HTMLProps } from '../utils/utilityTypes';
 
-export interface DateSelectProps extends BaseDateSelectProps {
-  prefixCls?: string;
-  className?: string;
-}
+export type DateSelectProps = BaseDateSelectProps & HTMLProps;
 
-export default class DateSelect extends PureComponent<DateSelectProps, any> {
-  static defaultProps: DateSelectProps = {
-    prefixCls: 'za-date-select',
-    mode: 'date',
-    disabled: false,
-    minuteStep: 1,
-    valueMember: 'value',
-    hasArrow: true,
-    onCancel: () => {},
-  };
+const DateSelect = (props: DateSelectProps) => {
+  const {
+    className,
+    placeholder,
+    disabled,
+    hasArrow,
+    onChange,
+    onCancel,
+    onOk,
+    value,
+    ...others
+  } = props;
 
-  static getDerivedStateFromProps(props) {
-    return {
-      selectValue: props.value,
-    };
-  }
+  const { locale: globalLocal, prefixCls } = useContext(ConfigContext);
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      visible: false,
-      selectValue: props.value,
-    };
-  }
+  const [state, setState] = useState({
+    visible: false,
+    selectValue: value,
+  });
 
-  handleClick = () => {
-    const { disabled } = this.props;
+  const { visible, selectValue } = state;
+
+  const bem = createBEM('date-select', { prefixCls });
+  const cls = bem([
+    {
+      placeholder: !selectValue,
+      disabled,
+    },
+    className,
+  ]);
+
+  const handleClick = () => {
     if (disabled) {
       return false;
     }
-    this.setState({
+    setState({
+      ...state,
       visible: true,
     });
   };
 
-  onChange = (selected) => {
-    const { onChange } = this.props;
-    if (typeof onChange === 'function') {
-      onChange(selected);
-    }
-  };
-
-  onOk = (selected) => {
-    const { onOk } = this.props;
-    this.setState({
-      visible: false,
-      selectValue: selected,
+  useEffect(() => {
+    setState({
+      ...state,
+      selectValue: value,
     });
+  }, [value]);
 
-    if (typeof onOk === 'function') {
-      onOk(selected);
-    }
-  };
+  const handleOk = useCallback(
+    (selected) => {
+      setState({ visible: false, selectValue: selected });
+      if (typeof onOk === 'function') {
+        onOk(selected);
+      }
+    },
+    [onOk],
+  );
 
-  onCancel = () => {
-    const { onCancel } = this.props;
-    this.setState({ visible: false });
+  const handleCancel = useCallback(() => {
+    setState({ ...state, visible: false });
     if (typeof onCancel === 'function') {
       onCancel();
     }
-  };
+  }, [onCancel]);
 
-  render() {
-    const {
-      prefixCls,
-      className,
-      placeholder,
-      disabled,
-      onChange,
-      locale,
-      value,
-      ...others
-    } = this.props;
-    const { visible, selectValue } = this.state;
-
-    const cls = classnames(prefixCls, {
-      [`${prefixCls}--placeholder`]: !selectValue,
-      [`${prefixCls}--disabled`]: disabled,
+  const handleOnInit = useCallback((selected) => {
+    setState({
+      ...state,
+      selectValue: selected,
     });
+  }, []);
 
-    const arrowRender = <div className={`${prefixCls}__arrow`} />;
-
-    return (
-      <div className={cls} onClick={this.handleClick}>
-        <input type="hidden" value={formatFn(this, selectValue)} />
-        <div className={`${prefixCls}__input`}>
-          <div className={`${prefixCls}__value`}>
-            {formatFn(this, selectValue) || placeholder || locale!.placeholder}
-          </div>
+  const arrowRender = <div className={bem('arrow')} />;
+  return (
+    <div className={cls} onClick={handleClick}>
+      <input type="hidden" value={formatFn(props, selectValue)} />
+      <div className={bem('input')}>
+        <div className={bem('value')}>
+          {formatFn(props, selectValue) || placeholder || globalLocal?.DateSelect!.placeholder}
         </div>
-        {arrowRender}
-        <DatePicker
-          {...others}
-          className={className}
-          visible={visible}
-          value={selectValue}
-          onOk={this.onOk}
-          onCancel={this.onCancel}
-        />
       </div>
-    );
-  }
-}
+      {hasArrow ? arrowRender : null}
+      <DatePicker
+        {...others}
+        className={className}
+        visible={visible}
+        value={selectValue}
+        onOk={handleOk}
+        onInit={handleOnInit}
+        onCancel={handleCancel}
+      />
+    </div>
+  );
+};
+
+DateSelect.defaultProps = {
+  mode: 'date',
+  disabled: false,
+  minuteStep: 1,
+  hasArrow: true,
+  onCancel: () => {},
+};
+
+export default DateSelect;
