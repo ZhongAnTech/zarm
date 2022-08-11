@@ -76,81 +76,87 @@ const DatePickerView = (props: DatePickerViewProps) => {
     }
   };
 
-  const getNewDate = (values, index: number) => {
-    const value = parseInt(values[index].value, 10);
-    const newValue = cloneDate(currentDate);
-    if (mode === YEAR || mode === MONTH || mode === DATE || mode === DATETIME) {
-      switch (index) {
-        case 0:
-          newValue.setFullYear(value);
-          break;
-        case 1:
-          setMonth(newValue, value);
-          break;
-        case 2:
-          newValue.setDate(value);
-          break;
-        case 3:
-          setHours(newValue, value);
-          break;
-        case 4:
-          newValue.setMinutes(value);
-          break;
-        case 5:
-          setAmPm(newValue, value);
-          break;
-        default:
-          break;
+  const getNewDate = useCallback(
+    (values, index: number, date: Date) => {
+      const value = parseInt(values[index].value, 10);
+      const newValue = cloneDate(date);
+      if (mode === YEAR || mode === MONTH || mode === DATE || mode === DATETIME) {
+        switch (index) {
+          case 0:
+            newValue.setFullYear(value);
+            break;
+          case 1:
+            setMonth(newValue, value);
+            break;
+          case 2:
+            newValue.setDate(value);
+            break;
+          case 3:
+            setHours(newValue, value);
+            break;
+          case 4:
+            newValue.setMinutes(value);
+            break;
+          case 5:
+            setAmPm(newValue, value);
+            break;
+          default:
+            break;
+        }
+      } else {
+        switch (index) {
+          case 0:
+            setHours(newValue, value);
+            break;
+          case 1:
+            newValue.setMinutes(value);
+            break;
+          case 2:
+            setAmPm(newValue, value);
+            break;
+          default:
+            break;
+        }
       }
-    } else {
-      switch (index) {
-        case 0:
-          setHours(newValue, value);
-          break;
-        case 1:
-          newValue.setMinutes(value);
-          break;
-        case 2:
-          setAmPm(newValue, value);
-          break;
-        default:
-          break;
-      }
-    }
-    return clipDate(newValue);
-  };
+      return clipDate(newValue);
+    },
+    [mode],
+  );
 
-  const clipDate = (date) => {
-    if (mode === DATETIME) {
-      if (date < minDate) {
-        return cloneDate(minDate);
+  const clipDate = useCallback(
+    (date) => {
+      if (mode === DATETIME) {
+        if (date < minDate) {
+          return cloneDate(minDate);
+        }
+        if (date > maxDate) {
+          return cloneDate(maxDate);
+        }
+      } else if (mode === DATE || mode === MONTH || mode === YEAR) {
+        if (+date + ONE_DAY <= +minDate) {
+          return cloneDate(minDate);
+        }
+        if (date >= +maxDate + ONE_DAY) {
+          return cloneDate(maxDate);
+        }
+      } else {
+        const maxHour = maxDate.getHours();
+        const maxMinutes = maxDate.getMinutes();
+        const minHour = minDate.getHours();
+        const minMinutes = minDate.getMinutes();
+        const hour = date.getHours();
+        const minutes = date.getMinutes();
+        if (hour < minHour || (hour === minHour && minutes < minMinutes)) {
+          return cloneDate(minDate);
+        }
+        if (hour > maxHour || (hour === maxHour && minutes > maxMinutes)) {
+          return cloneDate(maxDate);
+        }
       }
-      if (date > maxDate) {
-        return cloneDate(maxDate);
-      }
-    } else if (mode === DATE || mode === MONTH || mode === YEAR) {
-      if (+date + ONE_DAY <= +minDate) {
-        return cloneDate(minDate);
-      }
-      if (date >= +maxDate + ONE_DAY) {
-        return cloneDate(maxDate);
-      }
-    } else {
-      const maxHour = maxDate.getHours();
-      const maxMinutes = maxDate.getMinutes();
-      const minHour = minDate.getHours();
-      const minMinutes = minDate.getMinutes();
-      const hour = date.getHours();
-      const minutes = date.getMinutes();
-      if (hour < minHour || (hour === minHour && minutes < minMinutes)) {
-        return cloneDate(minDate);
-      }
-      if (hour > maxHour || (hour === maxHour && minutes > maxMinutes)) {
-        return cloneDate(maxDate);
-      }
-    }
-    return date;
-  };
+      return date;
+    },
+    [minDate, maxDate],
+  );
 
   const defaultDate = useMemo((): Date => {
     // 存在最小值且毫秒数大于现在
@@ -359,7 +365,7 @@ const DatePickerView = (props: DatePickerViewProps) => {
 
   const onValueChange = useCallback(
     (selected, index) => {
-      const newValue = getNewDate(selected, index);
+      const newValue = getNewDate(selected, index, currentDate);
       setState({
         ...state,
         date: newValue,

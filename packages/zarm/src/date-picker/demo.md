@@ -241,7 +241,7 @@ const Demo = () => {
             onChange={(value) => {
               setUse12hours(value);
             }}
-            disabled={mode !== 'datetime' || mode !== 'time'}
+            disabled={!(mode === 'datetime' || mode === 'time')}
           >
             <Radio value={true}>是</Radio>
             <Radio value={false}>否</Radio>
@@ -253,7 +253,6 @@ const Demo = () => {
         use12Hours={use12hours}
         value={value}
         min="2018-1-13"
-        minuteStep={50}
         onChange={(value) => {
           console.log('datePickerView => ', value);
           setValue(value);
