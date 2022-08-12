@@ -5,7 +5,6 @@ import Context from '@/utils/context';
 import Events from '@/utils/events';
 import enUS from 'zarm/config-provider/locale/en_US';
 import zhCN from 'zarm/config-provider/locale/zh_CN';
-import TouchEmulator from 'f2-touchemulator';
 import './style.scss';
 
 const Icons = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_uwg522sx17.js');
@@ -14,18 +13,11 @@ const Container = (props) => {
   const [locale, setLocale] = useState(window.localStorage.locale || 'zhCN');
   const [primaryColor, setPrimaryColor] = useState(window.localStorage.primaryColor || '#00bc70');
   const [theme, setTheme] = useState(window.localStorage.theme || 'light');
-  const container = useRef();
 
   const { className, children } = props;
   const cls = classnames('app-container', className);
 
   const currentLocale = locale === 'enUS' ? enUS : zhCN;
-
-  useEffect(() => {
-    if (container.current) {
-      TouchEmulator(container.current);
-    }
-  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -39,7 +31,7 @@ const Container = (props) => {
 
   return (
     <ConfigProvider theme={theme} primaryColor={primaryColor} locale={currentLocale}>
-      <div ref={container} className={cls}>
+      <div className={cls}>
         <nav>
           <Popper
             trigger="click"

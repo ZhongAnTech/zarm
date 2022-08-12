@@ -2,9 +2,7 @@
 @import 'functions';
 
 @mixin b($blocks...) {
-  $currentBlock: $blocks !global;
   $selector: get-selector('.' + $prefixCls, $blockSeparator, $blocks...);
-
   #{$selector} {
     @content;
   }

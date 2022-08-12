@@ -193,8 +193,8 @@ ReactDOM.render(
 | 属性        | 类型                                                     | 默认值 | 说明                                         |
 | :---------- | :------------------------------------------------------- | :----- | :------------------------------------------- |
 | src         | string                                                   | -      | 图片地址                                     |
-| placeholder | ReactNode                                                | true   | 加载中的占位显示，为 `true` 时使用默认显示   |
-| fallback    | ReactNode                                                | true   | 加载失败的容错显示，为 `true` 时使用默认显示 |
+| placeholder | ReactNode                                                | false  | 加载中的占位显示，为 `true` 时使用默认显示   |
+| fallback    | ReactNode                                                | false  | 加载失败的容错显示，为 `true` 时使用默认显示 |
 | width       | string \| number                                         | -      | 图片宽度                                     |
 | height      | string \| number                                         | -      | 图片高度                                     |
 | alt         | boolean                                                  | -      | 图片描述                                     |

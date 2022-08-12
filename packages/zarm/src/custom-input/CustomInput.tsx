@@ -54,7 +54,10 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
 
   const onInputFocus = () => {
     if (disabled) return;
-    setFocused(true);
+
+    window.setTimeout(() => {
+      setFocused(true);
+    }, 0);
 
     if (typeof onFocus === 'function') {
       onFocus(currentValue);
@@ -109,9 +112,7 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
   };
 
   const focus = () => {
-    window.setTimeout(() => {
-      onInputFocus();
-    }, 0);
+    onInputFocus();
   };
 
   const blur = () => {

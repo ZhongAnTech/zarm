@@ -10,7 +10,6 @@ import React, {
 } from 'react';
 import { createPortal } from 'react-dom';
 import { createBEM } from '@zarm-design/bem';
-import { Transition } from 'react-transition-group';
 import {
   useClick,
   useFloating,
@@ -24,7 +23,9 @@ import {
   useFocus,
   useDismiss,
 } from '@floating-ui/react-dom-interactions';
-import { canUseDOM, getOuterSizes, getMountContainer } from '../utils/dom';
+
+import Transition from '../transition';
+import { canUseDOM, getOuterSizes, renderToContainer } from '../utils/dom';
 import BasePopperProps, { directionMap } from './interface';
 import { ConfigContext } from '../n-config-provider';
 import { getTransitionName, getTransformOrigin } from './utils';
@@ -40,7 +41,7 @@ export interface PopperCssVars {
 }
 
 const Popper = forwardRef<any, PopperProps & PopperCssVars>((props, ref) => {
-  const { prefixCls } = React.useContext(ConfigContext);
+  const { prefixCls, mountContainer: globalMountContainer } = React.useContext(ConfigContext);
   const {
     visible,
     mountContainer,
@@ -49,10 +50,8 @@ const Popper = forwardRef<any, PopperProps & PopperCssVars>((props, ref) => {
     trigger,
     animationDuration,
     hasArrow,
-    className,
     animationType,
     content,
-    style,
     children,
     arrowPointAtCenter,
     onVisibleChange,
@@ -62,7 +61,6 @@ const Popper = forwardRef<any, PopperProps & PopperCssVars>((props, ref) => {
 
   const isVisible = trigger === 'manual' && visible;
   const [open, setOpen] = useState(isVisible);
-  const [mounted, setMounted] = useState(false);
   const arrowRef = useRef<HTMLElement | null>(null);
 
   const middleware = [
@@ -132,33 +130,7 @@ const Popper = forwardRef<any, PopperProps & PopperCssVars>((props, ref) => {
     useDismiss(context, { enabled: trigger !== 'manual' }),
   ]);
 
-  const innerCls = (state) => {
-    const animationState = {
-      entered: 'enter',
-      exited: 'leave',
-      entering: 'enter',
-      exiting: 'leave',
-    }[state];
-    const transitionName = getTransitionName(
-      prefixCls,
-      directionMap[direction!],
-      animationType,
-      animationState,
-    );
-    const isPending = state === 'entering' || state === 'exiting' || state === 'entered';
-    return bem([
-      {
-        [`${direction}`]: true,
-        hidden: state === 'exited',
-      },
-      className,
-      isPending ? `${transitionName}` : '',
-    ]);
-  };
-
-  useEffect(() => {
-    open && setMounted(true);
-  }, [open]);
+  const transitionName = getTransitionName(prefixCls, directionMap[direction!], animationType);
 
   useEffect(() => {
     setOpen(isVisible);
@@ -166,36 +138,46 @@ const Popper = forwardRef<any, PopperProps & PopperCssVars>((props, ref) => {
 
   const hidden = () => {
     setOpen(false);
-    destroy && setMounted(false);
   };
 
   const toolTip = (
-    <Transition timeout={animationDuration} in={open} onExited={hidden}>
-      {(state) => (
-        <div
-          {...getFloatingProps({
-            ref: floating,
-            className: innerCls(state),
-            style: {
-              ...style,
-              position: strategy,
-              top: y ?? 0,
-              left: x ?? 0,
-              animationDuration: `${animationDuration}ms`,
-              display: state === 'exited' ? 'none' : '',
-              transformOrigin: getTransformOrigin(context.placement),
-            },
-          })}
-          data-popper-placement={context.placement}
-        >
-          <div className={bem('content')}>
-            {content}
-            {hasArrow && (
-              <span className={bem('arrow')} ref={arrowRef} style={computeArrowStyle(context)} />
-            )}
-          </div>
-        </div>
-      )}
+    <Transition
+      nodeRef={floating}
+      duration={animationDuration}
+      visible={open}
+      onLeaveEnd={hidden}
+      tranisitionName={transitionName}
+      destroy={destroy}
+    >
+      {({ style, className }, setNodeRef) => {
+        return renderToContainer(
+          mountContainer ?? globalMountContainer,
+          <div
+            {...getFloatingProps({
+              ref: setNodeRef,
+              className: bem([props.className, className, { [`${direction}`]: true }]),
+              style: {
+                ...props.style,
+                ...style,
+                position: strategy,
+                top: y ?? 0,
+                left: x ?? 0,
+                // animationDuration: `${animationDuration}ms`,
+                transformOrigin: getTransformOrigin(context.placement),
+                WebkitTransformOrigin: getTransformOrigin(context.placement),
+              },
+            })}
+            data-popper-placement={context.placement}
+          >
+            <div className={bem('content')}>
+              {content}
+              {hasArrow && (
+                <span className={bem('arrow')} ref={arrowRef} style={computeArrowStyle(context)} />
+              )}
+            </div>
+          </div>,
+        );
+      }}
     </Transition>
   );
 
@@ -216,7 +198,8 @@ const Popper = forwardRef<any, PopperProps & PopperCssVars>((props, ref) => {
   };
   return (
     <>
-      {mounted && createPortal(toolTip, getMountContainer(mountContainer))}
+      {/* {mounted && createPortal(toolTip, getMountContainer(mountContainer))} */}
+      {toolTip}
       {cloneElement(child, getReferenceProps({ ref: newRef, ...childrenProps }))}
     </>
   );
@@ -234,8 +217,7 @@ Popper.defaultProps = {
   mouseEnterDelay: 150,
   mouseLeaveDelay: 100,
   visible: false,
-  animationType: 'zoomFade',
-  animationDuration: 300,
+  animationType: 'zoom-fade',
   onVisibleChange: () => {},
 };
 

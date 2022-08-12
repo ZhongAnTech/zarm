@@ -1,66 +1,114 @@
 @import 'mixins';
 
 @include b(button) {
-  @include define(height, 44px);
-  @include define(background, #fff);
+  @include define(height, var(--za-height-md));
   @include define(border-radius, 0);
-  @include define(border-color, var(--za-theme-default));
   @include define(border-width, 1PX);
   @include define(padding-horizontal, var(--za-padding-h-md));
-  @include define(text-color, var(--za-color-text));
   @include define(font-size, var(--za-font-size-md));
   @include define(icon-size, 22px);
+  @include define(background, #fff);
+  @include define(border-color, var(--za-theme-default));
+  @include define(text-color, var(--za-color-text));
+  @include define(loading-color, var(--za-theme-primary));
   @include define(active-background, #e6e6e6);
   @include define(active-border-color, #e6e6e6);
   @include define(active-text-color, var(--za-color-text));
+  @include define(active-loading-color, var(--za-theme-primary-dark));
   @include define(shadow, 0 3px 3px 0 rgba(230, 230, 230, 0.3));
-  @include define(loading-color, var(--za-theme-primary));
+
+  // primary
+  @include define(primary-background, var(--za-theme-primary));
+  @include define(primary-border-color, var(--za-theme-primary));
+  @include define(primary-text-color, var(--za-color-text-inverse));
+  @include define(primary-loading-color, var(--za-color-text-inverse));
+  @include define(primary-active-background, var(--za-theme-primary-dark));
+  @include define(primary-active-border-color, var(--za-theme-primary-dark));
+  @include define(primary-active-text-color, rgba(255, 255, 255, 0.4));
+  @include define(primary-active-loading-color, rgba(255, 255, 255, 0.4));
+  @include define(primary-shadow, 0 3px 3px 0 rgba(0, 188, 112, 0.3));
+
+  // danger
+  @include define(danger-background, var(--za-theme-danger));
+  @include define(danger-border-color, var(--za-theme-danger));
+  @include define(danger-text-color, var(--za-color-text-inverse));
+  @include define(danger-loading-color, var(--za-color-text-inverse));
+  @include define(danger-active-background, var(--za-theme-danger-dark));
+  @include define(danger-active-border-color, var(--za-theme-danger-dark));
+  @include define(danger-active-text-color, rgba(255, 255, 255, 0.4));
+  @include define(danger-active-loading-color, rgba(255, 255, 255, 0.4));
+  @include define(danger-shadow, 0 3px 3px 0 rgba(255, 80, 80, 0.3));
+
+  // ghost
+  @include define(ghost-border-color, var(--za-color-text-inverse));
+  @include define(ghost-text-color, var(--za-color-text-inverse));
+  @include define(ghost-active-border-color, var(--za-theme-default-dark));
+  @include define(ghost-active-text-color, var(--za-theme-default-dark));
 
   @include button-base;
-  @include button-theme;
   @include button-size;
   @include button-shape;
 
   // theme
+  @include m(default) {
+    @include button-theme(
+      var(--background),
+      var(--border-color),
+      var(--text-color),
+      var(--loading-color),
+      var(--active-background),
+      var(--active-border-color),
+      var(--active-text-color),
+      var(--active-loading-color),
+      var(--shadow),
+    );
+  }
+
   @include m(primary) {
-    @include define(background, var(--za-theme-primary));
-    @include define(border-color, var(--za-theme-primary));
-    @include define(text-color, var(--za-color-text-inverse));
-    @include define(active-background, var(--za-theme-primary-dark));
-    @include define(active-border-color, var(--za-theme-primary-dark));
-    @include define(active-text-color, rgba(255, 255, 255, 0.4));
-    @include define(shadow, 0 3px 3px 0 rgba(0, 188, 112, 0.3));
-    @include define(loading-color, var(--za-color-text-inverse));
+    @include button-theme(
+      var(--primary-background),
+      var(--primary-border-color),
+      var(--primary-text-color),
+      var(--primary-loading-color),
+      var(--primary-active-background),
+      var(--primary-active-border-color),
+      var(--primary-active-text-color),
+      var(--primary-active-loading-color),
+      var(--primary-shadow),
+    );
   }
 
   @include m(danger) {
-    @include define(background, var(--za-theme-danger));
-    @include define(border-color, var(--za-theme-danger));
-    @include define(text-color, var(--za-color-text-inverse));
-    @include define(active-background, var(--za-theme-danger-dark));
-    @include define(active-border-color, var(--za-theme-danger-dark));
-    @include define(active-text-color, rgba(255, 255, 255, 0.4));
-    @include define(shadow, 0 3px 3px 0 rgba(255, 80, 80, 0.3));
-    @include define(loading-color, var(--za-color-text-inverse));
+    @include button-theme(
+      var(--danger-background),
+      var(--danger-border-color),
+      var(--danger-text-color),
+      var(--danger-loading-color),
+      var(--danger-active-background),
+      var(--danger-active-border-color),
+      var(--danger-active-text-color),
+      var(--danger-active-loading-color),
+      var(--danger-shadow),
+    );
   }
 
   // size
   @include m(lg) {
-    @include define(height, 52px);
+    @include define(height, var(--za-height-lg));
     @include define(padding-horizontal, var(--za-padding-h-lg));
     @include define(font-size, var(--za-font-size-lg));
     @include define(icon-size, 26px);
   }
 
   @include m(sm) {
-    @include define(height, 36px);
+    @include define(height, var(--za-height-sm));
     @include define(padding-horizontal, var(--za-padding-h-sm));
     @include define(font-size, var(--za-font-size-sm));
     @include define(icon-size, 18px);
   }
 
   @include m(xs) {
-    @include define(height, 28px);
+    @include define(height, var(--za-height-xs));
     @include define(padding-horizontal, var(--za-padding-h-xs));
     @include define(font-size, var(--za-font-size-xs));
     @include define(icon-size, 16px);
@@ -81,48 +129,52 @@
 
   // link button
   @include m(link) {
-    @include define(background, transparent);
-    @include define(border-color, transparent);
+    line-height: calc(var(--height) - var(--border-width) * 2);
+    background-color: transparent;
+    border-color: transparent;
+
+    &:active {
+      background-color: var(--active-background);
+      border-color: var(--active-border-color);
+    }
 
     @include m(primary) {
-      @include define(text-color, var(--za-theme-primary));
-      @include define(active-text-color, var(--za-theme-primary-dark));
-      @include define(active-background, rgba(255, 255, 255, 0.2));
-      @include define(active-border-color, transparent);
+      @include define(primary-text-color, var(--za-theme-primary));
+      @include define(primary-active-text-color, var(--za-theme-primary-dark));
     }
 
     @include m(danger) {
-      @include define(text-color, var(--za-theme-danger));
-      @include define(active-text-color, var(--za-theme-danger-dark));
-      @include define(active-background, rgba(255, 255, 255, 0.2));
-      @include define(active-border-color, transparent);
+      @include define(danger-text-color, var(--za-theme-danger));
+      @include define(danger-active-text-color, var(--za-theme-danger-dark));
     }
   }
 
   // ghost button
   @include m(ghost) {
-    @include define(background, transparent);
-    @include define(active-background, transparent);
+    background-color: transparent;
+
+    &:active {
+      background-color: transparent;
+    }
 
     @include m(default) {
-      @include define(border-color, var(--color-text-inverse));
-      @include define(active-border-color, #999);
-      @include define(text-color, var(--color-text-inverse));
-      @include define(active-text-color, #999);
+      border-color: var(--ghost-border-color);
+      color: var(--ghost-text-color);
+
+      &:active {
+        border-color: var(--ghost-active-border-color);
+        color: var(--ghost-active-text-color);
+      }
     }
 
     @include m(primary) {
-      @include define(border-color, var(--za-theme-primary));
-      @include define(active-border-color, var(--za-theme-primary-dark));
-      @include define(text-color, var(--za-theme-primary));
-      @include define(active-text-color, var(--za-theme-primary-dark));
+      @include define(primary-text-color, var(--za-theme-primary));
+      @include define(primary-active-text-color, var(--za-theme-primary-dark));
     }
 
     @include m(danger) {
-      @include define(border-color, var(--za-theme-danger));
-      @include define(active-border-color, var(--za-theme-danger-dark));
-      @include define(text-color, var(--za-theme-danger));
-      @include define(active-text-color, var(--za-theme-danger-dark));
+      @include define(danger-text-color, var(--za-theme-danger));
+      @include define(danger-active-text-color, var(--za-theme-danger-dark));
     }
   }
 }

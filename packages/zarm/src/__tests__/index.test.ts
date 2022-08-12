@@ -168,10 +168,10 @@ describe('index', () => {
         "Image": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
-            "fallback": true,
+            "fallback": false,
             "fit": "fill",
             "lazy": false,
-            "placeholder": true,
+            "placeholder": false,
             "preview": false,
             "shape": "rect",
           },
@@ -271,7 +271,6 @@ describe('index', () => {
           "confirm": [Function],
           "defaultProps": Object {
             "actions": Array [],
-            "animationDuration": 200,
             "animationType": "fade",
             "closable": false,
             "destroy": true,
@@ -342,7 +341,9 @@ describe('index', () => {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
             "destroy": true,
+            "direction": "bottom",
             "lockScroll": true,
+            "mask": true,
             "visible": false,
           },
           "render": [Function],
@@ -361,6 +362,19 @@ describe('index', () => {
         },
         "Pull": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "animationDuration": 400,
+            "load": Object {
+              "distance": 0,
+              "state": 0,
+            },
+            "refresh": Object {
+              "distance": 30,
+              "startDistance": 30,
+              "state": 0,
+            },
+            "stayTime": 1000,
+          },
           "render": [Function],
         },
         "Radio": Object {

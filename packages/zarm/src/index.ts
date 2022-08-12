@@ -102,6 +102,8 @@ export { default as Popup } from './popup';
 
 export type { ProgressProps } from './progress';
 export { default as Progress } from './progress';
+
+export type { PullProps, PullCssVars } from './pull';
 export { default as Pull } from './pull';
 
 export type { RadioProps, RadioGroupProps } from './radio';
@@ -118,7 +120,7 @@ export { default as Slider } from './slider';
 export type { StepperProps } from './stepper';
 export { default as Stepper } from './stepper';
 
-export type { CarouselProps } from './carousel';
+export type { CarouselProps, CarouselCssVars } from './carousel';
 export { default as Carousel } from './carousel';
 
 export { default as SwipeAction } from './swipe-action';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ContainerType } from '../utils/dom';
+import { MountContainer } from '../utils/dom';
 
 export type PopperPlacement =
   | 'top'
@@ -30,7 +30,7 @@ export default interface BasePopperProps {
   arrowClassName?: string;
   content?: React.ReactNode;
   destroy?: boolean;
-  mountContainer?: ContainerType;
+  mountContainer?: MountContainer;
   mouseEnterDelay?: number;
   mouseLeaveDelay?: number;
   onVisibleChange?: (visible: boolean) => void;

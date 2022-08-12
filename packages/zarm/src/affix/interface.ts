@@ -1,8 +1,8 @@
-import { ContainerType } from '../utils/dom';
+import { ScrollContainer } from '../utils/dom';
 
 export interface BaseAffixProps {
   offsetTop?: number;
   offsetBottom?: number;
-  scrollContainer?: ContainerType;
+  scrollContainer?: ScrollContainer;
   onChange?(affixed: boolean): void;
 }

@@ -1,5 +1,5 @@
 import localeCN from './locale/zh_CN';
-import type { ContainerType } from '../utils/dom';
+import type { MountContainer } from '../utils/dom';
 import type { CssVars } from './cssVars';
 
 export type Locale = typeof localeCN;
@@ -10,6 +10,6 @@ export interface ConfigProviderProps {
   primaryColor?: string;
   theme?: 'dark' | 'light';
   safeIphoneX?: boolean;
-  mountContainer?: ContainerType;
+  mountContainer?: MountContainer;
   cssVars?: CssVars;
 }

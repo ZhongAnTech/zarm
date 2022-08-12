@@ -1,31 +1,10 @@
 import { ReactNode } from 'react';
-import type { ContainerType } from '../utils/dom';
+import type { ModalProps } from '../modal';
 
-export interface BaseConfirmProps {
-  shape?: 'radius' | 'rect';
-  visible?: boolean;
-  animationType?:
-    | 'fade'
-    | 'door'
-    | 'flip'
-    | 'rotate'
-    | 'zoom'
-    | 'moveUp'
-    | 'moveDown'
-    | 'moveLeft'
-    | 'moveRight'
-    | 'slideUp'
-    | 'slideDown'
-    | 'slideLeft'
-    | 'slideRight';
-  animationDuration?: number;
-  width?: string | number;
-  title?: ReactNode;
+export interface BaseConfirmProps extends ModalProps {
   content?: ReactNode;
   okText?: ReactNode;
-  onOk?: () => void | Promise<boolean | void>;
   cancelText?: ReactNode;
+  onOk?: () => void | Promise<boolean | void>;
   onCancel?: () => void | Promise<boolean | void>;
-  afterClose?: () => void;
-  mountContainer?: ContainerType;
 }

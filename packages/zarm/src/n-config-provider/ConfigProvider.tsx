@@ -12,6 +12,7 @@ export const defaultConfig: ConfigProviderProps = {
   theme: 'light',
   safeIphoneX: false,
   cssVars: {},
+  mountContainer: () => document.body,
 };
 
 export const ConfigContext: Context<ConfigProviderProps> = React.createContext(defaultConfig);

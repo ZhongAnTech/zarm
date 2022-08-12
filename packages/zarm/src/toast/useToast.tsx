@@ -63,18 +63,16 @@ const useToast = (): UseToast => {
         ? {
             ...Toast.defaultProps,
             ...content,
-            mountContainer: false,
             visible: true,
             afterClose,
           }
         : {
             ...Toast.defaultProps,
             visible: true,
-            mountContainer: false,
             content,
             afterClose,
           };
-      ReactDOM.render(<Toast {...props} />, zarmToastRef.current);
+      ReactDOM.render(<Toast {...props} mountContainer={false} />, zarmToastRef.current);
     }
   };
 

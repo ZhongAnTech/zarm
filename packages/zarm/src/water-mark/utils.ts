@@ -69,7 +69,7 @@ export const draw = async ({
     return { url: canvas.toDataURL(), width: canvasWidth, height: canvasHeight, ratio };
   }
 
-  if (isString(text) || (Array.isArray(text) && text.length)) {
+  if ((Array.isArray(text) && text.length) || isString(text)) {
     const {
       color,
       fontSize,

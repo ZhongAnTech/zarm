@@ -139,7 +139,7 @@ const Affix = forwardRef<unknown, AffixProps>((props, ref) => {
       const container = getContainer();
       Events.off(container, 'scroll', onPositionUpdate);
 
-      window.clearTimeout(timerRef.current)
+      window.clearTimeout(timerRef.current);
     };
   }, [getContainer, offsetBottom, onPositionUpdate]);
 

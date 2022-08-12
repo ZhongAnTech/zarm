@@ -1,13 +1,13 @@
 import includes from 'lodash/includes';
 
-export const getTransitionName = (prefixCls, placement, animationType, animationState) => {
-  if (animationType === 'menuSlide' && placement) {
+export const getTransitionName = (prefixCls, placement, animationType) => {
+  if (animationType === 'menu-slide' && placement) {
     if (includes(placement, 'top')) {
-      return `${prefixCls}-${animationType}-down-${animationState}`;
+      return `${prefixCls}-${animationType}-down`;
     }
-    return `${prefixCls}-${animationType}-up-${animationState}`;
+    return `${prefixCls}-${animationType}-up`;
   }
-  return `${prefixCls}-${animationType}-${animationState}`;
+  return `${prefixCls}-${animationType}`;
 };
 
 export const getTransformOrigin = (placement: string) => {

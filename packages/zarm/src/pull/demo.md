@@ -254,3 +254,13 @@ ReactDOM.render(<Demo />, mountNode);
 | success  | 加载成功 |
 | failure  | 加载失败 |
 | complete | 加载完成 |
+
+## CSS 变量
+
+| 属性                       | 默认值                      | 说明                       |
+| :------------------------- | :-------------------------- | :------------------------- |
+| --control-height           | '50px'                      | 刷新节点、加载节点高度     |
+| --control-font-size        | '14px'                      | 刷新节点、加载节点字体大小 |
+| --control-padding-vertical | '20px'                      | 垂直方向内边距大小         |
+| --control-text-color       | 'var(--color-text-caption)' | 字体颜色                   |
+| --control-icon-size        | '22px'                      | 图标大小                   |

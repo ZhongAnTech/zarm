@@ -10,7 +10,7 @@ const Demo = () => {
   const [visible, setVisible] = useState(false);
   const [direction, setDirection] = useState('top');
   const [trigger, setTrigger] = useState('click');
-  const [animationType, setAnimationType] = useState('zoomFade');
+  const [animationType, setAnimationType] = useState('zoom-fade');
 
   return (
     <List>
@@ -57,21 +57,21 @@ const Demo = () => {
         <Select
           value={animationType}
           dataSource={[
-            { value: 'zoomFade', label: '缩放渐显(zoomFade)' },
-            { value: 'menuSlide', label: '菜单拉伸(menuSlide)' },
+            { value: 'zoom-fade', label: '缩放渐显(zoom-fade)' },
+            { value: 'menu-slide', label: '菜单拉伸(menu-slide)' },
             { value: 'fade', label: '淡出淡入效果(fade)' },
             { value: 'zoom', label: '缩放效果(zoom)' },
             { value: 'rotate', label: '旋转效果(rotate)' },
             { value: 'door', label: '开关门效果(door)' },
             { value: 'flip', label: '翻转效果(flip)' },
-            { value: 'moveUp', label: '移出移入效果(moveUp)' },
-            { value: 'moveDown', label: '移出移入效果(moveDown)' },
-            { value: 'moveLeft', label: '移出移入效果(moveLeft)' },
-            { value: 'moveRight', label: '移出移入效果(moveRight)' },
-            { value: 'slideUp', label: '滑出滑入效果(slideUp)' },
-            { value: 'slideDown', label: '滑出滑入效果(slideDown)' },
-            { value: 'slideLeft', label: '滑出滑入效果(slideLeft)' },
-            { value: 'slideRight', label: '滑出滑入效果(slideRight)' },
+            { value: 'move-up', label: '移出移入效果(move-up)' },
+            { value: 'move-down', label: '移出移入效果(move-down)' },
+            { value: 'move-left', label: '移出移入效果(move-left)' },
+            { value: 'move-right', label: '移出移入效果(move-right)' },
+            { value: 'slide-up', label: '滑出滑入效果(slide-up)' },
+            { value: 'slide-down', label: '滑出滑入效果(slide-down)' },
+            { value: 'slide-left', label: '滑出滑入效果(slide-left)' },
+            { value: 'slide-right', label: '滑出滑入效果(slide-right)' },
           ]}
           onOk={(selected) => setAnimationType(selected[0].value)}
         />

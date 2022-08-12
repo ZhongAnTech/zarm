@@ -111,14 +111,14 @@ const Demo = () => {
               { value: 'rotate', label: '旋转效果' },
               { value: 'door', label: '开关门效果' },
               { value: 'flip', label: '翻转效果' },
-              { value: 'moveUp', label: '向上移入效果' },
-              { value: 'moveDown', label: '向下移入效果' },
-              { value: 'moveLeft', label: '向左移入效果' },
-              { value: 'moveRight', label: '向右移入效果' },
-              { value: 'slideUp', label: '向上滑入效果' },
-              { value: 'slideDown', label: '向下滑入效果' },
-              { value: 'slideLeft', label: '向左滑入效果' },
-              { value: 'slideRight', label: '向右滑入效果' },
+              { value: 'move-up', label: '向上移入效果' },
+              { value: 'move-down', label: '向下移入效果' },
+              { value: 'move-left', label: '向左移入效果' },
+              { value: 'move-right', label: '向右移入效果' },
+              { value: 'slide-up', label: '向上滑入效果' },
+              { value: 'slide-down', label: '向下滑入效果' },
+              { value: 'slide-left', label: '向左滑入效果' },
+              { value: 'slide-right', label: '向右滑入效果' },
             ]}
             itemRender={(data) => data && `${data.label}（${data.value}）`}
             displayRender={(selected) => selected.map((item) => item && item.label)}

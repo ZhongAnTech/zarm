@@ -3,7 +3,7 @@
 exports[`Popper renders correctly 1`] = `
 <ForwardRef
   animationDuration={300}
-  animationType="zoomFade"
+  animationType="zoom-fade"
   arrowPointAtCenter={false}
   destroy={false}
   direction="top"

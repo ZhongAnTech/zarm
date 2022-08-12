@@ -10,6 +10,7 @@ describe('TriggerComponent', () => {
   describe('Props initialize the TriggerComponent', () => {
     it('instance list of Trigger component should be empty if visible prop is false', () => {
       render(<Trigger visible={false} disabled={false} />);
+      expect(Trigger.count).toBe(1);
       expect(Trigger.instanceList).toEqual([]);
     });
     it('instance list of Trigger component should be empty if onClose prop is null', () => {
@@ -26,6 +27,7 @@ describe('TriggerComponent', () => {
       const mOnClose = jest.fn();
       render(<Trigger visible disabled={false} onClose={mOnClose} />);
       expect(Trigger.instanceList).toEqual([mOnClose]);
+      expect(Trigger.count).toBe(1);
       expect(mOnClose).not.toHaveBeenCalled();
     });
   });
@@ -34,10 +36,12 @@ describe('TriggerComponent', () => {
     it('should handle escape keyboard event using the last handler of instance list', () => {
       const mOnClose = jest.fn();
       render(<Trigger visible disabled={false} onClose={mOnClose} />);
+      expect(Trigger.count).toBe(1);
       expect(mOnClose).not.toHaveBeenCalled();
       expect(Trigger.instanceList).toEqual([mOnClose]);
       expect(Trigger.instanceList[0]?.disabled).toBeFalsy();
       fireEvent.keyDown(document.body, { key: 'Escape', code: 'Escape' });
+      expect(Trigger.count).toBe(1);
       expect(mOnClose).toHaveBeenCalled();
       expect(mOnClose).toBeCalledTimes(1);
     });
@@ -55,18 +59,29 @@ describe('TriggerComponent', () => {
     const mOnClose = jest.fn();
     const addEventListenerSpy = jest.spyOn(document.body, 'addEventListener');
     render(<Trigger visible disabled={false} onClose={mOnClose} />);
+    expect(Trigger.count).toBe(1);
     expect(addEventListenerSpy).toBeCalledTimes(1);
   });
 
-  it('should remove keydown event handler from document.body and instance list', () => {
+  it('should increase the counter in case of multiple trigger components', () => {
+    const mOnClose = jest.fn();
+    render(<Trigger visible disabled={false} onClose={mOnClose} />);
+    expect(Trigger.count).toBe(1);
+    render(<Trigger visible disabled={false} onClose={mOnClose} />);
+    expect(Trigger.count).toBe(2);
+  });
+
+  it('should remove keydown event handler from document.body and decrease counter', () => {
     const mOnClose = jest.fn();
     const removeEventListenerSpy = jest.spyOn(document.body, 'removeEventListener');
     const wrapper = render(<Trigger visible disabled={false} onClose={mOnClose} />);
     expect(Trigger.instanceList).toEqual([mOnClose]);
+    expect(Trigger.count).toBe(1);
     wrapper.unmount();
     fireEvent.keyDown(document.body, { key: 'Escape', code: 'Escape' });
     expect(mOnClose).not.toBeCalled();
     expect(removeEventListenerSpy).toBeCalledTimes(1);
     expect(Trigger.instanceList).toEqual([]);
+    expect(Trigger.count).toBe(0);
   });
 });

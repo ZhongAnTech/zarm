@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-export default interface BaseCarouselProps {
+export interface BaseCarouselProps {
   direction?: 'left' | 'right' | 'up' | 'down';
   height?: string | number;
   loop?: boolean;
