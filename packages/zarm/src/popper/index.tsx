@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react';
-import ReactDOM, { createPortal } from 'react-dom';
+import { createPortal } from 'react-dom';
 import PopperJS from 'popper.js';
 import classnames from 'classnames';
 import includes from 'lodash/includes';
@@ -127,7 +127,7 @@ class Popper extends React.Component<PopperProps, PopperStates> {
     mouseLeaveDelay: 100,
     visible: false,
     content: '',
-    animationType: 'zoomFade',
+    animationType: 'zoom-fade',
     animationDuration: 300,
     onVisibleChange: () => {},
   };
@@ -180,13 +180,13 @@ class Popper extends React.Component<PopperProps, PopperStates> {
     if (this.popperNode) {
       const placement = this.popperNode!.getAttribute('x-placement');
 
-      if (animationType === 'menuSlide' && placement) {
+      if (animationType === 'menu-slide' && placement) {
         if (includes(placement, 'top')) {
-          return `za-${animationType}-down-${animationState}`;
+          return `za-${animationType}-down-${animationState} za-${animationType}-down-${animationState}-active`;
         }
-        return `za-${animationType}-up-${animationState}`;
+        return `za-${animationType}-up-${animationState} za-${animationType}-up-${animationState}-active`;
       }
-      return `za-${animationType}-${animationState}`;
+      return `za-${animationType}-${animationState} za-${animationType}-${animationState}-active`;
     }
   }
 
@@ -255,7 +255,7 @@ class Popper extends React.Component<PopperProps, PopperStates> {
 
   handlePopperUpdate = (data) => {
     const { animationType } = this.props;
-    if (animationType !== 'menuSlide') setTransformOrigin(this.popperNode);
+    if (animationType !== 'menu-slide') setTransformOrigin(this.popperNode);
     if (data.placement !== this.state.direction) {
       this.setState({
         direction: invertKeyValues(directionMap)[data.placement],
@@ -439,8 +439,7 @@ class Popper extends React.Component<PopperProps, PopperStates> {
         {mounted && createPortal(toolTip, this.mountContainer())}
         {React.cloneElement(child, {
           ref: (node) => {
-            // eslint-disable-next-line react/no-find-dom-node
-            this.reference = ReactDOM.findDOMNode(node) as HTMLElement;
+            this.reference = node;
           },
           ...childrenProps,
         })}

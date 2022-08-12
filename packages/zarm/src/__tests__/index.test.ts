@@ -271,7 +271,6 @@ describe('index', () => {
           "confirm": [Function],
           "defaultProps": Object {
             "actions": Array [],
-            "animationDuration": 200,
             "animationType": "fade",
             "closable": false,
             "destroy": true,
@@ -326,7 +325,9 @@ describe('index', () => {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
             "destroy": true,
+            "direction": "bottom",
             "lockScroll": true,
+            "mask": true,
             "visible": false,
           },
           "render": [Function],

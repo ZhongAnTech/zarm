@@ -1,4 +1,19 @@
-@keyframes za-fade-enter {
+@mixin fade-motion($className, $keyframeName) {
+  $name: #{$prefixCls}-#{$className};
+  @include make-motion($name, #{$prefixCls}-#{$keyframeName});
+  .#{$name}-enter,
+  .#{$name}-appear {
+    opacity: 0;
+    animation-timing-function: linear;
+  }
+  .#{$name}-leave {
+    animation-timing-function: linear;
+  }
+}
+
+@include fade-motion(fade, fade);
+
+@keyframes #{$prefixCls}-fade-in {
   from {
     opacity: 0;
   }
@@ -8,11 +23,7 @@
   }
 }
 
-.za-fade-enter {
-  animation: za-fade-enter both ease-in;
-}
-
-@keyframes za-fade-leave {
+@keyframes #{$prefixCls}-fade-out {
   from {
     opacity: 1;
   }
@@ -20,8 +31,4 @@
   to {
     opacity: 0;
   }
-}
-
-.za-fade-leave {
-  animation: za-fade-leave both ease-out;
 }

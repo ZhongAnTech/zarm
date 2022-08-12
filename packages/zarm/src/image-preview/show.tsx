@@ -30,6 +30,7 @@ const show = (props: Omit<ImagePreviewProps, 'visible'>) => {
             unmount();
           }, 0);
         }}
+        mountContainer={false}
       />
     );
   });

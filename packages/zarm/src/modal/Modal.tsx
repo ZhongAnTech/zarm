@@ -33,7 +33,7 @@ export interface ModalProps extends BaseModalProps, HTMLProps<ModalCssVars> {
   onAction?: (action: ModalActionProps) => void | Promise<void>;
 }
 
-const Modal = React.forwardRef<typeof Popup, ModalProps>((props, ref) => {
+const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   const {
     className,
     title,
@@ -108,7 +108,6 @@ const Modal = React.forwardRef<typeof Popup, ModalProps>((props, ref) => {
 Modal.defaultProps = {
   visible: false,
   animationType: 'fade',
-  animationDuration: 200,
   width: '70%',
   mask: true,
   shape: 'radius',

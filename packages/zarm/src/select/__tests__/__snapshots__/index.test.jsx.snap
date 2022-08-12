@@ -200,10 +200,84 @@ exports[`Select Cascader Select 1`] = `
         >
           <Popup
             destroy={false}
+            direction="bottom"
             lockScroll={true}
+            mask={true}
             onMaskClick={[Function]}
             visible={false}
-          />
+          >
+            <Trigger
+              disabled={false}
+              onClose={[Function]}
+              visible={false}
+            >
+              <Mask
+                color="black"
+                destroy={false}
+                mountContainer={[Function]}
+                onClick={[Function]}
+                opacity="normal"
+                visible={false}
+              >
+                <Transition
+                  destroy={false}
+                  nodeRef={null}
+                  tranisitionName="za-fade"
+                  visible={false}
+                >
+                  <Transition
+                    addEndListener={[Function]}
+                    appear={false}
+                    enter={true}
+                    exit={true}
+                    in={false}
+                    mountOnEnter={true}
+                    nodeRef={
+                      Object {
+                        "current": undefined,
+                      }
+                    }
+                    onEnter={[Function]}
+                    onEntered={[Function]}
+                    onEntering={[Function]}
+                    onExit={[Function]}
+                    onExited={[Function]}
+                    onExiting={[Function]}
+                    unmountOnExit={false}
+                  />
+                </Transition>
+              </Mask>
+              <Transition
+                destroy={false}
+                nodeRef={null}
+                onEnter={[Function]}
+                onLeaveEnd={[Function]}
+                tranisitionName="za-move-up"
+                visible={false}
+              >
+                <Transition
+                  addEndListener={[Function]}
+                  appear={false}
+                  enter={true}
+                  exit={true}
+                  in={false}
+                  mountOnEnter={true}
+                  nodeRef={
+                    Object {
+                      "current": undefined,
+                    }
+                  }
+                  onEnter={[Function]}
+                  onEntered={[Function]}
+                  onEntering={[Function]}
+                  onExit={[Function]}
+                  onExited={[Function]}
+                  onExiting={[Function]}
+                  unmountOnExit={false}
+                />
+              </Transition>
+            </Trigger>
+          </Popup>
         </Picker>
       </ConfigReceiver>
     </ForwardRef(forwardRef)>
@@ -440,10 +514,84 @@ exports[`Select Cascader Select init value 1`] = `
         >
           <Popup
             destroy={false}
+            direction="bottom"
             lockScroll={true}
+            mask={true}
             onMaskClick={[Function]}
             visible={false}
-          />
+          >
+            <Trigger
+              disabled={false}
+              onClose={[Function]}
+              visible={false}
+            >
+              <Mask
+                color="black"
+                destroy={false}
+                mountContainer={[Function]}
+                onClick={[Function]}
+                opacity="normal"
+                visible={false}
+              >
+                <Transition
+                  destroy={false}
+                  nodeRef={null}
+                  tranisitionName="za-fade"
+                  visible={false}
+                >
+                  <Transition
+                    addEndListener={[Function]}
+                    appear={false}
+                    enter={true}
+                    exit={true}
+                    in={false}
+                    mountOnEnter={true}
+                    nodeRef={
+                      Object {
+                        "current": undefined,
+                      }
+                    }
+                    onEnter={[Function]}
+                    onEntered={[Function]}
+                    onEntering={[Function]}
+                    onExit={[Function]}
+                    onExited={[Function]}
+                    onExiting={[Function]}
+                    unmountOnExit={false}
+                  />
+                </Transition>
+              </Mask>
+              <Transition
+                destroy={false}
+                nodeRef={null}
+                onEnter={[Function]}
+                onLeaveEnd={[Function]}
+                tranisitionName="za-move-up"
+                visible={false}
+              >
+                <Transition
+                  addEndListener={[Function]}
+                  appear={false}
+                  enter={true}
+                  exit={true}
+                  in={false}
+                  mountOnEnter={true}
+                  nodeRef={
+                    Object {
+                      "current": undefined,
+                    }
+                  }
+                  onEnter={[Function]}
+                  onEntered={[Function]}
+                  onEntering={[Function]}
+                  onExit={[Function]}
+                  onExited={[Function]}
+                  onExiting={[Function]}
+                  unmountOnExit={false}
+                />
+              </Transition>
+            </Trigger>
+          </Popup>
         </Picker>
       </ConfigReceiver>
     </ForwardRef(forwardRef)>
@@ -571,10 +719,84 @@ exports[`Select Select 1`] = `
         >
           <Popup
             destroy={false}
+            direction="bottom"
             lockScroll={true}
+            mask={true}
             onMaskClick={[Function]}
             visible={false}
-          />
+          >
+            <Trigger
+              disabled={false}
+              onClose={[Function]}
+              visible={false}
+            >
+              <Mask
+                color="black"
+                destroy={false}
+                mountContainer={[Function]}
+                onClick={[Function]}
+                opacity="normal"
+                visible={false}
+              >
+                <Transition
+                  destroy={false}
+                  nodeRef={null}
+                  tranisitionName="za-fade"
+                  visible={false}
+                >
+                  <Transition
+                    addEndListener={[Function]}
+                    appear={false}
+                    enter={true}
+                    exit={true}
+                    in={false}
+                    mountOnEnter={true}
+                    nodeRef={
+                      Object {
+                        "current": undefined,
+                      }
+                    }
+                    onEnter={[Function]}
+                    onEntered={[Function]}
+                    onEntering={[Function]}
+                    onExit={[Function]}
+                    onExited={[Function]}
+                    onExiting={[Function]}
+                    unmountOnExit={false}
+                  />
+                </Transition>
+              </Mask>
+              <Transition
+                destroy={false}
+                nodeRef={null}
+                onEnter={[Function]}
+                onLeaveEnd={[Function]}
+                tranisitionName="za-move-up"
+                visible={false}
+              >
+                <Transition
+                  addEndListener={[Function]}
+                  appear={false}
+                  enter={true}
+                  exit={true}
+                  in={false}
+                  mountOnEnter={true}
+                  nodeRef={
+                    Object {
+                      "current": undefined,
+                    }
+                  }
+                  onEnter={[Function]}
+                  onEntered={[Function]}
+                  onEntering={[Function]}
+                  onExit={[Function]}
+                  onExited={[Function]}
+                  onExiting={[Function]}
+                  unmountOnExit={false}
+                />
+              </Transition>
+            </Trigger>
+          </Popup>
         </Picker>
       </ConfigReceiver>
     </ForwardRef(forwardRef)>
@@ -706,269 +928,456 @@ exports[`Select Select disabled 1`] = `
         >
           <Popup
             destroy={false}
+            direction="bottom"
             lockScroll={true}
+            mask={true}
             onMaskClick={[Function]}
             visible={true}
           >
-            <Portal
-              animationDuration={200}
-              animationType="fade"
-              direction="bottom"
-              handlePortalUnmount={[Function]}
-              mask={true}
-              onMaskClick={[Function]}
-              prefixCls="za-popup"
+            <Trigger
+              disabled={false}
+              onClose={[Function]}
               visible={true}
             >
-              <Trigger
-                disabled={false}
-                onClose={[Function]}
+              <Mask
+                color="black"
+                destroy={false}
+                mountContainer={[Function]}
+                onClick={[Function]}
+                opacity="normal"
                 visible={true}
               >
-                <Portal
-                  containerInfo={
-                    <div
-                      class="za-popup-container"
-                    >
-                      <div
-                        class="za-mask za-fade-enter"
-                        style="animation-duration: 200ms; background-color: rgba(0, 0, 0, 0.55);"
-                      />
-                      <div
-                        class="za-popup__wrapper"
-                        data-width="0"
-                        role="dialog"
-                      >
-                        <div
-                          class="za-popup za-popup--bottom za-popup--show"
-                          data-width="0"
-                          role="document"
-                          style="transition-duration: 200ms; transition-property: transform;"
-                        >
-                          <div
-                            class="za-picker"
-                          >
-                            <div
-                              class="za-picker__header"
-                            >
-                              <div
-                                class="za-picker__cancel"
-                              >
-                                取消
-                              </div>
-                              <div
-                                class="za-picker__title"
-                              >
-                                请选择
-                              </div>
-                              <div
-                                class="za-picker__submit"
-                              >
-                                确定
-                              </div>
-                            </div>
-                            <div
-                              class="za-picker-view"
-                            >
-                              <div
-                                class="za-picker-view__content"
-                              >
-                                <div
-                                  class="za-wheel"
-                                >
-                                  <div
-                                    class="za-wheel__content"
-                                    style="transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-property: transform; transition-duration: 800ms; transform: translateX(0px) translateY(NaNpx);"
-                                  >
-                                    <div
-                                      class="za-wheel__item za-wheel__item--selected"
-                                      style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
-                                    >
-                                      选项一
-                                    </div>
-                                    <div
-                                      class="za-wheel__item"
-                                      style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
-                                    >
-                                      选项二
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div
-                                class="za-picker-view__mask za-picker-view__mask--top"
-                              />
-                              <div
-                                class="za-picker-view__mask za-picker-view__mask--bottom"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  }
+                <Transition
+                  destroy={false}
+                  nodeRef={null}
+                  tranisitionName="za-fade"
+                  visible={true}
                 >
-                  <Mask
-                    className="za-fade-enter"
-                    color="black"
-                    opacity="normal"
-                    style={
+                  <Transition
+                    addEndListener={[Function]}
+                    appear={false}
+                    enter={true}
+                    exit={true}
+                    in={true}
+                    mountOnEnter={true}
+                    nodeRef={
                       Object {
-                        "WebkitAnimationDuration": "200ms",
-                        "animationDuration": "200ms",
+                        "current": <div
+                          class="za-mask za-fade-enter za-fade-enter-active"
+                          style="background-color: rgba(0, 0, 0, 0.55);"
+                        />,
                       }
                     }
-                    visible={true}
+                    onEnter={[Function]}
+                    onEntered={[Function]}
+                    onEntering={[Function]}
+                    onExit={[Function]}
+                    onExited={[Function]}
+                    onExiting={[Function]}
+                    unmountOnExit={false}
                   >
-                    <div
-                      className="za-mask za-fade-enter"
-                      style={
-                        Object {
-                          "WebkitAnimationDuration": "200ms",
-                          "animationDuration": "200ms",
-                          "backgroundColor": "rgba(0, 0, 0, 0.55)",
-                        }
+                    <Portal
+                      containerInfo={
+                        <body
+                          style="overflow: hidden;"
+                        >
+                          <div
+                            class="za-mask za-fade-enter za-fade-enter-active"
+                            style="background-color: rgba(0, 0, 0, 0.55);"
+                          />
+                          <div
+                            class="za-popup__wrapper"
+                          >
+                            <div
+                              class="za-popup za-popup--bottom za-move-up-enter za-move-up-enter-active"
+                            >
+                              <div
+                                class="za-picker"
+                              >
+                                <div
+                                  class="za-picker__header"
+                                >
+                                  <div
+                                    class="za-picker__cancel"
+                                  >
+                                    取消
+                                  </div>
+                                  <div
+                                    class="za-picker__title"
+                                  >
+                                    请选择
+                                  </div>
+                                  <div
+                                    class="za-picker__submit"
+                                  >
+                                    确定
+                                  </div>
+                                </div>
+                                <div
+                                  class="za-picker-view"
+                                >
+                                  <div
+                                    class="za-picker-view__content"
+                                  >
+                                    <div
+                                      class="za-wheel"
+                                    >
+                                      <div
+                                        class="za-wheel__content"
+                                        style="transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-property: transform; transition-duration: 800ms; transform: translateX(0px) translateY(NaNpx);"
+                                      >
+                                        <div
+                                          class="za-wheel__item za-wheel__item--selected"
+                                          style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
+                                        >
+                                          选项一
+                                        </div>
+                                        <div
+                                          class="za-wheel__item"
+                                          style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
+                                        >
+                                          选项二
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="za-picker-view__mask za-picker-view__mask--top"
+                                  />
+                                  <div
+                                    class="za-picker-view__mask za-picker-view__mask--bottom"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </body>
                       }
-                    />
-                  </Mask>
-                  <div
-                    className="za-popup__wrapper"
-                    data-width={0}
-                    onClick={[Function]}
-                    role="dialog"
-                    style={Object {}}
+                    >
+                      <div
+                        className="za-mask za-fade-enter za-fade-enter-active"
+                        onClick={[Function]}
+                        style={
+                          Object {
+                            "WebkitAnimationDuration": undefined,
+                            "WebkitTransitionDuration": undefined,
+                            "animationDuration": undefined,
+                            "backgroundColor": "rgba(0, 0, 0, 0.55)",
+                            "display": undefined,
+                            "transitionDuration": undefined,
+                          }
+                        }
+                      />
+                    </Portal>
+                  </Transition>
+                </Transition>
+              </Mask>
+              <Transition
+                destroy={false}
+                nodeRef={null}
+                onEnter={[Function]}
+                onLeaveEnd={[Function]}
+                tranisitionName="za-move-up"
+                visible={true}
+              >
+                <Transition
+                  addEndListener={[Function]}
+                  appear={false}
+                  enter={true}
+                  exit={true}
+                  in={true}
+                  mountOnEnter={true}
+                  nodeRef={
+                    Object {
+                      "current": <div
+                        class="za-popup za-popup--bottom za-move-up-enter za-move-up-enter-active"
+                      >
+                        <div
+                          class="za-picker"
+                        >
+                          <div
+                            class="za-picker__header"
+                          >
+                            <div
+                              class="za-picker__cancel"
+                            >
+                              取消
+                            </div>
+                            <div
+                              class="za-picker__title"
+                            >
+                              请选择
+                            </div>
+                            <div
+                              class="za-picker__submit"
+                            >
+                              确定
+                            </div>
+                          </div>
+                          <div
+                            class="za-picker-view"
+                          >
+                            <div
+                              class="za-picker-view__content"
+                            >
+                              <div
+                                class="za-wheel"
+                              >
+                                <div
+                                  class="za-wheel__content"
+                                  style="transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-property: transform; transition-duration: 800ms; transform: translateX(0px) translateY(NaNpx);"
+                                >
+                                  <div
+                                    class="za-wheel__item za-wheel__item--selected"
+                                    style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
+                                  >
+                                    选项一
+                                  </div>
+                                  <div
+                                    class="za-wheel__item"
+                                    style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
+                                  >
+                                    选项二
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="za-picker-view__mask za-picker-view__mask--top"
+                            />
+                            <div
+                              class="za-picker-view__mask za-picker-view__mask--bottom"
+                            />
+                          </div>
+                        </div>
+                      </div>,
+                    }
+                  }
+                  onEnter={[Function]}
+                  onEntered={[Function]}
+                  onEntering={[Function]}
+                  onExit={[Function]}
+                  onExited={[Function]}
+                  onExiting={[Function]}
+                  unmountOnExit={false}
+                >
+                  <Portal
+                    containerInfo={
+                      <body
+                        style="overflow: hidden;"
+                      >
+                        <div
+                          class="za-mask za-fade-enter za-fade-enter-active"
+                          style="background-color: rgba(0, 0, 0, 0.55);"
+                        />
+                        <div
+                          class="za-popup__wrapper"
+                        >
+                          <div
+                            class="za-popup za-popup--bottom za-move-up-enter za-move-up-enter-active"
+                          >
+                            <div
+                              class="za-picker"
+                            >
+                              <div
+                                class="za-picker__header"
+                              >
+                                <div
+                                  class="za-picker__cancel"
+                                >
+                                  取消
+                                </div>
+                                <div
+                                  class="za-picker__title"
+                                >
+                                  请选择
+                                </div>
+                                <div
+                                  class="za-picker__submit"
+                                >
+                                  确定
+                                </div>
+                              </div>
+                              <div
+                                class="za-picker-view"
+                              >
+                                <div
+                                  class="za-picker-view__content"
+                                >
+                                  <div
+                                    class="za-wheel"
+                                  >
+                                    <div
+                                      class="za-wheel__content"
+                                      style="transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-property: transform; transition-duration: 800ms; transform: translateX(0px) translateY(NaNpx);"
+                                    >
+                                      <div
+                                        class="za-wheel__item za-wheel__item--selected"
+                                        style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
+                                      >
+                                        选项一
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
+                                      >
+                                        选项二
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  class="za-picker-view__mask za-picker-view__mask--top"
+                                />
+                                <div
+                                  class="za-picker-view__mask za-picker-view__mask--bottom"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </body>
+                    }
                   >
                     <div
-                      className="za-popup za-popup--bottom"
-                      data-width={0}
-                      role="document"
+                      className="za-popup__wrapper"
                       style={
                         Object {
-                          "WebkitTransitionDuration": "200ms",
-                          "WebkitTransitionProperty": "transform",
-                          "transitionDuration": "200ms",
-                          "transitionProperty": "transform",
+                          "display": undefined,
                         }
                       }
                     >
                       <div
-                        className="za-picker"
-                        onClick={[Function]}
+                        className="za-popup za-popup--bottom za-move-up-enter za-move-up-enter-active"
+                        style={
+                          Object {
+                            "WebkitAnimationDuration": undefined,
+                            "WebkitTransitionDuration": undefined,
+                            "animationDuration": undefined,
+                            "transitionDuration": undefined,
+                            "width": undefined,
+                          }
+                        }
                       >
                         <div
-                          className="za-picker__header"
-                        >
-                          <div
-                            className="za-picker__cancel"
-                            onClick={[Function]}
-                          >
-                            取消
-                          </div>
-                          <div
-                            className="za-picker__title"
-                          >
-                            请选择
-                          </div>
-                          <div
-                            className="za-picker__submit"
-                            onClick={[Function]}
-                          >
-                            确定
-                          </div>
-                        </div>
-                        <PickerView
-                          cols={Infinity}
-                          dataSource={
-                            Array [
-                              Object {
-                                "label": "选项一",
-                                "value": "1",
-                              },
-                              Object {
-                                "label": "选项二",
-                                "value": "2",
-                              },
-                            ]
-                          }
-                          disabeld={true}
-                          disabled={false}
-                          itemRender={[Function]}
-                          localeCode="zh-CN"
-                          onChange={[Function]}
+                          className="za-picker"
                           onClick={[Function]}
-                          prefixCls="za-picker-view"
-                          safeIphoneX={false}
-                          stopScroll={false}
-                          value={
-                            Array [
-                              "1",
-                            ]
-                          }
-                          valueMember="value"
                         >
                           <div
-                            className="za-picker-view"
+                            className="za-picker__header"
                           >
                             <div
-                              className="za-picker-view__content"
+                              className="za-picker__cancel"
+                              onClick={[Function]}
                             >
-                              <Wheel
-                                dataSource={
-                                  Array [
-                                    Object {
-                                      "label": "选项一",
-                                      "value": "1",
-                                    },
-                                    Object {
-                                      "label": "选项二",
-                                      "value": "2",
-                                    },
-                                  ]
-                                }
-                                disabled={false}
-                                itemRender={[Function]}
-                                key="0"
-                                onChange={[Function]}
-                                stopScroll={false}
-                                value="1"
-                                valueMember="value"
-                              >
-                                <div
-                                  className="za-wheel"
-                                >
-                                  <div
-                                    className="za-wheel__content"
-                                  >
-                                    <div
-                                      className="za-wheel__item za-wheel__item--selected"
-                                      key="0"
-                                    >
-                                      选项一
-                                    </div>
-                                    <div
-                                      className="za-wheel__item"
-                                      key="1"
-                                    >
-                                      选项二
-                                    </div>
-                                  </div>
-                                </div>
-                              </Wheel>
+                              取消
                             </div>
                             <div
-                              className="za-picker-view__mask za-picker-view__mask--top"
-                            />
+                              className="za-picker__title"
+                            >
+                              请选择
+                            </div>
                             <div
-                              className="za-picker-view__mask za-picker-view__mask--bottom"
-                            />
+                              className="za-picker__submit"
+                              onClick={[Function]}
+                            >
+                              确定
+                            </div>
                           </div>
-                        </PickerView>
+                          <PickerView
+                            cols={Infinity}
+                            dataSource={
+                              Array [
+                                Object {
+                                  "label": "选项一",
+                                  "value": "1",
+                                },
+                                Object {
+                                  "label": "选项二",
+                                  "value": "2",
+                                },
+                              ]
+                            }
+                            disabeld={true}
+                            disabled={false}
+                            itemRender={[Function]}
+                            localeCode="zh-CN"
+                            onChange={[Function]}
+                            onClick={[Function]}
+                            prefixCls="za-picker-view"
+                            safeIphoneX={false}
+                            stopScroll={false}
+                            value={
+                              Array [
+                                "1",
+                              ]
+                            }
+                            valueMember="value"
+                          >
+                            <div
+                              className="za-picker-view"
+                            >
+                              <div
+                                className="za-picker-view__content"
+                              >
+                                <Wheel
+                                  dataSource={
+                                    Array [
+                                      Object {
+                                        "label": "选项一",
+                                        "value": "1",
+                                      },
+                                      Object {
+                                        "label": "选项二",
+                                        "value": "2",
+                                      },
+                                    ]
+                                  }
+                                  disabled={false}
+                                  itemRender={[Function]}
+                                  key="0"
+                                  onChange={[Function]}
+                                  stopScroll={false}
+                                  value="1"
+                                  valueMember="value"
+                                >
+                                  <div
+                                    className="za-wheel"
+                                  >
+                                    <div
+                                      className="za-wheel__content"
+                                    >
+                                      <div
+                                        className="za-wheel__item za-wheel__item--selected"
+                                        key="0"
+                                      >
+                                        选项一
+                                      </div>
+                                      <div
+                                        className="za-wheel__item"
+                                        key="1"
+                                      >
+                                        选项二
+                                      </div>
+                                    </div>
+                                  </div>
+                                </Wheel>
+                              </div>
+                              <div
+                                className="za-picker-view__mask za-picker-view__mask--top"
+                              />
+                              <div
+                                className="za-picker-view__mask za-picker-view__mask--bottom"
+                              />
+                            </div>
+                          </PickerView>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Portal>
-              </Trigger>
-            </Portal>
+                  </Portal>
+                </Transition>
+              </Transition>
+            </Trigger>
           </Popup>
         </Picker>
       </ConfigReceiver>
@@ -1098,10 +1507,84 @@ exports[`Select render defaultValue correctly  1`] = `
         >
           <Popup
             destroy={false}
+            direction="bottom"
             lockScroll={true}
+            mask={true}
             onMaskClick={[Function]}
             visible={false}
-          />
+          >
+            <Trigger
+              disabled={false}
+              onClose={[Function]}
+              visible={false}
+            >
+              <Mask
+                color="black"
+                destroy={false}
+                mountContainer={[Function]}
+                onClick={[Function]}
+                opacity="normal"
+                visible={false}
+              >
+                <Transition
+                  destroy={false}
+                  nodeRef={null}
+                  tranisitionName="za-fade"
+                  visible={false}
+                >
+                  <Transition
+                    addEndListener={[Function]}
+                    appear={false}
+                    enter={true}
+                    exit={true}
+                    in={false}
+                    mountOnEnter={true}
+                    nodeRef={
+                      Object {
+                        "current": undefined,
+                      }
+                    }
+                    onEnter={[Function]}
+                    onEntered={[Function]}
+                    onEntering={[Function]}
+                    onExit={[Function]}
+                    onExited={[Function]}
+                    onExiting={[Function]}
+                    unmountOnExit={false}
+                  />
+                </Transition>
+              </Mask>
+              <Transition
+                destroy={false}
+                nodeRef={null}
+                onEnter={[Function]}
+                onLeaveEnd={[Function]}
+                tranisitionName="za-move-up"
+                visible={false}
+              >
+                <Transition
+                  addEndListener={[Function]}
+                  appear={false}
+                  enter={true}
+                  exit={true}
+                  in={false}
+                  mountOnEnter={true}
+                  nodeRef={
+                    Object {
+                      "current": undefined,
+                    }
+                  }
+                  onEnter={[Function]}
+                  onEntered={[Function]}
+                  onEntering={[Function]}
+                  onExit={[Function]}
+                  onExited={[Function]}
+                  onExiting={[Function]}
+                  unmountOnExit={false}
+                />
+              </Transition>
+            </Trigger>
+          </Popup>
         </Picker>
       </ConfigReceiver>
     </ForwardRef(forwardRef)>

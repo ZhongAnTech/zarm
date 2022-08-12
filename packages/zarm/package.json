@@ -90,6 +90,7 @@
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
     "@types/react-native": "^0.64.2",
+    "@types/react-transition-group": "^4.4.5",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.1",
     "@zarm-design/cli": "^0.0.40",
     "dekko": "^0.2.1",

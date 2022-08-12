@@ -1,30 +1,8 @@
 import { ReactNode } from 'react';
-import type { ContainerType } from '../utils/dom';
+import type { ModalProps } from '../modal';
 
-export interface BaseAlertProps {
-  shape?: 'radius' | 'rect';
-  visible?: boolean;
-  animationType?:
-    | 'fade'
-    | 'door'
-    | 'flip'
-    | 'rotate'
-    | 'zoom'
-    | 'moveUp'
-    | 'moveDown'
-    | 'moveLeft'
-    | 'moveRight'
-    | 'slideUp'
-    | 'slideDown'
-    | 'slideLeft'
-    | 'slideRight';
-  animationDuration?: number;
-  width?: string | number;
-  title?: ReactNode;
+export interface BaseAlertProps extends ModalProps {
   content?: ReactNode;
   cancelText?: ReactNode;
-  destroy?: boolean;
   onCancel?: () => void | Promise<boolean | void>;
-  afterClose?: () => void;
-  mountContainer?: ContainerType;
 }

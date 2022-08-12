@@ -14,20 +14,20 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   const cls = bem([className]);
 
   return (
-    <div ref={ref} className={cls}>
-      <Modal
-        {...rest}
-        actions={[
-          {
-            text: cancelText || locale?.Confirm.cancelText,
-            onClick: onCancel,
-            bold: true,
-          },
-        ]}
-      >
-        {content}
-      </Modal>
-    </div>
+    <Modal
+      {...rest}
+      ref={ref}
+      className={cls}
+      actions={[
+        {
+          text: cancelText || locale?.Confirm.cancelText,
+          onClick: onCancel,
+          bold: true,
+        },
+      ]}
+    >
+      {content}
+    </Modal>
   );
 });
 

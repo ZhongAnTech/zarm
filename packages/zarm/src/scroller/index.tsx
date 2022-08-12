@@ -2,11 +2,11 @@ import { PureComponent } from 'react';
 import throttle from 'lodash/throttle';
 import Events from '../utils/events';
 import { canUseDOM, getScrollContainer, getScrollTop } from '../utils/dom';
-import type { ContainerType } from '../utils/dom';
+import type { ScrollContainer } from '../utils/dom';
 
 export interface ScrollerProps {
   prefixCls?: string;
-  container?: ContainerType;
+  scrollContainer?: ScrollContainer;
   onScroll?: (scrollTop?: number) => void;
 }
 
@@ -15,7 +15,7 @@ export default class Scroller extends PureComponent<ScrollerProps, {}> {
 
   static defaultProps: Partial<ScrollerProps> = {
     prefixCls: 'za-scroller',
-    container: canUseDOM ? window : undefined,
+    scrollContainer: canUseDOM ? window : undefined,
   };
 
   private mounted: boolean;
@@ -28,8 +28,8 @@ export default class Scroller extends PureComponent<ScrollerProps, {}> {
   }
 
   componentDidUpdate(prevProps: ScrollerProps) {
-    const { container } = this.props;
-    if (prevProps.container !== container) {
+    const { scrollContainer } = this.props;
+    if (prevProps.scrollContainer !== scrollContainer) {
       this.bindEvent();
     }
   }
@@ -40,8 +40,8 @@ export default class Scroller extends PureComponent<ScrollerProps, {}> {
   }
 
   get scrollContainer(): HTMLElement | Window {
-    const { container } = this.props;
-    return getScrollContainer(container);
+    const { scrollContainer } = this.props;
+    return getScrollContainer(scrollContainer);
   }
 
   get scrollTop(): number {
