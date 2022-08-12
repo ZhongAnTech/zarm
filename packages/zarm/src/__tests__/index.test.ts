@@ -323,8 +323,7 @@ describe('index', () => {
         "Popper": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
-            "animationDuration": 300,
-            "animationType": "zoomFade",
+            "animationType": "zoom-fade",
             "arrowPointAtCenter": false,
             "destroy": false,
             "direction": "top",

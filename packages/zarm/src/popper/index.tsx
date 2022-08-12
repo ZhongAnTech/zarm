@@ -8,7 +8,6 @@ import React, {
   cloneElement,
   forwardRef,
 } from 'react';
-import { createPortal } from 'react-dom';
 import { createBEM } from '@zarm-design/bem';
 import {
   useClick,
@@ -26,7 +25,7 @@ import {
 
 import Transition from '../transition';
 import { canUseDOM, getOuterSizes, renderToContainer } from '../utils/dom';
-import BasePopperProps, { directionMap } from './interface';
+import BasePopperProps from './interface';
 import { ConfigContext } from '../n-config-provider';
 import { getTransitionName, getTransformOrigin } from './utils';
 import mergeRefs from '../utils/mergeRefs';
@@ -39,6 +38,21 @@ export interface PopperCssVars {
   '--arrow-top'?: React.CSSProperties['top'];
   '--arrow-bottom'?: React.CSSProperties['bottom'];
 }
+
+const directionMap = {
+  top: 'top' as const,
+  topLeft: 'top-start' as const,
+  topRight: 'top-end' as const,
+  right: 'right' as const,
+  rightTop: 'right-start' as const,
+  rightBottom: 'right-end' as const,
+  bottom: 'bottom' as const,
+  bottomLeft: 'bottom-start' as const,
+  bottomRight: 'bottom-end' as const,
+  left: 'left' as const,
+  leftTop: 'left-start' as const,
+  leftBottom: 'left-end' as const,
+};
 
 const Popper = forwardRef<any, PopperProps & PopperCssVars>((props, ref) => {
   const { prefixCls, mountContainer: globalMountContainer } = React.useContext(ConfigContext);
