@@ -29,10 +29,7 @@ export interface StackPickerCssVars {
   '--left'?: React.CSSProperties['left'];
 }
 
-export type StackPickerProps = {
-  className?: string;
-} & BaseStackPickerProps &
-  HTMLProps<StackPickerCssVars>;
+export type StackPickerProps = BaseStackPickerProps & HTMLProps<StackPickerCssVars>;
 
 const StackPicker = forwardRef<unknown, StackPickerProps>((props, ref) => {
   const {
@@ -40,19 +37,19 @@ const StackPicker = forwardRef<unknown, StackPickerProps>((props, ref) => {
     dataSource,
     defaultValue,
     value,
-    displayMember = 'label',
-    valueMember = 'value',
-    title = '请选择',
-    visible = false,
-    cols = Infinity,
-    itemRender = (data: TDataSource) => data[displayMember as 'label'],
+    displayMember,
+    valueMember,
+    title,
+    visible,
+    maskClosable,
+    cols,
     cancelText,
     confirmText,
+    mountContainer,
+    itemRender,
     onChange,
     onConfirm,
     onCancel,
-    maskClosable = false,
-    mountContainer,
     ...restProps
   } = props;
   const stackPickerRef = (ref as any) || createRef<HTMLDivElement>();
@@ -151,7 +148,7 @@ const StackPicker = forwardRef<unknown, StackPickerProps>((props, ref) => {
       const childrenData: typeof dataSource | undefined = ((selected ?? _dataSource[0]) || {})
         .children;
 
-      if (i < currentValue.length && childrenData && childrenData.length && i < cols - 1) {
+      if (i < currentValue.length && childrenData && childrenData.length && i + 1 < cols!) {
         _dataSource = childrenData;
       } else {
         _dataSource = [];
@@ -205,7 +202,7 @@ const StackPicker = forwardRef<unknown, StackPickerProps>((props, ref) => {
    * @param item
    */
   const handleItemRender = (item: TDataSource) => {
-    return itemRender(item);
+    return typeof itemRender !== 'function' ? item[displayMember as 'label'] : itemRender(item);
   };
 
   return (
@@ -218,75 +215,83 @@ const StackPicker = forwardRef<unknown, StackPickerProps>((props, ref) => {
     >
       <div className={cls} {...restProps}>
         <div className={bem('container')}>
-          <div className={bem('wrapper')}>
-            <Actions
-              {...{
-                bem,
-                cancelText,
-                confirmText,
-                title,
-                handleCancel,
-                handleOk,
-                locale,
-              }}
-            />
-            <Tabs
-              swipeable
-              scrollable
-              defaultValue={tabIndex}
-              onChange={setTabIndex}
-              className={tabsBem('')}
-              lineWidth={60}
-            >
-              {columnDataList.map((group, index) => {
-                const groupActiveItemDisplay = group.selected?.[displayMember as 'label'];
-                const panelTitle = (
-                  <span className={bem('tab-text', [{ unselected: !groupActiveItemDisplay }])}>
-                    {groupActiveItemDisplay ?? '请选择'}
-                  </span>
-                );
+          <Actions
+            {...{
+              bem,
+              cancelText,
+              confirmText,
+              title,
+              handleCancel,
+              handleOk,
+              locale,
+            }}
+          />
+          <Tabs
+            swipeable
+            scrollable
+            defaultValue={tabIndex}
+            onChange={setTabIndex}
+            className={tabsBem('')}
+            lineWidth={60}
+          >
+            {columnDataList.map((group, index) => {
+              const groupActiveItemDisplay = group.selected?.[displayMember as 'label'];
+              const panelTitle = (
+                <span className={bem('tab-text', [{ unselected: !groupActiveItemDisplay }])}>
+                  {groupActiveItemDisplay ?? locale!.unselectedTabText}
+                </span>
+              );
 
-                return (
-                  <Tabs.Panel key={+index} title={panelTitle}>
-                    <div className={bem('stack-content')}>
-                      <Radio.Group
-                        type="list"
-                        listMarkerAlign="after"
-                        value={currentValue[index]?.[valueMember as 'value']}
-                        onChange={(v) => handleChange(v, index)}
-                      >
-                        {group.options.map((item, i) => {
-                          const isActive =
-                            currentValue[index] &&
-                            currentValue[index][valueMember as 'value'] ===
-                              item[valueMember as 'value'];
-                          const label = handleItemRender(item);
+              return (
+                <Tabs.Panel key={+index} title={panelTitle}>
+                  <div className={bem('stack-content')}>
+                    <Radio.Group
+                      type="list"
+                      listMarkerAlign="after"
+                      value={currentValue[index]?.[valueMember as 'value']}
+                      onChange={(v) => handleChange(v, index)}
+                    >
+                      {group.options.map((item, i) => {
+                        const isActive =
+                          currentValue[index] &&
+                          currentValue[index][valueMember as 'value'] ===
+                            item[valueMember as 'value'];
+                        const label = handleItemRender(item);
 
-                          return (
-                            <Radio
-                              key={`${label}${+i}`}
-                              className={bem('stack-content-item', [
-                                {
-                                  active: isActive,
-                                },
-                              ])}
-                              value={item[valueMember as 'value']}
-                            >
-                              {label}
-                            </Radio>
-                          );
-                        })}
-                      </Radio.Group>
-                    </div>
-                  </Tabs.Panel>
-                );
-              })}
-            </Tabs>
-          </div>
+                        return (
+                          <Radio
+                            key={`${label}${+i}`}
+                            className={bem('stack-content-item', [
+                              {
+                                active: isActive,
+                              },
+                            ])}
+                            value={item[valueMember as 'value']}
+                          >
+                            {label}
+                          </Radio>
+                        );
+                      })}
+                    </Radio.Group>
+                  </div>
+                </Tabs.Panel>
+              );
+            })}
+          </Tabs>
         </div>
       </div>
     </Popup>
   );
 });
+
+StackPicker.displayName = 'StackPicker';
+
+StackPicker.defaultProps = {
+  displayMember: 'label',
+  valueMember: 'value',
+  visible: false,
+  cols: Infinity,
+  maskClosable: false,
+};
 
 export default memo(StackPicker);

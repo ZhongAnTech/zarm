@@ -1,16 +1,12 @@
 @include b(stack-picker) {
+  @include define(background, #fff);
+  @include define('option-font-size', 14px);
+  @include define('option-height', 44px);
+  @include define('options-height', 360px);
+
   width: 100%;
   height: 100%;
   background: var(--background);
-
-  @include define(background, #fff);
-  @include define(shadow, 0 0 10px rgba(0, 0, 0, .3));
-  @include define('error-color', #ff5050);
-  @include define('item-font-size', 14px);
-  @include define('crumbs-line-height', 24px);
-  @include define('item-line-height', 24px);
-  @include define(padding, 20px);
-  @include define(left, 60px);
 
   @include e(input) {
     width: 100%;
@@ -18,11 +14,11 @@
   }
 
   @include e(placeholder) {
-    color: var(--color-text-placeholder);
+    color: var(--za-color-text-placeholder);
   }
 
   @include m(disabled) {
-    color: var(--color-text-disabled);
+    color: var(--za-color-text-disabled);
   }
 
   @include e(header) {
@@ -39,47 +35,45 @@
   }
 
   @include e(cancel, submit) {
-    padding: 0 var(--padding-h-lg);
+    padding: 0 var(--za-padding-h-lg);
     cursor: pointer;
   }
 
   @include e(cancel) {
-    color: var(--color-text-caption);
+    color: var(--za-color-text-caption);
   }
 
   @include e(submit) {
-    color: var(--theme-primary);
+    color: var(--za-theme-primary);
   }
 
   @include e(tab-text) {
     @include m(unselected) {
-      color: var(--color-text-placeholder);
+      color: var(--za-color-text-placeholder);
     }
   }
 
   @include e(stack-content) {
     position: relative;
-    height: 360px;
+    height: var(--options-height);
     overflow-y: scroll;
 
-    &-wrapper {
-      padding-right: var(--padding);
-      overflow-y: scroll;
-      background: var(--background);
+    @include b(list) {
+      --za-list-item-height: var(--option-height);
     }
 
     &-item {
       position: relative;
       padding: 0 r(10);
-      line-height: var(--item-line-height);
-      font-size: var(--item-font-size);
-      color: var(--color-text);
+      background-color: var(--background, --za-list-item-background);
+      font-size: var(--option-font-size);
+      color: var(--za-color-text);
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
 
       @include m(active) {
-        color: var(--theme-primary);
+        color: var(--za-theme-primary);
       }
     }
   }
@@ -93,7 +87,7 @@
       flex: none;
 
       @include m(active) {
-        color: var(--theme-primary);
+        color: var(--za-theme-primary);
       }
     }
   }

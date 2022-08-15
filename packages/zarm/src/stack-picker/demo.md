@@ -131,3 +131,12 @@ ReactDOM.render(<Demo />, mountNode);
 | onChange      | (value: string[]) => void                                                 | -                             | 值变化时触发的回调函数                         |
 | onConfirm          | (value: string[]) => void                                                 | -                             | 点击确定时触发的回调函数                       |
 | onCancel      | () => void                                                                | -                             | 点击取消时触发的回调函数                       |
+
+## CSS 变量
+
+| 属性               | 默认值  | 说明         |
+| :----------------- | :------ | :----------- |
+| --background       | '#fff'  | 弹层背景色   |
+| --option-font-size | '14px'  | 选项字体大小 |
+| --option-height    | '44px'  | 选项高度     |
+| --options-height   | '360px' | 选项面板高度 |

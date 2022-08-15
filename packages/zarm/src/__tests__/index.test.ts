@@ -482,6 +482,13 @@ describe('index', () => {
           "compare": null,
           "type": Object {
             "$$typeof": Symbol(react.forward_ref),
+            "defaultProps": Object {
+              "cols": Infinity,
+              "displayMember": "label",
+              "maskClosable": false,
+              "valueMember": "value",
+              "visible": false,
+            },
             "render": [Function],
           },
         },
