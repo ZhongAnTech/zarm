@@ -654,10 +654,10 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                       </div>
                                     </div>
                                     <div
-                                      class="za-date-picker-view"
+                                      class="za-picker-view"
                                     >
                                       <div
-                                        class="za-date-picker-view__content"
+                                        class="za-picker-view__content"
                                       >
                                         <div
                                           class="za-wheel"
@@ -1726,10 +1726,10 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                         </div>
                                       </div>
                                       <div
-                                        class="za-date-picker-view__mask za-date-picker-view__mask--top"
+                                        class="za-picker-view__mask za-picker-view__mask--top"
                                       />
                                       <div
-                                        class="za-date-picker-view__mask za-date-picker-view__mask--bottom"
+                                        class="za-picker-view__mask za-picker-view__mask--bottom"
                                       />
                                     </div>
                                   </div>
@@ -1799,10 +1799,10 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                 </div>
                               </div>
                               <div
-                                class="za-date-picker-view"
+                                class="za-picker-view"
                               >
                                 <div
-                                  class="za-date-picker-view__content"
+                                  class="za-picker-view__content"
                                 >
                                   <div
                                     class="za-wheel"
@@ -2871,10 +2871,10 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                   </div>
                                 </div>
                                 <div
-                                  class="za-date-picker-view__mask za-date-picker-view__mask--top"
+                                  class="za-picker-view__mask za-picker-view__mask--top"
                                 />
                                 <div
-                                  class="za-date-picker-view__mask za-date-picker-view__mask--bottom"
+                                  class="za-picker-view__mask za-picker-view__mask--bottom"
                                 />
                               </div>
                             </div>
@@ -2927,10 +2927,10 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                     </div>
                                   </div>
                                   <div
-                                    class="za-date-picker-view"
+                                    class="za-picker-view"
                                   >
                                     <div
-                                      class="za-date-picker-view__content"
+                                      class="za-picker-view__content"
                                     >
                                       <div
                                         class="za-wheel"
@@ -3999,10 +3999,10 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                       </div>
                                     </div>
                                     <div
-                                      class="za-date-picker-view__mask za-date-picker-view__mask--top"
+                                      class="za-picker-view__mask za-picker-view__mask--top"
                                     />
                                     <div
-                                      class="za-date-picker-view__mask za-date-picker-view__mask--bottom"
+                                      class="za-picker-view__mask za-picker-view__mask--bottom"
                                     />
                                   </div>
                                 </div>
@@ -4143,7 +4143,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                     value={2019-04-23T00:00:00.000Z}
                                     valueMember="value"
                                   >
-                                    <PickerView
+                                    <ForwardRef
                                       cols={Infinity}
                                       dataSource={
                                         Array [
@@ -4864,7 +4864,6 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                       minuteStep={1}
                                       mode="date"
                                       onChange={[Function]}
-                                      prefixCls="za-date-picker-view"
                                       safeIphoneX={false}
                                       stopScroll={false}
                                       value={
@@ -4877,10 +4876,10 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                       valueMember="value"
                                     >
                                       <div
-                                        className="za-date-picker-view"
+                                        className="za-picker-view"
                                       >
                                         <div
-                                          className="za-date-picker-view__content"
+                                          className="za-picker-view__content"
                                         >
                                           <Wheel
                                             dataSource={
@@ -6680,13 +6679,13 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                           </Wheel>
                                         </div>
                                         <div
-                                          className="za-date-picker-view__mask za-date-picker-view__mask--top"
+                                          className="za-picker-view__mask za-picker-view__mask--top"
                                         />
                                         <div
-                                          className="za-date-picker-view__mask za-date-picker-view__mask--bottom"
+                                          className="za-picker-view__mask za-picker-view__mask--bottom"
                                         />
                                       </div>
-                                    </PickerView>
+                                    </ForwardRef>
                                   </DatePickerView>
                                 </ConfigReceiver>
                               </ForwardRef(forwardRef)>

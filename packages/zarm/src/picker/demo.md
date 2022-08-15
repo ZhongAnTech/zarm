@@ -459,3 +459,25 @@ ReactDOM.render(<Demo />, mountNode);
 | :------------ | :-------------------------------------------------------------------------------------- | :------------------------------------------- | :----------- |
 | placeholder   | string                                                                                  | '请选择'                                     | 输入提示信息 |
 | displayRender | (selected?: Array<{ [key: string]: string &#124; number &#124; boolean }>) => ReactNode | selected => selected.map(item => item.label) | 所选值的展示 |
+
+## CSS 变量
+
+| 属性                                   | 默认值                     | 说明                 |
+| :------------------------------------- | :------------------------- | :------------------- |
+| --header-height                        | 45px                       | 头部高度             |
+| --header-font-size                     | 16px                       | 头部文字大小         |
+| --header-background-color              | #f7f7f7                    | 头部背景色           |
+| --header-title-text-color              | var(--color-text)          | 头部标题文字颜色     |
+| --header-submit-text-color             | var(--theme-primary)       | 头部提交按钮文字颜色 |
+| --header-cancel-text-color             | var(--color-text-caption)  | 头部取消按钮文字颜色 |
+| --content-background-color             | #fff                       | 内容区域背景颜色     |
+| --content-padding                      | 16px                       | 内容区域内边距       |
+| --content-mask-start-background-color  | rgba(255, 255, 255, 0.4)   | -                    |
+| --content-mask-end-background-color    | rgba(255, 255, 255, 0.8)   | -                    |
+| --wheel-item-rows                      | 5                          | 滚轮元素长度         |
+| --wheel-item-height                    | 34px                       | 滚轮元素高度         |
+| --wheel-item-font-size                 | 20px                       | 滚轮元素文字大小     |
+| --wheel-item-text-color                | var(--color-text)          | 滚轮元素文字颜色     |
+| --wheel-item-disabled-text-color       | var(--color-text-disabled) | 滚轮元素文字禁用颜色 |
+| --wheel-item-selected-background-color | rgba(116, 116, 128, 0.08)  | 滚轮元素文字选中颜色 |
+| --wheel-item-selected-border-radius    | 7px                        | 滚轮元素文字选中圆角 |

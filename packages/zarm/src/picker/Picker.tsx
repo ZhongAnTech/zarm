@@ -1,145 +1,141 @@
-import React, { Component } from 'react';
+import * as React from 'react';
+import { createBEM } from '@zarm-design/bem';
 import isEqual from 'lodash/isEqual';
 import Popup from '../popup';
 import PickerView from '../picker-view';
 import parseProps from '../picker-view/utils/parseProps';
 import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
-import type { BasePickerProps } from './PropsType';
-import type { PickerDataSource } from '../picker-view/PropsType';
-import type { WheelValue, WheelItem } from '../wheel/interface';
+import type { BasePickerProps } from './interface';
+import { ConfigContext } from '../n-config-provider';
+import type { HTMLProps } from '../utils/utilityTypes';
+import { noop } from '../utils';
 
-export interface PickerProps extends BasePickerProps {
-  prefixCls?: string;
-  className?: string;
-}
+export type PickerProps = BasePickerProps &
+  HTMLProps<{
+    '--header-height': React.CSSProperties['height'];
+    '--header-font-size': React.CSSProperties['fontSize'];
+    '--header-background-color': React.CSSProperties['backgroundColor'];
+    '--header-title-text-color': React.CSSProperties['color'];
+    '--header-submit-text-color': React.CSSProperties['color'];
+    '--header-cancel-text-color': React.CSSProperties['color'];
+    '--cotnent-background-color': React.CSSProperties['backgroundColor'];
+    '--cotnent-padding': React.CSSProperties['padding'];
+    '--cotnent-mask-start-background-color': React.CSSProperties['backgroundColor'];
+    '--cotnent-mask-end-background-color': React.CSSProperties['backgroundColor'];
+    '--wheel-item-rows': number;
+    '--wheel-item-height': React.CSSProperties['height'];
+    '--wheel-item-font-size': React.CSSProperties['fontSize'];
+    '--wheel-item-text-color': React.CSSProperties['color'];
+    '--wheel-item-disabled-text-color': React.CSSProperties['color'];
+    '--wheel-item-selected-background-color': React.CSSProperties['backgroundColor'];
+    '--wheel-item-selected-border-radius': React.CSSProperties['borderRadius'];
+  }>;
 
-interface PickerState {
-  value: Array<WheelValue>;
-  objValue: Array<WheelItem>;
-  dataSource: PickerDataSource;
-  tempObjValue?: Array<WheelItem>;
-  tempValue?: Array<WheelValue>;
-  stopScroll?: boolean;
-}
+const EVENTS = ['onOk', 'onCancel', 'onChange'];
 
-export default class Picker extends Component<PickerProps, PickerState> {
-  static defaultProps = {
-    dataSource: [],
-    prefixCls: 'za-picker',
-    valueMember: 'value',
-    cols: Infinity,
-    maskClosable: true,
-    itemRender: (data) => data.label,
-    destroy: false,
-  };
+const Picker = React.forwardRef<HTMLDivElement, PickerProps>((props, ref) => {
+  const {
+    className,
+    cancelText,
+    okText,
+    title,
+    valueMember,
+    maskClosable,
+    mountContainer,
+    forceRender,
+    destroy,
+    onOk,
+    onCancel,
+    onChange,
+    visible,
+    ...rest
+  } = props;
+  const { prefixCls, locale } = React.useContext(ConfigContext);
+  const bem = createBEM('picker', { prefixCls });
+  const [state, setState] = React.useState({
+    ...parseProps.getSource(props),
+    props,
+    stopScroll: false,
+    tempValue: null,
+    tempObjValue: null,
+  });
 
-  state: PickerState = { ...parseProps.getSource(this.props), stopScroll: false };
-
-  static getDerivedStateFromProps(props, state) {
-    if (
-      !isEqual(
-        removeFnFromProps(props, ['onOk', 'onCancel', 'onChange']),
-        removeFnFromProps(state.prevProps, ['onOk', 'onCancel', 'onChange']),
-      )
-    ) {
-      return {
-        prevProps: props,
-        ...parseProps.getSource(props),
-        tempValue: parseProps.getSource(props).value,
-        tempObjValue: parseProps.getSource(props).objValue,
-      };
-    }
-
-    return null;
+  if (!isEqual(removeFnFromProps(props, EVENTS), removeFnFromProps(state.props, EVENTS))) {
+    const next = parseProps.getSource(props);
+    setState({
+      ...state,
+      ...next,
+      tempValue: next.value,
+      props,
+      tempObjValue: next.objValue,
+    });
   }
 
-  onChange = (selected) => {
-    const { valueMember, onChange } = this.props;
-    const value = selected.map((item) => item[valueMember!]);
-    this.setState({ value, objValue: selected });
-
-    if (typeof onChange === 'function') {
-      onChange(selected);
-    }
+  const handleOk = () => {
+    setState({ ...state, stopScroll: true });
+    onOk?.(state.objValue);
+    setState({ ...state, stopScroll: false });
   };
 
-  onCancel = () => {
-    const { onCancel } = this.props;
-    const { tempValue = [], tempObjValue = [] } = this.state;
-    this.setState({
+  const handleCancel = () => {
+    const { tempValue = [], tempObjValue = [] } = state;
+    setState({
+      ...state,
       value: tempValue,
       objValue: tempObjValue,
     });
-    if (typeof onCancel === 'function') {
-      onCancel();
-    }
+    onCancel?.();
   };
 
-  onOk = () => {
-    const { onOk } = this.props;
-    this.setState(
-      {
-        stopScroll: true,
-      },
-      () => {
-        this.setState(
-          {
-            stopScroll: false,
-          },
-          () => {
-            if (typeof onOk === 'function') {
-              onOk(this.state.objValue);
-            }
-          },
-        );
-      },
-    );
+  const handleChange = (selected) => {
+    const value = selected?.map((item) => item[valueMember!]);
+    setState({ ...state, value, objValue: selected });
+    onChange?.(selected);
   };
 
-  render() {
-    const {
-      prefixCls,
-      className,
-      cancelText,
-      okText,
-      title,
-      locale,
-      maskClosable,
-      mountContainer,
-      destroy,
-      onOk,
-      onCancel,
-      visible,
-      ...others
-    } = this.props;
-    const { value, stopScroll = false } = this.state;
-    const noop = () => {};
-    return (
-      <Popup
-        className={className}
-        visible={visible}
-        onMaskClick={maskClosable ? this.onCancel : noop}
-        mountContainer={mountContainer}
-        destroy={destroy}
+  return (
+    <Popup
+      ref={ref}
+      className={className}
+      visible={visible}
+      onMaskClick={maskClosable ? handleCancel : noop}
+      mountContainer={mountContainer}
+      forceRender={forceRender}
+      destroy={destroy}
+    >
+      <div
+        className={bem('')}
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
       >
-        <div
-          className={prefixCls}
-          onClick={(e) => {
-            e.stopPropagation();
-          }}
-        >
-          <div className={`${prefixCls}__header`}>
-            <div className={`${prefixCls}__cancel`} onClick={this.onCancel}>
-              {cancelText || locale!.cancelText}
-            </div>
-            <div className={`${prefixCls}__title`}>{title || locale!.title}</div>
-            <div className={`${prefixCls}__submit`} onClick={this.onOk}>
-              {okText || locale!.okText}
-            </div>
+        <div className={bem('header')}>
+          <div className={bem('cancel')} onClick={handleCancel}>
+            {cancelText || locale?.Picker.cancelText}
           </div>
-          <PickerView {...others} value={value} onChange={this.onChange} stopScroll={stopScroll} />
+          <div className={bem('title')}>{title || locale?.Picker.title}</div>
+          <div className={bem('submit')} onClick={handleOk}>
+            {okText || locale?.Picker.okText}
+          </div>
         </div>
-      </Popup>
-    );
-  }
-}
+        <PickerView
+          {...rest}
+          value={state.value}
+          onChange={handleChange}
+          stopScroll={state.stopScroll}
+        />
+      </div>
+    </Popup>
+  );
+});
+
+Picker.defaultProps = {
+  dataSource: [],
+  valueMember: 'value',
+  cols: Infinity,
+  maskClosable: true,
+  itemRender: (data) => data.label,
+  destroy: false,
+};
+
+export default Picker;

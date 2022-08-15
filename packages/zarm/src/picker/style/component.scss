@@ -1,14 +1,56 @@
 @include b(picker) {
+
+  @include define(header-height, 45px);
+  @include define(header-font-size, 16px);
+  @include define(header-background-color, #f7f7f7);
+  @include define(header-title-text-color, var(--color-text));
+  @include define(header-submit-text-color, var(--theme-primary));
+  @include define(header-cancel-text-color, var(--color-text-caption));
+
+  @include define(content-background-color, #fff);
+  @include define(content-padding, 16px);
+  @include define(content-mask-start-background-color, rgba(255, 255, 255, 0.4));
+  @include define(content-mask-end-background-color, rgba(255, 255, 255, 0.8));
+  @include define(wheel-item-rows, 5);
+  @include define(wheel-item-height, 34px);
+  @include define(wheel-item-font-size, 20px);
+  @include define(wheel-item-text-color, var(--color-text));
+  @include define(wheel-item-disabled-text-color, var(--color-text-disabled));
+  @include define(wheel-item-selected-background-color, rgba(116, 116, 128, 0.08));
+  @include define(wheel-item-selected-border-radius, 7px);
+
+  @include define(-wheel-item-rows, var(--wheel-item-rows));
+  @include define(-wheel-item-height, var(--wheel-item-height));
+  @include define(-wheel-item-font-size, var(--wheel-item-font-size));
+  @include define(-wheel-item-text-color, var(--wheel-item-text-color));
+  @include define(-wheel-item-disabled-text-color, var(--wheel-item-disabled-text-color));
+  @include define(-wheel-item-selected-background-color, var(--wheel-item-selected-background-color));
+  @include define(-wheel-item-selected-border-radius, var(--wheel-item-selected-border-radius));
+
+  @include b(picker-view) {
+    @include define(background-color, var(--content-background-color));
+    @include define(padding, var(--content-padding));
+    @include define(mask-start-background-color, var(--content-mask-start-background-color));
+    @include define(mask-end-background-color, var(--content-mask-end-background-color));
+    @include define(wheel-item-rows, var(---wheel-item-rows));
+    @include define(wheel-item-height, var(---wheel-item-height));
+    @include define(wheel-item-font-size, var(---wheel-item-font-size));
+    @include define(wheel-item-text-color, var(---wheel-item-text-color));
+    @include define(wheel-item-disabled-text-color, var(---wheel-item-disabled-text-color));
+    @include define(wheel-item-selected-background-color, var(---wheel-item-selected-background-color));
+    @include define(wheel-item-selected-border-radius, var(---wheel-item-selected-border-radius));
+  }
+
   @include e(header) {
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     width: 100%;
-    height: var(--za-picker-header-height);
-    line-height: var(--za-picker-header-height);
-    font-size: var(--za-picker-header-font-size);
-    background: var(--za-picker-header-background);
+    height: var(--header-height);
+    line-height: var(--header-height);
+    font-size: var(--header-font-size);
+    background: var(--header-background-color);
     @include onepx(top);
   }
 
@@ -20,15 +62,15 @@
 
   @include e(cancel) {
     text-align: left;
-    color: var(--color-text-caption);
+    color: var(--header-cancel-text-color);
   }
 
   @include e(submit) {
     text-align: right;
-    color: var(--theme-primary);
+    color: var(--header-submit-text-color);
   }
 
   @include e(title) {
-    color: var(--color-text);
+    color: var(--header-title-text-color);
   }
 }

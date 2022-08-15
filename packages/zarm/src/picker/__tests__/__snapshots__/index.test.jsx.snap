@@ -34,7 +34,7 @@ exports[`Picker Picker render visible 1`] = `
     prefixCls="za-picker"
     visible={true}
   >
-    <Picker
+    <ForwardRef
       cols={Infinity}
       dataSource={
         Array [
@@ -422,7 +422,7 @@ exports[`Picker Picker render visible 1`] = `
                           确定
                         </div>
                       </div>
-                      <PickerView
+                      <ForwardRef
                         cols={Infinity}
                         dataSource={
                           Array [
@@ -438,9 +438,16 @@ exports[`Picker Picker render visible 1`] = `
                         }
                         disabled={false}
                         itemRender={[Function]}
+                        locale={
+                          Object {
+                            "cancelText": "取消",
+                            "okText": "确定",
+                            "title": "请选择",
+                          }
+                        }
                         localeCode="zh-CN"
                         onChange={[Function]}
-                        prefixCls="za-picker-view"
+                        prefixCls="za-picker"
                         safeIphoneX={false}
                         stopScroll={false}
                         value={
@@ -506,7 +513,7 @@ exports[`Picker Picker render visible 1`] = `
                             className="za-picker-view__mask za-picker-view__mask--bottom"
                           />
                         </div>
-                      </PickerView>
+                      </ForwardRef>
                     </div>
                   </div>
                 </div>
@@ -515,7 +522,7 @@ exports[`Picker Picker render visible 1`] = `
           </Transition>
         </Trigger>
       </Popup>
-    </Picker>
+    </ForwardRef>
   </ConfigReceiver>
 </ForwardRef(forwardRef)>
 `;
@@ -594,7 +601,7 @@ exports[`Picker render custom label 1`] = `
     itemRender={[Function]}
     valueMember="code"
   >
-    <Picker
+    <ForwardRef
       cols={Infinity}
       dataSource={
         Array [
@@ -639,7 +646,6 @@ exports[`Picker render custom label 1`] = `
       }
       localeCode="zh-CN"
       maskClosable={true}
-      prefixCls="za-picker"
       safeIphoneX={false}
       valueMember="code"
     >
@@ -723,7 +729,7 @@ exports[`Picker render custom label 1`] = `
           </Transition>
         </Trigger>
       </Popup>
-    </Picker>
+    </ForwardRef>
   </ConfigReceiver>
 </ForwardRef(forwardRef)>
 `;

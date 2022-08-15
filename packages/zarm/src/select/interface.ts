@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { BasePickerProps } from '../picker/PropsType';
+import type { BasePickerProps } from '../picker/interface';
 import type { WheelItem } from '../wheel/interface';
 import type { Locale } from '../config-provider/PropsType';
 

@@ -9,7 +9,7 @@ export interface BasePickerViewProps
   value?: WheelValue | Array<WheelValue>;
   defaultValue?: WheelValue | Array<WheelValue>;
   wheelDefaultValue?: WheelValue | Array<WheelValue>;
-  dataSource: PickerDataSource;
+  dataSource?: PickerDataSource;
   onChange?: (value?: Array<WheelItem>, i?: number) => void;
   cols?: number;
 }

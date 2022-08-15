@@ -1,5 +1,5 @@
 import { MountContainer } from '../utils/dom';
-import type { BasePickerViewProps } from '../picker-view/PropsType';
+import type { BasePickerViewProps } from '../picker-view/interface';
 import type { WheelItem } from '../wheel/interface';
 import type { Locale } from '../config-provider/PropsType';
 
@@ -9,6 +9,7 @@ export interface BasePickerProps extends Omit<BasePickerViewProps, 'onChange' | 
   okText?: string;
   cancelText?: string;
   maskClosable?: boolean;
+  forceRender?: boolean;
   destroy?: boolean;
   onChange?: (selected: Array<WheelItem>) => void;
   onOk?: (selected: Array<WheelItem>) => void;

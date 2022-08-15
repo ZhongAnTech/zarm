@@ -313,7 +313,17 @@ describe('index', () => {
           "$$typeof": Symbol(react.forward_ref),
           "render": [Function],
         },
-        "PickerView": [Function],
+        "PickerView": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "cols": Infinity,
+            "dataSource": Array [],
+            "disabled": false,
+            "itemRender": [Function],
+            "valueMember": "value",
+          },
+          "render": [Function],
+        },
         "PinchZoom": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {

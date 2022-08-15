@@ -10,9 +10,9 @@ export interface BaseWheelProps {
   value?: WheelValue;
   defaultValue?: WheelValue;
   valueMember?: string;
-  dataSource: Array<WheelItem>;
+  dataSource?: Array<WheelItem>;
   onChange?: (value: WheelValue) => void;
-  itemRender: (item: WheelItem) => ReactNode;
+  itemRender?: (item: WheelItem) => ReactNode;
   disabled?: boolean;
   stopScroll?: boolean;
 }
