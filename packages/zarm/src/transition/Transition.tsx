@@ -60,6 +60,7 @@ const Transition: React.FC<TransitionProps> = (props) => {
   const [state, setState] = React.useState(TransitionState.UNMOUNTED);
   const callbackRef = React.useRef(noop);
 
+  const unmounted = TransitionState.UNMOUNTED === state;
   const enter = TransitionState.ENTER === state;
   const entering = TransitionState.ENTERING === state;
   const leave = TransitionState.EXIT === state;
@@ -81,7 +82,7 @@ const Transition: React.FC<TransitionProps> = (props) => {
     WebkitAnimationDuration: timeout,
     transitionDuration: timeout,
     WebkitTransitionDuration: timeout,
-    display: exited && !destroy ? 'none' : undefined,
+    display: (unmounted || exited) && !destroy ? 'none' : undefined,
   };
 
   const setNodeRef = (node: HTMLElement | null) => {
