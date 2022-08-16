@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
-import { Dropdown } from 'zarm-web';
+import { Popper } from 'zarm';
 import { QRCodeSVG } from 'qrcode.react';
 import Container from '@/web/components/Container';
 import Meta from '@/web/components/Meta';
@@ -33,7 +33,7 @@ const Page = () => {
             <button type="button" onClick={() => history.push('/docs/quick-start')}>
               <FormattedMessage id="app.home.index.getting-started" />
             </button>
-            <Dropdown
+            <Popper
               className="qrcode"
               visible={dropdown}
               onVisibleChange={setDropdown}
@@ -48,7 +48,7 @@ const Page = () => {
               <button type="button" className="ghost">
                 <FormattedMessage id="app.home.index.scanning-code" />
               </button>
-            </Dropdown>
+            </Popper>
           </div>
         </div>
       </main>
