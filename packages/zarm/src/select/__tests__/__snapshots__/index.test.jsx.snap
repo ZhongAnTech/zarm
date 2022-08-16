@@ -987,6 +987,7 @@ exports[`Select Select disabled 1`] = `
                           />
                           <div
                             class="za-popup__wrapper"
+                            style=""
                           >
                             <div
                               class="za-popup za-popup--bottom za-move-up-enter za-move-up-enter-active"
@@ -1172,6 +1173,7 @@ exports[`Select Select disabled 1`] = `
                         />
                         <div
                           class="za-popup__wrapper"
+                          style=""
                         >
                           <div
                             class="za-popup za-popup--bottom za-move-up-enter za-move-up-enter-active"

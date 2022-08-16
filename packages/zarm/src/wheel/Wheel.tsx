@@ -77,6 +77,7 @@ const Wheel = (props: WheelProps) => {
   }, []);
 
   useEffect(() => {
+    let resize: ResizeObserver | null;
     const initIndex = getSelectedIndex(currentValue, dataSource);
     if (wheelWrapperRef.current && !scrollInstance.current) {
       scrollInstance.current = new BScroll(wheelWrapperRef.current, {
@@ -87,6 +88,13 @@ const Wheel = (props: WheelProps) => {
         },
         probeType: 3,
       });
+
+      if (scrollInstance.current.scroller?.content) {
+        resize = new ResizeObserver(() => {
+          scrollInstance.current?.refresh();
+        });
+        resize.observe(scrollInstance.current.scroller.content);
+      }
     }
 
     scrollInstance.current?.on('scrollEnd', () => {
@@ -94,6 +102,7 @@ const Wheel = (props: WheelProps) => {
     });
 
     return () => {
+      resize?.disconnect();
       scrollInstance.current?.destroy();
     };
   }, []);
