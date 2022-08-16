@@ -1,7 +1,8 @@
 import React, { PureComponent, cloneElement } from 'react';
 import { View, PanResponder, Animated, StyleSheet } from 'react-native';
-import { BaseSwipeActionProps } from './interface';
 import swipeActionStyle from './style/index.native';
+
+import type { BaseSwipeActionProps } from './interface';
 
 const styles = StyleSheet.create<any>(swipeActionStyle);
 

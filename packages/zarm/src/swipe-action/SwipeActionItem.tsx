@@ -15,8 +15,8 @@ const SwipeActionItem = React.forwardRef<HTMLDivElement, SwipeActionItemProps>((
     text,
     onClick,
     theme = 'primary',
-    shape = 'rect',
-    size = 'md',
+    // shape = 'rect',
+    // size = 'md',
     ...rest
   } = props;
   const [loading, setLoading] = useSafeState(false);
@@ -36,8 +36,8 @@ const SwipeActionItem = React.forwardRef<HTMLDivElement, SwipeActionItemProps>((
       {...rest}
       className={cls}
       ref={ref}
-      shape={shape}
-      size={size}
+      shape="rect"
+      size="md"
       theme={theme}
       loading={loading}
       onClick={async () => {

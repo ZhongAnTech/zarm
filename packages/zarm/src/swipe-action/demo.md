@@ -13,7 +13,7 @@ const RIGHT_BUTTONS = [
   {
     text: '右按钮2',
     theme: 'danger',
-    onClick: () => console.log('右按钮1'),
+    onClick: () => console.log('右按钮2'),
   },
 ];
 const LEFT_BUTTONS = [
@@ -24,58 +24,61 @@ const LEFT_BUTTONS = [
   {
     text: '左按钮2',
     theme: 'danger',
-    onClick: () => console.log('左按钮1'),
+    onClick: () => console.log('左按钮2'),
   },
 ];
 
 ReactDOM.render(
   <>
-    <SwipeAction
-      onOpen={() => console.log('open')}
-      onClose={() => console.log('close')}
-      rightActions={RIGHT_BUTTONS}
-    >
-      <List.Item title="左滑看看" />
-    </SwipeAction>
+    <List>
+      <SwipeAction
+        onOpen={() => console.log('open')}
+        onClose={() => console.log('close')}
+        rightActions={RIGHT_BUTTONS}
+      >
+        <List.Item title="左滑看看" />
+      </SwipeAction>
 
-    <SwipeAction
-      onOpen={() => console.log('open')}
-      onClose={() => console.log('close')}
-      leftActions={LEFT_BUTTONS}
-    >
-      <List.Item title="右滑看看" />
-    </SwipeAction>
+      <SwipeAction
+        onOpen={() => console.log('open')}
+        onClose={() => console.log('close')}
+        leftActions={LEFT_BUTTONS}
+      >
+        <List.Item title="右滑看看" />
+      </SwipeAction>
 
-    <SwipeAction
-      onOpen={() => console.log('open')}
-      onClose={() => console.log('close')}
-      leftActions={LEFT_BUTTONS}
-      rightActions={RIGHT_BUTTONS}
-    >
-      <List.Item title="左右都能滑动（自动关闭）" />
-    </SwipeAction>
+      <SwipeAction
+        onOpen={() => console.log('open')}
+        onClose={() => console.log('close')}
+        leftActions={LEFT_BUTTONS}
+        rightActions={[RIGHT_BUTTONS[0]]}
+      >
+        <List.Item title="左右都能滑动（自动关闭）" />
+      </SwipeAction>
 
-    <SwipeAction
-      onOpen={() => console.log('open')}
-      onClose={() => console.log('close')}
-      leftActions={[
-        {
-          text: '异步',
-          onClick: async (action, index) => {
-            const confirm = Modal.confirm({
-              title: '确定要关闭吗？',
-              content: '这里是确认框的内容部分，点击确定按钮，将触发 Promise 关闭确认框',
-              onOk: async () => {
-                await new Promise((resolve) => setTimeout(resolve, 3000));
-              },
-            });
-            await confirm;
+      <SwipeAction
+        onOpen={() => console.log('open')}
+        onClose={() => console.log('close')}
+        leftActions={[
+          {
+            text: '异步',
+            onClick: async (action, index) => {
+              const confirm = Modal.confirm({
+                title: '确定要关闭吗？',
+                content: '这里是确认框的内容部分，点击确定按钮，将触发 Promise 关闭确认框',
+                onOk: async () => {
+                  await new Promise((resolve) => setTimeout(resolve, 3000));
+                  console.log('异步按钮回调');
+                },
+              });
+              await confirm;
+            },
           },
-        },
-      ]}
-    >
-      <List.Item title="异步关闭" />
-    </SwipeAction>
+        ]}
+      >
+        <List.Item title="异步关闭" />
+      </SwipeAction>
+    </List>
   </>,
   mountNode,
 );
@@ -96,14 +99,18 @@ ReactDOM.render(
 | onOpen            | () => void | -      | 滑开时触发的回调函数     |
 | onClose           | () => void | -      | 关闭时触发的回调函数     |
 
-### ActionItemProps
+### Action 类型定义
 
-| 属性      | 类型       | 默认值    | 说明                                                    |
-| :-------- | :--------- | :-------- | :------------------------------------------------------ |
-| text      | ReactNode  | -         | 按钮文字                                                |
-| shape     | string     | 'rect'    | 按钮形状，可选值 `radius`、 `rect`、 `round`、 `circle` |
-| size      | string     | 'md'      | 按钮形状，可选值 `lg`、 `md`、 `sm`、 `xs`              |
-| theme     | string     | 'default' | 按钮主题，可选值 `default`、`primary`、`danger`         |
-| disabled  | boolean    | false     | 按钮是否禁用                                            |
-| className | string     | -         | 追加类名                                                |
-| onClick   | () => void | -         | 按钮点击后触发的回调函数                                |
+| 属性      | 类型       | 默认值    | 说明                                            |
+| :-------- | :--------- | :-------- | :---------------------------------------------- |
+| text      | ReactNode  | -         | 按钮文字                                        |
+| theme     | string     | 'default' | 按钮主题，可选值 `default`、`primary`、`danger` |
+| disabled  | boolean    | false     | 按钮是否禁用                                    |
+| className | string     | -         | 追加类名                                        |
+| onClick   | () => void | -         | 按钮点击后触发的回调函数                        |
+
+## CSS 变量
+
+| 属性         | 默认值 | 说明   |
+| :----------- | :----- | :----- |
+| --background | '#fff' | 背景色 |

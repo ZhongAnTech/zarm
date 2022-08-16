@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback, CSSProperties, useContext } from 'react';
+import React, { useEffect, useRef, useCallback, useContext } from 'react';
 import { useDrag } from '@use-gesture/react';
 import { createBEM } from '@zarm-design/bem';
 
@@ -7,15 +7,18 @@ import type { BaseSwipeActionProps, BaseSwipeActionItemProps } from './interface
 import SwipeActionItem from './SwipeActionItem';
 import Events from '../utils/events';
 import type { HTMLProps } from '../utils/utilityTypes';
+import { useSafeState } from '../utils/hooks';
 
-export type SwipeActionItemProps = BaseSwipeActionItemProps & HTMLProps;
+export interface SwipeActionCssVars {
+  '--background'?: React.CSSProperties['background'];
+}
+
+export type SwipeActionItemProps = HTMLProps & BaseSwipeActionItemProps;
 
 export type SwipeActionProps = BaseSwipeActionProps &
   HTMLProps & {
-    style?: CSSProperties;
-    leftActions?: BaseSwipeActionItemProps[];
-    rightActions?: BaseSwipeActionItemProps[];
-    onAction?: (action: BaseSwipeActionItemProps, index: number) => void;
+    leftActions?: SwipeActionItemProps[];
+    rightActions?: SwipeActionItemProps[];
   };
 
 const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, ref) => {
@@ -30,6 +33,8 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
     offset,
     autoClose,
     disabled,
+    onClose,
+    onOpen,
   } = props;
 
   const isOpen = useRef(false);
@@ -39,9 +44,8 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
   const rightRef = useRef<HTMLDivElement>();
   const swipeActionWrap = useRef<HTMLDivElement | null>((ref as any) || null);
   const { prefixCls } = useContext(ConfigContext);
-  const [offsetLeft, setOffsetLeft] = useState<number>(0);
-  const [animationDuration, setAnimationDuration] = useState(initialAnimationDuration);
-
+  const [offsetLeft, setOffsetLeft] = useSafeState<number>(0);
+  const [animationDuration, setAnimationDuration] = useSafeState(initialAnimationDuration);
   const bem = createBEM('swipe-action', { prefixCls });
 
   const doTransition = useCallback(
@@ -53,7 +57,6 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
   );
 
   const open = (offsetX) => {
-    const { onOpen } = props;
     isOpen.current = true;
     doTransition({ offsetX, duration: initialAnimationDuration });
     if (typeof onOpen === 'function') {
@@ -62,29 +65,17 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
   };
 
   const close = () => {
-    const { onClose } = props;
     if (pending.current) return;
     doTransition({ offsetX: 0, duration: initialAnimationDuration });
-    setTimeout(() => {
-      isOpen.current = false;
-      touchEnd.current = true;
-      if (typeof onClose === 'function') {
-        onClose();
-      }
-    }, initialAnimationDuration);
+    isOpen.current = false;
+    touchEnd.current = true;
   };
 
   const onCloseSwipe = (e) => {
-    // 判断type 支持异步关闭功能
-    const type = e.target.parentNode?.type || null;
-    if (type === 'button') {
-      return;
-    }
-
     if (!swipeActionWrap.current) {
       return;
     }
-    if (isOpen.current) {
+    if (isOpen.current && !pending.current) {
       const pNode = ((node) => {
         while (node.parentNode && node.parentNode !== document.body) {
           if (node === swipeActionWrap.current) {
@@ -93,6 +84,7 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
           node = node.parentNode;
         }
       })(e.target);
+      // const type = e.target?.type || e.target.parentNode?.type || null;
 
       if (!pNode) {
         e.preventDefault();
@@ -112,6 +104,7 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
   }, []);
 
   const onDragStart = () => {
+    if (disabled) return;
     if (isOpen.current) {
       touchEnd.current = false;
       close();
@@ -125,12 +118,12 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
       return false;
     }
     // 拖动距离达到上限
-    const btnsLeftWidth = leftRef.current && leftRef.current.offsetWidth;
-    const btnsRightWidth = rightRef.current && rightRef.current.offsetWidth;
+    const btnsLeftWidth = leftRef?.current?.offsetWidth || 0;
+    const btnsRightWidth = rightRef?.current?.offsetWidth || 0;
+
     if (offsetX! > 0 && (!btnsLeftWidth || offsetLeft >= btnsLeftWidth + offset!)) {
       return false;
     }
-
     if (offsetX! < 0 && (!btnsRightWidth || offsetLeft <= -btnsRightWidth - offset!)) {
       return false;
     }
@@ -141,7 +134,6 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
     if (distanceX < 5 || (distanceX >= 5 && distanceY >= 0.3 * distanceX)) {
       return false;
     }
-
     if (!Events.supportsPassiveEvents) {
       event.preventDefault();
     }
@@ -150,20 +142,30 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
   };
 
   const onDragEnd = (offsetX, elapsedTime) => {
+    if (disabled) return;
     const timeSpan = Math.floor(elapsedTime);
-    const btnsLeftWidth = (leftRef.current && leftRef.current.offsetWidth) || 0;
-    const btnsRightWidth = (rightRef.current && rightRef.current.offsetWidth) || 0;
+    const btnsLeftWidth = leftRef?.current?.offsetWidth || 0;
+    const btnsRightWidth = rightRef?.current?.offsetWidth || 0;
+
+    if (offsetX! > 0 && !btnsLeftWidth) {
+      return false;
+    }
+
+    if (offsetX! < 0 && !btnsRightWidth) {
+      return false;
+    }
+
     let distanceX = 0;
     let _isOpen = false;
     if (
-      offsetX! / btnsLeftWidth > moveDistanceRatio! ||
-      (offsetX! > 0 && timeSpan <= moveTimeSpan!)
+      btnsLeftWidth > 0 &&
+      (offsetX / btnsLeftWidth > moveDistanceRatio! || (offsetX > 0 && timeSpan <= moveTimeSpan!))
     ) {
-      distanceX = btnsLeftWidth || 0;
+      distanceX = btnsLeftWidth;
       _isOpen = true;
     } else if (
-      offsetX! / btnsRightWidth < -moveDistanceRatio! ||
-      (offsetX! < 0 && timeSpan <= moveTimeSpan!)
+      (btnsRightWidth > 0 && offsetX / btnsRightWidth < -moveDistanceRatio!) ||
+      (offsetX < 0 && timeSpan <= moveTimeSpan!)
     ) {
       distanceX = -btnsRightWidth;
       _isOpen = true;
@@ -186,6 +188,7 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
     }
 
     const cls = bem('actions', [{ [`${direction}`]: true }]);
+
     return (
       <div className={cls} ref={refs}>
         {actions.map((action, index) => {
@@ -193,7 +196,7 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
             <SwipeActionItem
               {...action}
               key={+index}
-              onClick={async (e) => {
+              onClick={async () => {
                 pending.current = true;
                 await action.onClick?.();
                 pending.current = false;
@@ -243,10 +246,15 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
   return (
     <>
       {leftActions || rightActions ? (
-        <div className={cls}>
+        <div className={cls} ref={swipeActionWrap}>
           {renderButtons(leftActions, 'left', leftRef)}
           {renderButtons(rightActions, 'right', rightRef)}
-          <div className={bem('content')} ref={swipeActionWrap} style={style} {...bind()}>
+          <div
+            className={bem('content')}
+            style={style}
+            onTransitionEnd={() => !isOpen.current && onClose?.()}
+            {...bind()}
+          >
             {children}
           </div>
         </div>
