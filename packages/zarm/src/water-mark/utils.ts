@@ -1,6 +1,6 @@
 import * as React from 'react';
+import isString from 'lodash/isString';
 import type { BaseWaterMarkProps, WaterMarkDrawResult } from './interface';
-import { isString } from '../utils/validate';
 
 const resolveImage = (url: string) => {
   return new Promise<HTMLImageElement>((resolve, reject) => {

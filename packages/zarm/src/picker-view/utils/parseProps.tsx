@@ -1,4 +1,4 @@
-import { isArray, isCascader } from '../../utils/validate';
+import { isCascader } from '../../utils/validate';
 
 export const isValueValid = (value) => {
   const valueArray = [].concat(value);
@@ -53,7 +53,7 @@ const cascaderState = (props) => {
         newValues[level] = item[valueMember!];
         newObjValues[level] = others;
 
-        if (isArray(children) && children.length > 0 && level + 1 < cols!) {
+        if (Array.isArray(children) && children.length > 0 && level + 1 < cols!) {
           parseLevel({
             level: level + 1,
             dataSource: children,
