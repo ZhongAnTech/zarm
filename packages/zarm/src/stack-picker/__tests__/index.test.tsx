@@ -106,6 +106,26 @@ describe('StackPicker', () => {
     expect(screen.queryByText('层叠选择器')).toBeFalsy();
   });
 
+  it('should not trigger onCancel if maskClosable is false', () => {
+    const onCancel = jest.fn();
+
+    const { container } = render(
+      <StackPicker
+        defaultValue={[]}
+        value={[]}
+        visible
+        maskClosable={false}
+        dataSource={District}
+        onCancel={onCancel}
+        mountContainer={false}
+      />,
+    );
+
+    const mask = container.querySelector('.za-mask');
+    fireEvent.click(mask!);
+    expect(onCancel).not.toBeCalled();
+  });
+
   it('handle props click', () => {
     const onCancel = jest.fn();
     const onConfirm = jest.fn();
@@ -177,25 +197,29 @@ describe('StackPicker error type', () => {
   it('handle props error type', () => {
     const onCancel = 1 as any;
     const onConfirm = 1 as any;
-    const onChangeValidate = 1 as any;
     const onChange = 1 as any;
 
-    const { getByText } = render(
+    const { container, getByText } = render(
       <StackPicker
         defaultValue={[]}
         value={[]}
         cancelText="取消"
         confirmText="确定"
         visible
+        maskClosable
         dataSource={District}
         onCancel={onCancel}
         onConfirm={onConfirm}
         onChange={onChange}
-        onChangeValidate={onChangeValidate}
+        mountContainer={false}
       />,
     );
 
     fireEvent.click(getByText('取消'));
+    expect(consoleSpy).toHaveBeenCalledWith('onCancel need a function');
+
+    const mask = container.querySelector('.za-mask');
+    fireEvent.click(mask!);
     expect(consoleSpy).toHaveBeenCalledWith('onCancel need a function');
 
     fireEvent.click(getByText('确定'));
