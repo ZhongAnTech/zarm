@@ -1,4 +1,5 @@
-import { isObject, isString } from '../../utils/validate';
+import isPlainObject from 'lodash/isPlainObject'
+import isString from 'lodash/isString'
 import type { Images, ImageObject } from '../interface';
 import LOAD_STATUS from './loadStatus';
 
@@ -6,7 +7,7 @@ function isImageString(image: ImageObject | string): image is string {
   return isString(image);
 }
 function isImageObject(image: ImageObject | string): image is ImageObject {
-  return isObject(image);
+  return isPlainObject(image);
 }
 
 const formatImages = (images: ReadonlyArray<ImageObject | string>): Images => {
