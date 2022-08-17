@@ -67,7 +67,6 @@
     "Android >= 4"
   ],
   "dependencies": {
-    "@babel/runtime": "^7.14.0",
     "@floating-ui/react-dom-interactions": "^0.9.1",
     "@use-gesture/react": "^10.1.1",
     "@zarm-design/bem": "^0.0.1",
@@ -85,6 +84,8 @@
     "react-transition-group": "^4.4.2"
   },
   "devDependencies": {
+    "@babel/runtime": "^7.14.0",
+    "@types/lodash": "^4.14.182",
     "@testing-library/react": "^12.0.0",
     "@testing-library/react-hooks": "^7.0.2",
     "@types/react": "^17.0.3",

@@ -109,15 +109,17 @@ const Select = React.forwardRef<unknown, SelectProps>((props, ref) => {
   const arrowRender = <div className={`${prefixCls}__arrow`} />;
 
   return (
-    <div className={cls} onClick={handleClick} ref={container}>
-      <div className={`${prefixCls}__input`}>
-        <div className={`${prefixCls}__value`}>
-          {(selectValue.length && displayRender!(selectValue || [])) ||
-            placeholder ||
-            globalLocal?.Select?.placeholder}
+    <>
+      <div className={cls} onClick={handleClick} ref={container}>
+        <div className={`${prefixCls}__input`}>
+          <div className={`${prefixCls}__value`}>
+            {(selectValue.length && displayRender!(selectValue || [])) ||
+              placeholder ||
+              globalLocal?.Select?.placeholder}
+          </div>
         </div>
+        {arrowRender}
       </div>
-      {arrowRender}
       <Picker
         {...others}
         className={className}
@@ -127,7 +129,7 @@ const Select = React.forwardRef<unknown, SelectProps>((props, ref) => {
         onChange={hanldeChange}
         onCancel={handleOnCancel}
       />
-    </div>
+    </>
   );
 });
 
