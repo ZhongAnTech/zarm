@@ -1,5 +1,5 @@
 import * as React from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import { Success as SuccessIcon } from '@zarm-design/icons';
 import type { BaseRadioProps, BaseRadioGroupProps } from './interface';
 import Button from '../button';
@@ -67,14 +67,18 @@ const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
     getChecked({ checked, defaultChecked }, false),
   );
 
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-radio`;
+  const { prefixCls } = React.useContext(ConfigContext);
 
-  const cls = classnames(prefixCls, className, {
-    [`${prefixCls}--checked`]: currentChecked,
-    [`${prefixCls}--disabled`]: disabled,
-    [`${prefixCls}--untext`]: !children,
-  });
+  const bem = createBEM('radio', { prefixCls });
+
+  const cls = bem([
+    {
+      checked: currentChecked,
+      disabled,
+      untext: !children,
+    },
+    className,
+  ]);
 
   const onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (disabled) {
@@ -93,7 +97,7 @@ const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
       id={id}
       type="radio"
       aria-checked={currentChecked}
-      className={`${prefixCls}__input`}
+      className={bem('input')}
       disabled={disabled}
       value={value}
       defaultChecked={'defaultChecked' in props ? defaultChecked : undefined}
@@ -104,12 +108,12 @@ const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
 
   const radioRender = (
     <span ref={radioRef} className={cls} {...(restProps as RadioNormalProps)}>
-      <span className={`${prefixCls}__widget`}>
-        <span className={`${prefixCls}__inner`}>
-          <SuccessIcon className={`${prefixCls}__marker`} />
+      <span className={bem('widget')}>
+        <span className={bem('inner')}>
+          <SuccessIcon className={bem('marker')} />
         </span>
       </span>
-      {children && <span className={`${prefixCls}__text`}>{children}</span>}
+      {children && <span className={bem('text')}>{children}</span>}
       {inputRender}
     </span>
   );
@@ -121,9 +125,9 @@ const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
   if (type === 'list') {
     const marker = (
       <>
-        <span className={`${prefixCls}__widget`}>
-          <span className={`${prefixCls}__inner`}>
-            <SuccessIcon className={`${prefixCls}__marker`} />
+        <span className={bem('widget')}>
+          <span className={bem('inner')}>
+            <SuccessIcon className={bem('marker')} />
           </span>
         </span>
         {inputRender}
@@ -135,7 +139,7 @@ const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
       className: cls,
       title: (
         <>
-          {children && <span className={`${prefixCls}__text`}>{children}</span>}
+          {children && <span className={bem('text')}>{children}</span>}
           {inputRender}
         </>
       ),

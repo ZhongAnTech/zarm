@@ -1,5 +1,5 @@
 import React, { HTMLAttributes, useCallback, useEffect, useState } from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import Picker from '../picker';
 import parseProps from '../picker-view/utils/parseProps';
 import type { BaseSelectProps } from './interface';
@@ -31,8 +31,8 @@ const Select = React.forwardRef<unknown, SelectProps>((props, ref) => {
 
   const container = (ref as any) || React.createRef<HTMLDivElement>();
 
-  const { prefixCls: globalPrefixCls, locale: globalLocal } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-select`;
+  const { prefixCls, locale: globalLocal } = React.useContext(ConfigContext);
+  const bem = createBEM('select', { prefixCls });
 
   const [state, setState] = useState<SelectState>({
     visible: false,
@@ -101,18 +101,20 @@ const Select = React.forwardRef<unknown, SelectProps>((props, ref) => {
   }, [onCancel, state]);
   const { visible, selectValue = [] } = state;
 
-  const cls = classnames(prefixCls, {
-    [`${prefixCls}--placeholder`]: !selectValue.length,
-    [`${prefixCls}--disabled`]: disabled,
-  });
+  const cls = bem([
+    {
+      placeholder: !selectValue.length,
+      disabled,
+    },
+  ]);
 
-  const arrowRender = <div className={`${prefixCls}__arrow`} />;
+  const arrowRender = <div className={bem('arrow')} />;
 
   return (
     <>
       <div className={cls} onClick={handleClick} ref={container}>
-        <div className={`${prefixCls}__input`}>
-          <div className={`${prefixCls}__value`}>
+        <div className={bem('input')}>
+          <div className={bem('value')}>
             {(selectValue.length && displayRender!(selectValue || [])) ||
               placeholder ||
               globalLocal?.Select?.placeholder}

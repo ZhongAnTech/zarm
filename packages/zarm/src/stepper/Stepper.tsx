@@ -1,5 +1,5 @@
 import React from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import { Minus as MinusIcon, Plus as PlusIcon } from '@zarm-design/icons';
 import type { BaseStepperProps } from './interface';
 import Button from '../button';
@@ -86,8 +86,8 @@ const Stepper = React.forwardRef<unknown, StepperProps>((props, ref) => {
     getValue({ value, defaultValue, min, max, step }, 0),
   );
 
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-stepper`;
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('stepper', { prefixCls });
 
   const onInputChangeCallback = (newValue: string | number) => {
     setCurrentValue(newValue);
@@ -151,15 +151,20 @@ const Stepper = React.forwardRef<unknown, StepperProps>((props, ref) => {
     setLastValue(newValue);
   }, [value, defaultValue, min, max, step]);
 
-  const cls = classnames(prefixCls, className, {
-    [`${prefixCls}--${shape}`]: !!shape,
-    [`${prefixCls}--${size}`]: !!size,
-    [`${prefixCls}--disabled`]: disabled,
-  });
+  const cls = bem([
+    {
+      [`${shape}`]: !!shape,
+      [`${size}`]: !!size,
+      disabled,
+    },
+    className,
+  ]);
 
-  const inputCls = classnames(`${prefixCls}__input `, {
-    [`${prefixCls}__input--disabled`]: disableInput,
-  });
+  const inputCls = bem('input', [
+    {
+      disabled: disableInput,
+    },
+  ]);
 
   const buttonSize = size === 'lg' ? 'sm' : 'xs';
 
@@ -176,7 +181,7 @@ const Stepper = React.forwardRef<unknown, StepperProps>((props, ref) => {
   return (
     <span className={cls} ref={stepperRef}>
       <Button
-        className={`${prefixCls}__sub`}
+        className={bem('sub')}
         size={buttonSize}
         disabled={isSubDisabled()}
         shape={shape}
@@ -196,7 +201,7 @@ const Stepper = React.forwardRef<unknown, StepperProps>((props, ref) => {
         />
       )}
       <Button
-        className={`${prefixCls}__plus`}
+        className={bem('plus')}
         size={buttonSize}
         disabled={isPlusDisabled()}
         shape={shape}

@@ -1,6 +1,6 @@
 import React, { forwardRef, useState, useContext } from 'react';
 import type { HTMLAttributes, MouseEvent } from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import { ArrowRight as ArrowRightIcon, Close as CloseIcon } from '@zarm-design/icons';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseMessageProps } from './interface';
@@ -20,15 +20,19 @@ const Message = forwardRef<HTMLDivElement, MessageProps>((props, ref) => {
     ...restProps
   } = props;
   const [visible, setVisible] = useState(true);
-  const { prefixCls: globalPrefixCls } = useContext(ConfigContext);
+  const { prefixCls } = useContext(ConfigContext);
 
   if (!visible) return null;
 
-  const prefixCls = `${globalPrefixCls}-message`;
-  const cls = classnames(prefixCls, className, {
-    [`${prefixCls}--${theme}`]: theme,
-    [`${prefixCls}--link`]: hasArrow,
-  });
+  const bem = createBEM('message', { prefixCls });
+
+  const cls = bem([
+    {
+      [`${theme}`]: !!theme,
+      link: hasArrow,
+    },
+    className,
+  ]);
 
   function handleClick(e: MouseEvent<HTMLDivElement>) {
     if (!hasArrow) {
@@ -46,13 +50,13 @@ const Message = forwardRef<HTMLDivElement, MessageProps>((props, ref) => {
   return (
     <div ref={ref} className={cls} onClick={handleClick} {...restProps}>
       {icon && (
-        <div className={`${prefixCls}__header`}>
-          <div className={`${prefixCls}__icon`}>{icon}</div>
+        <div className={bem('header')}>
+          <div className={bem('icon')}>{icon}</div>
         </div>
       )}
-      <div className={`${prefixCls}__body`}>{children}</div>
+      <div className={bem('body')}>{children}</div>
       {(closable || hasArrow) && (
-        <div className={`${prefixCls}__footer`}>
+        <div className={bem('footer')}>
           {hasArrow && <ArrowRightIcon />}
           {closable && <CloseIcon onClick={handleClose} />}
         </div>

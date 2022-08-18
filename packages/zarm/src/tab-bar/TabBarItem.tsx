@@ -1,5 +1,6 @@
 import React from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
+
 import Badge from '../badge';
 import type { BaseTabBarItemProps } from './interface';
 import { ConfigContext } from '../n-config-provider';
@@ -11,8 +12,8 @@ export interface TabBarItemProps
 const TabBarItem = React.forwardRef<unknown, TabBarItemProps>((props, ref) => {
   const tabBaItemrRef = (ref as any) || React.createRef<HTMLDivElement>();
 
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-tab-bar`;
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('tab-bar', { prefixCls });
 
   const {
     title,
@@ -25,14 +26,16 @@ const TabBarItem = React.forwardRef<unknown, TabBarItemProps>((props, ref) => {
     ...restProps
   } = props;
 
-  const cls = classnames(`${prefixCls}__item`, {
-    [`${prefixCls}__item--active`]: selected,
-  });
+  const cls = bem('item', [
+    {
+      active: selected,
+    },
+  ]);
 
   const contentRender = (
     <>
-      <div className={`${prefixCls}__icon`}>{selected ? activeIcon : icon}</div>
-      <div className={`${prefixCls}__title`}>{title}</div>
+      <div className={bem('icon')}>{selected ? activeIcon : icon}</div>
+      <div className={bem('title')}>{title}</div>
     </>
   );
 

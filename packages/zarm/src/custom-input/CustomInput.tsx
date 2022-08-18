@@ -1,5 +1,5 @@
 import * as React from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import { CloseCircleFill } from '@zarm-design/icons';
 import KeyboardPicker from '../keyboard-picker';
 import useClickAway from '../useClickAway';
@@ -42,15 +42,19 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
     currentValue.length > 0 &&
     typeof onChange === 'function';
 
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-custom-input`;
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('custom-input', { prefixCls });
 
-  const cls = classnames(prefixCls, `${prefixCls}--${type}`, className, {
-    [`${prefixCls}--disabled`]: disabled,
-    [`${prefixCls}--focus`]: focused,
-    [`${prefixCls}--clearable`]: showClearIcon,
-    [`${prefixCls}--readonly`]: readOnly,
-  });
+  const cls = bem([
+    {
+      [`${type}`]: true,
+      disabled,
+      focus: focused,
+      clearable: showClearIcon,
+      readonly: readOnly,
+    },
+    className,
+  ]);
 
   const onInputFocus = () => {
     if (disabled) return;
@@ -120,22 +124,22 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
   };
 
   // 渲染标签栏
-  const labelRender = !!label && <div className={`${prefixCls}__label`}>{label}</div>;
+  const labelRender = !!label && <div className={bem('label')}>{label}</div>;
 
   const clearIconRender = showClearIcon && (
-    <CloseCircleFill className={`${prefixCls}__clear`} onClick={onInputClear} />
+    <CloseCircleFill className={bem('clear')} onClick={onInputClear} />
   );
 
-  const textRender = <div className={`${prefixCls}__content`}>{currentValue}</div>;
+  const textRender = <div className={bem('content')}>{currentValue}</div>;
 
   const inputRender = (
     <div {...restProps} ref={wrapperRef} className={cls} onClick={onInputFocus}>
       {labelRender}
-      <div className={`${prefixCls}__content`}>
+      <div className={bem('content')}>
         {(currentValue === undefined || currentValue === '') && !readOnly && (
-          <div className={`${prefixCls}__placeholder`}>{placeholder}</div>
+          <div className={bem('placeholder')}>{placeholder}</div>
         )}
-        <div ref={contentRef} className={`${prefixCls}__virtual-input`}>
+        <div ref={contentRef} className={bem('virtual-input')}>
           {currentValue}
         </div>
         <input ref={inputRef} type="hidden" value={currentValue} />

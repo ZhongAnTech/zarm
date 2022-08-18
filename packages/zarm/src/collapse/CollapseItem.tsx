@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import type { BaseCollapseItemProps } from './interface';
 import { ConfigContext } from '../n-config-provider';
 import { useSafeLayoutEffect } from '../utils/hooks';
@@ -12,8 +12,9 @@ const CollapseItem = React.forwardRef<unknown, CollapseItemProps>((props, ref) =
 
   const content = (ref as any) || React.createRef<HTMLElement>();
   const collapseItemRef = (ref as any) || React.createRef<HTMLElement>();
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-collapse-item`;
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('collapse-item', { prefixCls });
+
   const onClickItem = () => {
     if (disabled) return;
     typeof onChange === 'function' && onChange(isActive!);
@@ -32,10 +33,13 @@ const CollapseItem = React.forwardRef<unknown, CollapseItemProps>((props, ref) =
     content.current.style.height = isActive ? `${getContentHeight(content.current)}px` : '0px';
   }, [content, isActive]);
 
-  const cls = classnames(prefixCls, className, {
-    [`${prefixCls}--active`]: isActive,
-    [`${prefixCls}--disabled`]: disabled,
-  });
+  const cls = bem([
+    {
+      active: isActive,
+      disabled,
+    },
+    className,
+  ]);
 
   useSafeLayoutEffect(() => {
     setStyle();
@@ -43,12 +47,12 @@ const CollapseItem = React.forwardRef<unknown, CollapseItemProps>((props, ref) =
 
   return (
     <div className={cls} {...rest} ref={collapseItemRef}>
-      <div className={`${prefixCls}__header`} onClick={onClickItem}>
-        <div className={`${prefixCls}__title`}>{title}</div>
-        <div className={`${prefixCls}__arrow`} />
+      <div className={bem('header')} onClick={onClickItem}>
+        <div className={bem('title')}>{title}</div>
+        <div className={bem('arrow')} />
       </div>
-      <div className={`${prefixCls}__content`} ref={content}>
-        <div className={`${prefixCls}__content__inner`}>{children}</div>
+      <div className={bem('content')} ref={content}>
+        <div className={bem('content__inner')}>{children}</div>
       </div>
     </div>
   );
