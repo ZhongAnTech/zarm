@@ -36,6 +36,7 @@ export { default as Radio } from './radio';
 export { default as Scroller } from './scroller';
 export { default as SearchBar } from './search-bar';
 export { default as Select } from './select';
+export { default as Skeleton } from './skeleton';
 export { default as Slider } from './slider';
 export { default as ActivityIndicator } from './activity-indicator';
 export { default as Stepper } from './stepper';

@@ -8,6 +8,7 @@ const defaultConfig: ConfigProviderProps = {
   locale: ({} as unknown) as Locale,
   theme: 'light',
   primaryColor: '#00bc70',
+  globalPrefixCls: 'za',
 };
 
 export const LocaleContext: Context<Locale> = createContext(defaultConfig.locale);

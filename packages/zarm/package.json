@@ -56,7 +56,8 @@
     "coverage": "rimraf coverage && yarn test -c",
     "bundlesize": "bundlesize",
     "install-react-16": "yarn add react@16 react-dom@16 enzyme-adapter-react-16",
-    "release": "bash scripts/release.sh"
+    "release": "bash scripts/release.sh",
+    "zarm:add": "zarm add"
   },
   "browserslist": [
     "last 2 versions",

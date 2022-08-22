@@ -149,8 +149,14 @@ const Demo = () => {
 
       <div id="test-div" style={{ position: 'relative', zIndex: 1 }} ref={myRef} />
 
-      <Modal visible={state.normal.visible} title="标题" closable onCancel={() => toggle('normal')}>
-        模态框内容
+      <Modal
+        width={370}
+        visible={state.normal.visible}
+        title="标题"
+        closable
+        onCancel={() => toggle('normal')}
+      >
+        模态框内容1
       </Modal>
 
       <Modal
