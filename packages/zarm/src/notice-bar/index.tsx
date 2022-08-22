@@ -10,7 +10,7 @@ import useAnimationDuration from './hooks';
 export type NoticeBarProps = BaseNoticeBarProps & React.HTMLAttributes<HTMLDivElement>;
 
 const NoticeBar = forwardRef<HTMLDivElement, NoticeBarProps>((props, ref) => {
-  const { children, speed, delay, onClose, ...restProps } = props;
+  const { children, speed, delay, onClose, className, ...restProps } = props;
   const [visible, setVisible] = useState(true);
   const { prefixCls } = React.useContext(ConfigContext);
 
@@ -34,8 +34,7 @@ const NoticeBar = forwardRef<HTMLDivElement, NoticeBarProps>((props, ref) => {
     onClose?.(e);
   }
 
-  /* @ts-ignore */
-  const cls = bem();
+  const cls = bem([className]);
   return (
     <div className={cls} ref={noticeBarRef}>
       <Message {...restProps} onClose={handleClose}>
