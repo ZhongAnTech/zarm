@@ -6,14 +6,14 @@ export type PopperPlacement =
   | 'left'
   | 'right'
   | 'bottom'
-  | 'topLeft'
-  | 'topRight'
-  | 'bottomLeft'
-  | 'bottomRight'
-  | 'leftTop'
-  | 'leftBottom'
-  | 'rightTop'
-  | 'rightBottom';
+  | 'top-left'
+  | 'top-right'
+  | 'bottom-left'
+  | 'bottom-right'
+  | 'left-top'
+  | 'left-bottom'
+  | 'right-top'
+  | 'right-bottom';
 
 export type PopperTrigger = 'hover' | 'focus' | 'click' | 'manual' | 'contextMenu';
 

@@ -3,17 +3,17 @@
 @include b(tooltip) {
   padding: var(--za-tooltip-padding-vertical) var(--za-tooltip-padding-horizontal);
   background-color: var(--za-tooltip-background);
-  border-radius: r(4);
+  border-radius: 4px;
   font-size: var(--za-tooltip-font-size);
   color: var(--za-tooltip-color);
   z-index: var(--zindex-tooltip);
 
   &[data-popper-placement^=right] {
-    margin-left: r(10);
+    margin-left: 10px;
 
     @include b(popper) {
       @include e(arrow) {
-        left: r(-4);
+        left: -4px;
         border-width: var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size) 0;
         border-right-color: var(--za-tooltip-background);
       }
@@ -21,11 +21,11 @@
   }
 
   &[data-popper-placement^=top] {
-    margin-bottom: r(10);
+    margin-bottom: 10px;
 
     @include b(popper) {
       @include e(arrow) {
-        bottom: r(-4);
+        bottom: -4px;
         border-width: var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size) 0;
         border-top-color: var(--za-tooltip-background);
       }
@@ -33,11 +33,11 @@
   }
 
   &[data-popper-placement^=bottom] {
-    margin-top: r(10);
+    margin-top: 10px;
 
     @include b(popper) {
       @include e(arrow) {
-        top: r(-4);
+        top: -4px;
         border-width: 0 var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size);
         border-bottom-color: var(--za-tooltip-background);
       }
@@ -45,11 +45,11 @@
   }
 
   &[data-popper-placement^=left] {
-    margin-right: r(10);
+    margin-right: 10px;
 
     @include b(popper) {
       @include e(arrow) {
-        right: r(-4);
+        right: -4px;
         border-width: var(--za-tooltip-arrow-size) 0 var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size);
         border-left-color: var(--za-tooltip-background);
       }

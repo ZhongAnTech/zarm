@@ -4,25 +4,25 @@
   @include define(arrow-top, 5px);
   @include define(arrow-bottom, 5px);
 
-  @include m(topLeft, bottomLeft) {
+  @include m(top-left, bottom-left) {
     @include e(arrow) {
       left: var(--arrow-left);
     }
   }
 
-  @include m(topRight, bottomRight) {
+  @include m(top-right, bottom-right) {
     @include e(arrow) {
       right: var(--arrow-right);
     }
   }
 
-  @include m(leftTop, rightTop) {
+  @include m(left-top, right-top) {
     @include e(arrow) {
       top: var(--arrow-top);
     }
   }
 
-  @include m(leftBottom, rightBottom) {
+  @include m(left-bottom, right-bottom) {
     @include e(arrow) {
       bottom: var(--arrow-bottom);
     }

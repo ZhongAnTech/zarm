@@ -37,18 +37,18 @@ const Demo = () => {
         <Select
           value={direction}
           dataSource={[
-            { value: 'topLeft', label: 'topLeft' },
+            { value: 'top-left', label: 'top-left' },
             { value: 'top', label: 'top' },
-            { value: 'topRight', label: 'topRight' },
-            { value: 'rightTop', label: 'rightTop' },
+            { value: 'top-right', label: 'top-right' },
+            { value: 'right-top', label: 'right-top' },
             { value: 'right', label: 'right' },
-            { value: 'rightBottom', label: 'rightBottom' },
-            { value: 'bottomLeft', label: 'bottomLeft' },
+            { value: 'right-bottom', label: 'right-bottom' },
+            { value: 'bottom-left', label: 'bottom-left' },
             { value: 'bottom', label: 'bottom' },
-            { value: 'bottomRight', label: 'bottomRight' },
-            { value: 'leftTop', label: 'leftTop' },
+            { value: 'bottom-right', label: 'bottom-right' },
+            { value: 'left-top', label: 'left-top' },
             { value: 'left', label: 'left' },
-            { value: 'leftBottom', label: 'leftBottom' },
+            { value: 'left-bottom', label: 'left-bottom' },
           ]}
           onOk={(selected) => setDirection(selected[0].value)}
         />
@@ -133,8 +133,8 @@ const Demo = () => {
               arrowPointAtCenter={arrowPointAtCenter}
               className="custom-arrow-content"
               hasArrow
-              direction="topLeft"
-              content="topLeft text"
+              direction="top-left"
+              content="top-left text"
             >
               <Button size="xs">TL</Button>
             </Popper>
@@ -153,8 +153,8 @@ const Demo = () => {
               arrowPointAtCenter={arrowPointAtCenter}
               className="custom-arrow-content"
               hasArrow
-              direction="topRight"
-              content="topRight text"
+              direction="top-right"
+              content="top-right text"
             >
               <Button size="xs">TR</Button>
             </Popper>
@@ -165,8 +165,8 @@ const Demo = () => {
               arrowPointAtCenter={arrowPointAtCenter}
               className="custom-arrow-content"
               hasArrow
-              direction="leftTop"
-              content="leftTop text"
+              direction="left-top"
+              content="left-top text"
             >
               <Button size="xs">LT</Button>
             </Popper>
@@ -185,8 +185,8 @@ const Demo = () => {
               arrowPointAtCenter={arrowPointAtCenter}
               className="custom-arrow-content"
               hasArrow
-              direction="leftBottom"
-              content="leftBottom text"
+              direction="left-bottom"
+              content="left-bottom text"
             >
               <Button size="xs">LB</Button>
             </Popper>
@@ -197,8 +197,8 @@ const Demo = () => {
               arrowPointAtCenter={arrowPointAtCenter}
               className="custom-arrow-content"
               hasArrow
-              direction="rightTop"
-              content="rightTop text"
+              direction="right-top"
+              content="right-top text"
             >
               <Button size="xs">RT</Button>
             </Popper>
@@ -217,8 +217,8 @@ const Demo = () => {
               arrowPointAtCenter={arrowPointAtCenter}
               className="custom-arrow-content"
               hasArrow
-              direction="rightBottom"
-              content="rightBottom text"
+              direction="right-bottom"
+              content="right-bottom text"
             >
               <Button size="xs">RB</Button>
             </Popper>
@@ -229,8 +229,8 @@ const Demo = () => {
               arrowPointAtCenter={arrowPointAtCenter}
               className="custom-arrow-content"
               hasArrow
-              direction="bottomLeft"
-              content="bottomLeft text"
+              direction="bottom-left"
+              content="bottom-left text"
             >
               <Button size="xs">BL</Button>
             </Popper>
@@ -249,8 +249,8 @@ const Demo = () => {
               arrowPointAtCenter={arrowPointAtCenter}
               className="custom-arrow-content"
               hasArrow
-              direction="bottomRight"
-              content="bottomRight text"
+              direction="bottom-right"
+              content="bottom-right text"
             >
               <Button size="xs">BR</Button>
             </Popper>
@@ -282,11 +282,11 @@ ReactDOM.render(<Demo />, mountNode);
 | arrowPointAtCenter | boolean                              | false                                  | 箭头是否指向目标元素中心                                                                                                                                                           |
 | mouseEnterDelay    | number                               | 100                                    | 鼠标移入显示气泡层的延时时间（单位：毫秒）                                                                                                                                         |
 | mouseLeaveDelay    | number                               | 100                                    | 鼠标移出隐藏气泡层的延时时间（单位：毫秒）                                                                                                                                         |
-| direction          | string                               | 'top'                                  | 显示方向，可选值 `topLeft`、`top`、`topRight`、`rightTop`、`right`、`rightBottom`、`bottomLeft`、`bottom`、`bottomRight`、`leftTop`、`left`、`leftBottom`                          |
+| direction          | string                               | 'top'                                  | 显示方向，可选值 `top-left`、`top`、`top-right`、`right-top`、`right`、`right-bottom`、`bottom-left`、`bottom`、`bottom-right`、`left-top`、`left`、`left-bottom`                  |
 | trigger            | string                               | 移动端为'click' <br /> 桌面端为'hover' | 触发方式，可选值为：`click` 点击触发状态、`hover` 鼠标经过触发、`focus` 聚焦状态触发、`manual` 受控触发、`contextMenu` 右键触发                                                    |
 | visible            | boolean                              | false                                  | 是否显示，`trigger='manual'` 时有效                                                                                                                                                |
 | onVisibleChange    | (visible: boolean) => void           | () => {}                               | 显示/隐藏 气泡层触发的事件                                                                                                                                                         |
-|  |
+|                    |
 
 ## CSS 变量
 

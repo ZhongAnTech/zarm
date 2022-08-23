@@ -11,7 +11,11 @@ export type TooltipPlacement = PopperPlacement;
 
 export type TooltipTrigger = PopperTrigger;
 
-const Tooltip = forwardRef<any, TooltipProps>((props, ref) => {
+interface refHander {
+  update: () => void;
+}
+
+const Tooltip = forwardRef<refHander, TooltipProps>((props, ref) => {
   const { children, content, className, ...others } = props;
 
   const { prefixCls } = React.useContext(ConfigContext);
@@ -19,17 +23,15 @@ const Tooltip = forwardRef<any, TooltipProps>((props, ref) => {
   const bem = createBEM('tooltip', { prefixCls });
   const cls = bem([className]);
 
-  const poperRef = useRef(null);
+  const poperRef = useRef<React.ElementRef<typeof Popper>>(null);
 
   useImperativeHandle(ref, () => {
     return {
       update: () => {
-        /* @ts-ignore */
         return poperRef.current?.update();
       },
     };
   });
-
   return content ? (
     <Popper content={content!} className={cls} {...others} ref={poperRef}>
       {children}

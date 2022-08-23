@@ -41,20 +41,24 @@ export interface PopperCssVars {
 
 const directionMap = {
   top: 'top' as const,
-  topLeft: 'top-start' as const,
-  topRight: 'top-end' as const,
+  'top-left': 'top-start' as const,
+  'top-right': 'top-end' as const,
   right: 'right' as const,
-  rightTop: 'right-start' as const,
-  rightBottom: 'right-end' as const,
+  'right-top': 'right-start' as const,
+  'right-bottom': 'right-end' as const,
   bottom: 'bottom' as const,
-  bottomLeft: 'bottom-start' as const,
-  bottomRight: 'bottom-end' as const,
+  'bottom-left': 'bottom-start' as const,
+  'bottom-right': 'bottom-end' as const,
   left: 'left' as const,
-  leftTop: 'left-start' as const,
-  leftBottom: 'left-end' as const,
+  'left-top': 'left-start' as const,
+  'left-bottom': 'left-end' as const,
 };
 
-const Popper = forwardRef<any, PopperProps & PopperCssVars>((props, ref) => {
+interface refHander {
+  update: () => void;
+}
+
+const Popper = forwardRef<refHander, PopperProps & PopperCssVars>((props, ref) => {
   const { prefixCls, mountContainer: globalMountContainer } = React.useContext(ConfigContext);
   const {
     visible,
@@ -154,6 +158,7 @@ const Popper = forwardRef<any, PopperProps & PopperCssVars>((props, ref) => {
     setOpen(false);
   };
 
+  console.log(open);
   const toolTip = (
     <Transition
       nodeRef={floating}
@@ -212,7 +217,6 @@ const Popper = forwardRef<any, PopperProps & PopperCssVars>((props, ref) => {
   };
   return (
     <>
-      {/* {mounted && createPortal(toolTip, getMountContainer(mountContainer))} */}
       {toolTip}
       {cloneElement(child, getReferenceProps({ ref: newRef, ...childrenProps }))}
     </>
