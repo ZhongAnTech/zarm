@@ -58,7 +58,6 @@ const Transition: React.FC<TransitionProps> = (props) => {
   } = props;
   const nodeRef = React.useRef<HTMLElement | null>();
   const [state, setState] = React.useState(TransitionState.UNMOUNTED);
-
   const callbackRef = React.useRef(noop);
 
   const unmounted = TransitionState.UNMOUNTED === state;
