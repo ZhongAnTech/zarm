@@ -1,8 +1,8 @@
-import type { ContainerType } from '../utils/dom';
+import type { MountContainer } from '../utils/dom';
 import type { MaskProps } from '../mask';
+import type { BaseTransitionProps } from '../transition/interface';
 
-export interface BasePopupProps {
-  visible?: boolean;
+export interface BasePopupProps extends BaseTransitionProps {
   direction?: 'top' | 'right' | 'bottom' | 'left' | 'center';
   animationType?:
     | 'fade'
@@ -10,25 +10,24 @@ export interface BasePopupProps {
     | 'flip'
     | 'rotate'
     | 'zoom'
-    | 'moveUp'
-    | 'moveDown'
-    | 'moveLeft'
-    | 'moveRight'
-    | 'slideUp'
-    | 'slideDown'
-    | 'slideLeft'
-    | 'slideRight';
+    | 'move-up'
+    | 'move-down'
+    | 'move-left'
+    | 'move-right'
+    | 'slide-up'
+    | 'slide-down'
+    | 'slide-left'
+    | 'slide-right';
   animationDuration?: number;
   width?: string | number;
   mask?: boolean;
   maskColor?: MaskProps['color'];
   maskOpacity?: MaskProps['opacity'];
-  destroy?: boolean;
   afterOpen?: () => void;
   afterClose?: () => void;
   onMaskClick?: () => void;
   onEsc?: () => void;
-  mountContainer?: ContainerType | false;
+  mountContainer?: MountContainer;
   lockScroll?: boolean;
   children?: React.ReactNode;
 }

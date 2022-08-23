@@ -4,11 +4,14 @@ $prefixCls: 'za';
 $keyframesSeparator: '_';
 
 @mixin define($key, $value) {
-  --#{$key}: var(--#{$prefixCls + $blockSeparator + $currentBlock + $blockSeparator + $key}, #{$value});
+  $block: str-replace(get-block(&), '.', '');
+
+  --#{$key}: var(--#{$block + $blockSeparator + $key}, #{$value});
 }
 
 @mixin keyframes($name) {
-  $selector: selector-append($prefixCls + $blockSeparator + $currentBlock, $keyframesSeparator + $name);
+  $block: str-replace(get-block(&), '.', '');
+  $selector: $block + $keyframesSeparator + $name;
 
   @at-root {
     @keyframes #{$selector} {
@@ -18,9 +21,10 @@ $keyframesSeparator: '_';
 }
 
 @mixin animation($name, $value) {
-  $selector: selector-append($prefixCls + $blockSeparator + $currentBlock, $keyframesSeparator + $name);
+  $block: str-replace(get-block(&), '.', '');
+  $selector: $block + $keyframesSeparator + $name;
 
-  animation: $selector $value;
+  animation: #{$selector} $value;
 }
 
 @mixin defineColorHSL($color, $hue, $saturation, $lightness) {

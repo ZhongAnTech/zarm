@@ -24,7 +24,7 @@ describe('Scroller', () => {
   });
   it('should bind scroll event on window container', () => {
     const divContainer = document.createElement('div');
-    shallow(<Scroller container={divContainer} />);
+    shallow(<Scroller scrollContainer={divContainer} />);
     expect(scrollContainerSpy).toBeCalledTimes(2);
     expect(eventsOnSpy).toBeCalledWith(divContainer, 'scroll', expect.any(Function));
   });
@@ -62,7 +62,7 @@ describe('Scroller', () => {
     const wrapper = shallow(<Scroller />);
     const divContainer = document.createElement('div');
     expect(eventsOnSpy).toBeCalledWith(window, 'scroll', expect.any(Function));
-    wrapper.setProps({ container: divContainer });
+    wrapper.setProps({ scrollContainer: divContainer });
     expect(eventsOnSpy).toBeCalledWith(divContainer, 'scroll', expect.any(Function));
     expect(eventsOnSpy).toBeCalledTimes(2);
   });
@@ -77,7 +77,7 @@ describe('Scroller', () => {
       });
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       const ScrollerCJS = require('../index').default;
-      expect(ScrollerCJS.defaultProps.container).toEqual(window);
+      expect(ScrollerCJS.defaultProps.scrollContainer).toEqual(window);
     });
 
     it("should set undefined for container if it's not DOM environment", () => {
@@ -86,7 +86,7 @@ describe('Scroller', () => {
       });
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       const ScrollerCJS = require('../index').default;
-      expect(ScrollerCJS.defaultProps.container).toBeUndefined();
+      expect(ScrollerCJS.defaultProps.scrollContainer).toBeUndefined();
     });
   });
 });

@@ -1,15 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Mask color is transparent 1`] = `
-<div
-  class="za-mask"
-  style="background-color:transparent"
-/>
+<DocumentFragment>
+  <div
+    class="za-mask "
+    style="display: none; background-color: transparent;"
+  />
+</DocumentFragment>
 `;
 
 exports[`Mask renders correctly 1`] = `
-<div
-  class="za-mask"
-  style="background-color:rgba(0, 0, 0, 0.55)"
-/>
+<DocumentFragment>
+  <div
+    class="za-mask "
+    style="display: none; background-color: rgba(0, 0, 0, 0.55);"
+  />
+</DocumentFragment>
 `;

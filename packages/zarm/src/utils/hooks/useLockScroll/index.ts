@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { isFunction } from '../../validate';
+import isFunction from 'lodash/isFunction';
 
 let totalLockCount = 0;
 

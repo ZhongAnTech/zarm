@@ -9,9 +9,50 @@ exports[`KeyboardPicker snapshot renders correctly 1`] = `
   <Popup
     className="za-keyboard-picker"
     destroy={true}
+    direction="bottom"
     lockScroll={true}
     mask={false}
     visible={false}
-  />
+  >
+    <Trigger
+      disabled={false}
+      onClose={[Function]}
+      visible={false}
+    >
+      <Transition
+        destroy={true}
+        nodeRef={
+          Object {
+            "current": undefined,
+          }
+        }
+        onEnter={[Function]}
+        onLeaveEnd={[Function]}
+        tranisitionName="za-move-up"
+        visible={false}
+      >
+        <Transition
+          addEndListener={[Function]}
+          appear={false}
+          enter={true}
+          exit={true}
+          in={false}
+          mountOnEnter={true}
+          nodeRef={
+            Object {
+              "current": undefined,
+            }
+          }
+          onEnter={[Function]}
+          onEntered={[Function]}
+          onEntering={[Function]}
+          onExit={[Function]}
+          onExited={[Function]}
+          onExiting={[Function]}
+          unmountOnExit={true}
+        />
+      </Transition>
+    </Trigger>
+  </Popup>
 </KeyboardPicker>
 `;

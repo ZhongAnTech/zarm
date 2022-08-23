@@ -211,19 +211,20 @@ ReactDOM.render(
 
 ## CSS 变量
 
-| 属性                  | 默认值                                  | 说明             |
-| :-------------------- | :-------------------------------------- | :--------------- |
-| --height              | '44px'                                  | 高度             |
-| --background          | '#fff'                                  | 背景色           |
-| --border-radius       | 0                                       | 圆角大小         |
-| --border-color        | 'var(--za-theme-default)'               | 边框颜色         |
-| --border-width        | '1PX'                                   | 边框粗细         |
-| --padding-horizontal  | 'var(--za-padding-h-md)'                | 内部横向边距     |
-| --text-color          | 'var(--za-color-text)'                  | 字体颜色         |
-| --font-size           | 'var(--za-font-size-md)'                | 字体大小         |
-| --icon-size           | '22px'                                  | 图标大小         |
-| --active-background   | '#e6e6e6'                               | 激活状态背景色   |
-| --active-border-color | '#e6e6e6'                               | 激活状态边框色   |
-| --active-text-color   | 'var(--za-color-text)'                  | 激活状态字体颜色 |
-| --shadow              | '0 3px 3px 0 rgba(230, 230, 230, 0.3))' | 阴影样式         |
-| --loading-color       | 'var(--za-theme-primary)'               | 加载状态图标颜色 |
+| 属性                   | 默认值                                  | 说明                 |
+| :--------------------- | :-------------------------------------- | :------------------- |
+| --height               | 'var(--za-height-md)'                   | 高度                 |
+| --border-radius        | 0                                       | 圆角大小             |
+| --border-width         | '1PX'                                   | 边框粗细             |
+| --padding-horizontal   | 'var(--za-padding-h-md)'                | 内部横向边距         |
+| --font-size            | 'var(--za-font-size-md)'                | 字体大小             |
+| --icon-size            | '22px'                                  | 图标大小             |
+| --background           | '#fff'                                  | 背景色               |
+| --border-color         | 'var(--za-theme-default)'               | 边框颜色             |
+| --text-color           | 'var(--za-color-text)'                  | 字体颜色             |
+| --loading-color        | 'var(--za-theme-primary)'               | 加载状态图标颜色     |
+| --active-background    | '#e6e6e6'                               | 激活状态背景色       |
+| --active-border-color  | '#e6e6e6'                               | 激活状态边框色       |
+| --active-text-color    | 'var(--za-color-text)'                  | 激活状态字体颜色     |
+| --active-loading-color | 'var(--za-theme-primary-dark)'          | 激活加载状态图标颜色 |
+| --shadow               | '0 3px 3px 0 rgba(230, 230, 230, 0.3))' | 阴影样式             |

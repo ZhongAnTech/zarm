@@ -1,5 +1,5 @@
 import * as React from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import List from '../list';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseRadioGroupProps, RadioValue } from './interface';
@@ -61,8 +61,8 @@ const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
     getValue({ value, defaultValue, children }),
   );
 
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-radio-group`;
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('radio-group', { prefixCls });
 
   const onChildChange = (newValue: RadioValue) => {
     setCurrentValue(newValue);
@@ -88,14 +88,17 @@ const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
     });
   });
 
-  const cls = classnames(prefixCls, className, {
-    [`${prefixCls}--${type}`]: !!type,
-    [`${prefixCls}--block`]: block,
-    [`${prefixCls}--disabled`]: disabled,
-    [`${prefixCls}--button-${buttonSize}`]: !!buttonSize,
-    [`${prefixCls}--button-${buttonShape}`]: !!buttonShape,
-    [`${prefixCls}--button-compact`]: buttonCompact,
-  });
+  const cls = bem([
+    {
+      [`${type}`]: !!type,
+      block,
+      disabled,
+      [`button-${buttonSize}`]: !!buttonSize,
+      [`button-${buttonShape}`]: !!buttonShape,
+      'button-compact': buttonCompact,
+    },
+    className,
+  ]);
 
   React.useEffect(() => {
     setCurrentValue(getValue({ value, defaultValue, children }));
@@ -103,7 +106,7 @@ const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
 
   return (
     <div className={cls} {...restProps} ref={radioGroupRef}>
-      <div className={`${prefixCls}__inner`}>{type === 'list' ? <List>{items}</List> : items}</div>
+      <div className={bem('inner')}>{type === 'list' ? <List>{items}</List> : items}</div>
     </div>
   );
 });

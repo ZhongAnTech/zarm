@@ -97,7 +97,7 @@ const Demo = () => {
                   cssVars
                     ? null
                     : {
-                        '--za-button-primary-color': '#ff0000',
+                        '--za-theme-primary': '#ff0000',
                         '--za-rate-active-color': '#fa541b',
                       },
                 );

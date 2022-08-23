@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import { useScroll } from '@use-gesture/react';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseBackTopProps } from './interface';
@@ -25,8 +25,10 @@ export interface BackTopProps extends BaseBackTopProps, HTMLProps<BackTopCssVars
 const BackTop: React.FC<BackTopProps> = (props) => {
   const { className, style, visibleDistance, destroy, onClick, children } = props;
   const [visible, setVisible] = React.useState(false);
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-back-top`;
+  const { prefixCls } = React.useContext(ConfigContext);
+
+  const bem = createBEM('back-top', { prefixCls });
+  const cls = bem([className]);
 
   const scrollContainer = React.useMemo(() => {
     return canUseDOM ? getScrollContainer(props.scrollContainer) : undefined;
@@ -61,7 +63,7 @@ const BackTop: React.FC<BackTopProps> = (props) => {
 
     return ReactDOM.createPortal(
       <div
-        className={classnames(prefixCls, className)}
+        className={cls}
         style={{
           display: !visible ? 'none' : 'inline',
           position: mountContainer !== document.body ? 'absolute' : 'fixed',

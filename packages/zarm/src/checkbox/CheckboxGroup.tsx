@@ -1,5 +1,5 @@
 import * as React from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import List from '../list';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseCheckboxGroupProps, CheckboxValue } from './interface';
@@ -60,8 +60,9 @@ const CheckboxGroup = React.forwardRef<unknown, CheckboxGroupProps>((props, ref)
     getValue({ value, defaultValue, children }, []),
   );
 
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-checkbox-group`;
+  const { prefixCls } = React.useContext(ConfigContext);
+
+  const bem = createBEM('checkbox-group', { prefixCls });
 
   const onChildChange = (newValue: string | number) => {
     const values = currentValue!.slice();
@@ -94,14 +95,17 @@ const CheckboxGroup = React.forwardRef<unknown, CheckboxGroupProps>((props, ref)
     });
   });
 
-  const cls = classnames(prefixCls, className, {
-    [`${prefixCls}--${type}`]: !!type,
-    [`${prefixCls}--block`]: block,
-    [`${prefixCls}--disabled`]: disabled,
-    [`${prefixCls}--button-${buttonSize}`]: !!buttonSize,
-    [`${prefixCls}--button-${buttonShape}`]: !!buttonShape,
-    [`${prefixCls}--button-compact`]: buttonCompact,
-  });
+  const cls = bem([
+    {
+      [`${type}`]: !!type,
+      block,
+      disabled,
+      [`button-${buttonSize}`]: !!buttonSize,
+      [`button-${buttonShape}`]: !!buttonShape,
+      'button-compact': buttonCompact,
+    },
+    className,
+  ]);
 
   React.useEffect(() => {
     setCurrentValue(getValue({ value, defaultValue, children }, []));
@@ -109,7 +113,7 @@ const CheckboxGroup = React.forwardRef<unknown, CheckboxGroupProps>((props, ref)
 
   return (
     <div className={cls} {...restProps} ref={checkboxGroupRef}>
-      <div className={`${prefixCls}__inner`}>{type === 'list' ? <List>{items}</List> : items}</div>
+      <div className={bem('inner')}>{type === 'list' ? <List>{items}</List> : items}</div>
     </div>
   );
 });

@@ -34,6 +34,7 @@ const confirm = (props: Omit<ConfirmProps, 'visible'>): Promise<boolean> => {
               props.afterClose?.();
               unmount();
             }}
+            mountContainer={false}
           />
         </RuntimeConfigProvider>
       );

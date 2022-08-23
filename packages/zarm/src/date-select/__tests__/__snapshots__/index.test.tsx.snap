@@ -44,10 +44,84 @@ exports[`DateSelect DateSelect date 1`] = `
     >
       <Popup
         destroy={true}
+        direction="bottom"
         lockScroll={true}
+        mask={true}
         onMaskClick={[Function]}
         visible={false}
-      />
+      >
+        <Trigger
+          disabled={false}
+          onClose={[Function]}
+          visible={false}
+        >
+          <Mask
+            color="black"
+            destroy={true}
+            mountContainer={[Function]}
+            onClick={[Function]}
+            opacity="normal"
+            visible={false}
+          >
+            <Transition
+              destroy={true}
+              nodeRef={null}
+              tranisitionName="za-fade"
+              visible={false}
+            >
+              <Transition
+                addEndListener={[Function]}
+                appear={false}
+                enter={true}
+                exit={true}
+                in={false}
+                mountOnEnter={true}
+                nodeRef={
+                  Object {
+                    "current": undefined,
+                  }
+                }
+                onEnter={[Function]}
+                onEntered={[Function]}
+                onEntering={[Function]}
+                onExit={[Function]}
+                onExited={[Function]}
+                onExiting={[Function]}
+                unmountOnExit={true}
+              />
+            </Transition>
+          </Mask>
+          <Transition
+            destroy={true}
+            nodeRef={null}
+            onEnter={[Function]}
+            onLeaveEnd={[Function]}
+            tranisitionName="za-move-up"
+            visible={false}
+          >
+            <Transition
+              addEndListener={[Function]}
+              appear={false}
+              enter={true}
+              exit={true}
+              in={false}
+              mountOnEnter={true}
+              nodeRef={
+                Object {
+                  "current": undefined,
+                }
+              }
+              onEnter={[Function]}
+              onEntered={[Function]}
+              onEntering={[Function]}
+              onExit={[Function]}
+              onExited={[Function]}
+              onExiting={[Function]}
+              unmountOnExit={true}
+            />
+          </Transition>
+        </Trigger>
+      </Popup>
     </DatePicker>
   </div>
 </DateSelect>
@@ -72,7 +146,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
   >
     <input
       type="hidden"
-      value="2022-08-10 19:09"
+      value="2022-08-23 14:34"
     />
     <div
       className="za-date-select__input"
@@ -80,7 +154,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
       <div
         className="za-date-select__value"
       >
-        2022-08-10 19:09
+        2022-08-23 14:34
       </div>
     </div>
     <div
@@ -101,10 +175,84 @@ exports[`DateSelect DateSelect datetime 1`] = `
     >
       <Popup
         destroy={true}
+        direction="bottom"
         lockScroll={true}
+        mask={true}
         onMaskClick={[Function]}
         visible={false}
-      />
+      >
+        <Trigger
+          disabled={false}
+          onClose={[Function]}
+          visible={false}
+        >
+          <Mask
+            color="black"
+            destroy={true}
+            mountContainer={[Function]}
+            onClick={[Function]}
+            opacity="normal"
+            visible={false}
+          >
+            <Transition
+              destroy={true}
+              nodeRef={null}
+              tranisitionName="za-fade"
+              visible={false}
+            >
+              <Transition
+                addEndListener={[Function]}
+                appear={false}
+                enter={true}
+                exit={true}
+                in={false}
+                mountOnEnter={true}
+                nodeRef={
+                  Object {
+                    "current": undefined,
+                  }
+                }
+                onEnter={[Function]}
+                onEntered={[Function]}
+                onEntering={[Function]}
+                onExit={[Function]}
+                onExited={[Function]}
+                onExiting={[Function]}
+                unmountOnExit={true}
+              />
+            </Transition>
+          </Mask>
+          <Transition
+            destroy={true}
+            nodeRef={null}
+            onEnter={[Function]}
+            onLeaveEnd={[Function]}
+            tranisitionName="za-move-up"
+            visible={false}
+          >
+            <Transition
+              addEndListener={[Function]}
+              appear={false}
+              enter={true}
+              exit={true}
+              in={false}
+              mountOnEnter={true}
+              nodeRef={
+                Object {
+                  "current": undefined,
+                }
+              }
+              onEnter={[Function]}
+              onEntered={[Function]}
+              onEntering={[Function]}
+              onExit={[Function]}
+              onExited={[Function]}
+              onExiting={[Function]}
+              unmountOnExit={true}
+            />
+          </Transition>
+        </Trigger>
+      </Popup>
     </DatePicker>
   </div>
 </DateSelect>
@@ -151,10 +299,84 @@ exports[`DateSelect DateSelect disabled 1`] = `
     >
       <Popup
         destroy={true}
+        direction="bottom"
         lockScroll={true}
+        mask={true}
         onMaskClick={[Function]}
         visible={false}
-      />
+      >
+        <Trigger
+          disabled={false}
+          onClose={[Function]}
+          visible={false}
+        >
+          <Mask
+            color="black"
+            destroy={true}
+            mountContainer={[Function]}
+            onClick={[Function]}
+            opacity="normal"
+            visible={false}
+          >
+            <Transition
+              destroy={true}
+              nodeRef={null}
+              tranisitionName="za-fade"
+              visible={false}
+            >
+              <Transition
+                addEndListener={[Function]}
+                appear={false}
+                enter={true}
+                exit={true}
+                in={false}
+                mountOnEnter={true}
+                nodeRef={
+                  Object {
+                    "current": undefined,
+                  }
+                }
+                onEnter={[Function]}
+                onEntered={[Function]}
+                onEntering={[Function]}
+                onExit={[Function]}
+                onExited={[Function]}
+                onExiting={[Function]}
+                unmountOnExit={true}
+              />
+            </Transition>
+          </Mask>
+          <Transition
+            destroy={true}
+            nodeRef={null}
+            onEnter={[Function]}
+            onLeaveEnd={[Function]}
+            tranisitionName="za-move-up"
+            visible={false}
+          >
+            <Transition
+              addEndListener={[Function]}
+              appear={false}
+              enter={true}
+              exit={true}
+              in={false}
+              mountOnEnter={true}
+              nodeRef={
+                Object {
+                  "current": undefined,
+                }
+              }
+              onEnter={[Function]}
+              onEntered={[Function]}
+              onEntering={[Function]}
+              onExit={[Function]}
+              onExited={[Function]}
+              onExiting={[Function]}
+              unmountOnExit={true}
+            />
+          </Transition>
+        </Trigger>
+      </Popup>
     </DatePicker>
   </div>
 </DateSelect>
@@ -177,7 +399,7 @@ exports[`DateSelect DateSelect time 1`] = `
   >
     <input
       type="hidden"
-      value="19:09"
+      value="14:34"
     />
     <div
       className="za-date-select__input"
@@ -185,7 +407,7 @@ exports[`DateSelect DateSelect time 1`] = `
       <div
         className="za-date-select__value"
       >
-        19:09
+        14:34
       </div>
     </div>
     <div
@@ -204,10 +426,84 @@ exports[`DateSelect DateSelect time 1`] = `
     >
       <Popup
         destroy={true}
+        direction="bottom"
         lockScroll={true}
+        mask={true}
         onMaskClick={[Function]}
         visible={false}
-      />
+      >
+        <Trigger
+          disabled={false}
+          onClose={[Function]}
+          visible={false}
+        >
+          <Mask
+            color="black"
+            destroy={true}
+            mountContainer={[Function]}
+            onClick={[Function]}
+            opacity="normal"
+            visible={false}
+          >
+            <Transition
+              destroy={true}
+              nodeRef={null}
+              tranisitionName="za-fade"
+              visible={false}
+            >
+              <Transition
+                addEndListener={[Function]}
+                appear={false}
+                enter={true}
+                exit={true}
+                in={false}
+                mountOnEnter={true}
+                nodeRef={
+                  Object {
+                    "current": undefined,
+                  }
+                }
+                onEnter={[Function]}
+                onEntered={[Function]}
+                onEntering={[Function]}
+                onExit={[Function]}
+                onExited={[Function]}
+                onExiting={[Function]}
+                unmountOnExit={true}
+              />
+            </Transition>
+          </Mask>
+          <Transition
+            destroy={true}
+            nodeRef={null}
+            onEnter={[Function]}
+            onLeaveEnd={[Function]}
+            tranisitionName="za-move-up"
+            visible={false}
+          >
+            <Transition
+              addEndListener={[Function]}
+              appear={false}
+              enter={true}
+              exit={true}
+              in={false}
+              mountOnEnter={true}
+              nodeRef={
+                Object {
+                  "current": undefined,
+                }
+              }
+              onEnter={[Function]}
+              onEntered={[Function]}
+              onEntering={[Function]}
+              onExit={[Function]}
+              onExited={[Function]}
+              onExiting={[Function]}
+              unmountOnExit={true}
+            />
+          </Transition>
+        </Trigger>
+      </Popup>
     </DatePicker>
   </div>
 </DateSelect>
@@ -228,7 +524,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
   >
     <input
       type="hidden"
-      value="2022-08-10"
+      value="2022-08-23"
     />
     <div
       className="za-date-select__input"
@@ -236,7 +532,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
       <div
         className="za-date-select__value"
       >
-        2022-08-10
+        2022-08-23
       </div>
     </div>
     <div
@@ -254,10 +550,84 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
     >
       <Popup
         destroy={true}
+        direction="bottom"
         lockScroll={true}
+        mask={true}
         onMaskClick={[Function]}
         visible={false}
-      />
+      >
+        <Trigger
+          disabled={false}
+          onClose={[Function]}
+          visible={false}
+        >
+          <Mask
+            color="black"
+            destroy={true}
+            mountContainer={[Function]}
+            onClick={[Function]}
+            opacity="normal"
+            visible={false}
+          >
+            <Transition
+              destroy={true}
+              nodeRef={null}
+              tranisitionName="za-fade"
+              visible={false}
+            >
+              <Transition
+                addEndListener={[Function]}
+                appear={false}
+                enter={true}
+                exit={true}
+                in={false}
+                mountOnEnter={true}
+                nodeRef={
+                  Object {
+                    "current": undefined,
+                  }
+                }
+                onEnter={[Function]}
+                onEntered={[Function]}
+                onEntering={[Function]}
+                onExit={[Function]}
+                onExited={[Function]}
+                onExiting={[Function]}
+                unmountOnExit={true}
+              />
+            </Transition>
+          </Mask>
+          <Transition
+            destroy={true}
+            nodeRef={null}
+            onEnter={[Function]}
+            onLeaveEnd={[Function]}
+            tranisitionName="za-move-up"
+            visible={false}
+          >
+            <Transition
+              addEndListener={[Function]}
+              appear={false}
+              enter={true}
+              exit={true}
+              in={false}
+              mountOnEnter={true}
+              nodeRef={
+                Object {
+                  "current": undefined,
+                }
+              }
+              onEnter={[Function]}
+              onEntered={[Function]}
+              onEntering={[Function]}
+              onExit={[Function]}
+              onExited={[Function]}
+              onExiting={[Function]}
+              unmountOnExit={true}
+            />
+          </Transition>
+        </Trigger>
+      </Popup>
     </DatePicker>
   </div>
 </DateSelect>
@@ -280,7 +650,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
   >
     <input
       type="hidden"
-      value="2022-08-10"
+      value="2022-08-23"
     />
     <div
       className="za-date-select__input"
@@ -288,7 +658,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
       <div
         className="za-date-select__value"
       >
-        2022-08-10
+        2022-08-23
       </div>
     </div>
     <div
@@ -307,10 +677,84 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
     >
       <Popup
         destroy={true}
+        direction="bottom"
         lockScroll={true}
+        mask={true}
         onMaskClick={[Function]}
         visible={false}
-      />
+      >
+        <Trigger
+          disabled={false}
+          onClose={[Function]}
+          visible={false}
+        >
+          <Mask
+            color="black"
+            destroy={true}
+            mountContainer={[Function]}
+            onClick={[Function]}
+            opacity="normal"
+            visible={false}
+          >
+            <Transition
+              destroy={true}
+              nodeRef={null}
+              tranisitionName="za-fade"
+              visible={false}
+            >
+              <Transition
+                addEndListener={[Function]}
+                appear={false}
+                enter={true}
+                exit={true}
+                in={false}
+                mountOnEnter={true}
+                nodeRef={
+                  Object {
+                    "current": undefined,
+                  }
+                }
+                onEnter={[Function]}
+                onEntered={[Function]}
+                onEntering={[Function]}
+                onExit={[Function]}
+                onExited={[Function]}
+                onExiting={[Function]}
+                unmountOnExit={true}
+              />
+            </Transition>
+          </Mask>
+          <Transition
+            destroy={true}
+            nodeRef={null}
+            onEnter={[Function]}
+            onLeaveEnd={[Function]}
+            tranisitionName="za-move-up"
+            visible={false}
+          >
+            <Transition
+              addEndListener={[Function]}
+              appear={false}
+              enter={true}
+              exit={true}
+              in={false}
+              mountOnEnter={true}
+              nodeRef={
+                Object {
+                  "current": undefined,
+                }
+              }
+              onEnter={[Function]}
+              onEntered={[Function]}
+              onEntering={[Function]}
+              onExit={[Function]}
+              onExited={[Function]}
+              onExiting={[Function]}
+              unmountOnExit={true}
+            />
+          </Transition>
+        </Trigger>
+      </Popup>
     </DatePicker>
   </div>
 </DateSelect>
@@ -360,10 +804,84 @@ exports[`DateSelect DateSelect year 1`] = `
     >
       <Popup
         destroy={true}
+        direction="bottom"
         lockScroll={true}
+        mask={true}
         onMaskClick={[Function]}
         visible={false}
-      />
+      >
+        <Trigger
+          disabled={false}
+          onClose={[Function]}
+          visible={false}
+        >
+          <Mask
+            color="black"
+            destroy={true}
+            mountContainer={[Function]}
+            onClick={[Function]}
+            opacity="normal"
+            visible={false}
+          >
+            <Transition
+              destroy={true}
+              nodeRef={null}
+              tranisitionName="za-fade"
+              visible={false}
+            >
+              <Transition
+                addEndListener={[Function]}
+                appear={false}
+                enter={true}
+                exit={true}
+                in={false}
+                mountOnEnter={true}
+                nodeRef={
+                  Object {
+                    "current": undefined,
+                  }
+                }
+                onEnter={[Function]}
+                onEntered={[Function]}
+                onEntering={[Function]}
+                onExit={[Function]}
+                onExited={[Function]}
+                onExiting={[Function]}
+                unmountOnExit={true}
+              />
+            </Transition>
+          </Mask>
+          <Transition
+            destroy={true}
+            nodeRef={null}
+            onEnter={[Function]}
+            onLeaveEnd={[Function]}
+            tranisitionName="za-move-up"
+            visible={false}
+          >
+            <Transition
+              addEndListener={[Function]}
+              appear={false}
+              enter={true}
+              exit={true}
+              in={false}
+              mountOnEnter={true}
+              nodeRef={
+                Object {
+                  "current": undefined,
+                }
+              }
+              onEnter={[Function]}
+              onEntered={[Function]}
+              onEntering={[Function]}
+              onExit={[Function]}
+              onExited={[Function]}
+              onExiting={[Function]}
+              unmountOnExit={true}
+            />
+          </Transition>
+        </Trigger>
+      </Popup>
     </DatePicker>
   </div>
 </DateSelect>

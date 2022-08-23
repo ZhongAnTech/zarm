@@ -1,5 +1,4 @@
-import { CSSProperties } from 'react';
-import { Locale } from '../config-provider/PropsType';
+import type { Locale } from '../n-config-provider/interface';
 
 export enum REFRESH_STATE {
   normal, // 普通
@@ -27,8 +26,7 @@ export interface PullAction {
   handler?: () => void;
 }
 
-export interface PropsType {
-  style?: CSSProperties;
+export interface BasePullProps {
   refresh?: PullAction;
   load?: PullAction;
   animationDuration?: number;

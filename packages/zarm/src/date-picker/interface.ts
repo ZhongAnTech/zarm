@@ -1,5 +1,5 @@
 import type { BaseDatePickerViewProps } from '../date-picker-view/interface';
-import type { ContainerType } from '../utils/dom';
+import type { MountContainer } from '../utils/dom';
 
 export interface BaseDatePickerProps
   extends Omit<BaseDatePickerViewProps, 'onChange' | 'stopScroll'> {
@@ -11,5 +11,5 @@ export interface BaseDatePickerProps
   onCancel?: () => void;
   onChange?: (value: Date) => void;
   maskClosable?: boolean;
-  mountContainer?: ContainerType;
+  mountContainer?: MountContainer;
 }

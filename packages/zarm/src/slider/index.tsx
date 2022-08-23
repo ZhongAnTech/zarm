@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { useDrag } from '@use-gesture/react';
+import isPlainObject from 'lodash/isPlainObject';
 import BaseSliderProps from './interface';
 import Events from '../utils/events';
 import Tooltip from '../tooltip';
 import ensureValuePrecision from './utils/ensureValuePrecision';
 import getValue from './utils/getValue';
 import { ConfigContext } from '../n-config-provider';
-import { isObject } from '../utils/validate';
 
 export interface SliderCssVars {
   '--line-size'?: React.CSSProperties['width' | 'height'];
@@ -143,7 +143,7 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
   );
 
   const renderMark = () => {
-    const isEmptyMarks = !isObject(marks) || JSON.stringify(marks) === '{}';
+    const isEmptyMarks = !isPlainObject(marks) || JSON.stringify(marks) === '{}';
 
     if (showMark && isEmptyMarks) {
       console.error('请输入有效的 marks');

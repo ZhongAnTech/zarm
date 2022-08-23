@@ -1,5 +1,5 @@
 import * as React from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import { CloseCircleFill } from '@zarm-design/icons';
 import { getValue } from './utils';
 import { ConfigContext } from '../n-config-provider';
@@ -64,16 +64,19 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
     typeof onChange !== 'undefined' &&
     currentValue.length > 0;
 
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-input`;
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('input', { prefixCls });
 
-  const cls = classnames(prefixCls, className, {
-    [`${prefixCls}--textarea`]: isTextarea,
-    [`${prefixCls}--disabled`]: disabled,
-    [`${prefixCls}--clearable`]: showClearIcon,
-    [`${prefixCls}--readonly`]: readOnly,
-    [`${prefixCls}--focus`]: focused,
-  });
+  const cls = bem([
+    {
+      textarea: isTextarea,
+      disabled,
+      clearable: showClearIcon,
+      readonly: readOnly,
+      focus: focused,
+    },
+    className,
+  ]);
 
   const focus = () => {
     inputRef.current!.focus();
@@ -135,7 +138,7 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
 
   // 渲染文字长度
   const textLengthRender = showLength && maxLength && (
-    <div className={`${prefixCls}__length`}>{`${countSymbols(currentValue)}/${maxLength}`}</div>
+    <div className={bem('length')}>{`${countSymbols(currentValue)}/${maxLength}`}</div>
   );
 
   const commonProps: InputTextProps & InputTextareaProps = {
@@ -158,7 +161,7 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
 
   // 渲染输入框
   const inputRender = isTextarea ? (
-    <div className={`${prefixCls}__inner`}>
+    <div className={bem('inner')}>
       <textarea
         ref={inputRef as React.RefObject<HTMLTextAreaElement>}
         {...(commonProps as React.HTMLAttributes<HTMLTextAreaElement>)}
@@ -175,14 +178,14 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
   );
 
   // 渲染文本内容
-  const textRender = <div className={`${prefixCls}__content`}>{currentValue}</div>;
+  const textRender = <div className={bem('content')}>{currentValue}</div>;
 
   // 渲染标签栏
-  const labelRender = !!label && <div className={`${prefixCls}__label`}>{label}</div>;
+  const labelRender = !!label && <div className={bem('label')}>{label}</div>;
 
   // 渲染清除按钮
   const clearIconRender = showClearIcon && (
-    <CloseCircleFill className={`${prefixCls}__clear`} onClick={onInputClear} />
+    <CloseCircleFill className={bem('clear')} onClick={onInputClear} />
   );
 
   React.useImperativeHandle(wrapperRef, () => ({

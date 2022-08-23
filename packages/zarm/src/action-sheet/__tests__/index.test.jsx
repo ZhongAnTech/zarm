@@ -1,7 +1,6 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
-import { mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 import ActionSheet from '../index';
 import zhCN from '../locale/zh_CN';
 import enUS from '../locale/en_US';
@@ -29,8 +28,8 @@ const props = {
 
 describe('ActionSheet', () => {
   it('renders correctly', () => {
-    const wrapper = mount(<ActionSheet {...props} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const wrapper = render(<ActionSheet {...props} />);
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('locale', () => {

@@ -10,7 +10,7 @@
  * onBeforeSelect: () => boolean，返回 false 的时候阻止后续的选择事件。
  */
 import React, { cloneElement, useCallback } from 'react';
-import classNames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import type { FileObject, BaseFilePickerProps } from './interface';
 import handleFileInfo from './utils/handleFileInfo';
 import { ConfigContext } from '../n-config-provider';
@@ -23,9 +23,8 @@ export interface FilePickerProps extends BaseFilePickerProps {
 const FilePicker = React.forwardRef<unknown, FilePickerProps>((props, ref) => {
   const fileRef = (ref as any) || React.createRef<HTMLDivElement>();
 
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-
-  const prefixCls = `${globalPrefixCls}-file-picker`;
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('file-picker', { prefixCls });
   const {
     className,
     multiple,
@@ -39,10 +38,7 @@ const FilePicker = React.forwardRef<unknown, FilePickerProps>((props, ref) => {
     ...restProps
   } = props;
 
-  const cls = classNames(prefixCls, className, {
-    [`${prefixCls}--disabled`]: disabled,
-  });
-
+  const cls = bem([{ disabled }, className]);
   const handleClick = useCallback(() => {
     fileRef?.current.click();
   }, [fileRef]);
@@ -87,12 +83,14 @@ const FilePicker = React.forwardRef<unknown, FilePickerProps>((props, ref) => {
 
   const content = cloneElement(children as React.ReactElement, {
     onClick: handleClick,
-    className: classNames((children as React.ReactElement).props.className, 'needsclick'), // 修复加载fastClick库后引起的合成事件问题
+    className: [(children as React.ReactElement).props.className, 'needsclick']
+      .filter(Boolean)
+      .join(' '), // 修复加载fastClick库后引起的合成事件问题
   });
   return (
     <div className={cls} {...restProps}>
       <input
-        className={`${prefixCls}__input`}
+        className={bem('input')}
         type="file"
         ref={fileRef}
         accept={accept}

@@ -19,7 +19,6 @@
   "dependencies": {
     "@zarm-design/icons": "^0.1.4",
     "classnames": "2.2.6",
-    "f2-touchemulator": "^0.0.1",
     "qrcode.react": "^3.1.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

@@ -18,12 +18,16 @@ describe('ImagePreview', () => {
   });
   describe('snapshot', () => {
     it('renders correctly', () => {
-      const wrapper = render(<ImagePreview visible onChange={jest.fn()} images={images} />);
+      const wrapper = render(
+        <ImagePreview visible onChange={jest.fn()} images={images} mountContainer={false} />,
+      );
       expect(toJson(wrapper)).toMatchSnapshot();
     });
 
     it('renders correctly with origin', () => {
-      const wrapper = render(<ImagePreview visible onChange={jest.fn()} images={originImages} />);
+      const wrapper = render(
+        <ImagePreview visible onChange={jest.fn()} images={originImages} mountContainer={false} />,
+      );
       expect(toJson(wrapper)).toMatchSnapshot();
     });
   });

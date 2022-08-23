@@ -1,5 +1,23 @@
-@keyframes za-flip-enter {
+@mixin flip-motion($className, $keyframeName) {
+  $name: #{$prefixCls}-#{$className};
+  @include make-motion($name, #{$prefixCls}-#{$keyframeName});
+  .#{$name}-enter,
+  .#{$name}-appear {
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.4, 0, 0, 0);
+    backface-visibility: visible !important;
+  }
+  .#{$name}-leave {
+    animation-timing-function: ease;
+    backface-visibility: visible !important;
+  }
+}
+
+@include flip-motion(flip, flip);
+
+@keyframes #{$prefixCls}-flip-in {
   from {
+    opacity: 0;
     transform: perspective(400px) rotate3d(1, 0, 0, 60deg);
   }
 
@@ -8,17 +26,14 @@
   }
 
   to {
+    opacity: 1;
     transform: perspective(400px);
   }
 }
 
-.za-flip-enter {
-  animation: za-flip-enter both ease-in;
-  backface-visibility: visible !important;
-}
-
-@keyframes za-flip-leave {
+@keyframes #{$prefixCls}-flip-out {
   from {
+    opacity: 1;
     transform: perspective(400px);
   }
 
@@ -27,11 +42,7 @@
   }
 
   to {
+    opacity: 0;
     transform: perspective(400px) rotate3d(1, 0, 0, 45deg);
   }
-}
-
-.za-flip-leave {
-  animation: za-flip-leave both;
-  backface-visibility: visible !important;
 }

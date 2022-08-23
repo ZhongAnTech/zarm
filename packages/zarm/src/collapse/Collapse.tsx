@@ -1,5 +1,5 @@
 import React, { HTMLAttributes, Children, cloneElement, ReactElement, useState } from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import type { CollapseActiveKey, CollapseItemKey, BaseCollapseProps } from './interface';
 import CollapseItem, { CollapseItemProps } from './CollapseItem';
 import { ConfigContext } from '../n-config-provider';
@@ -50,8 +50,9 @@ const Collapse = React.forwardRef<unknown, CollapseProps>((props, ref) => {
     getActiveKey({ multiple, activeKey, defaultActiveKey, hasActiveKeys }),
   );
 
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-collapse`;
+  const { prefixCls } = React.useContext(ConfigContext);
+
+  const bem = createBEM('collapse', { prefixCls });
 
   const onItemChange = (onItemChangeProps, key) => {
     if (!key) {
@@ -99,9 +100,7 @@ const Collapse = React.forwardRef<unknown, CollapseProps>((props, ref) => {
     });
   };
 
-  const cls = classnames(prefixCls, className, {
-    [`${prefixCls}--animated`]: animated,
-  });
+  const cls = bem([{ animated }, className]);
 
   React.useEffect(() => {
     setActiveKey(getActiveKey({ multiple, activeKey, defaultActiveKey, hasActiveKeys }));
