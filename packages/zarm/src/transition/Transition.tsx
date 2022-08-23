@@ -82,7 +82,7 @@ const Transition: React.FC<TransitionProps> = (props) => {
     WebkitAnimationDuration: timeout,
     transitionDuration: timeout,
     WebkitTransitionDuration: timeout,
-    display: (unmounted || exited) && !destroy ? 'none' : undefined,
+    display: (unmounted || exited) && !visible && !destroy ? 'none' : undefined,
   };
 
   const setNodeRef = (node: HTMLElement | null) => {
