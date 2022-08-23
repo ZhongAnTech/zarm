@@ -42,7 +42,15 @@ ReactDOM.render(
     title="这是标题"
     right={
       <>
+<<<<<<< HEAD
         <Plus theme="primary" onClick={() => alert('click icon1')} style={{ marginRight: 16 }} />
+=======
+        <Plus
+          theme="primary"
+          onClick={() => alert('click icon1')}
+          style={{ marginRight: 16 }}
+        />
+>>>>>>> a032d5ac5dbbbddd2e003986528edb52f1595102
         <Search theme="primary" onClick={() => alert('click icon2')} />
       </>
     }

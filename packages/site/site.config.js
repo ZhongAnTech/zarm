@@ -224,13 +224,6 @@ module.exports = {
         source: 'zarm/popper/demo.md',
         style: true,
       },
-      {
-        key: 'skeleton',
-        name: '骨架屏',
-        module: () => import('zarm/skeleton/demo.md'),
-        source: 'zarm/skeleton/demo.md',
-        style: true,
-      },
     ],
     view: [
       {
