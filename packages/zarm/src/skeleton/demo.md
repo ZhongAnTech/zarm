@@ -12,8 +12,8 @@ const Demo = () => {
   return (
     <div className="skeleton">
       <Skeleton width={200} animated />
-      <Skeleton shape="rect" width="50%" />
-      <Skeleton shape="circle" width="100px" height="100px" />
+      <Skeleton shape="rect" animated width="50%" />
+      <Skeleton shape="circle" animated width="80px" height="80px" />
     </div>
   );
 };

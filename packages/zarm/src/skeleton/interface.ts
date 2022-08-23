@@ -8,4 +8,5 @@ export interface SkeletonProps extends BaseskeletonProps {
   shape?: SkeletonShape;
   width?: number;
   height?: number;
+  animated?: boolean;
 }
