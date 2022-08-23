@@ -22,7 +22,7 @@ exports[`Stepper defaultValue 1`] = `
   <Input
     autoFocus={false}
     autoHeight={false}
-    className="za-stepper__input "
+    className="za-stepper__input"
     clearable={false}
     disabled={false}
     onBlur={[Function]}
@@ -80,7 +80,7 @@ exports[`Stepper renders correctly 1`] = `
     </span>
   </button>
   <div
-    class="za-input za-stepper__input "
+    class="za-input za-stepper__input"
   >
     <input
       type="number"

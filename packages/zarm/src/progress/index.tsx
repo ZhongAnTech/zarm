@@ -1,6 +1,6 @@
 import React, { useImperativeHandle, useRef } from 'react';
 import type { ForwardedRef, HTMLAttributes } from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseProgressProps } from './interface';
 import {
@@ -65,26 +65,29 @@ const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
 
     const indicator = useIndicator({ percent, children, text });
 
-    const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-    const prefixCls = `${globalPrefixCls}-progress`;
+    const { prefixCls } = React.useContext(ConfigContext);
+    const bem = createBEM('progress', { prefixCls });
 
-    const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--${shape}`]: !!shape,
-      [`${prefixCls}--${theme}`]: !!theme,
-      [`${prefixCls}--${size}`]: hasKnownSize,
-    });
+    const cls = bem([
+      {
+        [`${shape}`]: !!shape,
+        [`${theme}`]: !!theme,
+        [`${size}`]: hasKnownSize,
+      },
+      className,
+    ]);
 
     const roundInner = (
       <>
         <svg viewBox={viewBox}>
           <path
-            className={`${prefixCls}__track`}
+            className={bem('track')}
             d={path}
             strokeWidth={finalStrokeWidth}
             strokeLinecap={strokeLinecap}
           />
           <path
-            className={`${prefixCls}__thumb`}
+            className={bem('thumb')}
             d={path}
             strokeWidth={finalStrokeWidth}
             strokeLinecap={strokeLinecap}
@@ -92,16 +95,16 @@ const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
             strokeDashoffset={dashoffset}
           />
         </svg>
-        {indicator && <div className={`${prefixCls}__text`}>{indicator}</div>}
+        {indicator && <div className={bem('text')}>{indicator}</div>}
       </>
     );
 
     const rectInner = (
-      <div className={`${prefixCls}__outer`}>
-        <div className={`${prefixCls}__track`} style={lineTrackStyle}>
-          <div className={`${prefixCls}__thumb`} style={lineThumbStyle} />
+      <div className={bem('outer')}>
+        <div className={bem('track')} style={lineTrackStyle}>
+          <div className={bem('thumb')} style={lineThumbStyle} />
         </div>
-        {indicator && <div className={`${prefixCls}__text`}>{indicator}</div>}
+        {indicator && <div className={bem('text')}>{indicator}</div>}
       </div>
     );
 

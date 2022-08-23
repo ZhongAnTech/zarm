@@ -1,6 +1,7 @@
 import React, { forwardRef, useRef, useState } from 'react';
 import type { MouseEvent } from 'react';
 import { Volume as VolumeIcon } from '@zarm-design/icons';
+import { createBEM } from '@zarm-design/bem';
 import type BaseNoticeBarProps from './interface';
 import Message from '../message';
 import { ConfigContext } from '../n-config-provider';
@@ -9,11 +10,12 @@ import useAnimationDuration from './hooks';
 export type NoticeBarProps = BaseNoticeBarProps & React.HTMLAttributes<HTMLDivElement>;
 
 const NoticeBar = forwardRef<HTMLDivElement, NoticeBarProps>((props, ref) => {
-  const { children, speed, delay, onClose, ...restProps } = props;
+  const { children, speed, delay, onClose, className, ...restProps } = props;
   const [visible, setVisible] = useState(true);
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-notice-bar`;
-  const NOTICEBAR_KEYFRAME_NAME = `${globalPrefixCls}-notice-bar-scrolling`;
+  const { prefixCls } = React.useContext(ConfigContext);
+
+  const bem = createBEM('notice-bar', { prefixCls });
+  const NOTICEBAR_KEYFRAME_NAME = `${prefixCls}-notice-bar-scrolling`;
 
   const noticeBarRef = ref || React.createRef<HTMLDivElement>();
   const contentRef = useRef<HTMLDivElement>(null);
@@ -32,12 +34,13 @@ const NoticeBar = forwardRef<HTMLDivElement, NoticeBarProps>((props, ref) => {
     onClose?.(e);
   }
 
+  const cls = bem([className]);
   return (
-    <div className={prefixCls} ref={noticeBarRef}>
+    <div className={cls} ref={noticeBarRef}>
       <Message {...restProps} onClose={handleClose}>
-        <div className={`${prefixCls}__body`}>
+        <div className={bem('body')}>
           <div
-            className={`${prefixCls}__content`}
+            className={bem('content')}
             ref={contentRef}
             style={
               animationDuration > 0

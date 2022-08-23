@@ -1,5 +1,5 @@
 import React, { HTMLAttributes, useRef, useEffect, useCallback } from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import BaseMarqueeProps from './interface';
 import { DIRECTION_LEFT, DIRECTION_RIGHT, DIRECTION_UP, DIRECTION_DOWN } from './constants';
 import { ConfigContext } from '../n-config-provider';
@@ -35,9 +35,10 @@ const Marquee = React.forwardRef<HTMLDivElement, MarqueeProps>((props, ref) => {
   const boundingRect = useRef<DOMRect>(CLIENT_RECT);
 
   const marqueeRef = (ref as any) || React.createRef<HTMLDivElement>();
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-marquee`;
-  const cls = classnames(prefixCls, className);
+  const { prefixCls } = React.useContext(ConfigContext);
+
+  const bem = createBEM('marquee', { prefixCls });
+
   let { style } = props;
   style = style || {};
   style.width = width;
@@ -93,9 +94,9 @@ const Marquee = React.forwardRef<HTMLDivElement, MarqueeProps>((props, ref) => {
   }, [setAnimationProperty]);
 
   return (
-    <div className={cls} ref={marqueeRef}>
-      <div className={`${prefixCls}__body`} ref={container} style={style}>
-        <div className={`${prefixCls}__content`} ref={scrollItem}>
+    <div className={bem([className])} ref={marqueeRef}>
+      <div className={bem('body')} ref={container} style={style}>
+        <div className={bem('content')} ref={scrollItem}>
           {children}
         </div>
       </div>

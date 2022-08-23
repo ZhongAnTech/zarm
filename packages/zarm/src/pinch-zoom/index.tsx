@@ -1,5 +1,5 @@
 import React, { HTMLAttributes, useCallback, useEffect, useRef } from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import raf from 'raf';
 import Events from '../utils/events';
 import type { BasePinchZoomProps } from './interface';
@@ -49,9 +49,8 @@ export interface PinchZoomProps extends HTMLAttributes<HTMLDivElement>, BasePinc
 const PinchZoom = React.forwardRef<unknown, PinchZoomProps>((props, ref) => {
   const container = (ref as any) || React.createRef<HTMLDivElement>();
 
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-
-  const prefixCls = `${globalPrefixCls}-pinch-zoom`;
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('pinch-zoom', { prefixCls });
 
   const { children, className, maxScale, minScale, onPinchZoom, style } = props;
 
@@ -342,7 +341,7 @@ const PinchZoom = React.forwardRef<unknown, PinchZoomProps>((props, ref) => {
     }, 100);
   };
 
-  const cls = classnames(prefixCls, className);
+  const cls = bem([className]);
 
   const child = React.Children.map(children, (element: JSX.Element, index) => {
     return React.cloneElement(element, {

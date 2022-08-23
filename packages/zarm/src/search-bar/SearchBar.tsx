@@ -1,5 +1,5 @@
 import * as React from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import { Search as SearchIcon } from '@zarm-design/icons';
 import type BaseSearchBarProps from './interface';
 import { ConfigContext } from '../n-config-provider';
@@ -32,14 +32,17 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
   const [currentValue, setCurrentValue] = React.useState(getValue({ value, defaultValue }, ''));
   const [isFocus, setIsFocus] = React.useState<boolean>(false);
 
-  const { prefixCls: globalPrefixCls, locale: globalLocal } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-search-bar`;
+  const { prefixCls, locale: globalLocal } = React.useContext(ConfigContext);
+  const bem = createBEM('search-bar', { prefixCls });
   const locale = globalLocal?.SearchBar;
 
-  const cls = classnames(prefixCls, className, {
-    [`${prefixCls}--${shape}`]: !!shape,
-    [`${prefixCls}--focus`]: !!(showCancel || isFocus || String(currentValue).length > 0),
-  });
+  const cls = bem([
+    {
+      [`${shape}`]: !!shape,
+      focus: !!(showCancel || isFocus || String(currentValue).length > 0),
+    },
+    className,
+  ]);
 
   const blurAnim = (): void => {
     if (!showCancel && cancelRef.current) {
@@ -116,7 +119,7 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
   }, [defaultValue, value]);
 
   const cancelRender = (
-    <div className={`${prefixCls}__cancel`} ref={cancelRef} onClick={onClickCancelButton}>
+    <div className={bem('cancel')} ref={cancelRef} onClick={onClickCancelButton}>
       {cancelText || locale?.cancelText}
     </div>
   );
@@ -139,9 +142,9 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
 
   return (
     <div className={cls}>
-      <form action="#" className={`${prefixCls}__form`} onSubmit={onFormSubmit} ref={formRef}>
-        <div className={`${prefixCls}__content`}>
-          <SearchIcon size="sm" className={`${prefixCls}__icon`} />
+      <form action="#" className={bem('form')} onSubmit={onFormSubmit} ref={formRef}>
+        <div className={bem('content')}>
+          <SearchIcon size="sm" className={bem('icon')} />
           <Input ref={inputRef} {...(inputProps as InputTextProps)} />
         </div>
         {cancelRender}
