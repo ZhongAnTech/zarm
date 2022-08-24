@@ -24,7 +24,7 @@ import {
 } from '@floating-ui/react-dom-interactions';
 
 import Transition from '../transition';
-import { canUseDOM, getOuterSizes, renderToContainer } from '../utils/dom';
+import { canUseDOM, getElementSize, renderToContainer } from '../utils/dom';
 import BasePopperProps from './interface';
 import { ConfigContext } from '../n-config-provider';
 import { getTransitionName, getTransformOrigin } from './utils';
@@ -83,7 +83,7 @@ const Popper = forwardRef<refHander, PopperProps & PopperCssVars>((props, ref) =
 
   const middleware = [
     offset(({ placement }) => {
-      const { width, height } = getOuterSizes(arrowRef.current);
+      const { width, height } = getElementSize(arrowRef.current);
       const side = placement.split('-')[0];
       const value = side === 'bottom' || side === 'top' ? height : width;
       return value;
