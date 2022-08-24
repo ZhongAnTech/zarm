@@ -10,7 +10,7 @@ const Demo = () => (
   <div className="direction-demo">
     <div>
       <div style={{ marginLeft: 60 }}>
-        <Tooltip direction="topLeft" content="topLeft text">
+        <Tooltip direction="top-left" content="top-left text">
           <Button size="xs">TL</Button>
         </Tooltip>
 
@@ -18,13 +18,13 @@ const Demo = () => (
           <Button size="xs">Top</Button>
         </Tooltip>
 
-        <Tooltip direction="topRight" content="topRight text">
+        <Tooltip direction="top-right" content="top-right text">
           <Button size="xs">TR</Button>
         </Tooltip>
       </div>
 
       <div style={{ width: 60, float: 'left', clear: 'both' }}>
-        <Tooltip direction="leftTop" content="leftTop text">
+        <Tooltip direction="left-top" content="left-top text">
           <Button size="xs">LT</Button>
         </Tooltip>
 
@@ -32,13 +32,13 @@ const Demo = () => (
           <Button size="xs">Left</Button>
         </Tooltip>
 
-        <Tooltip direction="leftBottom" content="leftBottom text">
+        <Tooltip direction="left-bottom" content="left-bottom text">
           <Button size="xs">LB</Button>
         </Tooltip>
       </div>
 
       <div style={{ width: 60, marginLeft: 60 * 4 + 20 }}>
-        <Tooltip direction="rightTop" content="rightTop text">
+        <Tooltip direction="right-top" content="right-top text">
           <Button size="xs">RT</Button>
         </Tooltip>
 
@@ -46,13 +46,13 @@ const Demo = () => (
           <Button size="xs">Right</Button>
         </Tooltip>
 
-        <Tooltip direction="rightBottom" content="rightBottom text">
+        <Tooltip direction="right-bottom" content="righ-bottom text">
           <Button size="xs">RB</Button>
         </Tooltip>
       </div>
 
       <div style={{ marginLeft: 60, clear: 'both' }}>
-        <Tooltip direction="bottomLeft" content="bottomLeft text">
+        <Tooltip direction="bottom-left" content="bottom-left text">
           <Button size="xs">BL</Button>
         </Tooltip>
 
@@ -60,7 +60,7 @@ const Demo = () => (
           <Button size="xs">Bottom</Button>
         </Tooltip>
 
-        <Tooltip direction="bottomRight" content="bottomRight text">
+        <Tooltip direction="bottom-right" content="bottom-right text">
           <Button size="xs">BR</Button>
         </Tooltip>
       </div>

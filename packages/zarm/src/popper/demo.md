@@ -287,12 +287,3 @@ ReactDOM.render(<Demo />, mountNode);
 | visible            | boolean                              | false                                  | 是否显示，`trigger='manual'` 时有效                                                                                                                                                |
 | onVisibleChange    | (visible: boolean) => void           | () => {}                               | 显示/隐藏 气泡层触发的事件                                                                                                                                                         |
 |                    |
-
-## CSS 变量
-
-| 属性           | 默认值 | 说明             |
-| :------------- | :----- | :--------------- |
-| --arrow-left   | '10px' | 箭头水平左距离   |
-| --arrow-right  | '10px' | 箭头水平右距离   |
-| --arrow-top    | '5px'  | 箭头垂直顶部距离 |
-| --arrow-bottom | '5px'  | 箭头垂直底部距离 |

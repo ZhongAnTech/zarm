@@ -32,13 +32,6 @@ import mergeRefs from '../utils/mergeRefs';
 
 interface PopperProps extends BasePopperProps, HTMLAttributes<HTMLDivElement> {}
 
-export interface PopperCssVars {
-  '--arrow-left'?: React.CSSProperties['left'];
-  '--arrow-right'?: React.CSSProperties['right'];
-  '--arrow-top'?: React.CSSProperties['top'];
-  '--arrow-bottom'?: React.CSSProperties['bottom'];
-}
-
 const directionMap = {
   top: 'top' as const,
   'top-left': 'top-start' as const,
@@ -58,7 +51,7 @@ interface refHander {
   update: () => void;
 }
 
-const Popper = forwardRef<refHander, PopperProps & PopperCssVars>((props, ref) => {
+const Popper = forwardRef<refHander, PopperProps>((props, ref) => {
   const { prefixCls, mountContainer: globalMountContainer } = React.useContext(ConfigContext);
   const {
     visible,
@@ -158,7 +151,6 @@ const Popper = forwardRef<refHander, PopperProps & PopperCssVars>((props, ref) =
     setOpen(false);
   };
 
-  console.log(open);
   const toolTip = (
     <Transition
       nodeRef={floating}

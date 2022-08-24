@@ -9,7 +9,6 @@
   z-index: var(--zindex-tooltip);
 
   &[data-popper-placement^=right] {
-    margin-left: 10px;
 
     @include b(popper) {
       @include e(arrow) {
@@ -21,7 +20,6 @@
   }
 
   &[data-popper-placement^=top] {
-    margin-bottom: 10px;
 
     @include b(popper) {
       @include e(arrow) {
@@ -33,7 +31,6 @@
   }
 
   &[data-popper-placement^=bottom] {
-    margin-top: 10px;
 
     @include b(popper) {
       @include e(arrow) {
@@ -45,7 +42,6 @@
   }
 
   &[data-popper-placement^=left] {
-    margin-right: 10px;
 
     @include b(popper) {
       @include e(arrow) {
@@ -55,6 +51,43 @@
       }
     }
   }
+
+  &[data-popper-placement="top-start"],
+  &[data-popper-placement="bottom-start"] {
+    @include b(popper) {
+      @include e(arrow) {
+        left: 10px;
+      }
+    }
+  }
+
+  &[data-popper-placement="top-end"],
+  &[data-popper-placement="bottom-end"] {
+    @include b(popper) {
+      @include e(arrow) {
+        right: 10px;
+      }
+    }
+  }
+
+  &[data-popper-placement="left-start"],
+  &[data-popper-placement="right-start"] {
+    @include b(popper) {
+      @include e(arrow) {
+        top: 4px;
+      }
+    }
+  }
+
+  &[data-popper-placement="left-end"],
+  &[data-popper-placement="right-end"] {
+    @include b(popper) {
+      @include e(arrow) {
+        bottom: 4px;
+      }
+    }
+  }
+
 
   @include b(popper) {
     @include e(arrow) {
