@@ -1,5 +1,5 @@
 import React, { RefAttributes, useCallback, useEffect, useRef, useState } from 'react';
-import classNames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import { ConfigContext } from '../n-config-provider';
 import Popup from '../popup';
 import ActivityIndicator from '../activity-indicator';
@@ -18,8 +18,8 @@ interface CompoundedComponent
 }
 
 const Loading = React.forwardRef<unknown, LoadingProps>((props, ref) => {
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-loading`;
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('loading', { prefixCls });
 
   const loadingRef = (ref as any) || React.createRef<HTMLDivElement>();
 
@@ -71,8 +71,8 @@ const Loading = React.forwardRef<unknown, LoadingProps>((props, ref) => {
       visible={visible}
       afterClose={afterClose}
     >
-      <div className={classNames(prefixCls, className)} ref={loadingRef} style={style}>
-        <div className={`${prefixCls}__container`} style={style}>
+      <div className={bem([className])} ref={loadingRef} style={style}>
+        <div className={bem('container')} style={style}>
           {content || <ActivityIndicator type="spinner" size="lg" />}
         </div>
       </div>

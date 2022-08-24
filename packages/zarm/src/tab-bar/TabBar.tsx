@@ -1,5 +1,5 @@
 import React, { cloneElement, useCallback, useState } from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import type { BaseTabBarProps } from './interface';
 import TabBarItem from './TabBarItem';
 import type { TabBarItemProps } from './TabBarItem';
@@ -17,10 +17,9 @@ interface CompoundedComponent
 const TabBar = React.forwardRef<unknown, TabBarProps>((props, ref) => {
   const tabBarRef = (ref as any) || React.createRef<HTMLDivElement>();
 
-  const { prefixCls: globalPrefixCls, safeIphoneX: globalSafeIphoneX } = React.useContext(
-    ConfigContext,
-  );
-  const prefixCls = `${globalPrefixCls}-tab-bar`;
+  const { prefixCls, safeIphoneX: globalSafeIphoneX } = React.useContext(ConfigContext);
+
+  const bem = createBEM('tab-bar', { prefixCls });
 
   const {
     visible,
@@ -58,10 +57,13 @@ const TabBar = React.forwardRef<unknown, TabBarProps>((props, ref) => {
     return activeKey === itemKey;
   };
 
-  const cls = classnames(prefixCls, className, {
-    [`${prefixCls}--hidden`]: !visible,
-    [`${prefixCls}--safe`]: safeIphoneX,
-  });
+  const cls = bem([
+    {
+      hidden: !visible,
+      safe: safeIphoneX,
+    },
+    className,
+  ]);
 
   const items = React.Children.map(
     children,
