@@ -17,39 +17,8 @@
       width: r(100);
       height: r(50);
       color: #333;
-    }
 
-    .custom-arrow-content {
-      &[data-popper-placement="top-start"],
-      &[data-popper-placement="bottom-start"] {
-        .za-popper__arrow {
-          left: 10px;
-        }
-      }
-
-      &[data-popper-placement="top-end"],
-      &[data-popper-placement="bottom-end"] {
-        .za-popper__arrow {
-          right: 10px;
-        }
-      }
-
-      &[data-popper-placement="left-start"],
-      &[data-popper-placement="right-start"] {
-        .za-popper__arrow {
-          top: 4px;
-        }
-      }
-
-      &[data-popper-placement="left-end"],
-      &[data-popper-placement="right-end"] {
-        .za-popper__arrow {
-          bottom: 4px;
-        }
-      }
-    }
-    // 自定义箭头
-    .custom-arrow-content {
+      // 自定义箭头
       .za-popper__arrow {
         position: absolute;
         width: 0;
@@ -95,6 +64,34 @@
           right: r(-4);
           border-width: r(4) 0 r(4) r(4);
           border-left-color: #ddd;
+        }
+      }
+
+      &[data-popper-placement="top-start"],
+      &[data-popper-placement="bottom-start"] {
+        .za-popper__arrow {
+          left: 10px;
+        }
+      }
+
+      &[data-popper-placement="top-end"],
+      &[data-popper-placement="bottom-end"] {
+        .za-popper__arrow {
+          right: 10px;
+        }
+      }
+
+      &[data-popper-placement="left-start"],
+      &[data-popper-placement="right-start"] {
+        .za-popper__arrow {
+          top: 4px;
+        }
+      }
+
+      &[data-popper-placement="left-end"],
+      &[data-popper-placement="right-end"] {
+        .za-popper__arrow {
+          bottom: 4px;
         }
       }
     }
