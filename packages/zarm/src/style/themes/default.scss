@@ -297,6 +297,20 @@
   // 取消按钮动画
   --za-search-bar-cancel-transition: all .2s;
 
+  // Skeleton
+  --za-skeleton-height: 18px;
+  --za-skeleton-margin: 0px;
+  --za-skeleton-background: var(--background-disabled);
+  --za-skeleton-animated-background: rgba(220, 216, 216, 0.8);
+  --za-skeleton-radius: 2px;
+  --za-skeleton-circle-radius: var(--radius-circle);
+  --za-skeleton-circle-width: 50px;
+  --za-skeleton-circle-height: 50px;
+  --za-skeleton-title-width: 45%;
+  --za-skeleton-title-height: 32px;
+  --za-skeleton-title-margin: 16px 0;
+  --za-skeleton-line-margin: 12px 0;
+
   // Stepper
   --za-stepper-input-background: #fff;
   --za-stepper-height-md: 28px;
