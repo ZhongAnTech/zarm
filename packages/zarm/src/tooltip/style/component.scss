@@ -88,6 +88,24 @@
     }
   }
 
+  &[data-popper-placement^="left"] {
+    margin-left: -3px;
+  }
+
+  &[data-popper-placement^="right"] {
+    margin-left: 3px;
+  }
+
+  &[data-popper-placement^="top"] {
+    margin-top: -3px;
+  }
+
+  &[data-popper-placement^="bottom"] {
+    margin-top: 3px;
+  }
+
+
+
 
   @include b(popper) {
     @include e(arrow) {
