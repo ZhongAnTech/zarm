@@ -39,8 +39,8 @@
   }
 
   @include e(title) {
-    width: var(--height, var(--za-skeleton-title-width));
-    height: var(--width, var(--za-skeleton-title-height));
+    width: var(--width, var(--za-skeleton-title-width));
+    height: var(--height, var(--za-skeleton-title-height));
     margin: var(--margin, var(--za-skeleton-title-margin));
   }
 
