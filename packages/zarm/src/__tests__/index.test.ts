@@ -85,6 +85,27 @@ describe('index', () => {
           },
           "render": [Function],
         },
+        "Cascader": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "maskClosable": false,
+            "visible": false,
+          },
+          "render": [Function],
+        },
+        "CascaderView": Object {
+          "$$typeof": Symbol(react.memo),
+          "compare": null,
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "defaultProps": Object {
+              "cols": Infinity,
+              "displayMember": "label",
+              "valueMember": "value",
+            },
+            "render": [Function],
+          },
+        },
         "Checkbox": Object {
           "$$typeof": Symbol(react.forward_ref),
           "Group": Object {
@@ -476,21 +497,6 @@ describe('index', () => {
             "vertical": false,
           },
           "render": [Function],
-        },
-        "StackPicker": Object {
-          "$$typeof": Symbol(react.memo),
-          "compare": null,
-          "type": Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "defaultProps": Object {
-              "cols": Infinity,
-              "displayMember": "label",
-              "maskClosable": false,
-              "valueMember": "value",
-              "visible": false,
-            },
-            "render": [Function],
-          },
         },
         "Stepper": Object {
           "$$typeof": Symbol(react.forward_ref),

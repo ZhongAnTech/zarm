@@ -10,8 +10,7 @@ const themes = {
   '--color-text-disabled': '#666',
   '--border-color': '#1a1a1a',
   '--opacity-mask': '0.7',
-  '--stack-picker-background': '#000',
-  '--stack-picker-shadow': 'none',
+
   '--za-arrow-color': '#666',
   '--za-background-color': '#1c1c1e',
   '--za-background-active': '#363738',

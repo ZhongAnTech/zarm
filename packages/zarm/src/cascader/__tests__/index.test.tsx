@@ -1,6 +1,6 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import StackPicker from '../index';
+import Cascader from '../index';
 
 jest.useFakeTimers();
 
@@ -66,11 +66,11 @@ const District = [
   },
 ];
 
-describe('StackPicker', () => {
+describe('Cascader', () => {
   it('renders correctly if visible is true', () => {
     const onChange = jest.fn();
     const { container } = render(
-      <StackPicker
+      <Cascader
         defaultValue={[]}
         value={[]}
         cancelText="取消"
@@ -89,8 +89,8 @@ describe('StackPicker', () => {
   it('renders correctly if visible is false', () => {
     const onChange = jest.fn();
     render(
-      <StackPicker
-        title="层叠选择器"
+      <Cascader
+        title="级联选择器"
         defaultValue={[]}
         value={[]}
         cancelText="取消"
@@ -103,14 +103,14 @@ describe('StackPicker', () => {
         mountContainer={false}
       />,
     );
-    expect(screen.queryByText('层叠选择器')).toBeFalsy();
+    expect(screen.queryByText('级联选择器')).toBeFalsy();
   });
 
   it('should not trigger onCancel if maskClosable is false', () => {
     const onCancel = jest.fn();
 
     const { container } = render(
-      <StackPicker
+      <Cascader
         defaultValue={[]}
         value={[]}
         visible
@@ -131,7 +131,7 @@ describe('StackPicker', () => {
     const onConfirm = jest.fn();
 
     const { container, getByText } = render(
-      <StackPicker
+      <Cascader
         defaultValue={[]}
         value={['340000', '340800', '340803']}
         cancelText="取消"
@@ -160,7 +160,7 @@ describe('StackPicker', () => {
     const onChange = jest.fn();
 
     const { container } = render(
-      <StackPicker
+      <Cascader
         data-testid="root"
         defaultValue={[]}
         value={[]}
@@ -173,7 +173,9 @@ describe('StackPicker', () => {
       />,
     );
 
-    // popupWrapper = mount(wrapper.instance().getComponent());
+    fireEvent.click(screen.getAllByDisplayValue('340000')[0]);
+    await screen.findByText('安庆市');
+    expect(container).toMatchSnapshot();
 
     fireEvent.click(screen.getAllByDisplayValue('340800')[0]);
     await screen.findByText('大观区');
@@ -187,7 +189,7 @@ describe('StackPicker', () => {
   });
 });
 
-describe('StackPicker error type', () => {
+describe('Cascader error type', () => {
   const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
 
   afterAll(() => {
@@ -200,7 +202,7 @@ describe('StackPicker error type', () => {
     const onChange = 1 as any;
 
     const { container, getByText } = render(
-      <StackPicker
+      <Cascader
         defaultValue={[]}
         value={[]}
         cancelText="取消"

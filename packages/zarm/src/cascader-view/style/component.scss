@@ -1,0 +1,50 @@
+@include b(cascader-view) {
+  @include define('option-font-size', 14px);
+  @include define('option-height', 44px);
+  @include define('options-height', auto);
+
+  background: var(--za-picker-background);
+
+  @include e(tab-text) {
+    @include m(unselected) {
+      color: var(--za-color-text-placeholder);
+    }
+  }
+
+  @include e(content) {
+    height: var(--options-height);
+    overflow-y: scroll;
+
+    @include b(list) {
+      --za-list-item-height: var(--option-height);
+    }
+
+    &-item {
+      padding-left: 20px;
+      background-color: var(--za-picker-background);
+      font-size: var(--option-font-size);
+      color: var(--za-color-text);
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+
+      @include m(active) {
+        color: var(--za-theme-primary);
+      }
+    }
+  }
+}
+
+@include b(cascader-view-tabs) {
+  --za-tabs-item-font-size: var(--option-font-size);
+
+  @include b(tabs) {
+    @include e(tab) {
+      flex: none;
+
+      @include m(active) {
+        color: var(--za-theme-primary);
+      }
+    }
+  }
+}
