@@ -300,8 +300,9 @@
   // Skeleton
   --za-skeleton-height: 18px;
   --za-skeleton-margin: 0px;
-  --za-skeleton-background: var(--background-disabled);
-  --za-skeleton-animated-background: rgba(220, 216, 216, 0.8);
+  --za-skeleton-background: #f2f2f2;
+  --za-skeleton-animated-background: rgba(219, 219, 221, 0.6);
+
   --za-skeleton-radius: 2px;
   --za-skeleton-circle-radius: var(--radius-circle);
   --za-skeleton-circle-width: 50px;
