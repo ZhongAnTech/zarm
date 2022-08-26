@@ -47,6 +47,7 @@
   @include e(paragraph) {
     @include e(line) {
       margin: var(--za-skeleton-line-margin);
+
       &:last-of-type {
         width: 65%;
       }
