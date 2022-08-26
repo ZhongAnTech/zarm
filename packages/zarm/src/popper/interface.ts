@@ -1,5 +1,6 @@
 import React from 'react';
 import { MountContainer } from '../utils/dom';
+import { TransitionName } from '../transition/interface';
 
 export type PopperPlacement =
   | 'top'
@@ -23,10 +24,8 @@ export default interface BasePopperProps {
   arrowPointAtCenter?: boolean;
   direction?: PopperPlacement;
   trigger?: PopperTrigger;
-  animationType?: string;
+  animationType?: TransitionName;
   animationDuration?: number;
-  // popperOptions?: PopperJS.PopperOptions;
-  // modifiers?: PopperJS.Modifiers;
   content?: React.ReactNode;
   destroy?: boolean;
   mountContainer?: MountContainer;

@@ -70,28 +70,28 @@
       &[data-popper-placement="top-start"],
       &[data-popper-placement="bottom-start"] {
         .za-popper__arrow {
-          left: 10px;
+          left: r(10);
         }
       }
 
       &[data-popper-placement="top-end"],
       &[data-popper-placement="bottom-end"] {
         .za-popper__arrow {
-          right: 10px;
+          right: r(10);
         }
       }
 
       &[data-popper-placement="left-start"],
       &[data-popper-placement="right-start"] {
         .za-popper__arrow {
-          top: 4px;
+          top: r(4);
         }
       }
 
       &[data-popper-placement="left-end"],
       &[data-popper-placement="right-end"] {
         .za-popper__arrow {
-          bottom: 4px;
+          bottom: r(4);
         }
       }
     }
