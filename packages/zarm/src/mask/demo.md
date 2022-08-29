@@ -66,7 +66,7 @@ ReactDOM.render(<Demo />, mountNode);
 | forceRender       | boolean                              | false         | 强制渲染内容                                                              |
 | destroy           | boolean                              | true          | 不可见时卸载内容                                                          |
 | animationDuration | number                               | -             | 动画执行时间（单位：毫秒）                                                |
-| mountContainer    | HTMLElement &#124; () => HTMLElement | document.body | 指定 Mask 挂载的 HTML 节点                                               |
+| mountContainer    | HTMLElement &#124; () => HTMLElement | document.body | 指定 Mask 挂载的 HTML 节点                                                |
 | onClick           | MouseEventHandler<HTMLDivElement\>   | -             | 点击后触发的回调函数                                                      |
 
 ## CSS 变量

@@ -1,9 +1,9 @@
-import React from 'react';
-import classnames from 'classnames';
+import React, { forwardRef, useRef, useImperativeHandle } from 'react';
+import { createBEM } from '@zarm-design/bem';
 import { ConfigContext } from '../n-config-provider';
 import Popper from '../popper';
 import type { BaseTooltipProps } from './interface';
-import type { PopperPlacement, PopperTrigger } from '../popper/PropsType';
+import type { PopperPlacement, PopperTrigger } from '../popper/interface';
 
 export type TooltipProps = BaseTooltipProps & React.InputHTMLAttributes<HTMLInputElement>;
 
@@ -11,28 +11,40 @@ export type TooltipPlacement = PopperPlacement;
 
 export type TooltipTrigger = PopperTrigger;
 
-const Tooltip = (props: TooltipProps) => {
+interface refHander {
+  update: () => void;
+}
+
+const Tooltip = forwardRef<refHander, TooltipProps>((props, ref) => {
   const { children, content, className, ...others } = props;
 
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-tooltip`;
-  const cls = classnames(prefixCls, className);
+  const { prefixCls } = React.useContext(ConfigContext);
 
-  return !(content === '' || content === null || content === undefined) ? (
-    <Popper content={content} prefixCls={prefixCls} className={cls} {...others}>
+  const bem = createBEM('tooltip', { prefixCls });
+  const cls = bem([className]);
+
+  const poperRef = useRef<React.ElementRef<typeof Popper>>(null);
+
+  useImperativeHandle(ref, () => {
+    return {
+      update: () => {
+        return poperRef.current?.update();
+      },
+    };
+  });
+  return content ? (
+    <Popper content={content!} className={cls} {...others} ref={poperRef}>
       {children}
     </Popper>
   ) : (
     <>{children}</>
   );
-};
+});
 
 Tooltip.defaultProps = {
   direction: 'top' as TooltipPlacement,
   hasArrow: true,
   onVisibleChange: () => {},
 };
-
-Tooltip.updateAll = () => Popper.update();
 
 export default Tooltip;
