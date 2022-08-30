@@ -88,3 +88,15 @@ ReactDOM.render(<Demo />, mountNode);
 | direction          | string                     | 'top'   | 显示方向，可选值 `top-left`、`top`、`top-right`、`right-top`、`right`、`right-bottom`、`botto-left`、`bottom`、`bottom-right`、`left-top`、`left`、`left-bottom` |
 | trigger            | string                     | 'click' | 触发方式，PC 端默认值为 'hover', 可选值为：点击触发`click`、鼠标经过触发`hover`、聚焦状态触发`focus`、受控触发`manual`、右键触发`contextMenu`                    |
 | onVisibleChange    | (visible: boolean) => void | noop    | 显示/隐藏触发的事件                                                                                                                                              |
+
+## CSS 变量
+
+| 属性                 | 默认值               | 说明     |
+| :------------------- | :------------------- | :------- |
+| --background         | 'rgba(0, 0, 0, 0.8)' | 背景色   |
+| --padding-horizontal | var(--padding-h-xs)  | 横向边距 |
+| --padding-vertical   | var(--padding-v-xs)  | 垂直边距 |
+| --font-size          | '12px'               | 字体大小 |
+| --arrow-size         | '4px'                | 箭头大小 |
+| --font-size          | '12px'               | 字体大小 |
+| --z-index            | '1700'               | 层级     |
