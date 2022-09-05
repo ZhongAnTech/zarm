@@ -85,7 +85,7 @@
   &[data-popper-placement="right-start"] {
     @include b(popper) {
       @include e(arrow) {
-        top: var(--arrow-veritcal-offset);
+        top: var(--arrow-vertical-offset);
       }
     }
   }
@@ -94,7 +94,7 @@
   &[data-popper-placement="right-end"] {
     @include b(popper) {
       @include e(arrow) {
-        bottom: var(--arrow-veritcal-offset);
+        bottom: var(--arrow-vertical-offset);
       }
     }
   }
