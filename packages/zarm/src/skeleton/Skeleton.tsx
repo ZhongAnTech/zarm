@@ -1,10 +1,34 @@
 import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { ConfigContext } from '../n-config-provider';
-import type { SkeletonProps, SkeletonTitleProps, SkeletonParagraphProps } from './interface';
+import type { HTMLProps } from '../utils/utilityTypes';
+import type { SkeletonShape, SkeletonLineShape } from './interface';
 
 // SkeletonTitle和SkeletonParagraph的shape属性值集合
 const SKELETONLINESHAPE = ['radius', 'rect'];
+
+export interface SkeletonCssVars {
+  '--width'?: React.CSSProperties['width'];
+  '--height'?: React.CSSProperties['height'];
+  '--border-radius'?: React.CSSProperties['borderRadius'];
+  '--margin'?: React.CSSProperties['margin'];
+}
+
+export type SkeletonProps = HTMLProps<SkeletonCssVars> & {
+  shape?: SkeletonShape;
+  animated?: boolean;
+};
+
+export type SkeletonTitleProps = HTMLProps<SkeletonCssVars> & {
+  shape?: SkeletonLineShape;
+  animated?: boolean;
+};
+
+export type SkeletonParagraphProps = HTMLProps & {
+  shape?: SkeletonLineShape;
+  animated?: boolean;
+  lineCount?: number;
+};
 
 const Skeleton = (props: SkeletonProps) => {
   const { className, shape, animated, ...restProps } = props;

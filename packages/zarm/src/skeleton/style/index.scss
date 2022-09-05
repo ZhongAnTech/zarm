@@ -1,13 +1,21 @@
 @import '../../style/core/index';
 
 @include b(skeleton) {
-  @include define(border-radius, var(--za-skeleton-radius));
+  @include define(width, 100%);
+  @include define(height, 18px);
+  @include define(border-radius, 2px);
+  @include define(margin, 0);
+
+  //skeleton
+  @include define(background, #f2f2f2);
+  @include define(animated-background, rgba(219, 219, 221, 0.6));
 
   width: var(--width);
-  height: var(--height, var(--za-skeleton-height));
-  margin: var(--margin, var(--za-skeleton-margin));
-  background: var(--za-skeleton-background);
+  height: var(--height);
+  margin: var(--margin);
+  background: var(--background);
 
+  // shape
   @include m(radius) {
     border-radius: var(--border-radius);
   }
@@ -17,13 +25,15 @@
   }
 
   @include m(circle) {
-    width: var(--width, var(--za-skeleton-circle-width));
-    height: var(--height, var(--za-skeleton-circle-height));
-    border-radius: var(--za-skeleton-circle-radius);
+    @include define(width, 50px);
+    @include define(height, 50px);
+
+    border-radius: 50%;
   }
 
+  // animated
   @include m(animated) {
-    background-image: linear-gradient(90deg, var(--za-skeleton-background) 25%, var(--za-skeleton-animated-background) 37%, var(--za-skeleton-background) 63%);
+    background-image: linear-gradient(90deg, var(--background) 25%, var(--animated-background) 37%, var(--background) 63%);
     background-size: 400% 100%;
     animation: skeleton-loading 1.5s ease infinite;
   }
@@ -38,15 +48,17 @@
     }
   }
 
+  // Title
   @include e(title) {
-    width: var(--width, var(--za-skeleton-title-width));
-    height: var(--height, var(--za-skeleton-title-height));
-    margin: var(--margin, var(--za-skeleton-title-margin));
+    @include define(width, 45%);
+    @include define(height, 32px);
+    @include define(margin, 16px 0);
   }
 
+  // Paragraph
   @include e(paragraph) {
     @include e(line) {
-      margin: var(--za-skeleton-line-margin);
+      @include define(margin, 12px 0);
 
       &:last-of-type {
         width: 65%;
