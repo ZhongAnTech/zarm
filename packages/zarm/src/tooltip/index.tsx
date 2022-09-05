@@ -22,6 +22,9 @@ export interface TooltipCssVars {
   '--z-index'?: React.CSSProperties['zIndex'];
   '--arrow-size'?: React.CSSProperties['width'];
   '--font-size'?: React.CSSProperties['fontSize'];
+  '--spacing'?: React.CSSProperties['height'];
+  '--arrow-horizontal-offset'?: React.CSSProperties['left'];
+  '--arrow-vertical-offset'?: React.CSSProperties['top'];
 }
 
 export type TooltipProps = BaseTooltipProps & React.PropsWithChildren<HTMLProps<TooltipCssVars>>;
