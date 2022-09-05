@@ -102,7 +102,7 @@ exports[`Picker Picker render visible 1`] = `
                   Object {
                     "current": <div
                       class="za-mask "
-                      style="display: none; background-color: rgba(0, 0, 0, 0.55);"
+                      style="background-color: rgba(0, 0, 0, 0.55);"
                     />,
                   }
                 }
@@ -121,11 +121,10 @@ exports[`Picker Picker render visible 1`] = `
                     >
                       <div
                         class="za-mask "
-                        style="display: none; background-color: rgba(0, 0, 0, 0.55);"
+                        style="background-color: rgba(0, 0, 0, 0.55);"
                       />
                       <div
                         class="za-popup__wrapper"
-                        style="display: none;"
                       >
                         <div
                           class="za-popup za-popup--bottom "
@@ -202,7 +201,7 @@ exports[`Picker Picker render visible 1`] = `
                         "WebkitTransitionDuration": undefined,
                         "animationDuration": undefined,
                         "backgroundColor": "rgba(0, 0, 0, 0.55)",
-                        "display": "none",
+                        "display": undefined,
                         "transitionDuration": undefined,
                       }
                     }
@@ -307,11 +306,10 @@ exports[`Picker Picker render visible 1`] = `
                   >
                     <div
                       class="za-mask "
-                      style="display: none; background-color: rgba(0, 0, 0, 0.55);"
+                      style="background-color: rgba(0, 0, 0, 0.55);"
                     />
                     <div
                       class="za-popup__wrapper"
-                      style="display: none;"
                     >
                       <div
                         class="za-popup za-popup--bottom "
@@ -383,7 +381,7 @@ exports[`Picker Picker render visible 1`] = `
                   className="za-popup__wrapper"
                   style={
                     Object {
-                      "display": "none",
+                      "display": undefined,
                     }
                   }
                 >
