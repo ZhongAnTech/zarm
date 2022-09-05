@@ -91,12 +91,15 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## CSS 变量
 
-| 属性                 | 默认值               | 说明     |
-| :------------------- | :------------------- | :------- |
-| --background         | 'rgba(0, 0, 0, 0.8)' | 背景色   |
-| --padding-horizontal | var(--padding-h-xs)  | 横向边距 |
-| --padding-vertical   | var(--padding-v-xs)  | 垂直边距 |
-| --font-size          | '12px'               | 字体大小 |
-| --arrow-size         | '4px'                | 箭头大小 |
-| --font-size          | '12px'               | 字体大小 |
-| --z-index            | '1700'               | 层级     |
+| 属性                      | 默认值               | 说明                   |
+| :------------------------ | :------------------- | :--------------------- |
+| --background              | 'rgba(0, 0, 0, 0.8)' | 背景色                 |
+| --padding-horizontal      | var(--padding-h-xs)  | 横向边距               |
+| --padding-vertical        | var(--padding-v-xs)  | 垂直边距               |
+| --font-size               | '12px'               | 字体大小               |
+| --arrow-size              | '4px'                | 箭头大小               |
+| --spacing                 | '3px'                | 和目标元素的间距       |
+| --arrow-horizontal-offset | '10px'               | 箭头相对内容的横向偏移 |
+| --arrow-vertical-offset   | '6px'                | 箭头相对内容的纵向偏移 |
+| --font-size               | '12px'               | 字体大小               |
+| --z-index                 | '1700'               | 层级                   |

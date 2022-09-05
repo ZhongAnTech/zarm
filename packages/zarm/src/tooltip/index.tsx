@@ -24,7 +24,7 @@ export interface TooltipCssVars {
   '--font-size'?: React.CSSProperties['fontSize'];
 }
 
-export type TooltipProps = BaseTooltipProps & HTMLProps<TooltipCssVars>;
+export type TooltipProps = BaseTooltipProps & React.PropsWithChildren<HTMLProps<TooltipCssVars>>;
 
 const Tooltip = forwardRef<refHander, TooltipProps>((props, ref) => {
   const { children, content, className, ...others } = props;

@@ -8,6 +8,9 @@
   @include define(arrow-size,  4px);
   @include define(background, rgba(0, 0, 0, 0.8));
   @include define(z-index, 1700);
+  @include define(spacing, 3px);
+  @include define(arrow-vertical-offset, 6px);
+  @include define(arrow-horizontal-offset, 10px);
 
   padding: var(--padding-vertical) var(--padding-horizontal);
   background-color: var(--background);
@@ -20,7 +23,7 @@
 
     @include b(popper) {
       @include e(arrow) {
-        left: -4px;
+        left: calc(var(--arrow-size) * -1);
         border-width: var(--arrow-size) var(--arrow-size) var(--arrow-size) 0;
         border-right-color: var(--background);
       }
@@ -64,7 +67,7 @@
   &[data-popper-placement="bottom-start"] {
     @include b(popper) {
       @include e(arrow) {
-        left: 10px;
+        left: var(--arrow-horizontal-offset);
       }
     }
   }
@@ -73,7 +76,7 @@
   &[data-popper-placement="bottom-end"] {
     @include b(popper) {
       @include e(arrow) {
-        right: 10px;
+        right: var(--arrow-horizontal-offset);
       }
     }
   }
@@ -82,7 +85,7 @@
   &[data-popper-placement="right-start"] {
     @include b(popper) {
       @include e(arrow) {
-        top: 6px;
+        top: var(--arrow-veritcal-offset);
       }
     }
   }
@@ -91,25 +94,25 @@
   &[data-popper-placement="right-end"] {
     @include b(popper) {
       @include e(arrow) {
-        bottom: 6px;
+        bottom: var(--arrow-veritcal-offset);
       }
     }
   }
 
   &[data-popper-placement^="left"] {
-    margin-left: -3px;
+    margin-left: calc(var(--spacing) * -1);
   }
 
   &[data-popper-placement^="right"] {
-    margin-left: 3px;
+    margin-left: var(--spacing);
   }
 
   &[data-popper-placement^="top"] {
-    margin-top: -3px;
+    margin-top: calc(var(--spacing) * -1);
   }
 
   &[data-popper-placement^="bottom"] {
-    margin-top: 3px;
+    margin-top: var(--spacing);
   }
 
   @include b(popper) {
