@@ -1,5 +1,3 @@
-@import 'mixins';
-
 @include b(tooltip) {
   @include define(padding-vertical, var(--za-padding-v-xs));
   @include define(padding-horizontal, var(--za-padding-h-xs));
