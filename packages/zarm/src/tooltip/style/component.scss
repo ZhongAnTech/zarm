@@ -1,10 +1,10 @@
 @import 'mixins';
 
 @include b(tooltip) {
-  @include define(padding-vertical, var(--padding-v-xs));
-  @include define(padding-horizontal, var(--padding-h-xs));
+  @include define(padding-vertical, var(--za-padding-v-xs));
+  @include define(padding-horizontal, var(--za-padding-h-xs));
   @include define(font-size, 12px);
-  @include define(color,  var(--color-text-inverse));
+  @include define(color,  var(--za-color-text-inverse));
   @include define(arrow-size,  4px);
   @include define(background, rgba(0, 0, 0, 0.8));
   @include define(z-index, 1700);
