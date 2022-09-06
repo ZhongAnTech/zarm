@@ -85,6 +85,12 @@ export const isFixed = (ele): boolean => {
 
 // 获取元素完整尺寸(offset size + margin)
 export const getOuterSizes = (ele) => {
+  if (!ele) {
+    return {
+      width: 0,
+      height: 0,
+    };
+  }
   const _display = ele.style.display;
   const _visibility = ele.style.visibility;
   ele.style.display = 'block';

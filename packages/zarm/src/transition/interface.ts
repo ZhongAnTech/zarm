@@ -4,6 +4,7 @@ export type TransitionName =
   | 'flip'
   | 'rotate'
   | 'zoom'
+  | 'zoom-fade'
   | 'move-up'
   | 'move-down'
   | 'move-left'
@@ -12,7 +13,8 @@ export type TransitionName =
   | 'slide-down'
   | 'slide-left'
   | 'slide-right'
-  | string;
+  | 'menu-slide'
+  | (String & {});
 
 export interface BaseTransitionProps {
   visible?: boolean;

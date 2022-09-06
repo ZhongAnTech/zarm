@@ -1,5 +1,5 @@
-import isPlainObject from 'lodash/isPlainObject'
-import isString from 'lodash/isString'
+import isPlainObject from 'lodash/isPlainObject';
+import isString from 'lodash/isString';
 import type { Images, ImageObject } from '../interface';
 import LOAD_STATUS from './loadStatus';
 

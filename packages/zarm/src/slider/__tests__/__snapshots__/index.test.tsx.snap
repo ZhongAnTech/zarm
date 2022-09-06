@@ -35,7 +35,7 @@ exports[`Slider snapshot defaultValue 1`] = `
         }
       }
     >
-      <Tooltip
+      <ForwardRef
         arrowPointAtCenter={true}
         content={10}
         direction="top"
@@ -47,7 +47,7 @@ exports[`Slider snapshot defaultValue 1`] = `
         <div
           className="za-slider__knob__shadow"
         />
-      </Tooltip>
+      </ForwardRef>
     </div>
   </div>
 </div>
@@ -85,7 +85,7 @@ exports[`Slider snapshot disabled 1`] = `
         }
       }
     >
-      <Tooltip
+      <ForwardRef
         arrowPointAtCenter={true}
         content={0}
         direction="top"
@@ -97,7 +97,7 @@ exports[`Slider snapshot disabled 1`] = `
         <div
           className="za-slider__knob__shadow"
         />
-      </Tooltip>
+      </ForwardRef>
     </div>
   </div>
 </div>
@@ -174,7 +174,7 @@ exports[`Slider snapshot marks 1`] = `
         }
       }
     >
-      <Tooltip
+      <ForwardRef
         arrowPointAtCenter={true}
         content={0}
         direction="top"
@@ -186,7 +186,7 @@ exports[`Slider snapshot marks 1`] = `
         <div
           className="za-slider__knob__shadow"
         />
-      </Tooltip>
+      </ForwardRef>
     </div>
   </div>
 </div>
@@ -227,7 +227,7 @@ exports[`Slider snapshot marks error 1`] = `
         }
       }
     >
-      <Tooltip
+      <ForwardRef
         arrowPointAtCenter={true}
         content={0}
         direction="top"
@@ -239,7 +239,7 @@ exports[`Slider snapshot marks error 1`] = `
         <div
           className="za-slider__knob__shadow"
         />
-      </Tooltip>
+      </ForwardRef>
     </div>
   </div>
 </div>
@@ -280,7 +280,7 @@ exports[`Slider snapshot max 1`] = `
         }
       }
     >
-      <Tooltip
+      <ForwardRef
         arrowPointAtCenter={true}
         content={0}
         direction="top"
@@ -292,7 +292,7 @@ exports[`Slider snapshot max 1`] = `
         <div
           className="za-slider__knob__shadow"
         />
-      </Tooltip>
+      </ForwardRef>
     </div>
   </div>
 </div>
@@ -333,7 +333,7 @@ exports[`Slider snapshot min 1`] = `
         }
       }
     >
-      <Tooltip
+      <ForwardRef
         arrowPointAtCenter={true}
         content={0}
         direction="top"
@@ -345,7 +345,7 @@ exports[`Slider snapshot min 1`] = `
         <div
           className="za-slider__knob__shadow"
         />
-      </Tooltip>
+      </ForwardRef>
     </div>
   </div>
 </div>
@@ -386,7 +386,7 @@ exports[`Slider snapshot shallows correctly 1`] = `
         }
       }
     >
-      <Tooltip
+      <ForwardRef
         arrowPointAtCenter={true}
         content={0}
         direction="top"
@@ -398,7 +398,7 @@ exports[`Slider snapshot shallows correctly 1`] = `
         <div
           className="za-slider__knob__shadow"
         />
-      </Tooltip>
+      </ForwardRef>
     </div>
   </div>
 </div>
@@ -523,7 +523,7 @@ exports[`Slider snapshot showMark 1`] = `
         }
       }
     >
-      <Tooltip
+      <ForwardRef
         arrowPointAtCenter={true}
         content={0}
         direction="top"
@@ -535,7 +535,7 @@ exports[`Slider snapshot showMark 1`] = `
         <div
           className="za-slider__knob__shadow"
         />
-      </Tooltip>
+      </ForwardRef>
     </div>
   </div>
 </div>
@@ -576,7 +576,7 @@ exports[`Slider snapshot step 1`] = `
         }
       }
     >
-      <Tooltip
+      <ForwardRef
         arrowPointAtCenter={true}
         content={0}
         direction="top"
@@ -588,7 +588,7 @@ exports[`Slider snapshot step 1`] = `
         <div
           className="za-slider__knob__shadow"
         />
-      </Tooltip>
+      </ForwardRef>
     </div>
   </div>
 </div>
@@ -630,7 +630,7 @@ exports[`Slider snapshot value 1`] = `
         }
       }
     >
-      <Tooltip
+      <ForwardRef
         arrowPointAtCenter={true}
         content={10}
         direction="top"
@@ -642,7 +642,7 @@ exports[`Slider snapshot value 1`] = `
         <div
           className="za-slider__knob__shadow"
         />
-      </Tooltip>
+      </ForwardRef>
     </div>
   </div>
 </div>
@@ -683,7 +683,7 @@ exports[`Slider snapshot vertical 1`] = `
         }
       }
     >
-      <Tooltip
+      <ForwardRef
         arrowPointAtCenter={true}
         content={0}
         direction="top"
@@ -695,7 +695,7 @@ exports[`Slider snapshot vertical 1`] = `
         <div
           className="za-slider__knob__shadow"
         />
-      </Tooltip>
+      </ForwardRef>
     </div>
   </div>
 </div>
@@ -820,7 +820,7 @@ exports[`Slider snapshot vertical and marks 1`] = `
         }
       }
     >
-      <Tooltip
+      <ForwardRef
         arrowPointAtCenter={true}
         content={0}
         direction="top"
@@ -832,7 +832,7 @@ exports[`Slider snapshot vertical and marks 1`] = `
         <div
           className="za-slider__knob__shadow"
         />
-      </Tooltip>
+      </ForwardRef>
     </div>
   </div>
 </div>
