@@ -138,6 +138,7 @@ export type { ToastProps, UseToast } from './toast';
 export { default as Toast } from './toast';
 
 export { default as Tooltip } from './tooltip';
+export type { TooltipCssVars, TooltipProps } from './tooltip';
 
 export type { TriggerProps } from './trigger';
 export { default as Trigger } from './trigger';

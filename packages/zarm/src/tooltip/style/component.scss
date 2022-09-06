@@ -1,20 +1,29 @@
-@import 'mixins';
-
 @include b(tooltip) {
-  padding: var(--za-tooltip-padding-vertical) var(--za-tooltip-padding-horizontal);
-  background-color: var(--za-tooltip-background);
+  @include define(padding-vertical, var(--za-padding-v-xs));
+  @include define(padding-horizontal, var(--za-padding-h-xs));
+  @include define(font-size, 12px);
+  @include define(color,  var(--za-color-text-inverse));
+  @include define(arrow-size,  4px);
+  @include define(background, rgba(0, 0, 0, 0.8));
+  @include define(z-index, 1700);
+  @include define(spacing, 3px);
+  @include define(arrow-vertical-offset, 6px);
+  @include define(arrow-horizontal-offset, 10px);
+
+  padding: var(--padding-vertical) var(--padding-horizontal);
+  background-color: var(--background);
   border-radius: 4px;
-  font-size: var(--za-tooltip-font-size);
-  color: var(--za-tooltip-color);
-  z-index: var(--zindex-tooltip);
+  font-size: var(--font-size);
+  color: var(--color);
+  z-index: var(--z-index);
 
   &[data-popper-placement^=right] {
 
     @include b(popper) {
       @include e(arrow) {
-        left: -4px;
-        border-width: var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size) 0;
-        border-right-color: var(--za-tooltip-background);
+        left: calc(var(--arrow-size) * -1);
+        border-width: var(--arrow-size) var(--arrow-size) var(--arrow-size) 0;
+        border-right-color: var(--background);
       }
     }
   }
@@ -23,9 +32,9 @@
 
     @include b(popper) {
       @include e(arrow) {
-        bottom: -4px;
-        border-width: var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size) 0;
-        border-top-color: var(--za-tooltip-background);
+        bottom: calc(var(--arrow-size) * -1);
+        border-width: var(--arrow-size) var(--arrow-size) 0;
+        border-top-color: var(--background);
       }
     }
   }
@@ -34,9 +43,9 @@
 
     @include b(popper) {
       @include e(arrow) {
-        top: -4px;
-        border-width: 0 var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size);
-        border-bottom-color: var(--za-tooltip-background);
+        top: calc(var(--arrow-size) * -1);
+        border-width: 0 var(--arrow-size) var(--arrow-size) var(--arrow-size);
+        border-bottom-color: var(--background);
       }
     }
   }
@@ -45,9 +54,9 @@
 
     @include b(popper) {
       @include e(arrow) {
-        right: -4px;
-        border-width: var(--za-tooltip-arrow-size) 0 var(--za-tooltip-arrow-size) var(--za-tooltip-arrow-size);
-        border-left-color: var(--za-tooltip-background);
+        right: calc(var(--arrow-size) * -1);
+        border-width: var(--arrow-size) 0 var(--arrow-size) var(--arrow-size);
+        border-left-color: var(--background);
       }
     }
   }
@@ -56,7 +65,7 @@
   &[data-popper-placement="bottom-start"] {
     @include b(popper) {
       @include e(arrow) {
-        left: 10px;
+        left: var(--arrow-horizontal-offset);
       }
     }
   }
@@ -65,7 +74,7 @@
   &[data-popper-placement="bottom-end"] {
     @include b(popper) {
       @include e(arrow) {
-        right: 10px;
+        right: var(--arrow-horizontal-offset);
       }
     }
   }
@@ -74,7 +83,7 @@
   &[data-popper-placement="right-start"] {
     @include b(popper) {
       @include e(arrow) {
-        top: 4px;
+        top: var(--arrow-vertical-offset);
       }
     }
   }
@@ -83,25 +92,25 @@
   &[data-popper-placement="right-end"] {
     @include b(popper) {
       @include e(arrow) {
-        bottom: 4px;
+        bottom: var(--arrow-vertical-offset);
       }
     }
   }
 
   &[data-popper-placement^="left"] {
-    margin-left: -3px;
+    margin-left: calc(var(--spacing) * -1);
   }
 
   &[data-popper-placement^="right"] {
-    margin-left: 3px;
+    margin-left: var(--spacing);
   }
 
   &[data-popper-placement^="top"] {
-    margin-top: -3px;
+    margin-top: calc(var(--spacing) * -1);
   }
 
   &[data-popper-placement^="bottom"] {
-    margin-top: 3px;
+    margin-top: var(--spacing);
   }
 
   @include b(popper) {

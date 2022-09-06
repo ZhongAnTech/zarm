@@ -58,14 +58,12 @@
   // 堆叠顺序
   --zindex-mask: 1000;
   --zindex-popup: 1100;
-  --zindex-tooltip: 1700;
   --zindex-tabbar: 100;
 
   // 透明度
   --opacity-disabled: 0.5;
   --opacity-mask: 0.4;
   --opacity-toast: 0.8;
-  --opacity-tooltip: 0.8;
 
   //阴影
   --box-shadow-light: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
@@ -325,14 +323,6 @@
   --za-toast-background: rgba(0, 0, 0, var(--opacity-toast));
   --za-toast-color: var(--color-text-inverse);
   --za-toast-font-size: 13px;
-
-  // Tooltip
-  --za-tooltip-font-size: 12px;
-  --za-tooltip-color: var(--color-text-inverse);
-  --za-tooltip-arrow-size: 4px;
-  --za-tooltip-padding-vertical: var(--padding-v-xs);
-  --za-tooltip-padding-horizontal: var(--padding-h-xs);
-  --za-tooltip-background: rgba(0, 0, 0, var(--opacity-tooltip));
 
   // Tabbar
   --za-tabbar-height: 50px;
