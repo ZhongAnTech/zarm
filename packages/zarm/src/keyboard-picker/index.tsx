@@ -28,6 +28,7 @@ const KeyboardPicker = React.forwardRef<unknown, KeyboardPickerProps>((props, re
       className={cls}
       visible={currentVisible}
       mask={false}
+      lockScroll={false}
       destroy={destroy}
     >
       <Keyboard {...restProps} />
