@@ -1,4 +1,4 @@
-# skeleton 组件名
+# skeleton 骨架屏
 
 ## 基本用法
 
