@@ -3,15 +3,5 @@
 .skeleton-page {
   .skeleton {
     padding: r(12);
-    background-color: #fff;
-  }
-}
-
-body[data-theme='dark'] {
-  .skeleton-page {
-    .skeleton {
-      padding: r(12);
-      background-color: #000;
-    }
   }
 }

@@ -85,8 +85,6 @@ const themes = {
   '--za-tooltip-background': '#5b5c60',
   '--za-image-background': '#3a3b3d',
   '--za-image-text-color': '#fff',
-  '--za-skeleton-background': '#1c1c1e',
-  '--za-skeleton-animated-background': 'rgba(54, 55, 56, 0.8)',
 } as const;
 
 const setTheme = (value: ConfigProviderProps['theme']) => {
