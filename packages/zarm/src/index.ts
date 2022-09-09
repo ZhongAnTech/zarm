@@ -114,6 +114,14 @@ export { default as Scroller } from './scroller';
 export type { SearchBarProps } from './search-bar';
 export { default as SearchBar } from './search-bar';
 
+export type {
+  SkeletonProps,
+  SkeletonTitleProps,
+  SkeletonParagraphProps,
+  SkeletonCssVars,
+} from './skeleton';
+export { default as Skeleton } from './skeleton';
+
 export type { SliderProps, SliderCssVars } from './slider';
 export { default as Slider } from './slider';
 
