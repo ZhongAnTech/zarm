@@ -26,6 +26,7 @@ const themes = {
   '--za-border-color': '#3a3b3d',
   '--za-opacity-mask': '0.7',
   '--za-activity-indicator-path-color': '#3a3b3d',
+  '--za-activity-indicator-stroke-color': '#393939',
   '--za-button-background': '#393939',
   '--za-button-border-color': 'transparent',
   '--za-button-text-color': 'rgba(255, 255, 255, 0.85)',
