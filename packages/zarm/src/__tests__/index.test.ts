@@ -431,6 +431,7 @@ describe('index', () => {
           },
           "render": [Function],
         },
+        "Skeleton": [Function],
         "Slider": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
