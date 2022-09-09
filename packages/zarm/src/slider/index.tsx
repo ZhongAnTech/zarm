@@ -110,7 +110,6 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
     [onChange, max, min],
   );
 
-  const tooltipRef = useRef<React.ElementRef<typeof Tooltip>>(null);
   const bind = useDrag(
     (state) => {
       const [offsetX, offsetY] = [state.xy[0] - state.initial[0], state.xy[1] - state.initial[1]];
@@ -119,7 +118,6 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
         offsetStart.current = getOffsetByValue(currentValue);
         setTooltip(true);
       }
-      tooltipRef?.current?.update();
       let offset = vertical ? offsetY : offsetX;
       offset += offsetStart.current;
       const maxOffset = getMaxOffset();
@@ -139,6 +137,7 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
     {
       enabled: !props.disabled,
       axis: vertical ? 'y' : 'x',
+      pointer: { touch: true },
       preventDefault: !Events.supportsPassiveEvents,
     },
   );
@@ -232,13 +231,7 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
           style={knobStyle}
           {...bind()}
         >
-          <Tooltip
-            trigger="manual"
-            arrowPointAtCenter
-            visible={tooltip}
-            content={currentValue}
-            ref={tooltipRef}
-          >
+          <Tooltip trigger="manual" arrowPointAtCenter visible={tooltip} content={currentValue}>
             <div className={bem('knob__shadow')} />
           </Tooltip>
         </div>
