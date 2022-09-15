@@ -1,4 +1,13 @@
 @include b(tabs) {
+  @include define(font-size, var(--za-font-size-md));
+  @include define(color, var(--za-color-text));
+  @include define(color-disabled, var(--za-color-text-disabled));
+  @include define(height, 45px);
+  @include define(active-color,  var(--za-theme-primary));
+  @include define(active-line-height, 2px);
+  @include define(--padding-horizontal, var(--za-padding-h-lg));
+  @include define(--padding-vertical, var(--za-padding-v-md));
+
   @include e(header) {
     position: relative;
     overflow: hidden;
@@ -25,15 +34,15 @@
   @include e(tab) {
     flex: 1;
     text-align: center;
-    color: var(--color-text);
-    font-size: var(--za-tabs-item-font-size);
+    color: var(--color);
+    font-size: var(--font-size);
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     cursor: pointer;
 
     @include m(disabled) {
-      color: var(--color-text-disabled);
+      color: var(--color-disabled);
       cursor: not-allowed;
     }
   }
@@ -41,13 +50,13 @@
   @include e(line) {
     position: absolute;
     transition: transform .3s ease-out;
-    background-color: var(--theme-primary);
+    background-color: var(--active-color);
 
     &__inner {
       display: block;
       margin: auto;
       height: 100%;
-      background-color: var(--theme-primary);
+      background-color: var(--active-color);
     }
   }
 
@@ -67,12 +76,12 @@
 
     @include e(tablist) {
       display: flex;
-      height: var(--za-tabs-height);
-      line-height: var(--za-tabs-height);
+      height: var(--height);
+      line-height: var(--height);
     }
 
     @include e(line) {
-      height: var(--za-tabs-line-height);
+      height: var(--active-line-height);
       left: 0;
       bottom: 0;
     }
@@ -84,7 +93,7 @@
 
       @include e(tab) {
         overflow: visible;
-        padding: 0 var(--za-tabs-item-padding-horizontal);
+        padding: 0 var(--padding-horizontal);
       }
     }
   }
@@ -103,11 +112,11 @@
 
     @include e(tab) {
       text-align: center;
-      padding: var(--za-tabs-item-padding-vertical) var(--za-tabs-item-padding-horizontal);
+      padding: var(--padding-vertical) var(--padding-horizontal);
     }
 
     @include e(line) {
-      width: var(--za-tabs-line-height);
+      width: var(--active-line-height);
       top: 0;
       right: 0;
     }

@@ -8,6 +8,7 @@ import { scrollTo } from '../utils/dom';
 import { ConfigContext } from '../n-config-provider';
 import type { TabPanelProps } from './TabPanel';
 import type { BaseTabsProps } from './interface';
+import type { HTMLProps } from '../utils/utilityTypes';
 
 const getChildChecked = (children: TabPanelProps['children']) => {
   let selectIndex;
@@ -45,11 +46,18 @@ const getValue = (props: TabsProps, defaultValue: TabsProps['value']) => {
   }
   return parseValueBoundary(defaultValue, props.children);
 };
-
-export interface TabsProps extends BaseTabsProps {
-  className?: string;
+export interface TabsCssVars {
+  '--font-size'?: React.CSSProperties['fontSize'];
+  '--color'?: React.CSSProperties['color'];
+  '--color-disabled'?: React.CSSProperties['color'];
+  '--height'?: React.CSSProperties['height'];
+  '--active-color'?: React.CSSProperties['color'];
+  '--active-line-height'?: React.CSSProperties['height'];
+  '--padding-horizontal'?: React.CSSProperties['left'];
+  '--padding-vertical'?: React.CSSProperties['top'];
 }
 
+export type TabsProps = BaseTabsProps & React.PropsWithChildren<HTMLProps<TabsCssVars>>;
 interface CompoundedComponent
   extends React.ForwardRefExoticComponent<TabsProps & React.RefAttributes<HTMLDivElement>> {
   Panel: typeof TabPanel;
