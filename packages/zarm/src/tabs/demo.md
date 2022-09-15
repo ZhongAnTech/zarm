@@ -271,3 +271,16 @@ ReactDOM.render(<Demo />, mountNode);
 | title    | ReactNode | -      | 标题     |
 | children | ReactNode | -      | 内容     |
 | disabled | boolean   | false  | 是否禁用 |
+
+## CSS 变量
+
+| 属性                 | 默认值                          | 说明                   |
+| :------------------- | :------------------------------ | :--------------------- |
+| --font-size          | 'var(--za-font-size-md)'        | 字体大小               |
+| --color              | 'var(--za-color-text)'          | 字体颜色               |
+| --color-disabled     | 'var(--za-color-text-disabled)' | 禁用状态下头部字体颜色 |
+| --height             | '45px'                          | 高度                   |
+| --active-color       | 'var(--za-theme-primary)'       | 选中状态颜色           |
+| --active-line-height | '2px'                           | 选中状态边框高度       |
+| --padding-horizontal | 'var(--za-padding-h-lg)'        | 水平间距               |
+| --padding-vertical   | 'var(--za-padding-v-md)'        | 垂直间距               |
