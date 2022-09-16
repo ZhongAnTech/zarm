@@ -217,13 +217,10 @@ const Demo = () => {
         visible={state.single.visible}
         value={state.single.value}
         dataSource={state.single.dataSource}
-        onOk={(selected) => {
-          console.log('Single Picker onOk: ', selected);
-          toast.show(JSON.stringify(selected));
-          setValue(
-            'single',
-            selected.map((item) => item.value),
-          );
+        onConfirm={(changedValue, items) => {
+          console.log('Single Picker onConfirm: ', items);
+          toast.show(JSON.stringify(items));
+          setValue('single', changedValue);
           setVisible('single');
         }}
         onCancel={() => setVisible('single')}
@@ -233,13 +230,10 @@ const Demo = () => {
         visible={state.multi.visible}
         value={state.multi.value}
         dataSource={state.multi.dataSource}
-        onOk={(selected) => {
-          console.log('Multi Picker onOk: ', selected);
-          toast.show(JSON.stringify(selected));
-          setValue(
-            'multi',
-            selected.map((item) => item.value),
-          );
+        onConfirm={(changedValue, items) => {
+          console.log('Multi Picker onConfirm: ', items);
+          toast.show(JSON.stringify(items));
+          setValue('multi', changedValue);
           setVisible('multi');
         }}
         onCancel={() => setVisible('multi')}
@@ -249,13 +243,10 @@ const Demo = () => {
         visible={state.cascade.visible}
         value={state.cascade.value}
         dataSource={state.cascade.dataSource}
-        onOk={(selected) => {
-          console.log('Cascade Picker onOk: ', selected);
-          toast.show(JSON.stringify(selected));
-          setValue(
-            'cascade',
-            selected.map((item) => item.value),
-          );
+        onConfirm={(changedValue, items) => {
+          console.log('Cascade Picker onConfirm: ', items);
+          toast.show(JSON.stringify(items));
+          setValue('cascade', changedValue);
           setVisible('cascade');
         }}
         onCancel={() => setVisible('cascade')}
@@ -265,18 +256,15 @@ const Demo = () => {
         visible={state.diy.visible}
         title="custom title"
         cancelText="Cancel"
-        okText="Ok"
+        confirmText="Ok"
         dataSource={state.diy.dataSource}
         value={state.diy.value}
         valueMember={state.diy.valueMember}
         itemRender={(data) => data.name}
-        onOk={(selected) => {
-          console.log('DIY Picker onOk: ', selected);
-          toast.show(JSON.stringify(selected));
-          setValue(
-            'diy',
-            selected.map((item) => item.code),
-          );
+        onConfirm={(changedValue, items) => {
+          console.log('DIY Picker onConfirm: ', items);
+          toast.show(JSON.stringify(items));
+          setValue('diy', changedValue);
           setVisible('diy');
         }}
         onCancel={() => setVisible('diy')}
@@ -286,13 +274,10 @@ const Demo = () => {
         visible={state.specDOM.visible}
         value={state.specDOM.value}
         dataSource={state.specDOM.dataSource}
-        onOk={(selected) => {
-          console.log('Picker onOk: ', selected);
-          toast.show(JSON.stringify(selected));
-          setValue(
-            'specDOM',
-            selected.map((item) => item.value),
-          );
+        onConfirm={(changedValue, items) => {
+          console.log('Picker onConfirm: ', items);
+          toast.show(JSON.stringify(items));
+          setValue('specDOM', changedValue);
           setVisible('specDOM');
         }}
         onCancel={() => setVisible('specDOM')}
@@ -352,9 +337,9 @@ const Demo = () => {
           value={value}
           wheelDefaultValue={wheelDefaultValue}
           dataSource={dataSource}
-          onOk={(selected) => {
-            console.log('Select onOk: ', selected);
-            setValue(selected.map((item) => item.value));
+          onConfirm={(changedValue, items) => {
+            console.log('Select onConfirm: ', items);
+            setValue(changedValue);
           }}
         />
       </List.Item>
@@ -409,9 +394,9 @@ const Demo = () => {
       value={value}
       valueMember={valueMember}
       dataSource={dataSource}
-      onChange={(selected) => {
-        console.log('PickerView onChange: ', selected);
-        setValue(selected.map((item) => item.code));
+      onChange={(changedValue, items) => {
+        console.log('PickerView onChange: ', items);
+        setValue(changedValue);
       }}
     />
   );
@@ -439,11 +424,11 @@ ReactDOM.render(<Demo />, mountNode);
 | 属性           | 类型                                                                               | 默认值        | 说明                                           |
 | :------------- | :--------------------------------------------------------------------------------- | :------------ | :--------------------------------------------- |
 | title          | string                                                                             | '请选择'      | 选择器标题                                     |
-| okText         | string                                                                             | '确定'        | 确定栏文字                                     |
+| confirmText         | string                                                                             | '确定'        | 确定栏文字                                     |
 | cancelText     | string                                                                             | '取消'        | 取消栏文字                                     |
 | maskClosable   | boolean                                                                            | true          | 是否点击遮罩层时关闭，需要和 onCancel 一起使用 |
 | destroy        | boolean                                                                            | false         | 弹层关闭后是否移除节点                         |
-| onOk           | (selected?: Array<{ [key: string]: string &#124; number &#124; boolean }>) => void | -             | 点击确定时触发的回调函数                       |
+| onConfirm      | (selected?: Array<{ [key: string]: string &#124; number &#124; boolean }>) => void | -             | 点击确定时触发的回调函数                       |
 | onCancel       | () => void                                                                         | -             | 点击取消时触发的回调函数                       |
 | mountContainer | HTMLElement &#124; () => HTMLElement                                               | document.body | 指定 Picker 挂载的 HTML 节点                   |
 
@@ -459,25 +444,3 @@ ReactDOM.render(<Demo />, mountNode);
 | :------------ | :-------------------------------------------------------------------------------------- | :------------------------------------------- | :----------- |
 | placeholder   | string                                                                                  | '请选择'                                     | 输入提示信息 |
 | displayRender | (selected?: Array<{ [key: string]: string &#124; number &#124; boolean }>) => ReactNode | selected => selected.map(item => item.label) | 所选值的展示 |
-
-## CSS 变量
-
-| 属性                                   | 默认值                     | 说明                 |
-| :------------------------------------- | :------------------------- | :------------------- |
-| --header-height                        | 45px                       | 头部高度             |
-| --header-font-size                     | 16px                       | 头部文字大小         |
-| --header-background-color              | #f7f7f7                    | 头部背景色           |
-| --header-title-text-color              | var(--color-text)          | 头部标题文字颜色     |
-| --header-submit-text-color             | var(--theme-primary)       | 头部提交按钮文字颜色 |
-| --header-cancel-text-color             | var(--color-text-caption)  | 头部取消按钮文字颜色 |
-| --content-background-color             | #fff                       | 内容区域背景颜色     |
-| --content-padding                      | 16px                       | 内容区域内边距       |
-| --content-mask-start-background-color  | rgba(255, 255, 255, 0.4)   | -                    |
-| --content-mask-end-background-color    | rgba(255, 255, 255, 0.8)   | -                    |
-| --wheel-item-rows                      | 5                          | 滚轮元素长度         |
-| --wheel-item-height                    | 34px                       | 滚轮元素高度         |
-| --wheel-item-font-size                 | 20px                       | 滚轮元素文字大小     |
-| --wheel-item-text-color                | var(--color-text)          | 滚轮元素文字颜色     |
-| --wheel-item-disabled-text-color       | var(--color-text-disabled) | 滚轮元素文字禁用颜色 |
-| --wheel-item-selected-background-color | rgba(116, 116, 128, 0.08)  | 滚轮元素文字选中颜色 |
-| --wheel-item-selected-border-radius    | 7px                        | 滚轮元素文字选中圆角 |

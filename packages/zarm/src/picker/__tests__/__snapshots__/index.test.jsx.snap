@@ -53,7 +53,7 @@ exports[`Picker Picker render visible 1`] = `
       locale={
         Object {
           "cancelText": "取消",
-          "okText": "确定",
+          "confirmText": "确定",
           "title": "请选择",
         }
       }
@@ -441,7 +441,7 @@ exports[`Picker Picker render visible 1`] = `
                         locale={
                           Object {
                             "cancelText": "取消",
-                            "okText": "确定",
+                            "confirmText": "确定",
                             "title": "请选择",
                           }
                         }
@@ -640,7 +640,7 @@ exports[`Picker render custom label 1`] = `
       locale={
         Object {
           "cancelText": "取消",
-          "okText": "确定",
+          "confirmText": "确定",
           "title": "请选择",
         }
       }

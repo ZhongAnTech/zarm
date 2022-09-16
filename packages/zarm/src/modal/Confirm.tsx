@@ -18,8 +18,8 @@ const confirm = (props: Omit<ConfirmProps, 'visible'>): Promise<boolean> => {
           <Confirm
             {...props}
             visible={visible}
-            onOk={async () => {
-              const close = await props.onOk?.();
+            onConfirm={async () => {
+              const close = await props.onConfirm?.();
               if (close === false) return;
               setVisible(false);
               resolve(true);

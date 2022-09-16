@@ -1,4 +1,4 @@
 export default {
   cancelText: '取消',
-  okText: '确定',
+  confirmText: '确定',
 };

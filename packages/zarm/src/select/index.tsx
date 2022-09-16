@@ -24,7 +24,7 @@ const Select = React.forwardRef<unknown, SelectProps>((props, ref) => {
     value,
     onChange,
     onCancel,
-    onOk,
+    onConfirm,
     defaultValue,
     ...others
   } = props;
@@ -75,17 +75,17 @@ const Select = React.forwardRef<unknown, SelectProps>((props, ref) => {
     [onChange],
   );
 
-  const handleOnOk = useCallback(
+  const handleonConfirm = useCallback(
     (selected) => {
       setState({
         selectValue: selected,
         visible: false,
       });
-      if (typeof onOk === 'function') {
-        onOk(selected);
+      if (typeof onConfirm === 'function') {
+        onConfirm(selected);
       }
     },
-    [onOk],
+    [onConfirm],
   );
 
   // 点击取消
@@ -127,7 +127,7 @@ const Select = React.forwardRef<unknown, SelectProps>((props, ref) => {
         className={className}
         visible={visible}
         value={value}
-        onOk={handleOnOk}
+        onConfirm={handleonConfirm}
         onChange={hanldeChange}
         onCancel={handleOnCancel}
       />

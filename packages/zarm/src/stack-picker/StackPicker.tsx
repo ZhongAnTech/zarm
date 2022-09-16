@@ -38,9 +38,9 @@ export default memo(
     itemRender = (data: TDataSource) => data[displayMember as 'label'],
     onChangeValidate,
     cancelText,
-    okText,
+    confirmText,
     onChange,
-    onOk,
+    onConfirm,
     onCancel,
     maskClosable = false,
     locale,
@@ -180,11 +180,11 @@ export default memo(
      * 点击确认按钮
      */
     const handleOk = () => {
-      if (onOk) {
-        if (typeof onOk !== 'function') {
-          console.error('onOk need a function');
+      if (onConfirm) {
+        if (typeof onConfirm !== 'function') {
+          console.error('onConfirm need a function');
         } else {
-          onOk(currentValue.map((v) => v![valueMember as 'value']));
+          onConfirm(currentValue.map((v) => v![valueMember as 'value']));
         }
       }
     };
@@ -226,7 +226,7 @@ export default memo(
                 {...{
                   prefixCls,
                   cancelText,
-                  okText,
+                  confirmText,
                   title,
                   handleCancel,
                   handleOk,

@@ -68,7 +68,7 @@ exports[`StackPicker renders correctly 1`] = `
   }
   defaultValue={Array []}
   itemRender={[Function]}
-  okText="确定"
+  confirmText="确定"
   onChange={[MockFunction]}
   value={Array []}
   valueMember="value"
@@ -142,7 +142,7 @@ exports[`StackPicker renders correctly 1`] = `
     defaultValue={Array []}
     forwardedRef={null}
     itemRender={[Function]}
-    okText="确定"
+    confirmText="确定"
     onChange={[MockFunction]}
     value={Array []}
     valueMember="value"
@@ -218,11 +218,11 @@ exports[`StackPicker renders correctly 1`] = `
       locale={
         Object {
           "cancelText": "取消",
-          "okText": "确定",
+          "confirmText": "确定",
         }
       }
       localeCode="zh-CN"
-      okText="确定"
+      confirmText="确定"
       onChange={[MockFunction]}
       safeIphoneX={false}
       value={Array []}
@@ -327,9 +327,9 @@ exports[`StackPicker renders correctly 1`] = `
                                 >
                                   <p>
                                     选择：
-                                    
+
                                   </p>
-                                  
+
                                 </div>
                                 <div
                                   class="za-stack-picker__group"
@@ -468,9 +468,9 @@ exports[`StackPicker renders correctly 1`] = `
                           >
                             <p>
                               选择：
-                              
+
                             </p>
-                            
+
                           </div>
                           <div
                             class="za-stack-picker__group"
@@ -592,9 +592,9 @@ exports[`StackPicker renders correctly 1`] = `
                               >
                                 <p>
                                   选择：
-                                  
+
                                 </p>
-                                
+
                               </div>
                               <div
                                 class="za-stack-picker__group"
@@ -698,10 +698,10 @@ exports[`StackPicker renders correctly 1`] = `
                             locale={
                               Object {
                                 "cancelText": "取消",
-                                "okText": "确定",
+                                "confirmText": "确定",
                               }
                             }
-                            okText="确定"
+                            confirmText="确定"
                             prefixCls="za-stack-picker"
                             title="请选择"
                           >

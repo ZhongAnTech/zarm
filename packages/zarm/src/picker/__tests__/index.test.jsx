@@ -53,9 +53,9 @@ describe('Picker', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('should trigger onOk when press ok button', () => {
+  it('should trigger onConfirm when press ok button', () => {
     jest.useFakeTimers();
-    const onOkFn = jest.fn();
+    const onConfirmFn = jest.fn();
 
     const wrapper = mount(
       <Picker
@@ -79,13 +79,13 @@ describe('Picker', () => {
         ]}
         visible
         value={['1', '12']}
-        onOk={onOkFn}
+        onConfirm={onConfirmFn}
       />,
     );
 
     wrapper.find('.za-picker__submit').simulate('click');
     jest.runAllTimers();
-    expect(onOkFn).toBeCalled();
+    expect(onConfirmFn).toBeCalled();
   });
 
   it('should trigger onCancel when press cancel button', () => {
@@ -122,7 +122,7 @@ describe('Picker', () => {
   });
 
   // it('should trigger onMaskClick when click mask', () => {
-  //   const onOkFn = jest.fn();
+  //   const onConfirmFn = jest.fn();
   //   const onMaskClick = jest.fn();
 
   //   const wrapper = mount(
@@ -147,7 +147,7 @@ describe('Picker', () => {
   //       ]}
   //       visible
   //       defaultValue={['1', '12']}
-  //       onOk={onOkFn}
+  //       onConfirm={onConfirmFn}
   //       onMaskClick={onMaskClick}
   //     />, { attachTo: window.domNode }
   //   );
@@ -260,7 +260,7 @@ describe('Picker', () => {
   //   const wrapper = mount(
   //     <Picker.Stack
   //       dataSource={District}
-  //       onOk={onChangeFn}
+  //       onConfirm={onChangeFn}
   //       />
   //   );
 

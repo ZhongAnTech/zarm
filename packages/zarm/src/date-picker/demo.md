@@ -114,7 +114,7 @@ const Demo = () => {
         mode="date"
         value={state.date.value}
         wheelDefaultValue={state.date.wheelDefaultValue}
-        onOk={(value) => {
+        onConfirm={(value) => {
           setValue('date', value);
           toggle('date');
           toast.show(JSON.stringify(value));
@@ -126,7 +126,7 @@ const Demo = () => {
         visible={state.time.visible}
         mode="time"
         value={state.time.value}
-        onOk={(value) => {
+        onConfirm={(value) => {
           setValue('time', value);
           toggle('time');
           toast.show(JSON.stringify(value));
@@ -137,13 +137,13 @@ const Demo = () => {
       <DatePicker
         visible={state.limitDate.visible}
         title="选择日期"
-        okText="确定"
+        confirmText="确定"
         cancelText="取消"
         mode="date"
         min="2007-01-03"
         max="2019-11-23"
         value={state.limitDate.value}
-        onOk={(value) => {
+        onConfirm={(value) => {
           setValue('limitDate', value);
           toggle('limitDate');
           toast.show(JSON.stringify(value));
@@ -154,7 +154,7 @@ const Demo = () => {
       <DatePicker
         visible={state.specDOM.visible}
         value={state.specDOM.value}
-        onOk={(value) => {
+        onConfirm={(value) => {
           setValue('specDOM', value);
           toggle('specDOM');
           toast.show(JSON.stringify(value));
@@ -191,8 +191,8 @@ const Demo = () => {
           min="1974-05-16"
           max="2027-05-15"
           value={value}
-          onOk={(value) => {
-            console.log('DateSelect onOk: ', value);
+          onConfirm={(value) => {
+            console.log('DateSelect onConfirm: ', value);
             setValue(value);
           }}
         />
@@ -249,10 +249,10 @@ ReactDOM.render(<Demo />, mountNode);
 | visible           | boolean                              | false         | 是否展示                                       |
 | title             | string                               | '请选择'      | 选择器标题                                     |
 | cancelText        | string                               | '取消'        | 取消栏文字                                     |
-| okText            | string                               | '确定'        | 确定栏文字                                     |
+| confirmText            | string                               | '确定'        | 确定栏文字                                     |
 | maskClosable      | boolean                              | true          | 是否点击遮罩层时关闭，需要和 onCancel 一起使用 |
 | wheelDefaultValue | string \| Date                       | -             | 滚轮默认停留的日期位置                         |
-| onOk              | (value?: Date) => void               | -             | 点击确定时触发的回调函数                       |
+| onConfirm              | (value?: Date) => void               | -             | 点击确定时触发的回调函数                       |
 | onCancel          | () => void                           | -             | 点击取消时触发的回调函数                       |
 | mountContainer    | HTMLElement &#124; () => HTMLElement | document.body | 指定 DatePicker 挂载的 HTML 节点               |
 

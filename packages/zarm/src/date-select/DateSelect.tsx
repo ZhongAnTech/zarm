@@ -51,15 +51,15 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
     }
   };
 
-  onOk = (selected) => {
-    const { onOk } = this.props;
+  onConfirm = (selected) => {
+    const { onConfirm } = this.props;
     this.setState({
       visible: false,
       selectValue: selected,
     });
 
-    if (typeof onOk === 'function') {
-      onOk(selected);
+    if (typeof onConfirm === 'function') {
+      onConfirm(selected);
     }
   };
 
@@ -105,7 +105,7 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
           className={className}
           visible={visible}
           value={selectValue}
-          onOk={this.onOk}
+          onConfirm={this.onConfirm}
           onCancel={this.onCancel}
         />
       </div>

@@ -1,14 +1,10 @@
 import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
-import isEqual from 'lodash/isEqual';
-import Popup from '../popup';
-import PickerView from '../picker-view';
-import parseProps from '../picker-view/utils/parseProps';
-import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
+import PickerView, { PickerViewInstance } from '../picker-view';
 import type { BasePickerProps } from './interface';
 import { ConfigContext } from '../n-config-provider';
 import type { HTMLProps } from '../utils/utilityTypes';
-import { noop } from '../utils';
+import PickerContainer from './Container';
 
 export type PickerProps = BasePickerProps &
   HTMLProps<{
@@ -31,101 +27,60 @@ export type PickerProps = BasePickerProps &
     '--wheel-item-selected-border-radius': React.CSSProperties['borderRadius'];
   }>;
 
-const EVENTS = ['onOk', 'onCancel', 'onChange'];
-
 const Picker = React.forwardRef<HTMLDivElement, PickerProps>((props, ref) => {
   const {
     className,
-    cancelText,
-    okText,
     title,
+    confirmText,
+    cancelText,
+    value,
+    defaultValue,
+    dataSource,
     valueMember,
+    cols,
+    itemRender,
     maskClosable,
     mountContainer,
     forceRender,
     destroy,
-    onOk,
-    onCancel,
     onChange,
+    onConfirm,
+    onCancel,
     visible,
-    ...rest
   } = props;
   const { prefixCls, locale } = React.useContext(ConfigContext);
   const bem = createBEM('picker', { prefixCls });
-  const [state, setState] = React.useState({
-    ...parseProps.getSource(props),
-    props,
-    stopScroll: false,
-    tempValue: null,
-    tempObjValue: null,
-  });
+  const pickerViewRef = React.useRef<PickerViewInstance>(null);
 
-  if (!isEqual(removeFnFromProps(props, EVENTS), removeFnFromProps(state.props, EVENTS))) {
-    const next = parseProps.getSource(props);
-    setState({
-      ...state,
-      ...next,
-      tempValue: next.value,
-      props,
-      tempObjValue: next.objValue,
-    });
-  }
-
-  const handleOk = () => {
-    setState({ ...state, stopScroll: true });
-    onOk?.(state.objValue);
-    setState({ ...state, stopScroll: false });
-  };
-
-  const handleCancel = () => {
-    const { tempValue = [], tempObjValue = [] } = state;
-    setState({
-      ...state,
-      value: tempValue,
-      objValue: tempObjValue,
-    });
-    onCancel?.();
-  };
-
-  const handleChange = (selected) => {
-    const value = selected?.map((item) => item[valueMember!]);
-    setState({ ...state, value, objValue: selected });
-    onChange?.(selected);
+  const handleConfirm = () => {
+    onConfirm?.(pickerViewRef.current?.value!, pickerViewRef.current?.dataSource!);
   };
 
   return (
-    <Popup
-      ref={ref}
-      className={className}
+    <PickerContainer
+      title={title}
+      confirmText={confirmText}
+      cancelText={cancelText}
       visible={visible}
-      onMaskClick={maskClosable ? handleCancel : noop}
-      mountContainer={mountContainer}
+      maskClosable={maskClosable}
       forceRender={forceRender}
       destroy={destroy}
+      mountContainer={mountContainer}
+      onConfirm={handleConfirm}
+      onCancel={onCancel}
+      onClose={onCancel}
     >
-      <div
-        className={bem('')}
-        onClick={(e) => {
-          e.stopPropagation();
-        }}
-      >
-        <div className={bem('header')}>
-          <div className={bem('cancel')} onClick={handleCancel}>
-            {cancelText || locale?.Picker.cancelText}
-          </div>
-          <div className={bem('title')}>{title || locale?.Picker.title}</div>
-          <div className={bem('submit')} onClick={handleOk}>
-            {okText || locale?.Picker.okText}
-          </div>
-        </div>
-        <PickerView
-          {...rest}
-          value={state.value}
-          onChange={handleChange}
-          stopScroll={state.stopScroll}
-        />
-      </div>
-    </Popup>
+      <PickerView
+        ref={pickerViewRef}
+        value={value}
+        defaultValue={defaultValue}
+        dataSource={dataSource}
+        cols={cols}
+        valueMember={valueMember}
+        itemRender={itemRender}
+        onChange={onChange}
+      />
+    </PickerContainer>
   );
 });
 

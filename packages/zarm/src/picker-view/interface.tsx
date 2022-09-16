@@ -1,4 +1,4 @@
-import type { BaseWheelProps, WheelValue, WheelItem } from '../wheel/interface';
+import type { BaseWheelProps, WheelValue } from '../wheel/interface';
 
 export type PickerDataSource<T = { value: WheelValue; label: string }> = Array<
   T & { children?: PickerDataSource<T> }
@@ -6,10 +6,10 @@ export type PickerDataSource<T = { value: WheelValue; label: string }> = Array<
 
 export interface BasePickerViewProps
   extends Pick<BaseWheelProps, 'valueMember' | 'itemRender' | 'disabled' | 'stopScroll'> {
-  value?: WheelValue | Array<WheelValue>;
-  defaultValue?: WheelValue | Array<WheelValue>;
-  wheelDefaultValue?: WheelValue | Array<WheelValue>;
+  value?: WheelValue[];
+  defaultValue?: WheelValue[];
+  wheelDefaultValue?: WheelValue[];
   dataSource?: PickerDataSource;
-  onChange?: (value?: Array<WheelItem>, i?: number) => void;
+  onChange?: (value: WheelValue[], dataSource: PickerDataSource, level?: number) => void;
   cols?: number;
 }

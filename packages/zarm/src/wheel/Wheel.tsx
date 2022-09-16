@@ -131,7 +131,7 @@ const Wheel = (props: WheelProps) => {
     const oldIndex = getSelectedIndex(prevValue, prevDataSource);
     const newIndex = getSelectedIndex(value, dataSource);
     if (newIndex !== oldIndex) {
-      scrollInstance.current?.wheelTo(newIndex);
+      scrollInstance.current?.wheelTo(newIndex, 300);
     }
 
     if (stopScroll && prevStopScroll !== stopScroll) {

@@ -102,7 +102,7 @@ const Keyboard = React.forwardRef<unknown, KeyboardProps>((props, ref) => {
     const renderText = () => {
       switch (keyObj.text) {
         case 'ok':
-          return locale!.okText;
+          return locale!.confirmText;
 
         case 'delete':
           return <DeleteKeyIcon size="lg" style={{ pointerEvents: 'none' }} />;

@@ -4,7 +4,7 @@
   @include define(header-font-size, 16px);
   @include define(header-background-color, #f7f7f7);
   @include define(header-title-text-color, var(--color-text));
-  @include define(header-submit-text-color, var(--theme-primary));
+  @include define(header-confirm-text-color, var(--theme-primary));
   @include define(header-cancel-text-color, var(--color-text-caption));
 
   @include define(content-background-color, #fff);
@@ -54,7 +54,7 @@
     @include onepx(top);
   }
 
-  @include e(cancel, submit) {
+  @include e(cancel, confirm) {
     flex: 1;
     padding: 0 r(20);
     cursor: pointer;
@@ -65,9 +65,9 @@
     color: var(--header-cancel-text-color);
   }
 
-  @include e(submit) {
+  @include e(confirm) {
     text-align: right;
-    color: var(--header-submit-text-color);
+    color: var(--header-confirm-text-color);
   }
 
   @include e(title) {

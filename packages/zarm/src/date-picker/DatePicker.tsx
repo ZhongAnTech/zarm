@@ -25,8 +25,8 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   static getDerivedStateFromProps(props, state) {
     if (
       !isEqual(
-        removeFnFromProps(props, ['onOk', 'onCancel', 'onChange']),
-        removeFnFromProps(state.prevProps, ['onOk', 'onCancel', 'onChange']),
+        removeFnFromProps(props, ['onConfirm', 'onCancel', 'onChange']),
+        removeFnFromProps(state.prevProps, ['onConfirm', 'onCancel', 'onChange']),
       )
     ) {
       return {
@@ -49,8 +49,8 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     }
   };
 
-  onOk = () => {
-    const { onOk } = this.props;
+  onConfirm = () => {
+    const { onConfirm } = this.props;
     this.setState(
       {
         stopScroll: true,
@@ -61,8 +61,8 @@ export default class DatePicker extends Component<DatePickerProps, any> {
             stopScroll: false,
           },
           () => {
-            if (typeof onOk === 'function') {
-              onOk(this.state.date);
+            if (typeof onConfirm === 'function') {
+              onConfirm(this.state.date);
             }
           },
         );
@@ -92,12 +92,12 @@ export default class DatePicker extends Component<DatePickerProps, any> {
       prefixCls,
       className,
       title,
-      okText,
+      confirmText,
       cancelText,
       locale,
       mountContainer,
       maskClosable,
-      onOk,
+      onConfirm,
       onCancel,
       onInit,
       visible,
@@ -125,8 +125,8 @@ export default class DatePicker extends Component<DatePickerProps, any> {
               {cancelText || locale!.cancelText}
             </div>
             <div className={`${prefixCls}__title`}>{title || locale!.title}</div>
-            <div className={`${prefixCls}__submit`} onClick={this.onOk}>
-              {okText || locale!.okText}
+            <div className={`${prefixCls}__submit`} onClick={this.onConfirm}>
+              {confirmText || locale!.confirmText}
             </div>
           </div>
           <DatePickerView

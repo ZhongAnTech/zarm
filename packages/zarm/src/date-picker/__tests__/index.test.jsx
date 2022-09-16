@@ -23,14 +23,14 @@ describe('DatePicker', () => {
   //   // expect(onMaskClickFn).toBeCalled();
   // });
 
-  it('should trigger onOk when press ok button', () => {
-    const onOkFn = jest.fn();
+  it('should trigger onConfirm when press ok button', () => {
+    const onConfirmFn = jest.fn();
 
-    const wrapper = mount(<DatePicker mode="date" value="2009-3-4" visible onOk={onOkFn} />);
+    const wrapper = mount(<DatePicker mode="date" value="2009-3-4" visible onConfirm={onConfirmFn} />);
     jest.useFakeTimers();
     wrapper.find('.za-date-picker__submit').simulate('click');
     jest.runAllTimers();
-    expect(onOkFn).toBeCalled();
+    expect(onConfirmFn).toBeCalled();
   });
 
   it('should trigger onCancel when press cancel button', () => {

@@ -59,7 +59,7 @@ exports[`DateSelect DateSelect date 1`] = `
           minuteStep={1}
           mode="date"
           onCancel={[Function]}
-          onOk={[Function]}
+          onConfirm={[Function]}
           safeIphoneX={false}
           title="选择日期"
           value={2019-04-23T00:00:00.000Z}
@@ -73,7 +73,7 @@ exports[`DateSelect DateSelect date 1`] = `
             minuteStep={1}
             mode="date"
             onCancel={[Function]}
-            onOk={[Function]}
+            onConfirm={[Function]}
             safeIphoneX={false}
             title="选择日期"
             value={2019-04-23T00:00:00.000Z}
@@ -85,7 +85,7 @@ exports[`DateSelect DateSelect date 1`] = `
               locale={
                 Object {
                   "cancelText": "取消",
-                  "okText": "确定",
+                  "confirmText": "确定",
                   "title": "请选择",
                 }
               }
@@ -95,7 +95,7 @@ exports[`DateSelect DateSelect date 1`] = `
               mode="date"
               onCancel={[Function]}
               onInit={[Function]}
-              onOk={[Function]}
+              onConfirm={[Function]}
               prefixCls="za-date-picker"
               safeIphoneX={false}
               title="选择日期"
@@ -260,7 +260,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
           minuteStep={1}
           mode="datetime"
           onCancel={[Function]}
-          onOk={[Function]}
+          onConfirm={[Function]}
           safeIphoneX={false}
           title="选择时间"
           valueMember="value"
@@ -276,7 +276,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
             minuteStep={1}
             mode="datetime"
             onCancel={[Function]}
-            onOk={[Function]}
+            onConfirm={[Function]}
             safeIphoneX={false}
             title="选择时间"
             valueMember="value"
@@ -288,7 +288,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
               locale={
                 Object {
                   "cancelText": "取消",
-                  "okText": "确定",
+                  "confirmText": "确定",
                   "title": "请选择",
                 }
               }
@@ -300,7 +300,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
               mode="datetime"
               onCancel={[Function]}
               onInit={[Function]}
-              onOk={[Function]}
+              onConfirm={[Function]}
               prefixCls="za-date-picker"
               safeIphoneX={false}
               title="选择时间"
@@ -499,7 +499,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
           minuteStep={1}
           mode="date"
           onCancel={[Function]}
-          onOk={[Function]}
+          onConfirm={[Function]}
           safeIphoneX={false}
           value={2019-04-23T00:00:00.000Z}
           valueMember="value"
@@ -525,7 +525,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
             minuteStep={1}
             mode="date"
             onCancel={[Function]}
-            onOk={[Function]}
+            onConfirm={[Function]}
             safeIphoneX={false}
             value={2019-04-23T00:00:00.000Z}
             valueMember="value"
@@ -549,7 +549,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
               locale={
                 Object {
                   "cancelText": "取消",
-                  "okText": "确定",
+                  "confirmText": "确定",
                   "title": "请选择",
                 }
               }
@@ -559,7 +559,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
               mode="date"
               onCancel={[Function]}
               onInit={[Function]}
-              onOk={[Function]}
+              onConfirm={[Function]}
               prefixCls="za-date-picker"
               safeIphoneX={false}
               value={2019-04-23T00:00:00.000Z}
@@ -6768,7 +6768,7 @@ exports[`DateSelect DateSelect time 1`] = `
           minuteStep={15}
           mode="time"
           onCancel={[Function]}
-          onOk={[Function]}
+          onConfirm={[Function]}
           safeIphoneX={false}
           title="选择时间"
           valueMember="value"
@@ -6782,7 +6782,7 @@ exports[`DateSelect DateSelect time 1`] = `
             minuteStep={15}
             mode="time"
             onCancel={[Function]}
-            onOk={[Function]}
+            onConfirm={[Function]}
             safeIphoneX={false}
             title="选择时间"
             valueMember="value"
@@ -6794,7 +6794,7 @@ exports[`DateSelect DateSelect time 1`] = `
               locale={
                 Object {
                   "cancelText": "取消",
-                  "okText": "确定",
+                  "confirmText": "确定",
                   "title": "请选择",
                 }
               }
@@ -6804,7 +6804,7 @@ exports[`DateSelect DateSelect time 1`] = `
               mode="time"
               onCancel={[Function]}
               onInit={[Function]}
-              onOk={[Function]}
+              onConfirm={[Function]}
               prefixCls="za-date-picker"
               safeIphoneX={false}
               title="选择时间"
@@ -6954,7 +6954,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
           minuteStep={1}
           mode="date"
           onCancel={[Function]}
-          onOk={[Function]}
+          onConfirm={[Function]}
           safeIphoneX={false}
           valueMember="value"
           visible={false}
@@ -6967,7 +6967,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
             minuteStep={1}
             mode="date"
             onCancel={[Function]}
-            onOk={[Function]}
+            onConfirm={[Function]}
             safeIphoneX={false}
             valueMember="value"
             visible={false}
@@ -6978,7 +6978,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
               locale={
                 Object {
                   "cancelText": "取消",
-                  "okText": "确定",
+                  "confirmText": "确定",
                   "title": "请选择",
                 }
               }
@@ -6988,7 +6988,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
               mode="date"
               onCancel={[Function]}
               onInit={[Function]}
-              onOk={[Function]}
+              onConfirm={[Function]}
               prefixCls="za-date-picker"
               safeIphoneX={false}
               valueMember="value"
@@ -7142,7 +7142,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
           minuteStep={1}
           mode="date"
           onCancel={[Function]}
-          onOk={[Function]}
+          onConfirm={[Function]}
           safeIphoneX={false}
           title="选择日期"
           valueMember="value"
@@ -7156,7 +7156,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
             minuteStep={1}
             mode="date"
             onCancel={[Function]}
-            onOk={[Function]}
+            onConfirm={[Function]}
             safeIphoneX={false}
             title="选择日期"
             valueMember="value"
@@ -7168,7 +7168,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
               locale={
                 Object {
                   "cancelText": "取消",
-                  "okText": "确定",
+                  "confirmText": "确定",
                   "title": "请选择",
                 }
               }
@@ -7178,7 +7178,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
               mode="date"
               onCancel={[Function]}
               onInit={[Function]}
-              onOk={[Function]}
+              onConfirm={[Function]}
               prefixCls="za-date-picker"
               safeIphoneX={false}
               title="选择日期"
@@ -7352,7 +7352,7 @@ exports[`DateSelect DateSelect year 1`] = `
           minuteStep={1}
           mode="year"
           onCancel={[Function]}
-          onOk={[Function]}
+          onConfirm={[Function]}
           safeIphoneX={false}
           title="选择年份"
           value="2017"
@@ -7366,7 +7366,7 @@ exports[`DateSelect DateSelect year 1`] = `
             minuteStep={1}
             mode="year"
             onCancel={[Function]}
-            onOk={[Function]}
+            onConfirm={[Function]}
             safeIphoneX={false}
             title="选择年份"
             value="2017"
@@ -7378,7 +7378,7 @@ exports[`DateSelect DateSelect year 1`] = `
               locale={
                 Object {
                   "cancelText": "取消",
-                  "okText": "确定",
+                  "confirmText": "确定",
                   "title": "请选择",
                 }
               }
@@ -7388,7 +7388,7 @@ exports[`DateSelect DateSelect year 1`] = `
               mode="year"
               onCancel={[Function]}
               onInit={[Function]}
-              onOk={[Function]}
+              onConfirm={[Function]}
               prefixCls="za-date-picker"
               safeIphoneX={false}
               title="选择年份"

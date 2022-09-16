@@ -8,7 +8,7 @@ import type { HTMLProps } from '../utils/utilityTypes';
 export type ConfirmProps = BaseConfirmProps & HTMLProps;
 
 const Confirm = React.forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
-  const { className, content, okText, cancelText, onOk, onCancel, ...rest } = props;
+  const { className, content, confirmText, cancelText, onConfirm, onCancel, ...rest } = props;
   const { prefixCls, locale } = React.useContext(ConfigContext);
   const bem = createBEM('confirm', { prefixCls });
   const cls = bem([className]);
@@ -24,9 +24,9 @@ const Confirm = React.forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
               onClick: onCancel,
             },
             {
-              text: okText || locale?.Confirm.okText,
+              text: confirmText || locale?.Confirm.confirmText,
               bold: true,
-              onClick: onOk,
+              onClick: onConfirm,
             },
           ],
         ]}
