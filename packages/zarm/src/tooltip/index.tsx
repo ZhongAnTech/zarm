@@ -46,12 +46,10 @@ const Tooltip = forwardRef<refHander, TooltipProps>((props, ref) => {
       },
     };
   });
-  return content ? (
+  return (
     <Popper content={content!} className={cls} {...others} ref={poperRef}>
       {children}
     </Popper>
-  ) : (
-    <>{children}</>
   );
 });
 

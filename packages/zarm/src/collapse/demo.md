@@ -123,3 +123,20 @@ ReactDOM.render(
 | key      | string \| number          | -      | 对应 activeKey       |
 | disabled | boolean                   | false  | 是否禁用             |
 | onChange | (active: boolean) => void | -      | 点击某一项的回调函数 |
+
+## CSS 变量
+
+| 属性                         | 默认值                          | 说明                   |
+| :--------------------------- | :------------------------------ | :--------------------- |
+| --border-color               | 'rgba(60, 60, 67, 0.36)'        | 边框颜色               |
+| --arrow-color                | 'rgba(0, 0, 0, 0.2)'            | 箭头颜色               |
+| --arrow-size                 | '10px'                          | 箭头的大小             |
+| --arrow-width                | '2px'                           | 箭头的粗细             |
+| --arrow-disabled-color       | '#eee'                          | 箭头禁用状态颜色       |
+| --header-height              | '52px'                          | 头部的高度             |
+| --header-padding-horizontal  | '16px'                          | 头部的水平间距         |
+| --header-padding-vertical    | '15px'                          | 头部的垂直间距         |
+| --header-disable-color       | 'var(--za-color-text-disabled)' | 禁用状态下头部字体颜色 |
+| --content-color              | 'var(--za-color-text-caption)'  | 内容颜色               |
+| --content-padding-vertical   | 'var(--za-padding-v-sm)'        | 内容水平间距           |
+| --content-padding-horizontal | 'var(--za-padding-h-sm)'        | 内容水平间距           |

@@ -2,13 +2,60 @@
 
 exports[`Tooltip renders correctly 1`] = `
 <ForwardRef
+  content="hello"
   direction="top"
   hasArrow={true}
   onVisibleChange={[Function]}
-  title="hello"
 >
-  <span>
-    foo
-  </span>
+  <ForwardRef
+    animationType="zoom-fade"
+    arrowPointAtCenter={false}
+    className="za-tooltip"
+    content="hello"
+    destroy={false}
+    direction="top"
+    hasArrow={true}
+    mouseEnterDelay={150}
+    mouseLeaveDelay={100}
+    onVisibleChange={[Function]}
+    trigger="hover"
+    visible={false}
+  >
+    <Transition
+      destroy={false}
+      nodeRef={[Function]}
+      onLeaveEnd={[Function]}
+      tranisitionName="za-zoom-fade"
+      visible={false}
+    >
+      <Transition
+        addEndListener={[Function]}
+        appear={false}
+        enter={true}
+        exit={true}
+        in={false}
+        mountOnEnter={true}
+        nodeRef={
+          Object {
+            "current": undefined,
+          }
+        }
+        onEnter={[Function]}
+        onEntered={[Function]}
+        onEntering={[Function]}
+        onExit={[Function]}
+        onExited={[Function]}
+        onExiting={[Function]}
+        unmountOnExit={false}
+      />
+    </Transition>
+    <span
+      onMouseMove={[Function]}
+      onPointerDown={[Function]}
+      onPointerEnter={[Function]}
+    >
+      foo
+    </span>
+  </ForwardRef>
 </ForwardRef>
 `;

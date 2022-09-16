@@ -7,7 +7,7 @@ describe('Tooltip', () => {
   it('renders correctly', () => {
     jest.useFakeTimers();
     const wrapper = mount(
-      <Tooltip direction="top" title="hello">
+      <Tooltip direction="top" content="hello">
         <span>foo</span>
       </Tooltip>,
     );
