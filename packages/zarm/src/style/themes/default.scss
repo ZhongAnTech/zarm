@@ -58,7 +58,6 @@
   // 堆叠顺序
   --zindex-mask: 1000;
   --zindex-popup: 1100;
-  --zindex-tabbar: 100;
 
   // 透明度
   --opacity-disabled: 0.5;
@@ -136,7 +135,6 @@
   --za-zindex-mask: 1000;
   --za-zindex-popup: 1100;
   --za-zindex-tooltip: 1700;
-  --za-zindex-tabbar: 100;
 
   // 透明度
   --za-opacity-disabled: 0.5;
@@ -318,13 +316,6 @@
   --za-toast-background: rgba(0, 0, 0, var(--opacity-toast));
   --za-toast-color: var(--color-text-inverse);
   --za-toast-font-size: 13px;
-
-  // Tabbar
-  --za-tabbar-height: 50px;
-  --za-tabbar-hidden-bottom: -50px;
-  --za-tabbar-background: #fff;
-  --za-tabbar-item-font-size: 12px;
-  --za-tabbar-item-active-color: var(--theme-primary);
 
   // Wheel
   --za-wheel-item-height: 34px;
