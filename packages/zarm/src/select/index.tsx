@@ -67,22 +67,22 @@ const Select = React.forwardRef<unknown, SelectProps>((props, ref) => {
   }, [disabled, state]);
 
   const hanldeChange = useCallback(
-    (selected) => {
+    (changedValue, dataSource) => {
       if (typeof onChange === 'function') {
-        onChange(selected);
+        onChange(changedValue, dataSource);
       }
     },
     [onChange],
   );
 
   const handleonConfirm = useCallback(
-    (selected) => {
+    (changedValue, dataSource) => {
       setState({
-        selectValue: selected,
+        selectValue: changedValue,
         visible: false,
       });
       if (typeof onConfirm === 'function') {
-        onConfirm(selected);
+        onConfirm(changedValue, dataSource);
       }
     },
     [onConfirm],

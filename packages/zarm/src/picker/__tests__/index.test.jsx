@@ -83,7 +83,7 @@ describe('Picker', () => {
       />,
     );
 
-    wrapper.find('.za-picker__submit').simulate('click');
+    wrapper.find('.za-picker__confirm').simulate('click');
     jest.runAllTimers();
     expect(onConfirmFn).toBeCalled();
   });

@@ -4,7 +4,7 @@ import isEqual from 'lodash/isEqual';
 import Wheel from '../wheel';
 import { isCascader } from '../utils/validate';
 import parseProps from './utils/parseProps';
-import type { BasePickerViewProps } from './interface';
+import type { BasePickerViewProps, PickerDataSourceItem } from './interface';
 import type { WheelValue } from '../wheel/interface';
 import { ConfigContext } from '../n-config-provider';
 import type { HTMLProps } from '../utils/utilityTypes';
@@ -24,7 +24,10 @@ export type PickerViewProps = BasePickerViewProps &
     '--wheel-item-selected-border-radius': React.CSSProperties['borderRadius'];
   }>;
 
-export type PickerViewInstance = Pick<PickerViewProps, 'value' | 'dataSource'>;
+export interface PickerViewInstance {
+  value: WheelValue[];
+  dataSource: PickerDataSourceItem[];
+}
 
 const PickerView = React.forwardRef<PickerViewInstance, PickerViewProps>((props, ref) => {
   const { className, style, valueMember, cols, itemRender, disabled, stopScroll, onChange } = props;

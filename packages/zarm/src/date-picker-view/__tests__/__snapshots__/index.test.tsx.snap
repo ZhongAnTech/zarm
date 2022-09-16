@@ -33,6 +33,7 @@ exports[`DatePickerView DatePickerView time 1`] = `
       <ForwardRef
         cols={Infinity}
         dataSource={Array []}
+        defaultValue={Array []}
         disabled={false}
         itemRender={[Function]}
         locale={
@@ -119,6 +120,7 @@ exports[`DatePickerView DatePickerView time 2 1`] = `
             },
           ]
         }
+        defaultValue={Array []}
         disabled={false}
         itemRender={[Function]}
         locale={

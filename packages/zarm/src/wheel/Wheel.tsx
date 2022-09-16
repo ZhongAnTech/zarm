@@ -33,7 +33,7 @@ export type WheelProps = BaseWheelProps &
     '--item-font-size': React.CSSProperties['fontSize'];
   }>;
 
-const Wheel = (props: WheelProps) => {
+const Wheel: React.FC<WheelProps> = (props) => {
   const {
     className,
     value,
@@ -164,7 +164,7 @@ Wheel.displayName = 'Wheel';
 Wheel.defaultProps = {
   dataSource: [],
   valueMember: 'value',
-  itemRender: (item) => item!.label as string,
+  itemRender: (item) => item.label,
   stopScroll: false,
 };
 

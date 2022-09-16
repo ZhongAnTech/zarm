@@ -407,30 +407,30 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性              | 类型                                                                                                            | 默认值               | 说明                   |
-| :---------------- | :-------------------------------------------------------------------------------------------------------------- | :------------------- | :--------------------- |
-| dataSource        | DataSource<T = { label: string; value: string \| number \| boolean }> = Array<T & { children?: DataSource<T> }> | []                   | 数据源                 |
-| value             | string \| number \| boolean \| Array<string &#124; number &#124; boolean>                                       | -                    | 值                     |
-| defaultValue      | string \| number \| boolean \| Array<string &#124; number &#124; boolean>                                       | -                    | 初始值                 |
-| wheelDefaultValue | string \| number \| boolean \| Array<string &#124; number &#124; boolean>                                       | -                    | 滚轮初始停留的位置     |
-| valueMember       | string                                                                                                          | 'value'              | 值字段对应的 key       |
-| itemRender        | (data?: { [key: string]: string &#124; number &#124; boolean }) => ReactNode                                    | (data) => data.label | 单个选项的展示         |
-| disabled          | boolean                                                                                                         | false                | 是否禁用               |
-| cols              | number                                                                                                          | Infinity             | 级联选择器的级数       |
-| onChange          | (selected?: Array<{ [key: string]: string &#124; number &#124; boolean }>) => void                              | -                    | 值变化时触发的回调函数 |
+| 属性              | 类型                                                             | 默认值               | 说明                   |
+| :---------------- | :--------------------------------------------------------------- | :------------------- | :--------------------- |
+| dataSource        | PickerDataSourceItem[]                                           | []                   | 数据源                 |
+| value             | PickerValue \| PickerValue[]                                     | -                    | 值                     |
+| defaultValue      | PickerValue \| PickerValue[]                                     | -                    | 初始值                 |
+| wheelDefaultValue | PickerValue \| PickerValue[]                                     | -                    | 滚轮初始停留的位置     |
+| valueMember       | string                                                           | 'value'              | 值字段对应的 key       |
+| itemRender        | (data?: PickerDataSourceItem) => ReactNode                       | (data) => data.label | 单个选项的展示         |
+| disabled          | boolean                                                          | false                | 是否禁用               |
+| cols              | number                                                           | Infinity             | 级联选择器的级数       |
+| onChange          | (value: PickerValue[], selected: PickerDataSourceItem[]) => void | -                    | 值变化时触发的回调函数 |
 
 ### 仅 Picker & Select 支持的属性
 
-| 属性           | 类型                                                                               | 默认值        | 说明                                           |
-| :------------- | :--------------------------------------------------------------------------------- | :------------ | :--------------------------------------------- |
-| title          | string                                                                             | '请选择'      | 选择器标题                                     |
-| confirmText         | string                                                                             | '确定'        | 确定栏文字                                     |
-| cancelText     | string                                                                             | '取消'        | 取消栏文字                                     |
-| maskClosable   | boolean                                                                            | true          | 是否点击遮罩层时关闭，需要和 onCancel 一起使用 |
-| destroy        | boolean                                                                            | false         | 弹层关闭后是否移除节点                         |
-| onConfirm      | (selected?: Array<{ [key: string]: string &#124; number &#124; boolean }>) => void | -             | 点击确定时触发的回调函数                       |
-| onCancel       | () => void                                                                         | -             | 点击取消时触发的回调函数                       |
-| mountContainer | HTMLElement &#124; () => HTMLElement                                               | document.body | 指定 Picker 挂载的 HTML 节点                   |
+| 属性           | 类型                                                             | 默认值        | 说明                                           |
+| :------------- | :--------------------------------------------------------------- | :------------ | :--------------------------------------------- |
+| title          | string                                                           | '请选择'      | 选择器标题                                     |
+| confirmText    | string                                                           | '确定'        | 确定栏文字                                     |
+| cancelText     | string                                                           | '取消'        | 取消栏文字                                     |
+| maskClosable   | boolean                                                          | true          | 是否点击遮罩层时关闭，需要和 onCancel 一起使用 |
+| destroy        | boolean                                                          | false         | 弹层关闭后是否移除节点                         |
+| onConfirm      | (value: PickerValue[], selected: PickerDataSourceItem[]) => void | -             | 点击确定时触发的回调函数                       |
+| onCancel       | () => void                                                       | -             | 点击取消时触发的回调函数                       |
+| mountContainer | HTMLElement &#124; () => HTMLElement                             | document.body | 指定 Picker 挂载的 HTML 节点                   |
 
 ### 仅 Picker 支持的属性
 
@@ -440,7 +440,41 @@ ReactDOM.render(<Demo />, mountNode);
 
 ### 仅 Select 支持的属性
 
-| 属性          | 类型                                                                                    | 默认值                                       | 说明         |
-| :------------ | :-------------------------------------------------------------------------------------- | :------------------------------------------- | :----------- |
-| placeholder   | string                                                                                  | '请选择'                                     | 输入提示信息 |
-| displayRender | (selected?: Array<{ [key: string]: string &#124; number &#124; boolean }>) => ReactNode | selected => selected.map(item => item.label) | 所选值的展示 |
+| 属性          | 类型                                            | 默认值                                         | 说明         |
+| :------------ | :---------------------------------------------- | :--------------------------------------------- | :----------- |
+| placeholder   | string                                          | '请选择'                                       | 输入提示信息 |
+| displayRender | (selected: PickerDataSourceItem[]) => ReactNode | selected => dataSource.map(item => item.label) | 所选值的展示 |
+
+### PickerValue
+
+`string | number | boolean`
+
+### PickerDataSourceItem
+
+| 属性     | 类型                        | 默认值 | 说明         |
+| :------- | :-------------------------- | :----- | :----------- |
+| value    | string \| number \| boolean | -      | 选项值       |
+| label    | React.ReactNode             | -      | 选项显示名称 |
+| children | PickerDataSourceItem[]      | -      | 子选项       |
+
+## CSS 变量
+
+| 属性                                   | 默认值                       | 说明                   |
+| :------------------------------------- | :--------------------------- | :--------------------- |
+| --header-height                        | '45px'                       | 头部高度               |
+| --header-font-size                     | '16px'                       | 头部文字大小           |
+| --header-background-color              | '#f7f7f7'                    | 头部背景色             |
+| --header-title-text-color              | 'var(--color-text)'          | 头部标题文字颜色       |
+| --header-submit-text-color             | 'var(--theme-primary)'       | 头部提交按钮文字颜色   |
+| --header-cancel-text-color             | 'var(--color-text-caption)'  | 头部取消按钮文字颜色   |
+| --content-background-color             | '#fff'                       | 内容区域背景颜色       |
+| --content-padding                      | '16px'                       | 内容区域内边距         |
+| --content-mask-start-background-color  | 'rgba(255, 255, 255, 0.4)'   | 内容区域头部蒙层背景色 |
+| --content-mask-end-background-color    | 'rgba(255, 255, 255, 0.8)'   | 内容区域底部蒙层背景色 |
+| --wheel-item-rows                      | 5                            | 滚轮元素长度           |
+| --wheel-item-height                    | '34px'                       | 滚轮元素高度           |
+| --wheel-item-font-size                 | '20px'                       | 滚轮元素文字大小       |
+| --wheel-item-text-color                | 'var(--color-text)'          | 滚轮元素文字颜色       |
+| --wheel-item-disabled-text-color       | 'var(--color-text-disabled)' | 滚轮元素文字禁用颜色   |
+| --wheel-item-selected-background-color | 'rgba(116, 116, 128, 0.08)'  | 滚轮元素文字选中颜色   |
+| --wheel-item-selected-border-radius    | '7px'                        | 滚轮元素文字选中圆角   |

@@ -311,6 +311,14 @@ describe('index', () => {
         },
         "Picker": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "cols": Infinity,
+            "dataSource": Array [],
+            "destroy": false,
+            "itemRender": [Function],
+            "maskClosable": true,
+            "valueMember": "value",
+          },
           "render": [Function],
         },
         "PickerView": Object {
@@ -318,6 +326,7 @@ describe('index', () => {
           "defaultProps": Object {
             "cols": Infinity,
             "dataSource": Array [],
+            "defaultValue": Array [],
             "disabled": false,
             "itemRender": [Function],
             "valueMember": "value",

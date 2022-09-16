@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { createBEM } from '@zarm-design/bem';
 import PickerView, { PickerViewInstance } from '../picker-view';
 import type { BasePickerProps } from './interface';
-import { ConfigContext } from '../n-config-provider';
 import type { HTMLProps } from '../utils/utilityTypes';
 import PickerContainer from './Container';
 
@@ -48,8 +46,6 @@ const Picker = React.forwardRef<HTMLDivElement, PickerProps>((props, ref) => {
     onCancel,
     visible,
   } = props;
-  const { prefixCls, locale } = React.useContext(ConfigContext);
-  const bem = createBEM('picker', { prefixCls });
   const pickerViewRef = React.useRef<PickerViewInstance>(null);
 
   const handleConfirm = () => {
@@ -58,7 +54,9 @@ const Picker = React.forwardRef<HTMLDivElement, PickerProps>((props, ref) => {
 
   return (
     <PickerContainer
+      ref={ref}
       title={title}
+      className={className}
       confirmText={confirmText}
       cancelText={cancelText}
       visible={visible}

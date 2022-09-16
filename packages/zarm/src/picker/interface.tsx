@@ -1,5 +1,5 @@
 import { MountContainer } from '../utils/dom';
-import type { BasePickerViewProps, PickerDataSource } from '../picker-view/interface';
+import type { BasePickerViewProps, PickerDataSourceItem } from '../picker-view/interface';
 import type { WheelValue } from '../wheel/interface';
 
 export interface BasePickerContainerProps {
@@ -14,13 +14,13 @@ export interface BasePickerContainerProps {
   onConfirm?: () => void;
   onCancel?: () => void;
   onClose?: () => void;
-  children?: React.ReactNode
+  children?: React.ReactNode;
 }
 
 export interface BasePickerProps
   extends Omit<BasePickerContainerProps, 'onConfirm'>,
     Omit<BasePickerViewProps, 'onChange' | 'stopScroll'> {
-  onChange?: (value: WheelValue[], dataSource: PickerDataSource) => void;
-  onConfirm?: (value: WheelValue[], dataSource: PickerDataSource) => void;
+  onChange?: (value: WheelValue[], dataSource: PickerDataSourceItem[]) => void;
+  onConfirm?: (value: WheelValue[], dataSource: PickerDataSourceItem[]) => void;
   onCancel?: () => void;
 }

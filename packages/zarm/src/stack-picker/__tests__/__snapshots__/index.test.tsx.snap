@@ -3,6 +3,7 @@
 exports[`StackPicker renders correctly 1`] = `
 <ForwardRef(forwardRef)
   cancelText="取消"
+  confirmText="确定"
   dataSource={
     Array [
       Object {
@@ -68,7 +69,6 @@ exports[`StackPicker renders correctly 1`] = `
   }
   defaultValue={Array []}
   itemRender={[Function]}
-  confirmText="确定"
   onChange={[MockFunction]}
   value={Array []}
   valueMember="value"
@@ -76,6 +76,7 @@ exports[`StackPicker renders correctly 1`] = `
 >
   <ConfigReceiver
     cancelText="取消"
+    confirmText="确定"
     dataSource={
       Array [
         Object {
@@ -142,7 +143,6 @@ exports[`StackPicker renders correctly 1`] = `
     defaultValue={Array []}
     forwardedRef={null}
     itemRender={[Function]}
-    confirmText="确定"
     onChange={[MockFunction]}
     value={Array []}
     valueMember="value"
@@ -150,6 +150,7 @@ exports[`StackPicker renders correctly 1`] = `
   >
     <Memo()
       cancelText="取消"
+      confirmText="确定"
       dataSource={
         Array [
           Object {
@@ -222,7 +223,6 @@ exports[`StackPicker renders correctly 1`] = `
         }
       }
       localeCode="zh-CN"
-      confirmText="确定"
       onChange={[MockFunction]}
       safeIphoneX={false}
       value={Array []}
@@ -327,9 +327,9 @@ exports[`StackPicker renders correctly 1`] = `
                                 >
                                   <p>
                                     选择：
-
+                                    
                                   </p>
-
+                                  
                                 </div>
                                 <div
                                   class="za-stack-picker__group"
@@ -468,9 +468,9 @@ exports[`StackPicker renders correctly 1`] = `
                           >
                             <p>
                               选择：
-
+                              
                             </p>
-
+                            
                           </div>
                           <div
                             class="za-stack-picker__group"
@@ -592,9 +592,9 @@ exports[`StackPicker renders correctly 1`] = `
                               >
                                 <p>
                                   选择：
-
+                                  
                                 </p>
-
+                                
                               </div>
                               <div
                                 class="za-stack-picker__group"
@@ -693,6 +693,7 @@ exports[`StackPicker renders correctly 1`] = `
                         >
                           <Component
                             cancelText="取消"
+                            confirmText="确定"
                             handleCancel={[Function]}
                             handleOk={[Function]}
                             locale={
@@ -701,7 +702,6 @@ exports[`StackPicker renders correctly 1`] = `
                                 "confirmText": "确定",
                               }
                             }
-                            confirmText="确定"
                             prefixCls="za-stack-picker"
                             title="请选择"
                           >

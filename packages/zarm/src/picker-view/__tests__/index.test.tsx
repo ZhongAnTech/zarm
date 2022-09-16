@@ -3,7 +3,7 @@ import { render, mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Wheel from '../../wheel';
 import PickerView from '../index';
-import type { PickerDataSource } from '../interface';
+import type { PickerDataSourceItem } from '../interface';
 
 // TODO: make mock package for better-scroll package
 const bsScrollInstance = {
@@ -37,7 +37,7 @@ describe('PickerView', () => {
   });
 
   it('should render wheels if datasource is not empty', () => {
-    const dataSource: PickerDataSource = [
+    const dataSource: PickerDataSourceItem[] = [
       { label: 'a', value: 1 },
       { label: 'b', value: 2 },
     ];

@@ -15,6 +15,7 @@ exports[`PickerView PickerView disabled 1`] = `
       },
     ]
   }
+  defaultValue={Array []}
   disabled={true}
   itemRender={[Function]}
   onChange={[MockFunction]}
