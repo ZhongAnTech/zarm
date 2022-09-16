@@ -5,8 +5,8 @@
   @include define(height, 45px);
   @include define(active-color,  var(--za-theme-primary));
   @include define(active-line-height, 2px);
-  @include define(--padding-horizontal, var(--za-padding-h-lg));
-  @include define(--padding-vertical, var(--za-padding-v-md));
+  @include define(padding-horizontal, var(--za-padding-h-lg));
+  @include define(padding-vertical, var(--za-padding-v-md));
 
   @include e(header) {
     position: relative;
