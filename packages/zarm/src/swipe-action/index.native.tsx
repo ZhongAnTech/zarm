@@ -1,11 +1,12 @@
 import React, { PureComponent, cloneElement } from 'react';
 import { View, PanResponder, Animated, StyleSheet } from 'react-native';
-import PropsType from './PropsType';
 import swipeActionStyle from './style/index.native';
+
+import type { BaseSwipeActionProps } from './interface';
 
 const styles = StyleSheet.create<any>(swipeActionStyle);
 
-export type SwipeActionProps = PropsType;
+export type SwipeActionProps = BaseSwipeActionProps;
 
 export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
   private isOpen = false;
