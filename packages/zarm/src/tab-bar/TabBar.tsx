@@ -4,10 +4,18 @@ import type { BaseTabBarProps } from './interface';
 import TabBarItem from './TabBarItem';
 import type { TabBarItemProps } from './TabBarItem';
 import { ConfigContext } from '../n-config-provider';
+import type { HTMLProps } from '../utils/utilityTypes';
 
-export interface TabBarProps
-  extends BaseTabBarProps,
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {}
+export interface TabBarCssVars {
+  '--height'?: React.CSSProperties['height'];
+  '--font-size'?: React.CSSProperties['fontSize'];
+  '--background'?: React.CSSProperties['background'];
+  '--color'?: React.CSSProperties['color'];
+  '--z-index'?: React.CSSProperties['zIndex'];
+  '--active-color'?: React.CSSProperties['color'];
+}
+
+export type TabBarProps = BaseTabBarProps & React.PropsWithChildren<HTMLProps<TabBarCssVars>>;
 
 interface CompoundedComponent
   extends React.ForwardRefExoticComponent<TabBarProps & React.RefAttributes<HTMLDivElement>> {
