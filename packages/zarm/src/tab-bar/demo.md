@@ -17,7 +17,7 @@ const Demo = () => {
       <List>
         <List.Item
           title="隐藏 | 展示"
-          after={
+          suffix={
             <Button
               size="xs"
               onClick={() => {

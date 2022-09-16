@@ -11,10 +11,10 @@ const Demo = () => {
 
   return (
     <List>
-      <List.Item title="普通" after={<Switch checked={checked} onChange={setChecked} />} />
-      <List.Item title="默认开" after={<Switch defaultChecked />} />
-      <List.Item title="禁用的开关（默认关）" after={<Switch disabled />} />
-      <List.Item title="禁用的开关（默认开）" after={<Switch defaultChecked disabled />} />
+      <List.Item title="普通" suffix={<Switch checked={checked} onChange={setChecked} />} />
+      <List.Item title="默认开" suffix={<Switch defaultChecked />} />
+      <List.Item title="禁用的开关（默认关）" suffix={<Switch disabled />} />
+      <List.Item title="禁用的开关（默认开）" suffix={<Switch defaultChecked disabled />} />
     </List>
   );
 };

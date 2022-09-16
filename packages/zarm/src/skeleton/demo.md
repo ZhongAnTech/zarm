@@ -95,7 +95,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ### Skeleton
 
-| 属性            | 默认值   | 说明 |
+| 属性            | 默认值 | 说明 |
 | :-------------- | :----- | :--- |
 | --width         | -      | 宽度 |
 | --height        | '18px' | 高度 |
@@ -104,9 +104,9 @@ ReactDOM.render(<Demo />, mountNode);
 
 ### Skeleton.Title
 
-| 属性            | 默认值      | 说明 |
-| :-------------- | :-------- | :-- |
-| --width         | '45%'     | 宽度 |
-| --height        | '32px'    | 高度 |
-| --border-radius | '2px'     | 圆角 |
-| --margin        | '16px 0'  | 边距 |
+| 属性            | 默认值   | 说明 |
+| :-------------- | :------- | :--- |
+| --width         | '45%'    | 宽度 |
+| --height        | '32px'   | 高度 |
+| --border-radius | '2px'    | 圆角 |
+| --margin        | '16px 0' | 边距 |

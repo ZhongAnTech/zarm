@@ -13,9 +13,9 @@ const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>((props, ref) => 
   const {
     className,
     prefix,
-    after,
+    suffix,
     title,
-    info,
+    description,
     children,
     onClick,
     hasArrow,
@@ -34,10 +34,10 @@ const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>((props, ref) => 
   ]);
 
   const prefixRender = prefix && <div className={bem('prefix')}>{prefix}</div>;
-  const afterRender = after && <div className={bem('after')}>{after}</div>;
+  const suffixRender = suffix && <div className={bem('suffix')}>{suffix}</div>;
   const titleRender = title && <div className={bem('title')}>{title}</div>;
   const contentRender = children && <div className={bem('content')}>{children}</div>;
-  const infoRender = info && <div className={bem('info')}>{info}</div>;
+  const descriptionRender = description && <div className={bem('description')}>{description}</div>;
   const arrowRender = !!onClick && hasArrow && <div className={bem('arrow')} />;
 
   return (
@@ -47,10 +47,10 @@ const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>((props, ref) => 
         <div className={bem('inner')}>
           {titleRender}
           {contentRender}
-          {afterRender}
+          {suffixRender}
           {arrowRender}
         </div>
-        {infoRender}
+        {descriptionRender}
       </div>
     </li>
   );

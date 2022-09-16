@@ -173,7 +173,7 @@ const Demo = () => {
       <List>
         <List.Item
           title="单列"
-          after={
+          suffix={
             <Button size="xs" onClick={() => setVisible('single')}>
               选择
             </Button>
@@ -181,7 +181,7 @@ const Demo = () => {
         />
         <List.Item
           title="多列"
-          after={
+          suffix={
             <Button size="xs" onClick={() => setVisible('multi')}>
               选择
             </Button>
@@ -189,7 +189,7 @@ const Demo = () => {
         />
         <List.Item
           title="级联"
-          after={
+          suffix={
             <Button size="xs" onClick={() => setVisible('cascade')}>
               选择
             </Button>
@@ -197,7 +197,7 @@ const Demo = () => {
         />
         <List.Item
           title="自定义"
-          after={
+          suffix={
             <Button size="xs" onClick={() => setVisible('diy')}>
               选择
             </Button>
@@ -205,7 +205,7 @@ const Demo = () => {
         />
         <List.Item
           title="挂载到指定dom节点"
-          after={
+          suffix={
             <Button size="xs" onClick={() => setVisible('specDOM')}>
               选择
             </Button>

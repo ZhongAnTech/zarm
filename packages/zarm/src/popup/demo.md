@@ -41,7 +41,7 @@ const Demo = () => {
       <List>
         <List.Item
           title="从上方弹出"
-          after={
+          suffix={
             <Button
               size="xs"
               onClick={() => {
@@ -58,7 +58,7 @@ const Demo = () => {
         />
         <List.Item
           title="从下方弹出"
-          after={
+          suffix={
             <Button size="xs" onClick={() => toggle('popBottom')}>
               开启
             </Button>
@@ -66,7 +66,7 @@ const Demo = () => {
         />
         <List.Item
           title="从左侧弹出"
-          after={
+          suffix={
             <Button size="xs" onClick={() => toggle('popLeft')}>
               开启
             </Button>
@@ -74,7 +74,7 @@ const Demo = () => {
         />
         <List.Item
           title="从右侧弹出"
-          after={
+          suffix={
             <Button size="xs" onClick={() => toggle('popRight')}>
               开启
             </Button>
@@ -82,7 +82,7 @@ const Demo = () => {
         />
         <List.Item
           title="从中间弹出"
-          after={
+          suffix={
             <Button size="xs" onClick={() => toggle('popCenter')}>
               开启
             </Button>
@@ -90,7 +90,7 @@ const Demo = () => {
         />
         <List.Item
           title="自定义挂载节点"
-          after={
+          suffix={
             <Button size="xs" onClick={() => toggle('popSpec')}>
               开启
             </Button>

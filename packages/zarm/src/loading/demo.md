@@ -14,7 +14,7 @@ const Demo = () => {
       <List>
         <List.Item
           title="普通"
-          after={
+          suffix={
             <Button
               size="xs"
               onClick={() => {
@@ -53,7 +53,7 @@ const Demo = () => {
   return (
     <List>
       <List.Item
-        after={
+        suffix={
           <Button
             size="xs"
             onClick={() => {
@@ -70,7 +70,7 @@ const Demo = () => {
         普通
       </List.Item>
       <List.Item
-        after={
+        suffix={
           <Button
             size="xs"
             onClick={() => {

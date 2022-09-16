@@ -19,7 +19,7 @@ const Demo = () => {
     <List>
       <List.Item
         title={count}
-        after={
+        suffix={
           <Button ref={ref} size="sm">
             点我外面试试？
           </Button>
@@ -52,7 +52,7 @@ const Demo = () => {
     <List>
       <List.Item
         title={count}
-        after={
+        suffix={
           <>
             <Button ref={ref1} size="sm" style={{ marginRight: 10 }}>
               Button1

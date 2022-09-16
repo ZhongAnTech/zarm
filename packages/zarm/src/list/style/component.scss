@@ -8,14 +8,14 @@
   @include define(item-title-font-size, var(--za-font-size-md));
   @include define(item-title-white-space, nowrap);
   @include define(item-title-line-height, calc(var(--item-height) - var(--item-padding-vertical) * 2));
-  @include define(item-after-text-color, rgba(0, 0, 0, 0.45));
+  @include define(item-suffix-text-color, rgba(0, 0, 0, 0.45));
   @include define(item-space, 5px);
   @include define(item-arrow-border-width, 2px);
   @include define(item-arrow-color, rgba(0, 0, 0, 0.2));
   @include define(item-arrow-size, 10px);
-  @include define(item-info-font-size, 12px);
-  @include define(item-info-text-color, rgba(60, 60, 67, 0.6));
-  @include define(item-info-line-height, 16px);
+  @include define(item-description-font-size, 12px);
+  @include define(item-description-text-color, rgba(60, 60, 67, 0.6));
+  @include define(item-description-line-height, 16px);
   @include define(item-inline-title-width, var(--za-input-label-width));
 
   list-style: none;
@@ -27,6 +27,16 @@
     @include b(list-item) {
       @include e(wrapper) {
         &::after {
+          content: none;
+        }
+      }
+    }
+  }
+
+  @include m(unbordered) {
+    @include b(list-item) {
+      @include e(wrapper) {
+        &:after {
           content: none;
         }
       }
@@ -78,13 +88,13 @@
     align-items: center;
     width: 100%;
     min-width: 0;
+    line-height: var(--item-title-line-height);
   }
 
   @include e(title) {
     white-space: var(--item-title-white-space);
     overflow: hidden;
     text-overflow: ellipsis;
-    line-height: var(--item-title-line-height);
   }
 
   @include e(content) {
@@ -92,15 +102,14 @@
     display: flex;
     align-items: center;
     min-height: var(--item-title-line-height);
-    line-height: var(--item-title-line-height);
   }
 
-  @include e(after) {
+  @include e(suffix) {
     display: flex;
     flex-shrink: 0;
     margin-left: auto;
     padding-left: var(--item-space);
-    color: var(--item-after-text-color);
+    color: var(--item-suffix-text-color);
   }
 
   @include e(arrow) {
@@ -118,10 +127,10 @@
     }
   }
 
-  @include e(info) {
-    font-size: var(--item-info-font-size);
-    color: var(--item-info-text-color);
-    line-height: var(--item-info-line-height);
+  @include e(description) {
+    font-size: var(--item-description-font-size);
+    color: var(--item-description-text-color);
+    line-height: var(--item-description-line-height);
   }
 
   @include m(inline) {

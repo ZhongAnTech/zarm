@@ -76,7 +76,7 @@ const Demo = () => {
     <List>
       <List.Item
         title="普通"
-        after={
+        suffix={
           <Radio.Group
             type="button"
             value={value}
@@ -93,7 +93,7 @@ const Demo = () => {
       />
       <List.Item
         title="指定默认值"
-        after={
+        suffix={
           <Radio.Group type="button" defaultValue="1">
             <Radio value="0">选项一</Radio>
             <Radio value="1">选项二</Radio>
@@ -103,7 +103,7 @@ const Demo = () => {
       />
       <List.Item
         title="禁用指定项"
-        after={
+        suffix={
           <Radio.Group type="button">
             <Radio value="0">选项一</Radio>
             <Radio value="1" disabled>
@@ -117,7 +117,7 @@ const Demo = () => {
       />
       <List.Item
         title="直角"
-        after={
+        suffix={
           <Radio.Group type="button" buttonShape="rect">
             <Radio value="0">选项一</Radio>
             <Radio value="1">选项二</Radio>
@@ -127,7 +127,7 @@ const Demo = () => {
       />
       <List.Item
         title="椭圆角"
-        after={
+        suffix={
           <Radio.Group type="button" buttonShape="round">
             <Radio value="0">选项一</Radio>
             <Radio value="1">选项二</Radio>
@@ -137,7 +137,7 @@ const Demo = () => {
       />
       <List.Item
         title="大小"
-        after={
+        suffix={
           <Radio.Group type="button" buttonSize="sm" buttonShape="radius">
             <Radio value="0">选项一</Radio>
             <Radio value="1">选项二</Radio>
@@ -147,7 +147,7 @@ const Demo = () => {
       />
       <List.Item
         title="幽灵按钮"
-        after={
+        suffix={
           <Radio.Group buttonCompact buttonGhost type="button" defaultValue="0">
             <Radio value="0">选项一</Radio>
             <Radio value="1">选项二</Radio>
@@ -157,7 +157,7 @@ const Demo = () => {
       />
       <List.Item
         title="紧凑模式"
-        after={
+        suffix={
           <Radio.Group buttonCompact type="button" defaultValue="0">
             <Radio value="0">选项一</Radio>
             <Radio value="1">选项二</Radio>

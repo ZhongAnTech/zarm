@@ -227,7 +227,9 @@ describe('index', () => {
             },
             "render": [Function],
           },
-          "defaultProps": Object {},
+          "defaultProps": Object {
+            "bordered": true,
+          },
           "render": [Function],
         },
         "Loading": Object {

@@ -171,7 +171,7 @@ const Demo = () => {
             }}
           />
         }
-        after={value}
+        suffix={value}
       />
     </List>
   );

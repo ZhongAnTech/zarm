@@ -18,7 +18,7 @@ const Demo = () => {
     <List>
       <List.Item
         title={text}
-        after={
+        suffix={
           <Button size="sm" style={{ margin: 10 }} {...longPressEvent}>
             长按我试试？
           </Button>
