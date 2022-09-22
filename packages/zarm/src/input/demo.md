@@ -278,3 +278,18 @@ ReactDOM.render(
 | showLength   | boolean                                                                       | false  | 是否显示输入字数。多行文本（type="text" 且包含 rows 属性）时有效。       |
 | clearable    | boolean                                                                       | false  | 是否显示清除按钮。必须为受控组件（属性包含 value、onChange）时方可生效。 |
 | onChange     | (event: React.ChangeEvent\<HTMLInputElement \| HTMLTextAreaElement\>) => void | -      | 值变化时触发的回调函数                                                   |
+
+## CSS 变量
+
+| 属性                         | 默认值                             | 说明                        |
+| :--------------------------- | :--------------------------------- | :-------------------------- |
+| --color                      | 'var(--za-color-text)'             | 字体颜色                    |
+| --font-size                  | 'var(--za-font-size-md)'           | 字体大小                    |
+| --height                     | '28px'                             | 输入框高度                  |
+| --label-font-size            | 'var(--za-font-size-sm)'           | 标签字体大小                |
+| --placeholder-color          | 'var(--za-color-text-placeholder)' | 占位符字体颜色              |
+| --disabled-color             | 'var(--za-color-text-disabled)'    | 禁用状态下字体颜色          |
+| --clear-icon-size            | '16px'                             | 清除按钮大小                |
+| --clear-icon-color           | '#ccc'                             | 清除按钮颜色                |
+| --textarea-length-font-size  | 'var(--za-font-size-sm)'           | textarea 字体长度的字体大小 |
+| --textarea-length-font-color | 'var(--za-color-text-disabled)'    | textarea 字体长度的字体颜色 |

@@ -1,6 +1,18 @@
 @import 'mixins';
 
 @include b(custom-input) {
+  @include define(color, var(--za-color-text));
+  @include define(font-size, var(--za-font-size-md));
+  @include define(height, 28px);
+  @include define(label-font-size, var(--za-font-size-sm));
+  @include define(placeholder-color, var(--za-color-text-placeholder));
+  @include define(disabled-color, var(--za-color-text-disabled));
+  @include define(clear-icon-size, 16px);
+  @include define(clear-icon-color, #ccc);
+  @include define(cursor-height, 20px);
+  @include define(cursor-width, 2px);
+  @include define(cursor-color, #597cf6);
+
   @include input-base();
   @include input-placeholder();
   @include input-keyboard();
