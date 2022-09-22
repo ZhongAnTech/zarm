@@ -4,6 +4,7 @@
   @include define(color, var(--za-color-text));
   @include define(font-size, var(--za-font-size-md));
   @include define(height, 28px);
+  @include define(line-height, 28px);
   @include define(label-font-size, var(--za-font-size-sm));
   @include define(placeholder-color, var(--za-color-text-placeholder));
   @include define(disabled-color, var(--za-color-text-disabled));

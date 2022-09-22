@@ -14,6 +14,7 @@ const countSymbols = (text = '') => {
 
 export interface InputCssVars {
   '--height'?: React.CSSProperties['height'];
+  '--line-height': React.CSSProperties['lineHeight'];
   '--font-size'?: React.CSSProperties['fontSize'];
   '--color'?: React.CSSProperties['color'];
   '--background'?: React.CSSProperties['background'];

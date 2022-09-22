@@ -6,13 +6,13 @@
 
   @include e(label) {
     font-size: var(--label-font-size);
-    line-height: var(--height);
+    line-height: var(--line-height);
   }
 
   @include e(content) {
     position: relative;
     height: var(--height);
-    line-height: var(--height);
+    line-height: var(--line-height);
   }
 }
 

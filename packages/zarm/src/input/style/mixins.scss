@@ -17,7 +17,7 @@
     -webkit-appearance: none;
     font-size: var(--font-size);
     color: var(--color);
-    line-height: var(--height);
+    line-height: var(--line-height);
 
     @include placeholder {
       color: var(--placeholder-color);
@@ -43,13 +43,13 @@
 
   @include e(label) {
     font-size: var(--label-font-size);
-    line-height: var(--height);
+    line-height: var(--line-height);
   }
 
   @include e(content) {
     position: relative;
     height: var(--height);
-    line-height: var(--height);
+    line-height: var(--line-height);
   }
 }
 

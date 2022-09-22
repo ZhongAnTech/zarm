@@ -10,6 +10,7 @@ import type { HTMLProps } from '../utils/utilityTypes';
 
 export interface CustomInputCssVars {
   '--height'?: React.CSSProperties['height'];
+  '--line-height'?: React.CSSProperties['lineHeight'];
   '--font-size'?: React.CSSProperties['fontSize'];
   '--color'?: React.CSSProperties['color'];
   '--background'?: React.CSSProperties['background'];
