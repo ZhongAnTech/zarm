@@ -154,36 +154,12 @@
   // Collapse
 
   // Input
-  // 高度
-  --za-input-height: 28px;
+
   // 行高
   --za-input-line-height: 28px;
-  // 字体大小
-  --za-input-font-size: var(--font-size-md);
-  // 字体颜色
-  --za-input-color: var(--color-text);
-  // 占位符字体颜色
-  --za-input-placeholder-color: var(--color-text-placeholder);
-  // 清除按钮大小
-  --za-input-clear-icon-size: 16px;
-  // 清除按钮颜色
-  --za-input-clear-icon-color: #ccc;
-  // 虚拟光标颜色
-  --za-input-cursor-color: #597cf6;
-  // 虚拟光标线条宽度
-  --za-input-cursor-width: 2px;
-  // 虚拟光标线条高度
-  --za-input-cursor-height: 20px;
-  // 输入长度字体大小
-  --za-input-length-font-size: var(--font-size-sm);
-  // 输入长度字体颜色
-  --za-input-length-color: var(--color-text-disabled);
+
   // 标签栏宽度
   --za-input-label-width: 100px;
-  // 纵向标签栏字体大小
-  --za-input-vertical-label-font-size: var(--font-size-sm);
-  // 禁用状态字体颜色
-  --za-input-disabled-color: var(--color-text-disabled);
 
   // Loading
   --za-loading-background: rgba(0, 0, 0, var(--opacity-toast));

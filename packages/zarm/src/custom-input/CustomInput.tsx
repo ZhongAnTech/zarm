@@ -6,8 +6,25 @@ import useClickAway from '../useClickAway';
 import { getValue } from '../input/utils';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseCustomInputProps } from './interface';
+import type { HTMLProps } from '../utils/utilityTypes';
+
+export interface CustomInputCssVars {
+  '--height'?: React.CSSProperties['height'];
+  '--font-size'?: React.CSSProperties['fontSize'];
+  '--color'?: React.CSSProperties['color'];
+  '--background'?: React.CSSProperties['background'];
+  '--label-font-size'?: React.CSSProperties['fontSize'];
+  '--placeholder-color'?: React.CSSProperties['color'];
+  '--disabled-color'?: React.CSSProperties['color'];
+  '--clear-icon-size'?: React.CSSProperties['width'];
+  '--clear-icon-color'?: React.CSSProperties['color'];
+  '--cursor-height'?: React.CSSProperties['height'];
+  '--cursor-width'?: React.CSSProperties['width'];
+  '--cursor-color'?: React.CSSProperties['color'];
+}
 
 export type CustomInputProps = BaseCustomInputProps &
+  React.PropsWithChildren<HTMLProps<CustomInputCssVars>> &
   Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type' | 'onChange' | 'onFocus' | 'onBlur'>;
 
 const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => {

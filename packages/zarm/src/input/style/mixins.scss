@@ -1,8 +1,8 @@
 @mixin input-base() {
   position: relative;
   width: 100%;
-  color: var(--za-input-color);
-  font-size: var(--za-input-font-size);
+  color: var(--color);
+  font-size: var(--font-size);
 
   input,
   textarea {
@@ -15,18 +15,18 @@
     border: 0;
     outline: 0;
     -webkit-appearance: none;
-    font-size: var(--za-input-font-size);
-    color: var(--za-input-color);
-    line-height: var(--za-input-line-height);
+    font-size: var(--font-size);
+    color: var(--color);
+    line-height: var(--height);
 
     @include placeholder {
-      color: var(--za-input-placeholder-color);
+      color: var(--placeholder-color);
     }
   }
 
   input {
     display: inline-block;
-    height: var(--za-input-line-height);
+    height: var(--height);
   }
 
   textarea {
@@ -42,20 +42,20 @@
   }
 
   @include e(label) {
-    font-size: var(--za-input-vertical-label-font-size);
-    line-height: var(--za-input-line-height);
+    font-size: var(--label-font-size);
+    line-height: var(--height);
   }
 
   @include e(content) {
     position: relative;
-    height: var(--za-input-height);
-    line-height: var(--za-input-line-height);
+    height: var(--height);
+    line-height: var(--height);
   }
 }
 
 @mixin input-placeholder() {
   @include placeholder {
-    color: var(--za-input-placeholder-color);
+    color: var(--placeholder-color);
   }
 }
 
@@ -68,16 +68,16 @@
   @include e(clear) {
     position: absolute;
     visibility: hidden;
-    color: var(--za-input-clear-icon-color);
+    color: var(--clear-icon-color);
     text-align: center;
     top: 50%;
     transform: translateY(-50%);
     right: 0;
-    font-size: var(--za-input-clear-icon-size);
+    font-size: var(--clear-icon-size);
   }
 
   @include m(focus) {
-    padding-right: var(--za-input-clear-icon-size);
+    padding-right: var(--clear-icon-size);
 
     @include e(clear) {
       visibility: visible;
@@ -89,18 +89,18 @@
   input,
   textarea {
     cursor: not-allowed;
-    color: var(--za-input-disabled-color);
+    color: var(--disabled-color);
     // 用于修复真机上不显示的bug
-    -webkit-text-fill-color: var(--za-input-disabled-color);
+    -webkit-text-fill-color: var(--disabled-color);
     opacity: 1;
 
     @include placeholder {
-      color: var(--za-input-disabled-color);
+      color: var(--disabled-color);
     }
   }
 
   @include e(content) {
     cursor: not-allowed;
-    color: var(--za-input-disabled-color);
+    color: var(--disabled-color);
   }
 }

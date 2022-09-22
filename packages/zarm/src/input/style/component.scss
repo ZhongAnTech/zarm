@@ -1,14 +1,25 @@
 @import 'mixins';
 
 @include b(input) {
+  @include define(color, var(--za-color-text));
+  @include define(font-size, var(--za-font-size-md));
+  @include define(height, 28px);
+  @include define(label-font-size, var(--za-font-size-sm));
+  @include define(placeholder-color, var(--za-color-text-placeholder));
+  @include define(disabled-color, var(--za-color-text-disabled));
+  @include define(clear-icon-size, 16px);
+  @include define(clear-icon-color, #ccc);
+  @include define(textarea-length-font-size, var(--za-font-size-sm));
+  @include define(textarea-length-font-color, var(--za-color-text-disabled));
+
   @include input-base();
   @include input-placeholder();
 
   @include m(textarea) {
     @include e(length) {
       text-align: right;
-      color: var(--za-input-length-color);
-      font-size: var(--za-input-length-font-size);
+      color: var(--textarea-length-font-color);
+      font-size: var(--textarea-length-font-size);
     }
   }
 
