@@ -40,15 +40,6 @@ ReactDOM.render(
 | title | ReactNode | -      | 标题渲染 |
 | more  | ReactNode | -      | 更多渲染 |
 
-@include define(header-padding, '25px 16px 10px 16px');
-@include define(header-font-size, 13px);
-@include define(header-color, rgba(60, 60, 67, 0.6));
-@include define(body-background, #fff);
-@include define(body-font-size, var(--za-font-size-md));
-@include define(body-color, var(--za-color-text));
-@include define(body-border-radius, 10px);
-@include define(spacing-padding-horizontal, 16px);
-
 ## CSS 变量
 
 | 属性                         | 默认值                   | 说明         |
