@@ -1,9 +1,18 @@
 @include b(panel) {
+  @include define(header-padding, '25px 16px 10px 16px');
+  @include define(header-font-size, 13px);
+  @include define(header-color, rgba(60, 60, 67, 0.6));
+  @include define(body-background, #fff);
+  @include define(body-font-size,  var(--za-font-size-md));
+  @include define(body-color, var(--za-color-text));
+  @include define(body-border-radius, 10px);
+  @include define(spacing-padding-horizontal, 16px);
+
   @include e(header) {
     display: flex;
-    padding: var(--za-panel-header-padding);
-    font-size: var(--za-panel-header-font-size);
-    color: var(--za-panel-header-color);
+    padding: var(--header-padding);
+    font-size: var(--header-font-size);
+    color: var(--header-color);
 
     &__title {
       flex: 1;
@@ -12,17 +21,17 @@
 
   @include e(body) {
     position: relative;
-    background: var(--za-panel-body-background);
-    font-size: var(--za-panel-body-font-size);
-    color: var(--za-panel-body-color);
+    background: var(--body-background);
+    font-size: var(--body-font-size);
+    color: var(--body-color);
     @include onepx(top bottom);
   }
 
   @include m(spacing) {
-    padding: 0 var(--za-panel-spacing-padding-horizontal);
+    padding: 0 var(--spacing-padding-horizontal);
 
     @include e(body) {
-      border-radius: var(--za-panel-body-border-radius);
+      border-radius: var(--body-border-radius);
       overflow: hidden;
       @include onepx(none);
     }
