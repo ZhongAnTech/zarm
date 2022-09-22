@@ -42,7 +42,7 @@ const Demo = () => {
       <List>
         <List.Item
           title="切换语言"
-          after={
+          suffix={
             <Radio.Group buttonCompact type="button" value={locale} onChange={setLocale}>
               <Radio value="zhCN">中文</Radio>
               <Radio value="enUS">EN</Radio>
@@ -51,7 +51,7 @@ const Demo = () => {
         />
         <List.Item
           title="切换品牌色"
-          after={
+          suffix={
             <ul className="colors">
               {colors.map((color, index) => {
                 return (
@@ -67,7 +67,7 @@ const Demo = () => {
         />
         <List.Item
           title="切换主题"
-          after={
+          suffix={
             <Radio.Group
               buttonCompact
               type="button"
@@ -81,15 +81,15 @@ const Demo = () => {
         />
         <List.Item
           title="安全区域开启"
-          after={<Switch checked={safeIphoneX} onChange={setSafeIphoneX} />}
+          suffix={<Switch checked={safeIphoneX} onChange={setSafeIphoneX} />}
         />
         <List.Item
           title="自定义弹层渲染节点"
-          after={<Switch checked={mountContainer} onChange={setMountContainer} />}
+          suffix={<Switch checked={mountContainer} onChange={setMountContainer} />}
         />
         <List.Item
           title="设置 CSS 变量"
-          after={
+          suffix={
             <Button
               size="xs"
               onClick={() => {
@@ -126,7 +126,7 @@ const Demo = () => {
             <List.Item title={<Rate defaultValue={3} />} />
             <List.Item
               title="确认框"
-              after={
+              suffix={
                 <Button
                   size="xs"
                   onClick={() => {
@@ -143,7 +143,7 @@ const Demo = () => {
             />
             <List.Item
               title="弹出层"
-              after={
+              suffix={
                 <Button size="xs" onClick={() => setVisiblePopup(true)}>
                   开启
                 </Button>

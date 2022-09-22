@@ -149,7 +149,7 @@ const Demo = () => {
     <List>
       <List.Item
         title="普通"
-        after={
+        suffix={
           <Checkbox.Group
             type="button"
             value={value}
@@ -166,7 +166,7 @@ const Demo = () => {
       />
       <List.Item
         title="指定默认值"
-        after={
+        suffix={
           <Checkbox.Group type="button" defaultValue={['0', '1']}>
             <Checkbox value="0">选项一</Checkbox>
             <Checkbox value="1">选项二</Checkbox>
@@ -176,7 +176,7 @@ const Demo = () => {
       />
       <List.Item
         title="禁用指定项"
-        after={
+        suffix={
           <Checkbox.Group type="button">
             <Checkbox value="0">选项一</Checkbox>
             <Checkbox value="1" disabled>
@@ -190,7 +190,7 @@ const Demo = () => {
       />
       <List.Item
         title="直角"
-        after={
+        suffix={
           <Checkbox.Group type="button" buttonShape="rect">
             <Checkbox value="0">选项一</Checkbox>
             <Checkbox value="1">选项二</Checkbox>
@@ -200,7 +200,7 @@ const Demo = () => {
       />
       <List.Item
         title="椭圆角"
-        after={
+        suffix={
           <Checkbox.Group type="button" buttonShape="round">
             <Checkbox value="0">选项一</Checkbox>
             <Checkbox value="1">选项二</Checkbox>
@@ -210,7 +210,7 @@ const Demo = () => {
       />
       <List.Item
         title="大小"
-        after={
+        suffix={
           <Checkbox.Group type="button" buttonSize="sm" buttonShape="radius">
             <Checkbox value="0">选项一</Checkbox>
             <Checkbox value="1">选项二</Checkbox>
@@ -220,7 +220,7 @@ const Demo = () => {
       />
       <List.Item
         title="幽灵按钮"
-        after={
+        suffix={
           <Checkbox.Group buttonGhost type="button" defaultValue={['2']}>
             <Checkbox value="0">选项一</Checkbox>
             <Checkbox value="1">选项二</Checkbox>
@@ -279,7 +279,7 @@ ReactDOM.render(
 import { Checkbox } from 'zarm';
 
 ReactDOM.render(
-  <Checkbox.Group type="list" listMarkerAlign="after">
+  <Checkbox.Group type="list" listMarkerAlign="affix">
     <Checkbox value="0">选项一</Checkbox>
     <Checkbox value="1">选项二</Checkbox>
     <Checkbox value="2" disabled>

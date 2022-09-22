@@ -7,10 +7,10 @@ import { List, ActivityIndicator } from 'zarm';
 
 ReactDOM.render(
   <List>
-    <List.Item title="普通" after={<ActivityIndicator />} />
-    <List.Item title="大号" after={<ActivityIndicator size="lg" />} />
-    <List.Item title="无旋转动画" after={<ActivityIndicator loading={false} />} />
-    <List.Item title="指定百分比" after={<ActivityIndicator loading={false} percent={75} />} />
+    <List.Item title="普通" suffix={<ActivityIndicator />} />
+    <List.Item title="大号" suffix={<ActivityIndicator size="lg" />} />
+    <List.Item title="无旋转动画" suffix={<ActivityIndicator loading={false} />} />
+    <List.Item title="指定百分比" suffix={<ActivityIndicator loading={false} percent={75} />} />
   </List>,
   mountNode,
 );
@@ -23,8 +23,8 @@ import { List, ActivityIndicator } from 'zarm';
 
 ReactDOM.render(
   <List>
-    <List.Item title="普通" after={<ActivityIndicator type="spinner" />} />
-    <List.Item title="大号" after={<ActivityIndicator type="spinner" size="lg" />} />
+    <List.Item title="普通" suffix={<ActivityIndicator type="spinner" />} />
+    <List.Item title="大号" suffix={<ActivityIndicator type="spinner" size="lg" />} />
   </List>,
   mountNode,
 );

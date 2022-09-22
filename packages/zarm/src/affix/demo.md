@@ -14,7 +14,7 @@ const Demo = () => {
       <List>
         <List.Item
           title="是否启用 Affix"
-          after={<Switch checked={affixed} onChange={setAffixed} />}
+          suffix={<Switch checked={affixed} onChange={setAffixed} />}
         />
       </List>
       {affixed ? (

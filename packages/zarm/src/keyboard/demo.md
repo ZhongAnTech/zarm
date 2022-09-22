@@ -96,7 +96,7 @@ const Demo = () => {
       <List>
         <List.Item
           title="键盘类型"
-          after={
+          suffix={
             <Radio.Group buttonCompact type="button" value={type} onChange={onSetType}>
               <Radio value="number">数字</Radio>
               <Radio value="price">金额</Radio>
@@ -142,7 +142,7 @@ const Demo = () => {
           />
         </List.Item>
         <List.Item
-          after={
+          suffix={
             <Button size="xs" onClick={() => onSetType(type)}>
               还原设置
             </Button>
@@ -190,7 +190,7 @@ const Demo = () => {
       <List>
         <List.Item
           title="拾取器触发方式"
-          after={
+          suffix={
             <Button size="xs" onClick={toggle}>
               {visible ? '关闭' : '开启'}
             </Button>

@@ -227,7 +227,9 @@ describe('index', () => {
             },
             "render": [Function],
           },
-          "defaultProps": Object {},
+          "defaultProps": Object {
+            "bordered": true,
+          },
           "render": [Function],
         },
         "Loading": Object {
@@ -460,7 +462,20 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "SwipeAction": [Function],
+        "SwipeAction": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "animationDuration": 300,
+            "autoClose": true,
+            "disabled": false,
+            "leftActions": Array [],
+            "moveDistanceRatio": 0.5,
+            "moveTimeSpan": 300,
+            "offset": 10,
+            "rightActions": Array [],
+          },
+          "render": [Function],
+        },
         "Switch": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {

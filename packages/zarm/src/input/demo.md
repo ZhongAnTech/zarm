@@ -241,10 +241,10 @@ import { Input, List } from 'zarm';
 
 ReactDOM.render(
   <List>
-    <List.Item info="最少4个字符，包含大小写英文字母和数字">
+    <List.Item description="最少4个字符，包含大小写英文字母和数字">
       <Input label="账号" placeholder="请输入您的账号" />
     </List.Item>
-    <List.Item info="最少8个字符，包含大小写英文字母、数字和字符">
+    <List.Item description="最少8个字符，包含大小写英文字母、数字和字符">
       <Input label="密码" type="password" placeholder="请输入您的密码" />
     </List.Item>
     <List.Item>

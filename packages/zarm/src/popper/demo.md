@@ -112,7 +112,7 @@ const Demo = () => {
   return (
     <List>
       <List.Item
-        after={
+        suffix={
           <Radio.Group
             buttonCompact
             type="button"

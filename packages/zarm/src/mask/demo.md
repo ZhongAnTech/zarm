@@ -23,7 +23,7 @@ const Demo = () => {
         </List.Item>
         <List.Item
           title="颜色"
-          after={
+          suffix={
             <Radio.Group buttonCompact type="button" value={color} onChange={setColor}>
               <Radio value="black">黑色</Radio>
               <Radio value="white">白色</Radio>
@@ -34,7 +34,7 @@ const Demo = () => {
         {color !== 'transparent' ? (
           <List.Item
             title="透明度"
-            after={
+            suffix={
               <Radio.Group buttonCompact type="button" value={opacity} onChange={setOpacity}>
                 <Radio value="normal">普通</Radio>
                 <Radio value="light">浅色</Radio>
