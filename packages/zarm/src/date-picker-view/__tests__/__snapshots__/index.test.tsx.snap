@@ -35,7 +35,6 @@ exports[`DatePickerView DatePickerView time 1`] = `
         dataSource={Array []}
         defaultValue={Array []}
         disabled={false}
-        itemRender={[Function]}
         locale={
           Object {
             "day": "日",
@@ -122,7 +121,6 @@ exports[`DatePickerView DatePickerView time 2 1`] = `
         }
         defaultValue={Array []}
         disabled={false}
-        itemRender={[Function]}
         locale={
           Object {
             "day": "日",
@@ -163,12 +161,17 @@ exports[`DatePickerView DatePickerView time 2 1`] = `
                 ]
               }
               disabled={false}
-              itemRender={[Function]}
+              fieldNames={
+                Object {
+                  "children": "children",
+                  "label": "label",
+                  "value": "value",
+                }
+              }
               key="0"
               onChange={[Function]}
               stopScroll={false}
               value={2021}
-              valueMember="value"
             >
               <div
                 className="za-wheel"

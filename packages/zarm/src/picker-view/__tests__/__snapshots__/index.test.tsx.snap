@@ -17,9 +17,7 @@ exports[`PickerView PickerView disabled 1`] = `
   }
   defaultValue={Array []}
   disabled={true}
-  itemRender={[Function]}
   onChange={[MockFunction]}
-  valueMember="value"
 >
   <div
     className="za-picker-view"
@@ -41,12 +39,17 @@ exports[`PickerView PickerView disabled 1`] = `
           ]
         }
         disabled={true}
-        itemRender={[Function]}
+        fieldNames={
+          Object {
+            "children": "children",
+            "label": "label",
+            "value": "value",
+          }
+        }
         key="0"
         onChange={[Function]}
         stopScroll={false}
         value="1"
-        valueMember="value"
       >
         <div
           className="za-wheel"

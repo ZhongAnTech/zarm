@@ -16,10 +16,8 @@ exports[`Picker Picker render visible 1`] = `
     ]
   }
   destroy={false}
-  itemRender={[Function]}
   maskClosable={true}
   prefixCls="za-picker"
-  valueMember="value"
   visible={true}
 >
   <ForwardRef
@@ -401,8 +399,6 @@ exports[`Picker Picker render visible 1`] = `
                       }
                       defaultValue={Array []}
                       disabled={false}
-                      itemRender={[Function]}
-                      valueMember="value"
                     >
                       <div
                         className="za-picker-view"
@@ -424,12 +420,17 @@ exports[`Picker Picker render visible 1`] = `
                               ]
                             }
                             disabled={false}
-                            itemRender={[Function]}
+                            fieldNames={
+                              Object {
+                                "children": "children",
+                                "label": "label",
+                                "value": "value",
+                              }
+                            }
                             key="0"
                             onChange={[Function]}
                             stopScroll={false}
                             value="1"
-                            valueMember="value"
                           >
                             <div
                               className="za-wheel"

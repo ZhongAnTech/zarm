@@ -34,9 +34,9 @@ const Picker = React.forwardRef<HTMLDivElement, PickerProps>((props, ref) => {
     value,
     defaultValue,
     dataSource,
-    valueMember,
-    cols,
+    fieldNames,
     itemRender,
+    cols,
     maskClosable,
     mountContainer,
     forceRender,
@@ -74,7 +74,7 @@ const Picker = React.forwardRef<HTMLDivElement, PickerProps>((props, ref) => {
         defaultValue={defaultValue}
         dataSource={dataSource}
         cols={cols}
-        valueMember={valueMember}
+        fieldNames={fieldNames}
         itemRender={itemRender}
         onChange={onChange}
       />
@@ -84,10 +84,8 @@ const Picker = React.forwardRef<HTMLDivElement, PickerProps>((props, ref) => {
 
 Picker.defaultProps = {
   dataSource: [],
-  valueMember: 'value',
   cols: Infinity,
   maskClosable: true,
-  itemRender: (data) => data.label,
   destroy: false,
 };
 

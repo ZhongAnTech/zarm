@@ -4851,7 +4851,6 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                       disabeld={true}
                                       disabled={false}
                                       hasArrow={true}
-                                      itemRender={[Function]}
                                       locale={
                                         Object {
                                           "day": "日",
@@ -5412,12 +5411,17 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                               ]
                                             }
                                             disabled={false}
-                                            itemRender={[Function]}
+                                            fieldNames={
+                                              Object {
+                                                "children": "children",
+                                                "label": "label",
+                                                "value": "value",
+                                              }
+                                            }
                                             key="0"
                                             onChange={[Function]}
                                             stopScroll={false}
                                             value={2019}
-                                            valueMember="value"
                                           >
                                             <div
                                               className="za-wheel"
@@ -6268,12 +6272,17 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                               ]
                                             }
                                             disabled={false}
-                                            itemRender={[Function]}
+                                            fieldNames={
+                                              Object {
+                                                "children": "children",
+                                                "label": "label",
+                                                "value": "value",
+                                              }
+                                            }
                                             key="1"
                                             onChange={[Function]}
                                             stopScroll={false}
                                             value={3}
-                                            valueMember="value"
                                           >
                                             <div
                                               className="za-wheel"
@@ -6482,12 +6491,17 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                               ]
                                             }
                                             disabled={false}
-                                            itemRender={[Function]}
+                                            fieldNames={
+                                              Object {
+                                                "children": "children",
+                                                "label": "label",
+                                                "value": "value",
+                                              }
+                                            }
                                             key="2"
                                             onChange={[Function]}
                                             stopScroll={false}
                                             value={23}
-                                            valueMember="value"
                                           >
                                             <div
                                               className="za-wheel"

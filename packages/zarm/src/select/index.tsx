@@ -50,11 +50,11 @@ const Select = React.forwardRef<unknown, SelectProps>((props, ref) => {
           dataSource: props.dataSource,
           defaultValue,
           value,
-          valueMember: props.valueMember,
+          fieldNames: props.fieldNames,
           cols: props.cols,
         }).objValue,
     });
-  }, [defaultValue, value, props.dataSource, props.valueMember, props.cols, state.visible]);
+  }, [defaultValue, value, props.dataSource, props.fieldNames, props.cols, state.visible]);
 
   const handleClick = useCallback(() => {
     if (disabled) {
@@ -139,8 +139,6 @@ Select.displayName = 'Select';
 
 Select.defaultProps = {
   dataSource: [],
-  valueMember: 'value',
-  itemRender: (data) => data && data.label,
   cols: Infinity,
   maskClosable: true,
   displayRender: (selected) => selected?.map((item) => item && item.label),

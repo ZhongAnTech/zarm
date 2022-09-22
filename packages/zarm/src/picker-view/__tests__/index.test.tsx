@@ -50,7 +50,6 @@ describe('PickerView', () => {
           { label: 'b', value: 2 },
         ],
         value: 1,
-        valueMember: 'value',
         itemRender: PickerView.defaultProps?.itemRender,
         disabled: false,
         onChange: expect.any(Function),

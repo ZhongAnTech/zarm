@@ -36,10 +36,8 @@ exports[`Select Cascader Select 1`] = `
     ]
   }
   displayRender={[Function]}
-  itemRender={[Function]}
   maskClosable={true}
   onClick={[Function]}
-  valueMember="value"
 >
   <div
     className="za-select za-select--placeholder"
@@ -93,13 +91,11 @@ exports[`Select Cascader Select 1`] = `
       ]
     }
     destroy={false}
-    itemRender={[Function]}
     maskClosable={true}
     onCancel={[Function]}
     onChange={[Function]}
     onClick={[Function]}
     onConfirm={[Function]}
-    valueMember="value"
     visible={false}
   >
     <ForwardRef
@@ -232,7 +228,6 @@ exports[`Select Cascader Select init value 1`] = `
   }
   displayAddon="-"
   displayRender={[Function]}
-  itemRender={[Function]}
   maskClosable={true}
   onClick={[Function]}
   value={
@@ -241,10 +236,9 @@ exports[`Select Cascader Select init value 1`] = `
       "12",
     ]
   }
-  valueMember="value"
 >
   <div
-    className="za-select"
+    className="za-select za-select--placeholder"
     onClick={[Function]}
   >
     <div
@@ -253,8 +247,7 @@ exports[`Select Cascader Select init value 1`] = `
       <div
         className="za-select__value"
       >
-        选项一
-        选项二
+        请选择
       </div>
     </div>
     <div
@@ -297,7 +290,6 @@ exports[`Select Cascader Select init value 1`] = `
     }
     destroy={false}
     displayAddon="-"
-    itemRender={[Function]}
     maskClosable={true}
     onCancel={[Function]}
     onChange={[Function]}
@@ -309,7 +301,6 @@ exports[`Select Cascader Select init value 1`] = `
         "12",
       ]
     }
-    valueMember="value"
     visible={false}
   >
     <ForwardRef
@@ -421,10 +412,8 @@ exports[`Select Select 1`] = `
     ]
   }
   displayRender={[Function]}
-  itemRender={[Function]}
   maskClosable={true}
   onClick={[Function]}
-  valueMember="value"
 >
   <div
     className="za-select za-select--placeholder"
@@ -458,13 +447,11 @@ exports[`Select Select 1`] = `
       ]
     }
     destroy={false}
-    itemRender={[Function]}
     maskClosable={true}
     onCancel={[Function]}
     onChange={[Function]}
     onClick={[Function]}
     onConfirm={[Function]}
-    valueMember="value"
     visible={false}
   >
     <ForwardRef
@@ -577,10 +564,8 @@ exports[`Select Select disabled 1`] = `
   }
   disabeld={true}
   displayRender={[Function]}
-  itemRender={[Function]}
   maskClosable={true}
   onClick={[Function]}
-  valueMember="value"
 >
   <div
     className="za-select za-select--placeholder"
@@ -615,13 +600,11 @@ exports[`Select Select disabled 1`] = `
     }
     destroy={false}
     disabeld={true}
-    itemRender={[Function]}
     maskClosable={true}
     onCancel={[Function]}
     onChange={[Function]}
     onClick={[Function]}
     onConfirm={[Function]}
-    valueMember="value"
     visible={true}
   >
     <ForwardRef
@@ -1006,9 +989,7 @@ exports[`Select Select disabled 1`] = `
                         }
                         defaultValue={Array []}
                         disabled={false}
-                        itemRender={[Function]}
                         onChange={[Function]}
-                        valueMember="value"
                       >
                         <div
                           className="za-picker-view"
@@ -1030,12 +1011,17 @@ exports[`Select Select disabled 1`] = `
                                 ]
                               }
                               disabled={false}
-                              itemRender={[Function]}
+                              fieldNames={
+                                Object {
+                                  "children": "children",
+                                  "label": "label",
+                                  "value": "value",
+                                }
+                              }
                               key="0"
                               onChange={[Function]}
                               stopScroll={false}
                               value="1"
-                              valueMember="value"
                             >
                               <div
                                 className="za-wheel"
@@ -1097,13 +1083,11 @@ exports[`Select render defaultValue correctly  1`] = `
   }
   defaultValue="2"
   displayRender={[Function]}
-  itemRender={[Function]}
   maskClosable={true}
   onClick={[Function]}
-  valueMember="value"
 >
   <div
-    className="za-select"
+    className="za-select za-select--placeholder"
     onClick={[Function]}
   >
     <div
@@ -1112,7 +1096,7 @@ exports[`Select render defaultValue correctly  1`] = `
       <div
         className="za-select__value"
       >
-        选项二
+        请选择
       </div>
     </div>
     <div
@@ -1134,13 +1118,11 @@ exports[`Select render defaultValue correctly  1`] = `
       ]
     }
     destroy={false}
-    itemRender={[Function]}
     maskClosable={true}
     onCancel={[Function]}
     onChange={[Function]}
     onClick={[Function]}
     onConfirm={[Function]}
-    valueMember="value"
     visible={false}
   >
     <ForwardRef

@@ -51,7 +51,7 @@ const DIY_DATA = [
   {
     code: '1',
     name: '北京市',
-    children: [
+    options: [
       { code: '11', name: '海淀区' },
       { code: '12', name: '西城区' },
     ],
@@ -59,7 +59,7 @@ const DIY_DATA = [
   {
     code: '2',
     name: '上海市',
-    children: [
+    options: [
       { code: '21', name: '黄埔区' },
       { code: '22', name: '虹口区' },
     ],
@@ -95,7 +95,7 @@ const initState = {
 };
 
 const reducer = (state, action) => {
-  const { type, key, value, valueMember, dataSource } = action;
+  const { type, key, value, fieldNames, dataSource } = action;
 
   switch (type) {
     case 'visible':
@@ -116,12 +116,12 @@ const reducer = (state, action) => {
         },
       };
 
-    case 'valueMember':
+    case 'fieldNames':
       return {
         ...state,
         [key]: {
           ...state[key],
-          valueMember,
+          fieldNames,
         },
       };
 
@@ -151,8 +151,8 @@ const Demo = () => {
     dispatch({ type: 'value', key, value });
   };
 
-  const setValueMember = (key, value) => {
-    dispatch({ type: 'valueMember', key, valueMember: value });
+  const setFieldNames = (key, fieldNames) => {
+    dispatch({ type: 'fieldNames', key, fieldNames });
   };
 
   const setDataSource = (key, value) => {
@@ -164,7 +164,7 @@ const Demo = () => {
     setTimeout(() => {
       setValue('diy', ['1', '12']);
       setDataSource('diy', DIY_DATA);
-      setValueMember('diy', 'code');
+      setFieldNames('diy', { value: 'code', children: 'options' });
     }, 0);
   }, []);
 
@@ -257,9 +257,9 @@ const Demo = () => {
         title="custom title"
         cancelText="Cancel"
         confirmText="Ok"
+        fieldNames={state.diy.fieldNames}
         dataSource={state.diy.dataSource}
         value={state.diy.value}
-        valueMember={state.diy.valueMember}
         itemRender={(data) => data.name}
         onConfirm={(changedValue, items) => {
           console.log('DIY Picker onConfirm: ', items);
@@ -379,12 +379,12 @@ const CASCADE_DATA = [
 const Demo = () => {
   const [value, setValue] = useState([]);
   const [dataSource, setDataSource] = useState([]);
-  const [valueMember, setValueMember] = useState([]);
+  const [fieldNames, setFieldNames] = useState({});
 
   useEffect(() => {
     setTimeout(() => {
       setValue(['1', '12']);
-      setValueMember('code');
+      setFieldNames({ value: 'code' });
       setDataSource(CASCADE_DATA);
     }, 0);
   }, []);
@@ -392,7 +392,7 @@ const Demo = () => {
   return (
     <PickerView
       value={value}
-      valueMember={valueMember}
+      fieldNames={fieldNames}
       dataSource={dataSource}
       onChange={(changedValue, items) => {
         console.log('PickerView onChange: ', items);
