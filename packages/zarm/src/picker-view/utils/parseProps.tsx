@@ -22,8 +22,20 @@ const getValues = (props, defaultValue?: any) => {
   return defaultValue;
 };
 
+const DEFAULT_FIELD_NAMES = {
+  value: 'value',
+  label: 'label',
+  children: 'children',
+};
+
+const resolveFieldNames = (props) => {
+  const { fieldNames } = props;
+  return { ...DEFAULT_FIELD_NAMES, ...fieldNames };
+};
+
 export const normalState = (props) => {
-  const { fieldNames, dataSource } = props;
+  const { dataSource } = props;
+  const fieldNames = resolveFieldNames(props);
   const value = getValues(
     props,
     dataSource!.map((item) => item[0] && item[0][fieldNames?.value!]),
@@ -38,7 +50,8 @@ export const normalState = (props) => {
 };
 
 const cascaderState = (props) => {
-  const { fieldNames, cols } = props;
+  const { cols } = props;
+  const fieldNames = resolveFieldNames(props);
   let newValues = getValues(props, []);
   const newObjValues: any[] = [];
   const newDateSource: any[] = [];

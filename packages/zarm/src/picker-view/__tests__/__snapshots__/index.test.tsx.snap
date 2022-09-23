@@ -39,13 +39,6 @@ exports[`PickerView PickerView disabled 1`] = `
           ]
         }
         disabled={true}
-        fieldNames={
-          Object {
-            "children": "children",
-            "label": "label",
-            "value": "value",
-          }
-        }
         key="0"
         onChange={[Function]}
         stopScroll={false}

@@ -40,7 +40,7 @@ exports[`Select Cascader Select 1`] = `
   onClick={[Function]}
 >
   <div
-    className="za-select za-select--placeholder"
+    className="za-select"
     onClick={[Function]}
   >
     <div
@@ -49,7 +49,8 @@ exports[`Select Cascader Select 1`] = `
       <div
         className="za-select__value"
       >
-        请选择
+        选项一
+        选项一
       </div>
     </div>
     <div
@@ -93,7 +94,6 @@ exports[`Select Cascader Select 1`] = `
     destroy={false}
     maskClosable={true}
     onCancel={[Function]}
-    onChange={[Function]}
     onClick={[Function]}
     onConfirm={[Function]}
     visible={false}
@@ -238,7 +238,7 @@ exports[`Select Cascader Select init value 1`] = `
   }
 >
   <div
-    className="za-select za-select--placeholder"
+    className="za-select"
     onClick={[Function]}
   >
     <div
@@ -247,7 +247,8 @@ exports[`Select Cascader Select init value 1`] = `
       <div
         className="za-select__value"
       >
-        请选择
+        选项一
+        选项二
       </div>
     </div>
     <div
@@ -292,7 +293,6 @@ exports[`Select Cascader Select init value 1`] = `
     displayAddon="-"
     maskClosable={true}
     onCancel={[Function]}
-    onChange={[Function]}
     onClick={[Function]}
     onConfirm={[Function]}
     value={
@@ -416,7 +416,7 @@ exports[`Select Select 1`] = `
   onClick={[Function]}
 >
   <div
-    className="za-select za-select--placeholder"
+    className="za-select"
     onClick={[Function]}
   >
     <div
@@ -425,7 +425,7 @@ exports[`Select Select 1`] = `
       <div
         className="za-select__value"
       >
-        请选择
+        选项一
       </div>
     </div>
     <div
@@ -449,7 +449,6 @@ exports[`Select Select 1`] = `
     destroy={false}
     maskClosable={true}
     onCancel={[Function]}
-    onChange={[Function]}
     onClick={[Function]}
     onConfirm={[Function]}
     visible={false}
@@ -568,7 +567,7 @@ exports[`Select Select disabled 1`] = `
   onClick={[Function]}
 >
   <div
-    className="za-select za-select--placeholder"
+    className="za-select"
     onClick={[Function]}
   >
     <div
@@ -577,7 +576,7 @@ exports[`Select Select disabled 1`] = `
       <div
         className="za-select__value"
       >
-        请选择
+        选项一
       </div>
     </div>
     <div
@@ -602,7 +601,6 @@ exports[`Select Select disabled 1`] = `
     disabeld={true}
     maskClosable={true}
     onCancel={[Function]}
-    onChange={[Function]}
     onClick={[Function]}
     onConfirm={[Function]}
     visible={true}
@@ -989,7 +987,6 @@ exports[`Select Select disabled 1`] = `
                         }
                         defaultValue={Array []}
                         disabled={false}
-                        onChange={[Function]}
                       >
                         <div
                           className="za-picker-view"
@@ -1011,13 +1008,6 @@ exports[`Select Select disabled 1`] = `
                                 ]
                               }
                               disabled={false}
-                              fieldNames={
-                                Object {
-                                  "children": "children",
-                                  "label": "label",
-                                  "value": "value",
-                                }
-                              }
                               key="0"
                               onChange={[Function]}
                               stopScroll={false}
@@ -1087,7 +1077,7 @@ exports[`Select render defaultValue correctly  1`] = `
   onClick={[Function]}
 >
   <div
-    className="za-select za-select--placeholder"
+    className="za-select"
     onClick={[Function]}
   >
     <div
@@ -1096,7 +1086,7 @@ exports[`Select render defaultValue correctly  1`] = `
       <div
         className="za-select__value"
       >
-        请选择
+        选项二
       </div>
     </div>
     <div
@@ -1120,7 +1110,6 @@ exports[`Select render defaultValue correctly  1`] = `
     destroy={false}
     maskClosable={true}
     onCancel={[Function]}
-    onChange={[Function]}
     onClick={[Function]}
     onConfirm={[Function]}
     visible={false}

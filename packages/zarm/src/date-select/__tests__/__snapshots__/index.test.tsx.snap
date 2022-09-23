@@ -5411,13 +5411,6 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                               ]
                                             }
                                             disabled={false}
-                                            fieldNames={
-                                              Object {
-                                                "children": "children",
-                                                "label": "label",
-                                                "value": "value",
-                                              }
-                                            }
                                             key="0"
                                             onChange={[Function]}
                                             stopScroll={false}
@@ -6272,13 +6265,6 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                               ]
                                             }
                                             disabled={false}
-                                            fieldNames={
-                                              Object {
-                                                "children": "children",
-                                                "label": "label",
-                                                "value": "value",
-                                              }
-                                            }
                                             key="1"
                                             onChange={[Function]}
                                             stopScroll={false}
@@ -6491,13 +6477,6 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                               ]
                                             }
                                             disabled={false}
-                                            fieldNames={
-                                              Object {
-                                                "children": "children",
-                                                "label": "label",
-                                                "value": "value",
-                                              }
-                                            }
                                             key="2"
                                             onChange={[Function]}
                                             stopScroll={false}

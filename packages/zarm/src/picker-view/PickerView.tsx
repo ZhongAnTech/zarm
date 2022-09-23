@@ -29,30 +29,22 @@ export interface PickerViewInstance {
   dataSource: PickerDataSourceItem[];
 }
 
-const DEFAULT_FIELD_NAMES = {
-  value: 'value',
-  label: 'label',
-  children: 'children',
-};
-
 const PickerView = React.forwardRef<PickerViewInstance, PickerViewProps>((props, ref) => {
   const { className, style, cols, itemRender, disabled, stopScroll, onChange } = props;
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('picker-view', { prefixCls });
-  const fieldNames = { ...DEFAULT_FIELD_NAMES, ...props.fieldNames };
-  const restProps = { ...props, fieldNames };
 
-  const [innerValue, setInnerValue] = React.useState(parseProps.getSource(restProps).value);
+  const [innerValue, setInnerValue] = React.useState(parseProps.getSource(props).value);
 
   React.useEffect(() => {
     if (props.value === undefined) return;
     if (isEqual(props.value, innerValue)) return;
-    setInnerValue(parseProps.getSource(restProps).value);
+    setInnerValue(parseProps.getSource(props).value);
   }, [props.value]);
 
   const { dataSource, objValue } = React.useMemo(
-    () => parseProps.getSource({ ...restProps, value: innerValue }),
-    [fieldNames.value, fieldNames.children, cols, innerValue, props.dataSource],
+    () => parseProps.getSource({ ...props, value: innerValue }),
+    [cols, innerValue, props.dataSource, props.fieldNames],
   );
 
   React.useImperativeHandle(ref, () => ({ value: innerValue, dataSource: objValue }));
@@ -63,7 +55,7 @@ const PickerView = React.forwardRef<PickerViewInstance, PickerViewProps>((props,
       value.length = level + 1;
     }
     value[level] = selected;
-    const next = parseProps.getSource({ ...restProps, value });
+    const next = parseProps.getSource({ ...props, value });
     setInnerValue(next.value);
     onChange?.(next.value, next.objValue);
   };
@@ -76,7 +68,7 @@ const PickerView = React.forwardRef<PickerViewInstance, PickerViewProps>((props,
             key={+index}
             dataSource={item}
             value={innerValue?.[index]}
-            fieldNames={fieldNames}
+            fieldNames={props.fieldNames}
             itemRender={itemRender}
             disabled={disabled}
             onChange={(selected: WheelValue) => onValueChange(selected, index)}

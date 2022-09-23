@@ -161,13 +161,6 @@ exports[`DatePickerView DatePickerView time 2 1`] = `
                 ]
               }
               disabled={false}
-              fieldNames={
-                Object {
-                  "children": "children",
-                  "label": "label",
-                  "value": "value",
-                }
-              }
               key="0"
               onChange={[Function]}
               stopScroll={false}
