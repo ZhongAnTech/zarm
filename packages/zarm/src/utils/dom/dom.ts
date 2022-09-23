@@ -1,8 +1,6 @@
 /* eslint-disable operator-linebreak */
 import raf from 'raf';
-import { StringPropertyNames } from './utilityTypes';
-
-export type ContainerType = HTMLElement | (() => HTMLElement) | Window;
+import { StringPropertyNames } from '../utilityTypes';
 
 export const canUseDOM = !!(
   typeof window !== 'undefined' &&
@@ -87,6 +85,12 @@ export const isFixed = (ele): boolean => {
 
 // 获取元素完整尺寸(offset size + margin)
 export const getOuterSizes = (ele) => {
+  if (!ele) {
+    return {
+      width: 0,
+      height: 0,
+    };
+  }
   const _display = ele.style.display;
   const _visibility = ele.style.visibility;
   ele.style.display = 'block';
@@ -185,25 +189,6 @@ export const getScrollLeft = (ele: HTMLElement | Window): number => {
     );
   }
   return (ele as HTMLElement).scrollLeft;
-};
-
-// 获取装载容器
-export const getMountContainer = (mountContainer?: ContainerType): HTMLElement => {
-  if (mountContainer) {
-    if (typeof mountContainer === 'function') {
-      return mountContainer();
-    }
-    if (typeof mountContainer === 'object' && mountContainer instanceof HTMLElement) {
-      return mountContainer;
-    }
-  }
-  return document.body;
-};
-
-// 获取滚动容器
-export const getScrollContainer = (mountContainer?: ContainerType): HTMLElement | Window => {
-  const container = getMountContainer(mountContainer);
-  return container === document.body ? window : container;
 };
 
 // export const scrollTo = (scrollContainer: HTMLElement | Window, scrollTop: number): void => {

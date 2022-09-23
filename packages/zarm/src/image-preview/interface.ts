@@ -1,6 +1,6 @@
 import type LOAD_STATUS from './utils/loadStatus';
 import type { Locale } from '../config-provider/PropsType';
-import type { ContainerType } from '../utils/dom';
+import type { MountContainer } from '../utils/dom';
 
 export interface ImageObject {
   src: string;
@@ -18,7 +18,7 @@ export interface BaseImagePreviewProps {
   minScale?: number;
   locale?: Locale['ImagePreview'];
   orientation?: 'landscape' | 'portrait';
-  mountContainer?: ContainerType;
+  mountContainer?: MountContainer;
   onChange?: (activeIndex: number) => void;
   onClose?: () => void;
 }

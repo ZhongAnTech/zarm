@@ -104,7 +104,7 @@ function Demo() {
       <List>
         <List.Item
           title="模式"
-          after={
+          suffix={
             <Radio.Group buttonCompact type="button" onChange={setMode} value={mode}>
               <Radio value="svg">svg</Radio>
               <Radio value="font">font</Radio>

@@ -1,19 +1,33 @@
-@keyframes za-door-enter {
+@mixin door-motion($className, $keyframeName) {
+  $name: #{$prefixCls}-#{$className};
+  @include make-motion($name, #{$prefixCls}-#{$keyframeName});
+  .#{$name}-enter,
+  .#{$name}-appear {
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.4, 0, 0, 0);
+  }
+  .#{$name}-leave {
+    animation-timing-function: ease;
+  }
+}
+
+@include door-motion(door, door);
+
+@keyframes #{$prefixCls}-door-in {
   from {
+    opacity: 0;
     transform: scale3d(0, 1, 1);
   }
 
   to {
+    opacity: 1;
     transform: scale3d(1, 1, .1);
   }
 }
 
-.za-door-enter {
-  animation: za-door-enter both cubic-bezier(0.4, 0, 0, 0);
-}
-
-@keyframes za-door-leave {
+@keyframes #{$prefixCls}-door-out {
   from {
+    opacity: 1;
     transform: scale3d(1, 1, 1);
   }
 
@@ -22,10 +36,7 @@
   }
 
   to {
+    opacity: 0;
     transform: scale3d(0, 1, .1);
   }
-}
-
-.za-door-leave {
-  animation: za-door-leave both;
 }

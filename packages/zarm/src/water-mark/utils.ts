@@ -1,6 +1,6 @@
 import * as React from 'react';
+import isString from 'lodash/isString';
 import type { BaseWaterMarkProps, WaterMarkDrawResult } from './interface';
-import { isString } from '../utils/validate';
 
 const resolveImage = (url: string) => {
   return new Promise<HTMLImageElement>((resolve, reject) => {
@@ -69,7 +69,7 @@ export const draw = async ({
     return { url: canvas.toDataURL(), width: canvasWidth, height: canvasHeight, ratio };
   }
 
-  if (isString(text) || (Array.isArray(text) && text.length)) {
+  if ((Array.isArray(text) && text.length) || isString(text)) {
     const {
       color,
       fontSize,

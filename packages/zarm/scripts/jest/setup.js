@@ -13,3 +13,11 @@ jest.mock('react-native', () => require('dl-react-native-mock-render'), {
 });
 
 Object.defineProperty(window, 'SVGRect', { value: 'SVGRect', writable: true });
+
+window.ResizeObserver =
+  window.ResizeObserver ||
+  jest.fn().mockImplementation(() => ({
+    disconnect: jest.fn(),
+    observe: jest.fn(),
+    unobserve: jest.fn(),
+  }));

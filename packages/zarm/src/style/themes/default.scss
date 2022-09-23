@@ -58,14 +58,11 @@
   // 堆叠顺序
   --zindex-mask: 1000;
   --zindex-popup: 1100;
-  --zindex-tooltip: 1700;
-  --zindex-tabbar: 100;
 
   // 透明度
   --opacity-disabled: 0.5;
   --opacity-mask: 0.4;
   --opacity-toast: 0.8;
-  --opacity-tooltip: 0.8;
 
   //阴影
   --box-shadow-light: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
@@ -138,7 +135,6 @@
   --za-zindex-mask: 1000;
   --za-zindex-popup: 1100;
   --za-zindex-tooltip: 1700;
-  --za-zindex-tabbar: 100;
 
   // 透明度
   --za-opacity-disabled: 0.5;
@@ -150,12 +146,10 @@
   --za-box-shadow-light: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
   --za-box-shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.2);
 
+  // 动画
+  --za-animation-duration-base: 0.3s;
+
   // Collapse
-  --za-collapse-height: 52px;
-  --za-collapse-padding-horizontal: 16px;
-  --za-collapse-padding-vertical: 15px;
-  --za-collapse-arrow-color: #bcbcbc;
-  --za-collapse-arrow-disabled-color: #eee;
 
   // Input
   // 高度
@@ -223,20 +217,6 @@
   --za-notice-bar-padding-horizontal: 12px;
   --za-notice-bar-icon-size: 16px;
 
-  // Panel
-  // 左右留白宽度
-  --za-panel-spacing-padding-horizontal: 16px;
-  // 头部字体色
-  --za-panel-header-color: rgba(60, 60, 67, 0.6);
-  // 头部字体大小
-  --za-panel-header-font-size: 13px;
-  // 头部内边距
-  --za-panel-header-padding: 25px 16px 10px 16px;
-  // 内容背景
-  --za-panel-body-background: #fff;
-  // 内容圆角大小
-  --za-panel-body-border-radius: 10px;
-
   // Picker
   --za-picker-background: #fff;
   --za-picker-padding: 16px;
@@ -259,10 +239,6 @@
   --za-progress-font-size-circle-lg: 30px;
   --za-progress-font-size-circle-md: 24px;
   --za-progress-font-size-circle-sm: 18px;
-
-  // Pull
-  --pull-control-height: 50px;
-  --pull-control-font-size: 14px;
 
   // SearchBar
   // 高度
@@ -326,21 +302,6 @@
   --za-toast-background: rgba(0, 0, 0, var(--opacity-toast));
   --za-toast-color: var(--color-text-inverse);
   --za-toast-font-size: 13px;
-
-  // Tooltip
-  --za-tooltip-font-size: 12px;
-  --za-tooltip-color: var(--color-text-inverse);
-  --za-tooltip-arrow-size: 4px;
-  --za-tooltip-padding-vertical: var(--padding-v-xs);
-  --za-tooltip-padding-horizontal: var(--padding-h-xs);
-  --za-tooltip-background: rgba(0, 0, 0, var(--opacity-tooltip));
-
-  // Tabbar
-  --za-tabbar-height: 50px;
-  --za-tabbar-hidden-bottom: -50px;
-  --za-tabbar-background: #fff;
-  --za-tabbar-item-font-size: 12px;
-  --za-tabbar-item-active-color: var(--theme-primary);
 
   // Wheel
   --za-wheel-item-height: 34px;

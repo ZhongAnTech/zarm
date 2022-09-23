@@ -41,7 +41,7 @@ const Demo = () => {
       <List>
         <List.Item
           title="从上方弹出"
-          after={
+          suffix={
             <Button
               size="xs"
               onClick={() => {
@@ -58,7 +58,7 @@ const Demo = () => {
         />
         <List.Item
           title="从下方弹出"
-          after={
+          suffix={
             <Button size="xs" onClick={() => toggle('popBottom')}>
               开启
             </Button>
@@ -66,7 +66,7 @@ const Demo = () => {
         />
         <List.Item
           title="从左侧弹出"
-          after={
+          suffix={
             <Button size="xs" onClick={() => toggle('popLeft')}>
               开启
             </Button>
@@ -74,7 +74,7 @@ const Demo = () => {
         />
         <List.Item
           title="从右侧弹出"
-          after={
+          suffix={
             <Button size="xs" onClick={() => toggle('popRight')}>
               开启
             </Button>
@@ -82,7 +82,7 @@ const Demo = () => {
         />
         <List.Item
           title="从中间弹出"
-          after={
+          suffix={
             <Button size="xs" onClick={() => toggle('popCenter')}>
               开启
             </Button>
@@ -90,7 +90,7 @@ const Demo = () => {
         />
         <List.Item
           title="自定义挂载节点"
-          after={
+          suffix={
             <Button size="xs" onClick={() => toggle('popSpec')}>
               开启
             </Button>
@@ -184,7 +184,7 @@ const Demo = () => {
           toggle('popCenterSpec');
         }}
         mountContainer={() => {
-          return popupRef.current.popup;
+          return popupRef.current;
         }}
       >
         <div className="popup-box">
@@ -235,6 +235,7 @@ ReactDOM.render(<Demo />, mountNode);
 | mask              | boolean                              | true          | 是否展示遮罩层                                                                                                                                                                                          |
 | maskColor         | string                               | 'black'       | 遮罩层的颜色，可选值 `black`, `white`, `transparent`                                                                                                                                                    |
 | maskOpacity       | string \| number                     | 'normal'      | 遮罩层的透明度，可选值 `normal`, `light`, `dark`，或填写具体数值（0 ~ 1）                                                                                                                               |
+| forceRender       | boolean                              | false         | 强制渲染内容                                                                                                                                                                                            |
 | destroy           | boolean                              | true          | 弹层关闭后是否移除节点                                                                                                                                                                                  |
 | afterOpen         | () => void                           | -             | 弹层展示后的回调                                                                                                                                                                                        |
 | afterClose        | () => void                           | -             | 弹层关闭后的回调                                                                                                                                                                                        |

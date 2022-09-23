@@ -1,9 +1,9 @@
-import type { ContainerType } from '../utils/dom';
+import type { MountContainer, ScrollContainer } from '../utils/dom';
 
 export interface BaseBackTopProps {
   speed?: number;
   visibleDistance?: number;
-  scrollContainer?: ContainerType;
-  mountContainer?: ContainerType;
+  scrollContainer?: ScrollContainer;
+  mountContainer?: MountContainer;
   destroy?: boolean;
 }

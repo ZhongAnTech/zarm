@@ -3,6 +3,8 @@
   @include define(pagination-text-color, var(--za-color-text-inverse));
   @include define(pagination-font-size, var(--za-font-size-lg));
 
+  padding: 0;
+
   &,
   * {
     touch-action: none;
@@ -43,10 +45,6 @@
   @include b(popup) {
     width: 100%;
     height: 100%;
-
-    @include e(wrapper) {
-      padding: 0;
-    }
   }
 
   @include b(carousel) {

@@ -65,7 +65,7 @@ const Demo = () => {
       <List>
         <List.Item
           title="普通"
-          after={
+          suffix={
             <Button size="xs" onClick={() => toggle('normal')}>
               开启
             </Button>
@@ -73,7 +73,7 @@ const Demo = () => {
         />
         <List.Item
           title="自定义底部"
-          after={
+          suffix={
             <Button size="xs" onClick={() => toggle('hasFooter')}>
               开启
             </Button>
@@ -81,7 +81,7 @@ const Demo = () => {
         />
         <List.Item
           title="遮罩层可关闭"
-          after={
+          suffix={
             <Button size="xs" onClick={() => toggle('closable')}>
               开启
             </Button>
@@ -89,7 +89,7 @@ const Demo = () => {
         />
         <List.Item
           title="无头部，无底部"
-          after={
+          suffix={
             <Button size="xs" onClick={() => toggle('onlyBody')}>
               开启
             </Button>
@@ -97,7 +97,7 @@ const Demo = () => {
         />
         <List.Item
           title="动画效果"
-          after={
+          suffix={
             <Button size="xs" onClick={() => toggle('animation')}>
               开启
             </Button>
@@ -111,14 +111,14 @@ const Demo = () => {
               { value: 'rotate', label: '旋转效果' },
               { value: 'door', label: '开关门效果' },
               { value: 'flip', label: '翻转效果' },
-              { value: 'moveUp', label: '向上移入效果' },
-              { value: 'moveDown', label: '向下移入效果' },
-              { value: 'moveLeft', label: '向左移入效果' },
-              { value: 'moveRight', label: '向右移入效果' },
-              { value: 'slideUp', label: '向上滑入效果' },
-              { value: 'slideDown', label: '向下滑入效果' },
-              { value: 'slideLeft', label: '向左滑入效果' },
-              { value: 'slideRight', label: '向右滑入效果' },
+              { value: 'move-up', label: '向上移入效果' },
+              { value: 'move-down', label: '向下移入效果' },
+              { value: 'move-left', label: '向左移入效果' },
+              { value: 'move-right', label: '向右移入效果' },
+              { value: 'slide-up', label: '向上滑入效果' },
+              { value: 'slide-down', label: '向下滑入效果' },
+              { value: 'slide-left', label: '向左滑入效果' },
+              { value: 'slide-right', label: '向右滑入效果' },
             ]}
             itemRender={(data) => data && `${data.label}（${data.value}）`}
             displayRender={(selected) => selected.map((item) => item && item.label)}
@@ -132,7 +132,7 @@ const Demo = () => {
           />
         </List.Item>
         <List.Item
-          after={
+          suffix={
             <Button size="xs" onClick={() => toggle('customContainer')}>
               开启
             </Button>
@@ -214,7 +214,7 @@ const Demo = () => {
       <List>
         <List.Item
           title="自定义操作按钮"
-          after={
+          suffix={
             <Button size="xs" onClick={toggle}>
               开启
             </Button>
@@ -283,7 +283,7 @@ const Demo = () => {
     <List>
       <List.Item
         title="静态方法关闭"
-        after={
+        suffix={
           <Button
             size="xs"
             onClick={() => {
@@ -303,7 +303,7 @@ const Demo = () => {
       />
       <List.Item
         title="使用 Promise 关闭"
-        after={
+        suffix={
           <Button
             size="xs"
             onClick={() => {
@@ -339,7 +339,7 @@ const Demo = () => {
     <List>
       <List.Item
         title="静态方法关闭"
-        after={
+        suffix={
           <Button
             size="xs"
             onClick={() => {
@@ -361,7 +361,7 @@ const Demo = () => {
       />
       <List.Item
         title="使用 Promise 关闭"
-        after={
+        suffix={
           <Button
             size="xs"
             onClick={() => {

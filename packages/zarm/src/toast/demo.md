@@ -14,7 +14,7 @@ const Demo = () => {
       <List>
         <List.Item
           title="普通"
-          after={
+          suffix={
             <>
               <Button
                 size="xs"
@@ -67,7 +67,7 @@ const Demo = () => {
     <List>
       <List.Item
         title="普通"
-        after={
+        suffix={
           <>
             <Button
               size="xs"
@@ -91,7 +91,7 @@ const Demo = () => {
       />
       <List.Item
         title="指定停留时间"
-        after={
+        suffix={
           <Button
             size="xs"
             onClick={() => {
@@ -109,7 +109,7 @@ const Demo = () => {
         }
       />
       <List.Item
-        after={
+        suffix={
           <Button
             size="xs"
             onClick={() => {
@@ -127,7 +127,7 @@ const Demo = () => {
       </List.Item>
       <List.Item
         title="有遮罩层"
-        after={
+        suffix={
           <Button
             size="xs"
             onClick={() => {
@@ -143,7 +143,7 @@ const Demo = () => {
       />
       <List.Item
         title="自定义内容"
-        after={
+        suffix={
           <Button
             size="xs"
             onClick={() => {

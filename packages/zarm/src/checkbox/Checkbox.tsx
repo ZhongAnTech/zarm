@@ -1,5 +1,5 @@
 import * as React from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import { Success as SuccessIcon, Minus as MinusIcon } from '@zarm-design/icons';
 import { ConfigContext } from '../n-config-provider';
 import Button from '../button';
@@ -69,15 +69,18 @@ const Checkbox = React.forwardRef<unknown, CheckboxButtonProps>((props, ref) => 
     getChecked({ checked, defaultChecked }),
   );
 
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-checkbox`;
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('checkbox', { prefixCls });
 
-  const cls = classnames(prefixCls, className, {
-    [`${prefixCls}--checked`]: currentChecked,
-    [`${prefixCls}--disabled`]: disabled,
-    [`${prefixCls}--untext`]: !children,
-    [`${prefixCls}--indeterminate`]: indeterminate,
-  });
+  const cls = bem([
+    {
+      checked: currentChecked,
+      disabled,
+      untext: !children,
+      indeterminate,
+    },
+    className,
+  ]);
 
   const onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (disabled) {
@@ -96,7 +99,7 @@ const Checkbox = React.forwardRef<unknown, CheckboxButtonProps>((props, ref) => 
       id={id}
       type="checkbox"
       aria-checked={currentChecked}
-      className={`${prefixCls}__input`}
+      className={bem('input')}
       disabled={disabled}
       value={value}
       defaultChecked={'defaultChecked' in props ? defaultChecked : undefined}
@@ -107,16 +110,16 @@ const Checkbox = React.forwardRef<unknown, CheckboxButtonProps>((props, ref) => 
 
   const checkboxRender = (
     <span ref={checkboxRef} className={cls} {...(restProps as CheckboxNormalProps)}>
-      <span className={`${prefixCls}__widget`}>
-        <span className={`${prefixCls}__inner`}>
+      <span className={bem('widget')}>
+        <span className={bem('inner')}>
           {indeterminate ? (
-            <MinusIcon className={`${prefixCls}__marker`} />
+            <MinusIcon className={bem('marker')} />
           ) : (
-            <SuccessIcon className={`${prefixCls}__marker`} />
+            <SuccessIcon className={bem('marker')} />
           )}
         </span>
       </span>
-      {children && <span className={`${prefixCls}__text`}>{children}</span>}
+      {children && <span className={bem('text')}>{children}</span>}
       {inputRender}
     </span>
   );
@@ -128,9 +131,9 @@ const Checkbox = React.forwardRef<unknown, CheckboxButtonProps>((props, ref) => 
   if (type === 'list') {
     const marker = (
       <>
-        <span className={`${prefixCls}__widget`}>
-          <span className={`${prefixCls}__inner`}>
-            <SuccessIcon className={`${prefixCls}__marker`} />
+        <span className={bem('widget')}>
+          <span className={bem('inner')}>
+            <SuccessIcon className={bem('marker')} />
           </span>
         </span>
         {inputRender}
@@ -142,14 +145,14 @@ const Checkbox = React.forwardRef<unknown, CheckboxButtonProps>((props, ref) => 
       className: cls,
       title: (
         <>
-          {children && <span className={`${prefixCls}__text`}>{children}</span>}
+          {children && <span className={bem('text')}>{children}</span>}
           {inputRender}
         </>
       ),
       onClick: !disabled ? () => {} : undefined,
     };
 
-    listMarkerAlign === 'after' ? (listProps.after = marker) : (listProps.prefix = marker);
+    listMarkerAlign === 'after' ? (listProps.suffix = marker) : (listProps.prefix = marker);
 
     return <List.Item ref={checkboxRef} {...listProps} />;
   }

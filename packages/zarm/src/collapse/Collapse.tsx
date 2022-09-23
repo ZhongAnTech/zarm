@@ -1,14 +1,26 @@
-import React, { HTMLAttributes, Children, cloneElement, ReactElement, useState } from 'react';
-import classnames from 'classnames';
+import React, { Children, cloneElement, ReactElement, useState } from 'react';
+import { createBEM } from '@zarm-design/bem';
 import type { CollapseActiveKey, CollapseItemKey, BaseCollapseProps } from './interface';
 import CollapseItem, { CollapseItemProps } from './CollapseItem';
 import { ConfigContext } from '../n-config-provider';
+import type { HTMLProps } from '../utils/utilityTypes';
 
-export type CollapseProps = Omit<
-  HTMLAttributes<HTMLDivElement>,
-  'activeKey' | 'defaultActiveKey' | 'onChange'
-> &
-  BaseCollapseProps;
+export interface CollapseCssVars {
+  '--border-color'?: React.CSSProperties['color'];
+  '--arrow-color'?: React.CSSProperties['color'];
+  '--arrow-size'?: React.CSSProperties['width'];
+  '--arrow-width'?: React.CSSProperties['width'];
+  '--arrow-disabled-color'?: React.CSSProperties['color'];
+  '--header-height'?: React.CSSProperties['height'];
+  '--header-padding-horizontal'?: React.CSSProperties['left'];
+  '--header-padding-vertical'?: React.CSSProperties['top'];
+  '--header-disable-color'?: React.CSSProperties['color'];
+  '--content-color'?: React.CSSProperties['color'];
+  '--content-padding-vertical'?: React.CSSProperties['top'];
+  '--content-padding-horizontal'?: React.CSSProperties['left'];
+}
+
+export type CollapseProps = BaseCollapseProps & React.PropsWithChildren<HTMLProps<CollapseCssVars>>;
 
 interface CompoundedComponent
   extends React.ForwardRefExoticComponent<CollapseProps & React.RefAttributes<HTMLElement>> {
@@ -50,8 +62,9 @@ const Collapse = React.forwardRef<unknown, CollapseProps>((props, ref) => {
     getActiveKey({ multiple, activeKey, defaultActiveKey, hasActiveKeys }),
   );
 
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-collapse`;
+  const { prefixCls } = React.useContext(ConfigContext);
+
+  const bem = createBEM('collapse', { prefixCls });
 
   const onItemChange = (onItemChangeProps, key) => {
     if (!key) {
@@ -99,9 +112,7 @@ const Collapse = React.forwardRef<unknown, CollapseProps>((props, ref) => {
     });
   };
 
-  const cls = classnames(prefixCls, className, {
-    [`${prefixCls}--animated`]: animated,
-  });
+  const cls = bem([{ animated }, className]);
 
   React.useEffect(() => {
     setActiveKey(getActiveKey({ multiple, activeKey, defaultActiveKey, hasActiveKeys }));

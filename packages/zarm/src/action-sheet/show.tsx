@@ -32,6 +32,7 @@ const showActionSheet = (props: Omit<ActionSheetProps, 'visible'>) => {
             props.afterClose?.();
             unmount();
           }}
+          mountContainer={false}
         />
       </RuntimeConfigProvider>
     );

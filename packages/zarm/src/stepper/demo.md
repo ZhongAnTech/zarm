@@ -13,7 +13,7 @@ const Demo = () => {
     <List>
       <List.Item
         title="普通"
-        after={
+        suffix={
           <Stepper
             value={value}
             onChange={setValue}
@@ -23,15 +23,15 @@ const Demo = () => {
           />
         }
       />
-      <List.Item title="设置默认值" after={<Stepper defaultValue={2} />} />
-      <List.Item title="设置上下限（-3 ~ 3）" after={<Stepper min={-3} max={3} />} />
-      <List.Item title="设置步长" after={<Stepper step={5} />} />
+      <List.Item title="设置默认值" suffix={<Stepper defaultValue={2} />} />
+      <List.Item title="设置上下限（-3 ~ 3）" suffix={<Stepper min={-3} max={3} />} />
+      <List.Item title="设置步长" suffix={<Stepper step={5} />} />
       <List.Item
         title="步长小数"
-        after={<Stepper type="price" step={0.12} defaultValue={0.9} max={2.0} min={1} />}
+        suffix={<Stepper type="price" step={0.12} defaultValue={0.9} max={2.0} min={1} />}
       />
-      <List.Item title="禁用状态" after={<Stepper disabled />} />
-      <List.Item title="禁用输入" after={<Stepper disableInput />} />
+      <List.Item title="禁用状态" suffix={<Stepper disabled />} />
+      <List.Item title="禁用输入" suffix={<Stepper disableInput />} />
     </List>
   );
 };
@@ -46,8 +46,8 @@ import { List, Stepper } from 'zarm';
 
 ReactDOM.render(
   <List>
-    <List.Item title="直角" after={<Stepper shape="rect" />} />
-    <List.Item title="圆形" after={<Stepper shape="circle" />} />
+    <List.Item title="直角" suffix={<Stepper shape="rect" />} />
+    <List.Item title="圆形" suffix={<Stepper shape="circle" />} />
   </List>,
   mountNode,
 );
@@ -60,7 +60,7 @@ import { List, Stepper } from 'zarm';
 
 ReactDOM.render(
   <List>
-    <List.Item title="大号" after={<Stepper size="lg" />} />
+    <List.Item title="大号" suffix={<Stepper size="lg" />} />
   </List>,
   mountNode,
 );

@@ -1,8 +1,15 @@
 @include b(tab-bar) {
+  @include define(font-size, 12px);
+  @include define(background, #fff);
+  @include define(z-index, 100);
+  @include define(height, 50px);
+  @include define(color, var(--za-color-text));
+  @include define(active-color,  var(--za-theme-primary));
+
   display: flex;
   width: 100%;
-  background: var(--za-tabbar-background);
-  height: var(--za-tabbar-height);
+  background: var(--background);
+  height: var(--height);
   justify-content: center;
   align-content: center;
   align-items: center;
@@ -10,17 +17,17 @@
   position: fixed;
   left: 0;
   bottom: 0;
-  z-index: var(--zindex-tabbar);
+  z-index: var(--z-index);
   transition-duration: .2s;
   transition-property: height bottom;
   overflow: hidden;
 
   @include m(safe) {
-    @include safeIphoneX(true, var(--za-tabbar-height));
+    @include safeIphoneX(true, var(--height));
   }
 
   @include m(hidden) {
-    bottom: var(--za-tabbar-hidden-bottom);
+    bottom: calc(var(--height) * -1);
     height: 0;
   }
 
@@ -28,17 +35,18 @@
     flex: 1;
 
     @include e(title) {
-      font-size: var(--za-tabbar-item-font-size);
+      font-size: var(--font-size);
       line-height: 1;
-      margin-top: r(2);
+      margin-top: 2px;
+      color: var(--color);
     }
 
     @include e(icon) {
       display: inline-block;
       vertical-align: middle;
-      width: r(24);
-      height: r(24);
-      font-size: r(18);
+      width: 24px;
+      height: 24px;
+      font-size: 18px;
     }
 
     @include b(badge) {
@@ -50,12 +58,12 @@
     @include m(active) {
       @include b(tab-bar) {
         @include e(title) {
-          color: var(--za-tabbar-item-active-color);
+          color: var(--active-color);
         }
       }
 
       @include b(icon) {
-        color: var(--za-tabbar-item-active-color);
+        color: var(--active-color);
       }
     }
   }

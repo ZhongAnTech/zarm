@@ -2,7 +2,6 @@ import React, { createRef, useEffect, useRef } from 'react';
 import classnames from 'classnames';
 import BScroll, { BScrollInstance } from 'better-scroll';
 import isEqual from 'lodash/isEqual';
-import { isArray } from '../utils/validate';
 import { usePrevious, useEventCallback } from '../utils/hooks';
 import type { BaseWheelProps, WheelItem, WheelValue } from './interface';
 import { ConfigContext } from '../n-config-provider';
@@ -14,7 +13,7 @@ const getValue = (props: Omit<WheelProps, 'itemRender'>) => {
   if ('value' in props) {
     return props.value;
   }
-  if (isArray(props.dataSource) && props.dataSource[0] && props.valueMember) {
+  if (Array.isArray(props.dataSource) && props.dataSource[0] && props.valueMember) {
     return props.dataSource[0][props.valueMember];
   }
 };
@@ -77,6 +76,7 @@ const Wheel = (props: WheelProps) => {
   }, []);
 
   useEffect(() => {
+    let resize: ResizeObserver | null;
     const initIndex = getSelectedIndex(currentValue, dataSource);
     if (wheelWrapperRef.current && !scrollInstance.current) {
       scrollInstance.current = new BScroll(wheelWrapperRef.current, {
@@ -87,6 +87,13 @@ const Wheel = (props: WheelProps) => {
         },
         probeType: 3,
       });
+
+      if (scrollInstance.current.scroller?.content) {
+        resize = new ResizeObserver(() => {
+          scrollInstance.current?.refresh();
+        });
+        resize.observe(scrollInstance.current.scroller.content);
+      }
     }
 
     scrollInstance.current?.on('scrollEnd', () => {
@@ -94,6 +101,7 @@ const Wheel = (props: WheelProps) => {
     });
 
     return () => {
+      resize?.disconnect();
       scrollInstance.current?.destroy();
     };
   }, []);

@@ -1,0 +1,68 @@
+@import '../../style/core/index';
+
+@include b(skeleton) {
+  @include define(width, 100%);
+  @include define(height, 18px);
+  @include define(border-radius, 2px);
+  @include define(margin, 0);
+
+  // skeleton
+  @include define(background, rgba(190, 190, 190, 0.2));
+  @include define(animated-background, rgba(129,129,129,0.24));
+
+  width: var(--width);
+  height: var(--height);
+  margin: var(--margin);
+  background: var(--background);
+
+  // shape
+  @include m(radius) {
+    border-radius: var(--border-radius);
+  }
+
+  @include m(rect) {
+    border-radius: 0;
+  }
+
+  @include m(circle) {
+    @include define(width, 50px);
+    @include define(height, 50px);
+
+    border-radius: 50%;
+  }
+
+  // animated
+  @include m(animated) {
+    background: linear-gradient(90deg, var(--background) 25%, var(--animated-background) 37%, var(--background) 63%);
+    background-size: 400% 100%;
+    animation: skeleton-loading 1.4s ease infinite;
+  }
+
+  @keyframes skeleton-loading {
+    0% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0 50%;
+    }
+  }
+
+  // Title
+  @include e(title) {
+    @include define(width, 45%);
+    @include define(height, 32px);
+    @include define(margin, 16px 0);
+  }
+
+  // Paragraph
+  @include e(paragraph) {
+    @include e(line) {
+      @include define(margin, 12px 0);
+
+      &:last-of-type {
+        width: 65%;
+      }
+    }
+  }
+}

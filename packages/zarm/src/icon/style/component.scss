@@ -1,5 +1,5 @@
 @include b(icon) {
-  @include define(color, var(--za-color-text));
+  @include define(color, inherit);
   @include define(font-size, 24px);
 
   display: inline-block;

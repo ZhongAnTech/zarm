@@ -1,9 +1,12 @@
 @include b(swipe-action) {
+  @include define(background, #fff);
+
   position: relative;
   overflow: hidden;
 
   @include e(content) {
     position: relative;
+    background-color: var(--background);
   }
 
   @include e(actions) {
@@ -23,5 +26,11 @@
 
   @include b(button) {
     font-size: r(14);
+  }
+}
+
+@include b(swipe-action-item) {
+  @include e(item) {
+    height: 100%;
   }
 }

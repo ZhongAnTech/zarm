@@ -40,7 +40,7 @@ const Demo = () => {
       <List>
         <List.Item
           title="普通"
-          after={
+          suffix={
             <Button size="xs" onClick={() => setVisible1(true)}>
               开启
             </Button>
@@ -48,7 +48,7 @@ const Demo = () => {
         />
         <List.Item
           title="带取消操作"
-          after={
+          suffix={
             <Button size="xs" onClick={() => setVisible2(true)}>
               开启
             </Button>
@@ -56,7 +56,7 @@ const Demo = () => {
         />
         <List.Item
           title="圆角、留边"
-          after={
+          suffix={
             <Button size="xs" onClick={() => setVisible3(true)}>
               开启
             </Button>
@@ -64,7 +64,7 @@ const Demo = () => {
         />
         <List.Item
           title="指定挂载节点"
-          after={
+          suffix={
             <Button size="xs" onClick={() => setVisible4(true)}>
               开启
             </Button>
@@ -136,7 +136,7 @@ const Demo = () => {
       <List>
         <List.Item
           title="普通"
-          after={
+          suffix={
             <Button size="xs" onClick={() => setVisible(true)}>
               开启
             </Button>
@@ -194,7 +194,7 @@ const Demo = () => {
     <List>
       <List.Item
         title="普通"
-        after={
+        suffix={
           <Button
             size="xs"
             onClick={() => {

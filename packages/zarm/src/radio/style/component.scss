@@ -56,7 +56,7 @@
     border-radius: var(--widget-border-radius);
     background-color: var(--widget-background);
 
-    @include e(marker) {
+    @include b(icon) {
       font-size: var(--marker-font-size);
       color: var(--marker-color);
       transform: scale(0);
@@ -70,7 +70,7 @@
       border-color: var(--checked-widget-border-color);
       background-color: var(--checked-widget-background);
 
-      @include e(marker) {
+      @include b(icon) {
         color: var(--checked-marker-color);
         transform: scale(1);
       }
@@ -97,7 +97,7 @@
         border-color: var(--disabled-widget-border-color);
         background-color: var(--disabled-widget-background);
 
-        @include e(marker) {
+        @include b(icon) {
           color: var(--disabled-marker-color);
         }
       }
@@ -205,6 +205,10 @@
       position: relative;
       margin-right: 0;
       margin-bottom: 0;
+
+      &:not(&--disabled):active {
+        opacity: 1;
+      }
 
       @include e(text) {
         margin-left: 0;

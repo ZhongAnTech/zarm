@@ -51,7 +51,7 @@ const Demo = () => {
       <List>
         <List.Item
           title="切换语言"
-          after={
+          suffix={
             <Radio.Group buttonCompact type="button" value={locale} onChange={setLocale}>
               <Radio value="zhCN">中文</Radio>
               <Radio value="enUS">EN</Radio>
@@ -60,7 +60,7 @@ const Demo = () => {
         />
         <List.Item
           title="切换品牌色"
-          after={
+          suffix={
             <ul className="colors">
               {colors.map((color, index) => {
                 return (
@@ -76,7 +76,7 @@ const Demo = () => {
         />
         <List.Item
           title="切换主题"
-          after={
+          suffix={
             <Radio.Group
               buttonCompact
               type="button"
@@ -104,7 +104,7 @@ const Demo = () => {
 
           <List>
             <List.Item
-              after={
+              suffix={
                 <Button size="xs" onClick={() => show('alert')}>
                   开启
                 </Button>
@@ -113,7 +113,7 @@ const Demo = () => {
               警告框
             </List.Item>
             <List.Item
-              after={
+              suffix={
                 <Button size="xs" onClick={() => show('confirm')}>
                   开启
                 </Button>
@@ -122,7 +122,7 @@ const Demo = () => {
               确认框
             </List.Item>
             <List.Item
-              after={
+              suffix={
                 <Button size="xs" onClick={() => setVisiblePopup(true)}>
                   开启
                 </Button>
