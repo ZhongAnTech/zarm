@@ -3,6 +3,7 @@ import type { ForwardedRef, HTMLAttributes } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseProgressProps } from './interface';
+import type { HTMLProps } from '../utils/utilityTypes';
 import {
   useSizeStyle,
   useSVGStrokeWidth,
@@ -13,9 +14,22 @@ import {
   useIndicator,
 } from './hooks';
 
-export interface ProgressProps extends BaseProgressProps, HTMLAttributes<HTMLDivElement> {
-  className?: string;
+export interface ProgressCssVars {
+  '--background'?: React.CSSProperties['background'];
+  '--width-lg'?: React.CSSProperties['width'];
+  '--width-md'?: React.CSSProperties['width'];
+  '--width-sm'?: React.CSSProperties['width'];
+  '--size-lg'?: React.CSSProperties['width' | 'height'];
+  '--size-md'?: React.CSSProperties['width' | 'height'];
+  '--size-sm'?: React.CSSProperties['width' | 'height'];
+  '--font-size-circle-lg'?: React.CSSProperties['fontSize'];
+  '--font-size-circle-md'?: React.CSSProperties['fontSize'];
+  '--font-size-circle-sm'?: React.CSSProperties['fontSize'];
 }
+
+export type ProgressProps = BaseProgressProps &
+  HTMLAttributes<HTMLDivElement> &
+  HTMLProps<ProgressCssVars>;
 
 const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
   (

@@ -17,7 +17,7 @@ $themeMap: (
 
 @mixin progress-type() {
   @include e(track) {
-    stroke: var(--za-progress-background);
+    stroke: var(--background);
     fill-opacity: 0;
   }
 

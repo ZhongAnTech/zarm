@@ -4,7 +4,7 @@ import { createBEM } from '@zarm-design/bem';
 import { ArrowRight as ArrowRightIcon, Close as CloseIcon } from '@zarm-design/icons';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseMessageProps } from './interface';
-import { HTMLProps } from '../utils/utilityTypes';
+import type { HTMLProps } from '../utils/utilityTypes';
 
 export interface MessageCssVars {
   '--min-height'?: React.CSSProperties['height'];

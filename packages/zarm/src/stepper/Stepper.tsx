@@ -8,7 +8,7 @@ import CustomInput from '../custom-input';
 import type { CustomInputProps } from '../custom-input';
 import Input from '../input';
 import type { InputProps } from '../input';
-import { HTMLProps } from '../utils/utilityTypes';
+import type { HTMLProps } from '../utils/utilityTypes';
 
 export interface StepperCssVars {
   '--input-background'?: React.CSSProperties['background'];

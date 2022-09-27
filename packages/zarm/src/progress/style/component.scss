@@ -1,6 +1,17 @@
 @import 'mixins';
 
 @include b(progress) {
+  @include define(background, #f2f2f2);
+  @include define(width-lg, 100%);
+  @include define(width-md, 100%);
+  @include define(width-sm, 140px);
+  @include define(size-lg, 200px);
+  @include define(size-md, 250px);
+  @include define(size-sm, 80px);
+  @include define(font-size-circle-lg, 30px);
+  @include define(font-size-circle-md, 24px);
+  @include define(font-size-circle-sm, 18px);
+
   display: inline-block;
   position: relative;
 
@@ -19,21 +30,21 @@
     @include progress-theme('background-color');
 
     @include m(lg) {
-      width: var(--za-progress-width-lg);
+      width: var(--width-lg);
     }
 
     @include m(md) {
-      width: var(--za-progress-width-md);
+      width: var(--width-md);
     }
 
     @include m(sm) {
-      width: var(--za-progress-width-sm);
+      width: var(--width-sm);
     }
 
     @include e(track) {
       width: 100%;
       height: 100%;
-      background: var(--za-progress-background);
+      background: var(--background);
       overflow: hidden;
     }
 
@@ -67,29 +78,29 @@
     }
 
     @include m(lg) {
-      width: var(--za-progress-size-lg);
-      height: var(--za-progress-size-lg);
+      width: var(--size-lg);
+      height: var(--size-lg);
 
       @include e(text) {
-        font-size: var(--za-progress-font-size-circle-lg);
+        font-size: var(--font-size-circle-lg);
       }
     }
 
     @include m(md) {
-      width: var(--za-progress-size-md);
-      height: var(--za-progress-size-md);
+      width: var(--size-md);
+      height: var(--size-md);
 
       @include e(text) {
-        font-size: var(--za-progress-font-size-circle-md);
+        font-size: var(--font-size-circle-md);
       }
     }
 
     @include m(sm) {
-      width: var(--za-progress-size-sm);
-      height: var(--za-progress-size-sm);
+      width: var(--size-sm);
+      height: var(--size-sm);
 
       @include e(text) {
-        font-size: var(--za-progress-font-size-circle-sm);
+        font-size: var(--font-size-circle-sm);
       }
     }
   }
@@ -116,29 +127,29 @@
     }
 
     @include m(lg) {
-      width: var(--za-progress-size-lg);
-      height: calc(var(--za-progress-size-lg) / 2);
+      width: var(--size-lg);
+      height: calc(var(--size-lg) / 2);
 
       @include e(text) {
-        font-size: var(--za-progress-font-size-circle-lg);
+        font-size: var(--font-size-circle-lg);
       }
     }
 
     @include m(md) {
-      width: var(--za-progress-size-md);
-      height: calc(var(--za-progress-size-md) / 2);
+      width: var(--size-md);
+      height: calc(var(--size-md) / 2);
 
       @include e(text) {
-        font-size: var(--za-progress-font-size-circle-md);
+        font-size: var(--font-size-circle-md);
       }
     }
 
     @include m(sm) {
-      width: var(--za-progress-size-sm);
-      height: calc(var(--za-progress-size-sm) / 2);
+      width: var(--size-sm);
+      height: calc(var(--size-sm) / 2);
 
       @include e(text) {
-        font-size: var(--za-progress-font-size-circle-sm);
+        font-size: var(--font-size-circle-sm);
       }
     }
   }

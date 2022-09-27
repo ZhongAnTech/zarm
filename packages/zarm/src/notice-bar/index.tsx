@@ -6,7 +6,7 @@ import type BaseNoticeBarProps from './interface';
 import Message from '../message';
 import { ConfigContext } from '../n-config-provider';
 import useAnimationDuration from './hooks';
-import { HTMLProps } from '../utils/utilityTypes';
+import type { HTMLProps } from '../utils/utilityTypes';
 
 export interface NoticeBarCssVars {
   '--height'?: React.CSSProperties['height'];
