@@ -82,3 +82,22 @@ ReactDOM.render(
 | disableInput  | boolean                           | false    | 是否禁用输入框                                    |
 | onInputChange | (value: number \| string) => void | -        | 输入值变化时触发的回调函数                        |
 | onChange      | (value: number \| string) => void | -        | 值变化时触发的回调函数                            |
+
+## CSS 变量
+
+| 属性                          | 默认值                       | 说明         |
+| :---------------------------- | :--------------------------- | :----------- |
+| --height-md                   | '28px'                       |              |
+| --height-lg                   | '36px'                       |              |
+| --icon-font-size-md           | '12px'                       |              |
+| --icon-font-size-lg           | '14px'                       |              |
+| --input-background            | '#fff'                       | 输入框背景色 |
+| --input-width-md              | '50px'                       |              |
+| --input-width-lg              | '60px'                       |              |
+| --input-disabled              | 'var(--color-text-disabled)' |              |
+| --input-font-size-md          | 'var(--font-size-sm)'        |              |
+| --input-font-size-lg          | '16px'                       |              |
+| --input-margin-horizontal-md  | '4px'                        |              |
+| --input-margin-horizontal-lg  | '4px'                        |              |
+| --input-padding-horizontal-md | '8px'                        |              |
+| --input-padding-horizontal-lg | '8px'                        |              |

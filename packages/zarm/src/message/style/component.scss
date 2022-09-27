@@ -2,7 +2,7 @@
 
 @include b(message) {
   @include define(min-height, 29px);
-  @include define(font-size, var(--za-font-size-sm));
+  @include define(font-size, var(--font-size-sm));
   @include define(icon-size, 14px);
   @include define(padding-vertical, 6px);
   @include define(padding-horizontal, 8px);

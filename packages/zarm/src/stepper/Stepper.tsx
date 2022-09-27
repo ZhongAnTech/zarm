@@ -8,6 +8,24 @@ import CustomInput from '../custom-input';
 import type { CustomInputProps } from '../custom-input';
 import Input from '../input';
 import type { InputProps } from '../input';
+import { HTMLProps } from '../utils/utilityTypes';
+
+export interface StepperCssVars {
+  '--input-background'?: React.CSSProperties['background'];
+  '--height-md'?: React.CSSProperties['height'];
+  '--height-lg'?: React.CSSProperties['height'];
+  '--icon-font-size-md'?: React.CSSProperties['fontSize'];
+  '--icon-font-size-lg'?: React.CSSProperties['fontSize'];
+  '--input-width-md'?: React.CSSProperties['width'];
+  '--input-width-lg'?: React.CSSProperties['width'];
+  '--input-disabled'?: React.CSSProperties['color'];
+  '--input-font-size-md'?: React.CSSProperties['fontSize'];
+  '--input-font-size-lg'?: React.CSSProperties['fontSize'];
+  '--input-margin-horizontal-md'?: React.CSSProperties['marginLeft'];
+  '--input-margin-horizontal-lg'?: React.CSSProperties['marginLeft'];
+  '--input-padding-horizontal-md'?: React.CSSProperties['paddingLeft'];
+  '--input-padding-horizontal-lg'?: React.CSSProperties['paddingLeft'];
+}
 
 const compareValue = (value, max, min) => {
   if (typeof max === 'number') {
@@ -58,7 +76,9 @@ const getValue = (props: StepperProps, defaultValue: number) => {
   return formatValue(compareValue(tempValue, max, min), step);
 };
 
-export type StepperProps = BaseStepperProps & React.HTMLAttributes<HTMLSpanElement>;
+export type StepperProps = BaseStepperProps &
+  React.HTMLAttributes<HTMLSpanElement> &
+  HTMLProps<StepperCssVars>;
 
 const Stepper = React.forwardRef<unknown, StepperProps>((props, ref) => {
   const {
