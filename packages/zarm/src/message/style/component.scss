@@ -1,11 +1,17 @@
 @import 'mixins';
 
 @include b(message) {
+  @include define(min-height, 29px);
+  @include define(font-size, var(--za-font-size-sm));
+  @include define(icon-size, 14px);
+  @include define(padding-vertical, 6px);
+  @include define(padding-horizontal, 8px);
+
   display: flex;
   position: relative;
-  padding: var(--za-message-padding-vertical) var(--za-message-padding-horizontal);
-  min-height: var(--za-message-min-height);
-  font-size: var(--za-message-font-size);
+  padding: var(--padding-vertical) var(--padding-horizontal);
+  min-height: var(--min-height);
+  font-size: var(--font-size);
   @include message-theme(var(--theme-default));
 
   @include e(header) {
@@ -18,7 +24,7 @@
     margin-right: r(4);
 
     @include b(icon) {
-      font-size: var(--za-message-icon-size);
+      font-size: var(--icon-size);
     }
   }
 
@@ -36,7 +42,7 @@
     padding-left: r(10);
 
     @include b(icon) {
-      font-size: var(--za-message-icon-size);
+      font-size: var(--icon-size);
       cursor: pointer;
     }
   }

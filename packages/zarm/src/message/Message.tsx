@@ -4,8 +4,19 @@ import { createBEM } from '@zarm-design/bem';
 import { ArrowRight as ArrowRightIcon, Close as CloseIcon } from '@zarm-design/icons';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseMessageProps } from './interface';
+import { HTMLProps } from '../utils/utilityTypes';
 
-export type MessageProps = BaseMessageProps & HTMLAttributes<HTMLDivElement>;
+export interface MessageCssVars {
+  '--min-height'?: React.CSSProperties['height'];
+  '--font-size'?: React.CSSProperties['fontSize'];
+  '--icon-size'?: React.CSSProperties['fontSize'];
+  '--padding-vertical'?: React.CSSProperties['paddingTop'];
+  '--padding-horizontal'?: React.CSSProperties['paddingLeft'];
+}
+
+export type MessageProps = BaseMessageProps &
+  HTMLAttributes<HTMLDivElement> &
+  HTMLProps<MessageCssVars>;
 
 const Message = forwardRef<HTMLDivElement, MessageProps>((props, ref) => {
   const {
