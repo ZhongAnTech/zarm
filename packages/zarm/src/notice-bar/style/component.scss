@@ -1,20 +1,27 @@
 @include b(notice-bar) {
+  @include define(height, 24px);
+  @include define(min-height, 40px);
+  @include define(font-size, var(--font-size-sm));
+  @include define(padding-vertical, 8px);
+  @include define(padding-horizontal, 12px);
+  @include define(icon-size, 16px);
+
   @include b(message) {
-    min-height: var(--za-notice-bar-min-height);
-    font-size: var(--za-notice-bar-font-size);
-    padding: var(--za-notice-bar-padding-vertical) var(--za-notice-bar-padding-horizontal);
+    min-height: var(--min-height);
+    font-size: var(--font-size);
+    padding: var(--padding-vertical) var(--padding-horizontal);
 
     @include e(icon) {
       margin-right: r(6);
 
       @include b(icon) {
-        font-size: var(--za-notice-bar-icon-size);
+        font-size: var(--icon-size);
       }
     }
 
     @include e(footer) {
       @include b(icon) {
-        font-size: var(--za-notice-bar-icon-size);
+        font-size: var(--icon-size);
       }
     }
   }
@@ -22,8 +29,8 @@
   @include e(body) {
     position: relative;
     width: 100%;
-    height: var(--za-notice-bar-height);
-    line-height: var(--za-notice-bar-height);
+    height: var(--height);
+    line-height: var(--height);
     overflow: hidden;
   }
 

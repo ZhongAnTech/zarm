@@ -6,8 +6,20 @@ import type BaseNoticeBarProps from './interface';
 import Message from '../message';
 import { ConfigContext } from '../n-config-provider';
 import useAnimationDuration from './hooks';
+import { HTMLProps } from '../utils/utilityTypes';
 
-export type NoticeBarProps = BaseNoticeBarProps & React.HTMLAttributes<HTMLDivElement>;
+export interface NoticeBarCssVars {
+  '--height'?: React.CSSProperties['height'];
+  '--min-height'?: React.CSSProperties['height'];
+  '--font-size'?: React.CSSProperties['fontSize'];
+  '--padding-vertical'?: React.CSSProperties['paddingTop'];
+  '--padding-horizontal'?: React.CSSProperties['paddingLeft'];
+  '--icon-size'?: React.CSSProperties['fontSize'];
+}
+
+export type NoticeBarProps = BaseNoticeBarProps &
+  React.HTMLAttributes<HTMLDivElement> &
+  HTMLProps<NoticeBarCssVars>;
 
 const NoticeBar = forwardRef<HTMLDivElement, NoticeBarProps>((props, ref) => {
   const { children, speed, delay, onClose, className, ...restProps } = props;
