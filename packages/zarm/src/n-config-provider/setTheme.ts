@@ -12,7 +12,6 @@ const themes = {
   '--opacity-mask': '0.7',
   '--stack-picker-background': '#000',
   '--stack-picker-shadow': 'none',
-
   '--za-background-color': '#1c1c1e',
   '--za-background-active': '#363738',
   '--za-theme-primary-lighter': '#303030',
@@ -66,7 +65,7 @@ const themes = {
   '--za-progress-background': 'var(--za-border-color)',
   '--za-picker-background-color': '#000',
   '--za-picker-header-background-color': 'var(--za-background-color)',
-  '--za-picker-view-background-color': 'var(--za-background-color)',
+  '--za-picker-view-background-color': 'rgba(0, 0, 0, 0.4)',
   '--za-picker-view-mask-start-background-color': 'rgba(0, 0, 0, 0.4)',
   '--za-picker-view-mask-end-background-color': 'rgba(0, 0, 0, 0.8)',
   '--za-picker-view-wheel-item-selected-background-color': 'rgba(116, 116, 128, 0.18)',

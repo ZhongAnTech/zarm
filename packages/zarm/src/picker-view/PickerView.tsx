@@ -58,7 +58,7 @@ const PickerView = React.forwardRef<PickerViewInstance, PickerViewProps>((props,
     value[level] = selected;
     const next = parseProps.getSource({ ...props, value });
     setInnerValue(next.value);
-    onChange?.(next.value, next.objValue);
+    onChange?.(next.value, next.objValue, level);
   };
 
   return (

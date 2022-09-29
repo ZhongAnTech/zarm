@@ -20,7 +20,7 @@ export interface BasePickerContainerProps {
 export interface BasePickerProps
   extends Omit<BasePickerContainerProps, 'onConfirm'>,
     Omit<BasePickerViewProps, 'onChange' | 'stopScroll'> {
-  onChange?: (value: WheelValue[], dataSource: PickerDataSourceItem[]) => void;
+  onChange?: (value: WheelValue[], dataSource: PickerDataSourceItem[], level: number) => void;
   onConfirm?: (value: WheelValue[], dataSource: PickerDataSourceItem[]) => void;
   onCancel?: () => void;
 }
