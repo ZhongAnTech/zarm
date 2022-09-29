@@ -24,14 +24,15 @@ const getValue = (props: Omit<WheelProps, 'itemRender'>) => {
   }
 };
 
-export type WheelProps = BaseWheelProps &
-  HTMLProps<{
-    '--text-color': React.CSSProperties['color'];
-    '--disabled-text-color': React.CSSProperties['color'];
-    '--item-height': React.CSSProperties['height'];
-    '--item-rows': number;
-    '--item-font-size': React.CSSProperties['fontSize'];
-  }>;
+export interface WheelCssVars {
+  '--text-color': React.CSSProperties['color'];
+  '--disabled-text-color': React.CSSProperties['color'];
+  '--item-height': React.CSSProperties['height'];
+  '--item-rows': number;
+  '--item-font-size': React.CSSProperties['fontSize'];
+}
+
+export type WheelProps = BaseWheelProps & HTMLProps<WheelCssVars>;
 
 const DEFAULT_FIELD_NAMES = {
   value: 'value',

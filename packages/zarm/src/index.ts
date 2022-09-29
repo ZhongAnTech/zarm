@@ -86,13 +86,13 @@ export { default as NoticeBar } from './notice-bar';
 export type { PanelProps } from './panel';
 export { default as Panel } from './panel';
 
-export type { PickerViewProps, PickerViewInstance } from './picker-view';
+export type { PickerViewProps, PickerViewInstance, PickerViewCssVars } from './picker-view';
 export { default as PickerView } from './picker-view';
 
-export type { PickerProps } from './picker';
+export type { PickerProps, PickerCssVars } from './picker';
 export { default as Picker } from './picker';
 
-export type { SelectProps } from './select';
+export type { SelectProps, SelectCssVars } from './select';
 export { default as Select } from './select';
 
 export { default as Popper } from './popper';

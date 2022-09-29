@@ -9,20 +9,21 @@ import type { WheelValue } from '../wheel/interface';
 import { ConfigContext } from '../n-config-provider';
 import type { HTMLProps } from '../utils/utilityTypes';
 
-export type PickerViewProps = BasePickerViewProps &
-  HTMLProps<{
-    '--background-color': React.CSSProperties['backgroundColor'];
-    '--padding': React.CSSProperties['padding'];
-    '--mask-start-background-color': React.CSSProperties['backgroundColor'];
-    '--mask-end-background-color': React.CSSProperties['backgroundColor'];
-    '--wheel-item-rows': number;
-    '--wheel-item-height': React.CSSProperties['height'];
-    '--wheel-item-font-size': React.CSSProperties['fontSize'];
-    '--wheel-item-text-color': React.CSSProperties['color'];
-    '--wheel-item-disabled-text-color': React.CSSProperties['color'];
-    '--wheel-item-selected-background-color': React.CSSProperties['backgroundColor'];
-    '--wheel-item-selected-border-radius': React.CSSProperties['borderRadius'];
-  }>;
+export interface PickerViewCssVars {
+  '--background-color': React.CSSProperties['backgroundColor'];
+  '--padding': React.CSSProperties['padding'];
+  '--mask-start-background-color': React.CSSProperties['backgroundColor'];
+  '--mask-end-background-color': React.CSSProperties['backgroundColor'];
+  '--wheel-item-rows': number;
+  '--wheel-item-height': React.CSSProperties['height'];
+  '--wheel-item-font-size': React.CSSProperties['fontSize'];
+  '--wheel-item-text-color': React.CSSProperties['color'];
+  '--wheel-item-disabled-text-color': React.CSSProperties['color'];
+  '--wheel-item-selected-background-color': React.CSSProperties['backgroundColor'];
+  '--wheel-item-selected-border-radius': React.CSSProperties['borderRadius'];
+}
+
+export type PickerViewProps = BasePickerViewProps & HTMLProps<PickerViewCssVars>;
 
 export interface PickerViewInstance {
   value: WheelValue[];

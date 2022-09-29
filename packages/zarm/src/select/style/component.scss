@@ -1,4 +1,10 @@
 @include b(select) {
+  @include define(height, 28px);
+  @include define(placeholder-color, var(--color-text-placeholder));
+  @include define(arrow-color, rgba(0, 0, 0, 0.4));
+  @include define(arrow-size, 10px);
+  @include define(arrow-width, 1px);
+
   display: flex;
   align-items: center;
   width: 100%;
@@ -7,27 +13,27 @@
     flex: 1;
     position: relative;
     width: 100%;
-    height: var(--za-input-line-height);
-    line-height: var(--za-input-line-height);
+    height: var(--height);
+    line-height: var(--height);
   }
 
   @include m(placeholder) {
     @include e(input) {
-      color: var(--color-text-placeholder);
+      color: var(--placeholder-color);
     }
   }
 
   @include e(arrow) {
-    margin-left: var(--za-list-item-space);
-    margin-top: calc(var(--za-list-item-arrow-size) / -2);
+    margin-left: 5px;
+    margin-top: calc(var(--arrow-size) / -2);
 
     &:after {
       display: inline-block;
       content: '';
-      border-right: var(--za-list-item-arrow-border-width) solid var(--za-list-item-arrow-color);
-      border-bottom: var(--za-list-item-arrow-border-width) solid var(--za-list-item-arrow-color);
-      width: var(--za-list-item-arrow-size);
-      height: var(--za-list-item-arrow-size);
+      border-right: var(--arrow-width) solid var(--arrow-color);
+      border-bottom: var(--arrow-width) solid var(--arrow-color);
+      width: var(--arrow-size);
+      height: var(--arrow-size);
       transform: rotate(45deg);
     }
   }

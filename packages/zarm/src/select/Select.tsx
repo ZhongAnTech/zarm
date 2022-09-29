@@ -6,10 +6,20 @@ import parseProps from '../picker-view/utils/parseProps';
 import type { BaseSelectProps } from './interface';
 import type { WheelItem } from '../wheel/interface';
 import { ConfigContext } from '../n-config-provider';
+import { HTMLProps } from '../utils/utilityTypes';
 
-export interface SelectProps
-  extends BaseSelectProps,
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'> {}
+export interface SelectCssVars {
+  '--height': React.CSSProperties['height'];
+  '--placeholder-color': React.CSSProperties['color'];
+  '--arrow-color': React.CSSProperties['color'];
+  '--arrow-size': React.CSSProperties['width'];
+  '--arrow-width': React.CSSProperties['width'];
+}
+
+export type SelectProps = BaseSelectProps &
+  Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'> &
+  HTMLProps<SelectCssVars>;
+
 export interface SelectState {
   selectValue: Array<WheelItem>;
   visible: boolean;
