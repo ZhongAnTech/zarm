@@ -86,7 +86,7 @@ const Select = React.forwardRef<unknown, SelectProps>((props, ref) => {
               locale?.Select?.placeholder}
           </div>
         </div>
-        <div className={bem('arrow')} />
+        <div className={bem('arrow', [{ active: visible }])} />
       </div>
       <Picker
         {...others}

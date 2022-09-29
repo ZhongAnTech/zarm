@@ -3,7 +3,7 @@
   @include define(placeholder-color, var(--color-text-placeholder));
   @include define(arrow-color, rgba(0, 0, 0, 0.4));
   @include define(arrow-size, 10px);
-  @include define(arrow-width, 1px);
+  @include define(arrow-width, 2px);
 
   display: flex;
   align-items: center;
@@ -35,6 +35,11 @@
       width: var(--arrow-size);
       height: var(--arrow-size);
       transform: rotate(45deg);
+      transition: all 0.15s ease-out;
+    }
+
+    &--active::after {
+      transform: rotate(-45deg);
     }
   }
 
