@@ -24,7 +24,9 @@ import { Plus } from '@zarm-design/icons';
 ReactDOM.render(
   <NavBar
     title="这是标题这是标题这是标题"
-    right={<Plus theme="primary" onClick={() => window.alert('click icon')} />}
+    right={
+      <Plus theme="primary" onClick={() => window.alert('click icon')} />
+    }
   />,
   mountNode,
 );
@@ -42,7 +44,11 @@ ReactDOM.render(
     title="这是标题"
     right={
       <>
-        <Plus theme="primary" onClick={() => alert('click icon1')} style={{ marginRight: 16 }} />
+        <Plus
+          theme="primary"
+          onClick={() => alert('click icon1')}
+          style={{ marginRight: 16 }}
+        />
         <Search theme="primary" onClick={() => alert('click icon2')} />
       </>
     }
@@ -58,15 +64,3 @@ ReactDOM.render(
 | title | ReactNode | -      | 标题渲染       |
 | left  | ReactNode | -      | 导航栏左侧渲染 |
 | right | ReactNode | -      | 导航栏右侧渲染 |
-
-## CSS 变量
-
-| 属性                 | 默认值                      | 说明           |
-| :------------------- | :-------------------------- | :------------- |
-| --background         | 'rgba(249, 249, 249, 0.94)' | 背景色         |
-| --height             | '44px'                      | 高度           |
-| --title-color        | 'var(--color-text)'         | 标题字体色     |
-| --title-font-size    | 'var(--font-size-md)'       | 标题字体大小   |
-| --title-font-weight  | '500'                       | 标题字体粗细   |
-| --side-font-size     | 'var(--font-size-md)'       | 左右栏字体大小 |
-| --padding-horizontal | '16px'                      | 横向内边距     |
