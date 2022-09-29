@@ -407,17 +407,17 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性              | 类型                                                             | 默认值               | 说明                   |
-| :---------------- | :--------------------------------------------------------------- | :------------------- | :--------------------- |
-| dataSource        | PickerDataSourceItem[]                                           | []                   | 数据源                 |
-| value             | PickerValue \| PickerValue[]                                     | -                    | 值                     |
-| defaultValue      | PickerValue \| PickerValue[]                                     | -                    | 初始值                 |
-| wheelDefaultValue | PickerValue \| PickerValue[]                                     | -                    | 滚轮初始停留的位置     |
-| valueMember       | string                                                           | 'value'              | 值字段对应的 key       |
-| itemRender        | (data?: PickerDataSourceItem) => ReactNode                       | (data) => data.label | 单个选项的展示         |
-| disabled          | boolean                                                          | false                | 是否禁用               |
-| cols              | number                                                           | Infinity             | 级联选择器的级数       |
-| onChange          | (value: PickerValue[], selected: PickerDataSourceItem[]) => void | -                    | 值变化时触发的回调函数 |
+| 属性              | 类型                                                             | 默认值                                                   | 说明                                    |
+| :---------------- | :--------------------------------------------------------------- | :------------------------------------------------------- | :-------------------------------------- |
+| dataSource        | PickerDataSourceItem[]                                           | []                                                       | 数据源                                  |
+| value             | PickerValue \| PickerValue[]                                     | -                                                        | 值                                      |
+| defaultValue      | PickerValue \| PickerValue[]                                     | -                                                        | 初始值                                  |
+| wheelDefaultValue | PickerValue \| PickerValue[]                                     | -                                                        | 滚轮初始停留的位置                      |
+| fieldNames        | object                                                           | { label: `label`, value: `value`, children: `children` } | 自定义节点 label、value、children 的字段 |
+| itemRender        | (data?: PickerDataSourceItem) => ReactNode                       | (data) => data.label                                     | 单个选项的展示                          |
+| disabled          | boolean                                                          | false                                                    | 是否禁用                                |
+| cols              | number                                                           | Infinity                                                 | 级联选择器的级数                        |
+| onChange          | (value: PickerValue[], selected: PickerDataSourceItem[]) => void | -                                                        | 值变化时触发的回调函数                  |
 
 ### 仅 Picker & Select 支持的属性
 
