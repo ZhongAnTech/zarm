@@ -95,7 +95,7 @@ ReactDOM.render(
 | --input-width-md              | '50px'                       | 中号输入框宽度       |
 | --input-width-lg              | '60px'                       | 大号输入框宽度       |
 | --input-disabled              | 'var(--color-text-disabled)' | 输入框禁用状态颜色   |
-| --input-font-size-md          | 'var(--font-size-sm)'        | 输入框文字中号       |
+| --input-font-size-md          | 'var(--za-font-size-sm)'     | 输入框文字中号       |
 | --input-font-size-lg          | '16px'                       | 输入框文字大号       |
 | --input-margin-horizontal-md  | '4px'                        | 输入框水平外间距中号 |
 | --input-margin-horizontal-lg  | '4px'                        | 输入框水平外间距大号 |

@@ -60,7 +60,7 @@ const themes = {
   '--za-keyboard-item-background': '#434343',
   '--za-keyboard-item-box-shadow': '0 1px 0 #000',
   '--za-switch-background': 'rgba(120, 120, 128, 0.32)',
-  '--input-background': '#000',
+  '--za-stepper-input-background': '#000',
   '--za-panel-header-color': 'rgba(235, 235, 245, 0.6)',
   '--za-panel-body-background': '#1c1c1e',
   '--za-progress-background': 'var(--za-border-color)',
