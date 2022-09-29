@@ -3,10 +3,10 @@
 @include b(nav-bar) {
   @include define(background, rgba(249, 249, 249, 0.94));
   @include define(height, 44px);
-  @include define(title-color, var(--color-text));
-  @include define(title-font-size, var(--font-size-md));
+  @include define(title-color, var(--za-color-text));
+  @include define(title-font-size, var(--za-font-size-md));
   @include define(title-font-weight, 500);
-  @include define(side-font-size, var(--font-size-md));
+  @include define(side-font-size, var(--za-font-size-md));
   @include define(padding-horizontal, 16px);
 
   position: relative;
