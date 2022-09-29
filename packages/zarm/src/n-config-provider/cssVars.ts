@@ -52,5 +52,5 @@ export type CssVars = Prefix<ActionSheetCssVars, 'action-sheet'> &
   Prefix<ModalCssVars, 'modal'> &
   Prefix<IconCssVars, 'icon'> &
   Prefix<RateCssVars, 'rate'> &
-  Prefix<PullCssVars, 'pull'> &
-  Prefix<MaskCssVars, 'mask'>;
+  Prefix<MaskCssVars, 'mask'> &
+  Prefix<PullCssVars, 'pull'>;

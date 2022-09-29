@@ -118,7 +118,6 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
         offsetStart.current = getOffsetByValue(currentValue);
         setTooltip(true);
       }
-      Tooltip.updateAll();
       let offset = vertical ? offsetY : offsetX;
       offset += offsetStart.current;
       const maxOffset = getMaxOffset();
@@ -138,6 +137,7 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
     {
       enabled: !props.disabled,
       axis: vertical ? 'y' : 'x',
+      pointer: { touch: true },
       preventDefault: !Events.supportsPassiveEvents,
     },
   );

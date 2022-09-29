@@ -198,7 +198,7 @@ ReactDOM.render(
 | width       | string \| number                                         | -      | 图片宽度                                     |
 | height      | string \| number                                         | -      | 图片高度                                     |
 | alt         | boolean                                                  | -      | 图片描述                                     |
-| lazy        | string                                                   | false  | 是否懒加载                                   |
+| lazy        | boolean                                                  | false  | 是否懒加载                                   |
 | shape       | 'rect' \| 'radius' \| 'round' \| 'circle'                | 'rect' | 图片形状                                     |
 | fill        | 'contain' \| 'cover' \| 'fill' \| 'none' \| 'scale-down' | 'fill' | 图片填充模式                                 |
 | preview     | boolean                                                  | false  | 是否支持图片预览                             |

@@ -1,10 +1,14 @@
 import { ReactNode } from 'react';
 
+export interface BaseListProps {
+  bordered?: boolean;
+}
+
 export interface BaseListItemProps {
   hasArrow?: boolean;
   prefix?: ReactNode;
   title?: ReactNode;
-  info?: ReactNode;
-  after?: ReactNode;
+  description?: ReactNode;
+  suffix?: ReactNode;
   children?: ReactNode;
 }

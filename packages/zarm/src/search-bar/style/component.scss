@@ -1,9 +1,26 @@
 @include b(search-bar) {
-  background: var(--za-search-bar-background);
+  @include define(background, transparent);
+  @include define(height, 52px);
+  @include define(padding-horizontal, 16px);
+  @include define(input-padding-horizontal, 8px);
+  @include define(input-height, 36px);
+  @include define(input-background, rgba(118, 118, 128, 0.12));
+  @include define(input-font-size, var(--za-font-size-md));
+  @include define(input-placeholder-color, #808084);
+  @include define(input-clear-icon-color, #8e8e92);
+  @include define(input-border-radius, 10px);
+  @include define(cancel-font-size, var(--za-font-size-md));
+  @include define(cancel-color, var(--theme-primary));
+  @include define(cancel-margin-left, 13px);
+  @include define(cancel-transition, all .2s);
+  @include define(icon-margin-right, 6px);
+  @include define(icon-color, #808084);
+
+  background: var(--background);
 
   @include e(form) {
-    height: var(--za-search-bar-height);
-    margin: 0 var(--za-search-bar-padding-horizontal);
+    height: var(--height);
+    margin: 0 var(--padding-horizontal);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,20 +32,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 var(--za-search-bar-input-padding-horizontal);
-    height: var(--za-search-bar-input-height);
-    background: var(--za-search-bar-input-background);
+    padding: 0 var(--input-padding-horizontal);
+    height: var(--input-height);
+    background: var(--input-background);
     overflow: hidden;
 
     @include e(icon) {
-      margin-right: var(--za-search-bar-icon-margin-right);
-      color: var(--za-search-bar-icon-color);
+      margin-right: var(--icon-margin-right);
+      color: var(--icon-color);
     }
   }
 
   @include b(input) {
     flex: 1;
-    font-size: var(--za-search-bar-input-font-size);
+    font-size: var(--input-font-size);
     background-color: transparent;
 
     input {
@@ -37,15 +54,15 @@
       }
     }
 
-    --za-input-placeholder-color: var(--za-search-bar-input-placeholder-color);
-    --za-input-clear-icon-color: var(--za-search-bar-input-clear-icon-color);
+    --za-input-placeholder-color: var(--input-placeholder-color);
+    --za-input-clear-icon-color: var(--input-clear-icon-color);
   }
 
   @include e(cancel) {
-    font-size: var(--za-search-bar-cancel-font-size);
-    color: var(--za-search-bar-cancel-color);
-    margin-left: var(--za-search-bar-cancel-margin-left);
-    transition: var(--za-search-bar-cancel-transition);
+    font-size: var(--cancel-font-size);
+    color: var(--cancel-color);
+    margin-left: var(--cancel-margin-left);
+    transition: var(--cancel-transition);
   }
 
   @include m(focus) {
@@ -56,7 +73,7 @@
 
   @include m(radius) {
     @include e(content) {
-      border-radius: var(--za-search-bar-input-border-radius);
+      border-radius: var(--input-border-radius);
     }
   }
 

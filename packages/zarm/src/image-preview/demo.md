@@ -68,7 +68,7 @@ const Demo = () => {
       <List>
         <NoticeBar>图片缩放只支持Touch事件，建议使用移动模式/设备浏览以获得最佳体验。</NoticeBar>
         <List.Item
-          after={
+          suffix={
             <Button size="xs" onClick={() => open('common')}>
               开启
             </Button>
@@ -77,7 +77,7 @@ const Demo = () => {
           普通
         </List.Item>
         <List.Item
-          after={
+          suffix={
             <Button size="xs" onClick={() => open('origin')}>
               开启
             </Button>
@@ -127,7 +127,7 @@ const Demo = () => {
   return (
     <List>
       <List.Item
-        after={
+        suffix={
           <Button
             size="xs"
             onClick={() => ImagePreview.show({ images: commonImages, orientation })}

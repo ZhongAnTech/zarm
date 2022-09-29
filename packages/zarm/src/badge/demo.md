@@ -7,12 +7,12 @@ import { Badge, List } from 'zarm';
 
 ReactDOM.render(
   <List>
-    <List.Item title="点状" after={<Badge />} onClick={() => {}} />
-    <List.Item title="直角" after={<Badge shape="rect" text="免费" />} onClick={() => {}} />
-    <List.Item title="圆角" after={<Badge shape="radius" text="new" />} onClick={() => {}} />
-    <List.Item title="椭圆角" after={<Badge shape="round" text="999+" />} onClick={() => {}} />
-    <List.Item title="圆形" after={<Badge shape="circle" text={3} />} onClick={() => {}} />
-    <List.Item title="叶形" after={<Badge shape="leaf" text="新品" />} onClick={() => {}} />
+    <List.Item title="点状" suffix={<Badge />} onClick={() => {}} />
+    <List.Item title="直角" suffix={<Badge shape="rect" text="免费" />} onClick={() => {}} />
+    <List.Item title="圆角" suffix={<Badge shape="radius" text="new" />} onClick={() => {}} />
+    <List.Item title="椭圆角" suffix={<Badge shape="round" text="999+" />} onClick={() => {}} />
+    <List.Item title="圆形" suffix={<Badge shape="circle" text={3} />} onClick={() => {}} />
+    <List.Item title="叶形" suffix={<Badge shape="leaf" text="新品" />} onClick={() => {}} />
   </List>,
   mountNode,
 );

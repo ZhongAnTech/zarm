@@ -218,7 +218,9 @@ describe('index', () => {
             },
             "render": [Function],
           },
-          "defaultProps": Object {},
+          "defaultProps": Object {
+            "bordered": true,
+          },
           "render": [Function],
         },
         "Loading": Object {
@@ -311,7 +313,22 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "Popper": [Function],
+        "Popper": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "animationType": "zoom-fade",
+            "arrowPointAtCenter": false,
+            "destroy": false,
+            "direction": "top",
+            "hasArrow": false,
+            "mouseEnterDelay": 150,
+            "mouseLeaveDelay": 100,
+            "onVisibleChange": [Function],
+            "trigger": "hover",
+            "visible": false,
+          },
+          "render": [Function],
+        },
         "Popup": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
@@ -407,6 +424,7 @@ describe('index', () => {
           },
           "render": [Function],
         },
+        "Skeleton": [Function],
         "Slider": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
@@ -435,7 +453,20 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "SwipeAction": [Function],
+        "SwipeAction": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "animationDuration": 300,
+            "autoClose": true,
+            "disabled": false,
+            "leftActions": Array [],
+            "moveDistanceRatio": 0.5,
+            "moveTimeSpan": 300,
+            "offset": 10,
+            "rightActions": Array [],
+          },
+          "render": [Function],
+        },
         "Switch": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
@@ -479,7 +510,15 @@ describe('index', () => {
           "render": [Function],
           "useToast": [Function],
         },
-        "Tooltip": [Function],
+        "Tooltip": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "direction": "top",
+            "hasArrow": true,
+            "onVisibleChange": [Function],
+          },
+          "render": [Function],
+        },
         "Trigger": [Function],
         "WaterMark": [Function],
         "Wheel": [Function],

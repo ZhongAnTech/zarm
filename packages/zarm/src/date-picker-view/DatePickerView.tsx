@@ -175,9 +175,7 @@ const DatePickerView = (props: DatePickerViewProps) => {
   }, [state, defaultDate]);
 
   useEffect(() => {
-    if (typeof onInit === 'function') {
-      onInit(currentDate);
-    }
+    onInit?.(currentDate);
   }, []);
 
   const dateData = useMemo(() => {

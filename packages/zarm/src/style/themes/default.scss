@@ -58,14 +58,11 @@
   // 堆叠顺序
   --zindex-mask: 1000;
   --zindex-popup: 1100;
-  --zindex-tooltip: 1700;
-  --zindex-tabbar: 100;
 
   // 透明度
   --opacity-disabled: 0.5;
   --opacity-mask: 0.4;
   --opacity-toast: 0.8;
-  --opacity-tooltip: 0.8;
 
   //阴影
   --box-shadow-light: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
@@ -138,7 +135,6 @@
   --za-zindex-mask: 1000;
   --za-zindex-popup: 1100;
   --za-zindex-tooltip: 1700;
-  --za-zindex-tabbar: 100;
 
   // 透明度
   --za-opacity-disabled: 0.5;
@@ -154,11 +150,6 @@
   --za-animation-duration-base: 0.3s;
 
   // Collapse
-  --za-collapse-height: 52px;
-  --za-collapse-padding-horizontal: 16px;
-  --za-collapse-padding-vertical: 15px;
-  --za-collapse-arrow-color: #bcbcbc;
-  --za-collapse-arrow-disabled-color: #eee;
 
   // Input
   // 高度
@@ -202,22 +193,6 @@
   --za-message-padding-vertical: 6px;
   --za-message-padding-horizontal: 8px;
 
-  // NavBar
-  // 背景色
-  --za-nav-bar-background: rgba(249, 249, 249, 0.94);
-  // 高度
-  --za-nav-bar-height: 44px;
-  // 标题字体色
-  --za-nav-bar-title-color: var(--color-text);
-  // 标题字体大小
-  --za-nav-bar-title-font-size: 17px;
-  // 标题字体粗细
-  --za-nav-bar-title-font-weight: 500;
-  // 左右栏字体大小
-  --za-nav-bar-side-font-size: 17px;
-  // 横向内边距
-  --za-nav-bar-padding-horizontal: 16px;
-
   // NoticeBar
   --za-notice-bar-height: 24px;
   --za-notice-bar-min-height: 40px;
@@ -225,20 +200,6 @@
   --za-notice-bar-padding-vertical: 8px;
   --za-notice-bar-padding-horizontal: 12px;
   --za-notice-bar-icon-size: 16px;
-
-  // Panel
-  // 左右留白宽度
-  --za-panel-spacing-padding-horizontal: 16px;
-  // 头部字体色
-  --za-panel-header-color: rgba(60, 60, 67, 0.6);
-  // 头部字体大小
-  --za-panel-header-font-size: 13px;
-  // 头部内边距
-  --za-panel-header-padding: 25px 16px 10px 16px;
-  // 内容背景
-  --za-panel-body-background: #fff;
-  // 内容圆角大小
-  --za-panel-body-border-radius: 10px;
 
   // Picker
   --za-picker-background: #fff;
@@ -262,40 +223,6 @@
   --za-progress-font-size-circle-lg: 30px;
   --za-progress-font-size-circle-md: 24px;
   --za-progress-font-size-circle-sm: 18px;
-
-  // SearchBar
-  // 高度
-  --za-search-bar-height: 52px;
-  // 背景色
-  --za-search-bar-background: transparent;
-  // 左右留白内边距
-  --za-search-bar-padding-horizontal: 16px;
-  // 输入框高度
-  --za-search-bar-input-height: 36px;
-  // 输入框字体大小
-  --za-search-bar-input-font-size: 17px;
-  // 输入框背景色
-  --za-search-bar-input-background: rgba(118, 118, 128, 0.12);
-  // 输入框圆角大小
-  --za-search-bar-input-border-radius: 10px;
-  // 输入框内边距
-  --za-search-bar-input-padding-horizontal: 8px;
-  // 输入框占位符颜色
-  --za-search-bar-input-placeholder-color: #808084;
-  // 输入框清除图标颜色
-  --za-search-bar-input-clear-icon-color: #8e8e92;
-  // 输入框图标颜色
-  --za-search-bar-icon-color: #808084;
-  // 输入框图标右边距
-  --za-search-bar-icon-margin-right: 6px;
-  // 取消按钮字体大小
-  --za-search-bar-cancel-font-size: 17px;
-  // 取消按钮字体颜色
-  --za-search-bar-cancel-color: var(--theme-primary);
-  // 取消按钮左边距
-  --za-search-bar-cancel-margin-left: 13px;
-  // 取消按钮动画
-  --za-search-bar-cancel-transition: all .2s;
 
   // Stepper
   --za-stepper-input-background: #fff;
@@ -325,21 +252,6 @@
   --za-toast-background: rgba(0, 0, 0, var(--opacity-toast));
   --za-toast-color: var(--color-text-inverse);
   --za-toast-font-size: 13px;
-
-  // Tooltip
-  --za-tooltip-font-size: 12px;
-  --za-tooltip-color: var(--color-text-inverse);
-  --za-tooltip-arrow-size: 4px;
-  --za-tooltip-padding-vertical: var(--padding-v-xs);
-  --za-tooltip-padding-horizontal: var(--padding-h-xs);
-  --za-tooltip-background: rgba(0, 0, 0, var(--opacity-tooltip));
-
-  // Tabbar
-  --za-tabbar-height: 50px;
-  --za-tabbar-hidden-bottom: -50px;
-  --za-tabbar-background: #fff;
-  --za-tabbar-item-font-size: 12px;
-  --za-tabbar-item-active-color: var(--theme-primary);
 
   // Wheel
   --za-wheel-item-height: 34px;

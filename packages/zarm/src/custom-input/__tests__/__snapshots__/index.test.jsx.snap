@@ -79,7 +79,7 @@ exports[`CustomInput.Idcard renders correctly 1`] = `
         className="za-keyboard-picker"
         destroy={true}
         direction="bottom"
-        lockScroll={true}
+        lockScroll={false}
         mask={false}
         visible={false}
       >
@@ -164,7 +164,7 @@ exports[`CustomInput.Price renders correctly 1`] = `
         className="za-keyboard-picker"
         destroy={true}
         direction="bottom"
-        lockScroll={true}
+        lockScroll={false}
         mask={false}
         visible={false}
       >

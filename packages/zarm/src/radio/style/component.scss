@@ -206,6 +206,10 @@
       margin-right: 0;
       margin-bottom: 0;
 
+      &:not(&--disabled):active {
+        opacity: 1;
+      }
+
       @include e(text) {
         margin-left: 0;
       }

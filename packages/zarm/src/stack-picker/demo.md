@@ -77,7 +77,7 @@ const Demo = () => {
       <List>
         <List.Item
           title="普通"
-          after={
+          suffix={
             <Button size="xs" onClick={() => setVisible(true)}>
               选择
             </Button>

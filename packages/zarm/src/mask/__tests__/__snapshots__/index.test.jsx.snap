@@ -4,7 +4,7 @@ exports[`Mask color is transparent 1`] = `
 <DocumentFragment>
   <div
     class="za-mask "
-    style="display: none; background-color: transparent;"
+    style="background-color: transparent;"
   />
 </DocumentFragment>
 `;
@@ -13,7 +13,7 @@ exports[`Mask renders correctly 1`] = `
 <DocumentFragment>
   <div
     class="za-mask "
-    style="display: none; background-color: rgba(0, 0, 0, 0.55);"
+    style="background-color: rgba(0, 0, 0, 0.55);"
   />
 </DocumentFragment>
 `;

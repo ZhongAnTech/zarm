@@ -43,7 +43,7 @@ const Demo = () => {
   const content = (
     <List>
       <List.Item
-        after={
+        suffix={
           <Radio.Group
             value={!!props.image}
             buttonCompact
@@ -100,7 +100,7 @@ const Demo = () => {
       ) : (
         <>
           <List.Item
-            after={
+            suffix={
               <Radio.Group
                 value={isMultiline}
                 buttonCompact
@@ -128,7 +128,7 @@ const Demo = () => {
             />
           </List.Item>
           <List.Item
-            after={
+            suffix={
               <Radio.Group
                 value={props.textStyle.textAlign}
                 buttonCompact
@@ -146,7 +146,7 @@ const Demo = () => {
         </>
       )}
       <List.Item
-        after={
+        suffix={
           <Radio.Group
             value={props.mode}
             buttonCompact
@@ -168,14 +168,14 @@ const Demo = () => {
       </List.Item>
       <List.Item
         title="保护模式"
-        after={
+        suffix={
           <Switch checked={props.monitor} onChange={(value) => setProps({ monitor: value })} />
         }
-        info="监听水印变化，防止被篡改"
+        description="监听水印变化，防止被篡改"
       />
       <List.Item
         title="包裹容器"
-        after={<Switch checked={contain} onChange={(value) => setContain(value)} />}
+        suffix={<Switch checked={contain} onChange={(value) => setContain(value)} />}
       />
     </List>
   );

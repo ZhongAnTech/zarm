@@ -152,7 +152,7 @@ const Checkbox = React.forwardRef<unknown, CheckboxButtonProps>((props, ref) => 
       onClick: !disabled ? () => {} : undefined,
     };
 
-    listMarkerAlign === 'after' ? (listProps.after = marker) : (listProps.prefix = marker);
+    listMarkerAlign === 'after' ? (listProps.suffix = marker) : (listProps.prefix = marker);
 
     return <List.Item ref={checkboxRef} {...listProps} />;
   }

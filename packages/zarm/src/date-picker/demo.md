@@ -72,7 +72,7 @@ const Demo = () => {
     <>
       <List>
         <List.Item
-          after={
+          suffix={
             <Button size="xs" onClick={() => toggle('date')}>
               选择
             </Button>
@@ -81,7 +81,7 @@ const Demo = () => {
           选择日期
         </List.Item>
         <List.Item
-          after={
+          suffix={
             <Button size="xs" onClick={() => toggle('time')}>
               选择
             </Button>
@@ -90,7 +90,7 @@ const Demo = () => {
           选择时间
         </List.Item>
         <List.Item
-          after={
+          suffix={
             <Button size="xs" onClick={() => toggle('limitDate')}>
               选择
             </Button>
@@ -99,7 +99,7 @@ const Demo = () => {
           选择日期(自定义)
         </List.Item>
         <List.Item
-          after={
+          suffix={
             <Button size="xs" onClick={() => toggle('specDOM')}>
               选择
             </Button>

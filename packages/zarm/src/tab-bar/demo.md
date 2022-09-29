@@ -17,7 +17,7 @@ const Demo = () => {
       <List>
         <List.Item
           title="隐藏 | 展示"
-          after={
+          suffix={
             <Button
               size="xs"
               onClick={() => {
@@ -73,3 +73,14 @@ ReactDOM.render(<Demo />, mountNode);
 | icon       | ReactNode        | -      | 图标                                                 |
 | activeIcon | ReactNode        | -      | 选中时图标，不设置等同 icon 属性的值                 |
 | badge      | BadgeProps       | -      | 参考[Badge](/#/components/badge)组件                 |
+
+## CSS 变量
+
+| 属性           | 默认值                  | 说明               |
+| :------------- | :---------------------- | :----------------- |
+| --background   | '#fff'                  | 背景色             |
+| --height       | '50px'                  | 高度               |
+| --color        | var(--za-color-text)    | 字体颜色           |
+| --active-color | var(--za-theme-primary) | 选中状态下字体颜色 |
+| --font-size    | '12px'                  | 字体大小           |
+| --z-index      | '100'                   | 层级               |
