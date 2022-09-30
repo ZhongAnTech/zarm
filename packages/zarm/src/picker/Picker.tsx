@@ -34,6 +34,7 @@ const Picker = React.forwardRef<HTMLDivElement, PickerProps>((props, ref) => {
     cancelText,
     value,
     defaultValue,
+    wheelDefaultValue,
     dataSource,
     fieldNames,
     itemRender,
@@ -53,6 +54,11 @@ const Picker = React.forwardRef<HTMLDivElement, PickerProps>((props, ref) => {
     onConfirm?.(pickerViewRef.current?.value!, pickerViewRef.current?.dataSource!);
   };
 
+  const handleCancel = () => {
+    pickerViewRef.current?.reset();
+    onCancel?.();
+  };
+
   return (
     <PickerContainer
       ref={ref}
@@ -66,13 +72,14 @@ const Picker = React.forwardRef<HTMLDivElement, PickerProps>((props, ref) => {
       destroy={destroy}
       mountContainer={mountContainer}
       onConfirm={handleConfirm}
-      onCancel={onCancel}
-      onClose={onCancel}
+      onCancel={handleCancel}
+      onClose={handleCancel}
     >
       <PickerView
         ref={pickerViewRef}
         value={value}
         defaultValue={defaultValue}
+        wheelDefaultValue={wheelDefaultValue}
         dataSource={dataSource}
         cols={cols}
         fieldNames={fieldNames}

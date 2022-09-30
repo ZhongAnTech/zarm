@@ -23,6 +23,8 @@ exports[`Picker Picker render visible 1`] = `
   <ForwardRef
     destroy={false}
     maskClosable={true}
+    onCancel={[Function]}
+    onClose={[Function]}
     onConfirm={[Function]}
     visible={true}
   >
@@ -31,6 +33,7 @@ exports[`Picker Picker render visible 1`] = `
       direction="bottom"
       lockScroll={true}
       mask={true}
+      onMaskClick={[Function]}
       visible={true}
     >
       <Trigger
@@ -510,6 +513,8 @@ exports[`Picker render custom label 1`] = `
   <ForwardRef
     destroy={false}
     maskClosable={true}
+    onCancel={[Function]}
+    onClose={[Function]}
     onConfirm={[Function]}
   >
     <Popup
@@ -517,6 +522,7 @@ exports[`Picker render custom label 1`] = `
       direction="bottom"
       lockScroll={true}
       mask={true}
+      onMaskClick={[Function]}
       visible={false}
     >
       <Trigger

@@ -28,6 +28,7 @@ export type PickerViewProps = BasePickerViewProps & HTMLProps<PickerViewCssVars>
 export interface PickerViewInstance {
   value: WheelValue[];
   dataSource: PickerDataSourceItem[];
+  reset: () => void;
 }
 
 const PickerView = React.forwardRef<PickerViewInstance, PickerViewProps>((props, ref) => {
@@ -48,7 +49,15 @@ const PickerView = React.forwardRef<PickerViewInstance, PickerViewProps>((props,
     [cols, innerValue, props.dataSource, props.fieldNames],
   );
 
-  React.useImperativeHandle(ref, () => ({ value: innerValue, dataSource: objValue }));
+  const reset = () => {
+    setInnerValue(parseProps.getSource(props).value);
+  };
+
+  React.useImperativeHandle(ref, () => ({
+    value: innerValue,
+    dataSource: objValue,
+    reset,
+  }));
 
   const onValueChange = (selected: WheelValue, level: number) => {
     const value = innerValue.slice();
