@@ -1,9 +1,10 @@
 @include b(select) {
   @include define(height, 28px);
-  @include define(placeholder-color, var(--color-text-placeholder));
-  @include define(arrow-color, rgba(0, 0, 0, 0.4));
-  @include define(arrow-size, 10px);
-  @include define(arrow-width, 2px);
+  @include define(disabled-color, var(--za-color-text-disabled));
+  @include define(placeholder-color, var(--za-color-text-placeholder));
+  @include define(arrow-color, var(--za-arrow-color));
+  @include define(arrow-size, var(--za-arrow-size));
+  @include define(arrow-width, var(--za-arrow-width));
 
   display: flex;
   align-items: center;
@@ -27,7 +28,7 @@
     margin-left: 5px;
     margin-top: calc(var(--arrow-size) / -2);
 
-    &:after {
+    &::after {
       display: inline-block;
       content: '';
       border-right: var(--arrow-width) solid var(--arrow-color);
@@ -37,15 +38,19 @@
       transform: rotate(45deg);
       transition: all 0.15s ease-out;
     }
-
-    &--active::after {
-      transform: rotate(-45deg);
-    }
   }
 
   @include m(disabled) {
     @include e(input) {
-      color: var(--color-text-disabled);
+      color: var(--disabled-color);
+    }
+  }
+
+  @include m(visible) {
+    @include e(arrow) {
+      &::after {
+        transform: rotate(-45deg);
+      }
     }
   }
 }

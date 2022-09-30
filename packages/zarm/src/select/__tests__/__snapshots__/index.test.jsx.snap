@@ -567,7 +567,7 @@ exports[`Select Select disabled 1`] = `
   onClick={[Function]}
 >
   <div
-    className="za-select"
+    className="za-select za-select--visible"
     onClick={[Function]}
   >
     <div

@@ -74,6 +74,7 @@ const Select = React.forwardRef<unknown, SelectProps>((props, ref) => {
           {
             placeholder: !innerValue.length,
             disabled,
+            visible,
           },
         ])}
         onClick={handleClick}
@@ -86,7 +87,7 @@ const Select = React.forwardRef<unknown, SelectProps>((props, ref) => {
               locale?.Select?.placeholder}
           </div>
         </div>
-        <div className={bem('arrow', [{ active: visible }])} />
+        <div className={bem('arrow')} />
       </div>
       <Picker
         {...others}
