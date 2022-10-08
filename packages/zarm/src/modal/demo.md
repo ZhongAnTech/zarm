@@ -472,6 +472,7 @@ const confirm = Modal.confirm({
 | --body-font-size     | '13px'                              | 内容字体大小         |
 | --body-text-color    | 'var(--za-color-text)'              | 内容字体颜色         |
 | --body-padding       | '16px'                              | 内容内边距           |
+| --button-background  | 'transparent'                       | 操作按钮背景色       |
 | --button-height      | '44px'                              | 操作按钮高度         |
 | --button-font-size   | '17px'                              | 操作按钮字体大小     |
 | --button-font-weight | 500                                 | 操作按钮字体粗细     |

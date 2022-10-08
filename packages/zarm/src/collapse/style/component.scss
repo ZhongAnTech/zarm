@@ -1,10 +1,10 @@
 @include b(collapse) {
-  @include define(border-color, rgba(60, 60, 67, 0.36));
+  @include define(border-color, var(--za-border-color));
   @include define(arrow-color, rgba(0, 0, 0, 0.2));
   @include define(arrow-size, 10px);
   @include define(arrow-width, 2px);
   @include define(arrow-disabled-color, #eee);
-  @include define(header-height, 52px);
+  @include define(header-height, 44px);
   @include define(header-padding-horizontal, 16px);
   @include define(header-padding-vertical, 15px);
   @include define(header-disable-color, var(--za-color-text-disabled));
@@ -18,21 +18,30 @@
   @include m(animated) {
     @include b(collapse-item) {
       &__content {
-        transition: all 0.15s ease-out;
+        transition: all 0.3s ease;
       }
     }
   }
 }
 
 @include b(collapse-item) {
-  font-size: r(15);
+  &:not(&--disabled) {
+    @include e(header) {
+      &:active {
+        background-color: var(--za-background-active);
+      }
+    }
+  }
 
   @include e(header) {
     position: relative;
     overflow: hidden;
     display: flex;
+    align-items: center;
     min-height: var(--header-height);
-    padding: var(--header-padding-vertical) var(--header-padding-horizontal);
+    padding: 0 var(--header-padding-horizontal);
+    transition-duration: 0.1s;
+    transition-property: background-color, color;
     @include onepx(top, var(--border-color));
 
     &:after {
@@ -75,7 +84,7 @@
       width: var(--arrow-size);
       height: var(--arrow-size);
       transform: rotate(135deg);
-      transition: all 0.15s ease-out;
+      transition: all 0.3s ease;
     }
   }
 

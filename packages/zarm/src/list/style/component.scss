@@ -3,7 +3,7 @@
   @include define(item-padding-horizontal, 16px);
   @include define(item-padding-vertical, 8px);
   @include define(item-background, #fff);
-  @include define(item-active-background, rgba(0, 0, 0, 0.15));
+  @include define(item-active-background, var(--za-background-active));
   @include define(item-separator-color, rgba(60, 60, 67, 0.36));
   @include define(item-title-font-size, var(--za-font-size-md));
   @include define(item-title-white-space, nowrap);

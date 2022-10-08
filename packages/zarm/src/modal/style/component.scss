@@ -11,6 +11,7 @@
   @include define(body-font-size, 13px);
   @include define(body-text-color, var(--za-color-text));
   @include define(body-padding, 16px);
+  @include define(button-background, transparent);
   @include define(button-height, 44px);
   @include define(button-font-size, 17px);
   @include define(button-font-weight, 500);
