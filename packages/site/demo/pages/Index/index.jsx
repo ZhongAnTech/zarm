@@ -23,7 +23,7 @@ const Child = () => {
         spacing
         title={
           <>
-            <FormattedMessage id={`app.components.type.${key}`} />（{list.length}）
+            <FormattedMessage id={`app.components.group.${key}`} />（{list.length}）
           </>
         }
       >

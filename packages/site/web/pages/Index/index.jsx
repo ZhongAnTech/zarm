@@ -30,7 +30,7 @@ const Page = () => {
             <FormattedMessage id="app.home.index.introduce" />
           </div>
           <div className="navigation">
-            <button type="button" onClick={() => history.push('/docs/quick-start')}>
+            <button type="button" onClick={() => history.push('/docs')}>
               <FormattedMessage id="app.home.index.getting-started" />
             </button>
             <Popper

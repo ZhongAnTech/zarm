@@ -66,7 +66,6 @@ const Simulator = () => {
 };
 
 const Page = () => {
-  const { general, form, feedback, view, navigation, hooks, other } = components;
   const isComponentPage = !!useRouteMatch('/components');
 
   const containerCls = classnames('main-container', 'markdown', {
@@ -80,18 +79,20 @@ const Page = () => {
         {isComponentPage && <Simulator />}
         <div className={containerCls}>
           <Switch>
-            {documents.map((doc, i) => (
-              <Route key={+i} path={`/docs/${doc.key}`} component={LoadableComponent(doc)} />
-            ))}
-            {[...general, ...form, ...feedback, ...view, ...navigation, ...hooks, ...other].map(
-              (component, i) => (
+            {Object.values(documents)
+              .flat()
+              .map((doc, i) => (
+                <Route key={+i} path={`/docs/${doc.key}`} component={LoadableComponent(doc)} />
+              ))}
+            {Object.values(components)
+              .flat()
+              .map((comp, i) => (
                 <Route
                   key={+i}
-                  path={`/components/${component.key}`}
-                  component={LoadableComponent(component)}
+                  path={`/components/${comp.key}`}
+                  component={LoadableComponent(comp)}
                 />
-              ),
-            )}
+              ))}
             <Redirect to="/" />
           </Switch>
         </div>

@@ -1,48 +1,50 @@
 module.exports = {
-  documents: [
-    {
-      key: 'introduce',
-      name: '关于 Zarm',
-      module: () => import('@/web/docs/introduce.md'),
-      source: '@/web/docs/introduce.md',
-      style: false,
-    },
-    {
-      key: 'quick-start',
-      name: '快速上手',
-      module: () => import('@/web/docs/quick-start.md'),
-      source: '@/web/docs/quick-start.md',
-      style: false,
-    },
-    {
-      key: 'customize-theme',
-      name: '定制主题',
-      module: () => import('@/web/docs/customize-theme.md'),
-      source: '@/web/docs/customize-theme.md',
-      style: false,
-    },
-    {
-      key: 'i18n',
-      name: '国际化',
-      module: () => import('@/web/docs/i18n.md'),
-      source: '@/web/docs/i18n.md',
-      style: false,
-    },
-    {
-      key: 'change-log',
-      name: '更新日志',
-      module: () => import('@zarmDir/CHANGELOG.md'),
-      source: '@zarmDir/CHANGELOG.md',
-      style: false,
-    },
-    {
-      key: 'contributing',
-      name: '贡献指南',
-      module: () => import('@/web/docs/contributing.md'),
-      source: '@/web/docs/contributing.md',
-      style: false,
-    },
-  ],
+  documents: {
+    introduction: [
+      {
+        key: 'about-zarm',
+        module: () => import('@/web/docs/about-zarm.md'),
+        source: '@/web/docs/about-zarm.md',
+        style: false,
+      },
+    ],
+    'getting-started': [
+      {
+        key: 'installation',
+        module: () => import('@/web/docs/installation.md'),
+        source: '@/web/docs/installation.md',
+        style: false,
+      },
+    ],
+    guides: [
+      {
+        key: 'customize-theme',
+        module: () => import('@/web/docs/customize-theme.md'),
+        source: '@/web/docs/customize-theme.md',
+        style: false,
+      },
+      {
+        key: 'i18n',
+        module: () => import('@/web/docs/i18n.md'),
+        source: '@/web/docs/i18n.md',
+        style: false,
+      },
+      {
+        key: 'contributing',
+        module: () => import('@/web/docs/contributing.md'),
+        source: '@/web/docs/contributing.md',
+        style: false,
+      },
+    ],
+    version: [
+      {
+        key: 'changelog',
+        module: () => import('@zarmDir/CHANGELOG.md'),
+        source: '@zarmDir/CHANGELOG.md',
+        style: false,
+      },
+    ],
+  },
   components: {
     general: [
       {

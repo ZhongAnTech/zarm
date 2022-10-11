@@ -1,13 +1,25 @@
 export default {
   'app.title': 'A mobile UI library by Zhongan Technology',
-  'app.components': 'Components',
-  'app.components.type.general': 'General',
-  'app.components.type.form': 'Data Entry',
-  'app.components.type.feedback': 'Feedback',
-  'app.components.type.view': 'Data Display',
-  'app.components.type.navigation': 'Navigation',
-  'app.components.type.hooks': 'Hooks',
-  'app.components.type.other': 'Other',
+
+  'app.docs.group.introduction': 'Introduction',
+  'app.docs.group.getting-started': 'Getting Started',
+  'app.docs.group.guides': 'Guides',
+  'app.docs.group.version': 'Release',
+
+  'app.docs.article.about-zarm': 'About Zarm',
+  'app.docs.article.installation': 'Installation',
+  'app.docs.article.customize-theme': 'Customizing theme',
+  'app.docs.article.i18n': 'Internationalization',
+  'app.docs.article.contributing': 'Contributing',
+  'app.docs.article.changelog': 'Change Log',
+
+  'app.components.group.general': 'General',
+  'app.components.group.form': 'Data Entry',
+  'app.components.group.feedback': 'Feedback',
+  'app.components.group.view': 'Data Display',
+  'app.components.group.navigation': 'Navigation',
+  'app.components.group.hooks': 'Hooks',
+  'app.components.group.other': 'Other',
 
   'app.home.nav.search': 'Search Components',
   'app.home.nav.docs': 'Docs',
