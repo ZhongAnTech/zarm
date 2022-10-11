@@ -1,5 +1,5 @@
 import type LOAD_STATUS from './utils/loadStatus';
-import type { Locale } from '../config-provider/PropsType';
+import type { Locale } from '../n-config-provider/interface';
 import type { MountContainer } from '../utils/dom';
 
 export interface ImageObject {
