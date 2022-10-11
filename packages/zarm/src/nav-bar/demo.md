@@ -65,8 +65,8 @@ ReactDOM.render(
 | :------------------- | :-------------------------- | :------------- |
 | --background         | 'rgba(249, 249, 249, 0.94)' | 背景色         |
 | --height             | '44px'                      | 高度           |
-| --title-color        | 'var(--color-text)'         | 标题字体色     |
-| --title-font-size    | 'var(--font-size-md)'       | 标题字体大小   |
+| --title-color        | 'var(--za-color-text)'      | 标题字体色     |
+| --title-font-size    | 'var(--za-font-size-md)'    | 标题字体大小   |
 | --title-font-weight  | '500'                       | 标题字体粗细   |
-| --side-font-size     | 'var(--font-size-md)'       | 左右栏字体大小 |
+| --side-font-size     | 'var(--za-font-size-md)'    | 左右栏字体大小 |
 | --padding-horizontal | '16px'                      | 横向内边距     |
