@@ -3,8 +3,21 @@ import type { HTMLAttributes } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseNavBarProps } from './interface';
+import type { HTMLProps } from '../utils/utilityTypes';
 
-export type NavBarProps = BaseNavBarProps & Omit<HTMLAttributes<HTMLDivElement>, 'title'>;
+export interface NavBarCssVars {
+  '--background'?: React.CSSProperties['background'];
+  '--height'?: React.CSSProperties['height'];
+  '--title-color'?: React.CSSProperties['color'];
+  '--title-font-size'?: React.CSSProperties['fontSize'];
+  '--title-font-weight'?: React.CSSProperties['fontWeight'];
+  '--side-font-size'?: React.CSSProperties['fontSize'];
+  '--padding-horizontal'?: React.CSSProperties['paddingLeft'];
+}
+
+export type NavBarProps = BaseNavBarProps &
+  Omit<HTMLAttributes<HTMLDivElement>, 'title'> &
+  HTMLProps<NavBarCssVars>;
 
 const NavBar = forwardRef<HTMLDivElement, NavBarProps>((props, ref) => {
   const { className, title, left, right, ...restProps } = props;

@@ -6,8 +6,30 @@ import { ConfigContext } from '../n-config-provider';
 import { useEventCallback } from '../utils/hooks';
 import Input, { InputTextProps } from '../input';
 import { getValue } from '../input/utils';
+import type { HTMLProps } from '../utils/utilityTypes';
 
-export type SearchBarProps = BaseSearchBarProps & React.InputHTMLAttributes<HTMLInputElement>;
+export interface SearchBarCssVars {
+  '--background'?: React.CSSProperties['background'];
+  '--height'?: React.CSSProperties['height'];
+  '--padding-horizontal'?: React.CSSProperties['paddingRight'];
+  '--input-padding-horizontal'?: React.CSSProperties['paddingRight'];
+  '--input-height'?: React.CSSProperties['height'];
+  '--input-background'?: React.CSSProperties['background'];
+  '--input-font-size'?: React.CSSProperties['fontSize'];
+  '--input-placeholder-color'?: React.CSSProperties['color'];
+  '--input-clear-icon-color'?: React.CSSProperties['color'];
+  '--input-border-radius'?: React.CSSProperties['borderRadius'];
+  '--cancel-font-size'?: React.CSSProperties['fontSize'];
+  '--cancel-color'?: React.CSSProperties['color'];
+  '--cancel-margin-left'?: React.CSSProperties['marginLeft'];
+  '--cancel-transition'?: React.CSSProperties['transition'];
+  '--icon-margin-right'?: React.CSSProperties['marginRight'];
+  '--icon-color'?: React.CSSProperties['color'];
+}
+
+export type SearchBarProps = BaseSearchBarProps &
+  React.InputHTMLAttributes<HTMLInputElement> &
+  HTMLProps<SearchBarCssVars>;
 
 const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
   const {
