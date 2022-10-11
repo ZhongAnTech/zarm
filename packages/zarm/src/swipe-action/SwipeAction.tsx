@@ -1,11 +1,10 @@
-import React, { useEffect, useRef, useCallback, useContext } from 'react';
+import React, { useRef, useCallback, useContext } from 'react';
 import { useDrag } from '@use-gesture/react';
 import { createBEM } from '@zarm-design/bem';
 
 import { ConfigContext } from '../n-config-provider';
 import type { BaseSwipeActionProps, BaseSwipeActionItemProps } from './interface';
 import SwipeActionItem from './SwipeActionItem';
-import Events from '../utils/events';
 import type { HTMLProps } from '../utils/utilityTypes';
 import { useSafeState } from '../utils/hooks';
 
@@ -37,8 +36,7 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
     onOpen,
   } = props;
 
-  const isOpen = useRef(false);
-  const touchEnd = useRef(true);
+  const isOpen = useRef<null | string>(null);
   const pending = useRef(false);
   const leftRef = useRef<HTMLDivElement>();
   const rightRef = useRef<HTMLDivElement>();
@@ -56,130 +54,13 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
     [offsetLeft],
   );
 
-  const open = (offsetX) => {
-    isOpen.current = true;
-    doTransition({ offsetX, duration: initialAnimationDuration });
-    if (typeof onOpen === 'function') {
-      onOpen();
-    }
-  };
+  const dragStart = useRef(0);
 
   const close = () => {
     if (pending.current) return;
     doTransition({ offsetX: 0, duration: initialAnimationDuration });
-    isOpen.current = false;
-    touchEnd.current = true;
-  };
-
-  const onCloseSwipe = (e) => {
-    if (!swipeActionWrap.current) {
-      return;
-    }
-    if (isOpen.current && !pending.current) {
-      const pNode = ((node) => {
-        while (node.parentNode && node.parentNode !== document.body) {
-          if (node === swipeActionWrap.current) {
-            return node;
-          }
-          node = node.parentNode;
-        }
-      })(e.target);
-      // const type = e.target?.type || e.target.parentNode?.type || null;
-
-      if (!pNode) {
-        e.preventDefault();
-        touchEnd.current = true;
-        close();
-      }
-    }
-  };
-
-  useEffect(() => {
-    Events.on(document.body, 'touchstart', onCloseSwipe);
-    Events.on(document.body, 'click', onCloseSwipe);
-    return () => {
-      Events.off(document.body, 'touchstart', onCloseSwipe);
-      Events.off(document.body, 'click', onCloseSwipe);
-    };
-  }, []);
-
-  const onDragStart = () => {
-    if (disabled) return;
-    if (isOpen.current) {
-      touchEnd.current = false;
-      close();
-      return;
-    }
-    touchEnd.current = true;
-  };
-
-  const onDragMove = ({ offsetX, offsetY, event }) => {
-    if (!touchEnd.current || disabled) {
-      return false;
-    }
-    // 拖动距离达到上限
-    const btnsLeftWidth = leftRef?.current?.offsetWidth || 0;
-    const btnsRightWidth = rightRef?.current?.offsetWidth || 0;
-
-    if (offsetX! > 0 && (!btnsLeftWidth || offsetLeft >= btnsLeftWidth + offset!)) {
-      return false;
-    }
-    if (offsetX! < 0 && (!btnsRightWidth || offsetLeft <= -btnsRightWidth - offset!)) {
-      return false;
-    }
-
-    // 判断滚屏情况
-    const distanceX = Math.abs(offsetX!);
-    const distanceY = Math.abs(offsetY!);
-    if (distanceX < 5 || (distanceX >= 5 && distanceY >= 0.3 * distanceX)) {
-      return false;
-    }
-    if (!Events.supportsPassiveEvents) {
-      event.preventDefault();
-    }
-    doTransition({ offsetX, duration: 0 });
-    return true;
-  };
-
-  const onDragEnd = (offsetX, elapsedTime) => {
-    if (disabled) return;
-    const timeSpan = Math.floor(elapsedTime);
-    const btnsLeftWidth = leftRef?.current?.offsetWidth || 0;
-    const btnsRightWidth = rightRef?.current?.offsetWidth || 0;
-
-    if (offsetX! > 0 && !btnsLeftWidth) {
-      return false;
-    }
-
-    if (offsetX! < 0 && !btnsRightWidth) {
-      return false;
-    }
-
-    let distanceX = 0;
-    let _isOpen = false;
-    if (
-      btnsLeftWidth > 0 &&
-      (offsetX / btnsLeftWidth > moveDistanceRatio! || (offsetX > 0 && timeSpan <= moveTimeSpan!))
-    ) {
-      distanceX = btnsLeftWidth;
-      _isOpen = true;
-    } else if (
-      (btnsRightWidth > 0 && offsetX / btnsRightWidth < -moveDistanceRatio!) ||
-      (offsetX < 0 && timeSpan <= moveTimeSpan!)
-    ) {
-      distanceX = -btnsRightWidth;
-      _isOpen = true;
-    }
-    if (_isOpen && !isOpen.current) {
-      // 打开
-      open(distanceX);
-    } else if (!_isOpen && isOpen.current) {
-      // 关闭
-      close();
-    } else {
-      // 还原
-      doTransition({ offsetX: distanceX, duration: initialAnimationDuration });
-    }
+    isOpen.current = null;
+    dragStart.current = 0;
   };
 
   const renderButtons = (actions, direction, refs) => {
@@ -201,7 +82,7 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
                 await action.onClick?.();
                 pending.current = false;
                 if (autoClose) {
-                  close();
+                  close?.();
                 }
               }}
             />
@@ -211,27 +92,90 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
     );
   };
 
+  const dragging = useRef(false);
   const bind = useDrag(
-    ({ event, movement: [x, y], elapsedTime, type }) => {
-      if (type === 'touchstart') {
-        onDragStart();
-        return;
+    (state) => {
+      const [offsetX] = state.offset;
+      if (
+        (isOpen.current === 'right' && offsetX < 0) ||
+        (isOpen.current === 'left' && offsetX > 0)
+      ) {
+        return false;
       }
+      if (state.down) {
+        dragging.current = true;
+      }
+      if (!dragging.current) return;
+      dragStart.current = offsetX;
 
-      if (type === 'touchmove') {
-        onDragMove({
-          offsetX: x,
-          offsetY: y,
-          event,
+      const btnsLeftWidth = leftRef?.current?.offsetWidth || 0;
+      const btnsRightWidth = rightRef?.current?.offsetWidth || 0;
+
+      if (state.last) {
+        const timeSpan = Math.floor(state.elapsedTime);
+
+        if (offsetX > 0 && !btnsLeftWidth) {
+          return false;
+        }
+
+        if (offsetX < 0 && !btnsRightWidth) {
+          return false;
+        }
+        let distanceX = 0;
+        let _isOpen = false;
+        if (
+          btnsLeftWidth > 0 &&
+          (offsetX / btnsLeftWidth > moveDistanceRatio! ||
+            (offsetX > 0 && timeSpan <= moveTimeSpan!))
+        ) {
+          distanceX = btnsLeftWidth;
+          _isOpen = true;
+        } else if (
+          (btnsRightWidth > 0 && offsetX / btnsRightWidth < -moveDistanceRatio!) ||
+          (offsetX < 0 && timeSpan <= moveTimeSpan!)
+        ) {
+          distanceX = -btnsRightWidth;
+          _isOpen = true;
+          doTransition({ offsetX: distanceX, duration: initialAnimationDuration });
+        }
+
+        if (_isOpen) {
+          // 打开
+          isOpen.current = distanceX > 0 ? 'left' : 'right';
+          onOpen?.();
+        } else {
+          // 还原
+          close();
+        }
+        window.setTimeout(() => {
+          dragging.current = false;
         });
-        return;
-      }
-
-      if (type === 'touchend') {
-        onDragEnd(x, elapsedTime);
+      } else {
+        if (offsetX! > 0 && (!btnsLeftWidth || offsetLeft >= btnsLeftWidth + offset!)) {
+          return false;
+        }
+        if (offsetX! < 0 && (!btnsRightWidth || offsetLeft <= -btnsRightWidth - offset!)) {
+          return false;
+        }
+        doTransition({ offsetX, duration: 0 });
       }
     },
-    { pointer: { touch: true } },
+    {
+      from: () => [dragStart.current, 0],
+      bounds: () => {
+        const leftWidth = leftRef?.current?.offsetWidth || 0;
+        const rightWidth = rightRef?.current?.offsetWidth || 0;
+        return {
+          left: -rightWidth,
+          right: leftWidth,
+        };
+      },
+      enabled: !disabled,
+      axis: 'x',
+      pointer: { touch: true },
+      preventScroll: true,
+      triggerAllEvents: true,
+    },
   );
 
   const style = {
@@ -246,14 +190,30 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
   return (
     <>
       {leftActions || rightActions ? (
-        <div className={cls} ref={swipeActionWrap}>
+        <div
+          className={cls}
+          ref={swipeActionWrap}
+          {...bind()}
+          onClickCapture={(e) => {
+            if (dragging.current) {
+              e.stopPropagation();
+              e.preventDefault();
+            }
+          }}
+        >
           {renderButtons(leftActions, 'left', leftRef)}
           {renderButtons(rightActions, 'right', rightRef)}
           <div
             className={bem('content')}
             style={style}
             onTransitionEnd={() => !isOpen.current && onClose?.()}
-            {...bind()}
+            onClickCapture={(e) => {
+              if (isOpen.current) {
+                e.preventDefault();
+                e.stopPropagation();
+                close();
+              }
+            }}
           >
             {children}
           </div>
