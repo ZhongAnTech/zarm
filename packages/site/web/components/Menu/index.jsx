@@ -20,19 +20,17 @@ const getDocs = (docs) =>
     </Menu.ItemGroup>
   ));
 
-const getComponents = (components) => {
-  const { locale } = useContext(Context);
-
-  return Object.keys(components).map((group) => (
+const getComponents = (comps, locale) =>
+  Object.keys(comps).map((group) => (
     <Menu.ItemGroup
       key={group}
       title={
         <>
-          <FormattedMessage id={`app.components.group.${group}`} />（{components[group].length}）
+          <FormattedMessage id={`app.components.group.${group}`} />（{comps[group].length}）
         </>
       }
     >
-      {components[group]
+      {comps[group]
         .sort((a, b) => {
           return a.key.localeCompare(b.key);
         })
@@ -46,9 +44,9 @@ const getComponents = (components) => {
         ))}
     </Menu.ItemGroup>
   ));
-};
 
 const MenuComponent = () => {
+  const { locale } = useContext(Context);
   const params = useParams();
   const isComponentPage = !!useRouteMatch('/components');
 
@@ -57,7 +55,7 @@ const MenuComponent = () => {
 
   if (isComponentPage) {
     selectedKeys = [params.component];
-    menuRender = getComponents(components);
+    menuRender = getComponents(components, locale);
   } else {
     selectedKeys = [params.doc];
     menuRender = getDocs(documents);
