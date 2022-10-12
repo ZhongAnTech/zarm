@@ -1,5 +1,5 @@
 import React, { useImperativeHandle, useRef } from 'react';
-import type { ForwardedRef, HTMLAttributes } from 'react';
+import type { ForwardedRef } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseProgressProps } from './interface';
@@ -16,20 +16,12 @@ import {
 
 export interface ProgressCssVars {
   '--background'?: React.CSSProperties['background'];
-  '--width-lg'?: React.CSSProperties['width'];
   '--width-md'?: React.CSSProperties['width'];
-  '--width-sm'?: React.CSSProperties['width'];
-  '--size-lg'?: React.CSSProperties['width' | 'height'];
   '--size-md'?: React.CSSProperties['width' | 'height'];
-  '--size-sm'?: React.CSSProperties['width' | 'height'];
-  '--font-size-circle-lg'?: React.CSSProperties['fontSize'];
   '--font-size-circle-md'?: React.CSSProperties['fontSize'];
-  '--font-size-circle-sm'?: React.CSSProperties['fontSize'];
 }
 
-export type ProgressProps = BaseProgressProps &
-  HTMLAttributes<HTMLDivElement> &
-  HTMLProps<ProgressCssVars>;
+export type ProgressProps = BaseProgressProps & HTMLProps<ProgressCssVars>;
 
 const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
   (
@@ -90,6 +82,7 @@ const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
       },
       className,
     ]);
+    debugger;
 
     const roundInner = (
       <>

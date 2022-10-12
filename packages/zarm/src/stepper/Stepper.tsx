@@ -76,9 +76,7 @@ const getValue = (props: StepperProps, defaultValue: number) => {
   return formatValue(compareValue(tempValue, max, min), step);
 };
 
-export type StepperProps = BaseStepperProps &
-  React.HTMLAttributes<HTMLSpanElement> &
-  HTMLProps<StepperCssVars>;
+export type StepperProps = BaseStepperProps & HTMLProps<StepperCssVars>;
 
 const Stepper = React.forwardRef<unknown, StepperProps>((props, ref) => {
   const {

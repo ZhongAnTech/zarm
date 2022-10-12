@@ -10,16 +10,12 @@ import type { HTMLProps } from '../utils/utilityTypes';
 
 export interface NoticeBarCssVars {
   '--height'?: React.CSSProperties['height'];
-  '--min-height'?: React.CSSProperties['height'];
   '--font-size'?: React.CSSProperties['fontSize'];
-  '--padding-vertical'?: React.CSSProperties['paddingTop'];
-  '--padding-horizontal'?: React.CSSProperties['paddingLeft'];
+  '--padding'?: React.CSSProperties['padding'];
   '--icon-size'?: React.CSSProperties['fontSize'];
 }
 
-export type NoticeBarProps = BaseNoticeBarProps &
-  React.HTMLAttributes<HTMLDivElement> &
-  HTMLProps<NoticeBarCssVars>;
+export type NoticeBarProps = BaseNoticeBarProps & HTMLProps<NoticeBarCssVars>;
 
 const NoticeBar = forwardRef<HTMLDivElement, NoticeBarProps>((props, ref) => {
   const { children, speed, delay, onClose, className, ...restProps } = props;

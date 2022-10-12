@@ -1,15 +1,13 @@
 @include b(notice-bar) {
-  @include define(height, 24px);
-  @include define(min-height, 40px);
+  @include define(height, 40px);
   @include define(font-size, var(--za-font-size-sm));
-  @include define(padding-vertical, 8px);
-  @include define(padding-horizontal, 12px);
+  @include define(padding, 8px 12px);
   @include define(icon-size, 16px);
 
   @include b(message) {
-    min-height: var(--min-height);
+    height: var(--height);
     font-size: var(--font-size);
-    padding: var(--padding-vertical) var(--padding-horizontal);
+    padding: var(--padding);
 
     @include e(icon) {
       margin-right: r(6);
@@ -29,15 +27,15 @@
   @include e(body) {
     position: relative;
     width: 100%;
-    height: var(--height);
-    line-height: var(--height);
+    height: 100%;
+    display: flex;
+    align-items: center;
     overflow: hidden;
   }
 
   @include e(content) {
     position: absolute;
     left: 0;
-    top: 0;
     white-space: nowrap;
   }
 }

@@ -2,15 +2,9 @@
 
 @include b(progress) {
   @include define(background, #f2f2f2);
-  @include define(width-lg, 100%);
   @include define(width-md, 100%);
-  @include define(width-sm, 140px);
-  @include define(size-lg, 200px);
-  @include define(size-md, 250px);
-  @include define(size-sm, 80px);
-  @include define(font-size-circle-lg, 30px);
+  @include define(size-md, 150px);
   @include define(font-size-circle-md, 24px);
-  @include define(font-size-circle-sm, 18px);
 
   display: inline-block;
   position: relative;
@@ -30,7 +24,7 @@
     @include progress-theme('background-color');
 
     @include m(lg) {
-      width: var(--width-lg);
+      width: 100%;
     }
 
     @include m(md) {
@@ -38,7 +32,7 @@
     }
 
     @include m(sm) {
-      width: var(--width-sm);
+      width: 40px;
     }
 
     @include e(track) {
@@ -78,11 +72,11 @@
     }
 
     @include m(lg) {
-      width: var(--size-lg);
-      height: var(--size-lg);
+      width: 200px;
+      height: 200px;
 
       @include e(text) {
-        font-size: var(--font-size-circle-lg);
+        font-size: 30px;
       }
     }
 
@@ -96,11 +90,11 @@
     }
 
     @include m(sm) {
-      width: var(--size-sm);
-      height: var(--size-sm);
+      width: 80px;
+      height: 80px;
 
       @include e(text) {
-        font-size: var(--font-size-circle-sm);
+        font-size: 18px;
       }
     }
   }
@@ -127,11 +121,11 @@
     }
 
     @include m(lg) {
-      width: var(--size-lg);
-      height: calc(var(--size-lg) / 2);
+      width: 200px;
+      height: 100px;
 
       @include e(text) {
-        font-size: var(--font-size-circle-lg);
+        font-size: 30px;
       }
     }
 
@@ -145,11 +139,11 @@
     }
 
     @include m(sm) {
-      width: var(--size-sm);
-      height: calc(var(--size-sm) / 2);
+      width: 80px;
+      height: 40px;
 
       @include e(text) {
-        font-size: var(--font-size-circle-sm);
+        font-size: 18px;
       }
     }
   }
