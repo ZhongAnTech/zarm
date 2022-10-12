@@ -11,7 +11,7 @@
   @include define(clear-icon-size, 16px);
   @include define(clear-icon-color, #ccc);
   @include define(textarea-length-font-size, var(--za-font-size-sm));
-  @include define(textarea-length-font-color, var(--za-color-text-disabled));
+  @include define(textarea-length-color, var(--za-color-text-disabled));
 
   @include input-base();
   @include input-placeholder();
@@ -19,7 +19,7 @@
   @include m(textarea) {
     @include e(length) {
       text-align: right;
-      color: var(--textarea-length-font-color);
+      color: var(--textarea-length-color);
       font-size: var(--textarea-length-font-size);
     }
   }

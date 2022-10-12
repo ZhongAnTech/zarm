@@ -24,7 +24,7 @@ export interface InputCssVars {
   '--clear-icon-size'?: React.CSSProperties['width'];
   '--clear-icon-color'?: React.CSSProperties['color'];
   '--textarea-length-font-size'?: React.CSSProperties['fontSize'];
-  '--textarea-length-font-color'?: React.CSSProperties['color'];
+  '--textarea-length-color'?: React.CSSProperties['color'];
 }
 
 export type InputTextProps = BaseInputTextProps &
