@@ -7,6 +7,7 @@ import type { BaseSwipeActionProps, BaseSwipeActionItemProps } from './interface
 import SwipeActionItem from './SwipeActionItem';
 import type { HTMLProps } from '../utils/utilityTypes';
 import { useSafeState } from '../utils/hooks';
+import useClickAway from '../useClickAway';
 
 export interface SwipeActionCssVars {
   '--background'?: React.CSSProperties['background'];
@@ -54,6 +55,9 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
     [offsetLeft],
   );
 
+  useClickAway(swipeActionWrap.current, () => {
+    close();
+  });
   const dragStart = useRef(0);
 
   const close = () => {
@@ -136,8 +140,8 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
         ) {
           distanceX = -btnsRightWidth;
           _isOpen = true;
-          doTransition({ offsetX: distanceX, duration: initialAnimationDuration });
         }
+        doTransition({ offsetX: distanceX, duration: initialAnimationDuration });
 
         if (_isOpen) {
           // 打开
@@ -190,25 +194,15 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
   return (
     <>
       {leftActions || rightActions ? (
-        <div
-          className={cls}
-          ref={swipeActionWrap}
-          {...bind()}
-          onClickCapture={(e) => {
-            if (dragging.current) {
-              e.stopPropagation();
-              e.preventDefault();
-            }
-          }}
-        >
+        <div className={cls} ref={swipeActionWrap} {...bind()}>
           {renderButtons(leftActions, 'left', leftRef)}
           {renderButtons(rightActions, 'right', rightRef)}
           <div
             className={bem('content')}
             style={style}
             onTransitionEnd={() => !isOpen.current && onClose?.()}
-            onClickCapture={(e) => {
-              if (isOpen.current) {
+            onClick={(e) => {
+              if (isOpen.current && !dragging.current) {
                 e.preventDefault();
                 e.stopPropagation();
                 close();
