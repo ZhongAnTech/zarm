@@ -82,7 +82,6 @@ const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
       },
       className,
     ]);
-    debugger;
 
     const roundInner = (
       <>

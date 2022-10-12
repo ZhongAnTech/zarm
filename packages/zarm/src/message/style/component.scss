@@ -1,16 +1,15 @@
 @import 'mixins';
 
 @include b(message) {
-  @include define(min-height, 29px);
+  @include define(line-height, 29px);
   @include define(font-size, var(--za-font-size-sm));
   @include define(icon-size, 14px);
-  @include define(padding-vertical, 6px);
-  @include define(padding-horizontal, 8px);
+  @include define(padding, 6px 8px);
 
   display: flex;
   position: relative;
-  padding: var(--padding-vertical) var(--padding-horizontal);
-  min-height: var(--min-height);
+  line-height: var(--line-height);
+  padding: var(--padding);
   font-size: var(--font-size);
   @include message-theme(var(--theme-default));
 

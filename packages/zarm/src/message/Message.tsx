@@ -7,11 +7,10 @@ import type { BaseMessageProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
 
 export interface MessageCssVars {
-  '--min-height'?: React.CSSProperties['minHeight'];
+  '--line-height'?: React.CSSProperties['lineHeight'];
   '--font-size'?: React.CSSProperties['fontSize'];
   '--icon-size'?: React.CSSProperties['fontSize'];
-  '--padding-vertical'?: React.CSSProperties['paddingTop'];
-  '--padding-horizontal'?: React.CSSProperties['paddingLeft'];
+  '--padding'?: React.CSSProperties['padding'];
 }
 
 export type MessageProps = BaseMessageProps &
