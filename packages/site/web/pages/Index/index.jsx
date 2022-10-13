@@ -34,6 +34,7 @@ const Page = () => {
               <FormattedMessage id="app.home.index.getting-started" />
             </button>
             <Popper
+              trigger="click"
               className="qrcode"
               visible={dropdown}
               onVisibleChange={setDropdown}
