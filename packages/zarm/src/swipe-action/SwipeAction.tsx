@@ -160,6 +160,12 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
           dragging.current = false;
         });
       } else {
+        if (offsetX! > 0 && !btnsLeftWidth) {
+          return false;
+        }
+        if (offsetX! < 0 && !btnsRightWidth) {
+          return false;
+        }
         doTransition({ offsetX, duration: 0 });
       }
     },
