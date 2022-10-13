@@ -120,16 +120,16 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
       const btnsLeftWidth = leftRef?.current?.offsetWidth || 0;
       const btnsRightWidth = rightRef?.current?.offsetWidth || 0;
 
+      if (offsetX > 0 && !btnsLeftWidth) {
+        return false;
+      }
+
+      if (offsetX < 0 && !btnsRightWidth) {
+        return false;
+      }
+
       if (state.last) {
         const timeSpan = Math.floor(state.elapsedTime);
-
-        if (offsetX > 0 && !btnsLeftWidth) {
-          return false;
-        }
-
-        if (offsetX < 0 && !btnsRightWidth) {
-          return false;
-        }
         let distanceX = 0;
         let _isOpen = false;
         if (
@@ -160,12 +160,6 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
           dragging.current = false;
         });
       } else {
-        if (offsetX! > 0 && !btnsLeftWidth) {
-          return false;
-        }
-        if (offsetX! < 0 && !btnsRightWidth) {
-          return false;
-        }
         doTransition({ offsetX, duration: 0 });
       }
     },
