@@ -15,7 +15,10 @@ export interface NoticeBarCssVars {
   '--icon-size'?: React.CSSProperties['fontSize'];
 }
 
-export type NoticeBarProps = BaseNoticeBarProps & HTMLProps<NoticeBarCssVars>;
+export type NoticeBarProps = BaseNoticeBarProps &
+  React.PropsWithChildren<HTMLProps<NoticeBarCssVars>> & {
+    onClick?: React.MouseEventHandler<HTMLDivElement>;
+  };
 
 const NoticeBar = forwardRef<HTMLDivElement, NoticeBarProps>((props, ref) => {
   const { children, speed, delay, onClose, className, ...restProps } = props;

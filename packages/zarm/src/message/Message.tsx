@@ -14,7 +14,7 @@ export interface MessageCssVars {
 }
 
 export type MessageProps = BaseMessageProps &
-  HTMLProps<MessageCssVars> & {
+  React.PropsWithChildren<HTMLProps<MessageCssVars>> & {
     onClick?: React.MouseEventHandler<HTMLDivElement>;
   };
 

@@ -21,7 +21,7 @@ export interface ProgressCssVars {
   '--font-size-circle-md'?: React.CSSProperties['fontSize'];
 }
 
-export type ProgressProps = BaseProgressProps & HTMLProps<ProgressCssVars>;
+export type ProgressProps = BaseProgressProps & React.PropsWithChildren<HTMLProps<ProgressCssVars>>;
 
 const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
   (
