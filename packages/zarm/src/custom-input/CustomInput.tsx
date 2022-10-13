@@ -25,7 +25,7 @@ export interface CustomInputCssVars {
 }
 
 export type CustomInputProps = BaseCustomInputProps &
-  React.PropsWithChildren<HTMLProps<CustomInputCssVars>> &
+  HTMLProps<CustomInputCssVars> &
   Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type' | 'onChange' | 'onFocus' | 'onBlur'>;
 
 const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => {

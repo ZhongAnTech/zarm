@@ -54,13 +54,13 @@ export { default as FilePicker } from './file-picker';
 export type { IconProps, IconCssVars } from './icon';
 export { default as Icon } from './icon';
 
-export type { CustomInputProps } from './custom-input';
+export type { CustomInputProps, CustomInputCssVars } from './custom-input';
 export { default as CustomInput } from './custom-input';
 
 export type { GridProps, GridItemProps, GridCssVars } from './grid';
 export { default as Grid } from './grid';
 
-export type { InputProps, InputTextProps, InputTextareaProps } from './input';
+export type { InputProps, InputTextProps, InputTextareaProps, InputCssVars } from './input';
 export { default as Input } from './input';
 
 export type { KeyboardProps, KeyboardCssVars } from './keyboard';
