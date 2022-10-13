@@ -131,6 +131,7 @@ export { default as Stepper } from './stepper';
 export type { CarouselProps, CarouselCssVars } from './carousel';
 export { default as Carousel } from './carousel';
 
+export type { SwipeActionProps, SwipeActionCssVars } from './swipe-action';
 export { default as SwipeAction } from './swipe-action';
 
 export type { SwitchProps, SwitchCssVars } from './switch';

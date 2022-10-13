@@ -3,11 +3,11 @@ import { useDrag } from '@use-gesture/react';
 import { createBEM } from '@zarm-design/bem';
 
 import { ConfigContext } from '../n-config-provider';
-import type { BaseSwipeActionProps, BaseSwipeActionItemProps } from './interface';
 import SwipeActionItem from './SwipeActionItem';
-import type { HTMLProps } from '../utils/utilityTypes';
-import { useSafeState } from '../utils/hooks';
 import useClickAway from '../useClickAway';
+import { useSafeState } from '../utils/hooks';
+import type { BaseSwipeActionProps, BaseSwipeActionItemProps } from './interface';
+import type { HTMLProps } from '../utils/utilityTypes';
 
 export interface SwipeActionCssVars {
   '--background'?: React.CSSProperties['background'];
@@ -16,7 +16,7 @@ export interface SwipeActionCssVars {
 export type SwipeActionItemProps = HTMLProps & BaseSwipeActionItemProps;
 
 export type SwipeActionProps = BaseSwipeActionProps &
-  HTMLProps & {
+  HTMLProps<SwipeActionCssVars> & {
     leftActions?: SwipeActionItemProps[];
     rightActions?: SwipeActionItemProps[];
   };
