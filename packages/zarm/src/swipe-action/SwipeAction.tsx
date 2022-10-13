@@ -55,9 +55,14 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
     [offsetLeft],
   );
 
-  useClickAway(swipeActionWrap.current, () => {
-    close();
-  });
+  useClickAway(
+    swipeActionWrap.current,
+    () => {
+      close();
+    },
+    'ontouchstart' in window ? 'touchstart' : 'mousedown',
+  );
+
   const dragStart = useRef(0);
 
   const close = () => {
@@ -116,7 +121,6 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
       const btnsRightWidth = rightRef?.current?.offsetWidth || 0;
 
       if (state.last) {
-        console.log('ffffff');
         const timeSpan = Math.floor(state.elapsedTime);
 
         if (offsetX > 0 && !btnsLeftWidth) {
