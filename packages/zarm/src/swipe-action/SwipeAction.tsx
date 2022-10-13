@@ -116,6 +116,7 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
       const btnsRightWidth = rightRef?.current?.offsetWidth || 0;
 
       if (state.last) {
+        console.log('ffffff');
         const timeSpan = Math.floor(state.elapsedTime);
 
         if (offsetX > 0 && !btnsLeftWidth) {
@@ -170,8 +171,8 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
         const leftWidth = leftRef?.current?.offsetWidth || 0;
         const rightWidth = rightRef?.current?.offsetWidth || 0;
         return {
-          left: -rightWidth,
-          right: leftWidth,
+          left: -rightWidth - 20,
+          right: leftWidth + 20,
         };
       },
       enabled: !disabled,
