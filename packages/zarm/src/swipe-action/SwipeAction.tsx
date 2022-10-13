@@ -160,12 +160,6 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
           dragging.current = false;
         });
       } else {
-        if (offsetX! > 0 && (!btnsLeftWidth || offsetLeft >= btnsLeftWidth + offset!)) {
-          return false;
-        }
-        if (offsetX! < 0 && (!btnsRightWidth || offsetLeft <= -btnsRightWidth - offset!)) {
-          return false;
-        }
         doTransition({ offsetX, duration: 0 });
       }
     },
@@ -175,8 +169,8 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
         const leftWidth = leftRef?.current?.offsetWidth || 0;
         const rightWidth = rightRef?.current?.offsetWidth || 0;
         return {
-          left: -rightWidth - 20,
-          right: leftWidth + 20,
+          left: -rightWidth - offset!,
+          right: leftWidth + offset!,
         };
       },
       enabled: !disabled,
