@@ -5,20 +5,14 @@
 }
 
 @include b(stepper) {
+  @include define(height, 28px);
+  @include define(input-width, 50px);
+  @include define(icon-font-size, 12px);
+  @include define(font-size, var(--za-font-size-sm));
+  @include define(margin-horizontal, 4px);
+  @include define(padding-horizontal, 8px);
   @include define(input-background, #fff);
-  @include define(height-md, 28px);
-  @include define(height-lg, 36px);
-  @include define(icon-font-size-md, 12px);
-  @include define(icon-font-size-lg, 14px);
-  @include define(input-width-md, 50px);
-  @include define(input-width-lg, 60px);
-  @include define(input-disabled, var(--color-text-disabled));
-  @include define(input-font-size-md, var(--za-font-size-sm));
-  @include define(input-font-size-lg, 16px);
-  @include define(input-margin-horizontal-md, 4px);
-  @include define(input-margin-horizontal-lg, 4px);
-  @include define(input-padding-horizontal-md, 8px);
-  @include define(input-padding-horizontal-lg, 8px);
+  @include define(disabled-color, var(--za-color-text-disabled));
 
   display: flex;
   align-items: center;
@@ -58,21 +52,21 @@
   }
 
   @include e(sub, plus) {
-    width: var(--height-md);
+    width: var(--height);
     padding: 0;
 
     @include b(icon) {
-      font-size: var(--icon-font-size-md);
+      font-size: var(--icon-font-size);
     }
   }
 
   @include e(input) {
     position: relative;
-    width: var(--input-width-md);
-    height: var(--height-md);
-    margin: 0 var(--input-margin-horizontal-md);
-    padding: 0 var(--input-padding-horizontal-md);
-    font-size: var(--input-font-size-md);
+    width: var(--input-width);
+    height: var(--height);
+    margin: 0 var(--margin-horizontal);
+    padding: 0 var(--padding-horizontal);
+    font-size: var(--font-size);
     background: var(--input-background);
     color: var(--color-text);
     text-align: center;
@@ -84,7 +78,7 @@
 
   @include m(disabled) {
     @include e(input) {
-      color: var(--input-disabled);
+      color: var(---disabled-color);
       opacity: var(--opacity-disabled);
     }
   }
@@ -97,25 +91,25 @@
 
   @include m(circle) {
     @include e(input) {
-      border-radius: var(--height-md);
+      border-radius: var(--height);
     }
   }
 
   @include m(lg) {
     @include e(input) {
-      width: var(--input-width-lg);
-      height: var(--height-lg);
-      margin: 0 var(--input-margin-horizontal-lg);
-      padding: 0 var(--input-padding-horizontal-lg);
-      font-size: var(--input-font-size-lg);
+      width: 60px;
+      height: 36px;
+      margin: 0 4px;
+      padding: 0 8px;
+      font-size: 16px;
     }
 
     @include e(sub, plus) {
-      width: var(--height-lg);
+      width: 36px;
       padding: 0;
 
       @include b(icon) {
-        font-size: var(--icon-font-size-lg);
+        font-size: 14px;
       }
     }
   }

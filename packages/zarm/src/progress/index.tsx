@@ -16,9 +16,9 @@ import {
 
 export interface ProgressCssVars {
   '--background'?: React.CSSProperties['background'];
-  '--width-md'?: React.CSSProperties['width'];
-  '--size-md'?: React.CSSProperties['width' | 'height'];
-  '--font-size-circle-md'?: React.CSSProperties['fontSize'];
+  '--width'?: React.CSSProperties['width'];
+  '--size'?: React.CSSProperties['width' | 'height'];
+  '--font-size-circle'?: React.CSSProperties['fontSize'];
 }
 
 export type ProgressProps = BaseProgressProps & React.PropsWithChildren<HTMLProps<ProgressCssVars>>;

@@ -85,19 +85,13 @@ ReactDOM.render(
 
 ## CSS 变量
 
-| 属性                          | 默认值                       | 说明                 |
-| :---------------------------- | :--------------------------- | :------------------- |
-| --height-md                   | '28px'                       | 中号步进器高度       |
-| --height-lg                   | '36px'                       | 大号步进器高度       |
-| --icon-font-size-md           | '12px'                       | 中号步进器图标       |
-| --icon-font-size-lg           | '14px'                       | 大号步进器图标       |
-| --input-background            | '#fff'                       | 输入框背景色         |
-| --input-width-md              | '50px'                       | 中号输入框宽度       |
-| --input-width-lg              | '60px'                       | 大号输入框宽度       |
-| --input-disabled              | 'var(--color-text-disabled)' | 输入框禁用状态颜色   |
-| --input-font-size-md          | 'var(--za-font-size-sm)'     | 输入框文字中号       |
-| --input-font-size-lg          | '16px'                       | 输入框文字大号       |
-| --input-margin-horizontal-md  | '4px'                        | 输入框水平外间距中号 |
-| --input-margin-horizontal-lg  | '4px'                        | 输入框水平外间距大号 |
-| --input-padding-horizontal-md | '8px'                        | 输入框水平内间距中号 |
-| --input-padding-horizontal-lg | '8px'                        | 输入框水平内间距大号 |
+| 属性                 | 默认值                          | 说明               |
+| :------------------- | :------------------------------ | :----------------- |
+| --height             | '28px'                          | 步进器高度         |
+| --input-width        | '50px'                          | 步进器的输入框宽度 |
+| --icon-font-size     | '12px'                          | 步进器图标大小     |
+| --font-size          | 'var(--za-font-size-sm)'        | 输入框数字大小     |
+| --margin-horizontal  | '4px'                           | 输入框水平外间距   |
+| --padding-horizontal | '8px'                           | 输入框水平内间距   |
+| --input-background   | '#fff'                          | 输入框背景色       |
+| --disabled-color     | 'var(--za-color-text-disabled)' | 输入框禁用数字颜色 |

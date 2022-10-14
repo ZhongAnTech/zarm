@@ -50,10 +50,9 @@ ReactDOM.render(
 
 ## CSS 变量
 
-| 属性                 | 默认值                   | 说明             |
-| :------------------- | :----------------------- | :--------------- |
-| --line-height        | '29px'                   | 消息框的行间距   |
-| --font-size          | 'var(--za-font-size-sm)' | 消息框文字大小   |
-| --icon-size          | '14px'                   | 消息框图标大小   |
-| --padding-vertical   | '6px'                    | 消息框上下内间距 |
-| --padding-horizontal | '8px'                    | 消息框左右内间距 |
+| 属性          | 默认值                   | 说明           |
+| :------------ | :----------------------- | :------------- |
+| --line-height | '29px'                   | 消息框的行间距 |
+| --font-size   | 'var(--za-font-size-sm)' | 消息框文字大小 |
+| --icon-size   | '14px'                   | 消息框图标大小 |
+| --padding     | '6px 8px'                | 消息框内间距   |
