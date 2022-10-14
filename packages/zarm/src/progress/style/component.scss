@@ -34,7 +34,7 @@
       width: var(--width);
 
       @include e(text) {
-        font-size: calc(var(--font-size)*2/3);
+        font-size: calc(var(--font-size) * 2 / 3);
       }
     }
 

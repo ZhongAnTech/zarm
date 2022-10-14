@@ -1,4 +1,4 @@
-@mixin disaleInput {
+@mixin disableInput {
   color: var(--color-text);
   -webkit-text-fill-color: var(--color-text);
   cursor: auto;
@@ -25,7 +25,7 @@
 
     @include m(disabled) {
       input {
-        @include disaleInput;
+        @include disableInput;
       }
     }
 
@@ -37,7 +37,7 @@
   @include b(custom-input) {
     @include m(disabled) {
       @include e(virtual-input) {
-        @include disaleInput;
+        @include disableInput;
       }
     }
 
@@ -78,8 +78,11 @@
 
   @include m(disabled) {
     @include e(input) {
-      color: var(---disabled-color);
-      opacity: var(--opacity-disabled);
+      input {
+        color: var(--disabled-color);
+        -webkit-text-fill-color: var(--disabled-color);
+        opacity: var(--opacity-disabled);
+      }
     }
   }
 
