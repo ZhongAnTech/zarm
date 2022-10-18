@@ -35,7 +35,6 @@ const PickerView = React.forwardRef<PickerViewInstance, PickerViewProps>((props,
   const { className, style, cols, itemRender, disabled, stopScroll, onChange } = props;
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('picker-view', { prefixCls });
-
   const [innerValue, setInnerValue] = React.useState(parseProps.getSource(props).value);
 
   React.useEffect(() => {
