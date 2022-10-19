@@ -25,7 +25,7 @@ import { NoticeBar } from 'zarm';
 
 ReactDOM.render(
   <>
-    <NoticeBar>默认</NoticeBar>
+    <NoticeBar theme="default">默认</NoticeBar>
     <NoticeBar theme="primary">主要</NoticeBar>
     <NoticeBar theme="success">成功</NoticeBar>
     <NoticeBar theme="warning">警告</NoticeBar>
