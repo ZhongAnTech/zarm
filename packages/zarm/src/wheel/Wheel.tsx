@@ -1,5 +1,5 @@
 import React, { createRef, useEffect, useRef } from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import BScroll, { BScrollInstance } from '@better-scroll/core';
 import WheelPlugin from '@better-scroll/wheel';
 import ObserveDomPlugin from '@better-scroll/observe-dom';
@@ -57,16 +57,19 @@ const Wheel: React.FC<WheelProps> = (props) => {
   const prevValue = usePrevious(value);
   const prevDataSource = usePrevious(dataSource);
   const prevStopScroll = usePrevious(stopScroll);
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-wheel`;
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('wheel', { prefixCls });
 
   const fieldNames = { ...DEFAULT_FIELD_NAMES, ...props.fieldNames };
 
-  const getSelectedIndex = (newValue?: WheelValue, newDataSource?: Array<WheelItem>): number => {
+  const getSelectedIndex = (
+    changedValue?: WheelValue,
+    newDataSource?: Array<WheelItem>,
+  ): number => {
     let index = 0;
     if (newDataSource) {
       newDataSource.some((item, i) => {
-        if (item[fieldNames.value!] === newValue) {
+        if (item[fieldNames.value!] === changedValue) {
           index = i;
           return true;
         }
@@ -76,13 +79,11 @@ const Wheel: React.FC<WheelProps> = (props) => {
     return index;
   };
 
-  const fireValueChange = (newValue: any) => {
-    if (newValue === currentValue) {
+  const fireValueChange = (changedValue: WheelValue) => {
+    if (changedValue === currentValue) {
       return;
     }
-    if (typeof onChange === 'function') {
-      onChange(newValue);
-    }
+    onChange?.(changedValue);
   };
 
   const handleScrollEnd = useEventCallback(() => {
@@ -100,8 +101,8 @@ const Wheel: React.FC<WheelProps> = (props) => {
       scrollInstance.current = new BScroll(wheelWrapperRef.current, {
         wheel: {
           selectedIndex: initIndex,
-          wheelWrapperClass: `${prefixCls}-content`,
-          wheelItemClass: `${prefixCls}-item`,
+          wheelWrapperClass: bem('content'),
+          wheelItemClass: bem('item'),
         },
         probeType: 3,
       });
@@ -146,12 +147,13 @@ const Wheel: React.FC<WheelProps> = (props) => {
     }
   }, [value, defaultValue, dataSource, stopScroll, fieldNames.value]);
 
-  const rollerCls = classnames(prefixCls, className);
   const items = dataSource!.map((item, index) => {
-    const itemCls = classnames(`${prefixCls}__item`, {
-      [`${prefixCls}__item--selected`]: currentValue === item[fieldNames.value!],
-      [`${prefixCls}__item--disabled`]: disabled,
-    });
+    const itemCls = bem('item', [
+      {
+        selected: currentValue === item[fieldNames.value!],
+        disabled,
+      },
+    ]);
 
     return (
       <div key={+index} className={itemCls}>
@@ -161,8 +163,8 @@ const Wheel: React.FC<WheelProps> = (props) => {
   });
 
   return (
-    <div className={rollerCls} ref={wheelWrapperRef}>
-      <div className={`${prefixCls}__content`}>{items}</div>
+    <div className={bem([className])} ref={wheelWrapperRef}>
+      <div className={bem('content')}>{items}</div>
     </div>
   );
 };
