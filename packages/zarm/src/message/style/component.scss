@@ -1,8 +1,8 @@
 @import 'mixins';
 
 @include b(message) {
-  @include define(line-height, 29px);
-  @include define(font-size, var(--za-font-size-sm));
+  @include define(line-height, 18px);
+  @include define(font-size, var(--za-font-size-xs));
   @include define(icon-size, 14px);
   @include define(padding, 6px 8px);
 

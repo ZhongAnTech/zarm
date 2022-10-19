@@ -1,10 +1,11 @@
 @include b(notice-bar) {
   @include define(height, 40px);
-  @include define(font-size, var(--za-font-size-sm));
   @include define(padding, 8px 12px);
   @include define(icon-size, 16px);
 
   @include b(message) {
+    @include define(font-size, var(--za-font-size-sm));
+
     height: var(--height);
     font-size: var(--font-size);
     padding: var(--padding);

@@ -52,7 +52,7 @@ ReactDOM.render(
 
 | 属性          | 默认值                   | 说明           |
 | :------------ | :----------------------- | :------------- |
-| --line-height | '29px'                   | 消息框的行间距 |
-| --font-size   | 'var(--za-font-size-sm)' | 消息框文字大小 |
+| --line-height | '18px'                   | 消息框的行间距 |
+| --font-size   | 'var(--za-font-size-xs)' | 消息框文字大小 |
 | --icon-size   | '14px'                   | 消息框图标大小 |
 | --padding     | '6px 8px'                | 消息框内间距   |
