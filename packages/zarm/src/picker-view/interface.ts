@@ -1,24 +1,33 @@
-import type { BaseWheelProps, WheelValue } from '../wheel/interface';
+import type {
+  BaseWheelProps,
+  WheelItem,
+  WheelValue,
+  FieldNames as WheelFieldNames,
+} from '../wheel/interface';
 
-export interface PickerDataSourceItem {
-  value: WheelValue;
-  label?: React.ReactNode;
-  children?: PickerDataSourceItem[];
+export type PickerViewValue = WheelValue;
+
+export type PickerViewColumnItem = WheelItem;
+
+export type PickerViewColumn = PickerViewColumnItem[];
+
+export interface PickerViewOption extends PickerViewColumnItem {
+  children?: PickerViewOption[];
 }
 
-export interface FieldNames {
-  value?: string;
-  label?: string;
-  children?: string;
+export type PickerViewDataSource = (PickerViewColumn | PickerViewOption)[];
+
+export interface FieldNames extends WheelFieldNames {
+  children: string;
 }
 
 export interface BasePickerViewProps
   extends Pick<BaseWheelProps, 'itemRender' | 'disabled' | 'stopScroll'> {
-  value?: WheelValue | WheelValue[];
-  defaultValue?: WheelValue | WheelValue[];
-  wheelDefaultValue?: WheelValue | WheelValue[];
-  fieldNames?: FieldNames;
-  dataSource?: PickerDataSourceItem[];
-  onChange?: (value: WheelValue[], dataSource: PickerDataSourceItem[], level?: number) => void;
+  value?: PickerViewValue | PickerViewValue[];
+  defaultValue?: PickerViewValue | PickerViewValue[];
+  wheelDefaultValue?: PickerViewValue | PickerViewValue[];
+  fieldNames?: Partial<FieldNames>;
+  dataSource?: PickerViewDataSource;
   cols?: number;
+  onChange?: (value: PickerViewValue[], items: PickerViewColumnItem[], level?: number) => void;
 }

@@ -1,23 +1,25 @@
-import { ReactNode } from 'react';
+import * as React from 'react';
 
 export type WheelValue = string | number | boolean;
 
 export interface WheelItem {
-  [key: string]: WheelValue;
+  value: WheelValue;
+  label?: React.ReactNode;
+  [key: string]: any;
 }
 
 export interface FieldNames {
-  value?: string;
-  label?: string;
+  value: string;
+  label: string;
 }
 
 export interface BaseWheelProps {
   value?: WheelValue;
   defaultValue?: WheelValue;
-  fieldNames?: FieldNames;
+  fieldNames?: Partial<FieldNames>;
   dataSource?: Array<WheelItem>;
-  onChange?: (value: WheelValue) => void;
-  itemRender?: (item: WheelItem) => ReactNode;
   disabled?: boolean;
   stopScroll?: boolean;
+  itemRender?: (item: WheelItem) => React.ReactNode;
+  onChange?: (value: WheelValue) => void;
 }

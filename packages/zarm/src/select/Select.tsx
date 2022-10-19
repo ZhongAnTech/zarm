@@ -2,7 +2,7 @@ import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
 import isEqual from 'lodash/isEqual';
 import Picker from '../picker';
-import parseProps from '../picker-view/utils/parseProps';
+import { resolved } from '../picker-view/utils';
 import type { BaseSelectProps } from './interface';
 import type { WheelItem } from '../wheel/interface';
 import { ConfigContext } from '../n-config-provider';
@@ -25,7 +25,7 @@ export interface SelectState {
   visible: boolean;
 }
 
-const Select = React.forwardRef<unknown, SelectProps>((props, ref) => {
+const Select = React.forwardRef<HTMLDivElement, SelectProps>((props, ref) => {
   const {
     placeholder,
     className,
@@ -39,17 +39,15 @@ const Select = React.forwardRef<unknown, SelectProps>((props, ref) => {
     ...others
   } = props;
 
-  const container = (ref as any) || React.createRef<HTMLDivElement>();
-
   const { prefixCls, locale } = React.useContext(ConfigContext);
   const bem = createBEM('select', { prefixCls });
-  const [innerValue, setInnerValue] = React.useState(parseProps.getSource(props).value);
+  const [innerValue, setInnerValue] = React.useState(resolved(props).value);
   const [visible, setVisible] = React.useState(false);
 
   React.useEffect(() => {
     if (props.value === undefined) return;
     if (isEqual(props.value, innerValue)) return;
-    setInnerValue(parseProps.getSource(props).value);
+    setInnerValue(resolved(props).value);
   }, [props.value]);
 
   const handleClick = React.useCallback(() => {
@@ -70,6 +68,7 @@ const Select = React.forwardRef<unknown, SelectProps>((props, ref) => {
   return (
     <>
       <div
+        ref={ref}
         className={bem([
           {
             placeholder: !innerValue.length,
@@ -78,11 +77,10 @@ const Select = React.forwardRef<unknown, SelectProps>((props, ref) => {
           },
         ])}
         onClick={handleClick}
-        ref={container}
       >
         <div className={bem('input')}>
           <div className={bem('value')}>
-            {(innerValue.length && displayRender!(parseProps.getSource(props).objValue || [])) ||
+            {(innerValue.length && displayRender!(resolved(props).items || [])) ||
               placeholder ||
               locale?.Select?.placeholder}
           </div>

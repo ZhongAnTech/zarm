@@ -51,7 +51,7 @@ const Picker = React.forwardRef<HTMLDivElement, PickerProps>((props, ref) => {
   const pickerViewRef = React.useRef<PickerViewInstance>(null);
 
   const handleConfirm = () => {
-    onConfirm?.(pickerViewRef.current?.value!, pickerViewRef.current?.dataSource!);
+    onConfirm?.(pickerViewRef.current?.value!, pickerViewRef.current?.items!);
   };
 
   const handleCancel = () => {
