@@ -12,11 +12,14 @@ export interface PanelProps extends HTMLDivProps, BasePanelProps {
 export default class Panel extends PureComponent<PanelProps, {}> {
   static defaultProps: PanelProps = {
     prefixCls: 'za-panel',
+    bordered: true,
   };
 
   render() {
-    const { prefixCls, className, title, more, children } = this.props;
-    const cls = classnames(`${prefixCls}`, className);
+    const { prefixCls, className, title, more, children, bordered } = this.props;
+    const cls = classnames(`${prefixCls}`, className, {
+      [`${prefixCls}--bordered`]: bordered,
+    });
 
     return (
       <div className={cls}>

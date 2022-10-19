@@ -6,23 +6,30 @@
 import { Panel } from 'zarm';
 
 ReactDOM.render(
-  <Panel
-    title="标题"
-    more={
-      <a href="#" onClick={() => alert('click more')}>
-        更多
-      </a>
-    }
-  >
-    <div className="box">内容</div>
-  </Panel>,
+  <>
+    <Panel
+      title="标题"
+      more={
+        <a href="#" onClick={() => alert('click more')}>
+          更多
+        </a>
+      }
+    >
+      <div className="box">内容</div>
+    </Panel>
+
+    <Panel title="标题" bordered={false}>
+      <div className="box">内容（无边框）</div>
+    </Panel>
+  </>,
   mountNode,
 );
 ```
 
 ## API
 
-| 属性  | 类型      | 默认值 | 说明     |
-| :---- | :-------- | :----- | :------- |
-| title | ReactNode | -      | 标题渲染 |
-| more  | ReactNode | -      | 更多渲染 |
+| 属性     | 类型      | 默认值 | 说明           |
+| :------- | :-------- | :----- | :------------- |
+| title    | ReactNode | -      | 标题渲染       |
+| more     | ReactNode | -      | 更多渲染       |
+| bordered | boolean   | true   | 内容是否有边框 |

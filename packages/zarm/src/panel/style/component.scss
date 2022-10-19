@@ -15,6 +15,11 @@
     background: var(--panel-body-background);
     font-size: var(--panel-body-font-size);
     color: var(--color-text);
-    @include onepx(top bottom);
+  }
+
+  @include m(bordered) {
+    @include e(body) {
+      @include onepx(top bottom);
+    }
   }
 }
