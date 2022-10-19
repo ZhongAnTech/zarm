@@ -71,9 +71,6 @@ exports[`Radio type is cell 1`] = `
     class="za-cell__inner"
   >
     <div
-      class="za-cell__header"
-    />
-    <div
       class="za-cell__body"
     >
       <div
@@ -102,9 +99,6 @@ exports[`Radio type is cell 1`] = `
         </span>
       </div>
     </div>
-    <div
-      class="za-cell__footer"
-    />
   </div>
 </div>
 `;

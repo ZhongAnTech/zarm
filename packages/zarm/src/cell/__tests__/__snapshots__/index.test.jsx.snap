@@ -8,9 +8,6 @@ exports[`Cell children 1`] = `
     class="za-cell__inner"
   >
     <div
-      class="za-cell__header"
-    />
-    <div
       class="za-cell__body"
     >
       <div
@@ -19,9 +16,6 @@ exports[`Cell children 1`] = `
         this is children!
       </div>
     </div>
-    <div
-      class="za-cell__footer"
-    />
   </div>
 </div>
 `;
@@ -33,9 +27,6 @@ exports[`Cell description 1`] = `
   <div
     class="za-cell__inner"
   >
-    <div
-      class="za-cell__header"
-    />
     <div
       class="za-cell__body"
     >
@@ -61,9 +52,6 @@ exports[`Cell help 1`] = `
   <div
     class="za-cell__inner"
   >
-    <div
-      class="za-cell__header"
-    />
     <div
       class="za-cell__body"
     >
@@ -136,9 +124,6 @@ exports[`Cell onClick 1`] = `
     className="za-cell__inner"
   >
     <div
-      className="za-cell__header"
-    />
-    <div
       className="za-cell__body"
     >
       <div
@@ -167,9 +152,6 @@ exports[`Cell renders correctly 1`] = `
     class="za-cell__inner"
   >
     <div
-      class="za-cell__header"
-    />
-    <div
       class="za-cell__body"
     >
       <div
@@ -178,9 +160,6 @@ exports[`Cell renders correctly 1`] = `
         标题文字
       </div>
     </div>
-    <div
-      class="za-cell__footer"
-    />
   </div>
 </div>
 `;

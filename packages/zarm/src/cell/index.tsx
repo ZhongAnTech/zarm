@@ -50,12 +50,12 @@ export default class Cell extends PureComponent<CellProps, {}> {
     return (
       <div className={cls} onClick={onClick} onTouchStart={() => {}} {...others}>
         <div className={`${prefixCls}__inner`}>
-          <div className={`${prefixCls}__header`}>{iconRender}</div>
+          {iconRender && <div className={`${prefixCls}__header`}>{iconRender}</div>}
           <div className={`${prefixCls}__body`}>
             {titleRender}
             {contentRender}
           </div>
-          <div className={`${prefixCls}__footer`}>{description}</div>
+          {description && <div className={`${prefixCls}__footer`}>{description}</div>}
           {arrowRender}
         </div>
         {helpRender}
