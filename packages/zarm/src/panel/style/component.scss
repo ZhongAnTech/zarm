@@ -24,7 +24,6 @@
     background: var(--body-background);
     font-size: var(--body-font-size);
     color: var(--body-color);
-    @include onepx(top bottom);
   }
 
   @include m(spacing) {
@@ -34,6 +33,14 @@
       border-radius: var(--body-border-radius);
       overflow: hidden;
       @include onepx(none);
+    }
+  }
+
+  &:not(&--spacing) {
+    @include m(bordered) {
+      @include e(body) {
+        @include onepx(top bottom);
+      }
     }
   }
 }
