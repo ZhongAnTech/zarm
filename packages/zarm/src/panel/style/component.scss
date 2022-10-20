@@ -15,7 +15,6 @@
     background: var(--za-panel-body-background);
     font-size: var(--za-panel-body-font-size);
     color: var(--za-panel-body-color);
-    @include onepx(top bottom);
   }
 
   @include m(spacing) {
@@ -25,6 +24,14 @@
       border-radius: var(--za-panel-body-border-radius);
       overflow: hidden;
       @include onepx(none);
+    }
+  }
+
+  &:not(&--spacing) {
+    @include m(bordered) {
+      @include e(body) {
+        @include onepx(top bottom);
+      }
     }
   }
 }

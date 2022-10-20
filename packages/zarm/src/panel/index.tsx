@@ -8,7 +8,7 @@ type HTMLDivProps = Omit<HTMLAttributes<HTMLDivElement>, 'title'>;
 export type PanelProps = HTMLDivProps & BasePanelProps;
 
 const Panel = React.forwardRef<unknown, PanelProps>((props, ref) => {
-  const { className, title, more, spacing, children, ...restProps } = props;
+  const { className, title, more, spacing, bordered = true, children, ...restProps } = props;
 
   const panelRef = (ref as any) || React.createRef<HTMLDivElement>();
   const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
@@ -16,6 +16,7 @@ const Panel = React.forwardRef<unknown, PanelProps>((props, ref) => {
 
   const cls = classnames(prefixCls, className, {
     [`${prefixCls}--spacing`]: spacing,
+    [`${prefixCls}--bordered`]: bordered,
   });
 
   return (
