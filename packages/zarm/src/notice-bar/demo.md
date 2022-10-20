@@ -19,6 +19,22 @@ ReactDOM.render(
 );
 ```
 
+## 三种样式
+
+```jsx
+import { NoticeBar } from 'zarm';
+
+ReactDOM.render(
+  <>
+    <NoticeBar theme="primary">主要</NoticeBar>
+    <NoticeBar theme="success">成功</NoticeBar>
+    <NoticeBar theme="warning">警告</NoticeBar>
+    <NoticeBar theme="danger">错误</NoticeBar>
+  </>,
+  mountNode,
+);
+```
+
 ## 特定场景
 
 ```jsx
