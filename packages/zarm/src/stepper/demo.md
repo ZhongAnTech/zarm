@@ -82,3 +82,16 @@ ReactDOM.render(
 | disableInput  | boolean                           | false    | 是否禁用输入框                                    |
 | onInputChange | (value: number \| string) => void | -        | 输入值变化时触发的回调函数                        |
 | onChange      | (value: number \| string) => void | -        | 值变化时触发的回调函数                            |
+
+## CSS 变量
+
+| 属性                 | 默认值                          | 说明               |
+| :------------------- | :------------------------------ | :----------------- |
+| --height             | '28px'                          | 步进器高度         |
+| --input-width        | '50px'                          | 步进器的输入框宽度 |
+| --icon-font-size     | '12px'                          | 步进器图标大小     |
+| --font-size          | 'var(--za-font-size-sm)'        | 输入框数字大小     |
+| --margin-horizontal  | '4px'                           | 输入框水平外间距   |
+| --padding-horizontal | '8px'                           | 输入框水平内间距   |
+| --input-background   | '#fff'                          | 输入框背景色       |
+| --disabled-color     | 'var(--za-color-text-disabled)' | 输入框禁用数字颜色 |

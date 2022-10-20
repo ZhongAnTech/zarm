@@ -50,3 +50,12 @@ ReactDOM.render(
 | delay    | number                                           | 2000      | 开启滚动功能时前后停留的时间（单位：ms）               |
 | onClick  | () => void                                       | -         | 点击后触发的回调函数                                   |
 | onClose  | (event: React.MouseEvent\<HTMLElement\>) => void | -         | 点击关闭 icon 触发的回调函数                           |
+
+## CSS 变量
+
+| 属性        | 默认值                   | 说明           |
+| :---------- | :----------------------- | :------------- |
+| --height    | '40px'                   | 通告栏高度     |
+| --padding   | '8px 12px'               | 通告栏内间距   |
+| --font-size | 'var(--za-font-size-sm)' | 消息框文字大小 |
+| --icon-size | '16px'                   | 消息框图标大小 |

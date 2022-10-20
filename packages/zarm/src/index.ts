@@ -74,13 +74,13 @@ export { default as Loading } from './loading';
 export type { MaskProps, MaskCssVars } from './mask';
 export { default as Mask } from './mask';
 
-export type { MessageProps } from './message';
+export type { MessageProps, MessageCssVars } from './message';
 export { default as Message } from './message';
 
 export type { ModalProps, ModalCssVars } from './modal';
 export { default as Modal } from './modal';
 
-export type { NoticeBarProps } from './notice-bar';
+export type { NoticeBarProps, NoticeBarCssVars } from './notice-bar';
 export { default as NoticeBar } from './notice-bar';
 
 export type { PanelProps } from './panel';
@@ -100,7 +100,7 @@ export { default as Popper } from './popper';
 export type { PopupProps } from './popup';
 export { default as Popup } from './popup';
 
-export type { ProgressProps } from './progress';
+export type { ProgressProps, ProgressCssVars } from './progress';
 export { default as Progress } from './progress';
 
 export type { PullProps, PullCssVars } from './pull';
@@ -125,7 +125,7 @@ export { default as Skeleton } from './skeleton';
 export type { SliderProps, SliderCssVars } from './slider';
 export { default as Slider } from './slider';
 
-export type { StepperProps } from './stepper';
+export type { StepperProps, StepperCssVars } from './stepper';
 export { default as Stepper } from './stepper';
 
 export type { CarouselProps, CarouselCssVars } from './carousel';

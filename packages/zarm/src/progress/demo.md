@@ -116,3 +116,12 @@ ReactDOM.render(<Demo />, mountNode);
 | text        | (percent: number) => ReactNode | (percent) => \`${percent}%\` | 进度文本显示                                                              |
 | strokeShape | string                         | 'round'                      | 线条形状，可选值 `round`, `rect`                                          |
 | strokeWidth | number                         | -                            | 线条粗细，单位: px，不设置则根据大小自动调整                              |
+
+## CSS 变量
+
+| 属性         | 默认值    | 说明                 |
+| :----------- | :-------- | :------------------- |
+| --background | '#f2f2f2' | 进度条的背景色       |
+| --width      | '100%'    | 线状进度条的宽度     |
+| --size       | '150px'   | 圆状进度条的直径大小 |
+| --font-size  | '24px'    | 进度条的数字大小     |
