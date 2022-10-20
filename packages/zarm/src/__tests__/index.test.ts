@@ -146,7 +146,6 @@ describe('index', () => {
           "$$typeof": Symbol(react.forward_ref),
           "render": [Function],
         },
-        "Drag": [Function],
         "FilePicker": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {

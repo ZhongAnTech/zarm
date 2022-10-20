@@ -182,9 +182,6 @@ export { default as NConfigProvider } from './n-config-provider';
 
 export { default as StackPicker } from './stack-picker';
 
-export type { DragProps } from './drag';
-export { default as Drag } from './drag';
-
 // hooks
 export type { UseDragProps, DragEvent, DragState } from './useDrag';
 export { default as useDrag } from './useDrag';
