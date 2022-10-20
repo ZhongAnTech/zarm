@@ -18,15 +18,7 @@ export interface BasePanelCssVars {
 export type PanelProps = BasePanelProps & HTMLProps<BasePanelCssVars>;
 
 const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
-  const {
-    className,
-    title,
-    more,
-    spacing = false,
-    bordered = true,
-    children,
-    ...restProps
-  } = props;
+  const { className, title, more, spacing, bordered, children, ...restProps } = props;
 
   const panelRef = ref || React.createRef<HTMLDivElement>();
   const { prefixCls } = React.useContext(ConfigContext);
@@ -46,5 +38,9 @@ const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
 });
 
 Panel.displayName = 'Panel';
+Panel.defaultProps = {
+  bordered: true,
+  spacing: false,
+};
 
 export default Panel;
