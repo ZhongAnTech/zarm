@@ -10,7 +10,7 @@ export type Replace<
   S extends string,
   MatchStr extends string,
   ReplaceStr extends string
-> = S extends `${infer Left}${MatchStr}${infer Right}` ? `${Left}${ReplaceStr}${Right}` : S;
+  > = S extends `${infer Left}${MatchStr}${infer Right}` ? `${Left}${ReplaceStr}${Right}` : S;
 
 export interface HTMLProps<T extends object = {}> {
   className?: string;

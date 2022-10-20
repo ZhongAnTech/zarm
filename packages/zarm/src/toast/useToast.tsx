@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import { ConfigContext } from '../n-config-provider';
 import { getMountContainer } from '../utils/dom';
 import Toast from './Toast';
-import type { ToastProps, UseToast } from './Toast';
+import type { ToastProps } from './Toast';
 
 const contentIsToastProps = (content: ReactNode | ToastProps): content is ToastProps =>
   !!content && typeof content === 'object' && 'content' in content;
 
-const useToast = (): UseToast => {
+const useToast = () => {
   const { prefixCls } = React.useContext(ConfigContext);
   const zarmToastRef = useRef<HTMLElement | null>(null);
   const toastContainerRef = useRef<HTMLElement | null>(null);
