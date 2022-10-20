@@ -22,7 +22,7 @@ export interface FieldNames extends WheelFieldNames {
 }
 
 export interface BasePickerViewProps
-  extends Pick<BaseWheelProps, 'itemRender' | 'disabled' | 'stopScroll'> {
+  extends Pick<BaseWheelProps, 'itemRender' | 'disabled'> {
   value?: PickerViewValue | PickerViewValue[];
   defaultValue?: PickerViewValue | PickerViewValue[];
   wheelDefaultValue?: PickerViewValue | PickerViewValue[];

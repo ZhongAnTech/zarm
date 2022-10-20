@@ -31,20 +31,11 @@ export interface PickerViewInstance {
 }
 
 const PickerView = React.forwardRef<PickerViewInstance, PickerViewProps>((props, ref) => {
-  const {
-    className,
-    style,
-    cols,
-    dataSource,
-    fieldNames,
-    itemRender,
-    disabled,
-    stopScroll,
-    onChange,
-  } = props;
+  const { className, style, cols, dataSource, fieldNames, itemRender, disabled, onChange } = props;
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('picker-view', { prefixCls });
   const [innerValue, setInnerValue] = React.useState(resolved(props).value);
+  const [stopScroll, setStopScroll] = React.useState(false);
 
   React.useEffect(() => {
     if (props.value === undefined) return;
@@ -60,7 +51,11 @@ const PickerView = React.forwardRef<PickerViewInstance, PickerViewProps>((props,
   ]);
 
   const reset = () => {
-    setInnerValue(resolved(props).value);
+    setStopScroll(true);
+    setTimeout(() => {
+      setInnerValue(resolved(props).value);
+      setStopScroll(false);
+    }, 0);
   };
 
   React.useImperativeHandle(ref, () => ({
