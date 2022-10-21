@@ -2,6 +2,7 @@
   position: relative;
   border: 1px solid #f3f3f3;
   border-radius: 4px;
+
   .actions {
     color: #999;
     justify-content: flex-end;
@@ -9,17 +10,20 @@
     display: flex;
     border-bottom: 1px dashed #f3f3f3;
     padding-right: 12px;
+
     .za-button {
       color: #999;
       align-items: center;
       display: flex;
       transition: color 200ms;
       padding: 0 6px;
+
       &:active {
         border-color: transparent;
         background-color: transparent;
       }
-      &:hover{
+
+      &:hover {
         color: #333;
       }
     }
