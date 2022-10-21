@@ -305,6 +305,7 @@ describe('index', () => {
         "Panel": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
+            "bordered": true,
             "spacing": false,
           },
           "render": [Function],
