@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from 'react';
+import ClipboardJS from 'clipboard';
 import { pascalCase } from 'change-case';
 import { marked } from 'marked';
 import Prism from 'prismjs';
@@ -23,6 +24,13 @@ export default (props) => {
   const { document, component } = props;
   const { locale } = useContext(Context);
 
+  React.useEffect(() => {
+    const clipboard = new ClipboardJS('.clipboard-code');
+    return () => {
+      clipboard.destroy();
+    };
+  }, []);
+
   const renderer = {
     table: (header, body) => {
       return `<div class="grid-container"><table class="grid"><thead>${header}</thead><tbody>${body}</tbody></table></div>`;
@@ -46,8 +54,7 @@ export default (props) => {
     heading: (text, level) => {
       if (level === 1) return '';
       return `<h${level}>${text}</h${level}>`;
-
-      // const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+      // const escapedText = text.toLowerCase().replace(/\s+/g, '-');
       // return `
       //   <h${level}>
       //     <a name="${escapedText}" class="anchor" href="#${escapedText}">

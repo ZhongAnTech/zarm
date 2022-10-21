@@ -4,6 +4,8 @@ import classnames from 'classnames';
 import Loadable from 'react-loadable';
 import { FormattedMessage } from 'react-intl';
 import { Icon } from 'zarm';
+import { Popover } from 'zarm-web';
+import { QRCodeSVG } from 'qrcode.react';
 import { documents, components } from '@/site.config';
 import Context from '@/utils/context';
 import Container from '@/web/components/Container';
@@ -22,7 +24,9 @@ const LoadableComponent = (component) => {
   });
 };
 
-const Icons = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_mk657pke2hj.js');
+const Icons = Icon.createFromIconfont(
+  'https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_11.4d95df49c908e28216f1762c934f889c.js',
+);
 
 const Simulator = () => {
   const params = useParams();
@@ -30,37 +34,62 @@ const Simulator = () => {
   const { locale } = useContext(Context);
   const [affix, setAffix] = useState(JSON.parse(window.localStorage['simulator-affix'] || false));
 
-  const simulatorCls = classnames('simulator', {
-    'simulator--affix': affix,
-  });
-
   useEffect(() => {
     !/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent) &&
       simulatorRef.current.contentWindow.postMessage({ locale }, '*');
   }, [locale]);
 
+  const simulatorURL = `${window.location.protocol}//${window.location.host}/demo.html#/${params.component}`;
+
+  const handleReload = () => {
+    simulatorRef.current?.contentWindow.location.reload();
+  };
+
   return (
-    <div className={simulatorCls}>
-      <FormattedMessage id={`app.home.components.simulator.${affix ? 'unaffix' : 'affix'}`}>
-        {(txt) => (
-          <div
-            className="simulator__control"
-            onClick={() => {
-              setAffix(!affix);
-              window.localStorage['simulator-affix'] = !affix;
-            }}
-            title={txt}
-          >
-            <Icons type="affix" size="sm" />
-          </div>
-        )}
-      </FormattedMessage>
-      <iframe
-        ref={simulatorRef}
-        src={`${window.location.protocol}//${window.location.host}/demo.html#/${params.component}`}
-        title="simulator"
-        frameBorder="0"
-      />
+    <div
+      className={classnames('simulator', {
+        'simulator--affix': affix,
+      })}
+    >
+      <div className="simulator__controls">
+        <FormattedMessage id={`app.home.components.simulator.${affix ? 'unaffix' : 'affix'}`}>
+          {(txt) => (
+            <div
+              className={classnames('simulator__control', {
+                'simulator__control--active': affix,
+              })}
+              onClick={() => {
+                setAffix(!affix);
+                window.localStorage['simulator-affix'] = !affix;
+              }}
+              title={txt}
+            >
+              <Icons type="pin" size="sm" />
+            </div>
+          )}
+        </FormattedMessage>
+        <FormattedMessage id="app.home.components.simulator.qrcode">
+          {(txt) => (
+            <Popover
+              content={<QRCodeSVG value={simulatorURL} size={120} style={{ display: 'block' }} />}
+              direction="leftTop"
+              trigger="hover"
+            >
+              <div className="simulator__control" title={txt}>
+                <Icons type="qrcode" size="sm" />
+              </div>
+            </Popover>
+          )}
+        </FormattedMessage>
+        <FormattedMessage id="app.home.components.simulator.reload">
+          {(txt) => (
+            <div className="simulator__control" title={txt} onClick={handleReload}>
+              <Icons type="reload" size="sm" />
+            </div>
+          )}
+        </FormattedMessage>
+      </div>
+      <iframe ref={simulatorRef} src={simulatorURL} title="simulator" frameBorder="0" />
     </div>
   );
 };
