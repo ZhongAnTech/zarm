@@ -6,13 +6,18 @@ export interface WheelItem {
   [key: string]: WheelValue;
 }
 
+export interface FieldNames {
+  value?: string;
+  label?: string;
+}
+
 export interface BaseWheelProps {
   value?: WheelValue;
   defaultValue?: WheelValue;
-  valueMember?: string;
-  dataSource: Array<WheelItem>;
+  fieldNames?: FieldNames;
+  dataSource?: Array<WheelItem>;
   onChange?: (value: WheelValue) => void;
-  itemRender: (item: WheelItem) => ReactNode;
+  itemRender?: (item: WheelItem) => ReactNode;
   disabled?: boolean;
   stopScroll?: boolean;
 }

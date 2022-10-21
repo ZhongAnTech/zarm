@@ -13,11 +13,11 @@ const DatePicker = (props: DatePickerProps) => {
   const {
     className,
     title,
-    okText,
+    confirmText,
     cancelText,
     mountContainer,
     maskClosable,
-    onOk,
+    onConfirm,
     onCancel,
     onChange,
     visible,
@@ -59,10 +59,8 @@ const DatePicker = (props: DatePickerProps) => {
       ...state,
       stopScroll: true,
     });
-    if (typeof onOk === 'function') {
-      onOk(date as Date);
-    }
-  }, [onOk, date]);
+    onConfirm?.(date as Date);
+  }, [onConfirm, date]);
 
   const onValueChange = useCallback(
     (newValue) => {
@@ -70,10 +68,7 @@ const DatePicker = (props: DatePickerProps) => {
         ...state,
         date: newValue,
       });
-
-      if (typeof onChange === 'function') {
-        onChange(newValue);
-      }
+      onChange?.(newValue);
     },
     [onChange],
   );
@@ -112,7 +107,7 @@ const DatePicker = (props: DatePickerProps) => {
           </div>
           <div className={bem('title')}>{title || locale?.DatePicker?.title}</div>
           <div className={bem('submit')} onClick={handleOnOk}>
-            {okText || locale?.DatePicker?.okText}
+            {confirmText || locale?.DatePicker?.confirmText}
           </div>
         </div>
         <DatePickerView

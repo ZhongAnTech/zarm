@@ -1,10 +1,16 @@
 import React, { createRef, useEffect, useRef } from 'react';
 import classnames from 'classnames';
-import BScroll, { BScrollInstance } from 'better-scroll';
+import BScroll, { BScrollInstance } from '@better-scroll/core';
+import WheelPlugin from '@better-scroll/wheel';
+import ObserveDomPlugin from '@better-scroll/observe-dom';
 import isEqual from 'lodash/isEqual';
 import { usePrevious, useEventCallback } from '../utils/hooks';
 import type { BaseWheelProps, WheelItem, WheelValue } from './interface';
 import { ConfigContext } from '../n-config-provider';
+import type { HTMLProps } from '../utils/utilityTypes';
+
+BScroll.use(WheelPlugin);
+BScroll.use(ObserveDomPlugin);
 
 const getValue = (props: Omit<WheelProps, 'itemRender'>) => {
   if ('defaultValue' in props) {
@@ -13,21 +19,30 @@ const getValue = (props: Omit<WheelProps, 'itemRender'>) => {
   if ('value' in props) {
     return props.value;
   }
-  if (Array.isArray(props.dataSource) && props.dataSource[0] && props.valueMember) {
-    return props.dataSource[0][props.valueMember];
+  if (Array.isArray(props.dataSource) && props.dataSource[0] && props.fieldNames?.value) {
+    return props.dataSource[0][props.fieldNames?.value];
   }
 };
 
-export interface WheelProps extends BaseWheelProps {
-  className?: string;
-}
+export type WheelProps = BaseWheelProps &
+  HTMLProps<{
+    '--text-color': React.CSSProperties['color'];
+    '--disabled-text-color': React.CSSProperties['color'];
+    '--item-height': React.CSSProperties['height'];
+    '--item-rows': number;
+    '--item-font-size': React.CSSProperties['fontSize'];
+  }>;
 
-const Wheel = (props: WheelProps) => {
+const DEFAULT_FIELD_NAMES = {
+  value: 'value',
+  label: 'label',
+};
+
+const Wheel: React.FC<WheelProps> = (props) => {
   const {
     className,
     value,
     defaultValue,
-    valueMember,
     dataSource,
     disabled,
     stopScroll,
@@ -44,11 +59,13 @@ const Wheel = (props: WheelProps) => {
   const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
   const prefixCls = `${globalPrefixCls}-wheel`;
 
+  const fieldNames = { ...DEFAULT_FIELD_NAMES, ...props.fieldNames };
+
   const getSelectedIndex = (newValue?: WheelValue, newDataSource?: Array<WheelItem>): number => {
     let index = 0;
     if (newDataSource) {
       newDataSource.some((item, i) => {
-        if (item[valueMember!] === newValue) {
+        if (item[fieldNames.value!] === newValue) {
           index = i;
           return true;
         }
@@ -69,9 +86,9 @@ const Wheel = (props: WheelProps) => {
 
   const handleScrollEnd = useEventCallback(() => {
     const index = scrollInstance.current?.getSelectedIndex();
-    const child = dataSource[index];
+    const child = dataSource?.[index];
     if (child) {
-      fireValueChange(child[valueMember!]);
+      fireValueChange(child[fieldNames.value!]);
     }
   }, []);
 
@@ -120,24 +137,24 @@ const Wheel = (props: WheelProps) => {
     const oldIndex = getSelectedIndex(prevValue, prevDataSource);
     const newIndex = getSelectedIndex(value, dataSource);
     if (newIndex !== oldIndex) {
-      scrollInstance.current?.wheelTo(newIndex);
+      scrollInstance.current?.wheelTo(newIndex, 300);
     }
 
     if (stopScroll && prevStopScroll !== stopScroll) {
       scrollInstance.current?.stop();
     }
-  }, [value, defaultValue, dataSource, stopScroll, valueMember]);
+  }, [value, defaultValue, dataSource, stopScroll, fieldNames.value]);
 
   const rollerCls = classnames(prefixCls, className);
   const items = dataSource!.map((item, index) => {
     const itemCls = classnames(`${prefixCls}__item`, {
-      [`${prefixCls}__item--selected`]: currentValue === item[valueMember!],
+      [`${prefixCls}__item--selected`]: currentValue === item[fieldNames.value!],
       [`${prefixCls}__item--disabled`]: disabled,
     });
 
     return (
       <div key={+index} className={itemCls}>
-        {itemRender!(item)}
+        {itemRender?.(item) || item?.[fieldNames.label]}
       </div>
     );
   });
@@ -152,8 +169,6 @@ const Wheel = (props: WheelProps) => {
 Wheel.displayName = 'Wheel';
 Wheel.defaultProps = {
   dataSource: [],
-  valueMember: 'value',
-  itemRender: (item) => item!.label as string,
   stopScroll: false,
 };
 

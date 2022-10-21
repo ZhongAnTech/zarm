@@ -77,7 +77,7 @@ const DatePickerView = (props: DatePickerViewProps) => {
   };
 
   const getNewDate = useCallback(
-    (values, index: number, date: Date) => {
+    (values, index, date: Date) => {
       const value = parseInt(values[index].value, 10);
       const newValue = cloneDate(date);
       if (mode === YEAR || mode === MONTH || mode === DATE || mode === DATETIME) {
@@ -362,15 +362,14 @@ const DatePickerView = (props: DatePickerViewProps) => {
   }, [currentDate, dateData, timeData]);
 
   const onValueChange = useCallback(
-    (selected, index) => {
+    (selected, dataSource, index) => {
+      console.log(selected, dataSource, index);
       const newValue = getNewDate(selected, index, currentDate);
       setState({
         ...state,
         date: newValue,
       });
-      if (typeof onChange === 'function') {
-        onChange(newValue);
-      }
+      onChange?.(newValue);
     },
     [onChange, getNewDate],
   );

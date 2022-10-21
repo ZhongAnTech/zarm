@@ -302,9 +302,24 @@ describe('index', () => {
         },
         "Picker": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "cols": Infinity,
+            "dataSource": Array [],
+            "destroy": false,
+            "maskClosable": true,
+          },
           "render": [Function],
         },
-        "PickerView": [Function],
+        "PickerView": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "cols": Infinity,
+            "dataSource": Array [],
+            "defaultValue": Array [],
+            "disabled": false,
+          },
+          "render": [Function],
+        },
         "PinchZoom": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
@@ -417,10 +432,8 @@ describe('index', () => {
             "cols": Infinity,
             "dataSource": Array [],
             "displayRender": [Function],
-            "itemRender": [Function],
             "maskClosable": true,
             "onClick": [Function],
-            "valueMember": "value",
           },
           "render": [Function],
         },

@@ -50,7 +50,7 @@ const Demo = () => {
             { value: 'left', label: 'left' },
             { value: 'left-bottom', label: 'left-bottom' },
           ]}
-          onOk={(selected) => setDirection(selected[0].value)}
+          onConfirm={(selected) => setDirection(selected[0].value)}
         />
       </List.Item>
       <List.Item title="动画效果">
@@ -73,7 +73,7 @@ const Demo = () => {
             { value: 'slide-left', label: '滑出滑入效果(slide-left)' },
             { value: 'slide-right', label: '滑出滑入效果(slide-right)' },
           ]}
-          onOk={(selected) => setAnimationType(selected[0].value)}
+          onConfirm={(selected) => setAnimationType(selected[0].value)}
         />
       </List.Item>
       <List.Item title="触发方式">
@@ -86,7 +86,7 @@ const Demo = () => {
             { value: 'manual', label: '受控触发(manual)' },
             { value: 'contextMenu', label: '右键触发(contextMenu)' },
           ]}
-          onOk={(selected) => {
+          onConfirm={(selected) => {
             setTrigger(selected[0].value);
             setVisible(false);
           }}

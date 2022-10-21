@@ -16,7 +16,7 @@ const DateSelect = (props: DateSelectProps) => {
     hasArrow,
     onChange,
     onCancel,
-    onOk,
+    onConfirm,
     value,
     ...others
   } = props;
@@ -59,18 +59,14 @@ const DateSelect = (props: DateSelectProps) => {
   const handleOk = useCallback(
     (selected) => {
       setState({ visible: false, selectValue: selected });
-      if (typeof onOk === 'function') {
-        onOk(selected);
-      }
+      onConfirm?.(selected);
     },
-    [onOk],
+    [onConfirm],
   );
 
   const handleCancel = useCallback(() => {
     setState({ ...state, visible: false });
-    if (typeof onCancel === 'function') {
-      onCancel();
-    }
+    onCancel?.();
   }, [onCancel]);
 
   const handleOnInit = useCallback((selected) => {
@@ -95,7 +91,7 @@ const DateSelect = (props: DateSelectProps) => {
         className={className}
         visible={visible}
         value={selectValue}
-        onOk={handleOk}
+        onConfirm={handleOk}
         onInit={handleOnInit}
         onCancel={handleCancel}
       />

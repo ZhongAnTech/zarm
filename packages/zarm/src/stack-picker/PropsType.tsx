@@ -29,9 +29,9 @@ export default interface PropsType {
   itemRender?: TItemRender;
   onChangeValidate?: (v: ReactNode) => ReactNode;
   cancelText?: string;
-  okText?: string;
+  confirmText?: string;
   onChange?: (selected: string[]) => void;
-  onOk?: (value: string[]) => void;
+  onConfirm?: (value: string[]) => void;
   onCancel?: () => void;
   locale?: Locale['StackPicker'];
 }

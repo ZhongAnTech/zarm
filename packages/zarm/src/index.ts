@@ -86,7 +86,7 @@ export { default as NoticeBar } from './notice-bar';
 export type { PanelProps } from './panel';
 export { default as Panel } from './panel';
 
-export type { PickerViewProps } from './picker-view';
+export type { PickerViewProps, PickerViewInstance } from './picker-view';
 export { default as PickerView } from './picker-view';
 
 export type { PickerProps } from './picker';

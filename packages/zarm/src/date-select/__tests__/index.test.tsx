@@ -72,18 +72,18 @@ describe('DateSelect', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  // it('should trigger onOk when press ok button', () => {
-  //   const onOkFn = jest.fn();
+  // it('should trigger onConfirm when press ok button', () => {
+  //   const onConfirmFn = jest.fn();
 
   //   const wrapper = mount(
   //     <DateSelect
   //       mode="date"
   //       value="2009-3-4"
-  //       onOk={onOkFn}
+  //       onConfirm={onConfirmFn}
   //     />,
   //   );
   //   wrapper.find('.za-date-picker__submit').simulate('click');
-  //   expect(onOkFn).toBeCalled();
+  //   expect(onConfirmFn).toBeCalled();
   // });
 
   // it('should trigger onCancel when press cancel button', () => {

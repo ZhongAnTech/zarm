@@ -1,40 +1,61 @@
 @include b(picker-view) {
+
+  @include define(background-color, #fff);
+  @include define(padding, 16px);
+  @include define(mask-start-background-color, rgba(255, 255, 255, 0.4));
+  @include define(mask-end-background-color, rgba(255, 255, 255, 0.8));
+  @include define(wheel-item-rows, 5);
+  @include define(wheel-item-height, 34px);
+  @include define(wheel-item-font-size, 20px);
+  @include define(wheel-item-text-color, var(--color-text));
+  @include define(wheel-item-disabled-text-color, var(--color-text-disabled));
+  @include define(wheel-item-selected-background-color, rgba(116, 116, 128, 0.08));
+  @include define(wheel-item-selected-border-radius, 7px);
+
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   width: 100%;
-  padding: var(--za-picker-padding);
-  background: var(--za-picker-background);
+  padding: var(--padding);
+  background: var(--background-color);
+
+  @include b(wheel) {
+    @include define(item-rows, var(--wheel-item-rows));
+    @include define(item-height, var(--wheel-item-height));
+    @include define(item-font-size, var(--wheel-item-font-size));
+    @include define(item-text-color, var(--wheel-item-text-color));
+    @include define(item-disabled-text-color, var(--wheel-item-disabled-text-color));
+  }
 
   &:before {
     content: '';
     position: absolute;
     top: 50%;
-    width: calc(100% - var(--za-picker-padding) * 2);
-    height: var(--za-wheel-item-height);
-    left: var(--za-picker-padding);
-    margin-top: calc(var(--za-wheel-item-height) / -2);
-    background-color: var(--za-picker-item-selected-background);
-    border-radius: var(--za-picker-item-selected-border-radius);
+    width: calc(100% - var(--padding) * 2);
+    height: var(--wheel-item-height);
+    left: var(--padding);
+    margin-top: calc(var(--wheel-item-height) / -2);
+    background-color: var(--wheel-item-selected-background-color);
+    border-radius: var(--wheel-item-selected-border-radius);
   }
 
   @include e(mask) {
     width: 100%;
-    height: calc((100% - var(--za-wheel-item-height)) / 2);
+    height: calc((100% - var(--wheel-item-height)) / 2);
     pointer-events: none;
     transform: translateZ(0);
 
     @include m(top) {
       position: absolute;
       top: 0;
-      background: linear-gradient(to top, var(--za-picker-mask-background-start), var(--za-picker-mask-background-end));
+      background: linear-gradient(to top, var(--mask-start-background-color), var(--mask-end-background-color));
     }
 
     @include m(bottom) {
       position: absolute;
       bottom: 0;
-      background: linear-gradient(to bottom, var(--za-picker-mask-background-start), var(--za-picker-mask-background-end));
+      background: linear-gradient(to bottom, var(--mask-start-background-color), var(--mask-end-background-color));
     }
   }
 

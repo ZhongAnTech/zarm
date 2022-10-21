@@ -1,6 +1,6 @@
 import PickerView from './PickerView';
 
-export type { PickerDataSource } from './PropsType';
-export type { PickerViewProps } from './PickerView';
+export type { PickerDataSourceItem } from './interface';
+export type { PickerViewProps, PickerViewInstance } from './PickerView';
 
 export default PickerView;
