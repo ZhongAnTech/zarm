@@ -3,8 +3,8 @@
   @include define(item-rows, 5);
   @include define(item-height, 34px);
   @include define(item-font-size, 20px);
-  @include define(text-color, var(--color-text));
-  @include define(disabled-text-color, var(--color-text-disabled));
+  @include define(text-color, var(--za-color-text));
+  @include define(disabled-text-color, var(--za-color-text-disabled));
 
   display: block;
   position: relative;

@@ -1,4 +1,17 @@
 .zw-menu-item {
+  --menuitem-first-level-height: 42px;
+
+  color: rgb(51, 54, 57);
+  font-size: 15px;
+  margin: 3px 8px;
+  border-radius: 4px;
+  transition-duration: 0.1s;
+
+  &--active {
+    background: rgba(0, 188, 112, 0.1);
+    color: rgba(0, 188, 112);
+  }
+
   .chinese {
     margin-left: 6px;
     opacity: .5;

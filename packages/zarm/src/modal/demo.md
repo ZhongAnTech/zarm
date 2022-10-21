@@ -445,14 +445,26 @@ const confirm = Modal.confirm({
 
 ```
 
-| 属性        | 类型       | 默认值                        | 说明                                        |
+<<<<<<< HEAD
+| 属性 | 类型 | 默认值 | 说明 |
 | :---------- | :--------- | :---------------------------- | :------------------------------------------ |
-| title       | ReactNode  | -                             | 弹出框的标题                                |
-| content     | ReactNode  | -                             | 弹出框的内容                                |
-| cancelText  | ReactNode  | '关闭'(Alert)/'取消'(Confirm) | 取消按钮的内容                              |
-| confirmText | ReactNode  | '确定'                        | 确定按钮的内容                              |
-| onConfirm   | () => void | -                             | 使用 confirm 方法时，点击“确定”后的回调函数 |
-| onCancel    | () => void | -                             | 点击“关闭/取消”后的回调函数                 |
+| title | ReactNode | - | 弹出框的标题 |
+| content | ReactNode | - | 弹出框的内容 |
+| cancelText | ReactNode | '关闭'(Alert)/'取消'(Confirm) | 取消按钮的内容 |
+| confirmText | ReactNode | '确定' | 确定按钮的内容 |
+| onConfirm | () => void | - | 使用 confirm 方法时，点击“确定”后的回调函数 |
+| onCancel | () => void | - | 点击“关闭/取消”后的回调函数 |
+=======
+| 属性 | 类型 | 默认值 | 说明 |
+| :--------- | :--------- | :---------------------------- | :------------------------------------------ |
+| title | ReactNode | - | 弹出框的标题 |
+| content | ReactNode | - | 弹出框的内容 |
+| cancelText | ReactNode | '关闭'(Alert)/'取消'(Confirm) | 取消按钮的内容 |
+| confirmText | ReactNode | '确定' | 确定按钮的内容 |
+| onConfirm | () => void | - | 使用 confirm 方法时，点击“确定”后的回调函数 |
+| onCancel | () => void | - | 点击“关闭/取消”后的回调函数 |
+
+> > > > > > > liu/refactor/picker
 
 ## CSS 变量
 
@@ -472,6 +484,7 @@ const confirm = Modal.confirm({
 | --body-font-size     | '13px'                              | 内容字体大小         |
 | --body-text-color    | 'var(--za-color-text)'              | 内容字体颜色         |
 | --body-padding       | '16px'                              | 内容内边距           |
+| --button-background  | 'transparent'                       | 操作按钮背景色       |
 | --button-height      | '44px'                              | 操作按钮高度         |
 | --button-font-size   | '17px'                              | 操作按钮字体大小     |
 | --button-font-weight | 500                                 | 操作按钮字体粗细     |

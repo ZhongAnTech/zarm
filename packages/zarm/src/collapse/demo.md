@@ -44,13 +44,13 @@ const Demo = () => {
           setActiveKey(activeKey);
         }}
       >
-        <Collapse.Item key="1" title="Header of Item1">
+        <Collapse.Item key="1" title="第一项">
           This is content of item1. This is content of item1. This is content of item1.
         </Collapse.Item>
-        <Collapse.Item key="2" title="Header of Item2">
+        <Collapse.Item key="2" title="第二项">
           This is content of item2. This is content of item2. This is content of item2.
         </Collapse.Item>
-        <Collapse.Item key="3" title="Header of Item3">
+        <Collapse.Item key="3" title="第三项">
           This is content of item3. This is content of item3. This is content of item3.
         </Collapse.Item>
       </Collapse>
@@ -68,13 +68,13 @@ import { Collapse } from 'zarm';
 
 ReactDOM.render(
   <Collapse multiple defaultActiveKey={['0', '1']}>
-    <Collapse.Item key="0" title="Header of Item1">
+    <Collapse.Item key="0" title="第一项">
       This is content of item1. This is content of item1. This is content of item1.
     </Collapse.Item>
-    <Collapse.Item key="1" title="Header of Item2">
+    <Collapse.Item key="1" title="第二项">
       This is content of item2. This is content of item2. This is content of item2.
     </Collapse.Item>
-    <Collapse.Item key="2" title="Header of Item3">
+    <Collapse.Item key="2" title="第三项">
       This is content of item3. This is content of item3. This is content of item3.
     </Collapse.Item>
   </Collapse>,
@@ -89,13 +89,13 @@ import { Collapse } from 'zarm';
 
 ReactDOM.render(
   <Collapse multiple defaultActiveKey={['test2']}>
-    <Collapse.Item key="test1" title="Header of Item1">
+    <Collapse.Item key="test1" title="第一项">
       This is content of item1. This is content of item1. This is content of item1.
     </Collapse.Item>
-    <Collapse.Item key="test2" title="Header of Item2" disabled>
+    <Collapse.Item key="test2" title="第二项" disabled>
       This is content of item2. This is content of item2. This is content of item2.
     </Collapse.Item>
-    <Collapse.Item key="test3" title="Header of Item3" disabled>
+    <Collapse.Item key="test3" title="第三项" disabled>
       This is content of item3. This is content of item3. This is content of item3.
     </Collapse.Item>
   </Collapse>,
@@ -128,7 +128,7 @@ ReactDOM.render(
 
 | 属性                         | 默认值                          | 说明                   |
 | :--------------------------- | :------------------------------ | :--------------------- |
-| --border-color               | 'rgba(60, 60, 67, 0.36)'        | 边框颜色               |
+| --border-color               | 'var(--za-border-color)'        | 边框颜色               |
 | --arrow-color                | 'rgba(0, 0, 0, 0.2)'            | 箭头颜色               |
 | --arrow-size                 | '10px'                          | 箭头的大小             |
 | --arrow-width                | '2px'                           | 箭头的粗细             |

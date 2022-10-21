@@ -195,8 +195,8 @@ ReactDOM.render(
 | --item-padding-horizontal      | '16px'                                                          | 列表项横向内边距       |
 | --item-padding-vertical        | '8px'                                                           | 列表项纵向内边距       |
 | --item-background              | '#fff'                                                          | 列表项背景色           |
-| --item-active-background       | 'rgba(0, 0, 0, 0.15)'                                           | 列表项激活状态背景色   |
-| --item-separator-color         | 'rgba(60, 60, 67, 0.36)'                                        | 列表项分隔线颜色       |
+| --item-active-background       | 'var(--za-background-active)'                                   | 列表项激活状态背景色   |
+| --item-separator-color         | 'var(--za-border-color)'                                        | 列表项分隔线颜色       |
 | --item-title-font-size         | 'var(--za-font-size-md)'                                        | 列表项标题字体大小     |
 | --item-title-white-space       | 'nowrap'                                                        | 列表项标题换行         |
 | --item-title-line-height       | 'calc(var(--item-height) - var(--item-padding-vertical) \* 2))' | 列表项标题行高         |

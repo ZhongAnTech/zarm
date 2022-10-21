@@ -66,7 +66,7 @@ ReactDOM.render(
               const confirm = Modal.confirm({
                 title: '确定要关闭吗？',
                 content: '这里是确认框的内容部分，点击确定按钮，将触发 Promise 关闭确认框',
-                onOk: async () => {
+                onConfirm: async () => {
                   await new Promise((resolve) => setTimeout(resolve, 3000));
                   console.log('异步按钮回调');
                 },

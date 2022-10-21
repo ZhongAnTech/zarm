@@ -35,10 +35,11 @@ ReactDOM.render(
 
 ## API
 
-| 属性  | 类型      | 默认值 | 说明     |
-| :---- | :-------- | :----- | :------- |
-| title | ReactNode | -      | 标题渲染 |
-| more  | ReactNode | -      | 更多渲染 |
+| 属性    | 类型      | 默认值 | 说明         |
+| :------ | :-------- | :----- | :----------- |
+| title   | ReactNode | -      | 标题渲染     |
+| more    | ReactNode | -      | 更多渲染     |
+| spacing | boolean   | -      | 开启留白模式 |
 
 ## CSS 变量
 

@@ -74,6 +74,9 @@ exports[`SwipeAction renders correctly 1`] = `
 >
   <div
     className="za-swipe-action"
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
   >
     <div
       className="za-swipe-action__actions za-swipe-action__actions--left"
@@ -207,9 +210,7 @@ exports[`SwipeAction renders correctly 1`] = `
     </div>
     <div
       className="za-swipe-action__content"
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
+      onClick={[Function]}
       onTransitionEnd={[Function]}
       style={
         Object {

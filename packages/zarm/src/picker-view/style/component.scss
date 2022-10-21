@@ -7,8 +7,8 @@
   @include define(wheel-item-rows, 5);
   @include define(wheel-item-height, 34px);
   @include define(wheel-item-font-size, 20px);
-  @include define(wheel-item-text-color, var(--color-text));
-  @include define(wheel-item-disabled-text-color, var(--color-text-disabled));
+  @include define(wheel-item-text-color, var(--za-color-text));
+  @include define(wheel-item-disabled-text-color, var(--za-color-text-disabled));
   @include define(wheel-item-selected-background-color, rgba(116, 116, 128, 0.08));
   @include define(wheel-item-selected-border-radius, 7px);
 

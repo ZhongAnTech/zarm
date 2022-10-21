@@ -23,6 +23,11 @@ exports[`Picker Picker render visible 1`] = `
   <ForwardRef
     destroy={false}
     maskClosable={true}
+<<<<<<< HEAD
+=======
+    onCancel={[Function]}
+    onClose={[Function]}
+>>>>>>> liu/refactor/picker
     onConfirm={[Function]}
     visible={true}
   >
@@ -31,6 +36,10 @@ exports[`Picker Picker render visible 1`] = `
       direction="bottom"
       lockScroll={true}
       mask={true}
+<<<<<<< HEAD
+=======
+      onMaskClick={[Function]}
+>>>>>>> liu/refactor/picker
       visible={true}
     >
       <Trigger
@@ -510,6 +519,11 @@ exports[`Picker render custom label 1`] = `
   <ForwardRef
     destroy={false}
     maskClosable={true}
+<<<<<<< HEAD
+=======
+    onCancel={[Function]}
+    onClose={[Function]}
+>>>>>>> liu/refactor/picker
     onConfirm={[Function]}
   >
     <Popup
@@ -517,6 +531,10 @@ exports[`Picker render custom label 1`] = `
       direction="bottom"
       lockScroll={true}
       mask={true}
+<<<<<<< HEAD
+=======
+      onMaskClick={[Function]}
+>>>>>>> liu/refactor/picker
       visible={false}
     >
       <Trigger

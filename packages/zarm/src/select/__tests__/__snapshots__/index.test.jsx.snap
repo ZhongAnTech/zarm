@@ -567,7 +567,11 @@ exports[`Select Select disabled 1`] = `
   onClick={[Function]}
 >
   <div
+<<<<<<< HEAD
     className="za-select"
+=======
+    className="za-select za-select--visible"
+>>>>>>> liu/refactor/picker
     onClick={[Function]}
   >
     <div

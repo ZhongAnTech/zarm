@@ -4,6 +4,7 @@ import { CloseCircleFill } from '@zarm-design/icons';
 import { getValue } from './utils';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseInputTextProps, BaseInputTextareaProps } from './interface';
+import type { HTMLProps } from '../utils/utilityTypes';
 
 const regexAstralSymbols = /[\uD800-\uDBFF][\uDC00-\uDFFF]|\n/g;
 
@@ -11,14 +12,28 @@ const countSymbols = (text = '') => {
   return text.replace(regexAstralSymbols, '_').length;
 };
 
-export interface InputTextProps
-  extends BaseInputTextProps,
-    React.InputHTMLAttributes<HTMLInputElement> {
-  prefixCls?: string;
+export interface InputCssVars {
+  '--height'?: React.CSSProperties['height'];
+  '--line-height': React.CSSProperties['lineHeight'];
+  '--font-size'?: React.CSSProperties['fontSize'];
+  '--color'?: React.CSSProperties['color'];
+  '--background'?: React.CSSProperties['background'];
+  '--label-font-size'?: React.CSSProperties['fontSize'];
+  '--placeholder-color'?: React.CSSProperties['color'];
+  '--disabled-color'?: React.CSSProperties['color'];
+  '--clear-icon-size'?: React.CSSProperties['width'];
+  '--clear-icon-color'?: React.CSSProperties['color'];
+  '--textarea-length-font-size'?: React.CSSProperties['fontSize'];
+  '--textarea-length-color'?: React.CSSProperties['color'];
 }
 
+export type InputTextProps = BaseInputTextProps &
+  HTMLProps<InputCssVars> &
+  React.InputHTMLAttributes<HTMLInputElement>;
+
 export type InputTextareaProps = BaseInputTextareaProps &
-  React.TextareaHTMLAttributes<HTMLTextAreaElement>;
+  React.TextareaHTMLAttributes<HTMLTextAreaElement> &
+  HTMLProps<InputCssVars>;
 
 export type InputProps = {
   type?: string;

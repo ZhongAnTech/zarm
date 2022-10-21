@@ -1,13 +1,25 @@
 export default {
   'app.title': '众安科技移动端组件库',
-  'app.components': '组件',
-  'app.components.type.general': '通用',
-  'app.components.type.form': '数据录入',
-  'app.components.type.feedback': '操作反馈',
-  'app.components.type.view': '数据展示',
-  'app.components.type.navigation': '导航',
-  'app.components.type.hooks': '钩子',
-  'app.components.type.other': '其他',
+
+  'app.docs.group.introduction': '介绍',
+  'app.docs.group.getting-started': '快速上手',
+  'app.docs.group.guides': '指南',
+  'app.docs.group.version': '版本',
+
+  'app.docs.article.about-zarm': '关于 Zarm',
+  'app.docs.article.installation': '安装',
+  'app.docs.article.customize-theme': '定制主题',
+  'app.docs.article.i18n': '国际化',
+  'app.docs.article.contributing': '贡献指南',
+  'app.docs.article.changelog': '更新日志',
+
+  'app.components.group.general': '通用',
+  'app.components.group.form': '数据录入',
+  'app.components.group.feedback': '操作反馈',
+  'app.components.group.view': '数据展示',
+  'app.components.group.navigation': '导航',
+  'app.components.group.hooks': '钩子',
+  'app.components.group.other': '其他',
 
   'app.home.nav.search': '搜索组件',
   'app.home.nav.docs': '文档',

@@ -6,7 +6,7 @@
 import { Marquee, List } from 'zarm';
 
 ReactDOM.render(
-  <>
+  <List>
     <List.Item>
       <Marquee>我从右向左滚动</Marquee>
     </List.Item>
@@ -38,7 +38,7 @@ ReactDOM.render(
         <div>动</div>
       </Marquee>
     </List.Item>
-  </>,
+  </List>,
   mountNode,
 );
 ```

@@ -54,13 +54,13 @@ export { default as FilePicker } from './file-picker';
 export type { IconProps, IconCssVars } from './icon';
 export { default as Icon } from './icon';
 
-export type { CustomInputProps } from './custom-input';
+export type { CustomInputProps, CustomInputCssVars } from './custom-input';
 export { default as CustomInput } from './custom-input';
 
 export type { GridProps, GridItemProps, GridCssVars } from './grid';
 export { default as Grid } from './grid';
 
-export type { InputProps, InputTextProps, InputTextareaProps } from './input';
+export type { InputProps, InputTextProps, InputTextareaProps, InputCssVars } from './input';
 export { default as Input } from './input';
 
 export type { KeyboardProps, KeyboardCssVars } from './keyboard';
@@ -86,13 +86,13 @@ export { default as NoticeBar } from './notice-bar';
 export type { PanelProps } from './panel';
 export { default as Panel } from './panel';
 
-export type { PickerViewProps, PickerViewInstance } from './picker-view';
+export type { PickerViewProps, PickerViewInstance, PickerViewCssVars } from './picker-view';
 export { default as PickerView } from './picker-view';
 
-export type { PickerProps } from './picker';
+export type { PickerProps, PickerCssVars } from './picker';
 export { default as Picker } from './picker';
 
-export type { SelectProps } from './select';
+export type { SelectProps, SelectCssVars } from './select';
 export { default as Select } from './select';
 
 export { default as Popper } from './popper';
@@ -131,6 +131,7 @@ export { default as Stepper } from './stepper';
 export type { CarouselProps, CarouselCssVars } from './carousel';
 export { default as Carousel } from './carousel';
 
+export type { SwipeActionProps, SwipeActionCssVars } from './swipe-action';
 export { default as SwipeAction } from './swipe-action';
 
 export type { SwitchProps, SwitchCssVars } from './switch';
@@ -180,9 +181,6 @@ export type { ConfigProviderProps as NConfigProviderProps } from './n-config-pro
 export { default as NConfigProvider } from './n-config-provider';
 
 export { default as StackPicker } from './stack-picker';
-
-export type { DragProps } from './drag';
-export { default as Drag } from './drag';
 
 // hooks
 export type { UseDragProps, DragEvent, DragState } from './useDrag';

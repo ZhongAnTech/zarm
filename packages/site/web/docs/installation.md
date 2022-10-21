@@ -2,16 +2,15 @@
 
 通过本章节，可以带你快速了解 Zarm 的安装方法和基本使用。
 
-## 安装
-
-npm 或 yarn 安装
-
 ```bash
 # npm
 $ npm install zarm --save
 
 # yarn
 $ yarn add zarm
+
+# pnpm
+$ pnpm add zarm
 ```
 
 ## 使用

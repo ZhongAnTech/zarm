@@ -3,6 +3,7 @@
 
   position: relative;
   overflow: hidden;
+  touch-action: none;
 
   @include e(content) {
     position: relative;

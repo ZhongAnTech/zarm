@@ -267,17 +267,17 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性         | 类型                   | 默认值 | 说明                                                                 |
-| :----------- | :--------------------- | :----- | :------------------------------------------------------------------- |
-| value        | string \| Date         | -      | 值                                                                   |
-| defaultValue | string \| Date         | -      | 初始值                                                               |
-| mode         | string                 | 'date' | 指定日期选择模式，可选项 `year`, `month`, `date`, `time`, `datetime` |
-| min          | string \| Date         | -      | 相应 mode 的最小时间                                                 |
-| max          | string \| Date         | -      | 相应 mode 的最大时间                                                 |
-| minuteStep   | number                 | 1      | 分钟间隔                                                             |
-| use12Hours   | boolean                | false  | `time`, `datetime` 可选择是否 12 小时显示模式                        |
-| disabled     | boolean                | false  | 是否禁用                                                             |
-| onChange     | (value?: Date) => void | -      | 值变化时触发的回调函数                                               |
+| 属性         | 类型                   | 默认值                                                   | 说明                                                                 |
+| :----------- | :--------------------- | :------------------------------------------------------- | :------------------------------------------------------------------- |
+| value        | string \| Date         | -                                                        | 值                                                                   |
+| defaultValue | string \| Date         | -                                                        | 初始值                                                               |
+| mode         | string                 | 'date'                                                   | 指定日期选择模式，可选项 `year`, `month`, `date`, `time`, `datetime` |
+| min          | string \| Date         | -                                                        | 相应 mode 的最小时间                                                 |
+| max          | string \| Date         | -                                                        | 相应 mode 的最大时间                                                 |
+| minuteStep   | number                 | 1                                                        | 分钟间隔                                                             |
+| fieldNames   | object                 | { label: `label`, value: `value`, children: `children` } | 自定义节点 label、value、children 的字段                             |
+| disabled     | boolean                | false                                                    | 是否禁用                                                             |
+| onChange     | (value?: Date) => void | -                                                        | 值变化时触发的回调函数                                               |
 
 ### 仅 DatePicker & DateSelect 支持的属性
 
