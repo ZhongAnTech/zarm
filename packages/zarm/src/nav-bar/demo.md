@@ -23,7 +23,7 @@ import { Plus } from '@zarm-design/icons';
 
 ReactDOM.render(
   <NavBar
-    title="这是标题这是标题这是标题"
+    title="这是标题"
     right={<Plus theme="primary" onClick={() => window.alert('click icon')} />}
   />,
   mountNode,

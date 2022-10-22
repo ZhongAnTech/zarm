@@ -25,6 +25,7 @@
     font-size: var(--title-font-size);
     font-weight: var(--title-font-weight);
     transform: translate(-50%, 0);
+    margin-left: auto;
   }
 
   @include e(side) {
@@ -32,6 +33,7 @@
     justify-content: center;
     color: var(--theme-primary);
     font-size: var(--side-font-size);
+    margin-left: auto;
 
     @include m(left) {
       margin-left: var(--padding-horizontal);
