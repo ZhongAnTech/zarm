@@ -5093,10 +5093,10 @@ better-scroll@2.3.1:
     "@better-scroll/wheel" "^2.3.1"
     "@better-scroll/zoom" "^2.3.1"
 
-big-integer@^1.6.44:
-  version "1.6.48"
-  resolved "https://registry.yarnpkg.com/big-integer/-/big-integer-1.6.48.tgz#8fd88bd1632cba4a1c8c3e3d7159f08bb95b4b9e"
-  integrity sha512-j51egjPa7/i+RdiRuJbPdJ2FIUYYPhvYLjzoYbcMMm62ooO6F94fETG4MTs46zPAF9Brs04OajboA/qTGuz78w==
+big-integer@1.6.x:
+  version "1.6.51"
+  resolved "https://registry.yarnpkg.com/big-integer/-/big-integer-1.6.51.tgz#0df92a5d9880560d3ff2d5fd20245c889d130686"
+  integrity sha512-GPEid2Y9QU1Exl1rpO9B2IPJGHPSupF5GnVIP0blYvNOMer2bTvSWs1jGOUg04hTmu67nmLsQ9TBo1puaotBHg==
 
 big.js@^5.2.2:
   version "5.2.2"
@@ -5193,19 +5193,19 @@ boxen@^1.2.1:
     term-size "^1.2.0"
     widest-line "^2.0.0"
 
-bplist-creator@0.0.8:
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/bplist-creator/-/bplist-creator-0.0.8.tgz#56b2a6e79e9aec3fc33bf831d09347d73794e79c"
-  integrity sha512-Za9JKzD6fjLC16oX2wsXfc+qBEhJBJB1YPInoAQpMLhDuj5aVOv1baGeIQSq1Fr3OCqzvsoQcSBSwGId/Ja2PA==
+bplist-creator@0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/bplist-creator/-/bplist-creator-0.1.0.tgz#018a2d1b587f769e379ef5519103730f8963ba1e"
+  integrity sha512-sXaHZicyEEmY86WyueLTQesbeoH/mquvarJaQNbjuOQO+7gbFcDEWqKmcWA4cOTLzFlfgvkiVxolk1k5bBIpmg==
   dependencies:
-    stream-buffers "~2.2.0"
+    stream-buffers "2.2.x"
 
-bplist-parser@0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/bplist-parser/-/bplist-parser-0.2.0.tgz#43a9d183e5bf9d545200ceac3e712f79ebbe8d0e"
-  integrity sha512-z0M+byMThzQmD9NILRniCUXYsYpjwnlO8N5uCFaCqIOpqRsJCrQL9NK3JsD67CN5a08nF5oIL2bD6loTdHOuKw==
+bplist-parser@0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/bplist-parser/-/bplist-parser-0.3.1.tgz#e1c90b2ca2a9f9474cc72f6862bbf3fee8341fd1"
+  integrity sha512-PyJxiNtA5T2PlLIeBot4lbp7rj4OadzjnMZD/G5zuBNt8ei/yCU7+wW0h2bag9vr8c+/WuRWmSxbqAl9hL1rBA==
   dependencies:
-    big-integer "^1.6.44"
+    big-integer "1.6.x"
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -7888,9 +7888,9 @@ events@^3.2.0:
   integrity sha1-Mala0Kkk4tLEGagTrrLE6HjqdAA=
 
 eventsource@^1.0.7:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/eventsource/-/eventsource-1.1.0.tgz#00e8ca7c92109e94b0ddf32dac677d841028cfaf"
-  integrity sha512-VSJjT5oCNrFvCS6igjzPAt5hBzQ2qPBFIbJ03zLI9SE0mxwZpMw6BfJrbFHm1a141AavMEB8JHmBhWAd66PfCg==
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/eventsource/-/eventsource-1.1.1.tgz#4544a35a57d7120fba4fa4c86cb4023b2c09df2f"
+  integrity sha512-qV5ZC0h7jYIAOhArFJgSfdyz6rALJyb270714o7ZtNnw2WSJ+eexhKtE0O8LYPRsHZHf2osHKZBxGPvm3kPkCA==
   dependencies:
     original "^1.0.0"
 
@@ -14078,7 +14078,7 @@ please-upgrade-node@^3.2.0:
   dependencies:
     semver-compare "^1.0.0"
 
-plist@^3.0.1:
+plist@^3.0.1, plist@^3.0.5:
   version "3.0.5"
   resolved "https://registry.yarnpkg.com/plist/-/plist-3.0.5.tgz#2cbeb52d10e3cdccccf0c11a63a85d830970a987"
   integrity sha512-83vX4eYdQp3vP9SxuYgEM/G/pJQqLUz/V/xzPrzruLs7fz7jxGQ1msZ/mg1nwZxUSuOp4sb+/bEIbRrbzZRxDA==
@@ -16140,9 +16140,9 @@ semver-greatest-satisfied-range@^1.1.0:
     sver-compat "^1.5.0"
 
 semver-regex@^3.1.2:
-  version "3.1.3"
-  resolved "https://registry.yarnpkg.com/semver-regex/-/semver-regex-3.1.3.tgz#b2bcc6f97f63269f286994e297e229b6245d0dc3"
-  integrity sha512-Aqi54Mk9uYTjVexLnR67rTyBusmwd04cLkHy9hNvk3+G3nT2Oyg7E0l4XVbOaNwIvQ3hHeYxGcyEy+mKreyBFQ==
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/semver-regex/-/semver-regex-3.1.4.tgz#13053c0d4aa11d070a2f2872b6b1e3ae1e1971b4"
+  integrity sha512-6IiqeZNgq01qGf0TId0t3NvKzSvUsjcpdEO3AQNeIjR6A2+ckTnQlDpl4qu1bjRv0RzN3FP9hzFmws3lKqRWkA==
 
 "semver@2 || 3 || 4 || 5", semver@^5.0.3, semver@^5.1.0, semver@^5.3.0, semver@^5.4.1, semver@^5.5.0, semver@^5.6.0, semver@^5.7.1:
   version "5.7.1"
@@ -16376,13 +16376,13 @@ simple-get@^3.0.3:
     simple-concat "^1.0.0"
 
 simple-plist@^1.0.0:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/simple-plist/-/simple-plist-1.1.1.tgz#54367ca28bc5996a982c325c1c4a4c1a05f4047c"
-  integrity sha512-pKMCVKvZbZTsqYR6RKgLfBHkh2cV89GXcA/0CVPje3sOiNOnXA8+rp/ciAMZ7JRaUdLzlEM6JFfUn+fS6Nt3hg==
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/simple-plist/-/simple-plist-1.3.1.tgz#16e1d8f62c6c9b691b8383127663d834112fb017"
+  integrity sha512-iMSw5i0XseMnrhtIzRb7XpQEXepa9xhWxGUojHBL43SIpQuDQkh3Wpy67ZbDzZVr6EKxvwVChnVpdl8hEVLDiw==
   dependencies:
-    bplist-creator "0.0.8"
-    bplist-parser "0.2.0"
-    plist "^3.0.1"
+    bplist-creator "0.1.0"
+    bplist-parser "0.3.1"
+    plist "^3.0.5"
 
 simple-swizzle@^0.2.2:
   version "0.2.2"
@@ -16841,7 +16841,7 @@ stealthy-require@^1.1.1:
   resolved "https://registry.yarnpkg.com/stealthy-require/-/stealthy-require-1.1.1.tgz#35b09875b4ff49f26a777e509b3090a3226bf24b"
   integrity sha1-NbCYdbT/SfJqd35QmzCQoyJr8ks=
 
-stream-buffers@~2.2.0:
+stream-buffers@2.2.x:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/stream-buffers/-/stream-buffers-2.2.0.tgz#91d5f5130d1cef96dcfa7f726945188741d09ee4"
   integrity sha1-kdX1Ew0c75bc+n9yaUUYh0HQnuQ=

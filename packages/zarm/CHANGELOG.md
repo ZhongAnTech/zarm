@@ -70,6 +70,31 @@
     - 移除属性 `type`
     - 新增属性 `color` 用户设置颜色
     - 新增属性 `opacity` 用于设置透明度
+## v2.9.15
+
+- Bug Fix
+
+  - [ActivityIndicator] 修复 scss 编译问题。[#911](https://github.com/ZhongAnTech/zarm/pull/911)
+
+## v2.9.14
+
+- Bug Fix
+
+  - [Input] 修复 `clearable` 为 `false` 状态下依然显示了清除按钮的 bug。[#880](https://github.com/ZhongAnTech/zarm/pull/880)
+
+  - [Affix] 修复浮动元素在滚动过程节点更新导致异常表现的 bug。[#905](https://github.com/ZhongAnTech/zarm/pull/905)
+
+  - [DateSelect] 修复 `datetime` 和 `time` 模式下，日期时间格式的兼容问题。[#907](https://github.com/ZhongAnTech/zarm/pull/907)
+
+- Perf
+
+  - [ActivityIndicator] 优化传统菊花状指示器 scss 计算方式。[#a8b3a43](https://github.com/ZhongAnTech/zarm/commit/a8b3a439bde93045db05b3047a7cf74e2f2bebf7)
+
+## v2.9.13
+
+- Bug Fix
+
+  - [Trigger] 修复 Array.includes 兼容问题。[#e048c3d](https://github.com/ZhongAnTech/zarm/commit/e048c3d0aa841d405ce314a63bb480f58c12b8c7)
 
 ## v2.9.12
 
