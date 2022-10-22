@@ -80,7 +80,6 @@
     "lodash": "^4.17.15",
     "normalize.css": "8.0.1",
     "raf": "^3.4.1",
-    "react-native-camera-roll-picker": "1.2.3",
     "react-transition-group": "^4.4.2"
   },
   "devDependencies": {
@@ -91,7 +90,6 @@
     "@types/lodash": "^4.14.182",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
-    "@types/react-native": "^0.64.2",
     "@types/react-transition-group": "^4.4.5",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.1",
     "@zarm-design/cli": "^0.0.40",

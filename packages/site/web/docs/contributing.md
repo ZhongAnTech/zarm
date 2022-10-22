@@ -16,19 +16,6 @@ $ yarn
 $ yarn dev
 ```
 
-如果你想运行 `Zarm Design` 的 `react-native` 示例, 那么
-
-```bash
-# 开发 react-native 端
-$ cd packages/rnkit/ios && pod install && cd ../../..
-
-# 开发 iOS 端
-$ yarn dev:ios
-
-# 开发 Android 端
-$ yarn dev:android
-```
-
 ## 检查
 
 代码风格检查。
