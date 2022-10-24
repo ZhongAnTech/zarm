@@ -49,6 +49,7 @@ export default (props) => {
         code,
         component,
         preview: `<pre><code class="language-${language}">${highlightCode}</code></pre>`,
+        formatMessage: intl.formatMessage,
       });
     },
     heading: (text, level) => {

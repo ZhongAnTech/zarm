@@ -20,6 +20,8 @@ export default {
   'app.components.group.navigation': '导航',
   'app.components.group.hooks': '钩子',
   'app.components.group.other': '其他',
+  'app.components.preview.action.codesandbox': '在 CodeSandBox 打开',
+  'app.components.preview.action.copy': '拷贝代码',
 
   'app.home.nav.search': '搜索组件',
   'app.home.nav.docs': '文档',

@@ -20,6 +20,8 @@ export default {
   'app.components.group.navigation': 'Navigation',
   'app.components.group.hooks': 'Hooks',
   'app.components.group.other': 'Other',
+  'app.components.preview.action.codesandbox': 'Open demo on CodeSandBox.io',
+  'app.components.preview.action.copy': 'Copy source code',
 
   'app.home.nav.search': 'Search Components',
   'app.home.nav.docs': 'Docs',
