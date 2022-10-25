@@ -218,10 +218,16 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
       return false;
     }
     const newValue = parseValue(currentValue)!;
-    const index = newValue - 1 >= 0 ? newValue - 1 : 0;
-    const prevTabItem = tablistRef.current!.childNodes[index];
+
+    const prevTabItem = tablistRef.current!.childNodes[newValue] as HTMLElement;
     if (scrollable && tablistRef.current && prevTabItem) {
-      const { offsetTop: top = 0, offsetLeft: left = 0 } = prevTabItem as HTMLElement;
+      const {
+        offsetWidth: layoutOffsetWidth = 0,
+        offsetHeight: layoutOffsetHeight = 0,
+      } = tablistRef.current;
+      const left = prevTabItem.offsetLeft + prevTabItem.offsetWidth / 2 - layoutOffsetWidth / 2;
+      const top = prevTabItem.offsetTop + prevTabItem.offsetHeight / 2 - layoutOffsetHeight / 2;
+
       scrollTo(tablistRef.current, top, left, 0.3);
     }
   }, [parseValue, currentValue, scrollable]);

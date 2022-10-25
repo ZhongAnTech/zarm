@@ -2,7 +2,7 @@
 
 exports[`Panel renders correctly 1`] = `
 <div
-  class="za-panel"
+  class="za-panel za-panel--bordered"
 >
   <div
     class="za-panel__header"
