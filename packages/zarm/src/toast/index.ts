@@ -1,9 +1,8 @@
-import { withStaticProps } from '../utils/withStaticProps';
-import Toast, { ToastProps } from './Toast';
+import attachPropertiesToComponent from '../utils/attachPropertiesToComponent';
+import Toast from './Toast';
 import useToast from './useToast';
 
 export type { ToastProps } from './Toast';
+export type UseToast = typeof useToast;
 
-const ToastMixined = withStaticProps<React.PropsWithChildren<ToastProps>, { useToast: () => ReturnType<typeof useToast> }, HTMLDivElement>(Toast, { useToast })
-
-export default ToastMixined;
+export default attachPropertiesToComponent(Toast, { useToast });
