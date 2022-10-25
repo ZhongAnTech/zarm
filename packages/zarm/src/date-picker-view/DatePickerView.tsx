@@ -79,7 +79,7 @@ const DatePickerView = (props: DatePickerViewProps) => {
 
   const getNewDate = useCallback(
     (values, index, date: Date) => {
-      const value = parseInt(values[index].value, 10);
+      const value = parseInt(values[index], 10);
       const newValue = cloneDate(date);
       if (mode === YEAR || mode === MONTH || mode === DATE || mode === DATETIME) {
         switch (index) {
@@ -156,7 +156,7 @@ const DatePickerView = (props: DatePickerViewProps) => {
       }
       return date;
     },
-    [minDate, maxDate],
+    [minDate, maxDate, mode],
   );
 
   const defaultDate = useMemo((): Date => {
@@ -173,7 +173,7 @@ const DatePickerView = (props: DatePickerViewProps) => {
   const currentDate = useMemo(() => {
     const { date, wheelDefault } = state;
     return clipDate(date || wheelDefault || defaultDate);
-  }, [state, defaultDate]);
+  }, [state, defaultDate, mode]);
 
   useEffect(() => {
     onInit?.(currentDate);
@@ -226,7 +226,7 @@ const DatePickerView = (props: DatePickerViewProps) => {
       });
     }
     return [yearCol, monthCol, dayCol];
-  }, [currentDate, minDate, maxDate, locale, use12Hours]);
+  }, [currentDate, minDate, maxDate, locale, use12Hours, mode]);
 
   const getDisplayHour = (rawHour) => {
     if (use12Hours) {
@@ -326,7 +326,7 @@ const DatePickerView = (props: DatePickerViewProps) => {
     }
 
     return [hourCol, minuteCol];
-  }, [minDate, maxDate, currentDate, locale, use12Hours]);
+  }, [minDate, maxDate, currentDate, locale, use12Hours, mode]);
 
   const colsValue = useMemo(() => {
     let dataSource: any[] = [];
@@ -341,6 +341,7 @@ const DatePickerView = (props: DatePickerViewProps) => {
       dataSource = dateData;
       value = [currentDate.getFullYear(), currentDate.getMonth()];
     }
+
     if (mode === DATE || mode === DATETIME) {
       dataSource = dateData;
       value = [currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()];
@@ -360,23 +361,20 @@ const DatePickerView = (props: DatePickerViewProps) => {
       }
     }
     return { dataSource, value };
-  }, [currentDate, dateData, timeData]);
+  }, [currentDate, dateData, timeData, mode]);
 
-  const onValueChange = useCallback(
-    (selected, dataSource, index) => {
-      console.log(selected, dataSource, index);
-      const newValue = getNewDate(selected, index, currentDate);
-      setState({
-        ...state,
-        date: newValue,
-      });
-      onChange?.(newValue);
-    },
-    [onChange, getNewDate],
-  );
+  const onValueChange = (selected, _dataSource, index) => {
+    console.log(selected);
+    const newValue = getNewDate(selected, index, currentDate);
+    setState({
+      ...state,
+      date: newValue,
+    });
+    onChange?.(newValue);
+  };
 
   const { dataSource, value } = colsValue;
-
+  console.log('value', value);
   return (
     <PickerView
       {...others}

@@ -137,7 +137,6 @@ describe('index', () => {
         "DatePicker": [Function],
         "DatePickerView": [Function],
         "DateSelect": [Function],
-        "Drag": [Function],
         "FilePicker": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
