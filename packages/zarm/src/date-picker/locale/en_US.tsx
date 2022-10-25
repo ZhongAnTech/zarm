@@ -1,5 +1,5 @@
 export default {
   cancelText: 'Cancel',
-  confirmText: 'Confirm',
+  confirmText: 'Ok',
   title: 'please select',
 };
