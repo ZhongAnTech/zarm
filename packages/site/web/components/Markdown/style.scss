@@ -1,11 +1,40 @@
 .code-preview {
   position: relative;
+  border: 1px solid #f3f3f3;
+  border-radius: 4px;
 
-  .codesanbox {
-    position: absolute;
-    right: 0;
-    top: 0;
+  .actions {
+    color: #999;
+    justify-content: flex-end;
+    align-items: center;
+    display: flex;
+    border-bottom: 1px dashed #f3f3f3;
+    padding-right: 12px;
+
+    .za-button {
+      color: #999;
+      align-items: center;
+      display: flex;
+      transition: color 200ms;
+      padding: 0 6px;
+
+      &:active {
+        border-color: transparent;
+        background-color: transparent;
+      }
+
+      &:hover {
+        color: #333;
+      }
+    }
   }
+}
+
+.clipboard-content {
+  position: absolute;
+  top: -999em;
+  left: -999em;
+  z-index: 999;
 }
 
 .markdown {

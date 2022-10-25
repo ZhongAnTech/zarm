@@ -20,6 +20,8 @@ export default {
   'app.components.group.navigation': 'Navigation',
   'app.components.group.hooks': 'Hooks',
   'app.components.group.other': 'Other',
+  'app.components.preview.action.codesandbox': 'Open demo on CodeSandBox.io',
+  'app.components.preview.action.copy': 'Copy source code',
 
   'app.home.nav.search': 'Search Components',
   'app.home.nav.docs': 'Docs',
@@ -40,6 +42,8 @@ export default {
   'app.home.index.scanning-code': 'Scan QR Code',
   'app.home.components.simulator.affix': 'set affix',
   'app.home.components.simulator.unaffix': 'set unaffix',
+  'app.home.components.simulator.qrcode': 'QRCode',
+  'app.home.components.simulator.reload': 'Reload',
   'app.home.components.action.edit': 'Edit this page on GitHub',
   'app.home.resources': 'Design Resources',
   'app.home.resources.introduce':
