@@ -2,15 +2,14 @@ import React, { createRef, useEffect, useRef } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import BScroll, { BScrollInstance } from '@better-scroll/core';
 import WheelPlugin from '@better-scroll/wheel';
-import ObserveDomPlugin from '@better-scroll/observe-dom';
 import isEqual from 'lodash/isEqual';
 import { usePrevious, useEventCallback } from '../utils/hooks';
 import type { BaseWheelProps, WheelItem, WheelValue } from './interface';
 import { ConfigContext } from '../n-config-provider';
 import type { HTMLProps } from '../utils/utilityTypes';
+import { resolvedFieldNames } from '../picker-view/utils';
 
 BScroll.use(WheelPlugin);
-BScroll.use(ObserveDomPlugin);
 
 const getValue = (props: Omit<WheelProps, 'itemRender'>) => {
   if ('defaultValue' in props) {
@@ -58,9 +57,10 @@ const Wheel: React.FC<WheelProps> = (props) => {
   const prevDataSource = usePrevious(dataSource);
   const prevStopScroll = usePrevious(stopScroll);
   const { prefixCls } = React.useContext(ConfigContext);
+  const heightRef = React.useRef(0);
   const bem = createBEM('wheel', { prefixCls });
 
-  const fieldNames = { ...DEFAULT_FIELD_NAMES, ...props.fieldNames };
+  const fieldNames = resolvedFieldNames(props.fieldNames, DEFAULT_FIELD_NAMES);
 
   const getSelectedIndex = (
     changedValue?: WheelValue,
@@ -96,6 +96,7 @@ const Wheel: React.FC<WheelProps> = (props) => {
 
   useEffect(() => {
     let resize: ResizeObserver | null;
+    heightRef.current = wheelWrapperRef.current?.clientHeight || 0;
     const initIndex = getSelectedIndex(currentValue, dataSource);
     if (wheelWrapperRef.current && !scrollInstance.current) {
       scrollInstance.current = new BScroll(wheelWrapperRef.current, {
@@ -107,11 +108,14 @@ const Wheel: React.FC<WheelProps> = (props) => {
         probeType: 3,
       });
 
-      if (scrollInstance.current.scroller?.content) {
-        resize = new ResizeObserver(() => {
+      if (scrollInstance.current.scroller?.wrapper) {
+        resize = new ResizeObserver((entries) => {
+          const [entry] = entries || [];
+          if (entry.contentRect.height === heightRef.current) return;
+          heightRef.current = entry.contentRect.height;
           scrollInstance.current?.refresh();
         });
-        resize.observe(scrollInstance.current.scroller.content);
+        resize.observe(scrollInstance.current.scroller.wrapper);
       }
     }
 
