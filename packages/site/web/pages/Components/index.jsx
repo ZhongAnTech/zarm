@@ -73,6 +73,7 @@ const Simulator = () => {
             <Popover
               content={<QRCodeSVG value={simulatorURL} size={120} style={{ display: 'block' }} />}
               direction="leftTop"
+              className="simulator__qrcode"
               trigger="hover"
             >
               <div className="simulator__control" title={txt}>
