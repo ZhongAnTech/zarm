@@ -1,4 +1,4 @@
-import React, { RefAttributes, useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { ConfigContext } from '../n-config-provider';
 import Popup from '../popup';
@@ -7,19 +7,11 @@ import type { HTMLProps } from '../utils/utilityTypes';
 
 export type ToastProps = BaseToastProps & HTMLProps;
 
-export interface UseToast {
-  show: (props: ToastProps) => void;
-  hide: () => void;
-}
-interface CompoundedComponent
-  extends React.ForwardRefExoticComponent<ToastProps & RefAttributes<HTMLDivElement>> {
-  useToast: () => UseToast;
-}
-const Toast = React.forwardRef<unknown, ToastProps>((props, ref) => {
+const Toast = React.forwardRef<HTMLDivElement, ToastProps>((props, ref) => {
   const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
   const prefixCls = `${globalPrefixCls}-toast`;
 
-  const toastRef = (ref as any) || React.createRef<HTMLDivElement>();
+  const toastRef = ref || React.createRef<HTMLDivElement>();
   const {
     className,
     stayTime,
@@ -32,14 +24,14 @@ const Toast = React.forwardRef<unknown, ToastProps>((props, ref) => {
   const [visible, setVisible] = useState(propVisible!);
   const timerRef = useRef(0);
 
-  const _hide = () => {
+  const hide = () => {
     setVisible(false);
   };
 
   const autoClose = useCallback(() => {
     if (stayTime! > 0) {
       timerRef.current = window.setTimeout(() => {
-        _hide();
+        hide();
         window.clearTimeout(timerRef.current!);
       }, stayTime);
     }
@@ -73,7 +65,7 @@ const Toast = React.forwardRef<unknown, ToastProps>((props, ref) => {
       </div>
     </Popup>
   );
-}) as CompoundedComponent;
+});
 
 Toast.displayName = 'Toast';
 
