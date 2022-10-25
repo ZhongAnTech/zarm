@@ -228,8 +228,8 @@ const Demo = () => {
           <Select
             value={mode}
             dataSource={modeSource}
-            onOk={(selected) => {
-              setMode(selected.map((item) => item.value));
+            onConfirm={(selected) => {
+              setMode(selected[0]);
             }}
           />
         </List.Item>

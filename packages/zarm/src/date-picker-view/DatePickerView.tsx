@@ -26,6 +26,7 @@ const ONE_DAY = 24 * 60 * 60 * 1000;
 const DatePickerView = (props: DatePickerViewProps) => {
   const { locale: globalLocal } = useContext(ConfigContext);
   const locale = globalLocal?.DatePickerView;
+
   const {
     className,
     defaultValue,
