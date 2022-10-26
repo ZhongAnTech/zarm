@@ -108,14 +108,14 @@ const Wheel: React.FC<WheelProps> = (props) => {
         probeType: 3,
       });
 
-      if (scrollInstance.current.scroller?.content) {
+      if (scrollInstance.current.scroller?.wrapper) {
         resize = new ResizeObserver((entries) => {
           const [entry] = entries || [];
           if (entry.contentRect.height === heightRef.current) return;
           heightRef.current = entry.contentRect.height;
           scrollInstance.current?.refresh();
         });
-        resize.observe(scrollInstance.current.scroller.content);
+        resize.observe(scrollInstance.current.scroller.wrapper);
       }
     }
 
