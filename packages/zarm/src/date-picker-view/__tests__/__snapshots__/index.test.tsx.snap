@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DatePickerView DatePickerView time 1`] = `
-<DatePickerView
+<ForwardRef
   defaultValue="2017-12-3 14:00"
   disabled={false}
   minuteStep={1}
@@ -3934,5 +3934,5 @@ exports[`DatePickerView DatePickerView time 1`] = `
       />
     </div>
   </ForwardRef>
-</DatePickerView>
+</ForwardRef>
 `;

@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
-import PickerView from '../picker-view';
+import PickerView, { PickerViewInstance } from '../picker-view';
 import { ConfigContext } from '../n-config-provider';
 import { isExtendDate, parseState } from './utils/parseState';
 import { cloneDate, getDaysInMonth, pad, setMonth } from './utils/date';
@@ -23,7 +23,7 @@ const MONTH = 'month';
 const YEAR = 'year';
 const ONE_DAY = 24 * 60 * 60 * 1000;
 
-const DatePickerView = (props: DatePickerViewProps) => {
+const DatePickerView = React.forwardRef<PickerViewInstance, DatePickerViewProps>((props, ref) => {
   const { locale: globalLocal } = useContext(ConfigContext);
   const locale = globalLocal?.DatePickerView;
 
@@ -364,7 +364,6 @@ const DatePickerView = (props: DatePickerViewProps) => {
   }, [currentDate, dateData, timeData, mode]);
 
   const onValueChange = (selected, _dataSource, index) => {
-    console.log(selected);
     const newValue = getNewDate(selected, index, currentDate);
     setState({
       ...state,
@@ -374,7 +373,6 @@ const DatePickerView = (props: DatePickerViewProps) => {
   };
 
   const { dataSource, value } = colsValue;
-  console.log('value', value);
   return (
     <PickerView
       {...others}
@@ -382,9 +380,10 @@ const DatePickerView = (props: DatePickerViewProps) => {
       dataSource={dataSource}
       value={value}
       onChange={onValueChange}
+      ref={ref}
     />
   );
-};
+});
 
 DatePickerView.defaultProps = {
   mode: DATE,

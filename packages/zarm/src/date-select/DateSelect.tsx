@@ -8,7 +8,7 @@ import { HTMLProps } from '../utils/utilityTypes';
 
 export type DateSelectProps = BaseDateSelectProps & HTMLProps;
 
-const DateSelect = (props: DateSelectProps) => {
+const DateSelect = React.forwardRef<HTMLDivElement, DateSelectProps>((props, ref) => {
   const {
     className,
     placeholder,
@@ -78,7 +78,7 @@ const DateSelect = (props: DateSelectProps) => {
 
   const arrowRender = <div className={bem('arrow')} />;
   return (
-    <div className={cls} onClick={handleClick}>
+    <div className={cls} onClick={handleClick} ref={ref}>
       <input type="hidden" value={formatFn(props, selectValue)} />
       <div className={bem('input')}>
         <div className={bem('value')}>
@@ -97,7 +97,7 @@ const DateSelect = (props: DateSelectProps) => {
       />
     </div>
   );
-};
+});
 
 DateSelect.defaultProps = {
   mode: 'date',
