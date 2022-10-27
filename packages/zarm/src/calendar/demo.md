@@ -33,10 +33,10 @@ const Demo = () => {
           </Radio.Group>
         </List.Item>
         <List.Item title="最小日期">
-          <DateSelect placeholder="Please input start date" mode="date" value={min} onOk={setMin} />
+          <DateSelect placeholder="Please input start date" mode="date" value={min} onConfirm={setMin} />
         </List.Item>
         <List.Item title="最大日期">
-          <DateSelect placeholder="Please input end date" mode="date" value={max} onOk={setMax} />
+          <DateSelect placeholder="Please input end date" mode="date" value={max} onConfirm={setMax} />
         </List.Item>
         <List.Item title="方向">
           <Radio.Group

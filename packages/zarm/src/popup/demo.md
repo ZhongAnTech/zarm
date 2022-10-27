@@ -127,8 +127,8 @@ const Demo = () => {
         visible={visible.picker}
         value={value}
         dataSource={SINGLE_DATA}
-        onOk={(selected) => {
-          console.log('Picker onOk: ', selected);
+        onConfirm={(selected) => {
+          console.log('Picker onConfirm: ', selected);
           toast.show(JSON.stringify(selected));
           setValue(selected.map((item) => item.value));
           toggle('picker');

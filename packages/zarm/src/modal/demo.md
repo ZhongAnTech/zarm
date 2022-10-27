@@ -122,7 +122,7 @@ const Demo = () => {
             ]}
             itemRender={(data) => data && `${data.label}（${data.value}）`}
             displayRender={(selected) => selected.map((item) => item && item.label)}
-            onOk={(selected) => {
+            onConfirm={(selected) => {
               dispatch({
                 type: 'animation',
                 key: 'animation',
@@ -349,7 +349,7 @@ const Demo = () => {
                 onCancel: () => {
                   console.log('点击cancel');
                 },
-                onOk: () => {
+                onConfirm: () => {
                   console.log('点击ok');
                 },
               });
@@ -368,7 +368,7 @@ const Demo = () => {
               const modal = Modal.confirm({
                 title: '确定要删除吗？',
                 content: '这里是确认框的内容部分，点击确定按钮，将触发 Promise 关闭确认框',
-                onOk: async () => {
+                onConfirm: async () => {
                   await new Promise((resolve) => setTimeout(resolve, 3000));
                   toast.show({ content: '提交成功' });
                 },
@@ -428,11 +428,11 @@ const alert = Modal.alert({
   content: '这里是警告框的内容部分',
 });
 
-// 显示确认框，若关闭时需要 Promise，onOk、onCancel 均支持 Promise
+// 显示确认框，若关闭时需要 Promise，onConfirm、onCancel 均支持 Promise
 const confirm = Modal.confirm({
   title: '确认框标题',
   content: '这里是确认框的内容部分，点击确定按钮，将触发 Promise 关闭确认框',
-  onOk: () => {
+  onConfirm: () => {
     return fetch.get('xxx.api').then((res) => {
       if(res.code === 0) {
         return true; // 关闭弹窗
@@ -450,8 +450,8 @@ const confirm = Modal.confirm({
 | title      | ReactNode  | -                             | 弹出框的标题                                |
 | content    | ReactNode  | -                             | 弹出框的内容                                |
 | cancelText | ReactNode  | '关闭'(Alert)/'取消'(Confirm) | 取消按钮的内容                              |
-| okText     | ReactNode  | '确定'                        | 确定按钮的内容                              |
-| onOk       | () => void | -                             | 使用 confirm 方法时，点击“确定”后的回调函数 |
+| confirmText     | ReactNode  | '确定'                        | 确定按钮的内容                              |
+| onConfirm       | () => void | -                             | 使用 confirm 方法时，点击“确定”后的回调函数 |
 | onCancel   | () => void | -                             | 点击“关闭/取消”后的回调函数                 |
 
 ## CSS 变量

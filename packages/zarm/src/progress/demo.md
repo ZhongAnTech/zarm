@@ -78,7 +78,7 @@ const Demo = () => {
             { value: 'warning', label: 'warning' },
             { value: 'danger', label: 'danger' },
           ]}
-          onOk={(selected) => setTheme(selected[0].value)}
+          onConfirm={(selected) => setTheme(selected[0].value)}
         />
       </List.Item>
       <List.Item title="线条形状">

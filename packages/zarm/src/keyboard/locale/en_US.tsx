@@ -1,3 +1,3 @@
 export default {
-  okText: 'OK',
+  confirmText: 'Ok',
 };

@@ -75,7 +75,7 @@ describe('StackPicker', () => {
         defaultValue={[]}
         value={[]}
         cancelText="取消"
-        okText="确定"
+        confirmText="确定"
         visible
         valueMember="value"
         itemRender={(data) => data.label}
@@ -88,18 +88,18 @@ describe('StackPicker', () => {
 
   it('handle props click', () => {
     const onCancel = jest.fn();
-    const onOk = jest.fn();
+    const onConfirm = jest.fn();
 
     const wrapper = mount(
       <StackPicker
         defaultValue={[]}
         cancelText="取消"
-        okText="确定"
+        confirmText="确定"
         maskClosable
         value={['340000', '340800', '340803']}
         dataSource={District}
         onCancel={onCancel}
-        onOk={onOk}
+        onConfirm={onConfirm}
       />,
     );
 
@@ -107,7 +107,7 @@ describe('StackPicker', () => {
     wrapper.update();
 
     wrapper.find('.za-stack-picker__submit').simulate('click');
-    expect(onOk).toHaveBeenCalledWith(['340000', '340800', '340803']);
+    expect(onConfirm).toHaveBeenCalledWith(['340000', '340800', '340803']);
 
     wrapper.find('.za-stack-picker__cancel').simulate('click');
     expect(onCancel).toBeCalled();
@@ -124,7 +124,7 @@ describe('StackPicker', () => {
         defaultValue={[]}
         value={[]}
         cancelText="取消"
-        okText="确定"
+        confirmText="确定"
         visible
         dataSource={District}
         onChange={onChange}
@@ -168,7 +168,7 @@ describe('StackPicker', () => {
         defaultValue={[]}
         value={[]}
         cancelText="取消"
-        okText="确定"
+        confirmText="确定"
         visible
         dataSource={District}
         onChange={onChange}
@@ -199,7 +199,7 @@ describe('StackPicker', () => {
 //   useStateSpy.mockImplementation((init) => [init, setState]);
 //
 //   const onCancel = jest.fn();
-//   const onOk = jest.fn();
+//   const onConfirm = jest.fn();
 //
 //   beforeEach(() => {
 //     wrapper = shallow(
@@ -208,7 +208,7 @@ describe('StackPicker', () => {
 //         disabled
 //         dataSource={District}
 //         onCancel={onCancel}
-//         onOk={onOk}
+//         onConfirm={onConfirm}
 //       />,
 //     );
 //   });
@@ -229,7 +229,7 @@ describe('StackPicker error type', () => {
 
   it('handle props error type', () => {
     const onCancel = 1 as any;
-    const onOk = 1 as any;
+    const onConfirm = 1 as any;
     const displayRender = 1 as any;
     const onChangeValidate = 1 as any;
     const onChange = 1 as any;
@@ -239,10 +239,10 @@ describe('StackPicker error type', () => {
         defaultValue={[]}
         value={[]}
         cancelText="取消"
-        okText="确定"
+        confirmText="确定"
         dataSource={District}
         onCancel={onCancel}
-        onOk={onOk}
+        onConfirm={onConfirm}
         displayRender={displayRender}
         onChange={onChange}
         onChangeValidate={onChangeValidate}
@@ -258,7 +258,7 @@ describe('StackPicker error type', () => {
     expect(consoleSpy).toHaveBeenCalledWith('onCancel need a function');
 
     wrapper.find('.za-stack-picker__submit').simulate('click');
-    expect(consoleSpy).toHaveBeenCalledWith('onOk need a function');
+    expect(consoleSpy).toHaveBeenCalledWith('onConfirm need a function');
 
     wrapper
       .find('.za-stack-picker__group')

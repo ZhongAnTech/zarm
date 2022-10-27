@@ -6,9 +6,9 @@ export interface BaseDatePickerProps
   extends Omit<BaseDatePickerViewProps, 'onChange' | 'stopScroll' | 'locale'> {
   visible?: boolean;
   title?: string;
-  okText?: string;
+  confirmText?: string;
   cancelText?: string;
-  onOk?: (value: Date) => void;
+  onConfirm?: (value: Date) => void;
   onCancel?: () => void;
   onChange?: (value: Date) => void;
   maskClosable?: boolean;

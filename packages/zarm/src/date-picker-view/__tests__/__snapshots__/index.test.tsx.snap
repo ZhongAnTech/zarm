@@ -30,11 +30,11 @@ exports[`DatePickerView DatePickerView time 1`] = `
       stopScroll={false}
       valueMember="value"
     >
-      <PickerView
+      <ForwardRef
         cols={Infinity}
         dataSource={Array []}
+        defaultValue={Array []}
         disabled={false}
-        itemRender={[Function]}
         locale={
           Object {
             "day": "日",
@@ -48,7 +48,6 @@ exports[`DatePickerView DatePickerView time 1`] = `
         minuteStep={1}
         mode="datetime"
         onChange={[Function]}
-        prefixCls="za-date-picker-view"
         safeIphoneX={false}
         stopScroll={false}
         value={
@@ -59,19 +58,19 @@ exports[`DatePickerView DatePickerView time 1`] = `
         valueMember="value"
       >
         <div
-          className="za-date-picker-view"
+          className="za-picker-view"
         >
           <div
-            className="za-date-picker-view__content"
+            className="za-picker-view__content"
           />
           <div
-            className="za-date-picker-view__mask za-date-picker-view__mask--top"
+            className="za-picker-view__mask za-picker-view__mask--top"
           />
           <div
-            className="za-date-picker-view__mask za-date-picker-view__mask--bottom"
+            className="za-picker-view__mask za-picker-view__mask--bottom"
           />
         </div>
-      </PickerView>
+      </ForwardRef>
     </DatePickerView>
   </ConfigReceiver>
 </ForwardRef(forwardRef)>
@@ -110,7 +109,7 @@ exports[`DatePickerView DatePickerView time 2 1`] = `
       stopScroll={false}
       valueMember="value"
     >
-      <PickerView
+      <ForwardRef
         cols={Infinity}
         dataSource={
           Array [
@@ -120,8 +119,8 @@ exports[`DatePickerView DatePickerView time 2 1`] = `
             },
           ]
         }
+        defaultValue={Array []}
         disabled={false}
-        itemRender={[Function]}
         locale={
           Object {
             "day": "日",
@@ -137,7 +136,6 @@ exports[`DatePickerView DatePickerView time 2 1`] = `
         minuteStep={1}
         mode="datetime"
         onChange={[Function]}
-        prefixCls="za-date-picker-view"
         safeIphoneX={false}
         stopScroll={false}
         value={
@@ -148,10 +146,10 @@ exports[`DatePickerView DatePickerView time 2 1`] = `
         valueMember="value"
       >
         <div
-          className="za-date-picker-view"
+          className="za-picker-view"
         >
           <div
-            className="za-date-picker-view__content"
+            className="za-picker-view__content"
           >
             <Wheel
               dataSource={
@@ -163,12 +161,10 @@ exports[`DatePickerView DatePickerView time 2 1`] = `
                 ]
               }
               disabled={false}
-              itemRender={[Function]}
               key="0"
               onChange={[Function]}
               stopScroll={false}
               value={2021}
-              valueMember="value"
             >
               <div
                 className="za-wheel"
@@ -187,13 +183,13 @@ exports[`DatePickerView DatePickerView time 2 1`] = `
             </Wheel>
           </div>
           <div
-            className="za-date-picker-view__mask za-date-picker-view__mask--top"
+            className="za-picker-view__mask za-picker-view__mask--top"
           />
           <div
-            className="za-date-picker-view__mask za-date-picker-view__mask--bottom"
+            className="za-picker-view__mask za-picker-view__mask--bottom"
           />
         </div>
-      </PickerView>
+      </ForwardRef>
     </DatePickerView>
   </ConfigReceiver>
 </ForwardRef(forwardRef)>

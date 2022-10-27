@@ -59,7 +59,7 @@ exports[`DateSelect DateSelect date 1`] = `
           minuteStep={1}
           mode="date"
           onCancel={[Function]}
-          onOk={[Function]}
+          onConfirm={[Function]}
           safeIphoneX={false}
           title="选择日期"
           value={2019-04-23T00:00:00.000Z}
@@ -73,7 +73,7 @@ exports[`DateSelect DateSelect date 1`] = `
             minuteStep={1}
             mode="date"
             onCancel={[Function]}
-            onOk={[Function]}
+            onConfirm={[Function]}
             safeIphoneX={false}
             title="选择日期"
             value={2019-04-23T00:00:00.000Z}
@@ -85,7 +85,7 @@ exports[`DateSelect DateSelect date 1`] = `
               locale={
                 Object {
                   "cancelText": "取消",
-                  "okText": "确定",
+                  "confirmText": "确定",
                   "title": "请选择",
                 }
               }
@@ -94,8 +94,8 @@ exports[`DateSelect DateSelect date 1`] = `
               minuteStep={1}
               mode="date"
               onCancel={[Function]}
+              onConfirm={[Function]}
               onInit={[Function]}
-              onOk={[Function]}
               prefixCls="za-date-picker"
               safeIphoneX={false}
               title="选择日期"
@@ -260,7 +260,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
           minuteStep={1}
           mode="datetime"
           onCancel={[Function]}
-          onOk={[Function]}
+          onConfirm={[Function]}
           safeIphoneX={false}
           title="选择时间"
           valueMember="value"
@@ -276,7 +276,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
             minuteStep={1}
             mode="datetime"
             onCancel={[Function]}
-            onOk={[Function]}
+            onConfirm={[Function]}
             safeIphoneX={false}
             title="选择时间"
             valueMember="value"
@@ -288,7 +288,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
               locale={
                 Object {
                   "cancelText": "取消",
-                  "okText": "确定",
+                  "confirmText": "确定",
                   "title": "请选择",
                 }
               }
@@ -299,8 +299,8 @@ exports[`DateSelect DateSelect datetime 1`] = `
               minuteStep={1}
               mode="datetime"
               onCancel={[Function]}
+              onConfirm={[Function]}
               onInit={[Function]}
-              onOk={[Function]}
               prefixCls="za-date-picker"
               safeIphoneX={false}
               title="选择时间"
@@ -499,7 +499,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
           minuteStep={1}
           mode="date"
           onCancel={[Function]}
-          onOk={[Function]}
+          onConfirm={[Function]}
           safeIphoneX={false}
           value={2019-04-23T00:00:00.000Z}
           valueMember="value"
@@ -525,7 +525,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
             minuteStep={1}
             mode="date"
             onCancel={[Function]}
-            onOk={[Function]}
+            onConfirm={[Function]}
             safeIphoneX={false}
             value={2019-04-23T00:00:00.000Z}
             valueMember="value"
@@ -549,7 +549,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
               locale={
                 Object {
                   "cancelText": "取消",
-                  "okText": "确定",
+                  "confirmText": "确定",
                   "title": "请选择",
                 }
               }
@@ -558,8 +558,8 @@ exports[`DateSelect DateSelect disabled 1`] = `
               minuteStep={1}
               mode="date"
               onCancel={[Function]}
+              onConfirm={[Function]}
               onInit={[Function]}
-              onOk={[Function]}
               prefixCls="za-date-picker"
               safeIphoneX={false}
               value={2019-04-23T00:00:00.000Z}
@@ -654,10 +654,10 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                       </div>
                                     </div>
                                     <div
-                                      class="za-date-picker-view"
+                                      class="za-picker-view"
                                     >
                                       <div
-                                        class="za-date-picker-view__content"
+                                        class="za-picker-view__content"
                                       >
                                         <div
                                           class="za-wheel"
@@ -1726,10 +1726,10 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                         </div>
                                       </div>
                                       <div
-                                        class="za-date-picker-view__mask za-date-picker-view__mask--top"
+                                        class="za-picker-view__mask za-picker-view__mask--top"
                                       />
                                       <div
-                                        class="za-date-picker-view__mask za-date-picker-view__mask--bottom"
+                                        class="za-picker-view__mask za-picker-view__mask--bottom"
                                       />
                                     </div>
                                   </div>
@@ -1799,10 +1799,10 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                 </div>
                               </div>
                               <div
-                                class="za-date-picker-view"
+                                class="za-picker-view"
                               >
                                 <div
-                                  class="za-date-picker-view__content"
+                                  class="za-picker-view__content"
                                 >
                                   <div
                                     class="za-wheel"
@@ -2871,10 +2871,10 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                   </div>
                                 </div>
                                 <div
-                                  class="za-date-picker-view__mask za-date-picker-view__mask--top"
+                                  class="za-picker-view__mask za-picker-view__mask--top"
                                 />
                                 <div
-                                  class="za-date-picker-view__mask za-date-picker-view__mask--bottom"
+                                  class="za-picker-view__mask za-picker-view__mask--bottom"
                                 />
                               </div>
                             </div>
@@ -2927,10 +2927,10 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                     </div>
                                   </div>
                                   <div
-                                    class="za-date-picker-view"
+                                    class="za-picker-view"
                                   >
                                     <div
-                                      class="za-date-picker-view__content"
+                                      class="za-picker-view__content"
                                     >
                                       <div
                                         class="za-wheel"
@@ -3999,10 +3999,10 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                       </div>
                                     </div>
                                     <div
-                                      class="za-date-picker-view__mask za-date-picker-view__mask--top"
+                                      class="za-picker-view__mask za-picker-view__mask--top"
                                     />
                                     <div
-                                      class="za-date-picker-view__mask za-date-picker-view__mask--bottom"
+                                      class="za-picker-view__mask za-picker-view__mask--bottom"
                                     />
                                   </div>
                                 </div>
@@ -4143,7 +4143,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                     value={2019-04-23T00:00:00.000Z}
                                     valueMember="value"
                                   >
-                                    <PickerView
+                                    <ForwardRef
                                       cols={Infinity}
                                       dataSource={
                                         Array [
@@ -4847,10 +4847,10 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                           ],
                                         ]
                                       }
+                                      defaultValue={Array []}
                                       disabeld={true}
                                       disabled={false}
                                       hasArrow={true}
-                                      itemRender={[Function]}
                                       locale={
                                         Object {
                                           "day": "日",
@@ -4864,7 +4864,6 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                       minuteStep={1}
                                       mode="date"
                                       onChange={[Function]}
-                                      prefixCls="za-date-picker-view"
                                       safeIphoneX={false}
                                       stopScroll={false}
                                       value={
@@ -4877,10 +4876,10 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                       valueMember="value"
                                     >
                                       <div
-                                        className="za-date-picker-view"
+                                        className="za-picker-view"
                                       >
                                         <div
-                                          className="za-date-picker-view__content"
+                                          className="za-picker-view__content"
                                         >
                                           <Wheel
                                             dataSource={
@@ -5412,12 +5411,10 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                               ]
                                             }
                                             disabled={false}
-                                            itemRender={[Function]}
                                             key="0"
                                             onChange={[Function]}
                                             stopScroll={false}
                                             value={2019}
-                                            valueMember="value"
                                           >
                                             <div
                                               className="za-wheel"
@@ -6268,12 +6265,10 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                               ]
                                             }
                                             disabled={false}
-                                            itemRender={[Function]}
                                             key="1"
                                             onChange={[Function]}
                                             stopScroll={false}
                                             value={3}
-                                            valueMember="value"
                                           >
                                             <div
                                               className="za-wheel"
@@ -6482,12 +6477,10 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                               ]
                                             }
                                             disabled={false}
-                                            itemRender={[Function]}
                                             key="2"
                                             onChange={[Function]}
                                             stopScroll={false}
                                             value={23}
-                                            valueMember="value"
                                           >
                                             <div
                                               className="za-wheel"
@@ -6680,13 +6673,13 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                           </Wheel>
                                         </div>
                                         <div
-                                          className="za-date-picker-view__mask za-date-picker-view__mask--top"
+                                          className="za-picker-view__mask za-picker-view__mask--top"
                                         />
                                         <div
-                                          className="za-date-picker-view__mask za-date-picker-view__mask--bottom"
+                                          className="za-picker-view__mask za-picker-view__mask--bottom"
                                         />
                                       </div>
-                                    </PickerView>
+                                    </ForwardRef>
                                   </DatePickerView>
                                 </ConfigReceiver>
                               </ForwardRef(forwardRef)>
@@ -6769,7 +6762,7 @@ exports[`DateSelect DateSelect time 1`] = `
           minuteStep={15}
           mode="time"
           onCancel={[Function]}
-          onOk={[Function]}
+          onConfirm={[Function]}
           safeIphoneX={false}
           title="选择时间"
           valueMember="value"
@@ -6783,7 +6776,7 @@ exports[`DateSelect DateSelect time 1`] = `
             minuteStep={15}
             mode="time"
             onCancel={[Function]}
-            onOk={[Function]}
+            onConfirm={[Function]}
             safeIphoneX={false}
             title="选择时间"
             valueMember="value"
@@ -6795,7 +6788,7 @@ exports[`DateSelect DateSelect time 1`] = `
               locale={
                 Object {
                   "cancelText": "取消",
-                  "okText": "确定",
+                  "confirmText": "确定",
                   "title": "请选择",
                 }
               }
@@ -6804,8 +6797,8 @@ exports[`DateSelect DateSelect time 1`] = `
               minuteStep={15}
               mode="time"
               onCancel={[Function]}
+              onConfirm={[Function]}
               onInit={[Function]}
-              onOk={[Function]}
               prefixCls="za-date-picker"
               safeIphoneX={false}
               title="选择时间"
@@ -6955,7 +6948,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
           minuteStep={1}
           mode="date"
           onCancel={[Function]}
-          onOk={[Function]}
+          onConfirm={[Function]}
           safeIphoneX={false}
           valueMember="value"
           visible={false}
@@ -6968,7 +6961,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
             minuteStep={1}
             mode="date"
             onCancel={[Function]}
-            onOk={[Function]}
+            onConfirm={[Function]}
             safeIphoneX={false}
             valueMember="value"
             visible={false}
@@ -6979,7 +6972,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
               locale={
                 Object {
                   "cancelText": "取消",
-                  "okText": "确定",
+                  "confirmText": "确定",
                   "title": "请选择",
                 }
               }
@@ -6988,8 +6981,8 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
               minuteStep={1}
               mode="date"
               onCancel={[Function]}
+              onConfirm={[Function]}
               onInit={[Function]}
-              onOk={[Function]}
               prefixCls="za-date-picker"
               safeIphoneX={false}
               valueMember="value"
@@ -7143,7 +7136,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
           minuteStep={1}
           mode="date"
           onCancel={[Function]}
-          onOk={[Function]}
+          onConfirm={[Function]}
           safeIphoneX={false}
           title="选择日期"
           valueMember="value"
@@ -7157,7 +7150,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
             minuteStep={1}
             mode="date"
             onCancel={[Function]}
-            onOk={[Function]}
+            onConfirm={[Function]}
             safeIphoneX={false}
             title="选择日期"
             valueMember="value"
@@ -7169,7 +7162,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
               locale={
                 Object {
                   "cancelText": "取消",
-                  "okText": "确定",
+                  "confirmText": "确定",
                   "title": "请选择",
                 }
               }
@@ -7178,8 +7171,8 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
               minuteStep={1}
               mode="date"
               onCancel={[Function]}
+              onConfirm={[Function]}
               onInit={[Function]}
-              onOk={[Function]}
               prefixCls="za-date-picker"
               safeIphoneX={false}
               title="选择日期"
@@ -7353,7 +7346,7 @@ exports[`DateSelect DateSelect year 1`] = `
           minuteStep={1}
           mode="year"
           onCancel={[Function]}
-          onOk={[Function]}
+          onConfirm={[Function]}
           safeIphoneX={false}
           title="选择年份"
           value="2017"
@@ -7367,7 +7360,7 @@ exports[`DateSelect DateSelect year 1`] = `
             minuteStep={1}
             mode="year"
             onCancel={[Function]}
-            onOk={[Function]}
+            onConfirm={[Function]}
             safeIphoneX={false}
             title="选择年份"
             value="2017"
@@ -7379,7 +7372,7 @@ exports[`DateSelect DateSelect year 1`] = `
               locale={
                 Object {
                   "cancelText": "取消",
-                  "okText": "确定",
+                  "confirmText": "确定",
                   "title": "请选择",
                 }
               }
@@ -7388,8 +7381,8 @@ exports[`DateSelect DateSelect year 1`] = `
               minuteStep={1}
               mode="year"
               onCancel={[Function]}
+              onConfirm={[Function]}
               onInit={[Function]}
-              onOk={[Function]}
               prefixCls="za-date-picker"
               safeIphoneX={false}
               title="选择年份"

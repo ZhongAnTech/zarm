@@ -3,8 +3,8 @@ import type { ModalProps } from '../modal';
 
 export interface BaseConfirmProps extends ModalProps {
   content?: ReactNode;
-  okText?: ReactNode;
+  confirmText?: ReactNode;
   cancelText?: ReactNode;
-  onOk?: () => void | Promise<boolean | void>;
+  onConfirm?: () => void | Promise<boolean | void>;
   onCancel?: () => void | Promise<boolean | void>;
 }
