@@ -143,7 +143,7 @@ const Wheel: React.FC<WheelProps> = (props) => {
     const oldIndex = getSelectedIndex(prevValue, prevDataSource);
     const newIndex = getSelectedIndex(value, dataSource);
     if (newIndex !== oldIndex) {
-      scrollInstance.current?.wheelTo(newIndex, 300);
+      scrollInstance.current?.wheelTo(newIndex);
     }
 
     if (stopScroll && prevStopScroll !== stopScroll) {
