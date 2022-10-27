@@ -20,6 +20,8 @@ export default {
   'app.components.group.navigation': '导航',
   'app.components.group.hooks': '钩子',
   'app.components.group.other': '其他',
+  'app.components.preview.action.codesandbox': '在 CodeSandBox 打开',
+  'app.components.preview.action.copy': '拷贝代码',
 
   'app.home.nav.search': '搜索组件',
   'app.home.nav.docs': '文档',
@@ -39,6 +41,8 @@ export default {
   'app.home.index.scanning-code': '扫码体验',
   'app.home.components.simulator.affix': '设置悬浮',
   'app.home.components.simulator.unaffix': '取消悬浮',
+  'app.home.components.simulator.qrcode': '二维码',
+  'app.home.components.simulator.reload': '刷新',
   'app.home.components.action.edit': '在 GitHub 上编辑此页',
   'app.home.resources': '设计资源',
   'app.home.resources.introduce':

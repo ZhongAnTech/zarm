@@ -21,7 +21,7 @@
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FZhongAnTech%2Fzarm.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FZhongAnTech%2Fzarm?ref=badge_shield)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ZhongAnTech/zarm?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-众安科技基于 React、React-Native 研发的一款适用于企业级的移动端 UI 组件库。
+众安科技基于 React 研发的一款适用于企业级的移动端 UI 组件库。
 
 </div>
 

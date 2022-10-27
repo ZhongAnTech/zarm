@@ -157,7 +157,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
   >
     <input
       type="hidden"
-      value="2022-10-26 14:14"
+      value="2022-10-27 11:43"
     />
     <div
       className="za-date-select__input"
@@ -165,7 +165,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
       <div
         className="za-date-select__value"
       >
-        2022-10-26 14:14
+        2022-10-27 11:43
       </div>
     </div>
     <div
@@ -431,7 +431,7 @@ exports[`DateSelect DateSelect time 1`] = `
   >
     <input
       type="hidden"
-      value="14:14"
+      value="11:43"
     />
     <div
       className="za-date-select__input"
@@ -439,7 +439,7 @@ exports[`DateSelect DateSelect time 1`] = `
       <div
         className="za-date-select__value"
       >
-        14:14
+        11:43
       </div>
     </div>
     <div
@@ -567,7 +567,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
   >
     <input
       type="hidden"
-      value="2022-10-26"
+      value="2022-10-27"
     />
     <div
       className="za-date-select__input"
@@ -575,7 +575,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
       <div
         className="za-date-select__value"
       >
-        2022-10-26
+        2022-10-27
       </div>
     </div>
     <div
@@ -703,7 +703,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
   >
     <input
       type="hidden"
-      value="2022-10-26"
+      value="2022-10-27"
     />
     <div
       className="za-date-select__input"
@@ -711,7 +711,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
       <div
         className="za-date-select__value"
       >
-        2022-10-26
+        2022-10-27
       </div>
     </div>
     <div

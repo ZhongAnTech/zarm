@@ -445,26 +445,14 @@ const confirm = Modal.confirm({
 
 ```
 
-<<<<<<< HEAD
-| 属性 | 类型 | 默认值 | 说明 |
+| 属性        | 类型       | 默认值                        | 说明                                        |
 | :---------- | :--------- | :---------------------------- | :------------------------------------------ |
-| title | ReactNode | - | 弹出框的标题 |
-| content | ReactNode | - | 弹出框的内容 |
-| cancelText | ReactNode | '关闭'(Alert)/'取消'(Confirm) | 取消按钮的内容 |
-| confirmText | ReactNode | '确定' | 确定按钮的内容 |
-| onConfirm | () => void | - | 使用 confirm 方法时，点击“确定”后的回调函数 |
-| onCancel | () => void | - | 点击“关闭/取消”后的回调函数 |
-=======
-| 属性 | 类型 | 默认值 | 说明 |
-| :--------- | :--------- | :---------------------------- | :------------------------------------------ |
-| title | ReactNode | - | 弹出框的标题 |
-| content | ReactNode | - | 弹出框的内容 |
-| cancelText | ReactNode | '关闭'(Alert)/'取消'(Confirm) | 取消按钮的内容 |
-| confirmText | ReactNode | '确定' | 确定按钮的内容 |
-| onConfirm | () => void | - | 使用 confirm 方法时，点击“确定”后的回调函数 |
-| onCancel | () => void | - | 点击“关闭/取消”后的回调函数 |
-
-> > > > > > > liu/refactor/picker
+| title       | ReactNode  | -                             | 弹出框的标题                                |
+| content     | ReactNode  | -                             | 弹出框的内容                                |
+| cancelText  | ReactNode  | '关闭'(Alert)/'取消'(Confirm) | 取消按钮的内容                              |
+| confirmText | ReactNode  | '确定'                        | 确定按钮的内容                              |
+| onConfirm   | () => void | -                             | 使用 confirm 方法时，点击“确定”后的回调函数 |
+| onCancel    | () => void | -                             | 点击“关闭/取消”后的回调函数                 |
 
 ## CSS 变量
 

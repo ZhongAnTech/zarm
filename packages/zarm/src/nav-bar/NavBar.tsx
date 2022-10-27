@@ -28,15 +28,14 @@ const NavBar = forwardRef<HTMLDivElement, NavBarProps>((props, ref) => {
 
   return (
     <div ref={ref} className={bem([className])} {...restProps}>
-      <div className={bem('side', [{ left: true }])}>{left}</div>
-      <div className={bem('title')}>{title}</div>
-      <div className={bem('side', [{ right: true }])}>{right}</div>
+      {left && <div className={bem('side', [{ left: true }])}>{left}</div>}
+      {title && <div className={bem('title')}>{title}</div>}
+      {right && <div className={bem('side', [{ right: true }])}>{right}</div>}
     </div>
   );
 });
 
 NavBar.displayName = 'NavBar';
-
 NavBar.defaultProps = {};
 
 export default NavBar;

@@ -1,10 +1,19 @@
-@mixin disaleInput {
+@mixin disableInput {
   color: var(--color-text);
   -webkit-text-fill-color: var(--color-text);
   cursor: auto;
 }
 
 @include b(stepper) {
+  @include define(height, 28px);
+  @include define(input-width, 50px);
+  @include define(icon-font-size, 12px);
+  @include define(font-size, var(--za-font-size-sm));
+  @include define(margin-horizontal, 4px);
+  @include define(padding-horizontal, 8px);
+  @include define(input-background, #fff);
+  @include define(disabled-color, var(--za-color-text-disabled));
+
   display: flex;
   align-items: center;
 
@@ -16,7 +25,7 @@
 
     @include m(disabled) {
       input {
-        @include disaleInput;
+        @include disableInput;
       }
     }
 
@@ -28,7 +37,7 @@
   @include b(custom-input) {
     @include m(disabled) {
       @include e(virtual-input) {
-        @include disaleInput;
+        @include disableInput;
       }
     }
 
@@ -43,22 +52,22 @@
   }
 
   @include e(sub, plus) {
-    width: var(--za-stepper-height-md);
+    width: var(--height);
     padding: 0;
 
     @include b(icon) {
-      font-size: var(--za-stepper-icon-font-size-md);
+      font-size: var(--icon-font-size);
     }
   }
 
   @include e(input) {
     position: relative;
-    width: var(--za-stepper-input-width-md);
-    height: var(--za-stepper-height-md);
-    margin: 0 var(--za-stepper-input-margin-horizontal-md);
-    padding: 0 var(--za-stepper-input-padding-horizontal-md);
-    font-size: var(--za-stepper-input-font-size-md);
-    background: var(--za-stepper-input-background);
+    width: var(--input-width);
+    height: var(--height);
+    margin: 0 var(--margin-horizontal);
+    padding: 0 var(--padding-horizontal);
+    font-size: var(--font-size);
+    background: var(--input-background);
     color: var(--color-text);
     text-align: center;
     border: r(1) solid var(--border-color);
@@ -69,8 +78,11 @@
 
   @include m(disabled) {
     @include e(input) {
-      color: var(--za-stepper-input-disabled);
-      opacity: var(--opacity-disabled);
+      input {
+        color: var(--disabled-color);
+        -webkit-text-fill-color: var(--disabled-color);
+        opacity: var(--opacity-disabled);
+      }
     }
   }
 
@@ -82,25 +94,25 @@
 
   @include m(circle) {
     @include e(input) {
-      border-radius: var(--za-stepper-height-md);
+      border-radius: var(--height);
     }
   }
 
   @include m(lg) {
     @include e(input) {
-      width: var(--za-stepper-input-width-lg);
-      height: var(--za-stepper-height-lg);
-      margin: 0 var(--za-stepper-input-margin-horizontal-lg);
-      padding: 0 var(--za-stepper-input-padding-horizontal-lg);
-      font-size: var(--za-stepper-input-font-size-lg);
+      width: 60px;
+      height: 36px;
+      margin: 0 4px;
+      padding: 0 8px;
+      font-size: 16px;
     }
 
     @include e(sub, plus) {
-      width: var(--za-stepper-height-lg);
+      width: 36px;
       padding: 0;
 
       @include b(icon) {
-        font-size: var(--za-stepper-icon-font-size-lg);
+        font-size: 14px;
       }
     }
   }

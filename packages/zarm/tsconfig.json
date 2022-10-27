@@ -10,7 +10,7 @@
     "allowSyntheticDefaultImports": true,
     "target": "ES2019",
     "esModuleInterop": true,
-    "types": ["react", "react-dom", "react-native", "node", "jest"]
+    "types": ["react", "react-dom", "node", "jest"]
   },
   "include": ["src"],
   "exclude": ["node_modules", "lib", "es", "**/__tests__/**", "tests"],

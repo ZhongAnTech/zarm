@@ -19,7 +19,7 @@ What needs to be done to address this issue? Ideally, provide a pull request wit
 ### Environment
 
 - zarm version
-- react/react-native version
+- react version
 - system version
 - browser version
 
