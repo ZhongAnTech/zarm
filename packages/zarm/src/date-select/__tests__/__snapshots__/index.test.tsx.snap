@@ -37,7 +37,6 @@ exports[`DateSelect DateSelect date 1`] = `
       mode="date"
       onCancel={[Function]}
       onConfirm={[Function]}
-      onInit={[Function]}
       title="选择日期"
       value={2019-04-23T00:00:00.000Z}
       visible={false}
@@ -157,7 +156,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
   >
     <input
       type="hidden"
-      value="2022-10-27 11:43"
+      value="2022-10-28 15:55"
     />
     <div
       className="za-date-select__input"
@@ -165,7 +164,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
       <div
         className="za-date-select__value"
       >
-        2022-10-27 11:43
+        2022-10-28 15:55
       </div>
     </div>
     <div
@@ -180,7 +179,6 @@ exports[`DateSelect DateSelect datetime 1`] = `
       mode="datetime"
       onCancel={[Function]}
       onConfirm={[Function]}
-      onInit={[Function]}
       title="选择时间"
       visible={false}
     >
@@ -315,7 +313,6 @@ exports[`DateSelect DateSelect disabled 1`] = `
       mode="date"
       onCancel={[Function]}
       onConfirm={[Function]}
-      onInit={[Function]}
       value={2019-04-23T00:00:00.000Z}
       visible={false}
     >
@@ -431,7 +428,7 @@ exports[`DateSelect DateSelect time 1`] = `
   >
     <input
       type="hidden"
-      value="11:43"
+      value="15:55"
     />
     <div
       className="za-date-select__input"
@@ -439,7 +436,7 @@ exports[`DateSelect DateSelect time 1`] = `
       <div
         className="za-date-select__value"
       >
-        11:43
+        15:55
       </div>
     </div>
     <div
@@ -452,7 +449,6 @@ exports[`DateSelect DateSelect time 1`] = `
       mode="time"
       onCancel={[Function]}
       onConfirm={[Function]}
-      onInit={[Function]}
       title="选择时间"
       visible={false}
     >
@@ -567,7 +563,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
   >
     <input
       type="hidden"
-      value="2022-10-27"
+      value="2022-10-28"
     />
     <div
       className="za-date-select__input"
@@ -575,7 +571,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
       <div
         className="za-date-select__value"
       >
-        2022-10-27
+        2022-10-28
       </div>
     </div>
     <div
@@ -588,7 +584,6 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
       mode="date"
       onCancel={[Function]}
       onConfirm={[Function]}
-      onInit={[Function]}
       visible={false}
     >
       <ForwardRef
@@ -703,7 +698,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
   >
     <input
       type="hidden"
-      value="2022-10-27"
+      value="2022-10-28"
     />
     <div
       className="za-date-select__input"
@@ -711,7 +706,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
       <div
         className="za-date-select__value"
       >
-        2022-10-27
+        2022-10-28
       </div>
     </div>
     <div
@@ -723,7 +718,6 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
       mode="date"
       onCancel={[Function]}
       onConfirm={[Function]}
-      onInit={[Function]}
       title="选择日期"
       visible={false}
       wheelDefaultValue={2017-11-03T10:00:00.000Z}
@@ -861,7 +855,6 @@ exports[`DateSelect DateSelect year 1`] = `
       mode="year"
       onCancel={[Function]}
       onConfirm={[Function]}
-      onInit={[Function]}
       title="选择年份"
       value="2017"
       visible={false}

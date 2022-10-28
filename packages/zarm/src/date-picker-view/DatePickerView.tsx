@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
-import PickerView, { PickerViewInstance } from '../picker-view';
+import PickerView from '../picker-view';
 import { ConfigContext } from '../n-config-provider';
 import { isExtendDate, parseState } from './utils/parseState';
 import { cloneDate, getDaysInMonth, pad, setMonth } from './utils/date';
@@ -23,7 +23,11 @@ const MONTH = 'month';
 const YEAR = 'year';
 const ONE_DAY = 24 * 60 * 60 * 1000;
 
-const DatePickerView = React.forwardRef<PickerViewInstance, DatePickerViewProps>((props, ref) => {
+export interface DatePickerInstance {
+  value: Date;
+}
+
+const DatePickerView = React.forwardRef<DatePickerInstance, DatePickerViewProps>((props, ref) => {
   const { locale: globalLocal } = useContext(ConfigContext);
   const locale = globalLocal?.DatePickerView;
 
@@ -37,20 +41,20 @@ const DatePickerView = React.forwardRef<PickerViewInstance, DatePickerViewProps>
     mode,
     use12Hours,
     onChange,
-    onInit,
     ...others
   } = props;
 
   const [state, setState] = useState<DatePickerViewState>(parseState(props));
 
-  const minDate = useMemo(
-    () => (min && isExtendDate(min) ? new Date(min!) : new Date(1900, 1, 1, 0, 0, 0)),
-    [min],
-  );
+  const minDate = useMemo(() => {
+    const date = isExtendDate(min);
+    return min && date ? new Date(date) : new Date(1900, 1, 1, 0, 0, 0);
+  }, [min]);
 
   const maxDate = useMemo(() => {
     const year = new Date().getFullYear() + 20;
-    return max && isExtendDate(max) ? new Date(max!) : new Date(year, 1, 1, 23, 59, 59);
+    const date = isExtendDate(max);
+    return max && date ? new Date(date) : new Date(year, 1, 1, 23, 59, 59);
   }, [max]);
 
   useEffect(() => {
@@ -175,9 +179,9 @@ const DatePickerView = React.forwardRef<PickerViewInstance, DatePickerViewProps>
     return clipDate(date || wheelDefault || defaultDate);
   }, [state, defaultDate, mode]);
 
-  useEffect(() => {
-    onInit?.(currentDate);
-  }, []);
+  React.useImperativeHandle(ref, () => ({
+    value: currentDate,
+  }));
 
   const dateData = useMemo(() => {
     const yearCol: Array<DataSource> = [];
@@ -380,7 +384,6 @@ const DatePickerView = React.forwardRef<PickerViewInstance, DatePickerViewProps>
       dataSource={dataSource}
       value={value}
       onChange={onValueChange}
-      ref={ref}
     />
   );
 });

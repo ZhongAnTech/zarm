@@ -69,13 +69,6 @@ const DateSelect = React.forwardRef<HTMLDivElement, DateSelectProps>((props, ref
     onCancel?.();
   }, [onCancel]);
 
-  const handleOnInit = useCallback((selected) => {
-    setState({
-      ...state,
-      selectValue: selected,
-    });
-  }, []);
-
   const arrowRender = <div className={bem('arrow')} />;
   return (
     <div className={cls} onClick={handleClick} ref={ref}>
@@ -92,7 +85,6 @@ const DateSelect = React.forwardRef<HTMLDivElement, DateSelectProps>((props, ref
         visible={visible}
         value={selectValue}
         onConfirm={handleOk}
-        onInit={handleOnInit}
         onCancel={handleCancel}
       />
     </div>
