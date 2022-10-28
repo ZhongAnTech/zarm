@@ -21,13 +21,12 @@ export interface FieldNames extends WheelFieldNames {
   children: string;
 }
 
-export interface BasePickerViewProps
-  extends Pick<BaseWheelProps, 'itemRender' | 'disabled'> {
+export interface BasePickerViewProps extends Pick<BaseWheelProps, 'itemRender' | 'disabled'> {
   value?: PickerViewValue | PickerViewValue[];
   defaultValue?: PickerViewValue | PickerViewValue[];
   wheelDefaultValue?: PickerViewValue | PickerViewValue[];
   fieldNames?: Partial<FieldNames>;
   dataSource?: PickerViewDataSource;
   cols?: number;
-  onChange?: (value: PickerViewValue[], items: PickerViewColumnItem[], level?: number) => void;
+  onChange?: (value: PickerViewValue[], items: PickerViewColumnItem[], level: number) => void;
 }
