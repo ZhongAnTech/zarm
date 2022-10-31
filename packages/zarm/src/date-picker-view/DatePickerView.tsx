@@ -1,241 +1,284 @@
-import React, { Component } from 'react';
-import isEqual from 'lodash/isEqual';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import dayjs from 'dayjs';
 import PickerView from '../picker-view';
-import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
+import { ConfigContext } from '../n-config-provider';
 import { isExtendDate, parseState } from './utils/parseState';
-import { cloneDate, getDaysInMonth, getGregorianCalendar, pad, setMonth } from './utils/date';
-import type { BaseDatePickerViewProps } from './PropsType';
+import { cloneDate, getDaysInMonth, pad, setMonth } from './utils/date';
+import type { BaseDatePickerViewProps } from './interface';
+import { HTMLProps } from '../utils/utilityTypes';
 
-const DATETIME = 'datetime';
-const DATE = 'date';
-const TIME = 'time';
-const MONTH = 'month';
-const YEAR = 'year';
-const ONE_DAY = 24 * 60 * 60 * 1000;
-
-export interface DatePickerViewProps extends BaseDatePickerViewProps {
-  prefixCls?: string;
-  className?: string;
-}
+export type DatePickerViewProps = BaseDatePickerViewProps & HTMLProps;
 
 export type DatePickerViewState = ReturnType<typeof parseState>;
 
-export default class DatePickerView extends Component<DatePickerViewProps, DatePickerViewState> {
-  static defaultProps: DatePickerViewProps = {
-    prefixCls: 'za-date-picker-view',
-    mode: DATE,
-    disabled: false,
-    minuteStep: 1,
-    valueMember: 'value',
-    stopScroll: false,
-  };
+interface DataSource {
+  label: string;
+  value: string | number;
+}
 
-  static getDerivedStateFromProps(props, state) {
-    if (
-      !isEqual(
-        removeFnFromProps(props, ['onChange', 'onInit', 'onTransition']),
-        removeFnFromProps(state.prevProps, ['onChange', 'onInit', 'onTransition']),
-      )
-    ) {
-      return {
-        prevProps: props,
-        ...parseState(props),
-      };
-    }
+export enum MODE {
+  DATETIME = 'datetime',
+  DATE = 'date',
+  TIME = 'time',
+  MONTH = 'month',
+  YEAR = 'year',
+}
 
-    return null;
-  }
+const ONE_DAY = 24 * 60 * 60 * 1000;
 
-  constructor(props: DatePickerViewProps) {
-    super(props);
-    this.state = parseState(props);
-    const { onInit } = this.props;
-    if (typeof onInit === 'function') {
-      onInit(this.getDate());
-    }
-    this.getColsValue = this.getColsValue.bind(this);
-  }
+export interface DatePickerInstance {
+  value: Date;
+}
 
-  onValueChange = (selected, index) => {
-    const { onChange } = this.props;
-    const newValue = this.getNewDate(selected, index);
-    this.setState({
-      date: newValue,
-    });
+const DatePickerView = React.forwardRef<DatePickerInstance, DatePickerViewProps>((props, ref) => {
+  const { locale: globalLocal } = useContext(ConfigContext);
+  const locale = globalLocal?.DatePickerView;
 
-    if (typeof onChange === 'function') {
-      onChange(newValue);
-    }
-  };
+  const {
+    className,
+    defaultValue,
+    wheelDefaultValue,
+    minuteStep,
+    min,
+    max,
+    mode,
+    use12Hours,
+    onChange,
+    format,
+    ...others
+  } = props;
 
-  getNewDate = (values, index) => {
-    const { mode, valueMember } = this.props;
-    const value = parseInt(values[index][valueMember!], 10);
-    const newValue = cloneDate(this.getDate());
-    if (mode === YEAR || mode === MONTH || mode === DATE || mode === DATETIME) {
-      switch (index) {
-        case 0:
-          newValue.setFullYear(value);
-          break;
-        case 1:
-          setMonth(newValue, value);
-          break;
-        case 2:
-          newValue.setDate(value);
-          break;
-        case 3:
-          newValue.setHours(value);
-          break;
-        case 4:
-          newValue.setMinutes(value);
-          break;
-        default:
-          break;
-      }
+  const [state, setState] = useState<DatePickerViewState>(parseState(props));
+
+  const minDate = useMemo(() => {
+    const date = isExtendDate(min);
+    return min && date ? new Date(date) : new Date(1900, 1, 1, 0, 0, 0);
+  }, [min]);
+
+  const maxDate = useMemo(() => {
+    const year = new Date().getFullYear() + 20;
+    const date = isExtendDate(max);
+    return max && date ? new Date(date) : new Date(year, 1, 1, 23, 59, 59);
+  }, [max]);
+
+  useEffect(() => {
+    setState(parseState(props));
+  }, [defaultValue, minuteStep, wheelDefaultValue, min, max, mode, use12Hours]);
+
+  const setHours = (date, hour) => {
+    if (use12Hours) {
+      const currentHours = date.getHours();
+      let newHour = hour;
+      newHour = currentHours >= 12 ? hour + 12 : hour;
+      newHour = newHour >= 24 ? 0 : newHour;
+      date.setHours(newHour);
     } else {
-      switch (index) {
-        case 0:
-          newValue.setHours(value);
-          break;
-        case 1:
-          newValue.setMinutes(value);
-          break;
-        default:
-          break;
-      }
+      date.setHours(hour);
     }
-    return this.clipDate(newValue);
   };
 
-  getColsValue() {
-    const { mode } = this.props;
-    const date = this.getDate();
-
-    let dataSource: any[] = [];
-    let value: any[] = [];
-
-    if (mode === YEAR) {
-      dataSource = this.getDateData();
-      value = [date.getFullYear()];
+  const setAmPm = (date, index) => {
+    if (index === 0) {
+      date.setTime(+date - ONE_DAY / 2);
+    } else {
+      date.setTime(+date + ONE_DAY / 2);
     }
-    if (mode === MONTH) {
-      dataSource = this.getDateData();
-      value = [date.getFullYear(), date.getMonth()];
-    }
-    if (mode === DATE || mode === DATETIME) {
-      dataSource = this.getDateData();
-      value = [date.getFullYear(), date.getMonth(), date.getDate()];
-    }
-    if (mode === DATETIME) {
-      dataSource = dataSource.concat(this.getTimeData());
-      value = value.concat([date.getHours(), date.getMinutes()]);
-    }
-    if (mode === TIME) {
-      dataSource = this.getTimeData();
-      value = [date.getHours(), date.getMinutes()];
-    }
+  };
 
-    return {
-      dataSource,
-      value,
-    };
-  }
+  const getNewDate = useCallback(
+    (values, index, date: Date) => {
+      const value = parseInt(values[index], 10);
+      const newValue = cloneDate(date);
+      if (
+        mode === MODE.YEAR ||
+        mode === MODE.MONTH ||
+        mode === MODE.DATE ||
+        mode === MODE.DATETIME
+      ) {
+        switch (index) {
+          case 0:
+            newValue.setFullYear(value);
+            break;
+          case 1:
+            setMonth(newValue, value);
+            break;
+          case 2:
+            newValue.setDate(value);
+            break;
+          case 3:
+            setHours(newValue, value);
+            break;
+          case 4:
+            newValue.setMinutes(value);
+            break;
+          case 5:
+            setAmPm(newValue, value);
+            break;
+          default:
+            break;
+        }
+      } else {
+        switch (index) {
+          case 0:
+            setHours(newValue, value);
+            break;
+          case 1:
+            newValue.setMinutes(value);
+            break;
+          case 2:
+            setAmPm(newValue, value);
+            break;
+          default:
+            break;
+        }
+      }
+      return clipDate(newValue);
+    },
+    [mode],
+  );
 
-  getDateData = () => {
-    const { locale, mode } = this.props;
-    const date = this.getDate();
-    const yearCol: object[] = [];
-    const monthCol: object[] = [];
-    const dayCol: object[] = [];
+  const clipDate = useCallback(
+    (date) => {
+      if (mode === MODE.DATETIME) {
+        if (date < minDate) {
+          return cloneDate(minDate);
+        }
+        if (date > maxDate) {
+          return cloneDate(maxDate);
+        }
+      } else if (mode === MODE.DATE || mode === MODE.MONTH || mode === MODE.YEAR) {
+        if (+date + ONE_DAY <= +minDate) {
+          return cloneDate(minDate);
+        }
+        if (date >= +maxDate + ONE_DAY) {
+          return cloneDate(maxDate);
+        }
+      } else {
+        const maxHour = maxDate.getHours();
+        const maxMinutes = maxDate.getMinutes();
+        const minHour = minDate.getHours();
+        const minMinutes = minDate.getMinutes();
+        const hour = date.getHours();
+        const minutes = date.getMinutes();
+        if (hour < minHour || (hour === minHour && minutes < minMinutes)) {
+          return cloneDate(minDate);
+        }
+        if (hour > maxHour || (hour === maxHour && minutes > maxMinutes)) {
+          return cloneDate(maxDate);
+        }
+      }
+      return date;
+    },
+    [minDate, maxDate, mode],
+  );
 
-    const selectYear = date.getFullYear();
-    const selectMonth = date.getMonth();
-    const minYear = this.getMinYear();
-    const maxYear = this.getMaxYear();
+  const defaultDate = useMemo((): Date => {
+    // 存在最小值且毫秒数大于现在
+    if (min && minDate.getTime() >= Date.now()) {
+      return minDate;
+    }
+    if (minuteStep && minuteStep > 1 && (mode === MODE.DATETIME || mode === MODE.TIME)) {
+      return new Date(new Date().setMinutes(0));
+    }
+    return new Date();
+  }, [min, minuteStep, mode]);
+
+  const currentDate = useMemo(() => {
+    const { date, wheelDefault } = state;
+    return clipDate(date || wheelDefault || defaultDate);
+  }, [state, defaultDate, mode]);
+
+  React.useImperativeHandle(ref, () => ({
+    value: format ? dayjs(currentDate).format(format) : currentDate,
+  }));
+
+  const dateData = useMemo(() => {
+    const yearCol: Array<DataSource> = [];
+    const monthCol: Array<DataSource> = [];
+    const dayCol: Array<DataSource> = [];
+
+    const selectYear = currentDate.getFullYear();
+    const selectMonth = currentDate.getMonth();
+
+    const minYear = minDate.getFullYear();
+    const maxYear = maxDate.getFullYear();
 
     for (let i = minYear; i <= maxYear; i += 1) {
       yearCol.push({
-        label: i + locale!.year,
+        label: i + locale?.year!,
         value: i,
       });
     }
-
-    if (mode === YEAR) {
+    if (mode === MODE.YEAR) {
       return [yearCol];
     }
 
-    let minMonth = 0;
-    let maxMonth = 11;
-    if (selectYear === minYear) {
-      minMonth = this.getMinMonth();
-    }
-    if (selectYear === maxYear) {
-      maxMonth = this.getMaxMonth();
-    }
+    const minMonth = selectYear === minYear ? minDate.getMonth() : 0;
+    const maxMonth = selectYear === maxYear ? maxDate.getMonth() : 11;
 
     for (let i = minMonth; i <= maxMonth; i += 1) {
       monthCol.push({
-        label: i + 1 + locale!.month,
+        label: i + 1 + locale?.month!,
         value: i,
       });
     }
 
-    if (mode === MONTH) {
+    if (mode === MODE.MONTH) {
       return [yearCol, monthCol];
     }
 
-    let minDay = 1;
-    let maxDay = getDaysInMonth(date);
-
-    if (selectYear === minYear && selectMonth === minMonth) {
-      minDay = this.getMinDay();
-    }
-
-    if (selectYear === maxYear && selectMonth === maxMonth) {
-      maxDay = this.getMaxDay();
-    }
-
+    const minDay = selectYear === minYear && selectMonth === minMonth ? minDate.getDate() : 1;
+    const maxDay =
+      selectYear === maxYear && selectMonth === maxMonth
+        ? maxDate.getDate()
+        : getDaysInMonth(currentDate);
     for (let i = minDay; i <= maxDay; i += 1) {
       dayCol.push({
-        label: i + locale!.day,
+        label: i + locale?.day!,
         value: i,
       });
     }
-
-    if (mode === DATE) {
-      return [yearCol, monthCol, dayCol];
-    }
-
     return [yearCol, monthCol, dayCol];
+  }, [currentDate, minDate, maxDate, locale, use12Hours, mode]);
+
+  const getDisplayHour = (rawHour) => {
+    if (use12Hours) {
+      if (rawHour === 0) {
+        rawHour = 12;
+      }
+      if (rawHour > 12) {
+        rawHour -= 12;
+      }
+      return rawHour;
+    }
+    return rawHour;
   };
 
-  getTimeData = () => {
-    const { locale, mode, minuteStep } = this.props;
-    const date = this.getDate();
-    const hourCol: object[] = [];
-    const minuteCol: object[] = [];
+  const timeData = useMemo(() => {
+    const hourCol: Array<DataSource> = [];
+    const minuteCol: Array<DataSource> = [];
 
     let minHour = 0;
     let maxHour = 23;
     let minMinute = 0;
     let maxMinute = 59;
 
-    const minDateHour = this.getMinHour();
-    const maxDateHour = this.getMaxHour();
-    const minDateMinute = this.getMinMinute();
-    const maxDateMinute = this.getMaxMinute();
-    const selectHour = date.getHours();
+    const minDateHour = minDate.getHours();
+    const maxDateHour = maxDate.getHours();
+    const minDateMinute = minDate.getMinutes();
+    const maxDateMinute = maxDate.getMinutes();
+    const selectHour = currentDate.getHours();
 
-    if (mode === DATETIME) {
-      const selectYear = date.getFullYear();
-      const selectMonth = date.getMonth();
-      const selectDay = date.getDate();
-      const minYear = this.getMinYear();
-      const maxYear = this.getMaxYear();
-      const minMonth = this.getMinMonth();
-      const maxMonth = this.getMaxMonth();
-      const minDay = this.getMinDay();
-      const maxDay = this.getMaxDay();
+    if (mode === MODE.DATETIME) {
+      const selectYear = currentDate.getFullYear();
+      const selectMonth = currentDate.getMonth();
+      const selectDay = currentDate.getDate();
+      const minYear = minDate.getFullYear();
+      const maxYear = maxDate.getFullYear();
+      const minMonth = minDate.getMonth();
+      const maxMonth = maxDate.getMonth();
+      const minDay = minDate.getDate();
+      const maxDay = maxDate.getDate();
 
       if (selectYear === minYear && selectMonth === minMonth && selectDay === minDay) {
         minHour = minDateHour;
@@ -262,144 +305,104 @@ export default class DatePickerView extends Component<DatePickerViewProps, DateP
       }
     }
 
+    if ((minHour === 0 && maxHour === 0) || (minHour !== 0 && maxHour !== 0)) {
+      minHour = getDisplayHour(minHour);
+    } else if (minHour === 0 && use12Hours) {
+      minHour = 1;
+      hourCol.push({ value: 0, label: locale?.hour ? 12 + locale?.hour : '12' });
+    }
+    maxHour = getDisplayHour(maxHour);
+
     for (let i = minHour; i <= maxHour; i += 1) {
       hourCol.push({
-        label: locale!.hour ? i + locale!.hour : pad(i),
+        label: locale?.hour ? i + locale?.hour : pad(i),
         value: i,
       });
     }
 
     for (let i = minMinute; i <= maxMinute; i += minuteStep!) {
       minuteCol.push({
-        label: locale!.minute ? i + locale!.minute : pad(i),
+        label: locale?.minute ? i + locale?.minute : pad(i),
         value: i,
       });
     }
 
+    if (use12Hours) {
+      return [
+        hourCol,
+        minuteCol,
+        [
+          { value: 0, label: locale?.am },
+          { value: 1, label: locale?.pm },
+        ],
+      ];
+    }
+
     return [hourCol, minuteCol];
-  };
+  }, [minDate, maxDate, currentDate, locale, use12Hours, mode]);
 
-  getDate() {
-    const { date, wheelDefault } = this.state;
-    return this.clipDate(date || wheelDefault || this.getDefaultDate());
-  }
+  const colsValue = useMemo(() => {
+    let dataSource: any[] = [];
+    let value: any[] = [];
 
-  getDefaultDate = () => {
-    const { min, mode, minuteStep } = this.props;
-    // 存在最小值且毫秒数大于现在
-    if (min && this.getMinDate().getTime() >= Date.now()) {
-      return this.getMinDate();
+    if (mode === MODE.YEAR) {
+      dataSource = dateData;
+      value = [currentDate.getFullYear()];
     }
-    if (minuteStep && minuteStep > 1 && (mode === DATETIME || mode === TIME)) {
-      return new Date(new Date().setMinutes(0));
+
+    if (mode === MODE.MONTH) {
+      dataSource = dateData;
+      value = [currentDate.getFullYear(), currentDate.getMonth()];
     }
-    return new Date();
-  };
 
-  getMinYear = () => {
-    return this.getMinDate().getFullYear();
-  };
-
-  getMaxYear = () => {
-    return this.getMaxDate().getFullYear();
-  };
-
-  getMinMonth = () => {
-    return this.getMinDate().getMonth();
-  };
-
-  getMaxMonth = () => {
-    return this.getMaxDate().getMonth();
-  };
-
-  getMinDay = () => {
-    return this.getMinDate().getDate();
-  };
-
-  getMaxDay = () => {
-    return this.getMaxDate().getDate();
-  };
-
-  getMinHour = () => {
-    return this.getMinDate().getHours();
-  };
-
-  getMaxHour = () => {
-    return this.getMaxDate().getHours();
-  };
-
-  getMinMinute = () => {
-    return this.getMinDate().getMinutes();
-  };
-
-  getMaxMinute = () => {
-    return this.getMaxDate().getMinutes();
-  };
-
-  getMinDate = () => {
-    const minDate = isExtendDate(this.props.min);
-    return minDate || this.getDefaultMinDate();
-  };
-
-  getMaxDate = () => {
-    const maxDate = isExtendDate(this.props.max);
-    return maxDate || this.getDefaultMaxDate();
-  };
-
-  getDefaultMinDate = () => {
-    return getGregorianCalendar(1900, 0, 1, 0, 0, 0);
-  };
-
-  getDefaultMaxDate = () => {
-    return getGregorianCalendar(2030, 11, 30, 23, 59, 59);
-  };
-
-  clipDate = (date) => {
-    const { mode } = this.props;
-    const minDate = this.getMinDate();
-    const maxDate = this.getMaxDate();
-    if (mode === DATETIME) {
-      if (date < minDate) {
-        return cloneDate(minDate);
-      }
-      if (date > maxDate) {
-        return cloneDate(maxDate);
-      }
-    } else if (mode === DATE || mode === MONTH || mode === YEAR) {
-      if (+date + ONE_DAY <= +minDate) {
-        return cloneDate(minDate);
-      }
-      if (date >= +maxDate + ONE_DAY) {
-        return cloneDate(maxDate);
-      }
-    } else {
-      const maxHour = maxDate.getHours();
-      const maxMinutes = maxDate.getMinutes();
-      const minHour = minDate.getHours();
-      const minMinutes = minDate.getMinutes();
-      const hour = date.getHours();
-      const minutes = date.getMinutes();
-      if (hour < minHour || (hour === minHour && minutes < minMinutes)) {
-        return cloneDate(minDate);
-      }
-      if (hour > maxHour || (hour === maxHour && minutes > maxMinutes)) {
-        return cloneDate(maxDate);
+    if (mode === MODE.DATE || mode === MODE.DATETIME) {
+      dataSource = dateData;
+      value = [currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()];
+    }
+    if (mode === MODE.DATETIME || mode === MODE.TIME) {
+      dataSource = [...dataSource, ...timeData];
+      const hour = currentDate.getHours();
+      if (use12Hours) {
+        value = [
+          ...value,
+          hour > 12 ? hour - 12 : hour,
+          currentDate.getMinutes(),
+          hour < 12 ? 0 : 1,
+        ];
+      } else {
+        value = [...value, hour, currentDate.getMinutes()];
       }
     }
-    return date;
+    return { dataSource, value };
+  }, [currentDate, dateData, timeData, mode]);
+
+  const onValueChange = (selected, _dataSource, index) => {
+    const newValue = getNewDate(selected, index, currentDate);
+    setState({
+      ...state,
+      date: newValue,
+    });
+    const formatValue = format ? dayjs(newValue).format(format) : newValue;
+    onChange?.(formatValue);
   };
 
-  render() {
-    const { prefixCls, className, onInit, defaultValue, wheelDefaultValue, ...others } = this.props;
-    const { dataSource, value } = this.getColsValue();
-    return (
-      <PickerView
-        {...others}
-        className={className}
-        dataSource={dataSource}
-        value={value}
-        onChange={this.onValueChange}
-      />
-    );
-  }
-}
+  const { dataSource, value } = colsValue;
+  return (
+    <PickerView
+      {...others}
+      className={className}
+      dataSource={dataSource}
+      value={value}
+      onChange={onValueChange}
+    />
+  );
+});
+
+DatePickerView.defaultProps = {
+  mode: MODE.DATE,
+  disabled: false,
+  minuteStep: 1,
+  use12Hours: false,
+};
+
+export default DatePickerView;

@@ -1,5 +1,3 @@
-import type { Locale } from '../config-provider/PropsType';
-
 export type DatePickerValue = string | Date;
 
 export interface BaseDatePickerViewProps {
@@ -8,12 +6,10 @@ export interface BaseDatePickerViewProps {
   value?: DatePickerValue;
   defaultValue?: DatePickerValue;
   wheelDefaultValue?: DatePickerValue;
-  onInit?: (value?: object[], i?: number) => void;
   onChange?: (value?: Date) => void;
   minuteStep?: number;
   min?: DatePickerValue;
   max?: DatePickerValue;
-  valueMember?: string;
-  locale?: Locale['DatePickerView'];
-  stopScroll?: boolean;
+  use12Hours?: boolean;
+  format?: string;
 }

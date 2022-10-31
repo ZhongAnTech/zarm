@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import type { BaseDatePickerViewProps, DatePickerValue } from '../PropsType';
+import type { BaseDatePickerViewProps, DatePickerValue } from '../interface';
 
 const isExtendDate = (date?: DatePickerValue): Date | '' => {
   if (date instanceof Date) {

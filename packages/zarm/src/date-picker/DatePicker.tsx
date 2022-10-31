@@ -1,144 +1,71 @@
-import React, { Component } from 'react';
-import isEqual from 'lodash/isEqual';
-import Popup from '../popup';
-import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
-import DatePickerView from '../date-picker-view';
-import { parseState } from '../date-picker-view/utils/parseState';
-import type { BaseDatePickerProps } from './PropsType';
+import React, { useContext } from 'react';
+import { ConfigContext } from '../n-config-provider';
+import PickerContainer from '../picker/Container';
+import DatePickerView, { DatePickerInstance } from '../date-picker-view';
+import type { BaseDatePickerProps } from './interface';
+import { HTMLProps } from '../utils/utilityTypes';
 
-export interface DatePickerProps extends BaseDatePickerProps {
-  prefixCls?: string;
-  className?: string;
-}
+export type DatePickerProps = BaseDatePickerProps & HTMLProps;
 
-export default class DatePicker extends Component<DatePickerProps, any> {
-  static defaultProps: DatePickerProps = {
-    mode: 'date',
-    minuteStep: 1,
-    prefixCls: 'za-date-picker',
-    valueMember: 'value',
-    maskClosable: true,
-    onCancel: () => {},
-    onInit: () => {},
+const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>((props, ref) => {
+  const {
+    className,
+    title,
+    confirmText,
+    cancelText,
+    mountContainer,
+    maskClosable,
+    onConfirm,
+    onCancel,
+    onChange,
+    visible,
+    ...others
+  } = props;
+
+  const datePickerViewRef = React.useRef<DatePickerInstance>(null);
+
+  const handleCancel = () => {
+    onCancel?.();
   };
 
-  static getDerivedStateFromProps(props, state) {
-    if (
-      !isEqual(
-        removeFnFromProps(props, ['onConfirm', 'onCancel', 'onChange']),
-        removeFnFromProps(state.prevProps, ['onConfirm', 'onCancel', 'onChange']),
-      )
-    ) {
-      return {
-        prevProps: props,
-        ...parseState(props),
-      };
-    }
-    return null;
-  }
-
-  constructor(props) {
-    super(props);
-    this.state = { ...parseState(props), stopScroll: false };
-  }
-
-  onCancel = () => {
-    const { onCancel } = this.props;
-    if (typeof onCancel === 'function') {
-      onCancel();
-    }
+  const handleConfirm = () => {
+    onConfirm?.(datePickerViewRef.current?.value as Date);
   };
 
-  onConfirm = () => {
-    const { onConfirm } = this.props;
-    this.setState(
-      {
-        stopScroll: true,
-      },
-      () => {
-        this.setState(
-          {
-            stopScroll: false,
-          },
-          () => {
-            if (typeof onConfirm === 'function') {
-              onConfirm(this.state.date);
-            }
-          },
-        );
-      },
-    );
+  const onValueChange = (newValue) => {
+    onChange?.(newValue);
   };
 
-  onInit = (selected) => {
-    this.setState({
-      date: selected,
-    });
-  };
-
-  onValueChange = (newValue) => {
-    const { onChange } = this.props;
-    this.setState({
-      date: newValue,
-    });
-
-    if (typeof onChange === 'function') {
-      onChange(newValue);
-    }
-  };
-
-  render() {
-    const {
-      prefixCls,
-      className,
-      title,
-      confirmText,
-      cancelText,
-      locale,
-      mountContainer,
-      maskClosable,
-      onConfirm,
-      onCancel,
-      onInit,
-      visible,
-      ...others
-    } = this.props;
-    const { date, stopScroll } = this.state;
-    const noop = () => {};
-
-    return (
-      <Popup
+  const { locale } = useContext(ConfigContext);
+  return (
+    <PickerContainer
+      visible={visible}
+      title={title}
+      className={className}
+      confirmText={confirmText || locale?.DatePicker?.confirmText}
+      cancelText={cancelText || locale?.DatePicker?.cancelText}
+      maskClosable={maskClosable}
+      mountContainer={mountContainer}
+      onConfirm={handleConfirm}
+      onCancel={handleCancel}
+      onClose={handleCancel}
+      ref={ref}
+    >
+      <DatePickerView
+        {...others}
         className={className}
-        visible={visible}
-        onMaskClick={maskClosable ? this.onCancel : noop}
-        mountContainer={mountContainer}
-        destroy
-      >
-        <div
-          className={prefixCls}
-          onClick={(e) => {
-            e.stopPropagation();
-          }}
-        >
-          <div className={`${prefixCls}__header`}>
-            <div className={`${prefixCls}__cancel`} onClick={this.onCancel}>
-              {cancelText || locale!.cancelText}
-            </div>
-            <div className={`${prefixCls}__title`}>{title || locale!.title}</div>
-            <div className={`${prefixCls}__submit`} onClick={this.onConfirm}>
-              {confirmText || locale!.confirmText}
-            </div>
-          </div>
-          <DatePickerView
-            {...others}
-            className={className}
-            value={date}
-            onInit={this.onInit}
-            onChange={this.onValueChange}
-            stopScroll={stopScroll}
-          />
-        </div>
-      </Popup>
-    );
-  }
-}
+        value={props.value}
+        onChange={onValueChange}
+        ref={datePickerViewRef}
+      />
+    </PickerContainer>
+  );
+});
+
+DatePicker.defaultProps = {
+  mode: 'date',
+  minuteStep: 1,
+  maskClosable: true,
+};
+
+export default DatePicker;

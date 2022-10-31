@@ -2,19 +2,12 @@ import React from 'react';
 import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import DateSelect from '../index';
-import enLocale from '../../date-picker-view/locale/en_US';
 import { date1, date2, date3, date4, date5, date6 } from '../../../tests/testData/date';
 
 describe('DateSelect', () => {
   it('DateSelect year', () => {
     const wrapper = mount(
-      <DateSelect
-        title="选择年份"
-        placeholder="请选择年份"
-        mode="year"
-        value="2017"
-        locale={enLocale}
-      />,
+      <DateSelect title="选择年份" placeholder="请选择年份" mode="year" value="2017" />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -25,16 +18,7 @@ describe('DateSelect', () => {
   });
 
   it('DateSelect disabled', () => {
-    const wrapper = mount(
-      <DateSelect
-        disabeld
-        dataSource={[
-          { value: '1', label: '选项一' },
-          { value: '2', label: '选项二' },
-        ]}
-        value={date1}
-      />,
-    );
+    const wrapper = mount(<DateSelect disabled value={date1} />);
 
     wrapper.find('.za-date-select').simulate('click');
     expect(toJson(wrapper)).toMatchSnapshot();
