@@ -78,13 +78,13 @@ const PickerView = React.forwardRef<PickerViewInstance, PickerViewProps>((props,
   return (
     <div className={bem([className])} style={style}>
       <div className={bem('content')}>
-        {columns.map((item, index) => (
+        {columns.map((column, index) => (
           <Wheel
             key={+index}
-            dataSource={item}
+            dataSource={column}
             value={innerValue?.[index]}
             fieldNames={fieldNames}
-            itemRender={itemRender}
+            itemRender={itemRender ? (item) => itemRender(item, index) : undefined}
             disabled={disabled}
             onChange={(selected: WheelValue) => onValueChange(selected, index)}
             stopScroll={stopScroll}
