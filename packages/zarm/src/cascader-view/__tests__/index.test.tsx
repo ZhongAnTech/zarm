@@ -100,22 +100,3 @@ describe('Cascader', () => {
     expect(onChange).toHaveBeenCalledWith(['340000', '340800', '340803']);
   });
 });
-
-describe('Cascader error type', () => {
-  const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
-
-  afterAll(() => {
-    consoleSpy.mockRestore();
-  });
-
-  it('handle props error type', () => {
-    const onChange = 1 as any;
-
-    render(<CascaderView defaultValue={[]} value={[]} dataSource={District} onChange={onChange} />);
-
-    fireEvent.click(screen.getAllByDisplayValue('340000')[0]);
-    expect(consoleSpy).toHaveBeenCalledWith('onChange need a function');
-
-    consoleSpy.mockRestore();
-  });
-});

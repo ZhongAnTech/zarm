@@ -76,7 +76,6 @@ describe('Cascader', () => {
         cancelText="取消"
         confirmText="确定"
         visible
-        valueMember="value"
         itemRender={(data) => data.label}
         dataSource={District}
         onChange={onChange}
@@ -84,46 +83,6 @@ describe('Cascader', () => {
       />,
     );
     expect(container).toMatchSnapshot();
-  });
-
-  it('renders correctly if visible is false', () => {
-    const onChange = jest.fn();
-    render(
-      <Cascader
-        title="级联选择器"
-        defaultValue={[]}
-        value={[]}
-        cancelText="取消"
-        confirmText="确定"
-        visible={false}
-        valueMember="value"
-        itemRender={(data) => data.label}
-        dataSource={District}
-        onChange={onChange}
-        mountContainer={false}
-      />,
-    );
-    expect(screen.queryByText('级联选择器')).toBeFalsy();
-  });
-
-  it('should not trigger onCancel if maskClosable is false', () => {
-    const onCancel = jest.fn();
-
-    const { container } = render(
-      <Cascader
-        defaultValue={[]}
-        value={[]}
-        visible
-        maskClosable={false}
-        dataSource={District}
-        onCancel={onCancel}
-        mountContainer={false}
-      />,
-    );
-
-    const mask = container.querySelector('.za-mask');
-    fireEvent.click(mask!);
-    expect(onCancel).not.toBeCalled();
   });
 
   it('handle props click', () => {
@@ -186,50 +145,5 @@ describe('Cascader', () => {
 
     expect(onChange).toBeCalledTimes(3);
     expect(onChange).toHaveBeenCalledWith(['340000', '340800', '340803']);
-  });
-});
-
-describe('Cascader error type', () => {
-  const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
-
-  afterAll(() => {
-    consoleSpy.mockRestore();
-  });
-
-  it('handle props error type', () => {
-    const onCancel = 1 as any;
-    const onConfirm = 1 as any;
-    const onChange = 1 as any;
-
-    const { container, getByText } = render(
-      <Cascader
-        defaultValue={[]}
-        value={[]}
-        cancelText="取消"
-        confirmText="确定"
-        visible
-        maskClosable
-        dataSource={District}
-        onCancel={onCancel}
-        onConfirm={onConfirm}
-        onChange={onChange}
-        mountContainer={false}
-      />,
-    );
-
-    fireEvent.click(getByText('取消'));
-    expect(consoleSpy).toHaveBeenCalledWith('onCancel need a function');
-
-    const mask = container.querySelector('.za-mask');
-    fireEvent.click(mask!);
-    expect(consoleSpy).toHaveBeenCalledWith('onCancel need a function');
-
-    fireEvent.click(getByText('确定'));
-    expect(consoleSpy).toHaveBeenCalledWith('onConfirm need a function');
-
-    fireEvent.click(screen.getAllByDisplayValue('340000')[0]);
-    expect(consoleSpy).toHaveBeenCalledWith('onChange need a function');
-
-    consoleSpy.mockRestore();
   });
 });

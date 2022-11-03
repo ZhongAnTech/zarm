@@ -1,37 +1,5 @@
 @include b(cascader) {
-  @include e(header) {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    width: 100%;
-    height: var(--za-picker-header-height);
-    line-height: var(--za-picker-header-height);
-    font-size: var(--za-picker-header-font-size);
-    background: var(--za-picker-header-background);
-    @include onepx(top);
-  }
-
-  @include e(cancel, submit) {
-    padding: 0 var(--za-padding-h-lg);
-    cursor: pointer;
-  }
-
-  @include e(cancel) {
-    color: var(--za-color-text-caption);
-  }
-
-  @include e(submit) {
-    color: var(--za-theme-primary);
-  }
-
-  @include e(title) {
-    color: var(--za-color-text);
-  }
-
-  @include e(body) {
-    .za-cascader-view {
-      --za-cascader-view-options-height: 360px;
-    }
+  .za-cascader-view {
+    --za-cascader-view-options-height: 360px;
   }
 }

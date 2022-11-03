@@ -97,7 +97,7 @@ exports[`Cascader basic usage 1`] = `
                               />
                             </div>
                             <div
-                              class="za-list-item__after"
+                              class="za-list-item__suffix"
                             >
                               <span
                                 class="za-radio__widget"
@@ -159,7 +159,7 @@ exports[`Cascader basic usage 1`] = `
                               />
                             </div>
                             <div
-                              class="za-list-item__after"
+                              class="za-list-item__suffix"
                             >
                               <span
                                 class="za-radio__widget"
@@ -241,7 +241,7 @@ exports[`Cascader basic usage 1`] = `
                               />
                             </div>
                             <div
-                              class="za-list-item__after"
+                              class="za-list-item__suffix"
                             >
                               <span
                                 class="za-radio__widget"
@@ -398,7 +398,7 @@ exports[`Cascader basic usage 2`] = `
                               />
                             </div>
                             <div
-                              class="za-list-item__after"
+                              class="za-list-item__suffix"
                             >
                               <span
                                 class="za-radio__widget"
@@ -460,7 +460,7 @@ exports[`Cascader basic usage 2`] = `
                               />
                             </div>
                             <div
-                              class="za-list-item__after"
+                              class="za-list-item__suffix"
                             >
                               <span
                                 class="za-radio__widget"
@@ -542,7 +542,7 @@ exports[`Cascader basic usage 2`] = `
                               />
                             </div>
                             <div
-                              class="za-list-item__after"
+                              class="za-list-item__suffix"
                             >
                               <span
                                 class="za-radio__widget"
@@ -624,7 +624,7 @@ exports[`Cascader basic usage 2`] = `
                               />
                             </div>
                             <div
-                              class="za-list-item__after"
+                              class="za-list-item__suffix"
                             >
                               <span
                                 class="za-radio__widget"
@@ -686,7 +686,7 @@ exports[`Cascader basic usage 2`] = `
                               />
                             </div>
                             <div
-                              class="za-list-item__after"
+                              class="za-list-item__suffix"
                             >
                               <span
                                 class="za-radio__widget"
@@ -748,7 +748,7 @@ exports[`Cascader basic usage 2`] = `
                               />
                             </div>
                             <div
-                              class="za-list-item__after"
+                              class="za-list-item__suffix"
                             >
                               <span
                                 class="za-radio__widget"
@@ -905,7 +905,7 @@ exports[`Cascader basic usage 3`] = `
                               />
                             </div>
                             <div
-                              class="za-list-item__after"
+                              class="za-list-item__suffix"
                             >
                               <span
                                 class="za-radio__widget"
@@ -967,7 +967,7 @@ exports[`Cascader basic usage 3`] = `
                               />
                             </div>
                             <div
-                              class="za-list-item__after"
+                              class="za-list-item__suffix"
                             >
                               <span
                                 class="za-radio__widget"
@@ -1049,7 +1049,7 @@ exports[`Cascader basic usage 3`] = `
                               />
                             </div>
                             <div
-                              class="za-list-item__after"
+                              class="za-list-item__suffix"
                             >
                               <span
                                 class="za-radio__widget"
@@ -1131,7 +1131,7 @@ exports[`Cascader basic usage 3`] = `
                               />
                             </div>
                             <div
-                              class="za-list-item__after"
+                              class="za-list-item__suffix"
                             >
                               <span
                                 class="za-radio__widget"
@@ -1193,7 +1193,7 @@ exports[`Cascader basic usage 3`] = `
                               />
                             </div>
                             <div
-                              class="za-list-item__after"
+                              class="za-list-item__suffix"
                             >
                               <span
                                 class="za-radio__widget"
@@ -1255,7 +1255,7 @@ exports[`Cascader basic usage 3`] = `
                               />
                             </div>
                             <div
-                              class="za-list-item__after"
+                              class="za-list-item__suffix"
                             >
                               <span
                                 class="za-radio__widget"
@@ -1391,7 +1391,7 @@ exports[`Cascader renders correctly 1`] = `
                               />
                             </div>
                             <div
-                              class="za-list-item__after"
+                              class="za-list-item__suffix"
                             >
                               <span
                                 class="za-radio__widget"
@@ -1453,7 +1453,7 @@ exports[`Cascader renders correctly 1`] = `
                               />
                             </div>
                             <div
-                              class="za-list-item__after"
+                              class="za-list-item__suffix"
                             >
                               <span
                                 class="za-radio__widget"

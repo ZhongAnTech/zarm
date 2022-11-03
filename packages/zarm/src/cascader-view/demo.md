@@ -87,21 +87,32 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性          | 类型                                                                      | 默认值                        | 说明                   |
-| :------------ | :------------------------------------------------------------------------ | :---------------------------- | :--------------------- |
-| dataSource    | object[]                                                                  | []                            | 数据源                 |
-| defaultValue  | string \| number \| boolean \| Array<string &#124; number &#124; boolean> | -                             | 初始值                 |
-| value         | string \| number \| boolean \| Array<string &#124; number &#124; boolean> | -                             | 值                     |
-| displayMember | string                                                                    | 'label'                       | 键字段对应的 key       |
-| valueMember   | string                                                                    | 'value'                       | 值字段对应的 key       |
-| itemRender    | (data?: object) => data.label                                             | (data?: object) => data.label | 单个选项的展示         |
-| onChange      | (value: string[]) => void                                                 | -                             | 值变化时触发的回调函数 |
+| 属性         | 类型                          | 默认值                                                   | 说明                                     |
+| :----------- | :---------------------------- | :------------------------------------------------------- | :--------------------------------------- |
+| dataSource   | CascaderOption[]              | []                                                       | 数据源                                   |
+| defaultValue | CascaderValue[]               | -                                                        | 初始值                                   |
+| value        | CascaderValue[]               | -                                                        | 值                                       |
+| fieldNames   | object                        | { label: `label`, value: `value`, children: `children` } | 自定义节点 label、value、children 的字段 |
+| itemRender   | (data?: object) => data.label | (data?: object) => data.label                            | 单个选项的展示                           |
+| onChange     | (value: string[]) => void     | -                                                        | 值变化时触发的回调函数                   |
+
+### CascaderValue
+
+`string | number | boolean`
+
+### CascaderOption
+
+| 属性     | 类型                        | 默认值 | 说明         |
+| :------- | :-------------------------- | :----- | :----------- |
+| value    | string \| number \| boolean | -      | 选项值       |
+| label    | React.ReactNode             | -      | 选项显示名称 |
+| children | CascaderOption[]            | -      | 子选项       |
 
 ## CSS 变量
 
-| 属性               | 默认值  | 说明         |
-| :----------------- | :------ | :----------- |
-| --background       | '#fff'  | 弹层背景色   |
-| --option-font-size | '14px'  | 选项字体大小 |
-| --option-height    | '44px'  | 选项高度     |
-| --options-height   | '360px' | 选项面板高度 |
+| 属性               | 默认值                   | 说明         |
+| :----------------- | :----------------------- | :----------- |
+| --background-color | '#fff'                   | 弹层背景色   |
+| --option-font-size | 'var(--za-font-size-sm)' | 选项字体大小 |
+| --option-height    | '44px'                   | 选项高度     |
+| --options-height   | 'auto'                   | 选项面板高度 |

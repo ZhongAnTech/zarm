@@ -1,7 +1,6 @@
 import React, {
   useEffect,
   useState,
-  ReactNode,
   useCallback,
   memo,
   useMemo,
@@ -14,10 +13,17 @@ import type { HTMLProps } from '../utils/utilityTypes';
 import { ConfigContext } from '../n-config-provider';
 import Tabs from '../tabs';
 import Radio from '../radio';
-import type { BaseCascaderViewProps, TDataSource, IDataSource } from './Interface';
+import { resolvedFieldNames } from '../picker-view/utils';
+import type {
+  BaseCascaderViewProps,
+  CascaderItem,
+  CascaderOption,
+  CascaderValue,
+} from './interface';
 import { parseState } from './utils';
 
 export interface CascaderViewCssVars {
+  '--background-color'?: React.CSSProperties['backgroundColor'];
   '--option-font-size'?: React.CSSProperties['fontSize'];
   '--option-height'?: React.CSSProperties['height'];
   '--options-height'?: React.CSSProperties['height'];
@@ -29,20 +35,25 @@ export type CascaderViewState = ReturnType<typeof parseState> & {
   tabIndex: number;
 };
 
-const CascaderView = forwardRef<unknown, CascaderViewProps>((props, ref) => {
+const DEFAULT_FIELD_NAMES = {
+  value: 'value',
+  label: 'label',
+  children: 'children',
+};
+
+const CascaderView = forwardRef<HTMLDivElement, CascaderViewProps>((props, ref) => {
   const {
     className,
     dataSource,
     defaultValue,
     value,
-    displayMember,
-    valueMember,
+    fieldNames: propsFieldNames,
     cols,
     itemRender,
     onChange,
     ...restProps
   } = props;
-  const cascaderViewRef = (ref as any) || createRef<HTMLDivElement>();
+  const cascaderViewRef = ref || createRef<HTMLDivElement>();
   const { prefixCls, locale: globalLocal } = useContext(ConfigContext);
   const locale = globalLocal?.CascaderView;
   const bem = createBEM('cascader-view', { prefixCls });
@@ -50,22 +61,23 @@ const CascaderView = forwardRef<unknown, CascaderViewProps>((props, ref) => {
   const cls = bem([className]);
   const [state, setState] = useState<CascaderViewState>({ ...parseState(props), tabIndex: 0 });
   const { currentValue, tabIndex } = state;
+  const fieldNames = resolvedFieldNames(propsFieldNames, DEFAULT_FIELD_NAMES);
 
   const handleObtainItem = useCallback(
-    (list: typeof dataSource, _value: ReactNode) => {
-      return list.find((item) => item[valueMember as 'value'] === _value);
+    (list: CascaderOption[], _value: CascaderValue) => {
+      return list.find((item) => item[fieldNames.value] === _value);
     },
-    [valueMember],
+    [fieldNames.value],
   );
 
   /**
    * 初始化列表值
    */
   useEffect(() => {
-    const initValue: typeof dataSource = [];
+    const initValue: CascaderOption[] = [];
     const v = value || defaultValue || [];
 
-    v.reduce((accumulator: IDataSource[], _currentValue: ReactNode) => {
+    v.reduce((accumulator: CascaderOption[], _currentValue: CascaderValue) => {
       const valueItem = handleObtainItem(accumulator, _currentValue);
 
       if (valueItem) {
@@ -88,23 +100,21 @@ const CascaderView = forwardRef<unknown, CascaderViewProps>((props, ref) => {
    * 获取列表数据
    */
   const columnDataList = useMemo(() => {
-    const group: { selected: IDataSource | undefined; options: IDataSource[] }[] = [];
-    let _dataSource: typeof dataSource = dataSource;
+    const group: { selected?: CascaderOption; options: CascaderOption[] }[] = [];
+    let _dataSource: CascaderOption[] = dataSource;
     let i = 0;
 
     while (_dataSource.length) {
       const colVal = currentValue[i];
 
-      const selected =
-        !!colVal && handleObtainItem(_dataSource, colVal[valueMember as keyof ReactNode]);
+      const selected = colVal ? handleObtainItem(_dataSource, colVal[fieldNames.value]) : undefined;
 
       group.push({
         selected,
         options: _dataSource,
       });
 
-      const childrenData: typeof dataSource | undefined = ((selected ?? _dataSource[0]) || {})
-        .children;
+      const childrenData = ((selected ?? _dataSource[0]) || {}).children;
 
       if (i < currentValue.length && childrenData && childrenData.length && i + 1 < cols!) {
         _dataSource = childrenData;
@@ -116,14 +126,14 @@ const CascaderView = forwardRef<unknown, CascaderViewProps>((props, ref) => {
     }
 
     return group;
-  }, [cols, currentValue, dataSource, handleObtainItem, valueMember]);
+  }, [cols, currentValue, dataSource, handleObtainItem, fieldNames]);
 
   /**
    * 修改列表值
    * @param itemValue
    * @param index
    */
-  const handleChange = (itemValue: any, index: number) => {
+  const handleChange = (itemValue: CascaderValue, index: number) => {
     const _value = currentValue.slice(0, index);
 
     if (typeof index === 'number') {
@@ -136,21 +146,15 @@ const CascaderView = forwardRef<unknown, CascaderViewProps>((props, ref) => {
       tabIndex: typeof index === 'number' ? index + 1 : tabIndex,
     });
 
-    if (onChange) {
-      if (typeof onChange !== 'function') {
-        console.error('onChange need a function');
-      } else {
-        onChange(_value.map((v) => v![valueMember as 'value']));
-      }
-    }
+    onChange?.(_value.map((v) => v![fieldNames.value]));
   };
 
   /**
    * 判断是否有传入 itemRender， 否则使用默认的渲染方式
    * @param item
    */
-  const handleItemRender = (item: TDataSource) => {
-    return typeof itemRender !== 'function' ? item[displayMember as 'label'] : itemRender(item);
+  const handleItemRender = (item: CascaderItem) => {
+    return typeof itemRender !== 'function' ? item[fieldNames.label] : itemRender(item);
   };
 
   return (
@@ -164,7 +168,7 @@ const CascaderView = forwardRef<unknown, CascaderViewProps>((props, ref) => {
         lineWidth={60}
       >
         {columnDataList.map((group, index) => {
-          const groupActiveItemDisplay = group.selected?.[displayMember as 'label'];
+          const groupActiveItemDisplay = group.selected?.[fieldNames.label];
           const panelTitle = (
             <span className={bem('tab-text', [{ unselected: !groupActiveItemDisplay }])}>
               {groupActiveItemDisplay ?? locale!.unselectedTabText}
@@ -177,13 +181,13 @@ const CascaderView = forwardRef<unknown, CascaderViewProps>((props, ref) => {
                 <Radio.Group
                   type="list"
                   listMarkerAlign="after"
-                  value={currentValue[index]?.[valueMember as 'value']}
+                  value={currentValue[index]?.[fieldNames.value]}
                   onChange={(v) => handleChange(v, index)}
                 >
                   {group.options.map((item, i) => {
                     const isActive =
                       currentValue[index] &&
-                      currentValue[index][valueMember as 'value'] === item[valueMember as 'value'];
+                      currentValue[index][fieldNames.value] === item[fieldNames.value];
                     const label = handleItemRender(item);
 
                     return (
@@ -194,7 +198,7 @@ const CascaderView = forwardRef<unknown, CascaderViewProps>((props, ref) => {
                             active: isActive,
                           },
                         ])}
-                        value={item[valueMember as 'value']}
+                        value={item[fieldNames.value]}
                       >
                         {label}
                       </Radio>
@@ -213,8 +217,6 @@ const CascaderView = forwardRef<unknown, CascaderViewProps>((props, ref) => {
 CascaderView.displayName = 'CascaderView';
 
 CascaderView.defaultProps = {
-  displayMember: 'label',
-  valueMember: 'value',
   cols: Infinity,
 };
 

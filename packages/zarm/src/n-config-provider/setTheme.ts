@@ -85,6 +85,8 @@ const themes = {
   '--za-tooltip-background': '#5b5c60',
   '--za-image-background': '#3a3b3d',
   '--za-image-text-color': '#fff',
+  '--za-cascader-view-background-color': '#000',
+  '--za-cascader-header-background-color': 'var(--za-background-color)',
 } as const;
 
 const setTheme = (value: ConfigProviderProps['theme']) => {

@@ -88,8 +88,7 @@ describe('index', () => {
         "Cascader": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
-            "maskClosable": false,
-            "visible": false,
+            "maskClosable": true,
           },
           "render": [Function],
         },
@@ -100,8 +99,6 @@ describe('index', () => {
             "$$typeof": Symbol(react.forward_ref),
             "defaultProps": Object {
               "cols": Infinity,
-              "displayMember": "label",
-              "valueMember": "value",
             },
             "render": [Function],
           },
