@@ -75,14 +75,16 @@ const DateSelect = React.forwardRef<HTMLDivElement, DateSelectProps>((props, ref
 
   const arrowRender = <div className={bem('arrow')} />;
   return (
-    <div className={cls} onClick={handleClick} ref={ref}>
-      <input type="hidden" value={formatFn(props, selectValue)} />
-      <div className={bem('input')}>
-        <div className={bem('value')}>
-          {formatFn(props, selectValue) || placeholder || globalLocal?.DateSelect!.placeholder}
+    <>
+      <div className={cls} onClick={handleClick} ref={ref}>
+        <input type="hidden" value={formatFn(props, selectValue)} />
+        <div className={bem('input')}>
+          <div className={bem('value')}>
+            {formatFn(props, selectValue) || placeholder || globalLocal?.DateSelect!.placeholder}
+          </div>
         </div>
+        {hasArrow ? arrowRender : null}
       </div>
-      {hasArrow ? arrowRender : null}
       <DatePicker
         {...others}
         className={className}
@@ -91,7 +93,7 @@ const DateSelect = React.forwardRef<HTMLDivElement, DateSelectProps>((props, ref
         onConfirm={handleOk}
         onCancel={handleCancel}
       />
-    </div>
+    </>
   );
 });
 

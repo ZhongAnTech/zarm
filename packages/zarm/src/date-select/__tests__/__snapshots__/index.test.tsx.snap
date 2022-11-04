@@ -30,81 +30,52 @@ exports[`DateSelect DateSelect date 1`] = `
     <div
       className="za-date-select__arrow"
     />
+  </div>
+  <ForwardRef
+    maskClosable={true}
+    minuteStep={1}
+    mode="date"
+    onCancel={[Function]}
+    onConfirm={[Function]}
+    title="选择日期"
+    value={2019-04-23T00:00:00.000Z}
+    visible={false}
+  >
     <ForwardRef
+      cancelText="取消"
+      confirmText="确定"
       maskClosable={true}
-      minuteStep={1}
-      mode="date"
       onCancel={[Function]}
+      onClose={[Function]}
       onConfirm={[Function]}
       title="选择日期"
-      value={2019-04-23T00:00:00.000Z}
       visible={false}
     >
-      <ForwardRef
-        cancelText="取消"
-        confirmText="确定"
-        maskClosable={true}
-        onCancel={[Function]}
-        onClose={[Function]}
-        onConfirm={[Function]}
-        title="选择日期"
+      <Popup
+        destroy={true}
+        direction="bottom"
+        lockScroll={true}
+        mask={true}
+        onMaskClick={[Function]}
         visible={false}
       >
-        <Popup
-          destroy={true}
-          direction="bottom"
-          lockScroll={true}
-          mask={true}
-          onMaskClick={[Function]}
+        <Trigger
+          disabled={false}
+          onClose={[Function]}
           visible={false}
         >
-          <Trigger
-            disabled={false}
-            onClose={[Function]}
+          <Mask
+            color="black"
+            destroy={true}
+            mountContainer={[Function]}
+            onClick={[Function]}
+            opacity="normal"
             visible={false}
           >
-            <Mask
-              color="black"
-              destroy={true}
-              mountContainer={[Function]}
-              onClick={[Function]}
-              opacity="normal"
-              visible={false}
-            >
-              <Transition
-                destroy={true}
-                nodeRef={null}
-                tranisitionName="za-fade"
-                visible={false}
-              >
-                <Transition
-                  addEndListener={[Function]}
-                  appear={false}
-                  enter={true}
-                  exit={true}
-                  in={false}
-                  mountOnEnter={true}
-                  nodeRef={
-                    Object {
-                      "current": undefined,
-                    }
-                  }
-                  onEnter={[Function]}
-                  onEntered={[Function]}
-                  onEntering={[Function]}
-                  onExit={[Function]}
-                  onExited={[Function]}
-                  onExiting={[Function]}
-                  unmountOnExit={true}
-                />
-              </Transition>
-            </Mask>
             <Transition
               destroy={true}
               nodeRef={null}
-              onEnter={[Function]}
-              onLeaveEnd={[Function]}
-              tranisitionName="za-move-up"
+              tranisitionName="za-fade"
               visible={false}
             >
               <Transition
@@ -128,11 +99,40 @@ exports[`DateSelect DateSelect date 1`] = `
                 unmountOnExit={true}
               />
             </Transition>
-          </Trigger>
-        </Popup>
-      </ForwardRef>
+          </Mask>
+          <Transition
+            destroy={true}
+            nodeRef={null}
+            onEnter={[Function]}
+            onLeaveEnd={[Function]}
+            tranisitionName="za-move-up"
+            visible={false}
+          >
+            <Transition
+              addEndListener={[Function]}
+              appear={false}
+              enter={true}
+              exit={true}
+              in={false}
+              mountOnEnter={true}
+              nodeRef={
+                Object {
+                  "current": undefined,
+                }
+              }
+              onEnter={[Function]}
+              onEntered={[Function]}
+              onEntering={[Function]}
+              onExit={[Function]}
+              onExited={[Function]}
+              onExiting={[Function]}
+              unmountOnExit={true}
+            />
+          </Transition>
+        </Trigger>
+      </Popup>
     </ForwardRef>
-  </div>
+  </ForwardRef>
 </ForwardRef>
 `;
 
@@ -154,7 +154,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
   >
     <input
       type="hidden"
-      value="+0800-11-04 14:34"
+      value="+0800-11-04 16:29"
     />
     <div
       className="za-date-select__input"
@@ -162,89 +162,60 @@ exports[`DateSelect DateSelect datetime 1`] = `
       <div
         className="za-date-select__value"
       >
-        +0800-11-04 14:34
+        +0800-11-04 16:29
       </div>
     </div>
     <div
       className="za-date-select__arrow"
     />
+  </div>
+  <ForwardRef
+    defaultValue={2017-11-03T10:00:00.000Z}
+    maskClosable={true}
+    max={2017-11-02T09:00:00.000Z}
+    min={2017-11-02T03:00:00.000Z}
+    minuteStep={1}
+    mode="datetime"
+    onCancel={[Function]}
+    onConfirm={[Function]}
+    title="选择时间"
+    visible={false}
+  >
     <ForwardRef
-      defaultValue={2017-11-03T10:00:00.000Z}
+      cancelText="取消"
+      confirmText="确定"
       maskClosable={true}
-      max={2017-11-02T09:00:00.000Z}
-      min={2017-11-02T03:00:00.000Z}
-      minuteStep={1}
-      mode="datetime"
       onCancel={[Function]}
+      onClose={[Function]}
       onConfirm={[Function]}
       title="选择时间"
       visible={false}
     >
-      <ForwardRef
-        cancelText="取消"
-        confirmText="确定"
-        maskClosable={true}
-        onCancel={[Function]}
-        onClose={[Function]}
-        onConfirm={[Function]}
-        title="选择时间"
+      <Popup
+        destroy={true}
+        direction="bottom"
+        lockScroll={true}
+        mask={true}
+        onMaskClick={[Function]}
         visible={false}
       >
-        <Popup
-          destroy={true}
-          direction="bottom"
-          lockScroll={true}
-          mask={true}
-          onMaskClick={[Function]}
+        <Trigger
+          disabled={false}
+          onClose={[Function]}
           visible={false}
         >
-          <Trigger
-            disabled={false}
-            onClose={[Function]}
+          <Mask
+            color="black"
+            destroy={true}
+            mountContainer={[Function]}
+            onClick={[Function]}
+            opacity="normal"
             visible={false}
           >
-            <Mask
-              color="black"
-              destroy={true}
-              mountContainer={[Function]}
-              onClick={[Function]}
-              opacity="normal"
-              visible={false}
-            >
-              <Transition
-                destroy={true}
-                nodeRef={null}
-                tranisitionName="za-fade"
-                visible={false}
-              >
-                <Transition
-                  addEndListener={[Function]}
-                  appear={false}
-                  enter={true}
-                  exit={true}
-                  in={false}
-                  mountOnEnter={true}
-                  nodeRef={
-                    Object {
-                      "current": undefined,
-                    }
-                  }
-                  onEnter={[Function]}
-                  onEntered={[Function]}
-                  onEntering={[Function]}
-                  onExit={[Function]}
-                  onExited={[Function]}
-                  onExiting={[Function]}
-                  unmountOnExit={true}
-                />
-              </Transition>
-            </Mask>
             <Transition
               destroy={true}
               nodeRef={null}
-              onEnter={[Function]}
-              onLeaveEnd={[Function]}
-              tranisitionName="za-move-up"
+              tranisitionName="za-fade"
               visible={false}
             >
               <Transition
@@ -268,11 +239,40 @@ exports[`DateSelect DateSelect datetime 1`] = `
                 unmountOnExit={true}
               />
             </Transition>
-          </Trigger>
-        </Popup>
-      </ForwardRef>
+          </Mask>
+          <Transition
+            destroy={true}
+            nodeRef={null}
+            onEnter={[Function]}
+            onLeaveEnd={[Function]}
+            tranisitionName="za-move-up"
+            visible={false}
+          >
+            <Transition
+              addEndListener={[Function]}
+              appear={false}
+              enter={true}
+              exit={true}
+              in={false}
+              mountOnEnter={true}
+              nodeRef={
+                Object {
+                  "current": undefined,
+                }
+              }
+              onEnter={[Function]}
+              onEntered={[Function]}
+              onEntering={[Function]}
+              onExit={[Function]}
+              onExited={[Function]}
+              onExiting={[Function]}
+              unmountOnExit={true}
+            />
+          </Transition>
+        </Trigger>
+      </Popup>
     </ForwardRef>
-  </div>
+  </ForwardRef>
 </ForwardRef>
 `;
 
@@ -304,79 +304,50 @@ exports[`DateSelect DateSelect disabled 1`] = `
     <div
       className="za-date-select__arrow"
     />
+  </div>
+  <ForwardRef
+    maskClosable={true}
+    minuteStep={1}
+    mode="date"
+    onCancel={[Function]}
+    onConfirm={[Function]}
+    value={2019-04-23T00:00:00.000Z}
+    visible={false}
+  >
     <ForwardRef
+      cancelText="取消"
+      confirmText="确定"
       maskClosable={true}
-      minuteStep={1}
-      mode="date"
       onCancel={[Function]}
+      onClose={[Function]}
       onConfirm={[Function]}
-      value={2019-04-23T00:00:00.000Z}
       visible={false}
     >
-      <ForwardRef
-        cancelText="取消"
-        confirmText="确定"
-        maskClosable={true}
-        onCancel={[Function]}
-        onClose={[Function]}
-        onConfirm={[Function]}
+      <Popup
+        destroy={true}
+        direction="bottom"
+        lockScroll={true}
+        mask={true}
+        onMaskClick={[Function]}
         visible={false}
       >
-        <Popup
-          destroy={true}
-          direction="bottom"
-          lockScroll={true}
-          mask={true}
-          onMaskClick={[Function]}
+        <Trigger
+          disabled={false}
+          onClose={[Function]}
           visible={false}
         >
-          <Trigger
-            disabled={false}
-            onClose={[Function]}
+          <Mask
+            color="black"
+            destroy={true}
+            mountContainer={[Function]}
+            onClick={[Function]}
+            opacity="normal"
             visible={false}
           >
-            <Mask
-              color="black"
-              destroy={true}
-              mountContainer={[Function]}
-              onClick={[Function]}
-              opacity="normal"
-              visible={false}
-            >
-              <Transition
-                destroy={true}
-                nodeRef={null}
-                tranisitionName="za-fade"
-                visible={false}
-              >
-                <Transition
-                  addEndListener={[Function]}
-                  appear={false}
-                  enter={true}
-                  exit={true}
-                  in={false}
-                  mountOnEnter={true}
-                  nodeRef={
-                    Object {
-                      "current": undefined,
-                    }
-                  }
-                  onEnter={[Function]}
-                  onEntered={[Function]}
-                  onEntering={[Function]}
-                  onExit={[Function]}
-                  onExited={[Function]}
-                  onExiting={[Function]}
-                  unmountOnExit={true}
-                />
-              </Transition>
-            </Mask>
             <Transition
               destroy={true}
               nodeRef={null}
-              onEnter={[Function]}
-              onLeaveEnd={[Function]}
-              tranisitionName="za-move-up"
+              tranisitionName="za-fade"
               visible={false}
             >
               <Transition
@@ -400,11 +371,40 @@ exports[`DateSelect DateSelect disabled 1`] = `
                 unmountOnExit={true}
               />
             </Transition>
-          </Trigger>
-        </Popup>
-      </ForwardRef>
+          </Mask>
+          <Transition
+            destroy={true}
+            nodeRef={null}
+            onEnter={[Function]}
+            onLeaveEnd={[Function]}
+            tranisitionName="za-move-up"
+            visible={false}
+          >
+            <Transition
+              addEndListener={[Function]}
+              appear={false}
+              enter={true}
+              exit={true}
+              in={false}
+              mountOnEnter={true}
+              nodeRef={
+                Object {
+                  "current": undefined,
+                }
+              }
+              onEnter={[Function]}
+              onEntered={[Function]}
+              onEntering={[Function]}
+              onExit={[Function]}
+              onExited={[Function]}
+              onExiting={[Function]}
+              unmountOnExit={true}
+            />
+          </Transition>
+        </Trigger>
+      </Popup>
     </ForwardRef>
-  </div>
+  </ForwardRef>
 </ForwardRef>
 `;
 
@@ -424,7 +424,7 @@ exports[`DateSelect DateSelect time 1`] = `
   >
     <input
       type="hidden"
-      value="14:34"
+      value="16:29"
     />
     <div
       className="za-date-select__input"
@@ -432,87 +432,58 @@ exports[`DateSelect DateSelect time 1`] = `
       <div
         className="za-date-select__value"
       >
-        14:34
+        16:29
       </div>
     </div>
     <div
       className="za-date-select__arrow"
     />
+  </div>
+  <ForwardRef
+    defaultValue={2017-11-03T07:00:00.000Z}
+    maskClosable={true}
+    minuteStep={15}
+    mode="time"
+    onCancel={[Function]}
+    onConfirm={[Function]}
+    title="选择时间"
+    visible={false}
+  >
     <ForwardRef
-      defaultValue={2017-11-03T07:00:00.000Z}
+      cancelText="取消"
+      confirmText="确定"
       maskClosable={true}
-      minuteStep={15}
-      mode="time"
       onCancel={[Function]}
+      onClose={[Function]}
       onConfirm={[Function]}
       title="选择时间"
       visible={false}
     >
-      <ForwardRef
-        cancelText="取消"
-        confirmText="确定"
-        maskClosable={true}
-        onCancel={[Function]}
-        onClose={[Function]}
-        onConfirm={[Function]}
-        title="选择时间"
+      <Popup
+        destroy={true}
+        direction="bottom"
+        lockScroll={true}
+        mask={true}
+        onMaskClick={[Function]}
         visible={false}
       >
-        <Popup
-          destroy={true}
-          direction="bottom"
-          lockScroll={true}
-          mask={true}
-          onMaskClick={[Function]}
+        <Trigger
+          disabled={false}
+          onClose={[Function]}
           visible={false}
         >
-          <Trigger
-            disabled={false}
-            onClose={[Function]}
+          <Mask
+            color="black"
+            destroy={true}
+            mountContainer={[Function]}
+            onClick={[Function]}
+            opacity="normal"
             visible={false}
           >
-            <Mask
-              color="black"
-              destroy={true}
-              mountContainer={[Function]}
-              onClick={[Function]}
-              opacity="normal"
-              visible={false}
-            >
-              <Transition
-                destroy={true}
-                nodeRef={null}
-                tranisitionName="za-fade"
-                visible={false}
-              >
-                <Transition
-                  addEndListener={[Function]}
-                  appear={false}
-                  enter={true}
-                  exit={true}
-                  in={false}
-                  mountOnEnter={true}
-                  nodeRef={
-                    Object {
-                      "current": undefined,
-                    }
-                  }
-                  onEnter={[Function]}
-                  onEntered={[Function]}
-                  onEntering={[Function]}
-                  onExit={[Function]}
-                  onExited={[Function]}
-                  onExiting={[Function]}
-                  unmountOnExit={true}
-                />
-              </Transition>
-            </Mask>
             <Transition
               destroy={true}
               nodeRef={null}
-              onEnter={[Function]}
-              onLeaveEnd={[Function]}
-              tranisitionName="za-move-up"
+              tranisitionName="za-fade"
               visible={false}
             >
               <Transition
@@ -536,11 +507,40 @@ exports[`DateSelect DateSelect time 1`] = `
                 unmountOnExit={true}
               />
             </Transition>
-          </Trigger>
-        </Popup>
-      </ForwardRef>
+          </Mask>
+          <Transition
+            destroy={true}
+            nodeRef={null}
+            onEnter={[Function]}
+            onLeaveEnd={[Function]}
+            tranisitionName="za-move-up"
+            visible={false}
+          >
+            <Transition
+              addEndListener={[Function]}
+              appear={false}
+              enter={true}
+              exit={true}
+              in={false}
+              mountOnEnter={true}
+              nodeRef={
+                Object {
+                  "current": undefined,
+                }
+              }
+              onEnter={[Function]}
+              onEntered={[Function]}
+              onEntering={[Function]}
+              onExit={[Function]}
+              onExited={[Function]}
+              onExiting={[Function]}
+              unmountOnExit={true}
+            />
+          </Transition>
+        </Trigger>
+      </Popup>
     </ForwardRef>
-  </div>
+  </ForwardRef>
 </ForwardRef>
 `;
 
@@ -572,79 +572,50 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
     <div
       className="za-date-select__arrow"
     />
+  </div>
+  <ForwardRef
+    defaultValue={2019-04-23T00:00:00.000Z}
+    maskClosable={true}
+    minuteStep={1}
+    mode="date"
+    onCancel={[Function]}
+    onConfirm={[Function]}
+    visible={false}
+  >
     <ForwardRef
-      defaultValue={2019-04-23T00:00:00.000Z}
+      cancelText="取消"
+      confirmText="确定"
       maskClosable={true}
-      minuteStep={1}
-      mode="date"
       onCancel={[Function]}
+      onClose={[Function]}
       onConfirm={[Function]}
       visible={false}
     >
-      <ForwardRef
-        cancelText="取消"
-        confirmText="确定"
-        maskClosable={true}
-        onCancel={[Function]}
-        onClose={[Function]}
-        onConfirm={[Function]}
+      <Popup
+        destroy={true}
+        direction="bottom"
+        lockScroll={true}
+        mask={true}
+        onMaskClick={[Function]}
         visible={false}
       >
-        <Popup
-          destroy={true}
-          direction="bottom"
-          lockScroll={true}
-          mask={true}
-          onMaskClick={[Function]}
+        <Trigger
+          disabled={false}
+          onClose={[Function]}
           visible={false}
         >
-          <Trigger
-            disabled={false}
-            onClose={[Function]}
+          <Mask
+            color="black"
+            destroy={true}
+            mountContainer={[Function]}
+            onClick={[Function]}
+            opacity="normal"
             visible={false}
           >
-            <Mask
-              color="black"
-              destroy={true}
-              mountContainer={[Function]}
-              onClick={[Function]}
-              opacity="normal"
-              visible={false}
-            >
-              <Transition
-                destroy={true}
-                nodeRef={null}
-                tranisitionName="za-fade"
-                visible={false}
-              >
-                <Transition
-                  addEndListener={[Function]}
-                  appear={false}
-                  enter={true}
-                  exit={true}
-                  in={false}
-                  mountOnEnter={true}
-                  nodeRef={
-                    Object {
-                      "current": undefined,
-                    }
-                  }
-                  onEnter={[Function]}
-                  onEntered={[Function]}
-                  onEntering={[Function]}
-                  onExit={[Function]}
-                  onExited={[Function]}
-                  onExiting={[Function]}
-                  unmountOnExit={true}
-                />
-              </Transition>
-            </Mask>
             <Transition
               destroy={true}
               nodeRef={null}
-              onEnter={[Function]}
-              onLeaveEnd={[Function]}
-              tranisitionName="za-move-up"
+              tranisitionName="za-fade"
               visible={false}
             >
               <Transition
@@ -668,11 +639,40 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                 unmountOnExit={true}
               />
             </Transition>
-          </Trigger>
-        </Popup>
-      </ForwardRef>
+          </Mask>
+          <Transition
+            destroy={true}
+            nodeRef={null}
+            onEnter={[Function]}
+            onLeaveEnd={[Function]}
+            tranisitionName="za-move-up"
+            visible={false}
+          >
+            <Transition
+              addEndListener={[Function]}
+              appear={false}
+              enter={true}
+              exit={true}
+              in={false}
+              mountOnEnter={true}
+              nodeRef={
+                Object {
+                  "current": undefined,
+                }
+              }
+              onEnter={[Function]}
+              onEntered={[Function]}
+              onEntering={[Function]}
+              onExit={[Function]}
+              onExited={[Function]}
+              onExiting={[Function]}
+              unmountOnExit={true}
+            />
+          </Transition>
+        </Trigger>
+      </Popup>
     </ForwardRef>
-  </div>
+  </ForwardRef>
 </ForwardRef>
 `;
 
@@ -706,81 +706,52 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
     <div
       className="za-date-select__arrow"
     />
+  </div>
+  <ForwardRef
+    maskClosable={true}
+    minuteStep={1}
+    mode="date"
+    onCancel={[Function]}
+    onConfirm={[Function]}
+    title="选择日期"
+    visible={false}
+    wheelDefaultValue={2017-11-03T10:00:00.000Z}
+  >
     <ForwardRef
+      cancelText="取消"
+      confirmText="确定"
       maskClosable={true}
-      minuteStep={1}
-      mode="date"
       onCancel={[Function]}
+      onClose={[Function]}
       onConfirm={[Function]}
       title="选择日期"
       visible={false}
-      wheelDefaultValue={2017-11-03T10:00:00.000Z}
     >
-      <ForwardRef
-        cancelText="取消"
-        confirmText="确定"
-        maskClosable={true}
-        onCancel={[Function]}
-        onClose={[Function]}
-        onConfirm={[Function]}
-        title="选择日期"
+      <Popup
+        destroy={true}
+        direction="bottom"
+        lockScroll={true}
+        mask={true}
+        onMaskClick={[Function]}
         visible={false}
       >
-        <Popup
-          destroy={true}
-          direction="bottom"
-          lockScroll={true}
-          mask={true}
-          onMaskClick={[Function]}
+        <Trigger
+          disabled={false}
+          onClose={[Function]}
           visible={false}
         >
-          <Trigger
-            disabled={false}
-            onClose={[Function]}
+          <Mask
+            color="black"
+            destroy={true}
+            mountContainer={[Function]}
+            onClick={[Function]}
+            opacity="normal"
             visible={false}
           >
-            <Mask
-              color="black"
-              destroy={true}
-              mountContainer={[Function]}
-              onClick={[Function]}
-              opacity="normal"
-              visible={false}
-            >
-              <Transition
-                destroy={true}
-                nodeRef={null}
-                tranisitionName="za-fade"
-                visible={false}
-              >
-                <Transition
-                  addEndListener={[Function]}
-                  appear={false}
-                  enter={true}
-                  exit={true}
-                  in={false}
-                  mountOnEnter={true}
-                  nodeRef={
-                    Object {
-                      "current": undefined,
-                    }
-                  }
-                  onEnter={[Function]}
-                  onEntered={[Function]}
-                  onEntering={[Function]}
-                  onExit={[Function]}
-                  onExited={[Function]}
-                  onExiting={[Function]}
-                  unmountOnExit={true}
-                />
-              </Transition>
-            </Mask>
             <Transition
               destroy={true}
               nodeRef={null}
-              onEnter={[Function]}
-              onLeaveEnd={[Function]}
-              tranisitionName="za-move-up"
+              tranisitionName="za-fade"
               visible={false}
             >
               <Transition
@@ -804,11 +775,40 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                 unmountOnExit={true}
               />
             </Transition>
-          </Trigger>
-        </Popup>
-      </ForwardRef>
+          </Mask>
+          <Transition
+            destroy={true}
+            nodeRef={null}
+            onEnter={[Function]}
+            onLeaveEnd={[Function]}
+            tranisitionName="za-move-up"
+            visible={false}
+          >
+            <Transition
+              addEndListener={[Function]}
+              appear={false}
+              enter={true}
+              exit={true}
+              in={false}
+              mountOnEnter={true}
+              nodeRef={
+                Object {
+                  "current": undefined,
+                }
+              }
+              onEnter={[Function]}
+              onEntered={[Function]}
+              onEntering={[Function]}
+              onExit={[Function]}
+              onExited={[Function]}
+              onExiting={[Function]}
+              unmountOnExit={true}
+            />
+          </Transition>
+        </Trigger>
+      </Popup>
     </ForwardRef>
-  </div>
+  </ForwardRef>
 </ForwardRef>
 `;
 
@@ -842,81 +842,52 @@ exports[`DateSelect DateSelect year 1`] = `
     <div
       className="za-date-select__arrow"
     />
+  </div>
+  <ForwardRef
+    maskClosable={true}
+    minuteStep={1}
+    mode="year"
+    onCancel={[Function]}
+    onConfirm={[Function]}
+    title="选择年份"
+    value="2017"
+    visible={false}
+  >
     <ForwardRef
+      cancelText="取消"
+      confirmText="确定"
       maskClosable={true}
-      minuteStep={1}
-      mode="year"
       onCancel={[Function]}
+      onClose={[Function]}
       onConfirm={[Function]}
       title="选择年份"
-      value="2017"
       visible={false}
     >
-      <ForwardRef
-        cancelText="取消"
-        confirmText="确定"
-        maskClosable={true}
-        onCancel={[Function]}
-        onClose={[Function]}
-        onConfirm={[Function]}
-        title="选择年份"
+      <Popup
+        destroy={true}
+        direction="bottom"
+        lockScroll={true}
+        mask={true}
+        onMaskClick={[Function]}
         visible={false}
       >
-        <Popup
-          destroy={true}
-          direction="bottom"
-          lockScroll={true}
-          mask={true}
-          onMaskClick={[Function]}
+        <Trigger
+          disabled={false}
+          onClose={[Function]}
           visible={false}
         >
-          <Trigger
-            disabled={false}
-            onClose={[Function]}
+          <Mask
+            color="black"
+            destroy={true}
+            mountContainer={[Function]}
+            onClick={[Function]}
+            opacity="normal"
             visible={false}
           >
-            <Mask
-              color="black"
-              destroy={true}
-              mountContainer={[Function]}
-              onClick={[Function]}
-              opacity="normal"
-              visible={false}
-            >
-              <Transition
-                destroy={true}
-                nodeRef={null}
-                tranisitionName="za-fade"
-                visible={false}
-              >
-                <Transition
-                  addEndListener={[Function]}
-                  appear={false}
-                  enter={true}
-                  exit={true}
-                  in={false}
-                  mountOnEnter={true}
-                  nodeRef={
-                    Object {
-                      "current": undefined,
-                    }
-                  }
-                  onEnter={[Function]}
-                  onEntered={[Function]}
-                  onEntering={[Function]}
-                  onExit={[Function]}
-                  onExited={[Function]}
-                  onExiting={[Function]}
-                  unmountOnExit={true}
-                />
-              </Transition>
-            </Mask>
             <Transition
               destroy={true}
               nodeRef={null}
-              onEnter={[Function]}
-              onLeaveEnd={[Function]}
-              tranisitionName="za-move-up"
+              tranisitionName="za-fade"
               visible={false}
             >
               <Transition
@@ -940,10 +911,39 @@ exports[`DateSelect DateSelect year 1`] = `
                 unmountOnExit={true}
               />
             </Transition>
-          </Trigger>
-        </Popup>
-      </ForwardRef>
+          </Mask>
+          <Transition
+            destroy={true}
+            nodeRef={null}
+            onEnter={[Function]}
+            onLeaveEnd={[Function]}
+            tranisitionName="za-move-up"
+            visible={false}
+          >
+            <Transition
+              addEndListener={[Function]}
+              appear={false}
+              enter={true}
+              exit={true}
+              in={false}
+              mountOnEnter={true}
+              nodeRef={
+                Object {
+                  "current": undefined,
+                }
+              }
+              onEnter={[Function]}
+              onEntered={[Function]}
+              onEntering={[Function]}
+              onExit={[Function]}
+              onExited={[Function]}
+              onExiting={[Function]}
+              unmountOnExit={true}
+            />
+          </Transition>
+        </Trigger>
+      </Popup>
     </ForwardRef>
-  </div>
+  </ForwardRef>
 </ForwardRef>
 `;

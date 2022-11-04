@@ -362,10 +362,10 @@ const DatePickerView = React.forwardRef<DatePickerInstance, DatePickerViewProps>
       dataSource = dateData;
       value = [currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()];
     }
-    if (mode === MODE.TIME) {
+    if (mode === MODE.TIME || mode === MODE.DATETIME) {
       dataSource = [...dataSource, ...timeData];
       const hour = currentDate.getHours();
-      if (use12Hours) {
+      if (use12Hours && mode === MODE.TIME) {
         value = [
           ...value,
           hour > 12 ? hour - 12 : hour,
