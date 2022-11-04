@@ -1,29 +1,16 @@
 import React from 'react';
-import { render, mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import Affix from '../index';
 
 describe('Affix', () => {
-  const waitForComponentToPaint = async (wrapper) => {
-    await act(async () => {
-      wrapper.update();
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-    });
-  };
-  const waitForComponentToPaint2 = async (wrapper) => {
-    await act(async () => {
-      wrapper.unmount();
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-    });
-  };
   it('offsetTop', () => {
     const wrapper = render(
       <Affix offsetTop={20}>
         <div>Affix Node</div>
       </Affix>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
   it('offsetBottom', () => {
     const wrapper = render(
@@ -31,19 +18,7 @@ describe('Affix', () => {
         <div>Affix Node</div>
       </Affix>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
-  });
-
-  it('useEffect test', async () => {
-    const wrapper = mount(
-      <Affix offsetBottom={20}>
-        <div>Affix Node</div>
-      </Affix>,
-    );
-
-    await waitForComponentToPaint(wrapper);
-    await waitForComponentToPaint2(wrapper);
-    expect(toJson(wrapper));
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('getAffixed is true test of offsetTop', async () => {
@@ -52,6 +27,6 @@ describe('Affix', () => {
         <div>Affix Node</div>
       </Affix>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 });
