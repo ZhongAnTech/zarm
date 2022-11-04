@@ -154,7 +154,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
   >
     <input
       type="hidden"
-      value="+0800-11-04 16:29"
+      value="+0800-11-04 16:44"
     />
     <div
       className="za-date-select__input"
@@ -162,7 +162,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
       <div
         className="za-date-select__value"
       >
-        +0800-11-04 16:29
+        +0800-11-04 16:44
       </div>
     </div>
     <div
@@ -424,7 +424,7 @@ exports[`DateSelect DateSelect time 1`] = `
   >
     <input
       type="hidden"
-      value="16:29"
+      value="16:44"
     />
     <div
       className="za-date-select__input"
@@ -432,7 +432,7 @@ exports[`DateSelect DateSelect time 1`] = `
       <div
         className="za-date-select__value"
       >
-        16:29
+        16:44
       </div>
     </div>
     <div
