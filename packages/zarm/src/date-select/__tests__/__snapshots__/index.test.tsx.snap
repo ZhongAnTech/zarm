@@ -1,949 +1,176 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DateSelect DateSelect date 1`] = `
-<ForwardRef
-  disabled={false}
-  hasArrow={true}
-  minuteStep={1}
-  mode="date"
-  placeholder="请选择日期"
-  title="选择日期"
-  value={2019-04-23T00:00:00.000Z}
->
+<DocumentFragment>
   <div
-    className="za-date-select"
-    onClick={[Function]}
+    class="za-date-select"
   >
     <input
       type="hidden"
       value="2019-04-23"
     />
     <div
-      className="za-date-select__input"
+      class="za-date-select__input"
     >
       <div
-        className="za-date-select__value"
+        class="za-date-select__value"
       >
         2019-04-23
       </div>
     </div>
     <div
-      className="za-date-select__arrow"
+      class="za-date-select__arrow"
     />
   </div>
-  <ForwardRef
-    maskClosable={true}
-    minuteStep={1}
-    mode="date"
-    onCancel={[Function]}
-    onConfirm={[Function]}
-    title="选择日期"
-    value={2019-04-23T00:00:00.000Z}
-    visible={false}
-  >
-    <ForwardRef
-      cancelText="取消"
-      confirmText="确定"
-      maskClosable={true}
-      onCancel={[Function]}
-      onClose={[Function]}
-      onConfirm={[Function]}
-      title="选择日期"
-      visible={false}
-    >
-      <Popup
-        destroy={true}
-        direction="bottom"
-        lockScroll={true}
-        mask={true}
-        onMaskClick={[Function]}
-        visible={false}
-      >
-        <Trigger
-          disabled={false}
-          onClose={[Function]}
-          visible={false}
-        >
-          <Mask
-            color="black"
-            destroy={true}
-            mountContainer={[Function]}
-            onClick={[Function]}
-            opacity="normal"
-            visible={false}
-          >
-            <Transition
-              destroy={true}
-              nodeRef={null}
-              tranisitionName="za-fade"
-              visible={false}
-            >
-              <Transition
-                addEndListener={[Function]}
-                appear={false}
-                enter={true}
-                exit={true}
-                in={false}
-                mountOnEnter={true}
-                nodeRef={
-                  Object {
-                    "current": undefined,
-                  }
-                }
-                onEnter={[Function]}
-                onEntered={[Function]}
-                onEntering={[Function]}
-                onExit={[Function]}
-                onExited={[Function]}
-                onExiting={[Function]}
-                unmountOnExit={true}
-              />
-            </Transition>
-          </Mask>
-          <Transition
-            destroy={true}
-            nodeRef={null}
-            onEnter={[Function]}
-            onLeaveEnd={[Function]}
-            tranisitionName="za-move-up"
-            visible={false}
-          >
-            <Transition
-              addEndListener={[Function]}
-              appear={false}
-              enter={true}
-              exit={true}
-              in={false}
-              mountOnEnter={true}
-              nodeRef={
-                Object {
-                  "current": undefined,
-                }
-              }
-              onEnter={[Function]}
-              onEntered={[Function]}
-              onEntering={[Function]}
-              onExit={[Function]}
-              onExited={[Function]}
-              onExiting={[Function]}
-              unmountOnExit={true}
-            />
-          </Transition>
-        </Trigger>
-      </Popup>
-    </ForwardRef>
-  </ForwardRef>
-</ForwardRef>
+</DocumentFragment>
 `;
 
 exports[`DateSelect DateSelect datetime 1`] = `
-<ForwardRef
-  defaultValue={2017-11-03T10:00:00.000Z}
-  disabled={false}
-  hasArrow={true}
-  max={2017-11-02T09:00:00.000Z}
-  min={2017-11-02T03:00:00.000Z}
-  minuteStep={1}
-  mode="datetime"
-  placeholder="请选择时间"
-  title="选择时间"
->
+<DocumentFragment>
   <div
-    className="za-date-select za-date-select--placeholder"
-    onClick={[Function]}
+    class="za-date-select"
   >
     <input
       type="hidden"
-      value="+0800-11-04 16:44"
+      value="+0000-11-03 10:00"
     />
     <div
-      className="za-date-select__input"
+      class="za-date-select__input"
     >
       <div
-        className="za-date-select__value"
+        class="za-date-select__value"
       >
-        +0800-11-04 16:44
+        +0000-11-03 10:00
       </div>
     </div>
     <div
-      className="za-date-select__arrow"
+      class="za-date-select__arrow"
     />
   </div>
-  <ForwardRef
-    defaultValue={2017-11-03T10:00:00.000Z}
-    maskClosable={true}
-    max={2017-11-02T09:00:00.000Z}
-    min={2017-11-02T03:00:00.000Z}
-    minuteStep={1}
-    mode="datetime"
-    onCancel={[Function]}
-    onConfirm={[Function]}
-    title="选择时间"
-    visible={false}
-  >
-    <ForwardRef
-      cancelText="取消"
-      confirmText="确定"
-      maskClosable={true}
-      onCancel={[Function]}
-      onClose={[Function]}
-      onConfirm={[Function]}
-      title="选择时间"
-      visible={false}
-    >
-      <Popup
-        destroy={true}
-        direction="bottom"
-        lockScroll={true}
-        mask={true}
-        onMaskClick={[Function]}
-        visible={false}
-      >
-        <Trigger
-          disabled={false}
-          onClose={[Function]}
-          visible={false}
-        >
-          <Mask
-            color="black"
-            destroy={true}
-            mountContainer={[Function]}
-            onClick={[Function]}
-            opacity="normal"
-            visible={false}
-          >
-            <Transition
-              destroy={true}
-              nodeRef={null}
-              tranisitionName="za-fade"
-              visible={false}
-            >
-              <Transition
-                addEndListener={[Function]}
-                appear={false}
-                enter={true}
-                exit={true}
-                in={false}
-                mountOnEnter={true}
-                nodeRef={
-                  Object {
-                    "current": undefined,
-                  }
-                }
-                onEnter={[Function]}
-                onEntered={[Function]}
-                onEntering={[Function]}
-                onExit={[Function]}
-                onExited={[Function]}
-                onExiting={[Function]}
-                unmountOnExit={true}
-              />
-            </Transition>
-          </Mask>
-          <Transition
-            destroy={true}
-            nodeRef={null}
-            onEnter={[Function]}
-            onLeaveEnd={[Function]}
-            tranisitionName="za-move-up"
-            visible={false}
-          >
-            <Transition
-              addEndListener={[Function]}
-              appear={false}
-              enter={true}
-              exit={true}
-              in={false}
-              mountOnEnter={true}
-              nodeRef={
-                Object {
-                  "current": undefined,
-                }
-              }
-              onEnter={[Function]}
-              onEntered={[Function]}
-              onEntering={[Function]}
-              onExit={[Function]}
-              onExited={[Function]}
-              onExiting={[Function]}
-              unmountOnExit={true}
-            />
-          </Transition>
-        </Trigger>
-      </Popup>
-    </ForwardRef>
-  </ForwardRef>
-</ForwardRef>
+</DocumentFragment>
 `;
 
 exports[`DateSelect DateSelect disabled 1`] = `
-<ForwardRef
-  disabled={true}
-  hasArrow={true}
-  minuteStep={1}
-  mode="date"
-  value={2019-04-23T00:00:00.000Z}
->
+<DocumentFragment>
   <div
-    className="za-date-select za-date-select--disabled"
-    onClick={[Function]}
+    class="za-date-select za-date-select--disabled"
   >
     <input
       type="hidden"
       value="2019-04-23"
     />
     <div
-      className="za-date-select__input"
+      class="za-date-select__input"
     >
       <div
-        className="za-date-select__value"
+        class="za-date-select__value"
       >
         2019-04-23
       </div>
     </div>
     <div
-      className="za-date-select__arrow"
+      class="za-date-select__arrow"
     />
   </div>
-  <ForwardRef
-    maskClosable={true}
-    minuteStep={1}
-    mode="date"
-    onCancel={[Function]}
-    onConfirm={[Function]}
-    value={2019-04-23T00:00:00.000Z}
-    visible={false}
-  >
-    <ForwardRef
-      cancelText="取消"
-      confirmText="确定"
-      maskClosable={true}
-      onCancel={[Function]}
-      onClose={[Function]}
-      onConfirm={[Function]}
-      visible={false}
-    >
-      <Popup
-        destroy={true}
-        direction="bottom"
-        lockScroll={true}
-        mask={true}
-        onMaskClick={[Function]}
-        visible={false}
-      >
-        <Trigger
-          disabled={false}
-          onClose={[Function]}
-          visible={false}
-        >
-          <Mask
-            color="black"
-            destroy={true}
-            mountContainer={[Function]}
-            onClick={[Function]}
-            opacity="normal"
-            visible={false}
-          >
-            <Transition
-              destroy={true}
-              nodeRef={null}
-              tranisitionName="za-fade"
-              visible={false}
-            >
-              <Transition
-                addEndListener={[Function]}
-                appear={false}
-                enter={true}
-                exit={true}
-                in={false}
-                mountOnEnter={true}
-                nodeRef={
-                  Object {
-                    "current": undefined,
-                  }
-                }
-                onEnter={[Function]}
-                onEntered={[Function]}
-                onEntering={[Function]}
-                onExit={[Function]}
-                onExited={[Function]}
-                onExiting={[Function]}
-                unmountOnExit={true}
-              />
-            </Transition>
-          </Mask>
-          <Transition
-            destroy={true}
-            nodeRef={null}
-            onEnter={[Function]}
-            onLeaveEnd={[Function]}
-            tranisitionName="za-move-up"
-            visible={false}
-          >
-            <Transition
-              addEndListener={[Function]}
-              appear={false}
-              enter={true}
-              exit={true}
-              in={false}
-              mountOnEnter={true}
-              nodeRef={
-                Object {
-                  "current": undefined,
-                }
-              }
-              onEnter={[Function]}
-              onEntered={[Function]}
-              onEntering={[Function]}
-              onExit={[Function]}
-              onExited={[Function]}
-              onExiting={[Function]}
-              unmountOnExit={true}
-            />
-          </Transition>
-        </Trigger>
-      </Popup>
-    </ForwardRef>
-  </ForwardRef>
-</ForwardRef>
+</DocumentFragment>
 `;
 
 exports[`DateSelect DateSelect time 1`] = `
-<ForwardRef
-  defaultValue={2017-11-03T07:00:00.000Z}
-  disabled={false}
-  hasArrow={true}
-  minuteStep={15}
-  mode="time"
-  placeholder="请选择时间"
-  title="选择时间"
->
+<DocumentFragment>
   <div
-    className="za-date-select za-date-select--placeholder"
-    onClick={[Function]}
+    class="za-date-select"
   >
     <input
       type="hidden"
-      value="16:44"
+      value="07:00"
     />
     <div
-      className="za-date-select__input"
+      class="za-date-select__input"
     >
       <div
-        className="za-date-select__value"
+        class="za-date-select__value"
       >
-        16:44
+        07:00
       </div>
     </div>
     <div
-      className="za-date-select__arrow"
+      class="za-date-select__arrow"
     />
   </div>
-  <ForwardRef
-    defaultValue={2017-11-03T07:00:00.000Z}
-    maskClosable={true}
-    minuteStep={15}
-    mode="time"
-    onCancel={[Function]}
-    onConfirm={[Function]}
-    title="选择时间"
-    visible={false}
-  >
-    <ForwardRef
-      cancelText="取消"
-      confirmText="确定"
-      maskClosable={true}
-      onCancel={[Function]}
-      onClose={[Function]}
-      onConfirm={[Function]}
-      title="选择时间"
-      visible={false}
-    >
-      <Popup
-        destroy={true}
-        direction="bottom"
-        lockScroll={true}
-        mask={true}
-        onMaskClick={[Function]}
-        visible={false}
-      >
-        <Trigger
-          disabled={false}
-          onClose={[Function]}
-          visible={false}
-        >
-          <Mask
-            color="black"
-            destroy={true}
-            mountContainer={[Function]}
-            onClick={[Function]}
-            opacity="normal"
-            visible={false}
-          >
-            <Transition
-              destroy={true}
-              nodeRef={null}
-              tranisitionName="za-fade"
-              visible={false}
-            >
-              <Transition
-                addEndListener={[Function]}
-                appear={false}
-                enter={true}
-                exit={true}
-                in={false}
-                mountOnEnter={true}
-                nodeRef={
-                  Object {
-                    "current": undefined,
-                  }
-                }
-                onEnter={[Function]}
-                onEntered={[Function]}
-                onEntering={[Function]}
-                onExit={[Function]}
-                onExited={[Function]}
-                onExiting={[Function]}
-                unmountOnExit={true}
-              />
-            </Transition>
-          </Mask>
-          <Transition
-            destroy={true}
-            nodeRef={null}
-            onEnter={[Function]}
-            onLeaveEnd={[Function]}
-            tranisitionName="za-move-up"
-            visible={false}
-          >
-            <Transition
-              addEndListener={[Function]}
-              appear={false}
-              enter={true}
-              exit={true}
-              in={false}
-              mountOnEnter={true}
-              nodeRef={
-                Object {
-                  "current": undefined,
-                }
-              }
-              onEnter={[Function]}
-              onEntered={[Function]}
-              onEntering={[Function]}
-              onExit={[Function]}
-              onExited={[Function]}
-              onExiting={[Function]}
-              unmountOnExit={true}
-            />
-          </Transition>
-        </Trigger>
-      </Popup>
-    </ForwardRef>
-  </ForwardRef>
-</ForwardRef>
+</DocumentFragment>
 `;
 
 exports[`DateSelect DateSelect trigger visible 1`] = `
-<ForwardRef
-  defaultValue={2019-04-23T00:00:00.000Z}
-  disabled={false}
-  hasArrow={true}
-  minuteStep={1}
-  mode="date"
->
+<DocumentFragment>
   <div
-    className="za-date-select za-date-select--placeholder"
-    onClick={[Function]}
+    class="za-date-select za-date-select--placeholder"
   >
     <input
       type="hidden"
       value="2022-11-04"
     />
     <div
-      className="za-date-select__input"
+      class="za-date-select__input"
     >
       <div
-        className="za-date-select__value"
+        class="za-date-select__value"
       >
         2022-11-04
       </div>
     </div>
     <div
-      className="za-date-select__arrow"
+      class="za-date-select__arrow"
     />
   </div>
-  <ForwardRef
-    defaultValue={2019-04-23T00:00:00.000Z}
-    maskClosable={true}
-    minuteStep={1}
-    mode="date"
-    onCancel={[Function]}
-    onConfirm={[Function]}
-    visible={false}
-  >
-    <ForwardRef
-      cancelText="取消"
-      confirmText="确定"
-      maskClosable={true}
-      onCancel={[Function]}
-      onClose={[Function]}
-      onConfirm={[Function]}
-      visible={false}
-    >
-      <Popup
-        destroy={true}
-        direction="bottom"
-        lockScroll={true}
-        mask={true}
-        onMaskClick={[Function]}
-        visible={false}
-      >
-        <Trigger
-          disabled={false}
-          onClose={[Function]}
-          visible={false}
-        >
-          <Mask
-            color="black"
-            destroy={true}
-            mountContainer={[Function]}
-            onClick={[Function]}
-            opacity="normal"
-            visible={false}
-          >
-            <Transition
-              destroy={true}
-              nodeRef={null}
-              tranisitionName="za-fade"
-              visible={false}
-            >
-              <Transition
-                addEndListener={[Function]}
-                appear={false}
-                enter={true}
-                exit={true}
-                in={false}
-                mountOnEnter={true}
-                nodeRef={
-                  Object {
-                    "current": undefined,
-                  }
-                }
-                onEnter={[Function]}
-                onEntered={[Function]}
-                onEntering={[Function]}
-                onExit={[Function]}
-                onExited={[Function]}
-                onExiting={[Function]}
-                unmountOnExit={true}
-              />
-            </Transition>
-          </Mask>
-          <Transition
-            destroy={true}
-            nodeRef={null}
-            onEnter={[Function]}
-            onLeaveEnd={[Function]}
-            tranisitionName="za-move-up"
-            visible={false}
-          >
-            <Transition
-              addEndListener={[Function]}
-              appear={false}
-              enter={true}
-              exit={true}
-              in={false}
-              mountOnEnter={true}
-              nodeRef={
-                Object {
-                  "current": undefined,
-                }
-              }
-              onEnter={[Function]}
-              onEntered={[Function]}
-              onEntering={[Function]}
-              onExit={[Function]}
-              onExited={[Function]}
-              onExiting={[Function]}
-              unmountOnExit={true}
-            />
-          </Transition>
-        </Trigger>
-      </Popup>
-    </ForwardRef>
-  </ForwardRef>
-</ForwardRef>
+</DocumentFragment>
 `;
 
 exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
-<ForwardRef
-  disabled={false}
-  hasArrow={true}
-  minuteStep={1}
-  mode="date"
-  placeholder="请选择日期"
-  title="选择日期"
-  wheelDefaultValue={2017-11-03T10:00:00.000Z}
->
+<DocumentFragment>
   <div
-    className="za-date-select za-date-select--placeholder"
-    onClick={[Function]}
+    class="za-date-select za-date-select--placeholder"
   >
     <input
       type="hidden"
       value="2022-11-04"
     />
     <div
-      className="za-date-select__input"
+      class="za-date-select__input"
     >
       <div
-        className="za-date-select__value"
+        class="za-date-select__value"
       >
         2022-11-04
       </div>
     </div>
     <div
-      className="za-date-select__arrow"
+      class="za-date-select__arrow"
     />
   </div>
-  <ForwardRef
-    maskClosable={true}
-    minuteStep={1}
-    mode="date"
-    onCancel={[Function]}
-    onConfirm={[Function]}
-    title="选择日期"
-    visible={false}
-    wheelDefaultValue={2017-11-03T10:00:00.000Z}
-  >
-    <ForwardRef
-      cancelText="取消"
-      confirmText="确定"
-      maskClosable={true}
-      onCancel={[Function]}
-      onClose={[Function]}
-      onConfirm={[Function]}
-      title="选择日期"
-      visible={false}
-    >
-      <Popup
-        destroy={true}
-        direction="bottom"
-        lockScroll={true}
-        mask={true}
-        onMaskClick={[Function]}
-        visible={false}
-      >
-        <Trigger
-          disabled={false}
-          onClose={[Function]}
-          visible={false}
-        >
-          <Mask
-            color="black"
-            destroy={true}
-            mountContainer={[Function]}
-            onClick={[Function]}
-            opacity="normal"
-            visible={false}
-          >
-            <Transition
-              destroy={true}
-              nodeRef={null}
-              tranisitionName="za-fade"
-              visible={false}
-            >
-              <Transition
-                addEndListener={[Function]}
-                appear={false}
-                enter={true}
-                exit={true}
-                in={false}
-                mountOnEnter={true}
-                nodeRef={
-                  Object {
-                    "current": undefined,
-                  }
-                }
-                onEnter={[Function]}
-                onEntered={[Function]}
-                onEntering={[Function]}
-                onExit={[Function]}
-                onExited={[Function]}
-                onExiting={[Function]}
-                unmountOnExit={true}
-              />
-            </Transition>
-          </Mask>
-          <Transition
-            destroy={true}
-            nodeRef={null}
-            onEnter={[Function]}
-            onLeaveEnd={[Function]}
-            tranisitionName="za-move-up"
-            visible={false}
-          >
-            <Transition
-              addEndListener={[Function]}
-              appear={false}
-              enter={true}
-              exit={true}
-              in={false}
-              mountOnEnter={true}
-              nodeRef={
-                Object {
-                  "current": undefined,
-                }
-              }
-              onEnter={[Function]}
-              onEntered={[Function]}
-              onEntering={[Function]}
-              onExit={[Function]}
-              onExited={[Function]}
-              onExiting={[Function]}
-              unmountOnExit={true}
-            />
-          </Transition>
-        </Trigger>
-      </Popup>
-    </ForwardRef>
-  </ForwardRef>
-</ForwardRef>
+</DocumentFragment>
 `;
 
 exports[`DateSelect DateSelect year 1`] = `
-<ForwardRef
-  disabled={false}
-  hasArrow={true}
-  minuteStep={1}
-  mode="year"
-  placeholder="请选择年份"
-  title="选择年份"
-  value="2017"
->
+<DocumentFragment>
   <div
-    className="za-date-select"
-    onClick={[Function]}
+    class="za-date-select"
   >
     <input
       type="hidden"
       value="2017"
     />
     <div
-      className="za-date-select__input"
+      class="za-date-select__input"
     >
       <div
-        className="za-date-select__value"
+        class="za-date-select__value"
       >
         2017
       </div>
     </div>
     <div
-      className="za-date-select__arrow"
+      class="za-date-select__arrow"
     />
   </div>
-  <ForwardRef
-    maskClosable={true}
-    minuteStep={1}
-    mode="year"
-    onCancel={[Function]}
-    onConfirm={[Function]}
-    title="选择年份"
-    value="2017"
-    visible={false}
-  >
-    <ForwardRef
-      cancelText="取消"
-      confirmText="确定"
-      maskClosable={true}
-      onCancel={[Function]}
-      onClose={[Function]}
-      onConfirm={[Function]}
-      title="选择年份"
-      visible={false}
-    >
-      <Popup
-        destroy={true}
-        direction="bottom"
-        lockScroll={true}
-        mask={true}
-        onMaskClick={[Function]}
-        visible={false}
-      >
-        <Trigger
-          disabled={false}
-          onClose={[Function]}
-          visible={false}
-        >
-          <Mask
-            color="black"
-            destroy={true}
-            mountContainer={[Function]}
-            onClick={[Function]}
-            opacity="normal"
-            visible={false}
-          >
-            <Transition
-              destroy={true}
-              nodeRef={null}
-              tranisitionName="za-fade"
-              visible={false}
-            >
-              <Transition
-                addEndListener={[Function]}
-                appear={false}
-                enter={true}
-                exit={true}
-                in={false}
-                mountOnEnter={true}
-                nodeRef={
-                  Object {
-                    "current": undefined,
-                  }
-                }
-                onEnter={[Function]}
-                onEntered={[Function]}
-                onEntering={[Function]}
-                onExit={[Function]}
-                onExited={[Function]}
-                onExiting={[Function]}
-                unmountOnExit={true}
-              />
-            </Transition>
-          </Mask>
-          <Transition
-            destroy={true}
-            nodeRef={null}
-            onEnter={[Function]}
-            onLeaveEnd={[Function]}
-            tranisitionName="za-move-up"
-            visible={false}
-          >
-            <Transition
-              addEndListener={[Function]}
-              appear={false}
-              enter={true}
-              exit={true}
-              in={false}
-              mountOnEnter={true}
-              nodeRef={
-                Object {
-                  "current": undefined,
-                }
-              }
-              onEnter={[Function]}
-              onEntered={[Function]}
-              onEntering={[Function]}
-              onExit={[Function]}
-              onExited={[Function]}
-              onExiting={[Function]}
-              unmountOnExit={true}
-            />
-          </Transition>
-        </Trigger>
-      </Popup>
-    </ForwardRef>
-  </ForwardRef>
-</ForwardRef>
+</DocumentFragment>
 `;
