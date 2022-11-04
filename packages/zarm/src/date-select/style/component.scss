@@ -3,6 +3,7 @@
   @include define(arrow-color, var(--za-arrow-color));
   @include define(arrow-size, var(--za-arrow-size));
   @include define(arrow-width, var(--za-arrow-width));
+  @include define(color-text-disabled, var(--za-color-text-disabled));
 
   display: flex;
   align-items: center;

@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { MODE } from '../DatePickerView';
+import { MODE } from '../interface';
 
 const formatMap = {
   [MODE.YEAR]: 'YYYY',

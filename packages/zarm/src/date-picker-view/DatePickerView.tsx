@@ -4,7 +4,9 @@ import PickerView from '../picker-view';
 import { ConfigContext } from '../n-config-provider';
 import { isExtendDate, parseState } from './utils/parseState';
 import { cloneDate, getDaysInMonth, pad, setMonth } from './utils/date';
-import type { BaseDatePickerViewProps } from './interface';
+import type { BaseDatePickerViewProps, columnType } from './interface';
+import type { PickerViewColumnItem } from '../picker-view/interface';
+import { MODE } from './interface';
 import { HTMLProps } from '../utils/utilityTypes';
 
 export type DatePickerViewProps = BaseDatePickerViewProps & HTMLProps;
@@ -16,15 +18,15 @@ interface DataSource {
   value: string | number;
 }
 
-export enum MODE {
-  DATETIME = 'datetime',
-  DATE = 'date',
-  TIME = 'time',
-  MONTH = 'month',
-  YEAR = 'year',
-}
-
 const ONE_DAY = 24 * 60 * 60 * 1000;
+
+const COLUMNM_MAP = {
+  [MODE.DATETIME]: ['year', 'month', 'date', 'hour', 'minute', 'second'],
+  [MODE.MONTH]: ['year', 'month'],
+  [MODE.YEAR]: ['year'],
+  [MODE.DATE]: ['year', 'month', 'date'],
+  [MODE.TIME]: ['hour', 'minute'],
+};
 
 export interface DatePickerInstance {
   value: Date;
@@ -45,6 +47,7 @@ const DatePickerView = React.forwardRef<DatePickerInstance, DatePickerViewProps>
     use12Hours,
     onChange,
     format,
+    itemRender,
     ...others
   } = props;
 
@@ -359,7 +362,7 @@ const DatePickerView = React.forwardRef<DatePickerInstance, DatePickerViewProps>
       dataSource = dateData;
       value = [currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()];
     }
-    if (mode === MODE.DATETIME || mode === MODE.TIME) {
+    if (mode === MODE.TIME) {
       dataSource = [...dataSource, ...timeData];
       const hour = currentDate.getHours();
       if (use12Hours) {
@@ -387,6 +390,11 @@ const DatePickerView = React.forwardRef<DatePickerInstance, DatePickerViewProps>
   };
 
   const { dataSource, value } = colsValue;
+
+  const labelRender = (item: PickerViewColumnItem, level: number) => {
+    return itemRender?.(item, COLUMNM_MAP[mode!][level] as columnType);
+  };
+
   return (
     <PickerView
       {...others}
@@ -394,6 +402,7 @@ const DatePickerView = React.forwardRef<DatePickerInstance, DatePickerViewProps>
       dataSource={dataSource}
       value={value}
       onChange={onValueChange}
+      itemRender={labelRender}
     />
   );
 });
