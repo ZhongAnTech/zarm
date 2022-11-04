@@ -1,16 +1,15 @@
 import React from 'react';
-import { render } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 import ActivityIndicator from '../index';
 
 describe('ActivityIndicator', () => {
   it('renders correctly', () => {
     const wrapper = render(<ActivityIndicator loading={false} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('renders spinner correctly', () => {
     const wrapper = render(<ActivityIndicator type="spinner" />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 });
