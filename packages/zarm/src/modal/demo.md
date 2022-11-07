@@ -388,26 +388,26 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性              | 类型                                                                 | 默认值        | 说明                                                                                                                                                      |
-| :---------------- | :------------------------------------------------------------------- | :------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| shape             | string                                                               | 'radius'      | 形状，可选值 `rect`、`radius`                                                                                                                             |
-| visible           | boolean                                                              | false         | 是否显示                                                                                                                                                  |
-| animationType     | string                                                               | 'fade'        | 动画效果，可选值 `fade`, `door`, `flip`, `rotate`, `zoom`,`moveUp`, `moveDown`, `moveLeft`, `moveRight`,`slideUp`, `slideDown`, `slideLeft`, `slideRight` |
-| animationDuration | number                                                               | 200           | 动画执行时间（单位：毫秒）                                                                                                                                |
-| width             | string &#124; number                                                 | '70%'         | 宽度                                                                                                                                                      |
-| mask              | boolean                                                              | true          | 是否展示遮罩层                                                                                                                                            |
-| maskType          | string                                                               | 'normal'      | 遮罩层的类型，可选值 `transparent`, `normal`                                                                                                              |
-| maskClosable      | boolean                                                              | false         | 是否点击遮罩层时关闭，需要和 onCancel 一起使用                                                                                                            |
-| closable          | boolean                                                              | false         | 右上角是否显示关闭按钮，需要和 onCancel 一起使用                                                                                                          |
-| onClose           | () => void                                                           | -             | maskClosable 或 closable 为 true 时，点击遮罩或者右上角关闭按钮触发的函数                                                                                 |
-| title             | ReactNode                                                            | -             | 标题                                                                                                                                                      |
-| footer            | ReactNode                                                            | -             | 弹窗底部内容                                                                                                                                              |
-| actions           | (ModalActionProps \| ModalActionProps[])[]                           | []            | 操作按钮配置                                                                                                                                              |
-| onAction          | (action: ModalActionProps, index: number) => void \| Promise\<void\> | -             | 点击操作按钮后触发的函数                                                                                                                                  |
-| destroy           | boolean                                                              | true          | 弹层关闭后是否移除节点                                                                                                                                    |
-| afterOpen         | () => void                                                           | -             | 模态框打开后的回调                                                                                                                                        |
-| afterClose        | () => void                                                           | -             | 模态框关闭后的回调                                                                                                                                        |
-| mountContainer    | HTMLElement &#124; () => HTMLElement                                 | document.body | 指定 Modal 挂载的 HTML 节点                                                                                                                               |
+| 属性              | 类型                                                                 | 默认值        | 说明                                                                                                                                                              |
+| :---------------- | :------------------------------------------------------------------- | :------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| shape             | string                                                               | 'radius'      | 形状，可选值 `rect`、`radius`                                                                                                                                     |
+| visible           | boolean                                                              | false         | 是否显示                                                                                                                                                          |
+| animationType     | string                                                               | 'fade'        | 动画效果，可选值 `fade`, `door`, `flip`, `rotate`, `zoom`,`move-up`, `move-down`, `move-left`, `move-right`,`slide-up`, `slide-down`, `slide-left`, `slide-right` |
+| animationDuration | number                                                               | 200           | 动画执行时间（单位：毫秒）                                                                                                                                        |
+| width             | string &#124; number                                                 | '70%'         | 宽度                                                                                                                                                              |
+| mask              | boolean                                                              | true          | 是否展示遮罩层                                                                                                                                                    |
+| maskType          | string                                                               | 'normal'      | 遮罩层的类型，可选值 `transparent`, `normal`                                                                                                                      |
+| maskClosable      | boolean                                                              | false         | 是否点击遮罩层时关闭，需要和 onCancel 一起使用                                                                                                                    |
+| closable          | boolean                                                              | false         | 右上角是否显示关闭按钮，需要和 onCancel 一起使用                                                                                                                  |
+| onClose           | () => void                                                           | -             | maskClosable 或 closable 为 true 时，点击遮罩或者右上角关闭按钮触发的函数                                                                                         |
+| title             | ReactNode                                                            | -             | 标题                                                                                                                                                              |
+| footer            | ReactNode                                                            | -             | 弹窗底部内容                                                                                                                                                      |
+| actions           | (ModalActionProps \| ModalActionProps[])[]                           | []            | 操作按钮配置                                                                                                                                                      |
+| onAction          | (action: ModalActionProps, index: number) => void \| Promise\<void\> | -             | 点击操作按钮后触发的函数                                                                                                                                          |
+| destroy           | boolean                                                              | true          | 弹层关闭后是否移除节点                                                                                                                                            |
+| afterOpen         | () => void                                                           | -             | 模态框打开后的回调                                                                                                                                                |
+| afterClose        | () => void                                                           | -             | 模态框关闭后的回调                                                                                                                                                |
+| mountContainer    | HTMLElement &#124; () => HTMLElement                                 | document.body | 指定 Modal 挂载的 HTML 节点                                                                                                                                       |
 
 ### ModalActionProps 操作按钮属性
 
@@ -445,14 +445,14 @@ const confirm = Modal.confirm({
 
 ```
 
-| 属性       | 类型       | 默认值                        | 说明                                        |
-| :--------- | :--------- | :---------------------------- | :------------------------------------------ |
-| title      | ReactNode  | -                             | 弹出框的标题                                |
-| content    | ReactNode  | -                             | 弹出框的内容                                |
-| cancelText | ReactNode  | '关闭'(Alert)/'取消'(Confirm) | 取消按钮的内容                              |
-| confirmText     | ReactNode  | '确定'                        | 确定按钮的内容                              |
-| onConfirm       | () => void | -                             | 使用 confirm 方法时，点击“确定”后的回调函数 |
-| onCancel   | () => void | -                             | 点击“关闭/取消”后的回调函数                 |
+| 属性        | 类型       | 默认值                        | 说明                                        |
+| :---------- | :--------- | :---------------------------- | :------------------------------------------ |
+| title       | ReactNode  | -                             | 弹出框的标题                                |
+| content     | ReactNode  | -                             | 弹出框的内容                                |
+| cancelText  | ReactNode  | '关闭'(Alert)/'取消'(Confirm) | 取消按钮的内容                              |
+| confirmText | ReactNode  | '确定'                        | 确定按钮的内容                              |
+| onConfirm   | () => void | -                             | 使用 confirm 方法时，点击“确定”后的回调函数 |
+| onCancel    | () => void | -                             | 点击“关闭/取消”后的回调函数                 |
 
 ## CSS 变量
 

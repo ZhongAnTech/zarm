@@ -136,14 +136,31 @@ describe('index', () => {
         },
         "DatePicker": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "maskClosable": true,
+            "minuteStep": 1,
+            "mode": "date",
+          },
           "render": [Function],
         },
         "DatePickerView": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "disabled": false,
+            "minuteStep": 1,
+            "mode": "date",
+            "use12Hours": false,
+          },
           "render": [Function],
         },
         "DateSelect": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "disabled": false,
+            "hasArrow": true,
+            "minuteStep": 1,
+            "mode": "date",
+          },
           "render": [Function],
         },
         "FilePicker": Object {

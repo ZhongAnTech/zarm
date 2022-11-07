@@ -1,4 +1,10 @@
 @include b(date-select) {
+  @include define(arrow-space, 5px);
+  @include define(arrow-color, var(--za-arrow-color));
+  @include define(arrow-size, var(--za-arrow-size));
+  @include define(arrow-width, var(--za-arrow-width));
+  @include define(color-text-disabled, var(--za-color-text-disabled));
+
   display: flex;
   align-items: center;
   width: 100%;
@@ -18,17 +24,26 @@
   }
 
   @include e(arrow) {
-    margin-left: var(--za-list-item-space);
-    margin-top: calc(var(--za-list-item-arrow-size) / -2);
+    margin-left: var(--arrow-space);
+    margin-top: calc(var(--arrow-size) / -2);
 
     &:after {
       display: inline-block;
       content: '';
-      border-right: var(--za-list-item-arrow-border-width) solid var(--za-list-item-arrow-color);
-      border-bottom: var(--za-list-item-arrow-border-width) solid var(--za-list-item-arrow-color);
-      width: var(--za-list-item-arrow-size);
-      height: var(--za-list-item-arrow-size);
+      border-right: var(--arrow-width) solid var(--arrow-color);
+      border-bottom: var(--arrow-width) solid var(--arrow-color);
+      width: var(--arrow-size);
+      height: var(--arrow-size);
       transform: rotate(45deg);
+      transition: all 0.15s ease-out;
+    }
+  }
+
+  @include m(visible) {
+    @include e(arrow) {
+      &:after {
+        transform: rotate(-45deg);
+      }
     }
   }
 
