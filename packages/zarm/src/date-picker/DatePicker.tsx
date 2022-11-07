@@ -29,7 +29,7 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>((props, ref
   };
 
   const handleConfirm = () => {
-    onConfirm?.(datePickerViewRef.current?.value as Date);
+    onConfirm?.(datePickerViewRef.current?.value!);
   };
 
   const onValueChange = (newValue) => {

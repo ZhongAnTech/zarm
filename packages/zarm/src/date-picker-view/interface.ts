@@ -18,7 +18,7 @@ export interface BaseDatePickerViewProps {
   value?: DatePickerValue;
   defaultValue?: DatePickerValue;
   wheelDefaultValue?: DatePickerValue;
-  onChange?: (value?: Date) => void;
+  onChange?: (value?: Date | string) => void;
   minuteStep?: number;
   min?: DatePickerValue;
   max?: DatePickerValue;

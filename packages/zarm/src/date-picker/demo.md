@@ -282,7 +282,7 @@ ReactDOM.render(<Demo />, mountNode);
 | fieldNames   | object                                                                                                        | { label: `label`, value: `value`, children: `children` } | 自定义节点 label、value、children 的字段                                                                                                                 |
 | disabled     | boolean                                                                                                       | false                                                    | 是否禁用                                                                                                                                                 |
 | itemRender   | (item: PickerViewColumnItem, type: `year` \| `month` \| `date` \| `hour` \| `minute` \| `second`) =>ReactNode | (data) => data.label                                     | 单个选项的展示                                                                                                                                           |
-| onChange     | (value?: Date) => void                                                                                        | -                                                        | 值变化时触发的回调函数                                                                                                                                   |
+| onChange     | (value: Date \| string) => void                                                                               | -                                                        | 值变化时触发的回调函数                                                                                                                                   |
 
 ### 仅 DatePicker & DateSelect 支持的属性
 
@@ -294,7 +294,7 @@ ReactDOM.render(<Demo />, mountNode);
 | confirmText       | string                               | '确定'        | 确定栏文字                                     |
 | maskClosable      | boolean                              | true          | 是否点击遮罩层时关闭，需要和 onCancel 一起使用 |
 | wheelDefaultValue | string \| Date                       | -             | 滚轮默认停留的日期位置                         |
-| onConfirm         | (value?: Date) => void               | -             | 点击确定时触发的回调函数                       |
+| onConfirm         | (value: Date \| string) => void      | -             | 点击确定时触发的回调函数                       |
 | onCancel          | () => void                           | -             | 点击取消时触发的回调函数                       |
 | mountContainer    | HTMLElement &#124; () => HTMLElement | document.body | 指定 DatePicker 挂载的 HTML 节点               |
 

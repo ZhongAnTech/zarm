@@ -29,7 +29,7 @@ const COLUMNM_MAP = {
 };
 
 export interface DatePickerInstance {
-  value: Date;
+  value: Date | string;
 }
 
 const DatePickerView = React.forwardRef<DatePickerInstance, DatePickerViewProps>((props, ref) => {
