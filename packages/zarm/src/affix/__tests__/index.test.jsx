@@ -1,6 +1,5 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
 import Affix from '../index';
 
 describe('Affix', () => {
