@@ -52,7 +52,7 @@
     "lint:script": "eslint --ext .ts,.tsx src",
     "lint:style": "stylelint \"src/**/*.scss\" --syntax scss",
     "lint": "yarn lint:tsc && yarn lint:script && yarn lint:style",
-    "test": "zarm test -s scripts/jest/setup.js",
+    "test": "TZ=UTC zarm test -s scripts/jest/setup.js",
     "coverage": "rimraf coverage && yarn test -c",
     "bundlesize": "bundlesize",
     "install-react-16": "yarn add react@16 react-dom@16 enzyme-adapter-react-16",
