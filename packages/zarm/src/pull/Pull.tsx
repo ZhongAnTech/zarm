@@ -8,11 +8,11 @@ import {
 import throttle from 'lodash/throttle';
 import Events from '../utils/events';
 import { ConfigContext } from '../n-config-provider';
-import { REFRESH_STATE, LOAD_STATE, PullAction, BasePullProps } from './interface';
 import { getScrollParent, getScrollTop } from '../utils/dom';
 import ActivityIndicator from '../activity-indicator';
 import { useEventCallback } from '../utils/hooks';
 import type { HTMLProps } from '../utils/utilityTypes';
+import { REFRESH_STATE, LOAD_STATE, PullAction, BasePullProps } from './interface';
 
 export interface PullCssVars {
   '--control-height'?: React.CSSProperties['height'];
@@ -35,9 +35,6 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
   const [loadState, setLoadState] = useState(props.load!.state);
   const prevLoad = useRef<PullAction>({});
   const prevRefresh = useRef<PullAction>({});
-  const scrollContainer = useRef<HTMLElement | Window>(window);
-
-  const wrapTouchstartY = useRef(0);
   const { prefixCls, locale } = React.useContext(ConfigContext);
   const bem = createBEM('pull', { prefixCls });
 
@@ -65,58 +62,26 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
 
   const throttledScroll = throttle(onScroll, 250);
 
-  const wrapTouchstart = (event): void => {
-    const touch = event.touches[0];
-    wrapTouchstartY.current = touch.pageY;
-  };
-
-  const wrapTouchmove = (event): void => {
-    const touch = event.touches[0];
-    const currentY = touch.pageY;
-    if (
-      currentY - wrapTouchstartY.current > 0 &&
-      event.cancelable &&
-      getScrollTop(wrap.current) === 0
-    ) {
-      event.preventDefault();
-    }
-  };
-
-  const wrapTouchEnd = (): void => {
-    wrapTouchstartY.current = 0;
-    setAnimationDuration(props!.animationDuration!);
-  };
-
-  const removeEvent = (): void => {
-    if (!wrap.current) return;
-    Events.off(wrap.current, 'scroll', throttledScroll);
-    Events.off(wrap.current, 'touchstart', wrapTouchstart);
-    Events.off(wrap.current, 'touchmove', wrapTouchmove);
-    Events.off(wrap.current, 'touchend', wrapTouchEnd);
-  };
-
-  const addEvent = (): void => {
+  const setScrollParent = (): void => {
     const _scrollContainer = getScrollParent(pullRef.current);
-    if (_scrollContainer) {
-      scrollContainer.current = _scrollContainer as HTMLElement | Window;
-    }
-    // scrollContainer 未变更
-    if (wrap.current === scrollContainer.current) return;
 
-    // 解除事件监听
-    if (wrap.current) {
-      removeEvent();
-    }
+    // scrollContainer 未变更
+    if (wrap.current === _scrollContainer) return;
 
     // 重新获取 scrollContainer
-    wrap.current = scrollContainer.current;
-
-    // 监听事件
-    Events.on(wrap.current, 'scroll', throttledScroll);
-    Events.on(wrap.current, 'touchstart', wrapTouchstart);
-    Events.on(wrap.current, 'touchmove', wrapTouchmove);
-    Events.on(wrap.current, 'touchend', wrapTouchEnd);
+    wrap.current = _scrollContainer as HTMLElement | Window;
   };
+
+  useEffect(() => {
+    setScrollParent();
+  });
+
+  useEffect(() => {
+    Events.on(wrap.current, 'scroll', throttledScroll);
+    return () => {
+      Events.off(wrap.current, 'scroll', throttledScroll);
+    };
+  }, [wrap.current]);
 
   /**
    * 执行动画
@@ -197,10 +162,7 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
     const { movement, event } = state;
     const [, dragOffsetY] = movement;
     const { handler } = props.refresh!;
-    if (dragOffsetY <= 0) {
-      addEvent();
-      return false;
-    }
+
     if (
       // 未设置刷新事件
       !handler ||
@@ -214,8 +176,7 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
       return false;
     }
 
-    // 解决低端安卓系统只触发一次touchmove事件的bug
-    if (!Events.supportsPassiveEvents) {
+    if (event.cancelable) {
       event.preventDefault();
     }
 
@@ -263,8 +224,9 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
     },
     {
       enabled: true,
+      pointer: { touch: true },
       axis: 'y',
-      preventDefault: !Events.supportsPassiveEvents,
+      eventOptions: { passive: !Events.supportsPassiveEvents },
     },
   );
 
@@ -279,14 +241,11 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
   }
 
   useEffect(() => {
-    addEvent();
-  }, [scrollContainer.current, loadState, refreshState]);
-
-  useEffect(() => {
     setIsMounted(true);
+    Events.on(pullRef.current, 'touchmove', () => {});
 
     return () => {
-      removeEvent();
+      Events.off(pullRef.current, 'touchmove', () => {});
       setIsMounted(false);
     };
   }, []);
