@@ -451,18 +451,18 @@ ReactDOM.render(<Demo />, mountNode);
 
 ### PickerViewColumnItem
 
-| 属性  | 类型                        | 默认值 | 说明         |
-| :---- | :-------------------------- | :----- | :----------- |
-| value | string \| number \| boolean | -      | 选项值       |
-| label | React.ReactNode             | -      | 选项显示名称 |
+| 属性  | 类型            | 默认值 | 说明         |
+| :---- | :-------------- | :----- | :----------- |
+| value | PickerValue     | -      | 选项值       |
+| label | React.ReactNode | -      | 选项显示名称 |
 
 ### PickerViewOption
 
-| 属性     | 类型                        | 默认值 | 说明         |
-| :------- | :-------------------------- | :----- | :----------- |
-| value    | string \| number \| boolean | -      | 选项值       |
-| label    | React.ReactNode             | -      | 选项显示名称 |
-| children | PickerViewOption[]          | -      | 子选项       |
+| 属性     | 类型               | 默认值 | 说明         |
+| :------- | :----------------- | :----- | :----------- |
+| value    | PickerValue        | -      | 选项值       |
+| label    | React.ReactNode    | -      | 选项显示名称 |
+| children | PickerViewOption[] | -      | 子选项       |
 
 ## CSS 变量
 
