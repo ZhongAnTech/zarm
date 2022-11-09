@@ -52,5 +52,9 @@
         color: var(--za-theme-primary);
       }
     }
+
+    .za-carousel__items {
+      transition-duration: 0;
+    }
   }
 }

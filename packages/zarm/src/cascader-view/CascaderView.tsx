@@ -74,14 +74,14 @@ const CascaderView = forwardRef<HTMLDivElement, CascaderViewProps>((props, ref) 
    * 初始化列表值
    */
   useEffect(() => {
-    const initValue: CascaderOption[] = [];
+    const initValue: CascaderValue[] = [];
     const v = value || defaultValue || [];
 
     v.reduce((accumulator: CascaderOption[], _currentValue: CascaderValue) => {
       const valueItem = handleObtainItem(accumulator, _currentValue);
 
       if (valueItem) {
-        initValue.push(valueItem);
+        initValue.push(valueItem[fieldNames.value]);
 
         return valueItem.children || [];
       }
@@ -107,7 +107,7 @@ const CascaderView = forwardRef<HTMLDivElement, CascaderViewProps>((props, ref) 
     while (_dataSource.length) {
       const colVal = currentValue[i];
 
-      const selected = colVal ? handleObtainItem(_dataSource, colVal[fieldNames.value]) : undefined;
+      const selected = colVal ? handleObtainItem(_dataSource, colVal) : undefined;
 
       group.push({
         selected,
@@ -136,8 +136,8 @@ const CascaderView = forwardRef<HTMLDivElement, CascaderViewProps>((props, ref) 
   const handleChange = (itemValue: CascaderValue, index: number) => {
     const _value = currentValue.slice(0, index);
 
-    if (typeof index === 'number') {
-      _value[index] = handleObtainItem(columnDataList[index].options, itemValue)!;
+    if (itemValue !== undefined) {
+      _value[index] = itemValue;
     }
 
     setState({
@@ -146,7 +146,7 @@ const CascaderView = forwardRef<HTMLDivElement, CascaderViewProps>((props, ref) 
       tabIndex: typeof index === 'number' ? index + 1 : tabIndex,
     });
 
-    onChange?.(_value.map((v) => v![fieldNames.value]));
+    onChange?.(_value);
   };
 
   /**
@@ -181,13 +181,11 @@ const CascaderView = forwardRef<HTMLDivElement, CascaderViewProps>((props, ref) 
                 <Radio.Group
                   type="list"
                   listMarkerAlign="after"
-                  value={currentValue[index]?.[fieldNames.value]}
+                  value={currentValue[index]}
                   onChange={(v) => handleChange(v, index)}
                 >
                   {group.options.map((item, i) => {
-                    const isActive =
-                      currentValue[index] &&
-                      currentValue[index][fieldNames.value] === item[fieldNames.value];
+                    const isActive = currentValue[index] === item[fieldNames.value];
                     const label = handleItemRender(item);
 
                     return (

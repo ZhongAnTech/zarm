@@ -87,26 +87,26 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性         | 类型                          | 默认值                                                   | 说明                                     |
-| :----------- | :---------------------------- | :------------------------------------------------------- | :--------------------------------------- |
-| dataSource   | CascaderOption[]              | []                                                       | 数据源                                   |
-| defaultValue | CascaderValue[]               | -                                                        | 初始值                                   |
-| value        | CascaderValue[]               | -                                                        | 值                                       |
-| fieldNames   | object                        | { label: `label`, value: `value`, children: `children` } | 自定义节点 label、value、children 的字段 |
-| itemRender   | (data?: object) => data.label | (data?: object) => data.label                            | 单个选项的展示                           |
-| onChange     | (value: string[]) => void     | -                                                        | 值变化时触发的回调函数                   |
+| 属性         | 类型                             | 默认值                                                   | 说明                                     |
+| :----------- | :------------------------------- | :------------------------------------------------------- | :--------------------------------------- |
+| dataSource   | CascaderOption[]                 | []                                                       | 数据源                                   |
+| defaultValue | CascaderValue[]                  | -                                                        | 初始值                                   |
+| value        | CascaderValue[]                  | -                                                        | 值                                       |
+| fieldNames   | object                           | { label: `label`, value: `value`, children: `children` } | 自定义节点 label、value、children 的字段 |
+| itemRender   | (data?: object) => data.label    | (data?: object) => data.label                            | 单个选项的展示                           |
+| onChange     | (value: CascaderValue[]) => void | -                                                        | 值变化时触发的回调函数                   |
 
 ### CascaderValue
 
-`string | number | boolean`
+`string | number`
 
 ### CascaderOption
 
-| 属性     | 类型                        | 默认值 | 说明         |
-| :------- | :-------------------------- | :----- | :----------- |
-| value    | string \| number \| boolean | -      | 选项值       |
-| label    | React.ReactNode             | -      | 选项显示名称 |
-| children | CascaderOption[]            | -      | 子选项       |
+| 属性     | 类型             | 默认值 | 说明         |
+| :------- | :--------------- | :----- | :----------- |
+| value    | CascaderValue    | -      | 选项值       |
+| label    | React.ReactNode  | -      | 选项显示名称 |
+| children | CascaderOption[] | -      | 子选项       |
 
 ## CSS 变量
 

@@ -38,7 +38,7 @@ const Cascader = forwardRef<HTMLDivElement, CascaderProps>((props, ref) => {
   const bem = createBEM('cascader', { prefixCls });
 
   const handleConfirm = () => {
-    onConfirm?.(state.value as string[]);
+    onConfirm?.(state.value);
   };
 
   const handleCancel = () => {

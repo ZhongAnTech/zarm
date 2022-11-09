@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { FieldNames as WheelFieldNames, WheelValue } from '../wheel/interface';
 
-export type CascaderValue = WheelValue;
+export type CascaderValue = number | string;
 
 export interface CascaderOption {
   [key: string]: any;
@@ -25,5 +25,5 @@ export interface BaseCascaderViewProps {
   fieldNames?: FieldNames;
   cols?: number;
   itemRender?: TItemRender;
-  onChange?: (selected: string[]) => void;
+  onChange?: (selected: CascaderValue[]) => void;
 }

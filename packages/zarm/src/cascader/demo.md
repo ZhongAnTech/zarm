@@ -200,38 +200,38 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性         | 类型                          | 默认值                                                   | 说明                                     |
-| :----------- | :---------------------------- | :------------------------------------------------------- | :--------------------------------------- |
-| dataSource   | CascaderOption[]              | []                                                       | 数据源                                   |
-| defaultValue | CascaderValue[]               | -                                                        | 初始值                                   |
-| value        | CascaderValue[]               | -                                                        | 值                                       |
-| fieldNames   | object                        | { label: `label`, value: `value`, children: `children` } | 自定义节点 label、value、children 的字段 |
-| itemRender   | (data?: object) => data.label | (data?: object) => data.label                            | 单个选项的展示                           |
-| onChange     | (value: string[]) => void     | -                                                        | 值变化时触发的回调函数                   |
+| 属性         | 类型                             | 默认值                                                   | 说明                                     |
+| :----------- | :------------------------------- | :------------------------------------------------------- | :--------------------------------------- |
+| dataSource   | CascaderOption[]                 | []                                                       | 数据源                                   |
+| defaultValue | CascaderValue[]                  | -                                                        | 初始值                                   |
+| value        | CascaderValue[]                  | -                                                        | 值                                       |
+| fieldNames   | object                           | { label: `label`, value: `value`, children: `children` } | 自定义节点 label、value、children 的字段 |
+| itemRender   | (data?: object) => data.label    | (data?: object) => data.label                            | 单个选项的展示                           |
+| onChange     | (value: CascaderValue[]) => void | -                                                        | 值变化时触发的回调函数                   |
 
 ### 仅 Cascader 支持的属性
 
-| 属性         | 类型                      | 默认值   | 说明                                           |
-| :----------- | :------------------------ | :------- | :--------------------------------------------- |
-| visible      | boolean                   | false    | 是否展示                                       |
-| title        | string                    | '请选择' | 选择器标题                                     |
-| confirmText  | string                    | '确定'   | 确定栏文字                                     |
-| cancelText   | string                    | '取消'   | 取消栏文字                                     |
-| maskClosable | boolean                   | true     | 是否点击遮罩层时关闭，需要和 onCancel 一起使用 |
-| onConfirm    | (value: string[]) => void | -        | 点击确定时触发的回调函数                       |
-| onCancel     | () => void                | -        | 点击取消时触发的回调函数                       |
+| 属性         | 类型                             | 默认值   | 说明                                           |
+| :----------- | :------------------------------- | :------- | :--------------------------------------------- |
+| visible      | boolean                          | false    | 是否展示                                       |
+| title        | string                           | '请选择' | 选择器标题                                     |
+| confirmText  | string                           | '确定'   | 确定栏文字                                     |
+| cancelText   | string                           | '取消'   | 取消栏文字                                     |
+| maskClosable | boolean                          | true     | 是否点击遮罩层时关闭，需要和 onCancel 一起使用 |
+| onConfirm    | (value: CascaderValue[]) => void | -        | 点击确定时触发的回调函数                       |
+| onCancel     | () => void                       | -        | 点击取消时触发的回调函数                       |
 
 ### CascaderValue
 
-`string | number | boolean`
+`string | number`
 
 ### CascaderOption
 
-| 属性     | 类型                        | 默认值 | 说明         |
-| :------- | :-------------------------- | :----- | :----------- |
-| value    | string \| number \| boolean | -      | 选项值       |
-| label    | React.ReactNode             | -      | 选项显示名称 |
-| children | CascaderOption[]            | -      | 子选项       |
+| 属性     | 类型             | 默认值 | 说明         |
+| :------- | :--------------- | :----- | :----------- |
+| value    | CascaderValue    | -      | 选项值       |
+| label    | React.ReactNode  | -      | 选项显示名称 |
+| children | CascaderOption[] | -      | 子选项       |
 
 ## CSS 变量
 
