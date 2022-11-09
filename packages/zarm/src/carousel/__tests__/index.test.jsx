@@ -1,6 +1,5 @@
 import React from 'react';
-import { render, mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { fireEvent, getByText, render } from '@testing-library/react';
 import Carousel from '../index';
 
 const createCarousel = (props, childrenLen = 3) => {
@@ -24,30 +23,30 @@ describe('Carousel', () => {
         {createCarousel({}, 1)}
       </div>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('style render correctly', () => {
     const style = { background: 'red' };
     const wrapper = render(createCarousel({ style }, 0));
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('prefixCls render correctly', () => {
     const prefixCls = 'za-test';
     const wrapper = render(createCarousel({ prefixCls }, 1));
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('className render correctly', () => {
     const className = 'za-wrapper-test';
     const wrapper = render(createCarousel({ className }, 0));
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('height render correctly', () => {
     const wrapper = render(createCarousel({ height: 150, direction: 'top' }));
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('pagination render correctly', () => {
@@ -57,7 +56,7 @@ describe('Carousel', () => {
         {createCarousel({ showPagination: false })}
       </div>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   // it('activeIndex', () => {
@@ -66,8 +65,8 @@ describe('Carousel', () => {
   // });
 
   it('swipeable', () => {
-    const wrapper = mount(createCarousel({ swipeable: false }));
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const wrapper = render(createCarousel({ swipeable: false }));
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   // it('autoPlay', () => {
@@ -391,9 +390,9 @@ describe('Carousel', () => {
 
   it('transitionend event', () => {
     const onChangeEnd = jest.fn();
-    const wrapper = mount(createCarousel({ onChangeEnd }));
-    wrapper.find('.za-carousel__pagination .za-carousel__pagination__item').at(1).simulate('click');
-    wrapper.find('.za-carousel__items').at(0).simulate('transitionend');
+    const { container } = render(createCarousel({ onChangeEnd }));
+    fireEvent.click(container.getElementsByClassName('za-carousel__pagination__item')[1]);
+    fireEvent.transitionEnd(container.getElementsByClassName('za-carousel__items')[0]);
     expect(onChangeEnd).toBeCalledWith(1);
   });
 });
