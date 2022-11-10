@@ -1,6 +1,5 @@
 import React from 'react';
-import { render, shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { fireEvent, getByText, render } from '@testing-library/react';
 import Checkbox from '../index';
 
 describe('Checkbox', () => {
@@ -10,29 +9,24 @@ describe('Checkbox', () => {
         foo
       </Checkbox>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('defaultChecked', () => {
     const wrapper = render(<Checkbox defaultChecked>foo</Checkbox>);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('disabled', () => {
     const wrapper = render(<Checkbox disabled>foo</Checkbox>);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('checked change false', () => {
     const onChange = jest.fn();
-    const wrapper = shallow(<Checkbox onChange={onChange}>foo</Checkbox>);
-    wrapper.find('input').simulate('change', { target: { checked: true } });
-    expect(onChange).toBeCalledWith({ target: { checked: true } });
-  });
-
-  it('receive new checked', () => {
-    const wrapper = shallow(<Checkbox>foo</Checkbox>);
-    wrapper.setProps({ checked: true });
+    const { container } = render(<Checkbox onChange={onChange}>foo</Checkbox>);
+    fireEvent.click(container.querySelectorAll('input')[0]);
+    expect(onChange).toHaveBeenCalledTimes(1);
   });
 });
 
@@ -47,7 +41,7 @@ describe('Checkbox.Group', () => {
         <Checkbox value="2">选项三</Checkbox>
       </Checkbox.Group>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('render value correctly', () => {
@@ -58,7 +52,7 @@ describe('Checkbox.Group', () => {
         <Checkbox value="2">选项三</Checkbox>
       </Checkbox.Group>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('render defaultValue correctly', () => {
@@ -69,7 +63,7 @@ describe('Checkbox.Group', () => {
         <Checkbox value="2">选项三</Checkbox>
       </Checkbox.Group>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('type is button', () => {
@@ -80,7 +74,7 @@ describe('Checkbox.Group', () => {
         <Checkbox value="2">选项三</Checkbox>
       </Checkbox.Group>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('type is list', () => {
@@ -91,23 +85,24 @@ describe('Checkbox.Group', () => {
         <Checkbox value="2">选项三</Checkbox>
       </Checkbox.Group>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('receive new value', () => {
-    const wrapper = shallow(
-      <Checkbox.Group>
+    const { container } = render(
+      <Checkbox.Group defaultValue={['0']}>
         <Checkbox value="0">选项一</Checkbox>
         <Checkbox value="1">选项二</Checkbox>
         <Checkbox value="2">选项三</Checkbox>
       </Checkbox.Group>,
     );
-    wrapper.setProps({ value: ['0'] });
+    const items = Array.from(container.querySelectorAll('input'));
+    expect(items[0].checked).toEqual(true);
   });
 
   it('onChange', () => {
     const onChange = jest.fn();
-    const wrapper = shallow(
+    const { container } = render(
       <Checkbox.Group type="list" onChange={onChange}>
         <Checkbox value="0">选项一</Checkbox>
         <Checkbox value="1">选项二</Checkbox>
@@ -116,22 +111,15 @@ describe('Checkbox.Group', () => {
         </Checkbox>
       </Checkbox.Group>,
     );
-    const firstCheckbox = () =>
-      wrapper.find(Checkbox).first().dive().dive().find('input[type="checkbox"]').first();
-    firstCheckbox().simulate('change', { target: { checked: true } });
+    const items = container.querySelectorAll('input');
+    fireEvent.click(items[0], { target: { checked: true } });
+
     expect(onChange).toBeCalledWith(['0']);
-    firstCheckbox().simulate('change', { target: { checked: false } });
+    fireEvent.click(items[0], { target: { checked: false } });
     expect(onChange).toBeCalledWith([]);
 
     // 测试disabled
-    const lastCheckbox = wrapper
-      .find(Checkbox)
-      .last()
-      .dive()
-      .dive()
-      .find('input[type="checkbox"]')
-      .first();
-    lastCheckbox.simulate('change', { target: { checked: true } });
+    fireEvent.click(items[2], { target: { checked: true } });
     expect(onChange).toBeCalledWith([]);
   });
 });
