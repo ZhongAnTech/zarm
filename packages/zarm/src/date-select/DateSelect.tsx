@@ -26,7 +26,6 @@ const DateSelect = React.forwardRef<HTMLDivElement, DateSelectProps>((props, ref
   const { locale: globalLocal, prefixCls } = useContext(ConfigContext);
 
   const { date: dateSeletValue } = parseState(props);
-  console.error(parseState(props));
 
   const [state, setState] = useState<{
     visible: boolean;
