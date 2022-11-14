@@ -103,11 +103,11 @@ exports[`DateSelect DateSelect time 1`] = `
 exports[`DateSelect DateSelect trigger visible 1`] = `
 <DocumentFragment>
   <div
-    class="za-date-select za-date-select--placeholder"
+    class="za-date-select"
   >
     <input
       type="hidden"
-      value="2022-11-09"
+      value="2019-04-23"
     />
     <div
       class="za-date-select__input"
@@ -115,32 +115,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
       <div
         class="za-date-select__value"
       >
-        2022-11-09
-      </div>
-    </div>
-    <div
-      class="za-date-select__arrow"
-    />
-  </div>
-</DocumentFragment>
-`;
-
-exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
-<DocumentFragment>
-  <div
-    class="za-date-select za-date-select--placeholder"
-  >
-    <input
-      type="hidden"
-      value="2022-11-09"
-    />
-    <div
-      class="za-date-select__input"
-    >
-      <div
-        class="za-date-select__value"
-      >
-        2022-11-09
+        2019-04-23
       </div>
     </div>
     <div
