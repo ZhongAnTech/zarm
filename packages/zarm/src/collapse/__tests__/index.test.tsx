@@ -1,6 +1,5 @@
 import React from 'react';
-import { render, mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { fireEvent, render } from '@testing-library/react';
 import Collapse, { CollapseProps } from '../index';
 
 jest.mock('react', () => ({
@@ -23,7 +22,7 @@ describe('Collapse', () => {
         </Collapse.Item>
       </Collapse>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('renders correctly with collapse mode', () => {
@@ -42,7 +41,7 @@ describe('Collapse', () => {
         </Collapse.Item>
       </Collapse>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('renders correctly with animated', () => {
@@ -61,7 +60,7 @@ describe('Collapse', () => {
         </Collapse.Item>
       </Collapse>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('renders correctly with defaultActiveKey', () => {
@@ -80,7 +79,7 @@ describe('Collapse', () => {
         </Collapse.Item>
       </Collapse>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('renders correctly with number defaultActiveKey', () => {
@@ -99,7 +98,7 @@ describe('Collapse', () => {
         </Collapse.Item>
       </Collapse>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('renders correctly with array defaultActiveKey', () => {
@@ -119,7 +118,7 @@ describe('Collapse', () => {
         </Collapse.Item>
       </Collapse>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('renders correctly with activeKey', () => {
@@ -138,7 +137,7 @@ describe('Collapse', () => {
         </Collapse.Item>
       </Collapse>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('renders correctly with number activeKey', () => {
@@ -157,7 +156,7 @@ describe('Collapse', () => {
         </Collapse.Item>
       </Collapse>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   // it('renders correctly with dynamic activeKey', () => {
@@ -205,7 +204,7 @@ describe('Collapse', () => {
     const props: CollapseProps = {};
     props.defaultActiveKey = '0';
     props.activeKey = '1';
-    const wrapper = render(
+    const { container } = render(
       <Collapse {...props}>
         <Collapse.Item key="0" title="Header of Item1">
           This is content of item1.
@@ -218,12 +217,12 @@ describe('Collapse', () => {
         </Collapse.Item>
       </Collapse>,
     );
-    expect(wrapper.find('.za-collapse-item--active').length).toBe(1);
+    expect(container.getElementsByClassName('za-collapse-item--active').length).toBe(1);
   });
 
   it('click collapse item correctly', () => {
     const onChange = jest.fn();
-    const wrapper = mount(
+    const { container } = render(
       <Collapse onChange={onChange}>
         <Collapse.Item key="0" title="Header of Item1">
           This is content of item1.
@@ -236,14 +235,15 @@ describe('Collapse', () => {
         </Collapse.Item>
       </Collapse>,
     );
-    wrapper.find('.za-collapse-item__title').at(0).simulate('click');
+    const items = container.getElementsByClassName('za-collapse-item__title');
+    fireEvent.click(items[0]);
     expect(onChange).toBeCalled();
   });
 
   it('click collapse item correctly with disabled mode', () => {
     const props: CollapseProps = {};
     props.onChange = jest.fn();
-    const wrapper = mount(
+    const { container } = render(
       <Collapse {...props}>
         <Collapse.Item disabled key="0" title="Header of Item1">
           This is content of item1.
@@ -256,14 +256,15 @@ describe('Collapse', () => {
         </Collapse.Item>
       </Collapse>,
     );
-    wrapper.find('.za-collapse-item__title').at(0).simulate('click');
+    const items = container.getElementsByClassName('za-collapse-item__title');
+    fireEvent.click(items[0]);
     expect(props.onChange).not.toBeCalled();
   });
 
   it('collapse items toggle correctly with animated', (done) => {
     const props: CollapseProps = {};
     props.animated = true;
-    const wrapper = mount(
+    const { container } = render(
       <Collapse {...props}>
         <Collapse.Item key="0" title="Header of Item1">
           This is content of item1.
@@ -276,9 +277,11 @@ describe('Collapse', () => {
         </Collapse.Item>
       </Collapse>,
     );
-    wrapper.find('.za-collapse-item__title').at(0).simulate('click');
+    const items = container.getElementsByClassName('za-collapse-item__title');
+    fireEvent.click(items[0]);
+
     setTimeout(() => {
-      expect(wrapper.find('.za-collapse-item--active').length).toBe(1);
+      expect(container.getElementsByClassName('za-collapse-item--active').length).toBe(1);
       done();
     }, 0);
   });
@@ -286,7 +289,7 @@ describe('Collapse', () => {
   it('negative item toggle correctly with animated', (done) => {
     const props: CollapseProps = {};
     props.animated = true;
-    const wrapper = mount(
+    const { container } = render(
       <Collapse {...props}>
         <Collapse.Item key="0" title="Header of Item1">
           This is content of item1.
@@ -299,9 +302,10 @@ describe('Collapse', () => {
         </Collapse.Item>
       </Collapse>,
     );
-    wrapper.find('.za-collapse-item__title').at(0).simulate('click');
+    const items = container.getElementsByClassName('za-collapse-item__title');
+    fireEvent.click(items[0]);
     setTimeout(() => {
-      expect(wrapper.find('.za-collapse-item--active').length).toBe(1);
+      expect(container.getElementsByClassName('za-collapse-item--active').length).toBe(1);
       done();
     }, 0);
   });
@@ -310,7 +314,7 @@ describe('Collapse', () => {
     const props: CollapseProps = {};
     props.animated = true;
     props.defaultActiveKey = '0';
-    const wrapper = mount(
+    const { container } = render(
       <Collapse {...props}>
         <Collapse.Item key="0" title="Header of Item1">
           This is content of item1.
@@ -323,9 +327,10 @@ describe('Collapse', () => {
         </Collapse.Item>
       </Collapse>,
     );
-    wrapper.find('.za-collapse-item__title').at(0).simulate('click');
+    const items = container.getElementsByClassName('za-collapse-item__title');
+    fireEvent.click(items[0]);
     setTimeout(() => {
-      expect(wrapper.find('.za-collapse-item--active').length).toBe(0);
+      expect(container.getElementsByClassName('za-collapse-item--active').length).toBe(0);
       done();
     }, 0);
   });
@@ -335,7 +340,7 @@ describe('Collapse', () => {
     props.multiple = false;
     props.activeKey = '1';
     props.onChange = jest.fn();
-    const wrapper = mount(
+    const { container } = render(
       <Collapse {...props}>
         <Collapse.Item key="0" title="Header of Item1">
           This is content of item1.
@@ -348,16 +353,17 @@ describe('Collapse', () => {
         </Collapse.Item>
       </Collapse>,
     );
-    wrapper.find('.za-collapse-item__title').at(0).simulate('click');
-    expect(wrapper.find('.za-collapse-item--active').length).toBe(1);
+    const items = container.getElementsByClassName('za-collapse-item__title');
+    fireEvent.click(items[0]);
+    expect(container.getElementsByClassName('za-collapse-item--active').length).toBe(1);
   });
 
   it('collapse items toggle correctly with multiple mode', () => {
     const props: CollapseProps = {};
     props.multiple = true;
-    props.defaultActiveKey = ['0', '1'];
+    props.defaultActiveKey = ['0'];
 
-    const wrapper = mount(
+    const { container } = render(
       <Collapse {...props}>
         <Collapse.Item key="0" title="Header of Item1">
           This is content of item1.
@@ -370,21 +376,23 @@ describe('Collapse', () => {
         </Collapse.Item>
       </Collapse>,
     );
-    wrapper.find('.za-collapse-item__title').at(0).simulate('click');
-    expect(wrapper.find('.za-collapse-item--active').length).toBe(1);
+    const items = container.getElementsByClassName('za-collapse-item__title');
+    fireEvent.click(items[1]);
+    expect(container.getElementsByClassName('za-collapse-item--active').length).toBe(2);
   });
 
   it('click should not trigger callback without key', () => {
     const props: CollapseProps = {};
     props.onChange = jest.fn();
-    const wrapper = mount(
+    const { container } = render(
       <Collapse {...props}>
         <Collapse.Item title="50元套餐">
           <div>50元套餐内容</div>
         </Collapse.Item>
       </Collapse>,
     );
-    wrapper.find('.za-collapse-item__title').simulate('click');
+    const items = container.getElementsByClassName('za-collapse-item__title');
+    fireEvent.click(items[0]);
     expect(props.onChange).not.toBeCalled();
   });
 });

@@ -55,18 +55,6 @@ describe('DateSelect', () => {
     expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
-  it('DateSelect wheelDefaultValue', () => {
-    const wrapper = render(
-      <DateSelect
-        title="选择日期"
-        placeholder="请选择日期"
-        mode="date"
-        wheelDefaultValue={date5}
-      />,
-    );
-    expect(wrapper.asFragment()).toMatchSnapshot();
-  });
-
   it('should trigger onConfirm when press ok button', () => {
     const onConfirmFn = jest.fn();
 

@@ -6,6 +6,7 @@ import DatePicker from '../date-picker';
 import { ConfigContext } from '../n-config-provider';
 import type { BaseDateSelectProps } from './interface';
 import { HTMLProps } from '../utils/utilityTypes';
+import { parseState } from '../date-picker-view/utils/parseState';
 
 export type DateSelectProps = BaseDateSelectProps & HTMLProps;
 
@@ -24,12 +25,14 @@ const DateSelect = React.forwardRef<HTMLDivElement, DateSelectProps>((props, ref
 
   const { locale: globalLocal, prefixCls } = useContext(ConfigContext);
 
+  const { date: dateSeletValue } = parseState(props);
+
   const [state, setState] = useState<{
     visible: boolean;
     selectValue?: Date | string;
   }>({
     visible: false,
-    selectValue: value,
+    selectValue: dateSeletValue,
   });
 
   const { visible, selectValue } = state;
@@ -59,7 +62,7 @@ const DateSelect = React.forwardRef<HTMLDivElement, DateSelectProps>((props, ref
     if (isEqual(props.value, state.selectValue)) return;
     setState({
       ...state,
-      selectValue: value,
+      selectValue: dateSeletValue,
     });
   }, [value]);
 
