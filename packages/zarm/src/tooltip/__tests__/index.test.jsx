@@ -1,18 +1,16 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 import Tooltip from '../index';
 
 describe('Tooltip', () => {
   it('renders correctly', () => {
     jest.useFakeTimers();
-    const wrapper = mount(
+    const { container } = render(
       <Tooltip direction="top" content="hello">
         <span>foo</span>
       </Tooltip>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
     jest.runAllTimers();
-    wrapper.unmount();
   });
 });

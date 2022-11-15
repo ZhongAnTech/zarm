@@ -2,8 +2,6 @@
 /* eslint-disable dot-notation */
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { shallow, mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
 // import type { TouchEvent } from 'react';
 import Slider from '../index';
 // import ToolTip from '../../tooltip';
@@ -68,65 +66,65 @@ describe('Slider', () => {
 
   describe('snapshot', () => {
     it('shallows correctly', () => {
-      const wrapper = shallow(<Slider />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Slider />);
+      expect(container).toMatchSnapshot();
     });
 
     it('min', () => {
-      const wrapper = shallow(<Slider min={0} />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Slider min={0} />);
+      expect(container).toMatchSnapshot();
     });
 
     it('max', () => {
-      const wrapper = shallow(<Slider max={100} />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Slider max={100} />);
+      expect(container).toMatchSnapshot();
     });
 
     it('step', () => {
-      const wrapper = shallow(<Slider step={5} />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Slider step={5} />);
+      expect(container).toMatchSnapshot();
     });
 
     it('disabled', () => {
-      const wrapper = shallow(<Slider disabled />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Slider disabled />);
+      expect(container).toMatchSnapshot();
     });
 
     it('defaultValue', () => {
-      const wrapper = shallow(<Slider defaultValue={10} />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Slider defaultValue={10} />);
+      expect(container).toMatchSnapshot();
     });
 
     it('value', () => {
-      const wrapper = shallow(<Slider value={10} />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Slider value={10} />);
+      expect(container).toMatchSnapshot();
     });
 
     it('showMark', () => {
-      const wrapper = shallow(<Slider showMark marks={marks} />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Slider showMark marks={marks} />);
+      expect(container).toMatchSnapshot();
     });
 
     it('marks', () => {
-      const wrapper = shallow(<Slider marks={marks} />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Slider marks={marks} />);
+      expect(container).toMatchSnapshot();
     });
 
     it('marks error', () => {
       const errorLogSpy = jest.spyOn(console, 'error').mockImplementationOnce(() => 'Suppress');
-      const wrapper = shallow(<Slider showMark />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Slider showMark />);
+      expect(container).toMatchSnapshot();
       expect(errorLogSpy).toBeCalledWith('请输入有效的 marks');
     });
 
     it('vertical', () => {
-      const wrapper = shallow(<Slider vertical />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Slider vertical />);
+      expect(container).toMatchSnapshot();
     });
 
     it('vertical and marks', () => {
-      const wrapper = shallow(<Slider vertical showMark marks={marks} />);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Slider vertical showMark marks={marks} />);
+      expect(container).toMatchSnapshot();
     });
   });
 
@@ -134,15 +132,17 @@ describe('Slider', () => {
 
   it('should not render mark info if marks is an empty object and props.showMark is true', () => {
     const errorLogSpy = jest.spyOn(console, 'error').mockImplementationOnce(() => 'Suppress');
-    const wrapper = mount(<Slider showMark marks={{}} />);
-    expect(wrapper.find('.za-slider__marks').exists()).toBeFalsy();
+    const { container } = render(<Slider showMark marks={{}} />);
+    const el = container.querySelectorAll('.za-slider__marks');
+    expect(el).toHaveLength(0);
     expect(errorLogSpy).toBeCalledWith('请输入有效的 marks');
   });
 
   it('should not render mark info if marks is NOT an object and props.showMark is true', () => {
     const errorLogSpy = jest.spyOn(console, 'error').mockImplementationOnce(() => 'Suppress');
-    const wrapper = mount(<Slider showMark marks={null as any} />);
-    expect(wrapper.find('.za-slider__marks').exists()).toBeFalsy();
+    const { container } = render(<Slider showMark marks={null as any} />);
+    const el = container.querySelectorAll('.za-slider__marks');
+    expect(el).toHaveLength(0);
     expect(errorLogSpy).toBeCalledWith('请输入有效的 marks');
   });
 
@@ -153,28 +153,28 @@ describe('Slider', () => {
       65: '65°C',
       100: '100°C',
     };
-    const wrapper = mount(<Slider showMark marks={MARKS} value={55} />);
-    expect(wrapper.find('.za-slider__mark')).toHaveLength(4);
-    expect(wrapper.find('.za-slider__mark').map((mark) => mark.text())).toEqual(
+    const { container } = render(<Slider showMark marks={MARKS} value={55} />);
+    const el = container.querySelectorAll('.za-slider__mark');
+    expect(el).toHaveLength(4);
+    expect(Array.from(el!).map((mark) => mark.textContent)).toEqual(
       expect.arrayContaining(['100°C', '0°C', '26°C', '65°C']),
     );
     expect(
-      wrapper.find('.za-slider__mark').map((mark) => {
-        const style = mark.prop('style');
+      Array.from(el!).map((mark) => {
+        const style = window.getComputedStyle(mark);
         return style ? style.left : '';
       }),
     ).toEqual(expect.arrayContaining(['0%', '26%', '65%', '100%']));
-    // expect(
-    //   wrapper
-    //     .find('.za-slider__line__dot')
-    //     .map((dot) => dot.prop('className'))
-    //     .filter((className) => {
-    //       if (className) {
-    //         return className.includes('za-slider__line__dot--active');
-    //       }
-    //       return false;
-    //     }),
-    // ).toHaveLength(2);
+    expect(
+      Array.from(container.querySelectorAll('.za-slider__dot'))
+        .map((dot) => dot.className)
+        .filter((className) => {
+          if (className) {
+            return className.includes('za-slider__dot--active');
+          }
+          return false;
+        }),
+    ).toHaveLength(2);
   });
 
   it('mouse event', () => {

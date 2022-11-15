@@ -1,15 +1,14 @@
 import React from 'react';
-import { render } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 import Panel from '../index';
 
 describe('Panel', () => {
   it('renders correctly', () => {
-    const wrapper = render(
+    const { container } = render(
       <Panel title="title" more="more">
         body
       </Panel>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

@@ -1,47 +1,48 @@
 import React from 'react';
-import { render, mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { fireEvent, render } from '@testing-library/react';
 import Input from '../index';
 
 describe('Input', () => {
   it('renders correctly', () => {
-    const wrapper = render(<Input type="text" />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<Input type="text" />);
+    expect(container).toMatchSnapshot();
   });
 
   it('renders correctly if type=text and props includes rows', () => {
-    const wrapper = render(<Input type="text" rows={1} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<Input type="text" rows={1} />);
+    expect(container).toMatchSnapshot();
   });
 
   it("renders correctly if type isn't valid", () => {
-    const wrapper = render(<Input type="xxx" />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<Input type="xxx" />);
+    expect(container).toMatchSnapshot();
   });
 
   it('showLength', () => {
-    const wrapper = render(<Input showLength maxLength={100} type="text" rows={4} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<Input showLength maxLength={100} type="text" rows={4} />);
+    expect(container).toMatchSnapshot();
   });
 
   it('renders onFocus called correctly', () => {
     const onFocus = jest.fn();
-    const wrapper = mount(<Input onFocus={onFocus} />);
-    wrapper.find('input[type="text"]').simulate('focus');
+    const { container } = render(<Input onFocus={onFocus} />);
+    const input = container.querySelector('input');
+    fireEvent.focus(input);
     expect(onFocus).toBeCalled();
     // expect(toJson(wrapper)).toMatchSnapshot();
-    wrapper.unmount();
+    // wrapper.unmount();
   });
 
   it('renders onClear called correctly', () => {
     const onChange = jest.fn();
-    const wrapper = mount(<Input clearable value="" onChange={onChange} />);
+    const { container } = render(<Input clearable value="" onChange={onChange} />);
 
-    const input = wrapper.find('input[type="text"]');
-    input.simulate('change', { target: { value: 'My new value' } });
-    wrapper.find('i.za-input__clear').simulate('click');
+    const input = container.querySelector('input');
+    fireEvent.change(input, { target: { value: 'My new value' } });
+    const clearBtn = container.querySelector('.za-input__clear');
+    fireEvent.click(clearBtn);
     expect(onChange).toHaveBeenCalled();
-    expect(input.instance().value).toEqual('');
+    expect(input.value).toEqual('');
   });
 
   // it('renders cn', () => {
@@ -64,24 +65,25 @@ describe('Input', () => {
 
 describe('Input.Base', () => {
   it('auto focus', () => {
-    const id = String(Math.random());
-    const wrapper = mount(<Input id={id} autoFocus />);
-    expect(wrapper.props().id).toEqual(id);
+    const { container } = render(<Input className="text-input" autoFocus />);
+    const input = container.querySelectorAll('.text-input');
+    expect(input.length).toBe(1);
   });
 });
 
 describe('Input.Textarea', () => {
   it('renders correctly', () => {
     const wrapper = render(<Input type="text" rows={4} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('renders onFocus called correctly', () => {
     const onFocus = jest.fn();
-    const wrapper = mount(<Input type="text" rows={2} onFocus={onFocus} />);
-    wrapper.find('textarea').simulate('focus');
+    const { container } = render(<Input type="text" rows={2} onFocus={onFocus} />);
+    const textarea = container.querySelector('textarea');
+    fireEvent.focus(textarea);
     expect(onFocus).toBeCalled();
     // expect(toJson(wrapper)).toMatchSnapshot();
-    wrapper.unmount();
+    //  wrapper.unmount();
   });
 });

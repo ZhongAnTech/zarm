@@ -1,7 +1,5 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
 import Popper from '../index';
 
 if (global.document) {
@@ -27,13 +25,13 @@ describe('Popper', () => {
   it('renders correctly', () => {
     const onVisibleChange = jest.fn();
 
-    const wrapper = mount(
+    const { container } = render(
       <Popper title="标题" onVisibleChange={onVisibleChange}>
         <p>点我</p>
       </Popper>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
-    wrapper.unmount();
+    expect(container).toMatchSnapshot();
+    // wrapper.unmount();
   });
 
   // it('check visible prop', () => {
