@@ -1,6 +1,5 @@
 import React from 'react';
-import { render } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 import Icon from '../index';
 
 const Right = (props) => (
@@ -30,11 +29,11 @@ describe('Icon', () => {
         <MyIcon type="user" />
       </>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('renders Icons using svg component', () => {
     const wrapper = render(<Icon size="lg" theme="primary" component={Right} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 });

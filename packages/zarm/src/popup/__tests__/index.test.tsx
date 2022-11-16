@@ -2,8 +2,7 @@
 /* eslint-disable dot-notation */
 /* eslint-disable no-unused-expressions */
 import React from 'react';
-import { mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 import Popup from '../Popup';
 
 describe('Popup', () => {
@@ -11,18 +10,18 @@ describe('Popup', () => {
     it('renders correctly', () => {
       const onMaskClick = jest.fn();
       const afterClose = jest.fn();
-      const wrapper = mount(
+      const { container } = render(
         <Popup direction="bottom" onMaskClick={onMaskClick} afterClose={afterClose}>
           foo
         </Popup>,
       );
-      expect(toJson(wrapper)).toMatchSnapshot();
+      expect(container).toMatchSnapshot();
     });
 
     it('renders mount node correctly', () => {
       const onMaskClick = jest.fn();
       const afterClose = jest.fn();
-      const wrapper = mount(
+      const { container } = render(
         <Popup
           visible
           direction="bottom"
@@ -33,7 +32,7 @@ describe('Popup', () => {
           foo
         </Popup>,
       );
-      expect(toJson(wrapper)).toMatchSnapshot();
+      expect(container).toMatchSnapshot();
     });
   });
 });

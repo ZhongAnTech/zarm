@@ -1,69 +1,81 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Input renders correctly 1`] = `
-<div
-  class="za-input"
->
-  <input
-    type="text"
-  />
-</div>
-`;
-
-exports[`Input renders correctly if type isn't valid 1`] = `
-<div
-  class="za-input"
->
-  <input
-    type="xxx"
-  />
-</div>
-`;
-
-exports[`Input renders correctly if type=text and props includes rows 1`] = `
-<div
-  class="za-input za-input--textarea"
->
+<div>
   <div
-    class="za-input__inner"
+    class="za-input"
   >
-    <textarea
-      rows="1"
+    <input
+      type="text"
+      value=""
     />
   </div>
 </div>
 `;
 
-exports[`Input showLength 1`] = `
-<div
-  class="za-input za-input--textarea"
->
+exports[`Input renders correctly if type isn't valid 1`] = `
+<div>
   <div
-    class="za-input__inner"
+    class="za-input"
   >
-    <textarea
-      maxlength="100"
-      rows="4"
+    <input
+      type="xxx"
+      value=""
     />
+  </div>
+</div>
+`;
+
+exports[`Input renders correctly if type=text and props includes rows 1`] = `
+<div>
+  <div
+    class="za-input za-input--textarea"
+  >
     <div
-      class="za-input__length"
+      class="za-input__inner"
     >
-      0/100
+      <textarea
+        rows="1"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Input showLength 1`] = `
+<div>
+  <div
+    class="za-input za-input--textarea"
+  >
+    <div
+      class="za-input__inner"
+    >
+      <textarea
+        maxlength="100"
+        rows="4"
+      />
+      <div
+        class="za-input__length"
+      >
+        0/100
+      </div>
     </div>
   </div>
 </div>
 `;
 
 exports[`Input.Textarea renders correctly 1`] = `
-<div
-  class="za-input za-input--textarea"
->
+<DocumentFragment>
   <div
-    class="za-input__inner"
+    class="za-input za-input--textarea"
   >
-    <textarea
-      rows="4"
-    />
+    <div
+      class="za-input__inner"
+    >
+      <textarea
+        rows="4"
+      />
+    </div>
   </div>
-</div>
+</DocumentFragment>
 `;

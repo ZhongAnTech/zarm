@@ -1,70 +1,67 @@
 import React from 'react';
-import { render, mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 import Progress from '../index';
 
 describe('Progress', () => {
   it('renders correctly', () => {
-    const wrapper = render(<Progress percent={10} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<Progress percent={10} />);
+    expect(container).toMatchSnapshot();
   });
 
   it('renders has children correctly', () => {
-    const wrapper = render(<Progress percent={10}>foo</Progress>);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    const { container } = render(<Progress percent={10}>foo</Progress>);
+    expect(container).toMatchSnapshot();
   });
 
   describe('circle shape progress', () => {
     it('renders shape is circle correctly', () => {
-      const wrapper = render(
+      const { container } = render(
         <Progress shape="circle" strokeShape="rect" percent={10}>
           foo
         </Progress>,
       );
-      expect(toJson(wrapper)).toMatchSnapshot();
+      expect(container).toMatchSnapshot();
     });
 
     it('renders shape is semi-circle correctly', () => {
-      const wrapper = render(
+      const { container } = render(
         <Progress shape="semi-circle" percent={10}>
           foo
         </Progress>,
       );
-      expect(toJson(wrapper)).toMatchSnapshot();
+      expect(container).toMatchSnapshot();
     });
 
     it('renders percent correctly', () => {
-      const wrapper = mount(
-        <Progress shape="circle" percent={10}>
-          foo
-        </Progress>,
+      const { container } = render(
+        <Progress
+          shape="circle"
+          percent={10}
+          text={(percent) => <div className="test-progress">{percent}</div>}
+        />,
       );
-      wrapper.setProps({ percent: 50 });
-      expect(wrapper.props().percent).toEqual(50);
-      expect(toJson(wrapper)).toMatchSnapshot();
+      expect(container.querySelectorAll('.test-progress')[0].textContent).toEqual('10');
+      expect(container).toMatchSnapshot();
     });
   });
 
   describe('line shape progress', () => {
     it('renders size is lg correctly', () => {
-      const wrapper = mount(<Progress shape="line" percent={10} />);
-      wrapper.setProps({ size: 'lg' });
-      expect(wrapper.props().size).toEqual('lg');
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Progress shape="line" percent={10} size="lg" />);
+      expect(container.querySelectorAll('.za-progress--lg')).toHaveLength(1);
+      expect(container).toMatchSnapshot();
     });
 
     it('renders size is md correctly', () => {
-      const wrapper = mount(<Progress shape="line" percent={10} />);
-      wrapper.setProps({ size: 'md' });
-      expect(wrapper.props().size).toEqual('md');
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Progress shape="line" percent={10} size="md" />);
+      expect(container.querySelectorAll('.za-progress--md')).toHaveLength(1);
+      expect(container).toMatchSnapshot();
     });
 
     it('renders size is sm correctly', () => {
-      const wrapper = mount(<Progress shape="line" percent={10} />);
-      wrapper.setProps({ size: 'sm' });
-      expect(wrapper.props().size).toEqual('sm');
-      expect(toJson(wrapper)).toMatchSnapshot();
+      const { container } = render(<Progress shape="line" percent={10} size="sm" />);
+      expect(container.querySelectorAll('.za-progress--sm')).toHaveLength(1);
+      expect(container).toMatchSnapshot();
     });
   });
 });

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Icon renders Icons using iconfont 1`] = `
-Array [
+<DocumentFragment>
   <i
     class="za-icon"
   >
@@ -12,10 +12,10 @@ Array [
       width="1em"
     >
       <use
-        href="#home"
+        xlink:href="#home"
       />
     </svg>
-  </i>,
+  </i>
   <i
     class="za-icon"
   >
@@ -26,30 +26,32 @@ Array [
       width="1em"
     >
       <use
-        href="#user"
+        xlink:href="#user"
       />
     </svg>
-  </i>,
-]
+  </i>
+</DocumentFragment>
 `;
 
 exports[`Icon renders Icons using svg component 1`] = `
-<i
-  class="za-icon za-icon--primary za-icon--lg"
->
-  <svg
-    fill="currentColor"
-    height="1em"
-    stroke="currentColor"
-    viewBox="0 0 1000 1000"
-    width="1em"
+<DocumentFragment>
+  <i
+    class="za-icon za-icon--primary za-icon--lg"
   >
-    <path
-      d="M1 12.376l8.8 9.114L30.431 1.568"
-      fill="none"
+    <svg
+      fill="currentColor"
+      height="1em"
       stroke="currentColor"
-      stroke-width="2.6"
-    />
-  </svg>
-</i>
+      viewBox="0 0 1000 1000"
+      width="1em"
+    >
+      <path
+        d="M1 12.376l8.8 9.114L30.431 1.568"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.6"
+      />
+    </svg>
+  </i>
+</DocumentFragment>
 `;

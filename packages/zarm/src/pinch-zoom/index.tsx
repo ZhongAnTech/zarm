@@ -109,7 +109,7 @@ const PinchZoom = React.forwardRef<unknown, PinchZoomProps>((props, ref) => {
       offset.current = initOffset?.current;
       update();
     };
-    if (node.nodeName === 'IMG') {
+    if (node?.nodeName === 'IMG') {
       Events.on(node, 'load', () => {
         alignCenter();
       });

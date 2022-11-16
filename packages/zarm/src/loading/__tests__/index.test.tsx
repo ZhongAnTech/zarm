@@ -1,17 +1,16 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import Loading from '../index';
 
 describe('Loading', () => {
   it('renders correctly', () => {
-    const wrapper = mount(<Loading visible content="foo" />);
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(<Loading visible content="foo" />);
+    expect(container).toMatchSnapshot();
   });
 
   it('visible change true', () => {
-    const wrapper = mount(<Loading />);
-    wrapper.setProps({ visible: true });
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(<Loading visible />);
+    expect(container).toMatchSnapshot();
   });
 
   // let Loading: typeof import('../index').default;

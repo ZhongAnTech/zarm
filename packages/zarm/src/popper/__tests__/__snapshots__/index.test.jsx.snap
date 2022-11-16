@@ -1,53 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Popper renders correctly 1`] = `
-<ForwardRef
-  animationType="zoom-fade"
-  arrowPointAtCenter={false}
-  destroy={false}
-  direction="top"
-  hasArrow={false}
-  mouseEnterDelay={150}
-  mouseLeaveDelay={100}
-  onVisibleChange={[MockFunction]}
-  title="标题"
-  trigger="hover"
-  visible={false}
->
-  <Transition
-    destroy={false}
-    nodeRef={[Function]}
-    onLeaveEnd={[Function]}
-    tranisitionName="za-zoom-fade"
-    visible={false}
-  >
-    <Transition
-      addEndListener={[Function]}
-      appear={false}
-      enter={true}
-      exit={true}
-      in={false}
-      mountOnEnter={true}
-      nodeRef={
-        Object {
-          "current": undefined,
-        }
-      }
-      onEnter={[Function]}
-      onEntered={[Function]}
-      onEntering={[Function]}
-      onExit={[Function]}
-      onExited={[Function]}
-      onExiting={[Function]}
-      unmountOnExit={false}
-    />
-  </Transition>
-  <p
-    onMouseMove={[Function]}
-    onPointerDown={[Function]}
-    onPointerEnter={[Function]}
-  >
+<div>
+  <p>
     点我
   </p>
-</ForwardRef>
+</div>
 `;

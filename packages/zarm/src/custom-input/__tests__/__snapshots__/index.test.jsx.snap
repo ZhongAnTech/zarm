@@ -1,214 +1,93 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CustomInput renders correctly 1`] = `
-<div
-  class="za-custom-input za-custom-input--number"
->
+<DocumentFragment>
   <div
-    class="za-custom-input__content"
+    class="za-custom-input za-custom-input--number"
   >
     <div
-      class="za-custom-input__placeholder"
-    />
-    <div
-      class="za-custom-input__virtual-input"
-    />
-    <input
-      type="hidden"
-      value=""
-    />
+      class="za-custom-input__content"
+    >
+      <div
+        class="za-custom-input__placeholder"
+      />
+      <div
+        class="za-custom-input__virtual-input"
+      />
+      <input
+        type="hidden"
+        value=""
+      />
+    </div>
   </div>
-</div>
+</DocumentFragment>
 `;
 
 exports[`CustomInput renders correctly if type isn't valid 1`] = `
-<div
-  class="za-custom-input za-custom-input--xxx"
->
+<DocumentFragment>
   <div
-    class="za-custom-input__content"
+    class="za-custom-input za-custom-input--xxx"
   >
     <div
-      class="za-custom-input__placeholder"
-    />
-    <div
-      class="za-custom-input__virtual-input"
-    />
-    <input
-      type="hidden"
-      value=""
-    />
+      class="za-custom-input__content"
+    >
+      <div
+        class="za-custom-input__placeholder"
+      />
+      <div
+        class="za-custom-input__virtual-input"
+      />
+      <input
+        type="hidden"
+        value=""
+      />
+    </div>
   </div>
-</div>
+</DocumentFragment>
 `;
 
 exports[`CustomInput.Idcard renders correctly 1`] = `
-<CustomInput
-  autoFocus={false}
-  clearable={false}
-  disabled={false}
-  maxLength={18}
-  readOnly={false}
-  type="idcard"
->
+<DocumentFragment>
   <div
-    className="za-custom-input za-custom-input--idcard"
-    onClick={[Function]}
+    class="za-custom-input za-custom-input--idcard"
   >
     <div
-      className="za-custom-input__content"
+      class="za-custom-input__content"
     >
       <div
-        className="za-custom-input__placeholder"
+        class="za-custom-input__placeholder"
       />
       <div
-        className="za-custom-input__virtual-input"
+        class="za-custom-input__virtual-input"
       />
       <input
         type="hidden"
         value=""
       />
     </div>
-    <KeyboardPicker
-      destroy={true}
-      onKeyClick={[Function]}
-      type="idcard"
-      visible={false}
-    >
-      <Popup
-        className="za-keyboard-picker"
-        destroy={true}
-        direction="bottom"
-        lockScroll={false}
-        mask={false}
-        visible={false}
-      >
-        <Trigger
-          disabled={false}
-          onClose={[Function]}
-          visible={false}
-        >
-          <Transition
-            destroy={true}
-            nodeRef={
-              Object {
-                "current": undefined,
-              }
-            }
-            onEnter={[Function]}
-            onLeaveEnd={[Function]}
-            tranisitionName="za-move-up"
-            visible={false}
-          >
-            <Transition
-              addEndListener={[Function]}
-              appear={false}
-              enter={true}
-              exit={true}
-              in={false}
-              mountOnEnter={true}
-              nodeRef={
-                Object {
-                  "current": undefined,
-                }
-              }
-              onEnter={[Function]}
-              onEntered={[Function]}
-              onEntering={[Function]}
-              onExit={[Function]}
-              onExited={[Function]}
-              onExiting={[Function]}
-              unmountOnExit={true}
-            />
-          </Transition>
-        </Trigger>
-      </Popup>
-    </KeyboardPicker>
   </div>
-</CustomInput>
+</DocumentFragment>
 `;
 
 exports[`CustomInput.Price renders correctly 1`] = `
-<CustomInput
-  autoFocus={false}
-  clearable={false}
-  disabled={false}
-  readOnly={false}
-  type="price"
->
+<DocumentFragment>
   <div
-    className="za-custom-input za-custom-input--price"
-    onClick={[Function]}
+    class="za-custom-input za-custom-input--price"
   >
     <div
-      className="za-custom-input__content"
+      class="za-custom-input__content"
     >
       <div
-        className="za-custom-input__placeholder"
+        class="za-custom-input__placeholder"
       />
       <div
-        className="za-custom-input__virtual-input"
+        class="za-custom-input__virtual-input"
       />
       <input
         type="hidden"
         value=""
       />
     </div>
-    <KeyboardPicker
-      destroy={true}
-      onKeyClick={[Function]}
-      type="price"
-      visible={false}
-    >
-      <Popup
-        className="za-keyboard-picker"
-        destroy={true}
-        direction="bottom"
-        lockScroll={false}
-        mask={false}
-        visible={false}
-      >
-        <Trigger
-          disabled={false}
-          onClose={[Function]}
-          visible={false}
-        >
-          <Transition
-            destroy={true}
-            nodeRef={
-              Object {
-                "current": undefined,
-              }
-            }
-            onEnter={[Function]}
-            onLeaveEnd={[Function]}
-            tranisitionName="za-move-up"
-            visible={false}
-          >
-            <Transition
-              addEndListener={[Function]}
-              appear={false}
-              enter={true}
-              exit={true}
-              in={false}
-              mountOnEnter={true}
-              nodeRef={
-                Object {
-                  "current": undefined,
-                }
-              }
-              onEnter={[Function]}
-              onEntered={[Function]}
-              onEntering={[Function]}
-              onExit={[Function]}
-              onExited={[Function]}
-              onExiting={[Function]}
-              unmountOnExit={true}
-            />
-          </Transition>
-        </Trigger>
-      </Popup>
-    </KeyboardPicker>
   </div>
-</CustomInput>
+</DocumentFragment>
 `;

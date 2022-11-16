@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ImagePreview snapshot renders correctly 1`] = `
-Array [
+<DocumentFragment>
   <div
     class="za-mask "
-    style="background-color:rgba(0, 0, 0, 1)"
-  />,
+    style="background-color: rgb(0, 0, 0);"
+  />
   <div
     class="za-popup__wrapper za-image-preview"
   >
@@ -20,6 +20,7 @@ Array [
         >
           <div
             class="za-carousel__items"
+            style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0);"
           >
             <div
               class="za-carousel__item za-image-preview__item"
@@ -31,7 +32,7 @@ Array [
                   alt=""
                   draggable="false"
                   src="https://static.zhongan.com/website/health/zarm/images/banners/1.png"
-                  style="max-height:768px"
+                  style="max-height: 768px;"
                 />
               </div>
             </div>
@@ -45,7 +46,7 @@ Array [
                   alt=""
                   draggable="false"
                   src="https://static.zhongan.com/website/health/zarm/images/banners/2.png"
-                  style="max-height:768px"
+                  style="max-height: 768px;"
                 />
               </div>
             </div>
@@ -59,7 +60,7 @@ Array [
                   alt=""
                   draggable="false"
                   src="https://static.zhongan.com/website/health/zarm/images/banners/3.png"
-                  style="max-height:768px"
+                  style="max-height: 768px;"
                 />
               </div>
             </div>
@@ -76,16 +77,16 @@ Array [
         </div>
       </div>
     </div>
-  </div>,
-]
+  </div>
+</DocumentFragment>
 `;
 
 exports[`ImagePreview snapshot renders correctly with origin 1`] = `
-Array [
+<DocumentFragment>
   <div
     class="za-mask "
-    style="background-color:rgba(0, 0, 0, 1)"
-  />,
+    style="background-color: rgb(0, 0, 0);"
+  />
   <div
     class="za-popup__wrapper za-image-preview"
   >
@@ -100,6 +101,7 @@ Array [
         >
           <div
             class="za-carousel__items"
+            style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0);"
           >
             <div
               class="za-carousel__item za-image-preview__item"
@@ -111,7 +113,7 @@ Array [
                   alt=""
                   draggable="false"
                   src="https://cdn-health.zhongan.com/zarm/imagePreview/compress_1.png"
-                  style="max-height:768px"
+                  style="max-height: 768px;"
                 />
               </div>
             </div>
@@ -125,7 +127,7 @@ Array [
                   alt=""
                   draggable="false"
                   src="https://cdn-health.zhongan.com/zarm/imagePreview/compress_2.png"
-                  style="max-height:768px"
+                  style="max-height: 768px;"
                 />
               </div>
             </div>
@@ -139,7 +141,7 @@ Array [
                   alt=""
                   draggable="false"
                   src="https://cdn-health.zhongan.com/zarm/imagePreview/compress_3.png"
-                  style="max-height:768px"
+                  style="max-height: 768px;"
                 />
               </div>
             </div>
@@ -165,6 +167,6 @@ Array [
         </div>
       </div>
     </div>
-  </div>,
-]
+  </div>
+</DocumentFragment>
 `;

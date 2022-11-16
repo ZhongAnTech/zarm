@@ -184,19 +184,7 @@ const Demo = () => {
   return (
     <List>
       <List.Item title="日期选择">
-        <DateSelect
-          className="test-dateSelect"
-          title="选择日期"
-          placeholder="请选择日期"
-          mode="date"
-          min="2021-05-16"
-          max="2027-05-15"
-          value={value}
-          onConfirm={(value) => {
-            console.log('DateSelect onConfirm: ', value);
-            setValue(value);
-          }}
-        />
+        <DateSelect mode="date" defaultValue={new Date(1555977600000)} />
       </List.Item>
     </List>
   );

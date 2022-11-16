@@ -1,5 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Loading renders correctly 1`] = `ReactWrapper {}`;
+exports[`Loading renders correctly 1`] = `<div />`;
 
-exports[`Loading visible change true 1`] = `ReactWrapper {}`;
+exports[`Loading visible change true 1`] = `<div />`;
