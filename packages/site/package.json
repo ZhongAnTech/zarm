@@ -1,6 +1,6 @@
 {
   "name": "site",
-  "version": "0.0.6-alpha.0",
+  "version": "0.0.6-alpha.1",
   "private": true,
   "scripts": {
     "clean": "rimraf assets",
@@ -17,7 +17,7 @@
     "Android >= 4"
   ],
   "dependencies": {
-    "@zarm-design/icons": "^0.1.5-alpha.0",
+    "@zarm-design/icons": "^0.1.5-alpha.1",
     "classnames": "2.2.6",
     "clipboard": "^2.0.11",
     "qrcode.react": "^3.1.0",
@@ -27,7 +27,7 @@
     "react-intl": "^5.12.1",
     "react-loadable": "^5.5.0",
     "react-router-dom": "^5.1.2",
-    "zarm": "^3.0.0-alpha.0",
+    "zarm": "^3.0.0-alpha.2",
     "zarm-web": "0.0.1-alpha.10"
   },
   "devDependencies": {
