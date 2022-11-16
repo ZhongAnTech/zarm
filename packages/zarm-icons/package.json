@@ -33,12 +33,14 @@
     "@svgr/cli": "^5.5.0",
     "@zarm-design/bem": "^0.0.2-alpha.0",
     "@zarm-design/cli": "^0.0.41-alpha.0",
-    "change-case": "^4.1.2",
     "react": "^17.0.2",
     "shelljs": "^0.8.4",
     "webfonts-helper": "^0.1.2"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "change-case": "^4.1.2"
   }
 }
