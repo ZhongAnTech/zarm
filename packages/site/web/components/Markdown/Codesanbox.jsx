@@ -1,5 +1,6 @@
 import { getParameters } from 'codesandbox/lib/api/define';
 import { pascalCase } from 'change-case';
+import pkg from '@zarmDir/package.json';
 
 export default ({ code, component, preview, formatMessage }) => {
   const title = `${component.name} ${pascalCase(component.key)} - Zarm Design`;
@@ -42,7 +43,7 @@ ${parsedSourceCode}
           title,
           main: 'index.js',
           dependencies: {
-            zarm: 'latest',
+            zarm: pkg.version,
             react: '^17',
             'react-dom': '^17',
             'react-scripts': '^4.0.0',
