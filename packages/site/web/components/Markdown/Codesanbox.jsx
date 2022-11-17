@@ -44,9 +44,9 @@ ${parsedSourceCode}
           main: 'index.js',
           dependencies: {
             zarm: pkg.version,
-            react: '^17',
-            'react-dom': '^17',
-            'react-scripts': '^4.0.0',
+            react: '^18',
+            'react-dom': '^18',
+            'react-scripts': '^5.0.0',
           },
           devDependencies: {
             typescript: '^4.0.5',
