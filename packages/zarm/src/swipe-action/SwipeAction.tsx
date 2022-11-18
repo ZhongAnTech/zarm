@@ -102,6 +102,9 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
   };
 
   const dragging = useRef(false);
+  const btnsLeftWidth = leftRef?.current?.offsetWidth || 0;
+  const btnsRightWidth = rightRef?.current?.offsetWidth || 0;
+
   const bind = useDrag(
     (state) => {
       const [offsetX] = state.offset;
@@ -117,14 +120,11 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
       if (!dragging.current) return;
       dragStart.current = offsetX;
 
-      const btnsLeftWidth = leftRef?.current?.offsetWidth || 0;
-      const btnsRightWidth = rightRef?.current?.offsetWidth || 0;
-
-      if (offsetX > 0 && !btnsLeftWidth) {
+      if (offsetX > 0 && !leftRef?.current) {
         return false;
       }
 
-      if (offsetX < 0 && !btnsRightWidth) {
+      if (offsetX < 0 && !rightRef?.current) {
         return false;
       }
 
