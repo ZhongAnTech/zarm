@@ -1,5 +1,6 @@
 import { getParameters } from 'codesandbox/lib/api/define';
 import { pascalCase } from 'change-case';
+import pkg from '@zarmDir/package.json';
 
 export default ({ code, component, preview, formatMessage }) => {
   const title = `${component.name} ${pascalCase(component.key)} - Zarm Design`;
@@ -42,10 +43,10 @@ ${parsedSourceCode}
           title,
           main: 'index.js',
           dependencies: {
-            zarm: 'latest',
-            react: '^17',
-            'react-dom': '^17',
-            'react-scripts': '^4.0.0',
+            zarm: pkg.version,
+            react: '^18',
+            'react-dom': '^18',
+            'react-scripts': '^5.0.0',
           },
           devDependencies: {
             typescript: '^4.0.5',
@@ -84,7 +85,9 @@ ${parsedSourceCode}
         target="_blank"
       >
         <input type="hidden" name="parameters" value="${params}" />
-        <button class="za-button za-button--sm za-button--radius za-button--link" type="submit" title="${formatMessage({ id: 'app.components.preview.action.codesandbox' })}">
+        <button class="za-button za-button--sm za-button--radius za-button--link" type="submit" title="${formatMessage(
+          { id: 'app.components.preview.action.codesandbox' },
+        )}">
           <i class="za-icon za-icon--sm">
             <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 1000 1000">
               <use xlink:href="#codesandbox"></use>
@@ -93,7 +96,9 @@ ${parsedSourceCode}
         </button>
       </form>
       <textarea class="clipboard-content ${uniqueId}">${code}</textarea>
-      <button class="za-button za-button--sm za-button--radius za-button--link clipboard-code" data-clipboard-target=".${uniqueId}" title="${formatMessage({ id: 'app.components.preview.action.copy' })}"">
+      <button class="za-button za-button--sm za-button--radius za-button--link clipboard-code" data-clipboard-target=".${uniqueId}" title="${formatMessage(
+    { id: 'app.components.preview.action.copy' },
+  )}"">
         <i class="za-icon za-icon--sm">
           <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 1000 1000">
             <use xlink:href="#copy"></use>
