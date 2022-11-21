@@ -85,7 +85,9 @@ ${parsedSourceCode}
         target="_blank"
       >
         <input type="hidden" name="parameters" value="${params}" />
-        <button class="za-button za-button--sm za-button--radius za-button--link" type="submit" title="${formatMessage({ id: 'app.components.preview.action.codesandbox' })}">
+        <button class="za-button za-button--sm za-button--radius za-button--link" type="submit" title="${formatMessage(
+          { id: 'app.components.preview.action.codesandbox' },
+        )}">
           <i class="za-icon za-icon--sm">
             <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 1000 1000">
               <use xlink:href="#codesandbox"></use>
@@ -94,7 +96,9 @@ ${parsedSourceCode}
         </button>
       </form>
       <textarea class="clipboard-content ${uniqueId}">${code}</textarea>
-      <button class="za-button za-button--sm za-button--radius za-button--link clipboard-code" data-clipboard-target=".${uniqueId}" title="${formatMessage({ id: 'app.components.preview.action.copy' })}"">
+      <button class="za-button za-button--sm za-button--radius za-button--link clipboard-code" data-clipboard-target=".${uniqueId}" title="${formatMessage(
+    { id: 'app.components.preview.action.copy' },
+  )}"">
         <i class="za-icon za-icon--sm">
           <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 1000 1000">
             <use xlink:href="#copy"></use>

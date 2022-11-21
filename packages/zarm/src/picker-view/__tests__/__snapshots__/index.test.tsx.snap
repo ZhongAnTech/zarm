@@ -1,112 +1,81 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PickerView PickerView disabled 1`] = `
-<ForwardRef
-  cols={Infinity}
-  dataSource={
-    Array [
-      Object {
-        "label": "选项一",
-        "value": "1",
-      },
-      Object {
-        "label": "选项二",
-        "value": "2",
-      },
-    ]
-  }
-  defaultValue={Array []}
-  disabled={true}
-  onChange={[MockFunction]}
->
+<div>
   <div
-    className="za-picker-view"
+    class="za-picker-view"
   >
     <div
-      className="za-picker-view__content"
-    >
-      <Wheel
-        dataSource={
-          Array [
-            Object {
-              "label": "选项一",
-              "value": "1",
-            },
-            Object {
-              "label": "选项二",
-              "value": "2",
-            },
-          ]
-        }
-        disabled={true}
-        key="0"
-        onChange={[Function]}
-        stopScroll={false}
-        value="1"
-      >
-        <div
-          className="za-wheel"
-        >
-          <div
-            className="za-wheel__content"
-          >
-            <div
-              className="za-wheel__item za-wheel__item--selected za-wheel__item--disabled"
-              key="0"
-            >
-              选项一
-            </div>
-            <div
-              className="za-wheel__item za-wheel__item--disabled"
-              key="1"
-            >
-              选项二
-            </div>
-          </div>
-        </div>
-      </Wheel>
-    </div>
-    <div
-      className="za-picker-view__mask za-picker-view__mask--top"
-    />
-    <div
-      className="za-picker-view__mask za-picker-view__mask--bottom"
-    />
-  </div>
-</ForwardRef>
-`;
-
-exports[`PickerView PickerView render visible 1`] = `
-<div
-  class="za-picker-view"
->
-  <div
-    class="za-picker-view__content"
-  >
-    <div
-      class="za-wheel"
+      class="za-picker-view__content"
     >
       <div
-        class="za-wheel__content"
+        class="za-wheel"
       >
         <div
-          class="za-wheel__item za-wheel__item--selected"
+          class="za-wheel__content"
+          style="transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-property: transform; transition-duration: 800ms; transform: translateX(0px) translateY(NaNpx);"
         >
-          选项一
-        </div>
-        <div
-          class="za-wheel__item"
-        >
-          选项二
+          <div
+            class="za-wheel__item za-wheel__item--selected za-wheel__item--disabled"
+            style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
+          >
+            选项一
+          </div>
+          <div
+            class="za-wheel__item za-wheel__item--disabled"
+            style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
+          >
+            选项二
+          </div>
         </div>
       </div>
     </div>
+    <div
+      class="za-picker-view__mask za-picker-view__mask--top"
+    />
+    <div
+      class="za-picker-view__mask za-picker-view__mask--bottom"
+    />
   </div>
+</div>
+`;
+
+exports[`PickerView PickerView render visible 1`] = `
+<div>
   <div
-    class="za-picker-view__mask za-picker-view__mask--top"
-  />
-  <div
-    class="za-picker-view__mask za-picker-view__mask--bottom"
-  />
+    class="za-picker-view"
+  >
+    <div
+      class="za-picker-view__content"
+    >
+      <div
+        class="za-wheel"
+      >
+        <div
+          class="za-wheel__content"
+          style="transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-property: transform; transition-duration: 800ms; transform: translateX(0px) translateY(NaNpx);"
+        >
+          <div
+            class="za-wheel__item za-wheel__item--selected"
+            style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
+          >
+            选项一
+          </div>
+          <div
+            class="za-wheel__item"
+            style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
+          >
+            选项二
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="za-picker-view__mask za-picker-view__mask--top"
+    />
+    <div
+      class="za-picker-view__mask za-picker-view__mask--bottom"
+    />
+  </div>
 </div>
 `;

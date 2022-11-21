@@ -75,9 +75,9 @@ const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
     return React.cloneElement(element, {
       key: +index,
       type,
-      listMarkerAlign,
       disabled: disabled || !!element.props.disabled,
       checked: currentValue === element.props.value,
+      listMarkerAlign,
       buttonGhost,
       buttonSize,
       buttonShape,

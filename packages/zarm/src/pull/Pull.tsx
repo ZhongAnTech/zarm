@@ -242,10 +242,10 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
 
   useEffect(() => {
     setIsMounted(true);
-    Events.on(pullRef.current, 'touchmove', () => {});
+    pullRef.current && Events.on(pullRef.current, 'touchmove', () => {});
 
     return () => {
-      Events.off(pullRef.current, 'touchmove', () => {});
+      pullRef.current && Events.off(pullRef.current, 'touchmove', () => {});
       setIsMounted(false);
     };
   }, []);

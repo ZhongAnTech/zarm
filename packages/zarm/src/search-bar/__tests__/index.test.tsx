@@ -1,8 +1,7 @@
 /* eslint-disable prefer-destructuring */
 /* eslint-disable dot-notation */
 import React from 'react';
-import { render, mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 import SearchBar from '../index';
 // import SearchBarOriginal from '../SearchBar';
 
@@ -13,18 +12,23 @@ describe('SearchBar', () => {
   });
   describe('snapshot', () => {
     it('renders correctly', () => {
-      const wrapper = render(
+      const { container } = render(
         <SearchBar shape="round" cancelText="搜索" placeholder="请输入关键字" />,
       );
-      expect(toJson(wrapper)).toMatchSnapshot();
+      expect(container).toMatchSnapshot();
     });
 
     it('renders defaultValue correctly', () => {
-      const wrapper = mount(
-        <SearchBar shape="round" cancelText="搜索" placeholder="请输入关键字" />,
+      const { container } = render(
+        <SearchBar
+          shape="round"
+          cancelText="搜索"
+          placeholder="请输入关键字"
+          defaultValue="搜索关键字"
+        />,
       );
-      wrapper.setProps({ defaultValue: '搜索关键字' });
-      expect(toJson(wrapper)).toMatchSnapshot();
+      // wrapper.setProps({ defaultValue: '搜索关键字' });
+      expect(container).toMatchSnapshot();
     });
 
     // it('renders onFocus called correctly', () => {

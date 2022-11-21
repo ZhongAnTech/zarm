@@ -1,41 +1,21 @@
+/* eslint-disable no-restricted-syntax */
 import React from 'react';
-import { render, mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { render, fireEvent } from '@testing-library/react';
 import SwipeAction from '../index';
 import List from '../../list/index';
 
-function createClientXYObject(x, y) {
-  return { clientX: x, clientY: y };
-}
-
-function createStartTouchEventObject({ x = 0, y = 0, preventDefault = () => {} }) {
-  return {
-    touches: [createClientXYObject(x, y)],
-    preventDefault,
-  };
-}
-
-function createMoveTouchEventObject(props) {
-  const { x = 0, y = 0, includeTouches = true, preventDefault = () => {} } = props;
-  const moveTouchEvent = {
-    changedTouches: [createClientXYObject(x, y)],
-    preventDefault,
-  };
-  if (includeTouches) moveTouchEvent.touches = [createClientXYObject(x, y)];
-  return moveTouchEvent;
-}
-
-// function createMouseEventObject({ x = 0, y = 0, preventDefault = () => {} }) {
-//   return {
-//     ...createClientXYObject(x, y),
-//     preventDefault,
-//   };
-// }
+const originalOffsetWidth = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetWidth');
 
 describe('SwipeAction', () => {
+  beforeEach(() => {
+    Object.defineProperty(HTMLElement.prototype, 'offsetWidth', { configurable: true, value: 500 });
+  });
+  afterAll(() => {
+    Object.defineProperty(HTMLElement.prototype, 'offsetWidth', originalOffsetWidth);
+  });
   it('renders correctly', () => {
     jest.useFakeTimers();
-    const wrapper = mount(
+    const { container } = render(
       <SwipeAction
         leftActions={[
           {
@@ -63,13 +43,12 @@ describe('SwipeAction', () => {
         <div>左右都能滑动</div>
       </SwipeAction>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
     jest.runAllTimers();
-    wrapper.unmount();
   });
 
   it('left only', () => {
-    const wrapper = render(
+    const { container } = render(
       <SwipeAction
         leftActions={[
           {
@@ -86,11 +65,11 @@ describe('SwipeAction', () => {
         <div>右滑</div>
       </SwipeAction>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('right only', () => {
-    const wrapper = render(
+    const { container } = render(
       <SwipeAction
         rightActions={[
           {
@@ -106,55 +85,48 @@ describe('SwipeAction', () => {
         <div>左滑</div>
       </SwipeAction>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
-  it('touch event', () => {
-    const props = {
-      onOpen: jest.fn(),
-      onClose: jest.fn(),
-    };
-    const wrapper = mount(
-      <List>
-        <SwipeAction
-          {...props}
-          leftActions={[
-            {
-              text: '左按钮1',
-              onClick: () => jest.fn(),
-            },
-            {
-              text: '左按钮2',
-              onClick: () => jest.fn(),
-            },
-          ]}
-        >
-          <List.Item>右滑看看</List.Item>
-        </SwipeAction>
-      </List>,
-    ).find('.za-swipe-action__content');
-    wrapper.simulate('touchStart', {
-      touches: [10, 0],
-    });
-    wrapper.simulate('touchMove', {
-      touches: [100, 0],
-    });
-    wrapper.simulate('touchEnd', {
-      touches: [10, 0],
-    });
-  });
+  // it('touch event', () => {
+  //   const props = {
+  //     onOpen: jest.fn(),
+  //     onClose: jest.fn(),
+  //   };
+  //   const { container } = render(
+  //     <List>
+  //       <SwipeAction
+  //         {...props}
+  //         leftActions={[
+  //           {
+  //             text: '左按钮1',
+  //             onClick: () => jest.fn(),
+  //           },
+  //           {
+  //             text: '左按钮2',
+  //             onClick: () => jest.fn(),
+  //           },
+  //         ]}
+  //       >
+  //         <List.Item>右滑看看</List.Item>
+  //       </SwipeAction>
+  //     </List>,
+  //   );
+  //   const element = container.querySelector('.za-swipe-action__content');
+
+  //   fireEvent.mouseDown(element, { pointerId: 15, clientX: 10, clientY: 0, buttons: 1 });
+  //   fireEvent.mouseMove(element, { pointerId: 15, clientX: 100, clientY: 0, buttons: 1 });
+  //   fireEvent.mouseUp(element, { pointerId: 15 });
+  // });
 
   it('touch event callback', () => {
     const onOpen = jest.fn();
-    const preventDefault = jest.fn();
-    // const props = {
-    //   onOpen: jest.fn(),
-    //   onClose: jest.fn(),
-    // };
-    const wrapper = mount(
+    const onClose = jest.fn();
+    const { container } = render(
       <List>
         <SwipeAction
           onOpen={onOpen}
+          onClose={onClose}
           leftActions={[
             {
               text: '左按钮1',
@@ -169,12 +141,14 @@ describe('SwipeAction', () => {
           <List.Item>右滑看看</List.Item>
         </SwipeAction>
       </List>,
-    ).find('.za-swipe-action__content');
-    wrapper.simulate('touchStart', createStartTouchEventObject({ x: 0, y: 0, preventDefault }));
-    wrapper.simulate('touchMove', createMoveTouchEventObject({ x: 10, y: 0, preventDefault }));
-    wrapper.simulate('touchEnd', createMoveTouchEventObject({ x: 275, y: 0, preventDefault }));
-    // expect(onOpen).toHaveBeenCalled();
-    wrapper.simulate('click');
-    // expect(props.onClose).toHaveBeenCalled();
+    );
+
+    // console.error(leftRef.current.offsetWidth);
+    const element = container.querySelector('.za-swipe-action');
+
+    fireEvent.mouseDown(element, { pointerId: 1, clientX: 0, clientY: 0, buttons: 1 });
+    fireEvent.mouseMove(element, { pointerId: 1, clientX: 200, clientY: 0, buttons: 1 });
+    fireEvent.mouseUp(element, { pointerId: 1, clientX: 275 });
+    expect(onOpen).toHaveBeenCalled();
   });
 });
