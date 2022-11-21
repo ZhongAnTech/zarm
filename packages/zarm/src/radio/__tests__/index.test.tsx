@@ -1,17 +1,17 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import RadioGroup from '../RadioGroup';
 import Radio from '../index';
 
-class TestRadio extends React.Component<{
-  checked?: boolean;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-  value: number;
-}> {
-  render() {
-    return <input {...this.props} />;
-  }
-}
+// class TestRadio extends React.Component<{
+//   checked?: boolean;
+//   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+//   value: number;
+// }> {
+//   render() {
+//     return <input {...this.props} />;
+//   }
+// }
 
 describe('Radio', () => {
   it('renders correctly', () => {
@@ -75,8 +75,8 @@ describe('Radio.Group', () => {
   it('should render with children', () => {
     const { container } = render(
       <RadioGroup>
-        <TestRadio value={1} checked={false} />
-        <TestRadio value={2} checked={false} />
+        <Radio value="0">选项一</Radio>
+        <Radio value="1">选项二</Radio>
       </RadioGroup>,
     );
     expect(container.querySelector('.za-radio-group__inner')?.children).toHaveLength(2);
