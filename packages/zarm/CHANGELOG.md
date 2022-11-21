@@ -2,6 +2,17 @@
 
 ## v3.0.0
 
+- Feature
+
+  - [Grid]
+    - 新增宫格组件
+  - [WaterMark]
+    - 新增水印组件
+  - [Skeleton]
+    - 新增骨架组件
+  - [Rate]
+    - 新增评分组件
+
 - Break Change
 
   - [ConfigProvider]
@@ -49,6 +60,8 @@
     - 支持横屏下查看图片
   - [Modal]
     - 支持开启状态下锁定背景滚动
+  - [Popup]
+    - 新增属性 `forceRender`，用于强制渲染内容
   - [Badge]
     - 移除属性 `theme`，颜色设置通过 css 变量 --background 来定义
     - 新增属性 `bordered` ，用于判断徽标是否有边框
@@ -70,6 +83,17 @@
     - 移除属性 `type`
     - 新增属性 `color` 用户设置颜色
     - 新增属性 `opacity` 用于设置透明度
+  - [StackPicker]
+    - `StackPicker` 组件更名为 `Cascader`
+  - [Picker & PickerView]
+    - 移除属性 `valueMember`，替换为 `fieldNames` 支持自定义 label、value、children 的字段
+  - [DatePicker & DatePickverView]
+    - 移除属性 `valueMember`，替换为 `fieldNames` 支持自定义 label、value、children 的字段
+    - 新增属性 `use12Hours`，在 `mode` 为 `time` 下显示 12 小时模式
+    - 新增属性 `format`，用于格式化返回值
+  - [SwipeAction]
+    - `leftActions/rightActions` onClick 事件支持异步
+
 ## v2.9.15
 
 - Bug Fix
