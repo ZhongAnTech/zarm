@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import Stepper from '../index';
-import Input from '../../input';
 
 describe('Stepper', () => {
   it('renders correctly', () => {
@@ -21,18 +20,18 @@ describe('Stepper', () => {
     const { container } = render(<Stepper max={2} min={0} onChange={onChange} />);
 
     // wrapper.setProps({ value: 0 });
-    fireEvent.click(container.querySelector('.za-stepper__sub'));
+    fireEvent.click(container.querySelector('.za-stepper__sub') as HTMLDivElement);
 
-    setTimeout(() => expect(container.querySelector('input').value).toBe(0));
+    setTimeout(() => expect((container.querySelector('input') as HTMLInputElement).value).toBe(0));
 
     // wrapper.setProps({ value: 2 });
-    const plus = container.querySelector('.za-stepper__plus');
+    const plus = container.querySelector('.za-stepper__plus') as HTMLDivElement;
     fireEvent.click(plus);
     fireEvent.click(plus);
     fireEvent.click(plus);
     fireEvent.click(plus);
     // wrapper.find('.za-stepper__plus').at(0).simulate('click');
-    setTimeout(() => expect(container.querySelector('input').value).toBe(2));
+    setTimeout(() => expect((container.querySelector('input') as HTMLInputElement).value).toBe(2));
   });
 
   it('receive new value', () => {
@@ -45,10 +44,10 @@ describe('Stepper', () => {
     const onInputChange = jest.fn();
 
     const { container } = render(
-      <Stepper min={null} max={null} onChange={onChange} onInputChange={onInputChange} />,
+      <Stepper min={undefined} max={undefined} onChange={onChange} onInputChange={onInputChange} />,
     );
 
-    const input = container.querySelector('input');
+    const input = container.querySelector('input') as HTMLInputElement;
     fireEvent.change(input, { target: { value: 10 } });
     expect(onInputChange).toBeCalled();
 
@@ -97,23 +96,23 @@ describe('Stepper', () => {
     const onChange = jest.fn();
     const onInputChange = jest.fn();
     const { container } = render(
-      <Stepper onChange={onChange} onInputChange={onInputChange} step="0.1" value="1" />,
+      <Stepper onChange={onChange} onInputChange={onInputChange} step={0.1} value={1} />,
     );
-    const sub = container.querySelector('.za-stepper__sub');
+    const sub = container.querySelector('.za-stepper__sub') as HTMLDivElement;
     fireEvent.click(sub);
-    expect(container.querySelector('input').value).toBe('0.9');
-    const plus = container.querySelector('.za-stepper__plus');
+    expect((container.querySelector('input') as HTMLInputElement).value).toBe('0.9');
+    const plus = container.querySelector('.za-stepper__plus') as HTMLDivElement;
     fireEvent.click(plus);
     fireEvent.click(plus);
-    expect(container.querySelector('input').value).toBe('1.1');
+    expect((container.querySelector('input') as HTMLInputElement).value).toBe('1.1');
   });
 
   it('disable work', () => {
     const onChange = jest.fn();
-    const { container } = render(<Stepper disabled step="0.1" value="1" />);
-    const sub = container.querySelector('.za-stepper__sub');
+    const { container } = render(<Stepper disabled step={0.1} value={1} />);
+    const sub = container.querySelector('.za-stepper__sub') as HTMLDivElement;
     fireEvent.click(sub);
-    const plus = container.querySelector('.za-stepper__plus');
+    const plus = container.querySelector('.za-stepper__plus') as HTMLDivElement;
     fireEvent.click(plus);
     expect(onChange).toHaveBeenCalledTimes(0);
   });
