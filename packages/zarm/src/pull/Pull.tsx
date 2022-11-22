@@ -22,7 +22,7 @@ export interface PullCssVars {
   '--control-icon-size'?: React.CSSProperties['fontSize'];
 }
 
-export interface PullProps extends BasePullProps, HTMLProps<PullCssVars> {}
+export interface PullProps extends BasePullProps, React.PropsWithChildren<HTMLProps<PullCssVars>> {}
 
 const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
   const pullRef = (ref as any) || React.createRef<HTMLDivElement>();
