@@ -2,8 +2,8 @@ import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import Carousel from '../index';
 
-const createCarousel = (props, childrenLen = 3) => {
-  const ITEMS = Array.from({ length: childrenLen }).map((v, i) => i);
+const createCarousel = (props?, childrenLen = 3) => {
+  const ITEMS = Array.from({ length: childrenLen }).map((_v, i) => i);
   return (
     <Carousel {...props}>
       {ITEMS.map((item, index) => {
