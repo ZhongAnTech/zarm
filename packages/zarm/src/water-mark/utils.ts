@@ -43,7 +43,6 @@ export const draw = async ({
   const { gapX, gapY, offsetLeft, offsetTop, width, height, opacity, rotate } = markStyle!;
   const canvas = document.createElement('canvas');
   const context = canvas.getContext('2d');
-
   if (!context) return Promise.reject(new Error('当前环境不支持 Canvas'));
 
   const ratio = 3;
