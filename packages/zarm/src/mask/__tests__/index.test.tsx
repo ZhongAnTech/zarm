@@ -4,12 +4,14 @@ import Mask from '../index';
 
 describe('Mask', () => {
   it('renders correctly', () => {
-    const wrapper = render(<Mask mountContainer={false} visible />);
+    const wrapper = render(<Mask mountContainer={false} visible onClick={() => {}} />);
     expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('color is transparent', () => {
-    const wrapper = render(<Mask mountContainer={false} color="transparent" visible />);
+    const wrapper = render(
+      <Mask mountContainer={false} color="transparent" visible onClick={() => {}} />,
+    );
     expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
