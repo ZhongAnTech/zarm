@@ -98,7 +98,7 @@ const Wheel: React.FC<WheelProps> = (props) => {
     let resize: ResizeObserver | null;
     heightRef.current = wheelWrapperRef.current?.clientHeight || 0;
     const initIndex = getSelectedIndex(currentValue, dataSource);
-    if (wheelWrapperRef.current && !scrollInstance.current) {
+    if (wheelWrapperRef.current) {
       scrollInstance.current = new BScroll(wheelWrapperRef.current, {
         wheel: {
           selectedIndex: initIndex,
