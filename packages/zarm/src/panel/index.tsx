@@ -15,7 +15,7 @@ export interface BasePanelCssVars {
   '--spacing-padding-horizontal'?: React.CSSProperties['padding'];
 }
 
-export type PanelProps = BasePanelProps & HTMLProps<BasePanelCssVars>;
+export type PanelProps = BasePanelProps & React.PropsWithChildren<HTMLProps<BasePanelCssVars>>;
 
 const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
   const { className, title, more, spacing, bordered, children, ...restProps } = props;
