@@ -139,7 +139,7 @@ exports[`Tab receive new value 1`] = `
           选项卡1
         </li>
         <li
-          class="za-tabs__tab"
+          class="za-tabs__tab za-tabs__tab--active"
           role="tab"
         >
           选项卡2
@@ -162,7 +162,7 @@ exports[`Tab receive new value 1`] = `
         </div>
       </div>
       <div
-        class="za-tabs__panel"
+        class="za-tabs__panel za-tabs__panel--active"
         role="tabpanel"
       >
         <div>
