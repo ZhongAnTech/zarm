@@ -26,7 +26,7 @@ describe('Input', () => {
   it('renders onFocus called correctly', () => {
     const onFocus = jest.fn();
     const { container } = render(<Input onFocus={onFocus} />);
-    const input = container.querySelector('input');
+    const input = container.querySelector('input') as HTMLInputElement;
     fireEvent.focus(input);
     expect(onFocus).toBeCalled();
     // expect(toJson(wrapper)).toMatchSnapshot();
@@ -37,9 +37,9 @@ describe('Input', () => {
     const onChange = jest.fn();
     const { container } = render(<Input clearable value="" onChange={onChange} />);
 
-    const input = container.querySelector('input');
+    const input = container.querySelector('input') as HTMLInputElement;
     fireEvent.change(input, { target: { value: 'My new value' } });
-    const clearBtn = container.querySelector('.za-input__clear');
+    const clearBtn = container.querySelector('.za-input__clear') as HTMLDivElement;
     fireEvent.click(clearBtn);
     expect(onChange).toHaveBeenCalled();
     expect(input.value).toEqual('');
@@ -80,7 +80,7 @@ describe('Input.Textarea', () => {
   it('renders onFocus called correctly', () => {
     const onFocus = jest.fn();
     const { container } = render(<Input type="text" rows={2} onFocus={onFocus} />);
-    const textarea = container.querySelector('textarea');
+    const textarea = container.querySelector('textarea') as HTMLTextAreaElement;
     fireEvent.focus(textarea);
     expect(onFocus).toBeCalled();
     // expect(toJson(wrapper)).toMatchSnapshot();

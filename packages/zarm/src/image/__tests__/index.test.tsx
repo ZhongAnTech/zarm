@@ -37,7 +37,7 @@ describe('Image', () => {
   });
 
   it('fill', () => {
-    const { asFragment } = render(<Image src={src} fill="cover" />);
+    const { asFragment } = render(<Image src={src} fit="cover" />);
     expect(asFragment()).toMatchSnapshot();
   });
 
