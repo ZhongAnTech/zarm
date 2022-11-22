@@ -11,7 +11,7 @@ describe('SwipeAction', () => {
     Object.defineProperty(HTMLElement.prototype, 'offsetWidth', { configurable: true, value: 500 });
   });
   afterAll(() => {
-    Object.defineProperty(HTMLElement.prototype, 'offsetWidth', originalOffsetWidth);
+    Object.defineProperty(HTMLElement.prototype, 'offsetWidth', originalOffsetWidth!);
   });
   it('renders correctly', () => {
     jest.useFakeTimers();
@@ -144,7 +144,7 @@ describe('SwipeAction', () => {
     );
 
     // console.error(leftRef.current.offsetWidth);
-    const element = container.querySelector('.za-swipe-action');
+    const element = container.querySelector('.za-swipe-action') as HTMLDivElement;
 
     fireEvent.mouseDown(element, { pointerId: 1, clientX: 0, clientY: 0, buttons: 1 });
     fireEvent.mouseMove(element, { pointerId: 1, clientX: 200, clientY: 0, buttons: 1 });

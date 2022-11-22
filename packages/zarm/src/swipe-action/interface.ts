@@ -4,7 +4,7 @@ export interface BaseSwipeActionItemProps {
   key?: string | number;
   text?: React.ReactNode;
   theme?: 'default' | 'primary' | 'danger';
-  disabled: boolean;
+  disabled?: boolean;
   onClick?: () => void;
 }
 

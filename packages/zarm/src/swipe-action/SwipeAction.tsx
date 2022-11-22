@@ -16,7 +16,7 @@ export interface SwipeActionCssVars {
 export type SwipeActionItemProps = HTMLProps & BaseSwipeActionItemProps;
 
 export type SwipeActionProps = BaseSwipeActionProps &
-  HTMLProps<SwipeActionCssVars> & {
+  React.PropsWithChildren<HTMLProps<SwipeActionCssVars>> & {
     leftActions?: SwipeActionItemProps[];
     rightActions?: SwipeActionItemProps[];
   };
