@@ -1,17 +1,17 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import Modal from '../Modal';
+import Modal, { ModalProps } from '../Modal';
 
 describe('Modal', () => {
   it('renders correctly', () => {
-    const onMaskClick = jest.fn();
-    const onCancel = jest.fn();
-
-    const { container } = render(
-      <Modal visible onMaskClick={onMaskClick} closable title="标题" onCancel={onCancel}>
-        foo
-      </Modal>,
-    );
+    const props: ModalProps = {
+      onMaskClick: jest.fn(),
+      onClose: jest.fn(),
+      closable: true,
+      title: '标题',
+      visible: true,
+    };
+    const { container } = render(<Modal {...props}>foo</Modal>);
     expect(container).toMatchSnapshot();
   });
 
@@ -22,7 +22,7 @@ describe('Modal', () => {
         模态框内容
       </Modal>,
     );
-    const close = document.body.querySelector('.za-modal__close');
+    const close = document.body.querySelector('.za-modal__close') as HTMLDivElement;
     fireEvent.click(close);
     expect(onClose).toBeCalled();
   });
@@ -34,7 +34,7 @@ describe('Modal', () => {
         foo
       </Modal>,
     );
-    const mask = document.body.querySelector('.za-mask');
+    const mask = document.body.querySelector('.za-mask') as HTMLDivElement;
     fireEvent.click(mask);
     expect(onClose).toBeCalled();
   });
