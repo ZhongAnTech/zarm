@@ -23,29 +23,6 @@ exports[`CustomInput renders correctly 1`] = `
 </DocumentFragment>
 `;
 
-exports[`CustomInput renders correctly if type isn't valid 1`] = `
-<DocumentFragment>
-  <div
-    class="za-custom-input za-custom-input--xxx"
-  >
-    <div
-      class="za-custom-input__content"
-    >
-      <div
-        class="za-custom-input__placeholder"
-      />
-      <div
-        class="za-custom-input__virtual-input"
-      />
-      <input
-        type="hidden"
-        value=""
-      />
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
 exports[`CustomInput.Idcard renders correctly 1`] = `
 <DocumentFragment>
   <div
