@@ -3,10 +3,10 @@ import { fireEvent, render } from '@testing-library/react';
 import Select from '../index';
 
 describe('Select', () => {
-  const fakeTimers = () => {
-    performance.timing = () => {};
-  };
-  fakeTimers();
+  // const fakeTimers = () => {
+  //   performance.timing = () => {};
+  // };
+  // fakeTimers();
 
   it('Select', () => {
     const { container } = render(
@@ -23,7 +23,7 @@ describe('Select', () => {
   it('Select disabled', () => {
     const { container } = render(
       <Select
-        disabeld
+        disabled
         dataSource={[
           { value: '1', label: '选项一' },
           { value: '2', label: '选项二' },
@@ -32,7 +32,7 @@ describe('Select', () => {
     );
 
     const select = container.querySelector('.za-select');
-    fireEvent.click(select);
+    fireEvent.click(select as HTMLDivElement);
     expect(container).toMatchSnapshot();
   });
 
@@ -215,9 +215,9 @@ describe('Select', () => {
       />,
     );
 
-    fireEvent.click(container.querySelector('.za-select'));
+    fireEvent.click(container.querySelector('.za-select') as HTMLDivElement);
     jest.useFakeTimers();
-    fireEvent.click(document.body.querySelector('.za-picker__confirm'));
+    fireEvent.click(document.body.querySelector('.za-picker__confirm') as HTMLDivElement);
     jest.runAllTimers();
     expect(onConfirmFn).toBeCalled();
     expect(onCancelFn).not.toBeCalled();
@@ -252,9 +252,9 @@ describe('Select', () => {
         onCancel={onCancelFn}
       />,
     );
-    fireEvent.click(container.querySelector('.za-select'));
+    fireEvent.click(container.querySelector('.za-select') as HTMLDivElement);
     jest.useFakeTimers();
-    fireEvent.click(document.body.querySelector('.za-picker__cancel'));
+    fireEvent.click(document.body.querySelector('.za-picker__cancel') as HTMLDivElement);
     expect(onCancelFn).toBeCalled();
     expect(onConfirmFn).not.toBeCalled();
   });
