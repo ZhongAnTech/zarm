@@ -46,7 +46,7 @@ exports[`Select Select 1`] = `
 exports[`Select Select disabled 1`] = `
 <div>
   <div
-    class="za-select za-select--visible"
+    class="za-select za-select--disabled"
   >
     <div
       class="za-select__input"

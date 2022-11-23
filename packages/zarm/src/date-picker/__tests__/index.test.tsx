@@ -2,11 +2,11 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import DatePicker from '../index';
 
-function fakeTimers() {
-  performance.timing = {};
-  performance.timing.navigationStart = 0;
-}
-fakeTimers();
+// function fakeTimers() {
+//   performance.timing = {};
+//   performance.timing.navigationStart = 0;
+// }
+// fakeTimers();
 
 describe('DatePicker', () => {
   // it('DatePicker trigger maskClick', () => {

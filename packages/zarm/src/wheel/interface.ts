@@ -3,7 +3,7 @@ import * as React from 'react';
 export type WheelValue = string | number | boolean;
 
 export interface WheelItem {
-  value: WheelValue;
+  value?: WheelValue;
   label?: React.ReactNode;
   [key: string]: any;
 }

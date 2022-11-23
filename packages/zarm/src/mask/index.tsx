@@ -18,7 +18,7 @@ export interface MaskCssVars {
 }
 
 export type MaskProps = BaseMaskProps &
-  HTMLProps<MaskCssVars> & {
+  React.PropsWithChildren<HTMLProps<MaskCssVars>> & {
     onClick: React.MouseEventHandler<HTMLDivElement>;
   };
 

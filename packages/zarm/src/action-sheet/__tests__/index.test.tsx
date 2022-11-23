@@ -1,11 +1,11 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { render } from '@testing-library/react';
-import ActionSheet from '../index';
+import ActionSheet, { ActionSheetProps } from '../index';
 import zhCN from '../locale/zh_CN';
 import enUS from '../locale/en_US';
 
-const props = {
+const props: ActionSheetProps = {
   visible: true,
   actions: [
     {

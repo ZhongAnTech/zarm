@@ -18,7 +18,7 @@ export interface AffixStates {
   height: number;
 }
 
-export type AffixProps = BaseAffixProps & HTMLProps<AffixCssVars>;
+export type AffixProps = BaseAffixProps & React.PropsWithChildren<HTMLProps<AffixCssVars>>;
 
 const DEFAULT_SCROLL_CONTAINER = canUseDOM ? window : undefined;
 

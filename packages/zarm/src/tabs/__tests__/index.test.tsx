@@ -62,7 +62,7 @@ describe('Tab', () => {
   it('receive new value', () => {
     const onChange = jest.fn();
     const { container } = render(
-      <Tabs onChange={onChange} value="1">
+      <Tabs onChange={onChange} value={1}>
         <Tabs.Panel title="选项卡1">
           <div>试试点我左滑</div>
         </Tabs.Panel>
@@ -77,7 +77,7 @@ describe('Tab', () => {
   it('click tabs', () => {
     const onChange = jest.fn();
     const { container } = render(
-      <Tabs canSwipe onChange={onChange}>
+      <Tabs scrollable onChange={onChange}>
         <Tabs.Panel title="选项卡1" disabled>
           <div>试试点我左滑</div>
         </Tabs.Panel>

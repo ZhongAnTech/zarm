@@ -6,7 +6,7 @@ export interface BaseActionSheetItemProps {
   key?: string | number;
   text?: React.ReactNode;
   theme?: 'default' | 'primary' | 'danger';
-  disabled: boolean;
+  disabled?: boolean;
   onClick?: () => void;
   bold?: boolean;
 }
