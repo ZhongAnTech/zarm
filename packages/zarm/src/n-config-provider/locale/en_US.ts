@@ -5,7 +5,8 @@ import DatePicker from '../../date-picker/locale/en_US';
 import DatePickerView from '../../date-picker-view/locale/en_US';
 import DateSelect from '../../date-select/locale/en_US';
 import Picker from '../../picker/locale/en_US';
-import StackPicker from '../../stack-picker/locale/en_US';
+import Cascader from '../../cascader/locale/en_US';
+import CascaderView from '../../cascader-view/locale/en_US';
 import Pull from '../../pull/locale/en_US';
 import SearchBar from '../../search-bar/locale/en_US';
 import Select from '../../select/locale/en_US';
@@ -23,7 +24,8 @@ export default {
   DatePickerView,
   DateSelect,
   Picker,
-  StackPicker,
+  Cascader,
+  CascaderView,
   Pull,
   SearchBar,
   Select,

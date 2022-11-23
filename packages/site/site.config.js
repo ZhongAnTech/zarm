@@ -99,10 +99,10 @@ module.exports = {
         style: true,
       },
       {
-        key: 'stack-picker',
-        name: '层叠选择器',
-        module: () => import('zarm/stack-picker/demo.md'),
-        source: 'zarm/stack-picker/demo.md',
+        key: 'cascader',
+        name: '级联选择器',
+        module: () => import('zarm/cascader/demo.md'),
+        source: 'zarm/cascader/demo.md',
         style: false,
       },
       {

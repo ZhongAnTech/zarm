@@ -10,8 +10,7 @@ const themes = {
   '--color-text-disabled': '#666',
   '--border-color': '#1a1a1a',
   '--opacity-mask': '0.7',
-  '--stack-picker-background': '#000',
-  '--stack-picker-shadow': 'none',
+
   '--za-arrow-color': '#666',
   '--za-background-color': '#1c1c1e',
   '--za-background-active': '#363738',
@@ -86,6 +85,8 @@ const themes = {
   '--za-tooltip-background': '#5b5c60',
   '--za-image-background': '#3a3b3d',
   '--za-image-text-color': '#fff',
+  '--za-cascader-view-background-color': '#000',
+  '--za-cascader-header-background-color': 'var(--za-background-color)',
 } as const;
 
 const setTheme = (value: ConfigProviderProps['theme']) => {

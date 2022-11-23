@@ -180,7 +180,11 @@ export { default as ConfigProvider } from './config-provider';
 export type { ConfigProviderProps as NConfigProviderProps } from './n-config-provider';
 export { default as NConfigProvider } from './n-config-provider';
 
-export { default as StackPicker } from './stack-picker';
+export type { CascaderProps } from './cascader';
+export { default as Cascader } from './cascader';
+
+export type { CascaderViewProps, CascaderViewCssVars } from './cascader-view';
+export { default as CascaderView } from './cascader-view';
 
 // hooks
 export type { UseDragProps, DragEvent, DragState } from './useDrag';

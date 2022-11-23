@@ -1,0 +1,60 @@
+@include b(cascader-view) {
+  @include define(background-color, #fff);
+  @include define(option-font-size, var(--za-font-size-sm));
+  @include define(option-height, 44px);
+  @include define(options-height, auto);
+
+  background: var(--background-color);
+
+  @include e(tab-text) {
+    @include m(unselected) {
+      color: var(--za-color-text-placeholder);
+    }
+  }
+
+  @include e(content) {
+    height: var(--options-height);
+    overflow-y: scroll;
+
+    @include b(list) {
+      .za-list-item__wrapper {
+        min-height: var(--option-height);
+
+        .za-list-item__inner {
+          line-height: calc(var(--option-height) - var(--za-padding-v-sm) * 2);
+        }
+      }
+    }
+
+    &-item {
+      padding-left: 20px;
+      background-color: var(--background-color);
+      font-size: var(--option-font-size);
+      color: var(--za-color-text);
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+
+      @include m(active) {
+        color: var(--za-theme-primary);
+      }
+    }
+  }
+}
+
+@include b(cascader-view-tabs) {
+  @include b(tabs) {
+    @include e(tab) {
+      flex: none;
+      font-size: var(--option-font-size);
+
+      @include m(active) {
+        color: var(--za-theme-primary);
+      }
+    }
+
+    .za-carousel__items {
+      transition-duration: 0;
+    }
+  }
+}
