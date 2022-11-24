@@ -167,6 +167,7 @@
     @include m(button-compact) {
       @include b(checkbox) {
         &:not(:last-child) {
+          /* prettier-ignore */
           margin-right: -1PX;
         }
 

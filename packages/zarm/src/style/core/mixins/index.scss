@@ -73,6 +73,7 @@ $keyframesSeparator: '_';
       border: 0 solid $border-color;
 
       @each $position in $positions {
+        /* prettier-ignore */
         border-#{$position}-width: 1PX;
       }
 

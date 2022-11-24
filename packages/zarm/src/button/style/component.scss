@@ -3,6 +3,7 @@
 @include b(button) {
   @include define(height, var(--za-height-md));
   @include define(border-radius, 0);
+  /* prettier-ignore */
   @include define(border-width, 1PX);
   @include define(padding-horizontal, var(--za-padding-h-md));
   @include define(font-size, var(--za-font-size-md));
