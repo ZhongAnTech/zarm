@@ -18,8 +18,12 @@ exports[`Affix getAffixed is true test of offsetTop 1`] = `
 exports[`Affix offsetBottom 1`] = `
 <DocumentFragment>
   <div>
-    <div>
-      Affix Node
+    <div
+      class="za-affix"
+    >
+      <div>
+        Affix Node
+      </div>
     </div>
   </div>
 </DocumentFragment>
@@ -28,8 +32,12 @@ exports[`Affix offsetBottom 1`] = `
 exports[`Affix offsetTop 1`] = `
 <DocumentFragment>
   <div>
-    <div>
-      Affix Node
+    <div
+      class="za-affix"
+    >
+      <div>
+        Affix Node
+      </div>
     </div>
   </div>
 </DocumentFragment>
