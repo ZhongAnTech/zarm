@@ -4,7 +4,6 @@ exports[`Affix getAffixed is true test of offsetTop 1`] = `
 <DocumentFragment>
   <div>
     <div
-      class="za-affix"
       style="position: fixed; top: 100000px; width: 0px; height: 0px;"
     >
       <div>
@@ -19,7 +18,9 @@ exports[`Affix offsetBottom 1`] = `
 <DocumentFragment>
   <div>
     <div>
-      Affix Node
+      <div>
+        Affix Node
+      </div>
     </div>
   </div>
 </DocumentFragment>
@@ -29,7 +30,9 @@ exports[`Affix offsetTop 1`] = `
 <DocumentFragment>
   <div>
     <div>
-      Affix Node
+      <div>
+        Affix Node
+      </div>
     </div>
   </div>
 </DocumentFragment>
