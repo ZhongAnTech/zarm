@@ -143,13 +143,13 @@ const Affix = forwardRef<unknown, AffixProps>((props, ref) => {
     };
   }, [getContainer, offsetBottom, onPositionUpdate]);
 
-  if (!getAffixed()) {
-    return <div ref={savePlaceholderNode}>{children}</div>;
-  }
-
   return (
     <div ref={savePlaceholderNode}>
-      <div className={cls} style={getAffixStyle()}>
+      <div
+        className={affixState.affixed ? cls : className}
+        ref={savePlaceholderNode}
+        style={getAffixStyle()}
+      >
         {children}
       </div>
     </div>
