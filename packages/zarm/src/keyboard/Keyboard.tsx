@@ -90,7 +90,7 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
     const cls = classnames(prefixCls, className);
 
     return (
-      <div className={cls}>
+      <div className={cls} onClick={(event) => event.stopPropagation()}>
         <div className={`${prefixCls}__keys`}>{this.getKeys().map(this.renderKey)}</div>
         <div className={`${prefixCls}__handle`}>
           <div
