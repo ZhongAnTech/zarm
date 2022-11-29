@@ -10,7 +10,10 @@
   @include define(knob-box-shadow, '0 3px 1px rgba(0, 0, 0, 0.06), 0 3px 8px rgba(0, 0, 0, 0.15)');
   @include define(knob-border-color, rgba(0, 0, 0, 0.04));
   @include define(knob-border-width, 0.5px);
-  @include define(knob-transition, 'transform 0.3s cubic-bezier(0.45, 1, 0.4, 1), transform 0.3s cubic-bezier(0.4, 0.4, 0.25, 1.35)');
+  @include define(
+    knob-transition,
+    'transform 0.3s cubic-bezier(0.45, 1, 0.4, 1), transform 0.3s cubic-bezier(0.4, 0.4, 0.25, 1.35)'
+  );
 
   @include e(input) {
     position: relative;

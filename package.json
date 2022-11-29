@@ -5,35 +5,42 @@
     "packages/*"
   ],
   "scripts": {
-    "postinstall": "lerna exec --scope @zarm-design/cli -- yarn build && lerna exec --scope @zarm-design/bem -- yarn build && lerna exec --scope @zarm-design/icons -- yarn build",
+    "build": "lerna exec --scope zarm -- yarn build",
+    "bundlesize": "lerna run bundlesize",
     "clean": "lerna run clean && lerna clean -y",
-    "lint:tsc": "tsc --noEmit",
+    "deploy": "lerna exec --scope site -- gh-pages -d assets",
+    "deploy:build": "lerna exec --scope site -- yarn build -p",
+    "dev": "lerna exec --scope site -- yarn start",
+    "postinstall": "lerna exec --scope @zarm-design/cli -- yarn build && lerna exec --scope @zarm-design/bem -- yarn build && lerna exec --scope @zarm-design/icons -- yarn build",
+    "lint": "yarn lint:tsc && yarn lint:script && yarn lint:style",
     "lint:script": "eslint --ext .ts,.tsx,.js,.jsx packages",
     "lint:style": "stylelint \"packages/**/*.scss\" --syntax scss",
-    "lint": "yarn lint:script && yarn lint:style",
-    "test": "lerna exec --no-private -- yarn test",
-    "build": "lerna exec --scope zarm -- yarn build",
-    "dev": "lerna exec --scope site -- yarn start",
-    "deploy:build": "lerna exec --scope site -- yarn build -p",
-    "deploy": "lerna exec --scope site -- gh-pages -d assets",
-    "release": "lerna publish",
+    "lint:tsc": "tsc --noEmit",
+    "prepare": "husky install",
     "prepublishOnly": "yarn lint && yarn build && yarn test",
-    "prettier": "prettier -c --write '**/*'",
-    "pretty-quick": "pretty-quick",
-    "bundlesize": "lerna run bundlesize",
-    "sort": "npx sort-package-json \"package.json\" \"packages/*/package.json\""
+    "prettier": "prettier --write -c '**/*.{js,jsx,ts,tsx,html,md,json}'",
+    "release": "lerna publish",
+    "sort": "npx sort-package-json \"package.json\" \"packages/*/package.json\"",
+    "test": "lerna exec --no-private -- yarn test"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged",
-      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
-    }
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,html,md,json}": [
+      "prettier --write --no-error-on-unmatched-pattern"
+    ],
+    "*.{scss}": [
+      "stylelint --syntax scss"
+    ]
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.16.3",
     "@babel/eslint-plugin": "^7.14.5",
-    "@commitlint/cli": "^12.1.1",
-    "@commitlint/config-conventional": "^12.1.1",
+    "@commitlint/cli": "^17.3.0",
+    "@commitlint/config-conventional": "^17.3.0",
     "@types/jest": "^26.0.22",
     "@typescript-eslint/eslint-plugin": "^5.3.1",
     "@typescript-eslint/parser": "^5.3.1",
@@ -47,10 +54,9 @@
     "eslint-plugin-jsx-a11y": "6.4.1",
     "eslint-plugin-react": "7.21.5",
     "eslint-plugin-react-hooks": "4.1.2",
-    "husky": "^4.3.8",
+    "husky": "^8.0.2",
     "lerna": "^4.0.0",
-    "prettier": "^2.2.1",
-    "pretty-quick": "^3.1.0",
+    "prettier": "^2.8.0",
     "rimraf": "^3.0.2",
     "stylelint": "13.8.0",
     "stylelint-config-za": "0.3.0",

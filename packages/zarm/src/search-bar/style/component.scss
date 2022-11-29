@@ -12,7 +12,7 @@
   @include define(cancel-font-size, var(--za-font-size-md));
   @include define(cancel-color, var(--theme-primary));
   @include define(cancel-margin-left, 13px);
-  @include define(cancel-transition, all .2s);
+  @include define(cancel-transition, all 0.2s);
   @include define(icon-margin-right, 6px);
   @include define(icon-color, #808084);
 

@@ -5,7 +5,7 @@
   @include define(pagination-item-border-radius, 1px);
   @include define(pagination-item-spacing, 2px);
   @include define(pagination-item-background, rgba(255, 255, 255, 0.6));
-  @include define(pagination-item-active-background,  #fff);
+  @include define(pagination-item-active-background, #fff);
 
   position: relative;
   overflow: hidden;

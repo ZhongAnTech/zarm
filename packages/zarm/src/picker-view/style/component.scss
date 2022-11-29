@@ -1,5 +1,4 @@
 @include b(picker-view) {
-
   @include define(background-color, #fff);
   @include define(padding, 16px);
   @include define(mask-start-background-color, rgba(255, 255, 255, 0.4));
@@ -49,13 +48,23 @@
     @include m(top) {
       position: absolute;
       top: 0;
-      background: linear-gradient(to top, var(--mask-start-background-color), var(--mask-end-background-color));
+      background:
+        linear-gradient(
+          to top,
+          var(--mask-start-background-color),
+          var(--mask-end-background-color)
+        );
     }
 
     @include m(bottom) {
       position: absolute;
       bottom: 0;
-      background: linear-gradient(to bottom, var(--mask-start-background-color), var(--mask-end-background-color));
+      background:
+        linear-gradient(
+          to bottom,
+          var(--mask-start-background-color),
+          var(--mask-end-background-color)
+        );
     }
   }
 

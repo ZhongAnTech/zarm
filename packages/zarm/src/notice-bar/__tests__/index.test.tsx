@@ -146,8 +146,9 @@ describe('NoticeBar', () => {
       </NoticeBar>,
     );
     expect(container).toMatchSnapshot();
-    const closeIcon = screen.queryByTestId('root')?.querySelector('.za-message__footer')
-      ?.firstChild;
+    const closeIcon = screen
+      .queryByTestId('root')
+      ?.querySelector('.za-message__footer')?.firstChild;
     if (closeIcon) {
       fireEvent.click(closeIcon);
       expect(screen.queryByTestId('root')).toBeNull();

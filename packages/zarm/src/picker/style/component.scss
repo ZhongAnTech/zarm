@@ -1,5 +1,4 @@
 @include b(picker) {
-
   @include define(header-height, 45px);
   @include define(header-font-size, 16px);
   @include define(header-background-color, #f7f7f7);
@@ -24,7 +23,10 @@
   @include define(-wheel-item-font-size, var(--wheel-item-font-size));
   @include define(-wheel-item-text-color, var(--wheel-item-text-color));
   @include define(-wheel-item-disabled-text-color, var(--wheel-item-disabled-text-color));
-  @include define(-wheel-item-selected-background-color, var(--wheel-item-selected-background-color));
+  @include define(
+    -wheel-item-selected-background-color,
+    var(--wheel-item-selected-background-color)
+  );
   @include define(-wheel-item-selected-border-radius, var(--wheel-item-selected-border-radius));
 
   @include b(picker-view) {
@@ -37,7 +39,10 @@
     @include define(wheel-item-font-size, var(---wheel-item-font-size));
     @include define(wheel-item-text-color, var(---wheel-item-text-color));
     @include define(wheel-item-disabled-text-color, var(---wheel-item-disabled-text-color));
-    @include define(wheel-item-selected-background-color, var(---wheel-item-selected-background-color));
+    @include define(
+      wheel-item-selected-background-color,
+      var(---wheel-item-selected-background-color)
+    );
     @include define(wheel-item-selected-border-radius, var(---wheel-item-selected-border-radius));
   }
 

@@ -20,13 +20,13 @@
     "types"
   ],
   "scripts": {
-    "clean": "rimraf types lib coverage",
-    "test": "jest --config ./jest.config.js",
-    "coverage": "rimraf coverage && yarn test --coverage",
-    "build:types": "rimraf types && tsc --outFile types/index.d.ts -d --emitDeclarationOnly",
-    "build:lib": "rimraf lib && babel src --extensions .ts --out-dir lib --copy-files",
     "build": "yarn build:types && yarn build:lib",
-    "dev": "npm run build -- -w"
+    "build:lib": "rimraf lib && babel src --extensions .ts --out-dir lib --copy-files",
+    "build:types": "rimraf types && tsc",
+    "clean": "rimraf types lib coverage",
+    "dev": "yarn build:lib -w",
+    "prepare": "yarn build",
+    "test": "jest"
   },
   "dependencies": {
     "@babel/cli": "^7.13.10",
@@ -82,13 +82,13 @@
     "webpack-merge": "^5.7.3",
     "webpackbar": "^5.0.0-3"
   },
+  "devDependencies": {
+    "@types/node": "^15.3.0",
+    "@types/webpack": "^5.28.0"
+  },
   "tags": [
     "zarm",
     "zarm-cli",
     "zhongan"
-  ],
-  "devDependencies": {
-    "@types/node": "^15.3.0",
-    "@types/webpack": "^5.28.0"
-  }
+  ]
 }

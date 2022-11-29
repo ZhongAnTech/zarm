@@ -40,7 +40,8 @@
 @function str-replace($string, $search, $replace: '') {
   $index: str-index($string, $search);
   @if $index {
-    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    @return str-slice($string, 1, $index - 1) + $replace +
+      str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
   }
   @return $string;
 }
@@ -68,7 +69,6 @@
   @if contains-element($parent) {
     $start: str-index($parent, $elementSeparator) - 1;
   }
-
   @else if contains-modifier($parent) {
     $start: str-index($parent, $modifierSeparator) - 1;
   }
@@ -90,7 +90,7 @@
       $element: selector-nest($selector, selector-append($block, $elementSeparator + $unit));
     }
 
-    $result: $result+$element+',';
+    $result: $result + $element + ',';
   }
 
   @return $result;

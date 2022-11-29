@@ -5,19 +5,19 @@ describe('changeImageSize', () => {
     jest.restoreAllMocks();
   });
   it('should change image size', () => {
-    const mCanvasRenderingContext2D = ({
+    const mCanvasRenderingContext2D = {
       fillRect: jest.fn(),
       drawImage: jest.fn(),
       fillStyle: '',
-    } as unknown) as CanvasRenderingContext2D;
-    const mCanvas = ({
+    } as unknown as CanvasRenderingContext2D;
+    const mCanvas = {
       getContext: jest.fn().mockReturnValueOnce(mCanvasRenderingContext2D),
       toDataURL: jest.fn().mockReturnValueOnce('data:,'),
       width: 0,
       height: 0,
-    } as unknown) as HTMLCanvasElement;
+    } as unknown as HTMLCanvasElement;
     const createElementSpy = jest.spyOn(document, 'createElement').mockReturnValueOnce(mCanvas);
-    const img = ({ width: 100, height: 200 } as unknown) as HTMLImageElement;
+    const img = { width: 100, height: 200 } as unknown as HTMLImageElement;
     const actual = changeImageSize(img, 0, 'image/png');
     expect(actual).toEqual('data:,');
     expect(createElementSpy).toBeCalledWith('canvas');
@@ -28,12 +28,12 @@ describe('changeImageSize', () => {
   });
 
   it('should print error and return empty string if canvans context is null', () => {
-    const mCanvas = ({
+    const mCanvas = {
       getContext: jest.fn(),
-    } as unknown) as HTMLCanvasElement;
+    } as unknown as HTMLCanvasElement;
     const createElementSpy = jest.spyOn(document, 'createElement').mockReturnValueOnce(mCanvas);
     const errorLogSpy = jest.spyOn(console, 'error').mockImplementationOnce(() => 'suppress error');
-    const img = ({} as unknown) as HTMLImageElement;
+    const img = {} as unknown as HTMLImageElement;
     const actual = changeImageSize(img, 0, 'image/png');
     expect(actual).toEqual('');
     expect(createElementSpy).toBeCalledWith('canvas');
@@ -41,20 +41,20 @@ describe('changeImageSize', () => {
   });
 
   it('should print error if the quality is invalid', () => {
-    const mCanvasRenderingContext2D = ({
+    const mCanvasRenderingContext2D = {
       fillRect: jest.fn(),
       drawImage: jest.fn(),
       fillStyle: '',
-    } as unknown) as CanvasRenderingContext2D;
-    const mCanvas = ({
+    } as unknown as CanvasRenderingContext2D;
+    const mCanvas = {
       getContext: jest.fn().mockReturnValueOnce(mCanvasRenderingContext2D),
       toDataURL: jest.fn().mockReturnValueOnce('data:,'),
       width: 0,
       height: 0,
-    } as unknown) as HTMLCanvasElement;
+    } as unknown as HTMLCanvasElement;
     const createElementSpy = jest.spyOn(document, 'createElement').mockReturnValueOnce(mCanvas);
     const errorLogSpy = jest.spyOn(console, 'error').mockImplementationOnce(() => 'suppress error');
-    const img = ({ width: 100, height: 200 } as unknown) as HTMLImageElement;
+    const img = { width: 100, height: 200 } as unknown as HTMLImageElement;
     const actual = changeImageSize(img, 2, 'image/png');
     expect(actual).toEqual('data:,');
     expect(createElementSpy).toBeCalledWith('canvas');

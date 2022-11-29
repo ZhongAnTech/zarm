@@ -117,7 +117,7 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
   const renderPagination = () => {
     if (visible && showPagination && images && images.length > 1) {
       return (
-        <div className={bem('pagination')} {...bindEvent()}>
+        <div className={bem('pagination')} {...bindEvent}>
           {currentIndex + 1} / {images?.length}
         </div>
       );
@@ -136,7 +136,7 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
       visible
     ) {
       return (
-        <Button size="xs" loading={loaded === LOAD_STATUS.start} {...loadEvent()}>
+        <Button size="xs" loading={loaded === LOAD_STATUS.start} {...loadEvent}>
           {locale?.ImagePreview && locale?.ImagePreview?.[loaded]}
         </Button>
       );
@@ -153,7 +153,7 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
       mountContainer={mountContainer}
       maskOpacity={1}
     >
-      <div ref={ref} className={bem('content')} {...bindEvent()}>
+      <div ref={ref} className={bem('content')} {...bindEvent}>
         {visible &&
           (images?.length ? (
             <Carousel

@@ -19,17 +19,8 @@ export type MessageProps = BaseMessageProps &
   };
 
 const Message = forwardRef<HTMLDivElement, MessageProps>((props, ref) => {
-  const {
-    className,
-    theme,
-    icon,
-    hasArrow,
-    closable,
-    children,
-    onClick,
-    onClose,
-    ...restProps
-  } = props;
+  const { className, theme, icon, hasArrow, closable, children, onClick, onClose, ...restProps } =
+    props;
   const [visible, setVisible] = useState(true);
   const { prefixCls } = useContext(ConfigContext);
 

@@ -66,8 +66,8 @@ jobs:
           key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
 
       - name: Test
-        run: lerna exec --scope @zarm-design/cli -- yarn coverage
-      
+        run: lerna exec --scope @zarm-design/cli -- yarn test --coverage
+
       - name: Coverage
         run: bash <(curl -s https://codecov.io/bash)
     needs: setup
@@ -300,7 +300,7 @@ jobs:
 
       - name: Test
         run: lerna exec --scope zarm -- yarn coverage
-      
+
       - name: Coverage
         run: bash <(curl -s https://codecov.io/bash)
     needs: compile-icons

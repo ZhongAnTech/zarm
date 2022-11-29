@@ -16,10 +16,8 @@ const Demo = () => {
 
   useEffect(() => {
     const { width, height } = boxRef.current.getBoundingClientRect();
-    const {
-      width: containerWidth,
-      height: containerHeight,
-    } = containerRef.current.getBoundingClientRect();
+    const { width: containerWidth, height: containerHeight } =
+      containerRef.current.getBoundingClientRect();
 
     currentPoint[0] = Math.round(Math.random() * (containerWidth - width));
     currentPoint[1] = Math.round(Math.random() * (containerHeight - height));
@@ -41,10 +39,8 @@ const Demo = () => {
     console.log('onDragMove', dragState);
 
     const { width, height } = boxRef.current.getBoundingClientRect();
-    const {
-      width: containerWidth,
-      height: containerHeight,
-    } = containerRef.current.getBoundingClientRect();
+    const { width: containerWidth, height: containerHeight } =
+      containerRef.current.getBoundingClientRect();
 
     let newX = currentPoint[0] + dragState.offsetX;
     let newY = currentPoint[1] + dragState.offsetY;

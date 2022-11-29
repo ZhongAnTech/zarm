@@ -1,9 +1,3 @@
 @mixin linegradient($direction, $highlight: var(--za-theme-primary-lighter)) {
-  background-image:
-    linear-gradient(
-      to $direction,
-      transparent 0,
-      transparent 50%,
-      $highlight 50%
-    );
+  background-image: linear-gradient(to $direction, transparent 0, transparent 50%, $highlight 50%);
 }

@@ -1,5 +1,5 @@
 name: Sync mirror to Gitee
-on: 
+on:
   delete:
   push:
     branches:
@@ -16,7 +16,5 @@ jobs:
       - name: mirror to gitee
         uses: pixta-dev/repository-mirroring-action@v1
         with:
-          target_repo_url:
-            git@gitee.com:zarm/zarm.git
-          ssh_private_key:
-            ${{ secrets.GITEE_SSH_KEY }}
+          target_repo_url: git@gitee.com:zarm/zarm.git
+          ssh_private_key: ${{ secrets.GITEE_SSH_KEY }}

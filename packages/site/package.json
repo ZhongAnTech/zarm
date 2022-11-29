@@ -3,10 +3,10 @@
   "version": "0.0.6-alpha.1",
   "private": true,
   "scripts": {
-    "clean": "rimraf assets",
-    "start": "zarm dev",
     "build": "rimraf assets && mkdir assets && touch assets/CNAME && echo 'zarm.design' > assets/CNAME && zarm deploy",
-    "deploy": "yarn build -p && gh-pages -d assets"
+    "clean": "rimraf assets",
+    "deploy": "yarn build -p && gh-pages -d assets",
+    "start": "zarm dev"
   },
   "browserslist": [
     "last 2 versions",

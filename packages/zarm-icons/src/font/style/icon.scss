@@ -1,10 +1,10 @@
 $prefix: 'za-icon';
 
 @font-face {
-  font-family: "zaicon";
+  font-family: 'zaicon';
   src: url('../zaicon.eot');
-  /* stylelint-disable-next-line */
-  src: url('../zaicon.eot?#iefix') format('embedded-opentype'),
+  src:
+    url('../zaicon.eot?#iefix') format('embedded-opentype'),
     url('../zaicon.woff') format('woff'),
     url('../zaicon.ttf') format('truetype'),
     url('../zaicon.svg#zaicon') format('svg');
@@ -15,111 +15,110 @@ $prefix: 'za-icon';
 /* stylelint-disable block-closing-brace-empty-line-before */
 .#{$prefix} {
   &__arrow-down:before {
-    content: "\EA01";
+    content: '\EA01';
   }
 
   &__arrow-left:before {
-    content: "\EA02";
+    content: '\EA02';
   }
 
   &__arrow-right:before {
-    content: "\EA03";
+    content: '\EA03';
   }
 
   &__arrow-up:before {
-    content: "\EA04";
+    content: '\EA04';
   }
 
   &__close:before {
-    content: "\EA05";
+    content: '\EA05';
   }
 
   &__close-circle:before {
-    content: "\EA06";
+    content: '\EA06';
   }
 
   &__close-circle-fill:before {
-    content: "\EA07";
+    content: '\EA07';
   }
 
   &__delete-key:before {
-    content: "\EA08";
+    content: '\EA08';
   }
 
   &__empty:before {
-    content: "\EA09";
+    content: '\EA09';
   }
 
   &__info:before {
-    content: "\EA0A";
+    content: '\EA0A';
   }
 
   &__info-circle:before {
-    content: "\EA0B";
+    content: '\EA0B';
   }
 
   &__info-circle-fill:before {
-    content: "\EA0C";
+    content: '\EA0C';
   }
 
   &__keyboard:before {
-    content: "\EA0D";
+    content: '\EA0D';
   }
 
   &__minus:before {
-    content: "\EA0E";
+    content: '\EA0E';
   }
 
   &__plus:before {
-    content: "\EA0F";
+    content: '\EA0F';
   }
 
   &__plus-circle:before {
-    content: "\EA10";
+    content: '\EA10';
   }
 
   &__search:before {
-    content: "\EA11";
+    content: '\EA11';
   }
 
   &__star:before {
-    content: "\EA12";
+    content: '\EA12';
   }
 
   &__star-fill:before {
-    content: "\EA13";
+    content: '\EA13';
   }
 
   &__success:before {
-    content: "\EA14";
+    content: '\EA14';
   }
 
   &__success-circle:before {
-    content: "\EA15";
+    content: '\EA15';
   }
 
   &__volume:before {
-    content: "\EA16";
+    content: '\EA16';
   }
 
   &__waiting:before {
-    content: "\EA17";
+    content: '\EA17';
   }
 
   &__waiting-circle:before {
-    content: "\EA18";
+    content: '\EA18';
   }
 
   &__waiting-circle-fill:before {
-    content: "\EA19";
+    content: '\EA19';
   }
 
   &__warning:before {
-    content: "\EA1A";
+    content: '\EA1A';
   }
 
   &__warning-circle:before {
-    content: "\EA1B";
+    content: '\EA1B';
   }
-
 }

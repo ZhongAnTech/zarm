@@ -8,7 +8,7 @@
   @include define(widget-border-color, rgb(199, 199, 204));
   @include define(marker-font-size, 16px);
   @include define(marker-color, var(--za-theme-primary));
-  @include define(marker-transition, all 0.2s cubic-bezier(.71, -0.46, .88, .6));
+  @include define(marker-transition, all 0.2s cubic-bezier(0.71, -0.46, 0.88, 0.6));
   @include define(text-margin-horizontal, 8px);
   @include define(active-opacity, 0.6);
   @include define(checked-widget-background, transparent);

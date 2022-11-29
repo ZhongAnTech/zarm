@@ -2,8 +2,8 @@
   @include define(padding-vertical, var(--za-padding-v-xs));
   @include define(padding-horizontal, var(--za-padding-h-xs));
   @include define(font-size, 12px);
-  @include define(color,  var(--za-color-text-inverse));
-  @include define(arrow-size,  4px);
+  @include define(color, var(--za-color-text-inverse));
+  @include define(arrow-size, 4px);
   @include define(background, rgba(0, 0, 0, 0.8));
   @include define(z-index, 1700);
   @include define(spacing, 3px);
@@ -17,7 +17,8 @@
   color: var(--color);
   z-index: var(--z-index);
 
-  &[data-popper-placement^=right] {
+  &[data-popper-placement^='right'] {
+    margin-left: var(--spacing);
 
     @include b(popper) {
       @include e(arrow) {
@@ -28,7 +29,8 @@
     }
   }
 
-  &[data-popper-placement^=top] {
+  &[data-popper-placement^='top'] {
+    margin-top: calc(var(--spacing) * -1);
 
     @include b(popper) {
       @include e(arrow) {
@@ -39,7 +41,8 @@
     }
   }
 
-  &[data-popper-placement^=bottom] {
+  &[data-popper-placement^='bottom'] {
+    margin-top: var(--spacing);
 
     @include b(popper) {
       @include e(arrow) {
@@ -50,7 +53,8 @@
     }
   }
 
-  &[data-popper-placement^=left] {
+  &[data-popper-placement^='left'] {
+    margin-left: calc(var(--spacing) * -1);
 
     @include b(popper) {
       @include e(arrow) {
@@ -61,8 +65,8 @@
     }
   }
 
-  &[data-popper-placement="top-start"],
-  &[data-popper-placement="bottom-start"] {
+  &[data-popper-placement='top-start'],
+  &[data-popper-placement='bottom-start'] {
     @include b(popper) {
       @include e(arrow) {
         left: var(--arrow-horizontal-offset);
@@ -70,8 +74,8 @@
     }
   }
 
-  &[data-popper-placement="top-end"],
-  &[data-popper-placement="bottom-end"] {
+  &[data-popper-placement='top-end'],
+  &[data-popper-placement='bottom-end'] {
     @include b(popper) {
       @include e(arrow) {
         right: var(--arrow-horizontal-offset);
@@ -79,8 +83,8 @@
     }
   }
 
-  &[data-popper-placement="left-start"],
-  &[data-popper-placement="right-start"] {
+  &[data-popper-placement='left-start'],
+  &[data-popper-placement='right-start'] {
     @include b(popper) {
       @include e(arrow) {
         top: var(--arrow-vertical-offset);
@@ -88,29 +92,13 @@
     }
   }
 
-  &[data-popper-placement="left-end"],
-  &[data-popper-placement="right-end"] {
+  &[data-popper-placement='left-end'],
+  &[data-popper-placement='right-end'] {
     @include b(popper) {
       @include e(arrow) {
         bottom: var(--arrow-vertical-offset);
       }
     }
-  }
-
-  &[data-popper-placement^="left"] {
-    margin-left: calc(var(--spacing) * -1);
-  }
-
-  &[data-popper-placement^="right"] {
-    margin-left: var(--spacing);
-  }
-
-  &[data-popper-placement^="top"] {
-    margin-top: calc(var(--spacing) * -1);
-  }
-
-  &[data-popper-placement^="bottom"] {
-    margin-top: var(--spacing);
   }
 
   @include b(popper) {

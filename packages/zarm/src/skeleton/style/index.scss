@@ -8,7 +8,7 @@
 
   // skeleton
   @include define(background, rgba(190, 190, 190, 0.2));
-  @include define(animated-background, rgba(129,129,129,0.24));
+  @include define(animated-background, rgba(129, 129, 129, 0.24));
 
   width: var(--width);
   height: var(--height);
@@ -33,7 +33,13 @@
 
   // animated
   @include m(animated) {
-    background: linear-gradient(90deg, var(--background) 25%, var(--animated-background) 37%, var(--background) 63%);
+    background:
+      linear-gradient(
+        90deg,
+        var(--background) 25%,
+        var(--animated-background) 37%,
+        var(--background) 63%
+      );
     background-size: 400% 100%;
     animation: skeleton-loading 1.4s ease infinite;
   }

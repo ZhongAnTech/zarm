@@ -3,7 +3,7 @@
   @include define(header-font-size, 13px);
   @include define(header-color, rgba(60, 60, 67, 0.6));
   @include define(body-background, #fff);
-  @include define(body-font-size,  var(--za-font-size-md));
+  @include define(body-font-size, var(--za-font-size-md));
   @include define(body-color, var(--za-color-text));
   @include define(body-border-radius, 10px);
   @include define(spacing-padding-horizontal, 16px);

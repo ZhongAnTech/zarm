@@ -21,12 +21,10 @@ const Grid: React.FC<GridProps> = (props) => {
 
   const gutters: [number, number] = Array.isArray(gutter) ? gutter : [gutter!, gutter!];
 
-  const gridContext = React.useMemo(() => ({ columns, gutter: gutters, bordered, square }), [
-    columns,
-    gutters,
-    bordered,
-    square,
-  ]);
+  const gridContext = React.useMemo(
+    () => ({ columns, gutter: gutters, bordered, square }),
+    [columns, gutters, bordered, square],
+  );
 
   const gridStyle: React.CSSProperties = {};
   const horizontalGutter = gutters[0] > 0 ? gutters[0] / 2 : undefined;

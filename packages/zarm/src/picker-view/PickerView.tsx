@@ -43,12 +43,10 @@ const PickerView = React.forwardRef<PickerViewInstance, PickerViewProps>((props,
     setInnerValue(resolved(props).value);
   }, [props.value]);
 
-  const { columns, items } = React.useMemo(() => resolved({ ...props, value: innerValue }), [
-    cols,
-    innerValue,
-    dataSource,
-    fieldNames,
-  ]);
+  const { columns, items } = React.useMemo(
+    () => resolved({ ...props, value: innerValue }),
+    [cols, innerValue, dataSource, fieldNames],
+  );
 
   const reset = () => {
     setStopScroll(true);

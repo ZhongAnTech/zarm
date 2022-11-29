@@ -192,10 +192,10 @@ const Popper = forwardRef<refHander, PopperProps>((props, ref) => {
     </Transition>
   );
 
-  const newRef = useMemo(() => mergeRefs([reference, (children as any).ref]), [
-    reference,
-    children,
-  ]);
+  const newRef = useMemo(
+    () => mergeRefs([reference, (children as any).ref]),
+    [reference, children],
+  );
 
   const child = React.isValidElement(children) ? children : <span>{children}</span>;
   const childrenProps: React.RefAttributes<any> & React.HTMLAttributes<any> = {

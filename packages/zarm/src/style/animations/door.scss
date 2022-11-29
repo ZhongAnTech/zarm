@@ -21,7 +21,7 @@
 
   to {
     opacity: 1;
-    transform: scale3d(1, 1, .1);
+    transform: scale3d(1, 1, 0.1);
   }
 }
 
@@ -32,11 +32,11 @@
   }
 
   60% {
-    transform: scale3d(.01, 1, 1);
+    transform: scale3d(0.01, 1, 1);
   }
 
   to {
     opacity: 0;
-    transform: scale3d(0, 1, .1);
+    transform: scale3d(0, 1, 0.1);
   }
 }

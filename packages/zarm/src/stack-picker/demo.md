@@ -126,9 +126,9 @@ ReactDOM.render(<Demo />, mountNode);
 | displayRender | (selected?: object) => string                                             | selected => selected.map(item => item.label) | 所选值的展示                                   |
 | itemRender    | (data?: object) => data.label                                             | (data?: object) => data.label                | 单个选项的展示                                 |
 | title         | string                                                                    | '请选择'                                     | 选择器标题                                     |
-| confirmText        | string                                                                    | '确定'                                       | 确定栏文字                                     |
+| confirmText   | string                                                                    | '确定'                                       | 确定栏文字                                     |
 | cancelText    | string                                                                    | '取消'                                       | 取消栏文字                                     |
 | maskClosable  | boolean                                                                   | true                                         | 是否点击遮罩层时关闭，需要和 onCancel 一起使用 |
 | onChange      | (value: string[]) => void                                                 | -                                            | 值变化时触发的回调函数                         |
-| onConfirm          | (value: string[]) => void                                                 | -                                            | 点击确定时触发的回调函数                       |
+| onConfirm     | (value: string[]) => void                                                 | -                                            | 点击确定时触发的回调函数                       |
 | onCancel      | () => void                                                                | -                                            | 点击取消时触发的回调函数                       |

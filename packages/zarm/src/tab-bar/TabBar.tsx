@@ -29,15 +29,8 @@ const TabBar = React.forwardRef<unknown, TabBarProps>((props, ref) => {
 
   const bem = createBEM('tab-bar', { prefixCls });
 
-  const {
-    visible,
-    className,
-    children,
-    onChange,
-    activeKey,
-    defaultActiveKey,
-    ...restProps
-  } = props;
+  const { visible, className, children, onChange, activeKey, defaultActiveKey, ...restProps } =
+    props;
 
   const safeIphoneX = props.safeIphoneX || globalSafeIphoneX;
 

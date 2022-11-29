@@ -1,18 +1,9 @@
 {
+  "extends": "../../tsconfig",
   "compilerOptions": {
-    "baseUrl": "./",
-    "experimentalDecorators": true,
-    "strictNullChecks": true,
-    "moduleResolution": "node",
-    "jsx": "react",
-    "noUnusedParameters": true,
-    "noUnusedLocals": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "ES2019",
-    "esModuleInterop": true,
-    "types": ["react", "react-dom", "node", "jest"]
+    "outDir": "./types",
+    "declaration": true,
+    "emitDeclarationOnly": true
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "lib", "es", "**/__tests__/**", "tests"],
-  "compileOnSave": false
+  "include": ["src"]
 }

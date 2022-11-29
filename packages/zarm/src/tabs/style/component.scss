@@ -3,7 +3,7 @@
   @include define(color, var(--za-color-text));
   @include define(color-disabled, var(--za-color-text-disabled));
   @include define(height, 45px);
-  @include define(active-color,  var(--za-theme-primary));
+  @include define(active-color, var(--za-theme-primary));
   @include define(active-line-height, 2px);
   @include define(padding-horizontal, var(--za-padding-h-lg));
   @include define(padding-vertical, var(--za-padding-v-md));
@@ -23,7 +23,7 @@
   @include e(panel) {
     display: none;
     position: relative;
-    transition: height .3s;
+    transition: height 0.3s;
     height: 100%;
 
     @include m(active) {
@@ -49,7 +49,7 @@
 
   @include e(line) {
     position: absolute;
-    transition: transform .3s ease-out;
+    transition: transform 0.3s ease-out;
     background-color: var(--active-color);
 
     &__inner {

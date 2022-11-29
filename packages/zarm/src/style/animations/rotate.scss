@@ -16,7 +16,7 @@
   from {
     opacity: 0;
     transform-origin: center;
-    transform: rotate3d(0, 0, 1, -180deg) scale3d(.3, .3, .3);
+    transform: rotate3d(0, 0, 1, -180deg) scale3d(0.3, 0.3, 0.3);
   }
 
   to {
@@ -35,6 +35,6 @@
   to {
     opacity: 0;
     transform-origin: center;
-    transform: rotate3d(0, 0, 1, 180deg) scale3d(.3, .3, .3);
+    transform: rotate3d(0, 0, 1, 180deg) scale3d(0.3, 0.3, 0.3);
   }
 }

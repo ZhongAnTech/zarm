@@ -43,7 +43,7 @@ $activity-indicator-spinner-count: 8;
   }
 
   @include m(spinner) {
-    @include animation(rotate360, .8s linear infinite);
+    @include animation(rotate360, 0.8s linear infinite);
 
     animation-timing-function: steps($activity-indicator-spinner-count);
 

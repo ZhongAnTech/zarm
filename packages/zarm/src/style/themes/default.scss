@@ -8,13 +8,13 @@
   @include defineColorHSL(--theme-danger, 0, 100%, 65.7%);
 
   // 文字色
-  --color-text: #343434;                             // 基本
-  --color-text-inverse: #fff;                        // 反色
+  --color-text: #343434; // 基本
+  --color-text-inverse: #fff; // 反色
   --color-text-placeholder: rgba(128, 128, 132, 0.3); // 文本框提示
-  --color-text-disabled: #bcbcbc;                    // 失效
-  --color-text-caption: #909090;                     // 辅助描述
-  --color-link: var(--theme-primary);                  // 链接
-  --color-shadow: rgba(56, 56, 56, 0.15);            // 阴影色
+  --color-text-disabled: #bcbcbc; // 失效
+  --color-text-caption: #909090; // 辅助描述
+  --color-link: var(--theme-primary); // 链接
+  --color-shadow: rgba(56, 56, 56, 0.15); // 阴影色
 
   // 背景色
   --background-color: #fff;
@@ -246,7 +246,7 @@
 
   // StackPicker
   --stack-picker-background: #fff;
-  --stack-picker-shadow: 0 0 10px rgba(0, 0, 0, .3);
+  --stack-picker-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   --stack-picker-error: #ff5050;
   --stack-picker-stack-item-font-size: 16px;
   --stack-picker-crumbs-line-height: 24px;

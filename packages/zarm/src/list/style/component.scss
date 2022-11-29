@@ -7,7 +7,10 @@
   @include define(item-separator-color, rgba(60, 60, 67, 0.36));
   @include define(item-title-font-size, var(--za-font-size-md));
   @include define(item-title-white-space, nowrap);
-  @include define(item-title-line-height, calc(var(--item-height) - var(--item-padding-vertical) * 2));
+  @include define(
+    item-title-line-height,
+    calc(var(--item-height) - var(--item-padding-vertical) * 2)
+  );
   @include define(item-suffix-text-color, rgba(0, 0, 0, 0.45));
   @include define(item-space, 5px);
   @include define(item-arrow-border-width, var(--za-arrow-width));

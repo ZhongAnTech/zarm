@@ -91,9 +91,10 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
 
   const isVertical: boolean = direction === 'vertical';
 
-  const parseValue = React.useCallback((inputValue) => parseValueBoundary(inputValue, children), [
-    children,
-  ]);
+  const parseValue = React.useCallback(
+    (inputValue) => parseValueBoundary(inputValue, children),
+    [children],
+  );
 
   const cls = classnames(prefixCls, className, `${prefixCls}--${direction}`, {
     [`${prefixCls}--scroll`]: scrollable,
@@ -221,10 +222,8 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
 
     const prevTabItem = tablistRef.current!.childNodes[newValue] as HTMLElement;
     if (scrollable && tablistRef.current && prevTabItem) {
-      const {
-        offsetWidth: layoutOffsetWidth = 0,
-        offsetHeight: layoutOffsetHeight = 0,
-      } = tablistRef.current;
+      const { offsetWidth: layoutOffsetWidth = 0, offsetHeight: layoutOffsetHeight = 0 } =
+        tablistRef.current;
       const left = prevTabItem.offsetLeft + prevTabItem.offsetWidth / 2 - layoutOffsetWidth / 2;
       const top = prevTabItem.offsetTop + prevTabItem.offsetHeight / 2 - layoutOffsetHeight / 2;
 

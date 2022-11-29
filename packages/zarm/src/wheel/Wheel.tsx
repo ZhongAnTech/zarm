@@ -39,16 +39,8 @@ const DEFAULT_FIELD_NAMES = {
 };
 
 const Wheel: React.FC<WheelProps> = (props) => {
-  const {
-    className,
-    value,
-    defaultValue,
-    dataSource,
-    disabled,
-    stopScroll,
-    itemRender,
-    onChange,
-  } = props;
+  const { className, value, defaultValue, dataSource, disabled, stopScroll, itemRender, onChange } =
+    props;
 
   const scrollInstance = useRef<BScrollInstance | null>(null);
   const wheelWrapperRef = createRef<HTMLDivElement>();

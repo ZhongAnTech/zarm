@@ -1,14 +1,13 @@
 {
   "compilerOptions": {
-    "baseUrl": "./packages",
+    "baseUrl": ".",
     "target": "ES2019",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "jsx": "react",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "jsx": "preserve",
     "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "sourceMap": true,
-    "allowSyntheticDefaultImports": true
-  }
+    "skipLibCheck": true,
+    "lib": ["ESNext", "DOM"]
+  },
+  "exclude": ["**/__tests__/**", "tests"]
 }
