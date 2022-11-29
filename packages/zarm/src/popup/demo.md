@@ -4,7 +4,7 @@
 
 ```jsx
 import { useState, useReducer, useRef } from 'react';
-import { Popup, Cell, Button, Picker, Toast } from 'zarm';
+import { Popup, Cell, Button, Picker, Toast, Input } from 'zarm';
 
 const SINGLE_DATA = [
   { value: '1', label: '选项一' },
