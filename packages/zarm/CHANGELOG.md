@@ -1,5 +1,11 @@
 # 版本更新日志
 
+## v2.9.17
+
+- Bug Fix
+
+  - [Input] 修复虚拟键盘点击穿透问题。[#984](https://github.com/ZhongAnTech/zarm/pull/984)
+
 ## v2.9.16
 
 - Perf
