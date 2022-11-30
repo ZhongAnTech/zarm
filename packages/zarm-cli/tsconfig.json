@@ -3,8 +3,7 @@
   "compilerOptions": {
     "outFile": "types/index.d.ts",
     "declaration": true,
-    "emitDeclarationOnly": true,
-    "resolveJsonModule": true
+    "emitDeclarationOnly": true
   },
   "include": ["src"]
 }
