@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://site/./demo/styles/NoticeBarPage.scss"],"names":[],"mappings":"AAAA,6BAA6B,kBAAkB,CAAC,0CAA0C,eAAe,C","file":"stylesheet/1914.e40a2ff9.css","sourcesContent":[".notice-bar-page .za-message{margin-bottom:15px}.notice-bar-page .za-message:last-of-type{margin-bottom:0}"],"sourceRoot":""}

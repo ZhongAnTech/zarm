@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://site/./demo/styles/ToastPage.scss"],"names":[],"mappings":"AAAA,eAAe,UAAU,CAAC,wCAAwC,YAAY,CAAC,oBAAoB,cAAc,CAAC,UAAU,C","file":"stylesheet/5767.c0828178.css","sourcesContent":[".za-toast .box{width:70px}.za-toast .box-icon,.za-toast .box-text{margin:5px 0}.za-toast .box-icon{font-size:50px;color:#fff}"],"sourceRoot":""}

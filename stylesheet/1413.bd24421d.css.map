@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://site/./demo/styles/PickerPage.scss"],"names":[],"mappings":"AAAA,6BAA6B,UAAU,CAAC,yBAAyB,UAAU,CAAC,gBAAgB,C","file":"stylesheet/1413.bd24421d.css","sourcesContent":[".picker-page .picker-content{width:100%}.picker-page .show-right{width:100%;text-align:right}"],"sourceRoot":""}
