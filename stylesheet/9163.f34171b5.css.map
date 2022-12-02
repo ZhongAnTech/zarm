@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://site/./demo/styles/MessagePage.scss"],"names":[],"mappings":"AAAA,8BAA8B,YAAY,CAAC,0BAA0B,kBAAkB,CAAC,uCAAuC,eAAe,C","file":"stylesheet/9163.f34171b5.css","sourcesContent":[".message-page .za-panel__body{padding:15px}.message-page .za-message{margin-bottom:15px}.message-page .za-message:last-of-type{margin-bottom:0}"],"sourceRoot":""}
