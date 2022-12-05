@@ -2,3 +2,5 @@ dist/
 es/
 lib/
 coverage/
+assets/
+types/
