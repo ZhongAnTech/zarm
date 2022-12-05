@@ -396,7 +396,20 @@ Array [
       height="1em"
       viewBox="0 0 1000 1000"
       width="1em"
-    />
+    >
+      <text
+        fill-rule="evenodd"
+        font-family="PingFangSC-Regular, PingFang SC"
+        font-size="300"
+      >
+        <tspan
+          x="-4498"
+          y="1111"
+        >
+          线框图标 - 有对应的实底图标
+        </tspan>
+      </text>
+    </svg>
   </i>,
   <i
     class="za-icon"
