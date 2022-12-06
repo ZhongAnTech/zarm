@@ -15,7 +15,7 @@ export interface PickerOption extends PickerColumnItem {
   children?: PickerOption[];
 }
 
-export type PickerViewDataSource = (PickerColumn | PickerOption)[];
+export type PickerDataSource = (PickerColumn | PickerOption)[];
 
 export interface FieldNames extends WheelFieldNames {
   children: string;
@@ -26,7 +26,7 @@ export interface BasePickerViewProps extends Pick<BaseWheelProps, 'disabled'> {
   defaultValue?: PickerValue | PickerValue[];
   wheelDefaultValue?: PickerValue | PickerValue[];
   fieldNames?: Partial<FieldNames>;
-  dataSource?: PickerViewDataSource;
+  dataSource?: PickerDataSource;
   cols?: number;
   itemRender?: (item: PickerColumnItem, level: number) => React.ReactNode;
   onChange?: (value: PickerValue[], items: PickerColumnItem[], level: number) => void;

@@ -3,7 +3,7 @@ import { createBEM } from '@zarm-design/bem';
 import isEqual from 'lodash/isEqual';
 import Wheel from '../wheel';
 import { isCascader, resolved } from './utils';
-import type { BasePickerViewProps, PickerViewColumnItem } from './interface';
+import type { BasePickerViewProps, PickerColumnItem } from './interface';
 import type { WheelValue } from '../wheel/interface';
 import { ConfigContext } from '../config-provider';
 import type { HTMLProps } from '../utils/utilityTypes';
@@ -26,7 +26,7 @@ export type PickerViewProps = BasePickerViewProps & HTMLProps<PickerViewCssVars>
 
 export interface PickerViewInstance {
   value: WheelValue[];
-  items: PickerViewColumnItem[];
+  items: PickerColumnItem[];
   reset: () => void;
 }
 

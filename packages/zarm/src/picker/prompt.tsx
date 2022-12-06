@@ -9,7 +9,7 @@ export interface PickerPromptValue {
   items: PickerColumnItem[];
 }
 
-export const prompt = (props: Omit<PickerProps, 'value' | 'children' | 'mountContainer'>) => {
+export const prompt = (props: Omit<PickerProps, 'value' | 'children'>) => {
   return new Promise<PickerPromptValue>((resolve) => {
     const Wrapper: React.FC = () => {
       const [visible, setVisible] = React.useState(false);
@@ -34,7 +34,6 @@ export const prompt = (props: Omit<PickerProps, 'value' | 'children' | 'mountCon
             props.afterClose?.();
             unmount();
           }}
-          mountContainer={false}
         />
       );
     };

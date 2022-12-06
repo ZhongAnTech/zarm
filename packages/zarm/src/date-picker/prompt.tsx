@@ -8,7 +8,7 @@ export interface DatePickerPromptValue {
   value: DatePickerValue;
 }
 
-export const prompt = (props: Omit<DatePickerProps, 'value' | 'children' | 'mountContainer'>) => {
+export const prompt = (props: Omit<DatePickerProps, 'value' | 'children'>) => {
   return new Promise<DatePickerPromptValue>((resolve) => {
     const Wrapper: React.FC = () => {
       const [visible, setVisible] = React.useState(false);
@@ -33,7 +33,6 @@ export const prompt = (props: Omit<DatePickerProps, 'value' | 'children' | 'moun
             props.afterClose?.();
             unmount();
           }}
-          mountContainer={false}
         />
       );
     };

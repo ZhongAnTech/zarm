@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import PickerView from '../index';
-import type { PickerViewDataSource } from '../interface';
+import type { PickerDataSource } from '../interface';
 
 // TODO: make mock package for better-scroll package
 const bsScrollInstance = {
@@ -35,7 +35,7 @@ describe('PickerView', () => {
   });
 
   it('should render wheels if datasource is not empty', () => {
-    const dataSource: PickerViewDataSource = [
+    const dataSource: PickerDataSource = [
       { label: 'a', value: 1 },
       { label: 'b', value: 2 },
     ];

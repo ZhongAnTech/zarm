@@ -8,7 +8,7 @@ export interface CascaderPromptValue {
   value: CascaderValue[];
 }
 
-export const prompt = (props: Omit<CascaderProps, 'value' | 'children' | 'mountContainer'>) => {
+export const prompt = (props: Omit<CascaderProps, 'value' | 'children'>) => {
   return new Promise<CascaderPromptValue>((resolve) => {
     const Wrapper: React.FC = () => {
       const [visible, setVisible] = React.useState(false);
@@ -33,7 +33,6 @@ export const prompt = (props: Omit<CascaderProps, 'value' | 'children' | 'mountC
             props.afterClose?.();
             unmount();
           }}
-          mountContainer={mountContainer}
         />
       );
     };
