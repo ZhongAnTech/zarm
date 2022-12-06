@@ -4,7 +4,7 @@ import { Transition } from 'react-transition-group';
 import dayjs from 'dayjs';
 import throttle from 'lodash/throttle';
 import { BaseCalendarProps } from './interface';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import CalendarMonthView from './Month';
 import Week from './Week';
 import Header from './Header';

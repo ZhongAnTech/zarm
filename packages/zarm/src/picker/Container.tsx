@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import Popup from '../popup';
 import { noop } from '../utils';
 import type { HTMLProps } from '../utils/utilityTypes';

@@ -7,7 +7,7 @@ import {
 } from '@zarm-design/icons';
 import throttle from 'lodash/throttle';
 import Events from '../utils/events';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import { getScrollParent, getScrollTop } from '../utils/dom';
 import ActivityIndicator from '../activity-indicator';
 import { useEventCallback } from '../utils/hooks';

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import ActivityIndicator from '../activity-indicator';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import type { BaseButtonProps, ButtonTheme, ButtonSize, ButtonShape } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
 

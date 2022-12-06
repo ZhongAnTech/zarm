@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { createBEM } from '@zarm-design/bem';
 import { useScroll } from '@use-gesture/react';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import type { BaseBackTopProps } from './interface';
 import { HTMLProps } from '../utils/utilityTypes';
 import {

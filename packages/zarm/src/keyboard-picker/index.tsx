@@ -2,7 +2,7 @@ import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
 import Keyboard from '../keyboard';
 import Popup from '../popup';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import type { BaseKeyBoardPickerProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
 

@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useContext, forwardRef, createRef } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import type { HTMLProps } from '../utils/utilityTypes';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import PickerContainer from '../picker/Container';
 import CascaderView from '../cascader-view';
 import { parseState } from '../cascader-view/utils';

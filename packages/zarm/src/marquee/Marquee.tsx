@@ -2,7 +2,7 @@ import React, { HTMLAttributes, useRef, useEffect, useCallback } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import BaseMarqueeProps from './interface';
 import { DIRECTION_LEFT, DIRECTION_RIGHT, DIRECTION_UP, DIRECTION_DOWN } from './constants';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import { canUseDOM } from '../utils/dom';
 
 export interface MarqueeProps extends HTMLAttributes<HTMLDivElement>, BaseMarqueeProps {

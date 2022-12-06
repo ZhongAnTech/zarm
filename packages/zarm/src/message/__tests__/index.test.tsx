@@ -1,7 +1,7 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import Message from '../index';
-import ConfigProvider from '../../n-config-provider';
+import ConfigProvider from '../../config-provider';
 
 jest.mock('@zarm-design/icons', () => ({
   ...(jest.requireActual('@zarm-design/icons') as any),

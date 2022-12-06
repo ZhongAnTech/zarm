@@ -5,7 +5,7 @@ import Carousel from '../carousel';
 import type { CarouselHTMLElement } from '../carousel';
 import { getTransformPropValue, getPxStyle } from './util/index';
 import { scrollTo } from '../utils/dom';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import type { TabPanelProps } from './TabPanel';
 import type { BaseTabsProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';

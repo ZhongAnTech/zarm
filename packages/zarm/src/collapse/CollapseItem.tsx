@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import type { BaseCollapseItemProps } from './interface';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import { useSafeLayoutEffect } from '../utils/hooks';
 
 export type CollapseItemProps = Omit<HTMLAttributes<HTMLDivElement>, 'key' | 'title' | 'onChange'> &

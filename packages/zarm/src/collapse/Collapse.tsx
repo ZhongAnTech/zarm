@@ -2,7 +2,7 @@ import React, { Children, cloneElement, ReactElement, useState } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import type { CollapseActiveKey, CollapseItemKey, BaseCollapseProps } from './interface';
 import CollapseItem, { CollapseItemProps } from './CollapseItem';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import type { HTMLProps } from '../utils/utilityTypes';
 
 export interface CollapseCssVars {

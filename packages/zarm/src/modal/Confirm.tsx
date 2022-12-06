@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Confirm from '../confirm';
 import renderToContainer from '../utils/renderToContainer';
-import { RuntimeConfigProvider } from '../n-config-provider/ConfigProvider';
+import { RuntimeConfigProvider } from '../config-provider/ConfigProvider';
 import type { ConfirmProps } from '../confirm';
 
 const confirm = (props: Omit<ConfirmProps, 'visible'>): Promise<boolean> => {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { useMutationObserverRef } from '../utils/hooks';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import type { BaseWaterMarkProps } from './interface';
 import {
   WATERMARK_DEFAULT_STYLES,

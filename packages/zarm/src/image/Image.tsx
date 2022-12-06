@@ -1,7 +1,7 @@
 import React, { useState, useContext, createRef } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import ImagePreview from '../image-preview';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import LazyDetector from './lazy-detector';
 
 export const IMAGE_STATUS = {

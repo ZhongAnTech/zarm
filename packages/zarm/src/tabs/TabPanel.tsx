@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import type { BaseTabPanelProps } from './interface';
 
 export interface TabPanelProps extends BaseTabPanelProps {

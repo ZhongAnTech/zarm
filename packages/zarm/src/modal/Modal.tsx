@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { Close as CloseIcon } from '@zarm-design/icons';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import Popup from '../popup';
 import ModalAction from './ModalAction';
 import { noop } from '../utils';

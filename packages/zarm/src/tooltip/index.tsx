@@ -1,6 +1,6 @@
 import React, { forwardRef, useRef, useImperativeHandle } from 'react';
 import { createBEM } from '@zarm-design/bem';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import Popper from '../popper';
 import type { BaseTooltipProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';

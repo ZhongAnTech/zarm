@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import Popup from '../popup';
 import type { BaseToastProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';

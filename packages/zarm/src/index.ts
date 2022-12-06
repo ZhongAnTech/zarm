@@ -175,10 +175,8 @@ export { default as Image } from './image';
 export type { PinchZoomProps } from './pinch-zoom';
 export { default as PinchZoom } from './pinch-zoom';
 
+export type { ConfigProviderProps } from './config-provider';
 export { default as ConfigProvider } from './config-provider';
-
-export type { ConfigProviderProps as NConfigProviderProps } from './n-config-provider';
-export { default as NConfigProvider } from './n-config-provider';
 
 export type { CascaderProps } from './cascader';
 export { default as Cascader } from './cascader';

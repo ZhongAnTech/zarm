@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { useSafeState } from '../utils/hooks';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import ActivityIndicator from '../activity-indicator';
 import type { BaseModalActionProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';

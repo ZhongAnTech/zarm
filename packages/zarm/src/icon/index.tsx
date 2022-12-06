@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Icon as BaseIcon } from '@zarm-design/icons';
 import type { IconProps as BaseIconProps } from '@zarm-design/icons';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 
 export interface IconCssVars {
   '--font-size'?: React.CSSProperties['fontSize'];

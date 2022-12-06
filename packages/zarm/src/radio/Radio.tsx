@@ -5,7 +5,7 @@ import type { BaseRadioProps, BaseRadioGroupProps } from './interface';
 import Button from '../button';
 import List from '../list';
 import type { ListItemProps } from '../list';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import type { ButtonProps } from '../button';
 import type { HTMLProps } from '../utils/utilityTypes';
 

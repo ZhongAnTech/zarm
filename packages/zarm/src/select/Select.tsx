@@ -5,7 +5,7 @@ import Picker from '../picker';
 import { resolved } from '../picker-view/utils';
 import type { BaseSelectProps } from './interface';
 import type { WheelItem } from '../wheel/interface';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import { HTMLProps } from '../utils/utilityTypes';
 
 export interface SelectCssVars {

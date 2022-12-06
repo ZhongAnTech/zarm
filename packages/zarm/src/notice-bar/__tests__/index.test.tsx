@@ -4,7 +4,7 @@ import { mocked } from 'ts-jest/utils';
 import { CloseCircle } from '@zarm-design/icons';
 import { createFCRefMock } from '../../../tests/utils';
 import NoticeBar from '../index';
-import ConfigProvider from '../../n-config-provider';
+import ConfigProvider from '../../config-provider';
 
 jest.mock('react', () => {
   return {

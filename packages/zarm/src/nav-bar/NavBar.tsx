@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import type { HTMLAttributes } from 'react';
 import { createBEM } from '@zarm-design/bem';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import type { BaseNavBarProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
 

@@ -4,7 +4,7 @@ import { Volume as VolumeIcon } from '@zarm-design/icons';
 import { createBEM } from '@zarm-design/bem';
 import type BaseNoticeBarProps from './interface';
 import Message from '../message';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import useAnimationDuration from './hooks';
 import type { HTMLProps } from '../utils/utilityTypes';
 

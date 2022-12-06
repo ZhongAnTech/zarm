@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ArrowLeft, ArrowRight } from '@zarm-design/icons';
 import NavBar from '../index';
-import ConfigProvider from '../../n-config-provider';
+import ConfigProvider from '../../config-provider';
 
 describe('NavBar', () => {
   it('should renders correctly', () => {

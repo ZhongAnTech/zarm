@@ -1,6 +1,6 @@
 import React, { ReactNode, useRef } from 'react';
 import ReactDOM from 'react-dom';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import { getMountContainer } from '../utils/dom';
 import Toast from './Toast';
 import type { ToastProps } from './Toast';

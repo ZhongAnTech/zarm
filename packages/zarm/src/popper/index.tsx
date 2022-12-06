@@ -26,7 +26,7 @@ import {
 import Transition from '../transition';
 import { canUseDOM, getElementSize, renderToContainer } from '../utils/dom';
 import BasePopperProps from './interface';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import { getTransitionName, getTransformOrigin } from './utils';
 import mergeRefs from '../utils/mergeRefs';
 

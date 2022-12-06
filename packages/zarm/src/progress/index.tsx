@@ -1,7 +1,7 @@
 import React, { useImperativeHandle, useRef } from 'react';
 import type { ForwardedRef } from 'react';
 import { createBEM } from '@zarm-design/bem';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import type { BaseProgressProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
 import {

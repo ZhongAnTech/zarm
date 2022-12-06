@@ -1,6 +1,8 @@
 @import '@/styles/index';
 
 .config-provider-page {
+  padding-bottom: r(50);
+
   .colors {
     display: flex;
     justify-content: center;
@@ -23,13 +25,8 @@
   }
 
   @at-root {
-    .provider-popup {
-      .za-popup--bottom {
-        background: #fff;
-      }
-    }
-
-    .popup-box-bottom {
+    .popup-box {
+      background: #fff;
       height: r(300);
       padding: r(20) r(20) r(100);
     }

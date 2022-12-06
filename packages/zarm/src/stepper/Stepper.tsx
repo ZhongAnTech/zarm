@@ -3,7 +3,7 @@ import { createBEM } from '@zarm-design/bem';
 import { Minus as MinusIcon, Plus as PlusIcon } from '@zarm-design/icons';
 import type { BaseStepperProps } from './interface';
 import Button from '../button';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import CustomInput from '../custom-input';
 import type { CustomInputProps } from '../custom-input';
 import Input from '../input';

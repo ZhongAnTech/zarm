@@ -3,7 +3,7 @@ import { createBEM } from '@zarm-design/bem';
 
 import Badge from '../badge';
 import type { BaseTabBarItemProps } from './interface';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 
 export interface TabBarItemProps
   extends BaseTabBarItemProps,

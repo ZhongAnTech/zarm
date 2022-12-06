@@ -1,6 +1,6 @@
 import React, { RefAttributes, useCallback, useEffect, useRef, useState } from 'react';
 import { createBEM } from '@zarm-design/bem';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import Popup from '../popup';
 import ActivityIndicator from '../activity-indicator';
 import type { HTMLProps } from '../utils/utilityTypes';

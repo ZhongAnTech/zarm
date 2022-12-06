@@ -2,7 +2,7 @@ import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { StarFill } from '@zarm-design/icons';
 import { useDrag } from '@use-gesture/react';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import { useControllableValue } from '../utils/hooks';
 import { getBoundingClientRect } from '../utils/dom';
 import type { BaseRateProps } from './interface';

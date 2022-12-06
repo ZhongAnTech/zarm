@@ -1,6 +1,6 @@
 import React, { useContext, forwardRef } from 'react';
 import { createBEM } from '@zarm-design/bem';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 
 const Week = forwardRef<any, any>((_props, ref) => {
   const { prefixCls, locale: globalLocal } = useContext(ConfigContext);

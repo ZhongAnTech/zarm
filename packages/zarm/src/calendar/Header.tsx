@@ -3,7 +3,7 @@ import { createBEM } from '@zarm-design/bem';
 import { ArrowLeft, ArrowRight } from '@zarm-design/icons';
 import dayjs from 'dayjs';
 import PickerView from '../picker-view';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import parseDataSource from './utils/parseDataSource';
 
 interface HeaderProps {

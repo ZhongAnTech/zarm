@@ -2,7 +2,7 @@ import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { CloseCircleFill } from '@zarm-design/icons';
 import { getValue } from './utils';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import type { BaseInputTextProps, BaseInputTextareaProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import type { BaseListProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
 

@@ -5,7 +5,7 @@ import Wheel from '../wheel';
 import { isCascader, resolved } from './utils';
 import type { BasePickerViewProps, PickerViewColumnItem } from './interface';
 import type { WheelValue } from '../wheel/interface';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import type { HTMLProps } from '../utils/utilityTypes';
 
 export interface PickerViewCssVars {

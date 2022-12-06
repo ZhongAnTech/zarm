@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { MountContainer } from '../utils/dom';
-import type { Locale } from '../n-config-provider/interface';
+import type { Locale } from '../config-provider/interface';
 
 export interface BaseActionSheetItemProps {
   key?: string | number;

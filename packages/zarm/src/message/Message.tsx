@@ -2,7 +2,7 @@ import React, { forwardRef, useState, useContext } from 'react';
 import type { MouseEvent } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { ArrowRight as ArrowRightIcon, Close as CloseIcon } from '@zarm-design/icons';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import type { BaseMessageProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
 

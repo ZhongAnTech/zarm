@@ -4,7 +4,7 @@ import { CloseCircleFill } from '@zarm-design/icons';
 import KeyboardPicker from '../keyboard-picker';
 import useClickAway from '../useClickAway';
 import { getValue } from '../input/utils';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import type { BaseCustomInputProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
 

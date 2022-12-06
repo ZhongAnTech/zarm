@@ -10,7 +10,7 @@ import React, {
 } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import type { HTMLProps } from '../utils/utilityTypes';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import Tabs from '../tabs';
 import Radio from '../radio';
 import { resolvedFieldNames } from '../picker-view/utils';

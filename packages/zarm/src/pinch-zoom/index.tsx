@@ -3,7 +3,7 @@ import { createBEM } from '@zarm-design/bem';
 import raf from 'raf';
 import Events from '../utils/events';
 import type { BasePinchZoomProps } from './interface';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import { getElementSize } from '../utils/dom';
 
 interface Point {

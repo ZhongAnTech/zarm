@@ -318,7 +318,6 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "NConfigProvider": [Function],
         "NavBar": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {},

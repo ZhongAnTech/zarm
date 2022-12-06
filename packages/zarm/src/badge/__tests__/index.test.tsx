@@ -1,7 +1,7 @@
 import React from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
 import Badge from '../index';
-import ConfigProvider from '../../n-config-provider';
+import ConfigProvider from '../../config-provider';
 
 describe('Badge', () => {
   afterEach(cleanup);

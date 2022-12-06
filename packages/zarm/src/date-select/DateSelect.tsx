@@ -3,7 +3,7 @@ import { createBEM } from '@zarm-design/bem';
 import isEqual from 'lodash/isEqual';
 import formatFn from '../date-picker-view/utils/format';
 import DatePicker from '../date-picker';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import type { BaseDateSelectProps } from './interface';
 import { HTMLProps } from '../utils/utilityTypes';
 import { parseState } from '../date-picker-view/utils/parseState';

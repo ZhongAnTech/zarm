@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { Success as SuccessIcon, Minus as MinusIcon } from '@zarm-design/icons';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import Button from '../button';
 import List from '../list';
 import type { BaseCheckboxProps, BaseCheckboxGroupProps } from './interface';

@@ -13,7 +13,7 @@ import React, { cloneElement, useCallback } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import type { FileObject, BaseFilePickerProps } from './interface';
 import handleFileInfo from './utils/handleFileInfo';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 
 export interface FilePickerProps extends BaseFilePickerProps {
   className?: string;

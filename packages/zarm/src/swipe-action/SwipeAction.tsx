@@ -2,7 +2,7 @@ import React, { useRef, useCallback, useContext } from 'react';
 import { useDrag } from '@use-gesture/react';
 import { createBEM } from '@zarm-design/bem';
 
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import SwipeActionItem from './SwipeActionItem';
 import useClickAway from '../useClickAway';
 import { useSafeState } from '../utils/hooks';

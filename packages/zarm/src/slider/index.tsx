@@ -7,7 +7,7 @@ import Events from '../utils/events';
 import Tooltip from '../tooltip';
 import ensureValuePrecision from './utils/ensureValuePrecision';
 import getValue from './utils/getValue';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 
 export interface SliderCssVars {
   '--line-size'?: React.CSSProperties['width' | 'height'];

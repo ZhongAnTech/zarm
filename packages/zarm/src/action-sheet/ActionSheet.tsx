@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import Popup from '../popup';
 import ActionSheetItem, { ActionSheetItemProps } from './ActionSheetItem';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import type { BaseActionSheetProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
 

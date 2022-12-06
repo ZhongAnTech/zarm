@@ -13,7 +13,7 @@ import type { BaseCarouselProps } from './interface';
 import Events from '../utils/events';
 import useDrag from '../useDrag';
 import type { DragState, DragEvent } from '../useDrag/interface';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import type { HTMLProps } from '../utils/utilityTypes';
 
 export interface CarouselCssVars {

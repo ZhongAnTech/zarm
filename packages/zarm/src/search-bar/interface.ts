@@ -1,4 +1,4 @@
-import type { Locale } from '../n-config-provider/interface';
+import type { Locale } from '../config-provider/interface';
 
 export default interface BaseSearchBarProps {
   shape?: 'rect' | 'radius' | 'round';

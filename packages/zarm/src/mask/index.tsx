@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
 import isFinite from 'lodash/isFinite';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import type { BaseMaskProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
 import { renderToContainer } from '../utils/dom';

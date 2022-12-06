@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import PickerContainer from '../picker/Container';
 import DatePickerView, { DatePickerInstance } from '../date-picker-view';
 import type { BaseDatePickerProps } from './interface';

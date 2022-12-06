@@ -9,7 +9,7 @@ import React, {
 } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import dayjs from 'dayjs';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import { BaseCalendarMonthProps } from './interface';
 
 export type CalendarMonthProps = BaseCalendarMonthProps & React.HTMLAttributes<HTMLElement>;

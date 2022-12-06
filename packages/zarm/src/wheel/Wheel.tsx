@@ -5,7 +5,7 @@ import WheelPlugin from '@better-scroll/wheel';
 import isEqual from 'lodash/isEqual';
 import { usePrevious, useEventCallback } from '../utils/hooks';
 import type { BaseWheelProps, WheelItem, WheelValue } from './interface';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import type { HTMLProps } from '../utils/utilityTypes';
 import { resolvedFieldNames } from '../picker-view/utils';
 

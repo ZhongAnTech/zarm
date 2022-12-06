@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import { useLockScroll } from '../utils/hooks';
 import Trigger from '../trigger';
 import Mask from '../mask';

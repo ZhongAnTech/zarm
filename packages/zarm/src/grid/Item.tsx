@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import GridContext from './GridContext';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import type { HTMLProps } from '../utils/utilityTypes';
 
 export type GridItemProps = HTMLProps & {

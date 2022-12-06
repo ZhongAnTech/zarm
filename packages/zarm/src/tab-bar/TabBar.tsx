@@ -3,7 +3,7 @@ import { createBEM } from '@zarm-design/bem';
 import type { BaseTabBarProps } from './interface';
 import TabBarItem from './TabBarItem';
 import type { TabBarItemProps } from './TabBarItem';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import type { HTMLProps } from '../utils/utilityTypes';
 
 export interface TabBarCssVars {

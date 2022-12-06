@@ -2,7 +2,7 @@ import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { Search as SearchIcon } from '@zarm-design/icons';
 import type BaseSearchBarProps from './interface';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import { useEventCallback } from '../utils/hooks';
 import Input, { InputTextProps } from '../input';
 import { getValue } from '../input/utils';

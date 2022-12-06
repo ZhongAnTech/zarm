@@ -3,7 +3,7 @@
 exports[`templates component should create component template 1`] = `
 "import * as React from 'react';
 import classnames from 'classnames';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import type { BaseMyTestComponentProps } from './interface';
 
 export interface MyTestComponentProps extends BaseMyTestComponentProps {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
 import List from '../list';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import type { BaseRadioGroupProps, RadioValue } from './interface';
 import type { HTMLProps, Nullable } from '../utils/utilityTypes';
 

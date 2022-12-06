@@ -1,7 +1,7 @@
 import * as React from 'react';
 import ActionSheet, { ActionSheetProps } from './ActionSheet';
 import renderToContainer from '../utils/renderToContainer';
-import { RuntimeConfigProvider } from '../n-config-provider/ConfigProvider';
+import { RuntimeConfigProvider } from '../config-provider/ConfigProvider';
 
 interface ActionSheetRef {
   close: () => void;

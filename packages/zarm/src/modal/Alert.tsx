@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Alert from '../alert';
 import renderToContainer from '../utils/renderToContainer';
-import { RuntimeConfigProvider } from '../n-config-provider/ConfigProvider';
+import { RuntimeConfigProvider } from '../config-provider/ConfigProvider';
 import type { AlertProps } from '../alert';
 
 const alert = (props: Omit<AlertProps, 'visible'>) => {

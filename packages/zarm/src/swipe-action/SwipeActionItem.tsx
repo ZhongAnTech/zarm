@@ -2,7 +2,7 @@ import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
 import Button from '../button';
 import { useSafeState } from '../utils/hooks';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import type { BaseSwipeActionItemProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
 

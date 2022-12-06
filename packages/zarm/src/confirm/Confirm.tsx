@@ -2,7 +2,7 @@ import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
 import type { BaseConfirmProps } from './interface';
 import Modal from '../modal';
-import { ConfigContext } from '../n-config-provider';
+import { ConfigContext } from '../config-provider';
 import type { HTMLProps } from '../utils/utilityTypes';
 
 export type ConfirmProps = BaseConfirmProps & HTMLProps;

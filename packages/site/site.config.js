@@ -437,18 +437,11 @@ module.exports = {
         source: 'zarm/mask/demo.md',
         style: true,
       },
-      // {
-      //   key: 'config-provider',
-      //   name: '全局配置',
-      //   module: () => import('zarm/config-provider/demo.md'),
-      //   source: 'zarm/config-provider/demo.md',
-      //   style: true,
-      // },
       {
-        key: 'n-config-provider',
-        name: '全局配置（新）',
-        module: () => import('zarm/n-config-provider/demo.md'),
-        source: 'zarm/n-config-provider/demo.md',
+        key: 'config-provider',
+        name: '全局配置',
+        module: () => import('zarm/config-provider/demo.md'),
+        source: 'zarm/config-provider/demo.md',
         style: true,
       },
       {
