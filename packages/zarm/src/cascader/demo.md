@@ -113,6 +113,105 @@ const Demo = () => {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
+## 指令式调用
+
+```jsx
+import { useState, useEffect } from 'react';
+import { List, Cascader, Button, Toast } from 'zarm';
+
+const PROMPT_DATA = [
+  {
+    value: '340000',
+    label: '安徽省',
+    children: [
+      {
+        value: '340800',
+        label: '安庆市',
+        children: [
+          {
+            value: '340803',
+            label: '大观区',
+            children: [],
+          },
+          {
+            value: '340822',
+            label: '怀宁县',
+            children: [],
+          },
+          {
+            value: '340882',
+            label: '其它区',
+            children: [],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: '310000',
+    label: '上海',
+    children: [
+      {
+        value: '310100',
+        label: '上海市',
+        children: [
+          {
+            value: '310113',
+            label: '宝山区',
+            children: [],
+          },
+          {
+            value: '310105',
+            label: '长宁区',
+            children: [],
+          },
+          {
+            value: '310230',
+            label: '崇明县',
+            children: [],
+          },
+          {
+            value: '310152',
+            label: '川沙区',
+            children: [],
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const Demo = () => {
+  const [value, setValue] = useState([]);
+
+  return (
+    <List>
+      <List.Item
+        title="选择城市"
+        suffix={
+          <Button
+            size="xs"
+            onClick={async () => {
+              const { value: changedValue } = await Cascader.prompt({
+                value,
+                dataSource: PROMPT_DATA,
+              });
+              if (!changedValue) return;
+              setValue(changedValue);
+              Toast.show(JSON.stringify(changedValue));
+            }}
+          >
+            选择
+          </Button>
+        }
+      />
+    </List>
+  );
+};
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
 ## CascaderView 级联选择视图
 
 ```jsx

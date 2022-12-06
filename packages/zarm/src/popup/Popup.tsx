@@ -39,7 +39,7 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
     children,
   } = props;
 
-  const { prefixCls, mountContainer } = React.useContext(ConfigContext);
+  const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('popup', { prefixCls });
 
   useLockScroll(visible! && lockScroll!);
@@ -58,7 +58,7 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
           color={maskColor}
           opacity={maskOpacity}
           animationDuration={animationDuration}
-          mountContainer={props.mountContainer ?? mountContainer}
+          mountContainer={props.mountContainer}
           forceRender={forceRender}
           destroy={destroy}
           onClick={() => {
@@ -83,7 +83,7 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
         {({ className, style }, setNodeRef) => {
           const { display, ...restStyle } = style;
           return renderToContainer(
-            props.mountContainer ?? mountContainer,
+            props.mountContainer,
             <div className={bem('wrapper', [props.className])} style={{ display }}>
               <div
                 ref={setNodeRef}

@@ -52,7 +52,7 @@ const Demo = () => {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-## useToast
+## 指令调用
 
 ```jsx
 import { useRef } from 'react';
@@ -60,8 +60,8 @@ import { Toast, List, Button } from 'zarm';
 import { Success } from '@zarm-design/icons';
 
 const Demo = () => {
-  const toast = Toast.useToast();
   const containerRef = useRef(null);
+  const basicRef = React.useRef();
 
   return (
     <List>
@@ -72,7 +72,7 @@ const Demo = () => {
             <Button
               size="xs"
               onClick={() => {
-                toast.show('默认3秒自动关闭');
+                basicRef.current = toast.show('默认3秒自动关闭');
               }}
             >
               开启
@@ -80,7 +80,7 @@ const Demo = () => {
             <Button
               size="xs"
               onClick={() => {
-                toast.hide();
+                basicRef.current?.hide();
               }}
               style={{ marginLeft: 12 }}
             >
@@ -95,7 +95,7 @@ const Demo = () => {
           <Button
             size="xs"
             onClick={() => {
-              toast.show({
+              Toast.show({
                 content: '指定5秒后自动关闭',
                 stayTime: 5000,
                 afterClose: () => {
@@ -113,7 +113,7 @@ const Demo = () => {
           <Button
             size="xs"
             onClick={() => {
-              toast.show({
+              Toast.show({
                 content: '挂载在指定的 div 元素上',
                 mountContainer: containerRef.current,
               });
@@ -131,7 +131,7 @@ const Demo = () => {
           <Button
             size="xs"
             onClick={() => {
-              toast.show({
+              Toast.show({
                 content: '不可同时进行其他交互',
                 mask: true,
               });
@@ -147,7 +147,7 @@ const Demo = () => {
           <Button
             size="xs"
             onClick={() => {
-              toast.show({
+              Toast.show({
                 className: 'test',
                 content: (
                   <div className="box">

@@ -2,6 +2,7 @@ import React from 'react';
 import { fireEvent, render, screen, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Toast from '../index';
+import { ToastRef } from '../methods';
 
 jest.useFakeTimers();
 
@@ -14,11 +15,17 @@ describe('Toast', () => {
 
   test('should show toast when call static method on Toast component', () => {
     const Demo = () => {
-      const toast = Toast.useToast();
+      const ref = React.useRef<ToastRef>();
       return (
         <>
-          <button onClick={() => toast.show('toast content')}>open</button>
-          <button onClick={() => toast.hide()}>close</button>
+          <button
+            onClick={() => {
+              ref.current = Toast.show('toast content');
+            }}
+          >
+            open
+          </button>
+          <button onClick={() => ref.current?.hide()}>close</button>
         </>
       );
     };
@@ -31,11 +38,17 @@ describe('Toast', () => {
 
   test('.show() static method should accepts toast props', () => {
     const Demo = () => {
-      const toast = Toast.useToast();
+      const ref = React.useRef<ToastRef>();
       return (
         <>
-          <button onClick={() => toast.show({ content: 'toast content' })}>open</button>
-          <button onClick={() => toast.hide()}>close</button>
+          <button
+            onClick={() => {
+              ref.current = Toast.show({ content: 'toast content' });
+            }}
+          >
+            open
+          </button>
+          <button onClick={() => ref.current?.hide()}>close</button>
         </>
       );
     };

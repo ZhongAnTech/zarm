@@ -87,7 +87,15 @@ export { default as NoticeBar } from './notice-bar';
 export type { PanelProps, PanelCssVars } from './panel';
 export { default as Panel } from './panel';
 
-export type { PickerViewProps, PickerViewInstance, PickerViewCssVars } from './picker-view';
+export type {
+  PickerViewProps,
+  PickerViewInstance,
+  PickerViewCssVars,
+  PickerValue,
+  PickerColumn,
+  PickerColumnItem,
+  PickerOption,
+} from './picker-view';
 export { default as PickerView } from './picker-view';
 
 export type { PickerProps, PickerCssVars } from './picker';
@@ -144,7 +152,7 @@ export { default as Rate } from './rate';
 export type { TabsProps, TabPanelProps, TabsCssVars } from './tabs';
 export { default as Tabs } from './tabs';
 
-export type { ToastProps, UseToast } from './toast';
+export type { ToastProps } from './toast';
 export { default as Toast } from './toast';
 
 export { default as Tooltip } from './tooltip';

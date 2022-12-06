@@ -34,8 +34,6 @@ const Demo = () => {
 
   const toggle = (type) => setVisible({ type });
 
-  const toast = Toast.useToast();
-
   return (
     <>
       <List>
@@ -129,7 +127,7 @@ const Demo = () => {
         dataSource={SINGLE_DATA}
         onConfirm={(selected) => {
           console.log('Picker onConfirm: ', selected);
-          toast.show(JSON.stringify(selected));
+          Toast.show(JSON.stringify(selected));
           setValue(selected.map((item) => item.value));
           toggle('picker');
         }}

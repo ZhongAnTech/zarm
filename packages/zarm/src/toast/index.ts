@@ -1,8 +1,7 @@
 import attachPropertiesToComponent from '../utils/attachPropertiesToComponent';
 import Toast from './Toast';
-import useToast from './useToast';
+import { show } from './methods';
 
 export type { ToastProps } from './Toast';
-export type UseToast = typeof useToast;
 
-export default attachPropertiesToComponent(Toast, { useToast });
+export default attachPropertiesToComponent(Toast, { show });

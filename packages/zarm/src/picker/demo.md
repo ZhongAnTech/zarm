@@ -141,7 +141,6 @@ const reducer = (state, action) => {
 const Demo = () => {
   const myRef = useRef();
   const [state, dispatch] = useReducer(reducer, initState);
-  const toast = Toast.useToast();
 
   const setVisible = (key) => {
     dispatch({ type: 'visible', key });
@@ -219,7 +218,7 @@ const Demo = () => {
         dataSource={state.single.dataSource}
         onConfirm={(changedValue, items) => {
           console.log('Single Picker onConfirm: ', items);
-          toast.show(JSON.stringify(items));
+          Toast.show(JSON.stringify(items));
           setValue('single', changedValue);
           setVisible('single');
         }}
@@ -232,7 +231,7 @@ const Demo = () => {
         dataSource={state.multi.dataSource}
         onConfirm={(changedValue, items) => {
           console.log('Multi Picker onConfirm: ', items);
-          toast.show(JSON.stringify(items));
+          Toast.show(JSON.stringify(items));
           setValue('multi', changedValue);
           setVisible('multi');
         }}
@@ -245,7 +244,7 @@ const Demo = () => {
         dataSource={state.cascade.dataSource}
         onConfirm={(changedValue, items) => {
           console.log('Cascade Picker onConfirm: ', items);
-          toast.show(JSON.stringify(items));
+          Toast.show(JSON.stringify(items));
           setValue('cascade', changedValue);
           setVisible('cascade');
         }}
@@ -263,7 +262,7 @@ const Demo = () => {
         itemRender={(data) => data.name}
         onConfirm={(changedValue, items) => {
           console.log('DIY Picker onConfirm: ', items);
-          toast.show(JSON.stringify(items));
+          Toast.show(JSON.stringify(items));
           setValue('diy', changedValue);
           setVisible('diy');
         }}
@@ -276,7 +275,7 @@ const Demo = () => {
         dataSource={state.specDOM.dataSource}
         onConfirm={(changedValue, items) => {
           console.log('Picker onConfirm: ', items);
-          toast.show(JSON.stringify(items));
+          Toast.show(JSON.stringify(items));
           setValue('specDOM', changedValue);
           setVisible('specDOM');
         }}
@@ -343,6 +342,63 @@ const Demo = () => {
           }}
         />
       </List.Item>
+    </List>
+  );
+};
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## 指令式调用
+
+```jsx
+import { useState, useEffect } from 'react';
+import { List, Picker, Button, Toast } from 'zarm';
+
+// 级联数据
+const PROMPT_DATA = [
+  {
+    value: 1,
+    label: '北京市',
+    children: [
+      { value: 11, label: '海淀区' },
+      { value: 12, label: '西城区' },
+    ],
+  },
+  {
+    value: 2,
+    label: '上海市',
+    children: [
+      { value: 21, label: '杨浦区' },
+      { value: 22, label: '静安区' },
+    ],
+  },
+];
+
+const Demo = () => {
+  const [value, setValue] = useState([]);
+
+  return (
+    <List>
+      <List.Item
+        title="选择城市"
+        suffix={
+          <Button
+            size="xs"
+            onClick={async () => {
+              const { value: changedValue, items } = await Picker.prompt({
+                value,
+                dataSource: PROMPT_DATA,
+              });
+              if (!changedValue) return;
+              setValue(changedValue);
+              Toast.show(JSON.stringify(items));
+            }}
+          >
+            选择
+          </Button>
+        }
+      />
     </List>
   );
 };

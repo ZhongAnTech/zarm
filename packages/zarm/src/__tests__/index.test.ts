@@ -560,7 +560,6 @@ describe('index', () => {
             "visible": false,
           },
           "render": [Function],
-          "useToast": [Function],
         },
         "Tooltip": Object {
           "$$typeof": Symbol(react.forward_ref),

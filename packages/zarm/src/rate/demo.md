@@ -157,7 +157,6 @@ import { List, Rate, Toast } from 'zarm';
 const Demo = () => {
   const [value, setValue] = useState(3);
 
-  const toast = Toast.useToast();
   return (
     <List>
       <List.Item
@@ -167,7 +166,7 @@ const Demo = () => {
             value={value}
             onChange={(value) => {
               setValue(value);
-              toast.show(value);
+              Toast.show(value);
             }}
           />
         }

@@ -10,4 +10,6 @@ export interface BaseCascaderProps extends BaseCascaderViewProps {
   mountContainer?: MountContainer;
   onConfirm?: (value?: CascaderValue[]) => void;
   onCancel?: () => void;
+  afterOpen?: () => void;
+  afterClose?: () => void;
 }

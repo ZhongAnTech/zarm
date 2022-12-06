@@ -278,7 +278,6 @@ ReactDOM.render(<Demo />, mountNode);
 import { List, Button, Modal, Toast } from 'zarm';
 
 const Demo = () => {
-  const toast = Toast.useToast();
   return (
     <List>
       <List.Item
@@ -312,7 +311,7 @@ const Demo = () => {
                 content: '这里是警告框的内容部分，点击关闭按钮，将触发 Promise 关闭警告框',
                 onCancel: async () => {
                   await new Promise((resolve) => setTimeout(resolve, 3000));
-                  toast.show({ content: '提交成功' });
+                  Toast.show({ content: '提交成功' });
                 },
               });
             }}
@@ -334,7 +333,7 @@ ReactDOM.render(<Demo />, mountNode);
 import { List, Button, Modal, Toast } from 'zarm';
 
 const Demo = () => {
-  const toast = Toast.useToast();
+  const Toast = Toast.useToast();
   return (
     <List>
       <List.Item
@@ -370,7 +369,7 @@ const Demo = () => {
                 content: '这里是确认框的内容部分，点击确定按钮，将触发 Promise 关闭确认框',
                 onConfirm: async () => {
                   await new Promise((resolve) => setTimeout(resolve, 3000));
-                  toast.show({ content: '提交成功' });
+                  Toast.show({ content: '提交成功' });
                 },
               });
             }}

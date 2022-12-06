@@ -4,8 +4,8 @@ import PickerView from '../picker-view';
 import { ConfigContext } from '../config-provider';
 import { isExtendDate, parseState } from './utils/parseState';
 import { cloneDate, getDaysInMonth, pad, setMonth } from './utils/date';
-import type { BaseDatePickerViewProps, columnType } from './interface';
-import type { PickerViewColumnItem } from '../picker-view/interface';
+import type { BaseDatePickerViewProps, DatePickerValue, columnType } from './interface';
+import type { PickerColumnItem } from '../picker-view/interface';
 import { MODE } from './interface';
 import { HTMLProps } from '../utils/utilityTypes';
 
@@ -29,7 +29,7 @@ const COLUMNM_MAP = {
 };
 
 export interface DatePickerInstance {
-  value: Date | string;
+  value: DatePickerValue;
 }
 
 const DatePickerView = React.forwardRef<DatePickerInstance, DatePickerViewProps>((props, ref) => {
@@ -391,7 +391,7 @@ const DatePickerView = React.forwardRef<DatePickerInstance, DatePickerViewProps>
 
   const { dataSource, value } = colsValue;
 
-  const labelRender = (item: PickerViewColumnItem, level: number) => {
+  const labelRender = (item: PickerColumnItem, level: number) => {
     return itemRender?.(item, COLUMNM_MAP[mode!][level] as columnType);
   };
 

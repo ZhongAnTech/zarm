@@ -7,7 +7,7 @@ interface ActionSheetRef {
   close: () => void;
 }
 
-const showActionSheet = (props: Omit<ActionSheetProps, 'visible'>) => {
+export const show = (props: Omit<ActionSheetProps, 'visible'>) => {
   let unmount = () => {};
 
   const Wrapper = React.forwardRef<ActionSheetRef>((_, wrapperRef) => {
@@ -47,5 +47,3 @@ const showActionSheet = (props: Omit<ActionSheetProps, 'visible'>) => {
     },
   };
 };
-
-export default showActionSheet;

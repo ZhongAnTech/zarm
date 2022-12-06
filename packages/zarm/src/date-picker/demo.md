@@ -55,7 +55,6 @@ const reducer = (state, action) => {
 const Demo = () => {
   const myRef = useRef();
   const [state, dispatch] = useReducer(reducer, initState);
-  const toast = Toast.useToast();
 
   const setValue = (key, value) => {
     dispatch({ type: 'value', key, value });
@@ -118,7 +117,7 @@ const Demo = () => {
         onConfirm={(value) => {
           setValue('date', value);
           toggle('date');
-          toast.show(JSON.stringify(value));
+          Toast.show(JSON.stringify(value));
         }}
         onCancel={() => toggle('date')}
       />
@@ -130,7 +129,7 @@ const Demo = () => {
         onConfirm={(value) => {
           setValue('time', value);
           toggle('time');
-          toast.show(JSON.stringify(value));
+          Toast.show(JSON.stringify(value));
         }}
         onCancel={() => toggle('time')}
       />
@@ -147,7 +146,7 @@ const Demo = () => {
         onConfirm={(value) => {
           setValue('limitDate', value);
           toggle('limitDate');
-          toast.show(JSON.stringify(value));
+          Toast.show(JSON.stringify(value));
         }}
         onCancel={() => toggle('limitDate')}
       />
@@ -158,7 +157,7 @@ const Demo = () => {
         onConfirm={(value) => {
           setValue('specDOM', value);
           toggle('specDOM');
-          toast.show(JSON.stringify(value));
+          Toast.show(JSON.stringify(value));
         }}
         onCancel={() => toggle('specDOM')}
         getContainer={() => myRef.current}
@@ -186,6 +185,44 @@ const Demo = () => {
       <List.Item title="日期选择">
         <DateSelect mode="date" defaultValue={new Date(1555977600000)} />
       </List.Item>
+    </List>
+  );
+};
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## 指令式调用
+
+```jsx
+import { useState, useEffect } from 'react';
+import { List, DatePicker, Button, Toast } from 'zarm';
+
+const Demo = () => {
+  const [value, setValue] = useState('');
+
+  return (
+    <List>
+      <List.Item
+        title="日期选择"
+        suffix={
+          <Button
+            size="xs"
+            onClick={async () => {
+              const { value: changedValue } = await DatePicker.prompt({
+                value,
+                mode: 'date',
+                format: 'YYYY-MM-DD',
+              });
+              if (!changedValue) return;
+              setValue(changedValue);
+              Toast.show(changedValue);
+            }}
+          >
+            选择
+          </Button>
+        }
+      />
     </List>
   );
 };
