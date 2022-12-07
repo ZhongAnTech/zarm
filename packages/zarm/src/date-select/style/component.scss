@@ -1,12 +1,18 @@
 @include b(date-select) {
+  @include define(arrow-space, 5px);
+  @include define(arrow-color, var(--za-arrow-color));
+  @include define(arrow-size, var(--za-arrow-size));
+  @include define(arrow-width, var(--za-arrow-width));
+  @include define(color-text-disabled, var(--za-color-text-disabled));
+
+  display: flex;
+  align-items: center;
   width: 100%;
-  height: 100%;
 
   @include e(input) {
+    flex: 1;
     position: relative;
     width: 100%;
-    padding: r(12) 0;
-    line-height: r(28);
   }
 
   @include m(placeholder) {
@@ -15,21 +21,26 @@
     }
   }
 
-  @include m(arrow) {
-    @include e(input) {
-      padding-right: r(20);
+  @include e(arrow) {
+    margin-left: var(--arrow-space);
+    margin-top: calc(var(--arrow-size) / -2);
 
+    &:after {
+      display: inline-block;
+      content: '';
+      border-right: var(--arrow-width) solid var(--arrow-color);
+      border-bottom: var(--arrow-width) solid var(--arrow-color);
+      width: var(--arrow-size);
+      height: var(--arrow-size);
+      transform: rotate(45deg);
+      transition: all 0.15s ease-out;
+    }
+  }
+
+  @include m(visible) {
+    @include e(arrow) {
       &:after {
-        content: '';
-        position: absolute;
-        width: var(--cell-arrow-length);
-        height: var(--cell-arrow-length);
-        top: calc(var(--cell-padding-v) + 3px);
-        right: r(2);
-        border-right: r(2) solid var(--cell-arrow-color);
-        border-bottom: r(2) solid var(--cell-arrow-color);
-        transform: rotate(45deg);
-        transform-origin: 50% 50%;
+        transform: rotate(-45deg);
       }
     }
   }

@@ -15,9 +15,7 @@ const LoadableComponent = (component) => {
   const compName = pascalCase(component.key);
 
   if (component.style) {
-    // todo: eslint字符串模版变量问题，暂时先屏蔽
-    // eslint-disable-next-line
-    loader.style = () => import('@/demo/styles/' + compName + 'Page');
+    loader.style = () => import(`@/demo/styles/${compName}Page`);
   }
 
   return Loadable.Map({
@@ -35,13 +33,13 @@ const LoadableComponent = (component) => {
 };
 
 const App = () => {
-  const { general, form, feedback, view, navigation, other } = components;
+  const { general, form, feedback, view, navigation, hooks, other } = components;
   return (
     <SentryBoundary>
       <Suspense fallback={<Loading visible />}>
         <Switch>
           <Route exact path="/" component={lazy(() => import('@/demo/pages/Index'))} />
-          {[...general, ...form, ...feedback, ...view, ...navigation, ...other].map(
+          {[...general, ...form, ...feedback, ...view, ...navigation, ...hooks, ...other].map(
             (component, i) => (
               <Route key={+i} path={`/${component.key}`} component={LoadableComponent(component)} />
             ),

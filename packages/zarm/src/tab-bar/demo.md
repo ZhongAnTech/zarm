@@ -4,7 +4,7 @@
 
 ```jsx
 import { useState } from 'react';
-import { Icon, TabBar, Cell, Button } from 'zarm';
+import { Icon, TabBar, List, Button } from 'zarm';
 
 const TabIcon = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_mk657pke2hj.js');
 
@@ -14,20 +14,21 @@ const Demo = () => {
 
   return (
     <>
-      <Cell
-        description={
-          <Button
-            size="xs"
-            onClick={() => {
-              setVisible(!visible);
-            }}
-          >
-            {visible ? '隐藏' : '展示'}
-          </Button>
-        }
-      >
-        隐藏 | 展示
-      </Cell>
+      <List>
+        <List.Item
+          title="隐藏 | 展示"
+          suffix={
+            <Button
+              size="xs"
+              onClick={() => {
+                setVisible(!visible);
+              }}
+            >
+              {visible ? '隐藏' : '展示'}
+            </Button>
+          }
+        />
+      </List>
 
       <TabBar visible={visible} activeKey={activeKey} onChange={setActiveKey}>
         <TabBar.Item itemKey="home" title="主页" icon={<TabIcon type="home" />} />
@@ -55,12 +56,13 @@ ReactDOM.render(<Demo />, mountNode);
 
 ### TabBar
 
-| 属性             | 类型                               | 默认值 | 说明                       |
-| :--------------- | :--------------------------------- | :----- | :------------------------- |
-| activeKey        | number \| string                   | -      | 当前选中项                 |
-| defaultActiveKey | number \| string                   | -      | 初始选中项, 默认第一个选中 |
-| onChange         | (value?: number \| string) => void | -      | 值变化时触发的回调函数     |
-| visible          | boolean                            | `true` | 是否显示                   |
+| 属性             | 类型                              | 默认值 | 说明                       |
+| :--------------- | :-------------------------------- | :----- | :------------------------- |
+| visible          | boolean                           | true   | 是否显示                   |
+| activeKey        | number \| string                  | -      | 当前选中项                 |
+| defaultActiveKey | number \| string                  | -      | 初始选中项, 默认第一个选中 |
+| safeIphoneX      | boolean                           | false  | 是否适配 iphoneX 刘海屏    |
+| onChange         | (value: number \| string) => void | -      | 值变化时触发的回调函数     |
 
 ### TabBar.Item
 
@@ -70,4 +72,15 @@ ReactDOM.render(<Demo />, mountNode);
 | title      | ReactNode        | -      | 标题文字                                             |
 | icon       | ReactNode        | -      | 图标                                                 |
 | activeIcon | ReactNode        | -      | 选中时图标，不设置等同 icon 属性的值                 |
-| badge      | Object           | -      | 参考`Badge`组件                                      |
+| badge      | BadgeProps       | -      | 参考[Badge](/#/components/badge)组件                 |
+
+## CSS 变量
+
+| 属性           | 默认值                  | 说明               |
+| :------------- | :---------------------- | :----------------- |
+| --background   | '#fff'                  | 背景色             |
+| --height       | '50px'                  | 高度               |
+| --color        | var(--za-color-text)    | 字体颜色           |
+| --active-color | var(--za-theme-primary) | 选中状态下字体颜色 |
+| --font-size    | '12px'                  | 字体大小           |
+| --z-index      | '100'                   | 层级               |

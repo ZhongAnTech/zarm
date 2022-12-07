@@ -1,79 +1,47 @@
-import React, { PureComponent } from 'react';
-import type PropsType from './PropsType';
+import * as React from 'react';
+import { createBEM } from '@zarm-design/bem';
 import Keyboard from '../keyboard';
 import Popup from '../popup';
+import { ConfigContext } from '../config-provider';
+import type { BaseKeyBoardPickerProps } from './interface';
+import type { HTMLProps } from '../utils/utilityTypes';
 
-export interface KeyboardPickerProps extends PropsType {
-  prefixCls?: string;
-  className?: string;
-}
+export type KeyboardPickerProps = BaseKeyBoardPickerProps & HTMLProps;
 
-export interface KeyboardPickerState {
-  visible?: boolean;
-}
+const KeyboardPicker = React.forwardRef<unknown, KeyboardPickerProps>((props, ref) => {
+  const { className, visible, destroy, ...restProps } = props;
 
-export default class KeyboardPicker extends PureComponent<
-  KeyboardPickerProps,
-  KeyboardPickerState
-> {
-  static defaultProps: KeyboardPickerProps = {
-    prefixCls: 'za-keyboard-picker',
-    visible: false,
-    type: 'number',
-    destroy: true,
-  };
+  const keyboardPickerRef = (ref as any) || React.createRef<HTMLDivElement>();
+  const [currentVisible, setCurrentVisible] = React.useState(visible);
 
-  static getDerivedStateFromProps(nextProps: KeyboardPickerProps) {
-    if ('visible' in nextProps) {
-      return { visible: nextProps.visible };
-    }
-    return null;
-  }
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('keyboard-picker', { prefixCls });
+  const cls = bem([className]);
 
-  // static show = (props) => {
-  //   ReactDOM.render(<KeyboardPicker {...props} visible />, window.zarmKeyboardPicker);
-  // }
+  React.useEffect(() => {
+    setCurrentVisible(visible);
+  }, [visible]);
 
-  // static hide = () => {
-  //   ReactDOM.render(<KeyboardPicker visible={false} />, window.zarmKeyboardPicker);
-  // }
+  return (
+    <Popup
+      ref={keyboardPickerRef}
+      className={cls}
+      visible={currentVisible}
+      mask={false}
+      lockScroll={false}
+      destroy={destroy}
+    >
+      <Keyboard {...restProps} />
+    </Popup>
+  );
+});
 
-  constructor(props: KeyboardPickerProps) {
-    super(props);
-    this.state = {
-      visible: props.visible,
-    };
-  }
+KeyboardPicker.displayName = 'KeyboardPicker';
 
-  onKeyClick = (key: string) => {
-    if (['ok', 'close'].indexOf(key) > -1) {
-      this.setState({ visible: false });
-    }
-    const { onKeyClick } = this.props;
-    if (typeof onKeyClick === 'function') {
-      onKeyClick(key);
-    }
-  };
+KeyboardPicker.defaultProps = {
+  visible: false,
+  type: 'number',
+  destroy: true,
+};
 
-  render() {
-    const { prefixCls, className, destroy, ...others } = this.props;
-    const { visible } = this.state;
-
-    return (
-      <Popup className={className} visible={visible} mask={false} destroy={destroy}>
-        <div className={prefixCls}>
-          <Keyboard {...others} onKeyClick={this.onKeyClick} />
-        </div>
-      </Popup>
-    );
-  }
-}
-
-// if (typeof window !== 'undefined') {
-//   if (!window.zarmKeyboardPicker) {
-//     window.zarmKeyboardPicker = document.createElement('div');
-//     document.body.appendChild(window.zarmKeyboardPicker);
-//   }
-
-//   ReactDOM.render(<KeyboardPicker visible={false} />, window.zarmKeyboardPicker);
-// }
+export default KeyboardPicker;

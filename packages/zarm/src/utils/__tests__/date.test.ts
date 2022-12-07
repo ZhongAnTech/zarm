@@ -77,9 +77,7 @@ describe('utils', () => {
     describe('#parseDay', () => {
       it('should parse day', () => {
         const parseDateSpy = jest.spyOn(dateUtils, 'parseDate').mockReturnValueOnce(date1);
-        const DateSpy = jest
-          .spyOn(global, 'Date')
-          .mockReturnValueOnce((date1 as unknown) as string);
+        const DateSpy = jest.spyOn(global, 'Date').mockReturnValueOnce(date1 as unknown as string);
         const actual = dateUtils.parseDay(date1);
         expect(actual).toMatchInlineSnapshot(`2019-04-23T00:00:00.000Z`);
         expect(parseDateSpy).toBeCalledWith(date1);

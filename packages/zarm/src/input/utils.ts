@@ -1,4 +1,4 @@
-export function getValue(props, defaultValue: string | number = ''): string | number {
+export function getValue(props, defaultValue?: string | number) {
   if (typeof props.value !== 'undefined' && props.value !== null) {
     return props.value;
   }

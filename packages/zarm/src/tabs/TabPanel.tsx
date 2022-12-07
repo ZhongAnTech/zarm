@@ -1,50 +1,33 @@
-import React, { PureComponent, ReactNode } from 'react';
+import * as React from 'react';
 import classnames from 'classnames';
+import { ConfigContext } from '../config-provider';
+import type { BaseTabPanelProps } from './interface';
 
-export interface TabPanelProps {
-  prefixCls?: string;
+export interface TabPanelProps extends BaseTabPanelProps {
   className?: string;
-  selected?: boolean;
-  title?: ReactNode;
-  disabled?: boolean;
 }
 
-interface TabPanelStates {
-  selected?: boolean;
-}
+const TabPanel = React.forwardRef<unknown, TabPanelProps>((props, ref) => {
+  const { className, selected, children } = props;
 
-export default class TabPanel extends PureComponent<TabPanelProps, TabPanelStates> {
-  static defaultProps: TabPanelProps = {
-    prefixCls: 'za-tabs',
-  };
+  const panelRef = (ref as any) || React.createRef<HTMLDivElement>();
 
-  constructor(props: TabPanel['props']) {
-    super(props);
-    this.state = {
-      selected: props.selected,
-    };
-  }
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = `${globalPrefixCls}-tabs__panel`;
 
-  static getDerivedStateFromProps(nextProps: TabPanel['props']) {
-    if ('selected' in nextProps) {
-      return {
-        selected: nextProps.selected,
-      };
-    }
-    return null;
-  }
+  const cls = classnames(prefixCls, className, {
+    [`${prefixCls}--active`]: selected,
+  });
 
-  render() {
-    const { prefixCls, className, children } = this.props;
-    const { selected } = this.state;
-    const cls = classnames(`${prefixCls}__panel`, className, {
-      [`${prefixCls}__panel--active`]: selected,
-    });
+  return (
+    <div className={cls} role="tabpanel" ref={panelRef}>
+      {children}
+    </div>
+  );
+});
 
-    return (
-      <div className={cls} role="tabpanel">
-        {children}
-      </div>
-    );
-  }
-}
+TabPanel.displayName = 'TabPanel';
+
+TabPanel.defaultProps = {};
+
+export default TabPanel;

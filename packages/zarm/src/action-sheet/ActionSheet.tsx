@@ -1,60 +1,94 @@
-import React, { PureComponent } from 'react';
-import classnames from 'classnames';
-import PropsType from './PropsType';
+import React, { useContext } from 'react';
+import { createBEM } from '@zarm-design/bem';
 import Popup from '../popup';
+import ActionSheetItem, { ActionSheetItemProps } from './ActionSheetItem';
+import { ConfigContext } from '../config-provider';
+import type { BaseActionSheetProps } from './interface';
+import type { HTMLProps } from '../utils/utilityTypes';
 
-export interface ActionSheetProps extends PropsType {
-  prefixCls?: string;
-  className?: string;
+export interface ActionSheetCssVars {
+  '--background'?: React.CSSProperties['background'];
+  '--border-radius'?: React.CSSProperties['borderRadius'];
+  '--spacing-margin'?: React.CSSProperties['margin'];
+  '--item-height'?: React.CSSProperties['height'];
+  '--item-font-size'?: React.CSSProperties['fontSize'];
+  '--item-font-weight'?: React.CSSProperties['fontWeight'];
+  '--item-text-color'?: React.CSSProperties['color'];
+  '--cancel-text-color'?: React.CSSProperties['color'];
+  '--cancel-margin-top'?: React.CSSProperties['marginTop'];
 }
 
-export default class ActionSheet extends PureComponent<ActionSheetProps, {}> {
-  static defaultProps: ActionSheetProps = {
-    prefixCls: 'za-action-sheet',
-    visible: false,
-    spacing: false,
-    actions: [],
-    destroy: true,
-  };
+export interface ActionSheetProps extends BaseActionSheetProps, HTMLProps<ActionSheetCssVars> {
+  safeIphoneX?: boolean;
+  actions?: ActionSheetItemProps[];
+  onAction?: (action: ActionSheetItemProps, index: number) => void;
+}
 
-  renderActions = (action, index) => {
-    const { prefixCls } = this.props;
-    const actionCls = classnames(`${prefixCls}__item`, action.className, {
-      [`${prefixCls}__item--${action.theme}`]: !!action.theme,
-    });
+const ActionSheet = React.forwardRef<HTMLDivElement, ActionSheetProps>((props, ref) => {
+  const {
+    className,
+    style,
+    spacing,
+    actions,
+    cancelText,
+    onCancel,
+    onAction,
+    safeIphoneX,
+    ...restProps
+  } = props;
+  const { prefixCls, safeIphoneX: globalSafeIphoneX, locale } = useContext(ConfigContext);
+
+  const bem = createBEM('action-sheet', { prefixCls });
+
+  const cls = bem([
+    {
+      spacing,
+      safe: safeIphoneX || globalSafeIphoneX,
+    },
+    className,
+  ]);
+
+  const actionsRender = actions!.map((action, index) => (
+    <ActionSheetItem
+      {...action}
+      key={+index}
+      onClick={async () => {
+        await action.onClick?.();
+        await onAction?.(action, index);
+      }}
+    />
+  ));
+
+  const renderCancel = () => {
+    if (typeof onCancel !== 'function') return;
+
     return (
-      <div key={+index} className={actionCls} onClick={action.onClick}>
-        {action.text}
+      <div className={bem('cancel')}>
+        <div className={bem('item', [{ bold: true }])} onClick={onCancel}>
+          {cancelText || locale?.ActionSheet?.cancelText}
+        </div>
       </div>
     );
   };
 
-  renderCancel = () => {
-    const { prefixCls, onCancel, cancelText, locale } = this.props;
-    return (
-      typeof onCancel === 'function' && (
-        <div className={`${prefixCls}__cancel`}>
-          <div className={`${prefixCls}__item`} onClick={onCancel}>
-            {cancelText || locale!.cancelText}
-          </div>
-        </div>
-      )
-    );
-  };
+  return (
+    <Popup {...restProps}>
+      <div ref={ref} className={cls} style={style}>
+        <div className={bem('actions')}>{actionsRender}</div>
+        {renderCancel()}
+      </div>
+    </Popup>
+  );
+});
 
-  render() {
-    const { prefixCls, className, spacing, visible, onMaskClick, actions, destroy } = this.props;
-    const cls = classnames(prefixCls, {
-      [`${prefixCls}--spacing`]: spacing,
-    });
+ActionSheet.displayName = 'ActionSheet';
 
-    return (
-      <Popup className={className} visible={visible} onMaskClick={onMaskClick} destroy={destroy}>
-        <div className={cls}>
-          <div className={`${prefixCls}__actions`}>{actions!.map(this.renderActions)}</div>
-          {this.renderCancel()}
-        </div>
-      </Popup>
-    );
-  }
-}
+ActionSheet.defaultProps = {
+  spacing: false,
+  visible: false,
+  actions: [],
+  destroy: true,
+  safeIphoneX: false,
+};
+
+export default ActionSheet;

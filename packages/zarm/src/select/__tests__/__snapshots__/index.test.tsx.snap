@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select Cascader Select 1`] = `
+<div>
+  <div
+    class="za-select"
+  >
+    <div
+      class="za-select__input"
+    >
+      <div
+        class="za-select__value"
+      >
+        选项一
+        选项二
+      </div>
+    </div>
+    <div
+      class="za-select__arrow"
+    />
+  </div>
+</div>
+`;
+
+exports[`Select Select 1`] = `
+<div>
+  <div
+    class="za-select"
+  >
+    <div
+      class="za-select__input"
+    >
+      <div
+        class="za-select__value"
+      >
+        选项一
+      </div>
+    </div>
+    <div
+      class="za-select__arrow"
+    />
+  </div>
+</div>
+`;
+
+exports[`Select Select disabled 1`] = `
+<div>
+  <div
+    class="za-select za-select--disabled"
+  >
+    <div
+      class="za-select__input"
+    >
+      <div
+        class="za-select__value"
+      >
+        选项一
+      </div>
+    </div>
+    <div
+      class="za-select__arrow"
+    />
+  </div>
+</div>
+`;
+
+exports[`Select render defaultValue correctly  1`] = `
+<div>
+  <div
+    class="za-select"
+  >
+    <div
+      class="za-select__input"
+    >
+      <div
+        class="za-select__value"
+      >
+        选项二
+      </div>
+    </div>
+    <div
+      class="za-select__arrow"
+    />
+  </div>
+</div>
+`;

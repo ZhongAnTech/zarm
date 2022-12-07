@@ -4,12 +4,12 @@
 
 ```jsx
 import { useRef, useState } from 'react';
-import { Scroller, Cell, Message } from 'zarm';
+import { Scroller, List, Message } from 'zarm';
 import { WarningCircle } from '@zarm-design/icons';
 
 const Demo = () => {
   const list = [];
-  for (let i = 0; i < 100; i++) list.push(<Cell key={+i}>第 {i + 1} 行</Cell>);
+  for (let i = 0; i < 100; i++) list.push(<List.Item key={+i} title={`第 ${i + 1} 行`} />);
 
   const containerRef = useRef();
   const [scrollTop, setScrollTop] = useState(0);
@@ -27,7 +27,7 @@ const Demo = () => {
             maxHeight: 400,
           }}
         >
-          {list}
+          <List>{list}</List>
         </div>
       </Scroller>
     </>

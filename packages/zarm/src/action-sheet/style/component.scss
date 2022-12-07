@@ -1,47 +1,74 @@
-@import '../../button/style/mixins';
-
 @include b(action-sheet) {
-  margin: var(--action-sheet-margin);
+  @include define(background, #fff);
+  @include define(border-radius, 14px);
+  @include define(spacing-margin, 8px);
+  @include define(item-height, 56px);
+  @include define(item-font-size, 20px);
+  @include define(item-font-weight, 500);
+  @include define(item-text-color, var(--za-theme-primary));
+  @include define(cancel-text-color, var(--za-theme-primary));
+  @include define(cancel-margin-top, 8px);
+
+  @include m(safe) {
+    @include safeIphoneX(true);
+  }
 
   @include m(spacing) {
-    margin: 0 r(10) r(10);
+    margin: var(--spacing-margin);
 
     @include e(actions, cancel) {
-      border-radius: var(--radius-md);
+      border-radius: var(--border-radius);
     }
   }
 
   @include e(actions, cancel) {
     overflow: hidden;
-    background-color: var(--action-sheet-background);
+    background: var(--background);
   }
 
   @include e(cancel) {
-    margin-top: r(10);
+    margin-top: var(--cancel-margin-top);
+
+    @include e(item) {
+      color: var(--cancel-text-color);
+    }
   }
 
   @include e(item) {
-    display: block;
     position: relative;
-    height: var(--action-sheet-item-height);
-    line-height: var(--action-sheet-item-height);
-    font-size: var(--action-sheet-item-font-size);
-    @include button-base();
+    display: block;
+    height: var(--item-height);
+    line-height: var(--item-height);
+    font-size: var(--item-font-size);
+    color: var(--item-text-color);
+    text-align: center;
 
-    &:active {
-      background-color: var(--action-sheet-active-background);
+    &:not(&--disabled):active {
+      background-color: var(--za-background-active);
     }
 
     &:not(:first-of-type) {
       @include onepx(top);
     }
 
-    @include m(primary) {
-      color: var(--theme-primary);
+    @include m(bold) {
+      font-weight: var(--item-font-weight);
+    }
+
+    @include m(disabled) {
+      @include define(item-text-color, var(--za-color-text));
+
+      opacity: var(--za-opacity-disabled);
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    @include m(default) {
+      @include define(item-text-color, var(--za-color-text));
     }
 
     @include m(danger) {
-      color: var(--theme-danger);
+      @include define(item-text-color, var(--za-theme-danger));
     }
   }
 }

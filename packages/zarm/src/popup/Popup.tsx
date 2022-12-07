@@ -1,87 +1,117 @@
-import React, { PureComponent } from 'react';
-import type PropsType from './PropsType';
-import Portal from './Portal';
+import * as React from 'react';
+import { createBEM } from '@zarm-design/bem';
+import { ConfigContext } from '../config-provider';
+import { useLockScroll } from '../utils/hooks';
+import Trigger from '../trigger';
+import Mask from '../mask';
+import type { BasePopupProps } from './interface';
+import type { HTMLProps } from '../utils/utilityTypes';
+import { renderToContainer } from '../utils/dom';
+import Transition from '../transition';
 
-export interface PopupProps extends PropsType {
-  prefixCls?: string;
-  className?: string;
-}
+export type PopupProps = BasePopupProps & HTMLProps;
 
-export interface PopupState {
-  renderPortal?: boolean;
-  portalVisible: boolean;
-}
+const TRANSITION_NAMES = {
+  top: 'move-down',
+  bottom: 'move-up',
+  center: 'fade',
+  left: 'move-left',
+  right: 'move-right',
+};
 
-export default class Popup extends PureComponent<PopupProps, PopupState> {
-  static defaultProps: PopupProps = {
-    prefixCls: 'za-popup',
-    destroy: true,
-    visible: false,
-  };
+const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
+  const {
+    width,
+    destroy,
+    forceRender,
+    visible,
+    animationType,
+    animationDuration,
+    lockScroll,
+    direction,
+    mask,
+    maskColor,
+    maskOpacity,
+    afterOpen,
+    afterClose,
+    onMaskClick,
+    onEsc,
+    children,
+  } = props;
 
-  portalRef: Portal | null;
+  const { prefixCls, mountContainer } = React.useContext(ConfigContext);
+  const bem = createBEM('popup', { prefixCls });
 
-  static getDerivedStateFromProps(props: PopupProps, state: PopupState) {
-    if (props.visible !== state.portalVisible) {
-      if (props.visible) {
-        return {
-          renderPortal: true,
-          portalVisible: true,
-        };
-      }
-      return {
-        portalVisible: false,
-      };
-    }
-    return null;
-  }
+  useLockScroll(visible! && lockScroll!);
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      renderPortal: false,
-      portalVisible: false,
-    };
-    this.handlePortalUnmount = this.handlePortalUnmount.bind(this);
-  }
+  const handleEsc = React.useCallback(() => {
+    onEsc?.();
+  }, []);
 
-  componentDidMount() {
-    const { visible } = this.props;
-    if (visible) {
-      this.setState({
-        renderPortal: true,
-        portalVisible: true,
-      });
-    }
-  }
+  const transitionName = animationType ?? TRANSITION_NAMES[direction!];
 
-  handlePortalUnmount() {
-    const { destroy } = this.props;
-    if (destroy) {
-      this.setState({
-        renderPortal: false,
-      });
-    } else {
-      this.setState({
-        renderPortal: true,
-        portalVisible: false,
-      });
-    }
-  }
-
-  render() {
-    const { renderPortal, portalVisible } = this.state;
-    return (
-      renderPortal && (
-        <Portal
-          ref={(ref) => {
-            this.portalRef = ref;
+  return (
+    <Trigger visible={visible} onClose={handleEsc}>
+      {mask && (
+        <Mask
+          visible={visible}
+          color={maskColor}
+          opacity={maskOpacity}
+          animationDuration={animationDuration}
+          mountContainer={props.mountContainer ?? mountContainer}
+          forceRender={forceRender}
+          destroy={destroy}
+          onClick={() => {
+            onMaskClick?.();
           }}
-          {...this.props}
-          visible={portalVisible}
-          handlePortalUnmount={this.handlePortalUnmount}
         />
-      )
-    );
-  }
-}
+      )}
+      <Transition
+        nodeRef={ref}
+        visible={visible}
+        tranisitionName={`${prefixCls}-${transitionName}`}
+        duration={animationDuration}
+        forceRender={forceRender}
+        destroy={destroy}
+        onEnter={() => {
+          afterOpen?.();
+        }}
+        onLeaveEnd={() => {
+          afterClose?.();
+        }}
+      >
+        {({ className, style }, setNodeRef) => {
+          const { display, ...restStyle } = style;
+          return renderToContainer(
+            props.mountContainer ?? mountContainer,
+            <div className={bem('wrapper', [props.className])} style={{ display }}>
+              <div
+                ref={setNodeRef}
+                className={bem([{ [`${direction}`]: !!direction }, className])}
+                style={{
+                  ...props.style,
+                  ...restStyle,
+                  width,
+                }}
+              >
+                {children}
+              </div>
+            </div>,
+          );
+        }}
+      </Transition>
+    </Trigger>
+  );
+});
+
+Popup.displayName = 'Popup';
+
+Popup.defaultProps = {
+  visible: false,
+  mask: true,
+  direction: 'bottom',
+  destroy: true,
+  lockScroll: true,
+};
+
+export default Popup;

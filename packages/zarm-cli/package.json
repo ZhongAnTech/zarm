@@ -1,6 +1,6 @@
 {
   "name": "@zarm-design/cli",
-  "version": "0.0.39",
+  "version": "0.0.41-alpha.0",
   "description": "Cli Tools for Zarm Design Project",
   "keywords": [
     "zarm-cli",
@@ -20,13 +20,13 @@
     "types"
   ],
   "scripts": {
-    "clean": "rimraf types lib coverage",
-    "test": "jest --config ./jest.config.js",
-    "coverage": "rimraf coverage && yarn test --coverage",
-    "build:types": "rimraf types && tsc --outFile types/index.d.ts -d --emitDeclarationOnly",
-    "build:lib": "rimraf lib && babel src --extensions .ts --out-dir lib --copy-files",
     "build": "yarn build:types && yarn build:lib",
-    "dev": "npm run build -- -w"
+    "build:lib": "rimraf lib && babel src --extensions .ts --out-dir lib --copy-files",
+    "build:types": "rimraf types && tsc",
+    "clean": "rimraf types lib coverage",
+    "dev": "yarn build:lib -w",
+    "prepare": "yarn build",
+    "test": "jest"
   },
   "dependencies": {
     "@babel/cli": "^7.13.10",
@@ -53,7 +53,7 @@
     "fork-ts-checker-webpack-plugin": "^6.2.10",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
-    "gulp-dart-sass": "^1.0.2",
+    "gulp-sass": "^5.1.0",
     "html-webpack-plugin": "^5.3.1",
     "import-local": "^3.0.2",
     "jest": "^26.5.3",
@@ -75,20 +75,20 @@
     "terser-webpack-plugin": "^5.1.2",
     "through2": "^3.0.1",
     "ts-jest": "^26.5.0",
-    "webpack": "^5.37.0",
+    "webpack": "^5.72.1",
     "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.7.3",
     "webpackbar": "^5.0.0-3"
   },
+  "devDependencies": {
+    "@types/node": "^15.3.0",
+    "@types/webpack": "^5.28.0"
+  },
   "tags": [
     "zarm",
     "zarm-cli",
     "zhongan"
-  ],
-  "devDependencies": {
-    "@types/node": "^15.3.0",
-    "@types/webpack": "^5.28.0"
-  }
+  ]
 }

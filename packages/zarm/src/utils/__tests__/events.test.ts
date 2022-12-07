@@ -38,18 +38,18 @@ describe('events', () => {
           const { passive } = options;
           console.info(passive);
         });
-      const button = ({ addEventListener: jest.fn() } as unknown) as Element;
+      const button = { addEventListener: jest.fn() } as unknown as Element;
       const callback = jest.fn();
       events = require('../events').default;
       events.on(button, 'click', callback);
       expect(button.addEventListener).toBeCalledWith('click', callback, { passive: false });
     });
     it("should call attachEvent if element does't support addEventListener method", () => {
-      const button = ({
+      const button = {
         attachEvent: jest.fn().mockImplementationOnce((_, callback) => {
           callback();
         }),
-      } as unknown) as Element;
+      } as unknown as Element;
       const callback = jest.fn();
       events = require('../events').default;
       events.on(button, 'click', callback);
@@ -65,7 +65,7 @@ describe('events', () => {
         .mockImplementationOnce((_, __, useCapture?: AddEventListenerOptions | Boolean) => {
           Boolean(useCapture);
         });
-      const button = ({ removeEventListener: jest.fn() } as unknown) as Element;
+      const button = { removeEventListener: jest.fn() } as unknown as Element;
       const callback = jest.fn();
       events = require('../events').default;
       events.off(button, 'click', callback);
@@ -73,11 +73,11 @@ describe('events', () => {
     });
 
     it('should call detachEvent if element does not supports removeEventListener method', () => {
-      const button = ({
+      const button = {
         detachEvent: jest.fn().mockImplementationOnce((_, callback) => {
           callback();
         }),
-      } as unknown) as Element;
+      } as unknown as Element;
       const callback = jest.fn();
       events = require('../events').default;
       events.off(button, 'click', callback);
@@ -93,8 +93,8 @@ describe('events', () => {
         .mockImplementationOnce((_, __, useCapture?: AddEventListenerOptions | Boolean) => {
           Boolean(useCapture);
         });
-      const mEvent = ({ type: '', target: { removeEventListener: jest.fn() } } as unknown) as Event;
-      const button = ({} as unknown) as Element;
+      const mEvent = { type: '', target: { removeEventListener: jest.fn() } } as unknown as Event;
+      const button = {} as unknown as Element;
       events = require('../events').default;
       const onSpy = jest.spyOn(events, 'on').mockImplementation((_, type: string, callback) => {
         Object.defineProperty(mEvent, 'type', { value: type });
@@ -118,8 +118,8 @@ describe('events', () => {
     });
 
     it('should call callback after binding multiple events if the events are triggered', () => {
-      const mEvent = ({} as unknown) as Event;
-      const button = ({} as unknown) as Element;
+      const mEvent = {} as unknown as Event;
+      const button = {} as unknown as Element;
       events = require('../events').default;
       const onSpy = jest.spyOn(events, 'on').mockImplementation((_, __, callback) => {
         callback(mEvent);

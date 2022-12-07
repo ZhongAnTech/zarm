@@ -38,7 +38,7 @@ describe('keyframes', () => {
       docFragment.appendChild(head);
       const htmlCollection = docFragment.children;
 
-      const style = ({} as unknown) as HTMLStyleElement;
+      const style = {} as unknown as HTMLStyleElement;
       const createElementSpy = jest.spyOn(document, 'createElement').mockReturnValueOnce(style);
       const getElementsByTagNameSpy = jest
         .spyOn(document, 'getElementsByTagName')
@@ -78,7 +78,7 @@ describe('keyframes', () => {
 
     describe('#getKeyframe', () => {
       it('should return key frame', () => {
-        const keyframe = ({
+        const keyframe = {
           innerHTML: `
           @keyframes test {
               0%, 100% {
@@ -86,7 +86,7 @@ describe('keyframes', () => {
                 transform: translate3d(0, 0, 0);
               }
           }`,
-        } as unknown) as HTMLElement;
+        } as unknown as HTMLElement;
         const getElementByIdSpy = jest
           .spyOn(document, 'getElementById')
           .mockReturnValueOnce(keyframe);

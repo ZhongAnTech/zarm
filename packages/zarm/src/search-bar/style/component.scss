@@ -1,11 +1,29 @@
 @include b(search-bar) {
-  background: var(--search-bar-background);
+  @include define(background, transparent);
+  @include define(height, 52px);
+  @include define(padding-horizontal, 16px);
+  @include define(input-padding-horizontal, 8px);
+  @include define(input-height, 36px);
+  @include define(input-background, rgba(118, 118, 128, 0.12));
+  @include define(input-font-size, var(--za-font-size-md));
+  @include define(input-placeholder-color, #808084);
+  @include define(input-clear-icon-color, #8e8e92);
+  @include define(input-border-radius, 10px);
+  @include define(cancel-font-size, var(--za-font-size-md));
+  @include define(cancel-color, var(--theme-primary));
+  @include define(cancel-margin-left, 13px);
+  @include define(cancel-transition, all 0.2s);
+  @include define(icon-margin-right, 6px);
+  @include define(icon-color, #808084);
+
+  background: var(--background);
 
   @include e(form) {
-    height: r(44);
-    margin: 0 r(15);
+    height: var(--height);
+    margin: 0 var(--padding-horizontal);
     display: flex;
     align-items: center;
+    justify-content: center;
     overflow: hidden;
   }
 
@@ -14,48 +32,48 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 r(8);
-    height: r(28);
-    background: var(--search-bar-inner-background);
+    padding: 0 var(--input-padding-horizontal);
+    height: var(--input-height);
+    background: var(--input-background);
     overflow: hidden;
 
     @include e(icon) {
-      margin-right: r(4);
-      color: var(--color-text-placeholder);
+      margin-right: var(--icon-margin-right);
+      color: var(--icon-color);
     }
   }
 
-  @include e(mock) {
+  @include b(input) {
     flex: 1;
-    font-size: var(--search-bar-font-size);
+    font-size: var(--input-font-size);
+    background-color: transparent;
 
-    @include b(input) {
-      background-color: transparent;
-
-      input {
-        &::-webkit-search-cancel-button {
-          display: none;
-        }
+    input {
+      &::-webkit-search-cancel-button {
+        display: none;
       }
     }
+
+    --za-input-placeholder-color: var(--input-placeholder-color);
+    --za-input-clear-icon-color: var(--input-clear-icon-color);
   }
 
   @include e(cancel) {
-    font-size: var(--search-bar-font-size);
-    color: var(--color-text);
-    margin-left: r(15);
+    font-size: var(--cancel-font-size);
+    color: var(--cancel-color);
+    margin-left: var(--cancel-margin-left);
+    transition: var(--cancel-transition);
   }
 
   @include m(focus) {
     @include e(cancel) {
-      transition: all .2s;
       margin-right: 0;
     }
   }
 
   @include m(radius) {
     @include e(content) {
-      border-radius: var(--radius-md);
+      border-radius: var(--input-border-radius);
     }
   }
 

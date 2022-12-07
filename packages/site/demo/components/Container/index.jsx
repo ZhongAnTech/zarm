@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import classnames from 'classnames';
 import { Icon, Radio, Popper, ConfigProvider } from 'zarm';
 import Context from '@/utils/context';
@@ -63,7 +63,7 @@ const Container = (props) => {
                 </ul>
                 <div className="themes">
                   <Radio.Group
-                    compact
+                    buttonCompact
                     type="button"
                     value={theme}
                     onChange={(value) => {
@@ -84,7 +84,7 @@ const Container = (props) => {
             <>
               <div className="lang">
                 <Radio.Group
-                  compact
+                  buttonCompact
                   type="button"
                   value={locale}
                   onChange={(value) => {

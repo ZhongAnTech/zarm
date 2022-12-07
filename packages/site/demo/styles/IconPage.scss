@@ -1,31 +1,19 @@
-@import "@/styles/index";
+@import '@/styles/index';
 
 .icon-page {
-  .grid {
+  .block {
+    width: 100%;
+    height: 100%;
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 
-    &-column {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      position: relative;
-      width: 33.33%;
-      height: r(125);
-      @include onepx(bottom right);
+    .za-icon {
+      margin-bottom: r(8);
 
-      &:nth-of-type(3n) {
-        @include onepx(bottom);
-      }
-
-      .za-icon {
-        display: block;
-        margin-bottom: r(8);
-
-        & + span {
-          font-size: r(12);
-        }
+      & + span {
+        font-size: r(12);
       }
     }
   }

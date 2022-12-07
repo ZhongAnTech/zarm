@@ -1,116 +1,157 @@
-import React, { PureComponent } from 'react';
-import type { TouchEvent, MouseEvent } from 'react';
-import classnames from 'classnames';
-import { Keyboard as KeyboardIcon, DeleteKey as DeleteKeyIcon } from '@zarm-design/icons';
-import type PropsType from './PropsType';
+import * as React from 'react';
+import { createBEM } from '@zarm-design/bem';
+import { DeleteKey as DeleteKeyIcon, Keyboard as KeyboardIcon } from '@zarm-design/icons';
+import useLongPress from '../useLongPress';
+import { ConfigContext } from '../config-provider';
+import BuildInConfig from './BuildInConfig';
+import type { BaseKeyBoardProps, KeyBoardKey, KeyBoardDataSource } from './interface';
+import type { HTMLProps } from '../utils/utilityTypes';
+import { useLatest } from '../utils/hooks';
 
-type KeyType = Exclude<PropsType['type'], undefined>;
-
-const KEYS: { [type in KeyType]: readonly string[] } = {
-  number: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', 'close'],
-  price: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '0', 'close'],
-  idcard: ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'X', '0', 'close'],
-};
-
-export interface KeyboardProps extends PropsType {
-  prefixCls?: string;
-  className?: string;
+export interface KeyboardCssVars {
+  '--background'?: React.CSSProperties['background'];
+  '--item-background'?: React.CSSProperties['background'];
+  '--item-active-background'?: React.CSSProperties['background'];
+  '--item-gap'?: React.CSSProperties['gap'];
+  '--item-height'?: React.CSSProperties['height'];
+  '--item-font-size'?: React.CSSProperties['fontSize'];
+  '--item-border-radius'?: React.CSSProperties['borderRadius'];
+  '--item-box-shadow'?: React.CSSProperties['boxShadow'];
+  '--ok-background'?: React.CSSProperties['background'];
+  '--ok-font-size'?: React.CSSProperties['fontSize'];
+  '--ok-text-color'?: React.CSSProperties['color'];
 }
 
-export default class Keyboard extends PureComponent<KeyboardProps, {}> {
-  static defaultProps: KeyboardProps = {
-    prefixCls: 'za-keyboard',
-    type: 'number',
+export type KeyboardProps = BaseKeyBoardProps &
+  HTMLProps & {
+    dataSource?: KeyBoardDataSource;
   };
 
-  private touchLongPressTimer: ReturnType<typeof setTimeout | typeof setInterval>;
+const Keyboard = React.forwardRef<unknown, KeyboardProps>((props, ref) => {
+  const { className, style, type, dataSource, onKeyClick, ...restProps } = props;
+  const keyboardRef = (ref as any) || React.createRef<HTMLDivElement>();
 
-  private mouseLongPressTimer: ReturnType<typeof setTimeout | typeof setInterval>;
+  const { locale: globalLocal, prefixCls } = React.useContext(ConfigContext);
+  const locale = globalLocal?.Keyboard;
 
-  onTouchLongPressIn = (key: string) => {
-    this.onKeyClick(key);
-    this.touchLongPressTimer = setTimeout(() => {
-      this.touchLongPressTimer = setInterval(() => {
-        this.onKeyClick(key);
-      }, 100);
-    }, 800);
-  };
+  const bem = createBEM('keyboard', { prefixCls });
+  const cls = bem([className]);
 
-  onTouchLongPressOut = (e: TouchEvent<HTMLDivElement> | MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    clearInterval(this.touchLongPressTimer);
-  };
+  const getKeyConfig = dataSource || BuildInConfig[type!];
 
-  onMouseLongPressIn = (key: string) => {
-    this.onKeyClick(key);
-    this.mouseLongPressTimer = setTimeout(() => {
-      this.mouseLongPressTimer = setInterval(() => {
-        this.onKeyClick(key);
-      }, 100);
-    }, 800);
-  };
+  const onKeyPress = (e, text: KeyBoardKey | KeyBoardKey['value']) => {
+    e.stopPropagation();
 
-  onMouseLongPressOut = (e: TouchEvent<HTMLDivElement> | MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    clearInterval(this.mouseLongPressTimer);
-  };
+    const keyObj: KeyBoardKey = typeof text === 'object' ? text : { text };
+    const key = keyObj.value || (keyObj.text as KeyBoardKey['value']);
 
-  onKeyClick = (key: string) => {
-    if (key.length === 0) {
-      return;
-    }
-
-    const { onKeyClick } = this.props;
+    if (!text || keyObj.disabled) return;
     if (typeof onKeyClick === 'function') {
       onKeyClick(key);
     }
   };
 
-  getKeys = (): ReadonlyArray<string> => {
-    const { type } = this.props;
-    return type ? KEYS[type] : KEYS.number;
-  };
+  const timerRef = React.useRef(0);
+  const onKeyPressRef = useLatest(onKeyPress);
 
-  renderKey = (text: string, index: number) => {
-    const { prefixCls } = this.props;
+  const longPressEvent = useLongPress({
+    // 长按连续删除
+    onLongPress: (e) => {
+      clearInterval(timerRef.current);
+      timerRef.current = window.setInterval(() => {
+        onKeyPressRef.current(e, 'delete');
+      }, 100);
+    },
+    onPress: (e) => {
+      clearInterval(timerRef.current);
+      onKeyPressRef.current(e, 'delete');
+    },
+    onClear: () => clearInterval(timerRef.current),
+  });
 
-    const keyCls = classnames(`${prefixCls}__item`, {
-      [`${prefixCls}__item--disabled`]: text.length === 0,
-    });
+  const renderKey = React.useCallback((text: KeyBoardKey, index: number) => {
+    const keyObj: KeyBoardKey = typeof text === 'object' ? text : { text };
 
-    return (
-      <div className={keyCls} key={+index} onClick={() => this.onKeyClick(text)}>
-        {text === 'close' ? <KeyboardIcon size="lg" /> : text}
-      </div>
-    );
-  };
+    const commonProps = {
+      key: +index,
+      className: bem('item', [
+        {
+          blank: keyObj.text === '',
+          ok: keyObj.text === 'ok',
+          disabled: keyObj.disabled,
+        },
+      ]),
+      style: {},
+    };
 
-  render() {
-    const { prefixCls, className, locale } = this.props;
-    const cls = classnames(prefixCls, className);
+    if (keyObj.rowSpan! > 1) {
+      commonProps.style = {
+        ...commonProps.style,
+        gridRow: `auto / span ${keyObj.rowSpan}`,
+        height: '100%',
+      };
+    }
 
-    return (
-      <div className={cls}>
-        <div className={`${prefixCls}__keys`}>{this.getKeys().map(this.renderKey)}</div>
-        <div className={`${prefixCls}__handle`}>
-          <div
-            className={`${prefixCls}__item`}
-            onTouchStart={() => this.onTouchLongPressIn('delete')}
-            onTouchEnd={this.onTouchLongPressOut}
-            onTouchCancel={this.onTouchLongPressOut}
-            onMouseDown={() => this.onMouseLongPressIn('delete')}
-            onMouseUp={this.onMouseLongPressOut}
-          >
-            <DeleteKeyIcon size="lg" />
-          </div>
-          <div
-            className={`${prefixCls}__item ${prefixCls}__item--ok`}
-            onClick={() => this.onKeyClick('ok')}
-          >
-            {locale!.okText}
-          </div>
+    if (keyObj.colSpan! > 1) {
+      commonProps.style = {
+        ...commonProps.style,
+        gridColumn: `auto / span ${keyObj.colSpan}`,
+      };
+    }
+
+    const renderText = () => {
+      switch (keyObj.text) {
+        case 'ok':
+          return locale!.confirmText;
+
+        case 'delete':
+          return <DeleteKeyIcon size="lg" style={{ pointerEvents: 'none' }} />;
+
+        case 'close':
+          return <KeyboardIcon size="lg" />;
+
+        default:
+          return keyObj.text;
+      }
+    };
+
+    if (keyObj.text === 'delete')
+      return (
+        <div {...commonProps} {...longPressEvent}>
+          {renderText()}
         </div>
+      );
+
+    return (
+      <div {...commonProps} onClick={(e) => onKeyPressRef.current?.(e, keyObj)}>
+        {renderText()}
       </div>
     );
-  }
-}
+  }, []);
+
+  const gridTemplateColumns = Array.from(Array(getKeyConfig.columns).keys())
+    .map(() => '1fr')
+    .join(' ');
+
+  return (
+    <div
+      {...restProps}
+      ref={keyboardRef}
+      className={cls}
+      style={{ gridTemplateColumns, ...style }}
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
+    >
+      {(getKeyConfig.keys || []).map(renderKey)}
+    </div>
+  );
+});
+
+Keyboard.displayName = 'Keyboard';
+
+Keyboard.defaultProps = {
+  type: 'number',
+};
+
+export default Keyboard;

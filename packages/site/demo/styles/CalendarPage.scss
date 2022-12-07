@@ -1,10 +1,14 @@
-@import "@/styles/index";
+@import '@/styles/index';
 
 .calendar-page {
   .za-calendar {
     &__body {
       max-height: 50vh;
     }
+  }
+
+  .za-list-item--inline .za-list-item__title {
+    width: 120px;
   }
 
   .custom {

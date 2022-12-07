@@ -1,12 +1,13 @@
-import { isObject, isString } from '../../utils/validate';
-import type { Images, ImageObject } from '../PropsType';
+import isPlainObject from 'lodash/isPlainObject';
+import isString from 'lodash/isString';
+import type { Images, ImageObject } from '../interface';
 import LOAD_STATUS from './loadStatus';
 
 function isImageString(image: ImageObject | string): image is string {
   return isString(image);
 }
 function isImageObject(image: ImageObject | string): image is ImageObject {
-  return isObject(image);
+  return isPlainObject(image);
 }
 
 const formatImages = (images: ReadonlyArray<ImageObject | string>): Images => {
@@ -14,12 +15,12 @@ const formatImages = (images: ReadonlyArray<ImageObject | string>): Images => {
   (images || []).forEach((image: ImageObject | string) => {
     if (isImageString(image)) {
       previewImages.push({
-        url: image,
+        src: image,
       });
     } else if (isImageObject(image)) {
       previewImages.push({
-        url: image.url,
-        originUrl: image.originUrl,
+        src: image.src,
+        originSrc: image.originSrc,
         loaded: LOAD_STATUS.before,
       });
     }

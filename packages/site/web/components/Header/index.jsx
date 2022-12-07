@@ -158,7 +158,7 @@ const Header = ({ children }) => {
               </ul>
               <div className="lang">
                 <Radio.Group
-                  compact
+                  buttonCompact
                   type="button"
                   value={locale}
                   onChange={(value) => {

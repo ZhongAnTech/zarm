@@ -1,4 +1,5 @@
-import { isArray, isCascader } from '../../utils/validate';
+import omit from 'lodash/omit';
+import { isCascader } from '../../utils/validate';
 
 export const isValueValid = (value) => {
   const valueArray = [].concat(value);
@@ -21,39 +22,54 @@ const getValues = (props, defaultValue?: any) => {
   return defaultValue;
 };
 
+const DEFAULT_FIELD_NAMES = {
+  value: 'value',
+  label: 'label',
+  children: 'children',
+};
+
+const resolveFieldNames = (props) => {
+  const { fieldNames } = props;
+  return { ...DEFAULT_FIELD_NAMES, ...fieldNames };
+};
+
 export const normalState = (props) => {
-  const { valueMember, dataSource } = props;
+  const { dataSource } = props;
+  const fieldNames = resolveFieldNames(props);
   const value = getValues(
     props,
-    dataSource!.map((item) => item[0] && item[0][valueMember!]),
+    dataSource!.map((item) => item[0] && item[0][fieldNames?.value!]),
   );
   return {
     value,
     objValue: props.dataSource.map(
-      (item, index) => item.filter((d) => d[valueMember!] === value[index])[0],
+      (item, index) => item.filter((d) => d[fieldNames?.value!] === value[index])[0],
     ),
     dataSource: props.dataSource,
   };
 };
 
 const cascaderState = (props) => {
-  const { valueMember, cols } = props;
+  const { cols } = props;
+  const fieldNames = resolveFieldNames(props);
   let newValues = getValues(props, []);
   const newObjValues: any[] = [];
   const newDateSource: any[] = [];
 
   const parseLevel = ({ level = 0, dataSource }) => {
     newDateSource[level] = dataSource.map((item, index) => {
-      const { children, ...others } = item;
+      const rest = omit(item, fieldNames?.children);
+      const children = item?.[fieldNames?.children];
+
       if (
         // eslint-disable-next-line operator-linebreak
-        (isValueValid(newValues[level]) && item[valueMember!] === newValues[level]) ||
+        (isValueValid(newValues[level]) && item[fieldNames?.value!] === newValues[level]) ||
         (!isValueValid(newValues[level]) && index === 0)
       ) {
-        newValues[level] = item[valueMember!];
-        newObjValues[level] = others;
+        newValues[level] = item[fieldNames?.value!];
+        newObjValues[level] = rest;
 
-        if (isArray(children) && children.length > 0 && level + 1 < cols!) {
+        if (Array.isArray(children) && children.length > 0 && level + 1 < cols!) {
           parseLevel({
             level: level + 1,
             dataSource: children,
@@ -61,7 +77,7 @@ const cascaderState = (props) => {
         }
       }
 
-      return others;
+      return rest;
     });
 
     return newValues;

@@ -1,26 +1,30 @@
 @import 'mixins';
 
-$PI: 3.141592674;
-$activity-indicator-spinner-count : 12;
+$activity-indicator-spinner-count: 8;
 
 @include b(activity-indicator) {
+  @include define(size, 22px);
+  @include define(size-large, 29px);
+  @include define(stroke-color, #e6e6e6);
+  @include define(stroke-active-color, var(--za-theme-primary));
+  @include define(spinner-item-color, #80858e);
+  @include define(spinner-item-width, 3px);
+  @include define(spinner-item-height, 32%);
+  @include define(spinner-item-border-radius, 1.5px);
+
   display: inline-block;
   position: relative;
   transform: rotate(-90deg);
-  @include activity-indicator-size(var(--activity-indicator-size-md));
+  vertical-align: middle;
 
-  @include e(path) {
-    stroke: var(--activity-indicator-path-color);
+  @include activity-indicator-size(var(--size));
+
+  @include e(stroke) {
+    stroke: var(--stroke-color);
   }
 
   @include e(line) {
-    stroke-dasharray: 100 * $PI;
-    stroke: var(--theme-primary);
-  }
-
-  /* sizes */
-  @include m(lg) {
-    @include activity-indicator-size(var(--activity-indicator-size-lg));
+    stroke: var(--stroke-active-color);
   }
 
   @include m(circular) {
@@ -33,40 +37,45 @@ $activity-indicator-spinner-count : 12;
 
     circle {
       stroke-linecap: round;
-      stroke: var(--theme-primary);
+      stroke: var(--stroke-active-color);
       @include animation(rotate-circular, 1.5s ease-in-out infinite);
     }
   }
 
   @include m(spinner) {
-    @include animation(rotate360, .8s linear infinite);
+    @include animation(rotate360, 0.8s linear infinite);
 
     animation-timing-function: steps($activity-indicator-spinner-count);
 
-    @for $i from 1 through $activity-indicator-spinner-count {
-      div {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+    div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
 
+      @for $i from 1 through $activity-indicator-spinner-count {
         &:nth-of-type(#{$i}) {
           transform: rotate($i * (360 / $activity-indicator-spinner-count) * 1deg);
           opacity: $i / $activity-indicator-spinner-count;
         }
+      }
 
-        &::before {
-          content: '';
-          display: block;
-          width: 2px;
-          height: 25%;
-          margin: 0 auto;
-          background-color: var(--activity-indicator-spinner-color);
-          border-radius: 40%;
-        }
+      &::before {
+        content: '';
+        display: block;
+        width: var(--spinner-item-width);
+        height: var(--spinner-item-height);
+        margin: 0 auto;
+        background-color: var(--spinner-item-color);
+        border-radius: var(--spinner-item-border-radius);
       }
     }
+  }
+
+  /* sizes */
+  @include m(lg) {
+    @include activity-indicator-size(var(--size-large));
   }
 
   @include keyframes(rotate-circular) {

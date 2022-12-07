@@ -1,8 +1,8 @@
-@import "@/styles/index";
+@import '@/styles/index';
 
 .popper-page {
   .basic-demo {
-    .za-cell__content {
+    .za-list-item__content {
       padding: r(60) 0;
       justify-content: center;
     }
@@ -17,10 +17,8 @@
       width: r(100);
       height: r(50);
       color: #333;
-    }
 
-    // 自定义箭头
-    .custom-arrow-content {
+      // 自定义箭头
       .za-popper__arrow {
         position: absolute;
         width: 0;
@@ -29,8 +27,8 @@
         border-style: solid;
       }
 
-      &[x-placement^=top] {
-        margin-bottom: r(10);
+      &[data-popper-placement^='top'] {
+        // margin-bottom: r(10);
 
         .za-popper__arrow {
           bottom: r(-4);
@@ -39,8 +37,8 @@
         }
       }
 
-      &[x-placement^=right] {
-        margin-left: r(10);
+      &[data-popper-placement^='right'] {
+        // margin-left: r(10);
 
         .za-popper__arrow {
           left: r(-4);
@@ -49,8 +47,8 @@
         }
       }
 
-      &[x-placement^=bottom] {
-        margin-top: r(10);
+      &[data-popper-placement^='bottom'] {
+        // margin-top: r(10);
 
         .za-popper__arrow {
           top: r(-4);
@@ -59,13 +57,41 @@
         }
       }
 
-      &[x-placement^=left] {
-        margin-right: r(10);
+      &[data-popper-placement^='left'] {
+        // margin-right: r(10);
 
         .za-popper__arrow {
           right: r(-4);
           border-width: r(4) 0 r(4) r(4);
           border-left-color: #ddd;
+        }
+      }
+
+      &[data-popper-placement='top-start'],
+      &[data-popper-placement='bottom-start'] {
+        .za-popper__arrow {
+          left: r(10);
+        }
+      }
+
+      &[data-popper-placement='top-end'],
+      &[data-popper-placement='bottom-end'] {
+        .za-popper__arrow {
+          right: r(10);
+        }
+      }
+
+      &[data-popper-placement='left-start'],
+      &[data-popper-placement='right-start'] {
+        .za-popper__arrow {
+          top: r(4);
+        }
+      }
+
+      &[data-popper-placement='left-end'],
+      &[data-popper-placement='right-end'] {
+        .za-popper__arrow {
+          bottom: r(4);
         }
       }
     }
@@ -79,7 +105,7 @@
       margin-bottom: r(10);
     }
 
-    .za-cell__content {
+    .za-list-item__content {
       padding: r(15) 0;
       justify-content: center;
     }

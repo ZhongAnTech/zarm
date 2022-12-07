@@ -1,17 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`file picker render correctly 1`] = `
-<div
-  class="za-file-picker"
->
-  <input
-    class="za-file-picker__input"
-    type="file"
-  />
-  <button
-    class="needsclick"
+<DocumentFragment>
+  <div
+    class="za-file-picker"
   >
-    add
-  </button>
-</div>
+    <input
+      class="za-file-picker__input"
+      type="file"
+    />
+    <button
+      class="needsclick"
+    >
+      add
+    </button>
+  </div>
+</DocumentFragment>
 `;

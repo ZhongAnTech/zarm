@@ -1,4 +1,5 @@
 import DatePickerView from './DatePickerView';
-import ConfigReceiver from '../config-receiver';
 
-export default ConfigReceiver('DatePickerView')(DatePickerView);
+export type { DatePickerViewProps, DatePickerInstance } from './DatePickerView';
+
+export default DatePickerView;

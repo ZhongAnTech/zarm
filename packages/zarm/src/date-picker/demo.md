@@ -4,7 +4,7 @@
 
 ```jsx
 import { useRef, useReducer } from 'react';
-import { Cell, Button, DatePicker, Toast } from 'zarm';
+import { List, Button, DatePicker, Toast } from 'zarm';
 
 const initState = {
   date: {
@@ -55,6 +55,7 @@ const reducer = (state, action) => {
 const Demo = () => {
   const myRef = useRef();
   const [state, dispatch] = useReducer(reducer, initState);
+  const toast = Toast.useToast();
 
   const setValue = (key, value) => {
     dispatch({ type: 'value', key, value });
@@ -68,56 +69,56 @@ const Demo = () => {
   };
 
   return (
-    <div>
-      <Cell
-        description={
-          <Button size="xs" onClick={() => toggle('date')}>
-            选择
-          </Button>
-        }
-      >
-        选择日期
-      </Cell>
-
-      <Cell
-        description={
-          <Button size="xs" onClick={() => toggle('time')}>
-            选择
-          </Button>
-        }
-      >
-        选择时间
-      </Cell>
-
-      <Cell
-        description={
-          <Button size="xs" onClick={() => toggle('limitDate')}>
-            选择
-          </Button>
-        }
-      >
-        选择日期(自定义)
-      </Cell>
-
-      <Cell
-        description={
-          <Button size="xs" onClick={() => toggle('specDOM')}>
-            选择
-          </Button>
-        }
-      >
-        挂载到指定dom节点
-      </Cell>
+    <>
+      <List>
+        <List.Item
+          suffix={
+            <Button size="xs" onClick={() => toggle('date')}>
+              选择
+            </Button>
+          }
+        >
+          选择日期
+        </List.Item>
+        <List.Item
+          suffix={
+            <Button size="xs" onClick={() => toggle('time')}>
+              选择
+            </Button>
+          }
+        >
+          选择时间
+        </List.Item>
+        <List.Item
+          suffix={
+            <Button size="xs" onClick={() => toggle('limitDate')}>
+              选择
+            </Button>
+          }
+        >
+          选择日期(自定义)
+        </List.Item>
+        <List.Item
+          suffix={
+            <Button size="xs" onClick={() => toggle('specDOM')}>
+              选择
+            </Button>
+          }
+        >
+          挂载到指定dom节点
+        </List.Item>
+      </List>
 
       <DatePicker
         visible={state.date.visible}
         mode="date"
         value={state.date.value}
+        format="YYYY-MM-DD"
         wheelDefaultValue={state.date.wheelDefaultValue}
-        onOk={(value) => {
+        onConfirm={(value) => {
           setValue('date', value);
           toggle('date');
-          Toast.show(JSON.stringify(value));
+          toast.show(JSON.stringify(value));
         }}
         onCancel={() => toggle('date')}
       />
@@ -126,10 +127,10 @@ const Demo = () => {
         visible={state.time.visible}
         mode="time"
         value={state.time.value}
-        onOk={(value) => {
+        onConfirm={(value) => {
           setValue('time', value);
           toggle('time');
-          Toast.show(JSON.stringify(value));
+          toast.show(JSON.stringify(value));
         }}
         onCancel={() => toggle('time')}
       />
@@ -137,16 +138,16 @@ const Demo = () => {
       <DatePicker
         visible={state.limitDate.visible}
         title="选择日期"
-        okText="确定"
+        confirmText="确定"
         cancelText="取消"
         mode="date"
         min="2007-01-03"
         max="2019-11-23"
         value={state.limitDate.value}
-        onOk={(value) => {
+        onConfirm={(value) => {
           setValue('limitDate', value);
           toggle('limitDate');
-          Toast.show(JSON.stringify(value));
+          toast.show(JSON.stringify(value));
         }}
         onCancel={() => toggle('limitDate')}
       />
@@ -154,17 +155,17 @@ const Demo = () => {
       <DatePicker
         visible={state.specDOM.visible}
         value={state.specDOM.value}
-        onOk={(value) => {
+        onConfirm={(value) => {
           setValue('specDOM', value);
           toggle('specDOM');
-          Toast.show(JSON.stringify(value));
+          toast.show(JSON.stringify(value));
         }}
         onCancel={() => toggle('specDOM')}
         getContainer={() => myRef.current}
       />
 
       <div ref={myRef} id="test-div" style={{ position: 'relative', zIndex: 1 }} />
-    </div>
+    </>
   );
 };
 
@@ -175,27 +176,17 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```jsx
 import { useState } from 'react';
-import { Cell, DateSelect } from 'zarm';
+import { List, DateSelect } from 'zarm';
 
 const Demo = () => {
   const [value, setValue] = useState('');
 
   return (
-    <Cell title="日期选择">
-      <DateSelect
-        className="test-dateSelect"
-        title="选择日期"
-        placeholder="请选择日期"
-        mode="date"
-        min="1974-05-16"
-        max="2027-05-15"
-        value={value}
-        onOk={(value) => {
-          console.log('DateSelect onOk: ', value);
-          setValue(value);
-        }}
-      />
-    </Cell>
+    <List>
+      <List.Item title="日期选择">
+        <DateSelect mode="date" defaultValue={new Date(1555977600000)} />
+      </List.Item>
+    </List>
   );
 };
 
@@ -206,21 +197,58 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```jsx
 import { useState } from 'react';
-import { DatePickerView } from 'zarm';
+import { DatePickerView, List, Select, Radio } from 'zarm';
 
 const Demo = () => {
   const [value, setValue] = useState('');
-
+  const [mode, setMode] = useState('datetime');
+  const [use12hours, setUse12hours] = useState(false);
+  const modeSource = [
+    { label: 'year', value: 'year' },
+    { label: 'datetime', value: 'datetime' },
+    { label: 'month', value: 'month' },
+    { label: 'date', value: 'date' },
+    { label: 'time', value: 'time' },
+  ];
   return (
-    <DatePickerView
-      mode="datetime"
-      value={value}
-      min="2018-1-13"
-      onChange={(value) => {
-        console.log('datePickerView => ', value);
-        setValue(value);
-      }}
-    />
+    <>
+      <List>
+        <List.Item title="模式">
+          <Select
+            value={mode}
+            dataSource={modeSource}
+            onConfirm={(selected) => {
+              setMode(selected[0]);
+            }}
+          />
+        </List.Item>
+        <List.Item title="12小时模式">
+          <Radio.Group
+            buttonCompact
+            type="button"
+            value={use12hours}
+            onChange={(value) => {
+              setUse12hours(value);
+            }}
+            disabled={!(mode === 'time')}
+          >
+            <Radio value={true}>是</Radio>
+            <Radio value={false}>否</Radio>
+          </Radio.Group>
+        </List.Item>
+      </List>
+      <DatePickerView
+        mode={mode.toString()}
+        use12Hours={use12hours}
+        value={value}
+        min="2018-1-13"
+        format="YYYY-MM-DD"
+        onChange={(value) => {
+          console.log('datePickerView => ', value);
+          setValue(value);
+        }}
+      />
+    </>
   );
 };
 
@@ -229,16 +257,20 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性         | 类型                   | 默认值 | 说明                                                                 |
-| :----------- | :--------------------- | :----- | :------------------------------------------------------------------- |
-| value        | string \| Date         | -      | 值                                                                   |
-| defaultValue | string \| Date         | -      | 初始值                                                               |
-| mode         | string                 | 'date' | 指定日期选择模式，可选项 `year`, `month`, `date`, `time`, `datetime` |
-| min          | string \| Date         | -      | 相应 mode 的最小时间                                                 |
-| max          | string \| Date         | -      | 相应 mode 的最大时间                                                 |
-| minuteStep   | number                 | 1      | 分钟间隔                                                             |
-| disabled     | boolean                | false  | 是否禁用                                                             |
-| onChange     | (value?: Date) => void | -      | 值变化时触发的回调函数                                               |
+| 属性         | 类型                                                                                                          | 默认值                                                   | 说明                                                                                                                                                     |
+| :----------- | :------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| value        | string \| Date                                                                                                | -                                                        | 值                                                                                                                                                       |
+| defaultValue | string \| Date                                                                                                | -                                                        | 初始值                                                                                                                                                   |
+| mode         | string                                                                                                        | 'date'                                                   | 指定日期选择模式，可选项 `year`, `month`, `date`, `time`, `datetime`                                                                                     |
+| min          | string \| Date                                                                                                | -                                                        | 相应 mode 的最小时间                                                                                                                                     |
+| max          | string \| Date                                                                                                | -                                                        | 相应 mode 的最大时间                                                                                                                                     |
+| use12Hours   | boolean                                                                                                       | false                                                    | 12 小时模式，mode 等于`time` 的时可以使用                                                                                                                |
+| format       | string                                                                                                        | -                                                        | 格式化显示值。例：format="YYYY 年 MM 月 DD 日"<br /> 年:`YYYY`, 月:`MM`, 日:`DD`, 时:`HH`, 分:`m`。[dayjs](https://day.js.org/docs/zh-CN/display/format) |
+| minuteStep   | number                                                                                                        | 1                                                        | 分钟间隔                                                                                                                                                 |
+| fieldNames   | object                                                                                                        | { label: `label`, value: `value`, children: `children` } | 自定义节点 label、value、children 的字段                                                                                                                 |
+| disabled     | boolean                                                                                                       | false                                                    | 是否禁用                                                                                                                                                 |
+| itemRender   | (item: PickerViewColumnItem, type: `year` \| `month` \| `date` \| `hour` \| `minute` \| `second`) =>ReactNode | (data) => data.label                                     | 单个选项的展示                                                                                                                                           |
+| onChange     | (value: Date \| string) => void                                                                               | -                                                        | 值变化时触发的回调函数                                                                                                                                   |
 
 ### 仅 DatePicker & DateSelect 支持的属性
 
@@ -247,17 +279,15 @@ ReactDOM.render(<Demo />, mountNode);
 | visible           | boolean                              | false         | 是否展示                                       |
 | title             | string                               | '请选择'      | 选择器标题                                     |
 | cancelText        | string                               | '取消'        | 取消栏文字                                     |
-| okText            | string                               | '确定'        | 确定栏文字                                     |
+| confirmText       | string                               | '确定'        | 确定栏文字                                     |
 | maskClosable      | boolean                              | true          | 是否点击遮罩层时关闭，需要和 onCancel 一起使用 |
 | wheelDefaultValue | string \| Date                       | -             | 滚轮默认停留的日期位置                         |
-| onOk              | (value?: Date) => void               | -             | 点击确定时触发的回调函数                       |
+| onConfirm         | (value: Date \| string) => void      | -             | 点击确定时触发的回调函数                       |
 | onCancel          | () => void                           | -             | 点击取消时触发的回调函数                       |
 | mountContainer    | HTMLElement &#124; () => HTMLElement | document.body | 指定 DatePicker 挂载的 HTML 节点               |
 
 ### 仅 DateSelect 支持的属性
 
-| 属性        | 类型    | 默认值   | 说明                                                                                                 |
-| :---------- | :------ | :------- | :--------------------------------------------------------------------------------------------------- |
-| placeholder | string  | '请选择' | 输入提示信息                                                                                         |
-| hasArrow    | boolean | true     | 是否显示箭头                                                                                         |
-| format      | string  | -        | 格式化显示值。例：format="yyyy 年 MM 月 dd 日"<br /> 年:`yyyy`, 月:`MM`, 日:`dd`, 时:`HH`, 分:`mm`。 |
+| 属性        | 类型   | 默认值   | 说明         |
+| :---------- | :----- | :------- | :----------- |
+| placeholder | string | '请选择' | 输入提示信息 |

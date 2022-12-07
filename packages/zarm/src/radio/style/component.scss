@@ -1,16 +1,29 @@
 @import '../../button/style/mixins';
 
 @include b(radio) {
-  display: inline-block;
-  vertical-align: middle;
-  position: relative;
-  color: var(--color-text);
-  font-size: r(14);
+  @include define(widget-size, 22px);
+  @include define(widget-background, transparent);
+  @include define(widget-border-radius, 22px);
+  @include define(widget-border-width, 1px);
+  @include define(widget-border-color, rgb(199, 199, 204));
+  @include define(marker-font-size, 16px);
+  @include define(marker-color, var(--za-theme-primary));
+  @include define(marker-transition, all 0.2s cubic-bezier(0.71, -0.46, 0.88, 0.6));
+  @include define(text-margin-horizontal, 8px);
+  @include define(active-opacity, 0.6);
+  @include define(checked-widget-background, transparent);
+  @include define(checked-widget-border-color, var(--za-theme-primary));
+  @include define(checked-marker-color, var(--za-theme-primary));
+  @include define(disabled-widget-background, transparent);
+  @include define(disabled-widget-border-color, rgba(199, 199, 204, 0.7));
+  @include define(disabled-text-color, rgba(0, 0, 0, 0.3));
+  @include define(disabled-marker-color, #bcbcbc);
 
-  &:not(&--disabled):hover {
-    @include e(inner) {
-      border-color: var(--radio-active-border-color);
-    }
+  display: inline-block;
+  position: relative;
+
+  &:not(&--disabled):active {
+    opacity: var(--active-opacity);
   }
 
   @include e(widget) {
@@ -30,43 +43,36 @@
 
   @include e(text) {
     vertical-align: middle;
-    margin: 0 r(8);
+    margin: 0 var(--text-margin-horizontal);
   }
 
   @include e(inner) {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: var(--radio-size);
-    height: var(--radio-size);
-    border: 1PX solid var(--radio-border-color);
-    border-radius: var(--radio-radius);
-    background: var(--radio-background);
-    transition: all .2s cubic-bezier(.71, -0.46, .88, .6);
+    width: var(--widget-size);
+    height: var(--widget-size);
+    border: var(--widget-border-width) solid var(--widget-border-color);
+    border-radius: var(--widget-border-radius);
+    background-color: var(--widget-background);
 
-    &:before {
-      content: '';
-      width: calc(var(--radio-size) / 3.5);
-      height: calc(var(--radio-size) / 2);
-      border: calc(var(--radio-size) / 9) solid var(--radio-arrow-color);
-      border-top: 0;
-      border-left: 0;
-      margin-top: calc(var(--radio-size) / -12);
-      margin-left: calc(var(--radio-size) / 18);
-      transform: rotate(45deg) scale(0);
-      transition: all .2s cubic-bezier(.71, -0.46, .88, .6);
+    @include b(icon) {
+      font-size: var(--marker-font-size);
+      color: var(--marker-color);
+      transform: scale(0);
+      transition: var(--marker-transition);
     }
   }
 
   // 选中状态
   @include m(checked) {
     @include e(inner) {
-      border-color: var(--theme-primary);
-      background-color: var(--theme-primary);
+      border-color: var(--checked-widget-border-color);
+      background-color: var(--checked-widget-background);
 
-      &:before {
-        transform: rotate(45deg) scale(1);
-        transition: all .2s cubic-bezier(.12, .4, .29, 1.46) .1s;
+      @include b(icon) {
+        color: var(--checked-marker-color);
+        transform: scale(1);
       }
     }
   }
@@ -78,20 +84,21 @@
     }
 
     @include e(text) {
-      color: var(--color-text-disabled);
+      color: var(--disabled-text-color);
     }
 
     @include e(inner) {
-      background-color: var(--radio-disabled-background);
+      border-color: var(--disabled-widget-border-color);
+      background-color: var(--disabled-widget-background);
     }
 
     @include m(checked) {
       @include e(inner) {
-        border-color: var(--radio-border-color);
-        background-color: var(--radio-disabled-background);
+        border-color: var(--disabled-widget-border-color);
+        background-color: var(--disabled-widget-background);
 
-        &:before {
-          border-color: var(--radio-disabled-color);
+        @include b(icon) {
+          color: var(--disabled-marker-color);
         }
       }
     }
@@ -104,18 +111,21 @@
 }
 
 @include b(radio-group) {
+  @include define(group-spacing-vertical, 8px);
+  @include define(group-spacing-horizontal, 24px);
+
   display: inline-block;
   vertical-align: middle;
   overflow: hidden;
 
   @include e(inner) {
-    margin-right: r(-24);
-    margin-bottom: r(-8);
+    margin-right: calc(var(--group-spacing-horizontal) * -1);
+    margin-bottom: calc(var(--group-spacing-vertical) * -1);
   }
 
   @include b(radio) {
-    margin-right: r(24);
-    margin-bottom: r(8);
+    margin-right: var(--group-spacing-horizontal);
+    margin-bottom: var(--group-spacing-vertical);
   }
 
   // 通栏样式
@@ -134,147 +144,30 @@
 
   // 按钮样式
   @include m(button) {
-    @include e(inner) {
-      margin-right: r(-8);
-      margin-bottom: r(-8);
+    @include define(group-spacing-vertical, var(--za-padding-v-md));
+    @include define(group-spacing-horizontal, var(--za-padding-h-md));
+
+    // button sizes
+    @include m(button-lg) {
+      @include define(group-spacing-vertical, var(--za-padding-v-lg));
+      @include define(group-spacing-horizontal, var(--za-padding-h-lg));
     }
 
-    @include b(radio) {
-      margin-right: r(8);
-      margin-bottom: r(8);
-      @include button-base();
-      @include button-shape(var(--radius-xs));
-      @include button-theme(
-        var(--button-default-background),
-        var(--button-default-border),
-        var(--button-default-color),
-        var(--button-default-background),
-        var(--button-default-border),
-        var(--button-default-color),
-        var(--button-default-background),
-        var(--button-default-border),
-        var(--button-default-color),
-        var(--button-disabled-opacity),
-        var(--button-default-shadow-color),
-      );
-
-      @include e(text) {
-        margin: 0;
-      }
-
-      @include m(checked) {
-        @include button-theme(
-          var(--button-primary-background),
-          var(--button-primary-border),
-          var(--button-primary-color),
-          var(--button-primary-active-background),
-          var(--button-primary-active-border),
-          var(--button-primary-active-color),
-          var(--button-primary-background),
-          var(--button-primary-border),
-          var(--button-primary-color),
-          var(--button-disabled-opacity),
-          var(--button-primary-shadow-color),
-        );
-      }
+    @include m(button-sm) {
+      @include define(group-spacing-vertical, var(--za-padding-v-sm));
+      @include define(group-spacing-horizontal, var(--za-padding-h-sm));
     }
 
-    @include m(block) {
-      @include b(radio) {
-        flex: 1;
-      }
+    @include m(button-xs) {
+      @include define(group-spacing-vertical, var(--za-padding-v-xs));
+      @include define(group-spacing-horizontal, var(--za-padding-h-xs));
     }
 
-    @include m(rect) {
-      @include b(radio) {
-        @include button-shape(0);
-      }
-    }
-
-    @include m(radius) {
-      @include b(radio) {
-        @include button-shape(var(--radius-md));
-      }
-    }
-
-    @include m(round) {
-      @include b(radio) {
-        @include button-shape(var(--radius-round));
-      }
-    }
-
-    @include m(circle) {
-      @include b(radio) {
-        @include button-shape(var(--radius-circle));
-      }
-    }
-
-    // sizes
-    @include m(lg) {
-      @include b(radio) {
-        @include button-size(
-          var(--button-height-lg),
-          var(--button-padding-h-lg),
-          var(--button-font-size-lg),
-          var(--button-icon-size-lg),
-        );
-      }
-    }
-
-    @include m(md) {
-      @include b(radio) {
-        @include button-size(
-          var(--button-height-md),
-          var(--button-padding-h-md),
-          var(--button-font-size-md),
-          var(--button-icon-size-md),
-        );
-      }
-    }
-
-    @include m(sm) {
-      @include b(radio) {
-        @include button-size(
-          var(--button-height-sm),
-          var(--button-padding-h-sm),
-          var(--button-font-size-sm),
-          var(--button-icon-size-sm),
-        );
-      }
-    }
-
-    @include m(xs) {
-      @include b(radio) {
-        @include button-size(
-          var(--button-height-xs),
-          var(--button-padding-h-xs),
-          var(--button-font-size-xs),
-          var(--button-icon-size-xs),
-        );
-      }
-    }
-
-    @include m(ghost) {
-      @include b(radio) {
-        @include m(checked) {
-          @include button-ghost(
-            transparent,
-            var(--theme-primary),
-            var(--theme-primary),
-            transparent,
-            var(--theme-primary),
-            var(--theme-primary),
-            transparent,
-            var(--theme-primary),
-            var(--theme-primary),
-          );
-        }
-      }
-    }
-
-    @include m(compact) {
+    // button compact
+    @include m(button-compact) {
       @include b(radio) {
         &:not(:last-child) {
+          /* prettier-ignore */
           margin-right: -1PX;
         }
 
@@ -299,7 +192,7 @@
     }
   }
 
-  @include m(cell) {
+  @include m(list) {
     display: block;
     overflow: visible;
 
@@ -309,9 +202,23 @@
     }
 
     @include b(radio) {
-      position: static;
+      display: flex;
+      position: relative;
       margin-right: 0;
       margin-bottom: 0;
+
+      &:not(&--disabled):active {
+        opacity: 1;
+      }
+
+      @include e(text) {
+        margin-left: 0;
+      }
+
+      @include e(inner) {
+        border: none;
+        background: transparent;
+      }
     }
   }
 }

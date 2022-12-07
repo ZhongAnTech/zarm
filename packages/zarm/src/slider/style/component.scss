@@ -1,101 +1,106 @@
 @include b(slider) {
+  @include define(line-size, 4px);
+  @include define(line-border-radius, 2px);
+  @include define(line-background, rgba(120, 120, 128, 0.2));
+  @include define(line-active-background, var(--za-theme-primary));
+  @include define(dot-size, 10px);
+  @include define(dot-background, var(--za-background-color));
+  @include define(dot-border-color, rgba(120, 120, 128, 0.2));
+  @include define(dot-border-width, 2px);
+  @include define(dot-active-border-color, var(--za-theme-primary));
+  @include define(knob-size, 28px);
+  @include define(knob-size-small, 20px);
+  @include define(knob-background, #fff);
+  @include define(knob-box-shadow, 0 1px 3px rgba(0, 0, 0, 0.4));
+  @include define(mark-font-size, 15px);
+  @include define(mark-text-color, var(--za-theme-primary));
+  @include define(mark-spacing, 15px);
+
   display: flex;
   align-items: center;
   width: 100%;
 
-  // 横向
   @include e(content) {
-    position: relative;
-    margin: calc(var(--slider-handle-size) / 2) calc(var(--slider-handle-size) / 2);
     flex: 1;
+    position: relative;
+    margin: calc(var(--knob-size) / 2) calc(var(--knob-size) / 2);
   }
 
   // 线
   @include e(line) {
-    position: relative;
     flex: 1;
-    height: var(--slider-line-height);
-    background-color: var(--slider-line-background);
+    position: relative;
+    height: var(--line-size);
+    background-color: var(--line-background);
+    border-radius: var(--line-border-radius);
+    cursor: pointer;
 
     @include e(line__bg) {
       height: 100%;
-      background-color: var(--theme-primary);
+      background-color: var(--line-active-background);
+      border-radius: var(--line-border-radius);
     }
+  }
 
-    // 刻度
-    @include e(line__dot) {
-      position: absolute;
-      width: var(--slider-line-dot-width);
-      height: var(--slider-line-dot-width);
-      margin-top: calc((var(--slider-line-dot-width) + var(--slider-line-height)) / -2);
-      margin-left: calc(var(--slider-line-dot-width) / -2);
-      background-color: var(--slider-line-dot-color);
-      border: 1px solid var(--slider-line-background);
-      border-radius: 50%;
-      cursor: pointer;
+  // 刻度
+  @include e(dot) {
+    position: absolute;
+    width: var(--dot-size);
+    height: var(--dot-size);
+    margin-top: calc((var(--dot-size) + var(--line-size)) / -2);
+    margin-left: calc(var(--dot-size) / -2);
+    background-color: var(--dot-background);
+    border: var(--dot-border-width) solid var(--dot-border-color);
+    border-radius: 50%;
+    cursor: pointer;
 
-      @include m(active) {
-        border: 1px solid var(--theme-primary);
-      }
+    @include m(active) {
+      border-color: var(--dot-active-border-color);
     }
   }
 
   // 滑动控制器
-  @include e(handle) {
+  @include e(knob) {
     position: absolute;
     left: 0;
-    margin-top: calc((var(--slider-handle-size) + var(--slider-line-height)) / -2);
-    margin-left: calc(var(--slider-handle-size) / -2);
-    width: var(--slider-handle-size);
-    height: var(--slider-handle-size);
+    margin-top: calc((var(--knob-size) + var(--line-size)) / -2);
+    margin-left: calc(var(--knob-size) / -2);
+    width: var(--knob-size);
+    height: var(--knob-size);
     border-radius: 50%;
-    background-color: var(--slider-handle-background);
-    box-shadow: var(--slider-handle-shadow);
+    background-color: var(--knob-background);
+    box-shadow: var(--knob-box-shadow);
     touch-action: none;
+    cursor: pointer;
 
     @include b(tooltip) {
       display: block;
     }
 
-    @include e(handle__shadow) {
-      width: var(--slider-handle-size);
-      height: var(--slider-handle-size);
+    @include e(knob__shadow) {
+      width: var(--knob-size);
+      height: var(--knob-size);
     }
   }
 
   // 标签
   @include e(marks) {
     position: absolute;
-    font-size: var(--slider-mark-size);
-    top: r(10);
+    top: var(--mark-spacing);
     left: 0;
     right: 0;
-    color: var(--slider-line-background);
 
     @include e(mark) {
       position: absolute;
       transform: translateX(-50%);
-      color: var(--theme-primary);
+      font-size: var(--mark-font-size);
+      color: var(--mark-text-color);
     }
   }
 
-  // 横向显示标签
+  // 显示标签状态
   @include m(marked) {
-    @include e(content) {
-      margin: calc(var(--slider-handle-size-small) / 2) calc(var(--slider-handle-size-small) / 2);
-    }
-
-    @include e(handle) {
-      width: var(--slider-handle-size-small);
-      height: var(--slider-handle-size-small);
-      margin-top: calc((var(--slider-handle-size-small) + var(--slider-line-height)) / -2);
-      margin-left: calc(var(--slider-handle-size-small) / -2);
-
-      @include e(handle__shadow) {
-        width: var(--slider-handle-size-small);
-        height: var(--slider-handle-size-small);
-      }
-    }
+    @include define(knob-size, var(--knob-size-small));
   }
 
   // 禁用状态
@@ -111,12 +116,8 @@
     height: 100%;
     align-items: initial;
 
-    @include e(content) {
-      margin: calc(var(--slider-handle-size) / 2) calc(var(--slider-handle-size) / 2);
-    }
-
     @include e(line) {
-      width: var(--slider-vertical-line-width);
+      width: var(--line-size);
       position: absolute;
       top: 0;
       height: 100%;
@@ -124,42 +125,31 @@
       @include e(line__bg) {
         position: absolute;
         bottom: 0;
-        width: var(--slider-line-height);
+        width: var(--line-size);
       }
     }
 
-    @include e(line__dot) {
-      margin-bottom: calc(var(--slider-line-dot-width) / -2);
-      margin-left: calc((var(--slider-line-dot-width) - var(--slider-line-height)) / -2);
+    @include e(dot) {
+      margin-bottom: calc(var(--dot-size) / -2);
+      margin-left: calc((var(--dot-size) - var(--line-size)) / -2);
     }
 
-    @include e(handle) {
-      margin-top: calc(var(--slider-handle-size) / -2);
+    @include e(knob) {
+      margin-top: 0;
+      margin-bottom: calc(var(--knob-size) / -2);
+      margin-left: calc((var(--knob-size) - var(--line-size)) / -2);
     }
 
-    // 垂直显示标签
+    // 显示标签状态
     @include m(marked) {
-      @include e(content) {
-        margin: calc(var(--slider-handle-size-small) / 2) calc(var(--slider-handle-size-small) / 2);
-      }
-
       @include e(marks) {
         top: 0;
-        left: r(15);
-        width: r(20);
+        left: var(--mark-spacing);
         height: 100%;
       }
 
       @include e(mark) {
         transform: translateY(50%);
-      }
-
-      @include e(handle) {
-        margin-top: 0;
-        margin-bottom: calc(var(--slider-handle-size-small) / -2);
-        margin-left: calc((var(--slider-handle-size-small) - var(--slider-line-height)) / -2);
-        width: var(--slider-handle-size-small);
-        height: var(--slider-handle-size-small);
       }
     }
   }

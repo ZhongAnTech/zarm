@@ -1,48 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`templates component should create component template 1`] = `
-"import React, { PureComponent } from 'react';
+"import * as React from 'react';
 import classnames from 'classnames';
+import { ConfigContext } from '../config-provider';
+import type { BaseMyTestComponentProps } from './interface';
 
-export interface MyTestComponentProps {
-  prefixCls?: string;
+export interface MyTestComponentProps extends BaseMyTestComponentProps {
   className?: string;
 }
 
-export interface MyTestComponentStates {
+const MyTestComponent = React.forwardRef<unknown, MyTestComponentProps>((props, ref) => {
+  const { className, children, ...restProps } = props;
 
-}
+  const compRef = (ref as any) || React.createRef<HTMLDivElement>();
 
-export default class MyTestComponent extends PureComponent<MyTestComponentProps, MyTestComponentStates> {
-  static displayName = 'MyTestComponent';
+  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
+  const prefixCls = \`\${globalPrefixCls}-my-test-component\`;
+  const cls = classnames(prefixCls, className);
 
-  static defaultProps = {
-    prefixCls: 'za-my-test-component',
-  };
+  return (
+    <div ref={compRef} className={cls} {...restProps}>
+      {children}
+    </div>
+  );
+});
 
-  render() {
-    const {
-      prefixCls,
-      className,
-      children,
-    } = this.props;
+MyTestComponent.displayName = 'MyTestComponent';
 
-    const cls = classnames(prefixCls, className);
+MyTestComponent.defaultProps = {};
 
-    return (
-      <div className={cls}>
-        {children}
-      </div>
-    );
-  }
-}
+export default MyTestComponent;
+
 "
 `;
 
 exports[`templates component should create demo template 1`] = `
 "# MyTestComponent 组件名
-
-
 
 ## 基本用法
 \`\`\`jsx
@@ -55,25 +49,19 @@ ReactDOM.render(
 , mountNode);
 \`\`\`
 
-
-
 ## 用法二
 \`\`\`jsx
+import { useState } from 'react';
 import { MyTestComponent } from 'zarm';
 
-class Demo extends React.Component {
-  state = {
-  }
+const Demo = () => {
+  const [value, setValue] = useState();
 
-  render() {
-    return <MyTestComponent />;
-  }
-}
+  return <MyTestComponent />;
+};
 
 ReactDOM.render(<Demo />, mountNode);
 \`\`\`
-
-
 
 ## API
 
@@ -84,6 +72,8 @@ ReactDOM.render(<Demo />, mountNode);
 
 exports[`templates component should create index template 1`] = `
 "import MyTestComponent from './MyTestComponent';
+
+export type { MyTestComponentProps } from './MyTestComponent';
 
 export default MyTestComponent;
 "

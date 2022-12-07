@@ -3,47 +3,92 @@
 ## 基本用法
 
 ```jsx
-import { Loading, Cell, Button, ActivityIndicator } from 'zarm';
+import { useState } from 'react';
+import { Loading, List, Button, Icon } from 'zarm';
 
-const Demo = () => (
-  <>
-    <Cell
-      description={
-        <Button
-          size="xs"
-          onClick={() => {
-            Loading.show();
-            setTimeout(() => {
-              Loading.hide();
-            }, 3000);
-          }}
-        >
-          开启
-        </Button>
-      }
-    >
-      普通
-    </Cell>
+const Demo = () => {
+  const [visible, setVisible] = useState(false);
 
-    <Cell
-      description={
-        <Button
-          size="xs"
-          onClick={() => {
-            Loading.show({
-              content: <ActivityIndicator size="lg" />,
-              stayTime: 3000,
-            });
-          }}
-        >
-          开启
-        </Button>
-      }
-    >
-      自定义内容
-    </Cell>
-  </>
-);
+  return (
+    <>
+      <List>
+        <List.Item
+          title="普通"
+          suffix={
+            <Button
+              size="xs"
+              onClick={() => {
+                setVisible(true);
+                setTimeout(() => {
+                  setVisible(false);
+                }, 1000);
+              }}
+            >
+              开启
+            </Button>
+          }
+        />
+      </List>
+
+      <Loading
+        visible={visible}
+        afterClose={() => {
+          setVisible(false);
+        }}
+      />
+    </>
+  );
+};
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## useLoading
+
+```jsx
+import { Loading, List, Button, ActivityIndicator } from 'zarm';
+
+const Demo = () => {
+  const loading = Loading.useLoading();
+  return (
+    <List>
+      <List.Item
+        suffix={
+          <Button
+            size="xs"
+            onClick={() => {
+              loading.show();
+              setTimeout(() => {
+                loading.hide();
+              }, 3000);
+            }}
+          >
+            开启
+          </Button>
+        }
+      >
+        普通
+      </List.Item>
+      <List.Item
+        suffix={
+          <Button
+            size="xs"
+            onClick={() => {
+              loading.show({
+                content: <ActivityIndicator size="lg" />,
+                stayTime: 3000,
+              });
+            }}
+          >
+            开启
+          </Button>
+        }
+      >
+        自定义内容
+      </List.Item>
+    </List>
+  );
+};
 
 ReactDOM.render(<Demo />, mountNode);
 ```
@@ -60,15 +105,8 @@ ReactDOM.render(<Demo />, mountNode);
 | afterClose     | () => void                           | -             | Loading 隐藏后的回调函数           |
 | mountContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 Loading 挂载的 HTML 节点      |
 
-## 静态方法
+## CSS 变量
 
-```js
-// 显示加载 Loading.show(content: LoadingProps)
-Loading.show();
-Loading.show({
-  content: <ActivityIndicator size="lg" />,
-});
-
-// 隐藏Loading
-Loading.hide();
-```
+| 属性         | 默认值                                 | 说明   |
+| :----------- | :------------------------------------- | :----- |
+| --background | rgba(0, 0, 0, var(--za-opacity-toast)) | 背景色 |

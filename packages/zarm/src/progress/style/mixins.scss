@@ -17,12 +17,12 @@ $themeMap: (
 
 @mixin progress-type() {
   @include e(track) {
-    stroke: var(--progress-background);
+    stroke: var(--background);
     fill-opacity: 0;
   }
 
   @include e(thumb) {
     fill-opacity: 0;
-    transition: stroke-dashoffset .6s ease, stroke .6s ease;
+    transition: stroke-dashoffset 0.6s ease, stroke 0.6s ease;
   }
 }

@@ -1,58 +1,113 @@
-@import 'mixins';
-
 @include b(tooltip) {
-  padding: var(--tooltip-padding-v) var(--tooltip-padding-h);
-  background-color: var(--tooltip-background);
-  border-radius: r(4);
-  font-size: var(--tooltip-font-size);
-  color: var(--tooltip-color);
-  z-index: var(--zindex-tooltip);
+  @include define(padding-vertical, var(--za-padding-v-xs));
+  @include define(padding-horizontal, var(--za-padding-h-xs));
+  @include define(font-size, 12px);
+  @include define(color, var(--za-color-text-inverse));
+  @include define(arrow-size, 4px);
+  @include define(background, rgba(0, 0, 0, 0.8));
+  @include define(z-index, 1700);
+  @include define(spacing, 3px);
+  @include define(arrow-vertical-offset, 6px);
+  @include define(arrow-horizontal-offset, 10px);
 
-  &[x-placement^=right] {
-    margin-left: r(10);
+  padding: var(--padding-vertical) var(--padding-horizontal);
+  background-color: var(--background);
+  border-radius: 4px;
+  font-size: var(--font-size);
+  color: var(--color);
+  z-index: var(--z-index);
 
-    @include arrow () {
-      left: r(-4);
-      border-width: var(--tooltip-arrow-size) var(--tooltip-arrow-size) var(--tooltip-arrow-size) 0;
-      border-right-color: var(--tooltip-background);
+  &[data-popper-placement^='right'] {
+    margin-left: var(--spacing);
+
+    @include b(popper) {
+      @include e(arrow) {
+        left: calc(var(--arrow-size) * -1);
+        border-width: var(--arrow-size) var(--arrow-size) var(--arrow-size) 0;
+        border-right-color: var(--background);
+      }
     }
   }
 
-  &[x-placement^=top] {
-    margin-bottom: r(10);
+  &[data-popper-placement^='top'] {
+    margin-top: calc(var(--spacing) * -1);
 
-    @include arrow () {
-      bottom: r(-4);
-      border-width: var(--tooltip-arrow-size) var(--tooltip-arrow-size) 0;
-      border-top-color: var(--tooltip-background);
+    @include b(popper) {
+      @include e(arrow) {
+        bottom: calc(var(--arrow-size) * -1);
+        border-width: var(--arrow-size) var(--arrow-size) 0;
+        border-top-color: var(--background);
+      }
     }
   }
 
-  &[x-placement^=bottom] {
-    margin-top: r(10);
+  &[data-popper-placement^='bottom'] {
+    margin-top: var(--spacing);
 
-    @include arrow () {
-      top: r(-4);
-      border-width: 0 var(--tooltip-arrow-size) var(--tooltip-arrow-size) var(--tooltip-arrow-size);
-      border-bottom-color: var(--tooltip-background);
+    @include b(popper) {
+      @include e(arrow) {
+        top: calc(var(--arrow-size) * -1);
+        border-width: 0 var(--arrow-size) var(--arrow-size) var(--arrow-size);
+        border-bottom-color: var(--background);
+      }
     }
   }
 
-  &[x-placement^=left] {
-    margin-right: r(10);
+  &[data-popper-placement^='left'] {
+    margin-left: calc(var(--spacing) * -1);
 
-    @include arrow () {
-      right: r(-4);
-      border-width: var(--tooltip-arrow-size) 0 var(--tooltip-arrow-size) var(--tooltip-arrow-size);
-      border-left-color: var(--tooltip-background);
+    @include b(popper) {
+      @include e(arrow) {
+        right: calc(var(--arrow-size) * -1);
+        border-width: var(--arrow-size) 0 var(--arrow-size) var(--arrow-size);
+        border-left-color: var(--background);
+      }
     }
   }
 
-  @include e(arrow) {
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-color: transparent;
-    border-style: solid;
+  &[data-popper-placement='top-start'],
+  &[data-popper-placement='bottom-start'] {
+    @include b(popper) {
+      @include e(arrow) {
+        left: var(--arrow-horizontal-offset);
+      }
+    }
+  }
+
+  &[data-popper-placement='top-end'],
+  &[data-popper-placement='bottom-end'] {
+    @include b(popper) {
+      @include e(arrow) {
+        right: var(--arrow-horizontal-offset);
+      }
+    }
+  }
+
+  &[data-popper-placement='left-start'],
+  &[data-popper-placement='right-start'] {
+    @include b(popper) {
+      @include e(arrow) {
+        top: var(--arrow-vertical-offset);
+      }
+    }
+  }
+
+  &[data-popper-placement='left-end'],
+  &[data-popper-placement='right-end'] {
+    @include b(popper) {
+      @include e(arrow) {
+        bottom: var(--arrow-vertical-offset);
+      }
+    }
+  }
+
+  @include b(popper) {
+    @include e(arrow) {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-color: transparent;
+      border-style: solid;
+    }
   }
 }

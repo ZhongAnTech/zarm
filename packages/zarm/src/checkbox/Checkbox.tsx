@@ -1,164 +1,188 @@
-import React, {
-  PureComponent,
-  ChangeEvent,
-  InputHTMLAttributes,
-  HTMLAttributes,
-  ButtonHTMLAttributes,
-} from 'react';
-import classnames from 'classnames';
-import { BaseCheckboxProps } from './PropsType';
-import CheckboxGroup from './CheckboxGroup';
-import Cell from '../cell';
+import * as React from 'react';
+import { createBEM } from '@zarm-design/bem';
+import { Success as SuccessIcon, Minus as MinusIcon } from '@zarm-design/icons';
+import { ConfigContext } from '../config-provider';
+import Button from '../button';
+import List from '../list';
+import type { BaseCheckboxProps, BaseCheckboxGroupProps } from './interface';
+import type { ListItemProps } from '../list';
+import type { ButtonProps } from '../button';
+import type { HTMLProps } from '../utils/utilityTypes';
 
-const getChecked = (props: CheckboxProps, defaultChecked: boolean) => {
-  if (typeof props.checked !== 'undefined') {
-    return props.checked;
-  }
-  if (typeof props.defaultChecked !== 'undefined') {
-    return props.defaultChecked;
-  }
-  return defaultChecked;
-};
-
-type CheckboxSpanProps = Omit<
-  InputHTMLAttributes<HTMLInputElement>,
-  'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
->;
-type CheckboxCellProps = Omit<
-  HTMLAttributes<HTMLDivElement>,
-  'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
->;
-type CheckboxButtonProps = Omit<
-  ButtonHTMLAttributes<HTMLButtonElement>,
-  'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
->;
-
-export type CheckboxProps = Partial<CheckboxSpanProps & CheckboxCellProps & CheckboxButtonProps> &
-  BaseCheckboxProps & {
-    prefixCls?: string;
-  };
-
-export interface CheckboxStates {
-  checked?: boolean;
-  prevChecked?: boolean;
+export interface CheckboxCssVars {
+  '--widget-size'?: React.CSSProperties['height'];
+  '--widget-background'?: React.CSSProperties['background'];
+  '--widget-border-radius'?: React.CSSProperties['borderRadius'];
+  '--widget-border-width'?: React.CSSProperties['borderWidth'];
+  '--widget-border-color'?: React.CSSProperties['borderColor'];
+  '--marker-font-size'?: React.CSSProperties['fontSize'];
+  '--marker-color'?: React.CSSProperties['color'];
+  '--marker-transition'?: React.CSSProperties['transition'];
+  '--text-margin-horizontal'?: React.CSSProperties['marginLeft'];
+  '--active-opacity'?: React.CSSProperties['opacity'];
+  '--checked-widget-background'?: React.CSSProperties['background'];
+  '--checked-widget-border-color'?: React.CSSProperties['borderColor'];
+  '--checked-marker-color'?: React.CSSProperties['color'];
+  '--disabled-widget-background'?: React.CSSProperties['background'];
+  '--disabled-widget-border-color'?: React.CSSProperties['borderColor'];
+  '--disabled-text-color'?: React.CSSProperties['color'];
+  '--disabled-marker-color'?: React.CSSProperties['color'];
+  '--group-spacing-vertical'?: React.CSSProperties['marginBottom'];
+  '--group-spacing-horizontal'?: React.CSSProperties['marginRight'];
 }
 
-export default class Checkbox extends PureComponent<CheckboxProps, CheckboxStates> {
-  static Group: typeof CheckboxGroup;
+const getChecked = (props: CheckboxProps, defaultChecked?: boolean) => {
+  return props.checked ?? props.defaultChecked ?? defaultChecked;
+};
 
-  static displayName = 'Checkbox';
-
-  static defaultProps: CheckboxProps = {
-    prefixCls: 'za-checkbox',
-    disabled: false,
-    indeterminate: false,
+type CheckboxNormalProps = BaseCheckboxProps &
+  HTMLProps<CheckboxCssVars> & {
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   };
 
-  state: CheckboxStates = {
-    checked: getChecked(this.props, false),
-  };
+type CheckboxButtonProps = CheckboxNormalProps &
+  ButtonProps &
+  Pick<BaseCheckboxGroupProps, 'buttonGhost' | 'buttonSize' | 'buttonShape'>;
 
-  static getDerivedStateFromProps(nextProps: CheckboxProps, state: CheckboxStates) {
-    if ('checked' in nextProps && nextProps.checked !== state.prevChecked) {
-      return {
-        checked: nextProps.checked,
-        prevChecked: nextProps.checked,
-      };
-    }
+export type CheckboxProps = Partial<CheckboxNormalProps & CheckboxButtonProps>;
 
-    return null;
-  }
+const Checkbox = React.forwardRef<unknown, CheckboxButtonProps>((props, ref) => {
+  const {
+    className,
+    type,
+    value,
+    checked,
+    defaultChecked,
+    disabled,
+    id,
+    listMarkerAlign,
+    indeterminate,
+    buttonGhost,
+    buttonShape,
+    buttonSize,
+    children,
+    onChange,
+    ...restProps
+  } = props;
+  const checkboxRef = (ref as any) || React.createRef<HTMLElement>();
+  const [currentChecked, setCurrentChecked] = React.useState(
+    getChecked({ checked, defaultChecked }),
+  );
 
-  onValueChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { disabled, onChange } = this.props;
-    const { checked } = this.state;
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('checkbox', { prefixCls });
 
+  const cls = bem([
+    {
+      checked: currentChecked,
+      disabled,
+      untext: !children,
+      indeterminate,
+    },
+    className,
+  ]);
+
+  const onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (disabled) {
       return;
     }
-
-    const newChecked = !checked;
-    if (!('checked' in this.props)) {
-      this.setState({ checked: newChecked });
+    const newChecked = !currentChecked;
+    if (!('checked' in props)) {
+      setCurrentChecked(newChecked);
     }
 
     typeof onChange === 'function' && onChange(e);
   };
 
-  render() {
-    const {
-      prefixCls,
-      className,
-      type,
-      shape,
-      value,
-      checked,
-      defaultChecked,
-      disabled,
-      id,
-      indeterminate,
-      children,
-      onChange,
-      ...rest
-    } = this.props;
-    const { checked: checkedState } = this.state;
+  const inputRender = (
+    <input
+      id={id}
+      type="checkbox"
+      aria-checked={currentChecked}
+      className={bem('input')}
+      disabled={disabled}
+      value={value}
+      defaultChecked={'defaultChecked' in props ? defaultChecked : undefined}
+      checked={'checked' in props ? currentChecked : undefined}
+      onChange={onValueChange}
+    />
+  );
 
-    const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--checked`]: checkedState,
-      [`${prefixCls}--disabled`]: disabled,
-      [`${prefixCls}--indeterminate`]: indeterminate,
-      [`${prefixCls}--untext`]: !children,
-    });
-
-    const inputRender = (
-      <input
-        id={id}
-        type="checkbox"
-        className={`${prefixCls}__input`}
-        value={value}
-        disabled={disabled}
-        checked={checkedState}
-        onChange={this.onValueChange}
-      />
-    );
-
-    const checkboxRender = (
-      <span className={cls} {...(rest as CheckboxSpanProps)}>
-        <span className={`${prefixCls}__widget`}>
-          <span className={`${prefixCls}__inner`} />
+  const checkboxRender = (
+    <span ref={checkboxRef} className={cls} {...(restProps as CheckboxNormalProps)}>
+      <span className={bem('widget')}>
+        <span className={bem('inner')}>
+          {indeterminate ? (
+            <MinusIcon className={bem('marker')} />
+          ) : (
+            <SuccessIcon className={bem('marker')} />
+          )}
         </span>
-        {children && <span className={`${prefixCls}__text`}>{children}</span>}
-        {inputRender}
       </span>
+      {children && <span className={bem('text')}>{children}</span>}
+      {inputRender}
+    </span>
+  );
+
+  React.useEffect(() => {
+    setCurrentChecked(getChecked({ checked, defaultChecked }));
+  }, [checked, defaultChecked]);
+
+  if (type === 'list') {
+    const marker = (
+      <>
+        <span className={bem('widget')}>
+          <span className={bem('inner')}>
+            <SuccessIcon className={bem('marker')} />
+          </span>
+        </span>
+        {inputRender}
+      </>
     );
 
-    if (type === 'cell') {
-      return (
-        <Cell
-          disabled={disabled}
-          className={className}
-          onClick={() => {}}
-          {...(rest as CheckboxCellProps)}
-        >
-          {checkboxRender}
-        </Cell>
-      );
-    }
-
-    if (type === 'button') {
-      return (
-        <button
-          type="button"
-          disabled={disabled}
-          className={cls}
-          {...(rest as CheckboxButtonProps)}
-        >
-          {children}
+    const listProps: ListItemProps = {
+      hasArrow: false,
+      className: cls,
+      title: (
+        <>
+          {children && <span className={bem('text')}>{children}</span>}
           {inputRender}
-        </button>
-      );
-    }
+        </>
+      ),
+      onClick: !disabled ? () => {} : undefined,
+    };
 
-    return checkboxRender;
+    listMarkerAlign === 'after' ? (listProps.suffix = marker) : (listProps.prefix = marker);
+
+    return <List.Item ref={checkboxRef} {...listProps} />;
   }
-}
+
+  if (type === 'button') {
+    return (
+      <Button
+        ref={checkboxRef}
+        className={cls}
+        disabled={disabled}
+        theme={checked ? 'primary' : 'default'}
+        ghost={buttonGhost && checked}
+        shape={buttonShape}
+        size={buttonSize}
+        {...(restProps as CheckboxButtonProps)}
+      >
+        {children}
+        {inputRender}
+      </Button>
+    );
+  }
+
+  return checkboxRender;
+});
+
+Checkbox.displayName = 'Checkbox';
+
+Checkbox.defaultProps = {
+  disabled: false,
+  indeterminate: false,
+};
+
+export default Checkbox;

@@ -7,77 +7,63 @@ import Context from '@/utils/context';
 import { documents, components } from '@/site.config';
 import './style.scss';
 
-const getDocs = (locale) => {
-  return documents.map((doc) => (
-    <Menu.Item key={doc.key}>
-      <a href={`#/docs/${doc.key}`}>{locale === 'zhCN' ? doc.name : pascalCase(doc.key)}</a>
-    </Menu.Item>
+const getDocs = (docs) =>
+  Object.keys(docs).map((group) => (
+    <Menu.ItemGroup key={group} title={<FormattedMessage id={`app.docs.group.${group}`} />}>
+      {docs[group].map((obj) => (
+        <Menu.Item key={obj.key}>
+          <a href={`#/docs/${obj.key}`}>
+            <FormattedMessage id={`app.docs.article.${obj.key}`} />
+          </a>
+        </Menu.Item>
+      ))}
+    </Menu.ItemGroup>
   ));
-};
 
-const getMenus = (locale, key) => {
-  const list = components[key] || [];
-  return (
-    <Menu.ItemGroup title={<FormattedMessage id={`app.components.type.${key}`} />} key={key}>
-      {list
+const getComponents = (comps, locale) =>
+  Object.keys(comps).map((group) => (
+    <Menu.ItemGroup
+      key={group}
+      title={
+        <>
+          <FormattedMessage id={`app.components.group.${group}`} />（{comps[group].length}）
+        </>
+      }
+    >
+      {comps[group]
         .sort((a, b) => {
           return a.key.localeCompare(b.key);
         })
-        .map((component) => (
-          <Menu.Item key={component.key}>
-            <a href={`#/components/${component.key}`}>
-              <span>{pascalCase(component.key)}</span>
-              {locale === 'zhCN' && <span className="chinese">{component.name}</span>}
+        .map((obj) => (
+          <Menu.Item key={obj.key}>
+            <a href={`#/components/${obj.key}`}>
+              <span>{group === 'hooks' ? obj.key : pascalCase(obj.key)}</span>
+              {locale === 'zhCN' && <span className="chinese">{obj.name}</span>}
             </a>
           </Menu.Item>
         ))}
     </Menu.ItemGroup>
-  );
-};
+  ));
 
 const MenuComponent = () => {
+  const { locale } = useContext(Context);
   const params = useParams();
   const isComponentPage = !!useRouteMatch('/components');
-  const { locale } = useContext(Context);
 
-  let selectedKeys = [params.doc];
+  let selectedKeys;
+  let menuRender;
+
   if (isComponentPage) {
     selectedKeys = [params.component];
+    menuRender = getComponents(components, locale);
+  } else {
+    selectedKeys = [params.doc];
+    menuRender = getDocs(documents);
   }
-
-  const menuRender = () => {
-    if (isComponentPage) {
-      return (
-        <>
-          {getMenus(locale, 'general')}
-          {getMenus(locale, 'form')}
-          {getMenus(locale, 'view')}
-          {getMenus(locale, 'feedback')}
-          {getMenus(locale, 'navigation')}
-          {getMenus(locale, 'other')}
-        </>
-      );
-    }
-
-    return getDocs(locale);
-  };
 
   return (
     <div className="menu">
-      <Menu
-        defaultOpenKeys={[
-          'components',
-          'general',
-          'form',
-          'feedback',
-          'view',
-          'navigation',
-          'other',
-        ]}
-        selectedKeys={selectedKeys}
-      >
-        {menuRender()}
-      </Menu>
+      <Menu selectedKeys={selectedKeys}>{menuRender}</Menu>
     </div>
   );
 };

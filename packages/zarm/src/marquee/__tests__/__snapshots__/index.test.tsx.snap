@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Marquee renders correctly 1`] = `
+<div>
+  <div>
+    <div
+      class="za-marquee"
+    >
+      <div
+        class="za-marquee__body"
+        style="width: 100%; height: 150px; --transform-x: 0px; --transform-y: 0px; --distance-x: 0px; --distance-y: 0px; animation-delay: 5000ms; animation-duration: 0ms;"
+      >
+        <div
+          class="za-marquee__content"
+        >
+          测试我在滚动
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

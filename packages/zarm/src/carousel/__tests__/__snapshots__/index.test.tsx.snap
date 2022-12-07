@@ -1,0 +1,299 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Carousel base render correctly 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="za-carousel za-carousel--horizontal"
+    >
+      <div
+        class="za-carousel__items"
+        style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0);"
+      >
+        <div
+          class="za-carousel__item"
+        >
+          0
+        </div>
+        <div
+          class="za-carousel__item"
+        >
+          1
+        </div>
+        <div
+          class="za-carousel__item"
+        >
+          2
+        </div>
+      </div>
+      <div
+        class="za-carousel__pagination"
+      >
+        <div
+          class="za-carousel__pagination__item za-carousel__pagination__item--active"
+        />
+        <div
+          class="za-carousel__pagination__item"
+        />
+        <div
+          class="za-carousel__pagination__item"
+        />
+      </div>
+    </div>
+    <div
+      class="za-carousel za-carousel--horizontal"
+    >
+      <div
+        class="za-carousel__items"
+        style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0);"
+      />
+      <div
+        class="za-carousel__pagination"
+      />
+    </div>
+    <div
+      class="za-carousel za-carousel--horizontal"
+    >
+      <div
+        class="za-carousel__items"
+        style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0);"
+      />
+      <div
+        class="za-carousel__pagination"
+      />
+    </div>
+    <div
+      class="za-carousel za-carousel--horizontal"
+    >
+      <div
+        class="za-carousel__items"
+        style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0);"
+      >
+        <div
+          class="za-carousel__item"
+        >
+          0
+        </div>
+      </div>
+      <div
+        class="za-carousel__pagination"
+      >
+        <div
+          class="za-carousel__pagination__item za-carousel__pagination__item--active"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Carousel className render correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="za-carousel za-carousel--horizontal za-wrapper-test"
+  >
+    <div
+      class="za-carousel__items"
+      style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0);"
+    />
+    <div
+      class="za-carousel__pagination"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Carousel height render correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="za-carousel za-carousel--vertical"
+  >
+    <div
+      class="za-carousel__items"
+      style="height: 150px; transition-duration: 0ms; transform: translate3d(0px, 0px, 0);"
+    >
+      <div
+        class="za-carousel__item"
+      >
+        0
+      </div>
+      <div
+        class="za-carousel__item"
+      >
+        1
+      </div>
+      <div
+        class="za-carousel__item"
+      >
+        2
+      </div>
+    </div>
+    <div
+      class="za-carousel__pagination"
+    >
+      <div
+        class="za-carousel__pagination__item za-carousel__pagination__item--active"
+      />
+      <div
+        class="za-carousel__pagination__item"
+      />
+      <div
+        class="za-carousel__pagination__item"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Carousel pagination render correctly 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="za-carousel za-carousel--horizontal"
+    >
+      <div
+        class="za-carousel__items"
+        style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0);"
+      >
+        <div
+          class="za-carousel__item"
+        >
+          0
+        </div>
+        <div
+          class="za-carousel__item"
+        >
+          1
+        </div>
+        <div
+          class="za-carousel__item"
+        >
+          2
+        </div>
+      </div>
+      <div
+        class="za-carousel__pagination"
+      >
+        <div
+          class="za-carousel__pagination__item za-carousel__pagination__item--active"
+        />
+        <div
+          class="za-carousel__pagination__item"
+        />
+        <div
+          class="za-carousel__pagination__item"
+        />
+      </div>
+    </div>
+    <div
+      class="za-carousel za-carousel--horizontal"
+    >
+      <div
+        class="za-carousel__items"
+        style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0);"
+      >
+        <div
+          class="za-carousel__item"
+        >
+          0
+        </div>
+        <div
+          class="za-carousel__item"
+        >
+          1
+        </div>
+        <div
+          class="za-carousel__item"
+        >
+          2
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Carousel prefixCls render correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="za-carousel za-carousel--horizontal"
+  >
+    <div
+      class="za-carousel__items"
+      style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0);"
+    >
+      <div
+        class="za-carousel__item"
+      >
+        0
+      </div>
+    </div>
+    <div
+      class="za-carousel__pagination"
+    >
+      <div
+        class="za-carousel__pagination__item za-carousel__pagination__item--active"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Carousel style render correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="za-carousel za-carousel--horizontal"
+    style="background: red;"
+  >
+    <div
+      class="za-carousel__items"
+      style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0);"
+    />
+    <div
+      class="za-carousel__pagination"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Carousel swipeable 1`] = `
+<DocumentFragment>
+  <div
+    class="za-carousel za-carousel--horizontal"
+  >
+    <div
+      class="za-carousel__items"
+      style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0);"
+    >
+      <div
+        class="za-carousel__item"
+      >
+        0
+      </div>
+      <div
+        class="za-carousel__item"
+      >
+        1
+      </div>
+      <div
+        class="za-carousel__item"
+      >
+        2
+      </div>
+    </div>
+    <div
+      class="za-carousel__pagination"
+    >
+      <div
+        class="za-carousel__pagination__item za-carousel__pagination__item--active"
+      />
+      <div
+        class="za-carousel__pagination__item"
+      />
+      <div
+        class="za-carousel__pagination__item"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -1,156 +1,181 @@
-import React, {
-  PureComponent,
-  ChangeEvent,
-  InputHTMLAttributes,
-  HTMLAttributes,
-  ButtonHTMLAttributes,
-} from 'react';
-import classnames from 'classnames';
-import { BaseRadioProps } from './PropsType';
-import RadioGroup from './RadioGroup';
-import Cell from '../cell';
+import * as React from 'react';
+import { createBEM } from '@zarm-design/bem';
+import { Success as SuccessIcon } from '@zarm-design/icons';
+import type { BaseRadioProps, BaseRadioGroupProps } from './interface';
+import Button from '../button';
+import List from '../list';
+import type { ListItemProps } from '../list';
+import { ConfigContext } from '../config-provider';
+import type { ButtonProps } from '../button';
+import type { HTMLProps } from '../utils/utilityTypes';
 
-const getChecked = (props: RadioProps, defaultChecked: boolean) => {
-  if (typeof props.checked !== 'undefined') {
-    return props.checked;
-  }
-  if (typeof props.defaultChecked !== 'undefined') {
-    return props.defaultChecked;
-  }
-  return defaultChecked;
-};
-
-type RadioSpanProps = Omit<
-  InputHTMLAttributes<HTMLInputElement>,
-  'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
->;
-type RadioCellProps = Omit<
-  HTMLAttributes<HTMLDivElement>,
-  'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
->;
-type RadioButtonProps = Omit<
-  ButtonHTMLAttributes<HTMLButtonElement>,
-  'type' | 'defaultChecked' | 'checked' | 'value' | 'onChange'
->;
-
-export type RadioProps = Partial<RadioSpanProps & RadioCellProps & RadioButtonProps> &
-  BaseRadioProps & {
-    prefixCls?: string;
-  };
-
-export interface RadioStates {
-  checked: boolean;
+export interface RadioCssVars {
+  '--widget-size'?: React.CSSProperties['height'];
+  '--widget-background'?: React.CSSProperties['background'];
+  '--widget-border-radius'?: React.CSSProperties['borderRadius'];
+  '--widget-border-width'?: React.CSSProperties['borderWidth'];
+  '--widget-border-color'?: React.CSSProperties['borderColor'];
+  '--marker-font-size'?: React.CSSProperties['fontSize'];
+  '--marker-color'?: React.CSSProperties['color'];
+  '--marker-transition'?: React.CSSProperties['transition'];
+  '--text-margin-horizontal'?: React.CSSProperties['marginLeft'];
+  '--active-opacity'?: React.CSSProperties['opacity'];
+  '--checked-widget-background'?: React.CSSProperties['background'];
+  '--checked-widget-border-color'?: React.CSSProperties['borderColor'];
+  '--checked-marker-color'?: React.CSSProperties['color'];
+  '--disabled-widget-background'?: React.CSSProperties['background'];
+  '--disabled-widget-border-color'?: React.CSSProperties['borderColor'];
+  '--disabled-text-color'?: React.CSSProperties['color'];
+  '--disabled-marker-color'?: React.CSSProperties['color'];
 }
 
-export default class Radio extends PureComponent<RadioProps, RadioStates> {
-  static Group: typeof RadioGroup;
+const getChecked = (props: RadioProps, defaultChecked: boolean) => {
+  return props.checked ?? props.defaultChecked ?? defaultChecked;
+};
 
-  static defaultProps: RadioProps = {
-    prefixCls: 'za-radio',
-    disabled: false,
-    shape: 'radius',
+type RadioNormalProps = BaseRadioProps &
+  HTMLProps<RadioCssVars> & {
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   };
 
-  state: RadioStates = {
-    checked: getChecked(this.props, false),
-  };
+type RadioButtonProps = RadioNormalProps &
+  ButtonProps &
+  Pick<BaseRadioGroupProps, 'buttonGhost' | 'buttonSize' | 'buttonShape'>;
 
-  static getDerivedStateFromProps(nextProps: RadioProps, state) {
-    if ('checked' in nextProps && nextProps.checked !== state.prevChecked) {
-      return {
-        checked: nextProps.checked,
-        prevChecked: nextProps.checked,
-      };
-    }
+export type RadioProps = Partial<RadioNormalProps & RadioButtonProps>;
 
-    return null;
-  }
+const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
+  const {
+    className,
+    type,
+    value,
+    checked,
+    defaultChecked,
+    disabled,
+    id,
+    listMarkerAlign,
+    buttonGhost,
+    buttonShape,
+    buttonSize,
+    children,
+    onChange,
+    ...restProps
+  } = props;
 
-  onValueChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { disabled, onChange } = this.props;
-    const { checked } = this.state;
+  const radioRef = (ref as any) || React.createRef<HTMLElement>();
+  const [currentChecked, setCurrentChecked] = React.useState(
+    getChecked({ checked, defaultChecked }, false),
+  );
 
+  const { prefixCls } = React.useContext(ConfigContext);
+
+  const bem = createBEM('radio', { prefixCls });
+
+  const cls = bem([
+    {
+      checked: currentChecked,
+      disabled,
+      untext: !children,
+    },
+    className,
+  ]);
+
+  const onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (disabled) {
       return;
     }
-
-    const newChecked = !checked;
-    if (!('checked' in this.props)) {
-      this.setState({ checked: newChecked });
+    const newChecked = !currentChecked;
+    if (!('checked' in props)) {
+      setCurrentChecked(newChecked);
     }
 
-    if (typeof onChange === 'function') {
-      onChange(e);
-    }
+    typeof onChange === 'function' && onChange(e);
   };
 
-  render() {
-    const {
-      prefixCls,
-      className,
-      type,
-      shape,
-      value,
-      checked,
-      defaultChecked,
-      disabled,
-      id,
-      children,
-      onChange,
-      ...rest
-    } = this.props;
-    const { checked: checkedState } = this.state;
+  const inputRender = (
+    <input
+      id={id}
+      type="radio"
+      aria-checked={currentChecked}
+      className={bem('input')}
+      disabled={disabled}
+      value={value}
+      defaultChecked={'defaultChecked' in props ? defaultChecked : undefined}
+      checked={'checked' in props ? currentChecked : undefined}
+      onChange={onValueChange}
+    />
+  );
 
-    const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--checked`]: checkedState,
-      [`${prefixCls}--disabled`]: disabled,
-      [`${prefixCls}--untext`]: !children,
-    });
-
-    const inputRender = (
-      <input
-        id={id}
-        type="radio"
-        className={`${prefixCls}__input`}
-        value={value}
-        disabled={disabled}
-        checked={checkedState}
-        onChange={this.onValueChange}
-      />
-    );
-
-    const radioRender = (
-      <span className={cls} {...(rest as RadioSpanProps)}>
-        <span className={`${prefixCls}__widget`}>
-          <span className={`${prefixCls}__inner`} />
+  const radioRender = (
+    <span ref={radioRef} className={cls} {...(restProps as RadioNormalProps)}>
+      <span className={bem('widget')}>
+        <span className={bem('inner')}>
+          <SuccessIcon className={bem('marker')} />
         </span>
-        {children && <span className={`${prefixCls}__text`}>{children}</span>}
-        {inputRender}
       </span>
+      {children && <span className={bem('text')}>{children}</span>}
+      {inputRender}
+    </span>
+  );
+
+  React.useEffect(() => {
+    setCurrentChecked(getChecked({ checked, defaultChecked }, false));
+  }, [checked, defaultChecked]);
+
+  if (type === 'list') {
+    const marker = (
+      <>
+        <span className={bem('widget')}>
+          <span className={bem('inner')}>
+            <SuccessIcon className={bem('marker')} />
+          </span>
+        </span>
+        {inputRender}
+      </>
     );
 
-    if (type === 'cell') {
-      return (
-        <Cell
-          disabled={disabled}
-          className={className}
-          onClick={() => {}}
-          {...(rest as RadioCellProps)}
-        >
-          {radioRender}
-        </Cell>
-      );
-    }
-
-    if (type === 'button') {
-      return (
-        <button type="button" disabled={disabled} className={cls} {...(rest as RadioButtonProps)}>
-          {children}
+    const listProps: ListItemProps = {
+      hasArrow: false,
+      className: cls,
+      title: (
+        <>
+          {children && <span className={bem('text')}>{children}</span>}
           {inputRender}
-        </button>
-      );
-    }
+        </>
+      ),
+      onClick: !disabled ? () => {} : undefined,
+    };
 
-    return radioRender;
+    listMarkerAlign === 'after' ? (listProps.suffix = marker) : (listProps.prefix = marker);
+
+    return <List.Item ref={radioRef} {...listProps} />;
   }
-}
+
+  if (type === 'button') {
+    return (
+      <Button
+        ref={radioRef}
+        className={cls}
+        disabled={disabled}
+        theme={checked ? 'primary' : 'default'}
+        ghost={buttonGhost && checked}
+        shape={buttonShape}
+        size={buttonSize}
+        {...(restProps as RadioButtonProps)}
+      >
+        {children}
+        {inputRender}
+      </Button>
+    );
+  }
+
+  return radioRender;
+});
+
+Radio.displayName = 'Radio';
+
+Radio.defaultProps = {
+  disabled: false,
+};
+
+export default Radio;

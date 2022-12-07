@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PinchZoom snapshot renders correctly 1`] = `
+<div>
+  <div
+    class="za-pinch-zoom"
+  />
+</div>
+`;

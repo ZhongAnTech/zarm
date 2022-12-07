@@ -1,62 +1,47 @@
-import React, { PureComponent } from 'react';
-import classnames from 'classnames';
-import PropsType from './PropsType';
+import * as React from 'react';
+import { createBEM } from '@zarm-design/bem';
+import type { BaseConfirmProps } from './interface';
 import Modal from '../modal';
-import confirmLocale from './locale/zh_CN';
+import { ConfigContext } from '../config-provider';
+import type { HTMLProps } from '../utils/utilityTypes';
 
-export interface ConfirmProps extends PropsType {
-  prefixCls?: string;
-  className?: string;
-}
+export type ConfirmProps = BaseConfirmProps & HTMLProps;
 
-export default class Confirm extends PureComponent<ConfirmProps, {}> {
-  static defaultProps: ConfirmProps = {
-    prefixCls: 'za-confirm',
-    animationType: 'zoom',
-    locale: confirmLocale,
-    shape: 'radius',
-  };
+const Confirm = React.forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
+  const { className, content, confirmText, cancelText, onConfirm, onCancel, ...rest } = props;
+  const { prefixCls, locale } = React.useContext(ConfigContext);
+  const bem = createBEM('confirm', { prefixCls });
+  const cls = bem([className]);
 
-  render() {
-    const {
-      prefixCls,
-      className,
-      content,
-      okText,
-      cancelText,
-      shape,
-      onOk,
-      onCancel,
-      locale,
-      ...others
-    } = this.props;
-    const cls = {
-      confirm: classnames(prefixCls, className, {
-        [`${prefixCls}--${shape}`]: !!shape,
-      }),
-    };
-    return (
-      <div className={cls.confirm}>
-        <Modal
-          {...others}
-          footer={
-            <>
-              <button type="button" className={`${prefixCls}__button`} onClick={onCancel}>
-                {cancelText || locale!.cancelText}
-              </button>
-              <button
-                type="button"
-                className={`${prefixCls}__button ${prefixCls}__button--ok`}
-                onClick={onOk}
-              >
-                {okText || locale!.okText}
-              </button>
-            </>
-          }
-        >
-          {content}
-        </Modal>
-      </div>
-    );
-  }
-}
+  return (
+    <div className={cls} ref={ref}>
+      <Modal
+        {...rest}
+        actions={[
+          [
+            {
+              text: cancelText || locale?.Confirm.cancelText,
+              onClick: onCancel,
+            },
+            {
+              text: confirmText || locale?.Confirm.confirmText,
+              bold: true,
+              onClick: onConfirm,
+            },
+          ],
+        ]}
+      >
+        {content}
+      </Modal>
+    </div>
+  );
+});
+
+Confirm.displayName = 'Confirm';
+
+Confirm.defaultProps = {
+  animationType: 'zoom',
+  shape: 'radius',
+};
+
+export default Confirm;

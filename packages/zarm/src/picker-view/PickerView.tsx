@@ -1,94 +1,105 @@
-import React, { Component } from 'react';
-import classnames from 'classnames';
+import * as React from 'react';
+import { createBEM } from '@zarm-design/bem';
 import isEqual from 'lodash/isEqual';
-import BasePickerViewProps from './PropsType';
 import Wheel from '../wheel';
-import { isCascader } from '../utils/validate';
-import parseProps from './utils/parseProps';
-import removeFnFromProps from './utils/removeFnFromProps';
-import { WheelValue, WheelItem } from '../wheel/PropsType';
+import { isCascader, resolved } from './utils';
+import type { BasePickerViewProps, PickerViewColumnItem } from './interface';
+import type { WheelValue } from '../wheel/interface';
+import { ConfigContext } from '../config-provider';
+import type { HTMLProps } from '../utils/utilityTypes';
 
-export interface PickerViewProps extends BasePickerViewProps {
-  prefixCls?: string;
-  className?: string;
+export interface PickerViewCssVars {
+  '--background-color': React.CSSProperties['backgroundColor'];
+  '--padding': React.CSSProperties['padding'];
+  '--mask-start-background-color': React.CSSProperties['backgroundColor'];
+  '--mask-end-background-color': React.CSSProperties['backgroundColor'];
+  '--wheel-item-rows': number;
+  '--wheel-item-height': React.CSSProperties['height'];
+  '--wheel-item-font-size': React.CSSProperties['fontSize'];
+  '--wheel-item-text-color': React.CSSProperties['color'];
+  '--wheel-item-disabled-text-color': React.CSSProperties['color'];
+  '--wheel-item-selected-background-color': React.CSSProperties['backgroundColor'];
+  '--wheel-item-selected-border-radius': React.CSSProperties['borderRadius'];
 }
 
-export interface PickerViewState {
-  value: Array<WheelValue>;
-  dataSource: WheelItem[][];
+export type PickerViewProps = BasePickerViewProps & HTMLProps<PickerViewCssVars>;
+
+export interface PickerViewInstance {
+  value: WheelValue[];
+  items: PickerViewColumnItem[];
+  reset: () => void;
 }
 
-export default class PickerView extends Component<PickerViewProps, PickerViewState> {
-  static defaultProps = {
-    prefixCls: 'za-picker-view',
-    dataSource: [],
-    cols: Infinity,
-    valueMember: 'value',
-    itemRender: (data) => data.label,
-    disabled: false,
+const PickerView = React.forwardRef<PickerViewInstance, PickerViewProps>((props, ref) => {
+  const { className, style, cols, dataSource, fieldNames, itemRender, disabled, onChange } = props;
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('picker-view', { prefixCls });
+  const [innerValue, setInnerValue] = React.useState(resolved(props).value);
+  const [stopScroll, setStopScroll] = React.useState(false);
+
+  React.useEffect(() => {
+    if (props.value === undefined) return;
+    if (isEqual(props.value, innerValue)) return;
+    setInnerValue(resolved(props).value);
+  }, [props.value]);
+
+  const { columns, items } = React.useMemo(
+    () => resolved({ ...props, value: innerValue }),
+    [cols, innerValue, dataSource, fieldNames],
+  );
+
+  const reset = () => {
+    setStopScroll(true);
+    setTimeout(() => {
+      setInnerValue(resolved(props).value);
+      setStopScroll(false);
+    }, 0);
   };
 
-  state: PickerViewState = parseProps.getSource(this.props);
+  React.useImperativeHandle(ref, () => ({
+    value: innerValue,
+    items,
+    reset,
+  }));
 
-  // TODO: is this method still be used?
-  static getDerivedStateFromProps(props, state) {
-    if (
-      !isEqual(
-        removeFnFromProps(props, ['onChange']),
-        removeFnFromProps(state.prevProps, ['onChange']),
-      )
-    ) {
-      return {
-        prevProps: props,
-        ...parseProps.getSource(props),
-      };
-    }
-
-    return null;
-  }
-
-  onValueChange = (selected: WheelValue, level: number) => {
-    const value = this.state.value.slice();
-    const { dataSource, onChange, valueMember, cols } = this.props;
-
-    if (isCascader({ dataSource })) {
+  const onValueChange = (selected: WheelValue, level: number) => {
+    const value = innerValue.slice();
+    if (isCascader(props.dataSource)) {
       value.length = level + 1;
     }
     value[level] = selected;
-    const newState = parseProps.getSource({ dataSource, value, valueMember, cols });
-    this.setState(newState);
-    if (typeof onChange === 'function') {
-      onChange(newState.objValue, level);
-    }
+    const next = resolved({ ...props, value });
+    setInnerValue(next.value);
+    onChange?.(next.value, next.items, level);
   };
 
-  renderWheel = () => {
-    const { valueMember, itemRender, disabled, stopScroll } = this.props;
-    const { dataSource, value } = this.state;
-
-    return dataSource.map((item, index) => (
-      <Wheel
-        key={+index}
-        dataSource={item}
-        value={value[index]}
-        valueMember={valueMember}
-        itemRender={itemRender}
-        disabled={disabled}
-        onChange={(selected: WheelValue) => this.onValueChange(selected, index)}
-        stopScroll={stopScroll}
-      />
-    ));
-  };
-
-  render() {
-    const { prefixCls, className } = this.props;
-    const cls = classnames(prefixCls, className);
-    return (
-      <div className={cls}>
-        <div className={`${prefixCls}__content`}>{this.renderWheel()}</div>
-        <div className={`${prefixCls}__mask ${prefixCls}__mask--top`} />
-        <div className={`${prefixCls}__mask ${prefixCls}__mask--bottom`} />
+  return (
+    <div className={bem([className])} style={style}>
+      <div className={bem('content')}>
+        {columns.map((column, index) => (
+          <Wheel
+            key={+index}
+            dataSource={column}
+            value={innerValue?.[index]}
+            fieldNames={fieldNames}
+            itemRender={itemRender ? (item) => itemRender(item, index) : undefined}
+            disabled={disabled}
+            onChange={(selected: WheelValue) => onValueChange(selected, index)}
+            stopScroll={stopScroll}
+          />
+        ))}
       </div>
-    );
-  }
-}
+      <div className={bem('mask', [{ top: true }])} />
+      <div className={bem('mask', [{ bottom: true }])} />
+    </div>
+  );
+});
+
+PickerView.defaultProps = {
+  defaultValue: [],
+  dataSource: [],
+  cols: Infinity,
+  disabled: false,
+};
+
+export default PickerView;

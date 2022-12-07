@@ -1,234 +1,154 @@
-import React, { PureComponent } from 'react';
-import classnames from 'classnames';
-import type PropsType from './PropsType';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { createBEM } from '@zarm-design/bem';
+import { useDrag } from '@use-gesture/react';
+import isPlainObject from 'lodash/isPlainObject';
+import BaseSliderProps from './interface';
 import Events from '../utils/events';
-import Drag, { DragEvent, DragState } from '../drag';
 import Tooltip from '../tooltip';
 import ensureValuePrecision from './utils/ensureValuePrecision';
 import getValue from './utils/getValue';
-import preventDefault from './utils/preventDefault';
-import { isObject } from '../utils/validate';
+import { ConfigContext } from '../config-provider';
 
-export interface SliderProps extends PropsType {
-  prefixCls?: string;
-  className?: string;
+export interface SliderCssVars {
+  '--line-size'?: React.CSSProperties['width' | 'height'];
+  '--line-border-radius'?: React.CSSProperties['borderRadius'];
+  '--line-background'?: React.CSSProperties['background'];
+  '--line-active-background'?: React.CSSProperties['background'];
+  '--dot-size'?: React.CSSProperties['width' | 'height'];
+  '--dot-background'?: React.CSSProperties['background'];
+  '--dot-border-color'?: React.CSSProperties['borderColor'];
+  '--dot-border-width'?: React.CSSProperties['borderWidth'];
+  '--dot-active-border-color'?: React.CSSProperties['borderColor'];
+  '--knob-size'?: React.CSSProperties['width' | 'height'];
+  '--knob-size-small'?: React.CSSProperties['width' | 'height'];
+  '--knob-background'?: React.CSSProperties['background'];
+  '--knob-box-shadow'?: React.CSSProperties['boxShadow'];
+  '--mark-font-size'?: React.CSSProperties['fontSize'];
+  '--mark-text-color'?: React.CSSProperties['color'];
+  '--mark-spacing'?: React.CSSProperties['left' | 'top'];
 }
 
-export interface SliderStates {
-  value: number;
-  prevPropsValue: number;
-  tooltip: boolean;
-}
+export interface SliderProps
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'>,
+    BaseSliderProps {}
 
-export default class Slider extends PureComponent<SliderProps, SliderStates> {
-  private line: HTMLDivElement | null = null;
+const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
+  const container = (ref as any) || React.createRef<HTMLDivElement>();
 
-  private container: HTMLDivElement | null = null;
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('slider', { prefixCls });
 
-  private offsetStart = 0;
+  const {
+    className,
+    disabled,
+    min,
+    max,
+    vertical,
+    showMark,
+    value,
+    marks,
+    onChange,
+    onSlideChange,
+    defaultValue,
+    style,
+  } = props;
+  const [tooltip, setTooltip] = useState(false);
+  const [currentValue, setCurrentValue] = React.useState(getValue(props, 0));
 
-  static defaultProps: SliderProps = {
-    prefixCls: 'za-slider',
-    disabled: false,
-    showMark: false,
-    vertical: false,
-    step: 1,
-    min: 0,
-    max: 100,
-    marks: {},
+  const lineRef = React.useRef<HTMLDivElement>(null);
+
+  const getMaxOffset = () => {
+    const divRect = lineRef?.current?.getBoundingClientRect();
+    return (vertical ? divRect?.height : divRect?.width) || 0;
   };
 
-  state: SliderStates = {
-    value: getValue(this.props, 0),
-    prevPropsValue: getValue(this.props, 0),
-    tooltip: false,
+  const getOffsetByValue = (val: number): number => {
+    const maxOffset = getMaxOffset();
+    const range = max! - min!;
+
+    return vertical ? maxOffset * ((max! - val) / range) : maxOffset * ((val - min!) / range);
   };
 
-  componentDidMount() {
-    this.init();
-    Events.on(window, 'resize', this.init);
-  }
+  const getValueByOffset = (offset: number): number => {
+    const maxOffset = getMaxOffset();
+    const percent = offset / maxOffset;
 
-  static getDerivedStateFromProps(nextProps: SliderProps, prevState: SliderStates) {
-    const { value } = nextProps;
+    const val = vertical
+      ? (1 - percent) * (max! - min!) + min!
+      : Math.round(min! + (max! - min!) * percent);
 
-    if (typeof value !== 'undefined' && value !== prevState.prevPropsValue) {
-      return {
-        ...prevState,
+    return ensureValuePrecision(val, props);
+  };
+
+  const offsetStart = useRef(0);
+  useEffect(() => {
+    const val = getValue(
+      {
+        defaultValue,
         value,
-        prevPropsValue: value,
-      };
-    }
+      },
+      0,
+    );
+    setCurrentValue(val);
+  }, [defaultValue, value]);
 
-    return null;
-  }
-
-  /**
-   * 初始化
-   */
-  init = () => {
-    const { value } = this.state;
-    this.offsetStart = this.getOffsetByValue(value);
-  };
-
-  /**
-   * 通过偏移量确定值
-   * @param  {number} offset 偏移量
-   * @return {number}        值
-   */
-  getValueByOffset = (offset: number): number => {
-    const { min = 0, max, vertical } = this.props;
-
-    const percent = offset / this.getMaxOffset();
-
-    const value = vertical
-      ? (1 - percent) * (max - min) + min
-      : Math.round(min + (max - min) * percent);
-
-    return ensureValuePrecision(value, this.props);
-  };
-
-  /**
-   * 获取偏移量百分比
-   * @param value
-   */
-  getOffsetPercent = (value: number) => {
-    const { min, max } = this.props;
-    const ratio = (value - min) / (max - min);
-    return `${ratio * 100}%`;
-  };
-
-  /**
-   * 通过值获取偏移量
-   * @param  {number} value 值
-   * @return {number}       偏移量
-   */
-  getOffsetByValue = (value: number): number => {
-    const { vertical, min, max } = this.props;
-
-    const maxOffset = this.getMaxOffset();
-    const range = max - min;
-
-    return vertical ? maxOffset * ((max - value) / range) : maxOffset * ((value - min) / range);
-  };
-
-  /**
-   * 获取最大偏移量
-   */
-  getMaxOffset = () => {
-    if (this.line) {
-      if (this.props.vertical) {
-        return this.line.offsetHeight;
+  const trackClick = useCallback(
+    (event: React.MouseEvent) => {
+      event.stopPropagation();
+      if (disabled) return;
+      const line = lineRef.current;
+      if (!line) return;
+      const { left, top } = line.getBoundingClientRect();
+      const offset = vertical ? event.clientY - top : event.clientX - left;
+      let current = getValueByOffset(offset);
+      current = Math.min(max!, Math.max(min!, current));
+      setCurrentValue(current);
+      if (typeof onChange === 'function') {
+        onChange(current);
       }
+    },
+    [onChange, max, min],
+  );
 
-      return this.line.offsetWidth;
-    }
-
-    return 0;
-  };
-
-  handleDragStart = () => {
-    const { disabled } = this.props;
-    if (disabled) {
-      return;
-    }
-    this.setState({ tooltip: true });
-  };
-
-  handleDragMove = (event: DragEvent, dragState: DragState) => {
-    const { disabled, vertical } = this.props;
-
-    if (disabled) {
-      return false;
-    }
-
-    Tooltip.updateAll();
-    event.stopPropagation();
-
-    if (!Events.supportsPassiveEvents) {
-      event.preventDefault();
-    }
-
-    const { offsetX, offsetY } = dragState!;
-    let offset = vertical
-      ? this.offsetStart + (offsetY || 0)
-      : (this.offsetStart || 0) + (offsetX || 0);
-
-    if (offset < 0) {
-      offset = 0;
-      const newValue = this.getValueByOffset(offset);
-      this.setState({
-        value: newValue,
-      });
-      return false;
-    }
-
-    const maxOffset = this.getMaxOffset();
-    if (offset > maxOffset) {
-      offset = maxOffset;
-      const newValue = this.getValueByOffset(offset);
-      this.setState({
-        value: newValue,
-      });
-      return false;
-    }
-    const value = this.getValueByOffset(offset);
-    this.setState({ value });
-    return true;
-  };
-
-  handleDragEnd = (_event: DragEvent, dragState: DragState) => {
-    const { vertical, onChange } = this.props;
-    const { offsetX, offsetY } = dragState;
-
-    this.setState({ tooltip: false });
-
-    if (vertical) {
-      if (Number.isNaN(offsetY)) {
-        return;
+  const bind = useDrag(
+    (state) => {
+      const [offsetX, offsetY] = [state.xy[0] - state.initial[0], state.xy[1] - state.initial[1]];
+      state.event.stopPropagation();
+      if (state.first) {
+        offsetStart.current = getOffsetByValue(currentValue);
+        setTooltip(true);
       }
-    } else if (Number.isNaN(offsetX)) {
-      return;
-    }
-
-    this.offsetStart += vertical ? offsetY! : offsetX!;
-
-    if (typeof onChange === 'function') {
-      onChange(this.state.value);
-    }
-  };
-
-  handleRef = (ref: HTMLDivElement) => {
-    const nextContainer = ref;
-    const prevContainer = this.container;
-
-    if (prevContainer !== nextContainer) {
-      if (prevContainer) {
-        prevContainer.removeEventListener('touchstart', preventDefault);
+      let offset = vertical ? offsetY : offsetX;
+      offset += offsetStart.current;
+      const maxOffset = getMaxOffset();
+      offset = Math.min(maxOffset, Math.max(offset, 0));
+      const current = getValueByOffset(offset);
+      setCurrentValue(current);
+      if (typeof onSlideChange === 'function' && state.dragging && !state.first) {
+        onSlideChange(current);
       }
-      if (nextContainer) {
-        nextContainer.addEventListener('touchstart', preventDefault, { passive: false });
+      if (state.last) {
+        setTooltip(false);
+        if (typeof onChange === 'function') {
+          onChange(currentValue);
+        }
       }
-    }
-    this.container = nextContainer;
-  };
+    },
+    {
+      enabled: !props.disabled,
+      axis: vertical ? 'y' : 'x',
+      pointer: { touch: true },
+      preventDefault: !Events.supportsPassiveEvents,
+    },
+  );
 
-  /**
-   * 获取标签
-   */
-  renderMarkInfo = () => {
-    const { prefixCls, showMark, marks = {}, vertical } = this.props;
-
-    const { value } = this.state;
-
-    const isEmptyMarks = !isObject(marks) || JSON.stringify(marks) === '{}';
+  const renderMark = () => {
+    const isEmptyMarks = !isPlainObject(marks) || JSON.stringify(marks) === '{}';
 
     if (showMark && isEmptyMarks) {
-      // TODO: i18n
       console.error('请输入有效的 marks');
       return null;
     }
-
     // 判断是否为空对象
     if (isEmptyMarks) {
       return null;
@@ -236,96 +156,99 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
 
     const markKeys = Object.keys(marks || {});
 
-    const markElement = markKeys.map((item) => {
-      const markStyle = {
-        [vertical ? 'bottom' : 'left']: `${item}%`,
-      };
-
-      return (
-        <span key={item} className={`${prefixCls}__mark`} style={markStyle}>
-          {marks[+item]}
-        </span>
-      );
-    });
-
-    const marksElement = showMark && <div className={`${prefixCls}__marks`}>{markElement}</div>;
-
     const lineDot = markKeys.map((item) => {
-      const dotStyle = classnames(`${prefixCls}__line__dot`, {
-        [`${prefixCls}__line__dot--active`]: value >= +item,
-      });
+      const dotStyle = bem('dot', [
+        {
+          active: currentValue >= +item,
+        },
+      ]);
 
-      const markStyle = {
-        [vertical ? 'bottom' : 'left']: `${item}%`,
+      const markStyle: React.CSSProperties = {
+        [`${vertical ? 'bottom' : 'left'}`]: `${item}%`,
       };
 
       return <span key={item} className={dotStyle} style={markStyle} />;
     });
 
+    if (!showMark) {
+      return lineDot;
+    }
+
+    const marksElement = markKeys.map((item) => {
+      const markStyle: React.CSSProperties = {
+        [`${vertical ? 'bottom' : 'left'}`]: `${item}%`,
+      };
+
+      return (
+        <span key={item} className={bem('mark')} style={markStyle}>
+          {marks?.[+item]}
+        </span>
+      );
+    });
+
     return (
       <>
         {lineDot}
-        {marksElement}
+        <div className={bem('marks')}>{marksElement}</div>
       </>
     );
   };
 
-  render() {
-    const { prefixCls, className, disabled, min, max, vertical, showMark } = this.props;
+  const cls = bem([
+    className,
+    {
+      disabled,
+      vertical,
+      marked: showMark,
+    },
+  ]);
 
-    const { value, tooltip } = this.state;
+  const ratio = (currentValue - min!) / (max! - min!);
+  const offset = `${ratio * 100}%`;
 
-    const offset = this.getOffsetPercent(value);
+  const knobStyle: React.CSSProperties = {
+    [`${vertical ? 'bottom' : 'left'}`]: offset || 0,
+  };
 
-    const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--disabled`]: disabled,
-      [`${prefixCls}--vertical`]: vertical,
-      [`${prefixCls}--marked`]: showMark,
-    });
+  const lineBg: React.CSSProperties = {
+    [`${vertical ? 'height' : 'width'}`]: offset || 0,
+  };
 
-    const handleStyle = {
-      [vertical ? 'bottom' : 'left']: offset || 0,
-    };
-
-    const lineBg = {
-      [vertical ? 'height' : 'width']: offset || 0,
-    };
-
-    return (
-      <div className={cls} ref={this.handleRef}>
-        <div className={`${prefixCls}__content`}>
-          <div
-            className={`${prefixCls}__line`}
-            ref={(ele) => {
-              this.line = ele;
-            }}
-          >
-            <div className={`${prefixCls}__line__bg`} style={lineBg} />
-
-            {this.renderMarkInfo()}
-          </div>
-
-          <Drag
-            onDragStart={this.handleDragStart}
-            onDragMove={this.handleDragMove}
-            onDragEnd={this.handleDragEnd}
-          >
-            <div
-              className={`${prefixCls}__handle`}
-              role="slider"
-              aria-valuemin={min}
-              aria-valuemax={max}
-              aria-valuenow={value}
-              aria-orientation={vertical ? 'vertical' : 'horizontal'}
-              style={handleStyle}
-            >
-              <Tooltip trigger="manual" arrowPointAtCenter visible={tooltip} content={value}>
-                <div className={`${prefixCls}__handle__shadow`} />
-              </Tooltip>
-            </div>
-          </Drag>
+  return (
+    <div className={cls} ref={container} style={style}>
+      <div className={bem('content')}>
+        <div className={bem('line')} ref={lineRef} onClick={trackClick}>
+          <div className={bem('line__bg')} style={lineBg} />
+          {renderMark()}
+        </div>
+        <div
+          className={bem('knob')}
+          role="slider"
+          aria-valuemin={min}
+          aria-valuemax={max}
+          aria-valuenow={value}
+          aria-orientation={vertical ? 'vertical' : 'horizontal'}
+          style={knobStyle}
+          {...bind()}
+        >
+          <Tooltip trigger="manual" arrowPointAtCenter visible={tooltip} content={currentValue}>
+            <div className={bem('knob__shadow')} />
+          </Tooltip>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+});
+
+Slider.displayName = 'Slider';
+Slider.defaultProps = {
+  disabled: false,
+  showMark: false,
+  vertical: false,
+  step: 1,
+  min: 0,
+  max: 100,
+  marks: {},
+};
+
+export default Slider;

@@ -1,20 +1,22 @@
-# Affix 组件名
+# Affix 固钉
 
 ## 基本用法
 
 ```jsx
 import { useState } from 'react';
-import { Affix, Cell, Button, Switch } from 'zarm';
+import { Affix, List, Button, Switch } from 'zarm';
 
 const Demo = () => {
   const [affixed, setAffixed] = useState(true);
 
   return (
     <>
-      <Cell
-        title="是否启用 Affix"
-        description={<Switch checked={affixed} onChange={setAffixed} />}
-      />
+      <List>
+        <List.Item
+          title="是否启用 Affix"
+          suffix={<Switch checked={affixed} onChange={setAffixed} />}
+        />
+      </List>
       {affixed ? (
         <>
           <Affix offsetTop={20}>
@@ -42,16 +44,16 @@ ReactDOM.render(<Demo />, mountNode);
 ## 滚动容器
 
 ```jsx
-import { useState } from 'react';
+import { useRef } from 'react';
 import { Affix, Button } from 'zarm';
 
 const Demo = () => {
-  const [container, setContainer] = useState(null);
+  const containerRef = useRef(null);
 
   return (
-    <div className="scrollable-container" ref={setContainer}>
+    <div className="scrollable-container" ref={containerRef}>
       <div className="background">
-        <Affix scrollContainer={() => container}>
+        <Affix scrollContainer={() => containerRef.current}>
           <Button theme="primary">根据滚动容器顶部固定</Button>
         </Affix>
       </div>
@@ -70,3 +72,9 @@ ReactDOM.render(<Demo />, mountNode);
 | offsetBottom    | number                                       | -      | 距离窗口底部达到指定偏移量后触发                                       |
 | scrollContainer | HTMLElement \| (() => HTMLElement) \| Window | window | 设置 `Affix` 需要监听其滚动事件的元素，值为一个返回对应 DOM 元素的函数 |
 | onChange        | (affixed: boolean) => void                   | -      | 固定状态改变时触发的回调函数                                           |
+
+## CSS 变量
+
+| 属性     | 默认值 | 说明     |
+| :------- | :----- | :------- |
+| --zindex | 10     | 固钉层级 |

@@ -1,0 +1,258 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Progress circle shape progress renders percent correctly 1`] = `
+<div>
+  <div
+    class="za-progress za-progress--circle za-progress--primary za-progress--md"
+  >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        class="za-progress__track"
+        d="
+    MInfinity, Infinity
+    m0 -16
+    a16 16 0 1 1 0 32
+    a16 16 0 1 1 0 -32"
+        stroke-linecap="round"
+        stroke-width="Infinity"
+      />
+      <path
+        class="za-progress__thumb"
+        d="
+    MInfinity, Infinity
+    m0 -16
+    a16 16 0 1 1 0 32
+    a16 16 0 1 1 0 -32"
+        stroke-dasharray="100.53096491487338"
+        stroke-dashoffset="90.47786842338604"
+        stroke-linecap="round"
+        stroke-width="Infinity"
+      />
+    </svg>
+    <div
+      class="za-progress__text"
+    >
+      <div
+        class="test-progress"
+      >
+        10
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Progress circle shape progress renders shape is circle correctly 1`] = `
+<div>
+  <div
+    class="za-progress za-progress--circle za-progress--primary za-progress--md"
+  >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        class="za-progress__track"
+        d="
+    MInfinity, Infinity
+    m0 -16
+    a16 16 0 1 1 0 32
+    a16 16 0 1 1 0 -32"
+        stroke-linecap="butt"
+        stroke-width="Infinity"
+      />
+      <path
+        class="za-progress__thumb"
+        d="
+    MInfinity, Infinity
+    m0 -16
+    a16 16 0 1 1 0 32
+    a16 16 0 1 1 0 -32"
+        stroke-dasharray="100.53096491487338"
+        stroke-dashoffset="90.47786842338604"
+        stroke-linecap="butt"
+        stroke-width="Infinity"
+      />
+    </svg>
+    <div
+      class="za-progress__text"
+    >
+      foo
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Progress circle shape progress renders shape is semi-circle correctly 1`] = `
+<div>
+  <div
+    class="za-progress za-progress--semi-circle za-progress--primary za-progress--md"
+  >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        class="za-progress__track"
+        d="
+    MInfinity, Infinity
+    m-16 0
+    a16 16 0 0 1 32 0"
+        stroke-linecap="round"
+        stroke-width="Infinity"
+      />
+      <path
+        class="za-progress__thumb"
+        d="
+    MInfinity, Infinity
+    m-16 0
+    a16 16 0 0 1 32 0"
+        stroke-dasharray="50.26548245743669"
+        stroke-dashoffset="45.23893421169302"
+        stroke-linecap="round"
+        stroke-width="Infinity"
+      />
+    </svg>
+    <div
+      class="za-progress__text"
+    >
+      foo
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Progress line shape progress renders size is lg correctly 1`] = `
+<div>
+  <div
+    class="za-progress za-progress--line za-progress--primary za-progress--lg"
+  >
+    <div
+      class="za-progress__outer"
+    >
+      <div
+        class="za-progress__track"
+        style="border-radius: 8px;"
+      >
+        <div
+          class="za-progress__thumb"
+          style="width: 10%; height: 8px; border-radius: 8px;"
+        />
+      </div>
+      <div
+        class="za-progress__text"
+      >
+        10%
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Progress line shape progress renders size is md correctly 1`] = `
+<div>
+  <div
+    class="za-progress za-progress--line za-progress--primary za-progress--md"
+  >
+    <div
+      class="za-progress__outer"
+    >
+      <div
+        class="za-progress__track"
+        style="border-radius: 8px;"
+      >
+        <div
+          class="za-progress__thumb"
+          style="width: 10%; height: 8px; border-radius: 8px;"
+        />
+      </div>
+      <div
+        class="za-progress__text"
+      >
+        10%
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Progress line shape progress renders size is sm correctly 1`] = `
+<div>
+  <div
+    class="za-progress za-progress--line za-progress--primary za-progress--sm"
+  >
+    <div
+      class="za-progress__outer"
+    >
+      <div
+        class="za-progress__track"
+        style="border-radius: 8px;"
+      >
+        <div
+          class="za-progress__thumb"
+          style="width: 10%; height: 8px; border-radius: 8px;"
+        />
+      </div>
+      <div
+        class="za-progress__text"
+      >
+        10%
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Progress renders correctly 1`] = `
+<div>
+  <div
+    class="za-progress za-progress--line za-progress--primary za-progress--md"
+  >
+    <div
+      class="za-progress__outer"
+    >
+      <div
+        class="za-progress__track"
+        style="border-radius: 8px;"
+      >
+        <div
+          class="za-progress__thumb"
+          style="width: 10%; height: 8px; border-radius: 8px;"
+        />
+      </div>
+      <div
+        class="za-progress__text"
+      >
+        10%
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Progress renders has children correctly 1`] = `
+<div>
+  <div
+    class="za-progress za-progress--line za-progress--primary za-progress--md"
+  >
+    <div
+      class="za-progress__outer"
+    >
+      <div
+        class="za-progress__track"
+        style="border-radius: 8px;"
+      >
+        <div
+          class="za-progress__thumb"
+          style="width: 10%; height: 8px; border-radius: 8px;"
+        />
+      </div>
+      <div
+        class="za-progress__text"
+      >
+        foo
+      </div>
+    </div>
+  </div>
+</div>
+`;

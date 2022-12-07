@@ -1,4 +1,5 @@
 import DateSelect from './DateSelect';
-import ConfigReceiver from '../config-receiver';
 
-export default ConfigReceiver('DateSelect')(DateSelect);
+export type { DateSelectProps } from './DateSelect';
+
+export default DateSelect;

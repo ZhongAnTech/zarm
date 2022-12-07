@@ -1,52 +1,41 @@
-import React, { PureComponent } from 'react';
-import classnames from 'classnames';
-import PropsType from './PropsType';
+import * as React from 'react';
+import { createBEM } from '@zarm-design/bem';
+import { ConfigContext } from '../config-provider';
 import Modal from '../modal';
-import alertLocale from './locale/zh_CN';
+import type { BaseAlertProps } from './interface';
+import type { HTMLProps } from '../utils/utilityTypes';
 
-export interface AlertProps extends PropsType {
-  prefixCls?: string;
-  className?: string;
-}
+export type AlertProps = BaseAlertProps & HTMLProps;
 
-export default class Alert extends PureComponent<AlertProps, {}> {
-  static defaultProps: AlertProps = {
-    prefixCls: 'za-alert',
-    animationType: 'zoom',
-    locale: alertLocale,
-    shape: 'radius',
-  };
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
+  const { className, content, cancelText, onCancel, ...rest } = props;
+  const { prefixCls, locale } = React.useContext(ConfigContext);
+  const bem = createBEM('alert', { prefixCls });
+  const cls = bem([className]);
 
-  render() {
-    const {
-      prefixCls,
-      className,
-      content,
-      cancelText,
-      onCancel,
-      locale,
-      shape,
-      ...others
-    } = this.props;
-    const cls = {
-      alert: classnames(prefixCls, className, {
-        [`${prefixCls}--${shape}`]: !!shape,
-      }),
-    };
+  return (
+    <Modal
+      {...rest}
+      ref={ref}
+      className={cls}
+      actions={[
+        {
+          text: cancelText || locale?.Confirm.cancelText,
+          onClick: onCancel,
+          bold: true,
+        },
+      ]}
+    >
+      {content}
+    </Modal>
+  );
+});
 
-    return (
-      <div className={cls.alert}>
-        <Modal
-          {...others}
-          footer={
-            <button type="button" className={`${prefixCls}__button`} onClick={onCancel}>
-              {cancelText || locale!.cancelText}
-            </button>
-          }
-        >
-          {content}
-        </Modal>
-      </div>
-    );
-  }
-}
+Alert.displayName = 'Alert';
+
+Alert.defaultProps = {
+  animationType: 'zoom',
+  shape: 'radius',
+};
+
+export default Alert;

@@ -66,8 +66,8 @@ jobs:
           key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
 
       - name: Test
-        run: lerna exec --scope @zarm-design/cli -- yarn coverage
-      
+        run: lerna exec --scope @zarm-design/cli -- yarn test --coverage
+
       - name: Coverage
         run: bash <(curl -s https://codecov.io/bash)
     needs: setup
@@ -97,6 +97,37 @@ jobs:
         run: lerna exec --scope @zarm-design/cli -- yarn build
     needs: setup
 
+  compile-bem:
+    name: Compile @zarm-design/bem
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@master
+
+      - name: Restore lerna
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Restore @zarm-design/cli
+        uses: actions/cache@v2
+        with:
+          path: packages/zarm-cli/lib
+          key: ${{ runner.os }}-cli-${{ github.sha }}
+
+      - name: Cache @zarm-design/bem
+        uses: actions/cache@v2
+        with:
+          path: packages/bem/lib
+          key: ${{ runner.os }}-bem-${{ github.sha }}
+
+      - name: Compile @zarm-design/bem
+        run: lerna exec --scope @zarm-design/bem -- yarn build
+    needs: compile-cli
+
   compile-icons:
     name: Compile @zarm-design/icons
     runs-on: ubuntu-latest
@@ -118,6 +149,12 @@ jobs:
           path: packages/zarm-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
+      - name: Restore @zarm-design/bem
+        uses: actions/cache@v2
+        with:
+          path: packages/bem/lib
+          key: ${{ runner.os }}-bem-${{ github.sha }}
+
       - name: Cache @zarm-design/icons
         uses: actions/cache@v2
         with:
@@ -126,7 +163,7 @@ jobs:
 
       - name: Compile @zarm-design/icons
         run: lerna exec --scope @zarm-design/icons -- yarn build
-    needs: compile-cli
+    needs: compile-bem
 
   compile:
     name: Compile zarm in react@17
@@ -149,6 +186,12 @@ jobs:
           path: packages/zarm-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
+      - name: Restore @zarm-design/bem
+        uses: actions/cache@v2
+        with:
+          path: packages/bem/lib
+          key: ${{ runner.os }}-bem-${{ github.sha }}
+
       - name: Restore @zarm-design/icons
         uses: actions/cache@v2
         with:
@@ -159,7 +202,7 @@ jobs:
         run: |
           lerna exec --scope zarm -- yarn build:es
           lerna exec --scope zarm -- yarn build:lib
-    needs: [compile-cli, compile-icons]
+    needs: compile-icons
 
   compile-react-16:
     name: Compile zarm in react@16
@@ -182,6 +225,12 @@ jobs:
           path: packages/zarm-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
+      - name: Restore @zarm-design/bem
+        uses: actions/cache@v2
+        with:
+          path: packages/bem/lib
+          key: ${{ runner.os }}-bem-${{ github.sha }}
+
       - name: Restore @zarm-design/icons
         uses: actions/cache@v2
         with:
@@ -192,7 +241,7 @@ jobs:
         run: |
           lerna exec --scope zarm -- yarn build:es
           lerna exec --scope zarm -- yarn build:lib
-    needs: [setup-react-16, compile-cli, compile-icons]
+    needs: [setup-react-16, compile-icons]
 
   lint:
     name: Lint
@@ -237,6 +286,12 @@ jobs:
           path: packages/zarm-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
+      - name: Restore @zarm-design/bem
+        uses: actions/cache@v2
+        with:
+          path: packages/bem/lib
+          key: ${{ runner.os }}-bem-${{ github.sha }}
+
       - name: Restore @zarm-design/icons
         uses: actions/cache@v2
         with:
@@ -245,10 +300,10 @@ jobs:
 
       - name: Test
         run: lerna exec --scope zarm -- yarn coverage
-      
+
       - name: Coverage
         run: bash <(curl -s https://codecov.io/bash)
-    needs: [compile-cli, compile-icons]
+    needs: compile-icons
 
   test-react-17-dist:
     name: Testing zarm/umd in react@17
@@ -271,6 +326,12 @@ jobs:
           path: packages/zarm-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
+      - name: Restore @zarm-design/bem
+        uses: actions/cache@v2
+        with:
+          path: packages/bem/lib
+          key: ${{ runner.os }}-bem-${{ github.sha }}
+
       - name: Restore @zarm-design/icons
         uses: actions/cache@v2
         with:
@@ -289,7 +350,7 @@ jobs:
         run: lerna exec --scope zarm -- yarn bundlesize
         env:
           BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}
-    needs: [compile-cli, compile-icons]
+    needs: compile-icons
 
   test-react-16:
     name: Testing zarm in react@16
@@ -314,6 +375,12 @@ jobs:
           path: packages/zarm-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
+      - name: Restore @zarm-design/bem
+        uses: actions/cache@v2
+        with:
+          path: packages/bem/lib
+          key: ${{ runner.os }}-bem-${{ github.sha }}
+
       - name: Restore @zarm-design/icons
         uses: actions/cache@v2
         with:
@@ -322,7 +389,7 @@ jobs:
 
       - name: Test
         run: lerna exec --scope zarm -- yarn test
-    needs: [setup-react-16, compile-cli, compile-icons]
+    needs: [setup-react-16, compile-icons]
 
   test-react-16-umd:
     name: Testing zarm/umd in react@16
@@ -347,6 +414,12 @@ jobs:
           path: packages/zarm-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
+      - name: Restore @zarm-design/bem
+        uses: actions/cache@v2
+        with:
+          path: packages/bem/lib
+          key: ${{ runner.os }}-bem-${{ github.sha }}
+
       - name: Restore @zarm-design/icons
         uses: actions/cache@v2
         with:
@@ -365,4 +438,4 @@ jobs:
         run: lerna exec --scope zarm -- yarn bundlesize
         env:
           BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}
-    needs: [setup-react-16, compile-cli, compile-icons]
+    needs: [setup-react-16, compile-icons]

@@ -1,11 +1,32 @@
-@import '../../style/core/index';
 @import 'mixins';
 
-$--calendar-day-width: 14.28571%;
-
 @include b(calendar) {
-  background-color: var(--calendar-background);
+  @include define(background, #fff);
+  @include define(padding-horizontal, 15px);
+  @include define(header-height, 44px);
+  @include define(week-height, 40px);
+  @include define(week-font-size, 13px);
+  @include define(week-font-weight, 500);
+  @include define(week-background, #f2f2f2);
+  @include define(week-text-color, var(--za-color-text-caption));
+  @include define(month-font-size, 17px);
+  @include define(month-font-weight, 500);
+  @include define(month-height, 50px);
+  @include define(month-scroll-background, #fff);
+  @include define(day-height, 40px);
+  @include define(day-font-size, 16px);
+  @include define(day-text-color, var(--za-color-text));
+  @include define(day-today-background, var(--za-theme-primary-lighter));
+  @include define(day-today-text-color, var(--za-theme-primary));
+  @include define(day-selected-background, var(--za-theme-primary));
+  @include define(day-selected-text-color, #fff);
+  @include define(day-selected-shadow, 0 2px 5px 0 var(--za-theme-primary-lighter));
+  @include define(day-range-background, var(--za-theme-primary-lighter));
+  @include define(day-range-text-color, var(--za-theme-primary));
+
+  background-color: var(--background);
   user-select: none;
+  position: relative;
 
   ul {
     list-style-type: disc;
@@ -13,24 +34,54 @@ $--calendar-day-width: 14.28571%;
 
   li {
     display: inline-block;
-    width: $--calendar-day-width;
+    width: calc(100% / 7);
     text-align: center;
     vertical-align: middle;
   }
 
-  @include e(bar) {
+  @include b(picker-view) {
+    position: absolute;
+    top: var(--header-height);
+    z-index: 10;
+  }
+
+  @include e(week) {
     display: flex;
     flex-wrap: wrap;
-    color: var(--calendar-week-bar-color);
-    background-color: var(--calendar-week-bar-background);
-    font-size: var(--calendar-week-bar-fontsize);
+    height: var(--week-height);
+    line-height: var(--week-height);
+    color: var(--week-text-color);
+    background-color: var(--week-background);
+    font-size: var(--week-font-size);
+    font-weight: var(--week-font-weight);
     margin: 0;
-    padding: 0 var(--calendar-section-padding);
-    list-style-type: disc;
+    padding: 0 var(--padding-horizontal);
+  }
 
-    &__item {
-      height: var(--calendar-day-height);
-      line-height: var(--calendar-day-height);
+  @include e(header) {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 var(--padding-horizontal);
+    height: var(--header-height);
+    align-items: center;
+  }
+
+  @include e(action) {
+    display: flex;
+
+    @include e(action-btn) {
+      @include m(disabled) {
+        color: var(--za-color-text-disabled);
+      }
+    }
+  }
+
+  @include e(title) {
+    @include m(animate) {
+      @include b(icon) {
+        transform: rotate(90deg);
+        transition: all 0.15s ease-in-out;
+      }
     }
   }
 
@@ -39,29 +90,59 @@ $--calendar-day-width: 14.28571%;
     overflow: auto;
   }
 
-  @include e(month) {
-    padding: 0 var(--calendar-section-padding);
-    color: var(--calendar-day-color);
+  @include e(scroll-month) {
+    display: none;
+    position: absolute;
+    top: var(--week-height);
+    width: 100%;
+    height: var(--month-height);
+    line-height: var(--month-height);
+    text-align: center;
+    transition: opacity 300ms ease-in-out;
+    background-image: linear-gradient(var(--month-scroll-background), transparent);
+    font-weight: var(--month-font-weight);
+    font-size: var(--month-font-size);
+
+    @include m(entering, entered) {
+      display: block;
+      opacity: 1;
+    }
+
+    @include m(exiting) {
+      display: block;
+      opacity: 0;
+    }
+  }
+
+  @include e(month__wrapper) {
+    padding: 0 var(--padding-horizontal);
+    flex-shrink: 0;
+    width: 100%;
 
     ul {
       margin: 0;
       padding: 0;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: stretch;
     }
+  }
 
-    &:before {
-      content: attr(title);
-      display: block;
-      margin: r(15) auto;
-      font-size: var(--calendar-day-title-fontsize);
-      font-weight: 500;
-      padding-left: r(15);
-    }
+  @include e(month) {
+    height: var(--month-height);
+    line-height: var(--month-height);
+    padding: 0 var(--padding-horizontal);
+    font-size: var(--month-font-size);
+    font-weight: var(--month-font-weight);
   }
 
   @include e(day) {
     margin: r(10) 0;
     position: relative;
-    font-size: var(--calendar-day-fontsize);
+    font-size: var(--day-font-size);
+    color: var(--day-text-color);
     cursor: pointer;
 
     &__content {
@@ -75,75 +156,77 @@ $--calendar-day-width: 14.28571%;
       margin: 0 auto;
     }
 
-    @include firstday();
-
     @include m(today) {
-      @include e(day__content) {
-        background-color: var(--calendar-day-today-background);
-        color: var(--calendar-day-today-color);
+      @include b(calendar) {
+        @include e(day__content) {
+          background-color: var(--day-today-background);
+          color: var(--day-today-text-color);
+        }
       }
     }
 
     @include m(selected) {
-      @include e(day__content) {
-        background-color: var(--calendar-day-selected-background);
-        color: var(--calendar-day-selected-color);
-        box-shadow: 0 r(2) r(5) 0 var(--calendar-day-selected-shadow);
+      @include b(calendar) {
+        @include e(day__content) {
+          background-color: var(--day-selected-background);
+          color: var(--day-selected-text-color);
+          box-shadow: var(--day-selected-shadow);
+        }
       }
     }
 
     @include m(disabled) {
       cursor: auto;
-
-      @include e(day__content) {
-        color: var(--color-text-disabled);
+      @include b(calendar) {
+        @include e(day__content) {
+          color: var(--za-color-text-disabled);
+        }
       }
     }
 
     @include m(range) {
-      background-color: var(--calendar-day-range-background);
-      color: var(--calendar-day-range-color);
+      background-color: var(--day-range-background);
+      color: var(--day-range-text-color);
 
-      @include e(day__content) {
-        background-color: var(--calendar-day-range-background);
+      @include b(calendar) {
+        @include e(day__content) {
+          background-color: var(--day-range-background);
+        }
       }
 
-      &.d6 {
-        background-color: transparent;
-        @include linegradient(left);
-      }
-
-      &.d7 {
+      &:first-child {
         background-color: transparent;
         @include linegradient(right);
       }
 
-      &:first-child:not(.d6) {
-        background-color: transparent;
-        @include linegradient(right);
-      }
-
-      &:last-child:not(.d7) {
+      &:last-child {
         background-color: transparent;
         @include linegradient(left);
       }
-
-      &:last-child.d7,
-      &:first-child.d6 {
-        background-image: none;
-      }
     }
 
-    &.range-start.range-end {
-      background-image: none;
+    @include m(d6) {
+      background-color: transparent;
+      @include linegradient(left);
     }
 
-    &.range-start:not(.range-end):not(.d6):not(:last-child) {
+    @include m(d7) {
+      background-color: transparent;
       @include linegradient(right);
     }
 
-    &.range-end:not(.range-start):not(.d7):not(:first-child) {
+    @include m(start) {
+      background-color: transparent;
+      @include linegradient(right);
+    }
+
+    @include m(end) {
+      background-color: transparent;
       @include linegradient(left);
+    }
+
+    @include m(last, first) {
+      background-image: none;
     }
   }
 }

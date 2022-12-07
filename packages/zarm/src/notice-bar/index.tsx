@@ -1,105 +1,60 @@
-import React, { PureComponent } from 'react';
+import React, { forwardRef, useRef, useState } from 'react';
+import type { MouseEvent } from 'react';
 import { Volume as VolumeIcon } from '@zarm-design/icons';
-import type PropsType from './PropsType';
+import { createBEM } from '@zarm-design/bem';
+import type BaseNoticeBarProps from './interface';
 import Message from '../message';
-import { addKeyframe, removeKeyframe, existKeyframe } from '../utils/keyframes';
+import { ConfigContext } from '../config-provider';
+import useAnimationDuration from './hooks';
+import type { HTMLProps } from '../utils/utilityTypes';
 
-const NOTICEBAR_KEYFRAME_NAME = 'za-notice-bar-scrolling';
-
-export interface NoticeBarProps extends PropsType {
-  prefixCls?: string;
-  className?: string;
+export interface NoticeBarCssVars {
+  '--height'?: React.CSSProperties['height'];
+  '--font-size'?: React.CSSProperties['fontSize'];
+  '--padding'?: React.CSSProperties['padding'];
+  '--icon-size'?: React.CSSProperties['fontSize'];
 }
 
-export interface NoticeBarState {
-  animationDuration?: number;
-}
-
-export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarState> {
-  static displayName = 'NoticeBar';
-
-  static defaultProps: NoticeBarProps = {
-    prefixCls: 'za-notice-bar',
-    theme: 'warning',
-    icon: <VolumeIcon />,
-    hasArrow: false,
-    closable: false,
-    speed: 50,
-    delay: 2000,
+export type NoticeBarProps = BaseNoticeBarProps &
+  React.PropsWithChildren<HTMLProps<NoticeBarCssVars>> & {
+    onClick?: React.MouseEventHandler<HTMLDivElement>;
   };
 
-  private wrapper: HTMLDivElement | null = null;
+const NoticeBar = forwardRef<HTMLDivElement, NoticeBarProps>((props, ref) => {
+  const { children, speed, delay, onClose, className, ...restProps } = props;
+  const [visible, setVisible] = useState(true);
+  const { prefixCls } = React.useContext(ConfigContext);
 
-  private content: HTMLDivElement | null = null;
+  const bem = createBEM('notice-bar', { prefixCls });
+  const NOTICEBAR_KEYFRAME_NAME = `${prefixCls}-notice-bar-scrolling`;
 
-  state: NoticeBarState = {
-    animationDuration: 0,
-  };
+  const noticeBarRef = ref || React.createRef<HTMLDivElement>();
+  const contentRef = useRef<HTMLDivElement>(null);
+  const animationDuration = useAnimationDuration({
+    noticeBarRef,
+    contentRef,
+    delay,
+    speed,
+    keyframeName: NOTICEBAR_KEYFRAME_NAME,
+  });
 
-  componentDidMount() {
-    this.updateScrolling();
+  if (!visible) return null;
+
+  function handleClose(e: MouseEvent<HTMLElement>) {
+    setVisible(false);
+    onClose?.(e);
   }
 
-  componentDidUpdate() {
-    this.updateScrolling();
-  }
-
-  updateScrolling() {
-    const { speed, delay } = this.props;
-    const wrapWidth = this.wrapper!.getBoundingClientRect().width;
-    const offsetWidth = this.content!.getBoundingClientRect().width;
-
-    if (offsetWidth > wrapWidth) {
-      // 完整的执行时间 = 前后停留时间 + 移动时间
-      const animationDuration = Math.round(delay! * 2 + (offsetWidth / speed!) * 1000);
-
-      // 计算停留时间占总时间的百分比
-      const delayPercent = Math.round((delay! * 100) / animationDuration);
-
-      // 删除之前的 keyframe 定义
-      if (existKeyframe(NOTICEBAR_KEYFRAME_NAME)) {
-        removeKeyframe(NOTICEBAR_KEYFRAME_NAME);
-      }
-
-      // 增加重新计算后的 keyframe
-      addKeyframe(
-        NOTICEBAR_KEYFRAME_NAME,
-        `
-        0%, ${delayPercent}% {
-          -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-        }
-
-        ${100 - delayPercent}%, 100% {
-          -webkit-transform: translate3d(${-(offsetWidth - wrapWidth)}px, 0, 0);
-          transform: translate3d(${-(offsetWidth - wrapWidth)}px, 0, 0);
-        }
-      `,
-      );
-
-      this.setState({ animationDuration });
-    }
-  }
-
-  render() {
-    const { prefixCls, children, ...others } = this.props;
-    const { animationDuration } = this.state;
-
-    return (
-      <Message {...others} size="lg">
-        <div
-          className={prefixCls}
-          ref={(ele) => {
-            this.wrapper = ele;
-          }}
-        >
+  const cls = bem([className]);
+  return (
+    <div className={cls} ref={noticeBarRef}>
+      <Message {...restProps} onClose={handleClose}>
+        <div className={bem('body')}>
           <div
-            className={`${prefixCls}__body`}
-            ref={(ele) => {
-              this.content = ele;
-            }}
+            className={bem('content')}
+            ref={contentRef}
             style={
-              animationDuration! > 0
+              animationDuration > 0
                 ? {
                     WebkitAnimation: `${NOTICEBAR_KEYFRAME_NAME} ${animationDuration}ms linear infinite`,
                     animation: `${NOTICEBAR_KEYFRAME_NAME} ${animationDuration}ms linear infinite`,
@@ -111,6 +66,18 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
           </div>
         </div>
       </Message>
-    );
-  }
-}
+    </div>
+  );
+});
+
+NoticeBar.displayName = 'NoticeBar';
+
+NoticeBar.defaultProps = {
+  theme: 'warning',
+  icon: <VolumeIcon />,
+  hasArrow: false,
+  closable: false,
+  speed: 50,
+  delay: 2000,
+};
+export default NoticeBar;

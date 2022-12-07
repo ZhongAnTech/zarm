@@ -1,11 +1,14 @@
 {
   "name": "@zarm-design/icons",
-  "version": "0.1.4",
+  "version": "0.1.5-alpha.1",
   "description": "",
   "license": "MIT",
   "author": "jerome.lin@zhongan.com",
+  "exports": {
+    ".": "./lib/index.js",
+    "./style": "./lib/style/index.scss"
+  },
   "main": "lib/index.js",
-  "modules": "es/index.js",
   "typings": "types/index.d.ts",
   "files": [
     "es",
@@ -13,26 +16,31 @@
     "types"
   ],
   "scripts": {
-    "clean": "rimraf types lib coverage svg",
-    "test": "zarm test -s scripts/jest/setup.js",
-    "coverage": "rimraf coverage && yarn test -c",
-    "build:types": "rimraf types && tsc --outDir types -d --emitDeclarationOnly",
+    "build": "yarn build:types && yarn build:lib && yarn build:es",
     "build:es": "rimraf es && zarm build --mode es --path src --out-dir es --copy-files --build-css",
+    "build:font": "webFontsHelper --src ./svg --fontName zaicon --fontPath src/font --className za-icon",
     "build:lib": "rimraf lib && zarm build --mode lib --path src --out-dir lib --copy-files --build-css",
     "build:react": "rimraf src/react && svgr ./svg --out-dir ./src/react",
     "build:svg": "rimraf svg && node ./scripts/exportSVG.js",
-    "build": "yarn build:types && yarn build:lib && yarn build:es"
+    "build:types": "rimraf types && tsc",
+    "clean": "rimraf types lib es coverage svg",
+    "coverage": "rimraf coverage && yarn test -c",
+    "test": "zarm test -s scripts/jest/setup.js"
   },
   "dependencies": {
-    "classnames": "^2.3.1"
+    "change-case": "^4.1.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.16",
     "@svgr/cli": "^5.5.0",
+    "@zarm-design/bem": "^0.0.2-alpha.0",
+    "@zarm-design/cli": "^0.0.41-alpha.0",
     "react": "^17.0.2",
-    "shelljs": "^0.8.4"
+    "shelljs": "^0.8.4",
+    "webfonts-helper": "^0.1.2"
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "modules": "es/index.js"
 }

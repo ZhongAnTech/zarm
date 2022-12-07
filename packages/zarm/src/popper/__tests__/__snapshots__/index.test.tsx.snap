@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Popper renders correctly 1`] = `
+<div>
+  <p>
+    点我
+  </p>
+</div>
+`;

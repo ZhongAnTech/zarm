@@ -1,10 +1,98 @@
 # 版本更新日志
 
-## v2.9.16
+## v3.0.0
 
-- Perf
+- Feature
 
-  - [Tabs] 优化在 scrollable 为 true 的场景下，使得选中项居中。[#918](https://github.com/ZhongAnTech/zarm/pull/918)
+  - [Grid]
+    - 新增宫格组件
+  - [WaterMark]
+    - 新增水印组件
+  - [Skeleton]
+    - 新增骨架组件
+  - [Rate]
+    - 新增评分组件
+
+- Break Change
+
+  - [ConfigProvider]
+    - 组件样式设置作用域修正为当前节点下（非全局）
+    - 增加适配 `iphoneX` 安全区域
+    - 增加组件 `css` 变量设置
+    - 增加组件挂载节点的 `mountContainer`
+    - 增加组件类名前缀 `prefixCls` 设置
+  - [Input]
+    - 拆分使用到虚拟键盘的自定义输入框组件 `CustomInput`
+    - 触发的事件入参由 value 值改为 event，受影响的事件有 `onChange` `onFocus` `onBlur` `onFocus`
+    - 删除 `onClear` 事件，点击重置按钮请空值将触发 `onChange` 事件
+    - 抽离自定义输入框 `CustomInput`, 配合 `KeyBoard` 扩展自定义输入框
+    - 增加属性 `label`，用于设置标签栏
+  - [Cell]
+    - 变更为 List 和 List.Item 组件，样式结构调整
+    - 属性 `icon` 变更为 `prefix`
+    - 属性 `description` 变更为 `after`
+    - 属性 `help` 变更为 `info`
+    - 属性 `title` 字体大小变更为 17px
+  - [Checkbox]
+    - Group
+      - 属性 `type` 可选值 `cell` 变更为 `list`
+      - 属性 `size` 变更为 `buttonSize`
+      - 属性 `shape` 变更为 `buttonShape`
+      - 属性 `ghost` 变更为 `buttonGhost`
+      - 新增属性 `listMarkerAlign` ，用于设置列表类型时标记的位置
+  - [Radio]
+    - Group
+      - 属性 `type` 可选值 `cell` 变更为 `list`
+      - 属性 `size` 变更为 `buttonSize`
+      - 属性 `shape` 变更为 `buttonShape`
+      - 属性 `ghost` 变更为 `buttonGhost`
+      - 属性 `compact` 变更为 `buttonCompact`
+      - 新增属性 `listMarkerAlign` ，用于设置列表类型时标记的位置
+  - [Select & DateSelect]
+    - 移除属性 `hasArrow`，默认展示箭头
+  - [NoticeBar]
+    - 新增属性 `onClose`，关闭触发的回调函数
+    - 修复关闭后只移除了 `Message` 组件，根节点没有被移除的 bug
+  - [Message]
+    - 移除属性 `size`，及相关样式
+    - 新增属性 `onClose`，关闭触发的回调函数
+  - [ImagePreview]
+    - 支持横屏下查看图片
+  - [Modal]
+    - 支持开启状态下锁定背景滚动
+  - [Popup]
+    - 新增属性 `forceRender`，用于强制渲染内容
+  - [Badge]
+    - 移除属性 `theme`，颜色设置通过 css 变量 --background 来定义
+    - 新增属性 `bordered` ，用于判断徽标是否有边框
+  - [SearchBar]
+    - 输入框事件变更为与原生 `input` 保持一致，如 `onChange`、`onFocus`、`onBlur` 等
+    - 删除 `onClear` 事件，点击重置按钮请空值将触发 `onChange` 事件
+  - [Slider]
+    - 支持点击，移动到点击位置
+    - 新增属性 `onSlideChange` ，滑动时触发
+  - [Toast]
+    - 静态方法挂载到 `Toast.useToast` 下，详细用法参考官网例子
+  - [BackTop]
+    - `BackToTop` 组件更名为 `BackTop`
+    - 新增属性 `mountContainer` ，用于设置组件挂载节点
+  - [Badge]
+    - 移除属性 `theme`，颜色设置通过 css 变量 --background 来定义
+    - 新增属性 `bordered` ，用于判断徽标是否有边框
+  - [Mask]
+    - 移除属性 `type`
+    - 新增属性 `color` 用户设置颜色
+    - 新增属性 `opacity` 用于设置透明度
+  - [StackPicker]
+    - `StackPicker` 组件更名为 `Cascader`
+  - [Picker & PickerView]
+    - 移除属性 `valueMember`，替换为 `fieldNames` 支持自定义 label、value、children 的字段
+  - [DatePicker & DatePickverView]
+    - 移除属性 `valueMember`，替换为 `fieldNames` 支持自定义 label、value、children 的字段
+    - 新增属性 `use12Hours`，在 `mode` 为 `time` 下显示 12 小时模式
+    - 新增属性 `format`，用于格式化返回值
+  - [SwipeAction]
+    - `leftActions/rightActions` onClick 事件支持异步
 
 ## v2.9.15
 

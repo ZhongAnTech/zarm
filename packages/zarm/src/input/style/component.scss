@@ -1,27 +1,26 @@
 @import 'mixins';
 
 @include b(input) {
+  @include define(color, var(--za-color-text));
+  @include define(font-size, var(--za-font-size-md));
+  @include define(height, 28px);
+  @include define(line-height, 28px);
+  @include define(label-font-size, var(--za-font-size-sm));
+  @include define(placeholder-color, var(--za-color-text-placeholder));
+  @include define(disabled-color, var(--za-color-text-disabled));
+  @include define(clear-icon-size, 16px);
+  @include define(clear-icon-color, #ccc);
+  @include define(textarea-length-font-size, var(--za-font-size-sm));
+  @include define(textarea-length-color, var(--za-color-text-disabled));
+
   @include input-base();
   @include input-placeholder();
-
-  // 多种类型
-  @include m(number) {
-    @include input-keyboard();
-  }
-
-  @include m(price) {
-    @include input-keyboard();
-  }
-
-  @include m(idcard) {
-    @include input-keyboard();
-  }
 
   @include m(textarea) {
     @include e(length) {
       text-align: right;
-      color: var(--input-length-count-color);
-      font-size: r(12);
+      color: var(--textarea-length-color);
+      font-size: var(--textarea-length-font-size);
     }
   }
 

@@ -1,49 +1,59 @@
-import React, { PureComponent, createContext } from 'react';
+import * as React from 'react';
 import type { Context } from 'react';
-import type { ConfigProviderProps, Locale } from './PropsType';
-import setTheme from './setTheme';
+import type { ConfigProviderProps } from './interface';
+import defaultLocaleData from './locale/zh_CN';
+import setCssVars from './setCssVars';
 import setPrimaryColor from './setPrimaryColor';
+import setTheme from './setTheme';
 
-const defaultConfig: ConfigProviderProps = {
-  locale: ({} as unknown) as Locale,
+export const defaultConfig: ConfigProviderProps = {
+  prefixCls: 'za',
+  locale: defaultLocaleData,
   theme: 'light',
-  primaryColor: '#00bc70',
+  safeIphoneX: false,
+  cssVars: {},
+  mountContainer: () => document.body,
 };
 
-export const LocaleContext: Context<Locale> = createContext(defaultConfig.locale);
-export const ConfigContext: Context<ConfigProviderProps> = createContext(defaultConfig);
+export const ConfigContext: Context<ConfigProviderProps> = React.createContext(defaultConfig);
 
-let runTimeLocale: Locale;
-const changeRunTimeLocale = (locale: Locale) => {
-  runTimeLocale = locale;
+let runtimeConfigContext: ConfigProviderProps;
+
+const changeRuntimeConfigContext = (props: ConfigProviderProps) => {
+  runtimeConfigContext = props;
 };
 
-export const getRunTimeLocale = () => runTimeLocale;
+const ConfigProvider: React.FC<ConfigProviderProps> = (props) => {
+  const { children, cssVars, primaryColor, theme, ...rest } = props;
 
-export default class ConfigProvider extends PureComponent<ConfigProviderProps, {}> {
-  static defaultProps = defaultConfig;
+  changeRuntimeConfigContext(props);
 
-  componentDidMount() {
-    this.update();
-  }
+  React.useEffect(() => {
+    primaryColor && setPrimaryColor(primaryColor);
+  }, [primaryColor]);
 
-  componentDidUpdate() {
-    this.update();
-  }
+  React.useEffect(() => {
+    theme && setTheme(theme);
+  }, [theme]);
 
-  update() {
-    const { locale, theme, primaryColor } = this.props;
-    changeRunTimeLocale(locale);
-    setTheme(theme);
-    setPrimaryColor(primaryColor);
-  }
+  const newChildren = setCssVars(children, cssVars!);
 
-  render() {
-    const { locale, theme, primaryColor, children } = this.props;
-    return (
-      <ConfigContext.Provider value={{ locale, theme, primaryColor }}>
-        {React.Children.only(children)}
-      </ConfigContext.Provider>
-    );
-  }
-}
+  return (
+    <ConfigContext.Provider value={rest}>{React.Children.only(newChildren)}</ConfigContext.Provider>
+  );
+};
+
+export const RuntimeConfigProvider: React.FC = ({ children }) => {
+  const props = React.useRef(runtimeConfigContext);
+
+  React.useEffect(() => {
+    props.current = runtimeConfigContext;
+  }, [runtimeConfigContext]);
+
+  return <ConfigProvider {...props?.current}>{children}</ConfigProvider>;
+};
+
+ConfigProvider.displayName = 'ConfigProvider';
+ConfigProvider.defaultProps = defaultConfig;
+
+export default ConfigProvider;

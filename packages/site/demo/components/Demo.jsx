@@ -39,12 +39,23 @@ export default ({ location, globalContext, children }) => {
         };
       })
       .then(({ args, argv }) => {
+        const renderTpl = `ReactDOM.render(
+          <Zarm.ConfigProvider primaryColor={GlobalContext.primaryColor} theme={GlobalContext.theme} locale={Locale[GlobalContext.locale === 'zhCN' ? 'zh_CN' : 'en_US']}>
+            $1
+          </Zarm.ConfigProvider>,
+          document.getElementById('${containerId}'),
+        )`;
+
         const value = source[2]
-          .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'react';/, 'const { $1 } = React;')
-          .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'zarm';/, 'const { $1 } = Zarm;')
+          .replace(/import\s+\{\s+([\s\S]*)\s+\}\s+from\s+'react';/, 'const { $1 } = React;')
+          .replace(/import\s+\{\s+([\s\S]*)\s+\}\s+from\s+'zarm';/, 'const { $1 } = Zarm;')
           .replace(
-            /import\s+\{\s+(.*)\s+\}\s+from\s+'@zarm-design\/icons';/,
+            /import\s+\{\s+([\s\S]*)\s+\}\s+from\s+'@zarm-design\/icons';/,
             'const { $1 } = ZarmDesignIcons;',
+          )
+          .replace(
+            /import\s+([\s\S]*)\s+from\s+'@zarm-design\/icons';/,
+            'const $1 = ZarmDesignIcons;',
           )
           .replace(
             /import\s+(.*)\s+from\s+'zarm\/lib\/config-provider\/locale\/(.*)';/g,
@@ -52,10 +63,7 @@ export default ({ location, globalContext, children }) => {
           )
           // 替换格式
           // ReactDOM.render(<Demo />, mountNode);
-          .replace(
-            /ReactDOM.render\(\s?([^]+?)(,\s?mountNode\s?\))/g,
-            `ReactDOM.render($1, document.getElementById('${containerId}'))`,
-          )
+          .replace(/ReactDOM.render\(\s?([^]+?)(,\s?mountNode\s?\))/g, renderTpl)
           // 替换格式
           // ReactDOM.render(
           //   <>
@@ -64,10 +72,7 @@ export default ({ location, globalContext, children }) => {
           //   </>,
           //   mountNode,
           // );
-          .replace(
-            /ReactDOM.render\(\s?([^]+?)(,([\r\n])(\s)*mountNode,(\s)*\))/g,
-            `ReactDOM.render($1, document.getElementById('${containerId}'))`,
-          );
+          .replace(/ReactDOM.render\(\s?([^]+?)(,([\r\n])(\s)*mountNode,(\s)*\))/g, renderTpl);
 
         const { code } = transform(value, {
           presets: ['es2015', 'react'],
