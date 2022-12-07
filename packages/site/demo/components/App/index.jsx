@@ -1,13 +1,12 @@
-import React, { Suspense, lazy } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import Loadable from 'react-loadable';
-import { Loading } from 'zarm';
-import { pascalCase } from 'change-case';
-import { components } from '@/site.config';
 import Container from '@/demo/components/Container';
 import Footer from '@/demo/components/Footer';
-import SentryBoundary from '@/demo/components/SentryBoundary';
 import Markdown from '@/demo/components/Markdown';
+import SentryBoundary from '@/demo/components/SentryBoundary';
+import { components } from '@/site.config';
+import { pascalCase } from 'change-case';
+import React, { lazy, Suspense } from 'react';
+import Loadable from 'react-loadable';
+import { Route, Switch } from 'react-router-dom';
 import './style.scss';
 
 const LoadableComponent = (component) => {
@@ -28,7 +27,7 @@ const LoadableComponent = (component) => {
         </Container>
       );
     },
-    loading: () => <Loading visible />,
+    loading: () => <></>,
   });
 };
 
@@ -36,7 +35,7 @@ const App = () => {
   const { general, form, feedback, view, navigation, hooks, other } = components;
   return (
     <SentryBoundary>
-      <Suspense fallback={<Loading visible />}>
+      <Suspense fallback={<></>}>
         <Switch>
           <Route exact path="/" component={lazy(() => import('@/demo/pages/Index'))} />
           {[...general, ...form, ...feedback, ...view, ...navigation, ...hooks, ...other].map(

@@ -1,51 +1,76 @@
-import * as React from 'react';
+import isPlainObject from 'lodash/isPlainObject';
 import isString from 'lodash/isString';
+import * as React from 'react';
+import { renderImperatively } from '../utils/dom';
 import Toast, { ToastProps } from './Toast';
-import renderToContainer from '../utils/renderToContainer';
-import { RuntimeConfigProvider } from '../n-config-provider/ConfigProvider';
 
-export interface ToastRef {
-  hide: () => void;
+let currentHandler: ToastHandler | null = null;
+let currentTimer: number | null = null;
+
+export interface ToastHandler {
+  close: () => void;
+  replace: (element: React.ReactElement) => void;
 }
 
+const defaultProps: ToastProps = {
+  duration: 2000,
+  mask: true,
+  maskClickable: true,
+};
+
 export const show = (props: Omit<ToastProps, 'visible'> | string) => {
-  let unmount = () => {};
-  const rest = isString(props) ? { content: props } : props;
+  const rest = { ...defaultProps, ...(isString(props) ? { content: props } : props) };
 
-  const Wrapper = React.forwardRef<ToastRef>((_, wrapperRef) => {
-    const [visible, setVisible] = React.useState(false);
+  const element = (
+    <Toast
+      {...rest}
+      onClose={() => {
+        currentHandler = null;
+      }}
+    />
+  );
 
-    React.useEffect(() => {
-      setVisible(true);
-    }, []);
+  if (currentHandler) {
+    currentHandler.replace(element);
+  } else {
+    currentHandler = renderImperatively(element);
+  }
 
-    React.useImperativeHandle(wrapperRef, () => ({
-      hide: () => {
-        setVisible(false);
-      },
-    }));
+  currentTimer && window.clearTimeout(currentTimer);
 
-    return (
-      <RuntimeConfigProvider>
-        <Toast
-          {...rest}
-          visible={visible}
-          afterClose={() => {
-            rest.afterClose?.();
-            unmount();
-          }}
-          mountContainer={false}
-        />
-      </RuntimeConfigProvider>
-    );
+  if (rest.duration !== 0) {
+    currentTimer = window.setTimeout(() => {
+      clear();
+    }, rest.duration);
+  }
+
+  return currentHandler;
+};
+
+export const clear = () => {
+  currentHandler?.close();
+  currentHandler = null;
+};
+
+type ToastPropsKey = keyof ToastProps;
+
+const ALLOW_KEYS: ToastPropsKey[] = [
+  'duration',
+  'mask',
+  'maskClassName',
+  'maskStyle',
+  'maskColor',
+  'maskOpacity',
+  'maskClickable',
+  'mountContainer',
+];
+
+export const config = (props: Pick<ToastProps, typeof ALLOW_KEYS[number]>) => {
+  if (!isPlainObject(props)) return;
+  Object.entries(props).forEach(([key, value]) => {
+    if (ALLOW_KEYS.indexOf(key as ToastPropsKey) === -1) return;
+    if (value !== undefined) {
+      defaultProps[key] = value;
+    }
   });
-
-  const ref = React.createRef<ToastRef>();
-  unmount = renderToContainer(<Wrapper ref={ref} />, rest.mountContainer);
-
-  return {
-    hide: () => {
-      ref.current?.hide();
-    },
-  };
 };

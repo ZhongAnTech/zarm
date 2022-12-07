@@ -1,43 +1,30 @@
 import * as React from 'react';
-import type { PickerValue, PickerColumnItem } from '../picker-view';
+import type { PickerColumnItem, PickerValue } from '../picker-view';
+import { renderImperatively } from '../utils/dom';
 import type { PickerProps } from './Picker';
 import Picker from './Picker';
-import { renderToBody } from '../utils/dom/renderToBody';
 
 export interface PickerPromptValue {
   value: PickerValue[];
   items: PickerColumnItem[];
 }
 
-export const prompt = (props: Omit<PickerProps, 'value' | 'children'>) => {
+export const prompt = (props: Omit<PickerProps, 'value' | 'visible' | 'children'>) => {
   return new Promise<PickerPromptValue>((resolve) => {
-    const Wrapper: React.FC = () => {
-      const [visible, setVisible] = React.useState(false);
-      React.useEffect(() => {
-        setVisible(true);
-      }, []);
-      return (
-        <Picker
-          {...props}
-          visible={visible}
-          onConfirm={(value, items) => {
-            props.onConfirm?.(value, items);
-            setVisible(false);
-            resolve({ value, items });
-          }}
-          onCancel={() => {
-            props.onCancel?.();
-            setVisible(false);
-            resolve({ value: null, items: [] });
-          }}
-          afterClose={() => {
-            props.afterClose?.();
-            unmount();
-          }}
-        />
-      );
-    };
-
-    const unmount = renderToBody(<Wrapper />);
+    const { close } = renderImperatively(
+      <Picker
+        {...props}
+        onConfirm={(value, items) => {
+          props.onConfirm?.(value, items);
+          close();
+          resolve({ value, items });
+        }}
+        onCancel={() => {
+          props.onCancel?.();
+          close();
+          resolve({ value: null, items: [] });
+        }}
+      />,
+    );
   });
 };

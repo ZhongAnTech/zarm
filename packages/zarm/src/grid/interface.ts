@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 export interface BaseGridProps {
   /**
    * 列数
@@ -19,4 +21,5 @@ export interface BaseGridProps {
    * @default false
    */
   square?: boolean;
+  children?: React.ReactNode;
 }

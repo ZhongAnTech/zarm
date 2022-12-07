@@ -1,12 +1,13 @@
-import { PureComponent } from 'react';
 import throttle from 'lodash/throttle';
-import Events from '../utils/events';
-import { canUseDOM, getScrollContainer, getScrollTop } from '../utils/dom';
+import { PureComponent } from 'react';
 import type { ScrollContainer } from '../utils/dom';
+import { canUseDOM, getScrollContainer, getScrollTop } from '../utils/dom';
+import Events from '../utils/events';
 
 export interface ScrollerProps {
   prefixCls?: string;
   scrollContainer?: ScrollContainer;
+  children?: React.ReactNode;
   onScroll?: (scrollTop?: number) => void;
 }
 

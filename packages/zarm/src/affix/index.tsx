@@ -1,11 +1,11 @@
-import React, { useState, useEffect, forwardRef, useRef, useCallback, CSSProperties } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import throttle from 'lodash/throttle';
+import React, { CSSProperties, forwardRef, useCallback, useEffect, useRef, useState } from 'react';
 import { ConfigContext } from '../config-provider';
 import { canUseDOM } from '../utils/dom';
 import Events from '../utils/events';
-import type { BaseAffixProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseAffixProps } from './interface';
 
 export interface AffixCssVars {
   '--zindex'?: React.CSSProperties['zIndex'];
@@ -22,7 +22,7 @@ export type AffixProps = BaseAffixProps & React.PropsWithChildren<HTMLProps<Affi
 
 const DEFAULT_SCROLL_CONTAINER = canUseDOM ? window : undefined;
 
-const Affix = forwardRef<unknown, AffixProps>((props, ref) => {
+const Affix = forwardRef<HTMLDivElement, AffixProps>((props, ref) => {
   const { className, children, offsetBottom, offsetTop, onChange, scrollContainer } = props;
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('affix', { prefixCls });

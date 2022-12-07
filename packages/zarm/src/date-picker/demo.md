@@ -192,7 +192,7 @@ const Demo = () => {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-## 指令式调用
+## 指令式
 
 ```jsx
 import { useState, useEffect } from 'react';
@@ -308,6 +308,25 @@ ReactDOM.render(<Demo />, mountNode);
 | disabled     | boolean                                                                                                       | false                                                    | 是否禁用                                                                                                                                                 |
 | itemRender   | (item: PickerViewColumnItem, type: `year` \| `month` \| `date` \| `hour` \| `minute` \| `second`) =>ReactNode | (data) => data.label                                     | 单个选项的展示                                                                                                                                           |
 | onChange     | (value: Date \| string) => void                                                                               | -                                                        | 值变化时触发的回调函数                                                                                                                                   |
+
+### 指令式调用
+
+DatePicker 支持指令式调用，提供了 `prompt` 方法
+
+```tsx
+prompt: (props: Omit<DatePickerProps, 'visible' | 'visible' | 'children'>) =>
+  Promise<DatePickerValue[] | null>;
+```
+
+`prompt` 方法的返回值是一个 Promise，如果用户点击了确定，从 Promise 中可以解析到 `DatePickerValue[]`，而如果用户是触发的取消操作，那么 Promise 中的值是 `null`。你可以通过 `await` 或 `.then()` 来获取到其中的值：
+
+```tsx
+const value = await DatePicker.prompt();
+
+DatePicker.prompt().then((value) => {
+  // ...
+});
+```
 
 ### 仅 DatePicker & DateSelect 支持的属性
 

@@ -286,12 +286,12 @@ const Demo = () => {
           <Button
             size="xs"
             onClick={() => {
-              const modal = Modal.alert({
+              Modal.alert({
                 className: 'test',
                 title: '警告框标题',
                 content: '这里是警告框的内容部分',
-                onCancel: () => {
-                  console.log('点击cancel');
+                onConfirm: () => {
+                  console.log('点击确认');
                 },
               });
             }}
@@ -306,10 +306,10 @@ const Demo = () => {
           <Button
             size="xs"
             onClick={() => {
-              const modal = Modal.alert({
+              Modal.alert({
                 title: '警告框标题',
                 content: '这里是警告框的内容部分，点击关闭按钮，将触发 Promise 关闭警告框',
-                onCancel: async () => {
+                onConfirm: async () => {
                   await new Promise((resolve) => setTimeout(resolve, 3000));
                   Toast.show({ content: '提交成功' });
                 },
@@ -333,7 +333,6 @@ ReactDOM.render(<Demo />, mountNode);
 import { List, Button, Modal, Toast } from 'zarm';
 
 const Demo = () => {
-  const Toast = Toast.useToast();
   return (
     <List>
       <List.Item
@@ -342,7 +341,7 @@ const Demo = () => {
           <Button
             size="xs"
             onClick={() => {
-              const modal = Modal.confirm({
+              Modal.confirm({
                 title: '确认信息',
                 content: '这里是确认框的内容部分',
                 onCancel: () => {
@@ -364,7 +363,7 @@ const Demo = () => {
           <Button
             size="xs"
             onClick={() => {
-              const modal = Modal.confirm({
+              Modal.confirm({
                 title: '确定要删除吗？',
                 content: '这里是确认框的内容部分，点击确定按钮，将触发 Promise 关闭确认框',
                 onConfirm: async () => {
@@ -418,9 +417,9 @@ ReactDOM.render(<Demo />, mountNode);
 | bold     | boolean    | false     | 是否加粗                                        |
 | onClick  | () => void | -         | 按钮点击后触发的回调函数                        |
 
-## 静态方法
+## 指令式 API
 
-```js
+```tsx
 // 显示警告框，不传 onCancel 也可关闭，如需做更多操作，参考下方 Confirm 的例子
 const alert = Modal.alert({
   title: '警告框标题',

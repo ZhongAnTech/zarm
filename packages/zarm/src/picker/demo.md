@@ -488,6 +488,29 @@ ReactDOM.render(<Demo />, mountNode);
 | onCancel       | () => void                                                    | -             | 点击取消时触发的回调函数                       |
 | mountContainer | HTMLElement &#124; () => HTMLElement                          | document.body | 指定 Picker 挂载的 HTML 节点                   |
 
+### 指令式调用
+
+Picker 支持指令式调用，提供了 `prompt` 方法
+
+```tsx
+prompt: (props: Omit<PickerProps, 'visible' | 'visible' | 'children'>) =>
+  Promise<PickerValue[] | null>;
+```
+
+`prompt` 方法的返回值是一个 Promise，如果用户点击了确定，从 Promise 中可以解析到 `PickerValue[]`，而如果用户是触发的取消操作，那么 Promise 中的值是 `null`。你可以通过 `await` 或 `.then()` 来获取到其中的值：
+
+```tsx
+const value = await Picker.prompt({
+  dataSource: dataSourceConfig,
+});
+
+Picker.prompt({
+  columns: dataSourceConfig,
+}).then((value) => {
+  // ...
+});
+```
+
 ### 仅 Picker 支持的属性
 
 | 属性    | 类型    | 默认值 | 说明     |

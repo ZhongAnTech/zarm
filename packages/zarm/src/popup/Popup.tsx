@@ -1,13 +1,13 @@
-import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
-import { ConfigContext } from '../config-provider';
-import { useLockScroll } from '../utils/hooks';
-import Trigger from '../trigger';
+import * as React from 'react';
 import Mask from '../mask';
-import type { BasePopupProps } from './interface';
-import type { HTMLProps } from '../utils/utilityTypes';
-import { renderToContainer } from '../utils/dom';
+import { ConfigContext } from '../config-provider';
 import Transition from '../transition';
+import Trigger from '../trigger';
+import { renderToContainer } from '../utils/dom';
+import { useLockScroll } from '../utils/hooks';
+import type { HTMLProps } from '../utils/utilityTypes';
+import type { BasePopupProps } from './interface';
 
 export type PopupProps = BasePopupProps & HTMLProps;
 
@@ -30,10 +30,14 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
     lockScroll,
     direction,
     mask,
+    maskClassNname,
+    maskStyle,
     maskColor,
     maskOpacity,
     afterOpen,
     afterClose,
+    onOpen,
+    onClose,
     onMaskClick,
     onEsc,
     children,
@@ -54,6 +58,8 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
     <Trigger visible={visible} onClose={handleEsc}>
       {mask && (
         <Mask
+          className={maskClassNname}
+          style={maskStyle}
           visible={visible}
           color={maskColor}
           opacity={maskOpacity}
@@ -75,6 +81,12 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
         destroy={destroy}
         onEnter={() => {
           afterOpen?.();
+        }}
+        onEnterActive={() => {
+          onOpen?.();
+        }}
+        onLeaveActive={() => {
+          onClose?.();
         }}
         onLeaveEnd={() => {
           afterClose?.();

@@ -1,78 +1,69 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import classNames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
+import { Close, Success } from '@zarm-design/icons';
+import * as React from 'react';
+import ActivityIndicator from '../activity-indicator';
 import { ConfigContext } from '../config-provider';
 import Popup from '../popup';
-import type { BaseToastProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseToastProps } from './interface';
 
 export type ToastProps = BaseToastProps & HTMLProps;
 
 const Toast = React.forwardRef<HTMLDivElement, ToastProps>((props, ref) => {
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-toast`;
-
-  const toastRef = ref || React.createRef<HTMLDivElement>();
   const {
     className,
-    stayTime,
-    content,
-    visible: propVisible,
-    afterClose,
     style,
-    ...others
+    icon,
+    content,
+    duration,
+    maskStyle,
+    maskColor = 'transparent',
+    maskClickable,
+    ...rest
   } = props;
-  const [visible, setVisible] = useState(propVisible!);
-  const timerRef = useRef(0);
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('toast', { prefixCls });
 
-  const hide = () => {
-    setVisible(false);
+  const renderIcon = () => {
+    if (icon === undefined || icon === null) return null;
+    switch (icon) {
+      case 'success':
+        return <Success />;
+      case 'fail':
+        return <Close />;
+      case 'loading':
+        return <ActivityIndicator />;
+      default:
+        return icon;
+    }
   };
-
-  const autoClose = useCallback(() => {
-    if (stayTime! > 0) {
-      timerRef.current = window.setTimeout(() => {
-        hide();
-        window.clearTimeout(timerRef.current!);
-      }, stayTime);
-    }
-  }, [stayTime]);
-
-  useEffect(() => {
-    if (visible) {
-      autoClose();
-    }
-    return () => {
-      window.clearTimeout(timerRef.current!);
-    };
-  }, [autoClose, visible]);
-
-  useEffect(() => {
-    setVisible(propVisible!);
-  }, [propVisible]);
 
   return (
     <Popup
       direction="center"
-      maskColor="transparent"
-      width="70%"
-      lockScroll={false}
-      {...others}
-      visible={visible}
-      afterClose={afterClose}
+      maskStyle={{
+        pointerEvents: maskClickable ? 'none' : 'auto',
+        ...maskStyle,
+      }}
+      maskColor={maskColor}
+      {...rest}
     >
-      <div className={classNames(prefixCls, className)} ref={toastRef} style={style}>
-        <div className={`${prefixCls}__container`}>{content}</div>
+      <div
+        ref={ref}
+        className={bem([
+          className,
+          {
+            icon: !!icon,
+            text: !icon,
+          },
+        ])}
+        style={style}
+      >
+        {icon && <div className={bem('icon')}>{renderIcon()}</div>}
+        {content && <div className={bem('text')}>{content}</div>}
       </div>
     </Popup>
   );
 });
-
-Toast.displayName = 'Toast';
-
-Toast.defaultProps = {
-  visible: false,
-  stayTime: 3000,
-  mask: false,
-};
 
 export default Toast;

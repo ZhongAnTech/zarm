@@ -69,9 +69,6 @@ export { default as Keyboard } from './keyboard';
 export type { KeyboardPickerProps } from './keyboard-picker';
 export { default as KeyboardPicker } from './keyboard-picker';
 
-export type { LoadingProps, LoadingCssVars } from './loading';
-export { default as Loading } from './loading';
-
 export type { MaskProps, MaskCssVars } from './mask';
 export { default as Mask } from './mask';
 
@@ -87,15 +84,7 @@ export { default as NoticeBar } from './notice-bar';
 export type { PanelProps, PanelCssVars } from './panel';
 export { default as Panel } from './panel';
 
-export type {
-  PickerViewProps,
-  PickerViewInstance,
-  PickerViewCssVars,
-  PickerValue,
-  PickerColumn,
-  PickerColumnItem,
-  PickerOption,
-} from './picker-view';
+export type { PickerViewProps, PickerViewInstance, PickerViewCssVars } from './picker-view';
 export { default as PickerView } from './picker-view';
 
 export type { PickerProps, PickerCssVars } from './picker';

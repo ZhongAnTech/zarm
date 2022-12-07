@@ -1,7 +1,11 @@
-import attachPropertiesToComponent from '../utils/attachPropertiesToComponent';
-import Toast from './Toast';
-import { show } from './methods';
+import { clear, show } from './methods';
 
+export type { ToastHandler } from './methods';
 export type { ToastProps } from './Toast';
 
-export default attachPropertiesToComponent(Toast, { show });
+const Toast = {
+  show,
+  clear,
+};
+
+export default Toast;

@@ -1,11 +1,11 @@
-import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
 import isFinite from 'lodash/isFinite';
+import * as React from 'react';
 import { ConfigContext } from '../config-provider';
-import type { BaseMaskProps } from './interface';
-import type { HTMLProps } from '../utils/utilityTypes';
-import { renderToContainer } from '../utils/dom';
 import Transition from '../transition';
+import { renderToContainer } from '../utils/dom';
+import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseMaskProps } from './interface';
 
 const OpacityList = {
   normal: 0.55,
@@ -19,7 +19,7 @@ export interface MaskCssVars {
 
 export type MaskProps = BaseMaskProps &
   React.PropsWithChildren<HTMLProps<MaskCssVars>> & {
-    onClick: React.MouseEventHandler<HTMLDivElement>;
+    onClick?: React.MouseEventHandler<HTMLDivElement>;
   };
 
 const Mask = React.forwardRef<HTMLDivElement, MaskProps>((props, ref) => {
@@ -32,6 +32,8 @@ const Mask = React.forwardRef<HTMLDivElement, MaskProps>((props, ref) => {
     animationDuration,
     forceRender,
     destroy,
+    afterOpen,
+    afterClose,
     onClick,
     children,
     mountContainer,
@@ -51,6 +53,12 @@ const Mask = React.forwardRef<HTMLDivElement, MaskProps>((props, ref) => {
       duration={animationDuration}
       forceRender={forceRender}
       destroy={destroy}
+      onEnter={() => {
+        afterOpen?.();
+      }}
+      onLeaveEnd={() => {
+        afterClose?.();
+      }}
     >
       {(rest, setNodeRef) =>
         renderToContainer(

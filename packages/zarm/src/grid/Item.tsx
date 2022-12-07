@@ -1,10 +1,11 @@
-import * as React from 'react';
 import classnames from 'classnames';
-import GridContext from './GridContext';
+import * as React from 'react';
 import { ConfigContext } from '../config-provider';
 import type { HTMLProps } from '../utils/utilityTypes';
+import GridContext from './GridContext';
 
 export type GridItemProps = HTMLProps & {
+  children?: React.ReactNode;
   onClick?: React.MouseEventHandler;
 };
 

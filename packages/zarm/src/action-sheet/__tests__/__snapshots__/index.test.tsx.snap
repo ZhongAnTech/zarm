@@ -1,3 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ActionSheet renders correctly 1`] = `<DocumentFragment />`;
+exports[`ActionSheet renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="za-mask "
+    style="background-color: rgba(0, 0, 0, 0.55);"
+  />
+  <div
+    class="za-popup__wrapper"
+  >
+    <div
+      class="za-popup za-popup--bottom "
+    >
+      <div
+        class="za-action-sheet"
+      >
+        <div
+          class="za-action-sheet__actions"
+        >
+          <div
+            class="za-action-sheet__item"
+          >
+            操作一
+          </div>
+          <div
+            class="za-action-sheet__item"
+          >
+            操作二
+          </div>
+          <div
+            class="za-action-sheet__item za-action-sheet__item--danger"
+          >
+            操作三
+          </div>
+        </div>
+        <div
+          class="za-action-sheet__cancel"
+        >
+          <div
+            class="za-action-sheet__item za-action-sheet__item--bold"
+          >
+            取消
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
