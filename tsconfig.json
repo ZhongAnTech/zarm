@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "./packages",
     "target": "ES2019",
     "module": "ESNext",
     "moduleResolution": "Node",
