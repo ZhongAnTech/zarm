@@ -9,9 +9,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@master
 
-      - name: Cache lerna
-        id: cache
-        uses: actions/cache@v2
+      - name: Cache node_modules
+        id: node_modules_cache_id
+        uses: actions/cache@v3
         with:
           path: |
             node_modules
@@ -19,7 +19,7 @@ jobs:
           key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.node_modules_cache_id.outputs.cache-hit != 'true'
         run: yarn
 
   setup-react-16:
@@ -31,9 +31,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@master
 
-      - name: Cache lerna
-        id: cache
-        uses: actions/cache@v2
+      - name: Cache node_modules
+        id: node_modules_cache_id
+        uses: actions/cache@v3
         with:
           path: |
             node_modules
@@ -58,7 +58,7 @@ jobs:
           fetch-depth: 2
 
       - name: Restore lerna
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             node_modules
@@ -80,7 +80,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: Restore lerna
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             node_modules
@@ -88,7 +88,7 @@ jobs:
           key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
 
       - name: Cache @zarm-design/cli
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: packages/zarm-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
@@ -105,7 +105,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: Restore lerna
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             node_modules
@@ -113,13 +113,13 @@ jobs:
           key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
 
       - name: Restore @zarm-design/cli
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: packages/zarm-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
       - name: Cache @zarm-design/bem
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: packages/bem/lib
           key: ${{ runner.os }}-bem-${{ github.sha }}
@@ -136,7 +136,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: Restore lerna
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             node_modules
@@ -144,19 +144,19 @@ jobs:
           key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
 
       - name: Restore @zarm-design/cli
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: packages/zarm-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
       - name: Restore @zarm-design/bem
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: packages/bem/lib
           key: ${{ runner.os }}-bem-${{ github.sha }}
 
       - name: Cache @zarm-design/icons
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: packages/zarm-icons/lib
           key: ${{ runner.os }}-icons-${{ github.sha }}
@@ -173,7 +173,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: Restore lerna
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             node_modules
@@ -181,19 +181,19 @@ jobs:
           key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
 
       - name: Restore @zarm-design/cli
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: packages/zarm-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
       - name: Restore @zarm-design/bem
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: packages/bem/lib
           key: ${{ runner.os }}-bem-${{ github.sha }}
 
       - name: Restore @zarm-design/icons
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: packages/zarm-icons/lib
           key: ${{ runner.os }}-icons-${{ github.sha }}
@@ -212,7 +212,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: Restore lerna
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             node_modules
@@ -220,19 +220,19 @@ jobs:
           key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
 
       - name: Restore @zarm-design/cli
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: packages/zarm-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
       - name: Restore @zarm-design/bem
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: packages/bem/lib
           key: ${{ runner.os }}-bem-${{ github.sha }}
 
       - name: Restore @zarm-design/icons
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: packages/zarm-icons/lib
           key: ${{ runner.os }}-icons-${{ github.sha }}
@@ -251,7 +251,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: Restore lerna
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             node_modules
@@ -273,7 +273,7 @@ jobs:
           fetch-depth: 2
 
       - name: Restore lerna
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             node_modules
@@ -281,19 +281,19 @@ jobs:
           key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
 
       - name: Restore cli
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: packages/zarm-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
       - name: Restore @zarm-design/bem
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: packages/bem/lib
           key: ${{ runner.os }}-bem-${{ github.sha }}
 
       - name: Restore @zarm-design/icons
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: packages/zarm-icons/lib
           key: ${{ runner.os }}-icons-${{ github.sha }}
@@ -313,7 +313,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: Restore lerna
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             node_modules
@@ -321,19 +321,19 @@ jobs:
           key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
 
       - name: Restore @zarm-design/cli
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: packages/zarm-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
       - name: Restore @zarm-design/bem
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: packages/bem/lib
           key: ${{ runner.os }}-bem-${{ github.sha }}
 
       - name: Restore @zarm-design/icons
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: packages/zarm-icons/lib
           key: ${{ runner.os }}-icons-${{ github.sha }}
@@ -362,7 +362,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: Restore lerna
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             node_modules
@@ -370,19 +370,19 @@ jobs:
           key: ${{ runner.os }}-lerna-react16-${{ hashFiles('**/yarn.lock') }}
 
       - name: Restore @zarm-design/cli
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: packages/zarm-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
       - name: Restore @zarm-design/bem
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: packages/bem/lib
           key: ${{ runner.os }}-bem-${{ github.sha }}
 
       - name: Restore @zarm-design/icons
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: packages/zarm-icons/lib
           key: ${{ runner.os }}-icons-${{ github.sha }}
@@ -401,7 +401,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: Restore lerna
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             node_modules
@@ -409,19 +409,19 @@ jobs:
           key: ${{ runner.os }}-lerna-react16-${{ hashFiles('**/yarn.lock') }}
 
       - name: Restore @zarm-design/cli
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: packages/zarm-cli/lib
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
       - name: Restore @zarm-design/bem
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: packages/bem/lib
           key: ${{ runner.os }}-bem-${{ github.sha }}
 
       - name: Restore @zarm-design/icons
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: packages/zarm-icons/lib
           key: ${{ runner.os }}-icons-${{ github.sha }}
