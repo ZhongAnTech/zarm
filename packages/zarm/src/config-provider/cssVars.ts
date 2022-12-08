@@ -44,7 +44,7 @@ import type { ImageCssVars } from '../image';
 import type { CascaderViewCssVars } from '../cascader-view';
 
 type Prefix<T extends object, N extends string> = {
-  [Key in keyof T as Key extends string ? `--za-${N}-${Replace<Key, '--', ''>}` : never]: T[Key];
+  [Key in keyof T as Key extends string ? `--za-${N}-${Replace<Key, '--', ''>}` : never]?: T[Key];
 };
 
 export type CssVars = Prefix<ActionSheetCssVars, 'action-sheet'> &
