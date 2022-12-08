@@ -16,7 +16,6 @@
     "lint:script": "eslint --ext .ts,.tsx,.js,.jsx packages",
     "lint:style": "stylelint \"packages/**/*.scss\" --syntax scss",
     "lint:tsc": "tsc --noEmit",
-    "prepare": "husky install",
     "prepublishOnly": "yarn lint && yarn build && yarn test",
     "prettier": "prettier --write -c '**/*.{js,jsx,ts,tsx,html,md,json}'",
     "release": "lerna publish",
