@@ -22,7 +22,6 @@ import type { IconCssVars } from '../icon';
 import type { RateCssVars } from '../rate';
 import type { PullCssVars } from '../pull';
 import type { MaskCssVars } from '../mask';
-import type { LoadingCssVars } from '../loading';
 import type { MessageCssVars } from '../message';
 import type { NavBarCssVars } from '../nav-bar';
 import type { NoticeBarCssVars } from '../notice-bar';
@@ -63,7 +62,6 @@ export type CssVars = Prefix<ActionSheetCssVars, 'action-sheet'> &
   Prefix<InputCssVars, 'input'> &
   Prefix<KeyboardCssVars, 'keyboard'> &
   Prefix<ListCssVars, 'list'> &
-  Prefix<LoadingCssVars, 'loading'> &
   Prefix<SliderCssVars, 'slider'> &
   Prefix<SwitchCssVars, 'switch'> &
   Prefix<ModalCssVars, 'modal'> &

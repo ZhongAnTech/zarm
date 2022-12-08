@@ -7,7 +7,19 @@ import { pascalCase } from 'change-case';
 import React, { lazy, Suspense } from 'react';
 import Loadable from 'react-loadable';
 import { Route, Switch } from 'react-router-dom';
+import { Toast } from 'zarm';
 import './style.scss';
+
+const Loading = () => {
+  React.useEffect(() => {
+    const { close } = Toast.show({ type: 'loading' });
+    return () => {
+      close?.();
+    };
+  }, []);
+
+  return null;
+};
 
 const LoadableComponent = (component) => {
   const loader = { page: component.module };
@@ -27,7 +39,7 @@ const LoadableComponent = (component) => {
         </Container>
       );
     },
-    loading: () => <></>,
+    loading: () => <Loading />,
   });
 };
 
@@ -35,7 +47,7 @@ const App = () => {
   const { general, form, feedback, view, navigation, hooks, other } = components;
   return (
     <SentryBoundary>
-      <Suspense fallback={<></>}>
+      <Suspense fallback={<Loading />}>
         <Switch>
           <Route exact path="/" component={lazy(() => import('@/demo/pages/Index'))} />
           {[...general, ...form, ...feedback, ...view, ...navigation, ...hooks, ...other].map(

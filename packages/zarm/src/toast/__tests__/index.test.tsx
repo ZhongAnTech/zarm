@@ -1,54 +1,28 @@
 import '@testing-library/jest-dom';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import React from 'react';
-import Toast, { ToastHandler } from '../index';
+import Toast from '../index';
 
-jest.useFakeTimers();
+const waitForContentShow = async (content: string) => {
+  await waitFor(() => {
+    screen.getByText(content);
+  });
+};
 
 describe('Toast', () => {
-  test('should show toast when call static method on Toast component', () => {
-    const Demo = () => {
-      const ref = React.useRef<ToastHandler>();
-      return (
-        <>
-          <button
-            onClick={() => {
-              ref.current = Toast.show('toast content');
-            }}
-          >
-            open
-          </button>
-          <button onClick={() => ref.current?.close()}>close</button>
-        </>
-      );
-    };
-    render(<Demo />);
-    fireEvent.click(screen.getByRole('button', { name: 'open' }));
-    expect(screen.getAllByText('toast content')).toBeInTheDocument();
-    fireEvent.click(screen.getByRole('button', { name: 'close' }));
-    expect(screen.queryAllByText('toast content')).not.toBeInTheDocument();
-  });
+  test('string', async () => {
+    const { getByText } = render(
+      <button
+        onClick={() => {
+          Toast.show('content');
+        }}
+      >
+        open
+      </button>,
+    );
 
-  test('.show() static method should accepts toast props', () => {
-    const Demo = () => {
-      const ref = React.useRef<ToastHandler>();
-      return (
-        <>
-          <button
-            onClick={() => {
-              ref.current = Toast.show({ content: 'toast content' });
-            }}
-          >
-            open
-          </button>
-          <button onClick={() => ref.current?.close()}>close</button>
-        </>
-      );
-    };
-    render(<Demo />);
-    fireEvent.click(screen.getByRole('button', { name: 'open' }));
-    expect(screen.getAllByText('toast content')).toBeInTheDocument();
-    fireEvent.click(screen.getByRole('button', { name: 'close' }));
-    expect(screen.queryAllByText('toast content')).not.toBeInTheDocument();
+    fireEvent.click(getByText('open'));
+    await waitForContentShow('content');
+    expect(getByText('content')).toBeInTheDocument();
   });
 });

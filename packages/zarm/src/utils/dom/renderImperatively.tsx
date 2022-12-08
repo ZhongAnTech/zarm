@@ -1,7 +1,7 @@
 // 移植自 antd-mobile: https://github1s.com/ant-design/ant-design-mobile/blob/HEAD/src/utils/render-imperatively.tsx
 import * as React from 'react';
 import { MountContainer } from '.';
-import { RuntimeConfigProvider } from '../../n-config-provider/ConfigProvider';
+import { RuntimeConfigProvider } from '../../config-provider/ConfigProvider';
 import { renderTo } from './renderTo';
 
 interface ImperativeProps {

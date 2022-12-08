@@ -1,8 +1,6 @@
 import type { BaseKeyBoardProps, KeyBoardDataSource } from './interface';
 
-const KeysConfig: {
-  [type in Exclude<BaseKeyBoardProps['type'], undefined>]: KeyBoardDataSource;
-} = {
+const KeysConfig = {
   number: {
     columns: 4,
     keys: [
@@ -78,6 +76,6 @@ const KeysConfig: {
       'close',
     ],
   },
-};
+} as Record<BaseKeyBoardProps['type'], KeyBoardDataSource>;
 
 export default KeysConfig;
