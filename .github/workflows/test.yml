@@ -19,7 +19,7 @@ jobs:
           key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install
-        if: steps.node_modules_cache_id.outputs.cache-hit != 'true'
+        # if: steps.node_modules_cache_id.outputs.cache-hit != 'true'
         run: yarn
 
   setup-react-16:
