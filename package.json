@@ -12,7 +12,7 @@
     "deploy:build": "lerna exec --scope site -- yarn build -p",
     "dev": "lerna exec --scope site -- yarn start",
     "postinstall": "lerna exec --scope @zarm-design/cli -- yarn build && lerna exec --scope @zarm-design/bem -- yarn build && lerna exec --scope @zarm-design/icons -- yarn build",
-    "lint": "yarn lint:tsc && yarn lint:script && yarn lint:style",
+    "lint": "yarn install && yarn lint:tsc && yarn lint:script && yarn lint:style",
     "lint:script": "eslint --ext .ts,.tsx,.js,.jsx packages",
     "lint:style": "stylelint \"packages/**/*.scss\" --syntax scss",
     "lint:tsc": "tsc --noEmit",
