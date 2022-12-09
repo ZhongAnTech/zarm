@@ -208,4 +208,4 @@ ReactDOM.render(
 | --item-description-font-size   | '12px'                                                          | 列表项补充信息字体大小 |
 | --item-description-text-color  | 'rgba(60, 60, 67, 0.6)'                                         | 列表项补充信息字体颜色 |
 | --item-description-line-height | '16px'                                                          | 列表项补充信息行高     |
-| --item-inline-title-width      | 'var(--za-input-label-width)'                                   | 表单内联下标题宽度     |
+| --item-inline-title-width      | '100px'                                                         | 表单内联下标题宽度     |

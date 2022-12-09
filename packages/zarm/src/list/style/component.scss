@@ -19,7 +19,7 @@
   @include define(item-description-font-size, 12px);
   @include define(item-description-text-color, rgba(60, 60, 67, 0.6));
   @include define(item-description-line-height, 16px);
-  @include define(item-inline-title-width, var(--za-input-label-width));
+  @include define(item-inline-title-width, 100px);
 
   list-style: none;
   margin: 0;

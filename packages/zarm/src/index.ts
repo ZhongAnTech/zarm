@@ -69,6 +69,7 @@ export { default as Keyboard } from './keyboard';
 export type { KeyboardPickerProps } from './keyboard-picker';
 export { default as KeyboardPicker } from './keyboard-picker';
 
+export type { LoadingProps, LoadingCssVars } from './loading';
 export { default as Loading } from './loading';
 
 export type { MaskProps, MaskCssVars } from './mask';
@@ -83,7 +84,7 @@ export { default as Modal } from './modal';
 export type { NoticeBarProps, NoticeBarCssVars } from './notice-bar';
 export { default as NoticeBar } from './notice-bar';
 
-export type { PanelProps } from './panel';
+export type { PanelProps, PanelCssVars } from './panel';
 export { default as Panel } from './panel';
 
 export type { PickerViewProps, PickerViewInstance, PickerViewCssVars } from './picker-view';
@@ -106,12 +107,12 @@ export { default as Progress } from './progress';
 export type { PullProps, PullCssVars } from './pull';
 export { default as Pull } from './pull';
 
-export type { RadioProps, RadioGroupProps } from './radio';
+export type { RadioProps, RadioGroupProps, RadioGroupCssVars, RadioCssVars } from './radio';
 export { default as Radio } from './radio';
 
 export { default as Scroller } from './scroller';
 
-export type { SearchBarProps } from './search-bar';
+export type { SearchBarProps, SearchBarCssVars } from './search-bar';
 export { default as SearchBar } from './search-bar';
 
 export type {
@@ -137,10 +138,10 @@ export { default as SwipeAction } from './swipe-action';
 export type { SwitchProps, SwitchCssVars } from './switch';
 export { default as Switch } from './switch';
 
-export type { RateProps } from './rate';
+export type { RateProps, RateCssVars } from './rate';
 export { default as Rate } from './rate';
 
-export type { TabsProps, TabPanelProps } from './tabs';
+export type { TabsProps, TabPanelProps, TabsCssVars } from './tabs';
 export { default as Tabs } from './tabs';
 
 export type { ToastProps, UseToast } from './toast';
@@ -155,15 +156,15 @@ export { default as Trigger } from './trigger';
 export type { WaterMarkProps } from './water-mark';
 export { default as WaterMark } from './water-mark';
 
-export type { WheelProps } from './wheel';
+export type { WheelProps, WheelCssVars } from './wheel';
 export { default as Wheel } from './wheel';
 
-export type { NavBarProps } from './nav-bar';
+export type { NavBarProps, NavBarCssVars } from './nav-bar';
 export { default as NavBar } from './nav-bar';
 
 export { default as Marquee } from './marquee';
 
-export type { TabBarProps, TabBarItemProps } from './tab-bar';
+export type { TabBarProps, TabBarItemProps, TabBarCssVars } from './tab-bar';
 export { default as TabBar } from './tab-bar';
 
 export type { ImagePreviewProps, ImagePreviewCssVars } from './image-preview';

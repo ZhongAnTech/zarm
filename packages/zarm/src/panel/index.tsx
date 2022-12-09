@@ -4,7 +4,7 @@ import { ConfigContext } from '../config-provider';
 import type { BasePanelProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
 
-export interface BasePanelCssVars {
+export interface PanelCssVars {
   '--header-padding'?: React.CSSProperties['padding'];
   '--header-font-size'?: React.CSSProperties['fontSize'];
   '--header-color'?: React.CSSProperties['color'];
@@ -15,7 +15,7 @@ export interface BasePanelCssVars {
   '--spacing-padding-horizontal'?: React.CSSProperties['padding'];
 }
 
-export type PanelProps = BasePanelProps & React.PropsWithChildren<HTMLProps<BasePanelCssVars>>;
+export type PanelProps = BasePanelProps & React.PropsWithChildren<HTMLProps<PanelCssVars>>;
 
 const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
   const { className, title, more, spacing, bordered, children, ...restProps } = props;

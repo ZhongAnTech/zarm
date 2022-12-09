@@ -6,7 +6,11 @@ import ActivityIndicator from '../activity-indicator';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseLoadingProps } from './interface';
 
-export type LoadingProps = BaseLoadingProps & HTMLProps;
+export interface LoadingCssVars {
+  '--background'?: React.CSSProperties['background'];
+}
+
+export type LoadingProps = BaseLoadingProps & HTMLProps<LoadingCssVars>;
 
 export interface UseLoading {
   show: (props: LoadingProps) => void;
