@@ -12,6 +12,7 @@ export default {
   'app.docs.article.i18n': 'Internationalization',
   'app.docs.article.contributing': 'Contributing',
   'app.docs.article.changelog': 'Change Log',
+  'app.docs.article.migration-v3': 'v2 to v3',
 
   'app.components.group.general': 'General',
   'app.components.group.form': 'Data Entry',
