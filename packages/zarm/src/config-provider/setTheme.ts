@@ -1,16 +1,6 @@
 import type { ConfigProviderProps } from './interface';
 
 const themes = {
-  '--background-color': '#393939',
-  '--background-active': '#222',
-  '--theme-primary-lighter': '#303030',
-  '--color-text': 'rgba(255, 255, 255, 0.85)',
-  '--color-text-inverse': 'rgba(255, 255, 255, 0.8)',
-  '--color-text-placeholder': 'rgba(255, 255, 255, 0.3)',
-  '--color-text-disabled': '#666',
-  '--border-color': '#1a1a1a',
-  '--opacity-mask': '0.7',
-
   '--za-arrow-color': '#666',
   '--za-background-color': '#1c1c1e',
   '--za-background-active': '#363738',
@@ -87,6 +77,8 @@ const themes = {
   '--za-image-text-color': '#fff',
   '--za-cascader-view-background-color': '#000',
   '--za-cascader-header-background-color': 'var(--za-background-color)',
+  '--za-tab-bar-background': 'var(--za-background-color)',
+  '--za-action-sheet-background': 'var(--za-background-color)',
 } as const;
 
 const setTheme = (value: ConfigProviderProps['theme']) => {

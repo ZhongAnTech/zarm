@@ -1,4 +1,6 @@
 @include b(loading) {
+  @include define(background, rgba(0, 0, 0, var(--za-opacity-toast)));
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,8 +23,8 @@
     width: r(80);
     height: r(80);
     padding: r(20) r(15);
-    border-radius: var(--radius-md);
-    background: var(--za-loading-background);
-    color: var(--color-text);
+    border-radius: var(--za-radius-md);
+    background: var(--background);
+    color: var(--za-color-text);
   }
 }

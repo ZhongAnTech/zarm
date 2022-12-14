@@ -13,8 +13,6 @@
     flex: 1;
     position: relative;
     width: 100%;
-    height: var(--za-input-line-height);
-    line-height: var(--za-input-line-height);
   }
 
   @include m(placeholder) {
