@@ -47,7 +47,6 @@
     "build:lib": "rimraf lib && zarm build --mode lib --path src --out-dir lib --copy-files --build-css",
     "build:types": "rimraf types && tsc",
     "build:umd": "rimraf dist && zarm build --mode umd --path src/style/entry.ts,src/index.ts --out-dir dist --library-name zarm && zarm build --mode umd-ugly --path src/style/entry.ts,src/index.ts --out-dir dist --library-name zarm",
-    "bundlesize": "bundlesize",
     "clean": "rimraf types lib es dist coverage",
     "coverage": "rimraf coverage && yarn test -c",
     "install-react-16": "yarn add react@16 react-dom@16 enzyme-adapter-react-16",

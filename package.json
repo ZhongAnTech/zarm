@@ -6,7 +6,6 @@
   ],
   "scripts": {
     "build": "lerna exec --scope zarm -- yarn build",
-    "bundlesize": "lerna run bundlesize",
     "clean": "lerna run clean && lerna clean -y",
     "deploy": "lerna exec --scope site -- gh-pages -d assets",
     "deploy:build": "lerna exec --scope site -- yarn build -p",
@@ -44,7 +43,6 @@
     "@typescript-eslint/eslint-plugin": "^5.3.1",
     "@typescript-eslint/parser": "^5.3.1",
     "browserslist": "^4.16.4",
-    "bundlesize": "^0.18.1",
     "concurrently": "^6.0.2",
     "eslint": "^7.10.0",
     "eslint-config-prettier": "8.1.0",

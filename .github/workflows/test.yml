@@ -347,7 +347,7 @@ jobs:
         run: lerna exec --scope zarm -- node ./tests/dekko/dist.test.js
 
       - name: Bundlesize
-        run: lerna exec --scope zarm -- yarn bundlesize
+        run: lerna exec --scope zarm -- npx bundlesize
         env:
           BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}
     needs: compile-icons
@@ -435,7 +435,7 @@ jobs:
         run: lerna exec --scope zarm -- node ./tests/dekko/dist.test.js
 
       - name: Bundlesize
-        run: lerna exec --scope zarm -- yarn bundlesize
+        run: lerna exec --scope zarm -- npx bundlesize
         env:
           BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}
     needs: [setup-react-16, compile-icons]
