@@ -35,6 +35,12 @@ module.exports = {
         source: '@/web/docs/contributing.md',
         style: false,
       },
+      {
+        key: 'migration-v3',
+        module: () => import('@/web/docs/migration-v3.md'),
+        source: '@/web/docs/migration-v3.md',
+        style: false,
+      },
     ],
     version: [
       {
