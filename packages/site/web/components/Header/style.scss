@@ -116,7 +116,7 @@ header {
 
         a {
           display: block;
-          padding: 0 30px;
+          padding: 0 20px;
           color: #333;
           cursor: pointer;
           transition: color 0.3s ease-in;
@@ -129,9 +129,20 @@ header {
       }
     }
 
+    .version,
     .lang,
     .github {
-      margin-left: 30px;
+      margin-left: 15px;
+    }
+
+    .version {
+      .ant-select-selector {
+        height: 28px !important;
+
+        .ant-select-selection-item {
+          line-height: 26px !important;
+        }
+      }
     }
   }
 
@@ -175,6 +186,7 @@ header {
 
 @media (max-width: 1200px) {
   header {
+    .version,
     .lang,
     .github {
       display: none;

@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { IntlProvider, FormattedMessage } from 'react-intl';
 import { Popup, Radio, Icon } from 'zarm';
 import { Dropdown, Menu } from 'zarm-web';
+import { Select } from 'antd';
 import { Search as SearchIcon, Close as CloseIcon } from '@zarm-design/icons';
 import classnames from 'classnames';
 import docsearch from 'docsearch.js';
@@ -156,6 +157,25 @@ const Header = ({ children }) => {
                   </li>
                 ))}
               </ul>
+              <div className="version">
+                <Select
+                  defaultValue=""
+                  options={[
+                    {
+                      value: '2x',
+                      label: '2.x',
+                    },
+                    {
+                      value: '',
+                      label: pkg.version,
+                    },
+                  ]}
+                  onChange={(version) => {
+                    if (version)
+                      window.location.href = `https://${version}.zarm.design`;
+                  }}
+                />
+              </div>
               <div className="lang">
                 <Radio.Group
                   buttonCompact
