@@ -30,7 +30,7 @@ module.exports = {
     options.plugins.push([
       'prismjs',
       {
-        languages: ['javascript', 'typescript', 'jsx', 'tsx', 'css', 'scss', 'markup', 'bash'],
+        languages: ['javascript', 'typescript', 'jsx', 'tsx', 'css', 'scss', 'markup', 'bash', 'diff'],
         theme: 'default',
         css: true,
       },

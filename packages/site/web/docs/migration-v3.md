@@ -11,11 +11,37 @@
   - DatePicker
   - KeyboardPicker
 
+```diff
+  import { Picker } from 'zarm';
+
+  const App: React.FC = () => (
+    <Picker
+-     okText="确定"
++     confirmText="确定"
+    />
+  );
+
+  export default App;
+```
+
 - 组件提示/确认框的确认文案 API 统一为 `onOk`，`onConfirm` 等类似 API 都会被替换。
   - Modal.(alert|confirm)
   - Picker
   - DatePicker
   - KeyboardPicker
+
+```diff
+  import { Picker } from 'zarm';
+
+  const App: React.FC = () => (
+    <Picker
+-     onOk={() => {}}
++     onConfirm={() => {}}
+    />
+  );
+
+  export default App;
+```
 
 ## 组件重构与移除
 
