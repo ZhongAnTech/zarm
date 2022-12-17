@@ -159,7 +159,7 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
     contentRender = (
       <Carousel
         swipeable={!disabled}
-        direction={direction === 'vertical' ? 'up' : 'left'}
+        direction={direction}
         showPagination={false}
         activeIndex={parseValue(currentValue)}
         ref={carouselRef}

@@ -60,7 +60,7 @@ const contentRender = () => {
 };
 
 ReactDOM.render(
-  <Carousel direction="up" height="48vw">
+  <Carousel direction="vertical" height="48vw">
     {contentRender()}
   </Carousel>,
   mountNode,
@@ -97,7 +97,6 @@ const Demo = () => {
       <Carousel
         ref={carouselRef}
         loop
-        direction="left"
         onChange={(index) => {
           console.log(`onChange: ${index}`);
         }}
@@ -157,7 +156,6 @@ ReactDOM.render(
   <Carousel
     autoPlay
     loop
-    direction="left"
     onChangeEnd={(index) => {
       console.log(`onChangeEnd: ${index}`);
     }}

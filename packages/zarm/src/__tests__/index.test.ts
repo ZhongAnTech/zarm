@@ -75,7 +75,7 @@ describe('index', () => {
             "animationDuration": 500,
             "autoPlay": false,
             "autoPlayIntervalTime": 3000,
-            "direction": "left",
+            "direction": "horizontal",
             "height": 160,
             "loop": false,
             "moveDistanceRatio": 0.5,

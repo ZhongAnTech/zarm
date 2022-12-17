@@ -45,7 +45,7 @@ describe('Carousel', () => {
   });
 
   it('height render correctly', () => {
-    const wrapper = render(createCarousel({ height: 150, direction: 'top' }));
+    const wrapper = render(createCarousel({ height: 150, direction: 'vertical' }));
     expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
