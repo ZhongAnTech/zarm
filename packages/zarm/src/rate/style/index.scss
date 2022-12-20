@@ -23,6 +23,7 @@
 
     @include b(icon) {
       @include define(color, var(--color));
+
       font-size: var(--size);
     }
 

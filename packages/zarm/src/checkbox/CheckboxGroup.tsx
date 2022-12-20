@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
+import isEqual from 'lodash/isEqual';
 import List from '../list';
 import { ConfigContext } from '../config-provider';
 import type { BaseCheckboxGroupProps, CheckboxValue } from './interface';
@@ -108,6 +109,8 @@ const CheckboxGroup = React.forwardRef<unknown, CheckboxGroupProps>((props, ref)
   ]);
 
   React.useEffect(() => {
+    if (props.value === undefined) return;
+    if (isEqual(props.value, currentValue)) return;
     setCurrentValue(getValue({ value, defaultValue, children }, []));
   }, [value, defaultValue, children]);
 
