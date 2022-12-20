@@ -140,10 +140,10 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
       }
       if (mode === 'range') {
         value[currentStep - 1] = date;
-      } else if (mode === 'multiple') {
-        value.push(date);
       } else if (idx > -1) {
         value.splice(idx, 1);
+      } else if (mode === 'multiple') {
+        value.push(date);
       } else {
         value[currentStep - 1] = date;
       }
