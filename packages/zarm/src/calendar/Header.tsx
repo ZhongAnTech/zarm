@@ -32,7 +32,7 @@ function Header(props: HeaderProps) {
   const currentValue = [year, month];
 
   const dateChange = (value) => {
-    const day = dayjs().year(value[0].value).month(value[1].value);
+    const day = dayjs().year(value[0]).month(value[1]);
     const index = months.findIndex((i) => {
       return dayjs(i).isSame(day, 'month');
     });
