@@ -34,8 +34,6 @@ const Demo = () => {
 
   const toggle = (type) => setVisible({ type });
 
-  const toast = Toast.useToast();
-
   return (
     <>
       <List>
@@ -129,11 +127,12 @@ const Demo = () => {
         dataSource={SINGLE_DATA}
         onConfirm={(selected) => {
           console.log('Picker onConfirm: ', selected);
-          toast.show(JSON.stringify(selected));
+          Toast.show(JSON.stringify(selected));
           setValue(selected.map((item) => item.value));
           toggle('picker');
         }}
         onCancel={() => toggle('picker')}
+        mountContainer={() => document.body}
       />
 
       <Popup
@@ -233,10 +232,14 @@ ReactDOM.render(<Demo />, mountNode);
 | animationDuration | number                               | 200           | 动画执行时间（单位：毫秒）                                                                                                                                                                              |
 | width             | string &#124; number                 | -             | 弹层宽度                                                                                                                                                                                                |
 | mask              | boolean                              | true          | 是否展示遮罩层                                                                                                                                                                                          |
+| maskClassName     | string                               | -             | 遮罩层的样式名                                                                                                                                                                                          |
+| maskStyle         | React.CSSProperties                  | -             | 遮罩层的样式                                                                                                                                                                                            |
 | maskColor         | string                               | 'black'       | 遮罩层的颜色，可选值 `black`, `white`, `transparent`                                                                                                                                                    |
 | maskOpacity       | string \| number                     | 'normal'      | 遮罩层的透明度，可选值 `normal`, `light`, `dark`，或填写具体数值（0 ~ 1）                                                                                                                               |
 | forceRender       | boolean                              | false         | 强制渲染内容                                                                                                                                                                                            |
 | destroy           | boolean                              | true          | 弹层关闭后是否移除节点                                                                                                                                                                                  |
+| onOpen            | () => void                           | -             | 弹层展示的回调                                                                                                                                                                                          |
+| onClose           | () => void                           | -             | 弹层关闭的回调                                                                                                                                                                                          |
 | afterOpen         | () => void                           | -             | 弹层展示后的回调                                                                                                                                                                                        |
 | afterClose        | () => void                           | -             | 弹层关闭后的回调                                                                                                                                                                                        |
 | onMaskClick       | () => void                           | -             | 点击遮罩层时触发的回调函数                                                                                                                                                                              |

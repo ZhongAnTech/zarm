@@ -8,4 +8,5 @@ export interface BaseIconProps {
   component?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   viewBox?: string;
   mode?: 'auto' | 'svg' | 'font';
+  children?: React.ReactNode;
 }

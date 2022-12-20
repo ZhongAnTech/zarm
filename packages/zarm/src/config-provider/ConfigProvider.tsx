@@ -23,7 +23,7 @@ const changeRuntimeConfigContext = (props: ConfigProviderProps) => {
   runtimeConfigContext = props;
 };
 
-const ConfigProvider: React.FC<ConfigProviderProps> = (props) => {
+const ConfigProvider: React.FC<React.PropsWithChildren<ConfigProviderProps>> = (props) => {
   const { children, cssVars, primaryColor, theme, ...rest } = props;
 
   changeRuntimeConfigContext(props);
@@ -43,7 +43,7 @@ const ConfigProvider: React.FC<ConfigProviderProps> = (props) => {
   );
 };
 
-export const RuntimeConfigProvider: React.FC = ({ children }) => {
+export const RuntimeConfigProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const props = React.useRef(runtimeConfigContext);
 
   React.useEffect(() => {

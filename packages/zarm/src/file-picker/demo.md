@@ -51,12 +51,11 @@ const onBeforeSelect = () => {
 
 const Demo = () => {
   const [files, setFiles] = useState([]);
-  const toast = Toast.useToast();
 
   const onSelect = (selFiles) => {
     const newFiles = files.concat(selFiles);
     if (newFiles.length > MAX_FILES_COUNT) {
-      toast.show('最多只能选择5张图片');
+      Toast.show('最多只能选择5张图片');
       return;
     }
     setFiles(newFiles);
@@ -66,7 +65,7 @@ const Demo = () => {
     const newFiles = [].concat(files);
     newFiles.splice(index, 1);
     setFiles(newFiles);
-    toast.show('删除成功');
+    Toast.show('删除成功');
   };
 
   const renderImages = () => {

@@ -141,7 +141,6 @@ const reducer = (state, action) => {
 const Demo = () => {
   const myRef = useRef();
   const [state, dispatch] = useReducer(reducer, initState);
-  const toast = Toast.useToast();
 
   const setVisible = (key) => {
     dispatch({ type: 'visible', key });
@@ -219,7 +218,7 @@ const Demo = () => {
         dataSource={state.single.dataSource}
         onConfirm={(changedValue, items) => {
           console.log('Single Picker onConfirm: ', items);
-          toast.show(JSON.stringify(items));
+          Toast.show(JSON.stringify(items));
           setValue('single', changedValue);
           setVisible('single');
         }}
@@ -232,7 +231,7 @@ const Demo = () => {
         dataSource={state.multi.dataSource}
         onConfirm={(changedValue, items) => {
           console.log('Multi Picker onConfirm: ', items);
-          toast.show(JSON.stringify(items));
+          Toast.show(JSON.stringify(items));
           setValue('multi', changedValue);
           setVisible('multi');
         }}
@@ -245,7 +244,7 @@ const Demo = () => {
         dataSource={state.cascade.dataSource}
         onConfirm={(changedValue, items) => {
           console.log('Cascade Picker onConfirm: ', items);
-          toast.show(JSON.stringify(items));
+          Toast.show(JSON.stringify(items));
           setValue('cascade', changedValue);
           setVisible('cascade');
         }}
@@ -263,7 +262,7 @@ const Demo = () => {
         itemRender={(data) => data.name}
         onConfirm={(changedValue, items) => {
           console.log('DIY Picker onConfirm: ', items);
-          toast.show(JSON.stringify(items));
+          Toast.show(JSON.stringify(items));
           setValue('diy', changedValue);
           setVisible('diy');
         }}
@@ -276,7 +275,7 @@ const Demo = () => {
         dataSource={state.specDOM.dataSource}
         onConfirm={(changedValue, items) => {
           console.log('Picker onConfirm: ', items);
-          toast.show(JSON.stringify(items));
+          Toast.show(JSON.stringify(items));
           setValue('specDOM', changedValue);
           setVisible('specDOM');
         }}
@@ -343,6 +342,63 @@ const Demo = () => {
           }}
         />
       </List.Item>
+    </List>
+  );
+};
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## 指令式调用
+
+```jsx
+import { useState, useEffect } from 'react';
+import { List, Picker, Button, Toast } from 'zarm';
+
+// 级联数据
+const PROMPT_DATA = [
+  {
+    value: 1,
+    label: '北京市',
+    children: [
+      { value: 11, label: '海淀区' },
+      { value: 12, label: '西城区' },
+    ],
+  },
+  {
+    value: 2,
+    label: '上海市',
+    children: [
+      { value: 21, label: '杨浦区' },
+      { value: 22, label: '静安区' },
+    ],
+  },
+];
+
+const Demo = () => {
+  const [value, setValue] = useState([]);
+
+  return (
+    <List>
+      <List.Item
+        title="选择城市"
+        suffix={
+          <Button
+            size="xs"
+            onClick={async () => {
+              const { value: changedValue, items } = await Picker.prompt({
+                value,
+                dataSource: PROMPT_DATA,
+              });
+              if (!changedValue) return;
+              setValue(changedValue);
+              Toast.show(JSON.stringify(items));
+            }}
+          >
+            选择
+          </Button>
+        }
+      />
     </List>
   );
 };
@@ -431,6 +487,29 @@ ReactDOM.render(<Demo />, mountNode);
 | onConfirm      | (value: PickerValue[], items: PickerViewColumnItem[]) => void | -             | 点击确定时触发的回调函数                       |
 | onCancel       | () => void                                                    | -             | 点击取消时触发的回调函数                       |
 | mountContainer | HTMLElement &#124; () => HTMLElement                          | document.body | 指定 Picker 挂载的 HTML 节点                   |
+
+### 指令式调用
+
+Picker 支持指令式调用，提供了 `prompt` 方法
+
+```tsx
+prompt: (props: Omit<PickerProps, 'visible' | 'visible' | 'children'>) =>
+  Promise<PickerValue[] | null>;
+```
+
+`prompt` 方法的返回值是一个 Promise，如果用户点击了确定，从 Promise 中可以解析到 `PickerValue[]`，而如果用户是触发的取消操作，那么 Promise 中的值是 `null`。你可以通过 `await` 或 `.then()` 来获取到其中的值：
+
+```tsx
+const value = await Picker.prompt({
+  dataSource: dataSourceConfig,
+});
+
+Picker.prompt({
+  columns: dataSourceConfig,
+}).then((value) => {
+  // ...
+});
+```
 
 ### 仅 Picker 支持的属性
 

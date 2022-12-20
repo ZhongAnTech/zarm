@@ -23,6 +23,8 @@ const PickerContainer = React.forwardRef<HTMLDivElement, PickerContainerProps>((
     onConfirm,
     onCancel,
     onClose,
+    afterOpen,
+    afterClose,
     children,
   } = props;
   const { prefixCls, locale } = React.useContext(ConfigContext);
@@ -36,6 +38,8 @@ const PickerContainer = React.forwardRef<HTMLDivElement, PickerContainerProps>((
       mountContainer={mountContainer}
       forceRender={forceRender}
       destroy={destroy}
+      afterOpen={afterOpen}
+      afterClose={afterClose}
     >
       <div
         className={bem('', [className])}

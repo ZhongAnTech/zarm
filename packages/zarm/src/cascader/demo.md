@@ -113,6 +113,105 @@ const Demo = () => {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
+## 指令式
+
+```jsx
+import { useState, useEffect } from 'react';
+import { List, Cascader, Button, Toast } from 'zarm';
+
+const PROMPT_DATA = [
+  {
+    value: '340000',
+    label: '安徽省',
+    children: [
+      {
+        value: '340800',
+        label: '安庆市',
+        children: [
+          {
+            value: '340803',
+            label: '大观区',
+            children: [],
+          },
+          {
+            value: '340822',
+            label: '怀宁县',
+            children: [],
+          },
+          {
+            value: '340882',
+            label: '其它区',
+            children: [],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: '310000',
+    label: '上海',
+    children: [
+      {
+        value: '310100',
+        label: '上海市',
+        children: [
+          {
+            value: '310113',
+            label: '宝山区',
+            children: [],
+          },
+          {
+            value: '310105',
+            label: '长宁区',
+            children: [],
+          },
+          {
+            value: '310230',
+            label: '崇明县',
+            children: [],
+          },
+          {
+            value: '310152',
+            label: '川沙区',
+            children: [],
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const Demo = () => {
+  const [value, setValue] = useState([]);
+
+  return (
+    <List>
+      <List.Item
+        title="选择城市"
+        suffix={
+          <Button
+            size="xs"
+            onClick={async () => {
+              const { value: changedValue } = await Cascader.prompt({
+                value,
+                dataSource: PROMPT_DATA,
+              });
+              if (!changedValue) return;
+              setValue(changedValue);
+              Toast.show(JSON.stringify(changedValue));
+            }}
+          >
+            选择
+          </Button>
+        }
+      />
+    </List>
+  );
+};
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
 ## CascaderView 级联选择视图
 
 ```jsx
@@ -208,6 +307,29 @@ ReactDOM.render(<Demo />, mountNode);
 | fieldNames   | object                           | { label: `label`, value: `value`, children: `children` } | 自定义节点 label、value、children 的字段 |
 | itemRender   | (data?: object) => data.label    | (data?: object) => data.label                            | 单个选项的展示                           |
 | onChange     | (value: CascaderValue[]) => void | -                                                        | 值变化时触发的回调函数                   |
+
+### 指令式调用
+
+Cascader 支持指令式调用，提供了 `prompt` 方法
+
+```tsx
+prompt: (props: Omit<CascaderProps, 'visible' | 'visible' | 'children'>) =>
+  Promise<CascaderValue[] | null>;
+```
+
+`prompt` 方法的返回值是一个 Promise，如果用户点击了确定，从 Promise 中可以解析到 `CascaderValue[]`，而如果用户是触发的取消操作，那么 Promise 中的值是 `null`。你可以通过 `await` 或 `.then()` 来获取到其中的值：
+
+```tsx
+const value = await Cascader.prompt({
+  dataSource: dataSourceConfig,
+});
+
+Cascader.prompt({
+  columns: dataSourceConfig,
+}).then((value) => {
+  // ...
+});
+```
 
 ### 仅 Cascader 支持的属性
 

@@ -5,29 +5,29 @@ import type {
   FieldNames as WheelFieldNames,
 } from '../wheel/interface';
 
-export type PickerViewValue = WheelValue;
+export type PickerValue = WheelValue;
 
-export type PickerViewColumnItem = WheelItem;
+export type PickerColumnItem = WheelItem;
 
-export type PickerViewColumn = PickerViewColumnItem[];
+export type PickerColumn = PickerColumnItem[];
 
-export interface PickerViewOption extends PickerViewColumnItem {
-  children?: PickerViewOption[];
+export interface PickerOption extends PickerColumnItem {
+  children?: PickerOption[];
 }
 
-export type PickerViewDataSource = (PickerViewColumn | PickerViewOption)[];
+export type PickerDataSource = (PickerColumn | PickerOption)[];
 
 export interface FieldNames extends WheelFieldNames {
   children: string;
 }
 
 export interface BasePickerViewProps extends Pick<BaseWheelProps, 'disabled'> {
-  value?: PickerViewValue | PickerViewValue[];
-  defaultValue?: PickerViewValue | PickerViewValue[];
-  wheelDefaultValue?: PickerViewValue | PickerViewValue[];
+  value?: PickerValue | PickerValue[];
+  defaultValue?: PickerValue | PickerValue[];
+  wheelDefaultValue?: PickerValue | PickerValue[];
   fieldNames?: Partial<FieldNames>;
-  dataSource?: PickerViewDataSource;
+  dataSource?: PickerDataSource;
   cols?: number;
-  itemRender?: (item: PickerViewColumnItem, level: number) => React.ReactNode;
-  onChange?: (value: PickerViewValue[], items: PickerViewColumnItem[], level: number) => void;
+  itemRender?: (item: PickerColumnItem, level: number) => React.ReactNode;
+  onChange?: (value: PickerValue[], items: PickerColumnItem[], level: number) => void;
 }

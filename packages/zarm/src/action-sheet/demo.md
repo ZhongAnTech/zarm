@@ -162,7 +162,7 @@ const Demo = () => {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-## 静态方法
+## 指令式
 
 ```jsx
 import { ActionSheet, List, Button } from 'zarm';

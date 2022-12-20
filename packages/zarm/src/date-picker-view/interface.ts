@@ -1,4 +1,4 @@
-import type { PickerViewColumnItem } from '../picker-view/interface';
+import type { PickerColumnItem } from '../picker-view/interface';
 
 export type DatePickerValue = string | Date;
 
@@ -24,5 +24,5 @@ export interface BaseDatePickerViewProps {
   max?: DatePickerValue;
   use12Hours?: boolean;
   format?: string;
-  itemRender?: (item: PickerViewColumnItem, type: columnType) => React.ReactNode;
+  itemRender?: (item: PickerColumnItem, type: columnType) => React.ReactNode;
 }

@@ -18,6 +18,8 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>((props, ref
     onConfirm,
     onCancel,
     onChange,
+    afterOpen,
+    afterClose,
     visible,
     ...others
   } = props;
@@ -49,6 +51,8 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>((props, ref
       onConfirm={handleConfirm}
       onCancel={handleCancel}
       onClose={handleCancel}
+      afterOpen={afterOpen}
+      afterClose={afterClose}
       ref={ref}
     >
       <DatePickerView

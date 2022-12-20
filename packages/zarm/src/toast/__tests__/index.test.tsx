@@ -1,59 +1,28 @@
-import React from 'react';
-import { fireEvent, render, screen, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import React from 'react';
 import Toast from '../index';
 
-jest.useFakeTimers();
+const waitForContentShow = async (content: string) => {
+  await waitFor(() => {
+    screen.getByText(content);
+  });
+};
 
 describe('Toast', () => {
-  test('should renders correctly', () => {
-    const { asFragment, rerender } = render(<Toast visible content="foo" />);
-    expect(asFragment().firstChild).toMatchSnapshot();
-    rerender(<Toast visible={false} content="foo" />);
-  });
+  test('string', async () => {
+    const { getByText } = render(
+      <button
+        onClick={() => {
+          Toast.show('content');
+        }}
+      >
+        open
+      </button>,
+    );
 
-  test('should show toast when call static method on Toast component', () => {
-    const Demo = () => {
-      const toast = Toast.useToast();
-      return (
-        <>
-          <button onClick={() => toast.show('toast content')}>open</button>
-          <button onClick={() => toast.hide()}>close</button>
-        </>
-      );
-    };
-    render(<Demo />);
-    fireEvent.click(screen.getByRole('button', { name: 'open' }));
-    expect(screen.getByText('toast content')).toBeInTheDocument();
-    fireEvent.click(screen.getByRole('button', { name: 'close' }));
-    expect(screen.queryByText('toast content')).not.toBeInTheDocument();
-  });
-
-  test('.show() static method should accepts toast props', () => {
-    const Demo = () => {
-      const toast = Toast.useToast();
-      return (
-        <>
-          <button onClick={() => toast.show({ content: 'toast content' })}>open</button>
-          <button onClick={() => toast.hide()}>close</button>
-        </>
-      );
-    };
-    render(<Demo />);
-    fireEvent.click(screen.getByRole('button', { name: 'open' }));
-    expect(screen.getByText('toast content')).toBeInTheDocument();
-    fireEvent.click(screen.getByRole('button', { name: 'close' }));
-    expect(screen.queryByText('toast content')).not.toBeInTheDocument();
-  });
-
-  test.skip('should close the Toast after 3 seconds by default', () => {
-    render(<Toast visible content="foo" />);
-    expect(screen.getByText('foo')).toBeInTheDocument();
-    jest.advanceTimersByTime(2_000);
-    expect(screen.getByText('foo')).toBeInTheDocument();
-    act(() => {
-      jest.advanceTimersByTime(1_000);
-    });
-    expect(screen.queryByText('foo')).not.toBeInTheDocument();
+    fireEvent.click(getByText('open'));
+    await waitForContentShow('content');
+    expect(getByText('content')).toBeInTheDocument();
   });
 });

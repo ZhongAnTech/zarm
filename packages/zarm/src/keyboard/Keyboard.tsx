@@ -1,12 +1,12 @@
-import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { DeleteKey as DeleteKeyIcon, Keyboard as KeyboardIcon } from '@zarm-design/icons';
-import useLongPress from '../useLongPress';
+import * as React from 'react';
 import { ConfigContext } from '../config-provider';
-import BuildInConfig from './BuildInConfig';
-import type { BaseKeyBoardProps, KeyBoardKey, KeyBoardDataSource } from './interface';
-import type { HTMLProps } from '../utils/utilityTypes';
+import useLongPress from '../useLongPress';
 import { useLatest } from '../utils/hooks';
+import type { HTMLProps } from '../utils/utilityTypes';
+import BuildInConfig from './BuildInConfig';
+import type { BaseKeyBoardProps, KeyBoardDataSource, KeyBoardKey } from './interface';
 
 export interface KeyboardCssVars {
   '--background'?: React.CSSProperties['background'];
@@ -69,8 +69,10 @@ const Keyboard = React.forwardRef<unknown, KeyboardProps>((props, ref) => {
     onClear: () => clearInterval(timerRef.current),
   });
 
-  const renderKey = React.useCallback((text: KeyBoardKey, index: number) => {
-    const keyObj: KeyBoardKey = typeof text === 'object' ? text : { text };
+  const renderKey = React.useCallback((text: React.ReactNode | KeyBoardKey, index: number) => {
+    const keyObj: React.ReactNode | KeyBoardKey = (
+      typeof text === 'object' ? text : { text }
+    ) as KeyBoardKey;
 
     const commonProps = {
       key: +index,

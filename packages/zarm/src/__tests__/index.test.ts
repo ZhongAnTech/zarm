@@ -90,6 +90,7 @@ describe('index', () => {
           "defaultProps": Object {
             "maskClosable": true,
           },
+          "prompt": [Function],
           "render": [Function],
         },
         "CascaderView": Object {
@@ -159,6 +160,7 @@ describe('index', () => {
             "minuteStep": 1,
             "mode": "date",
           },
+          "prompt": [Function],
           "render": [Function],
         },
         "DatePickerView": Object {
@@ -266,14 +268,6 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "Loading": Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "defaultProps": Object {
-            "mask": true,
-          },
-          "render": [Function],
-          "useLoading": [Function],
-        },
         "Marquee": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
@@ -351,6 +345,7 @@ describe('index', () => {
             "destroy": false,
             "maskClosable": true,
           },
+          "prompt": [Function],
           "render": [Function],
         },
         "PickerView": Object {
@@ -553,14 +548,8 @@ describe('index', () => {
           "render": [Function],
         },
         "Toast": Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "defaultProps": Object {
-            "mask": false,
-            "stayTime": 3000,
-            "visible": false,
-          },
-          "render": [Function],
-          "useToast": [Function],
+          "clear": [Function],
+          "show": [Function],
         },
         "Tooltip": Object {
           "$$typeof": Symbol(react.forward_ref),

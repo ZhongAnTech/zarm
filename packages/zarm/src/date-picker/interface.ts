@@ -10,6 +10,8 @@ export interface BaseDatePickerProps
   onConfirm?: (value: Date | string) => void;
   onCancel?: () => void;
   onChange?: (value: Date | string) => void;
+  afterOpen?: () => void;
+  afterClose?: () => void;
   maskClosable?: boolean;
   mountContainer?: MountContainer;
 }

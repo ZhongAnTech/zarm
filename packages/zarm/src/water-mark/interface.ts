@@ -125,6 +125,7 @@ export interface BaseWaterMarkProps {
    * @default true
    */
   monitor?: boolean;
+  children?: React.ReactNode;
 }
 
 export interface WaterMarkDrawResult {

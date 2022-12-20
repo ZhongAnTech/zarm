@@ -15,6 +15,7 @@ module.exports = {
         'react/sort-comp': 0,
         'react/destructuring-assignment': 0,
         'import/prefer-default-export': 0,
+        '@typescript-eslint/consistent-type-assertions': 0,
       },
       files: ['*.ts', '*.tsx'],
       extends: ['za/typescript-react', 'prettier'],

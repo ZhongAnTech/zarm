@@ -1,14 +1,14 @@
-import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
-import { ConfigContext } from '../config-provider';
+import * as React from 'react';
 import Modal from '../modal';
-import type { BaseAlertProps } from './interface';
+import { ConfigContext } from '../config-provider';
 import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseAlertProps } from './interface';
 
 export type AlertProps = BaseAlertProps & HTMLProps;
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
-  const { className, content, cancelText, onCancel, ...rest } = props;
+  const { className, content, confirmText, onConfirm, ...rest } = props;
   const { prefixCls, locale } = React.useContext(ConfigContext);
   const bem = createBEM('alert', { prefixCls });
   const cls = bem([className]);
@@ -20,8 +20,8 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
       className={cls}
       actions={[
         {
-          text: cancelText || locale?.Confirm.cancelText,
-          onClick: onCancel,
+          text: confirmText || locale?.Confirm.confirmText,
+          onClick: onConfirm,
           bold: true,
         },
       ]}

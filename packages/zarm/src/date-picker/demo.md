@@ -55,7 +55,6 @@ const reducer = (state, action) => {
 const Demo = () => {
   const myRef = useRef();
   const [state, dispatch] = useReducer(reducer, initState);
-  const toast = Toast.useToast();
 
   const setValue = (key, value) => {
     dispatch({ type: 'value', key, value });
@@ -118,7 +117,7 @@ const Demo = () => {
         onConfirm={(value) => {
           setValue('date', value);
           toggle('date');
-          toast.show(JSON.stringify(value));
+          Toast.show(JSON.stringify(value));
         }}
         onCancel={() => toggle('date')}
       />
@@ -130,7 +129,7 @@ const Demo = () => {
         onConfirm={(value) => {
           setValue('time', value);
           toggle('time');
-          toast.show(JSON.stringify(value));
+          Toast.show(JSON.stringify(value));
         }}
         onCancel={() => toggle('time')}
       />
@@ -147,7 +146,7 @@ const Demo = () => {
         onConfirm={(value) => {
           setValue('limitDate', value);
           toggle('limitDate');
-          toast.show(JSON.stringify(value));
+          Toast.show(JSON.stringify(value));
         }}
         onCancel={() => toggle('limitDate')}
       />
@@ -158,7 +157,7 @@ const Demo = () => {
         onConfirm={(value) => {
           setValue('specDOM', value);
           toggle('specDOM');
-          toast.show(JSON.stringify(value));
+          Toast.show(JSON.stringify(value));
         }}
         onCancel={() => toggle('specDOM')}
         getContainer={() => myRef.current}
@@ -186,6 +185,44 @@ const Demo = () => {
       <List.Item title="日期选择">
         <DateSelect mode="date" defaultValue={new Date(1555977600000)} />
       </List.Item>
+    </List>
+  );
+};
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## 指令式
+
+```jsx
+import { useState, useEffect } from 'react';
+import { List, DatePicker, Button, Toast } from 'zarm';
+
+const Demo = () => {
+  const [value, setValue] = useState('');
+
+  return (
+    <List>
+      <List.Item
+        title="日期选择"
+        suffix={
+          <Button
+            size="xs"
+            onClick={async () => {
+              const { value: changedValue } = await DatePicker.prompt({
+                value,
+                mode: 'date',
+                format: 'YYYY-MM-DD',
+              });
+              if (!changedValue) return;
+              setValue(changedValue);
+              Toast.show(changedValue);
+            }}
+          >
+            选择
+          </Button>
+        }
+      />
     </List>
   );
 };
@@ -271,6 +308,25 @@ ReactDOM.render(<Demo />, mountNode);
 | disabled     | boolean                                                                                                       | false                                                    | 是否禁用                                                                                                                                                 |
 | itemRender   | (item: PickerViewColumnItem, type: `year` \| `month` \| `date` \| `hour` \| `minute` \| `second`) =>ReactNode | (data) => data.label                                     | 单个选项的展示                                                                                                                                           |
 | onChange     | (value: Date \| string) => void                                                                               | -                                                        | 值变化时触发的回调函数                                                                                                                                   |
+
+### 指令式调用
+
+DatePicker 支持指令式调用，提供了 `prompt` 方法
+
+```tsx
+prompt: (props: Omit<DatePickerProps, 'visible' | 'visible' | 'children'>) =>
+  Promise<DatePickerValue[] | null>;
+```
+
+`prompt` 方法的返回值是一个 Promise，如果用户点击了确定，从 Promise 中可以解析到 `DatePickerValue[]`，而如果用户是触发的取消操作，那么 Promise 中的值是 `null`。你可以通过 `await` 或 `.then()` 来获取到其中的值：
+
+```tsx
+const value = await DatePicker.prompt();
+
+DatePicker.prompt().then((value) => {
+  // ...
+});
+```
 
 ### 仅 DatePicker & DateSelect 支持的属性
 

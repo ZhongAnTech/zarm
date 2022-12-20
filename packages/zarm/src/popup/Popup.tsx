@@ -1,13 +1,13 @@
-import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
-import { ConfigContext } from '../config-provider';
-import { useLockScroll } from '../utils/hooks';
-import Trigger from '../trigger';
+import * as React from 'react';
 import Mask from '../mask';
-import type { BasePopupProps } from './interface';
-import type { HTMLProps } from '../utils/utilityTypes';
-import { renderToContainer } from '../utils/dom';
+import { ConfigContext } from '../config-provider';
 import Transition from '../transition';
+import Trigger from '../trigger';
+import { renderToContainer } from '../utils/dom';
+import { useLockScroll } from '../utils/hooks';
+import type { HTMLProps } from '../utils/utilityTypes';
+import type { BasePopupProps } from './interface';
 
 export type PopupProps = BasePopupProps & HTMLProps;
 
@@ -30,16 +30,20 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
     lockScroll,
     direction,
     mask,
+    maskClassNname,
+    maskStyle,
     maskColor,
     maskOpacity,
     afterOpen,
     afterClose,
+    onOpen,
+    onClose,
     onMaskClick,
     onEsc,
     children,
   } = props;
 
-  const { prefixCls, mountContainer } = React.useContext(ConfigContext);
+  const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('popup', { prefixCls });
 
   useLockScroll(visible! && lockScroll!);
@@ -54,11 +58,13 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
     <Trigger visible={visible} onClose={handleEsc}>
       {mask && (
         <Mask
+          className={maskClassNname}
+          style={maskStyle}
           visible={visible}
           color={maskColor}
           opacity={maskOpacity}
           animationDuration={animationDuration}
-          mountContainer={props.mountContainer ?? mountContainer}
+          mountContainer={props.mountContainer}
           forceRender={forceRender}
           destroy={destroy}
           onClick={() => {
@@ -76,6 +82,12 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
         onEnter={() => {
           afterOpen?.();
         }}
+        onEnterActive={() => {
+          onOpen?.();
+        }}
+        onLeaveActive={() => {
+          onClose?.();
+        }}
         onLeaveEnd={() => {
           afterClose?.();
         }}
@@ -83,7 +95,7 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
         {({ className, style }, setNodeRef) => {
           const { display, ...restStyle } = style;
           return renderToContainer(
-            props.mountContainer ?? mountContainer,
+            props.mountContainer,
             <div className={bem('wrapper', [props.className])} style={{ display }}>
               <div
                 ref={setNodeRef}

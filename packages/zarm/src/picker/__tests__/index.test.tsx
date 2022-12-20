@@ -1,7 +1,7 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import Picker from '../index';
-import type { PickerViewOption } from '../../picker-view/interface';
+import type { PickerOption } from '../../picker-view/interface';
 
 describe('Picker', () => {
   // const fakeTimers = () => {
@@ -24,7 +24,7 @@ describe('Picker', () => {
   });
 
   it('render custom label', () => {
-    const datSource: Array<PickerViewOption> = [
+    const datSource: Array<PickerOption> = [
       {
         code: '1',
         name: '北京市',

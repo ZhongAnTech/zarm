@@ -29,6 +29,8 @@ const Cascader = forwardRef<HTMLDivElement, CascaderProps>((props, ref) => {
     onConfirm,
     onCancel,
     onChange,
+    afterOpen,
+    afterClose,
   } = props;
   const cascaderRef = ref || createRef<HTMLDivElement>();
   const cascaderViewRef = createRef<HTMLDivElement>();
@@ -69,6 +71,8 @@ const Cascader = forwardRef<HTMLDivElement, CascaderProps>((props, ref) => {
       onConfirm={handleConfirm}
       onCancel={handleCancel}
       onClose={handleCancel}
+      afterOpen={afterOpen}
+      afterClose={afterClose}
     >
       <CascaderView
         ref={cascaderViewRef}

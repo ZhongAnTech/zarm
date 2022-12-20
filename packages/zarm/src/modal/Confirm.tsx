@@ -1,46 +1,27 @@
 import * as React from 'react';
-import Confirm from '../confirm';
-import renderToContainer from '../utils/renderToContainer';
-import { RuntimeConfigProvider } from '../config-provider/ConfigProvider';
 import type { ConfirmProps } from '../confirm';
+import Confirm from '../confirm';
+import { renderImperatively } from '../utils/dom';
 
 const confirm = (props: Omit<ConfirmProps, 'visible'>): Promise<boolean> => {
   return new Promise((resolve) => {
-    let unmount = () => {};
-    const Wrapper = () => {
-      const [visible, setVisible] = React.useState(false);
-      React.useEffect(() => {
-        setVisible(true);
-      }, []);
-
-      return (
-        <RuntimeConfigProvider>
-          <Confirm
-            {...props}
-            visible={visible}
-            onConfirm={async () => {
-              const close = await props.onConfirm?.();
-              if (close === false) return;
-              setVisible(false);
-              resolve(true);
-            }}
-            onCancel={async () => {
-              const close = await props.onCancel?.();
-              if (close === false) return;
-              setVisible(false);
-              resolve(false);
-            }}
-            afterClose={() => {
-              props.afterClose?.();
-              unmount();
-            }}
-            mountContainer={false}
-          />
-        </RuntimeConfigProvider>
-      );
-    };
-
-    unmount = renderToContainer(<Wrapper />, props.mountContainer);
+    const { close } = renderImperatively(
+      <Confirm
+        {...props}
+        onConfirm={async () => {
+          const result = await props.onConfirm?.();
+          if (result === false) return;
+          close();
+          resolve(true);
+        }}
+        onCancel={async () => {
+          const result = await props.onCancel?.();
+          if (result === false) return;
+          close();
+          resolve(false);
+        }}
+      />,
+    );
   });
 };
 

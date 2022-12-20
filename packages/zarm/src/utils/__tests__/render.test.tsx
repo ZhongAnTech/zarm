@@ -1,16 +1,16 @@
 import React from 'react';
-import renderToContainer from '../renderToContainer';
+import { render, unmount } from '../dom';
 
 describe('renderToContainer', () => {
   const wrapper = document.createElement('div');
-  const unmount = renderToContainer(<span />, wrapper);
+  render(<span />, wrapper);
 
   test('insert', () => {
     expect(wrapper.querySelector('span')).toBeInstanceOf(HTMLElement);
   });
 
   test('unmount', () => {
-    unmount();
+    unmount(wrapper);
     expect(wrapper.querySelector('span')).toBeNull();
   });
 });

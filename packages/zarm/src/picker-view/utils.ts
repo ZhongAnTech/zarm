@@ -2,11 +2,11 @@ import omit from 'lodash/omit';
 import { toArray } from '../utils';
 import type {
   BasePickerViewProps as PickerViewProps,
-  PickerViewColumn,
-  PickerViewColumnItem,
-  PickerViewDataSource,
-  PickerViewOption,
-  PickerViewValue,
+  PickerColumn,
+  PickerColumnItem,
+  PickerDataSource,
+  PickerOption,
+  PickerValue,
 } from './interface';
 
 const DEFAULT_FIELD_NAMES = {
@@ -26,19 +26,19 @@ export const resolvedFieldNames = <T = object>(
   return merged;
 };
 
-export const isCascader = (dataSource?: PickerViewDataSource): dataSource is PickerViewOption[] => {
+export const isCascader = (dataSource?: PickerDataSource): dataSource is PickerOption[] => {
   return Array.isArray(dataSource) && dataSource[0] && !Array.isArray(dataSource[0]);
 };
-export const isColumn = (dataSource?: PickerViewDataSource): dataSource is PickerViewColumn => {
+export const isColumn = (dataSource?: PickerDataSource): dataSource is PickerColumn => {
   return Array.isArray(dataSource) && dataSource[0] && Array.isArray(dataSource[0]);
 };
 
-export const isValidValue = (value?: PickerViewValue | PickerViewValue[]) => {
+export const isValidValue = (value?: PickerValue | PickerValue[]) => {
   const currentValue = toArray(value);
   return currentValue.some((item) => !!item || item === 0 || item === false);
 };
 
-const resolvedValue = (props: PickerViewProps, initialValue?: PickerViewValue[]) => {
+const resolvedValue = (props: PickerViewProps, initialValue?: PickerValue[]) => {
   const { value, defaultValue, wheelDefaultValue } = props;
   if ('value' in props && isValidValue(value)) {
     return toArray(value);
@@ -56,7 +56,7 @@ const resolvedValue = (props: PickerViewProps, initialValue?: PickerViewValue[])
 };
 
 export const resolveColumn = (props: PickerViewProps) => {
-  const columns = toArray(props.dataSource) as PickerViewColumn;
+  const columns = toArray(props.dataSource) as PickerColumn;
   const fieldNames = resolvedFieldNames(props.fieldNames, DEFAULT_FIELD_NAMES);
   const value = resolvedValue(
     props,
@@ -75,13 +75,13 @@ const resolveCascade = (props: PickerViewProps) => {
   const { cols } = props;
   const fieldNames = resolvedFieldNames(props.fieldNames, DEFAULT_FIELD_NAMES);
 
-  const value: PickerViewValue[] = resolvedValue(props, []);
-  const columns: PickerViewColumn[] = [];
-  const items: PickerViewColumnItem[] = [];
-  const traverse = (options: PickerViewOption[], depth = 0) => {
+  const value: PickerValue[] = resolvedValue(props, []);
+  const columns: PickerColumn[] = [];
+  const items: PickerColumnItem[] = [];
+  const traverse = (options: PickerOption[], depth = 0) => {
     columns[depth] = options.map((option, index) => {
-      const rest = omit<PickerViewColumnItem>(option, fieldNames.children) as PickerViewColumnItem;
-      const children = option[fieldNames.children] as PickerViewOption[] | undefined;
+      const rest = omit<PickerColumnItem>(option, fieldNames.children) as PickerColumnItem;
+      const children = option[fieldNames.children] as PickerOption[] | undefined;
       const currentValue = value[depth];
       if (
         (isValidValue(currentValue) && rest[fieldNames.value] === currentValue) ||
@@ -98,7 +98,7 @@ const resolveCascade = (props: PickerViewProps) => {
     });
   };
 
-  traverse(props.dataSource as PickerViewOption[]);
+  traverse(props.dataSource as PickerOption[]);
 
   return {
     value,

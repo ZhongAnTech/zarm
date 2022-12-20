@@ -205,13 +205,6 @@ module.exports = {
         style: true,
       },
       {
-        key: 'loading',
-        name: '加载',
-        module: () => import('zarm/loading/demo.md'),
-        source: 'zarm/loading/demo.md',
-        style: false,
-      },
-      {
         key: 'pull',
         name: '上拉加载下拉刷新',
         module: () => import('zarm/pull/demo.md'),

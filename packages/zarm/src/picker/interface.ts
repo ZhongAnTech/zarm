@@ -1,11 +1,5 @@
 import { MountContainer } from '../utils/dom';
-import type {
-  BasePickerViewProps,
-  PickerViewColumnItem,
-  PickerViewValue,
-} from '../picker-view/interface';
-
-export type PickerValue = PickerViewValue;
+import type { BasePickerViewProps, PickerColumnItem, PickerValue } from '../picker-view/interface';
 
 export interface BasePickerContainerProps {
   title?: string;
@@ -19,13 +13,15 @@ export interface BasePickerContainerProps {
   onConfirm?: () => void;
   onCancel?: () => void;
   onClose?: () => void;
+  afterOpen?: () => void;
+  afterClose?: () => void;
   children?: React.ReactNode;
 }
 
 export interface BasePickerProps
   extends Omit<BasePickerContainerProps, 'onConfirm'>,
     Omit<BasePickerViewProps, 'onChange'> {
-  onChange?: (value: PickerValue[], items: PickerViewColumnItem[], level: number) => void;
-  onConfirm?: (value: PickerValue[], items: PickerViewColumnItem[]) => void;
+  onChange?: (value: PickerValue[], items: PickerColumnItem[], level: number) => void;
+  onConfirm?: (value: PickerValue[], items: PickerColumnItem[]) => void;
   onCancel?: () => void;
 }
