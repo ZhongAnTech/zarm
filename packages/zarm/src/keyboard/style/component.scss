@@ -10,6 +10,7 @@
   @include define(ok-background, var(--za-theme-primary));
   @include define(ok-font-size, 20px);
   @include define(ok-text-color, #fff);
+  @include define(opacity-disabled, var(--za-opacity-disabled));
 
   display: grid;
   gap: var(--item-gap);
@@ -49,7 +50,7 @@
       &,
       &:hover,
       &:active {
-        opacity: var(--za-opacity-disabled);
+        opacity: var(--opacity-disabled);
       }
     }
   }

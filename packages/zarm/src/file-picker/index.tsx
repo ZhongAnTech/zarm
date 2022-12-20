@@ -14,11 +14,12 @@ import { createBEM } from '@zarm-design/bem';
 import type { FileObject, BaseFilePickerProps } from './interface';
 import handleFileInfo from './utils/handleFileInfo';
 import { ConfigContext } from '../config-provider';
+import { HTMLProps } from '../utils/utilityTypes';
 
-export interface FilePickerProps extends BaseFilePickerProps {
-  className?: string;
-  style?: React.CSSProperties;
+export interface FilePickerCssVars {
+  '--opacity-disabled': React.CSSProperties['opacity'],
 }
+export type FilePickerProps = BaseFilePickerProps & HTMLProps<FilePickerCssVars>;
 
 const FilePicker = React.forwardRef<unknown, FilePickerProps>((props, ref) => {
   const fileRef = (ref as any) || React.createRef<HTMLDivElement>();
