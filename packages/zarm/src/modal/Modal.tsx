@@ -22,11 +22,13 @@ export interface ModalCssVars {
   '--body-font-size'?: React.CSSProperties['fontSize'];
   '--body-text-color'?: React.CSSProperties['color'];
   '--body-padding'?: React.CSSProperties['padding'];
-  '--button-background'?: React.CSSProperties['background'];
   '--button-height'?: React.CSSProperties['height'];
   '--button-font-size'?: React.CSSProperties['fontSize'];
   '--button-font-weight'?: React.CSSProperties['fontWeight'];
   '--button-text-color'?: React.CSSProperties['color'];
+  '--button-background-color'?: React.CSSProperties['backgroundColor'];
+  '--button-background-color-active'?: React.CSSProperties['backgroundColor'];
+  '--button-opacity-disabled'?: React.CSSProperties['opacity'];
 }
 
 export interface ModalProps extends BaseModalProps, HTMLProps<ModalCssVars> {

@@ -1,10 +1,13 @@
 @include b(popup) {
+
   -webkit-overflow-scrolling: touch;
   margin: auto;
   pointer-events: all;
   transform: perspective(0);
 
   @include e(wrapper) {
+    @include define(mask-zindex, var(--za-zindex-mask));
+
     position: fixed;
     top: 0;
     bottom: 0;
@@ -13,7 +16,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: var(--za-zindex-mask);
+    z-index: var(--mask-zindex);
     overflow: auto;
     padding: 60px 0;
     -webkit-overflow-scrolling: touch;
