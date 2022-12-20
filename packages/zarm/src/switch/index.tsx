@@ -21,10 +21,8 @@ export interface SwitchCssVars {
 export type SwitchProps = BaseSwitchProps &
   Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'>;
 
-const Switch = React.forwardRef<unknown, SwitchProps>((props, ref) => {
+const Switch = React.forwardRef<HTMLDivElement, SwitchProps>((props, ref) => {
   const { className, style, disabled, checked, defaultChecked, onChange, ...restProps } = props;
-
-  const switchRef = (ref as any) || React.createRef<HTMLDivElement>();
   const getChecked = checked || defaultChecked || false;
   const [currentChecked, setCurrentChecked] = React.useState(getChecked);
 
@@ -45,9 +43,7 @@ const Switch = React.forwardRef<unknown, SwitchProps>((props, ref) => {
       setCurrentChecked(newChecked);
     }
 
-    if (typeof onChange === 'function') {
-      onChange(newChecked);
-    }
+    onChange?.(newChecked);
   };
 
   React.useEffect(() => {
@@ -55,7 +51,7 @@ const Switch = React.forwardRef<unknown, SwitchProps>((props, ref) => {
   }, [getChecked]);
 
   return (
-    <span className={cls} style={style} ref={switchRef}>
+    <span className={cls} style={style} ref={ref}>
       <input
         {...restProps}
         role="switch"
