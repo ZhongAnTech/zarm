@@ -110,9 +110,14 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## CSS 变量
 
-| 属性               | 默认值                   | 说明         |
-| :----------------- | :----------------------- | :----------- |
-| --background-color | '#fff'                   | 弹层背景色   |
-| --option-font-size | 'var(--za-font-size-sm)' | 选项字体大小 |
-| --option-height    | '44px'                   | 选项高度     |
-| --options-height   | 'auto'                   | 选项面板高度 |
+| 属性                       | 默认值                        | 说明             |
+| :------------------------- | :---------------------------- | :--------------- |
+| --background-color         | '#fff'                        | 弹层背景色       |
+| --option-font-size         | 'var(--za-font-size-sm)'      | 选项字体大小     |
+| --option-height            | '44px'                        | 选项高度         |
+| --options-height           | 'auto'                        | 选项面板高度     |
+| --option-text-color        | '--za-color-text'             | 选项文字颜色     |
+| --option-active-text-color | '--za-theme-primary'          | 选项选中文字颜色 |
+| --tab-text-color           | '--za-color-text-placeholder' | 标签文字颜色     |
+| --tab-active-text-color    | '--za-theme-primary'          | 标签选中文字颜色 |
+| --padding                  | '--za-padding-v-sm'           | 选项内边距       |

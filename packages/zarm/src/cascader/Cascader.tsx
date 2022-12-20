@@ -32,7 +32,6 @@ const Cascader = forwardRef<HTMLDivElement, CascaderProps>((props, ref) => {
     afterOpen,
     afterClose,
   } = props;
-  const cascaderRef = ref || createRef<HTMLDivElement>();
   const cascaderViewRef = createRef<HTMLDivElement>();
   const [state, setState] = useState<CascaderState>({ ...parseState(props) });
   const { prefixCls, locale } = useContext(ConfigContext);
@@ -60,7 +59,7 @@ const Cascader = forwardRef<HTMLDivElement, CascaderProps>((props, ref) => {
 
   return (
     <PickerContainer
-      ref={cascaderRef}
+      ref={ref}
       className={bem([className])}
       title={title || locale?.Cascader.title}
       confirmText={confirmText || locale?.Cascader.confirmText}
