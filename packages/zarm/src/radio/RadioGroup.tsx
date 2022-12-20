@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
+import isEqual from 'lodash/isEqual';
 import List from '../list';
 import { ConfigContext } from '../config-provider';
 import type { BaseRadioGroupProps, RadioValue } from './interface';
@@ -66,9 +67,7 @@ const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
 
   const onChildChange = (newValue: RadioValue) => {
     setCurrentValue(newValue);
-    if (typeof onChange === 'function') {
-      onChange(newValue);
-    }
+    onChange?.(newValue);
   };
 
   const items = React.Children.map(children, (element: React.ReactElement, index: number) => {
@@ -82,7 +81,7 @@ const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
       buttonSize,
       buttonShape,
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-        typeof element.props.onChange === 'function' && element.props.onChange(e);
+        element.props.onChange?.(e);
         onChildChange(element.props.value);
       },
     });
@@ -101,6 +100,8 @@ const RadioGroup = React.forwardRef<unknown, RadioGroupProps>((props, ref) => {
   ]);
 
   React.useEffect(() => {
+    if (props.value === undefined) return;
+    if (isEqual(props.value, currentValue)) return;
     setCurrentValue(getValue({ value, defaultValue, children }));
   }, [value, defaultValue, children]);
 

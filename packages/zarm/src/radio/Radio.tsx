@@ -89,7 +89,7 @@ const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
       setCurrentChecked(newChecked);
     }
 
-    typeof onChange === 'function' && onChange(e);
+    onChange?.(e);
   };
 
   const inputRender = (
