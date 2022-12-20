@@ -21,6 +21,14 @@
     input {
       height: 100%;
       text-align: center;
+      -moz-appearance: textfield;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        appearance: none;
+        margin: 0;
+      }
     }
 
     @include m(disabled) {

@@ -103,9 +103,7 @@ const Stepper = React.forwardRef<unknown, StepperProps>((props, ref) => {
 
   const onInputChangeCallback = (newValue: string | number) => {
     setCurrentValue(newValue);
-    if (typeof onInputChange === 'function') {
-      onInputChange(newValue);
-    }
+    onInputChange?.(newValue);
   };
 
   const onInputBlur = (newValue: number | string) => {
@@ -116,9 +114,7 @@ const Stepper = React.forwardRef<unknown, StepperProps>((props, ref) => {
     newCurrentValue = formatValue(compareValue(newCurrentValue, max, min), step);
     setCurrentValue(newCurrentValue);
     setLastValue(newCurrentValue);
-    if (typeof onChange === 'function') {
-      onChange(newCurrentValue);
-    }
+    onChange?.(newCurrentValue);
   };
 
   const isSubDisabled = () => {
