@@ -25,7 +25,7 @@ const LoadableComponent = (component) => {
 };
 
 const Icons = Icon.createFromIconfont(
-  'https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_11.4d95df49c908e28216f1762c934f889c.js',
+  'https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_12.c88c671482b5407871df8b9fca48c0c7.js',
 );
 
 const Simulator = () => {
@@ -80,6 +80,13 @@ const Simulator = () => {
                 <Icons type="qrcode" size="sm" />
               </div>
             </Popover>
+          )}
+        </FormattedMessage>
+        <FormattedMessage id="app.home.components.simulator.openwindow">
+          {(txt) => (
+            <div className="simulator__control" title={txt} onClick={() => window.open(simulatorURL)}>
+              <Icons type="link" size="sm" />
+            </div>
           )}
         </FormattedMessage>
         <FormattedMessage id="app.home.components.simulator.reload">

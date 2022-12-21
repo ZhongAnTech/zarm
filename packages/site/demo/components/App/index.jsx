@@ -12,7 +12,7 @@ import './style.scss';
 
 const Loading = () => {
   React.useEffect(() => {
-    const { close } = Toast.show({ type: 'loading' });
+    const { close } = Toast.show({ icon: 'loading', duration: 0 });
     return () => {
       close?.();
     };
