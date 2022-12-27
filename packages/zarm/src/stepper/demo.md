@@ -90,8 +90,12 @@ ReactDOM.render(
 | --height             | '28px'                          | 步进器高度         |
 | --input-width        | '50px'                          | 步进器的输入框宽度 |
 | --icon-font-size     | '12px'                          | 步进器图标大小     |
+| --color-text         | 'var(--za-color-text)'          | 输入框文本颜色     |
+| --border-color       | '#e6e6e6'                       | 输入框边框颜色     |
+| --border-radius      | 'var(--za-radius-md)'           | 输入框圆角尺寸     |
 | --font-size          | 'var(--za-font-size-sm)'        | 输入框数字大小     |
 | --margin-horizontal  | '4px'                           | 输入框水平外间距   |
 | --padding-horizontal | '8px'                           | 输入框水平内间距   |
 | --input-background   | '#fff'                          | 输入框背景色       |
 | --disabled-color     | 'var(--za-color-text-disabled)' | 输入框禁用数字颜色 |
+| --opacity-disabled   | 'var(--za-opacity-disabled)'    | 输入框禁用不透明度 |

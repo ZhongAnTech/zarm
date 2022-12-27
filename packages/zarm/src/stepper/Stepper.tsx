@@ -16,6 +16,10 @@ export interface StepperCssVars {
   '--icon-font-size'?: React.CSSProperties['fontSize'];
   '--input-width'?: React.CSSProperties['width'];
   '--disabled-color'?: React.CSSProperties['color'];
+  '--opacity-disabled'?: React.CSSProperties['opacity'];
+  '--color-text'?: React.CSSProperties['color'],
+  '--border-color'?: React.CSSProperties['color'],
+  '--border-radius'?: React.CSSProperties['borderRadius'],
   '--font-size'?: React.CSSProperties['fontSize'];
   '--margin-horizontal'?: React.CSSProperties['marginLeft'];
   '--padding-horizontal'?: React.CSSProperties['paddingLeft'];

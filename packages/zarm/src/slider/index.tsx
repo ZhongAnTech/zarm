@@ -26,6 +26,7 @@ export interface SliderCssVars {
   '--mark-font-size'?: React.CSSProperties['fontSize'];
   '--mark-text-color'?: React.CSSProperties['color'];
   '--mark-spacing'?: React.CSSProperties['left' | 'top'];
+  '--opacity-disabled'?: React.CSSProperties['opacity'];
 }
 
 export interface SliderProps
