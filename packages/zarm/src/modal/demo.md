@@ -126,7 +126,7 @@ const Demo = () => {
               dispatch({
                 type: 'animation',
                 key: 'animation',
-                animationType: selected.map((item) => item.value),
+                animationType: selected[0],
               });
             }}
           />
