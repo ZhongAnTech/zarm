@@ -54,6 +54,13 @@ module.exports = {
   components: {
     general: [
       {
+        key: 'dropdown',
+        name: 'xiala',
+        module: () => import('zarm/dropdown/demo.md'),
+        source: 'zarm/dropdown/demo.md',
+        style: false,
+      },
+      {
         key: 'button',
         name: '按钮',
         module: () => import('zarm/button/demo.md'),

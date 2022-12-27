@@ -182,6 +182,9 @@ export { default as Cascader } from './cascader';
 export type { CascaderViewProps, CascaderViewCssVars } from './cascader-view';
 export { default as CascaderView } from './cascader-view';
 
+export type { DropdownProps, DropdownItemProps } from './dropdown';
+export { default as Dropdown } from './dropdown';
+
 // hooks
 export type { UseDragProps, DragEvent, DragState } from './useDrag';
 export { default as useDrag } from './useDrag';
