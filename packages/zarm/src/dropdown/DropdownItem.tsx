@@ -2,45 +2,34 @@ import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { ConfigContext } from '../config-provider';
 import type { BaseDropdownItemProps } from './interface';
-import type { HTMLProps } from '../utils/utilityTypes';
 
-export type DropdownItemProps = BaseDropdownItemProps &
-  HTMLProps & {
-    onClick?: React.MouseEventHandler<HTMLLIElement>;
-  };
+export interface DropdownItemProps
+  extends BaseDropdownItemProps,
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {}
 
 const DropdownItem = React.forwardRef<HTMLLIElement, DropdownItemProps>((props, ref) => {
+  const dropdownItemRef = (ref as any) || React.createRef<HTMLDivElement>();
   const {
     className,
     title,
-    onClick,
     arrow,
     children,
+    selected,
     ...restProps
   } = props;
   const { prefixCls } = React.useContext(ConfigContext);
-  const bem = createBEM('list-item', { prefixCls });
+  const bem = createBEM('dropdown', { prefixCls });
 
-  const cls = bem([
+  const cls = bem('content', [
     {
-      inline: !!children,
-      arrow: true,
+      active: selected,
     },
-    className,
   ]);
 
-  const contentRender = children && <div className={bem('content')}>{children}</div>;
-  const arrowRender = !!onClick && arrow && <div className={bem('arrow')} />;
-
   return (
-    <li ref={ref} className={cls} onClick={onClick} onTouchStart={() => {}} {...restProps}>
-      <div className={bem('wrapper')}>
-        <div className={bem('inner')}>
-          {contentRender}
-          {arrowRender}
-        </div>
-      </div>
-    </li>
+    <div ref={dropdownItemRef} className={cls} {...restProps}>
+      {children}
+    </div>
   );
 });
 

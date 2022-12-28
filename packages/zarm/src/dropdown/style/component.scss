@@ -1,51 +1,58 @@
-@include b(toast) {
-  @include define(text-color, var(--za-color-text-inverse));
-  @include define(icon-color, var(--za-color-text-inverse));
-  @include define(font-size, 13px);
-  @include define(icon-size, 36px);
-  @include define(border-radius, 6px);
-  @include define(background-color, rgba(0, 0, 0, var(--za-opacity-toast)));
+@include b(dropdown) {
+  @include define(font-size, 12px);
+  @include define(background, #fff);
+  @include define(z-index, 100);
+  @include define(height, 50px);
+  @include define(color, var(--za-color-text));
+  @include define(active-color, var(--za-theme-primary));
 
-  color: var(--text-color);
-  font-size: var(--font-size);
-  line-height: 1.5;
+  display: flex;
+  width: 100%;
+  background: var(--background);
+  background: red;
+  height: var(--height);
+  justify-content: center;
+  align-content: center;
+  align-items: center;
   text-align: center;
-  position: relative;
-  border-radius: var(--border-radius);
-  background-color: var(--background-color);
-  overflow: auto;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: var(--z-index);
+  transition-duration: 0.2s;
+  overflow: hidden;
 
-  @include m(text) {
-    padding: var(--za-padding-v-md) var(--za-padding-h-md);
+
+  @include m(hidden) {
+    bottom: calc(var(--height) * -1);
+    height: 0;
   }
 
-  @include m(icon) {
-    min-width: 120px;
-    padding: var(--za-padding-h-xl) var(--za-padding-h-sm);
-
-    @include e(text) {
-      margin-top: var(--za-padding-v-md);
-    }
-  }
-
-  @include e(text) {
-    word-break: break-all;
-  }
-
-  @include e(icon) {
-    color: var(--icon-color);
-    font-size: var(--icon-size);
-    justify-content: center;
-    align-items: center;
+  @include e(trigger-list) {
     display: flex;
+  }
 
-    @include b(icon) {
-      --font-size: var(--icon-size);
+  @include e(item) {
+    flex: 1;
+
+    @include e(title) {
+      font-size: var(--font-size);
+      line-height: 1;
+      margin-top: 2px;
+      color: var(--color);
     }
 
-    @include b(activity-indicator) {
-      --size: var(--icon-size);
-      --stroke-active-color: var(--icon-color);
+
+    @include m(active) {
+      @include b(tab-bar) {
+        @include e(title) {
+          color: var(--active-color);
+        }
+      }
+
+      @include b(icon) {
+        color: var(--active-color);
+      }
     }
   }
 }

@@ -1,4 +1,4 @@
-# Dropdown hhhhhh
+# Dropdown 下拉菜单
 
 ## 基础用法
 
@@ -7,12 +7,13 @@ import { useState } from 'react';
 import { Dropdown } from 'zarm';
 
 const Demo = () => {
-  return <>
-    <Dropdown>
-      <Dropdown.Item key="key1" title="菜单一">内容一</Dropdown.Item>
-      <Dropdown.Item key="key2" title="菜单二">内容二</Dropdown.Item>
+  const [activeKey, setActiveKey] = useState('');
+  return (
+    <Dropdown defaultActiveKey='key1'>
+      <Dropdown.Item itemKey="key1" title="菜单一">内容一</Dropdown.Item>
+      <Dropdown.Item itemKey="key2" title="菜单二">内容二</Dropdown.Item>
     </Dropdown>
-  </>
+  )
 };
 
 ReactDOM.render(<Demo />, mountNode);

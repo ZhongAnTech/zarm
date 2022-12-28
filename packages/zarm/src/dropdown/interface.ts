@@ -8,8 +8,9 @@ export interface BaseDropdownProps {
 }
 
 export interface BaseDropdownItemProps {
-  key?: number | string;
+  itemKey?: string | number;
   title?: React.ReactNode;
   arrow?: React.ReactNode;
   children?: React.ReactNode;
+  selected?: boolean;
 }
