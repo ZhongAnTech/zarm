@@ -3,9 +3,9 @@ import { createBEM } from '@zarm-design/bem';
 import { ConfigContext } from '../config-provider';
 import type { BaseDropdownItemProps } from './interface';
 
-export interface DropdownItemProps
-  extends BaseDropdownItemProps,
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {}
+export interface DropdownItemProps extends BaseDropdownItemProps {
+  className?: string;
+}
 
 const DropdownItem = React.forwardRef<HTMLLIElement, DropdownItemProps>((props, ref) => {
   const dropdownItemRef = (ref as any) || React.createRef<HTMLDivElement>();
