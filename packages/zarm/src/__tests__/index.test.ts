@@ -453,7 +453,6 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "Scroller": [Function],
         "SearchBar": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
