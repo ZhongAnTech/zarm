@@ -1,22 +1,23 @@
 @mixin disableInput {
-  color: var(--color-text);
-  -webkit-text-fill-color: var(--color-text);
+  color: var(--input-text-color);
+  -webkit-text-fill-color: var(--input-text-color);
   cursor: auto;
 }
 
 @include b(stepper) {
   @include define(height, 28px);
-  @include define(input-width, 50px);
+  @include define(input-width, 56px);
+  @include define(input-background, transparent);
+  @include define(input-border-width, 1px);
+  @include define(input-border-color, transparent);
+  @include define(input-border-radius, var(--za-radius-md));
+  @include define(input-text-color, var(--za-color-text));
+  @include define(input-font-size, var(--za-font-size-md));
+  @include define(input-disabled-text-color, var(--za-color-text-disabled));
+  @include define(input-disabled-opacity, var(--za-opacity-disabled));
+  @include define(input-margin, 0 4px);
+  @include define(input-padding, 0 8px);
   @include define(icon-font-size, 12px);
-  @include define(color-text, var(--za-color-text));
-  @include define(border-color, #e6e6e6);
-  @include define(border-radius, var(--za-radius-md));
-  @include define(font-size, var(--za-font-size-sm));
-  @include define(margin-horizontal, 4px);
-  @include define(padding-horizontal, 8px);
-  @include define(input-background, #fff);
-  @include define(disabled-color, var(--za-color-text-disabled));
-  @include define(opacity-disabled, var(--za-opacity-disabled));
 
   align-items: center;
   display: flex;
@@ -75,37 +76,37 @@
   }
 
   @include e(input) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     width: var(--input-width);
     height: var(--height);
-    margin: 0 var(--margin-horizontal);
-    padding: 0 var(--padding-horizontal);
-    font-size: var(--font-size);
+    margin: var(--input-margin);
+    padding: var(--input-padding);
+    font-size: var(--input-font-size);
     background: var(--input-background);
-    color: var(--color-text);
+    color: var(--input-text-color);
     text-align: center;
-    border: r(1) solid var(--border-color);
+    border: var(--input-border-width) solid var(--input-border-color);
     border-radius: 0;
     outline: 0;
     -webkit-appearance: none;
-    justify-content: center;
-    align-items: center;
-    display: flex;
   }
 
   @include m(disabled) {
     @include e(input) {
       input {
-        color: var(--disabled-color);
-        -webkit-text-fill-color: var(--disabled-color);
-        opacity: var(--opacity-disabled);
+        color: var(--input-disabled-text-color);
+        -webkit-text-fill-color: var(--input-disabled-text-color);
+        opacity: var(--input-disabled-opacity);
       }
     }
   }
 
   @include m(radius) {
     @include e(input) {
-      border-radius: var(--border-radius);
+      border-radius: var(--input-border-radius);
     }
   }
 
@@ -116,21 +117,10 @@
   }
 
   @include m(lg) {
-    @include e(input) {
-      width: 60px;
-      height: 36px;
-      margin: 0 4px;
-      padding: 0 8px;
-      font-size: 16px;
-    }
-
-    @include e(sub, plus) {
-      width: 36px;
-      padding: 0;
-
-      @include b(icon) {
-        font-size: 14px;
-      }
-    }
+    @include define(height, 36px);
+    @include define(input-width, 72px);
+    @include define(input-margin, 0 6px);
+    @include define(input-padding, 0 8px);
+    @include define(icon-font-size, 14px);
   }
 }

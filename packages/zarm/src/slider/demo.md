@@ -121,4 +121,4 @@ ReactDOM.render(
 | --mark-font-size          | '14px'                         | 标记字体大小           |
 | --mark-text-color         | 'var(--za-theme-primary)'      | 标记字体颜色           |
 | --mark-spacing            | '15px'                         | 标记与轨道的间距       |
-| --opacity-disabled        | 'var(--za-opacity-disabled)'   | 禁用不透明度           |
+| --disabled-opacity        | 'var(--za-opacity-disabled)'   | 禁用不透明度           |

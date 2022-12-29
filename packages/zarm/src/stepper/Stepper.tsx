@@ -11,18 +11,19 @@ import type { InputProps } from '../input';
 import type { HTMLProps } from '../utils/utilityTypes';
 
 export interface StepperCssVars {
-  '--background'?: React.CSSProperties['background'];
   '--height'?: React.CSSProperties['height'];
-  '--icon-font-size'?: React.CSSProperties['fontSize'];
   '--input-width'?: React.CSSProperties['width'];
-  '--disabled-color'?: React.CSSProperties['color'];
-  '--opacity-disabled'?: React.CSSProperties['opacity'];
-  '--color-text'?: React.CSSProperties['color'],
-  '--border-color'?: React.CSSProperties['color'],
-  '--border-radius'?: React.CSSProperties['borderRadius'],
-  '--font-size'?: React.CSSProperties['fontSize'];
-  '--margin-horizontal'?: React.CSSProperties['marginLeft'];
-  '--padding-horizontal'?: React.CSSProperties['paddingLeft'];
+  '--input-background'?: React.CSSProperties['background'];
+  '--input-border-width'?: React.CSSProperties['borderWidth'];
+  '--input-border-color'?: React.CSSProperties['borderColor'];
+  '--input-border-radius'?: React.CSSProperties['borderRadius'],
+  '--input-text-color'?: React.CSSProperties['color'],
+  '--input-font-size'?: React.CSSProperties['fontSize'];
+  '--input-disabled-text-color'?: React.CSSProperties['color'];
+  '--input-disabled-opacity'?: React.CSSProperties['opacity'];
+  '--input-margin'?: React.CSSProperties['margin'];
+  '--input-padding'?: React.CSSProperties['padding'];
+  '--icon-font-size'?: React.CSSProperties['fontSize'];
 }
 
 const compareValue = (value, max, min) => {
