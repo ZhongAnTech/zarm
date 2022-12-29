@@ -6,53 +6,74 @@
   @include define(color, var(--za-color-text));
   @include define(active-color, var(--za-theme-primary));
 
+  @include define(arrow-space, 5px);
+  @include define(arrow-color, var(--za-arrow-color));
+  @include define(arrow-size, 6px);
+  @include define(arrow-width, var(--za-arrow-width));
+
   display: flex;
+  flex-direction: column;
   width: 100%;
   background: var(--background);
-  background: red;
-  height: var(--height);
   justify-content: center;
-  align-content: center;
+  align-content: space-evenly;
   align-items: center;
-  text-align: center;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  z-index: var(--z-index);
   transition-duration: 0.2s;
   overflow: hidden;
-
-
-  @include m(hidden) {
-    bottom: calc(var(--height) * -1);
-    height: 0;
-  }
+  cursor: pointer;
 
   @include e(trigger-list) {
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
-  }
-
-  @include e(item) {
-    flex: 1;
-
-    @include e(title) {
-      font-size: var(--font-size);
-      line-height: 1;
-      margin-top: 2px;
-      color: var(--color);
-    }
+    height: var(--height);
 
 
-    @include m(active) {
-      @include b(tab-bar) {
-        @include e(title) {
-          color: var(--active-color);
-        }
-      }
+    @include e(trigger) {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
 
-      @include b(icon) {
+      @include m(active) {
         color: var(--active-color);
       }
+
+      @include e(arrow) {
+        margin-left: var(--arrow-space);
+        margin-top: calc(var(--arrow-size) / -2);
+        display: inline-block;
+        content: '';
+        border-width: var(--arrow-size) var(--arrow-size) 0;
+        border-style: solid;
+        border-color: var(--arrow-color) transparent transparent;
+        width: 0;
+        height: 0;
+        transition: all 0.15s ease-out;
+
+        @include m(active) {
+          transform: rotate(180deg);
+        }
+      }
     }
+  }
+
+  @include e(content) {
+    flex: 1;
+    display: none;
+    width: 100%;
+    min-height: var(--height);
+
+    @include m(active) {
+      border-top: 1px solid var(--za-border-color);
+      display: block;
+    }
+  }
+
+  @include e(dropdown-mask) {
+    width: 100%;
+    height: 400px;
   }
 }

@@ -21,47 +21,61 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) =>
   const [selectedKey, setSelectedKey] = React.useState(defaultActiveKey);
 
   const onTriggerClick = (dropdownItem: React.ReactElement<DropdownItemProps, typeof DropdownItem>, index: number) => {
-    setSelectedKey(dropdownItem.props.itemKey);
+    const { itemKey } = dropdownItem.props;
+    if (selectedKey === itemKey) {
+      setSelectedKey('');
+    } else {
+      setSelectedKey(dropdownItem.props.itemKey);
+    }
     onChange?.(index);
   };
 
+  // const getSelected = (index: number, itemKey: string | number) => {
+  //   if (!activeKey) {
+  //     if (!defaultActiveKey && index === 0) {
+  //       return true;
+  //     }
+  //     return defaultActiveKey === itemKey;
+  //   }
+  //   return activeKey === itemKey;
+  // };
+
+  const arrowRender = (isSelected: boolean) => <div className={bem('arrow', [{
+    active: isSelected
+  }])} />;
+
   const renderTrigger = (dropdownItem: React.ReactElement<DropdownItemProps, typeof DropdownItem>, index: number) => {
+    const isSelected = selectedKey === dropdownItem.props.itemKey;
     return (
-      <li key={index} className={bem('trigger')} onClick={() => onTriggerClick(dropdownItem, index)}>
+      <li key={index} className={bem('trigger', [
+        { active: isSelected }
+      ])} onClick={() => onTriggerClick(dropdownItem, index)}>
         {dropdownItem.props.title}
+        {arrowRender(isSelected)}
       </li>
     );
   };
 
   const triggersRender = React.Children.map(children, renderTrigger);
 
-  const getSelected = (index: number, itemKey: string | number) => {
-    if (!activeKey) {
-      if (!defaultActiveKey && index === 0) {
-        return true;
-      }
-      return defaultActiveKey === itemKey;
-    }
-    return activeKey === itemKey;
-  };
-
   const contentRender = React.Children.map(
     children,
     (element: React.ReactElement<DropdownItemProps, typeof DropdownItem>, index: number) => {
       if (!React.isValidElement(element)) return null;
       const itemKey = element.props.itemKey || index;
-      let selected = getSelected(index, itemKey);
-      if (!activeKey) {
-        selected = selectedKey === itemKey;
-        if (!selectedKey && index === 0) {
-          selected = true;
-        }
-      }
+      // let selected = getSelected(index, itemKey);
+      // if (!activeKey) {
+      //   selected = selectedKey === itemKey;
+      //   if (!selectedKey && index === 0) {
+      //     selected = true;
+      //   }
+      // }
+      const selected = selectedKey === itemKey;
       return cloneElement(element, {
         key: index,
         title: element.props.title,
         itemKey,
-        style: element.props.style,
+        // style: element.props.style,
         selected,
       });
     }
@@ -69,7 +83,6 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) =>
 
   return (
       <div ref={ref} className={bem([className])} {...restProps}>
-        {selectedKey}
         <ul className={bem('trigger-list')}>
           {triggersRender}
         </ul>

@@ -4,7 +4,7 @@
 
 ```jsx
 import { useState } from 'react';
-import { Dropdown } from 'zarm';
+import { Dropdown, List } from 'zarm';
 
 const Demo = () => {
   const [activeKey, setActiveKey] = useState('home');
@@ -12,8 +12,20 @@ const Demo = () => {
   return (
     <>
       <Dropdown>
-        <Dropdown.Item title={'1'} itemKey={'key1'}>test1</Dropdown.Item>
-        <Dropdown.Item title={'2'} itemKey='Key2'>test2</Dropdown.Item>
+        <Dropdown.Item title={'菜单一'} itemKey={'key1'}>
+          <List>
+            <List.Item title="Item 1" />
+            <List.Item title="Item 2" />
+            <List.Item title="Item 3" />
+          </List>
+        </Dropdown.Item>
+        <Dropdown.Item title={'菜单二'} itemKey='Key2'>
+          <List>
+            <List.Item title="Item 4" />
+            <List.Item title="Item 5" />
+            <List.Item title="Item 6" />
+          </List>
+        </Dropdown.Item>
       </Dropdown>
     </>
   );
