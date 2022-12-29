@@ -16,6 +16,10 @@ export interface StepperCssVars {
   '--icon-font-size'?: React.CSSProperties['fontSize'];
   '--input-width'?: React.CSSProperties['width'];
   '--disabled-color'?: React.CSSProperties['color'];
+  '--opacity-disabled'?: React.CSSProperties['opacity'];
+  '--color-text'?: React.CSSProperties['color'],
+  '--border-color'?: React.CSSProperties['color'],
+  '--border-radius'?: React.CSSProperties['borderRadius'],
   '--font-size'?: React.CSSProperties['fontSize'];
   '--margin-horizontal'?: React.CSSProperties['marginLeft'];
   '--padding-horizontal'?: React.CSSProperties['paddingLeft'];
@@ -103,9 +107,7 @@ const Stepper = React.forwardRef<unknown, StepperProps>((props, ref) => {
 
   const onInputChangeCallback = (newValue: string | number) => {
     setCurrentValue(newValue);
-    if (typeof onInputChange === 'function') {
-      onInputChange(newValue);
-    }
+    onInputChange?.(newValue);
   };
 
   const onInputBlur = (newValue: number | string) => {
@@ -116,9 +118,7 @@ const Stepper = React.forwardRef<unknown, StepperProps>((props, ref) => {
     newCurrentValue = formatValue(compareValue(newCurrentValue, max, min), step);
     setCurrentValue(newCurrentValue);
     setLastValue(newCurrentValue);
-    if (typeof onChange === 'function') {
-      onChange(newCurrentValue);
-    }
+    onChange?.(newCurrentValue);
   };
 
   const isSubDisabled = () => {

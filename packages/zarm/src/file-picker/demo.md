@@ -138,3 +138,9 @@ ReactDOM.render(
 | disabled       | boolean                            | false      | 是否禁用                                                                    |
 | onBeforeSelect | () => boolean                      | () => true | 选择前触发的事件                                                            |
 | onChange       | (file: object \| object[]) => void | -          | 值变化时触发的回调函数                                                      |
+
+## CSS 变量
+
+| 属性               | 默认值                       | 说明             |
+| :----------------- | :--------------------------- | :--------------- |
+| --opacity-disabled | 'var(--za-opacity-disabled)' | 面板禁用不透明度 |

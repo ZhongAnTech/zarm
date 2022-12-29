@@ -24,9 +24,14 @@ import { parseState } from './utils';
 
 export interface CascaderViewCssVars {
   '--background-color'?: React.CSSProperties['backgroundColor'];
+  '--option-text-color'?: React.CSSProperties['color'];
+  '--option-active-text-color'?: React.CSSProperties['color'];
   '--option-font-size'?: React.CSSProperties['fontSize'];
   '--option-height'?: React.CSSProperties['height'];
   '--options-height'?: React.CSSProperties['height'];
+  '--tab-text-color'?: React.CSSProperties['color'];
+  '--tab-active-text-color'?: React.CSSProperties['color'];
+  '--padding'?: React.CSSProperties['padding'];
 }
 
 export type CascaderViewProps = BaseCascaderViewProps & HTMLProps<CascaderViewCssVars>;

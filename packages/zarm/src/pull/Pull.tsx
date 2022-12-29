@@ -48,7 +48,6 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
     const { handler, distance } = load;
 
     if (
-      typeof handler !== 'function' ||
       refreshState !== REFRESH_STATE.normal ||
       loadState !== LOAD_STATE.normal ||
       scrollHeight <= clientHeight ||
@@ -57,7 +56,7 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
     ) {
       return;
     }
-    handler();
+    handler?.();
   }, [props?.load?.handler]);
 
   const throttledScroll = throttle(onScroll, 250);
@@ -207,9 +206,7 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
 
     // 执行外部触发刷新的回调
     const { handler } = props.refresh!;
-    if (typeof handler === 'function') {
-      handler();
-    }
+    handler?.();
   };
 
   const bind = useDrag(

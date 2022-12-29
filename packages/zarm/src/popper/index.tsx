@@ -96,9 +96,7 @@ const Popper = forwardRef<refHander, PopperProps>((props, ref) => {
     open,
     onOpenChange: (state) => {
       setOpen(state);
-      if (typeof onVisibleChange === 'function') {
-        onVisibleChange(state);
-      }
+      onVisibleChange?.(state);
     },
     middleware,
     placement: directionMap[direction!],

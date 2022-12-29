@@ -61,19 +61,21 @@ const Demo = () => {
             <Radio value={'vertical'}>垂直</Radio>
           </Radio.Group>
         </List.Item>
-        <List.Item title="是否显示头部">
-          <Radio.Group
-            buttonCompact
-            type="button"
-            value={header}
-            onChange={(value) => {
-              setHeader(value);
-            }}
-          >
-            <Radio value={true}>展示</Radio>
-            <Radio value={false}>不展示</Radio>
-          </Radio.Group>
-        </List.Item>
+        {direction === 'horizontal' && (
+          <List.Item title="是否显示头部">
+            <Radio.Group
+              buttonCompact
+              type="button"
+              value={header}
+              onChange={(value) => {
+                setHeader(value);
+              }}
+            >
+              <Radio value={true}>展示</Radio>
+              <Radio value={false}>不展示</Radio>
+            </Radio.Group>
+          </List.Item>
+        )}
         <List.Item title="自定义渲染">
           <Radio.Group
             buttonCompact
@@ -164,3 +166,4 @@ ReactDOM.render(<Demo />, mountNode);
 | --day-selected-shadow     | '0 2px 5px 0 var(--za-theme-primary-lighter)' | 选中日期背景阴影       |
 | --day-range-background    | 'var(--za-theme-primary-lighter)'             | 选择范围内日期背景     |
 | --day-range-text-color    | 'var(--za-theme-primary)'                     | 选择范围内日期字体颜色 |
+| --action-btn-disabled     | 'var(--za-color-text-disabled)'               | 箭头禁用颜色           |

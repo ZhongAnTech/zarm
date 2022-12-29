@@ -11,7 +11,7 @@
   line-height: var(--line-height);
   padding: var(--padding);
   font-size: var(--font-size);
-  @include message-theme(var(--theme-default));
+  @include message-theme(var(--za-theme-default));
 
   @include e(header) {
     display: flex;
@@ -51,18 +51,18 @@
   }
 
   @include m(primary) {
-    @include message-theme(var(--theme-primary));
+    @include message-theme(var(--za-theme-primary));
   }
 
   @include m(success) {
-    @include message-theme(var(--theme-success));
+    @include message-theme(var(--za-theme-success));
   }
 
   @include m(warning) {
-    @include message-theme(var(--theme-warning));
+    @include message-theme(var(--za-theme-warning));
   }
 
   @include m(danger) {
-    @include message-theme(var(--theme-danger));
+    @include message-theme(var(--za-theme-danger));
   }
 }

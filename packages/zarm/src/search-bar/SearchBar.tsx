@@ -80,31 +80,31 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
   const onInputFocus = (e: React.FocusEvent<HTMLInputElement>): void => {
     setIsFocus(true);
     focusAnim();
-    typeof onFocus === 'function' && onFocus(e);
+    onFocus?.(e);
   };
 
   const onInputBlur = (e: React.FocusEvent<HTMLInputElement>): void => {
     setIsFocus(false);
     !currentValue && blurAnim();
-    typeof onBlur === 'function' && onBlur(e);
+    onBlur?.(e);
   };
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setCurrentValue(e.target.value);
-    typeof onChange === 'function' && onChange(e);
+    onChange?.(e);
   };
 
   const onFormSubmit = (e?: React.FormEvent): void => {
     e?.preventDefault();
     inputRef.current && inputRef.current.blur();
-    typeof onSubmit === 'function' && onSubmit(currentValue);
+    onSubmit?.(currentValue);
   };
 
   const onClickCancelButton = (): void => {
     setCurrentValue('');
     inputRef.current && inputRef.current.blur();
     blurAnim();
-    typeof onCancel === 'function' && onCancel();
+    onCancel?.();
   };
 
   const calculatePositon = useEventCallback(() => {

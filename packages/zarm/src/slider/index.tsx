@@ -26,15 +26,14 @@ export interface SliderCssVars {
   '--mark-font-size'?: React.CSSProperties['fontSize'];
   '--mark-text-color'?: React.CSSProperties['color'];
   '--mark-spacing'?: React.CSSProperties['left' | 'top'];
+  '--opacity-disabled'?: React.CSSProperties['opacity'];
 }
 
 export interface SliderProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'>,
     BaseSliderProps {}
 
-const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
-  const container = (ref as any) || React.createRef<HTMLDivElement>();
-
+const Slider = React.forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('slider', { prefixCls });
 
@@ -124,14 +123,12 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
       offset = Math.min(maxOffset, Math.max(offset, 0));
       const current = getValueByOffset(offset);
       setCurrentValue(current);
-      if (typeof onSlideChange === 'function' && state.dragging && !state.first) {
-        onSlideChange(current);
+      if (state.dragging && !state.first) {
+        onSlideChange?.(current);
       }
       if (state.last) {
         setTooltip(false);
-        if (typeof onChange === 'function') {
-          onChange(currentValue);
-        }
+        onChange?.(currentValue);
       }
     },
     {
@@ -215,7 +212,7 @@ const Slider = React.forwardRef<unknown, SliderProps>((props, ref) => {
   };
 
   return (
-    <div className={cls} ref={container} style={style}>
+    <div className={cls} ref={ref} style={style}>
       <div className={bem('content')}>
         <div className={bem('line')} ref={lineRef} onClick={trackClick}>
           <div className={bem('line__bg')} style={lineBg} />

@@ -240,16 +240,17 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## CSS 变量
 
-| 属性                     | 默认值                     | 说明               |
-| :----------------------- | :------------------------- | :----------------- |
-| --background             | '#d8d8d8'                  | 面板背景色         |
-| --item-background        | '#fff'                     | 按键背景色         |
-| --item-active-background | 'rgba(162, 165, 176, 0.8)' | 按键激活状态背景色 |
-| --item-gap               | '6px'                      | 按键间距           |
-| --item-height            | '52px'                     | 按键高度           |
-| --item-font-size         | '30px'                     | 按键字体大小       |
-| --item-border-radius     | '5px'                      | 按键圆角           |
-| --item-box-shadow        | '0 1px 0 #898a8d'          | 按键阴影           |
-| --ok-background          | 'var(--za-theme-primary)'  | 确定按键背景色     |
-| --ok-font-size           | '20px'                     | 确定按键字体大小   |
-| --ok-text-color          | '#fff'                     | 确定按键字体颜色   |
+| 属性                     | 默认值                       | 说明                 |
+| :----------------------- | :--------------------------- | :------------------- |
+| --background             | '#d8d8d8'                    | 面板背景色           |
+| --item-background        | '#fff'                       | 按键背景色           |
+| --item-active-background | 'rgba(162, 165, 176, 0.8)'   | 按键激活状态背景色   |
+| --item-gap               | '6px'                        | 按键间距             |
+| --item-height            | '52px'                       | 按键高度             |
+| --item-font-size         | '30px'                       | 按键字体大小         |
+| --item-border-radius     | '5px'                        | 按键圆角             |
+| --item-box-shadow        | '0 1px 0 #898a8d'            | 按键阴影             |
+| --ok-background          | 'var(--za-theme-primary)'    | 确定按键背景色       |
+| --ok-font-size           | '20px'                       | 确定按键字体大小     |
+| --ok-text-color          | '#fff'                       | 确定按键字体颜色     |
+| --opacity-disabled       | 'var(--za-opacity-disabled)' | 按键禁用状态不透明度 |

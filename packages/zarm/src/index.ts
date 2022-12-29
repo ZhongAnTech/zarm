@@ -48,7 +48,7 @@ export { default as DatePicker } from './date-picker';
 export type { DateSelectProps } from './date-select';
 export { default as DateSelect } from './date-select';
 
-export type { FilePickerProps } from './file-picker';
+export type { FilePickerProps, FilePickerCssVars } from './file-picker';
 export { default as FilePicker } from './file-picker';
 
 export type { IconProps, IconCssVars } from './icon';
@@ -106,8 +106,6 @@ export { default as Pull } from './pull';
 
 export type { RadioProps, RadioGroupProps, RadioGroupCssVars, RadioCssVars } from './radio';
 export { default as Radio } from './radio';
-
-export { default as Scroller } from './scroller';
 
 export type { SearchBarProps, SearchBarCssVars } from './search-bar';
 export { default as SearchBar } from './search-bar';

@@ -81,17 +81,12 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
       setFocused(true);
     }, 0);
 
-    if (typeof onFocus === 'function') {
-      onFocus(currentValue);
-    }
+    onFocus?.(currentValue);
   };
 
   const onInputBlur = () => {
     setFocused(false);
-
-    if (typeof onBlur === 'function') {
-      onBlur(currentValue);
-    }
+    onBlur?.(currentValue);
   };
 
   const onKeyClick = (key) => {
@@ -111,18 +106,14 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
       setCurrentValue(newValue);
     }
 
-    if (typeof onChange === 'function') {
-      onChange(newValue);
-    }
+    onChange?.(newValue);
   };
 
   const onInputClear = (e) => {
     e.stopPropagation();
     setCurrentValue('');
 
-    if (typeof onChange === 'function') {
-      onChange('');
-    }
+    onChange?.('');
   };
 
   const scrollToStart = () => {

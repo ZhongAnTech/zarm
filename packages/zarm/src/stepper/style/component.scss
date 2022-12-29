@@ -8,19 +8,31 @@
   @include define(height, 28px);
   @include define(input-width, 50px);
   @include define(icon-font-size, 12px);
+  @include define(color-text, var(--za-color-text));
+  @include define(border-color, #e6e6e6);
+  @include define(border-radius, var(--za-radius-md));
   @include define(font-size, var(--za-font-size-sm));
   @include define(margin-horizontal, 4px);
   @include define(padding-horizontal, 8px);
   @include define(input-background, #fff);
   @include define(disabled-color, var(--za-color-text-disabled));
+  @include define(opacity-disabled, var(--za-opacity-disabled));
 
-  display: flex;
   align-items: center;
+  display: flex;
 
   @include b(input) {
     input {
       height: 100%;
       text-align: center;
+      -moz-appearance: textfield;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        appearance: none;
+        margin: 0;
+      }
     }
 
     @include m(disabled) {
@@ -31,6 +43,7 @@
 
     @include e(content) {
       height: 100%;
+      flex: 1;
     }
   }
 
@@ -43,6 +56,7 @@
 
     @include e(content) {
       height: 100%;
+      flex: 1;
     }
 
     @include e(virtual-input) {
@@ -74,6 +88,9 @@
     border-radius: 0;
     outline: 0;
     -webkit-appearance: none;
+    justify-content: center;
+    align-items: center;
+    display: flex;
   }
 
   @include m(disabled) {
@@ -88,7 +105,7 @@
 
   @include m(radius) {
     @include e(input) {
-      border-radius: var(--radius-md);
+      border-radius: var(--border-radius);
     }
   }
 

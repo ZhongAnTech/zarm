@@ -37,6 +37,7 @@ export interface CalendarCssVars {
   '--day-selected-shadow'?: React.CSSProperties['background'];
   '--day-range-background'?: React.CSSProperties['background'];
   '--day-range-text-color'?: React.CSSProperties['color'];
+  '--action-btn-disabled'?: React.CSSProperties['color'];
 }
 
 export type CalendarProps = BaseCalendarProps & HTMLProps<CalendarCssVars>;

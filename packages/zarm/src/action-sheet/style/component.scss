@@ -5,6 +5,8 @@
   @include define(item-height, 56px);
   @include define(item-font-size, 20px);
   @include define(item-font-weight, 500);
+  @include define(item-active-background-color, var(--za-background-active));
+  @include define(item-opacity-disabled, var(--za-opacity-disabled));
   @include define(item-text-color, var(--za-theme-primary));
   @include define(cancel-text-color, var(--za-theme-primary));
   @include define(cancel-margin-top, 8px);
@@ -44,7 +46,7 @@
     text-align: center;
 
     &:not(&--disabled):active {
-      background-color: var(--za-background-active);
+      background-color: var(--item-active-background-color);
     }
 
     &:not(:first-of-type) {
@@ -58,7 +60,7 @@
     @include m(disabled) {
       @include define(item-text-color, var(--za-color-text));
 
-      opacity: var(--za-opacity-disabled);
+      opacity: var(--item-opacity-disabled);
       cursor: not-allowed;
       pointer-events: none;
     }

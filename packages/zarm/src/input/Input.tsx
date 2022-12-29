@@ -106,9 +106,7 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
       if (!blurFromClear && document.activeElement !== inputRef.current) {
         setFocused(false);
 
-        if (typeof onBlur === 'function') {
-          onBlur(e);
-        }
+        onBlur?.(e);
       }
       blurFromClear = false;
     }, 200);
@@ -116,18 +114,12 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
 
   const onInputFocus = (e) => {
     setFocused(true);
-
-    if (typeof onFocus === 'function') {
-      onFocus(e);
-    }
+    onFocus?.(e);
   };
 
   const onInputChange = (e) => {
     setCurrentValue(e.target.value);
-
-    if (typeof onChange === 'function') {
-      onChange(e);
-    }
+    onChange?.(e);
   };
 
   const onInputClear = (e) => {
