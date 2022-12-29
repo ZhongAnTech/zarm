@@ -158,7 +158,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
       translateYRef.current = -dom!.offsetHeight * (index + num);
       doTransition(
         { x: translateXRef.current, y: translateYRef.current },
-        activeIndexChanged ? animationDurationNum : 0,
+        animationDurationNum
       );
 
       if (index > count - 1) {
@@ -225,10 +225,6 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
       ) {
         return false;
       }
-      doTransition(
-        { x: translateXRef.current + offset[0], y: translateYRef.current + offset[1] },
-        0,
-      );
       if (state.last) {
         const dom = carouselItemsRef.current;
 
@@ -245,6 +241,10 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
         setIsDragging(false);
         return false;
       }
+      doTransition(
+        { x: translateXRef.current + offset[0], y: translateYRef.current + offset[1] },
+        0,
+      );
     },
     {
       from: () => [0, 0],
