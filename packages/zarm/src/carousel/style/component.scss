@@ -65,6 +65,7 @@
   @include m(vertical) {
     @include e(items) {
       flex-direction: column;
+      touch-action: none;
     }
 
     @include e(pagination) {

@@ -6,13 +6,14 @@ import React, {
   useEffect,
   useRef,
   useCallback,
+  useMemo,
+  useImperativeHandle,
 } from 'react';
 import type { CSSProperties } from 'react';
 import { createBEM } from '@zarm-design/bem';
+import { useDrag } from '@use-gesture/react';
 import type { BaseCarouselProps } from './interface';
 import Events from '../utils/events';
-import useDrag from '../useDrag';
-import type { DragState, DragEvent } from '../useDrag/interface';
 import { ConfigContext } from '../config-provider';
 import type { HTMLProps } from '../utils/utilityTypes';
 
@@ -67,40 +68,32 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
     moveTimeSpan,
   } = props;
 
+  const [isDragging, setIsDragging] = useState(false);
+
   const stateRef = useRef<StateProps>({
     activeIndex: propActiveIndex!,
     activeIndexChanged: false,
   });
+
   const [activeIndexState, setActiveIndexState] = useState(stateRef.current.activeIndex);
+
   const updateRef = useRef((state: StateProps) => {
     stateRef.current = state;
     setActiveIndexState(state.activeIndex);
   });
+
+  const isVertical = direction === 'vertical';
 
   const carouselRef = (ref as any) || React.createRef<CarouselHTMLElement>();
   const carouselItemsRef = useRef<HTMLDivElement>(null);
 
   const translateXRef = useRef(0);
   const translateYRef = useRef(0);
-  const timer = useRef(0);
 
-  // 判断当前是否在最后一页
-  const isLastIndex = useCallback(() => {
-    return stateRef.current.activeIndex >= children!.length - 1;
-  }, [children]);
-
-  // 判断当前是否在第一页
-  const isFirstIndex = () => {
-    return stateRef.current.activeIndex <= 0;
-  };
-
-  // 是否横向移动
-  const isDirectionX = useCallback(() => {
-    return ['left', 'right'].includes(direction!);
-  }, [direction]);
+  const count = useMemo(() => Children.count(children), [children]);
 
   // 处理节点（首尾拼接）
-  const parseItems = () => {
+  const carouselItems = useMemo(() => {
     if (children == null || children.length === 0) {
       return;
     }
@@ -122,7 +115,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
       });
     });
     return newItems;
-  };
+  }, [children]);
 
   // 执行过渡动画
   const doTransition = useCallback(
@@ -131,7 +124,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
       let x = 0;
       let y = 0;
 
-      if (isDirectionX()) {
+      if (!isVertical) {
         ({ x } = offset);
       } else {
         ({ y } = offset);
@@ -139,7 +132,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
       dom!.style.transitionDuration = `${animationDurationNum}ms`;
       dom!.style.transform = `translate3d(${x}px, ${y}px, 0)`;
     },
-    [isDirectionX],
+    [isVertical],
   );
 
   const transitionEnd = useCallback(() => {
@@ -149,9 +142,8 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
     translateXRef.current = -dom!.offsetWidth * index;
     translateYRef.current = -dom!.offsetHeight * index;
     doTransition({ x: translateXRef.current, y: translateYRef.current }, 0);
-
-    if (typeof onChangeEnd === 'function' && activeIndexChanged) {
-      onChangeEnd(activeIndex);
+    if (activeIndexChanged) {
+      onChangeEnd?.(activeIndex);
     }
   }, [loop, doTransition, onChangeEnd]);
 
@@ -159,26 +151,28 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
   const onMoveTo = useCallback(
     (index: number, animationDurationNum: number) => {
       const dom = carouselItemsRef.current;
-      const maxLength = children!.length;
       const previousIndex = stateRef.current.activeIndex;
+      const activeIndexChanged = previousIndex !== index;
       const num = loop ? 1 : 0;
       translateXRef.current = -dom!.offsetWidth * (index + num);
       translateYRef.current = -dom!.offsetHeight * (index + num);
-      doTransition({ x: translateXRef.current, y: translateYRef.current }, animationDurationNum);
+      doTransition(
+        { x: translateXRef.current, y: translateYRef.current },
+        animationDurationNum
+      );
 
-      if (index > maxLength - 1) {
+      if (index > count - 1) {
         index = 0;
       } else if (index < 0) {
-        index = maxLength - 1;
+        index = count - 1;
       }
-      const activeIndexChanged = previousIndex !== index;
 
       updateRef.current({
         activeIndex: index,
         activeIndexChanged,
       });
-      if (typeof onChange === 'function' && activeIndexChanged) {
-        onChange(index);
+      if (activeIndexChanged) {
+        onChange?.(index);
       }
     },
     [children, doTransition, loop, onChange],
@@ -199,203 +193,149 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
     },
     [onMoveTo],
   );
-  // 暂停自动轮播
-  const pauseAutoPlay = () => {
-    if (timer.current) {
-      clearInterval(timer.current);
-    }
-  };
-
-  // 自动轮播开始
-  const startAutoPlay = useCallback(() => {
-    if (autoPlay) {
-      timer.current = window.setInterval(() => {
-        const isLeftOrUpDirection = ['left', 'up'].includes(direction!);
-        const activeIndex = isLeftOrUpDirection
-          ? stateRef.current.activeIndex + 1
-          : stateRef.current.activeIndex - 1;
-
-        // 不循环暂停轮播
-        if (!loop && (isLeftOrUpDirection ? isLastIndex() : isFirstIndex())) {
-          pauseAutoPlay();
-          return;
-        }
-        onSlideTo(activeIndex);
-      }, autoPlayIntervalTime);
-    }
-  }, [autoPlay, autoPlayIntervalTime, direction, isLastIndex, loop, onSlideTo]);
 
   // 更新窗口变化的位置偏移
   const resize = useCallback(() => {
     onJumpTo(stateRef.current.activeIndex);
   }, [onJumpTo]);
 
-  // 触屏事件
-  const onDragStart = () => {
-    if (!swipeable) {
-      return false;
-    }
-    // 跳转到头尾
-    const { activeIndex } = stateRef.current;
-    const maxLength = children!.length;
+  const bind = useDrag(
+    (state) => {
+      if (!state.intentional) return false;
+      setIsDragging(true);
+      let { activeIndex } = stateRef.current;
+      const { offset, elapsedTime } = state;
 
-    if (activeIndex <= 0) {
-      onJumpTo(0);
-    } else if (activeIndex >= maxLength - 1) {
-      onJumpTo(maxLength - 1);
-    }
-
-    // 暂停自动轮播
-    pauseAutoPlay();
-  };
-
-  const onDragMove = (event: DragEvent, { offsetX = 0, offsetY = 0 }: DragState) => {
-    if (!swipeable) {
-      return false;
-    }
-    const distanceX = Math.abs(offsetX);
-    const distanceY = Math.abs(offsetY);
-
-    if (isDirectionX() && (distanceX < 5 || (distanceX >= 5 && distanceY >= 1.73 * distanceX))) {
-      return false;
-    }
-
-    if (!isDirectionX() && (distanceY < 5 || (distanceY >= 5 && distanceX >= 1.73 * distanceY))) {
-      return false;
-    }
-
-    // 设置不循环的时候
-    if (!loop) {
-      // 在尾页时禁止拖动
-      if (isLastIndex()) {
-        if ((isDirectionX() && offsetX < 0) || (!isDirectionX() && offsetY < 0)) {
-          return false;
+      const [offsetX, offsetY] = offset;
+      const index = isVertical ? 1 : 0;
+      if (!offset[index]) {
+        return false;
+      }
+      if (loop) {
+        if (activeIndex <= 0) {
+          onJumpTo(0);
+        } else if (activeIndex >= count - 1) {
+          onJumpTo(count - 1);
         }
       }
-
-      // 在首页时禁止拖动
-      if (isFirstIndex()) {
-        if ((isDirectionX() && offsetX > 0) || (!isDirectionX() && offsetY > 0)) {
-          return false;
-        }
+      const action = (!isVertical && offsetX > 0) || (isVertical && offsetY > 0) ? 'prev' : 'next';
+      if (
+        !loop &&
+        ((action === 'prev' && activeIndex <= 0) || (action === 'next' && activeIndex >= count - 1))
+      ) {
+        return false;
       }
-    }
+      if (state.last) {
+        const dom = carouselItemsRef.current;
 
-    if (!Events.supportsPassiveEvents) {
-      event.preventDefault();
-    }
+        const ratio = !isVertical
+          ? Math.abs(offsetX / dom!.offsetWidth)
+          : Math.abs(offsetY / dom!.offsetHeight);
+        // 判断滑动临界点
+        // 1.滑动距离超过0，且滑动距离和父容器长度之比超过moveDistanceRatio
+        // 2.滑动释放时间差低于moveTimeSpan
+        if (ratio >= moveDistanceRatio! || elapsedTime <= moveTimeSpan!) {
+          activeIndex = action === 'next' ? activeIndex + 1 : activeIndex - 1;
+        }
+        onSlideTo(activeIndex);
+        setIsDragging(false);
+        return false;
+      }
+      doTransition(
+        { x: translateXRef.current + offset[0], y: translateYRef.current + offset[1] },
+        0,
+      );
+    },
+    {
+      from: () => [0, 0],
+      enabled: swipeable,
+      axis: isVertical ? 'y' : 'x',
+      pointer: { touch: true },
+      preventScroll: !isVertical,
+      triggerAllEvents: true,
+    },
+  );
 
-    doTransition({ x: translateXRef.current + offsetX, y: translateYRef.current + offsetY }, 0);
-    return true;
-  };
-
-  const onDragEnd = (_event: DragEvent, { offsetX = 0, offsetY = 0, startTime }: DragState) => {
-    if (!swipeable) {
-      return false;
-    }
-    if (!offsetX && !offsetY) {
-      // 恢复自动轮播
-      startAutoPlay();
-      return;
-    }
-
-    let { activeIndex } = stateRef.current;
-
-    const dom = carouselItemsRef.current;
-    const timeSpan = new Date().getTime() - startTime!.getTime();
-    const ratio = isDirectionX()
-      ? Math.abs(offsetX / dom!.offsetWidth)
-      : Math.abs(offsetY / dom!.offsetHeight);
-
-    // 判断滑动临界点
-    // 1.滑动距离超过0，且滑动距离和父容器长度之比超过moveDistanceRatio
-    // 2.滑动释放时间差低于moveTimeSpan
-    if (ratio >= moveDistanceRatio! || timeSpan <= moveTimeSpan!) {
-      const action =
-        (isDirectionX() && offsetX > 0) || (!isDirectionX() && offsetY > 0) ? 'prev' : 'next';
-
-      activeIndex = action === 'next' ? activeIndex + 1 : activeIndex - 1;
-    }
-
-    onSlideTo(activeIndex);
-
-    // 恢复自动轮播
-    startAutoPlay();
-  };
+  useEffect(() => {
+    if (!autoPlay || isDragging) return;
+    const interval = window.setInterval(() => {
+      if (!loop && stateRef.current.activeIndex === count) {
+        interval && clearInterval(interval);
+        return false;
+      }
+      onSlideTo(stateRef.current.activeIndex + 1);
+    }, autoPlayIntervalTime);
+    return () => {
+      window.clearInterval(interval);
+    };
+  }, [isDragging, autoPlay, autoPlayIntervalTime, loop, onSlideTo]);
 
   useEffect(() => {
     // 监听窗口变化
     Events.on(window, 'resize', resize);
-
-    startAutoPlay();
     // 设置起始位置编号
     onJumpTo(propActiveIndex!);
 
     return () => {
-      // 自动轮播结束
-      pauseAutoPlay();
       // 移除监听窗口变化
       Events.off(window, 'resize', resize);
     };
-  }, [onJumpTo, onSlideTo, propActiveIndex, resize, startAutoPlay, transitionEnd]);
+  }, [onJumpTo, onSlideTo, propActiveIndex, resize, transitionEnd]);
 
-  useEffect(() => {
-    carouselRef.current.onJumpTo = onJumpTo;
-    carouselRef.current.onSlideTo = onSlideTo;
-  }, [carouselRef, onJumpTo, onSlideTo]);
-
-  const renderPaginationItem = (_result, index: number) => {
-    const paginationItemCls = bem('pagination__item', [
-      {
-        active: index === activeIndexState,
+  useImperativeHandle(carouselRef, () => {
+    return {
+      onJumpTo: (index: number) => {
+        onJumpTo(index);
       },
-    ]);
-    return (
-      <div
-        key={`pagination-${index}`}
-        className={paginationItemCls}
-        onClick={() => onSlideTo(index)}
-      />
-    );
-  };
+      onSlideTo: (index: number) => {
+        onSlideTo(index);
+      },
+    };
+  });
 
-  const renderPagination = () => {
-    return (
-      showPagination && (
-        <div className={bem('pagination')}>{Children.map(children, renderPaginationItem)}</div>
-      )
-    );
-  };
-  const getDragProps = useDrag({ onDragStart, onDragMove, onDragEnd });
-  const directionText = isDirectionX() ? 'horizontal' : 'vertical';
+  const pagination = useMemo(() => {
+    if (!showPagination) return null;
+    const paginationItems = Children.map(children, (_child: React.ReactNode, index: number) => {
+      return (
+        <div
+          key={`pagination-${+index}`}
+          className={bem('pagination__item', [
+            {
+              active: index === activeIndexState,
+            },
+          ])}
+          onClick={() => onSlideTo(index)}
+        />
+      );
+    });
+
+    return <div className={bem('pagination')}>{paginationItems}</div>;
+  }, [showPagination, children, activeIndexState]);
+
   const cls = bem([
     {
-      [`${directionText}`]: true,
+      horizontal: !isVertical,
+      vertical: isVertical,
     },
     className,
   ]);
 
-  const content = () => {
-    const items = parseItems();
-    const itemsStyle: CSSProperties = {};
-    if (!isDirectionX()) {
-      itemsStyle.height = height;
-    }
-    return (
+  const itemsStyle: CSSProperties = {};
+  if (isVertical) {
+    itemsStyle.height = height;
+  }
+
+  return (
+    <div className={cls} style={style} ref={carouselRef} {...bind()}>
       <div
         ref={carouselItemsRef}
         className={bem('items')}
         onTransitionEnd={transitionEnd}
         style={itemsStyle}
       >
-        {items}
+        {carouselItems}
       </div>
-    );
-  };
-  return (
-    <div className={cls} style={style} ref={carouselRef} {...getDragProps}>
-      {content()}
-      {renderPagination()}
+      {pagination}
     </div>
   );
 });
@@ -403,7 +343,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
 Carousel.displayName = 'Carousel';
 
 Carousel.defaultProps = {
-  direction: 'left',
+  direction: 'horizontal',
   height: 160,
   loop: false,
   activeIndex: 0,

@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 export interface BaseCarouselProps {
-  direction?: 'left' | 'right' | 'up' | 'down';
+  direction?: 'vertical' | 'horizontal';
   height?: string | number;
   loop?: boolean;
   activeIndex?: number;
