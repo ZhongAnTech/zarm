@@ -64,7 +64,7 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     const { children } = this.props;
     if (React.Children.count(children)) {
       this.calculateLineWidth();
-      this.calculateScorllLeftLocation();
+      this.calculateScrollLeftLocation();
     }
   }
 
@@ -75,7 +75,7 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     if (prevValue !== value || prevChild !== children) {
       this.calculateLineWidth();
     }
-    this.calculateScorllLeftLocation();
+    this.calculateScrollLeftLocation();
   }
 
   get isVertical() {
@@ -176,7 +176,7 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
   /**
    * @description: 计算滚动条移动位置
    */
-  calculateScorllLeftLocation = () => {
+  calculateScrollLeftLocation = () => {
     const { scrollable } = this.props;
     if (!scrollable) {
       return false;
