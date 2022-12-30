@@ -1,10 +1,9 @@
-import React from 'react';
 import { fireEvent, getByText, render, waitFor } from '@testing-library/react';
-import Calendar from '../index';
+import React from 'react';
+import { date7 } from '../../../tests/testData/date';
 import ConfigProvider from '../../config-provider';
 import enUS from '../../config-provider/locale/en_US';
-
-import { date7 } from '../../../tests/testData/date';
+import Calendar from '../index';
 
 const originalOffsetTop = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetTop');
 describe('Calendar', () => {
@@ -26,36 +25,36 @@ describe('Calendar', () => {
     expect(container).toMatchSnapshot();
   });
 
-  const originalWarn = console.warn;
-  // @ts-ignore
-  // eslint-disable-next-line no-return-assign
-  afterEach(() => (console.warn = originalWarn));
-  const consoleOutput: any = [];
-  const mockedWarn = (output) => {
-    consoleOutput.push(output);
-  };
-  // eslint-disable-next-line no-return-assign
-  beforeEach(() => (console.warn = mockedWarn));
+  // const originalWarn = console.warn;
+  // // @ts-ignore
+  // // eslint-disable-next-line no-return-assign
+  // afterEach(() => (console.warn = originalWarn));
+  // const consoleOutput: any = [];
+  // const mockedWarn = (output) => {
+  //   consoleOutput.push(output);
+  // };
+  // // eslint-disable-next-line no-return-assign
+  // beforeEach(() => (console.warn = mockedWarn));
 
-  it('coustom render days warning', async () => {
-    const onChangeFn = jest.fn();
-    render(
-      <Calendar
-        min={date7}
-        mode="single"
-        onChange={onChangeFn}
-        dateRender={(date: Date) => {
-          if (/(0|6)/.test(date.getDay().toString())) {
-            return {};
-          }
-          return date.getDate();
-        }}
-      />,
-    );
-    await waitFor(() => {
-      expect(consoleOutput.length).toBeGreaterThan(1);
-    });
-  });
+  // it('coustom render days warning', async () => {
+  //   const onChangeFn = jest.fn();
+  //   render(
+  //     <Calendar
+  //       min={date7}
+  //       mode="single"
+  //       onChange={onChangeFn}
+  //       dateRender={(date: Date) => {
+  //         if (/(0|6)/.test(date.getDay().toString())) {
+  //           return {};
+  //         }
+  //         return date.getDate();
+  //       }}
+  //     />,
+  //   );
+  //   await waitFor(() => {
+  //     expect(consoleOutput.length).toBeGreaterThan(1);
+  //   });
+  // });
 
   // it('render horizontal trigger onChange when picker view', async () => {
   //   const onChangeFn = jest.fn();
