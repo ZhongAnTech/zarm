@@ -8,4 +8,5 @@ export interface ConfigProviderProps {
   locale: Locale;
   theme: Theme;
   primaryColor: PrimaryColor;
+  children: JSX.Element;
 }
