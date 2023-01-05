@@ -385,13 +385,6 @@ module.exports = {
         source: 'zarm/useClickAway/demo.md',
         style: false,
       },
-      {
-        key: 'useDrag',
-        name: '拖拽',
-        module: () => import('zarm/useDrag/demo.md'),
-        source: 'zarm/useDrag/demo.md',
-        style: false,
-      },
       // {
       //   key: 'useClickAway',
       //   name: '点击离开',

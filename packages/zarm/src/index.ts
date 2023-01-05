@@ -181,8 +181,6 @@ export type { CascaderViewProps, CascaderViewCssVars } from './cascader-view';
 export { default as CascaderView } from './cascader-view';
 
 // hooks
-export type { UseDragProps, DragEvent, DragState } from './useDrag';
-export { default as useDrag } from './useDrag';
 
 export type { UseOrientationProps } from './useOrientation';
 export { default as useOrientation } from './useOrientation';
@@ -196,3 +194,4 @@ export { default as useScroll } from './useScroll';
 export { default as useClickAway } from './useClickAway';
 
 export { default as useInViewport } from './useInViewport';
+

@@ -563,7 +563,6 @@ describe('index', () => {
         "WaterMark": [Function],
         "Wheel": [Function],
         "useClickAway": [Function],
-        "useDrag": [Function],
         "useInViewport": [Function],
         "useLongPress": [Function],
         "useOrientation": [Function],
