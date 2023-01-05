@@ -44,6 +44,7 @@ export default {
   'app.home.components.simulator.unaffix': '取消悬浮',
   'app.home.components.simulator.qrcode': '二维码',
   'app.home.components.simulator.reload': '刷新',
+  'app.home.components.simulator.openwindow': '新窗口打开',
   'app.home.components.action.edit': '在 GitHub 上编辑此页',
   'app.home.resources': '设计资源',
   'app.home.resources.introduce':

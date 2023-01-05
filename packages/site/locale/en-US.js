@@ -45,6 +45,7 @@ export default {
   'app.home.components.simulator.unaffix': 'set unaffix',
   'app.home.components.simulator.qrcode': 'QRCode',
   'app.home.components.simulator.reload': 'Reload',
+  'app.home.components.simulator.openwindow': 'Open Window',
   'app.home.components.action.edit': 'Edit this page on GitHub',
   'app.home.resources': 'Design Resources',
   'app.home.resources.introduce':
