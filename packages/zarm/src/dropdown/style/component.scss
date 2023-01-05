@@ -21,6 +21,7 @@
   transition-duration: 0.2s;
   overflow: hidden;
   cursor: pointer;
+  position: relative;
 
   @include e(trigger-list) {
     width: 100%;
@@ -60,20 +61,25 @@
     }
   }
 
+  @include e(popup) {
+    //position: fixed;
+    //overflow: hidden;
+    //width: 100%;
+    //right: 0;
+    //bottom: 0;
+    //left: 0;
+  }
+
   @include e(content) {
     flex: 1;
     display: none;
     width: 100%;
     min-height: var(--height);
+    transition-duration: 0.2s;
+    transition-property: height bottom;
 
     @include m(active) {
-      border-top: 1px solid var(--za-border-color);
       display: block;
     }
-  }
-
-  @include e(dropdown-mask) {
-    width: 100%;
-    height: 400px;
   }
 }

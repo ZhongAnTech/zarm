@@ -5,6 +5,7 @@ export interface BaseDropdownProps {
   defaultActiveKey?: number | string;
   onChange?: (activeKey: number | string) => void;
   arrow?: React.ReactNode;
+  mask?: boolean;
 }
 
 export interface BaseDropdownItemProps {
@@ -12,5 +13,6 @@ export interface BaseDropdownItemProps {
   title?: React.ReactNode;
   arrow?: React.ReactNode;
   children?: React.ReactNode;
-  selected?: boolean;
+  active?: boolean;
+  onClick: any
 }

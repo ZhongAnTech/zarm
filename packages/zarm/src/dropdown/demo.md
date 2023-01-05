@@ -4,7 +4,7 @@
 
 ```jsx
 import { useState } from 'react';
-import { Dropdown, List } from 'zarm';
+import { Dropdown, List, Button } from 'zarm';
 
 const Demo = () => {
   const [activeKey, setActiveKey] = useState('home');
