@@ -1,14 +1,14 @@
-import { useGesture } from '@use-gesture/react';
-import { createBEM } from '@zarm-design/bem';
 import React, { useEffect, useState } from 'react';
+import { createBEM } from '@zarm-design/bem';
+import { useGesture, ReactDOMAttributes } from '@use-gesture/react';
+import type { Images, BaseImagePreviewProps } from './interface';
+import Popup from '../popup';
+import Carousel from '../carousel'
 import Button from '../button';
-import Carousel from '../carousel';
 import { ConfigContext } from '../config-provider';
 import Loading from '../loading';
 import PinchZoom from '../pinch-zoom';
-import Popup from '../popup';
 import type { HTMLProps } from '../utils/utilityTypes';
-import type { BaseImagePreviewProps, Images } from './interface';
 import formatImages from './utils/formatImages';
 import LOAD_STATUS from './utils/loadStatus';
 import showOriginButton from './utils/showOriginButton';
@@ -49,9 +49,7 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
 
   const onChange = (index: number) => {
     setCurrentIndex(index);
-    if (typeof props.onChange === 'function') {
-      props.onChange(index);
-    }
+    props.onChange?.(index);
   };
 
   const loadOrigin = (event) => {
@@ -83,12 +81,12 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
   const bindEvent = useGesture({
     onDrag: (state) => {
       if (state.tap && state.elapsedTime > 0) {
-        if (typeof onClose === 'function') {
-          onClose();
-        }
+        setTimeout(() => {
+          onClose?.();
+        }, 100);
       }
     },
-  });
+  }) as unknown as (...args: any[]) => ReactDOMAttributes;
 
   const loadEvent = useGesture({
     onDrag: (state) => {
@@ -96,7 +94,7 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
         loadOrigin(state.event);
       }
     },
-  });
+  }) as unknown as (...args: any[]) => ReactDOMAttributes;;
 
   const renderImages = () => {
     const imageStyle = {
@@ -107,7 +105,12 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
       return (
         <div className={bem('item')} key={+i}>
           <PinchZoom minScale={minScale} maxScale={maxScale}>
-            <img src={item.src} alt="" draggable={false} style={imageStyle} />
+            <img
+              src={item.src}
+              alt=""
+              draggable={false}
+              style={imageStyle}
+              />
           </PinchZoom>
         </div>
       );
@@ -117,7 +120,7 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
   const renderPagination = () => {
     if (visible && showPagination && images && images.length > 1) {
       return (
-        <div className={bem('pagination')} {...bindEvent}>
+        <div className={bem('pagination')} {...bindEvent()}>
           {currentIndex + 1} / {images?.length}
         </div>
       );
@@ -136,7 +139,7 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
       visible
     ) {
       return (
-        <Button size="xs" loading={loaded === LOAD_STATUS.start} {...loadEvent}>
+        <Button size="xs" loading={loaded === LOAD_STATUS.start} {...loadEvent()}>
           {locale?.ImagePreview && locale?.ImagePreview?.[loaded]}
         </Button>
       );
@@ -153,7 +156,7 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
       mountContainer={mountContainer}
       maskOpacity={1}
     >
-      <div ref={ref} className={bem('content')} {...bindEvent}>
+      <div ref={ref} className={bem('content')} {...bindEvent()}>
         {visible &&
           (images?.length ? (
             <Carousel
