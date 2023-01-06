@@ -194,4 +194,3 @@ export { default as useScroll } from './useScroll';
 export { default as useClickAway } from './useClickAway';
 
 export { default as useInViewport } from './useInViewport';
-
