@@ -3,6 +3,7 @@ import { createBEM } from '@zarm-design/bem';
 import { useGesture } from '@use-gesture/react';
 import type { Images, BaseImagePreviewProps } from './interface';
 import Popup from '../popup';
+import Img from '../image';
 import Carousel from '../carousel';
 import PinchZoom from '../pinch-zoom';
 import ActivityIndicator from '../activity-indicator';
@@ -49,9 +50,7 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
 
   const onChange = (index: number) => {
     setCurrentIndex(index);
-    if (typeof props.onChange === 'function') {
-      props.onChange(index);
-    }
+    props.onChange?.(index);
   };
 
   const loadOrigin = (event) => {
@@ -83,9 +82,9 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
   const bindEvent = useGesture({
     onDrag: (state) => {
       if (state.tap && state.elapsedTime > 0) {
-        if (typeof onClose === 'function') {
-          onClose();
-        }
+        setTimeout(() => {
+          onClose?.();
+        }, 100);
       }
     },
   });
@@ -107,7 +106,7 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
       return (
         <div className={bem('item')} key={+i}>
           <PinchZoom minScale={minScale} maxScale={maxScale}>
-            <img src={item.src} alt="" draggable={false} style={imageStyle} />
+            <Img src={item.src} alt="" draggable={false} style={imageStyle} fit="none" lazy />
           </PinchZoom>
         </div>
       );
@@ -117,7 +116,7 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
   const renderPagination = () => {
     if (visible && showPagination && images && images.length > 1) {
       return (
-        <div className={bem('pagination')} {...bindEvent}>
+        <div className={bem('pagination')} {...bindEvent()}>
           {currentIndex + 1} / {images?.length}
         </div>
       );
@@ -136,7 +135,7 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
       visible
     ) {
       return (
-        <Button size="xs" loading={loaded === LOAD_STATUS.start} {...loadEvent}>
+        <Button size="xs" loading={loaded === LOAD_STATUS.start} {...loadEvent()}>
           {locale?.ImagePreview && locale?.ImagePreview?.[loaded]}
         </Button>
       );
@@ -153,7 +152,7 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
       mountContainer={mountContainer}
       maskOpacity={1}
     >
-      <div ref={ref} className={bem('content')} {...bindEvent}>
+      <div ref={ref} className={bem('content')} {...bindEvent()}>
         {visible &&
           (images?.length ? (
             <Carousel

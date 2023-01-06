@@ -116,7 +116,6 @@ const PinchZoom = React.forwardRef<unknown, PinchZoomProps>((props, ref) => {
     } else {
       alignCenter();
     }
-    alignCenter();
   }, [initOffset, offset, container, update]);
 
   const calculateOffset = (newOffset: Point) => {
