@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { createBEM } from '@zarm-design/bem';
-import { useGesture } from '@use-gesture/react';
+import { useGesture, ReactDOMAttributes } from '@use-gesture/react';
 import type { Images, BaseImagePreviewProps } from './interface';
 import Popup from '../popup';
 import Img from '../image';
@@ -87,7 +87,7 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
         }, 100);
       }
     },
-  });
+  }) as unknown as (...args: any[]) => ReactDOMAttributes;
 
   const loadEvent = useGesture({
     onDrag: (state) => {
@@ -95,7 +95,7 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
         loadOrigin(state.event);
       }
     },
-  });
+  }) as unknown as (...args: any[]) => ReactDOMAttributes;;
 
   const renderImages = () => {
     const imageStyle = {
