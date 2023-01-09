@@ -3,7 +3,6 @@ import { createBEM } from '@zarm-design/bem';
 import { useGesture, ReactDOMAttributes } from '@use-gesture/react';
 import type { Images, BaseImagePreviewProps } from './interface';
 import Popup from '../popup';
-import Img from '../image';
 import Carousel from '../carousel';
 import PinchZoom from '../pinch-zoom';
 import ActivityIndicator from '../activity-indicator';
@@ -106,7 +105,17 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
       return (
         <div className={bem('item')} key={+i}>
           <PinchZoom minScale={minScale} maxScale={maxScale}>
-            <Img src={item.src} alt="" draggable={false} style={imageStyle} fit="none" lazy />
+            <img
+              src={item.src}
+              alt=""
+              draggable={false}
+              style={imageStyle}
+              onLoad={(e) => {
+                const img = e.target as HTMLImageElement;
+                img.style.display = 'block';
+               }
+              }
+              />
           </PinchZoom>
         </div>
       );
