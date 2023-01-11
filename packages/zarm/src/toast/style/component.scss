@@ -2,7 +2,7 @@
   @include define(text-color, var(--za-color-text-inverse));
   @include define(icon-color, var(--za-color-text-inverse));
   @include define(font-size, 13px);
-  @include define(icon-size, 36px);
+  @include define(icon-size, 50px);
   @include define(border-radius, 6px);
   @include define(background-color, rgba(0, 0, 0, var(--za-opacity-toast)));
 
@@ -17,18 +17,19 @@
   justify-content: center;
   align-items: center;
   display: flex;
+  box-sizing: content-box;
 
   @include m(text) {
     padding: var(--za-padding-v-md) var(--za-padding-h-md);
   }
 
   @include m(icon) {
-    min-width: 80px;
-    min-height: 80px;
+    min-width: 70px;
+    min-height: 70px;
     padding: var(--za-padding-v-md) var(--za-padding-h-md);
 
     @include e(text) {
-      margin-top: var(--za-padding-v-sm);
+      margin: var(--za-padding-v-xs) 0;
     }
   }
 
@@ -39,6 +40,7 @@
   @include e(icon) {
     color: var(--icon-color);
     font-size: var(--icon-size);
+    margin: var(--za-padding-v-xs) 0;
     justify-content: center;
     align-items: center;
     display: flex;
