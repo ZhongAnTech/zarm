@@ -152,7 +152,7 @@ describe('Calendar', () => {
     Object.defineProperty(HTMLElement.prototype, 'offsetTop', { configurable: true, value: 500 });
   });
   afterAll(() => {
-    Object.defineProperty(HTMLElement.prototype, 'offsetWidth', originalOffsetTop!);
+    Object.defineProperty(HTMLElement.prototype, 'offsetTop', originalOffsetTop!);
   });
   it('body scroll', async () => {
     const onChangeFn = jest.fn();
