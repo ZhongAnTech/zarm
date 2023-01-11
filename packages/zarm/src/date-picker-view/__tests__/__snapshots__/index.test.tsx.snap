@@ -585,6 +585,10 @@ exports[`DatePickerView DatePickerView time 1`] = `
             "label": "2042年",
             "value": 2042,
           },
+          Object {
+            "label": "2043年",
+            "value": 2043,
+          },
         ],
         Array [
           Object {
@@ -1699,6 +1703,10 @@ exports[`DatePickerView DatePickerView time 1`] = `
                 "label": "2042年",
                 "value": 2042,
               },
+              Object {
+                "label": "2043年",
+                "value": 2043,
+              },
             ]
           }
           disabled={false}
@@ -2571,6 +2579,12 @@ exports[`DatePickerView DatePickerView time 1`] = `
                 key="142"
               >
                 2042年
+              </div>
+              <div
+                className="za-wheel__item"
+                key="143"
+              >
+                2043年
               </div>
             </div>
           </div>
