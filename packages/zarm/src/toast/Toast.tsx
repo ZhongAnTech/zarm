@@ -32,7 +32,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>((props, ref) => {
       case 'fail':
         return <Close />;
       case 'loading':
-        return <ActivityIndicator type='spinner' />;
+        return <ActivityIndicator type="spinner" size="lg" />;
       default:
         return icon;
     }

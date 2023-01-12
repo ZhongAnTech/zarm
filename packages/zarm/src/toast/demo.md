@@ -33,16 +33,32 @@ const Demo = () => {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-## 图标
+## 带图标提示
 
 ```jsx
 import { useRef } from 'react';
 import { Toast, List, Button } from 'zarm';
-import { Star } from '@zarm-design/icons';
+import { Warning } from '@zarm-design/icons';
 
 const Demo = () => {
   return (
     <List>
+      <List.Item
+        title="加载中"
+        suffix={
+          <Button
+            size="xs"
+            onClick={() => {
+              Toast.show({
+                icon: 'loading',
+              });
+            }}
+            style={{ marginLeft: 12 }}
+          >
+            开启
+          </Button>
+        }
+      />
       <List.Item
         title="成功"
         suffix={
@@ -77,32 +93,14 @@ const Demo = () => {
         }
       />
       <List.Item
-        title="加载中"
-        suffix={
-          <Button
-            size="xs"
-            onClick={() => {
-              Toast.show({
-                icon: 'loading',
-                content: '预约中...',
-                duration: 0,
-              });
-            }}
-            style={{ marginLeft: 12 }}
-          >
-            开启
-          </Button>
-        }
-      />
-      <List.Item
         title="自定义"
         suffix={
           <Button
             size="xs"
             onClick={() => {
               Toast.show({
-                icon: <Star />,
-                content: '收藏成功',
+                icon: <Warning />,
+                content: '自定义内容',
               });
             }}
             style={{ marginLeft: 12 }}

@@ -6,30 +6,30 @@
   @include define(border-radius, 6px);
   @include define(background-color, rgba(0, 0, 0, var(--za-opacity-toast)));
 
+  max-width: 85%;
   color: var(--text-color);
   font-size: var(--font-size);
   line-height: 1.5;
   position: relative;
   border-radius: var(--border-radius);
   background-color: var(--background-color);
-  overflow: auto;
+  margin: 0 32px;
+  text-align: center;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   display: flex;
-  box-sizing: content-box;
 
   @include m(text) {
     padding: var(--za-padding-v-md) var(--za-padding-h-md);
   }
 
   @include m(icon) {
-    min-width: 70px;
-    min-height: 70px;
-    padding: var(--za-padding-v-md) var(--za-padding-h-md);
+    padding: 15px;
 
     @include e(text) {
-      margin: var(--za-padding-v-xs) 0;
+      min-width: 70px;
+      margin-top: var(--za-padding-v-md);
     }
   }
 
@@ -38,19 +38,16 @@
   }
 
   @include e(icon) {
+    min-width: 50px;
+    min-height: 50px;
     color: var(--icon-color);
     font-size: var(--icon-size);
-    margin: var(--za-padding-v-xs) 0;
     justify-content: center;
     align-items: center;
     display: flex;
 
     @include b(icon) {
       --font-size: var(--icon-size);
-    }
-
-    @include b(activity-indicator) {
-      --size: var(--icon-size);
     }
   }
 }

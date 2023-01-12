@@ -3,8 +3,8 @@
 $activity-indicator-spinner-count: 8;
 
 @include b(activity-indicator) {
-  @include define(size, 22px);
-  @include define(size-large, 29px);
+  @include define(size, 24px);
+  @include define(size-large, 36px);
   @include define(stroke-color, #e6e6e6);
   @include define(stroke-active-color, var(--za-theme-primary));
   @include define(spinner-item-color, #80858e);
