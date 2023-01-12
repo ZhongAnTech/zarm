@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable dot-notation */
+import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import ImagePreview from '../ImagePreview';
 import { images, originImages } from '../../../tests/testData/images';
 // import Carousel from '../../carousel';
 // import { Images } from '../interface';
 import { sleep } from '../../../tests/utils';
-// import ActivityIndicator from '../../activity-indicator';
+import ImagePreview from '../ImagePreview';
+// import Loading from '../../loading';
 // import ImagePreviewEnhanced from '../index';
 
 describe('ImagePreview', () => {
@@ -112,7 +112,7 @@ describe('ImagePreview', () => {
   //     originUrl: 'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
   //     loaded: 'loadStart',
   //   });
-  //   expect(wrapper.find(ActivityIndicator).exists()).toBeTruthy();
+  //   expect(wrapper.find(Loading).exists()).toBeTruthy();
   //   onloadRef();
   //   expect((wrapper.state('images') as Images)[0]).toEqual({
   //     url: 'https://static.zhongan.com/website/health/zarm/images/banners/1.png',

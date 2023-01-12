@@ -212,10 +212,10 @@ const components = {
   slider_handle_size: 28,
   slider_handle_background: '#fff',
 
-  // activity-indicator
-  activityIndicator_size_md: 20,
-  activityIndicator_size_lg: 31,
-  activityIndicator_path_color: '#e6e6e6',
+  // loading
+  loading_size_md: 20,
+  loading_size_lg: 31,
+  loading_path_color: '#e6e6e6',
 
   // Stepper
   stepper_height_md: 28,

@@ -104,7 +104,7 @@ exports[`Button loading 1`] = `
       class="za-button__content"
     >
       <div
-        class="za-activity-indicator za-activity-indicator--circular"
+        class="za-loading za-loading--circular"
       >
         <svg
           viewBox="31 31 62 62"

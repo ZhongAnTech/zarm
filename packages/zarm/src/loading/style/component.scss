@@ -1,8 +1,8 @@
 @import 'mixins';
 
-$activity-indicator-spinner-count: 8;
+$loading-spinner-count: 8;
 
-@include b(activity-indicator) {
+@include b(loading) {
   @include define(size, 24px);
   @include define(size-large, 36px);
   @include define(stroke-color, #e6e6e6);
@@ -17,7 +17,7 @@ $activity-indicator-spinner-count: 8;
   transform: rotate(-90deg);
   vertical-align: middle;
 
-  @include activity-indicator-size(var(--size));
+  @include loading-size(var(--size));
 
   @include e(stroke) {
     stroke: var(--stroke-color);
@@ -45,7 +45,7 @@ $activity-indicator-spinner-count: 8;
   @include m(spinner) {
     @include animation(rotate360, 0.8s linear infinite);
 
-    animation-timing-function: steps($activity-indicator-spinner-count);
+    animation-timing-function: steps($loading-spinner-count);
 
     div {
       position: absolute;
@@ -54,10 +54,10 @@ $activity-indicator-spinner-count: 8;
       width: 100%;
       height: 100%;
 
-      @for $i from 1 through $activity-indicator-spinner-count {
+      @for $i from 1 through $loading-spinner-count {
         &:nth-of-type(#{$i}) {
-          transform: rotate($i * (360 / $activity-indicator-spinner-count) * 1deg);
-          opacity: $i / $activity-indicator-spinner-count;
+          transform: rotate($i * (360 / $loading-spinner-count) * 1deg);
+          opacity: $i / $loading-spinner-count;
         }
       }
 
@@ -75,7 +75,7 @@ $activity-indicator-spinner-count: 8;
 
   /* sizes */
   @include m(lg) {
-    @include activity-indicator-size(var(--size-large));
+    @include loading-size(var(--size-large));
   }
 
   @include keyframes(rotate-circular) {

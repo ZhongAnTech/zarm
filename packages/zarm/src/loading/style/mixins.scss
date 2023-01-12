@@ -1,0 +1,4 @@
+@mixin loading-size($diameter) {
+  width: $diameter;
+  height: $diameter;
+}

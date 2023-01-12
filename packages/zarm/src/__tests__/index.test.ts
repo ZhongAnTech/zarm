@@ -16,16 +16,6 @@ describe('index', () => {
           "render": [Function],
           "show": [Function],
         },
-        "ActivityIndicator": Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "defaultProps": Object {
-            "loading": true,
-            "percent": 20,
-            "strokeWidth": 5,
-            "type": "circular",
-          },
-          "render": [Function],
-        },
         "Affix": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
@@ -265,6 +255,16 @@ describe('index', () => {
           },
           "defaultProps": Object {
             "bordered": true,
+          },
+          "render": [Function],
+        },
+        "Loading": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "defaultProps": Object {
+            "loading": true,
+            "percent": 20,
+            "strokeWidth": 5,
+            "type": "circular",
           },
           "render": [Function],
         },

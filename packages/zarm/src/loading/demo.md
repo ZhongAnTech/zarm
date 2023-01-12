@@ -1,16 +1,16 @@
-# ActivityIndicator 活动指示器
+# Loading 加载中
 
 ## 基本用法
 
 ```jsx
-import { List, ActivityIndicator } from 'zarm';
+import { List, Loading } from 'zarm';
 
 ReactDOM.render(
   <List>
-    <List.Item title="普通" suffix={<ActivityIndicator />} />
-    <List.Item title="大号" suffix={<ActivityIndicator size="lg" />} />
-    <List.Item title="无旋转动画" suffix={<ActivityIndicator loading={false} />} />
-    <List.Item title="指定百分比" suffix={<ActivityIndicator loading={false} percent={75} />} />
+    <List.Item title="普通" suffix={<Loading />} />
+    <List.Item title="大号" suffix={<Loading size="lg" />} />
+    <List.Item title="无旋转动画" suffix={<Loading loading={false} />} />
+    <List.Item title="指定百分比" suffix={<Loading loading={false} percent={75} />} />
   </List>,
   mountNode,
 );
@@ -19,12 +19,12 @@ ReactDOM.render(
 ## 传统菊花状
 
 ```jsx
-import { List, ActivityIndicator } from 'zarm';
+import { List, Loading } from 'zarm';
 
 ReactDOM.render(
   <List>
-    <List.Item title="普通" suffix={<ActivityIndicator type="spinner" />} />
-    <List.Item title="大号" suffix={<ActivityIndicator type="spinner" size="lg" />} />
+    <List.Item title="普通" suffix={<Loading type="spinner" />} />
+    <List.Item title="大号" suffix={<Loading type="spinner" size="lg" />} />
   </List>,
   mountNode,
 );

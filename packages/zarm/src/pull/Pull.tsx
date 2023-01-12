@@ -1,18 +1,18 @@
-import React, { useState, useEffect, useRef, ReactNode, CSSProperties } from 'react';
-import { createBEM } from '@zarm-design/bem';
 import { useDrag } from '@use-gesture/react';
+import { createBEM } from '@zarm-design/bem';
 import {
   SuccessCircle as SuccessCircleIcon,
   WarningCircle as WarningCircleIcon,
 } from '@zarm-design/icons';
 import throttle from 'lodash/throttle';
-import Events from '../utils/events';
+import React, { CSSProperties, ReactNode, useEffect, useRef, useState } from 'react';
 import { ConfigContext } from '../config-provider';
+import Loading from '../loading';
 import { getScrollParent, getScrollTop } from '../utils/dom';
-import ActivityIndicator from '../activity-indicator';
+import Events from '../utils/events';
 import { useEventCallback } from '../utils/hooks';
 import type { HTMLProps } from '../utils/utilityTypes';
-import { REFRESH_STATE, LOAD_STATE, PullAction, BasePullProps } from './interface';
+import { BasePullProps, LOAD_STATE, PullAction, REFRESH_STATE } from './interface';
 
 export interface PullCssVars {
   '--control-height'?: React.CSSProperties['height'];
@@ -271,7 +271,7 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
       case REFRESH_STATE.pull:
         return (
           <div className={refreshCls}>
-            <ActivityIndicator loading={false} percent={percent} />
+            <Loading loading={false} percent={percent} />
             <span>{locale!.Pull!.pullText}</span>
           </div>
         );
@@ -279,7 +279,7 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
       case REFRESH_STATE.drop:
         return (
           <div className={refreshCls}>
-            <ActivityIndicator loading={false} percent={100} />
+            <Loading loading={false} percent={100} />
             <span>{locale!.Pull!.dropText}</span>
           </div>
         );
@@ -287,7 +287,7 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
       case REFRESH_STATE.loading:
         return (
           <div className={refreshCls}>
-            <ActivityIndicator type="spinner" />
+            <Loading type="spinner" />
             <span>{locale!.Pull!.loadingText}</span>
           </div>
         );
@@ -329,7 +329,7 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
       case LOAD_STATE.loading:
         return (
           <div className={loadCls}>
-            <ActivityIndicator type="spinner" />
+            <Loading type="spinner" />
             <span>{locale!.Pull!.loadingText}</span>
           </div>
         );
