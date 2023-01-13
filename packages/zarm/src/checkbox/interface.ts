@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import type { ButtonSize, ButtonShape } from '../button/interface';
 
 export type CheckboxType = 'button' | 'list';
 export type CheckboxValue = number | string;
@@ -14,6 +13,7 @@ export interface BaseCheckboxProps {
   id?: string;
   listMarkerAlign?: CheckboxGroupListMarkerAlign;
   indeterminate?: boolean;
+  children?: ReactNode;
 }
 
 export interface BaseCheckboxGroupProps {
@@ -22,10 +22,6 @@ export interface BaseCheckboxGroupProps {
   block?: boolean;
   value?: Array<CheckboxValue>;
   defaultValue?: Array<CheckboxValue>;
-  buttonSize?: ButtonSize;
-  buttonShape?: ButtonShape;
-  buttonCompact?: boolean;
-  buttonGhost?: boolean;
   listMarkerAlign?: CheckboxGroupListMarkerAlign;
   onChange?: (value: Array<CheckboxValue>) => void;
   children?: ReactNode;

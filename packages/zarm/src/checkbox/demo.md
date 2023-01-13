@@ -4,6 +4,7 @@
 
 ```jsx
 import { List, Checkbox } from 'zarm';
+import { Star, StarFill } from '@zarm-design/icons';
 
 ReactDOM.render(
   <List>
@@ -118,137 +119,22 @@ const Demo = () => {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-## 块级样式
-
-```jsx
-import { List, Checkbox } from 'zarm';
-
-ReactDOM.render(
-  <List>
-    <List.Item>
-      <Checkbox.Group block>
-        <Checkbox value="0">选项一</Checkbox>
-        <Checkbox value="1">选项二</Checkbox>
-      </Checkbox.Group>
-    </List.Item>
-  </List>,
-  mountNode,
-);
-```
-
 ## 按钮样式
 
 ```jsx
-import { useState } from 'react';
-import { List, Checkbox } from 'zarm';
-
-const Demo = () => {
-  const [value, setValue] = useState([]);
-
-  return (
-    <List>
-      <List.Item
-        title="普通"
-        suffix={
-          <Checkbox.Group
-            type="button"
-            value={value}
-            onChange={(value) => {
-              setValue(value);
-              console.log(`checked to ${value}`);
-            }}
-          >
-            <Checkbox value="0">选项一</Checkbox>
-            <Checkbox value="1">选项二</Checkbox>
-            <Checkbox value="2">选项三</Checkbox>
-          </Checkbox.Group>
-        }
-      />
-      <List.Item
-        title="指定默认值"
-        suffix={
-          <Checkbox.Group type="button" defaultValue={['0', '1']}>
-            <Checkbox value="0">选项一</Checkbox>
-            <Checkbox value="1">选项二</Checkbox>
-            <Checkbox value="2">选项三</Checkbox>
-          </Checkbox.Group>
-        }
-      />
-      <List.Item
-        title="禁用指定项"
-        suffix={
-          <Checkbox.Group type="button">
-            <Checkbox value="0">选项一</Checkbox>
-            <Checkbox value="1" disabled>
-              选项二
-            </Checkbox>
-            <Checkbox value="2" disabled checked>
-              选项三
-            </Checkbox>
-          </Checkbox.Group>
-        }
-      />
-      <List.Item
-        title="直角"
-        suffix={
-          <Checkbox.Group type="button" buttonShape="rect">
-            <Checkbox value="0">选项一</Checkbox>
-            <Checkbox value="1">选项二</Checkbox>
-            <Checkbox value="2">选项三</Checkbox>
-          </Checkbox.Group>
-        }
-      />
-      <List.Item
-        title="椭圆角"
-        suffix={
-          <Checkbox.Group type="button" buttonShape="round">
-            <Checkbox value="0">选项一</Checkbox>
-            <Checkbox value="1">选项二</Checkbox>
-            <Checkbox value="2">选项三</Checkbox>
-          </Checkbox.Group>
-        }
-      />
-      <List.Item
-        title="大小"
-        suffix={
-          <Checkbox.Group type="button" buttonSize="sm" buttonShape="radius">
-            <Checkbox value="0">选项一</Checkbox>
-            <Checkbox value="1">选项二</Checkbox>
-            <Checkbox value="2">选项三</Checkbox>
-          </Checkbox.Group>
-        }
-      />
-      <List.Item
-        title="幽灵按钮"
-        suffix={
-          <Checkbox.Group buttonGhost type="button" defaultValue={['2']}>
-            <Checkbox value="0">选项一</Checkbox>
-            <Checkbox value="1">选项二</Checkbox>
-            <Checkbox value="2" disabled>
-              选项三
-            </Checkbox>
-          </Checkbox.Group>
-        }
-      />
-    </List>
-  );
-};
-
-ReactDOM.render(<Demo />, mountNode);
-```
-
-## 按钮类型块级样式
-
-```jsx
 import { List, Checkbox } from 'zarm';
 
 ReactDOM.render(
   <List>
     <List.Item>
-      <Checkbox.Group block type="button">
-        <Checkbox value="0">选项一</Checkbox>
+      <Checkbox.Group type="button">
+        <Checkbox value="0" checked>
+          选项一
+        </Checkbox>
         <Checkbox value="1">选项二</Checkbox>
-        <Checkbox value="2">选项三</Checkbox>
+        <Checkbox value="2" disabled>
+          选项三
+        </Checkbox>
       </Checkbox.Group>
     </List.Item>
   </List>,
@@ -260,6 +146,7 @@ ReactDOM.render(
 
 ```jsx
 import { Checkbox } from 'zarm';
+import { Star, StarFill } from '@zarm-design/icons';
 
 ReactDOM.render(
   <Checkbox.Group type="list">
@@ -279,7 +166,7 @@ ReactDOM.render(
 import { Checkbox } from 'zarm';
 
 ReactDOM.render(
-  <Checkbox.Group type="list" listMarkerAlign="affix">
+  <Checkbox.Group type="list" listMarkerAlign="after">
     <Checkbox value="0">选项一</Checkbox>
     <Checkbox value="1">选项二</Checkbox>
     <Checkbox value="2" disabled>
@@ -290,19 +177,71 @@ ReactDOM.render(
 );
 ```
 
-## 列表样式，禁用状态
+## 通栏块级样式
 
 ```jsx
-import { Checkbox } from 'zarm';
+import { List, Checkbox } from 'zarm';
 
 ReactDOM.render(
-  <Checkbox.Group disabled type="list">
-    <Checkbox value="0">选项一</Checkbox>
-    <Checkbox value="1">选项二</Checkbox>
-    <Checkbox value="2" checked>
-      选项三
-    </Checkbox>
-  </Checkbox.Group>,
+  <List>
+    <List.Item>
+      <Checkbox.Group block>
+        <Checkbox value="0">选项一</Checkbox>
+        <Checkbox value="1">选项二</Checkbox>
+      </Checkbox.Group>
+    </List.Item>
+    <List.Item>
+      <Checkbox.Group block type="button">
+        <Checkbox value="0">选项一</Checkbox>
+        <Checkbox value="1">选项二</Checkbox>
+      </Checkbox.Group>
+    </List.Item>
+  </List>,
+  mountNode,
+);
+```
+
+## 自定义选项样式
+
+```jsx
+import { List, Checkbox, Button } from 'zarm';
+import { Star, StarFill, CloseCircle, CloseCircleFill, Close, Success } from '@zarm-design/icons';
+
+ReactDOM.render(
+  <List>
+    <List.Item>
+      <Checkbox.Group>
+        <Checkbox
+          value="0"
+          renderIcon={({ checked }) =>
+            checked ? <Success theme="primary" /> : <Close theme="danger" />
+          }
+        >
+          选项一
+        </Checkbox>
+        <Checkbox
+          value="1"
+          renderIcon={({ checked }) =>
+            checked ? <StarFill theme="primary" /> : <Star theme="primary" />
+          }
+        >
+          选项二
+        </Checkbox>
+        <Checkbox value="2">选项三</Checkbox>
+      </Checkbox.Group>
+    </List.Item>
+    <List.Item>
+      <Checkbox.Group
+        renderIcon={({ checked }) =>
+          checked ? <StarFill theme="primary" /> : <Star theme="primary" />
+        }
+      >
+        <Checkbox value="0">选项一</Checkbox>
+        <Checkbox value="1">选项二</Checkbox>
+        <Checkbox value="2">选项三</Checkbox>
+      </Checkbox.Group>
+    </List.Item>
+  </List>,
   mountNode,
 );
 ```

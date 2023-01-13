@@ -1,30 +1,29 @@
-import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
-import { Success as SuccessIcon, Minus as MinusIcon } from '@zarm-design/icons';
-import { ConfigContext } from '../config-provider';
+import { Minus as MinusIcon, Success as SuccessIcon } from '@zarm-design/icons';
+import * as React from 'react';
 import Button from '../button';
-import List from '../list';
-import type { BaseCheckboxProps, BaseCheckboxGroupProps } from './interface';
+import { ConfigContext } from '../config-provider';
 import type { ListItemProps } from '../list';
-import type { ButtonProps } from '../button';
+import List from '../list';
 import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseCheckboxProps } from './interface';
 
 export interface CheckboxCssVars {
-  '--widget-size'?: React.CSSProperties['height'];
-  '--widget-background'?: React.CSSProperties['background'];
-  '--widget-border-radius'?: React.CSSProperties['borderRadius'];
-  '--widget-border-width'?: React.CSSProperties['borderWidth'];
-  '--widget-border-color'?: React.CSSProperties['borderColor'];
+  '--icon-size'?: React.CSSProperties['height'];
+  '--icon-background'?: React.CSSProperties['background'];
+  '--icon-border-radius'?: React.CSSProperties['borderRadius'];
+  '--icon-border-width'?: React.CSSProperties['borderWidth'];
+  '--icon-border-color'?: React.CSSProperties['borderColor'];
   '--marker-font-size'?: React.CSSProperties['fontSize'];
   '--marker-color'?: React.CSSProperties['color'];
   '--marker-transition'?: React.CSSProperties['transition'];
   '--text-margin-horizontal'?: React.CSSProperties['marginLeft'];
   '--active-opacity'?: React.CSSProperties['opacity'];
-  '--checked-widget-background'?: React.CSSProperties['background'];
-  '--checked-widget-border-color'?: React.CSSProperties['borderColor'];
+  '--checked-icon-background'?: React.CSSProperties['background'];
+  '--checked-icon-border-color'?: React.CSSProperties['borderColor'];
   '--checked-marker-color'?: React.CSSProperties['color'];
-  '--disabled-widget-background'?: React.CSSProperties['background'];
-  '--disabled-widget-border-color'?: React.CSSProperties['borderColor'];
+  '--disabled-icon-background'?: React.CSSProperties['background'];
+  '--disabled-icon-border-color'?: React.CSSProperties['borderColor'];
   '--disabled-text-color'?: React.CSSProperties['color'];
   '--disabled-marker-color'?: React.CSSProperties['color'];
   '--group-spacing-vertical'?: React.CSSProperties['marginBottom'];
@@ -35,18 +34,14 @@ const getChecked = (props: CheckboxProps, defaultChecked?: boolean) => {
   return props.checked ?? props.defaultChecked ?? defaultChecked;
 };
 
-type CheckboxNormalProps = BaseCheckboxProps &
+export type CheckboxProps = BaseCheckboxProps &
   HTMLProps<CheckboxCssVars> & {
+    renderIcon?: (props: CheckboxProps) => React.ReactNode;
+    render?: (props: CheckboxProps) => React.ReactNode;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   };
 
-type CheckboxButtonProps = CheckboxNormalProps &
-  ButtonProps &
-  Pick<BaseCheckboxGroupProps, 'buttonGhost' | 'buttonSize' | 'buttonShape'>;
-
-export type CheckboxProps = Partial<CheckboxNormalProps & CheckboxButtonProps>;
-
-const Checkbox = React.forwardRef<unknown, CheckboxButtonProps>((props, ref) => {
+const Checkbox = React.forwardRef<unknown, CheckboxProps>((props, ref) => {
   const {
     className,
     type,
@@ -57,9 +52,8 @@ const Checkbox = React.forwardRef<unknown, CheckboxButtonProps>((props, ref) => 
     id,
     listMarkerAlign,
     indeterminate,
-    buttonGhost,
-    buttonShape,
-    buttonSize,
+    renderIcon,
+    render,
     children,
     onChange,
     ...restProps
@@ -108,18 +102,38 @@ const Checkbox = React.forwardRef<unknown, CheckboxButtonProps>((props, ref) => 
     />
   );
 
-  const checkboxRender = (
-    <span ref={checkboxRef} className={cls} {...(restProps as CheckboxNormalProps)}>
-      <span className={bem('widget')}>
-        <span className={bem('inner')}>
-          {indeterminate ? (
-            <MinusIcon className={bem('marker')} />
-          ) : (
-            <SuccessIcon className={bem('marker')} />
-          )}
-        </span>
+  const currentProps = { ...props, checked: currentChecked };
+
+  const labelRender = children && <span className={bem('text')}>{children}</span>;
+
+  let iconRender = (
+    <span className={bem('icon')}>
+      <span className={bem('icon-inner')}>
+        {renderIcon ? (
+          renderIcon(currentProps)
+        ) : (
+          <span className={bem('tick')}>
+            {indeterminate ? (
+              <MinusIcon className={bem('marker')} />
+            ) : (
+              <SuccessIcon className={bem('marker')} />
+            )}
+          </span>
+        )}
       </span>
-      {children && <span className={bem('text')}>{children}</span>}
+    </span>
+  );
+
+  const checkboxRender = (
+    <span ref={checkboxRef} className={cls} {...restProps}>
+      {render ? (
+        render(currentProps)
+      ) : (
+        <>
+          {iconRender}
+          {labelRender}
+        </>
+      )}
       {inputRender}
     </span>
   );
@@ -128,51 +142,40 @@ const Checkbox = React.forwardRef<unknown, CheckboxButtonProps>((props, ref) => 
     setCurrentChecked(getChecked({ checked, defaultChecked }));
   }, [checked, defaultChecked]);
 
-  if (type === 'list') {
-    const marker = (
-      <>
-        <span className={bem('widget')}>
-          <span className={bem('inner')}>
-            <SuccessIcon className={bem('marker')} />
-          </span>
-        </span>
-        {inputRender}
-      </>
-    );
+  if (type === 'button') {
+    iconRender = null;
 
+    return (
+      <Button
+        ref={checkboxRef}
+        className={cls}
+        size="xs"
+        disabled={disabled}
+        theme={currentChecked ? 'primary' : 'default'}
+        {...restProps}
+      >
+        {children}
+        {inputRender}
+      </Button>
+    );
+  }
+
+  if (type === 'list') {
     const listProps: ListItemProps = {
       hasArrow: false,
       className: cls,
       title: (
         <>
-          {children && <span className={bem('text')}>{children}</span>}
+          {labelRender}
           {inputRender}
         </>
       ),
       onClick: !disabled ? () => {} : undefined,
     };
 
-    listMarkerAlign === 'after' ? (listProps.suffix = marker) : (listProps.prefix = marker);
+    listMarkerAlign === 'after' ? (listProps.suffix = iconRender) : (listProps.prefix = iconRender);
 
     return <List.Item ref={checkboxRef} {...listProps} />;
-  }
-
-  if (type === 'button') {
-    return (
-      <Button
-        ref={checkboxRef}
-        className={cls}
-        disabled={disabled}
-        theme={checked ? 'primary' : 'default'}
-        ghost={buttonGhost && checked}
-        shape={buttonShape}
-        size={buttonSize}
-        {...(restProps as CheckboxButtonProps)}
-      >
-        {children}
-        {inputRender}
-      </Button>
-    );
   }
 
   return checkboxRender;

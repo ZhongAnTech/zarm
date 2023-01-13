@@ -1,10 +1,11 @@
-import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
 import isEqual from 'lodash/isEqual';
-import List from '../list';
+import * as React from 'react';
 import { ConfigContext } from '../config-provider';
-import type { BaseCheckboxGroupProps, CheckboxValue } from './interface';
+import List from '../list';
 import type { HTMLProps } from '../utils/utilityTypes';
+import type { CheckboxProps } from './Checkbox';
+import type { BaseCheckboxGroupProps, CheckboxValue } from './interface';
 
 export interface CheckboxGroupCssVars {
   '--group-spacing-vertical'?: React.CSSProperties['marginBottom'];
@@ -36,7 +37,11 @@ const getValue = (props: CheckboxGroupProps, defaultValue: Array<CheckboxValue> 
   return defaultValue;
 };
 
-export type CheckboxGroupProps = BaseCheckboxGroupProps & HTMLProps<CheckboxGroupCssVars>;
+export type CheckboxGroupProps = BaseCheckboxGroupProps &
+  HTMLProps<CheckboxGroupCssVars> & {
+    renderIcon?: (props: CheckboxProps) => React.ReactNode;
+    render?: (props: CheckboxProps) => React.ReactNode;
+  };
 
 const CheckboxGroup = React.forwardRef<unknown, CheckboxGroupProps>((props, ref) => {
   const {
@@ -46,11 +51,9 @@ const CheckboxGroup = React.forwardRef<unknown, CheckboxGroupProps>((props, ref)
     defaultValue,
     block,
     disabled,
-    buttonSize,
-    buttonShape,
-    buttonCompact,
-    buttonGhost,
     listMarkerAlign,
+    renderIcon,
+    render,
     children,
     onChange,
     ...restProps
@@ -84,11 +87,10 @@ const CheckboxGroup = React.forwardRef<unknown, CheckboxGroupProps>((props, ref)
       key: +index,
       type,
       listMarkerAlign,
+      renderIcon: element.props.renderIcon || renderIcon,
+      render: element.props.render || render,
       disabled: disabled || !!element.props.disabled,
       checked: currentValue!.indexOf(element.props.value) > -1,
-      buttonGhost,
-      buttonSize,
-      buttonShape,
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
         typeof element.props.onChange === 'function' && element.props.onChange(e);
         onChildChange(element.props.value);
@@ -101,9 +103,6 @@ const CheckboxGroup = React.forwardRef<unknown, CheckboxGroupProps>((props, ref)
       [`${type}`]: !!type,
       block,
       disabled,
-      [`button-${buttonSize}`]: !!buttonSize,
-      [`button-${buttonShape}`]: !!buttonShape,
-      'button-compact': buttonCompact,
     },
     className,
   ]);
@@ -126,10 +125,6 @@ CheckboxGroup.displayName = 'CheckboxGroup';
 CheckboxGroup.defaultProps = {
   block: false,
   disabled: false,
-  buttonCompact: false,
-  buttonGhost: false,
-  buttonShape: 'radius',
-  buttonSize: 'xs',
   listMarkerAlign: 'before',
 };
 
