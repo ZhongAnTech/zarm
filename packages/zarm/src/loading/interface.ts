@@ -1,4 +1,4 @@
-export interface BaseActivityIndicatorProps {
+export interface BaseLoadingProps {
   size?: 'lg';
   strokeWidth?: number;
   percent?: number;

@@ -1,10 +1,10 @@
-import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
-import { useSafeState } from '../utils/hooks';
+import * as React from 'react';
 import { ConfigContext } from '../config-provider';
-import ActivityIndicator from '../activity-indicator';
-import type { BaseActionSheetItemProps } from './interface';
+import Loading from '../loading';
+import { useSafeState } from '../utils/hooks';
 import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseActionSheetItemProps } from './interface';
 
 export type ActionSheetItemProps = BaseActionSheetItemProps & HTMLProps;
 
@@ -36,7 +36,7 @@ const ActionSheetItem = React.forwardRef<HTMLDivElement, ActionSheetItemProps>((
         }
       }}
     >
-      {loading ? <ActivityIndicator /> : text}
+      {loading ? <Loading /> : text}
     </div>
   );
 });

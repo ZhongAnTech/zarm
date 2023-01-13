@@ -1,7 +1,7 @@
-import '../../style';
-import '../../carousel/style';
-import '../../activity-indicator/style';
 import '../../button/style';
-import '../../popup/style';
+import '../../carousel/style';
+import '../../loading/style';
 import '../../pinch-zoom/style';
+import '../../popup/style';
+import '../../style';
 import './index.scss';

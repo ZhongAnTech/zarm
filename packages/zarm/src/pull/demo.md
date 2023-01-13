@@ -4,7 +4,7 @@
 
 ```jsx
 import { useState, useEffect, useRef } from 'react';
-import { Pull, List, Message, Button, ActivityIndicator, BackTop } from 'zarm';
+import { Pull, List, Message, Button, Loading, BackTop } from 'zarm';
 import { WarningCircle, SuccessCircle, CloseCircle } from '@zarm-design/icons';
 
 const REFRESH_STATE = {
@@ -127,7 +127,7 @@ const Demo = () => {
           //     case REFRESH_STATE.pull:
           //       return (
           //         <div className={cls}>
-          //           <ActivityIndicator loading={false} percent={percent} />
+          //           <Loading loading={false} percent={percent} />
           //           <span>下拉刷新</span>
           //         </div>
           //       );
@@ -135,7 +135,7 @@ const Demo = () => {
           //     case REFRESH_STATE.drop:
           //       return (
           //         <div className={cls}>
-          //           <ActivityIndicator loading={false} percent={100} />
+          //           <Loading loading={false} percent={100} />
           //           <span>释放立即刷新</span>
           //         </div>
           //       );
@@ -143,7 +143,7 @@ const Demo = () => {
           //     case REFRESH_STATE.loading:
           //       return (
           //         <div className={cls}>
-          //           <ActivityIndicator type="spinner" />
+          //           <Loading type="spinner" />
           //           <span>加载中</span>
           //         </div>
           //       );
@@ -176,7 +176,7 @@ const Demo = () => {
           //   const cls = 'custom-control';
           //   switch (loadState) {
           //     case LOAD_STATE.loading:
-          //       return <div className={cls}><ActivityIndicator type="spinner" /></div>;
+          //       return <div className={cls}><Loading type="spinner" /></div>;
 
           //     case LOAD_STATE.failure:
           //       return <div className={cls}>加载失败</div>;

@@ -1,24 +1,11 @@
 import * as React from 'react';
 import type { MaskProps } from '../mask';
-import type { BaseTransitionProps } from '../transition/interface';
+import type { BaseTransitionProps, TransitionName } from '../transition/interface';
 import type { MountContainer } from '../utils/dom';
 
 export interface BasePopupProps extends BaseTransitionProps {
   direction?: 'top' | 'right' | 'bottom' | 'left' | 'center';
-  animationType?:
-    | 'fade'
-    | 'door'
-    | 'flip'
-    | 'rotate'
-    | 'zoom'
-    | 'move-up'
-    | 'move-down'
-    | 'move-left'
-    | 'move-right'
-    | 'slide-up'
-    | 'slide-down'
-    | 'slide-left'
-    | 'slide-right';
+  animationType?: TransitionName;
   animationDuration?: number;
   width?: string | number;
   mask?: boolean;

@@ -1,8 +1,8 @@
 export type { ActionSheetProps, ActionSheetItemProps, ActionSheetCssVars } from './action-sheet';
 export { default as ActionSheet } from './action-sheet';
 
-export type { ActivityIndicatorProps, ActivityIndicatorCssVars } from './activity-indicator';
-export { default as ActivityIndicator } from './activity-indicator';
+export type { LoadingProps, LoadingCssVars } from './loading';
+export { default as Loading } from './loading';
 
 export type { AffixProps, AffixCssVars } from './affix';
 export { default as Affix } from './affix';

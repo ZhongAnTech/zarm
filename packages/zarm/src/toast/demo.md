@@ -33,16 +33,32 @@ const Demo = () => {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-## 图标
+## 带图标提示
 
 ```jsx
 import { useRef } from 'react';
 import { Toast, List, Button } from 'zarm';
-import { Star } from '@zarm-design/icons';
+import { Warning } from '@zarm-design/icons';
 
 const Demo = () => {
   return (
     <List>
+      <List.Item
+        title="加载中"
+        suffix={
+          <Button
+            size="xs"
+            onClick={() => {
+              Toast.show({
+                icon: 'loading',
+              });
+            }}
+            style={{ marginLeft: 12 }}
+          >
+            开启
+          </Button>
+        }
+      />
       <List.Item
         title="成功"
         suffix={
@@ -77,31 +93,14 @@ const Demo = () => {
         }
       />
       <List.Item
-        title="加载中"
-        suffix={
-          <Button
-            size="xs"
-            onClick={() => {
-              Toast.show({
-                icon: 'loading',
-                content: '预约中...',
-              });
-            }}
-            style={{ marginLeft: 12 }}
-          >
-            开启
-          </Button>
-        }
-      />
-      <List.Item
         title="自定义"
         suffix={
           <Button
             size="xs"
             onClick={() => {
               Toast.show({
-                icon: <Star />,
-                content: '收藏成功',
+                icon: <Warning />,
+                content: '自定义内容',
               });
             }}
             style={{ marginLeft: 12 }}
@@ -120,9 +119,28 @@ ReactDOM.render(<Demo />, mountNode);
 ## 更多用法
 
 ```jsx
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Toast, List, Button } from 'zarm';
 import { Star } from '@zarm-design/icons';
+
+const Countdown = (props) => {
+  const [count, setCount] = useState(props.count);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCount((value) => {
+        if (value > 1) return value - 1;
+        return value;
+      });
+    }, 1000);
+
+    return () => {
+      window.clearInterval(timer);
+    };
+  }, []);
+
+  return <span>{count} 秒后跳转</span>;
+};
 
 const Demo = () => {
   const containerRef = useRef(null);
@@ -155,6 +173,23 @@ const Demo = () => {
               Toast.show({
                 content: '不可同时进行其他交互',
                 maskClickable: false,
+              });
+            }}
+          >
+            开启
+          </Button>
+        }
+      />
+      <List.Item
+        title="动态内容"
+        suffix={
+          <Button
+            size="xs"
+            onClick={() => {
+              Toast.show({
+                icon: 'loading',
+                content: <Countdown count={5} />,
+                duration: 5000,
               });
             }}
           >
