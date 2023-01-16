@@ -1,6 +1,29 @@
 # Dropdown 下拉菜单
 
-## 基本用法
+## 一列
+
+```jsx
+import { useState } from 'react';
+import { Dropdown, List, Button } from 'zarm';
+
+const Demo = () => {
+  const [activeKey, setActiveKey] = useState('home');
+
+  return (
+    <>
+      <Dropdown>
+        <Dropdown.Item title='一列' itemKey={'key1'}>
+          content
+        </Dropdown.Item>
+      </Dropdown>
+    </>
+  );
+};
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## 两列
 
 ```jsx
 import { useState } from 'react';
@@ -53,6 +76,12 @@ ReactDOM.render(<Demo />, mountNode);
 | itemKey    | number \| string | -      | 唯一标识，对应`activeKey`，不设置则默认取 index 索引 |
 | title      | ReactNode        | -      | 标题文字                                             |
 | icon       | ReactNode        | -      | 图标                                                 |
+| arrow          | 自定义 arrow                | `React.ReactNode` | -       |
+| destroyOnClose | 不可见时卸载内容            | `boolean`         | `false` |
+| forceRender    | 被隐藏时是否渲染 `DOM` 结构 | `boolean`         | `false` |
+| highlight      | 高亮                        | `boolean`         | `false` |
+| key            | 唯一值                      | `string`          | -       |
+| title          | 标题                        | `ReactNode`       | -       |
 
 ## CSS 变量
 

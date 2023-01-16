@@ -9,12 +9,16 @@ import {Popup} from "../index";
 
 export type DropdownProps = React.PropsWithChildren<BaseDropdownProps & HTMLProps>;
 
+export interface DropdownRef {
+  close: () => void
+}
+
 interface CompoundedComponent
-  extends React.ForwardRefExoticComponent<DropdownProps & React.RefAttributes<HTMLDivElement>> {
+  extends React.ForwardRefExoticComponent<DropdownProps & React.RefAttributes<DropdownRef>> {
   Item: typeof DropdownItem;
 }
 
-const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) => {
+const Dropdown = React.forwardRef<DropdownRef, DropdownProps>((props, ref) => {
   const containerRef = React.createRef<HTMLDivElement>();
   const popupRef = React.useRef();
 
@@ -25,6 +29,17 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) =>
   const [selectedKey, setSelectedKey] = React.useState(defaultActiveKey);
   const navRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
+
+
+  React.useImperativeHandle(
+    ref,
+    () => ({
+      close: () => {
+        setSelectedKey(null)
+      },
+    }),
+    [setSelectedKey]
+  )
 
   // 计算 navs 的 top 值
   const [top, setTop] = React.useState<number>()
@@ -79,11 +94,9 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>((props, ref) =>
         style={{ top }}
         maskStyle={{ top }}
         direction="top"
-        className={bem('popup')}
-        forceRender
         ref={popupRef}
       >
-        <div ref={contentRef}>
+        <div ref={contentRef} className={bem('content-wrapper')}>
           {items.map(item => {
             const isActive = item.props.itemKey === selectedKey
             return (

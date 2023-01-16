@@ -14,5 +14,5 @@ export interface BaseDropdownItemProps {
   arrow?: React.ReactNode;
   children?: React.ReactNode;
   active?: boolean;
-  onClick: any
+  onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }

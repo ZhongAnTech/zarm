@@ -6,11 +6,6 @@
   @include define(color, var(--za-color-text));
   @include define(active-color, var(--za-theme-primary));
 
-  @include define(arrow-space, 5px);
-  @include define(arrow-color, var(--za-arrow-color));
-  @include define(arrow-size, 6px);
-  @include define(arrow-width, var(--za-arrow-width));
-
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -18,10 +13,8 @@
   justify-content: center;
   align-content: space-evenly;
   align-items: center;
-  transition-duration: 0.2s;
   overflow: hidden;
   cursor: pointer;
-  position: relative;
 
   @include e(trigger-list) {
     width: 100%;
@@ -36,47 +29,42 @@
       display: flex;
       flex: 1;
       justify-content: center;
-      align-items: center;
+      cursor: pointer;
+
+      @include e(title) {
+        display: flex;
+        align-items: center;
+        position: relative;
+        max-width: 100%;
+        padding: 12px;
+      }
+
+      @include e(title-text) {
+        margin-right: 5px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      @include e(arrow) {
+        transform: rotate(0deg) translateY(1px);
+        transition: all ease 0.2s;
+
+        @include m(active) {
+          transform: rotate(-180deg) translateY(-1px);
+        }
+      }
 
       @include m(active) {
         color: var(--active-color);
       }
-
-      @include e(arrow) {
-        margin-left: var(--arrow-space);
-        margin-top: calc(var(--arrow-size) / -2);
-        display: inline-block;
-        content: '';
-        border-width: var(--arrow-size) var(--arrow-size) 0;
-        border-style: solid;
-        border-color: var(--arrow-color) transparent transparent;
-        width: 0;
-        height: 0;
-        transition: all 0.15s ease-out;
-
-        @include m(active) {
-          transform: rotate(180deg);
-        }
-      }
     }
   }
 
-  @include e(popup) {
-    //position: fixed;
-    //overflow: hidden;
-    //width: 100%;
-    //right: 0;
-    //bottom: 0;
-    //left: 0;
-  }
-
   @include e(content) {
-    flex: 1;
     display: none;
     width: 100%;
-    min-height: var(--height);
-    transition-duration: 0.2s;
-    transition-property: height bottom;
+    background: #ffffff;
 
     @include m(active) {
       display: block;
