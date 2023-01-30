@@ -5,17 +5,13 @@ exports[`DateSelect DateSelect date 1`] = `
   <div
     class="za-date-select"
   >
-    <input
-      type="hidden"
-      value="2019-04-23"
-    />
     <div
       class="za-date-select__input"
     >
       <div
         class="za-date-select__value"
       >
-        2019-04-23
+        2019年4月23日
       </div>
     </div>
     <div
@@ -30,17 +26,13 @@ exports[`DateSelect DateSelect datetime 1`] = `
   <div
     class="za-date-select"
   >
-    <input
-      type="hidden"
-      value="+0000-11-03 10:00"
-    />
     <div
       class="za-date-select__input"
     >
       <div
         class="za-date-select__value"
       >
-        +0000-11-03 10:00
+        2017年11月2日9时0分0秒
       </div>
     </div>
     <div
@@ -55,17 +47,13 @@ exports[`DateSelect DateSelect disabled 1`] = `
   <div
     class="za-date-select za-date-select--disabled"
   >
-    <input
-      type="hidden"
-      value="2019-04-23"
-    />
     <div
       class="za-date-select__input"
     >
       <div
         class="za-date-select__value"
       >
-        2019-04-23
+        2019年4月23日
       </div>
     </div>
     <div
@@ -80,17 +68,13 @@ exports[`DateSelect DateSelect time 1`] = `
   <div
     class="za-date-select"
   >
-    <input
-      type="hidden"
-      value="07:00"
-    />
     <div
       class="za-date-select__input"
     >
       <div
         class="za-date-select__value"
       >
-        07:00
+        7时0分0秒
       </div>
     </div>
     <div
@@ -105,17 +89,13 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
   <div
     class="za-date-select"
   >
-    <input
-      type="hidden"
-      value="2019-04-23"
-    />
     <div
       class="za-date-select__input"
     >
       <div
         class="za-date-select__value"
       >
-        2019-04-23
+        2019年4月23日
       </div>
     </div>
     <div
@@ -130,17 +110,13 @@ exports[`DateSelect DateSelect year 1`] = `
   <div
     class="za-date-select"
   >
-    <input
-      type="hidden"
-      value="2017"
-    />
     <div
       class="za-date-select__input"
     >
       <div
         class="za-date-select__value"
       >
-        2017
+        2019年
       </div>
     </div>
     <div

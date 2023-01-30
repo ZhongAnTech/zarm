@@ -1,8 +1,8 @@
 import * as React from 'react';
 import PickerView, { PickerViewInstance } from '../picker-view';
-import type { BasePickerProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
 import PickerContainer from './Container';
+import type { BasePickerProps } from './interface';
 
 export interface PickerCssVars {
   '--header-height': React.CSSProperties['height'];
@@ -26,7 +26,7 @@ export interface PickerCssVars {
 
 export type PickerProps = BasePickerProps & HTMLProps<PickerCssVars>;
 
-const Picker = React.forwardRef<HTMLDivElement, PickerProps>((props, ref) => {
+const Picker: React.FC<PickerProps> = (props) => {
   const {
     className,
     title,
@@ -48,6 +48,7 @@ const Picker = React.forwardRef<HTMLDivElement, PickerProps>((props, ref) => {
     onCancel,
     visible,
   } = props;
+
   const pickerViewRef = React.useRef<PickerViewInstance>(null);
 
   const handleConfirm = () => {
@@ -61,7 +62,6 @@ const Picker = React.forwardRef<HTMLDivElement, PickerProps>((props, ref) => {
 
   return (
     <PickerContainer
-      ref={ref}
       title={title}
       className={className}
       confirmText={confirmText}
@@ -88,7 +88,7 @@ const Picker = React.forwardRef<HTMLDivElement, PickerProps>((props, ref) => {
       />
     </PickerContainer>
   );
-});
+};
 
 Picker.defaultProps = {
   dataSource: [],

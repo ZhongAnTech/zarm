@@ -7,6 +7,7 @@ import type { BasePickerViewProps, PickerColumnItem } from './interface';
 import type { WheelValue } from '../wheel/interface';
 import { ConfigContext } from '../config-provider';
 import type { HTMLProps } from '../utils/utilityTypes';
+import { useSafeState } from '../utils/hooks';
 
 export interface PickerViewCssVars {
   '--background-color': React.CSSProperties['backgroundColor'];
@@ -34,8 +35,8 @@ const PickerView = React.forwardRef<PickerViewInstance, PickerViewProps>((props,
   const { className, style, cols, dataSource, fieldNames, itemRender, disabled, onChange } = props;
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('picker-view', { prefixCls });
-  const [innerValue, setInnerValue] = React.useState(resolved(props).value);
-  const [stopScroll, setStopScroll] = React.useState(false);
+  const [innerValue, setInnerValue] = useSafeState(resolved(props).value);
+  const [stopScroll, setStopScroll] = useSafeState(false);
 
   React.useEffect(() => {
     if (props.value === undefined) return;
@@ -62,7 +63,7 @@ const PickerView = React.forwardRef<PickerViewInstance, PickerViewProps>((props,
     reset,
   }));
 
-  const onValueChange = (selected: WheelValue, level: number) => {
+  const onValueChange = React.useCallback((selected: WheelValue, level: number) => {
     const value = innerValue.slice();
     if (isCascader(props.dataSource)) {
       value.length = level + 1;
@@ -71,7 +72,7 @@ const PickerView = React.forwardRef<PickerViewInstance, PickerViewProps>((props,
     const next = resolved({ ...props, value });
     setInnerValue(next.value);
     onChange?.(next.value, next.items, level);
-  };
+  }, [innerValue]);
 
   return (
     <div className={bem([className])} style={style}>

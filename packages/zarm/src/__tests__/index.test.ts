@@ -130,36 +130,12 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "DatePicker": Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "defaultProps": Object {
-            "maskClosable": true,
-            "minuteStep": 1,
-            "mode": "date",
-          },
-          "prompt": [Function],
-          "render": [Function],
-        },
+        "DatePicker": [Function],
         "DatePickerView": Object {
           "$$typeof": Symbol(react.forward_ref),
-          "defaultProps": Object {
-            "disabled": false,
-            "minuteStep": 1,
-            "mode": "date",
-            "use12Hours": false,
-          },
           "render": [Function],
         },
-        "DateSelect": Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "defaultProps": Object {
-            "disabled": false,
-            "hasArrow": true,
-            "minuteStep": 1,
-            "mode": "date",
-          },
-          "render": [Function],
-        },
+        "DateSelect": [Function],
         "FilePicker": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
@@ -324,17 +300,7 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "Picker": Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "defaultProps": Object {
-            "cols": Infinity,
-            "dataSource": Array [],
-            "destroy": false,
-            "maskClosable": true,
-          },
-          "prompt": [Function],
-          "render": [Function],
-        },
+        "Picker": [Function],
         "PickerView": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {

@@ -1,11 +1,10 @@
 import * as React from 'react';
-import type { DatePickerValue } from '../date-picker-view/interface';
 import { renderImperatively } from '../utils/dom';
 import type { DatePickerProps } from './DatePicker';
 import DatePicker from './DatePicker';
 
 export interface DatePickerPromptValue {
-  value: DatePickerValue;
+  value: Date;
 }
 
 export const prompt = (props: Omit<DatePickerProps, 'value' | 'visible' | 'children'>) => {
@@ -13,8 +12,8 @@ export const prompt = (props: Omit<DatePickerProps, 'value' | 'visible' | 'child
     const { close } = renderImperatively(
       <DatePicker
         {...props}
-        onConfirm={(value) => {
-          props.onConfirm?.(value);
+        onConfirm={(value, items) => {
+          props.onConfirm?.(value, items);
           close();
           resolve({ value });
         }}

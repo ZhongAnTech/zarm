@@ -17,7 +17,7 @@
 
   @include m(placeholder) {
     @include e(input) {
-      color: var(--color-text-placeholder);
+      color: var(--za-color-text-placeholder);
     }
   }
 

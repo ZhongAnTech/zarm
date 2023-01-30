@@ -1,13 +1,13 @@
-import React, { createRef, useEffect, useRef } from 'react';
-import { createBEM } from '@zarm-design/bem';
 import BScroll, { BScrollInstance } from '@better-scroll/core';
 import WheelPlugin from '@better-scroll/wheel';
+import { createBEM } from '@zarm-design/bem';
 import isEqual from 'lodash/isEqual';
-import { usePrevious, useEventCallback } from '../utils/hooks';
-import type { BaseWheelProps, WheelItem, WheelValue } from './interface';
+import React, { createRef, useEffect, useRef } from 'react';
 import { ConfigContext } from '../config-provider';
-import type { HTMLProps } from '../utils/utilityTypes';
 import { resolvedFieldNames } from '../picker-view/utils';
+import { useEventCallback, usePrevious } from '../utils/hooks';
+import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseWheelProps, WheelItem, WheelValue } from './interface';
 
 BScroll.use(WheelPlugin);
 

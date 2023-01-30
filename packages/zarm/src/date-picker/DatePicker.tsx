@@ -1,44 +1,45 @@
 import React, { useContext } from 'react';
 import { ConfigContext } from '../config-provider';
+import DatePickerView, { DatePickerViewInstance } from '../date-picker-view';
 import PickerContainer from '../picker/Container';
-import DatePickerView, { DatePickerInstance } from '../date-picker-view';
-import type { BaseDatePickerProps } from './interface';
 import { HTMLProps } from '../utils/utilityTypes';
+import type { BaseDatePickerProps } from './interface';
 
 export type DatePickerProps = BaseDatePickerProps & HTMLProps;
 
-const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>((props, ref) => {
+const DatePicker: React.FC<DatePickerProps> = (props) => {
   const {
     className,
     title,
     confirmText,
     cancelText,
     mountContainer,
-    maskClosable,
+    maskClosable = true,
     onConfirm,
     onCancel,
     onChange,
     afterOpen,
     afterClose,
     visible,
-    ...others
+    ...rest
   } = props;
 
-  const datePickerViewRef = React.useRef<DatePickerInstance>(null);
+  const datePickerViewRef = React.useRef<DatePickerViewInstance>(null);
+
+  const handleChange = (_, items, level) => {
+    onChange?.(datePickerViewRef.current?.value!, items, level);
+  };
+
+  const handleConfirm = () => {
+    onConfirm?.(datePickerViewRef.current?.value!, datePickerViewRef.current?.items);
+  };
 
   const handleCancel = () => {
     onCancel?.();
   };
 
-  const handleConfirm = () => {
-    onConfirm?.(datePickerViewRef.current?.value!);
-  };
-
-  const onValueChange = (newValue) => {
-    onChange?.(newValue);
-  };
-
   const { locale } = useContext(ConfigContext);
+
   return (
     <PickerContainer
       visible={visible}
@@ -53,23 +54,16 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>((props, ref
       onClose={handleCancel}
       afterOpen={afterOpen}
       afterClose={afterClose}
-      ref={ref}
     >
       <DatePickerView
-        {...others}
+        {...rest}
+        ref={datePickerViewRef}
         className={className}
         value={props.value}
-        onChange={onValueChange}
-        ref={datePickerViewRef}
+        onChange={handleChange}
       />
     </PickerContainer>
   );
-});
-
-DatePicker.defaultProps = {
-  mode: 'date',
-  minuteStep: 1,
-  maskClosable: true,
 };
 
 export default DatePicker;
