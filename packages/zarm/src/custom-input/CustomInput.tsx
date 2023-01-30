@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { CloseCircleFill } from '@zarm-design/icons';
+import { ConfigContext } from '../config-provider';
+import { getValue } from '../input/utils';
 import KeyboardPicker from '../keyboard-picker';
 import useClickAway from '../useClickAway';
-import { getValue } from '../input/utils';
-import { ConfigContext } from '../config-provider';
-import type { BaseCustomInputProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseCustomInputProps } from './interface';
 
 export interface CustomInputCssVars {
   '--height'?: React.CSSProperties['height'];

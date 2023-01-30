@@ -548,6 +548,7 @@ describe('index', () => {
         },
         "Toast": Object {
           "clear": [Function],
+          "config": [Function],
           "show": [Function],
         },
         "Tooltip": Object {
