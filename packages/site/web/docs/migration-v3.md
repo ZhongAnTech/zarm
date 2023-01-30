@@ -248,7 +248,7 @@
   export default App;
 ```
 
-- Marquee 组件 `animationDuration` 和 `animationDelay` 调整为 `speed` 和 `speed`，移除 `loop` 属性
+- Marquee 组件 `animationDuration` 和 `animationDelay` 调整为 `speed` 和 `delay`，移除 `loop` 属性
 
 ```diff
   import { Marquee } from 'zarm';
@@ -275,7 +275,7 @@
 - 移除 BackTop 组件，更名为 BackToTop
 - 移除 StackPicker 组件，移至 Cascader
 - 移除 Drag 组件
-- Loading 组件在 `3.0.0` 中废弃，移至 Toast.show({ type: 'loading' }) 指令式调用
+- Loading 组件在 `3.0.0` 中废弃，移至 Toast.show({ icon: 'loading' }) 指令式调用
 
 ## 遇到问题
 
