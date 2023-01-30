@@ -229,11 +229,52 @@
   export default App;
 ```
 
+- Badge 组件 `theme` 移除，调整为 `css` 变量 `--color` 设置颜色
+
+```diff
+  import { Badge } from 'zarm';
+
+  const App: React.FC = () => {
+    return (
+      <Badge
+        shape="radius"
+        text="new"
+-       theme="danger"
++       style={{ '--color': '#00bc70' }}
+      />
+    );
+  };
+
+  export default App;
+```
+
+- Marquee 组件 `animationDuration` 和 `animationDelay` 调整为 `speed` 和 `speed`，移除 `loop` 属性
+
+```diff
+  import { Marquee } from 'zarm';
+
+  const App: React.FC = () => {
+    return (
+      <Marquee
+-       animationDelay={2000}
+-       animationDuration={30000}
++       delay={2000}
++       speed={30000}
+      >
+        我从右向左滚动
+      </Marquee>
+    );
+  };
+
+  export default App;
+```
+
 ## 组件重构与移除
 
 - 移除 Cell 组件，更名为 List
 - 移除 BackTop 组件，更名为 BackToTop
 - 移除 StackPicker 组件，移至 Cascader
+- 移除 Drag 组件
 - Loading 组件在 `3.0.0` 中废弃，移至 Toast.show({ type: 'loading' }) 指令式调用
 
 ## 遇到问题
