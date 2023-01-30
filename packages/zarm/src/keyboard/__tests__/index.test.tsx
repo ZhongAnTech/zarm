@@ -1,13 +1,8 @@
-import {
-  value act,
-  value cleanup,
-  value fireEvent,
-  value render,
-  value screen,
-} from '@testing-library/react';
 import React from 'react';
+import { act, cleanup, fireEvent, render, screen } from '@testing-library/react';
+import type { KeyBoardDataSource } from '../interface';
 import Keyboard from '../index';
-import type { value KeyBoardDataSource } from '../interface';
+
 
 const CAR_PLATE: KeyBoardDataSource = {
   columns: 7,
