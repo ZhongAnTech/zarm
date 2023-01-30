@@ -30,7 +30,7 @@
     "*.{js,jsx,ts,tsx,html,md,json}": [
       "prettier --write --no-error-on-unmatched-pattern"
     ],
-    "*.{scss}": [
+    "*.scss": [
       "stylelint --syntax scss"
     ]
   },
