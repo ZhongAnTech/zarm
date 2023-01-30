@@ -1,7 +1,8 @@
-import { act, cleanup, fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
-import Keyboard from '../index';
+import { act, cleanup, fireEvent, render, screen } from '@testing-library/react';
 import type { KeyBoardDataSource } from '../interface';
+import Keyboard from '../index';
+
 
 const CAR_PLATE: KeyBoardDataSource = {
   columns: 7,
@@ -67,8 +68,8 @@ describe('Keyboard', () => {
     const keyClick = jest.fn();
     const { container } = render(<Keyboard data-testid="root" onKeyClick={keyClick} />);
     const keys = container.getElementsByClassName('za-keyboard__item');
-    console.error(keys[3]);
     fireEvent.mouseDown(keys[3]);
+    jest.useFakeTimers();
     act(() => {
       jest.advanceTimersByTime(1000);
     });
