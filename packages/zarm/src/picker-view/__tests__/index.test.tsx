@@ -1,5 +1,5 @@
-import React from 'react';
 import { render } from '@testing-library/react';
+import React from 'react';
 import PickerView from '../index';
 import type { PickerDataSource } from '../interface';
 
@@ -80,4 +80,33 @@ describe('PickerView', () => {
     expect(onChange).not.toBeCalled();
     expect(container).toMatchSnapshot();
   });
+
+  // test('picker scroll onChange should call', async () => {
+  //   const onChange = jest.fn();
+  //   const App = () => {
+  //     return (
+  //       <>
+  //         <PickerView
+  //           dataSource={[
+  //             { value: '1', label: '选项一' },
+  //             { value: '2', label: '选项二' },
+  //           ]}
+  //           onChange={onChange}
+  //         />
+  //       </>
+  //     )
+  //   }
+
+  //   render(<App />)
+  //   const wheelEl = document.body.querySelectorAll('.za-wheel')[0];
+  //   fireEvent.touchStart(wheelEl, {
+  //     buttons: 1,
+  //   });
+  //   fireEvent.touchMove(wheelEl, {
+  //     clientY: -100,
+  //     buttons: 1,
+  //   });
+  //   fireEvent.touchEnd(wheelEl);
+  //   expect(onChange).toBeCalled();
+  // })
 });
