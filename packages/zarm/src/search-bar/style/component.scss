@@ -40,6 +40,8 @@
     @include e(icon) {
       margin-right: var(--icon-margin-right);
       color: var(--icon-color);
+      align-items: center;
+      display: flex;
     }
   }
 

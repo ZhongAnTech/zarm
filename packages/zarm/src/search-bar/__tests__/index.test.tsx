@@ -47,7 +47,7 @@ describe('SearchBar', () => {
   it('onCancel called correctly', () => {
     const onCancel = jest.fn();
     const { container } = render(
-      <SearchBar shape="round" placeholder="请输入关键字" onCancel={onCancel} />,
+      <SearchBar shape="round" placeholder="请输入关键字" onCancel={onCancel} showCancel />,
     );
     const input = container.querySelector('input[type="search"]');
     fireEvent.focus(input!);

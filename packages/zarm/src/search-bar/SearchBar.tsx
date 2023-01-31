@@ -1,12 +1,12 @@
-import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { Search as SearchIcon } from '@zarm-design/icons';
-import type BaseSearchBarProps from './interface';
+import isFunction from 'lodash/isFunction';
+import * as React from 'react';
 import { ConfigContext } from '../config-provider';
-import { useEventCallback } from '../utils/hooks';
 import Input, { InputTextProps } from '../input';
 import { getValue } from '../input/utils';
 import type { HTMLProps } from '../utils/utilityTypes';
+import type BaseSearchBarProps from './interface';
 
 export interface SearchBarCssVars {
   '--background'?: React.CSSProperties['background'];
@@ -35,6 +35,7 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
   const {
     className,
     shape,
+    icon,
     placeholder,
     showCancel,
     cancelText,
@@ -50,7 +51,6 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
   const cancelRef = React.useRef<HTMLDivElement>(null);
   const inputRef = React.useRef<HTMLTextAreaElement | HTMLInputElement>();
   const formRef = React.createRef<HTMLFormElement>();
-  const cancelOuterWidth = React.useRef<number>(0);
   const [currentValue, setCurrentValue] = React.useState(getValue({ value, defaultValue }, ''));
   const [isFocus, setIsFocus] = React.useState<boolean>(false);
 
@@ -58,43 +58,37 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
   const bem = createBEM('search-bar', { prefixCls });
   const locale = globalLocal?.SearchBar;
 
+  const isShowCancel = React.useMemo(() => {
+    if (isFunction(showCancel)) {
+      return showCancel(isFocus, currentValue);
+    }
+    return showCancel && isFocus;
+  }, [showCancel, isFocus]);
+
   const cls = bem([
     {
       [`${shape}`]: !!shape,
-      focus: !!(showCancel || isFocus || String(currentValue).length > 0),
+      focus: isFocus,
     },
     className,
   ]);
 
-  const blurAnim = (): void => {
-    if (!showCancel && cancelRef.current) {
-      cancelRef.current.style.cssText = `margin-right: -${cancelOuterWidth.current}px;`;
-    }
-  };
-
-  const focusAnim = (): void => {
-    if (!cancelRef.current) return;
-    cancelRef.current.style.cssText = 'margin-right: 0px;';
-  };
-
-  const onInputFocus = (e: React.FocusEvent<HTMLInputElement>): void => {
+  const onInputFocus = (e: React.FocusEvent<HTMLInputElement>) => {
     setIsFocus(true);
-    focusAnim();
     onFocus?.(e);
   };
 
-  const onInputBlur = (e: React.FocusEvent<HTMLInputElement>): void => {
+  const onInputBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     setIsFocus(false);
-    !currentValue && blurAnim();
     onBlur?.(e);
   };
 
-  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCurrentValue(e.target.value);
     onChange?.(e);
   };
 
-  const onFormSubmit = (e?: React.FormEvent): void => {
+  const onFormSubmit = (e?: React.FormEvent) => {
     e?.preventDefault();
     inputRef.current && inputRef.current.blur();
     onSubmit?.(currentValue);
@@ -103,28 +97,8 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
   const onClickCancelButton = (): void => {
     setCurrentValue('');
     inputRef.current && inputRef.current.blur();
-    blurAnim();
     onCancel?.();
   };
-
-  const calculatePositon = useEventCallback(() => {
-    if (!cancelRef.current) return;
-    if (!showCancel) {
-      const ml = parseInt(
-        window.getComputedStyle(cancelRef.current, '')['margin-left'].split('px')[0],
-        10,
-      );
-      const w = Math.ceil(ml + cancelRef.current.getBoundingClientRect().width);
-      cancelOuterWidth.current = w;
-      cancelRef.current!.style.cssText = `margin-right: -${w}px;`;
-    } else {
-      cancelRef.current.style.cssText = 'margin-right: 0px;';
-    }
-
-    if (currentValue) {
-      focusAnim();
-    }
-  }, [currentValue, showCancel]);
 
   React.useImperativeHandle(ref, () => ({
     focus: inputRef.current?.focus,
@@ -133,18 +107,18 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
   }));
 
   React.useEffect(() => {
-    calculatePositon();
-  }, [cancelText, showCancel, locale, calculatePositon]);
-
-  React.useEffect(() => {
     setCurrentValue(getValue({ value, defaultValue }, ''));
   }, [defaultValue, value]);
 
-  const cancelRender = (
-    <div className={bem('cancel')} ref={cancelRef} onClick={onClickCancelButton}>
-      {cancelText || locale?.cancelText}
-    </div>
-  );
+  const renderCancel = () => {
+    return (
+      isShowCancel && (
+        <div className={bem('cancel')} ref={cancelRef} onClick={onClickCancelButton}>
+          {cancelText || locale?.cancelText}
+        </div>
+      )
+    );
+  };
 
   const inputProps: InputTextProps = {
     type: 'search',
@@ -166,10 +140,10 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
     <div className={cls}>
       <form action="#" className={bem('form')} onSubmit={onFormSubmit} ref={formRef}>
         <div className={bem('content')}>
-          <SearchIcon size="sm" className={bem('icon')} />
+          {icon !== null && <div className={bem('icon')}>{icon || <SearchIcon size="sm" />}</div>}
           <Input ref={inputRef} {...(inputProps as InputTextProps)} />
         </div>
-        {cancelRender}
+        {renderCancel()}
       </form>
     </div>
   );
