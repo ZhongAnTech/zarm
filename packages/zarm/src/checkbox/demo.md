@@ -22,24 +22,6 @@ ReactDOM.render(
         选中且禁用
       </Checkbox>
     </List.Item>
-    <List.Item>
-      <div className="agreement-box">
-        <Checkbox id="agreement" />
-        <label htmlFor="agreement">
-          阅读并同意
-          <a
-            href="/#"
-            onClick={(e) => {
-              e.preventDefault();
-              alert('agree it');
-            }}
-          >
-            《XXX条款》
-          </a>
-          中的相关规定
-        </label>
-      </div>
-    </List.Item>
   </List>,
   mountNode,
 );
@@ -88,12 +70,17 @@ import { useState } from 'react';
 import { List, Checkbox } from 'zarm';
 
 const Demo = () => {
-  const [value, setValue] = useState([]);
+  const [value, setValue] = useState(['1']);
+  const [checked, setChecked] = useState(true);
 
   const onCheckedAll = (e) => {
     setValue(e.target.checked ? ['0', '1', '2'] : []);
   };
 
+  const onChange = (value) => {
+    console.log('onChange', value);
+    setValue(value);
+  };
   return (
     <List>
       <List.Item>
@@ -106,7 +93,10 @@ const Demo = () => {
         </Checkbox>
       </List.Item>
       <List.Item>
-        <Checkbox.Group value={value} onChange={setValue}>
+        <Checkbox checked={checked} onChange={setChecked}>
+          选项xxx
+        </Checkbox>
+        <Checkbox.Group value={value} onChange={onChange}>
           <Checkbox value="0">选项一</Checkbox>
           <Checkbox value="1">选项二</Checkbox>
           <Checkbox value="2">选项三</Checkbox>

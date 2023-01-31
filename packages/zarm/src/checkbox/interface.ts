@@ -13,6 +13,7 @@ export interface BaseCheckboxProps {
   id?: string;
   listMarkerAlign?: CheckboxGroupListMarkerAlign;
   indeterminate?: boolean;
+  onChange?: (checked: boolean) => void;
   children?: ReactNode;
 }
 
