@@ -1,8 +1,8 @@
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import webpack, { Configuration, RuleSetRule } from 'webpack';
 import webpackMerge from 'webpack-merge';
 import WebpackBar from 'webpackbar';
-import webpack, { Configuration, RuleSetRule } from 'webpack';
 import babelConfig from './babelConfig/base';
 
 const config: Configuration = {
@@ -42,16 +42,18 @@ const config: Configuration = {
           {
             loader: require.resolve('postcss-loader'),
             options: {
-              plugins: [
-                require('postcss-flexbugs-fixes'),
-                // eslint-disable-next-line @typescript-eslint/no-var-requires
-                require('postcss-preset-env')({
-                  autoprefixer: {
-                    flexbox: 'no-2009',
-                  },
-                  stage: 3,
-                }),
-              ],
+              postcssOptions: {
+                plugins: [
+                  require('postcss-flexbugs-fixes'),
+                  // eslint-disable-next-line @typescript-eslint/no-var-requires
+                  require('postcss-preset-env')({
+                    autoprefixer: {
+                      flexbox: 'no-2009',
+                    },
+                    stage: 3,
+                  }),
+                ],
+              },
             },
           },
           {
