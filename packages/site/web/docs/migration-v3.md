@@ -300,6 +300,24 @@
   export default App;
 ```
 
+### SearchBar
+
+取消按钮调制为默认不展示，通过设置 `showCancel` 展示按钮
+
+```diff
+  import { SearchBar } from 'zarm';
+
+  const App: React.FC = () => {
+    return (
+      <SearchBar
++       showCancel
+      />
+    );
+  };
+
+  export default App;
+```
+
 ## 遇到问题
 
 如果您在升级过程中遇到了问题，请到 [GitHub issues](https://github.com/ZhongAnTech/zarm/issues) 进行反馈。我们会尽快响应和相应改进这篇文档。
