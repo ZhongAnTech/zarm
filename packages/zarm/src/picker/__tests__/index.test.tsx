@@ -1,15 +1,10 @@
+import { fireEvent,  render, screen } from '@testing-library/react';
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
-import Picker from '../index';
+import Button from '../../button';
 import type { PickerOption } from '../../picker-view/interface';
+import Picker from '../index';
 
 describe('Picker', () => {
-  // const fakeTimers = () => {
-  //   performance.timing = {};
-  //   performance.timing.navigationStart = 0;
-  // };
-  // fakeTimers();
-
   it('Picker render visible', () => {
     const { container } = render(
       <Picker
@@ -123,162 +118,44 @@ describe('Picker', () => {
     expect(onCancelFn).toBeCalled();
   });
 
-  // it('should trigger onMaskClick when click mask', () => {
-  //   const onConfirmFn = jest.fn();
-  //   const onMaskClick = jest.fn();
+  test('imperative call onConfirm', async () => {
+    const onConfirm = jest.fn();
+    const onClick = async () => {
+      await Picker.prompt({
+        onConfirm,
+        dataSource: [
+          { value: '1', label: '选项一' },
+          { value: '2', label: '选项二' },
+        ],
+      });
+    };
 
-  //   const wrapper = mount(
-  //     <Picker
-  //       dataSource={[
-  //         {
-  //           value: '1',
-  //           label: '选项一',
-  //           children: [
-  //             { value: '11', label: '选项一' },
-  //             { value: '12', label: '选项二' },
-  //           ],
-  //         },
-  //         {
-  //           value: '2',
-  //           label: '选项一',
-  //           children: [
-  //             { value: '21', label: '选项一' },
-  //             { value: '22', label: '选项二' },
-  //           ],
-  //         },
-  //       ]}
-  //       visible
-  //       defaultValue={['1', '12']}
-  //       onConfirm={onConfirmFn}
-  //       onMaskClick={onMaskClick}
-  //     />, { attachTo: window.domNode }
-  //   );
+    render(<Button onClick={onClick}>picker-prompt</Button>);
+    const button = screen.getByText('picker-prompt');
+    fireEvent.click(button);
+    const confirm = await screen.findByText('确定');
+    fireEvent.click(confirm);
+    expect(onConfirm).toBeCalled();
+  });
 
-  //   wrapper.find('.za-mask').simulate('click');
-  //   expect(onMaskClick).toBeCalled();
-  // });
+  test('imperative call onCancel', async () => {
+    const onCancel = jest.fn();
+    const onClick = async () => {
+      await Picker.prompt({
+        onCancel,
+        cancelText: 'cancel',
+        dataSource: [
+          { value: '1', label: '选项一' },
+          { value: '2', label: '选项二' },
+        ],
+      });
+    };
 
-  // it('receive new dataSource', () => {
-  //   const wrapper = shallow(
-  //     <Picker
-  //       dataSource={[
-  //         { value: '1', label: '选项一' },
-  //         { value: '2', label: '选项二' },
-  //       ]}
-  //     />,
-  //   );
-  //   wrapper.setProps({
-  //     dataSource: [
-  //       { value: 'a', label: '选项一' },
-  //       { value: 'b', label: '选项二' },
-  //       { value: 'c', label: '选项三' },
-  //     ],
-  //   });
-  // });
-
-  // it('receive new value', () => {
-  //   const wrapper = shallow(
-  //     <Picker
-  //       dataSource={[
-  //         { value: '1', label: '选项一' },
-  //         { value: '2', label: '选项二' },
-  //       ]}
-  //     />,
-  //   );
-  //   wrapper.setProps({ value: '1' });
-  // });
-
-  // it('receive new cascader dataSource', () => {
-  //   const wrapper = shallow(
-  //     <Picker
-  //       dataSource={[
-  //         {
-  //           value: '1',
-  //           label: '选项一',
-  //           children: [
-  //             { value: '11', label: '选项一' },
-  //             { value: '12', label: '选项二' },
-  //           ],
-  //         },
-  //         {
-  //           value: '2',
-  //           label: '选项一',
-  //           children: [
-  //             { value: '21', label: '选项一' },
-  //             { value: '22', label: '选项二' },
-  //           ],
-  //         },
-  //       ]}
-  //     />,
-  //   );
-
-  //   wrapper.setProps({
-  //     dataSource: [
-  //       {
-  //         value: '3',
-  //         label: '选项一',
-  //         children: [
-  //           { value: '31', label: '选项一' },
-  //           { value: '32', label: '选项二' },
-  //         ],
-  //       },
-  //       {
-  //         value: '4',
-  //         label: '选项一',
-  //         children: [
-  //           { value: '41', label: '选项一' },
-  //           { value: '42', label: '选项二' },
-  //         ],
-  //       },
-  //     ],
-  //   });
-  // });
-
-  // it('StackPicker', () => {
-  //   jest.useFakeTimers();
-  //   const wrapper = mount(
-  //     <Picker.Stack
-  //       dataSource={District}
-  //       />
-  //   );
-  //   expect(toJson(wrapper)).toMatchSnapshot();
-  //   wrapper.setProps({ value: ['安徽省', '安庆市', '大观区'] });
-  //   jest.runAllTimers();
-  //   wrapper.unmount();
-  // });
-
-  // it('StackPicker init value', () => {
-  //   const wrapper = mount(
-  //     <Picker.Stack
-  //       dataSource={District}
-  //       value={['340000', '340800', '340803']}
-  //       />
-  //   );
-  //   expect(toJson(wrapper)).toMatchSnapshot();
-  // });
-
-  // it('StackPicker changeValue', () => {
-  //   const onChangeFn = jest.fn();
-  //   const wrapper = mount(
-  //     <Picker.Stack
-  //       dataSource={District}
-  //       onConfirm={onChangeFn}
-  //       />
-  //   );
-
-  //   wrapper.find('.za-picker-stack-column').at(0).simulate('click');
-  //   wrapper.find('.za-picker-stack-item').at(0).simulate('click');
-  //   expect(onChangeFn).toBeCalled();
-  // });
-
-  // it('StackPicker maskClick', () => {
-  //   const wrapper = mount(
-  //     <Picker.Stack
-  //       dataSource={District}
-  //       />
-  //   );
-  //   wrapper.find('.za-picker-input').simulate('click');
-  //   wrapper.find('.za-picker-cancel').simulate('click');
-  //   wrapper.find('.za-mask').simulate('click');
-  // });
+    render(<Button onClick={onClick}>picker-prompt</Button>);
+    const button = screen.getByText('picker-prompt');
+    fireEvent.click(button);
+    const cancel = await screen.findByText('cancel');
+    fireEvent.click(cancel);
+    expect(onCancel).toBeCalled();
+  });
 });

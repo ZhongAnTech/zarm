@@ -23,6 +23,14 @@ exports[`CustomInput renders correctly 1`] = `
 </DocumentFragment>
 `;
 
+exports[`CustomInput renders readonly 1`] = `
+<DocumentFragment>
+  <div
+    class="za-custom-input__content"
+  />
+</DocumentFragment>
+`;
+
 exports[`CustomInput.Idcard renders correctly 1`] = `
 <DocumentFragment>
   <div
