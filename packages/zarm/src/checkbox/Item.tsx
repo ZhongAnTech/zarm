@@ -92,6 +92,8 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
   );
 
   useEffect(() => {
+    if (props.checked === undefined) return;
+    if (props.checked === checked) return;
     setChecked(getChecked({ checked: props.checked, defaultChecked: props.defaultChecked }, false));
   }, [props.checked, props.defaultChecked]);
 
@@ -108,9 +110,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
           e.stopPropagation();
           if (disabled) return;
-          if (groupContext && props.value !== undefined) {
-            setChecked(e.target.checked);
-          }
+          setChecked(e.target.checked);
           props.onChange?.(e);
         }}
       />

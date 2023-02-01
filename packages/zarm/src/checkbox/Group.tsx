@@ -1,11 +1,10 @@
 import { createBEM } from '@zarm-design/bem';
-import React, { FC, useContext } from 'react';
+import React, { FC, useContext, useEffect, useState } from 'react';
 import { ConfigContext } from '../config-provider';
 import List from '../list';
-import { useControllableValue } from '../utils/hooks';
 import type { HTMLProps } from '../utils/utilityTypes';
 import { CheckboxGroupContext } from './context';
-import type { BaseCheckboxGroupProps } from './interface';
+import type { BaseCheckboxGroupProps, CheckboxValue } from './interface';
 
 export interface CheckboxGroupCssVars {
   '--group-spacing-vertical'?: React.CSSProperties['marginBottom'];
@@ -19,8 +18,8 @@ const getValue = (props: CheckboxGroupProps, defaultValue?: CheckboxValue[]) => 
 export type CheckboxGroupProps = BaseCheckboxGroupProps & HTMLProps<CheckboxGroupCssVars>;
 
 const CheckboxGroup: FC<CheckboxGroupProps> = (props) => {
-  const [value, setValue] = useControllableValue(props, { defaultValue: [] });
-  // const [value, setValue] = useState(getValue(props, []));
+  // const [value, setValue] = useControllableValue(props, { defaultValue: [] });
+  const [value, setValue] = useState(getValue(props, []));
   const { type, block, disabled, className } = props;
   const { prefixCls } = useContext(ConfigContext);
 
@@ -34,9 +33,12 @@ const CheckboxGroup: FC<CheckboxGroupProps> = (props) => {
     className,
   ]);
 
-  // useEffect(() => {
-  //   setValue(getValue(props));
-  // }, [props.value]);
+  useEffect(() => {
+    if (props.value === undefined) return;
+    if (props.value === value) return;
+    setValue(getValue(props, []));
+    props.onChange?.(props.value);
+  }, [props.value]);
 
   return (
     <CheckboxGroupContext.Provider
@@ -46,12 +48,12 @@ const CheckboxGroup: FC<CheckboxGroupProps> = (props) => {
         check: (v) => {
           const values = [...value, v];
           setValue(values);
-          // props.onChange?.(values);
+          props.onChange?.(values);
         },
         uncheck: (v) => {
           const values = value.filter((item) => item !== v);
           setValue(values);
-          // props.onChange?.(values);
+          props.onChange?.(values);
         },
       }}
     >
