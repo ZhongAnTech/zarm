@@ -1,31 +1,23 @@
-import React, { FC, useEffect, useRef } from 'react';
+import React, { FC, InputHTMLAttributes, useEffect, useRef } from 'react';
 
-export interface NativeInputProps {
+export type NativeInputProps = InputHTMLAttributes<HTMLInputElement> & {
   type?: 'checkbox' | 'radio';
-  defaultChecked?: boolean;
-  checked?: boolean;
-  onChange?: (checked: boolean) => void;
-  disabled?: boolean;
-  id?: string;
-  className?: string;
-}
+};
 
 const NativeInput: FC<NativeInputProps> = (props) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleClick = (e: MouseEvent) => {
+  const handleClick = (e) => {
     e.stopPropagation();
     e.stopImmediatePropagation();
-
     const latestChecked = (e.target as HTMLInputElement).checked;
     if (latestChecked === props.checked) return;
-    props.onChange(latestChecked);
+    props.onChange(e);
   };
 
   useEffect(() => {
     if (props.disabled) return;
     if (!inputRef.current) return;
-
     const input = inputRef.current;
     input.addEventListener('click', handleClick);
 
@@ -36,12 +28,10 @@ const NativeInput: FC<NativeInputProps> = (props) => {
 
   return (
     <input
-      ref={inputRef}
       id={props.id}
       type={props.type}
       className={props.className}
       disabled={props.disabled}
-      defaultChecked={props.defaultChecked}
       checked={props.checked}
       onChange={() => {}}
     />

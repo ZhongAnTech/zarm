@@ -1,12 +1,11 @@
 import { createBEM } from '@zarm-design/bem';
 import { Minus as MinusIcon, Success as SuccessIcon } from '@zarm-design/icons';
-import React, { forwardRef, useContext, useEffect, useImperativeHandle } from 'react';
+import includes from 'lodash/includes';
+import React, { ChangeEvent, forwardRef, ReactNode, useContext, useEffect, useState } from 'react';
 import { ConfigContext } from '../config-provider';
-import { useControllableValue } from '../utils/hooks';
 import type { HTMLProps } from '../utils/utilityTypes';
 import { CheckboxGroupContext } from './context';
 import type { BaseCheckboxProps } from './interface';
-import NativeInput from './NativeInput';
 
 export interface CheckboxCssVars {
   '--icon-size'?: React.CSSProperties['height'];
@@ -32,35 +31,38 @@ export interface CheckboxCssVars {
 
 export type CheckboxProps = BaseCheckboxProps &
   HTMLProps<CheckboxCssVars> & {
-    renderIcon?: (props: CheckboxProps) => React.ReactNode;
-    render?: (props: CheckboxProps) => React.ReactNode;
+    renderIcon?: (props: CheckboxProps) => ReactNode;
+    render?: (props: CheckboxProps) => ReactNode;
+    onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   };
-
-export type CheckboxRef = {
-  check: () => void;
-  uncheck: () => void;
-  toggle: () => void;
-};
 
 const getChecked = (props: CheckboxProps, defaultChecked?: boolean) => {
   return props.checked ?? props.defaultChecked ?? defaultChecked;
 };
 
-const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
-  const [checked, setChecked] = useControllableValue<boolean>(props, {
-    defaultValue: props.defaultChecked,
-    defaultValuePropName: 'defaultChecked',
-    valuePropName: 'checked',
-  });
+const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
+  let [checked, setChecked] = useState(getChecked(props, false));
+  let disabled = props.disabled;
 
   const groupContext = useContext(CheckboxGroupContext);
+  if (groupContext && props.value !== undefined) {
+    checked = includes(groupContext.value, props.value);
+    setChecked = (changedChecked: boolean) => {
+      if (changedChecked) {
+        groupContext.check(props.value);
+      } else {
+        groupContext.uncheck(props.value);
+      }
+    };
+    disabled = disabled || groupContext.disabled;
+  }
 
   const { prefixCls } = useContext(ConfigContext);
   const bem = createBEM('checkbox', { prefixCls });
   const cls = bem([
     {
-      checked,
-      disabled: props.disabled,
+      disabled,
+      checked: checked && !props.indeterminate,
       untext: !props.children,
       indeterminate: props.indeterminate,
     },
@@ -89,16 +91,28 @@ const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
     </span>
   );
 
-  const checkboxRender = (
+  useEffect(() => {
+    setChecked(getChecked({ checked: props.checked, defaultChecked: props.defaultChecked }, false));
+  }, [props.checked, props.defaultChecked]);
+
+  return (
     <label className={cls}>
-      <NativeInput
+      <input
+        ref={ref}
         id={props.id}
         type="checkbox"
         className={bem('input')}
-        disabled={props.disabled}
-        defaultChecked={props.defaultChecked}
-        checked={'checked' in props ? checked : undefined}
-        onChange={setChecked}
+        disabled={disabled}
+        value={props.value}
+        checked={checked}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => {
+          e.stopPropagation();
+          if (disabled) return;
+          if (groupContext && props.value !== undefined) {
+            setChecked(e.target.checked);
+          }
+          props.onChange?.(e);
+        }}
       />
       {props.render ? (
         props.render(currentProps)
@@ -110,39 +124,11 @@ const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
       )}
     </label>
   );
-
-  useImperativeHandle(ref, () => ({
-    check: () => {
-      setChecked(true);
-    },
-    uncheck: () => {
-      setChecked(false);
-    },
-    toggle: () => {
-      setChecked(!checked);
-    },
-  }));
-
-  useEffect(() => {
-    if (groupContext && props.value !== undefined) {
-      const currentChecked = groupContext.value.includes(props.value);
-      if (currentChecked) {
-        groupContext.check(props.value);
-      } else {
-        groupContext.uncheck(props.value);
-      }
-      setChecked(currentChecked);
-      props.onChange?.(currentChecked);
-    }
-  }, [props.value, props.onChange]);
-
-  return checkboxRender;
 });
 
 Checkbox.displayName = 'Checkbox';
 
 Checkbox.defaultProps = {
-  disabled: false,
   indeterminate: false,
 };
 

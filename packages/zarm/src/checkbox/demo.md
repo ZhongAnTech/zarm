@@ -71,7 +71,6 @@ import { List, Checkbox } from 'zarm';
 
 const Demo = () => {
   const [value, setValue] = useState(['1']);
-  const [checked, setChecked] = useState(true);
 
   const onCheckedAll = (e) => {
     setValue(e.target.checked ? ['0', '1', '2'] : []);
@@ -81,6 +80,7 @@ const Demo = () => {
     console.log('onChange', value);
     setValue(value);
   };
+
   return (
     <List>
       <List.Item>
@@ -93,9 +93,6 @@ const Demo = () => {
         </Checkbox>
       </List.Item>
       <List.Item>
-        <Checkbox checked={checked} onChange={setChecked}>
-          选项xxx
-        </Checkbox>
         <Checkbox.Group value={value} onChange={onChange}>
           <Checkbox value="0">选项一</Checkbox>
           <Checkbox value="1">选项二</Checkbox>
@@ -118,9 +115,7 @@ ReactDOM.render(
   <List>
     <List.Item>
       <Checkbox.Group type="button">
-        <Checkbox value="0" checked>
-          选项一
-        </Checkbox>
+        <Checkbox value="0">选项一</Checkbox>
         <Checkbox value="1">选项二</Checkbox>
         <Checkbox value="2" disabled>
           选项三

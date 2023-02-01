@@ -5,7 +5,6 @@ export type CheckboxValue = number | string;
 export type CheckboxGroupListMarkerAlign = 'before' | 'after';
 
 export interface BaseCheckboxProps {
-  type?: CheckboxType;
   disabled?: boolean;
   checked?: boolean;
   defaultChecked?: boolean;
@@ -13,7 +12,6 @@ export interface BaseCheckboxProps {
   id?: string;
   listMarkerAlign?: CheckboxGroupListMarkerAlign;
   indeterminate?: boolean;
-  onChange?: (checked: boolean) => void;
   children?: ReactNode;
 }
 

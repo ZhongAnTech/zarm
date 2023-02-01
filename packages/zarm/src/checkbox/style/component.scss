@@ -60,7 +60,7 @@
     border-radius: var(--icon-border-radius);
     background-color: var(--icon-background);
 
-    @include b(icon) {
+    @include e(marker) {
       font-size: var(--marker-font-size);
       color: var(--marker-color);
       transform: scale(0);
