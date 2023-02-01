@@ -2,8 +2,10 @@
 
 .search-bar-page {
   .button-wrap {
-    // text-align: center;
-    padding: r(2) 0 r(10) r(15);
+    padding: r(2) r(15) r(10) r(15);
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
   }
 
   .search-bar-wrap {
