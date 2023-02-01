@@ -1,6 +1,5 @@
-/* eslint-disable no-restricted-syntax */
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import SwipeAction from '../index';
 import List from '../../list/index';
 
@@ -88,38 +87,7 @@ describe('SwipeAction', () => {
     expect(container).toMatchSnapshot();
   });
 
-  // it('touch event', () => {
-  //   const props = {
-  //     onOpen: jest.fn(),
-  //     onClose: jest.fn(),
-  //   };
-  //   const { container } = render(
-  //     <List>
-  //       <SwipeAction
-  //         {...props}
-  //         leftActions={[
-  //           {
-  //             text: '左按钮1',
-  //             onClick: () => jest.fn(),
-  //           },
-  //           {
-  //             text: '左按钮2',
-  //             onClick: () => jest.fn(),
-  //           },
-  //         ]}
-  //       >
-  //         <List.Item>右滑看看</List.Item>
-  //       </SwipeAction>
-  //     </List>,
-  //   );
-  //   const element = container.querySelector('.za-swipe-action__content');
-
-  //   fireEvent.mouseDown(element, { pointerId: 15, clientX: 10, clientY: 0, buttons: 1 });
-  //   fireEvent.mouseMove(element, { pointerId: 15, clientX: 100, clientY: 0, buttons: 1 });
-  //   fireEvent.mouseUp(element, { pointerId: 15 });
-  // });
-
-  it('touch event callback', () => {
+  it('touch event callback', async () => {
     const onOpen = jest.fn();
     const onClose = jest.fn();
     const { container } = render(
@@ -129,26 +97,73 @@ describe('SwipeAction', () => {
           onClose={onClose}
           leftActions={[
             {
-              text: '左按钮1',
+              text: '左按钮',
               onClick: () => jest.fn(),
             },
+          ]}
+          rightActions={[
             {
-              text: '左按钮2',
+              text: '右按钮',
               onClick: () => jest.fn(),
             },
+          ]}
+        >
+          <List.Item>左右滑看看</List.Item>
+        </SwipeAction>
+      </List>,
+    );
+    const element = container.querySelector('.za-swipe-action') as HTMLDivElement;
+    fireEvent.mouseDown(element, { pointerId: 1, clientX: 0, clientY: 0, buttons: 1 });
+    fireEvent.mouseMove(element, { pointerId: 1, clientX: 200, clientY: 0, buttons: 1 });
+    fireEvent.mouseUp(element, { pointerId: 1, clientX: 275 });
+    expect(onOpen).toHaveBeenCalled();
+    fireEvent.mouseDown(document.body);
+    const content = container.querySelector('.za-swipe-action__content');
+    fireEvent.transitionEnd(content!);
+    await waitFor(() => {
+      expect(onClose).toHaveBeenCalled();
+    });
+    fireEvent.mouseDown(element, { pointerId: 1, clientX: 0, clientY: 0, buttons: 1 });
+    fireEvent.mouseMove(element, { pointerId: 1, clientX: -200, clientY: 0, buttons: 1 });
+    fireEvent.mouseUp(element, { pointerId: 1, clientX: -275 });
+    jest.runAllTimers();
+    await waitFor(() => {
+      expect(onOpen).toBeCalledTimes(2);
+    });
+    fireEvent.click(content!);
+    fireEvent.transitionEnd(content!);
+    await waitFor(() => {
+      expect(onClose).toBeCalledTimes(2);
+    });
+  });
+
+  it('SwipeActionItem click', async () => {
+    const onClose = jest.fn();
+    const onClick = jest.fn();
+    const { container } = render(
+      <List>
+        <SwipeAction
+          autoClose
+          onClose={onClose}
+          leftActions={[
+            {
+              text: '左按钮1',
+              onClick,
+            }
           ]}
         >
           <List.Item>右滑看看</List.Item>
         </SwipeAction>
       </List>,
     );
-
-    // console.error(leftRef.current.offsetWidth);
     const element = container.querySelector('.za-swipe-action') as HTMLDivElement;
-
+    // fireEvent.transitionEnd(container.querySelector('.za-swipe-action__content')!);
     fireEvent.mouseDown(element, { pointerId: 1, clientX: 0, clientY: 0, buttons: 1 });
     fireEvent.mouseMove(element, { pointerId: 1, clientX: 200, clientY: 0, buttons: 1 });
     fireEvent.mouseUp(element, { pointerId: 1, clientX: 275 });
-    expect(onOpen).toHaveBeenCalled();
+    fireEvent.click(container.querySelector('.za-swipe-action-item__item')!);
+    await waitFor(() => {
+      expect(onClick).toHaveBeenCalled();
+    })
   });
 });
