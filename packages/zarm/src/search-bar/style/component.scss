@@ -10,7 +10,7 @@
   @include define(input-clear-icon-color, #8e8e92);
   @include define(input-border-radius, 10px);
   @include define(cancel-font-size, var(--za-font-size-md));
-  @include define(cancel-color, var(--theme-primary));
+  @include define(cancel-color, var(--za-theme-primary));
   @include define(cancel-margin-left, 13px);
   @include define(cancel-transition, all 0.2s);
   @include define(icon-margin-right, 6px);
@@ -81,7 +81,7 @@
 
   @include m(round) {
     @include e(content) {
-      border-radius: var(--radius-round);
+      border-radius: var(--za-radius-round);
     }
   }
 }
