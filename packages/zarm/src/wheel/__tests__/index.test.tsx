@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import Wheel from '../index';
 
 // function fakeTimers() {
@@ -35,6 +35,19 @@ describe('Wheel', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('Wheel set fieldNames', () => {
+    const { container } = render(
+      <Wheel
+        dataSource={[
+          { value: '1', label: '选项一' },
+          { value: '2', label: '选项二' },
+        ]}
+        fieldNames={{ value: 'value' }}
+      />,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
   it('Wheel render defaultValue', () => {
     const { container } = render(
       <Wheel
@@ -61,25 +74,25 @@ describe('Wheel', () => {
     expect(container).toMatchSnapshot();
   });
 
-  // it('Wheel set props disabled', () => {
-  //   const wrapper = mount(
-  //     <Wheel
-  //       dataSource={[
-  //         { value: '1', label: '选项一' },
-  //         { value: '2', label: '选项二' },
-  //       ]}
-  //       defaultValue="1"
-  //       value="1"
-  //     />,
-  //   );
-  //   expect(toJson(wrapper)).toMatchSnapshot();
-  //   wrapper.setProps({ disabled: true });
-  //   wrapper.unmount();
-  // });
+  it('Wheel set props disabled', () => {
+    const { container } = render(
+      <Wheel
+        dataSource={[
+          { value: '1', label: '选项一' },
+          { value: '2', label: '选项二' },
+        ]}
+        defaultValue="1"
+        value="1"
+        disabled
+      />,
+    );
+    const disabled = container.querySelectorAll('.za-wheel__item--disabled');
+    expect(disabled?.length).toBeGreaterThan(0);
+  });
 
   // it('Wheel touch move', () => {
   //   // jest.useFakeTimers();
-  //   let wrapper = mount(
+  //   const { container } = render(
   //     <Wheel
   //       dataSource={[
   //         { value: '1', label: '选项一' },
@@ -87,20 +100,16 @@ describe('Wheel', () => {
   //       ]}
   //       defaultValue="1"
   //       value="1"
-  //       ref="wheelRef"
   //     />
   //   );
 
   //   // scroll = new BScroll(wrapper.ref('secondRef'), scrollOptions);
   //   // wrapper = scroll.wrapper;
-  //   dispatchTouchStart(wrapper.ref('secondRef'), {
-  //     pageX: 100,
-  //     pageY: 100,
-  //   });
-  //   dispatchTouchMove(wrapper.ref('secondRef'), {
-  //     pageX: 100,
-  //     pageY: 50,
-  //   });
+  //   const wheel = container.querySelector('.za-wheel');
+  //   fireEvent.touchStart(wheel!, { pointerId: 12, clientY: 0, buttons: 1 });
+  //   fireEvent.touchMove(wheel!, { pointerId: 12, clientY: -100, buttons: 1 });
+  //   fireEvent.touchMove(wheel!, { pointerId: 12, clientY: -200, buttons: 1 });
+  //   fireEvent.touchEnd(wheel!, { pointerId: 12 });
 
   // });
 });

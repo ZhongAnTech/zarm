@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import Stepper from '../index';
 
 describe('Stepper', () => {
@@ -9,12 +9,18 @@ describe('Stepper', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('renders correctly button size lg ', () => {
+    const onChange = jest.fn();
+    const { container } = render(<Stepper onChange={onChange} size="lg" />);
+    expect(container).toMatchSnapshot();
+  });
+
   it('defaultValue', () => {
     const { container } = render(<Stepper defaultValue={2} />);
     expect(container).toMatchSnapshot();
   });
 
-  it('disabled sub or plus click', () => {
+  it('disabled sub or plus click', async () => {
     const onChange = jest.fn();
 
     const { container } = render(<Stepper max={2} min={0} onChange={onChange} />);
@@ -22,7 +28,9 @@ describe('Stepper', () => {
     // wrapper.setProps({ value: 0 });
     fireEvent.click(container.querySelector('.za-stepper__sub') as HTMLDivElement);
 
-    setTimeout(() => expect((container.querySelector('input') as HTMLInputElement).value).toBe(0));
+    await waitFor(() => {
+      expect((container.querySelector('input') as HTMLInputElement).value).toBe("0");
+    })
 
     // wrapper.setProps({ value: 2 });
     const plus = container.querySelector('.za-stepper__plus') as HTMLDivElement;
@@ -30,16 +38,13 @@ describe('Stepper', () => {
     fireEvent.click(plus);
     fireEvent.click(plus);
     fireEvent.click(plus);
-    // wrapper.find('.za-stepper__plus').at(0).simulate('click');
-    setTimeout(() => expect((container.querySelector('input') as HTMLInputElement).value).toBe(2));
+    await waitFor(() => {
+      expect((container.querySelector('input') as HTMLInputElement).value).toBe("2");
+    })
   });
 
-  it('receive new value', () => {
-    const onChange = jest.fn();
-    render(<Stepper onChange={onChange} value={10} />);
-  });
 
-  it('onChange and onInputChange', () => {
+  it('onInputChange', () => {
     const onChange = jest.fn();
     const onInputChange = jest.fn();
 
@@ -50,47 +55,17 @@ describe('Stepper', () => {
     const input = container.querySelector('input') as HTMLInputElement;
     fireEvent.change(input, { target: { value: 10 } });
     expect(onInputChange).toBeCalled();
-
-    // wrapper.setProps({ value: 10 });
-    // wrapper.find('.za-stepper__sub').simulate('click');
-    // expect(onChange).toBeCalledWith(9);
-
-    // wrapper.setProps({ value: 9 });
-    // wrapper.find('.za-stepper__plus').simulate('click');
-    // expect(onChange).toBeCalledWith(10);
   });
 
-  // it('input value is NaN', () => {
-  //   const onChange = jest.fn();
-  //   const onInputChange = jest.fn();
-
-  //   const wrapper = shallow(
-  //     <Stepper min={0} max={20} value={10} onChange={onChange} onInputChange={onInputChange} />,
-  //   );
-
-  //   wrapper
-  //     .find(Input)
-  //     .at(0)
-  //     .simulate('change', { target: { value: '你好' } });
-  //   wrapper.find(Input).at(0).simulate('blur');
-  //   expect(onChange).toBeCalledWith(10);
-  // });
-
-  // it('out of range', () => {
-  //   const onChange = jest.fn();
-  //   const onInputChange = jest.fn();
-  //   const wrapper = mount(
-  //     <Stepper min={0} max={20} onChange={onChange} onInputChange={onInputChange} />,
-  //   );
-
-  //   wrapper.setProps({ value: -2 });
-  //   wrapper.find(Input).at(0).simulate('blur');
-  //   setTimeout(() => expect(onChange).toBeCalledWith(0));
-
-  //   wrapper.setProps({ value: 30 });
-  //   wrapper.find(Input).at(0).simulate('blur');
-  //   setTimeout(() => expect(onChange).toBeCalledWith(20));
-  // });
+  it('onChange', () => {
+    const onChange = jest.fn();
+    const { container } = render(
+      <Stepper onChange={onChange} />,
+    );
+    const plus = container.querySelector('.za-stepper__plus') as HTMLDivElement;
+    fireEvent.click(plus);
+    expect(onChange).toBeCalled();
+  });
 
   it('decimal step', () => {
     const onChange = jest.fn();
