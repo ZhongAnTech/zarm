@@ -1,11 +1,21 @@
 import { createBEM } from '@zarm-design/bem';
 import { Minus as MinusIcon, Success as SuccessIcon } from '@zarm-design/icons';
-import * as React from 'react';
+import includes from 'lodash/includes';
+import React, {
+  ChangeEvent,
+  forwardRef,
+  ReactNode,
+  useContext,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from 'react';
 import Button from '../button';
 import { ConfigContext } from '../config-provider';
-import type { ListItemProps } from '../list';
 import List from '../list';
 import type { HTMLProps } from '../utils/utilityTypes';
+import { CheckboxGroupContext } from './context';
 import type { BaseCheckboxProps } from './interface';
 
 export interface CheckboxCssVars {
@@ -30,161 +40,177 @@ export interface CheckboxCssVars {
   '--group-spacing-horizontal'?: React.CSSProperties['marginRight'];
 }
 
+export type CheckboxProps = BaseCheckboxProps &
+  HTMLProps<CheckboxCssVars> & {
+    renderIcon?: (props: CheckboxProps) => ReactNode;
+    render?: (props: CheckboxProps) => ReactNode;
+    onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  };
+
 const getChecked = (props: CheckboxProps, defaultChecked?: boolean) => {
   return props.checked ?? props.defaultChecked ?? defaultChecked;
 };
 
-export type CheckboxProps = BaseCheckboxProps &
-  HTMLProps<CheckboxCssVars> & {
-    renderIcon?: (props: CheckboxProps) => React.ReactNode;
-    render?: (props: CheckboxProps) => React.ReactNode;
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  };
+export type CheckboxRef = {
+  check?: () => void;
+  uncheck?: () => void;
+  toggle?: () => void;
+};
 
-const Checkbox = React.forwardRef<unknown, CheckboxProps>((props, ref) => {
-  const {
-    className,
-    type,
-    value,
-    checked,
-    defaultChecked,
-    disabled,
-    id,
-    listMarkerAlign,
-    indeterminate,
-    renderIcon,
-    render,
-    children,
-    onChange,
-    ...restProps
-  } = props;
-  const checkboxRef = (ref as any) || React.createRef<HTMLElement>();
-  const [currentChecked, setCurrentChecked] = React.useState(
-    getChecked({ checked, defaultChecked }),
-  );
+const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+  let [checked, setChecked] = useState(getChecked(props, false));
+  let disabled = props.disabled;
 
-  const { prefixCls } = React.useContext(ConfigContext);
+  const groupContext = useContext(CheckboxGroupContext);
+  if (groupContext && props.value !== undefined) {
+    checked = includes(groupContext.value, props.value);
+    setChecked = (changedChecked: boolean) => {
+      if (changedChecked) {
+        groupContext.check(props.value);
+      } else {
+        groupContext.uncheck(props.value);
+      }
+    };
+    disabled = disabled || groupContext.disabled;
+  }
+
+  const { prefixCls } = useContext(ConfigContext);
   const bem = createBEM('checkbox', { prefixCls });
-
   const cls = bem([
     {
-      checked: currentChecked,
       disabled,
-      untext: !children,
-      indeterminate,
+      checked: checked && !props.indeterminate,
+      untext: !props.children,
+      indeterminate: props.indeterminate,
     },
-    className,
+    props.className,
   ]);
 
-  const onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (disabled) {
-      return;
-    }
-    const newChecked = !currentChecked;
-    if (!('checked' in props)) {
-      setCurrentChecked(newChecked);
-    }
+  const currentProps = { ...props, checked };
 
-    typeof onChange === 'function' && onChange(e);
-  };
-
-  const inputRender = (
-    <input
-      id={id}
-      type="checkbox"
-      aria-checked={currentChecked}
-      className={bem('input')}
-      disabled={disabled}
-      value={value}
-      defaultChecked={'defaultChecked' in props ? defaultChecked : undefined}
-      checked={'checked' in props ? currentChecked : undefined}
-      onChange={onValueChange}
-    />
-  );
-
-  const currentProps = { ...props, checked: currentChecked };
-
-  const labelRender = children && <span className={bem('text')}>{children}</span>;
+  const textRender = props.children && <span className={bem('text')}>{props.children}</span>;
 
   let iconRender = (
     <span className={bem('icon')}>
-      <span className={bem('icon-inner')}>
-        {renderIcon ? (
-          renderIcon(currentProps)
-        ) : (
-          <span className={bem('tick')}>
-            {indeterminate ? (
-              <MinusIcon className={bem('marker')} />
-            ) : (
-              <SuccessIcon className={bem('marker')} />
-            )}
-          </span>
-        )}
-      </span>
-    </span>
-  );
-
-  const checkboxRender = (
-    <span ref={checkboxRef} className={cls} {...restProps}>
-      {render ? (
-        render(currentProps)
+      {props.renderIcon ? (
+        props.renderIcon(currentProps)
       ) : (
-        <>
-          {iconRender}
-          {labelRender}
-        </>
+        <span className={bem('tick')}>{props.indeterminate ? <MinusIcon /> : <SuccessIcon />}</span>
       )}
-      {inputRender}
     </span>
   );
 
-  React.useEffect(() => {
-    setCurrentChecked(getChecked({ checked, defaultChecked }));
-  }, [checked, defaultChecked]);
+  const inputRender = (
+    <input
+      ref={inputRef}
+      id={props.id}
+      type="checkbox"
+      className={bem('input')}
+      disabled={disabled}
+      value={props.value}
+      checked={checked}
+      onChange={(e: ChangeEvent<HTMLInputElement>) => {
+        if (disabled) return;
 
-  if (type === 'button') {
-    iconRender = null;
+        if (!('checked' in props)) {
+          setChecked(e.target.checked);
+        }
+        props.onChange?.(e);
+      }}
+    />
+  );
 
+  let contentRender = props.render ? (
+    props.render(currentProps)
+  ) : (
+    <>
+      {inputRender}
+      {iconRender}
+      {textRender}
+    </>
+  );
+
+  useImperativeHandle(ref, () => {
+    return {
+      check: () => {
+        if (checked) return;
+        inputRef.current.click();
+      },
+      uncheck: () => {
+        if (!checked) return;
+        inputRef.current.click();
+      },
+      toggle: () => {
+        inputRef.current.click();
+      },
+    };
+  });
+
+  useEffect(() => {
+    if (props.checked === undefined) return;
+    if (props.checked === checked) return;
+
+    setChecked(getChecked({ checked: props.checked, defaultChecked: props.defaultChecked }, false));
+  }, [props.checked, props.defaultChecked]);
+
+  if (groupContext?.type === 'button') {
     return (
-      <Button
-        ref={checkboxRef}
-        className={cls}
-        size="xs"
-        disabled={disabled}
-        theme={currentChecked ? 'primary' : 'default'}
-        {...restProps}
-      >
-        {children}
+      <label className={cls}>
         {inputRender}
-      </Button>
+        <Button
+          disabled={disabled}
+          theme={checked ? 'primary' : 'default'}
+          size="xs"
+          block={groupContext?.block}
+          onClick={() => {
+            inputRef.current.click();
+          }}
+        >
+          {props.children}
+        </Button>
+      </label>
     );
   }
 
-  if (type === 'list') {
-    const listProps: ListItemProps = {
-      hasArrow: false,
-      className: cls,
-      title: (
-        <>
-          {labelRender}
-          {inputRender}
-        </>
-      ),
-      onClick: !disabled ? () => {} : undefined,
-    };
+  if (groupContext?.type === 'list') {
+    const tickRender = (
+      <>
+        {inputRender}
+        {iconRender}
+      </>
+    );
 
-    listMarkerAlign === 'after' ? (listProps.suffix = iconRender) : (listProps.prefix = iconRender);
-
-    return <List.Item ref={checkboxRef} {...listProps} />;
+    return (
+      <List.Item
+        hasArrow={false}
+        className={cls}
+        prefix={groupContext?.listIconAlign === 'before' ? tickRender : undefined}
+        suffix={groupContext?.listIconAlign === 'after' ? tickRender : undefined}
+        title={textRender}
+        onClick={
+          !disabled
+            ? () => {
+                if (disabled) return;
+                inputRef.current.click();
+              }
+            : undefined
+        }
+      />
+    );
   }
 
-  return checkboxRender;
+  return (
+    <label className={cls}>
+      {inputRender}
+      {contentRender}
+    </label>
+  );
 });
 
 Checkbox.displayName = 'Checkbox';
 
 Checkbox.defaultProps = {
-  disabled: false,
   indeterminate: false,
 };
 

@@ -6,21 +6,24 @@
   @include define(icon-border-radius, 22px);
   @include define(icon-border-width, 1px);
   @include define(icon-border-color, rgb(199, 199, 204));
-  @include define(marker-font-size, 16px);
-  @include define(marker-color, #fff);
-  @include define(marker-transition, all 0.2s cubic-bezier(0.71, -0.46, 0.88, 0.6));
+  @include define(tick-font-size, 16px);
+  @include define(tick-color, #fff);
+  @include define(tick-transition, all 0.2s cubic-bezier(0.71, -0.46, 0.88, 0.6));
   @include define(text-margin-horizontal, 8px);
   @include define(active-opacity, 0.6);
   @include define(checked-icon-background, var(--za-theme-primary));
   @include define(checked-icon-border-color, var(--za-theme-primary));
-  @include define(checked-marker-color, #fff);
+  @include define(checked-tick-color, #fff);
   @include define(disabled-icon-background, #f2f2f2);
   @include define(disabled-icon-border-color, rgba(199, 199, 204, 0.7));
   @include define(disabled-text-color, rgba(0, 0, 0, 0.3));
-  @include define(disabled-marker-color, #bcbcbc);
+  @include define(disabled-tick-color, #bcbcbc);
 
-  display: inline-block;
-  position: relative;
+  display: inline-flex;
+  vertical-align: text-bottom;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
 
   &:not(&--disabled):active {
     opacity: var(--active-opacity);
@@ -40,16 +43,6 @@
     margin: 0 var(--text-margin-horizontal);
   }
 
-  @include e(icon-inner) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    @include b(icon) {
-      @include define(font-size, var(--icon-size));
-    }
-  }
-
   @include e(tick) {
     display: flex;
     align-items: center;
@@ -60,11 +53,11 @@
     border-radius: var(--icon-border-radius);
     background-color: var(--icon-background);
 
-    @include e(marker) {
-      font-size: var(--marker-font-size);
-      color: var(--marker-color);
+    @include b(icon) {
+      font-size: var(--tick-font-size);
+      color: var(--tick-color);
       transform: scale(0);
-      transition: var(--marker-transition);
+      transition: var(--tick-transition);
     }
   }
 
@@ -75,7 +68,7 @@
       background-color: var(--checked-icon-background);
 
       @include b(icon) {
-        color: var(--checked-marker-color);
+        color: var(--checked-tick-color);
         transform: scale(1);
       }
     }
@@ -102,15 +95,10 @@
         background-color: var(--disabled-icon-background);
 
         @include b(icon) {
-          color: var(--disabled-marker-color);
+          color: var(--disabled-tick-color);
         }
       }
     }
-  }
-
-  // 无文本状态
-  @include m(untext) {
-    line-height: 1;
   }
 }
 
@@ -125,6 +113,7 @@
   @include e(inner) {
     margin-right: calc(var(--group-spacing-horizontal) * -1);
     margin-bottom: calc(var(--group-spacing-vertical) * -1);
+    line-height: 1;
   }
 
   @include b(checkbox) {

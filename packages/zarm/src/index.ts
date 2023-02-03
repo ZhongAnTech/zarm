@@ -21,7 +21,12 @@ export type { CascaderProps } from './cascader';
 export { default as CascaderView } from './cascader-view';
 export type { CascaderViewCssVars, CascaderViewProps } from './cascader-view';
 export { default as Checkbox } from './checkbox';
-export type { CheckboxCssVars, CheckboxGroupProps, CheckboxProps } from './checkbox';
+export type {
+  CheckboxCssVars,
+  CheckboxGroupCssVars,
+  CheckboxGroupProps,
+  CheckboxProps,
+} from './checkbox';
 export { default as Collapse } from './collapse';
 export type { CollapseItemProps, CollapseProps } from './collapse';
 export { default as ConfigProvider } from './config-provider';

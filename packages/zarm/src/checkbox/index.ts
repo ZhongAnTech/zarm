@@ -1,12 +1,8 @@
-// import Checkbox from './Checkbox';
-// import Group from './CheckboxGroup';
 import attachPropertiesToComponent from '../utils/attachPropertiesToComponent';
-import Group from './Group';
-import Checkbox from './Item';
+import Checkbox from './Checkbox';
+import Group from './CheckboxGroup';
 
-// export type { CheckboxProps, CheckboxCssVars } from './Checkbox';
-// export type { CheckboxGroupProps, CheckboxGroupCssVars } from './CheckboxGroup';
-export type { CheckboxGroupProps } from './Group';
-export type { CheckboxCssVars, CheckboxProps } from './Item';
+export type { CheckboxCssVars, CheckboxProps } from './Checkbox';
+export type { CheckboxGroupCssVars, CheckboxGroupProps } from './CheckboxGroup';
 
 export default attachPropertiesToComponent(Checkbox, { Group });
