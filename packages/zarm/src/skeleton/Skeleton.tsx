@@ -1,8 +1,9 @@
-import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
+import includes from 'lodash/includes';
+import * as React from 'react';
 import { ConfigContext } from '../config-provider';
 import type { HTMLProps } from '../utils/utilityTypes';
-import type { SkeletonShape, SkeletonLineShape } from './interface';
+import type { SkeletonLineShape, SkeletonShape } from './interface';
 
 // SkeletonTitle和SkeletonParagraph的shape属性值集合
 const SKELETONLINESHAPE = ['radius', 'rect'];
@@ -57,7 +58,7 @@ const SkeletonTitle = (props: SkeletonTitleProps) => {
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('skeleton', { prefixCls });
   const cls = bem('title', [className]);
-  const _shape = shape && SKELETONLINESHAPE.includes(shape) ? shape : undefined;
+  const _shape = shape && includes(SKELETONLINESHAPE, shape) ? shape : undefined;
 
   return <Skeleton shape={_shape} className={cls} {...restProps} />;
 };
@@ -69,7 +70,7 @@ const SkeletonParagraph = (props: SkeletonParagraphProps) => {
   const bem = createBEM('skeleton', { prefixCls });
   const cls = bem('paragraph', [className]);
   const lineCls = bem('line');
-  const _shape = shape && SKELETONLINESHAPE.includes(shape) ? shape : undefined;
+  const _shape = shape && includes(SKELETONLINESHAPE, shape) ? shape : undefined;
 
   return (
     <div className={cls} {...restProps}>
