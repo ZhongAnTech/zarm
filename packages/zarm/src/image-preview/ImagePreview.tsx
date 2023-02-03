@@ -104,6 +104,9 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
     return images.map((item, i) => {
       return (
         <div className={bem('item')} key={+i}>
+          <div className={bem('loading')}>
+            <Loading type="spinner" size="lg" />
+          </div>
           <PinchZoom minScale={minScale} maxScale={maxScale}>
             <img
               src={item.src}
