@@ -110,7 +110,11 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
               alt=""
               draggable={false}
               style={imageStyle}
-              />
+              onLoad={(e: React.SyntheticEvent<HTMLImageElement>) => {
+                const el = e.target as HTMLImageElement;
+                el.style.display = 'block';
+               }}
+            />
           </PinchZoom>
         </div>
       );
