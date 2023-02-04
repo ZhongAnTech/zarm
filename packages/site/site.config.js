@@ -54,13 +54,6 @@ module.exports = {
   components: {
     general: [
       {
-        key: 'dropdown',
-        name: '下拉菜单',
-        module: () => import('zarm/dropdown/demo.md'),
-        source: 'zarm/dropdown/demo.md',
-        style: false,
-      },
-      {
         key: 'button',
         name: '按钮',
         module: () => import('zarm/button/demo.md'),
@@ -382,6 +375,13 @@ module.exports = {
         module: () => import('zarm/grid/demo.md'),
         source: 'zarm/grid/demo.md',
         style: true,
+      },
+      {
+        key: 'dropdown',
+        name: '下拉菜单',
+        module: () => import('zarm/dropdown/demo.md'),
+        source: 'zarm/dropdown/demo.md',
+        style: false,
       },
     ],
     hooks: [

@@ -1,14 +1,15 @@
 import React from 'react';
-import { render, fireEvent, screen, waitFor } from '@testing-library/react';
+import {render, fireEvent, screen, waitFor, getByTestId} from '@testing-library/react';
+import '@testing-library/jest-dom';
 import Dropdown from '../index';
 
-const classPrefix = `adm-dropdown`
+const classPrefix = `za-dropdown`;
 
 describe('Dropdown', () => {
   test('basic usage', async () => {
-    render(
-      <Dropdown data-testid='dropdown'>
-        <Dropdown.Item title='sorter' key='sorter' data-testid='item'>
+    const { container } = render(
+      <Dropdown>
+        <Dropdown.Item title='sorter' itemKey='sorter'>
           content
         </Dropdown.Item>
       </Dropdown>
@@ -17,9 +18,8 @@ describe('Dropdown', () => {
     fireEvent.click(screen.getByText('sorter'))
     const content = screen.getByText('content')
     expect(content).toBeInTheDocument()
-    expect(screen.getByTestId('dropdown')).toHaveClass(`${classPrefix}-open`)
-    expect(screen.getByTestId('item')).toHaveClass(
-      `${classPrefix}-item-active ${classPrefix}-item-highlight`
+    expect(container.querySelector(`.${classPrefix}__trigger`)).toHaveClass(
+      `${classPrefix}__trigger--active`
     )
 
     fireEvent.click(document.body)
@@ -27,12 +27,12 @@ describe('Dropdown', () => {
   })
 
   test('multi item', () => {
-    render(
+    const { container } = render(
       <Dropdown data-testid='dropdown'>
-        <Dropdown.Item title='item1' itemKey='item1' data-testid='item1'>
+        <Dropdown.Item title='item1' itemKey='item1'>
           content1
         </Dropdown.Item>
-        <Dropdown.Item title='item2' itemKey='item2' data-testid='item2'>
+        <Dropdown.Item title='item2' itemKey='item2'>
           content2
         </Dropdown.Item>
       </Dropdown>
@@ -40,13 +40,13 @@ describe('Dropdown', () => {
 
     fireEvent.click(screen.getByText('item1'))
     expect(screen.getByText('content1')).toBeVisible()
-    expect(screen.getByTestId('item1')).toHaveClass(
-      `${classPrefix}-item-active ${classPrefix}-item-highlight`
+    expect(container.querySelectorAll(`.${classPrefix}__trigger`)[0]).toHaveClass(
+      `${classPrefix}__trigger--active`
     )
     fireEvent.click(screen.getByText('item2'))
     expect(screen.getByText('content2')).toBeVisible()
-    expect(screen.getByTestId('item2')).toHaveClass(
-      `${classPrefix}-item-active ${classPrefix}-item-highlight`
+    expect(container.querySelectorAll(`.${classPrefix}__trigger`)[1]).toHaveClass(
+      `${classPrefix}__trigger--active`
     )
   })
 
