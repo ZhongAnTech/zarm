@@ -24,18 +24,18 @@ export interface CheckboxCssVars {
   '--icon-border-radius'?: React.CSSProperties['borderRadius'];
   '--icon-border-width'?: React.CSSProperties['borderWidth'];
   '--icon-border-color'?: React.CSSProperties['borderColor'];
-  '--marker-font-size'?: React.CSSProperties['fontSize'];
-  '--marker-color'?: React.CSSProperties['color'];
-  '--marker-transition'?: React.CSSProperties['transition'];
+  '--tick-font-size'?: React.CSSProperties['fontSize'];
+  '--tick-color'?: React.CSSProperties['color'];
+  '--tick-transition'?: React.CSSProperties['transition'];
   '--text-margin-horizontal'?: React.CSSProperties['marginLeft'];
   '--active-opacity'?: React.CSSProperties['opacity'];
   '--checked-icon-background'?: React.CSSProperties['background'];
   '--checked-icon-border-color'?: React.CSSProperties['borderColor'];
-  '--checked-marker-color'?: React.CSSProperties['color'];
+  '--checked-tick-color'?: React.CSSProperties['color'];
   '--disabled-icon-background'?: React.CSSProperties['background'];
   '--disabled-icon-border-color'?: React.CSSProperties['borderColor'];
   '--disabled-text-color'?: React.CSSProperties['color'];
-  '--disabled-marker-color'?: React.CSSProperties['color'];
+  '--disabled-tick-color'?: React.CSSProperties['color'];
   '--group-spacing-vertical'?: React.CSSProperties['marginBottom'];
   '--group-spacing-horizontal'?: React.CSSProperties['marginRight'];
 }
