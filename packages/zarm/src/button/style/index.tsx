@@ -1,3 +1,3 @@
+import '../../loading/style';
 import '../../style';
-import '../../activity-indicator/style';
 import './index.scss';

@@ -48,7 +48,7 @@
     box-shadow: $shadow;
   }
 
-  @include b(activity-indicator) {
+  @include b(loading) {
     @include m(circular) {
       circle {
         stroke: $loading-color;
@@ -61,7 +61,7 @@
     border-color: $active-border-color;
     color: $active-text-color;
 
-    @include b(activity-indicator) {
+    @include b(loading) {
       @include m(circular) {
         circle {
           stroke: $active-loading-color;
@@ -87,7 +87,7 @@
   }
 
   @include m(loading) {
-    @include b(activity-indicator) {
+    @include b(loading) {
       width: var(--font-size);
       height: var(--font-size);
     }

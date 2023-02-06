@@ -1,10 +1,10 @@
-import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
+import * as React from 'react';
 import { ConfigContext } from '../config-provider';
-import type { BaseActivityIndicatorProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseLoadingProps } from './interface';
 
-export interface ActivityIndicatorCssVars {
+export interface LoadingCssVars {
   '--size'?: React.CSSProperties['width' | 'height'];
   '--size-large'?: React.CSSProperties['width' | 'height'];
   '--stroke-color'?: React.CSSProperties['stroke'];
@@ -15,17 +15,17 @@ export interface ActivityIndicatorCssVars {
   '--spinner-item-border-radius'?: React.CSSProperties['borderRadius'];
 }
 
-export type ActivityIndicatorProps = BaseActivityIndicatorProps &
-  HTMLProps<ActivityIndicatorCssVars> & {
+export type LoadingProps = BaseLoadingProps &
+  HTMLProps<LoadingCssVars> & {
     onClick?: React.MouseEventHandler<HTMLDivElement>;
   };
 
 const DIAMETER = 62;
 
-const Circular = React.forwardRef<HTMLDivElement, ActivityIndicatorProps>((props, ref) => {
+const Circular = React.forwardRef<HTMLDivElement, LoadingProps>((props, ref) => {
   const { className, size, percent, strokeWidth, loading, ...restProps } = props;
   const { prefixCls } = React.useContext(ConfigContext);
-  const bem = createBEM('activity-indicator', { prefixCls });
+  const bem = createBEM('loading', { prefixCls });
 
   const cls = bem([
     {
@@ -73,10 +73,10 @@ const Circular = React.forwardRef<HTMLDivElement, ActivityIndicatorProps>((props
 
 Circular.displayName = 'Circular';
 
-const Spinner = React.forwardRef<HTMLDivElement, ActivityIndicatorProps>((props, ref) => {
+const Spinner = React.forwardRef<HTMLDivElement, LoadingProps>((props, ref) => {
   const { className, size, ...restProps } = props;
   const { prefixCls } = React.useContext(ConfigContext);
-  const bem = createBEM('activity-indicator', { prefixCls });
+  const bem = createBEM('loading', { prefixCls });
 
   const cls = bem([
     {
@@ -101,7 +101,7 @@ const Spinner = React.forwardRef<HTMLDivElement, ActivityIndicatorProps>((props,
 
 Spinner.displayName = 'Spinner';
 
-const ActivityIndicator = React.forwardRef<HTMLDivElement, ActivityIndicatorProps>((props, ref) => {
+const Loading = React.forwardRef<HTMLDivElement, LoadingProps>((props, ref) => {
   if (props.type !== 'spinner') {
     const { type, ...restProps } = props;
     return <Circular ref={ref} {...restProps} />;
@@ -110,13 +110,13 @@ const ActivityIndicator = React.forwardRef<HTMLDivElement, ActivityIndicatorProp
   return <Spinner ref={ref} {...restProps} />;
 });
 
-ActivityIndicator.defaultProps = {
+Loading.defaultProps = {
   type: 'circular',
   loading: true,
   strokeWidth: 5,
   percent: 20,
 };
 
-ActivityIndicator.displayName = 'ActivityIndicator';
+Loading.displayName = 'Loading';
 
-export default ActivityIndicator;
+export default Loading;

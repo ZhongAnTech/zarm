@@ -1,60 +1,6 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable dot-notation */
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-// import type { TouchEvent } from 'react';
 import Slider from '../index';
-// import ToolTip from '../../tooltip';
-
-// import Events from '../../utils/events';
-
-// import { NonFunctionPropertyNames } from '../../utils/utilityTypes';
-
-// function mockLineRef(
-//   componentClass,
-//   prop: Exclude<NonFunctionPropertyNames<HTMLDivElement>, undefined>,
-//   value: any,
-// ) {
-//   const lineRefKey = Symbol('line');
-//   Object.defineProperty(componentClass, 'line', {
-//     get() {
-//       return this[lineRefKey];
-//     },
-//     set(ref) {
-//       if (ref) {
-//         Object.defineProperty(ref, prop, {
-//           value,
-//           configurable: true,
-//         });
-//         this[lineRefKey] = ref;
-//       }
-//       this[lineRefKey] = ref;
-//     },
-//     configurable: true,
-//   });
-// }
-
-// const mockGetBoundingClientRect = (width) => {
-//   const originalGetBoundingClientRect = Element.prototype.getBoundingClientRect;
-
-//   Element.prototype.getBoundingClientRect = () => {
-//     return {
-//       bottom: 0,
-//       height: 100,
-//       left: 0,
-//       right: 0,
-//       top: 0,
-//       width,
-//       x: 0,
-//       y: 0,
-//       toJSON: jest.fn,
-//     };
-//   };
-
-//   return () => {
-//     Element.prototype.getBoundingClientRect = originalGetBoundingClientRect;
-//   };
-// };
 
 describe('Slider', () => {
   const marks = {
@@ -128,8 +74,6 @@ describe('Slider', () => {
     });
   });
 
-  it('should ', () => {});
-
   it('should not render mark info if marks is an empty object and props.showMark is true', () => {
     const errorLogSpy = jest.spyOn(console, 'error').mockImplementationOnce(() => 'Suppress');
     const { container } = render(<Slider showMark marks={{}} />);
@@ -179,17 +123,37 @@ describe('Slider', () => {
 
   it('mouse event', () => {
     const onChange = jest.fn();
-
+    const onSlideChange = jest.fn();
     const { getByTestId } = render(
       <div data-testid="za-slider-el">
-        <Slider onChange={onChange} style={{ width: 200 }} />
+        <Slider onChange={onChange} style={{ width: 200 }} onSlideChange={onSlideChange} />
       </div>,
     );
     const wrapper = getByTestId('za-slider-el').getElementsByClassName('za-slider__knob');
     const element = [].slice.call(wrapper);
     fireEvent.mouseDown(element?.[0], { pointerId: 15, clientX: 10, clientY: 0, buttons: 1 });
     fireEvent.mouseMove(element?.[0], { pointerId: 15, clientX: 200, clientY: 0, buttons: 1 });
+    fireEvent.mouseMove(element?.[0], { pointerId: 15, clientX: 250, clientY: 0, buttons: 1 });
     fireEvent.mouseUp(element?.[0], { pointerId: 15 });
+    expect(onChange).toBeCalled();
+    expect(onSlideChange).toBeCalled();
+  });
+
+  it('track click', () => {
+    const MARKS = {
+      0: '0°C',
+      26: '26°C',
+      65: '65°C',
+      100: '100°C',
+    };
+    const onChange = jest.fn();
+    const { getByTestId } = render(
+      <div data-testid="za-slider-el">
+        <Slider onChange={onChange} style={{ width: 200 }} marks={MARKS} />
+      </div>,
+    );
+    const line = getByTestId('za-slider-el').querySelector('.za-slider__line');
+    fireEvent.click(line!);
     expect(onChange).toBeCalled();
   });
 });

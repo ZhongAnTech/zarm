@@ -8,7 +8,7 @@
     "build": "lerna exec --scope zarm -- yarn build",
     "clean": "lerna run clean && lerna clean -y",
     "deploy": "lerna exec --scope site -- gh-pages -d assets",
-    "deploy:build": "lerna exec --scope site -- yarn build -p",
+    "deploy:build": "lerna exec --scope site -- yarn build",
     "dev": "lerna exec --scope site -- yarn start",
     "postinstall": "lerna exec --scope @zarm-design/cli -- yarn build && lerna exec --scope @zarm-design/bem -- yarn build && lerna exec --scope @zarm-design/icons -- yarn build",
     "lint": "yarn install && yarn lint:tsc && yarn lint:script && yarn lint:style",
@@ -30,7 +30,7 @@
     "*.{js,jsx,ts,tsx,html,md,json}": [
       "prettier --write --no-error-on-unmatched-pattern"
     ],
-    "*.{scss}": [
+    "*.scss": [
       "stylelint --syntax scss"
     ]
   },

@@ -1,8 +1,8 @@
 import { createBEM } from '@zarm-design/bem';
 import { Close, Success } from '@zarm-design/icons';
 import * as React from 'react';
-import ActivityIndicator from '../activity-indicator';
 import { ConfigContext } from '../config-provider';
+import Loading from '../loading';
 import Popup from '../popup';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseToastProps } from './interface';
@@ -32,7 +32,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>((props, ref) => {
       case 'fail':
         return <Close />;
       case 'loading':
-        return <ActivityIndicator />;
+        return <Loading type="spinner" size="lg" />;
       default:
         return icon;
     }

@@ -1,6 +1,6 @@
 {
   "name": "@zarm-design/cli",
-  "version": "0.0.41-alpha.0",
+  "version": "0.0.41-alpha.1",
   "description": "Cli Tools for Zarm Design Project",
   "keywords": [
     "zarm-cli",
@@ -60,9 +60,10 @@
     "metro-react-native-babel-preset": "^0.63.0",
     "mini-css-extract-plugin": "^1.6.0",
     "mkdirp": "^0.5.1",
-    "postcss-flexbugs-fixes": "^4.1.0",
-    "postcss-loader": "^3.0.0",
-    "postcss-preset-env": "^6.7.0",
+    "postcss": "^8.4.21",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-loader": "^7.0.2",
+    "postcss-preset-env": "^8.0.1",
     "process": "^0.11.10",
     "raw-loader": "^4.0.2",
     "react": "^17.0.2",

@@ -1,5 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Keyboard custom keyboard 1`] = `
+<div>
+  <div
+    class="za-keyboard"
+    data-testid="root"
+    style="grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;"
+  >
+    <div
+      class="za-keyboard__item"
+    >
+      沪
+    </div>
+    <div
+      class="za-keyboard__item"
+    >
+      苏
+    </div>
+    <div
+      class="za-keyboard__item za-keyboard__item--disabled"
+    >
+      黑
+    </div>
+    <div
+      class="za-keyboard__item za-keyboard__item--disabled"
+    >
+      辽
+    </div>
+    <div
+      class="za-keyboard__item za-keyboard__item--ok"
+      style="grid-row: auto / span 2; height: 100%; grid-column: auto / span 2;"
+    >
+      确定
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Keyboard should render keyboard dom 1`] = `
 <div>
   <div

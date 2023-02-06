@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
 import { createBEM } from '@zarm-design/bem';
-import ActivityIndicator from '../activity-indicator';
+import React, { useContext } from 'react';
 import { ConfigContext } from '../config-provider';
-import type { BaseButtonProps, ButtonTheme, ButtonSize, ButtonShape } from './interface';
+import Loading from '../loading';
 import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseButtonProps, ButtonShape, ButtonSize, ButtonTheme } from './interface';
 
 export type { ButtonTheme, ButtonSize, ButtonShape };
 
@@ -59,7 +59,7 @@ const Button = React.forwardRef<unknown, ButtonProps>((props, ref) => {
   } = props;
 
   const buttonRef = (ref as any) || React.createRef<HTMLButtonElement | HTMLAnchorElement>();
-  const iconRender = loading ? <ActivityIndicator /> : icon;
+  const iconRender = loading ? <Loading /> : icon;
   const childrenRender = children && <span>{children}</span>;
 
   const { prefixCls } = useContext(ConfigContext);

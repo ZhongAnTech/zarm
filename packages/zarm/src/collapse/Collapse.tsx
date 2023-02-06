@@ -1,9 +1,10 @@
-import React, { Children, cloneElement, ReactElement, useState } from 'react';
 import { createBEM } from '@zarm-design/bem';
-import type { CollapseActiveKey, CollapseItemKey, BaseCollapseProps } from './interface';
-import CollapseItem, { CollapseItemProps } from './CollapseItem';
+import includes from 'lodash/includes';
+import React, { Children, cloneElement, ReactElement, useState } from 'react';
 import { ConfigContext } from '../config-provider';
 import type { HTMLProps } from '../utils/utilityTypes';
+import CollapseItem, { CollapseItemProps } from './CollapseItem';
+import type { BaseCollapseProps, CollapseActiveKey, CollapseItemKey } from './interface';
 
 export interface CollapseCssVars {
   '--border-color'?: React.CSSProperties['color'];
@@ -79,12 +80,12 @@ const Collapse = React.forwardRef<unknown, CollapseProps>((props, ref) => {
       newActiveKey = [];
       tempActiveKey = (tempActiveKey as CollapseItemKey[]) || [];
 
-      if (tempActiveKey.includes(key)) {
+      if (includes(tempActiveKey, key)) {
         newActiveKey = tempActiveKey.filter((i) => i !== key);
       } else {
         newActiveKey = [...tempActiveKey, key];
       }
-      isActive = newActiveKey.includes(key);
+      isActive = includes(newActiveKey, key);
     } else {
       tempActiveKey = tempActiveKey as CollapseItemKey;
       newActiveKey = tempActiveKey === key ? undefined : key;
@@ -102,7 +103,7 @@ const Collapse = React.forwardRef<unknown, CollapseProps>((props, ref) => {
       const { disabled, onChange: itemOnChange } = ele.props;
       const { key } = ele;
       const isActive = multiple
-        ? ((activeKeyState as CollapseItemKey[]) || []).includes(key!)
+        ? includes((activeKeyState as CollapseItemKey[]) || [], key!)
         : (activeKeyState as CollapseItemKey) === key;
       return cloneElement(ele, {
         animated,

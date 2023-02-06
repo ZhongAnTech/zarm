@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { createBEM } from '@zarm-design/bem';
 import { useGesture } from '@use-gesture/react';
-import type { Images, BaseImagePreviewProps } from './interface';
-import Popup from '../popup';
-import Carousel from '../carousel';
-import PinchZoom from '../pinch-zoom';
-import ActivityIndicator from '../activity-indicator';
+import { createBEM } from '@zarm-design/bem';
+import React, { useEffect, useState } from 'react';
 import Button from '../button';
-import LOAD_STATUS from './utils/loadStatus';
-import formatImages from './utils/formatImages';
-import showOriginButton from './utils/showOriginButton';
+import Carousel from '../carousel';
 import { ConfigContext } from '../config-provider';
+import Loading from '../loading';
+import PinchZoom from '../pinch-zoom';
+import Popup from '../popup';
 import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseImagePreviewProps, Images } from './interface';
+import formatImages from './utils/formatImages';
+import LOAD_STATUS from './utils/loadStatus';
+import showOriginButton from './utils/showOriginButton';
 
 export interface ImagePreviewCssVars {
   '--footer-padding'?: React.CSSProperties['padding'];
@@ -165,7 +165,7 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
               {renderImages()}
             </Carousel>
           ) : (
-            <ActivityIndicator type="spinner" size="lg" />
+            <Loading type="spinner" size="lg" />
           ))}
       </div>
       <div className={bem('footer')}>

@@ -219,10 +219,10 @@ module.exports = {
         style: false,
       },
       {
-        key: 'activity-indicator',
-        name: '活动指示器',
-        module: () => import('zarm/activity-indicator/demo.md'),
-        source: 'zarm/activity-indicator/demo.md',
+        key: 'loading',
+        name: '加载中',
+        module: () => import('zarm/loading/demo.md'),
+        source: 'zarm/loading/demo.md',
         style: false,
       },
       {

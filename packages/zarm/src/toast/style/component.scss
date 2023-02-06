@@ -2,17 +2,19 @@
   @include define(text-color, var(--za-color-text-inverse));
   @include define(icon-color, var(--za-color-text-inverse));
   @include define(font-size, 13px);
-  @include define(icon-size, 36px);
+  @include define(icon-size, 50px);
   @include define(border-radius, 6px);
   @include define(background-color, rgba(0, 0, 0, var(--za-opacity-toast)));
 
+  max-width: 85%;
   color: var(--text-color);
   font-size: var(--font-size);
   line-height: 1.5;
   position: relative;
   border-radius: var(--border-radius);
   background-color: var(--background-color);
-  overflow: auto;
+  margin: 0 32px;
+  text-align: center;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -23,11 +25,10 @@
   }
 
   @include m(icon) {
-    min-width: 120px;
-    min-height: 115px;
-    padding: var(--za-padding-h-xl) var(--za-padding-h-sm);
+    padding: 15px;
 
     @include e(text) {
+      min-width: 70px;
       margin-top: var(--za-padding-v-md);
     }
   }
@@ -37,6 +38,8 @@
   }
 
   @include e(icon) {
+    min-width: 50px;
+    min-height: 50px;
     color: var(--icon-color);
     font-size: var(--icon-size);
     justify-content: center;
@@ -45,10 +48,6 @@
 
     @include b(icon) {
       --font-size: var(--icon-size);
-    }
-
-    @include b(activity-indicator) {
-      --size: var(--icon-size);
     }
   }
 }

@@ -1,12 +1,12 @@
 export { default as ActionSheet } from './action-sheet';
 export type { ActionSheetCssVars, ActionSheetItemProps, ActionSheetProps } from './action-sheet';
-export { default as ActivityIndicator } from './activity-indicator';
-export type { ActivityIndicatorCssVars, ActivityIndicatorProps } from './activity-indicator';
+export { default as Loading } from './loading';
+export type { LoadingProps, LoadingCssVars } from './loading';
 export { default as Affix } from './affix';
 export type { AffixCssVars, AffixProps } from './affix';
+// export { default as Alert } from './alert';
 export type { AlertProps } from './alert';
 export { default as BackTop } from './back-top';
-// export { default as Alert } from './alert';
 export type { BackTopCssVars, BackTopProps } from './back-top';
 export { default as Badge } from './badge';
 export type { BadgeCssVars, BadgeProps } from './badge';
@@ -123,7 +123,6 @@ export { default as useInViewport } from './useInViewport';
 export { default as useLongPress } from './useLongPress';
 export type { UseLongPressProps } from './useLongPress';
 export { default as useOrientation } from './useOrientation';
-// hooks
 export type { UseOrientationProps } from './useOrientation';
 export { default as useScroll } from './useScroll';
 export type { UseScrollProps } from './useScroll';
