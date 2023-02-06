@@ -51,7 +51,7 @@ const getChecked = (props: CheckboxProps, defaultChecked?: boolean) => {
   return props.checked ?? props.defaultChecked ?? defaultChecked;
 };
 
-export type CheckboxRef = {
+export interface CheckboxRef {
   check?: () => void;
   uncheck?: () => void;
   toggle?: () => void;
@@ -60,7 +60,7 @@ export type CheckboxRef = {
 const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
   const inputRef = useRef<HTMLInputElement>(null);
   let [checked, setChecked] = useState(getChecked(props, false));
-  let disabled = props.disabled;
+  let { disabled } = props;
 
   const groupContext = useContext(CheckboxGroupContext);
   if (groupContext && props.value !== undefined) {
@@ -91,7 +91,7 @@ const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
 
   const textRender = props.children && <span className={bem('text')}>{props.children}</span>;
 
-  let iconRender = (
+  const iconRender = (
     <span className={bem('icon')}>
       {props.renderIcon ? (
         props.renderIcon(currentProps)
@@ -121,7 +121,7 @@ const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
     />
   );
 
-  let contentRender = props.render ? (
+  const contentRender = props.render ? (
     props.render(currentProps)
   ) : (
     <>
