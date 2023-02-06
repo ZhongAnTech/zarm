@@ -107,7 +107,6 @@ const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
       id={props.id}
       type="checkbox"
       className={bem('input')}
-      role="checkbox"
       aria-checked={checked}
       disabled={disabled}
       value={props.value}

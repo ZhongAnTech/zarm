@@ -9,7 +9,6 @@ exports[`Checkbox defaultChecked 1`] = `
       aria-checked="true"
       checked=""
       class="za-checkbox__input"
-      role="checkbox"
       type="checkbox"
       value=""
     />
@@ -17,7 +16,6 @@ exports[`Checkbox defaultChecked 1`] = `
       aria-checked="true"
       checked=""
       class="za-checkbox__input"
-      role="checkbox"
       type="checkbox"
       value=""
     />
@@ -64,7 +62,6 @@ exports[`Checkbox disabled 1`] = `
       aria-checked="false"
       class="za-checkbox__input"
       disabled=""
-      role="checkbox"
       type="checkbox"
       value=""
     />
@@ -72,7 +69,6 @@ exports[`Checkbox disabled 1`] = `
       aria-checked="false"
       class="za-checkbox__input"
       disabled=""
-      role="checkbox"
       type="checkbox"
       value=""
     />
@@ -119,7 +115,6 @@ exports[`Checkbox renders correctly 1`] = `
       aria-checked="true"
       checked=""
       class="za-checkbox__input"
-      role="checkbox"
       type="checkbox"
       value=""
     />
@@ -127,7 +122,6 @@ exports[`Checkbox renders correctly 1`] = `
       aria-checked="true"
       checked=""
       class="za-checkbox__input"
-      role="checkbox"
       type="checkbox"
       value=""
     />
@@ -179,14 +173,12 @@ exports[`Checkbox.Group render defaultValue correctly 1`] = `
         <input
           aria-checked="false"
           class="za-checkbox__input"
-          role="checkbox"
           type="checkbox"
           value="0"
         />
         <input
           aria-checked="false"
           class="za-checkbox__input"
-          role="checkbox"
           type="checkbox"
           value="0"
         />
@@ -228,7 +220,6 @@ exports[`Checkbox.Group render defaultValue correctly 1`] = `
           aria-checked="true"
           checked=""
           class="za-checkbox__input"
-          role="checkbox"
           type="checkbox"
           value="1"
         />
@@ -236,7 +227,6 @@ exports[`Checkbox.Group render defaultValue correctly 1`] = `
           aria-checked="true"
           checked=""
           class="za-checkbox__input"
-          role="checkbox"
           type="checkbox"
           value="1"
         />
@@ -277,14 +267,12 @@ exports[`Checkbox.Group render defaultValue correctly 1`] = `
         <input
           aria-checked="false"
           class="za-checkbox__input"
-          role="checkbox"
           type="checkbox"
           value="2"
         />
         <input
           aria-checked="false"
           class="za-checkbox__input"
-          role="checkbox"
           type="checkbox"
           value="2"
         />
@@ -339,7 +327,6 @@ exports[`Checkbox.Group render value correctly 1`] = `
           aria-checked="true"
           checked=""
           class="za-checkbox__input"
-          role="checkbox"
           type="checkbox"
           value="0"
         />
@@ -347,7 +334,6 @@ exports[`Checkbox.Group render value correctly 1`] = `
           aria-checked="true"
           checked=""
           class="za-checkbox__input"
-          role="checkbox"
           type="checkbox"
           value="0"
         />
@@ -388,14 +374,12 @@ exports[`Checkbox.Group render value correctly 1`] = `
         <input
           aria-checked="false"
           class="za-checkbox__input"
-          role="checkbox"
           type="checkbox"
           value="1"
         />
         <input
           aria-checked="false"
           class="za-checkbox__input"
-          role="checkbox"
           type="checkbox"
           value="1"
         />
@@ -436,14 +420,12 @@ exports[`Checkbox.Group render value correctly 1`] = `
         <input
           aria-checked="false"
           class="za-checkbox__input"
-          role="checkbox"
           type="checkbox"
           value="2"
         />
         <input
           aria-checked="false"
           class="za-checkbox__input"
-          role="checkbox"
           type="checkbox"
           value="2"
         />
@@ -497,14 +479,12 @@ exports[`Checkbox.Group renders correctly 1`] = `
         <input
           aria-checked="false"
           class="za-checkbox__input"
-          role="checkbox"
           type="checkbox"
           value="0"
         />
         <input
           aria-checked="false"
           class="za-checkbox__input"
-          role="checkbox"
           type="checkbox"
           value="0"
         />
@@ -545,14 +525,12 @@ exports[`Checkbox.Group renders correctly 1`] = `
         <input
           aria-checked="true"
           class="za-checkbox__input"
-          role="checkbox"
           type="checkbox"
           value="1"
         />
         <input
           aria-checked="true"
           class="za-checkbox__input"
-          role="checkbox"
           type="checkbox"
           value="1"
         />
@@ -593,14 +571,12 @@ exports[`Checkbox.Group renders correctly 1`] = `
         <input
           aria-checked="false"
           class="za-checkbox__input"
-          role="checkbox"
           type="checkbox"
           value="2"
         />
         <input
           aria-checked="false"
           class="za-checkbox__input"
-          role="checkbox"
           type="checkbox"
           value="2"
         />
@@ -654,7 +630,6 @@ exports[`Checkbox.Group type is button 1`] = `
         <input
           aria-checked="false"
           class="za-checkbox__input"
-          role="checkbox"
           type="checkbox"
           value="0"
         />
@@ -674,7 +649,6 @@ exports[`Checkbox.Group type is button 1`] = `
         <input
           aria-checked="false"
           class="za-checkbox__input"
-          role="checkbox"
           type="checkbox"
           value="1"
         />
@@ -694,7 +668,6 @@ exports[`Checkbox.Group type is button 1`] = `
         <input
           aria-checked="false"
           class="za-checkbox__input"
-          role="checkbox"
           type="checkbox"
           value="2"
         />
@@ -733,7 +706,6 @@ exports[`Checkbox.Group type is list 1`] = `
             <input
               aria-checked="false"
               class="za-checkbox__input"
-              role="checkbox"
               type="checkbox"
               value="0"
             />
@@ -790,7 +762,6 @@ exports[`Checkbox.Group type is list 1`] = `
             <input
               aria-checked="false"
               class="za-checkbox__input"
-              role="checkbox"
               type="checkbox"
               value="1"
             />
@@ -847,7 +818,6 @@ exports[`Checkbox.Group type is list 1`] = `
             <input
               aria-checked="false"
               class="za-checkbox__input"
-              role="checkbox"
               type="checkbox"
               value="2"
             />
