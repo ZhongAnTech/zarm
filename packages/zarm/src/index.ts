@@ -26,6 +26,7 @@ export type {
   CheckboxGroupCssVars,
   CheckboxGroupProps,
   CheckboxProps,
+  CheckboxRef,
 } from './checkbox';
 export { default as Collapse } from './collapse';
 export type { CollapseItemProps, CollapseProps } from './collapse';

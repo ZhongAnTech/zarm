@@ -257,8 +257,9 @@ const Demo = () => {
     setValue(value);
   };
 
-  const ButtonCheckbox = (props) => {
+  const CustomCheckbox = (props) => {
     const checkboxRef = useRef();
+
     return (
       <Checkbox
         ref={checkboxRef}
@@ -291,9 +292,7 @@ const Demo = () => {
             {props.label}
           </div>
         )}
-      >
-        {props.label}
-      </Checkbox>
+      />
     );
   };
   return (
@@ -308,7 +307,7 @@ const Demo = () => {
           }}
         >
           {items.map((item, index) => (
-            <ButtonCheckbox key={+index} value={String(index)} label={item} />
+            <CustomCheckbox key={+index} value={String(index)} label={item} />
           ))}
         </Checkbox.Group>
       </List.Item>
@@ -377,3 +376,15 @@ ReactDOM.render(<Demo />, mountNode);
 | :------------------------- | :----- | :------------------- |
 | --group-spacing-vertical   | '8px'  | 组合使用时的纵向间距 |
 | --group-spacing-horizontal | '24px' | 组合使用时的横向间距 |
+
+## Checkbox 指令式 API
+```js
+// 选择
+ref.current.check();
+
+// 取消选择
+ref.current.uncheck();
+
+// 切换选择
+ref.current.toggle();
+```

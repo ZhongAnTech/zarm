@@ -52,9 +52,9 @@ const getChecked = (props: CheckboxProps, defaultChecked?: boolean) => {
 };
 
 export interface CheckboxRef {
-  check?: () => void;
-  uncheck?: () => void;
-  toggle?: () => void;
+  check: () => void;
+  uncheck: () => void;
+  toggle: () => void;
 };
 
 const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
@@ -107,6 +107,8 @@ const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
       id={props.id}
       type="checkbox"
       className={bem('input')}
+      role="checkbox"
+      aria-checked={checked}
       disabled={disabled}
       value={props.value}
       checked={checked}
