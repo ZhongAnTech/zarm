@@ -7,3 +7,19 @@ exports[`Popper renders correctly 1`] = `
   </p>
 </div>
 `;
+
+exports[`Popper renders menu-slide 1`] = `
+<div>
+  <p>
+    点我
+  </p>
+</div>
+`;
+
+exports[`Popper renders menu-slide bottom 1`] = `
+<div>
+  <p>
+    点我
+  </p>
+</div>
+`;
