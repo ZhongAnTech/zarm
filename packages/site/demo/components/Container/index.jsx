@@ -63,7 +63,7 @@ const Container = (props) => {
                 </ul>
                 <div className="themes">
                   <Radio.Group
-                    buttonCompact
+                    compact
                     type="button"
                     value={theme}
                     onChange={(value) => {
@@ -84,7 +84,7 @@ const Container = (props) => {
             <>
               <div className="lang">
                 <Radio.Group
-                  buttonCompact
+                  compact
                   type="button"
                   value={locale}
                   onChange={(value) => {

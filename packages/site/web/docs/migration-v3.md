@@ -111,29 +111,6 @@
   export default App;
 ```
 
-### Radio.Group
-
-`size`、`shape`、`ghost`、`compact` 属性增加 button 前缀
-
-```diff
-  import { Radio } from 'zarm';
-
-  const App: React.FC = () => (
-    <Radio.Group
--     size="md"
--     shape="round"
--     ghost
--     compact
-+     buttonSize="md"
-+     buttonShape="round"
-+     buttonGhost
-+     buttonCompact
-    />
-  );
-
-  export default App;
-```
-
 ### Input
 
 `onChange` 回调参数调整为 event

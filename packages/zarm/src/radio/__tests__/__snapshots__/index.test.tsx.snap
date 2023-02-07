@@ -1,64 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Radio defaultChecked 1`] = `
-<div>
-  <span
+<DocumentFragment>
+  <label
     class="za-radio za-radio--checked"
   >
-    <span
-      class="za-radio__widget"
-    >
-      <span
-        class="za-radio__inner"
-      >
-        <i
-          class="za-icon za-radio__marker"
-        >
-          <svg
-            aria-hidden="true"
-            fill="currentColor"
-            focusable="false"
-            height="1em"
-            viewBox="0 0 1000 1000"
-            width="1em"
-          >
-            <path
-              d="M119.415 524.046c-9.708-9.693-11.278-24.766-2.72-35.554l20.007-25.223c8.201-10.34 23.543-12.936 34.386-5.699l173.175 115.585c9.134 6.097 24.856 5.303 33.384-1.616l457.6-371.25c10.286-8.345 26.397-7.634 35.412 1.368l11.272 11.255c9.81 9.795 9.096 25.343-1.187 35.611l-491.14 490.414c-15.28 15.258-40.369 14.59-56.099-1.116l-214.09-213.775z"
-              fill-rule="nonzero"
-            />
-          </svg>
-        </i>
-      </span>
-    </span>
-    <span
-      class="za-radio__text"
-    >
-      选项一
-    </span>
     <input
       aria-checked="true"
       checked=""
       class="za-radio__input"
       type="radio"
-      value="0"
+      value=""
     />
-  </span>
-</div>
-`;
-
-exports[`Radio renders correctly 1`] = `
-<div>
-  <span
-    class="za-radio"
-  >
+    <input
+      aria-checked="true"
+      checked=""
+      class="za-radio__input"
+      type="radio"
+      value=""
+    />
     <span
-      class="za-radio__widget"
+      class="za-radio__icon"
     >
       <span
-        class="za-radio__inner"
+        class="za-radio__tick"
       >
         <i
-          class="za-icon za-radio__marker"
+          class="za-icon"
         >
           <svg
             aria-hidden="true"
@@ -79,124 +47,149 @@ exports[`Radio renders correctly 1`] = `
     <span
       class="za-radio__text"
     >
-      选项一
+      foo
     </span>
+  </label>
+</DocumentFragment>
+`;
+
+exports[`Radio disabled 1`] = `
+<DocumentFragment>
+  <label
+    class="za-radio za-radio--disabled"
+  >
     <input
       aria-checked="false"
       class="za-radio__input"
+      disabled=""
       type="radio"
-      value="0"
+      value=""
     />
-  </span>
-</div>
-`;
-
-exports[`Radio type is button 1`] = `
-<div>
-  <button
-    aria-disabled="false"
-    class="za-button za-button--default za-button--md za-button--radius za-radio"
-    type="button"
-  >
-    <span>
-      选项一
-      <input
-        aria-checked="false"
-        class="za-radio__input"
-        type="radio"
-        value="0"
-      />
+    <input
+      aria-checked="false"
+      class="za-radio__input"
+      disabled=""
+      type="radio"
+      value=""
+    />
+    <span
+      class="za-radio__icon"
+    >
+      <span
+        class="za-radio__tick"
+      >
+        <i
+          class="za-icon"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="0 0 1000 1000"
+            width="1em"
+          >
+            <path
+              d="M119.415 524.046c-9.708-9.693-11.278-24.766-2.72-35.554l20.007-25.223c8.201-10.34 23.543-12.936 34.386-5.699l173.175 115.585c9.134 6.097 24.856 5.303 33.384-1.616l457.6-371.25c10.286-8.345 26.397-7.634 35.412 1.368l11.272 11.255c9.81 9.795 9.096 25.343-1.187 35.611l-491.14 490.414c-15.28 15.258-40.369 14.59-56.099-1.116l-214.09-213.775z"
+              fill-rule="nonzero"
+            />
+          </svg>
+        </i>
+      </span>
     </span>
-  </button>
-</div>
+    <span
+      class="za-radio__text"
+    >
+      foo
+    </span>
+  </label>
+</DocumentFragment>
 `;
 
-exports[`Radio type is list 1`] = `
-<div>
-  <li
-    class="za-list-item za-list-item--link za-radio"
+exports[`Radio renders correctly 1`] = `
+<DocumentFragment>
+  <label
+    class="za-radio za-radio--checked"
   >
-    <div
-      class="za-list-item__prefix"
+    <input
+      aria-checked="true"
+      checked=""
+      class="za-radio__input"
+      type="radio"
+      value=""
+    />
+    <input
+      aria-checked="true"
+      checked=""
+      class="za-radio__input"
+      type="radio"
+      value=""
+    />
+    <span
+      class="za-radio__icon"
     >
       <span
-        class="za-radio__widget"
+        class="za-radio__tick"
       >
-        <span
-          class="za-radio__inner"
+        <i
+          class="za-icon"
         >
-          <i
-            class="za-icon za-radio__marker"
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="0 0 1000 1000"
+            width="1em"
           >
-            <svg
-              aria-hidden="true"
-              fill="currentColor"
-              focusable="false"
-              height="1em"
-              viewBox="0 0 1000 1000"
-              width="1em"
-            >
-              <path
-                d="M119.415 524.046c-9.708-9.693-11.278-24.766-2.72-35.554l20.007-25.223c8.201-10.34 23.543-12.936 34.386-5.699l173.175 115.585c9.134 6.097 24.856 5.303 33.384-1.616l457.6-371.25c10.286-8.345 26.397-7.634 35.412 1.368l11.272 11.255c9.81 9.795 9.096 25.343-1.187 35.611l-491.14 490.414c-15.28 15.258-40.369 14.59-56.099-1.116l-214.09-213.775z"
-                fill-rule="nonzero"
-              />
-            </svg>
-          </i>
-        </span>
+            <path
+              d="M119.415 524.046c-9.708-9.693-11.278-24.766-2.72-35.554l20.007-25.223c8.201-10.34 23.543-12.936 34.386-5.699l173.175 115.585c9.134 6.097 24.856 5.303 33.384-1.616l457.6-371.25c10.286-8.345 26.397-7.634 35.412 1.368l11.272 11.255c9.81 9.795 9.096 25.343-1.187 35.611l-491.14 490.414c-15.28 15.258-40.369 14.59-56.099-1.116l-214.09-213.775z"
+              fill-rule="nonzero"
+            />
+          </svg>
+        </i>
       </span>
-      <input
-        aria-checked="false"
-        class="za-radio__input"
-        type="radio"
-        value="0"
-      />
-    </div>
-    <div
-      class="za-list-item__wrapper"
+    </span>
+    <span
+      class="za-radio__text"
     >
-      <div
-        class="za-list-item__inner"
-      >
-        <div
-          class="za-list-item__title"
-        >
-          <span
-            class="za-radio__text"
-          >
-            选项一
-          </span>
-          <input
-            aria-checked="false"
-            class="za-radio__input"
-            type="radio"
-            value="0"
-          />
-        </div>
-      </div>
-    </div>
-  </li>
-</div>
+      foo
+    </span>
+  </label>
+</DocumentFragment>
 `;
 
-exports[`Radio.Group Radio checked 1`] = `
-<div>
+exports[`Radio.Group render defaultValue correctly 1`] = `
+<DocumentFragment>
   <div
-    class="za-radio-group za-radio-group--button-xs za-radio-group--button-radius"
+    class="za-radio-group"
   >
     <div
       class="za-radio-group__inner"
     >
-      <span
+      <label
         class="za-radio"
       >
+        <input
+          aria-checked="false"
+          class="za-radio__input"
+          type="radio"
+          value="0"
+        />
+        <input
+          aria-checked="false"
+          class="za-radio__input"
+          type="radio"
+          value="0"
+        />
         <span
-          class="za-radio__widget"
+          class="za-radio__icon"
         >
           <span
-            class="za-radio__inner"
+            class="za-radio__tick"
           >
             <i
-              class="za-icon za-radio__marker"
+              class="za-icon"
             >
               <svg
                 aria-hidden="true"
@@ -219,24 +212,32 @@ exports[`Radio.Group Radio checked 1`] = `
         >
           选项一
         </span>
-        <input
-          aria-checked="false"
-          class="za-radio__input"
-          type="radio"
-          value="0"
-        />
-      </span>
-      <span
+      </label>
+      <label
         class="za-radio za-radio--checked"
       >
+        <input
+          aria-checked="true"
+          checked=""
+          class="za-radio__input"
+          type="radio"
+          value="1"
+        />
+        <input
+          aria-checked="true"
+          checked=""
+          class="za-radio__input"
+          type="radio"
+          value="1"
+        />
         <span
-          class="za-radio__widget"
+          class="za-radio__icon"
         >
           <span
-            class="za-radio__inner"
+            class="za-radio__tick"
           >
             <i
-              class="za-icon za-radio__marker"
+              class="za-icon"
             >
               <svg
                 aria-hidden="true"
@@ -259,25 +260,30 @@ exports[`Radio.Group Radio checked 1`] = `
         >
           选项二
         </span>
-        <input
-          aria-checked="true"
-          checked=""
-          class="za-radio__input"
-          type="radio"
-          value="1"
-        />
-      </span>
-      <span
+      </label>
+      <label
         class="za-radio"
       >
+        <input
+          aria-checked="false"
+          class="za-radio__input"
+          type="radio"
+          value="2"
+        />
+        <input
+          aria-checked="false"
+          class="za-radio__input"
+          type="radio"
+          value="2"
+        />
         <span
-          class="za-radio__widget"
+          class="za-radio__icon"
         >
           <span
-            class="za-radio__inner"
+            class="za-radio__tick"
           >
             <i
-              class="za-icon za-radio__marker"
+              class="za-icon"
             >
               <svg
                 aria-hidden="true"
@@ -300,37 +306,45 @@ exports[`Radio.Group Radio checked 1`] = `
         >
           选项三
         </span>
-        <input
-          aria-checked="false"
-          class="za-radio__input"
-          type="radio"
-          value="2"
-        />
-      </span>
+      </label>
     </div>
   </div>
-</div>
+</DocumentFragment>
 `;
 
-exports[`Radio.Group defaultValue 1`] = `
-<div>
+exports[`Radio.Group render value correctly 1`] = `
+<DocumentFragment>
   <div
-    class="za-radio-group za-radio-group--button-xs za-radio-group--button-radius"
+    class="za-radio-group"
   >
     <div
       class="za-radio-group__inner"
     >
-      <span
-        class="za-radio"
+      <label
+        class="za-radio za-radio--checked"
       >
+        <input
+          aria-checked="true"
+          checked=""
+          class="za-radio__input"
+          type="radio"
+          value="0"
+        />
+        <input
+          aria-checked="true"
+          checked=""
+          class="za-radio__input"
+          type="radio"
+          value="0"
+        />
         <span
-          class="za-radio__widget"
+          class="za-radio__icon"
         >
           <span
-            class="za-radio__inner"
+            class="za-radio__tick"
           >
             <i
-              class="za-icon za-radio__marker"
+              class="za-icon"
             >
               <svg
                 aria-hidden="true"
@@ -353,24 +367,30 @@ exports[`Radio.Group defaultValue 1`] = `
         >
           选项一
         </span>
+      </label>
+      <label
+        class="za-radio"
+      >
         <input
           aria-checked="false"
           class="za-radio__input"
           type="radio"
-          value="0"
+          value="1"
         />
-      </span>
-      <span
-        class="za-radio za-radio--checked"
-      >
+        <input
+          aria-checked="false"
+          class="za-radio__input"
+          type="radio"
+          value="1"
+        />
         <span
-          class="za-radio__widget"
+          class="za-radio__icon"
         >
           <span
-            class="za-radio__inner"
+            class="za-radio__tick"
           >
             <i
-              class="za-icon za-radio__marker"
+              class="za-icon"
             >
               <svg
                 aria-hidden="true"
@@ -393,25 +413,30 @@ exports[`Radio.Group defaultValue 1`] = `
         >
           选项二
         </span>
-        <input
-          aria-checked="true"
-          checked=""
-          class="za-radio__input"
-          type="radio"
-          value="1"
-        />
-      </span>
-      <span
+      </label>
+      <label
         class="za-radio"
       >
+        <input
+          aria-checked="false"
+          class="za-radio__input"
+          type="radio"
+          value="2"
+        />
+        <input
+          aria-checked="false"
+          class="za-radio__input"
+          type="radio"
+          value="2"
+        />
         <span
-          class="za-radio__widget"
+          class="za-radio__icon"
         >
           <span
-            class="za-radio__inner"
+            class="za-radio__tick"
           >
             <i
-              class="za-icon za-radio__marker"
+              class="za-icon"
             >
               <svg
                 aria-hidden="true"
@@ -434,37 +459,43 @@ exports[`Radio.Group defaultValue 1`] = `
         >
           选项三
         </span>
-        <input
-          aria-checked="false"
-          class="za-radio__input"
-          type="radio"
-          value="2"
-        />
-      </span>
+      </label>
     </div>
   </div>
-</div>
+</DocumentFragment>
 `;
 
 exports[`Radio.Group renders correctly 1`] = `
-<div>
+<DocumentFragment>
   <div
-    class="za-radio-group za-radio-group--button-xs za-radio-group--button-radius"
+    class="za-radio-group"
   >
     <div
       class="za-radio-group__inner"
     >
-      <span
-        class="za-radio za-radio--checked"
+      <label
+        class="za-radio"
       >
+        <input
+          aria-checked="false"
+          class="za-radio__input"
+          type="radio"
+          value="0"
+        />
+        <input
+          aria-checked="false"
+          class="za-radio__input"
+          type="radio"
+          value="0"
+        />
         <span
-          class="za-radio__widget"
+          class="za-radio__icon"
         >
           <span
-            class="za-radio__inner"
+            class="za-radio__tick"
           >
             <i
-              class="za-icon za-radio__marker"
+              class="za-icon"
             >
               <svg
                 aria-hidden="true"
@@ -487,25 +518,30 @@ exports[`Radio.Group renders correctly 1`] = `
         >
           选项一
         </span>
-        <input
-          aria-checked="true"
-          checked=""
-          class="za-radio__input"
-          type="radio"
-          value="0"
-        />
-      </span>
-      <span
+      </label>
+      <label
         class="za-radio"
       >
+        <input
+          aria-checked="false"
+          class="za-radio__input"
+          type="radio"
+          value="1"
+        />
+        <input
+          aria-checked="false"
+          class="za-radio__input"
+          type="radio"
+          value="1"
+        />
         <span
-          class="za-radio__widget"
+          class="za-radio__icon"
         >
           <span
-            class="za-radio__inner"
+            class="za-radio__tick"
           >
             <i
-              class="za-icon za-radio__marker"
+              class="za-icon"
             >
               <svg
                 aria-hidden="true"
@@ -528,24 +564,30 @@ exports[`Radio.Group renders correctly 1`] = `
         >
           选项二
         </span>
+      </label>
+      <label
+        class="za-radio"
+      >
         <input
           aria-checked="false"
           class="za-radio__input"
           type="radio"
-          value="1"
+          value="2"
         />
-      </span>
-      <span
-        class="za-radio"
-      >
+        <input
+          aria-checked="false"
+          class="za-radio__input"
+          type="radio"
+          value="2"
+        />
         <span
-          class="za-radio__widget"
+          class="za-radio__icon"
         >
           <span
-            class="za-radio__inner"
+            class="za-radio__tick"
           >
             <i
-              class="za-icon za-radio__marker"
+              class="za-icon"
             >
               <svg
                 aria-hidden="true"
@@ -568,14 +610,263 @@ exports[`Radio.Group renders correctly 1`] = `
         >
           选项三
         </span>
+      </label>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Radio.Group type is button 1`] = `
+<DocumentFragment>
+  <div
+    class="za-radio-group za-radio-group--button"
+  >
+    <div
+      class="za-radio-group__inner"
+    >
+      <label
+        class="za-radio"
+      >
+        <input
+          aria-checked="false"
+          class="za-radio__input"
+          type="radio"
+          value="0"
+        />
+        <button
+          aria-disabled="false"
+          class="za-button za-button--default za-button--xs za-button--radius"
+          type="button"
+        >
+          <span>
+            选项一
+          </span>
+        </button>
+      </label>
+      <label
+        class="za-radio"
+      >
+        <input
+          aria-checked="false"
+          class="za-radio__input"
+          type="radio"
+          value="1"
+        />
+        <button
+          aria-disabled="false"
+          class="za-button za-button--default za-button--xs za-button--radius"
+          type="button"
+        >
+          <span>
+            选项二
+          </span>
+        </button>
+      </label>
+      <label
+        class="za-radio"
+      >
         <input
           aria-checked="false"
           class="za-radio__input"
           type="radio"
           value="2"
         />
-      </span>
+        <button
+          aria-disabled="false"
+          class="za-button za-button--default za-button--xs za-button--radius"
+          type="button"
+        >
+          <span>
+            选项三
+          </span>
+        </button>
+      </label>
     </div>
   </div>
-</div>
+</DocumentFragment>
+`;
+
+exports[`Radio.Group type is list 1`] = `
+<DocumentFragment>
+  <div
+    class="za-radio-group za-radio-group--list"
+  >
+    <div
+      class="za-radio-group__inner"
+    >
+      <ul
+        class="za-list"
+      >
+        <li
+          class="za-list-item za-list-item--link za-radio"
+        >
+          <div
+            class="za-list-item__prefix"
+          >
+            <input
+              aria-checked="false"
+              class="za-radio__input"
+              type="radio"
+              value="0"
+            />
+            <span
+              class="za-radio__icon"
+            >
+              <span
+                class="za-radio__tick"
+              >
+                <i
+                  class="za-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="currentColor"
+                    focusable="false"
+                    height="1em"
+                    viewBox="0 0 1000 1000"
+                    width="1em"
+                  >
+                    <path
+                      d="M119.415 524.046c-9.708-9.693-11.278-24.766-2.72-35.554l20.007-25.223c8.201-10.34 23.543-12.936 34.386-5.699l173.175 115.585c9.134 6.097 24.856 5.303 33.384-1.616l457.6-371.25c10.286-8.345 26.397-7.634 35.412 1.368l11.272 11.255c9.81 9.795 9.096 25.343-1.187 35.611l-491.14 490.414c-15.28 15.258-40.369 14.59-56.099-1.116l-214.09-213.775z"
+                      fill-rule="nonzero"
+                    />
+                  </svg>
+                </i>
+              </span>
+            </span>
+          </div>
+          <div
+            class="za-list-item__wrapper"
+          >
+            <div
+              class="za-list-item__inner"
+            >
+              <div
+                class="za-list-item__title"
+              >
+                <span
+                  class="za-radio__text"
+                >
+                  选项一
+                </span>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          class="za-list-item za-list-item--link za-radio"
+        >
+          <div
+            class="za-list-item__prefix"
+          >
+            <input
+              aria-checked="false"
+              class="za-radio__input"
+              type="radio"
+              value="1"
+            />
+            <span
+              class="za-radio__icon"
+            >
+              <span
+                class="za-radio__tick"
+              >
+                <i
+                  class="za-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="currentColor"
+                    focusable="false"
+                    height="1em"
+                    viewBox="0 0 1000 1000"
+                    width="1em"
+                  >
+                    <path
+                      d="M119.415 524.046c-9.708-9.693-11.278-24.766-2.72-35.554l20.007-25.223c8.201-10.34 23.543-12.936 34.386-5.699l173.175 115.585c9.134 6.097 24.856 5.303 33.384-1.616l457.6-371.25c10.286-8.345 26.397-7.634 35.412 1.368l11.272 11.255c9.81 9.795 9.096 25.343-1.187 35.611l-491.14 490.414c-15.28 15.258-40.369 14.59-56.099-1.116l-214.09-213.775z"
+                      fill-rule="nonzero"
+                    />
+                  </svg>
+                </i>
+              </span>
+            </span>
+          </div>
+          <div
+            class="za-list-item__wrapper"
+          >
+            <div
+              class="za-list-item__inner"
+            >
+              <div
+                class="za-list-item__title"
+              >
+                <span
+                  class="za-radio__text"
+                >
+                  选项二
+                </span>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          class="za-list-item za-list-item--link za-radio"
+        >
+          <div
+            class="za-list-item__prefix"
+          >
+            <input
+              aria-checked="false"
+              class="za-radio__input"
+              type="radio"
+              value="2"
+            />
+            <span
+              class="za-radio__icon"
+            >
+              <span
+                class="za-radio__tick"
+              >
+                <i
+                  class="za-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="currentColor"
+                    focusable="false"
+                    height="1em"
+                    viewBox="0 0 1000 1000"
+                    width="1em"
+                  >
+                    <path
+                      d="M119.415 524.046c-9.708-9.693-11.278-24.766-2.72-35.554l20.007-25.223c8.201-10.34 23.543-12.936 34.386-5.699l173.175 115.585c9.134 6.097 24.856 5.303 33.384-1.616l457.6-371.25c10.286-8.345 26.397-7.634 35.412 1.368l11.272 11.255c9.81 9.795 9.096 25.343-1.187 35.611l-491.14 490.414c-15.28 15.258-40.369 14.59-56.099-1.116l-214.09-213.775z"
+                      fill-rule="nonzero"
+                    />
+                  </svg>
+                </i>
+              </span>
+            </span>
+          </div>
+          <div
+            class="za-list-item__wrapper"
+          >
+            <div
+              class="za-list-item__inner"
+            >
+              <div
+                class="za-list-item__title"
+              >
+                <span
+                  class="za-radio__text"
+                >
+                  选项三
+                </span>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</DocumentFragment>
 `;

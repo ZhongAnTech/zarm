@@ -46,7 +46,7 @@ const Demo = () => {
         suffix={
           <Radio.Group
             value={!!props.image}
-            buttonCompact
+            compact
             type="button"
             onChange={(value) => setProps({ image: value ? WATERMARK_IMAGE_URL : null })}
           >
@@ -103,7 +103,7 @@ const Demo = () => {
             suffix={
               <Radio.Group
                 value={isMultiline}
-                buttonCompact
+                compact
                 type="button"
                 onChange={(value) => setProps({ text: value ? MULTI_LINE_TEXT : UNILINE_TEXT })}
               >
@@ -131,7 +131,7 @@ const Demo = () => {
             suffix={
               <Radio.Group
                 value={props.textStyle.textAlign}
-                buttonCompact
+                compact
                 type="button"
                 onChange={(value) => setProps({ textStyle: { textAlign: value } })}
               >
@@ -149,7 +149,7 @@ const Demo = () => {
         suffix={
           <Radio.Group
             value={props.mode}
-            buttonCompact
+            compact
             type="button"
             onChange={(value) => setProps({ mode: value })}
           >

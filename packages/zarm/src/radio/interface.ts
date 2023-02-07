@@ -1,31 +1,27 @@
 import { ReactNode } from 'react';
-import type { ButtonSize, ButtonShape } from '../button/interface';
 
 export type RadioType = 'button' | 'list';
 export type RadioValue = number | string;
-export type RadioGroupListMarkerAlign = 'before' | 'after';
+export type RadioGroupListIconAlign = 'before' | 'after';
 
 export interface BaseRadioProps {
-  type?: RadioType;
   disabled?: boolean;
-  checked?: boolean;
   defaultChecked?: boolean;
+  checked?: boolean;
   value?: RadioValue;
   id?: string;
-  listMarkerAlign?: RadioGroupListMarkerAlign;
+  indeterminate?: boolean;
+  children?: ReactNode;
 }
 
 export interface BaseRadioGroupProps {
   type?: RadioType;
   disabled?: boolean;
   block?: boolean;
-  value?: RadioValue;
+  compact?: boolean;
   defaultValue?: RadioValue;
-  buttonShape?: ButtonShape;
-  buttonSize?: ButtonSize;
-  buttonCompact?: boolean;
-  buttonGhost?: boolean;
-  listMarkerAlign?: RadioGroupListMarkerAlign;
+  value?: RadioValue;
   onChange?: (value: RadioValue) => void;
   children?: ReactNode;
+  listIconAlign?: RadioGroupListIconAlign;
 }

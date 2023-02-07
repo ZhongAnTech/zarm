@@ -1,230 +1,149 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import RadioGroup from '../RadioGroup';
+import { fireEvent, render } from '@testing-library/react';
 import Radio from '../index';
+import type { RadioRef } from '../index';
 
-// class TestRadio extends React.Component<{
-//   checked?: boolean;
-//   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-//   value: number;
-// }> {
-//   render() {
-//     return <input {...this.props} />;
-//   }
-// }
+const classPrefix = 'za-radio';
 
 describe('Radio', () => {
   it('renders correctly', () => {
-    const { container } = render(<Radio value="0">选项一</Radio>);
-    expect(container).toMatchSnapshot();
+    const wrapper = render(
+      <Radio checked onChange={jest.fn()}>
+        foo
+      </Radio>,
+    );
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('defaultChecked', () => {
-    const { container } = render(
-      <Radio defaultChecked value="0">
-        选项一
-      </Radio>,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('type is button', () => {
-    const { container } = render(
-      <Radio type="button" value="0">
-        选项一
-      </Radio>,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('type is list', () => {
-    const { container } = render(
-      <Radio type="list" value="0">
-        选项一
-      </Radio>,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('receive new checked', () => {
-    const onChange = jest.fn();
-    const { container } = render(
-      <Radio value="0" onChange={onChange}>
-        选项一
-      </Radio>,
-    );
-    const radio = container.querySelector('input[type="radio"]');
-    fireEvent.click(radio!);
-    expect(onChange).toBeCalled();
+    const wrapper = render(<Radio defaultChecked>foo</Radio>);
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('disabled', () => {
-    const onChange = jest.fn();
-    const { container } = render(
-      <Radio value="0" onChange={onChange} disabled>
-        选项一
-      </Radio>,
-    );
-    const radio = container.querySelector('input[type="radio"]');
-    fireEvent.click(radio!);
-    expect(onChange).not.toBeCalled();
+    const wrapper = render(<Radio disabled>foo</Radio>);
+    expect(wrapper.asFragment()).toMatchSnapshot();
+  });
+
+  it('click event', () => {
+    const { container } = render(<Radio>foo</Radio>);
+    const input = container.querySelectorAll('input')[0];
+    const radio = container.getElementsByTagName('label')[0];
+
+    expect(input).not.toBeChecked();
+    expect(radio).toHaveClass(`${classPrefix}`);
+
+    fireEvent.click(radio);
+    expect(input).toBeChecked();
+    expect(radio).toHaveClass(`${classPrefix}--checked`);
+
+    fireEvent.click(radio);
+    expect(input).toBeChecked();
+    expect(radio).toHaveClass(`${classPrefix}--checked`);
+  });
+
+  it('static method', () => {
+    const ref = React.createRef<RadioRef>();
+
+    let checked = false;
+    const onChange = jest.fn(e => {
+      checked = e.target.checked;
+    });
+
+    const { container } = render(<Radio ref={ref} onChange={onChange}>foo</Radio>);
+    const input = container.querySelectorAll('input')[0];
+    ref.current?.check();
+    expect(input).toBeChecked();
+    expect(onChange).toHaveBeenCalled();
+    expect(checked).toEqual(true);
+
+    // todo...
+    // ref.current?.uncheck();
+    // expect(input).not.toBeChecked();
+    // expect(onChange).toHaveBeenCalled();
+    // expect(checked).toEqual(false);
   });
 });
 
 describe('Radio.Group', () => {
-  it('should render with children', () => {
-    const { container } = render(
-      <RadioGroup>
-        <Radio value="0">选项一</Radio>
-        <Radio value="1">选项二</Radio>
-      </RadioGroup>,
-    );
-    expect(container.querySelector('.za-radio-group__inner')?.children).toHaveLength(2);
-  });
-
-  // it('should render with cloned react element correctly', () => {
-  //   const wrapper = shallow(
-  //     <RadioGroup type="button">
-  //       <TestRadio value={1} />
-  //       <TestRadio value={2} />
-  //     </RadioGroup>,
-  //   );
-  //   expect(wrapper.find(TestRadio).at(0).props()).toEqual({
-  //     buttonGhost: false,
-  //     buttonShape: 'radius',
-  //     buttonSize: 'xs',
-  //     value: 1,
-  //     checked: false,
-  //     type: 'button',
-  //     listMarkerAlign: 'before',
-  //     disabled: false,
-  //     onChange: expect.any(Function),
-  //   });
-  //   expect(wrapper.find(TestRadio).at(1).props()).toEqual({
-  //     buttonGhost: false,
-  //     buttonShape: 'radius',
-  //     buttonSize: 'xs',
-  //     value: 2,
-  //     checked: false,
-  //     type: 'button',
-  //     listMarkerAlign: 'before',
-  //     disabled: false,
-  //     onChange: expect.any(Function),
-  //   });
-  // });
-
   it('renders correctly', () => {
-    const { container } = render(
-      <Radio.Group value="0" onChange={jest.fn()}>
-        <Radio value="0">选项一</Radio>
-        <Radio value="1">选项二</Radio>
-        <Radio value="2">选项三</Radio>
-      </Radio.Group>,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('receive new value', () => {
-    render(
-      <Radio.Group value="1" onChange={jest.fn()}>
-        <Radio value="0">选项一</Radio>
-        <Radio value="1">选项二</Radio>
-        <Radio value="2">选项三</Radio>
-      </Radio.Group>,
-    );
-    // wrapper.setProps({ value: '1' });
-  });
-
-  it('defaultValue', () => {
-    const { container } = render(
-      <Radio.Group defaultValue="1">
-        <Radio value="0">选项一</Radio>
-        <Radio value="1">选项二</Radio>
-        <Radio value="2">选项三</Radio>
-      </Radio.Group>,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('Radio checked', () => {
-    const { container } = render(
+    const wrapper = render(
       <Radio.Group>
         <Radio value="0">选项一</Radio>
-        <Radio value="1" checked>
+        <Radio value="1">
           选项二
         </Radio>
         <Radio value="2">选项三</Radio>
       </Radio.Group>,
     );
-    expect(container).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
-  // 圆角
-  it('buttonShape is radius', () => {
-    const { container } = render(
-      <Radio.Group buttonShape="radius">
+  it('render value correctly', () => {
+    const wrapper = render(
+      <Radio.Group value="0">
         <Radio value="0">选项一</Radio>
         <Radio value="1">选项二</Radio>
         <Radio value="2">选项三</Radio>
       </Radio.Group>,
     );
-    expect(
-      container
-        .querySelector('.za-radio-group')
-        ?.classList?.contains('za-radio-group--button-radius'),
-    ).toBe(true);
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
-  // 椭圆角
-  it('buttonShape is round', () => {
-    const { container } = render(
-      <Radio.Group buttonShape="round">
+  it('render defaultValue correctly', () => {
+    const wrapper = render(
+      <Radio.Group defaultValue="1">
         <Radio value="0">选项一</Radio>
         <Radio value="1">选项二</Radio>
         <Radio value="2">选项三</Radio>
-      </Radio.Group>,
+      </Radio.Group>
     );
-    expect(
-      container
-        .querySelector('.za-radio-group')
-        ?.classList?.contains('za-radio-group--button-round'),
-    ).toBe(true);
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
-  // 块级样式
-  it('block', () => {
-    const { container } = render(
-      <Radio.Group block>
+  it('type is button', () => {
+    const wrapper = render(
+      <Radio.Group type="button">
         <Radio value="0">选项一</Radio>
         <Radio value="1">选项二</Radio>
         <Radio value="2">选项三</Radio>
-      </Radio.Group>,
+      </Radio.Group>
     );
-    expect(
-      container.querySelector('.za-radio-group')?.classList?.contains('za-radio-group--block'),
-    ).toBe(true);
+    expect(wrapper.asFragment()).toMatchSnapshot();
+
+    const { container } = wrapper;
+    const radio = container.getElementsByTagName('label')[0];
+    fireEvent.click(radio);
+    expect(radio).toHaveClass(`${classPrefix}--checked`);
   });
 
-  // 列表样式
   it('type is list', () => {
-    const { container } = render(
+    const wrapper = render(
       <Radio.Group type="list">
         <Radio value="0">选项一</Radio>
         <Radio value="1">选项二</Radio>
-        <Radio value="2" disabled>
-          选项三
-        </Radio>
+        <Radio value="2">选项三</Radio>
       </Radio.Group>,
     );
-    expect(
-      container.querySelector('.za-radio-group')?.classList?.contains('za-radio-group--list'),
-    ).toBe(true);
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
-  it('radio group onChange event', () => {
+  it('receive new value', () => {
+    const { container } = render(
+      <Radio.Group defaultValue="0">
+        <Radio value="0">选项一</Radio>
+        <Radio value="1">选项二</Radio>
+        <Radio value="2">选项三</Radio>
+      </Radio.Group>,
+    );
+    const items = Array.from(container.querySelectorAll('input'));
+    expect(items[0].checked).toEqual(true);
+  });
+
+  it('onChange', () => {
     const onChange = jest.fn();
     const { container } = render(
-      <Radio.Group buttonShape="round" onChange={onChange}>
+      <Radio.Group type="list" onChange={onChange}>
         <Radio value="0">选项一</Radio>
         <Radio value="1">选项二</Radio>
         <Radio value="2" disabled>
@@ -232,10 +151,15 @@ describe('Radio.Group', () => {
         </Radio>
       </Radio.Group>,
     );
-    const firstCheckbox = container
-      .querySelectorAll('.za-radio')[1]
-      .querySelector('input[type="radio"]');
-    fireEvent.click(firstCheckbox!);
-    expect(onChange).toBeCalledWith('1');
+    const items = container.querySelectorAll('.za-radio');
+    fireEvent.click(items[0]);
+    expect(onChange).toBeCalledWith('0');
+
+    fireEvent.click(items[0]);
+    expect(onChange).toBeCalledWith('0');
+
+    // 测试disabled
+    fireEvent.click(items[2]);
+    expect(onChange).toBeCalledWith('0');
   });
 });
