@@ -67,7 +67,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```jsx
 import { useState } from 'react';
-import { List, Checkbox, Button } from 'zarm';
+import { List, Checkbox } from 'zarm';
 
 const Demo = () => {
   const [value, setValue] = useState([]);
@@ -325,14 +325,14 @@ ReactDOM.render(<Demo />, mountNode);
 | 属性           | 类型                                             | 默认值 | 说明                                                |
 | :------------- | :----------------------------------------------- | :----- | :-------------------------------------------------- |
 | disabled       | boolean                                          | false  | 是否禁用                                            |
-| value          | string &#124; number                             | -      | 值                                                  |
+| value          | number \| string                             | -      | 值                                                  |
 | checked        | boolean                                          | false  | 当前是否选中                                        |
 | defaultChecked | boolean                                          | false  | 初始是否选中                                        |
-| indeterminate  | boolean                                          | false  | 当前是否为未全选状态                                |
+| indeterminate  | boolean                                          | false  | 当前是否为半选状态                                |
 | id             | string                                           | -      | 方便外部带有 for 属性的 label 标签控制当前 checkbox |
 | onChange       | (event: ChangeEvent\<HTMLInputElement\>) => void | -      | 值变化时触发的回调函数                              |
-| renderIcon     | (props: CheckboxProps) => React.ReactNode        | -      | 自定义图标渲染函数                                  |
-| render         | (props: CheckboxProps) => React.ReactNode        | -      | 自定义样式渲染函数                                  |
+| renderIcon     | (props: number \| string) => React.ReactNode        | -      | 自定义图标渲染函数                                  |
+| render         | (props: number \| string) => React.ReactNode        | -      | 自定义样式渲染函数                                  |
 
 ### Checkbox.Group
 

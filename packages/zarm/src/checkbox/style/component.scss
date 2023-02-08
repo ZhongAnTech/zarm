@@ -139,34 +139,6 @@
   @include m(button) {
     @include define(group-spacing-vertical, var(--za-padding-v-xs));
     @include define(group-spacing-horizontal, var(--za-padding-h-xs));
-
-    // button compact
-    @include m(button-compact) {
-      @include b(checkbox) {
-        &:not(:last-child) {
-          /* prettier-ignore */
-          margin-right: -1PX;
-        }
-
-        &:first-child {
-          border-top-right-radius: 0;
-          border-bottom-right-radius: 0;
-        }
-
-        &:last-child {
-          border-top-left-radius: 0;
-          border-bottom-left-radius: 0;
-        }
-
-        &:not(:first-child):not(:last-child) {
-          border-radius: 0;
-        }
-
-        @include m(checked) {
-          z-index: 1;
-        }
-      }
-    }
   }
 
   @include m(list) {
