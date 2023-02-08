@@ -7,12 +7,10 @@ import { useState } from 'react';
 import { Dropdown, List, Button } from 'zarm';
 
 const Demo = () => {
-  const [activeKey, setActiveKey] = useState('home');
-
   return (
     <>
       <Dropdown>
-        <Dropdown.Item title='一列' itemKey={'key1'}>
+        <Dropdown.Item title='一列' itemKey='key1'>
           content
         </Dropdown.Item>
       </Dropdown>
@@ -30,19 +28,17 @@ import { useState } from 'react';
 import { Dropdown, List, Button } from 'zarm';
 
 const Demo = () => {
-  const [activeKey, setActiveKey] = useState('home');
-
   return (
     <>
-      <Dropdown>
-        <Dropdown.Item title={'菜单一'} itemKey={'key1'}>
+      <Dropdown defaultActiveKey='Key2'>
+        <Dropdown.Item title="菜单一" itemKey='key1'>
           <List>
             <List.Item title="Item 1" />
             <List.Item title="Item 2" />
             <List.Item title="Item 3" />
           </List>
         </Dropdown.Item>
-        <Dropdown.Item title={'菜单二'} itemKey='Key2'>
+        <Dropdown.Item title="菜单二" itemKey='Key2'>
           <List>
             <List.Item title="Item 4" />
             <List.Item title="Item 5" />
@@ -63,25 +59,20 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性             | 类型                              | 默认值 | 说明                       |
 | :--------------- | :-------------------------------- | :----- | :------------------------- |
-| visible          | boolean                           | true   | 是否显示                   |
-| activeKey        | number \| string                  | -      | 当前选中项                 |
-| defaultActiveKey | number \| string                  | -      | 初始选中项, 默认第一个选中 |
-| safeIphoneX      | boolean                           | false  | 是否适配 iphoneX 刘海屏    |
-| onChange         | (value: number \| string) => void | -      | 值变化时触发的回调函数     |
+| activeKey        | number \| string                  | -      | 激活的 Item key                 |
+| defaultActiveKey | number \| string                  | -      | 默认激活的 Item key |
+| onChange         | (value: number \| string) => void | -      | activeKey 变化时触发     |
+| arrow       | ReactNode        | -      | 自定义 arrow                                                 |
+
 
 ### Dropdown.Item
 
-| 属性       | 类型             | 默认值 | 说明                                                 |
-| :--------- | :--------------- | :----- | :--------------------------------------------------- |
-| itemKey    | number \| string | -      | 唯一标识，对应`activeKey`，不设置则默认取 index 索引 |
-| title      | ReactNode        | -      | 标题文字                                             |
-| icon       | ReactNode        | -      | 图标                                                 |
-| arrow          | 自定义 arrow                | `React.ReactNode` | -       |
-| destroyOnClose | 不可见时卸载内容            | `boolean`         | `false` |
-| forceRender    | 被隐藏时是否渲染 `DOM` 结构 | `boolean`         | `false` |
-| highlight      | 高亮                        | `boolean`         | `false` |
-| key            | 唯一值                      | `string`          | -       |
-| title          | 标题                        | `ReactNode`       | -       |
+| 属性      | 类型                                | 默认值       | 说明           |
+|:--------|:----------------------------------|:----------|:-------------|
+| itemKey | number \| string    | string | -            | 唯一标识，对应`activeKey`，不设置则默认取 index 索引 |
+| title   | ReactNode                         | -         | 标题文字         |
+| arrow   | ReactNode                         | -         | 自定义 arrow    |
+| onClick | (event: React.MouseEvent) => void | -         | 点击trigger时触发 |
 
 ## CSS 变量
 
