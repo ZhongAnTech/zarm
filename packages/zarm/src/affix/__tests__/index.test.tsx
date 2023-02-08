@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import Affix from '../index';
 
 describe('Affix', () => {
@@ -27,5 +27,14 @@ describe('Affix', () => {
       </Affix>,
     );
     expect(wrapper.asFragment()).toMatchSnapshot();
+  });
+
+  it('updatePosition when offsetTop changed', async () => {
+    const onChange = jest.fn();
+    jest.useFakeTimers();
+    render(<Affix offsetTop={0} onChange={onChange} />);
+    jest.runAllTimers();
+    fireEvent.scroll(window, {  target: { scrollY: -100 } });
+    expect(onChange).toBeCalled();
   });
 });

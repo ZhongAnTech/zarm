@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import Popper from '../index';
 
 if (global.document) {
@@ -32,23 +32,29 @@ describe('Popper', () => {
       </Popper>,
     );
     expect(container).toMatchSnapshot();
-    // wrapper.unmount();
   });
 
-  // it('check visible prop', () => {
-  //   const wrapper = mount(
-  //     <Popper title="" mouseEnterDelay={0} mouseLeaveDelay={0}>
-  //       <div id="hello">Hello world!</div>
-  //     </Popper>,
-  //   );
+  it('renders menu-slide', () => {
+    const onVisibleChange = jest.fn();
 
-  //   const div = wrapper.find('#hello').at(0);
-  //   div.simulate('mouseover');
-  //   // expect(wrapper.instance().props.visible).toBe(false);
+    const { container } = render(
+      <Popper title="标题" onVisibleChange={onVisibleChange} animationType="menu-slide">
+        <p>点我</p>
+      </Popper>,
+    );
+    expect(container).toMatchSnapshot();
+  });
 
-  //   div.simulate('mouseleave');
-  //   expect(wrapper.instance().props.visible).toBe(false);
-  // });
+  it('renders menu-slide bottom', () => {
+    const onVisibleChange = jest.fn();
+
+    const { container } = render(
+      <Popper title="标题" onVisibleChange={onVisibleChange} animationType="menu-slide" direction="bottom">
+        <p>点我</p>
+      </Popper>,
+    );
+    expect(container).toMatchSnapshot();
+  });
 
   it('check hasArrow prop', () => {
     const { getByTestId } = render(
@@ -72,7 +78,7 @@ describe('Popper', () => {
     expect(wrapper.getElementsByClassName('.za-popper__arrow')).not.toHaveLength(1);
   });
 
-  it('check onVisibleChange func prop', () => {
+  it('check onVisibleChange func prop', async () => {
     const onVisibleChange = jest.fn();
 
     const { getByTestId } = render(
@@ -92,15 +98,8 @@ describe('Popper', () => {
     const wrapper = getByTestId('za-popper-onVisibleChange');
     const elments = [].slice.call(wrapper.getElementsByClassName('hello'));
     fireEvent.click(elments?.[0]);
-    setTimeout(() => {
+    await waitFor(() => {
       expect(onVisibleChange).toBeCalled();
     });
-    // expect(wrapper.instance().props.visible).toBe(false);
-
-    // div.simulate('click');
-    // setTimeout(() => {
-    //   expect(onVisibleChange).toBeCalled();
-    // });
-    // expect(wrapper.instance().props.visible).toBe(false);
   });
 });
