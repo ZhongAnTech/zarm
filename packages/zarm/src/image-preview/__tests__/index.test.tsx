@@ -267,11 +267,10 @@ describe('ImagePreview', () => {
 
   it('should render images', () => {
     render(<ImagePreview visible images={images} />);
-    const itemWrapper = document.body.getElementsByClassName('za-image-preview__item');
-    expect(itemWrapper).toHaveLength(3);
-    const srcArr = Array.from(itemWrapper)
-      .map((w) => w.querySelectorAll('img'))
-      .map((v) => v[0].getAttribute('src'));
+    const img = document.body.querySelectorAll('img');
+    expect(img!).toHaveLength(3);
+    const srcArr = Array.from(img)
+      .map((v) => v.getAttribute('src'));
     expect(srcArr).toEqual(images);
   });
 });
