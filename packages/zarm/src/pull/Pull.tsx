@@ -373,8 +373,8 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
   }
 
   return (
-    <div className={cls} style={style} {...bind()}>
-      <div className={bem('content')} ref={pullRef} style={contentStyle}>
+    <div className={cls} style={style} {...bind()} ref={pullRef}>
+      <div className={bem('content')} style={contentStyle}>
         <div className={bem('refresh')}>{renderRefresh()}</div>
         <div className={bem('body')}>{children}</div>
         <div className={loadCls}>{renderLoad()}</div>

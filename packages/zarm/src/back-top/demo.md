@@ -19,7 +19,7 @@ const Demo = () => {
   const containerStyle = !useWindowScroll
     ? {
         overflowY: 'auto',
-        maxHeight: 400,
+        maxHeight: '400px',
       }
     : {};
 
@@ -31,11 +31,9 @@ const Demo = () => {
           点击切换
         </Button>
       </Message>
-
       <List ref={containerRef} style={containerStyle}>
         {list}
       </List>
-
       <BackTop
         scrollContainer={container}
         mountContainer={container}
