@@ -26,7 +26,7 @@ export interface PullProps extends BasePullProps, React.PropsWithChildren<HTMLPr
 
 const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
   const pullRef = (ref as any) || React.createRef<HTMLDivElement>();
-  const wrap = useRef<HTMLElement | Window>(window);
+  const wrap = useRef<HTMLElement | Window>();
 
   const [isMounted, setIsMounted] = useState(false);
   const [offsetY, setOffsetY] = useState<number | 'auto'>(0);
