@@ -137,7 +137,7 @@ const Transition: React.FC<TransitionProps> = (props) => {
       }}
     >
       {() => {
-        if (React.isValidElement(children)) {
+        if (React.isValidElement<any>(children)) {
           return React.cloneElement(children, {
             ref: setNodeRef,
             className: classnames(children.props.className, className),
