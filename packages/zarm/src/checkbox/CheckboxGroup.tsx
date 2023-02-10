@@ -35,8 +35,8 @@ const CheckboxGroup: FC<CheckboxGroupProps> = (props) => {
   useEffect(() => {
     if (props.value === undefined) return;
     if (props.value === value) return;
+
     setValue(getValue(props, []));
-    props.onChange?.(props.value);
   }, [props.value]);
 
   return (
