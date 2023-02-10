@@ -14,7 +14,7 @@ export type TransitionName =
   | 'slide-left'
   | 'slide-right'
   | 'menu-slide'
-  | (String & {});
+  | (string & {});
 
 export interface BaseTransitionProps {
   visible?: boolean;

@@ -1,17 +1,18 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { createBEM } from '@zarm-design/bem';
 import { useScroll } from '@use-gesture/react';
+import { createBEM } from '@zarm-design/bem';
+import * as React from 'react';
 import { ConfigContext } from '../config-provider';
-import type { BaseBackTopProps } from './interface';
-import { HTMLProps } from '../utils/utilityTypes';
+import Transition from '../transition';
 import {
   canUseDOM,
   getMountContainer,
   getScrollContainer,
   getScrollTop,
+  renderToContainer,
   scrollTo,
 } from '../utils/dom';
+import { HTMLProps } from '../utils/utilityTypes';
+import type { BaseBackTopProps } from './interface';
 
 export interface BackTopCssVars {
   '--right'?: React.CSSProperties['right'];
@@ -28,7 +29,6 @@ const BackTop: React.FC<BackTopProps> = (props) => {
   const { prefixCls } = React.useContext(ConfigContext);
 
   const bem = createBEM('back-top', { prefixCls });
-  const cls = bem([className]);
 
   const scrollContainer = React.useMemo(() => {
     return canUseDOM ? getScrollContainer(props.scrollContainer) : undefined;
@@ -58,26 +58,31 @@ const BackTop: React.FC<BackTopProps> = (props) => {
     },
   );
 
-  const element = React.useMemo(() => {
-    if (!canUseDOM || !mountContainer) return null;
+  React.useEffect(() => {
+    const scrollTop = getScrollTop(scrollContainer);
+    setVisible(scrollTop > visibleDistance!);
+  }, [scrollContainer]);
 
-    return ReactDOM.createPortal(
+  return renderToContainer(
+    mountContainer,
+    <Transition
+      visible={visible}
+      duration={props.duration}
+      destroy={destroy}
+      tranisitionName={`${prefixCls}-fade`}
+    >
       <div
-        className={cls}
+        className={bem([className])}
         style={{
-          display: !visible ? 'none' : 'inline',
           position: mountContainer !== document.body ? 'absolute' : 'fixed',
           ...style,
         }}
         onClick={scrollToTop}
       >
         {children}
-      </div>,
-      mountContainer,
-    );
-  }, [visible, mountContainer]);
-
-  return destroy && !visible ? null : element;
+      </div>
+    </Transition>,
+  );
 };
 
 BackTop.defaultProps = {
