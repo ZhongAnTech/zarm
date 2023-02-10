@@ -1,6 +1,7 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitForElementToBeRemoved } from '@testing-library/react';
 import Cascader from '../index';
+import Button from '../../button';
 
 jest.useFakeTimers();
 
@@ -85,7 +86,7 @@ describe('Cascader', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('handle props click', () => {
+  it('handle props click', async () => {
     const onCancel = jest.fn();
     const onConfirm = jest.fn();
 
@@ -145,5 +146,49 @@ describe('Cascader', () => {
 
     expect(onChange).toBeCalledTimes(3);
     expect(onChange).toHaveBeenCalledWith(['340000', '340800', '340803']);
+  });
+
+  it('static method prompt', async () => {
+    const cancel = jest.fn();
+    const confirm = jest.fn();
+    const CASCADE_DATA = [
+      {
+        value: '1',
+        label: '北京市',
+        children: [
+          { value: '11', label: '海淀区', children: []},
+          { value: '12', label: '西城区', children: [] },
+        ],
+      },
+      {
+        value: '2',
+        label: '上海市',
+        children: [
+          { value: '21', label: '杨浦区', children: [] },
+          { value: '22', label: '静安区', children: [] },
+        ],
+      },
+    ]
+    const { getByText } = render(
+      <Button onClick={() => {
+        Cascader.prompt({
+          defaultValue: ['1', '12'],
+          cancelText: "cancel",
+          confirmText: "confirm",
+          dataSource: CASCADE_DATA,
+          onCancel: cancel,
+          onConfirm: confirm
+        })
+      }}>
+        cascader prompt
+      </Button>
+    )
+    fireEvent.click(getByText('cascader prompt'));
+    fireEvent.click(screen.getAllByDisplayValue('2')[0]);
+    await screen.findByText('杨浦区');
+    fireEvent.click(getByText('confirm'));
+    expect(confirm).toHaveBeenCalledWith(['2']);
+    fireEvent.click(getByText('cancel'));
+    expect(cancel).toHaveBeenCalled();
   });
 });
