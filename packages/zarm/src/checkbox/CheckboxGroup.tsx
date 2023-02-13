@@ -1,5 +1,6 @@
 import { createBEM } from '@zarm-design/bem';
 import React, { FC, useContext, useEffect, useState } from 'react';
+import isEqual from 'lodash/isEqual';
 import { ConfigContext } from '../config-provider';
 import List from '../list';
 import type { HTMLProps } from '../utils/utilityTypes';
@@ -34,7 +35,7 @@ const CheckboxGroup: FC<CheckboxGroupProps> = (props) => {
 
   useEffect(() => {
     if (props.value === undefined) return;
-    if (props.value === value) return;
+    if (isEqual(props.value, value)) return;
 
     setValue(getValue(props, []));
   }, [props.value]);
