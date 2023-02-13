@@ -4,7 +4,6 @@
 
 ```jsx
 import { List, Checkbox } from 'zarm';
-import { Star, StarFill } from '@zarm-design/icons';
 
 ReactDOM.render(
   <List>
@@ -97,6 +96,7 @@ const Demo = () => {
           <Checkbox value="0">选项一</Checkbox>
           <Checkbox value="1">选项二</Checkbox>
           <Checkbox value="2">选项三</Checkbox>
+          <Checkbox value="3">选项三</Checkbox>
         </Checkbox.Group>
       </List.Item>
     </List>
@@ -154,7 +154,7 @@ ReactDOM.render(
       <Checkbox.Group type="button">
         <Checkbox value="0">选项一</Checkbox>
         <Checkbox value="1">选项二</Checkbox>
-        <Checkbox value="2">选项三</Checkbox>
+        <Checkbox value="2" disabled>选项三</Checkbox>
       </Checkbox.Group>
     </List.Item>
     <List.Item title="通栏">
@@ -175,7 +175,6 @@ ReactDOM.render(
 
 ```jsx
 import { Checkbox } from 'zarm';
-import { Star, StarFill } from '@zarm-design/icons';
 
 ReactDOM.render(
   <Checkbox.Group type="list">
@@ -195,7 +194,7 @@ ReactDOM.render(
 import { Checkbox } from 'zarm';
 
 ReactDOM.render(
-  <Checkbox.Group type="list" listIconAlign="after">
+  <Checkbox.Group type="list" iconAlign="after">
     <Checkbox value="0">选项一</Checkbox>
     <Checkbox value="1">选项二</Checkbox>
     <Checkbox value="2" disabled>
@@ -209,8 +208,8 @@ ReactDOM.render(
 ## 自定义图标
 
 ```jsx
-import { List, Checkbox, Button } from 'zarm';
-import { Star, StarFill, CloseCircle, CloseCircleFill, Close, Success } from '@zarm-design/icons';
+import { List, Checkbox } from 'zarm';
+import { Star, StarFill, Success, Close  } from '@zarm-design/icons';
 
 ReactDOM.render(
   <List>
@@ -343,7 +342,7 @@ ReactDOM.render(<Demo />, mountNode);
 | defaultValue  | number[] \| string[]                   | []       | 初始选中值                                          |
 | disabled      | boolean                                | false    | 是否禁用                                            |
 | block         | boolean                                | false    | 子项是否为块级元素                                  |
-| listIconAlign | string                                 | 'before' | type 为`list`时图标的位置，可选值 `before`、`after` |
+| iconAlign | string                                 | 'before' | type 为`list`时图标的位置，可选值 `before`、`after` |
 | onChange      | (values: number[] \| string[]) => void | -        | 值变化时触发的回调函数                              |
 
 ## CSS 变量

@@ -59,6 +59,7 @@ export interface CheckboxRef {
 
 const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
   const inputRef = useRef<HTMLInputElement>(null);
+
   let [checked, setChecked] = useState(getChecked(props, false));
   let { disabled } = props;
 
@@ -122,16 +123,6 @@ const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
     />
   );
 
-  const contentRender = props.render ? (
-    props.render(currentProps)
-  ) : (
-    <>
-      {inputRender}
-      {iconRender}
-      {textRender}
-    </>
-  );
-
   useImperativeHandle(ref, () => {
     return {
       check: () => {
@@ -186,8 +177,8 @@ const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
       <List.Item
         hasArrow={false}
         className={cls}
-        prefix={groupContext?.listIconAlign === 'before' ? tickRender : undefined}
-        suffix={groupContext?.listIconAlign === 'after' ? tickRender : undefined}
+        prefix={groupContext?.iconAlign === 'before' ? tickRender : undefined}
+        suffix={groupContext?.iconAlign === 'after' ? tickRender : undefined}
         title={textRender}
         onClick={
           !disabled
@@ -200,6 +191,15 @@ const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
       />
     );
   }
+
+  const contentRender = props.render ? (
+    props.render(currentProps)
+  ) : (
+    <>
+      {iconRender}
+      {textRender}
+    </>
+  );
 
   return (
     <label className={cls}>

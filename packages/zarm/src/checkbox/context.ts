@@ -6,7 +6,7 @@ export const CheckboxGroupContext = createContext<{
   value: CheckboxGroupProps['value'];
   block: boolean;
   disabled: boolean;
-  listIconAlign: CheckboxGroupProps['listIconAlign'];
+  iconAlign: CheckboxGroupProps['iconAlign'];
   check: (value: CheckboxProps['value']) => void;
   uncheck: (value: CheckboxProps['value']) => void;
 }>(null);

@@ -19,7 +19,7 @@ export type CheckboxGroupProps = BaseCheckboxGroupProps & HTMLProps<CheckboxGrou
 
 const CheckboxGroup: FC<CheckboxGroupProps> = (props) => {
   const [value, setValue] = useState(getValue(props, []));
-  const { type, block, disabled, listIconAlign, className, style } = props;
+  const { type, block, disabled, iconAlign, className, style } = props;
   const { prefixCls } = useContext(ConfigContext);
 
   const bem = createBEM('checkbox-group', { prefixCls });
@@ -46,7 +46,7 @@ const CheckboxGroup: FC<CheckboxGroupProps> = (props) => {
         type,
         block,
         disabled,
-        listIconAlign,
+        iconAlign,
         check: (v) => {
           const values = [...value, v];
           setValue(values);
@@ -73,7 +73,7 @@ CheckboxGroup.displayName = 'CheckboxGroup';
 CheckboxGroup.defaultProps = {
   block: false,
   disabled: false,
-  listIconAlign: 'before',
+  iconAlign: 'before',
 };
 
 export default CheckboxGroup;

@@ -1,8 +1,6 @@
 import { ReactNode } from 'react';
 
-export type CheckboxType = 'button' | 'list';
 export type CheckboxValue = number | string;
-export type CheckboxGroupListIconAlign = 'before' | 'after';
 
 export interface BaseCheckboxProps {
   disabled?: boolean;
@@ -15,10 +13,10 @@ export interface BaseCheckboxProps {
 }
 
 export interface BaseCheckboxGroupProps {
-  type?: CheckboxType;
+  type?: 'button' | 'list';
   disabled?: boolean;
   block?: boolean;
-  listIconAlign?: CheckboxGroupListIconAlign;
+  iconAlign?: 'before' | 'after';
   defaultValue?: Array<CheckboxValue>;
   value?: Array<CheckboxValue>;
   onChange?: (value: Array<CheckboxValue>) => void;

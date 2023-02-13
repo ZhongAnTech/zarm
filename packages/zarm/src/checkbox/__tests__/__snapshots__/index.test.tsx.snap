@@ -12,13 +12,6 @@ exports[`Checkbox defaultChecked 1`] = `
       type="checkbox"
       value=""
     />
-    <input
-      aria-checked="true"
-      checked=""
-      class="za-checkbox__input"
-      type="checkbox"
-      value=""
-    />
     <span
       class="za-checkbox__icon"
     >
@@ -65,13 +58,6 @@ exports[`Checkbox disabled 1`] = `
       type="checkbox"
       value=""
     />
-    <input
-      aria-checked="false"
-      class="za-checkbox__input"
-      disabled=""
-      type="checkbox"
-      value=""
-    />
     <span
       class="za-checkbox__icon"
     >
@@ -111,13 +97,6 @@ exports[`Checkbox renders correctly 1`] = `
   <label
     class="za-checkbox za-checkbox--checked"
   >
-    <input
-      aria-checked="true"
-      checked=""
-      class="za-checkbox__input"
-      type="checkbox"
-      value=""
-    />
     <input
       aria-checked="true"
       checked=""
@@ -176,12 +155,6 @@ exports[`Checkbox.Group render defaultValue correctly 1`] = `
           type="checkbox"
           value="0"
         />
-        <input
-          aria-checked="false"
-          class="za-checkbox__input"
-          type="checkbox"
-          value="0"
-        />
         <span
           class="za-checkbox__icon"
         >
@@ -223,13 +196,6 @@ exports[`Checkbox.Group render defaultValue correctly 1`] = `
           type="checkbox"
           value="1"
         />
-        <input
-          aria-checked="true"
-          checked=""
-          class="za-checkbox__input"
-          type="checkbox"
-          value="1"
-        />
         <span
           class="za-checkbox__icon"
         >
@@ -264,12 +230,6 @@ exports[`Checkbox.Group render defaultValue correctly 1`] = `
       <label
         class="za-checkbox"
       >
-        <input
-          aria-checked="false"
-          class="za-checkbox__input"
-          type="checkbox"
-          value="2"
-        />
         <input
           aria-checked="false"
           class="za-checkbox__input"
@@ -330,13 +290,6 @@ exports[`Checkbox.Group render value correctly 1`] = `
           type="checkbox"
           value="0"
         />
-        <input
-          aria-checked="true"
-          checked=""
-          class="za-checkbox__input"
-          type="checkbox"
-          value="0"
-        />
         <span
           class="za-checkbox__icon"
         >
@@ -377,12 +330,6 @@ exports[`Checkbox.Group render value correctly 1`] = `
           type="checkbox"
           value="1"
         />
-        <input
-          aria-checked="false"
-          class="za-checkbox__input"
-          type="checkbox"
-          value="1"
-        />
         <span
           class="za-checkbox__icon"
         >
@@ -417,12 +364,6 @@ exports[`Checkbox.Group render value correctly 1`] = `
       <label
         class="za-checkbox"
       >
-        <input
-          aria-checked="false"
-          class="za-checkbox__input"
-          type="checkbox"
-          value="2"
-        />
         <input
           aria-checked="false"
           class="za-checkbox__input"
@@ -482,12 +423,6 @@ exports[`Checkbox.Group renders correctly 1`] = `
           type="checkbox"
           value="0"
         />
-        <input
-          aria-checked="false"
-          class="za-checkbox__input"
-          type="checkbox"
-          value="0"
-        />
         <span
           class="za-checkbox__icon"
         >
@@ -528,12 +463,6 @@ exports[`Checkbox.Group renders correctly 1`] = `
           type="checkbox"
           value="1"
         />
-        <input
-          aria-checked="true"
-          class="za-checkbox__input"
-          type="checkbox"
-          value="1"
-        />
         <span
           class="za-checkbox__icon"
         >
@@ -568,12 +497,6 @@ exports[`Checkbox.Group renders correctly 1`] = `
       <label
         class="za-checkbox"
       >
-        <input
-          aria-checked="false"
-          class="za-checkbox__input"
-          type="checkbox"
-          value="2"
-        />
         <input
           aria-checked="false"
           class="za-checkbox__input"
