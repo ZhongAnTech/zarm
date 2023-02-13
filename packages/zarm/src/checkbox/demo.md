@@ -96,7 +96,6 @@ const Demo = () => {
           <Checkbox value="0">选项一</Checkbox>
           <Checkbox value="1">选项二</Checkbox>
           <Checkbox value="2">选项三</Checkbox>
-          <Checkbox value="3">选项三</Checkbox>
         </Checkbox.Group>
       </List.Item>
     </List>
@@ -154,16 +153,21 @@ ReactDOM.render(
       <Checkbox.Group type="button">
         <Checkbox value="0">选项一</Checkbox>
         <Checkbox value="1">选项二</Checkbox>
-        <Checkbox value="2" disabled>选项三</Checkbox>
+        <Checkbox value="2">选项三</Checkbox>
+      </Checkbox.Group>
+    </List.Item>
+    <List.Item title="禁用">
+      <Checkbox.Group type="button" disabled>
+        <Checkbox value="0">选项一</Checkbox>
+        <Checkbox value="1">选项二</Checkbox>
+        <Checkbox value="2">选项三</Checkbox>
       </Checkbox.Group>
     </List.Item>
     <List.Item title="通栏">
       <Checkbox.Group type="button" block>
         <Checkbox value="0">选项一</Checkbox>
         <Checkbox value="1">选项二</Checkbox>
-        <Checkbox value="2" disabled>
-          选项三
-        </Checkbox>
+        <Checkbox value="2">选项三</Checkbox>
       </Checkbox.Group>
     </List.Item>
   </List>,
