@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { createBEM } from '@zarm-design/bem';
-import { useGesture, ReactDOMAttributes } from '@use-gesture/react';
+import { useDrag, ReactDOMAttributes } from '@use-gesture/react';
 import type { Images, BaseImagePreviewProps } from './interface';
 import Popup from '../popup';
 import Carousel from '../carousel'
@@ -78,23 +78,21 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
     return false;
   };
 
-  const bindEvent = useGesture({
-    onDrag: (state) => {
-      if (state.tap && state.elapsedTime > 0) {
-        setTimeout(() => {
-          onClose?.();
-        }, 100);
-      }
-    },
+  const bindEvent = useDrag((state) => {
+    if (state.tap && state.elapsedTime > 0) {
+      setTimeout(() => {
+        onClose?.();
+      }, 100);
+    }
   }) as unknown as (...args: any[]) => ReactDOMAttributes;
 
-  const loadEvent = useGesture({
-    onDrag: (state) => {
-      if (state.tap && state.elapsedTime > 0) {
-        loadOrigin(state.event);
-      }
-    },
-  }) as unknown as (...args: any[]) => ReactDOMAttributes;;
+  const loadEvent = useDrag((state) => {
+    if (state.tap && state.elapsedTime > 0) {
+      loadOrigin(state.event);
+    }
+  }, {
+    pointer: { touch: true }
+  }) as unknown as (...args: any[]) => ReactDOMAttributes;
 
   const renderImages = () => {
     const imageStyle = {

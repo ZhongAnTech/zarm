@@ -1,16 +1,28 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable dot-notation */
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
+import '@testing-library/jest-dom'
+import { act } from 'react-dom/test-utils';
 import { images, originImages } from '../../../tests/testData/images';
-// import Carousel from '../../carousel';
-// import { Images } from '../interface';
 import { sleep } from '../../../tests/utils';
-import ImagePreview from '../ImagePreview';
-// import Loading from '../../loading';
-// import ImagePreviewEnhanced from '../index';
+import ImagePreview from '..';
+import Button from '../../button';
+
+const originalOffsetWidth = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetWidth');
+const originalOffsetHeight = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetHeight');
 
 describe('ImagePreview', () => {
+  let onloadRef: Function | undefined;
+  beforeAll(() => {
+    Object.defineProperty(Image.prototype, 'onload', {
+      get() {
+        return this._onload;
+      },
+      set(onload: Function) {
+        onloadRef = onload;
+        this._onload = onload;
+      },
+    });
+  });
   afterEach(() => {
     jest.restoreAllMocks();
     jest.useRealTimers();
@@ -31,136 +43,12 @@ describe('ImagePreview', () => {
     });
   });
 
-  // it('should pass locale and localeCode props to original component after wrapped by ConfigReceiverWrapper HOC', () => {
-  //   /*  @ts-ignore */
-  //   const wrapper = mount(<ImagePreviewEnhanced visible images={images} />);
-  //   expect(wrapper.find(ImagePreview).prop('locale')).toEqual({
-  //     loadBefore: '查看原图',
-  //     loadStart: '加载中',
-  //     loadEnd: '加载完成',
-  //   });
-  //   expect(wrapper.find(ImagePreview).prop('localeCode')).toEqual('zh-CN');
-  // });
-
-  // it('should get initial derived state from props - 2', () => {
-  //   const wrapper = mount(<ImagePreview visible images={images} />);
-  //   expect(wrapper.state()).toEqual({
-  //     visible: true,
-  //     activeIndex: 0,
-  //     currentIndex: 0,
-  //     images: [
-  //       { url: 'https://static.zhongan.com/website/health/zarm/images/banners/1.png' },
-  //       { url: 'https://static.zhongan.com/website/health/zarm/images/banners/2.png' },
-  //       { url: 'https://static.zhongan.com/website/health/zarm/images/banners/3.png' },
-  //     ],
-  //     prevVisible: true,
-  //     prevActiveIndex: 0,
-  //     prevImages: [
-  //       'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
-  //       'https://static.zhongan.com/website/health/zarm/images/banners/2.png',
-  //       'https://static.zhongan.com/website/health/zarm/images/banners/3.png',
-  //     ],
-  //   });
-  // });
-
-  // it('should handle onChange event', async () => {
-  //   const mOnChange = jest.fn();
-  //   const wrapper = mount(<ImagePreview visible images={images} onChange={mOnChange} />);
-  //   expect(wrapper.state('currentIndex')).toEqual(0);
-  //   wrapper.find(Carousel).invoke('onChange')!(1);
-  //   expect(wrapper.state('currentIndex')).toEqual(1);
-  //   expect(mOnChange).toBeCalledWith(1);
-  // });
-
-  // it("should not call onChange event if it's not existed", async () => {
-  //   const wrapper = mount(<ImagePreview visible images={images} />);
-  //   expect(wrapper.state('currentIndex')).toEqual(0);
-  //   wrapper.find(Carousel).invoke('onChange')!(1);
-  //   expect(wrapper.state('currentIndex')).toEqual(1);
-  // });
-
-  // it('should load origin url for first image', () => {
-  //   let onloadRef: typeof Image.prototype.onload;
-  //   let srcRef: string;
-  //   const onloadSymbol = Symbol('onload');
-  //   const srcSymbol = Symbol('src');
-  //   Object.defineProperty(Image.prototype, 'onload', {
-  //     get() {
-  //       return this[onloadSymbol];
-  //     },
-  //     set(onload) {
-  //       onloadRef = onload;
-  //       this[onloadSymbol] = onload;
-  //     },
-  //     configurable: true,
-  //   });
-  //   Object.defineProperty(Image.prototype, 'src', {
-  //     get() {
-  //       return this[srcSymbol];
-  //     },
-  //     set(src) {
-  //       srcRef = src;
-  //       this[srcSymbol] = src;
-  //     },
-  //     configurable: true,
-  //   });
-  //   jest.useFakeTimers();
-  //   const wrapper = mount(<ImagePreview images={originImages} visible />);
-  //   wrapper.find('.za-image-preview__origin__button').simulate('click');
-  //   expect((wrapper.state('images') as Images)[0]).toEqual({
-  //     url: 'https://cdn-health.zhongan.com/zarm/imagePreview/compress_1.png',
-  //     originUrl: 'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
-  //     loaded: 'loadStart',
-  //   });
-  //   expect(wrapper.find(Loading).exists()).toBeTruthy();
-  //   onloadRef();
-  //   expect((wrapper.state('images') as Images)[0]).toEqual({
-  //     url: 'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
-  //     originUrl: 'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
-  //     loaded: 'loadEnd',
-  //   });
-  //   jest.advanceTimersByTime(1500);
-  //   expect((wrapper.state('images') as Images)[0]).toEqual({
-  //     url: 'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
-  //     originUrl: 'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
-  //     loaded: 'loadAfter',
-  //   });
-  //   expect(srcRef!).toEqual('https://static.zhongan.com/website/health/zarm/images/banners/1.png');
-  // });
 
   it('should render show origin url button if origin url is not existed', () => {
     const { container } = render(<ImagePreview images={images} visible />);
-    const buttonWrapper = container.getElementsByClassName('za-image-preview__origin__button');
-    expect(buttonWrapper.length).toBeFalsy();
+    const buttonWrapper = container.querySelectorAll('.za-image-preview button');
+    expect(buttonWrapper).toHaveLength(0);
   });
-
-  // it("should not call onClose handler if user's touch is moving", () => {
-  //   const mOnClose = jest.fn();
-  //   const wrapper = mount(<ImagePreview visible images={images} onClose={mOnClose} />);
-  //   expect(wrapper.instance()['moving']).toBeUndefined();
-  //   const contentWrapper = wrapper.find('.za-image-preview__content');
-  //   contentWrapper.simulate('touchstart').simulate('touchmove').simulate('click');
-  //   expect(wrapper.instance()['moving']).toBeTruthy();
-  //   expect(mOnClose).not.toBeCalled();
-  // });
-
-  // it("should not call onClose handler if user's mouse is moving", () => {
-  //   const mOnClose = jest.fn();
-  //   const wrapper = mount(<ImagePreview visible images={images} onClose={mOnClose} />);
-  //   expect(wrapper.instance()['moving']).toBeUndefined();
-  //   const contentWrapper = wrapper.find('.za-image-preview__content');
-  //   contentWrapper.simulate('mousedown').simulate('mousemove').simulate('click');
-  //   expect(wrapper.instance()['moving']).toBeTruthy();
-  //   expect(mOnClose).not.toBeCalled();
-  // });
-
-  // it("should call onClose handler if user's touch is NOT moving", () => {
-  //   const mOnClose = jest.fn();
-  //   const wrapper = mount(<ImagePreview visible images={images} onClose={mOnClose} />);
-  //   const contentWrapper = wrapper.find('.za-image-preview__content');
-  //   contentWrapper.simulate('click');
-  //   expect(mOnClose).toBeCalled();
-  // });
 
   it('should not call onClose handler when touch end and the duration between touchstart and touchend greater than 300ms', async () => {
     const mOnClose = jest.fn();
@@ -173,85 +61,51 @@ describe('ImagePreview', () => {
     expect(mOnClose).not.toBeCalled();
   });
 
-  // it('should call onClose handler when touch end and the duration between touchstart and touchend less than 300ms', async () => {
-  //   const mOnClose = jest.fn();
-  //   const wrapper = mount(<ImagePreview visible images={images} onClose={mOnClose} />);
-  //   const contentWrapper = wrapper.find('.za-image-preview__content');
-  //   contentWrapper.simulate('touchstart');
-  //   await sleep(200);
-  //   jest.useFakeTimers();
-  //   contentWrapper.simulate('touchend');
-  //   jest.advanceTimersByTime(300);
-  //   expect(mOnClose).toBeCalledTimes(1);
-  //   expect(setTimeout).toBeCalledWith(expect.any(Function), 300);
-  // });
+  beforeEach(() => {
+    Object.defineProperty(HTMLElement.prototype, 'offsetWidth', { configurable: true, value: 375 });
+    Object.defineProperty(HTMLElement.prototype, 'offsetWidth', { configurable: true, value: 200 });
+  });
+  afterAll(() => {
+    Object.defineProperty(HTMLElement.prototype, 'offsetHeight', originalOffsetWidth!);
+    Object.defineProperty(HTMLElement.prototype, 'offsetHeight', originalOffsetHeight!);
+  });
 
-  // it("should clear setTimeout schedule if user's touch is moving and previous scheduler exists", async () => {
-  //   const mOnClose = jest.fn();
-  //   const wrapper = mount(<ImagePreview visible images={images} />);
-  //   const contentWrapper = wrapper.find('.za-image-preview__content');
-  //   contentWrapper.simulate('touchstart');
-  //   await sleep(200);
-  //   jest.useFakeTimers();
-  //   contentWrapper.simulate('touchend');
-  //   // eslint-disable-next-line prefer-destructuring
-  //   const doubleClickTimer = wrapper.instance()['doubleClickTimer'];
-  //   contentWrapper.simulate('touchend');
-  //   expect(clearTimeout).toBeCalledWith(doubleClickTimer);
-  //   expect(mOnClose).not.toBeCalled();
-  // });
+  it('onChange', () => {
+    const onChange = jest.fn();
+    const { container } = render(<ImagePreview visible images={images} onChange={onChange} />);
+    const element = container.querySelector('.za-carousel');
+    fireEvent.mouseDown(element!, { pointerId: 1, clientX: 0, clientY: 0, buttons: 1 });
+    fireEvent.mouseMove(element!, { pointerId: 1, clientX: -200, clientY: 0, buttons: 1 });
+    fireEvent.mouseUp(element!, { pointerId: 1, clientX: -275 });
+    expect(onChange).toBeCalledTimes(1);
+  });
 
-  /* test library 不支持touch 事件 */
-  // it('should not call onClose handler when touch end and the duration between touchstart and touchcancel greater than 300ms', async () => {
-  //   const mOnClose = jest.fn();
-  //   const wrapper = render(<ImagePreview visible images={images} onClose={mOnClose} />);
-  //   const contentWrapper = wrapper.find('.za-image-preview__content');
-  //   contentWrapper.simulate('touchstart').simulate('touchmove');
-  //   await sleep(500);
-  //   contentWrapper.simulate('touchcancel');
-  //   expect(mOnClose).not.toBeCalled();
-  // });
+  it('onClose', async () => {
+    jest.useFakeTimers();
+    const mOnClose = jest.fn();
+    const { container } = render(<ImagePreview visible images={images} onClose={mOnClose} />);
+    const content = container.querySelector('.za-image-preview__content');
+    fireEvent.mouseDown(content!, { pointerId: 10, clientX: 20, clientY: 0, buttons: 1 });
+    fireEvent.mouseMove(content!, { pointerId: 10, clientX: 20, clientY: 0, buttons: 1 });
+    fireEvent.mouseUp(content!, { pointerId: 10, clientX: 20 });
+    jest.runAllTimers();
+    expect(mOnClose).toBeCalledTimes(1);
+  });
 
-  // it('should call onClose handler when touch end and the duration between touchstart and touchcancel less than 300ms', async () => {
-  //   const mOnClose = jest.fn();
-  //   const wrapper = mount(<ImagePreview visible images={images} onClose={mOnClose} />);
-  //   const contentWrapper = wrapper.find('.za-image-preview__content');
-  //   contentWrapper.simulate('touchstart');
-  //   await sleep(200);
-  //   jest.useFakeTimers();
-  //   contentWrapper.simulate('touchcancel');
-  //   jest.advanceTimersByTime(300);
-  //   expect(mOnClose).toBeCalledTimes(1);
-  //   expect(setTimeout).toBeCalledWith(expect.any(Function), 300);
-  // });
-
-  // it("should clear setTimeout schedule if user's touch is moving and previous scheduler exists", async () => {
-  //   const mOnClose = jest.fn();
-  //   const wrapper = mount(<ImagePreview visible images={images} />);
-  //   const contentWrapper = wrapper.find('.za-image-preview__content');
-  //   contentWrapper.simulate('touchstart');
-  //   await sleep(200);
-  //   jest.useFakeTimers();
-  //   contentWrapper.simulate('touchcancel');
-  //   // eslint-disable-next-line prefer-destructuring
-  //   const doubleClickTimer = wrapper.instance()['doubleClickTimer'];
-  //   contentWrapper.simulate('touchcancel');
-  //   expect(clearTimeout).toBeCalledWith(doubleClickTimer);
-  //   expect(mOnClose).not.toBeCalled();
-  // });
-
-  // it('should set moving to false and touchStartTime to 0 when mouse up', () => {
-  //   const wrapper = mount(<ImagePreview visible images={images} />);
-  //   const contentWrapper = wrapper.find('.za-image-preview__content');
-  //   contentWrapper.simulate('mousedown').simulate('mousemove');
-  //   expect(wrapper.instance()['moving']).toBeTruthy();
-  //   expect(wrapper.instance()['touchStartTime']).toBeGreaterThan(0);
-  //   jest.useFakeTimers();
-  //   contentWrapper.simulate('mouseup');
-  //   jest.advanceTimersByTime(1);
-  //   expect(wrapper.instance()['moving']).toBeFalsy();
-  //   expect(wrapper.instance()['touchStartTime']).toBe(0);
-  // });
+  it('load origin', async () => {
+    jest.useFakeTimers();
+    const { getByText, container } = render(<ImagePreview visible images={originImages} className="test1" />);
+    const content = getByText('查看原图');
+    fireEvent.mouseDown(content!, { pointerId: 10, clientX: 20, clientY: 0, buttons: 1 });
+    fireEvent.mouseMove(content!, { pointerId: 10, clientX: 20, clientY: 0, buttons: 1 });
+    fireEvent.mouseUp(content!, { pointerId: 10, clientX: 20 });
+    act( () => {
+      onloadRef?.();
+      jest.runAllTimers();
+    });
+    const newContent = container.querySelector('.test1 button');
+    expect(newContent).not.toBeInTheDocument();
+  });
 
   it('should render pagination', () => {
     render(<ImagePreview visible images={images} />);
@@ -272,5 +126,19 @@ describe('ImagePreview', () => {
     const srcArr = Array.from(img)
       .map((v) => v.getAttribute('src'));
     expect(srcArr).toEqual(images);
+  });
+
+  it('show', async () => {
+    const onClick = async () => {
+      await ImagePreview.show({
+        images,
+        className: 'image-static'
+      });
+    };
+
+    render(<Button onClick={onClick}>show</Button>);
+    const button = screen.getByText('show');
+    fireEvent.click(button);
+    expect(document.body.getElementsByClassName('image-static')[0]).toBeInTheDocument();
   });
 });
