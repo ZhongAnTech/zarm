@@ -1,6 +1,6 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
-import { render } from '@testing-library/react';
+import { fireEvent, render, waitFor } from '@testing-library/react';
 import ActionSheet, { ActionSheetProps } from '../index';
 import zhCN from '../locale/zh_CN';
 import enUS from '../locale/en_US';
@@ -35,6 +35,28 @@ describe('ActionSheet', () => {
   it('locale', () => {
     expect(zhCN.cancelText).toEqual('取消');
     expect(enUS.cancelText).toEqual('Cancel');
+  });
+
+
+  it('onClick', async () => {
+    const click = jest.fn();
+    const { getByText } = render(
+      <ActionSheet
+        visible
+        actions = {[
+          {
+            text: 'item1',
+            onClick: () =>{
+              click();
+            },
+          },
+        ]}
+    />);
+    const btn = getByText('item1');
+    fireEvent.click(btn);
+    await waitFor(() => {
+      expect(click).toBeCalled();
+    })
   });
 });
 
