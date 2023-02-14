@@ -14,6 +14,10 @@
   display: inline-block;
   vertical-align: middle;
 
+  @include b(icon) {
+    color: inherit;
+  }
+
   @include e(content) {
     display: flex;
     justify-content: center;
