@@ -91,31 +91,25 @@ const PinchZoom = React.forwardRef<unknown, PinchZoomProps>((props, ref) => {
     rafId.current = raf(updateFrame);
   }, [currentScale, container, onPinchZoom]);
 
-  useEffect(() => {
+  const alignCenter = () => {
     const node = container.current?.firstElementChild;
-    const alignCenter = () => {
-      initOffset.current = {
-        x: 0,
-        y: 0,
-      };
-      const rect = container.current?.getBoundingClientRect();
-      const { width, height } = getElementSize(node);
-      if (width <= rect?.width) {
-        initOffset.current = { x: -(rect?.width - width) / 2, y: 0 };
-      }
-      if (height <= rect?.height) {
-        initOffset.current = { x: initOffset.current.x, y: -(rect?.height - height) / 2 };
-      }
-      offset.current = initOffset?.current;
-      update();
+    initOffset.current = {
+      x: 0,
+      y: 0,
     };
-    if (node?.nodeName === 'IMG') {
-      Events.on(node, 'load', () => {
-        alignCenter();
-      });
-    } else {
-      alignCenter();
+    const rect = container.current?.getBoundingClientRect();
+    const { width, height } = getElementSize(node);
+    if (width <= rect?.width) {
+      initOffset.current = { x: -(rect?.width - width) / 2, y: 0 };
     }
+    if (height <= rect?.height) {
+      initOffset.current = { x: initOffset.current.x, y: -(rect?.height - height) / 2 };
+    }
+    offset.current = initOffset?.current;
+    update();
+  };
+
+  useEffect(() => {
     alignCenter();
   }, [initOffset, offset, container, update]);
 
@@ -343,9 +337,13 @@ const PinchZoom = React.forwardRef<unknown, PinchZoomProps>((props, ref) => {
 
   const cls = bem([className]);
 
-  const child = React.Children.map(children, (element: JSX.Element, index) => {
+  const child = React.Children.map(children, (element: React.ReactElement, index) => {
     return React.cloneElement(element, {
       key: +index,
+      onLoad: (e) => {
+        element.props?.onLoad?.(e);
+        alignCenter();
+      }
     });
   });
 

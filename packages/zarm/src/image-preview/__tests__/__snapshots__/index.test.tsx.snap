@@ -26,6 +26,23 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
               class="za-carousel__item za-image-preview__item"
             >
               <div
+                class="za-image-preview__loading"
+              >
+                <div
+                  class="za-loading za-loading--spinner za-loading--lg"
+                >
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                </div>
+              </div>
+              <div
                 class="za-pinch-zoom"
               >
                 <img
@@ -40,6 +57,23 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
               class="za-carousel__item za-image-preview__item"
             >
               <div
+                class="za-image-preview__loading"
+              >
+                <div
+                  class="za-loading za-loading--spinner za-loading--lg"
+                >
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                </div>
+              </div>
+              <div
                 class="za-pinch-zoom"
               >
                 <img
@@ -53,6 +87,23 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
             <div
               class="za-carousel__item za-image-preview__item"
             >
+              <div
+                class="za-image-preview__loading"
+              >
+                <div
+                  class="za-loading za-loading--spinner za-loading--lg"
+                >
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                </div>
+              </div>
               <div
                 class="za-pinch-zoom"
               >
@@ -107,6 +158,23 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
               class="za-carousel__item za-image-preview__item"
             >
               <div
+                class="za-image-preview__loading"
+              >
+                <div
+                  class="za-loading za-loading--spinner za-loading--lg"
+                >
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                </div>
+              </div>
+              <div
                 class="za-pinch-zoom"
               >
                 <img
@@ -121,6 +189,23 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
               class="za-carousel__item za-image-preview__item"
             >
               <div
+                class="za-image-preview__loading"
+              >
+                <div
+                  class="za-loading za-loading--spinner za-loading--lg"
+                >
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                </div>
+              </div>
+              <div
                 class="za-pinch-zoom"
               >
                 <img
@@ -134,6 +219,23 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
             <div
               class="za-carousel__item za-image-preview__item"
             >
+              <div
+                class="za-image-preview__loading"
+              >
+                <div
+                  class="za-loading za-loading--spinner za-loading--lg"
+                >
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                  <div />
+                </div>
+              </div>
               <div
                 class="za-pinch-zoom"
               >

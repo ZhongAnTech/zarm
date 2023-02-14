@@ -26,7 +26,7 @@ export interface PullProps extends BasePullProps, React.PropsWithChildren<HTMLPr
 
 const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
   const pullRef = (ref as any) || React.createRef<HTMLDivElement>();
-  const wrap = useRef<HTMLElement | Window>(window);
+  const wrap = useRef<HTMLElement | Window>();
 
   const [isMounted, setIsMounted] = useState(false);
   const [offsetY, setOffsetY] = useState<number | 'auto'>(0);
@@ -373,8 +373,8 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
   }
 
   return (
-    <div className={cls} style={style} {...bind()}>
-      <div className={bem('content')} ref={pullRef} style={contentStyle}>
+    <div className={cls} style={style} {...bind()} ref={pullRef}>
+      <div className={bem('content')} style={contentStyle}>
         <div className={bem('refresh')}>{renderRefresh()}</div>
         <div className={bem('body')}>{children}</div>
         <div className={loadCls}>{renderLoad()}</div>
