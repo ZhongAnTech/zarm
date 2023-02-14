@@ -26,17 +26,17 @@ export interface BackTopProps extends BaseBackTopProps, HTMLProps<BackTopCssVars
 const BackTop: React.FC<BackTopProps> = (props) => {
   const { className, style, visibleDistance, destroy, onClick, children } = props;
   const [visible, setVisible] = React.useState(false);
-  const { prefixCls } = React.useContext(ConfigContext);
+  const { prefixCls, mountContainer: globalMountContainer, scrollContainer: globalScrollContainer } = React.useContext(ConfigContext);
 
   const bem = createBEM('back-top', { prefixCls });
 
   const scrollContainer = React.useMemo(() => {
-    return canUseDOM ? getScrollContainer(props.scrollContainer) : undefined;
-  }, [props.scrollContainer]);
+    return canUseDOM ? getScrollContainer(props.scrollContainer ?? globalScrollContainer) : undefined;
+  }, [props.scrollContainer, globalScrollContainer]);
 
   const mountContainer = React.useMemo(() => {
-    return canUseDOM ? getMountContainer(props.mountContainer) : undefined;
-  }, [props.mountContainer]);
+    return canUseDOM ? getMountContainer(props.mountContainer ?? globalMountContainer) : undefined;
+  }, [props.mountContainer, globalMountContainer]);
 
   const scrollToTop = (event: React.MouseEvent<HTMLDivElement>) => {
     onClick?.(event);

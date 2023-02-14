@@ -1,7 +1,7 @@
 import { createBEM } from '@zarm-design/bem';
 import * as React from 'react';
-import Mask from '../mask';
 import { ConfigContext } from '../config-provider';
+import Mask from '../mask';
 import Transition from '../transition';
 import Trigger from '../trigger';
 import { renderToContainer } from '../utils/dom';
@@ -43,7 +43,7 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
     children,
   } = props;
 
-  const { prefixCls } = React.useContext(ConfigContext);
+  const { prefixCls, mountContainer: globalMountContainer } = React.useContext(ConfigContext);
   const bem = createBEM('popup', { prefixCls });
 
   useLockScroll(visible! && lockScroll!);
@@ -95,7 +95,7 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
         {({ className, style }, setNodeRef) => {
           const { display, ...restStyle } = style;
           return renderToContainer(
-            props.mountContainer,
+            props.mountContainer ?? globalMountContainer,
             <div className={bem('wrapper', [props.className])} style={{ display }}>
               <div
                 ref={setNodeRef}

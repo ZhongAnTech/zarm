@@ -193,12 +193,21 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性           | 类型                                                  | 默认值    | 说明                                                                                                                                |
-| :------------- | :---------------------------------------------------- | :-------- | :---------------------------------------------------------------------------------------------------------------------------------- |
-| prefix         | string                                                | 'za'      | 组件类名前缀                                                                                                                        |
-| locale         | Object                                                | -         | 语言包配置，默认为中文，语言包可到 [zarm/lib/config-provider/locale](https://unpkg.com/zarm/lib/config-provider/locale/) 目录下寻找 |
-| theme          | string                                                | 'light'   | 主题模式，'light' 为光明主题，'dark' 为暗黑主题的切换                                                                               |
-| primaryColor   | string                                                | '#00bc70' | 品牌标准色                                                                                                                          |
-| safeIphoneX    | boolean                                               | false     | 是否适配 iphoneX 刘海屏                                                                                                             |
-| mountContainer | false \| HTMLElement \| (() => HTMLElement) \| Window | -         | 弹层组件渲染节点                                                                                                                    |
-| cssVars        | Object                                                | {}        | 组件 CSS 变量设置                                                                                                                   |
+| 属性            | 类型            | 默认值              | 说明                                                                                                                                |
+| :-------------- | :-------------- | :------------------ | :---------------------------------------------------------------------------------------------------------------------------------- |
+| prefix          | string          | 'za'                | 组件类名前缀                                                                                                                        |
+| locale          | Object          | -                   | 语言包配置，默认为中文，语言包可到 [zarm/lib/config-provider/locale](https://unpkg.com/zarm/lib/config-provider/locale/) 目录下寻找 |
+| theme           | string          | 'light'             | 主题模式，'light' 为光明主题，'dark' 为暗黑主题的切换                                                                               |
+| primaryColor    | string          | '#00bc70'           | 品牌标准色                                                                                                                          |
+| safeIphoneX     | boolean         | false               | 是否适配 iphoneX 刘海屏                                                                                                             |
+| mountContainer  | MountContainer  | () => document.body | 弹层组件渲染节点                                                                                                                    |
+| scrollContainer | ScrollContainer | () => window        | 组件滚动监听容器点                                                                                                                  |
+| cssVars         | Object          | {}                  | 组件 CSS 变量设置                                                                                                                   |
+
+### MountContainer
+
+HTMLElement \| (() => HTMLElement) \| undefined \| null \| false
+
+### ScrollContainer
+
+(HTMLElement \| Window) \| (() => (HTMLElement \| Window)) \| undefined \| null
