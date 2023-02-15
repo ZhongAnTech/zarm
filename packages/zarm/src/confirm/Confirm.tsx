@@ -1,9 +1,9 @@
-import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
-import type { BaseConfirmProps } from './interface';
-import Modal from '../modal';
+import * as React from 'react';
 import { ConfigContext } from '../config-provider';
+import Modal from '../modal';
 import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseConfirmProps } from './interface';
 
 export type ConfirmProps = BaseConfirmProps & HTMLProps;
 
@@ -14,26 +14,26 @@ const Confirm = React.forwardRef<HTMLDivElement, ConfirmProps>((props, ref) => {
   const cls = bem([className]);
 
   return (
-    <div className={cls} ref={ref}>
-      <Modal
-        {...rest}
-        actions={[
-          [
-            {
-              text: cancelText || locale?.Confirm.cancelText,
-              onClick: onCancel,
-            },
-            {
-              text: confirmText || locale?.Confirm.confirmText,
-              bold: true,
-              onClick: onConfirm,
-            },
-          ],
-        ]}
-      >
-        {content}
-      </Modal>
-    </div>
+    <Modal
+      {...rest}
+      ref={ref}
+      className={cls}
+      actions={[
+        [
+          {
+            text: cancelText || locale?.Confirm.cancelText,
+            onClick: onCancel,
+          },
+          {
+            text: confirmText || locale?.Confirm.confirmText,
+            bold: true,
+            onClick: onConfirm,
+          },
+        ],
+      ]}
+    >
+      {content}
+    </Modal>
   );
 });
 

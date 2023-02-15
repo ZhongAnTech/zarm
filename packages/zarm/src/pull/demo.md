@@ -103,8 +103,12 @@ const Demo = () => {
 
   const style = bodyScroll ? {} : { overflowY: 'auto', maxHeight: 400 };
 
+  const mountContainer = () => {
+    return bodyScroll ? document.body : pullRef.current;
+  };
+
   const scrollContainer = () => {
-    return bodyScroll ? window : pullRef.current && pullRef.current;
+    return bodyScroll ? window : pullRef.current;
   };
 
   return (
@@ -190,8 +194,8 @@ const Demo = () => {
         <List>{dataSource}</List>
       </Pull>
       <BackTop
+        mountContainer={mountContainer}
         scrollContainer={scrollContainer}
-        mountContainer={scrollContainer}
         onClick={() => console.log('click back to top')}
       >
         <div
