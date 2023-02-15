@@ -4,7 +4,6 @@ const themes = {
   '--za-arrow-color': '#666',
   '--za-background-color': '#1c1c1e',
   '--za-background-active': '#363738',
-  '--za-theme-primary-lighter': '#303030',
   '--za-calendar-background': 'transparent',
   '--za-calendar-week-background': '#303030',
   '--za-calendar-month-scroll-background': 'rgba(0, 0, 0, .5)',
