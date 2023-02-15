@@ -1,15 +1,16 @@
-import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
 import isEqual from 'lodash/isEqual';
+import * as React from 'react';
+import { ConfigContext } from '../config-provider';
 import Picker from '../picker';
 import { resolved } from '../picker-view/utils';
-import type { BaseSelectProps } from './interface';
-import type { WheelItem } from '../wheel/interface';
-import { ConfigContext } from '../config-provider';
 import { HTMLProps } from '../utils/utilityTypes';
+import type { WheelItem } from '../wheel/interface';
+import type { BaseSelectProps } from './interface';
 
 export interface SelectCssVars {
   '--height': React.CSSProperties['height'];
+  '--disabled-color': React.CSSProperties['color'];
   '--placeholder-color': React.CSSProperties['color'];
   '--arrow-color': React.CSSProperties['color'];
   '--arrow-size': React.CSSProperties['width'];

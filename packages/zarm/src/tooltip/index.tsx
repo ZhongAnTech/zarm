@@ -1,10 +1,10 @@
-import React, { forwardRef, useRef, useImperativeHandle } from 'react';
 import { createBEM } from '@zarm-design/bem';
+import React, { forwardRef, useImperativeHandle, useRef } from 'react';
 import { ConfigContext } from '../config-provider';
 import Popper from '../popper';
-import type { BaseTooltipProps } from './interface';
-import type { HTMLProps } from '../utils/utilityTypes';
 import type { PopperPlacement, PopperTrigger } from '../popper/interface';
+import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseTooltipProps } from './interface';
 
 export type TooltipPlacement = PopperPlacement;
 
@@ -15,14 +15,14 @@ interface refHander {
 }
 
 export interface TooltipCssVars {
+  '--font-size'?: React.CSSProperties['fontSize'];
+  '--color'?: React.CSSProperties['color'];
   '--background'?: React.CSSProperties['background'];
+  '--z-index'?: React.CSSProperties['zIndex'];
+  '--spacing'?: React.CSSProperties['height'];
   '--padding-horizontal'?: React.CSSProperties['paddingLeft'];
   '--padding-vertical'?: React.CSSProperties['paddingTop'];
-  '--color'?: React.CSSProperties['color'];
-  '--z-index'?: React.CSSProperties['zIndex'];
   '--arrow-size'?: React.CSSProperties['width'];
-  '--font-size'?: React.CSSProperties['fontSize'];
-  '--spacing'?: React.CSSProperties['height'];
   '--arrow-horizontal-offset'?: React.CSSProperties['left'];
   '--arrow-vertical-offset'?: React.CSSProperties['top'];
 }

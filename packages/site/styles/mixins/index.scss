@@ -1,6 +1,6 @@
 @mixin onepx(
   $positions: top right bottom left,
-  $border-color: var(--border-color),
+  $border-color: var(--za-border-color),
   $border-radius: 0
 ) {
   &:after {

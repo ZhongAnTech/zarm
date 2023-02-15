@@ -1,14 +1,20 @@
-import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
+import * as React from 'react';
 import { ConfigContext } from '../config-provider';
-import type { BaseBadgeProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseBadgeProps } from './interface';
 
 export interface BadgeCssVars {
+  '--dot-size'?: string | number;
   '--color'?: React.CSSProperties['background'];
   '--text-color'?: React.CSSProperties['color'];
-  '--top'?: string | number;
-  '--right'?: string | number;
+  '--border-color'?: React.CSSProperties['borderColor'];
+  '--font-size'?: React.CSSProperties['fontSize'];
+  '--height'?: React.CSSProperties['height'];
+  '--padding-horizontal'?: React.CSSProperties['padding'];
+  '--border-radius'?: React.CSSProperties['borderRadius'];
+  '--top'?: React.CSSProperties['top'];
+  '--right'?: React.CSSProperties['right'];
 }
 
 export type BadgeProps = BaseBadgeProps & HTMLProps<BadgeCssVars>;

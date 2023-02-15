@@ -4,7 +4,7 @@
   @include define(item-padding-vertical, 8px);
   @include define(item-background, #fff);
   @include define(item-active-background, var(--za-background-active));
-  @include define(item-separator-color, rgba(60, 60, 67, 0.36));
+  @include define(item-separator-color, var(--za-border-color));
   @include define(item-title-font-size, var(--za-font-size-md));
   @include define(item-title-white-space, nowrap);
   @include define(
@@ -13,11 +13,11 @@
   );
   @include define(item-suffix-text-color, rgba(0, 0, 0, 0.45));
   @include define(item-space, 5px);
-  @include define(item-arrow-border-width, var(--za-arrow-width));
+  @include define(item-arrow-width, var(--za-arrow-width));
   @include define(item-arrow-color, var(--za-arrow-color));
   @include define(item-arrow-size, var(--za-arrow-size));
   @include define(item-description-font-size, 12px);
-  @include define(item-description-text-color, rgba(60, 60, 67, 0.6));
+  @include define(item-description-text-color, var(--za-color-text-caption));
   @include define(item-description-line-height, 16px);
   @include define(item-inline-title-width, 100px);
 
@@ -116,13 +116,13 @@
 
   @include e(arrow) {
     margin-left: var(--item-space);
-    margin-right: var(--item-arrow-border-width);
+    margin-right: var(--item-arrow-width);
 
     &:after {
       content: '';
       display: inline-block;
-      border-right: var(--item-arrow-border-width) solid var(--item-arrow-color);
-      border-top: var(--item-arrow-border-width) solid var(--item-arrow-color);
+      border-right: var(--item-arrow-width) solid var(--item-arrow-color);
+      border-top: var(--item-arrow-width) solid var(--item-arrow-color);
       width: var(--item-arrow-size);
       height: var(--item-arrow-size);
       transform: rotate(45deg);

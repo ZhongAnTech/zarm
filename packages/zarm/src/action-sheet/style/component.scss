@@ -58,9 +58,8 @@
     }
 
     @include m(disabled) {
-      @include define(item-text-color, var(--za-color-text));
+      @include define(item-text-color, var(--za-color-text-disabled));
 
-      opacity: var(--item-opacity-disabled);
       cursor: not-allowed;
       pointer-events: none;
     }

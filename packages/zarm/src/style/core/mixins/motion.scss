@@ -1,14 +1,14 @@
-@mixin motion-common($duration: var(--za-animation-duration-base)) {
+@mixin motion-common($duration: var(--za-animation-duration)) {
   animation-duration: $duration;
   animation-fill-mode: both;
 }
 
-@mixin motion-common-leave($duration: var(--za-animation-duration-base)) {
+@mixin motion-common-leave($duration: var(--za-animation-duration)) {
   animation-duration: $duration;
   animation-fill-mode: both;
 }
 
-@mixin make-motion($className, $keyframeName, $duration: var(--za-animation-duration-base)) {
+@mixin make-motion($className, $keyframeName, $duration: var(--za-animation-duration)) {
   .#{$className}-enter,
   .#{$className}-appear {
     animation-play-state: paused;

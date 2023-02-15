@@ -1,7 +1,6 @@
 @import '../core/index.scss';
 
 :root {
-
   @include defineColorHSL(--za-theme-default, 0, 0%, 90%);
   @include defineColorHSL(--za-theme-primary, 156, 100%, 36.9%);
   @include defineColorHSL(--za-theme-success, 156, 100%, 36.9%);
@@ -72,14 +71,9 @@
   --za-opacity-disabled: 0.5;
   --za-opacity-mask: 0.4;
   --za-opacity-toast: 0.8;
-  --za-opacity-tooltip: 0.8;
-
-  //阴影
-  --za-box-shadow-light: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
-  --za-box-shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.2);
 
   // 动画
-  --za-animation-duration-base: 0.3s;
+  --za-animation-duration: 0.3s;
 
   // 箭头
   --za-arrow-color: rgba(0, 0, 0, 0.2);

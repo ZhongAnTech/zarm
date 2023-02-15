@@ -17,11 +17,12 @@ export interface ButtonCssVars {
   '--text-color'?: React.CSSProperties['color'];
   '--font-size'?: React.CSSProperties['fontSize'];
   '--icon-size'?: React.CSSProperties['fontSize'];
+  '--loading-color'?: React.CSSProperties['color'];
   '--active-background'?: React.CSSProperties['background'];
   '--active-border-color'?: React.CSSProperties['borderColor'];
   '--active-text-color'?: React.CSSProperties['color'];
+  '--active-loading-color'?: React.CSSProperties['color'];
   '--shadow'?: React.CSSProperties['boxShadow'];
-  '--loading-color'?: React.CSSProperties['color'];
 }
 
 export type AnchorButtonProps = {

@@ -249,16 +249,16 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## CSS 变量
 
-| 属性                           | 默认值                    | 说明               |
-| :----------------------------- | :------------------------ | :----------------- |
-| --background                   | '#fff'                    | 背景色             |
-| --border-radius                | '14px'                    | 圆角大小           |
-| --spacing-margin               | '8px'                     | 边距               |
-| --item-height                  | '56px'                    | 选项高度           |
-| --item-font-size               | '20px'                    | 选项字体大小       |
-| --item-font-weight             | 500                       | 选项字体粗细       |
-| --item-text-color              | 'var(--za-theme-primary)' | 选项字体色         |
-| --item-active-background-color | '--za-background-active'  | 选项选中背景颜色   |
-| --item-opacity-disabled        | '--za-opacity-disabled'   | 选项禁用不透明度   |
-| --cancel-text-color            | 'var(--za-theme-primary)' | 取消选项字体大小   |
-| --cancel-margin-top            | '8px'                     | 取消选项上边距大小 |
+| 属性                           | 默认值                        | 说明               |
+| :----------------------------- | :---------------------------- | :----------------- |
+| --background                   | '#fff'                        | 背景色             |
+| --border-radius                | '14px'                        | 圆角大小           |
+| --spacing-margin               | '8px'                         | 边距               |
+| --item-height                  | '56px'                        | 选项高度           |
+| --item-font-size               | '20px'                        | 选项字体大小       |
+| --item-font-weight             | 500                           | 选项字体粗细       |
+| --item-text-color              | 'var(--za-theme-primary)'     | 选项字体色         |
+| --item-active-background-color | 'var(--za-background-active)' | 选项选中背景颜色   |
+| --item-opacity-disabled        | 'var(--za-opacity-disabled)'  | 选项禁用不透明度   |
+| --cancel-text-color            | 'var(--za-theme-primary)'     | 取消选项字体大小   |
+| --cancel-margin-top            | '8px'                         | 取消选项上边距大小 |

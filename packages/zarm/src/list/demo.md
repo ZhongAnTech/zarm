@@ -202,7 +202,7 @@ ReactDOM.render(
 | --item-title-line-height       | 'calc(var(--item-height) - var(--item-padding-vertical) \* 2))' | 列表项标题行高         |
 | --item-suffix-text-color       | 'rgba(0, 0, 0, 0.45)'                                           | 列表项尾部字体颜色     |
 | --item-space                   | '5px'                                                           | 列表项元素之间的间距   |
-| --item-arrow-border-width      | '2px'                                                           | 列表项尾部箭头宽度     |
+| --item-arrow-width             | '2px'                                                           | 列表项尾部箭头宽度     |
 | --item-arrow-color             | 'rgba(0, 0, 0, 0.2)'                                            | 列表项尾部箭头的颜色   |
 | --item-arrow-size              | '10px'                                                          | 列表项尾部箭头的大小   |
 | --item-description-font-size   | '12px'                                                          | 列表项补充信息字体大小 |

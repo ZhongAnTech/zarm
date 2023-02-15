@@ -1,13 +1,16 @@
-import React, { useState, useCallback, useContext, forwardRef, createRef } from 'react';
 import { createBEM } from '@zarm-design/bem';
-import type { HTMLProps } from '../utils/utilityTypes';
-import { ConfigContext } from '../config-provider';
-import PickerContainer from '../picker/Container';
+import React, { createRef, forwardRef, useCallback, useContext, useState } from 'react';
+import type { CascaderViewCssVars } from '../cascader-view';
 import CascaderView from '../cascader-view';
 import { parseState } from '../cascader-view/utils';
+import { ConfigContext } from '../config-provider';
+import PickerContainer from '../picker/Container';
+import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseCascaderProps } from './interface';
 
-export type CascaderProps = BaseCascaderProps & HTMLProps;
+export interface CascaderCssVars extends CascaderViewCssVars {}
+
+export type CascaderProps = BaseCascaderProps & HTMLProps<CascaderCssVars>;
 
 export type CascaderState = ReturnType<typeof parseState>;
 

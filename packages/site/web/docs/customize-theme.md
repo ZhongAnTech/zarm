@@ -32,15 +32,17 @@ return (
 
 可以通过修改 zarm 开放出来的 css 变量的方式深度定制你的样式。
 
-```js
-document.documentElement.style.setProperty('--theme-primary', '#108ee9');
+```jsx
+return (
+  <ConfigProvider
+    cssVars={{
+      '--za-theme-primary': '#ff0000',
+      '--za-rate-active-color': '#fa541b',
+    }}
+  >
+    <App />
+  </ConfigProvider>
+);
 ```
 
-以下是一些最常用的通用变量，所有样式变量可以在 <a href="https://github.com/ZhongAnTech/zarm/blob/master/packages/zarm/src/style/themes/default.scss" target="_blank">这里</a> 找到。
-
-```scss
---theme-primary: #00bc70; // 全局主色
---theme-success: #00bc70; // 成功色
---theme-warning: #ec9231; // 警告色
---theme-danger: #ff5050; // 危险色
-```
+通用变量可以在 <a href="https://github.com/ZhongAnTech/zarm/blob/master/packages/zarm/src/style/themes/default.scss" target="_blank">这里</a> 找到，组件级别的变量可在对应组件文档中查找。

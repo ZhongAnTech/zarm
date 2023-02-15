@@ -47,7 +47,7 @@
 
   @include m(disabled) {
     @include e(input) {
-      color: var(--color-text-disabled);
+      color: var(--za-color-text-disabled);
     }
   }
 }

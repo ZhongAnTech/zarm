@@ -46,6 +46,9 @@
   }
 
   @include b(input) {
+    @include define(placeholder-color, var(--input-placeholder-color));
+    @include define(clear-icon-color, var(--input-clear-icon-color));
+
     flex: 1;
     font-size: var(--input-font-size);
     background-color: transparent;
@@ -55,9 +58,6 @@
         display: none;
       }
     }
-
-    --za-input-placeholder-color: var(--input-placeholder-color);
-    --za-input-clear-icon-color: var(--input-clear-icon-color);
   }
 
   @include e(cancel) {

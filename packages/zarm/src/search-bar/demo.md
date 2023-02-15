@@ -198,7 +198,7 @@ ReactDOM.render(<Demo />, mountNode);
 | --input-clear-icon-color   | '#8e8e92'                   | 输入框清除图标颜色 |
 | --input-border-radius      | '10px'                      | 输入框圆角大小     |
 | --cancel-font-size         | 'var(--za-font-size-md)'    | 取消按钮字体大小   |
-| --cancel-color             | 'var(--theme-primary)'      | 取消按钮字体颜色   |
+| --cancel-color             | 'var(--za-theme-primary)'   | 取消按钮字体颜色   |
 | --cancel-margin-left       | '13px'                      | 取消按钮左边距     |
 | --cancel-transition        | 'all 0.2s'                  | 取消按钮动画       |
 | --icon-margin-right        | '6px'                       | 输入框图标右边距   |

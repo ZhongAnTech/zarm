@@ -1,14 +1,14 @@
 @include b(tooltip) {
-  @include define(padding-vertical, var(--za-padding-v-xs));
-  @include define(padding-horizontal, var(--za-padding-h-xs));
   @include define(font-size, 12px);
   @include define(color, var(--za-color-text-inverse));
-  @include define(arrow-size, 4px);
   @include define(background, rgba(0, 0, 0, 0.8));
   @include define(z-index, 1700);
   @include define(spacing, 3px);
-  @include define(arrow-vertical-offset, 6px);
+  @include define(padding-vertical, var(--za-padding-v-xs));
+  @include define(padding-horizontal, var(--za-padding-h-xs));
+  @include define(arrow-size, 4px);
   @include define(arrow-horizontal-offset, 10px);
+  @include define(arrow-vertical-offset, 6px);
 
   padding: var(--padding-vertical) var(--padding-horizontal);
   background-color: var(--background);

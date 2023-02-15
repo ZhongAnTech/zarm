@@ -2,7 +2,7 @@
   @include define(control-height, 50px);
   @include define(control-font-size, 14px);
   @include define(control-padding-vertical, 20px);
-  @include define(control-text-color, var(--color-text-caption));
+  @include define(control-text-color, var(--za-color-text-caption));
   @include define(control-icon-size, 22px);
 
   overflow: hidden;

@@ -93,14 +93,13 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性                      | 默认值                       | 说明                   |
 | :------------------------ | :--------------------------- | :--------------------- |
+| --font-size               | '12px'                       | 字体大小               |
+| --color                   | var(--za-color-text-inverse) | 字体颜色               |
 | --background              | 'rgba(0, 0, 0, 0.8)'         | 背景色                 |
+| --z-index                 | '1700'                       | 层级                   |
+| --spacing                 | '3px'                        | 和目标元素的间距       |
 | --padding-horizontal      | var(--za-padding-h-xs)       | 横向边距               |
 | --padding-vertical        | var(--za-padding-v-xs)       | 垂直边距               |
-| --color                   | var(--za-color-text-inverse) | 字体颜色               |
-| --font-size               | '12px'                       | 字体大小               |
 | --arrow-size              | '4px'                        | 箭头大小               |
-| --spacing                 | '3px'                        | 和目标元素的间距       |
 | --arrow-horizontal-offset | '10px'                       | 箭头相对内容的横向偏移 |
 | --arrow-vertical-offset   | '6px'                        | 箭头相对内容的纵向偏移 |
-| --font-size               | '12px'                       | 字体大小               |
-| --z-index                 | '1700'                       | 层级                   |

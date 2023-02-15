@@ -1,8 +1,8 @@
 @include b(collapse) {
   @include define(border-color, var(--za-border-color));
-  @include define(arrow-color, rgba(0, 0, 0, 0.2));
-  @include define(arrow-size, 10px);
-  @include define(arrow-width, 2px);
+  @include define(arrow-color, var(--za-arrow-color));
+  @include define(arrow-size, var(--za-arrow-size));
+  @include define(arrow-width, var(--za-arrow-width));
   @include define(arrow-disabled-color, #eee);
   @include define(header-height, 44px);
   @include define(header-padding-horizontal, 16px);

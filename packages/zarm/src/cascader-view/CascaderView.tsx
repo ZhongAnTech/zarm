@@ -1,19 +1,19 @@
-import React, {
-  useEffect,
-  useState,
-  useCallback,
-  memo,
-  useMemo,
-  useContext,
-  forwardRef,
-  createRef,
-} from 'react';
 import { createBEM } from '@zarm-design/bem';
-import type { HTMLProps } from '../utils/utilityTypes';
+import React, {
+  createRef,
+  forwardRef,
+  memo,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { ConfigContext } from '../config-provider';
-import Tabs from '../tabs';
-import Radio from '../radio';
 import { resolvedFieldNames } from '../picker-view/utils';
+import Radio from '../radio';
+import Tabs from '../tabs';
+import type { HTMLProps } from '../utils/utilityTypes';
 import type {
   BaseCascaderViewProps,
   CascaderItem,
@@ -24,14 +24,14 @@ import { parseState } from './utils';
 
 export interface CascaderViewCssVars {
   '--background-color'?: React.CSSProperties['backgroundColor'];
+  '--padding'?: React.CSSProperties['padding'];
+  '--tab-text-color'?: React.CSSProperties['color'];
+  '--tab-active-text-color'?: React.CSSProperties['color'];
+  '--options-height'?: React.CSSProperties['height'];
   '--option-text-color'?: React.CSSProperties['color'];
   '--option-active-text-color'?: React.CSSProperties['color'];
   '--option-font-size'?: React.CSSProperties['fontSize'];
   '--option-height'?: React.CSSProperties['height'];
-  '--options-height'?: React.CSSProperties['height'];
-  '--tab-text-color'?: React.CSSProperties['color'];
-  '--tab-active-text-color'?: React.CSSProperties['color'];
-  '--padding'?: React.CSSProperties['padding'];
 }
 
 export type CascaderViewProps = BaseCascaderViewProps & HTMLProps<CascaderViewCssVars>;

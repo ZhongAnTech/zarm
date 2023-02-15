@@ -1,8 +1,8 @@
-import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
+import * as React from 'react';
 import { ConfigContext } from '../config-provider';
-import type { BaseListProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseListProps } from './interface';
 
 export interface ListCssVars {
   '--item-height'?: React.CSSProperties['height'];
@@ -16,7 +16,7 @@ export interface ListCssVars {
   '--item-title-line-height'?: React.CSSProperties['lineHeight'];
   '--item-suffix-text-color'?: React.CSSProperties['color'];
   '--item-space'?: string | number;
-  '--item-arrow-border-width'?: React.CSSProperties['borderWidth'];
+  '--item-arrow-width'?: React.CSSProperties['borderWidth'];
   '--item-arrow-color'?: React.CSSProperties['color'];
   '--item-arrow-size'?: string | number;
   '--item-description-font-size'?: React.CSSProperties['fontSize'];
