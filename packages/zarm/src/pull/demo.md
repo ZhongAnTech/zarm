@@ -104,11 +104,11 @@ const Demo = () => {
   const style = bodyScroll ? {} : { overflowY: 'auto', maxHeight: 400 };
 
   const mountContainer = () => {
-    return bodyScroll ? document.body : pullRef.current && pullRef.current;
+    return bodyScroll ? document.body : pullRef.current;
   };
 
   const scrollContainer = () => {
-    return bodyScroll ? window : pullRef.current && pullRef.current;
+    return bodyScroll ? window : pullRef.current;
   };
 
   return (
