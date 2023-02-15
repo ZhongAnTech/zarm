@@ -1,10 +1,10 @@
+import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
-import '@testing-library/jest-dom';
 import { act } from 'react-dom/test-utils';
+import ImagePreview from '..';
 import { images, originImages } from '../../../tests/testData/images';
 import { sleep } from '../../../tests/utils';
-import ImagePreview from '..';
 import Button from '../../button';
 
 const originalOffsetWidth = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetWidth');
@@ -43,7 +43,6 @@ describe('ImagePreview', () => {
     });
   });
 
-
   it('should render show origin url button if origin url is not existed', () => {
     const { container } = render(<ImagePreview images={images} visible />);
     const buttonWrapper = container.querySelectorAll('.za-image-preview button');
@@ -72,8 +71,8 @@ describe('ImagePreview', () => {
 
   it('onChange', () => {
     const onChange = jest.fn();
-    const { container } = render(<ImagePreview visible images={images} onChange={onChange} />);
-    const element = container.querySelector('.za-carousel');
+    render(<ImagePreview visible images={images} onChange={onChange} />);
+    const element = document.body.querySelector('.za-carousel');
     fireEvent.mouseDown(element!, { pointerId: 1, clientX: 0, clientY: 0, buttons: 1 });
     fireEvent.mouseMove(element!, { pointerId: 1, clientX: -200, clientY: 0, buttons: 1 });
     fireEvent.mouseUp(element!, { pointerId: 1, clientX: -275 });
@@ -83,8 +82,8 @@ describe('ImagePreview', () => {
   it('onClose', async () => {
     jest.useFakeTimers();
     const mOnClose = jest.fn();
-    const { container } = render(<ImagePreview visible images={images} onClose={mOnClose} />);
-    const content = container.querySelector('.za-image-preview__content');
+    render(<ImagePreview visible images={images} onClose={mOnClose} />);
+    const content = document.body.querySelector('.za-image-preview__content');
     fireEvent.mouseDown(content!, { pointerId: 10, clientX: 20, clientY: 0, buttons: 1 });
     fireEvent.mouseMove(content!, { pointerId: 10, clientX: 20, clientY: 0, buttons: 1 });
     fireEvent.mouseUp(content!, { pointerId: 10, clientX: 20 });
@@ -94,16 +93,16 @@ describe('ImagePreview', () => {
 
   it('load origin', async () => {
     jest.useFakeTimers();
-    const { getByText, container } = render(<ImagePreview visible images={originImages} className="test1" />);
+    const { getByText } = render(<ImagePreview visible images={originImages} className="test1" />);
     const content = getByText('查看原图');
     fireEvent.mouseDown(content!, { pointerId: 10, clientX: 20, clientY: 0, buttons: 1 });
     fireEvent.mouseMove(content!, { pointerId: 10, clientX: 20, clientY: 0, buttons: 1 });
     fireEvent.mouseUp(content!, { pointerId: 10, clientX: 20 });
-    act( () => {
+    act(() => {
       onloadRef?.();
       jest.runAllTimers();
     });
-    const newContent = container.querySelector('.test1 button');
+    const newContent = document.body.querySelector('.test1 button');
     expect(newContent).not.toBeInTheDocument();
   });
 
@@ -123,8 +122,7 @@ describe('ImagePreview', () => {
     render(<ImagePreview visible images={images} />);
     const img = document.body.querySelectorAll('img');
     expect(img!).toHaveLength(3);
-    const srcArr = Array.from(img)
-      .map((v) => v.getAttribute('src'));
+    const srcArr = Array.from(img).map((v) => v.getAttribute('src'));
     expect(srcArr).toEqual(images);
   });
 
@@ -132,7 +130,7 @@ describe('ImagePreview', () => {
     const onClick = async () => {
       await ImagePreview.show({
         images,
-        className: 'image-static'
+        className: 'image-static',
       });
     };
 
