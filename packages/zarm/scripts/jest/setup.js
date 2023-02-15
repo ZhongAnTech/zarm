@@ -1,3 +1,5 @@
+import '@testing-library/jest-dom';
+
 const Enzyme = require('enzyme');
 require('jest-canvas-mock');
 

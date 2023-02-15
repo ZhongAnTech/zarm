@@ -58,16 +58,16 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性              | 类型                                 | 默认值        | 说明                                                                      |
-| :---------------- | :----------------------------------- | :------------ | :------------------------------------------------------------------------ |
-| visible           | boolean                              | false         | 是否显示                                                                  |
-| color             | string                               | 'black'       | 遮罩层的颜色，可选值 `black`, `white`, `transparent`                      |
-| opacity           | string \| number                     | 'normal'      | 遮罩层的透明度，可选值 `normal`, `light`, `dark`，或填写具体数值（0 ~ 1） |
-| forceRender       | boolean                              | false         | 强制渲染内容                                                              |
-| destroy           | boolean                              | true          | 不可见时卸载内容                                                          |
-| animationDuration | number                               | -             | 动画执行时间（单位：毫秒）                                                |
-| mountContainer    | HTMLElement &#124; () => HTMLElement | document.body | 指定 Mask 挂载的 HTML 节点                                                |
-| onClick           | MouseEventHandler<HTMLDivElement\>   | -             | 点击后触发的回调函数                                                      |
+| 属性              | 类型                               | 默认值              | 说明                                                                      |
+| :---------------- | :--------------------------------- | :------------------ | :------------------------------------------------------------------------ |
+| visible           | boolean                            | false               | 是否显示                                                                  |
+| color             | string                             | 'black'             | 遮罩层的颜色，可选值 `black`, `white`, `transparent`                      |
+| opacity           | string \| number                   | 'normal'            | 遮罩层的透明度，可选值 `normal`, `light`, `dark`，或填写具体数值（0 ~ 1） |
+| forceRender       | boolean                            | false               | 强制渲染内容                                                              |
+| destroy           | boolean                            | true                | 不可见时卸载内容                                                          |
+| animationDuration | number                             | -                   | 动画执行时间（单位：毫秒）                                                |
+| mountContainer    | MountContainer                     | () => document.body | 指定 Mask 挂载的 HTML 节点                                                |
+| onClick           | MouseEventHandler<HTMLDivElement\> | -                   | 点击后触发的回调函数                                                      |
 
 ## CSS 变量
 

@@ -223,19 +223,19 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性           | 类型                                                                     | 默认值        | 说明                               |
-| :------------- | :----------------------------------------------------------------------- | :------------ | :--------------------------------- |
-| visible        | boolean                                                                  | false         | 是否显示                           |
-| spacing        | boolean                                                                  | false         | 是否和外部有间距                   |
-| destroy        | boolean                                                                  | true          | 弹层关闭后是否移除节点             |
-| actions        | Action[]                                                                 | []            | 面板选项列表                       |
-| onMaskClick    | () => void                                                               | -             | 点击遮罩层时触发的回调函数         |
-| onCancel       | () => void                                                               | -             | 显示取消菜单，点击时触发的回调函数 |
-| onAction       | (action: ActionSheetItemProps, index: number) => void \| Promise\<void\> | -             | 点击面板选项后触发的函数           |
-| cancelText     | string                                                                   | '取消'        | 取消菜单的文案                     |
-| safeIphoneX    | boolean                                                                  | false         | 是否适配 iphoneX 刘海屏            |
-| afterClose     | () => void                                                               | -             | ActionSheet 隐藏后的回调函数       |
-| mountContainer | HTMLElement &#124; () => HTMLElement                                     | document.body | 指定 ActionSheet 挂载的 HTML 节点  |
+| 属性           | 类型                                                                     | 默认值              | 说明                               |
+| :------------- | :----------------------------------------------------------------------- | :------------------ | :--------------------------------- |
+| visible        | boolean                                                                  | false               | 是否显示                           |
+| spacing        | boolean                                                                  | false               | 是否和外部有间距                   |
+| destroy        | boolean                                                                  | true                | 弹层关闭后是否移除节点             |
+| actions        | Action[]                                                                 | []                  | 面板选项列表                       |
+| onMaskClick    | () => void                                                               | -                   | 点击遮罩层时触发的回调函数         |
+| onCancel       | () => void                                                               | -                   | 显示取消菜单，点击时触发的回调函数 |
+| onAction       | (action: ActionSheetItemProps, index: number) => void \| Promise\<void\> | -                   | 点击面板选项后触发的函数           |
+| cancelText     | string                                                                   | '取消'              | 取消菜单的文案                     |
+| safeIphoneX    | boolean                                                                  | false               | 是否适配 iphoneX 刘海屏            |
+| afterClose     | () => void                                                               | -                   | ActionSheet 隐藏后的回调函数       |
+| mountContainer | MountContainer                                                           | () => document.body | 指定 ActionSheet 挂载的 HTML 节点  |
 
 ### ActionSheetItemProps
 

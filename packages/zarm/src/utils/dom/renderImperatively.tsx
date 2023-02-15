@@ -1,7 +1,7 @@
 // 移植自 antd-mobile: https://github1s.com/ant-design/ant-design-mobile/blob/HEAD/src/utils/render-imperatively.tsx
 import * as React from 'react';
 import { MountContainer } from '.';
-import { RuntimeConfigProvider } from '../../config-provider/ConfigProvider';
+import { getRuntimeConfig, RuntimeConfigProvider } from '../../config-provider';
 import { renderTo } from './renderTo';
 
 interface ImperativeProps {
@@ -56,18 +56,18 @@ export const renderImperatively = (element: TargetElement) => {
     return React.cloneElement(elementToRender, {
       ...elementToRender.props,
       key: keyRef.current,
+      mountContainer: false,
       visible,
       onClose,
       afterClose,
     });
   });
-
   const wrapperRef = React.createRef<ImperativeHandler>();
   const unmount = renderTo(
     <RuntimeConfigProvider>
       <Wrapper ref={wrapperRef} />
     </RuntimeConfigProvider>,
-    element.props.mountContainer,
+    element.props.mountContainer ?? getRuntimeConfig().mountContainer,
   );
 
   return {

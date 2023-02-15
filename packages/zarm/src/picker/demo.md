@@ -477,16 +477,16 @@ ReactDOM.render(<Demo />, mountNode);
 
 ### 仅 Picker & Select 支持的属性
 
-| 属性           | 类型                                                          | 默认值        | 说明                                           |
-| :------------- | :------------------------------------------------------------ | :------------ | :--------------------------------------------- |
-| title          | string                                                        | '请选择'      | 选择器标题                                     |
-| confirmText    | string                                                        | '确定'        | 确定栏文字                                     |
-| cancelText     | string                                                        | '取消'        | 取消栏文字                                     |
-| maskClosable   | boolean                                                       | true          | 是否点击遮罩层时关闭，需要和 onCancel 一起使用 |
-| destroy        | boolean                                                       | false         | 弹层关闭后是否移除节点                         |
-| onConfirm      | (value: PickerValue[], items: PickerViewColumnItem[]) => void | -             | 点击确定时触发的回调函数                       |
-| onCancel       | () => void                                                    | -             | 点击取消时触发的回调函数                       |
-| mountContainer | HTMLElement &#124; () => HTMLElement                          | document.body | 指定 Picker 挂载的 HTML 节点                   |
+| 属性           | 类型                                                          | 默认值              | 说明                                           |
+| :------------- | :------------------------------------------------------------ | :------------------ | :--------------------------------------------- |
+| title          | string                                                        | '请选择'            | 选择器标题                                     |
+| confirmText    | string                                                        | '确定'              | 确定栏文字                                     |
+| cancelText     | string                                                        | '取消'              | 取消栏文字                                     |
+| maskClosable   | boolean                                                       | true                | 是否点击遮罩层时关闭，需要和 onCancel 一起使用 |
+| destroy        | boolean                                                       | false               | 弹层关闭后是否移除节点                         |
+| onConfirm      | (value: PickerValue[], items: PickerViewColumnItem[]) => void | -                   | 点击确定时触发的回调函数                       |
+| onCancel       | () => void                                                    | -                   | 点击取消时触发的回调函数                       |
+| mountContainer | MountContainer                                                | () => document.body | 指定 Picker 挂载的 HTML 节点                   |
 
 ### 指令式调用
 

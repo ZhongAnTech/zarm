@@ -1,5 +1,5 @@
-import * as React from 'react';
 import type { Context } from 'react';
+import * as React from 'react';
 import type { ConfigProviderProps } from './interface';
 import defaultLocaleData from './locale/zh_CN';
 import setCssVars from './setCssVars';
@@ -13,15 +13,18 @@ export const defaultConfig: ConfigProviderProps = {
   safeIphoneX: false,
   cssVars: {},
   mountContainer: () => document.body,
+  scrollContainer: () => window,
 };
 
 export const ConfigContext: Context<ConfigProviderProps> = React.createContext(defaultConfig);
 
-let runtimeConfigContext: ConfigProviderProps;
+let runtimeConfigContext: ConfigProviderProps = defaultConfig;
 
 const changeRuntimeConfigContext = (props: ConfigProviderProps) => {
   runtimeConfigContext = props;
 };
+
+export const getRuntimeConfig = () => runtimeConfigContext;
 
 const ConfigProvider: React.FC<React.PropsWithChildren<ConfigProviderProps>> = (props) => {
   const { children, cssVars, primaryColor, theme, ...rest } = props;
