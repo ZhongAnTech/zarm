@@ -1,6 +1,6 @@
-import React from 'react';
-import '@testing-library/jest-dom'
+import '@testing-library/jest-dom';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import React from 'react';
 import Modal, { ModalProps } from '..';
 
 describe('Modal', () => {
@@ -12,8 +12,8 @@ describe('Modal', () => {
       title: '标题',
       visible: true,
     };
-    const { container } = render(<Modal {...props}>foo</Modal>);
-    expect(container).toMatchSnapshot();
+    const wrapper = render(<Modal {...props}>foo</Modal>);
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('onClose', () => {
@@ -45,7 +45,7 @@ describe('Modal', () => {
     const { getByText } = render(
       <button
         onClick={() => {
-           Modal.alert({
+          Modal.alert({
             title: '警告框标题',
             content: '这里是警告框的内容部分',
             onConfirm: confirm,
@@ -72,11 +72,11 @@ describe('Modal', () => {
     const { getByText } = render(
       <button
         onClick={() => {
-           Modal.alert({
+          Modal.alert({
             title: '警告框标题1',
             content: '这里是警告框的内容部分',
             onConfirm: confirm,
-            confirmText: '确定1'
+            confirmText: '确定1',
           });
         }}
       >
@@ -100,7 +100,7 @@ describe('Modal', () => {
     const { getByText } = render(
       <button
         onClick={() => {
-           Modal.confirm({
+          Modal.confirm({
             title: '确认信息',
             content: '这里是确认框的内容部分',
             onConfirm: confirm,
@@ -128,15 +128,14 @@ describe('Modal', () => {
     });
   });
 
-
   it('confirm onConfirm onCancel return false', async () => {
     const confirm = jest.fn().mockReturnValue(false);
     const cancel = jest.fn().mockReturnValue(false);
     const fn = jest.fn();
     const { getByText } = render(
       <button
-        onClick={ async () => {
-           await Modal.confirm({
+        onClick={async () => {
+          await Modal.confirm({
             title: '确认信息1',
             content: '这里是确认框的内容部分1',
             onConfirm: confirm,

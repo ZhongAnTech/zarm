@@ -42,10 +42,8 @@ describe('CustomInput', () => {
 
   it('disabled focus', () => {
     const onFocus = jest.fn();
-    const { container } = render(
-      <CustomInput className="custom-input" value="test" onFocus={onFocus} disabled />,
-    );
-    const input = container.querySelector('.za-custom-input');
+    render(<CustomInput className="custom-input" value="test" onFocus={onFocus} disabled />);
+    const input = document.body.querySelector('.za-custom-input');
     fireEvent.click(input!);
     expect(onFocus).toBeCalledTimes(0);
   });
@@ -60,7 +58,7 @@ describe('CustomInput', () => {
   it('onKeyClick', () => {
     const onBlur = jest.fn();
     const onChange = jest.fn();
-    const { container } = render(
+    render(
       <CustomInput
         type="number"
         className="custom-input"
@@ -69,7 +67,7 @@ describe('CustomInput', () => {
         onChange={onChange}
       />,
     );
-    const item = container.getElementsByClassName('za-keyboard__item');
+    const item = document.body.getElementsByClassName('za-keyboard__item');
     fireEvent.click(item[10]!);
     expect(onBlur).toBeCalledTimes(1);
     fireEvent.click(item[1]!);
@@ -78,7 +76,7 @@ describe('CustomInput', () => {
 
   it('maxLength', () => {
     const onChange = jest.fn();
-    const { container } = render(
+    render(
       <CustomInput
         type="number"
         className="custom-input"
@@ -88,7 +86,7 @@ describe('CustomInput', () => {
         onChange={onChange}
       />,
     );
-    const item = container.getElementsByClassName('za-keyboard__item');
+    const item = document.body.getElementsByClassName('za-keyboard__item');
     fireEvent.click(item[1]!);
     expect(onChange).toBeCalledTimes(0);
   });
@@ -96,8 +94,8 @@ describe('CustomInput', () => {
 
 describe('CustomInput.Number', () => {
   it('inputNumber value 0', () => {
-    const { container } = render(<CustomInput clearable type="number" value={0} />);
-    const input = container.querySelectorAll('input[type="hidden"]')[0] as HTMLInputElement;
+    render(<CustomInput clearable type="number" value={0} />);
+    const input = document.body.querySelectorAll('input[type="hidden"]')[0] as HTMLInputElement;
     expect(input.value).toEqual('0');
   });
 });
