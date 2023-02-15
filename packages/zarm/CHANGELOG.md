@@ -36,10 +36,8 @@
   - [Checkbox]
     - Group
       - 属性 `type` 可选值 `cell` 变更为 `list`
-      - 属性 `size` 变更为 `buttonSize`
-      - 属性 `shape` 变更为 `buttonShape`
-      - 属性 `ghost` 变更为 `buttonGhost`
-      - 新增属性 `listMarkerAlign` ，用于设置列表类型时标记的位置
+      - 删除属性 `size`、`shape`、`ghost`
+      - 新增属性 `iconAlign` ，用于设置列表类型时标记的位置
   - [Radio]
     - Group
       - 属性 `type` 可选值 `cell` 变更为 `list`

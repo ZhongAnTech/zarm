@@ -1,6 +1,9 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import Checkbox from '../index';
+import type { CheckboxRef } from '../index';
+
+const classPrefix = 'za-checkbox';
 
 describe('Checkbox', () => {
   it('renders correctly', () => {
@@ -22,11 +25,47 @@ describe('Checkbox', () => {
     expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
-  it('checked change false', () => {
-    const onChange = jest.fn();
-    const { container } = render(<Checkbox onChange={onChange}>foo</Checkbox>);
-    fireEvent.click(container.querySelectorAll('input')[0]);
-    expect(onChange).toHaveBeenCalledTimes(1);
+  it('click event', () => {
+    const { container } = render(<Checkbox>foo</Checkbox>);
+    const input = container.querySelectorAll('input')[0];
+    const checkbox = container.getElementsByTagName('label')[0];
+
+    expect(input).not.toBeChecked();
+    expect(checkbox).toHaveClass(`${classPrefix}`);
+
+    fireEvent.click(checkbox);
+    expect(input).toBeChecked();
+    expect(checkbox).toHaveClass(`${classPrefix}--checked`);
+
+    fireEvent.click(checkbox);
+    expect(input).not.toBeChecked();
+    expect(checkbox).not.toHaveClass(`${classPrefix}--checked`);
+  });
+
+  it('static method', () => {
+    const ref = React.createRef<CheckboxRef>();
+
+    let checked = false;
+    const onChange = jest.fn(e => {
+      checked = e.target.checked;
+    });
+
+    const { container } = render(<Checkbox ref={ref} onChange={onChange}>foo</Checkbox>);
+    const input = container.querySelectorAll('input')[0]
+    ref.current?.check();
+    expect(input).toBeChecked();
+    expect(onChange).toHaveBeenCalled();
+    expect(checked).toEqual(true);
+
+    ref.current?.uncheck();
+    expect(input).not.toBeChecked();
+    expect(onChange).toHaveBeenCalled();
+    expect(checked).toEqual(false);
+
+    ref.current?.toggle();
+    expect(input).toBeChecked();
+    expect(onChange).toHaveBeenCalled();
+    expect(checked).toEqual(true);
   });
 });
 
@@ -75,6 +114,11 @@ describe('Checkbox.Group', () => {
       </Checkbox.Group>,
     );
     expect(wrapper.asFragment()).toMatchSnapshot();
+
+    const { container } = wrapper;
+    const checkbox = container.getElementsByTagName('label')[0];
+    fireEvent.click(checkbox);
+    expect(checkbox).toHaveClass(`${classPrefix}--checked`);
   });
 
   it('type is list', () => {
