@@ -25,7 +25,7 @@ const LoadableComponent = (component) => {
 };
 
 const Icons = Icon.createFromIconfont(
-  'https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_12.c88c671482b5407871df8b9fca48c0c7.js',
+  '//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_14.627ee457cf7594fbbce6d5e14b8c29ef.js',
 );
 
 const Simulator = () => {

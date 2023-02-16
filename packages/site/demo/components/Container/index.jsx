@@ -7,7 +7,7 @@ import enUS from 'zarm/config-provider/locale/en_US';
 import zhCN from 'zarm/config-provider/locale/zh_CN';
 import './style.scss';
 
-const Icons = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_uwg522sx17.js');
+const Icons = Icon.createFromIconfont('//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_14.627ee457cf7594fbbce6d5e14b8c29ef.js');
 
 const Container = (props) => {
   const [locale, setLocale] = useState(window.localStorage.locale || 'zhCN');

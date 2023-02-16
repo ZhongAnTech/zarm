@@ -17,7 +17,7 @@ const isComponentPage = (page) =>
     .flat()
     .findIndex((item) => item.key === page) === -1;
 const isHooks = (key) => key.indexOf('use') === 0; // components key startsWith use
-const Icons = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_mk657pke2hj.js');
+const Icons = Icon.createFromIconfont('//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_14.627ee457cf7594fbbce6d5e14b8c29ef.js');
 
 export default (props) => {
   const intl = useIntl();
@@ -103,7 +103,7 @@ export default (props) => {
               direction="right"
             >
               <a alt="#" href={sourceURL} rel="noreferrer" target="_blank">
-                <Icons type="edit" size="sm" />
+                <Icons type="edit" />
               </a>
             </Tooltip>
           </h1>

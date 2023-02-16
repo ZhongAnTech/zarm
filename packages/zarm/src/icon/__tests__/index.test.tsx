@@ -22,7 +22,7 @@ const Right = (props) => (
 
 describe('Icon', () => {
   it('renders Icons using iconfont', () => {
-    const MyIcon = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_mk657pke2hj.js');
+    const MyIcon = Icon.createFromIconfont('//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_14.627ee457cf7594fbbce6d5e14b8c29ef.js');
     const wrapper = render(
       <>
         <MyIcon type="home" />
