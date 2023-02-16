@@ -197,12 +197,13 @@
 
       @include e(tick) {
         @include define(icon-border-width, 0);
+
         background: transparent;
 
         @include b(icon) {
           font-size: var(--icon-size);
         }
-      }      
+      }
     }
   }
 }
