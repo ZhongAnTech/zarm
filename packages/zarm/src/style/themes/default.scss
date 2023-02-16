@@ -1,6 +1,6 @@
 @import '../core/index.scss';
 
-:root {
+:root, page {
   @include defineColorHSL(--za-theme-default, 0, 0%, 90%);
   @include defineColorHSL(--za-theme-primary, 156, 100%, 36.9%);
   @include defineColorHSL(--za-theme-success, 156, 100%, 36.9%);

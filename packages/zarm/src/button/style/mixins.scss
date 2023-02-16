@@ -26,6 +26,7 @@
   @include m(block) {
     display: block;
     width: 100%;
+    box-sizing: border-box;
   }
 }
 
@@ -84,17 +85,15 @@
 
   @include b(icon) {
     font-size: var(--icon-size);
+    margin-right: calc(var(--padding-horizontal) / 2);
   }
 
   @include m(loading) {
     @include b(loading) {
       width: var(--font-size);
       height: var(--font-size);
+      margin-right: calc(var(--padding-horizontal) / 2);
     }
-  }
-
-  * + span {
-    margin-left: calc(var(--padding-horizontal) / 2);
   }
 }
 
