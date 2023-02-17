@@ -1,8 +1,6 @@
 import { ReactNode } from 'react';
 
-export type RadioType = 'button' | 'list';
 export type RadioValue = number | string;
-export type RadioGroupListIconAlign = 'before' | 'after';
 
 export interface BaseRadioProps {
   disabled?: boolean;
@@ -15,7 +13,7 @@ export interface BaseRadioProps {
 }
 
 export interface BaseRadioGroupProps {
-  type?: RadioType;
+  type?: 'button' | 'list';
   disabled?: boolean;
   block?: boolean;
   compact?: boolean;
@@ -23,5 +21,5 @@ export interface BaseRadioGroupProps {
   value?: RadioValue;
   onChange?: (value: RadioValue) => void;
   children?: ReactNode;
-  listIconAlign?: RadioGroupListIconAlign;
+  listIconAlign?: 'before' | 'after';
 }

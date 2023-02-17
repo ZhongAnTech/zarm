@@ -12,13 +12,6 @@ exports[`Radio defaultChecked 1`] = `
       type="radio"
       value=""
     />
-    <input
-      aria-checked="true"
-      checked=""
-      class="za-radio__input"
-      type="radio"
-      value=""
-    />
     <span
       class="za-radio__icon"
     >
@@ -65,13 +58,6 @@ exports[`Radio disabled 1`] = `
       type="radio"
       value=""
     />
-    <input
-      aria-checked="false"
-      class="za-radio__input"
-      disabled=""
-      type="radio"
-      value=""
-    />
     <span
       class="za-radio__icon"
     >
@@ -111,13 +97,6 @@ exports[`Radio renders correctly 1`] = `
   <label
     class="za-radio za-radio--checked"
   >
-    <input
-      aria-checked="true"
-      checked=""
-      class="za-radio__input"
-      type="radio"
-      value=""
-    />
     <input
       aria-checked="true"
       checked=""
@@ -176,12 +155,6 @@ exports[`Radio.Group render defaultValue correctly 1`] = `
           type="radio"
           value="0"
         />
-        <input
-          aria-checked="false"
-          class="za-radio__input"
-          type="radio"
-          value="0"
-        />
         <span
           class="za-radio__icon"
         >
@@ -223,13 +196,6 @@ exports[`Radio.Group render defaultValue correctly 1`] = `
           type="radio"
           value="1"
         />
-        <input
-          aria-checked="true"
-          checked=""
-          class="za-radio__input"
-          type="radio"
-          value="1"
-        />
         <span
           class="za-radio__icon"
         >
@@ -264,12 +230,6 @@ exports[`Radio.Group render defaultValue correctly 1`] = `
       <label
         class="za-radio"
       >
-        <input
-          aria-checked="false"
-          class="za-radio__input"
-          type="radio"
-          value="2"
-        />
         <input
           aria-checked="false"
           class="za-radio__input"
@@ -330,13 +290,6 @@ exports[`Radio.Group render value correctly 1`] = `
           type="radio"
           value="0"
         />
-        <input
-          aria-checked="true"
-          checked=""
-          class="za-radio__input"
-          type="radio"
-          value="0"
-        />
         <span
           class="za-radio__icon"
         >
@@ -377,12 +330,6 @@ exports[`Radio.Group render value correctly 1`] = `
           type="radio"
           value="1"
         />
-        <input
-          aria-checked="false"
-          class="za-radio__input"
-          type="radio"
-          value="1"
-        />
         <span
           class="za-radio__icon"
         >
@@ -417,12 +364,6 @@ exports[`Radio.Group render value correctly 1`] = `
       <label
         class="za-radio"
       >
-        <input
-          aria-checked="false"
-          class="za-radio__input"
-          type="radio"
-          value="2"
-        />
         <input
           aria-checked="false"
           class="za-radio__input"
@@ -482,12 +423,6 @@ exports[`Radio.Group renders correctly 1`] = `
           type="radio"
           value="0"
         />
-        <input
-          aria-checked="false"
-          class="za-radio__input"
-          type="radio"
-          value="0"
-        />
         <span
           class="za-radio__icon"
         >
@@ -528,12 +463,6 @@ exports[`Radio.Group renders correctly 1`] = `
           type="radio"
           value="1"
         />
-        <input
-          aria-checked="false"
-          class="za-radio__input"
-          type="radio"
-          value="1"
-        />
         <span
           class="za-radio__icon"
         >
@@ -568,12 +497,6 @@ exports[`Radio.Group renders correctly 1`] = `
       <label
         class="za-radio"
       >
-        <input
-          aria-checked="false"
-          class="za-radio__input"
-          type="radio"
-          value="2"
-        />
         <input
           aria-checked="false"
           class="za-radio__input"

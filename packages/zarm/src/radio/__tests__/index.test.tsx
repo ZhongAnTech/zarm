@@ -56,12 +56,6 @@ describe('Radio', () => {
     expect(input).toBeChecked();
     expect(onChange).toHaveBeenCalled();
     expect(checked).toEqual(true);
-
-    // todo...
-    // ref.current?.uncheck();
-    // expect(input).not.toBeChecked();
-    // expect(onChange).toHaveBeenCalled();
-    // expect(checked).toEqual(false);
   });
 });
 

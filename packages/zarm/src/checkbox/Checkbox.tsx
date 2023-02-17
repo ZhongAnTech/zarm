@@ -148,7 +148,7 @@ const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
 
   if (groupContext?.type === 'button') {
     return (
-      <label className={cls}>
+      <label className={cls} style={props.style}>
         {inputRender}
         <Button
           disabled={disabled}
@@ -177,6 +177,7 @@ const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
       <List.Item
         hasArrow={false}
         className={cls}
+        style={props.style}
         prefix={groupContext?.iconAlign === 'before' ? tickRender : undefined}
         suffix={groupContext?.iconAlign === 'after' ? tickRender : undefined}
         title={textRender}
@@ -202,7 +203,7 @@ const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
   );
 
   return (
-    <label className={cls}>
+    <label className={cls} style={props.style}>
       {inputRender}
       {contentRender}
     </label>

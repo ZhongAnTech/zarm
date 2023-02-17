@@ -36,8 +36,8 @@ const RadioGroup: FC<RadioGroupProps> = (props) => {
   useEffect(() => {
     if (props.value === undefined) return;
     if (props.value === value) return;
+
     setValue(getValue(props));
-    props.onChange?.(props.value);
   }, [props.value]);
 
   return (
@@ -53,7 +53,6 @@ const RadioGroup: FC<RadioGroupProps> = (props) => {
           setValue(v);
           props.onChange?.(v);
         },
-        uncheck: () => {},
       }}
     >
       <div className={cls} style={style}>

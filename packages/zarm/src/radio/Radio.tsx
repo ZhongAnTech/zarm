@@ -53,7 +53,6 @@ const getChecked = (props: RadioProps, defaultChecked?: boolean) => {
 
 export interface RadioRef {
   check: () => void;
-  uncheck: () => void;
 };
 
 const Radio = forwardRef<RadioRef, RadioProps>((props, ref) => {
@@ -67,8 +66,6 @@ const Radio = forwardRef<RadioRef, RadioProps>((props, ref) => {
     setChecked = (changedChecked: boolean) => {
       if (changedChecked) {
         groupContext.check(props.value)
-      } else {
-        groupContext.uncheck(props.value)
       }
     };
     disabled = disabled || groupContext.disabled;
@@ -121,24 +118,10 @@ const Radio = forwardRef<RadioRef, RadioProps>((props, ref) => {
     />
   );
 
-  const contentRender = props.render ? (
-    props.render(currentProps)
-  ) : (
-    <>
-      {inputRender}
-      {iconRender}
-      {textRender}
-    </>
-  );
-
   useImperativeHandle(ref, () => {
     return {
       check: () => {
         if (checked) return;
-        inputRef.current.click();
-      },
-      uncheck: () => {
-        if (!checked) return;
         inputRef.current.click();
       },
     };
@@ -153,7 +136,7 @@ const Radio = forwardRef<RadioRef, RadioProps>((props, ref) => {
 
   if (groupContext?.type === 'button') {
     return (
-      <label className={cls}>
+      <label className={cls} style={props.style}>
         {inputRender}
         <Button
           disabled={disabled}
@@ -182,6 +165,7 @@ const Radio = forwardRef<RadioRef, RadioProps>((props, ref) => {
       <List.Item
         hasArrow={false}
         className={cls}
+        style={props.style}
         prefix={groupContext?.listIconAlign === 'before' ? tickRender : undefined}
         suffix={groupContext?.listIconAlign === 'after' ? tickRender : undefined}
         title={textRender}
@@ -197,8 +181,17 @@ const Radio = forwardRef<RadioRef, RadioProps>((props, ref) => {
     );
   }
 
+  const contentRender = props.render ? (
+    props.render(currentProps)
+  ) : (
+    <>
+      {iconRender}
+      {textRender}
+    </>
+  );
+
   return (
-    <label className={cls}>
+    <label className={cls} style={props.style}>
       {inputRender}
       {contentRender}
     </label>

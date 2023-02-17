@@ -344,7 +344,4 @@ ReactDOM.render(<Demo />, mountNode);
 ```js
 // 选择
 ref.current.check();
-
-// 取消选择
-ref.current.uncheck();
 ```

@@ -9,5 +9,4 @@ export const RadioGroupContext = createContext<{
   compact: RadioGroupProps['compact'];
   listIconAlign: RadioGroupProps['listIconAlign'];
   check: (value: RadioProps['value']) => void;
-  uncheck: (value: RadioProps['value']) => void;
 }>(null);
