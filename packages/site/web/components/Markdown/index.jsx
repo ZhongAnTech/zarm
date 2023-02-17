@@ -8,7 +8,7 @@ import { Tooltip } from 'zarm-web';
 import { FormattedMessage, useIntl } from 'react-intl';
 import Context from '@/utils/context';
 import Meta from '@/web/components/Meta';
-import { documents } from '@/site.config';
+import { documents, assets } from '@/site.config';
 import Codesanbox from './Codesanbox';
 import './style.scss';
 
@@ -16,8 +16,10 @@ const isComponentPage = (page) =>
   Object.values(documents)
     .flat()
     .findIndex((item) => item.key === page) === -1;
+
 const isHooks = (key) => key.indexOf('use') === 0; // components key startsWith use
-const Icons = Icon.createFromIconfont('//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_14.627ee457cf7594fbbce6d5e14b8c29ef.js');
+
+const Icons = Icon.createFromIconfont(assets.iconfont);
 
 export default (props) => {
   const intl = useIntl();

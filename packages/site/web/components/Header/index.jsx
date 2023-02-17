@@ -8,6 +8,7 @@ import { Search as SearchIcon, Close as CloseIcon } from '@zarm-design/icons';
 import classnames from 'classnames';
 import docsearch from 'docsearch.js';
 import MenuComponent from '@/web/components/Menu';
+import { assets } from '@/site.config';
 import Events from '@/utils/events';
 import Context from '@/utils/context';
 import Locales from '@/locale';
@@ -25,7 +26,7 @@ const initDocSearch = () => {
   });
 };
 
-const Icons = Icon.createFromIconfont('//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_14.627ee457cf7594fbbce6d5e14b8c29ef.js');
+const Icons = Icon.createFromIconfont(assets.iconfont);
 
 const Header = ({ children }) => {
   const searchInput = useRef();
