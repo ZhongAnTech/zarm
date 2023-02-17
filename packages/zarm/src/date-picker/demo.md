@@ -139,7 +139,7 @@ const initialValue = {
     title: '周',
     props: {
       columnType: ['year', 'week'],
-      value: new Date(2026, 11, 27)
+      value: new Date(2026, 11, 27),
     },
   },
   date: {
@@ -325,17 +325,17 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性         | 类型                                                        | 默认值                   | 说明                   |
-| :----------- | :---------------------------------------------------------- | :----------------------- | :--------------------- |
-| value        | Date                                                        | -                        | 值                     |
-| defaultValue | Date                                                        | -                        | 初始值                 |
-| columnType   | ColumnType[]                                                | ['year', 'month', 'day'] | 指定列选择类型         |
-| min          | Date                                                        | -                        | 相应 mode 的最小时间   |
-| max          | Date                                                        | -                        | 相应 mode 的最大时间   |
-| disabled     | boolean                                                     | false                    | 是否禁用               |
-| filter       | (type: ColumnType, {value: number, date: Date} ) => boolean | -                        | 选项过滤函数           |
-| renderLabel  | (type: ColumnType, value: number) => React.ReactNode        | -                        | 单个选项的展示         |
-| onChange     | (value: Date) => void                                       | -                        | 值变化时触发的回调函数 |
+| 属性         | 类型                                                                                                                                                | 默认值                   | 说明                   |
+| :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------- | :--------------------- |
+| value        | Date                                                                                                                                                | -                        | 值                     |
+| defaultValue | Date                                                                                                                                                | -                        | 初始值                 |
+| columnType   | ('year' \| 'month' \| 'day' \| 'meridiem' \| 'hour' \| 'minute' \| 'second' \| 'week' \| 'week-day')[]                                              | ['year', 'month', 'day'] | 指定列选择类型         |
+| min          | Date                                                                                                                                                | -                        | 相应 mode 的最小时间   |
+| max          | Date                                                                                                                                                | -                        | 相应 mode 的最大时间   |
+| disabled     | boolean                                                                                                                                             | false                    | 是否禁用               |
+| filter       | (type: 'year' \| 'month' \| 'day' \| 'meridiem' \| 'hour' \| 'minute' \| 'second' \| 'week' \| 'week-day', {value: number, date: Date} ) => boolean | -                        | 选项过滤函数           |
+| renderLabel  | (type: 'year' \| 'month' \| 'day' \| 'meridiem' \| 'hour' \| 'minute' \| 'second' \| 'week' \| 'week-day', value: number) => React.ReactNode        | -                        | 单个选项的展示         |
+| onChange     | (value: Date) => void                                                                                                                               | -                        | 值变化时触发的回调函数 |
 
 ### 指令式调用
 
