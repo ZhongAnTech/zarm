@@ -454,4 +454,7 @@ module.exports = {
       style: false,
     },
   ],
+  assets: {
+    iconfont: '//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_15.ab13c1498232a6d09657a9e32cd7f740.js'
+  }
 };

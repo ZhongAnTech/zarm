@@ -85,17 +85,26 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```jsx
 import { useState } from 'react';
-import { Input, List } from 'zarm';
+import { Input, List, Icon } from 'zarm';
+
+const PreviewIcon = Icon.createFromIconfont('//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_14.627ee457cf7594fbbce6d5e14b8c29ef.js');
 
 const Demo = () => {
   const [password, setPassword] = useState('');
   const [value, setValue] = useState('');
+  const [visible, setVisible] = useState(false);
 
   return (
     <List>
-      <List.Item title="密码输入">
+      <List.Item
+        title="密码输入"
+        suffix={visible
+          ? <PreviewIcon type="preview-open" onClick={() => setVisible(!visible)} />
+          : <PreviewIcon type="preview-close" onClick={() => setVisible(!visible)} />
+        }
+      >
         <Input
-          type="password"
+          type={visible ? 'text' : 'password'}
           placeholder="请输入"
           value={password}
           onChange={(e) => {

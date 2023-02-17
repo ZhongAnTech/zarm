@@ -6,7 +6,7 @@
 import { useState } from 'react';
 import { Icon, TabBar, List, Button } from 'zarm';
 
-const TabIcon = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_mk657pke2hj.js');
+const TabIcon = Icon.createFromIconfont('//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_14.627ee457cf7594fbbce6d5e14b8c29ef.js');
 
 const Demo = () => {
   const [activeKey, setActiveKey] = useState('home');
@@ -31,11 +31,11 @@ const Demo = () => {
       </List>
 
       <TabBar visible={visible} activeKey={activeKey} onChange={setActiveKey}>
-        <TabBar.Item itemKey="home" title="主页" icon={<TabIcon type="home" />} />
+        <TabBar.Item itemKey="home" title="首页" icon={<TabIcon type="home" />} />
         <TabBar.Item
           itemKey="found"
-          title="保险"
-          icon={<TabIcon type="insurance" />}
+          title="项目"
+          icon={<TabIcon type="menu" />}
           badge={{ shape: 'circle', text: '3' }}
         />
         <TabBar.Item

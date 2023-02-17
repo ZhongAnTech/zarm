@@ -8,7 +8,7 @@ import { Tooltip } from 'zarm-web';
 import { FormattedMessage, useIntl } from 'react-intl';
 import Context from '@/utils/context';
 import Meta from '@/web/components/Meta';
-import { documents } from '@/site.config';
+import { documents, assets } from '@/site.config';
 import Codesanbox from './Codesanbox';
 import './style.scss';
 
@@ -16,8 +16,10 @@ const isComponentPage = (page) =>
   Object.values(documents)
     .flat()
     .findIndex((item) => item.key === page) === -1;
+
 const isHooks = (key) => key.indexOf('use') === 0; // components key startsWith use
-const Icons = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_mk657pke2hj.js');
+
+const Icons = Icon.createFromIconfont(assets.iconfont);
 
 export default (props) => {
   const intl = useIntl();
@@ -103,7 +105,7 @@ export default (props) => {
               direction="right"
             >
               <a alt="#" href={sourceURL} rel="noreferrer" target="_blank">
-                <Icons type="edit" size="sm" />
+                <Icons type="edit" />
               </a>
             </Tooltip>
           </h1>

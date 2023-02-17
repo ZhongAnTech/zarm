@@ -3,11 +3,12 @@ import classnames from 'classnames';
 import { Icon, Radio, Popper, ConfigProvider } from 'zarm';
 import Context from '@/utils/context';
 import Events from '@/utils/events';
+import { assets } from '@/site.config';
 import enUS from 'zarm/config-provider/locale/en_US';
 import zhCN from 'zarm/config-provider/locale/zh_CN';
 import './style.scss';
 
-const Icons = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_uwg522sx17.js');
+const Icons = Icon.createFromIconfont(assets.iconfont);
 
 const Container = (props) => {
   const [locale, setLocale] = useState(window.localStorage.locale || 'zhCN');

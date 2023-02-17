@@ -6,7 +6,7 @@ import { FormattedMessage } from 'react-intl';
 import { Icon } from 'zarm';
 import { Popover } from 'zarm-web';
 import { QRCodeSVG } from 'qrcode.react';
-import { documents, components } from '@/site.config';
+import { documents, components, assets } from '@/site.config';
 import Context from '@/utils/context';
 import Container from '@/web/components/Container';
 import SideBar from '@/web/components/SideBar';
@@ -24,9 +24,7 @@ const LoadableComponent = (component) => {
   });
 };
 
-const Icons = Icon.createFromIconfont(
-  'https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_12.c88c671482b5407871df8b9fca48c0c7.js',
-);
+const Icons = Icon.createFromIconfont(assets.iconfont);
 
 const Simulator = () => {
   const params = useParams();

@@ -8,6 +8,7 @@ import { Search as SearchIcon, Close as CloseIcon } from '@zarm-design/icons';
 import classnames from 'classnames';
 import docsearch from 'docsearch.js';
 import MenuComponent from '@/web/components/Menu';
+import { assets } from '@/site.config';
 import Events from '@/utils/events';
 import Context from '@/utils/context';
 import Locales from '@/locale';
@@ -25,7 +26,7 @@ const initDocSearch = () => {
   });
 };
 
-const Icons = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_mk657pke2hj.js');
+const Icons = Icon.createFromIconfont(assets.iconfont);
 
 const Header = ({ children }) => {
   const searchInput = useRef();
@@ -83,7 +84,7 @@ const Header = ({ children }) => {
     <div className="header-icon header-icon-menu">
       {currentPageKey !== 'design' && (
         <>
-          <Icons type="list" onClick={() => toggleMenu(!menu)} />
+          <Icons type="menu" onClick={() => toggleMenu(!menu)} />
           <Popup visible={menu} direction="left" onMaskClick={() => toggleMenu(!menu)}>
             <div className="header-menu">
               {/* <div className="header-menu__close"><CloseIcon /></div> */}
