@@ -429,7 +429,7 @@ jobs:
       - name: Dist
         run: lerna exec --scope zarm -- yarn build:umd
         env:
-          NODE_OPTIONS: --max_old_space_size=4096
+          NODE_OPTIONS: --max_old_space_size=8192
 
       - name: Check Dist
         run: lerna exec --scope zarm -- node ./tests/dekko/dist.test.js
