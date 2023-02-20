@@ -1,181 +1,207 @@
-import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
-import { Success as SuccessIcon } from '@zarm-design/icons';
-import type { BaseRadioProps, BaseRadioGroupProps } from './interface';
+import { Minus as MinusIcon, Success as SuccessIcon } from '@zarm-design/icons';
+import includes from 'lodash/includes';
+import React, {
+  ChangeEvent,
+  forwardRef,
+  ReactNode,
+  useContext,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from 'react';
 import Button from '../button';
-import List from '../list';
-import type { ListItemProps } from '../list';
 import { ConfigContext } from '../config-provider';
-import type { ButtonProps } from '../button';
+import List from '../list';
 import type { HTMLProps } from '../utils/utilityTypes';
+import { RadioGroupContext } from './context';
+import type { BaseRadioProps } from './interface';
 
 export interface RadioCssVars {
-  '--widget-size'?: React.CSSProperties['height'];
-  '--widget-background'?: React.CSSProperties['background'];
-  '--widget-border-radius'?: React.CSSProperties['borderRadius'];
-  '--widget-border-width'?: React.CSSProperties['borderWidth'];
-  '--widget-border-color'?: React.CSSProperties['borderColor'];
-  '--marker-font-size'?: React.CSSProperties['fontSize'];
-  '--marker-color'?: React.CSSProperties['color'];
-  '--marker-transition'?: React.CSSProperties['transition'];
+  '--icon-size'?: React.CSSProperties['height'];
+  '--icon-background'?: React.CSSProperties['background'];
+  '--icon-border-radius'?: React.CSSProperties['borderRadius'];
+  '--icon-border-width'?: React.CSSProperties['borderWidth'];
+  '--icon-border-color'?: React.CSSProperties['borderColor'];
+  '--tick-font-size'?: React.CSSProperties['fontSize'];
+  '--tick-color'?: React.CSSProperties['color'];
+  '--tick-transition'?: React.CSSProperties['transition'];
   '--text-margin-horizontal'?: React.CSSProperties['marginLeft'];
   '--active-opacity'?: React.CSSProperties['opacity'];
-  '--checked-widget-background'?: React.CSSProperties['background'];
-  '--checked-widget-border-color'?: React.CSSProperties['borderColor'];
-  '--checked-marker-color'?: React.CSSProperties['color'];
-  '--disabled-widget-background'?: React.CSSProperties['background'];
-  '--disabled-widget-border-color'?: React.CSSProperties['borderColor'];
+  '--checked-icon-background'?: React.CSSProperties['background'];
+  '--checked-icon-border-color'?: React.CSSProperties['borderColor'];
+  '--checked-tick-color'?: React.CSSProperties['color'];
+  '--disabled-icon-background'?: React.CSSProperties['background'];
+  '--disabled-icon-border-color'?: React.CSSProperties['borderColor'];
   '--disabled-text-color'?: React.CSSProperties['color'];
-  '--disabled-marker-color'?: React.CSSProperties['color'];
+  '--disabled-tick-color'?: React.CSSProperties['color'];
+  '--group-spacing-vertical'?: React.CSSProperties['marginBottom'];
+  '--group-spacing-horizontal'?: React.CSSProperties['marginRight'];
 }
 
-const getChecked = (props: RadioProps, defaultChecked: boolean) => {
+export type RadioProps = BaseRadioProps &
+  HTMLProps<RadioCssVars> & {
+    renderIcon?: (props: RadioProps) => ReactNode;
+    render?: (props: RadioProps) => ReactNode;
+    onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  };
+
+const getChecked = (props: RadioProps, defaultChecked?: boolean) => {
   return props.checked ?? props.defaultChecked ?? defaultChecked;
 };
 
-type RadioNormalProps = BaseRadioProps &
-  HTMLProps<RadioCssVars> & {
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  };
+export interface RadioRef {
+  check: () => void;
+};
 
-type RadioButtonProps = RadioNormalProps &
-  ButtonProps &
-  Pick<BaseRadioGroupProps, 'buttonGhost' | 'buttonSize' | 'buttonShape'>;
+const Radio = forwardRef<RadioRef, RadioProps>((props, ref) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+  let [checked, setChecked] = useState(getChecked(props, false));
+  let { disabled } = props;
 
-export type RadioProps = Partial<RadioNormalProps & RadioButtonProps>;
+  const groupContext = useContext(RadioGroupContext);
+  if (groupContext && props.value !== undefined) {
+    checked = groupContext.value === props.value;
+    setChecked = (changedChecked: boolean) => {
+      if (changedChecked) {
+        groupContext.check(props.value)
+      }
+    };
+    disabled = disabled || groupContext.disabled;
+  }
 
-const Radio = React.forwardRef<unknown, RadioProps>((props, ref) => {
-  const {
-    className,
-    type,
-    value,
-    checked,
-    defaultChecked,
-    disabled,
-    id,
-    listMarkerAlign,
-    buttonGhost,
-    buttonShape,
-    buttonSize,
-    children,
-    onChange,
-    ...restProps
-  } = props;
-
-  const radioRef = (ref as any) || React.createRef<HTMLElement>();
-  const [currentChecked, setCurrentChecked] = React.useState(
-    getChecked({ checked, defaultChecked }, false),
-  );
-
-  const { prefixCls } = React.useContext(ConfigContext);
-
+  const { prefixCls } = useContext(ConfigContext);
   const bem = createBEM('radio', { prefixCls });
-
   const cls = bem([
     {
-      checked: currentChecked,
       disabled,
-      untext: !children,
+      checked: checked && !props.indeterminate,
+      untext: !props.children,
+      indeterminate: props.indeterminate,
     },
-    className,
+    props.className,
   ]);
 
-  const onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (disabled) {
-      return;
-    }
-    const newChecked = !currentChecked;
-    if (!('checked' in props)) {
-      setCurrentChecked(newChecked);
-    }
+  const currentProps = { ...props, checked };
 
-    onChange?.(e);
-  };
+  const textRender = props.children && <span className={bem('text')}>{props.children}</span>;
 
-  const inputRender = (
-    <input
-      id={id}
-      type="radio"
-      aria-checked={currentChecked}
-      className={bem('input')}
-      disabled={disabled}
-      value={value}
-      defaultChecked={'defaultChecked' in props ? defaultChecked : undefined}
-      checked={'checked' in props ? currentChecked : undefined}
-      onChange={onValueChange}
-    />
-  );
-
-  const radioRender = (
-    <span ref={radioRef} className={cls} {...(restProps as RadioNormalProps)}>
-      <span className={bem('widget')}>
-        <span className={bem('inner')}>
-          <SuccessIcon className={bem('marker')} />
-        </span>
-      </span>
-      {children && <span className={bem('text')}>{children}</span>}
-      {inputRender}
+  const iconRender = (
+    <span className={bem('icon')}>
+      {props.renderIcon ? (
+        props.renderIcon(currentProps)
+      ) : (
+        <span className={bem('tick')}>{props.indeterminate ? <MinusIcon /> : <SuccessIcon />}</span>
+      )}
     </span>
   );
 
-  React.useEffect(() => {
-    setCurrentChecked(getChecked({ checked, defaultChecked }, false));
-  }, [checked, defaultChecked]);
+  const inputRender = (
+    <input
+      ref={inputRef}
+      id={props.id}
+      type="radio"
+      className={bem('input')}
+      aria-checked={checked}
+      disabled={disabled}
+      value={props.value}
+      checked={checked}
+      onChange={(e: ChangeEvent<HTMLInputElement>) => {
+        if (disabled) return;
 
-  if (type === 'list') {
-    const marker = (
-      <>
-        <span className={bem('widget')}>
-          <span className={bem('inner')}>
-            <SuccessIcon className={bem('marker')} />
-          </span>
-        </span>
+        if (!('checked' in props)) {
+          setChecked(e.target.checked);
+        }
+        props.onChange?.(e);
+      }}
+    />
+  );
+
+  useImperativeHandle(ref, () => {
+    return {
+      check: () => {
+        if (checked) return;
+        inputRef.current.click();
+      },
+    };
+  });
+
+  useEffect(() => {
+    if (props.checked === undefined) return;
+    if (props.checked === checked) return;
+
+    setChecked(getChecked({ checked: props.checked, defaultChecked: props.defaultChecked }, false));
+  }, [props.checked, props.defaultChecked]);
+
+  if (groupContext?.type === 'button') {
+    return (
+      <label className={cls} style={props.style}>
         {inputRender}
+        <Button
+          disabled={disabled}
+          theme={checked ? 'primary' : 'default'}
+          size="xs"
+          block={groupContext?.block}
+          onClick={() => {
+            inputRef.current.click();
+          }}
+        >
+          {props.children}
+        </Button>
+      </label>
+    );
+  }
+
+  if (groupContext?.type === 'list') {
+    const tickRender = (
+      <>
+        {inputRender}
+        {iconRender}
       </>
     );
 
-    const listProps: ListItemProps = {
-      hasArrow: false,
-      className: cls,
-      title: (
-        <>
-          {children && <span className={bem('text')}>{children}</span>}
-          {inputRender}
-        </>
-      ),
-      onClick: !disabled ? () => {} : undefined,
-    };
-
-    listMarkerAlign === 'after' ? (listProps.suffix = marker) : (listProps.prefix = marker);
-
-    return <List.Item ref={radioRef} {...listProps} />;
-  }
-
-  if (type === 'button') {
     return (
-      <Button
-        ref={radioRef}
+      <List.Item
+        hasArrow={false}
         className={cls}
-        disabled={disabled}
-        theme={checked ? 'primary' : 'default'}
-        ghost={buttonGhost && checked}
-        shape={buttonShape}
-        size={buttonSize}
-        {...(restProps as RadioButtonProps)}
-      >
-        {children}
-        {inputRender}
-      </Button>
+        style={props.style}
+        prefix={groupContext?.listIconAlign === 'before' ? tickRender : undefined}
+        suffix={groupContext?.listIconAlign === 'after' ? tickRender : undefined}
+        title={textRender}
+        onClick={
+          !disabled
+            ? () => {
+                if (disabled) return;
+                inputRef.current.click();
+              }
+            : undefined
+        }
+      />
     );
   }
 
-  return radioRender;
+  const contentRender = props.render ? (
+    props.render(currentProps)
+  ) : (
+    <>
+      {iconRender}
+      {textRender}
+    </>
+  );
+
+  return (
+    <label className={cls} style={props.style}>
+      {inputRender}
+      {contentRender}
+    </label>
+  );
 });
 
 Radio.displayName = 'Radio';
 
 Radio.defaultProps = {
-  disabled: false,
+  indeterminate: false,
 };
 
 export default Radio;

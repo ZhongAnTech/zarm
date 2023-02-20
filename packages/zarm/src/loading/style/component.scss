@@ -56,8 +56,8 @@ $loading-spinner-count: 8;
 
       @for $i from 1 through $loading-spinner-count {
         &:nth-of-type(#{$i}) {
-          transform: rotate($i * (360 / $loading-spinner-count) * 1deg);
-          opacity: $i / $loading-spinner-count;
+          transform: rotate($i * calc(360 / $loading-spinner-count) * 1deg);
+          opacity: calc($i / $loading-spinner-count);
         }
       }
 

@@ -64,7 +64,7 @@ exports[`Cascader basic usage 1`] = `
                 class="za-cascader-view__content"
               >
                 <div
-                  class="za-radio-group za-radio-group--list za-radio-group--button-xs za-radio-group--button-radius"
+                  class="za-radio-group za-radio-group--list"
                 >
                   <div
                     class="za-radio-group__inner"
@@ -89,24 +89,24 @@ exports[`Cascader basic usage 1`] = `
                               >
                                 安徽省
                               </span>
+                            </div>
+                            <div
+                              class="za-list-item__suffix"
+                            >
                               <input
                                 aria-checked="true"
                                 class="za-radio__input"
                                 type="radio"
                                 value="340000"
                               />
-                            </div>
-                            <div
-                              class="za-list-item__suffix"
-                            >
                               <span
-                                class="za-radio__widget"
+                                class="za-radio__icon"
                               >
                                 <span
-                                  class="za-radio__inner"
+                                  class="za-radio__tick"
                                 >
                                   <i
-                                    class="za-icon za-radio__marker"
+                                    class="za-icon"
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -124,12 +124,6 @@ exports[`Cascader basic usage 1`] = `
                                   </i>
                                 </span>
                               </span>
-                              <input
-                                aria-checked="true"
-                                class="za-radio__input"
-                                type="radio"
-                                value="340000"
-                              />
                             </div>
                           </div>
                         </div>
@@ -151,24 +145,24 @@ exports[`Cascader basic usage 1`] = `
                               >
                                 上海
                               </span>
+                            </div>
+                            <div
+                              class="za-list-item__suffix"
+                            >
                               <input
                                 aria-checked="false"
                                 class="za-radio__input"
                                 type="radio"
                                 value="310000"
                               />
-                            </div>
-                            <div
-                              class="za-list-item__suffix"
-                            >
                               <span
-                                class="za-radio__widget"
+                                class="za-radio__icon"
                               >
                                 <span
-                                  class="za-radio__inner"
+                                  class="za-radio__tick"
                                 >
                                   <i
-                                    class="za-icon za-radio__marker"
+                                    class="za-icon"
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -186,12 +180,6 @@ exports[`Cascader basic usage 1`] = `
                                   </i>
                                 </span>
                               </span>
-                              <input
-                                aria-checked="false"
-                                class="za-radio__input"
-                                type="radio"
-                                value="310000"
-                              />
                             </div>
                           </div>
                         </div>
@@ -208,7 +196,7 @@ exports[`Cascader basic usage 1`] = `
                 class="za-cascader-view__content"
               >
                 <div
-                  class="za-radio-group za-radio-group--list za-radio-group--button-xs za-radio-group--button-radius"
+                  class="za-radio-group za-radio-group--list"
                 >
                   <div
                     class="za-radio-group__inner"
@@ -233,24 +221,24 @@ exports[`Cascader basic usage 1`] = `
                               >
                                 安庆市
                               </span>
+                            </div>
+                            <div
+                              class="za-list-item__suffix"
+                            >
                               <input
                                 aria-checked="false"
                                 class="za-radio__input"
                                 type="radio"
                                 value="340800"
                               />
-                            </div>
-                            <div
-                              class="za-list-item__suffix"
-                            >
                               <span
-                                class="za-radio__widget"
+                                class="za-radio__icon"
                               >
                                 <span
-                                  class="za-radio__inner"
+                                  class="za-radio__tick"
                                 >
                                   <i
-                                    class="za-icon za-radio__marker"
+                                    class="za-icon"
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -268,12 +256,6 @@ exports[`Cascader basic usage 1`] = `
                                   </i>
                                 </span>
                               </span>
-                              <input
-                                aria-checked="false"
-                                class="za-radio__input"
-                                type="radio"
-                                value="340800"
-                              />
                             </div>
                           </div>
                         </div>
@@ -365,7 +347,7 @@ exports[`Cascader basic usage 2`] = `
                 class="za-cascader-view__content"
               >
                 <div
-                  class="za-radio-group za-radio-group--list za-radio-group--button-xs za-radio-group--button-radius"
+                  class="za-radio-group za-radio-group--list"
                 >
                   <div
                     class="za-radio-group__inner"
@@ -390,24 +372,24 @@ exports[`Cascader basic usage 2`] = `
                               >
                                 安徽省
                               </span>
+                            </div>
+                            <div
+                              class="za-list-item__suffix"
+                            >
                               <input
                                 aria-checked="true"
                                 class="za-radio__input"
                                 type="radio"
                                 value="340000"
                               />
-                            </div>
-                            <div
-                              class="za-list-item__suffix"
-                            >
                               <span
-                                class="za-radio__widget"
+                                class="za-radio__icon"
                               >
                                 <span
-                                  class="za-radio__inner"
+                                  class="za-radio__tick"
                                 >
                                   <i
-                                    class="za-icon za-radio__marker"
+                                    class="za-icon"
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -425,12 +407,6 @@ exports[`Cascader basic usage 2`] = `
                                   </i>
                                 </span>
                               </span>
-                              <input
-                                aria-checked="true"
-                                class="za-radio__input"
-                                type="radio"
-                                value="340000"
-                              />
                             </div>
                           </div>
                         </div>
@@ -452,24 +428,24 @@ exports[`Cascader basic usage 2`] = `
                               >
                                 上海
                               </span>
+                            </div>
+                            <div
+                              class="za-list-item__suffix"
+                            >
                               <input
                                 aria-checked="false"
                                 class="za-radio__input"
                                 type="radio"
                                 value="310000"
                               />
-                            </div>
-                            <div
-                              class="za-list-item__suffix"
-                            >
                               <span
-                                class="za-radio__widget"
+                                class="za-radio__icon"
                               >
                                 <span
-                                  class="za-radio__inner"
+                                  class="za-radio__tick"
                                 >
                                   <i
-                                    class="za-icon za-radio__marker"
+                                    class="za-icon"
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -487,12 +463,6 @@ exports[`Cascader basic usage 2`] = `
                                   </i>
                                 </span>
                               </span>
-                              <input
-                                aria-checked="false"
-                                class="za-radio__input"
-                                type="radio"
-                                value="310000"
-                              />
                             </div>
                           </div>
                         </div>
@@ -509,7 +479,7 @@ exports[`Cascader basic usage 2`] = `
                 class="za-cascader-view__content"
               >
                 <div
-                  class="za-radio-group za-radio-group--list za-radio-group--button-xs za-radio-group--button-radius"
+                  class="za-radio-group za-radio-group--list"
                 >
                   <div
                     class="za-radio-group__inner"
@@ -534,24 +504,24 @@ exports[`Cascader basic usage 2`] = `
                               >
                                 安庆市
                               </span>
+                            </div>
+                            <div
+                              class="za-list-item__suffix"
+                            >
                               <input
                                 aria-checked="true"
                                 class="za-radio__input"
                                 type="radio"
                                 value="340800"
                               />
-                            </div>
-                            <div
-                              class="za-list-item__suffix"
-                            >
                               <span
-                                class="za-radio__widget"
+                                class="za-radio__icon"
                               >
                                 <span
-                                  class="za-radio__inner"
+                                  class="za-radio__tick"
                                 >
                                   <i
-                                    class="za-icon za-radio__marker"
+                                    class="za-icon"
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -569,12 +539,6 @@ exports[`Cascader basic usage 2`] = `
                                   </i>
                                 </span>
                               </span>
-                              <input
-                                aria-checked="true"
-                                class="za-radio__input"
-                                type="radio"
-                                value="340800"
-                              />
                             </div>
                           </div>
                         </div>
@@ -591,7 +555,7 @@ exports[`Cascader basic usage 2`] = `
                 class="za-cascader-view__content"
               >
                 <div
-                  class="za-radio-group za-radio-group--list za-radio-group--button-xs za-radio-group--button-radius"
+                  class="za-radio-group za-radio-group--list"
                 >
                   <div
                     class="za-radio-group__inner"
@@ -616,24 +580,24 @@ exports[`Cascader basic usage 2`] = `
                               >
                                 大观区
                               </span>
+                            </div>
+                            <div
+                              class="za-list-item__suffix"
+                            >
                               <input
                                 aria-checked="false"
                                 class="za-radio__input"
                                 type="radio"
                                 value="340803"
                               />
-                            </div>
-                            <div
-                              class="za-list-item__suffix"
-                            >
                               <span
-                                class="za-radio__widget"
+                                class="za-radio__icon"
                               >
                                 <span
-                                  class="za-radio__inner"
+                                  class="za-radio__tick"
                                 >
                                   <i
-                                    class="za-icon za-radio__marker"
+                                    class="za-icon"
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -651,12 +615,6 @@ exports[`Cascader basic usage 2`] = `
                                   </i>
                                 </span>
                               </span>
-                              <input
-                                aria-checked="false"
-                                class="za-radio__input"
-                                type="radio"
-                                value="340803"
-                              />
                             </div>
                           </div>
                         </div>
@@ -678,24 +636,24 @@ exports[`Cascader basic usage 2`] = `
                               >
                                 怀宁县
                               </span>
+                            </div>
+                            <div
+                              class="za-list-item__suffix"
+                            >
                               <input
                                 aria-checked="false"
                                 class="za-radio__input"
                                 type="radio"
                                 value="340822"
                               />
-                            </div>
-                            <div
-                              class="za-list-item__suffix"
-                            >
                               <span
-                                class="za-radio__widget"
+                                class="za-radio__icon"
                               >
                                 <span
-                                  class="za-radio__inner"
+                                  class="za-radio__tick"
                                 >
                                   <i
-                                    class="za-icon za-radio__marker"
+                                    class="za-icon"
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -713,12 +671,6 @@ exports[`Cascader basic usage 2`] = `
                                   </i>
                                 </span>
                               </span>
-                              <input
-                                aria-checked="false"
-                                class="za-radio__input"
-                                type="radio"
-                                value="340822"
-                              />
                             </div>
                           </div>
                         </div>
@@ -740,24 +692,24 @@ exports[`Cascader basic usage 2`] = `
                               >
                                 其它区
                               </span>
+                            </div>
+                            <div
+                              class="za-list-item__suffix"
+                            >
                               <input
                                 aria-checked="false"
                                 class="za-radio__input"
                                 type="radio"
                                 value="340882"
                               />
-                            </div>
-                            <div
-                              class="za-list-item__suffix"
-                            >
                               <span
-                                class="za-radio__widget"
+                                class="za-radio__icon"
                               >
                                 <span
-                                  class="za-radio__inner"
+                                  class="za-radio__tick"
                                 >
                                   <i
-                                    class="za-icon za-radio__marker"
+                                    class="za-icon"
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -775,12 +727,6 @@ exports[`Cascader basic usage 2`] = `
                                   </i>
                                 </span>
                               </span>
-                              <input
-                                aria-checked="false"
-                                class="za-radio__input"
-                                type="radio"
-                                value="340882"
-                              />
                             </div>
                           </div>
                         </div>
@@ -872,7 +818,7 @@ exports[`Cascader basic usage 3`] = `
                 class="za-cascader-view__content"
               >
                 <div
-                  class="za-radio-group za-radio-group--list za-radio-group--button-xs za-radio-group--button-radius"
+                  class="za-radio-group za-radio-group--list"
                 >
                   <div
                     class="za-radio-group__inner"
@@ -897,24 +843,24 @@ exports[`Cascader basic usage 3`] = `
                               >
                                 安徽省
                               </span>
+                            </div>
+                            <div
+                              class="za-list-item__suffix"
+                            >
                               <input
                                 aria-checked="true"
                                 class="za-radio__input"
                                 type="radio"
                                 value="340000"
                               />
-                            </div>
-                            <div
-                              class="za-list-item__suffix"
-                            >
                               <span
-                                class="za-radio__widget"
+                                class="za-radio__icon"
                               >
                                 <span
-                                  class="za-radio__inner"
+                                  class="za-radio__tick"
                                 >
                                   <i
-                                    class="za-icon za-radio__marker"
+                                    class="za-icon"
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -932,12 +878,6 @@ exports[`Cascader basic usage 3`] = `
                                   </i>
                                 </span>
                               </span>
-                              <input
-                                aria-checked="true"
-                                class="za-radio__input"
-                                type="radio"
-                                value="340000"
-                              />
                             </div>
                           </div>
                         </div>
@@ -959,24 +899,24 @@ exports[`Cascader basic usage 3`] = `
                               >
                                 上海
                               </span>
+                            </div>
+                            <div
+                              class="za-list-item__suffix"
+                            >
                               <input
                                 aria-checked="false"
                                 class="za-radio__input"
                                 type="radio"
                                 value="310000"
                               />
-                            </div>
-                            <div
-                              class="za-list-item__suffix"
-                            >
                               <span
-                                class="za-radio__widget"
+                                class="za-radio__icon"
                               >
                                 <span
-                                  class="za-radio__inner"
+                                  class="za-radio__tick"
                                 >
                                   <i
-                                    class="za-icon za-radio__marker"
+                                    class="za-icon"
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -994,12 +934,6 @@ exports[`Cascader basic usage 3`] = `
                                   </i>
                                 </span>
                               </span>
-                              <input
-                                aria-checked="false"
-                                class="za-radio__input"
-                                type="radio"
-                                value="310000"
-                              />
                             </div>
                           </div>
                         </div>
@@ -1016,7 +950,7 @@ exports[`Cascader basic usage 3`] = `
                 class="za-cascader-view__content"
               >
                 <div
-                  class="za-radio-group za-radio-group--list za-radio-group--button-xs za-radio-group--button-radius"
+                  class="za-radio-group za-radio-group--list"
                 >
                   <div
                     class="za-radio-group__inner"
@@ -1041,24 +975,24 @@ exports[`Cascader basic usage 3`] = `
                               >
                                 安庆市
                               </span>
+                            </div>
+                            <div
+                              class="za-list-item__suffix"
+                            >
                               <input
                                 aria-checked="true"
                                 class="za-radio__input"
                                 type="radio"
                                 value="340800"
                               />
-                            </div>
-                            <div
-                              class="za-list-item__suffix"
-                            >
                               <span
-                                class="za-radio__widget"
+                                class="za-radio__icon"
                               >
                                 <span
-                                  class="za-radio__inner"
+                                  class="za-radio__tick"
                                 >
                                   <i
-                                    class="za-icon za-radio__marker"
+                                    class="za-icon"
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -1076,12 +1010,6 @@ exports[`Cascader basic usage 3`] = `
                                   </i>
                                 </span>
                               </span>
-                              <input
-                                aria-checked="true"
-                                class="za-radio__input"
-                                type="radio"
-                                value="340800"
-                              />
                             </div>
                           </div>
                         </div>
@@ -1098,7 +1026,7 @@ exports[`Cascader basic usage 3`] = `
                 class="za-cascader-view__content"
               >
                 <div
-                  class="za-radio-group za-radio-group--list za-radio-group--button-xs za-radio-group--button-radius"
+                  class="za-radio-group za-radio-group--list"
                 >
                   <div
                     class="za-radio-group__inner"
@@ -1123,24 +1051,24 @@ exports[`Cascader basic usage 3`] = `
                               >
                                 大观区
                               </span>
+                            </div>
+                            <div
+                              class="za-list-item__suffix"
+                            >
                               <input
                                 aria-checked="true"
                                 class="za-radio__input"
                                 type="radio"
                                 value="340803"
                               />
-                            </div>
-                            <div
-                              class="za-list-item__suffix"
-                            >
                               <span
-                                class="za-radio__widget"
+                                class="za-radio__icon"
                               >
                                 <span
-                                  class="za-radio__inner"
+                                  class="za-radio__tick"
                                 >
                                   <i
-                                    class="za-icon za-radio__marker"
+                                    class="za-icon"
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -1158,12 +1086,6 @@ exports[`Cascader basic usage 3`] = `
                                   </i>
                                 </span>
                               </span>
-                              <input
-                                aria-checked="true"
-                                class="za-radio__input"
-                                type="radio"
-                                value="340803"
-                              />
                             </div>
                           </div>
                         </div>
@@ -1185,24 +1107,24 @@ exports[`Cascader basic usage 3`] = `
                               >
                                 怀宁县
                               </span>
+                            </div>
+                            <div
+                              class="za-list-item__suffix"
+                            >
                               <input
                                 aria-checked="false"
                                 class="za-radio__input"
                                 type="radio"
                                 value="340822"
                               />
-                            </div>
-                            <div
-                              class="za-list-item__suffix"
-                            >
                               <span
-                                class="za-radio__widget"
+                                class="za-radio__icon"
                               >
                                 <span
-                                  class="za-radio__inner"
+                                  class="za-radio__tick"
                                 >
                                   <i
-                                    class="za-icon za-radio__marker"
+                                    class="za-icon"
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -1220,12 +1142,6 @@ exports[`Cascader basic usage 3`] = `
                                   </i>
                                 </span>
                               </span>
-                              <input
-                                aria-checked="false"
-                                class="za-radio__input"
-                                type="radio"
-                                value="340822"
-                              />
                             </div>
                           </div>
                         </div>
@@ -1247,24 +1163,24 @@ exports[`Cascader basic usage 3`] = `
                               >
                                 其它区
                               </span>
+                            </div>
+                            <div
+                              class="za-list-item__suffix"
+                            >
                               <input
                                 aria-checked="false"
                                 class="za-radio__input"
                                 type="radio"
                                 value="340882"
                               />
-                            </div>
-                            <div
-                              class="za-list-item__suffix"
-                            >
                               <span
-                                class="za-radio__widget"
+                                class="za-radio__icon"
                               >
                                 <span
-                                  class="za-radio__inner"
+                                  class="za-radio__tick"
                                 >
                                   <i
-                                    class="za-icon za-radio__marker"
+                                    class="za-icon"
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -1282,12 +1198,6 @@ exports[`Cascader basic usage 3`] = `
                                   </i>
                                 </span>
                               </span>
-                              <input
-                                aria-checked="false"
-                                class="za-radio__input"
-                                type="radio"
-                                value="340882"
-                              />
                             </div>
                           </div>
                         </div>
@@ -1358,7 +1268,7 @@ exports[`Cascader renders correctly 1`] = `
                 class="za-cascader-view__content"
               >
                 <div
-                  class="za-radio-group za-radio-group--list za-radio-group--button-xs za-radio-group--button-radius"
+                  class="za-radio-group za-radio-group--list"
                 >
                   <div
                     class="za-radio-group__inner"
@@ -1383,24 +1293,24 @@ exports[`Cascader renders correctly 1`] = `
                               >
                                 安徽省
                               </span>
+                            </div>
+                            <div
+                              class="za-list-item__suffix"
+                            >
                               <input
                                 aria-checked="false"
                                 class="za-radio__input"
                                 type="radio"
                                 value="340000"
                               />
-                            </div>
-                            <div
-                              class="za-list-item__suffix"
-                            >
                               <span
-                                class="za-radio__widget"
+                                class="za-radio__icon"
                               >
                                 <span
-                                  class="za-radio__inner"
+                                  class="za-radio__tick"
                                 >
                                   <i
-                                    class="za-icon za-radio__marker"
+                                    class="za-icon"
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -1418,12 +1328,6 @@ exports[`Cascader renders correctly 1`] = `
                                   </i>
                                 </span>
                               </span>
-                              <input
-                                aria-checked="false"
-                                class="za-radio__input"
-                                type="radio"
-                                value="340000"
-                              />
                             </div>
                           </div>
                         </div>
@@ -1445,24 +1349,24 @@ exports[`Cascader renders correctly 1`] = `
                               >
                                 上海
                               </span>
+                            </div>
+                            <div
+                              class="za-list-item__suffix"
+                            >
                               <input
                                 aria-checked="false"
                                 class="za-radio__input"
                                 type="radio"
                                 value="310000"
                               />
-                            </div>
-                            <div
-                              class="za-list-item__suffix"
-                            >
                               <span
-                                class="za-radio__widget"
+                                class="za-radio__icon"
                               >
                                 <span
-                                  class="za-radio__inner"
+                                  class="za-radio__tick"
                                 >
                                   <i
-                                    class="za-icon za-radio__marker"
+                                    class="za-icon"
                                   >
                                     <svg
                                       aria-hidden="true"
@@ -1480,12 +1384,6 @@ exports[`Cascader renders correctly 1`] = `
                                   </i>
                                 </span>
                               </span>
-                              <input
-                                aria-checked="false"
-                                class="za-radio__input"
-                                type="radio"
-                                value="310000"
-                              />
                             </div>
                           </div>
                         </div>

@@ -185,7 +185,7 @@ const CascaderView = forwardRef<HTMLDivElement, CascaderViewProps>((props, ref) 
               <div className={bem('content')}>
                 <Radio.Group
                   type="list"
-                  listMarkerAlign="after"
+                  listIconAlign="after"
                   value={currentValue[index]}
                   onChange={(v) => handleChange(v, index)}
                 >

@@ -52,7 +52,15 @@ const umdBuild = async ({ mode, path, outDir, libraryName, analyzer }, barActive
       });
 
       return webpack(config).run((err, stats) => {
-        return err ? reject(err) : resolve(stats);
+        if (err) {
+          console.error(err);
+          return;
+        }
+
+        console.log(stats.toString({
+          chunks: false,
+          colors: true
+        }));
       });
     });
   };
