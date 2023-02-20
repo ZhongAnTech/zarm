@@ -1,5 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Popup snapshot renders correctly 1`] = `<div />`;
+exports[`Popup snapshot renders correctly 1`] = `<DocumentFragment />`;
 
-exports[`Popup snapshot renders mount node correctly 1`] = `<div />`;
+exports[`Popup snapshot renders mount node correctly 1`] = `<DocumentFragment />`;

@@ -8,7 +8,7 @@ import PickerContainer from '../picker/Container';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseCascaderProps } from './interface';
 
-export interface CascaderCssVars extends CascaderViewCssVars {}
+export type CascaderCssVars = CascaderViewCssVars;
 
 export type CascaderProps = BaseCascaderProps & HTMLProps<CascaderCssVars>;
 
