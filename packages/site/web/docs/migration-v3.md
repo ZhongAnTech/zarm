@@ -315,15 +315,6 @@
   />
 ```
 
-移除 `use12Hours` 属性，通过设置列选择类型 `columnType` 包含 `meridiem` 显示
-
-```diff
-  <DatePickerView
--   use12Hours
-+   columnType={['meridiem', 'hour', 'minute', 'second']}
-  />
-```
-
 移除 `minuteStep` 属性，通过 `filter` 设置
 
 ```diff

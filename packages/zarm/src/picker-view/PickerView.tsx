@@ -1,13 +1,13 @@
-import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
 import isEqual from 'lodash/isEqual';
-import Wheel from '../wheel';
-import { isCascader, resolved } from './utils';
-import type { BasePickerViewProps, PickerColumnItem } from './interface';
-import type { WheelValue } from '../wheel/interface';
+import * as React from 'react';
 import { ConfigContext } from '../config-provider';
-import type { HTMLProps } from '../utils/utilityTypes';
 import { useSafeState } from '../utils/hooks';
+import type { HTMLProps } from '../utils/utilityTypes';
+import Wheel from '../wheel';
+import type { WheelValue } from '../wheel/interface';
+import type { BasePickerViewProps, PickerColumnItem } from './interface';
+import { isCascader, resolved } from './utils';
 
 export interface PickerViewCssVars {
   '--background-color': React.CSSProperties['backgroundColor'];
@@ -35,7 +35,7 @@ const PickerView = React.forwardRef<PickerViewInstance, PickerViewProps>((props,
   const { className, style, cols, dataSource, fieldNames, itemRender, disabled, onChange } = props;
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('picker-view', { prefixCls });
-  const [innerValue, setInnerValue] = useSafeState(resolved(props).value);
+  const [innerValue, setInnerValue] = React.useState(resolved(props).value);
   const [stopScroll, setStopScroll] = useSafeState(false);
 
   React.useEffect(() => {
@@ -63,16 +63,19 @@ const PickerView = React.forwardRef<PickerViewInstance, PickerViewProps>((props,
     reset,
   }));
 
-  const onValueChange = React.useCallback((selected: WheelValue, level: number) => {
-    const value = innerValue.slice();
-    if (isCascader(props.dataSource)) {
-      value.length = level + 1;
-    }
-    value[level] = selected;
-    const next = resolved({ ...props, value });
-    setInnerValue(next.value);
-    onChange?.(next.value, next.items, level);
-  }, [innerValue]);
+  const onValueChange = React.useCallback(
+    (selected: WheelValue, index: number) => {
+      const value = innerValue.slice();
+      if (isCascader(props.dataSource)) {
+        value.length = index + 1;
+      }
+      value[index] = selected;
+      const next = resolved({ ...props, value });
+      setInnerValue(next.value);
+      onChange?.(next.value, next.items, index);
+    },
+    [innerValue],
+  );
 
   return (
     <div className={bem([className])} style={style}>

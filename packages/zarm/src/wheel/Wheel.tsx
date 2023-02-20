@@ -5,7 +5,7 @@ import isEqual from 'lodash/isEqual';
 import React, { createRef, useEffect, useRef } from 'react';
 import { ConfigContext } from '../config-provider';
 import { resolvedFieldNames } from '../picker-view/utils';
-import { useEventCallback, usePrevious } from '../utils/hooks';
+import { useEventCallback, usePrevious, useSafeLayoutEffect } from '../utils/hooks';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseWheelProps, WheelItem, WheelValue } from './interface';
 
@@ -86,7 +86,7 @@ const Wheel: React.FC<WheelProps> = (props) => {
     }
   }, []);
 
-  useEffect(() => {
+  useSafeLayoutEffect(() => {
     let resize: ResizeObserver | null;
     heightRef.current = wheelWrapperRef.current?.clientHeight || 0;
     const initIndex = getSelectedIndex(currentValue, dataSource);
@@ -126,10 +126,13 @@ const Wheel: React.FC<WheelProps> = (props) => {
   }, [disabled]);
 
   useEffect(() => {
-    if (!isEqual(prevDataSource, dataSource)) {
-      scrollInstance.current?.refresh();
-    }
-  }, [dataSource]);
+    if (isEqual(prevDataSource, dataSource)) return;
+    scrollInstance.current?.refresh();
+
+    const targetIndex = dataSource?.findIndex((item) => item[fieldNames.value] === value);
+    if (targetIndex >= 0) return;
+    handleScrollEnd();
+  }, [dataSource, fieldNames, value]);
 
   useEffect(() => {
     const oldIndex = getSelectedIndex(prevValue, prevDataSource);

@@ -7,7 +7,7 @@ import { ConfigContext } from '../config-provider';
 import DatePicker from '../date-picker';
 import { COLUMN_TYPE } from '../date-picker-view/interface';
 import {
-  dateToStringArray,
+  dateToNumberArray,
   generateDatePickerColumns,
   useRenderLabel,
 } from '../date-picker-view/utils';
@@ -81,7 +81,7 @@ const DateSelect: React.FC<DateSelectProps> = (props) => {
   }, [innerValue, min, max, columnType]);
 
   const pickerValue = React.useMemo(
-    () => dateToStringArray(currentValue, columnType),
+    () => dateToNumberArray(currentValue, columnType),
     [currentValue, columnType],
   );
 
@@ -124,6 +124,8 @@ const DateSelect: React.FC<DateSelectProps> = (props) => {
         className={className}
         visible={visible}
         value={innerValue}
+        filter={filter}
+        renderLabel={renderLabel}
         onConfirm={handleConfirm}
         onCancel={handleCancel}
       />

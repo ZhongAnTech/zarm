@@ -92,11 +92,12 @@ const Demo = () => {
           />
           <DatePicker
             {...item.props}
-            onChange={(value) => console.log('DatePicker', key, value)}
-            onConfirm={(value) => {
+            onChange={(value, items) => console.log('DatePicker onChange', key, value, items)}
+            onConfirm={(value, items) => {
               setValue(key, value);
               toggle(key);
               Toast.show(value.toLocaleString());
+              console.log('DatePicker onConfirm', key, value, items);
             }}
             onCancel={() => toggle(key)}
           />
@@ -139,7 +140,6 @@ const initialValue = {
     title: '周',
     props: {
       columnType: ['year', 'week'],
-      value: new Date(2026, 11, 27),
     },
   },
   date: {
@@ -229,11 +229,12 @@ const Demo = () => {
           />
           <DatePicker
             {...item.props}
-            onChange={(value) => console.log('DatePicker', key, value)}
-            onConfirm={(value) => {
+            onChange={(value, items) => console.log('DatePicker onChange', key, value, items)}
+            onConfirm={(value, items) => {
               setValue(key, value);
               toggle(key);
               Toast.show(value.toLocaleString());
+              console.log('DatePicker onConfirm', key, value, items);
             }}
             onCancel={() => toggle(key)}
           />
@@ -250,13 +251,23 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```jsx
 import { useState } from 'react';
-import { List, DateSelect } from 'zarm';
+import { Toast, List, DateSelect } from 'zarm';
 
 const Demo = () => {
   return (
     <List>
       <List.Item title="日期选择">
-        <DateSelect onChange={(value) => console.log('DateSelect', value)} />
+        <DateSelect
+          onChange={(value, items) => console.log('DateSelect onChange', value, items)}
+          onConfirm={(value, items) => {
+            Toast.show(value.toLocaleString());
+            console.log('DateSelect onConfirm', value, items);
+          }}
+          filter={(type, { value }) => {
+            if (type === 'day') return value % 5 === 0;
+            return true;
+          }}
+        />
       </List.Item>
     </List>
   );
@@ -313,8 +324,8 @@ import { DatePickerView, List } from 'zarm';
 const Demo = () => {
   return (
     <DatePickerView
-      onChange={(value) => {
-        console.log('DatePickerView', value);
+      onChange={(value, items) => {
+        console.log('DatePickerView', value, items);
       }}
     />
   );

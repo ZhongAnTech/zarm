@@ -1,26 +1,25 @@
 import clamp from 'lodash/clamp';
 import isEqual from 'lodash/isEqual';
 import * as React from 'react';
-import PickerView, { PickerColumnItem, PickerValue } from '../picker-view';
+import PickerView, { PickerColumnItem, PickerValue, PickerViewInstance } from '../picker-view';
 import { resolved } from '../picker-view/utils';
-import { useSafeState } from '../utils/hooks';
+import { HTMLProps } from '../utils/utilityTypes';
 import { BaseDatePickerViewProps, COLUMN_TYPE } from './interface';
 import {
-  dateToStringArray,
+  dateToNumberArray,
   generateDatePickerColumns,
-  stringArrayToDate,
+  numberArrayToDate,
   useRenderLabel,
 } from './utils';
 
 const currentYear = new Date().getFullYear();
 
-export interface DatePickerViewProps extends BaseDatePickerViewProps {
-  className?: string;
-}
+export type DatePickerViewProps =  BaseDatePickerViewProps & HTMLProps;
 
 export interface DatePickerViewInstance {
   value: Date;
   items: PickerColumnItem[];
+  reset: () => void;
 }
 
 const DatePickerView = React.forwardRef<DatePickerViewInstance, DatePickerViewProps>(
@@ -36,7 +35,10 @@ const DatePickerView = React.forwardRef<DatePickerViewInstance, DatePickerViewPr
       onChange,
       ...rest
     } = props;
-    const [innerValue, setInnerValue] = useSafeState(value || defaultValue);
+
+    const pickerViewRef = React.useRef<PickerViewInstance>(null);
+
+    const [innerValue, setInnerValue] = React.useState(value || defaultValue);
     const prevColumnType = React.useRef(columnType);
     const defaultRenderLabel = useRenderLabel(renderLabel);
 
@@ -58,24 +60,25 @@ const DatePickerView = React.forwardRef<DatePickerViewInstance, DatePickerViewPr
     }, [innerValue, min, max, columnType]);
 
     const pickerValue = React.useMemo(
-      () => dateToStringArray(currentValue, columnType),
+      () => dateToNumberArray(currentValue, columnType),
       [currentValue, columnType],
     );
 
     const wheelDefaultValue = React.useMemo(
-      () => dateToStringArray(props.wheelDefaultValue, columnType),
+      () => dateToNumberArray(props.wheelDefaultValue, columnType),
       [props.wheelDefaultValue, columnType],
     );
 
     const handleChange = React.useCallback(
       (changedPickerValue: PickerValue[], items: PickerColumnItem[], level: number) => {
         if (prevColumnType.current[level] !== columnType[level]) return;
-        const date = stringArrayToDate(
+        const date = numberArrayToDate(
           currentValue,
           changedPickerValue as number[],
           columnType,
           level,
         );
+
         setInnerValue(date);
         onChange?.(date, items, level);
       },
@@ -97,6 +100,7 @@ const DatePickerView = React.forwardRef<DatePickerViewInstance, DatePickerViewPr
     React.useImperativeHandle(ref, () => ({
       value: currentValue,
       items,
+      reset: pickerViewRef.current?.reset,
     }));
 
     return (

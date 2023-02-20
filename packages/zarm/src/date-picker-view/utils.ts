@@ -265,7 +265,7 @@ export const generateDatePickerColumns = (
   return columns;
 };
 
-export const dateToStringArray = (value: Date, columnType: ColumnType[]) => {
+export const dateToNumberArray = (value: Date, columnType: ColumnType[]) => {
   const date = dayjs(value);
   const hasWeek = columnType?.includes(COLUMN_TYPE.WEEK);
   const hasMeridiem = columnType?.includes(COLUMN_TYPE.MERIDIEM);
@@ -295,7 +295,7 @@ export const dateToStringArray = (value: Date, columnType: ColumnType[]) => {
   });
 };
 
-export const stringArrayToDate = (
+export const numberArrayToDate = (
   currentValue: Date,
   changedPickerValue: number[],
   columnType: ColumnType[],

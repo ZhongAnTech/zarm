@@ -26,8 +26,8 @@ const DatePicker: React.FC<DatePickerProps> = (props) => {
 
   const datePickerViewRef = React.useRef<DatePickerViewInstance>(null);
 
-  const handleChange = (_, items, level) => {
-    onChange?.(datePickerViewRef.current?.value!, items, level);
+  const handleChange = (date, items, level) => {
+    visible && onChange?.(date, items, level);
   };
 
   const handleConfirm = () => {
@@ -35,6 +35,7 @@ const DatePicker: React.FC<DatePickerProps> = (props) => {
   };
 
   const handleCancel = () => {
+    datePickerViewRef.current?.reset?.();
     onCancel?.();
   };
 
