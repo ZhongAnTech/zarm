@@ -261,7 +261,7 @@ const Demo = () => {
         </List.Item>
         <List.Item title="12小时模式">
           <Radio.Group
-            buttonCompact
+            compact
             type="button"
             value={use12hours}
             onChange={(value) => {

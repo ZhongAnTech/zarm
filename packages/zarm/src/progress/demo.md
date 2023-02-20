@@ -82,7 +82,7 @@ const Demo = () => {
         />
       </List.Item>
       <List.Item title="线条形状">
-        <Radio.Group buttonCompact type="button" value={strokeShape} onChange={setStrokeShape}>
+        <Radio.Group compact type="button" value={strokeShape} onChange={setStrokeShape}>
           <Radio value="round">round</Radio>
           <Radio value="rect">rect</Radio>
         </Radio.Group>

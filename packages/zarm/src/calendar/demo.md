@@ -20,7 +20,7 @@ const Demo = () => {
       <List>
         <List.Item title="是否多选">
           <Radio.Group
-            buttonCompact
+            compact
             type="button"
             value={mode}
             onChange={(value) => {
@@ -50,7 +50,7 @@ const Demo = () => {
         </List.Item>
         <List.Item title="方向">
           <Radio.Group
-            buttonCompact
+            compact
             type="button"
             value={direction}
             onChange={(value) => {
@@ -64,7 +64,7 @@ const Demo = () => {
         {direction === 'horizontal' && (
           <List.Item title="是否显示头部">
             <Radio.Group
-              buttonCompact
+              compact
               type="button"
               value={header}
               onChange={(value) => {
@@ -78,7 +78,7 @@ const Demo = () => {
         )}
         <List.Item title="自定义渲染">
           <Radio.Group
-            buttonCompact
+            compact
             type="button"
             value={custom}
             onChange={(value) => {

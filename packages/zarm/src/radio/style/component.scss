@@ -1,44 +1,41 @@
 @import '../../button/style/mixins';
 
 @include b(radio) {
-  @include define(widget-size, 22px);
-  @include define(widget-background, transparent);
-  @include define(widget-border-radius, 22px);
-  @include define(widget-border-width, 1px);
-  @include define(widget-border-color, rgb(199, 199, 204));
-  @include define(marker-font-size, 16px);
-  @include define(marker-color, var(--za-theme-primary));
-  @include define(marker-transition, all 0.2s cubic-bezier(0.71, -0.46, 0.88, 0.6));
+  @include define(icon-size, 22px);
+  @include define(icon-background, transparent);
+  @include define(icon-border-radius, 22px);
+  @include define(icon-border-width, 1px);
+  @include define(icon-border-color, rgb(199, 199, 204));
+  @include define(tick-font-size, 16px);
+  @include define(tick-color, var(--za-theme-primary));
+  @include define(tick-transition, all 0.2s cubic-bezier(0.71, -0.46, 0.88, 0.6));
   @include define(text-margin-horizontal, 8px);
   @include define(active-opacity, 0.6);
-  @include define(checked-widget-background, transparent);
-  @include define(checked-widget-border-color, var(--za-theme-primary));
-  @include define(checked-marker-color, var(--za-theme-primary));
-  @include define(disabled-widget-background, transparent);
-  @include define(disabled-widget-border-color, rgba(199, 199, 204, 0.7));
+  @include define(checked-icon-background, transparent);
+  @include define(checked-icon-border-color, var(--za-theme-primary));
+  @include define(checked-tick-color, var(--za-theme-primary));
+  @include define(disabled-icon-background, #f2f2f2);
+  @include define(disabled-icon-border-color, rgba(199, 199, 204, 0.7));
   @include define(disabled-text-color, rgba(0, 0, 0, 0.3));
-  @include define(disabled-marker-color, #bcbcbc);
+  @include define(disabled-tick-color, #bcbcbc);
 
-  display: inline-block;
-  position: relative;
+  display: inline-flex;
+  vertical-align: text-bottom;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
 
   &:not(&--disabled):active {
     opacity: var(--active-opacity);
   }
 
-  @include e(widget) {
+  @include e(icon) {
     display: inline-block;
     vertical-align: middle;
   }
 
   @include e(input) {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    cursor: pointer;
+    display: none;
   }
 
   @include e(text) {
@@ -46,32 +43,32 @@
     margin: 0 var(--text-margin-horizontal);
   }
 
-  @include e(inner) {
+  @include e(tick) {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: var(--widget-size);
-    height: var(--widget-size);
-    border: var(--widget-border-width) solid var(--widget-border-color);
-    border-radius: var(--widget-border-radius);
-    background-color: var(--widget-background);
+    width: var(--icon-size);
+    height: var(--icon-size);
+    border: var(--icon-border-width) solid var(--icon-border-color);
+    border-radius: var(--icon-border-radius);
+    background-color: var(--icon-background);
 
     @include b(icon) {
-      font-size: var(--marker-font-size);
-      color: var(--marker-color);
+      font-size: var(--tick-font-size);
+      color: var(--tick-color);
       transform: scale(0);
-      transition: var(--marker-transition);
+      transition: var(--tick-transition);
     }
   }
 
-  // 选中状态
-  @include m(checked) {
-    @include e(inner) {
-      border-color: var(--checked-widget-border-color);
-      background-color: var(--checked-widget-background);
+  // 选中/半选状态
+  @include m(checked, indeterminate) {
+    @include e(tick) {
+      border-color: var(--checked-icon-border-color);
+      background-color: var(--checked-icon-background);
 
       @include b(icon) {
-        color: var(--checked-marker-color);
+        color: var(--checked-tick-color);
         transform: scale(1);
       }
     }
@@ -87,26 +84,21 @@
       color: var(--disabled-text-color);
     }
 
-    @include e(inner) {
-      border-color: var(--disabled-widget-border-color);
-      background-color: var(--disabled-widget-background);
+    @include e(tick) {
+      border-color: var(--disabled-icon-border-color);
+      background-color: var(--disabled-icon-background);
     }
 
     @include m(checked) {
-      @include e(inner) {
-        border-color: var(--disabled-widget-border-color);
-        background-color: var(--disabled-widget-background);
+      @include e(tick) {
+        border-color: var(--disabled-icon-border-color);
+        background-color: var(--disabled-icon-background);
 
         @include b(icon) {
-          color: var(--disabled-marker-color);
+          color: var(--disabled-tick-color);
         }
       }
     }
-  }
-
-  // 无文本状态
-  @include m(untext) {
-    line-height: 1;
   }
 }
 
@@ -121,6 +113,7 @@
   @include e(inner) {
     margin-right: calc(var(--group-spacing-horizontal) * -1);
     margin-bottom: calc(var(--group-spacing-vertical) * -1);
+    line-height: 1;
   }
 
   @include b(radio) {
@@ -144,24 +137,8 @@
 
   // 按钮样式
   @include m(button) {
-    @include define(group-spacing-vertical, var(--za-padding-v-md));
-    @include define(group-spacing-horizontal, var(--za-padding-h-md));
-
-    // button sizes
-    @include m(button-lg) {
-      @include define(group-spacing-vertical, var(--za-padding-v-lg));
-      @include define(group-spacing-horizontal, var(--za-padding-h-lg));
-    }
-
-    @include m(button-sm) {
-      @include define(group-spacing-vertical, var(--za-padding-v-sm));
-      @include define(group-spacing-horizontal, var(--za-padding-h-sm));
-    }
-
-    @include m(button-xs) {
-      @include define(group-spacing-vertical, var(--za-padding-v-xs));
-      @include define(group-spacing-horizontal, var(--za-padding-h-xs));
-    }
+    @include define(group-spacing-vertical, var(--za-padding-v-xs));
+    @include define(group-spacing-horizontal, var(--za-padding-h-xs));
 
     // button compact
     @include m(button-compact) {
@@ -172,21 +149,29 @@
         }
 
         &:first-child {
-          border-top-right-radius: 0;
-          border-bottom-right-radius: 0;
+          @include b(button) {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+          }
         }
 
         &:last-child {
-          border-top-left-radius: 0;
-          border-bottom-left-radius: 0;
+          @include b(button) {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+          }
         }
 
         &:not(:first-child):not(:last-child) {
-          border-radius: 0;
+          @include b(button) {
+            border-radius: 0;
+          }
         }
 
         @include m(checked) {
-          z-index: 1;
+          @include b(button) {
+            z-index: 1;
+          }
         }
       }
     }
@@ -203,21 +188,21 @@
 
     @include b(radio) {
       display: flex;
-      position: relative;
       margin-right: 0;
       margin-bottom: 0;
-
-      &:not(&--disabled):active {
-        opacity: 1;
-      }
 
       @include e(text) {
         margin-left: 0;
       }
 
-      @include e(inner) {
-        border: none;
+      @include e(tick) {
+        @include define(icon-border-width, 0);
+
         background: transparent;
+
+        @include b(icon) {
+          font-size: var(--icon-size);
+        }
       }
     }
   }

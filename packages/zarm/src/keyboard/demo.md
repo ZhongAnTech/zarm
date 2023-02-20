@@ -97,7 +97,7 @@ const Demo = () => {
         <List.Item
           title="键盘类型"
           suffix={
-            <Radio.Group buttonCompact type="button" value={type} onChange={onSetType}>
+            <Radio.Group compact type="button" value={type} onChange={onSetType}>
               <Radio value="number">数字</Radio>
               <Radio value="price">金额</Radio>
               <Radio value="idcard">身份证</Radio>

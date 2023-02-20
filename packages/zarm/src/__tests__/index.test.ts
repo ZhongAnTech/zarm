@@ -411,21 +411,9 @@ describe('index', () => {
         },
         "Radio": Object {
           "$$typeof": Symbol(react.forward_ref),
-          "Group": Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "defaultProps": Object {
-              "block": false,
-              "buttonCompact": false,
-              "buttonGhost": false,
-              "buttonShape": "radius",
-              "buttonSize": "xs",
-              "disabled": false,
-              "listMarkerAlign": "before",
-            },
-            "render": [Function],
-          },
+          "Group": [Function],
           "defaultProps": Object {
-            "disabled": false,
+            "indeterminate": false,
           },
           "render": [Function],
         },
