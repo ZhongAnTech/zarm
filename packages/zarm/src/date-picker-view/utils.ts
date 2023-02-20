@@ -267,11 +267,12 @@ export const generateDatePickerColumns = (
 
 export const dateToStringArray = (value: Date, columnType: ColumnType[]) => {
   const date = dayjs(value);
+  const hasWeek = columnType?.includes(COLUMN_TYPE.WEEK);
   const hasMeridiem = columnType?.includes(COLUMN_TYPE.MERIDIEM);
   return columnType?.map((type) => {
     switch (type) {
       case COLUMN_TYPE.YEAR:
-        return date.isoWeekYear();
+        return hasWeek ? date.isoWeekYear() : date.year();
       case COLUMN_TYPE.MONTH:
         return date.month() + 1;
       case COLUMN_TYPE.DAY:
