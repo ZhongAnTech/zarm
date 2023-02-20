@@ -44,15 +44,14 @@ export default async ({ mode, host, port }: IDevelopmentConfig) => {
 
   const compiler = webpack(config);
   const serverConfig = {
-    publicPath: '/',
     compress: true,
-    noInfo: true,
     hot: true,
   };
   const devServer = new WebpackDevServer(compiler, serverConfig);
   devServer.listen(port, host, (err) => {
     if (err) {
-      return console.error(err);
+      console.error(err);
+      return;
     }
     console.warn(`http://${host}:${port}\n`);
   });

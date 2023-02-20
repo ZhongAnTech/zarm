@@ -308,9 +308,6 @@ jobs:
   test-react-17-dist:
     name: Testing zarm/umd in react@17
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16]
     steps:
       - name: Checkout code
         uses: actions/checkout@master
@@ -397,9 +394,6 @@ jobs:
   test-react-16-umd:
     name: Testing zarm/umd in react@16
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16]
     env:
       REACT: 16
     steps:
