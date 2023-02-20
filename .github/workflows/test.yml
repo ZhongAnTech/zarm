@@ -49,7 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14, 12, 10]
+        node-version: [16, 14, 12, 10]
     steps:
       - name: Checkout code
         uses: actions/checkout@master
@@ -308,6 +308,9 @@ jobs:
   test-react-17-dist:
     name: Testing zarm/umd in react@17
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16]
     steps:
       - name: Checkout code
         uses: actions/checkout@master
@@ -394,6 +397,9 @@ jobs:
   test-react-16-umd:
     name: Testing zarm/umd in react@16
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16]
     env:
       REACT: 16
     steps:
@@ -429,7 +435,7 @@ jobs:
       - name: Dist
         run: lerna exec --scope zarm -- yarn build:umd
         env:
-          NODE_OPTIONS: --max_old_space_size=8192
+          NODE_OPTIONS: --max_old_space_size=4096
 
       - name: Check Dist
         run: lerna exec --scope zarm -- node ./tests/dekko/dist.test.js
