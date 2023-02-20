@@ -109,6 +109,8 @@
   @include e(suffix) {
     display: flex;
     flex-shrink: 0;
+    align-items: center;
+    min-height: var(--item-title-line-height);
     margin-left: auto;
     padding-left: var(--item-space);
     color: var(--item-suffix-text-color);
