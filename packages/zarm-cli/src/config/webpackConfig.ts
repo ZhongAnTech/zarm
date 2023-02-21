@@ -67,33 +67,19 @@ const config: Configuration = {
         ],
       },
       {
-        test: /\.(png|jpg|jpeg|gif|svg|ico)$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: require.resolve('file-loader'),
-            options: {
-              esModule: false,
-              name: 'images/[name].[hash:8].[ext]',
-            },
-          },
-        ],
+        test: /\.(png|jpe?g|gif|webp|svg|ico)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name].[hash:8].[ext]',
+        },
       },
       {
         test: /\.(woff|woff2|ttf|eot)$/,
-        use: [
-          {
-            loader: require.resolve('file-loader'),
-            options: {
-              name: 'fonts/[name].[hash:8].[ext]',
-            },
-          },
-        ],
+        type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name].[hash:8].[ext]',
+        },
       },
-      // {
-      //   test: /\.md$/,
-      //   use: require.resolve('raw-loader'),
-      // },
     ],
   },
 
