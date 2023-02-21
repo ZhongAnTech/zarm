@@ -6,7 +6,9 @@
 import { useState } from 'react';
 import { Icon, TabBar, List, Button } from 'zarm';
 
-const TabIcon = Icon.createFromIconfont('//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_14.627ee457cf7594fbbce6d5e14b8c29ef.js');
+const TabIcon = Icon.createFromIconfont(
+  '//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_14.627ee457cf7594fbbce6d5e14b8c29ef.js',
+);
 
 const Demo = () => {
   const [activeKey, setActiveKey] = useState('home');
@@ -72,7 +74,7 @@ ReactDOM.render(<Demo />, mountNode);
 | title      | ReactNode        | -      | 标题文字                                             |
 | icon       | ReactNode        | -      | 图标                                                 |
 | activeIcon | ReactNode        | -      | 选中时图标，不设置等同 icon 属性的值                 |
-| badge      | BadgeProps       | -      | 参考[Badge](/#/components/badge)组件                 |
+| badge      | BadgeProps       | -      | 参考 [Badge](/#/components/badge) 组件               |
 
 ## CSS 变量
 

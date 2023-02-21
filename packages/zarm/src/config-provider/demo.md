@@ -22,7 +22,9 @@ import {
 import enUS from 'zarm/lib/config-provider/locale/en_US';
 import zhCN from 'zarm/lib/config-provider/locale/zh_CN';
 
-const TabIcon = Icon.createFromIconfont('//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_14.627ee457cf7594fbbce6d5e14b8c29ef.js');
+const TabIcon = Icon.createFromIconfont(
+  '//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_14.627ee457cf7594fbbce6d5e14b8c29ef.js',
+);
 
 const colors = ['#00bc70', '#1890ff', '#f5222d', '#fa541b', '#13c2c2', '#2f54ec', '#712fd1'];
 
@@ -68,12 +70,7 @@ const Demo = () => {
         <List.Item
           title="切换主题"
           suffix={
-            <Radio.Group
-              compact
-              type="button"
-              value={theme}
-              onChange={(value) => setTheme(value)}
-            >
+            <Radio.Group compact type="button" value={theme} onChange={(value) => setTheme(value)}>
               <Radio value="light">默认主题</Radio>
               <Radio value="dark">暗黑主题</Radio>
             </Radio.Group>
@@ -206,8 +203,12 @@ ReactDOM.render(<Demo />, mountNode);
 
 ### MountContainer
 
-HTMLElement \| (() => HTMLElement) \| undefined \| null \| false
+```ts
+type MountContainer = HTMLElement | (() => HTMLElement) | undefined | null | false;
+```
 
 ### ScrollContainer
 
-(HTMLElement \| Window) \| (() => (HTMLElement \| Window)) \| undefined \| null
+```ts
+type ScrollContainer = (HTMLElement | Window) | (() => HTMLElement | Window) | undefined | null;
+```

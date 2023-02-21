@@ -62,7 +62,7 @@ ReactDOM.render(
         leftActions={[
           {
             text: '异步',
-            onClick: async (action, index) => {
+            onClick: async () => {
               const confirm = Modal.confirm({
                 title: '确定要关闭吗？',
                 content: '这里是确认框的内容部分，点击确定按钮，将触发 Promise 关闭确认框',

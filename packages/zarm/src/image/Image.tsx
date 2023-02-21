@@ -1,7 +1,7 @@
-import React, { useState, useContext, createRef } from 'react';
 import { createBEM } from '@zarm-design/bem';
-import ImagePreview from '../image-preview';
+import React, { createRef, useContext, useState } from 'react';
 import { ConfigContext } from '../config-provider';
+import ImagePreview from '../image-preview';
 import LazyDetector from './lazy-detector';
 
 export const IMAGE_STATUS = {
@@ -105,7 +105,7 @@ const Image = React.forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
   };
 
   return (
-    <div className={`${cls}`} style={{ width, height, ...style }}>
+    <div className={cls} style={{ width, height, ...style }}>
       {lazy && !initialized && (
         <LazyDetector
           onActive={() => {

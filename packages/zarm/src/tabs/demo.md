@@ -253,16 +253,16 @@ ReactDOM.render(<Demo />, mountNode);
 
 ### Tabs
 
-| 属性         | 类型                       | 默认值       | 说明                   |
-| :----------- | :------------------------- | :----------- | :--------------------- |
-| value        | number                     | -            | 值                     |
-| defaultValue | number                     | -            | 初始值                 |
-| disabled     | boolean                    | false        | 是否禁用               |
-| direction    | `horizontal` \| `vertical` | 'horizontal' | 方向                   |
-| swipeable    | boolean                    | false        | 是否支持滑动切换       |
-| scrollable   | boolean                    | false        | 是否支持滚动           |
-| lineWidth    | number \| string           | -            | 线条宽度               |
-| onChange     | (index?: number) => void   | -            | 值变化时触发的回调函数 |
+| 属性         | 类型                    | 默认值       | 说明                                   |
+| :----------- | :---------------------- | :----------- | :------------------------------------- |
+| value        | number                  | -            | 值                                     |
+| defaultValue | number                  | -            | 初始值                                 |
+| disabled     | boolean                 | false        | 是否禁用                               |
+| direction    | string                  | 'horizontal' | 方向，可选值为 `horizontal` `vertical` |
+| swipeable    | boolean                 | false        | 是否支持滑动切换                       |
+| scrollable   | boolean                 | false        | 是否支持滚动                           |
+| lineWidth    | number \| string        | -            | 线条宽度                               |
+| onChange     | (index: number) => void | -            | 值变化时触发的回调函数                 |
 
 ### Panel
 
