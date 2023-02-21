@@ -5,6 +5,8 @@ import WebpackBar from 'webpackbar';
 import babelConfig from './babelConfig/base';
 
 const config: Configuration = {
+  stats: 'errors-warnings',
+
   output: {
     filename: 'js/[name].js',
     chunkFilename: 'js/[name].[chunkhash:8].js',
