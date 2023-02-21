@@ -1,14 +1,13 @@
-import React, { useEffect, useContext } from 'react';
-import ClipboardJS from 'clipboard';
-import { pascalCase } from 'change-case';
-import { marked } from 'marked';
-import Prism from 'prismjs';
-import { Icon } from 'zarm';
-import { Tooltip } from 'zarm-web';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { assets, documents } from '@/site.config';
 import Context from '@/utils/context';
 import Meta from '@/web/components/Meta';
-import { documents, assets } from '@/site.config';
+import { pascalCase } from 'change-case';
+import ClipboardJS from 'clipboard';
+import { marked } from 'marked';
+import Prism from 'prismjs';
+import React, { useContext, useEffect } from 'react';
+import { FormattedMessage, useIntl } from 'react-intl';
+import { Icon, Tooltip } from 'zarm';
 import Codesanbox from './Codesanbox';
 import './style.scss';
 

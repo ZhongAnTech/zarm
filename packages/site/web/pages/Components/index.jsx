@@ -1,17 +1,16 @@
-import React, { useState, useContext, useRef, useEffect } from 'react';
-import { Route, Switch, Redirect, useParams, useRouteMatch } from 'react-router-dom';
-import classnames from 'classnames';
-import Loadable from 'react-loadable';
-import { FormattedMessage } from 'react-intl';
-import { Icon } from 'zarm';
-import { Popover } from 'zarm-web';
-import { QRCodeSVG } from 'qrcode.react';
-import { documents, components, assets } from '@/site.config';
+import { assets, components, documents } from '@/site.config';
 import Context from '@/utils/context';
 import Container from '@/web/components/Container';
-import SideBar from '@/web/components/SideBar';
 import Footer from '@/web/components/Footer';
 import Markdown from '@/web/components/Markdown';
+import SideBar from '@/web/components/SideBar';
+import classnames from 'classnames';
+import { QRCodeSVG } from 'qrcode.react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import { FormattedMessage } from 'react-intl';
+import Loadable from 'react-loadable';
+import { Redirect, Route, Switch, useParams, useRouteMatch } from 'react-router-dom';
+import { Icon, Popper } from 'zarm';
 import './style.scss';
 
 const LoadableComponent = (component) => {
@@ -68,21 +67,25 @@ const Simulator = () => {
         </FormattedMessage>
         <FormattedMessage id="app.home.components.simulator.qrcode">
           {(txt) => (
-            <Popover
+            <Popper
               content={<QRCodeSVG value={simulatorURL} size={120} style={{ display: 'block' }} />}
-              direction="leftTop"
+              direction="left-top"
               className="simulator__qrcode"
-              trigger="hover"
+              mountContainer={false}
             >
               <div className="simulator__control" title={txt}>
                 <Icons type="qrcode" size="sm" />
               </div>
-            </Popover>
+            </Popper>
           )}
         </FormattedMessage>
         <FormattedMessage id="app.home.components.simulator.openwindow">
           {(txt) => (
-            <div className="simulator__control" title={txt} onClick={() => window.open(simulatorURL)}>
+            <div
+              className="simulator__control"
+              title={txt}
+              onClick={() => window.open(simulatorURL)}
+            >
               <Icons type="link" size="sm" />
             </div>
           )}
