@@ -78,7 +78,8 @@
     "lodash": "^4.17.15",
     "normalize.css": "8.0.1",
     "raf": "^3.4.1",
-    "react-transition-group": "^4.4.2"
+    "react-transition-group": "^4.4.2",
+    "@tarojs/components": "3.6.1"
   },
   "devDependencies": {
     "@babel/runtime": "^7.14.0",
@@ -97,7 +98,8 @@
     "enzyme-to-json": "^3.6.2",
     "jest-canvas-mock": "^2.3.1",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "resolve-url-loader": "^5.0.0"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
