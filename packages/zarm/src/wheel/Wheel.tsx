@@ -33,11 +33,6 @@ export interface WheelCssVars {
 
 export type WheelProps = BaseWheelProps & HTMLProps<WheelCssVars>;
 
-const DEFAULT_FIELD_NAMES = {
-  value: 'value',
-  label: 'label',
-};
-
 const Wheel: React.FC<WheelProps> = (props) => {
   const { className, value, defaultValue, dataSource, disabled, stopScroll, itemRender, onChange } =
     props;
@@ -52,7 +47,7 @@ const Wheel: React.FC<WheelProps> = (props) => {
   const heightRef = React.useRef(0);
   const bem = createBEM('wheel', { prefixCls });
 
-  const fieldNames = resolvedFieldNames(props.fieldNames, DEFAULT_FIELD_NAMES);
+  const fieldNames = resolvedFieldNames(props.fieldNames);
 
   const getSelectedIndex = (
     changedValue?: WheelValue,

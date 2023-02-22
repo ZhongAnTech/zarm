@@ -4250,13 +4250,13 @@
 
 "@use-gesture/core@10.1.1":
   version "10.1.1"
-  resolved "https://registry.npmmirror.com/@use-gesture/core/download/@use-gesture/core-10.1.1.tgz?cache=0&sync_timestamp=1634551059945&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40use-gesture%2Fcore%2Fdownload%2F%40use-gesture%2Fcore-10.1.1.tgz#e1a6ef6f2566fc5f2eaeb8b5549ebe93d5cafb82"
-  integrity sha1-4abvbyVm/F8urri1VJ6+k9XK+4I=
+  resolved "https://registry.yarnpkg.com/@use-gesture/core/-/core-10.1.1.tgz#e1a6ef6f2566fc5f2eaeb8b5549ebe93d5cafb82"
+  integrity sha512-IAHo/pus6kzgNErKnUoS9h/eAbRFByyHL+02MmBRa6A8zu8raXpwl/VIgHjBTUNh7fJtlhzyljIPI6r9Bwz6bA==
 
 "@use-gesture/react@^10.1.1":
   version "10.1.1"
-  resolved "https://registry.npmmirror.com/@use-gesture/react/download/@use-gesture/react-10.1.1.tgz?cache=0&sync_timestamp=1634551059341&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40use-gesture%2Freact%2Fdownload%2F%40use-gesture%2Freact-10.1.1.tgz#b0daa4baa81185f4732756568793e6a3e0efc913"
-  integrity sha1-sNqkuqgRhfRzJ1ZWh5Pmo+DvyRM=
+  resolved "https://registry.yarnpkg.com/@use-gesture/react/-/react-10.1.1.tgz#b0daa4baa81185f4732756568793e6a3e0efc913"
+  integrity sha512-wjaUJzhtHtkzg5QLirdgKyM0B4MweT8dWrP1vrz1uc6K9zcv78qwGR7k/k3tG2bXw/yGvZBYO+vKvLYTJu4hmA==
   dependencies:
     "@use-gesture/core" "10.1.1"
 
@@ -4840,7 +4840,7 @@ ansi-escapes@^3.0.0, ansi-escapes@^3.2.0:
   resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-3.2.0.tgz#8780b98ff9dbf5638152d1f1fe5c1d7b4442976b"
   integrity sha512-cBhpre4ma+U0T1oM5fXg7Dy1Jw7zzwv7lt/GoCpr+hDQJoYnKVPLL4dCvSEFMmQurOQvSrwT7SL/DAlhBI97RQ==
 
-ansi-escapes@^4.2.1, ansi-escapes@^4.3.0, ansi-escapes@^4.3.1:
+ansi-escapes@^4.2.1, ansi-escapes@^4.3.0:
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-4.3.2.tgz#6b2291d1db7d98b6521d5f1efa42d0f3a9feb65e"
   integrity sha1-ayKR0dt9mLZSHV8e+kLQ86n+tl4=
@@ -6671,7 +6671,7 @@ colorette@^1.0.7, colorette@^1.2.1, colorette@^1.2.2:
   resolved "https://registry.yarnpkg.com/colorette/-/colorette-1.2.2.tgz#cbcc79d5e99caea2dbf10eb3a26fd8b3e6acfa94"
   integrity sha512-MKGMzyfeuutC/ZJ1cba9NqcNpfeqMUcYmyF1ZFY6/Cn7CNSAKx6a+s48sqLqyAiZuaP2TcqMhoo+dlwFnVxT9w==
 
-colorette@^2.0.10, colorette@^2.0.14:
+colorette@^2.0.10, colorette@^2.0.14, colorette@^2.0.19:
   version "2.0.19"
   resolved "https://registry.yarnpkg.com/colorette/-/colorette-2.0.19.tgz#cdf044f47ad41a0f4b56b3a0d5b4e6e1a2d5a798"
   integrity sha512-3tlv/dIP7FWvj3BsbHrGLJ6l/oKh1O3TcgBqMn+yyCagOxc23fyzDS6HypQbgxWbkpDnf52p1LuR4eWDQ/K9WQ==

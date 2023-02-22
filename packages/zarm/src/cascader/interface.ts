@@ -1,4 +1,4 @@
-import { BaseCascaderViewProps, CascaderValue } from '../cascader-view/interface';
+import { BaseCascaderViewProps, CascaderValue, CascaderItem } from '../cascader-view/interface';
 import type { MountContainer } from '../utils/dom';
 
 export interface BaseCascaderProps extends BaseCascaderViewProps {
@@ -8,7 +8,7 @@ export interface BaseCascaderProps extends BaseCascaderViewProps {
   cancelText?: string;
   confirmText?: string;
   mountContainer?: MountContainer;
-  onConfirm?: (value?: CascaderValue[]) => void;
+  onConfirm?: (value: CascaderValue[], items: CascaderItem[]) => void;
   onCancel?: () => void;
   afterOpen?: () => void;
   afterClose?: () => void;

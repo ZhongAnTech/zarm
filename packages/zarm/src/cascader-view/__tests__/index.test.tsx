@@ -1,6 +1,7 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import CascaderView from '../index';
+import { parseItems } from '../utils';
 
 jest.useFakeTimers();
 
@@ -97,6 +98,10 @@ describe('Cascader', () => {
     expect(container).toMatchSnapshot();
 
     expect(onChange).toBeCalledTimes(3);
-    expect(onChange).toHaveBeenCalledWith(['340000', '340800', '340803']);
+
+    const currentValue = ['340000', '340800', '340803'];
+    const items = parseItems(District, currentValue);
+
+    expect(onChange).toHaveBeenCalledWith(currentValue, items);
   });
 });

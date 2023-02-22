@@ -20,7 +20,7 @@ import type {
   CascaderOption,
   CascaderValue,
 } from './interface';
-import { parseState } from './utils';
+import { parseItems, parseState } from './utils';
 
 export interface CascaderViewCssVars {
   '--background-color'?: React.CSSProperties['backgroundColor'];
@@ -66,7 +66,7 @@ const CascaderView = forwardRef<HTMLDivElement, CascaderViewProps>((props, ref) 
   const cls = bem([className]);
   const [state, setState] = useState<CascaderViewState>({ ...parseState(props), tabIndex: 0 });
   const { currentValue, tabIndex } = state;
-  const fieldNames = resolvedFieldNames(propsFieldNames, DEFAULT_FIELD_NAMES);
+  const fieldNames = resolvedFieldNames(propsFieldNames);
 
   const handleObtainItem = useCallback(
     (list: CascaderOption[], _value: CascaderValue) => {
@@ -145,13 +145,15 @@ const CascaderView = forwardRef<HTMLDivElement, CascaderViewProps>((props, ref) 
       _value[index] = itemValue;
     }
 
+    const items = parseItems(dataSource, _value, fieldNames);
+
     setState({
       ...state,
       currentValue: _value,
       tabIndex: typeof index === 'number' ? index + 1 : tabIndex,
     });
 
-    onChange?.(_value);
+    onChange?.(_value, items);
   };
 
   /**

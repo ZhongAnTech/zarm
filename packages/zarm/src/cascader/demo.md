@@ -93,11 +93,11 @@ const Demo = () => {
         value={value}
         title="级联选择器"
         dataSource={District}
-        onChange={(value) => {
-          console.log('onChange', value);
+        onChange={(value, items) => {
+          console.log('onChange', value, items);
         }}
-        onConfirm={(value) => {
-          console.log('onConfirm', value);
+        onConfirm={(value, items) => {
+          console.log('onConfirm', value, items);
           setValue(value);
           setVisible(false);
         }}
@@ -287,8 +287,8 @@ const Demo = () => {
     <CascaderView
       value={value}
       dataSource={District}
-      onChange={(value) => {
-        console.log('onChange', value);
+      onChange={(value, items) => {
+        console.log('onChange', value, items);
       }}
     />
   );

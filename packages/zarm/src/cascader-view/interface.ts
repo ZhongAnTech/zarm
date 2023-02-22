@@ -25,5 +25,5 @@ export interface BaseCascaderViewProps {
   fieldNames?: FieldNames;
   cols?: number;
   itemRender?: TItemRender;
-  onChange?: (selected: CascaderValue[]) => void;
+  onChange?: (value: CascaderValue[], items: CascaderItem[]) => void;
 }
