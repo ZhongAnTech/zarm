@@ -1,28 +1,43 @@
-import type { PickerColumnItem } from '../picker-view/interface';
+import * as React from 'react';
+import { PickerColumnItem } from '../picker-view';
 
-export type DatePickerValue = string | Date;
-
-export enum MODE {
-  DATETIME = 'datetime',
-  DATE = 'date',
-  TIME = 'time',
-  MONTH = 'month',
+export enum COLUMN_TYPE {
   YEAR = 'year',
+  MONTH = 'month',
+  DAY = 'day',
+  MERIDIEM = 'meridiem',
+  HOUR = 'hour',
+  MINUTE = 'minute',
+  SECOND = 'second',
+  WEEK = 'week',
+  WEEK_DAY = 'week-day',
 }
 
-export type columnType = 'year' | 'month' | 'date' | 'hour' | 'minute' | 'second';
+export enum MERIDIEM {
+  AM = 0,
+  PM = 1,
+}
+
+export type ColumnType = `${COLUMN_TYPE}`;
+
+export interface DatePickerFilterExtend {
+  value: number;
+  date: Date;
+}
+
+export type DatePickerFilter = (type: ColumnType, extend: DatePickerFilterExtend) => boolean;
+
+export type RenderLabel = (type: ColumnType, value: number) => React.ReactNode;
 
 export interface BaseDatePickerViewProps {
-  mode?: `${MODE}`;
+  columnType?: ColumnType[];
+  min?: Date;
+  max?: Date;
   disabled?: boolean;
-  value?: DatePickerValue;
-  defaultValue?: DatePickerValue;
-  wheelDefaultValue?: DatePickerValue;
-  onChange?: (value?: Date | string) => void;
-  minuteStep?: number;
-  min?: DatePickerValue;
-  max?: DatePickerValue;
-  use12Hours?: boolean;
-  format?: string;
-  itemRender?: (item: PickerColumnItem, type: columnType) => React.ReactNode;
+  filter?: DatePickerFilter;
+  renderLabel?: RenderLabel;
+  defaultValue?: Date;
+  wheelDefaultValue?: Date;
+  value?: Date;
+  onChange?: (value: Date, items: PickerColumnItem[], level: number) => void;
 }

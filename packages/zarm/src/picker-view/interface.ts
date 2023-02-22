@@ -1,8 +1,8 @@
 import type {
   BaseWheelProps,
+  FieldNames as WheelFieldNames,
   WheelItem,
   WheelValue,
-  FieldNames as WheelFieldNames,
 } from '../wheel/interface';
 
 export type PickerValue = WheelValue;
@@ -28,6 +28,6 @@ export interface BasePickerViewProps extends Pick<BaseWheelProps, 'disabled'> {
   fieldNames?: Partial<FieldNames>;
   dataSource?: PickerDataSource;
   cols?: number;
-  itemRender?: (item: PickerColumnItem, level: number) => React.ReactNode;
-  onChange?: (value: PickerValue[], items: PickerColumnItem[], level: number) => void;
+  itemRender?: (item: PickerColumnItem, index: number) => React.ReactNode;
+  onChange?: (value: PickerValue[], items: PickerColumnItem[], index: number) => void;
 }

@@ -3,7 +3,8 @@
   @include define(arrow-color, var(--za-arrow-color));
   @include define(arrow-size, var(--za-arrow-size));
   @include define(arrow-width, var(--za-arrow-width));
-  @include define(color-text-disabled, var(--za-color-text-disabled));
+  @include define(placeholder-color, var(--za-color-text-placeholder));
+  @include define(disabled-color, var(--za-color-text-disabled));
 
   display: flex;
   align-items: center;
@@ -17,7 +18,7 @@
 
   @include m(placeholder) {
     @include e(input) {
-      color: var(--color-text-placeholder);
+      color: var(--placeholder-color);
     }
   }
 
@@ -47,7 +48,7 @@
 
   @include m(disabled) {
     @include e(input) {
-      color: var(--za-color-text-disabled);
+      color: var(--disabled-color);
     }
   }
 }

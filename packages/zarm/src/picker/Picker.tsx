@@ -1,8 +1,8 @@
 import * as React from 'react';
-import PickerView, { PickerViewInstance } from '../picker-view';
-import type { BasePickerProps } from './interface';
+import PickerView, { PickerColumnItem, PickerValue, PickerViewInstance } from '../picker-view';
 import type { HTMLProps } from '../utils/utilityTypes';
 import PickerContainer from './Container';
+import type { BasePickerProps } from './interface';
 
 export interface PickerCssVars {
   '--header-height': React.CSSProperties['height'];
@@ -26,7 +26,7 @@ export interface PickerCssVars {
 
 export type PickerProps = BasePickerProps & HTMLProps<PickerCssVars>;
 
-const Picker = React.forwardRef<HTMLDivElement, PickerProps>((props, ref) => {
+const Picker: React.FC<PickerProps> = (props) => {
   const {
     className,
     title,
@@ -48,20 +48,24 @@ const Picker = React.forwardRef<HTMLDivElement, PickerProps>((props, ref) => {
     onCancel,
     visible,
   } = props;
+
   const pickerViewRef = React.useRef<PickerViewInstance>(null);
+
+  const handleChange = (changedValue: PickerValue[], items: PickerColumnItem[], index: number) => {
+    visible && onChange?.(changedValue, items, index);
+  };
 
   const handleConfirm = () => {
     onConfirm?.(pickerViewRef.current?.value!, pickerViewRef.current?.items!);
   };
 
   const handleCancel = () => {
-    pickerViewRef.current?.reset();
+    pickerViewRef.current?.reset?.();
     onCancel?.();
   };
 
   return (
     <PickerContainer
-      ref={ref}
       title={title}
       className={className}
       confirmText={confirmText}
@@ -84,11 +88,11 @@ const Picker = React.forwardRef<HTMLDivElement, PickerProps>((props, ref) => {
         cols={cols}
         fieldNames={fieldNames}
         itemRender={itemRender}
-        onChange={onChange}
+        onChange={handleChange}
       />
     </PickerContainer>
   );
-});
+};
 
 Picker.defaultProps = {
   dataSource: [],

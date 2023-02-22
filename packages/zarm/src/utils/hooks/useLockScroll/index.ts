@@ -1,10 +1,11 @@
-import * as React from 'react';
 import isFunction from 'lodash/isFunction';
+import * as React from 'react';
+import { canUseDOM } from '../../dom';
 
 let totalLockCount = 0;
+const originalOverflow = canUseDOM ? document.body.style.overflow : '';
 
 const useLockScroll = (shouldLock: boolean | (() => boolean)) => {
-  const originalOverflow = React.useRef<React.CSSProperties['overflow']>();
   const lock = () => {
     if (!totalLockCount) {
       document.body.style.overflow = 'hidden';
@@ -18,13 +19,9 @@ const useLockScroll = (shouldLock: boolean | (() => boolean)) => {
     totalLockCount -= 1;
 
     if (!totalLockCount) {
-      document.body.style.overflow = originalOverflow.current || '';
+      document.body.style.overflow = originalOverflow || '';
     }
   };
-
-  React.useEffect(() => {
-    originalOverflow.current = document.body.style.overflow;
-  }, []);
 
   React.useEffect(() => {
     if (isFunction(shouldLock) ? shouldLock() : shouldLock) {

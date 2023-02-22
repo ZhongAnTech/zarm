@@ -1,4 +1,6 @@
+import * as React from 'react';
 import type { BaseDatePickerViewProps } from '../date-picker-view/interface';
+import type { PickerColumnItem } from '../picker-view';
 import type { MountContainer } from '../utils/dom';
 
 export interface BaseDatePickerProps
@@ -7,11 +9,12 @@ export interface BaseDatePickerProps
   title?: string;
   confirmText?: string;
   cancelText?: string;
-  onConfirm?: (value: Date | string) => void;
+  onConfirm?: (value: Date, items: PickerColumnItem[]) => void;
+  onChange?: (value: Date, items: PickerColumnItem[], level: number) => void;
   onCancel?: () => void;
-  onChange?: (value: Date | string) => void;
   afterOpen?: () => void;
   afterClose?: () => void;
   maskClosable?: boolean;
   mountContainer?: MountContainer;
+  children?: (items: PickerColumnItem[]) => React.ReactNode;
 }

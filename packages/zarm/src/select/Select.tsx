@@ -37,7 +37,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>((props, ref) => {
     onCancel,
     onConfirm,
     defaultValue,
-    ...others
+    ...rest
   } = props;
 
   const { prefixCls, locale } = React.useContext(ConfigContext);
@@ -89,7 +89,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>((props, ref) => {
         <div className={bem('arrow')} />
       </div>
       <Picker
-        {...others}
+        {...rest}
         className={className}
         visible={visible}
         value={value}
@@ -107,7 +107,7 @@ Select.defaultProps = {
   dataSource: [],
   cols: Infinity,
   maskClosable: true,
-  displayRender: (selected) => selected?.map((item) => item && item.label),
+  displayRender: (items) => items?.map((item) => item && item.label),
   onClick: () => {},
 };
 

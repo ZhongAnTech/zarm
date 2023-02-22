@@ -264,10 +264,10 @@
   const App: React.FC = () => {
     return (
       <Marquee
--       animationDelay={2000}
 -       animationDuration={30000}
-+       delay={2000}
+-       animationDelay={2000}
 +       speed={30000}
++       delay={2000}
       >
         我从右向左滚动
       </Marquee>
@@ -294,6 +294,41 @@
 
   export default App;
 ```
+
+### DatePicker/DatePicker/DateSelect
+
+`value` / `defaultValue` / `min` / `max` 参数类型调整为 `Date`
+
+```diff
+  <DatePickerView
+-   value='2023-02-08'
++   value={new Date('2023/02/08')}
+  />
+```
+
+移除 `mode` 属性，调整为通过 `columnType` 设置列选择类型
+
+```diff
+  <DatePickerView
+-   mode='time'
++   columnType={['hour', 'minute', 'second']}
+  />
+```
+
+移除 `minuteStep` 属性，通过 `filter` 设置
+
+```diff
+  <DatePickerView
+    columnType={['hour', 'minute']}
+-   minuteStep={5}
++   filter={(type, { value }) => {
++     if (type === 'minute') return value % 5 === 0;
++     return true;
++   }}
+  />
+```
+
+- 移除 `format` 属性
 
 ## 遇到问题
 

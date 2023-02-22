@@ -8,9 +8,9 @@ import { Radio, DateSelect, List, Calendar } from 'zarm';
 
 const Demo = () => {
   const [mode, setMode] = useState('single');
-  const [value, setValue] = useState(['2022-5-18', '2022-6-3']);
-  const [min, setMin] = useState('2022-5-1');
-  const [max, setMax] = useState('2022-10-28');
+  const [value, setValue] = useState([new Date('2022/5/18'), new Date('2022/6/3')]);
+  const [min, setMin] = useState(new Date('2022/5/1'));
+  const [max, setMax] = useState(new Date('2022/10/28'));
   const [custom, setCustom] = useState(false);
   const [direction, setDirection] = useState('vertical');
   const [header, setHeader] = useState(false);
@@ -33,20 +33,10 @@ const Demo = () => {
           </Radio.Group>
         </List.Item>
         <List.Item title="最小日期">
-          <DateSelect
-            placeholder="Please input start date"
-            mode="date"
-            value={min}
-            onConfirm={setMin}
-          />
+          <DateSelect placeholder="Please input start date" value={min} onConfirm={setMin} />
         </List.Item>
         <List.Item title="最大日期">
-          <DateSelect
-            placeholder="Please input end date"
-            mode="date"
-            value={max}
-            onConfirm={setMax}
-          />
+          <DateSelect placeholder="Please input end date" value={max} onConfirm={setMax} />
         </List.Item>
         <List.Item title="方向">
           <Radio.Group
