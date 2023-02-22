@@ -1,0 +1,10 @@
+@import '@zarm-design/bem/sass';
+
+$prefixCls: 'za';
+$keyframesSeparator: '_';
+
+@mixin define($key, $value) {
+  $block: str-replace(get-block(&), '.', '');
+
+  --#{$key}: var(--#{$block + $blockSeparator + $key}, #{$value});
+}
