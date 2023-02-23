@@ -1,7 +1,8 @@
 import React from 'react';
-import { fireEvent, render, screen, waitForElementToBeRemoved } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import Cascader from '../index';
 import Button from '../../button';
+import { parseItems } from '../../cascader-view/utils';
 
 jest.useFakeTimers();
 
@@ -90,10 +91,11 @@ describe('Cascader', () => {
     const onCancel = jest.fn();
     const onConfirm = jest.fn();
 
+    const value = ['340000', '340800', '340803'];
     const { container, getByText } = render(
       <Cascader
         defaultValue={[]}
-        value={['340000', '340800', '340803']}
+        value={value}
         cancelText="取消"
         confirmText="确定"
         visible
@@ -106,7 +108,10 @@ describe('Cascader', () => {
     );
 
     fireEvent.click(getByText('确定'));
-    expect(onConfirm).toHaveBeenCalledWith(['340000', '340800', '340803']);
+
+    const items = parseItems(District, value);
+
+    expect(onConfirm).toHaveBeenCalledWith(value, items);
 
     fireEvent.click(getByText('取消'));
     expect(onCancel).toBeCalled();
@@ -144,8 +149,11 @@ describe('Cascader', () => {
     fireEvent.click(screen.getAllByDisplayValue('340803')[0]);
     expect(container).toMatchSnapshot();
 
+    const currentValue = ['340000', '340800', '340803'];
+    const items = parseItems(District, currentValue);
+
     expect(onChange).toBeCalledTimes(3);
-    expect(onChange).toHaveBeenCalledWith(['340000', '340800', '340803']);
+    expect(onChange).toHaveBeenCalledWith(currentValue, items);
   });
 
   it('static method prompt', async () => {
@@ -187,7 +195,11 @@ describe('Cascader', () => {
     fireEvent.click(screen.getAllByDisplayValue('2')[0]);
     await screen.findByText('杨浦区');
     fireEvent.click(getByText('confirm'));
-    expect(confirm).toHaveBeenCalledWith(['2']);
+
+    const currentValue = ['2'];
+    const items = parseItems(CASCADE_DATA, currentValue);
+
+    expect(confirm).toHaveBeenCalledWith(currentValue, items);
     fireEvent.click(getByText('cancel'));
     expect(cancel).toHaveBeenCalled();
   });

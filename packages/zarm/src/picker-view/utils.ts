@@ -17,11 +17,10 @@ const DEFAULT_FIELD_NAMES = {
 
 export const resolvedFieldNames = <T = object>(
   left: Partial<T> | undefined,
-  right: Required<T>,
 ) => {
-  const merged = { ...right };
-  Object.keys(right).forEach((key) => {
-    merged[key] = left?.[key] || right[key];
+  const merged = { ...DEFAULT_FIELD_NAMES };
+  left && Object.keys(left).forEach((key) => {
+    merged[key] = left?.[key] || DEFAULT_FIELD_NAMES[key];
   });
   return merged;
 };
@@ -57,7 +56,7 @@ const resolvedValue = (props: PickerViewProps, initialValue?: PickerValue[]) => 
 
 export const resolveColumn = (props: PickerViewProps) => {
   const columns = toArray(props.dataSource) as PickerColumn;
-  const fieldNames = resolvedFieldNames(props.fieldNames, DEFAULT_FIELD_NAMES);
+  const fieldNames = resolvedFieldNames(props.fieldNames);
   const value = resolvedValue(
     props,
     columns.map((item) => item?.[0]?.[fieldNames?.value!]),
@@ -73,7 +72,7 @@ export const resolveColumn = (props: PickerViewProps) => {
 
 const resolveCascade = (props: PickerViewProps) => {
   const { cols } = props;
-  const fieldNames = resolvedFieldNames(props.fieldNames, DEFAULT_FIELD_NAMES);
+  const fieldNames = resolvedFieldNames(props.fieldNames);
 
   const value: PickerValue[] = resolvedValue(props, []);
   const columns: PickerColumn[] = [];

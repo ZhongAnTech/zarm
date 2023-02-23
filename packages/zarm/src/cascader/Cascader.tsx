@@ -2,7 +2,7 @@ import { createBEM } from '@zarm-design/bem';
 import React, { createRef, forwardRef, useCallback, useContext, useState } from 'react';
 import type { CascaderViewCssVars } from '../cascader-view';
 import CascaderView from '../cascader-view';
-import { parseState } from '../cascader-view/utils';
+import { parseItems, parseState } from '../cascader-view/utils';
 import { ConfigContext } from '../config-provider';
 import PickerContainer from '../picker/Container';
 import type { HTMLProps } from '../utils/utilityTypes';
@@ -42,7 +42,8 @@ const Cascader = forwardRef<HTMLDivElement, CascaderProps>((props, ref) => {
   const bem = createBEM('cascader', { prefixCls });
 
   const handleConfirm = () => {
-    onConfirm?.(state.value);
+    const items = parseItems(dataSource, state.value, fieldNames);
+    onConfirm?.(state.value, items);
   };
 
   const handleCancel = () => {
@@ -50,12 +51,12 @@ const Cascader = forwardRef<HTMLDivElement, CascaderProps>((props, ref) => {
   };
 
   const onValueChange = useCallback(
-    (newValue) => {
+    (newValue, items) => {
       setState((prevState) => ({
         ...prevState,
         value: newValue,
       }));
-      onChange?.(newValue);
+      onChange?.(newValue, items);
     },
     [onChange],
   );

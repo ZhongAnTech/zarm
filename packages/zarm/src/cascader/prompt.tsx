@@ -13,8 +13,8 @@ export const prompt = (props: Omit<CascaderProps, 'value' | 'visible' | 'childre
     const { close } = renderImperatively(
       <Cascader
         {...props}
-        onConfirm={(value) => {
-          props.onConfirm?.(value);
+        onConfirm={(value, items) => {
+          props.onConfirm?.(value, items);
           close();
           resolve({ value });
         }}
