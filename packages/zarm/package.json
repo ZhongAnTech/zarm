@@ -1,6 +1,6 @@
 {
   "name": "zarm",
-  "version": "3.0.0-alpha.5",
+  "version": "3.0.0-alpha.6",
   "description": "基于 React 的移动端UI库",
   "keywords": [
     "react",
@@ -69,7 +69,7 @@
     "@floating-ui/react-dom-interactions": "^0.9.1",
     "@use-gesture/react": "^10.1.1",
     "@zarm-design/bem": "^0.0.2-alpha.2",
-    "@zarm-design/icons": "^0.1.5-alpha.4",
+    "@zarm-design/icons": "^0.1.5-alpha.5",
     "better-scroll": "2.3.1",
     "classnames": "^2.3.1",
     "color": "^3.1.3",
