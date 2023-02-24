@@ -29,12 +29,12 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.21.0",
+    "@zarm-design/bem": "^0.0.2-alpha.2",
     "change-case": "^4.1.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.16",
     "@svgr/cli": "^5.5.0",
-    "@zarm-design/bem": "^0.0.2-alpha.2",
     "@zarm-design/cli": "^0.0.41-alpha.2",
     "react": "^17.0.2",
     "shelljs": "^0.8.4",
