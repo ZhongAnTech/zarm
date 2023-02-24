@@ -28,6 +28,7 @@
     "test": "zarm test -s scripts/jest/setup.js"
   },
   "dependencies": {
+    "@babel/runtime": "^7.21.0",
     "change-case": "^4.1.2"
   },
   "devDependencies": {
