@@ -17,4 +17,4 @@ module.exports = {
       return `zarm/src/${name}/style/index.tsx`;
     }
   }]]
-}
+};
