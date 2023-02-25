@@ -16,3 +16,4 @@ export interface BaseButtonProps {
   loading?: boolean;
   icon?: React.ReactNode;
 }
+

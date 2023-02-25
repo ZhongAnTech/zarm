@@ -67,6 +67,7 @@
   ],
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.9.1",
+    "@tarojs/components": "3.6.1",
     "@use-gesture/react": "^10.1.1",
     "@zarm-design/bem": "^0.0.2-alpha.1",
     "@zarm-design/icons": "^0.1.5-alpha.2",
@@ -97,7 +98,8 @@
     "enzyme-to-json": "^3.6.2",
     "jest-canvas-mock": "^2.3.1",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "resolve-url-loader": "^5.0.0"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
