@@ -62,10 +62,10 @@ const config = {
         config: {
           selector: [':root, page', '^za'],
           transform: (decl) => {
-            var oldValue = decl.value
-            const val = oldValue.replace(/(\d*\.?\d+)(px)/g, (match, value, unit) => {
-              return parseInt(value, 10) * 2 + 'rpx';
-            })
+            const oldValue = decl.value;
+            const val = oldValue.replace(/(\d*\.?\d+)(px)/g, (_match, value) => {
+              return `${parseInt(value, 10) * 2}rpx`;
+            });
             decl.value = val;
           }
         }
@@ -100,10 +100,10 @@ const config = {
         config: {
           selector: [':root, page', '^za'],
           transform: (decl) => {
-            var oldValue = decl.value
-            const val = oldValue.replace(/(\d*\.?\d+)(px)/g, (match, value, unit) => {
-              return value * 2 + unit;
-            })
+            const oldValue = decl.value;
+            const val = oldValue.replace(/(\d*\.?\d+)(px)/g, (_match, value, unit) => {
+              return `${value * 2}${unit}`;
+            });
             decl.value = val;
           }
         }
@@ -118,11 +118,11 @@ const config = {
       }
     }
   }
-}
+};
 
-module.exports = function (merge) {
+module.exports =  (merge) => {
   if (process.env.NODE_ENV === 'development') {
-    return merge({}, config, require('./dev'))
+    return merge({}, config, require('./dev'));
   }
-  return merge({}, config, require('./prod'))
-}
+  return merge({}, config, require('./prod'));
+};

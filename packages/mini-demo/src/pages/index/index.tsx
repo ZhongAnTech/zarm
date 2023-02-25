@@ -1,3 +1,4 @@
+import React from 'react';
 import { View, Text } from '@tarojs/components'
 import Taro from '@tarojs/taro';
 import { Panel } from 'zarm';
@@ -14,7 +15,7 @@ function Index () {
         <View>
           {
             siteMap[key].components.map((c) => {
-              return (<View className='list-item' key={c.key} onClick={() => Taro.navigateTo({ url: c.page })}> <View className="list-item__content">{c.key}<Text className='zh'>{c.name}</Text></View></View>)
+              return (<View className='list-item' key={c.key} onClick={() => Taro.navigateTo({ url: c.page })}> <View className='list-item__content'>{c.key}<Text className='zh'>{c.name}</Text></View></View>)
             })
           }
         </View>

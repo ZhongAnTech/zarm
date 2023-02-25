@@ -1,3 +1,4 @@
+import React from 'react';
 import { View } from '@tarojs/components';
 import { Button, Panel } from 'zarm';
 import { SuccessCircle, CloseCircle } from '@zarm-design/icons';
@@ -11,8 +12,8 @@ function ButtonDemo() {
        title='基本用法'
      >
        <>
-       <Button>default</Button>
-       <Button theme='primary'>primary</Button>
+        <Button>default</Button>
+        <Button theme='primary'>primary</Button>
        </>
      </Panel>
      <Panel
