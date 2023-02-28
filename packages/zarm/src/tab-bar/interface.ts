@@ -5,7 +5,7 @@ export interface BaseTabBarProps {
   visible?: boolean;
   defaultActiveKey?: string | number;
   activeKey?: string | number;
-  safeIphoneX?: boolean;
+  safeArea?: boolean;
   onChange?: (value: number | string) => void;
 }
 
@@ -16,5 +16,4 @@ export interface BaseTabBarItemProps {
   activeIcon?: ReactNode;
   badge?: BaseBadgeProps;
   selected?: boolean;
-  onChange?: () => void;
 }

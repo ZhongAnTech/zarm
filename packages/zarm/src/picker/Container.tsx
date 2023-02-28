@@ -1,7 +1,8 @@
-import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
+import * as React from 'react';
 import { ConfigContext } from '../config-provider';
 import Popup from '../popup';
+import SafeArea from '../safe-area';
 import { noop } from '../utils';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BasePickerContainerProps } from './interface';
@@ -19,6 +20,7 @@ const PickerContainer = React.forwardRef<HTMLDivElement, PickerContainerProps>((
     maskClosable,
     forceRender,
     destroy,
+    safeArea,
     mountContainer,
     onConfirm,
     onCancel,
@@ -27,7 +29,7 @@ const PickerContainer = React.forwardRef<HTMLDivElement, PickerContainerProps>((
     afterClose,
     children,
   } = props;
-  const { prefixCls, locale } = React.useContext(ConfigContext);
+  const { prefixCls, locale, safeArea: globalSafeArea } = React.useContext(ConfigContext);
   const bem = createBEM('picker', { prefixCls });
 
   return (
@@ -57,7 +59,8 @@ const PickerContainer = React.forwardRef<HTMLDivElement, PickerContainerProps>((
             {confirmText || locale?.Picker.confirmText}
           </div>
         </div>
-        {children}
+        <div className={bem('body')}>{children}</div>
+        {(safeArea ?? globalSafeArea) && <SafeArea position="bottom" />}
       </div>
     </Popup>
   );

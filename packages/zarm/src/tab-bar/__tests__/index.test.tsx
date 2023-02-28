@@ -1,5 +1,5 @@
+import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
 import TabBar from '../index';
 
 const TabBarItem = TabBar.Item;
@@ -49,10 +49,10 @@ describe('TabBarItem', () => {
   });
 
   it('should handle change event', () => {
-    const mOnChange = jest.fn();
-    const { container } = render(<TabBarItem itemKey={1} onChange={mOnChange} />);
+    const onClick = jest.fn();
+    const { container } = render(<TabBarItem itemKey={1} onClick={onClick} />);
     fireEvent.click(container.querySelector('.za-tab-bar__item')!);
-    expect(mOnChange).toBeCalled();
+    expect(onClick).toBeCalled();
   });
 
   it('should render with icon if it is selected', () => {

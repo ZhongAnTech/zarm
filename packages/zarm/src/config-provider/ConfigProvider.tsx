@@ -10,7 +10,7 @@ export const defaultConfig: ConfigProviderProps = {
   prefixCls: 'za',
   locale: defaultLocaleData,
   theme: 'light',
-  safeIphoneX: false,
+  safeArea: true,
   cssVars: {},
   mountContainer: () => document.body,
   scrollContainer: () => window,

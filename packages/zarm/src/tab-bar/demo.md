@@ -12,33 +12,51 @@ const TabIcon = Icon.createFromIconfont(
 
 const Demo = () => {
   const [activeKey, setActiveKey] = useState('home');
-  const [visible, setVisible] = useState(true);
 
   return (
     <>
-      <List>
-        <List.Item
-          title="隐藏 | 展示"
-          suffix={
-            <Button
-              size="xs"
-              onClick={() => {
-                setVisible(!visible);
-              }}
-            >
-              {visible ? '隐藏' : '展示'}
-            </Button>
-          }
-        />
-      </List>
-
-      <TabBar visible={visible} activeKey={activeKey} onChange={setActiveKey}>
+      <TabBar activeKey={activeKey} onChange={setActiveKey}>
         <TabBar.Item itemKey="home" title="首页" icon={<TabIcon type="home" />} />
         <TabBar.Item
           itemKey="found"
           title="项目"
           icon={<TabIcon type="menu" />}
-          badge={{ shape: 'circle', text: '3' }}
+          // badge={{ shape: 'circle', text: '3' }}
+        />
+        <TabBar.Item
+          itemKey="me"
+          title="我的"
+          icon={<TabIcon type="user" />}
+          // badge={{ shape: 'dot' }}
+        />
+      </TabBar>
+    </>
+  );
+};
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## 徽标
+
+```jsx
+import { useState } from 'react';
+import { Icon, TabBar, List, Button } from 'zarm';
+
+const TabIcon = Icon.createFromIconfont(
+  '//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_14.627ee457cf7594fbbce6d5e14b8c29ef.js',
+);
+
+const Demo = () => {
+  return (
+    <>
+      <TabBar>
+        <TabBar.Item itemKey="home" title="首页" icon={<TabIcon type="home" />} />
+        <TabBar.Item
+          itemKey="found"
+          title="项目"
+          icon={<TabIcon type="menu" />}
+          badge={{ shape: 'circle', text: 3 }}
         />
         <TabBar.Item
           itemKey="me"
@@ -46,6 +64,104 @@ const Demo = () => {
           icon={<TabIcon type="user" />}
           badge={{ shape: 'dot' }}
         />
+      </TabBar>
+    </>
+  );
+};
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## 仅图标
+
+```jsx
+import { useState } from 'react';
+import { Icon, TabBar, List, Button } from 'zarm';
+
+const TabIcon = Icon.createFromIconfont(
+  '//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_14.627ee457cf7594fbbce6d5e14b8c29ef.js',
+);
+
+const Demo = () => {
+  return (
+    <>
+      <TabBar>
+        <TabBar.Item itemKey="home" icon={<TabIcon type="home" />} />
+        <TabBar.Item itemKey="found" icon={<TabIcon type="menu" />} />
+        <TabBar.Item itemKey="me" icon={<TabIcon type="user" />} />
+      </TabBar>
+    </>
+  );
+};
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## 仅标题
+
+```jsx
+import { useState } from 'react';
+import { Icon, TabBar, List, Button } from 'zarm';
+
+const Demo = () => {
+  return (
+    <>
+      <TabBar>
+        <TabBar.Item itemKey="home" title="首页" />
+        <TabBar.Item itemKey="found" title="项目" />
+        <TabBar.Item itemKey="me" title="我的" />
+      </TabBar>
+    </>
+  );
+};
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## 受控模式
+
+```jsx
+import { useState } from 'react';
+import { Icon, TabBar, List, Button } from 'zarm';
+
+const TabIcon = Icon.createFromIconfont(
+  '//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_14.627ee457cf7594fbbce6d5e14b8c29ef.js',
+);
+
+const Demo = () => {
+  const [activeKey, setActiveKey] = React.useState('me');
+
+  return (
+    <>
+      <TabBar activeKey={activeKey} onChange={setActiveKey} safeArea>
+        <TabBar.Item itemKey="home" title="首页" icon={<TabIcon type="home" />} />
+        <TabBar.Item itemKey="found" title="项目" icon={<TabIcon type="menu" />} />
+        <TabBar.Item itemKey="me" title="我的" icon={<TabIcon type="user" />} />
+      </TabBar>
+    </>
+  );
+};
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## 开启安全区域
+
+```jsx
+import { useState } from 'react';
+import { Icon, TabBar, List, Button } from 'zarm';
+
+const TabIcon = Icon.createFromIconfont(
+  '//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_14.627ee457cf7594fbbce6d5e14b8c29ef.js',
+);
+
+const Demo = () => {
+  return (
+    <>
+      <TabBar safeArea>
+        <TabBar.Item itemKey="home" title="首页" icon={<TabIcon type="home" />} />
+        <TabBar.Item itemKey="found" title="项目" icon={<TabIcon type="menu" />} />
+        <TabBar.Item itemKey="me" title="我的" icon={<TabIcon type="user" />} />
       </TabBar>
     </>
   );
@@ -63,7 +179,7 @@ ReactDOM.render(<Demo />, mountNode);
 | visible          | boolean                           | true   | 是否显示                   |
 | activeKey        | number \| string                  | -      | 当前选中项                 |
 | defaultActiveKey | number \| string                  | -      | 初始选中项, 默认第一个选中 |
-| safeIphoneX      | boolean                           | false  | 是否适配 iphoneX 刘海屏    |
+| safeArea         | boolean                           | false  | 是否适配安全区域           |
 | onChange         | (value: number \| string) => void | -      | 值变化时触发的回调函数     |
 
 ### TabBar.Item
@@ -85,4 +201,3 @@ ReactDOM.render(<Demo />, mountNode);
 | --color        | var(--za-color-text)    | 字体颜色           |
 | --active-color | var(--za-theme-primary) | 选中状态下字体颜色 |
 | --font-size    | '12px'                  | 字体大小           |
-| --z-index      | '100'                   | 层级               |

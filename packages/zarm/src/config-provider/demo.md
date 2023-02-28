@@ -35,7 +35,7 @@ const Demo = () => {
   const [locale, setLocale] = useState(localStorage.locale || 'zhCN');
   const [primaryColor, setPrimaryColor] = useState(localStorage.primaryColor || colors[0]);
   const [theme, setTheme] = useState(localStorage.theme || 'light');
-  const [safeIphoneX, setSafeIphoneX] = useState(false);
+  const [safeArea, setSafeArea] = useState(false);
   const [mountContainer, setMountContainer] = useState(false);
   const [cssVars, setCssVars] = useState(null);
 
@@ -78,7 +78,7 @@ const Demo = () => {
         />
         <List.Item
           title="安全区域开启"
-          suffix={<Switch checked={safeIphoneX} onChange={setSafeIphoneX} />}
+          suffix={<Switch checked={safeArea} onChange={setSafeArea} />}
         />
         <List.Item
           title="自定义弹层渲染节点"
@@ -112,7 +112,7 @@ const Demo = () => {
         locale={locale === 'enUS' ? enUS : zhCN}
         primaryColor={primaryColor}
         theme={theme}
-        safeIphoneX={safeIphoneX}
+        safeArea={safeArea}
         cssVars={cssVars}
         mountContainer={!mountContainer ? document.body : containerRef.current}
       >
@@ -196,7 +196,7 @@ ReactDOM.render(<Demo />, mountNode);
 | locale          | Object          | -                   | 语言包配置，默认为中文，语言包可到 [zarm/lib/config-provider/locale](https://unpkg.com/zarm/lib/config-provider/locale/) 目录下寻找 |
 | theme           | string          | 'light'             | 主题模式，'light' 为光明主题，'dark' 为暗黑主题的切换                                                                               |
 | primaryColor    | string          | '#00bc70'           | 品牌标准色                                                                                                                          |
-| safeIphoneX     | boolean         | false               | 是否适配 iphoneX 刘海屏                                                                                                             |
+| safeArea        | boolean         | false               | 是否适配安全区域屏                                                                                                                  |
 | mountContainer  | MountContainer  | () => document.body | 弹层组件渲染节点                                                                                                                    |
 | scrollContainer | ScrollContainer | () => window        | 组件滚动监听容器点                                                                                                                  |
 | cssVars         | Object          | {}                  | 组件 CSS 变量设置                                                                                                                   |

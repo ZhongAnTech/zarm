@@ -484,6 +484,7 @@ ReactDOM.render(<Demo />, mountNode);
 | cancelText     | string                                                        | '取消'              | 取消栏文字                                     |
 | maskClosable   | boolean                                                       | true                | 是否点击遮罩层时关闭，需要和 onCancel 一起使用 |
 | destroy        | boolean                                                       | false               | 弹层关闭后是否移除节点                         |
+| safeArea       | boolean                                                       | false               | 是否适配安全区域                               |
 | onConfirm      | (value: PickerValue[], items: PickerViewColumnItem[]) => void | -                   | 点击确定时触发的回调函数                       |
 | onCancel       | () => void                                                    | -                   | 点击取消时触发的回调函数                       |
 | mountContainer | MountContainer                                                | () => document.body | 指定 Picker 挂载的 HTML 节点                   |

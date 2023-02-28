@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
 import { createBEM } from '@zarm-design/bem';
-import Popup from '../popup';
-import ActionSheetItem, { ActionSheetItemProps } from './ActionSheetItem';
+import React, { useContext } from 'react';
 import { ConfigContext } from '../config-provider';
-import type { BaseActionSheetProps } from './interface';
+import Popup from '../popup';
+import SafeArea from '../safe-area';
 import type { HTMLProps } from '../utils/utilityTypes';
+import ActionSheetItem, { ActionSheetItemProps } from './ActionSheetItem';
+import type { BaseActionSheetProps } from './interface';
 
 export interface ActionSheetCssVars {
   '--background'?: React.CSSProperties['background'];
@@ -15,13 +16,13 @@ export interface ActionSheetCssVars {
   '--item-font-weight'?: React.CSSProperties['fontWeight'];
   '--item-text-color'?: React.CSSProperties['color'];
   '--item-active-background-color'?: React.CSSProperties['backgroundColor'];
-  '--item-opacity-disabled'?: React.CSSProperties['opacity'],
+  '--item-opacity-disabled'?: React.CSSProperties['opacity'];
   '--cancel-text-color'?: React.CSSProperties['color'];
   '--cancel-margin-top'?: React.CSSProperties['marginTop'];
 }
 
 export interface ActionSheetProps extends BaseActionSheetProps, HTMLProps<ActionSheetCssVars> {
-  safeIphoneX?: boolean;
+  safeArea?: boolean;
   actions?: ActionSheetItemProps[];
   onAction?: (action: ActionSheetItemProps, index: number) => void;
 }
@@ -35,17 +36,16 @@ const ActionSheet = React.forwardRef<HTMLDivElement, ActionSheetProps>((props, r
     cancelText,
     onCancel,
     onAction,
-    safeIphoneX,
+    safeArea,
     ...restProps
   } = props;
-  const { prefixCls, safeIphoneX: globalSafeIphoneX, locale } = useContext(ConfigContext);
+  const { prefixCls, safeArea: globalSafeArea, locale } = useContext(ConfigContext);
 
   const bem = createBEM('action-sheet', { prefixCls });
 
   const cls = bem([
     {
       spacing,
-      safe: safeIphoneX || globalSafeIphoneX,
     },
     className,
   ]);
@@ -78,6 +78,7 @@ const ActionSheet = React.forwardRef<HTMLDivElement, ActionSheetProps>((props, r
       <div ref={ref} className={cls} style={style}>
         <div className={bem('actions')}>{actionsRender}</div>
         {renderCancel()}
+        {(safeArea ?? globalSafeArea) && <SafeArea position="bottom" />}
       </div>
     </Popup>
   );
@@ -90,7 +91,6 @@ ActionSheet.defaultProps = {
   visible: false,
   actions: [],
   destroy: true,
-  safeIphoneX: false,
 };
 
 export default ActionSheet;

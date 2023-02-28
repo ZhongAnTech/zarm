@@ -18,7 +18,7 @@ export interface TooltipCssVars {
   '--font-size'?: React.CSSProperties['fontSize'];
   '--color'?: React.CSSProperties['color'];
   '--background'?: React.CSSProperties['background'];
-  '--z-index'?: React.CSSProperties['zIndex'];
+  '--zindex'?: React.CSSProperties['zIndex'];
   '--spacing'?: React.CSSProperties['height'];
   '--padding-horizontal'?: React.CSSProperties['paddingLeft'];
   '--padding-vertical'?: React.CSSProperties['paddingTop'];

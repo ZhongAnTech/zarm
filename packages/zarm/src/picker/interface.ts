@@ -9,6 +9,7 @@ export interface BasePickerContainerProps {
   maskClosable?: boolean;
   forceRender?: boolean;
   destroy?: boolean;
+  safeArea?: boolean;
   mountContainer?: MountContainer;
   onConfirm?: () => void;
   onCancel?: () => void;

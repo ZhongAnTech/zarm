@@ -1,17 +1,17 @@
-import React, { cloneElement, useCallback, useState } from 'react';
 import { createBEM } from '@zarm-design/bem';
-import type { BaseTabBarProps } from './interface';
-import TabBarItem from './TabBarItem';
-import type { TabBarItemProps } from './TabBarItem';
+import React, { cloneElement, useCallback, useState } from 'react';
 import { ConfigContext } from '../config-provider';
+import SafeArea from '../safe-area';
 import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseTabBarProps } from './interface';
+import type { TabBarItemProps } from './TabBarItem';
+import TabBarItem from './TabBarItem';
 
 export interface TabBarCssVars {
   '--height'?: React.CSSProperties['height'];
   '--font-size'?: React.CSSProperties['fontSize'];
   '--background'?: React.CSSProperties['background'];
   '--color'?: React.CSSProperties['color'];
-  '--z-index'?: React.CSSProperties['zIndex'];
   '--active-color'?: React.CSSProperties['color'];
 }
 
@@ -22,17 +22,13 @@ interface CompoundedComponent
   Item: typeof TabBarItem;
 }
 
-const TabBar = React.forwardRef<unknown, TabBarProps>((props, ref) => {
-  const tabBarRef = (ref as any) || React.createRef<HTMLDivElement>();
-
-  const { prefixCls, safeIphoneX: globalSafeIphoneX } = React.useContext(ConfigContext);
+const TabBar = React.forwardRef<HTMLDivElement, TabBarProps>((props, ref) => {
+  const { prefixCls } = React.useContext(ConfigContext);
 
   const bem = createBEM('tab-bar', { prefixCls });
 
-  const { visible, className, children, onChange, activeKey, defaultActiveKey, ...restProps } =
+  const { visible, className, children, onChange, activeKey, defaultActiveKey, safeArea, ...rest } =
     props;
-
-  const safeIphoneX = props.safeIphoneX || globalSafeIphoneX;
 
   const [selectedKey, setSelectedKey] = useState(defaultActiveKey);
 
@@ -41,9 +37,7 @@ const TabBar = React.forwardRef<unknown, TabBarProps>((props, ref) => {
       if (!activeKey) {
         setSelectedKey(value);
       }
-      if (typeof onChange === 'function') {
-        onChange(value);
-      }
+      onChange?.(value);
     },
     [activeKey, onChange],
   );
@@ -57,14 +51,6 @@ const TabBar = React.forwardRef<unknown, TabBarProps>((props, ref) => {
     }
     return activeKey === itemKey;
   };
-
-  const cls = bem([
-    {
-      hidden: !visible,
-      safe: safeIphoneX,
-    },
-    className,
-  ]);
 
   const items = React.Children.map(
     children,
@@ -81,7 +67,7 @@ const TabBar = React.forwardRef<unknown, TabBarProps>((props, ref) => {
       return cloneElement(element, {
         key: index,
         // disabled: element.props.disabled,
-        onChange: () => onChildChange(itemKey),
+        onClick: () => onChildChange(itemKey),
         badge: element.props.badge,
         title: element.props.title,
         icon: element.props.icon,
@@ -92,8 +78,18 @@ const TabBar = React.forwardRef<unknown, TabBarProps>((props, ref) => {
     },
   );
   return (
-    <div className={cls} ref={tabBarRef} {...restProps}>
-      {items}
+    <div
+      {...rest}
+      ref={ref}
+      className={bem([
+        {
+          hidden: !visible,
+        },
+        className,
+      ])}
+    >
+      <div className={bem('wrapper')}>{items}</div>
+      {safeArea && <SafeArea position="bottom" />}
     </div>
   );
 }) as CompoundedComponent;

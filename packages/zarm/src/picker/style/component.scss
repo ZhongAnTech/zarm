@@ -6,6 +6,8 @@
   @include define(header-confirm-text-color, var(--za-theme-primary));
   @include define(header-cancel-text-color, var(--za-color-text-caption));
 
+  @include define(background-color, #fff);
+
   @include define(content-background-color, #fff);
   @include define(content-padding, 16px);
   @include define(content-mask-start-background-color, rgba(255, 255, 255, 0.4));
@@ -28,6 +30,8 @@
     var(--wheel-item-selected-background-color)
   );
   @include define(-wheel-item-selected-border-radius, var(--wheel-item-selected-border-radius));
+
+  background-color: var(--background-color);
 
   @include b(picker-view) {
     @include define(background-color, var(--content-background-color));
@@ -57,6 +61,12 @@
     font-size: var(--header-font-size);
     background: var(--header-background-color);
     @include onepx(top);
+  }
+
+  @include e(body) {
+    width: 100%;
+    height: 100%;
+    flex: 1;
   }
 
   @include e(cancel, confirm) {

@@ -1,6 +1,6 @@
-import React from 'react';
 import { render, RenderOptions, screen } from '@testing-library/react';
-import ConfigProvider, { defaultConfig, ConfigContext } from '../ConfigProvider';
+import React from 'react';
+import ConfigProvider, { ConfigContext, defaultConfig } from '../ConfigProvider';
 import type { ConfigProviderProps } from '../interface';
 
 interface CustomRenderOptions extends RenderOptions {
@@ -21,7 +21,7 @@ describe('ConfigProvider', () => {
         {(value) => (
           <>
             <span data-testid="prefixCls">{value.prefixCls}</span>
-            <span data-testid="safeIphoneX">{value.safeIphoneX ? 1 : 0}</span>
+            <span data-testid="safeArea">{value.safeArea ? 1 : 0}</span>
           </>
         )}
       </ConfigContext.Consumer>,
@@ -31,7 +31,7 @@ describe('ConfigProvider', () => {
     );
     expect(screen.getByTestId('prefixCls').textContent).toEqual(defaultConfig.prefixCls);
     expect(document.body.getAttribute('data-theme')).toEqual(defaultConfig.theme);
-    expect(!!+screen.getByTestId('safeIphoneX').textContent!).toEqual(defaultConfig.safeIphoneX);
+    expect(!!+screen.getByTestId('safeArea').textContent!).toEqual(defaultConfig.safeArea);
   });
 
   test('should custum the value from context provider', () => {
