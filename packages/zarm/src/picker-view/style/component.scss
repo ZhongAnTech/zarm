@@ -1,14 +1,14 @@
 @include b(picker-view) {
-  @include define(background-color, #fff);
+  @include define(background, #fff);
   @include define(padding, 16px);
-  @include define(mask-start-background-color, rgba(255, 255, 255, 0.4));
-  @include define(mask-end-background-color, rgba(255, 255, 255, 0.8));
+  @include define(mask-start-background, rgba(255, 255, 255, 0.4));
+  @include define(mask-end-background, rgba(255, 255, 255, 0.8));
   @include define(wheel-item-rows, 5);
   @include define(wheel-item-height, 34px);
   @include define(wheel-item-font-size, 20px);
   @include define(wheel-item-text-color, var(--za-color-text));
   @include define(wheel-item-disabled-text-color, var(--za-color-text-disabled));
-  @include define(wheel-item-selected-background-color, rgba(116, 116, 128, 0.08));
+  @include define(wheel-item-selected-background, rgba(116, 116, 128, 0.08));
   @include define(wheel-item-selected-border-radius, 7px);
 
   display: flex;
@@ -17,7 +17,7 @@
   position: relative;
   width: 100%;
   padding: var(--padding);
-  background: var(--background-color);
+  background: var(--background);
 
   @include b(wheel) {
     @include define(item-rows, var(--wheel-item-rows));
@@ -35,7 +35,7 @@
     height: var(--wheel-item-height);
     left: var(--padding);
     margin-top: calc(var(--wheel-item-height) / -2);
-    background-color: var(--wheel-item-selected-background-color);
+    background: var(--wheel-item-selected-background);
     border-radius: var(--wheel-item-selected-border-radius);
   }
 
@@ -51,8 +51,8 @@
       background:
         linear-gradient(
           to top,
-          var(--mask-start-background-color),
-          var(--mask-end-background-color)
+          var(--mask-start-background),
+          var(--mask-end-background)
         );
     }
 
@@ -62,8 +62,8 @@
       background:
         linear-gradient(
           to bottom,
-          var(--mask-start-background-color),
-          var(--mask-end-background-color)
+          var(--mask-start-background),
+          var(--mask-end-background)
         );
     }
   }

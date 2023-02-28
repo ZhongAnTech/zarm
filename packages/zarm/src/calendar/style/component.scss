@@ -25,7 +25,7 @@
   @include define(day-range-text-color, var(--za-theme-primary));
   @include define(action-btn-disabled, var(--za-color-text-disabled));
 
-  background-color: var(--background);
+  background: var(--background);
   user-select: none;
   position: relative;
 
@@ -52,7 +52,7 @@
     height: var(--week-height);
     line-height: var(--week-height);
     color: var(--week-text-color);
-    background-color: var(--week-background);
+    background: var(--week-background);
     font-size: var(--week-font-size);
     font-weight: var(--week-font-weight);
     margin: 0;
@@ -160,7 +160,7 @@
     @include m(today) {
       @include b(calendar) {
         @include e(day__content) {
-          background-color: var(--day-today-background);
+          background: var(--day-today-background);
           color: var(--day-today-text-color);
         }
       }
@@ -169,7 +169,7 @@
     @include m(selected) {
       @include b(calendar) {
         @include e(day__content) {
-          background-color: var(--day-selected-background);
+          background: var(--day-selected-background);
           color: var(--day-selected-text-color);
           box-shadow: var(--day-selected-shadow);
         }
@@ -186,12 +186,12 @@
     }
 
     @include m(range) {
-      background-color: var(--day-range-background);
+      background: var(--day-range-background);
       color: var(--day-range-text-color);
 
       @include b(calendar) {
         @include e(day__content) {
-          background-color: var(--day-range-background);
+          background: var(--day-range-background);
         }
       }
 

@@ -108,5 +108,5 @@ ReactDOM.render(<Demo />, mountNode);
 | 属性                     | 默认值                        | 说明                 |
 | :----------------------- | :---------------------------- | :------------------- |
 | --border-color           | 'var(--za-border-color)'      | 格子边框颜色         |
-| --item-background        | 'var(--za-background-color)'  | 格子背景颜色         |
+| --item-background        | 'var(--za-background-color)'  | 格子背景         |
 | --item-active-background | 'var(--za-background-active)' | 格子点击反馈背景颜色 |

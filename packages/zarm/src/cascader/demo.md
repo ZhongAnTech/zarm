@@ -360,7 +360,7 @@ Cascader.prompt({
 
 | 属性                       | 默认值                             | 说明             |
 | :------------------------- | :--------------------------------- | :--------------- |
-| --background-color         | '#fff'                             | 弹层背景色       |
+| --background         | '#fff'                             | 弹层背景       |
 | --padding                  | 'var(--za-padding-v-sm)'           | 选项内边距       |
 | --tab-text-color           | 'var(--za-color-text-placeholder)' | 标签文字颜色     |
 | --tab-active-text-color    | 'var(--za-theme-primary)'          | 标签选中文字颜色 |

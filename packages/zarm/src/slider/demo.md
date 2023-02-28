@@ -110,7 +110,7 @@ ReactDOM.render(
 | --line-background         | 'rgba(120, 120, 128, 0.2)'     | 轨道背景色             |
 | --line-active-background  | 'var(--za-theme-primary)'      | 轨道激活状态背景色     |
 | --dot-size                | '10px'                         | 刻度圆点大小           |
-| --dot-background          | 'var(--za-background-color)'   | 刻度圆点背景色         |
+| --dot-background          | 'var(--za-background-color)'   | 刻度圆点背景         |
 | --dot-border-color        | 'rgba(120, 120, 128, 0.2)'     | 刻度圆点边框色         |
 | --dot-border-width        | '2px'                          | 刻度圆点边框宽度       |
 | --dot-active-border-color | 'var(--za-theme-primary)'      | 刻度圆点激活状态边框色 |

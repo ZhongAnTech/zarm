@@ -113,4 +113,4 @@ ReactDOM.render(
 
 | 属性         | 默认值 | 说明   |
 | :----------- | :----- | :----- |
-| --background | '#fff' | 背景色 |
+| --background | '#fff' | 背景 |

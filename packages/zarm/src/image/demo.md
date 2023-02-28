@@ -209,7 +209,7 @@ ReactDOM.render(
 
 | 属性               | 默认值                 | 说明         |
 | :----------------- | :--------------------- | :----------- |
-| --background-color | '#fafafa'              | 占位背景色   |
+| --background | '#fafafa'              | 占位背景   |
 | --text-color       | 'var(--za-color-text)' | 占位字体颜色 |
 | --font-size        | '12px'                 | 占位字体大小 |
 | --radius           | 'var(--za-radius-lg)'  | 图片圆角大小 |

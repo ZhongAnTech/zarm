@@ -51,7 +51,7 @@
     height: var(--icon-size);
     border: var(--icon-border-width) solid var(--icon-border-color);
     border-radius: var(--icon-border-radius);
-    background-color: var(--icon-background);
+    background: var(--icon-background);
 
     @include b(icon) {
       font-size: var(--tick-font-size);
@@ -65,7 +65,7 @@
   @include m(checked, indeterminate) {
     @include e(tick) {
       border-color: var(--checked-icon-border-color);
-      background-color: var(--checked-icon-background);
+      background: var(--checked-icon-background);
 
       @include b(icon) {
         color: var(--checked-tick-color);
@@ -86,13 +86,13 @@
 
     @include e(tick) {
       border-color: var(--disabled-icon-border-color);
-      background-color: var(--disabled-icon-background);
+      background: var(--disabled-icon-background);
     }
 
     @include m(checked) {
       @include e(tick) {
         border-color: var(--disabled-icon-border-color);
-        background-color: var(--disabled-icon-background);
+        background: var(--disabled-icon-background);
 
         @include b(icon) {
           color: var(--disabled-tick-color);

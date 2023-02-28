@@ -21,7 +21,7 @@
     height: var(--height);
     border: calc((var(--height) - var(--knob-size)) / 2) solid transparent;
     border-radius: var(--border-radius);
-    background-color: var(--background);
+    background: var(--background);
     vertical-align: middle;
     transition: var(--transition);
     outline: 0;
@@ -44,14 +44,14 @@
 
     &:after {
       width: var(--knob-size);
-      background-color: var(--knob-background);
+      background: var(--knob-background);
       border: var(--knob-border-width) solid var(--knob-border-color);
       box-shadow: var(--knob-box-shadow);
       transition: var(--knob-transition);
     }
 
     &:checked {
-      background-color: var(--checked-background);
+      background: var(--checked-background);
 
       &:after {
         transform: translateX(calc(var(--width) - var(--height)));

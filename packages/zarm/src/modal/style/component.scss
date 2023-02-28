@@ -15,15 +15,15 @@
   @include define(button-font-size, 17px);
   @include define(button-font-weight, 500);
   @include define(button-text-color, var(--za-theme-primary));
-  @include define(button-background-color, transparent);
-  @include define(button-background-color-active, var(--za-background-active));
-  @include define(button-opacity-disabled, var(--za-opacity-disabled));
+  @include define(button-background, transparent);
+  @include define(button-active-background, var(--za-background-active));
+  @include define(button-disabled-opacity, var(--za-opacity-disabled));
 
   -webkit-overflow-scrolling: touch;
 
   @include b(popup) {
     position: relative;
-    background-color: var(--background);
+    background: var(--background);
     box-shadow: var(--shadow);
     overflow: hidden;
   }
@@ -77,13 +77,13 @@
     width: 100%;
     height: var(--button-height);
     line-height: var(--button-height);
-    background-color: var(--button-background-color);
+    background: var(--button-background);
     font-size: var(--button-font-size);
     color: var(--button-text-color);
     text-align: center;
 
     &:active {
-      background-color: var(--button-background-color-active);
+      background: var(--button-active-background);
     }
 
     &:not(:first-of-type) {
@@ -98,7 +98,7 @@
       @include define(item-text-color, var(--za-color-text));
 
       cursor: not-allowed;
-      opacity: var(--button-opacity-disabled);
+      opacity: var(--button-disabled-opacity);
       pointer-events: none;
     }
 

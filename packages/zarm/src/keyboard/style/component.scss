@@ -14,7 +14,7 @@
 
   display: grid;
   gap: var(--item-gap);
-  background-color: var(--background);
+  background: var(--background);
   user-select: none;
   padding: var(--item-gap);
 
@@ -31,18 +31,18 @@
     user-select: none;
 
     &:not(&--disabled):not(&--blank):active {
-      background-color: var(--item-active-background);
+      background: var(--item-active-background);
       box-shadow: none;
     }
 
     @include m(ok) {
-      background-color: var(--ok-background);
+      background: var(--ok-background);
       font-size: var(--ok-font-size);
       color: var(--ok-text-color);
     }
 
     @include m(blank) {
-      background-color: transparent;
+      background: transparent;
       box-shadow: none;
     }
 

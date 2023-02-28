@@ -135,7 +135,7 @@
     border-color: transparent;
 
     &:active {
-      background-color: var(--active-background);
+      background: var(--active-background);
       border-color: var(--active-border-color);
     }
 

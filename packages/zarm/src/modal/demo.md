@@ -470,10 +470,10 @@ const confirm = Modal.confirm({
 | --body-font-size                 | '13px'                              | 内容字体大小         |
 | --body-text-color                | 'var(--za-color-text)'              | 内容字体颜色         |
 | --body-padding                   | '16px'                              | 内容内边距           |
-| --button-background              | 'transparent'                       | 操作按钮背景色       |
+| --button-background              | 'transparent'                       | 操作按钮背景       |
 | --button-height                  | '44px'                              | 操作按钮高度         |
 | --button-font-size               | '17px'                              | 操作按钮字体大小     |
 | --button-font-weight             | 500                                 | 操作按钮字体粗细     |
 | --button-text-color              | 'var(--za-theme-primary)'           | 操作按钮字体颜色     |
-| --button-background-color-active | 'var(--za-background-active)'       | 操作按钮选中背景色   |
-| --button-opacity-disabled        | 'var(--za-opacity-disabled)'        | 操作按钮禁用背景色   |
+| --button-active-background | 'var(--za-background-active)'       | 操作按钮选中背景   |
+| --button-disabled-opacity        | 'var(--za-opacity-disabled)'        | 操作按钮禁用状态时的透明度   |

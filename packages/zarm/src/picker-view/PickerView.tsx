@@ -10,16 +10,16 @@ import type { BasePickerViewProps, PickerColumnItem } from './interface';
 import { isCascader, resolved } from './utils';
 
 export interface PickerViewCssVars {
-  '--background-color': React.CSSProperties['backgroundColor'];
+  '--background': React.CSSProperties['background'];
   '--padding': React.CSSProperties['padding'];
-  '--mask-start-background-color': React.CSSProperties['backgroundColor'];
-  '--mask-end-background-color': React.CSSProperties['backgroundColor'];
+  '--mask-start-background': React.CSSProperties['background'];
+  '--mask-end-background': React.CSSProperties['background'];
   '--wheel-item-rows': number;
   '--wheel-item-height': React.CSSProperties['height'];
   '--wheel-item-font-size': React.CSSProperties['fontSize'];
   '--wheel-item-text-color': React.CSSProperties['color'];
   '--wheel-item-disabled-text-color': React.CSSProperties['color'];
-  '--wheel-item-selected-background-color': React.CSSProperties['backgroundColor'];
+  '--wheel-item-selected-background': React.CSSProperties['background'];
   '--wheel-item-selected-border-radius': React.CSSProperties['borderRadius'];
 }
 
