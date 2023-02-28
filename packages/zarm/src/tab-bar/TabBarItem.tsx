@@ -1,41 +1,34 @@
-import React from 'react';
 import { createBEM } from '@zarm-design/bem';
-
+import React from 'react';
 import Badge from '../badge';
-import type { BaseTabBarItemProps } from './interface';
 import { ConfigContext } from '../config-provider';
+import type { BaseTabBarItemProps } from './interface';
 
 export interface TabBarItemProps
   extends BaseTabBarItemProps,
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'title'> {}
 
-const TabBarItem = React.forwardRef<unknown, TabBarItemProps>((props, ref) => {
-  const tabBaItemrRef = (ref as any) || React.createRef<HTMLDivElement>();
-
+const TabBarItem = React.forwardRef<HTMLDivElement, TabBarItemProps>((props, ref) => {
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('tab-bar', { prefixCls });
 
-  const {
-    title,
-    icon,
-    badge,
-    selected,
-    activeIcon = icon,
-    onChange,
-    itemKey,
-    ...restProps
-  } = props;
+  const { title, icon, badge, selected, activeIcon = icon, onClick, itemKey, ...restProps } = props;
 
-  const cls = bem('item', [
-    {
-      active: selected,
-    },
-  ]);
-
-  const contentRender = <div className={bem('icon')}>{selected ? activeIcon : icon}</div>;
+  const contentRender = (activeIcon || icon) && (
+    <div className={bem('icon')}>{selected ? activeIcon : icon}</div>
+  );
 
   return (
-    <div className={cls} ref={tabBaItemrRef} onClick={onChange} {...restProps}>
+    <div
+      className={bem('item', [
+        {
+          active: selected,
+        },
+      ])}
+      ref={ref}
+      onClick={onClick}
+      {...restProps}
+    >
       {badge ? <Badge {...badge}>{contentRender}</Badge> : contentRender}
       <div className={bem('title')}>{title}</div>
     </div>

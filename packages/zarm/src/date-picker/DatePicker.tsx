@@ -15,6 +15,7 @@ const DatePicker: React.FC<DatePickerProps> = (props) => {
     cancelText,
     mountContainer,
     maskClosable = true,
+    safeArea,
     onConfirm,
     onCancel,
     onChange,
@@ -50,6 +51,7 @@ const DatePicker: React.FC<DatePickerProps> = (props) => {
       cancelText={cancelText || locale?.DatePicker?.cancelText}
       maskClosable={maskClosable}
       mountContainer={mountContainer}
+      safeArea={safeArea}
       onConfirm={handleConfirm}
       onCancel={handleCancel}
       onClose={handleCancel}

@@ -49,8 +49,4 @@
     top: 0;
     height: 100%;
   }
-
-  @include m(safe) {
-    @include safeIphoneX(true);
-  }
 }

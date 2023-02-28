@@ -99,20 +99,3 @@ $keyframesSeparator: '_';
     }
   }
 }
-
-// adapt iphone x
-@mixin safeIphoneX($padding: true, $height: 0) {
-  @if $padding {
-    @if $height != 0 {
-      height: calc(#{$height} + constant(safe-area-inset-bottom));
-      height: calc(#{$height} + env(safe-area-inset-bottom));
-    }
-
-    padding-bottom: constant(safe-area-inset-bottom);
-    padding-bottom: env(safe-area-inset-bottom);
-  }
-  @else {
-    margin-bottom: constant(safe-area-inset-bottom);
-    margin-bottom: env(safe-area-inset-bottom);
-  }
-}

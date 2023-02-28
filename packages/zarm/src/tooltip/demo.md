@@ -96,7 +96,7 @@ ReactDOM.render(<Demo />, mountNode);
 | --font-size               | '12px'                       | 字体大小               |
 | --color                   | var(--za-color-text-inverse) | 字体颜色               |
 | --background              | 'rgba(0, 0, 0, 0.8)'         | 背景色                 |
-| --z-index                 | '1700'                       | 层级                   |
+| --zindex                  | '1700'                       | 层级                   |
 | --spacing                 | '3px'                        | 和目标元素的间距       |
 | --padding-horizontal      | var(--za-padding-h-xs)       | 横向边距               |
 | --padding-vertical        | var(--za-padding-v-xs)       | 垂直边距               |

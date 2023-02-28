@@ -233,7 +233,7 @@ ReactDOM.render(<Demo />, mountNode);
 | onCancel       | () => void                                                               | -                   | 显示取消菜单，点击时触发的回调函数 |
 | onAction       | (action: ActionSheetItemProps, index: number) => void \| Promise\<void\> | -                   | 点击面板选项后触发的函数           |
 | cancelText     | string                                                                   | '取消'              | 取消菜单的文案                     |
-| safeIphoneX    | boolean                                                                  | false               | 是否适配 iphoneX 刘海屏            |
+| safeArea       | boolean                                                                  | false               | 是否适配安全区域                   |
 | afterClose     | () => void                                                               | -                   | ActionSheet 隐藏后的回调函数       |
 | mountContainer | MountContainer                                                           | () => document.body | 指定 ActionSheet 挂载的 HTML 节点  |
 

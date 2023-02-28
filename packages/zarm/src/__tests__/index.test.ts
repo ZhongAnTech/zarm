@@ -9,7 +9,6 @@ describe('index', () => {
           "defaultProps": Object {
             "actions": Array [],
             "destroy": true,
-            "safeIphoneX": false,
             "spacing": false,
             "visible": false,
           },
@@ -394,6 +393,7 @@ describe('index', () => {
           },
           "render": [Function],
         },
+        "SafeArea": [Function],
         "SearchBar": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {

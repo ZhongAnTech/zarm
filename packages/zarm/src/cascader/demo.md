@@ -340,6 +340,7 @@ Cascader.prompt({
 | confirmText  | string                           | '确定'   | 确定栏文字                                     |
 | cancelText   | string                           | '取消'   | 取消栏文字                                     |
 | maskClosable | boolean                          | true     | 是否点击遮罩层时关闭，需要和 onCancel 一起使用 |
+| safeArea     | boolean                          | false    | 是否适配安全区域                               |
 | onConfirm    | (value: CascaderValue[]) => void | -        | 点击确定时触发的回调函数                       |
 | onCancel     | () => void                       | -        | 点击取消时触发的回调函数                       |
 

@@ -16,5 +16,6 @@ export interface BaseDatePickerProps
   afterClose?: () => void;
   maskClosable?: boolean;
   mountContainer?: MountContainer;
+  safeArea?: boolean;
   children?: (items: PickerColumnItem[]) => React.ReactNode;
 }

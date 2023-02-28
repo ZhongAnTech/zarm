@@ -43,6 +43,7 @@ const Picker: React.FC<PickerProps> = (props) => {
     mountContainer,
     forceRender,
     destroy,
+    safeArea,
     onChange,
     onConfirm,
     onCancel,
@@ -74,6 +75,7 @@ const Picker: React.FC<PickerProps> = (props) => {
       maskClosable={maskClosable}
       forceRender={forceRender}
       destroy={destroy}
+      safeArea={safeArea}
       mountContainer={mountContainer}
       onConfirm={handleConfirm}
       onCancel={handleCancel}

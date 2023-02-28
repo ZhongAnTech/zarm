@@ -233,10 +233,11 @@ ReactDOM.render(<Demo />, mountNode);
 
 ### 仅 KeyboardPicker 支持的属性
 
-| 属性    | 类型    | 默认值 | 说明                   |
-| :------ | :------ | :----- | :--------------------- |
-| visible | boolean | false  | 是否展示               |
-| destroy | boolean | true   | 弹层关闭后是否移除节点 |
+| 属性     | 类型    | 默认值 | 说明                   |
+| :------- | :------ | :----- | :--------------------- |
+| visible  | boolean | false  | 是否展示               |
+| destroy  | boolean | true   | 弹层关闭后是否移除节点 |
+| safeArea | boolean | false  | 是否适配安全区域       |
 
 ## CSS 变量
 

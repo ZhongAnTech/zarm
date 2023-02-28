@@ -14,7 +14,7 @@ const OpacityList = {
 };
 
 export interface MaskCssVars {
-  '--z-index'?: React.CSSProperties['zIndex'];
+  '--zindex'?: React.CSSProperties['zIndex'];
 }
 
 export type MaskProps = BaseMaskProps &

@@ -26,6 +26,7 @@ const Cascader = forwardRef<HTMLDivElement, CascaderProps>((props, ref) => {
     cols,
     itemRender,
     mountContainer,
+    safeArea,
     maskClosable,
     confirmText,
     cancelText,
@@ -71,6 +72,7 @@ const Cascader = forwardRef<HTMLDivElement, CascaderProps>((props, ref) => {
       visible={visible}
       maskClosable={maskClosable}
       mountContainer={mountContainer}
+      safeArea={safeArea}
       onConfirm={handleConfirm}
       onCancel={handleCancel}
       onClose={handleCancel}

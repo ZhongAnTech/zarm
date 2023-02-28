@@ -6,19 +6,23 @@ exports[`TabBar snapshot should render correctly 1`] = `
     class="za-tab-bar"
   >
     <div
-      class="za-tab-bar__item za-tab-bar__item--active"
+      class="za-tab-bar__wrapper"
     >
       <div
-        class="za-tab-bar__icon"
+        class="za-tab-bar__item za-tab-bar__item--active"
       >
         <div
-          style="width: 24px; height: 24px;"
-        />
-      </div>
-      <div
-        class="za-tab-bar__title"
-      >
-        主页
+          class="za-tab-bar__icon"
+        >
+          <div
+            style="width: 24px; height: 24px;"
+          />
+        </div>
+        <div
+          class="za-tab-bar__title"
+        >
+          主页
+        </div>
       </div>
     </div>
   </div>
@@ -31,19 +35,23 @@ exports[`TabBar snapshot with activeKey 1`] = `
     class="za-tab-bar"
   >
     <div
-      class="za-tab-bar__item za-tab-bar__item--active"
+      class="za-tab-bar__wrapper"
     >
       <div
-        class="za-tab-bar__icon"
+        class="za-tab-bar__item za-tab-bar__item--active"
       >
         <div
-          style="width: 24px; height: 24px;"
-        />
-      </div>
-      <div
-        class="za-tab-bar__title"
-      >
-        主页
+          class="za-tab-bar__icon"
+        >
+          <div
+            style="width: 24px; height: 24px;"
+          />
+        </div>
+        <div
+          class="za-tab-bar__title"
+        >
+          主页
+        </div>
       </div>
     </div>
   </div>
@@ -56,19 +64,23 @@ exports[`TabBar snapshot with defaultActiveKey 1`] = `
     class="za-tab-bar"
   >
     <div
-      class="za-tab-bar__item za-tab-bar__item--active"
+      class="za-tab-bar__wrapper"
     >
       <div
-        class="za-tab-bar__icon"
+        class="za-tab-bar__item za-tab-bar__item--active"
       >
         <div
-          style="width: 24px; height: 24px;"
-        />
-      </div>
-      <div
-        class="za-tab-bar__title"
-      >
-        主页
+          class="za-tab-bar__icon"
+        >
+          <div
+            style="width: 24px; height: 24px;"
+          />
+        </div>
+        <div
+          class="za-tab-bar__title"
+        >
+          主页
+        </div>
       </div>
     </div>
   </div>

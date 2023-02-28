@@ -2,7 +2,7 @@
   @include define(font-size, 12px);
   @include define(color, var(--za-color-text-inverse));
   @include define(background, rgba(0, 0, 0, 0.8));
-  @include define(z-index, 1700);
+  @include define(zindex, 1700);
   @include define(spacing, 3px);
   @include define(padding-vertical, var(--za-padding-v-xs));
   @include define(padding-horizontal, var(--za-padding-h-xs));
@@ -15,7 +15,7 @@
   border-radius: 4px;
   font-size: var(--font-size);
   color: var(--color);
-  z-index: var(--z-index);
+  z-index: var(--zindex);
 
   &[data-popper-placement^='right'] {
     margin-left: var(--spacing);
