@@ -23,7 +23,7 @@ import type {
 import { parseItems, parseState } from './utils';
 
 export interface CascaderViewCssVars {
-  '--background-color'?: React.CSSProperties['backgroundColor'];
+  '--background'?: React.CSSProperties['background'];
   '--padding'?: React.CSSProperties['padding'];
   '--tab-text-color'?: React.CSSProperties['color'];
   '--tab-active-text-color'?: React.CSSProperties['color'];

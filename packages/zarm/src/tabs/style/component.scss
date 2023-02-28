@@ -3,7 +3,7 @@
   @include define(color, var(--za-color-text));
   @include define(color-disabled, var(--za-color-text-disabled));
   @include define(height, 45px);
-  @include define(active-color, var(--za-theme-primary));
+  @include define(active-background, var(--za-theme-primary));
   @include define(active-line-height, 2px);
   @include define(padding-horizontal, var(--za-padding-h-lg));
   @include define(padding-vertical, var(--za-padding-v-md));
@@ -50,13 +50,13 @@
   @include e(line) {
     position: absolute;
     transition: transform 0.3s ease-out;
-    background-color: var(--active-color);
+    background: var(--active-background);
 
     &__inner {
       display: block;
       margin: auto;
       height: 100%;
-      background-color: var(--active-color);
+      background: var(--active-background);
     }
   }
 

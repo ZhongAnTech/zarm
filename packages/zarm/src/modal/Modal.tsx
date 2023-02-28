@@ -26,8 +26,8 @@ export interface ModalCssVars {
   '--button-font-size'?: React.CSSProperties['fontSize'];
   '--button-font-weight'?: React.CSSProperties['fontWeight'];
   '--button-text-color'?: React.CSSProperties['color'];
-  '--button-background-color'?: React.CSSProperties['backgroundColor'];
-  '--button-background-color-active'?: React.CSSProperties['backgroundColor'];
+  '--button-background'?: React.CSSProperties['background'];
+  '--button-active-background'?: React.CSSProperties['background'];
   '--button-opacity-disabled'?: React.CSSProperties['opacity'];
 }
 

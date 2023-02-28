@@ -550,11 +550,11 @@ Picker.prompt({
 | :------------------------------------- | :------------------------------ | :--------------------- |
 | --header-height                        | '45px'                          | 头部高度               |
 | --header-font-size                     | '16px'                          | 头部文字大小           |
-| --header-background-color              | '#f7f7f7'                       | 头部背景色             |
+| --header-background                    | '#f7f7f7'                       | 头部背景色             |
 | --header-title-text-color              | 'var(--za-color-text)'          | 头部标题文字颜色       |
 | --header-submit-text-color             | 'var(--za-theme-primary)'       | 头部提交按钮文字颜色   |
 | --header-cancel-text-color             | 'var(--za-color-text-caption)'  | 头部取消按钮文字颜色   |
-| --content-background-color             | '#fff'                          | 内容区域背景颜色       |
+| --content-background                   | '#fff'                          | 内容区域背景颜色       |
 | --content-padding                      | '16px'                          | 内容区域内边距         |
 | --content-mask-start-background-color  | 'rgba(255, 255, 255, 0.4)'      | 内容区域头部蒙层背景色 |
 | --content-mask-end-background-color    | 'rgba(255, 255, 255, 0.8)'      | 内容区域底部蒙层背景色 |
@@ -563,5 +563,5 @@ Picker.prompt({
 | --wheel-item-font-size                 | '20px'                          | 滚轮元素文字大小       |
 | --wheel-item-text-color                | 'var(--za-color-text)'          | 滚轮元素文字颜色       |
 | --wheel-item-disabled-text-color       | 'var(--za-color-text-disabled)' | 滚轮元素文字禁用颜色   |
-| --wheel-item-selected-background-color | 'rgba(116, 116, 128, 0.08)'     | 滚轮元素文字选中颜色   |
+| --wheel-item-selected-background       | 'rgba(116, 116, 128, 0.08)'     | 滚轮元素文字选中颜色   |
 | --wheel-item-selected-border-radius    | '7px'                           | 滚轮元素文字选中圆角   |

@@ -15,7 +15,7 @@ export interface ActionSheetCssVars {
   '--item-font-size'?: React.CSSProperties['fontSize'];
   '--item-font-weight'?: React.CSSProperties['fontWeight'];
   '--item-text-color'?: React.CSSProperties['color'];
-  '--item-active-background-color'?: React.CSSProperties['backgroundColor'];
+  '--item-active-background'?: React.CSSProperties['background'];
   '--item-opacity-disabled'?: React.CSSProperties['opacity'];
   '--cancel-text-color'?: React.CSSProperties['color'];
   '--cancel-margin-top'?: React.CSSProperties['marginTop'];

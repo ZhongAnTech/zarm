@@ -32,13 +32,13 @@
     flex: 1;
     position: relative;
     height: var(--line-size);
-    background-color: var(--line-background);
+    background: var(--line-background);
     border-radius: var(--line-border-radius);
     cursor: pointer;
 
     @include e(line__bg) {
       height: 100%;
-      background-color: var(--line-active-background);
+      background: var(--line-active-background);
       border-radius: var(--line-border-radius);
     }
   }
@@ -50,7 +50,7 @@
     height: var(--dot-size);
     margin-top: calc((var(--dot-size) + var(--line-size)) / -2);
     margin-left: calc(var(--dot-size) / -2);
-    background-color: var(--dot-background);
+    background: var(--dot-background);
     border: var(--dot-border-width) solid var(--dot-border-color);
     border-radius: 50%;
     cursor: pointer;
@@ -69,7 +69,7 @@
     width: var(--knob-size);
     height: var(--knob-size);
     border-radius: 50%;
-    background-color: var(--knob-background);
+    background: var(--knob-background);
     box-shadow: var(--knob-box-shadow);
     touch-action: none;
     cursor: pointer;

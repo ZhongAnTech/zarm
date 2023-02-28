@@ -52,7 +52,7 @@
   align-items: center;
   position: relative;
   padding-left: var(--item-padding-horizontal);
-  background-color: var(--item-background);
+  background: var(--item-background);
   font-size: var(--item-title-font-size);
 
   a,
@@ -152,10 +152,10 @@
     cursor: pointer;
     user-select: none;
     transition-duration: 0.1s;
-    transition-property: background-color, color;
+    transition-property: background, color;
 
     &:active {
-      background-color: var(--item-active-background);
+      background: var(--item-active-background);
     }
   }
 }

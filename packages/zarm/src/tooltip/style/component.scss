@@ -11,7 +11,7 @@
   @include define(arrow-vertical-offset, 6px);
 
   padding: var(--padding-vertical) var(--padding-horizontal);
-  background-color: var(--background);
+  background: var(--background);
   border-radius: 4px;
   font-size: var(--font-size);
   color: var(--color);

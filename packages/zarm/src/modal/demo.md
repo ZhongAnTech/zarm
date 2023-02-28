@@ -475,5 +475,5 @@ const confirm = Modal.confirm({
 | --button-font-size               | '17px'                              | 操作按钮字体大小     |
 | --button-font-weight             | 500                                 | 操作按钮字体粗细     |
 | --button-text-color              | 'var(--za-theme-primary)'           | 操作按钮字体颜色     |
-| --button-background-color-active | 'var(--za-background-active)'       | 操作按钮选中背景色   |
+| --button-active-background       | 'var(--za-background-active)'       | 操作按钮选中背景     |
 | --button-opacity-disabled        | 'var(--za-opacity-disabled)'        | 操作按钮禁用背景色   |
