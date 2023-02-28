@@ -4,20 +4,18 @@
 
 - Feature
 
-  - [Grid]
-    - 新增宫格组件
-  - [WaterMark]
-    - 新增水印组件
-  - [Skeleton]
-    - 新增骨架组件
-  - [Rate]
-    - 新增评分组件
+  - 新增组件：Grid 宫格、WaterMark 水印、Skeleton 骨架屏、Rate 评分、Image图片
+  - 新增 hooks 组件：useClickAway 单击外部跟踪器、useInViewport 进入浏览器窗口、useLongPress 长按、useOrientation 屏幕方向、useScroll 滚动
 
 - Break Change
 
+  - [ActivityIndicator]
+    - `ActivityIndicator` 组件更名为 `Loading`
+  - [Loading]
+    - 原 `Loading` 组件合并至 `Toast` 组件，通过设置 `icon` 为 `loading` 来实现
   - [ConfigProvider]
     - 组件样式设置作用域修正为当前节点下（非全局）
-    - 增加适配 `iphoneX` 安全区域
+    - 增加适配安全区域
     - 增加组件 `css` 变量设置
     - 增加组件挂载节点的 `mountContainer`
     - 增加组件类名前缀 `prefixCls` 设置
@@ -67,7 +65,7 @@
     - 支持点击，移动到点击位置
     - 新增属性 `onSlideChange` ，滑动时触发
   - [Toast]
-    - 静态方法挂载到 `Toast.useToast` 下，详细用法参考官网例子
+    - 变更为仅支持指令式调用，详细用法参见官网文档
   - [BackTop]
     - `BackToTop` 组件更名为 `BackTop`
     - 新增属性 `mountContainer` ，用于设置组件挂载节点
@@ -83,9 +81,8 @@
   - [Picker & PickerView]
     - 移除属性 `valueMember`，替换为 `fieldNames` 支持自定义 label、value、children 的字段
   - [DatePicker & DatePickverView]
-    - 移除属性 `valueMember`，替换为 `fieldNames` 支持自定义 label、value、children 的字段
-    - 新增属性 `use12Hours`，在 `mode` 为 `time` 下显示 12 小时模式
-    - 新增属性 `format`，用于格式化返回值
+    - 移除属性 `mode`，新增 `columnType` 属性来控制日期时间的模式
+    - 移除属性 `minuteStep`，新增 `filter` 属性用于过滤选项值
   - [SwipeAction]
     - `leftActions/rightActions` onClick 事件支持异步
 
