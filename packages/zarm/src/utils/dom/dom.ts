@@ -208,6 +208,14 @@ export function scrollTo(
   left: number,
   duration: number,
 ) {
+  if ("scrollBehavior" in document.documentElement.style) {
+    scrollContainer.scrollTo({
+      top,
+      left,
+      behavior: "smooth",
+    });
+    return false;
+  };
   if (scrollList?.[scrollRafId] === scrollContainer) {
     raf.cancel(scrollRafId);
   }
@@ -223,19 +231,20 @@ export function scrollTo(
     fromLeft = (scrollContainer as HTMLElement).scrollLeft;
     fromTop = (scrollContainer as HTMLElement).scrollTop;
   }
-
-  const frames = duration === 0 ? 1 : Math.round((duration * 1000) / 16);
+  const frames = duration === 0 ? 1 : Math.ceil((duration * 1000) / 16);
+  let x = fromLeft;
+  let y = fromTop;
   function animate() {
     if (scrollContainer === window) {
-      const x = getScrollLeft(scrollContainer) + (left - fromLeft) / frames;
-      const y = getScrollTop(scrollContainer) + (top - fromTop) / frames;
+      x += (left - fromLeft) / frames;
+      y += (top - fromTop) / frames;
       scrollContainer.scrollTo(x, y);
     } else {
       (scrollContainer as HTMLElement).scrollLeft += (left - fromLeft) / frames;
       (scrollContainer as HTMLElement).scrollTop += (top - fromTop) / frames;
     }
     count += 1;
-    if (count < frames) {
+    if (count <= frames) {
       scrollRafId = raf(animate);
       scrollList[scrollRafId] = scrollContainer;
     }

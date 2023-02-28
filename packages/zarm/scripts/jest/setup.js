@@ -19,3 +19,6 @@ window.ResizeObserver =
     observe: jest.fn(),
     unobserve: jest.fn(),
   }));
+
+window.scrollTo = window.scrollTo || jest.fn();
+window.HTMLElement.prototype.scrollTo = jest.fn();
