@@ -1,0 +1,1 @@
+{"version":3,"file":"stylesheet/9075.4721f50e.css","mappings":"AAGE,uBACE,aACA,gB","sources":["webpack://site/./demo/styles/RadioPage.scss"],"sourcesContent":["@import '@/styles/index';\n\n.radio-page {\n  .block-box {\n    padding: r(10);\n    background: #fff;\n  }\n}\n"],"names":[],"sourceRoot":""}
