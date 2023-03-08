@@ -1,13 +1,12 @@
-import React, { useRef, useCallback, useContext } from 'react';
 import { useDrag } from '@use-gesture/react';
 import { createBEM } from '@zarm-design/bem';
-
+import React, { useCallback, useContext, useRef } from 'react';
 import { ConfigContext } from '../config-provider';
-import SwipeActionItem from './SwipeActionItem';
-import useClickAway from '../useClickAway';
+import useClickAway from '../use-click-away';
 import { useSafeState } from '../utils/hooks';
-import type { BaseSwipeActionProps, BaseSwipeActionItemProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseSwipeActionItemProps, BaseSwipeActionProps } from './interface';
+import SwipeActionItem from './SwipeActionItem';
 
 export interface SwipeActionCssVars {
   '--background'?: React.CSSProperties['background'];

@@ -501,7 +501,6 @@ describe('index', () => {
           },
           "render": [Function],
         },
-        "Trigger": [Function],
         "WaterMark": [Function],
         "Wheel": [Function],
         "useClickAway": [Function],

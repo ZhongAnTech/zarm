@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useRef } from 'react';
-import useInViewport from '../useInViewport';
+import useInViewport from '../use-in-viewport';
 
 interface Props {
   onActive: () => void;

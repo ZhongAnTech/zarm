@@ -1,6 +1,6 @@
-import React from 'react';
+import { createEvent, fireEvent, render, screen } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
-import { render, fireEvent, screen, createEvent } from '@testing-library/react';
+import React from 'react';
 import useLongPress from '..';
 
 describe('useLongPress', () => {

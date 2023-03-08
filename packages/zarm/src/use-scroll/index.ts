@@ -1,5 +1,5 @@
-import { RefObject, useEffect, MouseEvent, TouchEvent } from 'react';
 import throttle from 'lodash/throttle';
+import { MouseEvent, RefObject, TouchEvent, useEffect } from 'react';
 import Events from '../utils/events';
 
 export interface UseScrollProps {
