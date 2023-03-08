@@ -1,6 +1,6 @@
 {
   "name": "@zarm-design/icons",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "",
   "license": "MIT",
   "author": "jerome.lin@zhongan.com",
@@ -29,13 +29,13 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.21.0",
-    "@zarm-design/bem": "^0.0.2",
+    "@zarm-design/bem": "^0.0.3",
     "change-case": "^4.1.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.16",
     "@svgr/cli": "^5.5.0",
-    "@zarm-design/cli": "^0.0.41",
+    "@zarm-design/cli": "^0.0.42",
     "react": "^17.0.2",
     "shelljs": "^0.8.4",
     "webfonts-helper": "^0.1.2"
