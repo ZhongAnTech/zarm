@@ -1,5 +1,12 @@
 # 版本更新日志
 
+## v3.0.2
+
+- Bug Fix
+
+  - 修复 dist 目录下 css 文件缺失的问题
+  - 修复使用 `babel-plugin-import` 插件部分组件找不到 style 目录报错的问题
+
 ## v3.0.0
 
 - Feature
