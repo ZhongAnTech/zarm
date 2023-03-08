@@ -1,6 +1,6 @@
 {
   "name": "@zarm-design/cli",
-  "version": "0.0.41-alpha.2",
+  "version": "0.0.41",
   "description": "Cli Tools for Zarm Design Project",
   "keywords": [
     "zarm-cli",
