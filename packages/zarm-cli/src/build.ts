@@ -1,13 +1,13 @@
-import webpack from 'webpack';
-import webpackMerge from 'webpack-merge';
+import execa from 'execa';
 import gulp from 'gulp';
 import { Signale } from 'signale';
-import execa from 'execa';
+import webpack from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import getWebpackConfig from './config/webpackConfig';
+import webpackMerge from 'webpack-merge';
 import getGulpConfig from './config/gulpConfig';
-import { getProjectPath, getCustomConfig } from './utils';
+import getWebpackConfig from './config/webpackConfig';
 import { getProjectConfig } from './deploy';
+import { getCustomConfig, getProjectPath } from './utils';
 
 // eslint-disable-next-line
 const { name } = require(getProjectPath('package.json'));
@@ -57,10 +57,12 @@ const umdBuild = async ({ mode, path, outDir, libraryName, analyzer }, barActive
           return;
         }
 
-        console.log(stats.toString({
-          chunks: false,
-          colors: true
-        }));
+        console.log(
+          stats.toString({
+            chunks: false,
+            colors: true,
+          }),
+        );
       });
     });
   };
@@ -99,7 +101,6 @@ const buildLibrary = async (
   }
 
   barActive.process('building...');
-
   const { stderr, exitCode } = await execa('node', args);
   if (exitCode !== 0) {
     process.stderr.write(stderr);

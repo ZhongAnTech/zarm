@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { BasicTarget, getTargetElement } from '../utils/getTargetElement';
 import Events from '../utils/events';
+import { BasicTarget, getTargetElement } from '../utils/getTargetElement';
 import { useLatest } from '../utils/hooks';
 
 export default function useClickAway(

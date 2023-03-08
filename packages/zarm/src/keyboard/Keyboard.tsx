@@ -2,7 +2,7 @@ import { createBEM } from '@zarm-design/bem';
 import { DeleteKey as DeleteKeyIcon, Keyboard as KeyboardIcon } from '@zarm-design/icons';
 import * as React from 'react';
 import { ConfigContext } from '../config-provider';
-import useLongPress from '../useLongPress';
+import useLongPress from '../use-long-press';
 import { useLatest } from '../utils/hooks';
 import type { HTMLProps } from '../utils/utilityTypes';
 import BuildInConfig from './BuildInConfig';

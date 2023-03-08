@@ -1,5 +1,5 @@
-import React, { useRef, useState, MouseEvent, TouchEvent } from 'react';
 import { fireEvent, render, waitFor } from '@testing-library/react';
+import React, { MouseEvent, TouchEvent, useRef, useState } from 'react';
 import useScroll from '..';
 
 function TestComponent() {

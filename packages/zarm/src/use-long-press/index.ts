@@ -1,5 +1,5 @@
-import { useCallback, useRef } from 'react';
 import type { MouseEvent, TouchEvent } from 'react';
+import { useCallback, useRef } from 'react';
 import Events from '../utils/events';
 import { useLatest } from '../utils/hooks';
 

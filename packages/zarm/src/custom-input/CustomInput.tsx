@@ -1,10 +1,10 @@
-import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { CloseCircleFill } from '@zarm-design/icons';
+import * as React from 'react';
 import { ConfigContext } from '../config-provider';
 import { getValue } from '../input/utils';
 import KeyboardPicker from '../keyboard-picker';
-import useClickAway from '../useClickAway';
+import useClickAway from '../use-click-away';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseCustomInputProps } from './interface';
 
