@@ -72,14 +72,14 @@ const config: Configuration = {
         test: /\.(png|jpe?g|gif|webp|svg|ico)$/,
         type: 'asset/resource',
         generator: {
-          filename: 'images/[name].[hash:8].[ext]',
+          filename: 'images/[name].[hash:8][ext]',
         },
       },
       {
         test: /\.(woff|woff2|ttf|eot)$/,
         type: 'asset/resource',
         generator: {
-          filename: 'fonts/[name].[hash:8].[ext]',
+          filename: 'fonts/[name].[hash:8][ext]',
         },
       },
     ],
