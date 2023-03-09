@@ -26,6 +26,7 @@
   @include m(block) {
     display: block;
     width: 100%;
+    box-sizing: border-box;
   }
 }
 
@@ -93,7 +94,7 @@
     }
   }
 
-  * + span {
+  @include e(text) {
     margin-left: calc(var(--padding-horizontal) / 2);
   }
 }
