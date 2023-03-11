@@ -1,7 +1,0 @@
-@include b(confirm) {
-  @include b(modal) {
-    @include e(body) {
-      text-align: center;
-    }
-  }
-}

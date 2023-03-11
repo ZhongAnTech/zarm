@@ -23,6 +23,7 @@ const initVisibleState = {
 
 const Demo = () => {
   const popupRef = useRef();
+  const timer = useRef();
   const [value, setValue] = useState('');
   const [visible, setVisible] = useReducer((state, action) => {
     const { type } = action;
@@ -44,8 +45,8 @@ const Demo = () => {
               size="xs"
               onClick={() => {
                 toggle('popTop');
-
-                setTimeout(() => {
+                timer.current && clearTimeout(timer.current);
+                timer.current = setTimeout(() => {
                   toggle('popTop');
                 }, 3000);
               }}

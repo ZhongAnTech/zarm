@@ -111,3 +111,11 @@
     }
   }
 }
+
+@include b(alert, confirm) {
+  @include b(modal) {
+    @include e(body) {
+      text-align: center;
+    }
+  }
+}
