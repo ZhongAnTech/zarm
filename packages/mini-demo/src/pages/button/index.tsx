@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from '@tarojs/components';
-import { Button, Panel } from 'zarm';
+import { Button, Panel } from 'zarm/mini';
 import { SuccessCircle, CloseCircle } from '@zarm-design/icons';
 
 import './index.scss'

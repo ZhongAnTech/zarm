@@ -58,7 +58,7 @@
 		"postcss-transform-selector": "^1.1.2",
 		"react": "^18.0.0",
 		"react-dom": "^18.0.0",
-		"zarm": "^3.0.0-alpha.3"
+		"zarm": "3.0.2"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.8.0",
