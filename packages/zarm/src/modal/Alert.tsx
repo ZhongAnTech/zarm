@@ -18,7 +18,7 @@ export const alert = (props: ModalAlertProps) => {
       className: bem([className]),
       actions: [
         {
-          text: confirmText || locale?.Confirm.confirmText,
+          text: confirmText || locale?.Modal.confirmText,
           onClick: async () => {
             const result = await props.onConfirm?.();
             if (result === false) return;

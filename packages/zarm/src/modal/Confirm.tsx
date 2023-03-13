@@ -22,7 +22,7 @@ export const confirm = (props: ModalConfirmProps): Promise<boolean> => {
         [
           {
             theme: 'default',
-            text: cancelText || locale?.Confirm.cancelText,
+            text: cancelText || locale?.Modal.cancelText,
             onClick: async () => {
               const result = onCancel?.();
               if (result === false) return;
@@ -31,7 +31,7 @@ export const confirm = (props: ModalConfirmProps): Promise<boolean> => {
             },
           },
           {
-            text: confirmText || locale?.Confirm.confirmText,
+            text: confirmText || locale?.Modal.confirmText,
             onClick: async () => {
               const result = await onConfirm?.();
               if (result === false) return;
