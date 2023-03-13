@@ -1,3 +1,5 @@
+/* eslint-disable import/no-dynamic-require */
+/* eslint-disable @typescript-eslint/no-var-requires */
 import commander from 'commander';
 import path from 'path';
 
