@@ -1,11 +1,13 @@
 import commander from 'commander';
+import path from 'path';
 
 import build from './build';
 import development from './development';
 import deploy from './deploy';
 import template from './template';
 import test from './test';
-import { version } from '../package.json';
+
+const { version } = require(path.resolve('./package.json'));
 
 commander.version(version);
 

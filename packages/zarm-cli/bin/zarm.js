@@ -3,5 +3,5 @@
 const importLocal = require('import-local');
 
 if (!importLocal(__filename)) {
-  require('../lib/cli');
+  require('../dist/cli');
 }

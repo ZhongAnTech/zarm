@@ -1,9 +1,21 @@
 {
-  "extends": "../../tsconfig",
+  "include": ["src"],
   "compilerOptions": {
-    "outFile": "types/index.d.ts",
+    "module": "CommonJS",
+    "target": "ES2018",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
     "declaration": true,
-    "emitDeclarationOnly": true
+    "sourceMap": true,
+    "declarationMap": true,
+    "composite": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "outDir": "dist",
+    "rootDir": "src"
   },
-  "include": ["src"]
+  "ts-node": {
+    "transpileOnly": true,
+    "swc": true
+  }
 }

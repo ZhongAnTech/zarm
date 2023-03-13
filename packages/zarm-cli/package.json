@@ -10,7 +10,8 @@
   ],
   "license": "MIT",
   "author": "jerome.lin@zhongan.com",
-  "typings": "types/index.d.ts",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "bin": {
     "zarm": "./bin/zarm.js"
   },
@@ -20,16 +21,13 @@
     "types"
   ],
   "scripts": {
-    "build": "yarn build:types && yarn build:lib",
-    "build:lib": "rimraf lib && babel src --extensions .ts --out-dir lib --copy-files",
-    "build:types": "rimraf types && tsc",
-    "clean": "rimraf types lib coverage",
-    "dev": "yarn build:lib -w",
+    "build": "rimraf dist/ && tsc --build --force",
+    "clean": "rimraf dist/ && tsc --build --clean",
+    "dev": "tsc -w",
     "prepare": "yarn build",
     "test": "jest"
   },
   "dependencies": {
-    "@babel/cli": "^7.13.10",
     "@babel/core": "^7.13.10",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/plugin-proposal-decorators": "^7.13.5",
@@ -81,7 +79,8 @@
   },
   "devDependencies": {
     "@types/node": "^15.3.0",
-    "@types/webpack": "^5.28.0"
+    "@types/webpack": "^5.28.0",
+    "ts-node": "^10.9.1"
   },
   "tags": [
     "zarm",

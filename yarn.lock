@@ -60,7 +60,7 @@
     lodash "^4.17.21"
     resize-observer-polyfill "^1.5.1"
 
-"@babel/cli@^7.13.10", "@babel/cli@^7.13.16":
+"@babel/cli@^7.13.16":
   version "7.13.16"
   resolved "https://registry.yarnpkg.com/@babel/cli/-/cli-7.13.16.tgz#9d372e943ced0cc291f068204a9b010fd9cfadbc"
   integrity sha512-cL9tllhqvsQ6r1+d9Invf7nNXg/3BlfL1vvvL/AdH9fZ2l5j0CeBcoq6UjsqHpvyN1v5nXSZgqJZoGeK+ZOAbw==
@@ -18776,7 +18776,7 @@ ts-jest@^26.5.0:
     semver "7.x"
     yargs-parser "20.x"
 
-ts-node@^10.8.1:
+ts-node@^10.8.1, ts-node@^10.9.1:
   version "10.9.1"
   resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-10.9.1.tgz#e73de9102958af9e1f0b168a6ff320e25adcff4b"
   integrity sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==
