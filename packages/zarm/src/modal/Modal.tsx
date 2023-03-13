@@ -1,13 +1,13 @@
-import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { Close as CloseIcon } from '@zarm-design/icons';
+import * as React from 'react';
 import { ConfigContext } from '../config-provider';
 import Popup from '../popup';
-import ModalAction from './ModalAction';
 import { noop } from '../utils';
+import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseModalProps } from './interface';
 import type { ModalActionProps } from './ModalAction';
-import type { HTMLProps } from '../utils/utilityTypes';
+import ModalAction from './ModalAction';
 
 export interface ModalCssVars {
   '--background'?: React.CSSProperties['background'];
@@ -110,7 +110,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
 
 Modal.defaultProps = {
   visible: false,
-  animationType: 'zoom',
+  animationType: 'fade',
   width: '70%',
   mask: true,
   shape: 'radius',

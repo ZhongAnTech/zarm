@@ -9,13 +9,14 @@ export interface ModalAlertProps extends Omit<ModalShowProps, 'actions'> {
 }
 
 export const alert = (props: ModalAlertProps) => {
-  const { className, confirmText, onConfirm, ...rest } = props;
+  const { className, animationType = 'zoom', confirmText, onConfirm, ...rest } = props;
   const { prefixCls, locale } = getRuntimeConfig();
   const bem = createBEM('alert', { prefixCls });
   return new Promise((resolve) => {
     const { close } = show({
       ...rest,
       className: bem([className]),
+      animationType,
       actions: [
         {
           text: confirmText || locale?.Modal.confirmText,

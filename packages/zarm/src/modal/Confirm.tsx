@@ -11,13 +11,22 @@ export interface ModalConfirmProps extends Omit<ModalShowProps, 'actions'> {
 }
 
 export const confirm = (props: ModalConfirmProps): Promise<boolean> => {
-  const { className, confirmText, cancelText, onConfirm, onCancel, ...rest } = props;
+  const {
+    className,
+    animationType = 'zoom',
+    confirmText,
+    cancelText,
+    onConfirm,
+    onCancel,
+    ...rest
+  } = props;
   const { prefixCls, locale } = getRuntimeConfig();
   const bem = createBEM('confirm', { prefixCls });
   return new Promise((resolve) => {
     const { close } = show({
       ...rest,
       className: bem([className]),
+      animationType,
       actions: [
         [
           {
