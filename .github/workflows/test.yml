@@ -90,7 +90,7 @@ jobs:
       - name: Cache @zarm-design/cli
         uses: actions/cache@v3
         with:
-          path: packages/zarm-cli/lib
+          path: packages/zarm-cli/dist
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
       - name: Compile @zarm-design/cli
@@ -115,7 +115,7 @@ jobs:
       - name: Restore @zarm-design/cli
         uses: actions/cache@v3
         with:
-          path: packages/zarm-cli/lib
+          path: packages/zarm-cli/dist
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
       - name: Cache @zarm-design/bem
@@ -146,7 +146,7 @@ jobs:
       - name: Restore @zarm-design/cli
         uses: actions/cache@v3
         with:
-          path: packages/zarm-cli/lib
+          path: packages/zarm-cli/dist
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
       - name: Restore @zarm-design/bem
@@ -183,7 +183,7 @@ jobs:
       - name: Restore @zarm-design/cli
         uses: actions/cache@v3
         with:
-          path: packages/zarm-cli/lib
+          path: packages/zarm-cli/dist
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
       - name: Restore @zarm-design/bem
@@ -222,7 +222,7 @@ jobs:
       - name: Restore @zarm-design/cli
         uses: actions/cache@v3
         with:
-          path: packages/zarm-cli/lib
+          path: packages/zarm-cli/dist
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
       - name: Restore @zarm-design/bem
@@ -283,7 +283,7 @@ jobs:
       - name: Restore cli
         uses: actions/cache@v3
         with:
-          path: packages/zarm-cli/lib
+          path: packages/zarm-cli/dist
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
       - name: Restore @zarm-design/bem
@@ -323,7 +323,7 @@ jobs:
       - name: Restore @zarm-design/cli
         uses: actions/cache@v3
         with:
-          path: packages/zarm-cli/lib
+          path: packages/zarm-cli/dist
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
       - name: Restore @zarm-design/bem
@@ -372,7 +372,7 @@ jobs:
       - name: Restore @zarm-design/cli
         uses: actions/cache@v3
         with:
-          path: packages/zarm-cli/lib
+          path: packages/zarm-cli/dist
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
       - name: Restore @zarm-design/bem
@@ -411,7 +411,7 @@ jobs:
       - name: Restore @zarm-design/cli
         uses: actions/cache@v3
         with:
-          path: packages/zarm-cli/lib
+          path: packages/zarm-cli/dist
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
       - name: Restore @zarm-design/bem
