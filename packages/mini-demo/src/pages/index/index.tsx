@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from '@tarojs/components'
 import Taro from '@tarojs/taro';
-import { Panel } from 'zarm';
+import { Panel } from 'zarm/mini';
 import siteMap from '../../site';
 
 import './index.scss'
