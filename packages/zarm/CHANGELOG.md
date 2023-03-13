@@ -1,5 +1,15 @@
 # 版本更新日志
 
+## v3.0.3
+
+- Feature
+
+  - 优化 iconfont 字体文件的引入方式，需要使用 iconfont 方式的时候需要额外引入样式文件。
+
+- Bug Fix
+
+  - [Cascader] 修复组件丢失 Radio 和 List 样式导致显示错乱的问题
+
 ## v3.0.2
 
 - Bug Fix
