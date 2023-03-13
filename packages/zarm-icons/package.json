@@ -6,7 +6,8 @@
   "author": "jerome.lin@zhongan.com",
   "exports": {
     ".": "./lib/index.js",
-    "./style": "./lib/style/index.scss"
+    "./style": "./lib/style/index.scss",
+    "./style/font": "./lib/font/style/icon.scss"
   },
   "main": "lib/index.js",
   "typings": "types/index.d.ts",
