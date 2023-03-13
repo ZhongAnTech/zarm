@@ -1,6 +1,5 @@
 import { createBEM } from '@zarm-design/bem';
 import { Minus as MinusIcon, Success as SuccessIcon } from '@zarm-design/icons';
-import includes from 'lodash/includes';
 import React, {
   ChangeEvent,
   forwardRef,

@@ -40,12 +40,6 @@ export type CascaderViewState = ReturnType<typeof parseState> & {
   tabIndex: number;
 };
 
-const DEFAULT_FIELD_NAMES = {
-  value: 'value',
-  label: 'label',
-  children: 'children',
-};
-
 const CascaderView = forwardRef<HTMLDivElement, CascaderViewProps>((props, ref) => {
   const {
     className,
