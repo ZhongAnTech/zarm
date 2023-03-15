@@ -1,7 +1,6 @@
 import type { IconProps as BaseIconProps } from '@zarm-design/icons';
 import { Icon as BaseIcon } from '@zarm-design/icons';
 import * as React from 'react';
-import { ConfigContext } from '../config-provider';
 import type { HTMLProps } from '../utils/utilityTypes';
 
 export interface IconCssVars {
@@ -16,8 +15,7 @@ interface CompoundedComponent extends React.ForwardRefExoticComponent<IconProps>
 }
 
 const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
-  const { prefixCls } = React.useContext(ConfigContext);
-  return <BaseIcon ref={ref} prefixCls={prefixCls} {...props} />;
+  return <BaseIcon ref={ref} {...props} />;
 }) as CompoundedComponent;
 
 Icon.createFromIconfont = BaseIcon.createFromIconfont;
