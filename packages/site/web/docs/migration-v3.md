@@ -330,6 +330,84 @@
 
 - 移除 `format` 属性
 
+## 常见问题
+
+### 如何在已经使用 Zarm 2.x 的项目中 Zarm 3.0
+
+1. 安装 zarm 3.0
+
+```bash
+$ npm install zarm-v3@npm:zarm@next
+```
+
+2. 在 webpack.config.js 使用 babel-plugin-import 按需引入，配置 sass 变量
+
+```diff
+// webpack.config.js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(j|t)sx?$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: require.resolve('babel-loader'),
+            options: {
+              plugins: [
++               [
++                 'import',
++                 {
++                   libraryName: 'zarm-v3',
++                   libraryDirectory: 'lib',
++                   style: true,
++                 },
++                 'zarm-v3',
++               ],
+              ],
+            },
+          },
+        ],
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'postcss-loader'
+          },
+          {
+            loader: 'sass-loader'
++           options: {
++             sassOptions: {
++               additionalData: '$prefixCls: "za-v3";'
++             }
++           }
+          }
+        ],
+  },
+};
+```
+
+4. 配置 ConfigProvider prefixCls
+
+```tsx
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { Button, ConfigProvider } from 'zarm-v3';
+
+ReactDOM.render(
+  <ConfigProvider prefixCls="zarm-v3">
+    <Button theme="primary">submit</Button>
+  </ConfigProvider>,
+);
+```
+
 ## 遇到问题
 
 如果您在升级过程中遇到了问题，请到 [GitHub issues](https://github.com/ZhongAnTech/zarm/issues) 进行反馈。我们会尽快响应和相应改进这篇文档。
