@@ -88,7 +88,7 @@ describe('ImagePreview', () => {
     fireEvent.mouseMove(content!, { pointerId: 10, clientX: 20, clientY: 0, buttons: 1 });
     fireEvent.mouseUp(content!, { pointerId: 10, clientX: 20 });
     jest.runAllTimers();
-    // expect(mOnClose).toBeCalledTimes(1);
+    expect(mOnClose).toBeCalledTimes(1);
   });
 
   it('load origin', async () => {
