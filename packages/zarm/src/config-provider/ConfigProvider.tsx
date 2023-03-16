@@ -1,4 +1,4 @@
-import { IconContext } from '@zarm-design/icons';
+import { IconProvider } from '@zarm-design/icons';
 import type { Context } from 'react';
 import * as React from 'react';
 import type { ConfigProviderProps } from './interface';
@@ -44,9 +44,9 @@ const ConfigProvider: React.FC<React.PropsWithChildren<ConfigProviderProps>> = (
 
   return (
     <ConfigContext.Provider value={rest}>
-      <IconContext.Provider value={{ prefixCls: rest.prefixCls }}>
+      <IconProvider value={{ prefixCls: rest.prefixCls }}>
         {React.Children.only(newChildren)}
-      </IconContext.Provider>
+      </IconProvider>
     </ConfigContext.Provider>
   );
 };

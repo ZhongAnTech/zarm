@@ -114,7 +114,7 @@ function Demo() {
       </List>
       <Grid square>
         {Object.keys(Icons).map((item, index) => {
-          if (['Icon', 'Empty'].includes(item)) return;
+          if (['Icon', 'Empty', 'IconProvider'].includes(item)) return;
           return (
             <Grid.Item key={+index}>
               <div className="block">
