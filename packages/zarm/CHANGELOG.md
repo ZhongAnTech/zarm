@@ -1,21 +1,29 @@
 # 版本更新日志
 
+## v3.0.7
+
+- Bug Fix
+
+  - [ConfigProvider] 修复全局修改组件类名前缀 `prefix` 后，`scss` 文件前缀修改不生效的问题 [#1061](https://github.com/ZhongAnTech/zarm/pull/1061)
+  - [Icon] 修复部分组件 Icon 样式偏移问题 [#1062](https://github.com/ZhongAnTech/zarm/pull/1062)
+
+
 ## v3.0.5
 
 - Feature
 
-  - 优化 iconfont 字体文件的引入方式，需要使用 iconfont 方式的时候需要额外引入样式文件。
+  - 优化 iconfont 字体文件的引入方式，需要使用 iconfont 方式的时候需要额外引入样式文件。[#1057](https://github.com/ZhongAnTech/zarm/pull/1057)
 
 - Bug Fix
 
-  - [Cascader] 修复组件丢失 Radio 和 List 样式导致显示错乱的问题
+  - [Cascader] 修复组件丢失 Radio 和 List 样式导致显示错乱的问题 [#1053](https://github.com/ZhongAnTech/zarm/pull/1053)
 
 ## v3.0.2
 
 - Bug Fix
 
-  - 修复 dist 目录下 css 文件缺失的问题
-  - 修复使用 `babel-plugin-import` 插件部分组件找不到 style 目录报错的问题
+  - 修复 dist 目录下 css 文件缺失的问题 [#1053](https://github.com/ZhongAnTech/zarm/pull/1053)
+  - 修复使用 `babel-plugin-import` 插件部分组件找不到 style 目录报错的问题 [#1053](https://github.com/ZhongAnTech/zarm/pull/1053)
 
 ## v3.0.0
 
