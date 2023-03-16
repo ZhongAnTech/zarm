@@ -8,7 +8,7 @@ import DateSelect from '../../date-select/locale/zh_CN';
 import ImagePreview from '../../image-preview/locale/zh_CN';
 import Image from '../../image/locale/zh_CN';
 import Keyboard from '../../keyboard/locale/zh_CN';
-import Modal from '../../Modal/locale/zh_CN';
+import Modal from '../../modal/locale/zh_CN';
 import Picker from '../../picker/locale/zh_CN';
 import Pull from '../../pull/locale/zh_CN';
 import SearchBar from '../../search-bar/locale/zh_CN';

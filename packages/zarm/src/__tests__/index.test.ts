@@ -264,7 +264,7 @@ describe('index', () => {
           "confirm": [Function],
           "defaultProps": Object {
             "actions": Array [],
-            "animationType": "zoom",
+            "animationType": "fade",
             "closable": false,
             "destroy": true,
             "mask": true,
