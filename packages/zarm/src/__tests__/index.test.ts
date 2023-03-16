@@ -260,6 +260,7 @@ describe('index', () => {
         "Modal": Object {
           "$$typeof": Symbol(react.forward_ref),
           "alert": [Function],
+          "clear": [Function],
           "confirm": [Function],
           "defaultProps": Object {
             "actions": Array [],
@@ -273,6 +274,7 @@ describe('index', () => {
             "width": "70%",
           },
           "render": [Function],
+          "show": [Function],
         },
         "NavBar": Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -336,6 +338,7 @@ describe('index', () => {
         },
         "Popup": Object {
           "$$typeof": Symbol(react.forward_ref),
+          "clear": [Function],
           "defaultProps": Object {
             "destroy": true,
             "direction": "bottom",
@@ -344,6 +347,7 @@ describe('index', () => {
             "visible": false,
           },
           "render": [Function],
+          "show": [Function],
         },
         "Progress": Object {
           "$$typeof": Symbol(react.forward_ref),

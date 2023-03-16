@@ -1,28 +1,55 @@
+import { createBEM } from '@zarm-design/bem';
 import * as React from 'react';
-import type { ConfirmProps } from '../confirm';
-import Confirm from '../confirm';
-import { renderImperatively } from '../utils/dom';
+import { getRuntimeConfig } from '../config-provider';
+import { ModalShowProps, show } from './methods';
 
-const confirm = (props: Omit<ConfirmProps, 'visible'>): Promise<boolean> => {
+export interface ModalConfirmProps extends Omit<ModalShowProps, 'actions'> {
+  confirmText?: React.ReactNode;
+  cancelText?: React.ReactNode;
+  onConfirm?: () => boolean | void | Promise<boolean | void>;
+  onCancel?: () => boolean | void | Promise<boolean | void>;
+}
+
+export const confirm = (props: ModalConfirmProps): Promise<boolean> => {
+  const {
+    className,
+    animationType = 'zoom',
+    confirmText,
+    cancelText,
+    onConfirm,
+    onCancel,
+    ...rest
+  } = props;
+  const { prefixCls, locale } = getRuntimeConfig();
+  const bem = createBEM('confirm', { prefixCls });
   return new Promise((resolve) => {
-    const { close } = renderImperatively(
-      <Confirm
-        {...props}
-        onConfirm={async () => {
-          const result = await props.onConfirm?.();
-          if (result === false) return;
-          close();
-          resolve(true);
-        }}
-        onCancel={async () => {
-          const result = await props.onCancel?.();
-          if (result === false) return;
-          close();
-          resolve(false);
-        }}
-      />,
-    );
+    const { close } = show({
+      ...rest,
+      className: bem([className]),
+      animationType,
+      actions: [
+        [
+          {
+            theme: 'default',
+            text: cancelText || locale?.Modal.cancelText,
+            onClick: async () => {
+              const result = onCancel?.();
+              if (result === false) return;
+              close();
+              resolve(false);
+            },
+          },
+          {
+            text: confirmText || locale?.Modal.confirmText,
+            onClick: async () => {
+              const result = await onConfirm?.();
+              if (result === false) return;
+              close();
+              resolve(null);
+            },
+          },
+        ],
+      ],
+    });
   });
 };
-
-export default confirm;
