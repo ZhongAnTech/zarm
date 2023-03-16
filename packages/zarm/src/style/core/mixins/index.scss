@@ -1,6 +1,7 @@
+$prefixCls: 'za' !default;
+
 @import '~@zarm-design/bem/sass';
 
-$prefixCls: 'za' !default;
 $keyframesSeparator: '_';
 
 @mixin define($key, $value) {

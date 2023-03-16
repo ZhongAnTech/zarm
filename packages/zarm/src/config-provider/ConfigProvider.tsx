@@ -1,3 +1,4 @@
+import { IconProvider } from '@zarm-design/icons';
 import type { Context } from 'react';
 import * as React from 'react';
 import type { ConfigProviderProps } from './interface';
@@ -42,7 +43,11 @@ const ConfigProvider: React.FC<React.PropsWithChildren<ConfigProviderProps>> = (
   const newChildren = setCssVars(children, cssVars!);
 
   return (
-    <ConfigContext.Provider value={rest}>{React.Children.only(newChildren)}</ConfigContext.Provider>
+    <ConfigContext.Provider value={rest}>
+      <IconProvider value={{ prefixCls: rest.prefixCls }}>
+        {React.Children.only(newChildren)}
+      </IconProvider>
+    </ConfigContext.Provider>
   );
 };
 

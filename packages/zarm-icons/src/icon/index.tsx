@@ -1,8 +1,9 @@
-import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { paramCase } from 'change-case';
-import { BaseIconProps } from './interface';
+import * as React from 'react';
+import { IconContext } from '../context';
 import createFromIconfont from './IconFont';
+import { BaseIconProps } from './interface';
 
 export type IconProps = BaseIconProps & { name?: string } & Pick<
     React.HTMLAttributes<HTMLElement>,
@@ -17,7 +18,6 @@ interface CompoundedComponent
 const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
   const {
     className,
-    prefixCls,
     theme,
     size,
     children,
@@ -28,11 +28,15 @@ const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
     ...rest
   } = props;
 
+  const { prefixCls = 'za' } = React.useContext(IconContext);
+
   const bem = createBEM('icon', { prefixCls });
 
   const decamelizeName = paramCase(name).replace('svg-', '');
   const iconClassName = bem(decamelizeName);
-  const isFont = (mode === 'auto' && typeof SVGRect === 'undefined') || mode === 'font';
+  const isFont =
+    (mode === 'auto' && typeof SVGRect === 'undefined' && typeof window !== 'undefined') ||
+    mode === 'font';
 
   const cls = bem([
     {
@@ -79,7 +83,6 @@ Icon.createFromIconfont = createFromIconfont;
 
 Icon.displayName = 'Icon';
 Icon.defaultProps = {
-  prefixCls: 'za',
   viewBox: '0 0 1000 1000',
   mode: 'auto',
 };

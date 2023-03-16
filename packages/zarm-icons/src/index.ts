@@ -1,4 +1,8 @@
-export * from './react';
+import { IconContext } from './context';
 
-export type { IconProps } from './icon';
+const IconProvider = IconContext.Provider;
+
 export { default as Icon } from './icon';
+export type { IconProps } from './icon';
+export * from './react';
+export { IconProvider };
