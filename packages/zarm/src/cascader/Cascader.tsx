@@ -1,6 +1,6 @@
 import { createBEM } from '@zarm-design/bem';
 import React, { createRef, forwardRef, useCallback, useContext, useState } from 'react';
-import type { CascaderViewCssVars } from '../cascader-view';
+import type { PickerContainerCssVars } from '../picker/Container';
 import CascaderView from '../cascader-view';
 import { parseItems, parseState } from '../cascader-view/utils';
 import { ConfigContext } from '../config-provider';
@@ -8,15 +8,14 @@ import PickerContainer from '../picker/Container';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseCascaderProps } from './interface';
 
-export type CascaderCssVars = CascaderViewCssVars;
-
-export type CascaderProps = BaseCascaderProps & HTMLProps<CascaderCssVars>;
+export type CascaderProps = BaseCascaderProps & HTMLProps<PickerContainerCssVars>;
 
 export type CascaderState = ReturnType<typeof parseState>;
 
 const Cascader = forwardRef<HTMLDivElement, CascaderProps>((props, ref) => {
   const {
     className,
+    style,
     title,
     visible,
     value,
@@ -66,6 +65,7 @@ const Cascader = forwardRef<HTMLDivElement, CascaderProps>((props, ref) => {
     <PickerContainer
       ref={ref}
       className={bem([className])}
+      style={style}
       title={title || locale?.Cascader.title}
       confirmText={confirmText || locale?.Cascader.confirmText}
       cancelText={cancelText || locale?.Cascader.cancelText}
@@ -81,7 +81,6 @@ const Cascader = forwardRef<HTMLDivElement, CascaderProps>((props, ref) => {
     >
       <CascaderView
         ref={cascaderViewRef}
-        className={className}
         value={value}
         defaultValue={defaultValue}
         fieldNames={fieldNames}

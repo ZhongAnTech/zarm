@@ -30,6 +30,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>((props, ref) => {
   const {
     placeholder,
     className,
+    style,
     disabled,
     displayRender,
     value,
@@ -76,7 +77,9 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>((props, ref) => {
             disabled,
             visible,
           },
+          className,
         ])}
+        style={style}
         onClick={handleClick}
       >
         <div className={bem('input')}>
@@ -90,7 +93,6 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>((props, ref) => {
       </div>
       <Picker
         {...rest}
-        className={className}
         visible={visible}
         value={value}
         onConfirm={handleonConfirm}

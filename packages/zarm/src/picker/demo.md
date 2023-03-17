@@ -544,24 +544,52 @@ Picker.prompt({
 | label    | React.ReactNode    | -      | 选项显示名称 |
 | children | PickerViewOption[] | -      | 子选项       |
 
-## CSS 变量
+## Picker CSS 变量
 
-| 属性                                   | 默认值                          | 说明                   |
-| :------------------------------------- | :------------------------------ | :--------------------- |
-| --header-height                        | '45px'                          | 头部高度               |
-| --header-font-size                     | '16px'                          | 头部文字大小           |
-| --header-background              | '#f7f7f7'                       | 头部背景             |
-| --header-title-text-color              | 'var(--za-color-text)'          | 头部标题文字颜色       |
-| --header-submit-text-color             | 'var(--za-theme-primary)'       | 头部提交按钮文字颜色   |
-| --header-cancel-text-color             | 'var(--za-color-text-caption)'  | 头部取消按钮文字颜色   |
-| --content-background             | '#fff'                          | 内容区域背景       |
-| --content-padding                      | '16px'                          | 内容区域内边距         |
-| --content-mask-start-background  | 'rgba(255, 255, 255, 0.4)'      | 内容区域头部蒙层背景 |
-| --content-mask-end-background    | 'rgba(255, 255, 255, 0.8)'      | 内容区域底部蒙层背景 |
-| --wheel-item-rows                      | 5                               | 滚轮元素长度           |
-| --wheel-item-height                    | '34px'                          | 滚轮元素高度           |
-| --wheel-item-font-size                 | '20px'                          | 滚轮元素文字大小       |
-| --wheel-item-text-color                | 'var(--za-color-text)'          | 滚轮元素文字颜色       |
-| --wheel-item-disabled-text-color       | 'var(--za-color-text-disabled)' | 滚轮元素文字禁用颜色   |
-| --wheel-item-selected-background | 'rgba(116, 116, 128, 0.08)'     | 滚轮元素文字选中背景   |
-| --wheel-item-selected-border-radius    | '7px'                           | 滚轮元素文字选中圆角   |
+| 属性                                | 默认值                          | 说明                 |
+| :---------------------------------- | :------------------------------ | :------------------- |
+| --header-height                     | '45px'                          | 头部高度             |
+| --header-font-size                  | '16px'                          | 头部文字大小         |
+| --header-background                 | '#f7f7f7'                       | 头部背景             |
+| --header-title-text-color           | 'var(--za-color-text)'          | 头部标题文字颜色     |
+| --header-submit-text-color          | 'var(--za-theme-primary)'       | 头部提交按钮文字颜色 |
+| --header-cancel-text-color          | 'var(--za-color-text-caption)'  | 头部取消按钮文字颜色 |
+| --content-background                | '#fff'                          | 内容区域背景         |
+| --content-padding                   | '16px'                          | 内容区域内边距       |
+| --content-mask-start-background     | 'rgba(255, 255, 255, 0.4)'      | 内容区域头部蒙层背景 |
+| --content-mask-end-background       | 'rgba(255, 255, 255, 0.8)'      | 内容区域底部蒙层背景 |
+| --wheel-item-rows                   | 5                               | 滚轮元素长度         |
+| --wheel-item-height                 | '34px'                          | 滚轮元素高度         |
+| --wheel-item-font-size              | '20px'                          | 滚轮元素文字大小     |
+| --wheel-item-text-color             | 'var(--za-color-text)'          | 滚轮元素文字颜色     |
+| --wheel-item-disabled-text-color    | 'var(--za-color-text-disabled)' | 滚轮元素文字禁用颜色 |
+| --wheel-item-selected-background    | 'rgba(116, 116, 128, 0.08)'     | 滚轮元素文字选中背景 |
+| --wheel-item-selected-border-radius | '7px'                           | 滚轮元素文字选中圆角 |
+
+## Select CSS 变量
+
+| 属性                | 默认值                             | 说明               |
+| :------------------ | :--------------------------------- | :----------------- |
+| --header-height     | '45px'                             | 头部高度           |
+| --height            | '28px'                             | 输入框高度         |
+| --disabled-color    | 'var(--za-color-text-disabled)'    | 输入框禁用文字颜色 |
+| --placeholder-color | 'var(--za-color-text-placeholder)' | 输入框占位文字颜色 |
+| --arrow-color       | 'var(--za-arrow-color)'            | 输入框箭头         |
+| --arrow-size        | 'var(--za-arrow-size)'             | 输入框箭头尺寸     |
+| --arrow-width       | 'var(--za-arrow-width)'            | 输入框箭头宽度     |
+
+## PickerView CSS 变量
+
+| 属性                                | 默认值                          | 说明                 |
+| :---------------------------------- | :------------------------------ | :------------------- |
+| --background                        | '#fff'                          | 内容区域背景         |
+| --padding                           | '16px'                          | 内容区域内边距       |
+| --mask-start-background             | 'rgba(255, 255, 255, 0.4)'      | 内容区域头部蒙层背景 |
+| --mask-end-background               | 'rgba(255, 255, 255, 0.8)'      | 内容区域底部蒙层背景 |
+| --wheel-item-rows                   | 5                               | 滚轮元素长度         |
+| --wheel-item-height                 | '34px'                          | 滚轮元素高度         |
+| --wheel-item-font-size              | '20px'                          | 滚轮元素文字大小     |
+| --wheel-item-text-color             | 'var(--za-color-text)'          | 滚轮元素文字颜色     |
+| --wheel-item-disabled-text-color    | 'var(--za-color-text-disabled)' | 滚轮元素文字禁用颜色 |
+| --wheel-item-selected-background    | 'rgba(116, 116, 128, 0.08)'     | 滚轮元素文字选中背景 |
+| --wheel-item-selected-border-radius | '7px'                           | 滚轮元素文字选中圆角 |

@@ -2,15 +2,16 @@ import { createBEM } from '@zarm-design/bem';
 import * as React from 'react';
 import { ConfigContext } from '../config-provider';
 import Keyboard from '../keyboard';
+import type { PickerContainerCssVars } from '../picker/Container';
 import Popup from '../popup';
 import SafeArea from '../safe-area';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseKeyBoardPickerProps } from './interface';
 
-export type KeyboardPickerProps = BaseKeyBoardPickerProps & HTMLProps;
+export type KeyboardPickerProps = BaseKeyBoardPickerProps & HTMLProps<PickerContainerCssVars>;
 
 const KeyboardPicker = React.forwardRef<unknown, KeyboardPickerProps>((props, ref) => {
-  const { className, visible, destroy, safeArea, ...restProps } = props;
+  const { className, style, visible, destroy, safeArea, ...restProps } = props;
 
   const keyboardPickerRef = (ref as any) || React.createRef<HTMLDivElement>();
   const [currentVisible, setCurrentVisible] = React.useState(visible);
@@ -26,13 +27,12 @@ const KeyboardPicker = React.forwardRef<unknown, KeyboardPickerProps>((props, re
   return (
     <Popup
       ref={keyboardPickerRef}
-      className={cls}
       visible={currentVisible}
       mask={false}
       lockScroll={false}
       destroy={destroy}
     >
-      <div className={bem('wrapper')}>
+      <div className={cls} style={style}>
         <Keyboard {...restProps} />
         {(safeArea ?? globalSafeArea) && <SafeArea position="bottom" />}
       </div>

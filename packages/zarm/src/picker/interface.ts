@@ -25,5 +25,4 @@ export interface BasePickerProps
   onChange?: (value: PickerValue[], items: PickerColumnItem[], index: number) => void;
   onConfirm?: (value: PickerValue[], items: PickerColumnItem[]) => void;
   onCancel?: () => void;
-  children?: (items?: PickerColumnItem[]) => React.ReactNode;
 }

@@ -34,6 +34,7 @@ export type SearchBarProps = BaseSearchBarProps &
 const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
   const {
     className,
+    style,
     shape,
     icon,
     placeholder,
@@ -137,7 +138,7 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
   }
 
   return (
-    <div className={cls}>
+    <div className={cls} style={style}>
       <form action="#" className={bem('form')} onSubmit={onFormSubmit} ref={formRef}>
         <div className={bem('content')}>
           {icon !== null && <div className={bem('icon')}>{icon || <SearchIcon size="sm" />}</div>}

@@ -41,7 +41,7 @@ exports[`Cascader handle onChange 1`] = `
             class="za-cascader-view"
           >
             <div
-              class="za-tabs za-cascader-view-tabs za-tabs--horizontal za-tabs--scroll"
+              class="za-tabs za-tabs--horizontal za-tabs--scroll za-cascader-view-tabs"
             >
               <div
                 class="za-tabs__header"
@@ -355,7 +355,7 @@ exports[`Cascader handle onChange 2`] = `
             class="za-cascader-view"
           >
             <div
-              class="za-tabs za-cascader-view-tabs za-tabs--horizontal za-tabs--scroll"
+              class="za-tabs za-tabs--horizontal za-tabs--scroll za-cascader-view-tabs"
             >
               <div
                 class="za-tabs__header"
@@ -867,7 +867,7 @@ exports[`Cascader handle onChange 3`] = `
             class="za-cascader-view"
           >
             <div
-              class="za-tabs za-cascader-view-tabs za-tabs--horizontal za-tabs--scroll"
+              class="za-tabs za-tabs--horizontal za-tabs--scroll za-cascader-view-tabs"
             >
               <div
                 class="za-tabs__header"
@@ -1379,7 +1379,7 @@ exports[`Cascader renders correctly if visible is true 1`] = `
             class="za-cascader-view"
           >
             <div
-              class="za-tabs za-cascader-view-tabs za-tabs--horizontal za-tabs--scroll"
+              class="za-tabs za-tabs--horizontal za-tabs--scroll za-cascader-view-tabs"
             >
               <div
                 class="za-tabs__header"

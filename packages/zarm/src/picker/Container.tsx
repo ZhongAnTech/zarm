@@ -7,7 +7,16 @@ import { noop } from '../utils';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BasePickerContainerProps } from './interface';
 
-export type PickerContainerProps = BasePickerContainerProps & HTMLProps;
+export interface PickerContainerCssVars {
+  '--header-height': React.CSSProperties['height'];
+  '--header-font-size': React.CSSProperties['fontSize'];
+  '--header-background': React.CSSProperties['background'];
+  '--header-title-text-color': React.CSSProperties['color'];
+  '--header-submit-text-color': React.CSSProperties['color'];
+  '--header-cancel-text-color': React.CSSProperties['color'];
+}
+
+export type PickerContainerProps = BasePickerContainerProps & HTMLProps<PickerContainerCssVars>;
 
 const PickerContainer = React.forwardRef<HTMLDivElement, PickerContainerProps>((props, ref) => {
   const {

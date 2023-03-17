@@ -96,12 +96,11 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
           const { display, ...restStyle } = style;
           return renderToContainer(
             props.mountContainer ?? globalMountContainer,
-            <div className={bem('wrapper', [props.className])} style={{ display }}>
+            <div className={bem('wrapper', [props.className])} style={{ ...props.style, display }}>
               <div
                 ref={setNodeRef}
                 className={bem([{ [`${direction}`]: !!direction }, className])}
                 style={{
-                  ...props.style,
                   ...restStyle,
                   width,
                 }}

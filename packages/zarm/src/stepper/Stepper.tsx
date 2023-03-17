@@ -80,6 +80,7 @@ export type StepperProps = BaseStepperProps & HTMLProps<StepperCssVars>;
 const Stepper = React.forwardRef<unknown, StepperProps>((props, ref) => {
   const {
     className,
+    style,
     shape,
     disabled,
     size,
@@ -192,7 +193,7 @@ const Stepper = React.forwardRef<unknown, StepperProps>((props, ref) => {
   };
 
   return (
-    <span className={cls} ref={stepperRef}>
+    <span ref={stepperRef} className={cls} style={style}>
       <Button
         className={bem('sub')}
         size={buttonSize}
