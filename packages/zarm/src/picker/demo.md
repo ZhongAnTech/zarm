@@ -433,7 +433,7 @@ const CASCADE_DATA = [
 ];
 
 const Demo = () => {
-  const [value, setValue] = useState([]);
+  const [value, setValue] = useState('');
   const [dataSource, setDataSource] = useState([]);
   const [fieldNames, setFieldNames] = useState({});
 

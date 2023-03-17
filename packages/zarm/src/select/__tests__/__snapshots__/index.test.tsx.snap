@@ -25,7 +25,7 @@ exports[`Select Cascader Select 1`] = `
 exports[`Select Select 1`] = `
 <div>
   <div
-    class="za-select"
+    class="za-select za-select--placeholder"
   >
     <div
       class="za-select__input"
@@ -33,7 +33,7 @@ exports[`Select Select 1`] = `
       <div
         class="za-select__value"
       >
-        选项一
+        请选择
       </div>
     </div>
     <div
@@ -46,7 +46,7 @@ exports[`Select Select 1`] = `
 exports[`Select Select disabled 1`] = `
 <div>
   <div
-    class="za-select za-select--disabled"
+    class="za-select za-select--placeholder za-select--disabled"
   >
     <div
       class="za-select__input"
@@ -54,7 +54,7 @@ exports[`Select Select disabled 1`] = `
       <div
         class="za-select__value"
       >
-        选项一
+        请选择
       </div>
     </div>
     <div
