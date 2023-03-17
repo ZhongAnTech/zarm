@@ -23,15 +23,6 @@
     @include define(loading-color, var(--za-theme-primary));
   }
 
-
-  .loader {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    position: relative;
-    animation: rotate 1s linear infinite
-  }
-
   @include e(loading) {
     width: 16px;
     height: 16px;

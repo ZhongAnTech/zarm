@@ -1,5 +1,20 @@
 const path = require('path');
 
+
+let alias = {
+  // 'zarm/mini': path.resolve(__dirname, '../', '../zarm/src'),
+  'react': path.resolve(__dirname, '../', 'node_modules/react'),
+  // 'react-dom': path.resolve(__dirname, '../', 'node_modules/react-dom'),
+  // 'react-dom': path.resolve(__dirname, '../', 'node_modules/react-dom/client'),
+};
+
+if (process.env.TARO_ENV === 'weapp') {
+  alias = {
+    ...alias,
+    '@tarojs/components': path.resolve(__dirname, '../', `node_modules/@tarojs/plugin-platform-${process.env.TARO_ENV }/dist/components-react`),
+  };
+}
+
 const config = {
   projectName: 'demo',
   date: '2022-11-10',
@@ -29,13 +44,7 @@ const config = {
       enable: false,
     }
   },
-  alias: {
-    // 'zarm/mini': path.resolve(__dirname, '../', '../zarm/src'),
-    'react': path.resolve(__dirname, '../', 'node_modules/react'),
-    // 'react-dom': path.resolve(__dirname, '../', 'node_modules/react-dom'),
-    // '@tarojs/components': path.resolve(__dirname, '../', 'node_modules/@tarojs/plugin-platform-weapp/dist/components-react'),
-    // 'react-dom': path.resolve(__dirname, '../', 'node_modules/react-dom/client'),
-  },
+  alias,
   cache: {
     enable: false // Webpack 持久化缓存配置，建议开启。默认配置请参考：https://docs.taro.zone/docs/config-detail#cache
   },
