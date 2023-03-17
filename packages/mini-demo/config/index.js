@@ -1,7 +1,5 @@
 const path = require('path');
 
-console.error(process.cwd());
-console.error(path.resolve(__dirname, '../', '../zarm/src'));
 const config = {
   projectName: 'demo',
   date: '2022-11-10',
@@ -35,7 +33,7 @@ const config = {
     // 'zarm/mini': path.resolve(__dirname, '../', '../zarm/src'),
     'react': path.resolve(__dirname, '../', 'node_modules/react'),
     // 'react-dom': path.resolve(__dirname, '../', 'node_modules/react-dom'),
-    '@tarojs/components': path.resolve(__dirname, '../', 'node_modules/@tarojs/plugin-platform-weapp/dist/components-react'),
+    // '@tarojs/components': path.resolve(__dirname, '../', 'node_modules/@tarojs/plugin-platform-weapp/dist/components-react'),
     // 'react-dom': path.resolve(__dirname, '../', 'node_modules/react-dom/client'),
   },
   cache: {
