@@ -1,4 +1,4 @@
-$prefix: 'za-icon';
+$prefixCls: 'za' !default;
 
 @font-face {
   font-family: 'zaicon';
@@ -13,7 +13,7 @@ $prefix: 'za-icon';
 }
 
 /* stylelint-disable block-closing-brace-empty-line-before */
-.#{$prefix} {
+.#{$prefixCls}-icon {
   &__arrow-down:before {
     content: '\EA01';
   }
