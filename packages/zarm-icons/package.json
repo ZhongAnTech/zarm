@@ -41,6 +41,9 @@
     "shelljs": "^0.8.4",
     "webfonts-helper": "^0.1.2"
   },
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  },
   "publishConfig": {
     "access": "public"
   },

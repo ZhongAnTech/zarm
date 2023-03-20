@@ -1,8 +1,7 @@
+import { render } from '@testing-library/react';
 import React from 'react';
-import { render } from 'enzyme';
-import toJson from 'enzyme-to-json';
-import Icon from '../index';
 import * as ReactIcon from '../../react';
+import Icon from '../index';
 
 describe('Icon', () => {
   it('renders all Icons', () => {
@@ -13,7 +12,7 @@ describe('Icon', () => {
         )}
       </>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('renders Icons of different theme correctly', () => {
@@ -26,7 +25,7 @@ describe('Icon', () => {
         <ReactIcon.ArrowDown theme="danger" />
       </>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('renders Icons of different size correctly', () => {
@@ -37,18 +36,20 @@ describe('Icon', () => {
         <ReactIcon.ArrowDown size="sm" />
       </>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('renders Icons using iconfont', () => {
-    const MyIcon = Icon.createFromIconfont('//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_14.627ee457cf7594fbbce6d5e14b8c29ef.js');
+    const MyIcon = Icon.createFromIconfont(
+      '//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_14.627ee457cf7594fbbce6d5e14b8c29ef.js',
+    );
     const wrapper = render(
       <>
         <MyIcon type="home" />
         <MyIcon type="user" />
       </>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('renders Icons using svg component', () => {
@@ -71,7 +72,7 @@ describe('Icon', () => {
     );
 
     const wrapper = render(<Icon size="lg" theme="primary" component={svg} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('renders Icons of custom classname', () => {
@@ -81,6 +82,6 @@ describe('Icon', () => {
         <ReactIcon.ArrowDown className="custom-arrow-down" />
       </>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 });

@@ -1,14 +1,9 @@
 import '@testing-library/jest-dom';
+import * as React from 'react';
 
-const Enzyme = require('enzyme');
+console.log('Current React Version:', React.version);
+
 require('jest-canvas-mock');
-
-const Adapter =
-  process.env.REACT === '16'
-    ? require('enzyme-adapter-react-16')
-    : require('@wojtekmaj/enzyme-adapter-react-17');
-
-Enzyme.configure({ adapter: new Adapter() });
 
 Object.defineProperty(window, 'SVGRect', { value: 'SVGRect', writable: true });
 

@@ -19,30 +19,8 @@ jobs:
           key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install
-        # if: steps.node_modules_cache_id.outputs.cache-hit != 'true'
-        run: yarn
-
-  setup-react-16:
-    name: Setup react@16
-    runs-on: ubuntu-latest
-    env:
-      REACT: 16
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@master
-
-      - name: Cache node_modules
-        id: node_modules_cache_id
-        uses: actions/cache@v3
-        with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-lerna-react16-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Install React@16
-        run: lerna exec --scope zarm -- yarn install-react-16
-    needs: setup
+        if: steps.node_modules_cache_id.outputs.cache-hit != 'true'
+        run: npm ci
 
   test-cli:
     name: Testing @zarm-design/cli on Node.js
@@ -165,84 +143,6 @@ jobs:
         run: lerna exec --scope @zarm-design/icons -- yarn build
     needs: compile-bem
 
-  compile:
-    name: Compile zarm in react@17
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@master
-
-      - name: Restore lerna
-        uses: actions/cache@v3
-        with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Restore @zarm-design/cli
-        uses: actions/cache@v3
-        with:
-          path: packages/zarm-cli/dist
-          key: ${{ runner.os }}-cli-${{ github.sha }}
-
-      - name: Restore @zarm-design/bem
-        uses: actions/cache@v3
-        with:
-          path: packages/bem/lib
-          key: ${{ runner.os }}-bem-${{ github.sha }}
-
-      - name: Restore @zarm-design/icons
-        uses: actions/cache@v3
-        with:
-          path: packages/zarm-icons/lib
-          key: ${{ runner.os }}-icons-${{ github.sha }}
-
-      - name: Compile
-        run: |
-          lerna exec --scope zarm -- yarn build:es
-          lerna exec --scope zarm -- yarn build:lib
-    needs: compile-icons
-
-  compile-react-16:
-    name: Compile zarm in react@16
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@master
-
-      - name: Restore lerna
-        uses: actions/cache@v3
-        with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Restore @zarm-design/cli
-        uses: actions/cache@v3
-        with:
-          path: packages/zarm-cli/dist
-          key: ${{ runner.os }}-cli-${{ github.sha }}
-
-      - name: Restore @zarm-design/bem
-        uses: actions/cache@v3
-        with:
-          path: packages/bem/lib
-          key: ${{ runner.os }}-bem-${{ github.sha }}
-
-      - name: Restore @zarm-design/icons
-        uses: actions/cache@v3
-        with:
-          path: packages/zarm-icons/lib
-          key: ${{ runner.os }}-icons-${{ github.sha }}
-
-      - name: Compile
-        run: |
-          lerna exec --scope zarm -- yarn build:es
-          lerna exec --scope zarm -- yarn build:lib
-    needs: [setup-react-16, compile-icons]
-
   lint:
     name: Lint
     runs-on: ubuntu-latest
@@ -262,15 +162,22 @@ jobs:
         run: yarn lint
     needs: setup
 
-  test-react-17:
-    name: Testing zarm in react@17
+  test:
+    name: Test
+    strategy:
+      matrix:
+        react: ['16', '17', '18']
+        module: ['dom', 'dist']
+    env:
+      REACT: ${{ matrix.react }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@master
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
         with:
-          # codecov.io requires a fetch depth > 1.
-          fetch-depth: 2
+          node-version: 16
 
       - name: Restore lerna
         uses: actions/cache@v3
@@ -280,7 +187,7 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
 
-      - name: Restore cli
+      - name: Restore @zarm-design/cli
         uses: actions/cache@v3
         with:
           path: packages/zarm-cli/dist
@@ -298,144 +205,41 @@ jobs:
           path: packages/zarm-icons/lib
           key: ${{ runner.os }}-icons-${{ github.sha }}
 
-      - name: Test
+      - name: install react 16
+        if: ${{ matrix.react == '16' }}
+        run: lerna exec --scope zarm -- yarn install-react-16
+
+      - name: install react 17
+        if: ${{ matrix.react == '17' }}
+        run: lerna exec --scope zarm -- yarn install-react-17
+
+      - name: install react 18
+        if: ${{ matrix.react == '18' }}
+        run: lerna exec --scope zarm -- yarn install-react-18
+
+      # dom test
+      - name: dom Test
+        if: ${{ matrix.module == 'dom' }}
         run: lerna exec --scope zarm -- yarn coverage
 
       - name: Coverage
         run: bash <(curl -s https://codecov.io/bash)
-    needs: compile-icons
 
-  test-react-17-dist:
-    name: Testing zarm/umd in react@17
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@master
-
-      - name: Restore lerna
-        uses: actions/cache@v3
-        with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Restore @zarm-design/cli
-        uses: actions/cache@v3
-        with:
-          path: packages/zarm-cli/dist
-          key: ${{ runner.os }}-cli-${{ github.sha }}
-
-      - name: Restore @zarm-design/bem
-        uses: actions/cache@v3
-        with:
-          path: packages/bem/lib
-          key: ${{ runner.os }}-bem-${{ github.sha }}
-
-      - name: Restore @zarm-design/icons
-        uses: actions/cache@v3
-        with:
-          path: packages/zarm-icons/lib
-          key: ${{ runner.os }}-icons-${{ github.sha }}
-
+      # dist test
       - name: Dist
+        if: ${{ matrix.module == 'dist' }}
         run: lerna exec --scope zarm -- yarn build:umd
         env:
           NODE_OPTIONS: --max_old_space_size=4096
 
       - name: Check Dist
+        if: ${{ matrix.module == 'dist' }}
         run: lerna exec --scope zarm -- node ./tests/dekko/dist.test.js
 
       - name: Bundlesize
+        if: ${{ matrix.module == 'dist' }}
         run: lerna exec --scope zarm -- npx bundlesize
         env:
           BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}
-    needs: compile-icons
 
-  test-react-16:
-    name: Testing zarm in react@16
-    runs-on: ubuntu-latest
-    env:
-      REACT: 16
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@master
-
-      - name: Restore lerna
-        uses: actions/cache@v3
-        with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-lerna-react16-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Restore @zarm-design/cli
-        uses: actions/cache@v3
-        with:
-          path: packages/zarm-cli/dist
-          key: ${{ runner.os }}-cli-${{ github.sha }}
-
-      - name: Restore @zarm-design/bem
-        uses: actions/cache@v3
-        with:
-          path: packages/bem/lib
-          key: ${{ runner.os }}-bem-${{ github.sha }}
-
-      - name: Restore @zarm-design/icons
-        uses: actions/cache@v3
-        with:
-          path: packages/zarm-icons/lib
-          key: ${{ runner.os }}-icons-${{ github.sha }}
-
-      - name: Test
-        run: lerna exec --scope zarm -- yarn test
-    needs: [setup-react-16, compile-icons]
-
-  test-react-16-umd:
-    name: Testing zarm/umd in react@16
-    runs-on: ubuntu-latest
-    env:
-      REACT: 16
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@master
-
-      - name: Restore lerna
-        uses: actions/cache@v3
-        with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-lerna-react16-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Restore @zarm-design/cli
-        uses: actions/cache@v3
-        with:
-          path: packages/zarm-cli/dist
-          key: ${{ runner.os }}-cli-${{ github.sha }}
-
-      - name: Restore @zarm-design/bem
-        uses: actions/cache@v3
-        with:
-          path: packages/bem/lib
-          key: ${{ runner.os }}-bem-${{ github.sha }}
-
-      - name: Restore @zarm-design/icons
-        uses: actions/cache@v3
-        with:
-          path: packages/zarm-icons/lib
-          key: ${{ runner.os }}-icons-${{ github.sha }}
-
-      - name: Dist
-        run: lerna exec --scope zarm -- yarn build:umd
-        env:
-          NODE_OPTIONS: --max_old_space_size=4096
-
-      - name: Check Dist
-        run: lerna exec --scope zarm -- node ./tests/dekko/dist.test.js
-
-      - name: Bundlesize
-        run: lerna exec --scope zarm -- npx bundlesize
-        env:
-          BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}
-    needs: [setup-react-16, compile-icons]
+    needs: [compile-bem, compile-icons, compile-cli]

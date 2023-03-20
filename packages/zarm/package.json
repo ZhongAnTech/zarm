@@ -49,7 +49,9 @@
     "build:umd": "rimraf dist && zarm build --mode umd --path src/style/entry.ts,src/index.ts --out-dir dist --library-name zarm && zarm build --mode umd-ugly --path src/style/entry.ts,src/index.ts --out-dir dist --library-name zarm",
     "clean": "rimraf types lib es dist coverage",
     "coverage": "rimraf coverage && yarn test -c",
-    "install-react-16": "yarn add react@16 react-dom@16 enzyme-adapter-react-16",
+    "install-react-16": "yarn add --no-save --legacy-peer-deps react@16 react-dom@16 @testing-library/react@12",
+    "install-react-17": "yarn add --no-save --legacy-peer-deps react@17 react-dom@17 @testing-library/react@12",
+    "install-react-18": "yarn add --no-save --legacy-peer-deps react@18 react-dom@18",
     "lint": "yarn lint:tsc && yarn lint:script && yarn lint:style",
     "lint:script": "eslint --ext .ts,.tsx src",
     "lint:style": "stylelint \"src/**/*.scss\" --syntax scss",
@@ -67,6 +69,7 @@
   ],
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.9.1",
+    "@testing-library/react": "12",
     "@use-gesture/react": "^10.1.1",
     "@zarm-design/bem": "^0.0.6",
     "@zarm-design/icons": "^0.1.10",
@@ -78,6 +81,7 @@
     "lodash": "^4.17.15",
     "normalize.css": "8.0.1",
     "raf": "^3.4.1",
+    "react-dom": "16",
     "react-transition-group": "^4.4.2"
   },
   "devDependencies": {
@@ -90,11 +94,8 @@
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
     "@types/react-transition-group": "^4.4.5",
-    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.1",
     "@zarm-design/cli": "^0.0.45",
     "dekko": "^0.2.1",
-    "enzyme": "^3.11.0",
-    "enzyme-to-json": "^3.6.2",
     "jest-canvas-mock": "^2.3.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"

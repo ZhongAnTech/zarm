@@ -2,8 +2,7 @@
 
 exports[`templates test should create test template 1`] = `
 "import * as React from 'react';
-import { render } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 import MyTestComponent from '../index';
 
 describe('MyTestComponent', () => {
@@ -11,7 +10,7 @@ describe('MyTestComponent', () => {
     const wrapper = render(
       <MyTestComponent />,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 });
 "

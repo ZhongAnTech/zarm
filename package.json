@@ -19,7 +19,8 @@
     "prettier": "prettier --write -c '**/*.{js,jsx,ts,tsx,html,md,json}'",
     "release": "lerna publish",
     "sort": "npx sort-package-json \"package.json\" \"packages/*/package.json\"",
-    "test": "lerna exec --no-private -- yarn test"
+    "test": "lerna exec --no-private -- yarn test",
+    "install-react-16": "yarn add --no-save --legacy-peer-deps react@16 react-dom@16 @testing-library/react@12"
   },
   "commitlint": {
     "extends": [
@@ -66,5 +67,9 @@
     "stylelint-config-za": "0.3.0",
     "stylelint-scss": "^3.18.0",
     "typescript": "~4.5.0"
+  },
+  "dependencies": {
+    "@testing-library/react": "12",
+    "react-dom": "16"
   }
 }
