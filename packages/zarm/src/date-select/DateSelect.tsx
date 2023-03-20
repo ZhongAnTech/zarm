@@ -123,7 +123,10 @@ const DateSelect: React.FC<DateSelectProps> = (props) => {
         {...rest}
         className={className}
         visible={visible}
+        columnType={columnType}
         value={innerValue}
+        min={min}
+        max={max}
         filter={filter}
         renderLabel={renderLabel}
         onConfirm={handleConfirm}

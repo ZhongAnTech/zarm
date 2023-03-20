@@ -4,6 +4,7 @@ import * as React from 'react';
 import { ConfigContext } from '../config-provider';
 import Picker from '../picker';
 import { resolved } from '../picker-view/utils';
+import { toArray } from '../utils';
 import { HTMLProps } from '../utils/utilityTypes';
 import type { WheelItem } from '../wheel/interface';
 import type { BaseSelectProps } from './interface';
@@ -42,7 +43,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>((props, ref) => {
 
   const { prefixCls, locale } = React.useContext(ConfigContext);
   const bem = createBEM('select', { prefixCls });
-  const [innerValue, setInnerValue] = React.useState(resolved(props).value);
+  const [innerValue, setInnerValue] = React.useState(toArray(value || defaultValue));
   const [visible, setVisible] = React.useState(false);
 
   React.useEffect(() => {
@@ -92,7 +93,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>((props, ref) => {
         {...rest}
         className={className}
         visible={visible}
-        value={value}
+        value={innerValue}
         onConfirm={handleonConfirm}
         onChange={onChange}
         onCancel={handleOnCancel}
