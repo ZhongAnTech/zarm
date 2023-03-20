@@ -13,17 +13,19 @@ import {
 } from '../date-picker-view/utils';
 import type { PickerColumnItem } from '../picker-view';
 import { resolved } from '../picker-view/utils';
+import type { SelectCssVars } from '../select';
 import { useSafeState } from '../utils/hooks';
 import { HTMLProps } from '../utils/utilityTypes';
 import type { BaseDateSelectProps } from './interface';
 
 const currentYear = new Date().getFullYear();
 
-export type DateSelectProps = BaseDateSelectProps & HTMLProps;
+export type DateSelectProps = BaseDateSelectProps & HTMLProps<SelectCssVars>;
 
 const DateSelect: React.FC<DateSelectProps> = (props) => {
   const {
     className,
+    style,
     placeholder,
     disabled = false,
     hasArrow = true,
@@ -110,6 +112,7 @@ const DateSelect: React.FC<DateSelectProps> = (props) => {
           },
           className,
         ])}
+        style={style}
         onClick={handleClick}
       >
         <div className={bem('input')}>
@@ -121,7 +124,6 @@ const DateSelect: React.FC<DateSelectProps> = (props) => {
       </div>
       <DatePicker
         {...rest}
-        className={className}
         visible={visible}
         columnType={columnType}
         value={innerValue}

@@ -30,6 +30,7 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
     minScale,
     maxScale,
     className,
+    style,
     mountContainer,
   } = props;
 
@@ -155,9 +156,10 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
 
   return (
     <Popup
+      className={bem([className])}
+      style={style}
       direction="center"
       visible={visible}
-      className={bem([className])}
       mountContainer={mountContainer}
       maskOpacity={1}
     >
@@ -175,10 +177,10 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
           ) : (
             <Loading type="spinner" size="lg" />
           ))}
-      </div>
-      <div className={bem('footer')}>
-        {renderOriginButton()}
-        {renderPagination()}
+        <div className={bem('footer')}>
+          {renderOriginButton()}
+          {renderPagination()}
+        </div>
       </div>
     </Popup>
   );

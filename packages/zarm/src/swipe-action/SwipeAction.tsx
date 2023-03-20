@@ -192,7 +192,7 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
   return (
     <>
       {leftActions || rightActions ? (
-        <div className={cls} ref={swipeActionWrap} {...bind()}>
+        <div ref={swipeActionWrap} className={cls} style={props.style} {...bind()}>
           {renderButtons(leftActions, 'left', leftRef)}
           {renderButtons(rightActions, 'right', rightRef)}
           <div

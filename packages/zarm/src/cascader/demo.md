@@ -356,11 +356,22 @@ Cascader.prompt({
 | label    | React.ReactNode  | -      | 选项显示名称 |
 | children | CascaderOption[] | -      | 子选项       |
 
-## CSS 变量
+## Cascader CSS 变量
+
+| 属性                       | 默认值                         | 说明                 |
+| :------------------------- | :----------------------------- | :------------------- |
+| --header-height            | '45px'                         | 头部高度             |
+| --header-font-size         | '16px'                         | 头部文字大小         |
+| --header-background        | '#f7f7f7'                      | 头部背景             |
+| --header-title-text-color  | 'var(--za-color-text)'         | 头部标题文字颜色     |
+| --header-submit-text-color | 'var(--za-theme-primary)'      | 头部提交按钮文字颜色 |
+| --header-cancel-text-color | 'var(--za-color-text-caption)' | 头部取消按钮文字颜色 |
+
+## CascaderView CSS 变量
 
 | 属性                       | 默认值                             | 说明             |
 | :------------------------- | :--------------------------------- | :--------------- |
-| --background         | '#fff'                             | 弹层背景       |
+| --background               | '#fff'                             | 弹层背景         |
 | --padding                  | 'var(--za-padding-v-sm)'           | 选项内边距       |
 | --tab-text-color           | 'var(--za-color-text-placeholder)' | 标签文字颜色     |
 | --tab-active-text-color    | 'var(--za-theme-primary)'          | 标签选中文字颜色 |

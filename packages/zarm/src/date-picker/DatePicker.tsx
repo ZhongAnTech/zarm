@@ -1,15 +1,17 @@
 import React, { useContext } from 'react';
 import { ConfigContext } from '../config-provider';
 import DatePickerView, { DatePickerViewInstance } from '../date-picker-view';
+import type { PickerCssVars } from '../picker';
 import PickerContainer from '../picker/Container';
 import { HTMLProps } from '../utils/utilityTypes';
 import type { BaseDatePickerProps } from './interface';
 
-export type DatePickerProps = BaseDatePickerProps & HTMLProps;
+export type DatePickerProps = BaseDatePickerProps & HTMLProps<PickerCssVars>;
 
 const DatePicker: React.FC<DatePickerProps> = (props) => {
   const {
     className,
+    style,
     title,
     confirmText,
     cancelText,
@@ -44,9 +46,10 @@ const DatePicker: React.FC<DatePickerProps> = (props) => {
 
   return (
     <PickerContainer
+      className={className}
+      style={style}
       visible={visible}
       title={title}
-      className={className}
       confirmText={confirmText || locale?.DatePicker?.confirmText}
       cancelText={cancelText || locale?.DatePicker?.cancelText}
       maskClosable={maskClosable}
@@ -61,7 +64,6 @@ const DatePicker: React.FC<DatePickerProps> = (props) => {
       <DatePickerView
         {...rest}
         ref={datePickerViewRef}
-        className={className}
         value={props.value}
         onChange={handleChange}
       />

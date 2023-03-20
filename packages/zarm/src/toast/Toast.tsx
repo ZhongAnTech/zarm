@@ -52,11 +52,11 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>((props, ref) => {
       <div
         ref={ref}
         className={bem([
-          className,
           {
             icon: !!icon,
             text: !icon,
           },
+          className,
         ])}
         style={style}
       >

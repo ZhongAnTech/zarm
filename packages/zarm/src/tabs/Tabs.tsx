@@ -1,5 +1,5 @@
+import { createBEM } from '@zarm-design/bem';
 import * as React from 'react';
-import classnames from 'classnames';
 import TabPanel from './TabPanel';
 import Carousel from '../carousel';
 import type { CarouselHTMLElement } from '../carousel';
@@ -67,6 +67,7 @@ interface CompoundedComponent
 const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
   const {
     className,
+    style,
     value,
     defaultValue,
     disabled,
@@ -86,8 +87,8 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
     getValue({ value, defaultValue, children }, 0),
   );
 
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-tabs`;
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('tabs', { prefixCls });
 
   const isVertical: boolean = direction === 'vertical';
 
@@ -96,9 +97,10 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
     [children],
   );
 
-  const cls = classnames(prefixCls, className, `${prefixCls}--${direction}`, {
-    [`${prefixCls}--scroll`]: scrollable,
-  });
+  const classes = bem([{
+    [`${direction}`]: true,
+    scroll: scrollable,
+  }, className])
 
   // 计算 line 大小和位置
   const caclLineSizePos = () => {
@@ -150,7 +152,7 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
   let lineInnerRender;
   if (lineWidth) {
     lineStyle.backgroundColor = 'transparent';
-    lineInnerRender = <span className={`${prefixCls}__line__inner`} style={{ width: lineWidth }} />;
+    lineInnerRender = <span className={bem('line__inner')} style={{ width: lineWidth }} />;
   }
 
   // 渲染内容
@@ -180,10 +182,10 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
   }
 
   const renderTabs = (tab: React.ReactElement<TabPanelProps, typeof TabPanel>, index: number) => {
-    const itemCls = classnames(`${prefixCls}__tab`, tab.props.className, {
-      [`${prefixCls}__tab--disabled`]: disabled || tab.props.disabled,
-      [`${prefixCls}__tab--active`]: parseValue(currentValue) === index,
-    });
+    const itemCls = bem('tab', [{
+      disabled: disabled || tab.props.disabled,
+      active: parseValue(currentValue) === index,
+    }, tab.props.className])
 
     return (
       <li role="tab" key={+index} className={itemCls} onClick={() => onTabClick(tab, index)}>
@@ -243,16 +245,16 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
   }, [value, defaultValue, children]);
 
   return (
-    <div className={cls} ref={tabsRef}>
-      <div className={`${prefixCls}__header`}>
-        <ul className={`${prefixCls}__tablist`} role="tablist" ref={tablistRef}>
+    <div className={classes} style={style} ref={tabsRef}>
+      <div className={bem('header')}>
+        <ul className={bem('tablist')} role="tablist" ref={tablistRef}>
           {tabsRender}
-          <div className={`${prefixCls}__line`} style={lineStyle}>
+          <div className={bem('line')} style={lineStyle}>
             {lineInnerRender}
           </div>
         </ul>
       </div>
-      <div className={`${prefixCls}__body`}>{contentRender}</div>
+      <div className={bem('body')}>{contentRender}</div>
     </div>
   );
 }) as CompoundedComponent;

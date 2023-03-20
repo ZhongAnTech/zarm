@@ -1,16 +1,10 @@
 import * as React from 'react';
 import PickerView, { PickerColumnItem, PickerValue, PickerViewInstance } from '../picker-view';
 import type { HTMLProps } from '../utils/utilityTypes';
-import PickerContainer from './Container';
+import PickerContainer, { PickerContainerCssVars } from './Container';
 import type { BasePickerProps } from './interface';
 
-export interface PickerCssVars {
-  '--header-height': React.CSSProperties['height'];
-  '--header-font-size': React.CSSProperties['fontSize'];
-  '--header-background': React.CSSProperties['background'];
-  '--header-title-text-color': React.CSSProperties['color'];
-  '--header-submit-text-color': React.CSSProperties['color'];
-  '--header-cancel-text-color': React.CSSProperties['color'];
+export interface PickerCssVars extends PickerContainerCssVars {
   '--cotnent-background': React.CSSProperties['background'];
   '--cotnent-padding': React.CSSProperties['padding'];
   '--cotnent-mask-start-background': React.CSSProperties['background'];
@@ -29,6 +23,7 @@ export type PickerProps = BasePickerProps & HTMLProps<PickerCssVars>;
 const Picker: React.FC<PickerProps> = (props) => {
   const {
     className,
+    style,
     title,
     confirmText,
     cancelText,
@@ -69,6 +64,7 @@ const Picker: React.FC<PickerProps> = (props) => {
     <PickerContainer
       title={title}
       className={className}
+      style={style}
       confirmText={confirmText}
       cancelText={cancelText}
       visible={visible}

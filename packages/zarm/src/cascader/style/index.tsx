@@ -1,5 +1,4 @@
 import '../../style';
-import '../../popup/style';
-import '../../tabs/style';
-import '../../radio/style';
+import '../../cascader-view/style';
+import '../../picker/style';
 import './index.scss';

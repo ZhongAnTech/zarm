@@ -1,5 +1,4 @@
 @include b(date-select) {
-  @include define(arrow-space, 5px);
   @include define(arrow-color, var(--za-arrow-color));
   @include define(arrow-size, var(--za-arrow-size));
   @include define(arrow-width, var(--za-arrow-width));
@@ -23,7 +22,7 @@
   }
 
   @include e(arrow) {
-    margin-left: var(--arrow-space);
+    margin-left: 5px;
     margin-top: calc(var(--arrow-size) / -2);
 
     &:after {

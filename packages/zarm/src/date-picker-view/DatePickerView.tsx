@@ -1,7 +1,7 @@
 import clamp from 'lodash/clamp';
 import isEqual from 'lodash/isEqual';
 import * as React from 'react';
-import PickerView, { PickerColumnItem, PickerValue, PickerViewInstance } from '../picker-view';
+import PickerView, { PickerColumnItem, PickerValue, PickerViewCssVars, PickerViewInstance } from '../picker-view';
 import { resolved } from '../picker-view/utils';
 import { HTMLProps } from '../utils/utilityTypes';
 import { BaseDatePickerViewProps, COLUMN_TYPE } from './interface';
@@ -14,7 +14,7 @@ import {
 
 const currentYear = new Date().getFullYear();
 
-export type DatePickerViewProps =  BaseDatePickerViewProps & HTMLProps;
+export type DatePickerViewProps =  BaseDatePickerViewProps & HTMLProps<PickerViewCssVars>;
 
 export interface DatePickerViewInstance {
   value: Date;

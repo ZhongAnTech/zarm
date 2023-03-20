@@ -21,7 +21,7 @@ export type NoticeBarProps = BaseNoticeBarProps &
   };
 
 const NoticeBar = forwardRef<HTMLDivElement, NoticeBarProps>((props, ref) => {
-  const { children, speed, delay, onClose, className, ...restProps } = props;
+  const { children, speed, delay, onClose, className, style, ...restProps } = props;
   const [visible, setVisible] = useState(true);
   const { prefixCls } = React.useContext(ConfigContext);
 
@@ -47,7 +47,7 @@ const NoticeBar = forwardRef<HTMLDivElement, NoticeBarProps>((props, ref) => {
 
   const cls = bem([className]);
   return (
-    <div className={cls} ref={noticeBarRef}>
+    <div className={cls} style={style} ref={noticeBarRef}>
       <Message {...restProps} onClose={handleClose}>
         <div className={bem('body')}>
           <div
