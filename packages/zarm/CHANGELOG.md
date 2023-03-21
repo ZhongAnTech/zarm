@@ -1,5 +1,19 @@
 # 版本更新日志
 
+## v3.0.8
+
+- Feature
+
+  - [Toast] 兼容 React 18 异步渲染问题 [#1069](https://github.com/ZhongAnTech/zarm/pull/1069)
+  - [Popup & Modal] 增加指令式调用方式 [#1056](https://github.com/ZhongAnTech/zarm/pull/1056)
+
+- Bug Fix
+
+  - 修复部分组件 `className` 挂载节点错误及 `style` 样式属性缺失问题 [#1066](https://github.com/ZhongAnTech/zarm/pull/1066)
+  - [DateSelect] 修复 DateSelect 组件 `columnType`、`max`、`min` 属性未生效的问题 [#1068](https://github.com/ZhongAnTech/zarm/pull/1068)
+  - [Select] 修复默认值无法为空的问题 [#1068](https://github.com/ZhongAnTech/zarm/pull/1068)
+  - [@zarm-design/icons] 修复无法自定义 scss 前缀的问题 [#1067](https://github.com/ZhongAnTech/zarm/pull/1067)
+
 ## v3.0.7
 
 - Bug Fix
