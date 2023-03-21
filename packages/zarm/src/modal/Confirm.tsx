@@ -45,7 +45,7 @@ export const confirm = (props: ModalConfirmProps): Promise<boolean> => {
               const result = await onConfirm?.();
               if (result === false) return;
               close();
-              resolve(null);
+              resolve(true);
             },
           },
         ],
