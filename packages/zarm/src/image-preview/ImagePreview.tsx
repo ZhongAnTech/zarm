@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { HtmlHTMLAttributes, useEffect, useState } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { useDrag, ReactDOMAttributes } from '@use-gesture/react';
 import type { Images, BaseImagePreviewProps } from './interface';
@@ -20,6 +20,41 @@ export interface ImagePreviewCssVars {
 }
 
 export type ImagePreviewProps = BaseImagePreviewProps & HTMLProps<ImagePreviewCssVars>;
+
+const imageStyle = {
+  maxWidth: window?.innerWidth <= window?.innerHeight ? window?.innerWidth : undefined,
+  maxHeight: window?.innerHeight <= window?.innerWidth ? window?.innerHeight : undefined,
+};
+
+const Content: React.FC<{ minScale: number; maxScale: number; imgSrc: string }> = (props) => {
+  const { minScale, maxScale, imgSrc } = props;
+  const [loaded, setLoaded] = useState(false);
+  const style = loaded ? {...imageStyle, display: 'block'} : imageStyle;
+
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('image-preview', { prefixCls });
+
+  return (
+    <>
+      { !loaded ?
+        (
+          <div className={bem('loading')}>
+            <Loading type="spinner" size="lg" />
+          </div>
+        ) : null
+      }
+      <PinchZoom minScale={minScale} maxScale={maxScale}>
+        <img
+          src={imgSrc}
+          alt=""
+          draggable={false}
+          style={style}
+          onLoad={() => setLoaded(true) }
+        />
+      </PinchZoom>
+    </>
+  );
+}
 
 const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props, ref) => {
   const {
@@ -91,33 +126,13 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
     if (state.tap && state.elapsedTime > 0) {
       loadOrigin(state.event);
     }
-  }, {
-    pointer: { touch: true }
   }) as unknown as (...args: any[]) => ReactDOMAttributes;
 
   const renderImages = () => {
-    const imageStyle = {
-      maxWidth: window?.innerWidth <= window?.innerHeight ? window?.innerWidth : undefined,
-      maxHeight: window?.innerHeight <= window?.innerWidth ? window?.innerHeight : undefined,
-    };
     return images.map((item, i) => {
       return (
         <div className={bem('item')} key={+i}>
-          <div className={bem('loading')}>
-            <Loading type="spinner" size="lg" />
-          </div>
-          <PinchZoom minScale={minScale} maxScale={maxScale}>
-            <img
-              src={item.src}
-              alt=""
-              draggable={false}
-              style={imageStyle}
-              onLoad={(e: React.SyntheticEvent<HTMLImageElement>) => {
-                const el = e.target as HTMLImageElement;
-                el.style.display = 'block';
-               }}
-            />
-          </PinchZoom>
+           <Content imgSrc={item.src} minScale={minScale} maxScale={maxScale} />
         </div>
       );
     });
@@ -163,25 +178,27 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
       mountContainer={mountContainer}
       maskOpacity={1}
     >
-      <div ref={ref} className={bem('content')} {...bindEvent()}>
-        {visible &&
-          (images?.length ? (
-            <Carousel
-              showPagination={false}
-              onChange={onChange}
-              activeIndex={currentIndex}
-              swipeable
-            >
-              {renderImages()}
-            </Carousel>
-          ) : (
-            <Loading type="spinner" size="lg" />
-          ))}
+      <>
+        <div ref={ref} className={bem('content')} {...bindEvent()}>
+          {visible &&
+            (images?.length ? (
+              <Carousel
+                showPagination={false}
+                onChange={onChange}
+                activeIndex={currentIndex}
+                swipeable
+              >
+                {renderImages()}
+              </Carousel>
+            ) : (
+              <Loading type="spinner" size="lg" />
+            ))}
+        </div>
         <div className={bem('footer')}>
           {renderOriginButton()}
           {renderPagination()}
         </div>
-      </div>
+      </>
     </Popup>
   );
 });

@@ -117,14 +117,14 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
             </div>
           </div>
         </div>
+      </div>
+      <div
+        class="za-image-preview__footer"
+      >
         <div
-          class="za-image-preview__footer"
+          class="za-image-preview__pagination"
         >
-          <div
-            class="za-image-preview__pagination"
-          >
-            1 / 3
-          </div>
+          1 / 3
         </div>
       </div>
     </div>
@@ -249,23 +249,23 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
             </div>
           </div>
         </div>
-        <div
-          class="za-image-preview__footer"
+      </div>
+      <div
+        class="za-image-preview__footer"
+      >
+        <button
+          aria-disabled="false"
+          class="za-button za-button--default za-button--xs za-button--radius"
+          type="button"
         >
-          <button
-            aria-disabled="false"
-            class="za-button za-button--default za-button--xs za-button--radius"
-            type="button"
-          >
-            <span>
-              查看原图
-            </span>
-          </button>
-          <div
-            class="za-image-preview__pagination"
-          >
-            1 / 3
-          </div>
+          <span>
+            查看原图
+          </span>
+        </button>
+        <div
+          class="za-image-preview__pagination"
+        >
+          1 / 3
         </div>
       </div>
     </div>
