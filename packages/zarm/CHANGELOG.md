@@ -9,6 +9,8 @@
 
 - Bug Fix
 
+  - [Modal] 修复 confirm 点击确认返回值不正确 [#1072](https://github.com/ZhongAnTech/zarm/pull/1072)
+  - [Modal] 移除无效样式文件 [#1071](https://github.com/ZhongAnTech/zarm/pull/1071)
   - 修复部分组件 `className` 挂载节点错误及 `style` 样式属性缺失问题 [#1066](https://github.com/ZhongAnTech/zarm/pull/1066)
   - [DateSelect] 修复 DateSelect 组件 `columnType`、`max`、`min` 属性未生效的问题 [#1068](https://github.com/ZhongAnTech/zarm/pull/1068)
   - [Select] 修复默认值无法为空的问题 [#1068](https://github.com/ZhongAnTech/zarm/pull/1068)
