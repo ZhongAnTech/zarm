@@ -18,12 +18,11 @@ const fullClone = {
 const { version, render: reactRender, unmountComponentAtNode } = fullClone;
 
 let createRoot: CreateRoot;
-let flushSync;
+
 try {
   const mainVersion = Number((version || '').split('.')[0]);
   if (mainVersion >= 18 && fullClone.createRoot) {
     createRoot = fullClone.createRoot;
-    flushSync = fullClone.flushSync;
   }
 } catch {
   // Do nothing;
@@ -55,9 +54,7 @@ function modernRender(node: React.ReactElement, container: ContainerType) {
   toggleWarning(true);
   const root = container[MARK] || createRoot(container);
   toggleWarning(false);
-  flushSync(() => {
-    root.render(node);
-  })
+  root.render(node);
   container[MARK] = root;
 }
 
