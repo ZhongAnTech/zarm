@@ -187,25 +187,25 @@ ReactDOM.render(
 | description | ReactNode  | -      | 设置下方提示信息区域内容 |
 | onClick     | () => void | -      | 点击后触发的回调函数     |
 
-## CSS 变量
+## List.Item CSS 变量
 
-| 属性                           | 默认值                                                          | 说明                   |
-| :----------------------------- | :-------------------------------------------------------------- | :--------------------- |
-| --item-height                  | '44px'                                                          | 列表项高度             |
-| --item-padding-horizontal      | '16px'                                                          | 列表项横向内边距       |
-| --item-padding-vertical        | '8px'                                                           | 列表项纵向内边距       |
-| --item-background              | '#fff'                                                          | 列表项背景色           |
-| --item-active-background       | 'var(--za-background-active)'                                   | 列表项激活状态背景色   |
-| --item-separator-color         | 'var(--za-border-color)'                                        | 列表项分隔线颜色       |
-| --item-title-font-size         | 'var(--za-font-size-md)'                                        | 列表项标题字体大小     |
-| --item-title-white-space       | 'nowrap'                                                        | 列表项标题换行         |
-| --item-title-line-height       | 'calc(var(--item-height) - var(--item-padding-vertical) \* 2))' | 列表项标题行高         |
-| --item-suffix-text-color       | 'rgba(0, 0, 0, 0.45)'                                           | 列表项尾部字体颜色     |
-| --item-space                   | '5px'                                                           | 列表项元素之间的间距   |
-| --item-arrow-width             | '2px'                                                           | 列表项尾部箭头宽度     |
-| --item-arrow-color             | 'rgba(0, 0, 0, 0.2)'                                            | 列表项尾部箭头的颜色   |
-| --item-arrow-size              | '10px'                                                          | 列表项尾部箭头的大小   |
-| --item-description-font-size   | '12px'                                                          | 列表项补充信息字体大小 |
-| --item-description-text-color  | 'rgba(60, 60, 67, 0.6)'                                         | 列表项补充信息字体颜色 |
-| --item-description-line-height | '16px'                                                          | 列表项补充信息行高     |
-| --item-inline-title-width      | '100px'                                                         | 表单内联下标题宽度     |
+| 属性                      | 默认值                                                | 说明                   |
+| :------------------------ | :---------------------------------------------------- | :--------------------- |
+| --height                  | '44px'                                                | 列表项高度             |
+| --padding-horizontal      | '16px'                                                | 列表项横向内边距       |
+| --padding-vertical        | '8px'                                                 | 列表项纵向内边距       |
+| --background              | '#fff'                                                | 列表项背景色           |
+| --active-background       | 'var(--za-background-active)'                         | 列表项激活状态背景色   |
+| --separator-color         | 'var(--za-border-color)'                              | 列表项分隔线颜色       |
+| --title-font-size         | 'var(--za-font-size-md)'                              | 列表项标题字体大小     |
+| --title-white-space       | 'nowrap'                                              | 列表项标题换行         |
+| --title-line-height       | 'calc(var(--height) - var(--padding-vertical) \* 2))' | 列表项标题行高         |
+| --suffix-text-color       | 'rgba(0, 0, 0, 0.45)'                                 | 列表项尾部字体颜色     |
+| --space                   | '5px'                                                 | 列表项元素之间的间距   |
+| --arrow-width             | '2px'                                                 | 列表项尾部箭头宽度     |
+| --arrow-color             | 'rgba(0, 0, 0, 0.2)'                                  | 列表项尾部箭头的颜色   |
+| --arrow-size              | '10px'                                                | 列表项尾部箭头的大小   |
+| --description-font-size   | '12px'                                                | 列表项补充信息字体大小 |
+| --description-text-color  | 'rgba(60, 60, 67, 0.6)'                               | 列表项补充信息字体颜色 |
+| --description-line-height | '16px'                                                | 列表项补充信息行高     |
+| --inline-title-width      | '100px'                                               | 表单内联下标题宽度     |
