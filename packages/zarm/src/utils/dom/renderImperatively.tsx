@@ -72,7 +72,11 @@ export const renderImperatively = (element: TargetElement) => {
 
   return {
     close: () => {
-      wrapperRef.current?.close();
+      if (wrapperRef.current) {
+        wrapperRef.current?.close();
+      } else {
+        unmount();
+      }
     },
     replace: (replacedElement) => {
       wrapperRef.current?.replace(replacedElement);
