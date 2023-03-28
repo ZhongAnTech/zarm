@@ -6,6 +6,7 @@
 
   - 解决 renderImperative React 18 异步渲染问题 [#1076](https://github.com/ZhongAnTech/zarm/pull/1076)
   - [List.Item] 修复单独引用样式丢失 [#1075](https://github.com/ZhongAnTech/zarm/pull/1075)
+  - [Collapse] 修复标题默认字体 [#1077](https://github.com/ZhongAnTech/zarm/pull/1077)
 
 ## v3.0.8
 
