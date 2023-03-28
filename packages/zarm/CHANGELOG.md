@@ -1,12 +1,18 @@
 # 版本更新日志
 
-## v3.0.9
+## v3.0.10
 
 - Bug Fix
 
   - 解决 renderImperative React 18 异步渲染问题 [#1076](https://github.com/ZhongAnTech/zarm/pull/1076)
   - [List.Item] 修复单独引用样式丢失 [#1075](https://github.com/ZhongAnTech/zarm/pull/1075)
   - [Collapse] 修复标题默认字体 [#1077](https://github.com/ZhongAnTech/zarm/pull/1077)
+
+## v3.0.9
+
+- Bug Fix
+
+  - [ImagePreview] 修复点击图片穿透问题 [#1073](https://github.com/ZhongAnTech/zarm/pull/1073)
 
 ## v3.0.8
 
