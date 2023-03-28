@@ -12,7 +12,7 @@
 
 - Bug Fix
 
-  - [ImagePreview] 修复点击图片穿透问题 [#1073](https://github.com/ZhongAnTech/zarm/pull/1073)
+  - [ImagePreview] 修复点击“查看原图”按钮导致弹层关闭的问题 [#1073](https://github.com/ZhongAnTech/zarm/pull/1073)
 
 ## v3.0.8
 
