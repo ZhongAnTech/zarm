@@ -51,6 +51,7 @@
 
   @include e(title) {
     flex: 1;
+    font-size: 17px;
   }
 
   @include e(content) {
