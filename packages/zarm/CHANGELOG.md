@@ -1,5 +1,12 @@
 # 版本更新日志
 
+## v3.0.9
+
+- Bug Fix
+
+  - 解决 renderImperative React 18 异步渲染问题 [#1076](https://github.com/ZhongAnTech/zarm/pull/1076)
+  - [List.Item] 修复单独引用样式丢失 [#1075](https://github.com/ZhongAnTech/zarm/pull/1075)
+
 ## v3.0.8
 
 - Feature
@@ -23,7 +30,6 @@
   - [ConfigProvider] 修复全局修改组件类名前缀 `prefix` 后，`scss` 文件前缀修改不生效的问题 [#1061](https://github.com/ZhongAnTech/zarm/pull/1061)
   - [Icon] 修复部分组件 Icon 样式偏移问题 [#1062](https://github.com/ZhongAnTech/zarm/pull/1062)
 
-
 ## v3.0.5
 
 - Feature
@@ -45,7 +51,7 @@
 
 - Feature
 
-  - 新增组件：Grid 宫格、WaterMark 水印、Skeleton 骨架屏、Rate 评分、Image图片
+  - 新增组件：Grid 宫格、WaterMark 水印、Skeleton 骨架屏、Rate 评分、Image 图片
   - 新增 hooks 组件：useClickAway 单击外部跟踪器、useInViewport 进入浏览器窗口、useLongPress 长按、useOrientation 屏幕方向、useScroll 滚动
 
 - Break Change
