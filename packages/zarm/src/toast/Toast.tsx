@@ -19,6 +19,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>((props, ref) => {
     maskStyle,
     maskColor = 'transparent',
     maskClickable,
+    onClose,
     ...rest
   } = props;
   const { prefixCls } = React.useContext(ConfigContext);
