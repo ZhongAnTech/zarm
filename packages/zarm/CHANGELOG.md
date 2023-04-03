@@ -1,5 +1,11 @@
 # 版本更新日志
 
+## v3.0.11
+
+- Bug Fix
+
+  - [Toast] 修复调用 `clear` 静态方法后，再次使用无法自动关闭的问题 [#1082](https://github.com/ZhongAnTech/zarm/pull/1082)
+
 ## v3.0.10
 
 - Bug Fix
