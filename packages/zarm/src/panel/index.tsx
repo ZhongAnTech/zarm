@@ -1,8 +1,8 @@
-import React from 'react';
 import { createBEM } from '@zarm-design/bem';
+import React from 'react';
 import { ConfigContext } from '../config-provider';
-import type { BasePanelProps } from './interface';
-import type { HTMLProps } from '../utils/utilityTypes';
+import { HTMLProps } from '../utils/utilityTypes';
+import { BasePanelProps } from './interface';
 
 export interface PanelCssVars {
   '--header-padding'?: React.CSSProperties['padding'];
@@ -15,7 +15,9 @@ export interface PanelCssVars {
   '--spacing-padding-horizontal'?: React.CSSProperties['padding'];
 }
 
-export type PanelProps = BasePanelProps & React.PropsWithChildren<HTMLProps<PanelCssVars>>;
+export type PanelProps = Omit<React.ComponentPropsWithRef<'div'>, keyof BasePanelProps> &
+  BasePanelProps &
+  HTMLProps<PanelCssVars>;
 
 const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
   const { className, title, more, spacing, bordered, children, ...restProps } = props;
@@ -28,10 +30,12 @@ const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
 
   return (
     <div className={cls} ref={panelRef} {...restProps}>
-      <div className={bem('header')}>
-        {title && <div className={bem('header__title')}>{title}</div>}
-        {more && <div className={bem('header__more')}>{more}</div>}
-      </div>
+      {(title || more) && (
+        <div className={bem('header')}>
+          {title && <div className={bem('header__title')}>{title}</div>}
+          {more && <div className={bem('header__more')}>{more}</div>}
+        </div>
+      )}
       <div className={bem('body')}>{children}</div>
     </div>
   );
