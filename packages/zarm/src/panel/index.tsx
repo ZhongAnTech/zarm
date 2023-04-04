@@ -1,8 +1,8 @@
 import { createBEM } from '@zarm-design/bem';
 import React, { useImperativeHandle, useRef } from 'react';
 import { ConfigContext } from '../config-provider';
-import { HTMLProps } from '../utils/utilityTypes';
-import { BasePanelProps } from './interface';
+import type { HTMLProps } from '../utils/utilityTypes';
+import type { BasePanelProps } from './interface';
 
 export interface PanelCssVars {
   '--header-padding'?: React.CSSProperties['padding'];

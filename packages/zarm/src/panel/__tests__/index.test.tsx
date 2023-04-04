@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { createBEM } from '@zarm-design/bem';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { defaultConfig } from '../../config-provider/ConfigProvider';
 import Panel from '../index';
 
@@ -34,7 +34,7 @@ describe('Panel', () => {
     });
   });
 
-  test('should forward ref', (done) => {
+  test('should forward ref created by React.createRef() API', (done) => {
     const ref = React.createRef<HTMLDivElement>();
     render(
       <Panel bordered={false} ref={ref}>
@@ -45,5 +45,25 @@ describe('Panel', () => {
     expect(ref.current.className).toEqual('za-panel');
     expect(ref.current.nodeName.toLocaleLowerCase()).toBe('div');
     done();
+  });
+
+  test('should forward ref created by useRef() hook', (done) => {
+    expect.assertions(2)
+    const TestComp = () => {
+      const ref = useRef<HTMLDivElement>(null);
+      useEffect(() => {
+        if (ref.current) {
+          expect(ref.current.className).toEqual('za-panel');
+          expect(ref.current.nodeName.toLocaleLowerCase()).toBe('div');
+          done();
+        }
+      }, []);
+      return (
+        <Panel bordered={false} ref={ref}>
+          body
+        </Panel>
+      );
+    };
+    render(<TestComp />);
   });
 });
