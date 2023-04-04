@@ -1,5 +1,5 @@
 import { createBEM } from '@zarm-design/bem';
-import React from 'react';
+import React, { useImperativeHandle, useRef } from 'react';
 import { ConfigContext } from '../config-provider';
 import { HTMLProps } from '../utils/utilityTypes';
 import { BasePanelProps } from './interface';
@@ -22,7 +22,9 @@ export type PanelProps = Omit<React.ComponentPropsWithRef<'div'>, keyof BasePane
 const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
   const { className, title, more, spacing, bordered, children, ...restProps } = props;
 
-  const panelRef = ref || React.createRef<HTMLDivElement>();
+  const panelRef = useRef<HTMLDivElement>();
+  useImperativeHandle(ref, () => panelRef.current);
+
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('panel', { prefixCls });
 

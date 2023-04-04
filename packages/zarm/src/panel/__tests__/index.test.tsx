@@ -33,4 +33,17 @@ describe('Panel', () => {
       padding: 'var(--header-padding)',
     });
   });
+
+  test('should forward ref', (done) => {
+    const ref = React.createRef<HTMLDivElement>();
+    render(
+      <Panel bordered={false} ref={ref}>
+        body
+      </Panel>,
+    );
+    if (!ref.current) return done('ref.current does not exist');
+    expect(ref.current.className).toEqual('za-panel');
+    expect(ref.current.nodeName.toLocaleLowerCase()).toBe('div');
+    done();
+  });
 });
