@@ -1,7 +1,6 @@
 import { createBEM } from '@zarm-design/bem';
 import React, { useImperativeHandle, useRef } from 'react';
 import { ConfigContext } from '../config-provider';
-import type { HTMLProps } from '../utils/utilityTypes';
 import type { BasePanelProps } from './interface';
 
 export interface PanelCssVars {
@@ -15,9 +14,10 @@ export interface PanelCssVars {
   '--spacing-padding-horizontal'?: React.CSSProperties['padding'];
 }
 
-export type PanelProps = Omit<React.ComponentPropsWithRef<'div'>, keyof BasePanelProps> &
-  Partial<BasePanelProps> &
-  HTMLProps<PanelCssVars>;
+export type PanelProps = Omit<React.ComponentPropsWithRef<'div'>, keyof BasePanelProps | 'style'> &
+  Partial<BasePanelProps> & {
+    style?: React.CSSProperties & Partial<PanelCssVars>;
+  };
 
 const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
   const { className, title, more, spacing, bordered, children, ...restProps } = props;
