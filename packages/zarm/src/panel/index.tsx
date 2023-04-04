@@ -16,7 +16,7 @@ export interface PanelCssVars {
 }
 
 export type PanelProps = Omit<React.ComponentPropsWithRef<'div'>, keyof BasePanelProps> &
-  BasePanelProps &
+  Partial<BasePanelProps> &
   HTMLProps<PanelCssVars>;
 
 const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
