@@ -19,10 +19,12 @@ export type PanelProps = Omit<React.ComponentPropsWithRef<'div'>, keyof BasePane
     style?: React.CSSProperties & Partial<PanelCssVars>;
   };
 
-const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
+export type Ref = HTMLDivElement;
+
+const Panel = React.forwardRef<Ref, PanelProps>((props, ref) => {
   const { className, title, more, spacing, bordered, children, ...restProps } = props;
 
-  const panelRef = useRef<HTMLDivElement>();
+  const panelRef = useRef<Ref>();
   useImperativeHandle(ref, () => panelRef.current);
 
   const { prefixCls } = React.useContext(ConfigContext);
