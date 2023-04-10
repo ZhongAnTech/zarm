@@ -19,8 +19,9 @@ const Demo = () => {
           placeholder="请输入"
           value={title}
           onChange={(e) => {
-            setTitle(e.target.value);
-            console.log(`onChange: ${e.target.value}`);
+            const val = e.target.value;
+            setTitle(val);
+            console.log(`onChange: ${val}`);
           }}
         />
       </List.Item>
@@ -87,7 +88,9 @@ ReactDOM.render(<Demo />, mountNode);
 import { useState } from 'react';
 import { Input, List, Icon } from 'zarm';
 
-const PreviewIcon = Icon.createFromIconfont('//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_14.627ee457cf7594fbbce6d5e14b8c29ef.js');
+const PreviewIcon = Icon.createFromIconfont(
+  '//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_14.627ee457cf7594fbbce6d5e14b8c29ef.js',
+);
 
 const Demo = () => {
   const [password, setPassword] = useState('');
@@ -98,9 +101,12 @@ const Demo = () => {
     <List>
       <List.Item
         title="密码输入"
-        suffix={visible
-          ? <PreviewIcon type="preview-open" onClick={() => setVisible(!visible)} />
-          : <PreviewIcon type="preview-close" onClick={() => setVisible(!visible)} />
+        suffix={
+          visible ? (
+            <PreviewIcon type="preview-open" onClick={() => setVisible(!visible)} />
+          ) : (
+            <PreviewIcon type="preview-close" onClick={() => setVisible(!visible)} />
+          )
         }
       >
         <Input

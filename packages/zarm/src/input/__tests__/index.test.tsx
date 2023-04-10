@@ -1,5 +1,5 @@
-import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
+import React from 'react';
 import Input from '../index';
 
 describe('Input', () => {
@@ -20,10 +20,11 @@ describe('Input', () => {
 
   it('renders onClear called correctly', () => {
     const onChange = jest.fn();
-    const { container } = render(<Input clearable value="" onChange={onChange} />);
+    const { container } = render(<Input clearable onChange={onChange} />);
 
     const input = container.querySelector('input') as HTMLInputElement;
     fireEvent.change(input, { target: { value: 'My new value' } });
+    expect(input.value).toEqual('My new value');
     const clearBtn = container.querySelector('.za-input__clear') as HTMLDivElement;
     fireEvent.click(clearBtn);
     expect(onChange).toHaveBeenCalled();
@@ -48,11 +49,12 @@ describe('Input.Base', () => {
   });
 
   it('showLength', () => {
-    const { container } = render(<Input showLength maxLength={100} type="text" rows={4} defaultValue="测试a"/>);
+    const { container } = render(
+      <Input showLength maxLength={100} type="text" rows={4} defaultValue="测试a" />,
+    );
     const content = container.querySelector('.za-input__length');
     expect(content?.textContent).toEqual('3/100');
   });
-
 });
 
 describe('Input.Textarea', () => {
@@ -62,7 +64,7 @@ describe('Input.Textarea', () => {
   });
 
   it('autoHeight', () => {
-    const wrapper = render(<Input type="text" rows={4} autoHeight/>);
+    const wrapper = render(<Input type="text" rows={4} autoHeight />);
     expect(wrapper.asFragment()).toMatchSnapshot();
   });
 

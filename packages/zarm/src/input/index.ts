@@ -1,5 +1,11 @@
 import Input from './Input';
 
-export type { InputProps, InputTextProps, InputTextareaProps, InputCssVars } from './Input';
+export type {
+  InputCssVars,
+  InputProps,
+  InputRef,
+  InputTextareaProps,
+  InputTextProps,
+} from './Input';
 
 export default Input;

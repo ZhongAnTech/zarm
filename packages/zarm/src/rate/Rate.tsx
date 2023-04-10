@@ -1,12 +1,12 @@
-import * as React from 'react';
+import { useDrag } from '@use-gesture/react';
 import { createBEM } from '@zarm-design/bem';
 import { StarFill } from '@zarm-design/icons';
-import { useDrag } from '@use-gesture/react';
+import { useControllableValue } from 'ahooks';
+import * as React from 'react';
 import { ConfigContext } from '../config-provider';
-import { useControllableValue } from '../utils/hooks';
 import { getBoundingClientRect } from '../utils/dom';
-import type { BaseRateProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseRateProps } from './interface';
 
 export interface RateCssVars {
   '--size'?: number | string;

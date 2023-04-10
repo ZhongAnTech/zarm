@@ -1,8 +1,8 @@
 import { createBEM } from '@zarm-design/bem';
 import { CloseCircleFill } from '@zarm-design/icons';
+import { useControllableValue } from 'ahooks';
 import * as React from 'react';
 import { ConfigContext } from '../config-provider';
-import { getValue } from '../input/utils';
 import KeyboardPicker from '../keyboard-picker';
 import useClickAway from '../use-click-away';
 import type { HTMLProps } from '../utils/utilityTypes';
@@ -28,7 +28,12 @@ export type CustomInputProps = BaseCustomInputProps &
   HTMLProps<CustomInputCssVars> &
   Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type' | 'onChange' | 'onFocus' | 'onBlur'>;
 
-const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => {
+export interface CustomInputRef {
+  focus: () => void;
+  blur: () => void;
+}
+
+const CustomInput = React.forwardRef<CustomInputRef, CustomInputProps>((props, ref) => {
   const {
     type,
     clearable,
@@ -36,10 +41,9 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
     autoFocus,
     className,
     disabled,
-    value,
-    defaultValue,
     maxLength,
     label,
+    defaultValue = '',
     onChange,
     onBlur,
     onFocus,
@@ -47,18 +51,13 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
     ...restProps
   } = props;
 
-  const wrapperRef = (ref as any) || React.createRef<HTMLDivElement>();
   const contentRef = React.useRef<HTMLDivElement>(null);
   const pickerRef = React.useRef<HTMLDivElement>(null);
   const inputRef = React.useRef<HTMLInputElement>(null);
-  const [currentValue, setCurrentValue] = React.useState(getValue({ value, defaultValue }, ''));
+  const [value, setValue] = useControllableValue({ ...props, defaultValue });
   const [focused, setFocused] = React.useState<boolean>(autoFocus!);
 
-  const showClearIcon =
-    clearable &&
-    typeof value !== 'undefined' &&
-    currentValue.length > 0 &&
-    typeof onChange === 'function';
+  const showClearIcon = clearable && typeof value !== 'undefined' && value?.length > 0;
 
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('custom-input', { prefixCls });
@@ -81,12 +80,12 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
       setFocused(true);
     }, 0);
 
-    onFocus?.(currentValue);
+    onFocus?.(value);
   };
 
   const onInputBlur = () => {
     setFocused(false);
-    onBlur?.(currentValue);
+    onBlur?.(value);
   };
 
   const onKeyClick = (key) => {
@@ -95,25 +94,24 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
       return;
     }
 
-    if (key !== 'delete' && currentValue.length >= maxLength!) {
+    if (key !== 'delete' && value?.length >= maxLength!) {
       return;
     }
 
-    const newValue =
-      key === 'delete' ? currentValue.slice(0, currentValue.length - 1) : currentValue + key;
+    const newValue = key === 'delete' ? value?.slice(0, value?.length - 1) : value + key;
 
     if (typeof value === 'undefined') {
-      setCurrentValue(newValue);
+      setValue(newValue);
     }
 
-    onChange?.(newValue);
+    setValue?.(newValue);
   };
 
   const onInputClear = (e) => {
     e.stopPropagation();
-    setCurrentValue('');
+    setValue('');
 
-    onChange?.('');
+    setValue?.('');
   };
 
   const scrollToStart = () => {
@@ -139,19 +137,19 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
     <CloseCircleFill className={bem('clear')} onClick={onInputClear} />
   );
 
-  const textRender = <div className={bem('content')}>{currentValue}</div>;
+  const textRender = <div className={bem('content')}>{value}</div>;
 
   const inputRender = (
-    <div {...restProps} ref={wrapperRef} className={cls} onClick={onInputFocus}>
+    <div {...restProps} className={cls} onClick={onInputFocus}>
       {labelRender}
       <div className={bem('content')}>
-        {(currentValue === undefined || currentValue === '') && !readOnly && (
+        {(value === undefined || value === '') && !readOnly && (
           <div className={bem('placeholder')}>{placeholder}</div>
         )}
         <div ref={contentRef} className={bem('virtual-input')}>
-          {currentValue}
+          {value}
         </div>
-        <input ref={inputRef} type="hidden" value={currentValue} />
+        <input ref={inputRef} type="hidden" value={value} />
       </div>
       {clearIconRender}
       <KeyboardPicker ref={pickerRef} visible={focused} type={type} onKeyClick={onKeyClick} />
@@ -160,7 +158,7 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
 
   useClickAway([contentRef, pickerRef], onInputBlur);
 
-  React.useImperativeHandle(wrapperRef, () => ({
+  React.useImperativeHandle(ref, () => ({
     focus,
     blur,
   }));
@@ -180,10 +178,6 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
   }, [focused]);
 
   React.useEffect(() => {
-    setCurrentValue(getValue({ value, defaultValue }, ''));
-  }, [value, defaultValue]);
-
-  React.useEffect(() => {
     if (readOnly) return;
 
     if (focused) {
@@ -191,7 +185,7 @@ const CustomInput = React.forwardRef<unknown, CustomInputProps>((props, ref) => 
     } else {
       scrollToStart();
     }
-  }, [readOnly, focused, currentValue]);
+  }, [readOnly, focused, value]);
 
   return readOnly ? textRender : inputRender;
 });
@@ -200,10 +194,6 @@ CustomInput.displayName = 'CustomInput';
 
 CustomInput.defaultProps = {
   type: 'number',
-  disabled: false,
-  autoFocus: false,
-  readOnly: false,
-  clearable: false,
 };
 
 export default CustomInput;
