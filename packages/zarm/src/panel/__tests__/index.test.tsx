@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import { createBEM } from '@zarm-design/bem';
 import React, { useEffect, useRef } from 'react';
 import { defaultConfig } from '../../config-provider/ConfigProvider';
-import Panel, { Ref as PanelRef } from '../index';
+import Panel from '../index';
 
 const bem = createBEM('panel', { prefixCls: defaultConfig.prefixCls });
 
@@ -35,7 +35,7 @@ describe('Panel', () => {
   });
 
   test('should forward ref created by React.createRef() API', (done) => {
-    const ref = React.createRef<PanelRef>();
+    const ref = React.createRef<HTMLDivElement>();
     render(
       <Panel bordered={false} ref={ref}>
         body
@@ -50,7 +50,7 @@ describe('Panel', () => {
   test('should forward ref created by useRef() hook', (done) => {
     expect.assertions(2);
     const TestComp = () => {
-      const ref = useRef<PanelRef>(null);
+      const ref = useRef<HTMLDivElement>(null);
       useEffect(() => {
         if (ref.current) {
           expect(ref.current.className).toEqual('za-panel');
