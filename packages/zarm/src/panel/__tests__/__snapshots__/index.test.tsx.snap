@@ -1,29 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Panel renders correctly 1`] = `
-<div>
+exports[`Panel snapshots with title and more props 1`] = `
+<div
+  class="za-panel za-panel--bordered"
+>
   <div
-    class="za-panel za-panel--bordered"
+    class="za-panel__header"
   >
     <div
-      class="za-panel__header"
+      class="za-panel__header__title"
     >
-      <div
-        class="za-panel__header__title"
-      >
-        title
-      </div>
-      <div
-        class="za-panel__header__more"
-      >
-        more
-      </div>
+      title
     </div>
     <div
-      class="za-panel__body"
+      class="za-panel__header__more"
     >
-      body
+      more
     </div>
+  </div>
+  <div
+    class="za-panel__body"
+  >
+    body
   </div>
 </div>
 `;
