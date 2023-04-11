@@ -121,10 +121,6 @@ describe('index', () => {
         "CustomInput": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
-            "autoFocus": false,
-            "clearable": false,
-            "disabled": false,
-            "readOnly": false,
             "type": "number",
           },
           "render": [Function],
@@ -402,9 +398,7 @@ describe('index', () => {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {
             "clearable": true,
-            "disabled": false,
             "shape": "radius",
-            "showCancel": false,
           },
           "render": [Function],
         },

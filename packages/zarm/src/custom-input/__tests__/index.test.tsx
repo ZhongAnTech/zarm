@@ -22,7 +22,13 @@ describe('CustomInput', () => {
   it('show clear', () => {
     const onChange = jest.fn();
     const { container } = render(
-      <CustomInput clearable className="custom-input" value="test" onChange={onChange} autoFocus />,
+      <CustomInput
+        clearable
+        className="custom-input"
+        defaultValue="test"
+        onChange={onChange}
+        autoFocus
+      />,
     );
     const clear = container.querySelector('.za-custom-input__clear');
     fireEvent.click(clear!);

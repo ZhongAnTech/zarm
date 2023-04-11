@@ -1,10 +1,11 @@
-import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { CloseCircleFill } from '@zarm-design/icons';
-import { getValue } from './utils';
+import * as React from 'react';
 import { ConfigContext } from '../config-provider';
-import type { BaseInputTextProps, BaseInputTextareaProps } from './interface';
+import { useControllableEventValue } from '../utils/hooks';
+import { resolveOnChange } from '../utils/resolveOnChange';
 import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseInputTextareaProps, BaseInputTextProps } from './interface';
 
 const regexAstralSymbols = /[\uD800-\uDBFF][\uDC00-\uDFFF]|\n/g;
 
@@ -39,6 +40,13 @@ export type InputProps = {
   type?: string;
 } & (InputTextProps | InputTextareaProps);
 
+export interface InputRef {
+  focus: () => void;
+  blur: () => void;
+  clear: () => void;
+  nativeElement: HTMLInputElement | HTMLTextAreaElement | null;
+}
+
 const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
   const {
     type,
@@ -51,10 +59,9 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
     rows,
     className,
     style,
-    value,
-    defaultValue,
     maxLength,
     label,
+    defaultValue = '',
     onChange,
     onBlur,
     onFocus,
@@ -64,20 +71,14 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
   const wrapperRef = (ref as any) || React.createRef<HTMLDivElement>();
   const inputRef = React.useRef<HTMLTextAreaElement | HTMLInputElement>();
 
-  const [currentValue, setCurrentValue] = React.useState(getValue({ value, defaultValue }, ''));
+  const [value, setValue] = useControllableEventValue({ ...props, defaultValue });
   const [focused, setFocused] = React.useState<boolean>(autoFocus!);
-
   const isTextarea = type === 'text' && 'rows' in props;
   let blurFromClear = false;
   let blurTimeout: number;
 
   const showClearIcon =
-    clearable &&
-    !readOnly &&
-    !disabled &&
-    typeof value !== 'undefined' &&
-    typeof onChange !== 'undefined' &&
-    currentValue.length > 0;
+    clearable && !readOnly && !disabled && typeof value !== 'undefined' && value?.length > 0;
 
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('input', { prefixCls });
@@ -101,6 +102,10 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
     inputRef.current!.blur();
   };
 
+  const clear = () => {
+    onInputClear(new Event('click'));
+  };
+
   const onInputBlur = (e) => {
     blurTimeout = window.setTimeout(() => {
       if (!blurFromClear && document.activeElement !== inputRef.current) {
@@ -118,34 +123,18 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
   };
 
   const onInputChange = (e) => {
-    setCurrentValue(e.target.value);
-    onChange?.(e);
+    setValue(e);
   };
 
   const onInputClear = (e) => {
     blurFromClear = true;
-    setCurrentValue('');
+    resolveOnChange(inputRef.current, e, setValue);
     focus();
-
-    if (typeof onChange !== 'function') {
-      return;
-    }
-
-    const event = Object.create(e);
-    const target = inputRef.current!;
-    const originalValue = target.value;
-
-    event.target = target;
-    event.currentTarget = target;
-    target.value = '';
-    onChange(event);
-    // reset target ref value
-    target.value = originalValue;
   };
 
   // 渲染文字长度
   const textLengthRender = showLength && maxLength && (
-    <div className={bem('length')}>{`${countSymbols(currentValue)}/${maxLength}`}</div>
+    <div className={bem('length')}>{`${countSymbols(value)}/${maxLength}`}</div>
   );
 
   const commonProps: InputTextProps & InputTextareaProps = {
@@ -154,17 +143,11 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
     disabled,
     autoFocus,
     readOnly,
-    defaultValue,
+    value,
     onFocus: onInputFocus,
     onBlur: onInputBlur,
+    onChange: onInputChange,
   };
-
-  if ('value' in props) {
-    commonProps.value = currentValue;
-  }
-  if ('onChange' in props) {
-    commonProps.onChange = onInputChange;
-  }
 
   // 渲染输入框
   const inputRender = isTextarea ? (
@@ -185,7 +168,7 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
   );
 
   // 渲染文本内容
-  const textRender = <div className={bem('content')}>{currentValue}</div>;
+  const textRender = <div className={bem('content')}>{value}</div>;
 
   // 渲染标签栏
   const labelRender = !!label && <div className={bem('label')}>{label}</div>;
@@ -198,11 +181,11 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
   React.useImperativeHandle(wrapperRef, () => ({
     focus,
     blur,
+    clear,
+    get nativeElement() {
+      return inputRef.current;
+    },
   }));
-
-  React.useEffect(() => {
-    setCurrentValue(getValue({ value, defaultValue }));
-  }, [value, defaultValue]);
 
   React.useEffect(() => {
     if (!autoHeight) return;

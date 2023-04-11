@@ -47,7 +47,13 @@ export type { ImageCssVars, ImageProps } from './image';
 export { default as ImagePreview } from './image-preview';
 export type { ImagePreviewCssVars, ImagePreviewProps } from './image-preview';
 export { default as Input } from './input';
-export type { InputCssVars, InputProps, InputTextareaProps, InputTextProps } from './input';
+export type {
+  InputCssVars,
+  InputProps,
+  InputRef,
+  InputTextareaProps,
+  InputTextProps,
+} from './input';
 export { default as Keyboard } from './keyboard';
 export type { KeyboardCssVars, KeyboardProps } from './keyboard';
 export { default as KeyboardPicker } from './keyboard-picker';
@@ -62,7 +68,13 @@ export type { MaskCssVars, MaskProps } from './mask';
 export { default as Message } from './message';
 export type { MessageCssVars, MessageProps } from './message';
 export { default as Modal } from './modal';
-export type { ModalCssVars, ModalProps, ModalShowProps, ModalAlertProps, ModalConfirmProps } from './modal';
+export type {
+  ModalAlertProps,
+  ModalConfirmProps,
+  ModalCssVars,
+  ModalProps,
+  ModalShowProps,
+} from './modal';
 export { default as NavBar } from './nav-bar';
 export type { NavBarCssVars, NavBarProps } from './nav-bar';
 export { default as NoticeBar } from './notice-bar';

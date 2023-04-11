@@ -3,8 +3,9 @@ import { Search as SearchIcon } from '@zarm-design/icons';
 import isFunction from 'lodash/isFunction';
 import * as React from 'react';
 import { ConfigContext } from '../config-provider';
-import Input, { InputTextProps } from '../input';
-import { getValue } from '../input/utils';
+import Input, { InputRef, InputTextProps } from '../input';
+import { useControllableEventValue } from '../utils/hooks';
+import { resolveOnChange } from '../utils/resolveOnChange';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type BaseSearchBarProps from './interface';
 
@@ -40,8 +41,7 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
     placeholder,
     showCancel,
     cancelText,
-    defaultValue,
-    value,
+    defaultValue = '',
     onFocus,
     onBlur,
     onChange,
@@ -50,9 +50,9 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
     ...restProps
   } = props;
   const cancelRef = React.useRef<HTMLDivElement>(null);
-  const inputRef = React.useRef<HTMLTextAreaElement | HTMLInputElement>();
+  const inputRef = React.useRef<InputRef>();
   const formRef = React.createRef<HTMLFormElement>();
-  const [currentValue, setCurrentValue] = React.useState(getValue({ value, defaultValue }, ''));
+  const [value, setValue] = useControllableEventValue({ ...props, defaultValue });
   const [isFocus, setIsFocus] = React.useState<boolean>(false);
 
   const { prefixCls, locale: globalLocal } = React.useContext(ConfigContext);
@@ -61,7 +61,7 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
 
   const isShowCancel = React.useMemo(() => {
     if (isFunction(showCancel)) {
-      return showCancel(isFocus, currentValue);
+      return showCancel(isFocus, value);
     }
     return showCancel && isFocus;
   }, [showCancel, isFocus]);
@@ -85,18 +85,18 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
   };
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCurrentValue(e.target.value);
-    onChange?.(e);
+    setValue?.(e);
   };
 
   const onFormSubmit = (e?: React.FormEvent) => {
     e?.preventDefault();
     inputRef.current && inputRef.current.blur();
-    onSubmit?.(currentValue);
+    onSubmit?.(value);
   };
 
-  const onClickCancelButton = (): void => {
-    setCurrentValue('');
+  const onClickCancelButton = (e): void => {
+    resolveOnChange(inputRef.current?.nativeElement, e, setValue);
+
     inputRef.current && inputRef.current.blur();
     onCancel?.();
   };
@@ -106,10 +106,6 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
     blur: inputRef.current?.blur,
     submit: onFormSubmit,
   }));
-
-  React.useEffect(() => {
-    setCurrentValue(getValue({ value, defaultValue }, ''));
-  }, [defaultValue, value]);
 
   const renderCancel = () => {
     return (
@@ -124,18 +120,12 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
   const inputProps: InputTextProps = {
     type: 'search',
     placeholder: placeholder || (locale && locale.placeholder),
-    defaultValue,
+    value,
     onFocus: onInputFocus,
     onBlur: onInputBlur,
+    onChange: onInputChange,
     ...restProps,
   };
-
-  if ('value' in props) {
-    inputProps.value = currentValue;
-  }
-  if ('onChange' in props) {
-    inputProps.onChange = onInputChange;
-  }
 
   return (
     <div className={cls} style={style}>
@@ -152,8 +142,6 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
 
 SearchBar.defaultProps = {
   shape: 'radius',
-  disabled: false,
-  showCancel: false,
   clearable: true,
 };
 
