@@ -22,7 +22,7 @@
   },
   "main": "lib/index.js",
   "module": "es/index.js",
-  "typings": "types/index.d.ts",
+  "typings": "lib/index.d.ts",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -31,11 +31,10 @@
     "lib"
   ],
   "scripts": {
-    "build": "yarn build:types && yarn build:lib && yarn build:es",
-    "build:es": "rimraf es && zarm build --mode es --path src --out-dir es --copy-files",
-    "build:lib": "rimraf lib && zarm build --mode lib --path src --out-dir lib --copy-files",
-    "build:types": "rimraf types && tsc",
-    "clean": "rimraf types lib es dist coverage",
+    "build": "yarn build:lib && yarn build:es",
+    "build:es": "rimraf es && tsc --outDir es && zarm build --mode es --path src --out-dir es --copy-files",
+    "build:lib": "rimraf lib && tsc --outDir lib && zarm build --mode lib --path src --out-dir lib --copy-files",
+    "clean": "rimraf lib es dist coverage",
     "test": "jest --passWithNoTests"
   },
   "devDependencies": {

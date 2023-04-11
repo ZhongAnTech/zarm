@@ -30,7 +30,7 @@
   ],
   "main": "lib/index.js",
   "module": "es/index.js",
-  "typings": "types/index.d.ts",
+  "typings": "lib/index.d.ts",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -42,12 +42,11 @@
     "types"
   ],
   "scripts": {
-    "build": "yarn build:types && yarn build:lib && yarn build:es && yarn build:umd",
-    "build:es": "rimraf es && zarm build --mode es --path src --out-dir es --copy-files --build-css",
-    "build:lib": "rimraf lib && zarm build --mode lib --path src --out-dir lib --copy-files --build-css",
-    "build:types": "rimraf types && tsc",
+    "build": "yarn build:lib && yarn build:es && yarn build:umd",
+    "build:es": "rimraf es && tsc --outDir es && zarm build --mode es --path src --out-dir es --copy-files --build-css",
+    "build:lib": "rimraf lib && tsc --outDir lib && zarm build --mode lib --path src --out-dir lib --copy-files --build-css",
     "build:umd": "rimraf dist && zarm build --mode umd --path src/style/entry.ts,src/index.ts --out-dir dist --library-name zarm && zarm build --mode umd-ugly --path src/style/entry.ts,src/index.ts --out-dir dist --library-name zarm",
-    "clean": "rimraf types lib es dist coverage",
+    "clean": "rimraf lib es dist coverage",
     "coverage": "rimraf coverage && yarn test -c",
     "install-react-16": "yarn add react@16 react-dom@16 enzyme-adapter-react-16",
     "lint": "yarn lint:tsc && yarn lint:script && yarn lint:style",

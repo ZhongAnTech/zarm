@@ -21,8 +21,8 @@
     "types"
   ],
   "scripts": {
-    "build": "rimraf dist/ && tsc --build --force",
-    "clean": "rimraf dist/ && tsc --build --clean",
+    "build": "yarn clean && tsc --build --force",
+    "clean": "rimraf dist",
     "dev": "tsc -w",
     "prepare": "yarn build",
     "test": "jest"

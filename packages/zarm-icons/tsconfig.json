@@ -2,7 +2,6 @@
   "extends": "../../tsconfig",
   "compilerOptions": {
     "jsx": "react",
-    "outDir": "types",
     "declaration": true,
     "emitDeclarationOnly": true
   },
