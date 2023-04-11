@@ -1,6 +1,6 @@
 {
   "name": "@zarm-design/bem",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "bem struct",
   "keywords": [
     "bem",
@@ -38,6 +38,6 @@
     "test": "jest --passWithNoTests"
   },
   "devDependencies": {
-    "@zarm-design/cli": "^0.0.45"
+    "@zarm-design/cli": "^0.0.46"
   }
 }
