@@ -63,26 +63,26 @@ const siteMap = {
   //     },
   //   ]
   // },
-  // feedback: {
-  //   title: '操作反馈',
-  //   components: [
-  //     // {
-  //     //   key: 'ActionSheet',
-  //     //   name: '动作面板',
-  //     //   page: '/pages/action-sheet/index',
-  //     // },
-  //     {
-  //       key: 'Popup',
-  //       name: '动作面板',
-  //       page: '/pages/popup/index',
-  //     },
-  //     // {
-  //     //   key: 'Message',
-  //     //   name: '消息',
-  //     //   page: '/pages/message/index',
-  //     // },
-  //   ]
-  // },
+  feedback: {
+    title: '操作反馈',
+    components: [
+      // {
+      //   key: 'ActionSheet',
+      //   name: '动作面板',
+      //   page: '/pages/action-sheet/index',
+      // },
+      {
+        key: 'Popup',
+        name: '动作面板',
+        page: '/pages/popup/index',
+      },
+      // {
+      //   key: 'Message',
+      //   name: '消息',
+      //   page: '/pages/message/index',
+      // },
+    ]
+  },
   // navigation: {
   //   title: '导航',
   //   components: [

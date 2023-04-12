@@ -1,5 +1,6 @@
 const path = require('path');
 
+console.log(path.resolve(__dirname, '../'));
 
 let alias = {
   // 'zarm/mini': path.resolve(__dirname, '../', '../zarm/src'),
@@ -11,6 +12,8 @@ let alias = {
 if (process.env.TARO_ENV === 'weapp') {
   alias = {
     ...alias,
+    'react-dom': path.resolve(__dirname, '../', 'node_modules/@tarojs/react'),
+    // 'react-dom/client': path.resolve(__dirname, '../', 'node_modules/react-dom'),
     '@tarojs/components': path.resolve(__dirname, '../', `node_modules/@tarojs/plugin-platform-${process.env.TARO_ENV }/dist/components-react`),
   };
 }
