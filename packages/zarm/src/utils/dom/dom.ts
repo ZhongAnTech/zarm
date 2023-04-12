@@ -4,6 +4,7 @@ import { StringPropertyNames } from '../utilityTypes';
 
 export const canUseDOM = !!(
   typeof window !== 'undefined' &&
+  typeof document !== 'undefined' &&
   window.document &&
   window.document.createElement
 );
@@ -208,14 +209,14 @@ export function scrollTo(
   left: number,
   duration: number,
 ) {
-  if ("scrollBehavior" in document.documentElement.style) {
+  if ('scrollBehavior' in document.documentElement.style) {
     scrollContainer.scrollTo({
       top,
       left,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
     return false;
-  };
+  }
   if (scrollList?.[scrollRafId] === scrollContainer) {
     raf.cancel(scrollRafId);
   }

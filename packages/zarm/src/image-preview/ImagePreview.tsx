@@ -12,6 +12,7 @@ import type { HTMLProps } from '../utils/utilityTypes';
 import formatImages from './utils/formatImages';
 import LOAD_STATUS from './utils/loadStatus';
 import showOriginButton from './utils/showOriginButton';
+import { canUseDOM } from '../utils/dom';
 
 export interface ImagePreviewCssVars {
   '--footer-padding'?: React.CSSProperties['padding'];
@@ -22,8 +23,8 @@ export interface ImagePreviewCssVars {
 export type ImagePreviewProps = BaseImagePreviewProps & HTMLProps<ImagePreviewCssVars>;
 
 const imageStyle = {
-  maxWidth: window?.innerWidth <= window?.innerHeight ? window?.innerWidth : undefined,
-  maxHeight: window?.innerHeight <= window?.innerWidth ? window?.innerHeight : undefined,
+  maxWidth: canUseDOM && window?.innerWidth <= window?.innerHeight ? window?.innerWidth : undefined,
+  maxHeight: canUseDOM && window?.innerHeight <= window?.innerWidth ? window?.innerHeight : undefined,
 };
 
 const Content: React.FC<{ minScale: number; maxScale: number; imgSrc: string }> = (props) => {
