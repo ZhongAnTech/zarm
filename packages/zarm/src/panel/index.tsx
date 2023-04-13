@@ -3,7 +3,6 @@ import React from 'react';
 import { ConfigContext } from '../config-provider';
 import type { BasePanelProps } from './interface';
 
-
 export interface PanelCssVars {
   '--header-padding'?: React.CSSProperties['padding'];
   '--header-font-size'?: React.CSSProperties['fontSize'];
@@ -20,7 +19,6 @@ export type PanelProps = Omit<React.ComponentPropsWithRef<'div'>, 'title'> &
     style?: Partial<PanelCssVars>;
   };
 
-
 const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
   const { className, title, more, spacing, bordered, children, ...restProps } = props;
 
@@ -33,8 +31,8 @@ const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
     <div className={cls} ref={ref} {...restProps}>
       {(title || more) && (
         <div className={bem('header')}>
-          {title && <div className={bem('header__title')}>{title}</div>}
-          {more && <div className={bem('header__more')}>{more}</div>}
+          {title && <div className={bem('title')}>{title}</div>}
+          {more && <div className={bem('more')}>{more}</div>}
         </div>
       )}
       <div className={bem('body')}>{children}</div>
