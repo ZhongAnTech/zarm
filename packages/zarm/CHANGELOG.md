@@ -1,5 +1,19 @@
 # 版本更新日志
 
+## v3.0.13
+
+- Bug Fix
+
+  - [ImagePreview] 修复服务端渲染报错 [#1087](https://github.com/ZhongAnTech/zarm/pull/1087)
+
+## v3.0.12
+
+- Bug Fix
+
+  - [Panel] `title` 或 `more` 属性未声明不再渲染 header 节点 [#1085](https://github.com/ZhongAnTech/zarm/pull/1085)
+  - [Input] 修复受控模式下表单值显示不正确 [#1086](https://github.com/ZhongAnTech/zarm/pull/1086)
+  - [DateSelect] 修复按需加载样式文件丢失 [#1083](https://github.com/ZhongAnTech/zarm/pull/1083)
+
 ## v3.0.11
 
 - Bug Fix
