@@ -33,7 +33,7 @@
   export default App;
 ```
 
-- 组件提示/确认框的确认文案 API 统一为 `onOk`，`onConfirm` 等类似 API 都会被替换。
+- 组件提示/确认框的确认文案 API 统一为 `onConfirm`，`onOk` 等类似 API 都会被替换。
   - Modal.(alert|confirm)
   - Picker
   - DatePicker
