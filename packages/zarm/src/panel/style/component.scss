@@ -14,8 +14,15 @@
     font-size: var(--header-font-size);
     color: var(--header-color);
 
-    &__title {
+    &-title {
       flex: 1;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    &-more {
+      margin-left: auto;
     }
   }
 
