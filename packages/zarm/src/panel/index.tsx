@@ -31,8 +31,8 @@ const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
     <div className={cls} ref={ref} {...restProps}>
       {(title || more) && (
         <div className={bem('header')}>
-          {title && <div className={bem('header-title')}>{title}</div>}
-          {more && <div className={bem('header-more')}>{more}</div>}
+          {title && <div className={bem('title')}>{title}</div>}
+          {more && <div className={bem('more')}>{more}</div>}
         </div>
       )}
       <div className={bem('body')}>{children}</div>

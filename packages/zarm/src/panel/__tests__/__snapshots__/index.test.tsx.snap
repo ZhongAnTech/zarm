@@ -8,12 +8,12 @@ exports[`Panel snapshots with title and more props 1`] = `
     class="za-panel__header"
   >
     <div
-      class="za-panel__header-title"
+      class="za-panel__title"
     >
       title
     </div>
     <div
-      class="za-panel__header-more"
+      class="za-panel__more"
     >
       more
     </div>
