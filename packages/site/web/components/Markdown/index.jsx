@@ -43,13 +43,13 @@ export default (props) => {
           : code;
 
       if (!isComponentPage(component.key)) {
-        return `<pre><code class="language-${language}">${highlightCode}</code></pre>`;
+        return `<pre class="language-${language}">${highlightCode}</pre>`;
       }
 
       return Codesanbox({
         code,
         component,
-        preview: `<pre><code class="language-${language}">${highlightCode}</code></pre>`,
+        preview: `<pre class="language-${language}">${highlightCode}</pre>`,
         formatMessage: intl.formatMessage,
       });
     },

@@ -11,7 +11,7 @@
     border-bottom: 1px dashed #f3f3f3;
     padding-right: 12px;
 
-    .za-button {
+    button {
       color: #999;
       align-items: center;
       display: flex;
@@ -39,7 +39,7 @@
 
 .markdown {
   line-height: 2;
-  font-size: 14px;
+  font-size: 16px;
   color: #1f2d3d;
 
   a {
@@ -81,22 +81,7 @@
   h2,
   h3,
   h4 {
-    font-weight: normal;
-  }
-
-  h1 {
-    font-size: 28px;
-  }
-
-  h2 {
-    font-size: 24px;
-    line-height: 32px;
-    margin: 1.6em 0 0.6em;
-  }
-
-  h3 {
-    font-size: 18px;
-    margin: 1.6em 0 0.6em;
+    font-weight: 500;
   }
 
   blockquote {
@@ -106,6 +91,15 @@
     border-left: 4px solid #dfe2e5;
   }
 
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    padding: 0.2em 0.4em;
+    margin: 0;
+    font-size: 85%;
+    background-color: rgba(175, 184, 193, 0.2);
+    border-radius: 6px;
+  }
+
   table.grid {
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
     width: 100%;
@@ -113,15 +107,6 @@
     font-size: 14px;
     border-collapse: collapse;
     border-spacing: 0;
-
-    code {
-      font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-      padding: 0.2em 0.4em;
-      margin: 0;
-      font-size: 85%;
-      background-color: rgba(175, 184, 193, 0.2);
-      border-radius: 6px;
-    }
 
     strong {
       font-weight: normal;
