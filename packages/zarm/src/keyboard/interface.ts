@@ -16,4 +16,5 @@ export interface KeyBoardDataSource {
 export interface BaseKeyBoardProps {
   type?: 'number' | 'price' | 'idcard';
   onKeyClick?: (key: KeyBoardKey['value']) => void;
+  dataSource?: KeyBoardDataSource;
 }

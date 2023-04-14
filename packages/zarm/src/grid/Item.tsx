@@ -1,5 +1,5 @@
-import classnames from 'classnames';
 import * as React from 'react';
+import { createBEM } from '@zarm-design/bem';
 import { ConfigContext } from '../config-provider';
 import type { HTMLProps } from '../utils/utilityTypes';
 import GridContext from './GridContext';
@@ -12,8 +12,8 @@ export type GridItemProps = HTMLProps & {
 const GridItem: React.FC<GridItemProps> = (props) => {
   const { className, style, onClick, children } = props;
   const { columns, gutter, bordered, square } = React.useContext(GridContext);
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-grid-item`;
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('grid-item', { prefixCls });
 
   const percent = `${100 / +columns!}%`;
 
@@ -37,19 +37,17 @@ const GridItem: React.FC<GridItemProps> = (props) => {
     mergedStyle.paddingRight = verticalGutter;
   }
 
-  const classes = classnames(
-    prefixCls,
-    {
-      [`${prefixCls}--clickable`]: !!onClick,
-      [`${prefixCls}--horizontal-bordered`]: bordered && horizontalGutter,
-      [`${prefixCls}--vertical-bordered`]: bordered && verticalGutter,
-    },
-    className,
-  );
+  console.log(bordered && horizontalGutter, bordered && verticalGutter);
+
+  const cls = bem([{
+    clickable: !!onClick,
+    'horizontal-bordered': bordered && horizontalGutter > 0,
+    'vertical-bordered': bordered && verticalGutter > 0,
+  }, className]);
 
   return (
-    <div className={classes} style={{ ...mergedStyle, ...style }} onClick={onClick}>
-      <div className={`${prefixCls}__content`}>{children}</div>
+    <div className={cls} style={{ ...mergedStyle, ...style }} onClick={onClick}>
+      <div className={bem('content')}>{children}</div>
     </div>
   );
 };
