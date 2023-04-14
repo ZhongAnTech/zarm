@@ -391,7 +391,25 @@ DatePicker.prompt().then((value) => {
 
 year | month | day | meridiem | hour | minute | second | week | week-day
 
-## DatePicker CSS 变量
+## CSS 变量
+
+### DatePickerView
+
+| 属性                                | 默认值                          | 说明                 |
+| :---------------------------------- | :------------------------------ | :------------------- |
+| --background                        | '#fff'                          | 内容区域背景         |
+| --padding                           | '16px'                          | 内容区域内边距       |
+| --mask-start-background             | 'rgba(255, 255, 255, 0.4)'      | 内容区域头部蒙层背景 |
+| --mask-end-background               | 'rgba(255, 255, 255, 0.8)'      | 内容区域底部蒙层背景 |
+| --wheel-item-rows                   | 5                               | 滚轮元素长度         |
+| --wheel-item-height                 | '34px'                          | 滚轮元素高度         |
+| --wheel-item-font-size              | '20px'                          | 滚轮元素文字大小     |
+| --wheel-item-text-color             | 'var(--za-color-text)'          | 滚轮元素文字颜色     |
+| --wheel-item-disabled-text-color    | 'var(--za-color-text-disabled)' | 滚轮元素文字禁用颜色 |
+| --wheel-item-selected-background    | 'rgba(116, 116, 128, 0.08)'     | 滚轮元素文字选中背景 |
+| --wheel-item-selected-border-radius | '7px'                           | 滚轮元素文字选中圆角 |
+
+### DatePicker
 
 | 属性                                | 默认值                          | 说明                 |
 | :---------------------------------- | :------------------------------ | :------------------- |
@@ -413,7 +431,7 @@ year | month | day | meridiem | hour | minute | second | week | week-day
 | --wheel-item-selected-background    | 'rgba(116, 116, 128, 0.08)'     | 滚轮元素文字选中背景 |
 | --wheel-item-selected-border-radius | '7px'                           | 滚轮元素文字选中圆角 |
 
-## DateSelect CSS 变量
+### DateSelect
 
 | 属性                | 默认值                             | 说明               |
 | :------------------ | :--------------------------------- | :----------------- |
@@ -424,19 +442,3 @@ year | month | day | meridiem | hour | minute | second | week | week-day
 | --arrow-color       | 'var(--za-arrow-color)'            | 输入框箭头         |
 | --arrow-size        | 'var(--za-arrow-size)'             | 输入框箭头尺寸     |
 | --arrow-width       | 'var(--za-arrow-width)'            | 输入框箭头宽度     |
-
-## DatePickerView CSS 变量
-
-| 属性                                | 默认值                          | 说明                 |
-| :---------------------------------- | :------------------------------ | :------------------- |
-| --background                        | '#fff'                          | 内容区域背景         |
-| --padding                           | '16px'                          | 内容区域内边距       |
-| --mask-start-background             | 'rgba(255, 255, 255, 0.4)'      | 内容区域头部蒙层背景 |
-| --mask-end-background               | 'rgba(255, 255, 255, 0.8)'      | 内容区域底部蒙层背景 |
-| --wheel-item-rows                   | 5                               | 滚轮元素长度         |
-| --wheel-item-height                 | '34px'                          | 滚轮元素高度         |
-| --wheel-item-font-size              | '20px'                          | 滚轮元素文字大小     |
-| --wheel-item-text-color             | 'var(--za-color-text)'          | 滚轮元素文字颜色     |
-| --wheel-item-disabled-text-color    | 'var(--za-color-text-disabled)' | 滚轮元素文字禁用颜色 |
-| --wheel-item-selected-background    | 'rgba(116, 116, 128, 0.08)'     | 滚轮元素文字选中背景 |
-| --wheel-item-selected-border-radius | '7px'                           | 滚轮元素文字选中圆角 |

@@ -200,7 +200,7 @@ import { ReactComponent as YourSvg } from 'path/to/yourSvg.svg'; // path to your
 ReactDOM.render(<Icon component={YourSvg} />, mountNode);
 ```
 
-### 使用`font` 模式
+### 使用 `font` 模式
 需要手动引入样式文件
 ```
   @import "@zarm-design/icons/style/font";

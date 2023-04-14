@@ -356,7 +356,9 @@ Cascader.prompt({
 | label    | React.ReactNode  | -      | 选项显示名称 |
 | children | CascaderOption[] | -      | 子选项       |
 
-## Cascader CSS 变量
+## CSS 变量
+
+### Cascader
 
 | 属性                       | 默认值                         | 说明                 |
 | :------------------------- | :----------------------------- | :------------------- |
@@ -367,7 +369,7 @@ Cascader.prompt({
 | --header-submit-text-color | 'var(--za-theme-primary)'      | 头部提交按钮文字颜色 |
 | --header-cancel-text-color | 'var(--za-color-text-caption)' | 头部取消按钮文字颜色 |
 
-## CascaderView CSS 变量
+### CascaderView
 
 | 属性                       | 默认值                             | 说明             |
 | :------------------------- | :--------------------------------- | :--------------- |
