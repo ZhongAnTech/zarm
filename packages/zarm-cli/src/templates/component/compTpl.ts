@@ -1,25 +1,24 @@
 import { paramCase } from 'change-case';
 
-export default (compName) => `import * as React from 'react';
-import classnames from 'classnames';
+export default (compName) => `import { forwardRef, useContext } from 'react';
+import { createBEM } from '@zarm-design/bem';
 import { ConfigContext } from '../config-provider';
+import type { HTMLProps } from '../utils/utilityTypes';
 import type { Base${compName}Props } from './interface';
 
-export interface ${compName}Props extends Base${compName}Props {
-  className?: string;
+export interface ${compName}CssVars {
 }
 
-const ${compName} = React.forwardRef<unknown, ${compName}Props>((props, ref) => {
+export type ${compName}Props = Base${compName}Props & HTMLProps<${compName}CssVars>;
+
+const ${compName} = forwardRef<HTMLDivElement, ${compName}Props>((props, ref) => {
   const { className, children, ...restProps } = props;
-
-  const compRef = (ref as any) || React.createRef<HTMLDivElement>();
-
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = \`\${globalPrefixCls}-${paramCase(compName)}\`;
-  const cls = classnames(prefixCls, className);
+  const { prefixCls } = useContext(ConfigContext);
+  const bem = createBEM('${paramCase(compName)}', { prefixCls });
+  const cls = bem([className]);
 
   return (
-    <div ref={compRef} className={cls} {...restProps}>
+    <div ref={ref} className={cls} {...restProps}>
       {children}
     </div>
   );

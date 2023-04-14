@@ -1,26 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`templates component should create component template 1`] = `
-"import * as React from 'react';
-import classnames from 'classnames';
+"import { forwardRef, useContext } from 'react';
+import { createBEM } from '@zarm-design/bem';
 import { ConfigContext } from '../config-provider';
+import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseMyTestComponentProps } from './interface';
 
-export interface MyTestComponentProps extends BaseMyTestComponentProps {
-  className?: string;
+export interface MyTestComponentCssVars {
 }
 
-const MyTestComponent = React.forwardRef<unknown, MyTestComponentProps>((props, ref) => {
+export type MyTestComponentProps = BaseMyTestComponentProps & HTMLProps<MyTestComponentCssVars>;
+
+const MyTestComponent = forwardRef<HTMLDivElement, MyTestComponentProps>((props, ref) => {
   const { className, children, ...restProps } = props;
-
-  const compRef = (ref as any) || React.createRef<HTMLDivElement>();
-
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = \`\${globalPrefixCls}-my-test-component\`;
-  const cls = classnames(prefixCls, className);
+  const { prefixCls } = useContext(ConfigContext);
+  const bem = createBEM('my-test-component', { prefixCls });
+  const cls = bem([className]);
 
   return (
-    <div ref={compRef} className={cls} {...restProps}>
+    <div ref={ref} className={cls} {...restProps}>
       {children}
     </div>
   );
@@ -67,13 +66,18 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
+
+## CSS 变量
+
+| 属性 | 默认值 | 说明 |
+| :--- | :--- | :--- |
 "
 `;
 
 exports[`templates component should create index template 1`] = `
 "import MyTestComponent from './MyTestComponent';
 
-export type { MyTestComponentProps } from './MyTestComponent';
+export type { MyTestComponentProps, MyTestComponentCssVars } from './MyTestComponent';
 
 export default MyTestComponent;
 "
