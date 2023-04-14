@@ -57,14 +57,14 @@ export interface TabsCssVars {
   '--padding-horizontal'?: React.CSSProperties['left'];
   '--padding-vertical'?: React.CSSProperties['top'];
 }
-export type TabsProps = BaseTabsProps & React.PropsWithChildren<HTMLProps<TabsCssVars>>;
+export type TabsProps = BaseTabsProps & HTMLProps<TabsCssVars>;
 
 interface CompoundedComponent
   extends React.ForwardRefExoticComponent<TabsProps & React.RefAttributes<HTMLDivElement>> {
   Panel: typeof TabPanel;
 }
 
-const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
+const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
   const {
     className,
     style,
@@ -79,7 +79,6 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
     children,
   } = props;
 
-  const tabsRef = (ref as any) || React.createRef<HTMLDivElement>();
   const carouselRef = React.useRef<CarouselHTMLElement>(null);
   const tablistRef = React.useRef<HTMLUListElement>(null);
   const [itemWidth, setItemWidth] = React.useState(0);
@@ -245,7 +244,7 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
   }, [value, defaultValue, children]);
 
   return (
-    <div className={classes} style={style} ref={tabsRef}>
+    <div ref={ref} className={classes} style={style}>
       <div className={bem('header')}>
         <ul className={bem('tablist')} role="tablist" ref={tablistRef}>
           {tabsRender}

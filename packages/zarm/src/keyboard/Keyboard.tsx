@@ -1,37 +1,33 @@
 import { createBEM } from '@zarm-design/bem';
-import { DeleteKey as DeleteKeyIcon, Keyboard as KeyboardIcon } from '@zarm-design/icons';
-import * as React from 'react';
+import React, { DeleteKey as DeleteKeyIcon, Keyboard as KeyboardIcon } from '@zarm-design/icons';
+import { CSSProperties, forwardRef, useContext, useRef, ReactNode, useCallback } from 'react';
 import { ConfigContext } from '../config-provider';
 import useLongPress from '../use-long-press';
 import { useLatest } from '../utils/hooks';
 import type { HTMLProps } from '../utils/utilityTypes';
 import BuildInConfig from './BuildInConfig';
-import type { BaseKeyBoardProps, KeyBoardDataSource, KeyBoardKey } from './interface';
+import type { BaseKeyBoardProps, KeyBoardKey } from './interface';
 
 export interface KeyboardCssVars {
-  '--background'?: React.CSSProperties['background'];
-  '--item-background'?: React.CSSProperties['background'];
-  '--item-active-background'?: React.CSSProperties['background'];
-  '--item-gap'?: React.CSSProperties['gap'];
-  '--item-height'?: React.CSSProperties['height'];
-  '--item-font-size'?: React.CSSProperties['fontSize'];
-  '--item-border-radius'?: React.CSSProperties['borderRadius'];
-  '--item-box-shadow'?: React.CSSProperties['boxShadow'];
-  '--ok-background'?: React.CSSProperties['background'];
-  '--ok-font-size'?: React.CSSProperties['fontSize'];
-  '--ok-text-color'?: React.CSSProperties['color'];
+  '--background'?: CSSProperties['background'];
+  '--item-background'?: CSSProperties['background'];
+  '--item-active-background'?: CSSProperties['background'];
+  '--item-gap'?: CSSProperties['gap'];
+  '--item-height'?: CSSProperties['height'];
+  '--item-font-size'?: CSSProperties['fontSize'];
+  '--item-border-radius'?: CSSProperties['borderRadius'];
+  '--item-box-shadow'?: CSSProperties['boxShadow'];
+  '--ok-background'?: CSSProperties['background'];
+  '--ok-font-size'?: CSSProperties['fontSize'];
+  '--ok-text-color'?: CSSProperties['color'];
 }
 
-export type KeyboardProps = BaseKeyBoardProps &
-  HTMLProps & {
-    dataSource?: KeyBoardDataSource;
-  };
+export type KeyboardProps = BaseKeyBoardProps & HTMLProps<KeyboardCssVars>;
 
-const Keyboard = React.forwardRef<unknown, KeyboardProps>((props, ref) => {
+const Keyboard = forwardRef<HTMLDivElement, KeyboardProps>((props, ref) => {
   const { className, style, type, dataSource, onKeyClick, ...restProps } = props;
-  const keyboardRef = (ref as any) || React.createRef<HTMLDivElement>();
 
-  const { locale: globalLocal, prefixCls } = React.useContext(ConfigContext);
+  const { locale: globalLocal, prefixCls } = useContext(ConfigContext);
   const locale = globalLocal?.Keyboard;
 
   const bem = createBEM('keyboard', { prefixCls });
@@ -51,7 +47,7 @@ const Keyboard = React.forwardRef<unknown, KeyboardProps>((props, ref) => {
     }
   };
 
-  const timerRef = React.useRef(0);
+  const timerRef = useRef(0);
   const onKeyPressRef = useLatest(onKeyPress);
 
   const longPressEvent = useLongPress({
@@ -69,8 +65,8 @@ const Keyboard = React.forwardRef<unknown, KeyboardProps>((props, ref) => {
     onClear: () => clearInterval(timerRef.current),
   });
 
-  const renderKey = React.useCallback((text: React.ReactNode | KeyBoardKey, index: number) => {
-    const keyObj: React.ReactNode | KeyBoardKey = (
+  const renderKey = useCallback((text: ReactNode | KeyBoardKey, index: number) => {
+    const keyObj: ReactNode | KeyBoardKey = (
       typeof text === 'object' ? text : { text }
     ) as KeyBoardKey;
 
@@ -137,13 +133,13 @@ const Keyboard = React.forwardRef<unknown, KeyboardProps>((props, ref) => {
 
   return (
     <div
-      {...restProps}
-      ref={keyboardRef}
+      ref={ref}
       className={cls}
       style={{ gridTemplateColumns, ...style }}
       onClick={(e) => {
         e.stopPropagation();
       }}
+      {...restProps}
     >
       {(getKeyConfig.keys || []).map(renderKey)}
     </div>

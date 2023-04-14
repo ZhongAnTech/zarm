@@ -164,7 +164,7 @@ const Popper = forwardRef<refHander, PopperProps>((props, ref) => {
           <div
             {...getFloatingProps({
               ref: setNodeRef,
-              className: bem([props.className, className, { [`${direction}`]: true }]),
+              className: bem([{ [`${direction}`]: true }, props.className, className]),
               style: {
                 ...props.style,
                 ...style,
