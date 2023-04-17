@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`templates component should create component template 1`] = `
-"import { forwardRef, useContext } from 'react';
+"import React, { forwardRef, useContext } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { ConfigContext } from '../config-provider';
 import type { HTMLProps } from '../utils/utilityTypes';
@@ -30,7 +30,6 @@ MyTestComponent.displayName = 'MyTestComponent';
 MyTestComponent.defaultProps = {};
 
 export default MyTestComponent;
-
 "
 `;
 

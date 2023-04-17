@@ -2,16 +2,13 @@
 
 exports[`templates test should create test template 1`] = `
 "import * as React from 'react';
-import { render } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 import MyTestComponent from '../index';
 
 describe('MyTestComponent', () => {
-  it('renders correctly', () => {
-    const wrapper = render(
-      <MyTestComponent />,
-    );
-    expect(toJson(wrapper)).toMatchSnapshot();
+  it('should renders correctly', () => {
+    const { asFragment } = render(<MyTestComponent />);
+    expect(asFragment().firstChild).toMatchSnapshot();
   });
 });
 "
