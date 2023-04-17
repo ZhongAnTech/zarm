@@ -192,12 +192,12 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
   };
 
   const cls = bem([
-    className,
     {
       disabled,
       vertical,
       marked: showMark,
     },
+    className,
   ]);
 
   const ratio = (currentValue - min!) / (max! - min!);

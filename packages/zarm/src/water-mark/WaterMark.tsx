@@ -1,8 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { createBEM } from '@zarm-design/bem';
 import { useMutationObserverRef } from '../utils/hooks';
 import { ConfigContext } from '../config-provider';
 import type { BaseWaterMarkProps } from './interface';
+import type { HTMLProps } from '../utils/utilityTypes';
 import {
   WATERMARK_DEFAULT_STYLES,
   TEXT_STYLE_DEFAULT,
@@ -12,9 +14,7 @@ import {
 import { draw, isContainNode, getUUID, compareUUID, plainStyle } from './utils';
 import { noop } from '../utils';
 
-export interface WaterMarkProps extends BaseWaterMarkProps {
-  style?: React.CSSProperties;
-}
+export type WaterMarkProps = BaseWaterMarkProps & HTMLProps;
 
 const MUTATION_OBSERVER_CONFIG = {
   childList: true,
@@ -25,11 +25,11 @@ const MUTATION_OBSERVER_CONFIG = {
 
 const WaterMark: React.FC<WaterMarkProps> = (props) => {
   const uuid = React.useRef(getUUID());
-  const { text, image, mode, monitor, children } = props;
+  const { className, text, image, mode, monitor, children } = props;
   const watermark = React.useRef<HTMLDivElement>(null);
   const [styles, setStyels] = React.useState<React.CSSProperties>(WATERMARK_DEFAULT_STYLES);
-  const { prefixCls: globalPrefixCls } = React.useContext(ConfigContext);
-  const prefixCls = `${globalPrefixCls}-water-mark`;
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('water-mark', { prefixCls });
 
   const textStyle = { ...TEXT_STYLE_DEFAULT!, ...props.textStyle };
   const imageStyle = { ...IMAGE_STYLE_DEFAULT!, ...props.imageStyle };
@@ -151,7 +151,7 @@ const WaterMark: React.FC<WaterMarkProps> = (props) => {
 
   if (isContains)
     return (
-      <div className={`${prefixCls}-wrapper`}>
+      <div className={bem([className])}>
         {children}
         {element}
       </div>

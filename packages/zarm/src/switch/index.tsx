@@ -28,13 +28,7 @@ const Switch = React.forwardRef<HTMLDivElement, SwitchProps>((props, ref) => {
 
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('switch', { prefixCls });
-
-  const cls = bem([
-    className,
-    {
-      disabled,
-    },
-  ]);
+  const cls = bem([{ disabled }, className]);
 
   const onInputChange = () => {
     const newChecked = !currentChecked;
