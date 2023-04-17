@@ -1,6 +1,6 @@
 import { paramCase } from 'change-case';
 
-export default (compName) => `import { forwardRef, useContext } from 'react';
+export default (compName) => `import React, { forwardRef, useContext } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { ConfigContext } from '../config-provider';
 import type { HTMLProps } from '../utils/utilityTypes';
@@ -29,5 +29,4 @@ ${compName}.displayName = '${compName}';
 ${compName}.defaultProps = {};
 
 export default ${compName};
-
 `;

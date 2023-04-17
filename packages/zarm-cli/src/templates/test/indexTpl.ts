@@ -1,14 +1,11 @@
 export default (compName) => `import * as React from 'react';
-import { render } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 import ${compName} from '../index';
 
 describe('${compName}', () => {
-  it('renders correctly', () => {
-    const wrapper = render(
-      <${compName} />,
-    );
-    expect(toJson(wrapper)).toMatchSnapshot();
+  it('should renders correctly', () => {
+    const { asFragment } = render(<${compName} />);
+    expect(asFragment().firstChild).toMatchSnapshot();
   });
 });
 `;

@@ -1,5 +1,6 @@
-export default (compName) => `export interface Base${compName}Props {
+export default (compName) => `import { ReactNode } from 'react';
 
+export interface Base${compName}Props {
+  children?: ReactNode;
 }
-
 `;
