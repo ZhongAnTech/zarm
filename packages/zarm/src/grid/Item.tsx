@@ -37,8 +37,6 @@ const GridItem: React.FC<GridItemProps> = (props) => {
     mergedStyle.paddingRight = verticalGutter;
   }
 
-  console.log(bordered && horizontalGutter, bordered && verticalGutter);
-
   const cls = bem([{
     clickable: !!onClick,
     'horizontal-bordered': bordered && horizontalGutter > 0,
