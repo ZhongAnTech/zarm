@@ -183,8 +183,8 @@ export const getMountContainer = (mountContainer?: ContainerType): HTMLElement =
     if (typeof mountContainer === 'function') {
       return mountContainer();
     }
-    if (typeof mountContainer === 'object' && mountContainer instanceof HTMLElement) {
-      return mountContainer;
+    if (typeof mountContainer === 'object') {
+      return mountContainer as HTMLElement;
     }
   }
   return document.body;
