@@ -1,5 +1,11 @@
 # 版本更新日志
 
+## v2.9.18
+
+- Bug Fix
+
+  - 修复 iframe 中设置 `mountContainer` 为父节点时无法设置成功的问题。[#1093](https://github.com/ZhongAnTech/zarm/issues/1093)
+
 ## v2.9.17
 
 - Bug Fix
