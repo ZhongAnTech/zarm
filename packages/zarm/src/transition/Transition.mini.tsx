@@ -45,6 +45,7 @@ const Transition: React.FC<TransitionProps> = (props) => {
     onLeaveActive,
     onLeaveEnd,
   } = props;
+
   const nodeRef = React.useRef<HTMLElement | null>();
   const [state, setState] = React.useState(TransitionState.UNMOUNTED);
 
@@ -74,7 +75,9 @@ const Transition: React.FC<TransitionProps> = (props) => {
   };
 
   const setNodeRef = (node: HTMLElement | null) => {
-    nodeRef.current = node;
+    if (node) {
+      nodeRef.current = node;
+    }
   };
 
   return (

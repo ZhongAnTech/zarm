@@ -2,11 +2,15 @@
 import raf from 'raf';
 import { StringPropertyNames } from '../utilityTypes';
 
+/*
+  window.SVGElement 区分小程序和浏览器，小程序不支持renderContainer，直接返回node
+*/
 export const canUseDOM = !!(
   typeof window !== 'undefined' &&
   typeof document !== 'undefined' &&
   window.document &&
-  window.document.createElement
+  window.document.createElement &&
+  window.SVGElement
 );
 
 // 获取元素的纵坐标（相对于窗口）

@@ -19,26 +19,8 @@
   padding-bottom: 60px;
 }
 
-.list {
-  &-item {
-    display: flex;
-    height: 88px;
-    align-items: center;
-    background-color: #fff;
-    font-size: 28px;
-    // margin-left: 30px;
-    padding: 0 15px;
-    color: #333;
-    border-bottom: 1px solid #e6e6e6;
-
-    &:last-child {
-      border: none;
-    }
-
-    .zh {
-      font-size: 26px;
-      color: #999;
-      padding-left: 10px;
-    }
-  }
+.zh {
+  font-size: 26px;
+  color: #999;
+  padding-left: 10px;
 }

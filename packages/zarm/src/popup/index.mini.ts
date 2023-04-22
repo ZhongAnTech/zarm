@@ -1,7 +1,7 @@
 
-import Popup from './Popup.mini';
+import Popup from './Popup';
 
-export type { PopupProps } from './Popup.mini';
+export type { PopupProps } from './Popup';
 
 export default Popup;
 
