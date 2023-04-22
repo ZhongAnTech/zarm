@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from '@tarojs/components'
 import Taro from '@tarojs/taro';
-import { Panel } from 'zarm/mini';
+import { Panel, List } from 'zarm/mini';
 import siteMap from '../../site';
 
 import './index.scss'
@@ -12,13 +12,13 @@ function Index () {
     const keys = Object.keys(siteMap);
     return keys.map((key) => {
       return  (<Panel title={`${siteMap[key].title} (${siteMap[key].components.length})`} key={key}>
-        <View>
+        <List>
           {
             siteMap[key].components.map((c) => {
-              return (<View className='list-item' key={c.key} onClick={() => Taro.navigateTo({ url: c.page })}> <View className='list-item__content'>{c.key}<Text className='zh'>{c.name}</Text></View></View>)
+              return (<List.Item hasArrow key={c.key} onClick={() => Taro.navigateTo({ url: c.page })} title={<View>{c.key}<Text className='zh'>{c.name}</Text></View>} />)
             })
           }
-        </View>
+        </List>
       </Panel>)
     })
   }

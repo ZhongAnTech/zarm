@@ -48,21 +48,21 @@ const siteMap = {
   //     },
   //   ]
   // },
-  // view: {
-  //   title: '数据展示',
-  //   components: [
-  //     {
-  //       key: 'badge',
-  //       name: '徽标',
-  //       page: '/pages/badge/index',
-  //     },
-  //     {
-  //       key: 'List',
-  //       name: '列表项',
-  //       page: '/pages/list/index',
-  //     },
-  //   ]
-  // },
+  view: {
+    title: '数据展示',
+    components: [
+      // {
+      //   key: 'badge',
+      //   name: '徽标',
+      //   page: '/pages/badge/index',
+      // },
+      {
+        key: 'List',
+        name: '列表项',
+        page: '/pages/list/index',
+      },
+    ]
+  },
   feedback: {
     title: '操作反馈',
     components: [

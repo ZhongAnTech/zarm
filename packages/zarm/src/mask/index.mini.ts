@@ -1,5 +1,5 @@
-import Mask from './Mask.mini';
+import Mask from '.';
 
-export type { MaskProps } from './Mask.mini';
+export type { MaskProps } from '.';
 
 export default Mask;
