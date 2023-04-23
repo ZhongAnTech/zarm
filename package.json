@@ -6,8 +6,6 @@
     "nohoist": [
       "**/react-reconciler",
       "**/react-reconciler/**",
-      "**/react-dom",
-      "**/react-dom/**",
       "**/@tarojs",
       "**/@tarojs/**"
     ]
