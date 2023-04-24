@@ -50,6 +50,7 @@
     "marked": "^4.0.10",
     "prismjs": "^1.23.0",
     "raw-loader": "^4.0.1",
+    "resolve-url-loader": "^5.0.0",
     "sass-loader": "^13.2.0",
     "sass": "^1.58.3"
   }
