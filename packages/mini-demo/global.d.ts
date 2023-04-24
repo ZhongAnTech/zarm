@@ -1,1 +1,1 @@
-declare module "zarm"
+declare module "zarm/mini"

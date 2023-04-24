@@ -21,7 +21,7 @@ const initVisibleState = {
 
 const Demo = () => {
   const popupRef = useRef();
-  const timer = useRef();
+  const timer = useRef<any>(null);
   const [value, setValue] = useState('');
   const [visible, setVisible] = useReducer((state, action) => {
     const { type } = action;
