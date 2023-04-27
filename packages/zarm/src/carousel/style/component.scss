@@ -12,7 +12,7 @@
 
   @include e(items) {
     display: flex;
-    transform-style: preserve-3d;
+    // transform-style: preserve-3d;
     transition-property: transform;
   }
 

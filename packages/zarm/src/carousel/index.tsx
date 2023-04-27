@@ -257,8 +257,13 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
   );
 
   useEffect(() => {
-    if (!autoPlay || isDragging) return;
-    const interval = window.setInterval(() => {
+    if (!autoPlay || count <= 1) return;
+    let interval;
+    if (isDragging) {
+      interval && window.clearInterval(interval);
+      return;
+    }
+    interval = window.setInterval(() => {
       if (!loop && stateRef.current.activeIndex === count) {
         interval && clearInterval(interval);
         return false;
