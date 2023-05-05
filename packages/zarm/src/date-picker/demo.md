@@ -251,14 +251,26 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```jsx
 import { useState } from 'react';
-import { Toast, List, DateSelect } from 'zarm';
+import { Toast, List, DateSelect, Button } from 'zarm';
 
 const Demo = () => {
+  const [value, setValue] = useState(new Date());
   return (
     <List>
-      <List.Item title="日期选择">
+      <List.Item
+        title="日期选择"
+        suffix={
+          <Button
+            size="xs"
+            onClick={() => {
+              setValue(undefined);
+            }}
+          >清除</Button>
+        }
+      >
         <DateSelect
-          onChange={(value, items) => console.log('DateSelect onChange', value, items)}
+          value={value}
+          onChange={(value, items) => {console.log('DateSelect onChange', value, items); setValue(value);}}
           onConfirm={(value, items) => {
             Toast.show(value.toLocaleString());
             console.log('DateSelect onConfirm', value, items);
