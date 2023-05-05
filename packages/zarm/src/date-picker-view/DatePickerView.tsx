@@ -43,7 +43,6 @@ const DatePickerView = React.forwardRef<DatePickerViewInstance, DatePickerViewPr
     const defaultRenderLabel = useRenderLabel(renderLabel);
 
     React.useEffect(() => {
-      if (props.value === undefined) return;
       if (isEqual(props.value, innerValue)) return;
       setInnerValue(props.value);
     }, [props.value]);

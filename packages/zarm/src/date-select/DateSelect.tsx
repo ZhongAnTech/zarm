@@ -51,7 +51,6 @@ const DateSelect: React.FC<DateSelectProps> = (props) => {
   const bem = createBEM('date-select', { prefixCls });
 
   React.useEffect(() => {
-    if (props.value === undefined) return;
     if (isEqual(value, innerValue)) return;
     setInnerValue(value);
   }, [value]);
@@ -68,6 +67,7 @@ const DateSelect: React.FC<DateSelectProps> = (props) => {
     });
 
     onConfirm?.(changedValue, changedItems);
+    onChange?.(changedValue, changedItems);
   };
 
   const handleCancel = () => {
