@@ -1,5 +1,11 @@
 # 版本更新日志
 
+## v2.9.19
+
+- Bug Fix
+
+  - [DateSelect]修复 `onChange` 属性不生效的问题。[#1093](https://github.com/ZhongAnTech/zarm/issues/1101)
+
 ## v2.9.18
 
 - Bug Fix
