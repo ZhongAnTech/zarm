@@ -77,7 +77,6 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
       className,
       placeholder,
       disabled,
-      onChange,
       locale,
       value,
       hasArrow,
