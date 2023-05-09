@@ -68,8 +68,6 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
     moveTimeSpan,
   } = props;
 
-  const [isDragging, setIsDragging] = useState(false);
-
   const stateRef = useRef<StateProps>({
     activeIndex: propActiveIndex!,
     activeIndexChanged: false,
@@ -135,7 +133,10 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
     [isVertical],
   );
 
+  const onMoving = useRef(false);
+
   const transitionEnd = useCallback(() => {
+    onMoving.current = false;
     const { activeIndex, activeIndexChanged } = stateRef.current;
     const dom = carouselItemsRef.current;
     const index = loop ? activeIndex + 1 : activeIndex;
@@ -199,11 +200,19 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
     onJumpTo(stateRef.current.activeIndex);
   }, [onJumpTo]);
 
+  const intervalRef = useRef<number>();
+
   const bind = useDrag(
     (state) => {
-      if (!state.intentional) return false;
-      setIsDragging(true);
       let { activeIndex } = stateRef.current;
+      if (!state.intentional) {
+        return false;
+      };
+      intervalRef.current && window.clearInterval(intervalRef.current);
+      if (onMoving.current) {
+        return false;
+      }
+
       const { offset, elapsedTime } = state;
 
       const [offsetX, offsetY] = offset;
@@ -211,13 +220,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
       if (!offset[index]) {
         return false;
       }
-      if (loop) {
-        if (activeIndex <= 0) {
-          onJumpTo(0);
-        } else if (activeIndex >= count - 1) {
-          onJumpTo(count - 1);
-        }
-      }
+
       const action = (!isVertical && offsetX > 0) || (isVertical && offsetY > 0) ? 'prev' : 'next';
       if (
         !loop &&
@@ -237,8 +240,10 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
         if (ratio >= moveDistanceRatio! || elapsedTime <= moveTimeSpan!) {
           activeIndex = action === 'next' ? activeIndex + 1 : activeIndex - 1;
         }
+        if (loop && (activeIndex >= count - 1 || activeIndex <= 1)) {
+          onMoving.current = true;
+        }
         onSlideTo(activeIndex);
-        setIsDragging(false);
         return false;
       }
       doTransition(
@@ -258,22 +263,13 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
 
   useEffect(() => {
     if (!autoPlay || count <= 1) return;
-    let interval;
-    if (isDragging) {
-      interval && window.clearInterval(interval);
-      return;
-    }
-    interval = window.setInterval(() => {
-      if (!loop && stateRef.current.activeIndex === count) {
-        interval && clearInterval(interval);
-        return false;
-      }
-      onSlideTo(stateRef.current.activeIndex + 1);
+    intervalRef.current = window.setInterval(() => {
+      !onMoving.current && onSlideTo(stateRef.current.activeIndex + 1);
     }, autoPlayIntervalTime);
     return () => {
-      window.clearInterval(interval);
+      window.clearInterval(intervalRef.current);
     };
-  }, [isDragging, autoPlay, autoPlayIntervalTime, loop, onSlideTo]);
+  }, [autoPlay, autoPlayIntervalTime, loop, onSlideTo, stateRef.current.activeIndex]);
 
   useEffect(() => {
     // 监听窗口变化
