@@ -270,8 +270,9 @@ const Demo = () => {
       >
         <DateSelect
           value={value}
-          onChange={(value, items) => {console.log('DateSelect onChange', value, items); setValue(value);}}
+          onChange={(value, items) => {console.log('DateSelect onChange', value, items);}}
           onConfirm={(value, items) => {
+            setValue(value);
             Toast.show(value.toLocaleString());
             console.log('DateSelect onConfirm', value, items);
           }}

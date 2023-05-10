@@ -5,5 +5,4 @@ export interface BaseDateSelectProps extends Omit<BaseDatePickerProps, 'visible'
   placeholder?: string;
   hasArrow?: boolean;
   displayRender?: (items: PickerColumnItem[]) => React.ReactNode;
-  onChange?: (value: Date, items: PickerColumnItem[]) => void;
 }

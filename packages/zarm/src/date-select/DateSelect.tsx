@@ -37,7 +37,6 @@ const DateSelect: React.FC<DateSelectProps> = (props) => {
     filter,
     renderLabel,
     displayRender = (items) => items?.map((item) => item && item.label),
-    onChange,
     onCancel,
     onConfirm,
     ...rest
@@ -67,7 +66,6 @@ const DateSelect: React.FC<DateSelectProps> = (props) => {
     });
 
     onConfirm?.(changedValue, changedItems);
-    onChange?.(changedValue, changedItems);
   };
 
   const handleCancel = () => {
