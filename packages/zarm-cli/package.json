@@ -1,6 +1,6 @@
 {
   "name": "@zarm-design/cli",
-  "version": "0.0.46",
+  "version": "0.0.47",
   "description": "Cli Tools for Zarm Design Project",
   "keywords": [
     "zarm-cli",
@@ -16,9 +16,8 @@
     "zarm": "./bin/zarm.js"
   },
   "files": [
-    "lib",
-    "bin",
-    "types"
+    "dist",
+    "bin"
   ],
   "scripts": {
     "build": "yarn clean && tsc --build --force",
