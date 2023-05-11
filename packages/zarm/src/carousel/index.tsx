@@ -205,13 +205,18 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
   const bind = useDrag(
     (state) => {
       let { activeIndex } = stateRef.current;
+      if (onMoving.current) {
+        if (activeIndex <= 0) {
+         onJumpTo(0);
+        } else if (activeIndex >= count - 1) {
+          onJumpTo(count - 1);
+        }
+        onMoving.current = false;
+      }
       if (!state.intentional) {
         return false;
       };
       intervalRef.current && window.clearInterval(intervalRef.current);
-      if (onMoving.current) {
-        return false;
-      }
 
       const { offset, elapsedTime } = state;
 
