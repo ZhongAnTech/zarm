@@ -38,6 +38,6 @@
     "test": "jest --passWithNoTests"
   },
   "devDependencies": {
-    "@zarm-design/cli": "^0.0.46"
+    "@zarm-design/cli": "^0.0.47"
   }
 }

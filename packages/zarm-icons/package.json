@@ -35,7 +35,7 @@
   "devDependencies": {
     "@babel/cli": "^7.13.16",
     "@svgr/cli": "^5.5.0",
-    "@zarm-design/cli": "^0.0.46",
+    "@zarm-design/cli": "^0.0.47",
     "react": "^17.0.2",
     "shelljs": "^0.8.4",
     "webfonts-helper": "^0.1.2"
