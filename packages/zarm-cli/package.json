@@ -49,6 +49,7 @@
     "fork-ts-checker-webpack-plugin": "^6.2.10",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
+    "gulp-postcss": "^9.0.1",
     "gulp-sass": "^5.1.0",
     "html-webpack-plugin": "^5.5.0",
     "import-local": "^3.0.2",
@@ -80,6 +81,7 @@
   "devDependencies": {
     "@types/node": "^15.3.0",
     "@types/webpack": "^5.28.0",
+    "gulp-rename": "^2.0.0",
     "ts-node": "^10.9.1"
   },
   "tags": [

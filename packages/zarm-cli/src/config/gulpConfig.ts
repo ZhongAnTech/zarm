@@ -1,5 +1,7 @@
 import gulp from 'gulp';
 import gulpSass from 'gulp-sass';
+import postcss from 'gulp-postcss';
+import rename from 'gulp-rename';
 import dartSass from 'sass';
 import through2 from 'through2';
 import { getProjectPath } from '../utils';
@@ -38,6 +40,42 @@ const gulpTask = (path?: string, outDir?: string, callback?: () => void) => {
       .pipe(gulp.dest(outDir));
   });
 
+  const transform = (css) => {
+    css.walkDecls((decl) => {
+      if (decl.value.endsWith('px')) {
+        const oldValue = decl.value
+        const val = oldValue.replace(/(\d*\.?\d+)(px)/g, (match, value, unit) => {
+          return parseInt(value, 10) * 2 + unit;
+        })
+        decl.value = val;
+      };
+    })
+  };
+
+  gulp.task('sass-2x', () => {
+    return gulp
+      .src(DIR.sass)
+      .pipe(
+        sass
+          .sync({
+            includePaths: ['node_modules'],
+            importer: (url) => {
+              if (url.startsWith('~')) {
+                const resolved = require.resolve(url.replace('~', ''));
+                return { file: resolved };
+              }
+            },
+          })
+          .on('error', sass.logError),
+      )
+      .pipe(postcss([transform]))
+      .pipe(rename({
+        extname: '.2x.css'
+      }))
+      .pipe(gulp.dest(outDir));
+  });
+
+
   gulp.task('css', () => {
     return gulp
       .src(DIR.js)
@@ -54,7 +92,7 @@ const gulpTask = (path?: string, outDir?: string, callback?: () => void) => {
       .pipe(gulp.dest(outDir));
   });
 
-  return gulp.series(['sass', 'css'], callback);
+  return gulp.series(['sass', 'sass-2x', 'css'], callback);
 };
 
 export default gulpTask;
