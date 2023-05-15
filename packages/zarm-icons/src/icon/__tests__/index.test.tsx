@@ -1,6 +1,5 @@
 import React from 'react';
-import { render } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 import Icon from '../index';
 import * as ReactIcon from '../../react';
 
@@ -13,7 +12,7 @@ describe('Icon', () => {
         )}
       </>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('renders Icons of different theme correctly', () => {
@@ -26,7 +25,7 @@ describe('Icon', () => {
         <ReactIcon.ArrowDown theme="danger" />
       </>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('renders Icons of different size correctly', () => {
@@ -37,7 +36,7 @@ describe('Icon', () => {
         <ReactIcon.ArrowDown size="sm" />
       </>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('renders Icons using iconfont', () => {
@@ -48,7 +47,7 @@ describe('Icon', () => {
         <MyIcon type="user" />
       </>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('renders Icons using svg component', () => {
@@ -71,7 +70,7 @@ describe('Icon', () => {
     );
 
     const wrapper = render(<Icon size="lg" theme="primary" component={svg} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('renders Icons of custom classname', () => {
@@ -81,6 +80,6 @@ describe('Icon', () => {
         <ReactIcon.ArrowDown className="custom-arrow-down" />
       </>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 });
