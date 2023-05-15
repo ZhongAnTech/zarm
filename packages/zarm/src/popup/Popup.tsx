@@ -30,7 +30,7 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
     lockScroll,
     direction,
     mask,
-    maskClassNname,
+    maskClassName,
     maskStyle,
     maskColor,
     maskOpacity,
@@ -58,7 +58,7 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
     <Trigger visible={visible} onClose={handleEsc}>
       {mask && (
         <Mask
-          className={maskClassNname}
+          className={maskClassName}
           style={maskStyle}
           visible={visible}
           color={maskColor}
