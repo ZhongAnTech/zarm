@@ -64,7 +64,8 @@ const Button = React.forwardRef<unknown, ButtonProps>((props, ref) => {
 
   const { prefixCls } = useContext(ConfigContext);
   const bem = createBEM('button', { prefixCls });
-  const childrenRender = children && (loading || !!icon ? <span className={bem('text')}>{children}</span> :<span>{children}</span>);
+  const textCls = (loading || !!icon) ? bem('text') : null;
+  const childrenRender = children && <span className={textCls}>{children}</span>;
 
   const cls = bem([
     {

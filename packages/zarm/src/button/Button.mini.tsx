@@ -42,7 +42,8 @@ const Button: React.FC = (props: ButtonProps) => {
   ]);
 
   const iconRender = icon;
-  const childrenRender = children && (loading || !!icon ? <Text className={bem('text')}>{children}</Text> : children );
+  const textCls = (loading || !!icon) ? bem('text') : null;
+  const childrenRender = children && <span className={textCls}>{children}</span>;
 
   return (
     <View className={cls}>
