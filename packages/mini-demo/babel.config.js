@@ -17,7 +17,7 @@ module.exports = {
       return `${path.resolve(__dirname, '../', '../packages/zarm/src')}/${name}/index.mini.ts`;
     },
     customStyleName: (name) => {
-      return `${path.resolve(__dirname, '../', '../packages/zarm/src')}/${name}/style/index.ts`;
+      return `${path.resolve(__dirname, '../', '../packages/zarm/src')}/${name}/style/index.mini.ts`;
       // return `zarm/src/${name}/style/index.tsx`;
     }
   }]]
