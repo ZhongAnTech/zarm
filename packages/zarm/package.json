@@ -30,7 +30,11 @@
   ],
   "main": "lib/index.js",
   "module": "es/index.js",
-  "typings": "lib/index.d.ts",
+  "typings": "types/index.d.ts",
+  "exports": {
+    ".": "./lib/index.js",
+    "./mini": "./lib/index.mini.js"
+  },
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -66,6 +70,7 @@
   ],
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.9.1",
+    "@tarojs/components": "3.6.1",
     "@use-gesture/react": "^10.1.1",
     "@zarm-design/bem": "^0.0.7",
     "@zarm-design/icons": "^0.1.12",
@@ -93,7 +98,8 @@
     "@zarm-design/cli": "^0.0.47",
     "dekko": "^0.2.1",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "resolve-url-loader": "^5.0.0"
   },
   "peerDependencies": {
     "react": ">=16.8.0",

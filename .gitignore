@@ -18,3 +18,7 @@ types
 coverage
 
 *.tsbuildinfo
+# test coverage
+/packages/*/coverage/
+
+.swc

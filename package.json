@@ -1,9 +1,15 @@
 {
   "name": "root",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces":{
+    "packages": ["packages/*"],
+    "nohoist": [
+      "**/react-reconciler",
+      "**/react-reconciler/**",
+      "**/@tarojs",
+      "**/@tarojs/**"
+    ]
+  },
   "scripts": {
     "build": "lerna exec --scope zarm -- yarn build",
     "clean": "lerna run clean && lerna clean -y",
@@ -19,7 +25,10 @@
     "prettier": "prettier --write -c '**/*.{js,jsx,ts,tsx,html,md,json}'",
     "release": "lerna publish",
     "sort": "npx sort-package-json \"package.json\" \"packages/*/package.json\"",
-    "test": "lerna exec --no-private -- yarn test"
+    "test": "lerna exec --no-private -- yarn test",
+    "dev:h5": "lerna exec --scope mini-demo -- yarn run dev:h5",
+    "dev:weapp": "lerna exec --scope mini-demo -- yarn run dev:weapp",
+    "build:weapp": "lerna exec --scope mini-demo -- yarn run build:weapp"
   },
   "commitlint": {
     "extends": [
