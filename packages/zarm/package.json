@@ -1,6 +1,6 @@
 {
   "name": "zarm",
-  "version": "3.0.13",
+  "version": "3.0.14",
   "description": "基于 React 的移动端UI库",
   "keywords": [
     "react",
@@ -67,8 +67,8 @@
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.9.1",
     "@use-gesture/react": "^10.1.1",
-    "@zarm-design/bem": "^0.0.7",
-    "@zarm-design/icons": "^0.1.12",
+    "@zarm-design/bem": "^0.0.8",
+    "@zarm-design/icons": "^0.1.13",
     "ahooks": "^3.7.6",
     "better-scroll": "2.3.1",
     "classnames": "^2.3.1",
@@ -90,7 +90,7 @@
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
     "@types/react-transition-group": "^4.4.5",
-    "@zarm-design/cli": "^0.0.47",
+    "@zarm-design/cli": "^0.0.48",
     "dekko": "^0.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
