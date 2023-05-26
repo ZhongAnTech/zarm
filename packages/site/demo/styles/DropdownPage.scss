@@ -1,0 +1,24 @@
+@import '@/styles/index';
+
+.dropdown-page {
+  @at-root {
+    .btn-block {
+      padding: r(10);
+    }
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      height: 150px;
+    }
+  }
+
+  .btn-container {
+    height: r(80);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+}

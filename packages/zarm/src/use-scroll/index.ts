@@ -3,7 +3,7 @@ import { MouseEvent, RefObject, TouchEvent, useEffect } from 'react';
 import Events from '../utils/events';
 
 export interface UseScrollProps {
-  container: RefObject<HTMLElement>;
+  container: RefObject<HTMLElement | Window>;
   onScroll?: (event: MouseEvent | TouchEvent) => void;
   wait?: number;
 }
@@ -24,7 +24,7 @@ const useScroll = ({ container, onScroll, wait = 200 }: UseScrollProps) => {
         Events.off(container.current, 'scroll', handler);
       }
     };
-  }, [container]);
+  }, [container.current]);
 };
 
 export default useScroll;
