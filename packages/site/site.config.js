@@ -190,6 +190,13 @@ module.exports = {
         style: false,
       },
       {
+        key: 'dropdown',
+        name: '下拉菜单',
+        module: () => import('zarm/dropdown/demo.md'),
+        source: 'zarm/dropdown/demo.md',
+        style: false,
+      },
+      {
         key: 'message',
         name: '消息',
         module: () => import('zarm/message/demo.md'),

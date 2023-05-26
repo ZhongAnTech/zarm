@@ -1,0 +1,34 @@
+@include b(dropdown) {
+  @include define(height, 48px);
+  @include define(disabled-text-color, rgba(0, 0, 0, 0.3));
+  @include define(bar-title-padding, 4px);
+
+  @include e(bar) {
+    width: 100%;
+    height: var(--height);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+  }
+
+  @include e(bar-item) {
+    display: flex;
+    align-items: center;
+    @include m(disabled) {
+      cursor: not-allowed;
+      color: var(--disabled-text-color);
+    }
+  }
+
+  @include e(bar-title) {
+    padding-left: var(--bar-title-padding);
+    padding-right: var(--bar-title-padding);
+  }
+}
+
+@include b(dropdown-item) {
+  @include e(popup-content) {
+    background-color: #fff;
+  }
+}
