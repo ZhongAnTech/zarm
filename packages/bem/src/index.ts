@@ -3,6 +3,7 @@ export interface BEMConfig {
   blockSeparator?: string;
   elementSeparator?: string;
   modifierSeparator?: string;
+  modifierValueSeparator?: string;
 }
 
 const defaultConfig: BEMConfig = {
@@ -10,12 +11,13 @@ const defaultConfig: BEMConfig = {
   blockSeparator: '-',
   elementSeparator: '__',
   modifierSeparator: '--',
+  modifierValueSeparator: '-',
 };
 
-type ModifierType = (string | undefined | { [x: string]: boolean | undefined })[];
+type ModifierType = (string | undefined | { [x: string]: boolean | string | undefined })[];
 
 const BEMClassName = (name: string, config: BEMConfig) => {
-  const { elementSeparator, modifierSeparator } = config;
+  const { elementSeparator, modifierSeparator, modifierValueSeparator } = config;
 
   return (element: string | ModifierType, modifiers?: ModifierType) => {
     if (element && typeof element !== 'string') {
@@ -37,6 +39,8 @@ const BEMClassName = (name: string, config: BEMConfig) => {
           Object.entries(modifier || {}).forEach(([key, value]) => {
             if (value === true) {
               classList.push(newBlock + modifierSeparator + key);
+            } else if (value) {
+              classList.push(newBlock + modifierSeparator + key + modifierValueSeparator + value);
             }
           });
           break;
