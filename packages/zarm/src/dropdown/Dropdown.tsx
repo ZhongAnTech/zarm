@@ -9,6 +9,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
+import { ArrowDown, ArrowUp } from '@zarm-design/icons';
 import { ConfigContext } from '../config-provider';
 import useScroll from '../use-scroll';
 import { HTMLProps } from '../utils/utilityTypes';
@@ -72,31 +73,41 @@ const Dropdown: React.FC<DropdownProps> = forwardRef((props, ref) => {
     typeof onChange === 'function' && onChange(key);
   };
 
+  const DefaultArrow = (
+    reverse = false,
+  ) => (
+     reverse ?
+      <ArrowDown size='sm'/>
+      : <ArrowUp size='sm'/>
+  );
+
   const renderTitle = (item: DropdownItemProps, key: DropdownItemKey) => {
     return (
       <div
         key={key}
         role="button"
         tabIndex={disabled ? -1 : 0}
-        className={bem('bar-item', [{ 'disabled': disabled }])}
+        className={bem('bar-item', [{ 'disabled': disabled, 'active': currentPopupKey === key }]) }
         onClick={() => {
           if (!disabled) {
             toggleItem(key);
           }
         }}
       >
-        <div className={bem('bar-title')}>{item.title}</div>
-        {arrow}
+        <div className={bem('title')}>{item.title}</div>
+        <div className={bem('arrow')}>
+          {arrow ?? DefaultArrow(direction === 'bottom')}
+        </div>
       </div>
     );
   };
 
   const computeOffset = () => {
-    const { top, bottom, height } = barRef.current.getBoundingClientRect();
+    const { top, bottom } = barRef.current.getBoundingClientRect();
     if (direction === 'top') {
-      offset.current = top + height;
+      offset.current = bottom;
     } else {
-      offset.current = window.innerHeight - bottom + height;
+      offset.current = window.innerHeight - top;
     }
   };
 

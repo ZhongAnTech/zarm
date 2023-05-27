@@ -2,7 +2,6 @@
   @include define(height, 48px);
   @include define(disabled-text-color, rgba(0, 0, 0, 0.3));
   @include define(bar-title-padding, 4px);
-
   @include e(bar) {
     width: 100%;
     height: var(--height);
@@ -19,11 +18,25 @@
       cursor: not-allowed;
       color: var(--disabled-text-color);
     }
+
+    @include m(active) {
+      color: var(--za-theme-primary);
+
+      @include b(dropdown) {
+        @include e(arrow) {
+          transform: rotate(180deg);
+        }
+      }
+    }
   }
 
-  @include e(bar-title) {
+  @include e(title) {
     padding-left: var(--bar-title-padding);
     padding-right: var(--bar-title-padding);
+  }
+
+  @include e(arrow) {
+    transition: all 0.3s ease;
   }
 }
 

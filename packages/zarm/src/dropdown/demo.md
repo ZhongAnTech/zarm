@@ -11,7 +11,7 @@ const Demo = () => {
     console.log(key);
   }
   return (
-    <Dropdown arrow={<Icons.ArrowDown theme="primary" />} onChange={onChange}>
+    <Dropdown arrow={<Icons.ArrowDown theme="primary" size="sm"/>} onChange={onChange}>
       <Dropdown.Item key="key1" title="菜单一">
         内容一
       </Dropdown.Item>
