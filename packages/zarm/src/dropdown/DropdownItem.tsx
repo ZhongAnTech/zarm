@@ -1,14 +1,13 @@
 import { createBEM } from '@zarm-design/bem';
 import React, { CSSProperties, forwardRef, useContext, useEffect, useRef } from 'react';
 import { ConfigContext } from '../config-provider';
-import type { PickerCssVars } from '../picker';
 import Popup from '../popup';
 import { noop } from '../utils';
 import { HTMLProps } from '../utils/utilityTypes';
 import { DropdownContext } from './context';
 import { BaseDropdownItemProps } from './interface';
 
-export type DropdownItemProps = BaseDropdownItemProps & HTMLProps<PickerCssVars>;
+export type DropdownItemProps = BaseDropdownItemProps & HTMLProps;
 
 export interface DropdownItemElement extends HTMLDivElement {
   toggle: () => void;

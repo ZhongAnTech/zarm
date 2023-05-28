@@ -26,3 +26,10 @@ export interface BaseDropdownItemProps {
   offset?: number;
   direction?: 'top' | 'bottom';
 }
+
+
+export interface DropdownCssVars {
+  '--height': React.CSSProperties['height'];
+  '--disabled-text-color': React.CSSProperties['color'];
+  '--bar-title-padding': React.CSSProperties['padding'];
+}

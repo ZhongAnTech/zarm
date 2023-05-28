@@ -15,9 +15,9 @@ import useScroll from '../use-scroll';
 import { HTMLProps } from '../utils/utilityTypes';
 import { DropdownContext } from './context';
 import DropdownItem, { DropdownItemElement, DropdownItemProps } from './DropdownItem';
-import type { BaseDropdownProps, DropdownItemKey } from './interface';
+import type { BaseDropdownProps, DropdownCssVars, DropdownItemKey } from './interface';
 
-export type DropdownProps = BaseDropdownProps & HTMLProps<any>;
+export type DropdownProps = BaseDropdownProps & HTMLProps<DropdownCssVars>;
 
 interface CompoundedComponent
   extends React.ForwardRefExoticComponent<DropdownProps & React.RefAttributes<HTMLDivElement>> {
