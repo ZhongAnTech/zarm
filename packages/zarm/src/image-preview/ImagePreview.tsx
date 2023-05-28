@@ -1,6 +1,6 @@
-import React, { HtmlHTMLAttributes, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createBEM } from '@zarm-design/bem';
-import { useDrag, ReactDOMAttributes } from '@use-gesture/react';
+import { useDrag } from '@use-gesture/react';
 import type { Images, BaseImagePreviewProps } from './interface';
 import Popup from '../popup';
 import Carousel from '../carousel'
@@ -121,13 +121,13 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
         onClose?.();
       }, 100);
     }
-  }) as unknown as (...args: any[]) => ReactDOMAttributes;
+  }) as unknown as (...args: any[]) => React.DOMAttributes<HTMLElement>;
 
   const loadEvent = useDrag((state) => {
     if (state.tap && state.elapsedTime > 0) {
       loadOrigin(state.event);
     }
-  }) as unknown as (...args: any[]) => ReactDOMAttributes;
+  }) as unknown as (...args: any[]) => React.DOMAttributes<HTMLElement>;
 
   const renderImages = () => {
     return images.map((item, i) => {

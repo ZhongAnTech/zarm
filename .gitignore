@@ -4,6 +4,11 @@
 .vscode
 .history
 
+# misc
+site/.dumi/tmp
+site/.dumi/tmp-test
+site/.dumi/tmp-production
+
 # npm
 package-lock.json
 node_modules

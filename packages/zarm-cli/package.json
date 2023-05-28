@@ -20,10 +20,10 @@
     "bin"
   ],
   "scripts": {
-    "build": "yarn clean && tsc --build --force",
+    "build": "pnpm clean && tsc --build --force",
     "clean": "rimraf dist",
     "dev": "tsc -w",
-    "prepare": "yarn build",
+    "prepare": "pnpm build",
     "test": "jest"
   },
   "dependencies": {

@@ -17,14 +17,14 @@
     "types"
   ],
   "scripts": {
-    "build": "yarn build:lib && yarn build:es",
+    "build": "pnpm build:lib && pnpm build:es",
     "build:es": "rimraf es && tsc --outDir es && zarm build --mode es --path src --out-dir es --copy-files --build-css",
     "build:lib": "rimraf lib && tsc --outDir lib && zarm build --mode lib --path src --out-dir lib --copy-files --build-css",
     "build:font": "webFontsHelper --src ./svg --fontName zaicon --fontPath src/font --className za-icon",
     "build:react": "rimraf src/react && svgr ./svg --out-dir ./src/react",
     "build:svg": "rimraf svg && node ./scripts/exportSVG.js",
     "clean": "rimraf lib es coverage svg",
-    "coverage": "rimraf coverage && yarn test -c",
+    "coverage": "rimraf coverage && pnpm test -c",
     "test": "zarm test -s scripts/jest/setup.js"
   },
   "dependencies": {

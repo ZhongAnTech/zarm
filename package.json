@@ -11,24 +11,25 @@
     ]
   },
   "scripts": {
-    "build": "lerna exec --scope zarm -- yarn build",
+    "build": "lerna exec --scope zarm -- pnpm build",
     "clean": "lerna run clean && lerna clean -y",
     "deploy": "lerna exec --scope site -- gh-pages -d assets",
-    "deploy:build": "lerna exec --scope site -- yarn build",
-    "dev": "lerna exec --scope site -- yarn start",
-    "postinstall": "lerna exec --scope @zarm-design/cli -- yarn build && lerna exec --scope @zarm-design/bem -- yarn build && lerna exec --scope @zarm-design/icons -- yarn build",
-    "lint": "yarn install && yarn lint:tsc && yarn lint:script && yarn lint:style",
+    "deploy:build": "lerna exec --scope site -- pnpm build",
+    "dev:next": "pnpm dev --filter site-next",
+    "dev": "lerna exec --scope site -- pnpm start",
+    "postinstall": "lerna exec --scope @zarm-design/cli -- pnpm build && lerna exec --scope @zarm-design/bem -- pnpm build && lerna exec --scope @zarm-design/icons -- pnpm build",
+    "lint": "pnpm install && pnpm lint:tsc && pnpm lint:script && pnpm lint:style",
     "lint:script": "eslint --ext .ts,.tsx,.js,.jsx packages",
     "lint:style": "stylelint \"packages/**/*.scss\" --syntax scss",
     "lint:tsc": "tsc --noEmit",
-    "prepublishOnly": "yarn lint && yarn build && yarn test",
+    "prepublishOnly": "pnpm lint && pnpm build && pnpm test",
     "prettier": "prettier --write -c '**/*.{js,jsx,ts,tsx,html,md,json}'",
     "release": "lerna publish",
     "sort": "npx sort-package-json \"package.json\" \"packages/*/package.json\"",
-    "test": "lerna exec --no-private -- yarn test",
-    "dev:h5": "lerna exec --scope mini-demo -- yarn run dev:h5",
-    "dev:weapp": "lerna exec --scope mini-demo -- yarn run dev:weapp",
-    "build:weapp": "lerna exec --scope mini-demo -- yarn run build:weapp"
+    "test": "lerna exec --no-private -- pnpm test",
+    "dev:h5": "lerna exec --scope mini-demo -- pnpm run dev:h5",
+    "dev:weapp": "lerna exec --scope mini-demo -- pnpm run dev:weapp",
+    "build:weapp": "lerna exec --scope mini-demo -- pnpm run build:weapp"
   },
   "commitlint": {
     "extends": [

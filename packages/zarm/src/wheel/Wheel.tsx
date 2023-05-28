@@ -9,7 +9,7 @@ import { useEventCallback, usePrevious, useSafeLayoutEffect } from '../utils/hoo
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseWheelProps, WheelItem, WheelValue } from './interface';
 
-BScroll.use(WheelPlugin);
+BScroll.use(WheelPlugin as any);
 
 const getValue = (props: Omit<WheelProps, 'itemRender'>) => {
   if ('defaultValue' in props) {

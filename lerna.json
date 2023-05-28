@@ -1,5 +1,5 @@
 {
-  "packages": ["packages/*"],
+  "packages": ["packages/*", "site"],
   "version": "independent",
   "command": {
     "publish": {
@@ -7,6 +7,6 @@
       "message": "chore(release): publish new version"
     }
   },
-  "npmClient": "yarn",
+  "npmClient": "pnpm",
   "useWorkspaces": true
 }
