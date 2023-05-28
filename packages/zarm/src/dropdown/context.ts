@@ -9,7 +9,6 @@ interface DropdownContextState {
     forceRender: boolean;
     destroy: boolean;
     onClose: () => void;
-    afterClose: () => void;
 }
 
 export const DropdownContext = createContext<DropdownContextState>({
@@ -18,5 +17,4 @@ export const DropdownContext = createContext<DropdownContextState>({
     forceRender: false,
     destroy: false,
     onClose: () => {},
-    afterClose: () => {},
 });

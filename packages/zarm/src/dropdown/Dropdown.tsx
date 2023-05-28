@@ -47,9 +47,7 @@ const Dropdown: React.FC<DropdownProps> = forwardRef((props, ref) => {
     maskOpacity,
     animationType,
     arrow,
-    onClose,
     onChange,
-    afterClose,
   } = props;
 
   const { prefixCls } = useContext(ConfigContext);
@@ -69,13 +67,9 @@ const Dropdown: React.FC<DropdownProps> = forwardRef((props, ref) => {
   };
 
   const toggleItem = (key: DropdownItemKey | null) => {
-    if (key === currentPopupKey) {
-      setCurrentPopupKey(null)
-      typeof onClose === 'function' && onClose();
-    } else {
-      setCurrentPopupKey(key);
-    }
-    typeof onChange === 'function' && onChange(key === currentPopupKey ? null : key);
+    const nextKey = key === currentPopupKey ? null : key;
+    setCurrentPopupKey(nextKey);
+    typeof onChange === 'function' && onChange(nextKey);
   };
 
   const DefaultArrow = (
@@ -141,7 +135,6 @@ const Dropdown: React.FC<DropdownProps> = forwardRef((props, ref) => {
         onClose: () => {
           toggleItem(currentPopupKey)
         },
-        afterClose,
         maskClosable,
         maskOpacity,
         animationType,

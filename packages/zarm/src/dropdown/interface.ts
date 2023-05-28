@@ -13,8 +13,6 @@ export interface BaseDropdownProps {
   maskOpacity?: number;
   animationType?: TransitionName;
   destroy?: boolean;
-  onClose?: () => void;
-  afterClose?: () => void;
   onChange?: (activeKey: number | string) => void;
 }
 
