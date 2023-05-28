@@ -55,9 +55,7 @@ const Dropdown: React.FC<DropdownProps> = forwardRef((props, ref) => {
   const { prefixCls } = useContext(ConfigContext);
   const bem = createBEM('dropdown', { prefixCls });
 
-  const [currentPopupKey, setCurrentPopupKey] = useState<string | number>(
-    getActiveKey({ activeKey, defaultActiveKey }),
-  );
+  const [currentPopupKey, setCurrentPopupKey] = useState<string | number>();
   const refs = useRef<Record<DropdownItemKey, DropdownItemElement>>({});
   const root = useRef<HTMLDivElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
@@ -77,7 +75,7 @@ const Dropdown: React.FC<DropdownProps> = forwardRef((props, ref) => {
     } else {
       setCurrentPopupKey(key);
     }
-    typeof onChange === 'function' && onChange(key);
+    typeof onChange === 'function' && onChange(key === currentPopupKey ? null : key);
   };
 
   const DefaultArrow = (
@@ -132,7 +130,7 @@ const Dropdown: React.FC<DropdownProps> = forwardRef((props, ref) => {
   }, [barRef.current]);
 
   useEffect(() => {
-    getActiveKey({ activeKey, defaultActiveKey });
+    setCurrentPopupKey(getActiveKey({ activeKey, defaultActiveKey }));
   }, [activeKey, defaultActiveKey]);
 
   return (

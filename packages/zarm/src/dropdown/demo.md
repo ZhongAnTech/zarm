@@ -98,7 +98,7 @@ import { Dropdown } from 'zarm';
 
 const Demo = () => {
   return (
-    <Dropdown>
+    <Dropdown activeKey="key1" defaultActiveKey="key2">
       <Dropdown.Item key="key1" title="菜单一">
         内容一
       </Dropdown.Item>
