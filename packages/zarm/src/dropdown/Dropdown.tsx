@@ -31,7 +31,7 @@ const getActiveKey = ({ activeKey, defaultActiveKey }) => {
   if (typeof defaultActiveKey !== 'undefined') {
     return defaultActiveKey;
   }
-  return '';
+  return null;
 };
 
 const Dropdown: React.FC<DropdownProps> = forwardRef((props, ref) => {
@@ -44,6 +44,8 @@ const Dropdown: React.FC<DropdownProps> = forwardRef((props, ref) => {
     forceRender,
     destroy,
     maskClosable,
+    maskOpacity,
+    animationType,
     arrow,
     onClose,
     onChange,
@@ -68,8 +70,13 @@ const Dropdown: React.FC<DropdownProps> = forwardRef((props, ref) => {
     }
   };
 
-  const toggleItem = (key: DropdownItemKey) => {
-    setCurrentPopupKey(key);
+  const toggleItem = (key: DropdownItemKey | null) => {
+    if (key === currentPopupKey) {
+      setCurrentPopupKey(null)
+      typeof onClose === 'function' && onClose();
+    } else {
+      setCurrentPopupKey(key);
+    }
     typeof onChange === 'function' && onChange(key);
   };
 
@@ -95,9 +102,7 @@ const Dropdown: React.FC<DropdownProps> = forwardRef((props, ref) => {
         }}
       >
         <div className={bem('title')}>{item.title}</div>
-        <div className={bem('arrow')}>
-          {arrow ?? DefaultArrow(direction === 'bottom')}
-        </div>
+          { arrow ??  <div className={bem('arrow')}>{ DefaultArrow(direction === 'bottom') }</div> }
       </div>
     );
   };
@@ -136,11 +141,12 @@ const Dropdown: React.FC<DropdownProps> = forwardRef((props, ref) => {
         forceRender,
         destroy,
         onClose: () => {
-          setCurrentPopupKey(null);
-          typeof onClose === 'function' && onClose();
+          toggleItem(currentPopupKey)
         },
         afterClose,
         maskClosable,
+        maskOpacity,
+        animationType,
       }}
     >
       <div ref={root} className={bem([className])}>
@@ -172,5 +178,6 @@ Dropdown.defaultProps = {
   forceRender: false,
   destroy: false,
   maskClosable: true,
+  maskOpacity: 0.7
 };
 export default Dropdown as CompoundedComponent;

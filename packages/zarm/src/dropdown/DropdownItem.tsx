@@ -15,24 +15,19 @@ export interface DropdownItemElement extends HTMLDivElement {
 }
 
 const DropdownItem: React.FC<DropdownItemProps> = forwardRef((props, ref) => {
-  const { className, style, mountContainer, visible, direction, offset } = props;
+  const { className, style, visible, direction, offset } = props;
 
   const { prefixCls } = useContext(ConfigContext);
   const parent = useContext(DropdownContext);
   const bem = createBEM('dropdown-item', { prefixCls });
 
-  const dropdownItemRef = useRef<HTMLDivElement>(null);
   const dropdownItemPopupRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (visible && dropdownItemPopupRef.current) {
-      if (direction === 'top') {
-        dropdownItemPopupRef.current.style.top = `${offset}px`;
-      } else {
-        dropdownItemPopupRef.current.style.bottom = `${offset}px`;
-      }
+      dropdownItemPopupRef.current.style.position = 'absolute';
     }
-  }, [visible, offset]);
+  }, [visible]);
 
   const renderContent = () => {
     const styleOffset: CSSProperties = {};
@@ -45,37 +40,33 @@ const DropdownItem: React.FC<DropdownItemProps> = forwardRef((props, ref) => {
     }
 
     return (
-      <div className={bem('', [className])} style={style}>
-        <Popup
-          ref={dropdownItemPopupRef}
-          className={bem([className])}
-          style={{ ...style, ...styleOffset }}
-          maskStyle={{ ...styleOffset }}
-          direction={direction}
-          visible={visible}
-          onMaskClick={parent.maskClosable ? parent.onClose : noop}
-          afterClose={parent.afterClose}
-          forceRender={parent.forceRender}
-          destroy={parent.destroy}
-          mountContainer={mountContainer || dropdownItemRef.current}
-          maskOpacity={0.5}
-          animationType="fade"
+      <Popup
+        ref={dropdownItemPopupRef}
+        style={{ ...style, ...styleOffset }}
+        className={bem('dropdown-popup-wrapper')}
+        maskStyle={{ ...styleOffset }}
+        direction={direction}
+        visible={visible}
+        onMaskClick={parent.maskClosable ? parent.onClose : noop}
+        forceRender={parent.forceRender}
+        destroy={parent.destroy}
+        maskOpacity={parent.maskOpacity}
+        animationType={parent.animationType}
+      >
+        <div
+          className={bem('popup-content')}
+          onClick={(event) => {
+            event.stopPropagation();
+          }}
         >
-          <div
-            className={bem('popup-content')}
-            onClick={(event) => {
-              event.stopPropagation();
-            }}
-          >
-            {props.children}
-          </div>
-        </Popup>
-      </div>
+          {props.children}
+        </div>
+      </Popup>
     );
   };
 
   return (
-    <div className={bem('popup')} ref={dropdownItemRef}>
+    <div className={bem([className])}>
       {renderContent()}
     </div>
   );

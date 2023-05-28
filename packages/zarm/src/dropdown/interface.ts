@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { TransitionName } from '../transition/interface';
 
 export interface BaseDropdownProps {
   activeKey?: number | string;
@@ -9,6 +10,8 @@ export interface BaseDropdownProps {
   children?: ReactNode;
   forceRender?: boolean;
   maskClosable?: boolean;
+  maskOpacity?: number;
+  animationType?: TransitionName;
   destroy?: boolean;
   onClose?: () => void;
   afterClose?: () => void;

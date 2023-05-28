@@ -41,6 +41,10 @@
 }
 
 @include b(dropdown-item) {
+  @include e(dropdown-popup-wrapper) {
+    overflow: hidden;
+  }
+
   @include e(popup-content) {
     background-color: #fff;
   }
