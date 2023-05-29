@@ -114,13 +114,22 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性             | 类型                  | 默认值 | 说明                                                                                                                                                                                  |
-| :--------------- | :-------------------- | :----- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --- |
-| activeKey        | number \| string      | -      | 激活的 Item Key                                                                                                                                                                       |
-| defaultActiveKey | number \| string      | -      | 默认激活的 Item Key                                                                                                                                                                   |
-| direction        | 'top' \| 'bottom'     | 'top'  | 默认下拉方向                                                                                                                                                                          |
-| arrow            | ReactNode             | -      | 箭头样式                                                                                                                                                                              |
-| onChange         | (value: Date) => void | -      | 值变化时触发的回调函数                                                                                                                                                                |     |
-| maskClosable     | boolean               | true   | 是否点击遮罩层时关闭                                                                                                                                                                  |
-| maskOpacity      | number                | 0.7    | 默认遮罩层透明度(0-1)                                                                                                                                                                 |
+### Dropdown
+
+| 属性             | 类型                  | 默认值 | 说明 |
+| :--------------- | :-------------------- | :----- | :--------------------------- |
+| activeKey        | number \| string      | -      | 激活的 Item Key |
+| defaultActiveKey | number \| string      | -      | 默认激活的 Item Key |
+| direction        | 'top' \| 'bottom'     | 'top'  | 默认下拉方向  |
+| arrow            | ReactNode             | -      | 箭头样式 |
+| onChange         | (key: string \| null) => void | -      | 值变化时触发的回调函数  |
+| maskClosable     | boolean               | true   | 是否点击遮罩层时关闭 |
+| maskOpacity      | number                | 0.7    | 默认遮罩层透明度(0-1) |
 | animationType    | string                | -      | 菜单动画类型，可选值 `fade`、`door`、`flip`、`rotate`、`zoom`、`zoom-fade`、`move-up`、 `move-down`、`move-left`、`move-right`、`slide-up`、`slide-down`、`slide-left`、`slide-right` |
+
+### Dropdown.Item
+
+| 属性          | 类型                     | 默认值   | 说明          |
+| :------------ | :-----------------------| :------- | :------------|
+| key           | string                  | -        | 唯一的key值   |
+| title         | string                  | -        | 子项标题      |
