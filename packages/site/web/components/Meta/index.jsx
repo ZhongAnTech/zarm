@@ -1,13 +1,7 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 
 class Meta extends PureComponent {
-  static propTypes = {
-    title: PropTypes.string,
-    description: PropTypes.string,
-  };
-
   static defaultProps = {
     title: '',
     description: '',

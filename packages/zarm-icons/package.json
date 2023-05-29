@@ -19,8 +19,8 @@
   "scripts": {
     "build": "pnpm build:lib && pnpm build:es",
     "build:es": "rimraf es && tsc --outDir es && zarm build --mode es --path src --out-dir es --copy-files --build-css",
-    "build:lib": "rimraf lib && tsc --outDir lib && zarm build --mode lib --path src --out-dir lib --copy-files --build-css",
     "build:font": "webFontsHelper --src ./svg --fontName zaicon --fontPath src/font --className za-icon",
+    "build:lib": "rimraf lib && tsc --outDir lib && zarm build --mode lib --path src --out-dir lib --copy-files --build-css",
     "build:react": "rimraf src/react && svgr ./svg --out-dir ./src/react",
     "build:svg": "rimraf svg && node ./scripts/exportSVG.js",
     "clean": "rimraf lib es coverage svg",
@@ -35,10 +35,14 @@
   "devDependencies": {
     "@babel/cli": "^7.13.16",
     "@svgr/cli": "^5.5.0",
+    "@types/react": "^18.0.26",
     "@zarm-design/cli": "^0.0.47",
     "react": "^17.0.2",
     "shelljs": "^0.8.4",
     "webfonts-helper": "^0.1.2"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0"
   },
   "publishConfig": {
     "access": "public"

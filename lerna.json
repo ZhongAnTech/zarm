@@ -1,5 +1,5 @@
 {
-  "packages": ["packages/*", "site"],
+  "packages": ["packages/*"],
   "version": "independent",
   "command": {
     "publish": {
