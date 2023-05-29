@@ -23,4 +23,5 @@ export default {
       ],
     },
   },
+  ignore: ['**/{tests,__tests__}/**'],
 };
