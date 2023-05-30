@@ -53,6 +53,7 @@
     "clean": "rimraf lib es dist coverage",
     "coverage": "rimraf coverage && pnpm test -c",
     "install-react-16": "pnpm add react@16 react-dom@16",
+    "install-react-18": "pnpm add react@18 react-dom@18",
     "lint": "pnpm lint:tsc && pnpm lint:script && pnpm lint:style",
     "lint:script": "eslint --ext .ts,.tsx src",
     "lint:style": "stylelint \"src/**/*.scss\" --syntax scss",
