@@ -49,6 +49,7 @@
     "@tarojs/shared": "3.6.7",
     "@tarojs/taro": "3.6.7",
     "@tarojs/taro-h5": "3.6.7",
+    "@zarm-design/icons": "workspace:*",
     "postcss-loader": "^7.0.2",
     "postcss-transform-selector": "^1.1.2",
     "react": "^18.0.0",
