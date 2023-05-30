@@ -1,14 +1,3 @@
 {
-  "compilerOptions": {
-    "baseUrl": "./packages",
-    "target": "ES2019",
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "jsx": "preserve",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "lib": ["ESNext", "DOM"]
-  },
-  "exclude": ["**/__tests__/**", "tests"]
+  "extends": "./tsconfig.base.json"
 }

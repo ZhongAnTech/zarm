@@ -44,6 +44,6 @@
     "@babel/preset-react": "^7.12.13",
     "@babel/preset-typescript": "^7.13.0",
     "@babel/runtime": "^7.13.10",
-    "@zarm-design/cli": "^0.0.47"
+    "@zarm-design/cli": "workspace:*"
   }
 }

@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "declaration": true,
+    "esModuleInterop": true,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "target": "es2019",
+    "jsx": "react",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "paths": {
+      "zarm": ["packages/zarm/src/index.ts"],
+      "zarm/es/*": ["packages/zarm/src/*"],
+      "zarm/lib/*": ["packages/zarm/src/*"]
+    }
+  },
+  "exclude": ["**/node_modules", "**/__tests__/**", "tests"]
+}

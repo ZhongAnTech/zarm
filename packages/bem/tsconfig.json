@@ -1,6 +1,7 @@
 {
-  "extends": "../../tsconfig",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "baseUrl": ".",
     "declaration": true,
     "emitDeclarationOnly": true
   },

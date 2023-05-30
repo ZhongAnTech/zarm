@@ -22,6 +22,7 @@
     "prettier": "prettier --write -c '**/*.{js,jsx,ts,tsx,html,md,json}'",
     "release": "pnpm publish",
     "sort": "npx sort-package-json \"package.json\" \"packages/*/package.json\"",
+    "start": "pnpm docs:dev",
     "test": "pnpm test"
   },
   "commitlint": {

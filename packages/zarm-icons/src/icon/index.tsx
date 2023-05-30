@@ -45,7 +45,7 @@ const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
       font: isFont,
     },
     className,
-    isFont && iconClassName,
+    isFont ? iconClassName : undefined,
   ]);
 
   const svgProps = {
