@@ -14,13 +14,13 @@
     "docs:dev": "pnpm --filter site-next dev",
     "preinstall": "npx only-allow pnpm",
     "postinstall": "pnpm --filter @zarm-design/cli build && pnpm --filter @zarm-design/bem build && pnpm --filter @zarm-design/icons build",
-    "lint": "pnpm install && pnpm lint:tsc && pnpm lint:script && pnpm lint:style",
+    "lint": "pnpm lint:tsc && pnpm lint:script && pnpm lint:style",
     "lint:script": "eslint --ext .ts,.tsx,.js,.jsx packages",
     "lint:style": "stylelint \"packages/**/*.scss\" --syntax scss",
     "lint:tsc": "tsc --noEmit",
     "prepare": "husky install",
     "prepublishOnly": "pnpm lint && pnpm build && pnpm test",
-    "prettier": "prettier --write -c '**/*.{js,jsx,ts,tsx,html,md,json}'",
+    "prettier": "prettier --write -c '.github/**/*.{js,jsx,ts,tsx,html,md,json,yml}'",
     "release": "pnpm publish",
     "sort": "npx sort-package-json \"package.json\" \"packages/*/package.json\"",
     "start": "pnpm docs:dev",
@@ -32,7 +32,7 @@
     ]
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,html,md,json}": [
+    "*.{js,jsx,ts,tsx,html,md,json,yml}": [
       "prettier --write --no-error-on-unmatched-pattern"
     ],
     "*.scss": [

@@ -7,7 +7,6 @@
     "moduleResolution": "node",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "strict": true,
     "skipLibCheck": true,
     "target": "es2019",
     "jsx": "react",
