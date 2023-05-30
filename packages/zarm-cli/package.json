@@ -20,13 +20,14 @@
     "bin"
   ],
   "scripts": {
-    "build": "yarn clean && tsc --build --force",
+    "build": "pnpm clean && tsc --build --force",
     "clean": "rimraf dist",
     "dev": "tsc -w",
-    "prepare": "yarn build",
+    "prepare": "pnpm build",
     "test": "jest"
   },
   "dependencies": {
+    "@babel/cli": "^7.13.10",
     "@babel/core": "^7.13.10",
     "@babel/helper-string-parser": "^7.21.5",
     "@babel/plugin-proposal-class-properties": "^7.13.0",

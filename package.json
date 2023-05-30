@@ -1,34 +1,30 @@
 {
-  "name": "root",
   "private": true,
-  "workspaces":{
-    "packages": ["packages/*"],
-    "nohoist": [
-      "**/react-reconciler",
-      "**/react-reconciler/**",
-      "**/@tarojs",
-      "**/@tarojs/**"
-    ]
-  },
   "scripts": {
-    "build": "lerna exec --scope zarm -- yarn build",
-    "clean": "lerna run clean && lerna clean -y",
-    "deploy": "lerna exec --scope site -- gh-pages -d assets",
-    "deploy:build": "lerna exec --scope site -- yarn build",
-    "dev": "lerna exec --scope site -- yarn start",
-    "postinstall": "lerna exec --scope @zarm-design/cli -- yarn build && lerna exec --scope @zarm-design/bem -- yarn build && lerna exec --scope @zarm-design/icons -- yarn build",
-    "lint": "yarn install && yarn lint:tsc && yarn lint:script && yarn lint:style",
+    "build": "pnpm --filter zarm build",
+    "build:weapp": "pnpm --filter mini-demo build:weapp",
+    "clean": "rimraf packages/**/{node_modules,dist,lib,es} website/{node_modules,dist,.dumi/tmp*} node_modules",
+    "dep:update": "pnpm up --interactive --latest --recursive",
+    "deploy": "pnpm --filter site gh-pages -d assets",
+    "deploy:build": "pnpm --filter site build",
+    "dev": "pnpm --filter site start",
+    "dev:h5": "pnpm --filter mini-demo dev:h5",
+    "dev:weapp": "pnpm --filter mini-demo dev:weapp",
+    "docs:build": "pnpm --filter site-next build",
+    "docs:dev": "pnpm --filter site-next dev",
+    "preinstall": "npx only-allow pnpm",
+    "postinstall": "pnpm --filter @zarm-design/cli build && pnpm --filter @zarm-design/bem build && pnpm --filter @zarm-design/icons build",
+    "lint": "pnpm install && pnpm lint:tsc && pnpm lint:script && pnpm lint:style",
     "lint:script": "eslint --ext .ts,.tsx,.js,.jsx packages",
     "lint:style": "stylelint \"packages/**/*.scss\" --syntax scss",
     "lint:tsc": "tsc --noEmit",
-    "prepublishOnly": "yarn lint && yarn build && yarn test",
+    "prepare": "husky install",
+    "prepublishOnly": "pnpm lint && pnpm build && pnpm test",
     "prettier": "prettier --write -c '**/*.{js,jsx,ts,tsx,html,md,json}'",
-    "release": "lerna publish",
+    "release": "pnpm publish",
     "sort": "npx sort-package-json \"package.json\" \"packages/*/package.json\"",
-    "test": "lerna exec --no-private -- yarn test",
-    "dev:h5": "lerna exec --scope mini-demo -- yarn run dev:h5",
-    "dev:weapp": "lerna exec --scope mini-demo -- yarn run dev:weapp",
-    "build:weapp": "lerna exec --scope mini-demo -- yarn run build:weapp"
+    "start": "pnpm docs:dev",
+    "test": "pnpm test"
   },
   "commitlint": {
     "extends": [
@@ -42,10 +38,6 @@
     "*.scss": [
       "stylelint --syntax scss"
     ]
-  },
-  "resolutions": {
-    "@types/react": "18.0.26",
-    "@types/react-dom": "18.0.9"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.16.3",
@@ -67,6 +59,7 @@
     "husky": "^8.0.2",
     "lerna": "^4.0.0",
     "lint-staged": "^13.1.0",
+    "only-allow": "^1.1.1",
     "prettier": "^2.8.0",
     "prettier-plugin-organize-imports": "^3.2.1",
     "prettier-plugin-packagejson": "^2.3.0",

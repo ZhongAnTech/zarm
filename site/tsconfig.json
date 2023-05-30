@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "jsx": "react",
+    "paths": {
+      "zarm": ["../packages/zarm/src/index.ts"],
+      "zarm/es/*": ["../packages/zarm/src/*"],
+      "zarm/lib/*": ["../packages/zarm/src/*"],
+      "@/*": ["src/*"],
+      "@@/*": [".dumi/tmp/*"]
+    }
+  },
+  "include": [".dumi/**/*", ".dumirc.ts"]
+}

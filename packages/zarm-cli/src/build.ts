@@ -82,8 +82,6 @@ const buildLibrary = async (
     path,
     '--extensions',
     ext,
-    '--ignore',
-    '**/*.d.ts',
     '--config-file',
     require.resolve(`./config/babelConfig/${mode}`),
   ];
