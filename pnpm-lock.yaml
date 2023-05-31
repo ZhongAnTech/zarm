@@ -269,6 +269,7 @@ importers:
       '@zarm-design/cli': workspace:*
       '@zarm-design/icons': workspace:*
       ahooks: ^3.7.6
+      chalk: ^4.1.1
       classnames: ^2.3.1
       color: ^3.1.3
       dayjs: ^1.11.3
@@ -309,6 +310,7 @@ importers:
       '@types/react-dom': registry.npmjs.org/@types/react-dom/18.2.4
       '@types/react-transition-group': registry.npmjs.org/@types/react-transition-group/4.4.6
       '@zarm-design/cli': link:../zarm-cli
+      chalk: registry.npmjs.org/chalk/4.1.2
       dekko: registry.npmjs.org/dekko/0.2.1
       react: registry.npmjs.org/react/17.0.2
       react-dom: registry.npmjs.org/react-dom/17.0.2_react@17.0.2
@@ -7870,7 +7872,7 @@ packages:
       '@types/istanbul-reports': registry.npmjs.org/@types/istanbul-reports/3.0.0
       '@types/node': registry.npmjs.org/@types/node/15.3.0
       '@types/yargs': registry.npmjs.org/@types/yargs/15.0.13
-      chalk: registry.npmjs.org/chalk/4.1.1
+      chalk: registry.npmjs.org/chalk/4.1.2
 
   registry.npmjs.org/@jest/types/27.5.1:
     resolution: {integrity: sha512-Cx46iJ9QpwQTjIdq5VJu2QTMMs3QlEjI0x1QbBP5W1+nMzyc2XmimiRR/CbX9TO0cPTeUlxWMOu8mslYsJ8DEw==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@jest/types/-/types-27.5.1.tgz}
