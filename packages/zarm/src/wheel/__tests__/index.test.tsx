@@ -1,5 +1,5 @@
+import { render } from '@testing-library/react';
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
 import Wheel from '../index';
 
 // function fakeTimers() {

@@ -85,7 +85,9 @@ exports[`Button icon 1`] = `
         alt=""
         src="https://zarm.design/images/logo.ce68565d.svg"
       />
-      <span>
+      <span
+        class="za-button__text"
+      >
         foo
       </span>
     </div>
@@ -118,7 +120,9 @@ exports[`Button loading 1`] = `
           />
         </svg>
       </div>
-      <span>
+      <span
+        class="za-button__text"
+      >
         foo
       </span>
     </div>

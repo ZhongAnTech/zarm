@@ -35,7 +35,7 @@ jobs:
         with:
           path: |
             node_modules
-            */*/node_modules
+            packages/**/node_modules
             packages/zarm-cli/dist
             packages/bem/lib
             packages/zarm-icons/lib
@@ -47,33 +47,6 @@ jobs:
       - name: Compile
         run: |
           pnpm --filter @zarm-design/* run build
-
-  test-cli:
-    name: Test @zarm-design/cli on Node.js
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18, 16, 14, 12, 10]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 7
-
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Test
-        run: pnpm --filter @zarm-design/cli run test
 
   lint:
     needs: [setup]
@@ -99,7 +72,7 @@ jobs:
         with:
           path: |
             node_modules
-            */*/node_modules
+            packages/**/node_modules
             packages/zarm-cli/dist
             packages/bem/lib
             packages/zarm-icons/lib
@@ -108,14 +81,50 @@ jobs:
       - name: Lint
         run: pnpm run lint
 
-  Test:
+  test-cli:
+    needs: [setup]
+    name: Test @zarm-design/cli
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18, 16, 14, 12, 10]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'pnpm'
+
+      - name: Restore Cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            packages/**/node_modules
+            packages/zarm-cli/dist
+            packages/bem/lib
+            packages/zarm-icons/lib
+          key: setup-${{ github.sha }}
+
+      - name: Test
+        run: pnpm --filter @zarm-design/cli run test
+
+  test:
     needs: [setup]
     name: Test zarm
     runs-on: ubuntu-latest
     strategy:
       matrix:
         react: ['16', '17', '18']
-        module: ['dom', 'dist']
+        module: ['dom', 'umd']
     env:
       REACT: ${{ matrix.react }}
     steps:
@@ -138,7 +147,7 @@ jobs:
         with:
           path: |
             node_modules
-            */*/node_modules
+            packages/**/node_modules
             packages/zarm-cli/dist
             packages/bem/lib
             packages/zarm-icons/lib
@@ -152,18 +161,16 @@ jobs:
         if: ${{ matrix.react == '18' }}
         run: pnpm --filter zarm run install-react-18
 
-      - name: Compile
-        if: ${{ matrix.module == 'dist' }}
+      - name: Check umd
+        if: ${{ matrix.module == 'umd' }}
+        run: |
+          pnpm --filter zarm run build:umd
+          pnpm --filter zarm run filecheck
         env:
           NODE_OPTIONS: --max_old_space_size=4096
-        run: pnpm --filter zarm run build:umd
 
-      - name: Check dist
-        if: ${{ matrix.module == 'dist' }}
-        run: pnpm --filter zarm run filecheck
-
-      - name: Check bundlesize
-        if: ${{ matrix.module == 'dist' }}
+      - name: Check umd bundlesize
+        if: ${{ matrix.module == 'umd' && matrix.react == '17' }}
         run: pnpm --filter zarm run bundlesize
         env:
           BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}
@@ -172,6 +179,6 @@ jobs:
         if: ${{ matrix.module == 'dom' }}
         run: pnpm --filter zarm run coverage
 
-      - name: Coverage
+      - name: Upload coverage
         if: ${{ matrix.module == 'dom' && matrix.react == '17' }}
         run: bash <(curl -s https://codecov.io/bash)

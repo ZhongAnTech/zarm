@@ -22,8 +22,7 @@
     "prettier": "prettier --write -c '**/*.{js,jsx,ts,tsx,html,md,json,yml}'",
     "release": "pnpm publish",
     "sort": "npx sort-package-json \"package.json\" \"packages/*/package.json\"",
-    "start": "pnpm docs:dev",
-    "test": "pnpm test"
+    "start": "pnpm docs:dev"
   },
   "commitlint": {
     "extends": [
@@ -56,6 +55,7 @@
     "eslint-plugin-react": "7.21.5",
     "eslint-plugin-react-hooks": "4.1.2",
     "husky": "^8.0.2",
+    "jest": "^26.5.3",
     "lerna": "^4.0.0",
     "lint-staged": "^13.1.0",
     "only-allow": "^1.1.1",

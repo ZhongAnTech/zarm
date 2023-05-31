@@ -1,10 +1,9 @@
-import React, { useRef } from "react";
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import React from 'react';
+import useMutationObserverRef from '../hooks/useMutationObserverRef';
 
-import useMutationObserverRef from "../hooks/useMutationObserverRef";
-
-describe("useMutationObserverRef", () => {
-  it("should watch for children change", async () => {
+describe('useMutationObserverRef', () => {
+  it('should watch for children change', async () => {
     let id = 1;
     const fn = jest.fn();
     const TestComp = () => {
@@ -18,7 +17,7 @@ describe("useMutationObserverRef", () => {
       });
 
       const addTodo = () => {
-        const todo = document.createElement("li");
+        const todo = document.createElement('li');
         id += 1;
         todo.textContent = `todo ${id}`;
         ref?.appendChild(todo);
@@ -39,9 +38,9 @@ describe("useMutationObserverRef", () => {
     render(<TestComp />);
     const button = screen.getByText(/add todo/iu);
     fireEvent.click(button);
-    expect(screen.getAllByRole("listitem")).toHaveLength(2);
+    expect(screen.getAllByRole('listitem')).toHaveLength(2);
     await waitFor(() => {
       expect(fn).toBeCalledTimes(1);
     });
-  })
+  });
 });

@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import React from 'react';
 import { sleep } from '../../../tests/utils';
 import Toast from '../index';
@@ -113,7 +113,7 @@ describe('Toast', () => {
         <button
           onClick={() => {
             // Toast.show({ icon: 'loading', content: 'loading-clear' });
-            Toast.show({ icon: 'success', content: 'success-clear',  className: 'clear-test' });
+            Toast.show({ icon: 'success', content: 'success-clear', className: 'clear-test' });
           }}
         >
           open-clear
@@ -126,7 +126,7 @@ describe('Toast', () => {
         >
           clear
         </button>
-      </div>
+      </div>,
     );
     fireEvent.click(getByText('open-clear'));
     await waitForContentShow('success-clear');

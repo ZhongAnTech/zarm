@@ -23,7 +23,6 @@
     "build": "pnpm clean && tsc --build --force",
     "clean": "rimraf dist",
     "dev": "tsc -w",
-    "prepare": "pnpm build",
     "test": "jest"
   },
   "dependencies": {
@@ -70,7 +69,6 @@
     "signale": "^1.4.0",
     "terser-webpack-plugin": "^5.1.2",
     "through2": "^3.0.1",
-    "ts-jest": "^26.5.0",
     "webpack": "^5.75.0",
     "webpack-bundle-analyzer": "^4.8.0",
     "webpack-cli": "^5.0.1",
@@ -81,6 +79,7 @@
   "devDependencies": {
     "@types/node": "^15.3.0",
     "@types/webpack": "^5.28.0",
+    "ts-jest": "^26.5.6",
     "ts-node": "^10.9.1"
   },
   "tags": [

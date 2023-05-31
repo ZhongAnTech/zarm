@@ -35,6 +35,7 @@
   "devDependencies": {
     "@babel/cli": "^7.13.16",
     "@svgr/cli": "^5.5.0",
+    "@testing-library/react": "^12.0.0",
     "@types/react": "^18.0.26",
     "@zarm-design/cli": "workspace:*",
     "react": "^17.0.2",
