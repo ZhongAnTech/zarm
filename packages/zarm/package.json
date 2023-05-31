@@ -43,7 +43,9 @@
     "lib",
     "es",
     "dist",
-    "types"
+    "types",
+    "!**/__tests__/*",
+    "!**/demo/*"
   ],
   "scripts": {
     "build": "pnpm build:lib && pnpm build:es && pnpm build:umd",

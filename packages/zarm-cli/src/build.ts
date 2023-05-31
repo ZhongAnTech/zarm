@@ -39,7 +39,7 @@ const umdBuild = async ({ mode, path, outDir, libraryName, analyzer }, barActive
   banner && customizePlugins.push(new webpack.BannerPlugin(banner));
 
   const umdTask = (type) => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       const config = webpackMerge(getProjectConfig(getWebpackConfig(type)), {
         entry: {
           [libraryName]: entryFiles,
@@ -51,19 +51,21 @@ const umdBuild = async ({ mode, path, outDir, libraryName, analyzer }, barActive
         plugins: customizePlugins,
       });
 
-      return webpack(config).run((err, stats) => {
-        if (err) {
-          console.error(err);
-          return;
-        }
+      resolve(
+        webpack(config).run((err, stats) => {
+          if (err) {
+            console.error(err);
+            return;
+          }
 
-        console.log(
-          stats.toString({
-            chunks: false,
-            colors: true,
-          }),
-        );
-      });
+          console.log(
+            stats.toString({
+              chunks: false,
+              colors: true,
+            }),
+          );
+        }),
+      );
     });
   };
 
@@ -82,6 +84,8 @@ const buildLibrary = async (
     path,
     '--extensions',
     ext,
+    '--ignore',
+    '**/demo/*',
     '--config-file',
     require.resolve(`./config/babelConfig/${mode}`),
   ];

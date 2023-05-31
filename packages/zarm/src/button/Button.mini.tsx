@@ -1,12 +1,11 @@
-
-import React, { useContext } from 'react';
+import { ButtonProps as TaroButtonProps, View } from '@tarojs/components';
 import { createBEM } from '@zarm-design/bem';
-import { ButtonProps as TaroButtonProps, View, Text } from '@tarojs/components';
+import React, { useContext } from 'react';
 import { ConfigContext } from '../config-provider';
-import { BaseButtonProps } from './interface';
 import BaseButton from './BaseButton.mini';
+import { BaseButtonProps } from './interface';
 
-export interface ButtonProps extends BaseButtonProps, Omit<TaroButtonProps, 'size'> {};
+export interface ButtonProps extends BaseButtonProps, Omit<TaroButtonProps, 'size'> {}
 
 const Button: React.FC = (props: ButtonProps) => {
   const {
@@ -42,20 +41,20 @@ const Button: React.FC = (props: ButtonProps) => {
   ]);
 
   const iconRender = icon;
-  const textCls = (loading || !!icon) ? bem('text') : null;
+  const textCls = loading || !!icon ? bem('text') : null;
   const childrenRender = children && <span className={textCls}>{children}</span>;
 
   return (
     <View className={cls}>
       <BaseButton {...restProps} />
       <View className={bem('content')}>
-        { loading ? <View className={bem('loading')} /> : null}
+        {loading ? <View className={bem('loading')} /> : null}
         {icon && iconRender}
         {childrenRender}
       </View>
     </View>
   );
-}
+};
 
 Button.defaultProps = {
   theme: 'default',

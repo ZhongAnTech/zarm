@@ -17,5 +17,5 @@
       "zarm/lib/*": ["packages/zarm/src/*"]
     }
   },
-  "exclude": ["**/node_modules", "**/__tests__/**", "tests"]
+  "exclude": ["**/node_modules", "**/__tests__/**", "**/demo/*", "tests"]
 }
