@@ -1,0 +1,348 @@
+name: CI
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Lint
+        run: pnpm run lint
+
+  test-cli:
+    name: Test @zarm-design/cli on Node.js
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18, 16, 14, 12, 10]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Test
+        run: pnpm --filter @zarm-design/cli run test
+
+  compile-cli:
+    name: Compile @zarm-design/cli
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Cache
+        uses: actions/cache@v3
+        with:
+          path: packages/zarm-cli/dist
+          key: cli-${{ github.sha }}
+
+      - name: Compile
+        run: pnpm --filter @zarm-design/cli run build
+
+  compile-bem:
+    needs: [compile-cli]
+    name: Compile @zarm-design/bem
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Restore Cache from @zarm-design/cli
+        uses: actions/cache@v3
+        with:
+          path: packages/zarm-cli/dist
+          key: cli-${{ github.sha }}
+
+      - name: Cache
+        uses: actions/cache@v3
+        with:
+          path: packages/bem/lib
+          key: bem-${{ github.sha }}
+
+      - name: Compile
+        run: pnpm --filter @zarm-design/bem run build
+
+  compile-icons:
+    needs: [compile-bem]
+    name: Compile @zarm-design/icons
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Restore Cache from @zarm-design/cli
+        uses: actions/cache@v3
+        with:
+          path: packages/zarm-cli/dist
+          key: cli-${{ github.sha }}
+
+      - name: Restore Cache from @zarm-design/bem
+        uses: actions/cache@v3
+        with:
+          path: packages/bem/lib
+          key: bem-${{ github.sha }}
+
+      - name: Cache
+        uses: actions/cache@v3
+        with:
+          path: packages/zarm-icons/lib
+          key: icons-${{ github.sha }}
+
+      - name: Compile
+        run: pnpm --filter @zarm-design/icons run build
+
+  compile:
+    needs: [compile-icons]
+    name: Compile zarm CJS/ESM
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Restore Cache from @zarm-design/cli
+        uses: actions/cache@v3
+        with:
+          path: packages/zarm-cli/dist
+          key: cli-${{ github.sha }}
+
+      - name: Restore Cache from @zarm-design/bem
+        uses: actions/cache@v3
+        with:
+          path: packages/bem/lib
+          key: bem-${{ github.sha }}
+
+      - name: Restore Cache from @zarm-design/icons
+        uses: actions/cache@v3
+        with:
+          path: packages/zarm-icons/lib
+          key: icons-${{ github.sha }}
+
+      - name: Compile
+        run: |
+          pnpm --filter zarm run build:lib
+          pnpm --filter zarm run build:es
+
+  compile-umd:
+    needs: [compile-icons]
+    name: Compile zarm UMD
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Restore Cache from @zarm-design/cli
+        uses: actions/cache@v3
+        with:
+          path: packages/zarm-cli/dist
+          key: cli-${{ github.sha }}
+
+      - name: Restore Cache from @zarm-design/bem
+        uses: actions/cache@v3
+        with:
+          path: packages/bem/lib
+          key: bem-${{ github.sha }}
+
+      - name: Restore Cache from @zarm-design/icons
+        uses: actions/cache@v3
+        with:
+          path: packages/zarm-icons/lib
+          key: icons-${{ github.sha }}
+
+      - name: Cache
+        uses: actions/cache@v3
+        with:
+          path: packages/zarm/dist
+          key: zarm-${{ github.sha }}
+
+      - name: Compile
+        env:
+          NODE_OPTIONS: --max_old_space_size=4096
+        run: pnpm --filter zarm run build:umd
+
+  Test:
+    needs: [compile-umd]
+    name: Test zarm
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        react: ['16', '17', '18']
+        module: ['dom', 'dist']
+    env:
+      REACT: ${{ matrix.react }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Install React v16
+        if: ${{ matrix.react == '16' }}
+        run: pnpm --filter zarm run install-react-16
+
+      - name: Install React v18
+        if: ${{ matrix.react == '18' }}
+        run: pnpm --filter zarm run install-react-18
+
+      - name: Restore Cache from @zarm-design/cli
+        uses: actions/cache@v3
+        with:
+          path: packages/zarm-cli/dist
+          key: cli-${{ github.sha }}
+
+      - name: Restore Cache from @zarm-design/bem
+        uses: actions/cache@v3
+        with:
+          path: packages/bem/lib
+          key: bem-${{ github.sha }}
+
+      - name: Restore Cache from @zarm-design/icons
+        uses: actions/cache@v3
+        with:
+          path: packages/zarm-icons/lib
+          key: icons-${{ github.sha }}
+
+      - name: Restore Cache from zarm
+        uses: actions/cache@v3
+        with:
+          path: packages/zarm/dist
+          key: zarm-${{ github.sha }}
+
+      - name: Check dist
+        if: ${{ matrix.module == 'dist' }}
+        run: pnpm --filter zarm node ./tests/dekko/dist.test.js
+
+      - name: Check bundlesize
+        if: ${{ matrix.module == 'dist' }}
+        run: pnpm --filter zarm npx bundlesize
+        env:
+          BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}
+
+      - name: Test
+        if: ${{ matrix.module == 'dom' }}
+        run: pnpm --filter zarm run coverage
+
+      - name: Coverage
+        if: ${{ matrix.module == 'dom' && matrix.react == '17' }}
+        run: bash <(curl -s https://codecov.io/bash)
