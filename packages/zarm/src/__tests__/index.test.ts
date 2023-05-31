@@ -131,6 +131,22 @@ describe('index', () => {
           "render": [Function],
         },
         "DateSelect": [Function],
+        "Dropdown": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "Item": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "defaultProps": Object {
+            "destroy": false,
+            "direction": "down",
+            "disabled": false,
+            "forceRender": false,
+            "maskClosable": true,
+            "maskOpacity": 0.7,
+          },
+          "render": [Function],
+        },
         "FilePicker": Object {
           "$$typeof": Symbol(react.forward_ref),
           "defaultProps": Object {

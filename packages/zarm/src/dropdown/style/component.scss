@@ -38,6 +38,34 @@
   @include e(arrow) {
     transition: all 0.3s ease;
   }
+
+  @include m(bottom) {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+
+  @include m(top) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  @include m(left) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+  }
+
+  @include m(right) {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+  }
 }
 
 @include b(dropdown-item) {

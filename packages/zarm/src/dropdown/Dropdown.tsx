@@ -1,7 +1,9 @@
 import { createBEM } from '@zarm-design/bem';
+import { ArrowDown, ArrowUp } from '@zarm-design/icons';
 import React, {
   Children,
   cloneElement,
+  CSSProperties,
   forwardRef,
   ReactElement,
   useContext,
@@ -9,12 +11,13 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { ArrowDown, ArrowUp } from '@zarm-design/icons';
 import { ConfigContext } from '../config-provider';
+import Popup from '../popup';
+import Transition from '../transition';
 import useScroll from '../use-scroll';
+import { noop } from '../utils';
 import { HTMLProps } from '../utils/utilityTypes';
-import { DropdownContext } from './context';
-import DropdownItem, { DropdownItemElement, DropdownItemProps } from './DropdownItem';
+import DropdownItem, { DropdownItemProps } from './DropdownItem';
 import type { BaseDropdownProps, DropdownCssVars, DropdownItemKey } from './interface';
 
 export type DropdownProps = BaseDropdownProps & HTMLProps<DropdownCssVars>;
@@ -34,6 +37,14 @@ const getActiveKey = ({ activeKey, defaultActiveKey }) => {
   return null;
 };
 
+const TRANSITION_NAMES = {
+  top: 'move-down',
+  bottom: 'move-up',
+  center: 'fade',
+  left: 'move-left',
+  right: 'move-right',
+};
+
 const Dropdown: React.FC<DropdownProps> = forwardRef((props, ref) => {
   const {
     className,
@@ -46,6 +57,7 @@ const Dropdown: React.FC<DropdownProps> = forwardRef((props, ref) => {
     maskClosable,
     maskOpacity,
     animationType,
+    animationDuration,
     arrow,
     onChange,
   } = props;
@@ -54,17 +66,11 @@ const Dropdown: React.FC<DropdownProps> = forwardRef((props, ref) => {
   const bem = createBEM('dropdown', { prefixCls });
 
   const [currentPopupKey, setCurrentPopupKey] = useState<string | number>();
-  const refs = useRef<Record<DropdownItemKey, DropdownItemElement>>({});
   const root = useRef<HTMLDivElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
   const offset = useRef<number>(0);
   const scrollContainer = useRef<HTMLElement>(document.body);
-
-  const setChildrenRefs = (key: number | string) => (el: DropdownItemElement) => {
-    if (el) {
-      refs.current[key] = el;
-    }
-  };
+  const dropdownItemPopupRef = useRef<HTMLDivElement>(null);
 
   const toggleItem = (key: DropdownItemKey | null) => {
     const nextKey = key === currentPopupKey ? null : key;
@@ -72,13 +78,8 @@ const Dropdown: React.FC<DropdownProps> = forwardRef((props, ref) => {
     typeof onChange === 'function' && onChange(nextKey);
   };
 
-  const DefaultArrow = (
-    reverse = false,
-  ) => (
-     reverse ?
-      <ArrowDown size='sm'/>
-      : <ArrowUp size='sm'/>
-  );
+  const DefaultArrow = (reverse = false) =>
+    reverse ? <ArrowDown size="sm" /> : <ArrowUp size="sm" />;
 
   const renderTitle = (item: DropdownItemProps, key: DropdownItemKey) => {
     return (
@@ -86,7 +87,7 @@ const Dropdown: React.FC<DropdownProps> = forwardRef((props, ref) => {
         key={key}
         role="button"
         tabIndex={disabled ? -1 : 0}
-        className={bem('bar-item', [{ 'disabled': disabled, 'active': currentPopupKey === key }]) }
+        className={bem('bar-item', [{ disabled, active: currentPopupKey === key }])}
         onClick={() => {
           if (!disabled) {
             toggleItem(key);
@@ -94,17 +95,19 @@ const Dropdown: React.FC<DropdownProps> = forwardRef((props, ref) => {
         }}
       >
         <div className={bem('title')}>{item.title}</div>
-          { arrow ??  <div className={bem('arrow')}>{ DefaultArrow(direction === 'bottom') }</div> }
+        <div className={bem('arrow')}>
+          {item.arrow ? item.arrow : arrow || DefaultArrow(direction === 'up')}
+        </div>
       </div>
     );
   };
 
   const computeOffset = () => {
     const { top, bottom } = barRef.current.getBoundingClientRect();
-    if (direction === 'top') {
-      offset.current = bottom;
-    } else {
+    if (direction === 'up') {
       offset.current = window.innerHeight - top;
+    } else {
+      offset.current = bottom;
     }
   };
 
@@ -127,48 +130,78 @@ const Dropdown: React.FC<DropdownProps> = forwardRef((props, ref) => {
     setCurrentPopupKey(getActiveKey({ activeKey, defaultActiveKey }));
   }, [activeKey, defaultActiveKey]);
 
+  useEffect(() => {
+    if (dropdownItemPopupRef.current) {
+      dropdownItemPopupRef.current.style.position = 'absolute';
+    }
+  }, [currentPopupKey, dropdownItemPopupRef.current]);
+
+  const renderPopContent = () => {
+    const styleOffset: CSSProperties = {};
+    if (direction === 'down') {
+      styleOffset.top = `${offset.current}px`;
+    } else {
+      styleOffset.bottom = `${offset.current}px`;
+      styleOffset.height = `auto`;
+    }
+
+    const animationDirection = direction === 'up' ? 'bottom' : 'top';
+    const transitionName = animationType ?? TRANSITION_NAMES[animationDirection];
+
+    return (
+      <Popup
+        ref={dropdownItemPopupRef}
+        style={{ ...styleOffset }}
+        className={bem('dropdown-popup-wrapper')}
+        maskStyle={{ ...styleOffset }}
+        direction={animationDirection}
+        visible={!!currentPopupKey}
+        onMaskClick={maskClosable ? () => toggleItem(currentPopupKey) : noop}
+        forceRender={forceRender}
+        destroy={destroy}
+        maskOpacity={maskOpacity}
+        animationDuration={animationDuration}
+      >
+        {Children.map(props.children, (child: ReactElement<DropdownItemProps>) => {
+          return (
+            <Transition
+              visible={currentPopupKey === child.key}
+              tranisitionName={`${prefixCls}-${transitionName}`}
+              forceRender={forceRender}
+              destroy={destroy}
+              duration={animationDuration}
+            >
+              <div className={bem([{ [`${animationDirection}`]: !!animationDirection }])}>
+                {cloneElement(child, {
+                  key: child.key,
+                })}
+              </div>
+            </Transition>
+          );
+        })}
+      </Popup>
+    );
+  };
+
   return (
-    <DropdownContext.Provider
-      value={{
-        forceRender,
-        destroy,
-        onClose: () => {
-          toggleItem(currentPopupKey)
-        },
-        maskClosable,
-        maskOpacity,
-        animationType,
-      }}
-    >
-      <div ref={root} className={bem([className])}>
-        <div ref={barRef} className={bem('bar')}>
-          {Children.map(props.children, (child: ReactElement<DropdownItemProps>) => {
-            return renderTitle(child.props, child.key);
-          })}
-        </div>
-        {Children.map(
-          props.children,
-          (child: ReactElement<DropdownItemProps & { ref: (el: DropdownItemElement) => void }>) => {
-            return cloneElement(child, {
-              ref: setChildrenRefs(child.key),
-              direction: props.direction,
-              offset: offset.current,
-              visible: currentPopupKey === child.key,
-            });
-          },
-        )}
+    <div ref={root} className={bem([className])}>
+      <div ref={barRef} className={bem('bar')}>
+        {Children.map(props.children, (child: ReactElement<DropdownItemProps>) => {
+          return renderTitle(child.props, child.key);
+        })}
       </div>
-    </DropdownContext.Provider>
+      {renderPopContent()}
+    </div>
   );
 });
 Dropdown.displayName = 'Dropdown';
 
 Dropdown.defaultProps = {
   disabled: false,
-  direction: 'top',
+  direction: 'down',
   forceRender: false,
   destroy: false,
   maskClosable: true,
-  maskOpacity: 0.7
+  maskOpacity: 0.7,
 };
 export default Dropdown as CompoundedComponent;

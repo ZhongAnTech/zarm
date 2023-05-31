@@ -4,7 +4,7 @@ import { TransitionName } from '../transition/interface';
 export interface BaseDropdownProps {
   activeKey?: number | string;
   defaultActiveKey?: number | string;
-  direction?: 'top' | 'bottom';
+  direction?: 'up' | 'down';
   disabled?: boolean;
   arrow?: ReactNode;
   children?: ReactNode;
@@ -12,19 +12,17 @@ export interface BaseDropdownProps {
   maskClosable?: boolean;
   maskOpacity?: number;
   animationType?: TransitionName;
+  animationDuration?: number;
   destroy?: boolean;
   onChange?: (activeKey: number | string) => void;
 }
 
 export type DropdownItemKey = string | number;
 export interface BaseDropdownItemProps {
-  children?: ReactNode;
-  mountContainer?: HTMLElement;
   title?: string;
   key: DropdownItemKey;
-  visible?: boolean;
-  offset?: number;
-  direction?: 'top' | 'bottom';
+  arrow?: ReactNode;
+  children?: ReactNode;
 }
 
 
