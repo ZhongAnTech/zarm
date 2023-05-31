@@ -1,6 +1,7 @@
 import { createBEM } from '@zarm-design/bem';
 import { DeleteKey as DeleteKeyIcon, Keyboard as KeyboardIcon } from '@zarm-design/icons';
-import React, { CSSProperties, forwardRef, useContext, useRef, ReactNode, useCallback } from 'react';
+import * as React from 'react';
+import { CSSProperties, forwardRef, ReactNode, useCallback, useContext, useRef } from 'react';
 import { ConfigContext } from '../config-provider';
 import useLongPress from '../use-long-press';
 import { useLatest } from '../utils/hooks';

@@ -1,9 +1,10 @@
 import { createBEM } from '@zarm-design/bem';
-import React, { createRef, forwardRef, useCallback, useContext, useState } from 'react';
-import type { PickerContainerCssVars } from '../picker/Container';
+import * as React from 'react';
+import { createRef, forwardRef, useCallback, useContext, useState } from 'react';
 import CascaderView from '../cascader-view';
 import { parseItems, parseState } from '../cascader-view/utils';
 import { ConfigContext } from '../config-provider';
+import type { PickerContainerCssVars } from '../picker/Container';
 import PickerContainer from '../picker/Container';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseCascaderProps } from './interface';

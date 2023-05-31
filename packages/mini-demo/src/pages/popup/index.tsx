@@ -1,13 +1,7 @@
-import React, { useRef, useState, useReducer } from 'react';
-import { View } from '@tarojs/components';
-import { Button, Panel, Popup, List } from 'zarm/mini';
-
-import './index.scss'
-
-const SINGLE_DATA = [
-  { value: '1', label: '选项一' },
-  { value: '2', label: '选项二' },
-];
+import * as React from 'react';
+import { useReducer, useRef } from 'react';
+import { Button, List, Popup } from 'zarm/mini';
+import './index.scss';
 
 const initVisibleState = {
   popBottom: false,
@@ -20,9 +14,7 @@ const initVisibleState = {
 };
 
 const Demo = () => {
-  const popupRef = useRef();
   const timer = useRef<any>(null);
-  const [value, setValue] = useState('');
   const [visible, setVisible] = useReducer((state, action) => {
     const { type } = action;
     return {
@@ -105,11 +97,8 @@ const Demo = () => {
         destroy={false}
         mountContainer={() => document.body}
       >
-        <div className="popup-box">
-          底部
-        </div>
+        <div className="popup-box">底部</div>
       </Popup>
-
 
       <Popup
         visible={visible.popLeft}
@@ -150,8 +139,6 @@ const Demo = () => {
           </Button>
         </div>
       </Popup>
-
-
     </>
   );
 };

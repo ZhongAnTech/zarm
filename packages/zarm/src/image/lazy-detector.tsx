@@ -1,4 +1,5 @@
-import React, { FC, useEffect, useRef } from 'react';
+import * as React from 'react';
+import { FC, useEffect, useRef } from 'react';
 import useInViewport from '../use-in-viewport';
 
 interface Props {
