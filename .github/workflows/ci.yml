@@ -12,30 +12,6 @@ permissions:
   contents: read
 
 jobs:
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 7
-
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Lint
-        run: pnpm run lint
-
   test-cli:
     name: Test @zarm-design/cli on Node.js
     runs-on: ubuntu-latest
@@ -269,6 +245,31 @@ jobs:
           NODE_OPTIONS: --max_old_space_size=4096
         run: pnpm --filter zarm run build:umd
 
+  lint:
+    needs: [compile-icons]
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Lint
+        run: pnpm run lint
+
   Test:
     needs: [compile-umd]
     name: Test zarm
@@ -331,11 +332,11 @@ jobs:
 
       - name: Check dist
         if: ${{ matrix.module == 'dist' }}
-        run: pnpm --filter zarm node ./tests/dekko/dist.test.js
+        run: pnpm --filter zarm run filecheck
 
       - name: Check bundlesize
         if: ${{ matrix.module == 'dist' }}
-        run: pnpm --filter zarm npx bundlesize
+        run: pnpm --filter zarm run bundlesize
         env:
           BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}
 
