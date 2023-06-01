@@ -76,8 +76,11 @@ class Picker extends Component {
   }
 
   onValueChange(value) {
+    const { visible } = this.state;
+    const tempValue = this.tempValue;
+
     this.setState({
-      value,
+      value: visible ? value : tempValue,
     });
     this.props.onChange(value);
   }

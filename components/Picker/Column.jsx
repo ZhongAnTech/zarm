@@ -52,6 +52,7 @@ class Column extends Component {
       this.setState({
         selectedValue: nextProps.selectedValue,
       });
+      this.select(nextProps.selectedValue);
     }
     this.zscroller.setDisabled(nextProps.disabled);
   }
