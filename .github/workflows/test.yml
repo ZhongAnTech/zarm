@@ -45,8 +45,7 @@ jobs:
         run: pnpm install
 
       - name: Compile
-        run: |
-          pnpm --filter @zarm-design/* run build
+        run: pnpm --filter @zarm-design/* run build
 
   lint:
     needs: [setup]
