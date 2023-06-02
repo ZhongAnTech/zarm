@@ -15,9 +15,9 @@ jobs:
 
       - name: build
         run: |
-          yarn
-          lerna exec --scope @zarm-design/cli -- yarn build
-          NODE_OPTIONS='--max-old-space-size=4096' lerna exec --scope site -- yarn build
+          pnpm install
+          pnpm --filter @zarm-design/cli run build
+          NODE_OPTIONS='--max-old-space-size=4096' pnpm --filter site run build
 
       - name: upload assets artifact
         uses: actions/upload-artifact@v2
