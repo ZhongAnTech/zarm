@@ -9,17 +9,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
-      - name: build
-        run: |
-          pnpm install
-          pnpm --filter @zarm-design/cli run build
-          NODE_OPTIONS='--max-old-space-size=4096' pnpm --filter site run build
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
 
-      - name: upload assets artifact
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build
+        run: |
+          pnpm --filter @zarm-design/cli run build
+          pnpm --filter site run build
+        env:
+          NODE_OPTIONS: --max_old_space_size=4096
+
+      - name: Upload assets artifact
         uses: actions/upload-artifact@v2
         with:
           name: assets
