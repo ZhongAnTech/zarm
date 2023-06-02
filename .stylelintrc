@@ -2,7 +2,6 @@
   "extends": "stylelint-config-za/scss",
   "rules": {
     "unit-case": null,
-    "selector-list-comma-newline-after": null,
     "selector-type-no-unknown": [true, {
       "ignoreTypes": ["page"]
     }]
