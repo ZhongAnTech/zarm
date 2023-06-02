@@ -6,14 +6,14 @@ Install to fetch its dependencies after git clone the repo.
 
 ```bash
 # npm is not allowed.
-$ yarn
+$ pnpm i
 ```
 
 Then, you can runs Zarm Design website locally.
 
 ```bash
 # develop for h5
-$ yarn dev
+$ pnpm dev
 ```
 
 ## Lint
@@ -21,16 +21,16 @@ $ yarn dev
 checks the code style.
 
 ```bash
-$ yarn lint
+$ pnpm lint
 
 # Check code style for Typescript
-$ yarn lint:ts
+$ pnpm lint:ts
 
 # Check code style for Javascript
-$ yarn lint:js
+$ pnpm lint:js
 
 # Check code style for Stylesheet
-$ yarn lint:style
+$ pnpm lint:style
 ```
 
 ## Test

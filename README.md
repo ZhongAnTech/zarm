@@ -39,11 +39,12 @@ Zarm （读音 /zɑːm/，中文可发音为 扎姆）的命名，灵感来源�
 
 ## 安装
 
-npm 或 yarn 安装
-
 ```bash
 # npm
 $ npm install zarm --save
+
+# pnpm
+$ pnpm add zarm
 
 # yarn
 $ yarn add zarm
