@@ -1,36 +1,35 @@
+import {
+  arrow,
+  autoUpdate,
+  flip,
+  offset,
+  shift,
+  useClick,
+  useDismiss,
+  useFloating,
+  useFocus,
+  useHover,
+  useInteractions,
+} from '@floating-ui/react-dom-interactions';
+import { createBEM } from '@zarm-design/bem';
 import React, {
-  HTMLAttributes,
-  useEffect,
-  useRef,
-  useState,
-  useMemo,
-  useImperativeHandle,
   cloneElement,
   forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState,
 } from 'react';
-import { createBEM } from '@zarm-design/bem';
-import {
-  useClick,
-  useFloating,
-  flip,
-  shift,
-  useInteractions,
-  offset,
-  autoUpdate,
-  arrow,
-  useHover,
-  useFocus,
-  useDismiss,
-} from '@floating-ui/react-dom-interactions';
-
+import { ConfigContext } from '../config-provider';
 import Transition from '../transition';
 import { canUseDOM, getElementSize, renderToContainer } from '../utils/dom';
-import BasePopperProps from './interface';
-import { ConfigContext } from '../config-provider';
-import { getTransitionName, getTransformOrigin } from './utils';
 import mergeRefs from '../utils/mergeRefs';
+import type { HTMLProps } from '../utils/utilityTypes';
+import BasePopperProps from './interface';
+import { getTransformOrigin, getTransitionName } from './utils';
 
-interface PopperProps extends BasePopperProps, HTMLAttributes<HTMLDivElement> {}
+export type PopperProps = BasePopperProps & HTMLProps;
 
 const directionMap = {
   top: 'top' as const,

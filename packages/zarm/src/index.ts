@@ -88,6 +88,7 @@ export type { PickerViewCssVars, PickerViewInstance, PickerViewProps } from './p
 export { default as PinchZoom } from './pinch-zoom';
 export type { PinchZoomProps } from './pinch-zoom';
 export { default as Popper } from './popper';
+export type { PopperProps } from './popper';
 export { default as Popup } from './popup';
 export type { PopupProps, PopupShowProps } from './popup';
 export { default as Progress } from './progress';

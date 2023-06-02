@@ -1,6 +1,6 @@
 import React from 'react';
-import { MountContainer } from '../utils/dom';
 import { TransitionName } from '../transition/interface';
+import { MountContainer } from '../utils/dom';
 
 export type PopperPlacement =
   | 'top'
@@ -32,4 +32,5 @@ export default interface BasePopperProps {
   mouseEnterDelay?: number;
   mouseLeaveDelay?: number;
   onVisibleChange?: (visible: boolean) => void;
+  children?: React.ReactNode;
 }
