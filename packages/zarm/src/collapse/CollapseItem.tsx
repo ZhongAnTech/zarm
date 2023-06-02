@@ -1,23 +1,28 @@
-import React, { HTMLAttributes } from 'react';
 import { createBEM } from '@zarm-design/bem';
-import type { BaseCollapseItemProps } from './interface';
+import React, { HTMLAttributes } from 'react';
 import { ConfigContext } from '../config-provider';
 import { useSafeLayoutEffect } from '../utils/hooks';
+import CollapseContext from './context';
+import type { BaseCollapseItemProps } from './interface';
 
 export type CollapseItemProps = Omit<HTMLAttributes<HTMLDivElement>, 'key' | 'title' | 'onChange'> &
-  BaseCollapseItemProps;
+  BaseCollapseItemProps & { value: string };
 
 const CollapseItem = React.forwardRef<unknown, CollapseItemProps>((props, ref) => {
-  const { title, className, disabled, animated, isActive, children, onChange, ...rest } = props;
+  const { title, className, disabled, value, children, onChange, ...rest } = props;
 
   const content = (ref as any) || React.createRef<HTMLElement>();
   const collapseItemRef = (ref as any) || React.createRef<HTMLElement>();
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('collapse-item', { prefixCls });
 
+  const { isActive: isExpanded, toggleItem } = React.useContext(CollapseContext);
+
+  const isActive = isExpanded(value);
   const onClickItem = () => {
     if (disabled) return;
-    typeof onChange === 'function' && onChange(isActive!);
+    onChange?.(isActive!);
+    toggleItem(value, !isActive);
   };
 
   const getContentHeight = (ele) => {
@@ -61,7 +66,6 @@ const CollapseItem = React.forwardRef<unknown, CollapseItemProps>((props, ref) =
 CollapseItem.displayName = 'CollapseItem';
 
 CollapseItem.defaultProps = {
-  animated: false,
   disabled: false,
 };
 

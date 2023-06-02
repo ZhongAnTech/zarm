@@ -1,4 +1,4 @@
-import Collapse from './Collapse';
+import Collapse from './Collapse.mini';
 import CollapseItem from './CollapseItem.mini';
 
 Collapse.Item = CollapseItem;

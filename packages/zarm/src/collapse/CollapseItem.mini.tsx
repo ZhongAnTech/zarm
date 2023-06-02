@@ -1,10 +1,11 @@
 import { View, ViewProps } from '@tarojs/components';
 import Taro from '@tarojs/taro';
 import { createBEM } from '@zarm-design/bem';
-import React, { useMemo } from 'react';
+import React from 'react';
 import { ConfigContext } from '../config-provider';
 import { nanoid } from '../utils';
 import { useSafeLayoutEffect } from '../utils/hooks';
+import CollapseContext from './context';
 import type { BaseCollapseItemProps } from './interface';
 
 const getRect = (id): Promise<Taro.NodesRef.BoundingClientRectCallbackResult> => {
@@ -18,22 +19,27 @@ const getRect = (id): Promise<Taro.NodesRef.BoundingClientRectCallbackResult> =>
   });
 };
 
-export type CollapseItemProps = React.PropsWithChildren<ViewProps> & BaseCollapseItemProps;
+export type CollapseItemProps = Omit<ViewProps, 'key' | 'title' | 'onChange'> &
+  BaseCollapseItemProps & { value: string };
 
 const CollapseItem = React.forwardRef<unknown, CollapseItemProps>((props, ref) => {
-  const { title, className, disabled, animated, isActive, children, onChange, ...rest } = props;
+  const { title, className, disabled, value, children, onChange, ...rest } = props;
 
   const content = (ref as any) || React.createRef<HTMLElement>();
   const collapseItemRef = (ref as any) || React.createRef<HTMLElement>();
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('collapse-item', { prefixCls });
 
-  const id = useMemo(() => `collapse-item-${nanoid()}`, []);
+  const { isActive: isExpanded, toggleItem } = React.useContext(CollapseContext);
 
+  const isActive = isExpanded(value);
   const onClickItem = () => {
     if (disabled) return;
     onChange?.(isActive!);
+    toggleItem(value, !isActive);
   };
+
+  const id = React.useMemo(() => `collapse-item-${nanoid()}`, []);
 
   const cls = bem([
     {
@@ -70,7 +76,7 @@ const CollapseItem = React.forwardRef<unknown, CollapseItemProps>((props, ref) =
         <View className={bem('title')}>{title}</View>
         <View className={bem('arrow')} />
       </View>
-      <View className={bem('content')} ref={content} style={{ ...style }}>
+      <View className={bem('content')} ref={content} style={style}>
         <View className={bem('content__inner')} id={id}>
           {children}
         </View>
@@ -82,7 +88,6 @@ const CollapseItem = React.forwardRef<unknown, CollapseItemProps>((props, ref) =
 CollapseItem.displayName = 'CollapseItem';
 
 CollapseItem.defaultProps = {
-  animated: false,
   disabled: false,
 };
 
