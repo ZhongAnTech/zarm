@@ -14,16 +14,13 @@ package-lock.json
 node_modules
 
 # bundle files
-es
-lib
-dist
-types
+/packages/*/es
+/packages/*/lib
+/packages/*/dist
+/packages/zarm-icons/svg
 
-# test
-coverage
+# coverage
+/packages/*/coverage
 
 *.tsbuildinfo
-# test coverage
-/packages/*/coverage/
-
 .swc

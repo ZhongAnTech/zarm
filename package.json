@@ -5,7 +5,7 @@
     "build:weapp": "pnpm --filter mini-demo build:weapp",
     "clean": "rimraf packages/**/{node_modules,dist,lib,es} website/{node_modules,dist,.dumi/tmp*} node_modules",
     "dep:update": "pnpm up --interactive --latest --recursive",
-    "deploy": "pnpm --filter site gh-pages -d assets",
+    "deploy": "pnpm --filter site gh-pages -d dist",
     "deploy:build": "pnpm --filter site build",
     "dev": "pnpm --filter site start",
     "dev:h5": "pnpm --filter mini-demo dev:h5",

@@ -3,9 +3,9 @@
   "version": "0.0.21",
   "private": true,
   "scripts": {
-    "build": "rimraf assets && mkdir assets && touch assets/CNAME && echo 'zarm.design' > assets/CNAME && zarm deploy",
-    "clean": "rimraf assets",
-    "deploy": "pnpm build -p && gh-pages -d assets",
+    "build": "rimraf dist && mkdir dist && touch dist/CNAME && echo 'zarm.design' > dist/CNAME && zarm deploy",
+    "clean": "rimraf dist",
+    "deploy": "pnpm build -p && gh-pages -d dist",
     "start": "zarm dev"
   },
   "browserslist": [

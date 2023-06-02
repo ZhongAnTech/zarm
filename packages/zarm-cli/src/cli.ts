@@ -2,10 +2,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import commander from 'commander';
 import path from 'path';
-
 import build from './build';
-import development from './development';
 import deploy from './deploy';
+import development from './development';
 import template from './template';
 import test from './test';
 
@@ -40,7 +39,7 @@ commander
   .command('deploy')
   .description('部署官网站点')
   .option('-p, --push-gh', '是否发布至gh-pages')
-  .option('-d, --out-dir <path>', '输出目录', 'assets')
+  .option('-d, --out-dir <path>', '输出目录', 'dist')
   .option('-a, --analyzer', '是否启用分析器')
   .action(deploy);
 

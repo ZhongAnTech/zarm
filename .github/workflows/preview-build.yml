@@ -35,11 +35,11 @@ jobs:
         env:
           NODE_OPTIONS: --max_old_space_size=4096
 
-      - name: Upload assets artifact
+      - name: Upload dist artifact
         uses: actions/upload-artifact@v2
         with:
-          name: assets
-          path: packages/site/assets/
+          name: dist
+          path: packages/site/dist/
           retention-days: 5
 
       - name: Save PR number
