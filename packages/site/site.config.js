@@ -194,7 +194,7 @@ module.exports = {
         name: '下拉菜单',
         module: () => import('zarm/dropdown/demo.md'),
         source: 'zarm/dropdown/demo.md',
-        style: false,
+        style: true,
       },
       {
         key: 'message',
