@@ -6,7 +6,7 @@ import { BaseDropdownItemProps } from './interface';
 
 export type DropdownItemProps = BaseDropdownItemProps & HTMLProps;
 
-const DropdownItem: React.FC<DropdownItemProps> = forwardRef((props, ref) => {
+const DropdownItem = forwardRef<HTMLDivElement, DropdownItemProps>((props, ref) => {
   const { className } = props;
 
   const { prefixCls } = useContext(ConfigContext);
@@ -25,11 +25,7 @@ const DropdownItem: React.FC<DropdownItemProps> = forwardRef((props, ref) => {
     );
   };
 
-  return (
-    <div className={bem([className])}>
-      {renderContent()}
-    </div>
-  );
+  return <div ref={ref} className={bem([className])}>{renderContent()}</div>;
 });
 
 DropdownItem.displayName = 'DropdownItem';

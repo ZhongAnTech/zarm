@@ -14,6 +14,7 @@ export interface BaseDropdownProps {
   animationType?: TransitionName;
   animationDuration?: number;
   destroy?: boolean;
+  popupClassName?: string;
   onChange?: (activeKey: number | string) => void;
 }
 
@@ -24,7 +25,6 @@ export interface BaseDropdownItemProps {
   arrow?: ReactNode;
   children?: ReactNode;
 }
-
 
 export interface DropdownCssVars {
   '--height': React.CSSProperties['height'];

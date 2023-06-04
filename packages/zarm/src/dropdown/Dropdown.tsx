@@ -8,6 +8,7 @@ import React, {
   ReactElement,
   useContext,
   useEffect,
+  useImperativeHandle,
   useRef,
   useState,
 } from 'react';
@@ -21,9 +22,13 @@ import DropdownItem, { DropdownItemProps } from './DropdownItem';
 import type { BaseDropdownProps, DropdownCssVars, DropdownItemKey } from './interface';
 
 export type DropdownProps = BaseDropdownProps & HTMLProps<DropdownCssVars>;
+export interface DropdownInstance {
+  open: (key?: string) => void;
+  close: () => void;
+}
 
 interface CompoundedComponent
-  extends React.ForwardRefExoticComponent<DropdownProps & React.RefAttributes<HTMLDivElement>> {
+  extends React.ForwardRefExoticComponent<DropdownProps & React.RefAttributes<DropdownInstance>> {
   Item: typeof DropdownItem;
 }
 
@@ -45,7 +50,21 @@ const TRANSITION_NAMES = {
   right: 'move-right',
 };
 
-const Dropdown: React.FC<DropdownProps> = forwardRef((props, ref) => {
+const overflowScrollRegExp = /scroll|auto|overlay/i;
+
+const isScrollable = function (ele: HTMLElement) {
+  const hasScrollableContent = ele.scrollHeight > ele.clientHeight;
+  const { overflowY } = window.getComputedStyle(ele);
+  const isOverflowHidden = overflowScrollRegExp.test(overflowY);
+  return hasScrollableContent && isOverflowHidden;
+};
+
+const getScrollableParent = function (ele: HTMLElement, global = window) {
+  if (!ele || ele === document.body) return global;
+  return isScrollable(ele) ? ele : getScrollableParent(ele.parentElement);
+};
+
+const Dropdown = forwardRef<DropdownInstance, DropdownProps>((props, ref) => {
   const {
     className,
     activeKey,
@@ -59,6 +78,7 @@ const Dropdown: React.FC<DropdownProps> = forwardRef((props, ref) => {
     animationType,
     animationDuration,
     arrow,
+    popupClassName,
     onChange,
   } = props;
 
@@ -69,7 +89,7 @@ const Dropdown: React.FC<DropdownProps> = forwardRef((props, ref) => {
   const root = useRef<HTMLDivElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
   const offset = useRef<number>(0);
-  const scrollContainer = useRef<HTMLElement>(document.body);
+  const scrollContainer = useRef<HTMLElement | Window>(null);
   const dropdownItemPopupRef = useRef<HTMLDivElement>(null);
 
   const toggleItem = (key: DropdownItemKey | null) => {
@@ -96,7 +116,7 @@ const Dropdown: React.FC<DropdownProps> = forwardRef((props, ref) => {
       >
         <div className={bem('title')}>{item.title}</div>
         <div className={bem('arrow')}>
-          {item.arrow ? item.arrow : arrow || DefaultArrow(direction === 'up')}
+          {item.arrow ? item.arrow : arrow || DefaultArrow(direction === 'down')}
         </div>
       </div>
     );
@@ -111,14 +131,18 @@ const Dropdown: React.FC<DropdownProps> = forwardRef((props, ref) => {
     }
   };
 
-  const onScroll = () => {
-    computeOffset();
-  };
-
   useScroll({
     container: scrollContainer,
-    onScroll,
+    onScroll: () => {
+      computeOffset();
+    },
   });
+
+  useEffect(() => {
+    if (root.current) {
+      scrollContainer.current = getScrollableParent(root.current);
+    }
+  }, []);
 
   useEffect(() => {
     if (barRef.current) {
@@ -136,6 +160,15 @@ const Dropdown: React.FC<DropdownProps> = forwardRef((props, ref) => {
     }
   }, [currentPopupKey, dropdownItemPopupRef.current]);
 
+  useImperativeHandle(ref, () => ({
+    open: (key?: string) => {
+      toggleItem(key);
+    },
+    close: () => {
+      toggleItem(null);
+    },
+  }));
+
   const renderPopContent = () => {
     const styleOffset: CSSProperties = {};
     if (direction === 'down') {
@@ -152,7 +185,7 @@ const Dropdown: React.FC<DropdownProps> = forwardRef((props, ref) => {
       <Popup
         ref={dropdownItemPopupRef}
         style={{ ...styleOffset }}
-        className={bem('dropdown-popup-wrapper')}
+        className={bem('dropdown-popup-wrapper', [popupClassName])}
         maskStyle={{ ...styleOffset }}
         direction={animationDirection}
         visible={!!currentPopupKey}
