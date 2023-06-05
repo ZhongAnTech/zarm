@@ -265,12 +265,16 @@ const Demo = () => {
             onClick={() => {
               setValue(undefined);
             }}
-          >清除</Button>
+          >
+            清除
+          </Button>
         }
       >
         <DateSelect
           value={value}
-          onChange={(value, items) => {console.log('DateSelect onChange', value, items);}}
+          onChange={(value, items) => {
+            console.log('DateSelect onChange', value, items);
+          }}
           onConfirm={(value, items) => {
             setValue(value);
             Toast.show(value.toLocaleString());
@@ -309,6 +313,7 @@ const Demo = () => {
               onClick={async () => {
                 const { value: changedValue } = await DatePicker.prompt({
                   value,
+                  defaultValue: new Date('2023/2/23'),
                 });
                 if (!changedValue) return;
                 setValue(changedValue);
