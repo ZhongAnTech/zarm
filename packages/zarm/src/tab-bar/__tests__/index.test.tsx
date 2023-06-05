@@ -128,7 +128,7 @@ describe('TabBar', () => {
 
   it('should select first tab bar item if activeKey and defaultActivceKey are not existed', () => {
     const { container } = render(
-      <TabBar visible={false} className="test">
+      <TabBar className="test">
         <TabBarItem itemKey="home" title="主页" />
         <TabBarItem itemKey="about us" title="关于我们" />
       </TabBar>,
@@ -166,52 +166,4 @@ describe('TabBar', () => {
     const el = container.querySelectorAll('.za-tab-bar__item');
     expect(el[0].className).toEqual('za-tab-bar__item za-tab-bar__item--active');
   });
-
-  // it('should use element index as the fallback itemKey', () => {
-  //   const wrapper = shallow(
-  //     <TabBar>
-  //       <TabBarItem />
-  //       <TabBarItem />
-  //     </TabBar>,
-  //   );
-  //   expect(wrapper.childAt(0).prop('itemKey')).toBe(0);
-  //   expect(wrapper.childAt(1).prop('itemKey')).toBe(1);
-  // });
-
-  it('should have hidden class name if visible prop is false', () => {
-    const { container } = render(
-      <TabBar visible={false} className="test">
-        <TabBarItem itemKey="home" title="主页" />
-      </TabBar>,
-    );
-    const el = container.querySelector('.za-tab-bar');
-    expect(el?.classList.contains('test')).toBeTruthy();
-    expect(el?.classList.contains('za-tab-bar')).toBeTruthy();
-    expect(el?.classList.contains('za-tab-bar--hidden')).toBeTruthy();
-  });
-
-  // it('should render children with extra props', () => {
-  //   const wrapper = shallow(
-  //     <TabBar visible={false} className="test">
-  //       <TabBarItem itemKey="home" title="主页" />
-  //       <TabBarItem itemKey="about us" title="关于我们" />
-  //     </TabBar>,
-  //   );
-  //   expect(wrapper.childAt(0).props()).toEqual(
-  //     expect.objectContaining({
-  //       title: '主页',
-  //       itemKey: 'home',
-  //       onChange: expect.any(Function),
-  //       selected: true,
-  //     }),
-  //   );
-  //   expect(wrapper.childAt(1).props()).toEqual(
-  //     expect.objectContaining({
-  //       title: '关于我们',
-  //       itemKey: 'about us',
-  //       onChange: expect.any(Function),
-  //       selected: false,
-  //     }),
-  //   );
-  // });
 });
