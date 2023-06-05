@@ -318,7 +318,7 @@ const Demo = () => {
                 if (!changedValue) return;
                 setValue(changedValue);
                 console.log(changedValue);
-                Toast.show(JSON.stringify(changedValue));
+                Toast.show(changedValue.toLocaleString());
               }}
             >
               选择
