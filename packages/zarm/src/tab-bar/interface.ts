@@ -2,7 +2,6 @@ import type { ReactNode } from 'react';
 import type { BaseBadgeProps } from '../badge/interface';
 
 export interface BaseTabBarProps {
-  visible?: boolean;
   defaultActiveKey?: string | number;
   activeKey?: string | number;
   safeArea?: boolean;
