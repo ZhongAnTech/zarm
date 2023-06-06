@@ -382,6 +382,7 @@ ReactDOM.render(<Demo />, mountNode);
 | animationType    | string                | -      | 菜单动画类型，可选值 `fade`、`door`、`flip`、`rotate`、`zoom`、`zoom-fade`、`move-up`、 `move-down`、`move-left`、`move-right`、`slide-up`、`slide-down`、`slide-left`、`slide-right` |
 | animationDuration    | number                | -      | 动画执行时间（单位：毫秒） |
 | popupClassName    | string                | -      | 弹出层样式名 |
+| zIndex    | number                | -      | 下拉层级，默认从1200开始累加 |
 
 ### Dropdown.Item
 
