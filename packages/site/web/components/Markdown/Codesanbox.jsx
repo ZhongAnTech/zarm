@@ -46,7 +46,7 @@ ${parsedSourceCode}
           title,
           main: 'index.js',
           dependencies: {
-            zarm: 'latest',
+            zarm: '^2',
             react: '^17',
             'react-dom': '^17',
             'react-scripts': '^4.0.0',
