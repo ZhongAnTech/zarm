@@ -1,0 +1,5 @@
+{
+  "installCommand": "pnpm install",
+  "buildCommand": "pnpm run build && pnpm deploy:build",
+  "outputDirectory": "./packages/site/dist"
+}
