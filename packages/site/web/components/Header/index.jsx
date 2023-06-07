@@ -163,12 +163,16 @@ const Header = ({ children }) => {
                   defaultValue=""
                   options={[
                     {
+                      value: '',
+                      label: pkg.version,
+                    },
+                    {
                       value: '2x',
                       label: '2.x',
                     },
                     {
-                      value: '',
-                      label: pkg.version,
+                      value: '1x',
+                      label: '1.x',
                     },
                   ]}
                   onChange={(version) => {
