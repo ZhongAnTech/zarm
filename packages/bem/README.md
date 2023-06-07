@@ -9,7 +9,7 @@ const bem = createBEM('button', { prefixCls: 'za' });
 
 bem(); // za-button
 
-bem([{ primary: true }, 'customClass']); // za-button za-button--primary customClass
+bem([{ loading: true }, 'customClass']); // za-button za-button--loading customClass
 
 bem('text'); // za-button__text
 
@@ -17,11 +17,13 @@ bem('text', ['customClass']); // za-button__text customClass
 
 bem('text', [
   {
+    theme: 'primary',
+    block,
     loading: true,
     disabled: false,
   },
   'customClass',
-]); // za-button__text za-button__text--loading customClass
+]); // za-button__text za-button__text--theme-primary za-button__text--block za-button__text--loading customClass
 ```
 
 ## Usage in SASS
@@ -87,19 +89,34 @@ Output
 ## API
 
 ```js
-type ModifierType = (string | { [x: string]: boolean })[];
-
 const createBEM: (
   name: string,
   config?: BEMConfig,
 ) => (element: string | ModifierType, modifiers?: ModifierType) => string;
 ```
 
-### config
+### ModifierType
 
-| 属性              | 对应 SASS 变量     | 类型   | 默认值 | 说明     |
-| :---------------- | :----------------- | :----- | :----- | :------- |
-| prefixCls         | $prefixCls         | string | ''     | 类名前缀 |
-| blockSeparator    | $blockSeparator    | string | '-'    | 类名前缀 |
-| elementSeparator  | $elementSeparator  | string | '\_\_' | 类名前缀 |
-| modifierSeparator | $modifierSeparator | string | '--'   | 类名前缀 |
+```ts
+type ModifierType = (string | undefined | { [x: string]: boolean | string | undefined })[];
+```
+
+### BEMConfig
+
+```ts
+interface BEMConfig {
+  prefixCls?: string;
+  blockSeparator?: string;
+  elementSeparator?: string;
+  modifierSeparator?: string;
+  modifierValueSeparator?: string;
+}
+```
+
+| 属性                   | 对应 SASS 变量     | 类型   | 默认值 | 说明           |
+| :--------------------- | :----------------- | :----- | :----- | :------------- |
+| prefixCls              | $prefixCls         | string | ''     | 类名前缀       |
+| blockSeparator         | $blockSeparator    | string | '-'    | 模块连接符     |
+| elementSeparator       | $elementSeparator  | string | '\_\_' | 元素连接符     |
+| modifierSeparator      | $modifierSeparator | string | '--'   | 修饰符连接符   |
+| modifierValueSeparator | -                  | string | '-'    | 修饰符值连接符 |

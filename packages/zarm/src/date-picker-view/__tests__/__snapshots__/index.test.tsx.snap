@@ -85,7 +85,7 @@ exports[`DatePickerView meridiem hour snapshot 1`] = `
             7时
           </div>
           <div
-            class="za-wheel__item"
+            class="za-wheel__item za-wheel__item--selected"
             style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
           >
             8时
@@ -322,7 +322,7 @@ exports[`DatePickerView meridiem hour snapshot 1`] = `
             33分
           </div>
           <div
-            class="za-wheel__item"
+            class="za-wheel__item za-wheel__item--selected"
             style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
           >
             34分
@@ -806,7 +806,7 @@ exports[`DatePickerView snapshot 1`] = `
             14日
           </div>
           <div
-            class="za-wheel__item"
+            class="za-wheel__item za-wheel__item--selected"
             style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
           >
             15日
@@ -1185,7 +1185,7 @@ exports[`DatePickerView week snapshot 1`] = `
             19周
           </div>
           <div
-            class="za-wheel__item"
+            class="za-wheel__item za-wheel__item--selected"
             style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
           >
             20周
@@ -1392,7 +1392,7 @@ exports[`DatePickerView week snapshot 1`] = `
           style="transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-property: transform; transition-duration: 800ms; transform: translateX(0px) translateY(NaNpx);"
         >
           <div
-            class="za-wheel__item"
+            class="za-wheel__item za-wheel__item--selected"
             style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
           >
             周一
