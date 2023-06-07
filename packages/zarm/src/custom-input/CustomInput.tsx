@@ -140,9 +140,8 @@ const CustomInput = React.forwardRef<CustomInputRef, CustomInputProps>((props, r
   const textRender = <div className={bem('content')}>{value}</div>;
 
   const inputRender = (
-    <div {...restProps} className={cls} onClick={onInputFocus}>
-      {labelRender}
-      <div className={bem('content')}>
+    <>
+      <div className={bem('content')} onClick={onInputFocus}>
         {(value === undefined || value === '') && !readOnly && (
           <div className={bem('placeholder')}>{placeholder}</div>
         )}
@@ -153,7 +152,7 @@ const CustomInput = React.forwardRef<CustomInputRef, CustomInputProps>((props, r
       </div>
       {clearIconRender}
       <KeyboardPicker ref={pickerRef} visible={focused} type={type} onKeyClick={onKeyClick} />
-    </div>
+    </>
   );
 
   useClickAway([contentRef, pickerRef], onInputBlur);
@@ -187,7 +186,12 @@ const CustomInput = React.forwardRef<CustomInputRef, CustomInputProps>((props, r
     }
   }, [readOnly, focused, value]);
 
-  return readOnly ? textRender : inputRender;
+  return (
+    <div {...restProps} className={cls}>
+      {labelRender}
+      {readOnly ? textRender : inputRender}
+    </div>
+  );
 });
 
 CustomInput.displayName = 'CustomInput';
