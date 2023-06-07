@@ -163,6 +163,10 @@ const Header = ({ children }) => {
                   defaultValue=""
                   options={[
                     {
+                      value: '1x',
+                      label: '1.x',
+                    },
+                    {
                       value: '2x',
                       label: '2.x',
                     },
