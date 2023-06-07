@@ -124,6 +124,6 @@
     "lint-staged"
   ],
   "engines": {
-    "node": "16"
+    "node": "18.x"
   }
 }
