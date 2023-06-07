@@ -1,0 +1,5 @@
+{
+  "installCommand": "yarn install",
+  "buildCommand": "yarn run deploy:build",
+  "outputDirectory": "./assets"
+}
