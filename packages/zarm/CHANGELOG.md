@@ -1,5 +1,19 @@
 # 版本更新日志
 
+## v3.0.14
+
+- Bug Fix
+
+  - [PickerView] 修复文字过长截断失效的bug。[#1097](https://github.com/ZhongAnTech/zarm/pull/1097)
+  - [DatePicker] 修复值不能重置为 `undefined` 的bug。[#1100](https://github.com/ZhongAnTech/zarm/pull/1100)[@aiyogg]
+
+  - [Popup] 修复 `maskClassName` 属性名错误的bug。[#1102](https://github.com/ZhongAnTech/zarm/pull/1102)[@aiyogg]
+
+
+- Perf
+
+  - [Carousel] 优化图片只有一页时停止自动播放，优化循环播放时拖拽的弹性动画。[#1098](https://github.com/ZhongAnTech/zarm/pull/1098)
+
 ## v3.0.13
 
 - Bug Fix

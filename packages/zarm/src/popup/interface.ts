@@ -9,7 +9,7 @@ export interface BasePopupProps extends BaseTransitionProps {
   animationDuration?: number;
   width?: string | number;
   mask?: boolean;
-  maskClassNname?: string;
+  maskClassName?: string;
   maskStyle?: React.CSSProperties;
   maskColor?: MaskProps['color'];
   maskOpacity?: MaskProps['opacity'];

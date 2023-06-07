@@ -251,15 +251,32 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```jsx
 import { useState } from 'react';
-import { Toast, List, DateSelect } from 'zarm';
+import { Toast, List, DateSelect, Button } from 'zarm';
 
 const Demo = () => {
+  const [value, setValue] = useState(new Date());
   return (
     <List>
-      <List.Item title="日期选择">
+      <List.Item
+        title="日期选择"
+        suffix={
+          <Button
+            size="xs"
+            onClick={() => {
+              setValue(undefined);
+            }}
+          >
+            清除
+          </Button>
+        }
+      >
         <DateSelect
-          onChange={(value, items) => console.log('DateSelect onChange', value, items)}
+          value={value}
+          onChange={(value, items) => {
+            console.log('DateSelect onChange', value, items);
+          }}
           onConfirm={(value, items) => {
+            setValue(value);
             Toast.show(value.toLocaleString());
             console.log('DateSelect onConfirm', value, items);
           }}
@@ -296,11 +313,12 @@ const Demo = () => {
               onClick={async () => {
                 const { value: changedValue } = await DatePicker.prompt({
                   value,
+                  defaultValue: new Date('2023/2/23'),
                 });
                 if (!changedValue) return;
                 setValue(changedValue);
                 console.log(changedValue);
-                Toast.show(JSON.stringify(changedValue));
+                Toast.show(changedValue.toLocaleString());
               }}
             >
               选择

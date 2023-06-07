@@ -1,6 +1,6 @@
 {
   "name": "@zarm-design/cli",
-  "version": "0.0.46",
+  "version": "0.0.48",
   "description": "Cli Tools for Zarm Design Project",
   "keywords": [
     "zarm-cli",
@@ -16,9 +16,8 @@
     "zarm": "./bin/zarm.js"
   },
   "files": [
-    "lib",
-    "bin",
-    "types"
+    "dist",
+    "bin"
   ],
   "scripts": {
     "build": "yarn clean && tsc --build --force",
@@ -29,6 +28,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.13.10",
+    "@babel/helper-string-parser": "^7.21.5",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/plugin-proposal-decorators": "^7.13.5",
     "@babel/plugin-proposal-optional-chaining": "^7.13.12",

@@ -1,7 +1,13 @@
+import { useUpdateEffect } from 'ahooks';
 import clamp from 'lodash/clamp';
 import isEqual from 'lodash/isEqual';
 import * as React from 'react';
-import PickerView, { PickerColumnItem, PickerValue, PickerViewCssVars, PickerViewInstance } from '../picker-view';
+import PickerView, {
+  PickerColumnItem,
+  PickerValue,
+  PickerViewCssVars,
+  PickerViewInstance,
+} from '../picker-view';
 import { resolved } from '../picker-view/utils';
 import { HTMLProps } from '../utils/utilityTypes';
 import { BaseDatePickerViewProps, COLUMN_TYPE } from './interface';
@@ -14,7 +20,7 @@ import {
 
 const currentYear = new Date().getFullYear();
 
-export type DatePickerViewProps =  BaseDatePickerViewProps & HTMLProps<PickerViewCssVars>;
+export type DatePickerViewProps = BaseDatePickerViewProps & HTMLProps<PickerViewCssVars>;
 
 export interface DatePickerViewInstance {
   value: Date;
@@ -42,8 +48,7 @@ const DatePickerView = React.forwardRef<DatePickerViewInstance, DatePickerViewPr
     const prevColumnType = React.useRef(columnType);
     const defaultRenderLabel = useRenderLabel(renderLabel);
 
-    React.useEffect(() => {
-      if (props.value === undefined) return;
+    useUpdateEffect(() => {
       if (isEqual(props.value, innerValue)) return;
       setInnerValue(props.value);
     }, [props.value]);

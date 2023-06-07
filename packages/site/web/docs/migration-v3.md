@@ -55,8 +55,8 @@
 
 ### Checkbox / Radio
 
- - 组合使用时 `type` 类型可选值 `cell` 调整为 `list`。
- - 废弃样式相关属性 `size`、`shape`、`ghost`，可以通过 css 变量方式更改样式。
+- 组合使用时 `type` 类型可选值 `cell` 调整为 `list`。
+- 废弃样式相关属性 `size`、`shape`、`ghost`，可以通过 css 变量方式更改样式。
 
 ```diff
   <Checkbox.Group
@@ -235,6 +235,16 @@
 ```
 
 - 移除 `format` 属性
+
+### Tabbar
+
+移除 `visible` 属性
+
+```diff
+  <Tabbar
+-   visible={false}
+  />
+```
 
 ## 常见问题
 

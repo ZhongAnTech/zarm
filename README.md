@@ -30,10 +30,12 @@ Zarm （读音 /zɑːm/，中文可发音为 扎姆）的命名，灵感来源�
 
 [https://zarm.design/demo.html#/](https://zarm.design/demo.html#/)
 
-## 浏览器支持
+## 兼容性
 
-- iOS
-- Android 4.0+
+- iOS Safari 10+
+- Android 5+
+
+如需兼容更低端的浏览器版本，需要提供相应的 Polyfill 支持，请参考 [这篇文章](https://github.com/ZhongAnTech/zarm/blob/master/packages/site/web/docs/polyfill.md)
 
 ## 安装
 
