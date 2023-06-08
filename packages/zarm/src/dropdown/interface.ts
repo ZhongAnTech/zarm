@@ -15,7 +15,6 @@ export interface BaseDropdownProps {
   animationDuration?: number;
   destroy?: boolean;
   popupClassName?: string;
-  zIndex?: number;
   onChange?: (activeKey: number | string) => void;
 }
 

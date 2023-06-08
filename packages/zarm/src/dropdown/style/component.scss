@@ -16,6 +16,7 @@
     align-items: center;
     @include m(disabled) {
       cursor: not-allowed;
+      pointer-events: none;
       color: var(--disabled-text-color);
     }
 
@@ -27,6 +28,10 @@
           transform: rotate(180deg);
         }
       }
+    }
+
+    svg {
+      pointer-events: none;
     }
   }
 

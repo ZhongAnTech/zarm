@@ -109,7 +109,7 @@ const Demo = () => {
   const DropdownRef = useRef(null);
   const [value, setValue] = useState(0);
   const onChange = (key) => {
-    console.log('onChange key:', key);
+    console.log('Demo2 onChange key:', key);
   };
   return (
     <Dropdown

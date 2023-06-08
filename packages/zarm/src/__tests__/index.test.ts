@@ -137,7 +137,6 @@ describe('index', () => {
             "$$typeof": Symbol(react.forward_ref),
             "render": [Function],
           },
-          "_zIndex": 1200,
           "defaultProps": Object {
             "destroy": false,
             "direction": "down",
