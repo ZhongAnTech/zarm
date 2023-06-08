@@ -151,14 +151,14 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
 
   // 渲染输入框
   const inputRender = isTextarea ? (
-    <div className={bem('inner')}>
+    <>
       <textarea
         ref={inputRef as React.RefObject<HTMLTextAreaElement>}
         {...(commonProps as React.HTMLAttributes<HTMLTextAreaElement>)}
         rows={rows}
       />
       {textLengthRender}
-    </div>
+    </>
   ) : (
     <input
       ref={inputRef as React.RefObject<HTMLInputElement>}

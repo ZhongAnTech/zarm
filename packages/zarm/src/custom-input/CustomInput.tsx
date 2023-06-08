@@ -110,8 +110,6 @@ const CustomInput = React.forwardRef<CustomInputRef, CustomInputProps>((props, r
   const onInputClear = (e) => {
     e.stopPropagation();
     setValue('');
-
-    setValue?.('');
   };
 
   const scrollToStart = () => {
