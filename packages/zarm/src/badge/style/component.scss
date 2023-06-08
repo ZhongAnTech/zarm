@@ -3,8 +3,9 @@
   @include define(color, var(--za-theme-danger));
   @include define(text-color, #fff);
   @include define(border-color, #fff);
-  @include define(font-size, 10px);
-  @include define(height, 14px);
+  @include define(font-size, 12px);
+  @include define(font-weight, 600);
+  @include define(height, 20px);
   @include define(padding-horizontal, 4px);
   @include define(border-radius, var(--za-radius-sm));
   @include define(top, 0);
@@ -26,6 +27,7 @@
     background-color: var(--color);
     color: var(--text-color);
     font-size: var(--font-size);
+    font-weight: var(--font-weight);
     height: var(--height);
     padding: 0 var(--padding-horizontal);
     white-space: nowrap;
@@ -35,9 +37,9 @@
 
   @include m(dot) {
     @include define(height, var(--dot-size));
+
     @include e(content) {
-      width: var(--dot-size);
-      height: var(--dot-size);
+      width: var(--height);
       border-radius: 50%;
       padding: 0;
     }
@@ -72,6 +74,13 @@
   }
 
   @include m(sup) {
+    @include define(font-size, 10px);
+    @include define(height, 16px);
+
+    @include m(dot) {
+      @include define(height, var(--dot-size));
+    }
+
     @include e(content) {
       position: absolute;
       top: var(--top);

@@ -73,7 +73,7 @@ ReactDOM.render(
       </Badge>
     </div>
     <div className="box">
-      <Badge bordered shape="rect" text="免费">
+      <Badge bordered shape="round" text="免费">
         <div className="box-item" />
       </Badge>
     </div>
@@ -131,6 +131,7 @@ ReactDOM.render(
 | --text-color         | '#fff'                   | 徽标文字颜色                           |
 | --border-color       | '#fff'                   | 徽标边框色                             |
 | --font-size          | '10px'                   | 徽标文字字体大小                       |
+| --font-weight        | 600                      | 徽标文字字体粗细                       |
 | --height             | '14px'                   | 徽标高度                               |
 | --padding-horizontal | '4px'                    | 徽标左右内边距                         |
 | --border-radius      | 'var(--za-radius-sm)'    | 徽标圆角大小                           |
