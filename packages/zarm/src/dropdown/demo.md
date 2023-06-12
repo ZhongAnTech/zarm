@@ -374,7 +374,7 @@ ReactDOM.render(<Demo />, mountNode);
 | :--------------- | :-------------------- | :----- | :--------------------------- |
 | activeKey        | number \| string      | -      | 激活的 Item Key |
 | defaultActiveKey | number \| string      | -      | 默认激活的 Item Key |
-| direction        | 'up' \| 'down'     | 'down'  | 默认下拉方向  |
+| direction        | 'up' \| 'down'     | 'down'  | 下拉方向  |
 | arrow            | ReactNode             | -      | 箭头样式 |
 | onChange         | (key: string \| null) => void | -      | 值变化时触发的回调函数  |
 | maskClosable     | boolean               | true   | 是否点击遮罩层时关闭 |
@@ -382,7 +382,6 @@ ReactDOM.render(<Demo />, mountNode);
 | animationType    | string                | -      | 菜单动画类型，可选值 `fade`、`door`、`flip`、`rotate`、`zoom`、`zoom-fade`、`move-up`、 `move-down`、`move-left`、`move-right`、`slide-up`、`slide-down`、`slide-left`、`slide-right` |
 | animationDuration    | number                | -      | 动画执行时间（单位：毫秒） |
 | popupClassName    | string                | -      | 弹出层样式名 |
-| zIndex    | number                | -      | 下拉层级，默认从1200开始累加 |
 
 ### Dropdown.Item
 

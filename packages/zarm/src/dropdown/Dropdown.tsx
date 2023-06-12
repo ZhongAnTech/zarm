@@ -1,11 +1,13 @@
 import { createBEM } from '@zarm-design/bem';
 import { ArrowDown, ArrowUp } from '@zarm-design/icons';
+import raf from 'raf';
 import React, {
   Children,
   cloneElement,
   CSSProperties,
   forwardRef,
   ReactElement,
+  useCallback,
   useContext,
   useEffect,
   useImperativeHandle,
@@ -31,7 +33,6 @@ export interface DropdownInstance {
 interface CompoundedComponent
   extends React.ForwardRefExoticComponent<DropdownProps & React.RefAttributes<DropdownInstance>> {
   Item: typeof DropdownItem;
-  _zIndex: number;
 }
 
 const getActiveKey = ({ activeKey, defaultActiveKey }) => {
@@ -87,7 +88,19 @@ const Dropdown = forwardRef<DropdownInstance, DropdownProps>((props, ref) => {
   const { prefixCls } = useContext(ConfigContext);
   const bem = createBEM('dropdown', { prefixCls });
 
-  const [currentPopupKey, setCurrentPopupKey] = useState<string | number>();
+  // internal visible prop
+  const [internalVisible, setInternalVisible] = useState<boolean>(false);
+  const [currentPopupKey, setCurrentPopupKey] = useState<string | number>(
+    getActiveKey({ activeKey, defaultActiveKey }),
+  );
+
+  // merge visible props
+  const mergeVisible = !!currentPopupKey ?? internalVisible;
+
+  useEffect(() => {
+    setCurrentPopupKey(getActiveKey({ activeKey, defaultActiveKey }));
+  }, [activeKey, defaultActiveKey]);
+
   const root = useRef<HTMLDivElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
   const offset = useRef<number>(0);
@@ -98,12 +111,86 @@ const Dropdown = forwardRef<DropdownInstance, DropdownProps>((props, ref) => {
     const nextKey = key === currentPopupKey ? null : key;
     if (nextKey === currentPopupKey) return;
     setCurrentPopupKey(nextKey);
+
+    // If the activeKey is undefined, use the internal visible to control the popup
+    if (activeKey === undefined) {
+      setInternalVisible(nextKey !== null);
+    }
     typeof onChange === 'function' && onChange(nextKey);
   };
 
+  // === popup offset
+  const computeOffset = useCallback(() => {
+    const { top, bottom } = barRef.current.getBoundingClientRect();
+    if (direction === 'up') {
+      offset.current = window.innerHeight - top;
+    } else {
+      offset.current = bottom;
+    }
+  }, [barRef.current]);
+
+  useEffect(() => {
+    if (barRef.current) {
+      computeOffset();
+    }
+  }, [barRef.current]);
+
+  useEffect(() => {
+    if (root.current) {
+      scrollContainer.current = getScrollableParent(root.current);
+    }
+  }, [root.current]);
+
+  useScroll({
+    container: scrollContainer,
+    onScroll: () => {
+      computeOffset();
+    },
+  });
+
+  useEffect(() => {
+    if (dropdownItemPopupRef.current) {
+      dropdownItemPopupRef.current.style.position = 'absolute';
+    }
+  }, [mergeVisible]);
+
+  // === lock ref & click away
+  const lockRef = useRef(false);
+  const openRef = useRef(mergeVisible);
+
+  if (openRef.current !== mergeVisible) {
+    lockRef.current = true;
+    openRef.current = mergeVisible;
+  }
+
+  useEffect(() => {
+    const id = raf(() => {
+      lockRef.current = false;
+    });
+    return () => raf.cancel(id);
+  }, [mergeVisible]);
+
+  const onClickOutside = () => {
+    if (!lockRef.current && openRef.current) {
+      toggleItem(null);
+    }
+  };
+
+  useClickAway([root], onClickOutside);
+
+  // expose methods
+  useImperativeHandle(ref, () => ({
+    open: (key?: string) => {
+      toggleItem(key);
+    },
+    close: () => {
+      toggleItem(null);
+    },
+  }));
+
   const DefaultArrow = (reverse = false) =>
     reverse ? <ArrowDown size="sm" /> : <ArrowUp size="sm" />;
-
+  // render title
   const renderTitle = (item: DropdownItemProps, key: DropdownItemKey) => {
     return (
       <div
@@ -125,57 +212,7 @@ const Dropdown = forwardRef<DropdownInstance, DropdownProps>((props, ref) => {
     );
   };
 
-  const computeOffset = () => {
-    const { top, bottom } = barRef.current.getBoundingClientRect();
-    if (direction === 'up') {
-      offset.current = window.innerHeight - top;
-    } else {
-      offset.current = bottom;
-    }
-  };
-
-  useScroll({
-    container: scrollContainer,
-    onScroll: () => {
-      computeOffset();
-    },
-  });
-
-  useEffect(() => {
-    if (root.current) {
-      scrollContainer.current = getScrollableParent(root.current);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (barRef.current) {
-      computeOffset();
-    }
-  }, [barRef.current]);
-
-  useEffect(() => {
-    setCurrentPopupKey(getActiveKey({ activeKey, defaultActiveKey }));
-  }, [activeKey, defaultActiveKey]);
-
-  useEffect(() => {
-    if (dropdownItemPopupRef.current) {
-      dropdownItemPopupRef.current.style.position = 'absolute';
-    }
-  }, [currentPopupKey, dropdownItemPopupRef.current]);
-
-  useImperativeHandle(ref, () => ({
-    open: (key?: string) => {
-      toggleItem(key);
-    },
-    close: () => {
-      toggleItem(null);
-    },
-  }));
-
-  useClickAway([root], () => {
-    currentPopupKey && toggleItem(null);
-  });
-
+  // render content
   const renderPopContent = () => {
     const styleOffset: CSSProperties = {};
     if (direction === 'down') {
@@ -195,7 +232,7 @@ const Dropdown = forwardRef<DropdownInstance, DropdownProps>((props, ref) => {
         className={bem('dropdown-popup-wrapper', [popupClassName])}
         maskStyle={{ ...styleOffset }}
         direction={animationDirection}
-        visible={!!currentPopupKey}
+        visible={mergeVisible}
         onMaskClick={maskClosable ? () => toggleItem(currentPopupKey) : noop}
         forceRender={forceRender}
         destroy={destroy}
