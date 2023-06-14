@@ -1,5 +1,5 @@
-import * as path from 'path';
 import { defineConfig } from 'dumi';
+import * as path from 'path';
 
 export default defineConfig({
   mfsu: false,
@@ -13,8 +13,10 @@ export default defineConfig({
     { id: 'zh-CN', name: '中文', suffix: '-cn' },
   ],
   alias: {
+    ['@tarojs/components$']: '@tarojs/components/lib/react',
     'zarm/lib': path.resolve(__dirname, '../packages/zarm/src'),
     'zarm/es': path.resolve(__dirname, '../packages/zarm/src'),
+    // 'zarm/mini': require.resolve('../packages/zarm/src/index.mini.ts'),
     zarm: require.resolve('../packages/zarm/src/index.ts'),
   },
   extraBabelPlugins: [
@@ -25,6 +27,20 @@ export default defineConfig({
         libraryDirectory: 'lib',
         style: true,
       },
+      'zarm',
+    ],
+    [
+      'import',
+      {
+        libraryName: 'zarm/mini',
+        customName: (name) => {
+          return require.resolve(`../packages/zarm/src/${name}/index.mini.ts`);
+        },
+        customStyleName: (name) => {
+          return require.resolve(`../packages/zarm/src/${name}/style/index.mini.ts`);
+        },
+      },
+      'zarm-mini',
     ],
   ],
   themeConfig: {
