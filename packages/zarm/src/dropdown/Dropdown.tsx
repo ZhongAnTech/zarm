@@ -11,6 +11,7 @@ import React, {
   useContext,
   useEffect,
   useImperativeHandle,
+  useMemo,
   useRef,
   useState,
 } from 'react';
@@ -20,6 +21,7 @@ import Transition from '../transition';
 import useClickAway from '../use-click-away';
 import useScroll from '../use-scroll';
 import { noop } from '../utils';
+import Events from '../utils/events';
 import { HTMLProps } from '../utils/utilityTypes';
 import DropdownItem, { DropdownItemProps } from './DropdownItem';
 import type { BaseDropdownProps, DropdownCssVars, DropdownItemKey } from './interface';
@@ -103,7 +105,7 @@ const Dropdown = forwardRef<DropdownInstance, DropdownProps>((props, ref) => {
 
   const root = useRef<HTMLDivElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
-  const offset = useRef<number>(0);
+  const [offset, setOffset] = useState<number>(0);
   const scrollContainer = useRef<HTMLElement | Window>(null);
   const dropdownItemPopupRef = useRef<HTMLDivElement>(null);
 
@@ -122,18 +124,21 @@ const Dropdown = forwardRef<DropdownInstance, DropdownProps>((props, ref) => {
   // === popup offset
   const computeOffset = useCallback(() => {
     const { top, bottom } = barRef.current.getBoundingClientRect();
-    if (direction === 'up') {
-      offset.current = window.innerHeight - top;
-    } else {
-      offset.current = bottom;
-    }
+    setOffset(direction === 'up' ? window.innerHeight - top : bottom);
   }, [barRef.current]);
 
   useEffect(() => {
     if (barRef.current) {
       computeOffset();
+      Events.on(window, 'resize', computeOffset);
+      Events.on(window, 'orientationchange', computeOffset);
     }
-  }, [barRef.current]);
+
+    return () => {
+      Events.off(window, 'resize', computeOffset);
+      Events.off(window, 'orientationchange', computeOffset);
+    };
+  }, []);
 
   useEffect(() => {
     if (root.current) {
@@ -213,12 +218,12 @@ const Dropdown = forwardRef<DropdownInstance, DropdownProps>((props, ref) => {
   };
 
   // render content
-  const renderPopContent = () => {
+  const renderPopContent = useMemo(() => {
     const styleOffset: CSSProperties = {};
     if (direction === 'down') {
-      styleOffset.top = `${offset.current}px`;
+      styleOffset.top = `${offset}px`;
     } else {
-      styleOffset.bottom = `${offset.current}px`;
+      styleOffset.bottom = `${offset}px`;
       styleOffset.height = `auto`;
     }
 
@@ -258,7 +263,7 @@ const Dropdown = forwardRef<DropdownInstance, DropdownProps>((props, ref) => {
         })}
       </Popup>
     );
-  };
+  }, [offset, mergeVisible, currentPopupKey]);
 
   return (
     <div ref={root} className={bem([className])}>
@@ -267,7 +272,7 @@ const Dropdown = forwardRef<DropdownInstance, DropdownProps>((props, ref) => {
           return renderTitle(child.props, child.key);
         })}
       </div>
-      {renderPopContent()}
+      {renderPopContent}
     </div>
   );
 });
