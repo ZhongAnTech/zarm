@@ -62,9 +62,9 @@ const config = {
           limit: 1024, // 设定转换尺寸上限
           filter: (asset) => {
             // or some other code
-            return /^.*\.(gif|png|jpeg)$/.test(asset.relativePath);
+            return /^.*\.(png|eot|ttf|woff)$/.test(asset.relativePath);
           },
-          url: 'inline',
+          // url: 'inline',
         },
       },
       cssModules: {
@@ -114,7 +114,7 @@ const config = {
       'postcss-transform-selector': {
         enable: true,
         config: {
-          selector: [':root, page', '^za'],
+          selector: [/^:root,[\s\S]page$/, '^za'],
           transform: (decl) => {
             const oldValue = decl.value;
             const val = oldValue.replace(/(\d*\.?\d+)(px)/g, (_match, value, unit) => {
