@@ -18,7 +18,20 @@
   "author": "JeromeLin <jerome.lin@zhongan.com>",
   "exports": {
     ".": "./lib/index.js",
-    "./sass": "./lib/sass/index.scss"
+    "./sass": "./lib/sass/index.scss",
+    "./*": [
+      "./*",
+      "./*.d.ts"
+    ]
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./lib/*",
+        "./es/*",
+        "./*"
+      ]
+    }
   },
   "main": "lib/index.js",
   "module": "es/index.js",
