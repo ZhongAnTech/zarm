@@ -11,7 +11,6 @@ import React, {
   useContext,
   useEffect,
   useImperativeHandle,
-  useMemo,
   useRef,
   useState,
 } from 'react';
@@ -218,52 +217,49 @@ const Dropdown = forwardRef<DropdownInstance, DropdownProps>((props, ref) => {
   };
 
   // render content
-  const renderPopContent = useMemo(() => {
-    const styleOffset: CSSProperties = {};
-    if (direction === 'down') {
-      styleOffset.top = `${offset}px`;
-    } else {
-      styleOffset.bottom = `${offset}px`;
-      styleOffset.height = `auto`;
-    }
+  const styleOffset: CSSProperties = {};
+  if (direction === 'down') {
+    styleOffset.top = `${offset}px`;
+  } else {
+    styleOffset.bottom = `${offset}px`;
+    styleOffset.height = `auto`;
+  }
+  const animationDirection = direction === 'up' ? 'bottom' : 'top';
+  const transitionName = animationType ?? TRANSITION_NAMES[animationDirection];
 
-    const animationDirection = direction === 'up' ? 'bottom' : 'top';
-    const transitionName = animationType ?? TRANSITION_NAMES[animationDirection];
-
-    return (
-      <Popup
-        ref={dropdownItemPopupRef}
-        style={{ ...styleOffset }}
-        className={bem('dropdown-popup-wrapper', [popupClassName])}
-        maskStyle={{ ...styleOffset }}
-        direction={animationDirection}
-        visible={mergeVisible}
-        onMaskClick={maskClosable ? () => toggleItem(currentPopupKey) : noop}
-        forceRender={forceRender}
-        destroy={destroy}
-        maskOpacity={maskOpacity}
-        animationDuration={animationDuration}
-      >
-        {Children.map(props.children, (child: ReactElement<DropdownItemProps>) => {
-          return (
-            <Transition
-              visible={currentPopupKey === child.key}
-              tranisitionName={`${prefixCls}-${transitionName}`}
-              forceRender={forceRender}
-              destroy={destroy}
-              duration={animationDuration}
-            >
-              <div className={bem([{ [`${animationDirection}`]: !!animationDirection }])}>
-                {cloneElement(child, {
-                  key: child.key,
-                })}
-              </div>
-            </Transition>
-          );
-        })}
-      </Popup>
-    );
-  }, [offset, mergeVisible, currentPopupKey]);
+  const renderPopContent = (
+    <Popup
+      ref={dropdownItemPopupRef}
+      style={{ ...styleOffset }}
+      className={bem('dropdown-popup-wrapper', [popupClassName])}
+      maskStyle={{ ...styleOffset }}
+      direction={animationDirection}
+      visible={mergeVisible}
+      onMaskClick={maskClosable ? () => toggleItem(currentPopupKey) : noop}
+      forceRender={forceRender}
+      destroy={destroy}
+      maskOpacity={maskOpacity}
+      animationDuration={animationDuration}
+    >
+      {Children.map(props.children, (child: ReactElement<DropdownItemProps>) => {
+        return (
+          <Transition
+            visible={currentPopupKey === child.key}
+            tranisitionName={`${prefixCls}-${transitionName}`}
+            forceRender={forceRender}
+            destroy={destroy}
+            duration={animationDuration}
+          >
+            <div className={bem([{ [`${animationDirection}`]: !!animationDirection }])}>
+              {cloneElement(child, {
+                key: child.key,
+              })}
+            </div>
+          </Transition>
+        );
+      })}
+    </Popup>
+  );
 
   return (
     <div ref={root} className={bem([className])}>
