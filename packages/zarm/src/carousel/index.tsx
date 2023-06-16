@@ -12,6 +12,7 @@ import React, {
 import type { CSSProperties } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { useDrag } from '@use-gesture/react';
+import { useEventListener } from 'ahooks';
 import type { BaseCarouselProps } from './interface';
 import Events from '../utils/events';
 import { ConfigContext } from '../config-provider';
@@ -83,12 +84,18 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
   const isVertical = direction === 'vertical';
 
   const carouselRef = (ref as any) || React.createRef<CarouselHTMLElement>();
+  const carouselDomRef = useRef<HTMLDivElement>(null);
   const carouselItemsRef = useRef<HTMLDivElement>(null);
 
   const translateXRef = useRef(0);
   const translateYRef = useRef(0);
 
   const count = useMemo(() => Children.count(children), [children]);
+
+  // 监听原生touchstart，可以在ios部分设备下解决未在可视区域内的元素无法触发onTouchStart事件的问题
+  useEventListener('touchstart', () => { }, {
+    target: carouselDomRef
+  })
 
   // 处理节点（首尾拼接）
   const carouselItems = useMemo(() => {
@@ -207,7 +214,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
       let { activeIndex } = stateRef.current;
       if (onMoving.current) {
         if (activeIndex <= 0) {
-         onJumpTo(0);
+          onJumpTo(0);
         } else if (activeIndex >= count - 1) {
           onJumpTo(count - 1);
         }
@@ -334,7 +341,10 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
   return (
     <div className={cls} style={style} ref={carouselRef} {...bind()}>
       <div
-        ref={carouselItemsRef}
+        ref={el => {
+          carouselItemsRef.current = el;
+          carouselDomRef.current = el;
+        }}
         className={bem('items')}
         onTransitionEnd={transitionEnd}
         style={itemsStyle}
