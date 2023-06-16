@@ -62,9 +62,9 @@ const config = {
           limit: 1024, // 设定转换尺寸上限
           filter: (asset) => {
             // or some other code
-            return /^.*\.(gif|png|jpeg)$/.test(asset.relativePath);
+            return /^.*\.(png|eot|ttf|woff)$/.test(asset.relativePath);
           },
-          url: 'inline',
+          // url: 'inline',
         },
       },
       cssModules: {
