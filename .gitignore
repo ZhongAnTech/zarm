@@ -25,5 +25,3 @@ node_modules
 
 *.tsbuildinfo
 .swc
-
-/packages/*/zarm-icons/**
