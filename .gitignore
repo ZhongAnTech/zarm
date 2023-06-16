@@ -18,6 +18,7 @@ node_modules
 /packages/*/lib
 /packages/*/dist
 /packages/zarm-icons/svg
+/packages/mini-demo/zarm-icons
 
 # coverage
 /packages/*/coverage
