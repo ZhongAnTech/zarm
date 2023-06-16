@@ -3,7 +3,8 @@ import '@zarm-design/icons/style';
 import '@zarm-design/icons/style/font';
 import * as React from 'react';
 import { Button, Panel } from 'zarm/mini';
-import './index.scss';
+
+/* style placeholder */
 
 export default () => {
   return (
