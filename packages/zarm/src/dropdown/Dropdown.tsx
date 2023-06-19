@@ -231,7 +231,7 @@ const Dropdown = forwardRef<DropdownInstance, DropdownProps>((props, ref) => {
     <Popup
       ref={dropdownItemPopupRef}
       style={{ ...styleOffset }}
-      className={bem('dropdown-popup-wrapper', [popupClassName])}
+      className={bem('popup-wrapper', [popupClassName])}
       maskStyle={{ ...styleOffset }}
       direction={animationDirection}
       visible={mergeVisible}
