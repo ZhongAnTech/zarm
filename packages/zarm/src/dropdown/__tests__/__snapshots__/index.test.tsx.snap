@@ -16,7 +16,7 @@ exports[`Dropdown renders correctly 1`] = `
         <div
           class="za-dropdown__title"
         >
-          Header of Item2
+          Header of Item1
         </div>
         <div
           class="za-dropdown__arrow"
@@ -48,7 +48,7 @@ exports[`Dropdown renders correctly 1`] = `
         <div
           class="za-dropdown__title"
         >
-          Header of Item3
+          Header of Item2
         </div>
         <div
           class="za-dropdown__arrow"
