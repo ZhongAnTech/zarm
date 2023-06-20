@@ -2,9 +2,9 @@ import { createBEM } from '@zarm-design/bem';
 import React, { forwardRef, useContext } from 'react';
 import { ConfigContext } from '../config-provider';
 import { HTMLProps } from '../utils/utilityTypes';
-import { BaseDropdownItemProps } from './interface';
+import { BaseDropdownItemProps, DropdownItemCssVars } from './interface';
 
-export type DropdownItemProps = BaseDropdownItemProps & HTMLProps;
+export type DropdownItemProps = BaseDropdownItemProps & HTMLProps<DropdownItemCssVars>;
 
 const DropdownItem = forwardRef<HTMLDivElement, DropdownItemProps>((props, ref) => {
   const { className } = props;
@@ -25,7 +25,11 @@ const DropdownItem = forwardRef<HTMLDivElement, DropdownItemProps>((props, ref) 
     );
   };
 
-  return <div ref={ref} className={bem([className])}>{renderContent()}</div>;
+  return (
+    <div ref={ref} className={bem([className])}>
+      {renderContent()}
+    </div>
+  );
 });
 
 DropdownItem.displayName = 'DropdownItem';

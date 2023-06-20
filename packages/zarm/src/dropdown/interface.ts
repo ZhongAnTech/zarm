@@ -28,6 +28,9 @@ export interface BaseDropdownItemProps {
 
 export interface DropdownCssVars {
   '--height': React.CSSProperties['height'];
-  '--disabled-text-color': React.CSSProperties['color'];
-  '--bar-title-padding': React.CSSProperties['padding'];
+  '--disabled-color': React.CSSProperties['color'];
+  '--arrow-space': React.CSSProperties['margin'];
+}
+export interface DropdownItemCssVars {
+  '--background-color': React.CSSProperties['backgroundColor'];
 }

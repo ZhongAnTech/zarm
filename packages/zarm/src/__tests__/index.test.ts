@@ -143,7 +143,6 @@ describe('index', () => {
             "disabled": false,
             "forceRender": false,
             "maskClosable": true,
-            "maskOpacity": 0.7,
           },
           "render": [Function],
         },

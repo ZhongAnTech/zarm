@@ -353,7 +353,7 @@ const Demo = () => {
       </Dropdown>
 
       <div className="btn-container">
-        <Button size="xs" onClick={() => setSelectedKey('key1')}>
+        <Button size="xs" onClick={() => DropdownRef.current.open('key1')}>
           激活菜单1
         </Button>
         <Button size="xs" onClick={() => setSelectedKey('key2')}>
@@ -379,7 +379,7 @@ ReactDOM.render(<Demo />, mountNode);
 | arrow             | ReactNode                     | -      | 箭头样式                                                                                                                                                                              |
 | onChange          | (key: string \| null) => void | -      | 值变化时触发的回调函数                                                                                                                                                                |
 | maskClosable      | boolean                       | true   | 是否点击遮罩层时关闭                                                                                                                                                                  |
-| maskOpacity       | number                        | 0.7    | 默认遮罩层透明度(0-1)                                                                                                                                                                 |
+| maskOpacity       | string\|number                | -      | 默认遮罩层透明度(0-1)                                                                                                                                                                 |
 | animationType     | string                        | -      | 菜单动画类型，可选值 `fade`、`door`、`flip`、`rotate`、`zoom`、`zoom-fade`、`move-up`、 `move-down`、`move-left`、`move-right`、`slide-up`、`slide-down`、`slide-left`、`slide-right` |
 | animationDuration | number                        | -      | 动画执行时间（单位：毫秒）                                                                                                                                                            |
 | popupClassName    | string                        | -      | 弹出层样式名                                                                                                                                                                          |
@@ -391,3 +391,35 @@ ReactDOM.render(<Demo />, mountNode);
 | key   | string    | -      | 唯一的 key 值 |
 | title | string    | -      | 子项标题      |
 | arrow | ReactNode | -      | 箭头样式      |
+
+## Dropdown 指令式 API
+
+通过 ref 可以获取到 Dropdown 实例并调用实例方法。
+
+```js
+// 打开指定Item
+ref.current.open(key);
+// 关闭全部Item
+ref.current.close();
+```
+
+| 属性  | 类型                  | 说明         |
+| :---- | :-------------------- | :----------- |
+| open  | (key: string) => void | 打开指定菜单 |
+| close | () => void            | 关闭所有菜单 |
+
+## CSS 变量
+
+### Dropdown
+
+| 属性                  | 默认值                          | 说明                   |
+| :-------------------- | :------------------------------ | :--------------------- |
+| --height              | '50px'                          | 高度                   |
+| --disabled-text-color | 'var(--za-color-text-disabled)' | 禁用状态下头部字体颜色 |
+| --arrow-space         | '4px'                           | 箭头间距               |
+
+### Dropdown.Item
+
+| 属性                 | 默认值 | 说明         |
+| :------------------- | :----- | :----------- |
+| --content-background | '#fff' | 内容区域背景 |

@@ -1,7 +1,7 @@
 @include b(dropdown) {
-  @include define(height, 48px);
-  @include define(disabled-text-color, rgba(0, 0, 0, 0.3));
-  @include define(bar-title-padding, 4px);
+  @include define(height, 50px);
+  @include define(disabled-color, var(--za-color-text-disabled));
+  @include define(arrow-space, 4px);
   @include e(bar) {
     width: 100%;
     height: var(--height);
@@ -17,7 +17,7 @@
     @include m(disabled) {
       cursor: not-allowed;
       pointer-events: none;
-      color: var(--disabled-text-color);
+      color: var(--disabled-color);
     }
 
     @include m(active) {
@@ -35,12 +35,8 @@
     }
   }
 
-  @include e(title) {
-    padding-left: var(--bar-title-padding);
-    padding-right: var(--bar-title-padding);
-  }
-
   @include e(arrow) {
+    margin-left: var(--arrow-space);
     transition: all 0.3s ease;
   }
 
@@ -74,7 +70,8 @@
 }
 
 @include b(dropdown-item) {
+  @include define(content-background, '#fff');
   @include e(popup-content) {
-    background-color: #fff;
+    background-color: var(--content-background);
   }
 }

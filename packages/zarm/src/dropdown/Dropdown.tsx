@@ -27,7 +27,7 @@ import type { BaseDropdownProps, DropdownCssVars, DropdownItemKey } from './inte
 
 export type DropdownProps = BaseDropdownProps & HTMLProps<DropdownCssVars>;
 export interface DropdownInstance {
-  open: (key?: string) => void;
+  open: (key: string) => void;
   close: () => void;
 }
 
@@ -184,7 +184,8 @@ const Dropdown = forwardRef<DropdownInstance, DropdownProps>((props, ref) => {
 
   // expose methods
   useImperativeHandle(ref, () => ({
-    open: (key?: string) => {
+    open: (key: string) => {
+      if (!key) throw Error('key is required');
       toggleItem(key);
     },
     close: () => {
@@ -234,6 +235,7 @@ const Dropdown = forwardRef<DropdownInstance, DropdownProps>((props, ref) => {
       className={bem('popup-wrapper', [popupClassName])}
       maskStyle={{ ...styleOffset }}
       direction={animationDirection}
+      animationType={animationType}
       visible={mergeVisible}
       onMaskClick={maskClosable ? () => toggleItem(currentPopupKey) : noop}
       forceRender={forceRender}
@@ -281,6 +283,5 @@ Dropdown.defaultProps = {
   forceRender: false,
   destroy: false,
   maskClosable: true,
-  maskOpacity: 0.7,
 };
 export default Dropdown as CompoundedComponent;
