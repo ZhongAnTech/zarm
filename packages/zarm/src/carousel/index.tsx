@@ -92,11 +92,6 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
 
   const count = useMemo(() => Children.count(children), [children]);
 
-  // 监听原生touchstart，可以在ios部分设备下解决未在可视区域内的元素无法触发onTouchStart事件的问题
-  useEventListener('touchstart', () => { }, {
-    target: carouselDomRef
-  })
-
   // 处理节点（首尾拼接）
   const carouselItems = useMemo(() => {
     if (children == null || children.length === 0) {
@@ -273,6 +268,16 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
     },
   );
 
+  // 单独导出onTouchStart事件，通过addEventListener touchstart的方式执行useDrag返回的onTouchStart逻辑，无差别消除事件不执行的影响
+
+  // React v18 版本，当root容器高度被设置为 100% 时，子元素数量过多，溢出父元素时，在 IOS端 onTouchStart合成事件不会被触发（具体的为TouchEvent和PoniterEvent不会被触发）
+  const { onTouchStart, ...restBind } = bind()
+
+  // 监听原生touchstart，可以在ios部分设备下解决未在可视区域内的元素无法触发onTouchStart事件的问题
+  useEventListener('touchstart', onTouchStart, {
+    target: carouselDomRef
+  })
+
   useEffect(() => {
     if (!autoPlay || count <= 1) return;
     intervalRef.current = window.setInterval(() => {
@@ -339,7 +344,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
   }
 
   return (
-    <div className={cls} style={style} ref={carouselRef} {...bind()}>
+    <div className={cls} style={style} ref={carouselRef} {...restBind}>
       <div
         ref={el => {
           carouselItemsRef.current = el;
