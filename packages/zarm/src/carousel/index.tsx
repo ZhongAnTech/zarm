@@ -204,7 +204,9 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
 
   const intervalRef = useRef<number>();
 
-  const bind = useDrag(
+  // 暴露出onTouchStart事件，有addEventListener touchstart去执行，可以无差别解决onTouchStart合成事件无法被触发的问题
+  // React v18 在 IOS 设备的一个奇怪现象：当root容器高度设置为height: 100%时，如果容器内存在多个子元素并且有子元素溢出了容器，该元素则无法触发合成事件中的onTouchStart, onTouchMove等（因为没有触发TouchEvents以及PointerEvents）
+  const { onTouchStart, ...bind } = useDrag(
     (state) => {
       let { activeIndex } = stateRef.current;
       if (onMoving.current) {
@@ -266,12 +268,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
       preventScroll: !isVertical,
       triggerAllEvents: true,
     },
-  );
-
-  // 单独导出onTouchStart事件，通过addEventListener touchstart的方式执行useDrag返回的onTouchStart逻辑，无差别消除事件不执行的影响
-
-  // React v18 版本，当root容器高度被设置为 100% 时，子元素数量过多，溢出父元素时，在 IOS端 onTouchStart合成事件不会被触发（具体的为TouchEvent和PoniterEvent不会被触发）
-  const { onTouchStart, ...restBind } = bind()
+  )();
 
   // 监听原生touchstart，可以在ios部分设备下解决未在可视区域内的元素无法触发onTouchStart事件的问题
   useEventListener('touchstart', onTouchStart, {
@@ -344,12 +341,13 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
   }
 
   return (
-    <div className={cls} style={style} ref={carouselRef} {...restBind}>
+    <div className={cls} style={style}
+      ref={el => {
+        carouselRef.current = el;
+        carouselDomRef.current = el;
+      }} {...bind}>
       <div
-        ref={el => {
-          carouselItemsRef.current = el;
-          carouselDomRef.current = el;
-        }}
+        ref={carouselItemsRef}
         className={bem('items')}
         onTransitionEnd={transitionEnd}
         style={itemsStyle}
