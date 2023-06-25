@@ -1,4 +1,3 @@
-import { CloseCircle, SuccessCircle } from '@zarm-design/icons';
 import '@zarm-design/icons/style';
 import '@zarm-design/icons/style/font';
 import * as React from 'react';
@@ -9,14 +8,18 @@ import { Button, Panel } from 'zarm/mini';
 export default () => {
   return (
     <>
-      <div className="button-demo">
+      <Panel title="基本用法" className="button-demo">
+        <Button>default</Button>
+        <Button theme="primary">primary</Button>
+      </Panel>
+      {/* <div className="button-demo">
         <Panel title="基本用法">
           <>
             <Button>default</Button>
             <Button theme="primary">primary</Button>
           </>
-        </Panel>
-        <Panel title="块级按钮">
+        </Panel> */}
+      {/* <Panel title="块级按钮">
           <>
             <Button block>default</Button>
             <Button block disabled>
@@ -99,8 +102,8 @@ export default () => {
             <Button icon={<SuccessCircle theme="success" mode="font" />}>success</Button>
             <Button icon={<CloseCircle theme="danger" mode="font" />}>danger</Button>
           </>
-        </Panel>
-      </div>
+        </Panel> */}
+      {/* </div> */}
     </>
   );
 };
