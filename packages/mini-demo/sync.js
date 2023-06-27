@@ -22,16 +22,16 @@ chokidar.watch('../../packages/zarm/src/**/demo/*mini.tsx').on('change', async (
       withFileTypes: true,
     });
 
-    let imports = [];
-    let components = [];
+    const imports = [];
+    const components = [];
     dirents.forEach((entry) => {
-      const demoName = entry.name.split('.')[0];
-      const capitalized = `${demoName.charAt(0).toUpperCase()}${demoName.slice(1)}`;
-      imports.push(`import ${capitalized} from './component/${demoName}'`);
+      const blockName = entry.name.split('.')[0];
+      const capitalized = `${blockName.charAt(0).toUpperCase()}${blockName.slice(1)}`;
+      imports.push(`import ${capitalized} from './component/${blockName}'`);
       components.push(`<${capitalized} />`);
     });
 
-    let componentsStr = components.join(`\n${space}`);
+    const componentsStr = components.join(`\n${space}`);
     const template = `
 import * as React from 'react';
 ${imports.join(';\n')};
