@@ -49,9 +49,6 @@ const getActiveKey = ({ activeKey, defaultActiveKey }) => {
 const TRANSITION_NAMES = {
   top: 'move-down',
   bottom: 'move-up',
-  center: 'fade',
-  left: 'move-left',
-  right: 'move-right',
 };
 
 const overflowScrollRegExp = /scroll|auto|overlay/i;
@@ -252,7 +249,7 @@ const Dropdown = forwardRef<DropdownInstance, DropdownProps>((props, ref) => {
             destroy={destroy}
             duration={animationDuration}
           >
-            <div className={bem([{ [`${animationDirection}`]: !!animationDirection }])}>
+            <div className={bem([{ [`${direction}`]: !!direction }])}>
               {cloneElement(child, {
                 key: child.key,
               })}

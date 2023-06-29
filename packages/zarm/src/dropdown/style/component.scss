@@ -40,32 +40,18 @@
     transition: all 0.3s ease;
   }
 
-  @include m(bottom) {
+  @include m(up) {
     position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
   }
 
-  @include m(top) {
+  @include m(down) {
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
-  }
-
-  @include m(left) {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-  }
-
-  @include m(right) {
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
   }
 }
 
