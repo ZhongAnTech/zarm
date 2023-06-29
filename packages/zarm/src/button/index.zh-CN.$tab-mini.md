@@ -9,6 +9,10 @@ group:
 
 <code src="./demo/basic.mini.tsx"></code>
 
+## 块级按钮
+
+<code src="./demo/block.mini.tsx"></code>
+
 ## API
 
 | 属性     | 类型                             | 默认值    | 说明                                                             |
