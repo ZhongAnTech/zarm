@@ -76,6 +76,7 @@ const themes = {
   '--za-cascader-header-background': 'var(--za-background-color)',
   '--za-tab-bar-background': 'var(--za-background-color)',
   '--za-action-sheet-background': 'var(--za-background-color)',
+  '--za-dropdown-item-content-background': 'var(--za-background-color)',
 } as const;
 
 const setTheme = (value: ConfigProviderProps['theme']) => {
