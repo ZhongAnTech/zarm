@@ -140,3 +140,5 @@ export { default as WaterMark } from './water-mark';
 export type { WaterMarkProps } from './water-mark';
 export { default as Wheel } from './wheel';
 export type { WheelCssVars, WheelProps } from './wheel';
+export { default as Dropdown } from './dropdown';
+export type { DropdownProps, DropdownItemProps } from './dropdown';

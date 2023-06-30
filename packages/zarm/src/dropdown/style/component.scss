@@ -1,0 +1,63 @@
+@include b(dropdown) {
+  @include define(height, 50px);
+  @include define(disabled-color, var(--za-color-text-disabled));
+  @include define(arrow-space, 4px);
+  @include e(bar) {
+    width: 100%;
+    height: var(--height);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+  }
+
+  @include e(bar-item) {
+    display: flex;
+    align-items: center;
+    @include m(disabled) {
+      cursor: not-allowed;
+      pointer-events: none;
+      color: var(--disabled-color);
+    }
+
+    @include m(active) {
+      color: var(--za-theme-primary);
+
+      @include b(dropdown) {
+        @include e(arrow) {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    svg {
+      pointer-events: none;
+    }
+  }
+
+  @include e(arrow) {
+    margin-left: var(--arrow-space);
+    transition: all 0.3s ease;
+  }
+
+  @include m(up) {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+
+  @include m(down) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}
+
+@include b(dropdown-item) {
+  @include define(content-background, '#fff');
+  @include e(popup-content) {
+    background-color: var(--content-background);
+  }
+}
