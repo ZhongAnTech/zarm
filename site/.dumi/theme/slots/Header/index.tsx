@@ -1,5 +1,6 @@
 import { useLocale, useLocation, useSiteToken } from '.dumi/hooks';
 import Logo from '.dumi/theme/slots/Logo';
+import Navigation from '.dumi/theme/slots/Navigation';
 import { css } from '@emotion/react';
 import classnames from 'classnames';
 import { useOutlet } from 'dumi';
@@ -14,6 +15,8 @@ const useStyle = () => {
       margin: 0 auto;
       padding: 0 24px;
       flex-flow: nowrap;
+      justify-content: space-between;
+      align-items: center;
       display: flex;
     `,
   };
@@ -32,9 +35,14 @@ const Header: React.FC = () => {
     'homepage-header': isHome,
   });
 
+  const navigationNode = <Navigation key="nav" />;
+
+  const menu = [navigationNode];
+
   return (
     <header css={header} className={headerClassName}>
       <Logo isZhCN={isZhCN} location={location} />
+      {menu}
     </header>
   );
 };

@@ -1,7 +1,7 @@
 import { useLocation, useSiteToken, useThemeConfig } from '.dumi/hooks';
 import { getLocalizedPathname } from '.dumi/theme/utils';
 import { css } from '@emotion/react';
-import { Link } from 'dumi';
+import { Link, useSiteData } from 'dumi';
 import isString from 'lodash/isString';
 import * as React from 'react';
 
@@ -40,11 +40,11 @@ const useStyle = () => {
     title: css`
       line-height: 32px;
       font-weight: 500;
-    `,
-    version: css`
-      color: #999;
-      font-size: 12px;
-      margin-left: 4px;
+      sup {
+        color: #999;
+        font-size: 12px;
+        margin-left: 4px;
+      }
     `,
   };
 };
@@ -56,8 +56,11 @@ export interface LogoProps {
 
 const Logo: React.FC<LogoProps> = ({ isZhCN }) => {
   const { search } = useLocation();
-  const { logo, title, version } = useStyle();
+  const { logo, title } = useStyle();
+  const { pkg } = useSiteData();
   const themeConfig = useThemeConfig();
+
+  const version = themeConfig.version || pkg.version;
 
   return (
     <h1>
@@ -65,7 +68,7 @@ const Logo: React.FC<LogoProps> = ({ isZhCN }) => {
         {isString(themeConfig.logo) && <img src={themeConfig.logo} alt="logo" />}
         <span css={title}>
           {themeConfig.name}
-          {themeConfig.version && <sup css={version}>v{themeConfig.version}</sup>}
+          {version && <sup>v{version}</sup>}
         </span>
       </Link>
     </h1>
