@@ -9,6 +9,7 @@
     "deploy:build": "pnpm --filter site build",
     "dev": "pnpm --filter site start",
     "dev:h5": "pnpm --filter mini-demo dev:h5",
+    "dev:next": "pnpm --filter dumi-theme-zarm dev",
     "dev:weapp": "pnpm --filter mini-demo dev:weapp",
     "docs:build": "pnpm --filter site-next build",
     "docs:dev": "pnpm --filter site-next dev",

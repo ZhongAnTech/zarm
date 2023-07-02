@@ -2,7 +2,10 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "jsx": "react",
+    "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
     "paths": {
       "zarm": ["../packages/zarm/src/index.ts"],
       "zarm/es/*": ["../packages/zarm/src/*"],

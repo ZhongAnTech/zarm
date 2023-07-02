@@ -1,5 +1,6 @@
 import { defineConfig } from 'dumi';
 import * as path from 'path';
+import pkg from '../packages/zarm/package.json';
 
 export default defineConfig({
   mfsu: false,
@@ -13,11 +14,13 @@ export default defineConfig({
     { id: 'zh-CN', name: '中文', suffix: '-cn' },
   ],
   alias: {
+    '.dumi': path.resolve('./.dumi'),
     'zarm/lib': path.resolve(__dirname, '../packages/zarm/src'),
     'zarm/es': path.resolve(__dirname, '../packages/zarm/src'),
-    zarm: require.resolve('../packages/zarm/src/index.ts'),
+    zarm: path.resolve(__dirname, '../packages/zarm/src/index.ts'),
     ['@tarojs/components$']: '@tarojs/components/lib/react',
   },
+  extraBabelPresets: [require.resolve('@emotion/babel-preset-css-prop')],
   extraBabelPlugins: [
     [
       'import',
@@ -43,8 +46,9 @@ export default defineConfig({
     ],
   ],
   themeConfig: {
-    name: 'zarm',
-    logo: 'https://gw.alipayobjects.com/zos/bmw-prod/d3e3eb39-1cd7-4aa5-827c-877deced6b7e/lalxt4g3_w256_h256.png',
+    name: 'Zarm',
+    logo: 'https://zarm.design/images/logo.1a6cfc30.svg',
+    version: pkg.version,
     autoAlias: {},
     prefersColor: { default: 'auto' },
   },
