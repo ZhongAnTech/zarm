@@ -24,6 +24,8 @@
       "./*.d.ts"
     ]
   },
+  "main": "lib/index.js",
+  "module": "es/index.js",
   "typesVersions": {
     "*": {
       "*": [
@@ -33,8 +35,6 @@
       ]
     }
   },
-  "main": "lib/index.js",
-  "module": "es/index.js",
   "typings": "lib/index.d.ts",
   "directories": {
     "lib": "lib",
@@ -52,11 +52,13 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.22.5",
     "@babel/plugin-transform-runtime": "^7.13.10",
     "@babel/preset-env": "^7.13.12",
     "@babel/preset-react": "^7.12.13",
     "@babel/preset-typescript": "^7.13.0",
     "@babel/runtime": "^7.13.10",
-    "@zarm-design/cli": "workspace:*"
+    "@zarm-design/cli": "workspace:*",
+    "sass": "^1.58.3"
   }
 }

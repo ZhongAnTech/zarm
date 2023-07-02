@@ -15,7 +15,7 @@ Zarm 提供了一个 React 组件 [ConfigProvider](#/components/config-provider)
 
 目前的默认的品牌标准色是 `#00bc70`，如果需要使用其他颜色，可以参考下面的方案。
 
-```jsx
+```tsx | pure
 <ConfigProvider primaryColor="#1890ff">
   <App />
 </ConfigProvider>
@@ -25,7 +25,7 @@ Zarm 提供了一个 React 组件 [ConfigProvider](#/components/config-provider)
 
 除了目前提供的默认主题外，我们还提供了一套暗黑主题，可以参考下面的方案进行配置。
 
-```jsx
+```tsx | pure
 <ConfigProvider theme="dark">
   <App />
 </ConfigProvider>
@@ -35,7 +35,7 @@ Zarm 提供了一个 React 组件 [ConfigProvider](#/components/config-provider)
 
 可以通过修改 zarm 开放出来的 css 变量的方式深度定制你的样式。
 
-```jsx
+```tsx | pure
 <ConfigProvider
   cssVars={{
     '--za-theme-primary': '#ff0000',
