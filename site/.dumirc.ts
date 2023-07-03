@@ -5,7 +5,7 @@ import pkg from '../packages/zarm/package.json';
 export default defineConfig({
   mfsu: false,
   crossorigin: {},
-  outputPath: 'docs-dist',
+  outputPath: 'dist',
   resolve: {
     atomDirs: [{ type: 'component', dir: '../packages/zarm/src' }],
   },
