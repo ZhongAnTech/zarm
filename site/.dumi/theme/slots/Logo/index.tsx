@@ -21,6 +21,7 @@ const useStyle = () => {
       text-decoration: none;
       display: inline-flex;
       align-items: center;
+      cursor: pointer;
 
       &:hover {
         color: ${token.colorTextHeading};

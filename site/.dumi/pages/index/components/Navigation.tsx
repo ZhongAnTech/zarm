@@ -28,11 +28,19 @@ const useStyle = () => {
       border-radius: 25px;
       outline: none;
       padding: 0 30px;
+      cursor: pointer;
+      transition: 200ms;
+      &:hover {
+        opacity: 0.9;
+      }
     `,
     ghost: css`
       border: 1px solid #00bc70;
       color: #00bc70;
       background-color: #fff;
+      &:hover {
+        background-color: #eee;
+      }
     `,
     item: css`
       position: relative;

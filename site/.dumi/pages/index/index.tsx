@@ -15,6 +15,7 @@ const useStyle = () => ({
       bottom: 0;
       left: 0;
       z-index: 1;
+      pointer-events: none;
     }
     main {
       position: relative;
