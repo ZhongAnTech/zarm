@@ -110,6 +110,10 @@ const Popper = forwardRef<refHander, PopperProps>((props, ref) => {
     };
   });
 
+  useEffect(() => {
+    update();
+  }, [content]);
+
   function computeArrowStyle(ctx) {
     const { x: arrowX, y: arrowY } = ctx?.middlewareData?.arrow || {};
     if (arrowRef.current) {
