@@ -1,9 +1,17 @@
-import Collapse from './Collapse';
+import React from 'react';
+import Collapse, { CollapseProps } from './Collapse';
 import CollapseItem from './CollapseItem';
 
-Collapse.Item = CollapseItem;
+interface CompoundedComponent
+  extends React.ForwardRefExoticComponent<CollapseProps & React.RefAttributes<HTMLElement>> {
+  Item: typeof CollapseItem;
+}
 
-export type { CollapseProps, CollapseCssVars } from './Collapse';
+const CollapseWithItem = Collapse as CompoundedComponent;
+
+CollapseWithItem.Item = CollapseItem;
+
+export type { CollapseCssVars, CollapseProps } from './Collapse';
 export type { CollapseItemProps } from './CollapseItem';
 
-export default Collapse;
+export default CollapseWithItem;
