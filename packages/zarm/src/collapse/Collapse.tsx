@@ -1,8 +1,8 @@
 import { createBEM } from '@zarm-design/bem';
+import { useControllableValue } from 'ahooks';
 import includes from 'lodash/includes';
 import React, { Children, useCallback } from 'react';
 import { ConfigContext } from '../config-provider';
-import { useUncontrolled } from '../utils/hooks/useUncontrolled';
 import type { HTMLProps } from '../utils/utilityTypes';
 import CollapseContext from './context';
 import type { BaseCollapseProps, CollapseItemKey } from './interface';
@@ -47,12 +47,13 @@ const Collapse = React.forwardRef<unknown, CollapseProps>((props, ref) => {
 
   const collapseRef = (ref as any) || React.createRef<HTMLElement>();
 
-  const [value, setValue] = useUncontrolled({
-    value: multiple && activeKey ? [].concat(activeKey) : activeKey,
+  const [value, setValue] = useControllableValue(props, {
     defaultValue: multiple && defaultActiveKey ? [].concat(defaultActiveKey) : defaultActiveKey,
-    finalValue: multiple ? [] : '',
-    onChange,
+    defaultValuePropName: 'defaultActiveKey',
+    valuePropName: 'activeKey',
   });
+
+  console.log(value);
 
   const { prefixCls } = React.useContext(ConfigContext);
 

@@ -6,9 +6,11 @@ import CollapseContext from './context';
 import type { BaseCollapseItemProps } from './interface';
 
 export type CollapseItemProps = Omit<HTMLAttributes<HTMLDivElement>, 'key' | 'title' | 'onChange'> &
-  BaseCollapseItemProps & { value: string };
+  BaseCollapseItemProps;
 
-const CollapseItem = React.forwardRef<unknown, CollapseItemProps>((props, ref) => {
+type CollapseItemExtraProps = CollapseItemProps & { value: string };
+
+const CollapseItem = React.forwardRef<unknown, CollapseItemExtraProps>((props, ref) => {
   const { title, className, disabled, value, children, onChange, ...rest } = props;
 
   const content = (ref as any) || React.createRef<HTMLElement>();
