@@ -47,13 +47,13 @@ const Collapse = React.forwardRef<unknown, CollapseProps>((props, ref) => {
 
   const collapseRef = (ref as any) || React.createRef<HTMLElement>();
 
-  const [value, setValue] = useControllableValue(props, {
+  const [state, setValue] = useControllableValue(props, {
     defaultValue: multiple && defaultActiveKey ? [].concat(defaultActiveKey) : defaultActiveKey,
     defaultValuePropName: 'defaultActiveKey',
     valuePropName: 'activeKey',
   });
 
-  console.log(value);
+  const value = multiple ? state || [] : state || '';
 
   const { prefixCls } = React.useContext(ConfigContext);
 
