@@ -10,8 +10,8 @@ export default defineConfig({
     atomDirs: [{ type: 'component', dir: '../packages/zarm/src' }],
   },
   locales: [
-    { id: 'en-US', name: 'English', suffix: '' },
     { id: 'zh-CN', name: '中文', suffix: '-cn' },
+    { id: 'en-US', name: 'English', suffix: '' },
   ],
   alias: {
     '.dumi': path.resolve('./.dumi'),

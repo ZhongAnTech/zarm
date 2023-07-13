@@ -28,10 +28,10 @@ const Navigation: React.FC = () => {
   return (
     <div>
       <Space>
-        <Link to={getLocalizedPathname('/guide', isZhCN, search)}>
+        <Link to={getLocalizedPathname('/guide/quick-start', isZhCN, search)}>
           <Button type="text">{locale.guide}</Button>
         </Link>
-        <Link to={getLocalizedPathname('/components', isZhCN, search)}>
+        <Link to={getLocalizedPathname('/components/overview', isZhCN, search)}>
           <Button type="text">{locale.components}</Button>
         </Link>
         <Link to={getLocalizedPathname('/resources', isZhCN, search)}>

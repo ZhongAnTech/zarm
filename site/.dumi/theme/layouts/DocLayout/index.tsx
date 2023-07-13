@@ -7,6 +7,7 @@ import zhCN from 'antd/es/locale/zh_CN';
 import dayjs from 'dayjs';
 import { Helmet, useOutlet, useSiteData } from 'dumi';
 import * as React from 'react';
+import SidebarLayout from '../SidebarLayout';
 // import Footer from '../../slots/Footer';
 
 const locales = {
@@ -53,6 +54,16 @@ const DocLayout: React.FC = () => {
     if (id) document.getElementById(decodeURIComponent(id))?.scrollIntoView();
   }, [loading, hash]);
 
+  const content = React.useMemo(() => {
+    if (
+      ['', '/'].some((path) => path === pathname) ||
+      ['/index'].some((path) => pathname.startsWith(path))
+    ) {
+      return <>{outlet}</>;
+    }
+    return <SidebarLayout>{outlet}</SidebarLayout>;
+  }, [pathname, outlet]);
+
   return (
     <>
       <Helmet encodeSpecialCharacters={false}>
@@ -72,7 +83,7 @@ const DocLayout: React.FC = () => {
       >
         <GlobalStyles />
         <Header />
-        {outlet}
+        {content}
       </ConfigProvider>
     </>
   );
