@@ -1,51 +1,15 @@
 import { createBEM } from '@zarm-design/bem';
 import * as React from 'react';
-import TabPanel from './TabPanel';
-import Carousel from '../carousel';
 import type { CarouselHTMLElement } from '../carousel';
-import { getTransformPropValue, getPxStyle } from './util/index';
-import { scrollTo } from '../utils/dom';
+import Carousel from '../carousel';
 import { ConfigContext } from '../config-provider';
-import type { TabPanelProps } from './TabPanel';
-import type { BaseTabsProps } from './interface';
+import { scrollTo } from '../utils/dom';
 import type { HTMLProps } from '../utils/utilityTypes';
-
-const getChildChecked = (children: TabPanelProps['children']) => {
-  let selectIndex;
-  React.Children.forEach(children, (item, index) => {
-    if (React.isValidElement(item) && item.props && item.props.selected) {
-      selectIndex = index;
-    }
-  });
-  return selectIndex;
-};
-
-const parseValueBoundary = (
-  inputValue: TabsProps['value'],
-  children: TabPanelProps['children'],
-) => {
-  const count = React.Children.count(children);
-  if (inputValue! <= 0) {
-    return 0;
-  }
-  if (inputValue! > count - 1) {
-    return count - 1;
-  }
-  return inputValue;
-};
-
-const getValue = (props: TabsProps, defaultValue: TabsProps['value']) => {
-  if (typeof props.value !== 'undefined') {
-    return parseValueBoundary(props.value, props.children);
-  }
-  if (typeof props.defaultValue !== 'undefined') {
-    return parseValueBoundary(props.defaultValue, props.children);
-  }
-  if (getChildChecked(props.children)) {
-    return parseValueBoundary(getChildChecked(props.children), props.children);
-  }
-  return parseValueBoundary(defaultValue, props.children);
-};
+import type { BaseTabsProps } from './interface';
+import type { TabPanelProps } from './TabPanel';
+import TabPanel from './TabPanel';
+import useTabs from './useTabs';
+import { getPxStyle, getTransformPropValue } from './util/index';
 
 export interface TabsCssVars {
   '--font-size'?: React.CSSProperties['fontSize'];
@@ -69,7 +33,6 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
     className,
     style,
     value,
-    defaultValue,
     disabled,
     swipeable,
     scrollable,
@@ -82,28 +45,26 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
   const carouselRef = React.useRef<CarouselHTMLElement>(null);
   const tablistRef = React.useRef<HTMLUListElement>(null);
   const [itemWidth, setItemWidth] = React.useState(0);
-  const [currentValue, setCurrentValue] = React.useState(
-    getValue({ value, defaultValue, children }, 0),
-  );
+  const [currentValue, setCurrentValue] = useTabs(props);
+
+  // const [currentValue, setCurrentValue] = useControllableValue(props)
 
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('tabs', { prefixCls });
 
   const isVertical: boolean = direction === 'vertical';
 
-  const parseValue = React.useCallback(
-    (inputValue) => parseValueBoundary(inputValue, children),
-    [children],
-  );
-
-  const classes = bem([{
-    [`${direction}`]: true,
-    scroll: scrollable,
-  }, className])
+  const classes = bem([
+    {
+      [`${direction}`]: true,
+      scroll: scrollable,
+    },
+    className,
+  ]);
 
   // 计算 line 大小和位置
   const caclLineSizePos = () => {
-    const newValue = parseValue(currentValue)!;
+    const newValue = currentValue;
     const ChildCount = React.Children.count(children);
 
     let pos = 100 * newValue;
@@ -131,7 +92,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
       if (typeof value === 'undefined') {
         setCurrentValue(newValue);
       }
-      typeof onChange === 'function' && onChange(newValue);
+      onChange?.(newValue);
     },
     [value, onChange],
   );
@@ -162,7 +123,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
         swipeable={!disabled}
         direction={direction}
         showPagination={false}
-        activeIndex={parseValue(currentValue)}
+        activeIndex={currentValue}
         ref={carouselRef}
         onChange={onTabChange}
       >
@@ -175,16 +136,19 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
     contentRender = React.Children.map(
       children,
       (item: React.ReactElement<TabPanelProps, typeof TabPanel>, index: number) => (
-        <TabPanel {...item.props} selected={parseValue(currentValue) === index} />
+        <TabPanel {...item.props} selected={currentValue === index} />
       ),
     );
   }
 
   const renderTabs = (tab: React.ReactElement<TabPanelProps, typeof TabPanel>, index: number) => {
-    const itemCls = bem('tab', [{
-      disabled: disabled || tab.props.disabled,
-      active: parseValue(currentValue) === index,
-    }, tab.props.className])
+    const itemCls = bem('tab', [
+      {
+        disabled: disabled || tab.props.disabled,
+        active: currentValue === index,
+      },
+      tab.props.className,
+    ]);
 
     return (
       <li role="tab" key={+index} className={itemCls} onClick={() => onTabClick(tab, index)}>
@@ -198,7 +162,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
 
   const getItemStyle = (el, prop) => {
     let newValue = '0';
-    if (prop in el.style) {
+    if (el && prop in el?.style) {
       newValue = el.style[prop] || window.getComputedStyle(el).getPropertyValue(prop) || '0';
     }
     return newValue;
@@ -208,18 +172,18 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
     if (!scrollable) {
       return;
     }
-    const newValue = parseValue(currentValue)!;
+    const newValue = currentValue;
     const el = tablistRef.current!.children[newValue];
     const size = isVertical ? getItemStyle(el, 'height') : getItemStyle(el, 'width');
 
     setItemWidth(parseInt(size.toString(), 10));
-  }, [parseValue, currentValue, isVertical, scrollable]);
+  }, [currentValue, isVertical, scrollable]);
 
   const calculateScorllLeftLocation = React.useCallback(() => {
     if (!scrollable) {
       return false;
     }
-    const newValue = parseValue(currentValue)!;
+    const newValue = currentValue;
 
     const prevTabItem = tablistRef.current!.childNodes[newValue] as HTMLElement;
     if (scrollable && tablistRef.current && prevTabItem) {
@@ -230,7 +194,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
 
       scrollTo(tablistRef.current, top, left, 0.3);
     }
-  }, [parseValue, currentValue, scrollable]);
+  }, [currentValue, scrollable]);
 
   React.useEffect(() => {
     if (React.Children.count(children)) {
@@ -238,10 +202,6 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
       calculateScorllLeftLocation();
     }
   }, [calculateLineWidth, calculateScorllLeftLocation, children]);
-
-  React.useEffect(() => {
-    setCurrentValue(getValue({ value, defaultValue, children }, 0));
-  }, [value, defaultValue, children]);
 
   return (
     <div ref={ref} className={classes} style={style}>
