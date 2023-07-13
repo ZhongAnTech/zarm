@@ -284,7 +284,7 @@ export const Markdown: React.FC = () => {
               text-align: left;
               border: 1px solid ${token.colorSplit};
 
-              &:first-child {
+              &:first-of-type {
                 border-left: 1px solid ${token.colorSplit};
               }
 
@@ -330,7 +330,7 @@ export const Markdown: React.FC = () => {
 
             td {
               border-width: 1px 0;
-              &:first-child {
+              &:first-of-type {
                 width: 18%;
                 min-width: 58px;
                 color: #595959;
@@ -338,32 +338,32 @@ export const Markdown: React.FC = () => {
                 white-space: nowrap;
               }
 
-              &:nth-child(2) {
+              &:nth-of-type(2) {
                 width: 55%;
                 min-width: 160px;
               }
 
-              &:nth-child(3) {
+              &:nth-of-type(3) {
                 width: 22%;
                 color: ${token.magenta7};
                 font-size: ${Math.max(token.fontSize - 1, 12)}px;
               }
 
-              &:nth-child(4) {
+              &:nth-of-type(4) {
                 width: 15%;
                 font-size: ${Math.max(token.fontSize - 1, 12)}px;
               }
 
-              &:nth-child(5) {
+              &:nth-of-type(5) {
                 width: 8%;
                 font-size: ${Math.max(token.fontSize - 1, 12)}px;
               }
 
-              &:nth-last-child(3):first-child {
+              &:nth-last-of-type(3):first-of-type {
                 width: 38%;
               }
 
-              &:nth-last-child(3):first-child ~ td:nth-last-child(2) {
+              &:nth-last-of-type(3):first-of-type ~ td:nth-last-of-type(2) {
                 width: 70%;
               }
             }

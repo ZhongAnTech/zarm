@@ -22,6 +22,7 @@ const useStyle = () => {
       display: inline-flex;
       align-items: center;
       cursor: pointer;
+      margin-left: 40px;
 
       &:hover {
         color: ${token.colorTextHeading};
@@ -55,7 +56,7 @@ export interface LogoProps {
   location: any;
 }
 
-const Logo: React.FC<LogoProps> = ({ isZhCN }) => {
+export const Logo: React.FC<LogoProps> = ({ isZhCN }) => {
   const { search } = useLocation();
   const { logo, title } = useStyle();
   const { pkg } = useSiteData();
@@ -75,5 +76,3 @@ const Logo: React.FC<LogoProps> = ({ isZhCN }) => {
     </h1>
   );
 };
-
-export default Logo;

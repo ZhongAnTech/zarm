@@ -28,6 +28,6 @@ export const getLocalizedPathname = (
   return { pathname: fullPath, search };
 };
 
-export const isZhCN = (pathname: string) => {
+export const isZhCNPath = (pathname: string) => {
   return /-cn\/?$/.test(pathname);
 };

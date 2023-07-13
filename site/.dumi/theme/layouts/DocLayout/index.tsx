@@ -1,6 +1,9 @@
-import { useLocale, useLocation, useThemeConfig } from '.dumi/hooks';
+import { useLocale, useLocation, useSiteToken, useThemeConfig } from '.dumi/hooks';
+import { useSiteContext } from '.dumi/hooks/useSiteContext';
 import { GlobalStyles } from '.dumi/theme/components';
 import Header from '.dumi/theme/slots/Header';
+import ConfigProvider from 'antd/es/config-provider';
+import zhCN from 'antd/es/locale/zh_CN';
 import dayjs from 'dayjs';
 import { Helmet, useOutlet, useSiteData } from 'dumi';
 import * as React from 'react';
@@ -25,6 +28,8 @@ const DocLayout: React.FC = () => {
   const [locale, lang] = useLocale(locales);
   const timerRef = React.useRef<NodeJS.Timeout | null>(null);
   const { logo } = useThemeConfig();
+  const { direction } = useSiteContext();
+  const { token } = useSiteToken();
 
   React.useLayoutEffect(() => {
     if (lang === 'cn') {
@@ -60,9 +65,15 @@ const DocLayout: React.FC = () => {
         <meta property="og:type" content="website" />
         {logo && <meta property="og:image" content={logo} />}
       </Helmet>
-      <GlobalStyles />
-      <Header />
-      {outlet}
+      <ConfigProvider
+        direction={direction}
+        locale={lang === 'cn' ? zhCN : undefined}
+        theme={{ token }}
+      >
+        <GlobalStyles />
+        <Header />
+        {outlet}
+      </ConfigProvider>
     </>
   );
 };

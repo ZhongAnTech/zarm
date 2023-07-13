@@ -10,7 +10,7 @@ export const HeadingAnchor: React.FC = () => (
       h4,
       h5,
       h6 {
-        > a[aria-hidden]:first-child {
+        > a[aria-hidden]:first-of-type {
           float: left;
           width: 20px;
           padding-inline-end: 4px;
@@ -34,7 +34,7 @@ export const HeadingAnchor: React.FC = () => (
           }
         }
 
-        &:not(:hover) > a[aria-hidden]:first-child > .icon-link {
+        &:not(:hover) > a[aria-hidden]:first-of-type > .icon-link {
           visibility: hidden;
         }
       }

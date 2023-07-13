@@ -24,7 +24,11 @@
     ]
   },
   "dependencies": {
+    "@ant-design/cssinjs": "^1.11.1",
+    "@ant-design/icons": "^5.1.4",
     "ahooks": "^3.7.6",
+    "antd": "^5.0.7",
+    "antd-style": "^3.4.1",
     "dayjs": "^1.11.3",
     "lodash": "^4.17.15",
     "qrcode.react": "^3.1.0",

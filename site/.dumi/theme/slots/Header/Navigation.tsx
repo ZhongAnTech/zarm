@@ -1,6 +1,8 @@
 import { useLocale, useLocation } from '.dumi/hooks';
 import { getLocalizedPathname } from '.dumi/theme/utils';
+import { Button, Space } from 'antd';
 import { Link } from 'dumi';
+// import { Button } from 'dumi';
 import * as React from 'react';
 
 const locales = {
@@ -25,9 +27,17 @@ const Navigation: React.FC = () => {
 
   return (
     <div>
-      <Link to={getLocalizedPathname('/guide', isZhCN, search)}>{locale.guide}</Link>
-      <Link to={getLocalizedPathname('/components', isZhCN, search)}>{locale.components}</Link>
-      <Link to={getLocalizedPathname('/resources', isZhCN, search)}>{locale.resources}</Link>
+      <Space>
+        <Link to={getLocalizedPathname('/guide', isZhCN, search)}>
+          <Button type="text">{locale.guide}</Button>
+        </Link>
+        <Link to={getLocalizedPathname('/components', isZhCN, search)}>
+          <Button type="text">{locale.components}</Button>
+        </Link>
+        <Link to={getLocalizedPathname('/resources', isZhCN, search)}>
+          <Button type="text">{locale.resources}</Button>
+        </Link>
+      </Space>
     </div>
   );
 };

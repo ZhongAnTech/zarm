@@ -46,7 +46,7 @@ export default defineConfig({
     ],
   ],
   themeConfig: {
-    name: 'Zarm',
+    name: 'Zarm Design',
     logo: 'https://zarm.design/images/logo.1a6cfc30.svg',
     version: pkg.version,
     autoAlias: {},

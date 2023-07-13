@@ -1,13 +1,14 @@
 import { useLocale, useLocation, useSiteToken } from '.dumi/hooks';
-import { getLocalizedPathname, isZhCN } from '.dumi/theme/utils';
+import { getLocalizedPathname, isZhCNPath } from '.dumi/theme/utils';
 import { css } from '@emotion/react';
 import { useClickAway } from 'ahooks';
+import { Button, Popover, QRCode, Space } from 'antd';
 import { Link } from 'dumi';
-import { QRCodeSVG } from 'qrcode.react';
 import * as React from 'react';
 
 const useStyle = () => {
   const { token } = useSiteToken();
+
   return {
     navigation: css`
       margin-top: 100px;
@@ -16,60 +17,9 @@ const useStyle = () => {
       display: flex;
     `,
     button: css`
-      min-width: 180px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 50px;
-      background-color: ${token.colorPrimary};
-      border: 0;
-      color: #fff;
-      font-size: 18px;
-      border-radius: 25px;
-      outline: none;
-      padding: 0 30px;
-      cursor: pointer;
-      transition: 200ms;
-      &:hover {
-        opacity: 0.9;
+      &${token.antCls}-btn {
+        height: 48px;
       }
-    `,
-    ghost: css`
-      border: 1px solid #00bc70;
-      color: #00bc70;
-      background-color: #fff;
-      &:hover {
-        background-color: #eee;
-      }
-    `,
-    item: css`
-      position: relative;
-      margin-bottom: 12px;
-      &:first-child {
-        margin-right: 16px;
-      }
-    `,
-    qrcode: css`
-      width: 120px;
-      height: 120px;
-      border-radius: 4px;
-      padding: 12px;
-      box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
-      background-color: #fff;
-      position: absolute;
-      left: 50%;
-      top: 100%;
-      margin-left: -70px;
-      transform: scale(0.75);
-      transition: 200ms;
-      opacity: 0;
-      svg {
-        display: block;
-      }
-    `,
-    visible: css`
-      transform: scale(1);
-      opacity: 1;
     `,
   };
 };
@@ -86,7 +36,7 @@ const locales = {
 };
 
 export const Navigation: React.FC = () => {
-  const { navigation, button, ghost, item, qrcode, visible } = useStyle();
+  const { navigation, button } = useStyle();
   const [locale] = useLocale(locales);
   const { pathname, search, getLink, ...rest } = useLocation();
   const [open, setOpen] = React.useState(false);
@@ -101,21 +51,26 @@ export const Navigation: React.FC = () => {
 
   return (
     <div css={navigation}>
-      <div css={item}>
-        <Link to={getLocalizedPathname('/guide/about-zarm', isZhCN(pathname), search)}>
-          <button css={button}>{locale.start}</button>
+      <Space size="large">
+        <Link to={getLocalizedPathname('/guide/quick-start', isZhCNPath(pathname), search)}>
+          <Button css={button} type="primary" size="large" shape="round">
+            {locale.start}
+          </Button>
         </Link>
-      </div>
-      <div css={item}>
-        <button ref={ref} css={[button, ghost]} onClick={() => setOpen(!open)}>
-          {locale.scanCode}
-        </button>
-        <div css={[qrcode, open && visible]}>
-          <Link to={galleryPath}>
-            <QRCodeSVG value={galleryURL} size={120} />
-          </Link>
-        </div>
-      </div>
+        <Popover
+          overlayInnerStyle={{ padding: 0 }}
+          placement="bottom"
+          content={
+            <Link to={galleryPath}>
+              <QRCode value={galleryURL} bordered={false} />
+            </Link>
+          }
+        >
+          <Button css={button} type="primary" size="large" shape="round" ghost>
+            {locale.scanCode}
+          </Button>
+        </Popover>
+      </Space>
     </div>
   );
 };
