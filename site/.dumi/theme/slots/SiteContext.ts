@@ -1,6 +1,6 @@
-import type { ThemeName } from '.dumi/theme/types';
 import type { DirectionType } from 'antd/es/config-provider';
 import * as React from 'react';
+import type { ThemeName } from '../common/ThemeSwitch';
 
 export interface SiteContextProps {
   isMobile: boolean;

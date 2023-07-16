@@ -7,8 +7,11 @@ const useStyle = () => {
   const { token } = useSiteToken();
   return {
     introduce: css`
-      width: 42%;
+      width: 100%;
       height: 100%;
+      flex-direction: column;
+      justify-content: center;
+      display: flex;
     `,
     title: css`
       font-size: 64px;

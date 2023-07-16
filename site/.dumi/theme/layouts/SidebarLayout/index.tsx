@@ -1,9 +1,9 @@
-// import Content from '.dumi/theme/slots/Content';
-import Sidebar from '.dumi/theme/slots/Sidebar';
 import { css } from '@emotion/react';
-import { Helmet } from 'dumi';
 import type { PropsWithChildren } from 'react';
 import React from 'react';
+import CommonHelmet from '../../common/CommonHelmet';
+import Content from '../../slots/Content';
+import Sidebar from '../../slots/Sidebar';
 
 const useStyle = () => ({
   main: css`
@@ -16,10 +16,9 @@ const SidebarLayout: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   const { main } = useStyle();
   return (
     <main css={main}>
-      <Helmet />
+      <CommonHelmet />
       <Sidebar />
-      {/* <Content>{children}</Content> */}
-      {children}
+      <Content>{children}</Content>
     </main>
   );
 };

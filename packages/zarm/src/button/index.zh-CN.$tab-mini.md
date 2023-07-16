@@ -2,7 +2,7 @@
 category: 组件
 title: 小程序
 group:
-  title: Feedback
+  title: 操作反馈
 ---
 
 ## 基本用法

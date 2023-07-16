@@ -2,7 +2,7 @@
 category: Components
 title: Button
 group:
-  title: 操作反馈
+  title: Feedback
 ---
 
 ## 基本用法

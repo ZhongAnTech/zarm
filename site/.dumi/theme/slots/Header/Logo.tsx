@@ -1,31 +1,35 @@
-import { useLocation, useSiteToken, useThemeConfig } from '.dumi/hooks';
-import { getLocalizedPathname } from '.dumi/theme/utils';
+import { useSiteToken, useThemeConfig } from '.dumi/hooks';
+import * as utils from '.dumi/theme/utils';
 import { css } from '@emotion/react';
-import { Link, useSiteData } from 'dumi';
-import isString from 'lodash/isString';
+import { Link, useLocation } from 'dumi';
 import * as React from 'react';
 
 const useStyle = () => {
   const { token } = useSiteToken();
+
+  const { headerHeight, colorTextHeading, fontFamily, mobileMaxWidth } = token;
+
   return {
+    wrapper: css`
+      margin: 0;
+    `,
     logo: css`
-      height: ${token.headerHeight}px;
+      height: ${headerHeight}px;
+      padding-inline-start: 40px;
       overflow: hidden;
-      color: ${token.colorTextHeading};
+      color: ${colorTextHeading};
       font-weight: bold;
       font-size: 18px;
-      font-family: AlibabaPuHuiTi, ${token.fontFamily}, sans-serif;
-      line-height: ${token.headerHeight}px;
+      font-family: AlibabaPuHuiTi, ${fontFamily}, sans-serif;
+      line-height: ${headerHeight}px;
       letter-spacing: -0.18px;
       white-space: nowrap;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      cursor: pointer;
-      margin-left: 40px;
 
       &:hover {
-        color: ${token.colorTextHeading};
+        color: ${colorTextHeading};
       }
 
       img {
@@ -34,19 +38,13 @@ const useStyle = () => {
         margin-inline-end: 12px;
       }
 
-      @media only screen and (max-width: ${token.mobileMaxWidth}px) {
+      @media only screen and (max-width: ${mobileMaxWidth}px) {
         padding-inline-start: 0;
         padding-inline-end: 0;
       }
     `,
     title: css`
       line-height: 32px;
-      font-weight: 500;
-      sup {
-        color: #999;
-        font-size: 12px;
-        margin-left: 4px;
-      }
     `,
   };
 };
@@ -56,23 +54,18 @@ export interface LogoProps {
   location: any;
 }
 
-export const Logo: React.FC<LogoProps> = ({ isZhCN }) => {
+const Logo: React.FC<LogoProps> = ({ isZhCN }) => {
   const { search } = useLocation();
-  const { logo, title } = useStyle();
-  const { pkg } = useSiteData();
+  const { wrapper, logo, title } = useStyle();
   const themeConfig = useThemeConfig();
-
-  const version = themeConfig.version || pkg.version;
-
   return (
-    <h1>
-      <Link to={getLocalizedPathname('/', isZhCN, search)} css={logo}>
-        {isString(themeConfig.logo) && <img src={themeConfig.logo} alt="logo" />}
-        <span css={title}>
-          {themeConfig.name}
-          {version && <sup>v{version}</sup>}
-        </span>
+    <h1 css={wrapper}>
+      <Link to={utils.getLocalizedPathname('/', isZhCN, search)} css={logo}>
+        <img src={themeConfig.logo} alt="logo" />
+        <span css={title}>{themeConfig.name}</span>
       </Link>
     </h1>
   );
 };
+
+export default Logo;

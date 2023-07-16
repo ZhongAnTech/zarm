@@ -1,4 +1,4 @@
-import { Common, Reset } from '.dumi/theme/components/GlobalStyles/styles';
+import { Common, Reset } from '.dumi/theme/common/styles';
 import { css } from '@emotion/react';
 import * as React from 'react';
 

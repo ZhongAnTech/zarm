@@ -1,9 +1,9 @@
-import { useSiteToken } from '.dumi/hooks/useSiteToken';
 import { css } from '@emotion/react';
 import { Tooltip } from 'antd';
-import * as React from 'react';
+import React from 'react';
+import { useSiteToken } from '../../../hooks/useSiteToken';
 
-export interface SwitchBtnProps {
+export interface LangBtnProps {
   label1: React.ReactNode;
   label2: React.ReactNode;
   tooltip1?: React.ReactNode;
@@ -88,7 +88,7 @@ const useStyle = () => {
   };
 };
 
-export const SwitchBtn: React.FC<SwitchBtnProps> = (props) => {
+const LangBtn: React.FC<LangBtnProps> = (props) => {
   const { label1, label2, tooltip1, tooltip2, value, pure, onClick } = props;
 
   const { btn, innerDiv, labelStyle, label1Style, label2Style } = useStyle();
@@ -113,3 +113,5 @@ export const SwitchBtn: React.FC<SwitchBtnProps> = (props) => {
 
   return node;
 };
+
+export default LangBtn;

@@ -1,5 +1,5 @@
 import { useLocale, useLocation, useSiteToken } from '.dumi/hooks';
-import { getLocalizedPathname, isZhCNPath } from '.dumi/theme/utils';
+import { getLocalizedPathname, isZhCN as isZhCNPath } from '.dumi/theme/utils';
 import { css } from '@emotion/react';
 import { useClickAway } from 'ahooks';
 import { Button, Popover, QRCode, Space } from 'antd';

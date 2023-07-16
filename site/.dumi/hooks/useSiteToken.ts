@@ -1,14 +1,15 @@
 import { theme } from 'antd';
 import { ConfigContext } from 'antd/es/config-provider';
-import * as React from 'react';
+import { useContext } from 'react';
 
 const { useToken } = theme;
 
 export const useSiteToken = () => {
   const result = useToken();
-  const { getPrefixCls, iconPrefixCls } = React.useContext(ConfigContext);
+  const { getPrefixCls, iconPrefixCls } = useContext(ConfigContext);
   const rootPrefixCls = getPrefixCls();
   const { token } = result;
+  const siteMarkdownCodeBg = token.colorFillTertiary;
 
   return {
     ...result,
@@ -20,10 +21,11 @@ export const useSiteToken = () => {
       colorLinkHover: '#00bc70',
       colorLinkActive: '#00965f',
       colorLink: '#00bc70',
+      controlItemBgActive: 'rgba(0, 188, 112, 0.1)',
       headerHeight: 64,
       menuItemBorder: 2,
       mobileMaxWidth: 767.99,
-      siteMarkdownCodeBg: token.colorFillTertiary,
+      siteMarkdownCodeBg,
       antCls: `.${rootPrefixCls}`,
       iconCls: `.${iconPrefixCls}`,
       /** 56 */

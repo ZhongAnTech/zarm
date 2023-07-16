@@ -2,12 +2,18 @@ import { useSiteToken } from '.dumi/hooks';
 import { ConfigProvider } from 'antd';
 import type { ThemeProviderProps } from 'antd-style';
 import { ThemeProvider } from 'antd-style';
-import * as React from 'react';
+import type { FC } from 'react';
+import React, { useContext } from 'react';
 
-const SiteThemeProvider: React.FC<ThemeProviderProps<any>> = ({ children, theme, ...rest }) => {
-  const token = useSiteToken();
+const SiteThemeProvider: FC<ThemeProviderProps> = ({ children, theme, ...rest }) => {
+  const { getPrefixCls, iconPrefixCls } = useContext(ConfigProvider.ConfigContext);
+  const rootPrefixCls = getPrefixCls();
+  const { token } = useSiteToken();
+
   React.useEffect(() => {
-    ConfigProvider.config({ theme } as any);
+    ConfigProvider.config({
+      theme,
+    });
   }, [theme]);
 
   return (

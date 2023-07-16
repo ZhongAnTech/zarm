@@ -5,8 +5,6 @@ group:
   title: 指南
 ---
 
-# 从 v2 到 v3
-
 本文档将帮助你从 v2 版本升级到 v3
 
 ## 组件重构与移除
@@ -62,8 +60,8 @@ group:
 
 ### Checkbox / Radio
 
- - 组合使用时 `type` 类型可选值 `cell` 调整为 `list`。
- - 废弃样式相关属性 `size`、`shape`、`ghost`，可以通过 css 变量方式更改样式。
+- 组合使用时 `type` 类型可选值 `cell` 调整为 `list`。
+- 废弃样式相关属性 `size`、`shape`、`ghost`，可以通过 css 变量方式更改样式。
 
 ```diff
   <Checkbox.Group
@@ -310,7 +308,6 @@ module.exports = {
 3. 配置 ConfigProvider prefixCls
 
 ```tsx | pure
-import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Button, ConfigProvider } from 'zarm-v3';
 

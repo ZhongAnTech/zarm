@@ -1,7 +1,3 @@
-import { useLayoutState } from '.dumi/hooks/useLayoutState';
-import type { SiteContextProps } from '.dumi/theme/slots/SiteContext';
-import { SiteContext } from '.dumi/theme/slots/SiteContext';
-import { ThemeName } from '.dumi/theme/types';
 import {
   createCache,
   legacyNotSelectorLinter,
@@ -12,8 +8,14 @@ import {
 import { theme as antdTheme, App } from 'antd';
 import type { DirectionType } from 'antd/es/config-provider';
 import { createSearchParams, useOutlet, useSearchParams } from 'dumi';
-import * as React from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
+import { useLayoutState } from '../../hooks/useLayoutState';
+import { useLocation } from '../../hooks/useLocation';
+import type { ThemeName } from '../common/ThemeSwitch';
+import ThemeSwitch from '../common/ThemeSwitch';
 import SiteThemeProvider from '../SiteThemeProvider';
+import type { SiteContextProps } from '../slots/SiteContext';
+import { SiteContext } from '../slots/SiteContext';
 
 type Entries<T> = { [K in keyof T]: [K, T[K]] }[keyof T][];
 type SiteState = Partial<Omit<SiteContextProps, 'updateSiteContext'>>;
@@ -38,6 +40,7 @@ const getAlgorithm = (themes: ThemeName[] = []) =>
 
 const GlobalLayout: React.FC = () => {
   const outlet = useOutlet();
+  const { pathname } = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const [{ theme = [], direction, isMobile }, setSiteState] = useLayoutState<SiteState>({
     isMobile: false,
@@ -45,10 +48,11 @@ const GlobalLayout: React.FC = () => {
     theme: ['light', 'motion-off'],
   });
 
-  const updateSiteConfig = React.useCallback(
+  const updateSiteConfig = useCallback(
     (props: SiteState) => {
       setSiteState((prev) => ({ ...prev, ...props }));
 
+      // updating `searchParams` will clear the hash
       const oldSearchStr = searchParams.toString();
 
       let nextSearchParams: URLSearchParams = searchParams;
@@ -79,7 +83,7 @@ const GlobalLayout: React.FC = () => {
     updateSiteConfig({ isMobile: window.innerWidth < RESPONSIVE_MOBILE });
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     const _theme = searchParams.getAll('theme') as ThemeName[];
     const _direction = searchParams.get('direction') as DirectionType;
 
@@ -93,7 +97,7 @@ const GlobalLayout: React.FC = () => {
     };
   }, []);
 
-  const siteContextValue = React.useMemo(
+  const siteContextValue = useMemo(
     () => ({
       direction,
       updateSiteConfig,
@@ -117,7 +121,15 @@ const GlobalLayout: React.FC = () => {
             },
           }}
         >
-          <App>{outlet}</App>
+          <App>
+            {outlet}
+            {!pathname.startsWith('/~demos') && (
+              <ThemeSwitch
+                value={theme}
+                onChange={(nextTheme) => updateSiteConfig({ theme: nextTheme })}
+              />
+            )}
+          </App>
         </SiteThemeProvider>
       </SiteContext.Provider>
     </StyleProvider>

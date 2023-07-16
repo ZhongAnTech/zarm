@@ -1,11 +1,6 @@
 ---
-category: Guide
-title: Installation
-group:
-  title: Getting Started
+title: 快速上手
 ---
-
-# Installation
 
 通过本章节，可以带你快速了解 Zarm 的安装方法和基本使用。
 

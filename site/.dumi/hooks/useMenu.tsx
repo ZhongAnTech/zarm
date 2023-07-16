@@ -1,8 +1,8 @@
-import { Link } from '.dumi/theme/components';
+import Link from '.dumi/theme/common/Link';
 import type { MenuProps } from 'antd';
 import { Tag, theme } from 'antd';
 import { useFullSidebarData, useSidebarData } from 'dumi';
-import * as React from 'react';
+import React, { useMemo } from 'react';
 import { useLocation } from './useLocation';
 
 export interface UseMenuOptions {
@@ -10,14 +10,14 @@ export interface UseMenuOptions {
   after?: React.ReactNode;
 }
 
-export const useMenu = (options: UseMenuOptions = {}) => {
+export const useMenu = (options: UseMenuOptions = {}): [MenuProps['items'], string] => {
   const fullData = useFullSidebarData();
   const { pathname, search } = useLocation();
   const sidebarData = useSidebarData();
   const { before, after } = options;
   const { token } = theme.useToken();
 
-  const menuItems = React.useMemo<MenuProps['items']>(() => {
+  const menuItems = useMemo<MenuProps['items']>(() => {
     const sidebarItems = [...(sidebarData ?? [])];
 
     return (
@@ -48,7 +48,6 @@ export const useMenu = (options: UseMenuOptions = {}) => {
           });
         } else {
           const list = group.children || [];
-          // 如果有 date 字段，我们就对其进行排序
           if (list.every((info) => info?.frontmatter?.date)) {
             list.sort((a, b) => (a.frontmatter.date > b.frontmatter.date ? -1 : 1));
           }
@@ -71,5 +70,5 @@ export const useMenu = (options: UseMenuOptions = {}) => {
     );
   }, [sidebarData, fullData, pathname, search, options]);
 
-  return [menuItems, pathname] as const;
+  return [menuItems, pathname];
 };

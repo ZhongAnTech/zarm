@@ -5,8 +5,6 @@ group:
   title: Guides
 ---
 
-# Customizing theme
-
 Zarm 的样式使用了 <a href="https://sass-lang.com" target="_blank">scss</a> 和 <a href="https://www.w3.org/Style/CSS/" target="_blank">css 变量</a> 相结合做为开发语言，并定义了一系列全局/组件的样式变量，你可以根据需求进行相应调整，实现定制主题的能力。
 
 Zarm 提供了一个 React 组件 [ConfigProvider](#/components/config-provider) 用于快速定制主题。

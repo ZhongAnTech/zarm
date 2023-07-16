@@ -1,14 +1,18 @@
-import { useLocale, useLocation, useSiteToken, useThemeConfig } from '.dumi/hooks';
-import { useSiteContext } from '.dumi/hooks/useSiteContext';
-import { GlobalStyles } from '.dumi/theme/components';
-import Header from '.dumi/theme/slots/Header';
 import ConfigProvider from 'antd/es/config-provider';
 import zhCN from 'antd/es/locale/zh_CN';
+import classNames from 'classnames';
 import dayjs from 'dayjs';
+import 'dayjs/locale/zh-cn';
 import { Helmet, useOutlet, useSiteData } from 'dumi';
-import * as React from 'react';
+import React, { useContext, useEffect, useLayoutEffect, useMemo, useRef } from 'react';
+import { useLocale, useLocation, useSiteToken, useThemeConfig } from '../../../hooks';
+import GlobalStyles from '../../common/GlobalStyles';
+import Header from '../../slots/Header';
+
+import { SiteContext } from '.dumi/theme/slots/SiteContext';
+import '../../static/style';
+import ResourceLayout from '../ResourceLayout';
 import SidebarLayout from '../SidebarLayout';
-// import Footer from '../../slots/Footer';
 
 const locales = {
   cn: {
@@ -25,14 +29,14 @@ const DocLayout: React.FC = () => {
   const outlet = useOutlet();
   const location = useLocation();
   const { pathname, search, hash } = location;
-  const { loading } = useSiteData();
   const [locale, lang] = useLocale(locales);
-  const timerRef = React.useRef<NodeJS.Timeout | null>(null);
-  const { logo } = useThemeConfig();
-  const { direction } = useSiteContext();
-  const { token } = useSiteToken();
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const { direction } = useContext(SiteContext);
+  const { loading } = useSiteData();
+  const theme = useSiteToken();
+  const themeConfig = useThemeConfig();
 
-  React.useLayoutEffect(() => {
+  useLayoutEffect(() => {
     if (lang === 'cn') {
       dayjs.locale('zh-cn');
     } else {
@@ -40,7 +44,7 @@ const DocLayout: React.FC = () => {
     }
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const nprogressHiddenStyle = document.getElementById('nprogress-style');
     if (nprogressHiddenStyle) {
       timerRef.current = setTimeout(() => {
@@ -49,17 +53,22 @@ const DocLayout: React.FC = () => {
     }
   }, []);
 
-  React.useEffect(() => {
+  // handle hash change or visit page hash from Link component, and jump after async chunk loaded
+  useEffect(() => {
     const id = hash.replace('#', '');
+
     if (id) document.getElementById(decodeURIComponent(id))?.scrollIntoView();
   }, [loading, hash]);
 
-  const content = React.useMemo(() => {
+  const content = useMemo(() => {
     if (
       ['', '/'].some((path) => path === pathname) ||
       ['/index'].some((path) => pathname.startsWith(path))
     ) {
-      return <>{outlet}</>;
+      return outlet;
+    }
+    if (pathname.startsWith('/resource')) {
+      return <ResourceLayout>{outlet}</ResourceLayout>;
     }
     return <SidebarLayout>{outlet}</SidebarLayout>;
   }, [pathname, outlet]);
@@ -67,20 +76,20 @@ const DocLayout: React.FC = () => {
   return (
     <>
       <Helmet encodeSpecialCharacters={false}>
-        <html lang={lang} />
+        <html
+          lang={lang}
+          data-direction={direction}
+          className={classNames({ rtl: direction === 'rtl' })}
+        />
         <title>{locale?.title}</title>
-        {logo && <link sizes="144x144" href={logo} />}
+        {themeConfig.icon && <link sizes="144x144" href={themeConfig.icon} />}
         <meta name="description" content={locale.description} />
         <meta property="og:title" content={locale?.title} />
         <meta property="og:description" content={locale.description} />
         <meta property="og:type" content="website" />
-        {logo && <meta property="og:image" content={logo} />}
+        {themeConfig.icon && <meta property="og:image" content={themeConfig.icon} />}
       </Helmet>
-      <ConfigProvider
-        direction={direction}
-        locale={lang === 'cn' ? zhCN : undefined}
-        theme={{ token }}
-      >
+      <ConfigProvider direction={direction} locale={lang === 'cn' ? zhCN : undefined} theme={theme}>
         <GlobalStyles />
         <Header />
         {content}

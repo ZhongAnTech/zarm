@@ -1,5 +1,4 @@
 import { useLocation as useDumiLocation } from 'dumi';
-import isPlainObject from 'lodash/isPlainObject';
 import * as React from 'react';
 import { useLocale } from './useLocale';
 
@@ -26,10 +25,10 @@ export const useLocation = () => {
 
       if (hash) {
         let hashStr: string;
-        if (isPlainObject(hash)) {
+        if (typeof hash === 'object') {
           hashStr = hash[localeType];
         } else {
-          hashStr = hash as string;
+          hashStr = hash;
         }
 
         pathname = `${pathname}#${hashStr}`;

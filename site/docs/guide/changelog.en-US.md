@@ -5,17 +5,14 @@ group:
   title: Release
 ---
 
-# Change Log
-
 ## v3.0.14
 
 - Bug Fix
 
-  - [PickerView] 修复文字过长截断失效的bug。[#1097](https://github.com/ZhongAnTech/zarm/pull/1097)
-  - [DatePicker] 修复值不能重置为 `undefined` 的bug。[#1100](https://github.com/ZhongAnTech/zarm/pull/1100)[@aiyogg]
+  - [PickerView] 修复文字过长截断失效的 bug。[#1097](https://github.com/ZhongAnTech/zarm/pull/1097)
+  - [DatePicker] 修复值不能重置为 `undefined` 的 bug。[#1100](https://github.com/ZhongAnTech/zarm/pull/1100)[@aiyogg]
 
-  - [Popup] 修复 `maskClassName` 属性名错误的bug。[#1102](https://github.com/ZhongAnTech/zarm/pull/1102)[@aiyogg]
-
+  - [Popup] 修复 `maskClassName` 属性名错误的 bug。[#1102](https://github.com/ZhongAnTech/zarm/pull/1102)[@aiyogg]
 
 - Perf
 

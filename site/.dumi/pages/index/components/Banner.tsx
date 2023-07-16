@@ -3,7 +3,6 @@ import * as React from 'react';
 
 const useStyle = () => ({
   banner: css`
-    width: 55%;
     height: 100%;
     display: flex;
     align-items: center;
