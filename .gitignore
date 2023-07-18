@@ -5,6 +5,8 @@
 .history
 
 # misc
+site/dist
+site/server
 site/.dumi/tmp
 site/.dumi/tmp-test
 site/.dumi/tmp-production

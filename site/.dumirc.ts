@@ -8,7 +8,7 @@ export default defineConfig({
   mfsu: false,
   crossorigin: {},
   outputPath: 'dist',
-  ssr: process.env.NODE_ENV === 'production' ? {} : false,
+  ssr: process.env.NODE_ENV === 'production' ? {} : {},
   hash: true,
   resolve: {
     atomDirs: [{ type: 'component', dir: '../packages/zarm/src' }],
@@ -24,6 +24,9 @@ export default defineConfig({
     'zarm/es': path.resolve(__dirname, '../packages/zarm/src'),
     zarm: path.resolve(__dirname, '../packages/zarm/src/index.ts'),
     ['@tarojs/components$']: '@tarojs/components/lib/react',
+  },
+  conventionRoutes: {
+    exclude: [new RegExp('components/')],
   },
   extraRehypePlugins: [rehype],
   extraRemarkPlugins: [remark],

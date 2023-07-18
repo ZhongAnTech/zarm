@@ -38,16 +38,16 @@ const locales = {
 export const Navigation: React.FC = () => {
   const { navigation, button } = useStyle();
   const [locale] = useLocale(locales);
-  const { pathname, search, getLink, ...rest } = useLocation();
+  const { pathname, search, getLink } = useLocation();
   const [open, setOpen] = React.useState(false);
   const ref = React.useRef<HTMLButtonElement>(null);
+  const [galleryURL, setGalleryURL] = React.useState('');
 
   useClickAway(() => {
     open && setOpen(false);
   }, ref);
 
   const galleryPath = getLocalizedPathname('gallery').pathname;
-  const galleryURL = location.origin + galleryPath;
 
   return (
     <div css={navigation}>
@@ -65,6 +65,12 @@ export const Navigation: React.FC = () => {
               <QRCode value={galleryURL} bordered={false} />
             </Link>
           }
+          afterOpenChange={(open) => {
+            if (!open) return;
+            const url = location.origin + galleryPath;
+            if (url === galleryURL) return;
+            setGalleryURL(url);
+          }}
         >
           <Button css={button} type="primary" size="large" shape="round" ghost>
             {locale.scanCode}
