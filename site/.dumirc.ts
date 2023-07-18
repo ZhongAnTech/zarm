@@ -8,7 +8,7 @@ export default defineConfig({
   mfsu: false,
   crossorigin: {},
   outputPath: 'dist',
-  ssr: process.env.NODE_ENV === 'production' ? {} : {},
+  ssr: process.env.NODE_ENV === 'production' ? {} : false,
   hash: true,
   resolve: {
     atomDirs: [{ type: 'component', dir: '../packages/zarm/src' }],
