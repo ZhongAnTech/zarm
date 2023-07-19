@@ -1,11 +1,10 @@
 import { createBEM } from '@zarm-design/bem';
-import { useControllableValue } from 'ahooks';
 import includes from 'lodash/includes';
-import React, { Children, useCallback } from 'react';
+import React, { Children, ReactElement } from 'react';
 import { ConfigContext } from '../config-provider';
 import type { HTMLProps } from '../utils/utilityTypes';
-import CollapseContext from './context';
-import type { BaseCollapseProps, CollapseItemKey } from './interface';
+import type { BaseCollapseProps } from './interface';
+import useCollpse from './useCollapse';
 
 export interface CollapseCssVars {
   '--border-color'?: React.CSSProperties['color'];
@@ -24,15 +23,6 @@ export interface CollapseCssVars {
 
 export type CollapseProps = BaseCollapseProps & React.PropsWithChildren<HTMLProps<CollapseCssVars>>;
 
-function useCollapseItem(children) {
-  return Children.map(children, (ele) => {
-    const { key } = ele;
-    return React.cloneElement(ele, {
-      value: key,
-    });
-  });
-}
-
 const Collapse = React.forwardRef<unknown, CollapseProps>((props, ref) => {
   const {
     className,
@@ -47,57 +37,37 @@ const Collapse = React.forwardRef<unknown, CollapseProps>((props, ref) => {
 
   const collapseRef = (ref as any) || React.createRef<HTMLElement>();
 
-  const [state, setValue] = useControllableValue(props, {
-    defaultValue: multiple && defaultActiveKey ? [].concat(defaultActiveKey) : defaultActiveKey,
-    defaultValuePropName: 'defaultActiveKey',
-    valuePropName: 'activeKey',
+  const [value, setValue] = useCollpse({
+    multiple,
+    value: activeKey,
+    defaultValue: defaultActiveKey,
+    onChange,
   });
-
-  const value = multiple ? state || [] : state || '';
 
   const { prefixCls } = React.useContext(ConfigContext);
 
   const bem = createBEM('collapse', { prefixCls });
 
-  const toggleItem = (itemValue, isActive) => {
-    let newValue = [];
-    if (multiple) {
-      if (!isActive) {
-        newValue = (value as CollapseItemKey[])?.filter((activeItem) => activeItem !== itemValue);
-      } else {
-        newValue = [...(value as CollapseItemKey[]), itemValue];
-      }
-    } else {
-      newValue = itemValue === value ? '' : itemValue;
-    }
-
-    setValue(newValue);
-  };
-
-  const isActive = useCallback(
-    (key) => {
-      const actived = multiple
-        ? includes((value as CollapseItemKey[]) || [], key!)
-        : (value as CollapseItemKey) === key;
-      return actived;
-    },
-    [value, multiple],
-  );
-
   const cls = bem([{ animated }, className]);
-  const items = useCollapseItem(children);
+
+  const items = Children.map(children, (ele: ReactElement<any>) => {
+    const { key } = ele;
+    const { disabled, onChange: itemOnChange } = ele.props;
+    const actived = Array.isArray(value) ? includes(value, key) : Number(value) === Number(key);
+    return React.cloneElement(ele, {
+      // ...ele,
+      isActive: actived,
+      onChange: (active) => {
+        !disabled && itemOnChange?.(active);
+        setValue(key);
+      },
+    });
+  });
 
   return (
-    <CollapseContext.Provider
-      value={{
-        isActive,
-        toggleItem,
-      }}
-    >
-      <div className={cls} ref={collapseRef} {...rest}>
-        {items}
-      </div>
-    </CollapseContext.Provider>
+    <div className={cls} ref={collapseRef} {...rest}>
+      {items}
+    </div>
   );
 });
 

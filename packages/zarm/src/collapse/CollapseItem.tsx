@@ -1,44 +1,27 @@
 import { createBEM } from '@zarm-design/bem';
 import React, { HTMLAttributes } from 'react';
 import { ConfigContext } from '../config-provider';
-import { useSafeLayoutEffect } from '../utils/hooks';
-import CollapseContext from './context';
 import type { BaseCollapseItemProps } from './interface';
+import useCollapseItem from './useCollapseItem';
 
 export type CollapseItemProps = Omit<HTMLAttributes<HTMLDivElement>, 'key' | 'title' | 'onChange'> &
   BaseCollapseItemProps;
 
-type CollapseItemExtraProps = CollapseItemProps & { value: string };
+type CollapseItemExtraProps = CollapseItemProps & { isActive: boolean };
 
 const CollapseItem = React.forwardRef<unknown, CollapseItemExtraProps>((props, ref) => {
-  const { title, className, disabled, value, children, onChange, ...rest } = props;
+  const { title, className, disabled, children, onChange, isActive, ...rest } = props;
 
   const content = (ref as any) || React.createRef<HTMLElement>();
   const collapseItemRef = (ref as any) || React.createRef<HTMLElement>();
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('collapse-item', { prefixCls });
 
-  const { isActive: isExpanded, toggleItem } = React.useContext(CollapseContext);
-
-  const isActive = isExpanded(value);
-  const onClickItem = () => {
-    if (disabled) return;
-    onChange?.(isActive!);
-    toggleItem(value, !isActive);
-  };
-
-  const getContentHeight = (ele) => {
-    const contentChildren = [...ele.children];
-    return contentChildren.reduce((res, next) => {
-      res += next.offsetHeight;
-      return res;
-    }, 0);
-  };
-
-  const setStyle = React.useCallback(() => {
-    if (!content.current) return;
-    content.current.style.height = isActive ? `${getContentHeight(content.current)}px` : '0px';
-  }, [content, isActive]);
+  const { getToggleProps, getCollapseContentProps } = useCollapseItem({
+    defaultExpanded: isActive,
+    onChange,
+    disabled,
+  });
 
   const cls = bem([
     {
@@ -48,17 +31,13 @@ const CollapseItem = React.forwardRef<unknown, CollapseItemExtraProps>((props, r
     className,
   ]);
 
-  useSafeLayoutEffect(() => {
-    setStyle();
-  }, [setStyle]);
-
   return (
     <div className={cls} {...rest} ref={collapseItemRef}>
-      <div className={bem('header')} onClick={onClickItem}>
+      <div className={bem('header')} {...getToggleProps()}>
         <div className={bem('title')}>{title}</div>
         <div className={bem('arrow')} />
       </div>
-      <div className={bem('content')} ref={content}>
+      <div className={bem('content')} ref={content} {...getCollapseContentProps()}>
         <div className={bem('content__inner')}>{children}</div>
       </div>
     </div>
