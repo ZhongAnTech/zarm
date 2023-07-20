@@ -1,9 +1,4 @@
-import {
-  CheckOutlined,
-  LinkOutlined,
-  SnippetsOutlined,
-  ThunderboltOutlined,
-} from '@ant-design/icons';
+import { CheckOutlined, SnippetsOutlined, ThunderboltOutlined } from '@ant-design/icons';
 import type { Project } from '@stackblitz/sdk';
 import stackblitzSdk from '@stackblitz/sdk';
 import { Alert, Badge, Space, Tooltip } from 'antd';
@@ -15,19 +10,15 @@ import LZString from 'lz-string';
 import Prism from 'prismjs';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import type { AntdPreviewerProps } from '.';
+import type { PreviewerProps } from '.';
 import { useLocation, useThemeConfig } from '../../../hooks';
 import BrowserFrame from '../../common/BrowserFrame';
 import ClientOnly from '../../common/ClientOnly';
 import CodePenIcon from '../../common/CodePenIcon';
 import CodePreview from '../../common/CodePreview';
 import CodeSandboxIcon from '../../common/CodeSandboxIcon';
-import EditButton from '../../common/EditButton';
 import ExternalLinkIcon from '../../common/ExternalLinkIcon';
-import RiddleIcon from '../../common/RiddleIcon';
 import { SiteContext, SiteContextProps } from '../../slots/SiteContext';
-
-import { ping } from '../../utils';
 
 const { ErrorBoundary } = Alert;
 
@@ -60,28 +51,7 @@ function compress(string: string): string {
     .replace(/=+$/, ''); // Remove ending '='
 }
 
-let pingDeferrer: PromiseLike<boolean>;
-
-function useShowRiddleButton() {
-  const [showRiddleButton, setShowRiddleButton] = useState(false);
-
-  useEffect(() => {
-    pingDeferrer ??= new Promise<boolean>((resolve) => {
-      ping((status) => {
-        if (status !== 'timeout' && status !== 'error') {
-          return resolve(true);
-        }
-
-        return resolve(false);
-      });
-    });
-    pingDeferrer.then(setShowRiddleButton);
-  }, []);
-
-  return showRiddleButton;
-}
-
-const CodePreviewer: React.FC<AntdPreviewerProps> = (props) => {
+const CodePreviewer: React.FC<PreviewerProps> = (props) => {
   const {
     asset,
     expand,
@@ -105,14 +75,11 @@ const CodePreviewer: React.FC<AntdPreviewerProps> = (props) => {
   const location = useLocation();
 
   const entryCode = asset.dependencies['index.tsx'].value;
-  const showRiddleButton = useShowRiddleButton();
 
   const liveDemo = useRef<React.ReactNode>(null);
   const anchorRef = useRef<HTMLAnchorElement>(null);
   const codeSandboxIconRef = useRef<HTMLFormElement>(null);
-  const riddleIconRef = useRef<HTMLFormElement>(null);
   const codepenIconRef = useRef<HTMLFormElement>(null);
-  const [codeExpand, setCodeExpand] = useState<boolean>(false);
   const [copyTooltipOpen, setCopyTooltipOpen] = useState<boolean>(false);
   const [copied, setCopied] = useState<boolean>(false);
   const [codeType, setCodeType] = useState<string>('tsx');
@@ -124,7 +91,7 @@ const CodePreviewer: React.FC<AntdPreviewerProps> = (props) => {
   const [showOnlineUrl, setShowOnlineUrl] = useState<boolean>(false);
 
   const highlightedCodes = {
-    jsx: Prism.highlight(jsx, Prism.languages.javascript, 'jsx'),
+    // jsx: Prism.highlight(jsx, Prism.languages.javascript, 'jsx'),
     tsx: Prism.highlight(entryCode, Prism.languages.javascript, 'jsx'),
   };
 
@@ -136,10 +103,6 @@ const CodePreviewer: React.FC<AntdPreviewerProps> = (props) => {
       process.env.NODE_ENV === 'development' || regexp.test(window.location.hostname),
     );
   }, []);
-
-  const handleCodeExpand = (demo: string) => {
-    setCodeExpand((prev) => !prev);
-  };
 
   const handleCodeCopied = (demo: string) => {
     setCopied(true);
@@ -158,10 +121,6 @@ const CodePreviewer: React.FC<AntdPreviewerProps> = (props) => {
     }
   }, []);
 
-  useEffect(() => {
-    setCodeExpand(expand);
-  }, [expand]);
-
   const mergedChildren = !iframe && clientOnly ? <ClientOnly>{children}</ClientOnly> : children;
 
   if (!liveDemo.current) {
@@ -179,16 +138,12 @@ const CodePreviewer: React.FC<AntdPreviewerProps> = (props) => {
     );
   }
 
-  const codeBoxClass = classNames('code-box', {
-    expand: codeExpand,
+  const codeBoxClass = classNames('code-box expand', {
     'code-box-debug': originDebug,
   });
 
   const localizedTitle = title;
   const introChildren = <div dangerouslySetInnerHTML={{ __html: description }} />;
-  const highlightClass = classNames('highlight-wrapper', {
-    'highlight-wrapper-expand': codeExpand,
-  });
 
   const html = `
     <!DOCTYPE html>
@@ -370,167 +325,116 @@ createRoot(document.getElementById('container')).render(<Demo />);
 
   const backgroundGrey = theme.includes('dark') ? '#303030' : '#f0f2f5';
 
-  const codeBoxDemoStyle: React.CSSProperties = {
-    padding: iframe || compact ? 0 : undefined,
-    overflow: iframe || compact ? 'hidden' : undefined,
-    backgroundColor: background === 'grey' ? backgroundGrey : undefined,
-  };
-
   const codeBox: React.ReactNode = (
     <section className={codeBoxClass} id={asset.id}>
-      <section className="code-box-demo" style={codeBoxDemoStyle}>
+      <div className="code-box-source">
+        {/* <section className="code-box-demo" style={codeBoxDemoStyle}>
         <ErrorBoundary>
           <React.StrictMode>{liveDemo.current}</React.StrictMode>
         </ErrorBoundary>
-      </section>
-      <section className="code-box-meta markdown">
-        <div className="code-box-title">
+      </section> */}
+        <section className="code-box-meta markdown">
+          {/* <div className="code-box-title">
           <Tooltip title={originDebug ? <FormattedMessage id="app.demo.debug" /> : ''}>
             <a href={`#${asset.id}`} ref={anchorRef}>
               {localizedTitle}
             </a>
           </Tooltip>
           <EditButton title={<FormattedMessage id="app.content.edit-demo" />} filename={filename} />
-        </div>
-        <div className="code-box-description">{introChildren}</div>
-        <Space wrap size="middle" className="code-box-actions">
-          {showOnlineUrl && (
-            <Tooltip title={<FormattedMessage id="app.demo.online" />}>
-              <a
-                className="code-box-code-action"
-                target="_blank"
-                rel="noreferrer"
-                href={docsOnlineUrl}
-              >
-                <LinkOutlined className="code-box-online" />
-              </a>
-            </Tooltip>
-          )}
-          {showRiddleButton ? (
+        </div> */}
+          {description && <div className="code-box-description">{introChildren}</div>}
+          <Space className="code-box-actions" size="middle" wrap>
             <form
               className="code-box-code-action"
-              action="//riddle.alibaba-inc.com/riddles/define"
+              action="https://codesandbox.io/api/v1/sandboxes/define"
               method="POST"
               target="_blank"
-              ref={riddleIconRef}
+              ref={codeSandboxIconRef}
               onClick={() => {
-                track({ type: 'riddle', demo: asset.id });
-                riddleIconRef.current?.submit();
+                codeSandboxIconRef.current?.submit();
               }}
             >
-              <input type="hidden" name="data" value={JSON.stringify(riddlePrefillConfig)} />
-              <Tooltip title={<FormattedMessage id="app.demo.riddle" />}>
-                <RiddleIcon className="code-box-riddle" />
+              <input
+                type="hidden"
+                name="parameters"
+                value={compress(JSON.stringify(codesanboxPrefillConfig))}
+              />
+              <Tooltip title={<FormattedMessage id="app.demo.codesandbox" />}>
+                <CodeSandboxIcon className="code-box-codesandbox" />
               </Tooltip>
             </form>
-          ) : null}
-          <form
-            className="code-box-code-action"
-            action="https://codesandbox.io/api/v1/sandboxes/define"
-            method="POST"
-            target="_blank"
-            ref={codeSandboxIconRef}
-            onClick={() => {
-              codeSandboxIconRef.current?.submit();
-            }}
-          >
-            <input
-              type="hidden"
-              name="parameters"
-              value={compress(JSON.stringify(codesanboxPrefillConfig))}
-            />
-            <Tooltip title={<FormattedMessage id="app.demo.codesandbox" />}>
-              <CodeSandboxIcon className="code-box-codesandbox" />
-            </Tooltip>
-          </form>
-          <form
-            className="code-box-code-action"
-            action="https://codepen.io/pen/define"
-            method="POST"
-            target="_blank"
-            ref={codepenIconRef}
-            onClick={() => {
-              codepenIconRef.current?.submit();
-            }}
-          >
-            <ClientOnly>
-              <input type="hidden" name="data" value={JSON.stringify(codepenPrefillConfig)} />
-            </ClientOnly>
-            <Tooltip title={<FormattedMessage id="app.demo.codepen" />}>
-              <CodePenIcon className="code-box-codepen" />
-            </Tooltip>
-          </form>
-          <Tooltip title={<FormattedMessage id="app.demo.stackblitz" />}>
-            <span
+            <form
               className="code-box-code-action"
+              action="https://codepen.io/pen/define"
+              method="POST"
+              target="_blank"
+              ref={codepenIconRef}
               onClick={() => {
-                stackblitzSdk.openProject(stackblitzPrefillConfig, {
-                  openFile: [`demo.${suffix}`],
-                });
+                codepenIconRef.current?.submit();
               }}
             >
-              <ThunderboltOutlined className="code-box-stackblitz" />
-            </span>
-          </Tooltip>
-          <CopyToClipboard text={entryCode} onCopy={() => handleCodeCopied(asset.id)}>
-            <Tooltip
-              open={copyTooltipOpen as boolean}
-              onOpenChange={onCopyTooltipOpenChange}
-              title={<FormattedMessage id={`app.demo.${copied ? 'copied' : 'copy'}`} />}
-            >
-              {React.createElement(copied && copyTooltipOpen ? CheckOutlined : SnippetsOutlined, {
-                className: 'code-box-code-copy code-box-code-action',
-              })}
+              <ClientOnly>
+                <input type="hidden" name="data" value={JSON.stringify(codepenPrefillConfig)} />
+              </ClientOnly>
+              <Tooltip title={<FormattedMessage id="app.demo.codepen" />}>
+                <CodePenIcon className="code-box-codepen" />
+              </Tooltip>
+            </form>
+            <Tooltip title={<FormattedMessage id="app.demo.stackblitz" />}>
+              <span
+                className="code-box-code-action"
+                onClick={() => {
+                  stackblitzSdk.openProject(stackblitzPrefillConfig, {
+                    openFile: [`demo.${suffix}`],
+                  });
+                }}
+              >
+                <ThunderboltOutlined className="code-box-stackblitz" />
+              </span>
             </Tooltip>
-          </CopyToClipboard>
+
+            <CopyToClipboard text={entryCode} onCopy={() => handleCodeCopied(asset.id)}>
+              <Tooltip
+                open={copyTooltipOpen as boolean}
+                onOpenChange={onCopyTooltipOpenChange}
+                title={<FormattedMessage id={`app.demo.${copied ? 'copied' : 'copy'}`} />}
+              >
+                {React.createElement(copied && copyTooltipOpen ? CheckOutlined : SnippetsOutlined, {
+                  className: 'code-box-code-copy code-box-code-action',
+                })}
+              </Tooltip>
+            </CopyToClipboard>
+          </Space>
+        </section>
+        <section className="highlight-wrapper" key="code">
+          <CodePreview
+            codes={highlightedCodes}
+            toReactComponent={toReactComponent}
+            onCodeTypeChange={(type) => setCodeType(type)}
+          />
+          {highlightedStyle ? (
+            <div key="style" className="highlight">
+              <pre>
+                <code className="css" dangerouslySetInnerHTML={{ __html: highlightedStyle }} />
+              </pre>
+            </div>
+          ) : null}
+        </section>
+      </div>
+      <div className="code-box-device">
+        <div className="code-box-device-viewport">
+          <ErrorBoundary>
+            <React.StrictMode>{liveDemo.current}</React.StrictMode>
+          </ErrorBoundary>
+        </div>
+        <Space className="code-box-device-actions" align="end">
           <Tooltip title={<FormattedMessage id="app.demo.separate" />}>
-            <a className="code-box-code-action" target="_blank" rel="noreferrer" href={demoUrl}>
+            <a className="code-box-device-action" target="_blank" rel="noreferrer" href={demoUrl}>
               <ExternalLinkIcon className="code-box-separate" />
             </a>
           </Tooltip>
-
-          <Tooltip
-            title={<FormattedMessage id={`app.demo.code.${codeExpand ? 'hide' : 'show'}`} />}
-          >
-            <div className="code-expand-icon code-box-code-action">
-              <img
-                alt="expand code"
-                src={
-                  theme?.includes('dark')
-                    ? 'https://gw.alipayobjects.com/zos/antfincdn/btT3qDZn1U/wSAkBuJFbdxsosKKpqyq.svg'
-                    : 'https://gw.alipayobjects.com/zos/antfincdn/Z5c7kzvi30/expand.svg'
-                }
-                className={codeExpand ? 'code-expand-icon-hide' : 'code-expand-icon-show'}
-                onClick={() => handleCodeExpand(asset.id)}
-              />
-              <img
-                alt="expand code"
-                src={
-                  theme?.includes('dark')
-                    ? 'https://gw.alipayobjects.com/zos/antfincdn/CjZPwcKUG3/OpROPHYqWmrMDBFMZtKF.svg'
-                    : 'https://gw.alipayobjects.com/zos/antfincdn/4zAaozCvUH/unexpand.svg'
-                }
-                className={codeExpand ? 'code-expand-icon-show' : 'code-expand-icon-hide'}
-                onClick={() => handleCodeExpand(asset.id)}
-              />
-            </div>
-          </Tooltip>
         </Space>
-      </section>
-      <section className={highlightClass} key="code">
-        <CodePreview
-          codes={highlightedCodes}
-          toReactComponent={toReactComponent}
-          onCodeTypeChange={(type) => setCodeType(type)}
-        />
-        {highlightedStyle ? (
-          <div key="style" className="highlight">
-            <pre>
-              <code className="css" dangerouslySetInnerHTML={{ __html: highlightedStyle }} />
-            </pre>
-          </div>
-        ) : null}
-      </section>
+      </div>
     </section>
   );
 

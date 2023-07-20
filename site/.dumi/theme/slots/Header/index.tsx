@@ -290,12 +290,10 @@ const Header: React.FC = () => {
     menu = searching ? [] : menu;
   }
 
-  const colProps = isHome
-    ? [{ flex: 'none' }, { flex: 'auto' }]
-    : [
-        { xxl: 4, xl: 5, lg: 6, md: 6, sm: 24, xs: 24 },
-        { xxl: 20, xl: 19, lg: 18, md: 18, sm: 0, xs: 0 },
-      ];
+  const colProps = [
+    { xxl: 4, xl: 5, lg: 6, md: 6, sm: 24, xs: 24 },
+    { xxl: 20, xl: 19, lg: 18, md: 18, sm: 0, xs: 0 },
+  ];
 
   return (
     <header css={style.header} className={headerClassName}>

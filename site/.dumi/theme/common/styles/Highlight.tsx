@@ -15,7 +15,7 @@ export default () => {
 
         pre code {
           display: block;
-          padding: 16px 32px;
+          padding: 1em;
           color: ${token.colorText};
           font-size: ${token.fontSize}px;
           font-family: 'Lucida Console', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;

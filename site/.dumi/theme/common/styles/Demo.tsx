@@ -21,13 +21,78 @@ const GlobalDemoStyles: React.FC = () => {
 
         .code-box {
           position: relative;
-          display: inline-block;
+          height: 720px;
           width: 100%;
           margin: 0 0 16px;
           background-color: ${token.colorBgContainer};
           border: 1px solid ${token.colorSplit};
           border-radius: ${token.borderRadius}px;
           transition: all 0.2s;
+          display: flex;
+
+          @media only screen and (max-width: 1440px) {
+            height: 640px;
+          }
+
+          @media only screen and (max-width: 960px) {
+            height: 480px;
+          }
+
+          &-source {
+            flex: 1 1;
+            height: 100%;
+            flex-direction: column;
+            display: flex;
+          }
+
+          &-device {
+            flex: 0 1;
+            border-left: 1px solid ${token.colorSplit};
+            flex-direction: column;
+            display: flex;
+
+            &-viewport {
+              display: flex;
+              flex-direction: column;
+              width: 375px;
+              height: 100%;
+              overflow: hidden;
+
+              @media only screen and (max-width: 1440px) {
+                width: 340px;
+              }
+
+              @media only screen and (max-width: 960px) {
+                width: 300px;
+              }
+            }
+
+            &-actions {
+              padding: 12px 22px;
+              border-top: 1px solid ${token.colorSplit};
+              justify-content: end;
+              display: flex;
+            }
+
+            &-actions &-action {
+              position: relative;
+              display: flex;
+              align-items: center;
+              width: 16px;
+              height: 16px;
+              color: ${token.colorTextSecondary};
+              cursor: pointer;
+              transition: all 0.24s;
+
+              &:hover {
+                color: ${token.colorText};
+              }
+
+              ${iconCls} {
+                display: block;
+              }
+            }
+          }
 
           .code-box-title {
             &,
@@ -96,6 +161,7 @@ const GlobalDemoStyles: React.FC = () => {
 
           &-description {
             padding: 18px 24px 12px;
+            border-bottom: 1px dashed ${token.colorSplit};
           }
 
           a.edit-button {
@@ -210,13 +276,9 @@ const GlobalDemoStyles: React.FC = () => {
           }
 
           .highlight-wrapper {
-            display: none;
+            flex: 1;
             overflow: auto;
             border-radius: 0 0 ${token.borderRadius}px ${token.borderRadius}px;
-
-            &-expand {
-              display: block;
-            }
           }
 
           .highlight {
@@ -237,7 +299,7 @@ const GlobalDemoStyles: React.FC = () => {
             display: flex;
             justify-content: center;
             padding: 12px 0;
-            border-top: 1px dashed ${token.colorSplit};
+            border-bottom: 1px dashed ${token.colorSplit};
             opacity: 0.7;
             transition: opacity 0.3s;
 

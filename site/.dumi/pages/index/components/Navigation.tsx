@@ -1,5 +1,5 @@
 import { useLocale, useLocation, useSiteToken } from '.dumi/hooks';
-import { getLocalizedPathname, isZhCN as isZhCNPath } from '.dumi/theme/utils';
+import { getLocalizedPathname } from '.dumi/theme/utils';
 import { css } from '@emotion/react';
 import { useClickAway } from 'ahooks';
 import { Button, Popover, QRCode, Space } from 'antd';
@@ -37,11 +37,12 @@ const locales = {
 
 export const Navigation: React.FC = () => {
   const { navigation, button } = useStyle();
-  const [locale] = useLocale(locales);
+  const [locale, lang] = useLocale(locales);
   const { pathname, search, getLink } = useLocation();
   const [open, setOpen] = React.useState(false);
   const ref = React.useRef<HTMLButtonElement>(null);
   const [galleryURL, setGalleryURL] = React.useState('');
+  const isZhCN = lang === 'cn';
 
   useClickAway(() => {
     open && setOpen(false);
@@ -52,7 +53,7 @@ export const Navigation: React.FC = () => {
   return (
     <div css={navigation}>
       <Space size="large">
-        <Link to={getLocalizedPathname('/guide/quick-start', isZhCNPath(pathname), search)}>
+        <Link to={getLocalizedPathname('/guide/quick-start', isZhCN, search)}>
           <Button css={button} type="primary" size="large" shape="round">
             {locale.start}
           </Button>

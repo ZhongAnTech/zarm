@@ -5,7 +5,7 @@ import copy from 'copy-to-clipboard';
 import { nodeToGroup } from 'html2sketch';
 import type { FC } from 'react';
 import React, { useRef } from 'react';
-import type { AntdPreviewerProps } from '.';
+import type { PreviewerProps } from '.';
 
 const useStyle = createStyles(({ token }) => ({
   wrapper: css`
@@ -52,7 +52,7 @@ const useStyle = createStyles(({ token }) => ({
   `,
 }));
 
-const DesignPreviewer: FC<AntdPreviewerProps> = ({ children, title, description, tip, asset }) => {
+const DesignPreviewer: FC<PreviewerProps> = ({ children, title, description, tip, asset }) => {
   const { styles } = useStyle();
   const demoRef = useRef<HTMLDivElement>(null);
   const [copied, setCopied] = React.useState<boolean>(false);
