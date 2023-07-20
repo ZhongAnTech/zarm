@@ -1,7 +1,7 @@
 import { useControllableValue } from 'ahooks';
 import includes from 'lodash/includes';
 
-const useCollpse = (options) => {
+const useCollapse = (options) => {
   const { defaultValue, value, multiple, onChange } = options;
 
   const newDefaultValue = multiple ? defaultValue ?? [] : defaultValue ?? '';
@@ -11,16 +11,19 @@ const useCollpse = (options) => {
       : { defaultValue: newDefaultValue, onChange };
   const [state, setValue] = useControllableValue(initState);
 
-  const newSetValue = (v) => {
-    const actived = Array.isArray(state) ? includes(state, v) : Number(state) === Number(v);
-    if (!actived) {
-      setValue((preValue) => (multiple ? [...preValue, v] : v));
-    } else {
-      setValue((preValue) => (multiple ? preValue.filter((i) => i !== v) : ''));
-    }
+  const newSetValue = (newValue) => {
+    setValue((preValue) => {
+      const actived = Array.isArray(preValue)
+        ? includes(preValue, newValue)
+        : preValue === newValue;
+      if (!actived) {
+        return multiple ? [...preValue, newValue] : newValue;
+      }
+      return multiple ? preValue.filter((v) => v !== newValue) : '';
+    });
   };
 
   return [state, newSetValue];
 };
 
-export default useCollpse;
+export default useCollapse;
