@@ -2,9 +2,9 @@ import { createBEM } from '@zarm-design/bem';
 import includes from 'lodash/includes';
 import React, { Children, ReactElement } from 'react';
 import { ConfigContext } from '../config-provider';
+import useSelect from '../use-select';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseCollapseProps } from './interface';
-import useCollpse from './useCollapse';
 
 export interface CollapseCssVars {
   '--border-color'?: React.CSSProperties['color'];
@@ -37,7 +37,7 @@ const Collapse = React.forwardRef<unknown, CollapseProps>((props, ref) => {
 
   const collapseRef = (ref as any) || React.createRef<HTMLElement>();
 
-  const [value, setValue] = useCollpse({
+  const [value, setValue] = useSelect({
     multiple,
     value: activeKey,
     defaultValue: defaultActiveKey,

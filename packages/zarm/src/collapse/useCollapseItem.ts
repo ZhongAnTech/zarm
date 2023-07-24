@@ -1,5 +1,4 @@
 import React from 'react';
-import { nanoid } from '../utils';
 import { useSafeLayoutEffect } from '../utils/hooks';
 import mergeRefs from '../utils/mergeRefs';
 
@@ -27,7 +26,6 @@ const useCollapseItem = ({
 }: CollapseItemProps) => {
   const collapseElRef = React.useRef<HTMLElement | null>(null);
 
-  const id = React.useMemo(() => `collapse-item-${nanoid()}`, []);
   const getToggleProps = (): { onClick: () => void } => {
     return {
       onClick: () => {
@@ -51,9 +49,8 @@ const useCollapseItem = ({
     setStyle();
   }, [setStyle]);
 
-  const getCollapseContentProps = (): { id: string; ref: React.RefCallback<any> } => {
+  const getCollapseContentProps = (): { ref: React.RefCallback<any> } => {
     return {
-      id,
       ref: mergeRefs([collapseElRef]),
     };
   };
