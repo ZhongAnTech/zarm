@@ -21,7 +21,9 @@ export interface CollapseCssVars {
   '--content-padding-horizontal'?: React.CSSProperties['left'];
 }
 
-export type CollapseProps = BaseCollapseProps & React.PropsWithChildren<HTMLProps<CollapseCssVars>>;
+export type CollapseProps = BaseCollapseProps &
+  HTMLProps<CollapseCssVars> &
+  React.PropsWithChildren<HTMLProps<CollapseCssVars>>;
 
 const Collapse = React.forwardRef<unknown, CollapseProps>((props, ref) => {
   const {

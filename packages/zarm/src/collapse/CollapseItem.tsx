@@ -4,8 +4,13 @@ import { ConfigContext } from '../config-provider';
 import type { BaseCollapseItemProps } from './interface';
 import useCollapseItem from './useCollapseItem';
 
-export type CollapseItemProps = Omit<HTMLAttributes<HTMLDivElement>, 'key' | 'title' | 'onChange'> &
-  BaseCollapseItemProps;
+export type CollapseItemProps = Omit<
+  HTMLAttributes<HTMLDivElement>,
+  'key' | 'title' | 'onChange' | 'children'
+> &
+  BaseCollapseItemProps & {
+    children: React.ReactElement | (({ active }: { active: boolean }) => React.ReactElement);
+  };
 
 type CollapseItemExtraProps = CollapseItemProps & { isActive: boolean };
 
@@ -38,7 +43,9 @@ const CollapseItem = React.forwardRef<unknown, CollapseItemExtraProps>((props, r
         <div className={bem('arrow')} />
       </div>
       <div className={bem('content')} ref={content} {...getCollapseContentProps()}>
-        <div className={bem('content__inner')}>{children}</div>
+        <div className={bem('content__inner')}>
+          {typeof children === 'function' ? children?.({ active: isActive }) : children}
+        </div>
       </div>
     </div>
   );

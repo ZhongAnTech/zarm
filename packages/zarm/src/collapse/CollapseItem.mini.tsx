@@ -20,7 +20,9 @@ const getRect = (id): Promise<Taro.NodesRef.BoundingClientRectCallbackResult> =>
 };
 
 export type CollapseItemProps = Omit<ViewProps, 'key' | 'title' | 'onChange'> &
-  BaseCollapseItemProps;
+  BaseCollapseItemProps & {
+    children: React.ReactElement | (({ active }: { active: boolean }) => React.ReactElement);
+  };
 
 type CollapseItemExtraProps = CollapseItemProps & { isActive: boolean };
 
@@ -84,7 +86,7 @@ const CollapseItem = React.forwardRef<unknown, CollapseItemExtraProps>((props, r
         id={id}
       >
         <View className={bem('content__inner')} id={id}>
-          {children}
+          {typeof children === 'function' ? children?.({ active: isActive }) : children}
         </View>
       </View>
     </View>
