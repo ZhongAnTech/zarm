@@ -28,8 +28,8 @@ chokidar.watch('../../packages/zarm/src/**/demo/*.mini.tsx').on('change', async 
     const components = [];
     dirents.forEach((entry) => {
       const blockName = entry.name.split('.')[0];
-      const componentName = blockName.split('-');
-      const capitalized = componentName
+      const className = blockName.split('-');
+      const capitalized = className
         .map((c) => `${c.charAt(0).toUpperCase()}${c.slice(1)}`)
         .join('');
       imports.push(`import ${capitalized} from './component/${blockName}'`);

@@ -19,7 +19,7 @@ const getRect = (id): Promise<Taro.NodesRef.BoundingClientRectCallbackResult> =>
   });
 };
 
-export type CollapseItemProps = Omit<ViewProps, 'key' | 'title' | 'onChange'> &
+export type CollapseItemProps = Omit<ViewProps, 'key' | 'title' | 'onChange' | 'children'> &
   BaseCollapseItemProps & {
     children: React.ReactElement | (({ active }: { active: boolean }) => React.ReactElement);
   };
