@@ -1,10 +1,7 @@
+import { clearPath } from '.dumi/theme/utils';
 import { useLocation as useDumiLocation } from 'dumi';
 import * as React from 'react';
 import { useLocale } from './useLocale';
-
-function clearPath(path: string) {
-  return path.replace('-cn', '').replace(/\/$/, '');
-}
 
 export const useLocation = () => {
   const location = useDumiLocation();

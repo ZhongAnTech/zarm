@@ -1,19 +1,12 @@
 export const DEFAULT_THEME_CONFIG = {
-  name: 'Zarm Design',
+  name: 'Zarm',
   logo: 'https://zarm.design/images/logo.1a6cfc30.svg',
   categoryOrder: {
-    'Zarm Design': 0,
-    全局样式: 1,
-    'Global Styles': 1,
-    设计模式: 2,
-    'Design Patterns': 2,
-    '设计模式 - 探索': 3,
-    'Design Patterns (Research)': 3,
+    Zarm: 0,
     Components: 100,
     组件: 100,
   },
   typeOrder: {
-    // Component
     Overview: -1,
     General: 0,
     Layout: 1,

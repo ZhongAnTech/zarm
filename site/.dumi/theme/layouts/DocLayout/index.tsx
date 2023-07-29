@@ -28,7 +28,7 @@ const locales = {
 const DocLayout: React.FC = () => {
   const outlet = useOutlet();
   const location = useLocation();
-  const { pathname, search, hash } = location;
+  const { pathname, hash } = location;
   const [locale, lang] = useLocale(locales);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const { direction } = useContext(SiteContext);

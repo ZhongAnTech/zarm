@@ -56,6 +56,20 @@ const RoutesPlugin = (api: IApi) => {
         parentId: 'GlobalLayout',
         file: require.resolve('../gallery/index.tsx'),
       },
+      {
+        id: 'gallery-cn',
+        path: 'gallery-cn',
+        absPath: '/gallery-cn',
+        parentId: 'GlobalLayout',
+        file: require.resolve('../gallery/index.tsx'),
+      },
+      {
+        id: 'gallery-component',
+        path: 'gallery/:component',
+        absPath: '/gallery/:component',
+        parentId: 'GlobalLayout',
+        file: require.resolve('../gallery/component.tsx'),
+      },
     ];
 
     extraRoutesList.forEach((itemRoute) => {

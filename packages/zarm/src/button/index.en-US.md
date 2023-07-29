@@ -5,6 +5,10 @@ group:
   title: Feedback
 ---
 
-## 基本用法
+## basic
 
 <code src="./demo/basic.tsx"></code>
+
+## block
+
+<code src="./demo/block.tsx"></code>

@@ -32,9 +32,6 @@ const getAlgorithm = (themes: ThemeName[] = []) =>
     if (theme === 'dark') {
       return antdTheme.darkAlgorithm;
     }
-    if (theme === 'compact') {
-      return antdTheme.compactAlgorithm;
-    }
     return antdTheme.defaultAlgorithm;
   });
 
@@ -45,7 +42,7 @@ const GlobalLayout: React.FC = () => {
   const [{ theme = [], direction, isMobile }, setSiteState] = useLayoutState<SiteState>({
     isMobile: false,
     direction: 'ltr',
-    theme: ['light', 'motion-off'],
+    theme: ['light'],
   });
 
   const updateSiteConfig = useCallback(
@@ -116,14 +113,11 @@ const GlobalLayout: React.FC = () => {
         <SiteThemeProvider
           theme={{
             algorithm: getAlgorithm(theme),
-            token: {
-              motion: !theme.includes('motion-off'),
-            },
           }}
         >
           <App>
             {outlet}
-            {!pathname.startsWith('/~demos') && (
+            {!pathname.startsWith('/~demos') && !pathname.startsWith('/gallery') && (
               <ThemeSwitch
                 value={theme}
                 onChange={(nextTheme) => updateSiteConfig({ theme: nextTheme })}

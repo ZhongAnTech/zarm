@@ -198,4 +198,8 @@ export function getMetaDescription(jml?: any[] | null) {
   return paragraph;
 }
 
+export const clearPath = (path: string) => {
+  return path.replace('-cn', '').replace(/\/$/, '');
+};
+
 export const getThemeConfig = () => themeConfig;

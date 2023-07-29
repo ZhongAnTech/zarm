@@ -54,7 +54,6 @@ function compress(string: string): string {
 const CodePreviewer: React.FC<PreviewerProps> = (props) => {
   const {
     asset,
-    expand,
     iframe,
     demoUrl,
     children,
@@ -63,9 +62,6 @@ const CodePreviewer: React.FC<PreviewerProps> = (props) => {
     originDebug,
     jsx,
     style,
-    compact,
-    background,
-    filename,
     version,
     clientOnly,
     pkgDependencyList,
@@ -85,10 +81,7 @@ const CodePreviewer: React.FC<PreviewerProps> = (props) => {
   const [codeType, setCodeType] = useState<string>('tsx');
   const { theme } = useContext<SiteContextProps>(SiteContext);
 
-  const { hash, pathname, search } = location;
-  const docsOnlineUrl = `https://zarm.design${pathname}${search}#${asset.id}`;
-
-  const [showOnlineUrl, setShowOnlineUrl] = useState<boolean>(false);
+  const { hash } = location;
 
   const highlightedCodes = {
     // jsx: Prism.highlight(jsx, Prism.languages.javascript, 'jsx'),
@@ -96,13 +89,6 @@ const CodePreviewer: React.FC<PreviewerProps> = (props) => {
   };
 
   const highlightedStyle = style ? Prism.highlight(style, Prism.languages.css, 'css') : '';
-
-  useEffect(() => {
-    const regexp = /preview-(\d+)-zarm-design/; // matching PR preview addresses
-    setShowOnlineUrl(
-      process.env.NODE_ENV === 'development' || regexp.test(window.location.hostname),
-    );
-  }, []);
 
   const handleCodeCopied = (demo: string) => {
     setCopied(true);
