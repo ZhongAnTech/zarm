@@ -1,0 +1,37 @@
+.customer-collapse {
+  background-color: #fafafa;
+  // margin: 20px;
+  border-radius: 10px;
+
+  &::before,
+  &::after {
+    border: none;
+  }
+
+  &-box {
+    overflow: hidden;
+    padding: 20px;
+  }
+
+  &-header {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .icon-active {
+    transition: all 300ms ease-in-out;
+    transform: rotate(90deg);
+  }
+
+  &-content {
+    height: 0;
+    overflow: hidden;
+    font-size: 14px;
+    color: #666;
+    transition: all 300ms ease-in-out;
+
+    &__inner {
+      padding: 10px 20px;
+    }
+  }
+}
