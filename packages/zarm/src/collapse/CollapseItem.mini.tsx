@@ -1,23 +1,12 @@
 import { View, ViewProps } from '@tarojs/components';
-import Taro from '@tarojs/taro';
 import { createBEM } from '@zarm-design/bem';
 import React from 'react';
 import { ConfigContext } from '../config-provider';
 import { nanoid } from '../utils';
+import { getRect } from '../utils/dom/dom.mini';
 import { useSafeLayoutEffect } from '../utils/hooks';
 import type { BaseCollapseItemProps } from './interface';
 import useCollapseItem from './useCollapseItem';
-
-const getRect = (id): Promise<Taro.NodesRef.BoundingClientRectCallbackResult> => {
-  return new Promise((resolve) => {
-    Taro.createSelectorQuery()
-      .select(`#${id}`)
-      .boundingClientRect()
-      .exec((rect) => {
-        resolve(rect[0]);
-      });
-  });
-};
 
 export type CollapseItemProps = Omit<ViewProps, 'key' | 'title' | 'onChange' | 'children'> &
   BaseCollapseItemProps & {
@@ -78,13 +67,7 @@ const CollapseItem = React.forwardRef<unknown, CollapseItemExtraProps>((props, r
         <View className={bem('title')}>{title}</View>
         <View className={bem('arrow')} />
       </View>
-      <View
-        className={bem('content')}
-        ref={content}
-        {...getCollapseContentProps()}
-        style={style}
-        id={id}
-      >
+      <View className={bem('content')} ref={content} {...getCollapseContentProps()} style={style}>
         <View className={bem('content__inner')} id={id}>
           {typeof children === 'function' ? children?.({ active: isActive }) : children}
         </View>

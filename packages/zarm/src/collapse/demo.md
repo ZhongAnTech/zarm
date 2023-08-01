@@ -103,6 +103,66 @@ ReactDOM.render(
 );
 ```
 
+## 自定义样式
+
+```jsx
+import { Collapse, Panel } from 'zarm';
+import Icons from '@zarm-design/icons';
+/* style placeholder */
+
+const CollapseItem = (poprs) => {
+  const { useCollapseItem } = Collapse;
+  const { isActive, title, disable, onChange, children } = poprs;
+  const { getCollapseContentProps, getToggleProps } = useCollapseItem({
+    defaultExpanded: isActive,
+    disable,
+    onChange,
+  });
+
+  return (
+    <>
+      <div {...getToggleProps()} className="customer-collapse-header">
+        <Icons.ArrowRight size="sm" className={`${isActive ? 'icon-active' : ''}`} />
+        {title}
+      </div>
+      <div
+        {...getCollapseContentProps()}
+        className={`customer-collapse-content ${isActive ? 'active' : ''}`}
+      >
+        <div className="customer-collapse-content__inner">
+          {typeof children === 'function' ? children?.({ active: isActive }) : children}
+        </div>
+      </div>
+    </>
+  );
+};
+
+const Demo = () => {
+  const [value, setValue] = React.useState();
+  return (
+    <div className="customer-collapse-box">
+      <Collapse onChange={(newVal) => setValue(newVal)} value={value} className="customer-collapse">
+        <CollapseItem title="第一项" key="1">
+          {({ active }) => {
+            const style = active ? { color: 'red' } : {};
+            return (
+              <div style={style}>
+                This is content of item1. This is content of item1. This is content of item1.
+              </div>
+            );
+          }}
+        </CollapseItem>
+        <CollapseItem title="第二项" key="2">
+          <div>This is content of item2. This is content of item2. This is content of item2.</div>
+        </CollapseItem>
+      </Collapse>
+    </div>
+  );
+};
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
 ## API
 
 ## Collapse

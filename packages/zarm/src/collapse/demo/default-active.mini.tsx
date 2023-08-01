@@ -1,7 +1,5 @@
-import '@zarm-design/icons/style';
-import '@zarm-design/icons/style/font';
 import * as React from 'react';
-import { Collapse, Panel } from 'zarm/mini';
+import { Collapse, Panel } from 'zarm';
 
 /* style placeholder */
 

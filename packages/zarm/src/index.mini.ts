@@ -10,3 +10,4 @@ export { default as Panel } from './panel/index.mini';
 export type { PanelProps } from './panel/index.mini';
 export { default as Popup } from './popup/index.mini';
 export type { PopupProps } from './popup/index.mini';
+export { default as Select } from './select';

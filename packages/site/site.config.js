@@ -273,7 +273,7 @@ module.exports = {
         name: '折叠面板',
         module: () => import('zarm/collapse/demo.md'),
         source: 'zarm/collapse/demo.md',
-        style: false,
+        style: true,
       },
       {
         key: 'badge',

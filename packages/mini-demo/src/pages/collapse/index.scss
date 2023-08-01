@@ -1,3 +1,23 @@
 page {
   background-color: #fff;
 }
+
+.collapse {
+  &-header {
+    padding: 20px;
+    border-bottom: 1px solid #e6e6e6;
+    font-size: 28px;
+  }
+
+  &-content {
+    height: 0;
+    overflow: hidden;
+    color: #666;
+    font-size: 24px;
+    transition: all 300ms ease-in-out;
+
+    &__inner {
+      padding: 20px;
+    }
+  }
+}

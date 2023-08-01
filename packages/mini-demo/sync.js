@@ -4,7 +4,6 @@ const fsExtra = require('fs-extra');
 chokidar.watch('../../packages/zarm/src/**/demo/*.mini.tsx').on('change', async (path) => {
   const dir = path.match(/[A-Z a-z-]+/g);
 
-  console.error(dir, dir[5]);
   const demoName = dir[5];
   const componentName = dir[3];
   const content = await fsExtra.readFile(path, 'utf-8');
