@@ -10,10 +10,10 @@ import useCollapseItem from './useCollapseItem';
 
 export type CollapseItemProps = Omit<ViewProps, 'key' | 'title' | 'onChange' | 'children'> &
   BaseCollapseItemProps & {
-    children: React.ReactElement | (({ active }: { active: boolean }) => React.ReactElement);
+    children: React.ReactNode | (({ active }: { active: boolean }) => React.ReactNode);
   };
 
-type CollapseItemExtraProps = CollapseItemProps & { isActive: boolean };
+type CollapseItemExtraProps = CollapseItemProps & { isActive?: boolean };
 
 const CollapseItem = React.forwardRef<unknown, CollapseItemExtraProps>((props, ref) => {
   const { title, className, disabled, isActive, children, onChange, ...rest } = props;

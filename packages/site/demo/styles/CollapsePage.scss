@@ -1,8 +1,4 @@
 .customer-collapse {
-  background-color: #fafafa;
-  // margin: 20px;
-  border-radius: 10px;
-
   &::before,
   &::after {
     border: none;
@@ -13,14 +9,23 @@
     padding: 20px;
   }
 
+  &-item {
+    margin-bottom: 10px;
+    background-color: #fafafa;
+    border-radius: 10px;
+  }
+
   &-header {
     font-size: 16px;
     padding: 10px;
   }
 
-  .icon-active {
+  .icon {
     transition: all 300ms ease-in-out;
-    transform: rotate(90deg);
+
+    &-active {
+      transform: rotate(90deg);
+    }
   }
 
   &-content {

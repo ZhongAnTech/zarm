@@ -106,7 +106,6 @@ describe('index', () => {
           "Item": Object {
             "$$typeof": Symbol(react.forward_ref),
             "defaultProps": Object {
-              "animated": false,
               "disabled": false,
             },
             "render": [Function],
@@ -116,6 +115,7 @@ describe('index', () => {
             "multiple": false,
           },
           "render": [Function],
+          "useCollapseItem": [Function],
         },
         "ConfigProvider": [Function],
         "CustomInput": Object {
@@ -521,6 +521,7 @@ describe('index', () => {
         "useLongPress": [Function],
         "useOrientation": [Function],
         "useScroll": [Function],
+        "useSelect": [Function],
       }
     `);
   });

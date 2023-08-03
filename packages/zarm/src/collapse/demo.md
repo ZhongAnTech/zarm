@@ -120,9 +120,9 @@ const CollapseItem = (poprs) => {
   });
 
   return (
-    <>
+    <div className="customer-collapse-item">
       <div {...getToggleProps()} className="customer-collapse-header">
-        <Icons.ArrowRight size="sm" className={`${isActive ? 'icon-active' : ''}`} />
+        <Icons.ArrowRight size="sm" className={`${isActive ? 'icon-active icon' : 'icon'}`} />
         {title}
       </div>
       <div
@@ -133,7 +133,7 @@ const CollapseItem = (poprs) => {
           {typeof children === 'function' ? children?.({ active: isActive }) : children}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

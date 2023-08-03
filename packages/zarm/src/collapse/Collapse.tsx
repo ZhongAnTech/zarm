@@ -55,13 +55,15 @@ const Collapse = React.forwardRef<unknown, CollapseProps>((props, ref) => {
   const items = Children.map(children, (ele: ReactElement<any>) => {
     const { key } = ele;
     const { disabled, onChange: itemOnChange } = ele.props;
-    const actived = Array.isArray(value) ? includes(value, key) : Number(value) === Number(key);
+    const actived = Array.isArray(value) ? includes(value, key) : value === key;
     return React.cloneElement(ele, {
       // ...ele,
       isActive: actived,
       onChange: (active) => {
-        !disabled && itemOnChange?.(active);
-        setValue(key);
+        if (key !== null) {
+          !disabled && itemOnChange?.(active);
+          setValue(key);
+        }
       },
     });
   });
