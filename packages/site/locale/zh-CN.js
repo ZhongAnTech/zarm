@@ -57,4 +57,6 @@ export default {
   'app.home.resources.type.zarm-web-axure': '桌面端组件 Axure 元件库',
 
   'app.demo.footer.copyright': '众安·体验设计中心',
+  'app.404.backhome': '回到首页',
+  'app.404.tips': '抱歉，您访问的页面不存在'
 };

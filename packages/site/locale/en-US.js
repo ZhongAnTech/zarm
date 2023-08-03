@@ -58,4 +58,6 @@ export default {
   'app.home.resources.type.zarm-web-axure': 'Axure library for zarm-web',
 
   'app.demo.footer.copyright': 'ZhongAn UX Design',
+  'app.404.backhome': 'Back to home page',
+  'app.404.tips': 'Sorry, the page you visited does not exist.'
 };
