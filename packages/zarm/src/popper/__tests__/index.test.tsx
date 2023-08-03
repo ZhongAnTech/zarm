@@ -1,5 +1,5 @@
+import { fireEvent, render, waitFor } from '@testing-library/react';
 import React from 'react';
-import { render, fireEvent, waitFor } from '@testing-library/react';
 import Popper from '../index';
 
 if (global.document) {
@@ -27,7 +27,7 @@ describe('Popper', () => {
     const onVisibleChange = jest.fn();
 
     const { container } = render(
-      <Popper title="标题" onVisibleChange={onVisibleChange}>
+      <Popper content="标题" onVisibleChange={onVisibleChange}>
         <p>点我</p>
       </Popper>,
     );
@@ -38,7 +38,7 @@ describe('Popper', () => {
     const onVisibleChange = jest.fn();
 
     const { container } = render(
-      <Popper title="标题" onVisibleChange={onVisibleChange} animationType="menu-slide">
+      <Popper content="标题" onVisibleChange={onVisibleChange} animationType="menu-slide">
         <p>点我</p>
       </Popper>,
     );
@@ -49,7 +49,12 @@ describe('Popper', () => {
     const onVisibleChange = jest.fn();
 
     const { container } = render(
-      <Popper title="标题" onVisibleChange={onVisibleChange} animationType="menu-slide" direction="bottom">
+      <Popper
+        content="标题"
+        onVisibleChange={onVisibleChange}
+        animationType="menu-slide"
+        direction="bottom"
+      >
         <p>点我</p>
       </Popper>,
     );
@@ -62,7 +67,7 @@ describe('Popper', () => {
         <Popper
           trigger="click"
           hasArrow={false}
-          title="fdsfsd"
+          content="fdsfsd"
           mouseEnterDelay={0}
           mouseLeaveDelay={0}
         >
@@ -85,7 +90,7 @@ describe('Popper', () => {
       <div data-testid="za-popper-onVisibleChange">
         <Popper
           trigger="click"
-          title="fsdfds"
+          content="fsdfds"
           mouseEnterDelay={0}
           mouseLeaveDelay={0}
           onVisibleChange={onVisibleChange}
