@@ -273,7 +273,7 @@ module.exports = {
         name: '折叠面板',
         module: () => import('zarm/collapse/demo.md'),
         source: 'zarm/collapse/demo.md',
-        style: false,
+        style: true,
       },
       {
         key: 'badge',
@@ -433,6 +433,13 @@ module.exports = {
         source: 'zarm/use-in-viewport/demo.md',
         style: false,
       },
+      {
+        key: 'useSelect',
+        name: '多选',
+        module: () => import('zarm/use-select/demo.md'),
+        source: 'zarm/use-selct/demo.md',
+        style: false,
+      },
     ],
     other: [
       {
@@ -468,6 +475,7 @@ module.exports = {
     },
   ],
   assets: {
-    iconfont: '//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_15.ab13c1498232a6d09657a9e32cd7f740.js'
-  }
+    iconfont:
+      '//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_15.ab13c1498232a6d09657a9e32cd7f740.js',
+  },
 };

@@ -1,10 +1,11 @@
+import { View } from '@tarojs/components';
 import React from 'react';
 import Collapse, { CollapseProps } from './Collapse';
-import CollapseItem from './CollapseItem';
+import CollapseItem from './CollapseItem.mini';
 import useCollapseItem from './useCollapseItem';
 
 interface CompoundedComponent
-  extends React.ForwardRefExoticComponent<CollapseProps & React.RefAttributes<HTMLElement>> {
+  extends React.ForwardRefExoticComponent<CollapseProps & React.RefAttributes<typeof View>> {
   Item: typeof CollapseItem;
   useCollapseItem: typeof useCollapseItem;
 }
@@ -15,6 +16,6 @@ CollapseWithItem.Item = CollapseItem;
 CollapseWithItem.useCollapseItem = useCollapseItem;
 
 export type { CollapseCssVars, CollapseProps } from './Collapse';
-export type { CollapseItemProps } from './CollapseItem';
+export type { CollapseItemProps } from './CollapseItem.mini';
 
 export default CollapseWithItem;

@@ -1,10 +1,10 @@
 import { createBEM } from '@zarm-design/bem';
 import includes from 'lodash/includes';
-import React, { Children, cloneElement, ReactElement, useState } from 'react';
+import React, { Children, ReactElement } from 'react';
 import { ConfigContext } from '../config-provider';
+import useSelect from '../use-select';
 import type { HTMLProps } from '../utils/utilityTypes';
-import CollapseItem, { CollapseItemProps } from './CollapseItem';
-import type { BaseCollapseProps, CollapseActiveKey, CollapseItemKey } from './interface';
+import type { BaseCollapseProps } from './interface';
 
 export interface CollapseCssVars {
   '--border-color'?: React.CSSProperties['color'];
@@ -21,29 +21,9 @@ export interface CollapseCssVars {
   '--content-padding-horizontal'?: React.CSSProperties['left'];
 }
 
-export type CollapseProps = BaseCollapseProps & React.PropsWithChildren<HTMLProps<CollapseCssVars>>;
-
-interface CompoundedComponent
-  extends React.ForwardRefExoticComponent<CollapseProps & React.RefAttributes<HTMLElement>> {
-  Item: typeof CollapseItem;
-}
-
-const getActiveKey = (props) => {
-  const { multiple, activeKey, defaultActiveKey, hasActiveKeys } = props;
-  let value;
-
-  if (typeof activeKey !== 'undefined') {
-    value = activeKey;
-  }
-  if (!hasActiveKeys && typeof defaultActiveKey !== 'undefined') {
-    value = defaultActiveKey;
-  }
-  if (value) {
-    return multiple ? [].concat(value) : value;
-  }
-
-  return multiple ? [] : undefined;
-};
+export type CollapseProps = BaseCollapseProps &
+  HTMLProps<CollapseCssVars> &
+  React.PropsWithChildren<HTMLProps<CollapseCssVars>>;
 
 const Collapse = React.forwardRef<unknown, CollapseProps>((props, ref) => {
   const {
@@ -57,74 +37,43 @@ const Collapse = React.forwardRef<unknown, CollapseProps>((props, ref) => {
     ...rest
   } = props;
 
-  const hasActiveKeys = 'activeKey' in props;
   const collapseRef = (ref as any) || React.createRef<HTMLElement>();
-  const [activeKeyState, setActiveKey] = useState<CollapseActiveKey>(
-    getActiveKey({ multiple, activeKey, defaultActiveKey, hasActiveKeys }),
-  );
+
+  const [value, setValue] = useSelect({
+    multiple,
+    value: activeKey,
+    defaultValue: defaultActiveKey,
+    onChange,
+  });
 
   const { prefixCls } = React.useContext(ConfigContext);
 
   const bem = createBEM('collapse', { prefixCls });
 
-  const onItemChange = (onItemChangeProps, key) => {
-    if (!key) {
-      return;
-    }
-
-    let isActive;
-    let newActiveKey;
-    let tempActiveKey = activeKeyState;
-
-    if (multiple) {
-      newActiveKey = [];
-      tempActiveKey = (tempActiveKey as CollapseItemKey[]) || [];
-
-      if (includes(tempActiveKey, key)) {
-        newActiveKey = tempActiveKey.filter((i) => i !== key);
-      } else {
-        newActiveKey = [...tempActiveKey, key];
-      }
-      isActive = includes(newActiveKey, key);
-    } else {
-      tempActiveKey = tempActiveKey as CollapseItemKey;
-      newActiveKey = tempActiveKey === key ? undefined : key;
-      isActive = tempActiveKey === key;
-    }
-    if (!('activeKey' in props)) {
-      setActiveKey(newActiveKey);
-    }
-    typeof onItemChangeProps === 'function' && onItemChangeProps(isActive);
-    typeof onChange === 'function' && onChange(newActiveKey);
-  };
-
-  const renderItems = () => {
-    return Children.map(children, (ele: ReactElement<CollapseItemProps>) => {
-      const { disabled, onChange: itemOnChange } = ele.props;
-      const { key } = ele;
-      const isActive = multiple
-        ? includes((activeKeyState as CollapseItemKey[]) || [], key!)
-        : (activeKeyState as CollapseItemKey) === key;
-      return cloneElement(ele, {
-        animated,
-        isActive,
-        onChange: () => !disabled && onItemChange(itemOnChange, key),
-      });
-    });
-  };
-
   const cls = bem([{ animated }, className]);
 
-  React.useEffect(() => {
-    setActiveKey(getActiveKey({ multiple, activeKey, defaultActiveKey, hasActiveKeys }));
-  }, [multiple, activeKey, defaultActiveKey, hasActiveKeys]);
+  const items = Children.map(children, (ele: ReactElement<any>) => {
+    const { key } = ele;
+    const { disabled, onChange: itemOnChange } = ele.props;
+    const actived = Array.isArray(value) ? includes(value, key) : value === key;
+    return React.cloneElement(ele, {
+      // ...ele,
+      isActive: actived,
+      onChange: (active) => {
+        if (key !== null) {
+          !disabled && itemOnChange?.(active);
+          setValue(key);
+        }
+      },
+    });
+  });
 
   return (
-    <div className={cls} {...rest} ref={collapseRef}>
-      {renderItems()}
+    <div className={cls} ref={collapseRef} {...rest}>
+      {items}
     </div>
   );
-}) as CompoundedComponent;
+});
 
 Collapse.displayName = 'Collapse';
 

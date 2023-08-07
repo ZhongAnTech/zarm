@@ -259,7 +259,8 @@ importers:
       '@better-scroll/core': 2.3.1
       '@better-scroll/wheel': 2.3.1
       '@floating-ui/react-dom-interactions': ^0.9.1
-      '@tarojs/components': 3.6.1
+      '@tarojs/components': 3.6.7
+      '@tarojs/taro': 3.6.7
       '@testing-library/jest-dom': ^5.16.5
       '@testing-library/react': ^12.0.0
       '@testing-library/react-hooks': ^7.0.2
@@ -293,7 +294,8 @@ importers:
       '@better-scroll/core': registry.npmjs.org/@better-scroll/core/2.3.1
       '@better-scroll/wheel': registry.npmjs.org/@better-scroll/wheel/2.3.1
       '@floating-ui/react-dom-interactions': registry.npmjs.org/@floating-ui/react-dom-interactions/0.9.3_sfoxds7t5ydpegc3knd667wn6m
-      '@tarojs/components': registry.npmjs.org/@tarojs/components/3.6.1_odph5zpxnhqxi2epe2unwomxxu
+      '@tarojs/components': registry.npmjs.org/@tarojs/components/3.6.7_odph5zpxnhqxi2epe2unwomxxu
+      '@tarojs/taro': registry.npmjs.org/@tarojs/taro/3.6.7_@types+react@18.0.26
       '@use-gesture/react': registry.npmjs.org/@use-gesture/react/10.2.27_react@17.0.2
       '@zarm-design/bem': link:../bem
       '@zarm-design/icons': link:../zarm-icons
@@ -10031,15 +10033,6 @@ packages:
       defer-to-connect: registry.npmjs.org/defer-to-connect/1.1.3
     dev: true
 
-  registry.npmjs.org/@tarojs/api/3.6.1:
-    resolution: {integrity: sha512-pxHo/LKeHDnzU88mBX8TzsWcmNaYO+6cgFWMRb1+OZPVdq+JatJr3KextWvDqUmrT6HowHAjGFDqm33FqWVdDQ==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tarojs/api/-/api-3.6.1.tgz}
-    name: '@tarojs/api'
-    version: 3.6.1
-    dependencies:
-      '@babel/runtime': registry.npmjs.org/@babel/runtime/7.21.0
-      '@tarojs/runtime': registry.npmjs.org/@tarojs/runtime/3.6.1
-    dev: false
-
   registry.npmjs.org/@tarojs/api/3.6.7:
     resolution: {integrity: sha512-pSvvYbCWELz0k00OJwNQqMUrjWpzTZF4gPat2N8pNcTR4hLx5RERwLpEzZbjuh4f5F1+1dwQ2kO6XZ81EgA8Ew==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tarojs/api/-/api-3.6.7.tgz}
     name: '@tarojs/api'
@@ -10089,32 +10082,6 @@ packages:
       - vue
     dev: true
 
-  registry.npmjs.org/@tarojs/components-advanced/3.6.1_odph5zpxnhqxi2epe2unwomxxu:
-    resolution: {integrity: sha512-vyVtAz6xSF7ujSUybWBrfmF7ZAd2Ak72wL3wn1P0e+yY8mkf/QqwK3UptyBWuy+ZTCvAEDno3KI35O3gCoCcIQ==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tarojs/components-advanced/-/components-advanced-3.6.1.tgz}
-    id: registry.npmjs.org/@tarojs/components-advanced/3.6.1
-    name: '@tarojs/components-advanced'
-    version: 3.6.1
-    peerDependencies:
-      react: '>=17'
-      vue: '*'
-    peerDependenciesMeta:
-      react:
-        optional: true
-      vue:
-        optional: true
-    dependencies:
-      '@tarojs/components': registry.npmjs.org/@tarojs/components/3.6.1_@types+react@18.0.26
-      '@tarojs/shared': registry.npmjs.org/@tarojs/shared/3.6.1
-      memoize-one: registry.npmjs.org/memoize-one/6.0.0
-      postcss: registry.npmjs.org/postcss/8.4.23
-      react: registry.npmjs.org/react/17.0.2
-    transitivePeerDependencies:
-      - '@types/react'
-      - '@types/react-native'
-      - '@types/webpack'
-      - '@types/webpack-dev-server'
-    dev: false
-
   registry.npmjs.org/@tarojs/components-advanced/3.6.7_kzbn2opkn2327fwg5yzwzya5o4:
     resolution: {integrity: sha512-3FGjt1xhwTyNBrQQWd5XuRqiW74vrm9WwgB38XS1gPjxNJPCEfhLgHn76qHyTsXnvdhrBNesG+dNgyyk/Clw7g==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tarojs/components-advanced/-/components-advanced-3.6.7.tgz}
     id: registry.npmjs.org/@tarojs/components-advanced/3.6.7
@@ -10136,6 +10103,34 @@ packages:
       memoize-one: registry.npmjs.org/memoize-one/6.0.0
       postcss: registry.npmjs.org/postcss/8.4.23
       react: registry.npmjs.org/react/18.2.0
+    transitivePeerDependencies:
+      - '@types/react'
+      - '@types/react-native'
+      - '@types/webpack'
+      - '@types/webpack-dev-server'
+    dev: true
+
+  registry.npmjs.org/@tarojs/components-advanced/3.6.7_odph5zpxnhqxi2epe2unwomxxu:
+    resolution: {integrity: sha512-3FGjt1xhwTyNBrQQWd5XuRqiW74vrm9WwgB38XS1gPjxNJPCEfhLgHn76qHyTsXnvdhrBNesG+dNgyyk/Clw7g==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tarojs/components-advanced/-/components-advanced-3.6.7.tgz}
+    id: registry.npmjs.org/@tarojs/components-advanced/3.6.7
+    name: '@tarojs/components-advanced'
+    version: 3.6.7
+    peerDependencies:
+      react: '>=17'
+      vue: '*'
+    peerDependenciesMeta:
+      react:
+        optional: true
+      vue:
+        optional: true
+    dependencies:
+      '@tarojs/components': registry.npmjs.org/@tarojs/components/3.6.7_@types+react@18.0.26
+      '@tarojs/runtime': registry.npmjs.org/@tarojs/runtime/3.6.7
+      '@tarojs/shared': registry.npmjs.org/@tarojs/shared/3.6.7
+      '@tarojs/taro': registry.npmjs.org/@tarojs/taro/3.6.7_@types+react@18.0.26
+      memoize-one: registry.npmjs.org/memoize-one/6.0.0
+      postcss: registry.npmjs.org/postcss/8.4.23
+      react: registry.npmjs.org/react/17.0.2
     transitivePeerDependencies:
       - '@types/react'
       - '@types/react-native'
@@ -10164,73 +10159,6 @@ packages:
       - vue
     dev: false
 
-  registry.npmjs.org/@tarojs/components/3.6.1_@types+react@18.0.26:
-    resolution: {integrity: sha512-hpASpBzBMqje3o33fWLD34QtMk7+vCFNNCuXkoN8U3AYEGadtxpu9LuKEwXoMBe+UNtfFc2wpCrS/nueuK0xoQ==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tarojs/components/-/components-3.6.1.tgz}
-    id: registry.npmjs.org/@tarojs/components/3.6.1
-    name: '@tarojs/components'
-    version: 3.6.1
-    peerDependencies:
-      '@types/react': '*'
-      '@types/react-native': '*'
-      vue: '*'
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-      '@types/react-native':
-        optional: true
-      vue:
-        optional: true
-    dependencies:
-      '@stencil/core': registry.npmjs.org/@stencil/core/2.22.3
-      '@tarojs/components-advanced': registry.npmjs.org/@tarojs/components-advanced/3.6.1_odph5zpxnhqxi2epe2unwomxxu
-      '@tarojs/router': registry.npmjs.org/@tarojs/router/3.6.1_@types+react@18.0.26
-      '@tarojs/taro': registry.npmjs.org/@tarojs/taro/3.6.1_@types+react@18.0.26
-      '@types/react': registry.npmjs.org/@types/react/18.0.26
-      classnames: registry.npmjs.org/classnames/2.3.2
-      hls.js: registry.npmjs.org/hls.js/1.4.4
-      intersection-observer: registry.npmjs.org/intersection-observer/0.7.0
-      resolve-pathname: registry.npmjs.org/resolve-pathname/3.0.0
-      swiper: registry.npmjs.org/swiper/6.8.0
-      weui: registry.npmjs.org/weui/1.1.3
-    transitivePeerDependencies:
-      - '@types/webpack'
-      - '@types/webpack-dev-server'
-    dev: false
-
-  registry.npmjs.org/@tarojs/components/3.6.1_odph5zpxnhqxi2epe2unwomxxu:
-    resolution: {integrity: sha512-hpASpBzBMqje3o33fWLD34QtMk7+vCFNNCuXkoN8U3AYEGadtxpu9LuKEwXoMBe+UNtfFc2wpCrS/nueuK0xoQ==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tarojs/components/-/components-3.6.1.tgz}
-    id: registry.npmjs.org/@tarojs/components/3.6.1
-    name: '@tarojs/components'
-    version: 3.6.1
-    peerDependencies:
-      '@types/react': '*'
-      '@types/react-native': '*'
-      vue: '*'
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-      '@types/react-native':
-        optional: true
-      vue:
-        optional: true
-    dependencies:
-      '@stencil/core': registry.npmjs.org/@stencil/core/2.22.3
-      '@tarojs/components-advanced': registry.npmjs.org/@tarojs/components-advanced/3.6.1_odph5zpxnhqxi2epe2unwomxxu
-      '@tarojs/router': registry.npmjs.org/@tarojs/router/3.6.1_@types+react@18.0.26
-      '@tarojs/taro': registry.npmjs.org/@tarojs/taro/3.6.1_@types+react@18.0.26
-      '@types/react': registry.npmjs.org/@types/react/18.0.26
-      classnames: registry.npmjs.org/classnames/2.3.2
-      hls.js: registry.npmjs.org/hls.js/1.4.4
-      intersection-observer: registry.npmjs.org/intersection-observer/0.7.0
-      resolve-pathname: registry.npmjs.org/resolve-pathname/3.0.0
-      swiper: registry.npmjs.org/swiper/6.8.0
-      weui: registry.npmjs.org/weui/1.1.3
-    transitivePeerDependencies:
-      - '@types/webpack'
-      - '@types/webpack-dev-server'
-      - react
-    dev: false
-
   registry.npmjs.org/@tarojs/components/3.6.7_@types+react@18.0.26:
     resolution: {integrity: sha512-S4QbMMHVXEDBfLi4Bj5qyNsMPBB0CAflwozFelE8uNVXYJNqc8MHWTE4KRXGLSqvJCKJ+XYC4j82xH+yJkiojA==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tarojs/components/-/components-3.6.7.tgz}
     id: registry.npmjs.org/@tarojs/components/3.6.7
@@ -10249,7 +10177,7 @@ packages:
         optional: true
     dependencies:
       '@stencil/core': registry.npmjs.org/@stencil/core/2.22.3
-      '@tarojs/components-advanced': registry.npmjs.org/@tarojs/components-advanced/3.6.7_kzbn2opkn2327fwg5yzwzya5o4
+      '@tarojs/components-advanced': registry.npmjs.org/@tarojs/components-advanced/3.6.7_odph5zpxnhqxi2epe2unwomxxu
       '@tarojs/router': registry.npmjs.org/@tarojs/router/3.6.7_@types+react@18.0.26
       '@tarojs/taro': registry.npmjs.org/@tarojs/taro/3.6.7_@types+react@18.0.26
       '@types/react': registry.npmjs.org/@types/react/18.0.26
@@ -10296,6 +10224,40 @@ packages:
       - '@types/webpack-dev-server'
       - react
     dev: true
+
+  registry.npmjs.org/@tarojs/components/3.6.7_odph5zpxnhqxi2epe2unwomxxu:
+    resolution: {integrity: sha512-S4QbMMHVXEDBfLi4Bj5qyNsMPBB0CAflwozFelE8uNVXYJNqc8MHWTE4KRXGLSqvJCKJ+XYC4j82xH+yJkiojA==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tarojs/components/-/components-3.6.7.tgz}
+    id: registry.npmjs.org/@tarojs/components/3.6.7
+    name: '@tarojs/components'
+    version: 3.6.7
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-native': '*'
+      vue: '*'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-native':
+        optional: true
+      vue:
+        optional: true
+    dependencies:
+      '@stencil/core': registry.npmjs.org/@stencil/core/2.22.3
+      '@tarojs/components-advanced': registry.npmjs.org/@tarojs/components-advanced/3.6.7_odph5zpxnhqxi2epe2unwomxxu
+      '@tarojs/router': registry.npmjs.org/@tarojs/router/3.6.7_@types+react@18.0.26
+      '@tarojs/taro': registry.npmjs.org/@tarojs/taro/3.6.7_@types+react@18.0.26
+      '@types/react': registry.npmjs.org/@types/react/18.0.26
+      classnames: registry.npmjs.org/classnames/2.3.2
+      hls.js: registry.npmjs.org/hls.js/1.4.4
+      intersection-observer: registry.npmjs.org/intersection-observer/0.7.0
+      resolve-pathname: registry.npmjs.org/resolve-pathname/3.0.0
+      swiper: registry.npmjs.org/swiper/6.8.0
+      weui: registry.npmjs.org/weui/1.1.3
+    transitivePeerDependencies:
+      - '@types/webpack'
+      - '@types/webpack-dev-server'
+      - react
+    dev: false
 
   registry.npmjs.org/@tarojs/helper/3.6.7:
     resolution: {integrity: sha512-6NkeufZQSUWeIflF4e17FSudKkNjTJVcSMVeaDE8dhA7YxnSy8P5Qj/KjkyOGMh0u/Zhl6AMPIpnbamdk8FHEQ==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tarojs/helper/-/helper-3.6.7.tgz}
@@ -10607,26 +10569,6 @@ packages:
       - react
     dev: false
 
-  registry.npmjs.org/@tarojs/router/3.6.1_@types+react@18.0.26:
-    resolution: {integrity: sha512-K3rZxLJrVHFaaiykkMiQ7XS5y03PfunX2p9cNQD3NvBtLq60eRuRQUdxfeZ3Rn8auOU2Mx0QjLRhgnsy7cwVlA==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tarojs/router/-/router-3.6.1.tgz}
-    id: registry.npmjs.org/@tarojs/router/3.6.1
-    name: '@tarojs/router'
-    version: 3.6.1
-    dependencies:
-      '@tarojs/runtime': registry.npmjs.org/@tarojs/runtime/3.6.1
-      '@tarojs/taro': registry.npmjs.org/@tarojs/taro/3.6.1_@types+react@18.0.26
-      dingtalk-jsapi: registry.npmjs.org/dingtalk-jsapi/2.15.4
-      history: registry.npmjs.org/history/5.3.0
-      mobile-detect: registry.npmjs.org/mobile-detect/1.4.5
-      query-string: registry.npmjs.org/query-string/7.1.3
-      universal-router: registry.npmjs.org/universal-router/8.3.0
-    transitivePeerDependencies:
-      - '@types/react'
-      - '@types/webpack'
-      - '@types/webpack-dev-server'
-      - vue
-    dev: false
-
   registry.npmjs.org/@tarojs/router/3.6.7_@types+react@18.0.26:
     resolution: {integrity: sha512-Cxu9ayFb0PxGu16SRwryQCX3jPsi7Bw2CnRndY0rfTDA+hqH4iXoSYtnS4S57xa0mvfLt+OYFh4t6NfljrixHQ==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tarojs/router/-/router-3.6.7.tgz}
     id: registry.npmjs.org/@tarojs/router/3.6.7
@@ -10657,15 +10599,6 @@ packages:
       - supports-color
     dev: true
 
-  registry.npmjs.org/@tarojs/runtime/3.6.1:
-    resolution: {integrity: sha512-MuDSDLKymUC5dLQJTdJZwea6ucF3EROIKoyPQM1aL/h/CiEU87R1Y9hH+tx18rfjvgNSbfSGXEuZ25J/3i3p3g==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tarojs/runtime/-/runtime-3.6.1.tgz}
-    name: '@tarojs/runtime'
-    version: 3.6.1
-    dependencies:
-      '@tarojs/shared': registry.npmjs.org/@tarojs/shared/3.6.1
-      lodash-es: registry.npmjs.org/lodash-es/4.17.21
-    dev: false
-
   registry.npmjs.org/@tarojs/runtime/3.6.7:
     resolution: {integrity: sha512-RBb7jIDVg9yNS8AQlNr9IBNad1L7GgOSrI09h6Dd3n94gGUZjuXx2ILwS9cR8Jb6FNAzf0o9GbdSQD4WXokPbg==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tarojs/runtime/-/runtime-3.6.7.tgz}
     name: '@tarojs/runtime'
@@ -10695,12 +10628,6 @@ packages:
       - '@types/webpack-dev-server'
       - supports-color
       - vue
-
-  registry.npmjs.org/@tarojs/shared/3.6.1:
-    resolution: {integrity: sha512-Omdv48YaT3Uyz99SNvr4dtNG0j3Feq9ZNtCinULbNX3a5ApKTgQFBurzqe3ngPy/Lg51InKODsGpbkpRdRHY3Q==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tarojs/shared/-/shared-3.6.1.tgz}
-    name: '@tarojs/shared'
-    version: 3.6.1
-    dev: false
 
   registry.npmjs.org/@tarojs/shared/3.6.7:
     resolution: {integrity: sha512-KOgj1TA+FyFy1ap0gZrB6ilC4H764ivSMyfr8mvlYgygevssticmaKTzkhZsNXRQFOQ+jjZ59cLh0F7VBVhlxg==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tarojs/shared/-/shared-3.6.7.tgz}
@@ -10748,31 +10675,6 @@ packages:
       - supports-color
       - vue
     dev: true
-
-  registry.npmjs.org/@tarojs/taro/3.6.1_@types+react@18.0.26:
-    resolution: {integrity: sha512-BV1K3E94Pr3VxFKah+kt1C1qk2x37RJ7zScHsAiIMHZxgi4IX1leJOg1iFfSUbXo7lD7IQch+UOelHHEa9OLpA==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tarojs/taro/-/taro-3.6.1.tgz}
-    id: registry.npmjs.org/@tarojs/taro/3.6.1
-    name: '@tarojs/taro'
-    version: 3.6.1
-    peerDependencies:
-      '@types/react': '*'
-      '@types/webpack': '*'
-      '@types/webpack-dev-server': '*'
-      vue: '*'
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-      '@types/webpack':
-        optional: true
-      '@types/webpack-dev-server':
-        optional: true
-      vue:
-        optional: true
-    dependencies:
-      '@tarojs/api': registry.npmjs.org/@tarojs/api/3.6.1
-      '@tarojs/runtime': registry.npmjs.org/@tarojs/runtime/3.6.1
-      '@types/react': registry.npmjs.org/@types/react/18.0.26
-    dev: false
 
   registry.npmjs.org/@tarojs/taro/3.6.7_@types+react@18.0.26:
     resolution: {integrity: sha512-j1PPgAKEtdhGXliQGbFaqC7wtyezpqmEEakWEtD83Xdpr4riNePO7xgv9irYNP0cpkjVt3/hLeSddc54X1zh6w==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tarojs/taro/-/taro-3.6.7.tgz}

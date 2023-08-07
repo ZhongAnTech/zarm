@@ -1,17 +1,18 @@
 const siteMap = {
   general: {
     title: '通用',
-    components: [{
-      key: 'Button',
-      name: '按钮',
-      page: '/pages/button/index'
-    },
-    // {
-    //   key: 'Icon',
-    //   name: '图标',
-    //   page: '/pages/icon/index'
-    // }
-    ]
+    components: [
+      {
+        key: 'Button',
+        name: '按钮',
+        page: '/pages/button/index',
+      },
+      // {
+      //   key: 'Icon',
+      //   name: '图标',
+      //   page: '/pages/icon/index'
+      // }
+    ],
   },
   // input: {
   //   title: '数据录入',
@@ -61,7 +62,7 @@ const siteMap = {
         name: '列表项',
         page: '/pages/list/index',
       },
-    ]
+    ],
   },
   feedback: {
     title: '操作反馈',
@@ -76,12 +77,17 @@ const siteMap = {
         name: '动作面板',
         page: '/pages/popup/index',
       },
+      {
+        key: 'Collapse',
+        name: '折叠面板',
+        page: '/pages/collapse/index',
+      },
       // {
       //   key: 'Message',
       //   name: '消息',
       //   page: '/pages/message/index',
       // },
-    ]
+    ],
   },
   // navigation: {
   //   title: '导航',
@@ -98,6 +104,6 @@ const siteMap = {
   //     },
   //   ]
   // },
-}
+};
 
-export default siteMap
+export default siteMap;

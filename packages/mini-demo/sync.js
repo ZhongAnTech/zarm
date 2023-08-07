@@ -1,15 +1,16 @@
 const chokidar = require('chokidar');
 const fsExtra = require('fs-extra');
 
-chokidar.watch('../../packages/zarm/src/**/demo/*mini.tsx').on('change', async (path) => {
-  const dir = path.match(/[A-Z a-z]+/g);
-  const demoName = dir[5].toLowerCase();
+chokidar.watch('../../packages/zarm/src/**/demo/*.mini.tsx').on('change', async (path) => {
+  const dir = path.match(/[A-Z a-z-]+/g);
+
+  const demoName = dir[5];
   const componentName = dir[3];
   const content = await fsExtra.readFile(path, 'utf-8');
-  // const newContent = content.replace(
-  //   /(\s*\/\*[\s\S][style placeholder]*?\*\/)/g,
-  //   "\nimport './index.scss';",
-  // );
+  //   // const newContent = content.replace(
+  //   //   /(\s*\/\*[\s\S][style placeholder]*?\*\/)/g,
+  //   //   "\nimport './index.scss';",
+  //   // );
 
   const space = ' '.repeat(6);
 
@@ -26,7 +27,10 @@ chokidar.watch('../../packages/zarm/src/**/demo/*mini.tsx').on('change', async (
     const components = [];
     dirents.forEach((entry) => {
       const blockName = entry.name.split('.')[0];
-      const capitalized = `${blockName.charAt(0).toUpperCase()}${blockName.slice(1)}`;
+      const className = blockName.split('-');
+      const capitalized = className
+        .map((c) => `${c.charAt(0).toUpperCase()}${c.slice(1)}`)
+        .join('');
       imports.push(`import ${capitalized} from './component/${blockName}'`);
       components.push(`<${capitalized} />`);
     });
