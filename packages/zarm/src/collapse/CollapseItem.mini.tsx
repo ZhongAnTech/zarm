@@ -18,8 +18,8 @@ type CollapseItemExtraProps = CollapseItemProps & { isActive?: boolean };
 const CollapseItem = React.forwardRef<unknown, CollapseItemExtraProps>((props, ref) => {
   const { title, className, disabled, isActive, children, onChange, ...rest } = props;
 
-  const content = (ref as any) || React.createRef<HTMLElement>();
-  const collapseItemRef = (ref as any) || React.createRef<HTMLElement>();
+  const content = (ref as any) || React.createRef<typeof View>();
+  const collapseItemRef = (ref as any) || React.createRef<typeof View>();
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('collapse-item', { prefixCls });
 
