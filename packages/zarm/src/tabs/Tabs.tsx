@@ -69,6 +69,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
     scrollable,
     isVertical,
     itemWidth,
+    el: tablistRef.current.children[currentValue],
   });
 
   let lineInnerRender;

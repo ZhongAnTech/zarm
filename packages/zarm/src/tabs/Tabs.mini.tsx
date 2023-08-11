@@ -3,7 +3,7 @@ import { createBEM } from '@zarm-design/bem';
 import * as React from 'react';
 import { ConfigContext } from '../config-provider';
 import { nanoid } from '../utils';
-import { getRect } from '../utils/dom/dom.mini';
+import { getRect, getRects } from '../utils/dom/dom.mini';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseTabsProps } from './interface';
 import type { TabPanelProps } from './TabPanel';
@@ -64,12 +64,17 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
   };
 
   const count = React.useMemo(() => React.Children.count(children), [children]);
+
   const lineStyle: React.CSSProperties = caclLineSizePos({
     count,
     value: currentValue,
     scrollable,
     isVertical,
     itemWidth,
+    el: {
+      offsetLeft: itemBoundingClientRect.left,
+      offsetTop: itemBoundingClientRect.top,
+    },
   });
 
   let lineInnerRender;
@@ -137,6 +142,8 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
   // 渲染选项
   const tabsRender = React.Children.map(children, renderTabs);
 
+  const tabsId = React.useMemo(() => `tabs-${nanoid()}`, []);
+
   const calculateLineWidth = React.useCallback(async () => {
     if (!scrollable) {
       return;
@@ -144,8 +151,22 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
     const newValue = currentValue;
     const el = tablistRef.current!.children[newValue];
     const rect = await getRect(`${el.id}`);
+    const tabItemClassName = bem('tab');
+    const rects = await getRects(`#${tabsId} > .${tabItemClassName}`);
+    let i = 0;
+    let left = 0;
+    let top = 0;
+    while (i < currentValue) {
+      left += rects[i].width;
+      if (isVertical) {
+        top += rects[i].height;
+      }
+      i += 1;
+    }
     setItemBoundingClientRect({
       ...rect,
+      left,
+      top,
     });
   }, [currentValue, isVertical, scrollable]);
 
@@ -160,7 +181,6 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
     }
   }, [calculateLineWidth, children]);
 
-  const tabsId = React.useMemo(() => nanoid(), []);
   return (
     <View ref={ref} className={classes} style={style}>
       <View className={bem('header')}>
@@ -171,7 +191,7 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
               ref={tablistRef}
               scrollX={!isVertical}
               scrollY={isVertical}
-              id={`tabs-${tabsId}`}
+              id={tabsId}
               scrollWithAnimation
               // scrollLeft={itemBoundingClientRect.left}
               scrollIntoView={scrollIntoView}

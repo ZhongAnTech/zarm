@@ -10,3 +10,16 @@ export const getRect = (id): Promise<Taro.NodesRef.BoundingClientRectCallbackRes
       });
   });
 };
+
+export const getRects = (
+  query: string,
+): Promise<Taro.NodesRef.BoundingClientRectCallbackResult> => {
+  return new Promise((resolve) => {
+    Taro.createSelectorQuery()
+      .selectAll(query)
+      .boundingClientRect()
+      .exec(([rect]) => {
+        resolve(rect);
+      });
+  });
+};

@@ -11,8 +11,12 @@ export function getPxStyle(value: number | string, unit = 'px', vertical = false
   return `translate3d(${value})`;
 }
 
-export function caclLineSizePos({ count, isVertical, scrollable, itemWidth = 0, value }) {
-  const pos = scrollable ? value * itemWidth : 100 * value;
+export function caclLineSizePos({ count, isVertical, scrollable, itemWidth = 0, value, el }) {
+  let pos = 100 * value;
+  if (scrollable && el) {
+    const { offsetLeft = 0, offsetTop = 0 } = el;
+    pos = isVertical ? offsetTop : offsetLeft;
+  }
 
   const size = scrollable ? `${itemWidth}px` : `${100 / count}%`;
   const transformValue = scrollable
