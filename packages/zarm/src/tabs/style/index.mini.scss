@@ -1,0 +1,14 @@
+@import '../../style/core/index';
+@import 'component';
+
+@include b(tabs) {
+
+  @include m(horizontal) {
+
+    @include e(line) {
+      height: var(--active-line-height);
+      left: 0;
+      top: calc(var(--height) - var(--active-line-height));
+    }
+  }
+}

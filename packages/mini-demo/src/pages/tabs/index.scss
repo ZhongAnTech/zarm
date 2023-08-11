@@ -1,0 +1,12 @@
+.content {
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-height {
+  .za-tabs__tablist {
+    height: 400px;
+  }
+}

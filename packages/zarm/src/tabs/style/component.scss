@@ -40,6 +40,7 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     cursor: pointer;
+    display: inline-block;
 
     @include m(disabled) {
       color: var(--color-disabled);
@@ -78,6 +79,7 @@
       display: flex;
       height: var(--height);
       line-height: var(--height);
+      white-space: nowrap;
     }
 
     @include e(line) {
@@ -113,6 +115,7 @@
     @include e(tab) {
       text-align: center;
       padding: var(--padding-vertical) var(--padding-horizontal);
+      display: block;
     }
 
     @include e(line) {

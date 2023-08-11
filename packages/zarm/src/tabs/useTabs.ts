@@ -11,6 +11,7 @@ const getChildChecked = (children: TabPanelProps['children']) => {
   });
   return selectIndex;
 };
+
 const useTabs = (props) => {
   const [currentValue, setCurrentValue] = useControllableValue(props);
 

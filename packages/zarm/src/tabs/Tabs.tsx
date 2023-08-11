@@ -3,13 +3,13 @@ import * as React from 'react';
 import type { CarouselHTMLElement } from '../carousel';
 import Carousel from '../carousel';
 import { ConfigContext } from '../config-provider';
-import { scrollTo } from '../utils/dom';
+import { getStyleComputedProperty, scrollTo } from '../utils/dom';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseTabsProps } from './interface';
 import type { TabPanelProps } from './TabPanel';
 import TabPanel from './TabPanel';
 import useTabs from './useTabs';
-import { getPxStyle, getTransformPropValue } from './util/index';
+import { caclLineSizePos } from './util/index';
 
 export interface TabsCssVars {
   '--font-size'?: React.CSSProperties['fontSize'];
@@ -29,18 +29,8 @@ interface CompoundedComponent
 }
 
 const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
-  const {
-    className,
-    style,
-    value,
-    disabled,
-    swipeable,
-    scrollable,
-    direction,
-    lineWidth,
-    onChange,
-    children,
-  } = props;
+  const { className, style, disabled, swipeable, scrollable, direction, lineWidth, children } =
+    props;
 
   const carouselRef = React.useRef<CarouselHTMLElement>(null);
   const tablistRef = React.useRef<HTMLUListElement>(null);
@@ -62,41 +52,6 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
     className,
   ]);
 
-  // 计算 line 大小和位置
-  const caclLineSizePos = () => {
-    const newValue = currentValue;
-    const ChildCount = React.Children.count(children);
-
-    let pos = 100 * newValue;
-    if (scrollable && tablistRef.current) {
-      const el = tablistRef.current.children[newValue];
-      const { offsetLeft = 0, offsetTop = 0 } = el as HTMLElement;
-      pos = isVertical ? offsetTop : offsetLeft;
-    }
-
-    const size = scrollable ? `${itemWidth}px` : `${100 / ChildCount}%`;
-    const transformValue = scrollable
-      ? getPxStyle(pos, 'px', isVertical)
-      : getPxStyle(pos, '%', isVertical);
-    const styleUl = getTransformPropValue(transformValue);
-    const itemSize = isVertical ? { height: `${size}` } : { width: `${size}` };
-
-    return {
-      ...styleUl,
-      ...itemSize,
-    };
-  };
-
-  const onTabChange = React.useCallback(
-    (newValue: number) => {
-      if (typeof value === 'undefined') {
-        setCurrentValue(newValue);
-      }
-      onChange?.(newValue);
-    },
-    [value, onChange],
-  );
-
   const onTabClick = (tab: React.ReactElement<TabPanelProps, typeof TabPanel>, index: number) => {
     if (disabled || tab.props.disabled) {
       return;
@@ -105,10 +60,17 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
       carouselRef.current && carouselRef.current!.onSlideTo(index);
       return;
     }
-    onTabChange(index);
+    setCurrentValue(index);
   };
 
-  const lineStyle: React.CSSProperties = caclLineSizePos();
+  const lineStyle: React.CSSProperties = caclLineSizePos({
+    count: React.Children.count(children),
+    value: currentValue,
+    scrollable,
+    isVertical,
+    itemWidth,
+  });
+
   let lineInnerRender;
   if (lineWidth) {
     lineStyle.backgroundColor = 'transparent';
@@ -125,7 +87,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
         showPagination={false}
         activeIndex={currentValue}
         ref={carouselRef}
-        onChange={onTabChange}
+        onChange={setCurrentValue}
       >
         {React.Children.map(children, (item: any, index: number) => (
           <div key={+index}>{item.props.children}</div>
@@ -136,7 +98,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
     contentRender = React.Children.map(
       children,
       (item: React.ReactElement<TabPanelProps, typeof TabPanel>, index: number) => (
-        <TabPanel {...item.props} selected={currentValue === index} />
+        <TabPanel {...item.props} isActive={currentValue === index} />
       ),
     );
   }
@@ -160,21 +122,15 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
   // 渲染选项
   const tabsRender = React.Children.map(children, renderTabs);
 
-  const getItemStyle = (el, prop) => {
-    let newValue = '0';
-    if (el && prop in el?.style) {
-      newValue = el.style[prop] || window.getComputedStyle(el).getPropertyValue(prop) || '0';
-    }
-    return newValue;
-  };
-
   const calculateLineWidth = React.useCallback(() => {
     if (!scrollable) {
       return;
     }
     const newValue = currentValue;
     const el = tablistRef.current!.children[newValue];
-    const size = isVertical ? getItemStyle(el, 'height') : getItemStyle(el, 'width');
+    const size = isVertical
+      ? getStyleComputedProperty(el, 'height')
+      : getStyleComputedProperty(el, 'width');
 
     setItemWidth(parseInt(size.toString(), 10));
   }, [currentValue, isVertical, scrollable]);

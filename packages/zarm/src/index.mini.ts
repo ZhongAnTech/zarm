@@ -11,3 +11,5 @@ export type { PanelProps } from './panel/index.mini';
 export { default as Popup } from './popup/index.mini';
 export type { PopupProps } from './popup/index.mini';
 export { default as Select } from './select';
+export { default as Tabs } from './tabs/index.mini';
+export type { TabPanelProps, TabsCssVars, TabsProps } from './tabs/index.mini';

@@ -13,7 +13,6 @@ export interface BaseTabsProps {
 }
 
 export interface BaseTabPanelProps {
-  selected?: boolean;
   disabled?: boolean;
   title?: React.ReactNode;
   children?: React.ReactNode;
