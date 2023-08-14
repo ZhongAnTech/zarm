@@ -4,7 +4,7 @@ import { ConfigContext } from '../config-provider';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseTabPanelProps } from './interface';
 
-export type TabPanelProps = BaseTabPanelProps & HTMLProps & { isActive: boolean };
+export type TabPanelProps = BaseTabPanelProps & HTMLProps & { isActive?: boolean };
 
 const TabPanel = React.forwardRef<HTMLDivElement, TabPanelProps>((props, ref) => {
   const { className, isActive, children, style } = props;
