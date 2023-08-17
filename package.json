@@ -66,5 +66,8 @@
     "stylelint-config-za": "0.3.0",
     "stylelint-scss": "^3.18.0",
     "typescript": "~4.5.0"
+  },
+  "engines": {
+    "node": ">= 16.18.1"
   }
 }

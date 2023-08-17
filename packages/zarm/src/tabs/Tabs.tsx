@@ -21,6 +21,7 @@ export interface TabsCssVars {
   '--padding-horizontal'?: React.CSSProperties['left'];
   '--padding-vertical'?: React.CSSProperties['top'];
 }
+
 export type TabsProps = BaseTabsProps & HTMLProps<TabsCssVars>;
 
 interface CompoundedComponent

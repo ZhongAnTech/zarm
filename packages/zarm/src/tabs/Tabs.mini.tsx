@@ -21,6 +21,7 @@ export interface TabsCssVars {
   '--padding-horizontal'?: React.CSSProperties['left'];
   '--padding-vertical'?: React.CSSProperties['top'];
 }
+
 export type TabsProps = BaseTabsProps & HTMLProps<TabsCssVars>;
 
 interface CompoundedComponent
@@ -39,6 +40,8 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
     height: 0,
     left: 0,
     top: 0,
+    offsetLeft: 0,
+    offsetTop: 0,
   });
   const [currentValue, setCurrentValue] = useTabs(props);
   const isVertical: boolean = direction === 'vertical';
@@ -163,17 +166,18 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
       }
       i += 1;
     }
+    const maxOffsetLeft = left - rect.width;
+    const maxOffsetTop = top - rect.height;
+    const offsetLeft = rects[newValue].left - rect.width / 2 + rects[newValue].width / 2;
+    const offsetTop = rects[newValue].top - rect.height / 2 + rects[newValue].height / 2;
     setItemBoundingClientRect({
       ...rect,
       left,
       top,
+      offsetLeft: Math.min(Math.max(offsetLeft, 0), maxOffsetLeft),
+      offsetTop: Math.min(Math.max(offsetTop, 0), maxOffsetTop),
     });
   }, [currentValue, isVertical, scrollable]);
-
-  const newIndex = React.useMemo(() => {
-    return currentValue - 1 < 0 ? 0 : currentValue - 1;
-  }, [isVertical, currentValue]);
-  const scrollIntoView = tablistRef?.current?.children?.[newIndex]?.id;
 
   React.useEffect(() => {
     if (React.Children.count(children)) {
@@ -185,23 +189,23 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
     <View ref={ref} className={classes} style={style}>
       <View className={bem('header')}>
         {scrollable ? (
-          <>
-            <ScrollView
-              className={bem('tablist')}
-              ref={tablistRef}
-              scrollX={!isVertical}
-              scrollY={isVertical}
-              id={tabsId}
-              scrollWithAnimation
-              // scrollLeft={itemBoundingClientRect.left}
-              scrollIntoView={scrollIntoView}
-            >
-              {tabsRender}
-              <View className={bem('line')} style={lineStyle}>
-                {lineInnerRender}
-              </View>
-            </ScrollView>
-          </>
+          <ScrollView
+            className={bem('tablist')}
+            ref={tablistRef}
+            scrollX={!isVertical}
+            scrollY={isVertical}
+            id={tabsId}
+            scrollWithAnimation
+            showScrollbar={false}
+            enableFlex
+            scrollLeft={isVertical ? 0 : itemBoundingClientRect.offsetLeft}
+            scrollTop={isVertical ? itemBoundingClientRect.offsetTop : 0}
+          >
+            {tabsRender}
+            <View className={bem('line')} style={lineStyle}>
+              {lineInnerRender}
+            </View>
+          </ScrollView>
         ) : (
           <View className={bem('tablist')} ref={tablistRef}>
             {tabsRender}
