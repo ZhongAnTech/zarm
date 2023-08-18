@@ -176,7 +176,6 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性             | 类型                              | 默认值 | 说明                       |
 | :--------------- | :-------------------------------- | :----- | :------------------------- |
-| visible          | boolean                           | true   | 是否显示                   |
 | activeKey        | number \| string                  | -      | 当前选中项                 |
 | defaultActiveKey | number \| string                  | -      | 初始选中项, 默认第一个选中 |
 | safeArea         | boolean                           | false  | 是否适配安全区域           |

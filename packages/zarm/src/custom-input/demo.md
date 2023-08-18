@@ -25,7 +25,7 @@ const Demo = () => {
         />
       </List.Item>
       <List.Item title="金额">
-        <CustomInput type="price" placeholder="type is price" defaultValue="14.00" />
+        <CustomInput type="price" placeholder="type is price" defaultValue="12.00" />
       </List.Item>
       <List.Item title="身份证">
         <CustomInput type="idcard" maxLength={18} placeholder="type is idcard" />
@@ -71,7 +71,7 @@ import { CustomInput, List } from 'zarm';
 ReactDOM.render(
   <List>
     <List.Item>
-      <CustomInput readOnly type="price" defaultValue="我是只读状态" />
+      <CustomInput readOnly type="price" defaultValue="12.00" />
     </List.Item>
   </List>,
   mountNode,
@@ -86,7 +86,7 @@ import { CustomInput, List } from 'zarm';
 ReactDOM.render(
   <List>
     <List.Item>
-      <CustomInput disabled type="price" value="我是禁用状态" />
+      <CustomInput disabled type="price" value="12.00" />
     </List.Item>
   </List>,
   mountNode,

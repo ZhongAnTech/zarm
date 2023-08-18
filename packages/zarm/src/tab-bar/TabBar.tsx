@@ -27,8 +27,7 @@ const TabBar = React.forwardRef<HTMLDivElement, TabBarProps>((props, ref) => {
 
   const bem = createBEM('tab-bar', { prefixCls });
 
-  const { visible, className, children, onChange, activeKey, defaultActiveKey, safeArea, ...rest } =
-    props;
+  const { className, children, onChange, activeKey, defaultActiveKey, safeArea, ...rest } = props;
 
   const [selectedKey, setSelectedKey] = useState(defaultActiveKey);
 
@@ -78,16 +77,7 @@ const TabBar = React.forwardRef<HTMLDivElement, TabBarProps>((props, ref) => {
     },
   );
   return (
-    <div
-      {...rest}
-      ref={ref}
-      className={bem([
-        {
-          hidden: !visible,
-        },
-        className,
-      ])}
-    >
+    <div {...rest} ref={ref} className={bem([className])}>
       <div className={bem('wrapper')}>{items}</div>
       {safeArea && <SafeArea position="bottom" />}
     </div>
@@ -95,9 +85,5 @@ const TabBar = React.forwardRef<HTMLDivElement, TabBarProps>((props, ref) => {
 }) as CompoundedComponent;
 
 TabBar.displayName = 'TabBar';
-
-TabBar.defaultProps = {
-  visible: true,
-};
 
 export default TabBar;

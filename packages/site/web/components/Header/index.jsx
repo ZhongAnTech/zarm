@@ -1,21 +1,21 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { IntlProvider, FormattedMessage } from 'react-intl';
-import { Popup, Radio, Icon } from 'zarm';
-import { Dropdown, Menu } from 'zarm-web';
+import Locales from '@/locale';
+import { assets } from '@/site.config';
+import Context from '@/utils/context';
+import Events from '@/utils/events';
+import MenuComponent from '@/web/components/Menu';
+import { Search as SearchIcon } from '@zarm-design/icons';
+import pkg from '@zarmDir/package.json';
 import { Select } from 'antd';
-import { Search as SearchIcon, Close as CloseIcon } from '@zarm-design/icons';
 import classnames from 'classnames';
 import docsearch from 'docsearch.js';
-import MenuComponent from '@/web/components/Menu';
-import { assets } from '@/site.config';
-import Events from '@/utils/events';
-import Context from '@/utils/context';
-import Locales from '@/locale';
-import pkg from '@zarmDir/package.json';
 import 'docsearch.js/dist/cdn/docsearch.min.css';
-import './style.scss';
+import React, { useEffect, useRef, useState } from 'react';
+import { FormattedMessage, IntlProvider } from 'react-intl';
+import { useLocation } from 'react-router-dom';
+import { Icon, Popup, Radio } from 'zarm';
+import { Dropdown, Menu } from 'zarm-web';
 import 'zarm/style/entry';
+import './style.scss';
 
 const initDocSearch = () => {
   docsearch({
@@ -163,17 +163,20 @@ const Header = ({ children }) => {
                   defaultValue=""
                   options={[
                     {
+                      value: '',
+                      label: pkg.version,
+                    },
+                    {
                       value: '2x',
                       label: '2.x',
                     },
                     {
-                      value: '',
-                      label: pkg.version,
+                      value: '1x',
+                      label: '1.x',
                     },
                   ]}
                   onChange={(version) => {
-                    if (version)
-                      window.location.href = `https://${version}.zarm.design`;
+                    if (version) window.location.href = `https://${version}.zarm.design`;
                   }}
                 />
               </div>

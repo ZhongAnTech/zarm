@@ -45,13 +45,6 @@
       }
     }
   }
-
-  @include m(readonly) {
-    @include e(virtual-input) {
-      position: static;
-      white-space: normal;
-    }
-  }
 }
 
 @mixin input-placeholder() {

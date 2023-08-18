@@ -37,10 +37,6 @@
     overflow: visible;
   }
 
-  @include e(inner) {
-    flex: 1;
-  }
-
   @include e(label) {
     font-size: var(--label-font-size);
     line-height: var(--line-height);
