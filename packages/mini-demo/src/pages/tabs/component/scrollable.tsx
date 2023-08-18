@@ -6,7 +6,7 @@ const Demo = () => {
 
   return (
     <Panel title="标签栏滚动">
-      <Tabs value={value} onChange={setValue} lineWidth="60px" scrollable>
+      <Tabs value={value} onChange={setValue} scrollable>
         <Tabs.Panel title="选项卡1">
           <div className="content">选项卡1内容</div>
         </Tabs.Panel>

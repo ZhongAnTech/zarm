@@ -1,5 +1,5 @@
 .content {
-  height: 240px;
+  min-height: 240px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,4 +9,11 @@
   .za-tabs__tablist {
     height: 400px;
   }
+}
+
+.vertical-content {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
