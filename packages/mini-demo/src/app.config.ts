@@ -6,6 +6,7 @@ export default defineAppConfig({
     'pages/list/index',
     'pages/collapse/index',
     'pages/tabs/index',
+    'pages/input/index',
   ],
   window: {
     backgroundTextStyle: 'light',
