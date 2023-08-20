@@ -6,12 +6,10 @@ import { useLocation, useSiteData } from 'dumi';
 import DumiSearchBar from 'dumi/theme-default/slots/SearchBar';
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { useLocale, useSiteToken, useThemeConfig } from '../../../hooks';
-import DirectionIcon from '../../common/DirectionIcon';
 import * as utils from '../../utils';
 import type { SiteContextProps } from '../SiteContext';
 import { SiteContext } from '../SiteContext';
 import Logo from './Logo';
-import More from './More';
 import Navigation from './Navigation';
 import SwitchBtn from './SwitchBtn';
 import type { SharedProps } from './interface';
@@ -259,7 +257,7 @@ const Header: React.FC = () => {
           />,
         ]
       : []),
-    <More key="more" {...sharedProps} />,
+    // <More key="more" {...sharedProps} />,
     <SwitchBtn
       key="lang"
       onClick={onLangChange}
@@ -269,16 +267,16 @@ const Header: React.FC = () => {
       tooltip1="中文 / English"
       tooltip2="English / 中文"
     />,
-    <SwitchBtn
-      key="direction"
-      onClick={onDirectionChange}
-      value={direction === 'rtl' ? 2 : 1}
-      label1={<DirectionIcon css={style.dataDirectionIcon} direction="ltr" />}
-      tooltip1="LTR"
-      label2={<DirectionIcon css={style.dataDirectionIcon} direction="rtl" />}
-      tooltip2="RTL"
-      pure
-    />,
+    // <SwitchBtn
+    //   key="direction"
+    //   onClick={onDirectionChange}
+    //   value={direction === 'rtl' ? 2 : 1}
+    //   label1={<DirectionIcon css={style.dataDirectionIcon} direction="ltr" />}
+    //   tooltip1="LTR"
+    //   label2={<DirectionIcon css={style.dataDirectionIcon} direction="rtl" />}
+    //   tooltip2="RTL"
+    //   pure
+    // />,
     <a key="github" href="https://github.com/ZhongAnTech/zarm" target="_blank" rel="noreferrer">
       <SwitchBtn value={1} label1={<GithubOutlined />} tooltip1="Github" label2={null} pure />
     </a>,

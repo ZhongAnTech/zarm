@@ -20,6 +20,7 @@ const useStyle = () => {
       border-radius: 2px;
       cursor: pointer;
       transition: box-shadow 0.3s;
+      overflow: hidden;
 
       &:hover {
         box-shadow: ${boxShadowSecondary};

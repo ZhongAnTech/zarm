@@ -29,6 +29,7 @@ const GlobalDemoStyles: React.FC = () => {
           border-radius: ${token.borderRadius}px;
           transition: all 0.2s;
           display: flex;
+          overflow: hidden;
 
           @media only screen and (max-width: 1440px) {
             height: 640px;
@@ -68,7 +69,7 @@ const GlobalDemoStyles: React.FC = () => {
             }
 
             &-actions {
-              padding: 12px 22px;
+              padding: 16px 22px;
               border-top: 1px solid ${token.colorSplit};
               justify-content: end;
               display: flex;
@@ -283,11 +284,12 @@ const GlobalDemoStyles: React.FC = () => {
 
           .highlight {
             position: relative;
+            height: 100%;
+            overflow: auto;
 
             pre {
               margin: 0;
               padding: 0;
-              background: ${token.colorBgContainer};
             }
 
             &:not(:first-child) {
@@ -297,8 +299,8 @@ const GlobalDemoStyles: React.FC = () => {
 
           &-actions {
             display: flex;
-            justify-content: center;
-            padding: 12px 0;
+            justify-content: space-between;
+            padding: 12px 1em;
             border-bottom: 1px dashed ${token.colorSplit};
             opacity: 0.7;
             transition: opacity 0.3s;
@@ -414,6 +416,30 @@ const GlobalDemoStyles: React.FC = () => {
             .code-box-demo {
               direction: ltr;
             }
+          }
+        }
+
+        .previewer-tabs {
+          height: 100%;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          ${antCls}-tabs-nav {
+            flex-shrink: 0;
+          }
+
+          ${antCls}-tabs-nav-wrap {
+            padding: 0 1em;
+          }
+
+          ${antCls}-tabs-content-holder {
+            flex: 1;
+          }
+
+          ${antCls}-tabs-content,
+          ${antCls}-tabs-tabpane {
+            overflow: hidden;
+            height: 100%;
           }
         }
       `}

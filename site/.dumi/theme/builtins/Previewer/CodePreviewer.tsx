@@ -71,7 +71,6 @@ const CodePreviewer: React.FC<PreviewerProps> = (props) => {
   const location = useLocation();
 
   const entryCode = asset.dependencies['index.tsx'].value;
-
   const liveDemo = useRef<React.ReactNode>(null);
   const anchorRef = useRef<HTMLAnchorElement>(null);
   const codeSandboxIconRef = useRef<HTMLFormElement>(null);
@@ -83,12 +82,18 @@ const CodePreviewer: React.FC<PreviewerProps> = (props) => {
 
   const { hash } = location;
 
-  const highlightedCodes = {
-    // jsx: Prism.highlight(jsx, Prism.languages.javascript, 'jsx'),
-    tsx: Prism.highlight(entryCode, Prism.languages.javascript, 'jsx'),
-  };
-
-  const highlightedStyle = style ? Prism.highlight(style, Prism.languages.css, 'css') : '';
+  const files = Object.entries(props.asset.dependencies).reduce(
+    (memo: any[], [filename, { type, value }]) => {
+      if (type !== 'FILE') return memo;
+      const lang = filename.match(/\.([^.]+)$/)?.[1] || 'text';
+      return memo.concat({
+        label: filename,
+        value: Prism.highlight(value, Prism.languages.javascript, lang),
+        lang,
+      });
+    },
+    [],
+  );
 
   const handleCodeCopied = (demo: string) => {
     setCopied(true);
@@ -172,7 +177,7 @@ const CodePreviewer: React.FC<PreviewerProps> = (props) => {
       }
       return acc;
     },
-    { antd: themeConfig.version },
+    { zarm: themeConfig.version },
   );
 
   dependencies['@ant-design/icons'] = 'latest';
@@ -329,82 +334,81 @@ createRoot(document.getElementById('container')).render(<Demo />);
           <EditButton title={<FormattedMessage id="app.content.edit-demo" />} filename={filename} />
         </div> */}
           {description && <div className="code-box-description">{introChildren}</div>}
-          <Space className="code-box-actions" size="middle" wrap>
-            <form
-              className="code-box-code-action"
-              action="https://codesandbox.io/api/v1/sandboxes/define"
-              method="POST"
-              target="_blank"
-              ref={codeSandboxIconRef}
-              onClick={() => {
-                codeSandboxIconRef.current?.submit();
-              }}
-            >
-              <input
-                type="hidden"
-                name="parameters"
-                value={compress(JSON.stringify(codesanboxPrefillConfig))}
-              />
-              <Tooltip title={<FormattedMessage id="app.demo.codesandbox" />}>
-                <CodeSandboxIcon className="code-box-codesandbox" />
-              </Tooltip>
-            </form>
-            <form
-              className="code-box-code-action"
-              action="https://codepen.io/pen/define"
-              method="POST"
-              target="_blank"
-              ref={codepenIconRef}
-              onClick={() => {
-                codepenIconRef.current?.submit();
-              }}
-            >
-              <ClientOnly>
-                <input type="hidden" name="data" value={JSON.stringify(codepenPrefillConfig)} />
-              </ClientOnly>
-              <Tooltip title={<FormattedMessage id="app.demo.codepen" />}>
-                <CodePenIcon className="code-box-codepen" />
-              </Tooltip>
-            </form>
-            <Tooltip title={<FormattedMessage id="app.demo.stackblitz" />}>
-              <span
+          <div className="code-box-actions">
+            <Space size="middle">
+              <form
                 className="code-box-code-action"
+                action="https://codesandbox.io/api/v1/sandboxes/define"
+                method="POST"
+                target="_blank"
+                ref={codeSandboxIconRef}
                 onClick={() => {
-                  stackblitzSdk.openProject(stackblitzPrefillConfig, {
-                    openFile: [`demo.${suffix}`],
-                  });
+                  codeSandboxIconRef.current?.submit();
                 }}
               >
-                <ThunderboltOutlined className="code-box-stackblitz" />
-              </span>
-            </Tooltip>
-
-            <CopyToClipboard text={entryCode} onCopy={() => handleCodeCopied(asset.id)}>
-              <Tooltip
-                open={copyTooltipOpen as boolean}
-                onOpenChange={onCopyTooltipOpenChange}
-                title={<FormattedMessage id={`app.demo.${copied ? 'copied' : 'copy'}`} />}
+                <input
+                  type="hidden"
+                  name="parameters"
+                  value={compress(JSON.stringify(codesanboxPrefillConfig))}
+                />
+                <Tooltip title={<FormattedMessage id="app.demo.codesandbox" />}>
+                  <CodeSandboxIcon className="code-box-codesandbox" />
+                </Tooltip>
+              </form>
+              <form
+                className="code-box-code-action"
+                action="https://codepen.io/pen/define"
+                method="POST"
+                target="_blank"
+                ref={codepenIconRef}
+                onClick={() => {
+                  codepenIconRef.current?.submit();
+                }}
               >
-                {React.createElement(copied && copyTooltipOpen ? CheckOutlined : SnippetsOutlined, {
-                  className: 'code-box-code-copy code-box-code-action',
-                })}
+                <ClientOnly>
+                  <input type="hidden" name="data" value={JSON.stringify(codepenPrefillConfig)} />
+                </ClientOnly>
+                <Tooltip title={<FormattedMessage id="app.demo.codepen" />}>
+                  <CodePenIcon className="code-box-codepen" />
+                </Tooltip>
+              </form>
+              <Tooltip title={<FormattedMessage id="app.demo.stackblitz" />}>
+                <span
+                  className="code-box-code-action"
+                  onClick={() => {
+                    stackblitzSdk.openProject(stackblitzPrefillConfig, {
+                      openFile: [`demo.${suffix}`],
+                    });
+                  }}
+                >
+                  <ThunderboltOutlined className="code-box-stackblitz" />
+                </span>
               </Tooltip>
-            </CopyToClipboard>
-          </Space>
+            </Space>
+            <Space size="middle">
+              <CopyToClipboard text={entryCode} onCopy={() => handleCodeCopied(asset.id)}>
+                <Tooltip
+                  open={copyTooltipOpen as boolean}
+                  onOpenChange={onCopyTooltipOpenChange}
+                  title={<FormattedMessage id={`app.demo.${copied ? 'copied' : 'copy'}`} />}
+                >
+                  {React.createElement(
+                    copied && copyTooltipOpen ? CheckOutlined : SnippetsOutlined,
+                    {
+                      className: 'code-box-code-copy code-box-code-action',
+                    },
+                  )}
+                </Tooltip>
+              </CopyToClipboard>
+            </Space>
+          </div>
         </section>
         <section className="highlight-wrapper" key="code">
           <CodePreview
-            codes={highlightedCodes}
+            files={files}
             toReactComponent={toReactComponent}
             onCodeTypeChange={(type) => setCodeType(type)}
           />
-          {highlightedStyle ? (
-            <div key="style" className="highlight">
-              <pre>
-                <code className="css" dangerouslySetInnerHTML={{ __html: highlightedStyle }} />
-              </pre>
-            </div>
-          ) : null}
         </section>
       </div>
       <div className="code-box-device">

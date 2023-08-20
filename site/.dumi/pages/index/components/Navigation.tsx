@@ -48,7 +48,7 @@ export const Navigation: React.FC = () => {
     open && setOpen(false);
   }, ref);
 
-  const galleryPath = getLocalizedPathname('gallery').pathname;
+  const galleryPath = getLocalizedPathname('gallery', true).pathname;
 
   return (
     <div css={navigation}>

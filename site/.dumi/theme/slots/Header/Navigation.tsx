@@ -5,7 +5,6 @@ import { Menu } from 'antd';
 import { FormattedMessage, Link, useFullSidebarData, useLocation } from 'dumi';
 import { useLocale, useSiteToken, useThemeConfig } from '../../../hooks';
 import * as utils from '../../utils';
-import { getEcosystemGroup } from './More';
 import type { SharedProps } from './interface';
 
 // ============================= Theme =============================
@@ -152,12 +151,12 @@ export default ({
       onClick: onLangChange,
       key: 'switch-lang',
     },
-    {
-      label: directionText,
-      onClick: onDirectionChange,
-      key: 'switch-direction',
-    },
-    ...getEcosystemGroup(),
+    // {
+    //   label: directionText,
+    //   onClick: onDirectionChange,
+    //   key: 'switch-direction',
+    // },
+    // ...getEcosystemGroup(),
   ];
 
   if (isMobile) {
@@ -215,22 +214,26 @@ export default ({
     },
     isZhCN && isClient && window.location.host !== 'zarm.gitee.io'
       ? {
-          label: '国内镜像',
+          label: (
+            <a href="https://zarm.gitee.io/" target="_blank">
+              国内镜像
+            </a>
+          ),
           key: 'mirror',
-          children: [
-            {
-              label: <a href="https://zarm.gitee.io/">官方镜像</a>,
-              icon: (
-                <img
-                  alt="logo"
-                  src={themeConfig.logo}
-                  width={16}
-                  style={{ verticalAlign: 'text-bottom' }}
-                />
-              ),
-              key: 'gitee',
-            },
-          ],
+          // children: [
+          //   {
+          //     label: <a href="https://zarm.gitee.io/">官方镜像</a>,
+          //     icon: (
+          //       <img
+          //         alt="logo"
+          //         src={themeConfig.logo}
+          //         width={16}
+          //         style={{ verticalAlign: 'text-bottom' }}
+          //       />
+          //     ),
+          //     key: 'gitee',
+          //   },
+          // ],
         }
       : null,
     ...(additional ?? []),
