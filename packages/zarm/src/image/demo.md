@@ -200,7 +200,7 @@ ReactDOM.render(
 | alt         | boolean                                                  | -      | 图片描述                                     |
 | lazy        | boolean                                                  | false  | 是否懒加载                                   |
 | shape       | 'rect' \| 'radius' \| 'round' \| 'circle'                | 'rect' | 图片形状                                     |
-| fill        | 'contain' \| 'cover' \| 'fill' \| 'none' \| 'scale-down' | 'fill' | 图片填充模式                                 |
+| fit         | 'contain' \| 'cover' \| 'fill' \| 'none' \| 'scale-down' | 'fill' | 图片填充模式                                 |
 | preview     | boolean                                                  | false  | 是否支持图片预览                             |
 | onLoad      | (event: React.SyntheticEvent<HTMLImageElement>) => void  | -      | 加载时触发的回调函数                         |
 | onError     | (event: React.SyntheticEvent<HTMLImageElement>) => void  | -      | 加载出错时触发的回调函数                     |
