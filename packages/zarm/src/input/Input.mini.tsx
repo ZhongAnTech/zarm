@@ -6,25 +6,35 @@ import { ConfigContext } from '../config-provider';
 import { useControllableEventValue } from '../utils/hooks';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseInputTextareaProps, BaseInputTextProps, InputCssVars } from './interface';
+import { countSymbols } from './utils';
 
-const regexAstralSymbols = /[\uD800-\uDBFF][\uDC00-\uDFFF]|\n/g;
+export type { InputCssVars } from './interface';
 
-const countSymbols = (text = '') => {
-  return text.replace(regexAstralSymbols, '_').length;
-};
-
-export type InputTextProps = BaseInputTextProps & HTMLProps<InputCssVars> & InputProps;
-
-export type InputTextareaProps = BaseInputTextareaProps & TextareaProps & HTMLProps<InputCssVars>;
-
-export type InputBaseProps = {
+interface ExtraProps {
   type?: string;
   maxLength: number;
   defaultValue: string;
   onChange: (value: string) => void;
   showLength: boolean;
   readOnly: boolean;
-} & (InputTextProps | InputTextareaProps);
+}
+
+interface InputType {
+  type: InputProps.Type | 'textarea';
+}
+
+export type InputTextProps = BaseInputTextProps &
+  HTMLProps<InputCssVars> &
+  Omit<InputProps, 'Type'> &
+  ExtraProps &
+  InputType;
+
+export type InputTextareaProps = BaseInputTextareaProps &
+  TextareaProps &
+  HTMLProps<InputCssVars> &
+  ExtraProps;
+
+export type InputBaseProps = InputTextProps | InputTextareaProps;
 
 const InputBase = (props: InputBaseProps) => {
   const {
@@ -35,26 +45,30 @@ const InputBase = (props: InputBaseProps) => {
     showLength,
     readOnly,
     maxLength,
-    autoHeight,
     className,
     style,
-    maxlength,
     label,
-    defaultValue = '',
-    onChange,
     onBlur,
     onFocus,
     confirmType,
-    ...restProps
-  } = props as InputBaseProps;
+    placeholder,
+    placeholderStyle,
+    cursorSpacing,
+    cursor,
+    selectionStart,
+    selectionEnd,
+    adjustPosition,
+    holdKeyboard,
+    onConfirm,
+    onKeyboardHeightChange,
+  } = props;
 
   const [value, setValue] = useControllableEventValue({
     ...props,
-    defaultValue,
     eventKey: 'detail',
   });
   const [focused, setFocused] = React.useState<boolean>(autoFocus!);
-  const isTextarea = type === 'text' && 'autoHeight' in props;
+  const isTextarea = type === 'textarea';
 
   const showClearIcon = clearable && !disabled && typeof value !== 'undefined' && value?.length > 0;
 
@@ -67,6 +81,7 @@ const InputBase = (props: InputBaseProps) => {
       disabled,
       clearable: showClearIcon,
       focus: focused,
+      autoHeight: 'autoHeight' in props && props.autoHeight,
     },
     className,
   ]);
@@ -76,23 +91,32 @@ const InputBase = (props: InputBaseProps) => {
     <View className={bem('length')}>{`${countSymbols(value)}/${maxLength}`}</View>
   );
 
-  const commonProps: InputTextProps & InputTextareaProps = {
-    // ...restProps,
+  const commonProps = {
     maxlength: maxLength,
     disabled,
     autoFocus,
-    // readOnly,
+    placeholder,
+    placeholderStyle,
+    cursorSpacing,
+    cursor,
+    selectionStart,
+    selectionEnd,
+    adjustPosition,
+    onConfirm,
+    onKeyboardHeightChange,
+    holdKeyboard,
     value,
     onFocus: (e) => {
       setFocused(true);
       onFocus?.(e);
     },
     onBlur: (e) => {
-      setFocused(false);
       onBlur?.(e);
+      setTimeout(() => {
+        setFocused(false);
+      }, 50);
     },
     onInput: (e) => {
-      // console.log(e);
       setValue(e as any);
     },
   };
@@ -100,14 +124,33 @@ const InputBase = (props: InputBaseProps) => {
   // 渲染输入框
   const inputRender = isTextarea ? (
     <View className={bem('inner')}>
-      <Textarea {...commonProps} autoHeight />
+      <Textarea
+        {...commonProps}
+        autoHeight={(props as TextareaProps).autoHeight}
+        showConfirmBar={(props as TextareaProps).showConfirmBar}
+        disableDefaultPadding={(props as TextareaProps).disableDefaultPadding}
+        confirmType={(props as TextareaProps).confirmType}
+        confirmHold={(props as TextareaProps).confirmHold}
+        adjustKeyboardTo={(props as TextareaProps).adjustKeyboardTo}
+        onLineChange={(props as TextareaProps).onLineChange}
+      />
       {textLengthRender}
     </View>
   ) : (
     <Input
       {...commonProps}
       confirmType={confirmType as keyof InputProps.ConfirmType}
-      type={type as keyof InputProps.Type}
+      type={(type === 'password' ? 'text' : type) as keyof InputProps.Type}
+      password={type === 'password'}
+      alwaysEmbed={(props as InputProps).alwaysEmbed}
+      confirmHold={(props as InputProps).confirmHold}
+      safePasswordCertPath={(props as InputProps).safePasswordCertPath}
+      safePasswordLength={(props as InputProps).safePasswordLength}
+      safePasswordTimeStamp={(props as InputProps).safePasswordTimeStamp}
+      safePasswordNonce={(props as InputProps).safePasswordNonce}
+      safePasswordSalt={(props as InputProps).safePasswordSalt}
+      safePasswordCustomHash={(props as InputProps).safePasswordCustomHash}
+      onNickNameReview={(props as InputProps).onNickNameReview}
     />
   );
 
@@ -119,7 +162,19 @@ const InputBase = (props: InputBaseProps) => {
 
   // 渲染清除按钮
   const clearIconRender = showClearIcon && (
-    <CloseCircleFill className={bem('clear')} onClick={() => console.log(1)} />
+    <CloseCircleFill
+      className={bem('clear')}
+      onClick={(e) => {
+        e.stopPropagation();
+        setTimeout(() => {
+          setValue({
+            detail: {
+              value: '',
+            },
+          } as any);
+        }, 100);
+      }}
+    />
   );
 
   return (
@@ -140,7 +195,6 @@ InputBase.defaultProps = {
   readOnly: false,
   clearable: false,
   showLength: false,
-  autoHeight: false,
 };
 
 export default InputBase;
