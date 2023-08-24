@@ -125,6 +125,10 @@ const InputBase = (props: InputBaseProps) => {
   const inputRender = isTextarea ? (
     <View className={bem('inner')}>
       <Textarea
+        nativeProps={{
+          className: bem('textarea', [className]),
+          style,
+        }}
         {...commonProps}
         autoHeight={(props as TextareaProps).autoHeight}
         showConfirmBar={(props as TextareaProps).showConfirmBar}
@@ -155,7 +159,7 @@ const InputBase = (props: InputBaseProps) => {
   );
 
   // 渲染文本内容
-  const textRender = <View className={bem('content')}>{value}</View>;
+  const textRender = <View className={bem('content', [className])}>{value}</View>;
 
   // 渲染标签栏
   const labelRender = !!label && <View className={bem('label')}>{label}</View>;

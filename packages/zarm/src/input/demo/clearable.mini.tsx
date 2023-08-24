@@ -1,20 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Input, List, Panel } from 'zarm/mini';
 
 function Demo() {
+  const [value, setValue] = useState('');
   return (
-    <Panel title="只读">
+    <Panel title="带清除按钮">
       <List>
         <List.Item title="单行文本">
-          <Input readOnly value="我是只读状态" />
-        </List.Item>
-        <List.Item title="多行文本">
           <Input
-            readOnly
-            className="auto-height"
-            value="我是只读状态，我是只读状态，我是只读状态，我是只读状态。"
-            type="textarea"
-            autoHeight
+            clearable
+            placeholder="输入后右侧可见清除按钮"
+            value={value}
+            onChange={(e) => {
+              setValue(e.detail.value);
+              console.log(`onChange: ${e.detail.value}`);
+            }}
           />
         </List.Item>
       </List>

@@ -10,4 +10,16 @@
       -webkit-text-fill-color: inherit;
     }
   }
+
+  @include e(textarea) {
+    width: 100%;
+    background-color: transparent;
+    resize: none;
+    border: none;
+    padding: var(--textarea-padding-vertical) 0;
+  }
+
+  // @include e(content) {
+  //   line-height: 0;
+  // }
 }
