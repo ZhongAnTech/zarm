@@ -1,4 +1,4 @@
-import { mocked } from 'ts-jest/utils';
+import { mocked } from "jest-mock";
 import fs from 'fs';
 import { sync } from 'mkdirp';
 import signale from 'signale';
@@ -23,7 +23,8 @@ describe('template', () => {
   });
   describe('#createTemplate', () => {
     it('should create react component code snippet', () => {
-      chalkGreenMocked.mockImplementation((str: any) => str);
+      // @ts-ignore
+      chalkGreenMocked.mockImplementation((str) => str);
       const openSyncMocked = jest.spyOn(fs, 'openSync').mockReturnValue(1);
       const writeSyncMocked = jest.spyOn(fs, 'writeSync').mockReturnValue(1);
       const infoStub = jest.spyOn(console, 'info').mockReturnValue();
