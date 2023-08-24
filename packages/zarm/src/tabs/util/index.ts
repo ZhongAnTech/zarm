@@ -1,3 +1,5 @@
+import { Children } from 'react';
+
 export function getTransformPropValue(v: any) {
   return {
     transform: v,
@@ -30,3 +32,9 @@ export function caclLineSizePos({ count, isVertical, scrollable, itemWidth = 0, 
     ...itemSize,
   };
 }
+
+export const getAllValue = (children) => {
+  return Children.map(children, (item, index) => {
+    return item.props.value ?? index;
+  });
+};

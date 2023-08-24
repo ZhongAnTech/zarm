@@ -5,22 +5,14 @@ import { ConfigContext } from '../config-provider';
 import { nanoid } from '../utils';
 import { getRect, getRects } from '../utils/dom/dom.mini';
 import type { HTMLProps } from '../utils/utilityTypes';
-import type { BaseTabsProps } from './interface';
+import TabsContext from './context';
+import type { BaseTabsProps, TabsCssVars } from './interface';
 import type { TabPanelProps } from './TabPanel';
 import TabPanel from './TabPanel';
 import useTabs from './useTabs';
-import { caclLineSizePos } from './util/index';
+import { caclLineSizePos, getAllValue } from './util/index';
 
-export interface TabsCssVars {
-  '--font-size'?: React.CSSProperties['fontSize'];
-  '--color'?: React.CSSProperties['color'];
-  '--color-disabled'?: React.CSSProperties['color'];
-  '--height'?: React.CSSProperties['height'];
-  '--active-color'?: React.CSSProperties['color'];
-  '--active-line-height'?: React.CSSProperties['height'];
-  '--padding-horizontal'?: React.CSSProperties['left'];
-  '--padding-vertical'?: React.CSSProperties['top'];
-}
+// export { TabsCssVars } from  './interface';
 
 export type TabsProps = BaseTabsProps & HTMLProps<TabsCssVars>;
 
@@ -59,18 +51,26 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
     className,
   ]);
 
-  const onTabClick = (tab: React.ReactElement<TabPanelProps, typeof TabPanel>, index: number) => {
+  const swiperCurrent = React.useRef(0);
+
+  const onTabClick = (
+    tab: React.ReactElement<TabPanelProps, typeof TabPanel>,
+    index: number,
+    value: string | number,
+  ) => {
     if (disabled || tab.props.disabled) {
       return;
     }
-    setCurrentValue(index);
+    swiperCurrent.current = index;
+    setCurrentValue(value);
   };
 
   const count = React.useMemo(() => React.Children.count(children), [children]);
+  const values = getAllValue(children);
 
   const lineStyle: React.CSSProperties = caclLineSizePos({
     count,
-    value: currentValue,
+    value: values.indexOf(currentValue),
     scrollable,
     isVertical,
     itemWidth,
@@ -92,12 +92,13 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
     contentRender = (
       <Swiper
         vertical={isVertical}
-        current={currentValue}
+        current={swiperCurrent.current}
         circular
         onChange={(e) => {
           const { current } = e.detail;
           if (current !== currentValue) {
-            setCurrentValue(current);
+            swiperCurrent.current = current;
+            setCurrentValue(children[current].props.value ?? current);
           }
         }}
       >
@@ -112,7 +113,7 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
     contentRender = React.Children.map(
       children,
       (item: React.ReactElement<TabPanelProps, typeof TabPanel>, index: number) => (
-        <TabPanel {...item.props} isActive={currentValue === index} />
+        <TabPanel {...item.props} value={item.props.value ?? index} />
       ),
     );
   }
@@ -120,10 +121,11 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
   const tabId = React.useMemo(() => nanoid(), []);
   const renderTabs = React.useCallback(
     (tab: React.ReactElement<TabPanelProps, typeof TabPanel>, index: number) => {
+      const value = tab.props.value || index;
       const itemCls = bem('tab', [
         {
           disabled: disabled || tab.props.disabled,
-          active: currentValue === index,
+          active: currentValue === value,
         },
         tab.props.className,
       ]);
@@ -132,7 +134,7 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
         <View
           key={+index}
           className={itemCls}
-          onClick={() => onTabClick(tab, index)}
+          onClick={() => onTabClick(tab, index, value)}
           id={`tab-item-${tabId}-${index}`}
         >
           {tab.props.title}
@@ -186,37 +188,43 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
   }, [calculateLineWidth, children]);
 
   return (
-    <View ref={ref} className={classes} style={style}>
-      <View className={bem('header')}>
-        {scrollable ? (
-          <ScrollView
-            className={bem('tablist')}
-            ref={tablistRef}
-            scrollX={!isVertical}
-            scrollY={isVertical}
-            id={tabsId}
-            scrollWithAnimation
-            showScrollbar={false}
-            enableFlex
-            scrollLeft={isVertical ? 0 : itemBoundingClientRect.offsetLeft}
-            scrollTop={isVertical ? itemBoundingClientRect.offsetTop : 0}
-          >
-            {tabsRender}
-            <View className={bem('line')} style={lineStyle}>
-              {lineInnerRender}
+    <TabsContext.Provider
+      value={{
+        current: currentValue,
+      }}
+    >
+      <View ref={ref} className={classes} style={style}>
+        <View className={bem('header')}>
+          {scrollable ? (
+            <ScrollView
+              className={bem('tablist')}
+              ref={tablistRef}
+              scrollX={!isVertical}
+              scrollY={isVertical}
+              id={tabsId}
+              scrollWithAnimation
+              showScrollbar={false}
+              enableFlex
+              scrollLeft={isVertical ? 0 : itemBoundingClientRect.offsetLeft}
+              scrollTop={isVertical ? itemBoundingClientRect.offsetTop : 0}
+            >
+              {tabsRender}
+              <View className={bem('line')} style={lineStyle}>
+                {lineInnerRender}
+              </View>
+            </ScrollView>
+          ) : (
+            <View className={bem('tablist')} ref={tablistRef}>
+              {tabsRender}
+              <View className={bem('line')} style={lineStyle}>
+                {lineInnerRender}
+              </View>
             </View>
-          </ScrollView>
-        ) : (
-          <View className={bem('tablist')} ref={tablistRef}>
-            {tabsRender}
-            <View className={bem('line')} style={lineStyle}>
-              {lineInnerRender}
-            </View>
-          </View>
-        )}
+          )}
+        </View>
+        <View className={bem('body')}>{contentRender}</View>
       </View>
-      <View className={bem('body')}>{contentRender}</View>
-    </View>
+    </TabsContext.Provider>
   );
 }) as CompoundedComponent;
 
