@@ -1,0 +1,13 @@
+@import '../../style/core/index';
+@import 'component';
+
+@include b(input) {
+  @include define(textarea-padding-vertical, 5px);
+
+  // 禁用
+  @include m(disabled) {
+    textarea {
+      -webkit-text-fill-color: inherit;
+    }
+  }
+}
