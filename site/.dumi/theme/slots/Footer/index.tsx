@@ -71,6 +71,10 @@ const useStyle = () => {
         padding-inline: ${token.marginXXL}px;
       }
 
+      .rc-footer-columns {
+        justify-content: space-between;
+      }
+
       .rc-footer-bottom {
         box-shadow: inset 0 106px 36px -116px rgba(0, 0, 0, 0.14);
         .rc-footer-bottom-container {

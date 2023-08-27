@@ -10,7 +10,9 @@ export default defineConfig({
   outputPath: 'dist',
   ssr: process.env.NODE_ENV === 'production' ? {} : false,
   hash: true,
+  // apiParser: {},
   resolve: {
+    // entryFile: "../packages/zarm/src/index.ts",
     atomDirs: [{ type: 'component', dir: '../packages/zarm/src' }],
     codeBlockMode: 'passive',
   },
@@ -56,6 +58,7 @@ export default defineConfig({
     ],
   ],
   themeConfig: {
+    nprogress: false,
     version: pkg.version,
     autoAlias: {},
     prefersColor: { default: 'auto' },

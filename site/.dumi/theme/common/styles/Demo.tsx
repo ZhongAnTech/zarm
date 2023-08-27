@@ -66,6 +66,10 @@ const GlobalDemoStyles: React.FC = () => {
               @media only screen and (max-width: 960px) {
                 width: 300px;
               }
+
+              iframe {
+                height: 100%;
+              }
             }
 
             &-actions {

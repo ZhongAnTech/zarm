@@ -319,20 +319,7 @@ createRoot(document.getElementById('container')).render(<Demo />);
   const codeBox: React.ReactNode = (
     <section className={codeBoxClass} id={asset.id}>
       <div className="code-box-source">
-        {/* <section className="code-box-demo" style={codeBoxDemoStyle}>
-        <ErrorBoundary>
-          <React.StrictMode>{liveDemo.current}</React.StrictMode>
-        </ErrorBoundary>
-      </section> */}
         <section className="code-box-meta markdown">
-          {/* <div className="code-box-title">
-          <Tooltip title={originDebug ? <FormattedMessage id="app.demo.debug" /> : ''}>
-            <a href={`#${asset.id}`} ref={anchorRef}>
-              {localizedTitle}
-            </a>
-          </Tooltip>
-          <EditButton title={<FormattedMessage id="app.content.edit-demo" />} filename={filename} />
-        </div> */}
           {description && <div className="code-box-description">{introChildren}</div>}
           <div className="code-box-actions">
             <Space size="middle">
@@ -413,9 +400,7 @@ createRoot(document.getElementById('container')).render(<Demo />);
       </div>
       <div className="code-box-device">
         <div className="code-box-device-viewport">
-          <ErrorBoundary>
-            <React.StrictMode>{liveDemo.current}</React.StrictMode>
-          </ErrorBoundary>
+          <iframe src={demoUrl} />
         </div>
         <Space className="code-box-device-actions" align="end">
           <Tooltip title={<FormattedMessage id="app.demo.separate" />}>

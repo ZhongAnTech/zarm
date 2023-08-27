@@ -44,19 +44,18 @@ const DocLayout: React.FC = () => {
     }
   }, []);
 
-  useEffect(() => {
-    const nprogressHiddenStyle = document.getElementById('nprogress-style');
-    if (nprogressHiddenStyle) {
-      timerRef.current = setTimeout(() => {
-        nprogressHiddenStyle.parentNode?.removeChild(nprogressHiddenStyle);
-      }, 0);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const nprogressHiddenStyle = document.getElementById('nprogress-style');
+  //   if (nprogressHiddenStyle) {
+  //     timerRef.current = setTimeout(() => {
+  //       nprogressHiddenStyle.parentNode?.removeChild(nprogressHiddenStyle);
+  //     }, 0);
+  //   }
+  // }, []);
 
   // handle hash change or visit page hash from Link component, and jump after async chunk loaded
   useEffect(() => {
     const id = hash.replace('#', '');
-
     if (id) document.getElementById(decodeURIComponent(id))?.scrollIntoView();
   }, [loading, hash]);
 
@@ -89,8 +88,8 @@ const DocLayout: React.FC = () => {
         <meta property="og:type" content="website" />
         {themeConfig.icon && <meta property="og:image" content={themeConfig.icon} />}
       </Helmet>
+      <GlobalStyles />
       <ConfigProvider direction={direction} locale={lang === 'cn' ? zhCN : undefined} theme={theme}>
-        <GlobalStyles />
         <Header />
         {content}
       </ConfigProvider>
