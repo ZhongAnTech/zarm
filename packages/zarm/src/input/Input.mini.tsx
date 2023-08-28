@@ -3,6 +3,7 @@ import { createBEM } from '@zarm-design/bem';
 import { CloseCircleFill } from '@zarm-design/icons';
 import * as React from 'react';
 import { ConfigContext } from '../config-provider';
+import { canUseDOM } from '../utils/dom';
 import { useControllableEventValue } from '../utils/hooks';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseInputTextareaProps, BaseInputTextProps, InputCssVars } from './interface';
@@ -17,17 +18,13 @@ interface ExtraProps {
   onChange: (value: string) => void;
   showLength: boolean;
   readOnly: boolean;
-}
-
-interface InputType {
-  type: InputProps.Type | 'textarea';
+  rows?: number;
 }
 
 export type InputTextProps = BaseInputTextProps &
   HTMLProps<InputCssVars> &
   Omit<InputProps, 'Type'> &
-  ExtraProps &
-  InputType;
+  ExtraProps;
 
 export type InputTextareaProps = BaseInputTextareaProps &
   TextareaProps &
@@ -35,6 +32,8 @@ export type InputTextareaProps = BaseInputTextareaProps &
   ExtraProps;
 
 export type InputBaseProps = InputTextProps | InputTextareaProps;
+
+const baseSize = 22;
 
 const InputBase = (props: InputBaseProps) => {
   const {
@@ -68,7 +67,7 @@ const InputBase = (props: InputBaseProps) => {
     eventKey: 'detail',
   });
   const [focused, setFocused] = React.useState<boolean>(autoFocus!);
-  const isTextarea = type === 'textarea';
+  const isTextarea = type === 'text' && 'rows' in props;
 
   const showClearIcon = clearable && !disabled && typeof value !== 'undefined' && value?.length > 0;
 
@@ -121,14 +120,22 @@ const InputBase = (props: InputBaseProps) => {
     },
   };
 
+  const passProps =
+    isTextarea && canUseDOM
+      ? {
+          nativeProps: {
+            className: bem('textarea', [className]),
+            style: { height: `${props.rows}em` },
+            rows: props.rows,
+          },
+        }
+      : {};
+
   // 渲染输入框
   const inputRender = isTextarea ? (
     <View className={bem('inner')}>
       <Textarea
-        nativeProps={{
-          className: bem('textarea', [className]),
-          style,
-        }}
+        {...passProps}
         {...commonProps}
         autoHeight={(props as TextareaProps).autoHeight}
         showConfirmBar={(props as TextareaProps).showConfirmBar}
@@ -137,6 +144,7 @@ const InputBase = (props: InputBaseProps) => {
         confirmHold={(props as TextareaProps).confirmHold}
         adjustKeyboardTo={(props as TextareaProps).adjustKeyboardTo}
         onLineChange={(props as TextareaProps).onLineChange}
+        style={{ ...(props.style || {}), height: props.rows * baseSize }}
       />
       {textLengthRender}
     </View>

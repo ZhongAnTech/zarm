@@ -12,7 +12,7 @@ function Demo() {
           <Input label="密码" type="password" placeholder="请输入您的密码" />
         </List.Item>
         <List.Item>
-          <Input label="个人介绍" autoHeight maxLength={200} placeholder="请输入您的个人介绍" />
+          <Input label="个人介绍" maxLength={200} placeholder="请输入您的个人介绍" rows="3" />
         </List.Item>
       </List>
     </Panel>

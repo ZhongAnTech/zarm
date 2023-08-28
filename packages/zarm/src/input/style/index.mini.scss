@@ -8,6 +8,7 @@
   @include m(disabled) {
     textarea {
       -webkit-text-fill-color: inherit;
+      line-height: 0;
     }
   }
 
@@ -18,8 +19,4 @@
     border: none;
     padding: var(--textarea-padding-vertical) 0;
   }
-
-  // @include e(content) {
-  //   line-height: 0;
-  // }
 }

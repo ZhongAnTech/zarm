@@ -8,8 +8,7 @@ function Demo() {
       <List>
         <List.Item title="单行文本">
           <Input
-            type="textarea"
-            autoHeight
+            rows="3"
             showLength
             maxLength={200}
             placeholder="请输入"

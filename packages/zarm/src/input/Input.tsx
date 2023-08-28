@@ -5,28 +5,8 @@ import { ConfigContext } from '../config-provider';
 import { useControllableEventValue } from '../utils/hooks';
 import { resolveOnChange } from '../utils/resolveOnChange';
 import type { HTMLProps } from '../utils/utilityTypes';
-import type { BaseInputTextareaProps, BaseInputTextProps } from './interface';
-
-const regexAstralSymbols = /[\uD800-\uDBFF][\uDC00-\uDFFF]|\n/g;
-
-const countSymbols = (text = '') => {
-  return text.replace(regexAstralSymbols, '_').length;
-};
-
-export interface InputCssVars {
-  '--height'?: React.CSSProperties['height'];
-  '--line-height': React.CSSProperties['lineHeight'];
-  '--font-size'?: React.CSSProperties['fontSize'];
-  '--color'?: React.CSSProperties['color'];
-  '--background'?: React.CSSProperties['background'];
-  '--label-font-size'?: React.CSSProperties['fontSize'];
-  '--placeholder-color'?: React.CSSProperties['color'];
-  '--disabled-color'?: React.CSSProperties['color'];
-  '--clear-icon-size'?: React.CSSProperties['width'];
-  '--clear-icon-color'?: React.CSSProperties['color'];
-  '--textarea-length-font-size'?: React.CSSProperties['fontSize'];
-  '--textarea-length-color'?: React.CSSProperties['color'];
-}
+import type { BaseInputTextareaProps, BaseInputTextProps, InputCssVars } from './interface';
+import { countSymbols } from './utils';
 
 export type InputTextProps = BaseInputTextProps &
   HTMLProps<InputCssVars> &

@@ -21,9 +21,8 @@ function Demo() {
 
         <List.Item title="多行文本">
           <Input
-            autoHeight
             placeholder="请输入"
-            type="textarea"
+            rows="3"
             value={content}
             onChange={(e) => {
               const val = e.detail.value;
