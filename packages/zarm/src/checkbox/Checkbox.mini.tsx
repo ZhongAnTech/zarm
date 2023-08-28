@@ -1,4 +1,4 @@
-import { Label, Switch, View } from '@tarojs/components';
+import { BaseEventOrig, Label, Switch, SwitchProps, View } from '@tarojs/components';
 import { createBEM } from '@zarm-design/bem';
 import { Minus as MinusIcon, Success as SuccessIcon } from '@zarm-design/icons';
 import includes from 'lodash/includes';
@@ -38,7 +38,7 @@ export type CheckboxProps = BaseCheckboxProps &
   HTMLProps<CheckboxCssVars> & {
     renderIcon?: (props: CheckboxProps) => ReactNode;
     render?: (props: CheckboxProps) => ReactNode;
-    onChange?: (value: boolean) => void;
+    onChange?: (value: BaseEventOrig<SwitchProps.onChangeEventDetail>) => void;
   };
 
 const getChecked = (props: CheckboxProps, defaultChecked?: boolean) => {
@@ -104,13 +104,13 @@ const Checkbox = forwardRef<unknown, CheckboxProps>((props, ref) => {
       className={bem('input')}
       disabled={disabled}
       checked={checked}
-      onChange={(e) => {
+      onChange={(e: BaseEventOrig<SwitchProps.onChangeEventDetail>) => {
         if (disabled) return;
 
         if (!('checked' in props)) {
           setChecked(e.detail.value);
         }
-        props.onChange?.(e.detail.value);
+        props.onChange?.(e);
       }}
     />
   );
