@@ -31,13 +31,9 @@ exports[`Input renders correctly if type=text and props includes rows 1`] = `
   <div
     class="za-input za-input--textarea"
   >
-    <div
-      class="za-input__inner"
-    >
-      <textarea
-        rows="1"
-      />
-    </div>
+    <textarea
+      rows="1"
+    />
   </div>
 </div>
 `;
@@ -47,14 +43,10 @@ exports[`Input.Textarea autoHeight 1`] = `
   <div
     class="za-input za-input--textarea"
   >
-    <div
-      class="za-input__inner"
-    >
-      <textarea
-        rows="4"
-        style="height: 0px;"
-      />
-    </div>
+    <textarea
+      rows="4"
+      style="height: 0px;"
+    />
   </div>
 </DocumentFragment>
 `;
@@ -64,13 +56,9 @@ exports[`Input.Textarea renders correctly 1`] = `
   <div
     class="za-input za-input--textarea"
   >
-    <div
-      class="za-input__inner"
-    >
-      <textarea
-        rows="4"
-      />
-    </div>
+    <textarea
+      rows="4"
+    />
   </div>
 </DocumentFragment>
 `;

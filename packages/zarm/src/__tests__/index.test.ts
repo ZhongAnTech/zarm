@@ -480,9 +480,6 @@ describe('index', () => {
             "$$typeof": Symbol(react.forward_ref),
             "render": [Function],
           },
-          "defaultProps": Object {
-            "visible": true,
-          },
           "render": [Function],
         },
         "Tabs": Object {

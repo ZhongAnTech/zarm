@@ -179,6 +179,7 @@ ReactDOM.render(<Demo />, mountNode);
 | clearable    | boolean                                                 | true                   | 是否提供清空输入框功能                 |
 | icon         | React.ReactNode                                         | \<Search size="sm" /\> | 图标                                   |
 | onChange     | (event: React.ChangeEvent\<HTMLInputElement\>) => void  | -                      | 值变化时触发的回调函数                 |
+| onCancel     | () => void                                              | -                      | 点击取消按钮触发的回调函数             |
 | onSubmit     | (value: string) => void                                 | -                      | 输入框回车时触发的回调函数             |
 | onFocus      | (event: React.FocusEvent\<HTMLInputElement\>) => void   | -                      | 获取焦点时触发的回调函数               |
 | onBlur       | (event: React.FocusEvent\<HTMLInputElement\>) => void   | -                      | 失去焦点时触发的回调函数               |

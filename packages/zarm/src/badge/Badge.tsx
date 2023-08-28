@@ -10,6 +10,7 @@ export interface BadgeCssVars {
   '--text-color'?: React.CSSProperties['color'];
   '--border-color'?: React.CSSProperties['borderColor'];
   '--font-size'?: React.CSSProperties['fontSize'];
+  '--font-weight'?: React.CSSProperties['fontWeight'];
   '--height'?: React.CSSProperties['height'];
   '--padding-horizontal'?: React.CSSProperties['padding'];
   '--border-radius'?: React.CSSProperties['borderRadius'];
