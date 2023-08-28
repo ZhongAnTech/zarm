@@ -14,41 +14,41 @@ const siteMap = {
       // }
     ],
   },
-  // input: {
-  //   title: '数据录入',
-  //   components: [
-  //     {
-  //       key: 'Checkbox',
-  //       name: '复选框',
-  //       page: '/pages/checkbox/index',
-  //     },
-  //     {
-  //       key: 'Input',
-  //       name: '输入框',
-  //       page: '/pages/input/index',
-  //     },
-  //     {
-  //       key: 'Keyboard',
-  //       name: '键盘',
-  //       page: '/pages/keyboard/index',
-  //     },
-  //     {
-  //       key: 'Radio',
-  //       name: '复选框',
-  //       page: '/pages/radio/index',
-  //     },
-  //     {
-  //       key: 'Stepper',
-  //       name: '步进器',
-  //       page: '/pages/stepper/index',
-  //     },
-  //     {
-  //       key: 'Collapse',
-  //       name: '折叠面板',
-  //       page: '/pages/collapse/index',
-  //     },
-  //   ]
-  // },
+  input: {
+    title: '数据录入',
+    components: [
+      //     {
+      //       key: 'Checkbox',
+      //       name: '复选框',
+      //       page: '/pages/checkbox/index',
+      //     },
+      //     {
+      //       key: 'Input',
+      //       name: '输入框',
+      //       page: '/pages/input/index',
+      //     },
+      //     {
+      //       key: 'Keyboard',
+      //       name: '键盘',
+      //       page: '/pages/keyboard/index',
+      //     },
+      {
+        key: 'Radio',
+        name: '复选框',
+        page: '/pages/radio/index',
+      },
+      //     {
+      //       key: 'Stepper',
+      //       name: '步进器',
+      //       page: '/pages/stepper/index',
+      //     },
+      //     {
+      //       key: 'Collapse',
+      //       name: '折叠面板',
+      //       page: '/pages/collapse/index',
+      //     },
+    ],
+  },
   view: {
     title: '数据展示',
     components: [
