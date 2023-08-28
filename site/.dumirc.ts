@@ -8,7 +8,7 @@ export default defineConfig({
   mfsu: false,
   crossorigin: {},
   outputPath: 'dist',
-  ssr: process.env.NODE_ENV === 'production' ? {} : false,
+  // ssr: process.env.NODE_ENV === 'production' ? {} : false,
   hash: true,
   // apiParser: {},
   resolve: {
