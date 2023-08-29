@@ -188,43 +188,43 @@ const Tabs = React.forwardRef<unknown, TabsProps>((props, ref) => {
   }, [calculateLineWidth, children]);
 
   return (
-    <TabsContext.Provider
-      value={{
-        current: currentValue,
-      }}
-    >
-      <View ref={ref} className={classes} style={style}>
-        <View className={bem('header')}>
-          {scrollable ? (
-            <ScrollView
-              className={bem('tablist')}
-              ref={tablistRef}
-              scrollX={!isVertical}
-              scrollY={isVertical}
-              id={tabsId}
-              scrollWithAnimation
-              showScrollbar={false}
-              enableFlex
-              scrollLeft={isVertical ? 0 : itemBoundingClientRect.offsetLeft}
-              scrollTop={isVertical ? itemBoundingClientRect.offsetTop : 0}
-            >
-              {tabsRender}
-              <View className={bem('line')} style={lineStyle}>
-                {lineInnerRender}
-              </View>
-            </ScrollView>
-          ) : (
-            <View className={bem('tablist')} ref={tablistRef}>
-              {tabsRender}
-              <View className={bem('line')} style={lineStyle}>
-                {lineInnerRender}
-              </View>
+    <View ref={ref} className={classes} style={style}>
+      <View className={bem('header')}>
+        {scrollable ? (
+          <ScrollView
+            className={bem('tablist')}
+            ref={tablistRef}
+            scrollX={!isVertical}
+            scrollY={isVertical}
+            id={tabsId}
+            scrollWithAnimation
+            showScrollbar={false}
+            enableFlex
+            scrollLeft={isVertical ? 0 : itemBoundingClientRect.offsetLeft}
+            scrollTop={isVertical ? itemBoundingClientRect.offsetTop : 0}
+          >
+            {tabsRender}
+            <View className={bem('line')} style={lineStyle}>
+              {lineInnerRender}
             </View>
-          )}
-        </View>
-        <View className={bem('body')}>{contentRender}</View>
+          </ScrollView>
+        ) : (
+          <View className={bem('tablist')} ref={tablistRef}>
+            {tabsRender}
+            <View className={bem('line')} style={lineStyle}>
+              {lineInnerRender}
+            </View>
+          </View>
+        )}
       </View>
-    </TabsContext.Provider>
+      <TabsContext.Provider
+        value={{
+          current: currentValue,
+        }}
+      >
+        <View className={bem('body')}>{contentRender}</View>
+      </TabsContext.Provider>
+    </View>
   );
 }) as CompoundedComponent;
 

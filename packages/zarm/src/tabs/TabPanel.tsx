@@ -14,8 +14,6 @@ const TabPanel = React.forwardRef<HTMLDivElement, TabPanelProps>((props, ref) =>
 
   const { current } = React.useContext(TabsContext);
 
-  // console.log(current, '----->', value);
-
   const cls = bem([
     {
       active: current === value,

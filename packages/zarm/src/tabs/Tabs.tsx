@@ -25,8 +25,8 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
 
   const carouselRef = React.useRef<CarouselHTMLElement>(null);
   const tablistRef = React.useRef<HTMLUListElement>(null);
-  const [itemWidth, setItemWidth] = React.useState(0);
   const [currentValue, setCurrentValue] = useTabs(props);
+  const [_, forceUpdate] = React.useReducer((x) => x + 1, 0);
 
   // const [currentValue, setCurrentValue] = useControllableValue(props)
 
@@ -43,6 +43,28 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
     className,
   ]);
 
+  const values = getAllValue(children);
+  const currentIndex = values.indexOf(currentValue);
+
+  const calculateScorllLeftLocation = React.useCallback(
+    (value) => {
+      if (!scrollable) {
+        return false;
+      }
+      const index = values.indexOf(value);
+      const prevTabItem = tablistRef.current!.childNodes[index] as HTMLElement;
+      if (scrollable && tablistRef.current && prevTabItem) {
+        const { offsetWidth: layoutOffsetWidth = 0, offsetHeight: layoutOffsetHeight = 0 } =
+          tablistRef.current;
+        const left = prevTabItem.offsetLeft + prevTabItem.offsetWidth / 2 - layoutOffsetWidth / 2;
+        const top = prevTabItem.offsetTop + prevTabItem.offsetHeight / 2 - layoutOffsetHeight / 2;
+
+        scrollTo(tablistRef.current, top, left, 0.3);
+      }
+    },
+    [scrollable],
+  );
+
   const onTabClick = (
     tab: React.ReactElement<TabPanelProps, typeof TabPanel>,
     index: number,
@@ -55,11 +77,25 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
       carouselRef.current && carouselRef.current!.onSlideTo(index);
       return;
     }
+    calculateScorllLeftLocation(value);
     setCurrentValue(value);
   };
 
-  const values = getAllValue(children);
-  const currentIndex = values.indexOf(currentValue);
+  const itemWidth = React.useMemo(() => {
+    const el = tablistRef?.current?.children?.[currentValue];
+    if (!el) {
+      return 0;
+    }
+    const size = isVertical
+      ? getStyleComputedProperty(el, 'height')
+      : getStyleComputedProperty(el, 'width');
+    return parseInt(size, 10);
+  }, [currentValue, tablistRef.current]);
+
+  React.useEffect(() => {
+    forceUpdate();
+  }, [tablistRef.current]);
+
   const lineStyle: React.CSSProperties = caclLineSizePos({
     count: React.Children.count(children),
     value: currentIndex,
@@ -121,60 +157,24 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
   // 渲染选项
   const tabsRender = React.Children.map(children, renderTabs);
 
-  const calculateLineWidth = React.useCallback(() => {
-    if (!scrollable) {
-      return;
-    }
-    const newValue = currentValue;
-    const el = tablistRef.current!.children[newValue];
-    const size = isVertical
-      ? getStyleComputedProperty(el, 'height')
-      : getStyleComputedProperty(el, 'width');
-
-    setItemWidth(parseInt(size.toString(), 10));
-  }, [currentValue, isVertical, scrollable]);
-
-  const calculateScorllLeftLocation = React.useCallback(() => {
-    if (!scrollable) {
-      return false;
-    }
-
-    const prevTabItem = tablistRef.current!.childNodes[currentIndex] as HTMLElement;
-    if (scrollable && tablistRef.current && prevTabItem) {
-      const { offsetWidth: layoutOffsetWidth = 0, offsetHeight: layoutOffsetHeight = 0 } =
-        tablistRef.current;
-      const left = prevTabItem.offsetLeft + prevTabItem.offsetWidth / 2 - layoutOffsetWidth / 2;
-      const top = prevTabItem.offsetTop + prevTabItem.offsetHeight / 2 - layoutOffsetHeight / 2;
-
-      scrollTo(tablistRef.current, top, left, 0.3);
-    }
-  }, [currentValue, scrollable]);
-
-  React.useEffect(() => {
-    if (React.Children.count(children)) {
-      calculateLineWidth();
-      calculateScorllLeftLocation();
-    }
-  }, [calculateLineWidth, calculateScorllLeftLocation, children]);
-
   return (
-    <TabsContext.Provider
-      value={{
-        current: currentValue,
-      }}
-    >
-      <div ref={ref} className={classes} style={style}>
-        <div className={bem('header')}>
-          <ul className={bem('tablist')} role="tablist" ref={tablistRef}>
-            {tabsRender}
-            <div className={bem('line')} style={lineStyle}>
-              {lineInnerRender}
-            </div>
-          </ul>
-        </div>
-        <div className={bem('body')}>{contentRender}</div>
+    <div ref={ref} className={classes} style={style}>
+      <div className={bem('header')}>
+        <ul className={bem('tablist')} role="tablist" ref={tablistRef}>
+          {tabsRender}
+          <div className={bem('line')} style={lineStyle}>
+            {lineInnerRender}
+          </div>
+        </ul>
       </div>
-    </TabsContext.Provider>
+      <TabsContext.Provider
+        value={{
+          current: currentValue,
+        }}
+      >
+        <div className={bem('body')}>{contentRender}</div>
+      </TabsContext.Provider>
+    </div>
   );
 }) as CompoundedComponent;
 
