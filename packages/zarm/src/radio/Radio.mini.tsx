@@ -85,16 +85,16 @@ const Radio = forwardRef<RadioRef, RadioProps>((props, ref) => {
 
   const currentProps = { ...props, checked };
 
-  const textRender = props.children && <span className={bem('text')}>{props.children}</span>;
+  const textRender = props.children && <View className={bem('text')}>{props.children}</View>;
 
   const iconRender = (
-    <span className={bem('icon')}>
+    <View className={bem('icon')}>
       {props.renderIcon ? (
         props.renderIcon(currentProps)
       ) : (
-        <span className={bem('tick')}>{props.indeterminate ? <MinusIcon /> : <SuccessIcon />}</span>
+        <View className={bem('tick')}>{props.indeterminate ? <MinusIcon /> : <SuccessIcon />}</View>
       )}
-    </span>
+    </View>
   );
 
   const inputRender = (
