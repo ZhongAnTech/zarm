@@ -1,0 +1,19 @@
+.content {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-height {
+  .za-tabs__tablist {
+    height: 400px;
+  }
+}
+
+.vertical-content {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
