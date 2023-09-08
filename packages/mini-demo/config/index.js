@@ -1,7 +1,5 @@
 const path = require('path');
 
-console.log(path.resolve(__dirname, '../'));
-
 let alias = {
   // 'zarm/mini': path.resolve(__dirname, '../', '../zarm/src'),
   react: path.resolve(__dirname, '../', 'node_modules/react'),
