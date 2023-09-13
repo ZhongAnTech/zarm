@@ -11,7 +11,7 @@ interface DraggableOptions {
   id?: string;
   bounds?: Bounds | ((state: DraggableState) => Bounds);
   axis?: Axis;
-  from?: [number, number];
+  from?: [number, number] | ((state: DraggableState) => [number, number]);
   enabled?: boolean;
 }
 
@@ -30,8 +30,6 @@ interface DraggableState {
   offset: [number, number];
   distance: number;
   direction: string;
-  directionX: string;
-  directionY: string;
   moving: boolean;
 }
 
@@ -44,7 +42,9 @@ class Draggable {
 
   private axis: Axis;
 
-  private from: [number, number];
+  private from: [number, number] | ((state: DraggableState) => [number, number]);
+
+  private fromValue: [number, number] = [0, 0];
 
   private enabled: boolean;
 
@@ -55,7 +55,7 @@ class Draggable {
       id,
       bounds = { left: -Infinity, top: -Infinity, right: Infinity, bottom: Infinity },
       axis = 'both',
-      from = [0, 0],
+      from,
       enabled = true,
     } = options;
 
@@ -74,8 +74,6 @@ class Draggable {
       offset: [0, 0],
       distance: 0,
       direction: '',
-      directionX: '',
-      directionY: '',
       moving: false,
     };
 
@@ -99,6 +97,13 @@ class Draggable {
     return this.bounds;
   }
 
+  private computeFrom(): [number, number] {
+    if (typeof this.from === 'function') {
+      return this.from(this.state);
+    }
+    return this.from || [0, 0];
+  }
+
   private reset() {
     this.state = {
       dragging: false,
@@ -113,8 +118,6 @@ class Draggable {
       lastPosition: [0, 0],
       offset: [0, 0],
       direction: '',
-      directionX: '',
-      directionY: '',
       moving: false,
       distance: 0,
     };
@@ -144,8 +147,6 @@ class Draggable {
       offset: newOffset,
       distance: newDistance,
       direction,
-      directionX,
-      directionY,
       moving,
     };
 
@@ -159,8 +160,9 @@ class Draggable {
     // e.preventDefault();
     this.reset();
     const { clientX, clientY } = e.touches[0];
-    const initialX = this.from[0] || clientX;
-    const initialY = this.from[1] || clientY;
+    this.fromValue = await this.computeFrom();
+    const initialX = this.fromValue[0] || clientX;
+    const initialY = this.fromValue[1] || clientY;
 
     this.boundsValue = await this.computeBounds();
 

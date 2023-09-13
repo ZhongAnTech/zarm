@@ -1,21 +1,14 @@
 import { View, ViewProps } from '@tarojs/components';
 import { createBEM } from '@zarm-design/bem';
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useImperativeHandle,
-  useMemo,
-  useRef,
-} from 'react';
+import React, { useContext, useEffect, useImperativeHandle, useMemo, useRef } from 'react';
 import { ConfigContext } from '../config-provider';
 import { nanoid } from '../utils';
 import { getRect } from '../utils/dom/dom.mini';
-import { useSafeState } from '../utils/hooks';
 import useDrag from '../utils/hooks/useDrag';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseSwipeActionItemProps, BaseSwipeActionProps } from './interface';
 import SwipeActionItem from './SwipeActionItem.mini';
+import useSwipe from './useSwipe';
 
 export interface SwipeActionCssVars {
   '--background'?: React.CSSProperties['background'];
@@ -51,24 +44,15 @@ const SwipeAction = React.forwardRef<SwipeActionElement, SwipeActionProps>((prop
     onOpen,
   } = props;
 
-  const isOpen = useRef<null | string>(null);
+  const { isOpen, style, doTransition, onSwipe, afterClose } = useSwipe();
+  // const isOpen = useRef<null | string>(null);
   const pending = useRef(false);
   const leftId = useMemo(() => `swipe-action-left-${nanoid()}`, []);
   const rightId = useMemo(() => `swipe-action-right-${nanoid()}`, []);
   const { prefixCls } = useContext(ConfigContext);
 
-  const swipeActionWrap = (ref as any) || React.useRef<SwipeActionElement>();
-  const [offsetLeft, setOffsetLeft] = useSafeState<number>(0);
-  const [animationDuration, setAnimationDuration] = useSafeState(initialAnimationDuration);
+  const swipeActionWrap = React.useRef<SwipeActionElement>();
   const bem = createBEM('swipe-action', { prefixCls });
-
-  const doTransition = useCallback(
-    ({ offsetX, duration }) => {
-      setAnimationDuration(duration);
-      setOffsetLeft(offsetX);
-    },
-    [offsetLeft],
-  );
 
   useImperativeHandle(swipeActionWrap, () => {
     return {
@@ -78,13 +62,10 @@ const SwipeAction = React.forwardRef<SwipeActionElement, SwipeActionProps>((prop
     };
   });
 
-  const dragStart = useRef(0);
-
   const close = () => {
     if (pending.current) return;
-    doTransition({ offsetX: 0, duration: initialAnimationDuration });
-    isOpen.current = null;
-    dragStart.current = 0;
+    doTransition(0, initialAnimationDuration);
+    afterClose();
   };
 
   const renderButtons = (actions, direction, id) => {
@@ -144,65 +125,19 @@ const SwipeAction = React.forwardRef<SwipeActionElement, SwipeActionProps>((prop
       if (state.first) {
         closeOther();
       }
-      const [offsetX] = state.offset;
-      if (
-        (isOpen.current === 'right' && offsetX < 0) ||
-        (isOpen.current === 'left' && offsetX > 0)
-      ) {
-        return false;
-      }
-      if (state.down) {
-        dragging.current = true;
-      }
-      if (!dragging.current) return;
-      dragStart.current = offsetX;
-
-      if (offsetX > 0 && !leftActions) {
-        return false;
-      }
-
-      if (offsetX < 0 && !rightActions) {
-        return false;
-      }
-
-      if (state.last) {
-        const timeSpan = Math.floor(state.elapsedTime);
-        let distanceX = 0;
-        let _isOpen = false;
-
-        if (
-          btnsLeftWidth > 0 &&
-          (offsetX / btnsLeftWidth > moveDistanceRatio! ||
-            (offsetX > 0 && timeSpan <= moveTimeSpan!))
-        ) {
-          distanceX = btnsLeftWidth;
-          _isOpen = true;
-        } else if (
-          (btnsRightWidth > 0 && offsetX / btnsRightWidth < -moveDistanceRatio!) ||
-          (offsetX < 0 && timeSpan <= moveTimeSpan!)
-        ) {
-          distanceX = -btnsRightWidth;
-          _isOpen = true;
-        }
-        doTransition({ offsetX: distanceX, duration: initialAnimationDuration });
-
-        if (_isOpen) {
-          // 打开
-          isOpen.current = distanceX > 0 ? 'left' : 'right';
-          onOpen?.();
-        } else {
-          // 还原
-          close();
-        }
-        window.setTimeout(() => {
-          dragging.current = false;
-        });
-      } else {
-        doTransition({ offsetX, duration: 0 });
-      }
+      onSwipe(state, {
+        moveDistanceRatio,
+        moveTimeSpan,
+        leftActions,
+        rightActions,
+        btnsLeftWidth,
+        btnsRightWidth,
+        onOpen,
+        animationDuration: initialAnimationDuration,
+        close,
+      });
     },
     {
-      from: [dragStart.current, 0],
       bounds: async () => {
         const leftWidth = (await getRect(leftId))?.width || 0;
         const rightWidth = (await getRect(rightId))?.width || 0;
@@ -218,13 +153,6 @@ const SwipeAction = React.forwardRef<SwipeActionElement, SwipeActionProps>((prop
       // triggerAllEvents: true,
     },
   );
-
-  const style = {
-    WebkitTransitionDuration: `${animationDuration}ms`,
-    transitionDuration: `${animationDuration}ms`,
-    WebkitTransform: `translate3d(${offsetLeft}px, 0, 0)`,
-    transform: `translate3d(${offsetLeft}px, 0, 0)`,
-  };
 
   const cls = bem([className]);
 
