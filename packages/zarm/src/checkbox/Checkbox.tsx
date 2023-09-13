@@ -16,34 +16,12 @@ import { ConfigContext } from '../config-provider';
 import List from '../list';
 import type { HTMLProps } from '../utils/utilityTypes';
 import { CheckboxGroupContext } from './context';
-import type { BaseCheckboxProps } from './interface';
-
-export interface CheckboxCssVars {
-  '--icon-size'?: React.CSSProperties['height'];
-  '--icon-background'?: React.CSSProperties['background'];
-  '--icon-border-radius'?: React.CSSProperties['borderRadius'];
-  '--icon-border-width'?: React.CSSProperties['borderWidth'];
-  '--icon-border-color'?: React.CSSProperties['borderColor'];
-  '--tick-font-size'?: React.CSSProperties['fontSize'];
-  '--tick-color'?: React.CSSProperties['color'];
-  '--tick-transition'?: React.CSSProperties['transition'];
-  '--text-margin-horizontal'?: React.CSSProperties['marginLeft'];
-  '--active-opacity'?: React.CSSProperties['opacity'];
-  '--checked-icon-background'?: React.CSSProperties['background'];
-  '--checked-icon-border-color'?: React.CSSProperties['borderColor'];
-  '--checked-tick-color'?: React.CSSProperties['color'];
-  '--disabled-icon-background'?: React.CSSProperties['background'];
-  '--disabled-icon-border-color'?: React.CSSProperties['borderColor'];
-  '--disabled-text-color'?: React.CSSProperties['color'];
-  '--disabled-tick-color'?: React.CSSProperties['color'];
-  '--group-spacing-vertical'?: React.CSSProperties['marginBottom'];
-  '--group-spacing-horizontal'?: React.CSSProperties['marginRight'];
-}
+import type { BaseCheckboxProps, CheckboxCssVars } from './interface';
 
 export type CheckboxProps = BaseCheckboxProps &
   HTMLProps<CheckboxCssVars> & {
     renderIcon?: (props: CheckboxProps) => ReactNode;
-    render?: (props: CheckboxProps) => ReactNode;
+    children?: React.ReactNode | ((props: CheckboxProps) => React.ReactNode);
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   };
 
@@ -55,7 +33,7 @@ export interface CheckboxRef {
   check: () => void;
   uncheck: () => void;
   toggle: () => void;
-};
+}
 
 const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -89,8 +67,10 @@ const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
   ]);
 
   const currentProps = { ...props, checked };
+  const children =
+    typeof props.children === 'function' ? props.children(currentProps) : props.children;
 
-  const textRender = props.children && <span className={bem('text')}>{props.children}</span>;
+  const textRender = props.children && <span className={bem('text')}>{children}</span>;
 
   const iconRender = (
     <span className={bem('icon')}>
@@ -143,7 +123,15 @@ const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
     if (props.checked === undefined) return;
     if (props.checked === checked) return;
 
-    setChecked(getChecked({ checked: props.checked, defaultChecked: props.defaultChecked }, false));
+    setChecked(
+      getChecked(
+        {
+          checked: props.checked,
+          defaultChecked: props.defaultChecked,
+        },
+        false,
+      ),
+    );
   }, [props.checked, props.defaultChecked]);
 
   if (groupContext?.type === 'button') {
@@ -159,7 +147,7 @@ const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
             inputRef.current.click();
           }}
         >
-          {props.children}
+          {children}
         </Button>
       </label>
     );
@@ -193,14 +181,15 @@ const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
     );
   }
 
-  const contentRender = props.render ? (
-    props.render(currentProps)
-  ) : (
-    <>
-      {iconRender}
-      {textRender}
-    </>
-  );
+  const contentRender =
+    typeof props.children === 'function' ? (
+      props.children(currentProps)
+    ) : (
+      <>
+        {iconRender}
+        {textRender}
+      </>
+    );
 
   return (
     <label className={cls} style={props.style}>

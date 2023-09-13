@@ -213,7 +213,7 @@ ReactDOM.render(
 
 ```jsx
 import { List, Checkbox } from 'zarm';
-import { Star, StarFill, Success, Close  } from '@zarm-design/icons';
+import { Star, StarFill, Success, Close } from '@zarm-design/icons';
 
 ReactDOM.render(
   <List>
@@ -264,10 +264,8 @@ const Demo = () => {
     const checkboxRef = useRef();
 
     return (
-      <Checkbox
-        ref={checkboxRef}
-        value={props.value}
-        render={({ checked }) => (
+      <Checkbox ref={checkboxRef} value={props.value}>
+        {({ checked }) => (
           <div
             style={{
               position: 'relative',
@@ -295,7 +293,7 @@ const Demo = () => {
             {props.label}
           </div>
         )}
-      />
+      </Checkbox>
     );
   };
   return (
@@ -328,26 +326,26 @@ ReactDOM.render(<Demo />, mountNode);
 | 属性           | 类型                                             | 默认值 | 说明                                                |
 | :------------- | :----------------------------------------------- | :----- | :-------------------------------------------------- |
 | disabled       | boolean                                          | false  | 是否禁用                                            |
-| value          | number \| string                             | -      | 值                                                  |
+| value          | number \| string                                 | -      | 值                                                  |
 | checked        | boolean                                          | false  | 当前是否选中                                        |
 | defaultChecked | boolean                                          | false  | 初始是否选中                                        |
-| indeterminate  | boolean                                          | false  | 当前是否为半选状态                                |
+| indeterminate  | boolean                                          | false  | 当前是否为半选状态                                  |
 | id             | string                                           | -      | 方便外部带有 for 属性的 label 标签控制当前 checkbox |
 | onChange       | (event: ChangeEvent\<HTMLInputElement\>) => void | -      | 值变化时触发的回调函数                              |
-| renderIcon     | (props: number \| string) => React.ReactNode        | -      | 自定义图标渲染函数                                  |
-| render         | (props: number \| string) => React.ReactNode        | -      | 自定义样式渲染函数                                  |
+| renderIcon     | (props: number \| string) => React.ReactNode     | -      | 自定义图标渲染函数                                  |
+| render         | (props: number \| string) => React.ReactNode     | -      | 自定义样式渲染函数                                  |
 
 ### Checkbox.Group
 
-| 属性          | 类型                                   | 默认值   | 说明                                                |
-| :------------ | :------------------------------------- | :------- | :-------------------------------------------------- |
-| type          | string                                 | -        | 显示类型，可选值 `button`、`list`                   |
-| value         | number[] \| string[]                   | []       | 选中值                                              |
-| defaultValue  | number[] \| string[]                   | []       | 初始选中值                                          |
-| disabled      | boolean                                | false    | 是否禁用                                            |
-| block         | boolean                                | false    | 子项是否为块级元素                                  |
-| iconAlign | string                                 | 'before' | type 为`list`时图标的位置，可选值 `before`、`after` |
-| onChange      | (values: number[] \| string[]) => void | -        | 值变化时触发的回调函数                              |
+| 属性         | 类型                                   | 默认值   | 说明                                                |
+| :----------- | :------------------------------------- | :------- | :-------------------------------------------------- |
+| type         | string                                 | -        | 显示类型，可选值 `button`、`list`                   |
+| value        | number[] \| string[]                   | []       | 选中值                                              |
+| defaultValue | number[] \| string[]                   | []       | 初始选中值                                          |
+| disabled     | boolean                                | false    | 是否禁用                                            |
+| block        | boolean                                | false    | 子项是否为块级元素                                  |
+| iconAlign    | string                                 | 'before' | type 为`list`时图标的位置，可选值 `before`、`after` |
+| onChange     | (values: number[] \| string[]) => void | -        | 值变化时触发的回调函数                              |
 
 ## CSS 变量
 
@@ -381,6 +379,7 @@ ReactDOM.render(<Demo />, mountNode);
 | --group-spacing-horizontal | '24px' | 组合使用时的横向间距 |
 
 ## Checkbox 指令式 API
+
 ```js
 // 选择
 ref.current.check();
