@@ -28,6 +28,17 @@ const siteMap = {
         page: '/pages/input/index',
       },
       // {
+      {
+        key: 'Checkbox',
+        name: '复选框',
+        page: '/pages/checkbox/index',
+      },
+      // {
+      //   key: 'Input',
+      //   name: '输入框',
+      //   page: '/pages/input/index',
+      // },
+      // {
       //   key: 'Keyboard',
       //   name: '键盘',
       //   page: '/pages/keyboard/index',

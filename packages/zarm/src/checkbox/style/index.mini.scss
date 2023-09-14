@@ -1,0 +1,22 @@
+@import '../../style/core/index';
+@import 'component';
+
+@include b(checkbox) {
+  position: relative;
+
+  @include e(label) {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  @include e(click) {
+    position: absolute;
+    z-index: 2;
+    opacity: 0;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+  }
+}
