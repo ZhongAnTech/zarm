@@ -25120,114 +25120,8 @@ packages:
       - vue
     dev: false
 
-<<<<<<< HEAD
-  registry.npmjs.org/@tarojs/components/3.6.1_70de7ee5f769e174688f26a8db3997bd:
-    resolution: {integrity: sha512-hpASpBzBMqje3o33fWLD34QtMk7+vCFNNCuXkoN8U3AYEGadtxpu9LuKEwXoMBe+UNtfFc2wpCrS/nueuK0xoQ==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tarojs/components/-/components-3.6.1.tgz}
-    id: registry.npmjs.org/@tarojs/components/3.6.1
-    name: '@tarojs/components'
-    version: 3.6.1
-    peerDependencies:
-      '@types/react': '*'
-      '@types/react-native': '*'
-      vue: '*'
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-      '@types/react-native':
-        optional: true
-      vue:
-        optional: true
-    dependencies:
-      '@stencil/core': registry.npmjs.org/@stencil/core/2.22.3
-      '@tarojs/components-advanced': registry.npmjs.org/@tarojs/components-advanced/3.6.1_70de7ee5f769e174688f26a8db3997bd
-      '@tarojs/router': registry.npmjs.org/@tarojs/router/3.6.1_@types+react@18.0.26
-      '@tarojs/taro': registry.npmjs.org/@tarojs/taro/3.6.1_@types+react@18.0.26
-      '@types/react': registry.npmjs.org/@types/react/18.0.26
-      classnames: registry.npmjs.org/classnames/2.3.2
-      hls.js: registry.npmjs.org/hls.js/1.4.4
-      intersection-observer: registry.npmjs.org/intersection-observer/0.7.0
-      resolve-pathname: registry.npmjs.org/resolve-pathname/3.0.0
-      swiper: registry.npmjs.org/swiper/6.8.0
-      weui: registry.npmjs.org/weui/1.1.3
-    transitivePeerDependencies:
-      - '@types/webpack'
-      - '@types/webpack-dev-server'
-      - react
-    dev: false
-
-  registry.npmjs.org/@tarojs/components/3.6.1_@types+react@18.0.26:
-    resolution: {integrity: sha512-hpASpBzBMqje3o33fWLD34QtMk7+vCFNNCuXkoN8U3AYEGadtxpu9LuKEwXoMBe+UNtfFc2wpCrS/nueuK0xoQ==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tarojs/components/-/components-3.6.1.tgz}
-    id: registry.npmjs.org/@tarojs/components/3.6.1
-    name: '@tarojs/components'
-    version: 3.6.1
-    peerDependencies:
-      '@types/react': '*'
-      '@types/react-native': '*'
-      vue: '*'
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-      '@types/react-native':
-        optional: true
-      vue:
-        optional: true
-    dependencies:
-      '@stencil/core': registry.npmjs.org/@stencil/core/2.22.3
-      '@tarojs/components-advanced': registry.npmjs.org/@tarojs/components-advanced/3.6.1_70de7ee5f769e174688f26a8db3997bd
-      '@tarojs/router': registry.npmjs.org/@tarojs/router/3.6.1_@types+react@18.0.26
-      '@tarojs/taro': registry.npmjs.org/@tarojs/taro/3.6.1_@types+react@18.0.26
-      '@types/react': registry.npmjs.org/@types/react/18.0.26
-      classnames: registry.npmjs.org/classnames/2.3.2
-      hls.js: registry.npmjs.org/hls.js/1.4.4
-      intersection-observer: registry.npmjs.org/intersection-observer/0.7.0
-      resolve-pathname: registry.npmjs.org/resolve-pathname/3.0.0
-      swiper: registry.npmjs.org/swiper/6.8.0
-      weui: registry.npmjs.org/weui/1.1.3
-    transitivePeerDependencies:
-      - '@types/webpack'
-      - '@types/webpack-dev-server'
-    dev: false
-
-  registry.npmjs.org/@tarojs/components/3.6.7_5642dd39ea6eb7af96c6ee336ce01d77:
-    resolution: {integrity: sha512-S4QbMMHVXEDBfLi4Bj5qyNsMPBB0CAflwozFelE8uNVXYJNqc8MHWTE4KRXGLSqvJCKJ+XYC4j82xH+yJkiojA==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tarojs/components/-/components-3.6.7.tgz}
-    id: registry.npmjs.org/@tarojs/components/3.6.7
-    name: '@tarojs/components'
-    version: 3.6.7
-    peerDependencies:
-      '@types/react': '*'
-      '@types/react-native': '*'
-      vue: '*'
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-      '@types/react-native':
-        optional: true
-      vue:
-        optional: true
-    dependencies:
-      '@stencil/core': registry.npmjs.org/@stencil/core/2.22.3
-      '@tarojs/components-advanced': registry.npmjs.org/@tarojs/components-advanced/3.6.7_5642dd39ea6eb7af96c6ee336ce01d77
-      '@tarojs/router': registry.npmjs.org/@tarojs/router/3.6.7_@types+react@18.0.26
-      '@tarojs/taro': registry.npmjs.org/@tarojs/taro/3.6.7_@types+react@18.0.26
-      '@types/react': registry.npmjs.org/@types/react/18.0.26
-      classnames: registry.npmjs.org/classnames/2.3.2
-      hls.js: registry.npmjs.org/hls.js/1.4.4
-      intersection-observer: registry.npmjs.org/intersection-observer/0.7.0
-      resolve-pathname: registry.npmjs.org/resolve-pathname/3.0.0
-      swiper: registry.npmjs.org/swiper/6.8.0
-      weui: registry.npmjs.org/weui/1.1.3
-    transitivePeerDependencies:
-      - '@types/webpack'
-      - '@types/webpack-dev-server'
-      - react
-    dev: true
-
-  registry.npmjs.org/@tarojs/components/3.6.7_@types+react@18.0.26:
-    resolution: {integrity: sha512-S4QbMMHVXEDBfLi4Bj5qyNsMPBB0CAflwozFelE8uNVXYJNqc8MHWTE4KRXGLSqvJCKJ+XYC4j82xH+yJkiojA==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tarojs/components/-/components-3.6.7.tgz}
-=======
   registry.npmjs.org/@tarojs/components@3.6.7(@types/react@18.0.26)(react@17.0.2):
     resolution: {integrity: sha512-S4QbMMHVXEDBfLi4Bj5qyNsMPBB0CAflwozFelE8uNVXYJNqc8MHWTE4KRXGLSqvJCKJ+XYC4j82xH+yJkiojA==, registry: https://registry.npmmirror.com/, tarball: https://registry.npmjs.org/@tarojs/components/-/components-3.6.7.tgz}
->>>>>>> b6c98250c (docs: button example)
     id: registry.npmjs.org/@tarojs/components/3.6.7
     name: '@tarojs/components'
     version: 3.6.7
@@ -25260,10 +25154,6 @@ packages:
       - react
     dev: false
 
-<<<<<<< HEAD
-  registry.npmjs.org/@tarojs/helper/3.6.7:
-    resolution: {integrity: sha512-6NkeufZQSUWeIflF4e17FSudKkNjTJVcSMVeaDE8dhA7YxnSy8P5Qj/KjkyOGMh0u/Zhl6AMPIpnbamdk8FHEQ==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tarojs/helper/-/helper-3.6.7.tgz}
-=======
   registry.npmjs.org/@tarojs/components@3.6.7(@types/react@18.0.26)(react@18.2.0):
     resolution: {integrity: sha512-S4QbMMHVXEDBfLi4Bj5qyNsMPBB0CAflwozFelE8uNVXYJNqc8MHWTE4KRXGLSqvJCKJ+XYC4j82xH+yJkiojA==, registry: https://registry.npmmirror.com/, tarball: https://registry.npmjs.org/@tarojs/components/-/components-3.6.7.tgz}
     id: registry.npmjs.org/@tarojs/components/3.6.7
@@ -25299,7 +25189,6 @@ packages:
 
   registry.npmjs.org/@tarojs/helper@3.6.7:
     resolution: {integrity: sha512-6NkeufZQSUWeIflF4e17FSudKkNjTJVcSMVeaDE8dhA7YxnSy8P5Qj/KjkyOGMh0u/Zhl6AMPIpnbamdk8FHEQ==, registry: https://registry.npmmirror.com/, tarball: https://registry.npmjs.org/@tarojs/helper/-/helper-3.6.7.tgz}
->>>>>>> b6c98250c (docs: button example)
     name: '@tarojs/helper'
     version: 3.6.7
     dependencies:
