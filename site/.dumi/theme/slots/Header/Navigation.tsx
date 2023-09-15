@@ -182,7 +182,7 @@ export default ({
     },
     {
       label: (
-        <Link to={utils.getLocalizedPathname('/components/overview/', isZhCN, search)}>
+        <Link to={utils.getLocalizedPathname('/components/button', isZhCN, search)}>
           {locale.components}
         </Link>
       ),

@@ -4,11 +4,10 @@ import ContributorsList from '@qixian.cs/github-contributors-list';
 import { Affix, Anchor, Avatar, Col, Skeleton, Space, Tooltip, Typography } from 'antd';
 import classNames from 'classnames';
 import DayJS from 'dayjs';
-import { FormattedMessage, useIntl, useRouteMeta, useTabMeta } from 'dumi';
+import { useIntl, useRouteMeta, useTabMeta } from 'dumi';
 import type { ReactNode } from 'react';
 import React, { useContext, useLayoutEffect, useMemo, useState } from 'react';
 import { useLayoutState, useLocation, useSiteToken } from '../../../hooks';
-import EditButton from '../../common/EditButton';
 import PrevAndNext from '../../common/PrevAndNext';
 import type { DemoContextProps } from '../DemoContext';
 import { DemoContext } from '../DemoContext';
@@ -236,12 +235,12 @@ const Content: React.FC<{ children: ReactNode }> = ({ children }) => {
               {meta.frontmatter.subtitle && (
                 <span style={{ marginLeft: 12 }}>{meta.frontmatter.subtitle}</span>
               )}
-              {!pathname.startsWith('/components/overview') && (
+              {/* {!pathname.startsWith('/components/overview') && (
                 <EditButton
                   title={<FormattedMessage id="app.content.edit-page" />}
                   filename={meta.frontmatter.filename}
                 />
-              )}
+              )} */}
             </Typography.Title>
           ) : null}
           {/* 添加作者、时间等信息 */}
