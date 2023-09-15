@@ -2,7 +2,7 @@ import { BaseEventOrig, Label, Switch, SwitchProps, View } from '@tarojs/compone
 import { createBEM } from '@zarm-design/bem';
 import { Minus as MinusIcon, Success as SuccessIcon } from '@zarm-design/icons';
 import includes from 'lodash/includes';
-import React, { forwardRef, ReactNode, useContext, useEffect, useMemo, useState } from 'react';
+import React, { ReactNode, useContext, useEffect, useMemo, useState } from 'react';
 import Button from '../button/index.mini';
 import { ConfigContext } from '../config-provider';
 import List from '../list';
@@ -23,7 +23,7 @@ const getChecked = (props: CheckboxProps, defaultChecked?: boolean) => {
   return props.checked ?? props.defaultChecked ?? defaultChecked;
 };
 
-const Checkbox = forwardRef<unknown, CheckboxProps>((props, ref) => {
+const Checkbox = (props: CheckboxProps) => {
   let [checked, setChecked] = useState(getChecked(props, false));
   let { disabled } = props;
 
@@ -160,7 +160,7 @@ const Checkbox = forwardRef<unknown, CheckboxProps>((props, ref) => {
       {inputRender}
     </View>
   );
-});
+};
 
 Checkbox.displayName = 'Checkbox';
 
