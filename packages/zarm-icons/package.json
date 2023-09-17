@@ -29,16 +29,18 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.21.0",
-    "@zarm-design/bem": "workspace:*",
+    "@zarm-design/bem": "^0.0.8",
     "change-case": "^4.1.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.16",
+    "@babel/plugin-transform-modules-commonjs": "^7.22.5",
     "@svgr/cli": "^5.5.0",
     "@testing-library/react": "^12.0.0",
     "@types/react": "^18.0.26",
-    "@zarm-design/cli": "workspace:*",
+    "@zarm-design/cli": "^0.0.48",
     "react": "^17.0.2",
+    "sass": "^1.58.3",
     "shelljs": "^0.8.4"
   },
   "peerDependencies": {

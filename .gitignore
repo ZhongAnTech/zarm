@@ -5,9 +5,13 @@
 .history
 
 # misc
+site/dist
+site/server
 site/.dumi/tmp
 site/.dumi/tmp-test
 site/.dumi/tmp-production
+site/dist
+site/server
 
 # npm
 package-lock.json

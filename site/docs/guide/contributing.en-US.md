@@ -5,8 +5,6 @@ group:
   title: Guides
 ---
 
-# Contributing
-
 ## 安装
 
 `git clone` 拉取代码仓库后，安装依赖

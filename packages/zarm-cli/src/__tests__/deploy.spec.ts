@@ -1,5 +1,5 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { mocked } from 'ts-jest/utils';
+import { mocked } from "jest-mock";
 
 import { getProjectConfig } from '../deploy';
 import { getCustomConfig } from '../utils';
