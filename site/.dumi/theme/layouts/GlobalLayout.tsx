@@ -5,14 +5,13 @@ import {
   parentSelectorLinter,
   StyleProvider,
 } from '@ant-design/cssinjs';
-import { theme as antdTheme, App } from 'antd';
+import { theme as antdTheme } from 'antd';
 import type { DirectionType } from 'antd/es/config-provider';
 import { createSearchParams, useOutlet, useSearchParams } from 'dumi';
 import React, { useCallback, useEffect, useMemo } from 'react';
 import { useLayoutState } from '../../hooks/useLayoutState';
 import { useLocation } from '../../hooks/useLocation';
 import type { ThemeName } from '../common/ThemeSwitch';
-import ThemeSwitch from '../common/ThemeSwitch';
 import SiteThemeProvider from '../SiteThemeProvider';
 import type { SiteContextProps } from '../slots/SiteContext';
 import { SiteContext } from '../slots/SiteContext';
@@ -115,15 +114,7 @@ const GlobalLayout: React.FC = () => {
             algorithm: getAlgorithm(theme),
           }}
         >
-          <App>
-            {outlet}
-            {!pathname.startsWith('/~demos') && !pathname.startsWith('/gallery') && (
-              <ThemeSwitch
-                value={theme}
-                onChange={(nextTheme) => updateSiteConfig({ theme: nextTheme })}
-              />
-            )}
-          </App>
+          {outlet}
         </SiteThemeProvider>
       </SiteContext.Provider>
     </StyleProvider>

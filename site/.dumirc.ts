@@ -25,6 +25,9 @@ export default defineConfig({
     'zarm/lib': path.resolve(__dirname, '../packages/zarm/src'),
     'zarm/es': path.resolve(__dirname, '../packages/zarm/src'),
     zarm: path.resolve(__dirname, '../packages/zarm/src/index.ts'),
+    // '@zarm-design/icons/lib': path.resolve(__dirname, '../packages/zarm-icons/src'),
+    // '@zarm-design/icons/es': path.resolve(__dirname, '../packages/zarm-icons/src'),
+    // '@zarm-design/icons': path.resolve(__dirname, '../packages/zarm-icons/src'),
     ['@tarojs/components$']: '@tarojs/components/lib/react',
   },
   conventionRoutes: {
@@ -39,10 +42,19 @@ export default defineConfig({
       {
         libraryName: 'zarm',
         libraryDirectory: 'lib',
-        style: true,
+        style: 'css',
       },
       'zarm',
     ],
+    // [
+    //   'import',
+    //   {
+    //     libraryName: '@zarm-design/icons',
+    //     libraryDirectory: 'lib',
+    //     style: 'css',
+    //   },
+    //   'zarm-icons',
+    // ],
     [
       'import',
       {

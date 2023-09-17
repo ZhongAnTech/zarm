@@ -50,12 +50,12 @@
     "@tarojs/shared": "3.6.7",
     "@tarojs/taro": "3.6.7",
     "@tarojs/taro-h5": "3.6.7",
-    "@zarm-design/icons": "workspace:*",
+    "@zarm-design/icons": "^0.1.13",
     "postcss-loader": "^7.0.2",
     "postcss-transform-selector": "^1.1.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "zarm": "workspace:*"
+    "zarm": "^3.0.14"
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",

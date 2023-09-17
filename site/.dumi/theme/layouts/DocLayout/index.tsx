@@ -1,3 +1,4 @@
+import { theme as antdTheme } from 'antd';
 import ConfigProvider from 'antd/es/config-provider';
 import zhCN from 'antd/es/locale/zh_CN';
 import classNames from 'classnames';
@@ -5,14 +6,30 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 import { Helmet, useOutlet, useSiteData } from 'dumi';
 import React, { useContext, useEffect, useLayoutEffect, useMemo, useRef } from 'react';
-import { useLocale, useLocation, useSiteToken, useThemeConfig } from '../../../hooks';
+import {
+  useLayoutState,
+  useLocale,
+  useLocation,
+  useSiteToken,
+  useThemeConfig,
+} from '../../../hooks';
 import GlobalStyles from '../../common/GlobalStyles';
 import Header from '../../slots/Header';
 
+import { ThemeName } from '.dumi/theme/common/ThemeSwitch';
 import { SiteContext } from '.dumi/theme/slots/SiteContext';
+import { App } from 'antd';
 import '../../static/style';
 import ResourceLayout from '../ResourceLayout';
 import SidebarLayout from '../SidebarLayout';
+
+const getAlgorithm = (themes: ThemeName[] = []) =>
+  themes.map((theme) => {
+    if (theme === 'dark') {
+      return antdTheme.darkAlgorithm;
+    }
+    return antdTheme.defaultAlgorithm;
+  });
 
 const locales = {
   cn: {
@@ -35,6 +52,9 @@ const DocLayout: React.FC = () => {
   const { loading } = useSiteData();
   const theme = useSiteToken();
   const themeConfig = useThemeConfig();
+  const [{ theme: layoutTheme = [] }] = useLayoutState({
+    theme: ['light'],
+  });
 
   useLayoutEffect(() => {
     if (lang === 'cn') {
@@ -73,7 +93,7 @@ const DocLayout: React.FC = () => {
   }, [pathname, outlet]);
 
   return (
-    <>
+    <App>
       <Helmet encodeSpecialCharacters={false}>
         <html
           lang={lang}
@@ -93,7 +113,7 @@ const DocLayout: React.FC = () => {
         <Header />
         {content}
       </ConfigProvider>
-    </>
+    </App>
   );
 };
 

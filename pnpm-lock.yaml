@@ -117,7 +117,7 @@ importers:
         specifier: ^7.13.10
         version: registry.npmjs.org/@babel/runtime@7.21.0
       '@zarm-design/cli':
-        specifier: workspace:*
+        specifier: ^0.0.48
         version: link:../zarm-cli
       sass:
         specifier: ^1.58.3
@@ -180,7 +180,7 @@ importers:
         specifier: 3.6.7
         version: registry.npmjs.org/@tarojs/taro-h5@3.6.7(@types/react@18.0.26)
       '@zarm-design/icons':
-        specifier: workspace:*
+        specifier: ^0.1.13
         version: link:../zarm-icons
       postcss-loader:
         specifier: ^7.0.2
@@ -195,7 +195,7 @@ importers:
         specifier: ^18.0.0
         version: registry.npmjs.org/react-dom@18.2.0(react@18.2.0)
       zarm:
-        specifier: workspace:*
+        specifier: ^3.0.14
         version: link:../zarm
     devDependencies:
       '@babel/core':
@@ -265,7 +265,7 @@ importers:
   packages/site:
     dependencies:
       '@zarm-design/icons':
-        specifier: workspace:*
+        specifier: ^0.1.13
         version: link:../zarm-icons
       antd:
         specifier: ^5.0.7
@@ -298,7 +298,7 @@ importers:
         specifier: ^5.1.2
         version: registry.npmjs.org/react-router-dom@5.3.4(react@17.0.2)
       zarm:
-        specifier: workspace:*
+        specifier: ^3.0.14
         version: link:../zarm
       zarm-web:
         specifier: 0.0.1-alpha.13
@@ -323,7 +323,7 @@ importers:
         specifier: ^17.0.3
         version: registry.npmjs.org/@types/react-dom@17.0.20
       '@zarm-design/cli':
-        specifier: workspace:*
+        specifier: ^0.0.48
         version: link:../zarm-cli
       babel-plugin-import:
         specifier: ^1.13.0
@@ -392,10 +392,10 @@ importers:
         specifier: ^10.1.1
         version: registry.npmjs.org/@use-gesture/react@10.2.27(react@17.0.2)
       '@zarm-design/bem':
-        specifier: workspace:*
+        specifier: ^0.0.8
         version: link:../bem
       '@zarm-design/icons':
-        specifier: workspace:*
+        specifier: ^0.1.13
         version: link:../zarm-icons
       ahooks:
         specifier: ^3.7.6
@@ -465,7 +465,7 @@ importers:
         specifier: ^5.14.6
         version: registry.npmjs.org/@types/testing-library__jest-dom@5.14.6
       '@zarm-design/cli':
-        specifier: workspace:*
+        specifier: ^0.0.48
         version: link:../zarm-cli
       chalk:
         specifier: ^4.1.1
@@ -530,6 +530,12 @@ importers:
       '@sentry/webpack-plugin':
         specifier: ^1.15.1
         version: registry.npmjs.org/@sentry/webpack-plugin@1.20.1
+      '@zarm-design/bem':
+        specifier: ^0.0.8
+        version: link:../bem
+      '@zarm-design/icons':
+        specifier: ^0.1.13
+        version: link:../zarm-icons
       babel-jest:
         specifier: ^26.5.2
         version: registry.npmjs.org/babel-jest@26.6.3(@babel/core@7.14.0)
@@ -661,7 +667,7 @@ importers:
         specifier: ^7.21.0
         version: registry.npmjs.org/@babel/runtime@7.21.0
       '@zarm-design/bem':
-        specifier: workspace:*
+        specifier: ^0.0.8
         version: link:../bem
       change-case:
         specifier: ^4.1.2
@@ -683,7 +689,7 @@ importers:
         specifier: ^18.0.26
         version: registry.npmjs.org/@types/react@18.0.26
       '@zarm-design/cli':
-        specifier: workspace:*
+        specifier: ^0.0.48
         version: link:../zarm-cli
       react:
         specifier: ^17.0.2

@@ -2,6 +2,7 @@ import gulp from 'gulp';
 import gulpSass from 'gulp-sass';
 import dartSass from 'sass';
 import through2 from 'through2';
+import * as Path from 'path';
 import { getProjectPath } from '../utils';
 
 const sass = gulpSass(dartSass);

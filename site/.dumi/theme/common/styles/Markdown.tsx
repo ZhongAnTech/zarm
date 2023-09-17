@@ -297,6 +297,7 @@ const GlobalStyle: React.FC = () => {
 
         .markdown .dumi-default-table {
           table {
+            width: 100%;
             margin: 0;
             overflow-x: auto;
             overflow-y: hidden;
