@@ -19,11 +19,12 @@ interface ExtraProps {
   showLength: boolean;
   readOnly: boolean;
   rows?: number;
+  autoFocus?: boolean;
 }
 
 export type InputTextProps = BaseInputTextProps &
   HTMLProps<InputCssVars> &
-  Omit<InputProps, 'Type'> &
+  Omit<InputProps, 'Type' | 'autoFocus'> &
   ExtraProps;
 
 export type InputTextareaProps = BaseInputTextareaProps &
@@ -33,13 +34,12 @@ export type InputTextareaProps = BaseInputTextareaProps &
 
 export type InputBaseProps = InputTextProps | InputTextareaProps;
 
-const baseSize = 22;
-
 const InputBase = (props: InputBaseProps) => {
   const {
     type,
     disabled,
     autoFocus,
+    focus,
     clearable,
     showLength,
     readOnly,
@@ -66,8 +66,12 @@ const InputBase = (props: InputBaseProps) => {
     ...props,
     eventKey: 'detail',
   });
-  const [focused, setFocused] = React.useState<boolean>(autoFocus!);
+
+  const isFocus = focus ?? autoFocus;
+  const [focused, setFocused] = React.useState<boolean>(isFocus);
   const isTextarea = type === 'text' && 'rows' in props;
+
+  const baseSize = style?.['--font-size'] || '22px';
 
   const showClearIcon = clearable && !disabled && typeof value !== 'undefined' && value?.length > 0;
 
@@ -93,7 +97,7 @@ const InputBase = (props: InputBaseProps) => {
   const commonProps = {
     maxlength: maxLength,
     disabled,
-    autoFocus,
+    focus: isFocus,
     placeholder,
     placeholderStyle,
     cursorSpacing,
@@ -105,6 +109,7 @@ const InputBase = (props: InputBaseProps) => {
     onKeyboardHeightChange,
     holdKeyboard,
     value,
+    style,
     onFocus: (e) => {
       setFocused(true);
       onFocus?.(e);
@@ -144,7 +149,7 @@ const InputBase = (props: InputBaseProps) => {
         confirmHold={(props as TextareaProps).confirmHold}
         adjustKeyboardTo={(props as TextareaProps).adjustKeyboardTo}
         onLineChange={(props as TextareaProps).onLineChange}
-        style={{ ...(props.style || {}), height: props.rows * baseSize }}
+        style={{ ...(props.style || {}), height: `calc(${props.rows} * ${baseSize})` }}
       />
       {textLengthRender}
     </View>

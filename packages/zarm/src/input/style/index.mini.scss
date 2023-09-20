@@ -19,4 +19,9 @@
     border: none;
     padding: var(--textarea-padding-vertical) 0;
   }
+
+  input,
+  textarea {
+    line-height: 1;
+  }
 }
