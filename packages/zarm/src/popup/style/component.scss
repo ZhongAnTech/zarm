@@ -19,7 +19,6 @@
     overflow: auto;
     padding: 60px 0;
     -webkit-overflow-scrolling: touch;
-    pointer-events: none;
   }
 
   @include m(bottom) {
