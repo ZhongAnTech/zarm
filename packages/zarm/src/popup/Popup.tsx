@@ -67,9 +67,6 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
           mountContainer={props.mountContainer}
           forceRender={forceRender}
           destroy={destroy}
-          onClick={() => {
-            onMaskClick?.();
-          }}
         />
       )}
       <Transition
@@ -96,13 +93,22 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
           const { display, ...restStyle } = style;
           return renderToContainer(
             props.mountContainer ?? globalMountContainer,
-            <div className={bem('wrapper', [props.className])} style={{ ...props.style, display }}>
+            <div
+              className={bem('wrapper', [props.className])}
+              style={{ ...props.style, display }}
+              onClick={() => {
+                onMaskClick?.();
+              }}
+            >
               <div
                 ref={setNodeRef}
                 className={bem([{ [`${direction}`]: !!direction }, className])}
                 style={{
                   ...restStyle,
                   width,
+                }}
+                onClick={(e) => {
+                  e.stopPropagation();
                 }}
               >
                 {children}
