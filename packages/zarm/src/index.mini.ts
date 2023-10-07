@@ -13,3 +13,5 @@ export type { PopupProps } from './popup/index.mini';
 export { default as Radio } from './radio/index.mini';
 export type { RadioGroupProps, RadioProps } from './radio/index.mini';
 export { default as Select } from './select';
+export { default as Tabs } from './tabs/index.mini';
+export type { TabPanelProps, TabsCssVars, TabsProps } from './tabs/index.mini';

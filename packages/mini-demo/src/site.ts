@@ -104,6 +104,26 @@ const siteMap = {
   //     },
   //   ]
   // },
+  navigation: {
+    title: '导航',
+    components: [
+      // {
+      //   key: 'TabBar',
+      //   name: '标签栏',
+      //   page: '/pages/tab-bar/index',
+      // },
+      // {
+      //   key: 'Navbar',
+      //   name: '导航栏',
+      //   page: '/pages/navbar/index',
+      // },
+      {
+        key: 'Tabs',
+        name: '标签页',
+        page: '/pages/tabs/index',
+      },
+    ],
+  },
 };
 
 export default siteMap;

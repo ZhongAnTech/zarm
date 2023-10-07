@@ -43,7 +43,7 @@ ReactDOM.render(
     <Panel title="选项卡1">
       <div className="content">试试点我左滑</div>
     </Panel>
-    <Panel title="选项卡2">
+    <Panel title="选项卡2" selected>
       <div className="content">试试点我右滑</div>
     </Panel>
   </Tabs>,
@@ -86,7 +86,7 @@ const Demo = () => {
   const [value, setValue] = useState(0);
 
   return (
-    <Tabs scrollable value={value} onChange={setValue}>
+    <Tabs scrollable value={value} onChange={setValue} lineWidth={60}>
       <Panel title="选项卡1">
         <div className="content">选项卡1内容</div>
       </Panel>
@@ -97,7 +97,9 @@ const Demo = () => {
         <div className="content">选项卡3内容</div>
       </Panel>
       <Panel title="选项卡4">
-        <div className="content">选项卡4内容</div>
+        <div className="content" selected>
+          选项卡4内容
+        </div>
       </Panel>
       <Panel title="选项卡5">
         <div className="content">选项卡5内容</div>
@@ -255,22 +257,23 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性         | 类型                    | 默认值       | 说明                                   |
 | :----------- | :---------------------- | :----------- | :------------------------------------- |
-| value        | number                  | -            | 值                                     |
+| value        | string \| 'number'      | - 0          | 值                                     |
 | defaultValue | number                  | -            | 初始值                                 |
 | disabled     | boolean                 | false        | 是否禁用                               |
 | direction    | string                  | 'horizontal' | 方向，可选值为 `horizontal` `vertical` |
 | swipeable    | boolean                 | false        | 是否支持滑动切换                       |
 | scrollable   | boolean                 | false        | 是否支持滚动                           |
 | lineWidth    | number \| string        | -            | 线条宽度                               |
-| onChange     | (index: number) => void | -            | 值变化时触发的回调函数                 |
+| onChange     | (index: string) => void | -            | 值变化时触发的回调函数                 |
 
 ### Panel
 
-| 属性     | 类型      | 默认值 | 说明     |
-| :------- | :-------- | :----- | :------- |
-| title    | ReactNode | -      | 标题     |
-| children | ReactNode | -      | 内容     |
-| disabled | boolean   | false  | 是否禁用 |
+| 属性     | 类型               | 默认值 | 说明     |
+| :------- | :----------------- | :----- | :------- |
+| title    | ReactNode          | -      | 标题     |
+| children | ReactNode          | -      | 内容     |
+| disabled | boolean            | false  | 是否禁用 |
+| value    | string \| 'number' | index  | 值       |
 
 ## CSS 变量
 
