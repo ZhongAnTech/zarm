@@ -26,6 +26,9 @@ const initState = {
   customContainer: {
     visible: false,
   },
+  longContent: {
+    visible: false,
+  },
 };
 
 const reducer = (state, action) => {
@@ -140,6 +143,15 @@ const Demo = () => {
         >
           挂载到指定 DOM 节点
         </List.Item>
+        <List.Item
+          suffix={
+            <Button size="xs" onClick={() => toggle('longContent')}>
+              开启
+            </Button>
+          }
+        >
+          超长内容
+        </List.Item>
       </List>
 
       <div id="test-div" style={{ position: 'relative', zIndex: 1 }} ref={myRef} />
@@ -191,6 +203,15 @@ const Demo = () => {
         mountContainer={() => myRef.current}
       >
         挂载到指定dom节点
+      </Modal>
+
+      <Modal
+        maskClosable
+        visible={state.longContent.visible}
+        title="标题"
+        onClose={() => toggle('longContent')}
+      >
+        <div style={{ height: 1000 }}>模态框内容</div>
       </Modal>
     </>
   );
@@ -454,24 +475,24 @@ const confirm = Modal.confirm({
 
 ## CSS 变量
 
-| 属性                             | 默认值                              | 说明                 |
-| :------------------------------- | :---------------------------------- | :------------------- |
-| --background                     | 'rgb(242, 242, 242)'                | 背景色               |
-| --border-radius                  | '14px'                              | 圆角大小             |
-| --shadow                         | '0 7px 21px var(--za-color-shadow)' | 阴影样式             |
-| --title-font-size                | '17px'                              | 标题字体大小         |
-| --title-font-weight              | 500                                 | 标题字体粗细         |
-| --title-text-color               | 'var(--za-color-text)'              | 标题字体颜色         |
-| --close-size                     | '20px'                              | 关闭图标字体大小     |
-| --close-color                    | '#ccc'                              | 关闭图标颜色         |
-| --close-active-color             | '#999'                              | 关闭图标激活状态颜色 |
-| --body-font-size                 | '13px'                              | 内容字体大小         |
-| --body-text-color                | 'var(--za-color-text)'              | 内容字体颜色         |
-| --body-padding                   | '16px'                              | 内容内边距           |
-| --button-background              | 'transparent'                       | 操作按钮背景       |
-| --button-height                  | '44px'                              | 操作按钮高度         |
-| --button-font-size               | '17px'                              | 操作按钮字体大小     |
-| --button-font-weight             | 500                                 | 操作按钮字体粗细     |
-| --button-text-color              | 'var(--za-theme-primary)'           | 操作按钮字体颜色     |
-| --button-active-background | 'var(--za-background-active)'       | 操作按钮选中背景   |
-| --button-disabled-opacity        | 'var(--za-opacity-disabled)'        | 操作按钮禁用状态时的透明度   |
+| 属性                       | 默认值                              | 说明                       |
+| :------------------------- | :---------------------------------- | :------------------------- |
+| --background               | 'rgb(242, 242, 242)'                | 背景色                     |
+| --border-radius            | '14px'                              | 圆角大小                   |
+| --shadow                   | '0 7px 21px var(--za-color-shadow)' | 阴影样式                   |
+| --title-font-size          | '17px'                              | 标题字体大小               |
+| --title-font-weight        | 500                                 | 标题字体粗细               |
+| --title-text-color         | 'var(--za-color-text)'              | 标题字体颜色               |
+| --close-size               | '20px'                              | 关闭图标字体大小           |
+| --close-color              | '#ccc'                              | 关闭图标颜色               |
+| --close-active-color       | '#999'                              | 关闭图标激活状态颜色       |
+| --body-font-size           | '13px'                              | 内容字体大小               |
+| --body-text-color          | 'var(--za-color-text)'              | 内容字体颜色               |
+| --body-padding             | '16px'                              | 内容内边距                 |
+| --button-background        | 'transparent'                       | 操作按钮背景               |
+| --button-height            | '44px'                              | 操作按钮高度               |
+| --button-font-size         | '17px'                              | 操作按钮字体大小           |
+| --button-font-weight       | 500                                 | 操作按钮字体粗细           |
+| --button-text-color        | 'var(--za-theme-primary)'           | 操作按钮字体颜色           |
+| --button-active-background | 'var(--za-background-active)'       | 操作按钮选中背景           |
+| --button-disabled-opacity  | 'var(--za-opacity-disabled)'        | 操作按钮禁用状态时的透明度 |
