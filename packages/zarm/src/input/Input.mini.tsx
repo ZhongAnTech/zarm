@@ -130,7 +130,7 @@ const InputBase = (props: InputBaseProps) => {
       ? {
           nativeProps: {
             className: bem('textarea', [className]),
-            style: { height: `${props.rows}em` },
+            // style: { height: `${props.rows}em` },
             rows: props.rows,
           },
         }
@@ -150,6 +150,7 @@ const InputBase = (props: InputBaseProps) => {
         adjustKeyboardTo={(props as TextareaProps).adjustKeyboardTo}
         onLineChange={(props as TextareaProps).onLineChange}
         style={{ ...(props.style || {}), height: `calc(${props.rows} * ${baseSize})` }}
+        placeholderClass={(props as TextareaProps).placeholderClass || bem('textarea-placholder')}
       />
       {textLengthRender}
     </View>
@@ -168,6 +169,7 @@ const InputBase = (props: InputBaseProps) => {
       safePasswordSalt={(props as InputProps).safePasswordSalt}
       safePasswordCustomHash={(props as InputProps).safePasswordCustomHash}
       onNickNameReview={(props as InputProps).onNickNameReview}
+      placeholderClass={(props as InputProps).placeholderClass || bem('placeholder')}
     />
   );
 

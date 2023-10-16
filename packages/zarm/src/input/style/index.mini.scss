@@ -17,11 +17,29 @@
     background-color: transparent;
     resize: none;
     border: none;
-    padding: var(--textarea-padding-vertical) 0;
+    padding: 0;
   }
 
-  input,
-  textarea {
-    line-height: 1;
+  /* stylelint-disable-next-line */
+  Input, Textarea {
+    &::placeholder {
+      color: var(--placeholder-color);
+      font-size: var(--font-size);
+    }
+  }
+
+  @include e(placeholder) {
+    color: var(--placeholder-color);
+    font-size: var(--font-size);
+  }
+
+  @include e(textarea-placholder) {
+    color: var(--placeholder-color);
+    font-size: var(--font-size);
+  }
+
+  /* stylelint-disable-next-line */
+  Textarea {
+    padding: var(--textarea-padding-vertical) 0;
   }
 }
