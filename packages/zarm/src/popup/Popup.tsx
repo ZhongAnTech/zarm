@@ -44,6 +44,8 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
   } = props;
 
   const { prefixCls, mountContainer: globalMountContainer } = React.useContext(ConfigContext);
+  const nodeRef = React.useRef<HTMLDivElement>(null);
+  const maskRef = React.useRef<HTMLDivElement>(null);
   const bem = createBEM('popup', { prefixCls });
 
   useLockScroll(visible! && lockScroll!);
@@ -52,12 +54,22 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
     onEsc?.();
   }, []);
 
+  const handleClick = (event: React.MouseEvent) => {
+    if (nodeRef.current !== event.target && nodeRef.current.contains(event.target as HTMLElement)) {
+      return;
+    }
+    maskRef.current?.click();
+  };
+
   const transitionName = animationType ?? TRANSITION_NAMES[direction!];
+
+  React.useImperativeHandle(ref, () => nodeRef.current);
 
   return (
     <Trigger visible={visible} onClose={handleEsc}>
       {mask && (
         <Mask
+          ref={maskRef}
           className={maskClassName}
           style={maskStyle}
           visible={visible}
@@ -70,7 +82,7 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
         />
       )}
       <Transition
-        nodeRef={ref}
+        nodeRef={nodeRef}
         visible={visible}
         tranisitionName={`${prefixCls}-${transitionName}`}
         duration={animationDuration}
@@ -94,11 +106,9 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
           return renderToContainer(
             props.mountContainer ?? globalMountContainer,
             <div
-              className={bem('wrapper', [props.className])}
+              className={bem('wrapper', [{ center: direction === 'center' }, props.className])}
               style={{ ...props.style, display }}
-              onClick={() => {
-                onMaskClick?.();
-              }}
+              onClick={handleClick}
             >
               <div
                 ref={setNodeRef}

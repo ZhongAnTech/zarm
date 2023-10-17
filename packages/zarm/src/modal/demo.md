@@ -26,7 +26,7 @@ const initState = {
   customContainer: {
     visible: false,
   },
-  longContent: {
+  overlength: {
     visible: false,
   },
 };
@@ -145,7 +145,7 @@ const Demo = () => {
         </List.Item>
         <List.Item
           suffix={
-            <Button size="xs" onClick={() => toggle('longContent')}>
+            <Button size="xs" onClick={() => toggle('overlength')}>
               开启
             </Button>
           }
@@ -206,12 +206,18 @@ const Demo = () => {
       </Modal>
 
       <Modal
-        maskClosable
-        visible={state.longContent.visible}
+        visible={state.overlength.visible}
         title="标题"
-        onClose={() => toggle('longContent')}
+        closable
+        onClose={() => toggle('overlength')}
+        maskClosable
       >
-        <div style={{ height: 1000 }}>模态框内容</div>
+        {Array.from(Array(100).fill(0)).map((_, index) => (
+          <div key={index}>
+            模态框内容
+            <br />
+          </div>
+        ))}
       </Modal>
     </>
   );
