@@ -91,7 +91,7 @@ exports[`DatePickerView meridiem hour snapshot 1`] = `
             8时
           </div>
           <div
-            class="za-wheel__item za-wheel__item--selected"
+            class="za-wheel__item"
             style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
           >
             9时
@@ -376,7 +376,7 @@ exports[`DatePickerView meridiem hour snapshot 1`] = `
             42分
           </div>
           <div
-            class="za-wheel__item za-wheel__item--selected"
+            class="za-wheel__item"
             style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
           >
             43分
@@ -671,7 +671,7 @@ exports[`DatePickerView snapshot 1`] = `
             5月
           </div>
           <div
-            class="za-wheel__item za-wheel__item--selected"
+            class="za-wheel__item"
             style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
           >
             6月
@@ -746,7 +746,7 @@ exports[`DatePickerView snapshot 1`] = `
             4日
           </div>
           <div
-            class="za-wheel__item za-wheel__item--selected"
+            class="za-wheel__item"
             style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
           >
             5日
@@ -900,6 +900,12 @@ exports[`DatePickerView snapshot 1`] = `
             style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
           >
             30日
+          </div>
+          <div
+            class="za-wheel__item"
+            style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
+          >
+            31日
           </div>
         </div>
       </div>
@@ -1197,7 +1203,7 @@ exports[`DatePickerView week snapshot 1`] = `
             22周
           </div>
           <div
-            class="za-wheel__item za-wheel__item--selected"
+            class="za-wheel__item"
             style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
           >
             23周

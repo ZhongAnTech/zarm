@@ -1,18 +1,18 @@
-import React, { HtmlHTMLAttributes, useEffect, useState } from 'react';
+import { ReactDOMAttributes, useDrag } from '@use-gesture/react';
 import { createBEM } from '@zarm-design/bem';
-import { useDrag, ReactDOMAttributes } from '@use-gesture/react';
-import type { Images, BaseImagePreviewProps } from './interface';
-import Popup from '../popup';
-import Carousel from '../carousel'
+import React, { useEffect, useState } from 'react';
 import Button from '../button';
+import Carousel from '../carousel';
 import { ConfigContext } from '../config-provider';
 import Loading from '../loading';
 import PinchZoom from '../pinch-zoom';
+import Popup from '../popup';
+import { canUseDOM } from '../utils/dom';
 import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseImagePreviewProps, Images } from './interface';
 import formatImages from './utils/formatImages';
 import LOAD_STATUS from './utils/loadStatus';
 import showOriginButton from './utils/showOriginButton';
-import { canUseDOM } from '../utils/dom';
 
 export interface ImagePreviewCssVars {
   '--footer-padding'?: React.CSSProperties['padding'];
@@ -24,38 +24,31 @@ export type ImagePreviewProps = BaseImagePreviewProps & HTMLProps<ImagePreviewCs
 
 const imageStyle = {
   maxWidth: canUseDOM && window?.innerWidth <= window?.innerHeight ? window?.innerWidth : undefined,
-  maxHeight: canUseDOM && window?.innerHeight <= window?.innerWidth ? window?.innerHeight : undefined,
+  maxHeight:
+    canUseDOM && window?.innerHeight <= window?.innerWidth ? window?.innerHeight : undefined,
 };
 
 const Content: React.FC<{ minScale: number; maxScale: number; imgSrc: string }> = (props) => {
   const { minScale, maxScale, imgSrc } = props;
   const [loaded, setLoaded] = useState(false);
-  const style = loaded ? {...imageStyle, display: 'block'} : imageStyle;
+  const style = loaded ? { ...imageStyle, display: 'block' } : imageStyle;
 
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('image-preview', { prefixCls });
 
   return (
     <>
-      { !loaded ?
-        (
-          <div className={bem('loading')}>
-            <Loading type="spinner" size="lg" />
-          </div>
-        ) : null
-      }
+      {!loaded ? (
+        <div className={bem('loading')}>
+          <Loading type="spinner" size="lg" />
+        </div>
+      ) : null}
       <PinchZoom minScale={minScale} maxScale={maxScale}>
-        <img
-          src={imgSrc}
-          alt=""
-          draggable={false}
-          style={style}
-          onLoad={() => setLoaded(true) }
-        />
+        <img src={imgSrc} alt="" draggable={false} style={style} onLoad={() => setLoaded(true)} />
       </PinchZoom>
     </>
   );
-}
+};
 
 const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props, ref) => {
   const {
@@ -117,9 +110,7 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
 
   const bindEvent = useDrag((state) => {
     if (state.tap && state.elapsedTime > 0) {
-      setTimeout(() => {
-        onClose?.();
-      }, 100);
+      onClose?.();
     }
   }) as unknown as (...args: any[]) => ReactDOMAttributes;
 
@@ -133,7 +124,7 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
     return images.map((item, i) => {
       return (
         <div className={bem('item')} key={+i}>
-           <Content imgSrc={item.src} minScale={minScale} maxScale={maxScale} />
+          <Content imgSrc={item.src} minScale={minScale} maxScale={maxScale} />
         </div>
       );
     });
