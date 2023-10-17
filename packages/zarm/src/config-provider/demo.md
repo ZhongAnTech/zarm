@@ -35,7 +35,7 @@ const Demo = () => {
   const [locale, setLocale] = useState(localStorage.locale || 'zhCN');
   const [primaryColor, setPrimaryColor] = useState(localStorage.primaryColor || colors[0]);
   const [theme, setTheme] = useState(localStorage.theme || 'light');
-  const [safeArea, setSafeArea] = useState(false);
+  const [safeArea, setSafeArea] = useState(true);
   const [mountContainer, setMountContainer] = useState(false);
   const [cssVars, setCssVars] = useState(null);
 
@@ -196,7 +196,7 @@ ReactDOM.render(<Demo />, mountNode);
 | locale          | Object          | -                   | 语言包配置，默认为中文，语言包可到 [zarm/lib/config-provider/locale](https://unpkg.com/zarm/lib/config-provider/locale/) 目录下寻找 |
 | theme           | string          | 'light'             | 主题模式，'light' 为光明主题，'dark' 为暗黑主题的切换                                                                               |
 | primaryColor    | string          | '#00bc70'           | 品牌标准色                                                                                                                          |
-| safeArea        | boolean         | false               | 是否适配安全区域屏                                                                                                                  |
+| safeArea        | boolean         | true                | 是否适配安全区域屏                                                                                                                  |
 | mountContainer  | MountContainer  | () => document.body | 弹层组件渲染节点                                                                                                                    |
 | scrollContainer | ScrollContainer | () => window        | 组件滚动监听容器点                                                                                                                  |
 | cssVars         | Object          | {}                  | 组件 CSS 变量设置                                                                                                                   |
