@@ -48,6 +48,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>((props, ref) => {
       }}
       maskColor={maskColor}
       lockScroll={!maskClickable}
+      className={bem('wrapper')}
       {...rest}
     >
       <div
