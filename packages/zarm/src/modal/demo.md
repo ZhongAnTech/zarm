@@ -26,11 +26,7 @@ const initState = {
   customContainer: {
     visible: false,
   },
-<<<<<<< HEAD
   overlength: {
-=======
-  longContent: {
->>>>>>> 8b4c354bf (docs(modal): add demo of long content)
     visible: false,
   },
 };
@@ -149,11 +145,7 @@ const Demo = () => {
         </List.Item>
         <List.Item
           suffix={
-<<<<<<< HEAD
             <Button size="xs" onClick={() => toggle('overlength')}>
-=======
-            <Button size="xs" onClick={() => toggle('longContent')}>
->>>>>>> 8b4c354bf (docs(modal): add demo of long content)
               开启
             </Button>
           }
@@ -214,7 +206,6 @@ const Demo = () => {
       </Modal>
 
       <Modal
-<<<<<<< HEAD
         visible={state.overlength.visible}
         title="标题"
         closable
@@ -227,14 +218,6 @@ const Demo = () => {
             <br />
           </div>
         ))}
-=======
-        maskClosable
-        visible={state.longContent.visible}
-        title="标题"
-        onClose={() => toggle('longContent')}
-      >
-        <div style={{ height: 1000 }}>模态框内容</div>
->>>>>>> 8b4c354bf (docs(modal): add demo of long content)
       </Modal>
     </>
   );
