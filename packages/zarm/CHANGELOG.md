@@ -1,14 +1,28 @@
 # 版本更新日志
 
+## v3.0.15
+
+- Bug Fix
+
+  - [DatePicker] 修复默认值重置为 `undefined` 失效的 bug [#1113](https://github.com/ZhongAnTech/zarm/pull/1113)
+  - [CustomInput] 修复只读状态样式问题 [#1117](https://github.com/ZhongAnTech/zarm/pull/1117)
+  - [Popup, Modal] 修复内容超长无法滚动问题 [#1145](https://github.com/ZhongAnTech/zarm/pull/1145)
+
+- Break Change
+
+  - [TabBar] 移除弃用的 `visible` 和 `safeArea` 属性 [#1112](https://github.com/ZhongAnTech/zarm/pull/1112) [#8db25c](https://github.com/ZhongAnTech/zarm/commit/8db25cc191fa41d1d13f8308ef94787de61b9f2e)
+
+- Perf
+
+  - [Badge] 字体样式优化 [#1118](https://github.com/ZhongAnTech/zarm/pull/1118)
+
 ## v3.0.14
 
 - Bug Fix
 
-  - [PickerView] 修复文字过长截断失效的bug。[#1097](https://github.com/ZhongAnTech/zarm/pull/1097)
-  - [DatePicker] 修复值不能重置为 `undefined` 的bug。[#1100](https://github.com/ZhongAnTech/zarm/pull/1100)[@aiyogg]
-
-  - [Popup] 修复 `maskClassName` 属性名错误的bug。[#1102](https://github.com/ZhongAnTech/zarm/pull/1102)[@aiyogg]
-
+  - [PickerView] 修复文字过长截断失效的 bug。[#1097](https://github.com/ZhongAnTech/zarm/pull/1097)
+  - [DatePicker] 修复值不能重置为 `undefined` 的 bug。[#1100](https://github.com/ZhongAnTech/zarm/pull/1100)[@aiyogg]
+  - [Popup] 修复 `maskClassName` 属性名错误的 bug。[#1102](https://github.com/ZhongAnTech/zarm/pull/1102)[@aiyogg]
 
 - Perf
 
