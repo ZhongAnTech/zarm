@@ -26,8 +26,12 @@ exports[`CustomInput renders correctly 1`] = `
 exports[`CustomInput renders readonly 1`] = `
 <DocumentFragment>
   <div
-    class="za-custom-input__content"
-  />
+    class="za-custom-input za-custom-input--number za-custom-input--readonly"
+  >
+    <div
+      class="za-custom-input__content"
+    />
+  </div>
 </DocumentFragment>
 `;
 
