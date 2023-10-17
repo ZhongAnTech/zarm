@@ -1,7 +1,6 @@
 import { createBEM } from '@zarm-design/bem';
 import React, { cloneElement, useCallback, useState } from 'react';
 import { ConfigContext } from '../config-provider';
-import SafeArea from '../safe-area';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseTabBarProps } from './interface';
 import type { TabBarItemProps } from './TabBarItem';
@@ -27,7 +26,7 @@ const TabBar = React.forwardRef<HTMLDivElement, TabBarProps>((props, ref) => {
 
   const bem = createBEM('tab-bar', { prefixCls });
 
-  const { className, children, onChange, activeKey, defaultActiveKey, safeArea, ...rest } = props;
+  const { className, children, onChange, activeKey, defaultActiveKey, ...rest } = props;
 
   const [selectedKey, setSelectedKey] = useState(defaultActiveKey);
 
@@ -79,7 +78,6 @@ const TabBar = React.forwardRef<HTMLDivElement, TabBarProps>((props, ref) => {
   return (
     <div {...rest} ref={ref} className={bem([className])}>
       <div className={bem('wrapper')}>{items}</div>
-      {safeArea && <SafeArea position="bottom" />}
     </div>
   );
 }) as CompoundedComponent;
