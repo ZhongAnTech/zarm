@@ -71,12 +71,14 @@ const InputBase = (props: InputBaseProps) => {
   const [focused, setFocused] = React.useState<boolean>(isFocus);
   const isTextarea = type === 'text' && 'rows' in props;
 
-  const baseSize = style?.['--font-size'] || '22px';
+  const lineHeight = style?.['--line-height'] || '28px';
 
   const showClearIcon = clearable && !disabled && typeof value !== 'undefined' && value?.length > 0;
 
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('input', { prefixCls });
+
+  const isAutoHeight = 'autoHeight' in props && props.autoHeight;
 
   const cls = bem([
     {
@@ -84,7 +86,8 @@ const InputBase = (props: InputBaseProps) => {
       disabled,
       clearable: showClearIcon,
       focus: focused,
-      autoHeight: 'autoHeight' in props && props.autoHeight,
+      autoHeight: isAutoHeight,
+      readonly: readOnly,
     },
     className,
   ]);
@@ -129,7 +132,7 @@ const InputBase = (props: InputBaseProps) => {
     isTextarea && canUseDOM
       ? {
           nativeProps: {
-            className: bem('textarea', [className]),
+            className: bem('textarea', [{ disabled }, className]),
             // style: { height: `${props.rows}em` },
             rows: props.rows,
           },
@@ -149,7 +152,10 @@ const InputBase = (props: InputBaseProps) => {
         confirmHold={(props as TextareaProps).confirmHold}
         adjustKeyboardTo={(props as TextareaProps).adjustKeyboardTo}
         onLineChange={(props as TextareaProps).onLineChange}
-        style={{ ...(props.style || {}), height: `calc(${props.rows} * ${baseSize})` }}
+        style={{
+          ...(props.style || {}),
+          [isAutoHeight! ? 'minHeight' : 'height']: `calc(${props.rows} * ${lineHeight})`,
+        }}
         placeholderClass={(props as TextareaProps).placeholderClass || bem('textarea-placholder')}
       />
       {textLengthRender}
@@ -157,7 +163,7 @@ const InputBase = (props: InputBaseProps) => {
   ) : (
     <Input
       {...commonProps}
-      confirmType={confirmType as keyof InputProps.ConfirmType}
+      confirmType={(type === 'search' ? 'search' : confirmType) as keyof InputProps.ConfirmType}
       type={(type === 'password' ? 'text' : type) as keyof InputProps.Type}
       password={type === 'password'}
       alwaysEmbed={(props as InputProps).alwaysEmbed}

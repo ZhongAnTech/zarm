@@ -2,13 +2,27 @@
 @import 'component';
 
 @include b(input) {
-  @include define(textarea-padding-vertical, 5px);
+  [type="text"],
+  [type="password"],
+  [type="search"] {
+    &::placeholder {
+      color: var(--placeholder-color);
+      font-size: var(--font-size);
+    }
+  }
+
+  [type="search"] {
+    &::-webkit-search-cancel-button {
+      display: block;
+    }
+  }
 
   // 禁用
   @include m(disabled) {
     textarea {
       -webkit-text-fill-color: inherit;
-      line-height: 0;
+      color: var(--disabled-color);
+      // -webkit-text-fill-color: var(--disabled-color);
     }
   }
 
@@ -18,13 +32,15 @@
     resize: none;
     border: none;
     padding: 0;
-  }
+    line-height: 1.5;
 
-  /* stylelint-disable-next-line */
-  Input, Textarea {
     &::placeholder {
       color: var(--placeholder-color);
       font-size: var(--font-size);
+    }
+
+    @include m(disabled) {
+      color: var(--disabled-color);
     }
   }
 
@@ -36,10 +52,5 @@
   @include e(textarea-placholder) {
     color: var(--placeholder-color);
     font-size: var(--font-size);
-  }
-
-  /* stylelint-disable-next-line */
-  Textarea {
-    padding: var(--textarea-padding-vertical) 0;
   }
 }
