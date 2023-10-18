@@ -128,12 +128,15 @@ const InputBase = (props: InputBaseProps) => {
     },
   };
 
+  const textAreaStyle = {
+    [isAutoHeight! ? 'minHeight' : 'height']: `calc(${props.rows} * ${lineHeight})`,
+  };
   const passProps =
     isTextarea && canUseDOM
       ? {
           nativeProps: {
             className: bem('textarea', [{ disabled }, className]),
-            // style: { height: `${props.rows}em` },
+            style: textAreaStyle,
             rows: props.rows,
           },
         }
@@ -154,7 +157,7 @@ const InputBase = (props: InputBaseProps) => {
         onLineChange={(props as TextareaProps).onLineChange}
         style={{
           ...(props.style || {}),
-          [isAutoHeight! ? 'minHeight' : 'height']: `calc(${props.rows} * ${lineHeight})`,
+          ...textAreaStyle,
         }}
         placeholderClass={(props as TextareaProps).placeholderClass || bem('textarea-placholder')}
       />
@@ -176,6 +179,9 @@ const InputBase = (props: InputBaseProps) => {
       safePasswordCustomHash={(props as InputProps).safePasswordCustomHash}
       onNickNameReview={(props as InputProps).onNickNameReview}
       placeholderClass={(props as InputProps).placeholderClass || bem('placeholder')}
+      nativeProps={{
+        className: bem('text', [{ disabled }, className]),
+      }}
     />
   );
 

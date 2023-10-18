@@ -13,7 +13,6 @@ function Demo() {
             autoHeight
             value="我是只读状态，我是只读状态，我是只读状态，我是只读状态。"
             readOnly
-            className="auto-height"
             rows="3"
           />
         </List.Item>

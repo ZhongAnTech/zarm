@@ -2,15 +2,6 @@
 @import 'component';
 
 @include b(input) {
-  [type="text"],
-  [type="password"],
-  [type="search"] {
-    &::placeholder {
-      color: var(--placeholder-color);
-      font-size: var(--font-size);
-    }
-  }
-
   [type="search"] {
     &::-webkit-search-cancel-button {
       display: block;
@@ -22,6 +13,7 @@
     textarea {
       -webkit-text-fill-color: inherit;
       color: var(--disabled-color);
+      display: flex;
       // -webkit-text-fill-color: var(--disabled-color);
     }
   }
@@ -32,7 +24,7 @@
     resize: none;
     border: none;
     padding: 0;
-    line-height: 1.5;
+    line-height: var(--line-height);
 
     &::placeholder {
       color: var(--placeholder-color);
@@ -52,5 +44,22 @@
   @include e(textarea-placholder) {
     color: var(--placeholder-color);
     font-size: var(--font-size);
+  }
+
+  @include e(text) {
+    height: var(--height);
+    line-height: var(--line-height);
+    border: none;
+    background-color: transparent;
+    font-size: var(--font-size);
+    outline: 0;
+    -webkit-appearance: none;
+    padding: 0;
+    width: 100%;
+
+    &::placeholder {
+      color: var(--placeholder-color);
+      font-size: var(--font-size);
+    }
   }
 }

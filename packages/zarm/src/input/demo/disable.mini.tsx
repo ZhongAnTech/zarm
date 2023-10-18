@@ -11,7 +11,6 @@ function Demo() {
         <List.Item title="多行文本">
           <Input
             disabled
-            className="auto-height"
             value="我是禁用状态，我是禁用状态，我是禁用状态，我是禁用状态。"
             rows="3"
             autoHeight
