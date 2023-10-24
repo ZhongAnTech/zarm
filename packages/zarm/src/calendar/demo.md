@@ -88,12 +88,24 @@ const Demo = () => {
         max={max}
         direction={direction}
         header={header}
-        dateRender={(date) => {
+        dateRender={(date, value) => {
+          let customText = '';
+          if (mode === 'range') {
+            if (new Date(date).getTime() === new Date(value[0]).getTime()) {
+              customText = 'start';
+            }
+            if (new Date(date).getTime() === new Date(value[1]).getTime()) {
+              customText = 'end';
+            }
+          }
           if (custom && /(0|6)/.test(date.getDay())) {
+            customText = 'Close';
+          }
+          if (customText) {
             return (
               <div className="custom">
                 <div className="custom__date">{date.getDate()}</div>
-                <div className="custom__text">Closed</div>
+                <div className="custom__text">{customText}</div>
               </div>
             );
           }

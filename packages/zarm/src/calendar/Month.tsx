@@ -1,14 +1,14 @@
-import React, {
-  useContext,
-  forwardRef,
-  isValidElement,
-  useRef,
-  useImperativeHandle,
-  ReactNode,
-  useCallback,
-} from 'react';
 import { createBEM } from '@zarm-design/bem';
 import dayjs from 'dayjs';
+import React, {
+  forwardRef,
+  isValidElement,
+  ReactNode,
+  useCallback,
+  useContext,
+  useImperativeHandle,
+  useRef,
+} from 'react';
 import { ConfigContext } from '../config-provider';
 import { BaseCalendarMonthProps } from './interface';
 
@@ -86,7 +86,7 @@ const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
 
     let text: string | ReactNode = '';
     if (typeof dateRender === 'function') {
-      text = dateRender(date);
+      text = dateRender(date, value);
       if (typeof text === 'object' && !isValidElement(text)) {
         console.warn('dateRender函数返回数据类型错误，请返回基本数据类型或者reactNode');
         text = '';
