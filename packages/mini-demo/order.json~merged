@@ -1,0 +1,5 @@
+<<<<<<< HEAD
+{"input":{"AutoHeight":"6","Basic":0,"Clearable":0,"Disabled":"5","Native":"3","ReadOnly":"4","ShowLength":0,"Vertical":0,"Readonly":0,"Disable":0}}
+=======
+{"input":{"AutoHeight":"6","Basic":"1","Clearable":"2","Disabled":"5","Native":"3","ReadOnly":"4","ShowLength":"7","Vertical":"8"}}
+>>>>>>> 719efb1ee (chore: input demo order)

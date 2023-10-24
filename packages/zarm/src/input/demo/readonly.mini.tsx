@@ -1,6 +1,8 @@
 import React from 'react';
 import { Input, List, Panel } from 'zarm/mini';
 
+/* order:4 */
+
 function Demo() {
   return (
     <Panel title="只读">

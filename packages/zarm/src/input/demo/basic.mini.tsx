@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Input, List, Panel } from 'zarm/mini';
 
+/* order:1 */
+
 function Demo() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');

@@ -1,12 +1,14 @@
+
 import * as React from 'react';
+import AutoHeight from './component/auto-height';
 import Basic from './component/basic';
 import Clearable from './component/clearable';
-import Disable from './component/disable';
-import HeightAuto from './component/height-auto';
+import Disabled from './component/disabled';
 import Native from './component/native';
 import Readonly from './component/readonly';
 import ShowLength from './component/show-length';
 import Vertical from './component/vertical';
+
 import './index.scss';
 
 export default () => {
@@ -14,12 +16,12 @@ export default () => {
     <>
       <Basic />
       <Clearable />
-      <Disable />
-      <HeightAuto />
       <Native />
       <Readonly />
+      <Disabled />
+      <AutoHeight />
       <ShowLength />
       <Vertical />
     </>
-  );
-};
+  )
+}
