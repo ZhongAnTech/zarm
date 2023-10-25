@@ -30,3 +30,9 @@
     }
   }
 }
+
+.za-calendar__day--selected {
+  .custom__text {
+    color: var(--day-selected-background);
+  }
+}
