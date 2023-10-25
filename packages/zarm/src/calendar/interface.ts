@@ -8,7 +8,7 @@ export interface BaseCalendarProps {
   mode: 'single' | 'multiple' | 'range';
   direction?: 'horizontal' | 'vertical';
   header?: boolean;
-  dateRender?: (value: Date) => ReactNode;
+  dateRender?: (date: Date, value: Date | Date[]) => ReactNode;
   disabledDate?: (value: Date) => boolean;
   onChange?: (value: Date[]) => void;
 }
@@ -19,7 +19,7 @@ export interface BaseCalendarMonthProps {
   max: Date;
   dateMonth: Date;
   mode: 'single' | 'multiple' | 'range';
-  dateRender?: (value: Date) => ReactNode;
+  dateRender?: (date: Date, value: Date | Date[]) => ReactNode;
   disabledDate?: (value: Date) => boolean;
   onDateClick?: (value: Date) => void;
 }

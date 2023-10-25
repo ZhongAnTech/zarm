@@ -17,6 +17,7 @@ import Week from './Week';
 export interface CalendarCssVars {
   '--background'?: React.CSSProperties['background'];
   '--padding-horizontal'?: React.CSSProperties['paddingLeft'];
+  '--padding-vertical'?: React.CSSProperties['paddingTop'];
   '--header-height'?: React.CSSProperties['height'];
   '--week-height'?: React.CSSProperties['height'];
   '--week-font-size'?: React.CSSProperties['fontSize'];
@@ -28,10 +29,13 @@ export interface CalendarCssVars {
   '--month-height'?: React.CSSProperties['height'];
   '--month-scroll-background'?: React.CSSProperties['background'];
   '--day-height'?: React.CSSProperties['height'];
+  '--day-width'?: React.CSSProperties['width'];
+  '--day-margin-vertical'?: React.CSSProperties['marginTop'];
   '--day-font-size'?: React.CSSProperties['fontSize'];
   '--day-text-color'?: React.CSSProperties['color'];
   '--day-today-background'?: React.CSSProperties['background'];
   '--day-today-text-color'?: React.CSSProperties['color'];
+  '--day-selected-border-radius'?: React.CSSProperties['borderRadius'];
   '--day-selected-background'?: React.CSSProperties['background'];
   '--day-selected-text-color'?: React.CSSProperties['color'];
   '--day-selected-shadow'?: React.CSSProperties['background'];
