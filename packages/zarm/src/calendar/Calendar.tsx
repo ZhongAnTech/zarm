@@ -103,7 +103,9 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
 
   const months = useMemo(() => {
     const month: Date[] = [];
-    const len = dayjs(max).diff(min, 'month');
+    const dateMax = dayjs(max);
+    const dateMin = dayjs(min);
+    const len = (dateMax.year() - dateMin.year()) * 12 + dateMax.month() - dateMin.month();
     let i = 0;
     do {
       month.push(dayjs(min).add(i, 'month').toDate());
