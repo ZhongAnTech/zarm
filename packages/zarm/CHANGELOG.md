@@ -1,5 +1,16 @@
 # 版本更新日志
 
+## v3.0.16
+
+- Bug Fix
+
+  - [@zarm-design/icons] 修复 ES Module 模块无法导出的问题 [#5e5c8f](https://github.com/ZhongAnTech/zarm/commit/5e5c8f125c1dc721ed6df8a9ae39462bd8c9a4db)
+  - [Calendar] 修复最大/小可选日期设置后展示不正确的问题 [#1149](https://github.com/ZhongAnTech/zarm/pull/1149)
+
+- Perf
+
+  - [Calendar] `dateRender` 增加 `value` 参数露出，优化样式 css 变量 [#1148](https://github.com/ZhongAnTech/zarm/pull/1148)
+
 ## v3.0.15
 
 - Bug Fix
