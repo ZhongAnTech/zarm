@@ -10,6 +10,7 @@
     "./style/font": "./lib/font/style/icon.scss"
   },
   "main": "lib/index.js",
+  "module": "es/index.js",
   "typings": "lib/index.d.ts",
   "files": [
     "es",
@@ -42,6 +43,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "modules": "es/index.js"
+  }
 }
