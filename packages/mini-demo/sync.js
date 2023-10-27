@@ -5,9 +5,7 @@ let orderObj = fsExtra.readJsonSync('./order.json');
 
 function computeName(blockName) {
   const className = blockName.split('-');
-  return className
-  .map((c) => `${c.charAt(0).toUpperCase()}${c.slice(1)}`)
-  .join('');
+  return className.map((c) => `${c.charAt(0).toUpperCase()}${c.slice(1)}`).join('');
 }
 
 chokidar.watch('../../packages/zarm/src/**/demo/*.mini.tsx').on('change', async (pathDir) => {
@@ -25,18 +23,17 @@ chokidar.watch('../../packages/zarm/src/**/demo/*.mini.tsx').on('change', async 
       [componentName]: {
         ...(orderObj?.[componentName] || {}),
         [capitalizedName]: match?.[1] ?? 0,
-      }
+      },
     };
   } else {
     orderObj = {
       ...orderObj,
       [componentName]: {
         [capitalizedName]: match?.[1] ?? 0,
-      }
+      },
     };
   }
 
-  console.log(orderObj);
   const space = ' '.repeat(6);
 
   try {
@@ -57,7 +54,10 @@ chokidar.watch('../../packages/zarm/src/**/demo/*.mini.tsx').on('change', async 
         .map((c) => `${c.charAt(0).toUpperCase()}${c.slice(1)}`)
         .join('');
       imports.push(`import ${capitalized} from './component/${blockName}'`);
-      components.push({ order: orderObj?.[componentName]?.[capitalized] ?? 0,  component: `<${capitalized} />` });
+      components.push({
+        order: orderObj?.[componentName]?.[capitalized] ?? 0,
+        component: `<${capitalized} />`,
+      });
     });
     components.sort((c1, c2) => c1.order - c2.order);
 
