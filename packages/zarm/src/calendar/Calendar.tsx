@@ -6,7 +6,6 @@ import { Transition } from 'react-transition-group';
 import Carousel from '../carousel';
 import { ConfigContext } from '../config-provider';
 import useScroll from '../use-scroll';
-import { getElementSize } from '../utils/dom';
 import type { HTMLProps } from '../utils/utilityTypes';
 import Header from './Header';
 import { BaseCalendarProps } from './interface';
@@ -127,14 +126,9 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
   const scrollIntoView = useRef(false);
   const anchor = () => {
     const target = value[0] || new Date();
-    const key = `${target.getFullYear()}-${target.getMonth()}`;
+    const key = `${target.getFullYear()}-${target.getMonth() + 1}`;
     const node = nodes.current[key]!;
-    if (node?.el() && scrollBodyRef.current && weekRef.current) {
-      scrollIntoView.current = true;
-      const top = node.el()?.offsetTop;
-      const { height } = getElementSize(weekRef.current!);
-      scrollBodyRef.current.scrollTop! = top - height;
-    }
+    node?.el()?.scrollIntoView();
   };
 
   const handleDateClick = useCallback(
