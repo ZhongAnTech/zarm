@@ -8,6 +8,10 @@
     }
   }
 
+  textarea {
+    display: flex;
+  }
+
   // 禁用
   @include m(disabled) {
     textarea {
