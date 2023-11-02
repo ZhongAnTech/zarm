@@ -18,7 +18,6 @@
       -webkit-text-fill-color: inherit;
       color: var(--disabled-color);
       display: flex;
-      // -webkit-text-fill-color: var(--disabled-color);
     }
   }
 
@@ -37,6 +36,7 @@
 
     @include m(disabled) {
       color: var(--disabled-color);
+      -webkit-text-fill-color: var(--disabled-color);
     }
   }
 
@@ -48,6 +48,7 @@
   @include e(textarea-placholder) {
     color: var(--placeholder-color);
     font-size: var(--font-size);
+    line-height: var(--line-height);
   }
 
   @include e(text) {
