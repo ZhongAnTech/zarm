@@ -10,8 +10,18 @@
 
   textarea {
     display: flex;
+    align-items: flex-start;
+    line-height: 0;
+    margin: 0;
+    padding: 0;
   }
 
+
+  @include e(inner--textarea) {
+    box-sizing: border-box;
+      // min-height: 100px;
+    padding: 4px 0;
+  }
   // 禁用
   @include m(disabled) {
     textarea {
@@ -49,6 +59,8 @@
     color: var(--placeholder-color);
     font-size: var(--font-size);
     line-height: var(--line-height);
+    margin: 0;
+    padding: 0;
   }
 
   @include e(text) {

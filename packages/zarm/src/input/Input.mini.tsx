@@ -144,13 +144,13 @@ const InputBase = (props: InputBaseProps) => {
 
   // 渲染输入框
   const inputRender = isTextarea ? (
-    <View className={bem('inner')}>
+    <View className={bem('inner', [{'textarea': !canUseDOM }])}>
       <Textarea
         {...passProps}
         {...commonProps}
         autoHeight={(props as TextareaProps).autoHeight}
         showConfirmBar={(props as TextareaProps).showConfirmBar}
-        disableDefaultPadding={(props as TextareaProps).disableDefaultPadding}
+        disableDefaultPadding={(props as TextareaProps).disableDefaultPadding ?? true}
         confirmType={(props as TextareaProps).confirmType}
         confirmHold={(props as TextareaProps).confirmHold}
         adjustKeyboardTo={(props as TextareaProps).adjustKeyboardTo}
