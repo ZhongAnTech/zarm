@@ -1,6 +1,6 @@
 $prefixCls: 'za' !default;
 
-@import '~@zarm-design/bem/sass';
+@import '@zarm-design/bem/lib/sass';
 @import './themes/default';
 @import '../icon/style/index.scss';
 
