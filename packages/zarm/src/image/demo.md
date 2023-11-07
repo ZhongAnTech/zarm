@@ -200,18 +200,18 @@ ReactDOM.render(
 | alt         | boolean                                                  | -      | 图片描述                                     |
 | lazy        | boolean                                                  | false  | 是否懒加载                                   |
 | shape       | 'rect' \| 'radius' \| 'round' \| 'circle'                | 'rect' | 图片形状                                     |
-| fill        | 'contain' \| 'cover' \| 'fill' \| 'none' \| 'scale-down' | 'fill' | 图片填充模式                                 |
+| fit         | 'contain' \| 'cover' \| 'fill' \| 'none' \| 'scale-down' | 'fill' | 图片填充模式                                 |
 | preview     | boolean                                                  | false  | 是否支持图片预览                             |
 | onLoad      | (event: React.SyntheticEvent<HTMLImageElement>) => void  | -      | 加载时触发的回调函数                         |
 | onError     | (event: React.SyntheticEvent<HTMLImageElement>) => void  | -      | 加载出错时触发的回调函数                     |
 
 ## CSS 变量
 
-| 属性               | 默认值                 | 说明         |
-| :----------------- | :--------------------- | :----------- |
-| --background | '#fafafa'              | 占位背景   |
-| --text-color       | 'var(--za-color-text)' | 占位字体颜色 |
-| --font-size        | '12px'                 | 占位字体大小 |
-| --radius           | 'var(--za-radius-lg)'  | 图片圆角大小 |
-| --width            | -                      | 图片宽度     |
-| --height           | -                      | 图片高度     |
+| 属性         | 默认值                 | 说明         |
+| :----------- | :--------------------- | :----------- |
+| --background | '#fafafa'              | 占位背景     |
+| --text-color | 'var(--za-color-text)' | 占位字体颜色 |
+| --font-size  | '12px'                 | 占位字体大小 |
+| --radius     | 'var(--za-radius-lg)'  | 图片圆角大小 |
+| --width      | -                      | 图片宽度     |
+| --height     | -                      | 图片高度     |

@@ -17,7 +17,7 @@ exports[`Cascader basic usage 1`] = `
           role="tablist"
         >
           <li
-            class="za-tabs__tab"
+            class="za-tabs__tab za-tabs__tab--active"
             role="tab"
           >
             <span
@@ -27,7 +27,7 @@ exports[`Cascader basic usage 1`] = `
             </span>
           </li>
           <li
-            class="za-tabs__tab za-tabs__tab--active"
+            class="za-tabs__tab"
             role="tab"
           >
             <span
@@ -290,7 +290,7 @@ exports[`Cascader basic usage 2`] = `
           role="tablist"
         >
           <li
-            class="za-tabs__tab"
+            class="za-tabs__tab za-tabs__tab--active"
             role="tab"
           >
             <span
@@ -310,7 +310,7 @@ exports[`Cascader basic usage 2`] = `
             </span>
           </li>
           <li
-            class="za-tabs__tab za-tabs__tab--active"
+            class="za-tabs__tab"
             role="tab"
           >
             <span
@@ -761,7 +761,7 @@ exports[`Cascader basic usage 3`] = `
           role="tablist"
         >
           <li
-            class="za-tabs__tab"
+            class="za-tabs__tab za-tabs__tab--active"
             role="tab"
           >
             <span
@@ -781,7 +781,7 @@ exports[`Cascader basic usage 3`] = `
             </span>
           </li>
           <li
-            class="za-tabs__tab za-tabs__tab--active"
+            class="za-tabs__tab"
             role="tab"
           >
             <span

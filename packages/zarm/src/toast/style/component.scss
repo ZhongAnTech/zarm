@@ -20,12 +20,18 @@
   align-items: center;
   display: flex;
 
+  @include e(wrapper) {
+    pointer-events: none;
+  }
+
   @include m(text) {
     padding: var(--za-padding-v-md) var(--za-padding-h-md);
+    pointer-events: all;
   }
 
   @include m(icon) {
     padding: 15px;
+    pointer-events: all;
 
     @include e(text) {
       min-width: 70px;

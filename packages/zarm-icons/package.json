@@ -1,6 +1,6 @@
 {
   "name": "@zarm-design/icons",
-  "version": "0.1.13",
+  "version": "0.1.15-alpha.0",
   "description": "",
   "license": "MIT",
   "author": "jerome.lin@zhongan.com",
@@ -10,6 +10,7 @@
     "./style/font": "./lib/font/style/icon.scss"
   },
   "main": "lib/index.js",
+  "module": "es/index.js",
   "typings": "lib/index.d.ts",
   "files": [
     "es",
@@ -46,6 +47,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "modules": "es/index.js"
+  }
 }

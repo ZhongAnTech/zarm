@@ -1,12 +1,38 @@
 # 版本更新日志
 
+## v3.0.16
+
+- Bug Fix
+
+  - [@zarm-design/icons] 修复 ES Module 模块无法导出的问题 [#5e5c8f](https://github.com/ZhongAnTech/zarm/commit/5e5c8f125c1dc721ed6df8a9ae39462bd8c9a4db)
+  - [Calendar] 修复最大/小可选日期设置后展示不正确的问题 [#1149](https://github.com/ZhongAnTech/zarm/pull/1149)
+
+- Perf
+
+  - [Calendar] `dateRender` 增加 `value` 参数露出，优化样式 css 变量 [#1148](https://github.com/ZhongAnTech/zarm/pull/1148)
+
+## v3.0.15
+
+- Bug Fix
+
+  - [DatePicker] 修复默认值重置为 `undefined` 失效的 bug [#1113](https://github.com/ZhongAnTech/zarm/pull/1113)
+  - [CustomInput] 修复只读状态样式问题 [#1117](https://github.com/ZhongAnTech/zarm/pull/1117)
+  - [Popup, Modal] 修复内容超长无法滚动问题 [#1145](https://github.com/ZhongAnTech/zarm/pull/1145)
+
+- Break Change
+
+  - [TabBar] 移除弃用的 `visible` 和 `safeArea` 属性 [#1112](https://github.com/ZhongAnTech/zarm/pull/1112) [#8db25c](https://github.com/ZhongAnTech/zarm/commit/8db25cc191fa41d1d13f8308ef94787de61b9f2e)
+
+- Perf
+
+  - [Badge] 字体样式优化 [#1118](https://github.com/ZhongAnTech/zarm/pull/1118)
+
 ## v3.0.14
 
 - Bug Fix
 
   - [PickerView] 修复文字过长截断失效的 bug。[#1097](https://github.com/ZhongAnTech/zarm/pull/1097)
   - [DatePicker] 修复值不能重置为 `undefined` 的 bug。[#1100](https://github.com/ZhongAnTech/zarm/pull/1100)[@aiyogg]
-
   - [Popup] 修复 `maskClassName` 属性名错误的 bug。[#1102](https://github.com/ZhongAnTech/zarm/pull/1102)[@aiyogg]
 
 - Perf

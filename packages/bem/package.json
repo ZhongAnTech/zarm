@@ -1,6 +1,6 @@
 {
   "name": "@zarm-design/bem",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "bem struct",
   "keywords": [
     "bem",
@@ -24,6 +24,8 @@
       "./*.d.ts"
     ]
   },
+  "main": "lib/index.js",
+  "module": "es/index.js",
   "typesVersions": {
     "*": {
       "*": [
@@ -33,8 +35,6 @@
       ]
     }
   },
-  "main": "lib/index.js",
-  "module": "es/index.js",
   "typings": "lib/index.d.ts",
   "directories": {
     "lib": "lib",

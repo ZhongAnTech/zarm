@@ -51,7 +51,7 @@ exports[`Cascader handle onChange 1`] = `
                   role="tablist"
                 >
                   <li
-                    class="za-tabs__tab"
+                    class="za-tabs__tab za-tabs__tab--active"
                     role="tab"
                   >
                     <span
@@ -61,7 +61,7 @@ exports[`Cascader handle onChange 1`] = `
                     </span>
                   </li>
                   <li
-                    class="za-tabs__tab za-tabs__tab--active"
+                    class="za-tabs__tab"
                     role="tab"
                   >
                     <span
@@ -365,7 +365,7 @@ exports[`Cascader handle onChange 2`] = `
                   role="tablist"
                 >
                   <li
-                    class="za-tabs__tab"
+                    class="za-tabs__tab za-tabs__tab--active"
                     role="tab"
                   >
                     <span
@@ -385,7 +385,7 @@ exports[`Cascader handle onChange 2`] = `
                     </span>
                   </li>
                   <li
-                    class="za-tabs__tab za-tabs__tab--active"
+                    class="za-tabs__tab"
                     role="tab"
                   >
                     <span
@@ -877,7 +877,7 @@ exports[`Cascader handle onChange 3`] = `
                   role="tablist"
                 >
                   <li
-                    class="za-tabs__tab"
+                    class="za-tabs__tab za-tabs__tab--active"
                     role="tab"
                   >
                     <span
@@ -897,7 +897,7 @@ exports[`Cascader handle onChange 3`] = `
                     </span>
                   </li>
                   <li
-                    class="za-tabs__tab za-tabs__tab--active"
+                    class="za-tabs__tab"
                     role="tab"
                   >
                     <span

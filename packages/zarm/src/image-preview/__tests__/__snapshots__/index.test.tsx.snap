@@ -7,7 +7,7 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
     style="background-color: rgb(0, 0, 0);"
   />
   <div
-    class="za-popup__wrapper za-image-preview"
+    class="za-popup__wrapper za-popup__wrapper--center za-image-preview"
   >
     <div
       class="za-popup za-popup--center "
@@ -139,7 +139,7 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
     style="background-color: rgb(0, 0, 0);"
   />
   <div
-    class="za-popup__wrapper za-image-preview"
+    class="za-popup__wrapper za-popup__wrapper--center za-image-preview"
   >
     <div
       class="za-popup za-popup--center "

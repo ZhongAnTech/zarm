@@ -178,7 +178,6 @@ ReactDOM.render(<Demo />, mountNode);
 | :--------------- | :-------------------------------- | :----- | :------------------------- |
 | activeKey        | number \| string                  | -      | 当前选中项                 |
 | defaultActiveKey | number \| string                  | -      | 初始选中项, 默认第一个选中 |
-| safeArea         | boolean                           | false  | 是否适配安全区域           |
 | onChange         | (value: number \| string) => void | -      | 值变化时触发的回调函数     |
 
 ### TabBar.Item

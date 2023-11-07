@@ -4,7 +4,6 @@ import type { BaseBadgeProps } from '../badge/interface';
 export interface BaseTabBarProps {
   defaultActiveKey?: string | number;
   activeKey?: string | number;
-  safeArea?: boolean;
   onChange?: (value: number | string) => void;
 }
 
