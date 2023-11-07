@@ -26,12 +26,6 @@ const gulpTask = (path?: string, outDir?: string, callback?: () => void) => {
         sass
           .sync({
             includePaths: ['node_modules'],
-            importer: (url) => {
-              if (url.startsWith('~')) {
-                const resolved = require.resolve(url.replace('~', ''));
-                return { file: resolved };
-              }
-            },
           })
           .on('error', sass.logError),
       )

@@ -64,6 +64,9 @@ const config: Configuration = {
             options: {
               sourceMap: true,
               implementation: require('sass'),
+              sassOptions: {
+                includePaths: ['node_modules'],
+              },
             },
           },
         ],
