@@ -5,6 +5,7 @@ export default defineAppConfig({
     'pages/popup/index',
     'pages/list/index',
     'pages/collapse/index',
+    'pages/radio/index',
     'pages/tabs/index',
   ],
   window: {
