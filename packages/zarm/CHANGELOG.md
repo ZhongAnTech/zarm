@@ -1,5 +1,15 @@
 # 版本更新日志
 
+## v3.0.17
+
+- Bug Fix
+
+  - [Popup] 修复内容中包含 transtion 动画时，会影响 Popup 的动画的执行 [#1153](https://github.com/ZhongAnTech/zarm/pull/1153)
+
+- Perf
+
+  - [Calendar] 优化初始状态下自动滑动到已选择的日期位置 [#1150](https://github.com/ZhongAnTech/zarm/pull/1150)
+
 ## v3.0.16
 
 - Bug Fix
