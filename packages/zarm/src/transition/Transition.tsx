@@ -1,10 +1,10 @@
-import * as React from 'react';
 import classnames from 'classnames';
+import * as React from 'react';
 import { Transition as InternalTransition } from 'react-transition-group';
 import { noop } from '../utils';
+import Events from '../utils/events';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseTransitionProps } from './interface';
-import Events from '../utils/events';
 
 export interface TransitionChildrenProps extends Required<HTMLProps> {
   visible?: boolean;
@@ -58,7 +58,7 @@ const Transition: React.FC<TransitionProps> = (props) => {
   } = props;
   const nodeRef = React.useRef<HTMLElement | null>();
   const [state, setState] = React.useState(TransitionState.UNMOUNTED);
-  const callbackRef = React.useRef(noop);
+  const callbackRef = React.useRef<(event: Event) => void>(noop);
 
   const unmounted = TransitionState.UNMOUNTED === state;
   const enter = TransitionState.ENTER === state;
@@ -105,7 +105,11 @@ const Transition: React.FC<TransitionProps> = (props) => {
       in={visible}
       addEndListener={(next) => {
         if (!nodeRef.current) return;
-        callbackRef.current = next;
+        callbackRef.current = (event: Event) => {
+          const target = event.target as HTMLElement;
+          if (!target.contains(nodeRef.current)) return;
+          next();
+        };
         Events.on(nodeRef.current, animationEndName, callbackRef.current);
         Events.on(nodeRef.current, transitionEndName, callbackRef.current);
       }}
