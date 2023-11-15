@@ -47,18 +47,18 @@ export type CalendarProps = BaseCalendarProps & HTMLProps<CalendarCssVars>;
 
 interface CalendarStates {
   value: Date[];
-  min: Date;
-  max: Date;
+  // min: Date;
+  // max: Date;
   // 是否是入参更新(主要是月份跨度更新，需要重新定位)
-  refresh: boolean;
-  // 注掉该逻辑，强制根据 multiple 控制节点个数，后面改进
-  // steps:Math.max(tmp.value.length; tmp.defaultValue.length);
-  // steps 是总的选择的个数 via zouhuan
-  steps: number;
+  // refresh: boolean;
+  // // 注掉该逻辑，强制根据 multiple 控制节点个数，后面改进
+  // // steps:Math.max(tmp.value.length; tmp.defaultValue.length);
+  // // steps 是总的选择的个数 via zouhuan
+  // steps: number;
   // 初始化点击步数
   // step 是为了扩展的，以后如果是三选，四选之类的，用这个，step 标注每次事件是第几次选择 via zouhuan
-  step: number;
-  mode: string;
+  step?: number;
+  // mode: string;
 }
 
 const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) => {
@@ -85,7 +85,18 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
     return { ...parseState(props), step: 0 };
   });
 
-  const { min, max, value } = state;
+  const [min, max] = useMemo(() => {
+    const minDay = minDate ? dayjs(minDate).toDate() : dayjs().toDate();
+    const maxDay = maxDate ? dayjs(maxDate).toDate() : dayjs().add(1, 'year').toDate();
+    const duration = [minDay, maxDay].sort((item1: Date, item2: Date) => +item1 - +item2);
+    return duration;
+  }, [maxDate, minDate]);
+
+  const steps = useMemo(() => {
+    return mode === 'range' ? 2 : 1;
+  }, [mode]);
+
+  const { value } = state;
 
   const nodes = useRef<any>({});
 
@@ -111,14 +122,14 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
       i += 1;
     } while (i <= len);
     return month;
-  }, [state.max, state.min]);
+  }, [max, min]);
 
   const currentMonthIndex = useMemo(() => {
     const currentTime = dayjs(value[0] || new Date());
     return months.findIndex((current) => {
       return dayjs(current).isSame(currentTime, 'month');
     });
-  }, [state.value]);
+  }, [value]);
 
   const [currentMonth, setCurrentMonth] = useState<number>(currentMonthIndex);
 
@@ -128,12 +139,12 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
     const target = value[0] || new Date();
     const key = `${target.getFullYear()}-${target.getMonth() + 1}`;
     const node = nodes.current[key]!;
-    node?.el()?.scrollIntoView();
+    node?.el()?.scrollIntoView?.();
   };
 
   const handleDateClick = useCallback(
     (date: Date) => {
-      const { step, steps } = state;
+      const { step } = state;
       const currentStep = step + 1;
       const idx = value.map(Number).indexOf(Number(date));
       if (currentStep === 1 && mode !== 'multiple') {
@@ -149,6 +160,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
         value[currentStep - 1] = date;
       }
       value.sort((item1: Date, item2: Date) => +item1 - +item2);
+
       setState((prevState) => ({
         ...prevState,
         value,
@@ -158,39 +170,42 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
         onChange(value);
       }
     },
-    [value, mode, onChange, state],
+    [mode, state, value, onChange],
   );
 
-  const renderMonth = (dateMonth: Date) => {
-    const key = `${dateMonth.getFullYear()}-${dateMonth.getMonth() + 1}`;
-    return (
-      <CalendarMonthView
-        key={key}
-        min={min}
-        max={max}
-        mode={mode}
-        value={value}
-        dateMonth={dateMonth}
-        dateRender={dateRender}
-        disabledDate={disabledDate}
-        onDateClick={handleDateClick}
-        ref={(n) => {
-          nodes.current[key] = n;
-        }}
-      />
-    );
-  };
+  const renderMonth = useCallback(
+    (dateMonth: Date) => {
+      const key = `${dateMonth.getFullYear()}-${dateMonth.getMonth() + 1}`;
+      return (
+        <CalendarMonthView
+          key={key}
+          min={min}
+          max={max}
+          mode={mode}
+          value={value}
+          dateMonth={dateMonth}
+          dateRender={dateRender}
+          disabledDate={disabledDate}
+          onDateClick={handleDateClick}
+          ref={(n) => {
+            nodes.current[key] = n;
+          }}
+        />
+      );
+    },
+    [min, max, mode, value, dateRender, disabledDate, handleDateClick, nodes],
+  );
 
   const content = useMemo(() => {
     return months.map((item) => renderMonth(item));
-  }, [months, min, max, disabledDate, dateRender, mode, handleDateClick, value]);
+  }, [renderMonth]);
 
   const showHeader = useMemo(() => {
     return direction === 'horizontal' && header;
   }, [direction, header]);
 
-  const weekNode = weekRef?.current;
   const bodyScroll = throttle(() => {
+    const weekNode = weekRef?.current;
     const body = scrollBodyRef.current;
     if (!body) {
       return false;
@@ -207,24 +222,31 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
     }
   }, 150);
 
-  const monthsContent = isHorizontal ? (
-    <Carousel
-      className={bem('body')}
-      showPagination={false}
-      activeIndex={currentMonth}
-      onChange={setCurrentMonth}
-      ref={carouselRef}
-    >
-      {content}
-    </Carousel>
-  ) : (
-    <div className={bem('body')} ref={scrollBodyRef} onScroll={bodyScroll}>
-      {content}
-      <Transition in={scrolling} timeout={500}>
-        {(tState) => <div className={bem('scroll-month', [{ [tState]: true }])}>{scrollDate}</div>}
-      </Transition>
-    </div>
-  );
+  const monthsContent = useMemo(() => {
+    if (isHorizontal) {
+      return (
+        <Carousel
+          className={bem('body')}
+          showPagination={false}
+          activeIndex={currentMonth}
+          onChange={setCurrentMonth}
+          ref={carouselRef}
+        >
+          {content}
+        </Carousel>
+      );
+    }
+    return (
+      <div className={bem('body')} ref={scrollBodyRef} onScroll={bodyScroll}>
+        {content}
+        <Transition in={scrolling} timeout={500}>
+          {(tState) => (
+            <div className={bem('scroll-month', [{ [tState]: true }])}>{scrollDate}</div>
+          )}
+        </Transition>
+      </div>
+    );
+  }, [mode, currentMonth, content, isHorizontal, scrollDate, scrolling]);
 
   useEffect(() => {
     !isHorizontal && anchor();
@@ -244,13 +266,6 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
       }, 250);
     },
   });
-
-  useEffect(() => {
-    setState({
-      ...parseState(props),
-      step: state.step,
-    });
-  }, [mode, maxDate, minDate, direction]);
 
   return (
     <div className={cls} ref={container}>

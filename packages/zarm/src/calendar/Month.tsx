@@ -105,7 +105,7 @@ const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
       {
         disabled: isDisabled(date),
         today: isToday,
-        selected: isSelected(date),
+        selected: isSelected(date) && rangeStatus !== 'range',
         range: rangeStatus === 'range',
         d6: (day + firstDay) % 7 === 0 && !!rangeStatus,
         d7: (day + firstDay) % 7 === 1 && !!rangeStatus,
@@ -176,4 +176,4 @@ CalendarMonthView.defaultProps = {
   disabledDate: () => false,
 };
 
-export default CalendarMonthView;
+export default React.memo(CalendarMonthView);
