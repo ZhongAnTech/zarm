@@ -7,6 +7,7 @@ export interface Options<T> {
   defaultValuePropName?: string;
   valuePropName?: string;
   trigger?: string;
+  eventKey?: string;
 }
 
 export type Props = Record<string, any>;
@@ -34,6 +35,7 @@ function useControllableEventValue<T = any>(props: Props = {}, options: Options<
     defaultValuePropName = 'defaultValue',
     valuePropName = 'value',
     trigger = 'onChange',
+    eventKey = 'target',
   } = options;
 
   const value = props[valuePropName] as T;
@@ -58,7 +60,7 @@ function useControllableEventValue<T = any>(props: Props = {}, options: Options<
 
   function setState(event: ChangeEvent) {
     if (!isControlled) {
-      stateRef.current = event.target[valuePropName];
+      stateRef.current = event[eventKey][valuePropName];
       update();
     }
     if (props[trigger]) {

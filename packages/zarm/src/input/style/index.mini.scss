@@ -1,0 +1,80 @@
+@import '../../style/core/index';
+@import 'component';
+
+@include b(input) {
+  [type="search"] {
+    &::-webkit-search-cancel-button {
+      display: block;
+    }
+  }
+
+  textarea {
+    display: flex;
+    align-items: flex-start;
+    line-height: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  @include e(inner--textarea) {
+    box-sizing: border-box;
+    padding: 4px 0;
+  }
+  // 禁用
+  @include m(disabled) {
+    textarea {
+      -webkit-text-fill-color: inherit;
+      color: var(--disabled-color);
+      display: flex;
+    }
+  }
+
+  @include e(textarea) {
+    width: 100%;
+    background-color: transparent;
+    resize: none;
+    border: none;
+    padding: 0;
+    line-height: var(--line-height);
+
+    &::placeholder {
+      color: var(--placeholder-color);
+      font-size: var(--font-size);
+    }
+
+    @include m(disabled) {
+      color: var(--disabled-color);
+      -webkit-text-fill-color: var(--disabled-color);
+    }
+  }
+
+  @include e(placeholder) {
+    color: var(--placeholder-color);
+    font-size: var(--font-size);
+  }
+
+  @include e(textarea-placholder) {
+    color: var(--placeholder-color);
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+    margin: 0;
+    padding: 0;
+  }
+
+  @include e(text) {
+    height: var(--height);
+    line-height: var(--line-height);
+    border: none;
+    background-color: transparent;
+    font-size: var(--font-size);
+    outline: 0;
+    -webkit-appearance: none;
+    padding: 0;
+    width: 100%;
+
+    &::placeholder {
+      color: var(--placeholder-color);
+      font-size: var(--font-size);
+    }
+  }
+}

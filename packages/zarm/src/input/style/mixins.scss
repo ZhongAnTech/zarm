@@ -56,7 +56,6 @@
 }
 
 @mixin input-clearable() {
-  // 隐藏原生search输入框自带的清空按钮
   input::-webkit-search-cancel-button {
     display: none;
   }
@@ -70,6 +69,7 @@
     transform: translateY(-50%);
     right: 0;
     font-size: var(--clear-icon-size);
+    display: flex;
   }
 
   @include m(focus) {
