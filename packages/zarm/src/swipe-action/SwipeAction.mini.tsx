@@ -139,11 +139,9 @@ const SwipeAction = React.forwardRef<SwipeActionElement, SwipeActionProps>((prop
     },
     {
       bounds: async () => {
-        const leftWidth = (await getRect(leftId))?.width || 0;
-        const rightWidth = (await getRect(rightId))?.width || 0;
         return {
-          left: rightActions.length ? -rightWidth - offset! : 0,
-          right: leftActions.length ? leftWidth + offset! : 0,
+          left: rightActions.length ? -btnsRightWidth - offset! : 0,
+          right: leftActions.length ? btnsLeftWidth + offset! : 0,
         };
       },
       enabled: !disabled,
