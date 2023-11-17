@@ -51,7 +51,7 @@ const SwipeAction = React.forwardRef<SwipeActionElement, SwipeActionProps>((prop
   const rightId = useMemo(() => `swipe-action-right-${nanoid()}`, []);
   const { prefixCls } = useContext(ConfigContext);
 
-  const swipeActionWrap = React.useRef<SwipeActionElement>();
+  const swipeActionWrap = React.useRef<SwipeActionElement | null>((ref as any) || null);
   const bem = createBEM('swipe-action', { prefixCls });
 
   useImperativeHandle(swipeActionWrap, () => {

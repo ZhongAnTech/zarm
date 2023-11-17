@@ -8,7 +8,7 @@ import type { BaseSwipeActionItemProps } from './interface';
 
 export type SwipeActionItemProps = BaseSwipeActionItemProps & HTMLProps;
 
-const SwipeActionItem = React.forwardRef<HTMLDivElement, SwipeActionItemProps>((props, ref) => {
+const SwipeActionItem = (props) => {
   const { className, text, onClick, theme = 'primary', ...rest } = props;
   const [loading, setLoading] = useSafeState(false);
   const { prefixCls } = React.useContext(ConfigContext);
@@ -19,7 +19,6 @@ const SwipeActionItem = React.forwardRef<HTMLDivElement, SwipeActionItemProps>((
     <Button
       {...rest}
       className={cls}
-      ref={ref}
       shape="rect"
       size="md"
       theme={theme}
@@ -36,6 +35,6 @@ const SwipeActionItem = React.forwardRef<HTMLDivElement, SwipeActionItemProps>((
       {loading ? null : text}
     </Button>
   );
-});
+};
 
 export default SwipeActionItem;
