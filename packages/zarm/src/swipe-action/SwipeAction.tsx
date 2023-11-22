@@ -43,7 +43,7 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
   const swipeActionWrap = useRef<HTMLDivElement | null>((ref as any) || null);
   const { prefixCls } = useContext(ConfigContext);
 
-  const { isOpen, style, doTransition, onSwipe, afterClose, dragStart, dragging } = useSwipe();
+  const { isOpen, style, doTransition, onSwipe, afterClose, dragStart, dragging } = useSwipe({ animationDuration: initialAnimationDuration });
   const bem = createBEM('swipe-action', { prefixCls });
 
   useClickAway(

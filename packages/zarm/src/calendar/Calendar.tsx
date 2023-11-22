@@ -128,7 +128,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
     const target = value[0] || new Date();
     const key = `${target.getFullYear()}-${target.getMonth() + 1}`;
     const node = nodes.current[key]!;
-    node?.el()?.scrollIntoView();
+    node?.el()?.scrollIntoView?.();
   };
 
   const handleDateClick = useCallback(

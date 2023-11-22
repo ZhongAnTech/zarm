@@ -10,11 +10,11 @@ const computeStyle = (offsetLeft, animationDuration) => {
   };
 };
 
-const useSwipe = () => {
+const useSwipe = ({ animationDuration }) => {
   const isOpen = useRef<null | string>(null);
   const dragging = useRef(false);
   const dragStart = useRef(0);
-  const [style, setStyle] = useSafeState<CSSProperties>(computeStyle(0, 0));
+  const [style, setStyle] = useSafeState<CSSProperties>(computeStyle(0, animationDuration));
 
   const doTransition = (offsetLeft, duration) => {
     setStyle(computeStyle(offsetLeft, duration));

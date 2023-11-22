@@ -45,7 +45,7 @@ const SwipeAction = React.forwardRef<SwipeActionElement, SwipeActionProps>((prop
     onOpen,
   } = props;
 
-  const { isOpen, style, doTransition, onSwipe, afterClose } = useSwipe();
+  const { isOpen, style, doTransition, onSwipe, afterClose } = useSwipe({ animationDuration: initialAnimationDuration });
   // const isOpen = useRef<null | string>(null);
   const pending = useRef(false);
   const leftId = useMemo(() => `swipe-action-left-${nanoid()}`, []);
@@ -116,8 +116,6 @@ const SwipeAction = React.forwardRef<SwipeActionElement, SwipeActionProps>((prop
       Taro.offWindowResize(computeBtnSize);
     };
   }, []);
-
- 
 
   const closeOther = () => {
     SwipeActions.filter((action) => action !== swipeActionWrap).map((action) =>
