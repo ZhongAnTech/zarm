@@ -9,6 +9,7 @@ import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseSwipeActionItemProps, BaseSwipeActionProps } from './interface';
 import SwipeActionItem from './SwipeActionItem.mini';
 import useSwipe from './useSwipe';
+import Taro from '@tarojs/taro';
 
 export interface SwipeActionCssVars {
   '--background'?: React.CSSProperties['background'];
@@ -109,10 +110,14 @@ const SwipeAction = React.forwardRef<SwipeActionElement, SwipeActionProps>((prop
   useEffect(() => {
     computeBtnSize();
     SwipeActions.push(swipeActionWrap);
+    Taro.onWindowResize(computeBtnSize);
     return () => {
       SwipeActions = SwipeActions.filter((action) => action !== swipeActionWrap);
+      Taro.offWindowResize(computeBtnSize);
     };
   }, []);
+
+ 
 
   const closeOther = () => {
     SwipeActions.filter((action) => action !== swipeActionWrap).map((action) =>
