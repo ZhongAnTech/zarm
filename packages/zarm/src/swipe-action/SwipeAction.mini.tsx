@@ -1,6 +1,7 @@
 import { View, ViewProps } from '@tarojs/components';
 import { createBEM } from '@zarm-design/bem';
 import React, { useContext, useEffect, useImperativeHandle, useMemo, useRef } from 'react';
+import Taro from '@tarojs/taro';
 import { ConfigContext } from '../config-provider';
 import { nanoid } from '../utils';
 import { getRect } from '../utils/dom/dom.mini';
@@ -9,7 +10,6 @@ import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseSwipeActionItemProps, BaseSwipeActionProps } from './interface';
 import SwipeActionItem from './SwipeActionItem.mini';
 import useSwipe from './useSwipe';
-import Taro from '@tarojs/taro';
 
 export interface SwipeActionCssVars {
   '--background'?: React.CSSProperties['background'];
