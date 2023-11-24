@@ -126,7 +126,8 @@ const SwipeAction = React.forwardRef<SwipeActionElement, SwipeActionProps>((prop
   const bind = useDrag(
     (state) => {
       if (state.first) {
-        closeOther();
+       closeOther();
+       return false;
       }
       onSwipe(state, {
         moveDistanceRatio,
