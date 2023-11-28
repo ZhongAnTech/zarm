@@ -41,7 +41,7 @@ describe('CustomInput', () => {
     const { container } = render(
       <CustomInput className="custom-input" value="test" onFocus={onFocus} />,
     );
-    const input = container.querySelector('.za-custom-input');
+    const input = container.querySelector('.za-custom-input__content');
     fireEvent.click(input!);
     expect(onFocus).toBeCalled();
   });
@@ -49,7 +49,7 @@ describe('CustomInput', () => {
   it('disabled focus', () => {
     const onFocus = jest.fn();
     render(<CustomInput className="custom-input" value="test" onFocus={onFocus} disabled />);
-    const input = document.body.querySelector('.za-custom-input');
+    const input = document.body.querySelector('.za-custom-input__content');
     fireEvent.click(input!);
     expect(onFocus).toBeCalledTimes(0);
   });

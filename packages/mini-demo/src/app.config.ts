@@ -7,6 +7,7 @@ export default defineAppConfig({
     'pages/collapse/index',
     'pages/tabs/index',
     'pages/input/index',
+    'pages/swipe-action/index',
   ],
   window: {
     backgroundTextStyle: 'light',

@@ -1,18 +1,25 @@
-import { useDrag } from '@use-gesture/react';
+import { View, ViewProps } from '@tarojs/components';
 import { createBEM } from '@zarm-design/bem';
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useEffect, useImperativeHandle, useMemo, useRef } from 'react';
+import Taro from '@tarojs/taro';
 import { ConfigContext } from '../config-provider';
-import useClickAway from '../use-click-away';
+import { nanoid } from '../utils';
+import { getRect } from '../utils/dom/dom.mini';
+import useDrag from '../utils/hooks/useDrag';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseSwipeActionItemProps, BaseSwipeActionProps } from './interface';
-import SwipeActionItem from './SwipeActionItem';
+import SwipeActionItem from './SwipeActionItem.mini';
 import useSwipe from './useSwipe';
 
 export interface SwipeActionCssVars {
   '--background'?: React.CSSProperties['background'];
 }
 
-export type SwipeActionItemProps = HTMLProps & BaseSwipeActionItemProps;
+export interface SwipeActionElement extends ViewProps {
+  close: () => void;
+}
+
+export type SwipeActionItemProps = ViewProps & BaseSwipeActionItemProps;
 
 export type SwipeActionProps = BaseSwipeActionProps &
   React.PropsWithChildren<HTMLProps<SwipeActionCssVars>> & {
@@ -20,7 +27,9 @@ export type SwipeActionProps = BaseSwipeActionProps &
     rightActions?: SwipeActionItemProps[];
   };
 
-const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, ref) => {
+let SwipeActions = [];
+
+const SwipeAction = React.forwardRef<SwipeActionElement, SwipeActionProps>((props, ref) => {
   const {
     children,
     className,
@@ -36,34 +45,31 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
     onOpen,
   } = props;
 
+  const { isOpen, style, doTransition, onSwipe, afterClose } = useSwipe({ animationDuration: initialAnimationDuration });
   // const isOpen = useRef<null | string>(null);
   const pending = useRef(false);
-  const leftRef = useRef<HTMLDivElement>();
-  const rightRef = useRef<HTMLDivElement>();
-  const swipeActionWrap = useRef<HTMLDivElement | null>((ref as any) || null);
+  const leftId = useMemo(() => `swipe-action-left-${nanoid()}`, []);
+  const rightId = useMemo(() => `swipe-action-right-${nanoid()}`, []);
   const { prefixCls } = useContext(ConfigContext);
 
-  const { isOpen, style, doTransition, onSwipe, afterClose, dragStart, dragging } = useSwipe({ animationDuration: initialAnimationDuration });
+  const swipeActionWrap = React.useRef<SwipeActionElement | null>((ref as any) || null);
   const bem = createBEM('swipe-action', { prefixCls });
 
-  useClickAway(
-    swipeActionWrap.current,
-    () => {
-      close();
-    },
-    'ontouchstart' in window ? 'touchstart' : 'mousedown',
-  );
-
-  // const dragStart = useRef(0);
+  useImperativeHandle(swipeActionWrap, () => {
+    return {
+      close: () => {
+        close();
+      },
+    };
+  });
 
   const close = () => {
     if (pending.current) return;
     doTransition(0, initialAnimationDuration);
     afterClose();
-    //  dragStart.current = 0;
   };
 
-  const renderButtons = (actions, direction, refs) => {
+  const renderButtons = (actions, direction, id) => {
     if (!actions || actions.length === 0) {
       return;
     }
@@ -71,7 +77,7 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
     const cls = bem('actions', [{ [`${direction}`]: true }]);
 
     return (
-      <div className={cls} ref={refs}>
+      <View className={cls} id={id}>
         {actions.map((action, index) => {
           return (
             <SwipeActionItem
@@ -88,15 +94,41 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
             />
           );
         })}
-      </div>
+      </View>
     );
   };
 
-  const btnsLeftWidth = leftRef?.current?.offsetWidth || 0;
-  const btnsRightWidth = rightRef?.current?.offsetWidth || 0;
+  let btnsLeftWidth = 0;
+  let btnsRightWidth = 0;
+  const computeBtnSize = async () => {
+    btnsLeftWidth = (await getRect(leftId))?.width;
+    btnsRightWidth = (await getRect(rightId))?.width;
+  };
+
+  const dragging = useRef(false);
+
+  useEffect(() => {
+    computeBtnSize();
+    SwipeActions.push(swipeActionWrap);
+    Taro.onWindowResize(computeBtnSize);
+    return () => {
+      SwipeActions = SwipeActions.filter((action) => action !== swipeActionWrap);
+      Taro.offWindowResize(computeBtnSize);
+    };
+  }, []);
+
+  const closeOther = () => {
+    SwipeActions.filter((action) => action !== swipeActionWrap).map((action) =>
+      action?.current?.close(),
+    );
+  };
 
   const bind = useDrag(
     (state) => {
+      if (state.first) {
+       closeOther();
+       return false;
+      }
       onSwipe(state, {
         moveDistanceRatio,
         moveTimeSpan,
@@ -110,20 +142,17 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
       });
     },
     {
-      from: () => [dragStart.current, 0],
-      bounds: () => {
-        const leftWidth = leftRef?.current?.offsetWidth || 0;
-        const rightWidth = rightRef?.current?.offsetWidth || 0;
+      bounds: async () => {
         return {
-          left: leftActions ? -rightWidth - offset! : 0,
-          right: rightActions ? leftWidth + offset! : 0,
+          left: rightActions.length ? -btnsRightWidth - offset! : 0,
+          right: leftActions.length ? btnsLeftWidth + offset! : 0,
         };
       },
       enabled: !disabled,
       axis: 'x',
-      pointer: { touch: true },
-      preventScroll: true,
-      triggerAllEvents: true,
+      // pointer: { touch: true },
+      // preventScroll: true,
+      // triggerAllEvents: true,
     },
   );
 
@@ -132,10 +161,10 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
   return (
     <>
       {leftActions || rightActions ? (
-        <div ref={swipeActionWrap} className={cls} style={props.style} {...bind()}>
-          {renderButtons(leftActions, 'left', leftRef)}
-          {renderButtons(rightActions, 'right', rightRef)}
-          <div
+        <View className={cls} style={props.style} {...bind()} ref={swipeActionWrap}>
+          {renderButtons(leftActions, 'left', leftId)}
+          {renderButtons(rightActions, 'right', rightId)}
+          <View
             className={bem('content')}
             style={style}
             onTransitionEnd={() => !isOpen.current && onClose?.()}
@@ -148,8 +177,8 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
             }}
           >
             {children}
-          </div>
-        </div>
+          </View>
+        </View>
       ) : (
         children
       )}

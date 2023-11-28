@@ -82,6 +82,11 @@ const siteMap = {
         name: '折叠面板',
         page: '/pages/collapse/index',
       },
+      {
+        key: 'SwipeAction',
+        name: '滑动操作',
+        page: '/pages/swipe-action/index',
+      },
       // {
       //   key: 'Message',
       //   name: '消息',
