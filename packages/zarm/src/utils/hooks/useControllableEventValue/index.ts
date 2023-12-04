@@ -45,6 +45,7 @@ function useControllableEventValue<T = any>(props: Props = {}, options: Options<
     if (isControlled) {
       return value;
     }
+
     if (props.hasOwnProperty(defaultValuePropName)) {
       return props[defaultValuePropName];
     }

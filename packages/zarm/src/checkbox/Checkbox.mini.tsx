@@ -2,7 +2,8 @@ import { BaseEventOrig, Label, Switch, SwitchProps, View } from '@tarojs/compone
 import { createBEM } from '@zarm-design/bem';
 import { Minus as MinusIcon, Success as SuccessIcon } from '@zarm-design/icons';
 import includes from 'lodash/includes';
-import React, { ReactNode, useContext, useEffect, useMemo, useState } from 'react';
+import React, { ReactNode, useContext, useMemo,  } from 'react';
+import { useControllableEventValue } from '../utils/hooks';
 import Button from '../button/index.mini';
 import { ConfigContext } from '../config-provider';
 import List from '../list';
@@ -19,19 +20,37 @@ export type CheckboxProps = BaseCheckboxProps &
     onChange?: (value: BaseEventOrig<SwitchProps.onChangeEventDetail>) => void;
   };
 
-const getChecked = (props: CheckboxProps, defaultChecked?: boolean) => {
-  return props.checked ?? props.defaultChecked ?? defaultChecked;
-};
+// const getChecked = (props: CheckboxProps, defaultChecked?: boolean) => {
+//   return props.checked ?? props.defaultChecked ?? defaultChecked;
+// };
 
 const Checkbox = (props: CheckboxProps) => {
-  let [checked, setChecked] = useState(getChecked(props, false));
+  // const defaultVal: Partial<{value: boolean, defaultValue: boolean}> = {};
+  // if ('checked' in props) {
+  //   defaultVal.value = props.checked;
+  // }
+  // if ('defaultChecked' in props) {
+  //   defaultVal.defaultValue = props.defaultChecked;
+  // }
+  // let [checked, setChecked] = useControllableEventValue({
+  //   ...props,
+  //   ...defaultVal,
+  // });
+
+  // console.log(checked);
+  let [checked, setChecked] = useControllableEventValue(props, {
+    valuePropName: 'checked',
+    defaultValuePropName: 'defaultChecked'
+  });
+  checked = checked ?? false;
+
   let { disabled } = props;
 
   const groupContext = useContext(CheckboxGroupContext);
   if (groupContext && props.value !== undefined) {
     checked = includes(groupContext.value, props.value);
-    setChecked = (changedChecked: boolean) => {
-      if (changedChecked) {
+    setChecked = (e: any) => {
+      if (e.target.checked === true) {
         groupContext.check(props.value);
       } else {
         groupContext.uncheck(props.value);
@@ -84,22 +103,17 @@ const Checkbox = (props: CheckboxProps) => {
       className={bem('input')}
       disabled={disabled}
       checked={checked}
-      onChange={(e: BaseEventOrig<SwitchProps.onChangeEventDetail>) => {
+      onChange={() => {
         if (disabled) return;
-
-        if (!('checked' in props)) {
-          setChecked(e.detail.value);
-        }
-        props.onChange?.(e);
+        setChecked({
+          target: {
+            checked: !checked,
+          }
+        } as any);
+        // props.onChange?.(e);
       }}
     />
   );
-  useEffect(() => {
-    if (props.checked === undefined) return;
-    if (props.checked === checked) return;
-
-    setChecked(getChecked({ checked: props.checked, defaultChecked: props.defaultChecked }, false));
-  }, [props.checked, props.defaultChecked]);
 
   if (groupContext?.type === 'button') {
     return (

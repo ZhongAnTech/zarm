@@ -6,10 +6,8 @@ import React, {
   forwardRef,
   ReactNode,
   useContext,
-  useEffect,
   useImperativeHandle,
   useRef,
-  useState,
 } from 'react';
 import Button from '../button';
 import { ConfigContext } from '../config-provider';
@@ -17,6 +15,8 @@ import List from '../list';
 import type { HTMLProps } from '../utils/utilityTypes';
 import { CheckboxGroupContext } from './context';
 import type { BaseCheckboxProps, CheckboxCssVars } from './interface';
+import { useControllableEventValue } from '../utils/hooks';
+
 
 export type CheckboxProps = BaseCheckboxProps &
   HTMLProps<CheckboxCssVars> & {
@@ -24,10 +24,6 @@ export type CheckboxProps = BaseCheckboxProps &
     children?: React.ReactNode | ((props: CheckboxProps) => React.ReactNode);
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   };
-
-const getChecked = (props: CheckboxProps, defaultChecked?: boolean) => {
-  return props.checked ?? props.defaultChecked ?? defaultChecked;
-};
 
 export interface CheckboxRef {
   check: () => void;
@@ -38,14 +34,18 @@ export interface CheckboxRef {
 const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  let [checked, setChecked] = useState(getChecked(props, false));
+  let [checked, setChecked] = useControllableEventValue(props, {
+    valuePropName: 'checked',
+    defaultValuePropName: 'defaultChecked'
+  });
+  checked = checked ?? false;
   let { disabled } = props;
 
   const groupContext = useContext(CheckboxGroupContext);
-  if (groupContext && props.value !== undefined) {
+  if (groupContext && props.value !== undefined ) {
     checked = includes(groupContext.value, props.value);
-    setChecked = (changedChecked: boolean) => {
-      if (changedChecked) {
+    setChecked = (e: ChangeEvent<HTMLInputElement>) => {
+      if (e.target.checked === true) {
         groupContext.check(props.value);
       } else {
         groupContext.uncheck(props.value);
@@ -94,11 +94,8 @@ const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
       checked={checked}
       onChange={(e: ChangeEvent<HTMLInputElement>) => {
         if (disabled) return;
-
-        if (!('checked' in props)) {
-          setChecked(e.target.checked);
-        }
-        props.onChange?.(e);
+        setChecked(e);
+       // props.onChange?.(e);
       }}
     />
   );
@@ -118,21 +115,6 @@ const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
       },
     };
   });
-
-  useEffect(() => {
-    if (props.checked === undefined) return;
-    if (props.checked === checked) return;
-
-    setChecked(
-      getChecked(
-        {
-          checked: props.checked,
-          defaultChecked: props.defaultChecked,
-        },
-        false,
-      ),
-    );
-  }, [props.checked, props.defaultChecked]);
 
   if (groupContext?.type === 'button') {
     return (
