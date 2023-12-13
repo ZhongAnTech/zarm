@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { showModal } from '@tarojs/taro';
 import { Checkbox, List, Panel } from 'zarm/mini';
 
+/* order: 3 */
 
 const Demo = () => {
   const [checked, setChecked] = useState(false);

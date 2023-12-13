@@ -1,4 +1,5 @@
 @import '../../style/core/index';
+@import '../../icon/style/component';
 @import 'component';
 
 @include b(checkbox) {
@@ -20,19 +21,19 @@
     width: 100%;
   }
 
-  @include b(icon) {
-    @include define(font-size, 18px);
+  // @include b(icon) {
+  //   @include define(font-size, 16px);
 
-    display: inline-block;
-    font-style: normal;
-    line-height: 0;
-    text-align: center;
-    text-transform: none;
-    vertical-align: -0.125em;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color: var(--color);
-    font-size: var(--font-size);
-  }
+  //   display: inline-block;
+  //   font-style: normal;
+  //   line-height: 0;
+  //   text-align: center;
+  //   text-transform: none;
+  //   vertical-align: middle;
+  //   // vertical-align: -0.125em;
+  //   text-rendering: optimizeLegibility;
+  //   -webkit-font-smoothing: antialiased;
+  //   -moz-osx-font-smoothing: grayscale;
+  //   font-size: var(--font-size);
+  // }
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Checkbox, List, Panel } from 'zarm/mini';
 
+/* order: 1 */
+
 function Demo() {
   return (
     <Panel title="基础用法">
