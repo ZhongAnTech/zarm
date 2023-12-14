@@ -16,6 +16,7 @@ export default defineConfig({
     'zarm/lib': path.resolve(__dirname, '../packages/zarm/src'),
     'zarm/es': path.resolve(__dirname, '../packages/zarm/src'),
     zarm: require.resolve('../packages/zarm/src/index.ts'),
+    '@tarojs/taro': '@tarojs/taro-h5',
     ['@tarojs/components$']: '@tarojs/components/lib/react',
   },
   extraBabelPlugins: [
@@ -48,4 +49,15 @@ export default defineConfig({
     autoAlias: {},
     prefersColor: { default: 'auto' },
   },
+ define: {
+    'process.env.TARO_ENV': JSON.stringify('h5'),
+    ENABLE_INNER_HTML: JSON.stringify(false),
+    ENABLE_ADJACENT_HTML: JSON.stringify(false),
+    ENABLE_SIZE_APIS: JSON.stringify(false),
+    ENABLE_TEMPLATE_CONTENT: JSON.stringify(false),
+    ENABLE_CLONE_NODE: JSON.stringify(false),
+    ENABLE_CONTAINS: JSON.stringify(false),
+    ENABLE_MUTATION_OBSERVER: JSON.stringify(false),
+    DEPRECATED_ADAPTER_COMPONENT: JSON.stringify(false),
+ }
 });
