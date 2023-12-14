@@ -23,3 +23,22 @@ export const getRects = (
       });
   });
 };
+
+/* global WechatMiniprogram */
+/* global getCurrentPages */
+
+type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogram.Component.TrivialInstance;
+
+export const getInstance = function (context?: Context, selector?: string) {
+  if (!context) {
+    const pages = getCurrentPages();
+    const page = pages[pages.length - 1];
+    context = page.$$basePage || page;
+  }
+  const instance = context ? context.selectComponent(selector) : null;
+  if (!instance) {
+    console.warn('未找到组件,请检查selector是否正确');
+    return null;
+  }
+  return instance;
+};

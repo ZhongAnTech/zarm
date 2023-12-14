@@ -8,6 +8,7 @@ export default defineAppConfig({
     'pages/tabs/index',
     'pages/input/index',
     'pages/swipe-action/index',
+    'pages/modal/index',
   ],
   window: {
     backgroundTextStyle: 'light',

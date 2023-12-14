@@ -78,6 +78,11 @@ const siteMap = {
         page: '/pages/popup/index',
       },
       {
+        key: 'Modal',
+        name: '模态框',
+        page: '/pages/modal/index',
+      },
+      {
         key: 'Collapse',
         name: '折叠面板',
         page: '/pages/collapse/index',
