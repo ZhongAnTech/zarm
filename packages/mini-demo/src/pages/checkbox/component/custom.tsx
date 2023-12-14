@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { List, Checkbox, Panel } from 'zarm/mini';
 import { Success } from '@zarm-design/icons';
 import { View } from '@tarojs/components';

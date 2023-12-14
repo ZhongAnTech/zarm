@@ -1,6 +1,6 @@
 import React from 'react';
-import { List, Checkbox } from 'zarm/mini';
-import { Star, StarFill, Success, Close, Panel  } from '@zarm-design/icons';
+import { List, Checkbox, Panel } from 'zarm/mini';
+import { Star, StarFill, Success, Close } from '@zarm-design/icons';
 
 /* order: 6 */
 
