@@ -1,5 +1,5 @@
 import attachPropertiesToComponent from '../utils/attachPropertiesToComponent';
-import Checkbox from './Checkbox';
+import Checkbox from './Checkbox.mini';
 import Group from './CheckboxGroup';
 
 export type { CheckboxProps, CheckboxRef } from './Checkbox';

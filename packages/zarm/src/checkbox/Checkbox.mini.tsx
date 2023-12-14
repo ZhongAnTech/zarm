@@ -1,50 +1,55 @@
+import { BaseEventOrig, Label, Switch, SwitchProps, View } from '@tarojs/components';
 import { createBEM } from '@zarm-design/bem';
 import { Minus as MinusIcon, Success as SuccessIcon } from '@zarm-design/icons';
 import includes from 'lodash/includes';
-import React, {
-  ChangeEvent,
-  forwardRef,
-  ReactNode,
-  useContext,
-  useImperativeHandle,
-  useRef,
-} from 'react';
-import Button from '../button';
+import React, { ReactNode, useContext, useMemo,  } from 'react';
+import { useControllableEventValue } from '../utils/hooks';
+import Button from '../button/index.mini';
 import { ConfigContext } from '../config-provider';
 import List from '../list';
-import type { HTMLProps } from '../utils/utilityTypes';
+import { nanoid } from '../utils';
+import { canUseDOM } from '../utils/dom';
+import { HTMLProps } from '../utils/utilityTypes';
 import { CheckboxGroupContext } from './context';
 import type { BaseCheckboxProps, CheckboxCssVars } from './interface';
-import { useControllableEventValue } from '../utils/hooks';
-
 
 export type CheckboxProps = BaseCheckboxProps &
   HTMLProps<CheckboxCssVars> & {
     renderIcon?: (props: CheckboxProps) => ReactNode;
     children?: React.ReactNode | ((props: CheckboxProps) => React.ReactNode);
-    onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+    onChange?: (value: BaseEventOrig<SwitchProps.onChangeEventDetail>) => void;
   };
 
-export interface CheckboxRef {
-  check: () => void;
-  uncheck: () => void;
-  toggle: () => void;
-}
+// const getChecked = (props: CheckboxProps, defaultChecked?: boolean) => {
+//   return props.checked ?? props.defaultChecked ?? defaultChecked;
+// };
 
-const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
-  const inputRef = useRef<HTMLInputElement>(null);
+const Checkbox = (props: CheckboxProps) => {
+  // const defaultVal: Partial<{value: boolean, defaultValue: boolean}> = {};
+  // if ('checked' in props) {
+  //   defaultVal.value = props.checked;
+  // }
+  // if ('defaultChecked' in props) {
+  //   defaultVal.defaultValue = props.defaultChecked;
+  // }
+  // let [checked, setChecked] = useControllableEventValue({
+  //   ...props,
+  //   ...defaultVal,
+  // });
 
+  // console.log(checked);
   let [checked, setChecked] = useControllableEventValue(props, {
     valuePropName: 'checked',
     defaultValuePropName: 'defaultChecked'
   });
   checked = checked ?? false;
+
   let { disabled } = props;
 
   const groupContext = useContext(CheckboxGroupContext);
-  if (groupContext && props.value !== undefined ) {
+  if (groupContext && props.value !== undefined) {
     checked = includes(groupContext.value, props.value);
-    setChecked = (e: ChangeEvent<HTMLInputElement>) => {
+    setChecked = (e: any) => {
       if (e.target.checked === true) {
         groupContext.check(props.value);
       } else {
@@ -67,71 +72,65 @@ const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
   ]);
 
   const currentProps = { ...props, checked };
+
   const children =
     typeof props.children === 'function' ? props.children(currentProps) : props.children;
-
-  const textRender = props.children && <span className={bem('text')}>{children}</span>;
+  const textRender = props.children && <View className={bem('text')}>{children}</View>;
 
   const iconRender = (
-    <span className={bem('icon')}>
+    <View className={bem('icon')}>
       {props.renderIcon ? (
         props.renderIcon(currentProps)
       ) : (
-        <span className={bem('tick')}>{props.indeterminate ? <MinusIcon /> : <SuccessIcon />}</span>
+        <View className={bem('tick')}>{props.indeterminate ? <MinusIcon /> : <SuccessIcon />}</View>
       )}
-    </span>
+    </View>
   );
 
+  const id = useMemo(() => nanoid(), []);
+
+  const passProps = canUseDOM
+    ? {
+        nativeProps: {
+          id,
+        },
+      }
+    : { id };
+
   const inputRender = (
-    <input
-      ref={inputRef}
-      id={props.id}
-      type="checkbox"
+    <Switch
+      {...passProps}
       className={bem('input')}
-      aria-checked={checked}
       disabled={disabled}
-      value={props.value}
       checked={checked}
-      onChange={(e: ChangeEvent<HTMLInputElement>) => {
+      onChange={() => {
         if (disabled) return;
-        setChecked(e);
-       // props.onChange?.(e);
+        setChecked({
+          target: {
+            checked: !checked,
+          }
+        } as any);
+        // props.onChange?.(e);
       }}
     />
   );
 
-  useImperativeHandle(ref, () => {
-    return {
-      check: () => {
-        if (checked) return;
-        inputRef.current.click();
-      },
-      uncheck: () => {
-        if (!checked) return;
-        inputRef.current.click();
-      },
-      toggle: () => {
-        inputRef.current.click();
-      },
-    };
-  });
-
   if (groupContext?.type === 'button') {
     return (
-      <label className={cls} style={props.style}>
+      <View className={cls} style={props.style}>
         {inputRender}
+        <Label for={id}>
+          <View className={bem('click')}>{children}</View>
+        </Label>
         <Button
           disabled={disabled}
           theme={checked ? 'primary' : 'default'}
           size="xs"
           block={groupContext?.block}
-          onClick={() => {
-            inputRef.current.click();
-          }}
         >
           {children}
         </Button>
-      </label>
+      </View>
     );
   }
 
@@ -144,22 +143,16 @@ const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
     );
 
     return (
-      <List.Item
-        hasArrow={false}
-        className={cls}
-        style={props.style}
-        prefix={groupContext?.iconAlign === 'before' ? tickRender : undefined}
-        suffix={groupContext?.iconAlign === 'after' ? tickRender : undefined}
-        title={textRender}
-        onClick={
-          !disabled
-            ? () => {
-                if (disabled) return;
-                inputRef.current.click();
-              }
-            : undefined
-        }
-      />
+      <Label for={id} data-role="label">
+        <List.Item
+          hasArrow={false}
+          className={cls}
+          style={props.style}
+          prefix={groupContext?.iconAlign === 'before' ? tickRender : undefined}
+          suffix={groupContext?.iconAlign === 'after' ? tickRender : undefined}
+          title={textRender}
+        />
+      </Label>
     );
   }
 
@@ -174,12 +167,14 @@ const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
     );
 
   return (
-    <label className={cls} style={props.style}>
+    <View className={cls} style={props.style}>
+      <Label for={id}>
+        <View className={bem('label')}> {contentRender}</View>
+      </Label>
       {inputRender}
-      {contentRender}
-    </label>
+    </View>
   );
-});
+};
 
 Checkbox.displayName = 'Checkbox';
 

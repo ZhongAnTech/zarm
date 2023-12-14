@@ -7,7 +7,7 @@ import { BaseButtonProps } from './interface';
 
 export interface ButtonProps extends BaseButtonProps, Omit<TaroButtonProps, 'size'> {}
 
-const Button: React.FC = (props: ButtonProps) => {
+const Button = (props: ButtonProps) => {
   const {
     className,
     theme,

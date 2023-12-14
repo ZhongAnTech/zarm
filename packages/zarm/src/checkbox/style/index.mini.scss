@@ -1,0 +1,39 @@
+@import '../../style/core/index';
+@import '../../icon/style/component';
+@import 'component';
+
+@include b(checkbox) {
+  position: relative;
+
+  @include e(label) {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  @include e(click) {
+    position: absolute;
+    z-index: 2;
+    opacity: 0;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  // @include b(icon) {
+  //   @include define(font-size, 16px);
+
+  //   display: inline-block;
+  //   font-style: normal;
+  //   line-height: 0;
+  //   text-align: center;
+  //   text-transform: none;
+  //   vertical-align: middle;
+  //   // vertical-align: -0.125em;
+  //   text-rendering: optimizeLegibility;
+  //   -webkit-font-smoothing: antialiased;
+  //   -moz-osx-font-smoothing: grayscale;
+  //   font-size: var(--font-size);
+  // }
+}

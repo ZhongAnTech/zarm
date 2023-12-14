@@ -267,7 +267,8 @@ const Demo = () => {
       <Checkbox
         ref={checkboxRef}
         value={props.value}
-        render={({ checked }) => (
+      >
+        {({ checked }) => (
           <div
             style={{
               position: 'relative',
@@ -294,8 +295,8 @@ const Demo = () => {
             </span>
             {props.label}
           </div>
-        )}
-      />
+      )}
+    </Checkbox>
     );
   };
   return (
