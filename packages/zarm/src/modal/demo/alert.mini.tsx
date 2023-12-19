@@ -1,8 +1,7 @@
 import React from 'react';
 import { List, Button, Modal, Panel } from 'zarm/mini';
-import { View } from '@tarojs/components';
 
-/* order: 1 */
+/* order: 3 */
 
 const Demo = () => {
   return (
@@ -15,6 +14,7 @@ const Demo = () => {
               size="xs"
               onClick={() => {
                 Modal.alert({
+                  id: 'alert',
                   className: 'test',
                   title: '警告框标题',
                   content: '这里是警告框的内容部分',
@@ -35,6 +35,7 @@ const Demo = () => {
               size="xs"
               onClick={() => {
                 Modal.alert({
+                  id: 'alert',
                   title: '警告框标题',
                   content: '这里是警告框的内容部分，点击关闭按钮，将触发 Promise 关闭警告框',
                   onConfirm: async () => {
@@ -49,7 +50,7 @@ const Demo = () => {
           }
         />
       </List>
-      <View id="modal-alert" />
+      <Modal id="alert" />
     </Panel>
   );
 };

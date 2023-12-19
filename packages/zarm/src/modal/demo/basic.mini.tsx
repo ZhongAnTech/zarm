@@ -1,4 +1,4 @@
-import React, { useRef, useReducer } from 'react';
+import React, { useReducer } from 'react';
 import { Modal, List, Button, Panel } from 'zarm/mini';
 import { View } from '@tarojs/components';
 
@@ -56,7 +56,6 @@ const reducer = (state, action) => {
 };
 
 const Demo = () => {
-  const myRef = useRef();
   const [state, dispatch] = useReducer(reducer, initState);
 
   const toggle = (key) => dispatch({ type: 'visible', key });
@@ -152,8 +151,6 @@ const Demo = () => {
         </List.Item>
       </List>
 
-      <div id="test-div" style={{ position: 'relative', zIndex: 1 }} ref={myRef} />
-
       <Modal visible={state.normal.visible} title="标题" closable onClose={() => toggle('normal')}>
         模态框内容
       </Modal>
@@ -194,14 +191,14 @@ const Demo = () => {
         </View>
       </Modal>
 
-      <Modal
+      {/* <Modal
         visible={state.customContainer.visible}
         maskClosable
         onClose={() => toggle('customContainer')}
         mountContainer={() => myRef.current}
       >
         挂载到指定dom节点
-      </Modal>
+      </Modal> */}
 
       <Modal
         visible={state.overlength.visible}

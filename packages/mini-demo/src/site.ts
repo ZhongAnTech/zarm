@@ -73,6 +73,11 @@ const siteMap = {
       //   page: '/pages/action-sheet/index',
       // },
       {
+        key: 'Loading',
+        name: '加载中',
+        page: '/pages/loading/index',
+      },
+      {
         key: 'Popup',
         name: '动作面板',
         page: '/pages/popup/index',

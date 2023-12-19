@@ -9,6 +9,7 @@ export default defineAppConfig({
     'pages/input/index',
     'pages/swipe-action/index',
     'pages/modal/index',
+    'pages/loading/index',
   ],
   window: {
     backgroundTextStyle: 'light',

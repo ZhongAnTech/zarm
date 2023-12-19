@@ -1,13 +1,14 @@
 import attachPropertiesToComponent from '../utils/attachPropertiesToComponent';
-import { alert } from './Alert';
-import { confirm } from './Confirm';
-import { clear, show } from './methods';
-import Modal from './Modal';
+import { alert } from './Alert.mini';
+import { confirm } from './Confirm.mini';
+import { clear, show } from './methods.mini';
+import Modal from './Modal.mini';
 
-export type { ModalAlertProps } from './Alert';
-export type { ModalConfirmProps } from './Confirm';
+export type { ModalAlertProps } from './Alert.mini';
+export type { ModalConfirmProps } from './Confirm.mini';
 export type { ModalShowProps } from './methods';
-export type { ModalCssVars, ModalProps } from './Modal';
+export type { ModalProps } from './Modal.mini';
+export type { ModalCssVars } from './interface';
 
 export default attachPropertiesToComponent(Modal, {
   show,

@@ -1,8 +1,9 @@
-import Taro from '@tarojs/taro';
+import { useEffect } from 'react'
+import { Events, getCurrentInstance, createSelectorQuery } from '@tarojs/taro'
 
 export const getRect = (id): Promise<Taro.NodesRef.BoundingClientRectCallbackResult> => {
   return new Promise((resolve) => {
-    Taro.createSelectorQuery()
+    createSelectorQuery()
       .select(`#${id}`)
       .boundingClientRect()
       .exec(([rect]) => {
@@ -15,7 +16,7 @@ export const getRects = (
   query: string,
 ): Promise<Taro.NodesRef.BoundingClientRectCallbackResult> => {
   return new Promise((resolve) => {
-    Taro.createSelectorQuery()
+    createSelectorQuery()
       .selectAll(query)
       .boundingClientRect()
       .exec(([rect]) => {
@@ -24,21 +25,30 @@ export const getRects = (
   });
 };
 
-/* global WechatMiniprogram */
-/* global getCurrentPages */
+export const customEvents = new Events();
 
-type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogram.Component.TrivialInstance;
+export function getCustomEventsPath(selector?: string) {
+  selector = selector || ''
+  const path = getCurrentInstance().router?.path;
+  return path ? `${path}_${selector}` : selector;
+}
 
-export const getInstance = function (context?: Context, selector?: string) {
-  if (!context) {
-    const pages = getCurrentPages();
-    const page = pages[pages.length - 1];
-    context = page.$$basePage || page;
+export function useCustomEvent(selector: string, callback: any) {
+  const path = getCustomEventsPath(selector);
+  useEffect(() => {
+    customEvents.on(path, callback);
+    return () => {
+      customEvents.off(path);
+    }
+  }, []);
+
+  const trigger = <T = any>(args: T) => {
+    customEvents.trigger(path, args);
   }
-  const instance = context ? context.selectComponent(selector) : null;
-  if (!instance) {
-    console.warn('未找到组件,请检查selector是否正确');
-    return null;
+
+  const off = () => {
+    customEvents.off(path);
   }
-  return instance;
-};
+
+  return [trigger, off];
+}

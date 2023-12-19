@@ -1,43 +1,29 @@
 import { createBEM } from '@zarm-design/bem';
 import { Close as CloseIcon } from '@zarm-design/icons';
 import * as React from 'react';
+import { useSetState } from 'ahooks';
+import { View } from '@tarojs/components';
 import { ConfigContext } from '../config-provider';
 import Popup from '../popup';
 import { noop } from '../utils';
 import type { HTMLProps } from '../utils/utilityTypes';
-import type { BaseModalProps } from './interface';
-import type { ModalActionProps } from './ModalAction';
-import ModalAction from './ModalAction';
+import type { BaseModalProps, ModalCssVars } from './interface';
+import type { ModalActionProps } from './ModalAction.mini';
+import ModalAction from './ModalAction.mini';
 
-export interface ModalCssVars {
-  '--background'?: React.CSSProperties['background'];
-  '--border-radius'?: React.CSSProperties['borderRadius'];
-  '--shadow'?: React.CSSProperties['boxShadow'];
-  '--title-font-size'?: React.CSSProperties['fontSize'];
-  '--title-font-weight'?: React.CSSProperties['fontWeight'];
-  '--title-text-color'?: React.CSSProperties['color'];
-  '--close-size'?: React.CSSProperties['fontSize'];
-  '--close-color'?: React.CSSProperties['color'];
-  '--close-active-color'?: React.CSSProperties['color'];
-  '--body-font-size'?: React.CSSProperties['fontSize'];
-  '--body-text-color'?: React.CSSProperties['color'];
-  '--body-padding'?: React.CSSProperties['padding'];
-  '--button-height'?: React.CSSProperties['height'];
-  '--button-font-size'?: React.CSSProperties['fontSize'];
-  '--button-font-weight'?: React.CSSProperties['fontWeight'];
-  '--button-text-color'?: React.CSSProperties['color'];
-  '--button-background'?: React.CSSProperties['background'];
-  '--button-active-background'?: React.CSSProperties['background'];
-  '--button-disabled-opacity'?: React.CSSProperties['opacity'];
-}
+import { useCustomEvent } from '../utils/dom/dom.mini';
 
 export interface ModalProps extends BaseModalProps, HTMLProps<ModalCssVars> {
   actions?: (ModalActionProps | ModalActionProps[])[];
   onAction?: (action: ModalActionProps) => void | Promise<void>;
+  id: string;
 }
 
 const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
+  const [state, setState] = useSetState(props);
+
   const {
+    id,
     className,
     title,
     shape,
@@ -49,7 +35,18 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     actions,
     onAction,
     ...rest
-  } = props;
+  } = state;
+
+  useCustomEvent(id, (prarms) => {
+    setState(prarms);
+  });
+
+  React.useEffect(()=> {
+    setState({
+      ...state,
+      visible: props.visible,
+    });
+  }, [props.visible])
 
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('modal', { prefixCls });
@@ -69,7 +66,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     const currentAction = Array.isArray(action) ? action : [action];
 
     return (
-      <div key={+i} className={bem('action')}>
+      <View key={+i} className={bem('action')}>
         {currentAction.map((child, j) => (
           <ModalAction
             {...child}
@@ -80,7 +77,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
             }}
           />
         ))}
-      </div>
+      </View>
     );
   });
 
@@ -92,18 +89,18 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       direction="center"
       onMaskClick={maskClosable ? onClose : noop}
     >
-      <div className={bem('dialog')}>
-        <div className={bem('body')}>
+      <View className={bem('dialog')}>
+        <View className={bem('body')}>
           {showHeader && (
             <>
-              <div className={bem('title')}>{title}</div>
+              <View className={bem('title')}>{title}</View>
               {closable && <CloseIcon size="sm" className={bem('close')} onClick={onClose} />}
             </>
           )}
           {children}
-        </div>
-        {showFooter && <div className={bem('footer')}>{hasActions ? actionsRender : footer}</div>}
-      </div>
+        </View>
+        {showFooter && <View className={bem('footer')}>{hasActions ? actionsRender : footer}</View>}
+      </View>
     </Popup>
   );
 });
