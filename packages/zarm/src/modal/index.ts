@@ -7,7 +7,8 @@ import Modal from './Modal';
 export type { ModalAlertProps } from './Alert';
 export type { ModalConfirmProps } from './Confirm';
 export type { ModalShowProps } from './methods';
-export type { ModalCssVars, ModalProps } from './Modal';
+export type { ModalProps } from './Modal';
+export type { ModalCssVars } from './interface';
 
 export default attachPropertiesToComponent(Modal, {
   show,

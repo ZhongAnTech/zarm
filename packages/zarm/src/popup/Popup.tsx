@@ -55,10 +55,10 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
   }, []);
 
   const handleClick = (event: React.MouseEvent) => {
-    if (nodeRef.current !== event.target && nodeRef.current.contains(event.target as HTMLElement)) {
+    if (nodeRef.current !== event.target && nodeRef?.current?.contains?.(event.target as HTMLElement)) {
       return;
     }
-    maskRef.current?.click();
+    onMaskClick?.();
   };
 
   const transitionName = animationType ?? TRANSITION_NAMES[direction!];
