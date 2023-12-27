@@ -5,7 +5,6 @@ import { Modal, List, Button, Panel } from 'zarm/mini';
 
 const Demo = () => {
   const [visible, setVisible] = useState(false);
-  const toggle = () => setVisible(!visible);
 
   return (
     <Panel title="带操作按钮">
@@ -13,7 +12,7 @@ const Demo = () => {
         <List.Item
           title="自定义操作按钮"
           suffix={
-            <Button size="xs" onClick={toggle}>
+            <Button size="xs" onClick={() => setVisible(true)}>
               开启
             </Button>
           }
@@ -51,12 +50,12 @@ const Demo = () => {
         onAction={async (action) => {
           switch (action.key) {
             case 'cancel':
-              toggle();
+              setVisible(false);
               break;
             default:
               // 模拟异步操作
               await new Promise((resolve) => setTimeout(resolve, 3000));
-              toggle();
+              setVisible(false);
           }
           console.log(action);
         }}

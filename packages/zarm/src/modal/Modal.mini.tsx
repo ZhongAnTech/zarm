@@ -89,7 +89,11 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
       direction="center"
       onMaskClick={maskClosable ? onClose : noop}
     >
-      <View className={bem('dialog')}>
+      <View
+        className={bem('dialog')}
+        onClick={(event) => {
+          event.stopPropagation();
+        }}>
         <View className={bem('body')}>
           {showHeader && (
             <>

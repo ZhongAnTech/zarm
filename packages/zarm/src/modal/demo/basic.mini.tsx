@@ -131,7 +131,7 @@ const Demo = () => {
             }}
           />
         </List.Item> */}
-        <List.Item
+        {/* <List.Item
           suffix={
             <Button size="xs" onClick={() => toggle('customContainer')}>
               开启
@@ -139,7 +139,7 @@ const Demo = () => {
           }
         >
           挂载到指定 DOM 节点
-        </List.Item>
+        </List.Item> */}
         <List.Item
           suffix={
             <Button size="xs" onClick={() => toggle('overlength')}>
@@ -208,10 +208,9 @@ const Demo = () => {
         maskClosable
       >
         {Array.from(Array(100).fill(0)).map((_, index) => (
-          <div key={index}>
+          <View key={index}>
             模态框内容
-            <br />
-          </div>
+          </View>
         ))}
       </Modal>
     </Panel>
