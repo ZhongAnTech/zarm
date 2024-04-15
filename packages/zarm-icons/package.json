@@ -5,9 +5,18 @@
   "license": "MIT",
   "author": "jerome.lin@zhongan.com",
   "exports": {
-    ".": "./lib/index.js",
-    "./style": "./lib/style/index.scss",
-    "./style/font": "./lib/font/style/icon.scss"
+    ".": {
+      "import": "./es/index.js",
+      "default": "./lib/index.js"
+    },
+    "./style": {
+      "import": "./es/style/index.scss",
+      "default": "./lib/style/index.scss"
+    },
+    "./style/font": {
+      "import": "./es/font/style/icon.scss",
+      "default": "./lib/font/style/icon.scss"
+    }
   },
   "main": "lib/index.js",
   "module": "es/index.js",
