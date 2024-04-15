@@ -1,5 +1,13 @@
 # 版本更新日志
 
+## v3.1.0
+
+- Bug Fix
+
+  - [Toast] 修复单独使用该组件 loading 模式时样式丢失的情况 [#1163](https://github.com/ZhongAnTech/zarm/pull/1163)
+
+  - [@zarm-design/icons] 修复当前图标库的导出配置会导致使用 ES 模块时引用 lib 而不是引用 es 下的资源，从而导致 tree shake 失败 [#1166](https://github.com/ZhongAnTech/zarm/pull/1166)
+
 ## v3.0.17
 
 - Bug Fix
