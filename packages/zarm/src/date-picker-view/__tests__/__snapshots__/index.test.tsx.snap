@@ -509,12 +509,6 @@ exports[`DatePickerView snapshot 1`] = `
             class="za-wheel__item"
             style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
           >
-            2013年
-          </div>
-          <div
-            class="za-wheel__item"
-            style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
-          >
             2014年
           </div>
           <div
@@ -630,6 +624,12 @@ exports[`DatePickerView snapshot 1`] = `
             style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
           >
             2033年
+          </div>
+          <div
+            class="za-wheel__item"
+            style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
+          >
+            2034年
           </div>
         </div>
       </div>
@@ -939,12 +939,6 @@ exports[`DatePickerView week snapshot 1`] = `
             class="za-wheel__item"
             style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
           >
-            2013年
-          </div>
-          <div
-            class="za-wheel__item"
-            style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
-          >
             2014年
           </div>
           <div
@@ -1060,6 +1054,12 @@ exports[`DatePickerView week snapshot 1`] = `
             style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
           >
             2033年
+          </div>
+          <div
+            class="za-wheel__item"
+            style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
+          >
+            2034年
           </div>
         </div>
       </div>
