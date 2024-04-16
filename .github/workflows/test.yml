@@ -88,6 +88,7 @@ jobs:
           key: ${{ runner.os }}-lerna-${{ hashFiles('**/yarn.lock') }}
 
       - name: Cache @zarm-design/cli
+        id: cli_cache_id
         uses: actions/cache@v3
         with:
           path: packages/zarm-cli/dist
@@ -119,6 +120,7 @@ jobs:
           key: ${{ runner.os }}-cli-${{ github.sha }}
 
       - name: Cache @zarm-design/bem
+        id: bem_cache_id
         uses: actions/cache@v3
         with:
           path: packages/bem/lib
@@ -156,6 +158,7 @@ jobs:
           key: ${{ runner.os }}-bem-${{ github.sha }}
 
       - name: Cache @zarm-design/icons
+        id: icons_cache_id
         uses: actions/cache@v3
         with:
           path: packages/zarm-icons/lib
