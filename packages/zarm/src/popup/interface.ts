@@ -17,7 +17,7 @@ export interface BasePopupProps extends BaseTransitionProps {
   onClose?: () => void;
   afterOpen?: () => void;
   afterClose?: () => void;
-  onMaskClick?: () => void;
+  onMaskClick?: MaskProps['onClick'];
   onEsc?: () => void;
   mountContainer?: MountContainer;
   lockScroll?: boolean;

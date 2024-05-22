@@ -1,6 +1,7 @@
 import * as React from 'react';
-import type { MountContainer } from '../utils/dom';
 import type { Locale } from '../config-provider/interface';
+import type { PopupProps } from '../popup';
+import type { MountContainer } from '../utils/dom';
 
 export interface BaseActionSheetItemProps {
   key?: string | number;
@@ -15,7 +16,7 @@ export interface BaseActionSheetProps {
   visible?: boolean;
   spacing?: boolean;
   cancelText?: string;
-  onMaskClick?: () => void;
+  onMaskClick?: PopupProps['onMaskClick'];
   onCancel?: () => void;
   afterClose?: () => void;
   destroy?: boolean;

@@ -18,5 +18,5 @@ export interface BaseToastProps {
   onClose?: () => void;
   afterOpen?: () => void;
   afterClose?: () => void;
-  onMaskClick?: () => void;
+  onMaskClick?: MaskProps['onClick'];
 }
