@@ -1,5 +1,11 @@
 # 版本更新日志
 
+## v3.1.1
+
+- Perf
+
+  - [Popup] onMaskClick 事件支持原生 event 参数 [#1168](https://github.com/ZhongAnTech/zarm/pull/1168)
+
 ## v3.1.0
 
 - Bug Fix
