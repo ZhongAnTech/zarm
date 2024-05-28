@@ -61,6 +61,8 @@ export const getOffsetSize = (ele: HTMLElement) => {
   if (offsetWidth && offsetHeight) {
     return { width: offsetWidth, height: offsetHeight };
   }
+
+  return { width: 0, height: 0 };
 }
 
 export const isNumeric = (n: any): boolean => {
