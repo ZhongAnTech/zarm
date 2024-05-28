@@ -16,6 +16,7 @@ import type { BaseCarouselProps } from './interface';
 import Events from '../utils/events';
 import { ConfigContext } from '../config-provider';
 import type { HTMLProps } from '../utils/utilityTypes';
+import { getOffsetSize } from '../utils/dom';
 
 export interface CarouselCssVars {
   '--pagination-margin'?: React.CSSProperties['right' | 'bottom'];
@@ -140,8 +141,9 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
     const { activeIndex, activeIndexChanged } = stateRef.current;
     const dom = carouselItemsRef.current;
     const index = loop ? activeIndex + 1 : activeIndex;
-    translateXRef.current = -dom!.offsetWidth * index;
-    translateYRef.current = -dom!.offsetHeight * index;
+    const size = getOffsetSize(dom);
+    translateXRef.current = -size.width * (index + 1);
+    translateYRef.current = -size.height * index;
     doTransition({ x: translateXRef.current, y: translateYRef.current }, 0);
     if (activeIndexChanged) {
       onChangeEnd?.(activeIndex);
@@ -155,8 +157,9 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
       const previousIndex = stateRef.current.activeIndex;
       const activeIndexChanged = previousIndex !== index;
       const num = loop ? 1 : 0;
-      translateXRef.current = -dom!.offsetWidth * (index + num);
-      translateYRef.current = -dom!.offsetHeight * (index + num);
+      const size = getOffsetSize(dom);
+      translateXRef.current = -size.width * (index + num);
+      translateYRef.current = -size.height * (index + num);
       doTransition(
         { x: translateXRef.current, y: translateYRef.current },
         animationDurationNum
@@ -235,10 +238,10 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
       }
       if (state.last) {
         const dom = carouselItemsRef.current;
-
+        const size = getOffsetSize(dom);
         const ratio = !isVertical
-          ? Math.abs(offsetX / dom!.offsetWidth)
-          : Math.abs(offsetY / dom!.offsetHeight);
+          ? Math.abs(offsetX / size.width)
+          : Math.abs(offsetY / size.height);
         // 判断滑动临界点
         // 1.滑动距离超过0，且滑动距离和父容器长度之比超过moveDistanceRatio
         // 2.滑动释放时间差低于moveTimeSpan
