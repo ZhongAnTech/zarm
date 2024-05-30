@@ -142,7 +142,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
     const dom = carouselItemsRef.current;
     const index = loop ? activeIndex + 1 : activeIndex;
     const size = getOffsetSize(dom);
-    translateXRef.current = -size.width * (index + 1);
+    translateXRef.current = -size.width * index;
     translateYRef.current = -size.height * index;
     doTransition({ x: translateXRef.current, y: translateYRef.current }, 0);
     if (activeIndexChanged) {
