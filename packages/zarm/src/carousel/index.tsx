@@ -16,7 +16,7 @@ import type { BaseCarouselProps } from './interface';
 import Events from '../utils/events';
 import { ConfigContext } from '../config-provider';
 import type { HTMLProps } from '../utils/utilityTypes';
-import { getOffsetSize } from '../utils/dom';
+import { getBoundingClientRect } from '../utils/dom';
 
 export interface CarouselCssVars {
   '--pagination-margin'?: React.CSSProperties['right' | 'bottom'];
@@ -141,7 +141,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
     const { activeIndex, activeIndexChanged } = stateRef.current;
     const dom = carouselItemsRef.current;
     const index = loop ? activeIndex + 1 : activeIndex;
-    const size = getOffsetSize(dom);
+    const size = getBoundingClientRect(dom);
     translateXRef.current = -size.width * index;
     translateYRef.current = -size.height * index;
     doTransition({ x: translateXRef.current, y: translateYRef.current }, 0);
@@ -157,7 +157,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
       const previousIndex = stateRef.current.activeIndex;
       const activeIndexChanged = previousIndex !== index;
       const num = loop ? 1 : 0;
-      const size = getOffsetSize(dom);
+      const size = getBoundingClientRect(dom);
       translateXRef.current = -size.width * (index + num);
       translateYRef.current = -size.height * (index + num);
       doTransition(
@@ -238,7 +238,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
       }
       if (state.last) {
         const dom = carouselItemsRef.current;
-        const size = getOffsetSize(dom);
+        const size = getBoundingClientRect(dom);
         const ratio = !isVertical
           ? Math.abs(offsetX / size.width)
           : Math.abs(offsetY / size.height);
