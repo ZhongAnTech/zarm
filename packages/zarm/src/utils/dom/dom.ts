@@ -45,26 +45,6 @@ export const getBoundingClientRect = (
   };
 };
 
-
-/**
- * 获取元素size
- */
-export const getOffsetSize = (ele: HTMLElement) => {
-  const rect = getBoundingClientRect(ele);
-
-  if (rect.width && rect.height) {
-    return rect;
-  }
-
-  const { offsetWidth, offsetHeight } = ele;
-
-  if (offsetWidth && offsetHeight) {
-    return { width: offsetWidth, height: offsetHeight };
-  }
-
-  return { width: 0, height: 0 };
-}
-
 export const isNumeric = (n: any): boolean => {
   return n !== '' && !Number.isNaN(parseFloat(n)) && Number.isFinite(n);
 };
