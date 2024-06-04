@@ -1,10 +1,10 @@
 # 版本更新日志
 
-## v2.9.19
+## v2.9.20
 
 - Bug Fix
 
-  - [DateSelect]修复 `onChange` 属性不生效的问题。[#1093](https://github.com/ZhongAnTech/zarm/issues/1101)
+  - [Carousel] 修复图片大小计算偏差问题 [#1170](https://github.com/ZhongAnTech/zarm/pull/1170) [@zyf-xcode]
 
 ## v2.9.18
 
