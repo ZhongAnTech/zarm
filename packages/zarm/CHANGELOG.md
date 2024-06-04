@@ -1,5 +1,11 @@
 # 版本更新日志
 
+## v3.1.2
+
+- Bug Fix
+
+  - [Carousel] 修复图片大小计算偏差问题 [#1169](https://github.com/ZhongAnTech/zarm/pull/1169) [@zyf-xcode]
+
 ## v3.1.1
 
 - Perf
