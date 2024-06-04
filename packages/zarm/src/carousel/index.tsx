@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import PropsType from './PropsType';
 import Events from '../utils/events';
 import Drag from '../drag';
+import { getBoundingClientRect } from '../utils/dom';
 
 export interface CarouselProps extends PropsType {
   prefixCls?: string;
@@ -87,8 +88,9 @@ export default class Carousel extends Component<CarouselProps, any> {
     const maxLength = children!.length;
     const previousIndex = this.state.activeIndex;
 
-    this.translateX = -dom.offsetWidth * (index + loop);
-    this.translateY = -dom.offsetHeight * (index + loop);
+    const size = getBoundingClientRect(dom);
+    this.translateX = -size.width * (index + loop);
+    this.translateY = -size.height * (index + loop);
     this.doTransition({ x: this.translateX, y: this.translateY }, animationDuration);
 
     if (index > maxLength - 1) {
@@ -189,10 +191,11 @@ export default class Carousel extends Component<CarouselProps, any> {
     let { activeIndex } = this.state;
 
     const dom = this.carouselItems;
+    const size = getBoundingClientRect(dom);
     const timeSpan = new Date().getTime() - startTime.getTime();
     const ratio = this.isDirectionX()
-      ? Math.abs(offsetX / dom.offsetWidth)
-      : Math.abs(offsetY / dom.offsetHeight);
+      ? Math.abs(offsetX / size.width)
+      : Math.abs(offsetY / size.height);
 
     // 判断滑动临界点
     // 1.滑动距离超过0，且滑动距离和父容器长度之比超过moveDistanceRatio
@@ -293,9 +296,9 @@ export default class Carousel extends Component<CarouselProps, any> {
     const { onChangeEnd } = this.props;
     const { activeIndex, activeIndexChanged } = this.state;
     const dom = this.carouselItems;
-
-    this.translateX = -dom.offsetWidth * (activeIndex + this.props.loop);
-    this.translateY = -dom.offsetHeight * (activeIndex + this.props.loop);
+    const size = getBoundingClientRect(dom);
+    this.translateX = -size.width * (activeIndex + this.props.loop);
+    this.translateY = -size.height * (activeIndex + this.props.loop);
     this.doTransition({ x: this.translateX, y: this.translateY }, 0);
 
     if (typeof onChangeEnd === 'function' && activeIndexChanged) {
