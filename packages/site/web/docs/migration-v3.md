@@ -330,7 +330,7 @@ module.exports = {
 }
 ```
 
-1. 配置 ConfigProvider prefixCls
+3. 配置 ConfigProvider prefixCls
 
 ```tsx
 import * as React from 'react';
