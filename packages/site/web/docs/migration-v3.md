@@ -300,9 +300,7 @@ module.exports = {
           {
             loader: 'sass-loader'
 +           options: {
-+             sassOptions: {
-+               additionalData: '$prefixCls: "za-v3";'
-+             }
++             additionalData: '$prefixCls: "zarm-v3";'
 +           }
           }
         ],
@@ -310,7 +308,29 @@ module.exports = {
 };
 ```
 
-3. 配置 ConfigProvider prefixCls
+- 如果你项目中使用的 `sass-loader` 版本 < 9.00 且 >= 8.0.0，则将 `additionalData` 改为 `prependData`：
+
+```diff
+{
+  loader: 'sass-loader',
++ options: {
++   prependData: '$prefixCls: "zarm-v3";'
++ }
+}
+```
+
+- 如果你项目中使用的 `sass-loader` 版本 < 8.0.0，则将 `additionalData` 改为 `data`：
+
+```diff
+{
+  loader: 'sass-loader',
++ options: {
++   data: '$prefixCls: "zarm-v3";'
++ }
+}
+```
+
+1. 配置 ConfigProvider prefixCls
 
 ```tsx
 import * as React from 'react';
