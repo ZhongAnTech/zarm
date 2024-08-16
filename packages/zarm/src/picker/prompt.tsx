@@ -9,7 +9,7 @@ export interface PickerPromptValue {
   items: PickerColumnItem[];
 }
 
-export const prompt = (props: Omit<PickerProps, 'value' | 'visible' | 'children'>) => {
+export const prompt = (props: Omit<PickerProps, 'visible' | 'children'>) => {
   return new Promise<PickerPromptValue>((resolve) => {
     const { close } = renderImperatively(
       <Picker
