@@ -494,7 +494,7 @@ ReactDOM.render(<Demo />, mountNode);
 Picker 支持指令式调用，提供了 `prompt` 方法
 
 ```tsx
-prompt: (props: Omit<PickerProps, 'visible' | 'visible' | 'children'>) =>
+prompt: (props: Omit<PickerProps, 'visible' | 'children'>) =>
   Promise<PickerValue[] | null>;
 ```
 
