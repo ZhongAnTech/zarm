@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@babel/standalone": "7.12.15",
-    "@sentry/browser": "^5.30.0",
+    "@sentry/browser": "^7.119.1",
     "@types/classnames": "^2.2.3",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
