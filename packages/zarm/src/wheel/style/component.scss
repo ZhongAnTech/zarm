@@ -6,16 +6,32 @@
   @include define(disabled-text-color, var(--za-color-text-disabled));
 
   display: block;
-  position: relative;
-  width: 100%;
   height: calc(var(--item-rows) * var(--item-height));
-  overflow: hidden;
+  width: 100%;
+  overflow: visible;
+  position: relative;
 
   @include e(content) {
-    margin-top: calc(var(--item-height) * 2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    height: var(--item-height);
+    width: 100%;
+    perspective-origin: calc(50% - 100px) 50%;
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+  }
+
+  @include e(items) {
+    height: 100%;
+    position: relative;
+    width: 100%;
   }
 
   @include e(item) {
+    width: 100%;
     text-align: center;
     font-size: var(--item-font-size);
     line-height: var(--item-height);
@@ -24,9 +40,21 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    position: absolute;
 
     @include m(disabled) {
       color: var(--disabled-text-color);
     }
+  }
+
+  @include e(top, bottom) {
+    left: 0;
+    height: calc((var(--item-rows) * var(--item-height) - var(--item-height)) / 2);
+    width: 100%;
+    position: relative;
+    z-index: 5;
+    pointer-events: none;
   }
 }

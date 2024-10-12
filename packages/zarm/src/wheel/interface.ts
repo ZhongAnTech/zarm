@@ -20,6 +20,7 @@ export interface BaseWheelProps {
   dataSource?: Array<WheelItem>;
   disabled?: boolean;
   stopScroll?: boolean;
+  loop?: boolean;
   itemRender?: (item: WheelItem) => React.ReactNode;
   onChange?: (value: WheelValue) => void;
 }
