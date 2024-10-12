@@ -1,14 +1,14 @@
-import { value createBEM } from '@zarm-design/bem';
-import { value useControllableValue, value useUnmountedRef } from 'ahooks';
+import { createBEM } from '@zarm-design/bem';
+import { useControllableValue, useUnmountedRef } from 'ahooks';
 import {} from 'keen-slider';
-import { value TrackDetails, value useKeenSlider } from 'keen-slider/react';
+import { TrackDetails, useKeenSlider } from 'keen-slider/react';
 import isEqual from 'lodash/isEqual';
 import * as React from 'react';
-import { value ConfigContext } from '../config-provider';
-import { value resolvedFieldNames } from '../picker-view/utils';
-import { value toArray } from '../utils';
-import { value HTMLProps } from '../utils/utilityTypes';
-import { value BaseWheelProps } from './interface';
+import { ConfigContext } from '../config-provider';
+import { resolvedFieldNames } from '../picker-view/utils';
+import { toArray } from '../utils';
+import { HTMLProps } from '../utils/utilityTypes';
+import { BaseWheelProps } from './interface';
 
 export interface WheelCssVars {
   '--text-color': React.CSSProperties['color'];
