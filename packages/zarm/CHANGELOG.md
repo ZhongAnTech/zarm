@@ -2,7 +2,7 @@
 
 ## v3.1.3
 
-- Bug Fix
+- Feature
 
   - [Popup] 支持嵌套使用 [#d94776](https://github.com/ZhongAnTech/zarm/commit/d94776d4762282c3ecc43ffbcd11b75d71fcc5fb)
 
