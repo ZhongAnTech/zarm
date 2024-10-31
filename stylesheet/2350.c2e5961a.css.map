@@ -1,1 +1,0 @@
-{"version":3,"file":"stylesheet/2350.c2e5961a.css","mappings":"AAGE,yBACE,a","sources":["webpack://site/./demo/styles/SkeletonPage.scss"],"sourcesContent":["@import '@/styles/index';\n\n.skeleton-page {\n  .skeleton {\n    padding: r(12);\n  }\n}\n"],"names":[],"sourceRoot":""}

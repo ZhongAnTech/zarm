@@ -1,0 +1,1 @@
+{"version":3,"file":"stylesheet/3339.6ea7a2f3.css","mappings":"AAGE,gBACE,iBAEA,4BACE,W","sources":["webpack://site/./demo/styles/CellPage.scss"],"sourcesContent":["@import '@/styles/index';\n\n.cell-page {\n  .box {\n    line-height: r(24);\n\n    &-description {\n      color: gray;\n    }\n  }\n}\n"],"names":[],"sourceRoot":""}

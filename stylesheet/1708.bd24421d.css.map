@@ -1,1 +1,0 @@
-{"version":3,"file":"stylesheet/1708.bd24421d.css","mappings":"AAGE,6BACE,WAGF,yBACE,WACA,iB","sources":["webpack://site/./demo/styles/PickerPage.scss"],"sourcesContent":["@import '@/styles/index';\n\n.picker-page {\n  .picker-content {\n    width: 100%;\n  }\n\n  .show-right {\n    width: 100%;\n    text-align: right;\n  }\n}\n"],"names":[],"sourceRoot":""}

@@ -1,0 +1,1 @@
+{"version":3,"file":"stylesheet/8025.c1f9b073.css","mappings":"AAGE,iBACE,kB","sources":["webpack://site/./demo/styles/PanelPage.scss"],"sourcesContent":["@import '@/styles/index';\n\n.panel-page {\n  .box {\n    padding: r(10) r(15);\n  }\n}\n"],"names":[],"sourceRoot":""}

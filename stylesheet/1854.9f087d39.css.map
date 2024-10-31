@@ -1,0 +1,1 @@
+{"version":3,"file":"stylesheet/1854.9f087d39.css","mappings":"AAGE,8BACE,sDACA,oEAEA,oCACE,gB","sources":["webpack://site/./demo/styles/CheckboxPage.scss"],"sourcesContent":["@import '@/styles/index';\n\n.checkbox-page {\n  .agreement-box {\n    display: flex;\n    align-items: center;\n\n    label {\n      margin-left: r(8);\n    }\n  }\n}\n"],"names":[],"sourceRoot":""}
