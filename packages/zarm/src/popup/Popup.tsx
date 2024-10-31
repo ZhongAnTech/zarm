@@ -79,7 +79,10 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
           mountContainer={props.mountContainer}
           forceRender={forceRender}
           destroy={destroy}
-          onClick={onMaskClick}
+          onClick={(e) => {
+            e.stopPropagation();
+            onMaskClick && onMaskClick(e);
+          }}
         />
       )}
       <Transition
