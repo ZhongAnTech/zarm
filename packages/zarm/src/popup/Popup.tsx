@@ -55,6 +55,7 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
   }, []);
 
   const handleClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
     if (nodeRef.current !== event.target && nodeRef.current.contains(event.target as HTMLElement)) {
       return;
     }
