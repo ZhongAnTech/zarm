@@ -5,7 +5,7 @@
   "scripts": {
     "build": "rimraf assets && mkdir assets && touch assets/CNAME && echo 'zarm.design' > assets/CNAME && zarm deploy",
     "clean": "rimraf assets",
-    "deploy": "yarn build -p && gh-pages -d assets",
+    "deploy": "yarn build && gh-pages -d assets",
     "start": "zarm dev"
   },
   "browserslist": [
