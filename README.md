@@ -68,7 +68,7 @@ import 'zarm/dist/zarm.css';
 
 | 问题上报                                                    | 讨论交流                                                              | 微信群                                                                                                     |
 | :---------------------------------------------------------- | :-------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------- |
-| [github issues](https://github.com/ZhongAnTech/zarm/issues) | [github discussions](https://github.com/ZhongAnTech/zarm/discussions) | <img src="https://cdn-health.zhongan.com/zarm/qrcode.jpg" width="80" /> <br />备注 "zarm" 加好友后邀请进群 |
+| [github issues](https://github.com/ZhongAnTech/zarm/issues) | [github discussions](https://github.com/ZhongAnTech/zarm/discussions) | <img src="https://cdn-health.zhongan.com/zarm/qrcode.jpg" width="80" /> <br />备注 "zarm github" 加好友后邀请进群 |
 
 ## 如何贡献
 
