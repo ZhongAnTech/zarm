@@ -7,7 +7,7 @@ export interface BaseTabsProps {
   disabled?: boolean;
   swipeable?: boolean;
   scrollable?: boolean;
-  direction?: 'horizontal' | 'vertical';
+  direction?: 'vertical' | 'horizontal' | 'top' | 'right' | 'bottom' | 'left'; // TODO: 'vertical'、'horizontal' 暂作兼容
   onChange?: (index: number) => void;
   children?: React.ReactNode;
 }
