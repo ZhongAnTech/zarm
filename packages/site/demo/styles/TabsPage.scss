@@ -1,25 +1,15 @@
 @import '@/styles/index';
 
 .tabs-page {
-  .za-tabs + .za-tabs {
-    margin-top: r(10);
-  }
-
   .content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     padding: r(10);
-    height: r(150);
   }
 
-  .za-tabs--vertical {
-    .content {
-      height: 100%;
-    }
+  .custom-width {
+    width: r(250);
+  }
 
-    &.custom-height {
-      height: r(200);
-    }
+  .custom-height {
+    height: r(200);
   }
 }
