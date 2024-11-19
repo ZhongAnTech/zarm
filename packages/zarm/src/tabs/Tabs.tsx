@@ -1,14 +1,15 @@
 import { createBEM } from '@zarm-design/bem';
 import * as React from 'react';
-import TabPanel from './TabPanel';
-import Carousel from '../carousel';
 import type { CarouselHTMLElement } from '../carousel';
-import { getTransformPropValue, getPxStyle } from './util/index';
-import { scrollTo } from '../utils/dom';
+import Carousel from '../carousel';
 import { ConfigContext } from '../config-provider';
-import type { TabPanelProps } from './TabPanel';
-import type { BaseTabsProps } from './interface';
+import { useTypeChangeWarning } from '../utils/deprecationWarning';
+import { scrollTo } from '../utils/dom';
 import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseTabsProps } from './interface';
+import type { TabPanelProps } from './TabPanel';
+import TabPanel from './TabPanel';
+import { getPxStyle, getTransformPropValue } from './util/index';
 
 const getChildChecked = (children: TabPanelProps['children']) => {
   let selectIndex;
@@ -79,6 +80,15 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
     children,
   } = props;
 
+  // TODO: DeprecationWarning - remove this warning in next major version
+  useTypeChangeWarning(
+    ['vertical', 'horizontal'].includes(direction),
+    'Tabs',
+    'direction',
+    direction,
+    "'top' | 'right' | 'bottom' | 'left'",
+  );
+
   const carouselRef = React.useRef<CarouselHTMLElement>(null);
   const tablistRef = React.useRef<HTMLUListElement>(null);
   const [itemWidth, setItemWidth] = React.useState(0);
@@ -89,17 +99,21 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('tabs', { prefixCls });
 
-  const isVertical: boolean = direction === 'vertical';
+  // TODO: direction='vertical' 暂作兼容
+  const isVertical: boolean = ['left', 'right', 'vertical'].includes(direction);
 
   const parseValue = React.useCallback(
     (inputValue) => parseValueBoundary(inputValue, children),
     [children],
   );
 
-  const classes = bem([{
-    [`${direction}`]: true,
-    scroll: scrollable,
-  }, className])
+  const classes = bem([
+    {
+      [`${direction}`]: true,
+      scroll: scrollable,
+    },
+    className,
+  ]);
 
   // 计算 line 大小和位置
   const caclLineSizePos = () => {
@@ -160,7 +174,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
     contentRender = (
       <Carousel
         swipeable={!disabled}
-        direction={direction}
+        direction={isVertical ? 'vertical' : 'horizontal'}
         showPagination={false}
         activeIndex={parseValue(currentValue)}
         ref={carouselRef}
@@ -181,10 +195,13 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
   }
 
   const renderTabs = (tab: React.ReactElement<TabPanelProps, typeof TabPanel>, index: number) => {
-    const itemCls = bem('tab', [{
-      disabled: disabled || tab.props.disabled,
-      active: parseValue(currentValue) === index,
-    }, tab.props.className])
+    const itemCls = bem('tab', [
+      {
+        disabled: disabled || tab.props.disabled,
+        active: parseValue(currentValue) === index,
+      },
+      tab.props.className,
+    ]);
 
     return (
       <li role="tab" key={+index} className={itemCls} onClick={() => onTabClick(tab, index)}>
@@ -264,7 +281,7 @@ Tabs.defaultProps = {
   disabled: false,
   swipeable: false,
   scrollable: false,
-  direction: 'horizontal',
+  direction: 'top',
 };
 
 export default Tabs;
