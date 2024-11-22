@@ -1,5 +1,5 @@
+import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
 import Tabs from '../index';
 
 describe('Tab', () => {
@@ -17,9 +17,9 @@ describe('Tab', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('renders correctly vertical', () => {
+  it('renders correctly direction', () => {
     const { container } = render(
-      <Tabs direction="vertical">
+      <Tabs direction="left">
         <Tabs.Panel title="选项卡1">
           <div>试试点我左滑</div>
         </Tabs.Panel>

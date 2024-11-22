@@ -3,7 +3,7 @@
 exports[`Tab canSwipe 1`] = `
 <div>
   <div
-    class="za-tabs za-tabs--horizontal"
+    class="za-tabs za-tabs--top"
   >
     <div
       class="za-tabs__header"
@@ -64,7 +64,7 @@ exports[`Tab canSwipe 1`] = `
 exports[`Tab lineWidth is auto 1`] = `
 <div>
   <div
-    class="za-tabs za-tabs--horizontal"
+    class="za-tabs za-tabs--top"
   >
     <div
       class="za-tabs__header"
@@ -123,7 +123,7 @@ exports[`Tab lineWidth is auto 1`] = `
 exports[`Tab receive new value 1`] = `
 <div>
   <div
-    class="za-tabs za-tabs--horizontal"
+    class="za-tabs za-tabs--top"
   >
     <div
       class="za-tabs__header"
@@ -177,7 +177,7 @@ exports[`Tab receive new value 1`] = `
 exports[`Tab renders correctly 1`] = `
 <div>
   <div
-    class="za-tabs za-tabs--horizontal"
+    class="za-tabs za-tabs--top"
   >
     <div
       class="za-tabs__header"
@@ -228,10 +228,10 @@ exports[`Tab renders correctly 1`] = `
 </div>
 `;
 
-exports[`Tab renders correctly vertical 1`] = `
+exports[`Tab renders correctly direction 1`] = `
 <div>
   <div
-    class="za-tabs za-tabs--vertical"
+    class="za-tabs za-tabs--left"
   >
     <div
       class="za-tabs__header"

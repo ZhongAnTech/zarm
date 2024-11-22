@@ -7,7 +7,7 @@ exports[`Cascader basic usage 1`] = `
     data-testid="root"
   >
     <div
-      class="za-tabs za-tabs--horizontal za-tabs--scroll za-cascader-view-tabs"
+      class="za-tabs za-tabs--top za-tabs--scroll za-cascader-view-tabs"
     >
       <div
         class="za-tabs__header"
@@ -280,7 +280,7 @@ exports[`Cascader basic usage 2`] = `
     data-testid="root"
   >
     <div
-      class="za-tabs za-tabs--horizontal za-tabs--scroll za-cascader-view-tabs"
+      class="za-tabs za-tabs--top za-tabs--scroll za-cascader-view-tabs"
     >
       <div
         class="za-tabs__header"
@@ -751,7 +751,7 @@ exports[`Cascader basic usage 3`] = `
     data-testid="root"
   >
     <div
-      class="za-tabs za-tabs--horizontal za-tabs--scroll za-cascader-view-tabs"
+      class="za-tabs za-tabs--top za-tabs--scroll za-cascader-view-tabs"
     >
       <div
         class="za-tabs__header"
@@ -1221,7 +1221,7 @@ exports[`Cascader renders correctly 1`] = `
     class="za-cascader-view"
   >
     <div
-      class="za-tabs za-tabs--horizontal za-tabs--scroll za-cascader-view-tabs"
+      class="za-tabs za-tabs--top za-tabs--scroll za-cascader-view-tabs"
     >
       <div
         class="za-tabs__header"

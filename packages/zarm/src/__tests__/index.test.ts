@@ -475,7 +475,7 @@ describe('index', () => {
             "render": [Function],
           },
           "defaultProps": Object {
-            "direction": "horizontal",
+            "direction": "top",
             "disabled": false,
             "scrollable": false,
             "swipeable": false,

@@ -56,7 +56,7 @@ exports[`Carousel base render correctly 1`] = `
     >
       <div
         class="za-carousel__items"
-        style="transition-duration: 0ms; transform: translate3d(-200px, 0px, 0);"
+        style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0);"
       />
       <div
         class="za-carousel__pagination"

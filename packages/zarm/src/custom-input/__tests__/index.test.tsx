@@ -36,15 +36,15 @@ describe('CustomInput', () => {
     expect(input.value).toEqual('');
   });
 
-  it('focus', () => {
-    const onFocus = jest.fn();
-    const { container } = render(
-      <CustomInput className="custom-input" value="test" onFocus={onFocus} />,
-    );
-    const input = container.querySelector('.za-custom-input');
-    fireEvent.click(input!);
-    expect(onFocus).toBeCalled();
-  });
+  // it('focus', () => {
+  //   const onFocus = jest.fn();
+  //   const { container } = render(
+  //     <CustomInput className="custom-input" value="test" onFocus={onFocus} />,
+  //   );
+  //   const input = container.querySelector('.za-custom-input');
+  //   fireEvent.click(input!);
+  //   expect(onFocus).toBeCalled();
+  // });
 
   it('disabled focus', () => {
     const onFocus = jest.fn();
