@@ -1,5 +1,11 @@
 # 版本更新日志
 
+## v3.1.5
+
+- Feature
+
+  - [Tabs] 支持上下左右四个方向的使用 [#1184](https://github.com/ZhongAnTech/zarm/pull/1184)
+
 ## v3.1.4
 
 - Perf
