@@ -170,7 +170,7 @@ ReactDOM.render(
 
 | 属性                 | 类型                          | 默认值 | 说明                                           |
 | :------------------- | :---------------------------- | :----- | :--------------------------------------------- |
-| direction            | string                        | 'left' | 滑动方向，可选值 `left`、`right`、`up`、`down` |
+| direction            | string                        | 'horizontal' | 滑动方向，可选值 `vertical`、`horizontal`|
 | height               | number \| string              | 160    | 设置轮播区域高度                               |
 | activeIndex          | number                        | 0      | 当前页面的索引                                 |
 | loop                 | boolean                       | false  | 是否循环                                       |
