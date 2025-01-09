@@ -278,6 +278,7 @@ ReactDOM.render(<Demo />, mountNode);
 | :------------------- | :------------------------------ | :--------------------- |
 | --font-size          | 'var(--za-font-size-md)'        | 字体大小               |
 | --color              | 'var(--za-color-text)'          | 字体颜色               |
+| --active-text-color  | 'var(--za-color-text)'          | 选中状态字体颜色               |
 | --color-disabled     | 'var(--za-color-text-disabled)' | 禁用状态下头部字体颜色 |
 | --height             | '45px'                          | 高度                   |
 | --active-color       | 'var(--za-theme-primary)'       | 选中状态颜色           |

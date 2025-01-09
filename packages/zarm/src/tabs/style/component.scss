@@ -4,6 +4,7 @@
   @include define(color-disabled, var(--za-color-text-disabled));
   @include define(height, 45px);
   @include define(active-color, var(--za-theme-primary));
+  @include define(active-text-color, var(--za-color-text));
   @include define(active-line-height, 2px);
   @include define(padding-horizontal, var(--za-padding-h-lg));
   @include define(padding-vertical, var(--za-padding-v-md));
@@ -44,6 +45,10 @@
     @include m(disabled) {
       color: var(--color-disabled);
       cursor: not-allowed;
+    }
+
+    @include m(active) {
+      color: var(--active-text-color);
     }
   }
 
