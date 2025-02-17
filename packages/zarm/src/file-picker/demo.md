@@ -4,7 +4,7 @@
 
 ```jsx
 import { useState } from 'react';
-import { Cell, FilePicker } from 'zarm';
+import { List, FilePicker } from 'zarm';
 import { Plus } from '@zarm-design/icons';
 
 const Demo = () => {
@@ -18,9 +18,12 @@ const Demo = () => {
 
   return (
     <>
-      {files.map((item, index) => (
-        <Cell key={+index}>{item.fileName}</Cell>
-      ))}
+      <List>
+        {files.map((item, index) => (
+          <List.Item key={+index} title={item.fileName} />
+        ))}
+      </List>
+
       <div className="file-picker-wrapper">
         <FilePicker className="file-picker-btn" onChange={onSelect}>
           <Plus size="lg" />
@@ -65,7 +68,7 @@ const Demo = () => {
     Toast.show('删除成功');
   };
 
-  const imgRender = () => {
+  const renderImages = () => {
     return files.map((item, index) => {
       return (
         <Badge
@@ -73,11 +76,10 @@ const Demo = () => {
           className="file-picker-item"
           shape="circle"
           text={
-            <span className="file-picker-closebtn">
+            <span className="file-picker-closebtn" onClick={() => remove(index)}>
               <Close />
             </span>
           }
-          onClick={() => remove(index)}
         >
           <div className="file-picker-item-img">
             <a href={item.thumbnail} target="_blank" rel="noopener noreferrer">
@@ -91,7 +93,7 @@ const Demo = () => {
 
   return (
     <div className="file-picker-wrapper">
-      {imgRender()}
+      {renderImages()}
       {files.length < MAX_FILES_COUNT && (
         <FilePicker
           multiple
@@ -128,11 +130,17 @@ ReactDOM.render(
 
 ## API
 
-| 属性           | 类型                                | 默认值     | 说明                                                                        |
-| :------------- | :---------------------------------- | :--------- | :-------------------------------------------------------------------------- |
-| accept         | string                              | -          | 允许上传的附件格式                                                          |
-| capture        | string                              | -          | 唤起的原生应用，可选值：照相机`camera`, 摄像机`camcorder`, 录音`microphone` |
-| multiple       | boolean                             | false      | 是否多选                                                                    |
-| disabled       | boolean                             | false      | 是否禁用                                                                    |
-| onBeforeSelect | () => boolean                       | () => true | 选择前触发的事件                                                            |
-| onChange       | (file?: object \| object[]) => void | -          | 值变化时触发的回调函数                                                      |
+| 属性           | 类型                               | 默认值     | 说明                                                                        |
+| :------------- | :--------------------------------- | :--------- | :-------------------------------------------------------------------------- |
+| accept         | string                             | -          | 允许上传的附件格式                                                          |
+| capture        | string                             | -          | 唤起的原生应用，可选值：照相机`camera`, 摄像机`camcorder`, 录音`microphone` |
+| multiple       | boolean                            | false      | 是否多选                                                                    |
+| disabled       | boolean                            | false      | 是否禁用                                                                    |
+| onBeforeSelect | () => boolean                      | () => true | 选择前触发的事件                                                            |
+| onChange       | (file: object \| object[]) => void | -          | 值变化时触发的回调函数                                                      |
+
+## CSS 变量
+
+| 属性               | 默认值                       | 说明             |
+| :----------------- | :--------------------------- | :--------------- |
+| --opacity-disabled | 'var(--za-opacity-disabled)' | 面板禁用不透明度 |

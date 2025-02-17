@@ -1,11 +1,11 @@
 import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import './style.scss';
 
 const App = () => {
   return (
     <Switch>
-      <Redirect exact from="/docs" to="/docs/introduce" />
+      <Redirect exact from="/docs" to="/docs/about-zarm" />
       <Redirect exact from="/components" to="/components/button" />
       <Redirect exact from="/design" to="/design/download" />
       <Route exact path="/" component={require('@/web/pages/Index').default} />

@@ -29,6 +29,9 @@ ReactDOM.render(
       链接样式
     </Message>
     <Message closable>可关闭</Message>
+    <Message closable onClose={() => alert('message closed!')}>
+      关闭并触发回调函数
+    </Message>
   </>,
   mountNode,
 );
@@ -36,11 +39,20 @@ ReactDOM.render(
 
 ## API
 
-| 属性     | 类型       | 默认值    | 说明                                                              |
-| :------- | :--------- | :-------- | :---------------------------------------------------------------- |
-| theme    | string     | 'primary' | 主题，可选值 `default`、`primary`、`success`、`warning`、`danger` |
-| size     | string     | 'md'      | 设置大小，可选值为 `md`、`lg`                                     |
-| icon     | ReactNode  | -         | 设置图标                                                          |
-| closable | boolean    | false     | 是否显示关闭按钮                                                  |
-| hasArrow | boolean    | false     | 是否显示箭头                                                      |
-| onClick  | () => void | -         | 点击后触发的回调函数                                              |
+| 属性     | 类型                                             | 默认值    | 说明                                                   |
+| :------- | :----------------------------------------------- | :-------- | :----------------------------------------------------- |
+| theme    | string                                           | 'primary' | 主题，可选值 `primary`、`success`、`warning`、`danger` |
+| icon     | ReactNode                                        | -         | 设置图标                                               |
+| closable | boolean                                          | false     | 是否显示关闭按钮                                       |
+| hasArrow | boolean                                          | false     | 是否显示箭头                                           |
+| onClick  | () => void                                       | -         | 点击后触发的回调函数                                   |
+| onClose  | (event: React.MouseEvent\<HTMLElement\>) => void | -         | 点击关闭 icon 触发的回调函数                           |
+
+## CSS 变量
+
+| 属性          | 默认值                   | 说明           |
+| :------------ | :----------------------- | :------------- |
+| --line-height | '18px'                   | 消息框的行间距 |
+| --font-size   | 'var(--za-font-size-xs)' | 消息框文字大小 |
+| --icon-size   | '14px'                   | 消息框图标大小 |
+| --padding     | '6px 8px'                | 消息框内间距   |

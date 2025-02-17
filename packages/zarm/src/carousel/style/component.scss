@@ -1,10 +1,19 @@
 @include b(carousel) {
+  @include define(pagination-margin, 8px);
+  @include define(pagination-item-width, 18px);
+  @include define(pagination-item-height, 4px);
+  @include define(pagination-item-border-radius, 1px);
+  @include define(pagination-item-spacing, 2px);
+  @include define(pagination-item-background, rgba(255, 255, 255, 0.6));
+  @include define(pagination-item-active-background, #fff);
+
   position: relative;
   overflow: hidden;
+  touch-action: none;
 
   @include e(items) {
     display: flex;
-    transform-style: preserve-3d;
+    // transform-style: preserve-3d;
     transition-property: transform;
   }
 
@@ -23,12 +32,12 @@
   }
 
   @include e(pagination__item) {
-    background: var(--carousel-pagination-rect-color);
+    background: var(--pagination-item-background);
     cursor: pointer;
-    border-radius: var(--carousel-pagination-rect-border-radius);
+    border-radius: var(--pagination-item-border-radius);
 
     @include m(active) {
-      background: var(--carousel-pagination-rect-color-active);
+      background: var(--pagination-item-active-background);
     }
   }
 
@@ -39,17 +48,17 @@
 
     @include e(pagination) {
       left: 50%;
-      bottom: var(--carousel-pagination-distance);
+      bottom: var(--pagination-margin);
       transform: translate3d(-50%, 0, 0);
     }
 
     @include e(pagination__item) {
       display: inline-block;
-      width: var(--carousel-pagination-rect-width);
-      height: var(--carousel-pagination-rect-height);
+      width: var(--pagination-item-width);
+      height: var(--pagination-item-height);
 
       &:not(:last-child) {
-        margin-right: var(--carousel-pagination-rect-step);
+        margin-right: var(--pagination-item-spacing);
       }
     }
   }
@@ -57,20 +66,21 @@
   @include m(vertical) {
     @include e(items) {
       flex-direction: column;
+      touch-action: none;
     }
 
     @include e(pagination) {
       top: 50%;
-      right: var(--carousel-pagination-distance);
+      right: var(--pagination-margin);
       transform: translate3d(0, -50%, 0);
     }
 
     @include e(pagination__item) {
-      width: var(--carousel-pagination-rect-height);
-      height: var(--carousel-pagination-rect-width);
+      width: var(--pagination-item-height);
+      height: var(--pagination-item-width);
 
       &:not(:last-child) {
-        margin-bottom: var(--carousel-pagination-rect-step);
+        margin-bottom: var(--pagination-item-spacing);
       }
     }
   }

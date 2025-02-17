@@ -1,0 +1,102 @@
+@mixin input-base() {
+  position: relative;
+  width: 100%;
+  color: var(--color);
+  font-size: var(--font-size);
+
+  @include e(label) {
+    font-size: var(--label-font-size);
+    line-height: var(--line-height);
+  }
+
+  @include e(content) {
+    position: relative;
+    height: var(--height);
+    line-height: var(--line-height);
+  }
+}
+
+@mixin input-keyboard() {
+  @include e(virtual-input) {
+    display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+  }
+
+  @include m(focus) {
+    @include e(virtual-input) {
+      display: flex;
+      align-items: center;
+      transform: translate3d(0, 0, 0);
+
+      &:after {
+        content: '';
+        display: inline-block;
+        height: var(--cursor-height);
+        border-right: var(--cursor-width) solid var(--cursor-color);
+        transition: opacity 0.1s ease-out;
+        animation: virtual-cursor 1s infinite step-start;
+      }
+    }
+  }
+}
+
+@mixin input-placeholder() {
+  @include e(placeholder) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--placeholder-color);
+  }
+}
+
+@mixin input-clearable() {
+  @include e(clear) {
+    position: absolute;
+    visibility: hidden;
+    color: var(--clear-icon-color);
+    width: var(--clear-icon-size);
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    font-size: r(16);
+  }
+
+  @include m(focus) {
+    padding-right: var(--clear-icon-size);
+
+    @include e(clear) {
+      visibility: visible;
+    }
+  }
+}
+
+@mixin input-disabled() {
+  @include e(content, placeholder) {
+    cursor: not-allowed;
+    color: var(--disabled-color);
+  }
+}
+
+@keyframes virtual-cursor {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

@@ -1,6 +1,15 @@
 @include b(file-picker) {
+  @include define(opacity-disabled, var(--za-opacity-disabled));
+
+  position: relative;
+
   @include e(input) {
-    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
   }
 
   @include m(disabled) {

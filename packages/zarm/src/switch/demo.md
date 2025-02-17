@@ -4,18 +4,18 @@
 
 ```jsx
 import { useState } from 'react';
-import { Switch, Cell } from 'zarm';
+import { Switch, List } from 'zarm';
 
 const Demo = () => {
   const [checked, setChecked] = useState(false);
 
   return (
-    <>
-      <Cell title="普通" description={<Switch checked={checked} onChange={setChecked} />} />
-      <Cell title="默认开" description={<Switch defaultChecked />} />
-      <Cell title="禁用的开关（默认关）" description={<Switch disabled />} />
-      <Cell title="禁用的开关（默认开）" description={<Switch defaultChecked disabled />} />
-    </>
+    <List>
+      <List.Item title="普通" suffix={<Switch checked={checked} onChange={setChecked} />} />
+      <List.Item title="默认开" suffix={<Switch defaultChecked />} />
+      <List.Item title="禁用的开关（默认关）" suffix={<Switch disabled />} />
+      <List.Item title="禁用的开关（默认开）" suffix={<Switch defaultChecked disabled />} />
+    </List>
   );
 };
 
@@ -24,9 +24,26 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性           | 类型                      | 默认值 | 说明                   |
-| :------------- | :------------------------ | :----- | :--------------------- |
-| checked        | boolean                   | -      | 值                     |
-| defaultChecked | boolean                   | -      | 初始值                 |
-| disabled       | boolean                   | false  | 是否禁用               |
-| onChange       | (value?: boolean) => void | -      | 值变化时触发的回调函数 |
+| 属性           | 类型                       | 默认值 | 说明                   |
+| :------------- | :------------------------- | :----- | :--------------------- |
+| checked        | boolean                    | -      | 值                     |
+| defaultChecked | boolean                    | -      | 初始值                 |
+| disabled       | boolean                    | false  | 是否禁用               |
+| onChange       | (checked: boolean) => void | -      | 值变化时触发的回调函数 |
+
+## CSS 变量
+
+| 属性                 | 默认值                                                                                            | 说明           |
+| :------------------- | :------------------------------------------------------------------------------------------------ | :------------- |
+| --width              | '52px'                                                                                            | 宽度           |
+| --height             | '32px'                                                                                            | 高度           |
+| --background         | 'rgba(120, 120, 128, 0.16)'                                                                       | 背景色         |
+| --border-radius      | 'var(--za-radius-round)'                                                                          | 圆角大小       |
+| --transition         | 'all 0.3s'                                                                                        | 过渡效果       |
+| --checked-background | 'var(--za-theme-primary)'                                                                         | 开启时的背景色 |
+| --knob-background    | '#fff'                                                                                            | 把手背景色     |
+| --knob-size          | '28px'                                                                                            | 把手大小       |
+| --knob-box-shadow    | '0 3px 1px rgba(0, 0, 0, 0.06), 0 3px 8px rgba(0, 0, 0, 0.15)'                                    | 把手阴影效果   |
+| --knob-border-color  | 'rgba(0, 0, 0, 0.04)'                                                                             | 把手边框色     |
+| --knob-border-width  | '0.5px'                                                                                           | 把手边框宽度   |
+| --knob-transition    | 'transform 0.3s cubic-bezier(0.45, 1, 0.4, 1), transform 0.3s cubic-bezier(0.4, 0.4, 0.25, 1.35)' | 把手过渡效果   |

@@ -1,11 +1,12 @@
-
 @mixin input-base() {
   position: relative;
   width: 100%;
-  color: var(--color-text);
+  color: var(--color);
+  font-size: var(--font-size);
 
   input,
   textarea {
+    flex: 1;
     position: relative;
     width: 100%;
     padding: 0;
@@ -14,17 +15,18 @@
     border: 0;
     outline: 0;
     -webkit-appearance: none;
-    color: var(--color-text);
-    line-height: var(--input-line-height);
+    font-size: var(--font-size);
+    color: var(--color);
+    line-height: var(--line-height);
 
     @include placeholder {
-      color: var(--color-text-placeholder);
+      color: var(--placeholder-color);
     }
   }
 
   input {
     display: inline-block;
-    height: var(--input-line-height);
+    height: var(--height);
   }
 
   textarea {
@@ -35,81 +37,43 @@
     overflow: visible;
   }
 
+  @include e(label) {
+    font-size: var(--label-font-size);
+    line-height: var(--line-height);
+  }
+
   @include e(content) {
     position: relative;
-    height: var(--input-line-height);
-    line-height: var(--input-line-height);
-  }
-}
-
-@mixin input-keyboard() {
-  @include e(virtual-input) {
-    display: flex;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    height: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    white-space: nowrap;
-  }
-
-  @include m(focus) {
-    @include e(virtual-input) {
-      display: flex;
-      align-items: center;
-      transform: translate3d(0, 0, 0);
-
-      &:after {
-        content: '';
-        display: inline-block;
-        height: var(--input-cursor-height);
-        border-right: var(--input-cursor-width) solid var(--input-cursor-color);
-        transition: opacity 0.1s ease-out;
-        animation: virtual-cursor 1s infinite step-start;
-      }
-    }
-  }
-
-  @include m(readonly) {
-    @include e(virtual-input) {
-      position: static;
-      white-space: normal;
-    }
+    height: var(--height);
+    line-height: var(--line-height);
   }
 }
 
 @mixin input-placeholder() {
   @include placeholder {
-    color: var(--color-text-placeholder);
-  }
-
-  @include e(placeholder) {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    color: var(--color-text-placeholder);
+    color: var(--placeholder-color);
   }
 }
 
 @mixin input-clearable() {
+  // 隐藏原生search输入框自带的清空按钮
+  input::-webkit-search-cancel-button {
+    display: none;
+  }
+
   @include e(clear) {
     position: absolute;
     visibility: hidden;
-    color: var(--input-clear-icon-color);
-    width: var(--input-clear-icon-width);
+    color: var(--clear-icon-color);
     text-align: center;
     top: 50%;
     transform: translateY(-50%);
     right: 0;
-    font-size: r(16);
+    font-size: var(--clear-icon-size);
   }
 
   @include m(focus) {
-    padding-right: var(--input-clear-icon-width);
+    padding-right: var(--clear-icon-size);
 
     @include e(clear) {
       visibility: visible;
@@ -121,32 +85,18 @@
   input,
   textarea {
     cursor: not-allowed;
-    color: var(--color-text-disabled);
+    color: var(--disabled-color);
     // 用于修复真机上不显示的bug
-    -webkit-text-fill-color: var(--color-text-disabled);
+    -webkit-text-fill-color: var(--disabled-color);
     opacity: 1;
 
     @include placeholder {
-      color: var(--color-text-disabled);
+      color: var(--disabled-color);
     }
   }
 
-  @include e(content, placeholder) {
+  @include e(content) {
     cursor: not-allowed;
-    color: var(--color-text-disabled);
-  }
-}
-
-@keyframes virtual-cursor {
-  0% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
+    color: var(--disabled-color);
   }
 }

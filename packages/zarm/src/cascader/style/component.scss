@@ -1,0 +1,33 @@
+@include b(cascader) {
+  @include define(background, #fff);
+  @include define(option-text-color, var(--za-color-text));
+  @include define(option-active-text-color, var(--za-theme-primary));
+  @include define(tab-text-color, var(--za-color-text-placeholder));
+  @include define(tab-active-text-color, var(--za-theme-primary));
+  @include define(option-font-size, var(--za-font-size-sm));
+  @include define(option-height, 44px);
+  @include define(options-height, 300px);
+  @include define(padding, var(--za-padding-v-sm));
+
+  @include define(-background, var(--background));
+  @include define(-option-text-color, var(--option-text-color));
+  @include define(-option-active-text-color, var(--option-active-text-color));
+  @include define(-tab-text-color, var(--tab-text-color));
+  @include define(-tab-active-text-color, var(--tab-active-text-color));
+  @include define(-option-font-size, var(--option-font-size));
+  @include define(-option-height, var(--option-height));
+  @include define(-options-height, var(--options-height));
+  @include define(-padding, var(--padding));
+
+  @include b(cascader-view) {
+    @include define(background, var(---background));
+    @include define(option-text-color, var(---option-text-color));
+    @include define(option-active-text-color, var(---option-active-text-color));
+    @include define(tab-text-color, var(---tab-text-color));
+    @include define(tab-active-text-color, var(---tab-active-text-color));
+    @include define(option-font-size, var(---option-font-size));
+    @include define(option-height, var(---option-height));
+    @include define(options-height, var(---options-height));
+    @include define(padding, var(---padding));
+  }
+}

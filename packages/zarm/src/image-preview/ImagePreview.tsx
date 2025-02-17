@@ -1,247 +1,210 @@
-/* eslint-disable import/no-duplicates */
-import React, { Component } from 'react';
-import type PropsType from './PropsType';
-import type { Images } from './PropsType';
-import Popup from '../popup';
+import { ReactDOMAttributes, useDrag } from '@use-gesture/react';
+import { createBEM } from '@zarm-design/bem';
+import React, { useEffect, useState } from 'react';
+import Button from '../button';
 import Carousel from '../carousel';
+import { ConfigContext } from '../config-provider';
+import Loading from '../loading';
 import PinchZoom from '../pinch-zoom';
-import ActivityIndicator from '../activity-indicator';
-import type { Locale } from '../config-provider/PropsType';
-import LOAD_STATUS from './utils/loadStatus';
+import Popup from '../popup';
+import { canUseDOM } from '../utils/dom';
+import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseImagePreviewProps, Images } from './interface';
 import formatImages from './utils/formatImages';
+import LOAD_STATUS from './utils/loadStatus';
 import showOriginButton from './utils/showOriginButton';
 
-export interface ImagePreviewProps extends PropsType {
-  prefixCls?: string;
-  className?: string;
-  locale?: Locale['ImagePreview'];
-  title?: React.ReactNode;
+export interface ImagePreviewCssVars {
+  '--footer-padding'?: React.CSSProperties['padding'];
+  '--pagination-text-color'?: React.CSSProperties['color'];
+  '--pagination-font-size'?: React.CSSProperties['fontSize'];
 }
 
-export interface ImagePreviewState {
-  images: Images;
-  visible: boolean;
-  activeIndex?: number;
-  currentIndex?: number;
-  prevVisible?: boolean;
-  prevActiveIndex?: number;
-  prevImages?: Images;
-  title?: React.ReactNode;
-}
+export type ImagePreviewProps = BaseImagePreviewProps & HTMLProps<ImagePreviewCssVars>;
 
-const parseState = (props: ImagePreviewProps): ImagePreviewState => {
-  const { visible, images } = props;
-  return {
-    visible,
-    images: formatImages(images),
-  };
+const imageStyle = {
+  maxWidth: canUseDOM && window?.innerWidth <= window?.innerHeight ? window?.innerWidth : undefined,
+  maxHeight:
+    canUseDOM && window?.innerHeight <= window?.innerWidth ? window?.innerHeight : undefined,
 };
 
-export default class ImagePreview extends Component<ImagePreviewProps, ImagePreviewState> {
-  static defaultProps = {
-    prefixCls: 'za-image-preview',
-    activeIndex: 0,
-    showPagination: true,
-    visible: false,
+const Content: React.FC<{ minScale: number; maxScale: number; imgSrc: string }> = (props) => {
+  const { minScale, maxScale, imgSrc } = props;
+  const [loaded, setLoaded] = useState(false);
+  const style = loaded ? { ...imageStyle, display: 'block' } : imageStyle;
+
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('image-preview', { prefixCls });
+
+  return (
+    <>
+      {!loaded ? (
+        <div className={bem('loading')}>
+          <Loading type="spinner" size="lg" />
+        </div>
+      ) : null}
+      <PinchZoom minScale={minScale} maxScale={maxScale}>
+        <img src={imgSrc} alt="" draggable={false} style={style} onLoad={() => setLoaded(true)} />
+      </PinchZoom>
+    </>
+  );
+};
+
+const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props, ref) => {
+  const {
+    visible,
+    activeIndex,
+    onClose,
+    showPagination,
+    minScale,
+    maxScale,
+    className,
+    style,
+    mountContainer,
+    title,
+  } = props;
+
+  const [images, setImages] = useState<Images>(formatImages(props.images));
+  const [currentIndex, setCurrentIndex] = useState<number>(activeIndex!);
+
+  const { prefixCls, locale } = React.useContext(ConfigContext);
+  const bem = createBEM('image-preview', { prefixCls });
+
+  useEffect(() => {
+    setImages(formatImages(props.images));
+  }, [props.images, visible]);
+
+  useEffect(() => {
+    setCurrentIndex(activeIndex!);
+  }, [activeIndex]);
+
+  const onChange = (index: number) => {
+    setCurrentIndex(index);
+    props.onChange?.(index);
   };
 
-  doubleClickTimer: ReturnType<typeof setTimeout> | null;
-
-  touchStartTime: number;
-
-  moving: boolean;
-
-  state: ImagePreviewState = parseState(this.props);
-
-  static getDerivedStateFromProps(nextProps: ImagePreviewProps, state: ImagePreviewState) {
-    if (
-      ('visible' in nextProps && nextProps.visible !== state.prevVisible) ||
-      ('activeIndex' in nextProps && nextProps.activeIndex !== state.prevActiveIndex) ||
-      ('images' in nextProps && nextProps.images !== state.prevImages)
-    ) {
-      return {
-        visible: nextProps.visible,
-        activeIndex: nextProps.activeIndex,
-        currentIndex: nextProps.activeIndex,
-        images: formatImages(nextProps.images),
-        prevVisible: nextProps.visible,
-        prevActiveIndex: nextProps.activeIndex,
-        prevImages: nextProps.images,
-        title: nextProps.title,
-      };
-    }
-    return null;
-  }
-
-  onChange = (index: number) => {
-    const { onChange } = this.props;
-    this.setState(
-      {
-        currentIndex: index,
-      },
-      () => {
-        if (typeof onChange === 'function') {
-          onChange(index);
-        }
-      },
-    );
-  };
-
-  close = () => {
-    if (this.moving) {
-      return false;
-    }
-    const { onClose } = this.props;
-    if (typeof onClose === 'function') {
-      onClose();
-    }
-  };
-
-  loadOrigin = () => {
-    const { currentIndex = 0, images } = this.state;
-    const { originUrl, loaded } = images[currentIndex];
-    if (loaded !== LOAD_STATUS.before || !originUrl) {
+  const loadOrigin = (event) => {
+    const { originSrc, loaded } = images[currentIndex];
+    if (loaded !== LOAD_STATUS.before || !originSrc) {
       return;
     }
-    images[currentIndex].loaded = LOAD_STATUS.start;
-    this.setState({ images });
+    const newImages = [...images];
+    newImages[currentIndex].loaded = LOAD_STATUS.start;
+    setImages(newImages);
 
     const img = new Image();
     img.onload = () => {
-      images[currentIndex].loaded = LOAD_STATUS.end;
-      images[currentIndex].url = originUrl;
-      this.setState({ images });
+      const loadImages = [...images];
+      loadImages[currentIndex].loaded = LOAD_STATUS.end;
+      loadImages[currentIndex].src = originSrc;
+      setImages(loadImages);
       setTimeout(() => {
-        images[currentIndex].loaded = LOAD_STATUS.after;
-        this.setState({ images });
-      }, 1500);
+        const loadAfeterImages = [...images];
+        loadAfeterImages[currentIndex].loaded = LOAD_STATUS.after;
+        setImages(loadAfeterImages);
+      }, 0);
     };
-    img.src = originUrl;
+    img.src = originSrc;
+    event.stopPropagation();
+    return false;
   };
 
-  onWrapperTouchStart = () => {
-    this.touchStartTime = Date.now();
-  };
-
-  onWrapperTouchEnd = () => {
-    const deltaTime = Date.now() - this.touchStartTime;
-    const { onClose } = this.props;
-    // prevent long tap to close component
-    if (deltaTime < 300) {
-      if (!this.doubleClickTimer && !this.moving) {
-        this.doubleClickTimer = setTimeout(() => {
-          this.doubleClickTimer = null;
-          if (typeof onClose === 'function') {
-            onClose();
-          }
-        }, 300);
-      } else {
-        this.doubleClickTimer && clearTimeout(this.doubleClickTimer);
-        this.doubleClickTimer = null;
-      }
+  const bindEvent = useDrag((state) => {
+    if (state.tap && state.elapsedTime > 0) {
+      onClose?.();
     }
-    this.moving = false;
-  };
+  }) as unknown as (...args: any[]) => ReactDOMAttributes;
 
-  onWrapperTouchMove = () => {
-    if (this.touchStartTime) {
-      this.moving = true;
+  const loadEvent = useDrag((state) => {
+    if (state.tap && state.elapsedTime > 0) {
+      loadOrigin(state.event);
     }
-  };
+  }) as unknown as (...args: any[]) => ReactDOMAttributes;
 
-  onWrapperMouseDown = () => {
-    this.touchStartTime = Date.now();
-  };
-
-  onWrapperMouseUp = () => {
-    setTimeout(() => {
-      this.moving = false;
-    }, 0);
-    this.touchStartTime = 0;
-  };
-
-  renderImages = () => {
-    const { prefixCls, minScale, maxScale } = this.props;
-    const { images } = this.state;
-
+  const renderImages = () => {
     return images.map((item, i) => {
       return (
-        <div className={`${prefixCls}__item`} key={+i}>
-          <PinchZoom className={`${prefixCls}__item__img`} minScale={minScale} maxScale={maxScale}>
-            <img src={item.url} alt="" draggable={false} />
-          </PinchZoom>
+        <div className={bem('item')} key={+i}>
+          <Content imgSrc={item.src} minScale={minScale} maxScale={maxScale} />
         </div>
       );
     });
   };
 
-  renderPagination() {
-    const { prefixCls, showPagination } = this.props;
-    const { currentIndex = 0, visible, images } = this.state;
-
+  const renderPagination = () => {
     if (visible && showPagination && images && images.length > 1) {
       return (
-        <div className={`${prefixCls}__index`}>
-          {currentIndex + 1} / {images.length}
+        <div className={bem('pagination')} {...bindEvent()}>
+          {currentIndex + 1} / {images?.length}
         </div>
       );
     }
     return null;
-  }
+  };
 
-  renderOriginButton() {
-    const { images, currentIndex = 0 } = this.state;
-    if (images.length === 0) return;
+  const renderOriginButton = () => {
+    if (images?.length === 0) return;
 
-    const { prefixCls, locale, activeIndex } = this.props;
-    const { loaded } = images[currentIndex];
-
-    if (loaded && showOriginButton(images, activeIndex) && loaded !== LOAD_STATUS.after) {
+    const { loaded } = images?.[currentIndex || 0];
+    if (
+      loaded &&
+      showOriginButton(images, currentIndex) &&
+      loaded !== LOAD_STATUS.after &&
+      visible
+    ) {
       return (
-        <button className={`${prefixCls}__origin__button`} onClick={this.loadOrigin}>
-          {loaded === LOAD_STATUS.start && (
-            <ActivityIndicator className={`${prefixCls}__loading`} type="spinner" />
-          )}
-          {locale && locale[loaded]}
-        </button>
+        <Button size="xs" loading={loaded === LOAD_STATUS.start} {...loadEvent()}>
+          {locale?.ImagePreview && locale?.ImagePreview?.[loaded]}
+        </Button>
       );
     }
 
     return null;
-  }
+  };
 
-  render() {
-    const { prefixCls } = this.props;
-    const { currentIndex = 0, visible, images, title } = this.state;
-
-    return (
-      <Popup direction="center" visible={visible} className={prefixCls}>
-        <div className={`${prefixCls}__title`}>{title}</div>
-        <div
-          className={`${prefixCls}__content`}
-          onTouchStart={this.onWrapperTouchStart}
-          onTouchEnd={this.onWrapperTouchEnd}
-          onTouchCancel={this.onWrapperTouchEnd}
-          onTouchMove={this.onWrapperTouchMove}
-          onMouseDown={this.onWrapperMouseDown}
-          onMouseMove={this.onWrapperTouchMove}
-          onMouseUp={this.onWrapperMouseUp}
-          onClick={this.close}
-        >
+  return (
+    <Popup
+      className={bem([className])}
+      style={style}
+      direction="center"
+      visible={visible}
+      mountContainer={mountContainer}
+      maskOpacity={1}
+    >
+      <>
+        <div className={bem('title')}>{title}</div>
+        <div ref={ref} className={bem('content')} {...bindEvent()}>
           {visible &&
             (images?.length ? (
-              <Carousel showPagination={false} onChange={this.onChange} activeIndex={currentIndex}>
-                {this.renderImages()}
+              <Carousel
+                showPagination={false}
+                onChange={onChange}
+                activeIndex={currentIndex}
+                swipeable
+              >
+                {renderImages()}
               </Carousel>
             ) : (
-              <ActivityIndicator className={`${prefixCls}__loading`} type="spinner" size="lg" />
+              <Loading type="spinner" size="lg" />
             ))}
         </div>
-        <div className={`${prefixCls}__footer`}>
-          {this.renderOriginButton()}
-          {this.renderPagination()}
+        <div className={bem('footer')}>
+          {renderOriginButton()}
+          {renderPagination()}
         </div>
-      </Popup>
-    );
-  }
-}
+      </>
+    </Popup>
+  );
+});
+
+ImagePreview.displayName = 'ImagePreview';
+
+ImagePreview.defaultProps = {
+  activeIndex: 0,
+  showPagination: true,
+  visible: false,
+  minScale: 1,
+  maxScale: 3,
+};
+
+export default ImagePreview;

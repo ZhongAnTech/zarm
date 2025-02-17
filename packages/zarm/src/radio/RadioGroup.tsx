@@ -1,133 +1,76 @@
-import React, {
-  HTMLAttributes,
-  PureComponent,
-  cloneElement,
-  ReactNode,
-  isValidElement,
-  ChangeEvent,
-} from 'react';
-import classnames from 'classnames';
-import { BaseRadioGroupProps, RadioValue } from './PropsType';
-import { Nullable } from '../utils/utilityTypes';
+import { createBEM } from '@zarm-design/bem';
+import React, { FC, useContext, useEffect, useState } from 'react';
+import { ConfigContext } from '../config-provider';
+import List from '../list';
+import type { HTMLProps } from '../utils/utilityTypes';
+import { RadioGroupContext } from './context';
+import type { BaseRadioGroupProps, RadioValue } from './interface';
 
-const getChildChecked = (children: ReactNode): Nullable<RadioValue> => {
-  let checkedValue = null;
-  React.Children.forEach(children, (element: ReactNode) => {
-    if (isValidElement(element) && element.props && element.props.checked) {
-      checkedValue = element.props.value;
-    }
-  });
-  return checkedValue;
-};
-
-const getValue = (
-  props: RadioGroup['props'],
-  defaultValue: Nullable<RadioValue> = null,
-): Nullable<RadioValue> => {
-  if (typeof props.value !== 'undefined') {
-    return props.value;
-  }
-  if (typeof props.defaultValue !== 'undefined') {
-    return props.defaultValue;
-  }
-  if (getChildChecked(props.children)) {
-    return getChildChecked(props.children);
-  }
-  return defaultValue;
-};
-
-export interface RadioGroupProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'value' | 'onChange'>,
-    BaseRadioGroupProps {
-  prefixCls?: string;
+export interface RadioGroupCssVars {
+  '--group-spacing-vertical'?: React.CSSProperties['marginBottom'];
+  '--group-spacing-horizontal'?: React.CSSProperties['marginRight'];
 }
 
-export interface RadioGroupStates {
-  value?: Nullable<RadioValue>;
-}
+const getValue = (props: RadioGroupProps, defaultValue?: RadioValue) => {
+  return props.value ?? props.defaultValue ?? defaultValue;
+};
 
-export default class RadioGroup extends PureComponent<RadioGroupProps, RadioGroupStates> {
-  static displayName = 'RadioGroup';
+export type RadioGroupProps = BaseRadioGroupProps & HTMLProps<RadioGroupCssVars>;
 
-  static defaultProps = {
-    prefixCls: 'za-radio-group',
-    shape: 'radius',
-    block: false,
-    disabled: false,
-    compact: false,
-    ghost: false,
-    size: 'xs',
-  };
+const RadioGroup: FC<RadioGroupProps> = (props) => {
+  const [value, setValue] = useState(getValue(props));
+  const { type, block, disabled, listIconAlign, compact, className, style } = props;
+  const { prefixCls } = useContext(ConfigContext);
 
-  state: RadioGroupStates = {
-    value: getValue(this.props),
-  };
-
-  static getDerivedStateFromProps(nextProps: RadioGroup['props']) {
-    if ('value' in nextProps) {
-      return {
-        value: nextProps.value,
-      };
-    }
-
-    return null;
-  }
-
-  onChildChange = (value: string | number) => {
-    this.setState({ value });
-    const { onChange } = this.props;
-    if (typeof onChange === 'function') {
-      onChange(value);
-    }
-  };
-
-  render() {
-    const {
-      prefixCls,
-      className,
-      size,
-      shape,
-      type,
+  const bem = createBEM('radio-group', { prefixCls });
+  const cls = bem([
+    {
+      [`${type}`]: !!type,
       block,
       disabled,
-      compact,
-      ghost,
-      children,
-      onChange,
-      defaultValue,
-      value,
-      ...rest
-    } = this.props;
-    const { value: valueState } = this.state;
+      'button-compact': compact,
+    },
+    className,
+  ]);
 
-    const items = React.Children.map(children, (element: React.ReactElement, index) => {
-      return cloneElement(element, {
-        key: index,
+  useEffect(() => {
+    if (props.value === undefined) return;
+    if (props.value === value) return;
+
+    setValue(getValue(props));
+  }, [props.value]);
+
+  return (
+    <RadioGroupContext.Provider
+      value={{
+        value,
         type,
-        shape,
-        disabled: disabled || !!element.props.disabled,
-        checked: valueState === element.props.value,
-        onChange: (e: ChangeEvent<HTMLInputElement>) => {
-          typeof element.props.onChange === 'function' && element.props.onChange(e);
-          this.onChildChange(element.props.value);
+        block,
+        disabled,
+        listIconAlign,
+        compact,
+        check: (v) => {
+          setValue(v);
+          props.onChange?.(v);
         },
-      });
-    });
-
-    const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--${type}`]: !!type,
-      [`${prefixCls}--${size}`]: !!size,
-      [`${prefixCls}--${shape}`]: !!shape,
-      [`${prefixCls}--block`]: block,
-      [`${prefixCls}--disabled`]: disabled,
-      [`${prefixCls}--compact`]: compact,
-      [`${prefixCls}--ghost`]: ghost,
-    });
-
-    return (
-      <div className={cls} {...rest}>
-        <div className={`${prefixCls}__inner`}>{items}</div>
+      }}
+    >
+      <div className={cls} style={style}>
+        <div className={bem('inner')}>
+          {type === 'list' ? <List>{props.children}</List> : props.children}
+        </div>
       </div>
-    );
-  }
-}
+    </RadioGroupContext.Provider>
+  );
+};
+
+RadioGroup.displayName = 'RadioGroup';
+
+RadioGroup.defaultProps = {
+  block: false,
+  disabled: false,
+  compact: false,
+  listIconAlign: 'before',
+};
+
+export default RadioGroup;

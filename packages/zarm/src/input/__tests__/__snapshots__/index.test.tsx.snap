@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input renders correctly 1`] = `
+<div>
+  <div
+    class="za-input"
+  >
+    <input
+      type="text"
+      value=""
+    />
+  </div>
+</div>
+`;
+
+exports[`Input renders correctly if type isn't valid 1`] = `
+<div>
+  <div
+    class="za-input"
+  >
+    <input
+      type="xxx"
+      value=""
+    />
+  </div>
+</div>
+`;
+
+exports[`Input renders correctly if type=text and props includes rows 1`] = `
+<div>
+  <div
+    class="za-input za-input--textarea"
+  >
+    <textarea
+      rows="1"
+    />
+  </div>
+</div>
+`;
+
+exports[`Input.Textarea autoHeight 1`] = `
+<DocumentFragment>
+  <div
+    class="za-input za-input--textarea"
+  >
+    <textarea
+      rows="4"
+      style="height: 0px;"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Input.Textarea renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="za-input za-input--textarea"
+  >
+    <textarea
+      rows="4"
+    />
+  </div>
+</DocumentFragment>
+`;

@@ -1,144 +1,122 @@
-import React, { PureComponent } from 'react';
-import ReactDOM from 'react-dom';
-import type PropsType from './PropsType';
-import Popup from '../popup';
-import { getMountContainer } from '../utils/dom';
-import ActivityIndicator from '../activity-indicator';
+import { createBEM } from '@zarm-design/bem';
+import * as React from 'react';
+import { ConfigContext } from '../config-provider';
+import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseLoadingProps } from './interface';
 
-export interface LoadingProps extends PropsType {
-  prefixCls?: string;
-  className?: string;
+export interface LoadingCssVars {
+  '--size'?: React.CSSProperties['width' | 'height'];
+  '--size-large'?: React.CSSProperties['width' | 'height'];
+  '--stroke-color'?: React.CSSProperties['stroke'];
+  '--stroke-active-color'?: React.CSSProperties['stroke'];
+  '--spinner-item-color'?: React.CSSProperties['color'];
+  '--spinner-item-width'?: React.CSSProperties['width'];
+  '--spinner-item-height'?: React.CSSProperties['height'];
+  '--spinner-item-border-radius'?: React.CSSProperties['borderRadius'];
 }
 
-export default class Loading extends PureComponent<LoadingProps, {}> {
-  static defaultProps: LoadingProps = {
-    prefixCls: 'za-loading',
-    mask: true,
+export type LoadingProps = BaseLoadingProps &
+  HTMLProps<LoadingCssVars> & {
+    onClick?: React.MouseEventHandler<HTMLDivElement>;
   };
 
-  static zarmLoading: HTMLElement | null;
+const DIAMETER = 62;
 
-  private static loadingContainer: HTMLElement;
+const Circular = React.forwardRef<HTMLDivElement, LoadingProps>((props, ref) => {
+  const { className, size, percent, strokeWidth, loading, ...restProps } = props;
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('loading', { prefixCls });
 
-  static hideHelper: () => void;
+  const cls = bem([
+    {
+      circular: loading,
+      [`${size}`]: !!size,
+    },
+    className,
+  ]);
 
-  static show = (content?: LoadingProps) => {
-    Loading.unmountNode();
-    // TODO: after calling .unmountNode(), Loading.zarmLoading is null. Is this check necessary?
-    if (!Loading.zarmLoading) {
-      Loading.zarmLoading = document.createElement('div');
-      Loading.zarmLoading.classList.add('za-loading-container');
-      if (content && content.className) {
-        Loading.zarmLoading.classList.add(content.className);
-      }
-      Loading.loadingContainer =
-        content && content.mountContainer
-          ? getMountContainer(content.mountContainer)
-          : getMountContainer();
-      Loading.loadingContainer.appendChild(Loading.zarmLoading);
-    }
-    const props: LoadingProps = {
-      ...Loading.defaultProps,
-      ...(content as LoadingProps),
-      ...{ visible: true, mountContainer: false },
-    };
+  const half = DIAMETER / 2;
+  const r = half - (strokeWidth as number) / 2;
 
-    Loading.hideHelper = () => {
-      ReactDOM.render(<Loading {...props} visible={false} />, Loading.zarmLoading);
-    };
-    ReactDOM.render(<Loading {...props} />, Loading.zarmLoading);
-  };
-
-  static hide = () => {
-    if (Loading.zarmLoading) {
-      Loading.hideHelper();
-    }
-  };
-
-  static unmountNode = () => {
-    const { zarmLoading } = Loading;
-    if (zarmLoading) {
-      ReactDOM.render(<></>, zarmLoading);
-      Loading.loadingContainer.removeChild(zarmLoading);
-      Loading.zarmLoading = null;
-    }
-  };
-
-  private timer: ReturnType<typeof setTimeout>;
-
-  state = {
-    visible: this.props.visible,
-  };
-
-  componentDidMount() {
-    this.autoClose();
-  }
-
-  componentDidUpdate(prevProps: LoadingProps) {
-    const { visible } = this.props;
-    if (prevProps.visible !== visible) {
-      if (visible) {
-        // eslint-disable-next-line
-        this.setState({ visible: true });
-        this.autoClose();
-      } else {
-        this._hide();
-      }
-    }
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.timer);
-  }
-
-  afterClose = () => {
-    const { afterClose } = this.props;
-    if (Loading.zarmLoading) {
-      ReactDOM.unmountComponentAtNode(Loading.zarmLoading);
-      Loading.loadingContainer.removeChild(Loading.zarmLoading);
-      Loading.zarmLoading = null;
-    }
-
-    if (typeof afterClose === 'function') {
-      afterClose();
-    }
-  };
-
-  _hide = () => {
-    this.setState({
-      visible: false,
-    });
-  };
-
-  autoClose() {
-    const { stayTime } = this.props;
-
-    if (stayTime && stayTime > 0) {
-      this.timer = setTimeout(() => {
-        this._hide();
-        clearTimeout(this.timer);
-      }, stayTime);
-    }
-  }
-
-  render() {
-    const { prefixCls, content, stayTime, className, ...others } = this.props;
-    const { visible } = this.state;
+  if (loading) {
     return (
-      <Popup
-        direction="center"
-        maskType="transparent"
-        width="70%"
-        {...others}
-        visible={visible}
-        afterClose={this.afterClose}
-      >
-        <div className={prefixCls}>
-          <div className={`${prefixCls}__container`}>
-            {content || <ActivityIndicator type="spinner" size="lg" />}
-          </div>
-        </div>
-      </Popup>
+      <div className={cls} {...restProps} ref={ref}>
+        <svg viewBox={`${DIAMETER / 2} ${DIAMETER / 2} ${DIAMETER} ${DIAMETER}`}>
+          <circle cx={DIAMETER} cy={DIAMETER} r={r} fill="none" style={{ strokeWidth }} />
+        </svg>
+      </div>
     );
   }
-}
+
+  const round = 2 * Math.PI * r;
+  const lineStyle = {
+    strokeDasharray: `${(round * (percent as number)) / 100} ${round}`,
+    strokeWidth,
+  };
+
+  return (
+    <div className={cls} {...restProps} ref={ref}>
+      <svg viewBox={`0 0 ${DIAMETER} ${DIAMETER}`}>
+        <circle
+          className={bem('stroke')}
+          cx={half}
+          cy={half}
+          r={r}
+          fill="none"
+          style={{ strokeWidth }}
+        />
+        <circle className={bem('line')} cx={half} cy={half} r={r} fill="none" style={lineStyle} />
+      </svg>
+    </div>
+  );
+});
+
+Circular.displayName = 'Circular';
+
+const Spinner = React.forwardRef<HTMLDivElement, LoadingProps>((props, ref) => {
+  const { className, size, ...restProps } = props;
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('loading', { prefixCls });
+
+  const cls = bem([
+    {
+      spinner: true,
+      [`${size}`]: !!size,
+    },
+    className,
+  ]);
+
+  const spinner: React.ReactElement[] = [];
+
+  for (let i = 0; i < 9; i++) {
+    spinner.push(<div key={i} />);
+  }
+
+  return (
+    <div ref={ref} className={cls} {...restProps}>
+      {spinner}
+    </div>
+  );
+});
+
+Spinner.displayName = 'Spinner';
+
+const Loading = React.forwardRef<HTMLDivElement, LoadingProps>((props, ref) => {
+  if (props.type !== 'spinner') {
+    const { type, ...restProps } = props;
+    return <Circular ref={ref} {...restProps} />;
+  }
+  const { strokeWidth, percent, loading, type, ...restProps } = props;
+  return <Spinner ref={ref} {...restProps} />;
+});
+
+Loading.defaultProps = {
+  type: 'circular',
+  loading: true,
+  strokeWidth: 5,
+  percent: 20,
+};
+
+Loading.displayName = 'Loading';
+
+export default Loading;

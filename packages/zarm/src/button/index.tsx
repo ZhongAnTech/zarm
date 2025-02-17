@@ -1,48 +1,97 @@
-import React, {
-  PureComponent,
-  MouseEventHandler,
-  AnchorHTMLAttributes,
-  ButtonHTMLAttributes,
-} from 'react';
-import classnames from 'classnames';
-import BasePropsType from './PropsType';
-import ActivityIndicator from '../activity-indicator';
+import { createBEM } from '@zarm-design/bem';
+import React, { useContext } from 'react';
+import { ConfigContext } from '../config-provider';
+import Loading from '../loading';
+import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseButtonProps, ButtonShape, ButtonSize, ButtonTheme } from './interface';
 
-interface BaseButtonPropsType extends BasePropsType {
-  prefixCls?: string;
-  onClick?: MouseEventHandler<HTMLElement>;
+export type { ButtonTheme, ButtonSize, ButtonShape };
+
+export interface ButtonCssVars {
+  '--height'?: React.CSSProperties['height'];
+  '--background'?: React.CSSProperties['background'];
+  '--border-radius'?: React.CSSProperties['borderRadius'];
+  '--border-color'?: React.CSSProperties['borderColor'];
+  '--border-width'?: React.CSSProperties['borderWidth'];
+  '--padding-horizontal'?: React.CSSProperties['paddingLeft'];
+  '--text-color'?: React.CSSProperties['color'];
+  '--font-size'?: React.CSSProperties['fontSize'];
+  '--icon-size'?: React.CSSProperties['fontSize'];
+  '--loading-color'?: React.CSSProperties['color'];
+  '--active-background'?: React.CSSProperties['background'];
+  '--active-border-color'?: React.CSSProperties['borderColor'];
+  '--active-text-color'?: React.CSSProperties['color'];
+  '--active-loading-color'?: React.CSSProperties['color'];
+  '--shadow'?: React.CSSProperties['boxShadow'];
 }
 
 export type AnchorButtonProps = {
   mimeType?: string;
-} & BaseButtonPropsType &
-  Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'type' | 'onClick'>;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+} & BaseButtonProps &
+  HTMLProps<ButtonCssVars> &
+  Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'type' | 'onClick'>;
 
 export type NativeButtonProps = {
   htmlType?: 'button' | 'submit' | 'reset';
-} & BaseButtonPropsType &
-  Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'onClick'>;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+} & BaseButtonProps &
+  HTMLProps<ButtonCssVars> &
+  Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'onClick'>;
 
 export type ButtonProps = Partial<AnchorButtonProps & NativeButtonProps>;
 
-export default class Button extends PureComponent<ButtonProps, {}> {
-  static displayName = 'Button';
+const Button = React.forwardRef<unknown, ButtonProps>((props, ref) => {
+  const {
+    className,
+    theme,
+    size,
+    shape,
+    icon,
+    block,
+    ghost,
+    shadow,
+    disabled,
+    loading,
+    htmlType,
+    onClick,
+    children,
+    ...restProps
+  } = props;
 
-  static defaultProps: ButtonProps = {
-    prefixCls: 'za-button',
-    theme: 'default',
-    size: 'md',
-    shape: 'radius',
-    block: false,
-    ghost: false,
-    shadow: false,
-    disabled: false,
-    loading: false,
-    htmlType: 'button',
-  };
+  const buttonRef = (ref as any) || React.createRef<HTMLButtonElement | HTMLAnchorElement>();
+  const iconRender = loading ? <Loading /> : icon;
+  const childrenRender = children && <span>{children}</span>;
 
-  onClick: ButtonProps['onClick'] = (e) => {
-    const { disabled, onClick } = this.props;
+  const { prefixCls } = useContext(ConfigContext);
+  const bem = createBEM('button', { prefixCls });
+
+  const cls = bem([
+    {
+      [`${theme}`]: !!theme,
+      [`${size}`]: !!size,
+      [`${shape}`]: !!shape,
+      block,
+      ghost,
+      shadow,
+      disabled,
+      loading,
+      link: (restProps as AnchorButtonProps).href !== undefined,
+    },
+    className,
+  ]);
+
+  const contentRender =
+    !!icon || loading ? (
+      <div className={bem('content')}>
+        {iconRender}
+        {childrenRender}
+      </div>
+    ) : (
+      childrenRender
+    );
+
+  const onPress: ButtonProps['onClick'] = (e) => {
     if (disabled) {
       return;
     }
@@ -51,80 +100,50 @@ export default class Button extends PureComponent<ButtonProps, {}> {
     }
   };
 
-  render() {
-    const {
-      prefixCls,
-      className,
-      theme,
-      size,
-      shape,
-      icon,
-      block,
-      ghost,
-      shadow,
-      disabled,
-      loading,
-      onClick,
-      children,
-      ...rest
-    } = this.props;
-
-    let cls = classnames(prefixCls, className, {
-      [`${prefixCls}--${theme}`]: !!theme,
-      [`${prefixCls}--${size}`]: !!size,
-      [`${prefixCls}--${shape}`]: !!shape,
-      [`${prefixCls}--block`]: !!block,
-      [`${prefixCls}--ghost`]: !!ghost,
-      [`${prefixCls}--shadow`]: !!shadow,
-      [`${prefixCls}--disabled`]: !!disabled,
-      [`${prefixCls}--loading`]: loading,
-    });
-
-    const iconRender = loading ? <ActivityIndicator /> : icon;
-
-    const childrenRender = children && <span>{children}</span>;
-
-    const contentRender =
-      !!icon || loading ? (
-        <div className={`${prefixCls}__content`}>
-          {iconRender}
-          {childrenRender}
-        </div>
-      ) : (
-        childrenRender
-      );
-
-    if ((rest as AnchorButtonProps).href !== undefined) {
-      const { htmlType, ...filteredRest } = rest;
-      const { mimeType, ...anchorRest } = filteredRest as AnchorButtonProps;
-      cls = classnames(cls, `${prefixCls}--link`);
-
-      return (
-        <a
-          {...anchorRest}
-          type={mimeType}
-          aria-disabled={disabled}
-          className={cls}
-          onClick={this.onClick}
-        >
-          {contentRender}
-        </a>
-      );
-    }
-
-    const { mimeType, target, ...filteredRest } = rest;
-    const { htmlType, ...nativeRest } = filteredRest as NativeButtonProps;
-
+  if ((restProps as AnchorButtonProps).href !== undefined) {
+    const { mimeType, ...anchorRest } = restProps;
     return (
-      <button
-        {...nativeRest}
-        type={htmlType}
+      <a
+        {...(anchorRest as AnchorButtonProps)}
+        type={mimeType}
         aria-disabled={disabled}
         className={cls}
-        onClick={this.onClick}
+        onClick={onPress}
+        ref={buttonRef}
       >
         {contentRender}
-      </button>
+      </a>
     );
   }
-}
+
+  const { mimeType, target, ...nativeRest } = restProps;
+
+  return (
+    <button
+      {...(nativeRest as NativeButtonProps)}
+      type={htmlType}
+      aria-disabled={disabled}
+      className={cls}
+      onClick={onPress}
+      ref={buttonRef}
+    >
+      {contentRender}
+    </button>
+  );
+});
+
+Button.displayName = 'Button';
+
+Button.defaultProps = {
+  theme: 'default',
+  size: 'md',
+  shape: 'radius',
+  block: false,
+  ghost: false,
+  shadow: false,
+  disabled: false,
+  loading: false,
+  htmlType: 'button',
+};
+
+export default Button;

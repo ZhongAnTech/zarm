@@ -19,6 +19,22 @@ ReactDOM.render(
 );
 ```
 
+## 三种样式
+
+```jsx
+import { NoticeBar } from 'zarm';
+
+ReactDOM.render(
+  <>
+    <NoticeBar theme="primary">主要</NoticeBar>
+    <NoticeBar theme="success">成功</NoticeBar>
+    <NoticeBar theme="warning">警告</NoticeBar>
+    <NoticeBar theme="danger">错误</NoticeBar>
+  </>,
+  mountNode,
+);
+```
+
 ## 特定场景
 
 ```jsx
@@ -30,6 +46,9 @@ ReactDOM.render(
       链接样式的
     </NoticeBar>
     <NoticeBar closable>可关闭的</NoticeBar>
+    <NoticeBar closable onClose={() => alert('notice closed')}>
+      关闭并触发回调函数
+    </NoticeBar>
   </>,
   mountNode,
 );
@@ -37,12 +56,22 @@ ReactDOM.render(
 
 ## API
 
-| 属性     | 类型       | 默认值    | 说明                                                              |
-| :------- | :--------- | :-------- | :---------------------------------------------------------------- |
-| theme    | string     | 'warning' | 主题，可选值 `default`、`primary`、`success`、`warning`、`danger` |
-| icon     | ReactNode  | -         | 设置图标                                                          |
-| closable | boolean    | false     | 是否显示关闭按钮                                                  |
-| hasArrow | boolean    | false     | 是否显示箭头                                                      |
-| speed    | number     | 50        | 滚动时的速度（单位：px/s）                                        |
-| delay    | number     | 2000      | 开启滚动功能时前后停留的时间（单位：ms）                          |
-| onClick  | () => void | -         | 点击后触发的回调函数                                              |
+| 属性     | 类型                                             | 默认值    | 说明                                                   |
+| :------- | :----------------------------------------------- | :-------- | :----------------------------------------------------- |
+| theme    | string                                           | 'warning' | 主题，可选值 `primary`、`success`、`warning`、`danger` |
+| icon     | ReactNode                                        | -         | 设置图标                                               |
+| closable | boolean                                          | false     | 是否显示关闭按钮                                       |
+| hasArrow | boolean                                          | false     | 是否显示箭头                                           |
+| speed    | number                                           | 50        | 滚动时的速度（单位：px/s）                             |
+| delay    | number                                           | 2000      | 开启滚动功能时前后停留的时间（单位：ms）               |
+| onClick  | () => void                                       | -         | 点击后触发的回调函数                                   |
+| onClose  | (event: React.MouseEvent\<HTMLElement\>) => void | -         | 点击关闭 icon 触发的回调函数                           |
+
+## CSS 变量
+
+| 属性        | 默认值                   | 说明           |
+| :---------- | :----------------------- | :------------- |
+| --height    | '40px'                   | 通告栏高度     |
+| --padding   | '8px 12px'               | 通告栏内间距   |
+| --font-size | 'var(--za-font-size-sm)' | 消息框文字大小 |
+| --icon-size | '16px'                   | 消息框图标大小 |

@@ -1,82 +1,87 @@
-import { shallow } from 'enzyme';
+import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
-import Trigger from '../trigger';
-import type PropsType from '../PropsType';
+import Trigger from '../Trigger';
 
-describe('Trigger', () => {
+describe('TriggerComponent', () => {
   afterEach(() => {
     Trigger.instanceList = [];
-    Trigger.count = 0;
     jest.restoreAllMocks();
   });
-  describe('static getDerivedStateFromProps', () => {
-    it('should return null if visible prop is false and instance list of Trigger component is empty', () => {
-      const props: PropsType = {
-        disabled: false,
-        visible: true,
-      };
-      const actual = Trigger.getDerivedStateFromProps(props);
-      expect(actual).toBeNull();
+  describe('Props initialize the TriggerComponent', () => {
+    it('instance list of Trigger component should be empty if visible prop is false', () => {
+      render(<Trigger visible={false} disabled={false} />);
+      expect(Trigger.count).toBe(1);
       expect(Trigger.instanceList).toEqual([]);
     });
-    it('should push onclose function to instance list if visible is true and the onclose function does not exist in instance list', () => {
-      const props: PropsType = {
-        disabled: false,
-        visible: true,
-        onClose: jest.fn(),
-      };
-      const actual = Trigger.getDerivedStateFromProps(props);
-      expect(actual).toBeNull();
-      expect(Trigger.instanceList).toEqual([props.onClose]);
+    it('instance list of Trigger component should be empty if onClose prop is null', () => {
+      render(<Trigger visible disabled />);
+      expect(Trigger.instanceList).toEqual([]);
+    });
+    it('instance list of Trigger component should not be empty if disable prop is true', () => {
+      const mOnClose = jest.fn();
+      render(<Trigger visible disabled onClose={mOnClose} />);
+      expect(Trigger.instanceList).toEqual([mOnClose]);
+      expect(mOnClose).not.toHaveBeenCalled();
+    });
+    it('should push onClose function to instance list if visible is true and the onClose function does not exist in instance list', () => {
+      const mOnClose = jest.fn();
+      render(<Trigger visible disabled={false} onClose={mOnClose} />);
+      expect(Trigger.instanceList).toEqual([mOnClose]);
+      expect(Trigger.count).toBe(1);
+      expect(mOnClose).not.toHaveBeenCalled();
     });
   });
 
-  describe('static onKeydown', () => {
+  describe('Black-box: onKeydown function was triggered', () => {
     it('should handle escape keyboard event using the last handler of instance list', () => {
-      const mHandler = jest.fn();
-      // eslint-disable-next-line dot-notation
-      mHandler['disabled'] = false;
-      Trigger.instanceList = [mHandler];
-      const mEvent = ({ keyCode: 27 } as unknown) as KeyboardEvent;
-      Trigger.onKeydown(mEvent);
-      expect(mHandler).toBeCalledTimes(1);
-    });
-
-    it('should do nothing if the instance list is empty', () => {
-      const mEvent = ({ keyCode: 27 } as unknown) as KeyboardEvent;
-      expect(Trigger.onKeydown(mEvent)).toBeUndefined();
+      const mOnClose = jest.fn();
+      render(<Trigger visible disabled={false} onClose={mOnClose} />);
+      expect(Trigger.count).toBe(1);
+      expect(mOnClose).not.toHaveBeenCalled();
+      expect(Trigger.instanceList).toEqual([mOnClose]);
+      expect(Trigger.instanceList[0]?.disabled).toBeFalsy();
+      fireEvent.keyDown(document.body, { key: 'Escape', code: 'Escape' });
+      expect(Trigger.count).toBe(1);
+      expect(mOnClose).toHaveBeenCalled();
+      expect(mOnClose).toBeCalledTimes(1);
     });
 
     it('should do nothing if last handler is disabled', () => {
-      const mHandler = jest.fn();
-      // eslint-disable-next-line dot-notation
-      mHandler['disabled'] = true;
-      Trigger.instanceList = [mHandler];
-      const mEvent = ({ keyCode: 27 } as unknown) as KeyboardEvent;
-      Trigger.onKeydown(mEvent);
-      expect(mHandler).not.toBeCalled();
+      const mOnClose = jest.fn();
+      render(<Trigger visible disabled onClose={mOnClose} />);
+      expect(Trigger.instanceList).toEqual([mOnClose]);
+      fireEvent.keyDown(document.body, { key: 'Escape', code: 'Escape' });
+      expect(mOnClose).not.toBeCalled();
     });
   });
 
-  it('should add keydown event listener for document.body and increase the counter', () => {
+  it('should add keydown event listener for document.body', () => {
+    const mOnClose = jest.fn();
     const addEventListenerSpy = jest.spyOn(document.body, 'addEventListener');
-    shallow(<Trigger visible disabled={false} />);
-    shallow(<Trigger visible disabled={false} />);
-    expect(addEventListenerSpy).toBeCalledWith('keydown', Trigger.onKeydown);
+    render(<Trigger visible disabled={false} onClose={mOnClose} />);
+    expect(Trigger.count).toBe(1);
     expect(addEventListenerSpy).toBeCalledTimes(1);
+  });
+
+  it('should increase the counter in case of multiple trigger components', () => {
+    const mOnClose = jest.fn();
+    render(<Trigger visible disabled={false} onClose={mOnClose} />);
+    expect(Trigger.count).toBe(1);
+    render(<Trigger visible disabled={false} onClose={mOnClose} />);
     expect(Trigger.count).toBe(2);
   });
 
-  it('should remove keydown event handler from document.body and instance list', () => {
-    const removeEventListenerSpy = jest.spyOn(document.body, 'removeEventListener');
+  it('should remove keydown event handler from document.body and decrease counter', () => {
     const mOnClose = jest.fn();
-    const wrapper = shallow(<Trigger visible disabled={false} onClose={mOnClose} />);
+    const removeEventListenerSpy = jest.spyOn(document.body, 'removeEventListener');
+    const wrapper = render(<Trigger visible disabled={false} onClose={mOnClose} />);
     expect(Trigger.instanceList).toEqual([mOnClose]);
     expect(Trigger.count).toBe(1);
     wrapper.unmount();
-    expect(Trigger.instanceList).toHaveLength(0);
-    expect(Trigger.count).toBe(0);
-    expect(removeEventListenerSpy).toBeCalledWith('keydown', Trigger.onKeydown);
+    fireEvent.keyDown(document.body, { key: 'Escape', code: 'Escape' });
+    expect(mOnClose).not.toBeCalled();
     expect(removeEventListenerSpy).toBeCalledTimes(1);
+    expect(Trigger.instanceList).toEqual([]);
+    expect(Trigger.count).toBe(0);
   });
 });

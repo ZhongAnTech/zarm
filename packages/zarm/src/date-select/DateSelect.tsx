@@ -1,113 +1,139 @@
-import React, { PureComponent } from 'react';
-import classnames from 'classnames';
-import BaseDateSelectProps from './PropsType';
-import formatFn from '../date-picker-view/utils/format';
+import { createBEM } from '@zarm-design/bem';
+import clamp from 'lodash/clamp';
+import isEqual from 'lodash/isEqual';
+import * as React from 'react';
+import { unstable_batchedUpdates as batchedUpdates } from 'react-dom';
+import { ConfigContext } from '../config-provider';
 import DatePicker from '../date-picker';
+import { COLUMN_TYPE } from '../date-picker-view/interface';
+import {
+  dateToNumberArray,
+  generateDatePickerColumns,
+  useRenderLabel,
+} from '../date-picker-view/utils';
+import type { PickerColumnItem } from '../picker-view';
+import { resolved } from '../picker-view/utils';
+import type { SelectCssVars } from '../select';
+import { useSafeState } from '../utils/hooks';
+import { HTMLProps } from '../utils/utilityTypes';
+import type { BaseDateSelectProps } from './interface';
 
-export interface DateSelectProps extends BaseDateSelectProps {
-  prefixCls?: string;
-  className?: string;
-}
+const currentYear = new Date().getFullYear();
 
-export default class DateSelect extends PureComponent<DateSelectProps, any> {
-  static defaultProps: DateSelectProps = {
-    prefixCls: 'za-date-select',
-    mode: 'date',
-    disabled: false,
-    minuteStep: 1,
-    valueMember: 'value',
-    hasArrow: true,
-    onCancel: () => {},
+export type DateSelectProps = BaseDateSelectProps & HTMLProps<SelectCssVars>;
+
+const DateSelect: React.FC<DateSelectProps> = (props) => {
+  const {
+    className,
+    style,
+    placeholder,
+    disabled = false,
+    hasArrow = true,
+    value,
+    defaultValue,
+    min = new Date(new Date().setFullYear(currentYear - 10)),
+    max = new Date(new Date().setFullYear(currentYear + 10)),
+    columnType = [COLUMN_TYPE.YEAR, COLUMN_TYPE.MONTH, COLUMN_TYPE.DAY],
+    filter,
+    renderLabel,
+    displayRender = (items) => items?.map((item) => item && item.label),
+    onCancel,
+    onConfirm,
+    ...rest
+  } = props;
+
+  const [innerValue, setInnerValue] = useSafeState(value || defaultValue);
+  const [visible, setVisible] = useSafeState(false);
+  const { locale: globalLocal, prefixCls } = React.useContext(ConfigContext);
+  const defaultRenderLabel = useRenderLabel(renderLabel);
+  const locale = globalLocal.DateSelect;
+  const bem = createBEM('date-select', { prefixCls });
+
+  React.useEffect(() => {
+    if (isEqual(value, innerValue)) return;
+    setInnerValue(value);
+  }, [value]);
+
+  const handleClick = () => {
+    if (disabled) return;
+    setVisible(true);
   };
 
-  static getDerivedStateFromProps(props) {
-    return {
-      selectValue: props.value,
-    };
-  }
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      visible: false,
-      selectValue: props.value,
-    };
-  }
-
-  handleClick = () => {
-    const { disabled } = this.props;
-    if (disabled) {
-      return false;
-    }
-    this.setState({
-      visible: true,
-    });
-  };
-
-  onChange = (selected) => {
-    const { onChange } = this.props;
-    if (typeof onChange === 'function') {
-      onChange(selected);
-    }
-  };
-
-  onOk = (selected) => {
-    const { onOk } = this.props;
-    this.setState({
-      visible: false,
-      selectValue: selected,
-    });
-
-    if (typeof onOk === 'function') {
-      onOk(selected);
-    }
-  };
-
-  onCancel = () => {
-    const { onCancel } = this.props;
-    this.setState({ visible: false });
-    if (typeof onCancel === 'function') {
-      onCancel();
-    }
-  };
-
-  render() {
-    const {
-      prefixCls,
-      className,
-      placeholder,
-      disabled,
-      onChange,
-      locale,
-      value,
-      hasArrow,
-      ...others
-    } = this.props;
-    const { visible, selectValue } = this.state;
-
-    const cls = classnames(prefixCls, {
-      [`${prefixCls}--placeholder`]: !selectValue,
-      [`${prefixCls}--disabled`]: disabled,
-      [`${prefixCls}--arrow`]: hasArrow,
+  const handleConfirm = (changedValue: Date, changedItems: PickerColumnItem[]) => {
+    batchedUpdates(() => {
+      setInnerValue(changedValue);
+      setVisible(false);
     });
 
-    return (
-      <div className={cls} onClick={this.handleClick}>
-        <input type="hidden" value={formatFn(this, selectValue)} />
-        <div className={`${prefixCls}__input`}>
-          <div className={`${prefixCls}__value`}>
-            {formatFn(this, selectValue) || placeholder || locale!.placeholder}
+    onConfirm?.(changedValue, changedItems);
+  };
+
+  const handleCancel = () => {
+    setVisible(false);
+    onCancel?.();
+  };
+
+  const now = React.useMemo(() => new Date(), []);
+
+  const currentValue = React.useMemo(() => {
+    const date = innerValue || now;
+    return new Date(clamp(date.getTime(), min.getTime(), max.getTime()));
+  }, [innerValue, min, max, columnType]);
+
+  const pickerValue = React.useMemo(
+    () => dateToNumberArray(currentValue, columnType),
+    [currentValue, columnType],
+  );
+
+  const { items } = resolved({
+    dataSource: generateDatePickerColumns(
+      currentValue,
+      min,
+      max,
+      columnType,
+      defaultRenderLabel,
+      filter,
+    ),
+    value: pickerValue,
+  });
+
+  const arrowRender = <div className={bem('arrow')} />;
+
+  return (
+    <>
+      <div
+        className={bem([
+          {
+            placeholder: !innerValue,
+            disabled,
+            visible,
+          },
+          className,
+        ])}
+        style={style}
+        onClick={handleClick}
+      >
+        <div className={bem('input')}>
+          <div className={bem('value')}>
+            {(innerValue && displayRender?.(items)) || placeholder || locale.placeholder}
           </div>
         </div>
-        <DatePicker
-          {...others}
-          className={className}
-          visible={visible}
-          value={selectValue}
-          onOk={this.onOk}
-          onCancel={this.onCancel}
-        />
+        {hasArrow ? arrowRender : null}
       </div>
-    );
-  }
-}
+      <DatePicker
+        {...rest}
+        visible={visible}
+        columnType={columnType}
+        value={innerValue}
+        min={min}
+        max={max}
+        filter={filter}
+        renderLabel={renderLabel}
+        onConfirm={handleConfirm}
+        onCancel={handleCancel}
+      />
+    </>
+  );
+};
+
+export default DateSelect;

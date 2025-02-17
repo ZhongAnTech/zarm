@@ -1,4 +1,21 @@
-@keyframes za-slideUp-enter {
+@mixin slide-motion($className, $keyframeName) {
+  $name: #{$prefixCls}-#{$className};
+  @include make-motion($name, #{$prefixCls}-#{$keyframeName});
+  .#{$name}-enter,
+  .#{$name}-appear {
+    animation-timing-function: ease-out;
+  }
+  .#{$name}-leave {
+    animation-timing-function: ease-in;
+  }
+}
+
+@include slide-motion(slide-up, slide-up);
+@include slide-motion(slide-down, slide-down);
+@include slide-motion(slide-left, slide-left);
+@include slide-motion(slide-right, slide-right);
+
+@keyframes #{$prefixCls}-slide-up-in {
   from {
     transform: translate3d(0, 100px, 0);
   }
@@ -8,11 +25,7 @@
   }
 }
 
-.za-slideUp-enter {
-  animation: za-slideUp-enter both cubic-bezier(0.4, 0, 0, 1.5);
-}
-
-@keyframes za-slideUp-leave {
+@keyframes #{$prefixCls}-slide-up-out {
   from {
     transform: translate3d(0, 0, 0);
   }
@@ -22,11 +35,7 @@
   }
 }
 
-.za-slideUp-leave {
-  animation: za-slideUp-leave both;
-}
-
-@keyframes za-slideDown-enter {
+@keyframes #{$prefixCls}-slide-down-in {
   from {
     transform: translate3d(0, -100px, 0);
   }
@@ -36,11 +45,7 @@
   }
 }
 
-.za-slideDown-enter {
-  animation: za-slideDown-enter both cubic-bezier(0.4, 0, 0, 1.5);
-}
-
-@keyframes za-slideDown-leave {
+@keyframes #{$prefixCls}-slide-down-out {
   from {
     transform: translate3d(0, 0, 0);
   }
@@ -50,39 +55,7 @@
   }
 }
 
-.za-slideDown-leave {
-  animation: za-slideDown-leave both;
-}
-
-@keyframes za-slideLeft-enter {
-  from {
-    transform: translate3d(150px, 0, 0);
-  }
-
-  to {
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-.za-slideLeft-enter {
-  animation: za-slideLeft-enter both cubic-bezier(0.4, 0, 0, 1.5);
-}
-
-@keyframes za-slideLeft-leave {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
-    transform: translate3d(150px, 0, 0);
-  }
-}
-
-.za-slideLeft-leave {
-  animation: za-slideLeft-leave both;
-}
-
-@keyframes za-slideRight-enter {
+@keyframes #{$prefixCls}-slide-left-in {
   from {
     transform: translate3d(-150px, 0, 0);
   }
@@ -92,11 +65,7 @@
   }
 }
 
-.za-slideRight-enter {
-  animation: za-slideRight-enter both cubic-bezier(0.4, 0, 0, 1.5);
-}
-
-@keyframes za-slideRight-leave {
+@keyframes #{$prefixCls}-slide-left-out {
   from {
     transform: translate3d(0, 0, 0);
   }
@@ -106,6 +75,22 @@
   }
 }
 
-.za-slideRight-leave {
-  animation: za-slideRight-leave both;
+@keyframes #{$prefixCls}-slide-right-in {
+  from {
+    transform: translate3d(150px, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes #{$prefixCls}-slide-right-out {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(150px, 0, 0);
+  }
 }

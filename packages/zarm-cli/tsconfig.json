@@ -1,18 +1,21 @@
 {
-  "compilerOptions": {
-    "baseUrl": "./",
-    "target": "ES2019",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "jsx": "react",
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "sourceMap": true,
-    "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true,
-    "types": ["webpack", "node", "jest"]
-  },
   "include": ["src"],
-  "exclude": ["node_modules", "lib", "es", "**/__tests__/**", "tests"]
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ES2018",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "declaration": true,
+    "sourceMap": true,
+    "declarationMap": true,
+    "composite": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "outDir": "dist",
+    "rootDir": "src"
+  },
+  "ts-node": {
+    "transpileOnly": true,
+    "swc": true
+  }
 }

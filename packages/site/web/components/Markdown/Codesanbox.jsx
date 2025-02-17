@@ -1,13 +1,13 @@
-import { getParameters } from 'codesandbox/lib/api/define';
+import pkg from '@zarmDir/package.json';
 import { pascalCase } from 'change-case';
+import { getParameters } from 'codesandbox/lib/api/define';
 
-export default ({ code, component, preview }) => {
+export default ({ code, component, preview, formatMessage }) => {
   const title = `${component.name} ${pascalCase(component.key)} - Zarm Design`;
   const pageCls = `${component.key}-page`;
-  
+
   let parsedSourceCode = code;
   let importReactContent = "import React from 'react';";
-
   const importReactReg = /import(\D*)from 'react';/;
   const matchImportReact = parsedSourceCode.match(importReactReg);
   if (matchImportReact) {
@@ -15,10 +15,7 @@ export default ({ code, component, preview }) => {
     parsedSourceCode = parsedSourceCode.replace(importReactReg, '').trim();
   }
 
-  parsedSourceCode = parsedSourceCode.replace(
-    'mountNode',
-    "document.getElementById('container')",
-  );
+  parsedSourceCode = parsedSourceCode.replace('mountNode', "document.getElementById('container')");
 
   const indexJsContent = `
 ${importReactContent}
@@ -46,10 +43,10 @@ ${parsedSourceCode}
           title,
           main: 'index.js',
           dependencies: {
-            zarm: 'latest',
-            react: '^17',
-            'react-dom': '^17',
-            'react-scripts': '^4.0.0',
+            zarm: pkg.version,
+            react: '^18',
+            'react-dom': '^18',
+            'react-scripts': '^5.0.0',
           },
           devDependencies: {
             typescript: '^4.0.5',
@@ -69,21 +66,46 @@ ${parsedSourceCode}
   };
 
   if (component.style) {
-    // eslint-disable-next-line import/no-dynamic-require
-    config.files['index.css'] = { content: require(`!!raw-loader!sass-loader!@/demo/styles/${pascalCase(component.key)}Page.scss`).default };
+    config.files['index.css'] = {
+      // eslint-disable-next-line import/no-dynamic-require
+      content: require(`!!raw-loader!sass-loader!@/demo/styles/${pascalCase(
+        component.key,
+      )}Page.scss`).default,
+    };
   }
 
   const params = getParameters(config);
+  const uniqueId = `clipboard-${Math.random().toString(36).substring(4)}`;
 
   return `<div class="code-preview">
-    <form
-      action="https://codesandbox.io/api/v1/sandboxes/define"
-      method="POST"
-      target="_blank"
-    >
-      <input type="hidden" name="parameters" value="${params}" />
-      <button class="za-button za-button--default za-button--xs za-button--radius codesanbox" type="submit">在 CodeSandbox 中打开</button>
-    </form>
+    <div class="actions">
+      <form
+        action="https://codesandbox.io/api/v1/sandboxes/define"
+        method="POST"
+        target="_blank"
+      >
+        <input type="hidden" name="parameters" value="${params}" />
+        <button class="za-button za-button--sm za-button--radius za-button--link" type="submit" title="${formatMessage(
+          { id: 'app.components.preview.action.codesandbox' },
+        )}">
+          <i class="za-icon za-icon--sm">
+            <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 1000 1000">
+              <use xlink:href="#codesandbox"></use>
+            </svg>
+          </i>
+        </button>
+      </form>
+      <textarea class="clipboard-content ${uniqueId}">${code}</textarea>
+      <button class="za-button za-button--sm za-button--radius za-button--link clipboard-code" data-clipboard-target=".${uniqueId}" title="${formatMessage(
+    { id: 'app.components.preview.action.copy' },
+  )}"">
+        <i class="za-icon za-icon--sm">
+          <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 1000 1000">
+            <use xlink:href="#copy"></use>
+          </svg>
+        </i>
+      </button>
+    </div>
     ${preview}
   </div>`;
-}
+};

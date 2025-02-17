@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomInput renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="za-custom-input za-custom-input--number"
+  >
+    <div
+      class="za-custom-input__content"
+    >
+      <div
+        class="za-custom-input__placeholder"
+      />
+      <div
+        class="za-custom-input__virtual-input"
+      />
+      <input
+        type="hidden"
+        value=""
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`CustomInput renders readonly 1`] = `
+<DocumentFragment>
+  <div
+    class="za-custom-input za-custom-input--number za-custom-input--readonly"
+  >
+    <div
+      class="za-custom-input__content"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`CustomInput.Idcard renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="za-custom-input za-custom-input--idcard"
+  >
+    <div
+      class="za-custom-input__content"
+    >
+      <div
+        class="za-custom-input__placeholder"
+      />
+      <div
+        class="za-custom-input__virtual-input"
+      />
+      <input
+        type="hidden"
+        value=""
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`CustomInput.Price renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="za-custom-input za-custom-input--price"
+  >
+    <div
+      class="za-custom-input__content"
+    >
+      <div
+        class="za-custom-input__placeholder"
+      />
+      <div
+        class="za-custom-input__virtual-input"
+      />
+      <input
+        type="hidden"
+        value=""
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

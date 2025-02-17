@@ -1,91 +1,97 @@
-@import 'mixins';
-
 @include b(badge) {
+  @include define(dot-size, 8px);
+  @include define(color, var(--za-theme-danger));
+  @include define(text-color, #fff);
+  @include define(border-color, #fff);
+  @include define(font-size, 12px);
+  @include define(font-weight, 600);
+  @include define(height, 20px);
+  @include define(padding-horizontal, 4px);
+  @include define(border-radius, var(--za-radius-sm));
+  @include define(top, 0);
+  @include define(right, 0);
+
   position: relative;
   display: inline-block;
   vertical-align: middle;
-  line-height: 1;
-  @include badge-theme(var(--theme-danger));
+
+  @include b(icon) {
+    color: inherit;
+  }
 
   @include e(content) {
     display: flex;
     justify-content: center;
     align-items: center;
     top: auto;
-    color: var(--badge-text-color);
-    font-size: var(--badge-font-size);
-    height: var(--badge-height);
-    padding: 0 var(--badge-padding-h);
+    background-color: var(--color);
+    color: var(--text-color);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
+    height: var(--height);
+    padding: 0 var(--padding-horizontal);
     white-space: nowrap;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
   }
 
-  @include m(primary) {
-    @include badge-theme(var(--theme-primary));
-  }
-
-  @include m(success) {
-    @include badge-theme(var(--theme-success));
-  }
-
-  @include m(warning) {
-    @include badge-theme(var(--theme-warning));
-  }
-
-  @include m(danger) {
-    @include badge-theme(var(--theme-danger));
-  }
-
   @include m(dot) {
+    @include define(height, var(--dot-size));
+
     @include e(content) {
-      width: var(--badge-dot-diameter);
-      height: var(--badge-dot-diameter);
+      width: var(--height);
+      border-radius: 50%;
       padding: 0;
-      border-radius: var(--radius-circle);
     }
   }
 
   @include m(radius) {
     @include e(content) {
-      border-radius: var(--badge-border-radius-rect);
+      border-radius: var(--border-radius);
     }
   }
 
   @include m(round) {
     @include e(content) {
-      min-width: var(--badge-height);
-      border-radius: var(--badge-border-radius-round);
+      min-width: var(--height);
+      border-radius: var(--height);
     }
   }
 
   @include m(circle) {
     @include e(content) {
-      width: var(--badge-height);
-      border-radius: var(--radius-circle);
+      width: var(--height);
+      border-radius: 50%;
       padding: 0;
     }
   }
 
   @include m(leaf) {
     @include e(content) {
-      min-width: var(--badge-height);
-      border-radius: var(--badge-border-radius-round) var(--badge-border-radius-round) var(--badge-border-radius-round) 0;
+      min-width: var(--height);
+      border-radius: var(--height) var(--height) var(--height) 0;
     }
   }
 
   @include m(sup) {
-    @include e(content) {
-      position: absolute;
-      top: 0;
-      left: 100%;
-      transform: translateX(calc(var(--badge-height) / -2)) translateY(var(--badge-sup-top));
-    }
+    @include define(font-size, 10px);
+    @include define(height, 16px);
 
     @include m(dot) {
-      @include e(content) {
-        transform: translateX(calc(var(--badge-dot-diameter) / -2)) translateY(-50%);
-      }
+      @include define(height, var(--dot-size));
+    }
+
+    @include e(content) {
+      position: absolute;
+      top: var(--top);
+      right: var(--right);
+      transform: translate3d(calc(100% - var(--height) / 2), -50%, 0);
+    }
+  }
+
+  @include m(bordered) {
+    @include e(content) {
+      border: 1px solid var(--border-color);
     }
   }
 }

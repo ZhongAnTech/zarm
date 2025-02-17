@@ -1,45 +1,56 @@
 @include b(tab-bar) {
-  display: flex;
-  width: 100%;
-  background: var(--tabbar-background);
-  height: var(--tabbar-height);
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  text-align: center;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  transition-duration: .2s;
-  transition-property: height bottom;
-  overflow: hidden;
+  @include define(font-size, 12px);
+  @include define(background, #fff);
+  @include define(height, 50px);
+  @include define(color, var(--za-color-text));
+  @include define(active-color, var(--za-theme-primary));
 
-  @include m(hidden) {
-    bottom: var(--tabbar-hidden-bottom);
-    height: 0;
-  }
+  background: var(--background);
 
-  @include m(active) {
-    @include e(title, icon) {
-      color: var(--tabbar-item-active-color);
-    }
+  @include e(wrapper) {
+    min-height: var(--height);
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    display: flex;
   }
 
   @include e(item) {
     flex: 1;
 
     @include e(title) {
-      font-size: var(--tabbar-item-font-size);
+      font-size: var(--font-size);
       line-height: 1;
-      margin-top: r(2);
+      margin-top: 2px;
+      color: var(--color);
     }
 
     @include e(icon) {
       display: inline-block;
       vertical-align: middle;
-      width: r(24);
-      height: r(24);
-      font-size: r(18);
+      width: 24px;
+      height: 24px;
+      font-size: 18px;
+    }
+
+    @include b(badge) {
+      @include e(content) {
+        --top: 6px;
+      }
+    }
+
+    @include m(active) {
+      @include b(tab-bar) {
+        @include e(title) {
+          color: var(--active-color);
+        }
+      }
+
+      @include b(icon) {
+        color: var(--active-color);
+      }
     }
   }
 }

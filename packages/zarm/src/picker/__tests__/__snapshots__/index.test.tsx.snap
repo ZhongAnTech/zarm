@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Picker Picker render visible 1`] = `<div />`;
+
+exports[`Picker render custom label 1`] = `<div />`;

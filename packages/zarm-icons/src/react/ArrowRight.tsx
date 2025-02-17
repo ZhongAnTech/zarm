@@ -1,10 +1,11 @@
 import * as React from 'react';
-import Icon from '../icon';
 import type { IconProps } from '../icon';
+import Icon from '../icon';
 
 const SvgArrowRight = (props: IconProps, svgRef?: React.Ref<SVGSVGElement>) => {
+  const newProps = { ...props, name: 'SvgArrowRight' };
   return React.createElement(Icon, {
-    ...props,
+    ...newProps,
     component: () => (
       <svg
         width="1em"

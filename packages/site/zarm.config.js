@@ -12,10 +12,10 @@ module.exports = {
       template: './demo/index.html',
       favicon: './favicon.ico',
     },
-    // demo_umd: {
-    //   template: './demo/index_umd.html',
-    //   favicon: './favicon.ico',
-    // },
+    demo_umd: {
+      template: './demo/index_umd.html',
+      favicon: './favicon.ico',
+    },
   },
   resolve: {
     alias: {
@@ -29,7 +29,17 @@ module.exports = {
     options.plugins.push([
       'prismjs',
       {
-        languages: ['javascript', 'typescript', 'jsx', 'tsx', 'css', 'scss', 'markup', 'bash'],
+        languages: [
+          'javascript',
+          'typescript',
+          'jsx',
+          'tsx',
+          'css',
+          'scss',
+          'markup',
+          'bash',
+          'diff',
+        ],
         theme: 'default',
         css: true,
       },
@@ -39,6 +49,9 @@ module.exports = {
     rules.push({
       test: /\.md$/,
       use: ['raw-loader'],
+    });
+    rules[1].use.splice(3, 0, {
+      loader: require.resolve('resolve-url-loader'),
     });
   },
 };

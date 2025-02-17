@@ -1,11 +1,14 @@
-const Enzyme = require('enzyme');
-const Adapter =
-  process.env.REACT === '16'
-    ? require('enzyme-adapter-react-16')
-    : require('@wojtekmaj/enzyme-adapter-react-17');
+import '@testing-library/jest-dom';
 
-Enzyme.configure({ adapter: new Adapter() });
+Object.defineProperty(window, 'SVGRect', { value: 'SVGRect', writable: true });
 
-jest.mock('react-native', () => require('dl-react-native-mock-render'), {
-  virtual: true,
-});
+window.ResizeObserver =
+  window.ResizeObserver ||
+  jest.fn().mockImplementation(() => ({
+    disconnect: jest.fn(),
+    observe: jest.fn(),
+    unobserve: jest.fn(),
+  }));
+
+window.scrollTo = window.scrollTo || jest.fn();
+window.HTMLElement.prototype.scrollTo = jest.fn();

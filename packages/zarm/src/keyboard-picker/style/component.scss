@@ -1,0 +1,5 @@
+@include b(keyboard-picker) {
+  @include define(background, #d8d8d8);
+
+  background: var(--background);
+}

@@ -1,4 +1,5 @@
 import type { ComponentClass } from 'react';
+import { act } from 'react-dom/test-utils';
 
 export function flushMicroTasks() {
   return new Promise((resolve) => setTimeout(resolve, 0));
@@ -6,6 +7,13 @@ export function flushMicroTasks() {
 
 export function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+export async function waitForComponentToPaint(component: any, timeout = 50) {
+  await act(async () => {
+    await new Promise((resolve) => setTimeout(resolve, timeout));
+    component.update();
+  });
 }
 
 let oCreateObjectURL: typeof window.URL.createObjectURL;
@@ -90,4 +98,21 @@ export function mockRefReturnValueOnce(
     },
     configurable: true,
   });
+}
+
+export function createFCRefMock(method: string, value: any) {
+  const ref = { current: {} };
+  const refKey = Symbol('ref');
+  Object.defineProperty(ref, 'current', {
+    set(_ref) {
+      if (_ref) {
+        jest.spyOn(_ref, method).mockReturnValueOnce(value);
+      }
+      this[refKey] = _ref;
+    },
+    get() {
+      return this[refKey];
+    },
+  });
+  return ref;
 }

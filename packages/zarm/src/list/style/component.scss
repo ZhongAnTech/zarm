@@ -1,0 +1,161 @@
+@include b(list) {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  > *:first-child {
+    @include b(list-item) {
+      @include e(wrapper) {
+        &::after {
+          content: none;
+        }
+      }
+    }
+  }
+
+  @include m(unbordered) {
+    @include b(list-item) {
+      @include e(wrapper) {
+        &:after {
+          content: none;
+        }
+      }
+    }
+  }
+}
+
+@include b(list-item) {
+  @include define(height, 44px);
+  @include define(padding-horizontal, 16px);
+  @include define(padding-vertical, 8px);
+  @include define(background, #fff);
+  @include define(active-background, var(--za-background-active));
+  @include define(separator-color, var(--za-border-color));
+  @include define(title-font-size, var(--za-font-size-md));
+  @include define(title-white-space, nowrap);
+  @include define(
+    title-line-height,
+    calc(var(--height) - var(--padding-vertical) * 2)
+  );
+  @include define(suffix-text-color, rgba(0, 0, 0, 0.45));
+  @include define(space, 5px);
+  @include define(arrow-width, var(--za-arrow-width));
+  @include define(arrow-color, var(--za-arrow-color));
+  @include define(arrow-size, var(--za-arrow-size));
+  @include define(description-font-size, 12px);
+  @include define(description-text-color, var(--za-color-text-caption));
+  @include define(description-line-height, 16px);
+  @include define(inline-title-width, 100px);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding-left: var(--padding-horizontal);
+  background: var(--background);
+  font-size: var(--title-font-size);
+
+  a,
+  a:hover {
+    text-decoration: none;
+  }
+
+  @include e(prefix) {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-right: var(--padding-horizontal);
+    padding: var(--padding-vertical) 0;
+    min-height: var(--height);
+  }
+
+  @include e(wrapper) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: var(--height);
+    padding: var(--padding-vertical) 0;
+    padding-right: var(--padding-horizontal);
+    @include onepx(top, var(--separator-color));
+  }
+
+  @include e(inner) {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+    line-height: var(--title-line-height);
+  }
+
+  @include e(title) {
+    white-space: var(--title-white-space);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @include e(content) {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    min-height: var(--title-line-height);
+  }
+
+  @include e(suffix) {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    min-height: var(--title-line-height);
+    margin-left: auto;
+    padding-left: var(--space);
+    color: var(--suffix-text-color);
+  }
+
+  @include e(arrow) {
+    margin-left: var(--space);
+    margin-right: var(--arrow-width);
+
+    &:after {
+      content: '';
+      display: inline-block;
+      border-right: var(--arrow-width) solid var(--arrow-color);
+      border-top: var(--arrow-width) solid var(--arrow-color);
+      width: var(--arrow-size);
+      height: var(--arrow-size);
+      transform: rotate(45deg);
+    }
+  }
+
+  @include e(description) {
+    font-size: var(--description-font-size);
+    color: var(--description-text-color);
+    line-height: var(--description-line-height);
+  }
+
+  @include m(inline) {
+    @include e(inner) {
+      align-items: flex-start;
+    }
+
+    @include e(title) {
+      width: var(--inline-title-width);
+      line-height: var(--title-line-height);
+    }
+  }
+
+  @include m(link) {
+    cursor: pointer;
+    user-select: none;
+    transition-duration: 0.1s;
+    transition-property: background, color;
+
+    &:active {
+      background: var(--active-background);
+    }
+  }
+}

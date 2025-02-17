@@ -1,35 +1,25 @@
 @include b(popup) {
-  z-index: var(--zindex-popup);
   -webkit-overflow-scrolling: touch;
   margin: auto;
+  transform: perspective(0);
 
   @include e(wrapper) {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: var(--zindex-mask);
-    overflow: auto;
-    padding: 60px 0;
-    -webkit-overflow-scrolling: touch;
-  }
+    @include define(mask-zindex, var(--za-zindex-mask));
 
-  @include m(hidden) {
-    opacity: 0;
-    visibility: hidden;
-  }
-
-  @include m(nomask) {
     position: fixed;
+    z-index: var(--mask-zindex);
 
     @include m(center) {
-      top: 50%;
-      left: 50%;
-      transform: translateX(-50%) translateY(-50%);
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
+      padding: 60px 0;
+      -webkit-overflow-scrolling: touch;
     }
   }
 
@@ -38,7 +28,6 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    transform: translate(0, 100%);
   }
 
   @include m(top) {
@@ -46,7 +35,6 @@
     left: 0;
     top: 0;
     width: 100%;
-    transform: translate(0, -100%);
   }
 
   @include m(left) {
@@ -54,7 +42,6 @@
     left: 0;
     top: 0;
     height: 100%;
-    transform: translate(-100%, 0);
   }
 
   @include m(right) {
@@ -62,24 +49,5 @@
     right: 0;
     top: 0;
     height: 100%;
-    transform: translate(100%, 0);
-  }
-
-  @include m(show) {
-    @include m(bottom) {
-      transform: translate(0, 0);
-    }
-
-    @include m(top) {
-      transform: translate(0, 0);
-    }
-
-    @include m(left) {
-      transform: translate(0, 0);
-    }
-
-    @include m(right) {
-      transform: translate(0, 0);
-    }
   }
 }

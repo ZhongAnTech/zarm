@@ -1,6 +1,6 @@
 {
   "name": "@zarm-design/cli",
-  "version": "0.0.39",
+  "version": "0.0.48",
   "description": "Cli Tools for Zarm Design Project",
   "keywords": [
     "zarm-cli",
@@ -10,27 +10,25 @@
   ],
   "license": "MIT",
   "author": "jerome.lin@zhongan.com",
-  "typings": "types/index.d.ts",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "bin": {
     "zarm": "./bin/zarm.js"
   },
   "files": [
-    "lib",
-    "bin",
-    "types"
+    "dist",
+    "bin"
   ],
   "scripts": {
-    "clean": "rimraf types lib coverage",
-    "test": "jest --config ./jest.config.js",
-    "coverage": "rimraf coverage && yarn test --coverage",
-    "build:types": "rimraf types && tsc --outFile types/index.d.ts -d --emitDeclarationOnly",
-    "build:lib": "rimraf lib && babel src --extensions .ts --out-dir lib --copy-files",
-    "build": "yarn build:types && yarn build:lib",
-    "dev": "npm run build -- -w"
+    "build": "yarn clean && tsc --build --force",
+    "clean": "rimraf dist",
+    "dev": "tsc -w",
+    "prepare": "yarn build",
+    "test": "jest"
   },
   "dependencies": {
-    "@babel/cli": "^7.13.10",
     "@babel/core": "^7.13.10",
+    "@babel/helper-string-parser": "^7.21.5",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/plugin-proposal-decorators": "^7.13.5",
     "@babel/plugin-proposal-optional-chaining": "^7.13.12",
@@ -40,55 +38,53 @@
     "@babel/preset-typescript": "^7.13.0",
     "@babel/runtime": "^7.13.10",
     "@babel/runtime-corejs3": "^7.13.10",
-    "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
     "@sentry/webpack-plugin": "^1.15.1",
     "babel-jest": "^26.5.2",
     "babel-loader": "^8.2.2",
     "chalk": "^4.1.1",
     "change-case": "^4.1.2",
     "commander": "^7.2.0",
-    "css-loader": "^5.2.4",
+    "css-loader": "^6.7.3",
     "execa": "^3.3.0",
-    "file-loader": "^6.2.0",
     "fork-ts-checker-webpack-plugin": "^6.2.10",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
-    "gulp-dart-sass": "^1.0.2",
-    "html-webpack-plugin": "^5.3.1",
+    "gulp-sass": "^5.1.0",
+    "html-webpack-plugin": "^5.5.0",
     "import-local": "^3.0.2",
     "jest": "^26.5.3",
     "metro-react-native-babel-preset": "^0.63.0",
-    "mini-css-extract-plugin": "^1.6.0",
+    "mini-css-extract-plugin": "^2.7.2",
     "mkdirp": "^0.5.1",
-    "postcss-flexbugs-fixes": "^4.1.0",
-    "postcss-loader": "^3.0.0",
-    "postcss-preset-env": "^6.7.0",
+    "postcss": "^8.4.21",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-loader": "^7.0.2",
+    "postcss-preset-env": "^8.0.1",
     "process": "^0.11.10",
-    "raw-loader": "^4.0.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-native": "^0.63.2",
-    "react-refresh": "^0.9.0",
-    "sass": "^1.32.13",
-    "sass-loader": "^11.1.1",
+    "sass": "^1.58.3",
+    "sass-loader": "^13.2.0",
     "signale": "^1.4.0",
     "terser-webpack-plugin": "^5.1.2",
     "through2": "^3.0.1",
     "ts-jest": "^26.5.0",
-    "webpack": "^5.37.0",
-    "webpack-bundle-analyzer": "^4.4.2",
-    "webpack-cli": "^4.7.0",
-    "webpack-dev-server": "^3.11.2",
-    "webpack-merge": "^5.7.3",
-    "webpackbar": "^5.0.0-3"
+    "webpack": "^5.75.0",
+    "webpack-bundle-analyzer": "^4.8.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1",
+    "webpack-merge": "^5.8.0",
+    "webpackbar": "^5.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^15.3.0",
+    "@types/webpack": "^5.28.0",
+    "ts-node": "^10.9.1"
   },
   "tags": [
     "zarm",
     "zarm-cli",
     "zhongan"
-  ],
-  "devDependencies": {
-    "@types/node": "^15.3.0",
-    "@types/webpack": "^5.28.0"
-  }
+  ]
 }

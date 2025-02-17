@@ -5,56 +5,66 @@
     "packages/*"
   ],
   "scripts": {
+    "build": "lerna exec --scope zarm -- yarn build",
     "clean": "lerna run clean && lerna clean -y",
-    "lint:tsc": "tsc --noEmit",
+    "deploy": "lerna exec --scope site -- gh-pages -d assets",
+    "deploy:build": "lerna exec --scope site -- yarn build",
+    "dev": "lerna exec --scope site -- yarn start",
+    "postinstall": "lerna exec --scope @zarm-design/cli -- yarn build && lerna exec --scope @zarm-design/bem -- yarn build && lerna exec --scope @zarm-design/icons -- yarn build",
+    "lint": "yarn install && yarn lint:tsc && yarn lint:script && yarn lint:style",
     "lint:script": "eslint --ext .ts,.tsx,.js,.jsx packages",
     "lint:style": "stylelint \"packages/**/*.scss\" --syntax scss",
-    "lint": "yarn lint:script && yarn lint:style",
-    "test": "lerna exec --no-private -- yarn test",
-    "prebuild": "lerna exec --scope @zarm-design/cli -- yarn build && lerna exec --scope @zarm-design/icons -- yarn build",
-    "build": "yarn prebuild && lerna exec --scope zarm -- yarn build",
-    "dev": "yarn prebuild && lerna exec --scope site -- yarn start",
-    "deploy:build": "yarn prebuild && lerna exec --scope site -- yarn build -p",
-    "deploy": "lerna exec --scope site -- gh-pages -d assets",
-    "release": "lerna publish",
+    "lint:tsc": "tsc --noEmit",
     "prepublishOnly": "yarn lint && yarn build && yarn test",
-    "prettier": "prettier -c --write '**/*'",
-    "pretty-quick": "pretty-quick",
-    "bundlesize": "lerna run bundlesize",
-    "sort": "npx sort-package-json \"package.json\" \"packages/*/package.json\""
+    "prettier": "prettier --write -c '**/*.{js,jsx,ts,tsx,html,md,json}'",
+    "release": "lerna publish",
+    "sort": "npx sort-package-json \"package.json\" \"packages/*/package.json\"",
+    "test": "lerna exec --no-private -- yarn test"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged",
-      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
-    }
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,html,md,json}": [
+      "prettier --write --no-error-on-unmatched-pattern"
+    ],
+    "*.scss": [
+      "stylelint --syntax scss"
+    ]
+  },
+  "resolutions": {
+    "@types/react": "18.0.26",
+    "@types/react-dom": "18.0.9"
   },
   "devDependencies": {
-    "@commitlint/cli": "^12.1.1",
-    "@commitlint/config-conventional": "^12.1.1",
+    "@babel/eslint-parser": "^7.16.3",
+    "@babel/eslint-plugin": "^7.14.5",
+    "@commitlint/cli": "^17.3.0",
+    "@commitlint/config-conventional": "^17.3.0",
     "@types/jest": "^26.0.22",
-    "@typescript-eslint/eslint-plugin": "3.10.1",
-    "@typescript-eslint/parser": "3.10.1",
-    "babel-eslint": "10.1.0",
+    "@typescript-eslint/eslint-plugin": "^5.3.1",
+    "@typescript-eslint/parser": "^5.3.1",
     "browserslist": "^4.16.4",
-    "bundlesize": "^0.18.1",
     "concurrently": "^6.0.2",
-    "eslint": "7.10.0",
+    "eslint": "^7.10.0",
     "eslint-config-prettier": "8.1.0",
-    "eslint-config-za": "2.2.2",
-    "eslint-plugin-babel": "5.3.1",
+    "eslint-config-za": "^2.4.0-alpha.3",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jsx-a11y": "6.4.1",
     "eslint-plugin-react": "7.21.5",
     "eslint-plugin-react-hooks": "4.1.2",
-    "husky": "^4.3.8",
+    "husky": "^8.0.2",
     "lerna": "^4.0.0",
-    "prettier": "^2.2.1",
-    "pretty-quick": "^3.1.0",
+    "lint-staged": "^13.1.0",
+    "prettier": "^2.8.0",
+    "prettier-plugin-organize-imports": "^3.2.1",
+    "prettier-plugin-packagejson": "^2.3.0",
     "rimraf": "^3.0.2",
     "stylelint": "13.8.0",
     "stylelint-config-za": "0.3.0",
     "stylelint-scss": "^3.18.0",
-    "typescript": "4.0.2"
+    "typescript": "~4.5.0"
   }
 }

@@ -1,5 +1,246 @@
 # 版本更新日志
 
+## v3.1.5
+
+- Feature
+
+  - [Tabs] 支持上下左右四个方向的使用 [#1184](https://github.com/ZhongAnTech/zarm/pull/1184)
+
+## v3.1.4
+
+- Perf
+
+  - [Popup] 支持嵌套使用 [#d94776](https://github.com/ZhongAnTech/zarm/commit/d94776d4762282c3ecc43ffbcd11b75d71fcc5fb)
+
+## v3.1.2
+
+- Bug Fix
+
+  - [Carousel] 修复图片大小计算偏差问题 [#1169](https://github.com/ZhongAnTech/zarm/pull/1169) [@zyf-xcode]
+
+## v3.1.1
+
+- Perf
+
+  - [Popup] onMaskClick 事件支持原生 event 参数 [#1168](https://github.com/ZhongAnTech/zarm/pull/1168)
+
+## v3.1.0
+
+- Bug Fix
+
+  - [Toast] 修复单独使用该组件 loading 模式时样式丢失的情况 [#1163](https://github.com/ZhongAnTech/zarm/pull/1163)
+
+  - [@zarm-design/icons] 修复当前图标库的导出配置会导致使用 ES 模块时引用 lib 而不是引用 es 下的资源，从而导致 tree shake 失败 [#1166](https://github.com/ZhongAnTech/zarm/pull/1166)
+
+## v3.0.17
+
+- Bug Fix
+
+  - [Popup] 修复内容中包含 transtion 动画时，会影响 Popup 的动画的执行 [#1153](https://github.com/ZhongAnTech/zarm/pull/1153)
+
+- Perf
+
+  - [Calendar] 优化初始状态下自动滑动到已选择的日期位置 [#1150](https://github.com/ZhongAnTech/zarm/pull/1150)
+
+## v3.0.16
+
+- Bug Fix
+
+  - [@zarm-design/icons] 修复 ES Module 模块无法导出的问题 [#5e5c8f](https://github.com/ZhongAnTech/zarm/commit/5e5c8f125c1dc721ed6df8a9ae39462bd8c9a4db)
+  - [Calendar] 修复最大/小可选日期设置后展示不正确的问题 [#1149](https://github.com/ZhongAnTech/zarm/pull/1149)
+
+- Perf
+
+  - [Calendar] `dateRender` 增加 `value` 参数露出，优化样式 css 变量 [#1148](https://github.com/ZhongAnTech/zarm/pull/1148)
+
+## v3.0.15
+
+- Bug Fix
+
+  - [DatePicker] 修复默认值重置为 `undefined` 失效的 bug [#1113](https://github.com/ZhongAnTech/zarm/pull/1113)
+  - [CustomInput] 修复只读状态样式问题 [#1117](https://github.com/ZhongAnTech/zarm/pull/1117)
+  - [Popup, Modal] 修复内容超长无法滚动问题 [#1145](https://github.com/ZhongAnTech/zarm/pull/1145)
+
+- Break Change
+
+  - [TabBar] 移除弃用的 `visible` 和 `safeArea` 属性 [#1112](https://github.com/ZhongAnTech/zarm/pull/1112) [#8db25c](https://github.com/ZhongAnTech/zarm/commit/8db25cc191fa41d1d13f8308ef94787de61b9f2e)
+
+- Perf
+
+  - [Badge] 字体样式优化 [#1118](https://github.com/ZhongAnTech/zarm/pull/1118)
+
+## v3.0.14
+
+- Bug Fix
+
+  - [PickerView] 修复文字过长截断失效的 bug。[#1097](https://github.com/ZhongAnTech/zarm/pull/1097)
+  - [DatePicker] 修复值不能重置为 `undefined` 的 bug。[#1100](https://github.com/ZhongAnTech/zarm/pull/1100)[@aiyogg]
+  - [Popup] 修复 `maskClassName` 属性名错误的 bug。[#1102](https://github.com/ZhongAnTech/zarm/pull/1102)[@aiyogg]
+
+- Perf
+
+  - [Carousel] 优化图片只有一页时停止自动播放，优化循环播放时拖拽的弹性动画。[#1098](https://github.com/ZhongAnTech/zarm/pull/1098)
+
+## v3.0.13
+
+- Bug Fix
+
+  - [ImagePreview] 修复服务端渲染报错 [#1087](https://github.com/ZhongAnTech/zarm/pull/1087)
+
+## v3.0.12
+
+- Bug Fix
+
+  - [Panel] `title` 或 `more` 属性未声明不再渲染 header 节点 [#1085](https://github.com/ZhongAnTech/zarm/pull/1085)
+  - [Input] 修复受控模式下表单值显示不正确 [#1086](https://github.com/ZhongAnTech/zarm/pull/1086)
+  - [DateSelect] 修复按需加载样式文件丢失 [#1083](https://github.com/ZhongAnTech/zarm/pull/1083)
+
+## v3.0.11
+
+- Bug Fix
+
+  - [Toast] 修复调用 `clear` 静态方法后，再次使用无法自动关闭的问题 [#1082](https://github.com/ZhongAnTech/zarm/pull/1082)
+
+## v3.0.10
+
+- Bug Fix
+
+  - 解决 renderImperative React 18 异步渲染问题 [#1076](https://github.com/ZhongAnTech/zarm/pull/1076)
+  - [List.Item] 修复单独引用样式丢失 [#1075](https://github.com/ZhongAnTech/zarm/pull/1075)
+  - [Collapse] 修复标题默认字体 [#1077](https://github.com/ZhongAnTech/zarm/pull/1077)
+
+## v3.0.9
+
+- Bug Fix
+
+  - [ImagePreview] 修复点击“查看原图”按钮导致弹层关闭的问题 [#1073](https://github.com/ZhongAnTech/zarm/pull/1073)
+
+## v3.0.8
+
+- Feature
+
+  - [Toast] 兼容 React 18 异步渲染问题 [#1069](https://github.com/ZhongAnTech/zarm/pull/1069)
+  - [Popup & Modal] 增加指令式调用方式 [#1056](https://github.com/ZhongAnTech/zarm/pull/1056)
+
+- Bug Fix
+
+  - [Modal] 修复 confirm 点击确认返回值不正确 [#1072](https://github.com/ZhongAnTech/zarm/pull/1072)
+  - [Modal] 移除无效样式文件 [#1071](https://github.com/ZhongAnTech/zarm/pull/1071)
+  - 修复部分组件 `className` 挂载节点错误及 `style` 样式属性缺失问题 [#1066](https://github.com/ZhongAnTech/zarm/pull/1066)
+  - [DateSelect] 修复 DateSelect 组件 `columnType`、`max`、`min` 属性未生效的问题 [#1068](https://github.com/ZhongAnTech/zarm/pull/1068)
+  - [Select] 修复默认值无法为空的问题 [#1068](https://github.com/ZhongAnTech/zarm/pull/1068)
+  - [@zarm-design/icons] 修复无法自定义 scss 前缀的问题 [#1067](https://github.com/ZhongAnTech/zarm/pull/1067)
+
+## v3.0.7
+
+- Bug Fix
+
+  - [ConfigProvider] 修复全局修改组件类名前缀 `prefix` 后，`scss` 文件前缀修改不生效的问题 [#1061](https://github.com/ZhongAnTech/zarm/pull/1061)
+  - [Icon] 修复部分组件 Icon 样式偏移问题 [#1062](https://github.com/ZhongAnTech/zarm/pull/1062)
+
+## v3.0.5
+
+- Feature
+
+  - 优化 iconfont 字体文件的引入方式，需要使用 iconfont 方式的时候需要额外引入样式文件。[#1057](https://github.com/ZhongAnTech/zarm/pull/1057)
+
+- Bug Fix
+
+  - [Cascader] 修复组件丢失 Radio 和 List 样式导致显示错乱的问题 [#1053](https://github.com/ZhongAnTech/zarm/pull/1053)
+
+## v3.0.2
+
+- Bug Fix
+
+  - 修复 dist 目录下 css 文件缺失的问题 [#1053](https://github.com/ZhongAnTech/zarm/pull/1053)
+  - 修复使用 `babel-plugin-import` 插件部分组件找不到 style 目录报错的问题 [#1053](https://github.com/ZhongAnTech/zarm/pull/1053)
+
+## v3.0.0
+
+- Feature
+
+  - 新增组件：Grid 宫格、WaterMark 水印、Skeleton 骨架屏、Rate 评分、Image 图片
+  - 新增 hooks 组件：useClickAway 单击外部跟踪器、useInViewport 进入浏览器窗口、useLongPress 长按、useOrientation 屏幕方向、useScroll 滚动
+
+- Break Change
+
+  - [ActivityIndicator]
+    - `ActivityIndicator` 组件更名为 `Loading`
+  - [Loading]
+    - 原 `Loading` 组件合并至 `Toast` 组件，通过设置 `icon` 为 `loading` 来实现
+  - [ConfigProvider]
+    - 组件样式设置作用域修正为当前节点下（非全局）
+    - 增加适配安全区域
+    - 增加组件 `css` 变量设置
+    - 增加组件挂载节点的 `mountContainer`
+    - 增加组件类名前缀 `prefixCls` 设置
+  - [Input]
+    - 拆分使用到虚拟键盘的自定义输入框组件 `CustomInput`
+    - 触发的事件入参由 value 值改为 event，受影响的事件有 `onChange` `onFocus` `onBlur` `onFocus`
+    - 删除 `onClear` 事件，点击重置按钮请空值将触发 `onChange` 事件
+    - 抽离自定义输入框 `CustomInput`, 配合 `KeyBoard` 扩展自定义输入框
+    - 增加属性 `label`，用于设置标签栏
+  - [Cell]
+    - 变更为 List 和 List.Item 组件，样式结构调整
+    - 属性 `icon` 变更为 `prefix`
+    - 属性 `description` 变更为 `after`
+    - 属性 `help` 变更为 `info`
+    - 属性 `title` 字体大小变更为 17px
+  - [Checkbox]
+    - Group
+      - 属性 `type` 可选值 `cell` 变更为 `list`
+      - 删除属性 `size`、`shape`、`ghost`
+      - 新增属性 `iconAlign` ，用于设置列表类型时标记的位置
+  - [Radio]
+    - Group
+      - 属性 `type` 可选值 `cell` 变更为 `list`
+      - 删除属性 `size`、`shape`、`ghost`
+      - 新增属性 `listIconAlign` ，用于设置列表类型时标记的位置
+  - [Select & DateSelect]
+    - 移除属性 `hasArrow`，默认展示箭头
+  - [NoticeBar]
+    - 新增属性 `onClose`，关闭触发的回调函数
+    - 修复关闭后只移除了 `Message` 组件，根节点没有被移除的 bug
+  - [Message]
+    - 移除属性 `size`，及相关样式
+    - 新增属性 `onClose`，关闭触发的回调函数
+  - [ImagePreview]
+    - 支持横屏下查看图片
+  - [Modal]
+    - 支持开启状态下锁定背景滚动
+  - [Popup]
+    - 新增属性 `forceRender`，用于强制渲染内容
+  - [Badge]
+    - 移除属性 `theme`，颜色设置通过 css 变量 --background 来定义
+    - 新增属性 `bordered` ，用于判断徽标是否有边框
+  - [SearchBar]
+    - 输入框事件变更为与原生 `input` 保持一致，如 `onChange`、`onFocus`、`onBlur` 等
+    - 删除 `onClear` 事件，点击重置按钮请空值将触发 `onChange` 事件
+  - [Slider]
+    - 支持点击，移动到点击位置
+    - 新增属性 `onSlideChange` ，滑动时触发
+  - [Toast]
+    - 变更为仅支持指令式调用，详细用法参见官网文档
+  - [BackTop]
+    - `BackToTop` 组件更名为 `BackTop`
+    - 新增属性 `mountContainer` ，用于设置组件挂载节点
+  - [Badge]
+    - 移除属性 `theme`，颜色设置通过 css 变量 --background 来定义
+    - 新增属性 `bordered` ，用于判断徽标是否有边框
+  - [Mask]
+    - 移除属性 `type`
+    - 新增属性 `color` 用户设置颜色
+    - 新增属性 `opacity` 用于设置透明度
+  - [StackPicker]
+    - `StackPicker` 组件更名为 `Cascader`
+  - [Picker & PickerView]
+    - 移除属性 `valueMember`，替换为 `fieldNames` 支持自定义 label、value、children 的字段
+  - [DatePicker & DatePickverView]
+    - 移除属性 `mode`，新增 `columnType` 属性来控制日期时间的模式
+    - 移除属性 `minuteStep`，新增 `filter` 属性用于过滤选项值
+  - [SwipeAction]
+    - `leftActions/rightActions` onClick 事件支持异步
+
 ## v2.9.15
 
 - Bug Fix

@@ -1,50 +1,32 @@
-import React, { PureComponent, ReactNode } from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
+import * as React from 'react';
+import { ConfigContext } from '../config-provider';
+import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseTabPanelProps } from './interface';
 
-export interface TabPanelProps {
-  prefixCls?: string;
-  className?: string;
-  selected?: boolean;
-  title?: ReactNode;
-  disabled?: boolean;
-}
+export type TabPanelProps = BaseTabPanelProps & HTMLProps;
 
-interface TabPanelStates {
-  selected?: boolean;
-}
+const TabPanel = React.forwardRef<HTMLDivElement, TabPanelProps>((props, ref) => {
+  const { className, selected, children, style } = props;
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('tabs__panel', { prefixCls });
 
-export default class TabPanel extends PureComponent<TabPanelProps, TabPanelStates> {
-  static defaultProps: TabPanelProps = {
-    prefixCls: 'za-tabs',
-  };
+  const cls = bem([
+    {
+      active: selected,
+    },
+    className,
+  ]);
 
-  constructor(props: TabPanel['props']) {
-    super(props);
-    this.state = {
-      selected: props.selected,
-    };
-  }
+  return (
+    <div ref={ref} className={cls} style={style} role="tabpanel">
+      {children}
+    </div>
+  );
+});
 
-  static getDerivedStateFromProps(nextProps: TabPanel['props']) {
-    if ('selected' in nextProps) {
-      return {
-        selected: nextProps.selected,
-      };
-    }
-    return null;
-  }
+TabPanel.displayName = 'TabPanel';
 
-  render() {
-    const { prefixCls, className, children } = this.props;
-    const { selected } = this.state;
-    const cls = classnames(`${prefixCls}__panel`, className, {
-      [`${prefixCls}__panel--active`]: selected,
-    });
+TabPanel.defaultProps = {};
 
-    return (
-      <div className={cls} role="tabpanel">
-        {children}
-      </div>
-    );
-  }
-}
+export default TabPanel;

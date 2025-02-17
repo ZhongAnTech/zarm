@@ -1,22 +1,36 @@
-import React, { useEffect, useContext } from 'react';
-import { pascalCase } from 'change-case';
-import { marked } from 'marked';
-import Prism from 'prismjs';
-import { Icon } from 'zarm';
-import { Tooltip } from 'zarm-web';
-import { FormattedMessage } from 'react-intl';
+import { assets, documents } from '@/site.config';
 import Context from '@/utils/context';
 import Meta from '@/web/components/Meta';
-import { documents } from '@/site.config';
+import { pascalCase } from 'change-case';
+import ClipboardJS from 'clipboard';
+import { marked } from 'marked';
+import Prism from 'prismjs';
+import React, { useContext, useEffect } from 'react';
+import { FormattedMessage, useIntl } from 'react-intl';
+import { Icon, Tooltip } from 'zarm';
 import Codesanbox from './Codesanbox';
 import './style.scss';
 
-const isComponentPage = (page) => documents.findIndex((item) => item.key === page) === -1;
-const Icons = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_mk657pke2hj.js');
+const isComponentPage = (page) =>
+  Object.values(documents)
+    .flat()
+    .findIndex((item) => item.key === page) === -1;
+
+const isHooks = (key) => key.indexOf('use') === 0; // components key startsWith use
+
+const Icons = Icon.createFromIconfont(assets.iconfont);
 
 export default (props) => {
+  const intl = useIntl();
   const { document, component } = props;
   const { locale } = useContext(Context);
+
+  React.useEffect(() => {
+    const clipboard = new ClipboardJS('.clipboard-code');
+    return () => {
+      clipboard.destroy();
+    };
+  }, []);
 
   const renderer = {
     table: (header, body) => {
@@ -29,20 +43,20 @@ export default (props) => {
           : code;
 
       if (!isComponentPage(component.key)) {
-        return `<pre><code class="language-${language}">${highlightCode}</code></pre>`;
+        return `<pre class="language-${language}">${highlightCode}</pre>`;
       }
 
       return Codesanbox({
         code,
         component,
-        preview: `<pre><code class="language-${language}">${highlightCode}</code></pre>`,
+        preview: `<pre class="language-${language}">${highlightCode}</pre>`,
+        formatMessage: intl.formatMessage,
       });
     },
     heading: (text, level) => {
       if (level === 1) return '';
       return `<h${level}>${text}</h${level}>`;
-
-      // const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+      // const escapedText = text.toLowerCase().replace(/\s+/g, '-');
       // return `
       //   <h${level}>
       //     <a name="${escapedText}" class="anchor" href="#${escapedText}">
@@ -59,9 +73,12 @@ export default (props) => {
   }, []);
 
   if (typeof document === 'string') {
-    const title = `${locale === 'zhCN' ? component.name : ''} ${
-      locale !== 'zhCN' || isComponentPage(component.key) ? pascalCase(component.key) : ''
-    }`;
+    const title = isComponentPage(component.key)
+      ? `${locale === 'zhCN' ? component.name : ''} ${
+          !isHooks(component.key) ? pascalCase(component.key) : component.key
+        }`
+      : intl.formatMessage({ id: `app.docs.article.${component.key}` });
+
     const pageCls = `${component.key}-page`;
     const demoHTML = marked(document.replace(/## API\s?([^]+)/g, ''));
     const api = document.match(/## API\s?([^]+)/g);
@@ -87,7 +104,7 @@ export default (props) => {
               direction="right"
             >
               <a alt="#" href={sourceURL} rel="noreferrer" target="_blank">
-                <Icons type="edit" size="sm" />
+                <Icons type="edit" />
               </a>
             </Tooltip>
           </h1>

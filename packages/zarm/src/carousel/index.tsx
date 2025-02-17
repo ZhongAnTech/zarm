@@ -1,385 +1,365 @@
-import React, { Component, cloneElement, Children, CSSProperties } from 'react';
-import classnames from 'classnames';
-import PropsType from './PropsType';
+import { useDrag } from '@use-gesture/react';
+import { createBEM } from '@zarm-design/bem';
+import type { CSSProperties } from 'react';
+import React, {
+  Children,
+  cloneElement,
+  forwardRef,
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
+import { ConfigContext } from '../config-provider';
+import { getBoundingClientRect } from '../utils/dom';
 import Events from '../utils/events';
-import Drag from '../drag';
+import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseCarouselProps } from './interface';
 
-export interface CarouselProps extends PropsType {
-  prefixCls?: string;
-  className?: string;
+export interface CarouselCssVars {
+  '--pagination-margin'?: React.CSSProperties['right' | 'bottom'];
+  '--pagination-item-width'?: React.CSSProperties['width'];
+  '--pagination-item-height'?: React.CSSProperties['height'];
+  '--pagination-item-border-radius'?: React.CSSProperties['borderRadius'];
+  '--pagination-item-spacing'?: React.CSSProperties['marginRight'];
+  '--pagination-item-background'?: React.CSSProperties['background'];
+  '--pagination-item-active-background'?: React.CSSProperties['background'];
 }
 
-export default class Carousel extends Component<CarouselProps, any> {
-  static defaultProps: CarouselProps = {
-    prefixCls: 'za-carousel',
-    direction: 'left',
-    height: 160,
-    loop: false,
-    activeIndex: 0,
-    animationDuration: 500,
-    swipeable: true,
-    autoPlay: false,
-    autoPlayIntervalTime: 3000,
-    moveDistanceRatio: 0.5,
-    moveTimeSpan: 300,
-    showPagination: true,
-  };
+export type CarouselProps = BaseCarouselProps & HTMLProps<CarouselCssVars>;
 
-  private carouselItems;
+export interface CarouselHTMLElement extends HTMLDivElement {
+  onJumpTo: (index: number) => void;
+  onSlideTo: (index: number) => void;
+}
 
-  private moveInterval;
+interface Offset {
+  x: number;
+  y: number;
+}
 
-  private translateX = 0;
+interface StateProps {
+  activeIndex: number;
+  activeIndexChanged: boolean;
+}
 
-  private translateY = 0;
+const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => {
+  const { prefixCls } = React.useContext(ConfigContext);
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      // items: [],
-      activeIndex: props.activeIndex,
-      activeIndexChanged: false,
-    };
-  }
+  const bem = createBEM('carousel', { prefixCls });
 
-  componentDidMount() {
-    const { activeIndex } = this.props;
+  const {
+    className,
+    height,
+    style,
+    children,
+    direction,
+    loop,
+    onChangeEnd,
+    onChange,
+    autoPlay,
+    autoPlayIntervalTime,
+    swipeable,
+    animationDuration,
+    activeIndex: propActiveIndex,
+    showPagination,
+    moveDistanceRatio,
+    moveTimeSpan,
+  } = props;
 
-    // 监听窗口变化
-    Events.on(window, 'resize', this.resize);
-    this.startAutoPlay();
-    // 设置起始位置编号
-    this.onJumpTo(activeIndex);
-  }
+  const stateRef = useRef<StateProps>({
+    activeIndex: propActiveIndex!,
+    activeIndexChanged: false,
+  });
 
-  componentDidUpdate(prevProps) {
-    const { activeIndex } = this.props;
-    if (activeIndex !== prevProps.activeIndex) {
-      this.onSlideTo(activeIndex);
-    }
-  }
+  const [activeIndexState, setActiveIndexState] = useState(stateRef.current.activeIndex);
 
-  componentWillUnmount() {
-    // 自动轮播结束
-    this.pauseAutoPlay();
+  const updateRef = useRef((state: StateProps) => {
+    stateRef.current = state;
+    setActiveIndexState(state.activeIndex);
+  });
 
-    // 移除监听窗口变化
-    Events.off(window, 'resize', this.resize);
-    Events.off(this.carouselItems, 'webkitTransitionEnd', this.transitionEnd);
-    Events.off(this.carouselItems, 'transitionend', this.transitionEnd);
-  }
+  const isVertical = direction === 'vertical';
 
-  // 滑动到指定编号
-  onSlideTo = (index) => {
-    this.onMoveTo(index, this.props.animationDuration);
-  };
+  const carouselRef = (ref as any) || React.createRef<CarouselHTMLElement>();
+  const carouselItemsRef = useRef<HTMLDivElement>(null);
 
-  // 静默跳到指定编号
-  onJumpTo = (index) => {
-    this.onMoveTo(index, 0);
-  };
+  const translateXRef = useRef(0);
+  const translateYRef = useRef(0);
 
-  // 移动到指定编号
-  onMoveTo = (index, animationDuration) => {
-    const dom = this.carouselItems;
-
-    const { loop, children, onChange } = this.props;
-    const maxLength = children!.length;
-    const previousIndex = this.state.activeIndex;
-
-    this.translateX = -dom.offsetWidth * (index + loop);
-    this.translateY = -dom.offsetHeight * (index + loop);
-    this.doTransition({ x: this.translateX, y: this.translateY }, animationDuration);
-
-    if (index > maxLength - 1) {
-      index = 0;
-    } else if (index < 0) {
-      index = maxLength - 1;
-    }
-    const activeIndexChanged = previousIndex !== index;
-    this.setState({
-      activeIndex: index,
-      activeIndexChanged,
-    });
-
-    if (typeof onChange === 'function' && activeIndexChanged) {
-      onChange(index);
-    }
-  };
-
-  // 触屏事件
-  onDragStart = () => {
-    const { swipeable, children } = this.props;
-    if (!swipeable) {
-      return false;
-    }
-    // 跳转到头尾
-    const { activeIndex } = this.state;
-    const maxLength = children!.length;
-
-    if (activeIndex <= 0) {
-      this.onJumpTo(0);
-    } else if (activeIndex >= maxLength - 1) {
-      this.onJumpTo(maxLength - 1);
-    }
-
-    // 暂停自动轮播
-    this.pauseAutoPlay();
-  };
-
-  onDragMove = (event, { offsetX, offsetY }) => {
-    const { swipeable } = this.props;
-    if (!swipeable) {
-      return false;
-    }
-    const distanceX = Math.abs(offsetX);
-    const distanceY = Math.abs(offsetY);
-
-    if (
-      this.isDirectionX() &&
-      (distanceX < 5 || (distanceX >= 5 && distanceY >= 1.73 * distanceX))
-    ) {
-      return false;
-    }
-
-    if (
-      !this.isDirectionX() &&
-      (distanceY < 5 || (distanceY >= 5 && distanceX >= 1.73 * distanceY))
-    ) {
-      return false;
-    }
-
-    // 设置不循环的时候
-    if (!this.props.loop) {
-      // 在尾页时禁止拖动
-      if (this.isLastIndex()) {
-        if ((this.isDirectionX() && offsetX < 0) || (!this.isDirectionX() && offsetY < 0)) {
-          return false;
-        }
-      }
-
-      // 在首页时禁止拖动
-      if (this.isFirstIndex()) {
-        if ((this.isDirectionX() && offsetX > 0) || (!this.isDirectionX() && offsetY > 0)) {
-          return false;
-        }
-      }
-    }
-
-    if (!Events.supportsPassiveEvents) {
-      event.preventDefault();
-    }
-
-    this.doTransition({ x: this.translateX + offsetX, y: this.translateY + offsetY }, 0);
-    return true;
-  };
-
-  onDragEnd = (_event, { offsetX, offsetY, startTime }) => {
-    const { swipeable } = this.props;
-    if (!swipeable) {
-      return false;
-    }
-    if (!offsetX && !offsetY) {
-      // 恢复自动轮播
-      this.startAutoPlay();
-      return;
-    }
-
-    const { moveDistanceRatio, moveTimeSpan } = this.props;
-    let { activeIndex } = this.state;
-
-    const dom = this.carouselItems;
-    const timeSpan = new Date().getTime() - startTime.getTime();
-    const ratio = this.isDirectionX()
-      ? Math.abs(offsetX / dom.offsetWidth)
-      : Math.abs(offsetY / dom.offsetHeight);
-
-    // 判断滑动临界点
-    // 1.滑动距离超过0，且滑动距离和父容器长度之比超过moveDistanceRatio
-    // 2.滑动释放时间差低于moveTimeSpan
-    if (ratio >= moveDistanceRatio! || timeSpan <= moveTimeSpan!) {
-      const action =
-        (this.isDirectionX() && offsetX > 0) || (!this.isDirectionX() && offsetY > 0)
-          ? 'prev'
-          : 'next';
-
-      activeIndex = action === 'next' ? activeIndex + 1 : activeIndex - 1;
-    }
-
-    this.onSlideTo(activeIndex);
-
-    // 恢复自动轮播
-    this.startAutoPlay();
-  };
-
-  // 自动轮播开始
-  startAutoPlay = () => {
-    const { direction, loop, autoPlay, autoPlayIntervalTime } = this.props;
-
-    this.moveInterval =
-      autoPlay &&
-      setInterval(() => {
-        let { activeIndex } = this.state;
-        const isLeftOrUpDirection = ['left', 'up'].indexOf(direction!) > -1;
-
-        activeIndex = isLeftOrUpDirection ? activeIndex + 1 : activeIndex - 1;
-
-        // 不循环暂停轮播
-        if (!loop && (isLeftOrUpDirection ? this.isLastIndex() : this.isFirstIndex())) {
-          this.pauseAutoPlay();
-          return;
-        }
-        this.onSlideTo(activeIndex);
-      }, autoPlayIntervalTime);
-  };
-
-  // 暂停自动轮播
-  pauseAutoPlay = () => {
-    if (this.moveInterval) {
-      clearInterval(this.moveInterval);
-    }
-  };
+  const count = useMemo(() => Children.count(children), [children]);
 
   // 处理节点（首尾拼接）
-  parseItems = (props) => {
-    if (props.children.length === 0) {
+  const carouselItems = useMemo(() => {
+    if (children == null || children.length === 0) {
       return;
     }
-
     // 增加头尾拼接节点
-    const items = [].concat(props.children);
-    const firstItem = items[0];
-    const lastItem = items[items.length - 1];
+    const itemList = [...children];
+    const firstItem = itemList[0];
+    const lastItem = itemList[itemList.length - 1];
 
-    if (props.loop) {
-      items.push(firstItem);
-      items.unshift(lastItem);
+    if (loop) {
+      itemList.push(firstItem);
+      itemList.unshift(lastItem);
     }
 
     // 节点追加后重排key
-    const newItems = React.Children.map(items, (element: any, index) => {
+    const newItems = React.Children.map(itemList, (element: any, index) => {
       return cloneElement(element, {
         key: index,
-        className: classnames(`${props.prefixCls}__item`, element.props.className),
+        className: bem('item', [element.props.className]),
       });
     });
     return newItems;
-  };
-
-  // 更新窗口变化的位置偏移
-  resize = () => {
-    this.onJumpTo(this.state.activeIndex);
-  };
+  }, [children]);
 
   // 执行过渡动画
-  doTransition = (offset, animationDuration) => {
-    const dom = this.carouselItems;
-    let x = 0;
-    let y = 0;
+  const doTransition = useCallback(
+    (offset: Offset, animationDurationNum: number) => {
+      const dom = carouselItemsRef.current;
+      let x = 0;
+      let y = 0;
 
-    if (this.isDirectionX()) {
-      ({ x } = offset);
-    } else {
-      ({ y } = offset);
+      if (!isVertical) {
+        ({ x } = offset);
+      } else {
+        ({ y } = offset);
+      }
+      dom!.style.transitionDuration = `${animationDurationNum}ms`;
+      dom!.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    },
+    [isVertical],
+  );
+
+  const onMoving = useRef(false);
+
+  const transitionEnd = useCallback(() => {
+    onMoving.current = false;
+    const { activeIndex, activeIndexChanged } = stateRef.current;
+    const dom = carouselItemsRef.current;
+    const index = loop ? activeIndex + 1 : activeIndex;
+    const size = getBoundingClientRect(dom);
+    translateXRef.current = -size.width * index;
+    translateYRef.current = -size.height * index;
+    doTransition({ x: translateXRef.current, y: translateYRef.current }, 0);
+    if (activeIndexChanged) {
+      onChangeEnd?.(activeIndex);
     }
+  }, [loop, doTransition, onChangeEnd]);
 
-    dom.style.WebkitTransformDuration = `${animationDuration}ms`;
-    dom.style.transitionDuration = `${animationDuration}ms`;
-    dom.style.WebkitTransform = `translate3d(${x}px, ${y}px, 0)`;
-    dom.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-  };
+  // 移动到指定编号
+  const onMoveTo = useCallback(
+    (index: number, animationDurationNum: number) => {
+      const dom = carouselItemsRef.current;
+      const previousIndex = stateRef.current.activeIndex;
+      const activeIndexChanged = previousIndex !== index;
+      const num = loop ? 1 : 0;
+      const size = getBoundingClientRect(dom);
+      translateXRef.current = -size.width * (index + num);
+      translateYRef.current = -size.height * (index + num);
+      doTransition({ x: translateXRef.current, y: translateYRef.current }, animationDurationNum);
 
-  transitionEnd = () => {
-    const { onChangeEnd } = this.props;
-    const { activeIndex, activeIndexChanged } = this.state;
-    const dom = this.carouselItems;
+      if (index > count - 1) {
+        index = 0;
+      } else if (index < 0) {
+        index = count - 1;
+      }
 
-    this.translateX = -dom.offsetWidth * (activeIndex + this.props.loop);
-    this.translateY = -dom.offsetHeight * (activeIndex + this.props.loop);
-    this.doTransition({ x: this.translateX, y: this.translateY }, 0);
+      updateRef.current({
+        activeIndex: index,
+        activeIndexChanged,
+      });
+      if (activeIndexChanged) {
+        onChange?.(index);
+      }
+    },
+    [children, doTransition, loop, onChange],
+  );
 
-    if (typeof onChangeEnd === 'function' && activeIndexChanged) {
-      onChangeEnd(activeIndex);
-    }
-  };
+  // 滑动到指定编号
+  const onSlideTo = useCallback(
+    (index: number) => {
+      onMoveTo(index, animationDuration!);
+    },
+    [onMoveTo, animationDuration],
+  );
 
-  // 判断当前是否在最后一页
-  isLastIndex = () => {
-    return this.state.activeIndex >= this.props.children!.length - 1;
-  };
+  // 静默跳到指定编号
+  const onJumpTo = useCallback(
+    (index: number) => {
+      onMoveTo(index, 0);
+    },
+    [onMoveTo],
+  );
 
-  // 判断当前是否在第一页
-  isFirstIndex = () => {
-    return this.state.activeIndex <= 0;
-  };
+  // 更新窗口变化的位置偏移
+  const resize = useCallback(() => {
+    onJumpTo(stateRef.current.activeIndex);
+  }, [onJumpTo]);
 
-  // 是否横向移动
-  isDirectionX = () => {
-    return ['left', 'right'].indexOf(this.props.direction!) > -1;
-  };
+  const intervalRef = useRef<number>();
 
-  renderPaginationItem = (_result, index) => {
-    const { prefixCls } = this.props;
-    const paginationItemCls = classnames(`${prefixCls}__pagination__item`, {
-      [`${prefixCls}__pagination__item--active`]: index === this.state.activeIndex,
+  const bind = useDrag(
+    (state) => {
+      let { activeIndex } = stateRef.current;
+      if (onMoving.current) {
+        if (activeIndex <= 0) {
+          onJumpTo(0);
+        } else if (activeIndex >= count - 1) {
+          onJumpTo(count - 1);
+        }
+        onMoving.current = false;
+      }
+      if (!state.intentional) {
+        return false;
+      }
+      intervalRef.current && window.clearInterval(intervalRef.current);
+
+      const { offset, elapsedTime } = state;
+
+      const [offsetX, offsetY] = offset;
+      const index = isVertical ? 1 : 0;
+      if (!offset[index]) {
+        return false;
+      }
+
+      const action = (!isVertical && offsetX > 0) || (isVertical && offsetY > 0) ? 'prev' : 'next';
+      if (
+        !loop &&
+        ((action === 'prev' && activeIndex <= 0) || (action === 'next' && activeIndex >= count - 1))
+      ) {
+        return false;
+      }
+      if (state.last) {
+        const dom = carouselItemsRef.current;
+        const size = getBoundingClientRect(dom);
+        const ratio = !isVertical
+          ? Math.abs(offsetX / size.width)
+          : Math.abs(offsetY / size.height);
+        // 判断滑动临界点
+        // 1.滑动距离超过0，且滑动距离和父容器长度之比超过moveDistanceRatio
+        // 2.滑动释放时间差低于moveTimeSpan
+        if (ratio >= moveDistanceRatio! || elapsedTime <= moveTimeSpan!) {
+          activeIndex = action === 'next' ? activeIndex + 1 : activeIndex - 1;
+        }
+        if (loop && (activeIndex >= count - 1 || activeIndex <= 1)) {
+          onMoving.current = true;
+        }
+        onSlideTo(activeIndex);
+        return false;
+      }
+      doTransition(
+        { x: translateXRef.current + offset[0], y: translateYRef.current + offset[1] },
+        0,
+      );
+    },
+    {
+      from: () => [0, 0],
+      enabled: swipeable,
+      axis: isVertical ? 'y' : 'x',
+      pointer: { touch: true },
+      preventScroll: !isVertical,
+      triggerAllEvents: true,
+    },
+  );
+
+  useEffect(() => {
+    if (!autoPlay || count <= 1) return;
+    intervalRef.current = window.setInterval(() => {
+      !onMoving.current && onSlideTo(stateRef.current.activeIndex + 1);
+    }, autoPlayIntervalTime);
+    return () => {
+      window.clearInterval(intervalRef.current);
+    };
+  }, [autoPlay, autoPlayIntervalTime, loop, onSlideTo, stateRef.current.activeIndex]);
+
+  useEffect(() => {
+    // 监听窗口变化
+    Events.on(window, 'resize', resize);
+    // 设置起始位置编号
+    onJumpTo(propActiveIndex!);
+
+    return () => {
+      // 移除监听窗口变化
+      Events.off(window, 'resize', resize);
+    };
+  }, [onJumpTo, onSlideTo, propActiveIndex, resize, transitionEnd]);
+
+  useImperativeHandle(carouselRef, () => {
+    return {
+      onJumpTo: (index: number) => {
+        onJumpTo(index);
+      },
+      onSlideTo: (index: number) => {
+        onSlideTo(index);
+      },
+    };
+  });
+
+  const pagination = useMemo(() => {
+    if (!showPagination) return null;
+    const paginationItems = Children.map(children, (_child: React.ReactNode, index: number) => {
+      return (
+        <div
+          key={`pagination-${+index}`}
+          className={bem('pagination__item', [
+            {
+              active: index === activeIndexState,
+            },
+          ])}
+          onClick={() => onSlideTo(index)}
+        />
+      );
     });
 
-    return (
+    return <div className={bem('pagination')}>{paginationItems}</div>;
+  }, [showPagination, children, activeIndexState]);
+
+  const cls = bem([
+    {
+      horizontal: !isVertical,
+      vertical: isVertical,
+    },
+    className,
+  ]);
+
+  const itemsStyle: CSSProperties = {};
+  if (isVertical) {
+    itemsStyle.height = height;
+  }
+
+  return (
+    <div className={cls} style={style} ref={carouselRef} {...bind()}>
       <div
-        key={`pagination-${index}`}
-        className={paginationItemCls}
-        onClick={() => this.onSlideTo(index)}
-      />
-    );
-  };
-
-  renderPagination = () => {
-    const { prefixCls, showPagination, children } = this.props;
-    return (
-      showPagination && (
-        <div className={`${prefixCls}__pagination`}>
-          {Children.map(children, this.renderPaginationItem)}
-        </div>
-      )
-    );
-  };
-
-  render() {
-    const { prefixCls, className, height, style } = this.props;
-    const items = this.parseItems(this.props);
-    const itemsStyle: CSSProperties = {};
-
-    const direction = this.isDirectionX() ? 'horizontal' : 'vertical';
-    const cls = classnames(prefixCls, className, `${prefixCls}--${direction}`);
-
-    if (!this.isDirectionX()) {
-      itemsStyle.height = height;
-    }
-
-    const content = (
-      <div
-        ref={(ele) => {
-          this.carouselItems = ele;
-        }}
-        className={`${prefixCls}__items`}
-        onTransitionEnd={this.transitionEnd}
+        ref={carouselItemsRef}
+        className={bem('items')}
+        onTransitionEnd={transitionEnd}
         style={itemsStyle}
       >
-        {items}
+        {carouselItems}
       </div>
-    );
+      {pagination}
+    </div>
+  );
+});
 
-    return (
-      <div className={cls} style={style}>
-        <Drag
-          onDragStart={this.onDragStart}
-          onDragMove={this.onDragMove}
-          onDragEnd={this.onDragEnd}
-        >
-          {content}
-        </Drag>
-        {this.renderPagination()}
-      </div>
-    );
-  }
-}
+Carousel.displayName = 'Carousel';
+
+Carousel.defaultProps = {
+  direction: 'horizontal',
+  height: 160,
+  loop: false,
+  activeIndex: 0,
+  animationDuration: 500,
+  swipeable: true,
+  autoPlay: false,
+  autoPlayIntervalTime: 3000,
+  moveDistanceRatio: 0.5,
+  moveTimeSpan: 300,
+  showPagination: true,
+};
+
+export default Carousel;

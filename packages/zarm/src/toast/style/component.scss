@@ -1,20 +1,59 @@
 @include b(toast) {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  user-select: none;
-  // z-index: var(--zindex-toast);
+  @include define(text-color, var(--za-color-text-inverse));
+  @include define(font-size, 13px);
+  @include define(border-radius, 6px);
+  @include define(background, rgba(0, 0, 0, var(--za-opacity-toast)));
+  @include define(icon-color, var(--za-color-text-inverse));
+  @include define(icon-size, 50px);
 
-  @include e(container) {
-    position: relative;
-    padding: var(--padding-v-md) var(--padding-h-md);
-    border-radius: var(--toast-border-radius);
-    background: var(--toast-background);
-    color: var(--toast-color);
-    text-align: center;
-    font-size: var(--toast-font-size);
+  max-width: 85%;
+  color: var(--text-color);
+  font-size: var(--font-size);
+  line-height: 1.5;
+  position: relative;
+  border-radius: var(--border-radius);
+  background: var(--background);
+  margin: 0 32px;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
+  @include e(wrapper) {
+    pointer-events: none;
+  }
+
+  @include m(text) {
+    padding: var(--za-padding-v-md) var(--za-padding-h-md);
+    pointer-events: all;
+  }
+
+  @include m(icon) {
+    padding: 15px;
+    pointer-events: all;
+
+    @include e(text) {
+      min-width: 70px;
+      margin-top: var(--za-padding-v-md);
+    }
+  }
+
+  @include e(text) {
+    word-break: break-all;
+  }
+
+  @include e(icon) {
+    min-width: 50px;
+    min-height: 50px;
+    color: var(--icon-color);
+    font-size: var(--icon-size);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+    @include b(icon) {
+      @include define(font-size, var(--icon-size));
+    }
   }
 }

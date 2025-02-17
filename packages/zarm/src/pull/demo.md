@@ -4,7 +4,7 @@
 
 ```jsx
 import { useState, useEffect, useRef } from 'react';
-import { Pull, Cell, Message, Button, ActivityIndicator, BackToTop } from 'zarm';
+import { Pull, List, Message, Button, Loading, BackTop } from 'zarm';
 import { WarningCircle, SuccessCircle, CloseCircle } from '@zarm-design/icons';
 
 const REFRESH_STATE = {
@@ -35,7 +35,7 @@ const fetchData = (length, dataSource = []) => {
   let newData = [].concat(dataSource);
   const startIndex = newData.length;
   for (let i = startIndex; i < startIndex + length; i++) {
-    newData.push(<Cell key={+i}>第 {i + 1} 行</Cell>);
+    newData.push(<List.Item key={+i} title={`第 ${i + 1} 行`} />);
   }
   return newData;
 };
@@ -103,8 +103,12 @@ const Demo = () => {
 
   const style = bodyScroll ? {} : { overflowY: 'auto', maxHeight: 400 };
 
+  const mountContainer = () => {
+    return bodyScroll ? document.body : pullRef.current;
+  };
+
   const scrollContainer = () => {
-    return bodyScroll ? window : pullRef.current && pullRef.current.scrollContainer;
+    return bodyScroll ? window : pullRef.current;
   };
 
   return (
@@ -127,7 +131,7 @@ const Demo = () => {
           //     case REFRESH_STATE.pull:
           //       return (
           //         <div className={cls}>
-          //           <ActivityIndicator loading={false} percent={percent} />
+          //           <Loading loading={false} percent={percent} />
           //           <span>下拉刷新</span>
           //         </div>
           //       );
@@ -135,7 +139,7 @@ const Demo = () => {
           //     case REFRESH_STATE.drop:
           //       return (
           //         <div className={cls}>
-          //           <ActivityIndicator loading={false} percent={100} />
+          //           <Loading loading={false} percent={100} />
           //           <span>释放立即刷新</span>
           //         </div>
           //       );
@@ -143,7 +147,7 @@ const Demo = () => {
           //     case REFRESH_STATE.loading:
           //       return (
           //         <div className={cls}>
-          //           <ActivityIndicator type="spinner" />
+          //           <Loading type="spinner" />
           //           <span>加载中</span>
           //         </div>
           //       );
@@ -176,7 +180,7 @@ const Demo = () => {
           //   const cls = 'custom-control';
           //   switch (loadState) {
           //     case LOAD_STATE.loading:
-          //       return <div className={cls}><ActivityIndicator type="spinner" /></div>;
+          //       return <div className={cls}><Loading type="spinner" /></div>;
 
           //     case LOAD_STATE.failure:
           //       return <div className={cls}>加载失败</div>;
@@ -187,9 +191,13 @@ const Demo = () => {
           // },
         }}
       >
-        {dataSource}
+        <List>{dataSource}</List>
       </Pull>
-      <BackToTop scrollContainer={scrollContainer} onClick={() => console.log('click back to top')}>
+      <BackTop
+        mountContainer={mountContainer}
+        scrollContainer={scrollContainer}
+        onClick={() => console.log('click back to top')}
+      >
         <div
           style={{
             width: 60,
@@ -206,7 +214,7 @@ const Demo = () => {
         >
           Up
         </div>
-      </BackToTop>
+      </BackTop>
     </>
   );
 };
@@ -254,3 +262,13 @@ ReactDOM.render(<Demo />, mountNode);
 | success  | 加载成功 |
 | failure  | 加载失败 |
 | complete | 加载完成 |
+
+## CSS 变量
+
+| 属性                       | 默认值                         | 说明                       |
+| :------------------------- | :----------------------------- | :------------------------- |
+| --control-height           | '50px'                         | 刷新节点、加载节点高度     |
+| --control-font-size        | '14px'                         | 刷新节点、加载节点字体大小 |
+| --control-padding-vertical | '20px'                         | 垂直方向内边距大小         |
+| --control-text-color       | 'var(--za-color-text-caption)' | 字体颜色                   |
+| --control-icon-size        | '22px'                         | 图标大小                   |

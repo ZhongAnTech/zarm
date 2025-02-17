@@ -74,7 +74,7 @@ header {
         border: none;
         box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.15);
 
-        [class^="ds-dataset-"] {
+        [class^='ds-dataset-'] {
           border: none;
         }
 
@@ -129,9 +129,20 @@ header {
       }
     }
 
+    .version,
     .lang,
     .github {
-      margin-left: 30px;
+      margin-left: 15px;
+    }
+
+    .version {
+      .ant-select-selector {
+        height: 28px !important;
+
+        .ant-select-selection-item {
+          line-height: 26px !important;
+        }
+      }
     }
   }
 
@@ -175,6 +186,7 @@ header {
 
 @media (max-width: 1200px) {
   header {
+    .version,
     .lang,
     .github {
       display: none;

@@ -1,30 +1,46 @@
-import React, { PureComponent, cloneElement } from 'react';
-import classnames from 'classnames';
-import type { BaseTabBarProps } from './PropsType';
-import type TabBarItem from './TabBarItem';
+import { createBEM } from '@zarm-design/bem';
+import React, { cloneElement, useCallback, useState } from 'react';
+import { ConfigContext } from '../config-provider';
+import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseTabBarProps } from './interface';
+import type { TabBarItemProps } from './TabBarItem';
+import TabBarItem from './TabBarItem';
 
-export interface TabBarProps extends BaseTabBarProps {
-  prefixCls?: string;
-  className?: string;
+export interface TabBarCssVars {
+  '--height'?: React.CSSProperties['height'];
+  '--font-size'?: React.CSSProperties['fontSize'];
+  '--background'?: React.CSSProperties['background'];
+  '--color'?: React.CSSProperties['color'];
+  '--active-color'?: React.CSSProperties['color'];
 }
 
-class TabBar extends PureComponent<TabBarProps, any> {
-  static Item: typeof TabBarItem;
+export type TabBarProps = BaseTabBarProps & React.PropsWithChildren<HTMLProps<TabBarCssVars>>;
 
-  static defaultProps: TabBarProps = {
-    prefixCls: 'za-tab-bar',
-    visible: true,
-  };
+interface CompoundedComponent
+  extends React.ForwardRefExoticComponent<TabBarProps & React.RefAttributes<HTMLDivElement>> {
+  Item: typeof TabBarItem;
+}
 
-  onChildChange = (value: string | number) => {
-    const { onChange } = this.props;
-    if (typeof onChange === 'function') {
-      onChange(value);
-    }
-  };
+const TabBar = React.forwardRef<HTMLDivElement, TabBarProps>((props, ref) => {
+  const { prefixCls } = React.useContext(ConfigContext);
 
-  getSelected = (index: number, itemKey: string | number) => {
-    const { activeKey, defaultActiveKey } = this.props;
+  const bem = createBEM('tab-bar', { prefixCls });
+
+  const { className, children, onChange, activeKey, defaultActiveKey, ...rest } = props;
+
+  const [selectedKey, setSelectedKey] = useState(defaultActiveKey);
+
+  const onChildChange = useCallback(
+    (value: string | number) => {
+      if (!activeKey) {
+        setSelectedKey(value);
+      }
+      onChange?.(value);
+    },
+    [activeKey, onChange],
+  );
+
+  const getSelected = (index: number, itemKey: string | number) => {
     if (!activeKey) {
       if (!defaultActiveKey && index === 0) {
         return true;
@@ -34,32 +50,38 @@ class TabBar extends PureComponent<TabBarProps, any> {
     return activeKey === itemKey;
   };
 
-  render() {
-    const { visible, prefixCls, className, children, style } = this.props;
-    const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--hidden`]: !visible,
-    });
-    const items = React.Children.map(children, (element, index) => {
+  const items = React.Children.map(
+    children,
+    (element: React.ReactElement<TabBarItemProps, typeof TabBarItem>, index: number) => {
       if (!React.isValidElement(element)) return null;
       const itemKey = element.props.itemKey || index;
+      let selected = getSelected(index, itemKey);
+      if (!activeKey) {
+        selected = selectedKey === itemKey;
+        if (!selectedKey && index === 0) {
+          selected = true;
+        }
+      }
       return cloneElement(element, {
         key: index,
-        disabled: element.props.disabled,
-        onChange: () => this.onChildChange(itemKey),
+        // disabled: element.props.disabled,
+        onClick: () => onChildChange(itemKey),
         badge: element.props.badge,
         title: element.props.title,
         icon: element.props.icon,
         itemKey,
         style: element.props.style,
-        selected: this.getSelected(index, itemKey),
+        selected,
       });
-    });
-    return (
-      <div className={cls} style={style}>
-        {items}
-      </div>
-    );
-  }
-}
+    },
+  );
+  return (
+    <div {...rest} ref={ref} className={bem([className])}>
+      <div className={bem('wrapper')}>{items}</div>
+    </div>
+  );
+}) as CompoundedComponent;
+
+TabBar.displayName = 'TabBar';
 
 export default TabBar;

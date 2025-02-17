@@ -1,4 +1,4 @@
-@import "@/styles/index";
+@import '@/styles/index';
 
 .app-container {
   position: relative;
@@ -24,7 +24,7 @@
       width: r(20);
       height: r(20);
       border: 4px solid #fff;
-      background: var(--theme-primary);
+      background: var(--za-theme-primary);
       box-shadow: 0 r(1) r(2) 0 rgba(56, 56, 56, 0.15);
       cursor: pointer;
     }

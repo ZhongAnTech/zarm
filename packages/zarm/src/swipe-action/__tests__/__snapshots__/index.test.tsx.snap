@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SwipeAction left only 1`] = `
+<div>
+  <div
+    class="za-swipe-action"
+  >
+    <div
+      class="za-swipe-action__actions za-swipe-action__actions--left"
+    >
+      <button
+        aria-disabled="false"
+        class="za-button za-button--primary za-button--md za-button--rect za-swipe-action-item__item"
+        type="button"
+      >
+        <span>
+          左按钮1
+        </span>
+      </button>
+      <button
+        aria-disabled="false"
+        class="za-button za-button--danger za-button--md za-button--rect za-swipe-action-item__item"
+        type="button"
+      >
+        <span>
+          左按钮2
+        </span>
+      </button>
+    </div>
+    <div
+      class="za-swipe-action__content"
+      style="transition-duration: 300ms; transform: translate3d(0px, 0, 0);"
+    >
+      <div>
+        右滑
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SwipeAction renders correctly 1`] = `
+<div>
+  <div
+    class="za-swipe-action"
+  >
+    <div
+      class="za-swipe-action__actions za-swipe-action__actions--left"
+    >
+      <button
+        aria-disabled="false"
+        class="za-button za-button--primary za-button--md za-button--rect za-swipe-action-item__item"
+        type="button"
+      >
+        <span>
+          左按钮1
+        </span>
+      </button>
+      <button
+        aria-disabled="false"
+        class="za-button za-button--danger za-button--md za-button--rect za-swipe-action-item__item"
+        type="button"
+      >
+        <span>
+          左按钮2
+        </span>
+      </button>
+    </div>
+    <div
+      class="za-swipe-action__actions za-swipe-action__actions--right"
+    >
+      <button
+        aria-disabled="false"
+        class="za-button za-button--primary za-button--md za-button--rect za-swipe-action-item__item"
+        type="button"
+      >
+        <span>
+          右按钮1
+        </span>
+      </button>
+      <button
+        aria-disabled="false"
+        class="za-button za-button--danger za-button--md za-button--rect za-swipe-action-item__item"
+        type="button"
+      >
+        <span>
+          右按钮2
+        </span>
+      </button>
+    </div>
+    <div
+      class="za-swipe-action__content"
+      style="transition-duration: 300ms; transform: translate3d(0px, 0, 0);"
+    >
+      <div>
+        左右都能滑动
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SwipeAction right only 1`] = `
+<div>
+  <div
+    class="za-swipe-action"
+  >
+    <div
+      class="za-swipe-action__actions za-swipe-action__actions--right"
+    >
+      <button
+        aria-disabled="false"
+        class="za-button za-button--primary za-button--md za-button--rect za-swipe-action-item__item"
+        type="button"
+      >
+        <span>
+          右按钮1
+        </span>
+      </button>
+      <button
+        aria-disabled="false"
+        class="za-button za-button--primary za-button--md za-button--rect za-swipe-action-item__item"
+        type="button"
+      >
+        <span>
+          右按钮2
+        </span>
+      </button>
+    </div>
+    <div
+      class="za-swipe-action__content"
+      style="transition-duration: 300ms; transform: translate3d(0px, 0, 0);"
+    >
+      <div>
+        左滑
+      </div>
+    </div>
+  </div>
+</div>
+`;

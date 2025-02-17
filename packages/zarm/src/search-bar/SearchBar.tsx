@@ -1,267 +1,150 @@
-import React, { PureComponent, CompositionEvent } from 'react';
-import type { FormEvent } from 'react';
-import classnames from 'classnames';
+import { createBEM } from '@zarm-design/bem';
 import { Search as SearchIcon } from '@zarm-design/icons';
-import type BaseSearchBarProps from './PropsType';
-import InputBase from '../input/InputBase';
+import isFunction from 'lodash/isFunction';
+import * as React from 'react';
+import { ConfigContext } from '../config-provider';
+import Input, { InputRef, InputTextProps } from '../input';
+import { useControllableEventValue } from '../utils/hooks';
+import { resolveOnChange } from '../utils/resolveOnChange';
+import type { HTMLProps } from '../utils/utilityTypes';
+import type BaseSearchBarProps from './interface';
 
-export interface SearchBarProps extends BaseSearchBarProps {
-  prefixCls?: string;
-  className?: string;
+export interface SearchBarCssVars {
+  '--background'?: React.CSSProperties['background'];
+  '--height'?: React.CSSProperties['height'];
+  '--padding-horizontal'?: React.CSSProperties['paddingRight'];
+  '--input-padding-horizontal'?: React.CSSProperties['paddingRight'];
+  '--input-height'?: React.CSSProperties['height'];
+  '--input-background'?: React.CSSProperties['background'];
+  '--input-font-size'?: React.CSSProperties['fontSize'];
+  '--input-placeholder-color'?: React.CSSProperties['color'];
+  '--input-clear-icon-color'?: React.CSSProperties['color'];
+  '--input-border-radius'?: React.CSSProperties['borderRadius'];
+  '--cancel-font-size'?: React.CSSProperties['fontSize'];
+  '--cancel-color'?: React.CSSProperties['color'];
+  '--cancel-margin-left'?: React.CSSProperties['marginLeft'];
+  '--cancel-transition'?: React.CSSProperties['transition'];
+  '--icon-margin-right'?: React.CSSProperties['marginRight'];
+  '--icon-color'?: React.CSSProperties['color'];
 }
 
-export interface SearchBarState {
-  focus: boolean;
-  value?: string;
-  isOnComposition: boolean;
-  preValue?: string;
-}
+export type SearchBarProps = BaseSearchBarProps &
+  React.InputHTMLAttributes<HTMLInputElement> &
+  HTMLProps<SearchBarCssVars>;
 
-export default class SearchBar extends PureComponent<SearchBarProps, SearchBarState> {
-  private cancelRef: HTMLDivElement | null = null;
+const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
+  const {
+    className,
+    style,
+    shape,
+    icon,
+    placeholder,
+    showCancel,
+    cancelText,
+    defaultValue = '',
+    onFocus,
+    onBlur,
+    onChange,
+    onCancel,
+    onSubmit,
+    ...restProps
+  } = props;
+  const cancelRef = React.useRef<HTMLDivElement>(null);
+  const inputRef = React.useRef<InputRef>();
+  const formRef = React.createRef<HTMLFormElement>();
+  const [value, setValue] = useControllableEventValue({ ...props, defaultValue });
+  const [isFocus, setIsFocus] = React.useState<boolean>(false);
 
-  private cancelOuterWidth: number;
+  const { prefixCls, locale: globalLocal } = React.useContext(ConfigContext);
+  const bem = createBEM('search-bar', { prefixCls });
+  const locale = globalLocal?.SearchBar;
 
-  private inputRef: InputBase | null = null;
+  const isShowCancel = React.useMemo(() => {
+    if (isFunction(showCancel)) {
+      return showCancel(isFocus, value);
+    }
+    return showCancel && isFocus;
+  }, [showCancel, isFocus]);
 
-  static defaultProps: SearchBarProps = {
-    prefixCls: 'za-search-bar',
-    shape: 'radius',
-    disabled: false,
-    showCancel: false,
-    clearable: true,
+  const cls = bem([
+    {
+      [`${shape}`]: !!shape,
+      focus: isFocus,
+    },
+    className,
+  ]);
+
+  const onInputFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+    setIsFocus(true);
+    onFocus?.(e);
   };
 
-  constructor(props: SearchBarProps) {
-    super(props);
-    this.state = {
-      focus: false,
-      value: props.defaultValue || props.value || '',
-      isOnComposition: false,
-    };
-  }
+  const onInputBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    setIsFocus(false);
+    onBlur?.(e);
+  };
 
-  componentDidMount() {
-    this.calculatePositon(this.props);
-  }
+  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue?.(e);
+  };
 
-  static getDerivedStateFromProps(nextProps: SearchBarProps, state: SearchBarState) {
-    if ('value' in nextProps && nextProps.value !== state.preValue) {
-      return {
-        value: nextProps.value,
-        preValue: nextProps.value,
-      };
-    }
-    return null;
-  }
+  const onFormSubmit = (e?: React.FormEvent) => {
+    e?.preventDefault();
+    inputRef.current && inputRef.current.blur();
+    onSubmit?.(value);
+  };
 
-  componentDidUpdate(prevProps: SearchBarProps) {
-    const { cancelText, showCancel, locale } = this.props;
-    // 若改变了取消文字的内容或者placeholder的内容需要重新计算位置
-    if (
-      cancelText !== prevProps.cancelText ||
-      showCancel !== prevProps.showCancel ||
-      (locale && prevProps.locale && locale.cancelText !== prevProps.locale.cancelText)
-    ) {
-      this.calculatePositon(this.props);
-    }
-  }
+  const onClickCancelButton = (e): void => {
+    resolveOnChange(inputRef.current?.nativeElement, e, setValue);
 
-  onFocus() {
-    const { onFocus } = this.props;
-    this.setState({ focus: true });
-    this.focusAnim();
-    onFocus && onFocus();
-  }
+    inputRef.current && inputRef.current.blur();
+    onCancel?.();
+  };
 
-  onChange(value?: string) {
-    const { onChange } = this.props;
-    const { isOnComposition } = this.state;
+  React.useImperativeHandle(ref, () => ({
+    focus: inputRef.current?.focus,
+    blur: inputRef.current?.blur,
+    submit: onFormSubmit,
+  }));
 
-    this.setState({ value });
-    if (!isOnComposition && onChange) {
-      onChange(value);
-    }
-  }
-
-  onBlur() {
-    const { onBlur } = this.props;
-    const { value, focus } = this.state;
-
-    this.setState({ focus: false }, () => {
-      !value && this.blurAnim();
-      focus && onBlur && onBlur();
-    });
-  }
-
-  onClear() {
-    const { onClear, onChange } = this.props;
-    this.setState({ value: '', isOnComposition: false }, () => {
-      this.focus();
-    });
-    onClear && onClear('');
-    onChange && onChange('');
-  }
-
-  onCancel() {
-    const { onCancel } = this.props;
-    this.setState({ value: '', isOnComposition: false }, () => {
-      this.onBlur();
-    });
-    onCancel && onCancel();
-  }
-
-  onSubmit(e: FormEvent) {
-    const { onSubmit } = this.props;
-    const { value } = this.state;
-
-    e.preventDefault();
-    this.inputRef && this.inputRef.blur();
-    onSubmit && onSubmit(value);
-  }
-
-  handleComposition(e: CompositionEvent<HTMLInputElement>) {
-    if (e.type === 'compositionstart') {
-      this.setState({ isOnComposition: true });
-    }
-
-    if (e.type === 'compositionend') {
-      // composition is end
-      this.setState({ isOnComposition: false });
-
-      const { onChange } = this.props;
-      const { target } = e;
-      const { value } = target as HTMLInputElement;
-      onChange && onChange(value);
-    }
-  }
-
-  // 初始化搜索提示文字的位置
-  calculatePositon(props: SearchBarProps) {
-    if (!this.cancelRef) return;
-    const { showCancel } = props;
-    const { value } = this.state;
-
-    if (!showCancel) {
-      const ml = parseInt(
-        window.getComputedStyle(this.cancelRef, '')['margin-left'].split('px')[0],
-        10,
-      );
-      this.cancelOuterWidth = Math.ceil(ml + this.cancelRef.getBoundingClientRect().width);
-      this.cancelRef.style.cssText = `margin-right: -${this.cancelOuterWidth}px;`;
-    } else {
-      this.cancelRef.style.cssText = 'margin-right: 0px;';
-    }
-
-    if (value) {
-      this.focusAnim();
-    }
-  }
-
-  focusAnim() {
-    if (!this.cancelRef) return;
-    this.cancelRef.style.cssText = 'margin-right: 0px;';
-    this.cancelRef.className += ' animation-ease';
-  }
-
-  blurAnim() {
-    const { showCancel } = this.props;
-    if (!showCancel && this.cancelRef) {
-      this.cancelRef.style.cssText = `margin-right: -${this.cancelOuterWidth}px;`;
-    }
-  }
-
-  focus() {
-    this.inputRef && this.inputRef.focus();
-  }
-
-  renderCancel() {
-    const { prefixCls, cancelText, locale } = this.props;
-
+  const renderCancel = () => {
     return (
-      <div
-        className={`${prefixCls}__cancel`}
-        ref={(cancelRef) => {
-          this.cancelRef = cancelRef;
-        }}
-        onClick={() => {
-          this.onCancel();
-        }}
-      >
-        {cancelText || (locale && locale.cancelText)}
-      </div>
+      isShowCancel && (
+        <div className={bem('cancel')} ref={cancelRef} onClick={onClickCancelButton}>
+          {cancelText || locale?.cancelText}
+        </div>
+      )
     );
-  }
+  };
 
-  render() {
-    const {
-      prefixCls,
-      className,
-      shape,
-      placeholder,
-      disabled,
-      clearable,
-      showCancel,
-      maxLength,
-      locale,
-    } = this.props;
-    const { value, focus } = this.state;
+  const inputProps: InputTextProps = {
+    type: 'search',
+    placeholder: placeholder || (locale && locale.placeholder),
+    value,
+    onFocus: onInputFocus,
+    onBlur: onInputBlur,
+    onChange: onInputChange,
+    ...restProps,
+  };
 
-    const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--${shape}`]: !!shape,
-      [`${prefixCls}--focus`]: !!(showCancel || focus || (value && value.length > 0)),
-    });
+  return (
+    <div className={cls} style={style}>
+      <form action="#" className={bem('form')} onSubmit={onFormSubmit} ref={formRef}>
+        <div className={bem('content')}>
+          {icon !== null && <div className={bem('icon')}>{icon || <SearchIcon size="sm" />}</div>}
+          <Input ref={inputRef} {...(inputProps as InputTextProps)} />
+        </div>
+        {renderCancel()}
+      </form>
+    </div>
+  );
+});
 
-    return (
-      <div className={cls}>
-        <form
-          action="#"
-          className={`${prefixCls}__form`}
-          onSubmit={(e) => {
-            this.onSubmit(e);
-          }}
-        >
-          <div className={`${prefixCls}__content`}>
-            <SearchIcon size="sm" className={`${prefixCls}__icon`} />
-            <div className={`${prefixCls}__mock`}>
-              <InputBase
-                className={`${prefixCls}__input`}
-                type="search"
-                placeholder={placeholder || (locale && locale.placeholder)}
-                value={value}
-                maxLength={maxLength}
-                onFocus={() => {
-                  this.onFocus();
-                }}
-                onCompositionStart={(e) => {
-                  this.handleComposition(e);
-                }}
-                onCompositionUpdate={(e) => {
-                  this.handleComposition(e);
-                }}
-                onCompositionEnd={(e) => {
-                  this.handleComposition(e);
-                }}
-                onChange={(val) => {
-                  this.onChange(val);
-                }}
-                onBlur={() => {
-                  this.onBlur();
-                }}
-                onClear={() => {
-                  this.onClear();
-                }}
-                disabled={disabled}
-                clearable={clearable}
-                ref={(inputRef) => {
-                  this.inputRef = inputRef;
-                }}
-              />
-            </div>
-          </div>
-          {this.renderCancel()}
-        </form>
-      </div>
-    );
-  }
-}
+SearchBar.defaultProps = {
+  shape: 'radius',
+  clearable: true,
+};
+
+SearchBar.displayName = 'SearchBar';
+
+export default SearchBar;

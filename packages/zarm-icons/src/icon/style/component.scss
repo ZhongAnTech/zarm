@@ -1,8 +1,8 @@
-@import 'mixins';
-
 @include b(icon) {
+  @include define(color, inherit);
+  @include define(font-size, 24px);
+
   display: inline-block;
-  color: inherit;
   font-style: normal;
   line-height: 0;
   text-align: center;
@@ -11,33 +11,42 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--color);
+  font-size: var(--font-size);
 
-  &[type=search] {
+  &[type='search'] {
     -webkit-appearance: initial !important;
+  }
+
+  @include m(font) {
+    /* stylelint-disable-next-line */
+    font-family: 'zaicon';
+    line-height: 1;
   }
 
   /* icon themes */
   @include m(primary) {
-    @include icon-theme(var(--theme-primary));
+    @include define(color, var(--za-theme-primary));
   }
+
   @include m(success) {
-    @include icon-theme(var(--theme-success));
+    @include define(color, var(--za-theme-success));
   }
+
   @include m(warning) {
-    @include icon-theme(var(--theme-warning));
+    @include define(color, var(--za-theme-warning));
   }
+
   @include m(danger) {
-    @include icon-theme(var(--theme-danger));
+    @include define(color, var(--za-theme-danger));
   }
 
   /* icon sizes */
   @include m(sm) {
-    @include icon-size(var(--icon-font-size-sm));
+    @include define(font-size, 16px);
   }
-  @include m(md) {
-    @include icon-size(var(--icon-font-size-md));
-  }
+
   @include m(lg) {
-    @include icon-size(var(--icon-font-size-lg));
+    @include define(font-size, 32px);
   }
 }

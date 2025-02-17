@@ -1,168 +1,116 @@
-import React, { CSSProperties, PureComponent } from 'react';
-import classnames from 'classnames';
-import ProgressProps, { KnownSize } from './PropsType';
+import { createBEM } from '@zarm-design/bem';
+import type { ForwardedRef } from 'react';
+import React, { useImperativeHandle, useRef } from 'react';
+import { ConfigContext } from '../config-provider';
+import type { HTMLProps } from '../utils/utilityTypes';
+import {
+  useIndicator,
+  useRectStyles,
+  useRoundSVGAttributes,
+  useSizeStyle,
+  useStrokeWidthWithBackup,
+  useSVG,
+  useSVGStrokeWidth,
+} from './hooks';
+import type { BaseProgressProps } from './interface';
 
-type WeightMap = {
-  [weight in KnownSize]: number;
-};
+export interface ProgressCssVars {
+  '--background'?: React.CSSProperties['background'];
+  '--width'?: React.CSSProperties['width'];
+  '--size'?: React.CSSProperties['width' | 'height'];
+  '--font-size-circle'?: React.CSSProperties['fontSize'];
+}
 
-export default class Progress extends PureComponent<ProgressProps, any> {
-  static defaultProps: ProgressProps = {
-    prefixCls: 'za-progress',
-    theme: 'primary',
-    shape: 'line',
-    size: 'md',
-    percent: 0,
-    strokeShape: 'round',
-    text: (percent) => `${percent}%`,
-  };
+export type ProgressProps = BaseProgressProps & React.PropsWithChildren<HTMLProps<ProgressCssVars>>;
 
-  // 线条粗细表
-  static strokeWeights: WeightMap = {
-    lg: 10,
-    md: 8,
-    sm: 4,
-  };
-
-  private progressElement;
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      svgStrokeWidth: this.strokeWidth,
-    };
-  }
-
-  componentDidMount() {
-    if (this.useSVG) {
-      this.resetSVGStrokeWidth();
-    }
-  }
-
-  componentDidUpdate(prevProps) {
-    const { props } = this;
-    if (prevProps.strokeWidth !== props.strokeWidth) {
-      this.resetSVGStrokeWidth();
-    }
-  }
-
-  get useSVG() {
-    const { props } = this;
-    return props.shape === 'semi-circle' || props.shape === 'circle';
-  }
-
-  get strokeWidth() {
-    const { strokeWidth, size } = this.props;
-    const { strokeWeights } = Progress;
-    const backup = strokeWeights[size && size in strokeWeights ? size : 'md'];
-    return Math.max(1, strokeWidth || backup);
-  }
-
-  resetSVGStrokeWidth() {
-    const baseWidth = 32;
-    const { clientWidth } = this.progressElement;
-
-    this.setState({
-      svgStrokeWidth: (baseWidth / clientWidth) * this.strokeWidth,
-    });
-  }
-
-  render() {
-    const {
+const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
+  (
+    {
       theme,
-      percent,
-      strokeShape,
       shape,
       size,
-      style,
-      prefixCls,
+      percent,
+      strokeShape,
+      text,
       className,
+      style,
       children,
-      text: format,
-    } = this.props;
-    const { state } = this;
-    const strokeWidth = this.useSVG ? state.svgStrokeWidth : this.strokeWidth;
-    const hasKnownSize = size && size in Progress.strokeWeights;
+      strokeWidth,
+      ...htmlAttributes
+    }: React.PropsWithChildren<ProgressProps>,
+    ref: ForwardedRef<HTMLDivElement>,
+  ) => {
+    const progressElement = useRef<HTMLDivElement>(null);
+    const { sizeStyle, hasKnownSize } = useSizeStyle({ shape, size });
+    const shouldUseSVG = useSVG({ shape });
+    const strokeWidthWithBackup = useStrokeWidthWithBackup({ strokeWidth });
+    const { svgStrokeWidth } = useSVGStrokeWidth({
+      strokeWidth: strokeWidthWithBackup,
+      size,
+      shape,
+      progressElement,
+      shouldUseSVG,
+    });
+    useImperativeHandle(ref, () => progressElement.current!);
 
-    const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--${shape}`]: !!shape,
-      [`${prefixCls}--${theme}`]: !!theme,
-      [`${prefixCls}--${size}`]: hasKnownSize,
+    const finalStrokeWidth = shouldUseSVG ? svgStrokeWidth : strokeWidthWithBackup;
+
+    const { viewBox, dasharray, strokeLinecap, path, dashoffset } = useRoundSVGAttributes({
+      shape,
+      strokeShape,
+      percent,
+      finalStrokeWidth,
     });
 
-    const sizeStyle: CSSProperties = {};
-    if (!hasKnownSize) {
-      sizeStyle.width = size;
-      if (shape === 'circle') {
-        sizeStyle.height = size;
-      }
-      if (shape === 'semi-circle') {
-        if (typeof size === 'number') {
-          sizeStyle.height = `${size / 2}px`;
-        } else if (typeof size === 'string') {
-          sizeStyle.height = size.replace(/^(\d+)(.+)$/, (...$) => parseFloat($[1]) / 2 + $[2]);
-        }
-      }
-    }
+    const { lineThumbStyle, lineTrackStyle } = useRectStyles({
+      percent,
+      strokeWidthWithBackup,
+      finalStrokeWidth,
+      strokeShape,
+    });
 
-    const diameter = 32;
-    const radius = diameter / 2;
-    const extendRadius = radius + strokeWidth / 2;
-    const strokeLinecap = strokeShape === 'round' ? 'round' : 'butt';
+    const indicator = useIndicator({ percent, children, text });
 
-    const viewBox =
-      shape === 'circle'
-        ? `0 0 ${diameter + strokeWidth} ${diameter + strokeWidth}`
-        : `0 0 ${diameter + strokeWidth} ${(diameter + strokeWidth) / 2}`;
+    const { prefixCls } = React.useContext(ConfigContext);
+    const bem = createBEM('progress', { prefixCls });
 
-    const path =
-      shape === 'circle'
-        ? `
-        M${extendRadius}, ${extendRadius}
-        m0 ${-radius}
-        a${radius} ${radius} 0 1 1 0 ${diameter}
-        a${radius} ${radius} 0 1 1 0 ${-diameter}`
-        : `
-        M${extendRadius}, ${extendRadius}
-        m${-radius} 0
-        a${radius} ${radius} 0 0 1 ${diameter} 0`;
+    const cls = bem([
+      {
+        [`${shape}`]: !!shape,
+        [`${theme}`]: !!theme,
+        [`${size}`]: hasKnownSize,
+      },
+      className,
+    ]);
 
-    const dasharray = shape === 'circle' ? Math.PI * diameter : (Math.PI * diameter) / 2;
-
-    const borderRadius = strokeShape === 'round' ? `${this.strokeWidth}px` : '0';
-    const lineTrackStyle = { height: `${strokeWidth}`, borderRadius };
-    const lineThumbStyle = { width: `${percent}%`, height: `${strokeWidth}px`, borderRadius };
-    const formattedPercent = format ? format(percent || 0) : null;
-    const hasIndicator = children || formattedPercent;
-
-    const roundInner = (shape === 'circle' || shape === 'semi-circle') && (
+    const roundInner = (
       <>
         <svg viewBox={viewBox}>
           <path
-            className={`${prefixCls}__track`}
+            className={bem('track')}
             d={path}
-            strokeWidth={strokeWidth}
+            strokeWidth={finalStrokeWidth}
             strokeLinecap={strokeLinecap}
           />
           <path
-            className={`${prefixCls}__thumb`}
+            className={bem('thumb')}
             d={path}
-            strokeWidth={strokeWidth}
+            strokeWidth={finalStrokeWidth}
             strokeLinecap={strokeLinecap}
             strokeDasharray={dasharray}
-            strokeDashoffset={(dasharray * (100 - percent!)) / 100}
+            strokeDashoffset={dashoffset}
           />
         </svg>
-        {hasIndicator && <div className={`${prefixCls}__text`}>{children || formattedPercent}</div>}
+        {indicator && <div className={bem('text')}>{indicator}</div>}
       </>
     );
 
-    const rectInner = shape === 'line' && (
-      <div className={`${prefixCls}__outer`}>
-        <div className={`${prefixCls}__track`} style={lineTrackStyle}>
-          <div className={`${prefixCls}__thumb`} style={lineThumbStyle} />
+    const rectInner = (
+      <div className={bem('outer')}>
+        <div className={bem('track')} style={lineTrackStyle}>
+          <div className={bem('thumb')} style={lineThumbStyle} />
         </div>
-        {hasIndicator && <div className={`${prefixCls}__text`}>{children || formattedPercent}</div>}
+        {indicator && <div className={bem('text')}>{indicator}</div>}
       </div>
     );
 
@@ -170,12 +118,25 @@ export default class Progress extends PureComponent<ProgressProps, any> {
       <div
         className={cls}
         style={{ ...sizeStyle, ...style }}
-        ref={(ele) => {
-          this.progressElement = ele;
-        }}
+        ref={progressElement}
+        {...htmlAttributes}
       >
-        {shape === 'line' ? rectInner : roundInner}
+        {shape === 'line' && rectInner}
+        {(shape === 'circle' || shape === 'semi-circle') && roundInner}
       </div>
     );
-  }
-}
+  },
+);
+
+Progress.displayName = 'Progress';
+
+Progress.defaultProps = {
+  theme: 'primary',
+  shape: 'line',
+  size: 'md',
+  percent: 0,
+  strokeShape: 'round',
+  text: (val: number) => `${val}%`,
+};
+
+export default Progress;

@@ -1,6 +1,6 @@
-import getFileDetail from './getFileDetail';
+import type { FileObject } from '../interface';
 import createThumbnail from './createThumbnail';
-import { IFileDetail } from '../index';
+import getFileDetail from './getFileDetail';
 
 /**
  * handle single file and get file info
@@ -11,11 +11,11 @@ import { IFileDetail } from '../index';
  */
 export default function handleFileInfo(
   { file, quality }: { file: File; quality?: number },
-  callback: (data: IFileDetail) => void,
+  callback: (data: FileObject) => void,
 ): void {
   const { fileSize, fileType, isPic, fileName } = getFileDetail(file);
 
-  const fileDetail: IFileDetail = {
+  const fileDetail: FileObject = {
     file,
     fileType,
     fileSize,

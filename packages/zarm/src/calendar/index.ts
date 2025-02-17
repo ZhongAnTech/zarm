@@ -1,4 +1,5 @@
 import Calendar from './Calendar';
-import ConfigReceiver from '../config-receiver';
 
-export default ConfigReceiver('Calendar')(Calendar);
+export type { CalendarCssVars, CalendarProps } from './Calendar';
+
+export default Calendar;

@@ -1,86 +1,71 @@
-import React, { PureComponent } from 'react';
-import type { HTMLAttributes } from 'react';
-import classnames from 'classnames';
-import type PropsType from './PropsType';
+import { createBEM } from '@zarm-design/bem';
+import * as React from 'react';
+import { ConfigContext } from '../config-provider';
+import type { BaseSwitchProps } from './interface';
 
-const getChecked = (props: SwitchProps, defaultChecked: boolean) => {
-  if (typeof props.checked !== 'undefined') {
-    return props.checked;
-  }
-  if (typeof props.defaultChecked !== 'undefined') {
-    return props.defaultChecked;
-  }
+export interface SwitchCssVars {
+  '--width'?: React.CSSProperties['width'];
+  '--height'?: React.CSSProperties['height'];
+  '--background'?: React.CSSProperties['background'];
+  '--border-radius'?: React.CSSProperties['borderRadius'];
+  '--transition'?: React.CSSProperties['transition'];
+  '--checked-background'?: React.CSSProperties['background'];
+  '--knob-background'?: React.CSSProperties['background'];
+  '--knob-size'?: React.CSSProperties['width' | 'height'];
+  '--knob-box-shadow'?: React.CSSProperties['boxShadow'];
+  '--knob-border-color'?: React.CSSProperties['borderColor'];
+  '--knob-border-width'?: React.CSSProperties['width'];
+  '--knob-transition'?: React.CSSProperties['transition'];
+}
 
-  return defaultChecked;
+export type SwitchProps = BaseSwitchProps &
+  Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'>;
+
+const Switch = React.forwardRef<HTMLDivElement, SwitchProps>((props, ref) => {
+  const { className, style, disabled, checked, defaultChecked, onChange, ...restProps } = props;
+  const getChecked = checked || defaultChecked || false;
+  const [currentChecked, setCurrentChecked] = React.useState(getChecked);
+
+  const { prefixCls } = React.useContext(ConfigContext);
+  const bem = createBEM('switch', { prefixCls });
+  const cls = bem([{ disabled }, className]);
+
+  const onInputChange = () => {
+    const newChecked = !currentChecked;
+
+    if (!('checked' in props)) {
+      setCurrentChecked(newChecked);
+    }
+
+    onChange?.(newChecked);
+  };
+
+  React.useEffect(() => {
+    setCurrentChecked(getChecked);
+  }, [getChecked]);
+
+  return (
+    <span className={cls} style={style} ref={ref}>
+      <input
+        {...restProps}
+        role="switch"
+        aria-checked={currentChecked}
+        type="checkbox"
+        className={bem('input')}
+        disabled={disabled}
+        value={currentChecked ? 'on' : 'off'}
+        checked={'checked' in props ? currentChecked : undefined}
+        defaultChecked={'defaultChecked' in props ? defaultChecked : undefined}
+        onChange={'onChange' in props ? onInputChange : undefined}
+      />
+    </span>
+  );
+});
+
+Switch.displayName = 'Switch';
+
+Switch.defaultProps = {
+  disabled: false,
 };
 
-export type SwitchProps = {
-  prefixCls?: string;
-} & Omit<HTMLAttributes<HTMLSpanElement>, 'onChange'> &
-  PropsType;
-
-export interface SwitchStates {
-  checked: boolean;
-}
-
-export default class Switch extends PureComponent<SwitchProps, SwitchStates> {
-  static displayName = 'Switch';
-
-  static defaultProps: SwitchProps = {
-    prefixCls: 'za-switch',
-    disabled: false,
-  };
-
-  state: SwitchStates = {
-    checked: getChecked(this.props, false),
-  };
-
-  static getDerivedStateFromProps(nextProps: SwitchProps) {
-    if (typeof nextProps.checked !== 'undefined') {
-      return {
-        checked: nextProps.checked,
-      };
-    }
-
-    return null;
-  }
-
-  onValueChange = () => {
-    const { disabled, onChange } = this.props;
-    const { checked } = this.state;
-    if (disabled) {
-      return;
-    }
-
-    const newChecked = !checked;
-    if (!('checked' in this.props)) {
-      this.setState({ checked: newChecked });
-    }
-
-    if (typeof onChange === 'function') {
-      onChange(newChecked);
-    }
-  };
-
-  render() {
-    const { prefixCls, className, disabled, style } = this.props;
-    const { checked } = this.state;
-
-    const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--disabled`]: disabled,
-    });
-
-    return (
-      <span className={cls} style={style}>
-        <input
-          type="checkbox"
-          className={`${prefixCls}__input`}
-          disabled={disabled}
-          checked={checked}
-          onChange={this.onValueChange}
-          value={checked ? 'on' : 'off'}
-        />
-      </span>
-    );
-  }
-}
+export default Switch;

@@ -1,4 +1,14 @@
 @include b(tabs) {
+  @include define(font-size, var(--za-font-size-md));
+  @include define(color, var(--za-color-text));
+  @include define(color-disabled, var(--za-color-text-disabled));
+  @include define(height, 45px);
+  @include define(active-color, var(--za-theme-primary));
+  @include define(active-text-color, var(--za-color-text));
+  @include define(active-line-height, 2px);
+  @include define(padding-horizontal, var(--za-padding-h-lg));
+  @include define(padding-vertical, var(--za-padding-v-md));
+
   @include e(header) {
     position: relative;
     overflow: hidden;
@@ -14,7 +24,7 @@
   @include e(panel) {
     display: none;
     position: relative;
-    transition: height .3s;
+    transition: height 0.3s;
     height: 100%;
 
     @include m(active) {
@@ -25,29 +35,33 @@
   @include e(tab) {
     flex: 1;
     text-align: center;
-    color: var(--color-text);
-    font-size: var(--tabs-item-font-size);
+    color: var(--color);
+    font-size: var(--font-size);
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     cursor: pointer;
 
     @include m(disabled) {
-      color: var(--color-text-disabled);
+      color: var(--color-disabled);
       cursor: not-allowed;
+    }
+
+    @include m(active) {
+      color: var(--active-text-color);
     }
   }
 
   @include e(line) {
     position: absolute;
-    transition: transform .3s ease-out;
-    background-color: var(--theme-primary);
+    transition: transform 0.3s ease-out;
+    background-color: var(--active-color);
 
     &__inner {
       display: block;
       margin: auto;
       height: 100%;
-      background-color: var(--theme-primary);
+      background-color: var(--active-color);
     }
   }
 
@@ -59,22 +73,24 @@
     }
   }
 
-  @include m(horizontal) {
+  // TODO: direction='horizontal' 暂作兼容
+  @include m(top, bottom, horizontal) {
+    display: flex;
+    flex-direction: column;
+
     @include e(header) {
       width: 100%;
-      @include onepx(bottom);
     }
 
     @include e(tablist) {
       display: flex;
-      height: var(--tabs-height);
-      line-height: var(--tabs-height);
+      height: var(--height);
+      line-height: var(--height);
     }
 
     @include e(line) {
-      height: var(--tabs-line-height);
+      height: var(--active-line-height);
       left: 0;
-      bottom: 0;
     }
 
     @include m(scroll) {
@@ -84,18 +100,15 @@
 
       @include e(tab) {
         overflow: visible;
-        padding: 0 var(--tabs-item-horizontal-padding);
+        padding: 0 var(--padding-horizontal);
       }
     }
   }
 
-  @include m(vertical) {
+  // TODO: direction='vertical' 暂作兼容
+  @include m(left, right, vertical) {
     display: flex;
     flex-direction: row;
-
-    @include e(header) {
-      @include onepx(right);
-    }
 
     @include e(tablist) {
       height: 100%;
@@ -103,13 +116,12 @@
 
     @include e(tab) {
       text-align: center;
-      padding: var(--tabs-item-vertical-padding) var(--tabs-item-horizontal-padding);
+      padding: var(--padding-vertical) var(--padding-horizontal);
     }
 
     @include e(line) {
-      width: var(--tabs-line-height);
+      width: var(--active-line-height);
       top: 0;
-      right: 0;
     }
 
     @include e(body) {
@@ -121,6 +133,54 @@
       @include e(tablist) {
         overflow-y: auto;
       }
+    }
+  }
+
+  @include m(right, bottom) {
+    @include e(header) {
+      order: 1;
+    }
+  }
+
+  // TODO: direction='vertical' 暂作兼容
+  @include m(left, vertical) {
+    @include e(header) {
+      @include onepx(right);
+    }
+
+    @include e(line) {
+      right: 0;
+    }
+  }
+
+  @include m(right) {
+    @include e(header) {
+      @include onepx(left);
+    }
+
+    @include e(line) {
+      left: 0;
+    }
+  }
+
+  // TODO: direction='horizontal' 暂作兼容
+  @include m(top, horizontal) {
+    @include e(header) {
+      @include onepx(bottom);
+    }
+
+    @include e(line) {
+      bottom: 0;
+    }
+  }
+
+  @include m(bottom) {
+    @include e(header) {
+      @include onepx(top);
+    }
+
+    @include e(line) {
+      top: 0;
     }
   }
 }

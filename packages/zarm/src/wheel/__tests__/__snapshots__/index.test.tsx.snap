@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Wheel Wheel disabled 1`] = `
+<div>
+  <div
+    class="za-wheel"
+  >
+    <div
+      class="za-wheel__content"
+      style="transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-property: transform; transition-duration: 800ms; transform: translateX(0px) translateY(NaNpx);"
+    >
+      <div
+        class="za-wheel__item za-wheel__item--disabled"
+        style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
+      >
+        选项一
+      </div>
+      <div
+        class="za-wheel__item za-wheel__item--disabled"
+        style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
+      >
+        选项二
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Wheel Wheel render defaultValue 1`] = `
+<div>
+  <div
+    class="za-wheel"
+  >
+    <div
+      class="za-wheel__content"
+      style="transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-property: transform; transition-duration: 800ms; transform: translateX(0px) translateY(NaNpx);"
+    >
+      <div
+        class="za-wheel__item za-wheel__item--selected"
+        style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
+      >
+        选项一
+      </div>
+      <div
+        class="za-wheel__item"
+        style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
+      >
+        选项二
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Wheel Wheel render visible 1`] = `
+<div>
+  <div
+    class="za-wheel"
+  >
+    <div
+      class="za-wheel__content"
+      style="transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-property: transform; transition-duration: 800ms; transform: translateX(0px) translateY(NaNpx);"
+    >
+      <div
+        class="za-wheel__item"
+        style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
+      >
+        选项一
+      </div>
+      <div
+        class="za-wheel__item"
+        style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
+      >
+        选项二
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Wheel Wheel set fieldNames 1`] = `
+<div>
+  <div
+    class="za-wheel"
+  >
+    <div
+      class="za-wheel__content"
+      style="transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-property: transform; transition-duration: 800ms; transform: translateX(0px) translateY(NaNpx);"
+    >
+      <div
+        class="za-wheel__item za-wheel__item--selected"
+        style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
+      >
+        选项一
+      </div>
+      <div
+        class="za-wheel__item"
+        style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
+      >
+        选项二
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Wheel Wheel set props value 1`] = `
+<div>
+  <div
+    class="za-wheel"
+  >
+    <div
+      class="za-wheel__content"
+      style="transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-property: transform; transition-duration: 800ms; transform: translateX(0px) translateY(NaNpx);"
+    >
+      <div
+        class="za-wheel__item za-wheel__item--selected"
+        style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
+      >
+        选项一
+      </div>
+      <div
+        class="za-wheel__item"
+        style="transform: rotateX(NaNdeg); transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; pointer-events: none;"
+      >
+        选项二
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,3 +1,3 @@
 export default {
-  okText: '确定',
+  confirmText: '确定',
 };

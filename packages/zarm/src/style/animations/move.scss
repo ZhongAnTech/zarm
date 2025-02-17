@@ -1,4 +1,21 @@
-@keyframes za-moveUp-enter {
+@mixin move-motion($className, $keyframeName) {
+  $name: #{$prefixCls}-#{$className};
+  @include make-motion($name, #{$prefixCls}-#{$keyframeName});
+  .#{$name}-enter,
+  .#{$name}-appear {
+    animation-timing-function: ease-out;
+  }
+  .#{$name}-leave {
+    animation-timing-function: ease-in;
+  }
+}
+
+@include move-motion(move-up, move-up);
+@include move-motion(move-down, move-down);
+@include move-motion(move-left, move-left);
+@include move-motion(move-right, move-right);
+
+@keyframes #{$prefixCls}-move-up-in {
   from {
     transform: translate3d(0, 100%, 0);
   }
@@ -8,11 +25,7 @@
   }
 }
 
-.za-moveUp-enter {
-  animation: za-moveUp-enter both ease-in;
-}
-
-@keyframes za-moveUp-leave {
+@keyframes #{$prefixCls}-move-up-out {
   from {
     transform: translate3d(0, 0, 0);
   }
@@ -22,11 +35,7 @@
   }
 }
 
-.za-moveUp-leave {
-  animation: za-moveUp-leave both ease-out;
-}
-
-@keyframes za-moveDown-enter {
+@keyframes #{$prefixCls}-move-down-in {
   from {
     transform: translate3d(0, -100%, 0);
   }
@@ -36,11 +45,7 @@
   }
 }
 
-.za-moveDown-enter {
-  animation: za-moveDown-enter both ease-in;
-}
-
-@keyframes za-moveDown-leave {
+@keyframes #{$prefixCls}-move-down-out {
   from {
     transform: translate3d(0, 0, 0);
   }
@@ -50,39 +55,7 @@
   }
 }
 
-.za-moveDown-leave {
-  animation: za-moveDown-leave both ease-out;
-}
-
-@keyframes za-moveLeft-enter {
-  from {
-    transform: translate3d(100%, 0, 0);
-  }
-
-  to {
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-.za-moveLeft-enter {
-  animation: za-moveLeft-enter both ease-in;
-}
-
-@keyframes za-moveLeft-leave {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
-    transform: translate3d(100%, 0, 0);
-  }
-}
-
-.za-moveLeft-leave {
-  animation: za-moveLeft-leave both ease-out;
-}
-
-@keyframes za-moveRight-enter {
+@keyframes #{$prefixCls}-move-left-in {
   from {
     transform: translate3d(-100%, 0, 0);
   }
@@ -92,11 +65,7 @@
   }
 }
 
-.za-moveRight-enter {
-  animation: za-moveRight-enter both ease-in;
-}
-
-@keyframes za-moveRight-leave {
+@keyframes #{$prefixCls}-move-left-out {
   from {
     transform: translate3d(0, 0, 0);
   }
@@ -106,6 +75,22 @@
   }
 }
 
-.za-moveRight-leave {
-  animation: za-moveRight-leave both ease-out;
+@keyframes #{$prefixCls}-move-right-in {
+  from {
+    transform: translate3d(100%, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes #{$prefixCls}-move-right-out {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(100%, 0, 0);
+  }
 }

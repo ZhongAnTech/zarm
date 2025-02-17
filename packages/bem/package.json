@@ -1,0 +1,43 @@
+{
+  "name": "@zarm-design/bem",
+  "version": "0.0.9",
+  "description": "bem struct",
+  "keywords": [
+    "bem",
+    "sass"
+  ],
+  "homepage": "https://github.com/ZhongAnTech/zarm#readme",
+  "bugs": {
+    "url": "https://github.com/ZhongAnTech/zarm/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZhongAnTech/zarm.git"
+  },
+  "license": "MIT",
+  "author": "JeromeLin <jerome.lin@zhongan.com>",
+  "exports": {
+    ".": "./lib/index.js",
+    "./sass": "./lib/sass/index.scss"
+  },
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "typings": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "yarn build:lib && yarn build:es",
+    "build:es": "rimraf es && tsc --outDir es && zarm build --mode es --path src --out-dir es --copy-files",
+    "build:lib": "rimraf lib && tsc --outDir lib && zarm build --mode lib --path src --out-dir lib --copy-files",
+    "clean": "rimraf lib es dist coverage",
+    "test": "jest --passWithNoTests"
+  },
+  "devDependencies": {
+    "@zarm-design/cli": "^0.0.48"
+  }
+}

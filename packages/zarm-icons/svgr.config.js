@@ -4,7 +4,7 @@ module.exports = {
   svgProps: {
     fill: 'currentColor',
     focusable: false,
-    'aria-hidden': "true",
+    'aria-hidden': 'true',
   },
   ref: true,
   expandProps: false,

@@ -1,10 +1,12 @@
-@import "@/styles/index";
+@import '@/styles/index';
 
 .checkbox-page {
   .agreement-box {
+    display: flex;
+    align-items: center;
+
     label {
       margin-left: r(8);
-      font-size: r(14);
     }
   }
 }

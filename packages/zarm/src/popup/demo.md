@@ -4,7 +4,7 @@
 
 ```jsx
 import { useState, useReducer, useRef } from 'react';
-import { Popup, Cell, Button, Picker, Toast } from 'zarm';
+import { Popup, List, Button, Picker, Toast } from 'zarm';
 
 const SINGLE_DATA = [
   { value: '1', label: '选项一' },
@@ -23,6 +23,7 @@ const initVisibleState = {
 
 const Demo = () => {
   const popupRef = useRef();
+  const timer = useRef();
   const [value, setValue] = useState('');
   const [visible, setVisible] = useReducer((state, action) => {
     const { type } = action;
@@ -36,74 +37,65 @@ const Demo = () => {
 
   return (
     <>
-      <Cell
-        description={
-          <Button
-            size="xs"
-            onClick={() => {
-              toggle('popTop');
-
-              setTimeout(() => {
+      <List>
+        <List.Item
+          title="从上方弹出"
+          suffix={
+            <Button
+              size="xs"
+              onClick={() => {
                 toggle('popTop');
-              }, 3000);
-            }}
-          >
-            开启
-          </Button>
-        }
-      >
-        从上方弹出
-      </Cell>
-
-      <Cell
-        description={
-          <Button size="xs" onClick={() => toggle('popBottom')}>
-            开启
-          </Button>
-        }
-      >
-        从下方弹出
-      </Cell>
-
-      <Cell
-        description={
-          <Button size="xs" onClick={() => toggle('popLeft')}>
-            开启
-          </Button>
-        }
-      >
-        从左侧弹出
-      </Cell>
-
-      <Cell
-        description={
-          <Button size="xs" onClick={() => toggle('popRight')}>
-            开启
-          </Button>
-        }
-      >
-        从右侧弹出
-      </Cell>
-
-      <Cell
-        description={
-          <Button size="xs" onClick={() => toggle('popCenter')}>
-            开启
-          </Button>
-        }
-      >
-        从中间弹出
-      </Cell>
-
-      <Cell
-        description={
-          <Button size="xs" onClick={() => toggle('popSpec')}>
-            开启
-          </Button>
-        }
-      >
-        自定义挂载节点
-      </Cell>
+                timer.current && clearTimeout(timer.current);
+                timer.current = setTimeout(() => {
+                  toggle('popTop');
+                }, 3000);
+              }}
+            >
+              开启
+            </Button>
+          }
+        />
+        <List.Item
+          title="从下方弹出"
+          suffix={
+            <Button size="xs" onClick={() => toggle('popBottom')}>
+              开启
+            </Button>
+          }
+        />
+        <List.Item
+          title="从左侧弹出"
+          suffix={
+            <Button size="xs" onClick={() => toggle('popLeft')}>
+              开启
+            </Button>
+          }
+        />
+        <List.Item
+          title="从右侧弹出"
+          suffix={
+            <Button size="xs" onClick={() => toggle('popRight')}>
+              开启
+            </Button>
+          }
+        />
+        <List.Item
+          title="从中间弹出"
+          suffix={
+            <Button size="xs" onClick={() => toggle('popCenter')}>
+              开启
+            </Button>
+          }
+        />
+        <List.Item
+          title="自定义挂载节点"
+          suffix={
+            <Button size="xs" onClick={() => toggle('popSpec')}>
+              开启
+            </Button>
+          }
+        />
+      </List>
 
       <Popup
         visible={visible.popTop}
@@ -118,8 +110,6 @@ const Demo = () => {
         visible={visible.popBottom}
         direction="bottom"
         onMaskClick={() => toggle('popBottom')}
-        afterOpen={() => console.log('打开')}
-        afterClose={() => console.log('关闭')}
         destroy={false}
         mountContainer={() => document.body}
       >
@@ -127,21 +117,21 @@ const Demo = () => {
           <Button size="xs" onClick={() => toggle('picker')}>
             打开Picker
           </Button>
+          <Picker
+            visible={visible.picker}
+            value={value}
+            dataSource={SINGLE_DATA}
+            onConfirm={(selected) => {
+              console.log('Picker onConfirm: ', selected);
+              Toast.show(JSON.stringify(selected));
+              setValue(selected.map((item) => item.value));
+              toggle('picker');
+            }}
+            onCancel={() => toggle('picker')}
+            mountContainer={() => document.body}
+          />
         </div>
       </Popup>
-
-      <Picker
-        visible={visible.picker}
-        value={value}
-        dataSource={SINGLE_DATA}
-        onOk={(selected) => {
-          console.log('Picker onOk: ', selected);
-          Toast.show(JSON.stringify(selected));
-          setValue(selected.map((item) => item.value));
-          toggle('picker');
-        }}
-        onCancel={() => toggle('picker')}
-      />
 
       <Popup
         visible={visible.popLeft}
@@ -156,12 +146,7 @@ const Demo = () => {
         </div>
       </Popup>
 
-      <Popup
-        visible={visible.popRight}
-        onMaskClick={() => toggle('popRight')}
-        direction="right"
-        afterClose={() => console.log('关闭')}
-      >
+      <Popup visible={visible.popRight} onMaskClick={() => toggle('popRight')} direction="right">
         <div className="popup-box-right">
           <Button size="xs" onClick={() => toggle('popRight')}>
             关闭弹层
@@ -169,33 +154,9 @@ const Demo = () => {
         </div>
       </Popup>
 
-      <Popup
-        visible={visible.popCenter}
-        direction="center"
-        width="70%"
-        afterClose={() => console.log('关闭')}
-      >
+      <Popup visible={visible.popCenter} direction="center" width="70%">
         <div className="popup-box">
           <Button size="xs" onClick={() => toggle('popCenter')}>
-            关闭弹层
-          </Button>
-        </div>
-      </Popup>
-
-      <Popup
-        visible={visible.popCenterSpec}
-        direction="center"
-        width="70%"
-        afterClose={() => console.log('关闭')}
-        onEsc={() => {
-          toggle('popCenterSpec');
-        }}
-        mountContainer={() => {
-          return popupRef.current.portalRef.popup;
-        }}
-      >
-        <div className="popup-box">
-          <Button size="xs" onClick={() => toggle('popCenterSpec')}>
             关闭弹层
           </Button>
         </div>
@@ -209,7 +170,6 @@ const Demo = () => {
           }
           toggle('popSpec');
         }}
-        afterClose={() => console.log('关闭')}
         onEsc={() => {
           toggle('popSpec');
         }}
@@ -221,6 +181,23 @@ const Demo = () => {
             打开弹层
           </Button>
           <p>打开的modal挂载此popup上</p>
+          <Popup
+            visible={visible.popCenterSpec}
+            direction="center"
+            width="70%"
+            onEsc={() => {
+              toggle('popCenterSpec');
+            }}
+            mountContainer={() => {
+              return popupRef.current;
+            }}
+          >
+            <div className="popup-box">
+              <Button size="xs" onClick={() => toggle('popCenterSpec')}>
+                关闭弹层
+              </Button>
+            </div>
+          </Popup>
         </div>
       </Popup>
     </>
@@ -232,18 +209,25 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性              | 类型                                 | 默认值        | 说明                                                                                                                                                                                                    |
-| :---------------- | :----------------------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| visible           | boolean                              | false         | 是否显示                                                                                                                                                                                                |
-| direction         | string                               | 'bottom'      | 弹出方向，可选值 `top`, `bottom`, `left`, `right`, `center`                                                                                                                                             |
-| animationType     | string                               | 'fade'        | 当弹出方向为中间位置（direction="center"）时的动画效果，可选值 `fade`, `door`, `flip`, `rotate`, `zoom`,`moveUp`, `moveDown`, `moveLeft`, `moveRight`,`slideUp`, `slideDown`, `slideLeft`, `slideRight` |
-| animationDuration | number                               | 200           | 动画执行时间（单位：毫秒）                                                                                                                                                                              |
-| width             | string &#124; number                 | -             | 弹层宽度                                                                                                                                                                                                |
-| mask              | boolean                              | true          | 是否展示遮罩层                                                                                                                                                                                          |
-| maskType          | string                               | 'normal'      | 遮罩层的类型，可选值 `transparent`, `normal`                                                                                                                                                            |
-| destroy           | boolean                              | true          | 弹层关闭后是否移除节点                                                                                                                                                                                  |
-| afterOpen         | () => void                           | -             | 弹层展示后的回调                                                                                                                                                                                        |
-| afterClose        | () => void                           | -             | 弹层关闭后的回调                                                                                                                                                                                        |
-| onMaskClick       | () => void                           | -             | 点击遮罩层时触发的回调函数                                                                                                                                                                              |
-| onEsc             | () => void                           | -             | 点击 Esc 键时触发的回调函数                                                                                                                                                                             |
-| mountContainer    | HTMLElement &#124; () => HTMLElement | document.body | 指定 Popup 挂载的 HTML 节点                                                                                                                                                                             |
+| 属性              | 类型                 | 默认值              | 说明                                                                                                                                                                                                             |
+| :---------------- | :------------------- | :------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| visible           | boolean              | false               | 是否显示                                                                                                                                                                                                         |
+| direction         | string               | 'bottom'            | 弹出方向，可选值 `top`, `bottom`, `left`, `right`, `center`                                                                                                                                                      |
+| animationType     | string               | 'fade'              | 当弹出方向为中间位置（direction="center"）时的动画效果，可选值 `fade`, `door`, `flip`, `rotate`, `zoom`, `move-up`, `move-down`, `move-left`, `move-right`,`slide-up`, `slide-down`, `slide-left`, `slide-right` |
+| animationDuration | number               | 200                 | 动画执行时间（单位：毫秒）                                                                                                                                                                                       |
+| width             | string &#124; number | -                   | 弹层宽度                                                                                                                                                                                                         |
+| mask              | boolean              | true                | 是否展示遮罩层                                                                                                                                                                                                   |
+| maskClassName     | string               | -                   | 遮罩层的样式名                                                                                                                                                                                                   |
+| maskStyle         | React.CSSProperties  | -                   | 遮罩层的样式                                                                                                                                                                                                     |
+| maskColor         | string               | 'black'             | 遮罩层的颜色，可选值 `black`, `white`, `transparent`                                                                                                                                                             |
+| maskOpacity       | string \| number     | 'normal'            | 遮罩层的透明度，可选值 `normal`, `light`, `dark`，或填写具体数值（0 ~ 1）                                                                                                                                        |
+| forceRender       | boolean              | false               | 强制渲染内容                                                                                                                                                                                                     |
+| destroy           | boolean              | true                | 弹层关闭后是否移除节点                                                                                                                                                                                           |
+| onOpen            | () => void           | -                   | 弹层展示的回调                                                                                                                                                                                                   |
+| onClose           | () => void           | -                   | 弹层关闭的回调                                                                                                                                                                                                   |
+| afterOpen         | () => void           | -                   | 弹层展示后的回调                                                                                                                                                                                                 |
+| afterClose        | () => void           | -                   | 弹层关闭后的回调                                                                                                                                                                                                 |
+| onMaskClick       | () => void           | -                   | 点击遮罩层时触发的回调函数                                                                                                                                                                                       |
+| onEsc             | () => void           | -                   | 点击 Esc 键时触发的回调函数                                                                                                                                                                                      |
+| mountContainer    | MountContainer       | () => document.body | 指定 Popup 挂载的 HTML 节点                                                                                                                                                                                      |
+| lockScroll        | boolean              | true                | 锁定背景滚动                                                                                                                                                                                                     |

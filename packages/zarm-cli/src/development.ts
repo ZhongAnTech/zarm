@@ -1,8 +1,8 @@
-import fs from 'fs';
-import webpack from 'webpack';
-import WebpackDevServer from 'webpack-dev-server';
 import execa from 'execa';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import fs from 'fs';
+import webpack, { Configuration } from 'webpack';
+import WebpackDevServer, { Configuration as DevServerConfiguration } from 'webpack-dev-server';
 import getWebpackConfig from './config/webpackConfig';
 import { getProjectConfig } from './deploy';
 import { getProjectPath } from './utils';
@@ -36,26 +36,29 @@ export default async ({ mode, host, port }: IDevelopmentConfig) => {
     return;
   }
 
-  const config = getProjectConfig(getWebpackConfig('dev'));
+  const config: Configuration = getProjectConfig(getWebpackConfig('dev'));
 
   if (fs.existsSync(getProjectPath('tsconfig.json'))) {
     config.plugins.push(new ForkTsCheckerWebpackPlugin());
   }
 
   const compiler = webpack(config);
-  const serverConfig = {
-    publicPath: '/',
+  const serverConfig: DevServerConfiguration = {
     compress: true,
-    noInfo: true,
     hot: true,
+    port,
+    host,
+    client: {
+      logging: 'error',
+      overlay: {
+        errors: true,
+        warnings: false,
+      },
+    },
   };
-  const devServer = new WebpackDevServer(compiler, serverConfig);
-  devServer.listen(port, host, (err) => {
-    if (err) {
-      return console.error(err);
-    }
-    console.warn(`http://${host}:${port}\n`);
-  });
+
+  const devServer = new WebpackDevServer(serverConfig, compiler);
+  devServer.start();
 
   ['SIGINT', 'SIGTERM'].forEach((sig: any) => {
     process.on(sig, () => {

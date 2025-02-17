@@ -1,4 +1,4 @@
-@import "@/styles/index";
+@import '@/styles/index';
 
 .index-page {
   width: 100%;
@@ -120,9 +120,11 @@
 }
 
 // 二维码
-.btn-try {
-  min-width: auto !important;
-  line-height: 1;
+.qrcode {
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+  font-size: 0;
 }
 
 @keyframes banner-move {

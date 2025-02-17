@@ -1,12 +1,10 @@
+import { render } from '@testing-library/react';
 import React from 'react';
-import { mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
 import { mocked } from 'ts-jest/utils';
+import { date2, date6 } from '../../../tests/testData/date';
 import Calendar from '../index';
-import { date7, date2, date6 } from '../../../tests/testData/date';
-import parseState from '../utils/parseState';
-import DateTool from '../../utils/date';
 import CalendarMonthView from '../Month';
+import parseState from '../utils/parseState';
 
 jest.mock('../utils/parseState');
 const mockedParseState = mocked(parseState);
@@ -28,19 +26,16 @@ describe('Calendar snapshot', () => {
       value: [date2, date6],
       min: date2,
       max: date6,
-      startMonth: date2,
-      endMonth: date6,
       refresh: false,
       steps: 1,
-      multiple: false,
+      mode: 'multiple',
+      direction: 'vertical',
     });
-    jest.spyOn(DateTool, 'cloneDate').mockReturnValue(date7);
-    jest.spyOn(DateTool, 'getMonthCount').mockReturnValue(1);
 
-    const wrapper = mount(
-      <Calendar defaultValue={date2} min={date2} max={date6} multiple={false} />,
+    const wrapper = render(
+      <Calendar defaultValue={date2} min={date2} max={date6} mode="multiple" />,
     );
 
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 });

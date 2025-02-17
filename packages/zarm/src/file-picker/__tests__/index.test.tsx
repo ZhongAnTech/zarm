@@ -1,9 +1,9 @@
+import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
-import { render, mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
 import { mocked } from 'ts-jest/utils';
-import FilePicker, { IFileDetail } from '../index';
 import { mockCreateObjectURL, mockResetCreateObjectURL } from '../../../tests/utils';
+import FilePicker from '../index';
+import type { FileObject } from '../interface';
 import handleFileInfo from '../utils/handleFileInfo';
 
 jest.mock('../utils/handleFileInfo');
@@ -17,7 +17,7 @@ describe('file picker', () => {
       children: <button>add</button>,
     };
     const wrapper = render(<FilePicker {...props} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 });
 
@@ -54,16 +54,17 @@ describe('file picker event', () => {
       multiple: true,
       onBeforeSelect: false as any,
     };
-    mHandleFileInfo.mockImplementation((_, callback: (data: IFileDetail) => void) => {
+    mHandleFileInfo.mockImplementation((_, callback: (data: FileObject) => void) => {
       callback(mFileDetail);
     });
-    const wrapper = mount(<FilePicker {..._props} />);
+    const { container } = render(<FilePicker {..._props} />);
 
     const mClickEvent = { preventDefault: jest.fn() };
-    wrapper.find('.za-file-picker__input').simulate('click', mClickEvent);
+    const fileInput = container.querySelectorAll('.za-file-picker__input')[0];
+    fireEvent.change(fileInput, mClickEvent);
     expect(mClickEvent.preventDefault).not.toBeCalled();
 
-    wrapper.find('.za-file-picker__input').simulate('change', {
+    fireEvent.change(fileInput, {
       target: { files: [file] },
     });
     expect(props.onChange).toBeCalledWith([mFileDetail]);
@@ -71,25 +72,25 @@ describe('file picker event', () => {
   });
 
   it('should handle change event if files is an array of File instance', () => {
-    let getFileInfo: (data: IFileDetail) => void;
-    mHandleFileInfo.mockImplementation((_, callback: (data: IFileDetail) => void) => {
+    let getFileInfo: (data: FileObject) => void;
+    mHandleFileInfo.mockImplementation((_, callback: (data: FileObject) => void) => {
       getFileInfo = callback;
       callback(mFileDetail);
     });
-    const wrapper = mount(<FilePicker {...props} />);
-    wrapper.find('.za-file-picker__input').simulate('change', {
+    const { container } = render(<FilePicker {...props} />);
+    const fileInput = container.querySelectorAll('.za-file-picker__input')[0];
+    fireEvent.change(fileInput, {
       target: { files: [file] },
     });
-
     expect(mHandleFileInfo).toBeCalledWith({ file, quality: 0.3 }, getFileInfo!);
     expect(props.onChange).toBeCalledWith(mFileDetail);
   });
 
   it('click children', () => {
-    const wrapper = mount(<FilePicker {...props} />);
+    const { container } = render(<FilePicker {...props} />);
 
-    wrapper.find('button').simulate('click');
-    wrapper.find('.za-file-picker__input').simulate('change', {
+    const fileInput = container.querySelectorAll('.za-file-picker__input')[0];
+    fireEvent.change(fileInput, {
       target: { files: [file] },
     });
     expect(props.onChange).toBeCalled();
@@ -110,9 +111,10 @@ describe('file picker disabled', () => {
       onBeforeSelect: jest.fn(() => false),
     };
 
-    const wrapper = mount(<FilePicker {..._props} />);
+    const { container } = render(<FilePicker {..._props} />);
 
-    wrapper.find('.za-file-picker__input').simulate('click');
+    const fileInput = container.querySelectorAll('.za-file-picker__input')[0];
+    fireEvent.change(fileInput);
     expect(props.onChange).not.toHaveBeenCalled();
   });
 
@@ -122,9 +124,10 @@ describe('file picker disabled', () => {
       disabled: true,
     };
 
-    const wrapper = mount(<FilePicker {..._props} />);
+    const { container } = render(<FilePicker {..._props} />);
 
-    wrapper.find('.za-file-picker__input').simulate('click');
+    const fileInput = container.querySelectorAll('.za-file-picker__input')[0];
+    fireEvent.change(fileInput);
     expect(props.onChange).not.toHaveBeenCalled();
   });
 });

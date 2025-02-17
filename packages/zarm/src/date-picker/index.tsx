@@ -1,4 +1,7 @@
+import attachPropertiesToComponent from '../utils/attachPropertiesToComponent';
 import DatePicker from './DatePicker';
-import ConfigReceiver from '../config-receiver';
+import { prompt } from './prompt';
 
-export default ConfigReceiver('DatePicker')(DatePicker);
+export type { DatePickerProps } from './DatePicker';
+
+export default attachPropertiesToComponent(DatePicker, { prompt });

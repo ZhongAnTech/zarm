@@ -1,98 +1,62 @@
-import React, { Component } from 'react';
-import classnames from 'classnames';
-import BScroll from 'better-scroll';
+import BScroll, { BScrollInstance } from '@better-scroll/core';
+import WheelPlugin from '@better-scroll/wheel';
+import { createBEM } from '@zarm-design/bem';
 import isEqual from 'lodash/isEqual';
-import BaseWheelProps, { WheelItem, WheelValue } from './PropsType';
-import { isArray } from '../utils/validate';
+import React, { createRef, useEffect, useRef } from 'react';
+import { ConfigContext } from '../config-provider';
+import { resolvedFieldNames } from '../picker-view/utils';
+import { useEventCallback, usePrevious, useSafeLayoutEffect } from '../utils/hooks';
+import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseWheelProps, WheelItem, WheelValue } from './interface';
 
-const getValue = (props, defaultValue?: any) => {
-  if ('value' in props) {
-    return props.value;
-  }
+BScroll.use(WheelPlugin);
+
+const getValue = (props: Omit<WheelProps, 'itemRender'>) => {
   if ('defaultValue' in props) {
     return props.defaultValue;
   }
-  if (isArray(props.dataSource) && props.dataSource[0]) {
-    return props.dataSource[0][props.valueMember];
+  if ('value' in props) {
+    return props.value;
   }
-  return defaultValue;
+  if (Array.isArray(props.dataSource) && props.dataSource[0] && props.fieldNames?.value) {
+    return props.dataSource[0][props.fieldNames?.value];
+  }
 };
 
-export interface WheelProps extends BaseWheelProps {
-  prefixCls?: string;
-  className?: string;
+export interface WheelCssVars {
+  '--text-color': React.CSSProperties['color'];
+  '--disabled-text-color': React.CSSProperties['color'];
+  '--item-height': React.CSSProperties['height'];
+  '--item-rows': number;
+  '--item-font-size': React.CSSProperties['fontSize'];
 }
 
-export default class Wheel extends Component<WheelProps, any> {
-  private BScroll;
+export type WheelProps = BaseWheelProps & HTMLProps<WheelCssVars>;
 
-  private wrapper;
+const Wheel: React.FC<WheelProps> = (props) => {
+  const { className, value, defaultValue, dataSource, disabled, stopScroll, itemRender, onChange } =
+    props;
 
-  static defaultProps: WheelProps = {
-    prefixCls: 'za-wheel',
-    dataSource: [],
-    valueMember: 'value',
-    itemRender: (item) => item!.label as string,
-    stopScroll: false,
-  };
+  const scrollInstance = useRef<BScrollInstance | null>(null);
+  const wheelWrapperRef = createRef<HTMLDivElement>();
+  const currentValue = getValue(props);
+  const prevValue = usePrevious(value);
+  const prevDataSource = usePrevious(dataSource);
+  const prevStopScroll = usePrevious(stopScroll);
+  const { prefixCls } = React.useContext(ConfigContext);
+  const heightRef = React.useRef(0);
+  const bem = createBEM('wheel', { prefixCls });
 
-  componentDidMount() {
-    const { prefixCls, dataSource, disabled } = this.props;
-    const value = getValue(this.props);
-    const initIndex = this.getSelectedIndex(value, dataSource);
-    this.BScroll = new BScroll(this.wrapper, {
-      wheel: {
-        selectedIndex: initIndex,
-        wheelWrapperClass: `${prefixCls}-content`,
-        wheelItemClass: `${prefixCls}-item`,
-      },
-      probeType: 3,
-    });
+  const fieldNames = resolvedFieldNames(props.fieldNames);
 
-    disabled && this.BScroll.disable();
-
-    this.BScroll.on('scrollEnd', () => {
-      this.handleScrollEnd();
-    });
-  }
-
-  componentDidUpdate(prevProps) {
-    const { value, dataSource, disabled, stopScroll } = this.props;
-    disabled && this.BScroll.disable();
-    if (!isEqual(prevProps.dataSource, dataSource)) {
-      this.BScroll.refresh();
-    }
-    const oldIndex = this.getSelectedIndex(prevProps.value, prevProps.dataSource);
-    const newIndex = this.getSelectedIndex(value, dataSource);
-    if (newIndex !== oldIndex) {
-      this.BScroll.wheelTo(newIndex);
-    }
-
-    if (stopScroll && prevProps.stopScroll !== stopScroll) {
-      this.BScroll.stop();
-    }
-  }
-
-  componentWillUnmount() {
-    this.BScroll.destroy();
-  }
-
-  handleScrollEnd = () => {
-    const { dataSource: curDataSource, valueMember } = this.props;
-    const index = this.BScroll.getSelectedIndex();
-    const child = curDataSource[index];
-
-    if (child) {
-      this.fireValueChange(child[valueMember!]);
-    }
-  };
-
-  getSelectedIndex = (value?: WheelValue, dataSource?: Array<WheelItem>): number => {
-    const { valueMember } = this.props;
+  const getSelectedIndex = (
+    changedValue?: WheelValue,
+    newDataSource?: Array<WheelItem>,
+  ): number => {
     let index = 0;
-    if (dataSource) {
-      dataSource.some((item, i) => {
-        if (item[valueMember!] === value) {
+    if (newDataSource) {
+      newDataSource.some((item, i) => {
+        if (item[fieldNames.value!] === changedValue) {
           index = i;
           return true;
         }
@@ -102,46 +66,107 @@ export default class Wheel extends Component<WheelProps, any> {
     return index;
   };
 
-  fireValueChange = (value) => {
-    const currentValue = getValue(this.props);
-    if (value === currentValue) {
+  const fireValueChange = (changedValue: WheelValue) => {
+    if (changedValue === currentValue) {
       return;
     }
-
-    const { onChange } = this.props;
-    if (typeof onChange === 'function') {
-      onChange(value);
-    }
+    onChange?.(changedValue);
   };
 
-  render() {
-    const { prefixCls, className, valueMember, dataSource, itemRender, disabled } = this.props;
-    const value = getValue(this.props);
+  const handleScrollEnd = useEventCallback(() => {
+    const index = scrollInstance.current?.getSelectedIndex();
+    const child = dataSource?.[index];
+    if (child) {
+      fireValueChange(child[fieldNames.value!]);
+    }
+  }, []);
 
-    const items = dataSource!.map((item, index) => {
-      const itemCls = classnames(`${prefixCls}__item`, {
-        [`${prefixCls}__item--selected`]: value === item[valueMember!],
-        [`${prefixCls}__item--disabled`]: disabled,
+  useSafeLayoutEffect(() => {
+    let resize: ResizeObserver | null;
+    heightRef.current = wheelWrapperRef.current?.clientHeight || 0;
+    const initIndex = getSelectedIndex(currentValue, dataSource);
+    if (wheelWrapperRef.current) {
+      scrollInstance.current = new BScroll(wheelWrapperRef.current, {
+        wheel: {
+          selectedIndex: initIndex,
+          wheelWrapperClass: bem('content'),
+          wheelItemClass: bem('item'),
+        },
+        probeType: 3,
       });
 
-      return (
-        <div key={+index} className={itemCls}>
-          {itemRender!(item)}
-        </div>
-      );
+      if (scrollInstance.current.scroller?.wrapper) {
+        resize = new ResizeObserver((entries) => {
+          const [entry] = entries || [];
+          if (entry.contentRect.height === heightRef.current) return;
+          heightRef.current = entry.contentRect.height;
+          scrollInstance.current?.refresh();
+        });
+        resize.observe(scrollInstance.current.scroller.wrapper);
+      }
+    }
+
+    scrollInstance.current?.on('scrollEnd', () => {
+      handleScrollEnd();
     });
 
-    const rollerCls = classnames(prefixCls, className);
+    return () => {
+      resize?.disconnect();
+      scrollInstance.current?.destroy();
+    };
+  }, []);
+
+  useEffect(() => {
+    disabled && scrollInstance.current?.disable();
+  }, [disabled]);
+
+  useEffect(() => {
+    if (isEqual(prevDataSource, dataSource)) return;
+    scrollInstance.current?.refresh();
+
+    const targetIndex = dataSource?.findIndex((item) => item[fieldNames.value] === value);
+    if (targetIndex >= 0) return;
+    handleScrollEnd();
+  }, [dataSource, fieldNames, value]);
+
+  useEffect(() => {
+    const oldIndex = getSelectedIndex(prevValue, prevDataSource);
+    const newIndex = getSelectedIndex(value, dataSource);
+    if (newIndex !== oldIndex) {
+      scrollInstance.current?.wheelTo(newIndex);
+    }
+
+    if (stopScroll && prevStopScroll !== stopScroll) {
+      scrollInstance.current?.stop();
+    }
+  }, [value, defaultValue, dataSource, stopScroll, fieldNames.value]);
+
+  const items = dataSource!.map((item, index) => {
+    const itemCls = bem('item', [
+      {
+        selected: currentValue === item[fieldNames.value!],
+        disabled,
+      },
+    ]);
 
     return (
-      <div
-        className={rollerCls}
-        ref={(wrapper) => {
-          this.wrapper = wrapper;
-        }}
-      >
-        <div className={`${prefixCls}__content`}>{items}</div>
+      <div key={+index} className={itemCls}>
+        {itemRender?.(item) || item?.[fieldNames.label]}
       </div>
     );
-  }
-}
+  });
+
+  return (
+    <div className={bem([className])} ref={wheelWrapperRef}>
+      <div className={bem('content')}>{items}</div>
+    </div>
+  );
+};
+
+Wheel.displayName = 'Wheel';
+Wheel.defaultProps = {
+  dataSource: [],
+  stopScroll: false,
+};
+
+export default Wheel;

@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { mocked } from 'ts-jest/utils';
-import { fileTree, FileInfo, getCustomConfig } from '../utils';
+import { FileInfo, fileTree, getCustomConfig } from '../utils';
 
 jest.mock('fs');
 
@@ -24,8 +24,8 @@ describe('utils', () => {
 
   describe('#fileTree', () => {
     it('should get file path tree', () => {
-      readdirSyncMocked.mockReturnValueOnce((['/a.ts', '/b.ts'] as unknown) as fs.Dirent[]);
-      const stats = ({ isDirectory: jest.fn().mockReturnValue(false) } as unknown) as fs.Stats;
+      readdirSyncMocked.mockReturnValueOnce(['/a.ts', '/b.ts'] as unknown as fs.Dirent[]);
+      const stats = { isDirectory: jest.fn().mockReturnValue(false) } as unknown as fs.Stats;
       statSyncMocked.mockReturnValue(stats);
       const list: FileInfo[] = [];
       fileTree(list, testDirPath);
@@ -46,8 +46,8 @@ describe('utils', () => {
         }
         return ['/a', '/b.ts'];
       });
-      const statsA = ({ isDirectory: jest.fn().mockReturnValue(true) } as unknown) as fs.Stats;
-      const statsB = ({ isDirectory: jest.fn().mockReturnValue(false) } as unknown) as fs.Stats;
+      const statsA = { isDirectory: jest.fn().mockReturnValue(true) } as unknown as fs.Stats;
+      const statsB = { isDirectory: jest.fn().mockReturnValue(false) } as unknown as fs.Stats;
       statSyncMocked.mockImplementation((filePath: string) => {
         switch (filePath) {
           case path.join(testDirPath, '/a'):

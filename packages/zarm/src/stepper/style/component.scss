@@ -1,31 +1,63 @@
-@mixin disaleInput {
-  color: var(--color-text);
-  -webkit-text-fill-color: var(--color-text);
+@mixin disableInput {
+  color: var(--input-text-color);
+  -webkit-text-fill-color: var(--input-text-color);
   cursor: auto;
 }
 
 @include b(stepper) {
-  display: flex;
+  @include define(height, 28px);
+  @include define(input-width, 56px);
+  @include define(input-background, transparent);
+  @include define(input-border-width, 1px);
+  @include define(input-border-color, transparent);
+  @include define(input-border-radius, var(--za-radius-md));
+  @include define(input-text-color, var(--za-color-text));
+  @include define(input-font-size, var(--za-font-size-md));
+  @include define(input-disabled-text-color, var(--za-color-text-disabled));
+  @include define(input-disabled-opacity, var(--za-opacity-disabled));
+  @include define(input-margin, 0 4px);
+  @include define(input-padding, 0 8px);
+  @include define(icon-font-size, 12px);
+
   align-items: center;
+  display: flex;
 
   @include b(input) {
     input {
       height: 100%;
       text-align: center;
+      -moz-appearance: textfield;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        appearance: none;
+        margin: 0;
+      }
     }
 
     @include m(disabled) {
       input {
-        @include disaleInput;
-      }
-
-      @include e(virtual-input) {
-        @include disaleInput;
+        @include disableInput;
       }
     }
 
     @include e(content) {
       height: 100%;
+      flex: 1;
+    }
+  }
+
+  @include b(custom-input) {
+    @include m(disabled) {
+      @include e(virtual-input) {
+        @include disableInput;
+      }
+    }
+
+    @include e(content) {
+      height: 100%;
+      flex: 1;
     }
 
     @include e(virtual-input) {
@@ -35,25 +67,28 @@
   }
 
   @include e(sub, plus) {
-    width: var(--stepper-height-md);
+    width: var(--height);
     padding: 0;
 
     @include b(icon) {
-      font-size: var(--stepper-icon-font-size-md);
+      font-size: var(--icon-font-size);
     }
   }
 
   @include e(input) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    width: var(--stepper-input-width-md);
-    height: var(--stepper-height-md);
-    margin: 0 var(--stepper-input-margin-h-md);
-    padding: 0 var(--stepper-input-padding-h-md);
-    font-size: var(--stepper-input-font-size-md);
-    background: var(--stepper-input-background);
-    color: var(--color-text);
+    width: var(--input-width);
+    height: var(--height);
+    margin: var(--input-margin);
+    padding: var(--input-padding);
+    font-size: var(--input-font-size);
+    background: var(--input-background);
+    color: var(--input-text-color);
     text-align: center;
-    border: r(1) solid var(--border-color);
+    border: var(--input-border-width) solid var(--input-border-color);
     border-radius: 0;
     outline: 0;
     -webkit-appearance: none;
@@ -61,39 +96,31 @@
 
   @include m(disabled) {
     @include e(input) {
-      color: var(--stepper-input-disabled);
-      opacity: var(--opacity-disabled);
+      input {
+        color: var(--input-disabled-text-color);
+        -webkit-text-fill-color: var(--input-disabled-text-color);
+        opacity: var(--input-disabled-opacity);
+      }
     }
   }
 
   @include m(radius) {
     @include e(input) {
-      border-radius: var(--radius-md);
+      border-radius: var(--input-border-radius);
     }
   }
 
   @include m(circle) {
     @include e(input) {
-      border-radius: var(--stepper-height-md);
+      border-radius: var(--height);
     }
   }
 
   @include m(lg) {
-    @include e(input) {
-      width: var(--stepper-input-width-lg);
-      height: var(--stepper-height-lg);
-      margin: 0 var(--stepper-input-margin-h-lg);
-      padding: 0 var(--stepper-input-padding-h-lg);
-      font-size: var(--stepper-input-font-size-lg);
-    }
-
-    @include e(sub, plus) {
-      width: var(--stepper-height-lg);
-      padding: 0;
-
-      @include b(icon) {
-        font-size: var(--stepper-icon-font-size-lg);
-      }
-    }
+    @include define(height, 36px);
+    @include define(input-width, 72px);
+    @include define(input-margin, 0 6px);
+    @include define(input-padding, 0 8px);
+    @include define(icon-font-size, 14px);
   }
 }

@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable import/no-dynamic-require */
-import webpack, { Configuration, RuleSetRule } from 'webpack';
-import webpackMerge from 'webpack-merge';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import SentryCliPlugin from '@sentry/webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import webpack, { Configuration, RuleSetRule } from 'webpack';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import webpackMerge from 'webpack-merge';
 import getWebpackConfig from './config/webpackConfig';
-import { getProjectPath, getCustomConfig } from './utils';
+import { getCustomConfig, getProjectPath } from './utils';
 
 const { version } = require(getProjectPath('package.json'));
 
@@ -17,14 +17,8 @@ export interface IDeployConfig {
 }
 
 export function getProjectConfig(config: Configuration): Configuration {
-  const {
-    entries,
-    setBabelOptions,
-    banner,
-    setRules,
-    setPlugins,
-    ...webpackConfig
-  } = getCustomConfig();
+  const { entries, setBabelOptions, banner, setRules, setPlugins, ...webpackConfig } =
+    getCustomConfig();
 
   config.entry = {};
   config.plugins = config.plugins || [];

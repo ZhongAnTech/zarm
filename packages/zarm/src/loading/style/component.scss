@@ -1,28 +1,107 @@
-@include b(loading) {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  user-select: none;
+@import 'mixins';
 
-  @include m(open) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+$loading-spinner-count: 8;
+
+@include b(loading) {
+  @include define(size, 24px);
+  @include define(size-large, 36px);
+  @include define(stroke-color, #e6e6e6);
+  @include define(stroke-active-color, var(--za-theme-primary));
+  @include define(spinner-item-color, #80858e);
+  @include define(spinner-item-width, 3px);
+  @include define(spinner-item-height, 32%);
+  @include define(spinner-item-border-radius, 1.5px);
+
+  display: inline-block;
+  position: relative;
+  transform: rotate(-90deg);
+  vertical-align: middle;
+
+  @include loading-size(var(--size));
+
+  @include e(stroke) {
+    stroke: var(--stroke-color);
   }
 
-  @include e(container) {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: r(80);
-    height: r(80);
-    padding: r(20) r(15);
-    border-radius: var(--radius-md);
-    background: var(--loading-background);
-    color: var(--color-text);
+  @include e(line) {
+    stroke: var(--stroke-active-color);
+  }
+
+  @include m(circular) {
+    display: inline-block;
+
+    svg {
+      vertical-align: top;
+      @include animation(rotate360, 2s linear infinite);
+    }
+
+    circle {
+      stroke-linecap: round;
+      stroke: var(--stroke-active-color);
+      @include animation(rotate-circular, 1.5s ease-in-out infinite);
+    }
+  }
+
+  @include m(spinner) {
+    @include animation(rotate360, 0.8s linear infinite);
+
+    animation-timing-function: steps($loading-spinner-count);
+
+    div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      @for $i from 1 through $loading-spinner-count {
+        &:nth-of-type(#{$i}) {
+          transform: rotate($i * calc(360 / $loading-spinner-count) * 1deg);
+          opacity: calc($i / $loading-spinner-count);
+        }
+      }
+
+      &::before {
+        content: '';
+        display: block;
+        width: var(--spinner-item-width);
+        height: var(--spinner-item-height);
+        margin: 0 auto;
+        background-color: var(--spinner-item-color);
+        border-radius: var(--spinner-item-border-radius);
+      }
+    }
+  }
+
+  /* sizes */
+  @include m(lg) {
+    @include loading-size(var(--size-large));
+  }
+
+  @include keyframes(rotate-circular) {
+    0% {
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+    }
+
+    50% {
+      stroke-dasharray: 120, 200;
+      stroke-dashoffset: -60;
+    }
+
+    100% {
+      stroke-dasharray: 120, 200;
+      stroke-dashoffset: -180;
+    }
+  }
+
+  @include keyframes(rotate360) {
+    from {
+      transform: rotate(0);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
   }
 }

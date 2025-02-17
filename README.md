@@ -18,7 +18,7 @@
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FZhongAnTech%2Fzarm.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FZhongAnTech%2Fzarm?ref=badge_shield)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ZhongAnTech/zarm?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-众安科技基于 React、React-Native 研发的一款适用于企业级的移动端 UI 组件库。
+众安科技基于 React 研发的一款适用于企业级的移动端 UI 组件库。
 
 </div>
 
@@ -30,10 +30,12 @@ Zarm （读音 /zɑːm/，中文可发音为 扎姆）的命名，灵感来源�
 
 [https://zarm.design/demo.html#/](https://zarm.design/demo.html#/)
 
-## 浏览器支持
+## 兼容性
 
-- iOS
-- Android 4.0+
+- iOS Safari 10+
+- Android 5+
+
+如需兼容更低端的浏览器版本，需要提供相应的 Polyfill 支持，请参考 [这篇文章](https://github.com/ZhongAnTech/zarm/blob/master/packages/site/web/docs/polyfill.md)
 
 ## 安装
 
@@ -64,9 +66,9 @@ import 'zarm/dist/zarm.css';
 
 ## 社区
 
-| 问题上报                                                    | 讨论交流                                                              | 微信群                                                                                                     |
-| :---------------------------------------------------------- | :-------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------- |
-| [github issues](https://github.com/ZhongAnTech/zarm/issues) | [github discussions](https://github.com/ZhongAnTech/zarm/discussions) | <img src="https://cdn-health.zhongan.com/zarm/qrcode.jpg" width="80" /> <br />备注 "zarm" 加好友后邀请进群 |
+| 问题上报                                                    | 讨论交流                                                              | 微信群                                                                                                            |
+| :---------------------------------------------------------- | :-------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------- |
+| [github issues](https://github.com/ZhongAnTech/zarm/issues) | [github discussions](https://github.com/ZhongAnTech/zarm/discussions) | <img src="https://cdn-health.zhongan.com/zarm/qrcode.jpg" width="80" /> <br />备注 "zarm github" 加好友后邀请进群 |
 
 ## 如何贡献
 

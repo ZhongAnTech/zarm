@@ -1,7 +1,7 @@
-import indexTemp from './indexTemp';
-import indexScssTemp from './indexScssTemp';
+import indexScssTpl from './indexScssTpl';
+import indexTpl from './indexTpl';
 
 export default {
-  indexTemp,
-  indexScssTemp,
+  indexTpl,
+  indexScssTpl,
 };

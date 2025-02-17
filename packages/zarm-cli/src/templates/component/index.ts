@@ -1,9 +1,11 @@
-import compTemp from './compTemp';
-import indexTemp from './indexTemp';
-import demoTemp from './demoTemp';
+import compTpl from './compTpl';
+import demoTpl from './demoTpl';
+import indexTpl from './indexTpl';
+import interfaceTpl from './interfaceTpl';
 
 export default {
-  compTemp,
-  indexTemp,
-  demoTemp,
+  compTpl,
+  indexTpl,
+  demoTpl,
+  interfaceTpl,
 };

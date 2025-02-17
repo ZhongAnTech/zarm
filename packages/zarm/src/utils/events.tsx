@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
-import noop from '../utils/noop';
 
 let supportsPassive = false;
 try {
@@ -9,7 +8,7 @@ try {
       return true;
     },
   });
-  window.addEventListener('test', noop, opts);
+  window.addEventListener('test', () => {}, opts);
   // eslint-disable-next-line no-empty
 } catch (e) {}
 
@@ -27,7 +26,7 @@ declare global {
 export default {
   supportsPassiveEvents: supportsPassive,
   on(
-    el: Element | Window | Document,
+    el: Window | Document | Element,
     type: string,
     callback: EventListener,
     options: AddEventListenerOptions | boolean = { passive: false },
@@ -42,7 +41,7 @@ export default {
   },
 
   off(
-    el: Element | Window | Document,
+    el: Window | Document | Element,
     type: string,
     callback: EventListener,
     options: AddEventListenerOptions | boolean = { passive: false },
@@ -55,7 +54,7 @@ export default {
   },
 
   once(
-    el: Element,
+    el: Window | Document | Element,
     type: string,
     callback: EventListener,
     options: AddEventListenerOptions | boolean = { passive: false },

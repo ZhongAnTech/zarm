@@ -1,4 +1,4 @@
-@import "@/styles/index";
+@import '@/styles/index';
 
 .index-page {
   .brand {
@@ -10,26 +10,6 @@
 
     &-description {
       font-size: r(14);
-    }
-  }
-
-  main {
-    padding: r(15);
-  }
-
-  .za-panel-body {
-    border-radius: r(2);
-
-    &:after {
-      display: none;
-    }
-  }
-
-  .za-cell {
-    &:first-of-type {
-      &:after {
-        display: none;
-      }
     }
   }
 

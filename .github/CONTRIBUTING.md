@@ -14,16 +14,6 @@ Then, you can runs Zarm Design website locally.
 ```bash
 # develop for h5
 $ yarn dev
-
-If you want runs Zarm Design demo for react-native, Then
-# develop for react-native
-$ cd rnkit && yarn install && cd ios && pod install && cd ../..
-
-# develop for iOS
-$ yarn dev:ios
-
-# develop for Android
-$ yarn dev:android
 ```
 
 ## Lint
@@ -53,9 +43,6 @@ $ yarn test
 # Test specified h5
 $ yarn test:h5
 
-# Test specified react-native
-$ yarn test:rn
-
 # Generate coverage
 $ yarn test:h5 --coverage
 ```
@@ -75,10 +62,4 @@ $ yarn build:lib
 
 # Build for umd
 $ yarn build:umd
-
-# Build react-native of iOS
-$ yarn build:ios
-
-# Build react-native of Android
-$ yarn build:android
 ```

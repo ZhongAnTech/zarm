@@ -1,5 +1,6 @@
 export default {
-  weeks: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+  weeks: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
   months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  yearText: '',
+  yearMonthFormat: 'MMM YYYY',
+  weekStartsOn: 'Sunday',
 };
