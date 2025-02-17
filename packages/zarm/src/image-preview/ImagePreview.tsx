@@ -15,6 +15,7 @@ export interface ImagePreviewProps extends PropsType {
   prefixCls?: string;
   className?: string;
   locale?: Locale['ImagePreview'];
+  title?: React.ReactNode;
 }
 
 export interface ImagePreviewState {
@@ -25,6 +26,7 @@ export interface ImagePreviewState {
   prevVisible?: boolean;
   prevActiveIndex?: number;
   prevImages?: Images;
+  title?: React.ReactNode;
 }
 
 const parseState = (props: ImagePreviewProps): ImagePreviewState => {
@@ -65,6 +67,7 @@ export default class ImagePreview extends Component<ImagePreviewProps, ImagePrev
         prevVisible: nextProps.visible,
         prevActiveIndex: nextProps.activeIndex,
         prevImages: nextProps.images,
+        title: nextProps.title,
       };
     }
     return null;
@@ -209,10 +212,11 @@ export default class ImagePreview extends Component<ImagePreviewProps, ImagePrev
 
   render() {
     const { prefixCls } = this.props;
-    const { currentIndex = 0, visible, images } = this.state;
+    const { currentIndex = 0, visible, images, title } = this.state;
 
     return (
       <Popup direction="center" visible={visible} className={prefixCls}>
+        <div className={`${prefixCls}__title`}>{title}</div>
         <div
           className={`${prefixCls}__content`}
           onTouchStart={this.onWrapperTouchStart}

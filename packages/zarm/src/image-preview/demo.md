@@ -80,12 +80,14 @@ const Demo = () => {
         有查看原始图片功能
       </Cell>
       <ImagePreview
+        title="普通预览"
         visible={visibleState.common}
         images={commonImages}
         onClose={() => hide('common')}
         maxScale={10}
       />
       <ImagePreview
+        title="带原图的预览"
         visible={visibleState.origin}
         images={originImages}
         onClose={() => hide('origin')}
