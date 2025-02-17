@@ -61,6 +61,7 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
     className,
     style,
     mountContainer,
+    title,
   } = props;
 
   const [images, setImages] = useState<Images>(formatImages(props.images));
@@ -171,6 +172,7 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
       maskOpacity={1}
     >
       <>
+        <div className={bem('title')}>{title}</div>
         <div ref={ref} className={bem('content')} {...bindEvent()}>
           {visible &&
             (images?.length ? (

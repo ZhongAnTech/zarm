@@ -87,6 +87,7 @@ const Demo = () => {
         </List.Item>
       </List>
       <ImagePreview
+        title="缩略图预览"
         visible={visibleState.common}
         images={commonImages}
         onClose={() => hide('common')}
@@ -94,6 +95,7 @@ const Demo = () => {
         orientation={orientation}
       />
       <ImagePreview
+        title="原始图预览"
         visible={visibleState.origin}
         images={originImages}
         onClose={() => hide('origin')}

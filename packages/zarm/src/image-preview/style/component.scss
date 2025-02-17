@@ -5,6 +5,19 @@
 
   padding: 0;
 
+  @include e(title) {
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    height: 60px;
+    line-height: 60px;
+    font-size: var(--pagination-font-size);
+    font-weight: var(--title-font-weight);
+    color: var(--za-color-text-inverse);
+  }
+
   @include e(content) {
     display: flex;
     align-items: center;
