@@ -203,6 +203,7 @@ ReactDOM.render(<Demo />, mountNode);
 | 属性           | 类型                                                 | 默认值 | 说明                                                  |
 | :------------- | :--------------------------------------------------- | :----- | :---------------------------------------------------- |
 | visible        | boolean                                              | false  | 是否显示                                              |
+| title          | ReactNode                                            | -  | 标题                                              |
 | minScale       | number                                               | 1      | 图片最小缩放比例，1 为最小值                          |
 | maxScale       | number                                               | 3      | 图片最大缩放比例                                      |
 | images         | Array<string \| { src: string; originSrc: string; }> | -      | 图片地址                                              |
