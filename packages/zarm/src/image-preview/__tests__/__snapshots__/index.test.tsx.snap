@@ -13,6 +13,9 @@ exports[`ImagePreview snapshot renders correctly 1`] = `
       class="za-popup za-popup--center "
     >
       <div
+        class="za-image-preview__title"
+      />
+      <div
         class="za-image-preview__content"
       >
         <div
@@ -144,6 +147,9 @@ exports[`ImagePreview snapshot renders correctly with origin 1`] = `
     <div
       class="za-popup za-popup--center "
     >
+      <div
+        class="za-image-preview__title"
+      />
       <div
         class="za-image-preview__content"
       >
