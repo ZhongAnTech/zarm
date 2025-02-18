@@ -1,5 +1,11 @@
 # 版本更新日志
 
+## v3.2.0
+
+- Feature
+
+  - [ImagePreview] 支持传 title 属性 [#1190](https://github.com/ZhongAnTech/zarm/pull/1190)
+
 ## v3.1.5
 
 - Feature
