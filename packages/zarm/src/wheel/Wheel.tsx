@@ -2,7 +2,15 @@ import BScroll, { BScrollInstance } from '@better-scroll/core';
 import WheelPlugin from '@better-scroll/wheel';
 import { createBEM } from '@zarm-design/bem';
 import isEqual from 'lodash/isEqual';
-import React, { createRef, useEffect, useRef } from 'react';
+import React, {
+  createRef,
+  forwardRef,
+  RefObject,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+} from 'react';
 import { ConfigContext } from '../config-provider';
 import { resolvedFieldNames } from '../picker-view/utils';
 import { useEventCallback, usePrevious, useSafeLayoutEffect } from '../utils/hooks';
@@ -23,6 +31,12 @@ const getValue = (props: Omit<WheelProps, 'itemRender'>) => {
   }
 };
 
+export interface WheelRef {
+  scrollInstance: RefObject<BScrollInstance>;
+  getCurrentValue: () => WheelValue;
+  scrollTo: (index: number) => void;
+}
+
 export interface WheelCssVars {
   '--text-color': React.CSSProperties['color'];
   '--disabled-text-color': React.CSSProperties['color'];
@@ -33,7 +47,7 @@ export interface WheelCssVars {
 
 export type WheelProps = BaseWheelProps & HTMLProps<WheelCssVars>;
 
-const Wheel: React.FC<WheelProps> = (props) => {
+const Wheel = forwardRef<WheelRef, WheelProps>((props, ref) => {
   const { className, value, defaultValue, dataSource, disabled, stopScroll, itemRender, onChange } =
     props;
 
@@ -45,9 +59,28 @@ const Wheel: React.FC<WheelProps> = (props) => {
   const prevStopScroll = usePrevious(stopScroll);
   const { prefixCls } = React.useContext(ConfigContext);
   const heightRef = React.useRef(0);
+  const currentIndexRef = useRef(0);
   const bem = createBEM('wheel', { prefixCls });
 
   const fieldNames = resolvedFieldNames(props.fieldNames);
+
+  const wheelMethods = useMemo(
+    () => ({
+      scrollInstance,
+      getCurrentValue: () => {
+        if (!scrollInstance.current) return currentValue;
+        const index = currentIndexRef.current;
+        const child = dataSource?.[index];
+        return child ? child[fieldNames.value!] : currentValue;
+      },
+      scrollTo: (index: number) => {
+        scrollInstance.current?.wheelTo(index);
+      },
+    }),
+    [currentValue, dataSource, fieldNames.value],
+  );
+
+  useImperativeHandle(ref, () => wheelMethods, [wheelMethods]);
 
   const getSelectedIndex = (
     changedValue?: WheelValue,
@@ -74,7 +107,8 @@ const Wheel: React.FC<WheelProps> = (props) => {
   };
 
   const handleScrollEnd = useEventCallback(() => {
-    const index = scrollInstance.current?.getSelectedIndex();
+    const index = scrollInstance.current?.getSelectedIndex() || 0;
+    currentIndexRef.current = index;
     const child = dataSource?.[index];
     if (child) {
       fireValueChange(child[fieldNames.value!]);
@@ -83,16 +117,29 @@ const Wheel: React.FC<WheelProps> = (props) => {
 
   useSafeLayoutEffect(() => {
     let resize: ResizeObserver | null;
+    let rafId: number;
+
     heightRef.current = wheelWrapperRef.current?.clientHeight || 0;
     const initIndex = getSelectedIndex(currentValue, dataSource);
+    currentIndexRef.current = initIndex;
+
     if (wheelWrapperRef.current) {
       scrollInstance.current = new BScroll(wheelWrapperRef.current, {
         wheel: {
           selectedIndex: initIndex,
           wheelWrapperClass: bem('content'),
           wheelItemClass: bem('item'),
+          momentum: true,
+          rotate: 25,
+          swipeTime: 300,
         },
         probeType: 3,
+        momentum: true,
+        momentumLimitTime: 50,
+        momentumLimitDistance: 3,
+        swipeTime: 300,
+        swipeBounceTime: 100,
+        deceleration: 0.015,
       });
 
       if (scrollInstance.current.scroller?.wrapper) {
@@ -104,16 +151,31 @@ const Wheel: React.FC<WheelProps> = (props) => {
         });
         resize.observe(scrollInstance.current.scroller.wrapper);
       }
+
+      const handleScroll = () => {
+        if (!scrollInstance.current) return;
+        const { y } = scrollInstance.current;
+        const itemHeight = heightRef.current / 5;
+        const index = Math.round(Math.abs(y) / itemHeight);
+
+        if (index >= 0 && index < dataSource!.length) {
+          currentIndexRef.current = index;
+        }
+      };
+
+      const onScroll = () => {
+        rafId = requestAnimationFrame(handleScroll);
+      };
+
+      scrollInstance.current.on('scroll', onScroll);
+
+      return () => {
+        cancelAnimationFrame(rafId);
+        resize?.disconnect();
+        scrollInstance.current?.destroy();
+      };
     }
-
-    scrollInstance.current?.on('scrollEnd', () => {
-      handleScrollEnd();
-    });
-
-    return () => {
-      resize?.disconnect();
-      scrollInstance.current?.destroy();
-    };
+    return undefined;
   }, []);
 
   useEffect(() => {
@@ -161,7 +223,7 @@ const Wheel: React.FC<WheelProps> = (props) => {
       <div className={bem('content')}>{items}</div>
     </div>
   );
-};
+});
 
 Wheel.displayName = 'Wheel';
 Wheel.defaultProps = {

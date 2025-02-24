@@ -4,7 +4,7 @@ import * as React from 'react';
 import { ConfigContext } from '../config-provider';
 import { useSafeState } from '../utils/hooks';
 import type { HTMLProps } from '../utils/utilityTypes';
-import Wheel from '../wheel';
+import Wheel, { WheelRef } from '../wheel';
 import type { WheelValue } from '../wheel/interface';
 import type { BasePickerViewProps, PickerColumnItem } from './interface';
 import { isCascader, resolved } from './utils';
@@ -37,6 +37,18 @@ const PickerView = React.forwardRef<PickerViewInstance, PickerViewProps>((props,
   const bem = createBEM('picker-view', { prefixCls });
   const [innerValue, setInnerValue] = React.useState(resolved(props).value);
   const [stopScroll, setStopScroll] = useSafeState(false);
+  const wheelRefs = React.useRef<Array<React.RefObject<WheelRef>>>([]);
+
+  const { columns, items } = React.useMemo(
+    () => resolved({ ...props, value: innerValue }),
+    [cols, innerValue, dataSource, fieldNames],
+  );
+
+  React.useEffect(() => {
+    wheelRefs.current = Array(columns.length)
+      .fill(null)
+      .map((_, i) => wheelRefs.current[i] || React.createRef<WheelRef>());
+  }, [columns.length]);
 
   React.useEffect(() => {
     if (props.value === undefined) return;
@@ -44,24 +56,33 @@ const PickerView = React.forwardRef<PickerViewInstance, PickerViewProps>((props,
     setInnerValue(resolved(props).value);
   }, [props.value]);
 
-  const { columns, items } = React.useMemo(
-    () => resolved({ ...props, value: innerValue }),
-    [cols, innerValue, dataSource, fieldNames],
-  );
-
-  const reset = () => {
+  const reset = React.useCallback(() => {
     setStopScroll(true);
     setTimeout(() => {
       setInnerValue(resolved(props).value);
       setStopScroll(false);
     }, 0);
-  };
+  }, [props.value]);
 
-  React.useImperativeHandle(ref, () => ({
-    value: innerValue,
-    items,
-    reset,
-  }));
+  const getCurrentValue = React.useCallback(() => {
+    return wheelRefs.current
+      .map((wheelRef) => wheelRef.current?.getCurrentValue() ?? null)
+      .filter((value): value is WheelValue => value !== null);
+  }, []);
+
+  React.useImperativeHandle(
+    ref,
+    () => ({
+      get value() {
+        return getCurrentValue();
+      },
+      get items() {
+        return resolved({ ...props, value: getCurrentValue() }).items;
+      },
+      reset,
+    }),
+    [reset],
+  );
 
   const onValueChange = React.useCallback(
     (selected: WheelValue, index: number) => {
@@ -83,6 +104,7 @@ const PickerView = React.forwardRef<PickerViewInstance, PickerViewProps>((props,
         {columns.map((column, index) => (
           <Wheel
             key={+index}
+            ref={wheelRefs.current[index]}
             dataSource={column}
             value={innerValue?.[index]}
             fieldNames={fieldNames}
