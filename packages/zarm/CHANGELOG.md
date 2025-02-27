@@ -5,6 +5,7 @@
 - Feature
 
   - [ImagePreview] 支持传 title 属性 [#1190](https://github.com/ZhongAnTech/zarm/pull/1190)
+  - [Tabs] 支持选中状态下字体颜色自定义设置，CSS变量：`--active-text-color` [#1188](https://github.com/ZhongAnTech/zarm/pull/1188)[@aiyogg]
 
 ## v3.1.5
 
