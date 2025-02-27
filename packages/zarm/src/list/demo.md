@@ -180,7 +180,7 @@ ReactDOM.render(
 
 | 属性        | 类型       | 默认值 | 说明                     |
 | :---------- | :--------- | :----- | :----------------------- |
-| hasArrow    | boolean    | false  | 是否显示箭头             |
+| hasArrow    | boolean    | true   | 是否显示箭头（当设置了`onClick`属性情况下才生效）             |
 | prefix      | ReactNode  | -      | 左侧前缀区域内容         |
 | title       | ReactNode  | -      | 标题                     |
 | suffix      | ReactNode  | -      | 右侧尾部区域内容         |
