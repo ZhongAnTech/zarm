@@ -5,7 +5,6 @@
 ## 组件重构与移除
 
 - 移除 `Cell` 组件，更名为 `List`
-- 移除 `BackTop` 组件，更名为 `BackToTop`
 - 移除 `StackPicker` 组件，移至 `Cascader`
 - 移除 `Drag` 组件
 - `Loading` 组件在 v3 版本中废弃，移至 Toast.show({ icon: 'loading' }) 指令式调用
