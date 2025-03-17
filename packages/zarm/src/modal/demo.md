@@ -447,7 +447,7 @@ ReactDOM.render(<Demo />, mountNode);
 ## 指令式 API
 
 ```tsx
-// 显示警告框，不传 onCancel 也可关闭，如需做更多操作，参考下方 Confirm 的例子
+// 显示警告框，点击“确定”按钮执行 onConfirm 方法，如需做更多操作，参考下方 Confirm 的例子
 const alert = Modal.alert({
   title: '警告框标题',
   content: '这里是警告框的内容部分',
@@ -474,10 +474,10 @@ const confirm = Modal.confirm({
 | :---------- | :--------- | :---------------------------- | :------------------------------------------ |
 | title       | ReactNode  | -                             | 弹出框的标题                                |
 | content     | ReactNode  | -                             | 弹出框的内容                                |
-| cancelText  | ReactNode  | '关闭'(Alert)/'取消'(Confirm) | 取消按钮的内容                              |
+| cancelText  | ReactNode  | '取消'                        | 取消按钮的内容                              |
 | confirmText | ReactNode  | '确定'                        | 确定按钮的内容                              |
-| onConfirm   | () => void | -                             | 使用 confirm 方法时，点击“确定”后的回调函数 |
-| onCancel    | () => void | -                             | 点击“关闭/取消”后的回调函数                 |
+| onConfirm   | () => void | -                             | 点击“确定”后的回调函数 |
+| onCancel    | () => void | -                             | 点击“取消”后的回调函数                 |
 
 ## CSS 变量
 
