@@ -119,6 +119,9 @@ const Demo = () => {
           setValue(value);
           console.log('onChange', value);
         }}
+        onSelect={(value) => {
+          console.log('onSelect', value);
+        }}
       />
     </>
   );
@@ -129,18 +132,19 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
-| 属性         | 类型                                        | 默认值                   | 说明                                          |
-| :----------- | :------------------------------------------ | :----------------------- | :-------------------------------------------- |
-| value        | Date \| Date[]                              | -                        | 值                                            |
-| defaultValue | Date \| Date[]                              | -                        | 初始值                                        |
-| min          | Date                                        | new Date()               | 最小可选日期                                  |
-| max          | Date                                        | min + 1 年               | 最大可选日期                                  |
-| mode         | 'single' \| 'multiple' \| 'range'           | 'single'                 | 选择模式                                      |
-| direction    | 'horizontal' \| 'vertical'                  | 'vertical'               | 展示模式                                      |
-| header       | boolean                                     | false                    | 是否展示头部`direction` 为`horizontal` 时生效 |
-| dateRender   | (date: Date, value: Date \| Date[]) => void | (date) => date.getDate() | 日期渲染函数                                  |
-| disabledDate | (date: Date) => boolean                     | () => false              | 日期是否禁止选择                              |
-| onChange     | (value: Date[]) => void                     | -                        | 日期选择发生变化时触发的回调函数              |
+| 属性         | 类型                                        | 默认值                   | 说明                                                                                         |
+| :----------- | :------------------------------------------ | :----------------------- | :------------------------------------------------------------------------------------------- |
+| value        | Date \| Date[]                              | -                        | 值                                                                                           |
+| defaultValue | Date \| Date[]                              | -                        | 初始值                                                                                       |
+| min          | Date                                        | new Date()               | 最小可选日期                                                                                 |
+| max          | Date                                        | min + 1 年               | 最大可选日期                                                                                 |
+| mode         | 'single' \| 'multiple' \| 'range'           | 'single'                 | 选择模式                                                                                     |
+| direction    | 'horizontal' \| 'vertical'                  | 'vertical'               | 展示模式                                                                                     |
+| header       | boolean                                     | false                    | 是否展示头部`direction` 为`horizontal` 时生效                                                |
+| dateRender   | (date: Date, value: Date \| Date[]) => void | (date) => date.getDate() | 日期渲染函数                                                                                 |
+| disabledDate | (date: Date) => boolean                     | () => false              | 日期是否禁止选择                                                                             |
+| onChange     | (value: Date[]) => void                     | -                        | 日期选择发生变化时触发的回调函数                                                             |
+| onSelect     | (value: Date[]) => void                     | -                        | 日期选择时触发的回调函数，和`onChange`的区别是`mode=range`时，每次选择日期都会触发`onSelect` |
 
 ## CSS 变量
 
