@@ -11,6 +11,7 @@ export interface BaseCalendarProps {
   dateRender?: (date: Date, value: Date | Date[]) => ReactNode;
   disabledDate?: (value: Date) => boolean;
   onChange?: (value: Date[]) => void;
+  onSelect?: (value: Date[]) => void;
 }
 
 export interface BaseCalendarMonthProps {

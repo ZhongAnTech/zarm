@@ -67,6 +67,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
     dateRender,
     disabledDate,
     onChange,
+    onSelect,
     mode,
     max: maxDate,
     min: minDate,
@@ -168,6 +169,10 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
       }));
       if ((currentStep >= steps || mode === 'multiple') && typeof onChange === 'function') {
         onChange(value);
+      }
+
+      if (typeof onSelect === 'function') {
+        onSelect(value);
       }
     },
     [mode, state, value, onChange],
