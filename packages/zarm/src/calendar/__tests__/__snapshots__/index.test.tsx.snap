@@ -11,7 +11,7 @@ exports[`Calendar render horizontal 1`] = `
       <div
         class="za-calendar__title"
       >
-        2025年2月
+        2025年3月
         <i
           class="za-icon za-icon--primary za-icon--sm"
         >
@@ -23531,7 +23531,7 @@ exports[`Calendar render horizontal 1`] = `
               </div>
             </li>
             <li
-              class="za-calendar__day za-calendar__day--today"
+              class="za-calendar__day"
             >
               <div
                 class="za-calendar__day__content"
@@ -23823,7 +23823,7 @@ exports[`Calendar render horizontal 1`] = `
               </div>
             </li>
             <li
-              class="za-calendar__day"
+              class="za-calendar__day za-calendar__day--today"
             >
               <div
                 class="za-calendar__day__content"
@@ -26981,7 +26981,7 @@ exports[`Calendar render horizontal 1`] = `
               </div>
             </li>
             <li
-              class="za-calendar__day za-calendar__day--disabled"
+              class="za-calendar__day"
             >
               <div
                 class="za-calendar__day__content"
@@ -26990,7 +26990,7 @@ exports[`Calendar render horizontal 1`] = `
               </div>
             </li>
             <li
-              class="za-calendar__day za-calendar__day--disabled"
+              class="za-calendar__day"
             >
               <div
                 class="za-calendar__day__content"
@@ -26999,7 +26999,272 @@ exports[`Calendar render horizontal 1`] = `
               </div>
             </li>
             <li
-              class="za-calendar__day za-calendar__day--disabled"
+              class="za-calendar__day"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                21
+              </div>
+            </li>
+            <li
+              class="za-calendar__day"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                22
+              </div>
+            </li>
+            <li
+              class="za-calendar__day"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                23
+              </div>
+            </li>
+            <li
+              class="za-calendar__day"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                24
+              </div>
+            </li>
+            <li
+              class="za-calendar__day"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                25
+              </div>
+            </li>
+            <li
+              class="za-calendar__day"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                26
+              </div>
+            </li>
+            <li
+              class="za-calendar__day"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                27
+              </div>
+            </li>
+            <li
+              class="za-calendar__day"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                28
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div
+          class="za-calendar__month__wrapper"
+          title="2026年3月"
+        >
+          <div
+            class="za-calendar__month"
+          >
+            2026年3月
+          </div>
+          <ul>
+            <li
+              class="za-calendar__day"
+              style="margin-left: 85.71426%;"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                1
+              </div>
+            </li>
+            <li
+              class="za-calendar__day"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                2
+              </div>
+            </li>
+            <li
+              class="za-calendar__day"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                3
+              </div>
+            </li>
+            <li
+              class="za-calendar__day"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                4
+              </div>
+            </li>
+            <li
+              class="za-calendar__day"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                5
+              </div>
+            </li>
+            <li
+              class="za-calendar__day"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                6
+              </div>
+            </li>
+            <li
+              class="za-calendar__day"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                7
+              </div>
+            </li>
+            <li
+              class="za-calendar__day"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                8
+              </div>
+            </li>
+            <li
+              class="za-calendar__day"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                9
+              </div>
+            </li>
+            <li
+              class="za-calendar__day"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                10
+              </div>
+            </li>
+            <li
+              class="za-calendar__day"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                11
+              </div>
+            </li>
+            <li
+              class="za-calendar__day"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                12
+              </div>
+            </li>
+            <li
+              class="za-calendar__day"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                13
+              </div>
+            </li>
+            <li
+              class="za-calendar__day"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                14
+              </div>
+            </li>
+            <li
+              class="za-calendar__day"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                15
+              </div>
+            </li>
+            <li
+              class="za-calendar__day"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                16
+              </div>
+            </li>
+            <li
+              class="za-calendar__day"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                17
+              </div>
+            </li>
+            <li
+              class="za-calendar__day"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                18
+              </div>
+            </li>
+            <li
+              class="za-calendar__day"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                19
+              </div>
+            </li>
+            <li
+              class="za-calendar__day"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                20
+              </div>
+            </li>
+            <li
+              class="za-calendar__day"
             >
               <div
                 class="za-calendar__day__content"
@@ -27068,6 +27333,33 @@ exports[`Calendar render horizontal 1`] = `
                 class="za-calendar__day__content"
               >
                 28
+              </div>
+            </li>
+            <li
+              class="za-calendar__day za-calendar__day--disabled"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                29
+              </div>
+            </li>
+            <li
+              class="za-calendar__day za-calendar__day--disabled"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                30
+              </div>
+            </li>
+            <li
+              class="za-calendar__day za-calendar__day--disabled"
+            >
+              <div
+                class="za-calendar__day__content"
+              >
+                31
               </div>
             </li>
           </ul>
@@ -50541,7 +50833,7 @@ exports[`Calendar render local EN 1`] = `
             </div>
           </li>
           <li
-            class="za-calendar__day za-calendar__day--today"
+            class="za-calendar__day"
           >
             <div
               class="za-calendar__day__content"
@@ -50833,7 +51125,7 @@ exports[`Calendar render local EN 1`] = `
             </div>
           </li>
           <li
-            class="za-calendar__day"
+            class="za-calendar__day za-calendar__day--today"
           >
             <div
               class="za-calendar__day__content"
@@ -53991,7 +54283,7 @@ exports[`Calendar render local EN 1`] = `
             </div>
           </li>
           <li
-            class="za-calendar__day za-calendar__day--disabled"
+            class="za-calendar__day"
           >
             <div
               class="za-calendar__day__content"
@@ -54000,7 +54292,7 @@ exports[`Calendar render local EN 1`] = `
             </div>
           </li>
           <li
-            class="za-calendar__day za-calendar__day--disabled"
+            class="za-calendar__day"
           >
             <div
               class="za-calendar__day__content"
@@ -54009,7 +54301,272 @@ exports[`Calendar render local EN 1`] = `
             </div>
           </li>
           <li
-            class="za-calendar__day za-calendar__day--disabled"
+            class="za-calendar__day"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              21
+            </div>
+          </li>
+          <li
+            class="za-calendar__day"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              22
+            </div>
+          </li>
+          <li
+            class="za-calendar__day"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              23
+            </div>
+          </li>
+          <li
+            class="za-calendar__day"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              24
+            </div>
+          </li>
+          <li
+            class="za-calendar__day"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              25
+            </div>
+          </li>
+          <li
+            class="za-calendar__day"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              26
+            </div>
+          </li>
+          <li
+            class="za-calendar__day"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              27
+            </div>
+          </li>
+          <li
+            class="za-calendar__day"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              28
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div
+        class="za-calendar__month__wrapper"
+        title="Mar 2026"
+      >
+        <div
+          class="za-calendar__month"
+        >
+          Mar 2026
+        </div>
+        <ul>
+          <li
+            class="za-calendar__day"
+            style="margin-left: 0%;"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              1
+            </div>
+          </li>
+          <li
+            class="za-calendar__day"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              2
+            </div>
+          </li>
+          <li
+            class="za-calendar__day"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              3
+            </div>
+          </li>
+          <li
+            class="za-calendar__day"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              4
+            </div>
+          </li>
+          <li
+            class="za-calendar__day"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              5
+            </div>
+          </li>
+          <li
+            class="za-calendar__day"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              6
+            </div>
+          </li>
+          <li
+            class="za-calendar__day"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              7
+            </div>
+          </li>
+          <li
+            class="za-calendar__day"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              8
+            </div>
+          </li>
+          <li
+            class="za-calendar__day"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              9
+            </div>
+          </li>
+          <li
+            class="za-calendar__day"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              10
+            </div>
+          </li>
+          <li
+            class="za-calendar__day"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              11
+            </div>
+          </li>
+          <li
+            class="za-calendar__day"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              12
+            </div>
+          </li>
+          <li
+            class="za-calendar__day"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              13
+            </div>
+          </li>
+          <li
+            class="za-calendar__day"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              14
+            </div>
+          </li>
+          <li
+            class="za-calendar__day"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              15
+            </div>
+          </li>
+          <li
+            class="za-calendar__day"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              16
+            </div>
+          </li>
+          <li
+            class="za-calendar__day"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              17
+            </div>
+          </li>
+          <li
+            class="za-calendar__day"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              18
+            </div>
+          </li>
+          <li
+            class="za-calendar__day"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              19
+            </div>
+          </li>
+          <li
+            class="za-calendar__day"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              20
+            </div>
+          </li>
+          <li
+            class="za-calendar__day"
           >
             <div
               class="za-calendar__day__content"
@@ -54078,6 +54635,33 @@ exports[`Calendar render local EN 1`] = `
               class="za-calendar__day__content"
             >
               28
+            </div>
+          </li>
+          <li
+            class="za-calendar__day za-calendar__day--disabled"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              29
+            </div>
+          </li>
+          <li
+            class="za-calendar__day za-calendar__day--disabled"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              30
+            </div>
+          </li>
+          <li
+            class="za-calendar__day za-calendar__day--disabled"
+          >
+            <div
+              class="za-calendar__day__content"
+            >
+              31
             </div>
           </li>
         </ul>
