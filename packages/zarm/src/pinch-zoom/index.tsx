@@ -337,9 +337,8 @@ const PinchZoom = React.forwardRef<unknown, PinchZoomProps>((props, ref) => {
 
   const cls = bem([className]);
 
-  const child = React.Children.map(children, (element: React.ReactElement, index) => {
+  const child = React.Children.map(children, (element: React.ReactElement) => {
     return React.cloneElement(element, {
-      key: +index,
       onLoad: (e) => {
         element.props?.onLoad?.(e);
         alignCenter();
