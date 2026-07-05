@@ -9,15 +9,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
       - name: build
         run: |
-          yarn
-          lerna exec --scope @zarm-design/cli -- yarn build
-          NODE_OPTIONS='--max-old-space-size=4096' lerna exec --scope site -- yarn build
+          pnpm install --frozen-lockfile
+          NODE_OPTIONS='--max-old-space-size=4096' pnpm --filter site build
 
       - name: upload assets artifact
         uses: actions/upload-artifact@v4

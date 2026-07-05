@@ -10,7 +10,6 @@
   position: relative;
   overflow: hidden;
 
-
   @include e(items) {
     display: flex;
     // transform-style: preserve-3d;

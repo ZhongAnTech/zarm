@@ -7,5 +7,5 @@
       "message": "chore(release): publish new version"
     }
   },
-  "npmClient": "yarn"
+  "npmClient": "pnpm"
 }

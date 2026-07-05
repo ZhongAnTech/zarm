@@ -3,7 +3,8 @@
   "compilerOptions": {
     "jsx": "react",
     "declaration": true,
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "types": ["jest", "node", "testing-library__jest-dom"]
   },
   "include": ["src"]
 }

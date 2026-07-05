@@ -6,9 +6,6 @@
 # npm
 $ npm install zarm --save
 
-# yarn
-$ yarn add zarm
-
 # pnpm
 $ pnpm add zarm
 ```

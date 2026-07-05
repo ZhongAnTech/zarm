@@ -7,6 +7,15 @@ import Calendar from '../index';
 
 const originalOffsetTop = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetTop');
 describe('Calendar', () => {
+  beforeAll(() => {
+    jest.useFakeTimers('modern');
+    jest.setSystemTime(new Date('2025-05-15T00:00:00Z'));
+  });
+
+  afterAll(() => {
+    jest.useRealTimers();
+  });
+
   it('render horizontal', async () => {
     const onChangeFn = jest.fn();
     const { container } = render(

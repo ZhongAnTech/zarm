@@ -40,14 +40,14 @@ Zarm 的命名，灵感来源于众安保险秉承的理念：做有温度的保
 
 ## 安装
 
-npm 或 yarn 安装
+npm 或 pnpm 安装
 
 ```bash
 # npm
 $ npm install zarm --save
 
-# yarn
-$ yarn add zarm
+# pnpm
+$ pnpm add zarm
 ```
 
 ## 使用
