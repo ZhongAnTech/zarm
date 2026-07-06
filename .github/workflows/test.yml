@@ -69,9 +69,7 @@ jobs:
         run: pnpm --filter zarm exec node ./tests/dekko/dist.test.js
 
       - name: Check bundle size
-        run: pnpm --filter zarm exec bundlesize
-        env:
-          BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}
+        run: pnpm --filter zarm exec node ./tests/bundlesize.test.js
 
       - name: Coverage
         run: bash <(curl -s https://codecov.io/bash)
@@ -110,6 +108,4 @@ jobs:
         run: pnpm --filter zarm exec node ./tests/dekko/dist.test.js
 
       - name: Check bundle size
-        run: pnpm --filter zarm exec bundlesize
-        env:
-          BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}
+        run: pnpm --filter zarm exec node ./tests/bundlesize.test.js

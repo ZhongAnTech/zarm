@@ -95,6 +95,7 @@
     "@types/react-transition-group": "^4.4.5",
     "@types/testing-library__jest-dom": "^5.9.1",
     "@zarm-design/cli": "^0.0.48",
+    "chalk": "^4.1.1",
     "dekko": "^0.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
