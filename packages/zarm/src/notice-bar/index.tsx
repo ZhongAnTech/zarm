@@ -1,12 +1,13 @@
-import React, { forwardRef, useRef, useState } from 'react';
-import type { MouseEvent } from 'react';
-import { Volume as VolumeIcon } from '@zarm-design/icons';
 import { createBEM } from '@zarm-design/bem';
-import type BaseNoticeBarProps from './interface';
-import Message from '../message';
+import { Volume as VolumeIcon } from '@zarm-design/icons';
+import type { MouseEvent } from 'react';
+import React, { forwardRef, useRef, useState } from 'react';
 import { ConfigContext } from '../config-provider';
-import useAnimationDuration from './hooks';
+import Message from '../message';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
+import useAnimationDuration from './hooks';
+import type BaseNoticeBarProps from './interface';
 
 export interface NoticeBarCssVars {
   '--height'?: React.CSSProperties['height'];
@@ -21,6 +22,7 @@ export type NoticeBarProps = BaseNoticeBarProps &
   };
 
 const NoticeBar = forwardRef<HTMLDivElement, NoticeBarProps>((props, ref) => {
+  props = mergeDefaultProps(NoticeBar.defaultProps, props);
   const { children, speed, delay, onClose, className, style, ...restProps } = props;
   const [visible, setVisible] = useState(true);
   const { prefixCls } = React.useContext(ConfigContext);

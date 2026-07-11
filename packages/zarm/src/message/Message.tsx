@@ -1,10 +1,11 @@
-import React, { forwardRef, useState, useContext } from 'react';
-import type { MouseEvent } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { ArrowRight as ArrowRightIcon, Close as CloseIcon } from '@zarm-design/icons';
+import type { MouseEvent } from 'react';
+import React, { forwardRef, useContext, useState } from 'react';
 import { ConfigContext } from '../config-provider';
-import type { BaseMessageProps } from './interface';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseMessageProps } from './interface';
 
 export interface MessageCssVars {
   '--line-height'?: React.CSSProperties['lineHeight'];
@@ -19,6 +20,7 @@ export type MessageProps = BaseMessageProps &
   };
 
 const Message = forwardRef<HTMLDivElement, MessageProps>((props, ref) => {
+  props = mergeDefaultProps(Message.defaultProps, props);
   const { className, theme, icon, hasArrow, closable, children, onClick, onClose, ...restProps } =
     props;
   const [visible, setVisible] = useState(true);

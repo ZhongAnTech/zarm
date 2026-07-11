@@ -42,6 +42,12 @@ module.exports = {
         style: false,
       },
       {
+        key: 'react-19',
+        module: () => import('@/web/docs/react-19.md'),
+        source: '@/web/docs/react-19.md',
+        style: false,
+      },
+      {
         key: 'contributing',
         module: () => import('@/web/docs/contributing.md'),
         source: '@/web/docs/contributing.md',
@@ -461,6 +467,7 @@ module.exports = {
     },
   ],
   assets: {
-    iconfont: '//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_15.ab13c1498232a6d09657a9e32cd7f740.js'
-  }
+    iconfont:
+      '//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_15.ab13c1498232a6d09657a9e32cd7f740.js',
+  },
 };

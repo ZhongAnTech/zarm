@@ -6,21 +6,24 @@ import Markdown from '@/web/components/Markdown';
 import SideBar from '@/web/components/SideBar';
 import classnames from 'classnames';
 import { QRCodeSVG } from 'qrcode.react';
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { lazy, Suspense, useContext, useEffect, useRef, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
-import Loadable from 'react-loadable';
 import { Redirect, Route, Switch, useParams, useRouteMatch } from 'react-router-dom';
 import { Icon, Popper } from 'zarm';
 import './style.scss';
 
 const LoadableComponent = (component) => {
-  return Loadable({
-    loader: component.module,
-    render: (loaded, props) => {
-      return <Markdown document={loaded.default} component={component} {...props} />;
-    },
-    loading: () => null,
-  });
+  const LazyComponent = lazy(() =>
+    component.module().then((loaded) => ({
+      default: (props) => <Markdown document={loaded.default} component={component} {...props} />,
+    })),
+  );
+
+  return (props) => (
+    <Suspense fallback={null}>
+      <LazyComponent {...props} />
+    </Suspense>
+  );
 };
 
 const Icons = Icon.createFromIconfont(assets.iconfont);

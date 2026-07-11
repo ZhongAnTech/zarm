@@ -22,8 +22,8 @@ const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
     size,
     children,
     component: SvgComponent,
-    viewBox,
-    mode,
+    viewBox = '0 0 1000 1000',
+    mode = 'auto',
     name = '',
     ...rest
   } = props;
@@ -82,9 +82,4 @@ const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
 Icon.createFromIconfont = createFromIconfont;
 
 Icon.displayName = 'Icon';
-Icon.defaultProps = {
-  viewBox: '0 0 1000 1000',
-  mode: 'auto',
-};
-
 export default Icon;

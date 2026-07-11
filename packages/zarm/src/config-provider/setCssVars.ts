@@ -2,11 +2,19 @@ import * as React from 'react';
 import type { ConfigProviderProps } from './interface';
 
 const setCssVars = (children: React.ReactNode, cssVars: ConfigProviderProps['cssVars']) => {
-  if (!cssVars) return children;
+  if (!cssVars || Object.keys(cssVars).length === 0 || !React.isValidElement(children)) {
+    return children;
+  }
 
-  return React.cloneElement(children as React.DetailedReactHTMLElement<any, HTMLElement>, {
+  if (children.type === React.Fragment) {
+    return React.createElement('span', { style: { display: 'contents', ...cssVars } }, children);
+  }
+
+  const child = children as React.ReactElement<any>;
+
+  return React.cloneElement(child, {
     style: {
-      ...(children as React.DetailedReactHTMLElement<any, HTMLElement>).props.style,
+      ...child.props.style,
       ...cssVars,
     },
   });

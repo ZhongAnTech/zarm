@@ -9,19 +9,21 @@
  * onChange: () => { file, fileType, fileSize, fileName, thumbnail }。
  * onBeforeSelect: () => boolean，返回 false 的时候阻止后续的选择事件。
  */
-import React, { cloneElement, useCallback } from 'react';
 import { createBEM } from '@zarm-design/bem';
-import type { FileObject, BaseFilePickerProps } from './interface';
-import handleFileInfo from './utils/handleFileInfo';
+import React, { cloneElement, useCallback } from 'react';
 import { ConfigContext } from '../config-provider';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import { HTMLProps } from '../utils/utilityTypes';
+import type { BaseFilePickerProps, FileObject } from './interface';
+import handleFileInfo from './utils/handleFileInfo';
 
 export interface FilePickerCssVars {
-  '--opacity-disabled': React.CSSProperties['opacity'],
+  '--opacity-disabled': React.CSSProperties['opacity'];
 }
 export type FilePickerProps = BaseFilePickerProps & HTMLProps<FilePickerCssVars>;
 
 const FilePicker = React.forwardRef<unknown, FilePickerProps>((props, ref) => {
+  props = mergeDefaultProps(FilePicker.defaultProps, props);
   const fileRef = (ref as any) || React.createRef<HTMLDivElement>();
 
   const { prefixCls } = React.useContext(ConfigContext);
@@ -82,11 +84,10 @@ const FilePicker = React.forwardRef<unknown, FilePickerProps>((props, ref) => {
     }
   };
 
-  const content = cloneElement(children as React.ReactElement, {
+  const child = children as React.ReactElement<any>;
+  const content = cloneElement(child, {
     onClick: handleClick,
-    className: [(children as React.ReactElement).props.className, 'needsclick']
-      .filter(Boolean)
-      .join(' '), // 修复加载fastClick库后引起的合成事件问题
+    className: [child.props.className, 'needsclick'].filter(Boolean).join(' '), // 修复加载fastClick库后引起的合成事件问题
   });
   return (
     <div className={cls} {...restProps}>

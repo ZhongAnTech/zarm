@@ -3,6 +3,7 @@ import isEqual from 'lodash/isEqual';
 import * as React from 'react';
 import { ConfigContext } from '../config-provider';
 import { useSafeState } from '../utils/hooks';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import Wheel from '../wheel';
 import type { WheelValue } from '../wheel/interface';
@@ -32,6 +33,7 @@ export interface PickerViewInstance {
 }
 
 const PickerView = React.forwardRef<PickerViewInstance, PickerViewProps>((props, ref) => {
+  props = mergeDefaultProps(PickerView.defaultProps, props);
   const { className, style, cols, dataSource, fieldNames, itemRender, disabled, onChange } = props;
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('picker-view', { prefixCls });

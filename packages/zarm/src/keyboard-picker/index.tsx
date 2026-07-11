@@ -5,12 +5,14 @@ import Keyboard from '../keyboard';
 import type { PickerContainerCssVars } from '../picker/Container';
 import Popup from '../popup';
 import SafeArea from '../safe-area';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseKeyBoardPickerProps } from './interface';
 
 export type KeyboardPickerProps = BaseKeyBoardPickerProps & HTMLProps<PickerContainerCssVars>;
 
 const KeyboardPicker = React.forwardRef<unknown, KeyboardPickerProps>((props, ref) => {
+  props = mergeDefaultProps(KeyboardPicker.defaultProps, props);
   const { className, style, visible, destroy, safeArea, ...restProps } = props;
 
   const keyboardPickerRef = (ref as any) || React.createRef<HTMLDivElement>();

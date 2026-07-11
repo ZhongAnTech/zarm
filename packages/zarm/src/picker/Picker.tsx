@@ -1,5 +1,6 @@
 import * as React from 'react';
 import PickerView, { PickerColumnItem, PickerValue, PickerViewInstance } from '../picker-view';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import PickerContainer, { PickerContainerCssVars } from './Container';
 import type { BasePickerProps } from './interface';
@@ -21,6 +22,7 @@ export interface PickerCssVars extends PickerContainerCssVars {
 export type PickerProps = BasePickerProps & HTMLProps<PickerCssVars>;
 
 const Picker: React.FC<PickerProps> = (props) => {
+  props = mergeDefaultProps(Picker.defaultProps, props);
   const {
     className,
     style,

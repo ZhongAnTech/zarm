@@ -1,9 +1,17 @@
 import { createBEM } from '@zarm-design/bem';
 import { DeleteKey as DeleteKeyIcon, Keyboard as KeyboardIcon } from '@zarm-design/icons';
-import React, { CSSProperties, forwardRef, useContext, useRef, ReactNode, useCallback } from 'react';
+import React, {
+  CSSProperties,
+  forwardRef,
+  ReactNode,
+  useCallback,
+  useContext,
+  useRef,
+} from 'react';
 import { ConfigContext } from '../config-provider';
 import useLongPress from '../use-long-press';
 import { useLatest } from '../utils/hooks';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import BuildInConfig from './BuildInConfig';
 import type { BaseKeyBoardProps, KeyBoardKey } from './interface';
@@ -25,6 +33,7 @@ export interface KeyboardCssVars {
 export type KeyboardProps = BaseKeyBoardProps & HTMLProps<KeyboardCssVars>;
 
 const Keyboard = forwardRef<HTMLDivElement, KeyboardProps>((props, ref) => {
+  props = mergeDefaultProps(Keyboard.defaultProps, props);
   const { className, style, type, dataSource, onKeyClick, ...restProps } = props;
 
   const { locale: globalLocal, prefixCls } = useContext(ConfigContext);
@@ -66,8 +75,8 @@ const Keyboard = forwardRef<HTMLDivElement, KeyboardProps>((props, ref) => {
   });
 
   const renderKey = useCallback((text: ReactNode | KeyBoardKey, index: number) => {
-    const keyObj: ReactNode | KeyBoardKey = (
-      typeof text === 'object' ? text : { text }
+    const keyObj = (
+      typeof text === 'object' && text !== null && !React.isValidElement(text) ? text : { text }
     ) as KeyBoardKey;
 
     const commonProps = {

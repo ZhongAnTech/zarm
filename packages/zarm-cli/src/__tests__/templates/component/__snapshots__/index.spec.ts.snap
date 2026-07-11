@@ -27,8 +27,6 @@ const MyTestComponent = forwardRef<HTMLDivElement, MyTestComponentProps>((props,
 
 MyTestComponent.displayName = 'MyTestComponent';
 
-MyTestComponent.defaultProps = {};
-
 export default MyTestComponent;
 "
 `;
@@ -38,18 +36,20 @@ exports[`templates component should create demo template 1`] = `
 
 ## 基本用法
 \`\`\`jsx
+import { createRoot } from 'react-dom/client';
 import { MyTestComponent } from 'zarm';
 
-ReactDOM.render(
+createRoot(mountNode).render(
   <>
     <MyTestComponent />
   </>
-, mountNode);
+);
 \`\`\`
 
 ## 用法二
 \`\`\`jsx
 import { useState } from 'react';
+import { createRoot } from 'react-dom/client';
 import { MyTestComponent } from 'zarm';
 
 const Demo = () => {
@@ -58,7 +58,7 @@ const Demo = () => {
   return <MyTestComponent />;
 };
 
-ReactDOM.render(<Demo />, mountNode);
+createRoot(mountNode).render(<Demo />);
 \`\`\`
 
 ## API

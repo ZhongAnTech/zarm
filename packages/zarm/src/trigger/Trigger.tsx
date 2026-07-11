@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
 import includes from 'lodash/includes';
-import BaseTriggerProps from './interface';
+import React, { useEffect } from 'react';
 import Events from '../utils/events';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
+import BaseTriggerProps from './interface';
 
 export type TriggerProps = BaseTriggerProps;
 
@@ -9,6 +10,7 @@ const Trigger: React.FC<TriggerProps> & {
   instanceList: TriggerProps['onClose'][];
   count: number;
 } = (props) => {
+  props = mergeDefaultProps(Trigger.defaultProps, props);
   const { visible, onClose, disabled = false } = props;
 
   // execute callback function, KeyboardEvent.keycode was not recommended in MDN.

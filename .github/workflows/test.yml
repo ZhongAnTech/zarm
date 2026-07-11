@@ -33,9 +33,29 @@ jobs:
         if: matrix.node-version == 20
         run: bash <(curl -s https://codecov.io/bash)
 
-  test-react-17:
-    name: Test and build with React 17
+  test-react:
+    name: Test and build with React ${{ matrix.react }}
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - react: 16.8.0
+            react_types: 16.14.68
+            react_dom_types: 16.9.25
+            testing_library: 12.1.5
+          - react: 17.0.2
+            react_types: 17.0.90
+            react_dom_types: 17.0.26
+            testing_library: 12.1.5
+          - react: 18.3.1
+            react_types: 18.3.27
+            react_dom_types: 18.3.7
+            testing_library: 16.3.2
+          - react: 19.2.7
+            react_types: 19.2.17
+            react_dom_types: 19.2.3
+            testing_library: 16.3.2
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -54,14 +74,28 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Install React compatibility target
+        run: >
+          pnpm --filter zarm --filter @zarm-design/icons add --save-dev --lockfile=false
+          --ignore-scripts
+          react@${{ matrix.react }} react-dom@${{ matrix.react }}
+          @types/react@${{ matrix.react_types }} @types/react-dom@${{ matrix.react_dom_types }}
+          @testing-library/react@${{ matrix.testing_library }}
+
       - name: Lint
+        if: matrix.react == '19.2.7'
         run: pnpm lint
 
       - name: Test
-        run: pnpm --filter zarm coverage
+        if: matrix.react != '19.2.7'
+        run: pnpm --filter zarm test && pnpm --filter @zarm-design/icons test
+
+      - name: Test with coverage
+        if: matrix.react == '19.2.7'
+        run: pnpm --filter zarm coverage && pnpm --filter @zarm-design/icons test
 
       - name: Build
-        run: pnpm --filter zarm build
+        run: pnpm --filter zarm build && pnpm --filter @zarm-design/icons build
         env:
           NODE_OPTIONS: --max_old_space_size=4096
 
@@ -72,10 +106,11 @@ jobs:
         run: pnpm --filter zarm exec node ./tests/bundlesize.test.js
 
       - name: Coverage
+        if: matrix.react == '19.2.7'
         run: bash <(curl -s https://codecov.io/bash)
 
-  test-react-16:
-    name: Test and build with React 16
+  test-site:
+    name: Build site with React 19
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -93,19 +128,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Install React 16
-        run: pnpm --filter zarm install-react-16 --lockfile=false
-
-      - name: Test
-        run: pnpm --filter zarm test
-
       - name: Build
-        run: pnpm --filter zarm build
+        run: pnpm --filter site build
         env:
           NODE_OPTIONS: --max_old_space_size=4096
-
-      - name: Check dist
-        run: pnpm --filter zarm exec node ./tests/dekko/dist.test.js
-
-      - name: Check bundle size
-        run: pnpm --filter zarm exec node ./tests/bundlesize.test.js

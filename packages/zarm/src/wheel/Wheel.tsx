@@ -6,6 +6,7 @@ import React, { createRef, useEffect, useRef } from 'react';
 import { ConfigContext } from '../config-provider';
 import { resolvedFieldNames } from '../picker-view/utils';
 import { useEventCallback, usePrevious, useSafeLayoutEffect } from '../utils/hooks';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseWheelProps, WheelItem, WheelValue } from './interface';
 
@@ -34,6 +35,7 @@ export interface WheelCssVars {
 export type WheelProps = BaseWheelProps & HTMLProps<WheelCssVars>;
 
 const Wheel: React.FC<WheelProps> = (props) => {
+  props = mergeDefaultProps(Wheel.defaultProps, props);
   const { className, value, defaultValue, dataSource, disabled, stopScroll, itemRender, onChange } =
     props;
 

@@ -2,6 +2,7 @@ import { createBEM } from '@zarm-design/bem';
 import React, { createRef, useContext, useState } from 'react';
 import { ConfigContext } from '../config-provider';
 import ImagePreview from '../image-preview';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import LazyDetector from './lazy-detector';
 
 export const IMAGE_STATUS = {
@@ -30,6 +31,7 @@ export interface ImageProps extends Omit<React.ImgHTMLAttributes<HTMLImageElemen
 }
 
 const Image = React.forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
+  props = mergeDefaultProps(Image.defaultProps, props);
   const {
     src,
     placeholder,

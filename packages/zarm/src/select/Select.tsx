@@ -5,6 +5,7 @@ import { ConfigContext } from '../config-provider';
 import Picker from '../picker';
 import { resolved } from '../picker-view/utils';
 import { toArray } from '../utils';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import { HTMLProps } from '../utils/utilityTypes';
 import type { WheelItem } from '../wheel/interface';
 import type { BaseSelectProps } from './interface';
@@ -28,6 +29,7 @@ export interface SelectState {
 }
 
 const Select = React.forwardRef<HTMLDivElement, SelectProps>((props, ref) => {
+  props = mergeDefaultProps(Select.defaultProps, props);
   const {
     placeholder,
     className,

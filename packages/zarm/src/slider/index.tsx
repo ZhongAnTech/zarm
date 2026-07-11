@@ -1,13 +1,14 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { createBEM } from '@zarm-design/bem';
 import { useDrag } from '@use-gesture/react';
+import { createBEM } from '@zarm-design/bem';
 import isPlainObject from 'lodash/isPlainObject';
-import BaseSliderProps from './interface';
-import Events from '../utils/events';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { ConfigContext } from '../config-provider';
 import Tooltip from '../tooltip';
+import Events from '../utils/events';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
+import BaseSliderProps from './interface';
 import ensureValuePrecision from './utils/ensureValuePrecision';
 import getValue from './utils/getValue';
-import { ConfigContext } from '../config-provider';
 
 export interface SliderCssVars {
   '--line-size'?: React.CSSProperties['width' | 'height'];
@@ -34,6 +35,7 @@ export interface SliderProps
     BaseSliderProps {}
 
 const Slider = React.forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
+  props = mergeDefaultProps(Slider.defaultProps, props);
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('slider', { prefixCls });
 
@@ -204,6 +206,7 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
   const offset = `${ratio * 100}%`;
 
   const knobStyle: React.CSSProperties = {
+    touchAction: 'none',
     [`${vertical ? 'bottom' : 'left'}`]: offset || 0,
   };
 

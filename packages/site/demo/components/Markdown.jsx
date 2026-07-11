@@ -1,9 +1,9 @@
-import React, { useEffect, useContext } from 'react';
-import ReactDOM from 'react-dom';
+import Context from '@/utils/context';
+import { ReactDOMCompat as ReactDOM, unmount } from '@/utils/reactRoot';
 import { marked } from 'marked';
+import React, { useContext, useEffect } from 'react';
 // import { NavBar, Radio, Icon } from 'zarm';
 import { useLocation } from 'react-router-dom';
-import Context from '@/utils/context';
 import Demo from './Demo';
 
 export default (props) => {
@@ -37,7 +37,7 @@ export default (props) => {
 
     return function cleanup() {
       nodeList.forEach((node) => {
-        ReactDOM.unmountComponentAtNode(node);
+        unmount(node);
       });
     };
   });

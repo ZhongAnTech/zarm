@@ -1,6 +1,7 @@
 import { createBEM } from '@zarm-design/bem';
 import * as React from 'react';
 import { ConfigContext } from '../config-provider';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseLoadingProps } from './interface';
 
@@ -102,6 +103,7 @@ const Spinner = React.forwardRef<HTMLDivElement, LoadingProps>((props, ref) => {
 Spinner.displayName = 'Spinner';
 
 const Loading = React.forwardRef<HTMLDivElement, LoadingProps>((props, ref) => {
+  props = mergeDefaultProps(Loading.defaultProps, props);
   if (props.type !== 'spinner') {
     const { type, ...restProps } = props;
     return <Circular ref={ref} {...restProps} />;

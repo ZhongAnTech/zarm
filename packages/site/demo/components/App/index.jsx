@@ -5,7 +5,6 @@ import SentryBoundary from '@/demo/components/SentryBoundary';
 import { components } from '@/site.config';
 import { pascalCase } from 'change-case';
 import React, { lazy, Suspense } from 'react';
-import Loadable from 'react-loadable';
 import { Route, Switch } from 'react-router-dom';
 import { Toast } from 'zarm';
 import './style.scss';
@@ -22,25 +21,26 @@ const Loading = () => {
 };
 
 const LoadableComponent = (component) => {
-  const loader = { page: component.module };
   const compName = pascalCase(component.key);
-
-  if (component.style) {
-    loader.style = () => import(`@/demo/styles/${compName}Page`);
-  }
-
-  return Loadable.Map({
-    loader,
-    render: (loaded, props) => {
-      return (
+  const LazyComponent = lazy(() =>
+    Promise.all([
+      component.module(),
+      component.style ? import(`@/demo/styles/${compName}Page`) : Promise.resolve(),
+    ]).then(([page]) => ({
+      default: (props) => (
         <Container className={`${component.key}-page`}>
-          <Markdown content={loaded.page.default} component={component} {...props} />
+          <Markdown content={page.default} component={component} {...props} />
           <Footer />
         </Container>
-      );
-    },
-    loading: () => <Loading />,
-  });
+      ),
+    })),
+  );
+
+  return (props) => (
+    <Suspense fallback={<Loading />}>
+      <LazyComponent {...props} />
+    </Suspense>
+  );
 };
 
 const App = () => {

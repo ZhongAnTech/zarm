@@ -1,8 +1,9 @@
 import { createBEM } from '@zarm-design/bem';
-import React, { FC, useContext, useEffect, useState } from 'react';
 import isEqual from 'lodash/isEqual';
+import React, { FC, useContext, useEffect, useState } from 'react';
 import { ConfigContext } from '../config-provider';
 import List from '../list';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import { CheckboxGroupContext } from './context';
 import type { BaseCheckboxGroupProps, CheckboxValue } from './interface';
@@ -19,6 +20,7 @@ const getValue = (props: CheckboxGroupProps, defaultValue?: CheckboxValue[]) => 
 export type CheckboxGroupProps = BaseCheckboxGroupProps & HTMLProps<CheckboxGroupCssVars>;
 
 const CheckboxGroup: FC<CheckboxGroupProps> = (props) => {
+  props = mergeDefaultProps(CheckboxGroup.defaultProps, props);
   const [value, setValue] = useState(getValue(props, []));
   const { type, block, disabled, iconAlign, className, style } = props;
   const { prefixCls } = useContext(ConfigContext);

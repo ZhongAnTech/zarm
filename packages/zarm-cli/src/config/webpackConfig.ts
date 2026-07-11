@@ -87,11 +87,6 @@ const config: Configuration = {
 
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss', '.svg'],
-    alias: {
-      // react-devtools support to profiling
-      'react-dom$': 'react-dom/profiling',
-      'scheduler/tracing': 'scheduler/tracing-profiling',
-    },
   },
 
   plugins: [

@@ -5,6 +5,7 @@ import Carousel from '../carousel';
 import { ConfigContext } from '../config-provider';
 import { useTypeChangeWarning } from '../utils/deprecationWarning';
 import { scrollTo } from '../utils/dom';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseTabsProps } from './interface';
 import type { TabPanelProps } from './TabPanel';
@@ -14,7 +15,7 @@ import { getPxStyle, getTransformPropValue } from './util/index';
 const getChildChecked = (children: TabPanelProps['children']) => {
   let selectIndex;
   React.Children.forEach(children, (item, index) => {
-    if (React.isValidElement(item) && item.props && item.props.selected) {
+    if (React.isValidElement<TabPanelProps>(item) && item.props.selected) {
       selectIndex = index;
     }
   });
@@ -66,6 +67,7 @@ interface CompoundedComponent
 }
 
 const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
+  props = mergeDefaultProps(Tabs.defaultProps, props);
   const {
     className,
     style,

@@ -56,7 +56,7 @@ const Transition: React.FC<TransitionProps> = (props) => {
     onLeaveActive,
     onLeaveEnd,
   } = props;
-  const nodeRef = React.useRef<HTMLElement | null>();
+  const nodeRef = React.useRef<HTMLElement | null>(null);
   const [state, setState] = React.useState(TransitionState.UNMOUNTED);
   const callbackRef = React.useRef<(event: Event) => void>(noop);
 
@@ -142,11 +142,12 @@ const Transition: React.FC<TransitionProps> = (props) => {
     >
       {() => {
         if (React.isValidElement<any>(children)) {
-          return React.cloneElement(children, {
+          const child = children as React.ReactElement<any>;
+          return React.cloneElement(child, {
             ref: setNodeRef,
-            className: classnames(children.props.className, className),
+            className: classnames(child.props.className, className),
             style: {
-              ...children.props.style,
+              ...child.props.style,
               ...style,
             },
           });

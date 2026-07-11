@@ -4,6 +4,7 @@ import React, { useCallback, useContext, useRef } from 'react';
 import { ConfigContext } from '../config-provider';
 import useClickAway from '../use-click-away';
 import { useSafeState } from '../utils/hooks';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseSwipeActionItemProps, BaseSwipeActionProps } from './interface';
 import SwipeActionItem from './SwipeActionItem';
@@ -21,6 +22,7 @@ export type SwipeActionProps = BaseSwipeActionProps &
   };
 
 const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, ref) => {
+  props = mergeDefaultProps(SwipeAction.defaultProps, props);
   const {
     children,
     className,
@@ -38,8 +40,8 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
 
   const isOpen = useRef<null | string>(null);
   const pending = useRef(false);
-  const leftRef = useRef<HTMLDivElement>();
-  const rightRef = useRef<HTMLDivElement>();
+  const leftRef = useRef<HTMLDivElement>(null);
+  const rightRef = useRef<HTMLDivElement>(null);
   const swipeActionWrap = useRef<HTMLDivElement | null>((ref as any) || null);
   const { prefixCls } = useContext(ConfigContext);
   const [offsetLeft, setOffsetLeft] = useSafeState<number>(0);
@@ -188,11 +190,15 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
   };
 
   const cls = bem([className]);
+  const swipeActionStyle: React.CSSProperties = {
+    touchAction: 'none',
+    ...props.style,
+  };
 
   return (
     <>
       {leftActions || rightActions ? (
-        <div ref={swipeActionWrap} className={cls} style={props.style} {...bind()}>
+        <div ref={swipeActionWrap} className={cls} style={swipeActionStyle} {...bind()}>
           {renderButtons(leftActions, 'left', leftRef)}
           {renderButtons(rightActions, 'right', rightRef)}
           <div

@@ -1,9 +1,10 @@
-import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
+import * as React from 'react';
 import { ConfigContext } from '../config-provider';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
+import type { HTMLProps } from '../utils/utilityTypes';
 import GridContext from './GridContext';
 import type { BaseGridProps } from './interface';
-import type { HTMLProps } from '../utils/utilityTypes';
 
 export interface GridCssVars {
   '--border-color'?: React.CSSProperties['borderColor'];
@@ -14,6 +15,7 @@ export interface GridCssVars {
 export type GridProps = BaseGridProps & HTMLProps<GridCssVars>;
 
 const Grid: React.FC<GridProps> = (props) => {
+  props = mergeDefaultProps(Grid.defaultProps, props);
   const { className, style, columns, gutter, bordered, square, children } = props;
 
   const { prefixCls } = React.useContext(ConfigContext);

@@ -13,6 +13,7 @@ import React, {
 import Button from '../button';
 import { ConfigContext } from '../config-provider';
 import List from '../list';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import { RadioGroupContext } from './context';
 import type { BaseRadioProps } from './interface';
@@ -52,9 +53,10 @@ const getChecked = (props: RadioProps, defaultChecked?: boolean) => {
 
 export interface RadioRef {
   check: () => void;
-};
+}
 
 const Radio = forwardRef<RadioRef, RadioProps>((props, ref) => {
+  props = mergeDefaultProps(Radio.defaultProps, props);
   const inputRef = useRef<HTMLInputElement>(null);
   let [checked, setChecked] = useState(getChecked(props, false));
   let { disabled } = props;
@@ -64,7 +66,7 @@ const Radio = forwardRef<RadioRef, RadioProps>((props, ref) => {
     checked = groupContext.value === props.value;
     setChecked = (changedChecked: boolean) => {
       if (changedChecked) {
-        groupContext.check(props.value)
+        groupContext.check(props.value);
       }
     };
     disabled = disabled || groupContext.disabled;
@@ -104,7 +106,7 @@ const Radio = forwardRef<RadioRef, RadioProps>((props, ref) => {
       className={bem('input')}
       aria-checked={checked}
       disabled={disabled}
-      value={props.value}
+      value={props.value ?? ''}
       checked={checked}
       onChange={(e: ChangeEvent<HTMLInputElement>) => {
         if (disabled) return;

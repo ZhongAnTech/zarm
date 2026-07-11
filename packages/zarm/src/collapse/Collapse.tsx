@@ -2,6 +2,7 @@ import { createBEM } from '@zarm-design/bem';
 import includes from 'lodash/includes';
 import React, { Children, cloneElement, ReactElement, useState } from 'react';
 import { ConfigContext } from '../config-provider';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import CollapseItem, { CollapseItemProps } from './CollapseItem';
 import type { BaseCollapseProps, CollapseActiveKey, CollapseItemKey } from './interface';
@@ -46,6 +47,7 @@ const getActiveKey = (props) => {
 };
 
 const Collapse = React.forwardRef<unknown, CollapseProps>((props, ref) => {
+  props = mergeDefaultProps(Collapse.defaultProps, props);
   const {
     className,
     onChange,

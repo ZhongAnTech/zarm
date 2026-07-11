@@ -5,6 +5,7 @@ import * as React from 'react';
 import { ConfigContext } from '../config-provider';
 import Input, { InputRef, InputTextProps } from '../input';
 import { useControllableEventValue } from '../utils/hooks';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import { resolveOnChange } from '../utils/resolveOnChange';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type BaseSearchBarProps from './interface';
@@ -33,6 +34,7 @@ export type SearchBarProps = BaseSearchBarProps &
   HTMLProps<SearchBarCssVars>;
 
 const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
+  props = mergeDefaultProps(SearchBar.defaultProps, props);
   const {
     className,
     style,
@@ -50,7 +52,7 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
     ...restProps
   } = props;
   const cancelRef = React.useRef<HTMLDivElement>(null);
-  const inputRef = React.useRef<InputRef>();
+  const inputRef = React.useRef<InputRef>(null);
   const formRef = React.createRef<HTMLFormElement>();
   const [value, setValue] = useControllableEventValue({ ...props, defaultValue });
   const [isFocus, setIsFocus] = React.useState<boolean>(false);

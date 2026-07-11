@@ -1,13 +1,15 @@
-import React, { HTMLAttributes } from 'react';
 import { createBEM } from '@zarm-design/bem';
-import type { BaseCollapseItemProps } from './interface';
+import React, { HTMLAttributes } from 'react';
 import { ConfigContext } from '../config-provider';
 import { useSafeLayoutEffect } from '../utils/hooks';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
+import type { BaseCollapseItemProps } from './interface';
 
 export type CollapseItemProps = Omit<HTMLAttributes<HTMLDivElement>, 'key' | 'title' | 'onChange'> &
   BaseCollapseItemProps;
 
 const CollapseItem = React.forwardRef<unknown, CollapseItemProps>((props, ref) => {
+  props = mergeDefaultProps(CollapseItem.defaultProps, props);
   const { title, className, disabled, animated, isActive, children, onChange, ...rest } = props;
 
   const content = (ref as any) || React.createRef<HTMLElement>();

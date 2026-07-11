@@ -26,7 +26,5 @@ const ${compName} = forwardRef<HTMLDivElement, ${compName}Props>((props, ref) =>
 
 ${compName}.displayName = '${compName}';
 
-${compName}.defaultProps = {};
-
 export default ${compName};
 `;

@@ -3,7 +3,7 @@ import execa from 'execa';
 import testExecutor from '../test';
 
 jest.mock('execa');
-const execaMocked = mocked(execa);
+const execaSyncMocked = mocked(execa.sync);
 
 describe('test', () => {
   afterAll(() => {
@@ -11,7 +11,7 @@ describe('test', () => {
   });
   it('should execute jest command for web module', () => {
     testExecutor({});
-    expect(execaMocked).toBeCalledWith(
+    expect(execaSyncMocked).toBeCalledWith(
       'node',
       expect.arrayContaining([
         expect.stringContaining('jest'),
@@ -24,7 +24,7 @@ describe('test', () => {
   // TODO: Not sure jest command can be used with --coverage and -u options together
   it('should execute jest command with --coverage and -u options', () => {
     testExecutor({ coverage: true, updateSnapshot: true });
-    expect(execaMocked).toBeCalledWith(
+    expect(execaSyncMocked).toBeCalledWith(
       'node',
       expect.arrayContaining([
         expect.stringContaining('jest'),

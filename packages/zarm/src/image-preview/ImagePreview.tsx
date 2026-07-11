@@ -8,6 +8,7 @@ import Loading from '../loading';
 import PinchZoom from '../pinch-zoom';
 import Popup from '../popup';
 import { canUseDOM } from '../utils/dom';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseImagePreviewProps, Images } from './interface';
 import formatImages from './utils/formatImages';
@@ -51,6 +52,7 @@ const Content: React.FC<{ minScale: number; maxScale: number; imgSrc: string }> 
 };
 
 const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props, ref) => {
+  props = mergeDefaultProps(ImagePreview.defaultProps, props);
   const {
     visible,
     activeIndex,
@@ -69,6 +71,9 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
 
   const { prefixCls, locale } = React.useContext(ConfigContext);
   const bem = createBEM('image-preview', { prefixCls });
+  const dragStyle: React.CSSProperties = {
+    touchAction: 'none',
+  };
 
   useEffect(() => {
     setImages(formatImages(props.images));
@@ -134,7 +139,7 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
   const renderPagination = () => {
     if (visible && showPagination && images && images.length > 1) {
       return (
-        <div className={bem('pagination')} {...bindEvent()}>
+        <div className={bem('pagination')} style={dragStyle} {...bindEvent()}>
           {currentIndex + 1} / {images?.length}
         </div>
       );
@@ -153,7 +158,7 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
       visible
     ) {
       return (
-        <Button size="xs" loading={loaded === LOAD_STATUS.start} {...loadEvent()}>
+        <Button size="xs" loading={loaded === LOAD_STATUS.start} style={dragStyle} {...loadEvent()}>
           {locale?.ImagePreview && locale?.ImagePreview?.[loaded]}
         </Button>
       );
@@ -173,7 +178,7 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
     >
       <>
         <div className={bem('title')}>{title}</div>
-        <div ref={ref} className={bem('content')} {...bindEvent()}>
+        <div ref={ref} className={bem('content')} style={dragStyle} {...bindEvent()}>
           {visible &&
             (images?.length ? (
               <Carousel

@@ -2,6 +2,7 @@ import { createBEM } from '@zarm-design/bem';
 import React, { FC, useContext, useEffect, useState } from 'react';
 import { ConfigContext } from '../config-provider';
 import List from '../list';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import { RadioGroupContext } from './context';
 import type { BaseRadioGroupProps, RadioValue } from './interface';
@@ -18,6 +19,7 @@ const getValue = (props: RadioGroupProps, defaultValue?: RadioValue) => {
 export type RadioGroupProps = BaseRadioGroupProps & HTMLProps<RadioGroupCssVars>;
 
 const RadioGroup: FC<RadioGroupProps> = (props) => {
+  props = mergeDefaultProps(RadioGroup.defaultProps, props);
   const [value, setValue] = useState(getValue(props));
   const { type, block, disabled, listIconAlign, compact, className, style } = props;
   const { prefixCls } = useContext(ConfigContext);

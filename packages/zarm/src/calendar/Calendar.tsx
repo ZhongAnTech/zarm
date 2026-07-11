@@ -6,6 +6,7 @@ import { Transition } from 'react-transition-group';
 import Carousel from '../carousel';
 import { ConfigContext } from '../config-provider';
 import useScroll from '../use-scroll';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import Header from './Header';
 import { BaseCalendarProps } from './interface';
@@ -62,6 +63,7 @@ interface CalendarStates {
 }
 
 const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) => {
+  props = mergeDefaultProps(Calendar.defaultProps, props);
   const {
     className,
     dateRender,
@@ -102,7 +104,8 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
   const nodes = useRef<any>({});
 
   const scrollBodyRef = React.createRef<HTMLDivElement>();
-  const weekRef = React.useRef<HTMLDivElement>();
+  const weekRef = React.useRef<HTMLDivElement>(null);
+  const scrollMonthRef = React.useRef<HTMLDivElement>(null);
 
   const [scrollDate, setScrollDate] = useState<string | null>();
 
@@ -244,9 +247,11 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
     return (
       <div className={bem('body')} ref={scrollBodyRef} onScroll={bodyScroll}>
         {content}
-        <Transition in={scrolling} timeout={500}>
+        <Transition in={scrolling} timeout={500} nodeRef={scrollMonthRef}>
           {(tState) => (
-            <div className={bem('scroll-month', [{ [tState]: true }])}>{scrollDate}</div>
+            <div ref={scrollMonthRef} className={bem('scroll-month', [{ [tState]: true }])}>
+              {scrollDate}
+            </div>
           )}
         </Transition>
       </div>
@@ -257,7 +262,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
     !isHorizontal && anchor();
   }, [direction, minDate, maxDate]);
 
-  const timer = useRef<ReturnType<typeof setTimeout>>();
+  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   useScroll({
     container: scrollBodyRef,
     onScroll: () => {

@@ -1,6 +1,7 @@
 import type { IconProps as BaseIconProps } from '@zarm-design/icons';
 import { Icon as BaseIcon } from '@zarm-design/icons';
 import * as React from 'react';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 
 export interface IconCssVars {
@@ -15,6 +16,7 @@ interface CompoundedComponent extends React.ForwardRefExoticComponent<IconProps>
 }
 
 const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
+  props = mergeDefaultProps(Icon.defaultProps, props);
   return <BaseIcon ref={ref} {...props} />;
 }) as CompoundedComponent;
 

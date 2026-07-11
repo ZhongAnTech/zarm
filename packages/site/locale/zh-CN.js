@@ -12,6 +12,7 @@ export default {
   'app.docs.article.i18n': '国际化',
   'app.docs.article.polyfill': '兼容性',
   'app.docs.article.migration-v3': '从 v2 到 v3',
+  'app.docs.article.react-19': 'React 版本兼容',
   'app.docs.article.contributing': '贡献指南',
   'app.docs.article.changelog': '更新日志',
 

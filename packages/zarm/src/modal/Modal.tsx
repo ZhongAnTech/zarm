@@ -4,6 +4,7 @@ import * as React from 'react';
 import { ConfigContext } from '../config-provider';
 import Popup from '../popup';
 import { noop } from '../utils';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseModalProps } from './interface';
 import type { ModalActionProps } from './ModalAction';
@@ -37,6 +38,7 @@ export interface ModalProps extends BaseModalProps, HTMLProps<ModalCssVars> {
 }
 
 const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
+  props = mergeDefaultProps(Modal.defaultProps, props);
   const {
     className,
     title,

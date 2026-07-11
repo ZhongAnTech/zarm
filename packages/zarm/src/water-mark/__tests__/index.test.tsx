@@ -1,6 +1,5 @@
+import { act, render, waitFor } from '@testing-library/react';
 import * as React from 'react';
-import { render, waitFor } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
 import WaterMark from '../index';
 
 describe('WaterMark', () => {
@@ -36,7 +35,7 @@ describe('WaterMark', () => {
     mockCanvasContext.mockReturnValue(null);
     render(<WaterMark />);
     await waitFor(() => {
-      expect(consoleOutput).toEqual(['当前环境不支持 Canvas']);
+      expect(consoleOutput).toContain('当前环境不支持 Canvas');
     });
     mockCanvasContext.mockRestore();
   });

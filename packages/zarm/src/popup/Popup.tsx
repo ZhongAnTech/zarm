@@ -6,6 +6,7 @@ import Transition from '../transition';
 import Trigger from '../trigger';
 import { renderToContainer } from '../utils/dom';
 import { useLockScroll } from '../utils/hooks';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BasePopupProps } from './interface';
 
@@ -20,6 +21,7 @@ const TRANSITION_NAMES = {
 };
 
 const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
+  props = mergeDefaultProps(Popup.defaultProps, props);
   const {
     width,
     destroy,
@@ -56,7 +58,11 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
 
   const handleClick = (event: React.MouseEvent) => {
     event.stopPropagation();
-    if (nodeRef.current !== event.target && nodeRef.current.contains(event.target as HTMLElement)) {
+    if (
+      nodeRef.current &&
+      nodeRef.current !== event.target &&
+      nodeRef.current.contains(event.target as HTMLElement)
+    ) {
       return;
     }
     maskRef.current?.click();

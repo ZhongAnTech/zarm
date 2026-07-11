@@ -1,5 +1,5 @@
+import { act } from '@testing-library/react';
 import type { ComponentClass } from 'react';
-import { act } from 'react-dom/test-utils';
 
 export function flushMicroTasks() {
   return new Promise((resolve) => setTimeout(resolve, 0));

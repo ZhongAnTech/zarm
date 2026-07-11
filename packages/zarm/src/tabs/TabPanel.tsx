@@ -1,19 +1,24 @@
-import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
+import * as React from 'react';
 import { ConfigContext } from '../config-provider';
-import type { BaseTabPanelProps } from './interface';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseTabPanelProps } from './interface';
 
 export type TabPanelProps = BaseTabPanelProps & HTMLProps;
 
 const TabPanel = React.forwardRef<HTMLDivElement, TabPanelProps>((props, ref) => {
+  props = mergeDefaultProps(TabPanel.defaultProps, props);
   const { className, selected, children, style } = props;
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('tabs__panel', { prefixCls });
 
-  const cls = bem([{
-    active: selected,
-  }, className]);
+  const cls = bem([
+    {
+      active: selected,
+    },
+    className,
+  ]);
 
   return (
     <div ref={ref} className={cls} style={style} role="tabpanel">
