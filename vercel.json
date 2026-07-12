@@ -1,0 +1,4 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "mkdir -p .corepack && corepack enable --install-directory .corepack && export PATH=\"$PWD/.corepack:$PATH\" && pnpm --version && pnpm install --frozen-lockfile"
+}
