@@ -1,5 +1,6 @@
 name: Deploy website
 on:
+  workflow_dispatch:
   release:
     types: [published]
     branches:
