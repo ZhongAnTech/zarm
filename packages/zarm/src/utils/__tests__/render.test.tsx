@@ -16,12 +16,12 @@ describe('renderToContainer', () => {
 
   test('unmount', async () => {
     let unmountResult: ReturnType<typeof unmount>;
-    act(() => {
+    await act(async () => {
       unmountResult = unmount(wrapper);
+      if (unmountResult && typeof (unmountResult as Promise<void>).then === 'function') {
+        await (unmountResult as Promise<void>);
+      }
     });
-    if (unmountResult && typeof (unmountResult as Promise<void>).then === 'function') {
-      await (unmountResult as Promise<void>);
-    }
     expect(wrapper.querySelector('span')).toBeNull();
   });
 });

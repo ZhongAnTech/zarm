@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { act, fireEvent, render } from '@testing-library/react';
 import Radio from '../index';
 import type { RadioRef } from '../index';
 
@@ -52,7 +52,9 @@ describe('Radio', () => {
 
     const { container } = render(<Radio ref={ref} onChange={onChange}>foo</Radio>);
     const input = container.querySelectorAll('input')[0];
-    ref.current?.check();
+    act(() => {
+      ref.current?.check();
+    });
     expect(input).toBeChecked();
     expect(onChange).toHaveBeenCalled();
     expect(checked).toEqual(true);

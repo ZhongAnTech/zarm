@@ -1,4 +1,4 @@
-import { fireEvent, render } from '@testing-library/react';
+import { act, fireEvent, render } from '@testing-library/react';
 import React from 'react';
 import type { CheckboxRef } from '../index';
 import Checkbox from '../index';
@@ -56,7 +56,9 @@ describe('Checkbox', () => {
       </Checkbox>,
     );
     const input = container.querySelectorAll('input')[0];
-    ref.current?.check();
+    act(() => {
+      ref.current?.check();
+    });
     expect(input).toBeChecked();
     expect(onChange).toHaveBeenCalled();
     expect(checked).toEqual(true);
@@ -70,10 +72,14 @@ describe('Checkbox', () => {
       </Checkbox>,
     );
     const checkedInput = checkedWrapper.container.querySelectorAll('input')[0];
-    checkedRef.current?.uncheck();
+    act(() => {
+      checkedRef.current?.uncheck();
+    });
     expect(checkedInput).not.toBeChecked();
 
-    checkedRef.current?.toggle();
+    act(() => {
+      checkedRef.current?.toggle();
+    });
     expect(checkedInput).toBeChecked();
   });
 });

@@ -61,14 +61,18 @@ describe('ActionSheet', () => {
 
 describe('UseActionSheet', () => {
   const container = document.createElement('div');
-  it('mount correctly', () => {
+  it('mount correctly', async () => {
+    let close: () => void;
     act(() => {
-      const { close } = ActionSheet.show({
+      ({ close } = ActionSheet.show({
         actions: props.actions,
         mountContainer: container,
-      });
-      expect(container.childNodes.length).toBe(1);
+      }));
+    });
+    expect(container.childNodes.length).toBe(1);
+    await act(async () => {
       close();
+      await Promise.resolve();
     });
   });
 });

@@ -8,6 +8,11 @@ module.exports = {
   env: {
     jest: true,
   },
+  settings: {
+    react: {
+      version: '19.2.7',
+    },
+  },
   overrides: [
     {
       rules: {
@@ -19,6 +24,11 @@ module.exports = {
       },
       files: ['*.ts', '*.tsx'],
       extends: ['za/typescript-react', 'prettier'],
+      settings: {
+        react: {
+          version: '19.2.7',
+        },
+      },
     },
   ],
 };

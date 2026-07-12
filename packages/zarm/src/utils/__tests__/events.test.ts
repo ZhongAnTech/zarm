@@ -13,7 +13,7 @@ describe('events', () => {
         .spyOn(window, 'addEventListener')
         .mockImplementationOnce((_, __, options: AddEventListenerOptions) => {
           const { passive } = options;
-          console.info(passive);
+          expect(passive).toBe(true);
         });
       events = require('../events').default;
       expect(events.supportsPassiveEvents).toBeTruthy();
@@ -36,7 +36,7 @@ describe('events', () => {
         .spyOn(window, 'addEventListener')
         .mockImplementationOnce((_, __, options: AddEventListenerOptions) => {
           const { passive } = options;
-          console.info(passive);
+          expect(passive).toBe(true);
         });
       const button = { addEventListener: jest.fn() } as unknown as Element;
       const callback = jest.fn();
