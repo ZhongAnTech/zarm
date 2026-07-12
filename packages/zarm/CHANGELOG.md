@@ -1,5 +1,45 @@
 # 版本更新日志
 
+## Unreleased
+
+- Perf
+
+  - [ConfigProvider] 优化 `cssVars` 注入逻辑，支持自定义组件作为子节点时仍能生效，并将 `cssVars` 透传到组件上下文 [#756b8e3](https://github.com/ZhongAnTech/zarm/commit/756b8e346206b44ee1c36baec72dfa3ce448c30f)
+  - [Popup, Mask, BackTop] 支持通过 `ConfigProvider` 的 `cssVars` 设置默认挂载到 `body` 的浮层组件样式变量 [#756b8e3](https://github.com/ZhongAnTech/zarm/commit/756b8e346206b44ee1c36baec72dfa3ce448c30f)
+  - [Button, Cascader, DateSelect, KeyboardPicker, Picker, Popup, Toast] 补全 cssVars 类型声明、导出与 `ConfigProvider` 的 `CssVars` 暴露 [#756b8e3](https://github.com/ZhongAnTech/zarm/commit/756b8e346206b44ee1c36baec72dfa3ce448c30f)
+
+## v3.4.0
+
+- Feature
+
+  - [React 19] 支持 React 19，新增 `zarm/react19` 渲染适配入口，并扩展 `react`、`react-dom` peerDependencies 兼容范围 [#804b7a7](https://github.com/ZhongAnTech/zarm/commit/804b7a7f75894854f4413a20716e1beb74d6b18a)
+
+- Bug Fix
+
+  - [Carousel] 修复横向轮播容器会阻止页面滚动的问题 [#4ab339](https://github.com/ZhongAnTech/zarm/commit/4ab339420ce2c150e43babeb4d12d6a57a3a134e)
+
+- Chore
+
+  - [Build] 包管理工具迁移至 pnpm，并更新相关测试与构建脚本 [#b9bd4a](https://github.com/ZhongAnTech/zarm/commit/b9bd4a879de494a7e2a71c51a3a5ff1baae07930)
+
+## v3.3.1
+
+- Bug Fix
+
+  - [ImagePreview] 修复图片加载后展示模糊的问题 [#1205](https://github.com/ZhongAnTech/zarm/pull/1205) [@Yang03]
+  - [Toast] 修复 loading 单独使用时样式丢失的问题 [#42fa95](https://github.com/ZhongAnTech/zarm/commit/42fa95f960e424d69f41848ead2561750015221b)
+
+## v3.3.0
+
+- Feature
+
+  - [Calendar] 新增 `onSelect` 属性，支持在日期选择过程中获取当前选中值；range 模式下选择第一项时也可触发选择回调 [#1200](https://github.com/ZhongAnTech/zarm/pull/1200) [@edison-hm]
+
+- Docs
+
+  - [Modal] 补充 `onConfirm` 方法说明 [#1196](https://github.com/ZhongAnTech/zarm/issues/1196)
+  - [List] 修正文档示例 [#1192](https://github.com/ZhongAnTech/zarm/issues/1192)
+
 ## v3.2.0
 
 - Feature
