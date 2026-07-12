@@ -5,16 +5,20 @@ import type { BadgeCssVars } from '../badge';
 import type { ButtonCssVars } from '../button';
 import type { CalendarCssVars } from '../calendar';
 import type { CarouselCssVars } from '../carousel';
+import type { CascaderCssVars } from '../cascader';
 import type { CascaderViewCssVars } from '../cascader-view';
 import type { CheckboxCssVars, CheckboxGroupCssVars } from '../checkbox';
 import type { CollapseCssVars } from '../collapse';
 import type { CustomInputCssVars } from '../custom-input';
+import type { DateSelectCssVars } from '../date-select';
+import type { FilePickerCssVars } from '../file-picker';
 import type { GridCssVars } from '../grid';
 import type { IconCssVars } from '../icon';
 import type { ImageCssVars } from '../image';
 import type { ImagePreviewCssVars } from '../image-preview';
 import type { InputCssVars } from '../input';
 import type { KeyboardCssVars } from '../keyboard';
+import type { KeyboardPickerCssVars } from '../keyboard-picker';
 import type { ListCssVars } from '../list';
 import type { LoadingCssVars } from '../loading';
 import type { MaskCssVars } from '../mask';
@@ -25,6 +29,7 @@ import type { NoticeBarCssVars } from '../notice-bar';
 import type { PanelCssVars } from '../panel';
 import type { PickerCssVars } from '../picker';
 import type { PickerViewCssVars } from '../picker-view';
+import type { PopupCssVars } from '../popup';
 import type { ProgressCssVars } from '../progress';
 import type { PullCssVars } from '../pull';
 import type { RadioCssVars, RadioGroupCssVars } from '../radio';
@@ -38,6 +43,7 @@ import type { SwipeActionCssVars } from '../swipe-action';
 import type { SwitchCssVars } from '../switch';
 import type { TabBarCssVars } from '../tab-bar';
 import type { TabsCssVars } from '../tabs';
+import type { ToastCssVars } from '../toast';
 import type { TooltipCssVars } from '../tooltip';
 import type { Replace } from '../utils/utilityTypes';
 import type { WheelCssVars } from '../wheel';
@@ -55,12 +61,16 @@ export type CssVars = Prefix<ActionSheetCssVars, 'action-sheet'> &
   Prefix<ButtonCssVars, 'button'> &
   Prefix<CalendarCssVars, 'calendar'> &
   Prefix<CarouselCssVars, 'carousel'> &
+  Prefix<CascaderCssVars, 'cascader'> &
   Prefix<CheckboxCssVars & CheckboxGroupCssVars, 'checkbox'> &
   Prefix<CollapseCssVars, 'collapse'> &
   Prefix<CustomInputCssVars, 'custom-input'> &
+  Prefix<DateSelectCssVars, 'date-select'> &
+  Prefix<FilePickerCssVars, 'file-picker'> &
   Prefix<ImagePreviewCssVars, 'image-preview'> &
   Prefix<InputCssVars, 'input'> &
   Prefix<KeyboardCssVars, 'keyboard'> &
+  Prefix<KeyboardPickerCssVars, 'keyboard-picker'> &
   Prefix<ListCssVars, 'list'> &
   Prefix<SliderCssVars, 'slider'> &
   Prefix<SwitchCssVars, 'switch'> &
@@ -75,6 +85,7 @@ export type CssVars = Prefix<ActionSheetCssVars, 'action-sheet'> &
   Prefix<PanelCssVars, 'panel'> &
   Prefix<PickerViewCssVars, 'picker-view'> &
   Prefix<PickerCssVars, 'picker'> &
+  Prefix<PopupCssVars, 'popup'> &
   Prefix<SelectCssVars, 'select'> &
   Prefix<ProgressCssVars, 'progress'> &
   Prefix<RadioCssVars & RadioGroupCssVars, 'radio'> &
@@ -83,6 +94,7 @@ export type CssVars = Prefix<ActionSheetCssVars, 'action-sheet'> &
   Prefix<StepperCssVars, 'stepper'> &
   Prefix<SwipeActionCssVars, 'swipe-action'> &
   Prefix<TabsCssVars, 'tabs'> &
+  Prefix<ToastCssVars, 'toast'> &
   Prefix<TooltipCssVars, 'tooltip'> &
   Prefix<WheelCssVars, 'wheel'> &
   Prefix<TabBarCssVars, 'tab-bar'> &

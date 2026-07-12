@@ -41,7 +41,11 @@ const Mask = React.forwardRef<HTMLDivElement, MaskProps>((props, ref) => {
     mountContainer,
   } = props;
 
-  const { prefixCls, mountContainer: globalMountContainer } = React.useContext(ConfigContext);
+  const {
+    prefixCls,
+    mountContainer: globalMountContainer,
+    cssVars,
+  } = React.useContext(ConfigContext);
   const bem = createBEM('mask', { prefixCls });
 
   const rgb = color === 'black' ? '0, 0, 0' : '255, 255, 255';
@@ -70,6 +74,7 @@ const Mask = React.forwardRef<HTMLDivElement, MaskProps>((props, ref) => {
             className={bem([className, rest.className])}
             style={{
               ...style,
+              ...cssVars,
               ...rest.style,
               backgroundColor:
                 color === 'transparent' ? 'transparent' : `rgba(${rgb}, ${backgroundOpacity})`,

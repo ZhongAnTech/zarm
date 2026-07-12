@@ -9,7 +9,12 @@ import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseKeyBoardPickerProps } from './interface';
 
-export type KeyboardPickerProps = BaseKeyBoardPickerProps & HTMLProps<PickerContainerCssVars>;
+export interface KeyboardPickerCssVars {
+  '--background'?: React.CSSProperties['background'];
+}
+
+export type KeyboardPickerProps = BaseKeyBoardPickerProps &
+  HTMLProps<KeyboardPickerCssVars & PickerContainerCssVars>;
 
 const KeyboardPicker = React.forwardRef<unknown, KeyboardPickerProps>((props, ref) => {
   props = mergeDefaultProps(KeyboardPicker.defaultProps, props);

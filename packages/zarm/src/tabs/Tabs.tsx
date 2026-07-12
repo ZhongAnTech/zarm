@@ -55,6 +55,7 @@ export interface TabsCssVars {
   '--color-disabled'?: React.CSSProperties['color'];
   '--height'?: React.CSSProperties['height'];
   '--active-color'?: React.CSSProperties['color'];
+  '--active-text-color'?: React.CSSProperties['color'];
   '--active-line-height'?: React.CSSProperties['height'];
   '--padding-horizontal'?: React.CSSProperties['left'];
   '--padding-vertical'?: React.CSSProperties['top'];

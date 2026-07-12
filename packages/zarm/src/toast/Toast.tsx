@@ -7,7 +7,16 @@ import Popup from '../popup';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseToastProps } from './interface';
 
-export type ToastProps = BaseToastProps & HTMLProps;
+export interface ToastCssVars {
+  '--text-color'?: React.CSSProperties['color'];
+  '--font-size'?: React.CSSProperties['fontSize'];
+  '--border-radius'?: React.CSSProperties['borderRadius'];
+  '--background'?: React.CSSProperties['background'];
+  '--icon-color'?: React.CSSProperties['color'];
+  '--icon-size'?: React.CSSProperties['fontSize'];
+}
+
+export type ToastProps = BaseToastProps & HTMLProps<ToastCssVars>;
 
 const Toast = React.forwardRef<HTMLDivElement, ToastProps>((props, ref) => {
   const {

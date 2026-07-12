@@ -18,6 +18,7 @@ export interface ProgressCssVars {
   '--background'?: React.CSSProperties['background'];
   '--width'?: React.CSSProperties['width'];
   '--size'?: React.CSSProperties['width' | 'height'];
+  '--font-size'?: React.CSSProperties['fontSize'];
   '--font-size-circle'?: React.CSSProperties['fontSize'];
 }
 

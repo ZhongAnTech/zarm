@@ -6,6 +6,10 @@ import PickerContainer, { PickerContainerCssVars } from './Container';
 import type { BasePickerProps } from './interface';
 
 export interface PickerCssVars extends PickerContainerCssVars {
+  '--content-background': React.CSSProperties['background'];
+  '--content-padding': React.CSSProperties['padding'];
+  '--content-mask-start-background': React.CSSProperties['background'];
+  '--content-mask-end-background': React.CSSProperties['background'];
   '--cotnent-background': React.CSSProperties['background'];
   '--cotnent-padding': React.CSSProperties['padding'];
   '--cotnent-mask-start-background': React.CSSProperties['background'];

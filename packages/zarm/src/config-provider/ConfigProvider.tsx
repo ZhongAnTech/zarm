@@ -45,7 +45,7 @@ const ConfigProvider: React.FC<React.PropsWithChildren<ConfigProviderProps>> = (
   const newChildren = setCssVars(children, cssVars!);
 
   return (
-    <ConfigContext.Provider value={rest}>
+    <ConfigContext.Provider value={{ ...rest, cssVars }}>
       <IconProvider value={{ prefixCls: rest.prefixCls }}>
         {React.Children.only(newChildren)}
       </IconProvider>

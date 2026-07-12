@@ -10,7 +10,11 @@ import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BasePopupProps } from './interface';
 
-export type PopupProps = BasePopupProps & HTMLProps;
+export interface PopupCssVars {
+  '--mask-zindex'?: React.CSSProperties['zIndex'];
+}
+
+export type PopupProps = BasePopupProps & HTMLProps<PopupCssVars>;
 
 const TRANSITION_NAMES = {
   top: 'move-down',
@@ -45,7 +49,11 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
     children,
   } = props;
 
-  const { prefixCls, mountContainer: globalMountContainer } = React.useContext(ConfigContext);
+  const {
+    prefixCls,
+    mountContainer: globalMountContainer,
+    cssVars,
+  } = React.useContext(ConfigContext);
   const nodeRef = React.useRef<HTMLDivElement>(null);
   const maskRef = React.useRef<HTMLDivElement>(null);
   const bem = createBEM('popup', { prefixCls });
@@ -118,7 +126,7 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
             props.mountContainer ?? globalMountContainer,
             <div
               className={bem('wrapper', [{ center: direction === 'center' }, props.className])}
-              style={{ ...props.style, display }}
+              style={{ ...props.style, ...cssVars, display }}
               onClick={handleClick}
             >
               <div

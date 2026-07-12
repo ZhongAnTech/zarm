@@ -28,6 +28,7 @@ export interface KeyboardCssVars {
   '--ok-background'?: CSSProperties['background'];
   '--ok-font-size'?: CSSProperties['fontSize'];
   '--ok-text-color'?: CSSProperties['color'];
+  '--opacity-disabled'?: CSSProperties['opacity'];
 }
 
 export type KeyboardProps = BaseKeyBoardProps & HTMLProps<KeyboardCssVars>;

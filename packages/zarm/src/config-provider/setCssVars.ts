@@ -6,18 +6,18 @@ const setCssVars = (children: React.ReactNode, cssVars: ConfigProviderProps['css
     return children;
   }
 
-  if (children.type === React.Fragment) {
-    return React.createElement('span', { style: { display: 'contents', ...cssVars } }, children);
+  if (typeof children.type === 'string') {
+    const child = children as React.ReactElement<any>;
+
+    return React.cloneElement(child, {
+      style: {
+        ...child.props.style,
+        ...cssVars,
+      },
+    });
   }
 
-  const child = children as React.ReactElement<any>;
-
-  return React.cloneElement(child, {
-    style: {
-      ...child.props.style,
-      ...cssVars,
-    },
-  });
+  return React.createElement('span', { style: { display: 'contents', ...cssVars } }, children);
 };
 
 export default setCssVars;

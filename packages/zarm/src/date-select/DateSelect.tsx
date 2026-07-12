@@ -20,7 +20,15 @@ import type { BaseDateSelectProps } from './interface';
 
 const currentYear = new Date().getFullYear();
 
-export type DateSelectProps = BaseDateSelectProps & HTMLProps<SelectCssVars>;
+export interface DateSelectCssVars {
+  '--arrow-color'?: React.CSSProperties['color'];
+  '--arrow-size'?: React.CSSProperties['width'];
+  '--arrow-width'?: React.CSSProperties['borderWidth'];
+  '--placeholder-color'?: React.CSSProperties['color'];
+  '--disabled-color'?: React.CSSProperties['color'];
+}
+
+export type DateSelectProps = BaseDateSelectProps & HTMLProps<DateSelectCssVars & SelectCssVars>;
 
 const DateSelect: React.FC<DateSelectProps> = (props) => {
   const {

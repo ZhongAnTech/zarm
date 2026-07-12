@@ -32,6 +32,7 @@ const BackTop: React.FC<BackTopProps> = (props) => {
     prefixCls,
     mountContainer: globalMountContainer,
     scrollContainer: globalScrollContainer,
+    cssVars,
   } = React.useContext(ConfigContext);
 
   const bem = createBEM('back-top', { prefixCls });
@@ -84,6 +85,7 @@ const BackTop: React.FC<BackTopProps> = (props) => {
         style={{
           position: mountContainer !== document.body ? 'absolute' : 'fixed',
           ...style,
+          ...cssVars,
         }}
         onClick={scrollToTop}
       >

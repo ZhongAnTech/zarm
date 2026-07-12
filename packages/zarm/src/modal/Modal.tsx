@@ -3,6 +3,7 @@ import { Close as CloseIcon } from '@zarm-design/icons';
 import * as React from 'react';
 import { ConfigContext } from '../config-provider';
 import Popup from '../popup';
+import type { PopupCssVars } from '../popup';
 import { noop } from '../utils';
 import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
@@ -32,7 +33,9 @@ export interface ModalCssVars {
   '--button-disabled-opacity'?: React.CSSProperties['opacity'];
 }
 
-export interface ModalProps extends BaseModalProps, HTMLProps<ModalCssVars> {
+export interface ModalProps
+  extends Omit<BaseModalProps, 'style'>,
+    HTMLProps<ModalCssVars & PopupCssVars> {
   actions?: (ModalActionProps | ModalActionProps[])[];
   onAction?: (action: ModalActionProps) => void | Promise<void>;
 }

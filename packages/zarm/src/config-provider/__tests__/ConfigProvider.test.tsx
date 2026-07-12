@@ -1,5 +1,6 @@
 import { render, RenderOptions, screen } from '@testing-library/react';
 import React from 'react';
+import Popup from '../../popup';
 import ConfigProvider, { ConfigContext, defaultConfig } from '../ConfigProvider';
 import type { ConfigProviderProps } from '../interface';
 
@@ -91,6 +92,36 @@ describe('ConfigProvider', () => {
     } finally {
       errorSpy.mockRestore();
     }
+  });
+
+  test('should render css vars when child component does not forward style', () => {
+    const App = () => <div data-testid="app">child</div>;
+    const { container } = render(
+      <ConfigProvider cssVars={{ '--za-button-background': 'red' }}>
+        <App />
+      </ConfigProvider>,
+    );
+
+    expect(container.firstElementChild?.tagName).toBe('SPAN');
+    expect(
+      (container.firstElementChild as HTMLElement).style.getPropertyValue(
+        '--za-button-background',
+      ),
+    ).toBe('red');
+    expect(screen.getByTestId('app').textContent).toBe('child');
+  });
+
+  test('should render css vars for portaled popup content', () => {
+    render(
+      <ConfigProvider cssVars={{ '--za-popup-mask-zindex': '2000' }}>
+        <Popup visible mask={false}>
+          <span>popup</span>
+        </Popup>
+      </ConfigProvider>,
+    );
+
+    const popupWrapper = document.body.querySelector('.za-popup__wrapper') as HTMLElement;
+    expect(popupWrapper.style.getPropertyValue('--za-popup-mask-zindex')).toBe('2000');
   });
 
   test('should throw error if children has more than one child', () => {

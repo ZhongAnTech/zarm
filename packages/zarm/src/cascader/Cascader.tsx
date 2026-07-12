@@ -9,7 +9,20 @@ import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseCascaderProps } from './interface';
 
-export type CascaderProps = BaseCascaderProps & HTMLProps<PickerContainerCssVars>;
+export interface CascaderCssVars {
+  '--background'?: React.CSSProperties['background'];
+  '--padding'?: React.CSSProperties['padding'];
+  '--tab-text-color'?: React.CSSProperties['color'];
+  '--tab-active-text-color'?: React.CSSProperties['color'];
+  '--options-height'?: React.CSSProperties['height'];
+  '--option-text-color'?: React.CSSProperties['color'];
+  '--option-active-text-color'?: React.CSSProperties['color'];
+  '--option-font-size'?: React.CSSProperties['fontSize'];
+  '--option-height'?: React.CSSProperties['height'];
+}
+
+export type CascaderProps = BaseCascaderProps &
+  HTMLProps<CascaderCssVars & PickerContainerCssVars>;
 
 export type CascaderState = ReturnType<typeof parseState>;
 

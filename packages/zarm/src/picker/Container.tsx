@@ -12,6 +12,7 @@ export interface PickerContainerCssVars {
   '--header-font-size': React.CSSProperties['fontSize'];
   '--header-background': React.CSSProperties['background'];
   '--header-title-text-color': React.CSSProperties['color'];
+  '--header-confirm-text-color': React.CSSProperties['color'];
   '--header-submit-text-color': React.CSSProperties['color'];
   '--header-cancel-text-color': React.CSSProperties['color'];
 }

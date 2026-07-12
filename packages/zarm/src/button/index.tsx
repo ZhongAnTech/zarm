@@ -24,6 +24,28 @@ export interface ButtonCssVars {
   '--active-text-color'?: React.CSSProperties['color'];
   '--active-loading-color'?: React.CSSProperties['color'];
   '--shadow'?: React.CSSProperties['boxShadow'];
+  '--primary-background'?: React.CSSProperties['background'];
+  '--primary-border-color'?: React.CSSProperties['borderColor'];
+  '--primary-text-color'?: React.CSSProperties['color'];
+  '--primary-loading-color'?: React.CSSProperties['color'];
+  '--primary-active-background'?: React.CSSProperties['background'];
+  '--primary-active-border-color'?: React.CSSProperties['borderColor'];
+  '--primary-active-text-color'?: React.CSSProperties['color'];
+  '--primary-active-loading-color'?: React.CSSProperties['color'];
+  '--primary-shadow'?: React.CSSProperties['boxShadow'];
+  '--danger-background'?: React.CSSProperties['background'];
+  '--danger-border-color'?: React.CSSProperties['borderColor'];
+  '--danger-text-color'?: React.CSSProperties['color'];
+  '--danger-loading-color'?: React.CSSProperties['color'];
+  '--danger-active-background'?: React.CSSProperties['background'];
+  '--danger-active-border-color'?: React.CSSProperties['borderColor'];
+  '--danger-active-text-color'?: React.CSSProperties['color'];
+  '--danger-active-loading-color'?: React.CSSProperties['color'];
+  '--danger-shadow'?: React.CSSProperties['boxShadow'];
+  '--ghost-border-color'?: React.CSSProperties['borderColor'];
+  '--ghost-text-color'?: React.CSSProperties['color'];
+  '--ghost-active-border-color'?: React.CSSProperties['borderColor'];
+  '--ghost-active-text-color'?: React.CSSProperties['color'];
 }
 
 export type AnchorButtonProps = {
