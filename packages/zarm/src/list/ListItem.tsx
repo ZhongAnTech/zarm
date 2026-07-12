@@ -1,8 +1,9 @@
-import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
+import * as React from 'react';
 import { ConfigContext } from '../config-provider';
-import type { BaseListItemProps } from './interface';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseListItemProps } from './interface';
 
 export type ListItemProps = BaseListItemProps &
   HTMLProps & {
@@ -10,6 +11,7 @@ export type ListItemProps = BaseListItemProps &
   };
 
 const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
+  props = mergeDefaultProps(ListItem.defaultProps, props);
   const {
     className,
     prefix,

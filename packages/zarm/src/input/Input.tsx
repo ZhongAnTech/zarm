@@ -3,6 +3,7 @@ import { CloseCircleFill } from '@zarm-design/icons';
 import * as React from 'react';
 import { ConfigContext } from '../config-provider';
 import { useControllableEventValue } from '../utils/hooks';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import { resolveOnChange } from '../utils/resolveOnChange';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseInputTextareaProps, BaseInputTextProps } from './interface';
@@ -48,6 +49,7 @@ export interface InputRef {
 }
 
 const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
+  props = mergeDefaultProps(Input.defaultProps, props);
   const {
     type,
     disabled,
@@ -69,7 +71,7 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
   } = props as InputTextProps & InputTextareaProps;
 
   const wrapperRef = (ref as any) || React.createRef<HTMLDivElement>();
-  const inputRef = React.useRef<HTMLTextAreaElement | HTMLInputElement>();
+  const inputRef = React.useRef<HTMLTextAreaElement | HTMLInputElement>(null);
 
   const [value, setValue] = useControllableEventValue({ ...props, defaultValue });
   const [focused, setFocused] = React.useState<boolean>(autoFocus!);

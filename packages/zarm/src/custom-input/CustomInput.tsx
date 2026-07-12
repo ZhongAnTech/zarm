@@ -5,6 +5,7 @@ import * as React from 'react';
 import { ConfigContext } from '../config-provider';
 import KeyboardPicker from '../keyboard-picker';
 import useClickAway from '../use-click-away';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseCustomInputProps } from './interface';
 
@@ -34,6 +35,7 @@ export interface CustomInputRef {
 }
 
 const CustomInput = React.forwardRef<CustomInputRef, CustomInputProps>((props, ref) => {
+  props = mergeDefaultProps(CustomInput.defaultProps, props);
   const {
     type,
     clearable,

@@ -1,6 +1,7 @@
 import { createBEM } from '@zarm-design/bem';
 import * as React from 'react';
 import { ConfigContext } from '../config-provider';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseBadgeProps } from './interface';
 
@@ -21,6 +22,7 @@ export interface BadgeCssVars {
 export type BadgeProps = BaseBadgeProps & HTMLProps<BadgeCssVars>;
 
 const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
+  props = mergeDefaultProps(Badge.defaultProps, props);
   const { className, shape, bordered, text, children, ...restProps } = props;
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('badge', { prefixCls });

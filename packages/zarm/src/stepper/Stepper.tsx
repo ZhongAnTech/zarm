@@ -1,14 +1,15 @@
-import React from 'react';
 import { createBEM } from '@zarm-design/bem';
 import { Minus as MinusIcon, Plus as PlusIcon } from '@zarm-design/icons';
-import type { BaseStepperProps } from './interface';
+import React from 'react';
 import Button from '../button';
 import { ConfigContext } from '../config-provider';
-import CustomInput from '../custom-input';
 import type { CustomInputProps } from '../custom-input';
-import Input from '../input';
+import CustomInput from '../custom-input';
 import type { InputProps } from '../input';
+import Input from '../input';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseStepperProps } from './interface';
 
 export interface StepperCssVars {
   '--height'?: React.CSSProperties['height'];
@@ -16,8 +17,8 @@ export interface StepperCssVars {
   '--input-background'?: React.CSSProperties['background'];
   '--input-border-width'?: React.CSSProperties['borderWidth'];
   '--input-border-color'?: React.CSSProperties['borderColor'];
-  '--input-border-radius'?: React.CSSProperties['borderRadius'],
-  '--input-text-color'?: React.CSSProperties['color'],
+  '--input-border-radius'?: React.CSSProperties['borderRadius'];
+  '--input-text-color'?: React.CSSProperties['color'];
   '--input-font-size'?: React.CSSProperties['fontSize'];
   '--input-disabled-text-color'?: React.CSSProperties['color'];
   '--input-disabled-opacity'?: React.CSSProperties['opacity'];
@@ -78,6 +79,7 @@ const getValue = (props: StepperProps, defaultValue: number) => {
 export type StepperProps = BaseStepperProps & HTMLProps<StepperCssVars>;
 
 const Stepper = React.forwardRef<unknown, StepperProps>((props, ref) => {
+  props = mergeDefaultProps(Stepper.defaultProps, props);
   const {
     className,
     style,

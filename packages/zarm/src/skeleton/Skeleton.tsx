@@ -2,6 +2,7 @@ import { createBEM } from '@zarm-design/bem';
 import includes from 'lodash/includes';
 import * as React from 'react';
 import { ConfigContext } from '../config-provider';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { SkeletonLineShape, SkeletonShape } from './interface';
 
@@ -32,6 +33,7 @@ export type SkeletonParagraphProps = HTMLProps & {
 };
 
 const Skeleton = (props: SkeletonProps) => {
+  props = mergeDefaultProps(Skeleton.defaultProps as Partial<SkeletonProps>, props);
   const { className, shape, animated, ...restProps } = props;
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('skeleton', { prefixCls });

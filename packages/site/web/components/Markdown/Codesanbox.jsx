@@ -1,6 +1,6 @@
-import { getParameters } from 'codesandbox/lib/api/define';
-import { pascalCase } from 'change-case';
 import pkg from '@zarmDir/package.json';
+import { pascalCase } from 'change-case';
+import { getParameters } from 'codesandbox/lib/api/define';
 
 export default ({ code, component, preview, formatMessage }) => {
   const title = `${component.name} ${pascalCase(component.key)} - Zarm Design`;
@@ -19,9 +19,11 @@ export default ({ code, component, preview, formatMessage }) => {
 
   const indexJsContent = `
 ${importReactContent}
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
+import 'zarm/react19';
 import 'zarm/dist/zarm.css';
 import './index.css';
+const ReactDOM = { render: (node, container) => createRoot(container).render(node) };
 ${parsedSourceCode}
 `.trim();
 
@@ -44,8 +46,8 @@ ${parsedSourceCode}
           main: 'index.js',
           dependencies: {
             zarm: pkg.version,
-            react: '^18',
-            'react-dom': '^18',
+            react: '19.2.7',
+            'react-dom': '19.2.7',
             'react-scripts': '^5.0.0',
           },
           devDependencies: {

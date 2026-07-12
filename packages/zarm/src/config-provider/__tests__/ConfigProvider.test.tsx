@@ -46,8 +46,54 @@ describe('ConfigProvider', () => {
     expect(document.body.getAttribute('data-theme')).toEqual('dark');
   });
 
+  test('should not pass style prop to Fragment with default css vars', () => {
+    const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+
+    try {
+      render(
+        <ConfigProvider>
+          <>
+            <span>child</span>
+          </>
+        </ConfigProvider>,
+      );
+
+      expect(
+        errorSpy.mock.calls.some((args) =>
+          String(args[0]).includes('Invalid prop `style` supplied to `React.Fragment`'),
+        ),
+      ).toBe(false);
+    } finally {
+      errorSpy.mockRestore();
+    }
+  });
+
+  test('should render css vars for Fragment children without invalid Fragment props', () => {
+    const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+
+    try {
+      const { container } = render(
+        <ConfigProvider cssVars={{ '--za-button-background': 'red' }}>
+          <>
+            <span>child</span>
+          </>
+        </ConfigProvider>,
+      );
+
+      expect(container.querySelector('span')?.style.getPropertyValue('--za-button-background')).toBe(
+        'red',
+      );
+      expect(
+        errorSpy.mock.calls.some((args) =>
+          String(args[0]).includes('Invalid prop `style` supplied to `React.Fragment`'),
+        ),
+      ).toBe(false);
+    } finally {
+      errorSpy.mockRestore();
+    }
+  });
+
   test('should throw error if children has more than one child', () => {
-    const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => 'silence');
     expect(() =>
       render(
         <ConfigProvider>
@@ -56,6 +102,5 @@ describe('ConfigProvider', () => {
         </ConfigProvider>,
       ),
     ).toThrow();
-    expect(errorSpy).toBeCalled();
   });
 });

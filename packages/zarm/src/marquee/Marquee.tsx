@@ -1,9 +1,10 @@
-import React, { HTMLAttributes, useRef, useEffect, useCallback } from 'react';
 import { createBEM } from '@zarm-design/bem';
-import BaseMarqueeProps from './interface';
-import { DIRECTION_LEFT, DIRECTION_RIGHT, DIRECTION_UP, DIRECTION_DOWN } from './constants';
+import React, { HTMLAttributes, useCallback, useEffect, useRef } from 'react';
 import { ConfigContext } from '../config-provider';
 import { canUseDOM } from '../utils/dom';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
+import { DIRECTION_DOWN, DIRECTION_LEFT, DIRECTION_RIGHT, DIRECTION_UP } from './constants';
+import BaseMarqueeProps from './interface';
 
 export interface MarqueeProps extends HTMLAttributes<HTMLDivElement>, BaseMarqueeProps {
   style?: React.CSSProperties;
@@ -26,6 +27,7 @@ const DEFAULT_RECT = {
 const CLIENT_RECT = canUseDOM && 'DOMRect' in window ? new window.DOMRect() : DEFAULT_RECT;
 
 const Marquee = React.forwardRef<HTMLDivElement, MarqueeProps>((props, ref) => {
+  props = mergeDefaultProps(Marquee.defaultProps, props);
   const { direction, speed = SPEED, delay, height, width, children, className } = props;
   const dir = direction.toLowerCase();
 

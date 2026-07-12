@@ -3,6 +3,7 @@ import React, { forwardRef, useImperativeHandle, useRef } from 'react';
 import { ConfigContext } from '../config-provider';
 import Popper from '../popper';
 import type { PopperPlacement, PopperTrigger } from '../popper/interface';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseTooltipProps } from './interface';
 
@@ -30,6 +31,7 @@ export interface TooltipCssVars {
 export type TooltipProps = BaseTooltipProps & React.PropsWithChildren<HTMLProps<TooltipCssVars>>;
 
 const Tooltip = forwardRef<refHander, TooltipProps>((props, ref) => {
+  props = mergeDefaultProps(Tooltip.defaultProps, props);
   const { children, content, className, ...others } = props;
 
   const { prefixCls } = React.useContext(ConfigContext);

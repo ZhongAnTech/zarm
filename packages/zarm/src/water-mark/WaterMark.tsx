@@ -1,18 +1,19 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { createBEM } from '@zarm-design/bem';
-import { useMutationObserverRef } from '../utils/hooks';
+import * as React from 'react';
 import { ConfigContext } from '../config-provider';
-import type { BaseWaterMarkProps } from './interface';
+import { noop } from '../utils';
+import { unmount } from '../utils/dom';
+import { useMutationObserverRef } from '../utils/hooks';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import {
-  WATERMARK_DEFAULT_STYLES,
-  TEXT_STYLE_DEFAULT,
   IMAGE_STYLE_DEFAULT,
   MARK_STYLE_DEFAULT,
+  TEXT_STYLE_DEFAULT,
+  WATERMARK_DEFAULT_STYLES,
 } from './defaults';
-import { draw, isContainNode, getUUID, compareUUID, plainStyle } from './utils';
-import { noop } from '../utils';
+import type { BaseWaterMarkProps } from './interface';
+import { compareUUID, draw, getUUID, isContainNode, plainStyle } from './utils';
 
 export type WaterMarkProps = BaseWaterMarkProps & HTMLProps;
 
@@ -24,6 +25,7 @@ const MUTATION_OBSERVER_CONFIG = {
 };
 
 const WaterMark: React.FC<WaterMarkProps> = (props) => {
+  props = mergeDefaultProps(WaterMark.defaultProps, props);
   const uuid = React.useRef(getUUID());
   const { className, text, image, mode, monitor, children } = props;
   const watermark = React.useRef<HTMLDivElement>(null);
@@ -70,7 +72,7 @@ const WaterMark: React.FC<WaterMarkProps> = (props) => {
       // 移除节点
       if (type === 'childList' && isContainNode(removedNodes, source)) {
         reset(target, () => {
-          ReactDOM.unmountComponentAtNode(source);
+          unmount(source);
           target.appendChild(source);
         });
       }

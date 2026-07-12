@@ -1,10 +1,11 @@
-import React, { HTMLAttributes, useCallback, useEffect, useRef } from 'react';
 import { createBEM } from '@zarm-design/bem';
 import raf from 'raf';
-import Events from '../utils/events';
-import type { BasePinchZoomProps } from './interface';
+import React, { HTMLAttributes, useCallback, useEffect, useRef } from 'react';
 import { ConfigContext } from '../config-provider';
 import { getElementSize } from '../utils/dom';
+import Events from '../utils/events';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
+import type { BasePinchZoomProps } from './interface';
 
 interface Point {
   x: number;
@@ -47,6 +48,7 @@ const cancelEvent = (event: any): void => {
 export interface PinchZoomProps extends HTMLAttributes<HTMLDivElement>, BasePinchZoomProps {}
 
 const PinchZoom = React.forwardRef<unknown, PinchZoomProps>((props, ref) => {
+  props = mergeDefaultProps(PinchZoom.defaultProps, props);
   const container = (ref as any) || React.createRef<HTMLDivElement>();
 
   const { prefixCls } = React.useContext(ConfigContext);
@@ -72,7 +74,7 @@ const PinchZoom = React.forwardRef<unknown, PinchZoomProps>((props, ref) => {
   let lastScaleCenter: Point | null;
   let lastDragPosition;
   let wheelTimeOut: ReturnType<typeof setTimeout>;
-  const rafId = useRef();
+  const rafId = useRef<number | undefined>(undefined);
 
   const update = useCallback(() => {
     const updateFrame = () => {
@@ -337,12 +339,12 @@ const PinchZoom = React.forwardRef<unknown, PinchZoomProps>((props, ref) => {
 
   const cls = bem([className]);
 
-  const child = React.Children.map(children, (element: React.ReactElement) => {
+  const child = React.Children.map(children, (element: React.ReactElement<any>) => {
     return React.cloneElement(element, {
       onLoad: (e) => {
         element.props?.onLoad?.(e);
         alignCenter();
-      }
+      },
     });
   });
 

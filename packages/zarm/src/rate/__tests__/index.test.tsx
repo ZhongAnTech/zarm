@@ -25,6 +25,12 @@ describe('Rate', () => {
     expect(document.getElementsByClassName('za-rate__item')).toHaveLength(10);
   });
 
+  it('should set touch-action none for drag gesture', () => {
+    const { container } = render(<Rate />);
+    const rate = container.querySelector('.za-rate') as HTMLElement;
+    expect(rate.style.touchAction).toBe('none');
+  });
+
   it('should emit change and value event when rate icon is clicked', () => {
     const onChange = jest.fn();
     const { container } = render(<Rate onChange={onChange} allowClear />);

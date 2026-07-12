@@ -1,9 +1,8 @@
+import { act, fireEvent, render, waitFor } from '@testing-library/react';
 import React from 'react';
-import { act } from 'react-dom/test-utils';
-import { fireEvent, render, waitFor } from '@testing-library/react';
 import ActionSheet, { ActionSheetProps } from '../index';
-import zhCN from '../locale/zh_CN';
 import enUS from '../locale/en_US';
+import zhCN from '../locale/zh_CN';
 
 const props: ActionSheetProps = {
   visible: true,
@@ -37,26 +36,26 @@ describe('ActionSheet', () => {
     expect(enUS.cancelText).toEqual('Cancel');
   });
 
-
   it('onClick', async () => {
     const click = jest.fn();
     const { getByText } = render(
       <ActionSheet
         visible
-        actions = {[
+        actions={[
           {
             text: 'item1',
-            onClick: () =>{
+            onClick: () => {
               click();
             },
           },
         ]}
-    />);
+      />,
+    );
     const btn = getByText('item1');
     fireEvent.click(btn);
     await waitFor(() => {
       expect(click).toBeCalled();
-    })
+    });
   });
 });
 

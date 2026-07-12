@@ -11,6 +11,7 @@ import {
   renderToContainer,
   scrollTo,
 } from '../utils/dom';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import { HTMLProps } from '../utils/utilityTypes';
 import type { BaseBackTopProps } from './interface';
 
@@ -24,14 +25,21 @@ export interface BackTopProps extends BaseBackTopProps, HTMLProps<BackTopCssVars
 }
 
 const BackTop: React.FC<BackTopProps> = (props) => {
+  props = mergeDefaultProps(BackTop.defaultProps, props);
   const { className, style, visibleDistance, destroy, onClick, children } = props;
   const [visible, setVisible] = React.useState(false);
-  const { prefixCls, mountContainer: globalMountContainer, scrollContainer: globalScrollContainer } = React.useContext(ConfigContext);
+  const {
+    prefixCls,
+    mountContainer: globalMountContainer,
+    scrollContainer: globalScrollContainer,
+  } = React.useContext(ConfigContext);
 
   const bem = createBEM('back-top', { prefixCls });
 
   const scrollContainer = React.useMemo(() => {
-    return canUseDOM ? getScrollContainer(props.scrollContainer ?? globalScrollContainer) : undefined;
+    return canUseDOM
+      ? getScrollContainer(props.scrollContainer ?? globalScrollContainer)
+      : undefined;
   }, [props.scrollContainer, globalScrollContainer]);
 
   const mountContainer = React.useMemo(() => {

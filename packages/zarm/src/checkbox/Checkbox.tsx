@@ -14,6 +14,7 @@ import React, {
 import Button from '../button';
 import { ConfigContext } from '../config-provider';
 import List from '../list';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import { CheckboxGroupContext } from './context';
 import type { BaseCheckboxProps } from './interface';
@@ -55,9 +56,10 @@ export interface CheckboxRef {
   check: () => void;
   uncheck: () => void;
   toggle: () => void;
-};
+}
 
 const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
+  props = mergeDefaultProps(Checkbox.defaultProps, props);
   const inputRef = useRef<HTMLInputElement>(null);
 
   let [checked, setChecked] = useState(getChecked(props, false));
@@ -110,7 +112,7 @@ const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
       className={bem('input')}
       aria-checked={checked}
       disabled={disabled}
-      value={props.value}
+      value={props.value ?? ''}
       checked={checked}
       onChange={(e: ChangeEvent<HTMLInputElement>) => {
         if (disabled) return;

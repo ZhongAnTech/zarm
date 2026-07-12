@@ -1,6 +1,7 @@
 import { IconProvider } from '@zarm-design/icons';
 import type { Context } from 'react';
 import * as React from 'react';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { ConfigProviderProps } from './interface';
 import defaultLocaleData from './locale/zh_CN';
 import setCssVars from './setCssVars';
@@ -28,6 +29,7 @@ const changeRuntimeConfigContext = (props: ConfigProviderProps) => {
 export const getRuntimeConfig = () => runtimeConfigContext;
 
 const ConfigProvider: React.FC<React.PropsWithChildren<ConfigProviderProps>> = (props) => {
+  props = mergeDefaultProps(ConfigProvider.defaultProps, props);
   const { children, cssVars, primaryColor, theme, ...rest } = props;
 
   changeRuntimeConfigContext(props);
@@ -51,7 +53,7 @@ const ConfigProvider: React.FC<React.PropsWithChildren<ConfigProviderProps>> = (
   );
 };
 
-export const RuntimeConfigProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
+export const RuntimeConfigProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   const props = React.useRef(runtimeConfigContext);
 
   React.useEffect(() => {

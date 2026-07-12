@@ -5,6 +5,7 @@ import { useControllableValue } from 'ahooks';
 import * as React from 'react';
 import { ConfigContext } from '../config-provider';
 import { getBoundingClientRect } from '../utils/dom';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseRateProps } from './interface';
 
@@ -18,6 +19,7 @@ export interface RateCssVars {
 export type RateProps = BaseRateProps & HTMLProps;
 
 const Rate = React.forwardRef<HTMLDivElement, RateProps>((props, ref) => {
+  props = mergeDefaultProps(Rate.defaultProps, props);
   const { className, style, count, character, allowHalf, allowClear, readonly } = props;
 
   const [value, setValue] = useControllableValue<number>(props);
@@ -101,6 +103,10 @@ const Rate = React.forwardRef<HTMLDivElement, RateProps>((props, ref) => {
   };
 
   const cls = bem([{ readonly }, className]);
+  const touchActionStyle: React.CSSProperties = {
+    touchAction: 'none',
+    ...style,
+  };
 
   const bind = useDrag(
     ({ values: [x] }) => {
@@ -110,7 +116,7 @@ const Rate = React.forwardRef<HTMLDivElement, RateProps>((props, ref) => {
     { pointer: { touch: true }, axis: 'x' },
   );
   return (
-    <div ref={ref} role="radiogroup" tabIndex={0} className={cls} style={style} {...bind()}>
+    <div ref={ref} role="radiogroup" tabIndex={0} className={cls} style={touchActionStyle} {...bind()}>
       {items.map(render)}
     </div>
   );

@@ -1,5 +1,6 @@
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act } from '@testing-library/react';
 import useOrientation from '..';
+import renderHook from '../../../tests/renderHook';
 
 function mockScreenOrientation(value: Pick<ScreenOrientation, 'angle' | 'type'> | undefined) {
   Object.defineProperty(window.screen, 'orientation', { value, writable: true });

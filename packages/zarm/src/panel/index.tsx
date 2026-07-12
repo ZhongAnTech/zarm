@@ -1,6 +1,7 @@
 import { createBEM } from '@zarm-design/bem';
 import React from 'react';
 import { ConfigContext } from '../config-provider';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { BasePanelProps } from './interface';
 
 export interface PanelCssVars {
@@ -20,6 +21,7 @@ export type PanelProps = Omit<React.ComponentPropsWithRef<'div'>, 'title'> &
   };
 
 const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
+  props = mergeDefaultProps(Panel.defaultProps, props);
   const { className, title, more, spacing, bordered, children, ...restProps } = props;
 
   const { prefixCls } = React.useContext(ConfigContext);

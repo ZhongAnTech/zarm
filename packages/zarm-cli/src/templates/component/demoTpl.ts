@@ -2,18 +2,20 @@ export default (compName) => `# ${compName} 组件名
 
 ## 基本用法
 \`\`\`jsx
+import { createRoot } from 'react-dom/client';
 import { ${compName} } from 'zarm';
 
-ReactDOM.render(
+createRoot(mountNode).render(
   <>
     <${compName} />
   </>
-, mountNode);
+);
 \`\`\`
 
 ## 用法二
 \`\`\`jsx
 import { useState } from 'react';
+import { createRoot } from 'react-dom/client';
 import { ${compName} } from 'zarm';
 
 const Demo = () => {
@@ -22,7 +24,7 @@ const Demo = () => {
   return <${compName} />;
 };
 
-ReactDOM.render(<Demo />, mountNode);
+createRoot(mountNode).render(<Demo />);
 \`\`\`
 
 ## API

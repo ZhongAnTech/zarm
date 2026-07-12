@@ -4,6 +4,7 @@ import * as React from 'react';
 import { ConfigContext } from '../config-provider';
 import Transition from '../transition';
 import { renderToContainer } from '../utils/dom';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseMaskProps } from './interface';
 
@@ -23,6 +24,7 @@ export type MaskProps = BaseMaskProps &
   };
 
 const Mask = React.forwardRef<HTMLDivElement, MaskProps>((props, ref) => {
+  props = mergeDefaultProps(Mask.defaultProps, props);
   const {
     className,
     style,

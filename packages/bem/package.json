@@ -31,13 +31,17 @@
     "lib"
   ],
   "scripts": {
-    "build": "yarn build:lib && yarn build:es",
+    "build": "pnpm build:lib && pnpm build:es",
     "build:es": "rimraf es && tsc --outDir es && zarm build --mode es --path src --out-dir es --copy-files",
     "build:lib": "rimraf lib && tsc --outDir lib && zarm build --mode lib --path src --out-dir lib --copy-files",
     "clean": "rimraf lib es dist coverage",
     "test": "jest --passWithNoTests"
   },
+  "dependencies": {
+    "@babel/runtime": "^7.21.0"
+  },
   "devDependencies": {
-    "@zarm-design/cli": "^0.0.48"
+    "@zarm-design/cli": "^0.0.48",
+    "jest": "^26.5.3"
   }
 }

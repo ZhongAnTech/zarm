@@ -5,15 +5,15 @@
 Install to fetch its dependencies after git clone the repo.
 
 ```bash
-# npm is not allowed.
-$ yarn
+# Use pnpm to install workspace dependencies.
+$ pnpm install
 ```
 
 Then, you can runs Zarm Design website locally.
 
 ```bash
 # develop for h5
-$ yarn dev
+$ pnpm dev
 ```
 
 ## Lint
@@ -21,16 +21,16 @@ $ yarn dev
 checks the code style.
 
 ```bash
-$ yarn lint
+$ pnpm lint
 
 # Check code style for Typescript
-$ yarn lint:ts
+$ pnpm lint:ts
 
 # Check code style for Javascript
-$ yarn lint:js
+$ pnpm lint:js
 
 # Check code style for Stylesheet
-$ yarn lint:style
+$ pnpm lint:style
 ```
 
 ## Test
@@ -38,13 +38,13 @@ $ yarn lint:style
 runs the complete test suite.
 
 ```bash
-$ yarn test
+$ pnpm test
 
 # Test specified h5
-$ yarn test:h5
+$ pnpm test:h5
 
 # Generate coverage
-$ yarn test:h5 --coverage
+$ pnpm test:h5 --coverage
 ```
 
 ## Build
@@ -52,14 +52,14 @@ $ yarn test:h5 --coverage
 compiles TypeScript code to the lib and es directory, and creates UMD build of zarm in dist directory.
 
 ```bash
-$ yarn build
+$ pnpm build
 
 # Build for es
-$ yarn build:es
+$ pnpm build:es
 
 # Build for lib
-$ yarn build:lib
+$ pnpm build:lib
 
 # Build for umd
-$ yarn build:umd
+$ pnpm build:umd
 ```

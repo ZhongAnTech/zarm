@@ -12,6 +12,7 @@ export default {
   'app.docs.article.i18n': 'Internationalization',
   'app.docs.article.polyfill': 'Polyfill',
   'app.docs.article.migration-v3': 'v2 to v3',
+  'app.docs.article.react-19': 'React compatibility',
   'app.docs.article.contributing': 'Contributing',
   'app.docs.article.changelog': 'Change Log',
 

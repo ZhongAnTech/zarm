@@ -61,6 +61,27 @@ describe('Popper', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('does not access element.ref on React 19', () => {
+    const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+    const ref = React.createRef<HTMLParagraphElement>();
+
+    try {
+      render(
+        <Popper content="标题">
+          <p ref={ref}>点我</p>
+        </Popper>,
+      );
+
+      expect(
+        errorSpy.mock.calls.some((args) =>
+          String(args[0]).includes('Accessing element.ref was removed in React 19'),
+        ),
+      ).toBe(false);
+    } finally {
+      errorSpy.mockRestore();
+    }
+  });
+
   it('check hasArrow prop', () => {
     const { getByTestId } = render(
       <div data-testid="za-popper-hasArrow">

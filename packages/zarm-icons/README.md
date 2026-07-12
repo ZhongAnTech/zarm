@@ -16,10 +16,10 @@ use `npm`
 npm i @zarm-design/icons
 ```
 
-or use `yarn`
+or use `pnpm`
 
 ```node
-yarn add @zarm-design/icons
+pnpm add @zarm-design/icons
 ```
 
 ## Usage

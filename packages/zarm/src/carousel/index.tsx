@@ -1,22 +1,23 @@
-import React, {
-  cloneElement,
-  Children,
-  forwardRef,
-  useState,
-  useEffect,
-  useRef,
-  useCallback,
-  useMemo,
-  useImperativeHandle,
-} from 'react';
-import type { CSSProperties } from 'react';
-import { createBEM } from '@zarm-design/bem';
 import { useDrag } from '@use-gesture/react';
-import type { BaseCarouselProps } from './interface';
-import Events from '../utils/events';
+import { createBEM } from '@zarm-design/bem';
+import type { CSSProperties } from 'react';
+import React, {
+  Children,
+  cloneElement,
+  forwardRef,
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { ConfigContext } from '../config-provider';
-import type { HTMLProps } from '../utils/utilityTypes';
 import { getBoundingClientRect } from '../utils/dom';
+import Events from '../utils/events';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
+import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseCarouselProps } from './interface';
 
 export interface CarouselCssVars {
   '--pagination-margin'?: React.CSSProperties['right' | 'bottom'];
@@ -46,6 +47,7 @@ interface StateProps {
 }
 
 const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => {
+  props = mergeDefaultProps(Carousel.defaultProps, props);
   const { prefixCls } = React.useContext(ConfigContext);
 
   const bem = createBEM('carousel', { prefixCls });
@@ -160,10 +162,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
       const size = getBoundingClientRect(dom);
       translateXRef.current = -size.width * (index + num);
       translateYRef.current = -size.height * (index + num);
-      doTransition(
-        { x: translateXRef.current, y: translateYRef.current },
-        animationDurationNum
-      );
+      doTransition({ x: translateXRef.current, y: translateYRef.current }, animationDurationNum);
 
       if (index > count - 1) {
         index = 0;
@@ -203,14 +202,14 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
     onJumpTo(stateRef.current.activeIndex);
   }, [onJumpTo]);
 
-  const intervalRef = useRef<number>();
+  const intervalRef = useRef<number | undefined>(undefined);
 
   const bind = useDrag(
     (state) => {
       let { activeIndex } = stateRef.current;
       if (onMoving.current) {
         if (activeIndex <= 0) {
-         onJumpTo(0);
+          onJumpTo(0);
         } else if (activeIndex >= count - 1) {
           onJumpTo(count - 1);
         }
@@ -218,7 +217,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
       }
       if (!state.intentional) {
         return false;
-      };
+      }
       intervalRef.current && window.clearInterval(intervalRef.current);
 
       const { offset, elapsedTime } = state;
@@ -333,9 +332,13 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
   if (isVertical) {
     itemsStyle.height = height;
   }
+  const carouselStyle: CSSProperties = {
+    touchAction: 'none',
+    ...style,
+  };
 
   return (
-    <div className={cls} style={style} ref={carouselRef} {...bind()}>
+    <div className={cls} style={carouselStyle} ref={carouselRef} {...bind()}>
       <div
         ref={carouselItemsRef}
         className={bem('items')}

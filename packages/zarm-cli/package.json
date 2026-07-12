@@ -20,10 +20,10 @@
     "bin"
   ],
   "scripts": {
-    "build": "yarn clean && tsc --build --force",
+    "build": "pnpm clean && tsc --build --force",
     "clean": "rimraf dist",
     "dev": "tsc -w",
-    "prepare": "yarn build",
+    "prepack": "pnpm build",
     "test": "jest"
   },
   "dependencies": {
@@ -61,8 +61,8 @@
     "postcss-loader": "^7.0.2",
     "postcss-preset-env": "^8.0.1",
     "process": "^0.11.10",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
     "react-native": "^0.63.2",
     "sass": "^1.58.3",
     "sass-loader": "^13.2.0",
@@ -80,7 +80,8 @@
   "devDependencies": {
     "@types/node": "^15.3.0",
     "@types/webpack": "^5.28.0",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "typescript": "~4.5.0"
   },
   "tags": [
     "zarm",

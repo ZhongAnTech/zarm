@@ -2,6 +2,7 @@ import { createBEM } from '@zarm-design/bem';
 import React, { useContext } from 'react';
 import { ConfigContext } from '../config-provider';
 import Loading from '../loading';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseButtonProps, ButtonShape, ButtonSize, ButtonTheme } from './interface';
 
@@ -42,6 +43,7 @@ export type NativeButtonProps = {
 export type ButtonProps = Partial<AnchorButtonProps & NativeButtonProps>;
 
 const Button = React.forwardRef<unknown, ButtonProps>((props, ref) => {
+  props = mergeDefaultProps(Button.defaultProps, props);
   const {
     className,
     theme,

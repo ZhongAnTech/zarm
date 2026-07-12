@@ -27,5 +27,5 @@ export default ({
   updateSnapshot && args.push('-u');
   coverage && args.push('--coverage');
   onlyChanged && args.push('--onlyChanged');
-  execa('node', args, { stdio: 'inherit' });
+  execa.sync('node', args, { stdio: 'inherit' });
 };

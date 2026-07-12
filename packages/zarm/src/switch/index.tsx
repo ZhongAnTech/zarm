@@ -1,6 +1,7 @@
-import * as React from 'react';
 import { createBEM } from '@zarm-design/bem';
+import * as React from 'react';
 import { ConfigContext } from '../config-provider';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { BaseSwitchProps } from './interface';
 
 export interface SwitchCssVars {
@@ -22,6 +23,7 @@ export type SwitchProps = BaseSwitchProps &
   Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'>;
 
 const Switch = React.forwardRef<HTMLDivElement, SwitchProps>((props, ref) => {
+  props = mergeDefaultProps(Switch.defaultProps, props);
   const { className, style, disabled, checked, defaultChecked, onChange, ...restProps } = props;
   const getChecked = checked || defaultChecked || false;
   const [currentChecked, setCurrentChecked] = React.useState(getChecked);

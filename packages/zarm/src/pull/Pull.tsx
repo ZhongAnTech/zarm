@@ -11,6 +11,7 @@ import Loading from '../loading';
 import { getScrollParent, getScrollTop } from '../utils/dom';
 import Events from '../utils/events';
 import { useEventCallback } from '../utils/hooks';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import { BasePullProps, LOAD_STATE, PullAction, REFRESH_STATE } from './interface';
 
@@ -25,8 +26,9 @@ export interface PullCssVars {
 export interface PullProps extends BasePullProps, React.PropsWithChildren<HTMLProps<PullCssVars>> {}
 
 const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
+  props = mergeDefaultProps(Pull.defaultProps, props);
   const pullRef = (ref as any) || React.createRef<HTMLDivElement>();
-  const wrap = useRef<HTMLElement | Window>();
+  const wrap = useRef<HTMLElement | Window | undefined>(undefined);
 
   const [isMounted, setIsMounted] = useState(false);
   const [offsetY, setOffsetY] = useState<number | 'auto'>(0);
@@ -371,9 +373,13 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
     contentStyle.WebkitTransform = `translate3d(0, ${offsetY}px, 0)`;
     contentStyle.transform = `translate3d(0, ${offsetY}px, 0)`;
   }
+  const pullStyle: CSSProperties = {
+    touchAction: 'pan-y',
+    ...style,
+  };
 
   return (
-    <div className={cls} style={style} {...bind()} ref={pullRef}>
+    <div className={cls} style={pullStyle} {...bind()} ref={pullRef}>
       <div className={bem('content')} style={contentStyle}>
         <div className={bem('refresh')}>{renderRefresh()}</div>
         <div className={bem('body')}>{children}</div>

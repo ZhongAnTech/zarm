@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useCallback } from 'react';
-import ReactDOM from 'react-dom';
+import { ReactDOMCompat as ReactDOM, unmount } from '@/utils/reactRoot';
 import { transform } from '@babel/standalone';
-import { Panel } from 'zarm';
 import * as ZarmDesignIcons from '@zarm-design/icons';
+import React, { useCallback, useEffect, useRef } from 'react';
+import { Panel } from 'zarm';
 import enUS from 'zarm/config-provider/locale/en_US';
 import zhCN from 'zarm/config-provider/locale/zh_CN';
 import 'zarm/style/entry';
@@ -49,6 +49,10 @@ export default ({ location, globalContext, children }) => {
 
         const value = source[2]
           .replace(/import\s+\{\s+([\s\S]*)\s+\}\s+from\s+'react';/, 'const { $1 } = React;')
+          .replace(
+            /import\s+\{\s*createRoot\s*\}\s+from\s+'react-dom\/client';/,
+            'const { createRoot } = ReactDOM;',
+          )
           .replace(/import\s+\{\s+([\s\S]*)\s+\}\s+from\s+'zarm';/, 'const { $1 } = Zarm;')
           .replace(
             /import\s+\{\s+([\s\S]*)\s+\}\s+from\s+'@zarm-design\/icons';/,
@@ -97,7 +101,7 @@ export default ({ location, globalContext, children }) => {
     renderSource();
 
     return function cleanup() {
-      container && ReactDOM.unmountComponentAtNode(container);
+      container && unmount(container);
     };
   }, [renderSource]);
 

@@ -33,7 +33,7 @@ const useLongPress = ({
   const { onLongPress, onPress, onClear } = restProps;
 
   const timeout = useRef(0);
-  const target = useRef<EventTarget>();
+  const target = useRef<EventTarget | undefined>(undefined);
   const onLongPressRef = useLatest(onLongPress);
   const onPressRef = useLatest(onPress);
   const onClearRef = useLatest(onClear);

@@ -1,7 +1,7 @@
 import { createEvent, fireEvent, render, screen } from '@testing-library/react';
-import { renderHook } from '@testing-library/react-hooks';
 import React from 'react';
 import useLongPress from '..';
+import renderHook from '../../../tests/renderHook';
 
 describe('useLongPress', () => {
   beforeAll(() => {

@@ -1,9 +1,10 @@
-import React, { forwardRef } from 'react';
-import type { HTMLAttributes } from 'react';
 import { createBEM } from '@zarm-design/bem';
+import type { HTMLAttributes } from 'react';
+import React, { forwardRef } from 'react';
 import { ConfigContext } from '../config-provider';
-import type { BaseNavBarProps } from './interface';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
+import type { BaseNavBarProps } from './interface';
 
 export interface NavBarCssVars {
   '--background'?: React.CSSProperties['background'];
@@ -20,6 +21,7 @@ export type NavBarProps = BaseNavBarProps &
   HTMLProps<NavBarCssVars>;
 
 const NavBar = forwardRef<HTMLDivElement, NavBarProps>((props, ref) => {
+  props = mergeDefaultProps(NavBar.defaultProps, props);
   const { className, title, left, right, ...restProps } = props;
 
   const { prefixCls } = React.useContext(ConfigContext);

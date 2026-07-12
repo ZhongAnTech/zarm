@@ -1,6 +1,7 @@
 import { createBEM } from '@zarm-design/bem';
 import * as React from 'react';
 import { ConfigContext } from '../config-provider';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseListProps } from './interface';
 
@@ -28,6 +29,7 @@ export interface ListCssVars {
 export type ListProps = React.PropsWithChildren<BaseListProps & HTMLProps<ListCssVars>>;
 
 const List = React.forwardRef<HTMLUListElement, ListProps>((props, ref) => {
+  props = mergeDefaultProps(List.defaultProps, props);
   const { className, bordered, children, ...restProps } = props;
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('list', { prefixCls });

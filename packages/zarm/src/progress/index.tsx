@@ -1,18 +1,18 @@
-import React, { useImperativeHandle, useRef } from 'react';
-import type { ForwardedRef } from 'react';
 import { createBEM } from '@zarm-design/bem';
+import type { ForwardedRef } from 'react';
+import React, { useImperativeHandle, useRef } from 'react';
 import { ConfigContext } from '../config-provider';
-import type { BaseProgressProps } from './interface';
 import type { HTMLProps } from '../utils/utilityTypes';
 import {
-  useSizeStyle,
-  useSVGStrokeWidth,
-  useSVG,
-  useStrokeWidthWithBackup,
-  useRoundSVGAttributes,
-  useRectStyles,
   useIndicator,
+  useRectStyles,
+  useRoundSVGAttributes,
+  useSizeStyle,
+  useStrokeWidthWithBackup,
+  useSVG,
+  useSVGStrokeWidth,
 } from './hooks';
+import type { BaseProgressProps } from './interface';
 
 export interface ProgressCssVars {
   '--background'?: React.CSSProperties['background'];
@@ -26,12 +26,12 @@ export type ProgressProps = BaseProgressProps & React.PropsWithChildren<HTMLProp
 const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
   (
     {
-      theme,
-      shape,
-      size,
-      percent,
-      strokeShape,
-      text,
+      theme = 'primary',
+      shape = 'line',
+      size = 'md',
+      percent = 0,
+      strokeShape = 'round',
+      text = (val: number) => `${val}%`,
       className,
       style,
       children,
@@ -129,14 +129,5 @@ const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
 );
 
 Progress.displayName = 'Progress';
-
-Progress.defaultProps = {
-  theme: 'primary',
-  shape: 'line',
-  size: 'md',
-  percent: 0,
-  strokeShape: 'round',
-  text: (val: number) => `${val}%`,
-};
 
 export default Progress;

@@ -7,7 +7,7 @@ module.exports = {
     color: 'blue',
   },
   testEnvironment: 'node',
-  testPathIgnorePatterns: ['<rootDir>/dist/', '<rootDir>/node_modules/'],
+  roots: ['<rootDir>/src'],
   testMatch: ['**/__tests__/**/*.[jt]s?(x)'],
   verbose: true,
 };

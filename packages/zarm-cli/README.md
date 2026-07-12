@@ -16,10 +16,10 @@ use `npm`
 npm install @zarm-design/cli --save-dev
 ```
 
-or use `yarn`
+or use `pnpm`
 
 ```node
-yarn add @zarm-design/cli --dev
+pnpm add @zarm-design/cli --save-dev
 ```
 
 ## Usage

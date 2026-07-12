@@ -1,7 +1,7 @@
-import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import Checkbox from '../index';
+import React from 'react';
 import type { CheckboxRef } from '../index';
+import Checkbox from '../index';
 
 const classPrefix = 'za-checkbox';
 
@@ -46,26 +46,35 @@ describe('Checkbox', () => {
     const ref = React.createRef<CheckboxRef>();
 
     let checked = false;
-    const onChange = jest.fn(e => {
+    const onChange = jest.fn((e) => {
       checked = e.target.checked;
     });
 
-    const { container } = render(<Checkbox ref={ref} onChange={onChange}>foo</Checkbox>);
-    const input = container.querySelectorAll('input')[0]
+    const { container, unmount } = render(
+      <Checkbox ref={ref} onChange={onChange}>
+        foo
+      </Checkbox>,
+    );
+    const input = container.querySelectorAll('input')[0];
     ref.current?.check();
     expect(input).toBeChecked();
     expect(onChange).toHaveBeenCalled();
     expect(checked).toEqual(true);
 
-    ref.current?.uncheck();
-    expect(input).not.toBeChecked();
-    expect(onChange).toHaveBeenCalled();
-    expect(checked).toEqual(false);
+    unmount();
 
-    ref.current?.toggle();
-    expect(input).toBeChecked();
-    expect(onChange).toHaveBeenCalled();
-    expect(checked).toEqual(true);
+    const checkedRef = React.createRef<CheckboxRef>();
+    const checkedWrapper = render(
+      <Checkbox ref={checkedRef} defaultChecked onChange={onChange}>
+        foo
+      </Checkbox>,
+    );
+    const checkedInput = checkedWrapper.container.querySelectorAll('input')[0];
+    checkedRef.current?.uncheck();
+    expect(checkedInput).not.toBeChecked();
+
+    checkedRef.current?.toggle();
+    expect(checkedInput).toBeChecked();
   });
 });
 

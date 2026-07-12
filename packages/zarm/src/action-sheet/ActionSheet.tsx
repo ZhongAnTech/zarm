@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { ConfigContext } from '../config-provider';
 import Popup from '../popup';
 import SafeArea from '../safe-area';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import ActionSheetItem, { ActionSheetItemProps } from './ActionSheetItem';
 import type { BaseActionSheetProps } from './interface';
@@ -28,6 +29,7 @@ export interface ActionSheetProps extends BaseActionSheetProps, HTMLProps<Action
 }
 
 const ActionSheet = React.forwardRef<HTMLDivElement, ActionSheetProps>((props, ref) => {
+  props = mergeDefaultProps(ActionSheet.defaultProps, props);
   const {
     className,
     style,

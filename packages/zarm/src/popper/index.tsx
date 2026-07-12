@@ -1,36 +1,38 @@
+import {
+  arrow,
+  autoUpdate,
+  flip,
+  offset,
+  shift,
+  useClick,
+  useDismiss,
+  useFloating,
+  useFocus,
+  useHover,
+  useInteractions,
+} from '@floating-ui/react-dom-interactions';
+import { createBEM } from '@zarm-design/bem';
 import React, {
-  HTMLAttributes,
-  useEffect,
-  useRef,
-  useState,
-  useMemo,
-  useImperativeHandle,
   cloneElement,
   forwardRef,
+  HTMLAttributes,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState,
 } from 'react';
-import { createBEM } from '@zarm-design/bem';
-import {
-  useClick,
-  useFloating,
-  flip,
-  shift,
-  useInteractions,
-  offset,
-  autoUpdate,
-  arrow,
-  useHover,
-  useFocus,
-  useDismiss,
-} from '@floating-ui/react-dom-interactions';
-
+import { ConfigContext } from '../config-provider';
 import Transition from '../transition';
 import { canUseDOM, getElementSize, renderToContainer } from '../utils/dom';
-import BasePopperProps from './interface';
-import { ConfigContext } from '../config-provider';
-import { getTransitionName, getTransformOrigin } from './utils';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import mergeRefs from '../utils/mergeRefs';
+import BasePopperProps from './interface';
+import { getTransformOrigin, getTransitionName } from './utils';
 
-interface PopperProps extends BasePopperProps, HTMLAttributes<HTMLDivElement> {}
+interface PopperProps
+  extends BasePopperProps,
+    Omit<HTMLAttributes<HTMLDivElement>, keyof BasePopperProps> {}
 
 const directionMap = {
   top: 'top' as const,
@@ -51,7 +53,16 @@ interface refHander {
   update: () => void;
 }
 
+function getElementRef(element: React.ReactElement) {
+  if (Number(React.version.split('.')[0]) >= 19) {
+    return (element.props as any).ref;
+  }
+
+  return (element as any).ref;
+}
+
 const Popper = forwardRef<refHander, PopperProps>((props, ref) => {
+  props = mergeDefaultProps(Popper.defaultProps, props);
   const { prefixCls, mountContainer: globalMountContainer } = React.useContext(ConfigContext);
   const {
     visible,
@@ -190,14 +201,11 @@ const Popper = forwardRef<refHander, PopperProps>((props, ref) => {
     </Transition>
   );
 
-  const newRef = useMemo(
-    () => mergeRefs([reference, (children as any).ref]),
-    [reference, children],
-  );
-
   const child = React.isValidElement(children) ? children : <span>{children}</span>;
+  const newRef = useMemo(() => mergeRefs([reference, getElementRef(child)]), [reference, child]);
+  const { ref: _childRef, ...childProps } = child.props as any;
   const childrenProps: React.RefAttributes<any> & React.HTMLAttributes<any> = {
-    ...(children && (children as React.ReactElement).props),
+    ...childProps,
     ...(trigger === 'contextMenu' && {
       onContextMenu: (e) => {
         e.preventDefault();

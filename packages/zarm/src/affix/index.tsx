@@ -4,6 +4,7 @@ import React, { CSSProperties, forwardRef, useCallback, useEffect, useRef, useSt
 import { ConfigContext } from '../config-provider';
 import { canUseDOM } from '../utils/dom';
 import Events from '../utils/events';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type { BaseAffixProps } from './interface';
 
@@ -23,6 +24,7 @@ export type AffixProps = BaseAffixProps & React.PropsWithChildren<HTMLProps<Affi
 const DEFAULT_SCROLL_CONTAINER = canUseDOM ? window : undefined;
 
 const Affix = forwardRef<HTMLDivElement, AffixProps>((props, ref) => {
+  props = mergeDefaultProps(Affix.defaultProps, props);
   const { className, style, children, offsetBottom, offsetTop, onChange, scrollContainer } = props;
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('affix', { prefixCls });

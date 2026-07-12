@@ -10,11 +10,13 @@ import React, {
   useRef,
 } from 'react';
 import { ConfigContext } from '../config-provider';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import { BaseCalendarMonthProps } from './interface';
 
 export type CalendarMonthProps = BaseCalendarMonthProps & React.HTMLAttributes<HTMLElement>;
 
 const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
+  props = mergeDefaultProps(CalendarMonthView.defaultProps, props);
   const { dateRender, min, max, disabledDate, onDateClick, dateMonth, value, mode } = props;
 
   const { prefixCls, locale: globalLocal } = useContext(ConfigContext);
@@ -23,7 +25,7 @@ const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
 
   const bem = createBEM('calendar', { prefixCls });
 
-  const monthRef = useRef<any>();
+  const monthRef = useRef<any>(null);
 
   const isDisabled = useCallback(
     (date) => {

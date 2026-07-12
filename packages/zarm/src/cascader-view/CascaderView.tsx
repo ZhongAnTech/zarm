@@ -13,6 +13,7 @@ import { ConfigContext } from '../config-provider';
 import { resolvedFieldNames } from '../picker-view/utils';
 import Radio from '../radio';
 import Tabs from '../tabs';
+import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
 import type {
   BaseCascaderViewProps,
@@ -41,6 +42,7 @@ export type CascaderViewState = ReturnType<typeof parseState> & {
 };
 
 const CascaderView = forwardRef<HTMLDivElement, CascaderViewProps>((props, ref) => {
+  props = mergeDefaultProps(CascaderView.defaultProps, props);
   const {
     className,
     dataSource,
