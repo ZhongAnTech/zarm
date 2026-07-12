@@ -6,7 +6,7 @@ import './style.scss';
 
 const Page = () => {
   return (
-    <Suspense fallback={() => null}>
+    <Suspense fallback={null}>
       <Container className="design-page">
         <main>
           <div className="main-container markdown">
