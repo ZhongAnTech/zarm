@@ -4,3 +4,4 @@ lib/
 coverage/
 assets/
 types/
+/.nx/workspace-data

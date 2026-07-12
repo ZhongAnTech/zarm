@@ -7,5 +7,6 @@
       "message": "chore(release): publish new version"
     }
   },
-  "npmClient": "pnpm"
+  "npmClient": "pnpm",
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json"
 }
