@@ -2,6 +2,17 @@ import { act } from '@testing-library/react';
 import React from 'react';
 import { render, unmount } from '../dom';
 
+const waitForMaybePromise = async (value: ReturnType<typeof unmount> | undefined) => {
+  if (value && typeof (value as Promise<void>).then === 'function') {
+    await value;
+  }
+};
+
+const supportsAsyncAct = () => {
+  const [major, minor] = React.version.split('.').map(Number);
+  return major > 16 || (major === 16 && minor >= 9);
+};
+
 describe('renderToContainer', () => {
   const wrapper = document.createElement('div');
 
@@ -15,13 +26,20 @@ describe('renderToContainer', () => {
   });
 
   test('unmount', async () => {
-    let unmountResult: ReturnType<typeof unmount>;
-    await act(async () => {
-      unmountResult = unmount(wrapper);
-      if (unmountResult && typeof (unmountResult as Promise<void>).then === 'function') {
-        await (unmountResult as Promise<void>);
-      }
-    });
+    let unmountResult: ReturnType<typeof unmount> | undefined;
+
+    if (supportsAsyncAct()) {
+      await act(async () => {
+        unmountResult = unmount(wrapper);
+        await waitForMaybePromise(unmountResult);
+      });
+    } else {
+      act(() => {
+        unmountResult = unmount(wrapper);
+      });
+      await waitForMaybePromise(unmountResult);
+    }
+
     expect(wrapper.querySelector('span')).toBeNull();
   });
 });
