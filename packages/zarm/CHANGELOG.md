@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## v3.4.1
+
+- Bug Fix
+
+  - [React 19] 移除组件静态 `defaultProps` 依赖，改为组件内部显式合并默认属性，兼容 React 19 不再处理函数组件 `defaultProps` 的行为 [#8b58c6f](https://github.com/ZhongAnTech/zarm/commit/8b58c6f1dd7649a484812e3987a87eb1b093ccf3)
+
 - Perf
 
   - [ConfigProvider] 优化 `cssVars` 注入逻辑，支持自定义组件作为子节点时仍能生效，并将 `cssVars` 透传到组件上下文 [#756b8e3](https://github.com/ZhongAnTech/zarm/commit/756b8e346206b44ee1c36baec72dfa3ce448c30f)
