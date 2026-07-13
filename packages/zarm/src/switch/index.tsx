@@ -23,7 +23,7 @@ export type SwitchProps = BaseSwitchProps &
   Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'>;
 
 const Switch = React.forwardRef<HTMLDivElement, SwitchProps>((props, ref) => {
-  props = mergeDefaultProps(Switch.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const { className, style, disabled, checked, defaultChecked, onChange, ...restProps } = props;
   const getChecked = checked || defaultChecked || false;
   const [currentChecked, setCurrentChecked] = React.useState(getChecked);
@@ -66,7 +66,7 @@ const Switch = React.forwardRef<HTMLDivElement, SwitchProps>((props, ref) => {
 
 Switch.displayName = 'Switch';
 
-Switch.defaultProps = {
+const defaultProps: Partial<SwitchProps> = {
   disabled: false,
 };
 

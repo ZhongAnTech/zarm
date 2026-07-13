@@ -22,7 +22,7 @@ export type SwipeActionProps = BaseSwipeActionProps &
   };
 
 const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, ref) => {
-  props = mergeDefaultProps(SwipeAction.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const {
     children,
     className,
@@ -225,7 +225,7 @@ const SwipeAction = React.forwardRef<HTMLDivElement, SwipeActionProps>((props, r
 
 SwipeAction.displayName = 'SwipeAction';
 
-SwipeAction.defaultProps = {
+const defaultProps: Partial<SwipeActionProps> = {
   leftActions: [],
   rightActions: [],
   moveDistanceRatio: 0.5,

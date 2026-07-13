@@ -47,7 +47,7 @@ interface StateProps {
 }
 
 const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => {
-  props = mergeDefaultProps(Carousel.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const { prefixCls } = React.useContext(ConfigContext);
 
   const bem = createBEM('carousel', { prefixCls });
@@ -354,7 +354,7 @@ const Carousel = forwardRef<CarouselHTMLElement, CarouselProps>((props, ref) => 
 
 Carousel.displayName = 'Carousel';
 
-Carousel.defaultProps = {
+const defaultProps: Partial<CarouselProps> = {
   direction: 'horizontal',
   height: 160,
   loop: false,

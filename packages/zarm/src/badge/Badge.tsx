@@ -22,7 +22,7 @@ export interface BadgeCssVars {
 export type BadgeProps = BaseBadgeProps & HTMLProps<BadgeCssVars>;
 
 const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
-  props = mergeDefaultProps(Badge.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const { className, shape, bordered, text, children, ...restProps } = props;
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('badge', { prefixCls });
@@ -46,7 +46,7 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
 
 Badge.displayName = 'Badge';
 
-Badge.defaultProps = {
+const defaultProps: Partial<BadgeProps> = {
   shape: 'dot',
 };
 

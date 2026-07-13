@@ -103,7 +103,7 @@ const Spinner = React.forwardRef<HTMLDivElement, LoadingProps>((props, ref) => {
 Spinner.displayName = 'Spinner';
 
 const Loading = React.forwardRef<HTMLDivElement, LoadingProps>((props, ref) => {
-  props = mergeDefaultProps(Loading.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   if (props.type !== 'spinner') {
     const { type, ...restProps } = props;
     return <Circular ref={ref} {...restProps} />;
@@ -112,7 +112,7 @@ const Loading = React.forwardRef<HTMLDivElement, LoadingProps>((props, ref) => {
   return <Spinner ref={ref} {...restProps} />;
 });
 
-Loading.defaultProps = {
+const defaultProps: Partial<LoadingProps> = {
   type: 'circular',
   loading: true,
   strokeWidth: 5,

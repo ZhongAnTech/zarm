@@ -47,7 +47,7 @@ const getActiveKey = (props) => {
 };
 
 const Collapse = React.forwardRef<unknown, CollapseProps>((props, ref) => {
-  props = mergeDefaultProps(Collapse.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const {
     className,
     onChange,
@@ -130,7 +130,7 @@ const Collapse = React.forwardRef<unknown, CollapseProps>((props, ref) => {
 
 Collapse.displayName = 'Collapse';
 
-Collapse.defaultProps = {
+const defaultProps: Partial<CollapseProps> = {
   multiple: false,
   animated: false,
 };

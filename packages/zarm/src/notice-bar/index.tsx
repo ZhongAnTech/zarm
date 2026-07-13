@@ -22,7 +22,7 @@ export type NoticeBarProps = BaseNoticeBarProps &
   };
 
 const NoticeBar = forwardRef<HTMLDivElement, NoticeBarProps>((props, ref) => {
-  props = mergeDefaultProps(NoticeBar.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const { children, speed, delay, onClose, className, style, ...restProps } = props;
   const [visible, setVisible] = useState(true);
   const { prefixCls } = React.useContext(ConfigContext);
@@ -74,7 +74,7 @@ const NoticeBar = forwardRef<HTMLDivElement, NoticeBarProps>((props, ref) => {
 
 NoticeBar.displayName = 'NoticeBar';
 
-NoticeBar.defaultProps = {
+const defaultProps: Partial<NoticeBarProps> = {
   theme: 'warning',
   icon: <VolumeIcon />,
   hasArrow: false,

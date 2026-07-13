@@ -34,7 +34,7 @@ export interface KeyboardCssVars {
 export type KeyboardProps = BaseKeyBoardProps & HTMLProps<KeyboardCssVars>;
 
 const Keyboard = forwardRef<HTMLDivElement, KeyboardProps>((props, ref) => {
-  props = mergeDefaultProps(Keyboard.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const { className, style, type, dataSource, onKeyClick, ...restProps } = props;
 
   const { locale: globalLocal, prefixCls } = useContext(ConfigContext);
@@ -158,7 +158,7 @@ const Keyboard = forwardRef<HTMLDivElement, KeyboardProps>((props, ref) => {
 
 Keyboard.displayName = 'Keyboard';
 
-Keyboard.defaultProps = {
+const defaultProps: Partial<KeyboardProps> = {
   type: 'number',
 };
 

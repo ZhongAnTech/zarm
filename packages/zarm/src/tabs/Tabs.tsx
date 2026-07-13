@@ -68,7 +68,7 @@ interface CompoundedComponent
 }
 
 const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
-  props = mergeDefaultProps(Tabs.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const {
     className,
     style,
@@ -280,7 +280,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>((props, ref) => {
 
 Tabs.displayName = 'Tabs';
 
-Tabs.defaultProps = {
+const defaultProps: Partial<TabsProps> = {
   disabled: false,
   swipeable: false,
   scrollable: false,

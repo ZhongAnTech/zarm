@@ -79,7 +79,7 @@ const getValue = (props: StepperProps, defaultValue: number) => {
 export type StepperProps = BaseStepperProps & HTMLProps<StepperCssVars>;
 
 const Stepper = React.forwardRef<unknown, StepperProps>((props, ref) => {
-  props = mergeDefaultProps(Stepper.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const {
     className,
     style,
@@ -230,7 +230,7 @@ const Stepper = React.forwardRef<unknown, StepperProps>((props, ref) => {
 });
 
 Stepper.displayName = 'Stepper';
-Stepper.defaultProps = {
+const defaultProps: Partial<StepperProps> = {
   shape: 'radius',
   disabled: false,
   step: 1,

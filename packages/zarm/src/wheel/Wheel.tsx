@@ -35,7 +35,7 @@ export interface WheelCssVars {
 export type WheelProps = BaseWheelProps & HTMLProps<WheelCssVars>;
 
 const Wheel: React.FC<WheelProps> = (props) => {
-  props = mergeDefaultProps(Wheel.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const { className, value, defaultValue, dataSource, disabled, stopScroll, itemRender, onChange } =
     props;
 
@@ -166,7 +166,7 @@ const Wheel: React.FC<WheelProps> = (props) => {
 };
 
 Wheel.displayName = 'Wheel';
-Wheel.defaultProps = {
+const defaultProps: Partial<WheelProps> = {
   dataSource: [],
   stopScroll: false,
 };

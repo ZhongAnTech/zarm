@@ -33,7 +33,7 @@ export type SkeletonParagraphProps = HTMLProps & {
 };
 
 const Skeleton = (props: SkeletonProps) => {
-  props = mergeDefaultProps(Skeleton.defaultProps as Partial<SkeletonProps>, props);
+  props = mergeDefaultProps(defaultProps, props);
   const { className, shape, animated, ...restProps } = props;
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('skeleton', { prefixCls });
@@ -50,7 +50,7 @@ const Skeleton = (props: SkeletonProps) => {
 
 Skeleton.displayName = 'skeleton';
 
-Skeleton.defaultProps = {
+const defaultProps: Partial<SkeletonProps> = {
   shape: 'radius',
 };
 

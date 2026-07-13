@@ -26,7 +26,7 @@ export interface PullCssVars {
 export interface PullProps extends BasePullProps, React.PropsWithChildren<HTMLProps<PullCssVars>> {}
 
 const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
-  props = mergeDefaultProps(Pull.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const pullRef = (ref as any) || React.createRef<HTMLDivElement>();
   const wrap = useRef<HTMLElement | Window | undefined>(undefined);
 
@@ -46,7 +46,7 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
       scrollHeight = document.body.clientHeight,
       clientHeight = document.documentElement.clientHeight,
     } = wrap.current as any;
-    const load: PullAction = { ...Pull.defaultProps!.load, ...props!.load };
+    const load: PullAction = { ...defaultProps!.load, ...props!.load };
     const { handler, distance } = load;
 
     if (
@@ -181,7 +181,7 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
       event.preventDefault();
     }
 
-    const refresh: PullAction = { ...Pull.defaultProps?.refresh, ...props?.refresh };
+    const refresh: PullAction = { ...defaultProps?.refresh, ...props?.refresh };
     const { startDistance, distance } = refresh;
 
     // 设置拖动距离衰减（实际下拉移动距离为拖动距离的1/3）
@@ -253,7 +253,7 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
    * 渲染刷新节点
    */
   const renderRefresh = (): ReactNode => {
-    const refreshProps: PullAction = { ...Pull.defaultProps?.refresh, ...props?.refresh };
+    const refreshProps: PullAction = { ...defaultProps?.refresh, ...props?.refresh };
     const { startDistance, distance, render } = refreshProps;
 
     let percent = 0;
@@ -318,7 +318,7 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
    * 渲染加载节点
    */
   const renderLoad = (): ReactNode => {
-    const loadProps: PullAction = { ...Pull.defaultProps?.load, ...props?.load };
+    const loadProps: PullAction = { ...defaultProps?.load, ...props?.load };
     const { render } = loadProps;
 
     if (typeof render === 'function') {
@@ -389,7 +389,7 @@ const Pull = React.forwardRef<HTMLDivElement, PullProps>((props, ref) => {
   );
 });
 
-Pull.defaultProps = {
+const defaultProps: Partial<PullProps> = {
   refresh: {
     state: REFRESH_STATE.normal,
     startDistance: 30,

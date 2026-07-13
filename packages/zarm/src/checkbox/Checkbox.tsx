@@ -59,7 +59,7 @@ export interface CheckboxRef {
 }
 
 const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
-  props = mergeDefaultProps(Checkbox.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const inputRef = useRef<HTMLInputElement>(null);
 
   let [checked, setChecked] = useState(getChecked(props, false));
@@ -214,7 +214,7 @@ const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
 
 Checkbox.displayName = 'Checkbox';
 
-Checkbox.defaultProps = {
+const defaultProps: Partial<CheckboxProps> = {
   indeterminate: false,
 };
 

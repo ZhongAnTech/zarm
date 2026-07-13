@@ -52,7 +52,7 @@ const Content: React.FC<{ minScale: number; maxScale: number; imgSrc: string }> 
 };
 
 const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props, ref) => {
-  props = mergeDefaultProps(ImagePreview.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const {
     visible,
     activeIndex,
@@ -204,7 +204,7 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
 
 ImagePreview.displayName = 'ImagePreview';
 
-ImagePreview.defaultProps = {
+const defaultProps: Partial<ImagePreviewProps> = {
   activeIndex: 0,
   showPagination: true,
   visible: false,

@@ -63,7 +63,7 @@ interface CalendarStates {
 }
 
 const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) => {
-  props = mergeDefaultProps(Calendar.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const {
     className,
     dateRender,
@@ -295,7 +295,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>((props, ref) =>
   );
 });
 
-Calendar.defaultProps = {
+const defaultProps: Partial<CalendarProps> = {
   mode: 'single',
   dateRender: (date: Date) => date.getDate(),
   disabledDate: () => false,

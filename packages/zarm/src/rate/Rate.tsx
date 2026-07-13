@@ -19,7 +19,7 @@ export interface RateCssVars {
 export type RateProps = BaseRateProps & HTMLProps;
 
 const Rate = React.forwardRef<HTMLDivElement, RateProps>((props, ref) => {
-  props = mergeDefaultProps(Rate.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const { className, style, count, character, allowHalf, allowClear, readonly } = props;
 
   const [value, setValue] = useControllableValue<number>(props);
@@ -124,7 +124,7 @@ const Rate = React.forwardRef<HTMLDivElement, RateProps>((props, ref) => {
 
 Rate.displayName = 'Rate';
 
-Rate.defaultProps = {
+const defaultProps: Partial<RateProps> = {
   count: 5,
   defaultValue: 0,
   allowHalf: false,

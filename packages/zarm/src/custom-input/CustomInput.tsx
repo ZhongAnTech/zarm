@@ -35,7 +35,7 @@ export interface CustomInputRef {
 }
 
 const CustomInput = React.forwardRef<CustomInputRef, CustomInputProps>((props, ref) => {
-  props = mergeDefaultProps(CustomInput.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const {
     type,
     clearable,
@@ -196,7 +196,7 @@ const CustomInput = React.forwardRef<CustomInputRef, CustomInputProps>((props, r
 
 CustomInput.displayName = 'CustomInput';
 
-CustomInput.defaultProps = {
+const defaultProps: Partial<CustomInputProps> = {
   type: 'number',
 };
 

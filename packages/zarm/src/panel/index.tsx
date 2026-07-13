@@ -21,7 +21,7 @@ export type PanelProps = Omit<React.ComponentPropsWithRef<'div'>, 'title'> &
   };
 
 const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
-  props = mergeDefaultProps(Panel.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const { className, title, more, spacing, bordered, children, ...restProps } = props;
 
   const { prefixCls } = React.useContext(ConfigContext);
@@ -43,7 +43,7 @@ const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
 });
 
 Panel.displayName = 'Panel';
-Panel.defaultProps = {
+const defaultProps: Partial<PanelProps> = {
   bordered: true,
   spacing: false,
 };

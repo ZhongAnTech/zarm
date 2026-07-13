@@ -24,7 +24,7 @@ export type AffixProps = BaseAffixProps & React.PropsWithChildren<HTMLProps<Affi
 const DEFAULT_SCROLL_CONTAINER = canUseDOM ? window : undefined;
 
 const Affix = forwardRef<HTMLDivElement, AffixProps>((props, ref) => {
-  props = mergeDefaultProps(Affix.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const { className, style, children, offsetBottom, offsetTop, onChange, scrollContainer } = props;
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('affix', { prefixCls });
@@ -162,7 +162,7 @@ const Affix = forwardRef<HTMLDivElement, AffixProps>((props, ref) => {
 
 Affix.displayName = 'Affix';
 
-Affix.defaultProps = {
+const defaultProps: Partial<AffixProps> = {
   scrollContainer: DEFAULT_SCROLL_CONTAINER,
   offsetTop: 0,
 };

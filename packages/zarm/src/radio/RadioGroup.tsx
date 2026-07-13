@@ -19,7 +19,7 @@ const getValue = (props: RadioGroupProps, defaultValue?: RadioValue) => {
 export type RadioGroupProps = BaseRadioGroupProps & HTMLProps<RadioGroupCssVars>;
 
 const RadioGroup: FC<RadioGroupProps> = (props) => {
-  props = mergeDefaultProps(RadioGroup.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const [value, setValue] = useState(getValue(props));
   const { type, block, disabled, listIconAlign, compact, className, style } = props;
   const { prefixCls } = useContext(ConfigContext);
@@ -68,7 +68,7 @@ const RadioGroup: FC<RadioGroupProps> = (props) => {
 
 RadioGroup.displayName = 'RadioGroup';
 
-RadioGroup.defaultProps = {
+const defaultProps: Partial<RadioGroupProps> = {
   block: false,
   disabled: false,
   compact: false,

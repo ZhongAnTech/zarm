@@ -8,7 +8,7 @@ import type { BaseTabPanelProps } from './interface';
 export type TabPanelProps = BaseTabPanelProps & HTMLProps;
 
 const TabPanel = React.forwardRef<HTMLDivElement, TabPanelProps>((props, ref) => {
-  props = mergeDefaultProps(TabPanel.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const { className, selected, children, style } = props;
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('tabs__panel', { prefixCls });
@@ -29,6 +29,6 @@ const TabPanel = React.forwardRef<HTMLDivElement, TabPanelProps>((props, ref) =>
 
 TabPanel.displayName = 'TabPanel';
 
-TabPanel.defaultProps = {};
+const defaultProps: Partial<TabPanelProps> = {};
 
 export default TabPanel;

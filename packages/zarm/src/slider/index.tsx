@@ -35,7 +35,7 @@ export interface SliderProps
     BaseSliderProps {}
 
 const Slider = React.forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
-  props = mergeDefaultProps(Slider.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('slider', { prefixCls });
 
@@ -241,7 +241,7 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
 });
 
 Slider.displayName = 'Slider';
-Slider.defaultProps = {
+const defaultProps: Partial<SliderProps> = {
   disabled: false,
   showMark: false,
   vertical: false,

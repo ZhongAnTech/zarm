@@ -20,7 +20,7 @@ const getValue = (props: CheckboxGroupProps, defaultValue?: CheckboxValue[]) => 
 export type CheckboxGroupProps = BaseCheckboxGroupProps & HTMLProps<CheckboxGroupCssVars>;
 
 const CheckboxGroup: FC<CheckboxGroupProps> = (props) => {
-  props = mergeDefaultProps(CheckboxGroup.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const [value, setValue] = useState(getValue(props, []));
   const { type, block, disabled, iconAlign, className, style } = props;
   const { prefixCls } = useContext(ConfigContext);
@@ -73,7 +73,7 @@ const CheckboxGroup: FC<CheckboxGroupProps> = (props) => {
 
 CheckboxGroup.displayName = 'CheckboxGroup';
 
-CheckboxGroup.defaultProps = {
+const defaultProps: Partial<CheckboxGroupProps> = {
   block: false,
   disabled: false,
   iconAlign: 'before',

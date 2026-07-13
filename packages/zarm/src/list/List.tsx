@@ -29,7 +29,7 @@ export interface ListCssVars {
 export type ListProps = React.PropsWithChildren<BaseListProps & HTMLProps<ListCssVars>>;
 
 const List = React.forwardRef<HTMLUListElement, ListProps>((props, ref) => {
-  props = mergeDefaultProps(List.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const { className, bordered, children, ...restProps } = props;
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('list', { prefixCls });
@@ -49,7 +49,7 @@ const List = React.forwardRef<HTMLUListElement, ListProps>((props, ref) => {
 
 List.displayName = 'List';
 
-List.defaultProps = {
+const defaultProps: Partial<ListProps> = {
   bordered: true,
 };
 

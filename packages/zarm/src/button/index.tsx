@@ -65,7 +65,7 @@ export type NativeButtonProps = {
 export type ButtonProps = Partial<AnchorButtonProps & NativeButtonProps>;
 
 const Button = React.forwardRef<unknown, ButtonProps>((props, ref) => {
-  props = mergeDefaultProps(Button.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const {
     className,
     theme,
@@ -158,7 +158,7 @@ const Button = React.forwardRef<unknown, ButtonProps>((props, ref) => {
 
 Button.displayName = 'Button';
 
-Button.defaultProps = {
+const defaultProps: Partial<ButtonProps> = {
   theme: 'default',
   size: 'md',
   shape: 'radius',

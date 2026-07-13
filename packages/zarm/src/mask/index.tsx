@@ -24,7 +24,7 @@ export type MaskProps = BaseMaskProps &
   };
 
 const Mask = React.forwardRef<HTMLDivElement, MaskProps>((props, ref) => {
-  props = mergeDefaultProps(Mask.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const {
     className,
     style,
@@ -91,7 +91,7 @@ const Mask = React.forwardRef<HTMLDivElement, MaskProps>((props, ref) => {
 
 Mask.displayName = 'Mask';
 
-Mask.defaultProps = {
+const defaultProps: Partial<MaskProps> = {
   visible: false,
   color: 'black',
   opacity: 'normal',

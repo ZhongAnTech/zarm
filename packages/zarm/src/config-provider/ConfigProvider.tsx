@@ -29,7 +29,7 @@ const changeRuntimeConfigContext = (props: ConfigProviderProps) => {
 export const getRuntimeConfig = () => runtimeConfigContext;
 
 const ConfigProvider: React.FC<React.PropsWithChildren<ConfigProviderProps>> = (props) => {
-  props = mergeDefaultProps(ConfigProvider.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const { children, cssVars, primaryColor, theme, ...rest } = props;
 
   changeRuntimeConfigContext(props);
@@ -64,6 +64,6 @@ export const RuntimeConfigProvider: React.FC<React.PropsWithChildren<{}>> = ({ c
 };
 
 ConfigProvider.displayName = 'ConfigProvider';
-ConfigProvider.defaultProps = defaultConfig;
+const defaultProps: Partial<React.PropsWithChildren<ConfigProviderProps>> = defaultConfig;
 
 export default ConfigProvider;

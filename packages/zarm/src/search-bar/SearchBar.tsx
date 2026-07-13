@@ -34,7 +34,7 @@ export type SearchBarProps = BaseSearchBarProps &
   HTMLProps<SearchBarCssVars>;
 
 const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
-  props = mergeDefaultProps(SearchBar.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const {
     className,
     style,
@@ -142,7 +142,7 @@ const SearchBar = React.forwardRef<unknown, SearchBarProps>((props, ref) => {
   );
 });
 
-SearchBar.defaultProps = {
+const defaultProps: Partial<SearchBarProps> = {
   shape: 'radius',
   clearable: true,
 };

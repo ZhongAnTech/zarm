@@ -31,7 +31,7 @@ export interface ImageProps extends Omit<React.ImgHTMLAttributes<HTMLImageElemen
 }
 
 const Image = React.forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
-  props = mergeDefaultProps(Image.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const {
     src,
     placeholder,
@@ -134,7 +134,7 @@ const Image = React.forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
 });
 
 Image.displayName = 'Image';
-Image.defaultProps = {
+const defaultProps: Partial<ImageProps> = {
   placeholder: false,
   fallback: false,
   fit: 'fill',

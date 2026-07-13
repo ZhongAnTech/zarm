@@ -27,7 +27,7 @@ const DEFAULT_RECT = {
 const CLIENT_RECT = canUseDOM && 'DOMRect' in window ? new window.DOMRect() : DEFAULT_RECT;
 
 const Marquee = React.forwardRef<HTMLDivElement, MarqueeProps>((props, ref) => {
-  props = mergeDefaultProps(Marquee.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const { direction, speed = SPEED, delay, height, width, children, className } = props;
   const dir = direction.toLowerCase();
 
@@ -108,7 +108,7 @@ const Marquee = React.forwardRef<HTMLDivElement, MarqueeProps>((props, ref) => {
 
 Marquee.displayName = 'Marquee';
 
-Marquee.defaultProps = {
+const defaultProps: Partial<MarqueeProps> = {
   direction: 'left',
   speed: 30,
   delay: 0,

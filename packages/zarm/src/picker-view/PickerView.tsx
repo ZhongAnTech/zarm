@@ -33,7 +33,7 @@ export interface PickerViewInstance {
 }
 
 const PickerView = React.forwardRef<PickerViewInstance, PickerViewProps>((props, ref) => {
-  props = mergeDefaultProps(PickerView.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const { className, style, cols, dataSource, fieldNames, itemRender, disabled, onChange } = props;
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('picker-view', { prefixCls });
@@ -101,7 +101,7 @@ const PickerView = React.forwardRef<PickerViewInstance, PickerViewProps>((props,
   );
 });
 
-PickerView.defaultProps = {
+const defaultProps: Partial<PickerViewProps> = {
   defaultValue: [],
   dataSource: [],
   cols: Infinity,

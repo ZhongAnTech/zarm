@@ -16,14 +16,14 @@ interface CompoundedComponent extends React.ForwardRefExoticComponent<IconProps>
 }
 
 const Icon = React.forwardRef<HTMLElement, IconProps>((props, ref) => {
-  props = mergeDefaultProps(Icon.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   return <BaseIcon ref={ref} {...props} />;
 }) as CompoundedComponent;
 
 Icon.createFromIconfont = BaseIcon.createFromIconfont;
 
 Icon.displayName = 'Icon';
-Icon.defaultProps = {
+const defaultProps: Partial<IconProps> = {
   viewBox: '0 0 1000 1000',
 };
 

@@ -48,7 +48,7 @@ const cancelEvent = (event: any): void => {
 export interface PinchZoomProps extends HTMLAttributes<HTMLDivElement>, BasePinchZoomProps {}
 
 const PinchZoom = React.forwardRef<unknown, PinchZoomProps>((props, ref) => {
-  props = mergeDefaultProps(PinchZoom.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const container = (ref as any) || React.createRef<HTMLDivElement>();
 
   const { prefixCls } = React.useContext(ConfigContext);
@@ -364,7 +364,7 @@ const PinchZoom = React.forwardRef<unknown, PinchZoomProps>((props, ref) => {
   );
 });
 
-PinchZoom.defaultProps = {
+const defaultProps: Partial<PinchZoomProps> = {
   minScale: 1,
   maxScale: 3,
 };

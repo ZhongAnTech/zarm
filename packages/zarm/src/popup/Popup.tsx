@@ -25,7 +25,7 @@ const TRANSITION_NAMES = {
 };
 
 const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
-  props = mergeDefaultProps(Popup.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const {
     width,
     destroy,
@@ -149,7 +149,7 @@ const Popup = React.forwardRef<HTMLDivElement, PopupProps>((props, ref) => {
 
 Popup.displayName = 'Popup';
 
-Popup.defaultProps = {
+const defaultProps: Partial<PopupProps> = {
   visible: false,
   mask: true,
   direction: 'bottom',

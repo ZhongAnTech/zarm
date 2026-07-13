@@ -17,7 +17,7 @@ export type KeyboardPickerProps = BaseKeyBoardPickerProps &
   HTMLProps<KeyboardPickerCssVars & PickerContainerCssVars>;
 
 const KeyboardPicker = React.forwardRef<unknown, KeyboardPickerProps>((props, ref) => {
-  props = mergeDefaultProps(KeyboardPicker.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const { className, style, visible, destroy, safeArea, ...restProps } = props;
 
   const keyboardPickerRef = (ref as any) || React.createRef<HTMLDivElement>();
@@ -49,7 +49,7 @@ const KeyboardPicker = React.forwardRef<unknown, KeyboardPickerProps>((props, re
 
 KeyboardPicker.displayName = 'KeyboardPicker';
 
-KeyboardPicker.defaultProps = {
+const defaultProps: Partial<KeyboardPickerProps> = {
   visible: false,
   type: 'number',
   destroy: true,

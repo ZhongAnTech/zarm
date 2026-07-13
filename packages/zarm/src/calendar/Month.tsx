@@ -16,7 +16,7 @@ import { BaseCalendarMonthProps } from './interface';
 export type CalendarMonthProps = BaseCalendarMonthProps & React.HTMLAttributes<HTMLElement>;
 
 const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
-  props = mergeDefaultProps(CalendarMonthView.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const { dateRender, min, max, disabledDate, onDateClick, dateMonth, value, mode } = props;
 
   const { prefixCls, locale: globalLocal } = useContext(ConfigContext);
@@ -169,7 +169,7 @@ const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
   );
 });
 
-CalendarMonthView.defaultProps = {
+const defaultProps: Partial<CalendarMonthProps> = {
   value: [],
   dateMonth: new Date(),
   min: new Date(),

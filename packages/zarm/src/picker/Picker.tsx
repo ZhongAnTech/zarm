@@ -26,7 +26,7 @@ export interface PickerCssVars extends PickerContainerCssVars {
 export type PickerProps = BasePickerProps & HTMLProps<PickerCssVars>;
 
 const Picker: React.FC<PickerProps> = (props) => {
-  props = mergeDefaultProps(Picker.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const {
     className,
     style,
@@ -98,7 +98,7 @@ const Picker: React.FC<PickerProps> = (props) => {
   );
 };
 
-Picker.defaultProps = {
+const defaultProps: Partial<PickerProps> = {
   dataSource: [],
   cols: Infinity,
   maskClosable: true,

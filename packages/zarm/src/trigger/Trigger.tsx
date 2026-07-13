@@ -10,7 +10,7 @@ const Trigger: React.FC<TriggerProps> & {
   instanceList: TriggerProps['onClose'][];
   count: number;
 } = (props) => {
-  props = mergeDefaultProps(Trigger.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const { visible, onClose, disabled = false } = props;
 
   // execute callback function, KeyboardEvent.keycode was not recommended in MDN.
@@ -60,7 +60,7 @@ const Trigger: React.FC<TriggerProps> & {
   return <>{props.children}</>;
 };
 
-Trigger.defaultProps = {
+const defaultProps: Partial<TriggerProps> = {
   visible: false,
   disabled: false,
 };

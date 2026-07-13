@@ -41,7 +41,7 @@ export interface ModalProps
 }
 
 const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
-  props = mergeDefaultProps(Modal.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const {
     className,
     title,
@@ -113,7 +113,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   );
 });
 
-Modal.defaultProps = {
+const defaultProps: Partial<ModalProps> = {
   visible: false,
   animationType: 'fade',
   width: '70%',

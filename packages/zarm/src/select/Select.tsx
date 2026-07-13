@@ -29,7 +29,7 @@ export interface SelectState {
 }
 
 const Select = React.forwardRef<HTMLDivElement, SelectProps>((props, ref) => {
-  props = mergeDefaultProps(Select.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const {
     placeholder,
     className,
@@ -108,7 +108,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>((props, ref) => {
 
 Select.displayName = 'Select';
 
-Select.defaultProps = {
+const defaultProps: Partial<SelectProps> = {
   dataSource: [],
   cols: Infinity,
   maskClosable: true,

@@ -49,7 +49,7 @@ export interface InputRef {
 }
 
 const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
-  props = mergeDefaultProps(Input.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const {
     type,
     disabled,
@@ -218,7 +218,7 @@ const Input = React.forwardRef<unknown, InputProps>((props, ref) => {
 
 Input.displayName = 'Input';
 
-Input.defaultProps = {
+const defaultProps: Partial<InputProps> = {
   type: 'text',
   disabled: false,
   autoFocus: false,

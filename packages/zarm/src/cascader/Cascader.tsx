@@ -27,7 +27,7 @@ export type CascaderProps = BaseCascaderProps &
 export type CascaderState = ReturnType<typeof parseState>;
 
 const Cascader = forwardRef<HTMLDivElement, CascaderProps>((props, ref) => {
-  props = mergeDefaultProps(Cascader.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const {
     className,
     style,
@@ -110,7 +110,7 @@ const Cascader = forwardRef<HTMLDivElement, CascaderProps>((props, ref) => {
 
 Cascader.displayName = 'Cascader';
 
-Cascader.defaultProps = {
+const defaultProps: Partial<CascaderProps> = {
   maskClosable: true,
 };
 

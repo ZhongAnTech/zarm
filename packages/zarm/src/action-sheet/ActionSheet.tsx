@@ -29,7 +29,7 @@ export interface ActionSheetProps extends BaseActionSheetProps, HTMLProps<Action
 }
 
 const ActionSheet = React.forwardRef<HTMLDivElement, ActionSheetProps>((props, ref) => {
-  props = mergeDefaultProps(ActionSheet.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const {
     className,
     style,
@@ -88,7 +88,7 @@ const ActionSheet = React.forwardRef<HTMLDivElement, ActionSheetProps>((props, r
 
 ActionSheet.displayName = 'ActionSheet';
 
-ActionSheet.defaultProps = {
+const defaultProps: Partial<ActionSheetProps> = {
   spacing: false,
   visible: false,
   actions: [],

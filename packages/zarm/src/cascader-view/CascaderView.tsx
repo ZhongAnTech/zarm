@@ -42,7 +42,7 @@ export type CascaderViewState = ReturnType<typeof parseState> & {
 };
 
 const CascaderView = forwardRef<HTMLDivElement, CascaderViewProps>((props, ref) => {
-  props = mergeDefaultProps(CascaderView.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const {
     className,
     dataSource,
@@ -217,7 +217,7 @@ const CascaderView = forwardRef<HTMLDivElement, CascaderViewProps>((props, ref) 
 
 CascaderView.displayName = 'CascaderView';
 
-CascaderView.defaultProps = {
+const defaultProps: Partial<CascaderViewProps> = {
   cols: Infinity,
 };
 

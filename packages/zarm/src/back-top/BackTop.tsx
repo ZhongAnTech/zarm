@@ -25,7 +25,7 @@ export interface BackTopProps extends BaseBackTopProps, HTMLProps<BackTopCssVars
 }
 
 const BackTop: React.FC<BackTopProps> = (props) => {
-  props = mergeDefaultProps(BackTop.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const { className, style, visibleDistance, destroy, onClick, children } = props;
   const [visible, setVisible] = React.useState(false);
   const {
@@ -95,7 +95,7 @@ const BackTop: React.FC<BackTopProps> = (props) => {
   );
 };
 
-BackTop.defaultProps = {
+const defaultProps: Partial<BackTopProps> = {
   speed: 100,
   visibleDistance: 400,
   destroy: true,

@@ -21,7 +21,7 @@ export type NavBarProps = BaseNavBarProps &
   HTMLProps<NavBarCssVars>;
 
 const NavBar = forwardRef<HTMLDivElement, NavBarProps>((props, ref) => {
-  props = mergeDefaultProps(NavBar.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const { className, title, left, right, ...restProps } = props;
 
   const { prefixCls } = React.useContext(ConfigContext);
@@ -38,6 +38,6 @@ const NavBar = forwardRef<HTMLDivElement, NavBarProps>((props, ref) => {
 });
 
 NavBar.displayName = 'NavBar';
-NavBar.defaultProps = {};
+const defaultProps: Partial<NavBarProps> = {};
 
 export default NavBar;

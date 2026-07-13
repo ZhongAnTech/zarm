@@ -20,7 +20,7 @@ export type MessageProps = BaseMessageProps &
   };
 
 const Message = forwardRef<HTMLDivElement, MessageProps>((props, ref) => {
-  props = mergeDefaultProps(Message.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const { className, theme, icon, hasArrow, closable, children, onClick, onClose, ...restProps } =
     props;
   const [visible, setVisible] = useState(true);
@@ -71,7 +71,7 @@ const Message = forwardRef<HTMLDivElement, MessageProps>((props, ref) => {
 
 Message.displayName = 'Message';
 
-Message.defaultProps = {
+const defaultProps: Partial<MessageProps> = {
   theme: 'primary',
   hasArrow: false,
   closable: false,

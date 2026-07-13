@@ -23,7 +23,7 @@ export interface FilePickerCssVars {
 export type FilePickerProps = BaseFilePickerProps & HTMLProps<FilePickerCssVars>;
 
 const FilePicker = React.forwardRef<unknown, FilePickerProps>((props, ref) => {
-  props = mergeDefaultProps(FilePicker.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const fileRef = (ref as any) || React.createRef<HTMLDivElement>();
 
   const { prefixCls } = React.useContext(ConfigContext);
@@ -108,7 +108,7 @@ const FilePicker = React.forwardRef<unknown, FilePickerProps>((props, ref) => {
 
 FilePicker.displayName = 'FilePicker';
 
-FilePicker.defaultProps = {
+const defaultProps: Partial<FilePickerProps> = {
   disabled: false,
   multiple: false,
   onBeforeSelect: () => true,

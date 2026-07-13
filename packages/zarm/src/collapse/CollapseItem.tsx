@@ -9,7 +9,7 @@ export type CollapseItemProps = Omit<HTMLAttributes<HTMLDivElement>, 'key' | 'ti
   BaseCollapseItemProps;
 
 const CollapseItem = React.forwardRef<unknown, CollapseItemProps>((props, ref) => {
-  props = mergeDefaultProps(CollapseItem.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const { title, className, disabled, animated, isActive, children, onChange, ...rest } = props;
 
   const content = (ref as any) || React.createRef<HTMLElement>();
@@ -62,7 +62,7 @@ const CollapseItem = React.forwardRef<unknown, CollapseItemProps>((props, ref) =
 
 CollapseItem.displayName = 'CollapseItem';
 
-CollapseItem.defaultProps = {
+const defaultProps: Partial<CollapseItemProps> = {
   animated: false,
   disabled: false,
 };

@@ -15,7 +15,7 @@ export interface GridCssVars {
 export type GridProps = BaseGridProps & HTMLProps<GridCssVars>;
 
 const Grid: React.FC<GridProps> = (props) => {
-  props = mergeDefaultProps(Grid.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const { className, style, columns, gutter, bordered, square, children } = props;
 
   const { prefixCls } = React.useContext(ConfigContext);
@@ -61,7 +61,7 @@ const Grid: React.FC<GridProps> = (props) => {
 
 Grid.displayName = 'Grid';
 
-Grid.defaultProps = {
+const defaultProps: Partial<GridProps> = {
   columns: 3,
   gutter: 0,
   bordered: true,

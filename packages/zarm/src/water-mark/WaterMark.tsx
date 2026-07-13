@@ -25,7 +25,7 @@ const MUTATION_OBSERVER_CONFIG = {
 };
 
 const WaterMark: React.FC<WaterMarkProps> = (props) => {
-  props = mergeDefaultProps(WaterMark.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const uuid = React.useRef(getUUID());
   const { className, text, image, mode, monitor, children } = props;
   const watermark = React.useRef<HTMLDivElement>(null);
@@ -164,7 +164,7 @@ const WaterMark: React.FC<WaterMarkProps> = (props) => {
 
 WaterMark.displayName = 'WaterMark';
 
-WaterMark.defaultProps = {
+const defaultProps: Partial<WaterMarkProps> = {
   textStyle: TEXT_STYLE_DEFAULT,
   imageStyle: IMAGE_STYLE_DEFAULT,
   markStyle: MARK_STYLE_DEFAULT,

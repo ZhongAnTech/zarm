@@ -31,7 +31,7 @@ export interface TooltipCssVars {
 export type TooltipProps = BaseTooltipProps & React.PropsWithChildren<HTMLProps<TooltipCssVars>>;
 
 const Tooltip = forwardRef<refHander, TooltipProps>((props, ref) => {
-  props = mergeDefaultProps(Tooltip.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const { children, content, className, ...others } = props;
 
   const { prefixCls } = React.useContext(ConfigContext);
@@ -55,7 +55,7 @@ const Tooltip = forwardRef<refHander, TooltipProps>((props, ref) => {
   );
 });
 
-Tooltip.defaultProps = {
+const defaultProps: Partial<TooltipProps> = {
   direction: 'top' as TooltipPlacement,
   hasArrow: true,
   onVisibleChange: () => {},

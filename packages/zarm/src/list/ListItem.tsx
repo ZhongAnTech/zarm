@@ -11,7 +11,7 @@ export type ListItemProps = BaseListItemProps &
   };
 
 const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
-  props = mergeDefaultProps(ListItem.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const {
     className,
     prefix,
@@ -60,7 +60,7 @@ const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>((props, ref) => 
 
 ListItem.displayName = 'ListItem';
 
-ListItem.defaultProps = {
+const defaultProps: Partial<ListItemProps> = {
   hasArrow: true,
 };
 

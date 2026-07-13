@@ -62,7 +62,7 @@ function getElementRef(element: React.ReactElement) {
 }
 
 const Popper = forwardRef<refHander, PopperProps>((props, ref) => {
-  props = mergeDefaultProps(Popper.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const { prefixCls, mountContainer: globalMountContainer } = React.useContext(ConfigContext);
   const {
     visible,
@@ -221,7 +221,7 @@ const Popper = forwardRef<refHander, PopperProps>((props, ref) => {
   );
 });
 
-Popper.defaultProps = {
+const defaultProps: Partial<PopperProps> = {
   hasArrow: false,
   destroy: false,
   arrowPointAtCenter: false,

@@ -56,7 +56,7 @@ export interface RadioRef {
 }
 
 const Radio = forwardRef<RadioRef, RadioProps>((props, ref) => {
-  props = mergeDefaultProps(Radio.defaultProps, props);
+  props = mergeDefaultProps(defaultProps, props);
   const inputRef = useRef<HTMLInputElement>(null);
   let [checked, setChecked] = useState(getChecked(props, false));
   let { disabled } = props;
@@ -201,7 +201,7 @@ const Radio = forwardRef<RadioRef, RadioProps>((props, ref) => {
 
 Radio.displayName = 'Radio';
 
-Radio.defaultProps = {
+const defaultProps: Partial<RadioProps> = {
   indeterminate: false,
 };
 
