@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## v3.4.2
+
+- Bug Fix
+
+  - [Build] 修复发布包 `package.json` 中包含 `workspace:^` 依赖导致外部项目安装失败的问题
+
 ## v3.4.1
 
 - Bug Fix
