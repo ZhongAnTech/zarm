@@ -2,6 +2,8 @@
 
 $PI: 3.141592674;
 $activity-indicator-spinner-count : 12;
+$activity-indicator-spinner-angle-step: 30deg;
+$activity-indicator-spinner-opacity-step: 0.0833333333333333;
 
 @include b(activity-indicator) {
   display: inline-block;
@@ -52,8 +54,8 @@ $activity-indicator-spinner-count : 12;
         height: 100%;
 
         &:nth-of-type(#{$i}) {
-          transform: rotate(calc($i * (360 / $activity-indicator-spinner-count) * 1deg));
-          opacity: calc($i / $activity-indicator-spinner-count);
+          transform: rotate($i * $activity-indicator-spinner-angle-step);
+          opacity: $i * $activity-indicator-spinner-opacity-step;
         }
 
         &::before {

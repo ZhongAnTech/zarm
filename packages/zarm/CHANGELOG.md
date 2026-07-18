@@ -1,5 +1,11 @@
 # 版本更新日志
 
+## v2.9.22
+
+- Bug Fix
+
+  - [ActivityIndicator] 修复样式构建产物残留 Sass 变量，导致 Vite 无法正常处理的问题。[#1214](https://github.com/ZhongAnTech/zarm/issues/1214)
+
 ## v2.9.20
 
 - Bug Fix
