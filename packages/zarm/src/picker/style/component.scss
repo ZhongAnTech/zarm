@@ -1,56 +1,60 @@
-@include b(picker) {
-  @include define(header-height, 45px);
-  @include define(header-font-size, 16px);
-  @include define(header-background, #f7f7f7);
-  @include define(header-title-text-color, var(--za-color-text));
-  @include define(header-confirm-text-color, var(--za-theme-primary));
-  @include define(header-cancel-text-color, var(--za-color-text-caption));
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/functions";
+@use "../../style/core/mixins";
 
-  @include define(background, #fff);
+@include sass.b(picker) {
+  @include mixins.define(header-height, 45px);
+  @include mixins.define(header-font-size, 16px);
+  @include mixins.define(header-background, #f7f7f7);
+  @include mixins.define(header-title-text-color, var(--za-color-text));
+  @include mixins.define(header-confirm-text-color, var(--za-theme-primary));
+  @include mixins.define(header-cancel-text-color, var(--za-color-text-caption));
 
-  @include define(content-background, #fff);
-  @include define(content-padding, 16px);
-  @include define(content-mask-start-background, rgba(255, 255, 255, 0.4));
-  @include define(content-mask-end-background, rgba(255, 255, 255, 0.8));
-  @include define(wheel-item-rows, 5);
-  @include define(wheel-item-height, 34px);
-  @include define(wheel-item-font-size, 20px);
-  @include define(wheel-item-text-color, var(--za-color-text));
-  @include define(wheel-item-disabled-text-color, var(--za-color-text-disabled));
-  @include define(wheel-item-selected-background, rgba(116, 116, 128, 0.08));
-  @include define(wheel-item-selected-border-radius, 7px);
+  @include mixins.define(background, #fff);
 
-  @include define(-wheel-item-rows, var(--wheel-item-rows));
-  @include define(-wheel-item-height, var(--wheel-item-height));
-  @include define(-wheel-item-font-size, var(--wheel-item-font-size));
-  @include define(-wheel-item-text-color, var(--wheel-item-text-color));
-  @include define(-wheel-item-disabled-text-color, var(--wheel-item-disabled-text-color));
-  @include define(
+  @include mixins.define(content-background, #fff);
+  @include mixins.define(content-padding, 16px);
+  @include mixins.define(content-mask-start-background, rgba(255, 255, 255, 0.4));
+  @include mixins.define(content-mask-end-background, rgba(255, 255, 255, 0.8));
+  @include mixins.define(wheel-item-rows, 5);
+  @include mixins.define(wheel-item-height, 34px);
+  @include mixins.define(wheel-item-font-size, 20px);
+  @include mixins.define(wheel-item-text-color, var(--za-color-text));
+  @include mixins.define(wheel-item-disabled-text-color, var(--za-color-text-disabled));
+  @include mixins.define(wheel-item-selected-background, rgba(116, 116, 128, 0.08));
+  @include mixins.define(wheel-item-selected-border-radius, 7px);
+
+  @include mixins.define(-wheel-item-rows, var(--wheel-item-rows));
+  @include mixins.define(-wheel-item-height, var(--wheel-item-height));
+  @include mixins.define(-wheel-item-font-size, var(--wheel-item-font-size));
+  @include mixins.define(-wheel-item-text-color, var(--wheel-item-text-color));
+  @include mixins.define(-wheel-item-disabled-text-color, var(--wheel-item-disabled-text-color));
+  @include mixins.define(
     -wheel-item-selected-background,
     var(--wheel-item-selected-background)
   );
-  @include define(-wheel-item-selected-border-radius, var(--wheel-item-selected-border-radius));
+  @include mixins.define(-wheel-item-selected-border-radius, var(--wheel-item-selected-border-radius));
 
   background: var(--background);
 
-  @include b(picker-view) {
-    @include define(background, var(--content-background));
-    @include define(padding, var(--content-padding));
-    @include define(mask-start-background, var(--content-mask-start-background));
-    @include define(mask-end-background, var(--content-mask-end-background));
-    @include define(wheel-item-rows, var(---wheel-item-rows));
-    @include define(wheel-item-height, var(---wheel-item-height));
-    @include define(wheel-item-font-size, var(---wheel-item-font-size));
-    @include define(wheel-item-text-color, var(---wheel-item-text-color));
-    @include define(wheel-item-disabled-text-color, var(---wheel-item-disabled-text-color));
-    @include define(
+  @include sass.b(picker-view) {
+    @include mixins.define(background, var(--content-background));
+    @include mixins.define(padding, var(--content-padding));
+    @include mixins.define(mask-start-background, var(--content-mask-start-background));
+    @include mixins.define(mask-end-background, var(--content-mask-end-background));
+    @include mixins.define(wheel-item-rows, var(---wheel-item-rows));
+    @include mixins.define(wheel-item-height, var(---wheel-item-height));
+    @include mixins.define(wheel-item-font-size, var(---wheel-item-font-size));
+    @include mixins.define(wheel-item-text-color, var(---wheel-item-text-color));
+    @include mixins.define(wheel-item-disabled-text-color, var(---wheel-item-disabled-text-color));
+    @include mixins.define(
       wheel-item-selected-background,
       var(---wheel-item-selected-background)
     );
-    @include define(wheel-item-selected-border-radius, var(---wheel-item-selected-border-radius));
+    @include mixins.define(wheel-item-selected-border-radius, var(---wheel-item-selected-border-radius));
   }
 
-  @include e(header) {
+  @include sass.e(header) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -60,32 +64,32 @@
     line-height: var(--header-height);
     font-size: var(--header-font-size);
     background: var(--header-background);
-    @include onepx(top);
+    @include mixins.onepx(top);
   }
 
-  @include e(body) {
+  @include sass.e(body) {
     width: 100%;
     height: 100%;
     flex: 1;
   }
 
-  @include e(cancel, confirm) {
+  @include sass.e(cancel, confirm) {
     flex: 1;
-    padding: 0 r(20);
+    padding: 0 functions.r(20);
     cursor: pointer;
   }
 
-  @include e(cancel) {
+  @include sass.e(cancel) {
     text-align: left;
     color: var(--header-cancel-text-color);
   }
 
-  @include e(confirm) {
+  @include sass.e(confirm) {
     text-align: right;
     color: var(--header-confirm-text-color);
   }
 
-  @include e(title) {
+  @include sass.e(title) {
     color: var(--header-title-text-color);
   }
 }

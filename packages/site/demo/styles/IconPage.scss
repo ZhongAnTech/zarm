@@ -1,5 +1,5 @@
-@import '@/styles/index';
-@import "@zarm-design/icons/style/font";
+@use '@/styles/index' as *;
+@use "@zarm-design/icons/style/font";
 
 .icon-page {
   .block {

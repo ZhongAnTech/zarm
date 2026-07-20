@@ -1,10 +1,13 @@
-@include b(image) {
-  @include define(background, #fafafa);
-  @include define(text-color, var(--za-color-text));
-  @include define(font-size, 12px);
-  @include define(radius, var(--za-radius-lg));
-  @include define(width, 100%);
-  @include define(height, 100%);
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
+
+@include sass.b(image) {
+  @include mixins.define(background, #fafafa);
+  @include mixins.define(text-color, var(--za-color-text));
+  @include mixins.define(font-size, 12px);
+  @include mixins.define(radius, var(--za-radius-lg));
+  @include mixins.define(width, 100%);
+  @include mixins.define(height, 100%);
 
   position: relative;
   display: inline-block;
@@ -12,21 +15,21 @@
   height: var(--height);
   overflow: hidden;
 
-  @include m(radius) {
+  @include sass.m(radius) {
     border-radius: var(--radius);
   }
 
-  @include m(circle) {
+  @include sass.m(circle) {
     border-radius: 50%;
   }
 
-  @include e(img) {
+  @include sass.e(img) {
     display: block;
     width: 100%;
     height: 100%;
   }
 
-  @include e(loading, fallback) {
+  @include sass.e(loading, fallback) {
     position: absolute;
     left: 0;
     top: 0;

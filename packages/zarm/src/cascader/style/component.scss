@@ -1,33 +1,36 @@
-@include b(cascader) {
-  @include define(background, #fff);
-  @include define(option-text-color, var(--za-color-text));
-  @include define(option-active-text-color, var(--za-theme-primary));
-  @include define(tab-text-color, var(--za-color-text-placeholder));
-  @include define(tab-active-text-color, var(--za-theme-primary));
-  @include define(option-font-size, var(--za-font-size-sm));
-  @include define(option-height, 44px);
-  @include define(options-height, 300px);
-  @include define(padding, var(--za-padding-v-sm));
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
 
-  @include define(-background, var(--background));
-  @include define(-option-text-color, var(--option-text-color));
-  @include define(-option-active-text-color, var(--option-active-text-color));
-  @include define(-tab-text-color, var(--tab-text-color));
-  @include define(-tab-active-text-color, var(--tab-active-text-color));
-  @include define(-option-font-size, var(--option-font-size));
-  @include define(-option-height, var(--option-height));
-  @include define(-options-height, var(--options-height));
-  @include define(-padding, var(--padding));
+@include sass.b(cascader) {
+  @include mixins.define(background, #fff);
+  @include mixins.define(option-text-color, var(--za-color-text));
+  @include mixins.define(option-active-text-color, var(--za-theme-primary));
+  @include mixins.define(tab-text-color, var(--za-color-text-placeholder));
+  @include mixins.define(tab-active-text-color, var(--za-theme-primary));
+  @include mixins.define(option-font-size, var(--za-font-size-sm));
+  @include mixins.define(option-height, 44px);
+  @include mixins.define(options-height, 300px);
+  @include mixins.define(padding, var(--za-padding-v-sm));
 
-  @include b(cascader-view) {
-    @include define(background, var(---background));
-    @include define(option-text-color, var(---option-text-color));
-    @include define(option-active-text-color, var(---option-active-text-color));
-    @include define(tab-text-color, var(---tab-text-color));
-    @include define(tab-active-text-color, var(---tab-active-text-color));
-    @include define(option-font-size, var(---option-font-size));
-    @include define(option-height, var(---option-height));
-    @include define(options-height, var(---options-height));
-    @include define(padding, var(---padding));
+  @include mixins.define(-background, var(--background));
+  @include mixins.define(-option-text-color, var(--option-text-color));
+  @include mixins.define(-option-active-text-color, var(--option-active-text-color));
+  @include mixins.define(-tab-text-color, var(--tab-text-color));
+  @include mixins.define(-tab-active-text-color, var(--tab-active-text-color));
+  @include mixins.define(-option-font-size, var(--option-font-size));
+  @include mixins.define(-option-height, var(--option-height));
+  @include mixins.define(-options-height, var(--options-height));
+  @include mixins.define(-padding, var(--padding));
+
+  @include sass.b(cascader-view) {
+    @include mixins.define(background, var(---background));
+    @include mixins.define(option-text-color, var(---option-text-color));
+    @include mixins.define(option-active-text-color, var(---option-active-text-color));
+    @include mixins.define(tab-text-color, var(---tab-text-color));
+    @include mixins.define(tab-active-text-color, var(---tab-active-text-color));
+    @include mixins.define(option-font-size, var(---option-font-size));
+    @include mixins.define(option-height, var(---option-height));
+    @include mixins.define(options-height, var(---options-height));
+    @include mixins.define(padding, var(---padding));
   }
 }

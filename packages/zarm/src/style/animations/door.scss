@@ -1,6 +1,9 @@
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../core/mixins/motion";
+
 @mixin door-motion($className, $keyframeName) {
-  $name: #{$prefixCls}-#{$className};
-  @include make-motion($name, #{$prefixCls}-#{$keyframeName});
+  $name: #{sass.$prefixCls}-#{$className};
+  @include motion.make-motion($name, #{sass.$prefixCls}-#{$keyframeName});
   .#{$name}-enter,
   .#{$name}-appear {
     opacity: 0;
@@ -13,7 +16,7 @@
 
 @include door-motion(door, door);
 
-@keyframes #{$prefixCls}-door-in {
+@keyframes #{sass.$prefixCls}-door-in {
   from {
     opacity: 0;
     transform: scale3d(0, 1, 1);
@@ -25,7 +28,7 @@
   }
 }
 
-@keyframes #{$prefixCls}-door-out {
+@keyframes #{sass.$prefixCls}-door-out {
   from {
     opacity: 1;
     transform: scale3d(1, 1, 1);

@@ -1,6 +1,9 @@
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../core/mixins/motion";
+
 @mixin zoom-motion($className, $keyframeName) {
-  $name: #{$prefixCls}-#{$className};
-  @include make-motion($name, #{$prefixCls}-#{$keyframeName});
+  $name: #{sass.$prefixCls}-#{$className};
+  @include motion.make-motion($name, #{sass.$prefixCls}-#{$keyframeName});
   .#{$name}-enter,
   .#{$name}-appear {
     animation-timing-function: cubic-bezier(0.08, 0.82, 0.17, 1);
@@ -12,7 +15,7 @@
 
 @include zoom-motion(zoom, zoom);
 
-@keyframes #{$prefixCls}-zoom-in {
+@keyframes #{sass.$prefixCls}-zoom-in {
   from {
     opacity: 0;
     transform: scale3d(0.3, 0.3, 0.3);
@@ -24,7 +27,7 @@
   }
 }
 
-@keyframes #{$prefixCls}-zoom-out {
+@keyframes #{sass.$prefixCls}-zoom-out {
   from {
     opacity: 1;
     transform: scale3d(1, 1, 1);

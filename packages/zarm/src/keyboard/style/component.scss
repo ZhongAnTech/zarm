@@ -1,16 +1,19 @@
-@include b(keyboard) {
-  @include define(background, #d8d8d8);
-  @include define(item-background, #fff);
-  @include define(item-active-background, rgba(162, 165, 176, 0.8));
-  @include define(item-gap, 6px);
-  @include define(item-height, 52px);
-  @include define(item-font-size, 30px);
-  @include define(item-border-radius, 5px);
-  @include define(item-box-shadow, 0 1px 0 #898a8d);
-  @include define(ok-background, var(--za-theme-primary));
-  @include define(ok-font-size, 20px);
-  @include define(ok-text-color, #fff);
-  @include define(opacity-disabled, var(--za-opacity-disabled));
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
+
+@include sass.b(keyboard) {
+  @include mixins.define(background, #d8d8d8);
+  @include mixins.define(item-background, #fff);
+  @include mixins.define(item-active-background, rgba(162, 165, 176, 0.8));
+  @include mixins.define(item-gap, 6px);
+  @include mixins.define(item-height, 52px);
+  @include mixins.define(item-font-size, 30px);
+  @include mixins.define(item-border-radius, 5px);
+  @include mixins.define(item-box-shadow, 0 1px 0 #898a8d);
+  @include mixins.define(ok-background, var(--za-theme-primary));
+  @include mixins.define(ok-font-size, 20px);
+  @include mixins.define(ok-text-color, #fff);
+  @include mixins.define(opacity-disabled, var(--za-opacity-disabled));
 
   display: grid;
   gap: var(--item-gap);
@@ -18,7 +21,7 @@
   user-select: none;
   padding: var(--item-gap);
 
-  @include e(item) {
+  @include sass.e(item) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,18 +38,18 @@
       box-shadow: none;
     }
 
-    @include m(ok) {
+    @include sass.m(ok) {
       background: var(--ok-background);
       font-size: var(--ok-font-size);
       color: var(--ok-text-color);
     }
 
-    @include m(blank) {
+    @include sass.m(blank) {
       background: transparent;
       box-shadow: none;
     }
 
-    @include m(disabled) {
+    @include sass.m(disabled) {
       &,
       &:hover,
       &:active {

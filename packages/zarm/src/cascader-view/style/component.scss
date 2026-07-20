@@ -1,32 +1,35 @@
-@include b(cascader-view) {
-  @include define(background, #fff);
-  @include define(padding, var(--za-padding-v-sm));
-  @include define(tab-text-color, var(--za-color-text-placeholder));
-  @include define(tab-active-text-color, var(--za-theme-primary));
-  @include define(options-height, auto);
-  @include define(option-text-color, var(--za-color-text));
-  @include define(option-active-text-color, var(--za-theme-primary));
-  @include define(option-font-size, var(--za-font-size-sm));
-  @include define(option-height, 44px);
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
+
+@include sass.b(cascader-view) {
+  @include mixins.define(background, #fff);
+  @include mixins.define(padding, var(--za-padding-v-sm));
+  @include mixins.define(tab-text-color, var(--za-color-text-placeholder));
+  @include mixins.define(tab-active-text-color, var(--za-theme-primary));
+  @include mixins.define(options-height, auto);
+  @include mixins.define(option-text-color, var(--za-color-text));
+  @include mixins.define(option-active-text-color, var(--za-theme-primary));
+  @include mixins.define(option-font-size, var(--za-font-size-sm));
+  @include mixins.define(option-height, 44px);
 
   background: var(--background);
 
-  @include e(tab-text) {
-    @include m(unselected) {
+  @include sass.e(tab-text) {
+    @include sass.m(unselected) {
       color: var(--tab-text-color);
     }
   }
 
-  @include e(content) {
+  @include sass.e(content) {
     height: var(--options-height);
     overflow-y: scroll;
 
-    @include b(list-item) {
-      @include e(wrapper) {
+    @include sass.b(list-item) {
+      @include sass.e(wrapper) {
         min-height: var(--option-height);
       }
 
-      @include e(inner) {
+      @include sass.e(inner) {
         line-height: calc(var(--option-height) - var(--padding) * 2);
       }
     }
@@ -40,26 +43,26 @@
       text-overflow: ellipsis;
       overflow: hidden;
 
-      @include m(active) {
+      @include sass.m(active) {
         color: var(--option-active-text-color);
       }
     }
   }
 }
 
-@include b(cascader-view-tabs) {
-  @include b(tabs) {
-    @include e(tab) {
+@include sass.b(cascader-view-tabs) {
+  @include sass.b(tabs) {
+    @include sass.e(tab) {
       flex: none;
       font-size: var(--option-font-size);
 
-      @include m(active) {
+      @include sass.m(active) {
         color: var(--tab-active-text-color);
       }
     }
 
-    @include b(carousel) {
-      @include e(items) {
+    @include sass.b(carousel) {
+      @include sass.e(items) {
         transition-duration: 0;
       }
     }

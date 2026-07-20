@@ -1,21 +1,24 @@
-@include b(switch) {
-  @include define(width, 52px);
-  @include define(height, 32px);
-  @include define(background, rgba(120, 120, 128, 0.16));
-  @include define(border-radius, var(--za-radius-round));
-  @include define(transition, all 0.3s);
-  @include define(checked-background, var(--za-theme-primary));
-  @include define(knob-background, #fff);
-  @include define(knob-size, 28px);
-  @include define(knob-box-shadow, '0 3px 1px rgba(0, 0, 0, 0.06), 0 3px 8px rgba(0, 0, 0, 0.15)');
-  @include define(knob-border-color, rgba(0, 0, 0, 0.04));
-  @include define(knob-border-width, 0.5px);
-  @include define(
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
+
+@include sass.b(switch) {
+  @include mixins.define(width, 52px);
+  @include mixins.define(height, 32px);
+  @include mixins.define(background, rgba(120, 120, 128, 0.16));
+  @include mixins.define(border-radius, var(--za-radius-round));
+  @include mixins.define(transition, all 0.3s);
+  @include mixins.define(checked-background, var(--za-theme-primary));
+  @include mixins.define(knob-background, #fff);
+  @include mixins.define(knob-size, 28px);
+  @include mixins.define(knob-box-shadow, '0 3px 1px rgba(0, 0, 0, 0.06), 0 3px 8px rgba(0, 0, 0, 0.15)');
+  @include mixins.define(knob-border-color, rgba(0, 0, 0, 0.04));
+  @include mixins.define(knob-border-width, 0.5px);
+  @include mixins.define(
     knob-transition,
     'transform 0.3s cubic-bezier(0.45, 1, 0.4, 1), transform 0.3s cubic-bezier(0.4, 0.4, 0.25, 1.35)'
   );
 
-  @include e(input) {
+  @include sass.e(input) {
     position: relative;
     width: var(--width);
     height: var(--height);
@@ -59,8 +62,8 @@
     }
   }
 
-  @include m(disabled) {
-    @include e(input) {
+  @include sass.m(disabled) {
+    @include sass.e(input) {
       cursor: not-allowed;
       opacity: var(--za-opacity-disabled);
     }

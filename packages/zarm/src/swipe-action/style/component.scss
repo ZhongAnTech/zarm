@@ -1,37 +1,41 @@
-@include b(swipe-action) {
-  @include define(background, #fff);
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/functions";
+@use "../../style/core/mixins";
+
+@include sass.b(swipe-action) {
+  @include mixins.define(background, #fff);
 
   position: relative;
   overflow: hidden;
   touch-action: none;
 
-  @include e(content) {
+  @include sass.e(content) {
     position: relative;
     background: var(--background);
   }
 
-  @include e(actions) {
+  @include sass.e(actions) {
     display: flex;
     position: absolute;
     height: 100%;
     top: 0;
 
-    @include m(left) {
+    @include sass.m(left) {
       left: 0;
     }
 
-    @include m(right) {
+    @include sass.m(right) {
       right: 0;
     }
   }
 
-  @include b(button) {
-    font-size: r(14);
+  @include sass.b(button) {
+    font-size: functions.r(14);
   }
 }
 
-@include b(swipe-action-item) {
-  @include e(item) {
+@include sass.b(swipe-action-item) {
+  @include sass.e(item) {
     height: 100%;
   }
 }

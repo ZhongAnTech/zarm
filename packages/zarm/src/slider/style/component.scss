@@ -1,34 +1,37 @@
-@include b(slider) {
-  @include define(line-size, 4px);
-  @include define(line-border-radius, 2px);
-  @include define(line-background, rgba(120, 120, 128, 0.2));
-  @include define(line-active-background, var(--za-theme-primary));
-  @include define(dot-size, 10px);
-  @include define(dot-background, var(--za-background-color));
-  @include define(dot-border-color, rgba(120, 120, 128, 0.2));
-  @include define(dot-border-width, 2px);
-  @include define(dot-active-border-color, var(--za-theme-primary));
-  @include define(knob-size, 28px);
-  @include define(knob-size-small, 20px);
-  @include define(knob-background, #fff);
-  @include define(knob-box-shadow, 0 1px 3px rgba(0, 0, 0, 0.4));
-  @include define(mark-font-size, 15px);
-  @include define(mark-text-color, var(--za-theme-primary));
-  @include define(mark-spacing, 15px);
-  @include define(disabled-opacity, var(--za-opacity-disabled));
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
+
+@include sass.b(slider) {
+  @include mixins.define(line-size, 4px);
+  @include mixins.define(line-border-radius, 2px);
+  @include mixins.define(line-background, rgba(120, 120, 128, 0.2));
+  @include mixins.define(line-active-background, var(--za-theme-primary));
+  @include mixins.define(dot-size, 10px);
+  @include mixins.define(dot-background, var(--za-background-color));
+  @include mixins.define(dot-border-color, rgba(120, 120, 128, 0.2));
+  @include mixins.define(dot-border-width, 2px);
+  @include mixins.define(dot-active-border-color, var(--za-theme-primary));
+  @include mixins.define(knob-size, 28px);
+  @include mixins.define(knob-size-small, 20px);
+  @include mixins.define(knob-background, #fff);
+  @include mixins.define(knob-box-shadow, 0 1px 3px rgba(0, 0, 0, 0.4));
+  @include mixins.define(mark-font-size, 15px);
+  @include mixins.define(mark-text-color, var(--za-theme-primary));
+  @include mixins.define(mark-spacing, 15px);
+  @include mixins.define(disabled-opacity, var(--za-opacity-disabled));
 
   display: flex;
   align-items: center;
   width: 100%;
 
-  @include e(content) {
+  @include sass.e(content) {
     flex: 1;
     position: relative;
     margin: calc(var(--knob-size) / 2) calc(var(--knob-size) / 2);
   }
 
   // 线
-  @include e(line) {
+  @include sass.e(line) {
     flex: 1;
     position: relative;
     height: var(--line-size);
@@ -36,7 +39,7 @@
     border-radius: var(--line-border-radius);
     cursor: pointer;
 
-    @include e(line__bg) {
+    @include sass.e(line__bg) {
       height: 100%;
       background: var(--line-active-background);
       border-radius: var(--line-border-radius);
@@ -44,7 +47,7 @@
   }
 
   // 刻度
-  @include e(dot) {
+  @include sass.e(dot) {
     position: absolute;
     width: var(--dot-size);
     height: var(--dot-size);
@@ -55,13 +58,13 @@
     border-radius: 50%;
     cursor: pointer;
 
-    @include m(active) {
+    @include sass.m(active) {
       border-color: var(--dot-active-border-color);
     }
   }
 
   // 滑动控制器
-  @include e(knob) {
+  @include sass.e(knob) {
     position: absolute;
     left: 0;
     margin-top: calc((var(--knob-size) + var(--line-size)) / -2);
@@ -74,24 +77,24 @@
     touch-action: none;
     cursor: pointer;
 
-    @include b(tooltip) {
+    @include sass.b(tooltip) {
       display: block;
     }
 
-    @include e(knob__shadow) {
+    @include sass.e(knob__shadow) {
       width: var(--knob-size);
       height: var(--knob-size);
     }
   }
 
   // 标签
-  @include e(marks) {
+  @include sass.e(marks) {
     position: absolute;
     top: var(--mark-spacing);
     left: 0;
     right: 0;
 
-    @include e(mark) {
+    @include sass.e(mark) {
       position: absolute;
       transform: translateX(-50%);
       font-size: var(--mark-font-size);
@@ -100,56 +103,56 @@
   }
 
   // 显示标签状态
-  @include m(marked) {
-    @include define(knob-size, var(--knob-size-small));
+  @include sass.m(marked) {
+    @include mixins.define(knob-size, var(--knob-size-small));
   }
 
   // 禁用状态
-  @include m(disabled) {
+  @include sass.m(disabled) {
     cursor: not-allowed;
     opacity: var(--disabled-opacity);
   }
 
   // 垂直
-  @include m(vertical) {
+  @include sass.m(vertical) {
     flex-direction: column-reverse;
     width: auto;
     height: 100%;
     align-items: initial;
 
-    @include e(line) {
+    @include sass.e(line) {
       width: var(--line-size);
       position: absolute;
       top: 0;
       height: 100%;
 
-      @include e(line__bg) {
+      @include sass.e(line__bg) {
         position: absolute;
         bottom: 0;
         width: var(--line-size);
       }
     }
 
-    @include e(dot) {
+    @include sass.e(dot) {
       margin-bottom: calc(var(--dot-size) / -2);
       margin-left: calc((var(--dot-size) - var(--line-size)) / -2);
     }
 
-    @include e(knob) {
+    @include sass.e(knob) {
       margin-top: 0;
       margin-bottom: calc(var(--knob-size) / -2);
       margin-left: calc((var(--knob-size) - var(--line-size)) / -2);
     }
 
     // 显示标签状态
-    @include m(marked) {
-      @include e(marks) {
+    @include sass.m(marked) {
+      @include sass.e(marks) {
         top: 0;
         left: var(--mark-spacing);
         height: 100%;
       }
 
-      @include e(mark) {
+      @include sass.e(mark) {
         transform: translateY(50%);
       }
     }

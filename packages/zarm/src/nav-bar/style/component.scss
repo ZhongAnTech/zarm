@@ -1,13 +1,15 @@
-@import 'mixins';
+@use 'mixins' as mixins2;
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
 
-@include b(nav-bar) {
-  @include define(background, rgba(249, 249, 249, 0.94));
-  @include define(height, 44px);
-  @include define(title-color, var(--za-color-text));
-  @include define(title-font-size, var(--za-font-size-md));
-  @include define(title-font-weight, 500);
-  @include define(side-font-size, var(--za-font-size-md));
-  @include define(padding-horizontal, 16px);
+@include sass.b(nav-bar) {
+  @include mixins.define(background, rgba(249, 249, 249, 0.94));
+  @include mixins.define(height, 44px);
+  @include mixins.define(title-color, var(--za-color-text));
+  @include mixins.define(title-font-size, var(--za-font-size-md));
+  @include mixins.define(title-font-weight, 500);
+  @include mixins.define(side-font-size, var(--za-font-size-md));
+  @include mixins.define(padding-horizontal, 16px);
 
   position: relative;
   display: flex;
@@ -17,7 +19,7 @@
   height: var(--height);
   background: var(--background);
 
-  @include e(title) {
+  @include sass.e(title) {
     position: absolute;
     left: 50%;
     white-space: nowrap;
@@ -28,18 +30,18 @@
     margin-left: auto;
   }
 
-  @include e(side) {
+  @include sass.e(side) {
     display: flex;
     justify-content: center;
     color: var(--za-theme-primary);
     font-size: var(--side-font-size);
     margin-left: auto;
 
-    @include m(left) {
+    @include sass.m(left) {
       margin-left: var(--padding-horizontal);
     }
 
-    @include m(right) {
+    @include sass.m(right) {
       margin-right: var(--padding-horizontal);
     }
   }

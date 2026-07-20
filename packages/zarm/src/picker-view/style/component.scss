@@ -1,15 +1,18 @@
-@include b(picker-view) {
-  @include define(background, #fff);
-  @include define(padding, 16px);
-  @include define(mask-start-background, rgba(255, 255, 255, 0.4));
-  @include define(mask-end-background, rgba(255, 255, 255, 0.8));
-  @include define(wheel-item-rows, 5);
-  @include define(wheel-item-height, 34px);
-  @include define(wheel-item-font-size, 20px);
-  @include define(wheel-item-text-color, var(--za-color-text));
-  @include define(wheel-item-disabled-text-color, var(--za-color-text-disabled));
-  @include define(wheel-item-selected-background, rgba(116, 116, 128, 0.08));
-  @include define(wheel-item-selected-border-radius, 7px);
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
+
+@include sass.b(picker-view) {
+  @include mixins.define(background, #fff);
+  @include mixins.define(padding, 16px);
+  @include mixins.define(mask-start-background, rgba(255, 255, 255, 0.4));
+  @include mixins.define(mask-end-background, rgba(255, 255, 255, 0.8));
+  @include mixins.define(wheel-item-rows, 5);
+  @include mixins.define(wheel-item-height, 34px);
+  @include mixins.define(wheel-item-font-size, 20px);
+  @include mixins.define(wheel-item-text-color, var(--za-color-text));
+  @include mixins.define(wheel-item-disabled-text-color, var(--za-color-text-disabled));
+  @include mixins.define(wheel-item-selected-background, rgba(116, 116, 128, 0.08));
+  @include mixins.define(wheel-item-selected-border-radius, 7px);
 
   display: flex;
   justify-content: center;
@@ -19,12 +22,12 @@
   padding: var(--padding);
   background: var(--background);
 
-  @include b(wheel) {
-    @include define(item-rows, var(--wheel-item-rows));
-    @include define(item-height, var(--wheel-item-height));
-    @include define(item-font-size, var(--wheel-item-font-size));
-    @include define(item-text-color, var(--wheel-item-text-color));
-    @include define(item-disabled-text-color, var(--wheel-item-disabled-text-color));
+  @include sass.b(wheel) {
+    @include mixins.define(item-rows, var(--wheel-item-rows));
+    @include mixins.define(item-height, var(--wheel-item-height));
+    @include mixins.define(item-font-size, var(--wheel-item-font-size));
+    @include mixins.define(item-text-color, var(--wheel-item-text-color));
+    @include mixins.define(item-disabled-text-color, var(--wheel-item-disabled-text-color));
   }
 
   &:before {
@@ -39,13 +42,13 @@
     border-radius: var(--wheel-item-selected-border-radius);
   }
 
-  @include e(mask) {
+  @include sass.e(mask) {
     width: 100%;
     height: calc((100% - var(--wheel-item-height)) / 2);
     pointer-events: none;
     transform: translateZ(0);
 
-    @include m(top) {
+    @include sass.m(top) {
       position: absolute;
       top: 0;
       background:
@@ -56,7 +59,7 @@
         );
     }
 
-    @include m(bottom) {
+    @include sass.m(bottom) {
       position: absolute;
       bottom: 0;
       background:
@@ -68,7 +71,7 @@
     }
   }
 
-  @include e(content) {
+  @include sass.e(content) {
     flex: 1;
     display: flex;
     width: 100%;

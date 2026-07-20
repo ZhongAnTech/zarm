@@ -1,9 +1,9 @@
-@import '~@zarm-design/bem/sass';
+@use '~@zarm-design/bem/sass/za' as sass;
 
 $keyframesSeparator: '_';
 
 @mixin define($key, $value) {
-  $block: str-replace(get-block(&), '.', '');
+  $block: sass.str-replace(sass.get-block(&), '.', '');
 
-  --#{$key}: var(--#{$block + $blockSeparator + $key}, #{$value});
+  --#{$key}: var(--#{$block + sass.$blockSeparator + $key}, #{$value});
 }

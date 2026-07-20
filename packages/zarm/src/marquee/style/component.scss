@@ -1,11 +1,13 @@
-@include b(marquee) {
+@use "~@zarm-design/bem/sass/za" as sass;
+
+@include sass.b(marquee) {
   --transform-x: 200%;
   --transform-y: 200%;
 
   width: 100%;
   overflow: hidden;
 
-  @include e(body) {
+  @include sass.e(body) {
     white-space: nowrap;
     width: 100%;
     transform: translate3d(var(--transform-x), var(--transform-y), 0);
@@ -17,7 +19,7 @@
     animation-name: za-marqueue-animation;
   }
 
-  @include e(content) {
+  @include sass.e(content) {
     display: inline-block;
   }
 }

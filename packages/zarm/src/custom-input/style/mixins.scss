@@ -1,15 +1,18 @@
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/functions";
+
 @mixin input-base() {
   position: relative;
   width: 100%;
   color: var(--color);
   font-size: var(--font-size);
 
-  @include e(label) {
+  @include sass.e(label) {
     font-size: var(--label-font-size);
     line-height: var(--line-height);
   }
 
-  @include e(content) {
+  @include sass.e(content) {
     position: relative;
     height: var(--height);
     line-height: var(--line-height);
@@ -17,7 +20,7 @@
 }
 
 @mixin input-keyboard() {
-  @include e(virtual-input) {
+  @include sass.e(virtual-input) {
     display: flex;
     position: absolute;
     left: 0;
@@ -29,8 +32,8 @@
     white-space: nowrap;
   }
 
-  @include m(focus) {
-    @include e(virtual-input) {
+  @include sass.m(focus) {
+    @include sass.e(virtual-input) {
       display: flex;
       align-items: center;
       transform: translate3d(0, 0, 0);
@@ -48,7 +51,7 @@
 }
 
 @mixin input-placeholder() {
-  @include e(placeholder) {
+  @include sass.e(placeholder) {
     position: absolute;
     left: 0;
     top: 0;
@@ -59,7 +62,7 @@
 }
 
 @mixin input-clearable() {
-  @include e(clear) {
+  @include sass.e(clear) {
     position: absolute;
     visibility: hidden;
     color: var(--clear-icon-color);
@@ -68,20 +71,20 @@
     top: 50%;
     transform: translateY(-50%);
     right: 0;
-    font-size: r(16);
+    font-size: functions.r(16);
   }
 
-  @include m(focus) {
+  @include sass.m(focus) {
     padding-right: var(--clear-icon-size);
 
-    @include e(clear) {
+    @include sass.e(clear) {
       visibility: visible;
     }
   }
 }
 
 @mixin input-disabled() {
-  @include e(content, placeholder) {
+  @include sass.e(content, placeholder) {
     cursor: not-allowed;
     color: var(--disabled-color);
   }

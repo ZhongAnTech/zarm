@@ -1,22 +1,25 @@
-@include b(carousel) {
-  @include define(pagination-margin, 8px);
-  @include define(pagination-item-width, 18px);
-  @include define(pagination-item-height, 4px);
-  @include define(pagination-item-border-radius, 1px);
-  @include define(pagination-item-spacing, 2px);
-  @include define(pagination-item-background, rgba(255, 255, 255, 0.6));
-  @include define(pagination-item-active-background, #fff);
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
+
+@include sass.b(carousel) {
+  @include mixins.define(pagination-margin, 8px);
+  @include mixins.define(pagination-item-width, 18px);
+  @include mixins.define(pagination-item-height, 4px);
+  @include mixins.define(pagination-item-border-radius, 1px);
+  @include mixins.define(pagination-item-spacing, 2px);
+  @include mixins.define(pagination-item-background, rgba(255, 255, 255, 0.6));
+  @include mixins.define(pagination-item-active-background, #fff);
 
   position: relative;
   overflow: hidden;
 
-  @include e(items) {
+  @include sass.e(items) {
     display: flex;
     // transform-style: preserve-3d;
     transition-property: transform;
   }
 
-  @include e(item) {
+  @include sass.e(item) {
     flex-shrink: 0;
     position: relative;
     width: 100%;
@@ -26,32 +29,32 @@
     transform: translateZ(0);
   }
 
-  @include e(pagination) {
+  @include sass.e(pagination) {
     position: absolute;
   }
 
-  @include e(pagination__item) {
+  @include sass.e(pagination__item) {
     background: var(--pagination-item-background);
     cursor: pointer;
     border-radius: var(--pagination-item-border-radius);
 
-    @include m(active) {
+    @include sass.m(active) {
       background: var(--pagination-item-active-background);
     }
   }
 
-  @include m(horizontal) {
-    @include e(items) {
+  @include sass.m(horizontal) {
+    @include sass.e(items) {
       white-space: nowrap;
     }
 
-    @include e(pagination) {
+    @include sass.e(pagination) {
       left: 50%;
       bottom: var(--pagination-margin);
       transform: translate3d(-50%, 0, 0);
     }
 
-    @include e(pagination__item) {
+    @include sass.e(pagination__item) {
       display: inline-block;
       width: var(--pagination-item-width);
       height: var(--pagination-item-height);
@@ -62,19 +65,19 @@
     }
   }
 
-  @include m(vertical) {
-    @include e(items) {
+  @include sass.m(vertical) {
+    @include sass.e(items) {
       flex-direction: column;
       touch-action: none;
     }
 
-    @include e(pagination) {
+    @include sass.e(pagination) {
       top: 50%;
       right: var(--pagination-margin);
       transform: translate3d(0, -50%, 0);
     }
 
-    @include e(pagination__item) {
+    @include sass.e(pagination__item) {
       width: var(--pagination-item-height);
       height: var(--pagination-item-width);
 

@@ -1,11 +1,14 @@
-@include b(image-preview) {
-  @include define(footer-padding, var(--za-padding-v-lg) var(--za-padding-h-lg));
-  @include define(pagination-text-color, var(--za-color-text-inverse));
-  @include define(pagination-font-size, var(--za-font-size-lg));
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
+
+@include sass.b(image-preview) {
+  @include mixins.define(footer-padding, var(--za-padding-v-lg) var(--za-padding-h-lg));
+  @include mixins.define(pagination-text-color, var(--za-color-text-inverse));
+  @include mixins.define(pagination-font-size, var(--za-font-size-lg));
 
   padding: 0;
 
-  @include e(title) {
+  @include sass.e(title) {
     text-align: center;
     position: absolute;
     top: 0;
@@ -18,7 +21,7 @@
     color: var(--za-color-text-inverse);
   }
 
-  @include e(content) {
+  @include sass.e(content) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,7 +29,7 @@
     width: 100%;
   }
 
-  @include e(item) {
+  @include sass.e(item) {
     img {
       max-width: 100%;
       max-height: 100%;
@@ -34,7 +37,7 @@
     }
   }
 
-  @include e(loading) {
+  @include sass.e(loading) {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -42,7 +45,7 @@
     z-index: 10;
   }
 
-  @include e(footer) {
+  @include sass.e(footer) {
     display: flex;
     align-items: center;
     position: absolute;
@@ -52,23 +55,23 @@
     padding: var(--footer-padding);
   }
 
-  @include e(pagination) {
+  @include sass.e(pagination) {
     flex: 1;
     text-align: right;
     color: var(--pagination-text-color);
     font-size: var(--pagination-font-size);
   }
 
-  @include b(popup) {
+  @include sass.b(popup) {
     width: 100%;
     height: 100%;
   }
 
-  @include b(carousel) {
+  @include sass.b(carousel) {
     height: 100%;
     width: 100%;
 
-    @include e(items) {
+    @include sass.e(items) {
       height: 100%;
     }
   }

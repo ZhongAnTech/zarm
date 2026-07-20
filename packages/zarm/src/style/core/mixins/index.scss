@@ -1,17 +1,19 @@
+@use 'sass:string';
+
 $prefixCls: 'za' !default;
 
-@import '~@zarm-design/bem/sass';
+@use '~@zarm-design/bem/sass/za' as sass;
 
 $keyframesSeparator: '_';
 
 @mixin define($key, $value) {
-  $block: str-replace(get-block(&), '.', '');
+  $block: sass.str-replace(sass.get-block(&), '.', '');
 
-  --#{$key}: var(--#{$block + $blockSeparator + $key}, #{$value});
+  --#{$key}: var(--#{$block + sass.$blockSeparator + $key}, #{$value});
 }
 
 @mixin keyframes($name) {
-  $block: str-replace(get-block(&), '.', '');
+  $block: sass.str-replace(sass.get-block(&), '.', '');
   $selector: $block + $keyframesSeparator + $name;
 
   @at-root {
@@ -22,30 +24,30 @@ $keyframesSeparator: '_';
 }
 
 @mixin animation($name, $value) {
-  $block: str-replace(get-block(&), '.', '');
+  $block: sass.str-replace(sass.get-block(&), '.', '');
   $selector: $block + $keyframesSeparator + $name;
 
   animation: #{$selector} $value;
 }
 
 @mixin defineColorHSL($color, $hue, $saturation, $lightness) {
-  #{$color}: unquote('hsl(#{$hue}, #{$saturation}, #{$lightness})');
+  #{$color}: string.unquote('hsl(#{$hue}, #{$saturation}, #{$lightness})');
   #{$color}-h: #{$hue};
   #{$color}-s: #{$saturation};
   #{$color}-l: #{$lightness};
-  #{$color}-light: unquote('hsl(#{$hue}, #{$saturation}, #{$lightness + 4})');
+  #{$color}-light: string.unquote('hsl(#{$hue}, #{$saturation}, #{$lightness + 4})');
   #{$color}-light-h: #{$hue};
   #{$color}-light-s: #{$saturation};
   #{$color}-light-l: #{$lightness + 4};
-  #{$color}-lighter: unquote('hsl(#{$hue}, #{$saturation}, 95%)');
+  #{$color}-lighter: string.unquote('hsl(#{$hue}, #{$saturation}, 95%)');
   #{$color}-lighter-h: #{$hue};
   #{$color}-lighter-s: #{$saturation};
   #{$color}-lighter-l: 95%;
-  #{$color}-dark: unquote('hsl(#{$hue}, #{$saturation}, #{$lightness - 4})');
+  #{$color}-dark: string.unquote('hsl(#{$hue}, #{$saturation}, #{$lightness - 4})');
   #{$color}-dark-h: #{$hue};
   #{$color}-dark-s: #{$saturation};
   #{$color}-dark-l: #{$lightness - 4};
-  #{$color}-darker: unquote('hsl(#{$hue}, #{$saturation}, 20%)');
+  #{$color}-darker: string.unquote('hsl(#{$hue}, #{$saturation}, 20%)');
   #{$color}-darker-h: #{$hue};
   #{$color}-darker-s: #{$saturation};
   #{$color}-darker-l: 20%;

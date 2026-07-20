@@ -1,3 +1,5 @@
-@include b(water-mark) {
+@use "~@zarm-design/bem/sass/za" as sass;
+
+@include sass.b(water-mark) {
   position: relative;
 }

@@ -1,10 +1,13 @@
-@include b(toast) {
-  @include define(text-color, var(--za-color-text-inverse));
-  @include define(font-size, 13px);
-  @include define(border-radius, 6px);
-  @include define(background, rgba(0, 0, 0, var(--za-opacity-toast)));
-  @include define(icon-color, var(--za-color-text-inverse));
-  @include define(icon-size, 50px);
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
+
+@include sass.b(toast) {
+  @include mixins.define(text-color, var(--za-color-text-inverse));
+  @include mixins.define(font-size, 13px);
+  @include mixins.define(border-radius, 6px);
+  @include mixins.define(background, rgba(0, 0, 0, var(--za-opacity-toast)));
+  @include mixins.define(icon-color, var(--za-color-text-inverse));
+  @include mixins.define(icon-size, 50px);
 
   max-width: 85%;
   color: var(--text-color);
@@ -20,30 +23,30 @@
   align-items: center;
   display: flex;
 
-  @include e(wrapper) {
+  @include sass.e(wrapper) {
     pointer-events: none;
   }
 
-  @include m(text) {
+  @include sass.m(text) {
     padding: var(--za-padding-v-md) var(--za-padding-h-md);
     pointer-events: all;
   }
 
-  @include m(icon) {
+  @include sass.m(icon) {
     padding: 15px;
     pointer-events: all;
 
-    @include e(text) {
+    @include sass.e(text) {
       min-width: 70px;
       margin-top: var(--za-padding-v-md);
     }
   }
 
-  @include e(text) {
+  @include sass.e(text) {
     word-break: break-all;
   }
 
-  @include e(icon) {
+  @include sass.e(icon) {
     min-width: 50px;
     min-height: 50px;
     color: var(--icon-color);
@@ -52,8 +55,8 @@
     align-items: center;
     display: flex;
 
-    @include b(icon) {
-      @include define(font-size, var(--icon-size));
+    @include sass.b(icon) {
+      @include mixins.define(font-size, var(--icon-size));
     }
   }
 }

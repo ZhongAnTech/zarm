@@ -1,9 +1,12 @@
-@include b(file-picker) {
-  @include define(opacity-disabled, var(--za-opacity-disabled));
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
+
+@include sass.b(file-picker) {
+  @include mixins.define(opacity-disabled, var(--za-opacity-disabled));
 
   position: relative;
 
-  @include e(input) {
+  @include sass.e(input) {
     position: absolute;
     left: 0;
     top: 0;
@@ -12,7 +15,7 @@
     opacity: 0;
   }
 
-  @include m(disabled) {
+  @include sass.m(disabled) {
     opacity: var(--opacity-disabled);
   }
 }

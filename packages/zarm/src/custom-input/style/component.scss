@@ -1,37 +1,39 @@
-@import 'mixins';
+@use 'mixins';
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins" as mixins-mixins;
 
-@include b(custom-input) {
-  @include define(color, var(--za-color-text));
-  @include define(font-size, var(--za-font-size-md));
-  @include define(height, 28px);
-  @include define(line-height, 28px);
-  @include define(label-font-size, var(--za-font-size-sm));
-  @include define(placeholder-color, var(--za-color-text-placeholder));
-  @include define(disabled-color, var(--za-color-text-disabled));
-  @include define(clear-icon-size, 16px);
-  @include define(clear-icon-color, #ccc);
-  @include define(cursor-height, 20px);
-  @include define(cursor-width, 2px);
-  @include define(cursor-color, #597cf6);
+@include sass.b(custom-input) {
+  @include mixins-mixins.define(color, var(--za-color-text));
+  @include mixins-mixins.define(font-size, var(--za-font-size-md));
+  @include mixins-mixins.define(height, 28px);
+  @include mixins-mixins.define(line-height, 28px);
+  @include mixins-mixins.define(label-font-size, var(--za-font-size-sm));
+  @include mixins-mixins.define(placeholder-color, var(--za-color-text-placeholder));
+  @include mixins-mixins.define(disabled-color, var(--za-color-text-disabled));
+  @include mixins-mixins.define(clear-icon-size, 16px);
+  @include mixins-mixins.define(clear-icon-color, #ccc);
+  @include mixins-mixins.define(cursor-height, 20px);
+  @include mixins-mixins.define(cursor-width, 2px);
+  @include mixins-mixins.define(cursor-color, #597cf6);
 
-  @include input-base();
-  @include input-placeholder();
-  @include input-keyboard();
+  @include mixins.input-base();
+  @include mixins.input-placeholder();
+  @include mixins.input-keyboard();
 
   // 可清空
-  @include m(clearable) {
-    @include input-clearable();
+  @include sass.m(clearable) {
+    @include mixins.input-clearable();
   }
 
   // 只读
-  @include m(readonly) {
-    @include e(content) {
+  @include sass.m(readonly) {
+    @include sass.e(content) {
       height: auto;
     }
   }
 
   // 禁用
-  @include m(disabled) {
-    @include input-disabled();
+  @include sass.m(disabled) {
+    @include mixins.input-disabled();
   }
 }

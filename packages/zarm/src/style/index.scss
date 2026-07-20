@@ -1,6 +1,6 @@
-@import './core/index';
-@import './themes/default';
-@import './animations/index';
+@use 'core/index';
+@use 'themes/default';
+@use 'animations/index' as index2;
 
 *,
 *:before,

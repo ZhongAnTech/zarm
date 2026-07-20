@@ -1,5 +1,8 @@
-@include b(affix) {
-  @include define(zindex, 10);
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
+
+@include sass.b(affix) {
+  @include mixins.define(zindex, 10);
 
   z-index: var(--zindex);
 }

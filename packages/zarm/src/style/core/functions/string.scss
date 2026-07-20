@@ -1,15 +1,18 @@
+@use 'sass:meta';
+@use 'sass:string';
+
 // 选择器转字符串
 @function str-selector($selector) {
-  $selector: inspect($selector);
-  $selector: str-slice($selector, 2, -2);
+  $selector: meta.inspect($selector);
+  $selector: string.slice($selector, 2, -2);
   @return $selector;
 }
 
 // 反向字符串
 @function str-reverse($string) {
   $result: '';
-  @for $i from str-length($string) through 1 {
-    $result: $result + str-slice($string, $i, $i);
+  @for $i from string.length($string) through 1 {
+    $result: $result + string.slice($string, $i, $i);
   }
   @return $result;
 }
@@ -18,14 +21,14 @@
 @function str-index-reverse($string, $substring) {
   $re-string: str-reverse($string);
   $re-substring: str-reverse($substring);
-  $re-index: str-length($re-string) - str-length($re-substring) -
-    str-index($re-string, $re-substring) + 2;
+  $re-index: string.length($re-string) - string.length($re-substring) -
+    string.index($re-string, $re-substring) + 2;
   @return $re-index;
 }
 
 // 是否包含字符串
 @function str-contains($string, $substring) {
-  @if str-index($string, $substring) {
+  @if string.index($string, $substring) {
     @return true;
   }
   @return false;
@@ -35,10 +38,10 @@
 // replace substring with another string
 // credits: https://css-tricks.com/snippets/sass/str-replace-function/
 @function str-replace($string, $search, $replace: '') {
-  $index: str-index($string, $search);
+  $index: string.index($string, $search);
   @if $index {
-    @return str-slice($string, 1, $index - 1) + $replace +
-      str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    @return string.slice($string, 1, $index - 1) + $replace +
+      str-replace(string.slice($string, $index + string.length($search)), $search, $replace);
   }
   @return $string;
 }

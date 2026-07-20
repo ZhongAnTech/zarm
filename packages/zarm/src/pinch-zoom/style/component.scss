@@ -1,4 +1,6 @@
-@include b(pinch-zoom) {
+@use "~@zarm-design/bem/sass/za" as sass;
+
+@include sass.b(pinch-zoom) {
   touch-action: none;
   min-height: 100%;
 

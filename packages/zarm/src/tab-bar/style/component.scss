@@ -1,13 +1,16 @@
-@include b(tab-bar) {
-  @include define(font-size, 12px);
-  @include define(background, #fff);
-  @include define(height, 50px);
-  @include define(color, var(--za-color-text));
-  @include define(active-color, var(--za-theme-primary));
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
+
+@include sass.b(tab-bar) {
+  @include mixins.define(font-size, 12px);
+  @include mixins.define(background, #fff);
+  @include mixins.define(height, 50px);
+  @include mixins.define(color, var(--za-color-text));
+  @include mixins.define(active-color, var(--za-theme-primary));
 
   background: var(--background);
 
-  @include e(wrapper) {
+  @include sass.e(wrapper) {
     min-height: var(--height);
     justify-content: center;
     align-content: center;
@@ -17,17 +20,17 @@
     display: flex;
   }
 
-  @include e(item) {
+  @include sass.e(item) {
     flex: 1;
 
-    @include e(title) {
+    @include sass.e(title) {
       font-size: var(--font-size);
       line-height: 1;
       margin-top: 2px;
       color: var(--color);
     }
 
-    @include e(icon) {
+    @include sass.e(icon) {
       display: inline-block;
       vertical-align: middle;
       width: 24px;
@@ -35,20 +38,20 @@
       font-size: 18px;
     }
 
-    @include b(badge) {
-      @include e(content) {
+    @include sass.b(badge) {
+      @include sass.e(content) {
         --top: 6px;
       }
     }
 
-    @include m(active) {
-      @include b(tab-bar) {
-        @include e(title) {
+    @include sass.m(active) {
+      @include sass.b(tab-bar) {
+        @include sass.e(title) {
           color: var(--active-color);
         }
       }
 
-      @include b(icon) {
+      @include sass.b(icon) {
         color: var(--active-color);
       }
     }

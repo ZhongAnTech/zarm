@@ -1,27 +1,30 @@
-@include b(date-select) {
-  @include define(arrow-color, var(--za-arrow-color));
-  @include define(arrow-size, var(--za-arrow-size));
-  @include define(arrow-width, var(--za-arrow-width));
-  @include define(placeholder-color, var(--za-color-text-placeholder));
-  @include define(disabled-color, var(--za-color-text-disabled));
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
+
+@include sass.b(date-select) {
+  @include mixins.define(arrow-color, var(--za-arrow-color));
+  @include mixins.define(arrow-size, var(--za-arrow-size));
+  @include mixins.define(arrow-width, var(--za-arrow-width));
+  @include mixins.define(placeholder-color, var(--za-color-text-placeholder));
+  @include mixins.define(disabled-color, var(--za-color-text-disabled));
 
   display: flex;
   align-items: center;
   width: 100%;
 
-  @include e(input) {
+  @include sass.e(input) {
     flex: 1;
     position: relative;
     width: 100%;
   }
 
-  @include m(placeholder) {
-    @include e(input) {
+  @include sass.m(placeholder) {
+    @include sass.e(input) {
       color: var(--placeholder-color);
     }
   }
 
-  @include e(arrow) {
+  @include sass.e(arrow) {
     margin-left: 5px;
     margin-top: calc(var(--arrow-size) / -2);
 
@@ -37,16 +40,16 @@
     }
   }
 
-  @include m(visible) {
-    @include e(arrow) {
+  @include sass.m(visible) {
+    @include sass.e(arrow) {
       &:after {
         transform: rotate(-45deg);
       }
     }
   }
 
-  @include m(disabled) {
-    @include e(input) {
+  @include sass.m(disabled) {
+    @include sass.e(input) {
       color: var(--disabled-color);
     }
   }

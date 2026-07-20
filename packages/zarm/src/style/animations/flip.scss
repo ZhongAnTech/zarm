@@ -1,6 +1,9 @@
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../core/mixins/motion";
+
 @mixin flip-motion($className, $keyframeName) {
-  $name: #{$prefixCls}-#{$className};
-  @include make-motion($name, #{$prefixCls}-#{$keyframeName});
+  $name: #{sass.$prefixCls}-#{$className};
+  @include motion.make-motion($name, #{sass.$prefixCls}-#{$keyframeName});
   .#{$name}-enter,
   .#{$name}-appear {
     opacity: 0;
@@ -15,7 +18,7 @@
 
 @include flip-motion(flip, flip);
 
-@keyframes #{$prefixCls}-flip-in {
+@keyframes #{sass.$prefixCls}-flip-in {
   from {
     opacity: 0;
     transform: perspective(400px) rotate3d(1, 0, 0, 60deg);
@@ -31,7 +34,7 @@
   }
 }
 
-@keyframes #{$prefixCls}-flip-out {
+@keyframes #{sass.$prefixCls}-flip-out {
   from {
     opacity: 1;
     transform: perspective(400px);

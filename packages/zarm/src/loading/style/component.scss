@@ -1,49 +1,51 @@
-@import 'mixins';
+@use 'mixins';
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins" as mixins-mixins;
 
 $loading-spinner-count: 8;
 
-@include b(loading) {
-  @include define(size, 24px);
-  @include define(size-large, 36px);
-  @include define(stroke-color, #e6e6e6);
-  @include define(stroke-active-color, var(--za-theme-primary));
-  @include define(spinner-item-color, #80858e);
-  @include define(spinner-item-width, 3px);
-  @include define(spinner-item-height, 32%);
-  @include define(spinner-item-border-radius, 1.5px);
+@include sass.b(loading) {
+  @include mixins-mixins.define(size, 24px);
+  @include mixins-mixins.define(size-large, 36px);
+  @include mixins-mixins.define(stroke-color, #e6e6e6);
+  @include mixins-mixins.define(stroke-active-color, var(--za-theme-primary));
+  @include mixins-mixins.define(spinner-item-color, #80858e);
+  @include mixins-mixins.define(spinner-item-width, 3px);
+  @include mixins-mixins.define(spinner-item-height, 32%);
+  @include mixins-mixins.define(spinner-item-border-radius, 1.5px);
 
   display: inline-block;
   position: relative;
   transform: rotate(-90deg);
   vertical-align: middle;
 
-  @include loading-size(var(--size));
+  @include mixins.loading-size(var(--size));
 
-  @include e(stroke) {
+  @include sass.e(stroke) {
     stroke: var(--stroke-color);
   }
 
-  @include e(line) {
+  @include sass.e(line) {
     stroke: var(--stroke-active-color);
   }
 
-  @include m(circular) {
+  @include sass.m(circular) {
     display: inline-block;
 
     svg {
       vertical-align: top;
-      @include animation(rotate360, 2s linear infinite);
+      @include mixins-mixins.animation(rotate360, 2s linear infinite);
     }
 
     circle {
       stroke-linecap: round;
       stroke: var(--stroke-active-color);
-      @include animation(rotate-circular, 1.5s ease-in-out infinite);
+      @include mixins-mixins.animation(rotate-circular, 1.5s ease-in-out infinite);
     }
   }
 
-  @include m(spinner) {
-    @include animation(rotate360, 0.8s linear infinite);
+  @include sass.m(spinner) {
+    @include mixins-mixins.animation(rotate360, 0.8s linear infinite);
 
     animation-timing-function: steps($loading-spinner-count);
 
@@ -74,11 +76,11 @@ $loading-spinner-count: 8;
   }
 
   /* sizes */
-  @include m(lg) {
-    @include loading-size(var(--size-large));
+  @include sass.m(lg) {
+    @include mixins.loading-size(var(--size-large));
   }
 
-  @include keyframes(rotate-circular) {
+  @include mixins-mixins.keyframes(rotate-circular) {
     0% {
       stroke-dasharray: 1, 200;
       stroke-dashoffset: 0;
@@ -95,7 +97,7 @@ $loading-spinner-count: 8;
     }
   }
 
-  @include keyframes(rotate360) {
+  @include mixins-mixins.keyframes(rotate360) {
     from {
       transform: rotate(0);
     }

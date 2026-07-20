@@ -1,8 +1,12 @@
-@import 'variables';
-@import 'functions';
+@use 'sass:selector';
+
+@forward 'variables';
+@use 'variables';
+@use 'functions';
+@forward 'functions';
 
 @mixin b($blocks...) {
-  $selector: get-selector('.' + $prefixCls, $blockSeparator, $blocks...);
+  $selector: functions.get-selector('.' + variables.$prefixCls, variables.$blockSeparator, $blocks...);
   #{$selector} {
     @content;
   }
@@ -10,28 +14,28 @@
 
 @mixin e($elements...) {
   $selector: '';
-  $prefix: get-block(&);
+  $prefix: functions.get-block(&);
 
-  @if contains-modifier(&) {
+  @if functions.contains-modifier(&) {
     @each $element in $elements {
-      $newElement: selector-nest(&, selector-append($prefix, $elementSeparator + $element));
+      $newElement: selector.nest(&, selector.append($prefix, variables.$elementSeparator + $element));
 
-      @if contains-element(&) {
-        $newElement: '&' + $elementSeparator + $element;
+      @if functions.contains-element(&) {
+        $newElement: '&' + variables.$elementSeparator + $element;
       }
 
       $selector: $selector + $newElement + ',';
     }
   }
   @else {
-    @if contains-element(&) {
+    @if functions.contains-element(&) {
       @each $element in $elements {
-        $newElement: selector-nest(&, selector-append($prefix, $elementSeparator + $element)) + ',';
+        $newElement: selector.nest(&, selector.append($prefix, variables.$elementSeparator + $element)) + ',';
         $selector: $selector + $newElement + ',';
       }
     }
     @else {
-      $selector: get-selector('&', $elementSeparator, $elements...);
+      $selector: functions.get-selector('&', variables.$elementSeparator, $elements...);
     }
   }
 
@@ -44,15 +48,15 @@
 
 @mixin m($modifiers...) {
   $selector: '';
-  $prefix: get-block(&);
+  $prefix: functions.get-block(&);
 
-  @if contains-modifier(&) {
+  @if functions.contains-modifier(&) {
     @each $modifier in $modifiers {
-      $selector: $selector + '&' + $prefix + $modifierSeparator + $modifier + ',';
+      $selector: $selector + '&' + $prefix + variables.$modifierSeparator + $modifier + ',';
     }
   }
   @else {
-    $selector: get-selector('&', $modifierSeparator, $modifiers...);
+    $selector: functions.get-selector('&', variables.$modifierSeparator, $modifiers...);
   }
 
   @at-root {

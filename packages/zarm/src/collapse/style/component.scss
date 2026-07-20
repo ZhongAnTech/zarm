@@ -1,22 +1,25 @@
-@include b(collapse) {
-  @include define(border-color, var(--za-border-color));
-  @include define(arrow-color, var(--za-arrow-color));
-  @include define(arrow-size, var(--za-arrow-size));
-  @include define(arrow-width, var(--za-arrow-width));
-  @include define(arrow-disabled-color, #eee);
-  @include define(header-height, 44px);
-  @include define(header-padding-horizontal, 16px);
-  @include define(header-padding-vertical, 15px);
-  @include define(header-disable-color, var(--za-color-text-disabled));
-  @include define(content-color, var(--za-color-text-caption));
-  @include define(content-padding-vertical, var(--za-padding-v-sm));
-  @include define(content-padding-horizontal, var(--za-padding-h-sm));
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
+
+@include sass.b(collapse) {
+  @include mixins.define(border-color, var(--za-border-color));
+  @include mixins.define(arrow-color, var(--za-arrow-color));
+  @include mixins.define(arrow-size, var(--za-arrow-size));
+  @include mixins.define(arrow-width, var(--za-arrow-width));
+  @include mixins.define(arrow-disabled-color, #eee);
+  @include mixins.define(header-height, 44px);
+  @include mixins.define(header-padding-horizontal, 16px);
+  @include mixins.define(header-padding-vertical, 15px);
+  @include mixins.define(header-disable-color, var(--za-color-text-disabled));
+  @include mixins.define(content-color, var(--za-color-text-caption));
+  @include mixins.define(content-padding-vertical, var(--za-padding-v-sm));
+  @include mixins.define(content-padding-horizontal, var(--za-padding-h-sm));
 
   position: relative;
-  @include onepx(top bottom, var(--border-color));
+  @include mixins.onepx(top bottom, var(--border-color));
 
-  @include m(animated) {
-    @include b(collapse-item) {
+  @include sass.m(animated) {
+    @include sass.b(collapse-item) {
       &__content {
         transition: all 0.3s ease;
       }
@@ -24,16 +27,16 @@
   }
 }
 
-@include b(collapse-item) {
+@include sass.b(collapse-item) {
   &:not(&--disabled) {
-    @include e(header) {
+    @include sass.e(header) {
       &:active {
         background-color: var(--za-background-active);
       }
     }
   }
 
-  @include e(header) {
+  @include sass.e(header) {
     position: relative;
     overflow: hidden;
     display: flex;
@@ -42,37 +45,37 @@
     padding: 0 var(--header-padding-horizontal);
     transition-duration: 0.1s;
     transition-property: background-color, color;
-    @include onepx(top, var(--border-color));
+    @include mixins.onepx(top, var(--border-color));
 
     &:after {
       left: var(--header-padding-horizontal);
     }
   }
 
-  @include e(title) {
+  @include sass.e(title) {
     flex: 1;
     font-size: 17px;
   }
 
-  @include e(content) {
+  @include sass.e(content) {
     position: relative;
     height: 0;
     overflow: hidden;
     font-size: 13px;
     color: var(--content-color);
     will-change: height;
-    @include onepx(top, var(--border-color));
+    @include mixins.onepx(top, var(--border-color));
 
     &:after {
       left: var(--header-padding-horizontal);
     }
   }
 
-  @include e(content__inner) {
+  @include sass.e(content__inner) {
     padding: var(--content-padding-vertical) var(--content-padding-horizontal);
   }
 
-  @include e(arrow) {
+  @include sass.e(arrow) {
     margin-top: -3px;
     margin-left: 5px;
     margin-right: 2px;
@@ -89,12 +92,12 @@
     }
   }
 
-  @include m(disabled) {
-    @include e(title) {
+  @include sass.m(disabled) {
+    @include sass.e(title) {
       color: var(--header-disable-color);
     }
 
-    @include e(arrow) {
+    @include sass.e(arrow) {
       &:after {
         border-right-color: var(--arrow-disabled-color);
         border-top-color: var(--arrow-disabled-color);
@@ -102,12 +105,12 @@
     }
   }
 
-  @include m(active) {
-    @include e(content) {
+  @include sass.m(active) {
+    @include sass.e(content) {
       height: auto;
     }
 
-    @include e(arrow) {
+    @include sass.e(arrow) {
       margin-top: 0;
 
       &:after {

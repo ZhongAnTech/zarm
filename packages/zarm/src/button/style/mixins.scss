@@ -1,3 +1,5 @@
+@use "~@zarm-design/bem/sass/za" as sass;
+
 @mixin button-base {
   display: inline-block;
   vertical-align: middle;
@@ -9,7 +11,7 @@
   cursor: pointer;
   -webkit-appearance: none;
 
-  @include e(content) {
+  @include sass.e(content) {
     display: flex;
     width: 100%;
     height: 100%;
@@ -17,13 +19,13 @@
     justify-content: center;
   }
 
-  @include m(disabled) {
+  @include sass.m(disabled) {
     cursor: not-allowed;
     opacity: var(--za-opacity-disabled);
     pointer-events: none;
   }
 
-  @include m(block) {
+  @include sass.m(block) {
     display: block;
     width: 100%;
   }
@@ -44,12 +46,12 @@
   border-color: $border-color;
   color: $text-color;
 
-  @include m(shadow) {
+  @include sass.m(shadow) {
     box-shadow: $shadow;
   }
 
-  @include b(loading) {
-    @include m(circular) {
+  @include sass.b(loading) {
+    @include sass.m(circular) {
       circle {
         stroke: $loading-color;
       }
@@ -61,8 +63,8 @@
     border-color: $active-border-color;
     color: $active-text-color;
 
-    @include b(loading) {
-      @include m(circular) {
+    @include sass.b(loading) {
+      @include sass.m(circular) {
         circle {
           stroke: $active-loading-color;
         }
@@ -77,17 +79,17 @@
   height: var(--height);
   line-height: 1.4;
 
-  @include m(circle) {
+  @include sass.m(circle) {
     width: var(--height);
     padding: 0;
   }
 
-  @include b(icon) {
+  @include sass.b(icon) {
     font-size: var(--icon-size);
   }
 
-  @include m(loading) {
-    @include b(loading) {
+  @include sass.m(loading) {
+    @include sass.b(loading) {
       width: var(--font-size);
       height: var(--font-size);
     }

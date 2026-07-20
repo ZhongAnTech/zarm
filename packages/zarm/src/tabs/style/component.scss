@@ -1,38 +1,41 @@
-@include b(tabs) {
-  @include define(font-size, var(--za-font-size-md));
-  @include define(color, var(--za-color-text));
-  @include define(color-disabled, var(--za-color-text-disabled));
-  @include define(height, 45px);
-  @include define(active-color, var(--za-theme-primary));
-  @include define(active-text-color, var(--za-color-text));
-  @include define(active-line-height, 2px);
-  @include define(padding-horizontal, var(--za-padding-h-lg));
-  @include define(padding-vertical, var(--za-padding-v-md));
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
 
-  @include e(header) {
+@include sass.b(tabs) {
+  @include mixins.define(font-size, var(--za-font-size-md));
+  @include mixins.define(color, var(--za-color-text));
+  @include mixins.define(color-disabled, var(--za-color-text-disabled));
+  @include mixins.define(height, 45px);
+  @include mixins.define(active-color, var(--za-theme-primary));
+  @include mixins.define(active-text-color, var(--za-color-text));
+  @include mixins.define(active-line-height, 2px);
+  @include mixins.define(padding-horizontal, var(--za-padding-h-lg));
+  @include mixins.define(padding-vertical, var(--za-padding-v-md));
+
+  @include sass.e(header) {
     position: relative;
     overflow: hidden;
   }
 
-  @include e(tablist) {
+  @include sass.e(tablist) {
     position: relative;
     margin: 0;
     padding: 0;
     list-style-type: none;
   }
 
-  @include e(panel) {
+  @include sass.e(panel) {
     display: none;
     position: relative;
     transition: height 0.3s;
     height: 100%;
 
-    @include m(active) {
+    @include sass.m(active) {
       display: block;
     }
   }
 
-  @include e(tab) {
+  @include sass.e(tab) {
     flex: 1;
     text-align: center;
     color: var(--color);
@@ -42,17 +45,17 @@
     text-overflow: ellipsis;
     cursor: pointer;
 
-    @include m(disabled) {
+    @include sass.m(disabled) {
       color: var(--color-disabled);
       cursor: not-allowed;
     }
 
-    @include m(active) {
+    @include sass.m(active) {
       color: var(--active-text-color);
     }
   }
 
-  @include e(line) {
+  @include sass.e(line) {
     position: absolute;
     transition: transform 0.3s ease-out;
     background-color: var(--active-color);
@@ -65,8 +68,8 @@
     }
   }
 
-  @include m(scroll) {
-    @include e(tablist) {
+  @include sass.m(scroll) {
+    @include sass.e(tablist) {
       &::-webkit-scrollbar {
         display: none;
       }
@@ -74,31 +77,31 @@
   }
 
   // TODO: direction='horizontal' 暂作兼容
-  @include m(top, bottom, horizontal) {
+  @include sass.m(top, bottom, horizontal) {
     display: flex;
     flex-direction: column;
 
-    @include e(header) {
+    @include sass.e(header) {
       width: 100%;
     }
 
-    @include e(tablist) {
+    @include sass.e(tablist) {
       display: flex;
       height: var(--height);
       line-height: var(--height);
     }
 
-    @include e(line) {
+    @include sass.e(line) {
       height: var(--active-line-height);
       left: 0;
     }
 
-    @include m(scroll) {
-      @include e(tablist) {
+    @include sass.m(scroll) {
+      @include sass.e(tablist) {
         overflow-x: auto;
       }
 
-      @include e(tab) {
+      @include sass.e(tab) {
         overflow: visible;
         padding: 0 var(--padding-horizontal);
       }
@@ -106,80 +109,80 @@
   }
 
   // TODO: direction='vertical' 暂作兼容
-  @include m(left, right, vertical) {
+  @include sass.m(left, right, vertical) {
     display: flex;
     flex-direction: row;
 
-    @include e(tablist) {
+    @include sass.e(tablist) {
       height: 100%;
     }
 
-    @include e(tab) {
+    @include sass.e(tab) {
       text-align: center;
       padding: var(--padding-vertical) var(--padding-horizontal);
     }
 
-    @include e(line) {
+    @include sass.e(line) {
       width: var(--active-line-height);
       top: 0;
     }
 
-    @include e(body) {
+    @include sass.e(body) {
       flex: 1;
       position: relative;
     }
 
-    @include m(scroll) {
-      @include e(tablist) {
+    @include sass.m(scroll) {
+      @include sass.e(tablist) {
         overflow-y: auto;
       }
     }
   }
 
-  @include m(right, bottom) {
-    @include e(header) {
+  @include sass.m(right, bottom) {
+    @include sass.e(header) {
       order: 1;
     }
   }
 
   // TODO: direction='vertical' 暂作兼容
-  @include m(left, vertical) {
-    @include e(header) {
-      @include onepx(right);
+  @include sass.m(left, vertical) {
+    @include sass.e(header) {
+      @include mixins.onepx(right);
     }
 
-    @include e(line) {
+    @include sass.e(line) {
       right: 0;
     }
   }
 
-  @include m(right) {
-    @include e(header) {
-      @include onepx(left);
+  @include sass.m(right) {
+    @include sass.e(header) {
+      @include mixins.onepx(left);
     }
 
-    @include e(line) {
+    @include sass.e(line) {
       left: 0;
     }
   }
 
   // TODO: direction='horizontal' 暂作兼容
-  @include m(top, horizontal) {
-    @include e(header) {
-      @include onepx(bottom);
+  @include sass.m(top, horizontal) {
+    @include sass.e(header) {
+      @include mixins.onepx(bottom);
     }
 
-    @include e(line) {
+    @include sass.e(line) {
       bottom: 0;
     }
   }
 
-  @include m(bottom) {
-    @include e(header) {
-      @include onepx(top);
+  @include sass.m(bottom) {
+    @include sass.e(header) {
+      @include mixins.onepx(top);
     }
 
-    @include e(line) {
+    @include sass.e(line) {
       top: 0;
     }
   }

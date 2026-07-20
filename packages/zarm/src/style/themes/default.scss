@@ -1,11 +1,12 @@
-@import '../core/index.scss';
+@use '../core/index.scss';
+@use "../core/mixins";
 
 :root {
-  @include defineColorHSL(--za-theme-default, 0, 0%, 90%);
-  @include defineColorHSL(--za-theme-primary, 156, 100%, 36.9%);
-  @include defineColorHSL(--za-theme-success, 156, 100%, 36.9%);
-  @include defineColorHSL(--za-theme-warning, 31, 83.1%, 55.9%);
-  @include defineColorHSL(--za-theme-danger, 0, 100%, 65.7%);
+  @include mixins.defineColorHSL(--za-theme-default, 0, 0%, 90%);
+  @include mixins.defineColorHSL(--za-theme-primary, 156, 100%, 36.9%);
+  @include mixins.defineColorHSL(--za-theme-success, 156, 100%, 36.9%);
+  @include mixins.defineColorHSL(--za-theme-warning, 31, 83.1%, 55.9%);
+  @include mixins.defineColorHSL(--za-theme-danger, 0, 100%, 65.7%);
 
   // 文字色
   --za-color-text: #343434;

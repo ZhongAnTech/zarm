@@ -1,15 +1,18 @@
-@include b(popup) {
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
+
+@include sass.b(popup) {
   -webkit-overflow-scrolling: touch;
   margin: auto;
   transform: perspective(0);
 
-  @include e(wrapper) {
-    @include define(mask-zindex, var(--za-zindex-mask));
+  @include sass.e(wrapper) {
+    @include mixins.define(mask-zindex, var(--za-zindex-mask));
 
     position: fixed;
     z-index: var(--mask-zindex);
 
-    @include m(center) {
+    @include sass.m(center) {
       top: 0;
       bottom: 0;
       left: 0;
@@ -23,28 +26,28 @@
     }
   }
 
-  @include m(bottom) {
+  @include sass.m(bottom) {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
   }
 
-  @include m(top) {
+  @include sass.m(top) {
     position: fixed;
     left: 0;
     top: 0;
     width: 100%;
   }
 
-  @include m(left) {
+  @include sass.m(left) {
     position: fixed;
     left: 0;
     top: 0;
     height: 100%;
   }
 
-  @include m(right) {
+  @include sass.m(right) {
     position: fixed;
     right: 0;
     top: 0;

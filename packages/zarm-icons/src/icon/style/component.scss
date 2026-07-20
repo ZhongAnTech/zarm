@@ -1,6 +1,9 @@
-@include b(icon) {
-  @include define(color, inherit);
-  @include define(font-size, 24px);
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
+
+@include sass.b(icon) {
+  @include mixins.define(color, inherit);
+  @include mixins.define(font-size, 24px);
 
   display: inline-block;
   font-style: normal;
@@ -18,35 +21,35 @@
     -webkit-appearance: initial !important;
   }
 
-  @include m(font) {
+  @include sass.m(font) {
     /* stylelint-disable-next-line */
     font-family: 'zaicon';
     line-height: 1;
   }
 
   /* icon themes */
-  @include m(primary) {
-    @include define(color, var(--za-theme-primary));
+  @include sass.m(primary) {
+    @include mixins.define(color, var(--za-theme-primary));
   }
 
-  @include m(success) {
-    @include define(color, var(--za-theme-success));
+  @include sass.m(success) {
+    @include mixins.define(color, var(--za-theme-success));
   }
 
-  @include m(warning) {
-    @include define(color, var(--za-theme-warning));
+  @include sass.m(warning) {
+    @include mixins.define(color, var(--za-theme-warning));
   }
 
-  @include m(danger) {
-    @include define(color, var(--za-theme-danger));
+  @include sass.m(danger) {
+    @include mixins.define(color, var(--za-theme-danger));
   }
 
   /* icon sizes */
-  @include m(sm) {
-    @include define(font-size, 16px);
+  @include sass.m(sm) {
+    @include mixins.define(font-size, 16px);
   }
 
-  @include m(lg) {
-    @include define(font-size, 32px);
+  @include sass.m(lg) {
+    @include mixins.define(font-size, 32px);
   }
 }

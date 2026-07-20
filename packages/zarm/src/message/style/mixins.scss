@@ -1,8 +1,11 @@
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/functions";
+
 @mixin message-theme($color) {
   color: $color;
-  background-color: alpha($color, 0.1);
+  background-color: functions.alpha($color, 0.1);
 
-  @include b(icon) {
+  @include sass.b(icon) {
     color: $color;
   }
 }

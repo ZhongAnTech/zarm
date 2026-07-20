@@ -1,4 +1,4 @@
-@import '@/styles/index';
+@use '@/styles/index' as *;
 
 header {
   font-size: r(16);

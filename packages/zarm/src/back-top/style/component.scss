@@ -1,6 +1,9 @@
-@include b(back-top) {
-  @include define(right, 50px);
-  @include define(bottom, 50px);
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
+
+@include sass.b(back-top) {
+  @include mixins.define(right, 50px);
+  @include mixins.define(bottom, 50px);
 
   right: var(--right);
   bottom: var(--bottom);

@@ -1,28 +1,31 @@
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
+
 @mixin disableInput {
   color: var(--input-text-color);
   -webkit-text-fill-color: var(--input-text-color);
   cursor: auto;
 }
 
-@include b(stepper) {
-  @include define(height, 28px);
-  @include define(input-width, 56px);
-  @include define(input-background, transparent);
-  @include define(input-border-width, 1px);
-  @include define(input-border-color, transparent);
-  @include define(input-border-radius, var(--za-radius-md));
-  @include define(input-text-color, var(--za-color-text));
-  @include define(input-font-size, var(--za-font-size-md));
-  @include define(input-disabled-text-color, var(--za-color-text-disabled));
-  @include define(input-disabled-opacity, var(--za-opacity-disabled));
-  @include define(input-margin, 0 4px);
-  @include define(input-padding, 0 8px);
-  @include define(icon-font-size, 12px);
+@include sass.b(stepper) {
+  @include mixins.define(height, 28px);
+  @include mixins.define(input-width, 56px);
+  @include mixins.define(input-background, transparent);
+  @include mixins.define(input-border-width, 1px);
+  @include mixins.define(input-border-color, transparent);
+  @include mixins.define(input-border-radius, var(--za-radius-md));
+  @include mixins.define(input-text-color, var(--za-color-text));
+  @include mixins.define(input-font-size, var(--za-font-size-md));
+  @include mixins.define(input-disabled-text-color, var(--za-color-text-disabled));
+  @include mixins.define(input-disabled-opacity, var(--za-opacity-disabled));
+  @include mixins.define(input-margin, 0 4px);
+  @include mixins.define(input-padding, 0 8px);
+  @include mixins.define(icon-font-size, 12px);
 
   align-items: center;
   display: flex;
 
-  @include b(input) {
+  @include sass.b(input) {
     input {
       height: 100%;
       text-align: center;
@@ -36,46 +39,46 @@
       }
     }
 
-    @include m(disabled) {
+    @include sass.m(disabled) {
       input {
         @include disableInput;
       }
     }
 
-    @include e(content) {
+    @include sass.e(content) {
       height: 100%;
       flex: 1;
     }
   }
 
-  @include b(custom-input) {
-    @include m(disabled) {
-      @include e(virtual-input) {
+  @include sass.b(custom-input) {
+    @include sass.m(disabled) {
+      @include sass.e(virtual-input) {
         @include disableInput;
       }
     }
 
-    @include e(content) {
+    @include sass.e(content) {
       height: 100%;
       flex: 1;
     }
 
-    @include e(virtual-input) {
+    @include sass.e(virtual-input) {
       justify-content: center;
       align-items: center;
     }
   }
 
-  @include e(sub, plus) {
+  @include sass.e(sub, plus) {
     width: var(--height);
     padding: 0;
 
-    @include b(icon) {
+    @include sass.b(icon) {
       font-size: var(--icon-font-size);
     }
   }
 
-  @include e(input) {
+  @include sass.e(input) {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -94,8 +97,8 @@
     -webkit-appearance: none;
   }
 
-  @include m(disabled) {
-    @include e(input) {
+  @include sass.m(disabled) {
+    @include sass.e(input) {
       input {
         color: var(--input-disabled-text-color);
         -webkit-text-fill-color: var(--input-disabled-text-color);
@@ -104,23 +107,23 @@
     }
   }
 
-  @include m(radius) {
-    @include e(input) {
+  @include sass.m(radius) {
+    @include sass.e(input) {
       border-radius: var(--input-border-radius);
     }
   }
 
-  @include m(circle) {
-    @include e(input) {
+  @include sass.m(circle) {
+    @include sass.e(input) {
       border-radius: var(--height);
     }
   }
 
-  @include m(lg) {
-    @include define(height, 36px);
-    @include define(input-width, 72px);
-    @include define(input-margin, 0 6px);
-    @include define(input-padding, 0 8px);
-    @include define(icon-font-size, 14px);
+  @include sass.m(lg) {
+    @include mixins.define(height, 36px);
+    @include mixins.define(input-width, 72px);
+    @include mixins.define(input-margin, 0 6px);
+    @include mixins.define(input-padding, 0 8px);
+    @include mixins.define(icon-font-size, 14px);
   }
 }

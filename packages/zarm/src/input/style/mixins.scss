@@ -1,3 +1,6 @@
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
+
 @mixin input-base() {
   position: relative;
   width: 100%;
@@ -19,7 +22,7 @@
     color: var(--color);
     line-height: var(--line-height);
 
-    @include placeholder {
+    @include mixins.placeholder {
       color: var(--placeholder-color);
     }
   }
@@ -37,12 +40,12 @@
     overflow: visible;
   }
 
-  @include e(label) {
+  @include sass.e(label) {
     font-size: var(--label-font-size);
     line-height: var(--line-height);
   }
 
-  @include e(content) {
+  @include sass.e(content) {
     position: relative;
     height: var(--height);
     line-height: var(--line-height);
@@ -50,7 +53,7 @@
 }
 
 @mixin input-placeholder() {
-  @include placeholder {
+  @include mixins.placeholder {
     color: var(--placeholder-color);
   }
 }
@@ -61,7 +64,7 @@
     display: none;
   }
 
-  @include e(clear) {
+  @include sass.e(clear) {
     position: absolute;
     visibility: hidden;
     color: var(--clear-icon-color);
@@ -72,10 +75,10 @@
     font-size: var(--clear-icon-size);
   }
 
-  @include m(focus) {
+  @include sass.m(focus) {
     padding-right: var(--clear-icon-size);
 
-    @include e(clear) {
+    @include sass.e(clear) {
       visibility: visible;
     }
   }
@@ -90,12 +93,12 @@
     -webkit-text-fill-color: var(--disabled-color);
     opacity: 1;
 
-    @include placeholder {
+    @include mixins.placeholder {
       color: var(--disabled-color);
     }
   }
 
-  @include e(content) {
+  @include sass.e(content) {
     cursor: not-allowed;
     color: var(--disabled-color);
   }

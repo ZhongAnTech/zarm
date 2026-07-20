@@ -1,12 +1,13 @@
-@import './string';
+@use 'string';
+@forward 'string';
 
 @function r($px) {
   @return $px * 1px;
 }
 
 @function alpha($color, $opacity) {
-  $color: str-replace($color, 'var(');
-  $color: str-replace($color, ')');
+  $color: string.str-replace($color, 'var(');
+  $color: string.str-replace($color, ')');
   $color-h: var(#{$color + '-h'});
   $color-s: var(#{$color + '-s'});
   $color-l: var(#{$color + '-l'});
@@ -14,8 +15,8 @@
 }
 
 @function lightness($color, $lightnessMultiplier) {
-  $color: str-replace($color, 'var(');
-  $color: str-replace($color, ')');
+  $color: string.str-replace($color, 'var(');
+  $color: string.str-replace($color, ')');
   $color-h: var(#{$color + '-h'});
   $color-s: var(#{$color + '-s'});
   $color-l: var(#{$color + '-l'});

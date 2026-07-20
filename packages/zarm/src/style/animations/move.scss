@@ -1,6 +1,9 @@
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../core/mixins/motion";
+
 @mixin move-motion($className, $keyframeName) {
-  $name: #{$prefixCls}-#{$className};
-  @include make-motion($name, #{$prefixCls}-#{$keyframeName});
+  $name: #{sass.$prefixCls}-#{$className};
+  @include motion.make-motion($name, #{sass.$prefixCls}-#{$keyframeName});
   .#{$name}-enter,
   .#{$name}-appear {
     animation-timing-function: ease-out;
@@ -15,7 +18,7 @@
 @include move-motion(move-left, move-left);
 @include move-motion(move-right, move-right);
 
-@keyframes #{$prefixCls}-move-up-in {
+@keyframes #{sass.$prefixCls}-move-up-in {
   from {
     transform: translate3d(0, 100%, 0);
   }
@@ -25,7 +28,7 @@
   }
 }
 
-@keyframes #{$prefixCls}-move-up-out {
+@keyframes #{sass.$prefixCls}-move-up-out {
   from {
     transform: translate3d(0, 0, 0);
   }
@@ -35,7 +38,7 @@
   }
 }
 
-@keyframes #{$prefixCls}-move-down-in {
+@keyframes #{sass.$prefixCls}-move-down-in {
   from {
     transform: translate3d(0, -100%, 0);
   }
@@ -45,7 +48,7 @@
   }
 }
 
-@keyframes #{$prefixCls}-move-down-out {
+@keyframes #{sass.$prefixCls}-move-down-out {
   from {
     transform: translate3d(0, 0, 0);
   }
@@ -55,7 +58,7 @@
   }
 }
 
-@keyframes #{$prefixCls}-move-left-in {
+@keyframes #{sass.$prefixCls}-move-left-in {
   from {
     transform: translate3d(-100%, 0, 0);
   }
@@ -65,7 +68,7 @@
   }
 }
 
-@keyframes #{$prefixCls}-move-left-out {
+@keyframes #{sass.$prefixCls}-move-left-out {
   from {
     transform: translate3d(0, 0, 0);
   }
@@ -75,7 +78,7 @@
   }
 }
 
-@keyframes #{$prefixCls}-move-right-in {
+@keyframes #{sass.$prefixCls}-move-right-in {
   from {
     transform: translate3d(100%, 0, 0);
   }
@@ -85,7 +88,7 @@
   }
 }
 
-@keyframes #{$prefixCls}-move-right-out {
+@keyframes #{sass.$prefixCls}-move-right-out {
   from {
     transform: translate3d(0, 0, 0);
   }

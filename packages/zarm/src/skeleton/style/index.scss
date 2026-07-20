@@ -1,14 +1,16 @@
-@import '../../style/core/index';
+@use '../../style/core/index';
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
 
-@include b(skeleton) {
-  @include define(width, 100%);
-  @include define(height, 18px);
-  @include define(border-radius, 2px);
-  @include define(margin, 0);
+@include sass.b(skeleton) {
+  @include mixins.define(width, 100%);
+  @include mixins.define(height, 18px);
+  @include mixins.define(border-radius, 2px);
+  @include mixins.define(margin, 0);
 
   // skeleton
-  @include define(background, rgba(190, 190, 190, 0.2));
-  @include define(animated-background, rgba(129, 129, 129, 0.24));
+  @include mixins.define(background, rgba(190, 190, 190, 0.2));
+  @include mixins.define(animated-background, rgba(129, 129, 129, 0.24));
 
   width: var(--width);
   height: var(--height);
@@ -16,23 +18,23 @@
   background: var(--background);
 
   // shape
-  @include m(radius) {
+  @include sass.m(radius) {
     border-radius: var(--border-radius);
   }
 
-  @include m(rect) {
+  @include sass.m(rect) {
     border-radius: 0;
   }
 
-  @include m(circle) {
-    @include define(width, 50px);
-    @include define(height, 50px);
+  @include sass.m(circle) {
+    @include mixins.define(width, 50px);
+    @include mixins.define(height, 50px);
 
     border-radius: 50%;
   }
 
   // animated
-  @include m(animated) {
+  @include sass.m(animated) {
     background:
       linear-gradient(
         90deg,
@@ -55,16 +57,16 @@
   }
 
   // Title
-  @include e(title) {
-    @include define(width, 45%);
-    @include define(height, 32px);
-    @include define(margin, 16px 0);
+  @include sass.e(title) {
+    @include mixins.define(width, 45%);
+    @include mixins.define(height, 32px);
+    @include mixins.define(margin, 16px 0);
   }
 
   // Paragraph
-  @include e(paragraph) {
-    @include e(line) {
-      @include define(margin, 12px 0);
+  @include sass.e(paragraph) {
+    @include sass.e(line) {
+      @include mixins.define(margin, 12px 0);
 
       &:last-of-type {
         width: 65%;

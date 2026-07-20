@@ -1,6 +1,9 @@
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../core/mixins/motion";
+
 @mixin rotate-motion($className, $keyframeName) {
-  $name: #{$prefixCls}-#{$className};
-  @include make-motion($name, #{$prefixCls}-#{$keyframeName});
+  $name: #{sass.$prefixCls}-#{$className};
+  @include motion.make-motion($name, #{sass.$prefixCls}-#{$keyframeName});
   .#{$name}-enter,
   .#{$name}-appear {
     animation-timing-function: ease;
@@ -12,7 +15,7 @@
 
 @include rotate-motion(rotate, rotate);
 
-@keyframes #{$prefixCls}-rotate-in {
+@keyframes #{sass.$prefixCls}-rotate-in {
   from {
     opacity: 0;
     transform-origin: center;
@@ -26,7 +29,7 @@
   }
 }
 
-@keyframes #{$prefixCls}-rotate-out {
+@keyframes #{sass.$prefixCls}-rotate-out {
   from {
     opacity: 1;
     transform-origin: center;

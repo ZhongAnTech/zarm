@@ -1,52 +1,55 @@
-@include b(panel) {
-  @include define(header-padding, '25px 16px 10px 16px');
-  @include define(header-font-size, 13px);
-  @include define(header-color, rgba(60, 60, 67, 0.6));
-  @include define(body-background, #fff);
-  @include define(body-font-size, var(--za-font-size-md));
-  @include define(body-color, var(--za-color-text));
-  @include define(body-border-radius, 10px);
-  @include define(spacing-padding-horizontal, 16px);
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
 
-  @include e(header) {
+@include sass.b(panel) {
+  @include mixins.define(header-padding, '25px 16px 10px 16px');
+  @include mixins.define(header-font-size, 13px);
+  @include mixins.define(header-color, rgba(60, 60, 67, 0.6));
+  @include mixins.define(body-background, #fff);
+  @include mixins.define(body-font-size, var(--za-font-size-md));
+  @include mixins.define(body-color, var(--za-color-text));
+  @include mixins.define(body-border-radius, 10px);
+  @include mixins.define(spacing-padding-horizontal, 16px);
+
+  @include sass.e(header) {
     display: flex;
     padding: var(--header-padding);
     font-size: var(--header-font-size);
     color: var(--header-color);
   }
 
-  @include e(title) {
+  @include sass.e(title) {
     flex: 1;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
   }
 
-  @include e(more) {
+  @include sass.e(more) {
     margin-left: auto;
   }
 
-  @include e(body) {
+  @include sass.e(body) {
     position: relative;
     background: var(--body-background);
     font-size: var(--body-font-size);
     color: var(--body-color);
   }
 
-  @include m(spacing) {
+  @include sass.m(spacing) {
     padding: 0 var(--spacing-padding-horizontal);
 
-    @include e(body) {
+    @include sass.e(body) {
       border-radius: var(--body-border-radius);
       overflow: hidden;
-      @include onepx(none);
+      @include mixins.onepx(none);
     }
   }
 
   &:not(&--spacing) {
-    @include m(bordered) {
-      @include e(body) {
-        @include onepx(top bottom);
+    @include sass.m(bordered) {
+      @include sass.e(body) {
+        @include mixins.onepx(top bottom);
       }
     }
   }

@@ -1,6 +1,9 @@
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../core/mixins/motion";
+
 @mixin zoom-fade-motion($className, $keyframeName) {
-  $name: #{$prefixCls}-#{$className};
-  @include make-motion($name, #{$prefixCls}-#{$keyframeName});
+  $name: #{sass.$prefixCls}-#{$className};
+  @include motion.make-motion($name, #{sass.$prefixCls}-#{$keyframeName});
   .#{$name}-enter,
   .#{$name}-appear {
     opacity: 0;
@@ -13,7 +16,7 @@
 
 @include zoom-fade-motion(zoom-fade, zoom-fade);
 
-@keyframes #{$prefixCls}-zoom-fade-in {
+@keyframes #{sass.$prefixCls}-zoom-fade-in {
   0% {
     transform: scale(0.8);
     opacity: 0;
@@ -25,7 +28,7 @@
   }
 }
 
-@keyframes #{$prefixCls}-zoom-fade-out {
+@keyframes #{sass.$prefixCls}-zoom-fade-out {
   0% {
     transform: scale(1);
   }

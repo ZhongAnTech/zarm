@@ -1,14 +1,17 @@
-@include b(tooltip) {
-  @include define(font-size, 12px);
-  @include define(color, var(--za-color-text-inverse));
-  @include define(background, rgba(0, 0, 0, 0.8));
-  @include define(zindex, 1700);
-  @include define(spacing, 3px);
-  @include define(padding-vertical, var(--za-padding-v-xs));
-  @include define(padding-horizontal, var(--za-padding-h-xs));
-  @include define(arrow-size, 4px);
-  @include define(arrow-horizontal-offset, 10px);
-  @include define(arrow-vertical-offset, 6px);
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
+
+@include sass.b(tooltip) {
+  @include mixins.define(font-size, 12px);
+  @include mixins.define(color, var(--za-color-text-inverse));
+  @include mixins.define(background, rgba(0, 0, 0, 0.8));
+  @include mixins.define(zindex, 1700);
+  @include mixins.define(spacing, 3px);
+  @include mixins.define(padding-vertical, var(--za-padding-v-xs));
+  @include mixins.define(padding-horizontal, var(--za-padding-h-xs));
+  @include mixins.define(arrow-size, 4px);
+  @include mixins.define(arrow-horizontal-offset, 10px);
+  @include mixins.define(arrow-vertical-offset, 6px);
 
   padding: var(--padding-vertical) var(--padding-horizontal);
   background: var(--background);
@@ -20,8 +23,8 @@
   &[data-popper-placement^='right'] {
     margin-left: var(--spacing);
 
-    @include b(popper) {
-      @include e(arrow) {
+    @include sass.b(popper) {
+      @include sass.e(arrow) {
         left: calc(var(--arrow-size) * -1);
         border-width: var(--arrow-size) var(--arrow-size) var(--arrow-size) 0;
         border-right-color: var(--background);
@@ -32,8 +35,8 @@
   &[data-popper-placement^='top'] {
     margin-top: calc(var(--spacing) * -1);
 
-    @include b(popper) {
-      @include e(arrow) {
+    @include sass.b(popper) {
+      @include sass.e(arrow) {
         bottom: calc(var(--arrow-size) * -1);
         border-width: var(--arrow-size) var(--arrow-size) 0;
         border-top-color: var(--background);
@@ -44,8 +47,8 @@
   &[data-popper-placement^='bottom'] {
     margin-top: var(--spacing);
 
-    @include b(popper) {
-      @include e(arrow) {
+    @include sass.b(popper) {
+      @include sass.e(arrow) {
         top: calc(var(--arrow-size) * -1);
         border-width: 0 var(--arrow-size) var(--arrow-size) var(--arrow-size);
         border-bottom-color: var(--background);
@@ -56,8 +59,8 @@
   &[data-popper-placement^='left'] {
     margin-left: calc(var(--spacing) * -1);
 
-    @include b(popper) {
-      @include e(arrow) {
+    @include sass.b(popper) {
+      @include sass.e(arrow) {
         right: calc(var(--arrow-size) * -1);
         border-width: var(--arrow-size) 0 var(--arrow-size) var(--arrow-size);
         border-left-color: var(--background);
@@ -67,8 +70,8 @@
 
   &[data-popper-placement='top-start'],
   &[data-popper-placement='bottom-start'] {
-    @include b(popper) {
-      @include e(arrow) {
+    @include sass.b(popper) {
+      @include sass.e(arrow) {
         left: var(--arrow-horizontal-offset);
       }
     }
@@ -76,8 +79,8 @@
 
   &[data-popper-placement='top-end'],
   &[data-popper-placement='bottom-end'] {
-    @include b(popper) {
-      @include e(arrow) {
+    @include sass.b(popper) {
+      @include sass.e(arrow) {
         right: var(--arrow-horizontal-offset);
       }
     }
@@ -85,8 +88,8 @@
 
   &[data-popper-placement='left-start'],
   &[data-popper-placement='right-start'] {
-    @include b(popper) {
-      @include e(arrow) {
+    @include sass.b(popper) {
+      @include sass.e(arrow) {
         top: var(--arrow-vertical-offset);
       }
     }
@@ -94,15 +97,15 @@
 
   &[data-popper-placement='left-end'],
   &[data-popper-placement='right-end'] {
-    @include b(popper) {
-      @include e(arrow) {
+    @include sass.b(popper) {
+      @include sass.e(arrow) {
         bottom: var(--arrow-vertical-offset);
       }
     }
   }
 
-  @include b(popper) {
-    @include e(arrow) {
+  @include sass.b(popper) {
+    @include sass.e(arrow) {
       position: absolute;
       width: 0;
       height: 0;

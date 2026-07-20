@@ -1,24 +1,27 @@
-@include b(search-bar) {
-  @include define(background, transparent);
-  @include define(height, 52px);
-  @include define(padding-horizontal, 16px);
-  @include define(input-padding-horizontal, 8px);
-  @include define(input-height, 36px);
-  @include define(input-background, rgba(118, 118, 128, 0.12));
-  @include define(input-font-size, var(--za-font-size-md));
-  @include define(input-placeholder-color, #808084);
-  @include define(input-clear-icon-color, #8e8e92);
-  @include define(input-border-radius, 10px);
-  @include define(cancel-font-size, var(--za-font-size-md));
-  @include define(cancel-color, var(--za-theme-primary));
-  @include define(cancel-margin-left, 13px);
-  @include define(cancel-transition, all 0.2s);
-  @include define(icon-margin-right, 6px);
-  @include define(icon-color, #808084);
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
+
+@include sass.b(search-bar) {
+  @include mixins.define(background, transparent);
+  @include mixins.define(height, 52px);
+  @include mixins.define(padding-horizontal, 16px);
+  @include mixins.define(input-padding-horizontal, 8px);
+  @include mixins.define(input-height, 36px);
+  @include mixins.define(input-background, rgba(118, 118, 128, 0.12));
+  @include mixins.define(input-font-size, var(--za-font-size-md));
+  @include mixins.define(input-placeholder-color, #808084);
+  @include mixins.define(input-clear-icon-color, #8e8e92);
+  @include mixins.define(input-border-radius, 10px);
+  @include mixins.define(cancel-font-size, var(--za-font-size-md));
+  @include mixins.define(cancel-color, var(--za-theme-primary));
+  @include mixins.define(cancel-margin-left, 13px);
+  @include mixins.define(cancel-transition, all 0.2s);
+  @include mixins.define(icon-margin-right, 6px);
+  @include mixins.define(icon-color, #808084);
 
   background: var(--background);
 
-  @include e(form) {
+  @include sass.e(form) {
     height: var(--height);
     margin: 0 var(--padding-horizontal);
     display: flex;
@@ -27,7 +30,7 @@
     overflow: hidden;
   }
 
-  @include e(content) {
+  @include sass.e(content) {
     flex: 1;
     display: flex;
     justify-content: center;
@@ -37,7 +40,7 @@
     background: var(--input-background);
     overflow: hidden;
 
-    @include e(icon) {
+    @include sass.e(icon) {
       margin-right: var(--icon-margin-right);
       color: var(--icon-color);
       align-items: center;
@@ -45,9 +48,9 @@
     }
   }
 
-  @include b(input) {
-    @include define(placeholder-color, var(--input-placeholder-color));
-    @include define(clear-icon-color, var(--input-clear-icon-color));
+  @include sass.b(input) {
+    @include mixins.define(placeholder-color, var(--input-placeholder-color));
+    @include mixins.define(clear-icon-color, var(--input-clear-icon-color));
 
     flex: 1;
     font-size: var(--input-font-size);
@@ -60,27 +63,27 @@
     }
   }
 
-  @include e(cancel) {
+  @include sass.e(cancel) {
     font-size: var(--cancel-font-size);
     color: var(--cancel-color);
     margin-left: var(--cancel-margin-left);
     transition: var(--cancel-transition);
   }
 
-  @include m(focus) {
-    @include e(cancel) {
+  @include sass.m(focus) {
+    @include sass.e(cancel) {
       margin-right: 0;
     }
   }
 
-  @include m(radius) {
-    @include e(content) {
+  @include sass.m(radius) {
+    @include sass.e(content) {
       border-radius: var(--input-border-radius);
     }
   }
 
-  @include m(round) {
-    @include e(content) {
+  @include sass.m(round) {
+    @include sass.e(content) {
       border-radius: var(--za-radius-round);
     }
   }

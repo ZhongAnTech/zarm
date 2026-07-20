@@ -1,3 +1,5 @@
+@use "~@zarm-design/bem/sass/za" as sass;
+
 $themeMap: (
   primary: var(--za-theme-primary),
   success: var(--za-theme-success),
@@ -7,8 +9,8 @@ $themeMap: (
 
 @mixin progress-theme($attr) {
   @each $key, $value in $themeMap {
-    @include m($key) {
-      @include e(thumb) {
+    @include sass.m($key) {
+      @include sass.e(thumb) {
         #{$attr}: $value;
       }
     }
@@ -16,12 +18,12 @@ $themeMap: (
 }
 
 @mixin progress-type() {
-  @include e(track) {
+  @include sass.e(track) {
     stroke: var(--background);
     fill-opacity: 0;
   }
 
-  @include e(thumb) {
+  @include sass.e(thumb) {
     fill-opacity: 0;
     transition: stroke-dashoffset 0.6s ease, stroke 0.6s ease;
   }

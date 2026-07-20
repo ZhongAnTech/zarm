@@ -1,23 +1,25 @@
-@import 'mixins';
+@use 'mixins';
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins" as mixins-mixins;
 
-@include b(input) {
-  @include define(color, var(--za-color-text));
-  @include define(font-size, var(--za-font-size-md));
-  @include define(height, 28px);
-  @include define(line-height, 28px);
-  @include define(label-font-size, var(--za-font-size-sm));
-  @include define(placeholder-color, var(--za-color-text-placeholder));
-  @include define(disabled-color, var(--za-color-text-disabled));
-  @include define(clear-icon-size, 16px);
-  @include define(clear-icon-color, #ccc);
-  @include define(textarea-length-font-size, var(--za-font-size-sm));
-  @include define(textarea-length-color, var(--za-color-text-disabled));
+@include sass.b(input) {
+  @include mixins-mixins.define(color, var(--za-color-text));
+  @include mixins-mixins.define(font-size, var(--za-font-size-md));
+  @include mixins-mixins.define(height, 28px);
+  @include mixins-mixins.define(line-height, 28px);
+  @include mixins-mixins.define(label-font-size, var(--za-font-size-sm));
+  @include mixins-mixins.define(placeholder-color, var(--za-color-text-placeholder));
+  @include mixins-mixins.define(disabled-color, var(--za-color-text-disabled));
+  @include mixins-mixins.define(clear-icon-size, 16px);
+  @include mixins-mixins.define(clear-icon-color, #ccc);
+  @include mixins-mixins.define(textarea-length-font-size, var(--za-font-size-sm));
+  @include mixins-mixins.define(textarea-length-color, var(--za-color-text-disabled));
 
-  @include input-base();
-  @include input-placeholder();
+  @include mixins.input-base();
+  @include mixins.input-placeholder();
 
-  @include m(textarea) {
-    @include e(length) {
+  @include sass.m(textarea) {
+    @include sass.e(length) {
       text-align: right;
       color: var(--textarea-length-color);
       font-size: var(--textarea-length-font-size);
@@ -25,19 +27,19 @@
   }
 
   // 可清空
-  @include m(clearable) {
-    @include input-clearable();
+  @include sass.m(clearable) {
+    @include mixins.input-clearable();
   }
 
   // 只读
-  @include m(readonly) {
-    @include e(content) {
+  @include sass.m(readonly) {
+    @include sass.e(content) {
       height: auto;
     }
   }
 
   // 禁用
-  @include m(disabled) {
-    @include input-disabled();
+  @include sass.m(disabled) {
+    @include mixins.input-disabled();
   }
 }

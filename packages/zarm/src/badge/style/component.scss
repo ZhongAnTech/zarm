@@ -1,25 +1,28 @@
-@include b(badge) {
-  @include define(dot-size, 8px);
-  @include define(color, var(--za-theme-danger));
-  @include define(text-color, #fff);
-  @include define(border-color, #fff);
-  @include define(font-size, 12px);
-  @include define(font-weight, 600);
-  @include define(height, 20px);
-  @include define(padding-horizontal, 4px);
-  @include define(border-radius, var(--za-radius-sm));
-  @include define(top, 0);
-  @include define(right, 0);
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
+
+@include sass.b(badge) {
+  @include mixins.define(dot-size, 8px);
+  @include mixins.define(color, var(--za-theme-danger));
+  @include mixins.define(text-color, #fff);
+  @include mixins.define(border-color, #fff);
+  @include mixins.define(font-size, 12px);
+  @include mixins.define(font-weight, 600);
+  @include mixins.define(height, 20px);
+  @include mixins.define(padding-horizontal, 4px);
+  @include mixins.define(border-radius, var(--za-radius-sm));
+  @include mixins.define(top, 0);
+  @include mixins.define(right, 0);
 
   position: relative;
   display: inline-block;
   vertical-align: middle;
 
-  @include b(icon) {
+  @include sass.b(icon) {
     color: inherit;
   }
 
-  @include e(content) {
+  @include sass.e(content) {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,53 +38,53 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  @include m(dot) {
-    @include define(height, var(--dot-size));
+  @include sass.m(dot) {
+    @include mixins.define(height, var(--dot-size));
 
-    @include e(content) {
+    @include sass.e(content) {
       width: var(--height);
       border-radius: 50%;
       padding: 0;
     }
   }
 
-  @include m(radius) {
-    @include e(content) {
+  @include sass.m(radius) {
+    @include sass.e(content) {
       border-radius: var(--border-radius);
     }
   }
 
-  @include m(round) {
-    @include e(content) {
+  @include sass.m(round) {
+    @include sass.e(content) {
       min-width: var(--height);
       border-radius: var(--height);
     }
   }
 
-  @include m(circle) {
-    @include e(content) {
+  @include sass.m(circle) {
+    @include sass.e(content) {
       width: var(--height);
       border-radius: 50%;
       padding: 0;
     }
   }
 
-  @include m(leaf) {
-    @include e(content) {
+  @include sass.m(leaf) {
+    @include sass.e(content) {
       min-width: var(--height);
       border-radius: var(--height) var(--height) var(--height) 0;
     }
   }
 
-  @include m(sup) {
-    @include define(font-size, 10px);
-    @include define(height, 16px);
+  @include sass.m(sup) {
+    @include mixins.define(font-size, 10px);
+    @include mixins.define(height, 16px);
 
-    @include m(dot) {
-      @include define(height, var(--dot-size));
+    @include sass.m(dot) {
+      @include mixins.define(height, var(--dot-size));
     }
 
-    @include e(content) {
+    @include sass.e(content) {
       position: absolute;
       top: var(--top);
       right: var(--right);
@@ -89,8 +92,8 @@
     }
   }
 
-  @include m(bordered) {
-    @include e(content) {
+  @include sass.m(bordered) {
+    @include sass.e(content) {
       border: 1px solid var(--border-color);
     }
   }

@@ -1,5 +1,8 @@
-@include b(keyboard-picker) {
-  @include define(background, #d8d8d8);
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
+
+@include sass.b(keyboard-picker) {
+  @include mixins.define(background, #d8d8d8);
 
   background: var(--background);
 }

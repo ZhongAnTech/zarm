@@ -1,9 +1,12 @@
-@include b(wheel) {
-  @include define(item-rows, 5);
-  @include define(item-height, 34px);
-  @include define(item-font-size, 20px);
-  @include define(text-color, var(--za-color-text));
-  @include define(disabled-text-color, var(--za-color-text-disabled));
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
+
+@include sass.b(wheel) {
+  @include mixins.define(item-rows, 5);
+  @include mixins.define(item-height, 34px);
+  @include mixins.define(item-font-size, 20px);
+  @include mixins.define(text-color, var(--za-color-text));
+  @include mixins.define(disabled-text-color, var(--za-color-text-disabled));
 
   display: block;
   position: relative;
@@ -11,11 +14,11 @@
   height: calc(var(--item-rows) * var(--item-height));
   overflow: hidden;
 
-  @include e(content) {
+  @include sass.e(content) {
     margin-top: calc(var(--item-height) * 2);
   }
 
-  @include e(item) {
+  @include sass.e(item) {
     text-align: center;
     font-size: var(--item-font-size);
     line-height: var(--item-height);
@@ -25,7 +28,7 @@
     text-overflow: ellipsis;
     overflow: hidden;
 
-    @include m(disabled) {
+    @include sass.m(disabled) {
       color: var(--disabled-text-color);
     }
   }

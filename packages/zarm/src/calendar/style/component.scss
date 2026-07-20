@@ -1,33 +1,35 @@
-@import 'mixins';
+@use 'mixins';
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins" as mixins-mixins;
 
-@include b(calendar) {
-  @include define(background, #fff);
-  @include define(padding-horizontal, var(--za-padding-h-md));
-  @include define(padding-vertical, 10px);
-  @include define(header-height, var(--za-height-md));
-  @include define(week-height, 40px);
-  @include define(week-font-size, 13px);
-  @include define(week-font-weight, 500);
-  @include define(week-background, #f2f2f2);
-  @include define(week-text-color, var(--za-color-text-caption));
-  @include define(month-font-size, 17px);
-  @include define(month-font-weight, 500);
-  @include define(month-height, 50px);
-  @include define(month-scroll-background, #fff);
-  @include define(day-height, 30px);
-  @include define(day-width, 30px);
-  @include define(day-font-size, 16px);
-  @include define(day-text-color, var(--za-color-text));
-  @include define(day-today-background, var(--za-theme-primary-lighter));
-  @include define(day-today-text-color, var(--za-theme-primary));
-  @include define(day-selected-background, var(--za-theme-primary));
-  @include define(day-selected-border-radius, 50%);
-  @include define(day-margin-vertical, 10px);
-  @include define(day-selected-text-color, #fff);
-  @include define(day-selected-shadow, 0 2px 5px 0 var(--za-theme-primary-lighter));
-  @include define(day-range-background, var(--za-theme-primary-lighter));
-  @include define(day-range-text-color, var(--za-theme-primary));
-  @include define(action-btn-disabled, var(--za-color-text-disabled));
+@include sass.b(calendar) {
+  @include mixins-mixins.define(background, #fff);
+  @include mixins-mixins.define(padding-horizontal, var(--za-padding-h-md));
+  @include mixins-mixins.define(padding-vertical, 10px);
+  @include mixins-mixins.define(header-height, var(--za-height-md));
+  @include mixins-mixins.define(week-height, 40px);
+  @include mixins-mixins.define(week-font-size, 13px);
+  @include mixins-mixins.define(week-font-weight, 500);
+  @include mixins-mixins.define(week-background, #f2f2f2);
+  @include mixins-mixins.define(week-text-color, var(--za-color-text-caption));
+  @include mixins-mixins.define(month-font-size, 17px);
+  @include mixins-mixins.define(month-font-weight, 500);
+  @include mixins-mixins.define(month-height, 50px);
+  @include mixins-mixins.define(month-scroll-background, #fff);
+  @include mixins-mixins.define(day-height, 30px);
+  @include mixins-mixins.define(day-width, 30px);
+  @include mixins-mixins.define(day-font-size, 16px);
+  @include mixins-mixins.define(day-text-color, var(--za-color-text));
+  @include mixins-mixins.define(day-today-background, var(--za-theme-primary-lighter));
+  @include mixins-mixins.define(day-today-text-color, var(--za-theme-primary));
+  @include mixins-mixins.define(day-selected-background, var(--za-theme-primary));
+  @include mixins-mixins.define(day-selected-border-radius, 50%);
+  @include mixins-mixins.define(day-margin-vertical, 10px);
+  @include mixins-mixins.define(day-selected-text-color, #fff);
+  @include mixins-mixins.define(day-selected-shadow, 0 2px 5px 0 var(--za-theme-primary-lighter));
+  @include mixins-mixins.define(day-range-background, var(--za-theme-primary-lighter));
+  @include mixins-mixins.define(day-range-text-color, var(--za-theme-primary));
+  @include mixins-mixins.define(action-btn-disabled, var(--za-color-text-disabled));
 
   background: var(--background);
   user-select: none;
@@ -44,13 +46,13 @@
     vertical-align: middle;
   }
 
-  @include b(picker-view) {
+  @include sass.b(picker-view) {
     position: absolute;
     top: var(--header-height);
     z-index: 10;
   }
 
-  @include e(week) {
+  @include sass.e(week) {
     display: flex;
     flex-wrap: wrap;
     height: var(--week-height);
@@ -63,7 +65,7 @@
     padding: 0 var(--padding-horizontal);
   }
 
-  @include e(header) {
+  @include sass.e(header) {
     display: flex;
     justify-content: space-between;
     padding: 0 var(--padding-horizontal);
@@ -71,31 +73,31 @@
     align-items: center;
   }
 
-  @include e(action) {
+  @include sass.e(action) {
     display: flex;
 
-    @include e(action-btn) {
-      @include m(disabled) {
+    @include sass.e(action-btn) {
+      @include sass.m(disabled) {
         color: var(--action-btn-disabled);
       }
     }
   }
 
-  @include e(title) {
-    @include m(animate) {
-      @include b(icon) {
+  @include sass.e(title) {
+    @include sass.m(animate) {
+      @include sass.b(icon) {
         transform: rotate(90deg);
         transition: all 0.15s ease-in-out;
       }
     }
   }
 
-  @include e(body) {
+  @include sass.e(body) {
     padding: var(--padding-vertical) 0;
     overflow: auto;
   }
 
-  @include e(scroll-month) {
+  @include sass.e(scroll-month) {
     display: none;
     position: absolute;
     top: var(--week-height);
@@ -108,18 +110,18 @@
     font-weight: var(--month-font-weight);
     font-size: var(--month-font-size);
 
-    @include m(entering, entered) {
+    @include sass.m(entering, entered) {
       display: block;
       opacity: 1;
     }
 
-    @include m(exiting) {
+    @include sass.m(exiting) {
       display: block;
       opacity: 0;
     }
   }
 
-  @include e(month__wrapper) {
+  @include sass.e(month__wrapper) {
     padding: 0 var(--padding-horizontal);
     flex-shrink: 0;
     width: 100%;
@@ -135,7 +137,7 @@
     }
   }
 
-  @include e(month) {
+  @include sass.e(month) {
     height: var(--month-height);
     line-height: var(--month-height);
     padding: 0 var(--padding-horizontal);
@@ -143,7 +145,7 @@
     font-weight: var(--month-font-weight);
   }
 
-  @include e(day) {
+  @include sass.e(day) {
     margin: var(--day-margin-vertical) 0;
     position: relative;
     font-size: var(--day-font-size);
@@ -161,18 +163,18 @@
       margin: 0 auto;
     }
 
-    @include m(today) {
-      @include b(calendar) {
-        @include e(day__content) {
+    @include sass.m(today) {
+      @include sass.b(calendar) {
+        @include sass.e(day__content) {
           background: var(--day-today-background);
           color: var(--day-today-text-color);
         }
       }
     }
 
-    @include m(selected) {
-      @include b(calendar) {
-        @include e(day__content) {
+    @include sass.m(selected) {
+      @include sass.b(calendar) {
+        @include sass.e(day__content) {
           background: var(--day-selected-background);
           color: var(--day-selected-text-color);
           box-shadow: var(--day-selected-shadow);
@@ -180,57 +182,57 @@
       }
     }
 
-    @include m(disabled) {
+    @include sass.m(disabled) {
       cursor: auto;
-      @include b(calendar) {
-        @include e(day__content) {
+      @include sass.b(calendar) {
+        @include sass.e(day__content) {
           color: var(--za-color-text-disabled);
         }
       }
     }
 
-    @include m(range) {
+    @include sass.m(range) {
       background: var(--day-range-background);
       color: var(--day-range-text-color);
 
-      @include b(calendar) {
-        @include e(day__content) {
+      @include sass.b(calendar) {
+        @include sass.e(day__content) {
           background: var(--day-range-background);
         }
       }
 
       &:first-child {
         background-color: transparent;
-        @include linegradient(right);
+        @include mixins.linegradient(right);
       }
 
       &:last-child {
         background-color: transparent;
-        @include linegradient(left);
+        @include mixins.linegradient(left);
       }
     }
 
-    @include m(d6) {
+    @include sass.m(d6) {
       background-color: transparent;
-      @include linegradient(left);
+      @include mixins.linegradient(left);
     }
 
-    @include m(d7) {
+    @include sass.m(d7) {
       background-color: transparent;
-      @include linegradient(right);
+      @include mixins.linegradient(right);
     }
 
-    @include m(start) {
+    @include sass.m(start) {
       background-color: transparent;
-      @include linegradient(right);
+      @include mixins.linegradient(right);
     }
 
-    @include m(end) {
+    @include sass.m(end) {
       background-color: transparent;
-      @include linegradient(left);
+      @include mixins.linegradient(left);
     }
 
-    @include m(last, first) {
+    @include sass.m(last, first) {
       background-image: none;
     }
   }

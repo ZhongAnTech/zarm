@@ -1,5 +1,8 @@
-@include b(mask) {
-  @include define(zindex, var(--za-zindex-mask));
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/mixins";
+
+@include sass.b(mask) {
+  @include mixins.define(zindex, var(--za-zindex-mask));
 
   display: flex;
   align-items: center;

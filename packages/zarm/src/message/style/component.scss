@@ -1,68 +1,71 @@
-@import 'mixins';
+@use 'mixins';
+@use "~@zarm-design/bem/sass/za" as sass;
+@use "../../style/core/functions";
+@use "../../style/core/mixins" as mixins-mixins;
 
-@include b(message) {
-  @include define(line-height, 18px);
-  @include define(font-size, var(--za-font-size-xs));
-  @include define(icon-size, 14px);
-  @include define(padding, 6px 8px);
+@include sass.b(message) {
+  @include mixins-mixins.define(line-height, 18px);
+  @include mixins-mixins.define(font-size, var(--za-font-size-xs));
+  @include mixins-mixins.define(icon-size, 14px);
+  @include mixins-mixins.define(padding, 6px 8px);
 
   display: flex;
   position: relative;
   line-height: var(--line-height);
   padding: var(--padding);
   font-size: var(--font-size);
-  @include message-theme(var(--za-theme-default));
+  @include mixins.message-theme(var(--za-theme-default));
 
-  @include e(header) {
+  @include sass.e(header) {
     display: flex;
     align-items: center;
     line-height: 1;
   }
 
-  @include e(icon) {
-    margin-right: r(4);
+  @include sass.e(icon) {
+    margin-right: functions.r(4);
 
-    @include b(icon) {
+    @include sass.b(icon) {
       font-size: var(--icon-size);
     }
   }
 
-  @include e(body) {
+  @include sass.e(body) {
     flex: 1;
     display: flex;
     align-items: center;
   }
 
-  @include e(footer) {
+  @include sass.e(footer) {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: right;
-    padding-left: r(10);
+    padding-left: functions.r(10);
 
-    @include b(icon) {
+    @include sass.b(icon) {
       font-size: var(--icon-size);
       cursor: pointer;
     }
   }
 
-  @include m(link) {
+  @include sass.m(link) {
     cursor: pointer;
   }
 
-  @include m(primary) {
-    @include message-theme(var(--za-theme-primary));
+  @include sass.m(primary) {
+    @include mixins.message-theme(var(--za-theme-primary));
   }
 
-  @include m(success) {
-    @include message-theme(var(--za-theme-success));
+  @include sass.m(success) {
+    @include mixins.message-theme(var(--za-theme-success));
   }
 
-  @include m(warning) {
-    @include message-theme(var(--za-theme-warning));
+  @include sass.m(warning) {
+    @include mixins.message-theme(var(--za-theme-warning));
   }
 
-  @include m(danger) {
-    @include message-theme(var(--za-theme-danger));
+  @include sass.m(danger) {
+    @include mixins.message-theme(var(--za-theme-danger));
   }
 }
