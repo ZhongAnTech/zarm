@@ -135,7 +135,7 @@ const CalendarMonthView = forwardRef<any, CalendarMonthProps>((props, ref) => {
   const renderDays = (year: number, month: number): ReactNode[] => {
     const date = dayjs().year(year).month(month).date(1);
     const daysInMonth = date.daysInMonth();
-    let firstDay = date.day();
+    let firstDay: number = date.day();
     if (weekStartsOn !== 'Sunday') {
       firstDay = firstDay === 0 ? firstDay + 6 : firstDay - 1;
     }

@@ -1,4 +1,3 @@
-import { mocked } from 'ts-jest/utils';
 import fs from 'fs';
 import { sync } from 'mkdirp';
 import signale from 'signale';
@@ -10,8 +9,8 @@ jest.mock('chalk', () => {
   return { green: jest.fn() };
 });
 
-const syncMocked = mocked(sync);
-const chalkGreenMocked = mocked(chalk.green);
+const syncMocked = jest.mocked(sync);
+const chalkGreenMocked = jest.mocked(chalk.green);
 
 describe('template', () => {
   afterAll(() => {

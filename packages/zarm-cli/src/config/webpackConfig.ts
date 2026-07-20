@@ -62,6 +62,7 @@ const config: Configuration = {
           {
             loader: require.resolve('sass-loader'),
             options: {
+              api: 'modern-compiler',
               sourceMap: true,
               implementation: require('sass'),
             },

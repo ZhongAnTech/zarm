@@ -4,7 +4,7 @@
     "jsx": "react",
     "declaration": true,
     "emitDeclarationOnly": true,
-    "types": ["jest", "node", "testing-library__jest-dom"]
+    "types": ["jest", "node", "@testing-library/jest-dom"]
   },
   "include": ["src"]
 }

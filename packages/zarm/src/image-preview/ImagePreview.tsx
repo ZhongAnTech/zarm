@@ -1,4 +1,4 @@
-import { ReactDOMAttributes, useDrag } from '@use-gesture/react';
+import { useDrag } from '@use-gesture/react';
 import { createBEM } from '@zarm-design/bem';
 import React, { useEffect, useState } from 'react';
 import Button from '../button';
@@ -22,6 +22,8 @@ export interface ImagePreviewCssVars {
 }
 
 export type ImagePreviewProps = BaseImagePreviewProps & HTMLProps<ImagePreviewCssVars>;
+
+type GestureBind = (...args: any[]) => React.DOMAttributes<EventTarget>;
 
 const imageStyle = {
   maxWidth: canUseDOM && window?.innerWidth <= window?.innerHeight ? window?.innerWidth : undefined,
@@ -118,13 +120,13 @@ const ImagePreview = React.forwardRef<HTMLDivElement, ImagePreviewProps>((props,
     if (state.tap && state.elapsedTime > 0) {
       onClose?.();
     }
-  }) as unknown as (...args: any[]) => ReactDOMAttributes;
+  }) as unknown as GestureBind;
 
   const loadEvent = useDrag((state) => {
     if (state.tap && state.elapsedTime > 0) {
       loadOrigin(state.event);
     }
-  }) as unknown as (...args: any[]) => ReactDOMAttributes;
+  }) as unknown as GestureBind;
 
   const renderImages = () => {
     return images.map((item, i) => {

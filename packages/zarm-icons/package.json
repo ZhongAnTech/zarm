@@ -38,13 +38,14 @@
     "test": "zarm test -s scripts/jest/setup.js"
   },
   "dependencies": {
-    "@babel/runtime": "^7.21.0",
+    "@babel/runtime": "^7.29.7",
     "@zarm-design/bem": "workspace:^",
     "change-case": "^4.1.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.13.16",
-    "@svgr/cli": "^5.5.0",
+    "@babel/core": "^7.29.7",
+    "@babel/cli": "^7.29.7",
+    "@svgr/cli": "^8.1.0",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/react": "^16.3.2",
     "@types/react": "^19.2.17",
@@ -52,7 +53,8 @@
     "@zarm-design/cli": "workspace:^",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "shelljs": "^0.8.4",
+    "shelljs": "^0.10.0",
+    "typescript": "~4.9.5",
     "webfonts-helper": "^0.1.2"
   },
   "peerDependencies": {

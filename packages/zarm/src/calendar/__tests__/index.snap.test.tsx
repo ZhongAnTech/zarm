@@ -1,13 +1,12 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { mocked } from 'ts-jest/utils';
 import Calendar from '../index';
 import { date2, date6 } from '../../../tests/testData/date';
 import parseState from '../utils/parseState';
 import CalendarMonthView from '../Month';
 
 jest.mock('../utils/parseState');
-const mockedParseState = mocked(parseState);
+const mockedParseState = jest.mocked(parseState);
 
 describe('Calendar snapshot', () => {
   afterAll(() => {

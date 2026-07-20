@@ -1,5 +1,4 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { mocked } from 'ts-jest/utils';
 
 import { getProjectConfig } from '../deploy';
 import { getCustomConfig } from '../utils';
@@ -7,8 +6,8 @@ import { getCustomConfig } from '../utils';
 jest.mock('../utils');
 jest.mock('html-webpack-plugin', () => jest.fn());
 
-const HtmlWebpackPluginMocked = mocked(HtmlWebpackPlugin);
-const getCustomConfigMocked = mocked(getCustomConfig);
+const HtmlWebpackPluginMocked = jest.mocked(HtmlWebpackPlugin);
+const getCustomConfigMocked = jest.mocked(getCustomConfig);
 
 describe('deploy', () => {
   afterAll(() => {

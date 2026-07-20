@@ -10,6 +10,7 @@ module.exports = {
     color: 'blue',
   },
   rootDir: process.cwd(),
+  testEnvironment: 'jsdom',
   roots: ['<rootDir>/src'],
   // setupFilesAfterEnv: [
   //   getProjectPath('scripts/jest/setup.js'),
@@ -29,5 +30,7 @@ module.exports = {
     '!src/**/__tests__/*',
   ],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-  testURL: 'http://localhost',
+  testEnvironmentOptions: {
+    url: 'http://localhost',
+  },
 };

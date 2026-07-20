@@ -1,11 +1,10 @@
-import { mocked } from 'ts-jest/utils';
 import createThumbnail from '../../utils/createThumbnail';
 import changeImageSize from '../../utils/changeImageSize';
 import { mockCreateObjectURL, mockResetCreateObjectURL } from '../../../../tests/utils';
 
 jest.mock('../../utils/changeImageSize');
 
-const mChangeImageSize = mocked(changeImageSize);
+const mChangeImageSize = jest.mocked(changeImageSize);
 
 describe('createThumbnail', () => {
   let imageOnload: Function | undefined;

@@ -2,9 +2,20 @@ import gulp from 'gulp';
 import gulpSass from 'gulp-sass';
 import dartSass from 'sass';
 import through2 from 'through2';
+import { pathToFileURL } from 'url';
 import { getProjectPath } from '../utils';
 
 const sass = gulpSass(dartSass);
+
+const tildeImporter = {
+  findFileUrl(url: string) {
+    if (!url.startsWith('~')) {
+      return null;
+    }
+
+    return pathToFileURL(require.resolve(url.slice(1)));
+  },
+};
 
 const cssInjection = (content) => {
   return content
@@ -25,13 +36,8 @@ const gulpTask = (path?: string, outDir?: string, callback?: () => void) => {
       .pipe(
         sass
           .sync({
-            includePaths: ['node_modules'],
-            importer: (url) => {
-              if (url.startsWith('~')) {
-                const resolved = require.resolve(url.replace('~', ''));
-                return { file: resolved };
-              }
-            },
+            loadPaths: ['node_modules'],
+            importers: [tildeImporter],
           })
           .on('error', sass.logError),
       )

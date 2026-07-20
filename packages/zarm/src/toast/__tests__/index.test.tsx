@@ -105,7 +105,7 @@ describe('Toast', () => {
     fireEvent.click(getByText('open'));
     await sleep(5000);
     expect(getByText('loading')).toBeInTheDocument();
-  });
+  }, 10000);
 
   test('clear', async () => {
     const { getByText } = render(

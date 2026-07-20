@@ -25,7 +25,6 @@ module.exports = {
     },
   },
   setBabelOptions: (options) => {
-    options.plugins.push(['import', { libraryName: 'zarm-web', style: 'css' }, 'zarm-web']);
     options.plugins.push([
       'prismjs',
       {

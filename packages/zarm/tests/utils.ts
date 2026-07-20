@@ -16,13 +16,21 @@ export async function waitForComponentToPaint(component: any, timeout = 50) {
   });
 }
 
-let oCreateObjectURL: typeof window.URL.createObjectURL;
+let createObjectURLDescriptor: PropertyDescriptor | undefined;
 export function mockCreateObjectURL(mock: jest.Mock) {
-  oCreateObjectURL = window.URL.createObjectURL;
-  Object.defineProperty(window.URL, 'createObjectURL', { value: mock });
+  createObjectURLDescriptor = Object.getOwnPropertyDescriptor(window.URL, 'createObjectURL');
+  Object.defineProperty(window.URL, 'createObjectURL', {
+    configurable: true,
+    value: mock,
+    writable: true,
+  });
 }
 export function mockResetCreateObjectURL() {
-  window.URL.createObjectURL = oCreateObjectURL;
+  if (createObjectURLDescriptor) {
+    Object.defineProperty(window.URL, 'createObjectURL', createObjectURLDescriptor);
+  } else {
+    delete (window.URL as Partial<typeof window.URL>).createObjectURL;
+  }
 }
 
 export function spyElementPrototypes(Element, properties) {

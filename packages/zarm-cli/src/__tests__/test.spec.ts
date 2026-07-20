@@ -1,9 +1,8 @@
-import { mocked } from 'ts-jest/utils';
 import execa from 'execa';
 import testExecutor from '../test';
 
 jest.mock('execa');
-const execaSyncMocked = mocked(execa.sync);
+const execaSyncMocked = jest.mocked(execa.sync);
 
 describe('test', () => {
   afterAll(() => {

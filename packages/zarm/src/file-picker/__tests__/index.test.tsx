@@ -1,6 +1,5 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import { mocked } from 'ts-jest/utils';
 import FilePicker from '../index';
 import type { FileObject } from '../interface';
 import { mockCreateObjectURL, mockResetCreateObjectURL } from '../../../tests/utils';
@@ -8,7 +7,7 @@ import handleFileInfo from '../utils/handleFileInfo';
 
 jest.mock('../utils/handleFileInfo');
 
-const mHandleFileInfo = mocked(handleFileInfo);
+const mHandleFileInfo = jest.mocked(handleFileInfo);
 
 describe('file picker', () => {
   it('render correctly', () => {

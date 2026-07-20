@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { mocked } from 'ts-jest/utils';
 import { CloseCircle } from '@zarm-design/icons';
 import { createFCRefMock } from '../../../tests/utils';
 import NoticeBar from '../index';
@@ -13,7 +12,7 @@ jest.mock('react', () => {
   };
 });
 
-const useMockRef = mocked(useRef);
+const useMockRef = jest.mocked(useRef);
 
 describe('NoticeBar', () => {
   afterEach(() => {

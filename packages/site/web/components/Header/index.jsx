@@ -2,9 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { IntlProvider, FormattedMessage } from 'react-intl';
 import { Popup, Radio, Icon } from 'zarm';
-import { Dropdown, Menu } from 'zarm-web';
-import { Select } from 'antd';
-import { Search as SearchIcon, Close as CloseIcon } from '@zarm-design/icons';
+import { Dropdown, Menu, Select } from 'antd';
+import { Search as SearchIcon } from '@zarm-design/icons';
 import classnames from 'classnames';
 import docsearch from 'docsearch.js';
 import MenuComponent from '@/web/components/Menu';
@@ -99,31 +98,39 @@ const Header = ({ children }) => {
   const moreRender = (
     <div className="header-icon header-icon-more">
       <Dropdown
-        visible={dropdown}
-        onVisibleChange={setDropdown}
-        direction="bottom"
-        content={
+        open={dropdown}
+        onOpenChange={setDropdown}
+        placement="bottomRight"
+        trigger={['click']}
+        popupRender={() => (
           <div className="header-nav">
-            <Menu selectedKeys={[currentPageKey]}>
-              {NAV_ITEMS.map((item) => (
-                <Menu.Item key={item.key}>
-                  <a href={item.link}>{item.title}</a>
-                </Menu.Item>
-              ))}
-              <Menu.Item>
-                <a
-                  href="https://github.com/ZhongAnTech/zarm"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Github
-                </a>
-              </Menu.Item>
-            </Menu>
+            <Menu
+              selectedKeys={[currentPageKey]}
+              items={[
+                ...NAV_ITEMS.map((item) => ({
+                  key: item.key,
+                  label: <a href={item.link}>{item.title}</a>,
+                })),
+                {
+                  key: 'github',
+                  label: (
+                    <a
+                      href="https://github.com/ZhongAnTech/zarm"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Github
+                    </a>
+                  ),
+                },
+              ]}
+            />
           </div>
-        }
+        )}
       >
-        <Icons type="more" />
+        <span>
+          <Icons type="more" />
+        </span>
       </Dropdown>
     </div>
   );

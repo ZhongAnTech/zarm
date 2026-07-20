@@ -1,4 +1,4 @@
-.zw-menu-item {
+.ant-menu-item {
   --menuitem-first-level-height: 42px;
 
   color: rgb(51, 54, 57);
@@ -7,7 +7,7 @@
   border-radius: 4px;
   transition-duration: 0.1s;
 
-  &--active {
+  &.ant-menu-item-selected {
     background: rgba(0, 188, 112, 0.1);
     color: rgba(0, 188, 112);
   }
@@ -18,8 +18,8 @@
   }
 }
 
-.zw-menu-item-group__list {
-  .zw-menu-item {
+.ant-menu-item-group-list {
+  .ant-menu-item {
     padding-left: 36px !important;
   }
 }

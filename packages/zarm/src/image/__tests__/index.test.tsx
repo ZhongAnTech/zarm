@@ -3,7 +3,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import Image from '../index';
 
 const src =
-  'src="https://camo.githubusercontent.com/f5847256d81e5f8c31aee6554f749baf64654a131fed0fca987bd39e023a690f/68747470733a2f2f7a61726d2e64657369676e2f696d616765732f6c6f676f2e31613663666333302e737667"';
+  'https://camo.githubusercontent.com/f5847256d81e5f8c31aee6554f749baf64654a131fed0fca987bd39e023a690f/68747470733a2f2f7a61726d2e64657369676e2f696d616765732f6c6f676f2e31613663666333302e737667';
 
 describe('Image', () => {
   it('render correctly', () => {

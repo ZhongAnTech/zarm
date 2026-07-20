@@ -1,4 +1,3 @@
-import { mocked } from 'ts-jest/utils';
 import ensureValuePrecision from '../../utils/ensureValuePrecision';
 import getClosestPoint from '../../utils/getClosestPoint';
 import getPrecision from '../../utils/getPrecision';
@@ -6,8 +5,8 @@ import getPrecision from '../../utils/getPrecision';
 jest.mock('../../utils/getClosestPoint');
 jest.mock('../../utils/getPrecision');
 
-const mGetClosestPoint = mocked(getClosestPoint);
-const mGetPrecision = mocked(getPrecision);
+const mGetClosestPoint = jest.mocked(getClosestPoint);
+const mGetPrecision = jest.mocked(getPrecision);
 
 describe('ensureValuePrecision', () => {
   const baseProps = {

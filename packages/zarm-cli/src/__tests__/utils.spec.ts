@@ -1,13 +1,12 @@
 import fs from 'fs';
 import path from 'path';
-import { mocked } from 'ts-jest/utils';
 import { fileTree, FileInfo, getCustomConfig } from '../utils';
 
 jest.mock('fs');
 
-const readdirSyncMocked = mocked(fs.readdirSync);
-const statSyncMocked = mocked(fs.statSync);
-const existsSyncMocked = mocked(fs.existsSync);
+const readdirSyncMocked = jest.mocked(fs.readdirSync);
+const statSyncMocked = jest.mocked(fs.statSync);
+const existsSyncMocked = jest.mocked(fs.existsSync);
 
 describe('utils', () => {
   let testDirPath: string;
@@ -24,7 +23,7 @@ describe('utils', () => {
 
   describe('#fileTree', () => {
     it('should get file path tree', () => {
-      readdirSyncMocked.mockReturnValueOnce(['/a.ts', '/b.ts'] as unknown as fs.Dirent[]);
+      readdirSyncMocked.mockReturnValueOnce(['/a.ts', '/b.ts'] as any);
       const stats = { isDirectory: jest.fn().mockReturnValue(false) } as unknown as fs.Stats;
       statSyncMocked.mockReturnValue(stats);
       const list: FileInfo[] = [];

@@ -1,4 +1,3 @@
-import { mocked } from 'ts-jest/utils';
 import getFileDetail from '../../utils/getFileDetail';
 import handleFileInfo from '../../utils/handleFileInfo';
 import createThumbnail from '../../utils/createThumbnail';
@@ -7,8 +6,8 @@ import { flushMicroTasks } from '../../../../tests/utils';
 jest.mock('../../utils/getFileDetail');
 jest.mock('../../utils/createThumbnail');
 
-const mockedGetFileDetail = mocked(getFileDetail);
-const mockedCreateThumbnail = mocked(createThumbnail);
+const mockedGetFileDetail = jest.mocked(getFileDetail);
+const mockedCreateThumbnail = jest.mocked(createThumbnail);
 
 describe('file-picker', () => {
   describe('utils', () => {

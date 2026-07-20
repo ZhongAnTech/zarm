@@ -8,7 +8,7 @@ import Calendar from '../index';
 const originalOffsetTop = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetTop');
 describe('Calendar', () => {
   beforeAll(() => {
-    jest.useFakeTimers('modern');
+    jest.useFakeTimers();
     jest.setSystemTime(new Date('2025-05-15T00:00:00Z'));
   });
 
