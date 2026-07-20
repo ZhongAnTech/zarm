@@ -10,6 +10,7 @@ overrides:
   '@use-gesture/react': 10.3.1
   dayjs: 1.11.21
   eslint-config-za: 2.4.0-alpha.3
+  lerna>jest-diff: 30.3.0
   sass: 1.101.0
   stylelint-config-recommended-scss: 4.2.0
   stylelint-scss: 3.19.0

@@ -1,6 +1,12 @@
 import pkg from '@zarmDir/package.json';
 import { pascalCase } from 'change-case';
-import { getParameters } from 'codesandbox/lib/api/define';
+import LZString from 'lz-string';
+
+const getParameters = (parameters) =>
+  LZString.compressToBase64(JSON.stringify(parameters))
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=+$/, '');
 
 export default ({ code, component, preview, formatMessage }) => {
   const title = `${component.name} ${pascalCase(component.key)} - Zarm Design`;
