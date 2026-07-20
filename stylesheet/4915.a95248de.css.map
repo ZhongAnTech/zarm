@@ -1,0 +1,1 @@
+{"version":3,"file":"stylesheet/4915.6150b73a.css","mappings":"AAGE,gCACE,mBAEA,6CACE,gB","sources":["webpack://site/./demo/styles/NoticeBarPage.scss"],"sourcesContent":["@use '@/styles/index' as *;\n\n.notice-bar-page {\n  .za-notice-bar {\n    margin-bottom: r(15);\n\n    &:last-of-type {\n      margin-bottom: 0;\n    }\n  }\n}\n"],"names":[],"sourceRoot":""}

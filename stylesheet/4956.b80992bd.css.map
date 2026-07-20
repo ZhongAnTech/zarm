@@ -1,0 +1,1 @@
+{"version":3,"file":"stylesheet/4956.16eb7518.css","mappings":"AAII,8CACE,eACA,2E","sources":["webpack://site/./demo/styles/MaskPage.scss"],"sourcesContent":["@use '@/styles/index' as *;\n\n.mask-page {\n  .basic-demo {\n    .za-list-item__content {\n      padding: r(60) 0;\n      justify-content: center;\n    }\n  }\n}\n"],"names":[],"sourceRoot":""}
