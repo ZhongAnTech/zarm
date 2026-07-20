@@ -12,8 +12,7 @@ const CollapseItem = React.forwardRef<unknown, CollapseItemProps>((props, ref) =
   props = mergeDefaultProps(defaultProps, props);
   const { title, className, disabled, animated, isActive, children, onChange, ...rest } = props;
 
-  const content = (ref as any) || React.createRef<HTMLElement>();
-  const collapseItemRef = (ref as any) || React.createRef<HTMLElement>();
+  const contentRef = React.useRef<HTMLDivElement>(null);
   const { prefixCls } = React.useContext(ConfigContext);
   const bem = createBEM('collapse-item', { prefixCls });
 
@@ -22,18 +21,10 @@ const CollapseItem = React.forwardRef<unknown, CollapseItemProps>((props, ref) =
     typeof onChange === 'function' && onChange(isActive!);
   };
 
-  const getContentHeight = (ele) => {
-    const contentChildren = [...ele.children];
-    return contentChildren.reduce((res, next) => {
-      res += next.offsetHeight;
-      return res;
-    }, 0);
-  };
-
   const setStyle = React.useCallback(() => {
-    if (!content.current) return;
-    content.current.style.height = isActive ? `${getContentHeight(content.current)}px` : '0px';
-  }, [content, isActive]);
+    if (!contentRef.current) return;
+    contentRef.current.style.height = isActive ? `${contentRef.current.scrollHeight}px` : '0px';
+  }, [children, isActive]);
 
   const cls = bem([
     {
@@ -48,12 +39,12 @@ const CollapseItem = React.forwardRef<unknown, CollapseItemProps>((props, ref) =
   }, [setStyle]);
 
   return (
-    <div className={cls} {...rest} ref={collapseItemRef}>
+    <div className={cls} {...rest} ref={ref as React.Ref<HTMLDivElement>}>
       <div className={bem('header')} onClick={onClickItem}>
         <div className={bem('title')}>{title}</div>
         <div className={bem('arrow')} />
       </div>
-      <div className={bem('content')} ref={content}>
+      <div className={bem('content')} ref={contentRef}>
         <div className={bem('content__inner')}>{children}</div>
       </div>
     </div>

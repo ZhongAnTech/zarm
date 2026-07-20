@@ -240,6 +240,37 @@ describe('Collapse', () => {
     expect(onChange).toBeCalled();
   });
 
+  it('can reopen a controlled item after closing it', () => {
+    const scrollHeightSpy = jest
+      .spyOn(HTMLElement.prototype, 'scrollHeight', 'get')
+      .mockReturnValue(36);
+    const Demo = () => {
+      const [activeKey, setActiveKey] = React.useState<CollapseProps['activeKey']>('0');
+
+      return (
+        <Collapse activeKey={activeKey} onChange={setActiveKey}>
+          <Collapse.Item key="0" title="Header of Item1">
+            This is content of item1.
+          </Collapse.Item>
+        </Collapse>
+      );
+    };
+
+    const { container } = render(<Demo />);
+    const title = container.getElementsByClassName('za-collapse-item__title')[0];
+    const content = container.getElementsByClassName('za-collapse-item__content')[0] as HTMLElement;
+
+    expect(container.getElementsByClassName('za-collapse-item--active').length).toBe(1);
+    expect(content.style.height).toBe('36px');
+    fireEvent.click(title);
+    expect(container.getElementsByClassName('za-collapse-item--active').length).toBe(0);
+    expect(content.style.height).toBe('0px');
+    fireEvent.click(title);
+    expect(container.getElementsByClassName('za-collapse-item--active').length).toBe(1);
+    expect(content.style.height).toBe('36px');
+    scrollHeightSpy.mockRestore();
+  });
+
   it('click collapse item correctly with disabled mode', () => {
     const props: CollapseProps = {};
     props.onChange = jest.fn();
