@@ -81,7 +81,7 @@ export default ({ location, globalContext, children }) => {
 
         const { code } = transform(value, {
           presets: ['es2015', 'react'],
-          plugins: ['proposal-class-properties'],
+          plugins: ['proposal-class-properties', 'transform-object-rest-spread'],
         });
 
         args.push(code);
