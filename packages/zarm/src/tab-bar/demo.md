@@ -133,32 +133,7 @@ const Demo = () => {
 
   return (
     <>
-      <TabBar activeKey={activeKey} onChange={setActiveKey} safeArea>
-        <TabBar.Item itemKey="home" title="首页" icon={<TabIcon type="home" />} />
-        <TabBar.Item itemKey="found" title="项目" icon={<TabIcon type="menu" />} />
-        <TabBar.Item itemKey="me" title="我的" icon={<TabIcon type="user" />} />
-      </TabBar>
-    </>
-  );
-};
-
-ReactDOM.render(<Demo />, mountNode);
-```
-
-## 开启安全区域
-
-```jsx
-import { useState } from 'react';
-import { Icon, TabBar, List, Button } from 'zarm';
-
-const TabIcon = Icon.createFromIconfont(
-  '//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_20337_14.627ee457cf7594fbbce6d5e14b8c29ef.js',
-);
-
-const Demo = () => {
-  return (
-    <>
-      <TabBar safeArea>
+      <TabBar activeKey={activeKey} onChange={setActiveKey}>
         <TabBar.Item itemKey="home" title="首页" icon={<TabIcon type="home" />} />
         <TabBar.Item itemKey="found" title="项目" icon={<TabIcon type="menu" />} />
         <TabBar.Item itemKey="me" title="我的" icon={<TabIcon type="user" />} />
