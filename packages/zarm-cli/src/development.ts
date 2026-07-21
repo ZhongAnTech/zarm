@@ -58,11 +58,11 @@ export default async ({ mode, host, port }: IDevelopmentConfig) => {
   };
 
   const devServer = new WebpackDevServer(serverConfig, compiler);
-  devServer.start();
+  await devServer.start();
 
   ['SIGINT', 'SIGTERM'].forEach((sig: any) => {
-    process.on(sig, () => {
-      devServer.close();
+    process.on(sig, async () => {
+      await devServer.stop();
       process.exit();
     });
   });
