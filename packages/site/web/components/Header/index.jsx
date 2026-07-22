@@ -1,45 +1,27 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { IntlProvider, FormattedMessage } from 'react-intl';
-import { Popup, Radio, Icon } from 'zarm';
-import { Dropdown, Menu, Select } from 'antd';
-import { Search as SearchIcon } from '@zarm-design/icons';
-import classnames from 'classnames';
-import docsearch from 'docsearch.js';
-import MenuComponent from '@/web/components/Menu';
-import { assets } from '@/site.config';
-import Events from '@/utils/events';
-import Context from '@/utils/context';
 import Locales from '@/locale';
+import { assets } from '@/site.config';
+import Context from '@/utils/context';
+import MenuComponent from '@/web/components/Menu';
+import Search from '@/web/components/Search';
+import { Search as SearchIcon } from '@zarm-design/icons';
 import pkg from '@zarmDir/package.json';
-import 'docsearch.js/dist/cdn/docsearch.min.css';
-import './style.scss';
+import { Dropdown, Menu, Select } from 'antd';
+import classnames from 'classnames';
+import React from 'react';
+import { FormattedMessage, IntlProvider } from 'react-intl';
+import { useLocation } from 'react-router-dom';
+import { Icon, Popup, Radio } from 'zarm';
 import 'zarm/style/entry';
-
-const initDocSearch = () => {
-  docsearch({
-    apiKey: '44e980b50447a3a5fac9dc2a4808c439',
-    indexName: 'zarm',
-    inputSelector: '.search input',
-    debug: false,
-  });
-};
+import './style.scss';
 
 const Icons = Icon.createFromIconfont(assets.iconfont);
 
 const Header = ({ children }) => {
-  const searchInput = useRef();
   const location = useLocation();
-  const [menu, toggleMenu] = useState(false);
-  const [dropdown, setDropdown] = useState(false);
-  const [locale, setLocale] = useState(window.localStorage.locale || 'zhCN');
+  const [menu, toggleMenu] = React.useState(false);
+  const [dropdown, setDropdown] = React.useState(false);
+  const [locale, setLocale] = React.useState(window.localStorage.locale || 'zhCN');
   const currentPageKey = location.pathname.split('/')[1] || '/';
-
-  const keyupEvent = (event) => {
-    if (event.keyCode === 83 && event.target === document.body) {
-      searchInput.current.focus();
-    }
-  };
 
   const activeClassName = (keys) => {
     return classnames({
@@ -69,15 +51,6 @@ const Header = ({ children }) => {
   if (document.location.host.indexOf('gitee') > -1 || locale === 'enUS') {
     NAV_ITEMS.pop();
   }
-
-  useEffect(() => {
-    Events.on(document, 'keyup', keyupEvent);
-    initDocSearch();
-
-    return () => {
-      Events.off(document, 'keyup', keyupEvent);
-    };
-  }, []);
 
   const menuRender = currentPageKey !== '/' && (
     <div className="header-icon header-icon-menu">
@@ -153,7 +126,7 @@ const Header = ({ children }) => {
               <div className="search">
                 <SearchIcon />
                 <FormattedMessage id="app.home.nav.search">
-                  {(txt) => <input placeholder={txt} ref={searchInput} />}
+                  {(txt) => <Search placeholder={txt} />}
                 </FormattedMessage>
               </div>
               <ul>
@@ -183,8 +156,7 @@ const Header = ({ children }) => {
                     },
                   ]}
                   onChange={(version) => {
-                    if (version)
-                      window.location.href = `https://${version}.zarm.design`;
+                    if (version) window.location.href = `https://${version}.zarm.design`;
                   }}
                 />
               </div>

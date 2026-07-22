@@ -46,6 +46,10 @@ module.exports = {
   },
   setRules: (rules) => {
     rules.push({
+      test: /\.search-index$/,
+      use: [path.resolve(__dirname, 'loaders/search-index-loader.js')],
+    });
+    rules.push({
       test: /\.md$/,
       use: ['raw-loader'],
     });
