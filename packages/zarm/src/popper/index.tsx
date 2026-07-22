@@ -76,6 +76,7 @@ const Popper = forwardRef<refHander, PopperProps>((props, ref) => {
     content,
     children,
     arrowPointAtCenter,
+    observeResize,
     onVisibleChange,
   } = props;
 
@@ -103,6 +104,14 @@ const Popper = forwardRef<refHander, PopperProps>((props, ref) => {
       }),
     );
   }
+  const whileElementsMounted = React.useCallback(
+    (referenceElement, floatingElement, updatePosition) =>
+      autoUpdate(referenceElement, floatingElement, updatePosition, {
+        elementResize: observeResize,
+      }),
+    [observeResize],
+  );
+
   const { x, y, reference, floating, strategy, context, update } = useFloating({
     open,
     onOpenChange: (state) => {
@@ -111,7 +120,7 @@ const Popper = forwardRef<refHander, PopperProps>((props, ref) => {
     },
     middleware,
     placement: directionMap[direction!],
-    whileElementsMounted: autoUpdate,
+    whileElementsMounted,
   });
 
   useImperativeHandle(ref, () => {
@@ -232,6 +241,7 @@ const defaultProps: Partial<PopperProps> = {
   direction: 'top',
   mouseEnterDelay: 150,
   mouseLeaveDelay: 100,
+  observeResize: true,
   visible: false,
   animationType: 'zoom-fade',
   onVisibleChange: () => {},

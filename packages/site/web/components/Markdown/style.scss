@@ -1,40 +1,82 @@
 .code-preview {
-  position: relative;
+  margin: 16px 0;
+  overflow: hidden;
   border: 1px solid #f3f3f3;
   border-radius: 4px;
 
-  .actions {
-    color: #999;
-    justify-content: flex-end;
-    align-items: center;
+  &__header {
     display: flex;
-    border-bottom: 1px dashed #f3f3f3;
-    padding-right: 12px;
+    min-height: 42px;
+    border-bottom: 1px solid #f3f3f3;
+    background-color: #fff;
+  }
 
-    button {
-      color: #999;
-      align-items: center;
-      display: flex;
-      transition: color 200ms;
-      padding: 0 6px;
+  &__tabs,
+  &__actions,
+  &__actions form {
+    display: flex;
+    align-items: stretch;
+  }
 
-      &:active {
-        border-color: transparent;
-        background-color: transparent;
-      }
+  &__tab,
+  &__action {
+    appearance: none;
+    border: 0;
+    outline: none;
+    background: transparent;
+    cursor: pointer;
+  }
 
-      &:hover {
-        color: #333;
-      }
+  &__tab {
+    position: relative;
+    padding: 0 16px;
+    color: #999;
+    font-size: 13px;
+    transition: color 200ms;
+
+    &::after {
+      position: absolute;
+      right: 16px;
+      bottom: -1px;
+      left: 16px;
+      height: 2px;
+      background-color: transparent;
+      content: '';
+    }
+
+    &:hover,
+    &.is-active {
+      color: #00bc70;
+    }
+
+    &.is-active::after {
+      background-color: #00bc70;
     }
   }
-}
 
-.clipboard-content {
-  position: absolute;
-  top: -999em;
-  left: -999em;
-  z-index: 999;
+  &__actions {
+    justify-content: flex-end;
+    margin-left: auto;
+    padding-right: 8px;
+    color: #999;
+  }
+
+  &__action {
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    color: #999;
+    transition: color 200ms;
+
+    &:hover,
+    &.is-copied {
+      color: #00bc70;
+    }
+  }
+
+  &__content pre {
+    border-radius: 0;
+  }
 }
 
 .markdown {

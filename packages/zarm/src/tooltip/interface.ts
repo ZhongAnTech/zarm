@@ -10,5 +10,6 @@ export interface BaseTooltipProps {
   content?: React.ReactNode;
   mouseEnterDelay?: number;
   mouseLeaveDelay?: number;
+  observeResize?: boolean;
   onVisibleChange?: (visible: boolean) => void;
 }

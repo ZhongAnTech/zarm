@@ -61,6 +61,27 @@ describe('Popper', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('can disable element resize observation', () => {
+    const originalResizeObserver = window.ResizeObserver;
+    const resizeObserver = jest.fn().mockImplementation(() => ({
+      disconnect: jest.fn(),
+      observe: jest.fn(),
+      unobserve: jest.fn(),
+    }));
+    window.ResizeObserver = resizeObserver;
+
+    try {
+      render(
+        <Popper content="标题" observeResize={false} trigger="manual" visible>
+          <p>点我</p>
+        </Popper>,
+      );
+      expect(resizeObserver).not.toHaveBeenCalled();
+    } finally {
+      window.ResizeObserver = originalResizeObserver;
+    }
+  });
+
   it('does not access element.ref on React 19', () => {
     const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
     const ref = React.createRef<HTMLParagraphElement>();

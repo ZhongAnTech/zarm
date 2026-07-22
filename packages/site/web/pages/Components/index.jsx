@@ -6,10 +6,10 @@ import Markdown from '@/web/components/Markdown';
 import SideBar from '@/web/components/SideBar';
 import classnames from 'classnames';
 import { QRCodeSVG } from 'qrcode.react';
-import React, { lazy, Suspense, useContext, useEffect, useRef, useState } from 'react';
+import React, { lazy, Suspense, useContext, useRef, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Redirect, Route, Switch, useParams, useRouteMatch } from 'react-router-dom';
-import { Icon, Popper } from 'zarm';
+import { Icon, Tooltip } from 'zarm';
 import './style.scss';
 
 const LoadableComponent = (component) => {
@@ -34,7 +34,7 @@ const Simulator = () => {
   const { locale } = useContext(Context);
   const [affix, setAffix] = useState(JSON.parse(window.localStorage['simulator-affix'] || false));
 
-  useEffect(() => {
+  React.useEffect(() => {
     !/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent) &&
       simulatorRef.current.contentWindow.postMessage({ locale }, '*');
   }, [locale]);
@@ -54,50 +54,76 @@ const Simulator = () => {
       <div className="simulator__controls">
         <FormattedMessage id={`app.home.components.simulator.${affix ? 'unaffix' : 'affix'}`}>
           {(txt) => (
-            <div
-              className={classnames('simulator__control', {
-                'simulator__control--active': affix,
-              })}
-              onClick={() => {
-                setAffix(!affix);
-                window.localStorage['simulator-affix'] = !affix;
-              }}
-              title={txt}
+            <Tooltip
+              arrowPointAtCenter
+              content={txt}
+              direction="left"
+              observeResize={false}
+              trigger="hover"
             >
-              <Icons type="pin" size="sm" />
-            </div>
+              <div
+                aria-label={txt}
+                className={classnames('simulator__control', {
+                  'simulator__control--active': affix,
+                })}
+                onClick={() => {
+                  setAffix(!affix);
+                  window.localStorage['simulator-affix'] = !affix;
+                }}
+              >
+                <Icons type="pin" size="sm" />
+              </div>
+            </Tooltip>
           )}
         </FormattedMessage>
         <FormattedMessage id="app.home.components.simulator.qrcode">
           {(txt) => (
-            <Popper
+            <Tooltip
+              arrowPointAtCenter
+              className="simulator__qrcode"
               content={<QRCodeSVG value={simulatorURL} size={120} style={{ display: 'block' }} />}
               direction="left-top"
-              className="simulator__qrcode"
-              mountContainer={false}
+              observeResize={false}
+              trigger="hover"
             >
-              <div className="simulator__control" title={txt}>
+              <div aria-label={txt} className="simulator__control">
                 <Icons type="qrcode" size="sm" />
               </div>
-            </Popper>
+            </Tooltip>
           )}
         </FormattedMessage>
         <FormattedMessage id="app.home.components.simulator.openwindow">
           {(txt) => (
-            <div
-              className="simulator__control"
-              title={txt}
-              onClick={() => window.open(simulatorURL)}
+            <Tooltip
+              arrowPointAtCenter
+              content={txt}
+              direction="left"
+              observeResize={false}
+              trigger="hover"
             >
-              <Icons type="link" size="sm" />
-            </div>
+              <div
+                aria-label={txt}
+                className="simulator__control"
+                onClick={() => window.open(simulatorURL)}
+              >
+                <Icons type="link" size="sm" />
+              </div>
+            </Tooltip>
           )}
         </FormattedMessage>
         <FormattedMessage id="app.home.components.simulator.reload">
           {(txt) => (
-            <div className="simulator__control" title={txt} onClick={handleReload}>
-              <Icons type="reload" size="sm" />
-            </div>
+            <Tooltip
+              arrowPointAtCenter
+              content={txt}
+              direction="left"
+              observeResize={false}
+              trigger="hover"
+            >
+              <div aria-label={txt} className="simulator__control" onClick={handleReload}>
+                <Icons type="reload" size="sm" />
+              </div>
+            </Tooltip>
           )}
         </FormattedMessage>
       </div>

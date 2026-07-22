@@ -21,7 +21,6 @@
     "@zarm-design/icons": "workspace:^",
     "antd": "^5.29.3",
     "classnames": "2.5.1",
-    "clipboard": "^2.0.11",
     "prop-types": "^15.8.1",
     "qrcode.react": "^4.2.0",
     "react": "^19.2.7",

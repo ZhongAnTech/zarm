@@ -25,6 +25,7 @@ export default {
   'app.components.group.other': 'Other',
   'app.components.preview.action.codesandbox': 'Open demo on CodeSandBox.io',
   'app.components.preview.action.copy': 'Copy source code',
+  'app.components.preview.action.copied': 'Copied',
 
   'app.home.nav.search': 'Search Components',
   'app.home.nav.docs': 'Docs',
