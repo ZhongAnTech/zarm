@@ -1,18 +1,3 @@
-/*!
- * @overview es6-promise - a tiny implementation of Promises/A+.
- * @copyright Copyright (c) 2014 Yehuda Katz, Tom Dale, Stefan Penner and contributors (Conversion to ES6 API by Jake Archibald)
- * @license   Licensed under MIT license
- *            See https://raw.githubusercontent.com/stefanpenner/es6-promise/master/LICENSE
- * @version   v4.2.8+1e68dce6
- */
-
-/*!
- * clipboard.js v2.0.11
- * https://clipboardjs.com/
- *
- * Licensed MIT © Zeno Rocha
- */
-
 /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */
 
 /**
