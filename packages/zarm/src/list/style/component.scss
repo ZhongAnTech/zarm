@@ -42,7 +42,6 @@
   );
   @include mixins.define(suffix-text-color, rgba(0, 0, 0, 0.45));
   @include mixins.define(space, 5px);
-  @include mixins.define(arrow-width, var(--za-arrow-width));
   @include mixins.define(arrow-color, var(--za-arrow-color));
   @include mixins.define(arrow-size, var(--za-arrow-size));
   @include mixins.define(description-font-size, 12px);
@@ -120,18 +119,12 @@
   }
 
   @include sass.e(arrow) {
-    margin-left: var(--space);
-    margin-right: var(--arrow-width);
+    --za-icon-color: var(--arrow-color);
+    --za-icon-font-size: calc(var(--arrow-size) * 2);
 
-    &:after {
-      content: '';
-      display: inline-block;
-      border-right: var(--arrow-width) solid var(--arrow-color);
-      border-top: var(--arrow-width) solid var(--arrow-color);
-      width: var(--arrow-size);
-      height: var(--arrow-size);
-      transform: rotate(45deg);
-    }
+    flex-shrink: 0;
+    margin-left: var(--space);
+    margin-right: calc(var(--arrow-size) / -2);
   }
 
   @include sass.e(description) {

@@ -1,4 +1,5 @@
 import { createBEM } from '@zarm-design/bem';
+import { ArrowDown } from '@zarm-design/icons';
 import clamp from 'lodash/clamp';
 import isEqual from 'lodash/isEqual';
 import * as React from 'react';
@@ -23,7 +24,6 @@ const currentYear = new Date().getFullYear();
 export interface DateSelectCssVars {
   '--arrow-color'?: React.CSSProperties['color'];
   '--arrow-size'?: React.CSSProperties['width'];
-  '--arrow-width'?: React.CSSProperties['borderWidth'];
   '--placeholder-color'?: React.CSSProperties['color'];
   '--disabled-color'?: React.CSSProperties['color'];
 }
@@ -105,7 +105,7 @@ const DateSelect: React.FC<DateSelectProps> = (props) => {
     value: pickerValue,
   });
 
-  const arrowRender = <div className={bem('arrow')} />;
+  const arrowRender = <ArrowDown className={bem('arrow')} />;
 
   return (
     <>

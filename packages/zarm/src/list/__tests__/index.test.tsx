@@ -12,4 +12,14 @@ describe('List', () => {
     );
     expect(container).toMatchSnapshot();
   });
+
+  it('renders the arrow icon when clickable', () => {
+    const { container } = render(
+      <List>
+        <List.Item title="Item" onClick={jest.fn()} />
+      </List>,
+    );
+
+    expect(container.querySelector('.za-list-item__arrow.za-icon')).toBeInTheDocument();
+  });
 });

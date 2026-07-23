@@ -1,4 +1,5 @@
 import { createBEM } from '@zarm-design/bem';
+import { ArrowDown } from '@zarm-design/icons';
 import isEqual from 'lodash/isEqual';
 import * as React from 'react';
 import { ConfigContext } from '../config-provider';
@@ -16,7 +17,6 @@ export interface SelectCssVars {
   '--placeholder-color': React.CSSProperties['color'];
   '--arrow-color': React.CSSProperties['color'];
   '--arrow-size': React.CSSProperties['width'];
-  '--arrow-width': React.CSSProperties['width'];
 }
 
 export type SelectProps = BaseSelectProps &
@@ -92,7 +92,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>((props, ref) => {
               locale?.Select?.placeholder}
           </div>
         </div>
-        <div className={bem('arrow')} />
+        <ArrowDown className={bem('arrow')} />
       </div>
       <Picker
         {...rest}

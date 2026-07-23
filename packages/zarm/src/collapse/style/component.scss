@@ -5,7 +5,6 @@
   @include mixins.define(border-color, var(--za-border-color));
   @include mixins.define(arrow-color, var(--za-arrow-color));
   @include mixins.define(arrow-size, var(--za-arrow-size));
-  @include mixins.define(arrow-width, var(--za-arrow-width));
   @include mixins.define(arrow-disabled-color, #eee);
   @include mixins.define(header-height, 44px);
   @include mixins.define(header-padding-horizontal, 16px);
@@ -76,20 +75,13 @@
   }
 
   @include sass.e(arrow) {
-    margin-top: -3px;
-    margin-left: 5px;
-    margin-right: 2px;
+    --za-icon-color: var(--arrow-color);
+    --za-icon-font-size: calc(var(--arrow-size) * 2);
 
-    &:after {
-      display: inline-block;
-      content: '';
-      border-right: var(--arrow-width) solid var(--arrow-color);
-      border-top: var(--arrow-width) solid var(--arrow-color);
-      width: var(--arrow-size);
-      height: var(--arrow-size);
-      transform: rotate(135deg);
-      transition: all 0.3s ease;
-    }
+    flex-shrink: 0;
+    margin-left: 5px;
+    margin-right: calc(var(--arrow-size) / -4);
+    transition: transform 0.3s ease;
   }
 
   @include sass.m(disabled) {
@@ -98,10 +90,7 @@
     }
 
     @include sass.e(arrow) {
-      &:after {
-        border-right-color: var(--arrow-disabled-color);
-        border-top-color: var(--arrow-disabled-color);
-      }
+      --za-icon-color: var(--arrow-disabled-color);
     }
   }
 
@@ -111,11 +100,7 @@
     }
 
     @include sass.e(arrow) {
-      margin-top: 0;
-
-      &:after {
-        transform: rotate(-45deg);
-      }
+      transform: rotate(180deg);
     }
   }
 }

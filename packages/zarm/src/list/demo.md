@@ -202,7 +202,6 @@ ReactDOM.render(
 | --title-line-height       | 'calc(var(--height) - var(--padding-vertical) \* 2))' | 列表项标题行高         |
 | --suffix-text-color       | 'rgba(0, 0, 0, 0.45)'                                 | 列表项尾部字体颜色     |
 | --space                   | '5px'                                                 | 列表项元素之间的间距   |
-| --arrow-width             | '2px'                                                 | 列表项尾部箭头宽度     |
 | --arrow-color             | 'rgba(0, 0, 0, 0.2)'                                  | 列表项尾部箭头的颜色   |
 | --arrow-size              | '10px'                                                | 列表项尾部箭头的大小   |
 | --description-font-size   | '12px'                                                | 列表项补充信息字体大小 |

@@ -16,9 +16,23 @@ exports[`Collapse renders correctly 1`] = `
         >
           Header of Item1
         </div>
-        <div
-          class="za-collapse-item__arrow"
-        />
+        <i
+          class="za-icon za-collapse-item__arrow"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="0 0 1000 1000"
+            width="1em"
+          >
+            <path
+              d="M494.094 733.426a41.472 41.472 0 01-20.023-11.126L140.16 388.388c-16.272-16.271-16.272-42.653 0-58.925 16.271-16.272 42.653-16.272 58.925 0L503.66 634.037 808.186 329.51c16.271-16.272 42.653-16.272 58.925 0s16.272 42.654 0 58.926L533.2 722.347c-10.607 10.607-25.508 14.3-39.106 11.08z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </i>
       </div>
       <div
         class="za-collapse-item__content"
@@ -42,9 +56,23 @@ exports[`Collapse renders correctly 1`] = `
         >
           Header of Item2
         </div>
-        <div
-          class="za-collapse-item__arrow"
-        />
+        <i
+          class="za-icon za-collapse-item__arrow"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="0 0 1000 1000"
+            width="1em"
+          >
+            <path
+              d="M494.094 733.426a41.472 41.472 0 01-20.023-11.126L140.16 388.388c-16.272-16.271-16.272-42.653 0-58.925 16.271-16.272 42.653-16.272 58.925 0L503.66 634.037 808.186 329.51c16.271-16.272 42.653-16.272 58.925 0s16.272 42.654 0 58.926L533.2 722.347c-10.607 10.607-25.508 14.3-39.106 11.08z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </i>
       </div>
       <div
         class="za-collapse-item__content"
@@ -68,9 +96,23 @@ exports[`Collapse renders correctly 1`] = `
         >
           Header of Item3
         </div>
-        <div
-          class="za-collapse-item__arrow"
-        />
+        <i
+          class="za-icon za-collapse-item__arrow"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="0 0 1000 1000"
+            width="1em"
+          >
+            <path
+              d="M494.094 733.426a41.472 41.472 0 01-20.023-11.126L140.16 388.388c-16.272-16.271-16.272-42.653 0-58.925 16.271-16.272 42.653-16.272 58.925 0L503.66 634.037 808.186 329.51c16.271-16.272 42.653-16.272 58.925 0s16.272 42.654 0 58.926L533.2 722.347c-10.607 10.607-25.508 14.3-39.106 11.08z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </i>
       </div>
       <div
         class="za-collapse-item__content"
@@ -103,9 +145,23 @@ exports[`Collapse renders correctly with activeKey 1`] = `
         >
           Header of Item1
         </div>
-        <div
-          class="za-collapse-item__arrow"
-        />
+        <i
+          class="za-icon za-collapse-item__arrow"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="0 0 1000 1000"
+            width="1em"
+          >
+            <path
+              d="M494.094 733.426a41.472 41.472 0 01-20.023-11.126L140.16 388.388c-16.272-16.271-16.272-42.653 0-58.925 16.271-16.272 42.653-16.272 58.925 0L503.66 634.037 808.186 329.51c16.271-16.272 42.653-16.272 58.925 0s16.272 42.654 0 58.926L533.2 722.347c-10.607 10.607-25.508 14.3-39.106 11.08z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </i>
       </div>
       <div
         class="za-collapse-item__content"
@@ -129,9 +185,23 @@ exports[`Collapse renders correctly with activeKey 1`] = `
         >
           Header of Item2
         </div>
-        <div
-          class="za-collapse-item__arrow"
-        />
+        <i
+          class="za-icon za-collapse-item__arrow"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="0 0 1000 1000"
+            width="1em"
+          >
+            <path
+              d="M494.094 733.426a41.472 41.472 0 01-20.023-11.126L140.16 388.388c-16.272-16.271-16.272-42.653 0-58.925 16.271-16.272 42.653-16.272 58.925 0L503.66 634.037 808.186 329.51c16.271-16.272 42.653-16.272 58.925 0s16.272 42.654 0 58.926L533.2 722.347c-10.607 10.607-25.508 14.3-39.106 11.08z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </i>
       </div>
       <div
         class="za-collapse-item__content"
@@ -155,9 +225,23 @@ exports[`Collapse renders correctly with activeKey 1`] = `
         >
           Header of Item3
         </div>
-        <div
-          class="za-collapse-item__arrow"
-        />
+        <i
+          class="za-icon za-collapse-item__arrow"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="0 0 1000 1000"
+            width="1em"
+          >
+            <path
+              d="M494.094 733.426a41.472 41.472 0 01-20.023-11.126L140.16 388.388c-16.272-16.271-16.272-42.653 0-58.925 16.271-16.272 42.653-16.272 58.925 0L503.66 634.037 808.186 329.51c16.271-16.272 42.653-16.272 58.925 0s16.272 42.654 0 58.926L533.2 722.347c-10.607 10.607-25.508 14.3-39.106 11.08z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </i>
       </div>
       <div
         class="za-collapse-item__content"
@@ -190,9 +274,23 @@ exports[`Collapse renders correctly with animated 1`] = `
         >
           Header of Item1
         </div>
-        <div
-          class="za-collapse-item__arrow"
-        />
+        <i
+          class="za-icon za-collapse-item__arrow"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="0 0 1000 1000"
+            width="1em"
+          >
+            <path
+              d="M494.094 733.426a41.472 41.472 0 01-20.023-11.126L140.16 388.388c-16.272-16.271-16.272-42.653 0-58.925 16.271-16.272 42.653-16.272 58.925 0L503.66 634.037 808.186 329.51c16.271-16.272 42.653-16.272 58.925 0s16.272 42.654 0 58.926L533.2 722.347c-10.607 10.607-25.508 14.3-39.106 11.08z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </i>
       </div>
       <div
         class="za-collapse-item__content"
@@ -216,9 +314,23 @@ exports[`Collapse renders correctly with animated 1`] = `
         >
           Header of Item2
         </div>
-        <div
-          class="za-collapse-item__arrow"
-        />
+        <i
+          class="za-icon za-collapse-item__arrow"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="0 0 1000 1000"
+            width="1em"
+          >
+            <path
+              d="M494.094 733.426a41.472 41.472 0 01-20.023-11.126L140.16 388.388c-16.272-16.271-16.272-42.653 0-58.925 16.271-16.272 42.653-16.272 58.925 0L503.66 634.037 808.186 329.51c16.271-16.272 42.653-16.272 58.925 0s16.272 42.654 0 58.926L533.2 722.347c-10.607 10.607-25.508 14.3-39.106 11.08z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </i>
       </div>
       <div
         class="za-collapse-item__content"
@@ -242,9 +354,23 @@ exports[`Collapse renders correctly with animated 1`] = `
         >
           Header of Item3
         </div>
-        <div
-          class="za-collapse-item__arrow"
-        />
+        <i
+          class="za-icon za-collapse-item__arrow"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="0 0 1000 1000"
+            width="1em"
+          >
+            <path
+              d="M494.094 733.426a41.472 41.472 0 01-20.023-11.126L140.16 388.388c-16.272-16.271-16.272-42.653 0-58.925 16.271-16.272 42.653-16.272 58.925 0L503.66 634.037 808.186 329.51c16.271-16.272 42.653-16.272 58.925 0s16.272 42.654 0 58.926L533.2 722.347c-10.607 10.607-25.508 14.3-39.106 11.08z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </i>
       </div>
       <div
         class="za-collapse-item__content"
@@ -277,9 +403,23 @@ exports[`Collapse renders correctly with array defaultActiveKey 1`] = `
         >
           Header of Item1
         </div>
-        <div
-          class="za-collapse-item__arrow"
-        />
+        <i
+          class="za-icon za-collapse-item__arrow"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="0 0 1000 1000"
+            width="1em"
+          >
+            <path
+              d="M494.094 733.426a41.472 41.472 0 01-20.023-11.126L140.16 388.388c-16.272-16.271-16.272-42.653 0-58.925 16.271-16.272 42.653-16.272 58.925 0L503.66 634.037 808.186 329.51c16.271-16.272 42.653-16.272 58.925 0s16.272 42.654 0 58.926L533.2 722.347c-10.607 10.607-25.508 14.3-39.106 11.08z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </i>
       </div>
       <div
         class="za-collapse-item__content"
@@ -303,9 +443,23 @@ exports[`Collapse renders correctly with array defaultActiveKey 1`] = `
         >
           Header of Item2
         </div>
-        <div
-          class="za-collapse-item__arrow"
-        />
+        <i
+          class="za-icon za-collapse-item__arrow"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="0 0 1000 1000"
+            width="1em"
+          >
+            <path
+              d="M494.094 733.426a41.472 41.472 0 01-20.023-11.126L140.16 388.388c-16.272-16.271-16.272-42.653 0-58.925 16.271-16.272 42.653-16.272 58.925 0L503.66 634.037 808.186 329.51c16.271-16.272 42.653-16.272 58.925 0s16.272 42.654 0 58.926L533.2 722.347c-10.607 10.607-25.508 14.3-39.106 11.08z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </i>
       </div>
       <div
         class="za-collapse-item__content"
@@ -329,9 +483,23 @@ exports[`Collapse renders correctly with array defaultActiveKey 1`] = `
         >
           Header of Item3
         </div>
-        <div
-          class="za-collapse-item__arrow"
-        />
+        <i
+          class="za-icon za-collapse-item__arrow"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="0 0 1000 1000"
+            width="1em"
+          >
+            <path
+              d="M494.094 733.426a41.472 41.472 0 01-20.023-11.126L140.16 388.388c-16.272-16.271-16.272-42.653 0-58.925 16.271-16.272 42.653-16.272 58.925 0L503.66 634.037 808.186 329.51c16.271-16.272 42.653-16.272 58.925 0s16.272 42.654 0 58.926L533.2 722.347c-10.607 10.607-25.508 14.3-39.106 11.08z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </i>
       </div>
       <div
         class="za-collapse-item__content"
@@ -364,9 +532,23 @@ exports[`Collapse renders correctly with collapse mode 1`] = `
         >
           Header of Item1
         </div>
-        <div
-          class="za-collapse-item__arrow"
-        />
+        <i
+          class="za-icon za-collapse-item__arrow"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="0 0 1000 1000"
+            width="1em"
+          >
+            <path
+              d="M494.094 733.426a41.472 41.472 0 01-20.023-11.126L140.16 388.388c-16.272-16.271-16.272-42.653 0-58.925 16.271-16.272 42.653-16.272 58.925 0L503.66 634.037 808.186 329.51c16.271-16.272 42.653-16.272 58.925 0s16.272 42.654 0 58.926L533.2 722.347c-10.607 10.607-25.508 14.3-39.106 11.08z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </i>
       </div>
       <div
         class="za-collapse-item__content"
@@ -390,9 +572,23 @@ exports[`Collapse renders correctly with collapse mode 1`] = `
         >
           Header of Item2
         </div>
-        <div
-          class="za-collapse-item__arrow"
-        />
+        <i
+          class="za-icon za-collapse-item__arrow"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="0 0 1000 1000"
+            width="1em"
+          >
+            <path
+              d="M494.094 733.426a41.472 41.472 0 01-20.023-11.126L140.16 388.388c-16.272-16.271-16.272-42.653 0-58.925 16.271-16.272 42.653-16.272 58.925 0L503.66 634.037 808.186 329.51c16.271-16.272 42.653-16.272 58.925 0s16.272 42.654 0 58.926L533.2 722.347c-10.607 10.607-25.508 14.3-39.106 11.08z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </i>
       </div>
       <div
         class="za-collapse-item__content"
@@ -416,9 +612,23 @@ exports[`Collapse renders correctly with collapse mode 1`] = `
         >
           Header of Item3
         </div>
-        <div
-          class="za-collapse-item__arrow"
-        />
+        <i
+          class="za-icon za-collapse-item__arrow"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="0 0 1000 1000"
+            width="1em"
+          >
+            <path
+              d="M494.094 733.426a41.472 41.472 0 01-20.023-11.126L140.16 388.388c-16.272-16.271-16.272-42.653 0-58.925 16.271-16.272 42.653-16.272 58.925 0L503.66 634.037 808.186 329.51c16.271-16.272 42.653-16.272 58.925 0s16.272 42.654 0 58.926L533.2 722.347c-10.607 10.607-25.508 14.3-39.106 11.08z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </i>
       </div>
       <div
         class="za-collapse-item__content"
@@ -451,9 +661,23 @@ exports[`Collapse renders correctly with defaultActiveKey 1`] = `
         >
           Header of Item1
         </div>
-        <div
-          class="za-collapse-item__arrow"
-        />
+        <i
+          class="za-icon za-collapse-item__arrow"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="0 0 1000 1000"
+            width="1em"
+          >
+            <path
+              d="M494.094 733.426a41.472 41.472 0 01-20.023-11.126L140.16 388.388c-16.272-16.271-16.272-42.653 0-58.925 16.271-16.272 42.653-16.272 58.925 0L503.66 634.037 808.186 329.51c16.271-16.272 42.653-16.272 58.925 0s16.272 42.654 0 58.926L533.2 722.347c-10.607 10.607-25.508 14.3-39.106 11.08z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </i>
       </div>
       <div
         class="za-collapse-item__content"
@@ -477,9 +701,23 @@ exports[`Collapse renders correctly with defaultActiveKey 1`] = `
         >
           Header of Item2
         </div>
-        <div
-          class="za-collapse-item__arrow"
-        />
+        <i
+          class="za-icon za-collapse-item__arrow"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="0 0 1000 1000"
+            width="1em"
+          >
+            <path
+              d="M494.094 733.426a41.472 41.472 0 01-20.023-11.126L140.16 388.388c-16.272-16.271-16.272-42.653 0-58.925 16.271-16.272 42.653-16.272 58.925 0L503.66 634.037 808.186 329.51c16.271-16.272 42.653-16.272 58.925 0s16.272 42.654 0 58.926L533.2 722.347c-10.607 10.607-25.508 14.3-39.106 11.08z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </i>
       </div>
       <div
         class="za-collapse-item__content"
@@ -503,9 +741,23 @@ exports[`Collapse renders correctly with defaultActiveKey 1`] = `
         >
           Header of Item3
         </div>
-        <div
-          class="za-collapse-item__arrow"
-        />
+        <i
+          class="za-icon za-collapse-item__arrow"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="0 0 1000 1000"
+            width="1em"
+          >
+            <path
+              d="M494.094 733.426a41.472 41.472 0 01-20.023-11.126L140.16 388.388c-16.272-16.271-16.272-42.653 0-58.925 16.271-16.272 42.653-16.272 58.925 0L503.66 634.037 808.186 329.51c16.271-16.272 42.653-16.272 58.925 0s16.272 42.654 0 58.926L533.2 722.347c-10.607 10.607-25.508 14.3-39.106 11.08z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </i>
       </div>
       <div
         class="za-collapse-item__content"
@@ -538,9 +790,23 @@ exports[`Collapse renders correctly with number activeKey 1`] = `
         >
           Header of Item1
         </div>
-        <div
-          class="za-collapse-item__arrow"
-        />
+        <i
+          class="za-icon za-collapse-item__arrow"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="0 0 1000 1000"
+            width="1em"
+          >
+            <path
+              d="M494.094 733.426a41.472 41.472 0 01-20.023-11.126L140.16 388.388c-16.272-16.271-16.272-42.653 0-58.925 16.271-16.272 42.653-16.272 58.925 0L503.66 634.037 808.186 329.51c16.271-16.272 42.653-16.272 58.925 0s16.272 42.654 0 58.926L533.2 722.347c-10.607 10.607-25.508 14.3-39.106 11.08z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </i>
       </div>
       <div
         class="za-collapse-item__content"
@@ -564,9 +830,23 @@ exports[`Collapse renders correctly with number activeKey 1`] = `
         >
           Header of Item2
         </div>
-        <div
-          class="za-collapse-item__arrow"
-        />
+        <i
+          class="za-icon za-collapse-item__arrow"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="0 0 1000 1000"
+            width="1em"
+          >
+            <path
+              d="M494.094 733.426a41.472 41.472 0 01-20.023-11.126L140.16 388.388c-16.272-16.271-16.272-42.653 0-58.925 16.271-16.272 42.653-16.272 58.925 0L503.66 634.037 808.186 329.51c16.271-16.272 42.653-16.272 58.925 0s16.272 42.654 0 58.926L533.2 722.347c-10.607 10.607-25.508 14.3-39.106 11.08z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </i>
       </div>
       <div
         class="za-collapse-item__content"
@@ -590,9 +870,23 @@ exports[`Collapse renders correctly with number activeKey 1`] = `
         >
           Header of Item3
         </div>
-        <div
-          class="za-collapse-item__arrow"
-        />
+        <i
+          class="za-icon za-collapse-item__arrow"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="0 0 1000 1000"
+            width="1em"
+          >
+            <path
+              d="M494.094 733.426a41.472 41.472 0 01-20.023-11.126L140.16 388.388c-16.272-16.271-16.272-42.653 0-58.925 16.271-16.272 42.653-16.272 58.925 0L503.66 634.037 808.186 329.51c16.271-16.272 42.653-16.272 58.925 0s16.272 42.654 0 58.926L533.2 722.347c-10.607 10.607-25.508 14.3-39.106 11.08z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </i>
       </div>
       <div
         class="za-collapse-item__content"
@@ -625,9 +919,23 @@ exports[`Collapse renders correctly with number defaultActiveKey 1`] = `
         >
           Header of Item1
         </div>
-        <div
-          class="za-collapse-item__arrow"
-        />
+        <i
+          class="za-icon za-collapse-item__arrow"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="0 0 1000 1000"
+            width="1em"
+          >
+            <path
+              d="M494.094 733.426a41.472 41.472 0 01-20.023-11.126L140.16 388.388c-16.272-16.271-16.272-42.653 0-58.925 16.271-16.272 42.653-16.272 58.925 0L503.66 634.037 808.186 329.51c16.271-16.272 42.653-16.272 58.925 0s16.272 42.654 0 58.926L533.2 722.347c-10.607 10.607-25.508 14.3-39.106 11.08z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </i>
       </div>
       <div
         class="za-collapse-item__content"
@@ -651,9 +959,23 @@ exports[`Collapse renders correctly with number defaultActiveKey 1`] = `
         >
           Header of Item2
         </div>
-        <div
-          class="za-collapse-item__arrow"
-        />
+        <i
+          class="za-icon za-collapse-item__arrow"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="0 0 1000 1000"
+            width="1em"
+          >
+            <path
+              d="M494.094 733.426a41.472 41.472 0 01-20.023-11.126L140.16 388.388c-16.272-16.271-16.272-42.653 0-58.925 16.271-16.272 42.653-16.272 58.925 0L503.66 634.037 808.186 329.51c16.271-16.272 42.653-16.272 58.925 0s16.272 42.654 0 58.926L533.2 722.347c-10.607 10.607-25.508 14.3-39.106 11.08z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </i>
       </div>
       <div
         class="za-collapse-item__content"
@@ -677,9 +999,23 @@ exports[`Collapse renders correctly with number defaultActiveKey 1`] = `
         >
           Header of Item3
         </div>
-        <div
-          class="za-collapse-item__arrow"
-        />
+        <i
+          class="za-icon za-collapse-item__arrow"
+        >
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="0 0 1000 1000"
+            width="1em"
+          >
+            <path
+              d="M494.094 733.426a41.472 41.472 0 01-20.023-11.126L140.16 388.388c-16.272-16.271-16.272-42.653 0-58.925 16.271-16.272 42.653-16.272 58.925 0L503.66 634.037 808.186 329.51c16.271-16.272 42.653-16.272 58.925 0s16.272 42.654 0 58.926L533.2 722.347c-10.607 10.607-25.508 14.3-39.106 11.08z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </i>
       </div>
       <div
         class="za-collapse-item__content"

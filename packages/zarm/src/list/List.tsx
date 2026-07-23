@@ -17,7 +17,6 @@ export interface ListCssVars {
   '--item-title-line-height'?: React.CSSProperties['lineHeight'];
   '--item-suffix-text-color'?: React.CSSProperties['color'];
   '--item-space'?: string | number;
-  '--item-arrow-width'?: React.CSSProperties['borderWidth'];
   '--item-arrow-color'?: React.CSSProperties['color'];
   '--item-arrow-size'?: string | number;
   '--item-description-font-size'?: React.CSSProperties['fontSize'];

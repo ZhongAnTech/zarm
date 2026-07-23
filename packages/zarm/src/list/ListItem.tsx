@@ -1,4 +1,5 @@
 import { createBEM } from '@zarm-design/bem';
+import { ArrowRight } from '@zarm-design/icons';
 import * as React from 'react';
 import { ConfigContext } from '../config-provider';
 import mergeDefaultProps from '../utils/mergeDefaultProps';
@@ -40,7 +41,7 @@ const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>((props, ref) => 
   const titleRender = title && <div className={bem('title')}>{title}</div>;
   const contentRender = children && <div className={bem('content')}>{children}</div>;
   const descriptionRender = description && <div className={bem('description')}>{description}</div>;
-  const arrowRender = !!onClick && hasArrow && <div className={bem('arrow')} />;
+  const arrowRender = !!onClick && hasArrow && <ArrowRight className={bem('arrow')} />;
 
   return (
     <li ref={ref} className={cls} onClick={onClick} onTouchStart={() => {}} {...restProps}>

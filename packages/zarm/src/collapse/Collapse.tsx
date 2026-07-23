@@ -11,7 +11,6 @@ export interface CollapseCssVars {
   '--border-color'?: React.CSSProperties['color'];
   '--arrow-color'?: React.CSSProperties['color'];
   '--arrow-size'?: React.CSSProperties['width'];
-  '--arrow-width'?: React.CSSProperties['width'];
   '--arrow-disabled-color'?: React.CSSProperties['color'];
   '--header-height'?: React.CSSProperties['height'];
   '--header-padding-horizontal'?: React.CSSProperties['left'];

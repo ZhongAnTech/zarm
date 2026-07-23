@@ -131,7 +131,6 @@ ReactDOM.render(
 | --border-color               | 'var(--za-border-color)'        | 边框颜色               |
 | --arrow-color                | 'var(--za-arrow-color)'         | 箭头颜色               |
 | --arrow-size                 | 'var(--za-arrow-size)'          | 箭头的大小             |
-| --arrow-width                | 'var(--za-arrow-width)'         | 箭头的粗细             |
 | --arrow-disabled-color       | '#eee'                          | 箭头禁用状态颜色       |
 | --header-height              | '52px'                          | 头部的高度             |
 | --header-padding-horizontal  | '16px'                          | 头部的水平间距         |

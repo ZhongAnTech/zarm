@@ -7,7 +7,6 @@
   @include mixins.define(placeholder-color, var(--za-color-text-placeholder));
   @include mixins.define(arrow-color, var(--za-arrow-color));
   @include mixins.define(arrow-size, var(--za-arrow-size));
-  @include mixins.define(arrow-width, var(--za-arrow-width));
 
   display: flex;
   align-items: center;
@@ -28,19 +27,12 @@
   }
 
   @include sass.e(arrow) {
-    margin-left: 5px;
-    margin-top: calc(var(--arrow-size) / -2);
+    --za-icon-color: var(--arrow-color);
+    --za-icon-font-size: calc(var(--arrow-size) * 2);
 
-    &::after {
-      display: inline-block;
-      content: '';
-      border-right: var(--arrow-width) solid var(--arrow-color);
-      border-bottom: var(--arrow-width) solid var(--arrow-color);
-      width: var(--arrow-size);
-      height: var(--arrow-size);
-      transform: rotate(45deg);
-      transition: all 0.15s ease-out;
-    }
+    flex-shrink: 0;
+    margin-left: 5px;
+    transition: transform 0.15s ease-out;
   }
 
   @include sass.m(disabled) {
@@ -51,9 +43,7 @@
 
   @include sass.m(visible) {
     @include sass.e(arrow) {
-      &::after {
-        transform: rotate(-45deg);
-      }
+      transform: rotate(180deg);
     }
   }
 }

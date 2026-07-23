@@ -594,4 +594,3 @@ Picker.prompt({
 | --placeholder-color | 'var(--za-color-text-placeholder)' | 输入框占位文字颜色 |
 | --arrow-color       | 'var(--za-arrow-color)'            | 输入框箭头         |
 | --arrow-size        | 'var(--za-arrow-size)'             | 输入框箭头尺寸     |
-| --arrow-width       | 'var(--za-arrow-width)'            | 输入框箭头宽度     |

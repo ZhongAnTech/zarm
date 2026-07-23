@@ -1,4 +1,5 @@
 import { createBEM } from '@zarm-design/bem';
+import { ArrowDown } from '@zarm-design/icons';
 import React, { HTMLAttributes } from 'react';
 import { ConfigContext } from '../config-provider';
 import { useSafeLayoutEffect } from '../utils/hooks';
@@ -42,7 +43,7 @@ const CollapseItem = React.forwardRef<unknown, CollapseItemProps>((props, ref) =
     <div className={cls} {...rest} ref={ref as React.Ref<HTMLDivElement>}>
       <div className={bem('header')} onClick={onClickItem}>
         <div className={bem('title')}>{title}</div>
-        <div className={bem('arrow')} />
+        <ArrowDown className={bem('arrow')} />
       </div>
       <div className={bem('content')} ref={contentRef}>
         <div className={bem('content__inner')}>{children}</div>
