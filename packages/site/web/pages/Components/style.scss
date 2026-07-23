@@ -72,14 +72,15 @@
         position: fixed;
         top: 100px;
       }
-
-      &__qrcode {
-        padding: 10px;
-        background-color: #fff;
-        box-shadow: 0 2px 8px 0 rgb(0 0 0 / 10%);
-      }
     }
   }
+}
+
+.za-tooltip.simulator__qrcode {
+  --background: #fff;
+
+  padding: 10px;
+  box-shadow: 0 2px 8px 0 rgb(0 0 0 / 10%);
 }
 
 @media screen and (max-width: 768px) {

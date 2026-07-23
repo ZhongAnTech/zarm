@@ -7,6 +7,13 @@
   border-radius: 4px;
   transition-duration: 0.1s;
 
+  &:focus,
+  &:focus-visible,
+  a:focus,
+  a:focus-visible {
+    outline: none;
+  }
+
   &.ant-menu-item-selected {
     background: rgba(0, 188, 112, 0.1);
     color: rgba(0, 188, 112);
