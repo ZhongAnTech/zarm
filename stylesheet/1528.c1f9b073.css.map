@@ -1,1 +1,1 @@
-{"version":3,"file":"stylesheet/1528.90746c20.css","mappings":"AAGE,iBACE,kB","sources":["webpack://site/./demo/styles/PanelPage.scss"],"sourcesContent":["@use '@/styles/index' as *;\n\n.panel-page {\n  .box {\n    padding: r(10) r(15);\n  }\n}\n"],"names":[],"sourceRoot":""}
+{"version":3,"file":"stylesheet/1528.fcdd9e2a.css","mappings":"AAGE,iBACE,kB","sources":["webpack://site/./demo/styles/PanelPage.scss"],"sourcesContent":["@use '@/styles/index' as *;\n\n.panel-page {\n  .box {\n    padding: 10px 15px;\n  }\n}\n"],"names":[],"sourceRoot":""}
