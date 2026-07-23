@@ -3,7 +3,7 @@
 .popper-page {
   .basic-demo {
     .za-list-item__content {
-      padding: r(60) 0;
+      padding: 60px 0;
       justify-content: center;
     }
   }
@@ -11,11 +11,11 @@
   @at-root {
     .custom-content,
     .custom-arrow-content {
-      padding: r(6) r(12);
+      padding: 6px 12px;
       background: #ddd;
-      font-size: r(12);
-      width: r(100);
-      height: r(50);
+      font-size: 12px;
+      width: 100px;
+      height: 50px;
       color: #333;
 
       // 自定义箭头
@@ -28,41 +28,41 @@
       }
 
       &[data-popper-placement^='top'] {
-        // margin-bottom: r(10);
+        // margin-bottom: 10px;
 
         .za-popper__arrow {
-          bottom: r(-4);
-          border-width: r(4) r(4) 0;
+          bottom: -4px;
+          border-width: 4px 4px 0;
           border-top-color: #ddd;
         }
       }
 
       &[data-popper-placement^='right'] {
-        // margin-left: r(10);
+        // margin-left: 10px;
 
         .za-popper__arrow {
-          left: r(-4);
-          border-width: r(4) r(4) r(4) 0;
+          left: -4px;
+          border-width: 4px 4px 4px 0;
           border-right-color: #ddd;
         }
       }
 
       &[data-popper-placement^='bottom'] {
-        // margin-top: r(10);
+        // margin-top: 10px;
 
         .za-popper__arrow {
-          top: r(-4);
-          border-width: 0 r(4) r(4) r(4);
+          top: -4px;
+          border-width: 0 4px 4px 4px;
           border-bottom-color: #ddd;
         }
       }
 
       &[data-popper-placement^='left'] {
-        // margin-right: r(10);
+        // margin-right: 10px;
 
         .za-popper__arrow {
-          right: r(-4);
-          border-width: r(4) 0 r(4) r(4);
+          right: -4px;
+          border-width: 4px 0 4px 4px;
           border-left-color: #ddd;
         }
       }
@@ -70,28 +70,28 @@
       &[data-popper-placement='top-start'],
       &[data-popper-placement='bottom-start'] {
         .za-popper__arrow {
-          left: r(10);
+          left: 10px;
         }
       }
 
       &[data-popper-placement='top-end'],
       &[data-popper-placement='bottom-end'] {
         .za-popper__arrow {
-          right: r(10);
+          right: 10px;
         }
       }
 
       &[data-popper-placement='left-start'],
       &[data-popper-placement='right-start'] {
         .za-popper__arrow {
-          top: r(4);
+          top: 4px;
         }
       }
 
       &[data-popper-placement='left-end'],
       &[data-popper-placement='right-end'] {
         .za-popper__arrow {
-          bottom: r(4);
+          bottom: 4px;
         }
       }
     }
@@ -100,13 +100,13 @@
   // 显示方向
   .direction-demo {
     .za-button {
-      width: r(60);
-      margin-right: r(10);
-      margin-bottom: r(10);
+      width: 60px;
+      margin-right: 10px;
+      margin-bottom: 10px;
     }
 
     .za-list-item__content {
-      padding: r(15) 0;
+      padding: 15px 0;
       justify-content: center;
     }
   }

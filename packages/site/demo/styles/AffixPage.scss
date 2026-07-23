@@ -2,17 +2,17 @@
 
 .affix-page {
   .seperator {
-    height: r(500);
+    height: 500px;
   }
 
   .scrollable-container {
-    height: r(100);
+    height: 100px;
     overflow-y: scroll;
   }
 
   .background {
-    padding-top: r(60);
-    height: r(300);
+    padding-top: 60px;
+    height: 300px;
     background-image: url(https://zos.alipayobjects.com/rmsportal/RmjwQiJorKyobvI.jpg);
   }
 }

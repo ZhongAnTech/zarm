@@ -11,10 +11,10 @@
     flex-direction: column;
 
     .za-icon {
-      margin-bottom: r(8);
+      margin-bottom: 8px;
 
       & + span {
-        font-size: r(12);
+        font-size: 12px;
       }
     }
   }

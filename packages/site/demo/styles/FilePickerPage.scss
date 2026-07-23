@@ -5,20 +5,20 @@
     &-wrapper {
       display: flex;
       flex-wrap: wrap;
-      padding: r(15) 0 0 r(15);
+      padding: 15px 0 0 15px;
     }
 
     &-item,
     &-btn {
-      width: r(74);
-      height: r(74);
-      margin-bottom: r(15);
+      width: 74px;
+      height: 74px;
+      margin-bottom: 15px;
     }
 
     &-item {
       display: inline-block;
-      border: r(2) solid #ddd;
-      margin-right: r(15);
+      border: 2px solid #ddd;
+      margin-right: 15px;
 
       &-img {
         width: 100%;
@@ -37,7 +37,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border: r(2) dashed #ddd;
+      border: 2px dashed #ddd;
 
       .za-icon {
         color: #ddd;
@@ -48,12 +48,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: r(16);
-      height: r(16);
+      width: 16px;
+      height: 16px;
       cursor: pointer;
 
       .za-icon {
-        font-size: r(10);
+        font-size: 10px;
         color: #fff;
       }
     }

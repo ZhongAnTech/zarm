@@ -2,20 +2,20 @@
 
 .index-page {
   .brand {
-    padding: r(45) r(45) r(15) r(45);
+    padding: 45px 45px 15px 45px;
 
     &-title {
-      font-size: r(30);
+      font-size: 30px;
     }
 
     &-description {
-      font-size: r(14);
+      font-size: 14px;
     }
   }
 
   .menu-item-content {
     .chinese {
-      margin-left: r(6);
+      margin-left: 6px;
       opacity: 0.5;
     }
   }

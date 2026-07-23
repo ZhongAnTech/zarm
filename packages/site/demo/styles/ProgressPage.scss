@@ -3,15 +3,15 @@
 .progress-page {
   .progress-container {
     width: 100%;
-    padding: r(20) r(20) 0;
+    padding: 20px 20px 0;
   }
 
   .progress {
-    margin-bottom: r(20);
+    margin-bottom: 20px;
     text-align: center;
 
     &-percent {
-      font-size: r(14);
+      font-size: 14px;
     }
   }
 }

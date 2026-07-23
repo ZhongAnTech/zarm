@@ -4,15 +4,15 @@
   @at-root {
     .za-toast {
       .box {
-        width: r(70);
+        width: 70px;
 
         &-icon,
         &-text {
-          margin: r(5) 0;
+          margin: 5px 0;
         }
 
         &-icon {
-          font-size: r(50);
+          font-size: 50px;
           color: #fff;
         }
       }

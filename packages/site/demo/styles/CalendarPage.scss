@@ -23,9 +23,9 @@
     &__text {
       position: absolute;
       left: 50%;
-      bottom: r(-12);
+      bottom: -12px;
       transform: translateX(-50%);
-      font-size: r(10);
+      font-size: 10px;
       white-space: nowrap;
     }
   }

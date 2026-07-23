@@ -1,7 +1,7 @@
 @use '@/styles/index' as *;
 
 .config-provider-page {
-  padding-bottom: r(50);
+  padding-bottom: 50px;
 
   .colors {
     display: flex;
@@ -13,13 +13,13 @@
 
     li {
       display: inline-block;
-      width: r(25);
-      height: r(25);
-      border-radius: r(2);
+      width: 25px;
+      height: 25px;
+      border-radius: 2px;
       cursor: pointer;
 
       &:not(:last-child) {
-        margin-right: r(5);
+        margin-right: 5px;
       }
     }
   }
@@ -27,8 +27,8 @@
   @at-root {
     .popup-box {
       background: #fff;
-      height: r(300);
-      padding: r(20) r(20) r(100);
+      height: 300px;
+      padding: 20px 20px 100px;
     }
   }
 }
