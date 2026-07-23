@@ -5,6 +5,12 @@ on:
     workflows: ['Preview Build']
     types: [completed]
 
+permissions:
+  actions: read
+  contents: read
+  issues: write
+  pull-requests: write
+
 jobs:
   success:
     runs-on: ubuntu-latest
@@ -33,28 +39,76 @@ jobs:
           export DEPLOY_DOMAIN=https://zarm-preview-pr-${{ steps.pr.outputs.id }}.surge.sh
           npx surge --project ./ --domain $DEPLOY_DOMAIN --token ${{ secrets.SURGE_TOKEN }}
       - name: update status comment
-        uses: actions-cool/maintain-one-comment@v1.1.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          body: |
+        uses: actions/github-script@v9
+        env:
+          PR_NUMBER: ${{ steps.pr.outputs.id }}
+          COMMENT_BODY: |
             🎊 PR Preview has been successfully built and deployed to https://zarm-preview-pr-${{ steps.pr.outputs.id }}.surge.sh
 
             <img width="300" src="https://user-images.githubusercontent.com/507615/90250366-88233900-de6e-11ea-95a5-84f0762ffd39.png">
             <!-- Sticky Pull Request Comment -->
-          body-include: '<!-- Sticky Pull Request Comment -->'
-          number: ${{ steps.pr.outputs.id }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          retries: 3
+          script: |
+            const issueNumber = Number(process.env.PR_NUMBER);
+            const body = process.env.COMMENT_BODY;
+            const marker = '<!-- Sticky Pull Request Comment -->';
+            const comments = await github.paginate(github.rest.issues.listComments, {
+              ...context.repo,
+              issue_number: issueNumber,
+              per_page: 100,
+            });
+            const existing = comments.find((comment) => comment.body?.includes(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({
+                ...context.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                ...context.repo,
+                issue_number: issueNumber,
+                body,
+              });
+            }
 
       - name: The job failed
         if: ${{ failure() }}
-        uses: actions-cool/maintain-one-comment@v1.1.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          body: |
+        uses: actions/github-script@v9
+        env:
+          PR_NUMBER: ${{ steps.pr.outputs.id }}
+          COMMENT_BODY: |
             😭 Deploy PR Preview failed.
             <img width="300" src="https://user-images.githubusercontent.com/507615/90250824-4e066700-de6f-11ea-8230-600ecc3d6a6b.png">
             <!-- Sticky Pull Request Comment -->
-          body-include: '<!-- Sticky Pull Request Comment -->'
-          number: ${{ steps.pr.outputs.id }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          retries: 3
+          script: |
+            const issueNumber = Number(process.env.PR_NUMBER);
+            const body = process.env.COMMENT_BODY;
+            const marker = '<!-- Sticky Pull Request Comment -->';
+            const comments = await github.paginate(github.rest.issues.listComments, {
+              ...context.repo,
+              issue_number: issueNumber,
+              per_page: 100,
+            });
+            const existing = comments.find((comment) => comment.body?.includes(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({
+                ...context.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                ...context.repo,
+                issue_number: issueNumber,
+                body,
+              });
+            }
 
   failed:
     runs-on: ubuntu-latest
@@ -71,12 +125,36 @@ jobs:
         run: echo "::set-output name=id::$(<pr-id.txt)"
 
       - name: The job failed
-        uses: actions-cool/maintain-one-comment@v1.1.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          body: |
+        uses: actions/github-script@v9
+        env:
+          PR_NUMBER: ${{ steps.pr.outputs.id }}
+          COMMENT_BODY: |
             😭 Deploy PR Preview failed.
             <img width="300" src="https://user-images.githubusercontent.com/507615/90250824-4e066700-de6f-11ea-8230-600ecc3d6a6b.png">
             <!-- Sticky Pull Request Comment -->
-          body-include: '<!-- Sticky Pull Request Comment -->'
-          number: ${{ steps.pr.outputs.id }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          retries: 3
+          script: |
+            const issueNumber = Number(process.env.PR_NUMBER);
+            const body = process.env.COMMENT_BODY;
+            const marker = '<!-- Sticky Pull Request Comment -->';
+            const comments = await github.paginate(github.rest.issues.listComments, {
+              ...context.repo,
+              issue_number: issueNumber,
+              per_page: 100,
+            });
+            const existing = comments.find((comment) => comment.body?.includes(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({
+                ...context.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                ...context.repo,
+                issue_number: issueNumber,
+                body,
+              });
+            }
