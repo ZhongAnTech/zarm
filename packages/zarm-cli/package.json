@@ -65,7 +65,7 @@
     "process": "^0.11.10",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "react-native": "^0.63.5",
+    "react-native": "^0.69.12",
     "sass": "1.101.0",
     "sass-loader": "^16.0.8",
     "signale": "^1.4.0",
