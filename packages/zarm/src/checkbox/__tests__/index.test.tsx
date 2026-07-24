@@ -42,6 +42,63 @@ describe('Checkbox', () => {
     expect(checkbox).not.toHaveClass(`${classPrefix}--checked`);
   });
 
+  it('normalizes the label click event and triggers onChange', () => {
+    const onParentClick = jest.fn();
+    const onCheckboxClick = jest.fn();
+    const onChange = jest.fn();
+
+    const Demo = () => {
+      const [checked, setChecked] = React.useState(false);
+      return (
+        <div
+          onClick={() => {
+            onParentClick();
+            setChecked(!checked);
+          }}
+        >
+          <Checkbox
+            checked={checked}
+            onClick={(e) => {
+              e.stopPropagation();
+              onCheckboxClick();
+              setChecked(!checked);
+            }}
+            onChange={(e) => {
+              e.stopPropagation();
+              onChange();
+              setChecked(!checked);
+            }}
+          >
+            foo
+          </Checkbox>
+        </div>
+      );
+    };
+
+    const { container } = render(<Demo />);
+    const icon = container.querySelector(`.${classPrefix}__icon`) as HTMLSpanElement;
+
+    fireEvent.click(icon);
+
+    expect(onCheckboxClick).toHaveBeenCalledTimes(1);
+    expect(onParentClick).not.toHaveBeenCalled();
+    expect(onChange).toHaveBeenCalledTimes(1);
+  });
+
+  it('bubbles only one click event to its parent', () => {
+    const onParentClick = jest.fn();
+    const { container } = render(
+      <div onClick={onParentClick}>
+        <Checkbox>foo</Checkbox>
+      </div>,
+    );
+    const checkbox = container.querySelector('label') as HTMLLabelElement;
+
+    fireEvent.click(checkbox);
+
+    expect(onParentClick).toHaveBeenCalledTimes(1);
+  });
+
   it('static method', () => {
     const ref = React.createRef<CheckboxRef>();
 

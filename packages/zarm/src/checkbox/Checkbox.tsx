@@ -4,6 +4,7 @@ import includes from 'lodash/includes';
 import React, {
   ChangeEvent,
   forwardRef,
+  MouseEventHandler,
   ReactNode,
   useContext,
   useEffect,
@@ -45,6 +46,7 @@ export type CheckboxProps = BaseCheckboxProps &
   HTMLProps<CheckboxCssVars> & {
     renderIcon?: (props: CheckboxProps) => ReactNode;
     render?: (props: CheckboxProps) => ReactNode;
+    onClick?: MouseEventHandler<HTMLLabelElement>;
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   };
 
@@ -125,6 +127,16 @@ const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
     />
   );
 
+  const onLabelClick: MouseEventHandler<HTMLLabelElement> = (e) => {
+    // A label click dispatches another click on its associated input. Keep that
+    // implementation detail from bubbling out of Checkbox as a second click.
+    if (e.target === inputRef.current) {
+      e.stopPropagation();
+      return;
+    }
+    props.onClick?.(e);
+  };
+
   useImperativeHandle(ref, () => {
     return {
       check: () => {
@@ -150,7 +162,7 @@ const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
 
   if (groupContext?.type === 'button') {
     return (
-      <label className={cls} style={props.style}>
+      <label className={cls} style={props.style} onClick={onLabelClick}>
         {inputRender}
         <Button
           disabled={disabled}
@@ -205,7 +217,7 @@ const Checkbox = forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
   );
 
   return (
-    <label className={cls} style={props.style}>
+    <label className={cls} style={props.style} onClick={onLabelClick}>
       {inputRender}
       {contentRender}
     </label>
