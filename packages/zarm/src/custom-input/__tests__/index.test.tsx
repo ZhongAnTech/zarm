@@ -104,6 +104,17 @@ describe('CustomInput.Number', () => {
     const input = document.body.querySelectorAll('input[type="hidden"]')[0] as HTMLInputElement;
     expect(input.value).toEqual('0');
   });
+
+  it('deletes a digit when value is a number', () => {
+    const onChange = jest.fn();
+    render(<CustomInput type="number" value={12} onChange={onChange} autoFocus />);
+    const deleteKey = document.body.getElementsByClassName('za-keyboard__item')[3];
+
+    fireEvent.mouseDown(deleteKey);
+    fireEvent.mouseUp(deleteKey);
+
+    expect(onChange).toHaveBeenCalledWith('1');
+  });
 });
 
 describe('CustomInput.Price', () => {

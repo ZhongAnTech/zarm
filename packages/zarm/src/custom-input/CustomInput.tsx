@@ -96,11 +96,14 @@ const CustomInput = React.forwardRef<CustomInputRef, CustomInputProps>((props, r
       return;
     }
 
-    if (key !== 'delete' && value?.length >= maxLength!) {
+    const stringValue = value === undefined ? '' : String(value);
+
+    if (key !== 'delete' && stringValue.length >= maxLength!) {
       return;
     }
 
-    const newValue = key === 'delete' ? value?.slice(0, value?.length - 1) : value + key;
+    const newValue =
+      key === 'delete' ? stringValue.slice(0, stringValue.length - 1) : stringValue + key;
 
     if (typeof value === 'undefined') {
       setValue(newValue);
