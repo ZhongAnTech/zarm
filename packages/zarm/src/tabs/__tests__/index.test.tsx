@@ -123,4 +123,31 @@ describe('Tab', () => {
     fireEvent.click(last);
     expect(onChange).toBeCalledWith(4);
   });
+
+  it('only changes once when clicking a controlled swipeable tab', () => {
+    const onChange = jest.fn();
+    const ControlledTabs = () => {
+      const [value, setValue] = React.useState(0);
+      return (
+        <Tabs
+          value={value}
+          swipeable
+          onChange={(index) => {
+            onChange(index);
+            setValue(index);
+          }}
+        >
+          <Tabs.Panel title="选项卡1">选项卡1内容</Tabs.Panel>
+          <Tabs.Panel title="选项卡2">选项卡2内容</Tabs.Panel>
+          <Tabs.Panel title="选项卡3">选项卡3内容</Tabs.Panel>
+        </Tabs>
+      );
+    };
+    const { container } = render(<ControlledTabs />);
+
+    fireEvent.click(container.querySelectorAll('.za-tabs__tab')[1]);
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenLastCalledWith(1);
+  });
 });
