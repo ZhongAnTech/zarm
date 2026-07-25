@@ -5,6 +5,7 @@ import { ConfigContext } from '../config-provider';
 import { useSafeState } from '../utils/hooks';
 import mergeDefaultProps from '../utils/mergeDefaultProps';
 import type { HTMLProps } from '../utils/utilityTypes';
+import type { WheelInstance } from '../wheel';
 import Wheel from '../wheel';
 import type { WheelValue } from '../wheel/interface';
 import type { BasePickerViewProps, PickerColumnItem } from './interface';
@@ -30,6 +31,10 @@ export interface PickerViewInstance {
   value: WheelValue[];
   items: PickerColumnItem[];
   reset: () => void;
+  stop: () => {
+    value: WheelValue[];
+    items: PickerColumnItem[];
+  };
 }
 
 const PickerView = React.forwardRef<PickerViewInstance, PickerViewProps>((props, ref) => {
@@ -39,6 +44,7 @@ const PickerView = React.forwardRef<PickerViewInstance, PickerViewProps>((props,
   const bem = createBEM('picker-view', { prefixCls });
   const [innerValue, setInnerValue] = React.useState(resolved(props).value);
   const [stopScroll, setStopScroll] = useSafeState(false);
+  const wheelRefs = React.useRef<Array<WheelInstance | null>>([]);
 
   React.useEffect(() => {
     if (props.value === undefined) return;
@@ -59,10 +65,35 @@ const PickerView = React.forwardRef<PickerViewInstance, PickerViewProps>((props,
     }, 0);
   };
 
+  const stop = () => {
+    const value = innerValue.slice();
+    const cascader = isCascader(props.dataSource);
+
+    columns.some((_, index) => {
+      const selected = wheelRefs.current[index]?.stop();
+      if (selected === undefined) return false;
+
+      const changed = selected !== value[index];
+      value[index] = selected;
+      if (cascader && changed) {
+        value.length = index + 1;
+        return true;
+      }
+      return false;
+    });
+
+    const next = resolved({ ...props, value });
+    if (!isEqual(next.value, innerValue)) {
+      setInnerValue(next.value);
+    }
+    return next;
+  };
+
   React.useImperativeHandle(ref, () => ({
     value: innerValue,
     items,
     reset,
+    stop,
   }));
 
   const onValueChange = React.useCallback(
@@ -85,6 +116,9 @@ const PickerView = React.forwardRef<PickerViewInstance, PickerViewProps>((props,
         {columns.map((column, index) => (
           <Wheel
             key={+index}
+            ref={(instance) => {
+              wheelRefs.current[index] = instance;
+            }}
             dataSource={column}
             value={innerValue?.[index]}
             fieldNames={fieldNames}

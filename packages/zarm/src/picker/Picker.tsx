@@ -58,7 +58,10 @@ const Picker: React.FC<PickerProps> = (props) => {
   };
 
   const handleConfirm = () => {
-    onConfirm?.(pickerViewRef.current?.value!, pickerViewRef.current?.items!);
+    const pickerView = pickerViewRef.current;
+    if (!pickerView) return;
+    const { value: selectedValue, items } = pickerView.stop();
+    onConfirm?.(selectedValue, items);
   };
 
   const handleCancel = () => {
