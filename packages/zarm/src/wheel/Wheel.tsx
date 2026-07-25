@@ -34,7 +34,11 @@ export interface WheelCssVars {
 
 export type WheelProps = BaseWheelProps & HTMLProps<WheelCssVars>;
 
-const Wheel: React.FC<WheelProps> = (props) => {
+export interface WheelInstance {
+  stop: () => WheelValue | undefined;
+}
+
+const Wheel = React.forwardRef<WheelInstance, WheelProps>((props, ref) => {
   props = mergeDefaultProps(defaultProps, props);
   const { className, value, defaultValue, dataSource, disabled, stopScroll, itemRender, onChange } =
     props;
@@ -82,6 +86,14 @@ const Wheel: React.FC<WheelProps> = (props) => {
       fireValueChange(child[fieldNames.value!]);
     }
   }, []);
+
+  React.useImperativeHandle(ref, () => ({
+    stop: () => {
+      scrollInstance.current?.stop();
+      const index = scrollInstance.current?.getSelectedIndex();
+      return dataSource?.[index]?.[fieldNames.value!];
+    },
+  }));
 
   useSafeLayoutEffect(() => {
     let resize: ResizeObserver | null;
@@ -163,7 +175,7 @@ const Wheel: React.FC<WheelProps> = (props) => {
       <div className={bem('content')}>{items}</div>
     </div>
   );
-};
+});
 
 Wheel.displayName = 'Wheel';
 const defaultProps: Partial<WheelProps> = {

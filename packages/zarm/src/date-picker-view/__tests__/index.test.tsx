@@ -8,6 +8,7 @@ const max = new Date('2035/12/31');
 describe('DatePickerView', () => {
   afterEach(() => {
     jest.restoreAllMocks();
+    jest.useRealTimers();
   });
 
   it('snapshot', () => {
@@ -18,7 +19,12 @@ describe('DatePickerView', () => {
   });
 
   it('meridiem hour snapshot', () => {
-    const wrapper = render(<DatePickerView defaultValue={new Date('2017/12/3 14:00')} columnType={['meridiem', 'hour', 'minute']} />);
+    const wrapper = render(
+      <DatePickerView
+        defaultValue={new Date('2017/12/3 14:00')}
+        columnType={['meridiem', 'hour', 'minute']}
+      />,
+    );
     expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
@@ -32,5 +38,19 @@ describe('DatePickerView', () => {
       />,
     );
     expect(wrapper.asFragment()).toMatchSnapshot();
+  });
+
+  it('derives min from an explicit max before the default range', () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date('2025/2/27 09:00:00'));
+    const ref = React.createRef<React.ElementRef<typeof DatePickerView>>();
+    const maxBeforeDefaultMin = new Date('2014/12/31 00:00:00');
+
+    const wrapper = render(<DatePickerView ref={ref} max={maxBeforeDefaultMin} />);
+
+    expect(wrapper.getByText('2004年')).toBeInTheDocument();
+    expect(wrapper.getByText('2014年')).toBeInTheDocument();
+    expect(wrapper.queryByText('2015年')).not.toBeInTheDocument();
+    expect(ref.current?.value).toEqual(maxBeforeDefaultMin);
   });
 });

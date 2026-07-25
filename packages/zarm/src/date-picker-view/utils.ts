@@ -60,6 +60,31 @@ export const padZero = (value: string | number, length = 2) => {
   return String(value).padStart(length, '0');
 };
 
+const DEFAULT_RANGE_YEARS = 10;
+
+const addYears = (date: Date, years: number) => {
+  const result = new Date(date);
+  result.setFullYear(result.getFullYear() + years);
+  return result;
+};
+
+export const resolveDatePickerRange = (min?: Date, max?: Date, now = new Date()) => {
+  const defaultMin = addYears(now, -DEFAULT_RANGE_YEARS);
+  const defaultMax = addYears(now, DEFAULT_RANGE_YEARS);
+
+  // Keep the usual range around today, unless an explicit one-sided bound would
+  // make that range invalid. In that case, derive the missing bound from the
+  // explicit one so it remains authoritative.
+  if (!min && max && defaultMin.getTime() > max.getTime()) {
+    return [addYears(max, -DEFAULT_RANGE_YEARS), max] as const;
+  }
+  if (min && !max && defaultMax.getTime() < min.getTime()) {
+    return [min, addYears(min, DEFAULT_RANGE_YEARS)] as const;
+  }
+
+  return [min ?? defaultMin, max ?? defaultMax] as const;
+};
+
 export const generateDatePickerColumns = (
   selectedValue: Date,
   min: Date,
