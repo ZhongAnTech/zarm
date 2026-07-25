@@ -10,6 +10,7 @@ import { COLUMN_TYPE } from '../date-picker-view/interface';
 import {
   dateToNumberArray,
   generateDatePickerColumns,
+  resolveDatePickerRange,
   useRenderLabel,
 } from '../date-picker-view/utils';
 import type { PickerColumnItem } from '../picker-view';
@@ -18,8 +19,6 @@ import type { SelectCssVars } from '../select';
 import { useSafeState } from '../utils/hooks';
 import { HTMLProps } from '../utils/utilityTypes';
 import type { BaseDateSelectProps } from './interface';
-
-const currentYear = new Date().getFullYear();
 
 export interface DateSelectCssVars {
   '--arrow-color'?: React.CSSProperties['color'];
@@ -39,8 +38,8 @@ const DateSelect: React.FC<DateSelectProps> = (props) => {
     hasArrow = true,
     value,
     defaultValue,
-    min = new Date(new Date().setFullYear(currentYear - 10)),
-    max = new Date(new Date().setFullYear(currentYear + 10)),
+    min: minProp,
+    max: maxProp,
     columnType = [COLUMN_TYPE.YEAR, COLUMN_TYPE.MONTH, COLUMN_TYPE.DAY],
     filter,
     renderLabel,
@@ -56,6 +55,11 @@ const DateSelect: React.FC<DateSelectProps> = (props) => {
   const defaultRenderLabel = useRenderLabel(renderLabel);
   const locale = globalLocal.DateSelect;
   const bem = createBEM('date-select', { prefixCls });
+  const now = React.useMemo(() => new Date(), []);
+  const [min, max] = React.useMemo(
+    () => resolveDatePickerRange(minProp, maxProp, now),
+    [minProp, maxProp, now],
+  );
 
   React.useEffect(() => {
     if (isEqual(value, innerValue)) return;
@@ -80,8 +84,6 @@ const DateSelect: React.FC<DateSelectProps> = (props) => {
     setVisible(false);
     onCancel?.();
   };
-
-  const now = React.useMemo(() => new Date(), []);
 
   const currentValue = React.useMemo(() => {
     const date = innerValue || now;

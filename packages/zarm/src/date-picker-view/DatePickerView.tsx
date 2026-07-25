@@ -15,10 +15,9 @@ import {
   dateToNumberArray,
   generateDatePickerColumns,
   numberArrayToDate,
+  resolveDatePickerRange,
   useRenderLabel,
 } from './utils';
-
-const currentYear = new Date().getFullYear();
 
 export type DatePickerViewProps = BaseDatePickerViewProps & HTMLProps<PickerViewCssVars>;
 
@@ -31,8 +30,8 @@ export interface DatePickerViewInstance {
 const DatePickerView = React.forwardRef<DatePickerViewInstance, DatePickerViewProps>(
   (props, ref) => {
     const {
-      min = new Date(new Date().setFullYear(currentYear - 10)),
-      max = new Date(new Date().setFullYear(currentYear + 10)),
+      min: minProp,
+      max: maxProp,
       columnType = [COLUMN_TYPE.YEAR, COLUMN_TYPE.MONTH, COLUMN_TYPE.DAY],
       value,
       defaultValue,
@@ -47,6 +46,11 @@ const DatePickerView = React.forwardRef<DatePickerViewInstance, DatePickerViewPr
     const [innerValue, setInnerValue] = React.useState(value || defaultValue);
     const prevColumnType = React.useRef(columnType);
     const defaultRenderLabel = useRenderLabel(renderLabel);
+    const now = React.useMemo(() => new Date(), []);
+    const [min, max] = React.useMemo(
+      () => resolveDatePickerRange(minProp, maxProp, now),
+      [minProp, maxProp, now],
+    );
 
     useUpdateEffect(() => {
       if (isEqual(props.value, innerValue)) return;
@@ -56,8 +60,6 @@ const DatePickerView = React.forwardRef<DatePickerViewInstance, DatePickerViewPr
     React.useEffect(() => {
       prevColumnType.current = columnType;
     }, [columnType]);
-
-    const now = React.useMemo(() => new Date(), []);
 
     const currentValue = React.useMemo(() => {
       const date = innerValue || now;
