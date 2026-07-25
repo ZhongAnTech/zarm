@@ -100,7 +100,10 @@ const Wheel = React.forwardRef<WheelInstance, WheelProps>((props, ref) => {
     heightRef.current = wheelWrapperRef.current?.clientHeight || 0;
     const initIndex = getSelectedIndex(currentValue, dataSource);
     if (wheelWrapperRef.current) {
+      // Move/end events cannot propagate to this iframe's window when the wheel is portaled out.
+      const bindToWrapper = wheelWrapperRef.current.ownerDocument.defaultView !== window;
       scrollInstance.current = new BScroll(wheelWrapperRef.current, {
+        bindToWrapper,
         wheel: {
           selectedIndex: initIndex,
           wheelWrapperClass: bem('content'),
